@@ -17,7 +17,7 @@ if (process.argv[2] === '--szenario') {
   if (sz.senken === false) delete process.env.SENKEN;
   if (sz.dryLoeschen) delete process.env.DRY_RUN;
   Object.assign(process.env, sz.env || {});
-  const prot = { produktAbfragen: 0, produktVars: [], knotenAbfragen: [], schreib: [], log: [], err: [], printful: [], exitCode: null, mutationVersuche: 0 };
+  const prot = { produktAbfragen: 0, produktVars: [], knotenAbfragen: [], schreib: [], log: [], err: [], printful: [], exitCode: null, mutationVersuche: 0, api: [] };
   const mk = (status, body) => ({ ok: status >= 200 && status < 300, status, json: async () => { if (body === undefined) throw new Error('kein JSON'); return body; } });
   const node = (id, sku, price) => ({ id, sku, price });
   // Produkte des Szenarios: [{id, handle, title, varianten:[{id, sku, price}]}], die ersten 100 Varianten kommen mit dem Produkt, der Rest über die Knotenabfrage
@@ -27,6 +27,7 @@ if (process.argv[2] === '--szenario') {
     url = String(url);
     if (url.includes('myshopify.com') && url.includes('graphql')) {
       const b = JSON.parse(o.body), q = b.query;
+      prot.api.push((/\/admin\/api\/([^/]+)\//.exec(url) || [])[1]);   // die Shopify-API-Version jedes Aufrufs
       if (q.includes('shop {')) return sz.authFehler ? mk(401, {}) : mk(200, { data: { shop: { name: 'x' } } });
       if (q.includes('products(first')) {
         prot.produktAbfragen++; prot.produktVars.push(b.variables);
@@ -199,6 +200,18 @@ const zusammenfassung = (e) => e.prot.log.find((l) => /Fertig:/.test(l)) || '';
   ist('Formel: bei niedrigen Kosten gilt Kosten+Mindestmarge (16.90), nicht Kosten×Aufschlag (10.90)', preise(niedrig), ['16.90', '16.90']);
   const markup = lauf({ senken: false, env: { MARKUP: '3' }, kostenStandard: '20.00', produkte: [produkt(1, 1)] });
   ist('Formel: der Aufschlag MARKUP=3 wirkt (18×3 = 54 → 53.90)', preise(markup), ['53.90']);
+}
+
+// 10. Zweite Runde 10.11.2026 (Gegenleser Linse 1 und 2): unbrauchbare Printful-Kosten sind «unbekannt», die API-Version ist die des Syncs
+{
+  for (const [n, kosten] of [['leer', ''], ['Text', 'abc'], ['0', '0'], ['0.00', '0.00'], ['negativ', '-5'], ['NaN', 'NaN']]) {
+    const e = lauf({ senken: true, kosten: { 1000: kosten, 1001: kosten }, produkte: [produkt(1, 2)] });
+    ist(`Kosten «${n}» sind UNBEKANNT: nichts geschrieben (früher: Preis «NaN» bzw. 11.90 bei 0), beide Varianten zählen als «ohne Printful-Kosten», Exit 0`, [e.prot.schreib.length, /2 ohne Printful-Kosten/.test(zusammenfassung(e)), e.status], [0, true, 0]);
+  }
+  const gemischt = lauf({ senken: true, kosten: { 1000: '', 1001: '10.00' }, produkte: [produkt(1, 2)] });
+  ist('Eine Variante mit unbrauchbaren Kosten, eine mit 10.00: nur die zweite wird geschrieben', [ids(gemischt), preise(gemischt), /1 ohne Printful-Kosten/.test(zusammenfassung(gemischt))], [['gid://shopify/ProductVariant/10001'], ['20.90'], true]);
+  const e1 = lauf({ senken: true, produkte: [produkt(1, 3)] });
+  ist('Shopify-API: jeder Aufruf geht an 2026-01, dieselbe Version wie der Sync (die alte Fassung lief auf dem abgelaufenen 2025-01)', [[...new Set(e1.prot.api)], e1.prot.api.length >= 3], [['2026-01'], true]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

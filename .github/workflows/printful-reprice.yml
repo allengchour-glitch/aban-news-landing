@@ -47,5 +47,5 @@ jobs:
           MARKUP: ${{ github.event.inputs.markup || '2.3' }}
           DRY_RUN: ${{ github.event.inputs.apply == 'true' && '0' || '1' }}
           SENKEN: ${{ github.event.inputs.senken == 'true' && '1' || '' }}
-          TAG: ${{ github.event.inputs.tag || 'printful_personalized_product' }}
+          TAG: ${{ github.event.inputs.tag || 'wunschdesign' }}
         run: node automation/printful_reprice.mjs

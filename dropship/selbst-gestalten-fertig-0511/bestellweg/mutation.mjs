@@ -26,10 +26,10 @@ const DATEIEN = [
   'dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json', 'dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json',   // vom Bestellweg-Test gelesen (Ausmass der Sperre «dienst-standort»)
   'automation/printful_reprice.mjs', 'automation/printful_reprice_test.mjs', 'automation/lib/pod_auswahl_spec.mjs',
   'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs',
-  '.github/workflows/printful-sync.yml',
+  '.github/workflows/printful-sync.yml', '.github/workflows/printful-reprice.yml', '.github/workflows/luxestyle-automation-tests.yml',
 ];
 const TESTS = ['automation/printful_reprice_test.mjs', 'automation/lib/printful_bestellweg_test.mjs', 'automation/lib/printful_platzierung_test.mjs', 'automation/printful_sync_test.mjs'];   // schnellste zuerst
-const B = 'automation/lib/printful_bestellweg.mjs', P = 'automation/lib/printful_platzierung.mjs', S = 'automation/printful_sync.mjs', W = '.github/workflows/printful-sync.yml', R = 'automation/printful_reprice.mjs';
+const B = 'automation/lib/printful_bestellweg.mjs', P = 'automation/lib/printful_platzierung.mjs', S = 'automation/printful_sync.mjs', W = '.github/workflows/printful-sync.yml', R = 'automation/printful_reprice.mjs', RW = '.github/workflows/printful-reprice.yml', CIW = '.github/workflows/luxestyle-automation-tests.yml';
 
 // [Name, Datei, von (muss genau einmal vorkommen), zu]
 export const MUTANTEN = [
@@ -109,11 +109,11 @@ export const MUTANTEN = [
   ['Plan: Druckdatei an Nicht-POD-Produkt fällt nicht auf', B, 'if (eig.dateien.length || eig.karte) hart(', 'if (false) hart('],
   ['Plan: SKU ohne Variante fällt nicht auf', B, "if (!sku.vid) { hart('ohne-variante'", "if (false) { hart('ohne-variante'"],
   ['Plan: Position ohne Druckdatei fällt nicht auf', B, 'if (!dateien.length) {\n      // Bestellung ohne Design', 'if (false) {\n      // Bestellung ohne Design'],
-  ['Plan: Menge geht verloren', B, 'const quantity = menge > 0 ? menge : 1;', 'const quantity = 1;'],
+  ['Plan: Menge geht verloren', B, 'const quantity = menge;', 'const quantity = 1;'],
   ['Plan: Optionen gehen nicht an Printful', B, 'if (op.optionen.length) item.options = op.optionen;', ''],
   ['Plan: Erlös in Fremdwährung gilt als CHF', B, "String(m.currencyCode || '').toUpperCase() === 'CHF'", 'true'],
   ['Plan: unbekannter Erlös einer Position wird übergangen', B, 'if (betrag === null) erloesBekannt = false; else erloes += betrag;', 'if (betrag === null) { /* übergangen */ } else erloes += betrag;'],
-  ['Plan: Fehler der KI-Kontrolle geben frei', B, "if (k && k.art !== 'ok') weich(", "if (k && k.art === 'fail') weich("],
+  ['Plan: Fehler der KI-Kontrolle geben frei', B, 'if (k && k.art !== \'ok\' && k.art !== \'trocken\') weich(', 'if (k && k.art === \'fail\') weich('],
   ['Plan: Druckdaten nicht lesbar fällt nicht auf', B, "if (!dd || dd.art !== 'ok') weich('druckdaten'", "if (false) weich('druckdaten'"],
   ['Plan: Positionen werden harter Befund, der Rest läuft trotzdem durch', B, 'if (befunde.slice(bf0).some((b) => b.hart)) continue;      // schon hart gescheitert', '      // schon hart gescheitert'],
   // ── Platzierung
@@ -194,7 +194,7 @@ export const MUTANTEN = [
   ['Kleber: der Trockenlauf druckt den Telegram-Text ins öffentliche Protokoll', S, "console.log('[DRY] Telegram würde senden' + (DETAIL ?", "console.log('[DRY] Telegram würde senden' + (true ?"],
   ['Kleber: Fehlerdetails stehen im öffentlichen Protokoll', S, "const fehlerLog = (f) => f.kurz + (DETAIL && f.detail ? ' | ' + f.detail : '');", "const fehlerLog = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');"],
   ['Kleber: die Fehlermeldung an Telegram verliert die Details', S, "const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');", 'const fehlerTg = (f) => f.kurz;'],
-  ['Kleber: Vorgabe des Mindestgewinns ist 0', S, 'Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 4;', 'Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 0;'],
+  ['Kleber: Vorgabe des Mindestgewinns ist 0', S, 'Number.isFinite(NETTO_MIN_ZAHL) ? NETTO_MIN_ZAHL : 4;', 'Number.isFinite(NETTO_MIN_ZAHL) ? NETTO_MIN_ZAHL : 0;'],
   ['Kleber: die Nahtfarbe-Vorgabe erreicht die Planung nicht', S, 'optionVorgaben: OPTION_VORGABEN', 'optionVorgaben: {}'],
   ['Kleber: die Bestell-ID geht nicht in die external_id', S, 'externalId(o.name, o.id)', 'externalId(o.name)'],
   ['Kleber: Datei wird ohne Begrenzung gezogen (Streaming)', S, 'while (n < 65536) {', 'while (true) {'],
@@ -254,8 +254,8 @@ export const MUTANTEN = [
   // ── P1: Dienst-Standort (Fulfillment-Service)
   ['P1 Dienst: ein Dienst-Standort wird nicht erkannt', B, 'if (ort && ort.isFulfillmentService === true) dienst = dienst || ort;', 'if (false) dienst = dienst || ort;'],
   ['P1 Dienst: das Flag als Text «true» gilt als Dienst', B, 'if (ort && ort.isFulfillmentService === true) dienst', 'if (ort && ort.isFulfillmentService) dienst'],
-  ['P1 Dienst: geschlossene und stornierte Fulfillment-Orders zählen', B, "if (st === 'CLOSED' || st === 'CANCELLED') continue;", ''],
-  ['P1 Dienst: jede Fulfillment-Order zählt für jede Position', B, 'const drin = ((fo.lineItems && fo.lineItems.edges) || []).some(', 'const drin = true || ((fo.lineItems && fo.lineItems.edges) || []).some('],
+  ['P1 Dienst: stornierte Fulfillment-Orders zählen', B, 'if (st === \'CANCELLED\') continue;', ''],
+  ['P1 Dienst: jede Fulfillment-Order zählt für jede Position', B, 'const drinIn = (x) => ((x.lineItems && x.lineItems.edges) || []).some(', 'const drinIn = (x) => true || ((x.lineItems && x.lineItems.edges) || []).some('],
   ['P1 Dienst: ein nicht lesbarer Standort gilt als Händler-Standort', B, "if (offen) return { art: 'unklar', grund: 'der Standort der Fulfillment-Order ist nicht lesbar' };", ''],
   ['P1 Dienst: eine Position ohne Fulfillment-Order gilt als Händler-Standort', B, "if (!gefunden) return { art: 'unklar', grund: 'die Position steht in keiner offenen Fulfillment-Order' };", ''],
   ['P1 Dienst: fehlende Fulfillment-Orders gelten als Händler-Standort', B, "return { art: 'unklar', grund: 'die Bestelldaten enthalten keine Fulfillment-Orders' };", "return { art: 'frei' };"],
@@ -264,7 +264,7 @@ export const MUTANTEN = [
   ['P1 Dienst: ein unklarer Standort bleibt ohne Befund', B, "if (stdo.art === 'unklar') { hart('dienst-standort-unklar',", "if (false) { hart('dienst-standort-unklar',"],
   ['P1 Dienst: die Abfrage fragt nicht nach dem Dienst-Flag', S, 'assignedLocation{ location{ id name isFulfillmentService } }', 'assignedLocation{ location{ id name } }'],
   ['P1 Dienst: die Abfrage fragt nicht nach den Positionen der Fulfillment-Orders', S, 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ lineItem{ id } } } } } } }', 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id } } } } } }'],
-  ['P1 Dienst: die Abfrage fragt nicht nach Fulfillment-Orders', S, '  fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation', '  fulfillmentOrdersX(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation'],
+  ['P1 Dienst: die Abfrage fragt nicht nach Fulfillment-Orders', S, 'fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation', 'fulfillmentOrdersX(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation'],
   ['P1 Paket: die Abfrage fragt nicht nach den Optionen der Variante', S, 'variant{ sku title selectedOptions{ name value } }', 'variant{ sku }'],
   // ── P1: Aufpreis-Platzierungen gegen das bezahlte Paket
   ['P1 Aufpreis: kein Aufpreis wird je geprüft', B, 'if (usd > 0 && !gedeckt(typ)) aus.push(', 'if (false) aus.push('],
@@ -358,8 +358,8 @@ export const MUTANTEN = [
   ['H10 F0 zahlungPruefen: nur PENDING gilt als unbezahlt', B, "if (n.displayFinancialStatus.toUpperCase() !== 'PAID') return", "if (n.displayFinancialStatus.toUpperCase() === 'PENDING') return"],
   ['H10 F0 zahlungPruefen: «paid» in Kleinschreibung gilt nicht', B, "if (n.displayFinancialStatus.toUpperCase() !== 'PAID') return", "if (n.displayFinancialStatus !== 'PAID') return"],
   // Fund 1: frisch lesen vor dem Anlegen und vor dem Bestätigen
-  ['H10 F1 Kleber: vor dem Anlegen wird nicht frisch gelesen', S, "const fr = await frischLesen(tok, o, 'anlegen');", "const fr = { art: 'ok' };"],
-  ['H10 F1 Kleber: vor dem Bestätigen wird nicht frisch gelesen', S, "const fr2 = await frischLesen(tok, o, 'bestaetigen');", "const fr2 = { art: 'ok' };"],
+  ['H10 F1 Kleber: vor dem Anlegen wird nicht frisch gelesen', S, 'const fr = await frischLesen(tok, o, \'anlegen\', soll);', 'const fr = { art: \'ok\' };'],
+  ['H10 F1 Kleber: vor dem Bestätigen wird nicht frisch gelesen', S, 'const fr2 = await frischLesen(tok, o, \'bestaetigen\', soll);', 'const fr2 = { art: \'ok\' };'],
   ['H10 F1 Kleber: eine Zahlungsänderung vor dem Anlegen wird übergangen', S, "if (fr.art === 'zahlung') {", 'if (false) {'],
   ['H10 F1 Kleber: eine unlesbare frische Lesung vor dem Anlegen legt trotzdem an', S, "if (fr.art !== 'ok') { await vorlaeufigerFehler(", 'if (false) { await vorlaeufigerFehler('],
   ['H10 F1 Kleber: ein anderer Lauf (schon bearbeitet) wird nicht beachtet', S, "if (fr.art === 'schon-bearbeitet') {", 'if (false) {'],
@@ -368,11 +368,11 @@ export const MUTANTEN = [
   ['H10 F1 frischLesen: die ID der gelesenen Bestellung wird nicht verglichen', S, "if (!n || typeof n !== 'object' || n.id !== o.id)", "if (!n || typeof n !== 'object')"],
   ['H10 F1 frischLesen: ein fehlendes Feld «tags» gilt als in Ordnung', S, "if (!tags) return { art: 'unlesbar', text: 'Das Feld «tags» fehlt in der Antwort' };", ''],
   ['H10 F1 frischLesen: ein anderer Lauf mit printful-synced/printful-review wird nicht beachtet', S, "if (tags.includes('printful-synced') || tags.includes(REVIEW_TAG)) return {", 'if (false) return {'],
-  ['H10 F1 frischLesen: eine junge Markierung eines anderen Laufs wird nicht beachtet', S, "if (alter !== null && alter < ANLEGEN_SPERRE_MIN) return { art: 'schon-bearbeitet'", "if (false) return { art: 'schon-bearbeitet'"],
+  ['H10 F1 frischLesen: eine junge Markierung eines anderen Laufs wird nicht beachtet', S, 'if (anlegenGesperrt(alter)) return { art: \'schon-bearbeitet\'', 'if (false) return { art: \'schon-bearbeitet\''],
   // Fund 6: Markierung VOR dem Anlegen, Sperre 60 Minuten, Nachfrage nach unquittiertem Anlegen
-  ['H10 F6 Kleber: die Markierung vor dem Anlegen wird nicht gesetzt', S, 'if (!(await tagsSetzen(tok, o, [anlegenTag(Date.now())]))) {', 'if (false) {'],
+  ['H10 F6 Kleber: die Markierung vor dem Anlegen wird nicht gesetzt', S, 'if (!(await tagsSetzen(tok, o, [meinTag]))) {', 'if (false) {'],
   ['H10 F6 Kleber: scheitert die Markierung, wird trotzdem angelegt', S, 'Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }', 'Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); }'],
-  ['H10 F6 Kleber: die Sperre nach einer jungen Markierung fehlt', S, 'if (frueher !== null && frueher < ANLEGEN_SPERRE_MIN) {', 'if (false) {'],
+  ['H10 F6 Kleber: die Sperre nach einer jungen Markierung fehlt', S, 'if (anlegenGesperrt(frueher)) {', 'if (false) {'],
   ['H10 F6 anlegenAlterMin: zählt die älteste statt der jüngsten Markierung', B, '(jung === null || ms > jung)', '(jung === null || ms < jung)'],
   ['H10 F6 anlegenAlterMin: ein Alter aus der Zukunft wird negativ', B, 'Math.max(0, Math.floor((jetztMs - jung) / 60000))', 'Math.floor((jetztMs - jung) / 60000)'],
   ['H10 F6 Sperre dauert nur 5 statt 60 Minuten', B, 'export const ANLEGEN_SPERRE_MIN = 60;', 'export const ANLEGEN_SPERRE_MIN = 5;'],
@@ -387,8 +387,8 @@ export const MUTANTEN = [
   // Fund 3: Herkunft der Druckdatei
   ['H10 F3 Adresse: ein Rückstrich wird akzeptiert', B, "if (w.includes('\\\\')) return 'Adresse enthält einen Rückstrich';", ''],
   ['H10 F3 Adresse: ein Port wird akzeptiert', B, "if (u.port) return 'Adresse enthält einen Port';", ''],
-  ['H10 F3 Adresse: eine fremde Cloudinary-Cloud wird akzeptiert', B, "if (eigeneCloud && u.hostname.toLowerCase() === 'res.cloudinary.com' && !u.pathname.startsWith(", "if (false && u.hostname.toLowerCase() === 'res.cloudinary.com' && !u.pathname.startsWith("],
-  ['H10 F3 Adresse: /image/fetch/ und andere Pfade der eigenen Cloud werden akzeptiert', B, 'startsWith(`/${EIGENE_CLOUDINARY_CLOUD}/image/upload/`)', 'startsWith(`/${EIGENE_CLOUDINARY_CLOUD}/`)'],
+  ['H10 F3 Adresse: eine fremde Cloudinary-Cloud wird akzeptiert', B, 'if (!u.pathname.startsWith(vor)) return \'Cloudinary-Adresse nicht aus der eigenen Cloud unter /image/upload/\';', ''],
+  ['H10 F3 Adresse: /image/fetch/ und andere Pfade der eigenen Cloud werden akzeptiert', B, 'const vor = `/${EIGENE_CLOUDINARY_CLOUD}/image/upload/`;', 'const vor = `/${EIGENE_CLOUDINARY_CLOUD}/`;'],
   ['H10 F3 Adresse: die eigene Cloud heisst anders als im Editor', B, "export const EIGENE_CLOUDINARY_CLOUD = 'dwyi6kkrl';", "export const EIGENE_CLOUDINARY_CLOUD = 'dwyi6kkrl2';"],
   ['H10 F3/F18 Adresse: eine Host-Endung (xres.cloudinary.com) wird akzeptiert', B, "if (!hosts.map((h) => h.toLowerCase()).includes(u.hostname.toLowerCase())) return", "if (!hosts.some((h) => u.hostname.toLowerCase().endsWith(h.toLowerCase()))) return"],
   ['H10 F3 Datei: die Adresse wird nicht normalisiert weitergegeben (v6)', B, "url: adresseNormal(w), quelle: 'v6'", "url: w, quelle: 'v6'"],
@@ -425,7 +425,7 @@ export const MUTANTEN = [
   ['H10 F7 Kleber: ein Konfigurationsfehler beendet den Lauf nicht', S, "console.error(`❌ ${BEST.konfigFehler}.`); process.exit(1);", "console.error(`❌ ${BEST.konfigFehler}.`);"],
   ['H10 F7 Kleber: bestätigt wird nach AUTO_CONFIRM allein, nicht nach dem Plan', S, 'const BESTAETIGEN = BEST.bestaetigen;', 'const BESTAETIGEN = AUTO_CONFIRM;'],
   // Fund 8: fail-open-Lesarten
-  ['H10 F8 dateienStatus: ein Auftrag ohne Datei gilt als in Ordnung', B, ": wartet || echte === 0 ? { art: 'wartet', texte, leer: echte === 0 } :", ": wartet ? { art: 'wartet', texte, leer: false } :"],
+  ['H10 F8 dateienStatus: ein Auftrag ohne Datei gilt als in Ordnung', B, ': wartet || echte === 0 || artikelOhne > 0 ? { art: \'wartet\', texte, leer: echte === 0, teilweise: echte > 0 && artikelOhne > 0 } :', ': wartet ? { art: \'wartet\', texte, leer: false } :'],
   ['H10 F8 entwurfVergleichen: eine andere Artikelzahl fällt nicht auf', B, 'if (items.length !== soll.length) {', 'if (false) {'],
   ['H10 F8 entwurfVergleichen: eine andere Variante fällt nicht auf', B, 'if (it.variant_id !== undefined && it.variant_id !== null && Number(it.variant_id) !== Number(p.variant_id)) texte.push(', 'if (false) texte.push('],
   ['H10 F8 entwurfVergleichen: eine andere Menge fällt nicht auf', B, 'if (it.quantity !== undefined && it.quantity !== null && Number(it.quantity) !== Number(p.quantity)) texte.push(', 'if (false) texte.push('],
@@ -494,13 +494,110 @@ export const MUTANTEN = [
   // ── Fund 22 (am Ende angefügt, damit die Nummern der Mutanten davor unverändert bleiben): ein Editor-Produkt druckt nie das feste Motiv des Besitzers aus dem Metafeld
   ['H10 F22 Plan: ein Editor-Produkt druckt ohne Design der Kundin das Muster aus dem Metafeld', B, 'if (!dateien.length && !editorProdukt(z)) {', 'if (!dateien.length) {'],
   ['H10 F22 editorProdukt: die Fertigware (Tag printful_personalized_product) gilt als Editor-Produkt', B, "((li && li.product && li.product.tags) || []).map((x) => String(x).toLowerCase()).includes('wunschdesign')", "((li && li.product && li.product.tags) || []).map((x) => String(x).toLowerCase()).includes('printful_personalized_product')"],
+
+  // ── ZWEITE RUNDE 10.11.2026 (drei Gegenleser nach der Härtung P1): am Ende angefügt, damit die Nummern der Mutanten davor und die Zuordnung zu den Teilen unverändert bleiben
+  ['R2 L1/1 Standort: ein gehaltener Status (ON_HOLD …) gilt als druckbar', B, 'if (!FO_DRUCKBAR.includes(st)) { gehalten', 'if (false) { gehalten'],
+  ['R2 L1/1 Standort: ON_HOLD steht auf der Liste der druckbaren Status', B, 'Object.freeze([\'OPEN\', \'IN_PROGRESS\'])', 'Object.freeze([\'OPEN\', \'IN_PROGRESS\', \'ON_HOLD\'])'],
+  ['R2 L1/1 Standort: eine geschlossene Dienst-Order neben einer offenen wird übergangen', B, 'if (geschlossenDienst) return { art: \'unklar\'', 'if (false) return { art: \'unklar\''],
+  ['R2 L1/1 Standort: auch eine geschlossene HÄNDLER-Order neben einer offenen macht es unklar', B, 'if (drinIn(fo) && !(ort && ort.isFulfillmentService === false)) geschlossenDienst', 'if (drinIn(fo)) geschlossenDienst'],
+  ['R2 L1/1 Standort: geschlossene Orders zählen gar nicht mehr als Warnzeichen', B, 'if (st === \'CLOSED\') {', 'if (false) {'],
+  ['R2 L1/1 Standort: gehalten gewinnt nicht gegen offen (die erste offene Order genügt)', B, 'if (gehalten) return { art: \'gehalten\', status: gehalten };', ''],
+  ['R2 L1/1 Standort: gehalten am Dienst-Standort wird nicht als Dienst erkannt', B, 'if (ort && ort.isFulfillmentService === true) dienst = dienst || ort;               // an einem Dienst-Standort gilt jeder nicht geschlossene Status', ''],
+  ['R2 L1/1 Plan: eine gehaltene Fulfillment-Order ist kein Befund', B, 'if (stdo.art === \'gehalten\') {', 'if (false) {'],
+  ['R2 L1/1 Plan: die Positionen des Auftrags werden nicht gemerkt (positionIds leer)', B, 'items.push(item); positionIds.push(String(z.id || \'\'));', 'items.push(item);'],
+  ['R2 L1/2 Kleber: das frische Lesen vergleicht den Stand der Bestellung nicht', S, 'const ab = soll ? bestellAbweichung(n, soll) : null;', 'const ab = null;'],
+  ['R2 L1/2 Kleber: der Stand wird ohne die geplanten Positionen gemerkt (kein Fulfillment-Vergleich)', S, 'const soll = bestellStand(o, plan.positionIds);', 'const soll = bestellStand(o, []);'],
+  ['R2 L1/2 frischLesen: das Stopp-Tag printful-review vor dem Bestätigen wird nicht beachtet', S, '} else if (tags.includes(REVIEW_TAG)) return { art: \'geaendert\'', '} else if (false) return { art: \'geaendert\''],
+  ['R2 L1/2 Kleber: eine Änderung zwischen Liste und Anlegen legt trotzdem an', S, 'if (fr.art === \'geaendert\') { zaehler.spaeter++;', 'if (false) { zaehler.spaeter++;'],
+  ['R2 L1/2 Kleber: die Änderung vor dem Bestätigen heisst «zahlung-unlesbar» statt «bestellung-geaendert»', S, 'fr2.art === \'geaendert\' ? \'bestellung-geaendert\'', 'fr2.art === \'geaendert-x\' ? \'bestellung-geaendert\''],
+  ['R2 L1/2 Abfrage frisch: die E-Mail fehlt', S, 'test displayFinancialStatus email\n', 'test displayFinancialStatus\n'],
+  ['R2 L1/2 Abfrage frisch: die Lieferadresse fehlt', S, '  ${ADRESSE_Q}\n  lineItems(first:50){ edges{', '  lineItems(first:50){ edges{'],
+  ['R2 L1/2 Abfrage frisch: die Positionen fehlen', S, '  lineItems(first:50){ edges{ node{ currentQuantity quantity id } } }\n', ''],
+  ['R2 L1/2 Abfrage frisch: die Fulfillment-Orders fehlen', S, '  ${FO_Q}\n} } }`;', '} } }`;'],
+  ['R2 L1/2 Abfrage frisch: die Menge currentQuantity fehlt', S, 'node{ currentQuantity quantity id }', 'node{ quantity id }'],
+  ['R2 L1/2 bestellAbweichung: die Lieferadresse wird nicht verglichen', B, 'if (JSON.stringify(empfaengerAus(n).recipient) !== soll.empfaenger) return ge(', 'if (false) return ge('],
+  ['R2 L1/2 bestellAbweichung: Positionen und Mengen werden nicht verglichen', B, 'if (JSON.stringify(positionenListe(n)) !== soll.positionen) return ge(', 'if (false) return ge('],
+  ['R2 L1/2 bestellAbweichung: der Fulfillment-Order-Status wird nicht verglichen', B, 'if (s.art !== \'frei\') return ge(', 'if (false) return ge('],
+  ['R2 L1/2 bestellAbweichung: ein fehlendes Feld shippingAddress ist kein Mangel', B, 'if (n.shippingAddress === undefined) return un(', 'if (false) return un('],
+  ['R2 L1/2 bestellAbweichung: ein fehlendes Feld email ist kein Mangel', B, 'if (n.email === undefined) return un(', 'if (false) return un('],
+  ['R2 L1/2 bestellAbweichung: fehlende Positionen sind kein Mangel', B, 'if (!n.lineItems || !Array.isArray(n.lineItems.edges)) return un(', 'if (false) return un('],
+  ['R2 L1/2 bestellAbweichung: fehlende Fulfillment-Orders sind kein Mangel', B, 'if (soll.positionIds.length && (!n.fulfillmentOrders', 'if (false && (!n.fulfillmentOrders'],
+  ['R2 L1/2 Stand: die Positionen werden nicht sortiert (die Reihenfolge zählt)', B, '.sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))', ''],
+  ['R2 L1/3 Kleber: der Anspruch wird nicht nachgelesen', S, 'const anspruch = await anspruchPruefen(tok, o, meinTag);', 'const anspruch = { art: \'ok\' };'],
+  ['R2 L1/3 Kleber: ein verlorener Anspruch legt trotzdem an', S, 'if (anspruch.art === \'verloren\') {', 'if (false) {'],
+  ['R2 L1/3 Kleber: ein nicht nachlesbarer Anspruch legt trotzdem an', S, 'if (anspruch.art !== \'ok\') { fehlerAdd(', 'if (false) { fehlerAdd('],
+  ['R2 L1/3 Kleber: die Markierung hat keinen Zufallsteil', S, 'const meinTag = anlegenTag(Date.now(), randomBytes(4).toString(\'hex\'));', 'const meinTag = anlegenTag(Date.now());'],
+  ['R2 L1/3 Abfrage Anspruch: die Tags fehlen', S, '... on Order { id tags } } }`;', '... on Order { id } } }`;'],
+  ['R2 L1/3 anspruchGewonnen: die GRÖSSTE Markierung gewinnt', B, 'const frueher = aktiv.filter((t) => t < meinTag);', 'const frueher = aktiv.filter((t) => t > meinTag);'],
+  ['R2 L1/3 anspruchGewonnen: eine fehlende eigene Markierung ist kein Mangel', B, 'if (!aktiv.includes(meinTag)) return', 'if (false) return'],
+  ['R2 L1/3 anspruchGewonnen: auch uralte Markierungen zählen', B, 'Math.max(0, Math.floor((jetztMs - ms) / 60000)) < ANLEGEN_SPERRE_MIN; });', 'true; });'],
+  ['R2 L1/3 anlegenTag: ohne Sekunden und Millisekunden', B, 'return `${basis}-${zwei(d.getUTCSeconds())}${String(d.getUTCMilliseconds()).padStart(3, \'0\')}-${z}`;', 'return `${basis}-00000-${z}`;'],
+  ['R2 L1/3 anlegenTag: der Zufallsteil wird nicht geprüft', B, 'if (!/^[a-z0-9]{4,12}$/.test(z)) throw', 'if (false) throw'],
+  ['R2 L1/3 Markierung: die neue Form (mit Zufallsteil) wird nicht als Markierung gelesen', B, '(\\d{2})(\\d{2})(?:-\\d{5}-[a-z0-9]{4,12})?$/;', '(\\d{2})(\\d{2})$/;'],
+  ['R2 L1/3 Sperre: genau 60 Minuten alt sperrt noch', B, 'alterMin !== null && alterMin < ANLEGEN_SPERRE_MIN', 'alterMin !== null && alterMin <= ANLEGEN_SPERRE_MIN'],
+  ['R2 L1/4 Kleber: ein negativer Mindestgewinn ist kein Konfigurationsfehler', S, 'const NETTO_MIN_FEHLER = NETTO_MIN_ROH !== \'\' && Number.isFinite(NETTO_MIN_ZAHL) && NETTO_MIN_ZAHL < 0;', 'const NETTO_MIN_FEHLER = false;'],
+  ['R2 L1/4 Kleber: der negative Mindestgewinn bricht nur scharf ab', S, 'if (NETTO_MIN_FEHLER) {', 'if (NETTO_MIN_FEHLER && !DRY) {'],
+  ['R2 L1/4 Kleber: der Mindestgewinn 0 ist ein Fehler', S, 'Number.isFinite(NETTO_MIN_ZAHL) && NETTO_MIN_ZAHL < 0;', 'Number.isFinite(NETTO_MIN_ZAHL) && NETTO_MIN_ZAHL <= 0;'],
+  ['R2 L1/5 Plan: eine unlesbare Menge ist kein Befund (sie wird als 1 gedruckt)', B, 'if (menge < 0) { hart(\'menge-unlesbar\'', 'if (false) { hart(\'menge-unlesbar\''],
+  ['R2 L1/5 Menge: quantity 0 ohne currentQuantity gilt als lesbar', B, 'return Number.isInteger(z && z.quantity) && z.quantity > 0 ? z.quantity : -1;', 'return Number.isInteger(z && z.quantity) && z.quantity >= 0 ? z.quantity : -1;'],
+  ['R2 L1/5 vorhandenVergleichen: eine unlesbare Menge wird nicht gemeldet', B, 'if (podZeilen.some((z) => mengeVon(z) < 0)) texte.push(', 'if (false) texte.push('],
+  ['R2 L1/6 Adresse: ein fremder Pfad im Shopify-CDN wird akzeptiert', B, '&& !u.pathname.startsWith(EIGENER_SHOPIFY_CDN_PFAD)) return', '&& false) return'],
+  ['R2 L1/6 Adresse: der eigene Pfad im Shopify-CDN ist zu weit gefasst', B, 'export const EIGENER_SHOPIFY_CDN_PFAD = \'/s/files/1/0943/6856/3585/\';', 'export const EIGENER_SHOPIFY_CDN_PFAD = \'/s/files/1/\';'],
+  ['R2 L1/6 Adresse: Cloudinary-Transformationen werden nicht geprüft', B, 'const g = cloudinaryPfadProblem(u.pathname.slice(vor.length));', 'const g = null;'],
+  ['R2 L1/6 Adresse: jede Transformation steht auf der Liste', B, 'const unerlaubt = s.split(\',\').find((x) => !CLD_TRANSFORM_ERLAUBT.test(x));', 'const unerlaubt = undefined;'],
+  ['R2 L1/6 Adresse: die Kürzel der Überlagerungen (l_, u_, e_ …) gelten als Ordnername', B, 'const CLD_TRANSFORM_KUERZEL = /^(?:a|ac|af|ar|b|bl|bo|br|c|co|cs|d|dl|dn|dpr|du|e|eo|f|fl|fn|fps|g|h|if|ki|l|o|p|pg|q|r|so|sp|t|u|vc|w|x|y|z|zo)_/;', 'const CLD_TRANSFORM_KUERZEL = /^(?!)/;'],
+  ['R2 L1/6 Adresse: der Kürzel l_ fehlt in der Liste', B, '|if|ki|l|o|p|pg|', '|if|ki|o|p|pg|'],
+  ['R2 L1/6 Adresse: der Kürzel u_ fehlt in der Liste', B, '|t|u|vc|', '|t|vc|'],
+  ['R2 L1/6 Adresse: der Kürzel e_ fehlt in der Liste', B, '|dn|dpr|du|e|eo|', '|dn|dpr|du|eo|'],
+  ['R2 L1/6 Adresse: der Kürzel t_ fehlt in der Liste', B, '|so|sp|t|u|', '|so|sp|u|'],
+  ['R2 L1/6 Adresse: der Dateiname wird nicht geprüft', B, 'if (!datei || !CLD_NAME.test(datei)) return', 'if (false) return'],
+  ['R2 L1/6 Adresse: Ordnernamen werden nicht geprüft', B, 'if (!CLD_NAME.test(s)) return \'Cloudinary-Adresse enthält ein unzulässiges Pfadstück\';', ''],
+  ['R2 L1/8 Kleber: die KI-Kontrolle läuft auch im Trockenlauf (Kundenbild an Google)', S, 'if (DRY) return { art: \'trocken\'', 'if (false) return { art: \'trocken\''],
+  ['R2 L1/8 Plan: das Ergebnis «trocken» der KI zählt als Befund', B, 'if (k && k.art !== \'ok\' && k.art !== \'trocken\') weich(', 'if (k && k.art !== \'ok\') weich('],
+  ['R2 L2/2 dateienStatus: ein Artikel ohne Datei neben einem mit Datei gilt als ok', B, 'wartet || echte === 0 || artikelOhne > 0 ? {', 'wartet || echte === 0 ? {'],
+  ['R2 L2/2 dateienStatus: ein Artikel ohne Datei wird nicht gezählt', B, 'if (!proArtikel) artikelOhne++;', ''],
+  ['R2 L2/2 entwurfVergleichen: ein Artikel ohne Datei neben einem mit Datei gibt den Entwurf frei', B, 'if (ohneDatei.length && ohneDatei.length < soll.filter((p) => (p.files || []).length).length) texte.push(', 'if (false) texte.push('],
+  ['R2 L2/2 entwurfVergleichen: ein Artikel ohne Datei wird nicht gemerkt (altes «continue»)', B, 'if (!echte.length) { if (gesendet.length) ohneDatei.push(i + 1); continue; }', 'if (!echte.length) continue;'],
+  ['R2 L2/2 Kleber: es wird nur die erste Position gesendet', S, 'items: plan.items }, 60000);', 'items: plan.items.slice(0, 1) }, 60000);'],
+  ['R2 L2/5 Kleber: ein nicht lesbarer Status nach dem Bestätigen gilt als bestätigt', S, 'if (st && st.art === \'bestaetigt\') {', 'if (!st || st.art === \'bestaetigt\') {'],
+  ['R2 L2/5 Kleber: die Vorgabe MAX ist 200 statt 20', S, 'parseInt(process.env.MAX || \'20\', 10)', 'parseInt(process.env.MAX || \'200\', 10)'],
+  ['R2 L2/5 Kleber: eine unbrauchbare Kostenobergrenze bricht nur scharf ab', S, 'if (MAX_KOSTEN_FEHLER) {', 'if (MAX_KOSTEN_FEHLER && !DRY) {'],
+  ['R2 L2/5 Kleber: eine ungültige Platzierungs-ID des bezahlten Pakets bricht nur scharf ab', S, 'if (PAKET_FEHLER.length) {', 'if (PAKET_FEHLER.length && !DRY) {'],
+  ['R2 L2/1 Workflow: kein concurrency-Schutz', W, 'concurrency:\n  group: printful-sync\n  cancel-in-progress: false\n', ''],
+  ['R2 L2/1 Workflow: cancel-in-progress true', W, 'cancel-in-progress: false', 'cancel-in-progress: true'],
+  ['R2 L2/1 Workflow: die Gruppe ist je Lauf eindeutig', W, 'group: printful-sync\n', 'group: printful-sync-${{ github.run_id }}\n'],
+  ['R2 L2/1 Workflow: das Zeitlimit des Jobs fehlt', W, '    timeout-minutes: 15\n', ''],
+  ['R2 L2/3 Workflow: der Zeitplan läuft stündlich', W, '- cron: \'37 13 * * *\'', '- cron: \'37 * * * *\''],
+  ['R2 L2/3 Workflow: der Zeitplan feuert nie', W, '- cron: \'37 13 * * *\'', '- cron: \'37 13 31 2 *\''],
+  ['R2 L2/3 Workflow: die Freigabedatei fehlt im sparse-checkout', W, '            dropship/PRINTFUL-SYNC-FREI.txt\n', ''],
+  ['R2 L2/3 Workflow: der Handstart-Haken heisst anders', W, 'DRY_EINGABE: ${{ github.event.inputs.dry_run }}', 'DRY_EINGABE: ${{ github.event.inputs.dry_runx }}'],
+  ['R2 L2/3 Workflow: PRINTFUL_MAX wird nicht durchgereicht', W, '          MAX: ${{ secrets.PRINTFUL_MAX || vars.PRINTFUL_MAX }}\n', ''],
+  ['R2 L2/3 Workflow: PRINTFUL_API_KEY wird nicht durchgereicht', W, '          PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}\n', ''],
+  ['R2 L2/3 Workflow: GEMINI_API_KEY wird nicht durchgereicht', W, '          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}\n', ''],
+  ['R2 L2/3 Workflow: die Rechte sind write', W, 'permissions:\n  contents: read\n', 'permissions:\n  contents: write\n'],
+  ['R2 L2/4 Preis-Workflow: apply hat den Standard true', RW, '        default: false\n      senken:', '        default: true\n      senken:'],
+  ['R2 L2/4 Preis-Workflow: ein Zeitplan-Auslöser wird ergänzt', RW, 'on:\n  workflow_dispatch:', 'on:\n  schedule:\n    - cron: \'0 3 * * *\'\n  workflow_dispatch:'],
+  ['R2 L2/4 Preis-Workflow: die Rechte sind write', RW, 'permissions:\n  contents: read\n', 'permissions:\n  contents: write\n'],
+  ['R2 L2/4 Preis-Workflow: der Standard-Tag der Eingabe ist die Fertigware', RW, 'default: \'wunschdesign\'', 'default: \'printful_personalized_product\''],
+  ['R2 L2/4 Preis-Workflow: bei leerer Eingabe gilt die Fertigware', RW, 'github.event.inputs.tag || \'wunschdesign\'', 'github.event.inputs.tag || \'printful_personalized_product\''],
+  ['R2 L2/4 Preis-Workflow: die Gruppe bricht laufende Läufe ab', RW, 'cancel-in-progress: false', 'cancel-in-progress: true'],
+  ['R2 L2/6 CI: der Sync-Test läuft mit «|| true» (nie rot)', CIW, '          node automation/printful_sync_test.mjs\n', '          node automation/printful_sync_test.mjs || true\n'],
+  ['R2 L2/6 CI: der Bestellweg-Test läuft mit «|| true»', CIW, '          node automation/lib/printful_bestellweg_test.mjs\n', '          node automation/lib/printful_bestellweg_test.mjs || true\n'],
+  ['R2 L2/6 CI: die Mutationsprobe des Bestellwegs ist continue-on-error', CIW, '      - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)\n', '      - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)\n        continue-on-error: true\n'],
+  ['R2 L2/6 CI: der Test der Preisanpassung fehlt', CIW, '          node automation/printful_reprice_test.mjs\n', ''],
+  ['R2 L1/7 Reprice: unbrauchbare Printful-Kosten gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=c;'],
+  ['R2 L1/7 Reprice: Kosten 0 gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=Number.isFinite(c)&&c>=0?c:null;'],
+  ['R2 L2/9 Reprice: die Shopify-API ist 2025-01', R, 'const API=\'2026-01\';', 'const API=\'2025-01\';'],
 ];
 
 function zaehle(text, teil) { let n = 0, i = -1; while ((i = text.indexOf(teil, i + 1)) >= 0) n++; return n; }
-/** Erste rote Testdatei samt Art des Scheiterns: 'pruefung' = eine benannte Prüfung (✗) ist rot geworden, 'ausnahme' = der Test brach mit einer Ausnahme ab (z. B. TypeError), ohne dass eine Prüfung rot wurde. null = alle grün. */
-function testen(wurzel) {
+/** Erste rote Testdatei samt Art des Scheiterns: 'pruefung' = eine benannte Prüfung (✗) ist rot geworden, 'ausnahme' = der Test brach mit einer Ausnahme ab (z. B. TypeError), ohne dass eine Prüfung rot wurde,
+ *  'ungeklaert' = Zeitüberschreitung oder Startfehler (zählt NICHT als erkannt). null = alle grün. */
+export function testen(wurzel, zeitlimitMs = 180000) {
   for (const t of TESTS) {
-    const r = spawnSync(process.execPath, [join(wurzel, t)], { cwd: wurzel, encoding: 'utf8', timeout: 180000, env: { PATH: process.env.PATH, HOME: process.env.HOME } });
+    const r = spawnSync(process.execPath, [join(wurzel, t)], { cwd: wurzel, encoding: 'utf8', timeout: zeitlimitMs, env: { PATH: process.env.PATH, HOME: process.env.HOME } });
+    // Zeitüberschreitung, Abbruch durch ein Signal oder ein Startfehler heissen NICHT «erkannt»: der Test hat dann nichts festgestellt (10.11.2026, Gegenleser Linse 2: ein Mutant, der den Kindprozess hängen liess, zählte als erkannt).
+    if (r.error || r.signal || r.status === null) return { datei: t.replace(/^automation\//, ''), art: 'ungeklaert', grund: r.error ? String(r.error.code || r.error.message).slice(0, 60) : `Signal ${r.signal}` };
     if (r.status !== 0) return { datei: t.replace(/^automation\//, ''), art: /^✗ /m.test(String(r.stdout || '')) ? 'pruefung' : 'ausnahme' };
   }
   return null;
@@ -548,7 +645,7 @@ export function probe({ log = console.log, nur = null, nurPruefen = false, shard
     const rot0 = testen(wurzel);
     if (rot0) { log(`✗ Kontrolllauf ohne Mutation ist schon rot: ${rot0.datei}`); return { exit: 2, ueberlebt: [], erkannt: 0, ungueltig: [], ausnahme: [] }; }
     log('Kontrolllauf ohne Mutation: alle Testdateien grün.\n');
-    let erkannt = 0, gesamt = 0; const ueberlebt = [], ungueltig = [], ausnahme = [];
+    let erkannt = 0, gesamt = 0; const ueberlebt = [], ungueltig = [], ausnahme = [], ungeklaert = [];
     for (const [nr, [name, datei, von, zu]] of MUTANTEN.entries()) {
       if (nur && !name.toLowerCase().includes(nur.toLowerCase())) continue;
       if (!imShard(nr, shard)) continue;
@@ -558,11 +655,12 @@ export function probe({ log = console.log, nur = null, nurPruefen = false, shard
       let rot = null, ok = true;
       try { ok = gueltig(pfad); if (ok) rot = testen(wurzel); } finally { writeFileSync(pfad, original); }
       if (!ok) { ungueltig.push(name); log(`⚠ UNGÜLTIG (Syntaxfehler im Mutanten, sagt nichts über die Tests) ${name}`); continue; }
+      if (rot && rot.art === 'ungeklaert') { ungeklaert.push(name); log(`? UNGEKLÄRT (${rot.grund}: der Test hat nichts festgestellt) ${name}`); continue; }
       if (rot) { erkannt++; if (rot.art === 'ausnahme') ausnahme.push(name); log(`✓ erkannt  ${name.padEnd(86)} ← ${rot.datei}${rot.art === 'ausnahme' ? ' (durch eine Ausnahme im Test, keine benannte Prüfung)' : ''}`); }
       else { ueberlebt.push(name); log(`✗ ÜBERLEBT ${name}`); }
     }
-    log(`\n${erkannt} von ${gesamt - ungueltig.length} gültigen Mutanten erkannt (davon ${erkannt - ausnahme.length} durch eine benannte Prüfung, ${ausnahme.length} durch eine Ausnahme im Test); ${ueberlebt.length} überlebt; ${ungueltig.length} ungültig.${ueberlebt.length ? ' ÜBERLEBT: ' + ueberlebt.join('; ') : ''}${ungueltig.length ? ' UNGÜLTIG: ' + ungueltig.join('; ') : ''}`);
-    return { exit: ungueltig.length ? 2 : ueberlebt.length ? 1 : 0, ueberlebt, erkannt, ungueltig, ausnahme };
+    log(`\n${erkannt} von ${gesamt - ungueltig.length} gültigen Mutanten erkannt (davon ${erkannt - ausnahme.length} durch eine benannte Prüfung, ${ausnahme.length} durch eine Ausnahme im Test); ${ueberlebt.length} überlebt; ${ungeklaert.length} ungeklärt (Zeitüberschreitung); ${ungueltig.length} ungültig.${ueberlebt.length ? ' ÜBERLEBT: ' + ueberlebt.join('; ') : ''}${ungeklaert.length ? ' UNGEKLÄRT: ' + ungeklaert.join('; ') : ''}${ungueltig.length ? ' UNGÜLTIG: ' + ungueltig.join('; ') : ''}`);
+    return { exit: ungueltig.length ? 2 : (ueberlebt.length || ungeklaert.length) ? 1 : 0, ueberlebt, erkannt, ungueltig, ausnahme, ungeklaert };
   } finally { rmSync(wurzel, { recursive: true, force: true }); }
 }
 

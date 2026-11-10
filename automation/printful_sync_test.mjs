@@ -32,9 +32,9 @@ if (process.argv[2] === '--szenario') {
   if (kiArt === 'ohne-schluessel') delete process.env.GEMINI_API_KEY;
   for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer); `env` setzt danach
   Object.assign(process.env, sz.env || {});
-  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [] };
+  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '' };
   let fertig; const ende = new Promise((r) => { fertig = r; });
-  const st = { bestaetigt: false, ext: null, nr: 0 };
+  const st = { bestaetigt: false, ext: null, nr: 0, tagsJeBestellung: {} };   // tagsJeBestellung: was der Sync per tagsAdd gesetzt hat (das zweite Lesen nach dem Setzen der Markierung zeigt es)
   const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
     json: async () => { if (x.roh !== undefined) throw new Error('kein JSON'); return body; }, arrayBuffer: async () => (x.bytes ? x.bytes.buffer.slice(x.bytes.byteOffset, x.bytes.byteOffset + x.bytes.byteLength) : new ArrayBuffer(0)) });
   const png = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
@@ -94,6 +94,18 @@ if (process.argv[2] === '--szenario') {
         const weiter = s.weiter !== undefined ? s.weiter : i < seiten.length - 1;
         return mk(200, projiziere({ data: { orders: { pageInfo: { hasNextPage: !!weiter, endCursor: 'c' + (i + 1) }, edges: s.orders.map((node) => ({ node })) } } }, { data: parseAuswahl(q) }));
       }
+      if (q.includes('node(id') && !q.includes('displayFinancialStatus')) {   // Anspruch nachlesen: nur die Tags (Markierung vor dem Anlegen; wer hat zuerst markiert?)
+        prot.anspruchQuery = q; const nr = prot.anspruch.length; prot.anspruch.push(b.variables.id);
+        if (sz.anspruchFehler === 'http') return mk(500, {});
+        if (sz.anspruchFehler === 'null') return mk(200, { data: { node: null } });
+        const basis = alleBestellungen().find((x) => x.id === b.variables.id);
+        if (!basis) return mk(200, { data: { node: null } });
+        const eigene = st.tagsJeBestellung[b.variables.id] || [];
+        // Rivalen: `frueher` = ein anderer Lauf hat 5 s VOR uns markiert (kleinere Zeichenkette), `spaeter` = 5 s danach, `alt` = vor 70 Minuten (nicht mehr aktiv)
+        const rivalen = { frueher: [anlegenTag(Date.now() - 5000, 'aaaaaaaa')], spaeter: [anlegenTag(Date.now() + 5000, 'ffffffff')], alt: [anlegenTag(Date.now() - 70 * 60000, 'aaaaaaaa')], beide: [anlegenTag(Date.now() + 5000, 'ffffffff'), anlegenTag(Date.now() - 5000, 'aaaaaaaa')] }[sz.rivale] || [];
+        const tags = sz.anspruchOhneEigene ? [...(basis.tags || []), ...rivalen] : [...(basis.tags || []), ...eigene, ...rivalen];
+        return mk(200, projiziere({ data: { node: { id: basis.id, tags, ...folge(sz.anspruchFolge, nr) } } }, { data: parseAuswahl(q) }));
+      }
       if (q.includes('node(id')) {                       // frisches Lesen einer Bestellung (vor dem Anlegen, vor dem Bestätigen)
         prot.frischQuery = q; const nr = prot.frisch.length; prot.frisch.push(b.variables.id);
         if (sz.frischFehler && nr >= (sz.frischFehlerAb || 0)) {                       // `frischFehlerAb`: ab der n-ten frischen Lesung (0 = ab der ersten)
@@ -103,6 +115,7 @@ if (process.argv[2] === '--szenario') {
         const basis = alleBestellungen().find((x) => x.id === b.variables.id);
         if (!basis) return mk(200, { data: { node: null } });
         const knoten = { ...basis, ...folge(sz.frischFolge, nr) };
+        for (const k of Object.keys(knoten)) if (knoten[k] === '__WEG__') delete knoten[k];   // «__WEG__» in frischFolge: das Feld fehlt in der Antwort ganz (JSON kennt kein undefined)
         return mk(200, projiziere({ data: { node: knoten } }, { data: parseAuswahl(q) }));
       }
       if (q.includes('currentAppInstallation')) {         // Zugriffsrechte des Tokens
@@ -121,6 +134,7 @@ if (process.argv[2] === '--szenario') {
           if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
         }
         prot.tags.push({ id: b.variables.id, tags: b.variables.tags }); prot.folge.push('tags:' + b.variables.tags.join('+'));
+        st.tagsJeBestellung[b.variables.id] = [...(st.tagsJeBestellung[b.variables.id] || []), ...b.variables.tags];
         return mk(200, { data: { tagsAdd: { userErrors: [] } } });
       }
       if (q.includes('metafieldsSet')) { prot.shopOps.push('metafieldsSet'); prot.mf.push(b.variables.mf[0]); return mk(200, { data: { metafieldsSet: { userErrors: sz.mfFehler ? [{ message: 'x' }] : [] } } }); }
@@ -197,6 +211,7 @@ if (process.argv[2] === '--szenario') {
       }
       if ((r = /^\/orders\/(\d+)$/.exec(p)) && m === 'GET') {
         if (sz.lesenStatus) return mk(sz.lesenStatus, {});
+        if (st.bestaetigt && sz.lesenNachStatus) return mk(sz.lesenNachStatus, {});   // nur die Lesungen NACH dem Bestätigen scheitern
         const idx = st.bestaetigt ? prot.leseNach : prot.leseVor;
         const o2 = st.bestaetigt ? nachOrder(idx) : draftOrder(idx);
         if (st.bestaetigt) prot.leseNach++; else prot.leseVor++;
@@ -278,7 +293,7 @@ for (const [name, sz, soll] of [
   ist('der Entwurf wird OHNE confirm angelegt (POST /orders), bestätigt wird in einem eigenen Schritt', [p.p, e.prot.confirms], ['/orders', ['/orders/42/confirm']]);
   ist('Reihenfolge: zuerst nach bestehendem Auftrag fragen, dann anlegen, markieren, nachlesen, bestätigen, Status nachlesen', e.prot.pf.filter((x) => !/products|mockup/.test(x)), ['GET /orders/@LXT1', 'POST /orders', 'GET /orders/42', 'POST /orders/42/confirm', 'GET /orders/42']);
   ist('Die Markierung «printful-anlegen-<Zeit>» wird VOR dem POST gesetzt (erste Tag-Mutation), danach Tag printful-synced (vor dem Bestätigen), Metafeld printful.order_id = 42',
-    [e.prot.tags[0].tags.map((t) => t.replace(/\d{8}t\d{4}$/, '<zeit>')), e.prot.tags[1].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-anlegen-<zeit>'], ['printful-synced'], [['printful', 'order_id', '42']]]);
+    [e.prot.tags[0].tags.map((t) => t.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}$/, '<zeit>')), e.prot.tags[1].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-anlegen-<zeit>'], ['printful-synced'], [['printful', 'order_id', '42']]]);
   ist('Empfänger und Artikel gehen mit: Name, Ort, Land, Menge; Artikel-external_id = Nummer der Bestellposition', [p.body.recipient.name, p.body.recipient.city, p.body.recipient.country_code, p.body.items[0].quantity, p.body.items[0].external_id], ['T', 'Basel', 'CH', 1, '9001']);
 }
 { // T-Shirt vorne + hinten (v5): beide Seiten, URLs bleiben ihrer Seite zugeordnet, nur EINE Abfrage (Cache)
@@ -674,8 +689,10 @@ for (const [name, sz, soll] of [
   ist('Technischer Fehler mit Printful-Text: Log öffentlich ohne den Text, Telegram-Fehlermeldung mit', [[...p503.prot.log, ...p503.prot.warn, ...p503.prot.err].some((t) => t.includes(geheim)), p503.prot.tg.some((t) => t.includes(geheim))], [false, true]);
   const dry = lauf(sz1([zeile({ sku: 'kaputt', variant: { sku: 'k' } })], { telegram: true, env: { DRY_RUN: '1' } }));
   ist('Trockenlauf mit hartem Befund: «[DRY] Telegram würde senden» nennt keinen Befundtext (der Zeitplan ohne Freigabedatei läuft öffentlich), die Art steht in der Warnung', [dry.prot.log.some((l) => /^\[DRY\] Telegram würde senden/.test(l)), [...dry.prot.log, ...dry.prot.warn].some((l) => /SKU ohne Printful-Variante/.test(l)), dry.prot.warn.some((l) => /ohne-variante/.test(l))], [true, false, true]);
-  const detail = lauf(sz1([zeile()], { ki: 'fail', telegram: true, env: { PRINTFUL_LOG_DETAIL: '1', DRY_RUN: '1' } }));
-  ist('PRINTFUL_LOG_DETAIL=1 (eigener Rechner): die Befundtexte stehen auch im Log', detail.prot.log.some((l) => /FAIL/.test(l)), true);
+  const detail = lauf(sz1([zeile()], { ki: 'aus', datei: { px: [200, 200] }, telegram: true, env: { PRINTFUL_LOG_DETAIL: '1', DRY_RUN: '1' } }));
+  ist('PRINTFUL_LOG_DETAIL=1 (eigener Rechner): die Befundtexte stehen auch im Log (hier: Druckdatei zu klein)', detail.prot.log.some((l) => /zu klein/.test(l)), true);
+  const ohneDetail = lauf(sz1([zeile()], { ki: 'aus', datei: { px: [200, 200] }, telegram: true, env: { DRY_RUN: '1' } }));
+  ist('…ohne PRINTFUL_LOG_DETAIL steht der Befundtext NICHT im öffentlichen Log, nur die Art', [ohneDetail.prot.log.some((l) => /zu klein/.test(l)), ohneDetail.prot.log.some((l) => /aufloesung/.test(l))], [false, true]);
 }
 // Fund 11 (GL2) / Mutant «state_code»: das Bundesland geht mit
 {
@@ -1030,8 +1047,10 @@ for (const [name, sz, soll] of [
     }
     const normal = lauf(bestellt([z1]));
     ist('Fund 4/21 Gegenprobe: eine sichtbare, offene Order am Händler-Standort mit allen Seitenköpfen auf false → Auftrag, bestätigt', [normal.prot.posts.length, bestaetigt(normal)], [1, true]);
-    const geschlossenPlusOffen = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...fos([z1], FO_DIENST).edges[0].node, status: 'CLOSED' } }, FO_OK.edges[0]] } } }));
-    ist('Fund 4/21 Eine GESCHLOSSENE Dienst-Order und eine offene Händler-Order für dieselbe Position: die geschlossene zählt nicht, Auftrag (hier braucht die Abfrage das Feld «status» der Order)', [geschlossenPlusOffen.prot.posts.length, bestaetigt(geschlossenPlusOffen)], [1, true]);
+    const geschlossenPlusOffen = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...fos([z1], FO_DIENST).edges[0].node, status: 'CLOSED' } }, FO_OK.edges[0]] } }, telegram: true }));
+    ist('Fund 4/21 Eine GESCHLOSSENE Dienst-Order und eine offene Händler-Order für dieselbe Position: HARTER Befund «dienst-standort-unklar» (hat der Dienst schon gedruckt?), KEIN Auftrag (Gegenleser Linse 1, 10.11.2026; früher: Auftrag)', [...gesperrt(geschlossenPlusOffen), tags(geschlossenPlusOffen).includes('printful-review-dienst-standort-unklar'), /GESCHLOSSENEN/.test(geschlossenPlusOffen.prot.tg[0] || '')], [0, 0, true, true]);
+    const geschlossenHaendler = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...FO_OK.edges[0].node, id: 'f-alt', status: 'CLOSED' } }, { node: { ...FO_OK.edges[0].node, id: 'f-neu' } }] } } }));
+    ist('Fund 4/21 Gegenprobe: eine GESCHLOSSENE Händler-Order neben einer offenen derselben Position (z. B. Teillieferung) bleibt «frei»: Auftrag, bestätigt', [geschlossenHaendler.prot.posts.length, bestaetigt(geschlossenHaendler)], [1, true]);
     const dienstSichtbar = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [fos([z1], FO_DIENST).edges[0], { node: { id: 'f2', status: 'OPEN', assignedLocation: { location: { id: 'l', name: 'x' } }, lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { lineItem: { id: z1.id } } }] } } }] } }, telegram: true }));
     ist('Fund 4/21 Dienst-Order sichtbar UND eine zweite Order mit unlesbarem Standort für dieselbe Position: der Befund heisst «dienst-standort» (nicht nur «unklar»)', [tags(dienstSichtbar).includes('printful-review-dienst-standort'), tags(dienstSichtbar).includes('printful-review-dienst-standort-unklar')], [true, false]);
 
@@ -1064,7 +1083,7 @@ for (const [name, sz, soll] of [
   // ── Fund 6: Markierung VOR dem Anlegen; ein Lauf kurz darauf legt nichts neu an
   {
     const e = lauf(bestellt());
-    ist('Fund 6 Die Markierung «printful-anlegen-<Zeit>» steht VOR dem POST (Reihenfolge der Aufrufe am Shop und bei Printful) und trägt die Uhrzeit des Laufs (höchstens zwei Minuten alt)', [e.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}/, '<zeit>')), markenTags(e).length, Math.abs(Date.parse(markenTags(e)[0].replace(/^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})$/, '$1-$2-$3T$4:$5:00Z')) - Date.now()) < 120000], [['tags:printful-anlegen-<zeit>', 'POST'], 1, true]);
+    ist('Fund 6 Die Markierung «printful-anlegen-<Zeit>» steht VOR dem POST (Reihenfolge der Aufrufe am Shop und bei Printful) und trägt die Uhrzeit des Laufs (höchstens zwei Minuten alt)', [e.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}/, '<zeit>')), markenTags(e).length, Math.abs(Date.parse(markenTags(e)[0].replace(/^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})-\d{5}-[a-z0-9]{8}$/, '$1-$2-$3T$4:$5:00Z')) - Date.now()) < 120000], [['tags:printful-anlegen-<zeit>', 'POST'], 1, true]);
     const jung = lauf(bestellt([zeile()], { order: { tags: [markeVor(10)] }, lookup: [{ status: 404 }], telegram: true }));
     ist('Fund 6 Ein früherer Lauf hat vor 10 Minuten angefangen und Printful zeigt den Auftrag (noch) nicht: NICHTS neu angelegt, kein Tag, keine Meldung, kein Fehler, «wartet» in der Zusammenfassung', [...gesperrt(jung), jung.prot.tags.length, tgAnzahl(jung), jung.prot.exitCode, jung.prot.log.some((l) => /vor 10 Minuten angefangen/.test(l)), jung.prot.frisch.length], [0, 0, 0, 0, 0, true, 0]);
     const grenze59 = lauf(bestellt([zeile()], { order: { tags: [markeVor(59)] } }));
@@ -1177,13 +1196,171 @@ for (const [name, sz, soll] of [
   const ohneTags = lauf(sz1([zeile()], { frischFolge: [{ tags: null }] }));
   ist('Fund 1: die frische Lesung trägt kein Feld «tags» → «unlesbar»: nichts angelegt, Exit 1, der Versuchszähler steht (kein „unerwarteter Fehler“ durch eine Ausnahme)', [ohneTags.prot.posts.length, ohneTags.prot.exitCode, tags(ohneTags), ohneTags.prot.err.some((x) => /unerwarteter Fehler/.test(x))], [0, 1, ['printful-versuch-1'], false]);
   const ohneTagsSpaet = lauf(sz1([zeile()], { frischFolge: [{}, { tags: null }] }));
-  ist('Fund 1: …beim zweiten Lesen (vor dem Bestätigen) ohne «tags» geht es trotzdem weiter (das Feld wird dort nicht gebraucht), bestätigt', bestaetigt(ohneTagsSpaet), true);
+  ist('Fund 1: …beim zweiten Lesen (vor dem Bestätigen) ohne «tags» wird NICHT bestätigt (das Stopp-Tag printful-review lässt sich dann nicht prüfen; früher: bestätigt), Entwurf bleibt, Befund «zahlung-unlesbar»', [bestaetigt(ohneTagsSpaet), tags(ohneTagsSpaet).includes('printful-review-zahlung-unlesbar'), ohneTagsSpaet.prot.posts.length], [false, true, 1]);
   const leseNullTest = lauf(sz1([zeile()], { frischFolge: [{ test: null }] }));
   ist('Fund 1: fehlt in der frischen Lesung das Feld «test», ist das unlesbar: nichts angelegt, Versuchszähler statt Ausnahme', [leseNullTest.prot.posts.length, leseNullTest.prot.exitCode, tags(leseNullTest), leseNullTest.prot.err.some((x) => /unerwarteter Fehler/.test(x))], [0, 1, ['printful-versuch-1'], false]);
 
   // Fund 21: die Rechte-Abfrage im Trockenlauf bringt Exit 1, aber der Lauf liest weiter und legt nichts an
   const trockenRecht = lauf(sz1([zeile()], { scopes: ['read_orders'], env: { DRY_RUN: '1' } }));
   ist('Fund 21: im Trockenlauf mit fehlendem Recht wird weiter gelesen (Zusammenfassung), aber nichts angelegt', [trockenRecht.prot.shop.length >= 1, trockenRecht.prot.posts.length, trockenRecht.prot.log.some((l) => /\[DRY\] #T1/.test(l))], [true, 0, true]);
+}
+
+
+// ═════════════════════════════════════════════════════════════ ZWEITE RUNDE 10.11.2026 (drei Gegenleser nach der Härtung P1): Fulfillment-Status, Stand beim Bestätigen, Anspruch, Mengen, Quellen, Konfiguration
+{
+  const bestellt = (zeilen = [zeile()], extra = {}) => sz1(zeilen, extra);
+  const gesperrt = (e) => [e.prot.posts.length, e.prot.confirms.length];
+  const z1 = zeile();
+  const foMit = (status, ort) => { const f = fos([z1], ort); return { ...f, edges: [{ node: { ...f.edges[0].node, status } }] }; };
+
+  // ── Linse 1, Fund 1: Fulfillment-Order-Status ist eine WHITELIST (nur OPEN und IN_PROGRESS sind druckbar)
+  for (const st of ['ON_HOLD', 'SCHEDULED', 'INCOMPLETE', '', 'WEIRD']) {
+    const e = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit(st) }, telegram: true }));
+    ist(`R2 L1/1 Fulfillment-Order «${st || '(leer)'}»: HARTER Befund «fulfillment-gehalten», KEIN Auftrag, keine Netzabfrage für die Position, eine 🔴-Meldung (früher: angelegt und bestätigt)`, [...gesperrt(e), tags(e).includes('printful-review-fulfillment-gehalten'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), e.prot.variantGets.length, e.prot.exitCode], [0, 0, true, 1, true, 0, 0]);
+  }
+  for (const st of ['OPEN', 'IN_PROGRESS']) { const e = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit(st) } })); ist(`R2 L1/1 Gegenprobe: Fulfillment-Order ${st} ist druckbar: Auftrag, bestätigt`, [e.prot.posts.length, bestaetigt(e)], [1, true]); }
+  const gehaltenDienst = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit('ON_HOLD', FO_DIENST) }, telegram: true }));
+  ist('R2 L1/1 Gehaltene Order am DIENST-Standort: bleibt «dienst-standort» (der Dienst hat Vorrang), kein Auftrag', [...gesperrt(gehaltenDienst), tags(gehaltenDienst).includes('printful-review-dienst-standort')], [0, 0, true]);
+  const gehaltenUndOffen = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [foMit('ON_HOLD').edges[0], { node: { ...fos([z1]).edges[0].node, id: 'f2' } }] } } }));
+  ist('R2 L1/1 Eine gehaltene UND eine offene Order derselben Position: gehalten gewinnt, kein Auftrag', [...gesperrt(gehaltenUndOffen), tags(gehaltenUndOffen).includes('printful-review-fulfillment-gehalten')], [0, 0, true]);
+  // Das Halten kommt NACH der Liste: vor dem Anlegen (erstes frisches Lesen) und vor dem Bestätigen (zweites)
+  const halt0 = lauf(bestellt([z1], { frischFolge: [{ fulfillmentOrders: foMit('ON_HOLD') }], telegram: true }));
+  ist('R2 L1/1 Die Order wird zwischen Liste und Anlegen gehalten: NICHTS angelegt, keine Markierung, kein Tag, keine Meldung, Exit 0, Log «veralteten Stand»', [...gesperrt(halt0), halt0.prot.tags.length, tgAnzahl(halt0), halt0.prot.exitCode, halt0.prot.log.some((l) => /veralteten Stand/.test(l)), halt0.prot.anspruch.length], [0, 0, 0, 0, 0, true, 0]);
+  const halt1 = lauf(bestellt([z1], { frischFolge: [{}, { fulfillmentOrders: foMit('ON_HOLD') }], telegram: true }));
+  ist('R2 L1/1 Die Order wird zwischen Anlegen und Bestätigen gehalten (der Haken des Prüfers): der Entwurf bleibt, NICHT bestätigt, weicher Befund «bestellung-geaendert» nennt ON_HOLD und den Entwurf', [halt1.prot.posts.length, halt1.prot.confirms.length, tags(halt1).includes('printful-review-bestellung-geaendert'), tags(halt1).includes('printful-confirmed'), /ON_HOLD/.test(halt1.prot.tg[0] || ''), /Entwurf #42/.test(halt1.prot.tg[0] || ''), /🟡/.test(halt1.prot.tg[0] || '')], [1, 0, true, false, true, true, true]);
+  const zumDienst = lauf(bestellt([z1], { frischFolge: [{}, { fulfillmentOrders: fos([z1], FO_DIENST) }] }));
+  ist('R2 L1/1 Die Position wandert vor dem Bestätigen an den Dienst-Standort: nicht bestätigt, «bestellung-geaendert»', [zumDienst.prot.confirms.length, tags(zumDienst).includes('printful-review-bestellung-geaendert')], [0, true]);
+  const foWeg = lauf(bestellt([z1], { frischFolge: [{}, { fulfillmentOrders: '__WEG__' }] }));
+  ist('R2 L1/1 Fehlt das Feld fulfillmentOrders in der frischen Lesung vor dem Bestätigen: nicht bestätigt, «zahlung-unlesbar» (nie «unverändert»)', [bestaetigt(foWeg), tags(foWeg).includes('printful-review-zahlung-unlesbar')], [false, true]);
+  ist('R2 L1/1 Die frische Abfrage liest die Fulfillment-Orders samt Status und Standort', [/fulfillmentOrders\(first:20\)/.test(halt1.prot.frischQuery), /status assignedLocation\{ location\{ id name isFulfillmentService/.test(halt1.prot.frischQuery)], [true, true]);
+
+  // ── Linse 1, Fund 2: das frische Lesen vor dem Bestätigen vergleicht Adresse, Positionen, Mengen und das Stopp-Tag
+  {
+    const adr = (o) => ({ name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000', ...o });
+    for (const [n, f, text] of [['Strasse und Ort', { shippingAddress: adr({ address1: 'Neue Strasse 99', city: 'Bern', zip: '3000' }) }, /Lieferadresse/], ['Land (US)', { shippingAddress: adr({ countryCodeV2: 'US' }) }, /Lieferadresse/], ['E-Mail', { email: 'andere@b.ch' }, /Lieferadresse oder E-Mail/], ['Name', { shippingAddress: adr({ name: 'Anderer Name' }) }, /Lieferadresse/], ['Telefon', { shippingAddress: adr({ phone: '+41 79 000 00 00' }) }, /Lieferadresse/]]) {
+      const e = lauf(bestellt([z1], { frischFolge: [{}, f], telegram: true }));
+      ist(`R2 L1/2 ${n} nach dem Anlegen geändert (Zahlung bleibt PAID): der Entwurf bleibt, NICHT bestätigt, Befund «bestellung-geaendert», Meldung nennt die Änderung`, [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-bestellung-geaendert'), tags(e).includes('printful-confirmed'), text.test(e.prot.tg[0] || '')], [1, 0, true, false, true]);
+    }
+    const adrWeg = lauf(bestellt([z1], { frischFolge: [{}, { shippingAddress: null }] }));
+    ist('R2 L1/2 Die Lieferadresse ist nach dem Anlegen WEG (null): nicht bestätigt, «bestellung-geaendert»', [adrWeg.prot.confirms.length, tags(adrWeg).includes('printful-review-bestellung-geaendert')], [0, true]);
+    const entfernt = lauf(bestellt([z1], { frischFolge: [{}, { lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...z1, quantity: 1, currentQuantity: 0 } }] } }] }));
+    ist('R2 L1/2 Die Position entfällt nach dem Anlegen (currentQuantity 0, Zahlung bleibt PAID): nicht bestätigt, «bestellung-geaendert»', [entfernt.prot.confirms.length, tags(entfernt).includes('printful-review-bestellung-geaendert')], [0, true]);
+    const menge = lauf(bestellt([z1], { frischFolge: [{}, { lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...z1, quantity: 3, currentQuantity: 3 } }] } }] }));
+    ist('R2 L1/2 Die Menge ändert sich nach dem Anlegen (1 → 3): nicht bestätigt', [menge.prot.confirms.length, tags(menge).includes('printful-review-bestellung-geaendert')], [0, true]);
+    const leer = lauf(bestellt([z1], { frischFolge: [{}, { lineItems: { pageInfo: { hasNextPage: false }, edges: [] } }] }));
+    ist('R2 L1/2 Die Positionsliste ist nach dem Anlegen leer: nicht bestätigt', [leer.prot.confirms.length, tags(leer).includes('printful-review-bestellung-geaendert')], [0, true]);
+    const stopp = lauf(bestellt([z1], { frischFolge: [{}, { tags: ['printful-review'] }], telegram: true }));
+    ist('R2 L1/2 Das Stopp-Tag printful-review steht beim zweiten Lesen (das dokumentierte Stopp-Signal): nicht bestätigt, der Entwurf bleibt, «bestellung-geaendert» nennt das Tag', [stopp.prot.posts.length, stopp.prot.confirms.length, tags(stopp).includes('printful-review-bestellung-geaendert'), /printful-review/.test(stopp.prot.tg[0] || '')], [1, 0, true, true]);
+    for (const [n, f] of [['shippingAddress', { shippingAddress: '__WEG__' }], ['email', { email: '__WEG__' }], ['lineItems', { lineItems: '__WEG__' }]]) {
+      const e = lauf(bestellt([z1], { frischFolge: [{}, f] }));
+      ist(`R2 L1/2 Fehlt das Feld ${n} in der frischen Lesung vor dem Bestätigen: nicht bestätigt, «zahlung-unlesbar» (nie «unverändert»)`, [bestaetigt(e), tags(e).includes('printful-review-zahlung-unlesbar')], [false, true]);
+    }
+    const aend0 = lauf(bestellt([z1], { frischFolge: [{ shippingAddress: adr({ city: 'Bern' }) }], telegram: true }));
+    ist('R2 L1/2 Die Adresse ändert sich zwischen Liste und Anlegen: NICHTS angelegt (der Plan beruht auf einem veralteten Stand), keine Tags, keine Meldung, Exit 0', [...gesperrt(aend0), aend0.prot.tags.length, tgAnzahl(aend0), aend0.prot.exitCode], [0, 0, 0, 0, 0]);
+    ist('R2 L1/2 Die frische Abfrage liest Adresse samt E-Mail und die Positionen mit Menge', [/\bemail\b/.test(stopp.prot.frischQuery), /shippingAddress\{[^}]*zip phone/.test(stopp.prot.frischQuery), /lineItems\(first:50\)\{ edges\{ node\{ currentQuantity quantity id/.test(stopp.prot.frischQuery)], [true, true, true]);
+  }
+
+  // ── Linse 1, Fund 3: Anspruch mit Nachlesen. Wer unter den aktiven Markierungen NICHT die kleinste hat, legt nichts an.
+  {
+    const e = lauf(bestellt([z1]));
+    ist('R2 L1/3 Normalfall: die Markierung hat Sekunden, Millisekunden und einen Zufallsteil, danach werden die Tags EINMAL nachgelesen (nur Tags), dann angelegt', [/^printful-anlegen-\d{8}t\d{4}-\d{5}-[a-z0-9]{8}$/.test(markenTags(e)[0]), e.prot.anspruch.length, /id tags/.test(e.prot.anspruchQuery) && !/displayFinancialStatus/.test(e.prot.anspruchQuery), e.prot.posts.length, bestaetigt(e)], [true, 1, true, 1, true]);
+    ist('R2 L1/3 Zwei Läufe erzeugen verschiedene Markierungen (Zufallsteil)', new Set([markenTags(lauf(bestellt([z1])))[0], markenTags(lauf(bestellt([z1])))[0]]).size, 2);
+    for (const [n, rivale] of [['ein anderer Lauf hat 5 s FRÜHER markiert', 'frueher'], ['früher und später', 'beide']]) {
+      const x = lauf(bestellt([z1], { rivale, telegram: true }));
+      ist(`R2 L1/3 ${n}: NICHTS angelegt, nicht bestätigt, kein Fehler, keine Meldung, Log «früher markiert»; die eigene Markierung bleibt stehen`, [...gesperrt(x), x.prot.exitCode, tgAnzahl(x), x.prot.log.some((l) => /früher markiert/.test(l)), markenTags(x).length, tags(x).includes('printful-synced')], [0, 0, 0, 0, true, 1, false]);
+    }
+    for (const [n, rivale] of [['ein anderer Lauf hat 5 s SPÄTER markiert (er unterliegt, nicht wir)', 'spaeter'], ['eine Markierung von vor 70 Minuten zählt nicht mehr', 'alt']]) {
+      const x = lauf(bestellt([z1], { rivale }));
+      ist(`R2 L1/3 ${n}: angelegt und bestätigt`, [x.prot.posts.length, bestaetigt(x)], [1, true]);
+    }
+    const ohneEigene = lauf(bestellt([z1], { anspruchOhneEigene: true }));
+    ist('R2 L1/3 Die eigene Markierung ist beim Nachlesen nicht zu sehen: NICHTS angelegt', gesperrt(ohneEigene), [0, 0]);
+    for (const f of ['http', 'null']) {
+      const x = lauf(bestellt([z1], { anspruchFehler: f }));
+      ist(`R2 L1/3 Das Nachlesen der Markierung scheitert (${f}): NICHTS angelegt, Fehler «nicht nachlesbar», Exit 1`, [...gesperrt(x), x.prot.err.some((l) => /nicht nachlesbar/.test(l)), x.prot.exitCode], [0, 0, true, 1]);
+    }
+    const reihenfolge = lauf(bestellt([z1]));
+    ist('R2 L1/3 Reihenfolge: Markierung setzen, DANN Tags nachlesen, DANN POST (die Tag-Aufrufe stehen vor dem POST)', [reihenfolge.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}/, '<zeit>')), reihenfolge.prot.anspruch.length], [['tags:printful-anlegen-<zeit>', 'POST'], 1]);
+  }
+
+  // ── Linse 1, Fund 4: ein negativer Mindestgewinn hebt die Verlustsperre NICHT auf, er ist ein Konfigurationsfehler
+  {
+    const verlust = { entwurf: { costs: { currency: 'USD', subtotal: '60.00', discount: '0.00', shipping: '0.00', tax: '0.00', vat: '0.00', total: '60.00' } } };
+    for (const v of ['-100', '-0.01', ' -5 ']) {
+      const x = lauf(bestellt([z1], { ...verlust, env: { PRINTFUL_MIN_NETTO_CHF: v } }));
+      ist(`R2 L1/4 PRINTFUL_MIN_NETTO_CHF=«${v}»: Konfigurationsfehler, Exit 1, nichts gelesen, nichts angelegt, die Meldung nennt die Variable`, [x.prot.ausstieg, x.prot.posts.length, x.prot.shop.length, x.prot.err.some((l) => /PRINTFUL_MIN_NETTO_CHF/.test(l) && /negativ/.test(l))], [1, 0, 0, true]);
+    }
+    const trockenNeg = lauf(bestellt([z1], { env: { PRINTFUL_MIN_NETTO_CHF: '-1', DRY_RUN: '1' } }));
+    ist('R2 L1/4 …auch im TROCKENLAUF (der Mangel soll sichtbar werden, bevor die Freigabedatei liegt)', [trockenNeg.prot.ausstieg, trockenNeg.prot.shop.length], [1, 0]);
+    for (const v of ['0', 'abc', '', '4', '1000']) {
+      const x = lauf(bestellt([z1], { ...verlust, env: { PRINTFUL_MIN_NETTO_CHF: v } }));
+      ist(`R2 L1/4 PRINTFUL_MIN_NETTO_CHF=«${v}»: kein Konfigurationsfehler; der Verlustauftrag (60 USD Kosten gegen 49.90 CHF Erlös) bleibt Entwurf, Befund «kosten»`, [x.prot.ausstieg ?? x.status, x.prot.posts.length, bestaetigt(x), tags(x).includes('printful-review-kosten')], [0, 1, false, true]);
+    }
+  }
+
+  // ── Linse 1, Fund 5: eine unlesbare Menge wird nie als «1» gedruckt
+  {
+    const e = lauf(bestellt([zeile({ quantity: 0 })], { telegram: true }));
+    ist('R2 L1/5 Menge unlesbar (quantity 0, kein currentQuantity): KEIN Auftrag, harter Befund «menge-unlesbar», eine 🔴-Meldung (früher: 1 Stück gedruckt und bestätigt)', [...gesperrt(e), tags(e).includes('printful-review-menge-unlesbar'), tgAnzahl(e), e.prot.variantGets.length], [0, 0, true, 1, 0]);
+    const ok1 = lauf(bestellt([zeile({ quantity: 0, currentQuantity: 0 })]));
+    ist('R2 L1/5 Gegenprobe: currentQuantity 0 (entfernt) ist KEIN unlesbarer Fall, sondern übergangen (kein Befund, kein Auftrag)', [...gesperrt(ok1), ok1.prot.tags.length], [0, 0, 0]);
+    const ok2 = lauf(bestellt([zeile({ quantity: 2 })]));
+    ist('R2 L1/5 Gegenprobe: quantity 2 ohne currentQuantity gilt (2 Stück)', [ok2.prot.posts[0] && ok2.prot.posts[0].body.items[0].quantity, bestaetigt(ok2)], [2, true]);
+  }
+
+  // ── Linse 1, Fund 6: Quelle der Druckdatei: eigener Datei-Pfad im Shopify-CDN, nur Grösse/Qualität/Format bei Cloudinary
+  {
+    for (const [n, u] of [['fremder cdn.shopify.com-Pfad', 'https://cdn.shopify.com/s/files/1/9999/9999/9999/files/evil.png'], ['Cloudinary-Überlagerung l_fetch', 'https://res.cloudinary.com/dwyi6kkrl/image/upload/l_fetch:aHR0cHM6Ly9ldmlsLmV4YW1wbGUveC5wbmc=/x.png'], ['Cloudinary-Überlagerung u_ / e_', 'https://res.cloudinary.com/dwyi6kkrl/image/upload/u_evil,e_blur:500/v1/x.png']]) {
+      const e = lauf(bestellt([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', u)] })], { telegram: true }));
+      ist(`R2 L1/6 ${n}: harter Befund «datei-adresse», KEIN Auftrag, die Adresse wird nie abgerufen`, [...gesperrt(e), tags(e).includes('printful-review-datei-adresse'), e.prot.dateien.length, e.prot.kiDateien.length], [0, 0, true, 0, 0]);
+    }
+    const eigen = lauf(bestellt([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/design.png')] })]));
+    ist('R2 L1/6 Gegenprobe: eine Datei aus den EIGENEN Dateien des Shops im Shopify-CDN wird abgerufen und gedruckt', [eigen.prot.posts.length, bestaetigt(eigen)], [1, true]);
+    const trafo = lauf(bestellt([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', 'https://res.cloudinary.com/dwyi6kkrl/image/upload/c_limit,w_2000/v1/design.png')] })]));
+    ist('R2 L1/6 Gegenprobe: Grössen-Transformation «c_limit,w_2000» bei Cloudinary bleibt erlaubt', [trafo.prot.posts.length, bestaetigt(trafo)], [1, true]);
+    const rdFremd = lauf(bestellt([zeile()], { dateiPro: [{ match: 'Vorne', weiterleitung: 'https://cdn.shopify.com/s/files/1/9999/9999/9999/files/x.png' }] }));
+    ist('R2 L1/6 Die Datei leitet auf einen FREMDEN Pfad im Shopify-CDN weiter: das Ziel wird nie abgerufen, Pixelgrösse nicht prüfbar → Entwurf, NICHT bestätigt (früher: bestätigt)', [rdFremd.prot.dateien.length, bestaetigt(rdFremd), tags(rdFremd).includes('printful-review-aufloesung')], [1, false, true]);
+  }
+
+  // ── Linse 1, Fund 8: Trockenlauf mit eingeschalteter KI sendet nichts an Google
+  {
+    const e = lauf(bestellt([z1], { env: { DRY_RUN: '1' } }));
+    ist('R2 L1/8 Trockenlauf mit KI «pflicht» und Schlüssel: KEIN Aufruf an Gemini, kein Bild für die Kontrolle geladen, kein Befund «kontrolle-…», nichts geschrieben, Log nennt die ausgelassene KI', [e.prot.gemini.length, e.prot.kiDateien.length, e.prot.posts.length, e.prot.tags.length, e.prot.log.some((l) => /KI-Kontrolle der Druckdatei \(im Trockenlauf nicht ausgeführt\)/.test(l)), e.prot.log.some((l) => /REVIEW: .*kontrolle/.test(l))], [0, 0, 0, 0, true, false]);
+    const scharf = lauf(bestellt([z1]));
+    ist('R2 L1/8 Gegenprobe: scharf wird die KI weiter gefragt (ein Aufruf, ein Bild)', [scharf.prot.gemini.length, scharf.prot.kiDateien.length], [1, 1]);
+  }
+
+  // ── Linse 2, Fund 2: zwei gültige Editor-Positionen Ende zu Ende; ein Artikel ohne Datei gibt den Entwurf nie frei
+  {
+    const zwei = [zeile({ id: 'gid://shopify/LineItem/9001' }), zeile({ id: 'gid://shopify/LineItem/9002', customAttributes: [A('🖼️ Druckdatei (Vorne)', V('zweite'))] })];
+    const e = lauf(bestellt(zwei, { telegram: true }));
+    ist('R2 L2/2 Zwei Editor-Positionen: EIN Auftrag mit ZWEI Artikeln (external_id 9001 und 9002, je Menge 1, je eine Datei), bestätigt', [e.prot.posts.length, e.prot.posts[0] && e.prot.posts[0].body.items.map((i) => [i.external_id, i.quantity, i.files.map((f) => f.type)]), e.prot.confirms.length, bestaetigt(e), hatReview(e)], [1, [['9001', 1, ['front']], ['9002', 1, ['front']]], 1, true, false]);
+    ist('R2 L2/2 …die beiden Dateien sind die der beiden Positionen (zwei verschiedene Adressen)', e.prot.posts[0] && e.prot.posts[0].body.items.map((i) => i.files[0].url), [V('Vorne'), V('zweite')]);
+    const drei = lauf(bestellt([zeile({ id: 'gid://shopify/LineItem/9001', quantity: 2 }), zeile({ id: 'gid://shopify/LineItem/9002', quantity: 1, customAttributes: [A('🖼️ Druckdatei (Vorne)', V('zweite'))] })]));
+    ist('R2 L2/2 Zwei Positionen mit Menge 2 und 1: beide Mengen gehen mit', drei.prot.posts[0] && drei.prot.posts[0].body.items.map((i) => i.quantity), [2, 1]);
+    const dat = (n) => ({ variant_id: 4025, quantity: 1, files: n ? [{ type: 'front', status: 'ok' }, { type: 'preview', status: 'ok' }] : [] });
+    const zweiteOhne = lauf(bestellt(zwei, { entwurf: { items: [dat(1), dat(0)] }, telegram: true }));
+    ist('R2 L2/2 Printful führt nur beim ERSTEN Artikel eine Datei, beim zweiten keine: NICHT bestätigt, nach der Wartezeit «datei-wartet» (Text nennt den Artikel ohne Datei) UND «entwurf-abweichend»; sieben Lesungen', [bestaetigt(zweiteOhne), tags(zweiteOhne).includes('printful-review-datei-wartet'), tags(zweiteOhne).includes('printful-review-entwurf-abweichend'), /Mindestens ein Artikel/.test(zweiteOhne.prot.tg[0] || ''), zweiteOhne.prot.leseVor], [false, true, true, true, 7]);
+    const ersteOhne = lauf(bestellt(zwei, { entwurf: { items: [dat(0), dat(1)] } }));
+    ist('R2 L2/2 …ebenso wenn nur der ZWEITE Artikel eine Datei führt', [bestaetigt(ersteOhne), tags(ersteOhne).includes('printful-review-datei-wartet')], [false, true]);
+    const beide = lauf(bestellt(zwei, { entwurf: { items: [dat(1), dat(1)] } }));
+    ist('R2 L2/2 Gegenprobe: beide Artikel führen ihre Datei: bestätigt', [bestaetigt(beide), hatReview(beide)], [true, false]);
+    const nurEine = lauf(bestellt(zwei, { post: [{}] }));
+    ist('R2 L2/2 Es wird NICHT nur die erste Position gesendet (zwei Artikel im POST-Body)', nurEine.prot.posts[0] && nurEine.prot.posts[0].body.items.length, 2);
+  }
+
+  // ── Linse 2, Fund 5: vier kleine Lücken im Sync-Verhalten
+  {
+    const kaputt = lauf(bestellt([z1], { lesenNachStatus: 404, telegram: true }));
+    ist('R2 L2/5 Der Status von Auftrag #42 ist nach dem Bestätigen NICHT lesbar: «BESTÄTIGT» steht nirgends, kein Tag printful-confirmed, Befund «status-unbekannt», die Bestätigung selbst ging raus', [kaputt.prot.confirms.length, tags(kaputt).includes('printful-confirmed'), tags(kaputt).includes('printful-review-status-unbekannt'), kaputt.prot.log.some((l) => /BESTÄTIGT/.test(l))], [1, false, true, false]);
+    const pod = (n) => knoten([zeile()], { id: 'gid://shopify/Order/' + n, name: '#Q' + n });
+    const viele = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: [{ orders: Array.from({ length: 20 }, (_, i) => pod(i + 1)) }, { orders: [pod(21), pod(22)] }] });
+    ist('R2 L2/5 Ohne MAX gilt die Vorgabe 20: bei 22 Kandidaten werden genau 20 bearbeitet', [viele.prot.posts.length, viele.prot.shop.length], [20, 1]);   // nach 20 Kandidaten wird nicht weitergelesen
+    const trockenAbc = lauf(bestellt([z1], { env: { PRINTFUL_MAX_KOSTEN_USD: 'abc', PRINTFUL_AUTO_CONFIRM: '0', DRY_RUN: '1' } }));
+    ist('R2 L2/5 PRINTFUL_MAX_KOSTEN_USD=abc ist auch im TROCKENLAUF ein Konfigurationsfehler (Exit 1, nichts gelesen)', [trockenAbc.prot.ausstieg, trockenAbc.prot.shop.length], [1, 0]);
+    const ausKonfig = lauf(bestellt([z1], { env: { PRINTFUL_PAKET_BEZAHLT: 'back, Bad Wert', DRY_RUN: '1' } }));
+    ist('R2 L2/5 Eine ungültige Platzierungs-ID in PRINTFUL_PAKET_BEZAHLT ist auch im Trockenlauf ein Konfigurationsfehler', [ausKonfig.prot.ausstieg, ausKonfig.prot.shop.length], [1, 0]);
+  }
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

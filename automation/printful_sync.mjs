@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* LuxeStyle — printful_sync.mjs (Version 3, 10.11.2026: «Bestellweg härten» nach der Gegenprüfung P1; Version 2 vom 05.11.2026, Strom 3 von «Selbst gestalten 100 %»)
+/* LuxeStyle — printful_sync.mjs (Version 3, 10.11.2026: «Bestellweg härten» nach der Gegenprüfung P1, zweite Runde nach den drei Gegenlesern: Fulfillment-Order-Status als Whitelist, frisches Lesen vergleicht Adresse/Positionen/Stopp-Tag,
+ * Anspruch mit Nachlesen statt blosser Markierung, Menge «unlesbar» ist hart, negativer Mindestgewinn ist ein Fehler; Version 2 vom 05.11.2026, Strom 3 von «Selbst gestalten 100 %»)
  * Verbindet den eigenen „Selbst gestalten"-Editor mit dem Druck-Anbieter PRINTFUL.
  * Für jede BEZAHLTE, noch nicht synchronisierte Shopify-Bestellung mit POD-Artikeln (Tag wunschdesign + Editor-Druckdatei-Eigenschaft) legt es einen Printful-Auftrag an.
  *
@@ -7,22 +8,23 @@
  *   0. Gibt es bei Printful schon einen Auftrag mit external_id «LX<Bestellnummer>»? (GET /orders/@<external_id>; GEMESSEN 05.11.: 404 wenn nicht, `GET /orders?external_id=` filtert NICHT)
  *      Ja → nichts anlegen, nur Tag `printful-synced` + Metafeld nachtragen (ein gescheitertes Markieren führt nie mehr zu einem zweiten Auftrag), ABER erst nach dem Vergleich von Empfänger (Name, PLZ, Land) und Stückzahl:
  *      weicht der vorhandene Auftrag ab (fremder «LX…»-Auftrag, wiederverwendete Bestellnummer), gilt die Bestellung NICHT als erledigt (harter Befund «vorhanden-fremd»). Nicht prüfbar → nichts anlegen, später wieder.
- *      Hat ein früherer Lauf vor weniger als einer Stunde den Auftrag angelegt (Tag `printful-anlegen-<JJJJMMTT>t<HHMM>`, gesetzt VOR dem POST) und Printful zeigt ihn noch nicht, wird nichts neu angelegt.
- *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6 ALT «🖼️ Druckdatei (<Platzierung>)», v6 NEU «_Druckdatei (<Platzierung>)» ab Editor 6.2.1,
+ *      Hat ein früherer Lauf vor weniger als einer Stunde den Auftrag angelegt (Anspruchs-Tag `printful-anlegen-<JJJJMMTT>t<HHMM>-<SS><mmm>-<Zufall>`, gesetzt VOR dem POST und danach neu gelesen: den kleinsten Anspruch der letzten Stunde behält der Lauf, der übrige tritt zurück) und Printful zeigt ihn noch nicht, wird nichts neu angelegt.
+ *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6 ALT «🖼️ Druckdatei (<Platzierung>)», v6 NEU «_Druckdatei (<Platzierung>)» (vorgesehen, heute schreibt sie kein Editor),
  *      v5: Vorne/Hinten; `_vorschau` ist KEINE Druckdatei) mit den ECHTEN Printful-Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und
  *      Mindest-dpi des Katalogs; dazu als weiche Gegenprobe die Angabe `_pod_karte.qd`), KI-Kontrolle, Empfänger. `_pod_karte.m` und `.pv` müssen zur SKU der Position passen.
  *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, gemischte Schlüssel, Karte widerspricht der SKU, Adresse unbrauchbar, mehr als 50 Positionen, Position am Fulfillment-Service-Standort «dienst-standort»,
- *      gedruckte Aufpreis-Platzierung ohne bezahltes Paket «aufpreis-unbezahlt»): KEIN Auftrag, Tag `printful-review`,
+ *      gedruckte Aufpreis-Platzierung ohne bezahltes Paket «aufpreis-unbezahlt», Fulfillment-Order nicht OPEN/IN_PROGRESS «fulfillment-gehalten», Menge nicht lesbar «menge-unlesbar»): KEIN Auftrag, Tag `printful-review`,
  *      eine Meldung. Eine bezahlte Bestellung OHNE Design (`keine-druckdatei`) bleibt so liegen: keine Mail an die Kundin und keine Rückerstattung durch dieses Skript (dropship/wp6-0611/OHNE-DESIGN.md).
  *      Stand der Befundnamen und der Messung: dropship/wp6-0611/SYNC.md.
- *   1b. Kurz vor dem Anlegen wird die Bestellung in Shopify FRISCH gelesen (bezahlt = PAID, nicht storniert, kein Test, noch nicht von einem anderen Lauf bearbeitet) und die Markierung `printful-anlegen-…` gesetzt; scheitert eines von beiden,
- *      wird nichts angelegt.
+ *   1b. Kurz vor dem Anlegen wird die Bestellung in Shopify FRISCH gelesen (bezahlt = PAID, nicht storniert, kein Test, noch nicht von einem anderen Lauf bearbeitet, UNVERÄNDERT seit dem Planen: Lieferadresse samt E-Mail, Positionen samt Mengen,
+ *      Fulfillment-Order-Status der geplanten Positionen) und die Markierung `printful-anlegen-<Zeit>-<Sekunden/ms>-<Zufall>` gesetzt. Danach werden die Tags NOCHMAL gelesen: nur der Lauf mit der kleinsten aktiven Markierung legt an
+ *      (zwei gleichzeitige scharfe Läufe, etwa lokal neben Actions, legen sonst beide an; in Actions schliesst die Concurrency-Gruppe das ohnehin aus). Scheitert eines davon, wird nichts angelegt.
  *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
  *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
  *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).
  *      Der Entwurf wird gegen das Gesendete gehalten (gleiche Zahl Artikel, dieselben Dateitypen, Variante und Menge): leer oder abweichend ist ein Befund, nie «ok».
  *   4. Nur ohne jeden Befund UND wenn das Bestätigen erlaubt ist (lib `bestaetigenPlan`: PRINTFUL_AUTO_CONFIRM an, Kostenobergrenze gesetzt, KI-Kontrolle an) UND nach einem FRISCHEN Lesen der Bestellung in Shopify (bezahlt, nicht storniert, nicht
- *      erstattet, kein Test; sonst bleibt der Entwurf mit Befund «zahlung-geaendert»): POST /orders/<id>/confirm, danach den Status NACHLESEN. «BESTÄTIGT» steht nur, wenn Printful pending/inprocess/… meldet;
+ *      erstattet, kein Test; sonst bleibt der Entwurf mit Befund «zahlung-geaendert»; ausserdem unverändert seit dem Planen und ohne Stopp-Tag `printful-review`, sonst Befund «bestellung-geaendert»): POST /orders/<id>/confirm, danach den Status NACHLESEN. «BESTÄTIGT» steht nur, wenn Printful pending/inprocess/… meldet;
  *      failed (Zahlung der Karte), onhold, canceled, draft → Befund, nie «bestätigt».
  *   Befunde: Tags `printful-review` + `printful-review-<art>` (wie `printful-problem-<art>` in printful_tracking.mjs): dieselbe Befundart wird nur EINMAL per Telegram gemeldet.
  *   Eine Bestellung mit Tag `printful-review` wird nicht mehr gelesen. Bei HARTEN Befunden (kein Auftrag angelegt) entfernt man nach der Behebung das Tag: der nächste Lauf versucht es neu. Bei WEICHEN
@@ -35,19 +37,20 @@
  *      [PRINTFUL_KI_KONTROLLE=aus|pflicht (Vorgabe aus, Besitzer-Entscheid 05.11.; pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
  *      [PRINTFUL_PAKET_BEZAHLT=kommagetrennte Platzierungs-IDs, die für alle Positionen als bezahlt gelten (Übergang; Standard leer = nur Vorderseite bezahlt; der Workflow reicht sie nicht durch)],
  *      [PRINTFUL_MAX_KOSTEN_USD=absolute Obergrenze der Printful-Summe je Auftrag in USD; Vorgabe aus (leer/0/aus); ein Auftrag darüber bleibt Entwurf mit Befund «kosten-obergrenze»; ein unbrauchbarer Wert beendet den Lauf mit Exit 1],
- *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
+ *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten; eine NEGATIVE Zahl beendet den Lauf mit Exit 1], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
  *      für Produkte mit Option stitch_color (Entscheid des Besitzers; ohne sie bleiben diese Aufträge Entwurf)], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
  *      [PF_PAUSE_MS=2500: Grundpause; die Wartezeit auf Dateien und Kosten ist 48 × PF_PAUSE_MS = 120 s],
  *      [PRINTFUL_LOG_DETAIL=1: Befundtexte auch in Log und Zusammenfassung (nur für Läufe auf dem eigenen Rechner: das Repo ist öffentlich, Actions-Protokolle sind es auch; sonst steht dort nur die Befundart)],
  *      [DRY_RUN: GESCHRIEBEN wird NUR bei ausdrücklichem 0/false/no/nein/off; alles andere, auch leer und nicht gesetzt, ist Trockenlauf: es wird gelesen, nichts geschrieben, nichts gemeldet (Stand 10.11.2026; vorher war «leer» scharf)]
  */
 import { appendFileSync } from 'node:fs';
+import { randomBytes } from 'node:crypto';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
 import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
   kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard, adresseProblem,
-  zahlungPruefen, anlegenTag, anlegenAlterMin, ANLEGEN_SPERRE_MIN, vorhandenVergleichen, entwurfVergleichen, scopesBewerten, bestaetigenPlan,
+  zahlungPruefen, anlegenTag, anlegenAlterMin, anlegenGesperrt, anspruchGewonnen, ANLEGEN_SPERRE_MIN, vorhandenVergleichen, entwurfVergleichen, scopesBewerten, bestaetigenPlan, bestellStand, bestellAbweichung,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -69,7 +72,11 @@ const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const TG_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const MAX = Math.max(1, parseInt(process.env.MAX || '20', 10) || 20);
 // Mindestgewinn je Auftrag (CHF, nach MWST, Gebühr und Printful-Kosten): Vorgabe 4 = das Ziel der Preisformel (werkzeuge/preisformel.mjs); 0 hält nur Verluste an.
-const NETTO_MIN = Number.isFinite(Number(process.env.PRINTFUL_MIN_NETTO_CHF)) && process.env.PRINTFUL_MIN_NETTO_CHF !== undefined && process.env.PRINTFUL_MIN_NETTO_CHF !== '' ? Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 4;
+// Eine NEGATIVE Zahl ist ein Konfigurationsfehler (10.11.2026, Gegenleser Linse 1: «-100» hob die Verlustsperre still auf und bestätigte Verlustaufträge); ein Tippfehler wie «abc» fällt auf die sichere Vorgabe 4 zurück.
+const NETTO_MIN_ROH = String(process.env.PRINTFUL_MIN_NETTO_CHF == null ? '' : process.env.PRINTFUL_MIN_NETTO_CHF).trim();
+const NETTO_MIN_ZAHL = Number(NETTO_MIN_ROH);
+const NETTO_MIN_FEHLER = NETTO_MIN_ROH !== '' && Number.isFinite(NETTO_MIN_ZAHL) && NETTO_MIN_ZAHL < 0;
+const NETTO_MIN = NETTO_MIN_ROH !== '' && Number.isFinite(NETTO_MIN_ZAHL) ? NETTO_MIN_ZAHL : 4;
 // Absolute Obergrenze der Printful-Summe je Auftrag in USD (PRINTFUL_MAX_KOSTEN_USD). Vorgabe AUS (leer, 0, «aus»). Eine Zahl über 0 schaltet sie ein; jede andere Angabe (Tippfehler, negativ) ist ein Konfigurationsfehler
 // und beendet den Lauf mit Exit 1, bevor etwas angelegt wird (eine falsch geschriebene Sicherung darf nicht still ausfallen).
 const MAX_KOSTEN_ROH = String(process.env.PRINTFUL_MAX_KOSTEN_USD == null ? '' : process.env.PRINTFUL_MAX_KOSTEN_USD).trim().toLowerCase();
@@ -117,6 +124,7 @@ let scopeHinweis = '';   // Zusatz für den harten Befund «dienst-standort-unkl
 const BEST = bestaetigenPlan({ autoConfirm: AUTO_CONFIRM, ki: KI, maxKostenAus: MAX_KOSTEN_AUS });
 const BESTAETIGEN = BEST.bestaetigen;
 if (BEST.konfigFehler) { console.error(`❌ ${BEST.konfigFehler}.`); process.exit(1); }
+if (NETTO_MIN_FEHLER) { console.error(`❌ PRINTFUL_MIN_NETTO_CHF ist negativ (steht: «${NETTO_MIN_ROH.slice(0, 30)}»): ein negativer Mindestgewinn würde die Verlustsperre aufheben. 0 hält nur Verluste an, leer gilt 4: es wird nichts angelegt.`); process.exit(1); }
 if (MAX_KOSTEN_FEHLER) { console.error(`❌ PRINTFUL_MAX_KOSTEN_USD ist keine Zahl über 0 (steht: «${MAX_KOSTEN_ROH.slice(0, 30)}»; leer, 0 oder «aus» schaltet die Obergrenze ab): es wird nichts angelegt.`); process.exit(1); }
 if (PAKET_FEHLER.length) { console.error(`❌ PRINTFUL_PAKET_BEZAHLT enthält ungültige Platzierungs-IDs (${PAKET_FEHLER.map((s) => s.slice(0, 20)).join(', ')}; erlaubt: a-z, 0-9, Unterstrich): es wird nichts angelegt.`); process.exit(1); }
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
@@ -161,20 +169,30 @@ async function resolveToken() {
   return null;
 }
 
+// Fulfillment-Orders mit Status, Standort und Positionen: in der Liste UND im frischen Lesen (Status ON_HOLD, Dienst-Standort … können sich zwischen Plan und Bestätigen ändern)
+const FO_Q = `fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation{ location{ id name isFulfillmentService } }
+    lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ lineItem{ id } } } } } } }`;
+// Lieferadresse: in der Liste UND im frischen Lesen dieselben Felder (der Vergleich beim Bestätigen braucht sie gleich)
+const ADRESSE_Q = `shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }`;
 const ORDERS_Q = `query($q:String!,$n:Int!,$c:String){ orders(first:$n, after:$c, query:$q, sortKey:CREATED_AT){ pageInfo{ hasNextPage endCursor } edges{ node{
   id name email tags cancelledAt test displayFinancialStatus
   currentShippingPriceSet{ shopMoney{ amount currencyCode } }
-  shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }
+  ${ADRESSE_Q}
   lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity currentQuantity sku title
     discountedTotalSet{ shopMoney{ amount currencyCode } }
     product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
     variant{ sku title selectedOptions{ name value } }
     customAttributes{ key value } } } }
-  fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation{ location{ id name isFulfillmentService } }
-    lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ lineItem{ id } } } } } } }
+  ${FO_Q}
 }}}}`;
-// Dieselben Felder wie die Liste, für das FRISCHE Lesen einer einzelnen Bestellung (vor dem Anlegen und vor dem Bestätigen)
-const FRISCH_Q = `query($id:ID!){ node(id:$id){ ... on Order { id name tags cancelledAt test displayFinancialStatus } } }`;
+// FRISCHES Lesen einer einzelnen Bestellung (vor dem Anlegen und vor dem Bestätigen): Zahlung UND der Stand, auf dem der Plan beruht (Lieferadresse samt E-Mail, Positionen mit Menge, Fulfillment-Orders): ändert sich etwas davon, bevor der Entwurf bestätigt wird, bleibt er liegen.
+const FRISCH_Q = `query($id:ID!){ node(id:$id){ ... on Order { id name tags cancelledAt test displayFinancialStatus email
+  ${ADRESSE_Q}
+  lineItems(first:50){ edges{ node{ currentQuantity quantity id } } }
+  ${FO_Q}
+} } }`;
+// Nur die Tags (zweites Lesen nach dem Setzen der eigenen Markierung: wer hat zuerst markiert?)
+const ANSPRUCH_Q = `query($id:ID!){ node(id:$id){ ... on Order { id tags } } }`;
 // Zugriffsrechte des Tokens (für die Standort-Sperre: sieht das Token die Fulfillment-Orders beider Standortarten?)
 const SCOPES_Q = `{ currentAppInstallation { accessScopes { handle } } }`;
 const TAG_ADD = `mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`;
@@ -200,9 +218,11 @@ async function tagsSetzen(tok, o, tags, pfId) {
 }
 
 // Die Bestellung kurz vor dem Anlegen und vor dem Bestätigen FRISCH aus Shopify lesen. Die Liste am Anfang des Laufs kann Minuten alt sein (Wartezeiten, bis zu 20 Bestellungen); storniert oder erstattet die Kundin in der Zeit,
-// darf Printful nicht belasten. @param stufe 'anlegen' (prüft zusätzlich, ob ein anderer Lauf die Bestellung schon bearbeitet hat) | 'bestaetigen'
-// @returns {Promise<{art:'ok'|'zahlung'|'schon-bearbeitet'|'unlesbar', text:string, zahlung?:string}>}
-async function frischLesen(tok, o, stufe) {
+// darf Printful nicht belasten. Seit dem 10.11.2026 (Gegenleser Linse 1) wird auch der Stand verglichen, auf dem der Plan beruht (`soll` = `bestellStand`): Lieferadresse samt E-Mail, Positionen samt Mengen und der
+// Fulfillment-Order-Status der geplanten Positionen (ON_HOLD, Dienst-Standort …); vor dem Bestätigen zählt auch das Stopp-Tag `printful-review`.
+// @param stufe 'anlegen' (prüft zusätzlich, ob ein anderer Lauf die Bestellung schon bearbeitet hat) | 'bestaetigen'
+// @returns {Promise<{art:'ok'|'zahlung'|'schon-bearbeitet'|'geaendert'|'unlesbar', text:string, zahlung?:string}>}
+async function frischLesen(tok, o, stufe, soll) {
   let n = null;
   try {
     const r = await gql(tok, FRISCH_Q, { id: o.id });
@@ -211,14 +231,24 @@ async function frischLesen(tok, o, stufe) {
   if (!n || typeof n !== 'object' || n.id !== o.id) return { art: 'unlesbar', text: 'Shopify liefert die Bestellung nicht (mehr)' };
   const z = zahlungPruefen(n);
   if (!z.ok) return z.art === 'unlesbar' ? { art: 'unlesbar', text: z.text } : { art: 'zahlung', text: z.text, zahlung: z.art };
+  const tags = Array.isArray(n.tags) ? n.tags : null;
+  if (!tags) return { art: 'unlesbar', text: 'Das Feld «tags» fehlt in der Antwort' };
   if (stufe === 'anlegen') {
-    const tags = Array.isArray(n.tags) ? n.tags : null;
-    if (!tags) return { art: 'unlesbar', text: 'Das Feld «tags» fehlt in der Antwort' };
     if (tags.includes('printful-synced') || tags.includes(REVIEW_TAG)) return { art: 'schon-bearbeitet', text: 'ein anderer Lauf hat die Bestellung inzwischen bearbeitet (Tag printful-synced oder printful-review)' };
     const alter = anlegenAlterMin(tags, Date.now());
-    if (alter !== null && alter < ANLEGEN_SPERRE_MIN) return { art: 'schon-bearbeitet', text: `ein anderer Lauf hat vor ${alter} Minuten angefangen, den Auftrag anzulegen` };
-  }
-  return { art: 'ok', text: 'bezahlt, nicht storniert, kein Test' };
+    if (anlegenGesperrt(alter)) return { art: 'schon-bearbeitet', text: `ein anderer Lauf hat vor ${alter} Minuten angefangen, den Auftrag anzulegen` };
+  } else if (tags.includes(REVIEW_TAG)) return { art: 'geaendert', text: 'die Bestellung trägt jetzt das Stopp-Tag printful-review (von Hand oder von einem anderen Lauf gesetzt)' };
+  const ab = soll ? bestellAbweichung(n, soll) : null;
+  if (ab) return { art: ab.art, text: ab.text };
+  return { art: 'ok', text: 'bezahlt, nicht storniert, kein Test, unverändert seit dem Planen' };
+}
+// Nach dem Setzen der eigenen Markierung: gewinnt sie gegen gleichzeitige Läufe? Nur die Tags werden erneut gelesen.
+async function anspruchPruefen(tok, o, meinTag) {
+  let n = null;
+  try { const r = await gql(tok, ANSPRUCH_Q, { id: o.id }); n = r && r.data && r.data.node; } catch (e) { return { art: 'unlesbar', text: `Shopify liess sich nicht lesen (${String(e && e.message || e).slice(0, 120)})` }; }
+  if (!n || typeof n !== 'object' || n.id !== o.id || !Array.isArray(n.tags)) return { art: 'unlesbar', text: 'die Tags der Bestellung sind nicht lesbar' };
+  const g = anspruchGewonnen(n.tags, meinTag, Date.now());
+  return g.ok ? { art: 'ok', text: '' } : { art: 'verloren', text: g.grund };
 }
 // Zugriffsrechte des Tokens: sieht es die Fulfillment-Orders des Händler- UND des Dienst-Standorts? (Diagnose; die Sperre pro Position gilt unabhängig davon.)
 async function scopesLesen(tok) {
@@ -293,6 +323,8 @@ const KI_PROMPT = 'You are a print-shop QA checker. Look at this customer print 
 /** @returns {Promise<{art:'ok'|'fail'|'technisch'|'fehlt', text:string}>} Ein Fehler der Kontrolle gibt NIE frei (Codex-Fund 28.10.: früher PASS bei «Prüfung übersprungen»). */
 async function kontrolle(url) {
   if (KI === 'aus') return { art: 'ok', text: '(KI-Kontrolle ausdrücklich abgeschaltet)' };
+  // Im Trockenlauf wird NICHTS nach aussen gesendet, auch kein Kundenbild an Google (10.11.2026, Gegenleser Linse 1: der Trockenlauf mit KI «pflicht» sandte das Bild trotzdem an Gemini). Kein Befund, kein «ok» der KI.
+  if (DRY) return { art: 'trocken', text: '(Trockenlauf: die KI-Kontrolle wurde nicht ausgeführt, es wurde kein Bild an Google gesendet)' };
   if (!GEMINI) return { art: 'fehlt', text: 'keine KI-Kontrolle eingerichtet (GEMINI_API_KEY fehlt; PRINTFUL_KI_KONTROLLE=aus verzichtet ausdrücklich darauf)' };
   try {
     const r = await fetch(kleineKopieUrl(url), { redirect: 'manual', signal: AbortSignal.timeout(30000) });
@@ -364,7 +396,7 @@ async function bearbeite(tok, o) {
   if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (HTTP ${vorh.status}): es wird nichts angelegt`, pfText(vorh)); return; }
   // 0b. Hat ein früherer Lauf vor kurzem angefangen, den Auftrag anzulegen (Markierung VOR dem POST), und Printful zeigt ihn noch nicht? Dann nichts neu anlegen: ein zweiter POST könnte ein Doppel werden (ob Printful eine doppelte external_id ablehnt, ist ungemessen).
   const frueher = anlegenAlterMin(o.tags, Date.now());
-  if (frueher !== null && frueher < ANLEGEN_SPERRE_MIN) {
+  if (anlegenGesperrt(frueher)) {
     zaehler.spaeter++;
     zeilen.push(`${o.name}: wartet (ein früherer Lauf hat vor ${frueher} Minuten angefangen, den Auftrag anzulegen; Printful zeigt ihn noch nicht)`);
     console.log(`${o.name}: ein früherer Lauf hat vor ${frueher} Minuten angefangen, den Auftrag anzulegen (Sperre ${ANLEGEN_SPERRE_MIN} Minuten): nichts neu angelegt`);
@@ -383,18 +415,25 @@ async function bearbeite(tok, o) {
   }
   if (DRY) {
     zaehler.anstehend++;
-    const wie = `${plan.items.length} Artikel, external_id ${ext}: würde als Entwurf angelegt und ${BESTAETIGEN && !befunde.length ? 'danach bestätigt (vorbehaltlich Dateistatus, Kosten und frischem Lesen der Bestellung)' : 'NICHT bestätigt'}`;
+    const wie = `${plan.items.length} Artikel, external_id ${ext}: würde als Entwurf angelegt und ${BESTAETIGEN && !befunde.length ? 'danach bestätigt (vorbehaltlich ' + (KI === 'pflicht' ? 'KI-Kontrolle der Druckdatei (im Trockenlauf nicht ausgeführt), ' : '') + 'Dateistatus, Kosten und frischem Lesen der Bestellung)' : 'NICHT bestätigt'}`;
     zeilen.push(`${o.name}: ${wie}${befunde.length ? ' [' + [...new Set(befunde.map((b) => b.art))].join(', ') + ']' : ''}`);
     console.log(`[DRY] ${o.name}: ${wie}${befunde.length ? ' (REVIEW: ' + [...new Set(befunde.map((b) => b.art))].join(', ') + ')' : ''}`);
     if (DETAIL) for (const b of befunde) console.log(`[DRY]   [${b.art}] ${b.text}`);
     return;
   }
-  // 1b. Frisch lesen (bezahlt, nicht storniert, kein Test, nicht von einem anderen Lauf bearbeitet) und die Markierung VOR dem POST setzen. Scheitert eines von beiden, wird nichts angelegt.
-  const fr = await frischLesen(tok, o, 'anlegen');
+  // 1b. Frisch lesen (bezahlt, nicht storniert, kein Test, nicht von einem anderen Lauf bearbeitet, unverändert seit dem Planen) und die Markierung VOR dem POST setzen. Scheitert eines von beiden, wird nichts angelegt.
+  const soll = bestellStand(o, plan.positionIds);
+  const fr = await frischLesen(tok, o, 'anlegen', soll);
   if (fr.art === 'schon-bearbeitet') { zaehler.vorhanden++; console.log(`${o.name}: ${fr.text}: nichts angelegt`); return; }
+  if (fr.art === 'geaendert') { zaehler.spaeter++; console.log(`${o.name}: ${fr.text}: nichts angelegt (der Plan beruht auf einem veralteten Stand; der nächste Lauf liest neu)`); return; }
   if (fr.art === 'zahlung') { zaehler.ohneAuftrag++; await befundMelden(tok, o, [{ art: 'zahlung-geaendert', text: `Die Bestellung ist laut frischem Lesen aus Shopify nicht mehr druckbar: ${fr.text}`, hart: true }], 'wurde NICHT an Printful übergeben'); return; }
   if (fr.art !== 'ok') { await vorlaeufigerFehler(tok, o, `Shopify lässt sich vor dem Anlegen nicht frisch lesen: es wird nichts angelegt`, fr.text); return; }
-  if (!(await tagsSetzen(tok, o, [anlegenTag(Date.now())]))) { fehlerAdd(`${o.name}: Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }
+  // Der Anspruch trägt Sekunden, Millisekunden und einen Zufallsteil: zwei Läufe, die gleichzeitig markieren, haben verschiedene Tags. Danach wird nachgelesen; nur der Lauf mit der kleinsten Markierung legt an.
+  const meinTag = anlegenTag(Date.now(), randomBytes(4).toString('hex'));
+  if (!(await tagsSetzen(tok, o, [meinTag]))) { fehlerAdd(`${o.name}: Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }
+  const anspruch = await anspruchPruefen(tok, o, meinTag);
+  if (anspruch.art === 'verloren') { zaehler.vorhanden++; console.log(`${o.name}: ${anspruch.text}: nichts angelegt`); return; }
+  if (anspruch.art !== 'ok') { fehlerAdd(`${o.name}: Markierung vor dem Anlegen gesetzt, aber nicht nachlesbar (${anspruch.text}): es wird nichts angelegt`); return; }
   // 2. Entwurf anlegen (nie wiederholen: ein Zeitüberschreitung-POST kann «gelang» heissen; darum danach über external_id nachfragen)
   const res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
   const pfId = res.ok && res.j && res.j.result && res.j.result.id;
@@ -427,7 +466,7 @@ async function bearbeite(tok, o) {
   else {
     const { d, v, k } = lese.urteil || urteilEntwurf(lese.order);
     if (d.art === 'problem') for (const t of d.texte) weich.push({ art: 'datei-abgelehnt', text: t, hart: false });
-    else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: d.leer ? `Der Entwurf nennt nach ${lese.sek} Sekunden Wartezeit keine einzige Datei: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen` : `Printful hat die Dateien nach ${lese.sek} Sekunden Wartezeit noch nicht fertig geprüft: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen`, hart: false });
+    else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: d.leer ? `Der Entwurf nennt nach ${lese.sek} Sekunden Wartezeit keine einzige Datei: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen` : d.teilweise ? `Mindestens ein Artikel des Entwurfs führt nach ${lese.sek} Sekunden Wartezeit noch keine Datei: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen` : `Printful hat die Dateien nach ${lese.sek} Sekunden Wartezeit noch nicht fertig geprüft: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen`, hart: false });
     if (!v.ok) for (const t of v.texte) weich.push({ art: 'entwurf-abweichend', text: `Der Printful-Entwurf weicht vom Gesendeten ab: ${t}`, hart: false });
     if (!k.ok) weich.push({ art: k.art, text: k.art === 'kosten-unbekannt' ? `${k.text} (nach ${lese.sek} Sekunden Wartezeit)` : k.text, hart: false });
   }
@@ -439,11 +478,15 @@ async function bearbeite(tok, o) {
     return;
   }
   // 4b. KURZ vor dem Bestätigen die Bestellung noch einmal frisch aus Shopify lesen: zwischen der Liste am Anfang und hier liegen Wartezeiten von Sekunden bis Minuten; storniert oder erstattet die Kundin in der Zeit, bleibt der Entwurf.
-  const fr2 = await frischLesen(tok, o, 'bestaetigen');
+  const fr2 = await frischLesen(tok, o, 'bestaetigen', soll);
   if (fr2.art !== 'ok') {
     zaehler.entwuerfe++;
     console.log(`${o.name} → Printful #${pfId} ENTWURF (Review)`);
-    await befundMelden(tok, o, [{ art: fr2.art === 'zahlung' ? 'zahlung-geaendert' : 'zahlung-unlesbar', text: fr2.art === 'zahlung' ? `Die Bestellung ist laut frischem Lesen vor dem Bestätigen nicht mehr druckbar: ${fr2.text}. Entwurf #${pfId} im Printful-Dashboard löschen` : `Shopify liess sich vor dem Bestätigen nicht frisch lesen (${fr2.text}): Entwurf #${pfId} nicht bestätigt, im Printful-Dashboard prüfen`, hart: false }], `→ Printful-Entwurf #${pfId} (nicht bestätigt)`);
+    const befundArt = fr2.art === 'zahlung' ? 'zahlung-geaendert' : fr2.art === 'geaendert' ? 'bestellung-geaendert' : 'zahlung-unlesbar';
+    const befundText = fr2.art === 'zahlung' ? `Die Bestellung ist laut frischem Lesen vor dem Bestätigen nicht mehr druckbar: ${fr2.text}. Entwurf #${pfId} im Printful-Dashboard löschen`
+      : fr2.art === 'geaendert' ? `Die Bestellung hat sich seit dem Anlegen des Entwurfs geändert: ${fr2.text}. Entwurf #${pfId} nicht bestätigt; im Printful-Dashboard mit der Bestellung vergleichen und bei Abweichung löschen`
+      : `Shopify liess sich vor dem Bestätigen nicht frisch lesen (${fr2.text}): Entwurf #${pfId} nicht bestätigt, im Printful-Dashboard prüfen`;
+    await befundMelden(tok, o, [{ art: befundArt, text: befundText, hart: false }], `→ Printful-Entwurf #${pfId} (nicht bestätigt)`);
     return;
   }
   // 5. Bestätigen und den Status NACHLESEN. Bei 429 (Drosselung: der Aufruf wurde nicht ausgeführt) einmal nach der Pause wiederholen.

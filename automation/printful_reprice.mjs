@@ -8,6 +8,7 @@
  * ENV: PRINTFUL_API_KEY (Pflicht) · [PRINTFUL_STORE_ID] · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN)
  *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=0 schreibt; alles andere, auch leer, ist Vorschau] · [AUCH_AUSWAHL=1] · [SENKEN=1 erlaubt auch Preissenkungen]
  *
+ * GEHÄRTET 10.11.2026 (zweite Runde, Gegenleser): unbrauchbare Printful-Kosten (leer, «abc», 0, negativ) gelten als «unbekannt» (die Variante bleibt unberührt) statt NaN/11.90 zu schreiben; Shopify-API 2026-01 wie der Sync.
  * GEHÄRTET 10.11.2026 (Gegenprüfung P1, Fund 10): (1) Es werden nur ERHÖHUNGEN geschrieben. Die Formel unten kennt weder Versand noch Zahlungsgebühr; auf den Preisen nach der Anhebung vom 05.11.2026 (203 Preise, Preisformel
  *   werkzeuge/preisformel.mjs) hätte ein Lauf mit dem Standard-Tag «wunschdesign» 62 Varianten GESENKT (53 unter den Mindestgewinn von 4 CHF, 4 mit Verlust). Gesenkt wird nur mit ausdrücklichem SENKEN=1 (Workflow: Haken «Auch senken»).
  *   (2) Geschrieben wird nur bei ausdrücklichem DRY_RUN=0 (0, false, no, nein, off); nicht gesetzt oder leer ist Vorschau (vorher schrieb jeder Wert ausser «1»).
@@ -41,7 +42,7 @@ const DRY=!['0','false','no','nein','off'].includes(String(process.env.DRY_RUN==
 const SENKEN=['1','true','ja','yes','on'].includes(String(process.env.SENKEN||'').trim().toLowerCase());
 const AUSWAHL=new Set(AUSWAHL_SPEC.map(s=>s.handle));
 const MIT_AUSWAHL=process.env.AUCH_AUSWAHL==='1';
-const API='2025-01';
+const API='2026-01';   // wie der Sync (printful_sync.mjs); die alte Fassung lief auf dem abgelaufenen 2025-01 (10.11.2026, Gegenleser Linse 2: ein Test hält beide Versionen gleich)
 const PAUSE=Math.max(0,parseInt(process.env.REPRICE_PAUSE_MS||'2000',10)||0);   // Pause vor einer Wiederholung (Test: 0)
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 const FEHLER=[];   // alles, was nicht gelang: {wo, text}; jeder Eintrag macht den Lauf zu Exit 1
@@ -75,7 +76,7 @@ async function pfCost(vid){ if(costCache.has(vid)) return costCache.get(vid);
   const headers={'Authorization':'Bearer '+PF_KEY}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;
   let cost=null;
   try{ const r=await fetch('https://api.printful.com/products/variant/'+vid,{headers}); const j=await r.json().catch(()=>({}));
-    const p=j?.result?.variant?.price; if(p!=null) cost=parseFloat(p); }catch{}
+    const p=j?.result?.variant?.price; if(p!=null){ const c=parseFloat(p); cost=Number.isFinite(c)&&c>0?c:null; } }catch{}   // ein leerer, unlesbarer oder 0-Preis ist «unbekannt» (früher NaN bzw. 11.90 bei 0, 10.11.2026 Gegenleser Linse 1)
   costCache.set(vid,cost); return cost; }
 
 function variantId(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?m[1]:null; }

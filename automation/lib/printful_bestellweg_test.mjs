@@ -16,6 +16,7 @@ import {
   modellAusSku, SKU_BASIS, QD_MIN, QD_MAX, standortVon, aufpreisUsd, aufpreisPruefen, paketStandard, paketAusOption,
   adresseNormal, EIGENE_CLOUDINARY_CLOUD, KOSTEN_MIN_USD, entwurfVergleichen, editorProdukt, zahlungPruefen, ANLEGEN_SPERRE_MIN, anlegenTag, anlegenAlterMin,
   vorhandenVergleichen, SCOPES_PFLICHT, scopesBewerten, bestaetigenPlan,
+  EIGENER_SHOPIFY_CDN_PFAD, FO_DRUCKBAR, anlegenGesperrt, anspruchGewonnen, bestellStand, bestellAbweichung,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -377,7 +378,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const p = await plane([zeile({ quantity: 3, discountedTotalSet: { shopMoney: { amount: '89.70', currencyCode: 'CHF' } } })]);
   ist('Plan: Menge 3 und Erlös der Position', [p.items[0].quantity, p.erloesChf], [3, 89.7]);
   const p2 = await plane([zeile({ quantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9002', quantity: 'x' })]);
-  ist('Plan: unsinnige Menge → 1', p2.items.map((i) => i.quantity), [1, 1]);
+  ist('Plan: unsinnige Menge (0 ohne currentQuantity, Text) → KEIN Artikel, zwei harte Befunde «menge-unlesbar» (früher: 1 Stück geraten; Gegenleser 10.11.2026)', [p2.items.length, arten(p2.befunde), p2.befunde.map((b) => b.hart)], [0, ['menge-unlesbar', 'menge-unlesbar'], [true, true]]);
 }
 { // v5-Positionen wie bisher: Vorne/Hinten über den Printful-Typ der Variante
   const p = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (Vorne)', U('v')), A('🖼️ Druckdatei (Hinten)', U('h'))] })]);
@@ -609,7 +610,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const q3 = await planeBestellung(bestellung([zeile({ quantity: 1, currentQuantity: 0, customAttributes: [A('🖼️ Druckdatei (front)', 'https://evil.example.com/x.png')] })]), mkIo());
   ist('…auch mit schlechter Druckdatei: eine entfernte Position löst keinen Befund aus', q3.befunde, []);
   const q4 = await planeBestellung(bestellung([zeile({ quantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9002', quantity: 'x' })]), mkIo());
-  ist('Menge: ohne brauchbare Zahlen bleibt es bei 1 (wie bisher)', q4.items.map((i) => i.quantity), [1, 1]);
+  ist('Menge: ohne brauchbare Zahlen wird NICHTS gedruckt: kein Artikel, harter Befund «menge-unlesbar» (nie ein geratenes Stück)', [q4.items.length, arten(q4.befunde), q4.befunde[0]?.hart, /nicht lesbar/.test(q4.befunde[0]?.text || '')], [0, ['menge-unlesbar', 'menge-unlesbar'], true, true]);
   const q5 = await planeBestellung(bestellung([zeile({ quantity: 2, currentQuantity: 5 })]), mkIo());
   ist('Menge: currentQuantity über der bestellten Menge (unsinnig) → gilt, Erlös nicht erhöht', [q5.items[0].quantity, q5.positionenChf], [5, 29.9]);
 }
@@ -851,7 +852,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('Standort: zwei Positionen, die erste am Dienst, die zweite am Händler: jede für sich', [art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST).edges[0], fulfillmentOrders([ID2]).edges[0]] } }, ID1), art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST).edges[0], fulfillmentOrders([ID2]).edges[0]] } }, ID2)], ['dienst', 'frei']);
   ist('Standort: dieselbe Position in zwei Fulfillment-Orders (geteilt), eine am Dienst → dienst', art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1]).edges[0], fulfillmentOrders([ID1], FO_DIENST).edges[0]] } }, ID1), 'dienst');
   for (const st of ['CLOSED', 'CANCELLED', 'closed']) ist(`Standort: Fulfillment-Order ${st} zählt nicht (veraltet): nur sie vorhanden → unklar`, art({ fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST, st) }, ID1), 'unklar');
-  ist('Standort: geschlossene Dienst-Order UND offene Händler-Order → frei (die geschlossene zählt nicht)', art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST, 'CLOSED').edges[0], fulfillmentOrders([ID1]).edges[0]] } }, ID1), 'frei');
+  ist('Standort: geschlossene Dienst-Order UND offene Händler-Order für dieselbe Position → UNKLAR (hat der Dienst schon gedruckt? Gegenleser 10.11.2026; früher «frei»)', standortVon({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST, 'CLOSED').edges[0], fulfillmentOrders([ID1]).edges[0]] } }, ID1).art, 'unklar');
   for (const st of ['OPEN', 'IN_PROGRESS', 'ON_HOLD', 'SCHEDULED', 'INCOMPLETE']) ist(`Standort: Fulfillment-Order ${st} am Dienst zählt`, art({ fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST, st) }, ID1), 'dienst');
   ist('Standort: Position steht in keiner Fulfillment-Order → unklar', art({ fulfillmentOrders: fulfillmentOrders([ID2]) }, ID1), 'unklar');
   ist('Standort: keine Positions-ID → unklar (nie «frei» geraten)', [art({ fulfillmentOrders: fulfillmentOrders([ID1]) }, undefined), art({ fulfillmentOrders: fulfillmentOrders([ID1]) }, '')], ['unklar', 'unklar']);
@@ -1298,6 +1299,141 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('Aufpreis Fund 8: fehlendes Preisfeld bei der Rückseite → weicher Befund «aufpreis-unbekannt» (kein Auftrag ohne Freigabe von Hand), bei der Vorderseite keiner', [ap.map((b) => [b.art, b.hart]), aufpreisPruefen({ roh: roh([{ type: 'default', id: 'default' }]), typen: ['default'], bezahlt: [] })], [[['aufpreis-unbekannt', false]], []]);
 }
 
+// ═══════════════════════════════════════ ZWEITE RUNDE 10.11.2026 (drei Gegenleser nach der Härtung P1): reine Logik
+{
+  // ── Linse 1, Fund 6: Herkunft der Druckdatei (eigener Datei-Pfad im Shopify-CDN, nur Grösse/Qualität/Format bei Cloudinary)
+  const C = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/';
+  ist('R2 Adresse: der eigene Datei-Pfad im Shopify-CDN ist als Konstante festgeschrieben', EIGENER_SHOPIFY_CDN_PFAD, '/s/files/1/0943/6856/3585/');
+  for (const [n, w, soll] of [
+    ['Shopify-CDN, eigene Dateien', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a.png', null],
+    ['Shopify-CDN, Dateien eines FREMDEN Shops', 'https://cdn.shopify.com/s/files/1/9999/9999/9999/files/a.png', 'Shopify-CDN-Adresse nicht aus den eigenen Dateien des Shops'],
+    ['Shopify-CDN, anderer Bereich', 'https://cdn.shopify.com/shopifycloud/x/a.png', 'Shopify-CDN-Adresse nicht aus den eigenen Dateien des Shops'],
+    ['Shopify-CDN, Pfad nur ähnlich (ohne den letzten Schrägstrich)', 'https://cdn.shopify.com/s/files/1/0943/6856/35850/files/a.png', 'Shopify-CDN-Adresse nicht aus den eigenen Dateien des Shops'],
+    ['Cloudinary ohne Transformation', C + 'v1/a.png', null], ['Cloudinary im Ordner «mock»', C + 'mock/1.png', null], ['Cloudinary im Ordner «pod_uploads» (kein Kürzel)', C + 'pod_uploads/v1/a.png', null],
+    ['Cloudinary Grösse und Format', C + 'c_limit,w_1400/v1/a.png', null], ['Cloudinary Qualität und Format', C + 'q_auto,f_auto/v1/a.png', null], ['Cloudinary dpr', C + 'dpr_2.0/v1/a.png', null],
+  ]) ist(`R2 Adresse: ${n}`, adresseProblem(w), soll);
+  for (const [n, w, muster] of [
+    ['Überlagerung l_fetch mit Fremdadresse', C + 'l_fetch:aHR0cHM6Ly9ldmlsLmV4YW1wbGUveC5wbmc=/x.png', /Transformation/], ['Unterlage u_', C + 'u_evil/v1/x.png', /Transformation/],
+    ['Effekt e_blur', C + 'e_blur:500/v1/x.png', /Transformation/], ['benannte Transformation t_', C + 't_named/v1/x.png', /Transformation/], ['erlaubte plus verbotene Angabe', C + 'c_limit,l_x/v1/x.png', /Transformation/],
+    ['Grösse mit absurder Zahl', C + 'w_99999999/v1/x.png', /Transformation/], ['Datei fehlt (Pfad endet auf /)', C + 'v1/', /Dateinamen/], ['Prozentzeichen im Dateinamen', C + 'v1/a%20b.png', /Dateinamen/],
+    ['Doppelpunkt im Dateinamen', C + 'v1/l_fetch:abc', /Dateinamen/], ['Prozentzeichen im Ordnernamen', C + 'a%20b/v1/x.png', /Pfadstück/], ['Gleichheitszeichen im Ordnernamen', C + 'a=b/v1/x.png', /Pfadstück/],
+  ]) wahr(`R2 Adresse: ${n} → abgewiesen`, (adresseProblem(w) || '') !== '' && muster.test(adresseProblem(w) || ''), String(adresseProblem(w)));
+  ist('R2 Adresse: das Produkt-Metafeld des Besitzers (eigeneCloud:false) darf weiter jeden Pfad nennen', [adresseProblem('https://cdn.shopify.com/s/files/1/9999/9999/9999/files/a.png', ['cdn.shopify.com'], { eigeneCloud: false }), adresseProblem(C + 'l_fetch:abc/x.png', ['res.cloudinary.com'], { eigeneCloud: false })], [null, null]);
+
+  // ── Linse 1, Fund 1: Fulfillment-Order-Status ist eine Whitelist
+  const ID1 = 'gid://shopify/LineItem/9001';
+  const foNode = (status, ort = FO_HAENDLER, ids = [ID1]) => ({ node: { id: 'f-' + status, status, assignedLocation: { location: ort }, lineItems: { edges: ids.map((id) => ({ node: { lineItem: { id } } })) } } });
+  const stand = (...nodes) => standortVon({ fulfillmentOrders: { edges: nodes } }, ID1);
+  ist('R2 Standort: die druckbaren Status sind nur OPEN und IN_PROGRESS', [...FO_DRUCKBAR], ['OPEN', 'IN_PROGRESS']);
+  for (const st of ['OPEN', 'IN_PROGRESS', 'open', 'in_progress']) ist(`R2 Standort: ${st} am Händler-Standort → frei`, stand(foNode(st)).art, 'frei');
+  for (const st of ['ON_HOLD', 'SCHEDULED', 'INCOMPLETE', 'REQUEST_DECLINED', 'WEIRD', '']) ist(`R2 Standort: «${st || '(leer)'}» am Händler-Standort → gehalten (nie druckbar)`, stand(foNode(st)), { art: 'gehalten', status: st ? st.toUpperCase() : '(leer)' });
+  ist('R2 Standort: ein Status ohne Wert (fehlt ganz) → gehalten', standortVon({ fulfillmentOrders: { edges: [{ node: { assignedLocation: { location: FO_HAENDLER }, lineItems: { edges: [{ node: { lineItem: { id: ID1 } } }] } } }] } }, ID1).art, 'gehalten');
+  ist('R2 Standort: gehalten am DIENST-Standort → dienst (der Dienst hat Vorrang)', stand(foNode('ON_HOLD', FO_DIENST)).art, 'dienst');
+  ist('R2 Standort: gehalten UND offen für dieselbe Position → gehalten', stand(foNode('ON_HOLD'), foNode('OPEN')).art, 'gehalten');
+  ist('R2 Standort: eine gehaltene Order einer ANDEREN Position stört nicht', standortVon({ fulfillmentOrders: { edges: [foNode('OPEN'), foNode('ON_HOLD', FO_HAENDLER, ['gid://shopify/LineItem/8888'])] } }, ID1).art, 'frei');
+  ist('R2 Standort: eine geschlossene Dienst-Order neben einer offenen Händler-Order → unklar, der Grund nennt die geschlossene Order', [stand(foNode('CLOSED', FO_DIENST), foNode('OPEN')).art, /GESCHLOSSENEN/.test(stand(foNode('CLOSED', FO_DIENST), foNode('OPEN')).grund)], ['unklar', true]);
+  ist('R2 Standort: eine geschlossene Order mit nicht lesbarem Standort neben einer offenen → unklar', stand(foNode('CLOSED', { id: 'l' }), foNode('OPEN')).art, 'unklar');
+  ist('R2 Standort: eine geschlossene Order OHNE Standort neben einer offenen → unklar', standortVon({ fulfillmentOrders: { edges: [{ node: { status: 'CLOSED', assignedLocation: null, lineItems: { edges: [{ node: { lineItem: { id: ID1 } } }] } } }, foNode('OPEN')] } }, ID1).art, 'unklar');
+  ist('R2 Standort: eine geschlossene HÄNDLER-Order neben einer offenen (Teillieferung) → frei', stand(foNode('CLOSED'), foNode('OPEN')).art, 'frei');
+  ist('R2 Standort: eine STORNIERTE Dienst-Order neben einer offenen Händler-Order → frei (storniert = nichts gedruckt)', stand(foNode('CANCELLED', FO_DIENST), foNode('OPEN')).art, 'frei');
+  ist('R2 Standort: eine geschlossene Dienst-Order einer ANDEREN Position stört nicht', standortVon({ fulfillmentOrders: { edges: [foNode('CLOSED', FO_DIENST, ['gid://shopify/LineItem/8888']), foNode('OPEN')] } }, ID1).art, 'frei');
+  {
+    const io = mkIo();
+    const p = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: { edges: [foNode('ON_HOLD')] } }), io, { paket: paketAlles });
+    ist('R2 Plan: Order ON_HOLD → HARTER Befund «fulfillment-gehalten», kein Artikel, keine Netzabfrage, der Text nennt den Status, das Tag und bleibt unter 450 Zeichen', [arten(p.befunde), p.befunde[0]?.hart, p.items.length, io.log.produkt, io.log.druck, io.log.kopf, io.log.kontrolle, /ON_HOLD/.test(p.befunde[0]?.text), /printful-review/.test(p.befunde[0]?.text), p.befunde[0]?.text.length < 450], [['fulfillment-gehalten'], true, 0, [], [], [], [], true, true, true]);
+    const gut = await planeBestellung(bestellung([zeile(), zeile({ id: 'gid://shopify/LineItem/9002', customAttributes: [A('🖼️ Druckdatei (front)', U('w'))] })]), mkIo(), { paket: paketAlles });
+    ist('R2 Plan: positionIds nennt genau die Positionen, aus denen ein Artikel entstand', gut.positionIds, ['gid://shopify/LineItem/9001', 'gid://shopify/LineItem/9002']);
+    const teil = await planeBestellung(bestellung([zeile(), zeile({ id: 'gid://shopify/LineItem/9002', quantity: 1, currentQuantity: 0 })]), mkIo(), { paket: paketAlles });
+    ist('R2 Plan: eine entfernte Position steht nicht in positionIds', teil.positionIds, ['gid://shopify/LineItem/9001']);
+  }
+
+  // ── Linse 1, Fund 5: eine unlesbare Menge ist ein harter Befund, nie «1»
+  for (const [n, z] of [['quantity 0 ohne currentQuantity', { quantity: 0 }], ['quantity als Text', { quantity: 'x' }], ['quantity negativ', { quantity: -2 }], ['quantity fehlt', { quantity: undefined }]]) {
+    const p = await planeBestellung(bestellung([zeile(z)]), mkIo(), { paket: paketAlles });
+    ist(`R2 Menge: ${n} → harter Befund «menge-unlesbar», kein Artikel`, [arten(p.befunde), p.befunde[0]?.hart, p.items.length], [['menge-unlesbar'], true, 0]);
+  }
+  {
+    const nichtPod = await planeBestellung(bestellung([zeile({ quantity: 'x', product: { productType: 'x', tags: ['cj'] }, customAttributes: [] })]), mkIo(), { paket: paketAlles });
+    ist('R2 Menge: eine unlesbare Menge bei einer NICHT-POD-Position ist kein Befund (sie interessiert den Sync nicht)', [nichtPod.befunde, nichtPod.items.length], [[], 0]);
+    const o = bestellung([zeile({ quantity: 'x' })]);
+    ist('R2 Menge: der Vergleich mit einem vorhandenen Printful-Auftrag nennt die unlesbare Menge (nie «1» geraten)', vorhandenVergleichen({ recipient: { name: 'T', zip: '4000', country_code: 'CH' }, items: [{ quantity: 1 }] }, { ...o, shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' } }).texte, ['die Menge einer Position der Bestellung ist nicht lesbar', 'die Stückzahl weicht ab (Printful 1, Bestellung 0)']);
+  }
+
+  // ── Linse 2, Fund 2: Dateien JEDES Artikels
+  {
+    const art = (f) => ({ variant_id: 1, quantity: 1, files: f });
+    const ok = (t = 'front') => ({ type: t, status: 'ok' }), vor = { type: 'preview', status: 'ok' };
+    ist('R2 Dateien: zwei Artikel, beide mit Datei → ok', dateienStatus({ items: [art([ok(), vor]), art([ok(), vor])] }).art, 'ok');
+    ist('R2 Dateien: zwei Artikel, nur der ERSTE mit Datei → wartet (teilweise), nicht ok', dateienStatus({ items: [art([ok(), vor]), art([])] }), { art: 'wartet', texte: [], leer: false, teilweise: true });
+    ist('R2 Dateien: zwei Artikel, nur der ZWEITE mit Datei → wartet (teilweise)', dateienStatus({ items: [art([]), art([ok()])] }).teilweise, true);
+    ist('R2 Dateien: ein Artikel nur mit Vorschau-Datei zählt als ohne Datei', dateienStatus({ items: [art([ok()]), art([vor])] }).art, 'wartet');
+    ist('R2 Dateien: ein Artikel ohne das Feld files', dateienStatus({ items: [art([ok()]), { variant_id: 1, quantity: 1 }] }).art, 'wartet');
+    ist('R2 Dateien: kein Artikel hat eine Datei → wartet, leer (wie bisher)', dateienStatus({ items: [art([]), art([])] }), { art: 'wartet', texte: [], leer: true, teilweise: false });
+    ist('R2 Dateien: ein Problem einer Datei geht vor «wartet»', dateienStatus({ items: [art([{ type: 'front', status: 'failed' }]), art([])] }).art, 'problem');
+    const plan = [{ variant_id: 1, quantity: 1, files: [{ type: 'front' }] }, { variant_id: 1, quantity: 1, files: [{ type: 'front' }] }];
+    ist('R2 Entwurf: zwei Artikel, beide gleich dem Gesendeten → ok', entwurfVergleichen({ items: [art([ok(), vor]), art([ok(), vor])] }, plan).ok, true);
+    const t1 = entwurfVergleichen({ items: [art([ok(), vor]), art([])] }, plan);
+    ist('R2 Entwurf: nur der erste Artikel führt eine Datei → NICHT ok, der Text nennt Artikel 2', [t1.ok, /Artikel 2: Printful führt noch keine Datei/.test(t1.texte.join(' '))], [false, true]);
+    ist('R2 Entwurf: nur der zweite Artikel führt eine Datei → NICHT ok, der Text nennt Artikel 1', [entwurfVergleichen({ items: [art([]), art([ok()])] }, plan).ok, /Artikel 1: Printful führt noch keine Datei/.test(entwurfVergleichen({ items: [art([]), art([ok()])] }, plan).texte.join(' '))], [false, true]);
+    ist('R2 Entwurf: noch KEIN Artikel führt eine Datei → ok (das ist «wartet», Sache von dateienStatus)', entwurfVergleichen({ items: [art([]), art([])] }, plan).ok, true);
+    ist('R2 Entwurf: ein Artikel, den der Plan ohne Datei sendet, zählt beim Vergleich nicht als fehlend', entwurfVergleichen({ items: [art([ok()]), art([])] }, [plan[0], { variant_id: 1, quantity: 1, files: [] }]).ok, true);
+  }
+
+  // ── Linse 1, Fund 3: Anspruch vor dem Anlegen (Zeichenkette nach Schreibzeit geordnet, die kleinste gewinnt)
+  {
+    const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345);
+    ist('R2 Anspruch: ohne Zufallsteil die alte Form (Minute)', anlegenTag(T0), 'printful-anlegen-20261110t0937');
+    ist('R2 Anspruch: mit Zufallsteil Sekunden und Millisekunden dazu', anlegenTag(T0, 'ab12cd34'), 'printful-anlegen-20261110t0937-12345-ab12cd34');
+    ist('R2 Anspruch: Zufallsteil wird klein geschrieben', anlegenTag(T0, 'AB12CD34'), 'printful-anlegen-20261110t0937-12345-ab12cd34');
+    for (const z of ['abc', 'a'.repeat(13), 'ab cd', 'ab-cd', 'äbcdef']) { let f = null; try { anlegenTag(T0, z); } catch (e) { f = e.message; } wahr(`R2 Anspruch: ungültiger Zufallsteil «${z}» wirft`, typeof f === 'string' && /Zufallsteil/.test(f), String(f)); }
+    ist('R2 Anspruch: die frühere Zeit hat die kleinere Zeichenkette (über Sekunde, Minute, Stunde und Tag)', [anlegenTag(T0 - 1, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa'), anlegenTag(T0 - 60000, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa'), anlegenTag(T0 - 86400000, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa')], [true, true, true]);
+    ist('R2 Anspruch: anlegenAlterMin liest beide Formen (Minuten-Auflösung)', [anlegenAlterMin([anlegenTag(T0)], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab12cd34')], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab12cd34'), anlegenTag(T0 - 3600000, 'aaaaaaaa')], T0 + 5 * 60000)], [5, 5, 5]);
+    ist('R2 Anspruch: ein Tag mit falschem Suffix wird nicht als Markierung gelesen', anlegenAlterMin(['printful-anlegen-20261110t0937-1234-ab12cd34', 'printful-anlegen-20261110t0937-12345-xy', 'printful-anlegen-20261110t0937-12345-AB12CD34'], T0), null);
+    ist('R2 Sperre: genau ANLEGEN_SPERRE_MIN Minuten alt sperrt NICHT mehr, eine weniger sperrt, keine Markierung sperrt nicht', [anlegenGesperrt(ANLEGEN_SPERRE_MIN - 1), anlegenGesperrt(ANLEGEN_SPERRE_MIN), anlegenGesperrt(ANLEGEN_SPERRE_MIN + 1), anlegenGesperrt(0), anlegenGesperrt(null)], [true, false, false, true, false]);
+    const mein = anlegenTag(T0, 'bbbbbbbb');
+    const g = (tags) => anspruchGewonnen(tags, mein, T0 + 1000);
+    ist('R2 Anspruch: nur die eigene Markierung → gewonnen', g([mein]).ok, true);
+    ist('R2 Anspruch: ein früherer Anspruch eines anderen → verloren, der Grund nennt ihn', [g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, /früher markiert/.test(g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).grund)], [false, true]);
+    ist('R2 Anspruch: ein späterer Anspruch eines anderen → gewonnen (der andere unterliegt)', g([mein, anlegenTag(T0 + 5000, 'aaaaaaaa')]).ok, true);
+    ist('R2 Anspruch: gleiche Zeit, kleinerer Zufallsteil des anderen → verloren; grösserer → gewonnen', [g([mein, anlegenTag(T0, 'aaaaaaaa')]).ok, g([mein, anlegenTag(T0, 'cccccccc')]).ok], [false, true]);
+    ist('R2 Anspruch: ein früherer Anspruch aus der alten Form (nur Minute) → verloren, ein späterer alter → gewonnen', [g([mein, anlegenTag(T0 - 60000)]).ok, g([mein, anlegenTag(T0 + 120000)]).ok], [false, true]);
+    ist('R2 Anspruch: ein früherer Anspruch von vor mehr als 60 Minuten ist nicht mehr aktiv → gewonnen', g([mein, anlegenTag(T0 - 70 * 60000, 'aaaaaaaa')]).ok, true);
+    ist('R2 Anspruch: ein früherer Anspruch von vor 59 Minuten ist noch aktiv → verloren', g([mein, anlegenTag(T0 - 59 * 60000, 'aaaaaaaa')]).ok, false);
+    ist('R2 Anspruch: die eigene Markierung fehlt in der Liste → verloren (nie raten)', [g([]).ok, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, anspruchGewonnen(null, mein, T0).ok], [false, false, false]);
+    ist('R2 Anspruch: fremde Tags (printful-synced, Versuchszähler) stören nicht', g([mein, 'printful-synced', 'printful-versuch-2', 'wunschdesign']).ok, true);
+  }
+
+  // ── Linse 1, Fund 2: Stand der Bestellung beim Planen gegen das frische Lesen
+  {
+    const adresse = { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' };
+    const z = (id, q = 1, cq = q) => ({ id, quantity: q, currentQuantity: cq });
+    const n = (extra = {}) => ({ id: 'gid://shopify/Order/1', email: 'a@b.ch', shippingAddress: { ...adresse }, lineItems: { edges: [{ node: z('gid://shopify/LineItem/1') }, { node: z('gid://shopify/LineItem/2', 2) }] }, fulfillmentOrders: { edges: [foNode('OPEN', FO_HAENDLER, ['gid://shopify/LineItem/1']), foNode('OPEN', FO_HAENDLER, ['gid://shopify/LineItem/2'])] }, ...extra });
+    const soll = bestellStand(n(), ['gid://shopify/LineItem/1']);
+    const abw = (x, s = soll) => bestellAbweichung(x, s);
+    ist('R2 Stand: unverändert → keine Abweichung', abw(n()), null);
+    ist('R2 Stand: die Reihenfolge der Positionen spielt keine Rolle', abw(n({ lineItems: { edges: [{ node: z('gid://shopify/LineItem/2', 2) }, { node: z('gid://shopify/LineItem/1') }] } })), null);
+    for (const [name, x, art, muster] of [
+      ['Strasse', n({ shippingAddress: { ...adresse, address1: 'y' } }), 'geaendert', /Lieferadresse/], ['PLZ', n({ shippingAddress: { ...adresse, zip: '3000' } }), 'geaendert', /Lieferadresse/], ['Land', n({ shippingAddress: { ...adresse, countryCodeV2: 'US' } }), 'geaendert', /Lieferadresse/],
+      ['Telefon', n({ shippingAddress: { ...adresse, phone: '+41 1' } }), 'geaendert', /Lieferadresse/], ['E-Mail', n({ email: 'x@y.ch' }), 'geaendert', /E-Mail/], ['Adresse entfernt (null)', n({ shippingAddress: null }), 'geaendert', /Lieferadresse/],
+      ['Menge einer Position', n({ lineItems: { edges: [{ node: z('gid://shopify/LineItem/1', 3) }, { node: z('gid://shopify/LineItem/2', 2) }] } }), 'geaendert', /Positionen oder Mengen/],
+      ['Position erstattet (currentQuantity 0)', n({ lineItems: { edges: [{ node: z('gid://shopify/LineItem/1', 1, 0) }, { node: z('gid://shopify/LineItem/2', 2) }] } }), 'geaendert', /Positionen oder Mengen/],
+      ['Position entfernt', n({ lineItems: { edges: [{ node: z('gid://shopify/LineItem/2', 2) }] } }), 'geaendert', /Positionen oder Mengen/],
+      ['Position hinzugekommen', n({ lineItems: { edges: [{ node: z('gid://shopify/LineItem/1') }, { node: z('gid://shopify/LineItem/2', 2) }, { node: z('gid://shopify/LineItem/3') }] } }), 'geaendert', /Positionen oder Mengen/],
+      ['Fulfillment-Order gehalten', n({ fulfillmentOrders: { edges: [foNode('ON_HOLD', FO_HAENDLER, ['gid://shopify/LineItem/1'])] } }), 'geaendert', /ON_HOLD/],
+      ['Fulfillment-Order am Dienst-Standort', n({ fulfillmentOrders: { edges: [foNode('OPEN', FO_DIENST, ['gid://shopify/LineItem/1'])] } }), 'geaendert', /Dienst-Standort/],
+      ['Fulfillment-Order geschlossen (Position in keiner offenen)', n({ fulfillmentOrders: { edges: [foNode('CLOSED', FO_HAENDLER, ['gid://shopify/LineItem/1'])] } }), 'geaendert', /nicht mehr eindeutig/],
+    ]) { const r = abw(x); ist(`R2 Stand: ${name} → ${art}`, [r && r.art, r ? muster.test(r.text) : null], [art, true]); }
+    for (const [name, x] of [['shippingAddress', n({ shippingAddress: undefined })], ['email', n({ email: undefined })], ['lineItems', n({ lineItems: undefined })], ['lineItems.edges', n({ lineItems: {} })], ['fulfillmentOrders', n({ fulfillmentOrders: undefined })], ['fulfillmentOrders.edges', n({ fulfillmentOrders: {} })]]) {
+      const r = abw(x);
+      ist(`R2 Stand: das Feld ${name} fehlt in der Antwort → unlesbar (nie «unverändert»)`, [r && r.art, r && r.text.length > 10], ['unlesbar', true]);
+    }
+    ist('R2 Stand: Fulfillment-Orders sind ohne geplante Positionen kein Pflichtfeld', abw(n({ fulfillmentOrders: undefined }), bestellStand(n(), [])), null);
+    ist('R2 Stand: keine Bestellung / kein Stand → unlesbar', [abw(null).art, abw(n(), null).art], ['unlesbar', 'unlesbar']);
+    ist('R2 Stand: bestellStand wandelt die Positions-IDs in Texte', bestellStand(n(), [1, 'x']).positionIds, ['1', 'x']);
+  }
+}
+
+
 // ═══════════════════════════════════════ Workflow-Schalter (Fund 12/20/24): das Verhalten, nicht nur der Text
 // Der Schritt «Schreiben oder nur lesen?» aus printful-sync.yml wird ausgeführt (bash, leeres Verzeichnis, gefälschte Ausgabedateien), der Ausdruck für DRY_RUN nach den Regeln von GitHub Actions ausgewertet
 // (Wahrheit: leere Zeichenkette, false, null sind falsch; die Zeichenkette '0' ist wahr; && liefert den ersten falschen Wert, sonst den letzten; || den ersten wahren, sonst den letzten).
@@ -1399,6 +1535,62 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('CI Fund 16/26: …und im sparse-checkout des Jobs «tests» (sonst werden die Abgleiche still übersprungen)', noetig.filter((f) => !imAuszug(f)), []);
     ist('CI Fund 17: das Zeitlimit des Jobs «tests» ist gesetzt und lässt Luft für die Messung (mindestens 10 Minuten)', (() => { const m = /timeout-minutes: (\d+)/.exec(jobTests.join('\n')); return m ? Number(m[1]) >= 10 : false; })(), true);
   }
+
+  // ── ZWEITE RUNDE 10.11.2026 (Gegenleser Linse 2, Fund 1/3/4/6): die übrige Verdrahtung der Workflows wird festgehalten, nicht nur der Schritt «modus»
+  {
+    // Blöcke des YAML ohne Parser: der Text unter einer Überschrift bis zur nächsten Zeile mit gleichem oder kleinerem Einzug
+    const block = (text, kopf) => {
+      const z = text.split('\n'); const i = z.findIndex((l) => l === kopf || l.trimEnd() === kopf);
+      if (i < 0) return null;
+      const ein = /^(\s*)/.exec(z[i])[1].length, r = [];
+      for (let k = i + 1; k < z.length; k++) { const l = z[k]; if (l.trim() === '' || /^\s*#/.test(l)) { r.push(l); continue; } if (/^(\s*)/.exec(l)[1].length <= ein) break; r.push(l); }
+      return r.join('\n');
+    };
+    const ohneKommentar = (text) => text.split('\n').filter((l) => !/^\s*#/.test(l)).join('\n');
+    if (braucht(wfSync, '.github/workflows/printful-sync.yml')) {
+      const t = readFileSync(pfad(wfSync), 'utf8'), c = ohneKommentar(t);
+      const conc = block(c, 'concurrency:') || '';
+      ist('R2 Workflow Sync (L2/1): die Concurrency-Gruppe ist der FESTE Text «printful-sync» (kein ${{ }}, nie eine Gruppe je Lauf) und bricht laufende Läufe NICHT ab (cancel-in-progress genau false)', [/^\s+group: printful-sync\s*$/m.test(conc), /\$\{\{/.test(conc), /^\s+cancel-in-progress: false\s*$/m.test(conc)], [true, false, true]);
+      const tm = /timeout-minutes: (\d+)/.exec(c);
+      ist('R2 Workflow Sync (L2/1): das Zeitlimit des Jobs ist gesetzt, mindestens 5 und höchstens 20 Minuten (ein hängender Lauf hält die Concurrency-Gruppe)', [!!tm, tm ? Number(tm[1]) >= 5 && Number(tm[1]) <= 20 : null], [true, true]);
+      const crons = [...c.matchAll(/^\s*-\s*cron:\s*'([^']*)'\s*$/gm)].map((m) => m[1]);
+      ist('R2 Workflow Sync (L2/3): genau EIN Zeitplan, und er läuft einmal täglich (feste Minute und Stunde, sonst nur Sterne)', [crons.length, crons.length === 1 && /^\d{1,2} \d{1,2} \* \* \*$/.test(crons[0])], [1, true]);
+      ist('R2 Workflow Sync: der Zeitplan ist nicht auskommentiert und es gibt keine weiteren Auslöser ausser Handstart (on: nur schedule und workflow_dispatch)', [...(block(c, 'on:') || '').split('\n').filter((l) => /^  \S/.test(l)).map((l) => l.trim())], ['schedule:', 'workflow_dispatch:']);
+      const sparse = (block(c, '        with:') || '').split('\n').filter((l) => /^\s{12}\S/.test(l)).map((l) => l.trim());
+      ist('R2 Workflow Sync (L2/3): die Freigabedatei steht im sparse-checkout (sonst wäre sie im Lauf nie da und der Zeitplan bliebe für immer Trockenlauf)', sparse.includes('dropship/PRINTFUL-SYNC-FREI.txt'), true);
+      const eingaben = block(c, '    inputs:') || '';
+      const eingabeNamen = eingaben.split('\n').filter((l) => /^      \w+:/.test(l)).map((l) => l.trim().replace(':', ''));
+      const dryEnv = (/^\s*DRY_EINGABE: \$\{\{ github\.event\.inputs\.(\w+) \}\}\s*$/m.exec(c) || [])[1];
+      ist('R2 Workflow Sync (L2/3): die Umgebungsvariable DRY_EINGABE zeigt auf eine Eingabe, die der Handstart wirklich hat (heisst sie anders, bliebe der Handstart für immer Trockenlauf)', [eingabeNamen.includes(dryEnv), dryEnv], [true, 'dry_run']);
+      ist('R2 Workflow Sync (L2/3): der Schritt «modus» liest genau diese Umgebungsvariable und das Ereignis', [/\$DRY_EINGABE/.test(schritt(t, 'modus') || ''), /\$EREIGNIS/.test(schritt(t, 'modus') || ''), /EREIGNIS: \$\{\{ github\.event_name \}\}/.test(c)], [true, true, true]);
+      for (const [name, wert] of [['PRINTFUL_API_KEY', 'secrets.PRINTFUL_API_KEY'], ['PRINTFUL_STORE_ID', 'secrets.PRINTFUL_STORE_ID'], ['MAX', 'secrets.PRINTFUL_MAX || vars.PRINTFUL_MAX'], ['GEMINI_API_KEY', 'secrets.GEMINI_API_KEY'], ['SHOPIFY_SHOP', 'secrets.SHOPIFY_SHOP'], ['SHOPIFY_CLIENT_ID', 'secrets.SHOPIFY_CLIENT_ID'],
+        ['SHOPIFY_CLIENT_SECRET', 'secrets.SHOPIFY_CLIENT_SECRET'], ['SHOPIFY_ADMIN_TOKEN', 'secrets.SHOPIFY_ADMIN_TOKEN'], ['TELEGRAM_BOT_TOKEN', 'secrets.TELEGRAM_BOT_TOKEN'], ['TELEGRAM_CHAT_ID', 'secrets.TELEGRAM_CHAT_ID']]) {
+        ist(`R2 Workflow Sync (L2/3): ${name} wird aus ${wert.replace(/ \|\| /, ' oder ')} durchgereicht`, new RegExp(`^\\s+${name}: \\$\\{\\{ ${wert.replace(/[.|]/g, '\\$&')} \\}\\}\\s*$`, 'm').test(c), true);
+      }
+      ist('R2 Workflow Sync (L2/3): die Rechte sind genau «contents: read» (kein write)', [(block(c, 'permissions:') || '').split('\n').filter((l) => l.trim()).map((l) => l.trim()), /:\s*write\b/.test(c)], [['contents: read'], false]);
+      ist('R2 Workflow Sync: der Auslieferungszustand ist Trockenlauf-sicher (Standard der Handstart-Eingabe true, kein DRY_RUN fest auf 0)', [/default: true/.test(eingaben), /DRY_RUN: '?0'?\s*$/m.test(c)], [true, false]);
+    }
+    if (braucht(wfPreis, '.github/workflows/printful-reprice.yml')) {
+      const t = readFileSync(pfad(wfPreis), 'utf8'), c = ohneKommentar(t);
+      const eingabe = (name) => { const z = (block(c, '    inputs:') || '').split('\n'); const i = z.findIndex((l) => l.trim() === name + ':'); if (i < 0) return ''; const r = []; for (let k = i + 1; k < z.length && /^\s{8}/.test(z[k]); k++) r.push(z[k].trim()); return r.join('\n'); };
+      ist('R2 Workflow Preise (L2/4): «apply» hat den Standard false (ein Klick ohne Haken schreibt keine Preise), «senken» ebenso', [/default: false/.test(eingabe('apply')), /default: true/.test(eingabe('apply')), /default: false/.test(eingabe('senken')), /default: true/.test(eingabe('senken'))], [true, false, true, false]);
+      ist('R2 Workflow Preise (L2/4): der Standard-Tag der Eingabe ist «wunschdesign» (die Editor-Produkte), der Aufschlag 2.3', [/default: 'wunschdesign'/.test(eingabe('tag')), /default: '2\.3'/.test(eingabe('markup'))], [true, true]);
+      ist('R2 Workflow Preise (L2/4): ist die Eingabe «tag» leer, gilt ebenfalls «wunschdesign» (nicht die Fertigware)', /TAG: \$\{\{ github\.event\.inputs\.tag \|\| 'wunschdesign' \}\}/.test(c), true);
+      ist('R2 Workflow Preise (L2/4): es gibt NUR den Handstart (kein schedule, kein push)', (block(c, 'on:') || '').split('\n').filter((l) => /^  \S/.test(l)).map((l) => l.trim()), ['workflow_dispatch:']);
+      ist('R2 Workflow Preise (L2/4): die Rechte sind genau «contents: read»; die Concurrency-Gruppe ist fest und bricht nicht ab', [(block(c, 'permissions:') || '').split('\n').filter((l) => l.trim()).map((l) => l.trim()), /:\s*write\b/.test(c), /^\s+group: printful-reprice\s*$/m.test(block(c, 'concurrency:') || ''), /^\s+cancel-in-progress: false\s*$/m.test(block(c, 'concurrency:') || '')], [['contents: read'], false, true, true]);
+    }
+    if (braucht(wfCi, '.github/workflows/luxestyle-automation-tests.yml')) {
+      const t = readFileSync(pfad(wfCi), 'utf8');
+      const zeilen = t.split('\n');
+      const jobTests = zeilen.slice(zeilen.findIndex((l) => /^  tests:\s*$/.test(l)), zeilen.findIndex((l) => /^  lagerbestand:\s*$/.test(l)));
+      const lauf = (datei) => jobTests.filter((l) => new RegExp(`^\\s+node ${datei.replace(/[.]/g, '\\.')}\\s*(#.*)?$`).test(l)).length;
+      ist('R2 CI (L2/6): die Tests des Bestellwegs laufen als EINE reine «node <Datei>»-Zeile (kein «|| true», kein «;», kein «&&» dahinter), genau einmal', ['automation/printful_reprice_test.mjs', 'automation/printful_sync_test.mjs', 'automation/lib/printful_bestellweg_test.mjs', 'automation/lib/printful_platzierung_test.mjs'].map(lauf), [1, 1, 1, 1]);
+      ist('R2 CI (L2/6): auch die Mutationsprobe (--pruefen) ist eine reine Zeile', jobTests.filter((l) => /^\s+node dropship\/selbst-gestalten-fertig-0511\/bestellweg\/mutation\.mjs --pruefen\s*(#.*)?$/.test(l)).length, 1);
+      ist('R2 CI (L2/6): im Job «tests» steht weder «continue-on-error» noch «|| true» noch «set +e»', [/continue-on-error/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /\|\| true\b/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /set \+e/.test(jobTests.join('\n'))], [false, false, false]);
+      const tm = /timeout-minutes: (\d+)/.exec(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n'));
+      ist('R2 CI (L2/7): das Zeitlimit des Jobs «tests» liegt zwischen 15 und 30 Minuten (lokal gemessen rund 600 s Schritte, also über 60 % von 15 Minuten; die Doku nennt keine «obere Schranke» mehr)', [!!tm, tm ? Number(tm[1]) >= 15 && Number(tm[1]) <= 30 : null], [true, true]);
+    }
+  }
 }
 
 
@@ -1420,6 +1612,23 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       ist(`SHARD: bei ${n} Teilen liegt jeder der ${MUTANTEN.length} Mutanten in genau einem Teil`, zaehler.every((z) => z === 1), true);
     }
     ist('SHARD: ohne Teilung gehört jeder Mutant dazu', [imShard(0, null), imShard(424, null)], [true, true]);
+    // ZWEITE RUNDE 10.11.2026 (Gegenleser Linse 2, Fund 8): eine Zeitüberschreitung, ein Signal oder ein Startfehler des Kindprozesses heisst NICHT «erkannt» (der Test hat dann nichts festgestellt)
+    const { testen } = await import(mut.href);
+    const TEST_DATEIEN = ['automation/printful_reprice_test.mjs', 'automation/lib/printful_bestellweg_test.mjs', 'automation/lib/printful_platzierung_test.mjs', 'automation/printful_sync_test.mjs'];
+    const wurzel = (ersteDatei) => {
+      const d = mkdtempSync(join(tmpdir(), 'mutation-testen-'));
+      TEST_DATEIEN.forEach((f, i) => { mkdirSync(join(d, f, '..'), { recursive: true }); writeFileSync(join(d, f), i === 0 ? ersteDatei : 'process.exit(0);\n'); });
+      return d;
+    };
+    const einordnen = (ersteDatei, limit) => { const d = wurzel(ersteDatei); try { return testen(d, limit); } finally { rmSync(d, { recursive: true, force: true }); } };
+    ist('Probe (Einordnung): alle vier Testdateien grün → null (nichts erkannt)', einordnen('process.exit(0);\n', 5000), null);
+    ist('Probe (Einordnung): eine benannte Prüfung ist rot (Zeile «✗ …», Exit 1) → «pruefung»', einordnen("console.log('✗ eine Prüfung'); process.exit(1);\n", 5000)?.art, 'pruefung');
+    ist('Probe (Einordnung): Ausnahme ohne rote Prüfung → «ausnahme»', einordnen("throw new TypeError('x');\n", 5000)?.art, 'ausnahme');
+    const haengt = einordnen('setInterval(() => {}, 1000);\n', 600);
+    ist('Probe (Einordnung): ein hängender Test (Zeitüberschreitung) ist «ungeklaert», NICHT erkannt', [haengt?.art, /ETIMEDOUT/.test(String(haengt?.grund))], ['ungeklaert', true]);
+    const signal = einordnen("process.kill(process.pid, 'SIGKILL');\nsetInterval(() => {}, 1000);\n", 5000);
+    ist('Probe (Einordnung): ein vom Signal beendeter Test ist «ungeklaert»', [signal?.art, /SIGKILL/.test(String(signal?.grund))], ['ungeklaert', true]);
+    ist('Probe (Einordnung): die erste rote Datei gewinnt, die Reihenfolge der Dateien bleibt (reprice, bestellweg, platzierung, sync)', einordnen("console.log('✗ x'); process.exit(1);\n", 5000)?.datei, 'printful_reprice_test.mjs');
   } else console.log('(mutation.mjs nicht ausgecheckt → SHARD-Prüfung übersprungen)');
 }
 
