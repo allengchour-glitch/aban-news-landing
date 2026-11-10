@@ -633,6 +633,63 @@ if (SOLL_VERSION >= '6.4.1') {
   gleich('Konstanten: TEXT_DUNKEL und TEXT_HELL', [H.TEXT_DUNKEL, H.TEXT_HELL], ['#111111', '#ffffff']);
   pruefe('WEISS_SCHATTEN steht auf false (Entscheid des Besitzers offen; die Rückkehr zu 6.4.0 ist diese eine Zeile)', H.WEISS_SCHATTEN === false);
   pruefe('WEISS_SCHATTEN ist im Quelltext genau eine Zeile «var WEISS_SCHATTEN = false;» und gilt an genau zwei Stellen (Leinwand, Bühne)', (() => { const q = readFileSync(V6_DATEI, 'utf8'); return (q.match(/var WEISS_SCHATTEN = (false|true);/g) || []).length === 1 && (q.match(/WEISS_SCHATTEN && e\.color/g) || []).length === 2; })());
+  // Grund hinter der durchsichtigen Druckdatei in den Prüfabbildungen (pruefGrund): weisse Schrift braucht einen dunklen Grund, sonst bleibt es der helle wie bis 6.4.0
+  {
+    gleich('Prüfgrund: die Felder des Schachbretts', H.PRUEF_GRUND, { hell: ['#ffffff', '#e6e6e6'], dunkel: ['#2b2b2b', '#474747'] });
+    const felder = { hell: [[255, 255, 255], [230, 230, 230]], dunkel: [[43, 43, 43], [71, 71, 71]] };
+    const pixel = (liste) => { const d = new Uint8ClampedArray(liste.reduce((sum, [, n]) => sum + n, 0) * 4); let i = 0; for (const [[r, g, b, a], n] of liste) for (let k = 0; k < n; k++, i += 4) d.set([r, g, b, a], i); return d; };
+    // Eigene Rechnung: einfarbiges Design der Graustufe v ist schlecht lesbar, wenn EIN Feld des Schachbretts weniger als 1,8 zu 1 Kontrast hat
+    const schlecht = (art, v) => felder[art].some(([r, g, b]) => kon(lum(v, v, v), lum(r, g, b)) < 1.8);
+    let abw = 0, nDunkel = 0;
+    for (let v = 0; v <= 255; v++) {
+      const soll = schlecht('hell', v) && !schlecht('dunkel', v) ? 'dunkel' : 'hell';
+      const ist = H.pruefGrund(pixel([[[v, v, v, 255], 100]]));
+      if (ist === 'dunkel') nDunkel++;
+      if (ist !== soll) abw++;
+    }
+    pruefe('Prüfgrund: alle 256 Graustufen wie die eigene Rechnung (dunkler Grund genau dann, wenn nur der helle Grund schlecht lesbar ist)', abw === 0, abw + ' Abweichungen');
+    pruefe('Prüfgrund: beide Ausgänge kommen vor (die Wahl ist nicht festgenagelt)', nDunkel > 0 && nDunkel < 256, 'dunkel bei ' + nDunkel + ' von 256');
+    gleich('Prüfgrund: weisse Schrift → dunkel', H.pruefGrund(pixel([[[255, 255, 255, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Weiss mit Kontrast 1,31 zum zweiten Feld (#f2f2f2) → dunkel', H.pruefGrund(pixel([[[242, 242, 242, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Standardschrift #111111 → hell', H.pruefGrund(pixel([[[17, 17, 17, 255], 80]])), 'hell');
+    gleich('Prüfgrund: blaues Bild #2040c0 und pinke Schrift #ff69b4 → hell', [H.pruefGrund(pixel([[[32, 64, 192, 255], 80]])), H.pruefGrund(pixel([[[255, 105, 180, 255], 80]]))], ['hell', 'hell']);
+    gleich('Prüfgrund: leeres Design (alles durchsichtig) → hell', H.pruefGrund(pixel([[[255, 255, 255, 0], 80]])), 'hell');
+    gleich('Prüfgrund: weisse Pixel unter Alpha 20 % zählen nicht → hell', H.pruefGrund(pixel([[[255, 255, 255, 40], 80]])), 'hell');
+    gleich('Prüfgrund: 70 % weiss, 30 % dunkel → dunkel (das kleinere Übel)', H.pruefGrund(pixel([[[255, 255, 255, 255], 70], [[17, 17, 17, 255], 30]])), 'dunkel');
+    gleich('Prüfgrund: 30 % weiss, 70 % dunkel → hell', H.pruefGrund(pixel([[[255, 255, 255, 255], 30], [[17, 17, 17, 255], 70]])), 'hell');
+    gleich('Prüfgrund: Gleichstand 50 zu 50 → hell (wie bis 6.4.0)', H.pruefGrund(pixel([[[255, 255, 255, 255], 50], [[17, 17, 17, 255], 50]])), 'hell');
+    gleich('Prüfgrund: nach Alpha gewichtet (50 weisse deckende Pixel gegen 100 dunkle mit Alpha 20 %: 50 gegen 20 → dunkel)', H.pruefGrund(pixel([[[255, 255, 255, 255], 50], [[17, 17, 17, 51], 100]])), 'dunkel');
+    nahe('Prüfgrund: Grau #b9b9b9 hat zum hellen zweiten Feld (#e6e6e6) 1,57 zu 1, zum ersten (#ffffff) 1,96 zu 1', kon(lum(185, 185, 185), lum(230, 230, 230)), 1.573, 0.01);
+    gleich('Prüfgrund: Grau #b9b9b9 ist nur auf dem zweiten Feld schlecht lesbar, das genügt → dunkel (beide Felder zählen)', H.pruefGrund(pixel([[[185, 185, 185, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Grau #b9b9b9 ist auf beiden dunklen Feldern gut lesbar, Grau #404040 auf dem hellen: je der bessere Grund', [H.pruefGrund(pixel([[[185, 185, 185, 255], 80]])), H.pruefGrund(pixel([[[64, 64, 64, 255], 80]]))], ['dunkel', 'hell']);
+    // Gleichwertig mit der Rechnung über kontrastAnalyse (je Feld, das schlechtere Feld je Grund) auf zufälligen RGBA-Flächen: die Ein-Durchlauf-Fassung rechnet dasselbe
+    {
+      let z = 12345; const zuf = () => { z = (z * 1103515245 + 12345) % 2147483648; return z / 2147483648; };
+      let abwR = 0, nDunkelR = 0; const N = 300;
+      for (let t = 0; t < N; t++) {
+        const n = 50 + Math.floor(zuf() * 150), d = new Uint8ClampedArray(n * 4), art = t % 3;
+        for (let i = 0; i < n; i++) {
+          const v = art === 0 ? Math.floor(zuf() * 256) : art === 1 ? (zuf() < 0.5 ? 255 : 20) : null;   // Zufallsgrau, Weiss und Dunkel gemischt, Zufallsfarben
+          d.set(v === null ? [zuf() * 256, zuf() * 256, zuf() * 256, zuf() < 0.2 ? zuf() * 80 : 255 * (0.3 + 0.7 * zuf())] : [v, v, v, zuf() < 0.15 ? 10 : 255 * (0.3 + 0.7 * zuf())], i * 4);
+        }
+        const sch = (a) => Math.max(...felder[a].map(([r, g, b]) => H.kontrastAnalyse(d, [r, g, b]).anteil));
+        const soll = sch('hell') > sch('dunkel') ? 'dunkel' : 'hell';
+        const ist = H.pruefGrund(d);
+        if (ist === 'dunkel') nDunkelR++;
+        if (ist !== soll) abwR++;
+      }
+      pruefe('Prüfgrund: ' + N + ' zufällige RGBA-Flächen wie die Rechnung über kontrastAnalyse', abwR === 0, abwR + ' Abweichungen');
+      pruefe('Prüfgrund: auch die zufälligen Flächen ergeben beide Grundarten', nDunkelR > 10 && nDunkelR < N - 10, 'dunkel bei ' + nDunkelR + ' von ' + N);
+    }
+    // Die CSS-Klassen tragen genau die Farben der Konstante (sonst misst die Wahl gegen andere Felder als die, die man sieht)
+    const q = readFileSync(V6_DATEI, 'utf8');
+    const hex6 = (h) => (h.length === 4 ? '#' + h.slice(1).split('').map((c) => c + c).join('') : h).toLowerCase();
+    for (const [klasse, art] of [['.lsp6-review-print', 'hell'], ['.lsp6-checker', 'hell'], ['.lsp6-review-print.lsp6-review-dunkel', 'dunkel'], ['.lsp6-checker.lsp6-checker-dunkel', 'dunkel']]) {
+      const m = q.match(new RegExp("'" + klasse.replace(/\./g, '\\.') + '\\{([^}]*)\\}\''));
+      const farben = m ? [...new Set((m[1].match(/#[0-9a-f]{3,6}(?![0-9a-f])/gi) || []).map(hex6))].sort() : [];
+      gleich('CSS ' + klasse + ' malt genau die zwei Felder des Grundes «' + art + '»', farben, H.PRUEF_GRUND[art].slice().sort());
+    }
+  }
 }
 
 // 6.4.0 bleibt für den Rollout (SRI-Pfad) und als Rücknahme von 6.4.1 bytegleich (Stand 09.11.2026)
@@ -644,7 +701,7 @@ if (SOLL_VERSION >= '6.4.1') {
 // 6.4.1 (eingefroren am 09.11.2026): jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash; die Mutationsprobe arbeitet nur an Kopien
 {
   const v641 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.1.js'));
-  pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '7889aaaa1b4c2bdcbe453a33d3722bbf6e9e3ea0c9db34e0824859e1c0ddba5c' && v641.length === 271232, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
+  pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '937e67252d4f7122b2b75174df9146bd11b303db9a59f7cb59d61af7b968998f' && v641.length === 277211, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
 }
 
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur

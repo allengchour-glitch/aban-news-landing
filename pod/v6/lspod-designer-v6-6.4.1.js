@@ -7,6 +7,8 @@
  *   - Der Kontrast-Hinweis («Dein Motiv ist dunkel und der Stoff ebenfalls») erscheint auch in «Bearbeiten» und «Druckversion», gerechnet aus dem Design gegen die Stofffarbe (nicht aus der Vorschau).
  *   - Weisse Schrift bekommt keinen halbtransparenten Schatten mehr (Konstante WEISS_SCHATTEN, Vorgabe false): in Druckdatei, Vorschau und Bühne. GEWOLLTE Änderung der Druckdatei für weissen Text.
  *   - Handy: die Knöpfe «Text | Sticker | Bild» stehen direkt unter der Bühne statt am Ende der Seite.
+ *   - Druckprüfung: die durchsichtige Druckdatei («Verbindliche Druckdatei» im Dialog, «Druck-Vorschau anzeigen») liegt auf einem Schachbrett, das zur Schrift passt: ein dunkles, wenn die Datei auf dem
+ *     hellen schlecht lesbar wäre (weisse Schrift ist seit 6.4.1 auf dunklem Stoff der Normalfall), sonst das helle wie bisher. Nur die Anzeige; die Datei selbst wird nicht berührt.
  *   - Kleinigkeiten ohne Wirkung auf die Druckdatei: Beschriftung der Druckfläche bleibt im Rahmen, Vorschau ist ein tabpanel, Pfeile und Entf auf den Reitern der Platzierungen gehören dem Reiter,
  *     Schieberwerte folgen den Zahlenfeldern.
  *
@@ -124,6 +126,10 @@
   var WEISS_SCHATTEN = false;
   var TEXT_DUNKEL = '#111111';                    // Standardfarbe eines neuen Textes auf hellem Stoff (wie bis 6.4.0 immer)
   var TEXT_HELL = '#ffffff';                      // Standardfarbe auf dunklem Stoff
+  /** Die zwei Felder des Schachbretts hinter der durchsichtigen Druckdatei in den Prüfabbildungen (Hex), je Grund. Die CSS-Klassen .lsp6-review-print / .lsp6-checker (hell) und .lsp6-review-dunkel / .lsp6-checker-dunkel
+   *  tragen dieselben Farben; ein Test hält beides gleich. */
+  var PRUEF_GRUND = { hell: ['#ffffff', '#e6e6e6'], dunkel: ['#2b2b2b', '#474747'] };
+  var PRUEF_GRUND_BREITE = 512;                   // die Druckdatei wird für die Wahl des Grundes in Schritten von höchstens 4 zu 1 auf eine Breite zwischen 128 und 512 px verkleinert (dünne Schrift soll nicht wegfallen)
   var ENTWURF_SCHLUESSEL = 'lspod6:entwurf:';
   var ENTWURF_MAX_ALTER_MS = 7 * 24 * 3600 * 1000;
   var ENTWURF_MAX_ZEICHEN = 200000;               // grösser wird nicht gespeichert (Speicherplatz des Browsers ist knapp)
@@ -673,6 +679,37 @@
     try { if (cv) { cv.width = 0; cv.height = 0; } } catch (x) { /* egal */ }
   }
 
+  /** Grund für die Prüfabbildung einer Druckdatei (Blob): 'hell' oder 'dunkel' (pruefGrund). Die Datei wird dafür nur gelesen, in Schritten von höchstens 4 zu 1 verkleinert (ein Sprung von 1800 auf 48 px
+   *  liess Schrift ab etwa 5 mm Höhe ausfallen, GEMESSEN in Chromium am 10.11.2026) und nie verändert. Jeder Fehler (Datei nicht lesbar, Leinwand verweigert) ergibt 'hell' wie bis 6.4.1; das Ergebnis ist nur Anzeige und beeinflusst weder Upload noch Eigenschaften. */
+  function druckGrundErmitteln(blob) {
+    return new Promise(function (fertig) {
+      var url = '';
+      function ende(wert) { if (url) { try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } } fertig(wert); }
+      try { url = URL.createObjectURL(blob); } catch (x) { fertig('hell'); return; }
+      var bild = new Image();   // Blob-Adresse desselben Ursprungs: kein crossOrigin nötig, die Leinwand bleibt lesbar
+      bild.onerror = function () { ende('hell'); };
+      bild.onload = function () {
+        var wert = 'hell', quelle = bild, zwischen = null;
+        try {
+          var bw = bild.naturalWidth || bild.width, bh = bild.naturalHeight || bild.height, w = bw;
+          if (!(bw > 0 && bh > 0)) throw new Error('leer');
+          do {
+            var nw = w > PRUEF_GRUND_BREITE ? Math.ceil(w / 4) : w, nh = Math.max(1, Math.round(nw * bh / bw));
+            var cv = document.createElement('canvas');
+            cv.width = nw; cv.height = nh;
+            cv.getContext('2d').drawImage(quelle, 0, 0, nw, nh);
+            if (zwischen) leinwandFreigeben(zwischen);
+            zwischen = cv; quelle = cv; w = nw;
+          } while (w > PRUEF_GRUND_BREITE);
+          wert = pruefGrund(zwischen.getContext('2d').getImageData(0, 0, zwischen.width, zwischen.height).data);
+        } catch (x) { wert = 'hell'; }
+        leinwandFreigeben(zwischen);
+        ende(wert);
+      };
+      bild.src = url;
+    });
+  }
+
   /** Das Bild der Ebene mit allen Bearbeitungen (Zuschnitt, Drehen, Spiegeln, Filter) auf eine Leinwand zeichnen; maxBreite 0 = volle Grösse. */
   function bildBearbeiten(ebene, maxBreite) {
     return bildLaden(ebene.origSrc || ebene.src).then(function (img) {
@@ -846,6 +883,25 @@
     var d = hexZuRgb(TEXT_DUNKEL), h = hexZuRgb(TEXT_HELL);
     return kontrastVerhaeltnis(leuchtdichte(h[0], h[1], h[2]), lf) > kontrastVerhaeltnis(leuchtdichte(d[0], d[1], d[2]), lf) ? TEXT_HELL : TEXT_DUNKEL;
   }
+  /** Grund hinter der durchsichtigen Druckdatei in den Prüfabbildungen: 'dunkel', wenn mehr vom Design (alphagewichtet, Pixel ab Alpha 20 %) auf dem HELLEN Schachbrett schlecht lesbar ist als auf dem dunklen (Kontrastverhältnis unter
+   *  KONTRAST_SCHWELLE, gegen das schlechtere der zwei Felder), sonst 'hell' (wie bis 6.4.0; auch bei Gleichstand, leerem Design und gemischtem Design, das auf keinem Grund besser lesbar wird).
+   *  data = RGBA-Pixel der (verkleinerten) Druckdatei. */
+  function pruefGrund(data) {
+    var felder = [];   // je Feld des Schachbretts: Grund, Leuchtdichte und die schlecht lesbare Fläche des Designs (alphagewichtet, wie kontrastAnalyse; eine Leuchtdichte je Pixel statt vier)
+    ['hell', 'dunkel'].forEach(function (art) {
+      PRUEF_GRUND[art].forEach(function (hex) { var c = hexZuRgb(hex); felder.push({ art: art, l: leuchtdichte(c[0], c[1], c[2]), schlecht: 0 }); });
+    });
+    for (var i = 0; i + 3 < data.length; i += 4) {
+      var a = data[i + 3] / 255;
+      if (!(a >= 0.2)) continue;   // durchsichtig: kein Design
+      var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);
+      for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l) < KONTRAST_SCHWELLE) felder[k].schlecht += a;
+    }
+    function schlecht(art) {
+      return Math.max.apply(null, felder.filter(function (f) { return f.art === art; }).map(function (f) { return f.schlecht; }));
+    }
+    return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';
+  }
 
   /** Tassen-Eichung eines Fotos: Adresse (Spiegel oder Printful), Körper des Zylinders (mitteX, radius), Druckhöhe (oben, unten), Winkel der ganzen Druckbreite, optional ausschnitt [x, y, w, h]. */
   function tasseOk(t) {
@@ -1018,6 +1074,7 @@
     '.lsp6-modal-t{color:#fff;font-weight:800;font-size:15px;margin-bottom:6px;text-align:center}',
     '.lsp6-modal-s{color:#e1e1e8;font-size:12.5px;margin-bottom:12px;text-align:center;max-width:380px}',
     '.lsp6-checker{background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border-radius:10px;padding:8px}',
+    '.lsp6-checker.lsp6-checker-dunkel{background-color:#2b2b2b;background-image:linear-gradient(45deg,#474747 25%,transparent 25%),linear-gradient(-45deg,#474747 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#474747 75%),linear-gradient(-45deg,transparent 75%,#474747 75%)}',
     '.lsp6-modal button.go{margin-top:14px;padding:12px 24px;min-height:44px;border:none;border-radius:999px;background:#fff;color:var(--ink);font-family:inherit;font-weight:800;font-size:15px;line-height:1;cursor:pointer}',
     '.lsp6-review{padding:16px}.lsp6-review,.lsp6-review *{box-sizing:border-box}',
     '.lsp6-review-panel{width:min(920px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;color:#16151a;border-radius:16px;padding:20px;box-shadow:0 24px 80px rgba(0,0,0,.35)}',
@@ -1038,6 +1095,7 @@
     '.lsp6-review-img{display:block;width:100%;height:auto;object-fit:contain;border-radius:9px;background:#f2f0ec}',
     '.lsp6-review-pvnote{margin:6px 0 0;color:#5b5a62;font-size:11.5px;line-height:1.35}',
     '.lsp6-review-print{background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}',
+    '.lsp6-review-print.lsp6-review-dunkel{background-color:#2b2b2b;background-image:linear-gradient(45deg,#474747 25%,transparent 25%),linear-gradient(-45deg,#474747 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#474747 75%),linear-gradient(-45deg,transparent 75%,#474747 75%)}',
     '.lsp6-review-fallback{display:flex;align-items:center;min-height:120px;border-radius:9px;padding:12px;background:#fff8e6;color:#4d3a07;font-size:12.5px;font-weight:650}',
     '.lsp6-review-check{display:flex;align-items:flex-start;gap:10px;min-height:44px;margin:16px 0 10px;font-size:14px;font-weight:750}',
     '.lsp6-review-check input{width:22px;height:22px;flex:none;margin:0;accent-color:#806019}',
@@ -3407,14 +3465,19 @@
       abwaehlen();
       meldung(T.baking);
       druckdateiErzeugen(st.aktiv).then(function (blob) {
+        if (!blob) { meldung(''); meldung(T.empty, 'err'); return; }
+        // 6.4.1: der Grund passt zur Schrift (dunkel für weisse Schrift); bei Zeitüberschreitung oder Fehler der helle wie bisher
+        return mitFrist(druckGrundErmitteln(blob), kaufFrist, 'hell').then(function (grund) { return [blob, grund]; });
+      }).then(function (e) {
+        if (!e) return;
+        var blob = e[0], grund = e[1];
         meldung('');
-        if (!blob) { meldung(T.empty, 'err'); return; }
         var url = URL.createObjectURL(blob);
         var g = geo(pAktiv());
         var modal = el('div', { class: 'lsp6-modal', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.previewHead });
         modal.appendChild(el('div', { class: 'lsp6-modal-t', text: T.previewHead }));
         modal.appendChild(el('div', { class: 'lsp6-modal-s', text: T.previewSub + ' ' + fmt(T.previewInfo, { w: g.render.w, h: g.render.h }) }));
-        var ruck = el('div', { class: 'lsp6-checker' }, [el('img', { src: url, alt: '', style: 'display:block;max-width:82vw;max-height:58vh' })]);
+        var ruck = el('div', { class: 'lsp6-checker' + (grund === 'dunkel' ? ' lsp6-checker-dunkel' : ''), 'data-grund': grund === 'dunkel' ? 'dunkel' : 'hell' }, [el('img', { src: url, alt: '', style: 'display:block;max-width:82vw;max-height:58vh' })]);
         modal.appendChild(ruck);
         var zuBtn = el('button', { type: 'button', class: 'go', text: T.close });
         function zu() { modal.remove(); try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } }
@@ -3470,7 +3533,12 @@
     }
     function reviewProduktVorschauen(dateien) {
       return Promise.all(dateien.map(function (datei) {
-        return mitFrist(vorschauExport(datei.p), kaufFrist, null).then(function (blob) { datei.produktBlob = blob || null; return datei; });
+        // 6.4.1: zugleich der Grund der Abbildung «Verbindliche Druckdatei» (nur Anzeige; bei Zeitüberschreitung oder Fehler der helle Grund wie bisher)
+        return Promise.all([mitFrist(vorschauExport(datei.p), kaufFrist, null), mitFrist(druckGrundErmitteln(datei.blob), kaufFrist, 'hell')]).then(function (e) {
+          datei.produktBlob = e[0] || null;
+          datei.druckGrund = e[1] === 'dunkel' ? 'dunkel' : 'hell';
+          return datei;
+        });
       }));
     }
     function reviewZeile(label, wert) {
@@ -3499,7 +3567,7 @@
         var druckUrl = URL.createObjectURL(datei.blob); r.urls.push(druckUrl);
         pics.appendChild(el('figure', { class: 'lsp6-review-figure' }, [
           el('figcaption', { text: T.reviewPrint }),
-          el('img', { class: 'lsp6-review-img lsp6-review-print', src: druckUrl, alt: T.reviewPrint + ' – ' + titelVon(datei.p), 'data-review-print': datei.p.id }),
+          el('img', { class: 'lsp6-review-img lsp6-review-print' + (datei.druckGrund === 'dunkel' ? ' lsp6-review-dunkel' : ''), src: druckUrl, alt: T.reviewPrint + ' – ' + titelVon(datei.p), 'data-review-print': datei.p.id, 'data-review-grund': datei.druckGrund === 'dunkel' ? 'dunkel' : 'hell' }),
         ]));
         var produkt = el('figure', { class: 'lsp6-review-figure' });
         var produktArt = vorschauSpec(datei.p).art;
@@ -3886,6 +3954,7 @@
       BEARBEITEN_RAND: BEARBEITEN_RAND, BEARBEITEN_MIN_ANTEIL: BEARBEITEN_MIN_ANTEIL,
       // Neu in 6.4.1
       standardTextFarbe: standardTextFarbe, hexZuRgb: hexZuRgb, WEISS_SCHATTEN: WEISS_SCHATTEN, TEXT_DUNKEL: TEXT_DUNKEL, TEXT_HELL: TEXT_HELL,
+      pruefGrund: pruefGrund, PRUEF_GRUND: PRUEF_GRUND,
       // Neu in 6.3.0
       reviewStandGueltig: reviewStandGueltig,
       pflichtKarteBlockieren: pflichtKarteBlockieren,

@@ -630,6 +630,188 @@ szenario('kaufvergleich', true, async (b, srv) => {
   }
 });
 
+// ── Druckprüfung: die Druckdatei bleibt lesbar (Fund der Gegenlesung 09.11.2026) ───────────────────
+// Seit 6.4.1 ist weisse Schrift auf dunklem Stoff der Normalfall. Die Abbildungen «Verbindliche Druckdatei» (Dialog «Druckvorschau prüfen») und «Druck-Vorschau anzeigen» zeigen die durchsichtige Datei auf einem
+// Schachbrett: ein helles reicht für dunkle Schrift, für weisse (Kontrast 1,0 bis 1,3 zu 1) nicht. Gemessen wird am GERENDERTEN Bild (Screenshot des Elements, das den Grund malt), nicht am CSS:
+// Maske und Farbe der deckenden Pixel aus der Druckdatei, die zwei Farben des Schachbretts aus dem Screenshot (dort, wo die Datei durchsichtig ist), Kontrast nach WCAG.
+async function lesbarkeit(p, grundSel, bildSel) {
+  const png = (await p.locator(grundSel).screenshot()).toString('base64');
+  return p.evaluate(async ([b64, bildSel, grundSel]) => {
+    const lum = (r, g, b) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+    const kon = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    const bild = document.querySelector(bildSel), grund = document.querySelector(grundSel);
+    const gr = grund.getBoundingClientRect(), br = bild.getBoundingClientRect();
+    const shot = await createImageBitmap(await (await fetch('data:image/png;base64,' + b64)).blob());
+    const sc = document.createElement('canvas'); sc.width = shot.width; sc.height = shot.height;
+    const sx = sc.getContext('2d', { willReadFrequently: true }); sx.drawImage(shot, 0, 0);
+    const bmp = await createImageBitmap(await (await fetch(bild.src)).blob());
+    const x0 = Math.round(br.left - gr.left), y0 = Math.round(br.top - gr.top), w = Math.round(br.width), h = Math.round(br.height);
+    const ac = document.createElement('canvas'); ac.width = w; ac.height = h;
+    const ax = ac.getContext('2d', { willReadFrequently: true }); ax.drawImage(bmp, 0, 0, w, h);
+    const ad = ax.getImageData(0, 0, w, h).data, sd = sx.getImageData(x0, y0, w, h).data;
+    const rand = 10;   // abgerundete Ecken des Bildes aussparen
+    const grundFarben = new Map(); const deckend = [];
+    for (let y = rand; y < h - rand; y++) for (let x = rand; x < w - rand; x++) {
+      const i = (y * w + x) * 4, a = ad[i + 3];
+      if (a === 0) { const k = sd[i] + ',' + sd[i + 1] + ',' + sd[i + 2]; grundFarben.set(k, (grundFarben.get(k) || 0) + 1); }
+      else if (a >= 250) deckend.push(lum(ad[i], ad[i + 1], ad[i + 2]));   // Farbe der Tinte aus der Datei selbst (am Rand schmaler Striche mischt der Browser beim Verkleinern anders als dieses Verkleinern)
+    }
+    const farben = [...grundFarben.entries()].sort((u, v) => v[1] - u[1]).slice(0, 2).map(([k]) => k.split(',').map(Number));
+    const lg = farben.map((c) => lum(c[0], c[1], c[2]));
+    let schlecht = 0, minK = Infinity;
+    for (const lt of deckend) { const k = Math.min(...lg.map((l) => kon(lt, l))); if (k < 3) schlecht++; if (k < minK) minK = k; }
+    return { deckend: deckend.length, anteilUnlesbar: deckend.length ? schlecht / deckend.length : null, minKontrast: deckend.length ? minK : null, grundFarben: farben.map((c) => c.join(',')), attr: bild.getAttribute('data-review-grund') };
+  }, [png, bildSel, grundSel]);
+}
+const REVIEW_BILD = 'img[data-review-print]';
+async function reviewOeffnen(p) {
+  await p.locator('.lsp6-cta').click();
+  const dialog = p.locator('[data-lsp6-review="1"]');
+  await dialog.waitFor({ state: 'visible', timeout: 30000 });
+  await p.waitForFunction(() => { const i = document.querySelector('img[data-review-print]'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 15000 });
+}
+function lesbarPruefen(name, r, erwarteGrund, minDeckend = 400) {
+  pruefe(name + ': genug deckende Pixel gemessen und ein zweifarbiges Schachbrett gefunden', r.deckend > minDeckend && r.grundFarben.length === 2, JSON.stringify(r));
+  pruefe(name + ': die deckenden Pixel haben mindestens 3 zu 1 Kontrast zu BEIDEN Feldern des Schachbretts (gerendert gemessen)', r.anteilUnlesbar !== null && r.anteilUnlesbar <= 0.02 && r.minKontrast >= 3, JSON.stringify(r));
+  if (erwarteGrund) pruefe(name + ': Grund der Abbildung ist «' + erwarteGrund + '» (data-review-grund)', r.attr === erwarteGrund, 'ist ' + r.attr);
+}
+szenario('druckpruefung', true, async (b, srv) => {
+  // 1. schwarzer Stoff, Standardfarbe weiss (der Normalfall seit 6.4.1) → dunkler Grund
+  for (const [name, opt] of [['PC', {}], ['Handy 390', MOBIL]]) {
+    const s = await oeffnen(b, srv, T71, opt);
+    const p = s.page;
+    await sichtWarten(p);
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt');
+    await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    const t = await textEbenen(p);
+    pruefe(name + ': Testaufbau: der Text ist weiss (Standardfarbe auf schwarzem Stoff)', t.length === 1 && t[0].color === '#ffffff' && t[0].auto, JSON.stringify(t));
+    await reviewOeffnen(p);
+    lesbarPruefen(name + ', weisse Schrift auf schwarzem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'dunkel');
+    pruefe(name + ': keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 2. weisser Stoff, Standardfarbe dunkel → heller Grund wie bisher
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await reviewOeffnen(p);
+    lesbarPruefen('dunkle Schrift auf weissem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'hell');
+    await s.schliessen();
+  }
+  // 3. schwarzer Stoff, ABER gewählte dunkle Schrift: die Druckdatei zeigt dunkle Schrift, also heller Grund (auf dem Stoff wäre sie unlesbar, dafür gibt es den Hinweis, nicht den Grund der Abbildung)
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await p.locator('.lsp6-sw[data-c="#111111"]').click();
+    await reviewOeffnen(p);
+    lesbarPruefen('gewählte dunkle Schrift auf schwarzem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'hell');
+    await s.schliessen();
+  }
+  // 4. gewählte weisse Schrift auf weissem Stoff (der Kunde will es so): die Druckdatei bleibt lesbar → dunkler Grund
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await p.locator('.lsp6-sw[data-c="#ffffff"]').click();
+    await reviewOeffnen(p);
+    lesbarPruefen('gewählte weisse Schrift auf weissem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'dunkel');
+    await s.schliessen();
+  }
+  // 5. pinker Stoff mit Standardfarbe, nur ein blaues Bild, ein rotes Bild: alles bleibt lesbar (welcher Grund, entscheidet die Messung)
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1003);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await reviewOeffnen(p);
+    lesbarPruefen('Standardschrift auf pinkem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), null);
+    await s.schliessen();
+  }
+  for (const [farbe, grund] of [['#2040c0', 'hell'], ['#f2f2f2', 'dunkel']]) {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await motivHinzu(p, farbe, 4000); await bilderGeladen(p);
+    await reviewOeffnen(p);
+    lesbarPruefen('Bild ' + farbe, await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), grund);
+    await s.schliessen();
+  }
+  // 6. ohne Vorschaudaten (kein Reiter «Vorschau», im Dialog nur das Ersatztext-Feld): die Druckdatei ist die einzige Darstellung und muss lesbar sein
+  {
+    const s = await oeffnen(b, srv, T71.replace('&vorschau=71', ''));
+    const p = s.page; await p.waitForSelector('.lsp6-cta', { timeout: 10000 });   // ohne Vorschaudaten gibt es die Ansichtsleiste nicht
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await reviewOeffnen(p);
+    pruefe('ohne Vorschaudaten: im Dialog gibt es kein Produktbild, nur den Ersatztext', (await p.locator('img[data-review-product]').count()) === 0 && (await p.locator('[data-review-fallback]').count()) === 1);
+    lesbarPruefen('ohne Vorschaudaten, weisse Schrift auf schwarzem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'dunkel');
+    await s.schliessen();
+  }
+  // 6b. kleine weisse Schrift (4 mm Höhe): dünne Striche dürfen bei der Verkleinerung für die Wahl des Grundes nicht wegfallen (ein Sprung von 1800 auf 48 px liess schon Schrift ab etwa 5 mm Höhe ausfallen, GEMESSEN in Chromium 10.11.)
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 4);
+    await reviewOeffnen(p);
+    lesbarPruefen('kleine weisse Schrift (4 mm) auf schwarzem Stoff', await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD), 'dunkel', 5);
+    await s.schliessen();
+  }
+  // 7. Zwei Platzierungen mit verschiedenem Inhalt bekommen je ihren eigenen Grund: Vorderseite weisse Schrift (dunkler Grund), Rückseite gewählte dunkle Schrift (heller Grund)
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await p.locator('.lsp6-tab[data-p="front"]').click();
+    await textHinzufuegen(p, 'Vorne'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await p.locator('.lsp6-tab[data-p="back"]').click();
+    await textHinzufuegen(p, 'Hinten'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await p.locator('.lsp6-sw[data-c="#111111"]').click();
+    await p.locator('.lsp6-cta').click();
+    await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 30000 });
+    await p.waitForFunction(() => { const l = [...document.querySelectorAll('img[data-review-print]')]; return l.length === 2 && l.every((i) => i.complete && i.naturalWidth > 0); }, null, { timeout: 15000 });
+    lesbarPruefen('Vorderseite (weisse Schrift)', await lesbarkeit(p, 'img[data-review-print="front"]', 'img[data-review-print="front"]'), 'dunkel');
+    lesbarPruefen('Rückseite (gewählte dunkle Schrift)', await lesbarkeit(p, 'img[data-review-print="back"]', 'img[data-review-print="back"]'), 'hell');
+    pruefe('zwei Platzierungen: keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 8. «Druck-Vorschau anzeigen» (älterer Dialog, .lsp6-checker): dasselbe Problem, dieselbe Behandlung
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await p.locator('.lsp6-preview').click();
+    await p.waitForSelector('.lsp6-checker img', { timeout: 15000 });
+    await p.waitForFunction(() => { const i = document.querySelector('.lsp6-checker img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 15000 });
+    await p.evaluate(() => document.querySelector('.lsp6-checker img').setAttribute('data-review-print', 'vorschau'));
+    const r = await lesbarkeit(p, '.lsp6-checker', '.lsp6-checker img');
+    lesbarPruefen('Druck-Vorschau anzeigen, weisse Schrift auf schwarzem Stoff', r, null);
+    await s.schliessen();
+  }
+});
+
+// Die Wahl des Grundes ist nur Anzeige: scheitert das Lesen der Druckdatei (hier: getImageData wirft für die Analyse-Leinwand, 450 px breit bei der 1800-px-Datei der Vorderseite von Modell 71), gilt der helle Grund
+// wie bis 6.4.0, es gibt keinen Seitenfehler, und die Bestellung geht ganz normal bis in den Warenkorb.
+szenario('druckpruefung-fehler', true, async (b, srv) => {
+  const s = await oeffnen(b, srv, T71, { initSkript: () => { const orig = CanvasRenderingContext2D.prototype.getImageData; CanvasRenderingContext2D.prototype.getImageData = function () { if (this.canvas && this.canvas.width === 450) throw new Error('lesen verboten'); return orig.apply(this, arguments); }; } });
+  const p = s.page; await sichtWarten(p);
+  await variante(p, 1002);
+  await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+  await reviewOeffnen(p);
+  pruefe('Lesefehler: der Dialog öffnet sich mit dem hellen Grund (wie bis 6.4.0)', (await p.locator(REVIEW_BILD).getAttribute('data-review-grund')) === 'hell' && !(await p.locator(REVIEW_BILD).getAttribute('class')).includes('lsp6-review-dunkel'));
+  pruefe('Lesefehler: keine Seitenfehler', kein(s), s.fehler.join(' | '));
+  await reviewBestaetigen(p);
+  await p.waitForURL('**/cart', { timeout: 30000 });
+  pruefe('Lesefehler: die Bestellung geht bis in den Warenkorb (Druckdatei, Design, _pod_karte und Vorschau hochgeladen)', s.warenkorb.length === 1 && Object.keys(s.warenkorb[0].properties || {}).filter((k) => /Druckdatei|^_pod_karte$|^_vorschau$/.test(k)).length === 3, JSON.stringify(Object.keys((s.warenkorb[0] || {}).properties || {})));
+  pruefe('Lesefehler: keine Seitenfehler bis zum Warenkorb', kein(s), s.fehler.join(' | '));
+  await s.schliessen();
+});
+
 // ── Lauf ─────────────────────────────────────────────────────────────────────────────────────────
 const srv = await starteServer();
 const browser = await chromium.launch();

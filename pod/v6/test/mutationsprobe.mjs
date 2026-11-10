@@ -285,6 +285,23 @@ const MUTANTEN = [
   ["C55 Grössenschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
   ["C56 Drehschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
   ["C57 Gradanzeige des Drehschiebers folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      aufloesungPruefen(e);"],
+  // ── Druckprüfung (Fund der Gegenlesung 09.11.2026): Grund hinter der durchsichtigen Druckdatei passt zur Schrift (pruefGrund, druckGrundErmitteln, Dialoge) ──
+  ["C60 Prüfgrund: immer hell (weisse Schrift bleibt auf dem hellen Schachbrett)", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return 'hell';"],
+  ["C61 Prüfgrund: Wahl vertauscht", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return schlecht('hell') > schlecht('dunkel') ? 'hell' : 'dunkel';"],
+  ["C62 Prüfgrund: bei Gleichstand dunkel (leeres Design und 50 zu 50 wechseln den Grund)", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return schlecht('hell') >= schlecht('dunkel') ? 'dunkel' : 'hell';"],
+  ["C63 Prüfgrund: nur das erste Feld des Schachbretts zählt", ".filter(function (f) { return f.art === art; }).map(", ".filter(function (f) { return f.art === art; }).slice(0, 1).map("],
+  ["C64 Prüfgrund: das bessere statt das schlechtere Feld zählt", "return Math.max.apply(null, felder.filter(", "return Math.min.apply(null, felder.filter("],
+  ["C74 Prüfgrund: Pixel werden nicht nach Alpha gewichtet", "felder[k].schlecht += a;", "felder[k].schlecht += 1;"],
+  ["C75 Prüfgrund: auch Pixel unter Alpha 20 % zählen", "if (!(a >= 0.2)) continue;   // durchsichtig: kein Design", "if (!(a >= 0)) continue;"],
+  ["C65 Dialog: die Abbildung «Verbindliche Druckdatei» trägt die dunkle Klasse nie", "'lsp6-review-img lsp6-review-print' + (datei.druckGrund === 'dunkel' ? ' lsp6-review-dunkel' : '')", "'lsp6-review-img lsp6-review-print'"],
+  ["C66 Dialog: data-review-grund meldet immer hell", "'data-review-grund': datei.druckGrund === 'dunkel' ? 'dunkel' : 'hell' }", "'data-review-grund': 'hell' }"],
+  ["C67 Review: der Grund wird nie ermittelt (immer hell)", "datei.druckGrund = e[1] === 'dunkel' ? 'dunkel' : 'hell';", "datei.druckGrund = 'hell';"],
+  ["C68 Druck-Vorschau anzeigen: Schachbrett bleibt immer hell", "class: 'lsp6-checker' + (grund === 'dunkel' ? ' lsp6-checker-dunkel' : ''),", "class: 'lsp6-checker',"],
+  ["C69 Wahl des Grundes: ein Sprung auf 48 px statt Schritte von 4 zu 1 (dünne Schrift fällt weg)", "var nw = w > PRUEF_GRUND_BREITE ? Math.ceil(w / 4) : w,", "var nw = w > PRUEF_GRUND_BREITE ? 48 : w,"],
+  ["C70 Wahl des Grundes: ein Lesefehler wird nicht abgefangen (Seitenfehler)", "} catch (x) { wert = 'hell'; }\n        leinwandFreigeben(zwischen);", "} finally { /* nichts */ }\n        leinwandFreigeben(zwischen);"],
+  ["C71 CSS: dunkler Grund der Druckprüfung ist nicht dunkel", ".lsp6-review-print.lsp6-review-dunkel{background-color:#2b2b2b;", ".lsp6-review-print.lsp6-review-dunkel{background-color:#f4f4f4;"],
+  ["C72 Konstante: zweites dunkles Feld weicht vom CSS ab", "dunkel: ['#2b2b2b', '#474747'] };", "dunkel: ['#2b2b2b', '#777777'] };"],
+  ["C73 CSS: Druck-Vorschau anzeigen hat keinen dunklen Grund", ".lsp6-checker.lsp6-checker-dunkel{background-color:#2b2b2b;", ".lsp6-checker.lsp6-checker-dunkel{background-color:#f4f4f4;"],
   // B88b wäre «ohne stopPropagation»: GLEICHWERTIG, seit die Karte Knöpfe der Leiste und des Zooms selbst ausnimmt (zwei unabhängige Sicherungen); steht darum nicht in der Liste.
 ];
 
