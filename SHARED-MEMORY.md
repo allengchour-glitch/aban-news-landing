@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Büro: Tabellen und Statistik ·10.11.2026
+
+Codex ergänzt die generische Metricool-Monitorvorlage und die bestehende private Anzeige um Kanalvergleich, Tageswerte und Statistik mit belegter Datenbasis. Kein neuer Quellenabruf, keine Änderung im Metricool-Planer oder Shop. Private Messwerte bleiben außerhalb Git; Details und Tests in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), endgültiger Stand im zugehörigen PR.
+
+
 ## Aktuell: Arbeitsteilung LuxeStyle (10.11.2026)
 
 Wer was macht: `docs/ARBEITSTEILUNG-1011.md` (Kurzfassung oben in der Datei). Sie ersetzt die veraltete Tabelle «Die Sessions & wem was „gehört"» weiter unten, soweit sie LuxeStyle betrifft. Kernpunkt: Der Metricool-Planer wird nur von Claude und der Freigabe-Automation geschrieben, alle anderen lesen.
