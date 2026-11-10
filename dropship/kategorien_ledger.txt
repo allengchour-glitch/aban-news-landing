@@ -10232,3 +10232,9 @@
 2026-11-09T10:13:24.706Z · text-v2 laptop-tasche-schultertasche-50b73c
 2026-11-09T10:13:25.422Z · text-v2 laptoptasche-einfach-844636
 2026-11-09T10:13:26.134Z · text-v2 webcam-1080p-konferenz-video-4521a2
+2026-11-10T12:32:45.798Z · verfuegbar-zuerst ft-maske vorher=CREATED_DESC verfuegbar=23 uebrige=34
+2026-11-10T12:32:57.204Z · verfuegbar-zuerst ft-kinderkostuem vorher=CREATED_DESC verfuegbar=165 uebrige=162
+2026-11-10T12:33:08.906Z · verfuegbar-zuerst ft-damenkostuem vorher=CREATED_DESC verfuegbar=159 uebrige=149
+2026-11-10T12:33:20.585Z · verfuegbar-zuerst ft-herrenkostuem vorher=CREATED_DESC verfuegbar=153 uebrige=115
+2026-11-10T12:33:31.653Z · verfuegbar-zuerst ft-unisexkostuem vorher=CREATED_DESC verfuegbar=68 uebrige=58
+2026-11-10T12:33:42.522Z · verfuegbar-zuerst ft-peruecke vorher=CREATED_DESC verfuegbar=137 uebrige=54
