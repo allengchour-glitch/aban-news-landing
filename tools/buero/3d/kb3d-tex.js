@@ -78,19 +78,20 @@
     if (state === 'du') { g.moveTo(x, y - r * 1.15); g.lineTo(x + r * 0.95, y); g.lineTo(x, y + r * 1.15); g.lineTo(x - r * 0.95, y); g.closePath(); g.fill(); return; }
     g.lineWidth = Math.max(2, r * 0.38); g.arc(x, y, r * 0.8, 0, PI * 2); g.stroke();
   }
-  function lbKopf(g, kicker, titel, zeit, farben) {
+  function lbKopf(g, kicker, titel, zeit, farben, ins) {
+    ins = ins || 0;           // Randstreifen innen: Nachbarwände verdecken beim Zentralmonitor den Rand des Bildes
     var grad = g.createLinearGradient(0, 0, 1024, 512); grad.addColorStop(0, '#0f2a3d'); grad.addColorStop(1, '#16213a');
     g.fillStyle = '#08121f'; g.fillRect(0, 0, 1024, 512);
     g.fillStyle = grad; rr(g, 8, 8, 1008, 496, 18); g.fill();
     g.fillStyle = '#7ad6c4'; g.font = 'bold 17px ' + FONT; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
-    g.fillText(kicker, 48, 44);
-    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(lbFit(g, titel, 560), 48, 92);
+    g.fillText(kicker, 48 + ins, 44);
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(lbFit(g, titel, 560), 48 + ins, 92);
     // Uhr und «live»-Punkt
     g.textAlign = 'right';
-    g.fillStyle = '#a5e9df'; g.font = 'bold 16px ' + FONT; g.fillText('LIVE', 976, 38);
-    g.fillStyle = farben.gruen; g.beginPath(); g.arc(976 - g.measureText('LIVE').width - 14, 33, 6, 0, PI * 2); g.fill();
-    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(zeit || '--:--', 976, 82);
-    g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('Schweizer Zeit', 976, 103);
+    g.fillStyle = '#a5e9df'; g.font = 'bold 16px ' + FONT; g.fillText('LIVE', 976 - ins, 38);
+    g.fillStyle = farben.gruen; g.beginPath(); g.arc(976 - ins - g.measureText('LIVE').width - 14, 33, 6, 0, PI * 2); g.fill();
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(zeit || '--:--', 976 - ins, 82);
+    g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('Schweizer Zeit', 976 - ins, 103);
     g.textAlign = 'left';
   }
   T.liveboard = function (m) {
@@ -119,7 +120,7 @@
       lbLampe(g, st, tx + tw - 28, ty + 26, 9, farben[st]);
     }
     // Zeilen
-    var zeilen = m.zeilen || [], y0 = 216, zh = 39, max = 7;
+    var zeilen = m.zeilen || [], y0 = 216, zh = 36, max = 7;
     g.fillStyle = '#7ad6c4'; g.font = 'bold 16px ' + FONT; g.fillText('ABLAUF', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 452, y0 - 6); g.fillText('FRISCHE', 840, y0 - 6);
     for (i = 0; i < Math.min(max, zeilen.length); i++) {
       var z = zeilen[i], y = y0 + 6 + i * zh, c = farben[z.state] || farben.alt;
@@ -135,21 +136,22 @@
         if (f > 0.02) { rr(g, 840, y + 12, Math.max(12, 130 * f), 12, 6); g.fill(); }
       } else { g.fillStyle = '#7f93a3'; g.font = '15px ' + FONT; g.fillText('kein Alter', 846, y + 24); }
     }
-    if (zeilen.length > max) { g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('+ ' + (zeilen.length - max) + ' weitere Zeilen im Raum', 84, y0 + 6 + max * zh + 16); }
     g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
     g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Lampen und Balken sind Messwerte, kein Livesignal' : 'Messstand unbekannt', 48, 492);
+    // Mehr Zeilen als Platz: der Hinweis steht rechts auf der Fusszeile (unter den Zeilen ist kein Platz mehr)
+    if (zeilen.length > max) { g.fillStyle = '#9cb8c8'; g.textAlign = 'right'; g.fillText('+ ' + (zeilen.length - max) + ' weitere Zeilen im Raum', 976, 492); g.textAlign = 'left'; }
     return o.c;
   };
   /* Zentralmonitor: alle Räume nebeneinander. model = { zeit, stand, farben, summe:{...}, n, raeume:[{ titel, n, zaehler }] } */
   T.liveboardUebersicht = function (m) {
     var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i, k;
-    lbKopf(g, 'ZENTRALMONITOR', 'Alle Räume im Blick', m && m.zeit, farben);
-    if (!m) { g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen des Büros …', 48, 250); return o.c; }
-    var raeume = (m.raeume || []).slice(0, 7), tw = 221, th = 168, gap = 14, x0 = 48, y0 = 120;
+    lbKopf(g, 'ZENTRALMONITOR', 'Alle Räume im Blick', m && m.zeit, farben, 28);
+    if (!m) { g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen des Büros …', 76, 250); return o.c; }
+    var raeume = (m.raeume || []).slice(0, 7), tw = 209, th = 168, gap = 12, x0 = 76, y0 = 120;   // Rand 76 px: die Wände der Nachbarräume verdecken je nach Kamera bis zu 55 px
     function kachel(idx, titel, zaehler, n, gross) {
       var cx = x0 + (idx % 4) * (tw + gap), cy = y0 + Math.floor(idx / 4) * (th + gap), j, summe = 0;
       g.fillStyle = gross ? 'rgba(122,214,196,0.15)' : 'rgba(255,255,255,0.075)'; rr(g, cx, cy, tw, th, 16); g.fill();
-      g.fillStyle = '#f3f8ff'; g.font = 'bold 23px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 30), cx + 16, cy + 36);
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 21px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 24), cx + 16, cy + 36);
       g.fillStyle = '#b5cad6'; g.font = '16px ' + FONT; g.fillText(n + (n === 1 ? ' Eintrag' : ' Einträge'), cx + 16, cy + 60);
       for (j = 0; j < 5; j++) summe += zaehler[LB_ZUSTAENDE[j]] || 0;
       // Balken: Anteile der fünf Zustände
@@ -173,7 +175,7 @@
     for (i = 0; i < raeume.length; i++) kachel(i, raeume[i].titel, raeume[i].zaehler || {}, raeume[i].n || 0, false);
     kachel(7, 'Alle zusammen', m.summe || {}, m.n || 0, true);
     g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
-    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Antippen: grosse Ansicht' : 'Messstand unbekannt', 48, 492);
+    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Antippen: grosse Ansicht' : 'Messstand unbekannt', 76, 492);
     return o.c;
   };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
