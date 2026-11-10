@@ -17,3 +17,7 @@ Neue Seiten, in keiner früheren Liste (auch nicht in `INDEX-LISTE-0811.md` der 
 
 Klickweg wie in den früheren Listen. Gegenmessung der Listen a, b und c: Liste b am 09.11. früh (`trig_019Pua6L2XBEyBwfnmG8XFmx`), a und c danach.
 Drei Listen von heute (a = `INDEX-LISTE-0811a.md`, Claude; `INDEX-LISTE-0811.md`, Parallelsitzung; b, c = diese Reihe) überschneiden sich nicht.
+
+## Messung 10.11.2026 ca. 06:05 UTC (GEMESSEN, OpenSEO `inspect_urls`, Projekt `443c940c-…`)
+Erste Gegenmessung dieser Liste (Vergleich mit der Spalte «Google-Stand» vom 08.11. ca. 21:05 UTC). **1 von 10 indexiert: `damen-sets`** («Submitted and indexed», letzter Abruf durch Google 10.11. 04:05 UTC als Googlebot Mobil, von Google gewählte und deklarierte Adresse gleich, Breadcrumbs-Prüfung bestanden). «Gefunden – zurzeit nicht indexiert»: reisegepaeck, buro-home-office, ketten-mit-anhaenger (3). «URL ist Google nicht bekannt»: herren-reisetaschen, schmuck-sets-gruppe, malen-nach-zahlen-sets, diamond-painting, tier-naepfe-fuettern, velolichter-reflektoren (6).
+**Bewegung gegen 08.11.:** `damen-sets` von «gefunden» auf indexiert; `herren-reisetaschen`, `diamond-painting` und `tier-naepfe-fuettern` von «gefunden» zurück auf «nicht bekannt». Ob ein Antrag für `damen-sets` gestellt wurde, ist nicht belegt; die Ursache der Bewegung ist ungeklärt. Wirkung auf Rang und Verkäufe: nicht behauptet, nur die Zählung.
