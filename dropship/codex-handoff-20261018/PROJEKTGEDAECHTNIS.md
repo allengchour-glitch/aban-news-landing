@@ -1498,3 +1498,11 @@ Nach ausdrücklicher Freigabe wurde unmittelbar vor dem vorgesehenen Kollektions
 Produkt `15523986473345` bleibt ACTIVE/CHF96.90. Sein aktueller Admin-Body enthält erneut unbelegte Automatik-, Edelstahl- und2.2kg-Aussagen; wegen engem Freigabeumfang nicht verändert. Wirkung unbekannt. Belege `FREIGABE-KOLLEKTIONSLINK-20261110-R170.md/.json`; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R170_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 171: Artefaktzugriff ist kein Receipt
+
+Der Inhaberlink `https://claude.ai/code/artifact/db0c6aa6-d997-44ef-a8d1-b0236a6bebfb` wurde read-only als möglicher Übergabebeleg geprüft. Die öffentliche Shell antwortete HTTP200, zeigte aber `Sign in – Claude`; Firecrawl lieferte `accessible=false`/`loginRequired=true`, der direkte Inhaltsendpunkt `/api/frame/...` HTTP401 `unauthorized`. Eine authentifizierte Browsergegenprobe war in der Cloud-Umgebung ohne Remote-Desktop-Fähigkeit nicht verfügbar. Es war kein LuxeStyle-, Repo-, Branch-, Commit-, Revisions- oder Kenntnisnahmetext lesbar.
+
+Das widersprüchliche strukturierte Feld `explicitReceipt=true` wurde wegen unzugänglichem Inhalt, leerem Zitat und leeren Identitätsfeldern verworfen. Receipt bleibt `unknown_no_claude_receipt`; Revision170 bleibt fachlich unverändert. Keine externen oder operativen Writes. Belege `CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md/.json`.
+
+[LUXESTYLE_R171_20261110]

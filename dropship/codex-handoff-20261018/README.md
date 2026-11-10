@@ -2100,3 +2100,13 @@ Der frische Produktread zeigte erneut unbelegte Aussagen zu automatischer Fütte
 [R170 Bericht](FREIGABE-KOLLEKTIONSLINK-20261110-R170.md) · [Maschinenbeleg](FREIGABE-KOLLEKTIONSLINK-20261110-R170.json).
 
 [LUXESTYLE_R170_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 171: Claude-Artefakt bleibt hinter Login unbekannt
+
+Der bereitgestellte Claude-Code-Artefakt-Link antwortete öffentlich mit HTTP200, lieferte aber nur die Anmeldeseite `Sign in – Claude`. Firecrawl bestätigte `accessible=false`/`loginRequired=true`; der direkte Inhaltsendpunkt `/api/frame/...` antwortete HTTP401 `unauthorized`. Kein lesbarer Inhalt nannte LuxeStyle, Repository, Branch, Commit oder Revision170. Ein widersprüchliches Extraktionsfeld `explicitReceipt=true` bei unzugänglichem Inhalt, leerem Zitat und leeren Identitätsfeldern wurde verworfen.
+
+Damit ist keine Claude-Kenntnisnahme belegt. Receipt bleibt `unknown_no_claude_receipt`; R170 bleibt fachlicher Stand. Keine Plattform-, Shop-, Social-, Kunden-, Budget-, Rabatt-, Flow-, DNS- oder Renderaktion und keine neue Automation.
+
+[R171 Bericht](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md) · [Maschinenbeleg](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.json).
+
+[LUXESTYLE_R171_20261110]

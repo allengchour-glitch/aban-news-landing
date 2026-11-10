@@ -421,3 +421,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. 0 Shopify-/Kollektions-/Produkt-/Theme-/Menüwrites. Zeitpunkt/Verursacher der Paralleländerung unbekannt; Wirkung unbekannt.
 5. Aktueller Produktbody enthält wieder unbelegte Automatik-, Edelstahl- und2.2kg-Aussagen. Ausserhalb der engen Linkfreigabe, nicht verändert; getrennt frisch prüfen.
 6. Belege `FREIGABE-KOLLEKTIONSLINK-20261110-R170.md/.json`.08/14/19 unverändert; Receipt `unknown_no_claude_receipt`.
+
+## R171 – Claude-Artefakt login-gesperrt, kein Receipt
+
+[LUXESTYLE_R171_20261110]
+
+1. Geprüfter Inhaberlink: `https://claude.ai/code/artifact/db0c6aa6-d997-44ef-a8d1-b0236a6bebfb`.
+2. Öffentlich HTTP200, aber nur `Sign in – Claude`; Firecrawl `accessible=false`/`loginRequired=true`; direkter `/api/frame/...`-Inhalt HTTP401 `unauthorized`.
+3. Kein lesbarer LuxeStyle-, Repository-, Branch-, Commit-, Revision170- oder Kenntnisnahmetext. `explicitReceipt=true` aus der strukturierten Extraktion wegen leerem Zitat/Identitätsfeldern und unzugänglichem Inhalt verwerfen.
+4. Receipt bleibt `unknown_no_claude_receipt`. R170 nicht als von Claude empfangen oder ausgeführt bezeichnen.
+5. Nächster zulässiger Schritt: Artefakt erst in einer legitimen authentifizierten Sitzung lesen und nur bei ausdrücklicher LuxeStyle-/Branch-/Revision-/Commit-Bindung als Receipt dokumentieren. Keine Zugangsdaten im Chat anfordern.
+6. Keine Plattformwrites oder neue Automation. Belege `CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md/.json`.

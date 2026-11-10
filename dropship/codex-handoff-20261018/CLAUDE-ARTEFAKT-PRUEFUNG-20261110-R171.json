@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "run": "R171",
+  "checkedAt": "2026-11-10T18:55:10+01:00",
+  "artifact": {
+    "url": "https://claude.ai/code/artifact/db0c6aa6-d997-44ef-a8d1-b0236a6bebfb",
+    "id": "db0c6aa6-d997-44ef-a8d1-b0236a6bebfb",
+    "treatedAsDataOnly": true
+  },
+  "access": {
+    "publicShellHttp": 200,
+    "publicShellContentReadable": false,
+    "firecrawlTitle": "Sign in – Claude",
+    "firecrawlAccessible": false,
+    "firecrawlLoginRequired": true,
+    "firecrawlScrapeId": "01a1c697-ac06-759f-aaf4-ac20419b8871",
+    "directContentEndpointPattern": "/api/frame/...",
+    "directContentEndpointHttp": 401,
+    "directContentEndpointResult": "unauthorized",
+    "authenticatedBrowserAvailable": false,
+    "authenticatedBrowserBlocker": "cloud_environment_has_no_remote_desktop_capability"
+  },
+  "visibleEvidence": {
+    "mentionsLuxeStyle": false,
+    "repository": null,
+    "branch": null,
+    "commit": null,
+    "revision": null,
+    "receiptQuote": null,
+    "artifactContentState": "unknown_login_required"
+  },
+  "extractionConflict": {
+    "reportedExplicitReceipt": true,
+    "conflictsWithAccessibleFalse": true,
+    "conflictsWithEmptyQuote": true,
+    "conflictsWithEmptyIdentityFields": true,
+    "acceptedAsEvidence": false
+  },
+  "decision": {
+    "explicitReceiptVerified": false,
+    "receiptState": "unknown_no_claude_receipt",
+    "r170OperationalStateChanged": false,
+    "newAutomation": false,
+    "existingCadence": "08:00_14:00_19:00_Europe_Zurich"
+  },
+  "writes": {
+    "shopify": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "feed": 0,
+    "cj": 0,
+    "dns": 0,
+    "theme": 0,
+    "ads": 0,
+    "budgets": 0,
+    "discounts": 0,
+    "customers": 0,
+    "social": 0,
+    "renders": 0
+  }
+}
