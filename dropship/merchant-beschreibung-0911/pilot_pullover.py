@@ -235,7 +235,7 @@ def main():
         zaehl[art if art == 'aendern' else 'lassen: ' + wert] += 1
         if art == 'aendern':
             plan[p['id']] = {'handle': p['handle'], 'titel': p['title'], 'alt': (p.get('seo') or {}).get('description') or '', 'neu': wert}
-    if not live:
+    if not live and plan:                              # eine leere Planliste (alles schon geschrieben) überschreibt den Prüfstand nicht
         os.makedirs(os.path.dirname(PLAN), exist_ok=True)
         json.dump(plan, open(PLAN, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)   # Prüfstand «vorher/nachher» für den Menschen
     print('Plan:', dict(zaehl))
@@ -439,6 +439,9 @@ def selbsttest():
         ok('Ablauf: Originale in der Sicherung sind nie durch unseren Text ersetzt worden', all(e['alt'] == werbe for e in saved.values()) and len(saved) == 3)
         rc, aus = lauf(LIVE='1')
         ok('Ablauf: dritter Lauf findet nichts mehr (idempotent), Sicherung bleibt', rc == 0 and len(schreibaufrufe) == 3 and len(json.load(open(SICHERUNG, encoding='utf-8'))) == 3)
+        plan_vorher = open(PLAN, encoding='utf-8').read()
+        rc, aus = lauf()
+        ok('Ablauf: ein Trockenlauf nach dem Schreiben (nichts mehr zu ändern) überschreibt die gespeicherte Planliste nicht', rc == 0 and open(PLAN, encoding='utf-8').read() == plan_vorher)
         laden['1']['seo']['description'] = werbe.replace('Pullover', 'Strickpullover')      # eine SEO-Runde des Shops schreibt wieder eine Werbezeile
         rc, aus = lauf(LIVE='1')
         gesichert = json.load(open(SICHERUNG, encoding='utf-8'))['gid://shopify/Product/1']
