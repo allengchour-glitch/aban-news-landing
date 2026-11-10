@@ -5,6 +5,8 @@
  *   (c) Handy 390 × 844: «Text | Sticker | Bild» (und die Stickerauswahl) stehen direkt unter der Bühne
  *   (d) weisse Schrift ohne Schatten (Konstante WEISS_SCHATTEN) in Druckdatei, Vorschau und Bühne
  *   (e) Beschriftung der Druckfläche im Rahmen, tabpanel an der Vorschau, Pfeile/Entf auf den Platzierungs-Reitern, Schieberwerte nach Zahleneingabe
+ *   (f) Druckprüfung: die durchsichtige Druckdatei liegt auf einem Schachbrett, das zur Schrift passt («druckpruefung», «-foto»: Foto plus Beschriftung, «-vorschau»: «Druck-Vorschau anzeigen» in beide Richtungen,
+ *       «-frist»: das Bild für die Grundwahl hängt oder kommt zu spät, «-fehler»: jeder Fehler ergibt den hellen Grund und räumt auf, «-gross»: mehrstufiges Verkleinern); nur Anzeige, die Dateien bleiben byte-gleich
  *   «kaufvergleich»: Druckdatei (PNG-Bytes), Warenkorb-Eigenschaften, _pod_karte und _vorschau (JPEG-Bytes) sind in allen Ansichten und über mehrere Ausführungen BYTEGLEICH zu 6.4.0 (der Referenz, über
  *   editor=ref auf derselben Attrappenseite), AUSSER in den zwei GEWOLLTEN Fällen: Standardfarbe auf dunklem Stoff und weisse Schrift (Schatten).
  * Aufruf: node v641_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle)
@@ -917,7 +919,7 @@ szenario('druckpruefung-frist', true, async (b, srv) => {
       pruefe(`Kauf, ${name}: Rückfall auf den hellen Grund (die Rechnung ergäbe dunkel)`, hell(await grundVon(p)), JSON.stringify(await grundVon(p)));
       pruefe(`Kauf, ${name}: die Analyse wurde wirklich angestossen (ein Bild mit blob:-Adresse)`, (await spionStand(p)).bildUrls.length === 1);
       if (modus === 'verzoegert') {
-        await p.waitForTimeout(Math.max(0, 3300 + 400 - (Date.now() - t0)));
+        await p.waitForTimeout(Math.max(0, 4500 - (Date.now() - t0)));   // das Bild kommt 3 s nach der Zuweisung der Adresse; bis dahin und eine Weile danach warten
         const st = await spionStand(p);
         pruefe(`Kauf, ${name}: das spät eintreffende Ergebnis ändert nichts am Dialog und räumt auf (Blob-Adresse freigegeben, Leinwände freigegeben)`, hell(await grundVon(p)) && st.bildUrls.every((u) => st.revoked.includes(u)) && st.leinwaende.length > 0 && st.leinwaende.every(([w, h]) => w === 0 && h === 0), JSON.stringify(st));
       }
@@ -943,7 +945,7 @@ szenario('druckpruefung-frist', true, async (b, srv) => {
       pruefe(`Druck-Vorschau anzeigen, ${name}: die Meldung «Druckdatei wird erstellt …» ist weg`, (await p.locator('.lsp6-status').innerText()) === '');
       pruefe(`Druck-Vorschau anzeigen, ${name}: die Analyse wurde wirklich angestossen`, (await spionStand(p)).bildUrls.length === 1);
       if (modus === 'verzoegert') {
-        await p.waitForTimeout(Math.max(0, 3300 + 400 - (Date.now() - t0)));
+        await p.waitForTimeout(Math.max(0, 4500 - (Date.now() - t0)));   // das Bild kommt 3 s nach der Zuweisung der Adresse; bis dahin und eine Weile danach warten
         pruefe(`Druck-Vorschau anzeigen, ${name}: das spät eintreffende Ergebnis ändert nichts`, (await p.locator('.lsp6-checker').getAttribute('data-grund')) === 'hell');
       }
       pruefe(`Druck-Vorschau anzeigen, ${name}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
@@ -1018,6 +1020,7 @@ szenario('druckpruefung-gross', true, async (b, srv) => {
 const srv = await starteServer();
 const browser = await chromium.launch();
 const auswahl = szenarien.filter((x) => (nur === 'kern' ? x.kern : !nur || x.name.startsWith(nur)));
+auswahl.sort((a, b) => Number(!a.name.startsWith('druckpruefung')) - Number(!b.name.startsWith('druckpruefung')));   // die Druckprüfung zuerst (stabile Sortierung): ihre 55 Mutanten der Mutationsprobe brauchen so rund 30 statt 85 Sekunden bis zum ersten Fehlschlag
 for (const sz of auswahl) {
   const t0 = Date.now();
   const vorher = fehler.length;

@@ -795,18 +795,19 @@ if (SOLL_VERSION >= '6.4.1') {
     // Gewichte im Pixelschritt: die Wahl hängt an der Leuchtdichte jedes Pixels. Farbfehler, die Graustufen unverändert lassen (Rot und Blau vertauscht, Gewichte 0,2526/0,0322 oder 0,2176/0,0672 statt 0,2126/0,0722),
     // fallen nur an Flächen mit Farben auf: die Zufallsfarben der obigen Flächen brauchen dafür genug Grenzfälle (die Mutationsprobe hält es fest).
     {
-      const zuf = mulberry32(2026); let grenz = 0; const N = 3000;
-      const lumS = (r, g, b) => lum(r, g, b);
+      const zuf = mulberry32(2026); let abwG = 0, nDunkelG = 0; const N = 3000, gesehen = new Set();
       for (let t = 0; t < N; t++) {
         const n = 20 + Math.floor(zuf() * 40), d = new Uint8ClampedArray(n * 4);
         for (let i = 0; i < n; i++) d.set([Math.floor(zuf() * 256), Math.floor(zuf() * 256), Math.floor(zuf() * 256), 255], i * 4);
+        gesehen.add(hashVon(d));
         const ist = H.pruefGrund(d);
-        // eigene Rechnung nur mit der Leuchtdichte jedes Pixels (WCAG), je Feld und Grund
-        const schl = (art) => Math.max(...felder[art].map(([r, g, b]) => { let sum = 0; for (let i = 0; i < n; i++) if (kon(lumS(d[i * 4], d[i * 4 + 1], d[i * 4 + 2]), lum(r, g, b)) < 1.8) sum += 1; return sum; }));
-        const soll = schl('hell') > schl('dunkel') ? 'dunkel' : 'hell';
-        if (ist !== soll) grenz++;
+        if (ist === 'dunkel') nDunkelG++;
+        // eigene Rechnung nur mit der Leuchtdichte jedes Pixels (WCAG), je Feld und Grund: Anzahl der Pixel unter 1,8 zu 1
+        const schl = (art) => Math.max(...felder[art].map(([r, g, b]) => { let sum = 0; for (let i = 0; i < n; i++) if (kon(lum(d[i * 4], d[i * 4 + 1], d[i * 4 + 2]), lum(r, g, b)) < 1.8) sum += 1; return sum; }));
+        if (ist !== (schl('hell') > schl('dunkel') ? 'dunkel' : 'hell')) abwG++;
       }
-      pruefe('Prüfgrund: ' + N + ' Flächen aus Zufallsfarben wie die eigene Rechnung nach WCAG (Gewichte der Leuchtdichte, Rot und Blau nicht vertauscht)', grenz === 0, grenz + ' Abweichungen');
+      pruefe('Prüfgrund: ' + N + ' Flächen aus Zufallsfarben wie die eigene Rechnung nach WCAG (Gewichte der Leuchtdichte, Rot und Blau nicht vertauscht)', abwG === 0, abwG + ' Abweichungen');
+      pruefe('Prüfgrund: die ' + N + ' Zufallsfarben-Flächen sind alle verschieden und ergeben beide Grundarten', gesehen.size === N && nDunkelG > 100 && nDunkelG < N - 100, gesehen.size + ' verschiedene, dunkel bei ' + nDunkelG);
     }
     // Die CSS-Klassen tragen genau die Farben der Konstante (sonst misst die Wahl gegen andere Felder als die, die man sieht)
     const q = readFileSync(V6_DATEI, 'utf8');

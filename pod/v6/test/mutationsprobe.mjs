@@ -341,6 +341,9 @@ const MUTANTEN = [
   ["C111 Grundwahl: Zielbreite 256 statt 512 px (eine Stufe mehr bei 1800 px)", "var PRUEF_GRUND_BREITE = 512;", "var PRUEF_GRUND_BREITE = 256;"],
   ["C112 Grundwahl: verkleinert mit der Vorgabe-Glättung statt «high»", "cx.imageSmoothingQuality = 'high';", ""],
   ["C113 Grundwahl: verkleinert mit der Glättung «low»", "cx.imageSmoothingQuality = 'high';", "cx.imageSmoothingQuality = 'low';"],
+  ["C114 Grundwahl: das Seitenverhältnis der Zwischenleinwand geht verloren (quadratisch)", "nh = Math.max(1, Math.round(nw * bh / bw));", "nh = nw;"],
+  // Gleichwertig, darum nicht in der Liste: die Prüfung auf ein leeres Bild («if (!(bw > 0 && bh > 0)) throw …»; ohne sie ergibt ein Bild ohne Fläche eine Leinwand der Breite 0, getImageData wirft, der Fehlerpfad liefert denselben hellen Grund)
+  // und die Nachbarschaftsprüfung ausserhalb der Datei, solange der Wert 1 die Schleife ohnehin beendet.
   // B88b wäre «ohne stopPropagation»: GLEICHWERTIG, seit die Karte Knöpfe der Leiste und des Zooms selbst ausnimmt (zwei unabhängige Sicherungen); steht darum nicht in der Liste.
 ];
 
