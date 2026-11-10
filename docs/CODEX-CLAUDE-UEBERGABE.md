@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Metricool: Tabellen und belegte Statistik
+
+Nutzer: «tabellen und statistik». Eigene Bürobahn laut aktueller Arbeitsteilung1011, Metricool strikt nur lesend; keine Planeränderung. Von maina9bc9255 auf eigenem Branch. Generische Vorlage erweitert: Kanalvergleich mit jeweils datiertem Followerstand und absoluter Veränderung zwischen erstem/letztem vorhandenem Stand, Tageswerttabelle zur gewählten Messreihe, bekannte Summe/arithmetischer Mittelwert je gemeldetem Tag/Höchstwert/Datenabdeckung, kanalweise Kalenderauswertung mit eindeutigen Eintrags-IDs. Kanalsummen überlappen bei Mehrkanalbeiträgen und werden nicht addiert. Fehlende Werte bleiben unbekannt; keine Summierung von Followerständen oder erfundene Wachstumsprognose.
+
+Bestehende private Metricool-Visualisierung ersetzt, volle Breite erhalten; übrige Ranking-/Artefaktinhalte nicht verändert. Verwendet den bereits belegten privaten Quellenstand außerhalb Git, ohne neuen Abruf oder neue Messzeit zu behaupten. Keine realen Kanalwerte, IDs oder Inhaltstexte in Repositorydateien.
+
+GEMESSEN:67 Büroprüfungen grün. Browser1440/390px: vier Kanalzeilen,28 Tageszeilen, Summen gegen private Quelldaten, Endpunktvergleich der Followerstände, Datenlücken, Auswahlwechsel, keine Seitenüberbreite. Screenshots außerhalb Git. Aktueller PR nennt Merge-/Bereitstellungsstand. Kein Shop-/Metricool-/Kunden-/Zahlungswrite, keine zusätzliche Automation oder Frequenzänderung. Finanzielle Wirkung nicht gemessen.
+
 ## Lizenzantwort: defekter Inhalt darf keine Ablehnung zwischenspeichern
 
 Wirtschaftsauftrag10.11.: vorhandenen Verkaufs-/Freischaltweg statt neue Projekte priorisiert. Eigener Branch von mainb9a98150, AGENTS/CLAUDE/Shared Memory/Übergabe und offene PRs gelesen. Vorige HTTP-Störungsprüfung PR3015 nicht wiederholt: neuer reproduzierter Fall ist HTTP200 mit HTML, leerem/ungültigem JSON, fehlender boolescher Entscheidung oder bestätigter Gültigkeit ohne Status. Bisher entstand eine zehn Minuten gecachte Ablehnung, selbst nach Anbietererholung. Acht Eingaben mit je Fehler- und Wiederanlaufprobe vor Korrektur16 neue Fehler,54 bestehende Prüfungen grün.
