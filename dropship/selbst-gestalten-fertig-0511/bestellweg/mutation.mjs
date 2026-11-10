@@ -9,7 +9,7 @@
 // Ergänzt automation/pod_auswahl_mutation.mjs (die CI-Probe der Preis-/Auswahlseite, die einen Teil der Platzierung ebenfalls mutiert).
 // Stand 10.11.2026 (Härtung nach der Gegenprüfung P1): Mutanten «H10 F<Nr>» zu den 27 bestätigten Funden (Zahlung am Knoten, frisches Lesen, Markierung vor dem Anlegen, unbekannte Schlüssel, Herkunft der Datei, Standort/Rechte,
 // Vorgabe Trockenlauf, Bestätigungsplan, fail-open-Lesarten, vorhandener Auftrag, Workflow-Schalter, Feldtreue der Abfrage, Deckel, Preisanpassung). Ein Mutant mit Syntaxfehler zählt NICHT als erkannt (Exit 2, «UNGÜLTIG»);
-// die Ausgabe trennt Kills durch eine benannte Prüfung von Kills durch eine Ausnahme im Test. Die volle Probe dauert rund 78 Minuten Rechenzeit (gemessen 10.11.2026) und läuft von Hand, auf drei Prozesse verteilt in rund 26 Minuten: SHARD=1/3, 2/3, 3/3; die CI führt nur `--pruefen` aus (Fundstellen
+// die Ausgabe trennt Kills durch eine benannte Prüfung von Kills durch eine Ausnahme im Test. Die volle Probe (523 Mutanten) dauert rund 2 Stunden Rechenzeit (gemessen 10.11.2026: 120 min 34 s zusammen; die 427 Mutanten der ersten Runde brauchten rund 78 Minuten) und läuft von Hand, auf drei Prozesse verteilt in rund 42 Minuten: SHARD=1/3, 2/3, 3/3; die CI führt nur `--pruefen` aus (Fundstellen
 // genau einmal UND kein Mutant mit Syntaxfehler). Mutanten «H10 F22» stehen am Ende der Liste, damit die Nummern der übrigen (und damit die Zuordnung zu den Teilen) unverändert bleiben.
 import { mkdtempSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -588,7 +588,7 @@ export const MUTANTEN = [
   ['R2 L1/7 Reprice: unbrauchbare Printful-Kosten gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=c;'],
   ['R2 L1/7 Reprice: Kosten 0 gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=Number.isFinite(c)&&c>=0?c:null;'],
   ['R2 L2/9 Reprice: die Shopify-API ist 2025-01', R, 'const API=\'2026-01\';', 'const API=\'2025-01\';'],
-  // Dritte Runde 11.11.2026 (eigene Durchsicht der zweiten Runde): ein Lesefehler ist sichtbar, kein stiller Verlust
+  // Dritte Runde 10.11.2026 (eigene Durchsicht der zweiten Runde): ein Lesefehler ist sichtbar, kein stiller Verlust
   ['D3 Anspruch: eine fehlende eigene Markierung gilt als Verlust gegen einen anderen Lauf (still)', B, 'steht nicht (mehr) an der Bestellung\', art: \'eigene-fehlt\' }', 'steht nicht (mehr) an der Bestellung\', art: \'verloren\' }'],
   ['D3 Kleber: die fehlende eigene Markierung beim Nachlesen ist kein Lesefehler (kein Fehler, Exit 0)', S, 'if (g.art === \'eigene-fehlt\') return { art: \'unlesbar\', text: g.grund };', ''],
   ['D3 CI: das Zeitlimit des Jobs «tests» steht auf 15 statt 20 Minuten (Doku und Messung nennen 20)', CIW, '    timeout-minutes: 20\n    steps:', '    timeout-minutes: 15\n    steps:'],
