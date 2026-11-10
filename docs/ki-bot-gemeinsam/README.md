@@ -1,12 +1,10 @@
 # Gemeinsamer KI-Bot: umgesetzte Forschungsprüfungen
 
-Aktueller Stand: [Streaming-Schnittstelle, Version4](STREAMING.md),57 gemeinsame Tests bestanden. [ergebnis-v4.json](ergebnis-v4.json) reproduziert alle36 bisherigen Zahlen exakt. Keine veränderten Handelsregeln. Claude hat Version4 am 10.11.2026 unabhängig geprüft: [CLAUDE-REVIEW-V4.md](CLAUDE-REVIEW-V4.md) (kein Blocker; Befund F8 zur Zustandsneutralität bei Fehlern in der Rechnung; acht neue Tests; Mutationsprobe von 38 auf 43 von 45).
+Aktueller Abschlussstand: [Version 5 und Veröffentlichungsnachweis](ABSCHLUSS.md). Claudes Befund F8 ist behoben: fehlerhafte Kurse oder Berechnungen verändern den Signalzustand nicht. Alle 70 Forschungstests und die neun Abschnitte des isolierten lokalen CI-Jobs bestehen. [ergebnis-v5.json](ergebnis-v5.json) enthält dieselben 36 historischen Ergebnisse wie Version 4. Handelsregeln und Echtgeldfreigaben bleiben unverändert.
 
-Aktuell: [Codex-Antwort auf Claudes unabhängige Prüfung](CODEX-ANTWORT-CLAUDE.md), Protokollversion3 und51 gemeinsame Tests. [ergebnis-v3.json](ergebnis-v3.json) ist der aktuelle reine Kursbericht; Version2 bleibt historisch erhalten. Version3 und das Nachrichtenmodul hat Claude am 10.11.2026 nur gestreift (Proben in CLAUDE-REVIEW-V4.md), nicht vollständig geprüft.
+Website- und Wochenberichtkorrekturen sind auf `codex/offene-abschliessen` zusammengeführt und geprüft. GitHub-API und Live-Veröffentlichung sind weiterhin durch die aktive Cloud-Netzwerkregel blockiert. [Prüfnachweise](ABSCHLUSS-NACHWEIS.json), [vorbereiteter PR-Text](PR-TEXT.md) und [CI-Anleitung](ci-container/README.md).
 
-Aktuelle Ergänzung aus der Tutorial-Recherche: [News-Sentiment prüfen statt Duplikate verstärken](YOUTUBE-RECHERCHE.md). Begleitcode auf GitHub gelesen; Videos selbst wegen Proxy403 noch nicht gesehen. Optionaler Zeit-/Duplikat-/Modellcheck integriert,33 Tests grün; keine News-Handelsstrategie oder echten Modellprognosen behauptet.
-
-Neuester Auftrag: «baue alles rein». Die belegten technischen Erkenntnisse aus der [Recherche](RECHERCHE.md) sind im getrennten Offline-Labor umgesetzt. Ungelesene Paper, ungetestete Frameworks und Claudes Zustimmung gelten weiterhin nicht als bestätigt. Der bestehende Handelsbot und seine Strategie-/Risikoeinstellungen sind unverändert.
+Claude hat [Version 4 unabhängig geprüft](CLAUDE-REVIEW-V4.md); eine unabhängige Prüfung der neuen Version 5 wird nicht behauptet. Tutorial-Begleitcode wurde gelesen, YouTube-Videos selbst wegen Proxy403 noch nicht gesehen: [Quellen und Grenzen](YOUTUBE-RECHERCHE.md).
 
 ## Was integriert ist
 
@@ -55,10 +53,10 @@ Vorhandene Broker-/Schutzmodule wurden nicht ersetzt. Die vorhandenen Binance-Sp
 
 ## Unabhängiger Auftrag an Claude Code
 
-1. Branch `codex/ki-bot-gemeinsam`, AGENTS.md, CLAUDE.md, SHARED-MEMORY.md und docs/KRYPTO-AUTONOMIE.md lesen. Ältere Website-/Wochenberichtsänderungen liegen auf getrennten Branches; diese nicht überschreiben oder als bereits veröffentlicht melden.
+1. Branch `codex/offene-abschliessen`, AGENTS.md, CLAUDE.md, SHARED-MEMORY.md und docs/KRYPTO-AUTONOMIE.md lesen. Der zusammengeführte Abschlussstand steht in `ABSCHLUSS.md`; geprüft bedeutet noch nicht veröffentlicht.
 2. Recherche samt noch ungelesenen Originaltexten vervollständigen. Aussagen aus Projekt-READMEs nicht als unabhängigen Leistungsbeleg behandeln.
 3. Tests und Formeln unabhängig prüfen: Signalverzögerung, Kosten, Drift, fairer Risikovergleich, Datenalter, Historienlänge und gemeinsame Schnittstelle. Gezielt neue Gegenbeispiele suchen.
-4. `ergebnis-v4.json` reproduzieren, Code-/Datenhash prüfen. Keinen Gewinner aus dem besten Einzelzeitraum auswählen. Unterschiede durch Exposure von möglichem Timingnutzen trennen.
+4. `ergebnis-v5.json` reproduzieren, Code-/Datenhash prüfen. Keinen Gewinner aus dem besten Einzelzeitraum auswählen. Unterschiede durch Exposure von möglichem Timingnutzen trennen.
 5. Befunde mit Eingabe und falschem Ergebnis in `CLAUDE-REVIEW.md` dokumentieren. Ein fehlendes Review ist keine Zustimmung. Codex kann hier weder Claude CLI noch eine laufende Claude-Sitzung aufrufen; Claude hat den älteren Stand6834a2075 am 09.11.2026 abends geprüft: [CLAUDE-REVIEW.md](CLAUDE-REVIEW.md) (kein Blocker, Befunde F1 bis F7, 14 Regressionstests neu).
 6. Erst nach belastbarer Gegenprüfung und vorher festgelegten Kriterien den nächsten einzelnen Kandidaten wählen. Historische Daten nicht als neue Zukunftsdaten ausgeben. Kein automatisches Hochstufen in Echtgeld oder Brokerhandel.
 

@@ -1,0 +1,286 @@
+{
+  "anwendungscode": "f18a611475afcc1485171be455e22bc00f39488e",
+  "git_branch": "codex/krypto-live-anzeige",
+  "browser": {
+    "bestanden": 37,
+    "daten": "ausschließlich erfunden",
+    "externe_anfragen": 0,
+    "schreibende_anfragen": 0,
+    "kommando": "node tools/qa_krypto_live.mjs"
+  },
+  "allgemeine_ci": {
+    "revision": "0c3395fab944bff769f9e7f95690650b37a821e5",
+    "suite": "ci-tests",
+    "image_id": "sha256:e3c589bab36cd426d83272f2f8216449683fdc8d1a223c7b8d53b64cb0d0222b",
+    "python": "3.12.16",
+    "node": "v22.23.4",
+    "tmp_anfangs_leer": true,
+    "netzwerk": "Docker --network none",
+    "steps": [
+      {
+        "name": "Renderer stays text-only (no rendering or network)",
+        "returncode": 0,
+        "sekunden": 0.26,
+        "unittest_anzahl": 3,
+        "stdout": "00.stdout.log",
+        "stderr": "00.stderr.log"
+      },
+      {
+        "name": "Syntax",
+        "returncode": 0,
+        "sekunden": 2.04,
+        "unittest_anzahl": 0,
+        "stdout": "01.stdout.log",
+        "stderr": "01.stderr.log"
+      },
+      {
+        "name": "Existing helper checks",
+        "returncode": 0,
+        "sekunden": 1.59,
+        "unittest_anzahl": 0,
+        "stdout": "02.stdout.log",
+        "stderr": "02.stderr.log"
+      },
+      {
+        "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+        "returncode": 0,
+        "sekunden": 41.82,
+        "unittest_anzahl": 0,
+        "stdout": "03.stdout.log",
+        "stderr": "03.stderr.log"
+      },
+      {
+        "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+        "returncode": 0,
+        "sekunden": 212.86,
+        "unittest_anzahl": 0,
+        "stdout": "04.stdout.log",
+        "stderr": "04.stderr.log"
+      },
+      {
+        "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+        "returncode": 0,
+        "sekunden": 467.9,
+        "unittest_anzahl": 0,
+        "stdout": "05.stdout.log",
+        "stderr": "05.stderr.log"
+      },
+      {
+        "name": "CJ failures and publication regressions (mock APIs only)",
+        "returncode": 0,
+        "sekunden": 29.51,
+        "unittest_anzahl": 0,
+        "stdout": "06.stdout.log",
+        "stderr": "06.stderr.log"
+      },
+      {
+        "name": "Shopify host, queue input and publication guards (mock APIs only)",
+        "returncode": 0,
+        "sekunden": 6.86,
+        "unittest_anzahl": 0,
+        "stdout": "07.stdout.log",
+        "stderr": "07.stderr.log"
+      },
+      {
+        "name": "Content preflight (offline evidence only)",
+        "returncode": 0,
+        "sekunden": 1.68,
+        "unittest_anzahl": 16,
+        "stdout": "08.stdout.log",
+        "stderr": "08.stderr.log"
+      }
+    ],
+    "bestanden": true
+  },
+  "ci_quellgleichheit": [
+    {
+      "revision": "0c3395fab944bff769f9e7f95690650b37a821e5",
+      "dateien": 647,
+      "inhalt_sha256": "afc7b536fd0bd18ca0aafd13cba05c678cfd34bbd1a33fca535b8db4da45f2d0"
+    },
+    {
+      "revision": "1bca686cd9cb6f9a5e2b3f0923b035e3e9abf92a",
+      "dateien": 647,
+      "inhalt_sha256": "afc7b536fd0bd18ca0aafd13cba05c678cfd34bbd1a33fca535b8db4da45f2d0"
+    },
+    {
+      "revision": "f18a611475afcc1485171be455e22bc00f39488e",
+      "dateien": 647,
+      "inhalt_sha256": "afc7b536fd0bd18ca0aafd13cba05c678cfd34bbd1a33fca535b8db4da45f2d0"
+    }
+  ],
+  "krypto_selbsttests": [
+    {
+      "name": "test_pilot",
+      "bestanden": 160,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_sammler",
+      "bestanden": 48,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_infos",
+      "bestanden": 34,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_cockpit",
+      "bestanden": 510,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_profit",
+      "bestanden": 59,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_calls",
+      "bestanden": 84,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_pilot2_plan",
+      "bestanden": 23,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_pilot2_live",
+      "bestanden": 156,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_pilot2_streng",
+      "bestanden": 731,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_testnetz_pruefung",
+      "bestanden": 97,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_news_waechter",
+      "bestanden": 32,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_autoupdate",
+      "bestanden": 170,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_satellit",
+      "bestanden": 32,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_satellit_lauf",
+      "bestanden": 132,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_scalping_labor",
+      "bestanden": 241,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_fernsicht",
+      "bestanden": 451,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_telegram_einrichten",
+      "bestanden": 128,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_wochenbericht",
+      "bestanden": 116,
+      "fehlgeschlagen": 0,
+      "quelle": "vollständiger Selbsttestlauf 1bca686cd"
+    },
+    {
+      "name": "test_paket_bauen",
+      "bestanden": 35,
+      "fehlgeschlagen": 0,
+      "quelle": "gezielt erneut im Container mit gültiger isolierter Git-HEAD; zusätzlich auf tatsächlichem f18a61147-Checkout"
+    }
+  ],
+  "krypto_vorlauf_monolithisch": {
+    "bestanden": false,
+    "grund": "Alle 18 vorangehenden Suiten bestanden; letzte Paket-Suite fand im nur initialisierten isolierten Git keinen HEAD. Anschließend unverändert mit gültigem isoliertem HEAD und auf echtem Checkout bestanden. Der rote Vorlauf wird nicht als grün umetikettiert."
+  },
+  "erstes_pilot2_ergebnis": {
+    "bestanden": 150,
+    "fehlgeschlagen": 6,
+    "ursache": "Bestehender Test entfernte geerbtes NO_PROXY; nach Erhalt der vorhandenen Proxyregeln 156/156. Keine neuen Ausnahmen oder abgeschwächten Assertions."
+  },
+  "lieferpaket": {
+    "manifest": {
+      "format": 1,
+      "version": "2026-11-10.f18a611",
+      "commit": "f18a611475afcc1485171be455e22bc00f39488e",
+      "gebaut": "2026-11-10T10:46:16Z",
+      "datei": "krypto-paket-2026-11-10.f18a611.zip",
+      "sha256": "a1ce8eb8423561e02ed92cd9d1a584ef241d9a5c5c99397f580a42c2f330e2f9",
+      "groesse": 1110264,
+      "dateien": 128,
+      "hinweis": "Live-Datenstand und auswählbare Gewinne",
+      "uebersprungen": []
+    },
+    "sha256_frisch_nachgerechnet": true,
+    "entpackter_pc_probelauf": {
+      "revision": "f18a611475afcc1485171be455e22bc00f39488e",
+      "suite": "krypto-lieferung-endstand",
+      "image_id": "sha256:76f5895d76437b15886fe1f7816a7aad8a857036f03f8bb3935847bd1bcec47c",
+      "python": "3.11.18",
+      "node": "nicht verwendet",
+      "tmp_anfangs_leer": true,
+      "netzwerk": "Docker --network none",
+      "steps": [
+        {
+          "name": "Paket aus Commit-Dateien bauen und entpacken",
+          "returncode": 0,
+          "sekunden": 1.35,
+          "unittest_anzahl": 0,
+          "stdout": "00.stdout.log",
+          "stderr": "00.stderr.log"
+        },
+        {
+          "name": "Probelauf im entpackten Programmpaket (wie am PC)",
+          "returncode": 0,
+          "sekunden": 39.77,
+          "unittest_anzahl": 0,
+          "stdout": "01.stdout.log",
+          "stderr": "01.stderr.log"
+        }
+      ],
+      "bestanden": true
+    }
+  },
+  "grenzen": [
+    "Keine echten Kontowerte in dieser Cloud abgerufen",
+    "Keine Brokeraufträge oder echten Nachrichten",
+    "Keine Änderung an Strategie, Risiko, Schutz oder Kontoschaltern",
+    "Kein GitHub-Merge, Release oder PC-Installationsnachweis; GitHub-API weiterhin durch aktive Netzwerkregel gesperrt"
+  ]
+}

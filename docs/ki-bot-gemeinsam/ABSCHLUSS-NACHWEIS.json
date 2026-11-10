@@ -1,0 +1,179 @@
+{
+  "status": "Lokale technische Prüfungen abgeschlossen; kein Remote-CI-/Deploymentnachweis",
+  "quellstand": "fed25db4146dfa609f1bf0746bcdb9c6927ae867",
+  "ci": {
+    "allgemeiner_job_tests": {
+      "revision": "fed25db4146dfa609f1bf0746bcdb9c6927ae867",
+      "workflow_sha256": "a19d800bd080244a883b726752af1d3fecd80d37fac568b4280737d9a565d1c5",
+      "image_id": "sha256:e3c589bab36cd426d83272f2f8216449683fdc8d1a223c7b8d53b64cb0d0222b",
+      "python": "3.12.16",
+      "node": "v22.23.4",
+      "tmp_anfangs_leer": true,
+      "netzwerk": "Docker --network none",
+      "bestanden": true,
+      "steps": [
+        {
+          "name": "Renderer stays text-only (no rendering or network)",
+          "returncode": 0,
+          "sekunden": 0.27,
+          "unittest_anzahl": 3,
+          "stdout": "00.stdout.log",
+          "stderr": "00.stderr.log"
+        },
+        {
+          "name": "Syntax",
+          "returncode": 0,
+          "sekunden": 1.91,
+          "unittest_anzahl": 0,
+          "stdout": "01.stdout.log",
+          "stderr": "01.stderr.log"
+        },
+        {
+          "name": "Existing helper checks",
+          "returncode": 0,
+          "sekunden": 1.62,
+          "unittest_anzahl": 0,
+          "stdout": "02.stdout.log",
+          "stderr": "02.stderr.log"
+        },
+        {
+          "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+          "returncode": 0,
+          "sekunden": 45.01,
+          "unittest_anzahl": 0,
+          "stdout": "03.stdout.log",
+          "stderr": "03.stderr.log"
+        },
+        {
+          "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+          "returncode": 0,
+          "sekunden": 172.88,
+          "unittest_anzahl": 0,
+          "stdout": "04.stdout.log",
+          "stderr": "04.stderr.log"
+        },
+        {
+          "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+          "returncode": 0,
+          "sekunden": 340.24,
+          "unittest_anzahl": 0,
+          "stdout": "05.stdout.log",
+          "stderr": "05.stderr.log"
+        },
+        {
+          "name": "CJ failures and publication regressions (mock APIs only)",
+          "returncode": 0,
+          "sekunden": 14.69,
+          "unittest_anzahl": 0,
+          "stdout": "06.stdout.log",
+          "stderr": "06.stderr.log"
+        },
+        {
+          "name": "Shopify host, queue input and publication guards (mock APIs only)",
+          "returncode": 0,
+          "sekunden": 3.41,
+          "unittest_anzahl": 0,
+          "stdout": "07.stdout.log",
+          "stderr": "07.stderr.log"
+        },
+        {
+          "name": "Content preflight (offline evidence only)",
+          "returncode": 0,
+          "sekunden": 0.3,
+          "unittest_anzahl": 16,
+          "stdout": "08.stdout.log",
+          "stderr": "08.stderr.log"
+        }
+      ]
+    },
+    "forschung": {
+      "revision": "fed25db4146dfa609f1bf0746bcdb9c6927ae867",
+      "workflow_sha256": "5048f754552d399089c04bf09f47998c39025e88a8d3f2218bf1156a6f283f1c",
+      "image_id": "sha256:76f5895d76437b15886fe1f7816a7aad8a857036f03f8bb3935847bd1bcec47c",
+      "python": "3.11.18",
+      "node": "nicht verwendet",
+      "tmp_anfangs_leer": true,
+      "netzwerk": "Docker --network none",
+      "bestanden": true,
+      "steps": [
+        {
+          "name": "KI-Bot-Forschung offline prüfen",
+          "returncode": 0,
+          "sekunden": 35.62,
+          "unittest_anzahl": 70,
+          "stdout": "00.stdout.log",
+          "stderr": "00.stderr.log"
+        }
+      ]
+    }
+  },
+  "weitere_pruefungen": {
+    "html": "Keine Fehler oder Warnungen im vorgesehenen validate-Lauf",
+    "interne_links": "Keine defekten internen Links im vorgesehenen Hauptseiten-Check",
+    "browser": "Formular mit/ohne JavaScript und 320/390/1280px geprüft; externe Anfragen abgefangen",
+    "wochenbericht": {
+      "bestanden": 116,
+      "fehlgeschlagen": 0
+    },
+    "paketbau": {
+      "bestanden": 35,
+      "fehlgeschlagen": 0
+    },
+    "archivgenerator": "Isolierte Beispielausgabe und Index gerendert, PNG-Verweise und CSS-Abgleich korrekt; keine Archivseiten überschrieben"
+  },
+  "blocker": [
+    "GitHub-API über Cloud-Proxy weiter Forbidden; keine PR-Erstellung, keine Remote-Check-/Merge-/Deploy-Bestätigung",
+    "YouTube und wissenschaftliche Originalquellen teilweise netzwerkbedingt nicht gelesen",
+    "Kein Zugriff auf den Windows-PC und kein beobachteter neuer Vorwärtstest"
+  ],
+  "pages_build_und_browser": {
+    "revision": "ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf",
+    "exitcode": 0,
+    "seconds": 31.72,
+    "network": "none",
+    "salt": "nicht gesetzt; geschützte Kit-ZIPs nicht geprüft",
+    "passed": true,
+    "files": 7381,
+    "html_checked": 2707,
+    "oversize_files": 0,
+    "browser_passed": true,
+    "browser_scope": "Formular mit/ohne JavaScript, Einwilligung, ungültige E-Mail, Rückkehr, 320/390/1280px, Bild/Favicons, Archiv; externe Anfragen abgefangen",
+    "private_dirs_excluded": true,
+    "internal_markdown_files": 0,
+    "og_image_exists": true,
+    "sitemap_valid": true,
+    "core_files_sha256": {
+      "index.html": "f6889b259086af8c7d0c45aa568d09d9147be6c3ad90e11f2cf6a4230e741cfc",
+      "about.html": "de0e3c09049680d5d4b745cd64128399c9eb5a7a2bec7245ba1aeef6beef0872",
+      "archive/archive.css": "02075a08293b490bdc1d0ba0f12599f1634d6dc5308395284e5720844002eae1",
+      "og-image.png": "da20080f64e879da5d73bb781b21fb7cc7933756578452488b047f0aa629695e"
+    },
+    "warnings": "Build meldet /markt in der nicht veröffentlichten lokalen Cockpit-Vorlage. Roh-Predeploy-Linkprüfung meldet dynamische Ziele ohne Auflösung der Redirects. Keine vollständige Fehlerfreiheit aller Seiten behauptet."
+  },
+  "predeploy_zusatz": {
+    "revision": "b165e9100",
+    "checks": [
+      {
+        "name": "Verify no broken internal links",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify sitemap.xml is valid XML",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify JSON-LD blocks",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify launch.html present + noindex",
+        "exitcode": 0
+      },
+      {
+        "name": "Check launch.html size budget",
+        "exitcode": 0
+      }
+    ],
+    "voice_linter": "Originale Dateiauswahl gegen origin/main ausgeführt: keine anwendbaren Content-Markdown-Dateien; kein Lintdurchlauf nötig."
+  }
+}

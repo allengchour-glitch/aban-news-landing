@@ -63,6 +63,8 @@ jobs:
             python "$t.py" | tail -n 3
           done
           cd ..
+          echo "=== test_wochenbericht"
+          python schatten/test_wochenbericht.py | tail -n 3
           echo "=== test_paket_bauen"
           python test_paket_bauen.py | tail -n 3
 

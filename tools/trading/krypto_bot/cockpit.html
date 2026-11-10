@@ -103,6 +103,15 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .perioden div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
 .perioden span{display:block;color:var(--ink-3);font-size:12px}
 .perioden b{font-size:18px;font-variant-numeric:tabular-nums}
+.perioden button{text-align:left;min-height:80px;padding:8px 10px;min-width:0}
+.perioden button[aria-pressed="true"]{border-color:var(--s-claude);box-shadow:inset 0 0 0 1px var(--s-claude)}
+.live-stand{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin-bottom:12px}
+.live-stand p{flex-basis:100%;margin:0;overflow-wrap:anywhere}
+.live-stand button{margin-left:auto;min-height:44px}
+.live-zahlen{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:12px 0}
+.live-zahlen div{border:1px solid var(--line);border-radius:var(--r-s);padding:10px;min-width:0}
+.live-zahlen span{display:block;color:var(--ink-3);font-size:12px}
+.live-zahlen b{font-size:20px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .teile{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--ink-2);font-size:13px;font-variant-numeric:tabular-nums}
 .balken svg{display:block;width:100%;height:auto}
 .risiko{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 12px}
@@ -507,6 +516,12 @@ html[data-nur-lesen] #steuerung .knoepfe,html[data-nur-lesen] #steuerung .konsol
   <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — der Pilot schliesst seine Positionen und eröffnet nichts Neues.</div>
   <div id="versionHinweis" class="hinweis karte" hidden style="margin-bottom:12px"></div>
 
+  <section class="karte live-stand" aria-label="Live-Daten">
+    <span class="pill" id="live-status" role="status">Daten werden geladen</span>
+    <span class="unter" id="live-alter">Noch kein Kontoabruf</span>
+    <button type="button" id="live-neu">Jetzt aktualisieren</button>
+    <p class="unter" id="live-info">Kontowerte alle 15 Sekunden · Gewinnhistorie höchstens einmal pro Minute.</p>
+  </section>
   <section class="uebersicht" id="uebersicht" aria-label="Übersicht"><div class="ukarte u12"><p class="u-leer">Übersicht wird geladen …</p></div></section>
   <h2 class="details-titel" id="details">Details</h2>
 
@@ -713,9 +728,46 @@ function balken(host, punkte) {
   host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gewinn oder Verlust pro Tag">${s}</svg>`;
 }
 let letzterProfit = null;
+let profitZeitraum = "gesamt", profitAbrufLaeuft = false, profitGezeichneteFrische = "";
+const PROFIT_ZEITRAEUME = {heute: "Heute", "7_tage": "7 Tage", "30_tage": "30 Tage", gesamt: "Seit Start"};
+function profitFrische(p, jetzt = Date.now()) {
+  if (!p || p.hinweis) return "nicht_erreichbar";
+  const zeit = typeof p.zeit === "string" ? Date.parse(p.zeit) : NaN;
+  if (!Number.isFinite(zeit) || jetzt - zeit < -5000) return "unbekannt";
+  return jetzt - zeit > 45000 ? "veraltet" : "aktuell";
+}
+function profitAktuell(p) { return profitFrische(p) === "aktuell"; }
+function profitVollstaendig(p) {
+  return profitAktuell(p) && p.aktualitaet?.einkommen_aktuell === true
+    && Number.isFinite(Date.parse(p.aktualitaet.einkommen_bis));
+}
+function profitZeit(value) {
+  const t = typeof value === "string" ? Date.parse(value) : NaN;
+  return Number.isFinite(t) ? new Date(t).toLocaleString("de-CH") : "unbekannt";
+}
+function liveZeichnen() {
+  const p = letzterProfit, frisch = profitFrische(p);
+  if (!p && profitAbrufLaeuft) {
+    $("live-status").textContent = "Kontodaten werden abgefragt …";
+    $("live-status").className = "pill";
+    $("live-alter").textContent = "Noch kein bestätigter Kontoabruf";
+    return;
+  }
+  const texte = {nicht_erreichbar: "Konto nicht erreichbar", unbekannt: "Datenstand unbekannt", veraltet: "Daten veraltet", aktuell: "Konto aktuell"};
+  const voll = profitVollstaendig(p);
+  $("live-status").textContent = texte[frisch] + (frisch === "aktuell" && !voll ? " · Gewinn unvollständig" : "");
+  $("live-status").className = "pill " + (voll ? "plus" : "warn");
+  const t = p && typeof p.zeit === "string" ? Date.parse(p.zeit) : NaN;
+  $("live-alter").textContent = Number.isFinite(t) && Date.now() >= t ? "Kontoabruf vor " + Math.floor((Date.now() - t) / 1000) + " s" : "Kein bestätigter aktueller Kontoabruf";
+  $("live-info").textContent = p && !p.hinweis
+    ? "Konto: " + profitZeit(p.zeit) + " · Gewinnhistorie bis: " + profitZeit(p.aktualitaet?.einkommen_bis) + " · Konto alle 15 s, Historie höchstens einmal pro Minute."
+    : (p?.hinweis || "Cockpit-Server nicht erreichbar. Neue Abfrage alle 15 Sekunden.");
+}
 function zeigeProfit(p) {
   letzterProfit = p;
-  $("p-stand").textContent = "Stand " + new Date().toLocaleTimeString("de-CH") + " · alle 15 s";
+  profitGezeichneteFrische = profitFrische(p);
+  liveZeichnen();
+  $("p-stand").textContent = p && !p.hinweis ? "Kontoabruf " + profitZeit(p.zeit) : "Kein aktueller Kontoabruf";
   if (!p || p.hinweis) {
     $("p-modus").textContent = "—";
     $("p-inhalt").innerHTML = `<p class="leer">${esc(p ? p.hinweis : "Cockpit-Server nicht erreichbar")}</p>`;
@@ -724,14 +776,15 @@ function zeigeProfit(p) {
   }
   $("p-modus").textContent = p.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
   $("p-modus").className = "pill" + (p.modus === "ECHTGELD" ? " echt" : "");
-  const z = p.zeitraeume, g = z.gesamt;
+  const z = p.zeitraeume, g = z[profitZeitraum], voll = profitVollstaendig(p);
   const proz = x => x == null ? "" : ` (${fmtPct(x)})`;
-  const periode = (name, w) => `<div title="${w.offen == null ? "Kein gemerkter Stand der offenen Positionen zu Beginn — nur der abgeschlossene Teil gezählt" : "ab " + esc(w.ab).replace("T", " ")}"><span>${name}${w.offen == null ? " *" : ""}</span><b class="${kl(w.netto)}">${pfeil(w.netto)}${vz(w.netto)}</b><span>${proz(w.prozent).replace(/[()]/g, "") || "&nbsp;"}</span></div>`;
+  const periode = (name, w) => `<button type="button" data-profit-zeitraum="${name}" aria-pressed="${profitZeitraum === name}" title="${w.offen == null ? "Offener Anfangsstand unbekannt — nur abgeschlossener Teil" : "ab " + esc(w.ab).replace("T", " ")}"><span>${PROFIT_ZEITRAEUME[name]}${w.offen == null ? " *" : ""}</span><b class="${voll ? kl(w.netto) : "null"}">${voll ? pfeil(w.netto) + vz(w.netto) : "—"}</b><span>${voll ? proz(w.prozent).replace(/[()]/g, "") || "&nbsp;" : "Daten unvollständig"}</span></button>`;
   const offenUnbekannt = ["heute", "7_tage", "30_tage"].some(n => z[n].offen == null);
-  const hinweise = (offenUnbekannt ? `<div class="unter">* offene Positionen ohne gemerkten Stand zu Beginn: nur der abgeschlossene Teil gezählt (der tägliche Lauf merkt den Stand automatisch)</div>` : "")
+  const hinweise = (!voll ? `<p class="hinweis">Gewinnhistorie oder Kontoabruf nicht aktuell. Gewinnbeträge bleiben bis zur nächsten bestätigten Abfrage unbekannt.</p>` : "")
+    + (offenUnbekannt ? `<div class="unter">* offene Positionen ohne gemerkten Stand zu Beginn: nur der abgeschlossene Teil gezählt (der tägliche Lauf merkt den Stand automatisch)</div>` : "")
     + (p.nicht_umgerechnet && p.nicht_umgerechnet.length ? `<div class="unter">⚠️ Nicht in USDT umrechenbar, darum NICHT enthalten: ${esc(p.nicht_umgerechnet.join(", "))}</div>` : "")
     + (p.warnung ? `<div class="unter">⚠️ ${esc(p.warnung)}</div>` : "");
-  const pos = p.positionen.length ? `<div class="tabelle"><table><tr><th>Markt</th><th>Seite</th><th>Menge</th><th>Einstieg</th><th>Jetzt</th><th>Gewinn USDT</th><th>auf das Pfand</th><th>Liquidation</th></tr>${p.positionen.map(x => `
+  const pos = !profitAktuell(p) ? `<p class="leer">Kein aktueller Positionsabruf.</p>` : p.positionen.length ? `<div class="tabelle"><table><tr><th>Markt</th><th>Seite</th><th>Menge</th><th>Einstieg</th><th>Jetzt</th><th>Gewinn USDT</th><th>auf das Pfand</th><th>Liquidation</th></tr>${p.positionen.map(x => `
       <tr><td>${esc(x.symbol)}</td><td class="${x.seite === "LONG" ? "plus" : "minus"}">${x.seite === "LONG" ? "▲" : "▼"} ${x.seite}</td><td>${fmtZahl(x.menge, 4)}</td>
       <td>${fmtZahl(x.einstieg, 2)}</td><td>${fmtZahl(x.mark, 2)}</td><td class="${kl(x.gewinn)}"><b>${vz(x.gewinn)}</b></td>
       <td class="${kl(x.gewinn)}">${x.gewinn_prozent == null ? "—" : fmtPct(x.gewinn_prozent)}</td><td>${x.liquidation ? fmtZahl(x.liquidation, 2) : "—"}</td></tr>`).join("")}</table></div>`
@@ -739,25 +792,48 @@ function zeigeProfit(p) {
   const ki = letzterStand && letzterStand.ki && letzterStand.ki.vergleich && letzterStand.ki.vergleich.Claude;
   const kiText = ki && ki.length > 1 ? ` · 🤖 Claude (Schattenkonto) ${fmtPct(ki.at(-1)[1] - 1)} seit ${esc(ki[0][0])}` : "";
   $("p-inhalt").innerHTML = `
-    <div class="gross ${kl(g.netto)}">${pfeil(g.netto)}${vz(g.netto)} <small>USDT${proz(g.prozent)}</small></div>
-    <div class="unter">Gewinn seit ${esc(p.seit)} · Konto ${fmtZahl(p.gesamt, 2)} USDT · Ein- und Auszahlungen zählen nicht${kiText}</div>
-    <div class="perioden">${periode("Heute", z.heute)}${periode("7 Tage", z["7_tage"])}${periode("30 Tage", z["30_tage"])}${periode("Seit Start", g)}</div>${hinweise}
-    <div class="teile"><span>Realisiert <b class="${kl(g.realisiert)}">${vz(g.realisiert)}</b></span><span>Offen <b class="${kl(g.offen)}">${vz(g.offen)}</b></span>
-      <span>Funding <b class="${kl(g.funding)}">${vz(g.funding)}</b></span><span>Gebühren <b class="${kl(g.gebuehren)}">${vz(g.gebuehren)}</b></span>
-      ${Object.entries(p.pro_markt).map(([m, v]) => `<span>${esc(m)} <b class="${kl(v)}">${vz(v)}</b></span>`).join("")}</div>
+    <div class="gross ${voll ? kl(g.netto) : "null"}" id="p-netto">${voll ? pfeil(g.netto) + vz(g.netto) : "—"} <small>USDT${voll ? proz(g.prozent) : ""}</small></div>
+    <div class="unter" id="p-zeitraum">${PROFIT_ZEITRAEUME[profitZeitraum]} · ab ${esc(g.ab).replace("T", " ")} · Ein- und Auszahlungen zählen nicht als Gewinn${kiText}</div>
+    <div class="live-zahlen" aria-label="Aktuelle Kontowerte">
+      <div><span>Kontowert inkl. offener Positionen</span><b>${profitAktuell(p) ? fmtZahl(p.gesamt, 2) : "—"} USDT</b></div>
+      <div><span>Frei verfügbar laut Börse</span><b>${profitAktuell(p) && p.verfuegbar != null ? fmtZahl(p.verfuegbar, 2) : "—"} USDT</b></div>
+      <div><span>Offener Gewinn / Verlust jetzt</span><b class="${profitAktuell(p) ? kl(p.offen) : "null"}">${profitAktuell(p) ? vz(p.offen) : "—"} USDT</b></div>
+    </div>
+    <div class="perioden" role="group" aria-label="Gewinnzeitraum">${Object.keys(PROFIT_ZEITRAEUME).map(n => periode(n, z[n])).join("")}</div>${hinweise}
+    <div class="teile"><span>Realisiert <b class="${voll ? kl(g.realisiert) : "null"}">${voll ? vz(g.realisiert) : "—"}</b></span><span>Veränderung offen <b class="${voll ? kl(g.offen) : "null"}">${voll ? vz(g.offen) : "—"}</b></span>
+      <span>Funding <b class="${voll ? kl(g.funding) : "null"}">${voll ? vz(g.funding) : "—"}</b></span><span>Gebühren <b class="${voll ? kl(g.gebuehren) : "null"}">${voll ? vz(g.gebuehren) : "—"}</b></span></div>
+    <div class="teile" style="margin-top:8px"><span>Je Markt seit Start (gesamtes Konto):</span>${Object.entries(p.pro_markt).map(([m, v]) => `<span>${esc(m)} <b class="${voll ? kl(v) : "null"}">${voll ? vz(v) : "—"}</b></span>`).join("")}</div>
     <div class="raster" style="margin-top:12px">
       <div class="w6"><h2>Gewinn kumuliert (abgeschlossen)</h2><div id="p-kurve" class="chart"></div></div>
       <div class="w6"><h2>Gewinn pro Tag (letzte 60)</h2><div id="p-tage" class="balken"></div></div>
     </div>
     <h2 style="margin-top:12px">Offene Positionen</h2>${pos}`;
   linie($("p-kurve"), [{name: "Gewinn", farbe: "--s-pilot", punkte: p.kumuliert}], {fmt: x => vz(x) + " USDT", achse: x => vz(x), kurz: true,
-    titel: "Gewinn kumuliert", leer: "Noch kein realisierter Gewinn oder Verlust."});
+    titel: "Gewinn kumuliert", leer: "Für die Kurve werden mindestens zwei Tagesstände benötigt."});
   balken($("p-tage"), p.tage);
   uebersichtZeichnen();
 }
 async function ladeProfit() {
-  try { zeigeProfit(await (await fetch("/api/profit", {cache: "no-store"})).json()); } catch (e) { zeigeProfit(null); }
+  if (profitAbrufLaeuft) return;
+  profitAbrufLaeuft = true;
+  $("live-neu").disabled = true;
+  $("live-neu").setAttribute("aria-busy", "true");
+  liveZeichnen();
+  try {
+    const r = await fetch("/api/profit", {cache: "no-store", signal: AbortSignal.timeout(20000)});
+    if (!r.ok) throw new Error("Kontoabruf fehlgeschlagen");
+    zeigeProfit(await r.json());
+  } catch (e) { zeigeProfit(null); }
+  finally { profitAbrufLaeuft = false; $("live-neu").disabled = false; $("live-neu").setAttribute("aria-busy", "false"); liveZeichnen(); }
 }
+$("p-inhalt").addEventListener("click", e => {
+  const knopf = e.target.closest("[data-profit-zeitraum]");
+  if (!knopf || !Object.hasOwn(PROFIT_ZEITRAEUME, knopf.dataset.profitZeitraum)) return;
+  profitZeitraum = knopf.dataset.profitZeitraum;
+  zeigeProfit(letzterProfit);
+  $("p-inhalt").querySelector(`[data-profit-zeitraum="${profitZeitraum}"]`).focus({preventScroll: true});
+});
+$("live-neu").addEventListener("click", () => { laden(); ladeProfit(); });
 let letzterStand = null;
 let standFehler = false;
 
@@ -1034,13 +1110,13 @@ function uKurveZeichnen(host, punkte) {
 }
 
 function uHeld(d, p) {
-  const live = p && !p.hinweis && istZahl(p.gesamt);
+  const live = profitAktuell(p) && istZahl(p.gesamt);
   const k = d.konto;
   const wert = live ? p.gesamt : k ? k.wert : null;
-  const echt = d.modus === "ECHTGELD";
+  const echt = (live ? p.modus : d.modus) === "ECHTGELD";
   const z = live ? p.zeitraeume : null;
   const chip = (name, w) => {
-    if (!w) return `<div class="chip g-null"><span>${name}</span><b>—</b><small>&nbsp;</small></div>`;
+    if (!w || !profitVollstaendig(p)) return `<div class="chip g-null"><span>${name}</span><b>—</b><small>Gewinn unbekannt</small></div>`;
     return `<div class="chip ${uKl(w.netto)}">
       <span>${name}${w.offen == null ? hinweisKnopf(HINWEIS_OFFEN, "Hinweis zu " + name, "stern") : ""}</span><b>${uPfeil(w.netto)} ${uVz(w.netto)} <small style="font-weight:600;color:var(--mut)">USDT</small></b><small>${uPct(w.prozent)}</small></div>`;
   };
@@ -1057,8 +1133,8 @@ function uHeld(d, p) {
 }
 
 function uAusl(d, p, satSymbole) {
-  const live = p && !p.hinweis && istZahl(p.gesamt);
-  const konto = live ? p.gesamt : d.konto ? d.konto.wert : null;
+  const live = profitAktuell(p) && istZahl(p.gesamt);
+  const konto = live ? p.gesamt : null;
   const A = auslastung(live ? p.positionen : [], konto, satSymbole);
   const ri = d.risiko || {};
   const zeile = (art, name, farbe, w) => `<li><span class="sw ${farbe}"></span>${name}<b>${fmtZahl(w, 0)} USDT${A.konto ? " · " + fmtZahl(w / A.konto * 100, 0) + " %" : ""}</b></li>`;
@@ -1098,7 +1174,7 @@ function uLeiter(x, stop, stopHinweis) {
 }
 
 function uPositionen(d, p, satSymbole, satMap) {
-  if (!p || p.hinweis) return `<section class="ukarte u12" id="u-positionen" aria-label="Positionen"><p class="u-label">Positionen</p><p class="u-leer">${esc(p && p.hinweis ? p.hinweis : "Positionen erscheinen, sobald der Konto-Abruf läuft (Futures-Schlüssel nötig).")}</p></section>`;
+  if (!profitAktuell(p)) return `<section class="ukarte u12" id="u-positionen" aria-label="Positionen"><p class="u-label">Positionen</p><p class="u-leer">${esc(p && p.hinweis ? p.hinweis : "Kein aktueller Positionsabruf. Datenstand oben prüfen.")}</p></section>`;
   const gross = p.positionen.filter(x => positionsArt(x.symbol, satSymbole) !== "satellit");
   if (!gross.length) {
     const flach = (d.maerkte || []).map(m => `${esc(m.markt)} ${m.hebel > 0 ? "LONG" : m.hebel < 0 ? "SHORT" : "FLACH"}`).join(" · ");
@@ -1126,7 +1202,7 @@ function uSatellit(d, p, satMap) {
   if (s == null) return `<section class="ukarte u7" id="u-satellit" aria-label="Satellit">${kopf("nicht verfügbar", "")}<p class="u-leer">Die Satelliten-Anzeige ist in dieser Programmversion nicht vorhanden.</p></section>`;
   const status = s.echtgeld ? ["nur Testnetz — mit Echtgeld aus", "aus"] : s.aus ? ["AUS" + (s.grund ? " · " + esc(s.grund) : ""), "aus"] : d.notaus ? ["Not-Aus — alles geschlossen", "aus"]
     : d.pause ? ["Pause — es wird nicht gehandelt", "aus"] : !s.hat_schluessel ? ["keine Futures-Schlüssel", "aus"] : ["AN · " + fmtZahl(s.anteil * 100, 0) + " % des Kontos", "an"];
-  const live = p && !p.hinweis;
+  const live = profitAktuell(p);
   const zeilen = s.positionen.map(q => {
     const x = live ? p.positionen.find(y => y.symbol === q.symbol) : null;
     const L = x ? kursleiter({seite: "LONG", einstieg: x.einstieg, mark: x.mark, stop: q.stop}) : null;
@@ -1618,6 +1694,14 @@ if (NUR_LESEN) $("nurLesen").hidden = false; else { ladeFern(); setInterval(lade
 
 laden(); setInterval(laden, 60000);
 ladeProfit(); setInterval(ladeProfit, 15000);
+setInterval(() => {
+  if (!letzterProfit && profitAbrufLaeuft) { liveZeichnen(); return; }
+  if (profitFrische(letzterProfit) !== profitGezeichneteFrische) {
+    letzteSignatur = "";
+    zeigeProfit(letzterProfit);
+  } else liveZeichnen();
+}, 1000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) { laden(); ladeProfit(); } });
 </script>
 </body>
 </html>
