@@ -64,6 +64,27 @@ Admin-GraphQL (`mcp__Shopify__graphql_query`, Variable `q` = `created_at:>=2026-
 query($q: String!) { orders(first: 50, query: $q, sortKey: CREATED_AT, reverse: true) { nodes { name createdAt displayFinancialStatus totalPriceSet { shopMoney { amount currencyCode } } customerJourneySummary { ready firstVisit { source sourceType utmParameters { source medium campaign } landingPage } lastVisit { source sourceType utmParameters { source medium campaign } landingPage } } } pageInfo { hasNextPage } } }
 ```
 
+## Einstiegsseiten gesund? (Messrezept, erstmals 10.11. gegen 12:30 UTC, nur lesend)
+Frage: Landen die ChatGPT-Besucher auf aktiven, lieferbaren Seiten? Wöchentlich zusammen mit den Messrezepten oben fahren.
+1. ShopifyQL (`mcp__Shopify__run-analytics-query`):
+```
+FROM sessions SHOW sessions, sessions_with_cart_additions, sessions_that_completed_checkout GROUP BY landing_page_path WHERE utm_source = 'chatgpt.com' SINCE -14d UNTIL today ORDER BY sessions DESC LIMIT 40
+```
+2. Produkte (`mcp__Shopify__graphql_query`, Handle = Pfad ohne `/products/`, Aliase `p1` bis `pN`; `productByIdentifier`, nicht `productByHandle`):
+```
+query{ p1:productByIdentifier(identifier:{handle:"..."}){...F} p2:productByIdentifier(identifier:{handle:"..."}){...F} }
+fragment F on Product{handle title status onlineStoreUrl totalInventory tracksInventory variantsCount{count} variants(first:60){nodes{availableForSale}}}
+```
+Befund, wenn `status` nicht ACTIVE ist, `onlineStoreUrl` leer ist oder keine Ausführung `availableForSale` ist.
+3. Sammlungen (Handle = Pfad ohne `/collections/`):
+```
+query{ c1:collectionByIdentifier(identifier:{handle:"..."}){...C} }
+fragment C on Collection{handle title sortOrder productsCount{count} products(first:12){nodes{status tracksInventory totalInventory}}}
+```
+Befund, wenn die Sammlung fehlt (`null`), unter den ersten 12 Produkten eines nicht ACTIVE ist oder `tracksInventory` gilt und `totalInventory` höchstens 0 ist (ausverkauft; Bestand 0 bei `tracksInventory: false` heisst NICHT ausverkauft).
+Grenzen: `Collection.publishedOnCurrentPublication` ist im Connector (API 2026-10) abgekündigt und wird abgelehnt; ob eine Sammlung im Online-Shop veröffentlicht ist, zeigt nur ein Seitenaufruf (höchstens zehn je Messung, mit Pausen). Französische Adressen (`/fr/...`) wurden nicht geprüft.
+**Ergebnis 10.11. gegen 12:30 UTC:** 142 Sitzungen auf den Top 40; alle 13 Produktseiten ACTIVE und lieferbar, alle 23 Sammlungen da, vorne nichts ausverkauft ausser Platz 1 in `haltungsgurte-ruecken`. Auffällig: 5 Sitzungen auf der gesperrten Seite `magnet-zum-selbstgestalten`; 20 von 142 auf «Selbst gestalten»-Seiten (3 Warenkörbe, 0 Käufe).
+
 ## Lehren
 1. **Quellen nie nur nach `referrer_name` auswerten:** Shopify ordnet Sitzungen mit verstecktem Verweis als «direct» ein, auch wenn die Adresse `utm_source=chatgpt.com` trägt. Zusätzlich nach `utm_source` und nach der Reise der Bestellung (`customerJourneySummary`) messen.
 2. «Direkt = überwiegend Roboter» war zu grob: ein Teil sind Menschen mit anderem Verweis-Verhalten. Vor jeder Zuschreibung Tagesgang, Geräte, Warenkorb und Einstiegsseiten ansehen.
