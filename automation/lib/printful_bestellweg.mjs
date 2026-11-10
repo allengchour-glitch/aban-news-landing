@@ -8,8 +8,13 @@
  * `art` ist ein kurzer Schlüssel ([a-z0-9-]); er steckt im Shopify-Tag `printful-review-<art>`: dieselbe Befundart wird nur EINMAL gemeldet.
  *
  * VERTRAG MIT DEM EDITOR (Warenkorb-Eigenschaften einer Position):
- *   «🖼️ Druckdatei (<Platzierungs-ID>)»   v6: https-Adresse (Cloudinary) der Druckdatei je Platzierung  (front, back, sleeve_left, label_outside, embroidery_chest_left …)
- *   «_pod_karte»                          v6: JSON {v:6, pl:[Platzierungen], dt:{<ID>:<Dateityp>}, px:["BxH"], o:{<Optionsid>:<Wert>}} (o = Printful-Optionen, siehe unten)
+ *   «🖼️ Druckdatei (<Platzierungs-ID>)»   v6 (Editor 6.0 bis 6.2.0, ALTE Schreibweise): https-Adresse (Cloudinary) der Druckdatei je Platzierung  (front, back, sleeve_left, label_outside, embroidery_chest_left …)
+ *   «_Druckdatei (<Platzierungs-ID>)»     v6 (ab Editor 6.2.1, NEUE Schreibweise): dasselbe; der führende Unterstrich blendet die Zeile in Kasse und Bestätigungsmail aus (QUELLE community.shopify.dev, ungemessen).
+ *                                         Beide werden zu 100 % gelesen; beide Schreibweisen (oder v5) in EINER Position sind ein harter Befund «schluessel-gemischt». Ein Schlüssel, der mit «_Druckdatei» beginnt und
+ *                                         nicht lesbar ist, ist ein harter Befund «datei-schluessel» (nie als v5 und damit als Vorderseite gedeutet).
+ *   «_vorschau»                           v6 (ab 6.2.0): Cloudinary-JPEG der Vorschau für die Warenkorb-Miniatur. KEINE Druckdatei: der Parser ignoriert sie (der Schlüssel enthält weder «Druckdatei» noch «Print file»).
+ *   «_pod_karte»                          v6: JSON {v:6, m:<Printful-Produkt>, pv:<Printful-Variante>, pl:[Platzierungen], dt:{<ID>:<Dateityp>}, px:["BxH"], qd:<kleinste Foto-dpi>, o:{<Optionsid>:<Wert>}} (o = Printful-Optionen, siehe unten).
+ *                                         m und pv werden gegen die SKU der Position gehalten (Widerspruch = harter Befund «karte-widerspruch»), qd nur als WEICHER Hinweis (qd-weicht-ab gegen Katalog und Messung der Datei, aufloesung-angabe bei unbrauchbarem Wert): der Kunde kann es schreiben.
  *   «⚙️ Option (<Optionsid>)»              v6: eine Printful-Option, z. B. «⚙️ Option (thread_colors_chest_left)» = «#FFFFFF,#CC3333» (Garnfarben), «⚙️ Option (stitch_color)» = «black»
  *   «Vorne · 🖼️ Druckdatei», «Hinten · 🖼️ Druckdatei», «🖼️ Druckdatei (Vorne)» …   v5: nur Vorderseite/Rückseite (Schlüssel mit «Hinten»/«Back» → Rückseite)
  * Der Editor v6 schreibt die Optionen heute NICHT (Stand 05.11.: kein «thread» im Code); bis er es tut, bleibt jeder Stickerei-Auftrag ein Entwurf mit Meldung.
@@ -19,10 +24,15 @@ import { platzierungsName, platzierungenFuerDateien } from './printful_platzieru
 // ───────────────────────────────────────────────────────────── Eigenschaften der Position
 /** Hosts, von denen Druckdateien kommen dürfen. Die Warenkorb-Eigenschaften sind für Kunden frei schreibbar (/cart/add.js): ohne Liste würde dieser Lauf (und Printful) jede Adresse abrufen. Der Editor lädt zu Cloudinary hoch. */
 export const ERLAUBTE_HOSTS = Object.freeze(['res.cloudinary.com', 'cdn.shopify.com']);
-const SCHL_V6 = /^\u{1F5BC}️? ?Druckdatei \(([a-z0-9_]+)\)$/u;
+const SCHL_V6 = /^\u{1F5BC}️? ?Druckdatei \(([a-z0-9_]+)\)$/u;       // ALT (Editor 6.0 bis 6.2.0): «🖼️ Druckdatei (front)»
+const SCHL_V6_NEU = /^_Druckdatei \(([a-z0-9_]+)\)$/;                // NEU (ab 6.2.1): «_Druckdatei (front)»
+const SCHL_V6_NEU_VERDACHT = /^_druckdatei/i;                         // beginnt wie ein neuer Schlüssel, ist aber nicht lesbar («_Druckdatei (Front)», «_Druckdatei»): nie als v5 deuten
 const SCHL_OPTION = /^⚙️? ?Option \(([a-z0-9_]+)\)$/u;
 const SCHL_V5 = /Druckdatei|Print file/i;
 const ID = /^[a-z0-9_]+$/;
+
+/** Grenzen von _pod_karte.qd (kleinste wirkliche Foto-Auflösung in dpi, ganze Zahl). */
+export const QD_MIN = 1, QD_MAX = 1000;
 
 /** Adresse einer Druckdatei prüfen. @returns {string|null} null = in Ordnung, sonst der Grund */
 export function adresseProblem(wert, hosts = ERLAUBTE_HOSTS) {
@@ -45,7 +55,8 @@ function optionWert(w) {
 
 /**
  * Warenkorb-Eigenschaften (Shopify customAttributes oder Objekt) → Druckdateien, Karte, Optionen.
- * @returns {{dateien:{seite:'front'|'back'|null, platzierung:string|null, dateiTyp:string|null, url:string, quelle:'v5'|'v6'}[], karte:object|null, optionen:Record<string,any>, probleme:{art:string,text:string,hart:boolean}[]}}
+ * `dateien[].schluessel` sagt, in welcher Schreibweise die Datei stand: 'alt' («🖼️ Druckdatei (front)»), 'neu' («_Druckdatei (front)») oder 'v5'. `qd` = die gültige Angabe _pod_karte.qd (ganze Zahl 1 bis 1000) oder null.
+ * @returns {{dateien:{seite:'front'|'back'|null, platzierung:string|null, dateiTyp:string|null, url:string, quelle:'v5'|'v6', schluessel:'alt'|'neu'|'v5'}[], qd:number|null, karte:object|null, optionen:Record<string,any>, probleme:{art:string,text:string,hart:boolean}[]}}
  */
 export function dateienAusEigenschaften(eigenschaften, { hosts = ERLAUBTE_HOSTS } = {}) {
   const paare = Array.isArray(eigenschaften)
@@ -64,35 +75,47 @@ export function dateienAusEigenschaften(eigenschaften, { hosts = ERLAUBTE_HOSTS 
       } else p('karte-unlesbar', '_pod_karte: Version oder Platzierungsliste unbekannt', false);
     } catch { p('karte-unlesbar', '_pod_karte: kein gültiges JSON', false); }
   }
-  const gesehen = new Set();
-  let v6 = 0, v5 = 0;
+  // qd = kleinste wirkliche Auflösung aller Fotos in dpi (Editor 6.2: ganzzahlig, abgerundet, höchstens die Dichte der Druckdatei). Fehlt es, ist das kein Befund (Text ohne Foto, ältere Editoren).
+  // Vorhanden, aber keine ganze Zahl von 1 bis 1000, ist ein WEICHER Befund; nie ein harter, nie eine Freigabe: der Kunde kann den Wert schreiben, massgebend bleibt die Messung an der Datei.
+  let qd = null;
+  if (karte && karte.qd !== undefined && karte.qd !== null) {
+    if (typeof karte.qd === 'number' && Number.isInteger(karte.qd) && karte.qd >= QD_MIN && karte.qd <= QD_MAX) qd = karte.qd;
+    else p('aufloesung-angabe', `_pod_karte.qd ist keine ganze Zahl von ${QD_MIN} bis ${QD_MAX} (steht: ${String(JSON.stringify(karte.qd)).slice(0, 40)}): die Foto-Auflösung laut Editor ist unbekannt`, false);
+  }
+  const gesehen = new Map();                    // 'v6:<ID>' bzw. 'v5:<Seite>' → Schreibweise
+  const stile = new Set();                      // gelesene Schreibweisen der Druckdatei-Schlüssel: 'alt', 'neu', 'v5'
   for (const [k, w] of paare) {
-    const m = k.match(SCHL_V6), mo = k.match(SCHL_OPTION);
+    const m = k.match(SCHL_V6), mn = k.match(SCHL_V6_NEU), mo = k.match(SCHL_OPTION);
     if (mo) { const v = optionWert(w); if (v !== null) optionen[mo[1]] = v; continue; }     // eine ⚙️-Eigenschaft gewinnt gegen _pod_karte.o (die Eigenschaft ist die ausdrückliche Wahl des Kunden)
-    const istDatei = m || SCHL_V5.test(k);
+    const unlesbar = !mn && SCHL_V6_NEU_VERDACHT.test(k);
+    const istDatei = m || mn || unlesbar || SCHL_V5.test(k);
     if (!istDatei) continue;
     if (w.trim() === '') continue;                                                          // leere Eigenschaft = keine Datei (Editor schreibt sie für unbenutzte Seiten nicht, ein Leerwert ist kein Fehler)
+    if (unlesbar) { p('datei-schluessel', `Eigenschaft «${k.slice(0, 60)}» beginnt wie eine Druckdatei, die Platzierung ist aber nicht lesbar (erwartet: «_Druckdatei (front)» mit Kleinbuchstaben): es wird nichts geraten`, true); continue; }
     const proble = adresseProblem(w, hosts);
     if (proble) { p('datei-adresse', `Druckdatei «${k}»: ${proble}`, true); continue; }
-    if (m) {
-      v6++;
-      const id = m[1];
-      if (gesehen.has('v6:' + id)) { p('datei-doppelt', `Druckdatei für «${id}» steht mehrfach in der Position`, true); continue; }
-      gesehen.add('v6:' + id);
+    stile.add(m ? 'alt' : mn ? 'neu' : 'v5');
+    if (m || mn) {
+      const id = (m || mn)[1], stil = m ? 'alt' : 'neu';
+      if (gesehen.has('v6:' + id)) {
+        if (gesehen.get('v6:' + id) === stil) p('datei-doppelt', `Druckdatei für «${id}» steht mehrfach in der Position`, true);   // zwei Schreibweisen für dieselbe Platzierung meldet unten «schluessel-gemischt»
+        continue;
+      }
+      gesehen.set('v6:' + id, stil);
       if (karte && !karte.pl.includes(id)) p('datei-ohne-karte', `Druckdatei für «${id}», aber die Platzierung fehlt in _pod_karte`, false);
       const dt = karte && karte.dt && typeof karte.dt === 'object' && typeof karte.dt[id] === 'string' && karte.dt[id] ? karte.dt[id] : id;
-      dateien.push({ seite: id === 'back' ? 'back' : id === 'front' || id === 'default' ? 'front' : null, platzierung: id, dateiTyp: dt, url: w.trim(), quelle: 'v6' });
+      dateien.push({ seite: id === 'back' ? 'back' : id === 'front' || id === 'default' ? 'front' : null, platzierung: id, dateiTyp: dt, url: w.trim(), quelle: 'v6', schluessel: stil });
     } else {
-      v5++;
       const seite = /Hinten|Back/i.test(k) ? 'back' : 'front';
       if (gesehen.has('v5:' + seite)) { p('datei-doppelt', `zwei Druckdateien für die ${seite === 'back' ? 'Rückseite' : 'Vorderseite'} in der Position`, true); continue; }
-      gesehen.add('v5:' + seite);
-      dateien.push({ seite, platzierung: null, dateiTyp: null, url: w.trim(), quelle: 'v5' });
+      gesehen.set('v5:' + seite, 'v5');
+      dateien.push({ seite, platzierung: null, dateiTyp: null, url: w.trim(), quelle: 'v5', schluessel: 'v5' });
     }
   }
-  if (v6 && v5) p('schluessel-gemischt', 'Eigenschaften der Editor-Versionen 5 und 6 gemischt: welche Datei gilt, ist unklar', true);
+  // Kein Editor schreibt zwei Schreibweisen in EINE Position (jede Fassung bleibt bei ihrer): das sind gemischte Quellen, vom Kunden manipuliert oder zusammengeführt. Es wird keine Datei geraten.
+  if (stile.size > 1) p('schluessel-gemischt', `Eigenschaften in gemischter Schreibweise (${[...stile].map((x) => ({ alt: '«🖼️ Druckdatei (…)»', neu: '«_Druckdatei (…)»', v5: 'Editor 5' }[x])).join(' und ')}): welche Datei gilt, ist unklar`, true);
   if (karte) for (const id of karte.pl) if (typeof id === 'string' && !gesehen.has('v6:' + id)) p('karte-ohne-datei', `_pod_karte nennt «${id}», es gibt aber keine Druckdatei dafür`, false);
-  return { dateien, karte, optionen, probleme };
+  return { dateien, karte, qd, optionen, probleme };
 }
 
 /** Printful-Variantennummer aus einer SKU «<sync>_<printfulVariantId>»; null, wenn keine. */
@@ -111,6 +134,19 @@ export function skuWaehlen({ positionSku, variantenSku } = {}) {
   const a = variantAusSku(positionSku), b = variantAusSku(variantenSku), probleme = [];
   if (a && b && a !== b) probleme.push({ art: 'sku-widerspruch', text: `SKU der Position (${a}) und der Variante (${b}) nennen verschiedene Printful-Varianten, es gilt die der Position`, hart: false });
   return { vid: a || b || null, sku: String((a ? positionSku : variantenSku) || positionSku || variantenSku || ''), probleme };
+}
+
+/**
+ * SKU-Schema der Modell-Fabrik: «<9100000 + Printful-Modellnummer>_<Printful-Variante>» (automation/pod_modell/plan.mjs: SKU_BASIS). Liefert die Modellnummer, wenn die SKU diesem Schema folgt, sonst null
+ * (ältere Produkte tragen «<Sync-Nummer>_<Variante>»: GEMESSEN 06.11.2026 an dropship/pod-auswahl/sku_index.json liegen deren Vorsilben bei 8481330 und 9448929, also ausserhalb 9100001 bis 9199999;
+ * neue Sync-Nummern zählt Printful aufwärts, sie können nicht mehr in diesen Bereich fallen: Annahme, ungemessen). Die Modellnummern gehen bis 99 999 (Printful-Produkte heute unter 2 000).
+ */
+export const SKU_BASIS = 9100000;
+export function modellAusSku(sku) {
+  const m = String(sku == null ? '' : sku).match(/^(\d+)_\d+\s*$/);
+  if (!m) return null;
+  const n = parseInt(m[1], 10) - SKU_BASIS;
+  return Number.isInteger(n) && n >= 1 && n <= 99999 ? n : null;
 }
 
 /** Ist die Position ein Editor-Produkt? Nur das Tag am Produkt entscheidet (eine Eigenschaft allein ist für Kunden schreibbar). */
@@ -318,9 +354,10 @@ const num = (x) => { if (x === null || x === undefined || x === '') return null;
  * (ohne ihn wäre #1033 ein «Verlust» von -1.72 CHF gewesen, mit ihm +4.51). Verglichen wird ohne Printfuls Steuer (`tax`, `vat`: bei einem MWST-pflichtigen Shop Vorsteuer, wie in der Preisformel).
  * Netto = Erlös/(1+MWST) − Gebühr − Kosten. Kein Netto unter `nettoMin` → Befund «kosten». Unbekanntes ist KEIN grünes Licht, sondern «kosten-unbekannt»: Kosten noch in Berechnung, andere Währung,
  * Erlös unbekannt, und Kosten von null oder darunter (ein frischer Entwurf ohne gerechnete Positionen kann 0.00 melden; negative Werte entstehen, wenn die Steuer die Summe übersteigt).
+ * `maxUsd` = optionale absolute Obergrenze der Printful-Summe (USD) je Auftrag; null/0 = aus. Darüber: Befund «kosten-obergrenze» (weich), noch vor der Erlösrechnung.
  * @returns {{ok:boolean, art:string|null, text:string, nettoChf:number|null, kostenChf:number|null}}
  */
-export function kostenPruefen({ costs, erloesChf, nettoMin = 0, regel = KOSTEN_REGEL } = {}) {
+export function kostenPruefen({ costs, erloesChf, nettoMin = 0, regel = KOSTEN_REGEL, maxUsd = null } = {}) {
   const unbek = (text) => ({ ok: false, art: 'kosten-unbekannt', text, nettoChf: null, kostenChf: null });
   if (!costs || typeof costs !== 'object') return unbek('Printful nennt noch keine Kosten für den Auftrag');
   if (costs.calculation_status && String(costs.calculation_status).toLowerCase() !== 'done') return unbek(`Printful rechnet die Kosten noch (${costs.calculation_status})`);
@@ -328,6 +365,9 @@ export function kostenPruefen({ costs, erloesChf, nettoMin = 0, regel = KOSTEN_R
   const total = num(costs.total);
   if (total === null) return unbek('Printful nennt noch keine Kosten für den Auftrag');
   if (total <= 0) return unbek(`Printful meldet Kosten von ${total.toFixed(2)} USD: das ist keine gerechnete Summe`);
+  // Absolute Obergrenze je Auftrag (PRINTFUL_MAX_KOSTEN_USD, Vorgabe aus): gilt für die Summe, die Printful der hinterlegten Karte belastet (Ware, Versand, Steuer), unabhängig vom Erlös. Nie ein Freispruch: darunter gelten die übrigen Prüfungen weiter.
+  const grenze = num(maxUsd);
+  if (grenze !== null && grenze > 0 && total > grenze) return { ok: false, art: 'kosten-obergrenze', text: `Printful berechnet ${total.toFixed(2)} USD für den Auftrag, die Obergrenze ist ${grenze.toFixed(2)} USD (PRINTFUL_MAX_KOSTEN_USD): Entwurf im Printful-Dashboard prüfen`, nettoChf: null, kostenChf: null };
   const erloes = num(erloesChf);
   if (erloes === null || erloes <= 0) return unbek('Erlös der Positionen unbekannt');
   const ohneSteuer = total - (num(costs.tax) || 0) - (num(costs.vat) || 0);
@@ -444,6 +484,109 @@ export function kleineKopieUrl(url, breite = 1400) {
   return m ? `${m[1]}c_limit,w_${breite}/${m[2]}` : s;
 }
 
+// ───────────────────────────────────────────────────────────── Standort der Position (Fulfillment-Service)
+/**
+ * Liegt die Position an einem Fulfillment-SERVICE-Standort (Location.isFulfillmentService, z. B. «Printful», wo die App die Produkte «Unisex-T-Shirt», «klassisches T-Shirt», «Hoodie», «Jutebeutel» führt;
+ * GEMESSEN 09.11.2026 mit der Admin-Abfrage), meldet und druckt die App des Dienstes selbst. Ein zweiter Auftrag von diesem Sync wäre ein Doppeldruck (und die App druckt eventuell mit dem Muster-Design,
+ * ungemessen). Die Prüfung liest `o.fulfillmentOrders` (Abfrage des Klebers: fulfillmentOrders{ status assignedLocation{ location{ id name isFulfillmentService } } lineItems{ lineItem{ id } } }, wie
+ * automation/cj_tracking.mjs und printful_tracking.mjs); geschlossene und stornierte Fulfillment-Orders zählen nicht (ihre Angaben sind veraltet).
+ * @returns {{art:'dienst'|'frei'|'unklar', name?:string, grund?:string}}
+ *   dienst  mindestens eine offene Fulfillment-Order der Position liegt an einem Dienst-Standort
+ *   frei    die Position steht in mindestens einer offenen Fulfillment-Order und ALLE ihre Standorte sind Händler-Standorte (isFulfillmentService === false)
+ *   unklar  Daten fehlen (keine Fulfillment-Orders in den Bestelldaten, Position in keiner offenen Fulfillment-Order, Standort oder Flag fehlt): nie als «frei» gelesen
+ */
+export function standortVon(o, positionId) {
+  const fos = o && o.fulfillmentOrders;
+  if (!fos || !Array.isArray(fos.edges)) return { art: 'unklar', grund: 'die Bestelldaten enthalten keine Fulfillment-Orders' };
+  let gefunden = 0, dienst = null, offen = false;
+  for (const e of fos.edges) {
+    const fo = e && e.node; if (!fo) continue;
+    const st = String(fo.status || '').toUpperCase();
+    if (st === 'CLOSED' || st === 'CANCELLED') continue;
+    const drin = ((fo.lineItems && fo.lineItems.edges) || []).some((x) => x && x.node && x.node.lineItem && positionId && x.node.lineItem.id === positionId);
+    if (!drin) continue;
+    gefunden++;
+    const ort = fo.assignedLocation && fo.assignedLocation.location;
+    if (ort && ort.isFulfillmentService === true) dienst = dienst || ort;
+    else if (!ort || ort.isFulfillmentService !== false) offen = true;
+  }
+  if (dienst) return { art: 'dienst', name: String(dienst.name || dienst.id || 'Dienst-Standort') };
+  if (!gefunden) return { art: 'unklar', grund: 'die Position steht in keiner offenen Fulfillment-Order' };
+  if (offen) return { art: 'unklar', grund: 'der Standort der Fulfillment-Order ist nicht lesbar' };
+  return { art: 'frei' };
+}
+
+// ───────────────────────────────────────────────────────────── Aufpreis-Platzierungen gegen das bezahlte Paket
+/**
+ * Das BEZAHLTE Paket einer Position: welche Aufpreis-Platzierungen (Rückseite, Ärmel, Etiketten …) die Kundin im Shop-Preis mitbezahlt hat. AUSTAUSCHBAR: `cfg.paket(position, kontext)` ersetzt diese
+ * Funktion (Phase 5 des Plans «Editor-Parität» wählt das Modell: Option «Druck» der Variante, SKU-Präfix oder Metafeld). Rückgabe `{bezahlt, quelle}`:
+ *   bezahlt  Liste der bezahlten Platzierungen (IDs oder Namen wie «back», «sleeve_left»); [] = nur die im Grundpreis enthaltene Platzierung; null = das Paket ist NICHT bestimmbar (jeder Aufpreis bleibt dann ungedeckt)
+ *   quelle   kurzer Text für die Meldung
+ * STANDARD: «nur Vorderseite bezahlt». Heute berechnet kein Shop-Preis einen Aufpreis (Phase 1 ohne Aufpreis-Platzierungen, Karten mit --ohne-aufpreis); die angezeigte Summe `_pod_karte.ap` des Editors
+ * ist ein reiner Browserwert und deckt nie etwas.
+ */
+export function paketStandard() { return { bezahlt: [], quelle: 'Standard: nur Vorderseite bezahlt' }; }
+
+/**
+ * Fabrik für ein Paket aus einer Option der Shopify-Variante (Bestellabfrage: variant{ selectedOptions{ name value } }). Beispiel für Phase 5:
+ *   paketAusOption({ option: 'Druck', pakete: { 'Nur Vorderseite': [], 'Vorder- und Rückseite': ['back'] } })
+ * Fehlt die Option an der Variante, gilt `vorgabe` (Standard: nur Vorderseite); kennt `pakete` den Wert nicht, ist das Paket nicht bestimmbar (bezahlt null).
+ */
+export function paketAusOption({ option = 'Druck', pakete = {}, vorgabe = [] } = {}) {
+  return (position) => {
+    const opts = (position && position.variant && Array.isArray(position.variant.selectedOptions) ? position.variant.selectedOptions : []).filter((x) => x && String(x.name || '').trim().toLowerCase() === String(option).toLowerCase());
+    if (!opts.length) return { bezahlt: Array.isArray(vorgabe) ? vorgabe.slice() : [], quelle: `Option «${option}» fehlt an der Variante: Vorgabe` };
+    const wert = String(opts[0].value == null ? '' : opts[0].value).trim();
+    const liste = Object.prototype.hasOwnProperty.call(pakete, wert) ? pakete[wert] : null;
+    return Array.isArray(liste) ? { bezahlt: liste.slice(), quelle: `Option «${option}» = «${wert}»` } : { bezahlt: null, quelle: `Option «${option}» = «${wert}» ist kein bekanntes Paket` };
+  };
+}
+
+/** Aufpreis (USD, Katalog) einer gedruckten Platzierung laut product.files[].additional_price. @returns {number|null} 0 = im Grundpreis enthalten, null = unbekannt (kein Eintrag oder unlesbarer Preis) */
+export function aufpreisUsd(roh, typ) {
+  const dateien = roh && Array.isArray(roh.files) ? roh.files : null;
+  if (!dateien) return null;
+  const treffer = dateien.filter((f) => f && f.type !== 'mockup' && (f.id === typ || f.type === typ));
+  if (!treffer.length) return null;
+  let max = 0;
+  for (const f of treffer) {
+    if (f.additional_price === null || f.additional_price === undefined || f.additional_price === '') continue;   // null = im Grundpreis enthalten
+    const n = Number(f.additional_price);
+    if (!Number.isFinite(n) || n < 0) return null;
+    if (n > max) max = n;
+  }
+  return max;
+}
+
+/**
+ * Die gedruckten Platzierungen gegen das bezahlte Paket halten. Aufpreise NUR aus dem Printful-Katalog (product.files[].additional_price der Variante, USD), nie aus `costs` (die gibt es erst nach dem
+ * Anlegen des Entwurfs) und nie aus `_pod_karte.ap` (Browserwert, kundenseitig änderbar).
+ *   aufpreis-unbezahlt   HART: eine gedruckte Platzierung kostet Aufpreis bei Printful und ist nicht im bezahlten Paket (oder das Paket ist nicht bestimmbar): kein Auftrag, der Besitzer entscheidet im Einzelfall
+ *   aufpreis-unbekannt   weich: der Preis einer gedruckten Platzierung ist nicht lesbar (Katalog der Variante fehlt oder Eintrag ohne lesbaren Preis), und sie ist nicht die Vorderseite
+ * @param {{roh:object|null, typen:string[], bezahlt:string[]|null, quelle?:string}} p   roh = prod.roh.product; typen = files[].type des Auftrags
+ * @returns {{art:string, text:string, hart:boolean}[]}
+ */
+export function aufpreisPruefen({ roh, typen = [], bezahlt = [], quelle = '' } = {}) {
+  const aus = [];
+  const gedeckt = (typ) => {
+    if (!Array.isArray(bezahlt)) return false;
+    const namen = new Set(bezahlt.map(String));
+    if (namen.has(typ)) return true;
+    for (const f of (roh && Array.isArray(roh.files) ? roh.files : [])) if (f && (f.id === typ || f.type === typ) && (namen.has(String(f.id)) || namen.has(String(f.type)))) return true;
+    return false;
+  };
+  const wie = Array.isArray(bezahlt) ? (bezahlt.length ? `bezahlt: ${bezahlt.join(', ')}` : 'bezahlt ist nur die Vorderseite') : 'das bezahlte Paket ist nicht bestimmbar';
+  for (const typ of typen) {
+    const usd = aufpreisUsd(roh, typ);
+    if (usd === null) {
+      if (typ !== 'default' && typ !== 'front') aus.push({ art: 'aufpreis-unbekannt', text: `Aufpreis der Platzierung «${typ}» laut Printful-Katalog nicht lesbar: ob sie bezahlt ist, lässt sich nicht prüfen`, hart: false });
+      continue;
+    }
+    if (usd > 0 && !gedeckt(typ)) aus.push({ art: 'aufpreis-unbezahlt', text: `Gedruckt würde «${typ}» (Aufpreis ${usd.toFixed(2)} USD bei Printful), ${wie}${quelle ? ' (' + quelle + ')' : ''}. KEIN Printful-Auftrag; Nachzahlung oder nur die bezahlte Fläche drucken entscheidest du`, hart: true });
+  }
+  return aus;
+}
+
 // ───────────────────────────────────────────────────────────── Eine Bestellung planen
 const geld = (m) => (m && String(m.currencyCode || '').toUpperCase() === 'CHF' ? num(m.amount) : null);
 
@@ -463,7 +606,7 @@ function mengeVon(z) {
  *   io.druckdaten(pid)     → {art:'ok', printfiles, templates} | {art:'fehler', text}   GET /mockup-generator/printfiles + /templates (gemerkt je Produkt)
  *   io.kopf(url)           → {status, bytes}            erste Bytes der Datei (Kopfzeile)
  *   io.kontrolle(url)      → {art:'ok'|'fail'|'technisch'|'fehlt', text}   KI-Kontrolle
- * cfg: {hosts, optionVorgaben:{stitch_color}}.
+ * cfg: {hosts, optionVorgaben:{stitch_color}, paket:(position, kontext) => {bezahlt:string[]|null, quelle}} (paket: bezahltes Paket je Position, Vorgabe `paketStandard` = nur Vorderseite).
  * Erlös (`erloesChf`) = Positionen der Editor-Artikel (nach Rabatt, auf die gedruckte Menge gekürzt) + deren Anteil am bezahlten Versand (Order.currentShippingPriceSet, verteilt nach dem Umsatz
  * aller Positionen; ist ein Posten nicht in CHF, entfällt der Anteil, das ist die vorsichtige Richtung). Positionen mit currentQuantity 0 (entfernt/erstattet) werden übergangen: `entfernt` zählt sie.
  * @returns {Promise<{items:object[], befunde:{art,text,hart}[], erloesChf:number|null, positionenChf:number|null, versandChf:number, pod:number, entfernt:number}>}
@@ -497,6 +640,10 @@ export async function planeBestellung(o, io, cfg = {}) {
     const sku = skuWaehlen({ positionSku: z.sku, variantenSku: z.variant && z.variant.sku });
     for (const p of sku.probleme) befunde.push({ art: p.art, text: vor(p.text), hart: p.hart });
     if (betrag === null) erloesBekannt = false; else erloes += betrag;
+    // Dienst-Standort: die App des Dienstes (Printful) druckt selbst, ein zweiter Auftrag wäre ein Doppeldruck. Hart und noch vor jeder Netzabfrage.
+    const stdo = standortVon(o, z.id);
+    if (stdo.art === 'dienst') { hart('dienst-standort', vor(`liegt am Fulfillment-Service-Standort «${stdo.name}»: dessen App legt den Auftrag selbst an. KEIN zweiter Auftrag von diesem Sync (sonst Doppeldruck); im Printful-Dashboard prüfen`)); continue; }
+    if (stdo.art === 'unklar') weich('dienst-standort-unklar', vor(`Standort der Position nicht prüfbar (${stdo.grund}): ob die Printful-App sie selbst druckt, ist unklar`));
     if (!sku.vid) { hart('ohne-variante', vor('SKU ohne Printful-Variante')); continue; }
     let dateien = eig.dateien;
     if (!dateien.length) {                                    // Fertig-Produkte ohne Editor-Upload: festes Motiv aus dem Produkt-Metafeld custom.print_file
@@ -504,7 +651,20 @@ export async function planeBestellung(o, io, cfg = {}) {
       let mfHost = null; try { mfHost = new URL(String(mf || '').trim()).hostname; } catch { /* kein Metafeld oder keine Adresse */ }
       if (mfHost && !adresseProblem(mf, [mfHost])) dateien = [{ seite: 'front', platzierung: null, dateiTyp: null, url: String(mf).trim(), quelle: 'metafeld' }];   // Metafeld gehört dem Besitzer: jeder https-Host ist erlaubt
     }
-    if (!dateien.length) { hart('keine-druckdatei', vor('keine Druckdatei (Eigenschaft oder Metafeld)')); continue; }
+    if (!dateien.length) {
+      // Bestellung ohne Design (direkte Adresse, Shop-App, Google-Link oder ein Upload, der nie ankam): KEIN Printful-Auftrag, KEINE Mail an die Kundin und KEINE Rückerstattung durch Code;
+      // das entscheidet der Besitzer (Ablauf und Textentwurf: dropship/wp6-0611/OHNE-DESIGN.md). Die weichen Hinweise «Karte ohne Datei» sind dieselbe Ursache und stehen nicht zusätzlich in der Meldung.
+      for (let i = befunde.length - 1; i >= bf0; i--) if (befunde[i].art === 'karte-ohne-datei') befunde.splice(i, 1);
+      const wo = eig.karte ? 'Editor-Eintrag da, Druckdatei fehlt (Upload gescheitert?)' : 'kein Editor-Eintrag (direkte Adresse, Shop-App oder Google-Link?)';
+      // Der Text bleibt unter 300 Zeichen (der Kleber kürzt die Telegram-Zeilen dort): Titel gekürzt, damit der Verweis auf den Ablauf nie abgeschnitten wird.
+      hart('keine-druckdatei', `Ohne Design bezahlt («${titel.slice(0, 60)}»): ${wo}. KEIN Printful-Auftrag, KEINE Nachricht an die Kundin; selbst klären, Ablauf: dropship/wp6-0611/OHNE-DESIGN.md`);
+      continue;
+    }
+    if (eig.karte) {                                           // Editor v6 schreibt Printful-Variante (pv) und -Produkt (m) in die Karte: sie müssen zur gekauften SKU passen. Ein Widerspruch ist HART: gedruckt würde, was die SKU nennt, nicht was die Kundin gestaltet hat (falsche Farbe, falsches Produkt)
+      const kpv = num(eig.karte.pv), km = num(eig.karte.m), skuModell = modellAusSku(sku.sku);
+      if (kpv !== null && kpv !== sku.vid) hart('karte-widerspruch', vor(`Der Editor nennt die Printful-Variante ${kpv}, gekauft wurde ${sku.vid} (SKU): Farbe oder Grösse passen nicht zum Design, es wird kein Auftrag angelegt`));
+      if (km !== null && skuModell !== null && km !== skuModell) hart('karte-widerspruch', vor(`Der Editor nennt das Printful-Produkt ${km}, die SKU ${sku.sku} gehört zum Modell ${skuModell}: es wird kein Auftrag angelegt`));
+    }
     if (befunde.slice(bf0).some((b) => b.hart)) continue;      // schon hart gescheitert: keine Netzabfragen mehr für diese Position
     const prod = await io.produkt(sku.vid);
     const plz = await platzierungenFuerDateien({ vid: sku.vid, dateien: dateien.map((d) => d.platzierung ? { platzierung: d.platzierung, dateiTyp: d.dateiTyp, url: d.url } : { side: d.seite === 'back' ? 'back' : 'front', url: d.url }), shopTyp: (z.product && z.product.productType) || '', holeProdukt: async () => prod });
@@ -513,11 +673,14 @@ export async function planeBestellung(o, io, cfg = {}) {
     const arten = typen.map((t) => platzierungsName(t, prod && prod.info));   // Platzierungs-TYPEN laut Dateiliste («default» einer Kappe → «embroidery_front»): nach ihnen richten sich Technik und Garnfarben
     const roh = prod && prod.roh && prod.roh.product ? prod.roh.product : null;
     const pid = prod && prod.info && prod.info.id;
-    if (eig.karte) {                                           // Editor v6 schreibt Printful-Variante (pv) und -Produkt (m) in die Karte: sie müssen zur gekauften SKU passen (Drift oder Manipulation → Entwurf)
-      const kpv = num(eig.karte.pv), km = num(eig.karte.m);
-      if (kpv !== null && kpv !== sku.vid) weich('karte-widerspruch', vor(`Der Editor nennt die Printful-Variante ${kpv}, gekauft wurde ${sku.vid} (SKU): Farbe oder Grösse wurden nach dem Gestalten eventuell gewechselt`));
-      else if (km !== null && pid && km !== pid) weich('karte-widerspruch', vor(`Der Editor nennt das Printful-Produkt ${km}, die Variante ${sku.vid} gehört aber zu Produkt ${pid}`));
+    if (eig.karte) {                                           // Das Produkt der gekauften Variante laut Printful gegen m der Karte (die SKU-Prüfung oben ist offline; diese braucht die Variantenabfrage)
+      const km = num(eig.karte.m);
+      if (km !== null && pid && km !== pid) { hart('karte-widerspruch', vor(`Der Editor nennt das Printful-Produkt ${km}, die Variante ${sku.vid} gehört aber zu Produkt ${pid}: es wird kein Auftrag angelegt`)); continue; }
     }
+    // Aufpreis-Platzierungen gegen das bezahlte Paket (austauschbar: cfg.paket). Hart = kein Auftrag; dann keine weiteren Netzabfragen (Katalog, Dateien, KI) für diese Position.
+    const paket = (typeof cfg.paket === 'function' ? cfg.paket : paketStandard)(z, { vid: sku.vid, produktId: pid || null });
+    for (const b of aufpreisPruefen({ roh, typen, bezahlt: paket && Array.isArray(paket.bezahlt) ? paket.bezahlt : null, quelle: paket && paket.quelle })) befunde.push({ ...b, text: vor(b.text) });
+    if (befunde.slice(bf0).some((b) => b.hart)) continue;
     let dd = null;
     if (pid) dd = await io.druckdaten(pid);
     if (!dd || dd.art !== 'ok') weich('druckdaten', vor(`Druckdaten des Printful-Produkts nicht lesbar${dd && dd.text ? ' (' + dd.text + ')' : ''}: Konflikte und Mindest-dpi lassen sich nicht prüfen`));
@@ -527,7 +690,7 @@ export async function planeBestellung(o, io, cfg = {}) {
     const op = optionenPruefen({ produkt: roh, typen: arten, angegeben: eig.optionen, vorgaben: cfg.optionVorgaben });
     for (const b of op.befunde) befunde.push({ ...b, text: vor(b.text) });
     const minDpi = dd && dd.art === 'ok' && dd.templates ? dd.templates.min_dpi : null;
-    const qd = eig.karte && Number.isInteger(eig.karte.qd) && eig.karte.qd >= 1 && eig.karte.qd <= 1000 ? eig.karte.qd : null;
+    const qd = eig.qd;                                         // schon vom Parser auf eine ganze Zahl von 1 bis 1000 geprüft (sonst null und der weiche Befund «aufloesung-angabe»)
     const gemesseneDpi = [];
     for (let i = 0; i < plz.files.length; i++) {
       const f = plz.files[i];

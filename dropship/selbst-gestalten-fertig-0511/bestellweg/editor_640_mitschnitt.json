@@ -1,0 +1,215 @@
+{
+ "quelle": "Mitschnitt der Kaufanfrage (POST /cart/add.js) des echten Editors pod/v6/lspod-designer-v6-6.4.0.js auf der Attrappenseite pod/v6/test/mock.html (Playwright, Chromium); Cloudinary ist dort eine Attrappe, die Adressen sind darum .../upload/mock/<n>.png",
+ "editorSha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+ "editorVersion": "6.4.0",
+ "faelle": [
+  {
+   "name": "t-shirt-71-vorne-text",
+   "query": "karte=71&vorschau=71&shop=1001:4025,1002:8923,1003:8924",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (front)": "Text: \"Hallo Welt\"",
+     "🖼️ Druckdatei (front)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "_pod_karte": "{\"v\":6,\"m\":71,\"pv\":4025,\"sv\":\"1001\",\"pl\":[\"front\"],\"dt\":{\"front\":\"default\"},\"ap\":0}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  },
+  {
+   "name": "t-shirt-71-vorne-foto-1200",
+   "query": "karte=71&vorschau=71&shop=1001:4025,1002:8923,1003:8924",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (front)": "Bild",
+     "🖼️ Druckdatei (front)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "_pod_karte": "{\"v\":6,\"m\":71,\"pv\":4025,\"sv\":\"1001\",\"pl\":[\"front\"],\"dt\":{\"front\":\"default\"},\"ap\":0,\"qd\":150}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 1200,
+     "hoehe": 1200
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  },
+  {
+   "name": "t-shirt-71-vorne-foto-500",
+   "query": "karte=71&vorschau=71&shop=1001:4025,1002:8923,1003:8924",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (front)": "Bild",
+     "🖼️ Druckdatei (front)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "_pod_karte": "{\"v\":6,\"m\":71,\"pv\":4025,\"sv\":\"1001\",\"pl\":[\"front\"],\"dt\":{\"front\":\"default\"},\"ap\":0,\"qd\":83}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 500,
+     "hoehe": 500
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  },
+  {
+   "name": "t-shirt-71-vorne-foto-und-ruecken-text",
+   "query": "karte=71&vorschau=71&shop=1001:4025,1002:8923,1003:8924",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (front)": "Bild",
+     "🖼️ Druckdatei (front)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "🎨 Design (back)": "Text: \"Hinten\"",
+     "🖼️ Druckdatei (back)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png",
+     "_pod_karte": "{\"v\":6,\"m\":71,\"pv\":4025,\"sv\":\"1001\",\"pl\":[\"front\",\"back\"],\"dt\":{\"front\":\"default\"},\"ap\":6.1,\"qd\":150}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/4.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 1200,
+     "hoehe": 1200
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/4.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  },
+  {
+   "name": "t-shirt-71-vorne-text-und-aermel",
+   "query": "karte=71&vorschau=71&shop=1001:4025,1002:8923,1003:8924",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (front)": "Text: \"Vorne\"",
+     "🖼️ Druckdatei (front)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "🎨 Design (sleeve_left)": "Text: \"Arm\"",
+     "🖼️ Druckdatei (sleeve_left)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "_pod_karte": "{\"v\":6,\"m\":71,\"pv\":4025,\"sv\":\"1001\",\"pl\":[\"front\",\"sleeve_left\"],\"dt\":{\"front\":\"default\"},\"ap\":2.6}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 1800,
+     "hoehe": 2400
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "png",
+     "breite": 600,
+     "hoehe": 525
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/3.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  },
+  {
+   "name": "tasse-19-text",
+   "query": "karte=19&vorschau=19&shop=1001:1320,1002:4830",
+   "anfrage": {
+    "id": "1001",
+    "quantity": 1,
+    "properties": {
+     "🎨 Design (default)": "Text: \"Tasse\"",
+     "🖼️ Druckdatei (default)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "_pod_karte": "{\"v\":6,\"m\":19,\"pv\":1320,\"sv\":\"1001\",\"pl\":[\"default\"],\"ap\":0}",
+     "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png"
+    }
+   },
+   "uploads": [
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+     "typ": "png",
+     "breite": 2700,
+     "hoehe": 1050
+    },
+    {
+     "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+     "typ": "jpeg",
+     "breite": null,
+     "hoehe": null
+    }
+   ],
+   "seitenfehler": []
+  }
+ ]
+}

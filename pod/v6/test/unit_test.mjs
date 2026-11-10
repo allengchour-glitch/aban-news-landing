@@ -42,7 +42,7 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-const SOLL_VERSION = process.env.V6_VERSION || '6.4.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
+const SOLL_VERSION = process.env.V6_VERSION || '6.4.1';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
 const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
 pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
@@ -408,6 +408,15 @@ if (NEU) {
     const zurueck = ebeneAusEntwurf(JSON.parse(JSON.stringify(n)));
     pruefe('Entwurf: Textebene kommt gleich zurück', zurueck && zurueck.text === 'Hallo' && zurueck.font === 'Pacifico' && zurueck.color === '#112233' && zurueck.bold === true && zurueck.italic === false && zurueck.align === 'center' && zurueck.ls === 2 && zurueck.outl === 3 && zurueck.outc === '#fff' && zurueck.lh === 1.1 && zurueck.cx === 0.4 && zurueck.rot === 15 && zurueck.op === 0.8);
   }
+  if (SOLL_VERSION >= '6.4.1') {
+    // 6.4.1: farbeAuto (die Farbe ist der Standard und folgt der Ausführung) wird mit dem Entwurf gespeichert; Entwürfe von 6.4.0 und früher kennen das Feld nicht, dann gilt die Farbe als gewählt
+    const auto = ebeneFuerEntwurf({ ...text, color: '#ffffff', farbeAuto: true });
+    pruefe('Entwurf 6.4.1: farbeAuto wird gespeichert', auto.farbeAuto === true && auto.color === '#ffffff', JSON.stringify(auto));
+    const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(auto)));
+    pruefe('Entwurf 6.4.1: farbeAuto kommt zurück', z && z.farbeAuto === true && z.color === '#ffffff', JSON.stringify(z));
+    pruefe('Entwurf 6.4.1: ohne farbeAuto (gewählte Farbe, Entwurf von 6.4.0) bleibt die Ebene ohne das Feld', !('farbeAuto' in ebeneFuerEntwurf(text)) && !('farbeAuto' in ebeneAusEntwurf(JSON.parse(JSON.stringify(ebeneFuerEntwurf(text))))));
+    pruefe('Entwurf 6.4.1: nur true zählt (ein Fremdwert wie "ja", 1 oder false setzt kein farbeAuto)', ['ja', 1, false, null].every((v) => !('farbeAuto' in ebeneAusEntwurf({ ...JSON.parse(JSON.stringify(ebeneFuerEntwurf(text))), farbeAuto: v }))));
+  }
   {
     const s = ebeneFuerEntwurf({ id: 'L4', type: 'sticker', cx: 0.5, cy: 0.5, scale: 1, rot: 0, name: 'herz-rot', src: 'x' });
     const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(s)));
@@ -601,6 +610,228 @@ pruefe('v5 (pod/live) ist unverändert: 51 378 Byte', v5.length === 51378, Strin
 pruefe('v5 (pod/live) ist unverändert: SHA-256 beginnt mit 70140421381326aff999', createHash('sha256').update(v5).digest('hex').startsWith('70140421381326aff999'));
 pruefe('v6 greift nicht auf die v5-Kennungen zu (Klasse, Guard, Eingabefeld)', (() => { const s = readFileSync(V6_DATEI, 'utf8'); return !/['"]\.lspod-designer['"]/.test(s) && !/__lspodDesignerLoaded\s*=/.test(s) && !/data-lspod="1"/.test(s); })());
 
+// ── 6.4.1: Standard-Textfarbe nach dem Stoff, Schatten bei weisser Schrift ──────────────────────────
+if (SOLL_VERSION >= '6.4.1') {
+  // Eigene Rechnung nach WCAG (nicht die Funktion des Editors): Kontrastverhältnis (L1 + 0,05) / (L2 + 0,05) mit der Leuchtdichte nach sRGB
+  const lum = (r, g, b) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+  const kon = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+  const erwarte = (r, g, b) => (kon(1, lum(r, g, b)) > kon(lum(17, 17, 17), lum(r, g, b)) ? '#ffffff' : '#111111');
+  const hex = (r, g, b) => '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
+  let abwS = 0;
+  for (let v = 0; v <= 255; v++) if (H.standardTextFarbe(hex(v, v, v)) !== erwarte(v, v, v)) abwS++;
+  pruefe('Standard-Textfarbe: alle 256 Graustufen wie die eigene WCAG-Rechnung (Weiss oder #111111 nach dem besseren Kontrast)', abwS === 0, `${abwS} Abweichungen`);
+  let abwF = 0, nF = 0;
+  for (let r = 0; r <= 255; r += 51) for (let g = 0; g <= 255; g += 51) for (let b = 0; b <= 255; b += 51) { nF++; if (H.standardTextFarbe(hex(r, g, b)) !== erwarte(r, g, b)) abwF++; }
+  pruefe(`Standard-Textfarbe: ${nF} Farben im Würfel wie die eigene Rechnung`, abwF === 0, `${abwF} Abweichungen`);
+  // die Fälle aus der Messung vom 09.11. (Stoff der Live-Karten): Kontrast der alten Standardfarbe #111111 gegen den Stoff 1,01 / 1,04 / 1,28
+  for (const [name, stoff, soll, kDunkel] of [['Jutebeutel schwarz', '#101010', '#ffffff', 1.01], ['Shirt schwarz', '#0c0c0c', '#ffffff', 1.04], ['Shirt navy', '#212642', '#ffffff', 1.28], ['Shirt weiss', '#ffffff', '#111111', null], ['Heather-Grau', '#b0b0b0', '#111111', null], ['mittleres Grau 128', '#808080', '#111111', null]]) {
+    gleich(`Standard-Textfarbe: ${name} (${stoff})`, H.standardTextFarbe(stoff), soll);
+    if (kDunkel) { const rgb = [1, 3, 5].map((i) => parseInt(stoff.slice(i, i + 2), 16)); nahe(`Kontrast der alten Standardfarbe #111111 gegen ${name} (${stoff}) ist ${kDunkel}`, Math.round(kon(lum(17, 17, 17), lum(...rgb)) * 100) / 100, kDunkel, 0.0051); }
+  }
+  gleich('Standard-Textfarbe: Stoff unbekannt (null, leer, kein Hex) bleibt #111111 wie bis 6.4.0', [H.standardTextFarbe(null), H.standardTextFarbe(undefined), H.standardTextFarbe(''), H.standardTextFarbe('schwarz'), H.standardTextFarbe('#12')], ['#111111', '#111111', '#111111', '#111111', '#111111']);
+  gleich('Standard-Textfarbe: Hex mit und ohne Raute, gross und klein', [H.standardTextFarbe('000000'), H.standardTextFarbe('#0A0A0A'), H.standardTextFarbe('FFFFFF')], ['#ffffff', '#ffffff', '#111111']);
+  gleich('Konstanten: TEXT_DUNKEL und TEXT_HELL', [H.TEXT_DUNKEL, H.TEXT_HELL], ['#111111', '#ffffff']);
+  pruefe('WEISS_SCHATTEN steht auf false (Entscheid des Besitzers offen; die Rückkehr zu 6.4.0 ist diese eine Zeile)', H.WEISS_SCHATTEN === false);
+  pruefe('WEISS_SCHATTEN ist im Quelltext genau eine Zeile «var WEISS_SCHATTEN = false;» und gilt an genau zwei Stellen (Leinwand, Bühne)', (() => { const q = readFileSync(V6_DATEI, 'utf8'); return (q.match(/var WEISS_SCHATTEN = (false|true);/g) || []).length === 1 && (q.match(/WEISS_SCHATTEN && e\.color/g) || []).length === 2; })());
+  // Grund hinter der durchsichtigen Druckdatei in den Prüfabbildungen (pruefGrund): weisse Schrift braucht einen dunklen Grund, sonst bleibt es der helle wie bis 6.4.0
+  {
+    gleich('Prüfgrund: die Felder des Schachbretts', H.PRUEF_GRUND, { hell: ['#ffffff', '#e6e6e6'], dunkel: ['#2b2b2b', '#474747'] });
+    const felder = { hell: [[255, 255, 255], [230, 230, 230]], dunkel: [[43, 43, 43], [71, 71, 71]] };
+    const pixel = (liste) => { const d = new Uint8ClampedArray(liste.reduce((sum, [, n]) => sum + n, 0) * 4); let i = 0; for (const [[r, g, b, a], n] of liste) for (let k = 0; k < n; k++, i += 4) d.set([r, g, b, a], i); return d; };
+    // Eigene Rechnung: einfarbiges Design der Graustufe v ist schlecht lesbar, wenn EIN Feld des Schachbretts weniger als 1,8 zu 1 Kontrast hat
+    const schlecht = (art, v) => felder[art].some(([r, g, b]) => kon(lum(v, v, v), lum(r, g, b)) < 1.8);
+    let abw = 0, nDunkel = 0;
+    for (let v = 0; v <= 255; v++) {
+      const soll = schlecht('hell', v) && !schlecht('dunkel', v) ? 'dunkel' : 'hell';
+      const ist = H.pruefGrund(pixel([[[v, v, v, 255], 100]]));
+      if (ist === 'dunkel') nDunkel++;
+      if (ist !== soll) abw++;
+    }
+    pruefe('Prüfgrund: alle 256 Graustufen wie die eigene Rechnung (dunkler Grund genau dann, wenn nur der helle Grund schlecht lesbar ist)', abw === 0, abw + ' Abweichungen');
+    pruefe('Prüfgrund: beide Ausgänge kommen vor (die Wahl ist nicht festgenagelt)', nDunkel > 0 && nDunkel < 256, 'dunkel bei ' + nDunkel + ' von 256');
+    gleich('Prüfgrund: weisse Schrift → dunkel', H.pruefGrund(pixel([[[255, 255, 255, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Weiss mit Kontrast 1,31 zum zweiten Feld (#f2f2f2) → dunkel', H.pruefGrund(pixel([[[242, 242, 242, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Standardschrift #111111 → hell', H.pruefGrund(pixel([[[17, 17, 17, 255], 80]])), 'hell');
+    gleich('Prüfgrund: blaues Bild #2040c0 und pinke Schrift #ff69b4 → hell', [H.pruefGrund(pixel([[[32, 64, 192, 255], 80]])), H.pruefGrund(pixel([[[255, 105, 180, 255], 80]]))], ['hell', 'hell']);
+    gleich('Prüfgrund: leeres Design (alles durchsichtig) → hell', H.pruefGrund(pixel([[[255, 255, 255, 0], 80]])), 'hell');
+    gleich('Prüfgrund: weisse Pixel unter Alpha 20 % zählen nicht → hell', H.pruefGrund(pixel([[[255, 255, 255, 40], 80]])), 'hell');
+    gleich('Prüfgrund: 70 % weiss, 30 % dunkel → dunkel (das kleinere Übel)', H.pruefGrund(pixel([[[255, 255, 255, 255], 70], [[17, 17, 17, 255], 30]])), 'dunkel');
+    gleich('Prüfgrund: 30 % weiss, 70 % dunkel → hell', H.pruefGrund(pixel([[[255, 255, 255, 255], 30], [[17, 17, 17, 255], 70]])), 'hell');
+    gleich('Prüfgrund: Gleichstand 50 zu 50 → hell (wie bis 6.4.0)', H.pruefGrund(pixel([[[255, 255, 255, 255], 50], [[17, 17, 17, 255], 50]])), 'hell');
+    gleich('Prüfgrund: nach Alpha gewichtet (50 weisse deckende Pixel gegen 100 dunkle mit Alpha 20 %: 50 gegen 20 → dunkel)', H.pruefGrund(pixel([[[255, 255, 255, 255], 50], [[17, 17, 17, 51], 100]])), 'dunkel');
+    nahe('Prüfgrund: Grau #b9b9b9 hat zum hellen zweiten Feld (#e6e6e6) 1,57 zu 1, zum ersten (#ffffff) 1,96 zu 1', kon(lum(185, 185, 185), lum(230, 230, 230)), 1.573, 0.01);
+    gleich('Prüfgrund: Grau #b9b9b9 ist nur auf dem zweiten Feld schlecht lesbar, das genügt → dunkel (beide Felder zählen)', H.pruefGrund(pixel([[[185, 185, 185, 255], 80]])), 'dunkel');
+    gleich('Prüfgrund: Grau #b9b9b9 ist auf beiden dunklen Feldern gut lesbar, Grau #404040 auf dem hellen: je der bessere Grund', [H.pruefGrund(pixel([[[185, 185, 185, 255], 80]])), H.pruefGrund(pixel([[[64, 64, 64, 255], 80]]))], ['dunkel', 'hell']);
+    // Mit Grösse (nach der Gegenlesung vom 10.11.2026): nur Pixel zählen, hinter denen das Schachbrett sichtbar wird (halbdurchsichtig, oder deckend mit einem durchsichtigen Nachbarn). Handgemachte Flächen, Zahlen von Hand gezählt.
+    {
+      const WEISS = [255, 255, 255], DUNKEL = [17, 17, 17], FOTO = [32, 32, 32];
+      /** Fläche w × h, anfangs durchsichtig; rechteck() und punkt() setzen Pixel (Farbe [r, g, b], Alpha 255 wenn nicht genannt). */
+      const flaeche = (w, h) => {
+        const d = new Uint8ClampedArray(w * h * 4);
+        const f = { d, w, h, punkt(x, y, c, al = 255) { d.set([c[0], c[1], c[2], al], (y * w + x) * 4); return f; }, rechteck(x0, y0, bw, bh, c, al = 255) { for (let y = y0; y < y0 + bh; y++) for (let x = x0; x < x0 + bw; x++) f.punkt(x, y, c, al); return f; } };
+        return f;
+      };
+      const wahl = (f) => H.pruefGrund(f.d, f.w, f.h), ohneGroesse = (f) => H.pruefGrund(f.d);
+      // 1. Foto (20 × 12 deckend, Rand 2 × 20 + 2 × 12 − 4 = 60 Pixel) und darunter Linien aus Schrift (je 20 Pixel, alle am Rand, weil darüber und darunter Durchsichtiges liegt).
+      //    4 Linien = 80 Pixel: auf dem hellen Grund (weisse Schrift) 80 schlecht, auf dem dunklen (dunkles Foto) 60 → dunkel. Ohne Lage zählt das Foto mit allen 240 Pixeln und die Schrift geht unter (der Fehler der ersten Fassung).
+      const fotoSchrift = (linien, schrift, foto) => { const f = flaeche(30, 30).rechteck(5, 2, 20, 12, foto); for (let k = 0; k < linien; k++) f.rechteck(5, 18 + 2 * k, 20, 1, schrift); return f; };
+      const f1 = fotoSchrift(4, WEISS, FOTO);
+      gleich('Prüfgrund mit Grösse: dunkles Foto und weisse Schrift darunter → dunkel (das Innere des Fotos zählt nicht)', wahl(f1), 'dunkel');
+      gleich('Prüfgrund ohne Grösse: dasselbe Bild → hell (jedes Pixel zählt, das Foto erdrückt die Schrift: das war der Fehler der ersten Fassung)', ohneGroesse(f1), 'hell');
+      gleich('Prüfgrund mit Grösse: dunkles Foto und nur zwei Linien weisse Schrift (40 Pixel gegen 60 Randpixel des Fotos) → hell (bekannte Grenze: der Rand eines grossen Fotos wiegt mehr als sehr wenig Schrift)', wahl(fotoSchrift(2, WEISS, FOTO)), 'hell');
+      // 2. Produktfoto mit weissem Hintergrund (20 × 12 deckend weiss, Rand 60) und dunkle Schrift (80 Pixel): weisser Rand 60 gegen dunkle Schrift 80 → hell (dunkle Schrift braucht den hellen Grund)
+      const f2 = fotoSchrift(4, DUNKEL, WEISS);
+      gleich('Prüfgrund mit Grösse: weisses Produktfoto und dunkle Schrift darunter → hell', wahl(f2), 'hell');
+      gleich('Prüfgrund ohne Grösse: dasselbe Bild → dunkel (die weisse Fläche erdrückt die Schrift: dunkle Schrift auf dem dunklen Grund, Kontrast 1,3)', ohneGroesse(f2), 'dunkel');
+      // 3. Ein Bild ohne jedes durchsichtige Pixel (Vollfoto): der Grund ist nirgends zu sehen → hell, auch bei weisser Fläche; ausserhalb der Datei gibt es keine Nachbarn
+      gleich('Prüfgrund mit Grösse: Vollfoto ohne durchsichtiges Pixel, weiss → hell (nichts zählt)', wahl(flaeche(10, 10).rechteck(0, 0, 10, 10, WEISS)), 'hell');
+      gleich('Prüfgrund mit Grösse: Vollfoto ohne durchsichtiges Pixel, dunkel → hell (nichts zählt)', wahl(flaeche(10, 10).rechteck(0, 0, 10, 10, FOTO)), 'hell');
+      // 4. Dateirand: die weisse linke Hälfte (5 Spalten) zählt nur mit der Spalte am durchsichtigen Teil (10 Pixel), nicht an den anderen drei Dateirändern; rechts n dunkle Einzelpixel (Spalte 7, jede zweite Zeile, höchstens 5)
+      const halb = (n) => { const f = flaeche(10, 10).rechteck(0, 0, 5, 10, WEISS); for (let k = 0; k < n; k++) f.punkt(k < 5 ? 7 : 9, 2 * (k % 5), DUNKEL); return f; };
+      gleich('Prüfgrund mit Grösse: weisse Hälfte (10 Randpixel) gegen 5 dunkle Einzelpixel → dunkel', wahl(halb(5)), 'dunkel');
+      gleich('Prüfgrund mit Grösse: weisse Hälfte (10 Randpixel) gegen 10 dunkle Einzelpixel: Gleichstand → hell (die drei Dateiränder zählen nicht; würden sie zählen, wären es 26 gegen 10 und die Wahl wäre dunkel)', wahl(halb(10)), 'hell');
+      // 5. Balken über die ganze Dateibreite: nur oben und unten grenzt Durchsichtiges (2 × 10 = 20 Randpixel), links und rechts liegt der Dateirand; Balken über die ganze Höhe: ebenso nur links und rechts. Dazu 3 dunkle Einzelpixel.
+      const mit3 = (f, y) => f.punkt(0, y, DUNKEL).punkt(2, y, DUNKEL).punkt(4, y, DUNKEL);
+      gleich('Prüfgrund mit Grösse: Balken über die ganze Breite (20 Randpixel nur oben und unten) gegen 3 dunkle Einzelpixel → dunkel', wahl(mit3(flaeche(10, 9).rechteck(0, 2, 10, 3, WEISS), 8)), 'dunkel');
+      const vertikal = flaeche(7, 10).rechteck(2, 0, 3, 10, WEISS);
+      gleich('Prüfgrund mit Grösse: Balken über die ganze Höhe (20 Randpixel nur links und rechts) gegen 3 dunkle Einzelpixel → dunkel', wahl(vertikal.punkt(0, 9, DUNKEL).punkt(0, 7, DUNKEL).punkt(0, 5, DUNKEL)), 'dunkel');
+      // 6. Halbdurchsichtige Fläche (links 10 × 10, weiss) ohne durchsichtigen Nachbarn zählt ganz (Alpha unter 98 %): 100 Pixel mit Alpha 128 = Gewicht 50 gegen 25 dunkle Einzelpixel rechts (Spalten 12 bis 20, Zeilen 0 bis 8, je zweite)
+      const mitDunkel = (al) => { const f = flaeche(21, 10).rechteck(0, 0, 10, 10, WEISS, al); for (let y = 0; y < 10; y += 2) for (let x = 12; x < 21; x += 2) f.punkt(x, y, DUNKEL); return f; };
+      gleich('Prüfgrund mit Grösse: weisse Fläche mit Alpha 128 (100 Pixel × 0,5 = 50) gegen 25 dunkle Einzelpixel → dunkel (halbdurchsichtige Pixel zählen auch im Innern)', wahl(mitDunkel(128)), 'dunkel');
+      // 7. Schwelle der Deckkraft 98 %: Alpha 249 (0,976) zählt im Innern (100 × 0,976 = 97,6), Alpha 250 (0,980) nicht (nur die 10 Randpixel an der durchsichtigen Spalte: 9,8)
+      gleich('Prüfgrund mit Grösse: Alpha 249 (unter 98 %) zählt im Innern (97,6 gegen 25) → dunkel', wahl(mitDunkel(249)), 'dunkel');
+      gleich('Prüfgrund mit Grösse: Alpha 250 (ab 98 %) zählt im Innern nicht (nur die 10 Randpixel, 9,8 gegen 25) → hell', wahl(mitDunkel(250)), 'hell');
+      // 8. Schwelle des durchsichtigen Nachbarn 20 %: 3 × 3 weiss deckend im Zentrum eines 5 × 5-Bildes, ringsum Schwarz mit Alpha 50 (0,196: durchsichtig, kein Design) oder 51 (0,200: Design, weil «ab 20 %»)
+      const mitRing = (al) => { const f = flaeche(5, 5).rechteck(0, 0, 5, 5, [0, 0, 0], al); return f.rechteck(1, 1, 3, 3, WEISS); };
+      gleich('Prüfgrund mit Grösse: Nachbar mit Alpha 50 (unter 20 %) ist durchsichtig: die 8 Randpixel des weissen Blocks zählen, der Ring nicht → dunkel', wahl(mitRing(50)), 'dunkel');
+      gleich('Prüfgrund mit Grösse: Nachbar mit Alpha 51 (20 %) ist Design: der weisse Block hat keinen durchsichtigen Nachbarn und zählt nicht, der schwarze Ring (16 × 0,2 = 3,2) zählt → hell', wahl(mitRing(51)), 'hell');
+      // 9. Ohne passende Grösse ist die Lage unbekannt: jedes Pixel zählt, wie ohne Angabe
+      gleich('Prüfgrund: Grösse passt nicht zur Datenmenge (zu kurze Daten) → jedes Pixel zählt wie ohne Angabe', H.pruefGrund(pixel([[[255, 255, 255, 255], 80]]), 100, 100), 'dunkel');
+      gleich('Prüfgrund: Breite 0 oder Höhe 0 → jedes Pixel zählt wie ohne Angabe', [H.pruefGrund(pixel([[[255, 255, 255, 255], 80]]), 0, 0), H.pruefGrund(pixel([[[255, 255, 255, 255], 80]]), 80, 0)], ['dunkel', 'dunkel']);
+      gleich('Prüfgrund: eine Grösse, die zur Datenmenge passt, wird angewendet (80 weisse Pixel als Fläche 80 × 1 ohne Durchsichtiges: nichts zählt → hell)', H.pruefGrund(pixel([[[255, 255, 255, 255], 80]]), 80, 1), 'hell');
+      gleich('Prüfgrund: Daten für 5,5 von 10 Zeilen bei Grösse 10 × 10 (Lage nicht belegt) → jedes Pixel zählt: 40 dunkle gegen 15 weisse → hell (würde die Lage gelesen, fehlten die Nachbarn und die 10 weissen Pixel am Ende der Daten entschieden → dunkel)', H.pruefGrund(pixel([[[17, 17, 17, 255], 40], [[255, 255, 255, 255], 15]]), 10, 10), 'hell');
+      gleich('Prüfgrund: zu lange Daten (mehr Pixel als Breite × Höhe) werden nur bis Breite × Höhe gelesen (die ersten 10 Pixel dunkel, ohne Durchsichtiges → hell, die 70 weissen dahinter zählen nicht)', H.pruefGrund(pixel([[[17, 17, 17, 255], 10], [[255, 255, 255, 255], 70]]), 10, 1), 'hell');
+    }
+    // Gleichwertig mit der Rechnung über kontrastAnalyse (je Feld, das schlechtere Feld je Grund) auf zufälligen RGBA-Flächen: die Ein-Durchlauf-Fassung rechnet dasselbe.
+    // Zufallsfolge mulberry32 (Math.imul, ganzzahlig): die erste Fassung dieses Tests rechnete mit einem Double-LCG, dessen Produkt 2^53 überschritt (Zyklus nach 16 404 Ziehungen, nur 58 verschiedene Flächen in 300).
+    function mulberry32(start) { let t = start >>> 0; return () => { t = (t + 0x6D2B79F5) >>> 0; let r = Math.imul(t ^ (t >>> 15), 1 | t); r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r; return ((r ^ (r >>> 14)) >>> 0) / 4294967296; }; }
+    const schlechtVon = (d, art) => Math.max(...felder[art].map(([r, g, b]) => H.kontrastAnalyse(d, [r, g, b]).anteil));
+    const wahlVon = (d) => (schlechtVon(d, 'hell') > schlechtVon(d, 'dunkel') ? 'dunkel' : 'hell');   // ohne Lage der Pixel: jedes Pixel zählt
+    const hashVon = (d) => createHash('sha1').update(Buffer.from(d.buffer, d.byteOffset, d.byteLength)).digest('hex');
+    {
+      const zuf = mulberry32(12345);
+      let abwR = 0, nDunkelR = 0; const N = 600, gesehen = new Set();
+      for (let t = 0; t < N; t++) {
+        const n = 50 + Math.floor(zuf() * 150), d = new Uint8ClampedArray(n * 4), art = t % 3;
+        for (let i = 0; i < n; i++) {
+          const v = art === 0 ? Math.floor(zuf() * 256) : art === 1 ? (zuf() < 0.5 ? 255 : 20) : null;   // Zufallsgrau, Weiss und Dunkel gemischt, Zufallsfarben
+          d.set(v === null ? [zuf() * 256, zuf() * 256, zuf() * 256, zuf() < 0.2 ? zuf() * 80 : 255 * (0.3 + 0.7 * zuf())] : [v, v, v, zuf() < 0.15 ? 10 : 255 * (0.3 + 0.7 * zuf())], i * 4);
+        }
+        gesehen.add(hashVon(d));
+        const ist = H.pruefGrund(d);   // ohne Grösse: Lage unbekannt, jedes Pixel zählt
+        if (ist === 'dunkel') nDunkelR++;
+        if (ist !== wahlVon(d)) abwR++;
+      }
+      pruefe('Prüfgrund ohne Grösse: ' + N + ' zufällige RGBA-Flächen wie die Rechnung über kontrastAnalyse (jedes Pixel zählt)', abwR === 0, abwR + ' Abweichungen');
+      pruefe('Prüfgrund ohne Grösse: die ' + N + ' Flächen sind alle verschieden', gesehen.size === N, gesehen.size + ' verschiedene');
+      pruefe('Prüfgrund ohne Grösse: auch die zufälligen Flächen ergeben beide Grundarten', nDunkelR > 10 && nDunkelR < N - 10, 'dunkel bei ' + nDunkelR + ' von ' + N);
+    }
+    // Mit Grösse (6.4.1 nach der Gegenlesung): nur Pixel zählen, hinter denen das Schachbrett sichtbar wird. Eigene Rechnung, unabhängig vom Editor: erst eine Maske (Alpha 0, wo der Grund unsichtbar bleibt), dann dieselbe
+    // Rechnung über kontrastAnalyse wie oben. Sichtbar: Alpha 20 % bis unter 98 %, oder deckend (ab 98 %) mit einem durchsichtigen (Alpha unter 20 %) Nachbarn oben, unten, links oder rechts; ausserhalb der Datei gibt es keine.
+    const alphaVon = (d, w, x, y) => d[(y * w + x) * 4 + 3] / 255;
+    function maskiert(d, w, h) {
+      const m = new Uint8ClampedArray(d);
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const al = alphaVon(d, w, x, y);
+        let sichtbar = al >= 0.2 && al < 0.98;
+        if (al >= 0.98) for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) { const xx = x + dx, yy = y + dy; if (xx >= 0 && xx < w && yy >= 0 && yy < h && alphaVon(d, w, xx, yy) < 0.2) sichtbar = true; }
+        if (!sichtbar) m[(y * w + x) * 4 + 3] = 0;
+      }
+      return m;
+    }
+    const wahlMitLage = (d, w, h) => wahlVon(maskiert(d, w, h));
+    // Flächen: Rauschen, Blöcke mit Schrift-Linien, «Foto plus Beschriftung», weiche Ränder
+    function zufallsFlaeche(zuf, art) {
+      const w = 6 + Math.floor(zuf() * 35), h = 6 + Math.floor(zuf() * 35), d = new Uint8ClampedArray(w * h * 4);
+      const pix = (x, y, c) => { if (x >= 0 && x < w && y >= 0 && y < h) d.set(c, (y * w + x) * 4); };
+      const farbe = () => { const k = zuf(); return k < 0.25 ? [255, 255, 255] : k < 0.5 ? [Math.floor(zuf() * 40), Math.floor(zuf() * 40), Math.floor(zuf() * 40)] : k < 0.7 ? [Math.floor(zuf() * 256), 0, 0].map((v, i) => (i ? Math.floor(zuf() * 256) : v)) : (() => { const g = Math.floor(zuf() * 256); return [g, g, g]; })(); };
+      const ALPHAS = [255, 255, 255, 255, 250, 249, 200, 128, 60, 50, 51, 10];
+      const rechteck = (x0, y0, bw, bh, c, al) => { for (let y = y0; y < y0 + bh; y++) for (let x = x0; x < x0 + bw; x++) pix(x, y, [c[0], c[1], c[2], al]); };
+      if (art === 0) {   // Rauschen
+        for (let i = 0; i < w * h; i++) { const c = zuf() < 0.5 ? farbe() : [Math.floor(zuf() * 256), Math.floor(zuf() * 256), Math.floor(zuf() * 256)]; d.set([c[0], c[1], c[2], zuf() < 0.4 ? 0 : ALPHAS[Math.floor(zuf() * ALPHAS.length)]], i * 4); }
+      } else if (art === 1) {   // einige Blöcke verschiedener Farbe und Deckkraft
+        const nb = 1 + Math.floor(zuf() * 4);
+        for (let k = 0; k < nb; k++) rechteck(Math.floor(zuf() * w), Math.floor(zuf() * h), 1 + Math.floor(zuf() * w), 1 + Math.floor(zuf() * h), farbe(), ALPHAS[Math.floor(zuf() * ALPHAS.length)]);
+      } else if (art === 2) {   // Foto (grosse deckende Fläche) plus Schrift-Linien aus Weiss oder Dunkel
+        rechteck(Math.floor(zuf() * w / 3), 0, Math.floor(w / 2) + 1, Math.floor(h / 2) + 1, farbe(), zuf() < 0.8 ? 255 : 250);
+        const c = zuf() < 0.5 ? [255, 255, 255] : [17, 17, 17];
+        for (let y = Math.floor(h / 2) + 2; y < h; y += 2) rechteck(Math.floor(zuf() * 3), y, Math.floor(w * (0.3 + 0.6 * zuf())), 1, c, 255);
+      } else {   // Block mit weichem Rand (Alpha fällt nach aussen ab), dazu ein zweiter Block
+        const x0 = 2 + Math.floor(zuf() * 4), y0 = 2 + Math.floor(zuf() * 4), bw = 3 + Math.floor(zuf() * (w - 8)), bh = 3 + Math.floor(zuf() * (h - 8)), c = farbe();
+        for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const dist = Math.max(x0 - x, x - (x0 + bw - 1), y0 - y, y - (y0 + bh - 1), 0); if (dist <= 3) pix(x, y, [c[0], c[1], c[2], Math.round(255 * (1 - dist / 3.5))]); }
+        const c2 = farbe(); rechteck(Math.floor(zuf() * w), Math.floor(zuf() * h), 1 + Math.floor(zuf() * 6), 1 + Math.floor(zuf() * 6), c2, 255);
+      }
+      return { d, w, h };
+    }
+    {
+      const zuf = mulberry32(777);
+      const N = 3000, gesehen = new Set(); let abwL = 0, nDunkelL = 0, nWirkt = 0; const nachArt = [0, 0, 0, 0], wirktArt = [0, 0, 0, 0];
+      for (let t = 0; t < N; t++) {
+        const art = t % 4, { d, w, h } = zufallsFlaeche(zuf, art);
+        gesehen.add(w + 'x' + h + ':' + hashVon(d));
+        const ist = H.pruefGrund(d, w, h), soll = wahlMitLage(d, w, h);
+        if (ist === 'dunkel') nDunkelL++;
+        if (ist !== soll) abwL++;
+        nachArt[art]++;
+        if (H.pruefGrund(d) !== ist) { nWirkt++; wirktArt[art]++; }   // die Lage ändert die Wahl
+      }
+      pruefe('Prüfgrund mit Grösse: ' + N + ' zufällige Flächen (Rauschen, Blöcke, Foto plus Schrift, weiche Ränder) wie die Rechnung mit Maske über kontrastAnalyse', abwL === 0, abwL + ' Abweichungen');
+      pruefe('Prüfgrund mit Grösse: die ' + N + ' Flächen sind alle verschieden', gesehen.size === N, gesehen.size + ' verschiedene');
+      pruefe('Prüfgrund mit Grösse: beide Grundarten kommen in den Zufallsflächen vor', nDunkelL > 100 && nDunkelL < N - 100, 'dunkel bei ' + nDunkelL + ' von ' + N);
+      console.log('  (Zufallsflächen mit Grösse: dunkel bei ' + nDunkelL + ' von ' + N + '; die Lage ändert die Wahl bei ' + nWirkt + ' (je Art ' + wirktArt.join('/') + ' von ' + nachArt.join('/') + '))');
+      pruefe('Prüfgrund mit Grösse: die Lage der Pixel ändert die Wahl in einem spürbaren Teil der Flächen (sonst prüft der Zufallstest die Randregel nicht)', nWirkt > N * 0.05, 'Wahl ändert sich bei ' + nWirkt + ' von ' + N + ' (je Art ' + wirktArt.join('/') + ' von ' + nachArt.join('/') + ')');
+      pruefe('Prüfgrund mit Grösse: in jeder Art von Fläche ändert die Lage die Wahl bei einigen (Rauschen, Blöcke, weiche Ränder; bei «Foto plus Schrift» bei mindestens 100 von 750)', wirktArt.every((x) => x >= 5) && wirktArt[2] >= 100, wirktArt.join('/'));
+    }
+    // Gewichte im Pixelschritt: die Wahl hängt an der Leuchtdichte jedes Pixels. Farbfehler, die Graustufen unverändert lassen (Rot und Blau vertauscht, Gewichte 0,2526/0,0322 oder 0,2176/0,0672 statt 0,2126/0,0722),
+    // fallen nur an Flächen mit Farben auf: die Zufallsfarben der obigen Flächen brauchen dafür genug Grenzfälle (die Mutationsprobe hält es fest).
+    {
+      const zuf = mulberry32(2026); let abwG = 0, nDunkelG = 0; const N = 3000, gesehen = new Set();
+      for (let t = 0; t < N; t++) {
+        const n = 20 + Math.floor(zuf() * 40), d = new Uint8ClampedArray(n * 4);
+        for (let i = 0; i < n; i++) d.set([Math.floor(zuf() * 256), Math.floor(zuf() * 256), Math.floor(zuf() * 256), 255], i * 4);
+        gesehen.add(hashVon(d));
+        const ist = H.pruefGrund(d);
+        if (ist === 'dunkel') nDunkelG++;
+        // eigene Rechnung nur mit der Leuchtdichte jedes Pixels (WCAG), je Feld und Grund: Anzahl der Pixel unter 1,8 zu 1
+        const schl = (art) => Math.max(...felder[art].map(([r, g, b]) => { let sum = 0; for (let i = 0; i < n; i++) if (kon(lum(d[i * 4], d[i * 4 + 1], d[i * 4 + 2]), lum(r, g, b)) < 1.8) sum += 1; return sum; }));
+        if (ist !== (schl('hell') > schl('dunkel') ? 'dunkel' : 'hell')) abwG++;
+      }
+      pruefe('Prüfgrund: ' + N + ' Flächen aus Zufallsfarben wie die eigene Rechnung nach WCAG (Gewichte der Leuchtdichte, Rot und Blau nicht vertauscht)', abwG === 0, abwG + ' Abweichungen');
+      pruefe('Prüfgrund: die ' + N + ' Zufallsfarben-Flächen sind alle verschieden und ergeben beide Grundarten', gesehen.size === N && nDunkelG > 100 && nDunkelG < N - 100, gesehen.size + ' verschiedene, dunkel bei ' + nDunkelG);
+    }
+    // Die CSS-Klassen tragen genau die Farben der Konstante (sonst misst die Wahl gegen andere Felder als die, die man sieht)
+    const q = readFileSync(V6_DATEI, 'utf8');
+    const hex6 = (h) => (h.length === 4 ? '#' + h.slice(1).split('').map((c) => c + c).join('') : h).toLowerCase();
+    for (const [klasse, art] of [['.lsp6-review-print', 'hell'], ['.lsp6-checker', 'hell'], ['.lsp6-review-print.lsp6-review-dunkel', 'dunkel'], ['.lsp6-checker.lsp6-checker-dunkel', 'dunkel']]) {
+      const m = q.match(new RegExp("'" + klasse.replace(/\./g, '\\.') + '\\{([^}]*)\\}\''));
+      const farben = m ? [...new Set((m[1].match(/#[0-9a-f]{3,6}(?![0-9a-f])/gi) || []).map(hex6))].sort() : [];
+      gleich('CSS ' + klasse + ' malt genau die zwei Felder des Grundes «' + art + '»', farben, H.PRUEF_GRUND[art].slice().sort());
+    }
+  }
+}
+
+// 6.4.0 bleibt für den Rollout (SRI-Pfad) und als Rücknahme von 6.4.1 bytegleich (Stand 09.11.2026)
+{
+  const v640 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.0.js'));
+  pruefe('v6.4.0 bleibt bytegleich (Rücknahme von 6.4.1)', createHash('sha256').update(v640).digest('hex') === 'e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930' && v640.length === 260794, `${createHash('sha256').update(v640).digest('hex').slice(0, 12)} ${v640.length}`);
+}
+
+// 6.4.1 (eingefroren am 09.11.2026): jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash; die Mutationsprobe arbeitet nur an Kopien
+{
+  const v641 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.1.js'));
+  pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '96eff4192f344f963a380d5a45981fb330ae202978ef0dd62b3cd1a45818708b' && v641.length === 279455, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
+}
+
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
 // liegt deshalb ausschliesslich auf dem neuen unveränderlichen 6.3.1-Pfad.
 const v630 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.0.js'));
@@ -618,7 +849,7 @@ pruefe('v6.3.1 bleibt bytegleich (Rücknahme)', createHash('sha256').update(v631
 const v610 = readFileSync(join(hier, '..', 'lspod-designer-v6.js'));
 pruefe('lspod-designer-v6.js (6.1.0) bleibt bytegleich (Rücknahme)', createHash('sha256').update(v610).digest('hex') === '0e85515252dcbbf7a3afc6808664c7c3df8601171ca11ecbd19dbb38cb302566' && v610.length === 150289);
 
-for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js']) {
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js', 'lspod-designer-v6-6.4.1.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
     s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")

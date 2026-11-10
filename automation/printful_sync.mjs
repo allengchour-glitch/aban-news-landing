@@ -6,9 +6,13 @@
  * Ablauf je Bestellung (reine Logik und Prüfungen: lib/printful_bestellweg.mjs und lib/printful_platzierung.mjs; Verhalten: automation/printful_sync_test.mjs):
  *   0. Gibt es bei Printful schon einen Auftrag mit external_id «LX<Bestellnummer>»? (GET /orders/@<external_id>; GEMESSEN 05.11.: 404 wenn nicht, `GET /orders?external_id=` filtert NICHT)
  *      Ja → nichts anlegen, nur Tag `printful-synced` + Metafeld nachtragen (ein gescheitertes Markieren führt nie mehr zu einem zweiten Auftrag). Nicht prüfbar → nichts anlegen, später wieder.
- *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6: «🖼️ Druckdatei (<Platzierung>)», v5: Vorne/Hinten) mit den ECHTEN Printful-
- *      Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und Mindest-dpi des Katalogs), KI-Kontrolle, Empfänger.
- *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, Adresse unbrauchbar, mehr als 50 Positionen): KEIN Auftrag, Tag `printful-review`, eine Meldung.
+ *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6 ALT «🖼️ Druckdatei (<Platzierung>)», v6 NEU «_Druckdatei (<Platzierung>)» ab Editor 6.2.1,
+ *      v5: Vorne/Hinten; `_vorschau` ist KEINE Druckdatei) mit den ECHTEN Printful-Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und
+ *      Mindest-dpi des Katalogs; dazu als weiche Gegenprobe die Angabe `_pod_karte.qd`), KI-Kontrolle, Empfänger. `_pod_karte.m` und `.pv` müssen zur SKU der Position passen.
+ *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, gemischte Schlüssel, Karte widerspricht der SKU, Adresse unbrauchbar, mehr als 50 Positionen, Position am Fulfillment-Service-Standort «dienst-standort»,
+ *      gedruckte Aufpreis-Platzierung ohne bezahltes Paket «aufpreis-unbezahlt»): KEIN Auftrag, Tag `printful-review`,
+ *      eine Meldung. Eine bezahlte Bestellung OHNE Design (`keine-druckdatei`) bleibt so liegen: keine Mail an die Kundin und keine Rückerstattung durch dieses Skript (dropship/wp6-0611/OHNE-DESIGN.md).
+ *      Stand der Befundnamen und der Messung: dropship/wp6-0611/SYNC.md.
  *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
  *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
  *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).
@@ -20,8 +24,10 @@
  *   Vorübergehende Fehler (Netz, 429, 5xx): kein Tag ausser `printful-versuch-<n>`; nach 3 Läufen wird daraus ein Befund.
  * Gelesen werden alle Seiten der offenen Bestellungen (nicht nur die ersten MAX): Nicht-POD-Bestellungen verdrängen POD-Bestellungen nicht mehr.
  * Exit 1 bei technischem Fehler (Zugangsdaten fehlen, Shopify/Printful nicht erreichbar, Markieren gescheitert, Telegram-Meldung nicht zugestellt, Zeitlimit). Befunde sind KEIN Exit 1.
- * ENV: PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=0 schaltet das Bestätigen ab], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN),
- *      [PRINTFUL_KI_KONTROLLE=pflicht|aus (Vorgabe pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
+ * ENV: PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=1 schaltet das Bestätigen EIN (Vorgabe 0 = Aufträge bleiben Entwürfe, Besitzer-Entscheid 05.11.)], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN),
+ *      [PRINTFUL_KI_KONTROLLE=aus|pflicht (Vorgabe aus, Besitzer-Entscheid 05.11.; pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
+ *      [PRINTFUL_PAKET_BEZAHLT=kommagetrennte Platzierungs-IDs, die für alle Positionen als bezahlt gelten (Übergang; Standard leer = nur Vorderseite bezahlt; der Workflow reicht sie nicht durch)],
+ *      [PRINTFUL_MAX_KOSTEN_USD=absolute Obergrenze der Printful-Summe je Auftrag in USD; Vorgabe aus (leer/0/aus); ein Auftrag darüber bleibt Entwurf mit Befund «kosten-obergrenze»; ein unbrauchbarer Wert beendet den Lauf mit Exit 1],
  *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
  *      für Produkte mit Option stitch_color (Entscheid des Besitzers; ohne sie bleiben diese Aufträge Entwurf)], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
  *      [PF_PAUSE_MS=2500: Grundpause; die Wartezeit auf Dateien und Kosten ist 48 × PF_PAUSE_MS = 120 s],
@@ -33,7 +39,7 @@ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
 import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
-  kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS,
+  kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -42,9 +48,13 @@ const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 const PF_KEY = (process.env.PRINTFUL_API_KEY || '').trim();
 const PF_STORE = (process.env.PRINTFUL_STORE_ID || '').trim();
-const AUS = ['0', 'false', 'no', 'nein', 'off'];
-const AUTO_CONFIRM = !AUS.includes(String(process.env.PRINTFUL_AUTO_CONFIRM == null || process.env.PRINTFUL_AUTO_CONFIRM === '' ? '1' : process.env.PRINTFUL_AUTO_CONFIRM).trim().toLowerCase());
-const KI = String(process.env.PRINTFUL_KI_KONTROLLE || 'pflicht').trim().toLowerCase() === 'aus' ? 'aus' : 'pflicht';
+// STANDARDWERTE = die des Workflows (.github/workflows/printful-sync.yml: PRINTFUL_AUTO_CONFIRM '0', PRINTFUL_KI_KONTROLLE 'aus') und die Entscheide des Besitzers vom 05.11.2026: Printful-Aufträge bleiben ENTWÜRFE, bis er das
+// Bestätigen ausdrücklich einschaltet, und die KI-Kontrolle ist aus (die ersten Aufträge sichtet er von Hand). Früher galt hier das Gegenteil (bestätigen, KI Pflicht): wer das Skript ohne den Workflow startete, bekam andere Werte.
+// Bestätigt wird nur bei einem ausdrücklichen Ja (1, true, ja, yes, on, an); jede andere Angabe, auch ein Tippfehler, lässt es aus. Die KI-Kontrolle ist aus bei leer/«aus»; jede andere Angabe («pflicht», auch ein Tippfehler) schaltet sie ein.
+const EIN = ['1', 'true', 'ja', 'yes', 'on', 'an'];
+const AUTO_CONFIRM = EIN.includes(String(process.env.PRINTFUL_AUTO_CONFIRM == null ? '' : process.env.PRINTFUL_AUTO_CONFIRM).trim().toLowerCase());
+const KI_ROH = String(process.env.PRINTFUL_KI_KONTROLLE == null ? '' : process.env.PRINTFUL_KI_KONTROLLE).trim().toLowerCase();
+const KI = KI_ROH === '' || KI_ROH === 'aus' ? 'aus' : 'pflicht';
 const GEMINI = (process.env.GEMINI_API_KEY || '').trim();
 const KI_MODELL = (process.env.PRINTFUL_KI_MODELL || 'gemini-2.5-flash').trim();   // Name aus der alten Fassung; ob Google ihn noch anbietet, ist nicht geprüft (bei Fehler bleibt der Auftrag Entwurf)
 const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
@@ -52,6 +62,17 @@ const TG_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const MAX = Math.max(1, parseInt(process.env.MAX || '20', 10) || 20);
 // Mindestgewinn je Auftrag (CHF, nach MWST, Gebühr und Printful-Kosten): Vorgabe 4 = das Ziel der Preisformel (werkzeuge/preisformel.mjs); 0 hält nur Verluste an.
 const NETTO_MIN = Number.isFinite(Number(process.env.PRINTFUL_MIN_NETTO_CHF)) && process.env.PRINTFUL_MIN_NETTO_CHF !== undefined && process.env.PRINTFUL_MIN_NETTO_CHF !== '' ? Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 4;
+// Absolute Obergrenze der Printful-Summe je Auftrag in USD (PRINTFUL_MAX_KOSTEN_USD). Vorgabe AUS (leer, 0, «aus»). Eine Zahl über 0 schaltet sie ein; jede andere Angabe (Tippfehler, negativ) ist ein Konfigurationsfehler
+// und beendet den Lauf mit Exit 1, bevor etwas angelegt wird (eine falsch geschriebene Sicherung darf nicht still ausfallen).
+const MAX_KOSTEN_ROH = String(process.env.PRINTFUL_MAX_KOSTEN_USD == null ? '' : process.env.PRINTFUL_MAX_KOSTEN_USD).trim().toLowerCase();
+const MAX_KOSTEN_AUS = MAX_KOSTEN_ROH === '' || MAX_KOSTEN_ROH === '0' || MAX_KOSTEN_ROH === 'aus';
+const MAX_KOSTEN_USD = MAX_KOSTEN_AUS ? null : Number(MAX_KOSTEN_ROH);
+const MAX_KOSTEN_FEHLER = !MAX_KOSTEN_AUS && !(Number.isFinite(MAX_KOSTEN_USD) && MAX_KOSTEN_USD > 0);
+// Bezahltes Paket der Positionen (ÜBERGANG bis Phase 5 das Modell festlegt, siehe lib/printful_bestellweg.mjs `paketStandard`): Standard «nur Vorderseite bezahlt». PRINTFUL_PAKET_BEZAHLT = kommagetrennte Platzierungs-IDs
+// (z. B. «back,sleeve_left»), die für ALLE Positionen als bezahlt gelten; der Workflow reicht die Variable bewusst NICHT durch (nur für Läufe auf dem eigenen Rechner). Eine ungültige ID beendet den Lauf mit Exit 1.
+const PAKET_BEZAHLT = String(process.env.PRINTFUL_PAKET_BEZAHLT || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
+const PAKET_FEHLER = PAKET_BEZAHLT.filter((s) => !/^[a-z0-9_]+$/.test(s));
+const paketVon = () => (PAKET_BEZAHLT.length ? { bezahlt: PAKET_BEZAHLT, quelle: 'PRINTFUL_PAKET_BEZAHLT' } : paketStandard());
 const STITCH = String(process.env.PRINTFUL_STITCH_COLOR || '').trim().toLowerCase();
 const OPTION_VORGABEN = STITCH ? { stitch_color: STITCH } : {};
 const DETAIL = ['1', 'true', 'ja', 'yes', 'on'].includes(String(process.env.PRINTFUL_LOG_DETAIL || '').trim().toLowerCase());
@@ -61,6 +82,8 @@ const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(String(process.env
 // Shopify unterstützt 2026-01 bis ca. 16.01.2027 (QUELLE shopify.dev laut Prüfer 03.11.2026; Wiedervorlage Dezember 2026). Die alte Fassung lief auf dem abgelaufenen 2025-01.
 const API = '2026-01';
 // Bestellungen je Seite. GEMESSEN 05.11.2026 (extensions.cost): 10 Bestellungen × lineItems(first:50) = 158 angefragte Punkte, 25 × 25 = 206; verfügbar 2000. 20 × 50 bleibt weit darunter.
+// Mit den Fulfillment-Orders (Dienst-Standort, 09.11.2026) GEMESSEN über die Admin-Abfrage des Connectors (API 2026-10, Treffer 0, nur die Kostenprüfung vor der Ausführung): 20 Bestellungen werden angenommen,
+// 50 scheitern mit «Query cost is 1003» gegen die Grenze 1000 (also rund 20 Punkte je Bestellung). SEITE nicht über 49 anheben, sonst lehnt Shopify die Abfrage ab (dann bricht jeder Lauf mit einem Fehler ab).
 const SEITE = 20, MAX_SEITEN = 30;
 const PLATZ_PAUSE_MS = Math.max(0, parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS || '2000', 10) || 0);
 const PAUSE_MS = Math.max(0, parseInt(process.env.PF_PAUSE_MS || '2500', 10) || 0);
@@ -79,6 +102,8 @@ const fehlerLog = (f) => f.kurz + (DETAIL && f.detail ? ' | ' + f.detail : '');
 const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');
 const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0 };
 
+if (MAX_KOSTEN_FEHLER) { console.error(`❌ PRINTFUL_MAX_KOSTEN_USD ist keine Zahl über 0 (steht: «${MAX_KOSTEN_ROH.slice(0, 30)}»; leer, 0 oder «aus» schaltet die Obergrenze ab): es wird nichts angelegt.`); process.exit(1); }
+if (PAKET_FEHLER.length) { console.error(`❌ PRINTFUL_PAKET_BEZAHLT enthält ungültige Platzierungs-IDs (${PAKET_FEHLER.map((s) => s.slice(0, 20)).join(', ')}; erlaubt: a-z, 0-9, Unterstrich): es wird nichts angelegt.`); process.exit(1); }
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
 
@@ -128,8 +153,10 @@ const ORDERS_Q = `query($q:String!,$n:Int!,$c:String){ orders(first:$n, after:$c
   lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity currentQuantity sku title
     discountedTotalSet{ shopMoney{ amount currencyCode } }
     product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
-    variant{ sku }
+    variant{ sku title selectedOptions{ name value } }
     customAttributes{ key value } } } }
+  fulfillmentOrders(first:20){ edges{ node{ id status assignedLocation{ location{ id name isFulfillmentService } }
+    lineItems(first:50){ edges{ node{ lineItem{ id } } } } } } }
 }}}}`;
 const TAG_ADD = `mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`;
 const MF_SET = `mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{ message } } }`;
@@ -280,7 +307,7 @@ async function bearbeite(tok, o) {
   if (vorh.status === 200 && vorh.j && vorh.j.result) { await vorhandenBehandeln(tok, o, ext, vorh.j.result); return; }
   if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (HTTP ${vorh.status}): es wird nichts angelegt`, pfText(vorh)); return; }
   // 1. Planen
-  const plan = await planeBestellung(o, io, { hosts: HOSTS, optionVorgaben: OPTION_VORGABEN });
+  const plan = await planeBestellung(o, io, { hosts: HOSTS, optionVorgaben: OPTION_VORGABEN, paket: paketVon });
   const emp = empfaengerAus(o);
   const befunde = [...plan.befunde, ...emp.befunde];
   if (!plan.items.length && !befunde.length) befunde.push({ art: 'ohne-artikel', text: 'aus der Bestellung ist kein Printful-Artikel entstanden', hart: true });
@@ -322,7 +349,7 @@ async function bearbeite(tok, o) {
   if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehlerAdd(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext} und markiert ihn nach)`); zaehler.entwuerfe++; return; }
   // 4. Entwurf nachlesen: Dateien und Kosten
   const weich = befunde.slice();
-  const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN }) });
+  const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN, maxUsd: MAX_KOSTEN_USD }) });
   // fertig = Printful hat die Dateien geprüft (nicht «waiting») UND die Kosten gerechnet (total vorhanden, nicht «calculating»); sonst nach kurzer Pause nochmal lesen
   const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
   console.log(`${o.name}: Printful-Entwurf #${pfId}: Dateien und Kosten ${lese.urteil ? 'fertig' : 'NICHT fertig'} nach ${lese.sek} s Wartezeit`);   // misst, wie lange Printful wirklich braucht (bisher ungemessen)

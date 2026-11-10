@@ -18,6 +18,8 @@ let n = 0; const fehler = [];
 function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); if (process.env.V6_ABBRUCH) process.exit(1); } }   // V6_ABBRUCH=1 (nur Mutationsprobe): beim ersten Fehler beenden
 function nahe(name, ist, soll, eps) { pruefe(name, Math.abs(ist - soll) <= eps, `ist=${ist} soll=${soll} (±${eps})`); }
 const nur = process.argv[2] || '';
+/** Seit 6.4.1 gilt für weisse Schrift kein Schatten mehr (Konstante WEISS_SCHATTEN = false); 6.4.0 und früher, oder mit der Konstante auf true, zeichnen den Schatten wie bisher. */
+const OHNE_WEISS_SCHATTEN = /var WEISS_SCHATTEN = false;/.test(readFileSync(V6_DATEI, 'utf8'));
 const szenarien = [];
 function szenario(name, kern, fn) { szenarien.push({ name, kern, fn }); }
 
@@ -1268,6 +1270,7 @@ szenario('text-gleich', true, async (b, srv) => {
     const sch = await p.evaluate((i) => { const ed = window.LSPOD6.editors[0], e = ed.st.ebenen[ed.st.aktiv].find((q) => q.id === i); e.color = '#ffffff'; ed.ui.schriftwahl.dispatchEvent(new Event('change', { bubbles: true })); const c = document.querySelector('.lsp6-layer > div'), cs = getComputedStyle(c); return { schatten: cs.textShadow, px: parseFloat(cs.fontSize) }; }, id);
     const mm = /rgba\(0, 0, 0, ([\d.]+)\) (-?[\d.]+)px (-?[\d.]+)px ([\d.]+)px/.exec(sch.schatten);
     if (aus) pruefe(`${name}: weisse Schrift: der Schatten der Bühne bleibt wie in 6.3.1 (Versatz 1 px)`, !!mm && Number(mm[3]) === 1, sch.schatten);
+    else if (OHNE_WEISS_SCHATTEN) pruefe(`${name}: weisse Schrift: kein Schatten (6.4.1: WEISS_SCHATTEN = false, wie die Leinwand von Vorschau und Druckdatei)`, sch.schatten === 'none', sch.schatten);
     else pruefe(`${name}: weisse Schrift: Schatten ohne Versatz, Unschärfe 0,12 · Schrifthöhe, Deckkraft 0,4 (wie ctx.shadowBlur)`, !!mm && Number(mm[2]) === 0 && Number(mm[3]) === 0 && Math.abs(Number(mm[4]) - sch.px * 0.12) <= 0.15 && Math.abs(Number(mm[1]) - 0.4) <= 0.01, `${sch.schatten} (Schrifthöhe ${sch.px})`);
     pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();

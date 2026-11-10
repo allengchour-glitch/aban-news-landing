@@ -1,7 +1,7 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
- * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), C (Editor 6.4.1: Delta zu 6.4.0, Szenarien in v641_test.mjs), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
  * Gleichwertige Mutanten (kein sichtbarer Unterschied in Chromium) stehen mit Begründung unten bei ihrem Muster; B63 und B64 sind nur in einer Umgebung ohne ResizeObserver sichtbar (Szenario ohne-resizeobserver).
  * Stand 6.4.0: die Muster N05 und N12 sind entfernt (der Code, den sie trafen, gibt es seit 6.3.0 nicht mehr: Prüfung des Standes statt Variantenvergleich, kein Verkleinern nach der Freigabe); M32, N18 und W27 sind an den Code von 6.3.0/6.4.0 angepasst.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
@@ -10,7 +10,7 @@
  * (4) ein Lauf, der an der Umgebung scheitert (Chromium weg, Platte voll, Port belegt: lib.mjs: istUmgebungsfehler), zählt ebenfalls als «ungeklärt»; (5) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder B oder K oder V; mehrere mit Komma: B09,B10)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
- * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.0), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
+ * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.1), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
  * Die Kopien liegen in einem eigenen, neu angelegten Temp-Ordner (mkdtemp): parallele Läufe stören sich nicht.
  */
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
@@ -115,7 +115,7 @@ const MUTANTEN = [
   // beide Rücksetzungen zugleich entfernt (jede für sich wird von der anderen gedeckt, wie bei N18); sichtbar im Formular der Seite nach einem abgelehnten Warenkorb
   ['W27 Alte _vorschau-Adresse bleibt nach Fehler und Änderung', ["eingefroren = null;\n      vorschauSendeNr++;\n      druckUrls = {};\n      vorschauUrl = '';\n      formularSynchronisieren();", "if (!eingefroren) { druckUrls = {}; vorschauUrl = ''; }   // Adressen von früheren Druckdateien"], ["eingefroren = null;\n      vorschauSendeNr++;\n      druckUrls = {};\n      formularSynchronisieren();", "if (!eingefroren) { druckUrls = {}; }   // Adressen von früheren Druckdateien"]],
   ['W28 Kontrast-Hinweis kommt nie', "var KONTRAST_SCHWELLE = 1.8;", "var KONTRAST_SCHWELLE = 1.0;"],
-  ['W29 Kontrast-Hinweis nennt immer «dunkel»', "ui.pvKontrast.textContent = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell;", "ui.pvKontrast.textContent = T.kontrastDunkel;"],
+  ['W29 Kontrast-Hinweis nennt immer «dunkel»', "text = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell;", "text = T.kontrastDunkel;"],
   ['W30 Stickerei bekommt eine Vorschau statt des Hinweises', "if (p.technik === 'EMBROIDERY' || /^embroidery/.test(p.id)) return { art: 'hinweis', code: 'stickerei' };", ""],
   ['W31 Rundum-Druck bekommt eine Vorschau statt des Hinweises', "if (karte.klasse === 'PANEL') return { art: 'hinweis', code: 'rundum' };", ""],
   ['W32 Tasse: Zylinder gerade statt gewölbt', "var X1 = mx + R * Math.sin(t1), X2 = mx + R * Math.sin(t2);", "var X1 = mx + R * t1 / 1.5707963, X2 = mx + R * t2 / 1.5707963;"],
@@ -232,7 +232,7 @@ const MUTANTEN = [
   ['B75 Text der Bühne: Gewicht nicht an die Leinwand angeglichen (800 statt bold)', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontFamily = f.familie;"],
   ['B76 Text der Bühne: Schriftfamilie nicht an die Leinwand angeglichen', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontWeight = f.gewicht;"],
   ['B77 Text der Bühne: Schrägstellung der Ebene wird ignoriert (immer aufrecht)', "s.fontStyle = e.italic ? 'italic' : 'normal';", "s.fontStyle = 'normal';"],
-  ['B78 Text der Bühne: Schatten der weissen Schrift wie in 6.3.1', "'0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)'", "'0 1px 3px rgba(0,0,0,.45)'"],
+  ['B78 Text der Bühne: Schatten der weissen Schrift wie in 6.3.1 (seit 6.4.1 samt Konstante: die Bühne ignoriert WEISS_SCHATTEN und zeichnet den Schatten von 6.3.1)', "s.textShadow = WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff' ? '0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)' : 'none';", "s.textShadow = e.color.toLowerCase() === '#ffffff' ? '0 1px 3px rgba(0,0,0,.45)' : 'none';"],
   ['B79 Text der Bühne: senkrechte Lage nicht an die Leinwand angeglichen', "s.position = 'relative'; s.top = grundlinienVersatz(f) * px + 'px';", ""],
   ['B80 Text der Bühne: Versatz mit falschem Vorzeichen', "v = (-mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;", "v = (mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;"],
   ['B81 Text der Bühne: Versatz ohne Schriftgrösse (feste Pixel)', "s.top = grundlinienVersatz(f) * px + 'px';", "s.top = grundlinienVersatz(f) * 40 + 'px';"],
@@ -244,9 +244,106 @@ const MUTANTEN = [
   ['B87 Genauigkeit: Produktfoto der Bühne um 0,3 % der Bühnenbreite verschoben', "var lage = 'left:' + PCT((0 - w.x) / w.w) + ';top:'", "var lage = 'left:' + PCT((0 - w.x) / w.w + 0.003) + ';top:'"],
   // ── Schlussprüfung vom 09.11.2026: Tastatur auf den neuen Knöpfen, Tab-Stopp der Reiter, CSS-Härtung (Szenarien tastatur-ansicht und karten-css-haertung) ──
   ['B88 Reiter: Pfeiltasten, Pos1, Ende ohne preventDefault (die Seite scrollt bei «Ende» um rund 745 px)', "ev.preventDefault(); ev.stopPropagation();\n      knoepfe.forEach(function (b)", "ev.stopPropagation();\n      knoepfe.forEach(function (b)"],
-  ['B89 Tastatur der Karte: Pfeile, Entf und Rück auf Reiter und Zoom-Knöpfen wirken wieder auf die gewählte Ebene', "if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom')) return;", ""],
+  ['B89 Tastatur der Karte: Pfeile, Entf und Rück auf Reiter und Zoom-Knöpfen wirken wieder auf die gewählte Ebene', "if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom, .lsp6-tabs, [role=\"tab\"]')) return;", ""],
   ['B90 Reiter: nach Pfeiltasten bleiben mehrere Reiter Tab-Stopp (Roving-Tabindex verletzt)', "b.setAttribute('tabindex', b === ziel ? '0' : '-1')", "b.setAttribute('tabindex', b === ziel ? '0' : b.getAttribute('tabindex'))"],
   ['B91 Grundfläche: Farbwert aus den Kartendaten als cssText (fremdes CSS wirkt, z. B. position:fixed)', "ui.grund.style.cssText = lage;\n        ui.grund.style.background = textur ? '#ffffff' : ersatz;", "ui.grund.style.cssText = lage + ';background:' + (textur ? '#ffffff' : ersatz);"],
+  // ── Editor 6.4.1 (Delta zu 6.4.0): Standard-Textfarbe, Kontrast-Hinweis der Bühne, Werkzeugzeile unter der Bühne, WEISS_SCHATTEN, Kleinigkeiten (Szenarien in v641_test.mjs, Zahlen in unit_test.mjs) ──
+  ["C01 Standardfarbe: neuer Text startet immer #111111 (Stoff wird ignoriert)", "color: standardTextFarbe(stoffHexFuer(pAktiv())), farbeAuto: true,", "color: '#111111', farbeAuto: true,"],
+  ["C02 Standardfarbe: Wahl vertauscht (hell auf hellem Stoff)", "? TEXT_HELL : TEXT_DUNKEL;", "? TEXT_DUNKEL : TEXT_HELL;"],
+  ["C03 Standardfarbe: Weiss um 2 Kontrastpunkte bevorzugt", "return kontrastVerhaeltnis(leuchtdichte(h[0], h[1], h[2]), lf) >", "return kontrastVerhaeltnis(leuchtdichte(h[0], h[1], h[2]), lf) + 2 >"],
+  ["C04 Standardfarbe: unbekannter Stoff gibt weisse Schrift", "if (!rgb) return TEXT_DUNKEL;", "if (!rgb) return TEXT_HELL;"],
+  ["C05 neuer Text trägt kein farbeAuto (folgt der Ausführung nie)", "farbeAuto: true, cx: 0.5, cy: 0.42,", "cx: 0.5, cy: 0.42,"],
+  ["C06 Farbfeld: gewählte Farbe bleibt als Standard markiert (wird überschrieben)", "e.color = ui.farbwahl.value; delete e.farbeAuto;", "e.color = ui.farbwahl.value;"],
+  ["C07 Farbfelder (Farbpunkte): gewählte Farbe bleibt als Standard markiert (wird überschrieben)", "e.color = b.getAttribute('data-c'); delete e.farbeAuto;", "e.color = b.getAttribute('data-c');"],
+  ["C08 Wechsel der Ausführung färbt den Standardtext nicht um", "var farbenNeu = autoFarbenAnwenden();", "var farbenNeu = false;"],
+  ["C09 Umfärben überschreibt auch gewählte Farben", "if (e.type !== 'text' || !e.farbeAuto) return;", "if (e.type !== 'text') return;"],
+  ["C10 Rückgängig und Wiederholen färben den Standardtext nicht an die Ausführung an", "      autoFarbenAnwenden();   // 6.4.1: ein älterer Stand kann aus einer anderen Ausführung stammen\n", ""],
+  ["C11 Entwurf speichert farbeAuto nicht", "if (e.farbeAuto === true) n.farbeAuto = true;", ""],
+  ["C12 Entwurf liest farbeAuto nicht", "if (n.farbeAuto === true) e.farbeAuto = true;", ""],
+  ["C13 Entwurf wird beim Laden nicht an die Ausführung angepasst", "if (wiederhergestellt) autoFarbenAnwenden();", ""],
+  ["C14 Tasse und Poster gelten nicht als weisser Stoff", "if (m && (m.adapter === 'tasse' || m.adapter === 'papier')) return '#ffffff';", ""],
+  ["C16 Stoff ohne Farbe der gewählten Ausführung (nur die Beispielfarbe der Vorlage)", "return vl ? stoffFarbe(vl).hex : null;", "return vl ? (vl.hintergrundFarbe || null) : null;"],
+  ["C17 TEXT_HELL nicht rein weiss", "var TEXT_HELL = '#ffffff';", "var TEXT_HELL = '#fefefe';"],
+  ["C18 TEXT_DUNKEL nicht #111111", "var TEXT_DUNKEL = '#111111';", "var TEXT_DUNKEL = '#000000';"],
+  ["C20 Hinweis der Bühne bleibt immer verborgen", "ui.stKontrast.textContent = t; ui.stKontrast.hidden = !t;", "ui.stKontrast.textContent = t; ui.stKontrast.hidden = true;"],
+  ["C21 Hinweis der Bühne erscheint auch in der Vorschau (doppelter Hinweis)", "var hex = !legacy && st.sicht !== 'produkt' && (art", "var hex = !legacy && (art"],
+  ["C22 Hinweis der Bühne rechnet immer gegen weissen Stoff", "&& ebenenAktiv().length ? stoffHexFuer(p) : null;", "&& ebenenAktiv().length ? '#ffffff' : null;"],
+  ["C23 Hinweis der Bühne nur für flache Vorlagen (Tasse und Poster fehlen)", "(art === 'flach' || art === 'tasse' || art === 'papier') && ebenenAktiv().length", "(art === 'flach') && ebenenAktiv().length"],
+  ["C25 Hinweis der Bühne wird beim Aufbau der Bühne (Ausführung, Platzierung, Ansicht) nicht aufgefrischt", "      vorschauPlanen();\n      kontrastBuehnePlanen();\n      if (pb) tplFehlerPruefen();", "      vorschauPlanen();\n      if (pb) tplFehlerPruefen();"],
+  ["C28 Hinweis der Bühne auch mit data-bearbeiten=0 (Verhalten von 6.3.1 verlassen)", "if (!tabArt || legacy) return;\n      clearTimeout(kbTimer);", "if (legacy) return;\n      clearTimeout(kbTimer);"],
+  ["C30 Werkzeugzeile «Text | Sticker | Bild» bleibt am Ende der Karte", "ui.werkzeuge.appendChild(zeileWerkzeuge);", "body.appendChild(zeileWerkzeuge);"],
+  ["C31 Stickerauswahl öffnet sich am Ende der Karte statt unter den Knöpfen", "ui.werkzeuge.appendChild(ui.picker);", "body.appendChild(ui.picker);"],
+  ["C32 Werkzeugzeile steht über der Bühne", "ui.karte.appendChild(ui.werkzeuge);", "ui.karte.insertBefore(ui.werkzeuge, ui.karte.firstChild);"],
+  ["C40 WEISS_SCHATTEN steht auf true (Schatten wie in 6.4.0)", "var WEISS_SCHATTEN = false;", "var WEISS_SCHATTEN = true;"],
+  ["C41 Druckdatei und Vorschau ignorieren WEISS_SCHATTEN (Schatten bei weisser Schrift)", "if (WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff') { ctx.shadowColor", "if (e.color.toLowerCase() === '#ffffff') { ctx.shadowColor"],
+  ["C42 Bühne ignoriert WEISS_SCHATTEN (Schatten bei weisser Schrift)", "s.textShadow = WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff' ? '0 0 '", "s.textShadow = e.color.toLowerCase() === '#ffffff' ? '0 0 '"],
+  ["C50 Beschriftung der Druckfläche ohne Höchstbreite (ragt über den Rahmen)", "        ui.tag.style.maxWidth = 'calc(' + PCT(Math.max(0, Math.min(1, fl + fb) - Math.max(0, fl))) + ' - 8px)';", ""],
+  ["C51 Beschriftung der Druckfläche: erst kürzen sich die Zahlen statt des Wortes", ".lsp6-tag-l{flex:0 100 auto;", ".lsp6-tag-l{flex:0 0 auto;"],
+  ["C52 Vorschau ist kein tabpanel", "role: tabArt ? 'tabpanel' : null, 'aria-label': tabArt ? T.sichtVorschau : null", "role: null, 'aria-label': tabArt ? T.sichtVorschau : null"],
+  ["C53 Vorschau-tabpanel ohne Namen", "role: tabArt ? 'tabpanel' : null, 'aria-label': tabArt ? T.sichtVorschau : null", "role: tabArt ? 'tabpanel' : null, 'aria-label': null"],
+  ["C54 Pfeile und Entf auf den Reitern der Platzierungen wirken auf die Ebene", ".lsp6-sicht, .lsp6-zoom, .lsp6-tabs, [role=\"tab\"]')) return;", ".lsp6-sicht, .lsp6-zoom')) return;"],
+  ["C55 Grössenschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
+  ["C56 Drehschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
+  ["C57 Gradanzeige des Drehschiebers folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      aufloesungPruefen(e);"],
+  // ── Druckprüfung (Fund der Gegenlesung 09.11.2026): Grund hinter der durchsichtigen Druckdatei passt zur Schrift (pruefGrund, druckGrundErmitteln, Dialoge) ──
+  ["C60 Prüfgrund: immer hell (weisse Schrift bleibt auf dem hellen Schachbrett)", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return 'hell';"],
+  ["C61 Prüfgrund: Wahl vertauscht", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return schlecht('hell') > schlecht('dunkel') ? 'hell' : 'dunkel';"],
+  ["C62 Prüfgrund: bei Gleichstand dunkel (leeres Design und 50 zu 50 wechseln den Grund)", "return schlecht('hell') > schlecht('dunkel') ? 'dunkel' : 'hell';", "return schlecht('hell') >= schlecht('dunkel') ? 'dunkel' : 'hell';"],
+  ["C63 Prüfgrund: nur das erste Feld des Schachbretts zählt", ".filter(function (f) { return f.art === art; }).map(", ".filter(function (f) { return f.art === art; }).slice(0, 1).map("],
+  ["C64 Prüfgrund: das bessere statt das schlechtere Feld zählt", "return Math.max.apply(null, felder.filter(", "return Math.min.apply(null, felder.filter("],
+  ["C74 Prüfgrund: Pixel werden nicht nach Alpha gewichtet", "felder[k].schlecht += a;", "felder[k].schlecht += 1;"],
+  ["C75 Prüfgrund: auch Pixel unter Alpha 20 % zählen", "if (!(a >= 0.2)) continue;   // durchsichtig: kein Design", "if (!(a >= 0)) continue;"],
+  ["C65 Dialog: die Abbildung «Verbindliche Druckdatei» trägt die dunkle Klasse nie", "'lsp6-review-img lsp6-review-print' + (datei.druckGrund === 'dunkel' ? ' lsp6-review-dunkel' : '')", "'lsp6-review-img lsp6-review-print'"],
+  ["C66 Dialog: data-review-grund meldet immer hell", "'data-review-grund': datei.druckGrund === 'dunkel' ? 'dunkel' : 'hell' }", "'data-review-grund': 'hell' }"],
+  ["C67 Review: der Grund wird nie ermittelt (immer hell)", "datei.druckGrund = e[1] === 'dunkel' ? 'dunkel' : 'hell';", "datei.druckGrund = 'hell';"],
+  ["C68 Druck-Vorschau anzeigen: Schachbrett bleibt immer hell", "class: 'lsp6-checker' + (grund === 'dunkel' ? ' lsp6-checker-dunkel' : ''),", "class: 'lsp6-checker',"],
+  ["C69 Wahl des Grundes: ein Sprung auf 48 px statt Schritte von 4 zu 1 (dünne Schrift fällt weg)", "var nw = w > PRUEF_GRUND_BREITE ? Math.ceil(w / 4) : w,", "var nw = w > PRUEF_GRUND_BREITE ? 48 : w,"],
+  ["C70 Wahl des Grundes: ein Lesefehler wird nicht abgefangen (Seitenfehler)", "} catch (x) { wert = 'hell'; }\n        leinwandFreigeben(zwischen);", "} finally { /* nichts */ }\n        leinwandFreigeben(zwischen);"],
+  ["C71 CSS: dunkler Grund der Druckprüfung ist nicht dunkel", ".lsp6-review-print.lsp6-review-dunkel{background-color:#2b2b2b;", ".lsp6-review-print.lsp6-review-dunkel{background-color:#f4f4f4;"],
+  ["C72 Konstante: zweites dunkles Feld weicht vom CSS ab", "dunkel: ['#2b2b2b', '#474747'] };", "dunkel: ['#2b2b2b', '#777777'] };"],
+  ["C73 CSS: Druck-Vorschau anzeigen hat keinen dunklen Grund", ".lsp6-checker.lsp6-checker-dunkel{background-color:#2b2b2b;", ".lsp6-checker.lsp6-checker-dunkel{background-color:#f4f4f4;"],
+  // ── Druckprüfung, zweite Runde (Gegenlesung 10.11.2026): Foto plus Beschriftung (Randregel), Frist und Hängen, Fehler- und Aufräumpfade, Verkleinern, Gewichte, «Druck-Vorschau anzeigen» ──
+  ["C76 Druck-Vorschau anzeigen: Rückfall bei Frist oder Fehler ist dunkel statt hell", "return mitFrist(druckGrundErmitteln(blob), kaufFrist, 'hell').then(", "return mitFrist(druckGrundErmitteln(blob), kaufFrist, 'dunkel').then("],
+  ["C77 Druckprüfung: Rückfall bei Frist oder Fehler ist dunkel statt hell", "mitFrist(druckGrundErmitteln(datei.blob), kaufFrist, 'hell')", "mitFrist(druckGrundErmitteln(datei.blob), kaufFrist, 'dunkel')"],
+  ["C78 Druck-Vorschau anzeigen: keine Frist für die Grundwahl (ein hängendes Bild hält den Dialog an)", "return mitFrist(druckGrundErmitteln(blob), kaufFrist, 'hell').then(function (grund) { return [blob, grund]; });", "return druckGrundErmitteln(blob).then(function (grund) { return [blob, grund]; });"],
+  ["C79 Druckprüfung: keine Frist für die Grundwahl (ein hängendes Bild hält den Kauf an)", "mitFrist(druckGrundErmitteln(datei.blob), kaufFrist, 'hell')", "druckGrundErmitteln(datei.blob)"],
+  ["C80 Prüfgrund: jedes Pixel zählt wieder (die Innenfläche eines Fotos entscheidet, wie in der ersten Fassung)", "if (!ohneLage && a >= PRUEF_GRUND_DECKEND && !randNah(i, x, y)) continue;", ""],
+  ["C81 Randregel: Schwelle der Deckkraft 20 % statt 98 % (halbdurchsichtige Flächen zählen nur am Rand)", "var PRUEF_GRUND_DECKEND = 0.98;", "var PRUEF_GRUND_DECKEND = 0.2;"],
+  ["C82 Randregel: Schwelle der Deckkraft 100 % (Alpha 250 bis 254 zählt im Innern)", "var PRUEF_GRUND_DECKEND = 0.98;", "var PRUEF_GRUND_DECKEND = 1;"],
+  ["C83 Randregel: der obere Nachbar wird nicht geprüft", " || (y > 0 && frei(i - zeile + 3))", ""],
+  ["C84 Randregel: der untere Nachbar wird nicht geprüft", " || (y < hoehe - 1 && frei(i + zeile + 3))", ""],
+  ["C85 Randregel: der linke Nachbar wird nicht geprüft", "return (x > 0 && frei(i - 1)) || ", "return "],
+  ["C86 Randregel: der rechte Nachbar wird nicht geprüft", " || (x < breite - 1 && frei(i + 7))", ""],
+  ["C87 Randregel: ein Nachbar gilt schon unter 98 % als durchsichtig", "function frei(j) { return !(data[j] / 255 >= 0.2); }", "function frei(j) { return !(data[j] / 255 >= 0.98); }"],
+  ["C88 Randregel: ein Nachbar gilt erst unter 5 % als durchsichtig", "function frei(j) { return !(data[j] / 255 >= 0.2); }", "function frei(j) { return !(data[j] / 255 >= 0.05); }"],
+  ["C89 Randregel: ausserhalb der Datei gilt als durchsichtig (die Dateiränder zählen)", "return (x > 0 && frei(i - 1)) || (x < breite - 1 && frei(i + 7)) || (y > 0 && frei(i - zeile + 3)) || (y < hoehe - 1 && frei(i + zeile + 3)); }", "return (x <= 0 || frei(i - 1)) || (x >= breite - 1 || frei(i + 7)) || (y <= 0 || frei(i - zeile + 3)) || (y >= hoehe - 1 || frei(i + zeile + 3)); }"],
+  ["C90 Prüfgrund: die Grösse wird ignoriert (Lage unbekannt, jedes Pixel zählt)", "var ohneLage = !(breite > 0 && hoehe > 0 && data.length >= breite * hoehe * 4);", "var ohneLage = true;"],
+  ["C91 Prüfgrund: die Grösse wird nicht gegen die Datenmenge geprüft", "var ohneLage = !(breite > 0 && hoehe > 0 && data.length >= breite * hoehe * 4);", "var ohneLage = !(breite > 0 && hoehe > 0);"],
+  ["C92 Grundwahl liest die Druckdatei ohne Breite und Höhe an pruefGrund zu geben (Foto entscheidet wieder)", ".data, zwischen.width, zwischen.height);", ".data);"],
+  ["C93 Grundwahl gibt eine falsche Höhe an pruefGrund (Breite statt Höhe)", ".data, zwischen.width, zwischen.height);", ".data, zwischen.width, zwischen.width);"],
+  ["C94 Prüfgrund: Rot und Blau vertauscht im Pixelschritt", "var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)", "var l = leuchtdichte(data[i + 2], data[i + 1], data[i]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)"],
+  ["C95 Prüfgrund: Gewichte der Leuchtdichte im Pixelschritt Rot 0,2526 und Blau 0,0322 (Summe 1)", "var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)", "var l = (function (r, g, b) { function f(v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); } return 0.2526 * f(r) + 0.7152 * f(g) + 0.0322 * f(b); })(data[i], data[i + 1], data[i + 2]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)"],
+  ["C96 Prüfgrund: Gewichte der Leuchtdichte im Pixelschritt Rot 0,2176 und Blau 0,0672 (Summe 1)", "var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)", "var l = (function (r, g, b) { function f(v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); } return 0.2176 * f(r) + 0.7152 * f(g) + 0.0672 * f(b); })(data[i], data[i + 1], data[i + 2]);\n        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l)"],
+  ["C97 Druckprüfung: Frist der Grundwahl nur 20 ms (der Rückfall greift schon bei einem gesunden Lauf)", "mitFrist(druckGrundErmitteln(datei.blob), kaufFrist, 'hell')", "mitFrist(druckGrundErmitteln(datei.blob), 20, 'hell')"],
+  ["C98 Druck-Vorschau anzeigen: Frist der Grundwahl nur 20 ms", "return mitFrist(druckGrundErmitteln(blob), kaufFrist, 'hell').then(", "return mitFrist(druckGrundErmitteln(blob), 20, 'hell').then("],
+  ["C99 Druck-Vorschau anzeigen: der Grund ist immer dunkel", "var blob = e[0], grund = e[1];", "var blob = e[0], grund = 'dunkel';"],
+  ["C100 Druck-Vorschau anzeigen: der Grund folgt der Stoffhelligkeit statt der Schrift", "var blob = e[0], grund = e[1];", "var blob = e[0], grund = standardTextFarbe(stoffHexFuer(pAktiv())) === TEXT_HELL ? 'dunkel' : 'hell';"],
+  ["C101 Grundwahl: ein Bild, das nicht lädt (onerror), ergibt dunkel statt hell", "bild.onerror = function () { ende('hell'); };", "bild.onerror = function () { ende('dunkel'); };"],
+  ["C102 Grundwahl: scheitert createObjectURL, ergibt es dunkel statt hell", "try { url = URL.createObjectURL(blob); } catch (x) { fertig('hell'); return; }", "try { url = URL.createObjectURL(blob); } catch (x) { fertig('dunkel'); return; }"],
+  ["C103 Grundwahl: die Blob-Adresse wird nicht zurückgegeben (revokeObjectURL entfällt)", "function ende(wert) { if (url) { try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } } fertig(wert); }", "function ende(wert) { fertig(wert); }"],
+  ["C104 Grundwahl: die Zwischenleinwand wird nicht freigegeben", "if (zwischen) leinwandFreigeben(zwischen);\n            zwischen = cv;", "zwischen = cv;"],
+  ["C105 Grundwahl: weder Endleinwand noch zuletzt angelegte Leinwand werden freigegeben", "leinwandFreigeben(zwischen); leinwandFreigeben(cv);", ""],
+  ["C106 Grundwahl: die zuletzt angelegte Leinwand wird im Fehlerpfad nicht freigegeben (nur die vorige Stufe)", "leinwandFreigeben(zwischen); leinwandFreigeben(cv);", "leinwandFreigeben(zwischen);"],
+  ["C107 Grundwahl: jeder Schritt liest wieder das Original statt das Ergebnis des vorigen", "zwischen = cv; quelle = cv; w = nw;", "zwischen = cv; w = nw;"],
+  ["C108 Grundwahl: nur ein Schritt (grosse Dateien bleiben über 512 px)", "} while (w > PRUEF_GRUND_BREITE);", "} while (false);"],
+  ["C109 Grundwahl: Zielbreite 4096 statt 512 px (keine Verkleinerung bei normalen Dateien)", "var PRUEF_GRUND_BREITE = 512;", "var PRUEF_GRUND_BREITE = 4096;"],
+  ["C110 Grundwahl: Zielbreite 128 statt 512 px (eine Stufe mehr, unter 128 px)", "var PRUEF_GRUND_BREITE = 512;", "var PRUEF_GRUND_BREITE = 128;"],
+  ["C111 Grundwahl: Zielbreite 256 statt 512 px (eine Stufe mehr bei 1800 px)", "var PRUEF_GRUND_BREITE = 512;", "var PRUEF_GRUND_BREITE = 256;"],
+  ["C112 Grundwahl: verkleinert mit der Vorgabe-Glättung statt «high»", "cx.imageSmoothingQuality = 'high';", ""],
+  ["C113 Grundwahl: verkleinert mit der Glättung «low»", "cx.imageSmoothingQuality = 'high';", "cx.imageSmoothingQuality = 'low';"],
+  ["C114 Grundwahl: das Seitenverhältnis der Zwischenleinwand geht verloren (quadratisch)", "nh = Math.max(1, Math.round(nw * bh / bw));", "nh = nw;"],
+  // Gleichwertig, darum nicht in der Liste: die Prüfung auf ein leeres Bild («if (!(bw > 0 && bh > 0)) throw …»; ohne sie ergibt ein Bild ohne Fläche eine Leinwand der Breite 0, getImageData wirft, der Fehlerpfad liefert denselben hellen Grund)
+  // und die Nachbarschaftsprüfung ausserhalb der Datei, solange der Wert 1 die Schleife ohnehin beendet.
   // B88b wäre «ohne stopPropagation»: GLEICHWERTIG, seit die Karte Knöpfe der Leiste und des Zooms selbst ausnimmt (zwei unabhängige Sicherungen); steht darum nicht in der Liste.
 ];
 
@@ -339,7 +436,7 @@ let naechster = 0;
 // V6_OHNE_AUSGANGSLAGE=1 (nur zum schnellen Wiederholen einzelner Mutanten nach einer Testergänzung; der massgebende Lauf geht immer mit Ausgangslage)
 if (!process.env.V6_OHNE_AUSGANGSLAGE) {
   const stufen = [['unit_test.mjs', []]];
-  if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']]);
+  if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']], ['v641_test.mjs', ['kern']]);
   for (const [datei, args] of stufen) {
     const r = await lauf(datei, args, {});
     if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
@@ -376,8 +473,9 @@ async function arbeiter() {
       const umg = { V6_DATEI: datei };
       // Reihenfolge nach Herkunft des Mutanten: B (6.4.0) betrifft «Bearbeiten» (bearbeiten_test zuerst), W meist die Vorschau (vorschau_test zuerst), M und N den Editor von 6.1.0 (editor_test zuerst);
       // bearbeiten_test steht bei M, N und W zuletzt: er läuft nur, wenn die drei alten Stufen den Mutanten übersehen haben (zusätzliche Deckung, weil 6.4.0 die Bühne anders aufbaut)
-      const U = ['unit_test', 'unit_test.mjs', []], V = ['vorschau_test', 'vorschau_test.mjs', ['kern']], E = ['editor_test', 'editor_test.mjs', ['kern']], BT = ['bearbeiten_test', 'bearbeiten_test.mjs', ['kern']];
-      const folge = /^B/.test(a.name) ? [U, BT, E, V] : /^W/.test(a.name) ? [U, V, E, BT] : [U, E, V, BT];
+      const U = ['unit_test', 'unit_test.mjs', []], V = ['vorschau_test', 'vorschau_test.mjs', ['kern']], E = ['editor_test', 'editor_test.mjs', ['kern']], BT = ['bearbeiten_test', 'bearbeiten_test.mjs', ['kern']], C = ['v641_test', 'v641_test.mjs', ['kern']];
+      // C (6.4.1) zuerst bei den Mutanten des Deltas; bei allen anderen als letzte Stufe (zusätzliche Deckung)
+      const folge = /^C/.test(a.name) ? [U, C, BT, E, V] : /^B/.test(a.name) ? [U, BT, E, V, C] : /^W/.test(a.name) ? [U, V, E, BT, C] : [U, E, V, BT, C];
       for (const [name, f, args] of folge) {
         ergebnisStufe = await stufe(name, f, args, umg);
         if (ergebnisStufe) break;

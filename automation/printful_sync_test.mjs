@@ -5,7 +5,7 @@
 // GESENDET wird (Entwurf anlegen, bestätigen, external_id, files[].type, options), welche Tags die Bestellung bekommt, was an Telegram geht und der Exit-Code.
 // Warum so: vorher prüfte ein Test nur per Regex den Quelltext; fünf von fünf Mutanten an der Platzierung überlebten. Lauf: /opt/node22/bin/node automation/printful_sync_test.mjs
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeSync, rmSync } from 'node:fs';
+import { readFileSync, writeSync, rmSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const SELF = fileURLToPath(import.meta.url);
@@ -16,10 +16,13 @@ const KAT = lade('../dropship/pod-auswahl/bestellweg_katalog_auszug.json').produ
 // ═════════════════════════════════════════════════════════════ KINDPROZESS: ein Szenario
 if (process.argv[2] === '--szenario') {
   const sz = JSON.parse(process.env.PS_SZENARIO);
-  Object.assign(process.env, { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'aus' });
-  for (const k of ['GEMINI_API_KEY', 'PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DRY_RUN', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS']) delete process.env[k];
+  // Alle Platzierungen der Test-Kataloge gelten als bezahlt (die älteren Szenarien prüfen Platzierung, Dateien und Bestätigen, nicht den Preis); die Szenarien zum Aufpreis löschen die Variable (envLoeschen).
+  const ALLE_PLATZIERUNGEN = [...new Set([...Object.values(KAT), ...Object.values(MIT)].flatMap((x) => (x.produkt.files || []).flatMap((f) => [f.id, f.type])).filter((x) => /^[a-z0-9_]+$/.test(x)))].join(',');
+  Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'aus' });
+  for (const k of ['GEMINI_API_KEY', 'PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DRY_RUN', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_MAX_KOSTEN_USD']) delete process.env[k];
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
   if (sz.ki && sz.ki !== 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'pflicht'; if (sz.ki !== 'ohne-schluessel') process.env.GEMINI_API_KEY = 'g'; }
+  for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer); `env` setzt danach
   Object.assign(process.env, sz.env || {});
   const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '' };
   let fertig; const ende = new Promise((r) => { fertig = r; });
@@ -32,6 +35,7 @@ if (process.argv[2] === '--szenario') {
   const nachOrder = (i = 0) => ({ ...draftOrder(0), status: 'pending', ...(sz.nachConfirm || {}), ...folge(sz.nachFolge, i) });
   // Katalog des Szenarios: echte Auszüge (Tasse, T-Shirt, Kappe, Poster, Jacke, Strick, Hülle), sonst synthetisch aus der Dateiliste des Mitschnitts
   const druck = (pid) => {
+    if (sz.druckEigen && sz.druckEigen[pid]) return sz.druckEigen[pid];            // echter Auszug eines Produkts, das der Katalogauszug nicht führt (WP6: Tasse 403)
     if (KAT[pid]) return KAT[pid];
     const m = MIT[pid]; if (!m) return null;
     const ids = m.produkt.files.filter((f) => f.type !== 'mockup').flatMap((f) => [f.id, f.type]);
@@ -161,7 +165,10 @@ const A = (key, value) => ({ key, value });
 const karte6 = (pl, extra = {}) => A('_pod_karte', JSON.stringify({ v: 6, s: 1, pl, ...extra }));
 /** Bestellung (Shopify-Knoten) mit EINER Editor-Position; v5-Schlüssel «🖼️ Druckdatei (Vorne)» wie im alten Test. */
 const zeile = (o = {}) => ({ id: 'gid://shopify/LineItem/9001', quantity: 1, sku: '5599797_4025', title: 'T', discountedTotalSet: { shopMoney: { amount: '49.90', currencyCode: 'CHF' } }, product: { productType: 'T-Shirts', tags: ['wunschdesign'], metafield: null }, variant: { sku: '5599797_4025' }, customAttributes: [A('🖼️ Druckdatei (Vorne)', V('Vorne'))], ...o });
-const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, ...o });
+/** Fulfillment-Orders wie die Admin-Abfrage sie liefert: ein Händler-Standort mit allen Positionen (`ort` ändert den Standort, z. B. FO_DIENST = der Dienst-Standort «Printful»). */
+const FO_DIENST = { id: 'gid://shopify/Location/2', name: 'Printful', isFulfillmentService: true };
+const fos = (zeilen, ort = { id: 'gid://shopify/Location/1', name: 'Shop location', isFulfillmentService: false }) => ({ edges: [{ node: { id: 'gid://shopify/FulfillmentOrder/1', status: 'OPEN', assignedLocation: { location: ort }, lineItems: { edges: zeilen.map((z) => ({ node: { lineItem: { id: z.id } } })) } } }] });
+const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, fulfillmentOrders: fos(zeilen), ...o });
 const einfach = (pt, sku, seiten, extra = {}) => ({ pt, sku, seiten, ...extra });
 /** Szenario aus dem alten Muster {pt, sku, seiten, variant}: eine Bestellung, v5-Eigenschaften «Druckdatei (<Seite>)» */
 const alt = (s) => ({ vid: Number(s.sku.split('_').pop()), orders: [knoten([zeile({ sku: s.sku, variant: { sku: s.sku }, product: { productType: s.pt, tags: ['wunschdesign'], metafield: null }, customAttributes: s.seiten.map((x) => A('🖼️ Druckdatei (' + x + ')', V(x))) })])], ...s });
@@ -619,6 +626,207 @@ for (const [name, sz, soll] of [
   ist('Kappe, Stickerei «embroidery_front» ohne Garnfarben (früher: kein Befund, BESTÄTIGT): Entwurf, Befund «optionen» (der Katalog führt dort keine Garnfarben-Option)', [bestaetigt(a), tags(a).includes('printful-review-optionen'), /Garnfarben-Option/.test(a.prot.tg[0])], [false, true, true]);
   const b = lauf(kappe([A('🖼️ Druckdatei (default)', V('v')), karte6(['default'])]));
   ist('Kappe, Datei-ID «default» (= Typ embroidery_front): ebenso Entwurf «optionen», und KEIN Auflösungsbefund aus Zufall (Stickerei hat keine Pixelgrösse)', [bestaetigt(b), tags(b).includes('printful-review-optionen'), tags(b).includes('printful-review-aufloesung')], [false, true, false]);
+}
+
+// ═════════════════════════════════════════════════════════════ WP6 (06.11.2026): Attrappen-Bestellungen aus den ECHTEN Eigenschaften der Canary-Tasse
+// Die Kaufanfrage der Canary-Tasse «Keramik-Tasse mit farbiger Innenseite» (Printful 403, SKU 9100403_17197) wurde am 06.11.2026 im Browser abgefangen (fabrik/lauf-0611/README.md);
+// die Printful-Antworten dazu (Variante, Druckdateien, Vorlagen) sind ein Auszug der ECHTEN Antworten desselben Tages. Die Datei der Anfrage misst 2700×1140 px.
+// Verlangt wird: alte und neue Schreibweise des Schlüssels ergeben denselben Auftrag ohne Befund (bestätigt), _vorschau wird nie geholt, qd ist nur ein weicher Hinweis, eine Karte,
+// die der SKU widerspricht, und eine Bestellung ohne Design legen KEINEN Printful-Auftrag an und lösen nichts bei der Kundin aus (kein Shopify-Schreibzugriff ausser den Tags).
+{
+  const TASSE = JSON.parse('{"antwort":{"variant":{"id":17197,"product_id":403,"size":"15 oz","color":"Blue"},"product":{"id":403,"type":"MUG","title":"White Ceramic Mug with Color Inside","files":[{"id":"default","type":"default","title":"Print file","additional_price":null,"options":[]},{"id":"preview","type":"mockup","title":"Mockup","additional_price":null,"options":[]}],"options":[{"id":"license_type","title":"License type","type":"multi_select","values":{"CLC":"Collegiate Licensing Company","AFFINITY":"Affinity","BR":"BR","EX":"EX","NCAA":"NCAA","FAN":"Fan","BCOMPLY":"BrandComply","TAG":"Tag","DLH":"DLH","CORE81":"Core81"},"additional_price":null,"additional_price_breakdown":[]}],"techniques":[{"key":"SUBLIMATION","display_name":"Sublimation","is_default":true}]}},"printfiles":{"product_id":403,"available_placements":{"default":"Print file"},"printfiles":[{"printfile_id":43,"width":2700,"height":1050,"dpi":300,"fill_mode":"fit","can_rotate":false},{"printfile_id":44,"width":2700,"height":1140,"dpi":300,"fill_mode":"fit","can_rotate":false}],"variant_printfiles":[{"variant_id":11051,"placements":{"default":43}},{"variant_id":17197,"placements":{"default":44}}]},"templates":{"min_dpi":150,"conflicting_placements":[]}}');
+  const DATEI_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976626/xy1jxggytwmgpyvh4m1v.png';
+  const VORSCHAU_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976700/klmnopqrst.jpg';
+  const KARTE_T = { v: 6, m: 403, pv: 17197, sv: '68134397739399', pl: ['default'], ap: 0 };
+  const TEXT_T = A('🎨 Design (default)', 'Text: "Test Entwurf"');
+  const ALT = '🖼️ Druckdatei (default)', NEU = '_Druckdatei (default)';
+  const eigT = (schluessel = ALT, extra = {}, mehr = []) => [TEXT_T, A(schluessel, DATEI_T), A('_pod_karte', JSON.stringify({ ...KARTE_T, ...extra })), ...mehr];
+  const tasseZeile = (props, o = {}) => zeile({ title: 'Keramik-Tasse mit farbiger Innenseite selbst gestalten', sku: '9100403_17197', variant: { sku: '9100403_17197' }, discountedTotalSet: { shopMoney: { amount: '27.90', currencyCode: 'CHF' } },
+    product: { productType: 'Tassen & Becher', tags: ['wunschdesign', 'printful_personalized_product', 'sg-fabrik'], metafield: null }, customAttributes: props, ...o });
+  const szT = (props, extra = {}, zeileO = {}) => ({ vid: 17197, orders: [knoten([tasseZeile(props, zeileO)], extra.order || {})], variant: [{ status: 200, body: { result: TASSE.antwort } }], druckEigen: { 403: { printfiles: TASSE.printfiles, templates: TASSE.templates } }, datei: { px: [2700, 1140] }, ...extra });
+  const nurLookup = (e) => e.prot.pf.filter((x) => !/mockup-generator|products\/variant/.test(x));
+  const SOLL_ARTIKEL = [{ variant_id: 17197, quantity: 1, files: [{ type: 'default', url: DATEI_T }], external_id: '9001' }];
+
+  // (1) alte und neue Schreibweise: derselbe Auftrag, bestätigt, kein Review
+  for (const [n, st] of [['ALTE Schreibweise «🖼️ Druckdatei (default)» (Editor 6.2.0)', ALT], ['NEUE Schreibweise «_Druckdatei (default)» (ab 6.2.1)', NEU]]) {
+    const e = lauf(szT(eigT(st)));
+    ist(`WP6 Sync Canary-Tasse, ${n}: ein Auftrag mit Artikel 17197 und Datei «default», bestätigt, kein Review-Tag, Exit 0`, [e.prot.posts.map((p) => p.body.items), bestaetigt(e), hatReview(e), tags(e).includes('printful-confirmed'), e.prot.exitCode], [[SOLL_ARTIKEL], true, false, true, 0]);
+  }
+  {
+    const a = lauf(szT(eigT(ALT))), n = lauf(szT(eigT(NEU)));
+    ist('WP6 Sync: alte und neue Schreibweise senden BYTE-GLEICH denselben Auftrag (Empfänger, Artikel, external_id)', JSON.stringify(n.prot.posts[0].body), JSON.stringify(a.prot.posts[0].body));
+  }
+  // (4) _vorschau: nie geholt, nie gesendet
+  for (const [n, st] of [['alt', ALT], ['neu', NEU]]) {
+    const e = lauf(szT(eigT(st, {}, [A('_vorschau', VORSCHAU_T)])));
+    ist(`WP6 Sync mit _vorschau (${n}): derselbe Auftrag, bestätigt, nur die Druckdatei wurde abgerufen (die Vorschau nie), kein Review`, [e.prot.posts[0].body.items, bestaetigt(e), e.prot.dateien.map((d) => d.url), hatReview(e)], [SOLL_ARTIKEL, true, [DATEI_T], false]);
+  }
+  // gemischte Schlüssel: harter Befund, kein Auftrag
+  {
+    const e = lauf(szT(eigT(ALT, {}, [A(NEU, DATEI_T)]), { telegram: true }));
+    ist('WP6 Sync gemischte Schlüssel (alt UND neu für «default»): kein Auftrag, Review-Tags «schluessel-gemischt», eine Meldung mit 🔴, nichts abgerufen', [e.prot.posts.length, tags(e).includes('printful-review-schluessel-gemischt'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), e.prot.dateien.length], [0, true, false, 1, true, 0]);
+    const u = lauf(szT([TEXT_T, A('_Druckdatei (Front)', DATEI_T), A('_pod_karte', JSON.stringify(KARTE_T))], { telegram: true }));
+    ist('WP6 Sync nicht lesbarer neuer Schlüssel («_Druckdatei (Front)»): kein Auftrag, Review-Tag «datei-schluessel» (früher: als Vorderseite gedruckt)', [u.prot.posts.length, tags(u).includes('printful-review-datei-schluessel')], [0, true]);
+  }
+  // (2) qd: nur weich
+  for (const [n, qd, bestaetigtSoll, tag] of [['300 (gleich der Messung der Datei)', 300, true, null], ['150 (Mindest-dpi der Tasse, unter der Messung 300)', 150, false, 'printful-review-qd-weicht-ab'], ['149 (unter der Mindest-dpi)', 149, false, 'printful-review-qd-weicht-ab'], ['60 (hochgezogenes Foto)', 60, false, 'printful-review-qd-weicht-ab'], ['400 (mehr als die Datei trägt)', 400, false, 'printful-review-qd-weicht-ab'], ['"abc" (unbrauchbar)', 'abc', false, 'printful-review-aufloesung-angabe']]) {
+    const e = lauf(szT(eigT(NEU, { qd }), { telegram: true }));
+    ist(`WP6 Sync qd ${n}: Entwurf ${bestaetigtSoll ? 'wird bestätigt' : 'bleibt Entwurf'}${tag ? ', Tag ' + tag : ', kein Review'}, der Auftrag selbst wird in jedem Fall angelegt (nie ein harter Befund)`,
+      [e.prot.posts.length, bestaetigt(e), tag ? tags(e).includes(tag) : !hatReview(e), !/🔴/.test(e.prot.tg.join(' '))], [1, bestaetigtSoll, true, true]);
+  }
+  {
+    const e = lauf(szT(eigT(NEU, { qd: 300 }), { datei: { px: [900, 380] }, telegram: true }));
+    ist('WP6 Sync: ein hohes qd (300) gibt die zu kleine Datei (900×380 = 100 dpi) NICHT frei: Entwurf, Tags «aufloesung» und «qd-weicht-ab»', [bestaetigt(e), tags(e).includes('printful-review-aufloesung'), tags(e).includes('printful-review-qd-weicht-ab')], [false, true, true]);
+  }
+  // (3) Karte gegen SKU
+  for (const [n, extra, text] of [['pv 17196 statt 17197', { pv: 17196 }, /17196/], ['m 404 statt 403', { m: 404 }, /Produkt 404/]]) {
+    const e = lauf(szT(eigT(NEU, extra), { telegram: true }));
+    ist(`WP6 Sync Karte widerspricht der SKU (${n}): KEIN Auftrag, kein Bestätigen, Review-Tags «karte-widerspruch», nicht als synchronisiert markiert, eine 🔴-Meldung, keine Abfrage von Variante oder Datei`,
+      [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-karte-widerspruch'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), text.test(e.prot.tg[0] || ''), e.prot.variantGets.length, e.prot.dateien.length, nurLookup(e)], [0, 0, true, false, 1, true, true, 0, 0, ['GET /orders/@LXT1']]);
+  }
+  // Druckdatei-Eigenschaft in neuer Schreibweise an einem Produkt OHNE POD-Tag (und ohne Karte): die Bestellung wird trotzdem geprüft, nicht still übergangen
+  {
+    const e = lauf(szT([A(NEU, DATEI_T)], { telegram: true }, { product: { productType: 'Tassen & Becher', tags: [], metafield: null } }));
+    ist('WP6 Sync: «_Druckdatei (…)» an einem Produkt ohne POD-Tag und ohne Karte: harter Befund «druckdatei-ohne-pod», kein Auftrag, nichts abgerufen', [e.prot.posts.length, tags(e).includes('printful-review-druckdatei-ohne-pod'), e.prot.dateien.length], [0, true, 0]);
+  }
+  // (5) Bestellung ohne Design
+  {
+    const e = lauf(szT([], { telegram: true }));
+    ist('WP6 Sync ohne Design: KEIN Printful-Auftrag (weder Entwurf noch Bestätigen), Review-Tags «keine-druckdatei», genau eine 🔴-Meldung mit dem Verweis auf OHNE-DESIGN.md, Exit 0', [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-keine-druckdatei'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), /OHNE-DESIGN\.md/.test(e.prot.tg[0] || ''), e.prot.exitCode], [0, 0, true, false, 1, true, true, 0]);
+    ist('WP6 Sync ohne Design: KEIN Kundenkontakt und keine Rückerstattung durch den Sync: die einzige Schreibaktion an Shopify ist das Setzen der Tags (kein Metafeld, keine Erstattung, keine Versandmeldung, keine Stornierung), an Printful geht nur die Abfrage nach einem bestehenden Auftrag',
+      [e.prot.shopOps, nurLookup(e), e.prot.tg.length], [['tagsAdd'], ['GET /orders/@LXT1'], 1]);
+    ist('WP6 Sync ohne Design: das Protokoll (öffentlich) nennt nur Nummer und Befundart, keinen Titel und keinen Kundentext', [e.prot.log.some((l) => /Keramik-Tasse/.test(l)), e.prot.warn.some((l) => /Keramik-Tasse|Test Entwurf/.test(l)), e.prot.warn.some((l) => /keine-druckdatei/.test(l))], [false, false, true]);
+    const zweit = lauf(szT([], { telegram: true, order: { tags: ['printful-review', 'printful-review-keine-druckdatei'] } }));
+    ist('WP6 Sync ohne Design, zweiter Lauf (Tags stehen schon): dieselbe Befundart wird NICHT erneut gemeldet', [zweit.prot.posts.length, tgAnzahl(zweit), zweit.prot.tags.length], [0, 0, 0]);
+    const nurKarte = lauf(szT([TEXT_T, A('_pod_karte', JSON.stringify(KARTE_T))], { telegram: true }));
+    ist('WP6 Sync ohne Design, aber mit Editor-Eintrag: derselbe Ablauf, die Meldung sagt «Editor-Eintrag da» und nennt die Karte NICHT noch einmal als eigenen Befund', [nurKarte.prot.posts.length, tags(nurKarte).includes('printful-review-keine-druckdatei'), tags(nurKarte).includes('printful-review-karte-ohne-datei'), /Editor-Eintrag da/.test(nurKarte.prot.tg[0] || '')], [0, true, false, true]);
+  }
+  // Trockenlauf mit der Attrappe: gelesen, nichts geschrieben
+  {
+    const e = lauf(szT(eigT(NEU), { telegram: true, env: { DRY_RUN: '1' } }));
+    ist('WP6 Sync Trockenlauf mit der Canary-Attrappe (neue Schreibweise): würde als Entwurf angelegt UND bestätigt, nichts geschrieben (kein POST, kein Tag, kein Metafeld, keine Telegram-Meldung)', [e.prot.posts.length, e.prot.shopOps, e.prot.tg.length, e.prot.log.some((l) => /würde als Entwurf angelegt und danach bestätigt/.test(l))], [0, [], 0, true]);
+    const o = lauf(szT([], { telegram: true, env: { DRY_RUN: '1' } }));
+    ist('WP6 Sync Trockenlauf ohne Design: kein POST, keine Tags, keine Meldung', [o.prot.posts.length, o.prot.shopOps, o.prot.tg.length], [0, [], 0]);
+  }
+  // PRINTFUL_AUTO_CONFIRM=0 (Entscheid des Besitzers): der Auftrag bleibt Entwurf, einziger Befund «manuell»
+  {
+    const e = lauf(szT(eigT(NEU), { telegram: true, env: { PRINTFUL_AUTO_CONFIRM: '0' } }));
+    ist('WP6 Sync mit PRINTFUL_AUTO_CONFIRM=0 (Besitzer-Entscheid): derselbe Entwurf wird angelegt, NICHT bestätigt, als einziger Befund «manuell»', [e.prot.posts[0].body.items, bestaetigt(e), tags(e).filter((t) => t.startsWith('printful-review-')), tags(e).includes('printful-synced')], [SOLL_ARTIKEL, false, ['printful-review-manuell'], true]);
+  }
+}
+
+// ═════════════════════════════════════════════════════════════ Phase 1 (09.11.2026): Dienst-Standort, Aufpreis ohne bezahltes Paket, Standardwerte, Kosten-Obergrenze, Editor 6.4.0
+{
+  const M = lade('../dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json');
+  const fall = (n) => M.faelle.find((f) => f.name === n);
+  const attr = (f) => Object.entries(f.anfrage.properties).map(([key, value]) => A(key, value));
+  const SKU = '9100071_4025';
+  const shirt = (f, extra = {}, zeileO = {}) => sz1([zeile({ sku: SKU, variant: { sku: SKU }, title: 'T-Shirt selbst gestalten', customAttributes: attr(f), ...zeileO })], { datei: { px: [1800, 2400] }, telegram: true, ...extra });
+  const ohnePaket = ['PRINTFUL_PAKET_BEZAHLT'];
+  const pf = (e) => e.prot.pf.filter((x) => !/products|mockup/.test(x));
+  const vorneText = fall('t-shirt-71-vorne-text'), mitRuecken = fall('t-shirt-71-vorne-foto-und-ruecken-text');
+
+  // Die Abfrage fragt nach dem Standort und den Optionen der Variante
+  {
+    const e = lauf(shirt(vorneText));
+    const q = e.prot.shopQuery;
+    ist('Phase 1 Abfrage: Fulfillment-Orders mit Standort (Dienst-Flag) und Positionen, dazu die Optionen der Variante (für das bezahlte Paket)', [/fulfillmentOrders\(first:20\)/.test(q), /assignedLocation\{ location\{ id name isFulfillmentService \}/.test(q), /lineItems\(first:50\)\{ edges\{ node\{ lineItem\{ id \}/.test(q), /variant\{ sku title selectedOptions\{ name value \}/.test(q)], [true, true, true, true]);
+    ist('Phase 1 Normalfall (echte Eigenschaften des Editors 6.4.0, Händler-Standort, Vorderseite): ein Auftrag, Typ «default», kein Review', [e.prot.posts.length, typenDerPosts(e), hatReview(e)], [1, [[['default']]], false]);
+    const druckUrl = vorneText.anfrage.properties['🖼️ Druckdatei (front)'], vorschauUrl = vorneText.anfrage.properties._vorschau;
+    ist('Phase 1 Normalfall: der Auftrag trägt die Druckdatei (nicht die Vorschau), abgerufen wird nur die Druckdatei; «_vorschau» geht nie an Printful und nie ins Netz', [e.prot.posts[0].body.items[0].files, e.prot.dateien.map((d) => d.url).every((u) => u === druckUrl), JSON.stringify(e.prot.posts).includes(vorschauUrl)], [[{ type: 'default', url: druckUrl }], true, false]);
+  }
+  // (a) Dienst-Standort
+  {
+    const e = lauf(shirt(vorneText, { order: { fulfillmentOrders: fos([zeile({ id: 'gid://shopify/LineItem/9001' })], FO_DIENST) } }));
+    ist('Phase 1 Dienst-Standort «Printful»: KEIN Auftrag (weder Entwurf noch Bestätigen), nur die Abfrage nach einem bestehenden Auftrag, keine Variantenabfrage, nichts abgerufen', [e.prot.posts.length, e.prot.confirms.length, pf(e), e.prot.variantGets.length, e.prot.dateien.length], [0, 0, ['GET /orders/@LXT1'], 0, 0]);
+    ist('Phase 1 Dienst-Standort: Tags printful-review + printful-review-dienst-standort, NICHT printful-synced; genau eine 🔴-Meldung, die Printful nennt; Exit 0', [tags(e).includes('printful-review'), tags(e).includes('printful-review-dienst-standort'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), /Printful/.test(e.prot.tg[0] || ''), e.status], [true, true, false, 1, true, true, 0]);
+    ist('Phase 1 Dienst-Standort: das öffentliche Protokoll nennt nur Nummer und Befundart', [e.prot.warn.some((l) => /dienst-standort/.test(l)), e.prot.warn.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l)), e.prot.log.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l))], [true, false, false]);
+    const zweit = lauf(shirt(vorneText, { order: { tags: ['printful-review', 'printful-review-dienst-standort'], fulfillmentOrders: fos([zeile({ id: 'gid://shopify/LineItem/9001' })], FO_DIENST) } }));
+    ist('Phase 1 Dienst-Standort, zweiter Lauf: die Bestellung mit dem Review-Tag wird nicht mehr gelesen (Abfrage schliesst sie aus), nichts erneut gemeldet', [zweit.prot.shop[0].q.includes('-tag:printful-review'), tgAnzahl(zweit) <= 1], [true, true]);
+    // Nachtrag 10.11.2026 (SYNC.md 7.2a): bei vier Produkten liegen nur einige Varianten am Dienst-Standort. Ein Warenkorb mit einer Dienst- und einer Händler-Variante desselben Produkts hält die GANZE Bestellung an:
+    // auch die Händler-Position wird nicht gedruckt, bis der Besitzer eingreift (sichere Richtung, aber eine Folge, die der Besitzer kennen muss).
+    {
+      const attrT = attr(vorneText);
+      const zD = zeile({ id: 'gid://shopify/LineItem/9001', sku: SKU, variant: { sku: SKU }, title: 'T-Shirt selbst gestalten (Dienst-Variante)', customAttributes: attrT });
+      const zH = zeile({ id: 'gid://shopify/LineItem/9002', sku: SKU, variant: { sku: SKU }, title: 'T-Shirt selbst gestalten (Händler-Variante)', customAttributes: attrT });
+      const misch = lauf(sz1([zD, zH], { datei: { px: [1800, 2400] }, telegram: true, order: { fulfillmentOrders: { edges: [fos([zD], FO_DIENST).edges[0], fos([zH]).edges[0]] } } }));
+      ist('Phase 1 Dienst-Standort, GEMISCHTER Warenkorb (eine Position am Dienst, eine am Händler-Standort): KEIN Auftrag für keine der beiden, Review «dienst-standort», eine 🔴-Meldung, Exit 0', [misch.prot.posts.length, misch.prot.confirms.length, tags(misch).includes('printful-review-dienst-standort'), tags(misch).includes('printful-synced'), tgAnzahl(misch), /🔴/.test(misch.prot.tg[0] || ''), misch.status], [0, 0, true, false, 1, true, 0]);
+      const nurH = lauf(sz1([zH], { datei: { px: [1800, 2400] }, telegram: true, order: { fulfillmentOrders: fos([zH]) } }));
+      ist('Phase 1 Gegenprobe: dieselbe Händler-Position allein → ein Auftrag, kein Review (die Sperre kommt vom Warenkorb mit der Dienst-Position, nicht von der Händler-Position)', [nurH.prot.posts.length, hatReview(nurH)], [1, false]);
+    }
+    const ohneFo = lauf(shirt(vorneText, { order: { fulfillmentOrders: undefined } }));
+    ist('Phase 1: Antwort OHNE Fulfillment-Orders (nie «frei» geraten): der Auftrag wird als Entwurf angelegt, aber NICHT bestätigt, Review «dienst-standort-unklar»', [ohneFo.prot.posts.length, bestaetigt(ohneFo), tags(ohneFo).includes('printful-review-dienst-standort-unklar'), tags(ohneFo).includes('printful-synced')], [1, false, true, true]);
+  }
+  // (b) Aufpreis ohne bezahltes Paket
+  {
+    const e = lauf(shirt(mitRuecken, { envLoeschen: ohnePaket }));
+    ist('Phase 1 Aufpreis: Vorder- und Rückseite (echte Eigenschaften des Editors 6.4.0, ap 6.1), bezahlt nur die Vorderseite: KEIN Auftrag, Tag printful-review-aufpreis-unbezahlt, eine 🔴-Meldung mit «back» und 5.95 USD', [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-aufpreis-unbezahlt'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), /«back»/.test(e.prot.tg[0] || ''), /5\.95 USD/.test(e.prot.tg[0] || ''), e.prot.dateien.length, e.prot.gemini.length], [0, 0, true, false, 1, true, true, true, 0, 0]);
+    const bez = lauf(shirt(mitRuecken, { env: { PRINTFUL_PAKET_BEZAHLT: 'back' } }));
+    ist('Phase 1 Aufpreis: mit PRINTFUL_PAKET_BEZAHLT=back (Übergang) wird derselbe Kauf angelegt und bestätigt: Dateien «default» und «back»', [bez.prot.posts.length, typenDerPosts(bez), bestaetigt(bez), hatReview(bez)], [1, [[['default', 'back']]], true, false]);
+    const nur = lauf(shirt(vorneText, { envLoeschen: ohnePaket }));
+    ist('Phase 1 Aufpreis: nur die Vorderseite braucht kein Paket (ohne PRINTFUL_PAKET_BEZAHLT): angelegt und bestätigt', [nur.prot.posts.length, bestaetigt(nur), hatReview(nur)], [1, true, false]);
+    const unrichtig = lauf(shirt(mitRuecken, { env: { PRINTFUL_PAKET_BEZAHLT: 'sleeve_left' } }));
+    ist('Phase 1 Aufpreis: bezahlt ist nur der linke Ärmel, gedruckt wird die Rückseite → weiter KEIN Auftrag', [unrichtig.prot.posts.length, tags(unrichtig).includes('printful-review-aufpreis-unbezahlt')], [0, true]);
+  }
+  {
+    // PRINTFUL_PAKET_BEZAHLT mit ungültiger ID: Konfigurationsfehler, Exit 1, nichts angelegt, keine Anfrage
+    const e = lauf(shirt(vorneText, { env: { PRINTFUL_PAKET_BEZAHLT: 'back, Hinten!' } }));
+    ist('Phase 1: PRINTFUL_PAKET_BEZAHLT mit ungültiger ID → Konfigurationsfehler, Exit 1, nichts gelesen, nichts angelegt', [e.prot.exitCode === null ? e.prot.ausstieg : e.prot.exitCode, e.prot.posts.length, e.prot.shop.length, e.prot.err.some((l) => /PRINTFUL_PAKET_BEZAHLT/.test(l))], [1, 0, 0, true]);
+  }
+  // (c) Standardwerte: ohne gesetzte Variablen wie der Workflow (nichts bestätigen, keine KI)
+  {
+    const roh = (extra = {}) => lauf(shirt(vorneText, { envLoeschen: ['PRINTFUL_AUTO_CONFIRM', 'PRINTFUL_KI_KONTROLLE', 'GEMINI_API_KEY'], ...extra }));
+    const e = roh();
+    ist('Phase 1 Standardwerte: PRINTFUL_AUTO_CONFIRM und PRINTFUL_KI_KONTROLLE nicht gesetzt → Entwurf angelegt, NICHT bestätigt, einziger Befund «manuell», keine KI-Anfrage, keine KI-Befunde', [e.prot.posts.length, bestaetigt(e), tags(e).filter((t) => t.startsWith('printful-review-')), e.prot.gemini.length], [1, false, ['printful-review-manuell'], 0]);
+    const mitSchluessel = lauf(shirt(vorneText, { envLoeschen: ['PRINTFUL_AUTO_CONFIRM', 'PRINTFUL_KI_KONTROLLE'], env: { GEMINI_API_KEY: 'g' } }));
+    ist('Phase 1 Standardwerte: auch mit vorhandenem GEMINI_API_KEY fragt der Sync die KI nicht (Vorgabe «aus»)', [mitSchluessel.prot.gemini.length, bestaetigt(mitSchluessel)], [0, false]);
+    for (const w of ['', '0', 'false', 'nein', 'xyz', 'jaa', 'aus', ' ']) {
+      const x = roh({ env: { PRINTFUL_AUTO_CONFIRM: w } });
+      ist(`Phase 1 PRINTFUL_AUTO_CONFIRM=«${w}»: nicht bestätigt (nur ein ausdrückliches Ja bestätigt, auch ein Tippfehler nicht)`, [x.prot.posts.length, bestaetigt(x)], [1, false]);
+    }
+    for (const w of ['1', 'true', 'TRUE', 'ja', 'Yes', 'on', ' an ']) {
+      const x = roh({ env: { PRINTFUL_AUTO_CONFIRM: w } });
+      ist(`Phase 1 PRINTFUL_AUTO_CONFIRM=«${w}»: bestätigt`, [x.prot.posts.length, bestaetigt(x)], [1, true]);
+    }
+    const pflichtOhne = roh({ env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht' } });
+    ist('Phase 1 PRINTFUL_KI_KONTROLLE=pflicht ohne GEMINI_API_KEY: nicht bestätigt, Review «kontrolle-fehlt»', [bestaetigt(pflichtOhne), tags(pflichtOhne).includes('printful-review-kontrolle-fehlt')], [false, true]);
+    for (const w of ['AUS', 'Aus', ' aus ']) {
+      const aus = roh({ env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: w, GEMINI_API_KEY: 'g' } });
+      ist(`Phase 1 PRINTFUL_KI_KONTROLLE=«${w}» (Gross-/Kleinschreibung, Leerraum): aus, keine KI-Anfrage, bestätigt`, [aus.prot.gemini.length, bestaetigt(aus)], [0, true]);
+    }
+    const tippfehler = lauf(shirt(vorneText, { envLoeschen: ['PRINTFUL_KI_KONTROLLE'], env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'Pflicht', GEMINI_API_KEY: 'g', }, ki: 'pass' }));
+    ist('Phase 1 PRINTFUL_KI_KONTROLLE=«Pflicht» (Gross-/Kleinschreibung) schaltet die KI ein: eine Anfrage, bestätigt nach PASS', [tippfehler.prot.gemini.length, bestaetigt(tippfehler)], [1, true]);
+    const unklar = lauf(shirt(vorneText, { env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflich', GEMINI_API_KEY: 'g' }, ki: 'http402' }));
+    ist('Phase 1 PRINTFUL_KI_KONTROLLE=«pflich» (Tippfehler) gilt als pflicht (die sichere Seite): KI wird gefragt, ihr Ausfall hält den Auftrag an', [unklar.prot.gemini.length, bestaetigt(unklar)], [1, false]);
+    // dieselben Werte, die der Workflow als Vorgabe setzt, ergeben dasselbe wie nicht gesetzte Variablen
+    const ymlPfad = fileURLToPath(new URL('../.github/workflows/printful-sync.yml', import.meta.url));
+    if (!existsSync(ymlPfad)) console.log('(Workflow-Datei nicht ausgecheckt → Abgleich der Standardwerte mit dem Workflow übersprungen)');
+    else {
+    const yml = readFileSync(ymlPfad, 'utf8');
+    const wfConfirm = (yml.match(/PRINTFUL_AUTO_CONFIRM: \$\{\{[^}]*\|\| '([^']*)' \}\}/) || [])[1], wfKi = (yml.match(/PRINTFUL_KI_KONTROLLE: \$\{\{[^}]*\|\| '([^']*)' \}\}/) || [])[1];
+    ist('Phase 1: der Workflow setzt als Vorgabe PRINTFUL_AUTO_CONFIRM «0» und PRINTFUL_KI_KONTROLLE «aus»', [wfConfirm, wfKi], ['0', 'aus']);
+    const wf = lauf(shirt(vorneText, { env: { PRINTFUL_AUTO_CONFIRM: wfConfirm, PRINTFUL_KI_KONTROLLE: wfKi, GEMINI_API_KEY: 'g' }, envLoeschen: ohnePaket }));
+    const roh0 = lauf(shirt(vorneText, { envLoeschen: ['PRINTFUL_AUTO_CONFIRM', 'PRINTFUL_KI_KONTROLLE', ...ohnePaket], env: { GEMINI_API_KEY: 'g' } }));
+    const sicht = (x) => [x.prot.posts.length, x.prot.confirms.length, x.prot.gemini.length, tags(x).sort()];
+    ist('Phase 1: Skript ohne Variablen und Skript mit den Vorgaben des Workflows verhalten sich gleich (Aufträge, Bestätigen, KI-Anfragen, Tags)', sicht(roh0), sicht(wf));
+    }
+  }
+  // (d) Kosten-Obergrenze (die Attrappe liefert Kosten von 12.70 USD)
+  {
+    const kst = (w, extra = {}) => lauf(shirt(vorneText, { env: { PRINTFUL_MAX_KOSTEN_USD: w }, ...extra }));
+    const unter = kst('12.69');
+    ist('Phase 1 Kosten-Obergrenze 12.69 USD bei 12.70 USD Auftragssumme: Entwurf bleibt, NICHT bestätigt, Tag printful-review-kosten-obergrenze, eine 🟡-Befundmeldung mit beiden Zahlen (dazu die Zusammenfassung)', [unter.prot.posts.length, bestaetigt(unter), tags(unter).includes('printful-review-kosten-obergrenze'), unter.prot.tg.filter((x) => /^🟡/.test(x)).length, /🟡/.test(unter.prot.tg[0] || ''), /12\.70/.test(unter.prot.tg[0] || ''), /12\.69/.test(unter.prot.tg[0] || '')], [1, false, true, 1, true, true, true]);
+    const gleich = kst('12.70');
+    ist('Phase 1 Kosten-Obergrenze genau 12.70: erlaubt, bestätigt', [bestaetigt(gleich), hatReview(gleich)], [true, false]);
+    for (const w of ['', '0', 'aus', 'AUS', ' ']) ist(`Phase 1 PRINTFUL_MAX_KOSTEN_USD=«${w}»: aus, bestätigt wie ohne Grenze`, [bestaetigt(kst(w))], [true]);
+    ist('Phase 1 PRINTFUL_MAX_KOSTEN_USD=5 (weit darunter): nicht bestätigt', bestaetigt(kst('5')), false);
+    for (const w of ['abc', '-5', '12,70', 'NaN', 'Infinity']) {
+      const x = kst(w);
+      ist(`Phase 1 PRINTFUL_MAX_KOSTEN_USD=«${w}» (unbrauchbar): Konfigurationsfehler, Exit 1, nichts gelesen, nichts angelegt`, [x.prot.ausstieg, x.prot.posts.length, x.prot.shop.length, x.prot.err.some((l) => /PRINTFUL_MAX_KOSTEN_USD/.test(l))], [1, 0, 0, true]);
+    }
+    const kurz = lauf(shirt(vorneText, { env: { PRINTFUL_MAX_KOSTEN_USD: '5', DRY_RUN: '1' } }));
+    ist('Phase 1 Trockenlauf mit Obergrenze: nichts angelegt, Exit 0 (die Summe ist vor dem Anlegen unbekannt)', [kurz.prot.posts.length, kurz.status], [0, 0]);
+  }
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);
