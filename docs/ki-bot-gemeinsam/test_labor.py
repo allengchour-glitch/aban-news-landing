@@ -172,7 +172,7 @@ class DatenUndSignale(unittest.TestCase):
             self.assertFalse(result["handelsfreigabe"])
             self.assertFalse(result["datenqualitaet"]["aktuell"])
             self.assertTrue(result["signalpruefung"]["bestanden"])
-            self.assertEqual(result["protokoll"]["version"], 4)
+            self.assertEqual(result["protokoll"]["version"], 5)
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertEqual(out.read_bytes(), before)
             out.unlink()

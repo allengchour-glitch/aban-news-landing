@@ -14,7 +14,7 @@ from statistics import stdev
 
 ROOT = Path(__file__).resolve().parents[2]
 PROTOKOLL = {
-    "version": 4,
+    "version": 5,
     "markt": "BTC-USD, Spot, Long/Cash, kein Hebel",
     "trend_tage": [150, 200],
     "vol_tage": 30,
@@ -29,6 +29,7 @@ PROTOKOLL = {
         "extrem": {"gebuehr": 50, "halber_spread": 25, "schlupf": 25},
     },
     "vorwaertstest_mindesttage": 180,
+    "numerik_grenzen": {"kurs_min": 1e-12, "kurs_max": 1e12, "sprung_faktor_max": 1e6},
 }
 
 
@@ -67,6 +68,13 @@ class SignalStrom:
         self.kurz, self.lang = PROTOKOLL["trend_tage"]
         self.fenster = PROTOKOLL["vol_tage"]
         self.ziel = PROTOKOLL["vol_ziel"]
+        g = PROTOKOLL["numerik_grenzen"]
+        self.kurs_min, self.kurs_max, self.sprung_max = g["kurs_min"], g["kurs_max"], g["sprung_faktor_max"]
+        if (any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x)
+                for x in (self.kurs_min, self.kurs_max, self.sprung_max))
+                or not 1e-12 <= self.kurs_min <= self.kurs_max <= 1e12
+                or not 1 < self.sprung_max <= 1e6):
+            raise ValueError("Ungültige numerische Kursgrenzen")
         if any(isinstance(n, bool) or not isinstance(n, int) or n < 2
                for n in (self.kurz, self.lang, self.fenster)):
             raise ValueError("Indikatorfenster müssen ganze Zahlen ab 2 sein")
@@ -77,20 +85,39 @@ class SignalStrom:
         self.anzahl = 0
 
     def schritt(self, kurs):
-        if (isinstance(kurs, bool) or not isinstance(kurs, (int, float))
-                or not math.isfinite(kurs) or kurs <= 0):
+        if isinstance(kurs, bool) or not isinstance(kurs, (int, float)):
             raise ValueError("Kurs muss endlich und positiv sein")
-        self._historie.append(float(kurs))
-        self.anzahl += 1
+        try:
+            kurs = float(kurs)
+        except OverflowError as e:
+            raise ValueError("Kurs ist numerisch nicht darstellbar") from e
+        if not math.isfinite(kurs) or not self.kurs_min <= kurs <= self.kurs_max:
+            raise ValueError("Kurs ausserhalb des dokumentierten numerischen Bereichs")
+        if self._historie and not 1 / self.sprung_max <= kurs / self._historie[-1] <= self.sprung_max:
+            raise ValueError("Unplausibler Kurssprung; Datenquelle prüfen")
+        # Erst auf einer Kopie rechnen. Auch unerwartete Rechenfehler dürfen
+        # weder Historie noch Zähler des weiterverwendbaren Stroms ändern.
+        kandidat = deque(self._historie, maxlen=self._historie.maxlen)
+        kandidat.append(kurs)
+        anzahl = self.anzahl + 1
+        out = self._quoten(list(kandidat), anzahl, kurs)
+        if (set(out) != set(self.namen) or any(isinstance(q, bool) or not isinstance(q, (int, float))
+                or not math.isfinite(q) or not 0 <= q <= 1 for q in out.values())):
+            raise ValueError("Ungültiges Rechenergebnis")
+        self._historie, self.anzahl = kandidat, anzahl
+        return out
+
+    def _quoten(self, p, anzahl, kurs):
         out = dict.fromkeys(self.namen, 0.0)
         out["Halten"] = 1.0
-        if self.anzahl <= max(self.lang - 1, self.kurz - 1, self.fenster):
+        if anzahl <= max(self.lang - 1, self.kurz - 1, self.fenster):
             return out
-        p = list(self._historie)
         ma200 = sum(p[-self.lang:]) / self.lang
         ma150 = sum(p[-self.kurz:]) / self.kurz
         r = [p[j] / p[j - 1] - 1 for j in range(len(p) - self.fenster, len(p))]
         vol = stdev(r) * math.sqrt(365)
+        if not math.isfinite(vol):
+            raise ValueError("Schwankung numerisch nicht auswertbar")
         q = min(1.0, self.ziel / vol) if vol > 0 else 0.0
         out.update({"Trend 200": float(kurs > ma200), "Halten Risiko 25": q,
                     "Trend 150 Risiko 25": q if kurs > ma150 else 0.0,
