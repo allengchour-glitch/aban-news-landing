@@ -45,7 +45,7 @@ for i, step in enumerate(plan['steps']):
     Path('/evidence/summary.json').write_text(json.dumps(summary, indent=2))
     print(f"[{i + 1}/{len(plan['steps'])}] {step['name']} -> rc={rc}", flush=True)
     if rc:
-        print('\n'.join((stdout + '\n' + stderr).splitlines()[-12:]), flush=True)
+        print('\n'.join(line[:500] for line in (stdout + '\n' + stderr).splitlines()[-12:]), flush=True)
 summary['bestanden'] = len(summary['steps']) == len(plan['steps']) and all(s['returncode'] == 0 for s in summary['steps'])
 Path('/evidence/summary.json').write_text(json.dumps(summary, indent=2))
 print('GESAMT ' + ('GRÜN' if summary['bestanden'] else 'ROT'), flush=True)

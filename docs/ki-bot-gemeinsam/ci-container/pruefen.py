@@ -64,7 +64,7 @@ def main():
     (out / 'runner.py').write_bytes(git('show', rev + ':docs/ki-bot-gemeinsam/ci-container/runner.py'))
     cmd = docker + ['run', '--rm', '--name', 'codex-ci-' + uuid.uuid4().hex[:12],
                     '--network', 'none', '--cpus', '2', '--memory', '2g',
-                    '--tmpfs', '/tmp:rw,nosuid,nodev,size=536870912',
+                    '--tmpfs', '/tmp:rw,exec,nosuid,nodev,size=536870912',
                     '--mount', f'type=bind,src={work},dst=/work',
                     '--mount', f'type=bind,src={evidence},dst=/evidence',
                     '--mount', f'type=bind,src={out / "plan.json"},dst=/run/ci-plan.json,readonly',
