@@ -16,7 +16,7 @@ Nutzerauftrag: «baue alles rein». Umgesetzt wurde das zusammenhängende Paket 
 | Modelle sauber trainieren und bewerten | Noch offen | Keine echten neuen KI-Features eingebaut; Datenstand und vollständige unabhängige Modellprüfung fehlen. Kein Renditeversprechen aus Projekt-READMEs. |
 | Qlib, FreqAI, FinRL-X, R&D-Agent | Als Quellen ausgewertet | Kein Leistungsnachweis für unsere Aufgabe, deshalb keine ungeprüften Installationen oder parallelen Handelsdienste. |
 | Brokerfehler, Rate-Limits, Schutzcode | Bestehenden Code erhalten |21 vorhandene Binance-Spot-Prüfungen mit lokalem Server bestanden. Kein Nachweis aller Futures-Anforderungen. Offene Auftragszustände nicht mit einem neuen ungeprüften Pfad überlagert. |
-| Unabhängige Claude-Prüfung und Originalarbeiten | Noch offen | Auftrag und Quellen im Repository; keine laufende Claude-Sitzung erreichbar und keine Zustimmung behauptet. |
+| Unabhängige Claude-Prüfung und Originalarbeiten | Prüfung erledigt (Claude, 09.11.2026), Originalarbeiten teils gelesen | [CLAUDE-REVIEW.md](CLAUDE-REVIEW.md): Nachrechnung 36 von 36, Mutationsprobe 11 → 29 von 32 mit neuen Regressionstests, Gegenbeispiele, Exposure gegen Timing, Deflated Sharpe Ratio. Nicht lesbar blieb unter anderem der AMS-Aufsatz zur Mindestlänge. Keine Zustimmung zu einem «besten Bot»: kein Beleg für Überlegenheit. |
 
 ## Prüfung
 

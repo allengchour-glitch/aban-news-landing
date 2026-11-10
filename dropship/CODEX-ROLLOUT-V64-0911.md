@@ -38,3 +38,18 @@ Der Besitzer hat «mach alles fix fertig und live» gesagt: Editor 6.4.0 («Auf 
 - **Live-Stand der Tasse:** `updatedAt` 09.11. 06:13 UTC, Ursprung ungeklärt; die Fixture-Blöcke stammen vom 08.11. 18:13 UTC. Ein Plan mit frischem Shop-Stand ist massgebend, nicht die Fixture.
 - **Rückweg der Tasse:** ein Rollback mit dem alten Artefakt von Lauf 42508762409 kann an «fremder Hash» scheitern; immer das frische Artefakt der jeweiligen Stufe benutzen.
 - Safari/iOS, echtes Handy und Kaufen mit echtem Warenkorb sind weiter ungemessen; Wirkung auf Käufe unbekannt (0 von 34 Bestellungen kamen je über den Editor).
+
+## Auslieferung (09.11.2026, Claude, GEMESSEN)
+Der Besitzer hat «mach alles fix fertig und live» und «sag wen du fertig bist» gesagt. Der Rollout lief über `pod-v64-description-rollout.yml` in Stufen (Rücknahme je Stufe in umgekehrter Reihenfolge mit dem Artefakt des jeweiligen Apply-Laufs):
+
+| Stufe | Apply-Lauf (Actions) | Zeit (UTC) | Anmerkung |
+|---|---|---|---|
+| Tasse | 42668002873 | 17:49 | |
+| Jutebeutel | 42676776646 (Plan 42673144783) | 18:47 | der erste Versuch 42673724700 endete ohne Job (GitHub-Störung bei Actions/Checks), schrieb nichts; Jutebeutel vor dem zweiten Versuch unverändert gelesen |
+| Full (16 Editor-Produkte) | 42687730171 (Plan 42686039567) | 19:56 | alle 19 Beschreibungen frisch gelesen gleich dem Plan; die drei Sperrseiten (Magnet, Dad-Cap, Bügeltransfer) unberührt |
+
+**Nachmessung aller 16 Seiten live (20:00 bis 20:27 UTC):** Playwright, ein Chromium, normale Chrome-Kennung, Cloudinary nachgebildet, `/cart/add` abgefangen; je Seite 6.4.0 Desktop, 6.3.0 Desktop (Skriptpfad im Browser umgebogen, Live-Seite unberührt) und 6.4.0 Handy 390 px, mit identischem Entwurf.
+- Alle 16 laden `6.4.0`. Reiter: «Bearbeiten | Druckversion | Vorschau» auf sechs Seiten (Bio-Jutebeutel, Shirt, klassisches Unisex-T-Shirt, Unisex-T-Shirt, Unisex-Hoodie, Kiss-Cut-Aufkleber), «Bearbeiten | Vorschau» auf den zwei Tassen und der Umhängetasche, nur «Bearbeiten» auf den übrigen sieben.
+- Kaufweg 16 von 16 gleich 6.3.0: Schlüssel und `_pod_karte` der Warenkorb-Eigenschaften, Hash der Druckdatei und Hash des Vorschaubilds (Auswertung `auswerten.cjs`, Desktop).
+- Editor-Start 3,1 bis 4,2 s (transparente iPhone-Hülle 6,8 s). Keine Editor-Fehler; die Konsole zeigt nur Fremdrauschen (Shopify-Web-Pixel, `predictive-search.js`) und den abgefangenen Kauf («Failed to fetch», in beiden Versionen).
+- **Unterschiede zu 6.3.0, offen:** (1) Shirt Desktop Layoutsprung (CLS) 0,128 gegen 0,061 (Bühne wächst, wenn Reiterleiste und Hinweiszeile eintreffen; unter 0,25, aber sichtbar). (2) Unisex-T-Shirt: bei 6.4.0 auf Desktop und Handy eine Ausnahme im Microsoft-Clarity-Skript («reading 'sequence'»), bei 6.3.0 in einem Lauf nicht. Ob Ursache oder Zufall, ist nicht geklärt (je ein Lauf). Beides sind Kandidaten für 6.4.1.

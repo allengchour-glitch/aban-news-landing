@@ -68,3 +68,26 @@ Für Webansicht und Claude das vollständige aktuelle Designpaket übernehmen. D
 ### Modernes Chefbüro und Geldmanager-Wand
 
 `campus-einheitlich-4` verwendet im Chefbüro helle Tischflächen, kühlere Bodenfarben, Akustikflächen und dezente Lichtleisten. Die große Wand zeigt qualitative Hinweise zur Kostenbasis und Pilotkalkulation, keine erfundenen Gewinne oder Kontowerte. Antippen öffnet den privaten Rechner. `bauen.mjs` schreibt zusätzlich `kb-geldmanager.js`; dieses eigene Dokument gehört zusammen mit HTML, 3D-Code und drei Modellpaketen ins vollständige Claude-Designpaket. Der Rechner selbst ist vom 3D-Modell unabhängig und funktioniert auch ohne WebGL.
+
+### Campusplatz mit grosser Monitorwand
+
+`campus-einheitlich-8` ergänzt einen21×6,4 grossen gemeinsamen Platz zwischen Hauptgebäude und Studios. Die drei Studios rücken um vier Welteinheiten nach hinten; Gänge und Raumkameras folgen. Zwei Sitzbereiche, Pflanzgefässe und ruhige Bodenfugen rahmen die freistehende Monitorwand. Keine neuen Modelle, Texturen von Drittanbietern oder Bibliotheken. Der Monitor teilt die vorhandene Infowand-Textur und zeigt Einträge, Stopps und alte Messungen aus den geladenen Daten. Antippen öffnet die vollständige Liste. Desktop-Knopf und mobile Raumauswahl führen direkt zum Campusplatz.
+
+HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine privaten Bürodaten und darf bestehende Messstände in Claude nicht ersetzen. Lokal mit Software-WebGL bei1440px und390px geprüft; echte Handy-GPU-Leistung nicht gemessen.
+
+### Spielartige Monitoransicht
+
+`campus-einheitlich-9`: Ein Klick auf die zentrale Monitorwand fährt die Kamera frontal zum Bildschirm. Die Monitoransicht hat einen eigenen Zurück-Knopf, Vollbild und einen separaten Knopf zur Gesamtliste. Zurück oder Escape stellt die vorherige Kameraposition wieder her. Normale Raumwahl beendet die Monitoransicht. Grössenwechsel passen den Abstand an; reduzierte Bewegungen überspringen die Kamerafahrt. Keine neue Datenquelle oder Kontoaktion.
+
+### Geschützte Rankinganzeige
+
+`campus-einheitlich-10` ergänzt im Büro und der Monitorleiste den Link zur privaten Ranking-/SEO-Ansicht und einen direkten Chat-Auftrag. Der Link überträgt weder Zugangsdaten noch Suchmesswerte an die öffentliche Website. Google-Daten bleiben ein datierter, verzögerter Messstand. Der Knopf öffnet einen Auftrag und bestätigt keine Ausführung. Das gemeinsame Claude-Paket enthält dieselben Bedienelemente.
+
+
+`campus-einheitlich-11` vergrößert die Arbeitsfläche auf bis zu112rem, die Desktopbühne auf80 Prozent der Fensterhöhe und die Handyansicht auf72 Prozent. Vier Statuskarten erklären die vorhandenen Messstände; Vollbild und Monitormodus blenden sie aus. Die private Rankingvorlage hat größere Zahlen, einen höheren Verlauf und Begriffserklärungen. Keine neuen Datenquellen oder automatischen Kontoaktionen.
+
+
+`campus-einheitlich-12`: Nach echten Screenshots Büro vor Auftragsknöpfe gelegt, Statuskarten/Erklärung unter die Bühne verschoben und dunkle Kopfkarte einschließlich Messzeit lesbar gemacht. Mobile3D startet am Campusplatz mit an Hochformat angepasstem Abstand. Die leichte2D-Startansicht am Handy bleibt wählbar und unverändert als Standard; keine neue Datenquelle oder Kontoaktion.
+
+
+`campus-einheitlich-13` ergänzt den geschützten Metricool-Monitor in Werkzeugen und Monitorleiste. Die generische Vorlage `../metricool_monitor.html` enthält nur einen Platzhalter. Echte Kanal-/Kalenderwerte bleiben außerhalb des Repositorys und auf der bestehenden privaten Büro-Seite. Geplante Einträge, publizierte Inhalte und Reichweite sind getrennt; kein Dauersync oder Publisher.

@@ -21,7 +21,7 @@ WORKFLOWS = {
     "waechter": "lager-waechter.yml", "autopilot": "shop-autopilot.yml",
     "fortura": "fortura-bestand.yml", "printful": "printful-tracking.yml",
     "tagesupdate": "tages-update.yml", "paket": "krypto-paket.yml",
-    "social_meta": "social-meta-autopost.yml", "social_pinterest": "pinterest-publish.yml",
+    "social_meta": "metricool-freigabe.yml", "social_pinterest": "metricool-freigabe.yml",
     "social_linkedin": "linkedin-autopost.yml",
     "yt_video": "youtube-studio.yml",
     "bewertungen": "cj-reviews.yml",
