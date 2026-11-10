@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "version": "6.4.2",
+  "file": "pod/v6/lspod-designer-v6-6.4.2.js",
+  "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.2.js",
+  "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+  "bytes": 294981,
+  "vorgaenger": [
+    {
+      "version": "6.3.0",
+      "file": "pod/v6/lspod-designer-v6-6.3.0.js",
+      "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js",
+      "sha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+      "bytes": 228533
+    },
+    {
+      "version": "6.3.1",
+      "file": "pod/v6/lspod-designer-v6-6.3.1.js",
+      "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js",
+      "sha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+      "bytes": 228826
+    },
+    {
+      "version": "6.4.0",
+      "file": "pod/v6/lspod-designer-v6-6.4.0.js",
+      "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js",
+      "sha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+      "bytes": 260794
+    },
+    {
+      "version": "6.4.1",
+      "file": "pod/v6/lspod-designer-v6-6.4.1.js",
+      "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.1.js",
+      "sha256": "96eff4192f344f963a380d5a45981fb330ae202978ef0dd62b3cd1a45818708b",
+      "bytes": 279455
+    }
+  ]
+}

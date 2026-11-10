@@ -890,7 +890,7 @@ const auswahl = szenarien.filter((x) => (nur === 'kern' ? x.kern : !nur || x.nam
 for (const sz of auswahl) {
   const t0 = Date.now();
   const vorher = fehler.length;
-  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, 3).join(' / ')}`); if (process.env.V6_ABBRUCH) process.exit(1); }
+  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, process.env.V6_VOLL ? 40 : 3).join(' / ')}`); if (process.env.V6_ABBRUCH) process.exit(1); }
   console.log(`${fehler.length === vorher ? '✓' : '✗'} ${sz.name} (${((Date.now() - t0) / 1000).toFixed(1)} s)`);
 }
 await browser.close(); await srv.stop();

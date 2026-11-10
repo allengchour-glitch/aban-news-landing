@@ -478,6 +478,10 @@ jobs:
           node automation/pod_modell/versand_messen_test.mjs
       - name: Editor v6 (reine Logik, Fallback auf v5 aus pod/live)
         run: node pod/v6/test/unit_test.mjs
+      - name: Editor 6.4.2 (Fundstellen aller Mutanten; editor-release-6.4.2.json gegen die echten Dateien; kein Netz, kein Browser, die Browser-Suiten laufen nur von Hand)
+        run: |
+          node pod/v6/test/mutationsprobe.mjs --muster
+          node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs --pruefen --version 6.4.2 --vorgaenger 6.3.0,6.3.1,6.4.0,6.4.1 --out dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor-release-6.4.2.json
       - name: Gemessene Druckflächen-Korrektur der T-Shirt-Vorschau (Tabelle, Schutz, ausgelieferte Karten = Rollout-Bau; kein Netz)
         run: node pod/v6/test/geometrie_korrektur_test.mjs
       - name: Französische Seitenübersetzung (Paare, Struktur, Rückstände; kein Netz)

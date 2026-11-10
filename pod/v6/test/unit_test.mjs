@@ -42,7 +42,7 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-const SOLL_VERSION = process.env.V6_VERSION || '6.4.1';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
+const SOLL_VERSION = process.env.V6_VERSION || '6.4.2';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
 const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
 pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
@@ -820,6 +820,74 @@ if (SOLL_VERSION >= '6.4.1') {
   }
 }
 
+// ── 6.4.2: Drehwinkel zurückrechnen (E3), Fehlertexte (E4) ──────────────────────────────────────────
+function texteAusQuelltext(sprache, eintrag) {
+  // die Tabelle TEXTE ist von aussen nicht zugänglich: der Wert wird aus dem Quelltext der Datei gelesen
+  const q = readFileSync(V6_DATEI, 'utf8');
+  const start = q.indexOf(sprache === 'de' ? '    de: {' : '    en: {');
+  const ende = q.indexOf(sprache === 'de' ? '    en: {' : '  var T = EN');
+  const seg = q.slice(start, ende);
+  const m = new RegExp('\\b' + eintrag + ": '((?:[^'\\\\\\\\]|\\\\\\\\.)*)'").exec(seg);
+  return m ? m[1].replace(/\\u\{([0-9A-Fa-f]+)\}/g, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/\\uFE0F/g, '️').replace(/\\xB0/g, '\xB0').replace(/\\xD7/g, '\xD7').replace(/\\'/g, "'") : null;
+}
+if (SOLL_VERSION >= '6.4.2') {
+  const rn = H.rotNorm;
+  // handgerechnet: gleiche Drehung, kleiner Wert; Werte im Bereich bleiben, auch exakt ±180
+  for (const [r, soll] of [[0, 0], [90, 90], [-90, -90], [180, 180], [-180, -180], [181, -179], [-181, 179], [-200, 160], [250, -110], [-300, 60], [-340, 20], [360, 0], [-360, 0], [540, -180], [-900, -180], [725, 5], [-725, -5], [179.5, 179.5], [180.5, -179.5]]) {
+    pruefe(`rotNorm(${r}) = ${soll}`, rn(r) === soll, `ist=${rn(r)}`);
+  }
+  {
+    let imBereich = true, gleichwertig = true, unveraendert = true, stabil = true, erstFehler = '';
+    for (let r = -3000; r <= 3000; r += 0.25) {
+      const v = rn(r);
+      const d = (v - r) / 360;
+      if (!(v >= -180 && v <= 180)) { imBereich = false; erstFehler = erstFehler || `Bereich ${r} → ${v}`; }
+      if (Math.abs(d - Math.round(d)) > 1e-9) { gleichwertig = false; erstFehler = erstFehler || `gleichwertig ${r} → ${v}`; }
+      if (r >= -180 && r <= 180 && v !== r) { unveraendert = false; erstFehler = erstFehler || `unverändert ${r} → ${v}`; }
+      if (rn(v) !== v) { stabil = false; erstFehler = erstFehler || `stabil ${r} → ${v} → ${rn(v)}`; }
+    }
+    pruefe('rotNorm: für 24 001 Winkel von −3000 bis 3000 Grad immer in −180 … 180', imBereich, erstFehler);
+    pruefe('rotNorm: immer um ein Vielfaches von 360 Grad verschoben (gleiche Drehung)', gleichwertig, erstFehler);
+    pruefe('rotNorm: Winkel von −180 bis 180 bleiben bitgleich', unveraendert, erstFehler);
+    pruefe('rotNorm: zweimal angewendet = einmal', stabil, erstFehler);
+  }
+  {
+    // Entwurf: ein Winkel jenseits von ±180 (6.4.0/6.4.1) kommt zurückgerechnet zurück; ein gültiger bleibt
+    const roh = (rot) => ({ id: 'L1', type: 'text', cx: 0.5, cy: 0.5, scale: 1, rot, text: 'A', font: 'x', color: '#111111' });
+    gleich('Entwurf mit Winkel −200 kommt als 160 zurück', H.ebeneAusEntwurf(roh(-200)).rot, 160);
+    gleich('Entwurf mit Winkel 35 bleibt 35', H.ebeneAusEntwurf(roh(35)).rot, 35);
+    gleich('Entwurf mit Winkel −180 bleibt −180', H.ebeneAusEntwurf(roh(-180)).rot, -180);
+  }
+  // Fehlertexte (F2): eigene Meldungen und der Text des Shops gehen durch, alles Rohe nicht
+  {
+    const warnungen = [];
+    const alt = win.console; win.console = { warn: (t) => warnungen.push(String(t)), log() {}, error() {} };
+    const ft = H.fehlerText, V = 'VORGABE';
+    for (const roh of ['Failed to fetch', 'Load failed', 'NetworkError when attempting to fetch resource.', 'TypeError: Failed to fetch', 'The network connection was lost.', 'The Internet connection appears to be offline.', 'net::ERR_INTERNET_DISCONNECTED']) {
+      const t = ft(new Error(roh), V);
+      pruefe(`Netzfehler «${roh}» → Meldung zur Verbindung`, /Verbindung unterbrochen/.test(t), t);
+    }
+    for (const roh of ["Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON", 'Unexpected end of JSON input', 'JSON.parse: unexpected character at line 1 column 1 of the JSON data', 'img', 'failed', 'Fehler', 'Invalid image file', 'canvas', 'Zeit', 'Bild', 'leer', "Failed to execute 'drawImage' on 'CanvasRenderingContext2D'", 'The operation is insecure.', 'HTTP 502', 'x is not a function']) {
+      pruefe(`roh «${roh}» → Standardsatz, kein Rohtext`, ft(new Error(roh), V) === V, ft(new Error(roh), V));
+    }
+    for (const [sprache, eintrag] of [['de', 'empty'], ['de', 'printErr'], ['de', 'upTimeout'], ['de', 'tooHeavy'], ['de', 'reviewChanged'], ['de', 'tooMany'], ['en', 'empty'], ['en', 'printErr'], ['en', 'reviewChanged']]) {
+      const text = texteAusQuelltext(sprache, eintrag);
+      pruefe(`eigene Meldung ${sprache}.${eintrag} geht unverändert durch`, !!text && ft(new Error(text), V) === text, String(text));
+    }
+    const shop = (t) => { const e = new Error(t); e.shopText = true; return e; };
+    pruefe('Text des Shops geht durch', ft(shop('Der Artikel «Shirt» ist ausverkauft.'), V) === 'Der Artikel «Shirt» ist ausverkauft.');
+    pruefe('Text des Shops: HTML weg', ft(shop('<b>Nur</b> noch <i>2</i> Stück'), V) === 'Nur noch 2 Stück', ft(shop('<b>Nur</b> noch <i>2</i> Stück'), V));
+    pruefe('Text des Shops: höchstens 120 Zeichen', ft(shop('x'.repeat(300)), V).length === 120, String(ft(shop('x'.repeat(300)), V).length));
+    pruefe('Text des Shops: genau 120 Zeichen bleiben ganz', ft(shop('y'.repeat(120)), V).length === 120 && !/…/.test(ft(shop('y'.repeat(120)), V)));
+    pruefe('ohne Fehlerobjekt / ohne Text: Standardsatz', ft(null, V) === V && ft(undefined, V) === V && ft(new Error(''), V) === V && ft({}, V) === V);
+    pruefe('eine Zeichenkette als Fehler: roh → Standardsatz, Netz → Verbindung', ft('boom', V) === V && /Verbindung/.test(ft('Failed to fetch', V)));
+    pruefe('ohne shopText zählt ein Satz wie ein Shop-Text NICHT (nur gekennzeichnete Texte gehen durch)', ft(new Error('The product is sold out.'), V) === V);
+    pruefe('der Rohtext geht in die Konsole (warn), höchstens 300 Zeichen', warnungen.some((w) => /Failed to fetch/.test(w)) && ft(new Error('q'.repeat(900)), V) === V && warnungen.every((w) => w.length < 340), JSON.stringify(warnungen.slice(0, 2)));
+    win.console = alt;
+  }
+  pruefe('VORSCHAU_WARTE_MS = 500', H.VORSCHAU_WARTE_MS === 500);
+}
+
 // 6.4.0 bleibt für den Rollout (SRI-Pfad) und als Rücknahme von 6.4.1 bytegleich (Stand 09.11.2026)
 {
   const v640 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.0.js'));
@@ -830,6 +898,13 @@ if (SOLL_VERSION >= '6.4.1') {
 {
   const v641 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.1.js'));
   pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '96eff4192f344f963a380d5a45981fb330ae202978ef0dd62b3cd1a45818708b' && v641.length === 279455, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
+}
+
+// 6.4.2 (eingefroren am 10.11.2026): wie 6.4.1 — jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash. Der Test läuft nur gegen die Datei im Repo
+// (V6_DATEI zeigt bei der Mutationsprobe auf eine Kopie, die Datei im Repo bleibt die geprüfte). editor-release-6.4.2.json trägt dieselbe Prüfsumme (CI: editor_release_bauen.mjs --pruefen).
+{
+  const v642 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.2.js'));
+  pruefe('v6.4.2 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v642).digest('hex') === '886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938' && v642.length === 294981, `${createHash('sha256').update(v642).digest('hex').slice(0, 12)} ${v642.length}`);
 }
 
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
@@ -849,7 +924,7 @@ pruefe('v6.3.1 bleibt bytegleich (Rücknahme)', createHash('sha256').update(v631
 const v610 = readFileSync(join(hier, '..', 'lspod-designer-v6.js'));
 pruefe('lspod-designer-v6.js (6.1.0) bleibt bytegleich (Rücknahme)', createHash('sha256').update(v610).digest('hex') === '0e85515252dcbbf7a3afc6808664c7c3df8601171ca11ecbd19dbb38cb302566' && v610.length === 150289);
 
-for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js', 'lspod-designer-v6-6.4.1.js']) {
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js', 'lspod-designer-v6-6.4.1.js', 'lspod-designer-v6-6.4.2.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
     s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")
