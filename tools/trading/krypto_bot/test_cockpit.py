@@ -1661,6 +1661,24 @@ import re as _re_u  # noqa: E402
 import uebersicht_rein as _UR  # noqa: E402
 
 _html_u = (HIER / "cockpit.html").read_text(encoding="utf-8")
+# Zeit fest vorgeben: Browser-Empfang und Neuzeichnen dürfen alte Kontowerte nicht verjüngen.
+_frische_u = _re_u.search(r"function profitFrische\(.*?\n\}", _html_u, _re_u.S)
+pruefe("Live-Anzeige: tatsächlicher Datenstand wird geprüft", _frische_u is not None)
+if _node_ok20 and _frische_u:
+    _js_live = _frische_u.group(0) + r'''
+const jetzt = Date.parse("2031-03-09T15:00:00Z");
+const faelle = [null, {hinweis:"nicht erreichbar"}, {}, {zeit:"keine Zeit"},
+  {zeit:"2031-03-09T15:00:00Z"}, {zeit:"2031-03-09T14:59:15Z"},
+  {zeit:"2031-03-09T14:59:14.999Z"}, {zeit:"2031-03-09T15:00:06Z"}];
+process.stdout.write(JSON.stringify(faelle.map(p => profitFrische(p, jetzt))));
+'''
+    _r_live = _node_lauf20(_js_live)
+    try:
+        _ist_live = json.loads(_r_live.stdout) if _r_live.returncode == 0 else []
+    except ValueError:
+        _ist_live = []
+    for _i_live, _soll_live in enumerate(["nicht_erreichbar", "nicht_erreichbar", "unbekannt", "unbekannt", "aktuell", "aktuell", "veraltet", "unbekannt"]):
+        pruefe("Live-Anzeige: Zeitfall " + str(_i_live + 1), len(_ist_live) == 8 and _ist_live[_i_live] == _soll_live, _ist_live)
 for _n_u, _ok_u, _i_u in _UR.pruefen(_html_u):  # Kursleiter, Auslastung, Kurven, Ampel-Gruppen, Sprungleiste, Karten-Tabellen, Blase: Erwartungswerte von Hand gerechnet (uebersicht_rein.py)
     pruefe("Oberfläche: " + _n_u, _ok_u, _i_u)
 _anker_u = _re_u.findall(r'<a href="#([a-z-]+)" data-ziel="([a-z-]+)">([^<]+)</a>', _html_u)

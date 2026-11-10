@@ -268,6 +268,44 @@ pruefe("falsche Adresse (echte Binance im Testnetz-Modus): kein Abruf, der Schl�
        "BINANCE_FUTURES_URL" in PR.abrufen(env=dict(env, BINANCE_FUTURES_URL="https://fapi.binance.com"))["hinweis"])
 pruefe("ohne Schlüssel: Hinweis statt Absturz", "Keine Futures-Schlüssel" in PR.abrufen(env={})["hinweis"])
 pruefe("Hinweis-Text", PR.text({"hinweis": "x"}) == "Profit: x")
+
+# Konto erreichbar, Einkommenshistorie gestört: alte Gewinne dürfen nicht aktuell wirken.
+class TeilweiseErreichbar:
+    fehler = True
+
+    def konto(self):
+        return {"totalWalletBalance": "1000", "totalUnrealizedProfit": "25", "availableBalance": "850"}
+
+    def _req(self, methode, pfad, *args, **kwargs):
+        if pfad == "/fapi/v1/income" and self.fehler:
+            raise OSError("Erfundener Ausfall, keine echte Börse")
+        return []
+
+
+with tempfile.TemporaryDirectory() as td:
+    pfad_live = Path(td) / "profit.json"
+    client_live = TeilweiseErreichbar()
+    unvollstaendig = PR.abrufen(env=env, client=client_live, logbuch=pfad_live, jetzt=JETZT)
+    pruefe("Live: Konto trotz Einkommensausfall sichtbar", unvollstaendig.get("gesamt") == 1025)
+    pruefe("Live: kein erfundener Einkommen-Datenstand", unvollstaendig.get("aktualitaet", {}).get("einkommen_bis", "fehlt") is None)
+    pruefe("Live: Einkommensausfall ausdrücklich unvollständig", unvollstaendig.get("aktualitaet", {}).get("einkommen_aktuell") is False)
+    pruefe("Live: Text warnt vor unvollständiger Gewinnhistorie", "Gewinnhistorie nicht aktuell" in PR.text(unvollstaendig))
+    pruefe("Live: frei verfügbarer Betrag separat", unvollstaendig.get("verfuegbar") == 850)
+    client_live.fehler = False
+    erholt = PR.abrufen(env=env, client=client_live, logbuch=pfad_live, jetzt=JETZT + timedelta(minutes=2))
+    pruefe("Live: Erholung bestätigt tatsächlichen Abruf", erholt.get("aktualitaet", {}).get("einkommen_aktuell") is True
+           and erholt.get("aktualitaet", {}).get("einkommen_bis") == (JETZT + timedelta(minutes=2)).astimezone(timezone.utc).isoformat(timespec="seconds"))
+    client_live.fehler = True
+    zwischengespeichert = PR.abrufen(env=env, client=client_live, logbuch=pfad_live, jetzt=JETZT + timedelta(minutes=2, seconds=15))
+    pruefe("Live: geschontes 60-s-Fenster behält echten Datenstand", zwischengespeichert.get("aktualitaet") == erholt.get("aktualitaet"))
+    veraltet = PR.abrufen(env=env, client=client_live, logbuch=pfad_live, jetzt=JETZT + timedelta(minutes=4))
+    pruefe("Live: erneuter Ausfall verschiebt alten Datenstand nicht", veraltet.get("aktualitaet", {}).get("einkommen_aktuell") is False
+           and veraltet.get("aktualitaet", {}).get("einkommen_bis") == erholt.get("aktualitaet", {}).get("einkommen_bis"))
+    ohne_feld = PR.auswerten(PR.leeres_buch(), {"totalWalletBalance": "100", "totalUnrealizedProfit": "0"}, [], JETZT)
+    pruefe("Live: fehlender verfügbarer Betrag bleibt unbekannt", "verfuegbar" in ohne_feld and ohne_feld["verfuegbar"] is None)
+    for ungueltig in ("NaN", "Infinity", "kaputt", {}, True):
+        pruefe("Live: ungültiger verfügbarer Betrag bleibt unbekannt " + repr(ungueltig),
+               PR.auswerten(PR.leeres_buch(), {"availableBalance": ungueltig}, [], JETZT)["verfuegbar"] is None)
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
