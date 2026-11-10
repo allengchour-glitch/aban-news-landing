@@ -454,7 +454,7 @@ for (const [name, sz, soll] of [
     const t = lauf(sz1([zeile()], { tagFehler: f, tagFehlerAb: 1 }));      // der erste tagsAdd (Markierung vor dem Anlegen) gelingt, das Tag printful-synced scheitert
     ist(`Markieren scheitert (${name}): Auftrag angelegt, aber NICHT bestätigt, Fehler gemeldet, Exit 1; es bleibt bei EINEM Auftrag`, [t.prot.posts.length, t.prot.confirms.length, t.prot.exitCode, t.prot.err.some((x) => /Metafeld\/Tag nicht gesetzt/.test(x))], [1, 0, 1, true]);
     const v = lauf(sz1([zeile()], { tagFehler: f }));                          // schon die Markierung VOR dem POST scheitert: dann wird gar nichts angelegt
-    ist(`Die Markierung vor dem Anlegen scheitert (${name}): KEIN Auftrag bei Printful, Fehler gemeldet, Exit 1`, [v.prot.posts.length, v.prot.confirms.length, v.prot.exitCode, v.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x))], [0, 0, 1, true]);
+    ist(`Die Markierung vor dem Anlegen scheitert (${name}): KEIN Auftrag bei Printful, Fehler gemeldet, Exit 1; danach wird die Markierung nicht nachgelesen und es gibt genau EINEN Fehler (der Lauf bricht an dieser Stelle ab, er verlässt sich nicht auf das Nachlesen als zweite Sperre)`, [v.prot.posts.length, v.prot.confirms.length, v.prot.exitCode, v.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x)), v.prot.anspruch.length, v.prot.err.length], [0, 0, 1, true, 0, 1]);
   }
   const mf = lauf(sz1([zeile()], { mfFehler: true }));
   ist('Metafeld scheitert (userErrors): wie ein Tag-Fehler, nicht bestätigt, Exit 1', [mf.prot.confirms.length, mf.prot.exitCode], [0, 1]);
@@ -1195,7 +1195,7 @@ for (const [name, sz, soll] of [
 
   // Markierung scheitert: nichts angelegt
   const markFehlt = lauf(sz1([zeile()], { tagFehler: 'userErrors', tagFehlerAb: 0, telegram: true }));
-  ist('Fund 6: lässt sich die Markierung vor dem Anlegen nicht setzen, wird NICHTS angelegt, Fehler «Markierung vor dem Anlegen nicht gesetzt», Exit 1', [markFehlt.prot.posts.length, markFehlt.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x)), markFehlt.prot.exitCode], [0, true, 1]);
+  ist('Fund 6: lässt sich die Markierung vor dem Anlegen nicht setzen, wird NICHTS angelegt, Fehler «Markierung vor dem Anlegen nicht gesetzt», Exit 1', [markFehlt.prot.posts.length, markFehlt.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x)), markFehlt.prot.exitCode, markFehlt.prot.anspruch.length, markFehlt.prot.err.length], [0, true, 1, 0, 1]);
 
   // Knoten-ID der frischen Lesung passt nicht
   const fremdeId = lauf(sz1([zeile()], { frischFolge: [{ id: 'gid://shopify/Order/999' }] }));
