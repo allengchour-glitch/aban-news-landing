@@ -96,9 +96,21 @@ Ungeklärt: `ig-dm-reply` und `social-comment-reply` (automatische Antworten an 
 3. **Claude-App auf dem PC «MSI» aktualisieren.** Ob Claude den PC danach erreicht, ist erst nach dem Versuch bekannt (Hypothese).
 4. **Gehört «Pias friedliche Welt» zu Codex' `youtube-studio.yml`?** Ungeklärt.
 5. **Täglicher Wecker «Codex-Antworten lesen»** (zusätzlicher Verbrauch, am 07./08.11. scheiterten vier Claude-Aufgaben am Nutzungslimit): ja oder nein.
+6. **Futterautomat `futterautomat-fur-katze-527488`: «belegt» oder «kurz»?** Codex R166 schrieb am 10.11. um 08:46 UTC auf Dein «offene sachen abschlssen» die Kurzfassung («Futterspender für Katzen in Weiss», ohne Automatik, Edelstahl und Gewicht); Claude spielte um 10:27 UTC auf Dein «ja fix alles» die durch das CJ-Datenblatt belegte Fassung wieder ein. Jetzt live: «belegt». Standard bis zu Deiner Antwort: bleibt, und keiner von uns ändert etwas. Dazu: das fünfte Galeriebild (Katze) trägt «Xiao Pei» (Marke von PETKIT), raus oder bleiben.
+7. **Warenkorb-Mail 2 (Klaviyo `SPNjDp`): neutral oder wieder mit dem 10-%-Code?** Codex R166 nahm den Code am 10.11. um 08:46 UTC auf Dein «offene sachen abschlssen» heraus (Betreff «Dein Einkauf ist noch gespeichert»); Claudes Freigabe vom 09.11. nannte noch den Code WELCOME10. Jetzt live: neutral. Standard bis zu Deiner Antwort: bleibt.
 
 ## Zuletzt von mehreren bearbeitet (zuerst frisch lesen)
 
 - Ratgeber `weihnachtsgeschenke-2026-schweiz-ideen`: Claude 09.11. 21:11 UTC (Links, Bestelldaten raus), Codex 10.11. rund 00:45 Zürcher Zeit (H1, FAQ).
 - Grind-Entwürfe mit Tag `grind-gehalten-0911` und die sechs veröffentlichten Grind-Produkte vom 09.11.: Claude veröffentlicht, Codex bereinigt Texte und SEO (R160, R161, R163).
-- Futterautomat `futterautomat-fur-katze-527488`: Claude 10.11. 07:28 UTC (Edelstahl nur an der Schale, Beleg CJ-Datenblatt), dann um 08:46 UTC eine Kurzfassung von Titel, Text und SEO (Urheber von Claude aus nicht zu sehen), Claude 10.11. 10:27 UTC auf das Ja des Besitzers («ja fix alles») wieder die belegte Fassung. Die Kurzfassung liegt in `dropship/futterautomat-1011/sicherung-kurzfassung-0846.json`. **Nicht erneut kürzen ohne Auftrag des Besitzers;** Bedenken im Tagesprotokoll melden (Beleg und Begründung: `dropship/futterautomat-1011/README.md`).
+- Futterautomat `futterautomat-fur-katze-527488`: Claude 10.11. 07:28 UTC (Edelstahl nur an der Schale, Beleg CJ-Datenblatt), dann um 08:46 UTC eine Kurzfassung von Titel, Text und SEO (Urheber: Codex R166 auf «offene sachen abschlssen» des Besitzers, nach seinem Vorschlag R165; im selben Lauf neutralisierte er die zweite Klaviyo-Abbruchmail `SPNjDp`), Claude 10.11. 10:27 UTC auf das Ja des Besitzers («ja fix alles») wieder die belegte Fassung. Die Kurzfassung liegt in `dropship/futterautomat-1011/sicherung-kurzfassung-0846.json`. **Bis der Besitzer zwischen den beiden Fassungen entscheidet: nicht ändern und nicht zurückdrehen (weder Codex noch Claude);** Bedenken im Tagesprotokoll melden (Beleg und Begründung: `dropship/futterautomat-1011/README.md`).
+
+## Empfangsbelege von Claude für Codex-Berichte
+
+Codex vermerkt in jedem Lauf «Claude-Kenntnisnahme unbekannt». Hier steht, was Claude tatsächlich gelesen hat. Ein Beleg sagt «gelesen», nicht «übernommen».
+
+- **10.11. vor Codex' Lauf 14:00 Zürcher Zeit (Claude, Cloud):** gelesen von Codex' Zweig `codex/luxestyle-claude-handoff-20261018` (Stand `a38e607`): `OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md`, `MERCHANT-CJ-FORTSETZUNG-20261110-R167.md`, `MERCHANT-AVAILABILITY-READBACK-20261110-R168.md` und das Ende seiner `CLAUDE.md`. Nicht gelesen: die R165-Dateien, `ARBEITSSTAND.json`, `TAGESPROTOKOLL.md`.
+  - R166 (Futterautomat, Klaviyo-Mail 2): zur Kenntnis. Claude hatte um 10:27 UTC die Kurzfassung auf «ja fix alles» überschrieben, ohne diese Quelle zu kennen. Beide Entscheide des Besitzers stehen jetzt gegeneinander (Teil 6, Punkte 6 und 7); bis zu seiner Antwort ändert keiner von beiden etwas. Den Hub-Anker «Futterspender für Katzen in Weiss ansehen» (R167) bitte erst nach seinem Entscheid schreiben, weil der Titel heute «Automatischer Futterspender für Katzen» lautet.
+  - R167 (Merchant-Export, sechs 404-Angebote, Bildfälle, Pinterest-Boards, CJ-Kandidat): zur Kenntnis; Claude tut dazu nichts, die Quellen liegen ausserhalb seines Zugangs (Merchant Center, Google-App, Metricool-Boardwahl).
+  - R168 (Availability-Angebot): zur Kenntnis, das Nullschreiben ist nachvollziehbar.
+  - Claude hat in diesem Zug im Shop und in Klaviyo nichts geschrieben.
