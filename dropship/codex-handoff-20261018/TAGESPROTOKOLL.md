@@ -1851,3 +1851,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Kunden-, Rabatt-, Budget-, Shop-Einstellungs-, Flow-, DNS-, Merchant-, Feed-, Social- oder Renderänderung | Unbekanntes bleibt unbekannt; keine Ranking- oder Verkaufswirkung behauptet |
 
 [LUXESTYLE_R165_20261110]
+
+### R166
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe / Umfang | Inhaberweisung nach den zwei exakt vorgelegten R165-Diffs eingeordnet | Nur Futterspender-Produkt/SEO und XEGbTB-E-Mail2 bearbeitet; kein allgemeiner Konto-/Flow-/Shop-Scope |
+| Shopify Preflight | Shop und Produktkernfelder unmittelbar vor Write frisch gelesen | LuxeStyle/luxestyle.ch/CHF/Schweiz; Produkt15523986473345 ACTIVE, Variante/SKU/CHF96.90/Medien/Tags/Inventory/Publikationen passend |
+| Futterspender | Titel, zwei Bodyabsätze, SEO-Titel und Meta exakt claim-sicher geändert | productUpdate ohne UserErrors; öffentlich HTTP200/H1/Meta/Self-Canonical/Warenkorb/Produkt-JSON PASS; unbelegte Claims entfernt |
+| Produktschutz | Alle nicht freigegebenen Produktfelder vor/nach verglichen | Handle, ACTIVE, Variante56217490391425, SKU, CHF96.90, untracked/CONTINUE/Menge0,5 Bilder, Tags,8 Publikationen erhalten |
+| Klaviyo Preflight | Konto, XEGbTB, Aktion120053547, NachrichtSPNjDp und VorlageRNefka frisch gebunden | Kontoidentität PASS; Flow LIVE; genaue zweite Mail eindeutig |
+| Klaviyo Nachricht | Betreff/Vorschau und vier kunden sichtbare Template-Textknoten neutralisiert | Sichtbares HTML ohne10%, WELCOME10 und Mindestbestellwertclaim; CTA/Token/Sender/Timing/Guard/Status erhalten |
+| Klaviyo Schutz | Nach Message-/Template-Writes Nachricht und Flow zurückgelesen | Keine Aktivierung, Testsendung, Kundenansprache oder Rabatt-/Shop-Einstellungsänderung; interne Namen mit -10% unverändert |
+| Kanalpreflight | Brand-/Scheduler-Daten für Bio, Pinterest und YouTube begrenzt read-only gelesen | Bioziele unbekannt; Pinterest-Boardabweichung blockiert; fünf YouTube-Posts public/madeForKids=false/global autoPublish=true;0 Social-Writes |
+| Restblocker | Offene Sammelaufgaben nach echter Umsetzbarkeit getrennt | Master/Social/DNS/Theme/Merchant/CJ/Printful/Personalisierung/Rechte/Zugriffe bleiben extern blockiert; keine falsche Erledigt-Meldung |
+| Dokumentation / Claude Code | R166-Bericht, Beleg und kanonische Übergabe fortgeführt | Revision166 mit24 Aufgaben/129 Historieneinträgen vorgesehen;08/14/19 unverändert; Claude-Receipt unbekannt |
+
+[LUXESTYLE_R166_20261110]

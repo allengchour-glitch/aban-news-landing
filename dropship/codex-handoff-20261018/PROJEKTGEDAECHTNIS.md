@@ -1446,3 +1446,15 @@ Projektor `15521256604033` und Futterspender `15523986473345` sind ACTIVE, kaufb
 Keine operativen Writes und keine Ranking-/Verkaufswirkung behauptet. Claude-Receipt `unknown_no_claude_receipt`. Belege: `CONTENT-VERKAUFSPAKET-20261110-R165.md/.json`.
 
 [LUXESTYLE_R165_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 166: Futterspender und zweite Abbruchmail abgeschlossen
+
+Die zwei in R165 konkret zur Freigabe gestellten Diffs wurden nach der Inhaberweisung «offene sachen abschlssen» eng ausgeführt und zurückgelesen. Futterspender `15523986473345` ist live als `Futterspender für Katzen in Weiss` mit zwei neutralen deutschen Absätzen und claim-sicherem SEO. HTTP 200, H1/Meta, Self-Canonical, Warenkorb und Produkt-JSON PASS; Handle, ACTIVE, Variante/SKU, CHF96.90, Inventory, fünf Bilder, Tags und acht Publikationen erhalten. Unbelegte Edelstahl-,2,2-kg-, Automatik- und Abwesenheitsclaims entfernt.
+
+Klaviyo XEGbTB/SPNjDp/RNefka hat neutralen Betreff/Vorschau sowie neutralisierte sichtbare HTML-Texte. Sichtbar verbleiben weder10%, WELCOME10 noch «ohne Mindestbestellwert». Flow LIVE,1h+23h, Guard, Token, Sender, Smart Sending, Tracking und Transaktionsflag unverändert; keine Sendung oder Rabatt-/Shop-Einstellungsänderung. Interne Namen mit `-10%` unverändert.
+
+Kanalpreflight read-only: Bioziele unbekannt; aktuelle Pinterest-Pins verwenden Board `1111333714239114020` statt historisch `1111333714239531706`, Boardname/Eigentum unbekannt, Pinterest gesperrt. Fünf YouTube-PENDING-Posts mit public/madeForKids=false/global autoPublish=true. Projektor-/Social-/DNS-/Theme-/Merchant-/CJ-/Rechte- und Zugriffsgates bleiben offen. Wirkung unbekannt; Claude-Receipt `unknown_no_claude_receipt`.
+
+Belege: `OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md/.json`.
+
+[LUXESTYLE_R166_20261110]

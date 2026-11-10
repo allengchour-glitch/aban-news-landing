@@ -2040,3 +2040,17 @@ Klaviyo bestätigte Placed Order `W7XTVD`; Konto-USD und Shop-CHF blieben getren
 [R165 Bericht](CONTENT-VERKAUFSPAKET-20261110-R165.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R165.json).
 
 [LUXESTYLE_R165_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 166: zwei freigegebene offene Contentpunkte live abgeschlossen
+
+Die unmittelbar nach R165 erteilte Inhaberweisung «offene sachen abschlssen» wurde auf die zwei dort exakt zur Freigabe gestellten Diffs begrenzt. Shopify bestätigte vor dem Write LuxeStyle/`luxestyle.ch`/CHF/Schweiz. Produkt `15523986473345` erhielt den claim-sicheren Titel `Futterspender für Katzen in Weiss`, zwei neutrale deutsche Absätze sowie neuen SEO-Titel und Meta. `productUpdate` ohne UserErrors; öffentliche Rücklesung HTTP 200, exakter H1/Meta, Self-Canonical, Warenkorb und Produkt-JSON. Handle, ACTIVE, Variante/SKU, CHF 96.90, Kaufbarkeit, untracked/`CONTINUE`/Menge 0, fünf Bilder, Tags und acht Publikationen blieben erhalten. Edelstahl-, Gewichts-, Automatik- und Abwesenheitsclaims fehlen jetzt in Body und SEO.
+
+Klaviyo-Konto `XWqMAD` wurde frisch gebunden. In Flow `XEGbTB`, Aktion `120053547`, Nachricht `SPNjDp`, Vorlage `RNefka` wurden Betreff, Vorschau und vier kunden sichtbare Textknoten neutralisiert. Frischer HTML-Readback: weder `10 %`, `WELCOME10` noch `ohne Mindestbestellwert` sichtbar. Checkout-/Abmelde-Token, Absender/Reply-to, Smart Sending, Tracking, `transactional=false`, Placed-Order-Sicherung, LIVE-Status und 1h+23h blieben erhalten. Keine Rabatt-/Shop-Einstellung, Aktivierung, Testsendung oder Kundenansprache. Interne Namen mit `-10%` blieben als nicht kunden sichtbare Metadaten unverändert.
+
+Der zusätzliche read-only Kanalpreflight bestätigte die Marke. Instagram-/TikTok-Bioziele bleiben vom Tool nicht geliefert. Zwei aktuelle Pinterest-Pins verwenden Board-ID `1111333714239114020` statt der historischen erwarteten `1111333714239531706`; Name und Eigentum unbekannt, daher Pinterest weiterhin gesperrt. Fünf aktuelle YouTube-PENDING-Posts sind `draft=false`, global `autoPublish=true`, `privacy=public`, `madeForKids=false`. Kanalbezogenes Auto-Publish bleibt ausser Instagram unbekannt.
+
+Die zwei konkreten Freigabepunkte sind abgeschlossen. Projektor-Master, Social-Lücken, DNS, Theme-Publish, Merchant-/CJ-/Printful-/Personalisierungs- und externe Rechte-/Zugriffsgates bleiben objektiv offen. Keine Ranking- oder Verkaufswirkung behauptet; Claude-Empfang unbekannt.
+
+[R166 Bericht](OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md) · [Maschinenbeleg](OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.json).
+
+[LUXESTYLE_R166_20261110]

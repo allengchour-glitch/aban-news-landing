@@ -362,3 +362,16 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 6. Kennzahlen nicht unnötig wiederholen: heutige Metricool-Teilmessungen stehen im R165-Beleg. Fehlende Werte unbekannt; keine Verkäufe aus Aufrufen oder Interaktionen ableiten.
 7. Keine Metricool-, Shopify-, Klaviyo-, DNS-, Merchant-, Feed-, Ads-, Budget-, Rabatt-, Kunden- oder Renderänderung in R165. 08/14/19 Europe/Zurich unverändert, keine neue Automation.
 8. Belege: `CONTENT-VERKAUFSPAKET-20261110-R165.md/.json`. Claude-Kenntnisnahme erst mit echtem Receipt behaupten; aktueller Zustand `unknown_no_claude_receipt`.
+
+## R166 – Freigegebene Futterspender- und Klaviyo-Diffs abgeschlossen
+
+[LUXESTYLE_R166_20261110]
+
+1. Nicht erneut schreiben: Produkt `15523986473345` ist live als `Futterspender für Katzen in Weiss` mit exakt zwei neutralen Absätzen, SEO-Titel `Futterspender für Katzen in Weiss | LuxeStyle` und claim-sicherer Meta. HTTP200/H1/Meta/Self-Canonical/Warenkorb/Produkt-JSON PASS.
+2. Erhalten: Handle `futterautomat-fur-katze-527488`, ACTIVE, Variante `56217490391425`, SKU `CJ-1418384701726527488`, CHF96.90, Kaufbarkeit, untracked/CONTINUE/Menge0, fünf Bilder, Tags und acht Publikationen. Keine Edelstahl-/2,2-kg-/Automatik-/Abwesenheitsclaims mehr in Body oder SEO.
+3. Nicht erneut schreiben: Klaviyo XEGbTB/Aktion120053547/NachrichtSPNjDp/VorlageRNefka hat neutralen Betreff, Vorschau, H1, Haupttext, Feld `GESPEICHERT` und CTA `Zum Warenkorb`. Sichtbarer HTML-Readback ohne10%, WELCOME10 und «ohne Mindestbestellwert».
+4. Klaviyo erhalten: LIVE, Verzögerungen1h+23h, Checkout-/Abmelde-Token, info@luxestyle.ch, Smart Sending, Tracking, transactional=false und Placed-Order-Guard. Keine Sendung, Aktivierung oder Rabatt-/Shop-Einstellungsänderung. Interne Namen mit `-10%` sind nicht kunden sichtbar und blieben unverändert.
+5. Pinterest nicht schreiben: aktuelle Pins10./11.11. nutzen Board `1111333714239114020`, historisch erwartet `1111333714239531706`; Boardname/Eigentum unbekannt. IG-/TikTok-Bioziele ebenfalls unbekannt.
+6. YouTube-Preflight: fünf aktuelle PENDING-Posts10./11.11. sind draft=false, global autoPublish=true, privacy=public und madeForKids=false. Das ersetzt keine Master-/Rechtefreigabe; kanalbezogenes Auto-Publish unbekannt.
+7. Projektor-Master und Social-Lücken bleiben wegen Varianten-/Einheiten-/Quellen-/Rechte-/Musik- und MP4-Gates gesperrt. Keine Ersatzposts.
+8. R166-Belege: `OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md/.json`. 08/14/19 unverändert, keine neue Automation. Claude-Kenntnisnahme bleibt `unknown_no_claude_receipt`.

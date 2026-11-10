@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "marker": "[LUXESTYLE_R166_20261110]",
+  "revision": 166,
+  "observedAt": "2026-11-10T09:49:38+01:00",
+  "authorization": {
+    "ownerMessage": "offene sachen abschlssen",
+    "interpretedScope": [
+      "R165 exact feeder product and SEO diff",
+      "R165 exact Klaviyo XEGbTB email 2 neutralisation"
+    ]
+  },
+  "shopify": {
+    "identity": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "verified": true
+    },
+    "productId": "gid://shopify/Product/15523986473345",
+    "mutation": "productUpdate",
+    "userErrors": [],
+    "after": {
+      "title": "Futterspender für Katzen in Weiss",
+      "bodyParagraphs": [
+        "Dieser weisse Futterspender für Katzen ist in einer Ausführung erhältlich. Prüfe vor dem Kauf die aktuelle Produktseite.",
+        "Aktuelle Ausführung: Farbe Weiss; eine Ausführung. Der aktuelle Preis und die Verfügbarkeit werden auf der Produktseite angezeigt."
+      ],
+      "seoTitle": "Futterspender für Katzen in Weiss | LuxeStyle",
+      "seoDescription": "Weisser Futterspender für Katzen in einer Ausführung. Aktuellen Preis und Verfügbarkeit direkt bei LuxeStyle prüfen."
+    },
+    "preserved": {
+      "handle": "futterautomat-fur-katze-527488",
+      "status": "ACTIVE",
+      "variantId": "56217490391425",
+      "sku": "CJ-1418384701726527488",
+      "priceCHF": "96.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "readyImages": 5,
+      "publications": 8,
+      "tags": "preserved"
+    },
+    "publicReadback": {
+      "httpStatus": 200,
+      "h1Exact": true,
+      "metaDescriptionExact": true,
+      "selfCanonical": true,
+      "cartFormPresent": true,
+      "productJsonAvailable": true
+    },
+    "removedUnverifiedClaims": [
+      "Edelstahl",
+      "2,2 kg",
+      "automatische Fütterung",
+      "Fütterung während Abwesenheit"
+    ]
+  },
+  "klaviyo": {
+    "identity": {
+      "accountId": "XWqMAD",
+      "name": "LuxeStyle CH",
+      "website": "luxestyle.ch",
+      "timezone": "Europe/Zurich",
+      "verified": true
+    },
+    "flowId": "XEGbTB",
+    "flowStatus": "LIVE",
+    "actionId": "120053547",
+    "messageId": "SPNjDp",
+    "templateId": "RNefka",
+    "templateType": "CODE",
+    "messageDiff": {
+      "subjectBefore": "Noch unschlüssig? 10% auf deinen Warenkorb",
+      "subjectAfter": "Dein Einkauf ist noch gespeichert",
+      "previewBefore": "Mit WELCOME10 — ohne Mindestbestellwert.",
+      "previewAfter": "Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse."
+    },
+    "visibleTemplateTextAfter": {
+      "heading": "Dein Einkauf ist noch gespeichert",
+      "body": "Dein Einkauf ist noch gespeichert. Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse.",
+      "formerCodeField": "GESPEICHERT",
+      "cta": "Zum Warenkorb"
+    },
+    "visibleHtmlChecks": {
+      "contains10Percent": false,
+      "containsWelcome10": false,
+      "containsNoMinimumClaim": false
+    },
+    "preserved": {
+      "checkoutUrlToken": true,
+      "unsubscribeToken": true,
+      "fromAndReplyTo": "info@luxestyle.ch",
+      "smartSending": true,
+      "addTrackingParams": true,
+      "transactional": false,
+      "flowLive": true,
+      "delays": "1h_plus_23h",
+      "placedOrderGuard": true
+    },
+    "internalNamesStillContainMinus10Percent": true,
+    "customerMessagesSent": 0,
+    "testSends": 0,
+    "discountSettingsChanged": false
+  },
+  "metricoolChannelPreflight": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "identityVerified": true,
+    "instagramBioTarget": "unknown_not_delivered",
+    "tiktokBioTarget": "unknown_not_delivered",
+    "pinterest": {
+      "historicalExpectedBoardId": "1111333714239531706",
+      "currentPendingPinsBoardId": "1111333714239114020",
+      "boardName": "unknown_not_delivered",
+      "ownership": "unknown_not_delivered",
+      "writeGate": "BLOCKED_BOARD_IDENTITY_MISMATCH_OR_CHANGE"
+    },
+    "youtube": {
+      "checkedPendingPostIds": [422276771, 422277227, 422199733, 422277846, 422278200],
+      "draft": false,
+      "globalAutoPublish": true,
+      "privacy": "public",
+      "madeForKids": false
+    },
+    "channelAutoPublish": {
+      "instagram": true,
+      "tiktok": "unknown_not_delivered",
+      "youtube": "unknown_not_delivered",
+      "pinterest": "unknown_not_delivered"
+    },
+    "writes": 0
+  },
+  "remainingExternalBlockers": [
+    "projector_variant_motif_unit_native_vertical_sources_rights_music_approval_master_mp4",
+    "metricool_gaps_2026_11_15_to_17_no_qualified_media_and_channel_bindings",
+    "dns_no_authenticated_writer",
+    "theme_publish_specialized_tool_unavailable",
+    "merchant_cj_printful_personalizer_source_rights_runtime_or_e2e_gates",
+    "google_reprocessing_and_measurement_time",
+    "claude_receipt_unknown"
+  ],
+  "writes": {
+    "shopifyProductUpdate": 1,
+    "klaviyoMessageUpdate": 1,
+    "klaviyoTemplateUpdate": 1,
+    "metricool": 0,
+    "social": 0,
+    "customers": 0,
+    "testSends": 0,
+    "discountSettings": 0,
+    "budgets": 0,
+    "shopSettings": 0,
+    "flowStatus": 0,
+    "dns": 0,
+    "merchant": 0,
+    "feed": 0,
+    "ads": 0,
+    "renders": 0
+  },
+  "rankingImpact": "unknown",
+  "salesImpact": "unknown",
+  "claudeReceipt": "unknown_no_claude_receipt"
+}
