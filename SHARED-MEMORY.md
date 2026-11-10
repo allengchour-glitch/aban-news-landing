@@ -18,6 +18,11 @@ main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konf
 
 Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](docs/ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
 
+## Büro: Tabellen und Statistik ·10.11.2026
+
+Codex ergänzt die generische Metricool-Monitorvorlage und die bestehende private Anzeige um Kanalvergleich, Tageswerte und Statistik mit belegter Datenbasis. Kein neuer Quellenabruf, keine Änderung im Metricool-Planer oder Shop. Private Messwerte bleiben außerhalb Git; Details und Tests in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), endgültiger Stand im zugehörigen PR.
+
+
 ## Aktuell: Arbeitsteilung LuxeStyle (10.11.2026)
 
 Wer was macht: `docs/ARBEITSTEILUNG-1011.md` (Kurzfassung oben in der Datei). Sie ersetzt die veraltete Tabelle «Die Sessions & wem was „gehört"» weiter unten, soweit sie LuxeStyle betrifft. Kernpunkt: Der Metricool-Planer wird nur von Claude und der Freigabe-Automation geschrieben, alle anderen lesen.
