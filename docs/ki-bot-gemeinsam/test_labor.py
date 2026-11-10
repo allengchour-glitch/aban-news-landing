@@ -172,13 +172,79 @@ class DatenUndSignale(unittest.TestCase):
             self.assertFalse(result["handelsfreigabe"])
             self.assertFalse(result["datenqualitaet"]["aktuell"])
             self.assertTrue(result["signalpruefung"]["bestanden"])
-            self.assertEqual(result["protokoll"]["version"], 3)
+            self.assertEqual(result["protokoll"]["version"], 4)
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertEqual(out.read_bytes(), before)
             out.unlink()
             cmd[-1] = rows[-1][0]
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertFalse(out.exists())
+
+
+class StromSchnittstelle(unittest.TestCase):
+    def test_einmaliger_iterator(self):
+        p = preise()
+        gesehen = []
+        def quelle():
+            for i, kurs in enumerate(p):
+                gesehen.append(i)
+                yield kurs
+        self.assertEqual(L.signale(quelle()), L.signale(p))
+        self.assertEqual(gesehen, list(range(len(p))))
+
+    def test_pausieren_und_fortsetzen(self):
+        p = preise()
+        strom = L.SignalStrom()
+        schritte = [strom.schritt(x) for x in p[:300]]
+        schritte += [strom.schritt(x) for x in p[300:]]
+        batch = L.signale(p)
+        for name in batch:
+            self.assertEqual([s[name] for s in schritte], batch[name])
+
+    def test_keine_zukunft_uebergeben(self):
+        p = preise()
+        a, b = L.SignalStrom(), L.SignalStrom()
+        erste = [a.schritt(x) for x in p[:400]]
+        zweite = [b.schritt(x) for x in p[:400]]
+        for x in p[400:]:
+            a.schritt(x)
+            b.schritt(x * 4)
+        self.assertEqual(erste, zweite)
+        batch = L.signale(p[:400])
+        for i, schritt in enumerate(erste):
+            self.assertEqual(schritt, {name: q[i] for name, q in batch.items()})
+
+    def test_konfiguration_bleibt_je_strom_fest(self):
+        p, strom = preise(), L.SignalStrom()
+        alt = L.PROTOKOLL["vol_ziel"]
+        try:
+            L.PROTOKOLL["vol_ziel"] = .5
+            schritte = [strom.schritt(x) for x in p]
+        finally:
+            L.PROTOKOLL["vol_ziel"] = alt
+        batch = L.signale(p)
+        for name in batch:
+            self.assertEqual([s[name] for s in schritte], batch[name])
+
+    def test_ungueltiger_kurs_veraendert_zustand_nicht(self):
+        a, b = L.SignalStrom(), L.SignalStrom()
+        for x in preise(300):
+            a.schritt(x)
+            b.schritt(x)
+        for kaputt in (0, -1, True, "100", float("nan"), float("inf")):
+            with self.assertRaises(ValueError):
+                a.schritt(kaputt)
+        self.assertEqual(a.anzahl, b.anzahl)
+        self.assertEqual(a.schritt(100.), b.schritt(100.))
+
+    def test_begrenzter_speicher_und_unveraenderte_belege(self):
+        strom = L.SignalStrom()
+        erster = strom.schritt(100.)
+        erwarteter = dict(erster)
+        for x in preise(1000):
+            strom.schritt(x)
+        self.assertEqual(len(strom._historie), 200)
+        self.assertEqual(erster, erwarteter)
 
 
 class Nachrichten(unittest.TestCase):

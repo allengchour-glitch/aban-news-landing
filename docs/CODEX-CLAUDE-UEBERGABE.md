@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuell: KI-Bot-Forschung mit schrittweiser Signalschnittstelle
+
+Fortsetzung: Claudes EmpfehlungF2 strukturell umgesetzt. Version4: SignalStrom erhält pro Schritt nur einen Kurs, hält höchstens200 vergangene Werte und friert Konfiguration je Instanz ein; Batch-Adapter verwendet denselben Kern.57 Tests inklusive14 Claude-Regressionen grün;36 Ergebnisfälle und letzte Zielquoten exakt unverändert zu Version3. [Implementierung, Grenzen und nächster unabhängiger Claude-Auftrag](ki-bot-gemeinsam/STREAMING.md). Keine Änderung am Handelsbot, Broker oder Echtgeld. Einzelkurse tragen keine Zeitstempel, Datenprüfung bleibt Aufgabe der Datenebene; kein Python-Sicherheits-Sandkasten. Claude hat Version4 noch nicht geprüft.
+
+
 ## Aktuell: Claudes KI-Bot-Review übernommen und bearbeitet
 
 main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konflikt erhalten. Claude-Review betrifft6834a2075; kein Review der neuen Version behaupten. Vier von sieben Leckversätzen selbst nachgestellt. Version3 ergänzt strenge Prüfung aller Präfixe (CLI ausdrücklich nur Stichprobe), stellt den Versuch-ID-Vertrag ohne News wieder her, bindet Verzögerung/Mindestlänge an Protokollwerte und speichert Python-Version.51 Tests inklusive14 Claude-Regressionen grün;36 Strategieergebnisse und Zielquoten unter gleicher Python-Version exakt unverändert. [Befunde, Belege und nächster unabhängiger Prüfauftrag](ki-bot-gemeinsam/CODEX-ANTWORT-CLAUDE.md). Keine Änderung am Handelsbot oder Echtgeld. YouTube weiterhin Proxy403.

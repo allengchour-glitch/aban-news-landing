@@ -7,13 +7,14 @@ import hashlib
 import json
 import math
 import platform
+from collections import deque
 from datetime import date, datetime, timezone
 from pathlib import Path
 from statistics import stdev
 
 ROOT = Path(__file__).resolve().parents[2]
 PROTOKOLL = {
-    "version": 3,
+    "version": 4,
     "markt": "BTC-USD, Spot, Long/Cash, kein Hebel",
     "trend_tage": [150, 200],
     "vol_tage": 30,
@@ -53,28 +54,58 @@ def laden(path):
     return tage, preise, hashlib.sha256(raw).hexdigest()
 
 
-def signale(p):
-    """Jedes Signal kennt nur den heutigen und frühere Schlusskurse."""
-    out = {"Halten": [1.0] * len(p), "Trend 200": [], "Halten Risiko 25": [],
-           "Trend 150 Risiko 25": [], "Trend 200 Risiko 25": [], "Konsens 150/200": []}
-    kurz, lang = PROTOKOLL["trend_tage"]
-    fenster = PROTOKOLL["vol_tage"]
-    for i, kurs in enumerate(p):
-        if i < max(lang - 1, fenster):
-            for name in out:
-                if name != "Halten":
-                    out[name].append(0.0)
-            continue
-        ma200 = sum(p[i - lang + 1:i + 1]) / lang
-        ma150 = sum(p[i - kurz + 1:i + 1]) / kurz
-        out["Trend 200"].append(float(kurs > ma200))
-        r = [p[j] / p[j - 1] - 1 for j in range(i - fenster + 1, i + 1)]
+class SignalStrom:
+    """Erhält genau einen bereits abgeschlossenen Kurs pro Schritt, keine Zukunftsreihe.
+
+    Begrenzte Historie und feste Konfiguration je Instanz. Kein Broker, keine
+    externe Datenquelle und keine Behauptung eines Python-Sicherheits-Sandkastens.
+    """
+    namen = ("Halten", "Trend 200", "Halten Risiko 25", "Trend 150 Risiko 25",
+             "Trend 200 Risiko 25", "Konsens 150/200")
+
+    def __init__(self):
+        self.kurz, self.lang = PROTOKOLL["trend_tage"]
+        self.fenster = PROTOKOLL["vol_tage"]
+        self.ziel = PROTOKOLL["vol_ziel"]
+        if any(isinstance(n, bool) or not isinstance(n, int) or n < 2
+               for n in (self.kurz, self.lang, self.fenster)):
+            raise ValueError("Indikatorfenster müssen ganze Zahlen ab 2 sein")
+        if (isinstance(self.ziel, bool) or not isinstance(self.ziel, (int, float))
+                or not math.isfinite(self.ziel) or not 0 < self.ziel <= 1):
+            raise ValueError("Ungültiges Schwankungsziel")
+        self._historie = deque(maxlen=max(self.kurz, self.lang, self.fenster + 1))
+        self.anzahl = 0
+
+    def schritt(self, kurs):
+        if (isinstance(kurs, bool) or not isinstance(kurs, (int, float))
+                or not math.isfinite(kurs) or kurs <= 0):
+            raise ValueError("Kurs muss endlich und positiv sein")
+        self._historie.append(float(kurs))
+        self.anzahl += 1
+        out = dict.fromkeys(self.namen, 0.0)
+        out["Halten"] = 1.0
+        if self.anzahl <= max(self.lang - 1, self.kurz - 1, self.fenster):
+            return out
+        p = list(self._historie)
+        ma200 = sum(p[-self.lang:]) / self.lang
+        ma150 = sum(p[-self.kurz:]) / self.kurz
+        r = [p[j] / p[j - 1] - 1 for j in range(len(p) - self.fenster, len(p))]
         vol = stdev(r) * math.sqrt(365)
-        q = min(1.0, PROTOKOLL["vol_ziel"] / vol) if vol > 0 else 0.0
-        out["Halten Risiko 25"].append(q)
-        out["Trend 150 Risiko 25"].append(q if kurs > ma150 else 0.0)
-        out["Trend 200 Risiko 25"].append(q if kurs > ma200 else 0.0)
-        out["Konsens 150/200"].append(q if kurs > ma150 and kurs > ma200 else 0.0)
+        q = min(1.0, self.ziel / vol) if vol > 0 else 0.0
+        out.update({"Trend 200": float(kurs > ma200), "Halten Risiko 25": q,
+                    "Trend 150 Risiko 25": q if kurs > ma150 else 0.0,
+                    "Trend 200 Risiko 25": q if kurs > ma200 else 0.0,
+                    "Konsens 150/200": q if kurs > ma150 and kurs > ma200 else 0.0})
+        return out
+
+
+def signale(p):
+    """Batch-Adapter über denselben schrittweisen Kern, auch für einmalige Iteratoren."""
+    strom = SignalStrom()
+    out = {name: [] for name in strom.namen}
+    for kurs in p:
+        for name, quote in strom.schritt(kurs).items():
+            out[name].append(quote)
     return out
 
 
