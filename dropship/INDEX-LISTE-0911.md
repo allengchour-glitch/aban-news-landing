@@ -16,3 +16,7 @@ Messung: Search Console über OpenSEO `inspect_urls`, 09.11.2026 ca. 20:35 UTC. 
 | 10 | Hautpflege-Sets (`hautpflege-sets`) | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Dnrx8iPNWRQkTmbdezKh3w&utm_medium=link&utm_source=api |
 
 Reihenfolge nach Nähe zu Winter und Geschenken; greift das Tageskontingent, zuerst Nr. 1 bis 6. Gegenmessung am nächsten Morgen, nicht am selben Tag (`inspect_urls` hinkt dem Antrag um Stunden hinterher). Wirkung auf Rang und Verkäufe: unbekannt.
+
+## Gegenmessung 10.11.2026 ca. 06:12 UTC (GEMESSEN, OpenSEO `inspect_urls`, Projekt `443c940c-…`)
+**10 von 10 indexiert** («Submitted and indexed», Googlebot Mobil, von Google gewählte und deklarierte Adresse gleich, Breadcrumbs-Prüfung bestanden). Google hat alle zehn am 09.11. zwischen 20:45:12 und 20:47:14 UTC abgerufen, also 10 bis 12 Minuten nach der Messung dieser Liste (09.11. ca. 20:35 UTC; damals 8 «URL ist Google nicht bekannt» und 2 «Gefunden – zurzeit nicht indexiert»). Die Anträge hat laut Besitzer er selbst gestellt (von hier nicht prüfbar); die Abrufzeiten passen dazu.
+**Einordnung:** die Listen mit Antrag (06.11.: 9 von 10; Liste der Parallelsitzung 08.11.: 9 von 10; diese: 10 von 10) waren binnen Minuten bis Stunden aufgenommen, die Listen a, b, c vom 08.11. (kein Antrag belegt) stehen bei 1 von 30. Das ist eine Beobachtung, kein Beweis. Wirkung auf Rang und Verkäufe: nicht behauptet, nur die Zählung. Nächste Liste: `INDEX-LISTE-1011.md`.

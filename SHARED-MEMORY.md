@@ -14,6 +14,9 @@ main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konf
 
 Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](docs/ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
 
+## Aktuell: Arbeitsteilung LuxeStyle (10.11.2026)
+
+Wer was macht: `docs/ARBEITSTEILUNG-1011.md` (Kurzfassung oben in der Datei). Sie ersetzt die veraltete Tabelle «Die Sessions & wem was „gehört"» weiter unten, soweit sie LuxeStyle betrifft. Kernpunkt: Der Metricool-Planer wird nur von Claude und der Freigabe-Automation geschrieben, alle anderen lesen.
 
 ## Aktuell: belegte KI-Bot-Prüfungen integriert
 
@@ -215,6 +218,7 @@ Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. D
 ---
 
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
+> ⚠️ Für LuxeStyle seit 10.11.2026 ersetzt durch `docs/ARBEITSTEILUNG-1011.md`.
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
 | **abannews** | Newsletter/Hubs/Stripe-Shop auf abannews.com (KI-Content, GEO-Reports) | `PROJEKT.md` | eigene `claude/*` |

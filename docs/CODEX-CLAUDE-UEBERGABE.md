@@ -13,6 +13,15 @@ main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konf
 ## Aktuell: YouTube-Begleitcode und News-Datenprüfung
 
 Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
+## Lizenzantwort: defekter Inhalt darf keine Ablehnung zwischenspeichern
+
+Wirtschaftsauftrag10.11.: vorhandenen Verkaufs-/Freischaltweg statt neue Projekte priorisiert. Eigener Branch von mainb9a98150, AGENTS/CLAUDE/Shared Memory/Übergabe und offene PRs gelesen. Vorige HTTP-Störungsprüfung PR3015 nicht wiederholt: neuer reproduzierter Fall ist HTTP200 mit HTML, leerem/ungültigem JSON, fehlender boolescher Entscheidung oder bestätigter Gültigkeit ohne Status. Bisher entstand eine zehn Minuten gecachte Ablehnung, selbst nach Anbietererholung. Acht Eingaben mit je Fehler- und Wiederanlaufprobe vor Korrektur16 neue Fehler,54 bestehende Prüfungen grün.
+
+`functions/_pro.mjs` lässt JSON-Parsefehler in den bestehenden Fehlerpfad laufen und akzeptiert nur eindeutige boolesche Lizenzantworten; positiver Bescheid braucht einen nichtleeren Status. Fehler bleiben gesperrt, ohne negativen Cache. Bestätigte Ablehnung bleibt gecacht; bestehende Lizenz-/Produkt-/Tierregeln erhalten. Keine automatische Wiederholung.
+
+GEMESSEN:70 API-,84 Engine- und48 Downloadprüfungen grün (202). Zusätzliche direkte `/api/pro-validate`-Gegenprobe liefert nach defekter Demo-Antwort `{valid:false,status:error}` mit no-store und nach ausdrücklicher erneuter Prüfung die simulierte gültige Antwort. Ausschließlich erfundene Schlüssel und simulierte Anbieterantworten, keine echten Konto-, Modell-, Kunden- oder Zahlungsaufrufe. Lokale CI-Simulation am schreibgeschützten HOME blockiert; echte CI und Bereitstellung im zugehörigen PR prüfen. Vorhandener Hype-Filter-Testablauf führt die Testdatei bereits aus, keine neue Automation.
+
+Nutzen: Käufer sollen bei Anbieterstörung nicht zehn Minuten fälschlich als ungültig gelten. Finanzielle Wirkung nicht gemessen. Eigene Audit-/Workbook-Checkout-/Lieferzuordnung und Cockpit-/Studio-Lizenzabgrenzung bleiben separate offene Prüfungen; keine Preise oder fremden Zahlungslinks geändert.
 
 ## Metricool-Monitor mit tatsächlichen Quellenantworten
 

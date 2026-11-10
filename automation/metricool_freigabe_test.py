@@ -236,4 +236,88 @@ gl([e['id'] for e in liste], [3, 4], 'nur Termine der nächsten 48 Stunden oder 
 gl(m.melde_liste([halt(5, '2026-11-11T20:01', 'x')], JETZT), [], 'mehr als 48 Stunden entfernt: noch nicht melden')
 gl([e['id'] for e in m.melde_liste([halt(6, '2026-11-11T19:59', 'x')], JETZT)], [6], 'knapp unter 48 Stunden: melden')
 
+# ---- Halteliste (METRICOOL-HALTEN.txt)
+H = m.lade_halten("""# Kommentar am Anfang
+U-ABC-123   # Codex: Rechte am Quellvideo unklar
+42
+   99 #  
+   # eingerückter Kommentar ohne Eintrag
+
+""")
+gl(sorted(H), ['42', '99', 'u-abc-123'], 'Halteliste: uuid kleingeschrieben, Zahlen als Text, Kommentarzeilen und Leerzeilen zählen nicht')
+gl(H['u-abc-123'], 'Codex: Rechte am Quellvideo unklar', 'Halteliste: Grund wird gelesen')
+gl(H['99'], 'ohne Grund', 'Halteliste: ohne Grund wird benannt')
+gl(m.lade_halten(''), {}, 'Halteliste: leer')
+gl(m.lade_halten(None), {}, 'Halteliste: None ist leer')
+gl(m.halte_grund({'uuid': 'U-ABC-123', 'id': 1}, H), 'Codex: Rechte am Quellvideo unklar', 'Halteliste: uuid ohne Rücksicht auf Gross-/Kleinschreibung')
+gl(m.halte_grund({'uuid': 'x', 'id': 42}, H), H['42'], 'Halteliste: auch nach id')
+gl(m.halte_grund({'uuid': 'x', 'id': 43}, H), None, 'Halteliste: nicht gelistet')
+
+PA = 'Plüsch Panda, 15 cm · CHF 19.90'
+hp = [post(1, '2026-11-10T10:00', ['tiktok'], PA, uuid='uA'),
+      post(2, '2026-11-10T11:00', ['instagram'], PA, uuid='uB'),
+      post(3, '2026-11-10T13:00', ['tiktok'], PA, uuid='uC')]
+h0 = {x['id']: x for x in m.plane_lauf(hp, PRODUKTE, JETZT, medien_ok=lambda u: True)}
+gl(sorted(i for i, x in h0.items() if x['ok']), [1, 2, 3], 'ohne Halteliste werden alle drei frei')
+h1 = {x['id']: x for x in m.plane_lauf(hp, PRODUKTE, JETZT, medien_ok=lambda u: True, halten={'ub': 'Besitzer'})}
+gl(sorted(i for i, x in h1.items() if x['ok']), [1, 3], 'ein angehaltener Entwurf (uuid) bleibt Entwurf, die anderen werden frei')
+ok(not h1[2]['ok'] and h1[2]['neu'] is None, 'angehaltener Entwurf bekommt keine neue Zeit')
+ok(any('angehalten' in x and 'Besitzer' in x for x in h1[2]['probleme']), 'Grund der Halteliste wird gemeldet')
+h2 = {x['id']: x for x in m.plane_lauf(hp, PRODUKTE, JETZT, medien_ok=lambda u: True, halten={'1': 'nach id'})}
+gl(sorted(i for i, x in h2.items() if x['ok']), [2, 3], 'Halteliste wirkt auch nach id')
+h3 = {x['id']: x for x in m.plane_lauf(hp, PRODUKTE, JETZT, medien_ok=lambda u: True, halten={'ua': 'a', 'ub': 'b', 'uc': 'c'})}
+gl([i for i, x in h3.items() if x['ok']], [], 'alles angehalten: nichts frei')
+# Ein angehaltener Entwurf blockiert den Platz der anderen nicht (er wird nie eingeplant)
+hq = [post(1, '2026-11-11T12:00', ['tiktok'], PA, uuid='uA'), post(2, '2026-11-11T12:00', ['tiktok'], PA, uuid='uB')]
+q0 = {x['id']: x for x in m.plane_lauf(hq, PRODUKTE, JETZT, medien_ok=lambda u: True)}
+ok(q0[1]['neu'] != q0[2]['neu'], 'ohne Halteliste weichen zwei gleichzeitige Beiträge aus')
+q1 = {x['id']: x for x in m.plane_lauf(hq, PRODUKTE, JETZT, medien_ok=lambda u: True, halten={'ub': 'x'})}
+gl(q1[1]['neu'], D('2026-11-11T12:00'), 'der später geprüfte, angehaltene Nachbar zählt nicht als vorläufig besetzt: der andere behält seine Zeit')
+# Bereits eingeplante Beiträge (kein Entwurf) fasst die Halteliste nicht an, sie sind keine Kandidaten
+gl([x['id'] for x in m.plane_lauf([post(1, '2026-11-10T10:00', ['tiktok'], PA, draft=False, uuid='uA')], PRODUKTE, JETZT, halten={'ua': 'x'})], [], 'eingeplante Beiträge sind weiter keine Kandidaten')
+# Telegram: bewusst Angehaltene werden nie täglich gemeldet
+hl = m.melde_liste([{'id': 7, 'alt': D('2026-11-10T09:00'), 'probleme': ['angehalten (METRICOOL-HALTEN.txt): Codex']},
+                    {'id': 8, 'alt': D('2026-11-10T09:00'), 'probleme': ['Produkt nicht erkannt']}], JETZT)
+gl([e['id'] for e in hl], [8], 'Angehaltene stehen nicht in der Telegram-Liste')
+# Die echte Datei im Repo (falls vorhanden) ist lesbar
+_hf = m.HALTEN_DATEI
+if os.path.exists(_hf):
+    ok(isinstance(m.lade_halten(open(_hf, encoding='utf-8').read()), dict), 'echte Halteliste ist lesbar')
+
+
+# ---- main() offline: die Datei METRICOOL-HALTEN.txt wirkt wirklich (Trockenlauf mit Dateien, nie Netz, nie live)
+import contextlib, io, json, tempfile
+from datetime import timedelta
+_morgen = (datetime.now() + timedelta(days=1)).replace(hour=10, minute=0, second=0, microsecond=0)
+_pl = [post(501, _morgen.strftime('%Y-%m-%dT%H:%M'), ['tiktok'], PA, uuid='uMain-1')]
+_tmp = tempfile.mkdtemp(prefix='mfhalten-')
+_pf, _kf, _hf2 = f'{_tmp}/planer.json', f'{_tmp}/produkte.json', f'{_tmp}/halten.txt'
+json.dump(_pl, open(_pf, 'w', encoding='utf-8')); json.dump(PRODUKTE, open(_kf, 'w', encoding='utf-8'))
+_alt_env = {k: os.environ.pop(k, None) for k in ('LIVE', 'GITHUB_STEP_SUMMARY', 'METRICOOL_USER_TOKEN')}
+_alt_pfad = m.HALTEN_DATEI
+def _lauf():
+    puffer = io.StringIO()
+    with contextlib.redirect_stdout(puffer):
+        rc = m.main(['--planer-datei', _pf, '--produkte-datei', _kf])
+    return rc, puffer.getvalue()
+try:
+    m.HALTEN_DATEI = f'{_tmp}/gibt-es-nicht.txt'
+    rc, aus = _lauf()
+    ok(rc == 0 and 'FREI   ' in aus and 'Halteliste' not in aus, 'main ohne Halteliste-Datei: Entwurf wird frei')
+    open(_hf2, 'w', encoding='utf-8').write('# nur Kommentar\n')
+    m.HALTEN_DATEI = _hf2
+    rc, aus = _lauf()
+    ok('FREI   ' in aus and 'Halteliste' not in aus, 'main mit leerer Halteliste: Entwurf wird frei')
+    open(_hf2, 'w', encoding='utf-8').write('umain-1   # Besitzer: noch nicht\n')
+    rc, aus = _lauf()
+    ok(rc == 0 and 'FREI   ' not in aus, 'main mit gelisteter uuid: nichts wird frei')
+    ok('HALTEN ' in aus and 'angehalten (METRICOOL-HALTEN.txt): Besitzer: noch nicht' in aus, 'main nennt den Grund der Halteliste')
+    ok('Halteliste: 1 Eintrag' in aus, 'main meldet, dass eine Halteliste gelesen wurde')
+finally:
+    m.HALTEN_DATEI = _alt_pfad
+    for k, v in _alt_env.items():
+        if v is not None:
+            os.environ[k] = v
+
+
 print(f'metricool_freigabe_test.py: {n} Prüfungen bestanden')
