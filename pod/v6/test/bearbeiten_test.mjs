@@ -991,6 +991,15 @@ szenario('rueckfall-bild', true, async (b, srv) => {
   pruefe('spätes 404: die Ansicht fällt auf «Druckversion» zurück und sagt es ruhig', (await sicht(t.page)) === 'druck' && /Produktfoto lädt gerade nicht/.test(await t.page.locator('[data-feld="sichthinweis"]').innerText()));
   pruefe('spätes 404: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
+  // 6.4.2: treffen die Vorschaudaten erst NACH der Wartezeit des Baus ein (VORSCHAU_WARTE_MS = 500 ms; hier 900 ms), steht der Editor zuerst ohne sie da und das Foto wird erst beim nachträglichen Setzen der Daten angefordert.
+  // Das sofortige 404 trifft dann ein, bevor «Bearbeiten» die Bühne aufgebaut hat: der Rückfall kommt aus der Prüfung am Ende des Aufbaus (Mutant B46 «Produktfoto war schon vor dem Aufbau kaputt»). Bis 6.4.1 lag
+  // dieser Weg auch bei sofortigen Daten an; seit E7 gehen rechtzeitige Daten in den ersten Durchlauf, darum braucht dieser Fall die verspäteten.
+  const u = await oeffnen(b, srv, SHIRT_Q(undefined, 'vverz=900'), { printfulBild: (x) => (/\/m\//.test(x) ? { status: 404, typ: 'text/plain', body: '' } : null) });
+  await sichtWarten(u.page);
+  await u.page.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'druck', null, { timeout: 8000 });
+  pruefe('späte Vorschaudaten (900 ms) und sofortiges 404: die Ansicht fällt auf «Druckversion» zurück und sagt es ruhig', (await sicht(u.page)) === 'druck' && /Produktfoto lädt gerade nicht/.test(await u.page.locator('[data-feld="sichthinweis"]').innerText()));
+  pruefe('späte Vorschaudaten (900 ms) und sofortiges 404: keine Seitenfehler', u.fehler.length === 0, u.fehler.join(' | '));
+  await u.schliessen();
 });
 
 szenario('statische-pruefung', true, async () => {

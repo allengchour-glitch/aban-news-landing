@@ -223,7 +223,10 @@ const MUTANTEN = [
   ['B66 Griffe bleiben am Bühnenrand beschnitten (keine Verschiebung nach innen)', "      griffeInnen(k, bw, bh, bw, bh);\n    }", "    }"],
   ['B67 Griffe dürfen bis auf die Kante der Bühne (halb beschnitten)', "var GRIFF_RAND = 17;", "var GRIFF_RAND = 0;"],
   ['B68 Verschiebung der Griffe in die gedrehte Schicht falsch zurückgerechnet', "ty = oy + dy * co - dx * si;", "ty = oy + dy * co + dx * si;"],
-  ['B69 Verschiebung der Griffe bleibt in der Druckversion stehen', "if (k !== gewaehlt) { k.handle.style.transform = ''; k.del.style.transform = ''; }", ""],
+  // B69 («Verschiebung der Griffe bleibt in der Druckversion stehen», `if (k !== gewaehlt) { k.handle.style.transform = ''; k.del.style.transform = ''; }` → ``) ist seit 6.4.2 GLEICHWERTIG und steht deshalb nicht mehr in der Liste:
+  // in 6.4.0/6.4.1 blieb die Verschiebung eines Griffs in der «Druckversion» sichtbar stehen (dort rechnete niemand sie neu). Seit E2 ruft `chromeAbgleichen()` am Ende `chromeNachziehen()`, und das rechnet die Griffe der gewählten Ebene
+  // auch ohne Schicht neu (`griffeInnen` schreibt den Wert, wenn er vom aktuellen abweicht); alle anderen Ebenen haben versteckte Griffe (`waehlen`: `handle.hidden = !an`). Gemessen: der Mutant besteht alle Suiten vollständig
+  // (unit 514, vorschau 196, editor 393, bearbeiten 986, v641 393, v642 427) und lief in der ersten Gesamtprobe 6.4.2 als einziger neben B46 durch (B46 ist mit einem Fall in `rueckfall-bild` geschlossen).
   ['B70 nur der Skalieren-Griff rutscht nach innen, der Löschknopf nicht', "[[k.handle, 1], [k.del, -1]].forEach(", "[[k.handle, 1]].forEach("],
   ['B71 Schalter: off, false, nein, no schalten die Ansicht nicht ab', "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus'", "return /^(0|aus)$/.test(a) ? 'aus'"],
   ['B72 Schalter: Gross- und Kleinschreibung und Leerzeichen zählen', "a = a === null ? '' : String(a).trim().toLowerCase();", "a = a === null ? '' : String(a);"],
