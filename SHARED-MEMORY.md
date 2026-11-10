@@ -1,5 +1,11 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: mehrere Trades mit bestehendem Ablauf geprüft
+
+Nutzer «verschidene trades mached». Bestehenden Satelliten statt neuer Handelsstrategie verwendet. GEMESSEN auf künstlichen Kursen mit unveränderter Regel und Börsenattrappe im netzlosen Container: zunächst fünf parallele Käufe (AVAX, DOT, SOL, TRX, XRP), später Wechsel/Verkleinerungen und LINK-Einstieg; Pause und Not-Aus geprüft. Insgesamt sechs simulierte Käufe, sieben Verkäufe/Verkleinerungen, sieben Phasen und 17 Gegenprüfungen bestanden. Vor neuen Käufen bestanden die vorhandenen Satelliten-Selbsttests. Keine echten Börsenaufträge oder Nachrichten; kein Gewinn berechnet.
+
+[Nachweis und konkrete Status-/Trockenlauf-Aufträge für PC-Claude](docs/KRYPTO-MEHRERE-TRADES.md), Branch `codex/mehrere-trades`. Der bisherige Live-Anzeige-Stand und main `061d4ee5f` sind konfliktfrei enthalten; Laufzeitcode gegenüber `1d9f79e06` unverändert. Nutzerfrage «Testnetz/Spielgeld, nur simulieren oder echtes Geld?» noch unbeantwortet. Kein Zugriff auf PC-Konto, keine Schlüssel angefasst, kein Echtgeld/Scalping aktiviert und keine Zeitpläne geändert. Das künstliche Beispiel ist keine aktuelle Kaufliste.
+
 ## Aktuell: Live-Anzeige für Konto und Gewinn
 
 Nutzerauftrag «live anzeige, profit, etc». Branch `codex/krypto-live-anzeige`, Anwendungscode `f18a61147`: tatsächlicher Konto-/Einkommen-Datenstand, Alter und Verbindungsstatus; unbekannte Gewinne bei veralteten/unvollständigen Daten; auswählbare Zeiträume und passende Realisiert-/Offen-/Funding-/Gebührenwerte; Kontowert, frei verfügbar und aktueller offener Gewinn. Desktop und geschützte Handy-Ansicht. Keine Handels-/Risiko-/Schutzänderung.
