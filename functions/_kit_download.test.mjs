@@ -9,12 +9,14 @@ let checks=0;
 const env={STRIPE_API_KEY:'demo-key',DOWNLOAD_SALT:'demo-salt',ASSETS:{}};
 const paid={payment_status:'paid',metadata:{slug:'demo-kit'}};
 async function request({config=env,id='cs_test_demo',status=200,body=paid,fail=false,
-   fileStatus=200,fileType='application/zip',fileSize='1024',fileFail=false,fileHang=false}={}){
+   verifyHang=false,bodyHang=false,capture=null,fileStatus=200,fileType='application/zip',fileSize='1024',fileFail=false,fileHang=false}={}){
  let calls=0,assetCalls=0;
  globalThis.fetch=async(url,options)=>{
   calls++;assert.equal(url,'https://api.stripe.com/v1/checkout/sessions/cs_test_demo');
   assert.equal(options.headers.Authorization,'Bearer demo-key');assert.ok(options.signal);
   if(fail)throw new Error('Demo-Netzfehler');
+  if(verifyHang)return new Promise(resolve=>capture(resolve,options.signal));
+  if(bodyHang)return {status:200,ok:true,json:()=>new Promise(resolve=>capture(resolve,options.signal))};
   return new Response(JSON.stringify(body),{status});
  };
  const assets={fetch:async req=>{
@@ -77,6 +79,27 @@ for(const fileType of ['application/zip','application/x-zip-compressed','applica
 }
 {
  const r=await request({id:'../fremd'});assert.equal(r.status,400);assert.equal(r.calls,0);checks++;
+}
+// Die Achtsekundenfrist muss auch greifen, wenn ein Adapter das Abort-Signal
+// nicht weitergibt. Nur Demo-Antworten; die Testuhr wartet keine acht Sekunden.
+for(const mode of ['verifyHang','bodyHang']){
+ const realSet=globalThis.setTimeout,realClear=globalThis.clearTimeout;
+ const timers=new Map();let timerId=0,finish,signal;
+ globalThis.setTimeout=(fn,ms)=>{timers.set(++timerId,{fn,ms});return timerId;};
+ globalThis.clearTimeout=id=>timers.delete(id);
+ try{
+  const pending=request({[mode]:true,capture:(resolve,s)=>{finish=resolve;signal=s;}});
+  await new Promise(resolve=>setImmediate(resolve));
+  const deadline=[...timers.values()].find(t=>t.ms===8000);assert.ok(deadline);deadline.fn();
+  const expired=Symbol('noch blockiert');
+  const r=await Promise.race([pending,new Promise(resolve=>setImmediate(()=>resolve(expired)))]);
+  assert.notEqual(r,expired,mode+': Abbruchsignal allein beendet die Verifizierung nicht');
+  assert.equal(r.status,502);assert.equal(r.calls,1);assert.equal(r.assetCalls,0);assert.ok(!r.data.url);
+  assert.equal(signal.aborted,true);assert.equal(timers.size,0);checks++;
+  finish(mode==='verifyHang'?new Response(JSON.stringify(paid),{status:200}):paid);
+  await new Promise(resolve=>setImmediate(resolve));
+  const recovered=await request();assert.equal(recovered.status,200);assert.equal(recovered.calls,1);assert.equal(recovered.assetCalls,1);assert.equal(timers.size,0);checks++;
+ }finally{globalThis.setTimeout=realSet;globalThis.clearTimeout=realClear;}
 }
 const html=readFileSync(new URL('../danke-kit.html',import.meta.url),'utf8');
 const script=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];

@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## ABAN-Download: Prüfwartezeit begrenzt ·10.11.2026
+
+Codex korrigiert einen lokal reproduzierten Hängefall der bestehenden Kit-Zahlungsprüfung: feste Frist für Transport und Antwortinhalt zusätzlich zum Abort-Signal.52 Download- und70 APIprüfungen lokal bestanden; keine echte Zahlung oder Anbieterabfrage. Details und tatsächlicher Bereitstellungsstand in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md) und zugehörigem PR. Keine Shop-/Metricool-Änderung.
+
+
 ## Aktuell: Claude hat Version 4 (Streaming) geprüft (10.11.2026)
 
 Auftrag aus `STREAMING.md` ausgeführt, Details in `docs/ki-bot-gemeinsam/CLAUDE-REVIEW-V4.md`. GEMESSEN mit Python 3.11.17: `SignalStrom` bitgleich zu Version 3 (4 390 Tage, 300 Zufallsreihen, 324 Berichtszahlen) und 3,3·10⁻¹⁶ neben einer eigenen Nachrechnung; Aufwärmphase, gleitende Fenster, eingefrorene Konfiguration und Abweisung ungültiger Kurse halten. **Befund F8 (niedrig):** ein Fehler *in* der Rechnung (z. B. Kurs `sys.float_info.min`, danach `AttributeError` aus `statistics.stdev`) hinterlässt veränderten Zustand und legt den Strom 30 Schritte lahm; Empfehlung im Review (Kurs vor der Übernahme auf Plausibilität prüfen). Mutationsprobe: 38 von 45 erkannt mit Codex' 57 Tests, 43 von 45 mit den acht neuen Tests (`test_labor_regression_v4.py`). `labor.py` unverändert; eine Korrektur braucht Protokollversion 5. Kein Blocker. Version 3 und Nachrichtenmodul nur gestreift. Grenzen der zeitlichen Datenprüfung: `--stichtag` bestimmt «aktuell», der Zeitpunkt der Datenbeschaffung steht nirgends.
