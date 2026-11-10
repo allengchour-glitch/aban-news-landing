@@ -14,6 +14,16 @@
       return h + m / 60;
     } catch (e) { return 12; }
   }
+  var clockFmt = null;
+  function swissClock() {
+    try {
+      if (!clockFmt) clockFmt = new Intl.DateTimeFormat('de-CH', { timeZone: 'Europe/Zurich', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+      return clockFmt.format(new Date());
+    } catch (e) { return ''; }
+  }
+  var RAUMFOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwicklerbüro', 'YouTube-Studio'];
+  var RAUMTITEL = { 'Entwicklerbüro': 'Entwicklung' };
+  var ZUSTAENDE = ['gruen', 'gelb', 'rot', 'du', 'alt'];
   function xf(m, x, y, z) { return [m[0] * x + m[4] * y + m[8] * z + m[12], m[1] * x + m[5] * y + m[9] * z + m[13], m[2] * x + m[6] * y + m[10] * z + m[14]]; }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -97,12 +107,31 @@
       /* ---------- Kamera ---------- */
       var cam = new K.Camera();
       var viewName = 'alle', userDist = null, monitorMode = false, savedCamera = null;
-      function monitorDistance(aspect){return Math.max(7.7,15.2/Math.max(0.3,aspect));}
-      function leaveMonitor(){if(!monitorMode)return;monitorMode=false;var previous=savedCamera;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);if(previous){userDist=previous.dist;cam.go(previous,!!cfg.reduced);}made.dirty=true;}
-      function focusMonitor(){if(monitorMode)return;savedCamera=Object.assign({},cam.g);monitorMode=true;if(cfg.onMonitorMode)cfg.onMonitorMode(true);cam.go({tx:0,ty:3.1,tz:9.18,dist:monitorDistance(made.aspect||1.33),az:0,el:0},!!cfg.reduced);made.dirty=true;}
+      var monitorName = null;                     // 'Zentral' oder der Name eines Raums, solange die Monitoransicht offen ist
+      function monitorZiel(name) {
+        var b = name === 'Zentral' ? W.overview : W.live[name];
+        return b ? { name: name, c: b.c, w: b.w, h: b.h } : null;
+      }
+      function monitorDistance(aspect, z) {
+        var th = Math.tan(cam.fov / 2), w = z ? z.w : 6.4, h = z ? z.h : 3.2;
+        return Math.max(4.5, (h * 1.14 / 2) / th, (w * 1.08 / 2) / (th * Math.max(0.3, aspect)));
+      }
+      function leaveMonitor(){if(!monitorMode)return;monitorMode=false;monitorName=null;var previous=savedCamera;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);if(previous){userDist=previous.dist;cam.go(previous,!!cfg.reduced);}made.dirty=true;}
+      function focusMonitor(name){
+        var z = monitorZiel(name || 'Zentral'); if (!z) return;
+        if (!monitorMode) savedCamera = Object.assign({}, cam.g);
+        monitorMode = true; monitorName = z.name;
+        if (cfg.onMonitorMode) cfg.onMonitorMode(true, z.name);
+        cam.go({ tx: z.c[0], ty: z.c[1], tz: z.c[2], dist: monitorDistance(made.aspect || 1.33, z), az: 0, el: z.name === 'Zentral' ? 0.08 : 0.22 }, !!cfg.reduced);
+        made.dirty = true;
+      }
+      function monitorFolge(r) {
+        var liste = RAUMFOLGE.concat(['Zentral']), k = liste.indexOf(monitorName);
+        focusMonitor(liste[((k < 0 ? 0 : k) + r + liste.length) % liste.length]);
+      }
       function fitDist(base, aspect) { if(viewName==='Campusplatz')return base*Math.pow(Math.max(1,1.33/Math.max(0.3,aspect)),0.45); return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
       function goView(name, now) {
-        if(monitorMode){monitorMode=false;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);}userDist=null;
+        if(monitorMode){monitorMode=false;monitorName=null;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);}userDist=null;
         var v = W.views[name] || W.views.alle;
         viewName = W.views[name] ? name : 'alle';
         var a = made.aspect || 1.33;
@@ -147,17 +176,35 @@
         labels.push({ el: el2, id: ent.id, room: ent.bereich || (ent.id === '__chef' ? 'Chefbüro' : ''), p: [ax, ay, az], sel: ent.id === sel });
       }
 
-      /* Neue Daten: ents = [{id, bereich, figur, kurz, name, state, pose, menge}], chef = {pose, blaetter} */
+      var lastState = null, lastZeit = '';
+      function farbenHex() { var o = {}; ZUSTAENDE.forEach(function (k) { o[k] = (lastState && lastState.colors && lastState.colors[k]) || (cfg.colors && cfg.colors[k]) || DEF[k]; }); return o; }
+      function zaehlen(liste) { var z = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 }; liste.forEach(function (e) { if (z[e.state] != null) z[e.state]++; else z.alt++; }); return z; }
+      /* Aus den Zeilen je Raum das, was das Liveboard zeigt (nur vorhandene Werte, nichts erfunden). */
+      function liveModelle() {
+        var ents = (lastState && lastState.ents) || [], zeit = swissClock(), farben = farbenHex(), stand = (lastState && lastState.stand) || '', out = {}, raeume = [], summe = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 };
+        RAUMFOLGE.forEach(function (name) {
+          var liste = ents.filter(function (e) { return e.bereich === name; });
+          var z = zaehlen(liste), kpi = null;
+          liste.forEach(function (e) { if (!kpi && (e.figur === 'tafel' || e.figur === 'paket') && e.menge != null && e.menge !== '') kpi = { wert: e.menge, label: e.kurz || e.name || '' }; });
+          out[name] = { titel: RAUMTITEL[name] || name, zeit: zeit, stand: stand, farben: farben, zaehler: z, kpi: kpi,
+            zeilen: liste.map(function (e) { return { name: e.kurz || e.name || e.id, state: e.state, text: e.ereignis || '', frisch: e.frisch == null ? null : e.frisch }; }) };
+          raeume.push({ titel: RAUMTITEL[name] || name, n: liste.length, zaehler: z });
+          ZUSTAENDE.forEach(function (k) { summe[k] += z[k]; });
+        });
+        out.__uebersicht = { zeit: zeit, stand: stand, farben: farben, raeume: raeume, summe: summe, n: ents.length };
+        return out;
+      }
+      function liveAktualisieren() { if (W.updateLive) { lastZeit = swissClock(); W.updateLive(lastState ? liveModelle() : {}); made.dirty = true; } }
+      made.liveModelle = liveModelle;
+
+      /* Neue Daten: ents = [{id, bereich, figur, kurz, name, state, pose, menge, ereignis, frisch}], chef = {pose, blaetter}, stand = Messstand als Text */
       made.update = function (state) {
         state = state || {};
         var ents = state.ents || [];
         made.ents = ents;
-        if (W.updateInfo) {
-          var stopped = ents.filter(function(e){return e.state === 'rot';}).length;
-          var stale = ents.filter(function(e){return e.state === 'alt';}).length;
-          W.updateInfo(ents.length+' Einträge · '+stopped+' Stopp · '+stale+' alte Messungen');
-        }
+        lastState = state;
         if (state.colors) Object.keys(DEF).forEach(function (k) { if (state.colors[k]) col[k] = K.col(state.colors[k]); });
+        liveAktualisieren();
         sel = state.sel || null;
         W.seats.forEach(function (seat) { if (!seat.spec.boss) { seat.entId = null; seat.used = false; seat.state = 'alt'; seat.ent = null; } });
         picks = [];
@@ -183,13 +230,13 @@
             beltEnt = e; belt.count = Math.max(0, Math.min(4, Math.round(Number(e.menge) || 0)));
             belt.moving = e.state === 'gruen' || e.state === 'gelb' || e.state === 'du';
             picks.push({ id: e.id, mn: W.belt.mn, mx: W.belt.mx });
-            addLabel(e, 3.2, 1.55, W.belt.z);
+            addLabel(e, W.belt.lp[0], W.belt.lp[1], W.belt.lp[2]);
           } else if (e.figur === 'tafel') {
             boardEnt = e;
             var key = String(e.menge) + '|' + e.kurz;
             if (W.board.key !== key) { W.board.key = key; R.retex(W.board.tex, T.board(e.menge, e.kurz, '#2f6aa8')); }
             picks.push({ id: e.id, mn: W.board.mn, mx: W.board.mx });
-            addLabel(e, -6.3, 2.35, -5.9);
+            addLabel(e, W.board.lp[0], W.board.lp[1], W.board.lp[2]);
           } else if (e.figur === 'papier') {
             var cd = W.cards[ci];
             if (cd) {
@@ -197,7 +244,7 @@
               if (cd.key !== ck) { cd.key = ck; R.retex(cd.tex, T.card(e.kurz, 'du', '#3b6fd8')); }
               cd.ent = e; cd.on = true;
               picks.push({ id: e.id, mn: cd.mn, mx: cd.mx });
-              addLabel(e, -6.9, 2.2 + (ci % 2) * 0.08, cd.z);
+              addLabel(e, cd.lp[0], cd.lp[1], cd.lp[2]);
               cardEnts.push(cd);
             }
             ci++;
@@ -205,6 +252,7 @@
         });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
         if(W.campusPanel)picks.push({id:'__campus',mn:W.campusPanel.mn,mx:W.campusPanel.mx});
+        Object.keys(W.live).forEach(function (name) { var b = W.live[name]; picks.push({ id: '__live:' + name, mn: b.mn, mx: b.mx }); });
         if(W.moneyPanel)picks.push({id:'__geldmanager',mn:W.moneyPanel.mn,mx:W.moneyPanel.mx});
         // Chef
         var boss = W.seats[W.seats.length - 1];
@@ -310,7 +358,10 @@
         if (used2) { ev.preventDefault(); made.dirty = true; }
       });
       made.cmd = function (name) {
-        if(name==='monitor'){focusMonitor();return;}
+        if(name==='monitor'){focusMonitor(W.live[viewName] ? viewName : 'Zentral');return;}
+        if(name.indexOf('monitor:')===0){focusMonitor(name.slice(8));return;}
+        if(name==='monitorNext'){monitorFolge(1);return;}
+        if(name==='monitorPrev'){monitorFolge(-1);return;}
         if(name==='monitorBack'){leaveMonitor();return;}
         if (name === 'move' || name === 'rotate') {
           moveMode = name === 'move';
@@ -338,7 +389,7 @@
         if (w === made.w && h === made.h && dpr === made.dpr) return;
         made.w = w; made.h = h; made.dpr = dpr; made.aspect = w / h;
         R.resize(w, h, dpr);
-        if(monitorMode){cam.g.dist=monitorDistance(made.aspect);if(cfg.reduced)cam.dist=cam.g.dist;}
+        if(monitorMode){cam.g.dist=monitorDistance(made.aspect,monitorZiel(monitorName));if(cfg.reduced)cam.dist=cam.g.dist;}
         else if (userDist == null) { var v = W.views[viewName] || W.views.alle; cam.g.dist = fitDist(v.dist, made.aspect); if (!made.started) cam.dist = cam.g.dist; }
         made.dirty = true;
       }
@@ -356,6 +407,7 @@
       function lamp(state) { return col[state] || col.alt; }
 
       function draw(t, still) {
+        if (lastState && W.updateLive && swissClock() !== lastZeit) liveAktualisieren();
         if(W.updateMoney)W.updateMoney(window.KBFinanzen?window.KBFinanzen.anzeige():null);
         resize();
         cam.update(made.aspect || 1.33);
@@ -379,7 +431,7 @@
         for (i = 0; i < W.seats.length; i++) {
           seat = W.seats[i]; f = seat.fig;
           var st = seat.spec.boss ? 'du' : seat.state, shape = shapes[st] || shapes.alt;
-          if (!seat.spec.boss && !seat.used) continue;
+          if (monitorMode || (!seat.spec.boss && !seat.used)) continue;
           var bob = still ? 0 : Math.sin(t * 1.8 + i) * 0.05, sc = seat.entId && seat.entId === sel ? 1.45 : 1;
           ST_.reset().t(seat.x, 1.98 + bob, seat.z).ry(still ? 0.6 : t * 1.1 + i).s(sc, sc, sc);
           M.copy(tmp, ST_.m);
@@ -395,16 +447,16 @@
         }
         if (sel) {
           var tp = null;
-          if (beltEnt && beltEnt.id === sel) tp = [W.belt.x0 + 2.5, 1.2, W.belt.z];
-          else if (boardEnt && boardEnt.id === sel) tp = [-6.3, 1.75, -5.85];
-          else cardEnts.forEach(function (cd) { if (cd.ent && cd.ent.id === sel) tp = [-6.85, 1.8, cd.z]; });
+          if (beltEnt && beltEnt.id === sel) tp = W.belt.sp;
+          else if (boardEnt && boardEnt.id === sel) tp = W.board.sp;
+          else cardEnts.forEach(function (cd) { if (cd.ent && cd.ent.id === sel) tp = cd.sp; });
           if (tp) R.sprite(fx.spark, tp[0], tp[1], tp[2], 1.5, 1.5, 0.8 + (still ? 0 : 0.2 * Math.sin(t * 4)), true);
         }
         R.end();
         // Beschriftungen
         var pw = made.w, ph = made.h, near = cam.dist < LABEL_DIST, pr = {};
         for (i = 0; i < labels.length; i++) {
-          var lb = labels[i], show = (near || lb.sel) && (viewName === 'alle' || lb.room === viewName || lb.sel);
+          var lb = labels[i], show = !monitorMode && (near || lb.sel) && (viewName === 'alle' || lb.room === viewName || lb.sel);
           if (show) {
             var q = cam.project(lb.p[0], lb.p[1], lb.p[2], pw, ph, pr);
             if (q && q.x > -60 && q.x < pw + 60 && q.y > -20 && q.y < ph + 40) { lb.el.style.display = ''; lb.el.style.transform = 'translate(' + Math.round(q.x) + 'px,' + Math.round(q.y) + 'px) translate(-50%,-100%)'; lb.el.style.zIndex = String(Math.round(1000 - q.w * 10)); }
@@ -497,8 +549,9 @@
           var r = cam.project(c[0], c[1], c[2], made.w, made.h, {});
           return r ? { x: r.x, y: r.y } : null;
         },
+        project: function (x, y, z) { cam.update(made.aspect || 1.33); var r = cam.project(x, y, z, made.w, made.h, {}); return r ? { x: r.x, y: r.y } : null; },
         render: function (t, still) { draw(t == null ? 1.7 : t, !!still); return { draws: R.stats.draws, tris: R.stats.tris }; },
-        cam: cam, picks: function () { return picks; }, labels: function () { return labels; }, seats: W.seats, hourSet: function (h) { hour = h; skyHour = h; R.retex(W.sky.tex, T.skyline(h)); }
+        cam: cam, picks: function () { return picks; }, labels: function () { return labels; }, seats: W.seats, live: function () { return W.live; }, monitor: function () { return monitorName; }, hourSet: function (h) { hour = h; skyHour = h; R.retex(W.sky.tex, T.skyline(h)); }
       };
 
       skyHour = hour; R.retex(W.sky.tex, T.skyline(hour)); lastSky = performance.now();

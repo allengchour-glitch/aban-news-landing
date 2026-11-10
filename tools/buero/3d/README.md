@@ -11,12 +11,12 @@ Der Dashboard-Typ lässt als Skript nur **eigene Dateien des Dashboards** zu (je
 | Datei | Aufgabe |
 |---|---|
 | `kb3d-engine.js` | Matrizen, Netzbauer (Quader, Zylinder, Kugel, Ring), Kamera, Zeichner, Treffer-Test |
-| `kb3d-tex.js` | alle Texturen werden zur Laufzeit gezeichnet: Böden, Bildschirminhalte, Himmel, Tafel, Kärtchen, Bildchen, Arbeitsort-Schilder (`T.ortSchild`) |
+| `kb3d-tex.js` | alle Texturen werden zur Laufzeit gezeichnet: Böden, Bildschirminhalte, Himmel, Tafel, Kärtchen, Bildchen, Arbeitsort-Schilder (`T.ortSchild`), **Liveboards** (`T.liveboard`, `T.liveboardUebersicht`) |
 | `kb3d-props.js` | Kleinteile aus Quadern (Tischkram, Serverschrank, Paletten, Pflanzen, Kleinmöbel); Rückfall, wenn ein Modell fehlt |
 | `kb3d-model.js` | liest die Modell-Pakete (`window.KB3D_PACK`), rechnet Normalen, Farbpalette, backt Gruppen zusammen |
 | `kb3d-figur.js` | eigene runde Charaktere mit gemeinsamen Gelenken: Haltungen tippt, Kaffee, Hand am Kopf, Arme hoch, schläft; `jointLift` hellt Schultern und Ellbogen auf (Wert je Eckpunkt, im Shader `vL`) |
-| `kb3d-world.js` | das Gebäude: Böden, Wände, Fenster, Trennwände, die vier Räume, Förderband, Lieferwagen an der Rampe, je Platz ein Arbeitsort-Schild (`W.ortTex`, Lage nach Blickrichtung) |
-| `kb3d-buero.js` | Zusammenbau: Kamera-Bedienung, Treffer, Beschriftungen, Bildchen, Schleife, Rückfälle (`K.Buero.supported/mount`) |
+| `kb3d-world.js` | der Campus: sieben Pavillons mit Gassen (Raum-Koordinaten u/v, `ROOMS`, `huelle()`), je Raum Rückwand mit Liveboard-Rahmen (`liveBoard()`), Campusplatz mit Zentralmonitor, Pausengarten, Förderband, Lieferwagen an der Rampe, je Platz ein Arbeitsort-Schild (`W.ortTex`, Lage nach Blickrichtung), `W.updateLive` (Bilder der Bretter) |
+| `kb3d-buero.js` | Zusammenbau: Kamera-Bedienung, Treffer, Beschriftungen, Bildchen, Schleife, Rückfälle (`K.Buero.supported/mount`), Modelle der Liveboards aus den Zeilen (`liveModelle`), Monitoransicht für alle Bretter (`monitor:<Raum>`, `monitorNext/Prev/Back`) |
 | `pack/glb2pack.mjs` | wandelt `models/*.glb` in Pakete um (Liste `LISTE`, je Modell Ziel-Dreiecke) |
 | `bauen.mjs` | bündelt alles für das Dashboard |
 
@@ -91,3 +91,18 @@ HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine private
 
 
 `campus-einheitlich-13` ergänzt den geschützten Metricool-Monitor in Werkzeugen und Monitorleiste. Die generische Vorlage `../metricool_monitor.html` enthält nur einen Platzhalter. Echte Kanal-/Kalenderwerte bleiben außerhalb des Repositorys und auf der bestehenden privaten Büro-Seite. Geplante Einträge, publizierte Inhalte und Reichweite sind getrennt; kein Dauersync oder Publisher.
+
+
+## Liveboards und sieben Pavillons (Design campus-einheitlich-14, 10.11.2026)
+
+Auftrag des Besitzers: in jedem Büro ein grosser Monitor mit Dashboard-Inhalt, dazu viel grössere, weniger enge Räume. Gesamtbeschreibung, Messwerte und Grenzen: `docs/KI-BUERO-SEITE.md`, Abschnitt «Liveboards und grössere Räume».
+
+- **Raum-Koordinaten:** jeder Raum wird mit `beginRoom(name)` … `endRoom()` in eigenen Koordinaten gebaut (u nach Osten, v nach Süden, Ursprung an der nordwestlichen Aussenecke; Grösse `K.ROOM_SIZE` = 10,4 × 8,0 m). Die Plätze stehen in `SEATS` mit `u`/`v`; die Weltkoordinaten (`x`, `z`) rechnet das Modul aus `ROOMS` aus. Aufrufe von `P.serverRack` (schreibt in die LED-Netze) und der Platz des Besitzers stehen ausserhalb des Raum-Blocks in Weltkoordinaten.
+- **Der Platz des Besitzers kommt zuletzt in `SEATS`** (die Seite nimmt immer den letzten Platz für ihn).
+- **Warum Pavillons:** die Kamera sitzt im Südosten (`az` 0 bis 1,5), sichtbar sind nur Nord- und Westwände. Jeder Raum hat deshalb eine eigene hohe Nordwand (3,8 m) und davor eine Gasse von 3,4 m, damit die Wand den Raum dahinter nicht verdeckt.
+- **Liveboard:** `liveBoard(name, uc)` baut Rahmen und Bild-Fläche (4,8 × 2,4 m, Textur 1024 × 512 ohne Mip-Stufen) und legt `W.live[name]` an (`c` Mitte, `w`, `h`, Pick-Quader `mn`/`mx`). `W.updateLive(modelle)` zeichnet ein Bild nur neu, wenn sich der Inhalt (JSON des Modells) ändert. Die Modelle baut `liveModelle()` in `kb3d-buero.js` aus den Einträgen der Seite (`ents`: Name, Zustand, Ereignistext, Frische 0 bis 1, Sonderzahl) und der Schweizer Uhrzeit (neu gezeichnet, sobald die Minute wechselt).
+- **Zentralmonitor:** `W.overview` und `W.campusPanel`, breites Brett (6,4 × 3,2 m) bei z = 11, Bild `T.liveboardUebersicht`.
+- **Monitoransicht:** `cmd('monitor:<Raum>')` oder `cmd('monitor:Zentral')`; die Kamera zielt auf `c` des Bretts (`az` 0, `el` 0,22 beziehungsweise 0,08 beim Zentralmonitor, damit Figuren den unteren Rand nicht verdecken), Beschriftungen, Marken und Sprechblasen sind aus. `cfg.onMonitorMode(an, name)` meldet den Namen an die Seite.
+- **Prüfhilfen für Tests:** `made.debug.live()`, `.monitor()`, `.project(x, y, z)`, `made.liveModelle()`, `made.W`, `made.R`.
+- **Prüfung:** `../pruefung/test_liveboard.js` (39 Prüfungen) und `../pruefung/mutation_liveboard.py` (17 absichtliche Fehler).
+

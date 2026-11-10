@@ -1,56 +1,75 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket. Möbel und Geräte kommen aus den Modellen (K.model), Wände, Böden, Schilder,
-   Förderband, Serverschränke und Kleinkram werden gebaut. Das Feste wird einmal gebaut, das Bewegte hat eigene Netze.
-   Koordinaten: x nach Osten, z nach Süden (zur Kamera), y nach oben. Gebäude x -7..7, z -6..6 (dazu eine Laderampe im Osten).
-   Chefbüro: NW, Krypto: NO, Shop: SW, Versand: SO. */
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-14).
+   Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
+   Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
+   mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
+   Möbel und Geräte kommen aus den Modellen (K.model), Wände, Böden, Schilder, Förderband, Serverschränke und Kleinkram werden gebaut.
+   Das Feste wird einmal gebaut, das Bewegte hat eigene Netze.
+   Koordinaten: x nach Osten, z nach Süden (zur Kamera), y nach oben. Je Raum gilt eine Raum-Koordinate: u nach Osten, v nach Süden,
+   Ursprung an der nordwestlichen Aussenecke des Raums. Die Gassen liegen 0,15 m tiefer als die Raumböden. */
 (function (K) {
   'use strict';
   var P = K.props, C = P.C, T = K.tex, PI = Math.PI, M = K.M, MD = K.model;
 
-  /* Plätze: Raum, Nummer in der Reihenfolge der Datei, Lage, Blickrichtung (0 = nach Süden, PI = nach Norden), Art der Menschen. */
+  var RW = 10.4, RD = 8.0, WH = 3.8, CAP = '#f2f4ef', GY = -0.15;      // Raumbreite, Raumtiefe, Wandhöhe, Cap-Farbe, Höhe der Gassen
+  var BW = 4.8, BH = 2.4, BY = 1.85;                                    // Liveboard: Breite, Höhe (2:1), Mittelhöhe
+
+  /* Räume: nordwestliche Aussenecke und Art der Westwand (hoch = Aussenwand, niedrig = zur Gasse) */
+  var ROOMS = {
+    'Chefbüro': { x0: -11.8, z0: -12.6, west: 'hoch' },
+    'Krypto': { x0: 1.4, z0: -12.6, west: 'niedrig' },
+    'Shop': { x0: -11.8, z0: -1.2, west: 'hoch' },
+    'Versand': { x0: 1.4, z0: -1.2, west: 'niedrig' },
+    'Social Media': { x0: -11.8, z0: 14.4, west: 'hoch' },
+    'Entwicklerbüro': { x0: 1.4, z0: 14.4, west: 'niedrig' },
+    'YouTube-Studio': { x0: -11.8, z0: 25.8, west: 'hoch' }
+  };
+
+  /* Plätze: Raum, Nummer in der Reihenfolge der Datei, Lage im Raum (u, v), Blickrichtung (0 = nach Süden, PI = nach Norden), Art der Menschen. */
   var SEATS = [
-    { room: 'Shop', i: 0, x: -5.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'woman' },
-    { room: 'Shop', i: 1, x: -3.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
-    { room: 'Shop', i: 2, x: -1.0, z: 2.35, h: PI, kind: 'dual', style: 'oak', chair: '#ba8997', who: 'woman' },
-    { room: 'Shop', i: 3, x: -5.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
-    { room: 'Shop', i: 4, x: -3.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'woman' },
-    { room: 'Shop', i: 5, x: -1.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
-    { room: 'Versand', i: 0, x: 1.7, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
-    { room: 'Versand', i: 1, x: 3.45, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
-    { room: 'Versand', i: 2, x: 5.2, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
-    { room: 'Krypto', i: 0, x: 1.3, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
-    { room: 'Krypto', i: 1, x: 3.5, z: -3.0, h: PI, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'woman' },
-    { room: 'Krypto', i: 2, x: 5.7, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
-    { room: 'Krypto', i: 3, x: 2.4, z: -1.4, h: 0, kind: 'single', style: 'dark', chair: '#8a6fb0', who: 'woman' },
-    { room: 'Krypto', i: 4, x: 4.6, z: -1.4, h: 0, kind: 'dual', style: 'dark', chair: '#8a6fb0', who: 'man' },
-    { room: 'Social Media', i: 0, x: -5.4, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#a093b7', who: 'woman' },
-    { room: 'Social Media', i: 1, x: -3.3, z: 8.0, h: 0, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
-    { room: 'Social Media', i: 2, x: -1.2, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#769b8a', who: 'woman' },
-    { room: 'Entwicklerbüro', i: 0, x: 1.3, z: 8.0, h: 0, kind: 'dual', style: 'white', chair: '#679aa0', who: 'man' },
-    { room: 'Entwicklerbüro', i: 1, x: 3.4, z: 8.0, h: 0, kind: 'tri', style: 'white', chair: '#a093b7', who: 'woman' },
-    { room: 'Entwicklerbüro', i: 2, x: 5.5, z: 8.0, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
-    { room: 'YouTube-Studio', i: 0, x: -5.3, z: 13.1, h: 0, kind: 'dual', style: 'dark', chair: '#a093b7', who: 'woman' },
-    { room: 'YouTube-Studio', i: 1, x: -3.2, z: 13.1, h: 0, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'man' },
-    { room: 'YouTube-Studio', i: 2, x: -1.1, z: 13.1, h: 0, kind: 'single', style: 'white', chair: '#ba8997', who: 'woman' },
-    { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
+    { room: 'Shop', i: 0, u: 2.1, v: 3.1, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'woman' },
+    { room: 'Shop', i: 1, u: 4.6, v: 3.1, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
+    { room: 'Shop', i: 2, u: 7.1, v: 3.1, h: PI, kind: 'dual', style: 'oak', chair: '#ba8997', who: 'woman' },
+    { room: 'Shop', i: 3, u: 9.3, v: 3.1, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
+    { room: 'Shop', i: 4, u: 3.3, v: 5.3, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'Shop', i: 5, u: 5.8, v: 5.3, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'woman' },
+    { room: 'Shop', i: 6, u: 8.3, v: 5.3, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'Versand', i: 0, u: 2.5, v: 2.6, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Versand', i: 1, u: 5.3, v: 2.6, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Versand', i: 2, u: 8.1, v: 2.6, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Krypto', i: 0, u: 2.7, v: 3.7, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
+    { room: 'Krypto', i: 1, u: 5.5, v: 3.7, h: PI, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'woman' },
+    { room: 'Krypto', i: 2, u: 8.3, v: 3.7, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
+    { room: 'Krypto', i: 3, u: 4.0, v: 5.9, h: 0, kind: 'single', style: 'dark', chair: '#8a6fb0', who: 'woman' },
+    { room: 'Krypto', i: 4, u: 6.9, v: 5.9, h: 0, kind: 'dual', style: 'dark', chair: '#8a6fb0', who: 'man' },
+    { room: 'Social Media', i: 0, u: 2.6, v: 3.5, h: 0, kind: 'dual', style: 'oak', chair: '#a093b7', who: 'woman' },
+    { room: 'Social Media', i: 1, u: 5.3, v: 3.5, h: 0, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
+    { room: 'Social Media', i: 2, u: 8.0, v: 3.5, h: 0, kind: 'dual', style: 'oak', chair: '#769b8a', who: 'woman' },
+    { room: 'Entwicklerbüro', i: 0, u: 2.6, v: 3.5, h: 0, kind: 'dual', style: 'white', chair: '#679aa0', who: 'man' },
+    { room: 'Entwicklerbüro', i: 1, u: 5.3, v: 3.5, h: 0, kind: 'tri', style: 'white', chair: '#a093b7', who: 'woman' },
+    { room: 'Entwicklerbüro', i: 2, u: 8.0, v: 3.5, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'YouTube-Studio', i: 0, u: 2.6, v: 3.5, h: 0, kind: 'dual', style: 'dark', chair: '#a093b7', who: 'woman' },
+    { room: 'YouTube-Studio', i: 1, u: 5.3, v: 3.5, h: 0, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'man' },
+    { room: 'YouTube-Studio', i: 2, u: 8.0, v: 3.5, h: 0, kind: 'single', style: 'white', chair: '#ba8997', who: 'woman' },
+    /* Der Platz des Besitzers kommt zuletzt (die Seite nimmt immer den letzten Platz für ihn). */
+    { room: 'Chefbüro', i: 0, u: 5.3, v: 4.6, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
-
-  // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
-  var WINGS = { 'Social Media': [-3, 7], 'Entwicklerbüro': [3, 7], 'YouTube-Studio': [-3, 10] };
-  SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-13';
+  SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
+  K.DESIGN_VERSION = 'campus-einheitlich-14';
   K.SEATS = SEATS;
+  K.ROOMS = ROOMS;
+  K.ROOM_SIZE = [RW, RD];
 
   K.buildWorld = function (R) {
-    var W = { R: R, statics: [], shadowStatics: [], inst: [], seats: [], leds: [], parcels: [], hands: null, belt: null, board: null, cards: [], sky: null, coin: null, crystal: null, models: {} };
+    var W = { R: R, statics: [], shadowStatics: [], inst: [], seats: [], leds: [], parcels: [], hands: null, belt: null, board: null, cards: [], sky: null, coin: null, crystal: null, models: {}, live: {}, rooms: ROOMS, boardSize: [BW, BH] };
     var B = new K.Builder();
     var LB = [new K.Builder(), new K.Builder(), new K.Builder()];
     var texCache = {}, ST = new K.Stack(), i, j;
     function tex(key, make, opt) { if (!texCache[key]) texCache[key] = R.texture(make(), opt || {}); return texCache[key]; }
     var wingX = 0, wingZ = 0;
-    function beginWing(name) { var d = WINGS[name]; wingX = d[0]; wingZ = d[1]; B.push().t(wingX, 0, wingZ); }
-    function endWing() { B.pop(); wingX = 0; wingZ = 0; }
+    function beginRoom(name) { var d = ROOMS[name]; wingX = d.x0; wingZ = d.z0; B.push().t(wingX, 0, wingZ); }
+    function endRoom() { B.pop(); wingX = 0; wingZ = 0; }
     function quad(o) {
       var QB = new K.Builder();
       QB.push().t(o.x + wingX, o.y, o.z + wingZ).ry(o.ry || 0).rx(o.rx || 0).rz(o.rz || 0).quad(o.w, o.h, o.col || [1, 1, 1], o.emi || 0, o.u0, o.v0, o.u1, o.v1);
@@ -79,8 +98,6 @@
       W.inst.push(it);
       return it;
     }
-
-    /* ---------- Böden ---------- */
     function floorMesh(x0, z0, x1, z1, key, make, tile) {
       var FB = new K.Builder();
       FB.floor(x0 + wingX, z0 + wingZ, x1 + wingX, z1 + wingZ, 0, [1, 1, 1], 0, (x1 - x0) / tile, (z1 - z0) / tile);
@@ -88,72 +105,64 @@
       m.tex = tex(key, make, { repeat: true });
       stat(m);
     }
-    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b4c6c3', 1); }, 2);
-    floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dfcdae', 2); }, 2);
-    floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#c4c7c1', 3); }, 2);
-    floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#354550', 4); }, 2);
 
-    /* Sockel, Rampe im Osten und weicher Schatten darunter */
-    B.box(0, -0.36, 0, 15.2, 0.7, 13.2, '#3a3f4b');
-    B.floor(-7.6, -6.6, 7.6, 6.6, -0.004, '#6f7684', 0);
-    B.floor(-7.6, 6.0, 7.6, 6.06, 0.002, '#a7adb8', 0);
-    B.floor(7.0, -6.0, 7.06, 6.06, 0.002, '#a7adb8', 0);
-    B.box(9.0, -0.36, 3.0, 3.2, 0.7, 6.4, '#3a3f4b');
-    B.floor(7.6, -0.2, 10.6, 6.2, -0.004, '#4b505b', 0);
-    for (j = 0; j < 8; j++) B.floor(10.1, 0.1 + j * 0.8, 10.18, 0.55 + j * 0.8, -0.002, '#e8e6e0', 0);
-    stat(quad({ x: 0, y: -0.72, z: 8.0, rx: -PI / 2, w: 34, h: 39, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
+    /* ---------- Gelände: Plattform mit Gassen, Rampe im Osten, weicher Schatten darunter ---------- */
+    B.box(0, -0.5, 11.5, 26.4, 0.7, 52, '#3a3f4b');
+    B.floor(-13.2, -14.5, 13.2, 37.5, GY + 0.004, '#d3ddd8', 0);
+    B.box(14.8, -0.5, 2.8, 3.2, 0.7, 8.4, '#3a3f4b');
+    B.floor(13.2, -1.4, 16.4, 7.0, GY + 0.004, '#4b505b', 0);
+    for (j = 0; j < 8; j++) B.floor(15.9, -1.1 + j * 1.0, 15.98, -0.55 + j * 1.0, GY + 0.007, '#e8e6e0', 0);
+    stat(quad({ x: 1.5, y: -0.9, z: 11.5, rx: -PI / 2, w: 46, h: 76, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
 
-    /* ---------- Wände ---------- */
-    var WH = 3.4, CAP = '#f2f4ef';
-    function wall(x0, z0, x1, z1, col) {
-      B.blk((x0 + x1) / 2, 0, (z0 + z1) / 2, x1 - x0, WH, z1 - z0, col);
-      B.blk((x0 + x1) / 2, WH, (z0 + z1) / 2, x1 - x0 + 0.02, 0.05, z1 - z0 + 0.02, CAP);
+    /* ---------- Hülle eines Raums: Boden, Plattformrand, hohe Nord- und (aussen) Westwand, niedrige übrige Wände mit Durchgängen ---------- */
+    function huelle(name, o) {
+      var t = 0.18, wand = o.wand || '#d8dfd7', sockel = '#6c8178', LOW = 0.95, hoch = ROOMS[name].west === 'hoch';
+      floorMesh(0, 0, RW, RD, o.key, o.floor, o.tile || 2);
+      B.blk(RW / 2, GY, RD / 2, RW + 0.4, -GY - 0.004, RD + 0.4, '#b9c4bf');
+      B.blk(RW / 2, 0, t / 2, RW, WH, t, wand);
+      B.box(RW / 2, WH + 0.035, t / 2, RW + 0.16, 0.07, t + 0.1, CAP);
+      B.box(RW / 2, 0.09, t + 0.018, RW - 0.1, 0.18, 0.036, sockel);
+      function low(x0, z0, x1, z1) {
+        B.cast = true; B.blk((x0 + x1) / 2, 0, (z0 + z1) / 2, x1 - x0, LOW, z1 - z0, wand); B.cast = false;
+        B.box((x0 + x1) / 2, LOW + 0.03, (z0 + z1) / 2, x1 - x0 + 0.06, 0.06, z1 - z0 + 0.06, CAP);
+      }
+      function rahmen(x, z, vert) {      // Türrahmen: zwei Pfosten und ein Sturz
+        B.cast = true; B.blk(x[0], 0, z[0], 0.12, 2.1, 0.12, '#f1efe9'); B.blk(x[1], 0, z[1], 0.12, 2.1, 0.12, '#f1efe9'); B.cast = false;
+        B.box((x[0] + x[1]) / 2, 2.16, (z[0] + z[1]) / 2, vert ? 0.12 : Math.abs(x[1] - x[0]) + 0.12, 0.1, vert ? Math.abs(z[1] - z[0]) + 0.12 : 0.12, '#f1efe9');
+      }
+      if (hoch) {
+        B.blk(t / 2, 0, RD / 2, t, WH, RD, wand);
+        B.box(t / 2, WH + 0.035, RD / 2, t + 0.1, 0.07, RD + 0.1, CAP);
+        B.box(t + 0.018, 0.09, RD / 2, 0.036, 0.18, RD - 0.1, sockel);
+      } else if (o.westLuecke) { low(0, 0, t, o.westLuecke[0]); low(0, o.westLuecke[1], t, RD); rahmen([t / 2, t / 2], [o.westLuecke[0], o.westLuecke[1]], true); }
+      else low(0, 0, t, RD);
+      // Südwand (niedrig) mit Durchgang
+      if (o.sued) { low(0, RD - t, o.sued[0], RD); low(o.sued[1], RD - t, RW, RD); rahmen([o.sued[0], o.sued[1]], [RD - t / 2, RD - t / 2], false); }
+      else low(0, RD - t, RW, RD);
+      // Ostwand (niedrig) mit Durchgang
+      if (o.ost) { low(RW - t, 0, RW, o.ost[0]); low(RW - t, o.ost[1], RW, RD); rahmen([RW - t / 2, RW - t / 2], [o.ost[0], o.ost[1]], true); }
+      else low(RW - t, 0, RW, RD);
     }
-    wall(-7.3, -6.3, 0, -6.0, '#d8dfd7'); wall(0, -6.3, 7.3, -6.0, '#d8dfd7');
-    wall(-7.3, -6.0, -7.0, 0, '#d8dfd7'); wall(-7.3, 0, -7.0, 6.3, '#d8dfd7');
-    B.blk(-3.5, 0, -5.985, 7, 0.14, 0.03, '#6b4f3a'); B.blk(3.5, 0, -5.985, 7, 0.14, 0.03, '#171b2b');
-    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#506b6c');
-    B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#8db8b3', 0.6);
-    B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#d2ba88', 1);
-
-    /* ---------- Trennwände mit Durchgängen ---------- */
-    function part(x0, z0, x1, z1, col) {
-      B.cast = true;
-      B.blk((x0 + x1) / 2, 0, (z0 + z1) / 2, x1 - x0, 1.0, z1 - z0, col || '#d8d4cb');
-      B.cast = false;
-      B.blk((x0 + x1) / 2, 1.0, (z0 + z1) / 2, x1 - x0 + 0.02, 0.05, z1 - z0 + 0.02, CAP);
-      B.blk((x0 + x1) / 2, 0, (z0 + z1) / 2, x1 - x0 + 0.02, 0.1, z1 - z0 + 0.02, '#8d8a82');
+    /* Das Liveboard an der Nordwand: Rahmen, Leuchtleiste, Bild (wird von W.updateLive gezeichnet). uc = Mitte in u. */
+    function liveBoard(name, uc) {
+      var d = ROOMS[name], t = 0.18;
+      B.box(uc, BY, t + 0.05, BW + 0.3, BH + 0.3, 0.1, '#16222b');
+      B.box(uc, BY - BH / 2 - 0.2, t + 0.1, BW + 0.2, 0.045, 0.03, '#7ad6c4', 0.5);
+      B.box(uc, BY + BH / 2 + 0.2, t + 0.1, BW + 0.2, 0.03, 0.03, '#7ad6c4', 0.35);
+      var tx = R.texture(T.liveboard(null), { mip: false });
+      var m = stat(quad({ x: uc, y: BY, z: t + 0.105, w: BW, h: BH, emi: 0.95, tex: tx }));
+      var cx = d.x0 + uc, cz = d.z0 + t + 0.1;
+      W.live[name] = { room: name, mesh: m, tex: tx, key: '', c: [cx, BY, cz], w: BW, h: BH, mn: [cx - BW / 2 - 0.15, BY - BH / 2 - 0.15, cz - 0.12], mx: [cx + BW / 2 + 0.15, BY + BH / 2 + 0.15, cz + 0.35], az: 0 };
     }
-    part(-7, -0.07, -3.2, 0.07, '#d9cdbb'); part(-2.0, -0.07, 2.0, 0.07); part(3.2, -0.07, 7, 0.07, '#d4d6dc');
-    part(-0.07, -6, 0.07, -1.5, '#c9ccd8'); part(-0.07, -0.5, 0.07, 2.5, '#d8d4cb'); part(-0.07, 3.5, 0.07, 6, '#d8d4cb');
-    [[-3.2, 0], [-2.0, 0], [2.0, 0], [3.2, 0], [0, -1.5], [0, -0.5], [0, 2.5], [0, 3.5]].forEach(function (p) {
-      B.cast = true; B.blk(p[0], 0, p[1], 0.12, 2.1, 0.12, '#f1efe9'); B.cast = false;
-    });
-    B.box(-2.6, 2.1, 0, 1.3, 0.1, 0.12, '#f1efe9'); B.box(2.6, 2.1, 0, 1.3, 0.1, 0.12, '#f1efe9');
-    B.box(0, 2.1, -1.0, 0.12, 0.1, 1.1, '#f1efe9'); B.box(0, 2.1, 3.0, 0.12, 0.1, 1.1, '#f1efe9');
-
-    /* ---------- Fenster (Chefbüro Nord, Shop West) mit Himmel ---------- */
     var skyTex = R.texture(T.skyline(12), { mip: false });
     W.sky = { tex: skyTex };
-    function winNorth(cx, cy, w, h) {
-      var z = -5.985, c = '#fbfaf6';
-      B.box(cx, cy + h / 2 + 0.04, z, w + 0.2, 0.08, 0.06, c); B.box(cx, cy - h / 2 - 0.04, z, w + 0.2, 0.08, 0.06, c);
-      B.box(cx - w / 2 - 0.05, cy, z, 0.1, h, 0.06, c); B.box(cx + w / 2 + 0.05, cy, z, 0.1, h, 0.06, c);
-      B.box(cx, cy, z, 0.05, h, 0.04, c); B.box(cx, cy, z, w, 0.04, 0.04, c);
-      B.box(cx, cy - h / 2 - 0.1, z + 0.09, w + 0.36, 0.05, 0.24, c);
-      stat(quad({ x: cx, y: cy, z: -5.995, w: w, h: h, tex: skyTex, emi: 0.95 }));
-    }
-    winNorth(-3.6, 1.85, 3.4, 1.8);
-    for (i = 0; i < 4; i++) { B.box(-5.62 + i * 0.1, 1.75, -5.93, 0.09, 2.3, 0.06, i % 2 ? '#8a6f5a' : '#7a604d'); B.box(-1.58 - i * 0.1, 1.75, -5.93, 0.09, 2.3, 0.06, i % 2 ? '#8a6f5a' : '#7a604d'); }
-    B.box(-3.6, 2.98, -5.9, 4.5, 0.04, 0.04, C.dark);
-    function winWest(cz, cy, w, h) {
-      var x = -6.985, c = '#fbfaf6';
+    function winWest(cz, cy, w, h) {      // Fenster in der hohen Westwand (nur Räume mit Aussenwand)
+      var x = 0.18, c = '#fbfaf6';
       B.box(x, cy + h / 2 + 0.04, cz, 0.06, 0.08, w + 0.2, c); B.box(x, cy - h / 2 - 0.04, cz, 0.06, 0.08, w + 0.2, c);
       B.box(x, cy, cz - w / 2 - 0.05, 0.06, h, 0.1, c); B.box(x, cy, cz + w / 2 + 0.05, 0.06, h, 0.1, c);
       B.box(x, cy, cz, 0.04, h, 0.05, c);
-      stat(quad({ x: -6.995, y: cy, z: cz, ry: PI / 2, w: w, h: h, tex: skyTex, emi: 0.95 }));
+      stat(quad({ x: x + 0.005, y: cy, z: cz, ry: PI / 2, w: w, h: h, tex: skyTex, emi: 0.95 }));
     }
-    winWest(1.2, 2.85, 1.0, 0.6); winWest(5.0, 2.85, 1.0, 0.6);
 
     /* ---------- Schreibtische mit Stuhl (Modelle), Bildschirmflächen ---------- */
     SEATS.forEach(function (s, idx) {
@@ -176,7 +185,6 @@
       }
       W.seats.push({ spec: s, idx: idx, key: s.room + ':' + s.i, o: o, screens: [], x: s.x, z: s.z, h: s.h, seed: hs });
     });
-
     /* Arbeitsort-Schilder: kleine Aufsteller auf dem Tisch. Wer zur Kamera schaut (h = 0), bekommt es vorn in der Mitte vor den Bildschirm,
        wer wegschaut (h = PI), seitlich am Rand der Figur, damit weder Figur noch Bildschirm das Schild verdecken. Das Chefbüro hat keins. */
     W.seats.forEach(function (seat) {
@@ -189,23 +197,61 @@
       B.box(sx, 0.785, sz - 0.014, 0.05, 0.05, 0.014, C.dark);
       seat.signPos = { x: sx, y: 0.855, z: sz };
     });
+    // Schreibtischunterlagen geben jedem Arbeitsplatz eine klare, ruhige Fläche.
+    SEATS.forEach(function (s) {
+      var sc = s.sc || 1;
+      B.push().t(s.x, 0, s.z).ry(s.h);
+      B.box(0, 0.755 * sc, 0.67 * sc, 0.78 * sc, 0.008, 0.38 * sc, s.room === 'Krypto' ? '#647c7c' : s.room === 'Shop' ? '#b0bdac' : s.boss ? '#50685f' : '#879a99');
+      B.pop();
+    });
 
-    /* ---------- Modernes Chefbüro mit Geldmanager-Wand ---------- */
-    W.moneyPanel={mn:[-6.24,0.8,-5.98],mx:[-1.32,3.2,-5.75]};
-    B.box(-3.8,2.0,-5.94,4.95,2.32,0.09,'#233d48');
-    B.box(-3.8,0.79,-5.87,4.72,0.045,0.05,'#7ad6c4',0.4);
-    var geldTex=tex('geldwand',T.geldwand),geldKey='';
-    stat(quad({x:-3.8,y:2.0,z:-5.88,w:4.72,h:2.12,emi:0.7,tex:geldTex}));
-    W.updateMoney=function(info){var key=JSON.stringify(info);if(key!==geldKey){R.retex(geldTex,T.geldwand(info));geldKey=key;}};
-    // Zurückhaltende Lichtleisten und helle Materialien statt zusätzlicher Raumwände.
-    B.box(-3.6,3.27,-5.76,5.8,0.035,0.035,'#c5f4e5',0.5);
-    B.box(-6.88,3.27,-3.0,0.035,0.035,4.6,'#c5f4e5',0.5);
-    P.rug(B, -5.9, -5.4, -1.3, -2.1, '#2f4f5f', '#d8c9a8');
-    place('bookshelf', -6.84, 0, -0.9, PI / 2, 1.15);
-    B.box(-6.975, 1.75, -3.25, 0.05, 1.4, 3.4, '#506b6c');
-    B.box(-6.955, 1.75, -3.25, 0.02, 1.3, 3.3, '#a6c9bd');
-    stat(quad({ x: -6.97, y: 2.05, z: -5.5, ry: PI / 2, w: 0.7, h: 0.9, tex: tex('poster0', function () { return T.poster(0); }), emi: 0.15 }));
-    B.box(-6.985, 2.05, -5.5, 0.03, 0.96, 0.76, C.white);
+    /* =============================== CHEFBÜRO =============================== */
+    beginRoom('Chefbüro');
+    huelle('Chefbüro', { key: 'fChef', floor: function () { return T.parquet('#b4c6c3', 1); }, sued: [6.6, 9.2] });
+    // Geldmanager-Wand (links) und Liveboard (rechts) an der Nordwand
+    W.moneyPanel = { mn: [ROOMS['Chefbüro'].x0 + 0.3, 0.75, ROOMS['Chefbüro'].z0 + 0.1], mx: [ROOMS['Chefbüro'].x0 + 4.7, 3.05, ROOMS['Chefbüro'].z0 + 0.45] };
+    B.box(2.5, 1.9, 0.235, 4.4, 2.3, 0.09, '#233d48');
+    B.box(2.5, 0.72, 0.29, 4.2, 0.045, 0.05, '#7ad6c4', 0.4);
+    var geldTex = tex('geldwand', T.geldwand), geldKey = '';
+    stat(quad({ x: 2.5, y: 1.9, z: 0.285, w: 4.2, h: 2.1, emi: 0.7, tex: geldTex }));
+    W.updateMoney = function (info) { var key = JSON.stringify(info); if (key !== geldKey) { R.retex(geldTex, T.geldwand(info)); geldKey = key; } };
+    liveBoard('Chefbüro', 7.6);
+    // Uhr über der Geldwand
+    stat(quad({ x: 2.5, y: 3.3, z: 0.19, w: 0.62, h: 0.62, tex: tex('clockface', T.clock), emi: 0.3 }));
+    var cb = new K.Builder(); cb.torus(2.5 + ROOMS['Chefbüro'].x0, 3.3, 0.18 + ROOMS['Chefbüro'].z0 + 0.02, 0.31, 0.03, 24, 6, C.woodD, 0); stat(R.mesh(cb));
+    var hb = new K.Builder(), mb = new K.Builder();
+    hb.box(0, 0.085, 0, 0.026, 0.17, 0.012, '#1b1d24'); mb.box(0, 0.125, 0, 0.018, 0.25, 0.012, '#1b1d24');
+    W.hands = { h: R.mesh(hb), m: R.mesh(mb), mh: M.ident(), mm: M.ident(), c: [2.5 + ROOMS['Chefbüro'].x0, 3.3, 0.18 + ROOMS['Chefbüro'].z0 + 0.04] };
+    // Pinnwand an der Westwand: Tafel mit der grossen Zahl und fünf Kärtchen
+    B.box(0.2, 3.28, 4.0, 0.03, 0.035, 6.2, '#c5f4e5', 0.5);
+    var boardTex = R.texture(T.board('', ''), { mip: false });
+    W.board = { mesh: quad({ x: 0.2, y: 2.35, z: 1.5, ry: PI / 2, w: 1.3, h: 0.65, tex: boardTex, emi: 0.2 }), tex: boardTex, key: '',
+      mn: [ROOMS['Chefbüro'].x0, 1.9, ROOMS['Chefbüro'].z0 + 0.8], mx: [ROOMS['Chefbüro'].x0 + 0.5, 2.8, ROOMS['Chefbüro'].z0 + 2.2],
+      lp: [ROOMS['Chefbüro'].x0 + 0.3, 2.95, ROOMS['Chefbüro'].z0 + 1.5], sp: [ROOMS['Chefbüro'].x0 + 0.5, 2.35, ROOMS['Chefbüro'].z0 + 1.5] };
+    for (i = 0; i < 5; i++) {
+      var cz = 2.9 + i * 0.75, ct = R.texture(T.card('', 'du'), { mip: false });
+      var cm = quad({ x: 0.2, y: 1.72 + (i % 2) * 0.08, z: cz, ry: PI / 2, rz: (i - 2) * 0.05, w: 0.52, h: 0.52, tex: ct, emi: 0.15 });
+      var gx = ROOMS['Chefbüro'].x0, gz = ROOMS['Chefbüro'].z0 + cz;
+      W.cards.push({ mesh: cm, tex: ct, mn: [gx, 1.35, gz - 0.3], mx: [gx + 0.45, 2.15, gz + 0.3], key: '', z: gz, lp: [gx + 0.25, 2.3 + (i % 2) * 0.08, gz], sp: [gx + 0.4, 1.8, gz] });
+    }
+    P.rug(B, 3.0, 3.5, 7.7, 6.6, '#2f4f5f', '#d8c9a8');
+    place('bookshelf', 0.55, 0, 7.2, PI / 2, 1.15);
+    place('sofa', 9.65, 0, 4.2, PI / 2, 1.0, { sofapolster: '#3f8f8f', sofakorpus: '#2f6f73' });
+    place('table', 8.2, 0, 4.2, PI / 2, 0.5);
+    P.mug(B, 8.2, 0.39, 4.35, C.white); P.mug(B, 8.3, 0.39, 4.05, C.red);
+    place('armchair', 8.6, 0, 6.2, 0.35, 1.0, { 'm': '#d9845a' });
+    place('lamp', 10.0, 0, 1.0, 0, 1.0);
+    place('planter', 9.9, 0, 7.3, 0, 0.9);
+    place('planter', 0.8, 0, 0.9, 0, 0.9);
+    place('plant', 10.0, 0, 3.0, 0, 0.8);
+    place('coatrack', 10.0, 0, 7.0, 0, 1.9);
+    // Teeküche an der Südwand
+    place('kitchen', 1.9, 0, 7.45, 0, 0.6);
+    place('fridge', 3.4, 0, 7.4, 0, 0.8);
+    P.waterCooler(B, 4.4, 7.3, PI);
+    place('bin', 5.1, 0, 7.4, 0, 0.6);
+    endRoom();
+    // Pult des Besitzers: Namensschild, Unterlage, Kaffee, Globus (global, am Platz des Besitzers)
     (function () {
       var s = SEATS[SEATS.length - 1];
       B.push().t(s.x, 0, s.z);
@@ -220,83 +266,84 @@
       B.pop();
       stat(quad({ x: s.x + 0.1, y: 0.8, z: s.z + 1.28, ry: 0, w: 0.3, h: 0.075, rx: -0.25, emi: 0.25, tex: tex('plateDu', function () { return T.sign('Du', '#3a2a10', '#e1b64a', '#7a5b14'); }) }));
     })();
-    place('sofa', -0.75, 0, -3.3, PI / 2, 1.0, { sofapolster: '#3f8f8f', sofakorpus: '#2f6f73' });
-    place('table', -2.0, 0, -3.3, PI / 2, 0.5);
-    P.mug(B, -2.0, 0.39, -3.15, C.white); P.mug(B, -1.9, 0.39, -3.45, C.red);
-    place('armchair', -1.9, 0, -1.3, 0.35, 1.0, { 'm': '#d9845a' });
-    place('lamp', -0.5, 0, -4.95, 0, 1.0);
-    place('planter', -0.55, 0, -5.45, 0, 0.9);
-    place('planter', -6.4, 0, -5.5, 0, 0.9);
-    place('plant', -0.55, 0, -0.65, 0, 0.8);
-    place('coatrack', -0.45, 0, -1.9, 0, 1.9);
-    // Teeküche an der Trennwand zum Shop
-    place('kitchen', -5.7, 0, -0.32, 0, 0.6);
-    place('fridge', -4.35, 0, -0.38, 0, 0.8);
-    P.waterCooler(B, -3.7, -0.4, PI);
-    place('bin', -3.05, 0, -0.35, 0, 0.6);
 
-    /* ---------- Kryptoraum ---------- */
-    [1.0, 1.85, 2.7].forEach(function (x, k) { P.serverRack(B, LB, x, -5.6, 0, 20 + k); });
-    sign('KRYPTO', 2.4, 0.6, 1.85, 2.75, -5.97, 0, '#7df0ff', '#10182a', '#37c8d8', 'Spielgeld, kein echtes Geld');
-    B.box(5.05, 2.0, -5.97, 3.3, 1.9, 0.06, '#0b0f18');
-    stat(quad({ x: 5.05, y: 2.0, z: -5.935, w: 3.1, h: 1.7, emi: 0.95, tex: tex('wallchart', function () { return T.screen('chart', 31); }) }));
-    B.cast = true; B.cylb(6.25, 0, -0.9, 0.3, 0.38, 0.55, 16, '#2a3047'); B.cast = false;
-    B.cylb(6.25, 0.55, -0.9, 0.33, 0.3, 0.04, 16, C.gold);
-    P.coinStack(B, 6.6, -1.9, 5); P.coinStack(B, 6.28, -2.1, 3, '#d9a93a'); P.coinStack(B, 0.5, -0.9, 4);
-    B.cast = true; B.cylb(0.9, 0, -0.9, 0.28, 0.34, 0.5, 8, '#2a3047'); B.cast = false;
-    place('plant', 0.55, 0, -5.15, 0, 0.8);
-    place('planter', 6.65, 0, -5.4, 0, 0.8);
-    place('fridge', 6.6, 0, -4.4, -PI / 2, 0.8);
-    place('relax', 5.9, 0, -4.6, PI, 1.4, { m: '#6b4fa0' });
-    P.cableRun(B, [[1.0, -5.0], [1.0, -3.8], [1.3, -3.6]], '#111'); P.cableRun(B, [[2.7, -5.0], [2.7, -4.0], [3.5, -3.6]], '#111');
-    P.cableRun(B, [[2.0, -5.0], [2.0, -2.2], [2.4, -1.9]], '#1c1f2a');
-    P.extinguisher(B, 0.2, -5.95, 0);
+    /* =============================== KRYPTO =============================== */
+    beginRoom('Krypto');
+    huelle('Krypto', { key: 'fKrypto', floor: function () { return T.carpet('#354550', 4); }, tile: 2, westLuecke: [4.6, 6.8] });
+    sign('KRYPTO', 2.4, 0.6, 2.0, 2.95, 0.2, 0, '#7df0ff', '#10182a', '#37c8d8', 'Spielgeld, kein echtes Geld');
+    liveBoard('Krypto', 6.9);
+    B.cast = true; B.cylb(9.6, 0, 6.9, 0.3, 0.38, 0.55, 16, '#2a3047'); B.cast = false;
+    B.cylb(9.6, 0.55, 6.9, 0.33, 0.3, 0.04, 16, C.gold);
+    P.coinStack(B, 9.95, 5.9, 5); P.coinStack(B, 9.45, 5.75, 3, '#d9a93a'); P.coinStack(B, 0.9, 7.2, 4);
+    B.cast = true; B.cylb(9.6, 0, 4.9, 0.28, 0.34, 0.5, 8, '#2a3047'); B.cast = false;
+    place('plant', 3.9, 0, 0.8, 0, 0.8);
+    place('planter', 9.95, 0, 0.8, 0, 0.8);
+    place('fridge', 9.9, 0, 2.3, -PI / 2, 0.8);
+    place('relax', 9.0, 0, 2.5, PI, 1.4, { m: '#6b4fa0' });
+    P.cableRun(B, [[1.1, 1.4], [1.1, 3.1], [2.3, 3.5]], '#111'); P.cableRun(B, [[2.8, 1.4], [2.8, 2.8], [4.9, 3.4]], '#111');
+    P.extinguisher(B, 0.4, 0.4, 0);
+    endRoom();
+    [1.0, 1.9, 2.8].forEach(function (u, k) { P.serverRack(B, LB, ROOMS['Krypto'].x0 + u, ROOMS['Krypto'].z0 + 0.62, 0, 20 + k); });
+    W.coinP = [ROOMS['Krypto'].x0 + 9.6, 1.35, ROOMS['Krypto'].z0 + 6.9];
+    W.crystalP = [ROOMS['Krypto'].x0 + 9.6, 0.95, ROOMS['Krypto'].z0 + 4.9];
 
-    /* ---------- Shop ---------- */
-    [0.95, 2.75, 4.55].forEach(function (z) { place('shopshelf', -6.55, 0, z, -PI / 2, 0.85); });
-    sign('SHOP', 2.6, 0.65, -6.97, 2.7, 2.75, PI / 2, '#ffd7e3', '#c7456d', '#ffffff', 'LuxeStyle');
-    P.mannequin(B, -6.2, 5.7, '#d9748f', 0.4); P.mannequin(B, -5.55, 5.75, '#3f9a8c', -0.3);
-    place('counter', -2.6, 0, 5.55, PI, 0.6);
-    P.bag(B, -3.5, 5.75, C.pink, 0.2); P.bag(B, -1.7, 5.7, C.teal, -0.2);
-    P.clothesRack(B, -0.9, 5.45, 0.05);
-    P.table(B, -4.15, 5.7, 0.42, 0.75, '#f1efe9');
-    P.bag(B, -4.05, 5.65, C.orange, 0); B.cylb(-4.25, 0.75, 5.75, 0.05, 0.05, 0.12, 8, C.yellow);
-    place('planter', -0.5, 0, 0.55, 0, 0.8);
-    P.rug(B, -6.0, 2.92, -0.4, 3.46, '#d9748f', '#f3e3d6', 0.012);
-    place('bin', -0.4, 0, 3.4, 0, 0.6);
-    P.extinguisher(B, -0.3, 0.12, PI);
+    /* =============================== SHOP =============================== */
+    beginRoom('Shop');
+    huelle('Shop', { key: 'fShop', floor: function () { return T.parquet('#dfcdae', 2); }, ost: [5.4, 7.3] });
+    liveBoard('Shop', 5.2);
+    [1.3, 3.3, 5.3, 7.0].forEach(function (z) { place('shopshelf', 0.55, 0, z, -PI / 2, 0.85); });
+    sign('SHOP', 2.6, 0.65, 0.2, 2.9, 4.3, PI / 2, '#ffd7e3', '#c7456d', '#ffffff', 'LuxeStyle');
+    for (i = 0; i < 12; i++) B.box(0.2, 0.63, 0.7 + i * 0.62, 0.055, 1.12, 0.045, i % 2 ? '#b99b78' : '#a98860');
+    winWest(1.4, 2.85, 1.0, 0.6);
+    P.mannequin(B, 1.5, 7.2, '#d9748f', 0.4); P.mannequin(B, 2.4, 7.25, '#3f9a8c', -0.3);
+    P.clothesRack(B, 3.7, 7.1, 0.05);
+    P.table(B, 5.2, 7.2, 0.42, 0.75, '#f1efe9');
+    P.bag(B, 5.3, 7.15, C.orange, 0); B.cylb(5.1, 0.75, 7.25, 0.05, 0.05, 0.12, 8, C.yellow);
+    place('counter', 7.6, 0, 7.15, PI, 0.6);
+    P.bag(B, 6.4, 7.2, C.pink, 0.2); P.bag(B, 8.9, 7.15, C.teal, -0.2);
+    P.rug(B, 1.0, 3.95, 9.6, 4.55, '#d9748f', '#f3e3d6', 0.012);
+    place('planter', 9.9, 0, 0.8, 0, 0.8);
+    place('bin', 9.9, 0, 4.4, 0, 0.6);
+    place('plant', 0.9, 0, 7.5, 0, 0.7);
+    P.extinguisher(B, 10.1, 7.6, PI);
+    endRoom();
 
-    /* ---------- Versand ---------- */
-    var bz = 3.0, bx0 = 0.5, bx1 = 6.0;
+    /* =============================== VERSAND =============================== */
+    beginRoom('Versand');
+    huelle('Versand', { key: 'fVersand', floor: function () { return T.concrete('#c4c7c1', 3); }, ost: [3.9, 6.9] });
+    liveBoard('Versand', 5.2);
+    var bz = 5.0, bx0 = 1.3, bx1 = 8.9;
     B.cast = true;
     B.blk((bx0 + bx1) / 2, 0.72, bz, bx1 - bx0, 0.13, 0.84, '#3b4252');
-    for (j = 0; j <= 5; j++) { var lx = bx0 + 0.2 + j * ((bx1 - bx0 - 0.4) / 5); B.blk(lx, 0, bz - 0.34, 0.06, 0.72, 0.06, C.metalD); B.blk(lx, 0, bz + 0.34, 0.06, 0.72, 0.06, C.metalD); B.blk(lx, 0.25, bz, 0.04, 0.03, 0.68, C.metalD); }
+    for (j = 0; j <= 7; j++) { var lx = bx0 + 0.2 + j * ((bx1 - bx0 - 0.4) / 7); B.blk(lx, 0, bz - 0.34, 0.06, 0.72, 0.06, C.metalD); B.blk(lx, 0, bz + 0.34, 0.06, 0.72, 0.06, C.metalD); B.blk(lx, 0.25, bz, 0.04, 0.03, 0.68, C.metalD); }
     B.cast = false;
     B.blk((bx0 + bx1) / 2, 0.85, bz - 0.4, bx1 - bx0, 0.07, 0.03, C.metal); B.blk((bx0 + bx1) / 2, 0.85, bz + 0.4, bx1 - bx0, 0.07, 0.03, C.metal);
     B.cyl(bx0 - 0.02, 0.78, bz, 0.1, 0.1, 0.8, 12, C.metalD); B.cyl(bx1 + 0.02, 0.78, bz, 0.1, 0.1, 0.8, 12, C.metalD);
-    B.blk(bx1 + 0.3, 0, bz + 0.4, 0.3, 0.45, 0.3, '#e48a3f'); B.box(bx1 + 0.3, 0.3, bz + 0.56, 0.1, 0.1, 0.01, C.green, 1);
+    B.blk(bx1 + 0.35, 0, bz + 0.5, 0.3, 0.45, 0.3, '#e48a3f'); B.box(bx1 + 0.35, 0.3, bz + 0.66, 0.1, 0.1, 0.01, C.green, 1);
     var beltM = (function () {
       var FB = new K.Builder();
-      FB.floor(bx0, bz - 0.36, bx1, bz + 0.36, 0.7885, [1, 1, 1], 0, 11, 1.4);
+      FB.floor(bx0 + ROOMS['Versand'].x0, bz - 0.36 + ROOMS['Versand'].z0, bx1 + ROOMS['Versand'].x0, bz + 0.36 + ROOMS['Versand'].z0, 0.7885, [1, 1, 1], 0, 14, 1.4);
       var m = R.mesh(FB); m.tex = tex('belt', T.belt, { repeat: true });
       return m;
     })();
     stat(beltM);
-    W.belt = { mesh: beltM, x0: bx0, x1: bx1, z: bz, moving: true, mn: [bx0, 0, bz - 0.5], mx: [bx1 + 0.9, 1.5, bz + 0.5] };
+    var vx = ROOMS['Versand'].x0, vz = ROOMS['Versand'].z0;
+    W.belt = { mesh: beltM, x0: bx0 + vx, x1: bx1 + vx, z: bz + vz, moving: true, mn: [bx0 + vx, 0, bz + vz - 0.5], mx: [bx1 + vx + 0.9, 1.5, bz + vz + 0.5],
+      lp: [vx + 4.2, 1.55, bz + vz], sp: [vx + 5.0, 1.2, bz + vz] };
     B.cast = true;
-    B.blk(0.7, 0, 2.35, 0.1, 2.4, 0.1, C.metalD); B.blk(0.7, 0, 3.65, 0.1, 2.4, 0.1, C.metalD);
+    B.blk(0.9, 0, bz - 0.65, 0.1, 2.4, 0.1, C.metalD); B.blk(0.9, 0, bz + 0.65, 0.1, 2.4, 0.1, C.metalD);
     B.cast = false;
-    B.box(0.7, 2.4, 3.0, 0.14, 0.12, 1.4, '#e48a3f');
-    sign('VERSAND', 1.25, 0.42, 0.78, 2.0, 3.0, PI / 2, '#fff3dc', '#b85a1c', '#ffd8a8', 'Bestellungen');
-    for (j = 0; j < 19; j++) { var hx = 0.55 + j * 0.3; B.floor(hx, 2.52, hx + 0.15, 2.58, 0.014, '#e8bd45', 0); B.floor(hx, 3.42, hx + 0.15, 3.48, 0.014, '#e8bd45', 0); }
-    P.pallet(B, 1.3, 4.8, 0.05, 3, 1); P.pallet(B, 2.7, 4.9, -0.1, 2, 2); P.pallet(B, 4.1, 4.85, 0.08, 1, 3);
-    P.crates(B, 5.6, 4.9, 0.1, 3);
-    if (!place('cart', 6.55, 0, 3.0, PI / 2, 0.6)) P.rollCage(B, 6.5, 3.0, 0, 6);
-    place('bin', 0.4, 0, 1.0, 0, 0.6);
-    place('plant', 6.6, 0, 0.6, 0, 0.8);
-    P.extinguisher(B, 6.9, 5.0, -PI / 2);
+    B.box(0.9, 2.4, bz, 0.14, 0.12, 1.4, '#e48a3f');
+    sign('VERSAND', 1.25, 0.42, 0.98, 2.0, bz, PI / 2, '#fff3dc', '#b85a1c', '#ffd8a8', 'Bestellungen');
+    for (j = 0; j < 26; j++) { var hx = 1.1 + j * 0.3; B.floor(hx, bz - 0.5, hx + 0.15, bz - 0.44, 0.014, '#e8bd45', 0); B.floor(hx, bz + 0.44, hx + 0.15, bz + 0.5, 0.014, '#e8bd45', 0); }
+    P.pallet(B, 2.4, 7.0, 0.05, 3, 1); P.pallet(B, 4.0, 7.1, -0.1, 2, 2); P.pallet(B, 5.6, 7.05, 0.08, 1, 3);
+    P.crates(B, 7.4, 7.0, 0.1, 3);
+    if (!place('cart', 9.7, 0, bz, PI / 2, 0.6)) P.rollCage(B, 9.6, bz, 0, 6);
+    place('bin', 0.6, 0, 1.4, 0, 0.6);
+    place('plant', 9.95, 0, 0.9, 0, 0.8);
+    P.extinguisher(B, 10.2, 7.7, -PI / 2);
     SEATS.filter(function (s) { return s.room === 'Versand'; }).forEach(function (s, k) {
-      B.push().t(s.x, 0, s.z);
+      B.push().t(s.u, 0, s.v);
       P.tapeGun(B, -0.5, 0.75, 0.62, 0.4);
       P.labelPrinter(B, 0.62, 0.75, 0.78, 0);
       if (k === 1) P.scale(B, -0.55, 0.75, 0.9);
@@ -304,157 +351,88 @@
       if (k === 2) { B.push().t(-0.5, 0.75, 0.9); P.parcel(B, 0.3, 0.2, 0.25, C.card); B.pop(); }
       B.pop();
     });
-    B.cast = true; B.blk(3.9, 0, 0.45, 1.6, 1.2, 0.4, C.metal); B.cast = false;
-    for (j = 0; j < 3; j++) B.blk(3.9, 0.32 + j * 0.38, 0.45, 1.56, 0.03, 0.38, '#7d8693');
-    for (j = 0; j < 4; j++) { B.push().t(3.35 + j * 0.34, 0.35, 0.45); P.parcel(B, 0.28, 0.24, 0.3, j % 2 ? C.card : C.cardD); B.pop(); }
-    // Lieferwagen an der Laderampe
-    place('van', 8.8, 0, 3.0, PI, 0.62);
+    B.cast = true; B.blk(9.0, 0, 0.75, 1.6, 1.2, 0.4, C.metal); B.blk(1.4, 0, 0.75, 1.6, 1.2, 0.4, C.metal); B.cast = false;
+    for (j = 0; j < 3; j++) { B.blk(9.0, 0.32 + j * 0.38, 0.75, 1.56, 0.03, 0.38, '#7d8693'); B.blk(1.4, 0.32 + j * 0.38, 0.75, 1.56, 0.03, 0.38, '#7d8693'); }
+    for (j = 0; j < 4; j++) { B.push().t(8.45 + j * 0.34, 0.35, 0.75); P.parcel(B, 0.28, 0.24, 0.3, j % 2 ? C.card : C.cardD); B.pop(); }
+    place('van', 14.6 - vx, GY, 2.8 - vz, PI, 0.62);
+    endRoom();
 
-    /* Innenausbau: warme Holzlamellen, gerahmte Bilder und gepolsterte Zonen.
-       Alle Ergänzungen gehen in das vorhandene statische Netz. */
-    for (j = 0; j < 13; j++) {
-      B.box(-6.975, 0.63, 0.2 + j * 0.46, 0.055, 1.12, 0.045, '#b99b78');
+    /* Studios: Social Media, Entwicklerbüro, YouTube-Studio */
+    function studioBoard(name, key, titel, sub, breite) {
+      liveBoard(name, 5.2);
+      sign(titel, breite, 0.42, 5.2, 3.55, 0.2, 0, '#f2f4ef', '#426d67', '#d8dfd7', sub);
     }
-    B.box(-6.96, 1.21, 3.0, 0.06, 0.045, 5.9, '#d4bea0');
-    // Gerahmte botanische Miniaturen oberhalb der Shop-Regale.
-    [-0.0, 2.75, 5.5].forEach(function (z, k) {
-      B.box(-6.94, 2.15, z, 0.09, 0.83, 0.63, '#a78661');
-      B.box(-6.88, 2.15, z, 0.025, 0.74, 0.54, '#f5f0e4');
-      B.box(-6.855, 2.12, z, 0.015, 0.44, 0.015, '#78957b');
-      for (var n = 0; n < 4; n++) {
-        B.sph(-6.84, 1.99 + n * 0.09, z + (n % 2 ? 0.07 : -0.07), 0.018, 0.065, 0.105, 8, 5, k % 2 ? '#8caa8c' : '#b2ba8e');
-      }
+    /* =============================== SOCIAL MEDIA =============================== */
+    beginRoom('Social Media');
+    huelle('Social Media', { key: 'fSocial', floor: function () { return T.parquet('#d6c9b8', 8); }, sued: [6.8, 9.4] });
+    studioBoard('Social Media', 'fSocial', 'SOCIAL MEDIA', 'Planung · Ergebnisse · Metricool', 3.4);
+    P.rug(B, 0.9, 2.4, 9.5, 5.6, '#a397af', '#e0d5c4', 0.012);
+    B.cylb(1.3, 0, 6.5, 0.2, 0.2, 0.035, 16, '#39424b');
+    B.box(1.3, 0.7, 6.5, 0.035, 1.4, 0.035, '#636974');
+    B.torus(1.3, 1.65, 6.5, 0.28, 0.035, 24, 6, '#fff0cf', 0.7);
+    B.box(1.3, 1.62, 6.49, 0.13, 0.19, 0.06, '#303643');
+    place('plant', 9.7, 0, 7.0, 0, 0.75);
+    place('plant', 0.8, 0, 0.9, 0, 0.75);
+    place('sofa', 5.2, 0, 7.1, PI, 0.65, { sofapolster: '#a093b7', sofakorpus: '#786c88' });
+    winWest(2.0, 2.85, 1.0, 0.6);
+    winWest(6.2, 2.85, 1.0, 0.6);
+    endRoom();
+    /* =============================== ENTWICKLERBÜRO =============================== */
+    beginRoom('Entwicklerbüro');
+    huelle('Entwicklerbüro', { key: 'fDev', floor: function () { return T.parquet('#d6c9b8', 9); }, westLuecke: [4.8, 6.8] });
+    studioBoard('Entwicklerbüro', 'fDev', 'ENTWICKLUNG', 'Produktbau · Prüfstand · Verkaufsunterlagen', 3.8);
+    P.rug(B, 0.9, 2.4, 9.5, 5.6, '#7f9e9c', '#d8ddcf', 0.012);
+    place('planter', 9.7, 0, 7.1, 0, 0.65);
+    place('bookshelf', 1.0, 0, 7.3, 0, 0.8);
+    P.table(B, 5.2, 7.0, 0, 0.72, '#d9c5a5');
+    B.box(5.0, 0.76, 7.0, 0.18, 0.12, 0.18, '#7da6a6');
+    B.box(5.25, 0.80, 7.0, 0.15, 0.20, 0.15, '#c4aa7c');
+    B.box(5.45, 0.74, 7.05, 0.16, 0.08, 0.16, '#a093b7');
+    endRoom();
+    /* =============================== YOUTUBE-STUDIO =============================== */
+    beginRoom('YouTube-Studio');
+    huelle('YouTube-Studio', { key: 'fYoutube', floor: function () { return T.parquet('#d6c9b8', 12); }, sued: [6.8, 9.4] });
+    studioBoard('YouTube-Studio', 'fYoutube', 'YOUTUBE-STUDIO', 'Originale Ideen · Videos · echte Messwerte', 5.0);
+    P.rug(B, 0.9, 2.4, 9.5, 5.6, '#596f91', '#a7bcd4', 0.012);
+    place('plant', 0.9, 0, 7.0, 0, 0.8);
+    place('plant', 9.8, 0, 0.9, 0, 0.8);
+    place('sofa', 5.2, 0, 7.1, 0, 0.65, { sofapolster: '#697b9b' });
+    winWest(2.0, 2.85, 1.0, 0.6);
+    winWest(6.2, 2.85, 1.0, 0.6);
+    endRoom();
+
+    /* =============================== CAMPUSPLATZ =============================== */
+    // Zentralmonitor: breites, niedriges Brett auf zwei Pfosten (weit genug von den Räumen, damit er sie nicht verdeckt)
+    var CZ = 11.0, CW = 6.4, CH = 3.2, CY = 2.35;
+    B.box(0, 0.06, CZ, 7.4, 0.12, 1.1, '#263c49');
+    B.box(-3.55, 1.0, CZ - 0.06, 0.2, 2.0, 0.3, '#48616c'); B.box(3.55, 1.0, CZ - 0.06, 0.2, 2.0, 0.3, '#48616c');
+    B.box(0, CY, CZ, CW + 0.3, CH + 0.3, 0.26, '#172b38');
+    B.box(0, CY + CH / 2 + 0.2, CZ, CW + 0.4, 0.05, 0.3, '#79d7c8', 0.35);
+    var ovTex = R.texture(T.liveboardUebersicht(null), { mip: false });
+    var ovM = stat(quad({ x: 0, y: CY, z: CZ + 0.14, w: CW, h: CH, emi: 0.9, tex: ovTex }));
+    W.overview = { mesh: ovM, tex: ovTex, key: '', c: [0, CY, CZ + 0.14], w: CW, h: CH, az: 0 };
+    W.campusPanel = { mn: [-CW / 2 - 0.15, CY - CH / 2 - 0.15, CZ - 0.1], mx: [CW / 2 + 0.15, CY + CH / 2 + 0.15, CZ + 0.35] };
+    // Sitzbereiche und Pflanzen auf dem Platz
+    [-8.2, 8.2].forEach(function (x) {
+      B.box(x, 0.38, 12.6, 2.9, 0.18, 0.85, '#b99a73');
+      B.box(x, 0.74, 12.26, 2.9, 0.64, 0.12, '#7b9c91');
+      B.box(x - 1.1, 0.15, 12.6, 0.14, 0.35, 0.6, '#405862');
+      B.box(x + 1.1, 0.15, 12.6, 0.14, 0.35, 0.6, '#405862');
+      place('planter', x, 0, 8.5, 0, 0.72);
     });
-    // Akustikpaneele mit sanfter Messingkante im Technikraum.
-    for (j = 0; j < 8; j++) {
-      B.box(0.35 + j * 0.86, 3.0, -5.94, 0.72, 0.10, 0.07, '#adc0b7');
-    }
-    // Schreibtischunterlagen geben jedem Arbeitsplatz eine klare, ruhige Fläche.
-    SEATS.forEach(function (s) {
-      var sc = s.sc || 1;
-      B.push().t(s.x, 0, s.z).ry(s.h);
-      B.box(0, 0.755 * sc, 0.67 * sc, 0.78 * sc, 0.008, 0.38 * sc, s.room === 'Krypto' ? '#647c7c' : s.room === 'Shop' ? '#b0bdac' : s.boss ? '#50685f' : '#879a99');
-      B.pop();
-    });
-    // Kleine bepflanzte Inseln an den offenen Raumkanten.
-    place('planter', -6.4, 0, 0.45, 0, 0.65);
-    place('planter', 6.55, 0, -0.45, 0, 0.65);
-    P.rug(B, -5.8, -5.25, -1.45, -2.25, '#708d83', '#ddd2b5', 0.016);
-
-    /* Gemeinsame Architektur aller Studios: Fensterwand, Seitenwand und offene Gangzugänge. */
-    function studioWaende(x0,z0,x1,z1,eingang) {
-      var cx=(x0+x1)/2, breite=x1-x0, fenster=4.4, rand=(breite-fenster)/2;
-      var wand='#d8dfd7', rahmen='#f2f4ef', sockel='#6c8178';
-      B.blk(cx,0,z0,breite,1.1,0.18,wand);
-      B.blk(cx,2.7,z0,breite,0.7,0.18,wand);
-      B.blk(x0+rand/2,1.1,z0,rand,1.6,0.18,wand);
-      B.blk(x1-rand/2,1.1,z0,rand,1.6,0.18,wand);
-      B.box(cx,3.43,z0,breite+0.16,0.07,0.24,rahmen);
-      [1.1,2.7].forEach(function(y){B.box(cx,y,z0+0.11,fenster+0.16,0.08,0.10,rahmen);});
-      [-1,0,1].forEach(function(n){B.box(cx+n*fenster/2,1.9,z0+0.11,0.07,1.65,0.10,rahmen);});
-      stat(quad({x:cx,y:1.9,z:z0+0.105,w:fenster,h:1.6,tex:skyTex,emi:0.8}));
-      var endeWest=eingang==='west'?z1-1.3:z1;
-      B.blk(x0,0,(z0+endeWest)/2,0.18,3.4,endeWest-z0,wand);
-      B.box(x0,3.43,(z0+z1)/2,0.24,0.07,z1-z0+0.08,rahmen);
-      if(eingang==='west')B.blk(x0,2.4,z1-0.65,0.18,1.0,1.3,wand);
-      var endeOst=eingang==='ost'?z1-1.3:z1;
-      B.blk(x1,0,(z0+endeOst)/2,0.18,0.95,endeOst-z0,wand);
-      B.box(x1,0.98,(z0+endeOst)/2,0.22,0.06,endeOst-z0,rahmen);
-      var front0=eingang==='west'?x0+1.3:x0, front1=eingang==='ost'?x1-1.3:x1;
-      B.blk((front0+front1)/2,0,z1,front1-front0,0.95,0.18,wand);
-      B.box((front0+front1)/2,0.98,z1,front1-front0,0.06,0.22,rahmen);
-      B.box(cx,0.09,z0+0.10,breite,0.18,0.035,sockel);
-    }
-
-    /* Social-Media-Studio mit Abstand zum Hauptgebäude. */
-    beginWing('Social Media');
-    floorMesh(-7.5, 6.3, 0.5, 11.8, 'fSocial', function () { return T.parquet('#d6c9b8', 8); }, 2);
-    B.box(-3.5, -0.36, 9.05, 8.0, 0.7, 5.8, '#3a3f4b');
-    studioWaende(-7.5,6.3,0.5,11.8,'ost');
-    B.box(-3.5, 0.03, 6.35, 7, 0.05, 0.12, '#b8a18a');
-    P.rug(B, -6.5, 7.3, -0.4, 9.3, '#a397af', '#e0d5c4', 0.012);
-    sign('SOCIAL MEDIA', 3.1, 0.55, -3.5, 3.05, 6.42, 0, '#f2f4ef', '#426d67', '#d8dfd7', 'Planung · Ergebnisse · Metricool');
-    // Ringlicht, Kamera, Storyboard und kleine Sitzecke.
-    B.cylb(-6.5, 0, 9.8, 0.2, 0.2, 0.035, 16, '#39424b');
-    B.box(-6.5, 0.7, 9.8, 0.035, 1.4, 0.035, '#636974');
-    B.torus(-6.5, 1.65, 9.8, 0.28, 0.035, 24, 6, '#fff0cf', 0.7);
-    B.box(-6.5, 1.62, 9.79, 0.13, 0.19, 0.06, '#303643');
-    place('plant', -0.4, 0, 10.0, 0, 0.75);
-    place('sofa', -3.1, 0, 10.35, PI, 0.65, { sofapolster: '#a093b7', sofakorpus: '#786c88' });
-
-    endWing();
-    /* Entwicklerbüro: Produktbau, Prüfstand und Verkaufsunterlagen. */
-    beginWing('Entwicklerbüro');
-    floorMesh(-0.5, 6.3, 7.5, 11.8, 'fDev', function () { return T.parquet('#d6c9b8', 9); }, 2);
-    B.box(3.5, -0.36, 9.05, 8.0, 0.7, 5.8, '#3a3f4b');
-    studioWaende(-0.5,6.3,7.5,11.8,'west');
-    P.rug(B, 0.4, 7.3, 6.6, 9.3, '#7f9e9c', '#d8ddcf', 0.012);
-    // Große Infowand mit echtem Status aus den geladenen Bürozeilen.
-    B.box(3.5, 1.95, 6.42, 5.85, 3.0, 0.14, '#17283b');
-    B.box(3.5, 0.40, 6.46, 5.7, 0.045, 0.07, '#68cfc5');
-    var infoTex = R.texture(T.infowand());
-    stat(quad({x:3.5,y:1.95,z:6.51,w:5.6,h:2.8,emi:0.85,tex:infoTex}));
-    var infoLast = '';
-    W.updateInfo = function (text) { if (text !== infoLast) { R.retex(infoTex, T.infowand(text)); infoLast = text; } };
-    place('planter', 6.5, 0, 10.1, 0, 0.65);
-    place('bookshelf', 0.5, 0, 10.25, 0, 0.8);
-    // Prototypentisch mit kleinen Bausteinen, keine zusätzliche Datenanzeige.
-    P.table(B, 3.4, 10.1, 0, 0.72, '#d9c5a5');
-    B.box(3.2, 0.76, 10.1, 0.18, 0.12, 0.18, '#7da6a6');
-    B.box(3.45, 0.80, 10.1, 0.15, 0.20, 0.15, '#c4aa7c');
-    B.box(3.65, 0.74, 10.15, 0.16, 0.08, 0.16, '#a093b7');
-
-    endWing();
-    /* YouTube-Studio: Redaktion, Produktion und Wachstumsmessung. */
-    beginWing('YouTube-Studio');
-    floorMesh(-7.5, 11.2, 0.5, 16.7, 'fYoutube', function () { return T.parquet('#d6c9b8', 12); }, 2);
-    B.box(-3.5, -0.36, 13.95, 8, 0.7, 5.8, '#273449');
-    studioWaende(-7.5,11.2,0.5,16.7,'ost');
-    P.rug(B, -6.6, 12.2, -0.4, 14.9, '#596f91', '#a7bcd4', 0.012);
-    sign('YOUTUBE-STUDIO', 5.8, 0.55, -3.5, 3.05, 11.32, 0, '#f2f4ef', '#426d67', '#d8dfd7', 'Originale Ideen · Videos · echte Messwerte');
-    place('plant', -6.4, 0, 15.1, 0, 0.8);
-    place('sofa', -2.0, 0, 15.0, 0, 0.65, {sofapolster:'#697b9b'});
-
-    endWing();
-
-    /* Campusplatz: breite gemeinsame Mitte, eigene Geometrie, keine neuen Assets. */
-    B.box(0,-0.36,9.7,21,0.7,6.4,'#344650');
-    B.floor(-10.5,6.5,10.5,12.9,0.009,'#d9e5de',0);
-    for(var f=-9.5;f<10.5;f+=1.0)B.floor(f,6.5,f+0.018,12.9,0.012,'#b8cbc2',0);
-    B.floor(-10.5,6.5,10.5,6.62,0.018,'#68b8ad',0.2);
-    B.floor(-10.5,12.78,10.5,12.9,0.018,'#68b8ad',0.2);
-    // Freistehende Monitorwand; rechts und links bleiben breite Laufwege.
-    B.box(0,0.10,9.0,8.4,0.2,1.3,'#263c49');
-    B.box(-3.7,1.5,9.0,0.18,3.0,0.35,'#48616c');
-    B.box(3.7,1.5,9.0,0.18,3.0,0.35,'#48616c');
-    B.box(0,3.1,9.0,8.2,4.05,0.32,'#172b38');
-    B.box(0,5.16,9.0,8.3,0.06,0.36,'#79d7c8',0.35);
-    stat(quad({x:0,y:3.1,z:9.18,w:7.8,h:3.7,emi:0.85,tex:infoTex}));
-    W.campusPanel={mn:[-4.1,1.05,8.82],mx:[4.1,5.18,9.25]};
-    [-7.2,7.2].forEach(function(x){
-      B.box(x,0.38,10.4,2.7,0.18,0.85,'#b99a73');
-      B.box(x,0.74,10.06,2.7,0.64,0.12,'#7b9c91');
-      B.box(x-1,0.15,10.4,0.14,0.35,0.6,'#405862');
-      B.box(x+1,0.15,10.4,0.14,0.35,0.6,'#405862');
-      place('planter',x,0,7.3,0,0.72);
-    });
-    stat(quad({x:0,y:0.026,z:11.9,rx:-PI/2,w:5.0,h:0.7,tex:tex('campusplatz',function(){return T.sign('CAMPUSPLATZ','#345d59','#d9e5de','#d9e5de');})}));
-
-    /* Durchgehende Gänge: Hauptgebäude, beide Studios und YouTube bilden einen Campus. */
-    function gang(x0,z0,x1,z1) {
-      B.box((x0+x1)/2,-0.36,(z0+z1)/2,x1-x0,0.7,z1-z0,'#3a3f4b');
-      B.floor(x0,z0,x1,z1,0.009,'#dce2d9',0);
-      // Feine Bodenfugen und ein ruhiger Leitstreifen statt zusätzlicher Wände.
-      for (var z=z0+0.8;z<z1;z+=0.8) B.floor(x0,z,x1,z+0.012,0.012,'#b8c5bc',0);
-      B.floor(x0+0.08,z0,x0+0.13,z1,0.016,'#66a6a0',0.15);
-    }
-    gang(-1.9,5.9,-0.3,6.5);
-    gang(-1.9,12.9,-0.3,26.4);
-    gang(-3.5,17.8,3.4,19.0);
-    gang(-3.5,25.0,-0.3,26.4);
-    place('planter',-2.3,0,20.0,0,0.55);
-    place('planter',0.15,0,22.5,0,0.55);
-    stat(quad({x:-1.1,y:0.025,z:20.5,rx:-PI/2,w:1.2,h:0.4,tex:tex('gang-studios',function(){return T.sign('STUDIOS','#345d59','#dce2d9','#dce2d9');})}));
+    place('planter', -4.8, 0, 8.6, 0, 0.7); place('planter', 4.8, 0, 8.6, 0, 0.7);
+    stat(quad({ x: 0, y: 0.026, z: 13.3, rx: -PI / 2, w: 5.0, h: 0.7, tex: tex('campusplatz', function () { return T.sign('CAMPUSPLATZ', '#345d59', '#d9e5de', '#d9e5de'); }) }));
+    // Türkise Randlinien der Plattform
+    B.floor(-13.2, 6.9, 13.2, 7.02, GY + 0.01, '#68b8ad', 0.2);
+    B.floor(-13.2, 14.0, 13.2, 14.12, GY + 0.01, '#68b8ad', 0.2);
+    // Pausengarten im freien Feld neben dem YouTube-Studio
+    B.floor(1.4, 25.8, 11.8, 33.8, GY + 0.012, '#a9cfa9', 0);
+    B.floor(3.2, 27.0, 10.0, 32.6, GY + 0.016, '#bfdcbc', 0);
+    [[2.4, 26.9], [10.8, 26.9], [2.4, 32.8], [10.8, 32.8]].forEach(function (p) { place('planter', p[0], GY, p[1], 0, 0.7); });
+    [[4.6, 30.0], [8.2, 29.0], [6.6, 32.0]].forEach(function (p) { place('plant', p[0], GY, p[1], 0, 1.2); });
+    B.box(6.4, 0.2 + GY, 27.6, 2.6, 0.16, 0.7, '#b99a73'); B.box(6.4, 0.55 + GY, 27.28, 2.6, 0.55, 0.1, '#7b9c91');
+    // Laternen in den Gassen
+    [[0, -3.0], [0, 8.2], [0, 24.0]].forEach(function (p) { B.cylb(p[0], GY, p[1], 0.05, 0.05, 2.6, 8, '#39424b'); B.sph(p[0], 2.75 + GY, p[1], 0.16, 0.16, 0.16, 10, 6, '#fff0cf', 0.8); });
 
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
@@ -476,7 +454,6 @@
         seat.screens.push(m);
       });
     });
-
     var ortTex = {};
     W.ortTex = function (art, kurz) {
       var key = (art || 'du') + '|' + (kurz || '');
@@ -488,46 +465,32 @@
       seat.sign = quad({ x: seat.signPos.x, y: seat.signPos.y, z: seat.signPos.z, rx: -0.42, w: 0.36, h: 0.18, emi: 0.45, tex: null });
     });
 
-    /* ---------- Wanduhr ---------- */
-    stat(quad({ x: -0.9, y: 2.5, z: -5.975, w: 0.62, h: 0.62, tex: tex('clockface', T.clock), emi: 0.3 }));
-    var cb = new K.Builder(); cb.torus(-0.9, 2.5, -5.96, 0.31, 0.03, 24, 6, C.woodD, 0); stat(R.mesh(cb));
-    var hb = new K.Builder(), mb = new K.Builder();
-    hb.box(0, 0.085, 0, 0.026, 0.17, 0.012, '#1b1d24'); mb.box(0, 0.125, 0, 0.018, 0.25, 0.012, '#1b1d24');
-    W.hands = { h: R.mesh(hb), m: R.mesh(mb), mh: M.ident(), mm: M.ident(), c: [-0.9, 2.5, -5.95] };
-
-    /* ---------- Tafel und Pinnwand-Kärtchen (aus den Daten, Textur wird ersetzt) ---------- */
-    var boardTex = R.texture(T.board('', ''), { mip: false });
-    W.board = { mesh: quad({ x: -6.3, y: 1.75, z: -5.945, w: 1.3, h: 0.65, tex: boardTex, emi: 0.2 }), tex: boardTex, mn: [-7.0, 1.3, -6.0], mx: [-5.6, 2.2, -5.7], key: '' };
-    for (i = 0; i < 5; i++) {
-      var cz = -4.65 + i * 0.64, ct = R.texture(T.card('', 'du'), { mip: false });
-      var cm = quad({ x: -6.93, y: 1.78 + (i % 2) * 0.08, z: cz, ry: PI / 2, rz: (i - 2) * 0.05, w: 0.52, h: 0.52, tex: ct, emi: 0.15 });
-      W.cards.push({ mesh: cm, tex: ct, mn: [-7.0, 1.4, cz - 0.3], mx: [-6.8, 2.2, cz + 0.3], key: '', z: cz });
-    }
+    /* ---------- Liveboards und Zentralmonitor: Bilder aus den Zeilen (Texturen werden ersetzt) ---------- */
+    W.updateLive = function (modelle) {
+      modelle = modelle || {};
+      Object.keys(W.live).forEach(function (name) {
+        var b = W.live[name], mo = modelle[name] || null, key = JSON.stringify(mo);
+        if (key !== b.key) { b.key = key; R.retex(b.tex, T.liveboard(mo)); }
+      });
+      var ok = JSON.stringify(modelle.__uebersicht || null);
+      if (ok !== W.overview.key) { W.overview.key = ok; R.retex(W.overview.tex, T.liveboardUebersicht(modelle.__uebersicht || null)); }
+    };
 
     /* ---------- Bewegtes: Münze, Kristall, Pakete ---------- */
     var mb2 = new K.Builder();
     mb2.push().rx(PI / 2); P.coin(mb2, 0.5, 0.07, C.gold); mb2.pop();
-    W.coin = { mesh: R.mesh(mb2), m: M.ident(), p: [6.25, 1.35, -0.9] };
+    W.coin = { mesh: R.mesh(mb2), m: M.ident(), p: W.coinP };
     var xb = new K.Builder();
     xb.cyl(0, 0.2, 0, 0.0, 0.26, 0.4, 4, '#8a6fb0'); xb.cyl(0, -0.2, 0, 0.26, 0.0, 0.4, 4, '#b08fe0');
-    W.crystal = { mesh: R.mesh(xb), m: M.ident(), p: [0.9, 0.95, -0.9] };
+    W.crystal = { mesh: R.mesh(xb), m: M.ident(), p: W.crystalP };
     [[0.5, 0.3, 0.4], [0.4, 0.26, 0.34], [0.58, 0.34, 0.44], [0.44, 0.28, 0.36]].forEach(function (sz, k) {
       var pb = new K.Builder(); P.parcel(pb, sz[0], sz[1], sz[2], k % 2 ? C.cardD : C.card);
       W.parcels.push({ mesh: R.mesh(pb), m: M.ident(), k: k, h: sz[1] });
     });
 
-    /* ---------- Kamera-Ansichten ---------- */
-    W.views = {
-      alle: { tx: 0, ty: 1.0, tz: 10.0, dist: 62 },
-      'Campusplatz': { tx: 0, ty: 1.6, tz: 9.7, dist: 23 },
-      Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
-      Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
-      Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
-      'Entwicklerbüro': { tx: 6.5, ty: 1.4, tz: 15.8, dist: 16 },
-      'Social Media': { tx: -6.5, ty: 0.7, tz: 15.8, dist: 14 },
-      'YouTube-Studio': { tx: -6.5, ty: 1.0, tz: 24, dist: 15 },
-      'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
-    };
+    /* ---------- Kamera-Ansichten: Mitte des Raums, Abstand passend zur Raumgrösse ---------- */
+    W.views = { alle: { tx: 1.5, ty: 0.4, tz: 12.5, dist: 68 }, 'Campusplatz': { tx: 0, ty: 1.4, tz: 10.6, dist: 25 } };
+    Object.keys(ROOMS).forEach(function (n) { var d = ROOMS[n]; W.views[n] = { tx: d.x0 + 5.2, ty: 0.7, tz: d.z0 + 4.4, dist: 15.5 }; });
     return W;
   };
 
