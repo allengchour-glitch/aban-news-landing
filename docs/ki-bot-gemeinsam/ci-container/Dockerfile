@@ -5,7 +5,7 @@ COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN --mount=type=secret,id=proxy_ca,required=true \
     apt-get -o Acquire::https::CaInfo=/run/secrets/proxy_ca update \
-    && apt-get -o Acquire::https::CaInfo=/run/secrets/proxy_ca install -y --no-install-recommends git ca-certificates libstdc++6 \
+    && apt-get -o Acquire::https::CaInfo=/run/secrets/proxy_ca install -y --no-install-recommends git curl ca-certificates libstdc++6 \
     && PIP_CERT=/run/secrets/proxy_ca pip install --no-cache-dir PyYAML==6.0.3 \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
