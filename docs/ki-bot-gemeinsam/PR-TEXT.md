@@ -1,3 +1,9 @@
+Das Krypto-Cockpit zeigt nun den tatsächlichen Kontoabruf und den getrennten Datenstand der Gewinnhistorie. Bei veralteten oder unvollständigen Daten bleiben Gewinnbeträge unbekannt. Heute, 7 Tage, 30 Tage und seit Start lassen sich auswählen; Kontowert, frei verfügbares Guthaben und offener Gewinn erscheinen getrennt. Desktop und geschützte Handy-Ansicht bleiben reine Anzeige, Handels- und Schutzregeln unverändert.
+
+Validierung dieser Ergänzung: 59 Profit-, 510 Cockpit- und 37 Browserprüfungen bestanden; die vorhandenen Krypto-Suiten einschließlich 731 strenger Pilotprüfungen bestanden. Ein vorhandener Test musste geerbte Proxyregeln erhalten; keine Handelsprüfung wurde entfernt. Alle neun allgemeinen lokalen CI-Abschnitte grün (ausgewählte Quellen über die drei Code-Revisionen identisch). Lieferpaket aus f18a61147 gebaut, Hash geprüft und im entpackten ZIP die zehn PC-Selbsttests bestanden. Rote Vorversuche und genaue Revisionen sind in [KRYPTO-LIVE-ANZEIGE.md](../KRYPTO-LIVE-ANZEIGE.md) mit Nachweis dokumentiert. Keine echten Kontowerte, Remote-Checks, Veröffentlichung oder PC-Installation behauptet.
+
+Die weiterhin enthaltenen ursprünglichen Korrekturen:
+
 Die noch unveröffentlichten Korrekturen für die Abannews-Website und den Krypto-Wochenbericht werden mit dem bearbeiteten Claude-BefundF8 zusammengeführt.
 
 Das Newsletter-Formular prüft E-Mail und Pflicht-Einwilligung auch ohne JavaScript; nach Rückkehr bleibt der Knopf bedienbar. Social-PNG/Favicons, mobile Footer- und Lesedarstellung sowie ein für Screenreader verborgener Link sind korrigiert. Der Archivgenerator erhält die Darstellungs-/PNG-Korrekturen dauerhaft.

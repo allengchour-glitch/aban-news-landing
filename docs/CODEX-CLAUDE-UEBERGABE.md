@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuell: Live-Anzeige für Konto und Gewinn
+
+Nutzerauftrag «live anzeige, profit, etc». Branch `codex/krypto-live-anzeige`, Anwendungscode `f18a61147`: tatsächlicher Konto-/Einkommen-Datenstand, Alter und Verbindungsstatus; unbekannte Gewinne bei veralteten/unvollständigen Daten; auswählbare Zeiträume und passende Realisiert-/Offen-/Funding-/Gebührenwerte; Kontowert, frei verfügbar und aktueller offener Gewinn. Desktop und geschützte Handy-Ansicht. Keine Handels-/Risiko-/Schutzänderung.
+
+GEMESSEN: 59 Profit-, 510 Cockpit-, 37 Browserprüfungen; 731 strenge Pilot- und 451 Handy-Schutzprüfungen bestanden. Alle 19 Suiten des bestehenden Paket-Workflows schließlich grün, einschließlich gezielter Wiederholung der Paketprüfung nach Ergänzung fehlender isolierter Git-HEAD-Metadaten. Neun allgemeine lokale CI-Abschnitte bestanden; geprüfter Sparse-Quellinhalt zwischen den drei Code-Revisionen identisch. Lieferpaket aus f18a61147 gebaut, Hash zurückgelesen, entpackter PC-Probelauf mit zehn Selbsttests bestanden. Ein bestehender Test entfernte NO_PROXY; ausschließlich geerbte Proxyregeln erhalten, keine Assertion entfernt. Rote Vorläufe bleiben im Nachweis erkennbar.
+
+[Funktionsumfang, Prüfungen, konkrete Grenzen und Nachweise](KRYPTO-LIVE-ANZEIGE.md). Keine echten Kontowerte abgerufen, kein Release oder PC-Installationsnachweis. GitHub-API weiterhin gesperrt, daher kein Merge/Live-Stand behauptet. Frisch gelesenes main `061d4ee5f` betrifft andere Dateien; Merge-Tree-Prüfung konfliktfrei, dessen Futterautomat-/Shop-Vorgaben bleiben unangetastet.
+
 Zusätzlicher Abschlussnachweis: main `a58f95003` integriert. Echter Pages-Build auf `ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf` im netzlosen Container erfolgreich; 30 Browser-Prüfungen am gebauten Paket bestanden, keine Übergröße/privaten Verzeichnisse. Details und Grenzen im unten verlinkten Abschlussdokument. GitHub-API weiterhin Forbidden, kein Live-Stand behauptet.
 
 ## Vorrangiger Abschlussstand: Version 5 und gemeinsame Veröffentlichung
