@@ -7,7 +7,8 @@ name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 # Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
 #   - Zeitplan OHNE Freigabedatei: nur LESEN (Trockenlauf). Der Lauf liest Shopify und Printful, zeigt in der Zusammenfassung, was er täte, legt nichts an, setzt keine Tags, sendet keine Telegram-Meldung.
 #   - Zeitplan MIT Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt im Repo: legt scharf Aufträge an. Datei löschen = Stopp (der nächste Lauf liest nur noch).
-#   - Handstart (workflow_dispatch): wie bisher, «Nur testen» an = Trockenlauf, aus = scharf. Die Freigabedatei gilt nur für den Zeitplan.
+#   - Handstart (workflow_dispatch): «Nur testen» an = Trockenlauf, aus = scharf (nur der ausdrückliche Wert false; eine leere Eingabe bleibt Trockenlauf). Die Freigabedatei gilt nur für den Zeitplan.
+#   - Jedes andere Ereignis (z. B. ein später ergänzter push- oder repository_dispatch-Auslöser) bleibt Trockenlauf; das Skript schreibt nur bei ausdrücklichem DRY_RUN=0.
 # Häufigkeit: EIN Zeitplan, 1× täglich um 13:37 UTC (14:37/15:37 Schweizer Zeit, vor der Rückmeldung printful-tracking um 15:23 UTC). Die Repo-Regel (SHARED-MEMORY, «Cron-Nulldiät» nach der Actions-Sperre vom
 # 13.06.): Crons nur einzeln und höchstens 1× am Tag. Eine zweite Tageszeit (z. B. 06:41 UTC) ist ein Entscheid des Besitzers; dann hier eine Zeile ergänzen. Zeile auskommentieren = nur Handstart.
 # Ohne Freigabedatei liest der Lauf nur (Trockenlauf, öffentliches Protokoll ohne Befundtexte).
@@ -15,7 +16,8 @@ name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 # Zugang: Repo-Secrets PRINTFUL_API_KEY, [PRINTFUL_STORE_ID], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN), [TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID].
 # KI-Kontrolle der Druckdatei: GEMINI_API_KEY. OHNE funktionierenden Schlüssel (oder bei Guthaben leer, HTTP 402) bleibt jeder Auftrag ein ENTWURF mit Meldung; wer die KI bewusst nicht will,
 # setzt das Secret PRINTFUL_KI_KONTROLLE auf «aus» (die mechanischen Prüfungen bleiben; Vorgabe seit dem Besitzer-Entscheid 05.11.). PRINTFUL_AUTO_CONFIRM=0 (Vorgabe) lässt jeden Auftrag Entwurf; 1 schaltet das automatische Bestätigen ein.
-# PRINTFUL_MAX_KOSTEN_USD (Vorgabe aus): absolute Obergrenze der Printful-Summe je Auftrag in USD; ein teurerer Auftrag bleibt Entwurf mit Befund «kosten-obergrenze».
+# PRINTFUL_MAX_KOSTEN_USD (Vorgabe aus): absolute Obergrenze der Printful-Summe je Auftrag in USD; ein teurerer Auftrag bleibt Entwurf mit Befund «kosten-obergrenze». PRINTFUL_AUTO_CONFIRM=1 wirkt NUR zusammen mit gesetzter Obergrenze
+# (sonst endet der Lauf mit Fehler und legt nichts an) UND eingeschalteter KI-Kontrolle (PRINTFUL_KI_KONTROLLE=pflicht plus GEMINI_API_KEY); bei KI «aus» bleibt jeder Auftrag ein Entwurf (Regel und Begründung: dropship/wp6-0611/SYNC.md, 7.4).
 # Einstellungen (Secrets ODER Variablen unter Settings → Secrets and variables → Actions → Variables; leer = Vorgabe): PRINTFUL_MIN_NETTO_CHF (Vorgabe 4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten),
 # PRINTFUL_STITCH_COLOR (white oder black: Nahtfarbe für Produkte mit Option stitch_color, Entscheid des Besitzers), PRINTFUL_DATEI_HOSTS, PRINTFUL_KI_MODELL, PRINTFUL_MAX (Bestellungen je Lauf, Vorgabe 20).
 # Wenn der Sync eine neue Bibliotheksdatei importiert, gehört sie in die Liste «sparse-checkout» unten.
@@ -62,10 +64,12 @@ jobs:
           EREIGNIS: ${{ github.event_name }}
           DRY_EINGABE: ${{ github.event.inputs.dry_run }}
         run: |
+          # Vorgabe ist NUR LESEN. Scharf (dry=0) wird es ausschliesslich bei (Zeitplan UND Freigabedatei) oder (Handstart UND ausdrücklich «Nur testen» = false);
+          # jedes andere Ereignis und jede leere oder fehlende Eingabe bleibt Trockenlauf (früher war alles ausser dem Zeitplan und «true» scharf).
           dry=1
           if [ "$EREIGNIS" = "schedule" ]; then
             if [ -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi
-          elif [ "$DRY_EINGABE" != "true" ]; then
+          elif [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$DRY_EINGABE" = "false" ]; then
             dry=0
           fi
           echo "dry=$dry" >> "$GITHUB_OUTPUT"
@@ -96,5 +100,5 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          DRY_RUN: ${{ steps.modus.outputs.dry == '1' && '1' || '' }}
+          DRY_RUN: ${{ steps.modus.outputs.dry == '0' && '0' || '1' }}
         run: node automation/printful_sync.mjs

@@ -2,8 +2,11 @@
 // Prüfdaten: Auszug aus dem ECHTEN Printful-Katalog (dropship/pod-auswahl/bestellweg_katalog_auszug.json: Tasse 19, T-Shirt 71, Kappe 206,
 // Poster 268, Kapuzenjacke 388, Strick 769, Hülle 798; gelesen 05.11.2026) und die echten Mitschnitte der Platzierung. Das Verhalten des ganzen Skripts (gefälschtes fetch)
 // prüft automation/printful_sync_test.mjs.
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { produktInfoAusAntwort } from './printful_platzierung.mjs';
 import {
@@ -11,6 +14,8 @@ import {
   dateiMasse, druckdateiFuer, wirklicheDpi, aufloesungPruefen, MIN_DPI_VORGABE, KOSTEN_REGEL, kostenPruefen, statusBewerten, dateienStatus, externalId, empfaengerAus,
   befundTag, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc, kontrolleLesen, kleineKopieUrl, planeBestellung, ERLAUBTE_HOSTS, BESTAETIGT, REVIEW_TAG,
   modellAusSku, SKU_BASIS, QD_MIN, QD_MAX, standortVon, aufpreisUsd, aufpreisPruefen, paketStandard, paketAusOption,
+  adresseNormal, EIGENE_CLOUDINARY_CLOUD, KOSTEN_MIN_USD, entwurfVergleichen, editorProdukt, zahlungPruefen, ANLEGEN_SPERRE_MIN, anlegenTag, anlegenAlterMin,
+  vorhandenVergleichen, SCOPES_PFLICHT, scopesBewerten, bestaetigenPlan,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -24,11 +29,11 @@ const arten = (bf) => bf.map((b) => b.art);
 
 // ═══════════════════════════════════════ Adresse einer Druckdatei
 for (const [n, w, soll] of [
-  ['Cloudinary https', U('a'), null], ['Shopify-CDN', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a.png', null], ['http statt https', 'http://res.cloudinary.com/x/a.png', 'keine https-Adresse'],
+  ['Cloudinary https', U('a'), null], ['Shopify-CDN', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a.png', null], ['http statt https', 'http://res.cloudinary.com/dwyi6kkrl/image/upload/a.png', 'keine https-Adresse'],
   ['fremder Host', 'https://evil.example.com/a.png', 'Host «evil.example.com» ist nicht erlaubt'], ['interne Adresse (SSRF)', 'https://169.254.169.254/latest/meta-data', 'Host «169.254.169.254» ist nicht erlaubt'],
   ['localhost', 'https://localhost/a.png', 'Host «localhost» ist nicht erlaubt'], ['Zugangsdaten in der Adresse', 'https://u:p@res.cloudinary.com/a.png', 'Adresse enthält Zugangsdaten'],
   ['Host nur im Pfad', 'https://evil.example.com/res.cloudinary.com/a.png', 'Host «evil.example.com» ist nicht erlaubt'], ['Host als Unterdomäne eines erlaubten Hosts', 'https://res.cloudinary.com.evil.com/a.png', 'Host «res.cloudinary.com.evil.com» ist nicht erlaubt'],
-  ['Grossbuchstaben im Host', 'https://RES.Cloudinary.com/a.png', null], ['Leerzeichen', 'https://res.cloudinary.com/a b.png', 'Adresse enthält Leerzeichen'], ['kein URL', 'javascript:alert(1)', 'keine https-Adresse'], ['leer', '', 'keine gültige Adresse'],
+  ['Grossbuchstaben im Host', 'https://RES.Cloudinary.com/dwyi6kkrl/image/upload/a.png', null], ['Leerzeichen', 'https://res.cloudinary.com/a b.png', 'Adresse enthält Leerzeichen'], ['kein URL', 'javascript:alert(1)', 'keine https-Adresse'], ['leer', '', 'keine gültige Adresse'],
   ['data-Adresse', 'data:image/png;base64,AAAA', 'keine https-Adresse'], ['file-Adresse', 'file:///etc/passwd', 'keine https-Adresse'],
 ]) ist(`Adresse: ${n}`, adresseProblem(w), soll);
 ist('Adresse: eigene Hostliste', adresseProblem('https://bilder.luxestyle.ch/a.png', ['bilder.luxestyle.ch']), null);
@@ -46,7 +51,7 @@ ist('Vorgabe-Hosts: nur Cloudinary und Shopify-CDN', [...ERLAUBTE_HOSTS], ['res.
   const r3 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', U('v'))]);
   ist('v6 ohne _pod_karte: Datei gilt, kein Problem (die Karte ist nur eine Gegenprobe)', [r3.dateien.length, r3.karte, r3.probleme], [1, null, []]);
   const r4 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', U('v')), A('_pod_karte', '{"v":6,"pl":["front","back"]}')]);
-  ist('Karte nennt «back», es gibt aber keine Datei dafür: weicher Befund «karte-ohne-datei»', [arten(r4.probleme), r4.probleme[0].hart], [['karte-ohne-datei'], false]);
+  ist('Karte nennt «back», es gibt aber keine Datei dafür: weicher Befund «karte-ohne-datei»', [arten(r4.probleme), r4.probleme[0]?.hart], [['karte-ohne-datei'], false]);
   const r5 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), A('_pod_karte', '{"v":6,"pl":["front"]}')]);
   ist('Datei für «back», aber nicht in der Karte: weicher Befund «datei-ohne-karte», Datei bleibt', [arten(r5.probleme), r5.dateien.length], [['datei-ohne-karte'], 2]);
   for (const [n, k] of [['kein JSON', '{"v":6,"pl":['], ['Version 5', '{"v":5,"pl":["front"]}'], ['ohne Platzierungsliste', '{"v":6}'], ['ein Array', '[1,2]'], ['null', 'null'], ['leer', '']]) {
@@ -54,17 +59,17 @@ ist('Vorgabe-Hosts: nur Cloudinary und Shopify-CDN', [...ERLAUBTE_HOSTS], ['res.
     ist(`kaputte Karte (${n}): weicher Befund «karte-unlesbar», die Datei bleibt gültig`, [arten(x.probleme), x.karte, x.dateien.length], [['karte-unlesbar'], null, 1]);
   }
   const r6 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (front)', U('w'))]);
-  ist('dieselbe Platzierung zweimal: harter Befund «datei-doppelt», die erste Datei bleibt', [arten(r6.probleme), r6.probleme[0].hart, r6.dateien.length], [['datei-doppelt'], true, 1]);
+  ist('dieselbe Platzierung zweimal: harter Befund «datei-doppelt», die erste Datei bleibt', [arten(r6.probleme), r6.probleme[0]?.hart, r6.dateien.length], [['datei-doppelt'], true, 1]);
   const r7 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', 'https://evil.example.com/x.png')]);
-  ist('Druckdatei von fremdem Host: harter Befund «datei-adresse», keine Datei', [arten(r7.probleme), r7.probleme[0].hart, r7.dateien.length, /nicht erlaubt/.test(r7.probleme[0].text)], [['datei-adresse'], true, 0, true]);
+  ist('Druckdatei von fremdem Host: harter Befund «datei-adresse», keine Datei', [arten(r7.probleme), r7.probleme[0]?.hart, r7.dateien.length, /nicht erlaubt/.test(r7.probleme[0]?.text)], [['datei-adresse'], true, 0, true]);
   const r8 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', '   '), A('🖼️ Druckdatei (back)', '')]);
   ist('leere Druckdatei-Eigenschaften: keine Datei, KEIN Problem (Editor schreibt sie für unbenutzte Seiten)', [r8.dateien.length, r8.probleme], [0, []]);
   const r9 = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', U('v')), A('Vorne · 🖼️ Druckdatei', U('w'))]);
-  ist('Schlüssel von v5 und v6 gemischt: harter Befund «schluessel-gemischt»', [arten(r9.probleme), r9.probleme[0].hart], [['schluessel-gemischt'], true]);
+  ist('Schlüssel von v5 und v6 gemischt: harter Befund «schluessel-gemischt»', [arten(r9.probleme), r9.probleme[0]?.hart], [['schluessel-gemischt'], true]);
 }
 // v5 (wie die alte pickFiles): «Hinten»/«Back» → Rückseite, alles andere Vorderseite
 for (const [n, k, seite] of [['Vorne · 🖼️ Druckdatei', 'Vorne · 🖼️ Druckdatei', 'front'], ['Hinten · 🖼️ Druckdatei', 'Hinten · 🖼️ Druckdatei', 'back'], ['🖼️ Druckdatei (Vorne)', '🖼️ Druckdatei (Vorne)', 'front'],
-  ['🖼️ Druckdatei (Hinten)', '🖼️ Druckdatei (Hinten)', 'back'], ['🖼️ Druckdatei (nur eine Seite)', '🖼️ Druckdatei', 'front'], ['englisch Front', 'Front · 🖼️ Print file', 'front'], ['englisch Back', 'Back · 🖼️ Print file', 'back'], ['Kleinschreibung hinten', 'hinten druckdatei', 'back']]) {
+  ['🖼️ Druckdatei (Hinten)', '🖼️ Druckdatei (Hinten)', 'back'], ['🖼️ Druckdatei (nur eine Seite)', '🖼️ Druckdatei', 'front'], ['englisch Front', 'Front · 🖼️ Print file', 'front'], ['englisch Back', 'Back · 🖼️ Print file', 'back'], ['englisch Back in Klammern', '🖼️ Print file (Back)', 'back'], ['Front in Klammern', '🖼️ Druckdatei (Front)', 'front']]) {
   const r = dateienAusEigenschaften([A(k, U('x'))]);
   ist(`v5 «${n}» → ${seite}`, [r.dateien.map((d) => [d.seite, d.platzierung, d.quelle]), r.probleme], [[[seite, null, 'v5']], []]);
 }
@@ -93,7 +98,7 @@ for (const [n, k, seite] of [['Vorne · 🖼️ Druckdatei', 'Vorne · 🖼️ D
 for (const [sku, soll] of [['3615382_20688', 20688], ['111_1320 ', 1320], ['abc_12_34', 34], ['5599797_4025', 4025], ['CJ-123', null], ['', null], [null, null], ['x_0', null], ['x_-5', null], ['x_12a', null], ['_9', 9]]) ist(`variantAusSku(${JSON.stringify(sku)})`, variantAusSku(sku), soll);
 ist('SKU: Position und Variante gleich → die Nummer, kein Problem', skuWaehlen({ positionSku: 'a_4025', variantenSku: 'a_4025' }).probleme, []);
 ist('SKU: Position hat Vorrang vor Variante (Codex-Fund: früher umgekehrt)', skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).vid, 111);
-ist('SKU: die beiden widersprechen sich → weicher Befund «sku-widerspruch» (nennt beide Nummern)', [arten(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme), skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0].hart, /111/.test(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0].text) && /222/.test(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0].text)], [['sku-widerspruch'], false, true]);
+ist('SKU: die beiden widersprechen sich → weicher Befund «sku-widerspruch» (nennt beide Nummern)', [arten(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme), skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0]?.hart, /111/.test(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0]?.text) && /222/.test(skuWaehlen({ positionSku: 'a_111', variantenSku: 'a_222' }).probleme[0]?.text)], [['sku-widerspruch'], false, true]);
 ist('SKU: nur die Variante hat eine Nummer → Rückfall', skuWaehlen({ positionSku: 'kaputt', variantenSku: 'a_222' }).vid, 222);
 ist('SKU: nur die Position hat eine → die Position, kein Widerspruch', [skuWaehlen({ positionSku: 'a_111', variantenSku: null }).vid, skuWaehlen({ positionSku: 'a_111', variantenSku: null }).probleme], [111, []]);
 ist('SKU: keine Nummer → vid null', skuWaehlen({ positionSku: 'x', variantenSku: 'y' }).vid, null);
@@ -137,15 +142,15 @@ const roh = (pid) => KAT[pid].produkt;
   const p = optionenPruefen({ produkt: roh(71), typen: ['default'], angegeben: {} });
   ist('T-Shirt nur Vorderseite (DTG): keine Pflichtoption, keine Optionen, kein Befund', [p.optionen, p.befunde], [[], []]);
   const e = optionenPruefen({ produkt: roh(71), typen: ['embroidery_chest_left'], angegeben: {} });
-  ist('Stickerei ohne Garnfarben: weicher Befund «optionen», Pflichtoption thread_colors_chest_left', [arten(e.befunde), e.befunde[0].hart, /Pflichtoption «thread_colors_chest_left» fehlt/.test(e.befunde[0].text)], [['optionen'], false, true]);
+  ist('Stickerei ohne Garnfarben: weicher Befund «optionen», Pflichtoption thread_colors_chest_left', [arten(e.befunde), e.befunde[0]?.hart, /Pflichtoption «thread_colors_chest_left» fehlt/.test(e.befunde[0]?.text)], [['optionen'], false, true]);
   const e2 = optionenPruefen({ produkt: roh(71), typen: ['embroidery_chest_left'], angegeben: { thread_colors_chest_left: '#FFFFFF, #cc3333' } });
   ist('Stickerei mit Garnfarben (Text mit Komma, Kleinbuchstaben): Liste in der Katalogschreibweise, kein Befund', [e2.optionen, e2.befunde], [[{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#CC3333'] }], []]);
   const e3 = optionenPruefen({ produkt: roh(71), typen: ['embroidery_chest_left'], angegeben: { thread_colors_chest_left: ['#FFFFFF', '#123456'] } });
-  ist('Garnfarbe, die es nicht gibt (#123456): Befund, nichts davon wird gesendet', [e3.optionen, /#123456/.test(e3.befunde[0].text)], [[], true]);
+  ist('Garnfarbe, die es nicht gibt (#123456): Befund, nichts davon wird gesendet', [e3.optionen, /#123456/.test(e3.befunde[0]?.text)], [[], true]);
   const e4 = optionenPruefen({ produkt: roh(71), typen: ['default'], angegeben: { gibt_es_nicht: 'x' } });
-  ist('unbekannte Option: Befund «optionen», nicht gesendet', [e4.optionen, /gibt es bei diesem Printful-Produkt nicht/.test(e4.befunde[0].text)], [[], true]);
+  ist('unbekannte Option: Befund «optionen», nicht gesendet', [e4.optionen, /gibt es bei diesem Printful-Produkt nicht/.test(e4.befunde[0]?.text)], [[], true]);
   const e5 = optionenPruefen({ produkt: roh(71), typen: ['embroidery_chest_left', 'embroidery_sleeve_left_top'], angegeben: { thread_colors_chest_left: '#000000' } });
-  ist('zwei Stickereien, nur für eine Garnfarben: Befund nennt die andere', [e5.befunde.length, /thread_colors_sleeve_left_top/.test(e5.befunde[0].text)], [1, true]);
+  ist('zwei Stickereien, nur für eine Garnfarben: Befund nennt die andere', [e5.befunde.length, /thread_colors_sleeve_left_top/.test(e5.befunde[0]?.text)], [1, true]);
   const b = optionenPruefen({ produkt: roh(71), typen: ['default'], angegeben: { lifelike: 'ja' } });
   ist('bool «lifelike» = ja → true', b.optionen, [{ id: 'lifelike', value: true }]);
   ist('bool «vielleicht» → Befund', optionenPruefen({ produkt: roh(71), typen: [], angegeben: { lifelike: 'vielleicht' } }).befunde.length, 1);
@@ -156,17 +161,17 @@ const roh = (pid) => KAT[pid].produkt;
 }
 {
   const j = optionenPruefen({ produkt: roh(388), typen: ['default', 'back'], angegeben: {} });
-  ist('Kapuzenjacke (CUT-SEW) mit stitch_color im Katalog: Pflicht «stitch_color» fehlt → Befund', [arten(j.befunde), /stitch_color/.test(j.befunde[0].text)], [['optionen'], true]);
+  ist('Kapuzenjacke (CUT-SEW) mit stitch_color im Katalog: Pflicht «stitch_color» fehlt → Befund', [arten(j.befunde), /stitch_color/.test(j.befunde[0]?.text)], [['optionen'], true]);
   const j2 = optionenPruefen({ produkt: roh(388), typen: ['default'], angegeben: { stitch_color: 'black' } });
   ist('stitch_color = black → gesendet', [j2.optionen, j2.befunde], [[{ id: 'stitch_color', value: 'black' }], []]);
   const j3 = optionenPruefen({ produkt: roh(388), typen: ['default'], angegeben: { stitch_color: 'Pink' } });
-  ist('stitch_color = Pink (nicht erlaubt) → Befund mit den erlaubten Werten', [j3.optionen, /white, black/.test(j3.befunde[0].text)], [[], true]);
+  ist('stitch_color = Pink (nicht erlaubt) → Befund mit den erlaubten Werten', [j3.optionen, /white, black/.test(j3.befunde[0]?.text)], [[], true]);
   const j4 = optionenPruefen({ produkt: roh(388), typen: ['default'], angegeben: { stitch_color: 'White' } });
   ist('stitch_color: Titel statt Schlüssel («White») wird auf «white» abgebildet', j4.optionen, [{ id: 'stitch_color', value: 'white' }]);
   const k = optionenPruefen({ produkt: roh(206), typen: ['embroidery_front_large'], angegeben: {} });
-  ist('Kappe: Stickerei vorne gross verlangt thread_colors_front_large', /thread_colors_front_large/.test(k.befunde[0].text), true);
+  ist('Kappe: Stickerei vorne gross verlangt thread_colors_front_large', /thread_colors_front_large/.test(k.befunde[0]?.text), true);
   const s = optionenPruefen({ produkt: roh(769), typen: ['default'], angegeben: {} });
-  ist('Strick (KNITWEAR): yarn_colors ist Pflicht (Annahme)', [arten(s.befunde), /yarn_colors/.test(s.befunde[0].text)], [['optionen'], true]);
+  ist('Strick (KNITWEAR): yarn_colors ist Pflicht (Annahme)', [arten(s.befunde), /yarn_colors/.test(s.befunde[0]?.text)], [['optionen'], true]);
   const tasse = optionenPruefen({ produkt: roh(19), typen: ['default'], angegeben: {} });
   ist('Tasse: keine Pflichtoptionen', [tasse.optionen, tasse.befunde], [[], []]);
 }
@@ -285,7 +290,8 @@ ist('BESTAETIGT: genau diese fünf', [...BESTAETIGT].sort(), ['fulfilled', 'inpr
   ist('Dateien: Problem schlägt Warten', dateienStatus(o({ type: 'a', status: 'waiting' }, { type: 'b', status: 'failed' })).art, 'problem');
   ist('Dateien: unbekannter Status → Problem', dateienStatus(o({ type: 'a', status: 'komisch' })).art, 'problem');
   ist('Dateien: leerer Status → Problem', dateienStatus(o({ type: 'a' })).art, 'problem');
-  ist('Dateien: Auftrag ohne Artikel → ok (nichts zu prüfen)', [dateienStatus({}).art, dateienStatus(null).art, dateienStatus({ items: [{}] }).art], ['ok', 'ok', 'ok']);
+  ist('Dateien (Fund 8): ein Auftrag ohne eine einzige Datei (keine Artikel, null, Artikel ohne files, nur Vorschau) ist NIE «ok»: er wartet (leer)', [dateienStatus({}), dateienStatus(null), dateienStatus({ items: [{}] }), dateienStatus(o({ type: 'preview', status: 'ok' }))].map((x) => [x.art, x.leer]), [['wartet', true], ['wartet', true], ['wartet', true], ['wartet', true]]);
+  ist('Dateien (Fund 8): mit einer echten Datei ist «leer» nicht gesetzt', [dateienStatus(o({ type: 'front', status: 'ok' })).leer, dateienStatus(o({ type: 'front', status: 'waiting' })).leer], [undefined, false]);
 }
 
 // ═══════════════════════════════════════ Kennung, Empfänger, Tags
@@ -296,9 +302,17 @@ ist('externalId: höchstens 32 Zeichen', externalId('#' + '9'.repeat(100)).lengt
   const e = empfaengerAus(o);
   ist('Empfänger vollständig', [e.befunde, e.recipient.name, e.recipient.country_code, e.recipient.zip, e.recipient.email], [[], 'Max Muster', 'CH', '4000', 'a@b.ch']);
   ist('Empfänger: Name aus Vor- und Nachname', empfaengerAus({ shippingAddress: { firstName: 'Eva', lastName: 'Beispiel', address1: 'x', city: 'y', zip: '1', countryCodeV2: 'CH' } }).recipient.name, 'Eva Beispiel');
-  ist('Empfänger ohne Adresse → harter Befund «adresse»', [empfaengerAus({}).befunde[0].art, empfaengerAus({}).befunde[0].hart, empfaengerAus({}).recipient], ['adresse', true, null]);
+  ist('Empfänger ohne Adresse → harter Befund «adresse»', [empfaengerAus({}).befunde[0]?.art, empfaengerAus({}).befunde[0]?.hart, empfaengerAus({}).recipient], ['adresse', true, null]);
   const l = empfaengerAus({ shippingAddress: { name: 'X', address1: '', city: 'Basel', zip: '', countryCodeV2: '' } });
-  ist('Empfänger unvollständig → harter Befund nennt Strasse, PLZ, Land', [l.befunde[0].hart, /Strasse, PLZ, Land/.test(l.befunde[0].text)], [true, true]);
+  ist('Empfänger unvollständig → harter Befund nennt Strasse, PLZ, Land', [l.befunde[0]?.hart, /Strasse, PLZ, Land/.test(l.befunde[0]?.text)], [true, true]);
+  {                                                                                                         // jede Pflichtangabe einzeln: fehlt genau sie, nennt der harte Befund genau sie (und nur sie)
+    const voll = { name: 'Eva Beispiel', address1: 'Gasse 1', city: 'Basel', zip: '4051', countryCodeV2: 'CH' };
+    for (const [feld, wort] of [['name', 'Name'], ['address1', 'Strasse'], ['city', 'Ort'], ['zip', 'PLZ'], ['countryCodeV2', 'Land']]) {
+      const x = empfaengerAus({ shippingAddress: { ...voll, [feld]: '  ' } });
+      ist(`Empfänger Fund 13: fehlt nur «${wort}», ist der Befund hart und nennt genau «${wort}»`, [x.befunde.length, x.befunde[0]?.hart, x.befunde[0]?.text], [1, true, `Lieferadresse unvollständig: ${wort} fehlt`]);
+    }
+    ist('Empfänger Fund 13: eine vollständige Adresse (Name aus Vor- und Nachname) hat keinen Befund', [empfaengerAus({ shippingAddress: { ...voll, name: undefined, firstName: 'Eva', lastName: 'Beispiel' } }).befunde.length, empfaengerAus({ shippingAddress: voll }).befunde.length], [0, 0]);
+  }
   ist('Empfänger: Land wird NICHT mehr still auf CH ergänzt (früher countryCodeV2||CH)', empfaengerAus({ shippingAddress: { name: 'X', address1: 'a', city: 'b', zip: '1' } }).befunde.length, 1);
 }
 ist('befundTag: Slug', [befundTag('optionen'), befundTag('Kontrolle Fail'), befundTag('zahlung-fehlgeschlagen'), REVIEW_TAG], ['printful-review-optionen', 'printful-review-kontrolle-fail', 'printful-review-zahlung-fehlgeschlagen', 'printful-review']);
@@ -372,34 +386,38 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('Plan v5 Tasse (nur «default»): Typ default, Auflösung der Tasse geprüft, kein Befund', [t.items[0].files.map((f) => f.type), t.befunde], [['default'], []]);
 }
 { // Fertig-Produkt mit Metafeld
-  const p = await plane([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['wunschdesign'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9_19515', variant: { sku: '9_19515' } })], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
-  ist('Plan Fertig-Produkt: Metafeld custom.print_file als Vorderseite (jeder https-Host, es gehört dem Besitzer)', [p.items[0].files, p.befunde], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], []]);
-  const m2 = await plane([zeile({ customAttributes: [], product: { productType: 'x', tags: ['wunschdesign'], metafield: { value: 'http://bilder.luxestyle.ch/motiv.png' } } })]);
+  const p = await plane([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9_19515', variant: { sku: '9_19515' } })], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
+  ist('Plan Fertig-Produkt (Tag printful_personalized_product, KEIN Editor-Produkt): Metafeld custom.print_file als Vorderseite (jeder https-Host, es gehört dem Besitzer)', [p.items[0].files, p.befunde], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], []]);
+  // Härtung 10.11.2026 (Fund 22): ein EDITOR-Produkt (Tag wunschdesign) druckt nie das Muster aus dem Metafeld; ohne Design der Kundin gilt «keine-druckdatei»
+  const edit = await plane([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['wunschdesign', 'printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9_19515', variant: { sku: '9_19515' } })], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
+  ist('Plan Fund 22: Editor-Produkt (Tag wunschdesign) mit Metafeld und OHNE Design der Kundin → harter Befund «keine-druckdatei», kein Artikel (das Muster des Besitzers wird nie gedruckt)', [arten(edit.befunde), edit.befunde[0]?.hart, edit.items.length], [['keine-druckdatei'], true, 0]);
+  ist('editorProdukt: nur das Tag wunschdesign (Grossschreibung egal) macht ein Editor-Produkt', [editorProdukt({ product: { tags: ['wunschdesign'] } }), editorProdukt({ product: { tags: ['WunschDesign'] } }), editorProdukt({ product: { tags: ['printful_personalized_product'] } }), editorProdukt({ product: null }), editorProdukt(null)], [true, true, false, false, false]);
+  const m2 = await plane([zeile({ customAttributes: [], product: { productType: 'x', tags: ['printful_personalized_product'], metafield: { value: 'http://bilder.luxestyle.ch/motiv.png' } } })]);
   ist('Plan Metafeld mit http → keine Datei → harter Befund «keine-druckdatei»', arten(m2.befunde), ['keine-druckdatei']);
-  const m3 = await plane([zeile({ customAttributes: [], product: { productType: 'x', tags: ['wunschdesign'], metafield: { value: 'kein url' } } })]);
-  ist('Plan Metafeld ohne Adresse → harter Befund', [arten(m3.befunde), m3.befunde[0].hart], [['keine-druckdatei'], true]);
+  const m3 = await plane([zeile({ customAttributes: [], product: { productType: 'x', tags: ['printful_personalized_product'], metafield: { value: 'kein url' } } })]);
+  ist('Plan Metafeld ohne Adresse → harter Befund', [arten(m3.befunde), m3.befunde[0]?.hart], [['keine-druckdatei'], true]);
 }
 // harte Befunde
 {
   const io = mkIo();
   const p = await plane([zeile({ sku: 'kaputt', variant: { sku: 'auch kaputt' } })], io);
-  ist('SKU ohne Variante → hart «ohne-variante», kein Artikel, KEINE Netzabfrage', [arten(p.befunde), p.befunde[0].hart, p.items.length, io.log.produkt.length], [['ohne-variante'], true, 0, 0]);
+  ist('SKU ohne Variante → hart «ohne-variante», kein Artikel, KEINE Netzabfrage', [arten(p.befunde), p.befunde[0]?.hart, p.items.length, io.log.produkt.length], [['ohne-variante'], true, 0, 0]);
   const k = await plane([zeile({ customAttributes: [] })], mkIo());
-  ist('keine Druckdatei → hart «keine-druckdatei»', [arten(k.befunde), k.befunde[0].hart, k.items.length], [['keine-druckdatei'], true, 0]);
+  ist('keine Druckdatei → hart «keine-druckdatei»', [arten(k.befunde), k.befunde[0]?.hart, k.items.length], [['keine-druckdatei'], true, 0]);
   const f = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', 'https://evil.example.com/x.png')] })], io);
   ist('Druckdatei von fremdem Host → hart «datei-adresse» + «keine-druckdatei», keine Abfrage der Adresse', [arten(f.befunde), io.log.kopf.length, io.log.kontrolle.length], [['datei-adresse', 'keine-druckdatei'], 0, 0]);
   const n = await plane([zeile({ product: { productType: 'x', tags: ['sale'] }, customAttributes: [A('🖼️ Druckdatei (front)', U('v'))] })], mkIo());
-  ist('Druckdatei-Eigenschaft an einem Produkt ohne POD-Tag → hart «druckdatei-ohne-pod», nichts wird gedruckt', [arten(n.befunde), n.befunde[0].hart, n.items.length, n.pod], [['druckdatei-ohne-pod'], true, 0, 0]);
+  ist('Druckdatei-Eigenschaft an einem Produkt ohne POD-Tag → hart «druckdatei-ohne-pod», nichts wird gedruckt', [arten(n.befunde), n.befunde[0]?.hart, n.items.length, n.pod], [['druckdatei-ohne-pod'], true, 0, 0]);
   const nk = await plane([zeile({ product: { tags: [] }, customAttributes: [karte6(['front'])] })], mkIo());
   ist('…auch eine bloße _pod_karte ohne Tag', arten(nk.befunde), ['druckdatei-ohne-pod']);
   const g = await plane([zeile({ product: { tags: ['sale'] }, customAttributes: [] })], mkIo());
   ist('Position ohne POD-Tag und ohne Eigenschaften (Fortura, CJ): still übergangen, kein Befund', [g.befunde, g.items, g.pod], [[], [], 0]);
   const m = await planeBestellung({ id: 'x', name: '#1', lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: zeile() }] }, fulfillmentOrders: fulfillmentOrders(['gid://shopify/LineItem/9001']) }, mkIo());
-  ist('mehr als 50 Positionen (hasNextPage) → hart «positionen-viele» (weitere Editor-Positionen könnten fehlen)', [arten(m.befunde), m.befunde[0].hart, m.items.length], [['positionen-viele'], true, 1]);
+  ist('mehr als 50 Positionen (hasNextPage) → hart «positionen-viele» (weitere Editor-Positionen könnten fehlen)', [arten(m.befunde), m.befunde[0]?.hart, m.items.length], [['positionen-viele'], true, 1]);
   const d = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (front)', U('w'))] })], mkIo());
   ist('doppelte Platzierung in den Eigenschaften → hart «datei-doppelt»', [arten(d.befunde).includes('datei-doppelt'), d.befunde.find((b) => b.art === 'datei-doppelt').hart], [true, true]);
   const nf = await plane([zeile()], mkIo({ kopf: () => ({ status: 404, bytes: null }) }));
-  ist('Druckdatei liefert 404 → hart «datei-nicht-erreichbar»', [arten(nf.befunde), nf.befunde[0].hart], [['datei-nicht-erreichbar'], true]);
+  ist('Druckdatei liefert 404 → hart «datei-nicht-erreichbar»', [arten(nf.befunde), nf.befunde[0]?.hart], [['datei-nicht-erreichbar'], true]);
   const nf2 = await plane([zeile()], mkIo({ kopf: () => ({ status: 410, bytes: null }) }));
   ist('…410 ebenso', arten(nf2.befunde), ['datei-nicht-erreichbar']);
   const ioD = mkIo();
@@ -411,7 +429,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
 // weiche Befunde
 {
   const w = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: png(600, 800) }) }));
-  ist('Datei 600×800 auf dem T-Shirt (50 dpi < 75) → weich «aufloesung», Artikel bleibt im Plan', [arten(w.befunde), w.befunde[0].hart, w.items.length, /zu klein/.test(w.befunde[0].text), /50 dpi/.test(w.befunde[0].text)], [['aufloesung'], false, 1, true, true]);
+  ist('Datei 600×800 auf dem T-Shirt (50 dpi < 75) → weich «aufloesung», Artikel bleibt im Plan', [arten(w.befunde), w.befunde[0]?.hart, w.items.length, /zu klein/.test(w.befunde[0]?.text), /50 dpi/.test(w.befunde[0]?.text)], [['aufloesung'], false, 1, true, true]);
   const g = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: png(900, 1200) }) }));
   ist('Datei 900×1200 = genau 75 dpi → ok', g.befunde, []);
   const qdOk = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd: 150 })] })]);
@@ -425,31 +443,31 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const qdTeilmessung = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, qd: 100 })] })], mkIo({ kopf: (url) => ({ status: 200, bytes: url === U('v') ? png(1800, 2400) : Buffer.from('<html>') }) }));
   ist('qd wird bei nur teilweise messbaren Platzierungen nicht fälschlich mit dem Teilminimum verglichen', arten(qdTeilmessung.befunde), ['aufloesung']);
   const x = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: Buffer.from('<html>') }) }));
-  ist('Datei ohne lesbare Kopfzeile → weich «aufloesung» (nicht prüfbar, kein Freispruch)', [arten(x.befunde), /nicht lesbar/.test(x.befunde[0].text)], [['aufloesung'], true]);
+  ist('Datei ohne lesbare Kopfzeile → weich «aufloesung» (nicht prüfbar, kein Freispruch)', [arten(x.befunde), /nicht lesbar/.test(x.befunde[0]?.text)], [['aufloesung'], true]);
   const x2 = await plane([zeile()], mkIo({ kopf: () => ({ status: 503, bytes: null }) }));
-  ist('Datei antwortet 503 → weich «aufloesung» mit HTTP-Status', [arten(x2.befunde), /HTTP 503/.test(x2.befunde[0].text)], [['aufloesung'], true]);
+  ist('Datei antwortet 503 → weich «aufloesung» mit HTTP-Status', [arten(x2.befunde), /HTTP 503/.test(x2.befunde[0]?.text)], [['aufloesung'], true]);
   const x3 = await plane([zeile()], mkIo({ kopf: () => ({ status: 0, bytes: null }) }));
   ist('Netzfehler beim Lesen der Datei → weich', arten(x3.befunde), ['aufloesung']);
   const jp = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: jpg(1800, 2400) }) }));
   ist('JPEG-Datei wird ebenso gemessen', jp.befunde, []);
   const k1 = await plane([zeile()], mkIo({ kontrolle: () => ({ art: 'fail', text: 'FAIL - leer' }) }));
-  ist('Kontrolle FAIL → weich «kontrolle-fail»', [arten(k1.befunde), k1.befunde[0].hart, /FAIL - leer/.test(k1.befunde[0].text)], [['kontrolle-fail'], false, true]);
+  ist('Kontrolle FAIL → weich «kontrolle-fail»', [arten(k1.befunde), k1.befunde[0]?.hart, /FAIL - leer/.test(k1.befunde[0]?.text)], [['kontrolle-fail'], false, true]);
   const k2 = await plane([zeile()], mkIo({ kontrolle: () => ({ art: 'technisch', text: 'HTTP 402' }) }));
-  ist('Kontrolle technisch gescheitert → weich «kontrolle-technisch» (gibt NICHT frei)', [arten(k2.befunde), /HTTP 402/.test(k2.befunde[0].text)], [['kontrolle-technisch'], true]);
+  ist('Kontrolle technisch gescheitert → weich «kontrolle-technisch» (gibt NICHT frei)', [arten(k2.befunde), /HTTP 402/.test(k2.befunde[0]?.text)], [['kontrolle-technisch'], true]);
   const k3 = await plane([zeile()], mkIo({ kontrolle: () => ({ art: 'fehlt', text: 'keine Prüfung eingerichtet' }) }));
   ist('Kontrolle nicht eingerichtet → weich «kontrolle-fehlt»', arten(k3.befunde), ['kontrolle-fehlt']);
   const pl = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (hood)', U('v'))] })], mkIo());
   ist('unbekannte Platzierung «hood» → weich «platzierung», Typ bleibt «hood»', [arten(pl.befunde).includes('platzierung'), pl.items[0].files[0].type], [true, 'hood']);
   const dp = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (default)', U('v')), A('🖼️ Druckdatei (front)', U('w'))] })], mkIo());
-  ist('«default» und «front» zugleich → weich «platzierung» (dieselbe Platzierung)', [arten(dp.befunde), /zwei Druckdateien für dieselbe Platzierung/.test(dp.befunde[0].text)], [['platzierung'], true]);
+  ist('«default» und «front» zugleich → weich «platzierung» (dieselbe Platzierung)', [arten(dp.befunde), /zwei Druckdateien für dieselbe Platzierung/.test(dp.befunde[0]?.text)], [['platzierung'], true]);
   const nl = await plane([zeile()], mkIo({ produkt: () => NICHT_LESBAR }));
   ist('Printful-Variante nicht lesbar → weich: Platzierung nicht gesichert, Druckdaten fehlen (kein Produkt), Pixelgrösse ohne Katalog nicht prüfbar', [arten(nl.befunde).includes('platzierung'), arten(nl.befunde).includes('druckdaten'), arten(nl.befunde).includes('aufloesung'), nl.befunde.every((b) => !b.hart)], [true, true, true, true]);
   const dd = await plane([zeile()], mkIo({ druckdaten: () => ({ art: 'fehler', text: 'HTTP 429' }) }));
-  ist('Druckdaten nicht lesbar (429) → weich «druckdaten» (Text nennt HTTP 429), «aufloesung» (keine Katalog-Grösse); Konflikte nicht prüfbar nur bei mehreren Platzierungen', [arten(dd.befunde), /HTTP 429/.test(dd.befunde[0].text)], [['druckdaten', 'aufloesung'], true]);
+  ist('Druckdaten nicht lesbar (429) → weich «druckdaten» (Text nennt HTTP 429), «aufloesung» (keine Katalog-Grösse); Konflikte nicht prüfbar nur bei mehreren Platzierungen', [arten(dd.befunde), /HTTP 429/.test(dd.befunde[0]?.text)], [['druckdaten', 'aufloesung'], true]);
   const ddm = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h'))] })], mkIo({ druckdaten: () => ({ art: 'fehler', text: 'x' }) }));
   ist('…bei zwei Platzierungen kommt «konflikt» (nicht prüfbar) dazu', arten(ddm.befunde).includes('konflikt'), true);
   const kf = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (front_large)', U('w'))] })], mkIo({ kopf: () => ({ status: 200, bytes: png(2250, 2700) }) }));
-  ist('front + front_large → weich «konflikt»', [arten(kf.befunde), kf.befunde[0].hart], [['konflikt'], false]);
+  ist('front + front_large → weich «konflikt»', [arten(kf.befunde), kf.befunde[0]?.hart], [['konflikt'], false]);
   const st = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (embroidery_chest_left)', U('s')), karte6(['embroidery_chest_left'])] })], mkIo({ kopf: () => ({ status: 200, bytes: png(1650, 600) }) }));
   ist('Stickerei ohne Garnfarben → weich «optionen»', arten(st.befunde).includes('optionen'), true);
   const st2 = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (embroidery_chest_left)', U('s')), A('⚙️ Option (thread_colors_chest_left)', '#FFFFFF,#000000'), karte6(['embroidery_chest_left'])] })], mkIo({ kopf: () => ({ status: 200, bytes: png(600, 600) }) }));
@@ -479,7 +497,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const p = await plane([zeile(), zeile({ id: 'gid://shopify/LineItem/9003', sku: 'CJ-123', title: 'Lampe', product: { tags: ['cj'] }, customAttributes: [] })]);
   ist('Gemischte Bestellung: nur die POD-Position wird Artikel, die Lampe stört nicht', [p.items.length, p.befunde, p.pod], [1, [], 1]);
   const q = await plane([zeile(), zeile({ id: 'gid://shopify/LineItem/9004', title: 'Tasse', sku: 'zzz', variant: { sku: 'zzz' } })]);
-  ist('Zwei POD-Positionen, eine ohne Variante: Artikel der ersten bleibt im Plan, der Befund ist HART (der Kleber legt dann keinen Teilauftrag an)', [q.items.length, arten(q.befunde), q.befunde[0].hart, /Tasse/.test(q.befunde[0].text)], [1, ['ohne-variante'], true, true]);
+  ist('Zwei POD-Positionen, eine ohne Variante: Artikel der ersten bleibt im Plan, der Befund ist HART (der Kleber legt dann keinen Teilauftrag an)', [q.items.length, arten(q.befunde), q.befunde[0]?.hart, /Tasse/.test(q.befunde[0]?.text)], [1, ['ohne-variante'], true, true]);
 }
 // Zeitreihenfolge: eine Variante nur einmal gefragt, Fremdtext
 {
@@ -497,6 +515,9 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     const x = kostenPruefen({ costs: k, erloesChf: 50 });
     ist(`Kosten ${n} → «kosten-unbekannt», kein grünes Licht`, [x.ok, x.art, x.kostenChf], [false, 'kosten-unbekannt', null]);
   }
+  // Die beiden Untergrenzen sind zwei Prüfungen mit zwei Texten: null und darunter «keine gerechnete Summe», zwischen 0 und 0.50 USD «keine plausible Summe» (fiele die erste weg, bliebe der Befund, aber der Text sagte das Falsche)
+  const txt = (total) => kostenPruefen({ costs: { currency: 'USD', total }, erloesChf: 50 }).text;
+  ist('Kosten: Summe 0 und negativ sagen «keine gerechnete Summe», 0.30 USD sagt «keine plausible Summe»', [/keine gerechnete Summe/.test(txt('0.00')), /keine gerechnete Summe/.test(txt('-3')), /keine plausible Summe/.test(txt('0.30')), /keine gerechnete Summe/.test(txt('0.30'))], [true, true, true, false]);
   const knapp = kostenPruefen({ costs: { currency: 'USD', total: '19.71', tax: '1.47' }, erloesChf: 21, nettoMin: 4 });
   ist('Kosten: Gewinn über null, aber unter dem Mindestgewinn → Text «Gewinn unter dem Mindestgewinn» (kein «Verlust»)', [knapp.ok, /Gewinn unter dem Mindestgewinn/.test(knapp.text), /Verlust/.test(knapp.text), /Mindest 4\.00/.test(knapp.text)], [false, true, false, true]);
   const echt = kostenPruefen({ costs: { currency: 'USD', total: '19.71', tax: '1.47' }, erloesChf: 23.83, nettoMin: 4 });
@@ -511,7 +532,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('technikFamilie: addon_embroidery_front ist Stickerei', technikFamilie('addon_embroidery_front'), 'EMBROIDERY');
   ist('technikFamilie: «default» allein ist Standard (die Stickerei zeigt sich erst über den Typ aus der Dateiliste)', technikFamilie('default'), 'STANDARD');
   const k = optionenPruefen({ produkt: roh(206), typen: ['embroidery_front'], angegeben: {} });
-  ist('Kappe 206, Stickerei embroidery_front ohne Angaben: weicher Befund «optionen» (Katalog führt keine Garnfarben-Option), nichts gesendet', [arten(k.befunde), k.befunde[0].hart, /führt der Printful-Katalog keine Garnfarben-Option/.test(k.befunde[0].text), k.optionen], [['optionen'], false, true, []]);
+  ist('Kappe 206, Stickerei embroidery_front ohne Angaben: weicher Befund «optionen» (Katalog führt keine Garnfarben-Option), nichts gesendet', [arten(k.befunde), k.befunde[0]?.hart, /führt der Printful-Katalog keine Garnfarben-Option/.test(k.befunde[0]?.text), k.optionen], [['optionen'], false, true, []]);
   const k2 = optionenPruefen({ produkt: roh(206), typen: ['embroidery_front_large'], angegeben: { thread_colors_front_large: '#000000' } });
   ist('Kappe 206, embroidery_front_large mit Option thread_colors_front_large: Option gefunden, Wert gültig → gesendet, kein Befund', [k2.optionen, k2.befunde], [[{ id: 'thread_colors_front_large', value: ['#000000'] }], []]);
   const ohneDef = optionenPruefen({ produkt: null, typen: ['embroidery_front'], angegeben: {} });
@@ -524,12 +545,12 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('«1801 White, 1672 Old Gold» (Komma trennt, Namen mit Leerzeichen bleiben heil)', o('1801 White, 1672 Old Gold').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#A67843'] }]);
   ist('«#FFFFFF #CC3333» (nur Leerzeichen, kein erlaubter Gesamtwert): zwei Hex-Werte', o('#FFFFFF #CC3333').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#CC3333'] }]);
   ist('«#FFFFFF;#000000» mit Semikolon', o('#FFFFFF;#000000').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#000000'] }]);
-  ist('«1801 Weiss» (Name gibt es nicht): Befund, der den ganzen Wert nennt statt «1801» und «Weiss» getrennt', [o('1801 Weiss').optionen, o('1801 Weiss').befunde.length, /1801/.test(o('1801 Weiss').befunde[0].text)], [[], 1, true]);
+  ist('«1801 Weiss» (Name gibt es nicht): Befund, der den ganzen Wert nennt statt «1801» und «Weiss» getrennt', [o('1801 Weiss').optionen, o('1801 Weiss').befunde.length, /1801/.test(o('1801 Weiss').befunde[0]?.text)], [[], 1, true]);
 }
 // Nahtfarbe: Vorgabe des Besitzers (GL2 Fund 3)
 {
   const j = (angegeben, vorgaben) => optionenPruefen({ produkt: roh(388), typen: ['front'], angegeben, vorgaben });
-  ist('Jacke 388 (Option stitch_color): ohne Angabe und ohne Vorgabe → Befund «Pflichtoption stitch_color fehlt»', [arten(j({}, {}).befunde), /stitch_color/.test(j({}, {}).befunde[0].text)], [['optionen'], true]);
+  ist('Jacke 388 (Option stitch_color): ohne Angabe und ohne Vorgabe → Befund «Pflichtoption stitch_color fehlt»', [arten(j({}, {}).befunde), /stitch_color/.test(j({}, {}).befunde[0]?.text)], [['optionen'], true]);
   ist('…mit Vorgabe white: options [{stitch_color: white}], kein Befund', [j({}, { stitch_color: 'white' }).optionen, j({}, { stitch_color: 'white' }).befunde], [[{ id: 'stitch_color', value: 'white' }], []]);
   ist('…Vorgabe «Black» (Schreibweise): auf den Schlüssel des Produkts abgebildet', j({}, { stitch_color: 'Black' }).optionen, [{ id: 'stitch_color', value: 'black' }]);
   ist('…die ausdrückliche Wahl der Kundin gewinnt gegen die Vorgabe', j({ stitch_color: 'black' }, { stitch_color: 'white' }).optionen, [{ id: 'stitch_color', value: 'black' }]);
@@ -598,9 +619,9 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const ok1 = await plane([mit({ m: 71, pv: 4025 })]);
   ist('Karte nennt Produkt 71 und Variante 4025 wie die SKU 5599797_4025: kein Befund', ok1.befunde, []);
   const v = await plane([mit({ m: 71, pv: 4026 })]);
-  ist('Karte nennt Variante 4026, gekauft wurde 4025: HARTER Befund «karte-widerspruch» (WP6: sonst würde das falsche Produkt gedruckt), kein Artikel', [arten(v.befunde), v.befunde[0].hart, /4026/.test(v.befunde[0].text), /4025/.test(v.befunde[0].text), v.items.length], [['karte-widerspruch'], true, true, true, 0]);
+  ist('Karte nennt Variante 4026, gekauft wurde 4025: HARTER Befund «karte-widerspruch» (WP6: sonst würde das falsche Produkt gedruckt), kein Artikel', [arten(v.befunde), v.befunde[0]?.hart, /4026/.test(v.befunde[0]?.text), /4025/.test(v.befunde[0]?.text), v.items.length], [['karte-widerspruch'], true, true, true, 0]);
   const m = await plane([mit({ m: 19, pv: 4025 })]);
-  ist('Karte nennt Produkt 19, die Variante gehört zu 71: HARTER Befund «karte-widerspruch», kein Artikel', [arten(m.befunde), m.befunde[0].hart, /Produkt 19/.test(m.befunde[0].text), m.items.length], [['karte-widerspruch'], true, true, 0]);
+  ist('Karte nennt Produkt 19, die Variante gehört zu 71: HARTER Befund «karte-widerspruch», kein Artikel', [arten(m.befunde), m.befunde[0]?.hart, /Produkt 19/.test(m.befunde[0]?.text), m.items.length], [['karte-widerspruch'], true, true, 0]);
   const s2 = await plane([mit({ m: '71', pv: '4025' })]);
   ist('Zahlen als Text («71», «4025») gelten wie Zahlen', s2.befunde, []);
   const x = await plane([mit({ pv: 'abc', m: null })]);
@@ -679,7 +700,18 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   }
   ist('WP6 nicht lesbarer Schlüssel mit leerem Wert: kein Befund (wie bei jeder leeren Druckdatei-Eigenschaft)', dateienAusEigenschaften([A('_Druckdatei (Front)', '')]).probleme, []);
   ist('WP6 der Text zum nicht lesbaren Schlüssel kürzt Fremdtext auf 60 Zeichen', dateienAusEigenschaften([A('_Druckdatei (' + 'X'.repeat(500) + ')', U('v'))]).probleme[0]?.text.length < 400, true);
-  ist('WP6 «_Druckdatei» mitten im Schlüssel («Meine _Druckdatei (front)») ist KEIN neuer Schlüssel, sondern wie bisher Editor 5', kurz(dateienAusEigenschaften([A('Meine _Druckdatei (front)', U('v'))])).d.map((x) => [x[3], x[4]]), [['v5', 'v5']]);
+  { // Härtung 10.11.2026 (Fund 2/23): ein Schlüssel, der nach Druckdatei klingt, aber keine BEKANNTE Schreibweise ist, wird nie als Vorderseite geraten
+    const x = dateienAusEigenschaften([A('Meine _Druckdatei (front)', U('v'))]);
+    ist('WP6/Fund 2 «_Druckdatei» mitten im Schlüssel («Meine _Druckdatei (front)») ist KEIN bekannter Schlüssel: harter Befund «datei-schluessel», keine Datei (früher still Editor 5 = Vorderseite)', [arten(x.probleme), x.probleme[0]?.hart, x.dateien.length], [['datei-schluessel'], true, 0]);
+    for (const k of ['🖼️ Druckdatei (Sleeve_left)', 'Rückseite Druckdatei', 'Druckdatei (sleeve_left)', '🖼️ Druckdatei (rücken)', 'Print file (back2)', 'hinten druckdatei', '🖼️ Druckdatei (Sleeve-Left)', 'PRINT FILE', 'Print  file', 'DRUCKDATEI (front)', '_druckdatei (front)', '_Druckdatei(front)', '_Druckdatei (Front)', '🖼️ Druckdatei (front) ', 'Vorne · Druckdatei · extra']) {
+      const r = dateienAusEigenschaften([A(k, U('x'))]);
+      ist(`Fund 2/23 unbekannter Schlüssel «${k}»: harter Befund «datei-schluessel», keine Datei`, [arten(r.probleme), r.probleme[0] && r.probleme[0]?.hart, r.dateien.length], [['datei-schluessel'], true, 0]);
+    }
+    ist('Fund 2/23 unbekannter Schlüssel mit LEEREM Wert: kein Befund (der Editor schreibt leere Eigenschaften für unbenutzte Seiten)', dateienAusEigenschaften([A('Rückseite Druckdatei', '')]).probleme, []);
+    ist('Fund 2/23 Eigenschaften ohne «Druckdatei» im Namen (Notiz, Design-Text, _vorschau) lösen keinen Befund aus', dateienAusEigenschaften([A('Notiz', U('x')), A('🎨 Design (front)', 'Text'), A('_vorschau', U('x'))]).probleme, []);
+    const g = dateienAusEigenschaften([A('Vorne · 🖼️ Druckdatei', U('v')), A('Rückseite Druckdatei', U('h'))]);
+    ist('Fund 2/23 bekannter und unbekannter Schlüssel zusammen: die Vorderseite bleibt, der unbekannte ist ein harter Befund (der Kleber legt dann keinen Auftrag an)', [g.dateien.map((d) => d.seite), arten(g.probleme)], [['front'], ['datei-schluessel']]);
+  }
 
   // ── (4) _vorschau ist nie eine Druckdatei
   {
@@ -847,9 +879,19 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     const nd = await plane([zeile()], mkIo(), undefined);
     ist('Plan: Händler-Standort («Shop location») → kein Befund (Normalfall)', nd.befunde, []);
     const ohne = await planeBestellung({ id: 'o', name: '#T1', lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: zeile() }] } }, mkIo(), { paket: paketAlles });
-    ist('Plan: Bestelldaten OHNE Fulfillment-Orders → WEICHER Befund «dienst-standort-unklar» (nie als frei gelesen), der Artikel bleibt', [arten(ohne.befunde), ohne.befunde[0]?.hart, ohne.items.length], [['dienst-standort-unklar'], false, 1]);
+    ist('Plan Fund 4/21: Bestelldaten OHNE Fulfillment-Orders → HARTER Befund «dienst-standort-unklar» (nie als frei gelesen), KEIN Artikel (sonst entstünde neben dem Auftrag der Printful-App ein zweiter Entwurf)', [arten(ohne.befunde), ohne.befunde[0]?.hart, ohne.items.length], [['dienst-standort-unklar'], true, 0]);
     const leer = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: { edges: [] } }), mkIo(), { paket: paketAlles });
-    ist('Plan: leere Liste der Fulfillment-Orders → weich «dienst-standort-unklar»', arten(leer.befunde), ['dienst-standort-unklar']);
+    ist('Plan Fund 4/21: leere Liste der Fulfillment-Orders (das Token sieht die Order nicht) → hart «dienst-standort-unklar», kein Artikel', [arten(leer.befunde), leer.befunde[0]?.hart, leer.items.length], [['dienst-standort-unklar'], true, 0]);
+    const hinweis = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: { edges: [] } }), mkIo(), { paket: paketAlles, scopeHinweis: 'dem Token fehlt das Recht read_third_party_fulfillment_orders' });
+    ist('Plan Fund 21: fehlt dem Token ein Zugriffsrecht (cfg.scopeHinweis), nennt der Befundtext es als mögliche Ursache', /dem Token fehlt das Recht read_third_party_fulfillment_orders/.test(hinweis.befunde[0]?.text), true);
+    const abgeschnitten = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: { ...fulfillmentOrders([ID1]), pageInfo: { hasNextPage: true } } }), mkIo(), { paket: paketAlles });
+    ist('Plan Fund 4: mehr Fulfillment-Orders als eine Abfrage liefert (hasNextPage) → hart «dienst-standort-unklar», kein Artikel', [arten(abgeschnitten.befunde), abgeschnitten.befunde[0]?.hart, abgeschnitten.items.length], [['dienst-standort-unklar'], true, 0]);
+    // «unklar» bricht die Prüfung der Position ab wie «dienst»: weder eine fehlende Variante noch ein fehlendes Design noch eine Netzabfrage kommen dazu (sonst stünde neben der Meldung «Standort unklar» eine zweite, die vom Wesentlichen ablenkt)
+    for (const [n, z] of [['SKU ohne Printful-Variante', { sku: 'KAPUTT', variant: { sku: 'KAPUTT' } }], ['kein Design der Kundin', { customAttributes: [] }]]) {
+      const ioU = mkIo();
+      const u = await planeBestellung(bestellung([zeile(z)], { fulfillmentOrders: { edges: [] } }), ioU, { paket: paketAlles });
+      ist(`Plan Fund 4: «dienst-standort-unklar» und ${n}: genau ein Befund, kein Artikel, keine Netzabfrage`, [arten(u.befunde), u.items.length, ioU.log.produkt, ioU.log.druck, ioU.log.kopf, ioU.log.kontrolle], [['dienst-standort-unklar'], 0, [], [], [], []]);
+    }
     const cj = await planeBestellung(bestellung([zeile({ product: { productType: 'x', tags: ['cj'] }, customAttributes: [] })], { fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }), mkIo(), { paket: paketAlles });
     ist('Plan: eine Nicht-Editor-Position am Dienst-Standort wird nicht angefasst (kein Befund, kein Artikel)', [cj.befunde, cj.items.length], [[], 0]);
     const ohneDesign = await planeBestellung(bestellung([zeile({ customAttributes: [] })], { fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }), mkIo(), { paket: paketAlles });
@@ -1110,6 +1152,300 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       ist('Workflow WP6: alle Dateien, die der Sync einliest, stehen im sparse-checkout', fehlen, []);
     }
   } else console.log('(Workflow-Datei nicht ausgecheckt → Workflow-Prüfungen übersprungen)');
+}
+
+// ═══════════════════════════════════════ HÄRTUNG 10.11.2026 (Gegenprüfung P1, 27 bestätigte Funde): reine Logik der neuen Regeln
+// Grundsatz: wo Geld bewegt wird, ist Unbekanntes, Unlesbares und Fehlendes nie «in Ordnung».
+{
+  // ── Adresse (Fund 3): eigene Cloud unter /image/upload/, kein Port, kein Rückstrich, Host exakt
+  const fremd = 'Cloudinary-Adresse nicht aus der eigenen Cloud unter /image/upload/';
+  for (const [n, w, soll] of [
+    ['fremde Cloudinary-Cloud', 'https://res.cloudinary.com/andere-cloud/image/upload/v1/a.png', fremd],
+    ['Cloud-Name nur als Präfix einer fremden Cloud', 'https://res.cloudinary.com/dwyi6kkrl2/image/upload/v1/a.png', fremd],
+    ['/image/fetch/ holt eine Fremdadresse', 'https://res.cloudinary.com/dwyi6kkrl/image/fetch/https%3A%2F%2Fevil.example%2Fx.png', fremd],
+    ['video/upload statt image/upload', 'https://res.cloudinary.com/dwyi6kkrl/video/upload/v1/a.mp4', fremd],
+    ['Pfad ohne Cloud-Name', 'https://res.cloudinary.com/image/upload/v1/a.png', fremd],
+    ['Port', 'https://res.cloudinary.com:8443/dwyi6kkrl/image/upload/v1/a.png', 'Adresse enthält einen Port'],
+    ['Rückstrich-Trick (WHATWG liest den Host als res.cloudinary.com)', 'https://res.cloudinary.com\\@evil.example/dwyi6kkrl/image/upload/a.png', 'Adresse enthält einen Rückstrich'],
+    ['Host mit Endung xres.cloudinary.com', 'https://xres.cloudinary.com/dwyi6kkrl/image/upload/v1/a.png', 'Host «xres.cloudinary.com» ist nicht erlaubt'],
+    ['Host res.cloudinary.com.evil.example', 'https://res.cloudinary.com.evil.example/dwyi6kkrl/image/upload/v1/a.png', 'Host «res.cloudinary.com.evil.example» ist nicht erlaubt'],
+    ['Shopify-CDN braucht keine Cloud-Bindung', 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a.png', null],
+    ['eigene Cloud mit grossgeschriebenem Host', 'https://RES.CLOUDINARY.COM/dwyi6kkrl/image/upload/v1/a.png', null],
+  ]) ist(`Adresse Fund 3: ${n}`, adresseProblem(w), soll);
+  ist('Adresse Fund 3: mit `eigeneCloud: false` (Produkt-Metafeld des Besitzers) entfällt nur die Pfadbindung, nicht Host, Port, Rückstrich', [adresseProblem('https://res.cloudinary.com/andere/image/fetch/x', undefined, { eigeneCloud: false }), adresseProblem('https://res.cloudinary.com:81/a.png', undefined, { eigeneCloud: false }), adresseProblem('https://evil.example/a.png', undefined, { eigeneCloud: false })], [null, 'Adresse enthält einen Port', 'Host «evil.example» ist nicht erlaubt']);
+  ist('Adresse Fund 3: adresseNormal liefert die normalisierte Schreibweise (Host klein), die abgerufen und weitergegeben wird', adresseNormal(' https://RES.Cloudinary.com/dwyi6kkrl/image/upload/v1/Gross.PNG '), 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/Gross.PNG');
+  ist('Adresse Fund 3: die eigene Cloud heisst wie im Editor (pod/v6: CLOUD_NAME)', EIGENE_CLOUDINARY_CLOUD, 'dwyi6kkrl');
+  const gross = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', 'https://RES.Cloudinary.com/dwyi6kkrl/image/upload/v1/G.png')]);
+  ist('Adresse Fund 3: die Datei trägt die NORMALISIERTE Adresse (kleingeschriebener Host)', gross.dateien[0].url, 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/G.png');
+  const eigene = dateienAusEigenschaften([A('🖼️ Druckdatei (front)', 'https://res.cloudinary.com/andere/image/upload/v1/G.png')]);
+  ist('Adresse Fund 3: Druckdatei aus fremder Cloudinary-Cloud → harter Befund «datei-adresse», keine Datei', [arten(eigene.probleme), eigene.probleme[0]?.hart, eigene.dateien.length], [['datei-adresse'], true, 0]);
+}
+
+{
+  // ── Eigenschaften (Fund 2/23): bekannte v5-Schreibweisen bleiben, alles andere mit «Druckdatei» ist ein harter Befund
+  for (const [k, seite] of [['🖼 Druckdatei', 'front'], ['Druckdatei', 'front'], ['Print file', 'front'], ['Print file (Back)', 'back'], ['Druckdatei (Hinten)', 'back'], ['Hinten · Druckdatei', 'back'], ['Back · Print file', 'back'], ['🖼 Druckdatei (Vorne)', 'front']]) {
+    const r = dateienAusEigenschaften([A(k, U('x'))]);
+    ist(`Fund 2/23 bekannte v5-Schreibweise «${k}» → ${seite}, kein Befund`, [r.dateien.map((d) => d.seite), r.probleme], [[seite], []]);
+  }
+}
+
+{
+  // ── Kosten (Fund 8): Währung Pflicht, strenge Zahlen, Untergrenze
+  const bew = (costs, extra = {}) => kostenPruefen({ costs, erloesChf: 49.9, nettoMin: 0, ...extra });
+  ist('Kosten Fund 8: Währung fehlt oder leer → «kosten-unbekannt» (nie still als USD gelesen)', [bew({ total: '12.70' }).art, bew({ currency: '', total: '12.70' }).art, bew({ currency: '  ', total: '12.70' }).art], ['kosten-unbekannt', 'kosten-unbekannt', 'kosten-unbekannt']);
+  ist('Kosten Fund 8: Währung EUR → «kosten-unbekannt» (nennt die Währung), klein geschriebenes «usd» gilt', [bew({ currency: 'EUR', total: '12.70' }).text.includes('EUR'), bew({ currency: 'usd', total: '12.70', tax: '0.95' }).ok], [true, true]);
+  for (const [n, t] of [['Hexzahl 0x10', '0x10'], ['1e1', '1e1'], ['Array', ['12.70']], ['true', true], ['Objekt', { a: 1 }], ['Komma 12,70', '12,70'], ['NaN', 'NaN'], ['Infinity', 'Infinity'], ['leer', ''], ['null', null]]) ist(`Kosten Fund 8: Summe «${n}» ist keine Zahl → «kosten-unbekannt»`, bew({ currency: 'USD', total: t }).art, 'kosten-unbekannt');
+  ist('Kosten Fund 8: Untergrenze 0.50 USD (darunter keine plausible Summe), genau 0.50 wird weiter gerechnet', [KOSTEN_MIN_USD, bew({ currency: 'USD', total: '0.49' }).art, bew({ currency: 'USD', total: '0.5' }).art, bew({ currency: 'USD', total: 0.001 }).art], [0.5, 'kosten-unbekannt', null, 'kosten-unbekannt']);
+  ist('Kosten Fund 8: Steuer als Hexzahl zählt nicht als Abzug (strenge Zahl)', bew({ currency: 'USD', total: '12.70', tax: '0x10' }).kostenChf, bew({ currency: 'USD', total: '12.70' }).kostenChf);
+}
+
+{
+  // ── Entwurf gegen das Gesendete (Fund 8)
+  const gesendet = [{ variant_id: 4025, quantity: 1, files: [{ type: 'front' }] }];
+  const dat = (...t) => t.map((x) => ({ type: x, status: 'ok' }));
+  ist('Entwurf Fund 8: gleiche Variante, Menge und Dateitypen (plus Vorschau/Mockup) → ok', entwurfVergleichen({ items: [{ variant_id: 4025, quantity: 1, files: [...dat('front'), { type: 'preview' }, { type: 'mockup' }] }] }, gesendet).ok, true);
+  ist('Entwurf Fund 8: keine Artikel / null / Zahl der Artikel falsch → Abweichung', [entwurfVergleichen({ items: [] }, gesendet).ok, entwurfVergleichen(null, gesendet).ok, entwurfVergleichen({ items: [{}, {}] }, gesendet).ok, entwurfVergleichen({ items: [{}] }, []).ok], [false, false, false, false]);
+  ist('Entwurf Fund 8: andere Variante / andere Menge / anderer Dateityp → Abweichung mit beiden Zahlen im Text', [entwurfVergleichen({ items: [{ variant_id: 999, quantity: 1, files: dat('front') }] }, gesendet).texte.join(' ').match(/999.*4025/) !== null, entwurfVergleichen({ items: [{ variant_id: 4025, quantity: 2, files: dat('front') }] }, gesendet).texte.join(' ').match(/Menge 2.*gesendet wurde 1/) !== null, entwurfVergleichen({ items: [{ variant_id: 4025, quantity: 1, files: dat('back') }] }, gesendet).ok, entwurfVergleichen({ items: [{ variant_id: 4025, quantity: 1, files: dat('front', 'back') }] }, gesendet).ok], [true, true, false, false]);
+  ist('Entwurf Fund 8: Printful nennt Variante und Menge noch nicht und hängt noch keine Datei an → kein Widerspruch (das ist «wartet», nicht «abweichend»)', entwurfVergleichen({ items: [{}] }, gesendet).ok, true);
+  ist('Entwurf Fund 8: Reihenfolge der Dateien egal', entwurfVergleichen({ items: [{ variant_id: 1, quantity: 1, files: dat('back', 'front') }] }, [{ variant_id: 1, quantity: 1, files: [{ type: 'front' }, { type: 'back' }] }]).ok, true);
+}
+
+{
+  // ── Zahlung am Knoten (Fund 0/1)
+  const gut = { test: false, cancelledAt: null, displayFinancialStatus: 'PAID' };
+  for (const [n, k, art] of [
+    ['bezahlt, nicht storniert, kein Test', gut, 'ok'], ['PAID klein geschrieben', { ...gut, displayFinancialStatus: 'paid' }, 'ok'],
+    ['Testbestellung trotz PAID', { ...gut, test: true }, 'test'], ['storniert', { ...gut, cancelledAt: '2026-11-10T10:00:00Z' }, 'storniert'],
+    ['PENDING', { ...gut, displayFinancialStatus: 'PENDING' }, 'nicht-bezahlt'], ['REFUNDED', { ...gut, displayFinancialStatus: 'REFUNDED' }, 'nicht-bezahlt'], ['PARTIALLY_REFUNDED', { ...gut, displayFinancialStatus: 'PARTIALLY_REFUNDED' }, 'nicht-bezahlt'],
+    ['AUTHORIZED', { ...gut, displayFinancialStatus: 'AUTHORIZED' }, 'nicht-bezahlt'], ['VOIDED', { ...gut, displayFinancialStatus: 'VOIDED' }, 'nicht-bezahlt'],
+    ['test fehlt', { cancelledAt: null, displayFinancialStatus: 'PAID' }, 'unlesbar'], ['test null', { ...gut, test: null }, 'unlesbar'], ['test als Text «false»', { ...gut, test: 'false' }, 'unlesbar'],
+    ['cancelledAt fehlt', { test: false, displayFinancialStatus: 'PAID' }, 'unlesbar'], ['displayFinancialStatus fehlt', { test: false, cancelledAt: null }, 'unlesbar'], ['displayFinancialStatus leer', { ...gut, displayFinancialStatus: '' }, 'unlesbar'], ['displayFinancialStatus keine Zeichenkette', { ...gut, displayFinancialStatus: 1 }, 'unlesbar'],
+    ['null', null, 'unlesbar'], ['Zahl', 5, 'unlesbar'], ['leeres Objekt', {}, 'unlesbar'],
+  ]) { const r = zahlungPruefen(k); ist(`Zahlung Fund 0/1: ${n} → ${art}`, [r.art, r.ok], [art, art === 'ok']); }
+}
+
+{
+  // ── Markierung vor dem Anlegen (Fund 6)
+  const t0 = Date.UTC(2026, 10, 10, 13, 37, 0);
+  ist('Markierung Fund 6: Tag in UTC mit Datum und Uhrzeit, Sperre 60 Minuten', [anlegenTag(t0), ANLEGEN_SPERRE_MIN], ['printful-anlegen-20261110t1337', 60]);
+  ist('Markierung Fund 6: Tag zum Jahreswechsel und mit führenden Nullen', anlegenTag(Date.UTC(2027, 0, 2, 3, 4)), 'printful-anlegen-20270102t0304');
+  ist('Markierung Fund 6: Alter der JÜNGSTEN Markierung in vollen Minuten; andere Tags und Müll zählen nicht', [anlegenAlterMin(['printful-synced', 'printful-anlegen-20261110t1237', anlegenTag(t0 - 5 * 60000), 'printful-anlegen-kaputt', 'printful-anlegen-20261110t1337x'], t0 + 59000), anlegenAlterMin([], t0), anlegenAlterMin(['x'], t0), anlegenAlterMin(null, t0)], [5, null, null, null]);
+  ist('Markierung Fund 6: eine Markierung aus der Zukunft (Uhrenabweichung) ist nie negativ', anlegenAlterMin([anlegenTag(t0 + 90 * 60000)], t0), 0);
+  ist('Markierung Fund 6: Grenze 59/60/61 Minuten', [59, 60, 61].map((m) => anlegenAlterMin([anlegenTag(t0 - m * 60000)], t0)), [59, 60, 61]);
+}
+
+{
+  // ── Schon vorhandener Printful-Auftrag (Fund 9)
+  const z = zeile();
+  const o = bestellung([z], { email: 'a@b.ch', shippingAddress: { name: 'Max Muster', address1: 'Weg 1', city: 'Basel', countryCodeV2: 'CH', zip: '4000' } });
+  const gut = { recipient: { name: 'Max Muster', zip: '4000', country_code: 'CH' }, items: [{ quantity: 1 }] };
+  ist('Vorhanden Fund 9: Empfänger und Menge passen → ok', vorhandenVergleichen(gut, o), { ok: true, texte: [] });
+  ist('Vorhanden Fund 9: Name in anderer Reihenfolge, Gross-/Kleinschreibung und Satzzeichen egal; PLZ mit Leerzeichen; Land klein', vorhandenVergleichen({ recipient: { name: 'MUSTER, max', zip: '40 00', country_code: 'ch' }, items: [{ quantity: 1 }] }, o).ok, true);
+  for (const [n, order, teil] of [
+    ['anderer Name', { ...gut, recipient: { ...gut.recipient, name: 'Erika Beispiel' } }, 'Name'], ['andere PLZ', { ...gut, recipient: { ...gut.recipient, zip: '8000' } }, 'PLZ'], ['anderes Land', { ...gut, recipient: { ...gut.recipient, country_code: 'DE' } }, 'Land'],
+    ['andere Menge', { ...gut, items: [{ quantity: 3 }] }, 'Stückzahl'], ['Menge als Text unlesbar', { ...gut, items: [{ quantity: 'x' }] }, 'Stückzahl'], ['kein Empfänger', { items: [{ quantity: 1 }] }, 'Empfänger'], ['Empfänger kein Objekt', { recipient: 'x', items: [{ quantity: 1 }] }, 'Empfänger'],
+    ['keine Artikel', { recipient: gut.recipient }, 'Artikel'], ['Artikel keine Liste', { recipient: gut.recipient, items: 'x' }, 'Artikel'],
+  ]) { const r = vorhandenVergleichen(order, o); ist(`Vorhanden Fund 9: ${n} → nicht ok, Text nennt «${teil}»`, [r.ok, r.texte.some((t) => t.includes(teil))], [false, true]); }
+  ist('Vorhanden Fund 9: die Texte tragen keine Kundendaten (kein Name, keine PLZ)', vorhandenVergleichen({ recipient: { name: 'Erika Beispiel', zip: '8000', country_code: 'DE' }, items: [{ quantity: 3 }] }, o).texte.join(' ').match(/Muster|Erika|4000|8000|Basel/), null);
+  const o2 = bestellung([z, zeile({ id: 'gid://shopify/LineItem/9002', quantity: 2, currentQuantity: 2 }), zeile({ id: 'gid://shopify/LineItem/9003', quantity: 4, currentQuantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9004', product: { productType: 'x', tags: ['cj'], metafield: null } })], { shippingAddress: o.shippingAddress });
+  ist('Vorhanden Fund 9: Soll-Menge = Editor-Positionen ohne entfernte Einheiten (1 + 2; die entfernte und die Nicht-POD-Position zählen nicht)', [vorhandenVergleichen({ ...gut, items: [{ quantity: 3 }] }, o2).ok, vorhandenVergleichen({ ...gut, items: [{ quantity: 1 }, { quantity: 2 }] }, o2).ok, vorhandenVergleichen({ ...gut, items: [{ quantity: 7 }] }, o2).ok], [true, true, false]);
+  ist('Vorhanden Fund 9: die Bestellung hat keine Lieferadresse → nicht ok', vorhandenVergleichen(gut, bestellung([z], { shippingAddress: null })).ok, false);
+}
+
+{
+  // ── Zugriffsrechte des Tokens (Fund 21)
+  ist('Rechte Fund 21: beide Standortarten lesbar (read oder write)', [scopesBewerten(['read_orders', 'read_merchant_managed_fulfillment_orders', 'read_third_party_fulfillment_orders']), scopesBewerten(['write_merchant_managed_fulfillment_orders', 'write_third_party_fulfillment_orders'])], [{ art: 'ok', fehlt: [] }, { art: 'ok', fehlt: [] }]);
+  ist('Rechte Fund 21: fehlt eines, wird es mit dem read_-Namen genannt', [scopesBewerten(['read_orders', 'read_merchant_managed_fulfillment_orders']), scopesBewerten(['read_third_party_fulfillment_orders']), scopesBewerten([])], [{ art: 'fehlt', fehlt: ['read_third_party_fulfillment_orders'] }, { art: 'fehlt', fehlt: ['read_merchant_managed_fulfillment_orders'] }, { art: 'fehlt', fehlt: ['read_merchant_managed_fulfillment_orders', 'read_third_party_fulfillment_orders'] }]);
+  ist('Rechte Fund 21: keine Liste (Abfrage gescheitert) → «unbekannt», nie «ok»', [scopesBewerten(null), scopesBewerten(undefined), scopesBewerten('x')], [{ art: 'unbekannt', fehlt: [] }, { art: 'unbekannt', fehlt: [] }, { art: 'unbekannt', fehlt: [] }]);
+  ist('Rechte Fund 21: write_ der EINEN Art ersetzt read_ der ANDEREN nicht', scopesBewerten(['write_merchant_managed_fulfillment_orders']).fehlt, ['read_third_party_fulfillment_orders']);
+  ist('Rechte Fund 21: SCOPES_PFLICHT nennt genau diese zwei Rechte', SCOPES_PFLICHT.map((a) => a[0]), ['read_merchant_managed_fulfillment_orders', 'read_third_party_fulfillment_orders']);
+}
+
+{
+  // ── Wann bestätigt der Sync selbst? (Fund 7)
+  for (const [n, p, soll] of [
+    ['AUTO_CONFIRM aus', { autoConfirm: false, ki: 'pflicht', maxKostenAus: false }, [false, null]],
+    ['Vorgabe ohne Angaben', {}, [false, null]],
+    ['AUTO_CONFIRM an, aber keine Kostenobergrenze → Konfigurationsfehler', { autoConfirm: true, ki: 'pflicht', maxKostenAus: true }, [false, 'Kostenobergrenze']],
+    ['AUTO_CONFIRM an, Obergrenze da, KI aus → nie bestätigen (kein Konfigurationsfehler)', { autoConfirm: true, ki: 'aus', maxKostenAus: false }, [false, null]],
+    ['KI mit anderem Wert als «pflicht» zählt als aus', { autoConfirm: true, ki: 'ja', maxKostenAus: false }, [false, null]],
+    ['AUTO_CONFIRM an, Obergrenze, KI pflicht → bestätigen', { autoConfirm: true, ki: 'pflicht', maxKostenAus: false }, [true, null]],
+  ]) { const r = bestaetigenPlan(p); ist(`Bestätigen Fund 7: ${n}`, [r.bestaetigen, r.konfigFehler && (r.konfigFehler.includes(soll[1]) ? soll[1] : r.konfigFehler)], soll); }
+  ist('Bestätigen Fund 7: wer nicht bestätigt, nennt den Grund', [bestaetigenPlan({}).grund, bestaetigenPlan({ autoConfirm: true, ki: 'aus', maxKostenAus: false }).grund.includes('KI-Kontrolle'), bestaetigenPlan({ autoConfirm: true, ki: 'pflicht', maxKostenAus: false }).grund], ['automatisches Bestätigen ist aus (PRINTFUL_AUTO_CONFIRM=0)', true, null]);
+}
+
+{
+  // ── Standort (Fund 4/21): Seitenköpfe und Status
+  const z = zeile(), id = z.id;
+  const fo = (extra = {}, ort = { id: 'l1', name: 'Shop location', isFulfillmentService: false }, status = 'OPEN', ids = [id]) => ({ pageInfo: { hasNextPage: false }, edges: [{ node: { id: 'f', status, assignedLocation: { location: ort }, lineItems: { pageInfo: { hasNextPage: false }, edges: ids.map((i) => ({ node: { lineItem: { id: i } } })) }, ...extra } }] });
+  ist('Standort Fund 4: ein offener Händler-Standort, alle Seitenköpfe false → frei', standortVon({ fulfillmentOrders: fo() }, id).art, 'frei');
+  ist('Standort Fund 4: Seitenkopf der Order-Liste hasNextPage → unklar (die Position könnte in einer Dienst-Order jenseits der Grenze stehen)', standortVon({ fulfillmentOrders: { ...fo(), pageInfo: { hasNextPage: true } } }, id).art, 'unklar');
+  ist('Standort Fund 4: Seitenkopf der Positionsliste hasNextPage → unklar', standortVon({ fulfillmentOrders: fo({ lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: { lineItem: { id } } }] } }) }, id).art, 'unklar');
+  ist('Standort Fund 4: ein gefundener Dienst-Standort bleibt «dienst», auch wenn die Liste abgeschnitten ist', standortVon({ fulfillmentOrders: { ...fo({}, FO_DIENST), pageInfo: { hasNextPage: true } } }, id), { art: 'dienst', name: 'Printful' });
+  ist('Standort Fund 21: nur CLOSED/CANCELLED Orders → die Position steht in keiner OFFENEN Order → unklar', [standortVon({ fulfillmentOrders: fo({}, undefined, 'CLOSED') }, id).art, standortVon({ fulfillmentOrders: fo({}, undefined, 'CANCELLED') }, id).art, standortVon({ fulfillmentOrders: fo({}, FO_DIENST, 'CLOSED') }, id).art], ['unklar', 'unklar', 'unklar']);
+  ist('Standort Fund 21: andere Position in der Order → unklar; leere Liste → unklar; ohne Liste → unklar; ohne Positions-ID → unklar', [standortVon({ fulfillmentOrders: fo({}, undefined, 'OPEN', ['andere']) }, id).art, standortVon({ fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [] } }, id).art, standortVon({}, id).art, standortVon({ fulfillmentOrders: fo() }, undefined).art], ['unklar', 'unklar', 'unklar', 'unklar']);
+  ist('Standort Fund 18 (D3): Dienst-Order UND zweite Order mit unlesbarem Standort für dieselbe Position → «dienst» (hart), nicht nur «unklar»', standortVon({ fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [fo({}, FO_DIENST).edges[0], fo({}, { id: 'l9', name: 'x' }).edges[0]] } }, id).art, 'dienst');
+  ist('Standort Fund 4: Standort ohne isFulfillmentService-Flag → unklar (nie «frei» geraten)', [standortVon({ fulfillmentOrders: fo({}, { id: 'l', name: 'x' }) }, id).art, standortVon({ fulfillmentOrders: fo({ assignedLocation: null }) }, id).art], ['unklar', 'unklar']);
+}
+
+{
+  // ── Aufpreis (Fund 8): ein fehlendes Preisfeld ist «unbekannt», nie «gratis»
+  const roh = (files) => ({ files });
+  ist('Aufpreis Fund 8: Feld additional_price fehlt → null (unbekannt)', [aufpreisUsd(roh([{ type: 'back', id: 'back' }]), 'back'), aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: null }]), 'back')], [null, 0]);
+  ist('Aufpreis Fund 8: eine Datei desselben Typs ohne Feld macht die Auskunft unbekannt, auch wenn eine andere einen Preis hat', aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: '2.5' }, { type: 'back', id: 'x' }]), 'back'), null);
+  ist('Aufpreis Fund 8: «2.50», 0, ""-Preis und unlesbarer/negativer Preis', [aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: '2.50' }]), 'back'), aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: 0 }]), 'back'), aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: '' }]), 'back'), aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: 'x' }]), 'back'), aufpreisUsd(roh([{ type: 'back', id: 'back', additional_price: -1 }]), 'back')], [2.5, 0, 0, null, null]);
+  const ap = aufpreisPruefen({ roh: roh([{ type: 'back', id: 'back' }]), typen: ['back'], bezahlt: [] });
+  ist('Aufpreis Fund 8: fehlendes Preisfeld bei der Rückseite → weicher Befund «aufpreis-unbekannt» (kein Auftrag ohne Freigabe von Hand), bei der Vorderseite keiner', [ap.map((b) => [b.art, b.hart]), aufpreisPruefen({ roh: roh([{ type: 'default', id: 'default' }]), typen: ['default'], bezahlt: [] })], [[['aufpreis-unbekannt', false]], []]);
+}
+
+// ═══════════════════════════════════════ Workflow-Schalter (Fund 12/20/24): das Verhalten, nicht nur der Text
+// Der Schritt «Schreiben oder nur lesen?» aus printful-sync.yml wird ausgeführt (bash, leeres Verzeichnis, gefälschte Ausgabedateien), der Ausdruck für DRY_RUN nach den Regeln von GitHub Actions ausgewertet
+// (Wahrheit: leere Zeichenkette, false, null sind falsch; die Zeichenkette '0' ist wahr; && liefert den ersten falschen Wert, sonst den letzten; || den ersten wahren, sonst den letzten).
+{
+  const pfad = (rel) => fileURLToPath(new URL(rel, import.meta.url));
+  const inCI = process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true';
+  // In der CI zählt eine nicht ausgecheckte Datei als FEHLER (früher: Konsolenzeile und still weiter, 3 Prüfungen fehlten); lokal wird übersprungen.
+  const braucht = (rel, name) => {
+    if (existsSync(pfad(rel))) return true;
+    if (inCI) ist(`CI: ${name} muss im sparse-checkout des Jobs stehen (sonst läuft die zugehörige Prüfung still nicht)`, 'fehlt', 'da');
+    else console.log(`(${name} nicht ausgecheckt → übersprungen)`);
+    return false;
+  };
+  const wahrheit = (v) => v !== '' && v !== false && v !== null && v !== undefined;
+  const ausdruck = (expr, ctx) => {
+    const term = (s) => {
+      s = s.trim(); let m;
+      if ((m = /^([\w.]+) == '([^']*)'$/.exec(s))) return String(ctx[m[1]] ?? '') === m[2];
+      if ((m = /^'([^']*)'$/.exec(s))) return m[1];
+      throw new Error('Ausdruck nicht unterstützt: ' + s);
+    };
+    const und = (s) => { let w = true; for (const t of s.split(' && ')) { w = term(t); if (!wahrheit(w)) return w; } return w; };
+    let w = ''; for (const t of expr.split(' || ')) { w = und(t); if (wahrheit(w)) return w; } return w;
+  };
+  ist('Ausdrucks-Auswerter: Probe an bekannten Fällen (&& liefert den letzten Wert, || den ersten wahren)', [ausdruck("a == '1' && '0' || '1'", { a: '1' }), ausdruck("a == '1' && '0' || '1'", { a: '2' }), ausdruck("a == '1' && '0' || '1'", {}), ausdruck("a == '1' && '' || 'x'", { a: '1' })], ['0', '1', '1', 'x']);
+  const schritt = (t, id) => {
+    const z = t.split('\n'); const i = z.findIndex((l) => new RegExp(`^\\s*id: ${id}\\s*$`).test(l)); if (i < 0) return null;
+    const r = z.findIndex((l, k) => k > i && /^\s*run: \|\s*$/.test(l)); if (r < 0) return null;
+    const ein = /^(\s*)/.exec(z[r])[1].length, k = [];
+    for (let n = r + 1; n < z.length; n++) { const l = z[n]; if (l.trim() === '') { k.push(''); continue; } if (/^(\s*)/.exec(l)[1].length <= ein) break; k.push(l.slice(ein + 2)); }
+    return k.join('\n');
+  };
+  const wfSync = '../../.github/workflows/printful-sync.yml';
+  if (braucht(wfSync, '.github/workflows/printful-sync.yml')) {
+    const t = readFileSync(pfad(wfSync), 'utf8');
+    const skript = schritt(t, 'modus');
+    ist('Workflow Fund 12: der Schritt «modus» ist als bash-Block lesbar', typeof skript === 'string' && skript.includes('GITHUB_OUTPUT'), true);
+    const lauf = (ereignis, eingabe, datei) => {
+      const dir = mkdtempSync(join(tmpdir(), 'pfmodus-'));
+      try {
+        if (datei) { mkdirSync(join(dir, 'dropship'), { recursive: true }); writeFileSync(join(dir, 'dropship', 'PRINTFUL-SYNC-FREI.txt'), 'frei\n'); }
+        const out = join(dir, 'out.txt'), sum = join(dir, 'sum.txt'); writeFileSync(out, ''); writeFileSync(sum, '');
+        const env = { PATH: process.env.PATH, GITHUB_OUTPUT: out, GITHUB_STEP_SUMMARY: sum };
+        if (ereignis !== undefined) env.EREIGNIS = ereignis;
+        if (eingabe !== undefined) env.DRY_EINGABE = eingabe;
+        const r = spawnSync('bash', ['-e', '-c', skript], { cwd: dir, env, encoding: 'utf8' });
+        const m = /^dry=(.*)$/m.exec(readFileSync(out, 'utf8'));
+        return { status: r.status, dry: m ? m[1] : null, zeilen: (readFileSync(out, 'utf8').match(/^dry=/gm) || []).length };
+      } finally { rmSync(dir, { recursive: true, force: true }); }
+    };
+    // [Ereignis, Eingabe «Nur testen», Freigabedatei da?, erwartet dry]
+    for (const [e, ein, datei, soll] of [
+      ['schedule', '', false, '1'], ['schedule', '', true, '0'], ['schedule', undefined, true, '0'], ['schedule', 'false', false, '1'], ['schedule', 'true', true, '0'],
+      ['workflow_dispatch', 'false', false, '0'], ['workflow_dispatch', 'false', true, '0'], ['workflow_dispatch', 'true', true, '1'], ['workflow_dispatch', 'true', false, '1'],
+      ['workflow_dispatch', '', true, '1'], ['workflow_dispatch', undefined, true, '1'], ['workflow_dispatch', 'FALSE', false, '1'], ['workflow_dispatch', '0', false, '1'], ['workflow_dispatch', 'no', false, '1'],
+      ['push', 'false', true, '1'], ['repository_dispatch', 'false', true, '1'], ['pull_request', 'false', true, '1'], ['workflow_call', 'false', true, '1'], ['', 'false', true, '1'], [undefined, 'false', true, '1'], [undefined, undefined, false, '1'],
+    ]) {
+      const r = lauf(e, ein, datei);
+      ist(`Workflow Fund 12: Ereignis «${e}», Eingabe «${ein}», Freigabedatei ${datei ? 'da' : 'fehlt'} → dry=${soll}`, [r.status, r.dry, r.zeilen], [0, soll, 1]);
+    }
+    const expr = (/DRY_RUN: \$\{\{ (.+?) \}\}/.exec(t) || [])[1];
+    ist('Workflow Fund 5/12: der Sync-Schritt reicht DRY_RUN aus dem Ergebnis des Schritts «modus» durch (kein anderer Weg)', [typeof expr, /steps\.modus\.outputs\.dry/.test(expr || ''), (t.match(/^\s*DRY_RUN:/gm) || []).length], ['string', true, 1]);
+    for (const [dry, soll] of [['0', '0'], ['1', '1'], ['', '1'], [undefined, '1'], ['2', '1'], ['false', '1']]) ist(`Workflow Fund 12: Ausdruck von DRY_RUN bei Ergebnis «${dry}» → «${soll}» (nur ausdrücklich «0» schreibt; fehlt das Ergebnis, bleibt es Trockenlauf)`, ausdruck(expr, { 'steps.modus.outputs.dry': dry }), soll);
+    ist('Workflow Fund 12: der Handstart steht auf «Nur testen» (Standard true)', /dry_run:[\s\S]*?type: boolean\s+default: true/.test(t), true);
+    ist('Workflow Fund 7: PRINTFUL_MAX_KOSTEN_USD wird durchgereicht, die KI-Kontrolle steht standardmässig auf «aus»', [/PRINTFUL_MAX_KOSTEN_USD: \$\{\{/.test(t), /PRINTFUL_KI_KONTROLLE: \$\{\{ secrets\.PRINTFUL_KI_KONTROLLE \|\| vars\.PRINTFUL_KI_KONTROLLE \|\| 'aus' \}\}/.test(t)], [true, true]);
+  }
+  const wfPreis = '../../.github/workflows/printful-reprice.yml';
+  if (braucht(wfPreis, '.github/workflows/printful-reprice.yml')) {
+    const t = readFileSync(pfad(wfPreis), 'utf8');
+    const dry = (/DRY_RUN: \$\{\{ (.+?) \}\}/.exec(t) || [])[1], senken = (/SENKEN: \$\{\{ (.+?) \}\}/.exec(t) || [])[1];
+    ist('Workflow Fund 10: Preisanpassung: DRY_RUN=0 nur bei apply=true, SENKEN nur bei senken=true', [dry && ['true', 'false', '', undefined].map((v) => ausdruck(dry, { 'github.event.inputs.apply': v })), senken && ['true', 'false', '', undefined].map((v) => ausdruck(senken, { 'github.event.inputs.senken': v }))], [['0', '1', '1', '1'], ['1', '', '', '']]);
+    ist('Workflow Fund 10: der Handstart der Preisanpassung hat «apply» und «senken» mit Standard false', [/apply:[\s\S]*?default: false/.test(t), /senken:[\s\S]*?default: false/.test(t)], [true, true]);
+    ist('Workflow Fund 10: SENKEN wird aus der Eingabe «senken» gesetzt und sonst leer gelassen (Vorgabe: nur Erhöhungen)', /SENKEN: \$\{\{ github\.event\.inputs\.senken == 'true' && '1' \|\| '' \}\}/.test(t), true);
+  }
+
+  // ── CI-Verdrahtung (Fund 11/15/16/17/26): die Tests und ihre Quellen müssen im Job laufen können
+  const wfCi = '../../.github/workflows/luxestyle-automation-tests.yml';
+  if (braucht(wfCi, '.github/workflows/luxestyle-automation-tests.yml')) {
+    const t = readFileSync(pfad(wfCi), 'utf8');
+    const zeilen = t.split('\n');
+    const abschnitt = (von, bis) => { const a = zeilen.findIndex((l) => von.test(l)); if (a < 0) return []; const rest = zeilen.slice(a + 1); const b = rest.findIndex((l) => bis.test(l)); return b < 0 ? rest : rest.slice(0, b); };
+    const eintraege = (l) => l.map((x) => x.trim()).filter((x) => x.startsWith('- ') || /^[\w./*@-]+$/.test(x)).map((x) => x.replace(/^- /, '').replace(/^'|'$/g, '').trim());
+    const paths = eintraege(abschnitt(/^\s{4}paths:\s*$/, /^\s{2}\S|^\S|^  workflow_dispatch/));
+    const jobTests = zeilen.slice(zeilen.findIndex((l) => /^  tests:\s*$/.test(l)), zeilen.findIndex((l) => /^  lagerbestand:\s*$/.test(l)));
+    const sp = (() => { const a = jobTests.findIndex((l) => /sparse-checkout: \|\s*$/.test(l)); const r = []; for (let i = a + 1; i < jobTests.length && /^\s{12}\S/.test(jobTests[i]); i++) r.push(jobTests[i].trim()); return r; })();
+    const glob = (m) => new RegExp('^' + m.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$');
+    const imPfadfilter = (f) => paths.some((m) => glob(m).test(f));
+    const imAuszug = (f) => sp.some((m) => (m.includes('*') ? glob(m).test(f) : f === m || f.startsWith(m.replace(/\/$/, '') + '/')));
+    ist('CI Fund 16: Pfadfilter und sparse-checkout des Jobs «tests» sind lesbar (sonst wären die folgenden Prüfungen leer)', [paths.length > 20, sp.length > 20, jobTests.length > 50], [true, true, true]);
+    const ausgefuehrt = new Set([...jobTests.join('\n').matchAll(/^\s+node (\S+\.mjs)\b/gm)].map((m) => m[1]));
+    const nurPruefen = new Set([...jobTests.join('\n').matchAll(/^\s+node --check (\S+\.mjs)\b/gm)].map((m) => m[1]));
+    ist('CI Fund 11/15: der Test der Preisanpassung läuft in der CI, ebenso Sync- und Bestellweg-Test', ['automation/printful_reprice_test.mjs', 'automation/printful_sync_test.mjs', 'automation/lib/printful_bestellweg_test.mjs', 'automation/lib/printful_platzierung_test.mjs'].filter((x) => !ausgefuehrt.has(x)), []);
+    ist('CI Fund 15: die Schreibskripte des Bestellwegs und der Preisanpassung stehen in der Liste «node --check»', ['automation/printful_sync.mjs', 'automation/lib/printful_bestellweg.mjs', 'automation/printful_reprice.mjs'].filter((x) => !nurPruefen.has(x)), []);
+    ist('CI Fund 15/19: die Mutationsprobe des Bestellwegs läuft in der CI mit --pruefen (die volle Probe ist ein eigener Handstart)', /node dropship\/selbst-gestalten-fertig-0511\/bestellweg\/mutation\.mjs --pruefen/.test(jobTests.join('\n')), true);
+    // Jede Datei, die der Test einliest, muss im Pfadfilter stehen (sonst löst eine Änderung den Job nicht aus) UND im Auszug des Jobs (sonst läuft die Prüfung still nicht oder mit «Cannot find module»)
+    const noetig = ['automation/printful_sync.mjs', 'automation/printful_sync_test.mjs', 'automation/printful_reprice.mjs', 'automation/printful_reprice_test.mjs', 'automation/lib/printful_bestellweg.mjs', 'automation/lib/printful_bestellweg_test.mjs', 'automation/lib/printful_platzierung.mjs',
+      'dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs', 'dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json', 'dropship/wp6-0611/SYNC.md', ...['6.2.0', '6.3.0', '6.3.1', '6.4.0', '6.4.1'].map((v) => `pod/v6/lspod-designer-v6-${v}.js`), '.github/workflows/printful-sync.yml', '.github/workflows/printful-reprice.yml', '.github/workflows/luxestyle-automation-tests.yml'];
+    ist('CI Fund 16/26: alle Dateien des Bestellwegs (Quellen, Tests, SYNC.md, Editor 6.4.0, Workflows) stehen im Pfadfilter', noetig.filter((f) => !imPfadfilter(f)), []);
+    ist('CI Fund 16/26: …und im sparse-checkout des Jobs «tests» (sonst werden die Abgleiche still übersprungen)', noetig.filter((f) => !imAuszug(f)), []);
+    ist('CI Fund 17: das Zeitlimit des Jobs «tests» ist gesetzt und lässt Luft für die Messung (mindestens 10 Minuten)', (() => { const m = /timeout-minutes: (\d+)/.exec(jobTests.join('\n')); return m ? Number(m[1]) >= 10 : false; })(), true);
+  }
+}
+
+
+// ═══════════════════════════════════════ Mutationsskript: Verteilung der vollen Probe auf mehrere Prozesse (SHARD=<i>/<n>)
+// Die volle Probe dauert mit den gehärteten Tests über eine Stunde; mit SHARD teilen sich mehrere Prozesse die Mutanten. Jeder Mutant muss in genau einem Teil liegen, sonst bliebe einer ungeprüft oder liefe doppelt.
+{
+  const mut = new URL('../../dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs', import.meta.url);
+  if (existsSync(fileURLToPath(mut))) {
+    const { shardLesen, imShard, MUTANTEN } = await import(mut.href);
+    ist('SHARD: keine Angabe oder leer → null (alle Mutanten)', [shardLesen(undefined), shardLesen(''), shardLesen('  ')], [null, null, null]);
+    ist('SHARD: «2/3» und « 1/1 » werden gelesen', [shardLesen('2/3'), shardLesen(' 1/1 ')], [{ i: 2, n: 3 }, { i: 1, n: 1 }]);
+    for (const falsch of ['0/3', '4/3', '1/0', 'a', '2/', '/3', '1/2/3', '-1/3', '1.5/3']) {
+      let fehler = null; try { shardLesen(falsch); } catch (e) { fehler = e.message; }
+      ist(`SHARD: «${falsch}» ist ungültig und bricht ab (kein stilles Überspringen)`, typeof fehler === 'string' && /SHARD/.test(fehler), true);
+    }
+    for (const n of [1, 2, 3, 4, 7]) {
+      const zaehler = new Array(MUTANTEN.length).fill(0);
+      for (let i = 1; i <= n; i++) MUTANTEN.forEach((_, nr) => { if (imShard(nr, { i, n })) zaehler[nr]++; });
+      ist(`SHARD: bei ${n} Teilen liegt jeder der ${MUTANTEN.length} Mutanten in genau einem Teil`, zaehler.every((z) => z === 1), true);
+    }
+    ist('SHARD: ohne Teilung gehört jeder Mutant dazu', [imShard(0, null), imShard(424, null)], [true, true]);
+  } else console.log('(mutation.mjs nicht ausgecheckt → SHARD-Prüfung übersprungen)');
+}
+
+// ═══════════════════════════════════════ Editor-Vertrag über ALLE ausgelieferten Fassungen (Fund 16/26)
+// Der Mitschnitt (editor_640_mitschnitt.json) stammt nur von 6.4.0. Damit eine spätere Fassung die Warenkorb-Eigenschaften nicht still anders schreibt, muss der Schreibweg (von «var druckUrls» bis zum Ende von
+// «formularSynchronisieren», darin podKarteWert und die Schlüssel) in JEDER ausgelieferten Datei derselbe Code sein. Aufrufe, die nur die Ansicht auffrischen (vorschauPlanen, entwurfPlanen, kontrastBuehnePlanen),
+// zählen nicht. Ändert sich der Schreibweg, schlägt dieser Test fehl: dann Mitschnitt für die neue Fassung erzeugen (mitschnitt_erzeugen.mjs) und den Parser gegen ihn prüfen.
+{
+  const fassungen = ['6.2.0', '6.3.0', '6.3.1', '6.4.0', '6.4.1'];
+  const pfad = (v) => fileURLToPath(new URL(`../../pod/v6/lspod-designer-v6-${v}.js`, import.meta.url));
+  const schreibweg = (t) => {
+    const a = t.indexOf('var druckUrls = {};'); if (a < 0) return null;
+    const f = t.indexOf('function formularSynchronisieren() {', a); if (f < 0) return null;
+    let i = t.indexOf('{', f), d = 0;
+    for (; i < t.length; i++) { if (t[i] === '{') d++; else if (t[i] === '}') { d--; if (!d) break; } }
+    return t.slice(a, i + 1).replace(/(^|\s)\/\/[^\n]*/g, '$1').replace(/\b(?:vorschauPlanen|entwurfPlanen|kontrastBuehnePlanen)\(\);/g, '').replace(/\s+/g, ' ');   // Zeilenkommentare (nach Leerraum), Ansichts-Aufrufe und Leerraum zählen nicht
+  };
+  const inCI = process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true';
+  const hashes = new Map();
+  for (const v of fassungen) {
+    if (!existsSync(pfad(v))) { if (inCI) ist(`CI: pod/v6/lspod-designer-v6-${v}.js muss im sparse-checkout des Jobs stehen`, 'fehlt', 'da'); else console.log(`(Editor ${v} nicht ausgecheckt → Vertragsvergleich übersprungen)`); continue; }
+    const b = schreibweg(readFileSync(pfad(v), 'utf8'));
+    ist(`Editor-Vertrag: in ${v} ist der Schreibweg (podKarteWert … formularSynchronisieren) auffindbar`, b !== null && b.includes('function podKarteWert'), true);
+    if (b) hashes.set(v, createHash('sha256').update(b).digest('hex').slice(0, 16));
+  }
+  ist('Editor-Vertrag: alle ausgelieferten Fassungen schreiben die Warenkorb-Eigenschaften mit demselben Code (sonst gilt der Mitschnitt von 6.4.0 für die neue Fassung nicht)', [...new Set(hashes.values())].length <= 1, true);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

@@ -73,6 +73,8 @@ on:
       - 'dropship/codex-katalog/modelle.json'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
+      - '.github/workflows/printful-reprice.yml'
+      - 'dropship/wp6-0611/SYNC.md'
       - '.github/workflows/pod-page-update.yml'
       - '.github/workflows/pod-inject-designer.yml'
       - 'automation/fortura_feed_holen.sh'
@@ -102,7 +104,12 @@ jobs:
     runs-on: ubuntu-latest
     # 8 statt 5 Minuten (28.10.2026): Nachspielung mit bash automation/ci_simulation.sh = 255 s (vorher 207 s, davor 186 s; die Mutationsprobe wuchs von 173 über 197 und 217 auf 221 Mutanten, die Schreibweg-Tests um 68 Pruefungen), 53 % der 480 s.
     # Ohne checkout/setup-node/setup-python, die in der Nachspielung fehlen, blieben von 300 s nur 93 s (31 %) Luft. Das Limit schuetzt vor haengenden Laeufen, nicht vor langsamen Tests.
-    timeout-minutes: 8
+    # 15 statt 8 Minuten (10.11.2026, Fund 17 der Gegenprüfung P1). Der Job lief schon vor der Härtung mit 389 s von 480 s (81 %) in sein Limit. Die Härtung macht den Sync-Test länger (181 → 401 Prüfungen, 14.9 → 23.5 s),
+    # und pod_auswahl_mutation.mjs führt ihn für jeden Mutanten aus, den die schnelleren Tests nicht rot machen: LOKAL gemessen (gleiche Maschine, ruhig) 281.6 s auf dem Stand vor der Härtung, 386.7 s danach (+105 s). Dazu
+    # kommen der Test der Preisanpassung (3.0 s, neu), mutation.mjs --pruefen (0.1 → 10.6 s mit der Syntaxprüfung der Mutanten) und die längere Logik-Prüfung: zusammen rund +22 s. Obere Schranke für den Job: 389 s + 127 s = 516 s, mehr als
+    # die 480 s von vorher, bei 900 s Limit 57 % (Fund 17 verlangt: über 60 % der Grenze → anheben). Die Messumgebung ist eher langsamer als der Actions-Läufer, die wirkliche Zeit ist ungemessen (erster Lauf nach dem Merge ansehen).
+    # Das Limit schützt vor hängenden Läufen, nicht vor langsamen Tests; Zahlen und Rechnung: dropship/wp6-0611/SYNC.md 7.7. Ein Test (CI Fund 17) verlangt mindestens 10.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -169,10 +176,17 @@ jobs:
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
+            .github/workflows/printful-reprice.yml
             .github/workflows/pod-page-update.yml
             .github/workflows/pod-inject-designer.yml
             dropship/selbst-gestalten-fertig-0511/bestellweg
             dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs
+            dropship/wp6-0611/SYNC.md
+            pod/v6/lspod-designer-v6-6.2.0.js
+            pod/v6/lspod-designer-v6-6.3.0.js
+            pod/v6/lspod-designer-v6-6.3.1.js
+            pod/v6/lspod-designer-v6-6.4.0.js
+            pod/v6/lspod-designer-v6-6.4.1.js
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -221,6 +235,7 @@ jobs:
           node --check automation/pod_editor_hintergruende.mjs
           node --check automation/printful_sync.mjs
           node --check automation/lib/printful_bestellweg.mjs
+          node --check automation/printful_reprice.mjs
           node --check automation/printful_tracking.mjs
           node --check automation/lib/printful_tracking.mjs
           node --check automation/schmuck_gruppen.mjs
@@ -363,7 +378,10 @@ jobs:
           # Bestellweg «bezahlte Bestellung → Printful-Auftrag» (05.11.2026): reine Logik (Optionen, Kosten-Wächter samt Versand, Stickerei nach Typ, Karte), dazu das ganze Skript gegen gefälschtes Netz
           node automation/lib/printful_bestellweg_test.mjs
           node automation/printful_sync_test.mjs
-          # Die Fundstellen der 162 Mutanten des Bestellwegs müssen noch genau einmal vorkommen (die volle Probe dauert rund 9 Minuten und läuft von Hand: dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs)
+          # Preisanpassung der Editor-Produkte (nur Erhöhungen, Senken nur mit Haken; 10.11.2026, Fund 10/11/15 der Gegenprüfung P1)
+          node automation/printful_reprice_test.mjs
+          # Die Fundstellen ALLER Mutanten des Bestellwegs (die Zahl steht am Anfang der Ausgabe) müssen noch genau einmal vorkommen und keiner darf ein Syntaxfehler sein. Die volle Probe dauert mit den gehärteten Tests rund eine
+          # Stunde und läuft von Hand, auf mehrere Prozesse verteilbar: SHARD=1/3, 2/3, 3/3 node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs (Zahlen: dropship/wp6-0611/SYNC.md 7.7)
           node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs --pruefen
           # Rückmeldung Printful → Shopify (03.11.2026): reine Zuordnung + Verhalten des Skripts im Kindprozess (gefälschtes Shopify/Printful/Telegram)
           node automation/printful_tracking_test.mjs

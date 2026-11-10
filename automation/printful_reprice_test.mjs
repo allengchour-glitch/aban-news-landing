@@ -11,8 +11,11 @@ const SELF = fileURLToPath(import.meta.url);
 // ═════════════════════════════════════════════════════════════ KINDPROZESS: ein Szenario
 if (process.argv[2] === '--szenario') {
   const sz = JSON.parse(process.env.RP_SZENARIO);
-  Object.assign(process.env, { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', REPRICE_PAUSE_MS: '0', DRY_RUN: sz.dry ? '1' : '0', TAG: 'wunschdesign' });
+  // Die Fixtures setzen die Preise von 25.00 auf 20.90 (eine SENKUNG): damit sie überhaupt geschrieben werden, gilt hier SENKEN=1; die Szenarien «senken: false» prüfen die Vorgabe (nur Erhöhungen).
+  Object.assign(process.env, { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', REPRICE_PAUSE_MS: '0', DRY_RUN: sz.dry ? '1' : '0', TAG: 'wunschdesign', SENKEN: '1' });
   for (const k of ['SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'PRINTFUL_STORE_ID', 'AUCH_AUSWAHL', 'MAX']) delete process.env[k];
+  if (sz.senken === false) delete process.env.SENKEN;
+  if (sz.dryLoeschen) delete process.env.DRY_RUN;
   Object.assign(process.env, sz.env || {});
   const prot = { produktAbfragen: 0, produktVars: [], knotenAbfragen: [], schreib: [], log: [], err: [], printful: [], exitCode: null, mutationVersuche: 0 };
   const mk = (status, body) => ({ ok: status >= 200 && status < 300, status, json: async () => { if (body === undefined) throw new Error('kein JSON'); return body; } });
@@ -166,6 +169,36 @@ const zusammenfassung = (e) => e.prot.log.find((l) => /Fertig:/.test(l)) || '';
   ist('AUCH_AUSWAHL=1 hebt die Sperre auf', mit.prot.schreib.length, 1);
   const unb = lauf({ produkte: [produkt(1, 2)], kostenStandard: null });
   ist('Printful kennt die Variante nicht (404): Variante ausgelassen, zwei «ohne Printful-Kosten», kein Fehler, Exit 0', [unb.prot.schreib.length, /2 ohne Printful-Kosten/.test(zusammenfassung(unb)), unb.status], [0, true, 0]);
+}
+
+// 8. Härtung 10.11.2026 (Gegenprüfung P1, Fund 10): ohne SENKEN=1 werden nur Erhöhungen geschrieben; Schreiben nur bei ausdrücklichem DRY_RUN=0
+{
+  const alt = (preis) => ({ variante: () => ({ price: preis }) });
+  const ohne = lauf({ senken: false, produkte: [produkt(1, 3)] });
+  ist('Vorgabe (ohne SENKEN): die Senkung 25.00 → 20.90 wird NICHT geschrieben, die Schlusszeile zählt 3 übersprungene Senkungen, Exit 0', [ohne.prot.schreib.length, /3 Senkungen übersprungen/.test(zusammenfassung(ohne)), /0 Variantenpreise angepasst/.test(zusammenfassung(ohne)), ohne.status], [0, true, true, 0]);
+  const hoch = lauf({ senken: false, produkte: [produkt(2, 2, alt('15.00'))] });
+  ist('Vorgabe: eine ERHÖHUNG 15.00 → 20.90 wird geschrieben', [preise(hoch), hoch.status], [['20.90', '20.90'], 0]);
+  const misch = lauf({ senken: false, produkte: [produkt(3, 2, { variante: (i) => ({ price: i === 0 ? '15.00' : '25.00' }) })] });
+  ist('Gemischtes Produkt (eine Variante teurer zu machen, eine zu senken): nur die Erhöhung geht raus', [preise(misch), misch.prot.schreib.length], [['20.90'], 1]);
+  const mitSenken = lauf({ senken: true, produkte: [produkt(1, 3)] });
+  ist('SENKEN=1 erlaubt die Senkung ausdrücklich', preise(mitSenken), ['20.90', '20.90', '20.90']);
+  const leer = lauf({ senken: true, dryLoeschen: true, produkte: [produkt(1, 3)] });
+  ist('DRY_RUN nicht gesetzt: nur Vorschau, nichts geschrieben (früher schrieb jeder Wert ausser «1»)', [leer.prot.schreib.length, /WÜRDEN angepasst/.test(zusammenfassung(leer))], [0, true]);
+  for (const v of ['', 'x', 'ja']) { const e = lauf({ senken: true, produkte: [produkt(1, 1)], env: { DRY_RUN: v } }); ist(`DRY_RUN=«${v}»: Vorschau, nichts geschrieben`, e.prot.schreib.length, 0); }
+  for (const v of ['0', 'false', 'nein']) { const e = lauf({ senken: true, produkte: [produkt(1, 1)], env: { DRY_RUN: v } }); ist(`DRY_RUN=«${v}»: es wird geschrieben`, e.prot.schreib.length, 1); }
+  for (const v of ['1', 'true', 'ja']) { const e = lauf({ senken: false, produkte: [produkt(1, 1)], env: { SENKEN: v } }); ist(`SENKEN=«${v}» erlaubt die Senkung`, e.prot.schreib.length, 1); }
+  for (const v of ['0', '', 'nein', 'x']) { const e = lauf({ senken: false, produkte: [produkt(1, 1)], env: { SENKEN: v } }); ist(`SENKEN=«${v}» erlaubt die Senkung NICHT`, e.prot.schreib.length, 0); }
+}
+// 9. Die Preisformel selbst (Fund 18, Mutant V7): der Zielpreis ist das HÖHERE von Kosten×Aufschlag und Kosten+Mindestmarge, nie das niedrigere. Kosten in CHF = USD × 0.90.
+{
+  // 20 USD = 18 CHF: Aufschlag 18×2.3 = 41.4 gegen Marge 18+12 = 30 → 41.4 → 42 − 0.10 = 41.90 (das niedrigere, 30, ergäbe 29.90)
+  const hoch = lauf({ senken: false, kostenStandard: '20.00', produkte: [produkt(1, 2)] });
+  ist('Formel: bei hohen Kosten gilt Kosten×Aufschlag (41.90), nicht Kosten+Marge (29.90)', preise(hoch), ['41.90', '41.90']);
+  // 5 USD = 4.5 CHF: Aufschlag 10.35 gegen Marge 16.5 → 16.5 → 17 − 0.10 = 16.90 (das niedrigere, 10.35, ergäbe 10.90)
+  const niedrig = lauf({ senken: true, kostenStandard: '5.00', produkte: [produkt(1, 2)] });
+  ist('Formel: bei niedrigen Kosten gilt Kosten+Mindestmarge (16.90), nicht Kosten×Aufschlag (10.90)', preise(niedrig), ['16.90', '16.90']);
+  const markup = lauf({ senken: false, env: { MARKUP: '3' }, kostenStandard: '20.00', produkte: [produkt(1, 1)] });
+  ist('Formel: der Aufschlag MARKUP=3 wirkt (18×3 = 54 → 53.90)', preise(markup), ['53.90']);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

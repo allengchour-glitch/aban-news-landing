@@ -6,7 +6,11 @@
  * und aktualisiert die Shopify-Variantenpreise. DRY_RUN=1 → nur Vorschau-Tabelle, keine Änderung.
  *
  * ENV: PRINTFUL_API_KEY (Pflicht) · [PRINTFUL_STORE_ID] · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN)
- *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=1] · [AUCH_AUSWAHL=1]
+ *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=0 schreibt; alles andere, auch leer, ist Vorschau] · [AUCH_AUSWAHL=1] · [SENKEN=1 erlaubt auch Preissenkungen]
+ *
+ * GEHÄRTET 10.11.2026 (Gegenprüfung P1, Fund 10): (1) Es werden nur ERHÖHUNGEN geschrieben. Die Formel unten kennt weder Versand noch Zahlungsgebühr; auf den Preisen nach der Anhebung vom 05.11.2026 (203 Preise, Preisformel
+ *   werkzeuge/preisformel.mjs) hätte ein Lauf mit dem Standard-Tag «wunschdesign» 62 Varianten GESENKT (53 unter den Mindestgewinn von 4 CHF, 4 mit Verlust). Gesenkt wird nur mit ausdrücklichem SENKEN=1 (Workflow: Haken «Auch senken»).
+ *   (2) Geschrieben wird nur bei ausdrücklichem DRY_RUN=0 (0, false, no, nein, off); nicht gesetzt oder leer ist Vorschau (vorher schrieb jeder Wert ausser «1»).
  *
  * REPARIERT 09.11.2026 (Phase 1 «Bestellweg härten», Test: automation/printful_reprice_test.mjs):
  *   - Varianten werden VOLLSTÄNDIG gelesen: die Abfrage holte nur variants(first:100) und blätterte nie weiter (ein Produkt mit mehr als 100 Varianten verlor still den Rest; Farben mal Pakete können 250 erreichen).
@@ -33,7 +37,8 @@ const MARKUP=parseFloat(process.env.MARKUP||'2.3')||2.3;
 const MIN_MARGE=parseFloat(process.env.MIN_MARGE||'12')||12;
 const TAG=process.env.TAG||'printful_personalized_product';
 const MAXP=Math.max(1,parseInt(process.env.MAX||'300',10)||300);
-const DRY=process.env.DRY_RUN==='1';
+const DRY=!['0','false','no','nein','off'].includes(String(process.env.DRY_RUN==null?'':process.env.DRY_RUN).trim().toLowerCase());
+const SENKEN=['1','true','ja','yes','on'].includes(String(process.env.SENKEN||'').trim().toLowerCase());
 const AUSWAHL=new Set(AUSWAHL_SPEC.map(s=>s.handle));
 const MIT_AUSWAHL=process.env.AUCH_AUSWAHL==='1';
 const API='2025-01';
@@ -106,7 +111,7 @@ async function alleVarianten(tok,p){
   } while(cursor && products.length<MAXP);
   console.log(`Produkte: ${products.length} (Tag ${TAG}) · MARKUP ${MARKUP} · MIN_MARGE ${MIN_MARGE} · USD→CHF ${RATE} · ${DRY?'DRY-VORSCHAU':'ANWENDEN'}\n`);
 
-  let changes=0, unknown=0, fehlgeschlagen=0;
+  let changes=0, unknown=0, fehlgeschlagen=0, gesenktUebersprungen=0;
   for(const p of products){
     if(!MIT_AUSWAHL && AUSWAHL.has(p.handle)){ console.log(`  ⏭ ${p.title} übersprungen: «Selbst gestalten»-Preise kommen aus lib/pod_preise.mjs (Versand + Gebühr, Netto ≥ 12 CHF). AUCH_AUSWAHL=1 hebt das auf.`); continue; }
     const varianten=await alleVarianten(tok,p);
@@ -119,7 +124,9 @@ async function alleVarianten(tok,p){
       const costChf=costUsd*RATE;
       const np=priced(costChf).toFixed(2);
       const cur=parseFloat(v.price).toFixed(2);
-      if(np!==cur){ updates.push({id:v.id,price:np});
+      if(np!==cur){
+        if(!SENKEN && parseFloat(np)<parseFloat(cur)){ gesenktUebersprungen++; console.log(`  ⏬ ${p.title.slice(0,34).padEnd(34)} | ${v.sku.padEnd(14)} Senkung ${cur} → ${np} übersprungen (nur Erhöhungen; SENKEN=1 erlaubt Senkungen)`); continue; }
+        updates.push({id:v.id,price:np});
         console.log(`  ${p.title.slice(0,34).padEnd(34)} | ${v.sku.padEnd(14)} Kost ~${costChf.toFixed(2)} | ${cur} → ${np}`);
       }
     }
@@ -137,6 +144,6 @@ async function alleVarianten(tok,p){
     }
     changes+=updates.length;
   }
-  console.log(`\nFertig: ${changes} Variantenpreise ${DRY?'WÜRDEN angepasst (Vorschau)':'angepasst'} · ${unknown} ohne Printful-Kosten · ${fehlgeschlagen} Produkte mit Fehler · ${FEHLER.length} Fehler.`);
+  console.log(`\nFertig: ${changes} Variantenpreise ${DRY?'WÜRDEN angepasst (Vorschau)':'angepasst'} · ${unknown} ohne Printful-Kosten · ${gesenktUebersprungen} Senkungen übersprungen · ${fehlgeschlagen} Produkte mit Fehler · ${FEHLER.length} Fehler.`);
   if(FEHLER.length){ process.exitCode=1; }
 })().catch(e=>{ console.error('Fehler:',e); process.exit(1); });

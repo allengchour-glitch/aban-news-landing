@@ -7,6 +7,10 @@ on:
         description: 'Preise wirklich setzen? (sonst nur Vorschau)'
         type: boolean
         default: false
+      senken:
+        description: 'Auch Preise SENKEN? (Vorgabe aus: nur Erhöhungen; die Formel kennt weder Versand noch Gebühr)'
+        type: boolean
+        default: false
       markup:
         description: 'Aufschlag-Faktor auf Kosten'
         type: string
@@ -42,5 +46,6 @@ jobs:
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           MARKUP: ${{ github.event.inputs.markup || '2.3' }}
           DRY_RUN: ${{ github.event.inputs.apply == 'true' && '0' || '1' }}
+          SENKEN: ${{ github.event.inputs.senken == 'true' && '1' || '' }}
           TAG: ${{ github.event.inputs.tag || 'printful_personalized_product' }}
         run: node automation/printful_reprice.mjs

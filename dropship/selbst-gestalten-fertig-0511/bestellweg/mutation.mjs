@@ -2,11 +2,15 @@
 // Mutationsprobe für den gehärteten Bestellweg (Strom 3, 05.11.2026): baut absichtliche Fehler in printful_sync.mjs, lib/printful_bestellweg.mjs und lib/printful_platzierung.mjs ein
 // und verlangt, dass mindestens eine der drei Testdateien ROT wird. Gearbeitet wird in einer KOPIE (TMPDIR), das Repo bleibt unberührt.
 // Lauf:  /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs          (Exit 0 = alle erkannt, 1 = mindestens einer überlebt, 2 = Mutation nicht anwendbar)
-//        --pruefen    prüft nur, ob jede Fundstelle genau einmal vorkommt;   NUR=<Teil des Namens>   nur diese Mutanten
+//        --pruefen    prüft nur, ob jede Fundstelle genau einmal vorkommt und kein Mutant ein Syntaxfehler ist;   NUR=<Teil des Namens>   nur diese Mutanten;   SHARD=<i>/<n>   nur jeder n-te Mutant
 // Stand 06.11.2026 (WP6): dazu die Mutanten «WP6 …» für die neue Schreibweise _Druckdatei, _vorschau, qd, Karte gegen SKU, Bestellung ohne Design und die Standardwerte des Workflows.
 // Stand 09.11.2026 (Phase 1): qd-weicht-ab (PR #3031, Codex) statt der alten Prüfung qdPruefen; neu «P1 …»: Dienst-Standort, Aufpreis-Platzierungen gegen das bezahlte Paket, Kosten-Obergrenze,
 // Standardwerte von Bestätigen und KI-Kontrolle, Lesen von Rückseite und Ärmel, Editor 6.4.0 Ende zu Ende; dazu die Preisanpassung printful_reprice.mjs (Weiterblättern, Fehlerbehandlung).
 // Ergänzt automation/pod_auswahl_mutation.mjs (die CI-Probe der Preis-/Auswahlseite, die einen Teil der Platzierung ebenfalls mutiert).
+// Stand 10.11.2026 (Härtung nach der Gegenprüfung P1): Mutanten «H10 F<Nr>» zu den 27 bestätigten Funden (Zahlung am Knoten, frisches Lesen, Markierung vor dem Anlegen, unbekannte Schlüssel, Herkunft der Datei, Standort/Rechte,
+// Vorgabe Trockenlauf, Bestätigungsplan, fail-open-Lesarten, vorhandener Auftrag, Workflow-Schalter, Feldtreue der Abfrage, Deckel, Preisanpassung). Ein Mutant mit Syntaxfehler zählt NICHT als erkannt (Exit 2, «UNGÜLTIG»);
+// die Ausgabe trennt Kills durch eine benannte Prüfung von Kills durch eine Ausnahme im Test. Die volle Probe dauert rund 78 Minuten Rechenzeit (gemessen 10.11.2026) und läuft von Hand, auf drei Prozesse verteilt in rund 26 Minuten: SHARD=1/3, 2/3, 3/3; die CI führt nur `--pruefen` aus (Fundstellen
+// genau einmal UND kein Mutant mit Syntaxfehler). Mutanten «H10 F22» stehen am Ende der Liste, damit die Nummern der übrigen (und damit die Zuordnung zu den Teilen) unverändert bleiben.
 import { mkdtempSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
@@ -76,7 +80,8 @@ export const MUTANTEN = [
   // ── Kosten, Status, Dateistatus
   ['Kosten: Printfuls Steuer wird mitgerechnet', B, 'const ohneSteuer = total - (num(costs.tax) || 0) - (num(costs.vat) || 0);', 'const ohneSteuer = total;'],
   ['Kosten: Verlust fällt nicht auf', B, 'if (nettoChf < nettoMin)', 'if (nettoChf < nettoMin - 1000)'],
-  ['Kosten: andere Währung gilt als USD', B, "if (costs.currency && String(costs.currency).toUpperCase() !== 'USD') return", 'if (false) return'],
+  ['Kosten: andere Währung gilt als USD', B, "if (!costs.currency || String(costs.currency).trim().toUpperCase() !== 'USD') return unbek(", 'if (!costs.currency) return unbek('],
+  ['H10 F8 Kosten: eine fehlende Währung gilt als USD', B, "if (!costs.currency || String(costs.currency).trim().toUpperCase() !== 'USD') return unbek(", "if (costs.currency && String(costs.currency).trim().toUpperCase() !== 'USD') return unbek("],
   ['Kosten: «calculating» gilt als fertig', B, "if (costs.calculation_status && String(costs.calculation_status).toLowerCase() !== 'done') return", 'if (false) return'],
   ['Kosten: Erlös 0 gilt als bekannt', B, 'if (erloes === null || erloes <= 0)', 'if (erloes === null)'],
   ['Kosten: Wechselkurs 1.2 statt 0.90', B, 'kurs: 0.90,', 'kurs: 1.2,'],
@@ -107,7 +112,7 @@ export const MUTANTEN = [
   ['Plan: Menge geht verloren', B, 'const quantity = menge > 0 ? menge : 1;', 'const quantity = 1;'],
   ['Plan: Optionen gehen nicht an Printful', B, 'if (op.optionen.length) item.options = op.optionen;', ''],
   ['Plan: Erlös in Fremdwährung gilt als CHF', B, "String(m.currencyCode || '').toUpperCase() === 'CHF'", 'true'],
-  ['Plan: unbekannter Erlös einer Position wird übergangen', B, 'if (betrag === null) erloesBekannt = false;', ''],
+  ['Plan: unbekannter Erlös einer Position wird übergangen', B, 'if (betrag === null) erloesBekannt = false; else erloes += betrag;', 'if (betrag === null) { /* übergangen */ } else erloes += betrag;'],
   ['Plan: Fehler der KI-Kontrolle geben frei', B, "if (k && k.art !== 'ok') weich(", "if (k && k.art === 'fail') weich("],
   ['Plan: Druckdaten nicht lesbar fällt nicht auf', B, "if (!dd || dd.art !== 'ok') weich('druckdaten'", "if (false) weich('druckdaten'"],
   ['Plan: Positionen werden harter Befund, der Rest läuft trotzdem durch', B, 'if (befunde.slice(bf0).some((b) => b.hart)) continue;      // schon hart gescheitert', '      // schon hart gescheitert'],
@@ -120,7 +125,7 @@ export const MUTANTEN = [
   ['Platzierung: ausdrückliche Platzierung wird wie Vorderseite behandelt', P, 'const e = ausdruecklich ? entscheideExplizit(', 'const e = false ? entscheideExplizit('],
   ['Platzierung: Rohantwort geht im Cache verloren', P, 'roh = info ? (r && r.result) || null : null;', 'roh = null;'],
   // ── Der Kleber (printful_sync.mjs)
-  ['Kleber: Trockenlauf nur bei «1»', S, "const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(", "const DRY = String(process.env.DRY_RUN) === '1' && !['', '0', 'false', 'no', 'nein', 'off'].includes("],
+  ['Kleber: Trockenlauf nur bei «1»', S, "const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(", "const DRY = String(process.env.DRY_RUN) === '1' && !['0', 'false', 'no', 'nein', 'off'].includes("],
   ['Kleber: nach einem bestehenden Auftrag wird nicht gefragt', S, 'if (vorh.status === 200 && vorh.j && vorh.j.result) {', 'if (false) {'],
   ['Kleber: Nachfrage nicht möglich gilt als «kein Auftrag»', S, 'if (vorh.status !== 404) { await vorlaeufigerFehler(', 'if (false) { await vorlaeufigerFehler('],
   ['Kleber: external_id wird nicht mitgesendet', S, '{ external_id: ext, recipient:', '{ recipient:'],
@@ -130,7 +135,7 @@ export const MUTANTEN = [
   ['Kleber: Tag nur mit Statuslesen? Status wird nicht ausgewertet (immer bestätigt)', S, "if (st && st.art === 'bestaetigt') {", 'if (true) {'],
   ['Kleber: Kosten-Befund wird nicht übernommen', S, 'if (!k.ok) weich.push(', 'if (false) weich.push('],
   ['Kleber: abgelehnte Dateien werden nicht übernommen', S, "if (d.art === 'problem') for (const t of d.texte) weich.push(", 'if (false) for (const t of d.texte) weich.push('],
-  ['Kleber: ausgeschaltetes Bestätigen fällt nicht auf', S, 'if (!AUTO_CONFIRM) weich.push(', 'if (false) weich.push('],
+  ['Kleber: ausgeschaltetes Bestätigen fällt nicht auf', S, 'if (!BESTAETIGEN) weich.push(', 'if (false) weich.push('],
   ['Kleber: Bestätigen ohne KI-Schlüssel gilt als bestanden', S, "if (!GEMINI) return { art: 'fehlt'", "if (!GEMINI) return { art: 'ok'"],
   ['Kleber: KI-Fehler (HTTP) gilt als bestanden', S, "if (!g.ok) return { art: 'technisch'", "if (false) return { art: 'technisch'"],
   ['Kleber: KI-Antwort ohne PASS/FAIL gilt als bestanden', S, "if (l === 'pass') return { art: 'ok'", "if (l !== 'fail') return { art: 'ok'"],
@@ -204,12 +209,12 @@ export const MUTANTEN = [
   // ── WP6 (06.11.2026): neue Schreibweise «_Druckdatei», _vorschau, qd, Karte gegen SKU, Bestellung ohne Design, Standardwerte des Workflows
   ['WP6 Schlüssel: «_Druckdatei (…)» wird nicht gelesen', B, 'mn = k.match(SCHL_V6_NEU), mo', 'mn = null, mo'],
   ['WP6 Schlüssel: neue Schreibweise erlaubt Grossbuchstaben in der ID', B, "const SCHL_V6_NEU = /^_Druckdatei \\(([a-z0-9_]+)\\)$/;", "const SCHL_V6_NEU = /^_Druckdatei \\(([A-Za-z0-9_]+)\\)$/;"],
-  ['WP6 Schlüssel: nicht lesbarer neuer Schlüssel wird wieder als Editor 5 (Vorderseite) gelesen', B, 'const unlesbar = !mn && SCHL_V6_NEU_VERDACHT.test(k);', 'const unlesbar = false;'],
-  ['WP6 Schlüssel: «_druckdatei» in Kleinschreibung gilt nicht als Verdacht', B, 'const SCHL_V6_NEU_VERDACHT = /^_druckdatei/i;', 'const SCHL_V6_NEU_VERDACHT = /^_druckdatei/;'],
+  ['WP6 Schlüssel: nicht lesbarer neuer Schlüssel wird wieder als Editor 5 (Vorderseite) gelesen', B, 'const unlesbar = !m && !mn && seite5 === null && SCHL_DATEI_VERDACHT.test(k);', 'const unlesbar = false;'],
+  ['WP6 Schlüssel: «druckdatei» in Kleinschreibung gilt nicht als Verdacht', B, 'const SCHL_DATEI_VERDACHT = /druckdatei|print\\s*file/i;', 'const SCHL_DATEI_VERDACHT = /druckdatei|print\\s*file/;'],
   ['WP6 Mischung: die neue Schreibweise zählt als alte (keine Mischung)', B, "stile.add(m ? 'alt' : mn ? 'neu' : 'v5');", "stile.add(m || mn ? 'alt' : 'v5');"],
   ['WP6 Mischung: dieselbe Platzierung in zwei Schreibweisen meldet zusätzlich «datei-doppelt»', B, "if (gesehen.get('v6:' + id) === stil) p('datei-doppelt'", "if (true) p('datei-doppelt'"],
   ['WP6 Doppelt: dieselbe neue Platzierung zweimal fällt nicht auf', B, "if (gesehen.get('v6:' + id) === stil) p('datei-doppelt'", "if (false) p('datei-doppelt'"],
-  ['WP6 _vorschau: wird als Druckdatei gelesen', B, 'const SCHL_V5 = /Druckdatei|Print file/i;', 'const SCHL_V5 = /Druckdatei|Print file|vorschau/i;'],
+  ['WP6 _vorschau: wird als Druckdatei gelesen', B, 'const SCHL_DATEI_VERDACHT = /druckdatei|print\\s*file/i;', 'const SCHL_DATEI_VERDACHT = /druckdatei|print\\s*file|vorschau/i;'],
   ['WP6 qd: wird nicht gelesen', B, "if (karte && karte.qd !== undefined && karte.qd !== null) {", 'if (false) {'],
   ['WP6 qd: die Obergrenze 1000 fehlt', B, 'karte.qd >= QD_MIN && karte.qd <= QD_MAX) qd = karte.qd;', 'karte.qd >= QD_MIN) qd = karte.qd;'],
   ['WP6 qd: eine Kommazahl gilt', B, "typeof karte.qd === 'number' && Number.isInteger(karte.qd) &&", "typeof karte.qd === 'number' &&"],
@@ -255,11 +260,11 @@ export const MUTANTEN = [
   ['P1 Dienst: eine Position ohne Fulfillment-Order gilt als Händler-Standort', B, "if (!gefunden) return { art: 'unklar', grund: 'die Position steht in keiner offenen Fulfillment-Order' };", ''],
   ['P1 Dienst: fehlende Fulfillment-Orders gelten als Händler-Standort', B, "return { art: 'unklar', grund: 'die Bestelldaten enthalten keine Fulfillment-Orders' };", "return { art: 'frei' };"],
   ['P1 Dienst: «dienst-standort» ist nur ein weicher Befund', B, "hart('dienst-standort',", "weich('dienst-standort',"],
-  ['P1 Dienst: nach dem Befund laufen die Netzabfragen weiter', B, "im Printful-Dashboard prüfen`)); continue; }", "im Printful-Dashboard prüfen`)); }"],
-  ['P1 Dienst: ein unklarer Standort bleibt ohne Befund', B, "if (stdo.art === 'unklar') weich(", "if (false) weich("],
+  ['P1 Dienst: nach dem Befund laufen die Netzabfragen weiter', B, "(sonst Doppeldruck); im Printful-Dashboard prüfen`)); continue; }", "(sonst Doppeldruck); im Printful-Dashboard prüfen`)); }"],
+  ['P1 Dienst: ein unklarer Standort bleibt ohne Befund', B, "if (stdo.art === 'unklar') { hart('dienst-standort-unklar',", "if (false) { hart('dienst-standort-unklar',"],
   ['P1 Dienst: die Abfrage fragt nicht nach dem Dienst-Flag', S, 'assignedLocation{ location{ id name isFulfillmentService } }', 'assignedLocation{ location{ id name } }'],
-  ['P1 Dienst: die Abfrage fragt nicht nach den Positionen der Fulfillment-Orders', S, 'lineItems(first:50){ edges{ node{ lineItem{ id } } } } } } }', 'lineItems(first:50){ edges{ node{ id } } } } } }'],
-  ['P1 Dienst: die Abfrage fragt nicht nach Fulfillment-Orders', S, '  fulfillmentOrders(first:20){ edges{ node{ id status assignedLocation', '  fulfillmentOrdersX(first:20){ edges{ node{ id status assignedLocation'],
+  ['P1 Dienst: die Abfrage fragt nicht nach den Positionen der Fulfillment-Orders', S, 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ lineItem{ id } } } } } } }', 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id } } } } } }'],
+  ['P1 Dienst: die Abfrage fragt nicht nach Fulfillment-Orders', S, '  fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation', '  fulfillmentOrdersX(first:20){ pageInfo{ hasNextPage } edges{ node{ id status assignedLocation'],
   ['P1 Paket: die Abfrage fragt nicht nach den Optionen der Variante', S, 'variant{ sku title selectedOptions{ name value } }', 'variant{ sku }'],
   // ── P1: Aufpreis-Platzierungen gegen das bezahlte Paket
   ['P1 Aufpreis: kein Aufpreis wird je geprüft', B, 'if (usd > 0 && !gedeckt(typ)) aus.push(', 'if (false) aus.push('],
@@ -286,7 +291,7 @@ export const MUTANTEN = [
   ['P1 Paket aus Option: fehlt die Option, ist das Paket nicht bestimmbar statt Vorgabe', B, "{ bezahlt: Array.isArray(vorgabe) ? vorgabe.slice() : [], quelle: `Option «${option}» fehlt an der Variante: Vorgabe` }", "{ bezahlt: null, quelle: `Option «${option}» fehlt an der Variante: Vorgabe` }"],
   ['P1 Paket aus Option: die Liste wird nicht kopiert', B, 'Array.isArray(liste) ? { bezahlt: liste.slice(),', 'Array.isArray(liste) ? { bezahlt: liste,'],
   ['P1 Kleber: PRINTFUL_PAKET_BEZAHLT wird ignoriert', S, 'const paketVon = () => (PAKET_BEZAHLT.length ?', 'const paketVon = () => (false ?'],
-  ['P1 Kleber: das Paket geht nicht an den Plan', S, 'optionVorgaben: OPTION_VORGABEN, paket: paketVon });', 'optionVorgaben: OPTION_VORGABEN });'],
+  ['P1 Kleber: das Paket geht nicht an den Plan', S, 'optionVorgaben: OPTION_VORGABEN, paket: paketVon, scopeHinweis })', 'optionVorgaben: OPTION_VORGABEN, scopeHinweis })'],
   ['P1 Kleber: eine ungültige Platzierungs-ID in PRINTFUL_PAKET_BEZAHLT wird hingenommen', S, 'if (PAKET_FEHLER.length) {', 'if (false) {'],
   // ── P1: Kosten-Obergrenze
   ['P1 Obergrenze: die Obergrenze wird nie geprüft', B, 'if (grenze !== null && grenze > 0 && total > grenze) return', 'if (false) return'],
@@ -315,7 +320,7 @@ export const MUTANTEN = [
   ['P1 Ärmel: eine Platzierung ohne Seite (sleeve_left) wird als Rückseite gelesen', B, "id === 'front' || id === 'default' ? 'front' : null", "id === 'front' || id === 'default' ? 'front' : 'back'"],
   ['P1 Ärmel: ein Unterstrich in der Platzierungs-ID wird nicht gelesen (alte Schreibweise)', B, "Druckdatei \\(([a-z0-9_]+)\\)$/u;", "Druckdatei \\(([a-z0-9]+)\\)$/u;"],
   ['P1 Ärmel: ein Unterstrich in der Platzierungs-ID wird nicht gelesen (neue Schreibweise)', B, "const SCHL_V6_NEU = /^_Druckdatei \\(([a-z0-9_]+)\\)$/;", "const SCHL_V6_NEU = /^_Druckdatei \\(([a-z0-9]+)\\)$/;"],
-  ['P1 Rückseite v5: der Schlüssel «Hinten» zählt als Vorderseite', B, "const seite = /Hinten|Back/i.test(k) ? 'back' : 'front';", "const seite = 'front';"],
+  ['P1 Rückseite v5: der Schlüssel «Hinten» zählt als Vorderseite', B, "return /^(Hinten|Back)$/.test(m[1] || '') ? 'back' : 'front';", "return 'front';"],
   ['P1 Rückseite: der Auftrag sendet jede Datei als Vorderseite', P, 'files.push({ type: e.platzierung, url: d.url });', "files.push({ type: 'front', url: d.url });"],
   ['P1 Rückseite: eine ausdrücklich genannte Platzierung gilt nie als gesichert', P, 'const gueltig = dr.includes(t) ||', 'const gueltig = false && dr.includes(t) ||'],
   // ── P1: printful_reprice.mjs
@@ -335,42 +340,234 @@ export const MUTANTEN = [
   ['P1 Reprice: ein gescheiterter Auth-Versuch beendet mit Exit 0', R, "console.error('❌ Shopify-Auth fehlgeschlagen'); process.exit(1);", "console.error('❌ Shopify-Auth fehlgeschlagen'); process.exit(0);"],
   ['P1 Reprice: die Sperre der «Selbst gestalten»-Produkte fehlt', R, 'if(!MIT_AUSWAHL && AUSWAHL.has(p.handle)){', 'if(false){'],
   ['P1 Reprice: das fehlgeschlagene Produkt zählt als angepasst', R, 'if(!ok){ fehlgeschlagen++; continue; }', 'if(!ok){ fehlgeschlagen++; }'],
+  // ── HÄRTUNG 10.11.2026 (Gegenprüfung P1, 27 bestätigte Funde). Jeder Mutant steht für eine Zusage dieser Runde; «H10» + Fundnummer.
+  // Fund 0: Zahlung am Knoten (Testbestellung, Storno, Erstattung, fehlende Felder)
+  ['H10 F0 Abfrage: test und displayFinancialStatus werden nicht abgefragt', S, 'id name email tags cancelledAt test displayFinancialStatus\n', 'id name email tags cancelledAt\n'],
+  ['H10 F0 Abfrage: test wird nicht abgefragt', S, 'cancelledAt test displayFinancialStatus\n', 'cancelledAt displayFinancialStatus\n'],
+  ['H10 F0 Abfrage: displayFinancialStatus wird nicht abgefragt', S, 'cancelledAt test displayFinancialStatus\n', 'cancelledAt test\n'],
+  ['H10 F0 Abfrage: cancelledAt wird nicht abgefragt', S, 'email tags cancelledAt test', 'email tags test'],
+  ['H10 F0 Suche: Testbestellungen werden nicht ausgeschlossen', S, ' -test:true -tag:printful-synced', ' -tag:printful-synced'],
+  ['H10 F0 Suche: «bezahlt» wird nicht verlangt', S, 'status:open financial_status:paid fulfillment_status', 'status:open fulfillment_status'],
+  ['H10 F0 Liste: die Zahlung wird am Knoten nicht geprüft', S, "if (!z.ok) { if (z.art === 'unlesbar') fehlerAdd(", "if (false) { if (z.art === 'unlesbar') fehlerAdd("],
+  ['H10 F0 Liste: ein unlesbarer Zahlungsstatus bleibt still', S, "if (z.art === 'unlesbar') fehlerAdd(`${n.name}: Zahlungsstatus nicht lesbar", "if (false) fehlerAdd(`${n.name}: Zahlungsstatus nicht lesbar"],
+  ['H10 F0 zahlungPruefen: eine Testbestellung wird nicht erkannt', B, "if (n.test === true) return { ok: false, art: 'test'", "if (false) return { ok: false, art: 'test'"],
+  ['H10 F0 zahlungPruefen: ein fehlendes Feld «test» gilt als kein Test', B, "if (n.test !== false) return { ok: false, art: 'unlesbar', text: 'Das Feld «test» fehlt in der Antwort' };", ''],
+  ['H10 F0 zahlungPruefen: ein fehlendes Feld «cancelledAt» gilt als nicht storniert', B, 'if (n.cancelledAt === undefined) return {', 'if (false) return {'],
+  ['H10 F0 zahlungPruefen: ein Storno wird nicht erkannt', B, "if (n.cancelledAt) return { ok: false, art: 'storniert'", "if (false) return { ok: false, art: 'storniert'"],
+  ['H10 F0 zahlungPruefen: ein fehlender Zahlungsstatus gilt als bezahlt', B, "if (typeof n.displayFinancialStatus !== 'string' || !n.displayFinancialStatus) return {", 'if (false) return {'],
+  ['H10 F0 zahlungPruefen: nur PENDING gilt als unbezahlt', B, "if (n.displayFinancialStatus.toUpperCase() !== 'PAID') return", "if (n.displayFinancialStatus.toUpperCase() === 'PENDING') return"],
+  ['H10 F0 zahlungPruefen: «paid» in Kleinschreibung gilt nicht', B, "if (n.displayFinancialStatus.toUpperCase() !== 'PAID') return", "if (n.displayFinancialStatus !== 'PAID') return"],
+  // Fund 1: frisch lesen vor dem Anlegen und vor dem Bestätigen
+  ['H10 F1 Kleber: vor dem Anlegen wird nicht frisch gelesen', S, "const fr = await frischLesen(tok, o, 'anlegen');", "const fr = { art: 'ok' };"],
+  ['H10 F1 Kleber: vor dem Bestätigen wird nicht frisch gelesen', S, "const fr2 = await frischLesen(tok, o, 'bestaetigen');", "const fr2 = { art: 'ok' };"],
+  ['H10 F1 Kleber: eine Zahlungsänderung vor dem Anlegen wird übergangen', S, "if (fr.art === 'zahlung') {", 'if (false) {'],
+  ['H10 F1 Kleber: eine unlesbare frische Lesung vor dem Anlegen legt trotzdem an', S, "if (fr.art !== 'ok') { await vorlaeufigerFehler(", 'if (false) { await vorlaeufigerFehler('],
+  ['H10 F1 Kleber: ein anderer Lauf (schon bearbeitet) wird nicht beachtet', S, "if (fr.art === 'schon-bearbeitet') {", 'if (false) {'],
+  ['H10 F1 Kleber: nach einer Änderung vor dem Bestätigen wird trotzdem bestätigt', S, "if (fr2.art !== 'ok') {", 'if (false) {'],
+  ['H10 F1 frischLesen: die Zahlung wird nicht geprüft', S, '  const z = zahlungPruefen(n);\n  if (!z.ok) return z.art', '  const z = { ok: true };\n  if (!z.ok) return z.art'],
+  ['H10 F1 frischLesen: die ID der gelesenen Bestellung wird nicht verglichen', S, "if (!n || typeof n !== 'object' || n.id !== o.id)", "if (!n || typeof n !== 'object')"],
+  ['H10 F1 frischLesen: ein fehlendes Feld «tags» gilt als in Ordnung', S, "if (!tags) return { art: 'unlesbar', text: 'Das Feld «tags» fehlt in der Antwort' };", ''],
+  ['H10 F1 frischLesen: ein anderer Lauf mit printful-synced/printful-review wird nicht beachtet', S, "if (tags.includes('printful-synced') || tags.includes(REVIEW_TAG)) return {", 'if (false) return {'],
+  ['H10 F1 frischLesen: eine junge Markierung eines anderen Laufs wird nicht beachtet', S, "if (alter !== null && alter < ANLEGEN_SPERRE_MIN) return { art: 'schon-bearbeitet'", "if (false) return { art: 'schon-bearbeitet'"],
+  // Fund 6: Markierung VOR dem Anlegen, Sperre 60 Minuten, Nachfrage nach unquittiertem Anlegen
+  ['H10 F6 Kleber: die Markierung vor dem Anlegen wird nicht gesetzt', S, 'if (!(await tagsSetzen(tok, o, [anlegenTag(Date.now())]))) {', 'if (false) {'],
+  ['H10 F6 Kleber: scheitert die Markierung, wird trotzdem angelegt', S, 'Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }', 'Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); }'],
+  ['H10 F6 Kleber: die Sperre nach einer jungen Markierung fehlt', S, 'if (frueher !== null && frueher < ANLEGEN_SPERRE_MIN) {', 'if (false) {'],
+  ['H10 F6 anlegenAlterMin: zählt die älteste statt der jüngsten Markierung', B, '(jung === null || ms > jung)', '(jung === null || ms < jung)'],
+  ['H10 F6 anlegenAlterMin: ein Alter aus der Zukunft wird negativ', B, 'Math.max(0, Math.floor((jetztMs - jung) / 60000))', 'Math.floor((jetztMs - jung) / 60000)'],
+  ['H10 F6 Sperre dauert nur 5 statt 60 Minuten', B, 'export const ANLEGEN_SPERRE_MIN = 60;', 'export const ANLEGEN_SPERRE_MIN = 5;'],
+  ['H10 F6 anlegenTag: der Monat zählt ab 0', B, 'zwei(d.getUTCMonth() + 1)', 'zwei(d.getUTCMonth())'],
+  ['H10 F6/F18 Kleber: die Nachfrage nach einem unquittierten Anlegen fragt eine andere external_id', S, "const nach = await pfLesen('/orders/@' + encodeURIComponent(ext), 2);\n      if (nach.status === 200", "const nach = await pfLesen('/orders/@' + encodeURIComponent(ext + 'x'), 2);\n      if (nach.status === 200"],
+  // Fund 2/23: unbekannte Druckdatei-Schlüssel
+  ['H10 F2 Verdacht: «Print  file» (zwei Leerzeichen) fällt nicht auf', B, '|print\\s*file/i;', '|print file/i;'],
+  ['H10 F2 Verdacht: das Wort «Druckdatei» fehlt', B, 'const SCHL_DATEI_VERDACHT = /druckdatei|print\\s*file/i;', 'const SCHL_DATEI_VERDACHT = /print\\s*file/i;'],
+  ['H10 F2 ein unbekannter Schlüssel ist nur ein weicher Befund', B, "es wird nichts geraten`, true); continue; }", "es wird nichts geraten`, false); continue; }"],
+  ['H10 F2 ein unbekannter Schlüssel wird nach dem Befund trotzdem als Datei gelesen', B, "es wird nichts geraten`, true); continue; }", "es wird nichts geraten`, true); }"],
+  ['H10 F2 die Klammer eines v5-Schlüssels darf jeder Text sein', B, "const SEITE_V5 = '(Vorne|Hinten|Front|Back)';", "const SEITE_V5 = '([A-Za-z_]+)';"],
+  // Fund 3: Herkunft der Druckdatei
+  ['H10 F3 Adresse: ein Rückstrich wird akzeptiert', B, "if (w.includes('\\\\')) return 'Adresse enthält einen Rückstrich';", ''],
+  ['H10 F3 Adresse: ein Port wird akzeptiert', B, "if (u.port) return 'Adresse enthält einen Port';", ''],
+  ['H10 F3 Adresse: eine fremde Cloudinary-Cloud wird akzeptiert', B, "if (eigeneCloud && u.hostname.toLowerCase() === 'res.cloudinary.com' && !u.pathname.startsWith(", "if (false && u.hostname.toLowerCase() === 'res.cloudinary.com' && !u.pathname.startsWith("],
+  ['H10 F3 Adresse: /image/fetch/ und andere Pfade der eigenen Cloud werden akzeptiert', B, 'startsWith(`/${EIGENE_CLOUDINARY_CLOUD}/image/upload/`)', 'startsWith(`/${EIGENE_CLOUDINARY_CLOUD}/`)'],
+  ['H10 F3 Adresse: die eigene Cloud heisst anders als im Editor', B, "export const EIGENE_CLOUDINARY_CLOUD = 'dwyi6kkrl';", "export const EIGENE_CLOUDINARY_CLOUD = 'dwyi6kkrl2';"],
+  ['H10 F3/F18 Adresse: eine Host-Endung (xres.cloudinary.com) wird akzeptiert', B, "if (!hosts.map((h) => h.toLowerCase()).includes(u.hostname.toLowerCase())) return", "if (!hosts.some((h) => u.hostname.toLowerCase().endsWith(h.toLowerCase()))) return"],
+  ['H10 F3 Datei: die Adresse wird nicht normalisiert weitergegeben (v6)', B, "url: adresseNormal(w), quelle: 'v6'", "url: w, quelle: 'v6'"],
+  ['H10 F3 Kopf-Abruf: Weiterleitungen werden blind verfolgt', S, "{ headers: { Range: 'bytes=0-65535' }, redirect: 'manual', signal", "{ headers: { Range: 'bytes=0-65535' }, redirect: 'follow', signal"],
+  ['H10 F3 Kopf-Abruf: das Ziel einer Weiterleitung wird nicht gegen die Hostliste geprüft', S, 'if (!ziel || sprung >= 3 || adresseProblem(ziel, HOSTS)) return', 'if (!ziel || sprung >= 3) return'],
+  ['H10 F3 Kopf-Abruf: Weiterleitungen sind unbegrenzt', S, 'if (!ziel || sprung >= 3 || adresseProblem(ziel, HOSTS)) return', 'if (!ziel || adresseProblem(ziel, HOSTS)) return'],
+  ['H10 F3 Kopf-Abruf: eine erlaubte Weiterleitung wird nicht verfolgt', S, 'return holeKopf(ziel, sprung + 1);', 'return { status: 0, bytes: null };'],
+  // Fund 4/18/21: Dienst-Standort
+  ['H10 F4 Standort: eine abgeschnittene Order-Liste gilt als vollständig', B, 'unvollstaendig = fos.pageInfo && fos.pageInfo.hasNextPage ?', 'unvollstaendig = false && fos.pageInfo.hasNextPage ?'],
+  ['H10 F4 Standort: eine abgeschnittene Positionsliste gilt als vollständig', B, 'if (fo.lineItems && fo.lineItems.pageInfo && fo.lineItems.pageInfo.hasNextPage) unvollstaendig =', 'if (false) unvollstaendig ='],
+  ['H10 F4 Standort: eine unvollständige Liste ergibt trotzdem «frei»', B, "if (unvollstaendig) return { art: 'unklar', grund: unvollstaendig };", ''],
+  ['H10 F18 (D3) Standort: Dienst plus unlesbarer Standort ergibt nur «unklar»', B, "if (dienst) return { art: 'dienst', name:", "if (dienst && !offen) return { art: 'dienst', name:"],
+  ['H10 F4 Abfrage: die Order-Liste fragt nicht nach dem Seitenkopf', S, 'fulfillmentOrders(first:20){ pageInfo{ hasNextPage } edges{', 'fulfillmentOrders(first:20){ edges{'],
+  ['H10 F4 Abfrage: die Positionsliste der Order fragt nicht nach dem Seitenkopf', S, 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ lineItem{ id } } } } } } }', 'lineItems(first:50){ edges{ node{ lineItem{ id } } } } } } }'],
+  ['H10 F4/F13 Abfrage: der Status der Fulfillment-Order wird nicht abgefragt', S, 'edges{ node{ id status assignedLocation', 'edges{ node{ id assignedLocation'],
+  ['H10 F21 Kleber: die Rechte des Tokens werden nicht gelesen', S, 'const scopes = await scopesLesen(tok);', "const scopes = { art: 'ok', fehlt: [] };"],
+  ['H10 F21 Kleber: ein fehlendes Recht bricht den scharfen Lauf nicht ab', S, "while (kandidaten.length < MAX && !(scopes.art === 'fehlt' && !DRY)) {", 'while (kandidaten.length < MAX) {'],
+  ['H10 F21 Kleber: ein fehlendes Recht wird nicht als Fehler gemeldet', S, "if (scopes.art === 'fehlt') { scopeHinweis =", "if (false) { scopeHinweis ="],
+  ['H10 F21 Kleber: der Befundtext nennt das fehlende Recht nicht', S, "scopeHinweis = `dem Token fehlt das Recht ${scopes.fehlt.join(', ')}`;", "scopeHinweis = '';"],
+  ['H10 F21 Plan: das fehlende Recht steht nicht im Befundtext', B, "${cfg.scopeHinweis ? '; ' + cfg.scopeHinweis : ''}", ''],
+  ['H10 F21 scopesBewerten: write_ der Händler-Standorte ersetzt read_ nicht', B, "['read_merchant_managed_fulfillment_orders', 'write_merchant_managed_fulfillment_orders']", "['read_merchant_managed_fulfillment_orders']"],
+  ['H10 F21 scopesBewerten: eine nicht abfragbare Liste gilt als fehlend', B, "if (!Array.isArray(handles)) return { art: 'unbekannt', fehlt: [] };", "if (!Array.isArray(handles)) return { art: 'fehlt', fehlt: [] };"],
+  ['H10 F4 Plan: «dienst-standort-unklar» ist nur ein weicher Befund', B, "if (stdo.art === 'unklar') { hart('dienst-standort-unklar',", "if (stdo.art === 'unklar') { weich('dienst-standort-unklar',"],
+  ['H10 F4 Plan: nach «dienst-standort-unklar» laufen die Netzabfragen weiter', B, "Fulfillment-Orders der Bestellung im Shopify-Admin ansehen, im Printful-Dashboard prüfen`)); continue; }", "Fulfillment-Orders der Bestellung im Shopify-Admin ansehen, im Printful-Dashboard prüfen`)); }"],
+  // Fund 5/20/24: Vorgabe Trockenlauf
+  ['H10 F5 Kleber: ohne DRY_RUN wird geschrieben', S, "const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN)", "const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN)"],
+  ['H10 F5 Kleber: nur bestimmte Wörter sind Trockenlauf (ein Tippfehler schreibt)', S, "const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(", "const DRY = ['1', 'true', 'ja', 'yes', 'on'].includes("],
+  ['H10 F5 Kleber: «off» gilt nicht als ausdrückliches Nein', S, "const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(", "const DRY = !['0', 'false', 'no', 'nein'].includes("],
+  // Fund 7: wann bestätigt der Sync selbst
+  ['H10 F7 bestaetigenPlan: ohne AUTO_CONFIRM wird bestätigt', B, 'if (!autoConfirm) return { bestaetigen: false,', 'if (false) return { bestaetigen: false,'],
+  ['H10 F7 bestaetigenPlan: ohne Kostenobergrenze wird bestätigt', B, 'if (maxKostenAus) return { bestaetigen: false, grund:', 'if (false) return { bestaetigen: false, grund:'],
+  ['H10 F7 bestaetigenPlan: ohne Kostenobergrenze ist es kein Konfigurationsfehler', B, "konfigFehler: 'PRINTFUL_AUTO_CONFIRM=1 verlangt eine Kostenobergrenze:", "konfigFehler: null && 'PRINTFUL_AUTO_CONFIRM=1 verlangt eine Kostenobergrenze:"],
+  ['H10 F7 bestaetigenPlan: ohne KI-Kontrolle wird bestätigt', B, "if (ki !== 'pflicht') return { bestaetigen: false,", 'if (false) return { bestaetigen: false,'],
+  ['H10 F7 Kleber: ein Konfigurationsfehler beendet den Lauf nicht', S, "console.error(`❌ ${BEST.konfigFehler}.`); process.exit(1);", "console.error(`❌ ${BEST.konfigFehler}.`);"],
+  ['H10 F7 Kleber: bestätigt wird nach AUTO_CONFIRM allein, nicht nach dem Plan', S, 'const BESTAETIGEN = BEST.bestaetigen;', 'const BESTAETIGEN = AUTO_CONFIRM;'],
+  // Fund 8: fail-open-Lesarten
+  ['H10 F8 dateienStatus: ein Auftrag ohne Datei gilt als in Ordnung', B, ": wartet || echte === 0 ? { art: 'wartet', texte, leer: echte === 0 } :", ": wartet ? { art: 'wartet', texte, leer: false } :"],
+  ['H10 F8 entwurfVergleichen: eine andere Artikelzahl fällt nicht auf', B, 'if (items.length !== soll.length) {', 'if (false) {'],
+  ['H10 F8 entwurfVergleichen: eine andere Variante fällt nicht auf', B, 'if (it.variant_id !== undefined && it.variant_id !== null && Number(it.variant_id) !== Number(p.variant_id)) texte.push(', 'if (false) texte.push('],
+  ['H10 F8 entwurfVergleichen: eine andere Menge fällt nicht auf', B, 'if (it.quantity !== undefined && it.quantity !== null && Number(it.quantity) !== Number(p.quantity)) texte.push(', 'if (false) texte.push('],
+  ['H10 F8 entwurfVergleichen: andere Dateitypen fallen nicht auf', B, 'if (JSON.stringify(echte.slice().sort()) !== JSON.stringify(gesendet)) texte.push(', 'if (false) texte.push('],
+  ['H10 F8 entwurfVergleichen: die Dateitypen werden in der Reihenfolge verglichen', B, 'JSON.stringify(echte.slice().sort()) !== JSON.stringify(gesendet)', 'JSON.stringify(echte) !== JSON.stringify(gesendet)'],
+  ['H10 F8 entwurfVergleichen: Vorschau und Mockup zählen als Datei', B, ".filter((f) => f && f.type !== 'preview' && f.type !== 'mockup').map((f) => String(f.type));", '.filter((f) => f).map((f) => String(f.type));'],
+  ['H10 F8 Kleber: der Entwurf wird nicht mit dem Gesendeten verglichen', S, 'v: entwurfVergleichen(ord, plan.items),', 'v: { ok: true, texte: [] },'],
+  ['H10 F8 Kleber: Abweichungen des Entwurfs werden nicht gemeldet', S, "if (!v.ok) for (const t of v.texte) weich.push({ art: 'entwurf-abweichend'", "if (false) for (const t of v.texte) weich.push({ art: 'entwurf-abweichend'"],
+  ['H10 F8 Kleber: ein Entwurf ohne Datei bleibt ohne Befund «datei-wartet»', S, "else if (d.art === 'wartet') weich.push(", "else if (false) weich.push("],
+  ['H10 F8 Kosten: Zahlen werden locker gelesen (Hex, Exponent)', B, 'if (!DEZIMAL.test(t)) return null;', ''],
+  ['H10 F8 Kosten: Wahrheitswerte und Listen gelten als Zahl', B, "if (typeof x !== 'string') return null;", "if (typeof x !== 'string') return Number(x);"],
+  ['H10 F8 Kosten: die Untergrenze von 0.50 USD fehlt', B, 'if (total < KOSTEN_MIN_USD) return unbek(', 'if (false) return unbek('],
+  ['H10 F8 aufpreisUsd: ein fehlendes Preisfeld gilt als gratis', B, "if (f.additional_price === undefined) return null; ", "if (f.additional_price === undefined) continue; "],
+  // Fund 9: vorhandener Auftrag mit gleicher external_id
+  ['H10 F9 Kleber: ein vorhandener Auftrag wird nicht mit der Bestellung verglichen', S, 'const passt = vorhandenVergleichen(ord, o);', 'const passt = { ok: true, texte: [] };'],
+  ['H10 F9 Kleber: ein fremder Auftrag ist nur ein weicher Befund', S, "hart: true }], 'hat einen fremden Printful-Auftrag mit gleicher Kennung');", "hart: false }], 'hat einen fremden Printful-Auftrag mit gleicher Kennung');"],
+  ['H10 F9 Kleber: ein fremder Auftrag wird trotzdem als erledigt markiert', S, 'if (!passt.ok) {', 'if (false) {'],
+  ['H10 F9 Kleber: nach dem Befund «vorhanden-fremd» geht es weiter', S, "'hat einen fremden Printful-Auftrag mit gleicher Kennung');\n    return;", "'hat einen fremden Printful-Auftrag mit gleicher Kennung');"],
+  ['H10 F9 Vergleich: der Name wird nicht verglichen', B, 'if (woerter(r.name) !== woerter(emp.name)) texte.push(', 'if (false) texte.push('],
+  ['H10 F9 Vergleich: die PLZ wird nicht verglichen', B, "if (roh(r.zip).replace(/ /g, '') !== roh(emp.zip).replace(/ /g, '')) texte.push(", 'if (false) texte.push('],
+  ['H10 F9 Vergleich: das Land wird nicht verglichen', B, "if (String(r.country_code || '').toUpperCase() !== String(emp.country_code || '').toUpperCase()) texte.push(", 'if (false) texte.push('],
+  ['H10 F9 Vergleich: die Stückzahl wird nicht verglichen', B, 'if (ist !== soll) texte.push(', 'if (false) texte.push('],
+  ['H10 F9 Vergleich: ein nicht lesbarer Empfänger gilt als passend', B, "else if (!r) texte.push('der Empfänger des vorhandenen Printful-Auftrags ist nicht lesbar');", ''],
+  ['H10 F9 Vergleich: nicht lesbare Artikel gelten als passend', B, "if (!items) texte.push('die Artikel des vorhandenen Printful-Auftrags sind nicht lesbar');", 'if (!items) void 0;'],
+  ['H10 F9 Vergleich: entfernte Positionen zählen zur Soll-Menge', B, '.filter((z) => istPod(z) && mengeVon(z) !== 0)', '.filter((z) => istPod(z))'],
+  ['H10 F9 Vergleich: die Wörter des Namens werden nicht sortiert', B, ".split(' ').filter(Boolean).sort().join(' ');", ".split(' ').filter(Boolean).join(' ');"],
+  // Fund 12: der Workflow-Schalter wird AUSGEFÜHRT geprüft
+  ['H10 F12 Workflow: der Zeitplan schreibt, wenn die Freigabedatei FEHLT', W, 'if [ -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi', 'if [ ! -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi'],
+  ['H10 F12 Workflow: der Zeitplan schreibt immer', W, 'if [ -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi', 'dry=0'],
+  ['H10 F12 Workflow: jedes Ereignis ausser dem Zeitplan schreibt', W, 'elif [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$DRY_EINGABE" = "false" ]; then', 'elif [ "$EREIGNIS" != "schedule" ]; then'],
+  ['H10 F12 Workflow: der Handstart mit Haken «Nur testen» schreibt trotzdem', W, 'elif [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$DRY_EINGABE" = "false" ]; then', 'elif [ "$EREIGNIS" = "workflow_dispatch" ]; then'],
+  ['H10 F12 Workflow: eine leere Eingabe des Handstarts schreibt', W, '[ "$DRY_EINGABE" = "false" ]', '[ "$DRY_EINGABE" != "true" ]'],
+  ['H10 F12 Workflow: das Ergebnis des Schritts wird nicht ausgegeben', W, '          echo "dry=$dry" >> "$GITHUB_OUTPUT"\n', ''],
+  ['H10 F12 Workflow: der Sync bekommt immer DRY_RUN=0', W, "DRY_RUN: ${{ steps.modus.outputs.dry == '0' && '0' || '1' }}", "DRY_RUN: '0'"],
+  ['H10 F12 Workflow: fehlt das Ergebnis, ist DRY_RUN leer statt 1', W, "&& '0' || '1' }}", "&& '0' || '' }}"],
+  ['H10 F12 Workflow: der Sync bekommt DRY_RUN=0 bei Ergebnis 1', W, "DRY_RUN: ${{ steps.modus.outputs.dry == '0' && '0' || '1' }}", "DRY_RUN: ${{ steps.modus.outputs.dry == '1' && '0' || '1' }}"],
+  // Fund 13: jedes gelesene Feld steht in der Abfrage (die Attrappe liefert nur genannte Felder)
+  ['H10 F13 Abfrage: email fehlt', S, 'id name email tags cancelledAt', 'id name tags cancelledAt'],
+  ['H10 F13 Abfrage: tags der Bestellung fehlen', S, 'id name email tags cancelledAt', 'id name email cancelledAt'],
+  ['H10 F13 Abfrage: provinceCode fehlt', S, 'address2 city provinceCode countryCodeV2', 'address2 city countryCodeV2'],
+  ['H10 F13 Abfrage: address2 fehlt', S, 'address1 address2 city', 'address1 city'],
+  ['H10 F13 Abfrage: phone fehlt', S, 'zip phone }', 'zip }'],
+  ['H10 F13 Abfrage: der Name der Lieferadresse fehlt', S, 'shippingAddress{ name firstName lastName', 'shippingAddress{ firstName lastName'],
+  ['H10 F13 Abfrage: Vor- und Nachname der Lieferadresse fehlen', S, 'shippingAddress{ name firstName lastName', 'shippingAddress{ name'],
+  ['H10 F13 Abfrage: die Positionsliste fragt nicht nach dem Seitenkopf', S, 'lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity', 'lineItems(first:50){ edges{ node{ id quantity'],
+  ['H10 F13 Abfrage: quantity der Position fehlt', S, 'id quantity currentQuantity sku title', 'id currentQuantity sku title'],
+  ['H10 F13 Abfrage: sku der Position fehlt', S, 'id quantity currentQuantity sku title', 'id quantity currentQuantity title'],
+  ['H10 F13 Abfrage: der Erlös der Position fehlt', S, '    discountedTotalSet{ shopMoney{ amount currencyCode } }\n', ''],
+  ['H10 F13 Abfrage: productType fehlt', S, 'product{ productType tags metafield', 'product{ tags metafield'],
+  ['H10 F13 Abfrage: das Metafeld custom.print_file fehlt', S, 'tags metafield(namespace:"custom", key:"print_file"){ value } }', 'tags }'],
+  ['H10 F13 Abfrage: sku der Variante fehlt', S, 'variant{ sku title selectedOptions', 'variant{ title selectedOptions'],
+  ['H10 F13 Abfrage: die Eigenschaften der Position fehlen', S, '    customAttributes{ key value } } } }', '    } } }'],
+  ['H10 F13 Empfänger: die Stadt ist keine Pflicht', B, "['city', 'Ort'], ", ''],
+  ['H10 F13 Empfänger: die Strasse ist keine Pflicht', B, "['address1', 'Strasse'], ", ''],
+  ['H10 F13 Empfänger: die PLZ ist keine Pflicht', B, "['zip', 'PLZ'], ", ''],
+  ['H10 F13 Empfänger: der Name ist keine Pflicht', B, "[['name', 'Name'], ['address1', 'Strasse']", "[['address1', 'Strasse']"],
+  // Fund 14: Deckel je Lauf
+  ['H10 F14 Kleber: der Deckel MAX Bestellungen je Lauf kürzt nicht', S, 'for (const o of kandidaten.slice(0, MAX)) {', 'for (const o of kandidaten) {'],
+  // Fund 10/18: Preisanpassung
+  ['H10 F10 Reprice: Senkungen werden ohne SENKEN=1 geschrieben', R, 'if(!SENKEN && parseFloat(np)<parseFloat(cur)){', 'if(false && parseFloat(np)<parseFloat(cur)){'],
+  ['H10 F10 Reprice: Erhöhungen werden als Senkung übersprungen', R, 'if(!SENKEN && parseFloat(np)<parseFloat(cur)){', 'if(!SENKEN && parseFloat(np)>parseFloat(cur)){'],
+  ['H10 F10 Reprice: SENKEN=1 wird nicht gelesen', R, "const SENKEN=['1','true','ja','yes','on'].includes(", 'const SENKEN=[].includes('],
+  ['H10 F10 Reprice: ohne DRY_RUN wird geschrieben', R, "const DRY=!['0','false','no','nein','off'].includes(", "const DRY=!['','0','false','no','nein','off'].includes("],
+  ['H10 F10 Reprice: nur bestimmte Wörter sind Vorschau (ein Tippfehler schreibt)', R, "const DRY=!['0','false','no','nein','off'].includes(", "const DRY=['1','true','ja','yes','on'].includes("],
+  ['H10 F18 (V7) Reprice: der Preis nimmt das niedrigere von Aufschlag und Mindestmarge', R, 'const target=Math.max(costChf*MARKUP, costChf+MIN_MARGE);', 'const target=Math.min(costChf*MARKUP, costChf+MIN_MARGE);'],
+  // ── Fund 22 (am Ende angefügt, damit die Nummern der Mutanten davor unverändert bleiben): ein Editor-Produkt druckt nie das feste Motiv des Besitzers aus dem Metafeld
+  ['H10 F22 Plan: ein Editor-Produkt druckt ohne Design der Kundin das Muster aus dem Metafeld', B, 'if (!dateien.length && !editorProdukt(z)) {', 'if (!dateien.length) {'],
+  ['H10 F22 editorProdukt: die Fertigware (Tag printful_personalized_product) gilt als Editor-Produkt', B, "((li && li.product && li.product.tags) || []).map((x) => String(x).toLowerCase()).includes('wunschdesign')", "((li && li.product && li.product.tags) || []).map((x) => String(x).toLowerCase()).includes('printful_personalized_product')"],
 ];
 
 function zaehle(text, teil) { let n = 0, i = -1; while ((i = text.indexOf(teil, i + 1)) >= 0) n++; return n; }
+/** Erste rote Testdatei samt Art des Scheiterns: 'pruefung' = eine benannte Prüfung (✗) ist rot geworden, 'ausnahme' = der Test brach mit einer Ausnahme ab (z. B. TypeError), ohne dass eine Prüfung rot wurde. null = alle grün. */
 function testen(wurzel) {
   for (const t of TESTS) {
     const r = spawnSync(process.execPath, [join(wurzel, t)], { cwd: wurzel, encoding: 'utf8', timeout: 180000, env: { PATH: process.env.PATH, HOME: process.env.HOME } });
-    if (r.status !== 0) return t.replace(/^automation\//, '');
+    if (r.status !== 0) return { datei: t.replace(/^automation\//, ''), art: /^✗ /m.test(String(r.stdout || '')) ? 'pruefung' : 'ausnahme' };
   }
   return null;
 }
+/** Ist die mutierte Datei noch gültiger JavaScript-Code? (Ein Mutant mit Syntaxfehler «bricht» jeden Test und würde als erkannt zählen: das ist keine Aussage über die Tests.) YAML und Markdown werden nicht geprüft. */
+function gueltig(pfad) {
+  if (!/\.mjs$/.test(pfad)) return true;
+  return spawnSync(process.execPath, ['--check', pfad], { encoding: 'utf8' }).status === 0;
+}
 
-export function probe({ log = console.log, nur = null, nurPruefen = false } = {}) {
+/** SHARD=<i>/<n> (z. B. 2/3): nur jeder n-te Mutant, beginnend beim i-ten. Damit lässt sich die volle Probe auf mehrere Prozesse verteilen (jeder arbeitet in seiner eigenen Kopie); ohne Angabe laufen alle. */
+export function shardLesen(text) {
+  if (text == null || String(text).trim() === '') return null;
+  const m = /^(\d+)\/(\d+)$/.exec(String(text).trim());
+  if (!m || +m[1] < 1 || +m[2] < 1 || +m[1] > +m[2]) throw new Error(`SHARD muss die Form <i>/<n> haben mit 1 <= i <= n (gefunden: «${String(text).slice(0, 20)}»)`);
+  return { i: +m[1], n: +m[2] };
+}
+/** Gehört der Mutant mit der laufenden Nummer `nr` (ab 0) zu diesem Teil? Ohne `shard` gehört jeder dazu. */
+export const imShard = (nr, shard) => !shard || nr % shard.n === shard.i - 1;
+
+export function probe({ log = console.log, nur = null, nurPruefen = false, shard = null } = {}) {
   const wurzel = mkdtempSync(join(tmpdir(), 'bestellweg-mutation-'));
   try {
     for (const d of DATEIEN) { if (!existsSync(join(REPO, d))) continue; mkdirSync(dirname(join(wurzel, d)), { recursive: true }); copyFileSync(join(REPO, d), join(wurzel, d)); }
     let falsch = 0;
-    for (const [name, datei, von] of MUTANTEN) { const n = zaehle(readFileSync(join(wurzel, datei), 'utf8'), von); if (n !== 1) { log(`✗ Mutation nicht anwendbar (${n}× gefunden): ${name}`); falsch++; } }
-    if (falsch) return { exit: 2, ueberlebt: [], erkannt: 0 };
-    log(`${MUTANTEN.length} Mutanten, jeder an genau einer Stelle anwendbar.`);
-    if (nurPruefen) return { exit: 0, ueberlebt: [], erkannt: 0 };
-    const rot0 = testen(wurzel);
-    if (rot0) { log(`✗ Kontrolllauf ohne Mutation ist schon rot: ${rot0}`); return { exit: 2, ueberlebt: [], erkannt: 0 }; }
-    log('Kontrolllauf ohne Mutation: alle Testdateien grün.\n');
-    let erkannt = 0, gesamt = 0; const ueberlebt = [];
     for (const [name, datei, von, zu] of MUTANTEN) {
+      const n = zaehle(readFileSync(join(wurzel, datei), 'utf8'), von);
+      if (n !== 1) { log(`✗ Mutation nicht anwendbar (${n}× gefunden): ${name}`); falsch++; }
+      else if (von === zu) { log(`✗ Mutation ohne Wirkung (von = zu): ${name}`); falsch++; }
+    }
+    if (falsch) return { exit: 2, ueberlebt: [], erkannt: 0, ungueltig: [], ausnahme: [] };
+    log(`${MUTANTEN.length} Mutanten, jeder an genau einer Stelle anwendbar.`);
+    if (nurPruefen) {
+      // Jeder Mutant muss noch gültiger Code sein (sonst «erkennt» jeder Test ihn, weil nichts mehr läuft). Das kostet ein `node --check` je JavaScript-Mutant, in der CI rund eine Viertelminute.
+      const ungueltig = [];
+      for (const [name, datei, von, zu] of MUTANTEN) {
+        const pfad = join(wurzel, datei), original = readFileSync(pfad, 'utf8');
+        writeFileSync(pfad, original.split(von).join(zu));
+        try { if (!gueltig(pfad)) { ungueltig.push(name); log(`⚠ UNGÜLTIG (Syntaxfehler im Mutanten) ${name}`); } } finally { writeFileSync(pfad, original); }
+      }
+      if (ungueltig.length) { log(`${ungueltig.length} Mutant(en) mit Syntaxfehler: sie zählten sonst als «erkannt», ohne dass ein Test etwas gesehen hat.`); return { exit: 2, ueberlebt: [], erkannt: 0, ungueltig, ausnahme: [] }; }
+      log('Kein Mutant mit Syntaxfehler.');
+      return { exit: 0, ueberlebt: [], erkannt: 0, ungueltig: [], ausnahme: [] };
+    }
+    const rot0 = testen(wurzel);
+    if (rot0) { log(`✗ Kontrolllauf ohne Mutation ist schon rot: ${rot0.datei}`); return { exit: 2, ueberlebt: [], erkannt: 0, ungueltig: [], ausnahme: [] }; }
+    log('Kontrolllauf ohne Mutation: alle Testdateien grün.\n');
+    let erkannt = 0, gesamt = 0; const ueberlebt = [], ungueltig = [], ausnahme = [];
+    for (const [nr, [name, datei, von, zu]] of MUTANTEN.entries()) {
       if (nur && !name.toLowerCase().includes(nur.toLowerCase())) continue;
+      if (!imShard(nr, shard)) continue;
       gesamt++;
       const pfad = join(wurzel, datei), original = readFileSync(pfad, 'utf8');
       writeFileSync(pfad, original.split(von).join(zu));
-      const rot = testen(wurzel);
-      writeFileSync(pfad, original);
-      if (rot) { erkannt++; log(`✓ erkannt  ${name.padEnd(86)} ← ${rot}`); } else { ueberlebt.push(name); log(`✗ ÜBERLEBT ${name}`); }
+      let rot = null, ok = true;
+      try { ok = gueltig(pfad); if (ok) rot = testen(wurzel); } finally { writeFileSync(pfad, original); }
+      if (!ok) { ungueltig.push(name); log(`⚠ UNGÜLTIG (Syntaxfehler im Mutanten, sagt nichts über die Tests) ${name}`); continue; }
+      if (rot) { erkannt++; if (rot.art === 'ausnahme') ausnahme.push(name); log(`✓ erkannt  ${name.padEnd(86)} ← ${rot.datei}${rot.art === 'ausnahme' ? ' (durch eine Ausnahme im Test, keine benannte Prüfung)' : ''}`); }
+      else { ueberlebt.push(name); log(`✗ ÜBERLEBT ${name}`); }
     }
-    log(`\n${erkannt} von ${gesamt} Mutanten erkannt.${ueberlebt.length ? ' ÜBERLEBT: ' + ueberlebt.join('; ') : ''}`);
-    return { exit: ueberlebt.length ? 1 : 0, ueberlebt, erkannt };
+    log(`\n${erkannt} von ${gesamt - ungueltig.length} gültigen Mutanten erkannt (davon ${erkannt - ausnahme.length} durch eine benannte Prüfung, ${ausnahme.length} durch eine Ausnahme im Test); ${ueberlebt.length} überlebt; ${ungueltig.length} ungültig.${ueberlebt.length ? ' ÜBERLEBT: ' + ueberlebt.join('; ') : ''}${ungueltig.length ? ' UNGÜLTIG: ' + ungueltig.join('; ') : ''}`);
+    return { exit: ungueltig.length ? 2 : ueberlebt.length ? 1 : 0, ueberlebt, erkannt, ungueltig, ausnahme };
   } finally { rmSync(wurzel, { recursive: true, force: true }); }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) process.exit(probe({ nur: process.env.NUR || null, nurPruefen: process.argv.includes('--pruefen') }).exit);
+if (import.meta.url === `file://${process.argv[1]}`) {
+  let shard = null;
+  try { shard = shardLesen(process.env.SHARD); } catch (e) { console.error('✗ ' + e.message); process.exit(2); }
+  process.exit(probe({ nur: process.env.NUR || null, nurPruefen: process.argv.includes('--pruefen'), shard }).exit);
+}

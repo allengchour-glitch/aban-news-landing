@@ -10,13 +10,15 @@
  * VERTRAG MIT DEM EDITOR (Warenkorb-Eigenschaften einer Position):
  *   «🖼️ Druckdatei (<Platzierungs-ID>)»   v6 (Editor 6.0 bis 6.2.0, ALTE Schreibweise): https-Adresse (Cloudinary) der Druckdatei je Platzierung  (front, back, sleeve_left, label_outside, embroidery_chest_left …)
  *   «_Druckdatei (<Platzierungs-ID>)»     v6 (ab Editor 6.2.1, NEUE Schreibweise): dasselbe; der führende Unterstrich blendet die Zeile in Kasse und Bestätigungsmail aus (QUELLE community.shopify.dev, ungemessen).
- *                                         Beide werden zu 100 % gelesen; beide Schreibweisen (oder v5) in EINER Position sind ein harter Befund «schluessel-gemischt». Ein Schlüssel, der mit «_Druckdatei» beginnt und
- *                                         nicht lesbar ist, ist ein harter Befund «datei-schluessel» (nie als v5 und damit als Vorderseite gedeutet).
+ *                                         Beide werden zu 100 % gelesen; beide Schreibweisen (oder v5) in EINER Position sind ein harter Befund «schluessel-gemischt». Ein Schlüssel, der nach Druckdatei klingt
+ *                                         und keine der bekannten Schreibweisen ist (auch «🖼️ Druckdatei (Front)» mit Grossbuchstaben), ist ein harter Befund «datei-schluessel» (nie als v5 und damit als Vorderseite gedeutet).
  *   «_vorschau»                           v6 (ab 6.2.0): Cloudinary-JPEG der Vorschau für die Warenkorb-Miniatur. KEINE Druckdatei: der Parser ignoriert sie (der Schlüssel enthält weder «Druckdatei» noch «Print file»).
  *   «_pod_karte»                          v6: JSON {v:6, m:<Printful-Produkt>, pv:<Printful-Variante>, pl:[Platzierungen], dt:{<ID>:<Dateityp>}, px:["BxH"], qd:<kleinste Foto-dpi>, o:{<Optionsid>:<Wert>}} (o = Printful-Optionen, siehe unten).
  *                                         m und pv werden gegen die SKU der Position gehalten (Widerspruch = harter Befund «karte-widerspruch»), qd nur als WEICHER Hinweis (qd-weicht-ab gegen Katalog und Messung der Datei, aufloesung-angabe bei unbrauchbarem Wert): der Kunde kann es schreiben.
  *   «⚙️ Option (<Optionsid>)»              v6: eine Printful-Option, z. B. «⚙️ Option (thread_colors_chest_left)» = «#FFFFFF,#CC3333» (Garnfarben), «⚙️ Option (stitch_color)» = «black»
- *   «Vorne · 🖼️ Druckdatei», «Hinten · 🖼️ Druckdatei», «🖼️ Druckdatei (Vorne)» …   v5: nur Vorderseite/Rückseite (Schlüssel mit «Hinten»/«Back» → Rückseite)
+ *   «🖼️ Druckdatei», «Vorne · 🖼️ Druckdatei», «Hinten · 🖼️ Druckdatei», «🖼️ Druckdatei (Vorne|Hinten)» (und englisch «Print file», «Front|Back · 🖼️ Print file»)   v5: nur Vorderseite/Rückseite.
+ *                                         Nur diese BEKANNTEN Schreibweisen gelten als v5 (Stand 10.11.2026, Gegenprüfung P1: früher deutete jeder Schlüssel mit «Druckdatei» still als Vorderseite, auch «🖼️ Druckdatei (Sleeve_left)»
+ *                                         oder «Rückseite Druckdatei»). Jeder andere Schlüssel, der nach Druckdatei klingt, ist ein harter Befund «datei-schluessel»: nichts wird geraten.
  * Der Editor v6 schreibt die Optionen heute NICHT (Stand 05.11.: kein «thread» im Code); bis er es tut, bleibt jeder Stickerei-Auftrag ein Entwurf mit Meldung.
  */
 import { platzierungsName, platzierungenFuerDateien } from './printful_platzierung.mjs';
@@ -24,27 +26,49 @@ import { platzierungsName, platzierungenFuerDateien } from './printful_platzieru
 // ───────────────────────────────────────────────────────────── Eigenschaften der Position
 /** Hosts, von denen Druckdateien kommen dürfen. Die Warenkorb-Eigenschaften sind für Kunden frei schreibbar (/cart/add.js): ohne Liste würde dieser Lauf (und Printful) jede Adresse abrufen. Der Editor lädt zu Cloudinary hoch. */
 export const ERLAUBTE_HOSTS = Object.freeze(['res.cloudinary.com', 'cdn.shopify.com']);
+/** Die eigene Cloudinary-Cloud des Editors (pod/v6/lspod-designer-v6-*.js: CLOUD_NAME). Auf res.cloudinary.com gelten NUR Pfade dieser Cloud unter /image/upload/ (kein /image/fetch/, keine fremde Cloud). */
+export const EIGENE_CLOUDINARY_CLOUD = 'dwyi6kkrl';
 const SCHL_V6 = /^\u{1F5BC}️? ?Druckdatei \(([a-z0-9_]+)\)$/u;       // ALT (Editor 6.0 bis 6.2.0): «🖼️ Druckdatei (front)»
 const SCHL_V6_NEU = /^_Druckdatei \(([a-z0-9_]+)\)$/;                // NEU (ab 6.2.1): «_Druckdatei (front)»
-const SCHL_V6_NEU_VERDACHT = /^_druckdatei/i;                         // beginnt wie ein neuer Schlüssel, ist aber nicht lesbar («_Druckdatei (Front)», «_Druckdatei»): nie als v5 deuten
+// v5, NUR die bekannten Schreibweisen: «🖼️ Druckdatei», «🖼️ Druckdatei (Vorne)» (dokumentiert, kein Editor im Repo schreibt sie), «Vorne · 🖼️ Druckdatei» (Editor 5, GEMESSEN an pod/live/lspod-designer-v5-safe.js: pSide + « · » + pPrintFile), englisch «Print file».
+const SEITE_V5 = '(Vorne|Hinten|Front|Back)';
+const SCHL_V5_EINZELN = new RegExp(`^(?:\\u{1F5BC}\\uFE0F? ?)?(?:Druckdatei|Print file)(?: \\(${SEITE_V5}\\))?$`, 'u');
+const SCHL_V5_MIT_SEITE = new RegExp(`^${SEITE_V5} \u00B7 (?:\\u{1F5BC}\\uFE0F? ?)?(?:Druckdatei|Print file)$`, 'u');
+/** Klingt der Schlüssel nach einer Druckdatei? (Mehr als die bekannten Schreibweisen: das Wort genügt, Gross-/Kleinschreibung egal.) */
+const SCHL_DATEI_VERDACHT = /druckdatei|print\s*file/i;
 const SCHL_OPTION = /^⚙️? ?Option \(([a-z0-9_]+)\)$/u;
-const SCHL_V5 = /Druckdatei|Print file/i;
 const ID = /^[a-z0-9_]+$/;
+/** @returns {'front'|'back'|null} Seite eines BEKANNTEN v5-Schlüssels; null = kein v5-Schlüssel */
+function seiteV5(k) {
+  const m = SCHL_V5_EINZELN.exec(k) || SCHL_V5_MIT_SEITE.exec(k);
+  if (!m) return null;
+  return /^(Hinten|Back)$/.test(m[1] || '') ? 'back' : 'front';
+}
 
 /** Grenzen von _pod_karte.qd (kleinste wirkliche Foto-Auflösung in dpi, ganze Zahl). */
 export const QD_MIN = 1, QD_MAX = 1000;
 
-/** Adresse einer Druckdatei prüfen. @returns {string|null} null = in Ordnung, sonst der Grund */
-export function adresseProblem(wert, hosts = ERLAUBTE_HOSTS) {
+/**
+ * Adresse einer Druckdatei prüfen. @returns {string|null} null = in Ordnung, sonst der Grund
+ * Streng (Stand 10.11.2026, Gegenprüfung P1): nur https, kein Port, keine Zugangsdaten, kein Rückstrich (WHATWG liest «https://res.cloudinary.com\\@evil.example/…» als Host res.cloudinary.com, ein anderer Abrufer vielleicht nicht),
+ * der Host steht auf der Liste, und auf res.cloudinary.com nur Pfade der EIGENEN Cloud unter /image/upload/ (kein /image/fetch/ auf Fremdadressen, keine fremde Cloud). `eigeneCloud: false` hebt nur die
+ * Pfadbindung auf (Produkt-Metafeld des Besitzers: dort darf jeder https-Host stehen).
+ */
+export function adresseProblem(wert, hosts = ERLAUBTE_HOSTS, { eigeneCloud = true } = {}) {
   const w = String(wert == null ? '' : wert).trim();
   let u;
   try { u = new URL(w); } catch { return 'keine gültige Adresse'; }
   if (/\s/.test(w)) return 'Adresse enthält Leerzeichen';
+  if (w.includes('\\')) return 'Adresse enthält einen Rückstrich';
   if (u.protocol !== 'https:') return 'keine https-Adresse';
   if (u.username || u.password) return 'Adresse enthält Zugangsdaten';
+  if (u.port) return 'Adresse enthält einen Port';
   if (!hosts.map((h) => h.toLowerCase()).includes(u.hostname.toLowerCase())) return `Host «${u.hostname}» ist nicht erlaubt`;
+  if (eigeneCloud && u.hostname.toLowerCase() === 'res.cloudinary.com' && !u.pathname.startsWith(`/${EIGENE_CLOUDINARY_CLOUD}/image/upload/`)) return 'Cloudinary-Adresse nicht aus der eigenen Cloud unter /image/upload/';
   return null;
 }
+/** Die geprüfte Adresse in der Schreibweise, in der sie weitergegeben und abgerufen wird (normalisiert; nur nach `adresseProblem === null` aufrufen). */
+export const adresseNormal = (wert) => new URL(String(wert).trim()).href;
 
 function optionWert(w) {
   if (typeof w === 'string') return w.trim() === '' ? null : w.trim();
@@ -87,11 +111,12 @@ export function dateienAusEigenschaften(eigenschaften, { hosts = ERLAUBTE_HOSTS 
   for (const [k, w] of paare) {
     const m = k.match(SCHL_V6), mn = k.match(SCHL_V6_NEU), mo = k.match(SCHL_OPTION);
     if (mo) { const v = optionWert(w); if (v !== null) optionen[mo[1]] = v; continue; }     // eine ⚙️-Eigenschaft gewinnt gegen _pod_karte.o (die Eigenschaft ist die ausdrückliche Wahl des Kunden)
-    const unlesbar = !mn && SCHL_V6_NEU_VERDACHT.test(k);
-    const istDatei = m || mn || unlesbar || SCHL_V5.test(k);
+    const seite5 = m || mn ? null : seiteV5(k);                                              // nur BEKANNTE v5-Schreibweisen
+    const unlesbar = !m && !mn && seite5 === null && SCHL_DATEI_VERDACHT.test(k);           // klingt nach Druckdatei, ist aber keine bekannte Schreibweise («_Druckdatei (Front)», «🖼️ Druckdatei (Sleeve_left)», «Rückseite Druckdatei»): nie als Vorderseite geraten
+    const istDatei = m || mn || seite5 !== null || unlesbar;
     if (!istDatei) continue;
     if (w.trim() === '') continue;                                                          // leere Eigenschaft = keine Datei (Editor schreibt sie für unbenutzte Seiten nicht, ein Leerwert ist kein Fehler)
-    if (unlesbar) { p('datei-schluessel', `Eigenschaft «${k.slice(0, 60)}» beginnt wie eine Druckdatei, die Platzierung ist aber nicht lesbar (erwartet: «_Druckdatei (front)» mit Kleinbuchstaben): es wird nichts geraten`, true); continue; }
+    if (unlesbar) { p('datei-schluessel', `Eigenschaft «${k.slice(0, 60)}» klingt nach einer Druckdatei, ist aber keine bekannte Schreibweise (erwartet z. B. «_Druckdatei (front)» mit Kleinbuchstaben oder «Vorne · 🖼️ Druckdatei»): es wird nichts geraten`, true); continue; }
     const proble = adresseProblem(w, hosts);
     if (proble) { p('datei-adresse', `Druckdatei «${k}»: ${proble}`, true); continue; }
     stile.add(m ? 'alt' : mn ? 'neu' : 'v5');
@@ -104,12 +129,12 @@ export function dateienAusEigenschaften(eigenschaften, { hosts = ERLAUBTE_HOSTS 
       gesehen.set('v6:' + id, stil);
       if (karte && !karte.pl.includes(id)) p('datei-ohne-karte', `Druckdatei für «${id}», aber die Platzierung fehlt in _pod_karte`, false);
       const dt = karte && karte.dt && typeof karte.dt === 'object' && typeof karte.dt[id] === 'string' && karte.dt[id] ? karte.dt[id] : id;
-      dateien.push({ seite: id === 'back' ? 'back' : id === 'front' || id === 'default' ? 'front' : null, platzierung: id, dateiTyp: dt, url: w.trim(), quelle: 'v6', schluessel: stil });
+      dateien.push({ seite: id === 'back' ? 'back' : id === 'front' || id === 'default' ? 'front' : null, platzierung: id, dateiTyp: dt, url: adresseNormal(w), quelle: 'v6', schluessel: stil });
     } else {
-      const seite = /Hinten|Back/i.test(k) ? 'back' : 'front';
+      const seite = seite5;
       if (gesehen.has('v5:' + seite)) { p('datei-doppelt', `zwei Druckdateien für die ${seite === 'back' ? 'Rückseite' : 'Vorderseite'} in der Position`, true); continue; }
       gesehen.set('v5:' + seite, 'v5');
-      dateien.push({ seite, platzierung: null, dateiTyp: null, url: w.trim(), quelle: 'v5', schluessel: 'v5' });
+      dateien.push({ seite, platzierung: null, dateiTyp: null, url: adresseNormal(w), quelle: 'v5', schluessel: 'v5' });
     }
   }
   // Kein Editor schreibt zwei Schreibweisen in EINE Position (jede Fassung bleibt bei ihrer): das sind gemischte Quellen, vom Kunden manipuliert oder zusammengeführt. Es wird keine Datei geraten.
@@ -147,6 +172,11 @@ export function modellAusSku(sku) {
   if (!m) return null;
   const n = parseInt(m[1], 10) - SKU_BASIS;
   return Number.isInteger(n) && n >= 1 && n <= 99999 ? n : null;
+}
+
+/** Ist das Produkt der Position ein EDITOR-Produkt (Tag wunschdesign)? Fertigware trägt nur `printful_personalized_product` und hat ihr Motiv im Metafeld custom.print_file. */
+export function editorProdukt(li) {
+  return ((li && li.product && li.product.tags) || []).map((x) => String(x).toLowerCase()).includes('wunschdesign');
 }
 
 /** Ist die Position ein Editor-Produkt? Nur das Tag am Produkt entscheidet (eine Eigenschaft allein ist für Kunden schreibbar). */
@@ -346,7 +376,19 @@ export function aufloesungPruefen({ masse, druckdatei, minDpi }) {
 /** Setzungen wie dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs (REGEL): Kurs für die KOSTEN 0.90 (Puffer über dem Messkurs 0.82435), MWST 8.1 %, Gebühr 3.4 % + 0.30. */
 export const KOSTEN_REGEL = Object.freeze({ kurs: 0.90, mwst: 0.081, gebuehrProzent: 0.034, gebuehrFix: 0.30 });
 
-const num = (x) => { if (x === null || x === undefined || x === '') return null; const n = Number(x); return Number.isFinite(n) ? n : null; };
+/** Zahl aus einer Zahl oder einer Dezimalzeichenkette («12.70», «-5»); alles andere ist null (kein Hex «0x10», kein «1e1», kein Array, kein true: Number() hätte sie als Zahl gelesen). */
+const DEZIMAL = /^-?\d+(\.\d+)?$/;
+const num = (x) => {
+  if (x === null || x === undefined || x === '') return null;
+  if (typeof x === 'number') return Number.isFinite(x) ? x : null;
+  if (typeof x !== 'string') return null;
+  const t = x.trim();
+  if (!DEZIMAL.test(t)) return null;
+  const n = Number(t);
+  return Number.isFinite(n) ? n : null;
+};
+/** Kleinste plausible Summe eines Printful-Auftrags in USD (der billigste Artikel samt Versand liegt weit darüber): darunter ist die Zahl keine gerechnete Summe. */
+export const KOSTEN_MIN_USD = 0.5;
 
 /**
  * Auftragskosten von Printful (order.costs, USD) gegen den Erlös halten. Erlös = Summe der POD-Positionen (CHF, inkl. MWST, nach Rabatt, Menge ohne entfernte/erstattete Einheiten)
@@ -361,10 +403,11 @@ export function kostenPruefen({ costs, erloesChf, nettoMin = 0, regel = KOSTEN_R
   const unbek = (text) => ({ ok: false, art: 'kosten-unbekannt', text, nettoChf: null, kostenChf: null });
   if (!costs || typeof costs !== 'object') return unbek('Printful nennt noch keine Kosten für den Auftrag');
   if (costs.calculation_status && String(costs.calculation_status).toLowerCase() !== 'done') return unbek(`Printful rechnet die Kosten noch (${costs.calculation_status})`);
-  if (costs.currency && String(costs.currency).toUpperCase() !== 'USD') return unbek(`Kosten in ${costs.currency}, erwartet USD`);
+  if (!costs.currency || String(costs.currency).trim().toUpperCase() !== 'USD') return unbek(costs.currency ? `Kosten in ${costs.currency}, erwartet USD` : 'Printful nennt die Währung der Kosten nicht (erwartet USD): ohne Währung wird nichts gerechnet');
   const total = num(costs.total);
   if (total === null) return unbek('Printful nennt noch keine Kosten für den Auftrag');
   if (total <= 0) return unbek(`Printful meldet Kosten von ${total.toFixed(2)} USD: das ist keine gerechnete Summe`);
+  if (total < KOSTEN_MIN_USD) return unbek(`Printful meldet Kosten von ${total.toFixed(2)} USD: unter ${KOSTEN_MIN_USD.toFixed(2)} USD ist das keine plausible Summe`);
   // Absolute Obergrenze je Auftrag (PRINTFUL_MAX_KOSTEN_USD, Vorgabe aus): gilt für die Summe, die Printful der hinterlegten Karte belastet (Ware, Versand, Steuer), unabhängig vom Erlös. Nie ein Freispruch: darunter gelten die übrigen Prüfungen weiter.
   const grenze = num(maxUsd);
   if (grenze !== null && grenze > 0 && total > grenze) return { ok: false, art: 'kosten-obergrenze', text: `Printful berechnet ${total.toFixed(2)} USD für den Auftrag, die Obergrenze ist ${grenze.toFixed(2)} USD (PRINTFUL_MAX_KOSTEN_USD): Entwurf im Printful-Dashboard prüfen`, nettoChf: null, kostenChf: null };
@@ -401,15 +444,40 @@ export function statusBewerten(order) {
  * @returns {{art:'ok'|'wartet'|'problem', texte:string[]}}
  */
 export function dateienStatus(order) {
-  const texte = []; let wartet = false;
-  for (const it of (order && order.items) || []) for (const f of (it && it.files) || []) {
+  const texte = []; let wartet = false, echte = 0;
+  for (const it of (order && Array.isArray(order.items) ? order.items : [])) for (const f of (it && Array.isArray(it.files) ? it.files : [])) {
     if (!f || f.type === 'preview' || f.type === 'mockup') continue;
+    echte++;
     const st = String(f.status || '').toLowerCase();
     if (st === 'waiting' || st === 'processing' || st === 'uploading') { wartet = true; continue; }
     if (st !== 'ok') texte.push(`Datei «${f.type}»: Status «${f.status || '(leer)'}»${f.warning ? ': ' + String(f.warning).slice(0, 140) : ''}`);
     else if (f.warning) texte.push(`Datei «${f.type}»: Printful warnt: ${String(f.warning).slice(0, 140)}`);
   }
-  return texte.length ? { art: 'problem', texte } : wartet ? { art: 'wartet', texte } : { art: 'ok', texte };
+  // Ein Auftrag ohne eine einzige Datei (Printful hat sie noch nicht angehängt, die Antwort ist leer oder fehlt) ist NIE «ok»: er wartet (und wird nach der Wartezeit zum Befund «datei-wartet»).
+  return texte.length ? { art: 'problem', texte } : wartet || echte === 0 ? { art: 'wartet', texte, leer: echte === 0 } : { art: 'ok', texte };
+}
+
+/**
+ * Der von Printful zurückgegebene Entwurf gegen das, was gesendet wurde: gleiche Zahl Artikel, je Artikel dieselben Dateitypen (Vorschau/Mockup zählen nicht), Variante und Menge, wo Printful sie nennt.
+ * Fehlt im Entwurf noch jede Datei, ist das «wartet» (dateienStatus kümmert sich); weicht er ab (weniger Artikel, andere Variante, fehlende Datei), ist es ein Befund «entwurf-abweichend».
+ * @param {object} order  Antwort von GET /orders/<id>   @param {{variant_id:number, quantity:number, files:{type:string}[]}[]} planItems  was gesendet wurde
+ * @returns {{ok:boolean, texte:string[]}}
+ */
+export function entwurfVergleichen(order, planItems) {
+  const texte = [];
+  const soll = Array.isArray(planItems) ? planItems : [];
+  const items = order && Array.isArray(order.items) ? order.items : [];
+  if (items.length !== soll.length) { texte.push(`Printful nennt ${items.length} Artikel im Entwurf, gesendet wurden ${soll.length}`); return { ok: false, texte }; }
+  for (let i = 0; i < soll.length; i++) {
+    const p = soll[i], it = items[i] || {};
+    if (it.variant_id !== undefined && it.variant_id !== null && Number(it.variant_id) !== Number(p.variant_id)) texte.push(`Artikel ${i + 1}: Printful nennt die Variante ${it.variant_id}, gesendet wurde ${p.variant_id}`);
+    if (it.quantity !== undefined && it.quantity !== null && Number(it.quantity) !== Number(p.quantity)) texte.push(`Artikel ${i + 1}: Printful nennt die Menge ${it.quantity}, gesendet wurde ${p.quantity}`);
+    const echte = (Array.isArray(it.files) ? it.files : []).filter((f) => f && f.type !== 'preview' && f.type !== 'mockup').map((f) => String(f.type));
+    if (!echte.length) continue;                                                 // noch keine Datei angehängt: das ist «wartet»
+    const gesendet = (p.files || []).map((f) => String(f.type)).sort();
+    if (JSON.stringify(echte.slice().sort()) !== JSON.stringify(gesendet)) texte.push(`Artikel ${i + 1}: Printful führt die Dateien «${echte.join(', ')}», gesendet wurden «${gesendet.join(', ')}»`);
+  }
+  return { ok: texte.length === 0, texte };
 }
 
 // ───────────────────────────────────────────────────────────── Kennung, Empfänger, Tags
@@ -470,6 +538,96 @@ export const versuchTag = (n) => `printful-versuch-${n}`;
 /** Telegram-HTML maskieren (Texte aus Gemini, Printful und Kundenangaben sind Fremdtext). */
 export const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// ───────────────────────────────────────────────────────────── Zahlung, Markierung vor dem Anlegen, vorhandener Auftrag, Scopes, Bestätigungsplan (Härtung 10.11.2026)
+/**
+ * Ist die Bestellung (Shopify-Knoten: test, cancelledAt, displayFinancialStatus) wirklich eine BEZAHLTE, nicht stornierte, nicht erstattete Kundenbestellung? Der Suchstring der Liste («financial_status:paid») ist nur eine
+ * Vorauswahl; diese Funktion urteilt am Knoten selbst, bei der Liste UND beim frischen Lesen kurz vor dem Bestätigen. Fehlt ein Feld (die Abfrage wurde geändert, die Antwort ist unvollständig), ist das «unlesbar»: nie bezahlt.
+ * @returns {{ok:boolean, art:'ok'|'test'|'storniert'|'nicht-bezahlt'|'unlesbar', text:string}}
+ */
+export function zahlungPruefen(n) {
+  if (!n || typeof n !== 'object') return { ok: false, art: 'unlesbar', text: 'Bestellung nicht lesbar' };
+  if (n.test === true) return { ok: false, art: 'test', text: 'Testbestellung (Bogus-Gateway oder Zahlungsanbieter im Testmodus)' };
+  if (n.test !== false) return { ok: false, art: 'unlesbar', text: 'Das Feld «test» fehlt in der Antwort' };
+  if (n.cancelledAt === undefined) return { ok: false, art: 'unlesbar', text: 'Das Feld «cancelledAt» fehlt in der Antwort' };
+  if (n.cancelledAt) return { ok: false, art: 'storniert', text: `in Shopify storniert (${n.cancelledAt})` };
+  if (typeof n.displayFinancialStatus !== 'string' || !n.displayFinancialStatus) return { ok: false, art: 'unlesbar', text: 'Das Feld «displayFinancialStatus» fehlt in der Antwort' };
+  if (n.displayFinancialStatus.toUpperCase() !== 'PAID') return { ok: false, art: 'nicht-bezahlt', text: `Zahlungsstatus ${n.displayFinancialStatus} (nur PAID wird gedruckt; erstattete Bestellungen sind es nicht mehr)` };
+  return { ok: true, art: 'ok', text: 'bezahlt' };
+}
+
+/** Markierung VOR dem Anlegen eines Printful-Auftrags (Tag `printful-anlegen-<JJJJMMTT>t<HHMM>` in UTC): ein späterer Lauf legt innerhalb von ANLEGEN_SPERRE_MIN Minuten nichts neu an, auch wenn Printful den Auftrag noch nicht zeigt. */
+export const ANLEGEN_SPERRE_MIN = 60;
+const zwei = (n) => String(n).padStart(2, '0');
+export function anlegenTag(jetztMs) {
+  const d = new Date(jetztMs);
+  return `printful-anlegen-${d.getUTCFullYear()}${zwei(d.getUTCMonth() + 1)}${zwei(d.getUTCDate())}t${zwei(d.getUTCHours())}${zwei(d.getUTCMinutes())}`;
+}
+/** Alter der JÜNGSTEN Markierung in Minuten (nie negativ); null, wenn keine da ist. */
+export function anlegenAlterMin(tags, jetztMs) {
+  let jung = null;
+  for (const t of tags || []) {
+    const m = /^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})$/.exec(String(t));
+    if (!m) continue;
+    const ms = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
+    if (Number.isFinite(ms) && (jung === null || ms > jung)) jung = ms;
+  }
+  return jung === null ? null : Math.max(0, Math.floor((jetztMs - jung) / 60000));
+}
+
+/**
+ * Passt ein SCHON vorhandener Printful-Auftrag mit unserer external_id zu dieser Bestellung? (Empfänger: Name, PLZ, Land; Menge: Summe der Editor-Positionen.) Bei einer Wiederverwendung von Bestellnummern oder einem von Hand
+ * angelegten «LX…»-Auftrag stimmt er nicht, und die echte Bestellung bliebe still ungedruckt. Texte ohne Kundendaten (sie landen im Protokoll der Befundart).
+ * @returns {{ok:boolean, texte:string[]}}
+ */
+export function vorhandenVergleichen(order, o) {
+  const texte = [];
+  const roh = (x) => String(x == null ? '' : x).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const woerter = (x) => roh(x).split(' ').filter(Boolean).sort().join(' ');
+  const emp = empfaengerAus(o).recipient;
+  const r = order && order.recipient && typeof order.recipient === 'object' ? order.recipient : null;
+  if (!emp) texte.push('die Shopify-Bestellung hat keine Lieferadresse zum Vergleichen');
+  else if (!r) texte.push('der Empfänger des vorhandenen Printful-Auftrags ist nicht lesbar');
+  else {
+    if (woerter(r.name) !== woerter(emp.name)) texte.push('der Name des Empfängers weicht ab');
+    if (roh(r.zip).replace(/ /g, '') !== roh(emp.zip).replace(/ /g, '')) texte.push('die PLZ weicht ab');
+    if (String(r.country_code || '').toUpperCase() !== String(emp.country_code || '').toUpperCase()) texte.push('das Land weicht ab');
+  }
+  const soll = ((o && o.lineItems && o.lineItems.edges) || []).map((e) => e && e.node).filter(Boolean).filter((z) => istPod(z) && mengeVon(z) !== 0).reduce((a, z) => a + (mengeVon(z) > 0 ? mengeVon(z) : 1), 0);
+  const items = order && Array.isArray(order.items) ? order.items : null;
+  if (!items) texte.push('die Artikel des vorhandenen Printful-Auftrags sind nicht lesbar');
+  else {
+    const ist = items.reduce((a, it) => a + (num(it && it.quantity) || 0), 0);
+    if (ist !== soll) texte.push(`die Stückzahl weicht ab (Printful ${ist}, Bestellung ${soll})`);
+  }
+  return { ok: texte.length === 0, texte };
+}
+
+/**
+ * Zugriffsrechte (Scopes) des Tokens, die der Sync braucht, um die Fulfillment-Orders BEIDER Standortarten zu sehen: Händler-Standorte («Shop location») und Dienst-Standorte («Printful»). Fehlt eines, sind die Orders
+ * dieser Art unsichtbar, und die Standort-Sperre käme nur über «unklar». `write_` schliesst `read_` ein. @param {string[]|null} handles @returns {{art:'ok'|'fehlt'|'unbekannt', fehlt:string[]}}
+ */
+export const SCOPES_PFLICHT = Object.freeze([['read_merchant_managed_fulfillment_orders', 'write_merchant_managed_fulfillment_orders'], ['read_third_party_fulfillment_orders', 'write_third_party_fulfillment_orders']]);
+export function scopesBewerten(handles) {
+  if (!Array.isArray(handles)) return { art: 'unbekannt', fehlt: [] };
+  const h = new Set(handles.map(String));
+  const fehlt = SCOPES_PFLICHT.filter((alt) => !alt.some((x) => h.has(x))).map((alt) => alt[0]);
+  return { art: fehlt.length ? 'fehlt' : 'ok', fehlt };
+}
+
+/**
+ * Wann bestätigt der Sync einen Printful-Auftrag selbst? REGEL (10.11.2026): nur wenn alle drei Bedingungen gelten:
+ *   1. PRINTFUL_AUTO_CONFIRM ist ausdrücklich an,
+ *   2. eine Kostenobergrenze steht (PRINTFUL_MAX_KOSTEN_USD > 0); fehlt sie bei AUTO_CONFIRM=1, ist das ein Konfigurationsfehler (`konfigFehler`: der Lauf bricht vor allem anderen ab),
+ *   3. die KI-Kontrolle der Druckdatei ist an (PRINTFUL_KI_KONTROLLE=pflicht). Ist sie aus, bleibt jede Bestätigung aus (der Auftrag bleibt ein Entwurf mit Befund «manuell», Grund im Text).
+ * @returns {{bestaetigen:boolean, grund:string|null, konfigFehler:string|null}}
+ */
+export function bestaetigenPlan({ autoConfirm = false, ki = 'aus', maxKostenAus = true } = {}) {
+  if (!autoConfirm) return { bestaetigen: false, grund: 'automatisches Bestätigen ist aus (PRINTFUL_AUTO_CONFIRM=0)', konfigFehler: null };
+  if (maxKostenAus) return { bestaetigen: false, grund: 'PRINTFUL_AUTO_CONFIRM=1 verlangt eine Kostenobergrenze (PRINTFUL_MAX_KOSTEN_USD)', konfigFehler: 'PRINTFUL_AUTO_CONFIRM=1 verlangt eine Kostenobergrenze: PRINTFUL_MAX_KOSTEN_USD auf eine Zahl über 0 setzen (z. B. 60 für 60 USD je Auftrag); ohne sie wird nichts angelegt' };
+  if (ki !== 'pflicht') return { bestaetigen: false, grund: 'automatisches Bestätigen verlangt die eingeschaltete KI-Kontrolle der Druckdatei (PRINTFUL_KI_KONTROLLE=pflicht plus GEMINI_API_KEY), sie ist aus', konfigFehler: null };
+  return { bestaetigen: true, grund: null, konfigFehler: null };
+}
+
 // ───────────────────────────────────────────────────────────── Gemini-Kontrolle
 /** Antwort der Kontrolle lesen: muss mit PASS oder FAIL beginnen («**PASS** – …» zählt), alles andere ist KEINE Freigabe. @returns {'pass'|'fail'|null} */
 export function kontrolleLesen(text) {
@@ -493,16 +651,18 @@ export function kleineKopieUrl(url, breite = 1400) {
  * @returns {{art:'dienst'|'frei'|'unklar', name?:string, grund?:string}}
  *   dienst  mindestens eine offene Fulfillment-Order der Position liegt an einem Dienst-Standort
  *   frei    die Position steht in mindestens einer offenen Fulfillment-Order und ALLE ihre Standorte sind Händler-Standorte (isFulfillmentService === false)
- *   unklar  Daten fehlen (keine Fulfillment-Orders in den Bestelldaten, Position in keiner offenen Fulfillment-Order, Standort oder Flag fehlt): nie als «frei» gelesen
+ *   unklar  Daten fehlen (keine Fulfillment-Orders in den Bestelldaten, Position in keiner offenen Fulfillment-Order, Standort oder Flag fehlt, Liste abgeschnitten): nie als «frei» gelesen.
+ *           planeBestellung behandelt «unklar» wie «dienst»: HART, kein Auftrag (10.11.2026: sieht das Token die Fulfillment-Order des Dienst-Standorts nicht, wäre «weich + Entwurf» ein Doppelentwurf neben dem Auftrag der Printful-App).
  */
 export function standortVon(o, positionId) {
   const fos = o && o.fulfillmentOrders;
   if (!fos || !Array.isArray(fos.edges)) return { art: 'unklar', grund: 'die Bestelldaten enthalten keine Fulfillment-Orders' };
-  let gefunden = 0, dienst = null, offen = false;
+  let gefunden = 0, dienst = null, offen = false, unvollstaendig = fos.pageInfo && fos.pageInfo.hasNextPage ? 'die Bestellung hat mehr Fulfillment-Orders, als eine Abfrage liefert' : null;
   for (const e of fos.edges) {
     const fo = e && e.node; if (!fo) continue;
     const st = String(fo.status || '').toUpperCase();
     if (st === 'CLOSED' || st === 'CANCELLED') continue;
+    if (fo.lineItems && fo.lineItems.pageInfo && fo.lineItems.pageInfo.hasNextPage) unvollstaendig = unvollstaendig || 'eine Fulfillment-Order hat mehr Positionen, als eine Abfrage liefert';
     const drin = ((fo.lineItems && fo.lineItems.edges) || []).some((x) => x && x.node && x.node.lineItem && positionId && x.node.lineItem.id === positionId);
     if (!drin) continue;
     gefunden++;
@@ -511,6 +671,7 @@ export function standortVon(o, positionId) {
     else if (!ort || ort.isFulfillmentService !== false) offen = true;
   }
   if (dienst) return { art: 'dienst', name: String(dienst.name || dienst.id || 'Dienst-Standort') };
+  if (unvollstaendig) return { art: 'unklar', grund: unvollstaendig };                 // die Liste ist abgeschnitten: die Position könnte in einer Dienst-Order jenseits der Grenze stehen
   if (!gefunden) return { art: 'unklar', grund: 'die Position steht in keiner offenen Fulfillment-Order' };
   if (offen) return { art: 'unklar', grund: 'der Standort der Fulfillment-Order ist nicht lesbar' };
   return { art: 'frei' };
@@ -550,7 +711,8 @@ export function aufpreisUsd(roh, typ) {
   if (!treffer.length) return null;
   let max = 0;
   for (const f of treffer) {
-    if (f.additional_price === null || f.additional_price === undefined || f.additional_price === '') continue;   // null = im Grundpreis enthalten
+    if (f.additional_price === undefined) return null;                                                              // Feld fehlt: unbekannt (nie «gratis»)
+    if (f.additional_price === null || f.additional_price === '') continue;                                           // ausdrücklich null = im Grundpreis enthalten
     const n = Number(f.additional_price);
     if (!Number.isFinite(n) || n < 0) return null;
     if (n > max) max = n;
@@ -643,13 +805,14 @@ export async function planeBestellung(o, io, cfg = {}) {
     // Dienst-Standort: die App des Dienstes (Printful) druckt selbst, ein zweiter Auftrag wäre ein Doppeldruck. Hart und noch vor jeder Netzabfrage.
     const stdo = standortVon(o, z.id);
     if (stdo.art === 'dienst') { hart('dienst-standort', vor(`liegt am Fulfillment-Service-Standort «${stdo.name}»: dessen App legt den Auftrag selbst an. KEIN zweiter Auftrag von diesem Sync (sonst Doppeldruck); im Printful-Dashboard prüfen`)); continue; }
-    if (stdo.art === 'unklar') weich('dienst-standort-unklar', vor(`Standort der Position nicht prüfbar (${stdo.grund}): ob die Printful-App sie selbst druckt, ist unklar`));
+    // «unklar» (Order unsichtbar, Standort unlesbar, Liste abgeschnitten) ist HART wie «dienst»: ob die Printful-App die Position selbst druckt, ist dann unbekannt, und ein Entwurf des Syncs wäre ein Doppelentwurf neben ihrem Auftrag.
+    if (stdo.art === 'unklar') { hart('dienst-standort-unklar', vor(`Standort der Position nicht prüfbar (${stdo.grund}${cfg.scopeHinweis ? '; ' + cfg.scopeHinweis : ''}): ob die Printful-App sie selbst druckt, ist unklar. KEIN Auftrag von diesem Sync; Fulfillment-Orders der Bestellung im Shopify-Admin ansehen, im Printful-Dashboard prüfen`)); continue; }
     if (!sku.vid) { hart('ohne-variante', vor('SKU ohne Printful-Variante')); continue; }
     let dateien = eig.dateien;
-    if (!dateien.length) {                                    // Fertig-Produkte ohne Editor-Upload: festes Motiv aus dem Produkt-Metafeld custom.print_file
+    if (!dateien.length && !editorProdukt(z)) {              // FERTIG-Produkte ohne Editor-Upload: festes Motiv aus dem Produkt-Metafeld custom.print_file. Ein Editor-Produkt (Tag wunschdesign) druckt NIE das Muster des Besitzers: ohne Design der Kundin gilt «keine-druckdatei»
       const mf = z.product && z.product.metafield && z.product.metafield.value;
       let mfHost = null; try { mfHost = new URL(String(mf || '').trim()).hostname; } catch { /* kein Metafeld oder keine Adresse */ }
-      if (mfHost && !adresseProblem(mf, [mfHost])) dateien = [{ seite: 'front', platzierung: null, dateiTyp: null, url: String(mf).trim(), quelle: 'metafeld' }];   // Metafeld gehört dem Besitzer: jeder https-Host ist erlaubt
+      if (mfHost && !adresseProblem(mf, [mfHost], { eigeneCloud: false })) dateien = [{ seite: 'front', platzierung: null, dateiTyp: null, url: adresseNormal(mf), quelle: 'metafeld' }];   // Metafeld gehört dem Besitzer: jeder https-Host ist erlaubt (kein Port, keine Zugangsdaten)
     }
     if (!dateien.length) {
       // Bestellung ohne Design (direkte Adresse, Shop-App, Google-Link oder ein Upload, der nie ankam): KEIN Printful-Auftrag, KEINE Mail an die Kundin und KEINE Rückerstattung durch Code;

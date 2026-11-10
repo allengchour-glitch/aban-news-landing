@@ -2,9 +2,11 @@
 
 > **Stand 09.11.2026:** Paket A wurde mit `main` zusammengeführt (Dreiwege-Zusammenführung, PR #3031 von Codex bleibt erhalten) und um die Phase 1 des Plans «Editor-Parität» erweitert: **Abschnitt 7**. Die Abschnitte 1 bis 6 sind der Stand des Zweigs vom 06.11.2026; wo die Zusammenführung etwas ändert (die qd-Prüfung), steht es dort vermerkt.
 
+> **Stand 10.11.2026 (Härtung nach der Gegenprüfung P1, 27 bestätigte Funde): Abschnitt 7.10.** Seitdem gilt: ein Weg, der Geld bewegt, ist standardmässig zu. Das Skript schreibt nur bei ausdrücklichem `DRY_RUN=0`; bestätigt wird nur mit Kostenobergrenze UND eingeschalteter KI-Kontrolle; vor dem Anlegen und vor dem Bestätigen wird die Bestellung frisch aus Shopify gelesen (bezahlt, nicht storniert, kein Test); die Dienst-Standort-Sperre hält auch, wenn die Fulfillment-Order unsichtbar oder unlesbar ist. Wo in 7.2 bis 7.8 noch der Stand vom 09.11.2026 steht, ist er dort vermerkt und in 7.10 ersetzt.
+
 **Stand:** gebaut und getestet, **nichts live, nichts an Shopify, Printful, CJ, Cloudinary, Metricool, Klaviyo oder Telegram geschrieben.** Printful wurde nur mit drei Lese-Aufrufen (GET) befragt, Shopify nur lesend (Token per Client-Credentials, Abfrage der letzten Bestellungen), dazu ein Bereichs-GET auf die öffentliche Cloudinary-Datei der Canary-Anfrage und eine Websuche. Der Zeitplan des Syncs läuft weiter nur lesend (die Freigabedatei `dropship/PRINTFUL-SYNC-FREI.txt` fehlt und wird nicht gelegt), `PRINTFUL_AUTO_CONFIRM` bleibt `0`, `PRINTFUL_KI_KONTROLLE` bleibt `aus`.
 
-Dateien: `automation/lib/printful_bestellweg.mjs` (Parser und Planung), `automation/printful_sync.mjs` (nur Kopfkommentar), `automation/lib/printful_bestellweg_test.mjs`, `automation/printful_sync_test.mjs`, `dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs` (Mutationsprobe), dazu dieses Blatt und `OHNE-DESIGN.md`. `.github/workflows/printful-sync.yml` und `.github/workflows/luxestyle-automation-tests.yml` habe ich **nicht geändert** (Begründung unten; die Zeilen, die am 06.11.2026 um 15:36 UTC ein anderes Paket in `luxestyle-automation-tests.yml` für das Spiegelwerkzeug ergänzte, gehören nicht zu diesem Paket).
+Dateien: `automation/lib/printful_bestellweg.mjs` (Parser und Planung), `automation/printful_sync.mjs` (am 06.11.2026 nur der Kopfkommentar; **seit 09./10.11.2026 auch Abfrage, Vorgaben, Frischlesen, Markierung und Paketlogik**, siehe 7.2 bis 7.10), `automation/lib/printful_bestellweg_test.mjs`, `automation/printful_sync_test.mjs`, `dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs` (Mutationsprobe), dazu dieses Blatt und `OHNE-DESIGN.md`. `.github/workflows/printful-sync.yml` und `.github/workflows/luxestyle-automation-tests.yml` hatte ich am 06.11.2026 **nicht geändert** (Begründung unten; beide wurden am 10.11.2026 geändert, siehe 7.10; die Zeilen, die am 06.11.2026 um 15:36 UTC ein anderes Paket in `luxestyle-automation-tests.yml` für das Spiegelwerkzeug ergänzte, gehören nicht zu diesem Paket).
 
 ## 1. Messung VORHER (GEMESSEN 06.11.2026)
 
@@ -112,9 +114,11 @@ Die Tabelle in `dropship/selbst-gestalten-fertig-0511/bestellweg/README.md` ist 
 /opt/node22/bin/node automation/lib/printful_bestellweg_test.mjs
 /opt/node22/bin/node automation/printful_sync_test.mjs
 /opt/node22/bin/node automation/lib/printful_platzierung_test.mjs
-/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs           # alle Mutanten (rund 21 Minuten, gemessen 09.11.2026), --pruefen: nur Anwendbarkeit, NUR=<Teil des Namens>
+/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs           # alle Mutanten (Dauer und Ergebnis Stand 10.11.2026: 7.7), --pruefen: Anwendbarkeit UND Syntax, NUR=<Teil des Namens>, SHARD=<i>/<n>: jeder n-te Mutant
 NUR="WP6" /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # nur die Mutanten dieses Pakets
 NUR="P1 " /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # nur die Mutanten der Phase 1
+NUR="H10 " /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # nur die Mutanten der Härtung vom 10.11.2026 (7.10)
+SHARD=1/3 /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # …2/3 und 3/3 in zwei weiteren Fenstern: die volle Probe auf drei Prozesse verteilt
 /opt/node22/bin/node automation/printful_reprice_test.mjs                                      # Preisanpassung (Phase 1)
 ```
 
@@ -134,7 +138,7 @@ Eine Position, die in einer offenen Fulfillment-Order an einem **Fulfillment-Ser
 
 * geschlossene und stornierte Fulfillment-Orders zählen nicht (veraltete Angaben);
 * `frei` nur, wenn die Position in mindestens einer offenen Fulfillment-Order steht und **alle** ihre Standorte ausdrücklich `isFulfillmentService === false` melden; fehlt ein Wert, fehlt die Fulfillment-Order oder steht die Position in keiner, ist es `unklar`, nie `frei`;
-* `dienst` → harter Befund, `continue` (weder Datei- noch KI-Abfrage); `unklar` → weicher Befund `dienst-standort-unklar` (Entwurf, nicht bestätigen).
+* `dienst` → harter Befund, `continue` (weder Datei- noch KI-Abfrage); `unklar` → **seit 10.11.2026 ebenfalls HART** (`dienst-standort-unklar`, kein Auftrag; am 09.11.2026 war es weich = Entwurf, siehe 7.10, Fund 4 und 21).
 
 Der Kleber (`printful_sync.mjs`) liest dafür neu `variant{ sku title selectedOptions }` und `fulfillmentOrders(first:20){ id status assignedLocation{ location{ id name isFulfillmentService } } lineItems(first:50){ lineItem{ id } } }` (Vorbild `cj_tracking.mjs`, `printful_tracking.mjs`).
 
@@ -200,8 +204,9 @@ Printful berechnet für manche Platzierungen einen Aufpreis (T-Shirt 71: Rückse
 | `PRINTFUL_KI_KONTROLLE` | ohne Angabe: verlangt die KI | ohne Angabe oder `aus`: **aus**; jede andere Angabe: Pflicht | Standard `'aus'` (unverändert) |
 | `PRINTFUL_MAX_KOSTEN_USD` | gab es nicht | leer, `0`, `aus`: aus; Zahl über 0: Obergrenze; alles andere: **Exit 1** | wird durchgereicht, **kein Standard** |
 | `PRINTFUL_PAKET_BEZAHLT` | gab es nicht | leer: nur Vorderseite bezahlt | **nicht** durchgereicht |
+| `DRY_RUN` (Stand 10.11.2026, 7.10) | nicht gesetzt oder leer: **schreibt** | nicht gesetzt, leer und jeder andere Wert ausser `0`, `false`, `no`, `nein`, `off`: **Trockenlauf** | `0` nur bei Zeitplan UND Freigabedatei oder Handstart mit entferntem Haken, sonst `1` |
 
-Das Skript hat damit dieselben Standardwerte wie der Workflow (sichere Seite). Ein Test vergleicht beide (nur wenn die Workflow-Datei ausgecheckt ist). **Kosten-Obergrenze:** `kostenPruefen(… maxUsd)` meldet weich `kosten-obergrenze`, wenn die Printful-Summe über `maxUsd` liegt (genau gleich ist erlaubt); sie steht nach der Prüfung «Kosten ≤ 0» und vor der Erlös-Prüfung. Der Auftrag bleibt Entwurf, der Text nennt beide Zahlen. Der Test hat dafür 12.69 gegen 12.70 USD (Entwurf, eine Befundmeldung) und 12.70 (bestätigt).
+Das Skript hat damit dieselben Standardwerte wie der Workflow (sichere Seite; **der Satz galt am 09.11.2026 nur für drei der vier Schalter, `DRY_RUN` fehlte, behoben 10.11.2026**). Ein Test vergleicht beide (in der CI jetzt ohne Überspringen). **Kosten-Obergrenze:** `kostenPruefen(… maxUsd)` meldet weich `kosten-obergrenze`, wenn die Printful-Summe über `maxUsd` liegt (genau gleich ist erlaubt); sie steht nach der Prüfung «Kosten ≤ 0» und vor der Erlös-Prüfung. Der Auftrag bleibt Entwurf, der Text nennt beide Zahlen. Der Test hat dafür 12.69 gegen 12.70 USD (Entwurf, eine Befundmeldung) und 12.70 (bestätigt).
 
 ### 7.5 Bekannter Fehlalarm: `qd-weicht-ab` (nicht geändert, Entscheid beim Besitzer)
 
@@ -226,23 +231,44 @@ Ein erlaubter Kauf mit einem kleinen Foto landet damit immer im Handgriff. Das i
 
 ### 7.7 Zahlen (diese Sitzung selbst gemessen)
 
-**Tests (Node 22, Endstand, alle selbst gefahren am 09.11.2026 gegen den Arbeitsbaum):**
+**Stand 10.11.2026 (Härtung 7.10; alle Tests selbst gefahren am 10.11.2026 gegen den Arbeitsbaum des Zweigs `claude/luxestyle-bestellweg-haertung-1011`, mit `env -i`, jeweils Exit-Code gelesen):**
 
-| Testdatei | Endstand | `main` vor Phase 1 | Zweig vor der Zusammenführung |
-|---|---|---|---|
-| `automation/lib/printful_bestellweg_test.mjs` | **625 ok, 0 Fehler** (618 am 09.11., dazu 7 Prüfungen zum Ausmass der Sperre, 10.11.) | 393 | 492 |
-| `automation/lib/printful_platzierung_test.mjs` | **212 ok, 0 Fehler** | 212 | 212 |
-| `automation/printful_sync_test.mjs` | **260 ok, 0 Fehler** (258 am 09.11., dazu 2 Prüfungen zum gemischten Warenkorb, 10.11.) | 181 | 206 |
-| `automation/printful_reprice_test.mjs` (neu) | **27 ok, 0 Fehler** | (Test fehlte) | (Test fehlte) |
-| `automation/pod_auswahl_test.mjs` | 112 ok, 0 Fehler | | |
+| Testdatei | 10.11.2026 (Endstand) | 09.11.2026 (vor der Härtung) | `main` vor Phase 1 | Zweig vor der Zusammenführung |
+|---|---|---|---|---|
+| `automation/lib/printful_bestellweg_test.mjs` | **828 ok, 0 Fehler, Exit 0** | 625 | 393 | 492 |
+| `automation/lib/printful_platzierung_test.mjs` | **212 ok, 0 Fehler, Exit 0** | 212 | 212 | 212 |
+| `automation/printful_sync_test.mjs` | **401 ok, 0 Fehler, Exit 0** | 260 | 181 | 206 |
+| `automation/printful_reprice_test.mjs` | **48 ok, 0 Fehler, Exit 0** | 27 | (Test fehlte) | (Test fehlte) |
+| `automation/pod_auswahl_test.mjs` | **112 ok, 0 Fehler, Exit 0** | 112 | | |
 
-Dazu `node --check` auf alle geänderten Skripte und `yaml.safe_load` auf `printful-sync.yml`: ohne Fehler.
+(Der Test der Logik meldete beim ersten Lauf nach dem Umbau genau einen Fehler: den Test «CI Fund 17», der das Zeitlimit des Jobs von mindestens 10 Minuten verlangt, bevor es angehoben war.) Dazu `node --check` auf alle geänderten Skripte und `yaml.safe_load` auf die drei Workflow-Dateien: ohne Fehler. Das Nachspielen der CI in einem Auszug mit genau den Pfaden und Dateien des Jobs wurde nicht gefahren; die Verdrahtung prüft stattdessen der Test `CI Fund 16/26` gegen die YAML-Datei.
 
-**Mutationsprobe** (`dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs`, voller Lauf mit dem Endstand der Tests, 22:38 bis 22:59 UTC, rund 21 Minuten): **288 von 288 Mutanten erkannt, 0 überlebt**, jeder an genau einer Stelle anwendbar (`--pruefen`), Kontrolllauf ohne Mutation grün. Davon neu in Phase 1: 83 Mutanten mit der Vorsilbe `P1 ` (Dienst-Standort 13, Aufpreis 18, Paket 6, Rückseite und Ärmel 7, Kosten-Obergrenze 13, Standardwerte 6, Kleber 3, Workflow 1, Reprice 16) und 10 Mutanten zu `qd-weicht-ab`. Die Mutanten der entfallenen Fassung `qdPruefen` wurden entfernt. **Ein erster voller Lauf (283 von 288) liess fünf Mutanten überleben** (u. a. «verglichen wird mit dem Maximum statt dem Minimum der Messungen»); die Tests wurden verschärft und alle fünf einzeln wieder als erkannt bestätigt, danach lief die ganze Probe von vorn. Eine Lehre daraus: ein «gleichwertiger» Mutant entsteht, wenn eine neue Sperre ein älteres `continue` überflüssig macht; dann braucht es einen Test, der den Unterschied sichtbar macht, nicht die Streichung des Mutanten. Zweite, kleinere Probe: `NUR="Bestellweg" node automation/pod_auswahl_mutation.mjs` (Kontrolllauf mit allen 9 Testdateien grün) 10 von 10 erkannt; die Dateiliste dieser Probe enthält jetzt auch den Mitschnitt und `printful-sync.yml`.
+**Mutationsprobe** (`dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs`, voller Lauf, drei Prozesse mit `SHARD=1/3`, `2/3`, `3/3`; Bauer und Prüfer waren dieselbe Sitzung, die Probe ist das Werkzeug, das beide trennt):
 
-**Reproduzierbarkeit des Mitschnitts:** `mitschnitt_erzeugen.mjs` ein weiteres Mal ausgeführt (Chromium): die Datei ist byte-gleich zum eingecheckten Stand.
+* **Zusammensetzung:** 427 Mutanten: 33 `WP6 …`, 83 `P1 …`, 139 `H10 …` (Härtung 10.11.; davon 2 zu Fund 22, am Ende der Liste angefügt, damit die Nummern der übrigen unverändert bleiben), 172 sonstige (Strom 3 vom 05.11. und die Mutanten zu `qd-weicht-ab`). Jeder an genau einer Stelle anwendbar, kein Mutant mit Syntaxfehler (`--pruefen`, in der CI), Kontrolllauf ohne Mutation in jedem Prozess grün.
+* **Ergebnis des Endlaufs (10.11.2026, 13:32 bis 13:57 UTC):** **427 von 427 Mutanten erkannt, 0 überlebt, 0 ungültig** (drei Teile mit SHARD: 143 + 142 + 142, jeweils Exit 0; 412 durch eine benannte Prüfung, 15 durch eine Ausnahme im Test). Dauer: rund 26 Minuten Wanduhr auf drei Prozessen (26 min 24 s, 26 min 13 s, 25 min 13 s), zusammen rund 78 Minuten Rechenzeit.
+* **Verlauf, ehrlich:** ein **erster voller Lauf** (425 Mutanten, 12:35 bis 13:07 UTC) fand **6 überlebende Mutanten und 1 ungültigen** (Syntaxfehler): «Kosten: Summe 0 gilt als gerechnet» (der Test prüfte nur die Art, nicht den Text der beiden Untergrenzen), «frischLesen: fehlendes Feld tags» und das fehlende Feld «test» (der Test sah nur «nichts angelegt, Exit 1», das auch eine Ausnahme liefert), «nach `dienst-standort-unklar` laufen die Prüfungen weiter» (kein Test mit einer Position, die zusätzlich ohne Variante oder ohne Design ist), «Empfänger: Stadt/Name keine Pflicht» (nur Strasse, PLZ, Land waren einzeln geprüft), «aufpreisUsd: fehlendes Preisfeld» (der Mutant war gleichwertig, weil `Number(undefined)` ohnehin `NaN` und damit «unbekannt» ergibt: die Prüfung steht jetzt als `=== undefined` im Code und der Mutant ändert sie auf «gratis») und der Syntaxfehler-Mutant «unbekannter Erlös einer Position wird übergangen» (ein `else` ohne `if`; er zählte in der Fassung vom 09.11.2026 als «erkannt»). Alle sieben wurden behoben (Tests verschärft, Code und Mutant angepasst) und einzeln wieder als erkannt bestätigt; danach lief die ganze Probe von vorn.
+* **Kills durch eine Ausnahme im Test** (keine benannte Prüfung wurde rot, der Test brach mit einem `TypeError` o. ä. ab) werden getrennt gezählt: im ersten vollen Lauf 14 von 425 (3 %; die Namen stehen in der Ausgabe der Probe mit dem Zusatz «durch eine Ausnahme im Test»); sie gelten als erkannt, weil der Test rot wird, sind aber die schwächere Art des Erkennens.
+* **Gleichwertige Mutanten:** keine mehr in der Liste (der eine, `hasOwnProperty`-Zeile in `aufpreisUsd`, war gleichwertig und wurde durch eine Änderung am Code ersetzt, siehe oben; der Mutant `Kosten: Summe 0 gilt als gerechnet` galt kurz als gleichwertig, weil `total < 0.50` dasselbe Ergebnis liefert, und wird jetzt am Text unterschieden).
 
-**Abfragekosten (Shopify, Connector API 2026-10, nur Kosten gemessen mit einer Suche ohne Treffer, `tag:zz-kein-treffer-messung`):** die Bestellabfrage mit `fulfillmentOrders` kostet statisch bei 20 Bestellungen je Seite weniger als 1000 (Abfrage lief durch), bei 50 je Seite 1003 (abgelehnt, Grenze 1000), bei einer schlanken Probe-Abfrage mit je 100 Bestellungen, Positionen, Fulfillment-Orders und deren Positionen 2072. `SEITE` im Sync bleibt 20 (Kommentar «nicht über 49»). Gemessen ist die **angeforderte** Kostenzahl der Abfrage, nicht `extensions.cost` eines echten Laufs mit der API-Version des Skripts (2026-01): dazu ein Handstart in Actions.
+**Laufzeit** (lokal, ein Kern je Prozess, 4 Kerne; mit der Uhr gemessen, `bash` Schritt für Schritt):
+
+| Schritt des Jobs `tests` | `main`-Stand (HEAD des Ausgangszweigs) | Härtung |
+|---|---|---|
+| `printful_bestellweg_test.mjs` | 0.1 s | 0.2 s |
+| `printful_sync_test.mjs` | 14.9 s | 23.5 s (bis 401 Prüfungen: viele Kindprozesse mit gefälschtem Netz) |
+| `printful_reprice_test.mjs` | – (lief nicht) | 3.0 s |
+| `mutation.mjs --pruefen` | 0.1 s | 10.6 s (neu: `node --check` je JavaScript-Mutant) |
+| `pod_auswahl_mutation.mjs` (Datei unverändert; sie führt den Sync-Test für jeden Mutanten aus, den die schnelleren Tests nicht rot machen) | 281.6 s | 386.7 s (**+105 s**) |
+| Summe der Änderung | | rund **+22 s** (die vier Zeilen darüber) **+105 s** = **rund +127 s** |
+
+Der Job `tests` lief auf Actions laut Fund 17 schon vor der Härtung mit 389 s von 480 s (81 %). Mit +127 s wären es als obere Schranke 516 s (die Messumgebung ist eher langsamer als der Actions-Läufer: allein `pod_auswahl_mutation.mjs` brauchte hier 282 s, der ganze Job auf Actions 389 s), das heisst **mehr als das alte Limit von 8 Minuten**. Das Limit des Jobs steht darum auf **15 Minuten (900 s)**: 516 s sind 57 % davon (Fund 17 verlangt: über 60 % der Grenze → anheben). **Ungemessen:** die wirkliche Laufzeit auf dem Actions-Läufer nach dem Merge (der erste Lauf des Jobs mit diesen Dateien zeigt es; liegt er über 600 s, die Syntaxprüfung der Mutanten aus `--pruefen` herausnehmen oder den Sync-Test für `pod_auswahl_mutation.mjs` verkürzen).
+
+**Reproduzierbarkeit des Mitschnitts:** `mitschnitt_erzeugen.mjs` wurde in dieser Härtung **nicht** neu gefahren (Chromium nicht eingesetzt); der Stand vom 09.11.2026 (byte-gleich bei zweitem Lauf) gilt, die Tests lesen die Datei unverändert.
+
+**Abfragekosten (Shopify, Connector API 2026-10, nur Kosten gemessen mit einer Suche ohne Treffer, `tag:zz-kein-treffer-messung`, 09.11.2026; Stand vor der Härtung):** die Bestellabfrage mit `fulfillmentOrders` kostet statisch bei 20 Bestellungen je Seite weniger als 1000 (Abfrage lief durch), bei 50 je Seite 1003 (abgelehnt, Grenze 1000), bei einer schlanken Probe-Abfrage mit je 100 Bestellungen, Positionen, Fulfillment-Orders und deren Positionen 2072. `SEITE` im Sync bleibt 20 (Kommentar «nicht über 49»). Die Härtung fügt `pageInfo { hasNextPage }` an zwei Stellen und die Felder `test displayFinancialStatus` hinzu; die Kosten dieser Abfrage wurden **nicht neu gemessen** (ein Handstart des Trockenlaufs in Actions zeigt es: schlägt er mit `MAX_COST_EXCEEDED` fehl, `SEITE` senken). Gemessen ist die **angeforderte** Kostenzahl, nicht `extensions.cost` eines echten Laufs mit der API-Version des Skripts (2026-01).
+
+**Stand 09.11.2026 (zum Vergleich, vor der Härtung):** 625 / 212 / 260 / 27 Prüfungen und 288 von 288 Mutanten erkannt (voller Lauf 22:38 bis 22:59 UTC, rund 21 Minuten); ein erster Lauf des Tages (283 von 288) liess fünf Mutanten überleben, die Tests wurden verschärft. Eine Lehre daraus gilt weiter: ein «gleichwertiger» Mutant entsteht, wenn eine neue Sperre ein älteres `continue` überflüssig macht; dann braucht es einen Test, der den Unterschied sichtbar macht, nicht die Streichung des Mutanten. Zweite, kleinere Probe: `NUR="Bestellweg" node automation/pod_auswahl_mutation.mjs` (Kontrolllauf mit allen 9 Testdateien grün) 10 von 10 erkannt; die Dateiliste dieser Probe enthält auch den Mitschnitt und `printful-sync.yml`.
 
 ### 7.8 Offen und Entscheide des Besitzers
 
@@ -253,9 +279,75 @@ Dazu `node --check` auf alle geänderten Skripte und `yaml.safe_load` auf `print
 4. **`PRINTFUL_MAX_KOSTEN_USD`:** setzen, und auf welchen Betrag? Heute aus (kein Standard im Workflow).
 5. **Preis der Rückseite und des Ärmels, Paketmodell:** Phase 5.
 6. **`PRINTFUL_AUTO_CONFIRM` und KI-Kontrolle nach den ersten drei Aufträgen:** weiter Besitzer-Entscheid vom 05.11.
-7. **Nicht von mir verdrahtet:** `printful_reprice_test.mjs` steht noch in keinem Workflow (`luxestyle-automation-tests.yml` liegt ausserhalb dieses Auftrags); der dortige Kommentar «162 Mutanten» ist veraltet.
+7. ~~Nicht von mir verdrahtet: `printful_reprice_test.mjs` steht in keinem Workflow; der Kommentar «162 Mutanten» ist veraltet.~~ **Erledigt am 10.11.2026** (Fund 11, 15, 16, 17, 26; Einzelheiten in 7.10): der Test läuft in der CI, `printful_reprice.mjs` steht in `node --check`, die fehlenden Dateien (SYNC.md, Editor-Fassungen) stehen im Auszug und fehlen nicht mehr still, der Kommentar nennt die richtige Zahl.
 8. **Ungemessen:** Antwort der echten Admin-Schnittstelle mit der neuen Abfrage in Actions; ob `isFulfillmentService` an echten Bestellungen mit POD-Produkten am Standort «Printful» die Fulfillment-Orders erreicht; Verhalten von `karte-widerspruch` im Browser bei Zwischenständen (Abschnitt 5.2, Phase 6 misst).
 
 ### 7.9 Befehle (Phase 1)
 
 Siehe Abschnitt 6 (alle fünf Tests, `mutation.mjs` mit `NUR="P1 "`) und `mitschnitt_erzeugen.mjs` (`NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs`, braucht Chromium).
+
+### 7.10 Härtung 10.11.2026 (Gegenprüfung P1: 27 bestätigte Funde, Nr. 0 bis 26)
+
+**Nichts live.** Zweig `claude/luxestyle-bestellweg-haertung-1011`, Basis `claude/luxestyle-editor-paritaet-0911` (`24fd3e5184`). Geändert wurden nur Dateien im Repo; alles lief gegen Attrappen (gefälschtes Netz im Kindprozess), nichts an Shopify, Printful, Metricool oder Telegram geschrieben. Die Freigabedatei `dropship/PRINTFUL-SYNC-FREI.txt` fehlt weiter, `PRINTFUL_AUTO_CONFIRM` bleibt `0`, `PRINTFUL_KI_KONTROLLE` bleibt `aus`. Leitlinien der Härtung: (a) Wege, die Geld bewegen, schliessen im Zweifel (fehlendes Feld = nicht bezahlt, nicht lesbar = kein Auftrag); (b) vor dem Anlegen und vor dem Bestätigen wird die Bestellung frisch aus Shopify gelesen; (c) die Dienst-Standort-Sperre hält auch, wenn die Fulfillment-Order unsichtbar ist; (d) das Skript schreibt nur bei ausdrücklichem `DRY_RUN=0`; (e) jede neue Regel hat einen Verhaltens-Test und Mutanten (`H10 F<Nr>` in `mutation.mjs`).
+
+**Zuordnung Fund → Änderung → Test → Mutanten** (Testdateien: `L` = `automation/lib/printful_bestellweg_test.mjs`, `S` = `automation/printful_sync_test.mjs`, `R` = `automation/printful_reprice_test.mjs`):
+
+| Fund | Schwere | Änderung | Test | Mutanten |
+|---|---|---|---|---|
+| 0 | wichtig | Die Abfrage liest `test displayFinancialStatus cancelledAt`; Suchstring mit `-test:true`; `zahlungPruefen(n)` urteilt am Knoten: `test === false`, `cancelledAt` lesbar und leer, `displayFinancialStatus` genau `PAID`; ein fehlendes Feld ist «unlesbar» (nie bezahlt). In der Liste: Test, Storno, nicht bezahlt/erstattet → übersprungen, unlesbar → Fehler (Exit 1) | L (alle Arten, Gross-/Kleinschreibung), S (Knoten mit `test:true`, `PENDING`, storniert, erstattet, Feld fehlt) | 15 |
+| 1 | wichtig | Frisches Lesen (`node(id:)`) der Bestellung kurz vor dem Anlegen UND kurz vor dem Bestätigen mit derselben Prüfung; geändert oder nicht lesbar → Entwurf bleibt, harter Befund `zahlung-geaendert` bzw. `zahlung-unlesbar`, kein `confirm` | S (Storno nach dem Anlegen, Lesefehler, Reihenfolge der Lesungen) | 11 |
+| 2 | wichtig | Strenge Liste der Schlüssel des Editors 5 (`Druckdatei`, `Print file`, mit/ohne Symbol, mit/ohne Seite); jeder andere Schlüssel, der nach Druckdatei klingt (`🖼️ Druckdatei (Front)`, `Rückseite Druckdatei` …), ist hart `datei-schluessel`, nie Vorderseite; `schluessel-gemischt` gilt für jede Mischung | L (Schreibweisen-Tabelle), S | 5 |
+| 3 | wichtig | Herkunft der Druckdatei: nur die eigene Cloudinary-Cloud (`dwyi6kkrl`) unter `/image/upload/` oder `cdn.shopify.com`; kein Port, kein Rückstrich, genauer Host, normalisierte Adresse; Weiterleitungen werden nicht blind gefolgt (höchstens 3, jedes Ziel wird wieder geprüft) | L (Adressen), S (Redirect auf fremden Host) | 11 |
+| 4 | wichtig | `unklar` ist HART (`dienst-standort-unklar`, siehe 7.2): kein Auftrag und keine Datei- oder KI-Abfrage; `fulfillmentOrders` und `lineItems` werden mit `pageInfo` gelesen, eine abgeschnittene Liste ist `unklar`, nie `frei`; geschlossene und stornierte Fulfillment-Orders zählen nicht; ein Dienst-Standort gewinnt auch dann, wenn ein anderer Standort der Position unlesbar ist | L (`standortVon`), S (Dienst-Order unsichtbar, abgeschnittene Liste) | 8 (davon 1 gezählt bei Fund 18) |
+| 5 | klein | Modus-Schritt des Workflows: scharf (`dry=0`) nur bei Zeitplan UND Freigabedatei oder bei Handstart mit ausdrücklichem `false`; jedes andere Ereignis bleibt Trockenlauf | L (der Bash-Schritt wird in den Tests ausgeführt) | 3 |
+| 6 | klein | Markierung `printful-anlegen-<JJJJMMTT>t<HHMM>` (UTC) wird VOR dem POST gesetzt; scheitert das Setzen, wird nichts angelegt; ein Lauf innerhalb von 60 Minuten legt bei einer markierten Bestellung nichts neu an, auch wenn Printful den Auftrag noch nicht zeigt | L (`anlegenTag`, `anlegenAlterMin`), S | 8 |
+| 7 | klein | `bestaetigenPlan`: siehe «Regel für das automatische Bestätigen» unten | L, S | 6 |
+| 8 | klein | Fail-open-Lesarten geschlossen: eine Währung ausser USD oder eine fehlende Währung ist `kosten-unbekannt` (nie still USD); Zahlen werden streng gelesen (kein Hexadezimal, kein Exponent, keine Wahrheitswerte oder Listen); eine Printful-Summe unter 0.50 USD gilt als unbekannt; ein Aufpreis ohne Preisfeld ist nicht «gratis»; ein Entwurf ohne eine einzige Datei ist `datei-wartet`, nie «ok»; der Entwurf wird gegen das Gesendete gehalten (Artikelzahl, Variante, Menge, Dateitypen, Vorschau und Mockup zählen nicht als Datei), eine Abweichung ist `entwurf-abweichend` | L, S | 15 |
+| 9 | klein | Ein vorhandener Printful-Auftrag mit unserer `external_id` gilt nur als erledigt, wenn Empfänger (Name als Wortmenge, PLZ, Land) und Stückzahl zur Bestellung passen (`vorhandenVergleichen`); sonst harter Befund `vorhanden-fremd`, nichts als erledigt markiert | L, S | 12 |
+| 10 | klein | `printful_reprice.mjs` senkt Preise nur mit ausdrücklichem Haken `senken` (Vorgabe: nur Erhöhungen; die Formel kennt Versand und Gebühr nicht), schreibt nur bei ausdrücklichem `DRY_RUN=0`/`false`/`no`/`nein`/`off`. Der Standard-Tag der Handstart-Eingabe (`wunschdesign`) bleibt; mit der Vorgabe «nur Erhöhungen» kann die alte Formel Preise der Editor-Produkte, die nach der Preisformel vom 05.11. gesetzt wurden, nicht mehr senken (ob sie sie unnötig anhebt, ist ungemessen: vor `apply` die Vorschau ansehen) | R | 5 |
+| 11 | klein | Der Test der Preisanpassung läuft in der CI; die Zahlenabgleiche (SYNC.md, Editor-Fassungen) laufen nicht mehr still ins Leere | L (CI-Verdrahtung) | – |
+| 12 | klein | Der Workflow-Schalter wird nicht nur per Regex geprüft: Der Bash-Schritt `modus` und der Ausdruck für `DRY_RUN` werden in den Tests ausgeführt (alle Ereignisse × Eingaben × Freigabedatei) | L | 9 |
+| 13 | klein | Die Attrappe von Shopify liefert nur noch die Felder, die die Abfrage verlangt (Auswahl-Parser, Projektion der Antwort): wird ein gelesenes Feld aus der Abfrage entfernt, schlägt ein Test fehl (vorher überlebten 12 von 14 solcher Änderungen, darunter die Storno-Sperre). `empfaengerAus` verlangt Name, Strasse, PLZ und Stadt | S («Feldtreue»), L | 19 |
+| 14 | klein | Der Deckel `MAX` Bestellungen je Lauf ist getestet | S | 1 |
+| 15 | klein | `printful_reprice_test.mjs` und die Mutationsprobe (`--pruefen`) laufen in der CI | CI | – |
+| 16 | klein | Pfadfilter UND `sparse-checkout` des Jobs `tests` führen alle Dateien des Bestellwegs (siehe 7.11) | L (liest die YAML-Datei) | – |
+| 17 | klein | Zeitlimit des Jobs `tests` von 8 auf 15 Minuten angehoben, Messung und Rechnung in 7.7 und im Kommentar an der Stelle | L (verlangt mindestens 10) | – |
+| 18 | klein | Neue Mutanten für Dienst plus unlesbarer Standort, Host-Endung, nachgefragte Bestellung, Preis-Untergrenze der Preisanpassung u. a. | alle | 2 + Teil der übrigen |
+| 19 | klein | Güte der Mutationsprobe: Mutanten mit Syntaxfehler zählen nicht als erkannt (`node --check`, Exit 2 «UNGÜLTIG»); die Ausgabe trennt Kills durch eine benannte Prüfung von Kills durch eine Ausnahme im Test; die Probe lässt sich mit `SHARD=<i>/<n>` auf mehrere Prozesse verteilen | L (`SHARD`) | – |
+| 20 | klein | Das Skript schreibt nur bei ausdrücklichem `DRY_RUN=0` (`false`, `no`, `nein`, `off` gelten ebenso); leer und nicht gesetzt = Trockenlauf | S | 3 (mit Fund 5) |
+| 21 | klein | Unsichtbare oder unlesbare Dienst-Fulfillment-Order: HART (siehe Fund 4). Vor der Bearbeitung prüft der Sync per `currentAppInstallation.accessScopes`, ob das Token Händler- UND Dienst-Fulfillment-Orders lesen darf; fehlt ein Recht, endet der scharfe Lauf mit Exit 1 und bearbeitet nichts, im Trockenlauf steht ein Fehler in der Zusammenfassung, und der Befundtext von `dienst-standort-unklar` nennt das fehlende Recht | L (`scopesBewerten`), S (Recht fehlt, Abfrage nicht möglich) | 7 (+ 2 bei Fund 4 für die Härte) |
+| 22 | klein | Ein Editor-Produkt (Tag `wunschdesign`) druckt nie das feste Motiv aus dem Metafeld `custom.print_file`; ohne Design der Kundin bleibt `keine-druckdatei` hart (nur Fertigware darf aus dem Metafeld drucken). `OHNE-DESIGN.md` nennt es | L, S | 2 (am Ende der Liste angefügt) |
+| 23 | klein | Ein unlesbarer alter Schlüssel `🖼️ Druckdatei (<ID>)` wird nicht still als Editor-5-Datei gedeutet (gleiche Regel wie Fund 2) | L | mit Fund 2 |
+| 24 | klein | Die Aussage «gleiche Standardwerte wie der Workflow» gilt jetzt für alle vier Schalter (7.4) | S | – |
+| 25 | klein | Dokumentation: Vertragstabelle, Befundtabelle und Zahlen (README des Bestellwegs, dieses Blatt, `PLAN-PRINTFUL-PARITAET-0911.md`, `OHNE-DESIGN.md`) | L liest die Zahlen | – |
+| 26 | klein | Der Editor-Vertrag (Schreibweg der Warenkorb-Eigenschaften) gilt für alle Fassungen 6.2.0 bis 6.4.1; der Mitschnitt stammt nur von 6.4.0 | L | – |
+
+(Die Mutantenzahl je Fund zählt die Namen mit der Vorsilbe `H10 F<Nr>`; ein Teil der Mutanten gehört mehreren Funden an oder trägt keine Nummer. Die Summe steht in 7.7.)
+
+**Regel für das automatische Bestätigen (Fund 7, genau so im Code `bestaetigenPlan`).** Der Sync bestätigt einen Printful-Auftrag nur, wenn **alle drei** Bedingungen gelten:
+
+1. `PRINTFUL_AUTO_CONFIRM` ist ausdrücklich an (`1`, `true`, `ja`, `yes`, `on`, `an`).
+2. `PRINTFUL_MAX_KOSTEN_USD` ist eine Zahl über 0. **Fehlt sie bei `AUTO_CONFIRM=1`, ist das ein Konfigurationsfehler: der Lauf endet vor allem anderen mit Exit 1 und legt nichts an.**
+3. Die KI-Kontrolle der Druckdatei ist an (`PRINTFUL_KI_KONTROLLE=pflicht`, dazu `GEMINI_API_KEY`). Ist sie aus, bleibt jede Bestätigung aus: der Auftrag bleibt ein Entwurf mit dem Befund `manuell`, der Grund steht im Text.
+
+Dazu gelten wie bisher: kein Befund, Kosten ≤ Obergrenze, Mindestgewinn, und das frische Lesen der Bestellung (Fund 1) unmittelbar vor `confirm`.
+
+*Begründung.* Ohne Obergrenze wäre `AUTO_CONFIRM=1` die einzige Sperre zwischen einer fremden Datei und einer Belastung der Karte beim Printful-Konto: die Marge-Prüfung begrenzt nur den Verlust je Auftrag, nicht die absolute Summe (eine Bestellung mit 50 Positionen oder ein Fehler in der Mengenlesung könnte beliebig teuer werden). Die Obergrenze macht den Schaden je Auftrag zu einer gewählten Zahl. Die KI-Kontrolle ist die **einzige inhaltliche Prüfung** der Kundendatei (die mechanischen Prüfungen messen Grösse, Format, Herkunft, nicht, was das Bild zeigt: Rechte, Gewalt, Fremdmarken). Der Besitzer-Entscheid vom 05.11.2026 lautet «KI aus, die ersten Aufträge von Hand prüfen»: solange die KI aus ist, wird darum nichts automatisch bestätigt. Wer später sowohl automatisch bestätigen als auch ohne KI arbeiten will, ist eine neue Entscheidung des Besitzers, die er im Workflow sichtbar treffen muss (heute nicht möglich, ohne den Code zu ändern).
+
+**Zusätzliche Eigenschaften der Härtung (alle mit Tests):**
+
+* **Trockenlauf ist die Vorgabe des Skripts** (Fund 5, 20, 24): geschrieben wird nur bei `DRY_RUN` = `0`, `false`, `no`, `nein` oder `off`. Der Workflow reicht `DRY_RUN` immer durch: `0` nur bei (Zeitplan UND Freigabedatei) oder Handstart mit entferntem Haken «Nur testen» (Eingabe ausdrücklich `false`), sonst `1`. Ein später ergänztes `push`- oder `repository_dispatch`-Ereignis bleibt Trockenlauf.
+* **Markierung vor dem Anlegen** (Fund 6): die Reihenfolge ist frisch lesen → Markierung setzen → Auftrag anlegen → Metafeld → Tag `printful-synced`. Scheitert das Markieren, wird nichts angelegt (Fehler, Exit 1). Die Markierung ist ein Tag mit Zeitstempel (UTC, Minute); sie sperrt 60 Minuten, dann darf ein Lauf die Bestellung wieder prüfen (Printful zeigt einen angelegten Auftrag dann über die `external_id`). Ungemessen: ob Printful doppelte `external_id` ablehnt (im Code als ungemessen vermerkt, die Markierung und der Vergleich sind darum die Sperren, die wir selbst halten).
+* **Dienst-Standort** (Fund 4, 21): `unklar` heisst jetzt «kein Auftrag» (`dienst-standort-unklar`, hart). Grund: sieht das Token die Fulfillment-Order des Dienst-Standorts nicht (Recht fehlt, Antwort abgeschnitten), wäre «weich + Entwurf» ein zweiter Entwurf neben dem Auftrag der Printful-App. Die Folge im Betrieb: Bestellungen ohne lesbare Fulfillment-Order (z. B. #1017 in der Messung 7.2a) bleiben liegen, bis der Besitzer sie klärt. Das ist die sichere Richtung.
+* **Rechte-Prüfung** (Fund 21): `currentAppInstallation.accessScopes` muss `read_/write_merchant_managed_fulfillment_orders` und `read_/write_third_party_fulfillment_orders` enthalten (`write_` schliesst `read_` ein). Fehlt eines: im scharfen Lauf Exit 1 und keine Bearbeitung; im Trockenlauf nur ein Fehler in der Zusammenfassung. Ist die Abfrage selbst nicht möglich, steht «nicht abfragbar» im Log; die Sperre pro Position gilt trotzdem. **Ungemessen:** welche Rechte das Token des Zeitplans in Wirklichkeit hat (Messung: ein Trockenlauf in Actions, die Zeile «Zugriffsrechte des Tokens für Fulfillment-Orders» im Log).
+* **Preisanpassung** (Fund 10): `printful_reprice.mjs` verlangt zum Senken `SENKEN=1` (Workflow-Eingabe `senken`, Vorgabe aus). Hintergrund: die Formel `ceil(max(Kosten × Aufschlag, Kosten + Mindestmarge)) − 0.10` kennt weder Versand noch Zahlungsgebühr; alte Preise, die darüber liegen, sollen nicht still sinken.
+
+**Was bewusst nicht geändert wurde:** `qd-weicht-ab` (7.5, Entscheid des Besitzers); `karte-widerspruch` bleibt hart (Messung in Phase 6 steht aus); die Zeilen der Dienst-Variante in 7.2a bleiben der Stand der Messung vom 10.11.2026.
+
+**Ungemessen (Härtung):** (1) die Antwort der echten Admin-Schnittstelle auf die Abfragen `FRISCH_Q` und `SCOPES_Q` mit der API-Version des Skripts (2026-01): erster Beleg ist ein Trockenlauf in Actions; (2) ob `displayFinancialStatus` bei teilweise erstatteten Bestellungen `PARTIALLY_REFUNDED` meldet und der Sync sie damit zu Recht nicht druckt (das Wort steht in der Shopify-Dokumentation, am Shop nicht gemessen); (3) die Laufzeit des Jobs `tests` in Actions (7.11 nennt nur die lokale Messung); (4) Safari/Firefox spielen hier keine Rolle (nur Server-Skripte), die Editor-Fassung 6.4.1 hat keinen Mitschnitt.
+
+### 7.11 CI-Verdrahtung und Laufzeit (Fund 11, 15, 16, 17, 26)
+
+* **Zwei Eintragungen je Datei** in `.github/workflows/luxestyle-automation-tests.yml`: `paths:` (löst den Job aus) UND `sparse-checkout` des Jobs `tests` (holt die Datei in den Auszug). Neu in beiden: `.github/workflows/printful-reprice.yml`, `dropship/wp6-0611/SYNC.md`; nur im Auszug (der Job liest sie, löst sich aber an den Editor-Dateien nicht aus): `pod/v6/lspod-designer-v6-6.2.0.js`, `6.3.0`, `6.3.1`, `6.4.0`, `6.4.1`. `node --check automation/printful_reprice.mjs` und der Schritt `node automation/printful_reprice_test.mjs` stehen jetzt im Job. Der Test `CI Fund 16/26` liest die YAML-Datei und verlangt, dass jede vom Bestellweg-Test gelesene Datei in beiden Listen steht.
+* **Fehlende Dateien sind in der CI ein Fehler** (`GITHUB_ACTIONS` oder `CI` gleich `true`), lokal und in den Kopien der Mutationsprobe werden die Abgleiche übersprungen (vorher liefen sie in der CI still nicht).
+* **Laufzeit und Zeitlimit** (Fund 17): lokal gemessen rund +127 s gegenüber dem Stand vor der Härtung, davon +105 s im unveränderten Schritt `pod_auswahl_mutation.mjs` (er führt den längeren Sync-Test aus); der Job hatte schon vorher 81 % seines 8-Minuten-Limits gebraucht. `timeout-minutes` steht jetzt auf **15**; Zahlen, Rechnung und Ungemessenes: 7.7.

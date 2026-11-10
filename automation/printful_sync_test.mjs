@@ -7,10 +7,14 @@
 import { spawnSync } from 'node:child_process';
 import { readFileSync, writeSync, rmSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { anlegenTag } from './lib/printful_bestellweg.mjs';
 
 const SELF = fileURLToPath(import.meta.url);
 const lade = (rel) => JSON.parse(readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8'));
 const MIT = lade('../dropship/pod-auswahl/platzierung_mitschnitte.json').mitschnitte;
+// Der alte Auszug (05.11.) hat das Feld additional_price aus den Dateilisten weggekürzt; der ECHTE Katalog liefert es an jeder Datei (der Auszug bestellweg_katalog_auszug.json und die Antwort der Canary-Tasse belegen es, null = im Grundpreis).
+// Seit dem 10.11.2026 gilt ein FEHLENDES Feld als «Preis unbekannt» (nie als gratis); hier wird es für die älteren Szenarien so ergänzt, wie der echte Katalog es liefert.
+for (const x of Object.values(MIT)) for (const f of (x.produkt.files || [])) if (!Object.prototype.hasOwnProperty.call(f, 'additional_price')) f.additional_price = null;
 const KAT = lade('../dropship/pod-auswahl/bestellweg_katalog_auszug.json').produkte;
 
 // ═════════════════════════════════════════════════════════════ KINDPROZESS: ein Szenario
@@ -18,20 +22,28 @@ if (process.argv[2] === '--szenario') {
   const sz = JSON.parse(process.env.PS_SZENARIO);
   // Alle Platzierungen der Test-Kataloge gelten als bezahlt (die älteren Szenarien prüfen Platzierung, Dateien und Bestätigen, nicht den Preis); die Szenarien zum Aufpreis löschen die Variable (envLoeschen).
   const ALLE_PLATZIERUNGEN = [...new Set([...Object.values(KAT), ...Object.values(MIT)].flatMap((x) => (x.produkt.files || []).flatMap((f) => [f.id, f.type])).filter((x) => /^[a-z0-9_]+$/.test(x)))].join(',');
-  Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'aus' });
-  for (const k of ['GEMINI_API_KEY', 'PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DRY_RUN', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_MAX_KOSTEN_USD']) delete process.env[k];
+  // Seit der Härtung vom 10.11.2026 bestätigt der Sync nur mit gesetzter Kostenobergrenze UND eingeschalteter KI-Kontrolle: der Rahmen setzt beides (Obergrenze 500 USD, KI «pflicht» mit Schlüssel; die Attrappe antwortet PASS),
+  // damit die älteren Szenarien weiter «bestätigt» prüfen. Geschrieben wird nur bei DRY_RUN=0 (der Rahmen setzt es; `envLoeschen: ['DRY_RUN']` prüft die Vorgabe).
+  Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '500', DRY_RUN: '0' });
+  for (const k of ['PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS']) delete process.env[k];
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
-  if (sz.ki && sz.ki !== 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'pflicht'; if (sz.ki !== 'ohne-schluessel') process.env.GEMINI_API_KEY = 'g'; }
+  const kiArt = sz.ki || 'pass';                                              // Antwort der KI-Attrappe; 'aus' schaltet die Kontrolle ab, 'ohne-schluessel' lässt den Schlüssel weg
+  if (kiArt === 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'aus'; delete process.env.GEMINI_API_KEY; }
+  if (kiArt === 'ohne-schluessel') delete process.env.GEMINI_API_KEY;
   for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer); `env` setzt danach
   Object.assign(process.env, sz.env || {});
-  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '' };
+  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0 };
   const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
     json: async () => { if (x.roh !== undefined) throw new Error('kein JSON'); return body; }, arrayBuffer: async () => (x.bytes ? x.bytes.buffer.slice(x.bytes.byteOffset, x.bytes.byteOffset + x.bytes.byteLength) : new ArrayBuffer(0)) });
   const png = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
   const folge = (liste, n) => (Array.isArray(liste) && liste.length ? liste[Math.min(n, liste.length - 1)] : {});
-  const draftOrder = (i = 0) => ({ id: 42, external_id: st.ext, status: 'draft', error: null, costs: { currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '4.00', tax: '0.95', vat: '0.00', total: '12.70' }, items: [{ files: [{ type: 'default', status: 'ok', width: 1024, height: 1024 }, { type: 'preview', status: 'ok' }] }], ...(sz.entwurf || {}), ...folge(sz.entwurfFolge, i) });
+  // Der Entwurf, den die Attrappe zurückgibt, ist das GESENDETE (Artikel, Varianten, Mengen, Dateitypen aus dem POST), mit einer Vorschau-Datei dazu; `dateiStatus` ('failed', {status, warning}) und `dateiStatusFolge` setzen den Dateistatus,
+  // `entwurf` überschreibt Felder (Kosten, items), `entwurfFolge` je Lesung.
+  const dateiSt = (i) => { const x = sz.dateiStatusFolge ? folge(sz.dateiStatusFolge, i) : sz.dateiStatus; return typeof x === 'string' ? { status: x } : (x || { status: 'ok' }); };
+  const gesendeteItems = (i) => { const post = prot.posts.length ? prot.posts[prot.posts.length - 1].body : null; if (!post) return [{ files: [{ type: 'default', status: 'ok' }, { type: 'preview', status: 'ok' }] }]; return post.items.map((it) => ({ variant_id: it.variant_id, quantity: it.quantity, files: [...it.files.map((f) => ({ type: f.type, ...dateiSt(i), width: 1024, height: 1024 })), { type: 'preview', status: 'ok' }] })); };
+  const draftOrder = (i = 0) => ({ id: 42, external_id: st.ext, status: 'draft', error: null, costs: { currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '4.00', tax: '0.95', vat: '0.00', total: '12.70' }, items: gesendeteItems(i), ...(sz.entwurf || {}), ...folge(sz.entwurfFolge, i) });
   const nachOrder = (i = 0) => ({ ...draftOrder(0), status: 'pending', ...(sz.nachConfirm || {}), ...folge(sz.nachFolge, i) });
   // Katalog des Szenarios: echte Auszüge (Tasse, T-Shirt, Kappe, Poster, Jacke, Strick, Hülle), sonst synthetisch aus der Dateiliste des Mitschnitts
   const druck = (pid) => {
@@ -42,6 +54,34 @@ if (process.argv[2] === '--szenario') {
     const pl = Object.fromEntries(ids.map((i) => [i, 1]));
     return { printfiles: { printfiles: [{ printfile_id: 1, width: 3000, height: 3000, dpi: 150, fill_mode: 'fit' }], variant_printfiles: [{ variant_id: sz.vid, placements: pl }] }, templates: { min_dpi: 75, conflicting_placements: [] } };
   };
+  // Wie Shopify: die Antwort enthält nur die Felder, die die Abfrage NENNT. Ein Feld, das der Kleber liest, aber nicht abfragt, fehlt dem Kleber hier genauso wie im Betrieb (früher lieferte die Attrappe alles, und das Streichen eines Feldes aus der Abfrage blieb unbemerkt).
+  const parseAuswahl = (q) => {
+    let i = q.indexOf('{');
+    const ws = () => { while (i < q.length && /[\s,]/.test(q[i])) i++; };
+    const lies = () => {
+      i++; const kinder = {};
+      for (;;) {
+        ws();
+        if (i >= q.length) throw new Error('Abfrage nicht lesbar');
+        if (q[i] === '}') { i++; return kinder; }
+        if (q.startsWith('...', i)) { i += 3; ws(); const on = /^on\s+[A-Za-z_]\w*/.exec(q.slice(i)); if (on) i += on[0].length; ws(); Object.assign(kinder, lies()); continue; }
+        const m = /^[A-Za-z_]\w*/.exec(q.slice(i)); if (!m) throw new Error('Feldname erwartet bei ' + q.slice(i, i + 20));
+        const name = m[0]; i += name.length; ws();
+        if (q[i] === '(') { let d = 0; do { if (q[i] === '"') { i++; while (q[i] !== '"') i++; } else if (q[i] === '(') d++; else if (q[i] === ')') d--; i++; } while (d > 0); ws(); }
+        kinder[name] = q[i] === '{' ? lies() : null;
+      }
+    };
+    return lies();
+  };
+  const projiziere = (w, baum) => {
+    if (baum === null) return w;
+    if (Array.isArray(w)) return w.map((x) => projiziere(x, baum));
+    if (w === null || typeof w !== 'object') return w;
+    const aus = {}; for (const k of Object.keys(baum)) if (k in w) aus[k] = projiziere(w[k], baum[k]); return aus;
+  };
+  const alleBestellungen = () => [...(sz.orders || []), ...(sz.shopSeiten || []).flatMap((s) => s.orders || [])];
+  const knotenZu = (n) => (n.lineItems && n.lineItems.edges || []).map((e) => e && e.node).filter(Boolean);
+  const istPodZeile = (z) => ((z.product && z.product.tags) || []).some((t) => ['wunschdesign', 'printful_personalized_product'].includes(String(t).toLowerCase()));
   globalThis.fetch = async (url, o = {}) => {
     url = String(url);
     if (url.includes('myshopify.com') && url.includes('graphql')) {
@@ -52,15 +92,35 @@ if (process.argv[2] === '--szenario') {
         const seiten = sz.shopSeiten || [{ orders: sz.orders || [] }];
         const i = b.variables.c ? parseInt(String(b.variables.c).slice(1), 10) : 0, s = seiten[i] || { orders: [] };
         const weiter = s.weiter !== undefined ? s.weiter : i < seiten.length - 1;
-        return mk(200, { data: { orders: { pageInfo: { hasNextPage: !!weiter, endCursor: 'c' + (i + 1) }, edges: s.orders.map((node) => ({ node })) } } });
+        return mk(200, projiziere({ data: { orders: { pageInfo: { hasNextPage: !!weiter, endCursor: 'c' + (i + 1) }, edges: s.orders.map((node) => ({ node })) } } }, { data: parseAuswahl(q) }));
+      }
+      if (q.includes('node(id')) {                       // frisches Lesen einer Bestellung (vor dem Anlegen, vor dem Bestätigen)
+        prot.frischQuery = q; const nr = prot.frisch.length; prot.frisch.push(b.variables.id);
+        if (sz.frischFehler && nr >= (sz.frischFehlerAb || 0)) {                       // `frischFehlerAb`: ab der n-ten frischen Lesung (0 = ab der ersten)
+          if (sz.frischFehler === 'http') return mk(500, {});
+          if (sz.frischFehler === 'null') return mk(200, { data: { node: null } });
+        }
+        const basis = alleBestellungen().find((x) => x.id === b.variables.id);
+        if (!basis) return mk(200, { data: { node: null } });
+        const knoten = { ...basis, ...folge(sz.frischFolge, nr) };
+        return mk(200, projiziere({ data: { node: knoten } }, { data: parseAuswahl(q) }));
+      }
+      if (q.includes('currentAppInstallation')) {         // Zugriffsrechte des Tokens
+        prot.scopeAbfragen++;
+        if (sz.scopesFehler) return mk(200, { errors: [{ message: 'Access denied' }] });
+        const handles = sz.scopes || ['read_orders', 'write_orders', 'read_merchant_managed_fulfillment_orders', 'read_third_party_fulfillment_orders'];
+        return mk(200, { data: { currentAppInstallation: { accessScopes: handles.map((handle) => ({ handle })) } } });
       }
       if (q.includes('shop {')) return mk(200, { data: { shop: { name: 'x' } } });
       if (q.includes('tagsAdd')) {
         prot.shopOps.push('tagsAdd');
-        if (sz.tagFehler === 'http') return mk(500, {});
-        const n = prot.tags.length; prot.tags.push({ id: b.variables.id, tags: b.variables.tags });
-        if (sz.tagFehler === 'userErrors' && (sz.tagFehlerAb === undefined || n >= sz.tagFehlerAb)) return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'kaputt' }] } } });
-        if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
+        const n = prot.tagOps++;                           // alle Aufrufe zählen, auch gescheiterte; `tagFehlerAb` = ab dem n-ten Aufruf scheitert es (0 = ab dem ersten)
+        if (sz.tagFehler && n >= (sz.tagFehlerAb || 0)) {
+          if (sz.tagFehler === 'http') return mk(500, {});
+          if (sz.tagFehler === 'userErrors') return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'kaputt' }] } } });
+          if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
+        }
+        prot.tags.push({ id: b.variables.id, tags: b.variables.tags }); prot.folge.push('tags:' + b.variables.tags.join('+'));
         return mk(200, { data: { tagsAdd: { userErrors: [] } } });
       }
       if (q.includes('metafieldsSet')) { prot.shopOps.push('metafieldsSet'); prot.mf.push(b.variables.mf[0]); return mk(200, { data: { metafieldsSet: { userErrors: sz.mfFehler ? [{ message: 'x' }] : [] } } }); }
@@ -69,15 +129,18 @@ if (process.argv[2] === '--szenario') {
     if (url.startsWith('https://api.telegram.org')) { prot.tg.push(JSON.parse(o.body).text); return sz.tgFehler ? mk(500, {}) : mk(200, { ok: true }); }
     if (url.includes('generativelanguage.googleapis.com')) {
       prot.gemini.push({ url, schluesselImKopf: !!(o.headers && o.headers['x-goog-api-key']), schluesselInUrl: /key=/.test(url) });
-      if (sz.ki === 'wirft') throw new Error('ETIMEDOUT');
-      if (sz.ki === 'http402') return mk(402, { error: { message: 'prepayment credits are depleted' } });
-      const t = { pass: 'PASS - sieht gut aus', fail: 'FAIL - <b>leer</b>', unklar: 'Das Bild zeigt eine Tasse.', leer: '' }[sz.ki];
+      if (kiArt === 'wirft') throw new Error('ETIMEDOUT');
+      if (kiArt === 'http402') return mk(402, { error: { message: 'prepayment credits are depleted' } });
+      const t = { pass: 'PASS - sieht gut aus', fail: 'FAIL - <b>leer</b>', unklar: 'Das Bild zeigt eine Tasse.', leer: '' }[kiArt];
       return mk(200, { candidates: [{ content: { parts: [{ text: t }] } }] });
     }
-    if (/res\.cloudinary\.com|cdn\.shopify\.com|bilder\.luxestyle\.ch|evil\.example\.com/.test(url)) {
-      prot.dateien.push({ url, range: !!(o.headers && o.headers.Range) });
+    if (/res\.cloudinary\.com|cdn\.shopify\.com|bilder\.luxestyle\.ch|evil\.example/.test(url)) {
+      const range = !!(o.headers && o.headers.Range);
+      if (range) prot.dateien.push({ url, range, redirect: o.redirect }); else prot.kiDateien.push({ url, redirect: o.redirect });   // der Kopf-Abruf trägt immer «Range»; Abrufe ohne ihn gehören der KI-Kontrolle
       const spez = (sz.dateiPro || []).find((x) => url.includes(x.match)) || sz.datei || {};
       if (spez.wirft) throw new Error('ECONNRESET');
+      // Weiterleitung nur für den Kopf-Abruf (Range); `weiterleitungImmer` leitet jedes Mal weiter (Schleife), sonst nur beim ersten Abruf dieser Adresse
+      if (spez.weiterleitung && range && (spez.weiterleitungImmer || !prot.dateiRedirect.includes(url))) { prot.dateiRedirect.push(url); return mk(302, {}, { header: { location: spez.weiterleitung } }); }
       const status = spez.status || 200;
       if (status !== 200) return mk(status, {});
       if (spez.strom) {                                   // ein Server, der den Range-Kopf ignoriert und die GANZE Datei in Stücken liefert: der Kleber darf nur den Anfang ziehen
@@ -107,14 +170,20 @@ if (process.argv[2] === '--szenario') {
       }
       if ((r = /^\/orders\/@(.+)$/.exec(p))) {
         prot.lookups++;
-        const l = folge(sz.lookup, prot.lookups - 1);
+        const l0 = folge(sz.lookup, prot.lookups - 1);
+        // Nach dem Anlegen kennt die Attrappe NUR die gepostete external_id: wer nach einer anderen fragt, bekommt 404 (ein Auftrag mit fremder Kennung existiert nicht)
+        const l = l0.status === 200 && st.ext && decodeURIComponent(r[1]) !== st.ext ? { status: 404 } : l0;
         if (l.wirft) throw new Error(l.wirft);
-        if (l.status === 200) return mk(200, { result: { id: 777, external_id: decodeURIComponent(r[1]), status: 'draft', ...(l.order || {}) } });
+        if (l.status === 200) {
+          const b1 = alleBestellungen()[0] || {}, a = b1.shippingAddress || {};
+          const menge = knotenZu(b1).filter(istPodZeile).reduce((x, z) => x + (Number.isInteger(z.currentQuantity) ? z.currentQuantity : (z.quantity || 1)), 0);
+          return mk(200, { result: { id: 777, external_id: decodeURIComponent(r[1]), status: 'draft', recipient: { name: a.name || [a.firstName, a.lastName].filter(Boolean).join(' '), zip: a.zip, country_code: a.countryCodeV2 }, items: [{ quantity: menge || 1 }], ...(l.order || {}) } });
+        }
         return mk(l.status || 404, { error: { message: 'Not Found' } });
       }
       if (m === 'POST' && p === '/orders') {
         prot.postSignale.push(!!o.signal);
-        const body = JSON.parse(o.body); prot.posts.push({ p, body }); st.ext = body.external_id;
+        const body = JSON.parse(o.body); prot.posts.push({ p, body }); st.ext = body.external_id; prot.folge.push('POST');
         const pr = folge(sz.post, prot.posts.length - 1);
         if (pr.wirft) throw new Error(pr.wirft);
         const status = pr.status || 200;
@@ -149,15 +218,16 @@ if (process.argv[2] === '--szenario') {
 }
 
 // ═════════════════════════════════════════════════════════════ PRÜFER
-let ok = 0, fehl = 0;
-const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 700)}\n   soll: ${JSON.stringify(b).slice(0, 700)}`); } };
+let ok = 0, fehl = 0, letzter = null;
+// PS_DEBUG=1 zeigt bei einem Fehlschlag zusätzlich das Protokoll des zuletzt gefahrenen Szenarios (Log, Warnungen, Fehler, Telegram, Tags): Fehlersuche, nicht Teil der Prüfung
+const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 700)}\n   soll: ${JSON.stringify(b).slice(0, 700)}`); if (process.env.PS_DEBUG && letzter) console.log('   [letztes Szenario]', JSON.stringify({ log: letzter.prot.log, warn: letzter.prot.warn, err: letzter.prot.err, tg: letzter.prot.tg, tags: letzter.prot.tags, posts: letzter.prot.posts.length, confirms: letzter.prot.confirms.length }).slice(0, 1800)); } };
 const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 
 const lauf = (sz, env = {}) => {
   const r = spawnSync(process.execPath, [SELF, '--szenario'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, PS_SZENARIO: JSON.stringify(sz), ...env }, encoding: 'utf8', timeout: 90000 });
   const m = String(r.stdout).match(/PS_ERGEBNIS (.*)\n/);
   if (!m) throw new Error('Kindprozess ohne Ergebnis (Exit ' + r.status + '): ' + String(r.stderr).slice(0, 600) + String(r.stdout).slice(-300));
-  return { status: r.status, prot: JSON.parse(m[1]), stderr: r.stderr, stdout: r.stdout };
+  return (letzter = { status: r.status, prot: JSON.parse(m[1]), stderr: r.stderr, stdout: r.stdout });
 };
 const antwort = (pid) => ({ status: 200, body: { result: { variant: { id: MIT[pid].variante }, product: MIT[pid].produkt } } });
 const V = (s) => 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/' + s + '.png';
@@ -167,14 +237,19 @@ const karte6 = (pl, extra = {}) => A('_pod_karte', JSON.stringify({ v: 6, s: 1, 
 const zeile = (o = {}) => ({ id: 'gid://shopify/LineItem/9001', quantity: 1, sku: '5599797_4025', title: 'T', discountedTotalSet: { shopMoney: { amount: '49.90', currencyCode: 'CHF' } }, product: { productType: 'T-Shirts', tags: ['wunschdesign'], metafield: null }, variant: { sku: '5599797_4025' }, customAttributes: [A('🖼️ Druckdatei (Vorne)', V('Vorne'))], ...o });
 /** Fulfillment-Orders wie die Admin-Abfrage sie liefert: ein Händler-Standort mit allen Positionen (`ort` ändert den Standort, z. B. FO_DIENST = der Dienst-Standort «Printful»). */
 const FO_DIENST = { id: 'gid://shopify/Location/2', name: 'Printful', isFulfillmentService: true };
-const fos = (zeilen, ort = { id: 'gid://shopify/Location/1', name: 'Shop location', isFulfillmentService: false }) => ({ edges: [{ node: { id: 'gid://shopify/FulfillmentOrder/1', status: 'OPEN', assignedLocation: { location: ort }, lineItems: { edges: zeilen.map((z) => ({ node: { lineItem: { id: z.id } } })) } } }] });
-const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, fulfillmentOrders: fos(zeilen), ...o });
+const fos = (zeilen, ort = { id: 'gid://shopify/Location/1', name: 'Shop location', isFulfillmentService: false }) => ({ pageInfo: { hasNextPage: false }, edges: [{ node: { id: 'gid://shopify/FulfillmentOrder/1', status: 'OPEN', assignedLocation: { location: ort }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((z) => ({ node: { lineItem: { id: z.id } } })) } } }] });
+// Der Shopify-Knoten einer bezahlten Bestellung, wie die Abfrage ihn liefert (test false, bezahlt, nicht storniert). Ein Szenario ändert einzelne Felder über `order: {…}`.
+const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], cancelledAt: null, test: false, displayFinancialStatus: 'PAID', shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, fulfillmentOrders: fos(zeilen), ...o });
 const einfach = (pt, sku, seiten, extra = {}) => ({ pt, sku, seiten, ...extra });
 /** Szenario aus dem alten Muster {pt, sku, seiten, variant}: eine Bestellung, v5-Eigenschaften «Druckdatei (<Seite>)» */
 const alt = (s) => ({ vid: Number(s.sku.split('_').pop()), orders: [knoten([zeile({ sku: s.sku, variant: { sku: s.sku }, product: { productType: s.pt, tags: ['wunschdesign'], metafield: null }, customAttributes: s.seiten.map((x) => A('🖼️ Druckdatei (' + x + ')', V(x))) })])], ...s });
 const sz1 = (zeilen, extra = {}) => ({ vid: 4025, orders: [knoten(zeilen, extra.order || {})], variant: [{ kat: 71 }], ...extra });
 const typenDerPosts = (e) => e.prot.posts.map((p) => p.body.items.map((i) => i.files.map((f) => f.type)));
-const tags = (e) => e.prot.tags.flatMap((t) => t.tags);
+// Die Markierung «printful-anlegen-<Zeit>» vor dem POST trägt die Uhrzeit des Laufs: die Tag-Listen der Tests zeigen sie nicht (eigene Prüfungen: `markenTags`).
+const tags = (e) => e.prot.tags.flatMap((t) => t.tags).filter((t) => !/^printful-anlegen-/.test(t));
+const markenTags = (e) => e.prot.tags.flatMap((t) => t.tags).filter((t) => /^printful-anlegen-/.test(t));
+/** Tag einer früheren Markierung, `minVor` Minuten alt */
+const markeVor = (minVor) => anlegenTag(Date.now() - minVor * 60000);
 const bestaetigt = (e) => e.prot.confirms.length > 0;
 const hatReview = (e) => tags(e).includes('printful-review');
 const tgAnzahl = (e) => e.prot.tg.length;
@@ -202,7 +277,8 @@ for (const [name, sz, soll] of [
   ist('Abfrage geht an /products/variant/20688 (die Nummer aus der SKU), der Auftrag an variant_id 20688 mit external_id «LXT1», der Auftrag selbst MIT Zeitlimit-Signal (früher ohne: hing an einer stummen API)', [e.prot.variantGets, p.body.items[0].variant_id, p.body.external_id, e.prot.postSignale], [['20688'], 20688, 'LXT1', [true]]);
   ist('der Entwurf wird OHNE confirm angelegt (POST /orders), bestätigt wird in einem eigenen Schritt', [p.p, e.prot.confirms], ['/orders', ['/orders/42/confirm']]);
   ist('Reihenfolge: zuerst nach bestehendem Auftrag fragen, dann anlegen, markieren, nachlesen, bestätigen, Status nachlesen', e.prot.pf.filter((x) => !/products|mockup/.test(x)), ['GET /orders/@LXT1', 'POST /orders', 'GET /orders/42', 'POST /orders/42/confirm', 'GET /orders/42']);
-  ist('Tag printful-synced steht VOR dem Bestätigen (erste Tag-Mutation), Metafeld printful.order_id = 42', [e.prot.tags[0].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-synced'], [['printful', 'order_id', '42']]]);
+  ist('Die Markierung «printful-anlegen-<Zeit>» wird VOR dem POST gesetzt (erste Tag-Mutation), danach Tag printful-synced (vor dem Bestätigen), Metafeld printful.order_id = 42',
+    [e.prot.tags[0].tags.map((t) => t.replace(/\d{8}t\d{4}$/, '<zeit>')), e.prot.tags[1].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-anlegen-<zeit>'], ['printful-synced'], [['printful', 'order_id', '42']]]);
   ist('Empfänger und Artikel gehen mit: Name, Ort, Land, Menge; Artikel-external_id = Nummer der Bestellposition', [p.body.recipient.name, p.body.recipient.city, p.body.recipient.country_code, p.body.items[0].quantity, p.body.items[0].external_id], ['T', 'Basel', 'CH', 1, '9001']);
 }
 { // T-Shirt vorne + hinten (v5): beide Seiten, URLs bleiben ihrer Seite zugeordnet, nur EINE Abfrage (Cache)
@@ -301,14 +377,19 @@ for (const [name, sz, soll] of [
   ist('Datei mit http: harter Befund (früher still ignoriert/abgerufen)', [http.prot.posts.length, tags(http).includes('printful-review-datei-adresse')], [0, true]);
   const eigen = lauf(sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (Vorne)', 'https://bilder.luxestyle.ch/x.png')] })], { telegram: true, env: { PRINTFUL_DATEI_HOSTS: 'bilder.luxestyle.ch' } }));
   ist('PRINTFUL_DATEI_HOSTS erweitert die Liste', [eigen.prot.posts.length, hatReview(eigen)], [1, false]);
-  const meta = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['wunschdesign'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)] }));
-  ist('Fertig-Produkt mit Metafeld custom.print_file (beliebiger https-Host): Datei gilt als Vorderseite, bestätigt', [meta.prot.posts[0].body.items[0].files, bestaetigt(meta)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], true]);
+  const meta = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)] }));
+  ist('FERTIG-Produkt (Tag printful_personalized_product, KEIN wunschdesign) mit Metafeld custom.print_file (beliebiger https-Host): Datei gilt als Vorderseite, bestätigt', [meta.prot.posts[0].body.items[0].files, bestaetigt(meta)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], true]);
+  // Fund 22 (Gegenprüfung P1): ein EDITOR-Produkt (wunschdesign) druckt nie das Muster des Besitzers aus dem Metafeld
+  const metaEd = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['wunschdesign', 'printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)], telegram: true }));
+  ist('EDITOR-Produkt (wunschdesign) ohne Design der Kundin, aber mit Metafeld custom.print_file: KEIN Auftrag (das Muster des Besitzers wird nie gedruckt), Befund «keine-druckdatei», eine 🔴-Meldung', [metaEd.prot.posts.length, metaEd.prot.confirms.length, tags(metaEd).includes('printful-review-keine-druckdatei'), tgAnzahl(metaEd), metaEd.prot.dateien.length], [0, 0, true, 1, 0]);
+  const metaPort = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch:8443/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)], telegram: true }));
+  ist('Fertig-Produkt, dessen Metafeld einen Port nennt: die Datei wird nicht übernommen (kein Auftrag), nichts abgerufen', [metaPort.prot.posts.length, metaPort.prot.dateien.length], [0, 0]);
 }
 
 // ═════════════════════════════════════════════════════════════ NEU: KI-Kontrolle gibt bei Fehler NICHT mehr frei
 {
   const pass = lauf(sz1([zeile()], { ki: 'pass' }));
-  ist('KI sagt PASS: bestätigt; Schlüssel im Kopf, NICHT in der Adresse; die kleine Cloudinary-Kopie (c_limit,w_1400) wird geprüft', [bestaetigt(pass), pass.prot.gemini[0].schluesselImKopf, pass.prot.gemini[0].schluesselInUrl, pass.prot.dateien.some((d) => /c_limit,w_1400/.test(d.url))], [true, true, false, true]);
+  ist('KI sagt PASS: bestätigt; Schlüssel im Kopf, NICHT in der Adresse; die kleine Cloudinary-Kopie (c_limit,w_1400) wird geprüft, Weiterleitungen werden nicht blind verfolgt (redirect manual)', [bestaetigt(pass), pass.prot.gemini[0].schluesselImKopf, pass.prot.gemini[0].schluesselInUrl, pass.prot.kiDateien.some((d) => /c_limit,w_1400/.test(d.url)), pass.prot.kiDateien.every((d) => d.redirect === 'manual')], [true, true, false, true, true]);
   const fail = lauf(sz1([zeile()], { ki: 'fail', telegram: true }));
   ist('KI sagt FAIL: Entwurf, Review-Tag «kontrolle-fail», Meldung nennt den Grund und MASKIERT das HTML aus der KI-Antwort', [bestaetigt(fail), tags(fail).includes('printful-review-kontrolle-fail'), /FAIL - &lt;b&gt;leer&lt;\/b&gt;/.test(fail.prot.tg[0])], [false, true, true]);
   for (const [name, ki, art] of [['HTTP 402 (Guthaben leer)', 'http402', 'kontrolle-technisch'], ['Netzfehler/Zeitüberschreitung', 'wirft', 'kontrolle-technisch'], ['Antwort ohne PASS/FAIL', 'unklar', 'kontrolle-technisch'], ['leere Antwort', 'leer', 'kontrolle-technisch'], ['kein GEMINI_API_KEY (Vorgabe «pflicht»)', 'ohne-schluessel', 'kontrolle-fehlt']]) {
@@ -318,9 +399,9 @@ for (const [name, sz, soll] of [
   const g402 = lauf(sz1([zeile()], { ki: 'http402', telegram: true }));
   ist('KI HTTP 402: die Meldung nennt den Grund («KI antwortet HTTP 402» samt Text von Google), nicht nur «unklar»', [/KI antwortet HTTP 402/.test(g402.prot.tg[0]), /prepayment credits are depleted/.test(g402.prot.tg[0])], [true, true]);
   const aus = lauf(sz1([zeile()], { ki: 'aus' }));
-  ist('PRINTFUL_KI_KONTROLLE=aus verzichtet ausdrücklich: keine KI-Anfrage, bestätigt (die mechanischen Prüfungen bleiben)', [bestaetigt(aus), aus.prot.gemini.length], [true, 0]);
+  ist('PRINTFUL_KI_KONTROLLE=aus verzichtet ausdrücklich auf die KI: keine KI-Anfrage, der Entwurf entsteht, wird aber NICHT automatisch bestätigt (Härtung 10.11.2026: Bestätigen verlangt die KI-Kontrolle)', [bestaetigt(aus), aus.prot.gemini.length, aus.prot.posts.length, tags(aus).includes('printful-review-manuell')], [false, 0, 1, true]);
   const vor = lauf(sz1([zeile()]));
-  ist('Vorgabe ohne Schalter und ohne Schlüssel im Test-Rahmen: «aus» (der Rahmen setzt aus; die echte Vorgabe ist «pflicht», siehe oben)', bestaetigt(vor), true);
+  ist('Rahmen des Tests: Obergrenze 500 USD, KI «pflicht» mit Schlüssel und PASS-Attrappe: bestätigt (Grundlage der älteren Szenarien)', [bestaetigt(vor), vor.prot.gemini.length], [true, 1]);
 }
 
 // ═════════════════════════════════════════════════════════════ NEU: Doppelauftrag-Schutz
@@ -348,12 +429,14 @@ for (const [name, sz, soll] of [
   ist('POST /orders → 401 (Schlüssel falsch): technischer Fehler, Exit 1, KEINE Tags an der Bestellung', [tags(p401), p401.prot.exitCode], [[], 1]);
   // Tag-Fehler
   for (const [name, f] of [['userErrors', 'userErrors'], ['HTTP 500', 'http'], ['GraphQL-Fehler', 'graphql']]) {
-    const t = lauf(sz1([zeile()], { tagFehler: f }));
+    const t = lauf(sz1([zeile()], { tagFehler: f, tagFehlerAb: 1 }));      // der erste tagsAdd (Markierung vor dem Anlegen) gelingt, das Tag printful-synced scheitert
     ist(`Markieren scheitert (${name}): Auftrag angelegt, aber NICHT bestätigt, Fehler gemeldet, Exit 1; es bleibt bei EINEM Auftrag`, [t.prot.posts.length, t.prot.confirms.length, t.prot.exitCode, t.prot.err.some((x) => /Metafeld\/Tag nicht gesetzt/.test(x))], [1, 0, 1, true]);
+    const v = lauf(sz1([zeile()], { tagFehler: f }));                          // schon die Markierung VOR dem POST scheitert: dann wird gar nichts angelegt
+    ist(`Die Markierung vor dem Anlegen scheitert (${name}): KEIN Auftrag bei Printful, Fehler gemeldet, Exit 1`, [v.prot.posts.length, v.prot.confirms.length, v.prot.exitCode, v.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x))], [0, 0, 1, true]);
   }
   const mf = lauf(sz1([zeile()], { mfFehler: true }));
   ist('Metafeld scheitert (userErrors): wie ein Tag-Fehler, nicht bestätigt, Exit 1', [mf.prot.confirms.length, mf.prot.exitCode], [0, 1]);
-  const zw = lauf(sz1([zeile()], { tagFehler: 'userErrors', tagFehlerAb: 0, lookup: [{ status: 404 }] }));
+  const zw = lauf(sz1([zeile()], { tagFehler: 'userErrors', tagFehlerAb: 1, lookup: [{ status: 404 }] }));
   ist('Schreiben schlägt fehl, der NÄCHSTE Lauf (hier: Auftrag existiert jetzt) legt nichts doppelt an', zw.prot.posts.length, 1);
   const nach = lauf(sz1([zeile()], { lookup: [{ status: 200, order: { status: 'draft' } }] }));
   ist('…und tatsächlich: der zweite Lauf findet den Entwurf über external_id und legt keinen zweiten an', nach.prot.posts.length, 0);
@@ -494,7 +577,7 @@ for (const [name, sz, soll] of [
   ist('Metafeld scheitert: das Tag printful-synced wird gar nicht erst gesetzt (sonst bliebe der Entwurf ohne Prüfer liegen), nicht bestätigt, Exit 1', [tags(mf), mf.prot.confirms.length, mf.prot.exitCode], [[], 0, 1]);
   ist('…und die Meldung verspricht nur, was stimmt: der nächste Lauf findet den Entwurf über external_id', mf.prot.err.some((x) => /findet ihn über external_id LXT1 und markiert ihn nach/.test(x)), true);
   const reihe = lauf(sz1([zeile()]));
-  ist('Reihenfolge der Schreibzugriffe: Metafeld printful.order_id VOR dem Tag printful-synced (Aufruf-Reihenfolge am Shop)', reihe.prot.shopOps, ['metafieldsSet', 'tagsAdd', 'tagsAdd']);
+  ist('Reihenfolge der Schreibzugriffe: Markierung vor dem POST (tagsAdd), dann Metafeld printful.order_id VOR dem Tag printful-synced, dann printful-confirmed (Aufruf-Reihenfolge am Shop)', reihe.prot.shopOps, ['tagsAdd', 'metafieldsSet', 'tagsAdd', 'tagsAdd']);
   const nachlauf = lauf(sz1([zeile()], { lookup: [{ status: 200, order: { id: 42, status: 'draft' } }] }));
   ist('Zweiter Lauf nach dem Metafeld-Fehler (der Entwurf existiert): kein zweiter Auftrag, Metafeld UND Tag werden nachgeholt, Entwurf bleibt zur Prüfung', [nachlauf.prot.posts.length, nachlauf.prot.mf.map((m) => m.value), tags(nachlauf).includes('printful-synced'), nachlauf.prot.confirms.length], [0, ['42'], true, 0]);
 }
@@ -730,7 +813,7 @@ for (const [name, sz, soll] of [
   {
     const e = lauf(shirt(vorneText));
     const q = e.prot.shopQuery;
-    ist('Phase 1 Abfrage: Fulfillment-Orders mit Standort (Dienst-Flag) und Positionen, dazu die Optionen der Variante (für das bezahlte Paket)', [/fulfillmentOrders\(first:20\)/.test(q), /assignedLocation\{ location\{ id name isFulfillmentService \}/.test(q), /lineItems\(first:50\)\{ edges\{ node\{ lineItem\{ id \}/.test(q), /variant\{ sku title selectedOptions\{ name value \}/.test(q)], [true, true, true, true]);
+    ist('Phase 1 Abfrage: Fulfillment-Orders mit Standort (Dienst-Flag) und Positionen, dazu die Optionen der Variante (für das bezahlte Paket)', [/fulfillmentOrders\(first:20\)/.test(q), /assignedLocation\{ location\{ id name isFulfillmentService \}/.test(q), /lineItems\(first:50\)\{ pageInfo\{ hasNextPage \} edges\{ node\{ lineItem\{ id \}/.test(q), /variant\{ sku title selectedOptions\{ name value \}/.test(q)], [true, true, true, true]);
     ist('Phase 1 Normalfall (echte Eigenschaften des Editors 6.4.0, Händler-Standort, Vorderseite): ein Auftrag, Typ «default», kein Review', [e.prot.posts.length, typenDerPosts(e), hatReview(e)], [1, [[['default']]], false]);
     const druckUrl = vorneText.anfrage.properties['🖼️ Druckdatei (front)'], vorschauUrl = vorneText.anfrage.properties._vorschau;
     ist('Phase 1 Normalfall: der Auftrag trägt die Druckdatei (nicht die Vorschau), abgerufen wird nur die Druckdatei; «_vorschau» geht nie an Printful und nie ins Netz', [e.prot.posts[0].body.items[0].files, e.prot.dateien.map((d) => d.url).every((u) => u === druckUrl), JSON.stringify(e.prot.posts).includes(vorschauUrl)], [[{ type: 'default', url: druckUrl }], true, false]);
@@ -755,7 +838,7 @@ for (const [name, sz, soll] of [
       ist('Phase 1 Gegenprobe: dieselbe Händler-Position allein → ein Auftrag, kein Review (die Sperre kommt vom Warenkorb mit der Dienst-Position, nicht von der Händler-Position)', [nurH.prot.posts.length, hatReview(nurH)], [1, false]);
     }
     const ohneFo = lauf(shirt(vorneText, { order: { fulfillmentOrders: undefined } }));
-    ist('Phase 1: Antwort OHNE Fulfillment-Orders (nie «frei» geraten): der Auftrag wird als Entwurf angelegt, aber NICHT bestätigt, Review «dienst-standort-unklar»', [ohneFo.prot.posts.length, bestaetigt(ohneFo), tags(ohneFo).includes('printful-review-dienst-standort-unklar'), tags(ohneFo).includes('printful-synced')], [1, false, true, true]);
+    ist('Phase 1 (Härtung 10.11.2026): Antwort OHNE Fulfillment-Orders (nie «frei» geraten): HARTER Befund «dienst-standort-unklar», KEIN Auftrag (früher: weich, Entwurf neben dem Auftrag der Printful-App), nicht als erledigt markiert', [ohneFo.prot.posts.length, bestaetigt(ohneFo), tags(ohneFo).includes('printful-review-dienst-standort-unklar'), tags(ohneFo).includes('printful-synced'), tgAnzahl(ohneFo), /🔴/.test(ohneFo.prot.tg[0] || '')], [0, false, true, false, 1, true]);
   }
   // (b) Aufpreis ohne bezahltes Paket
   {
@@ -784,15 +867,17 @@ for (const [name, sz, soll] of [
       const x = roh({ env: { PRINTFUL_AUTO_CONFIRM: w } });
       ist(`Phase 1 PRINTFUL_AUTO_CONFIRM=«${w}»: nicht bestätigt (nur ein ausdrückliches Ja bestätigt, auch ein Tippfehler nicht)`, [x.prot.posts.length, bestaetigt(x)], [1, false]);
     }
+    // Bestätigt wird nur mit Kostenobergrenze UND eingeschalteter KI-Kontrolle (Rahmen: Obergrenze 500, KI pflicht mit Schlüssel)
     for (const w of ['1', 'true', 'TRUE', 'ja', 'Yes', 'on', ' an ']) {
-      const x = roh({ env: { PRINTFUL_AUTO_CONFIRM: w } });
-      ist(`Phase 1 PRINTFUL_AUTO_CONFIRM=«${w}»: bestätigt`, [x.prot.posts.length, bestaetigt(x)], [1, true]);
+      const x = roh({ env: { PRINTFUL_AUTO_CONFIRM: w, PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g' } });
+      ist(`Phase 1 PRINTFUL_AUTO_CONFIRM=«${w}» (mit KI-Kontrolle und Obergrenze): bestätigt`, [x.prot.posts.length, bestaetigt(x)], [1, true]);
     }
     const pflichtOhne = roh({ env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht' } });
     ist('Phase 1 PRINTFUL_KI_KONTROLLE=pflicht ohne GEMINI_API_KEY: nicht bestätigt, Review «kontrolle-fehlt»', [bestaetigt(pflichtOhne), tags(pflichtOhne).includes('printful-review-kontrolle-fehlt')], [false, true]);
-    for (const w of ['AUS', 'Aus', ' aus ']) {
-      const aus = roh({ env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: w, GEMINI_API_KEY: 'g' } });
-      ist(`Phase 1 PRINTFUL_KI_KONTROLLE=«${w}» (Gross-/Kleinschreibung, Leerraum): aus, keine KI-Anfrage, bestätigt`, [aus.prot.gemini.length, bestaetigt(aus)], [0, true]);
+    // Härtung 10.11.2026: ist die KI-Kontrolle aus, bleibt jede Bestätigung aus (auch bei AUTO_CONFIRM=1 und gesetzter Obergrenze); der Entwurf trägt den Grund
+    for (const w of ['aus', 'AUS', 'Aus', ' aus ', '']) {
+      const aus = roh({ env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: w, GEMINI_API_KEY: 'g' }, telegram: true });
+      ist(`Phase 1 AUTO_CONFIRM=1 mit PRINTFUL_KI_KONTROLLE=«${w}» (KI aus): KEINE KI-Anfrage, der Entwurf wird angelegt, aber NICHT bestätigt, Befund «manuell» nennt die KI-Kontrolle als Grund`, [aus.prot.gemini.length, aus.prot.posts.length, bestaetigt(aus), tags(aus).includes('printful-review-manuell'), /KI-Kontrolle/.test(aus.prot.tg[0] || '')], [0, 1, false, true, true]);
     }
     const tippfehler = lauf(shirt(vorneText, { envLoeschen: ['PRINTFUL_KI_KONTROLLE'], env: { PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'Pflicht', GEMINI_API_KEY: 'g', }, ki: 'pass' }));
     ist('Phase 1 PRINTFUL_KI_KONTROLLE=«Pflicht» (Gross-/Kleinschreibung) schaltet die KI ein: eine Anfrage, bestätigt nach PASS', [tippfehler.prot.gemini.length, bestaetigt(tippfehler)], [1, true]);
@@ -800,7 +885,7 @@ for (const [name, sz, soll] of [
     ist('Phase 1 PRINTFUL_KI_KONTROLLE=«pflich» (Tippfehler) gilt als pflicht (die sichere Seite): KI wird gefragt, ihr Ausfall hält den Auftrag an', [unklar.prot.gemini.length, bestaetigt(unklar)], [1, false]);
     // dieselben Werte, die der Workflow als Vorgabe setzt, ergeben dasselbe wie nicht gesetzte Variablen
     const ymlPfad = fileURLToPath(new URL('../.github/workflows/printful-sync.yml', import.meta.url));
-    if (!existsSync(ymlPfad)) console.log('(Workflow-Datei nicht ausgecheckt → Abgleich der Standardwerte mit dem Workflow übersprungen)');
+    if (!existsSync(ymlPfad)) { if (process.env.CI) { fehl++; console.log('✗ Workflow-Datei nicht ausgecheckt, in der CI muss sie da sein'); } else console.log('(Workflow-Datei nicht ausgecheckt → Abgleich der Standardwerte mit dem Workflow übersprungen)'); }
     else {
     const yml = readFileSync(ymlPfad, 'utf8');
     const wfConfirm = (yml.match(/PRINTFUL_AUTO_CONFIRM: \$\{\{[^}]*\|\| '([^']*)' \}\}/) || [])[1], wfKi = (yml.match(/PRINTFUL_KI_KONTROLLE: \$\{\{[^}]*\|\| '([^']*)' \}\}/) || [])[1];
@@ -818,7 +903,18 @@ for (const [name, sz, soll] of [
     ist('Phase 1 Kosten-Obergrenze 12.69 USD bei 12.70 USD Auftragssumme: Entwurf bleibt, NICHT bestätigt, Tag printful-review-kosten-obergrenze, eine 🟡-Befundmeldung mit beiden Zahlen (dazu die Zusammenfassung)', [unter.prot.posts.length, bestaetigt(unter), tags(unter).includes('printful-review-kosten-obergrenze'), unter.prot.tg.filter((x) => /^🟡/.test(x)).length, /🟡/.test(unter.prot.tg[0] || ''), /12\.70/.test(unter.prot.tg[0] || ''), /12\.69/.test(unter.prot.tg[0] || '')], [1, false, true, 1, true, true, true]);
     const gleich = kst('12.70');
     ist('Phase 1 Kosten-Obergrenze genau 12.70: erlaubt, bestätigt', [bestaetigt(gleich), hatReview(gleich)], [true, false]);
-    for (const w of ['', '0', 'aus', 'AUS', ' ']) ist(`Phase 1 PRINTFUL_MAX_KOSTEN_USD=«${w}»: aus, bestätigt wie ohne Grenze`, [bestaetigt(kst(w))], [true]);
+    // Härtung 10.11.2026: PRINTFUL_AUTO_CONFIRM=1 verlangt eine Obergrenze. Fehlt sie (leer, 0, aus), ist das ein Konfigurationsfehler: Exit 1, nichts gelesen, nichts angelegt (auch im Trockenlauf)
+    for (const w of ['', '0', 'aus', 'AUS', ' ']) {
+      const x = kst(w);
+      ist(`Phase 1 AUTO_CONFIRM=1 ohne Obergrenze (PRINTFUL_MAX_KOSTEN_USD=«${w}»): Konfigurationsfehler, Exit 1, nichts gelesen, nichts angelegt, die Meldung nennt die Variable`, [x.prot.ausstieg, x.prot.posts.length, x.prot.shop.length, x.prot.err.some((l) => /PRINTFUL_MAX_KOSTEN_USD/.test(l) && /Kostenobergrenze/.test(l))], [1, 0, 0, true]);
+    }
+    const trockenOhne = kst('', { env: { PRINTFUL_MAX_KOSTEN_USD: '', DRY_RUN: '1' } });
+    ist('Phase 1 AUTO_CONFIRM=1 ohne Obergrenze auch im TROCKENLAUF: Exit 1 (der Mangel soll sichtbar werden, bevor die Freigabedatei liegt)', [trockenOhne.prot.ausstieg, trockenOhne.prot.shop.length], [1, 0]);
+    // Ohne AUTO_CONFIRM ist die Obergrenze weiter freiwillig (nichts wird bestätigt)
+    for (const w of ['', '0', 'aus', 'AUS', ' ']) {
+      const x = kst(w, { env: { PRINTFUL_MAX_KOSTEN_USD: w, PRINTFUL_AUTO_CONFIRM: '0' } });
+      ist(`Phase 1 AUTO_CONFIRM=0 und PRINTFUL_MAX_KOSTEN_USD=«${w}»: kein Fehler, Entwurf, nicht bestätigt`, [x.prot.ausstieg ?? x.status, x.prot.posts.length, bestaetigt(x)], [0, 1, false]);
+    }
     ist('Phase 1 PRINTFUL_MAX_KOSTEN_USD=5 (weit darunter): nicht bestätigt', bestaetigt(kst('5')), false);
     for (const w of ['abc', '-5', '12,70', 'NaN', 'Infinity']) {
       const x = kst(w);
@@ -827,6 +923,267 @@ for (const [name, sz, soll] of [
     const kurz = lauf(shirt(vorneText, { env: { PRINTFUL_MAX_KOSTEN_USD: '5', DRY_RUN: '1' } }));
     ist('Phase 1 Trockenlauf mit Obergrenze: nichts angelegt, Exit 0 (die Summe ist vor dem Anlegen unbekannt)', [kurz.prot.posts.length, kurz.status], [0, 0]);
   }
+}
+
+// ═════════════════════════════════════════════════════════════ HÄRTUNG 10.11.2026 (Gegenprüfung P1: 27 bestätigte Funde)
+// Jeder Absatz nennt den Fund (Nummer in dropship/wp6-0611/SYNC.md, Abschnitt 7.9). Grundsatz: ein Weg, der Geld bewegt, ist standardmässig zu; Unbekanntes, Unlesbares und Fehlendes ergibt «kein Auftrag / nicht bestätigen» plus Befund.
+{
+  const bestellt = (zeilen = [zeile()], extra = {}) => sz1(zeilen, extra);
+  const gesperrt = (e) => [e.prot.posts.length, e.prot.confirms.length];
+
+  // ── Fund 0: Zahlung, Test und Storno werden am Knoten geprüft, nicht nur am Suchstring
+  {
+    const q0 = lauf(bestellt());
+    ist('Fund 0 Suchstring: schliesst Testbestellungen aus (-test:true) und nimmt nur bezahlte (financial_status:paid)', [/-test:true/.test(q0.prot.shop[0].q), /financial_status:paid/.test(q0.prot.shop[0].q)], [true, true]);
+    ist('Fund 0 Die Abfrage liest test, displayFinancialStatus und cancelledAt (sonst bliebe der Knoten ungeprüft)', [/cancelledAt test displayFinancialStatus/.test(q0.prot.shopQuery)], [true]);
+    const tst = lauf(bestellt([zeile()], { order: { test: true }, telegram: true }));
+    ist('Fund 0 Testbestellung (test:true, trotzdem PAID): wird NIE gedruckt: kein Printful-Aufruf, keine Tags, keine Meldung, Exit 0, Log nennt den Grund', [tst.prot.posts.length, tst.prot.pf.length, tst.prot.tags.length, tgAnzahl(tst), tst.prot.exitCode, tst.prot.log.some((l) => /#T1: Testbestellung/.test(l))], [0, 0, 0, 0, 0, true]);
+    for (const status of ['PENDING', 'PARTIALLY_PAID', 'AUTHORIZED', 'REFUNDED', 'PARTIALLY_REFUNDED', 'VOIDED', 'EXPIRED']) {
+      const e = lauf(bestellt([zeile()], { order: { displayFinancialStatus: status } }));
+      ist(`Fund 0 Zahlungsstatus ${status}: nicht gedruckt (nur PAID wird gedruckt), kein Printful-Aufruf, Exit 0, Log nennt den Status`, [e.prot.posts.length, e.prot.pf.length, e.prot.exitCode, e.prot.log.some((l) => l.includes('Zahlungsstatus ' + status))], [0, 0, 0, true]);
+    }
+    for (const [n, o] of [['test fehlt (null)', { test: null }], ['displayFinancialStatus fehlt (null)', { displayFinancialStatus: null }], ['displayFinancialStatus leer', { displayFinancialStatus: '' }]]) {
+      const e = lauf(bestellt([zeile()], { order: o }));
+      ist(`Fund 0 ${n}: UNLESBAR ist nie bezahlt: kein Auftrag, technischer Fehler, Exit 1`, [e.prot.posts.length, e.prot.pf.length, e.prot.exitCode, e.prot.err.some((x) => /Zahlungsstatus nicht lesbar/.test(x))], [0, 0, 1, true]);
+    }
+    const nichtPod = lauf(bestellt([zeile({ product: { productType: 'x', tags: ['cj'], metafield: null }, customAttributes: [] })], { order: { test: null } }));
+    ist('Fund 0 Eine Nicht-POD-Bestellung mit unlesbarem Knoten ist kein Fehler (sie interessiert den Sync nicht)', [nichtPod.prot.exitCode, nichtPod.prot.err.length], [0, 0]);
+  }
+
+  // ── Fund 1: vor dem Anlegen und vor dem Bestätigen wird die Bestellung FRISCH aus Shopify gelesen
+  {
+    const e = lauf(bestellt());
+    ist('Fund 1 Normalfall: zwei frische Lesungen derselben Bestellung (vor dem Anlegen, vor dem Bestätigen), die Abfrage nennt test, cancelledAt, displayFinancialStatus und tags', [e.prot.frisch, bestaetigt(e), /node\(id/.test(e.prot.frischQuery), /cancelledAt test displayFinancialStatus/.test(e.prot.frischQuery), /tags/.test(e.prot.frischQuery)], [['gid://shopify/Order/1', 'gid://shopify/Order/1'], true, true, true, true]);
+    const vorAnlegen = lauf(bestellt([zeile()], { frischFolge: [{ cancelledAt: '2026-11-10T10:00:00Z' }], telegram: true }));
+    ist('Fund 1 Storno zwischen Liste und Anlegen: KEIN Auftrag, keine Markierung, harter Befund «zahlung-geaendert», eine 🔴-Meldung, nur eine frische Lesung', [...gesperrt(vorAnlegen), markenTags(vorAnlegen).length, tags(vorAnlegen).includes('printful-review-zahlung-geaendert'), tags(vorAnlegen).includes('printful-synced'), tgAnzahl(vorAnlegen), /🔴/.test(vorAnlegen.prot.tg[0] || ''), vorAnlegen.prot.frisch.length], [0, 0, 0, true, false, 1, true, 1]);
+    const vorBestaetigen = lauf(bestellt([zeile()], { frischFolge: [{}, { cancelledAt: '2026-11-10T10:00:00Z' }], telegram: true }));
+    ist('Fund 1 Storno zwischen Anlegen und Bestätigen (der Fall des Prüfers): der Entwurf bleibt, NICHT bestätigt, weicher Befund «zahlung-geaendert», 🟡-Meldung nennt den Entwurf und das Löschen im Dashboard', [...gesperrt(vorBestaetigen), tags(vorBestaetigen).includes('printful-review-zahlung-geaendert'), tags(vorBestaetigen).includes('printful-confirmed'), /🟡/.test(vorBestaetigen.prot.tg[0] || ''), /Entwurf #42/.test(vorBestaetigen.prot.tg[0] || ''), /storniert/.test(vorBestaetigen.prot.tg[0] || '')], [1, 0, true, false, true, true, true]);
+    for (const [n, f] of [['erstattet (REFUNDED)', { displayFinancialStatus: 'REFUNDED' }], ['teilweise erstattet', { displayFinancialStatus: 'PARTIALLY_REFUNDED' }], ['zum Testauftrag geworden', { test: true }]]) {
+      const x = lauf(bestellt([zeile()], { frischFolge: [{}, f] }));
+      ist(`Fund 1 vor dem Bestätigen ${n}: nicht bestätigt, Befund «zahlung-geaendert»`, [bestaetigt(x), tags(x).includes('printful-review-zahlung-geaendert')], [false, true]);
+    }
+    const unlesbar1 = lauf(bestellt([zeile()], { frischFehler: 'http' }));
+    ist('Fund 1 Shopify liefert die frische Lesung nicht (HTTP 500), VOR dem Anlegen: nichts angelegt, Versuchszähler, Exit 1', [...gesperrt(unlesbar1), tags(unlesbar1), unlesbar1.prot.exitCode], [0, 0, ['printful-versuch-1'], 1]);
+    const nullKnoten = lauf(bestellt([zeile()], { frischFehler: 'null' }));
+    ist('Fund 1 Shopify kennt den Knoten nicht mehr (null): nichts angelegt, Exit 1', [...gesperrt(nullKnoten), nullKnoten.prot.exitCode], [0, 0, 1]);
+    const unlesbar2 = lauf(bestellt([zeile()], { frischFehler: 'http', frischFehlerAb: 1, telegram: true }));
+    ist('Fund 1 Shopify liefert nur die zweite frische Lesung nicht (vor dem Bestätigen): der Entwurf steht, NICHT bestätigt, Befund «zahlung-unlesbar»', [...gesperrt(unlesbar2), tags(unlesbar2).includes('printful-review-zahlung-unlesbar'), tags(unlesbar2).includes('printful-confirmed')], [1, 0, true, false]);
+    const feldWeg = lauf(bestellt([zeile()], { frischFolge: [{}, { test: null }] }));
+    ist('Fund 1 ein fehlendes Feld in der frischen Lesung (test null) ist nie «bezahlt»: nicht bestätigt, «zahlung-unlesbar»', [bestaetigt(feldWeg), tags(feldWeg).includes('printful-review-zahlung-unlesbar')], [false, true]);
+    const schon = lauf(bestellt([zeile()], { frischFolge: [{ tags: ['printful-synced'] }], telegram: true }));
+    ist('Fund 1 Ein anderer Lauf war schneller (frisch gelesen trägt die Bestellung schon printful-synced): nichts angelegt, keine Tags, keine Meldung, Exit 0', [...gesperrt(schon), schon.prot.tags.length, tgAnzahl(schon), schon.prot.exitCode, schon.prot.log.some((l) => /anderer Lauf/.test(l))], [0, 0, 0, 0, 0, true]);
+    const schon2 = lauf(bestellt([zeile()], { frischFolge: [{ tags: [markeVor(5)] }] }));
+    ist('Fund 1/6 Ein anderer Lauf hat vor 5 Minuten angefangen (Markierung beim frischen Lesen): nichts angelegt', gesperrt(schon2), [0, 0]);
+    const trocken = lauf(bestellt([zeile()], { env: { DRY_RUN: '1' } }));
+    ist('Fund 1 Im Trockenlauf wird die Bestellung nicht frisch gelesen (es wird nichts geschrieben, also nichts abgesichert)', [trocken.prot.frisch.length], [0]);
+    const e1 = lauf({ vid: 4025, variant: [{ kat: 71 }], orders: [knoten([zeile()], { id: 'gid://shopify/Order/1', name: '#A' }), knoten([zeile()], { id: 'gid://shopify/Order/2', name: '#B' })], frischFolge: [{}, {}, {}, { cancelledAt: '2026-11-10T10:00:00Z' }] });
+    ist('Fund 1 Mehrere Bestellungen: jede wird einzeln frisch gelesen (zwei Lesungen je Bestellung); wird die ZWEITE zwischen Anlegen und Bestätigen storniert, bleibt nur ihr Entwurf liegen', [e1.prot.frisch, e1.prot.confirms.length, e1.prot.posts.length], [['gid://shopify/Order/1', 'gid://shopify/Order/1', 'gid://shopify/Order/2', 'gid://shopify/Order/2'], 1, 2]);
+  }
+
+  // ── Fund 2 und 23: nur BEKANNTE v5-Schlüssel gelten als v5; alles andere, was nach Druckdatei klingt, ist ein harter Befund
+  {
+    for (const k of ['🖼️ Druckdatei (Sleeve_left)', 'Rückseite Druckdatei', 'Druckdatei (sleeve_left)', '🖼️ Druckdatei (rücken)', 'Print file (back)', 'hinten druckdatei', '🖼️ Druckdatei (Sleeve-Left)']) {
+      const e = lauf(bestellt([zeile({ customAttributes: [A(k, V('x'))] })], { telegram: true }));
+      ist(`Fund 2/23 unbekannter Schlüssel «${k}»: KEIN Auftrag (früher: still als Vorderseite gedruckt und bestätigt), harter Befund «datei-schluessel», eine 🔴-Meldung, nichts abgerufen`, [...gesperrt(e), tags(e).includes('printful-review-datei-schluessel'), tgAnzahl(e), e.prot.dateien.length], [0, 0, true, 1, 0]);
+    }
+    for (const k of ['🖼️ Druckdatei', '🖼️ Druckdatei (Vorne)', 'Vorne · 🖼️ Druckdatei', 'Front · 🖼️ Print file', '🖼️ Print file (Front)']) {
+      const e = lauf(bestellt([zeile({ customAttributes: [A(k, V('x'))] })]));
+      ist(`Fund 2/23 bekannte v5-Schreibweise «${k}» wird weiter gelesen (Vorderseite), bestätigt`, [e.prot.posts.length, typenDerPosts(e), bestaetigt(e)], [1, [[['front']]], true]);
+    }
+  }
+
+  // ── Fund 3: Herkunft der Druckdatei: eigene Cloud unter /image/upload/, kein Port, kein /image/fetch/, Weiterleitungen werden nicht blind verfolgt
+  {
+    for (const [n, u] of [['fremde Cloudinary-Cloud', 'https://res.cloudinary.com/andere-cloud/image/upload/v1/x.png'], ['anderer Port', 'https://res.cloudinary.com:8443/dwyi6kkrl/image/upload/v1/x.png'], ['/image/fetch/ auf eine Fremdadresse', 'https://res.cloudinary.com/dwyi6kkrl/image/fetch/https%3A%2F%2Fevil.example%2Fx.png'], ['Rückstrich-Trick', 'https://res.cloudinary.com\\@evil.example/x.png'], ['video/upload statt image/upload', 'https://res.cloudinary.com/dwyi6kkrl/video/upload/v1/x.mp4']]) {
+      const e = lauf(bestellt([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', u)] })], { telegram: true }));
+      ist(`Fund 3 ${n}: harter Befund «datei-adresse», KEIN Auftrag, die Adresse wird nie abgerufen`, [...gesperrt(e), tags(e).includes('printful-review-datei-adresse'), e.prot.dateien.length, e.prot.kiDateien.length], [0, 0, true, 0, 0]);
+    }
+    const gross = lauf(bestellt([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', 'https://RES.Cloudinary.com/dwyi6kkrl/image/upload/v1/GROSS.png')] })]));
+    ist('Fund 3 Grossgeschriebener Host ist derselbe Host; abgerufen und gesendet wird die NORMALISIERTE Adresse (kleingeschriebener Host)', [gross.prot.posts[0].body.items[0].files[0].url, gross.prot.dateien[0].url], ['https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/GROSS.png', 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/GROSS.png']);
+    const zeig = lauf(bestellt());
+    ist('Fund 3 Jeder Kopf-Abruf der Druckdatei lässt Weiterleitungen nicht blind zu (redirect «manual»)', zeig.prot.dateien.every((d) => d.redirect === 'manual'), true);
+    const fremdRd = lauf(bestellt([zeile()], { datei: { weiterleitung: 'https://evil.example/x.png' } }));
+    ist('Fund 3 Die Datei leitet auf einen FREMDEN Host weiter: das Ziel wird nie abgerufen (nur die Ausgangsadresse), die Pixelgrösse ist nicht prüfbar → Entwurf «aufloesung», NICHT bestätigt', [fremdRd.prot.dateien.length, fremdRd.prot.dateien.some((d) => /evil/.test(d.url)), bestaetigt(fremdRd), tags(fremdRd).includes('printful-review-aufloesung')], [1, false, false, true]);
+    const eigenRd = lauf(bestellt([zeile()], { dateiPro: [{ match: 'Vorne', weiterleitung: V('zweit') }] }));
+    ist('Fund 3 Die Datei leitet auf eine ERLAUBTE Adresse weiter: sie wird verfolgt (zwei Abrufe, der zweite auf das Ziel), die Auflösung stimmt, bestätigt', [eigenRd.prot.dateien.map((d) => d.url), bestaetigt(eigenRd)], [[V('Vorne'), V('zweit')], true]);
+    const schleife = lauf(bestellt([zeile()], { datei: { weiterleitung: V('zweit'), weiterleitungImmer: true } }));
+    ist('Fund 3 Endlose Weiterleitung: nach höchstens drei Sprüngen Schluss (vier Abrufe), Auflösung nicht prüfbar → Entwurf', [schleife.prot.dateien.length, bestaetigt(schleife), tags(schleife).includes('printful-review-aufloesung')], [4, false, true]);
+  }
+
+  // ── Fund 4 und 21: die Dienst-Standort-Sperre greift auch, wenn die Fulfillment-Order unsichtbar, abgeschnitten oder der Standort unlesbar ist
+  {
+    const z1 = zeile();
+    const sicht = (fo) => lauf(bestellt([z1], { order: { fulfillmentOrders: fo }, telegram: true }));
+    const FO_OK = fos([z1]);
+    for (const [n, fo] of [
+      ['leere Liste (Token sieht die Order nicht)', { pageInfo: { hasNextPage: false }, edges: [] }],
+      ['Order nur für eine ANDERE Position', fos([zeile({ id: 'gid://shopify/LineItem/8888' })])],
+      ['Order ohne Standort', { pageInfo: { hasNextPage: false }, edges: [{ node: { id: 'f', status: 'OPEN', assignedLocation: null, lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { lineItem: { id: z1.id } } }] } } }] }],
+      ['Standort ohne Dienst-Flag', { pageInfo: { hasNextPage: false }, edges: [{ node: { id: 'f', status: 'OPEN', assignedLocation: { location: { id: 'l', name: 'x' } }, lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { lineItem: { id: z1.id } } }] } } }] }],
+      ['Order geschlossen (CLOSED)', { pageInfo: { hasNextPage: false }, edges: [{ node: { ...FO_OK.edges[0].node, status: 'CLOSED' } }] }],
+      ['Order storniert (CANCELLED)', { pageInfo: { hasNextPage: false }, edges: [{ node: { ...FO_OK.edges[0].node, status: 'CANCELLED' } }] }],
+      ['mehr Fulfillment-Orders als eine Abfrage liefert (hasNextPage)', { ...FO_OK, pageInfo: { hasNextPage: true } }],
+      ['eine Order mit mehr Positionen als eine Abfrage liefert', { ...FO_OK, edges: [{ node: { ...FO_OK.edges[0].node, lineItems: { ...FO_OK.edges[0].node.lineItems, pageInfo: { hasNextPage: true } } } }] }],
+    ]) {
+      const e = sicht(fo);
+      ist(`Fund 4/21 «${n}»: HARTER Befund «dienst-standort-unklar», KEIN Auftrag (kein Entwurf neben dem Auftrag der Printful-App), nicht als erledigt markiert, eine 🔴-Meldung`, [...gesperrt(e), tags(e).includes('printful-review-dienst-standort-unklar'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), e.prot.variantGets.length], [0, 0, true, false, 1, true, 0]);
+    }
+    const normal = lauf(bestellt([z1]));
+    ist('Fund 4/21 Gegenprobe: eine sichtbare, offene Order am Händler-Standort mit allen Seitenköpfen auf false → Auftrag, bestätigt', [normal.prot.posts.length, bestaetigt(normal)], [1, true]);
+    const geschlossenPlusOffen = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [{ node: { ...fos([z1], FO_DIENST).edges[0].node, status: 'CLOSED' } }, FO_OK.edges[0]] } } }));
+    ist('Fund 4/21 Eine GESCHLOSSENE Dienst-Order und eine offene Händler-Order für dieselbe Position: die geschlossene zählt nicht, Auftrag (hier braucht die Abfrage das Feld «status» der Order)', [geschlossenPlusOffen.prot.posts.length, bestaetigt(geschlossenPlusOffen)], [1, true]);
+    const dienstSichtbar = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [fos([z1], FO_DIENST).edges[0], { node: { id: 'f2', status: 'OPEN', assignedLocation: { location: { id: 'l', name: 'x' } }, lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: { lineItem: { id: z1.id } } }] } } }] } }, telegram: true }));
+    ist('Fund 4/21 Dienst-Order sichtbar UND eine zweite Order mit unlesbarem Standort für dieselbe Position: der Befund heisst «dienst-standort» (nicht nur «unklar»)', [tags(dienstSichtbar).includes('printful-review-dienst-standort'), tags(dienstSichtbar).includes('printful-review-dienst-standort-unklar')], [true, false]);
+
+    // Zugriffsrechte des Tokens
+    const sc = (scopes, extra = {}) => lauf(bestellt([z1], { scopes, telegram: true, ...extra }));
+    const rechteOk = sc(undefined);
+    ist('Fund 21 Rechte des Tokens beide da: eine Abfrage der Rechte, Log «beide Standortarten lesbar», normaler Lauf', [rechteOk.prot.scopeAbfragen, rechteOk.prot.log.some((l) => /beide Standortarten lesbar/.test(l)), bestaetigt(rechteOk)], [1, true, true]);
+    const ohneDrittanbieter = sc(['read_orders', 'read_merchant_managed_fulfillment_orders']);
+    ist('Fund 21 Dem Token fehlt read_third_party_fulfillment_orders (scharf): es wird KEINE Bestellung gelesen und nichts bearbeitet, Fehler nennt das Recht, Exit 1, Log sagt es', [ohneDrittanbieter.prot.shop.length, ...gesperrt(ohneDrittanbieter), ohneDrittanbieter.prot.err.some((x) => /read_third_party_fulfillment_orders/.test(x)), ohneDrittanbieter.prot.exitCode, ohneDrittanbieter.prot.log.some((l) => /nichts bearbeitet/.test(l)), ohneDrittanbieter.prot.tags.length], [0, 0, 0, true, 1, true, 0]);
+    const ohneHaendler = sc(['read_orders', 'read_third_party_fulfillment_orders']);
+    ist('Fund 21 Dem Token fehlt read_merchant_managed_fulfillment_orders: ebenso nichts bearbeitet, Exit 1', [ohneHaendler.prot.shop.length, ohneHaendler.prot.err.some((x) => /read_merchant_managed_fulfillment_orders/.test(x)), ohneHaendler.prot.exitCode], [0, true, 1]);
+    const trockenOhne = sc(['read_orders'], { env: { DRY_RUN: '1', PRINTFUL_LOG_DETAIL: '1' }, order: undefined });
+    ist('Fund 21 Im Trockenlauf wird trotz fehlendem Recht weiter gelesen (die Zusammenfassung soll zeigen, was geschähe), aber Exit 1 macht den Mangel sichtbar; kein Auftrag', [trockenOhne.prot.shop.length >= 1, ...gesperrt(trockenOhne), trockenOhne.prot.exitCode], [true, 0, 0, 1]);
+    const schreib = sc(['write_merchant_managed_fulfillment_orders', 'write_third_party_fulfillment_orders']);
+    ist('Fund 21 «write_» schliesst «read_» ein: beide write-Rechte genügen', [schreib.prot.err.length, bestaetigt(schreib)], [0, true]);
+    const nichtLesbar = sc(undefined, { scopesFehler: true });
+    ist('Fund 21 Die Rechte lassen sich nicht abfragen (GraphQL-Fehler): nur eine Notiz im Log, der Lauf geht weiter (die Sperre pro Position gilt trotzdem)', [nichtLesbar.prot.log.some((l) => /nicht abfragbar/.test(l)), nichtLesbar.prot.err.length, bestaetigt(nichtLesbar)], [true, 0, true]);
+    const hinweis = lauf(bestellt([z1], { order: { fulfillmentOrders: undefined }, scopes: ['read_orders', 'read_merchant_managed_fulfillment_orders'], env: { DRY_RUN: '1', PRINTFUL_LOG_DETAIL: '1' } }));
+    ist('Fund 21 Fehlt dem Token ein Recht, nennt der Befund «dienst-standort-unklar» es als mögliche Ursache (Trockenlauf mit Befundtexten im Log)', hinweis.prot.log.some((l) => /dem Token fehlt das Recht read_third_party_fulfillment_orders/.test(l)), true);
+  }
+
+  // ── Fund 5, 20 und 24: geschrieben wird nur bei ausdrücklichem DRY_RUN=0
+  {
+    const ohne = lauf(bestellt([zeile()], { telegram: true, envLoeschen: ['DRY_RUN'] }));
+    ist('Fund 5/20/24 DRY_RUN nicht gesetzt: TROCKENLAUF (kein POST, keine Tags, keine Meldung, «[DRY]» im Log), Exit 0', [ohne.prot.posts.length, ohne.prot.tags.length, ohne.prot.tg.length, ohne.prot.log.some((l) => /^\[DRY\] #T1/.test(l)), ohne.prot.exitCode], [0, 0, 0, true, 0]);
+    for (const v of ['', ' ', 'ON', '2', 'schreiben']) { const d = lauf(bestellt([zeile()], { env: { DRY_RUN: v } })); ist(`Fund 5/20/24 DRY_RUN=«${v}» gilt als Trockenlauf`, d.prot.posts.length, 0); }
+    for (const v of ['0', 'false', 'FALSE', ' no ', 'nein', 'off']) { const d = lauf(bestellt([zeile()], { env: { DRY_RUN: v } })); ist(`Fund 5/20/24 DRY_RUN=«${v}» schreibt`, d.prot.posts.length, 1); }
+  }
+
+  // ── Fund 6: Markierung VOR dem Anlegen; ein Lauf kurz darauf legt nichts neu an
+  {
+    const e = lauf(bestellt());
+    ist('Fund 6 Die Markierung «printful-anlegen-<Zeit>» steht VOR dem POST (Reihenfolge der Aufrufe am Shop und bei Printful) und trägt die Uhrzeit des Laufs (höchstens zwei Minuten alt)', [e.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}/, '<zeit>')), markenTags(e).length, Math.abs(Date.parse(markenTags(e)[0].replace(/^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})$/, '$1-$2-$3T$4:$5:00Z')) - Date.now()) < 120000], [['tags:printful-anlegen-<zeit>', 'POST'], 1, true]);
+    const jung = lauf(bestellt([zeile()], { order: { tags: [markeVor(10)] }, lookup: [{ status: 404 }], telegram: true }));
+    ist('Fund 6 Ein früherer Lauf hat vor 10 Minuten angefangen und Printful zeigt den Auftrag (noch) nicht: NICHTS neu angelegt, kein Tag, keine Meldung, kein Fehler, «wartet» in der Zusammenfassung', [...gesperrt(jung), jung.prot.tags.length, tgAnzahl(jung), jung.prot.exitCode, jung.prot.log.some((l) => /vor 10 Minuten angefangen/.test(l)), jung.prot.frisch.length], [0, 0, 0, 0, 0, true, 0]);
+    const grenze59 = lauf(bestellt([zeile()], { order: { tags: [markeVor(59)] } }));
+    ist('Fund 6 Eine Markierung von vor 59 Minuten sperrt noch', grenze59.prot.posts.length, 0);
+    const grenze61 = lauf(bestellt([zeile()], { order: { tags: [markeVor(61)] } }));
+    ist('Fund 6 Eine Markierung von vor 61 Minuten sperrt nicht mehr: der Auftrag wird angelegt (neue Markierung)', [grenze61.prot.posts.length, markenTags(grenze61).length], [1, 1]);
+    const zwei = lauf(bestellt([zeile()], { order: { tags: [markeVor(300), markeVor(5)] } }));
+    ist('Fund 6 Zählt die JÜNGSTE Markierung (eine alte und eine von vor 5 Minuten): gesperrt', zwei.prot.posts.length, 0);
+    const gefunden = lauf(bestellt([zeile()], { order: { tags: [markeVor(10)] }, lookup: [{ status: 200, order: { status: 'pending' } }] }));
+    ist('Fund 6 Zeigt Printful den Auftrag inzwischen (Nachfrage findet ihn), gilt das trotz junger Markierung: Tag printful-synced nachgetragen, kein zweiter Auftrag', [gefunden.prot.posts.length, tags(gefunden).includes('printful-synced')], [0, true]);
+    const verloren = lauf(bestellt([zeile()], { post: [{ status: 503 }], lookup: [{ status: 404 }] }));
+    ist('Fund 6 POST nicht quittiert und Nachfrage findet nichts: die Markierung steht (der nächste Lauf legt eine Stunde lang nichts neu an), Versuchszähler 1', [markenTags(verloren).length, tags(verloren).includes('printful-versuch-1'), verloren.prot.posts.length], [1, true, 1]);
+    const nochmal = lauf(bestellt([zeile()], { order: { tags: [...markenTags(verloren), 'printful-versuch-1'] }, post: [{ status: 503 }], lookup: [{ status: 404 }] }));
+    ist('Fund 6 …und ein Lauf unmittelbar danach (Markierung ist Sekunden alt) legt NICHT erneut an', gesperrt(nochmal), [0, 0]);
+    const nach = lauf(bestellt([zeile()], { post: [{ status: 503 }], lookup: [{ status: 404 }, { status: 404 }] }));
+    ist('Fund 6 Die Nachfrage nach einem nicht quittierten POST fragt nach DERSELBEN external_id, die gepostet wurde (die Attrappe kennt nach dem POST nur diese)', [nach.prot.pf.filter((x) => x.startsWith('GET /orders/@')), nach.prot.posts[0].body.external_id], [['GET /orders/@LXT1', 'GET /orders/@LXT1'], 'LXT1']);
+    const spaet = lauf(bestellt([zeile()], { post: [{ status: 503 }], lookup: [{ status: 404 }, { status: 200, order: { status: 'draft' } }] }));
+    ist('Fund 6 Die Nachfrage nach dem POST findet den Auftrag unter der gepostetenexternal_id: nichts doppelt, Tag printful-synced', [spaet.prot.posts.length, tags(spaet).includes('printful-synced')], [1, true]);
+  }
+
+  // ── Fund 8: unvollständige Entwürfe und fehlende Angaben sind nie «ok»
+  {
+    const mitItems = (items) => ({ entwurf: { items }, telegram: true });
+    const leer = lauf(bestellt([zeile()], mitItems([])));
+    ist('Fund 8 Der Entwurf nennt KEINEN Artikel (items []): nicht bestätigt, nach der Wartezeit Befund «datei-wartet» (leer) und «entwurf-abweichend»', [bestaetigt(leer), leer.prot.leseVor, tags(leer).includes('printful-review-datei-wartet'), tags(leer).includes('printful-review-entwurf-abweichend'), /keine einzige Datei/.test(leer.prot.tg[0] || '')], [false, 7, true, true, true]);
+    const keineDateien = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 1 }])));
+    ist('Fund 8 Der Artikel hat keine files (Printful hat noch nichts angehängt): nicht bestätigt, «datei-wartet», sieben Lesungen', [bestaetigt(keineDateien), keineDateien.prot.leseVor, tags(keineDateien).includes('printful-review-datei-wartet')], [false, 7, true]);
+    const nurVorschau = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 1, files: [{ type: 'preview', status: 'ok' }] }])));
+    ist('Fund 8 Nur eine Vorschau-Datei zählt nicht als Datei: nicht bestätigt, «datei-wartet»', [bestaetigt(nurVorschau), tags(nurVorschau).includes('printful-review-datei-wartet')], [false, true]);
+    const falscheVar = lauf(bestellt([zeile()], mitItems([{ variant_id: 999, quantity: 1, files: [{ type: 'front', status: 'ok' }, { type: 'preview', status: 'ok' }] }])));
+    ist('Fund 8 Printful nennt eine ANDERE Variante als gesendet (999 statt 4025): nicht bestätigt, Befund «entwurf-abweichend» nennt beide Zahlen', [bestaetigt(falscheVar), tags(falscheVar).includes('printful-review-entwurf-abweichend'), /999/.test(falscheVar.prot.tg[0] || ''), /4025/.test(falscheVar.prot.tg[0] || '')], [false, true, true, true]);
+    const falscheMenge = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 2, files: [{ type: 'front', status: 'ok' }] }])));
+    ist('Fund 8 Printful nennt eine andere Menge (2 statt 1): nicht bestätigt, «entwurf-abweichend»', [bestaetigt(falscheMenge), tags(falscheMenge).includes('printful-review-entwurf-abweichend')], [false, true]);
+    const falscherTyp = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 1, files: [{ type: 'back', status: 'ok' }] }])));
+    ist('Fund 8 Printful führt eine andere Platzierung (back statt front): nicht bestätigt, «entwurf-abweichend»', [bestaetigt(falscherTyp), tags(falscherTyp).includes('printful-review-entwurf-abweichend')], [false, true]);
+    const zweiArtikel = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 1, files: [{ type: 'front', status: 'ok' }] }, { variant_id: 4025, quantity: 1, files: [{ type: 'front', status: 'ok' }] }])));
+    ist('Fund 8 Printful nennt zwei Artikel statt einem: nicht bestätigt, «entwurf-abweichend»', [bestaetigt(zweiArtikel), tags(zweiArtikel).includes('printful-review-entwurf-abweichend')], [false, true]);
+    const gleich = lauf(bestellt([zeile()], mitItems([{ variant_id: 4025, quantity: 1, files: [{ type: 'front', status: 'ok' }, { type: 'preview', status: 'ok' }] }])));
+    ist('Fund 8 Gegenprobe: derselbe Entwurf mit Variante, Menge und Typ wie gesendet (plus Vorschau): bestätigt', [bestaetigt(gleich), hatReview(gleich)], [true, false]);
+    for (const [n, costs] of [['ohne Währung', { total: '12.70', tax: '0.95' }], ['Währung leer', { currency: '', total: '12.70', tax: '0.95' }], ['Summe als Hexzahl «0x10»', { currency: 'USD', total: '0x10', tax: '0.95' }], ['Summe «1e1»', { currency: 'USD', total: '1e1' }], ['Summe 0.001 USD (nicht plausibel)', { currency: 'USD', total: '0.001', tax: '0' }], ['Summe als Array', { currency: 'USD', total: ['12.70'] }]]) {
+      const e = lauf(bestellt([zeile()], { entwurf: { costs }, telegram: true }));
+      ist(`Fund 8 Kosten ${n}: NICHT bestätigt, Befund «kosten-unbekannt»`, [bestaetigt(e), tags(e).includes('printful-review-kosten-unbekannt')], [false, true]);
+    }
+  }
+
+  // ── Fund 9: ein schon vorhandener Printful-Auftrag mit unserer external_id muss zu DIESER Bestellung passen
+  {
+    const fremd = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', recipient: { name: 'FREMDE PERSON', zip: '10115', country_code: 'DE' } } }], telegram: true }));
+    ist('Fund 9 Vorhandener Auftrag mit FREMDEM Empfänger (wiederverwendete Bestellnummer): die Bestellung gilt NICHT als erledigt (kein Tag printful-synced, kein Metafeld), harter Befund «vorhanden-fremd», eine 🔴-Meldung, nichts angelegt', [...gesperrt(fremd), tags(fremd).includes('printful-synced'), tags(fremd).includes('printful-review-vorhanden-fremd'), fremd.prot.mf.length, tgAnzahl(fremd), /🔴/.test(fremd.prot.tg[0] || ''), /Name des Empfängers/.test(fremd.prot.tg[0] || ''), /FREMDE/.test(fremd.prot.tg.join(' '))], [0, 0, false, true, 0, 1, true, true, false]);
+    const anderePlz = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', recipient: { name: 'T', zip: '8000', country_code: 'CH' } } }] }));
+    ist('Fund 9 Dieselbe Person, andere PLZ: ebenfalls «vorhanden-fremd»', [tags(anderePlz).includes('printful-review-vorhanden-fremd'), tags(anderePlz).includes('printful-synced')], [true, false]);
+    const anderesLand = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', recipient: { name: 'T', zip: '4000', country_code: 'DE' } } }] }));
+    ist('Fund 9 Anderes Land: «vorhanden-fremd»', tags(anderesLand).includes('printful-review-vorhanden-fremd'), true);
+    const andereMenge = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', items: [{ quantity: 7 }] } }] }));
+    ist('Fund 9 Andere Stückzahl (7 statt 1): «vorhanden-fremd»', [tags(andereMenge).includes('printful-review-vorhanden-fremd'), tags(andereMenge).includes('printful-synced')], [true, false]);
+    const ohneEmpfaenger = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', recipient: null } }] }));
+    ist('Fund 9 Der Empfänger des vorhandenen Auftrags ist nicht lesbar: «vorhanden-fremd» (nie still erledigt)', tags(ohneEmpfaenger).includes('printful-review-vorhanden-fremd'), true);
+    const ohneArtikel = lauf(bestellt([zeile()], { lookup: [{ status: 200, order: { status: 'pending', items: null } }] }));
+    ist('Fund 9 Die Artikel des vorhandenen Auftrags sind nicht lesbar: «vorhanden-fremd»', tags(ohneArtikel).includes('printful-review-vorhanden-fremd'), true);
+    const reihenfolge = lauf(bestellt([zeile()], { order: { shippingAddress: { name: 'Max Muster', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' } }, lookup: [{ status: 200, order: { status: 'pending', recipient: { name: 'Muster, MAX', zip: '4000', country_code: 'ch' } } }] }));
+    ist('Fund 9 Gegenprobe: Name in anderer Reihenfolge/Schreibung und Land klein geschrieben passt: erledigt (Tag printful-synced), kein Befund', [tags(reihenfolge).includes('printful-synced'), hatReview(reihenfolge)], [true, false]);
+    const doppel = lauf(bestellt([zeile({ quantity: 2, currentQuantity: 2 })], { lookup: [{ status: 200, order: { status: 'pending', items: [{ quantity: 2 }] } }] }));
+    ist('Fund 9 Gegenprobe: Menge 2 bestellt, Menge 2 bei Printful: passt', [tags(doppel).includes('printful-synced'), hatReview(doppel)], [true, false]);
+  }
+
+  // ── Fund 14: der Deckel «MAX Bestellungen je Lauf» hält auch, wenn eine Seite mehr liefert
+  {
+    const pod = (n) => knoten([zeile()], { id: 'gid://shopify/Order/' + n, name: '#P' + n });
+    const m = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: [{ orders: [pod(1), pod(2), pod(3), pod(4), pod(5)] }], env: { MAX: '2' } });
+    ist('Fund 14 Fünf POD-Bestellungen auf EINER Seite, MAX=2: genau die ersten zwei werden bearbeitet (nicht fünf)', [m.prot.posts.map((p) => p.body.external_id), m.prot.shop.length], [['LXP1', 'LXP2'], 1]);
+  }
+
+  // ── Fund 22: ein Editor-Produkt druckt nie das Muster aus dem Metafeld (siehe auch oben bei den Fertig-Produkten)
+}
+
+// ── Fund 13: Feldtreue. Die Attrappe liefert nur die Felder, die die Abfrage NENNT. Jedes Feld, das der Kleber braucht, muss darum in der Abfrage stehen; diese Szenarien machen jedes Feld unverzichtbar
+{
+  const vollAdresse = { name: 'Max Muster', firstName: 'Max', lastName: 'Muster', address1: 'Weg 1', address2: '2. Stock', city: 'Basel', provinceCode: 'BS', countryCodeV2: 'CH', zip: '4000', phone: '+41 61 000 00 00' };
+  const e = lauf(sz1([zeile()], { order: { email: 'kundin@example.ch', shippingAddress: vollAdresse } }));
+  ist('Fund 13 Feldtreue: der Empfänger an Printful trägt jedes Adressfeld und die E-Mail aus der Bestellung', e.prot.posts[0] && e.prot.posts[0].body.recipient, { name: 'Max Muster', address1: 'Weg 1', address2: '2. Stock', city: 'Basel', state_code: 'BS', country_code: 'CH', zip: '4000', email: 'kundin@example.ch', phone: '+41 61 000 00 00' });
+  const ohneName = lauf(sz1([zeile()], { order: { shippingAddress: { ...vollAdresse, name: undefined } } }));
+  ist('Fund 13 Feldtreue: ohne «name» setzt sich der Empfängername aus Vor- und Nachname zusammen', ohneName.prot.posts[0] && ohneName.prot.posts[0].body.recipient.name, 'Max Muster');
+
+  const viele = lauf(sz1([zeile()], { order: { lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: zeile() }] } }, telegram: true }));
+  ist('Fund 13 Feldtreue: mehr Positionen, als eine Abfrage liefert (pageInfo.hasNextPage der Positionsliste) → harter Befund «positionen-viele», kein Auftrag', [viele.prot.posts.length, tags(viele).includes('printful-review-positionen-viele')], [0, true]);
+
+  const widerspruch = lauf(sz1([zeile({ sku: '5599797_4025', variant: { sku: '5599797_999' } })]));
+  ist('Fund 13 Feldtreue: SKU der Position (4025) und SKU der Variante (999) werden beide gelesen: weicher Befund «sku-widerspruch», es gilt die der Position', [tags(widerspruch).includes('printful-review-sku-widerspruch'), widerspruch.prot.posts[0] && widerspruch.prot.posts[0].body.items[0].variant_id], [true, 4025]);
+
+  const nurVariante = lauf(sz1([zeile({ sku: null, variant: { sku: '5599797_4025' } })]));
+  ist('Fund 13 Feldtreue: ohne SKU an der Position gilt die der Variante (Rückfall)', nurVariante.prot.posts[0] && nurVariante.prot.posts[0].body.items[0].variant_id, 4025);
+
+  const teil = lauf(sz1([zeile({ quantity: 2, currentQuantity: 1 })], { env: { PRINTFUL_MIN_NETTO_CHF: '20' } }));
+  ist('Fund 13 Feldtreue: bei teilweise entfernter Position (2 bestellt, 1 übrig) zählt nur der anteilige Umsatz (24.95 statt 49.90): der Gewinn liegt unter dem Mindestgewinn 20 → Befund «kosten», nicht bestätigt', [bestaetigt(teil), tags(teil).includes('printful-review-kosten'), teil.prot.posts[0] && teil.prot.posts[0].body.items[0].quantity], [false, true, 1]);
+  const ganz = lauf(sz1([zeile({ quantity: 2, currentQuantity: 2 })], { env: { PRINTFUL_MIN_NETTO_CHF: '20' } }));
+  ist('Fund 13 Feldtreue: Gegenprobe: nichts entfernt (2 von 2) → voller Umsatz, Gewinn über 20, bestätigt', [bestaetigt(ganz), ganz.prot.posts[0] && ganz.prot.posts[0].body.items[0].quantity], [true, 2]);
+
+  const fertig = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'T-Shirts', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } } })]));
+  ist('Fund 13 Feldtreue/Fund 22: Fertigware (nur Tag printful_personalized_product) druckt das Motiv aus dem Produkt-Metafeld custom.print_file (auf die Vorderseite des T-Shirts, Typ «front» laut Dateiliste)', fertig.prot.posts[0] && fertig.prot.posts[0].body.items[0].files, [{ type: 'front', url: 'https://bilder.luxestyle.ch/motiv.png' }]);
+  const editorMf = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'T-Shirts', tags: ['wunschdesign'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } } })], { telegram: true }));
+  ist('Fund 22: ein Editor-Produkt (Tag wunschdesign) druckt NIE das Metafeld-Muster: ohne Design der Kundin harter Befund «keine-druckdatei», kein Auftrag', [editorMf.prot.posts.length, tags(editorMf).includes('printful-review-keine-druckdatei')], [0, true]);
+
+  // Markierung scheitert: nichts angelegt
+  const markFehlt = lauf(sz1([zeile()], { tagFehler: 'userErrors', tagFehlerAb: 0, telegram: true }));
+  ist('Fund 6: lässt sich die Markierung vor dem Anlegen nicht setzen, wird NICHTS angelegt, Fehler «Markierung vor dem Anlegen nicht gesetzt», Exit 1', [markFehlt.prot.posts.length, markFehlt.prot.err.some((x) => /Markierung vor dem Anlegen nicht gesetzt/.test(x)), markFehlt.prot.exitCode], [0, true, 1]);
+
+  // Knoten-ID der frischen Lesung passt nicht
+  const fremdeId = lauf(sz1([zeile()], { frischFolge: [{ id: 'gid://shopify/Order/999' }] }));
+  ist('Fund 1: die frisch gelesene Bestellung trägt eine andere ID → «unlesbar»: nichts angelegt, Versuchszähler, Exit 1', [fremdeId.prot.posts.length, tags(fremdeId), fremdeId.prot.exitCode], [0, ['printful-versuch-1'], 1]);
+  const ohneTags = lauf(sz1([zeile()], { frischFolge: [{ tags: null }] }));
+  ist('Fund 1: die frische Lesung trägt kein Feld «tags» → «unlesbar»: nichts angelegt, Exit 1, der Versuchszähler steht (kein „unerwarteter Fehler“ durch eine Ausnahme)', [ohneTags.prot.posts.length, ohneTags.prot.exitCode, tags(ohneTags), ohneTags.prot.err.some((x) => /unerwarteter Fehler/.test(x))], [0, 1, ['printful-versuch-1'], false]);
+  const ohneTagsSpaet = lauf(sz1([zeile()], { frischFolge: [{}, { tags: null }] }));
+  ist('Fund 1: …beim zweiten Lesen (vor dem Bestätigen) ohne «tags» geht es trotzdem weiter (das Feld wird dort nicht gebraucht), bestätigt', bestaetigt(ohneTagsSpaet), true);
+  const leseNullTest = lauf(sz1([zeile()], { frischFolge: [{ test: null }] }));
+  ist('Fund 1: fehlt in der frischen Lesung das Feld «test», ist das unlesbar: nichts angelegt, Versuchszähler statt Ausnahme', [leseNullTest.prot.posts.length, leseNullTest.prot.exitCode, tags(leseNullTest), leseNullTest.prot.err.some((x) => /unerwarteter Fehler/.test(x))], [0, 1, ['printful-versuch-1'], false]);
+
+  // Fund 21: die Rechte-Abfrage im Trockenlauf bringt Exit 1, aber der Lauf liest weiter und legt nichts an
+  const trockenRecht = lauf(sz1([zeile()], { scopes: ['read_orders'], env: { DRY_RUN: '1' } }));
+  ist('Fund 21: im Trockenlauf mit fehlendem Recht wird weiter gelesen (Zusammenfassung), aber nichts angelegt', [trockenRecht.prot.shop.length >= 1, trockenRecht.prot.posts.length, trockenRecht.prot.log.some((l) => /\[DRY\] #T1/.test(l))], [true, 0, true]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);
