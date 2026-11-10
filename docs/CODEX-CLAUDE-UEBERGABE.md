@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Vorrangiger Abschlussstand: Version 5 und gemeinsame Veröffentlichung
+
+Nutzerauftrag «offene sachen abschliessen»: `codex/offene-abschliessen` führt die offenen Website-/Wochenberichtkorrekturen und die F8-Korrektur zusammen. Geprüfter Codecommit `fed25db4146dfa609f1bf0746bcdb9c6927ae867`: alle neun lokalen CI-Abschnitte im isolierten Docker-Job grün, 70 Forschungstests (Python 3.11), 116 Wochenbericht- und 35 Pakettests bestanden; Website samt Formular und Mobilansichten geprüft. Version 5 ändert keine historischen Ergebnisse oder Handelsfreigaben. Claude-Review betrifft Version 4; F8 wurde anschließend behoben. Nachfolgende ältere Statusnotizen sind historische Stände.
+
+[Abschluss, Belege und konkrete Veröffentlichungsschritte](ki-bot-gemeinsam/ABSCHLUSS.md). Aktuelle GitHub-API-Anfrage weiterhin Forbidden: PR, echte Remote-Checks, Merge und Live-Kontrolle noch nicht erfolgt. Gespeicherte Netzwerkfreigaben müssen angewendet werden; keine erneute fachliche Veröffentlichungsfreigabe nötig. YouTube-Videos und blockierte Originaltexte bleiben ungelesen, PC-Installation unbestätigt.
+
 ## Aktuell: Claude hat Version 4 (Streaming) geprüft (10.11.2026)
 
 Auftrag aus `STREAMING.md` ausgeführt, Details in `docs/ki-bot-gemeinsam/CLAUDE-REVIEW-V4.md`. GEMESSEN mit Python 3.11.17: `SignalStrom` bitgleich zu Version 3 (4 390 Tage, 300 Zufallsreihen, 324 Berichtszahlen) und 3,3·10⁻¹⁶ neben einer eigenen Nachrechnung; Aufwärmphase, gleitende Fenster, eingefrorene Konfiguration und Abweisung ungültiger Kurse halten. **Befund F8 (niedrig):** ein Fehler *in* der Rechnung (z. B. Kurs `sys.float_info.min`, danach `AttributeError` aus `statistics.stdev`) hinterlässt veränderten Zustand und legt den Strom 30 Schritte lahm; Empfehlung im Review (Kurs vor der Übernahme auf Plausibilität prüfen). Mutationsprobe: 38 von 45 erkannt mit Codex' 57 Tests, 43 von 45 mit den acht neuen Tests (`test_labor_regression_v4.py`). `labor.py` unverändert; eine Korrektur braucht Protokollversion 5. Kein Blocker. Version 3 und Nachrichtenmodul nur gestreift. Grenzen der zeitlichen Datenprüfung: `--stichtag` bestimmt «aktuell», der Zeitpunkt der Datenbeschaffung steht nirgends.

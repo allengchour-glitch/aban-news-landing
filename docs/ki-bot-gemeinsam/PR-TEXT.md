@@ -1,0 +1,11 @@
+Die noch unveröffentlichten Korrekturen für die Abannews-Website und den Krypto-Wochenbericht werden mit dem bearbeiteten Claude-BefundF8 zusammengeführt.
+
+Das Newsletter-Formular prüft E-Mail und Pflicht-Einwilligung auch ohne JavaScript; nach Rückkehr bleibt der Knopf bedienbar. Social-PNG/Favicons, mobile Footer- und Lesedarstellung sowie ein für Screenreader verborgener Link sind korrigiert. Der Archivgenerator erhält die Darstellungs-/PNG-Korrekturen dauerhaft.
+
+Der Wochenbericht bleibt bei optionalen Logbüchern mit falscher JSON-Grundstruktur lesbar und nennt die Datenlücke. Sein bestehender Test wird in den vorhandenen Krypto-Paket-Prüflauf aufgenommen.
+
+Im getrennten Forschungslabor konnte ein endlicher Extremkurs den Streaming-Zustand beschädigen. Version5 prüft breite numerische Grenzen vor der Übernahme und berechnet auf einer Kopie; Fehler lassen Historie und Zähler unverändert. Handelsstrategie, Echtgeld, Broker, Konten und Not-Aus sind unverändert. Alle36 historischen Ergebnisfälle bleiben gleich. Claudes unabhängiges Review für Version4 und seine zusätzlichen Tests sind übernommen; für Version5 wird keine erneute unabhängige Freigabe behauptet.
+
+Validierung auf Code-Commit `fed25db4146dfa609f1bf0746bcdb9c6927ae867`: alle neun Abschnitte des CI-Jobs `tests` mit dessen Sparse-Dateisatz lokal im frischen, netzlosen Container bestanden (Node22/Python3.12), alle70 Forschungsprüfungen in Python3.11,116 Wochenbericht- und35 Paketbauprüfungen bestanden. Website-HTML ohne Fehler/Warnungen, interne Links und Browser bei320/390/1280px, Formular mit/ohne JavaScript geprüft; externe Anfragen abgefangen, keine echte Anmeldung. Archivgenerator mit erfundener Beispielausgabe im Speicher geprüft.
+
+Das neue Container-Prüfwerkzeug dient nur dem reproduzierbaren lokalen Nachweis. Kein neuer Workflow oder Publisher; im bestehenden Paket-Workflow nur ein zusätzlicher Testaufruf. Das Originalskript zur CI-Simulation bleibt in dieser Cloud an Hostrechten gebunden; der gleiche Job wurde alternativ isoliert geprüft. Remote-CI, Merge, Website-Deployment und tatsächlicher PC-Updatestand müssen nach Herstellung des API-Zugriffs bestätigt werden.
