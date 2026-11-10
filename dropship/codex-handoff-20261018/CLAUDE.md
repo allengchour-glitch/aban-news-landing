@@ -432,3 +432,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Receipt bleibt `unknown_no_claude_receipt`. R170 nicht als von Claude empfangen oder ausgeführt bezeichnen.
 5. Nächster zulässiger Schritt: Artefakt erst in einer legitimen authentifizierten Sitzung lesen und nur bei ausdrücklicher LuxeStyle-/Branch-/Revision-/Commit-Bindung als Receipt dokumentieren. Keine Zugangsdaten im Chat anfordern.
 6. Keine Plattformwrites oder neue Automation. Belege `CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md/.json`.
+
+## R172 – Abendpaket, Planungslücken und derselbe Master
+
+[LUXESTYLE_R172_20261110]
+
+1. Identitäten PASS: LuxeStyle/luxestyle.ch/CHF/Schweiz; Metricool6227837/Europe-Zurich; Instagram/Threads/TikTok luxestyle.ch, Facebook1049840534888592, Pinterest luxestyleCH, YouTube UCSfCEYjAsdOyYxyfTClXRZA.
+2. Plan10.–18.11.:66 Objekte/84 Zustände;62 aktive/79 aktive Zustände,4 Draftobjekte/5 Zustände.12 fällige Zustände PUBLISHED,0 FAILED.15.11. Pinterest/YT fehlen;16.–18.11. alle sechs fehlen. Vier Knoblauchhacker-Drafts18.11. bleiben Draft/Auto aus und zählen nicht.0 Writes.
+3. Kennzahlen aus R165 nicht erneut gelesen. Klaviyo R165/R166 wiederverwendet; genau ein Vorschlag: Vse76a-IDs frisch binden, Mail-3-Platzhalter und Mail-2-Rabattclaim entfernen, Flow DRAFT lassen. Keine Sendung/Aktivierung.
+4. Projektorvideo `gid://shopify/Video/77496185356679`, Exporthash `9ccfdc1b…65795`,852×480/25fps. Aktuelle Varianten A–G und echtes Bild gebunden; konkrete Filmvariante/Einheit, native Hochkanttakes, Rechte, Musik-Endabnahme, finale MP4 und Ledger fehlen. Master bleibt Storyboard.
+5. Futterspenderclaim-Drift exakt belegt. Enger Restoration-Diff auf R166-Stand liegt zur Inhaberfreigabe vor; Schutzfelder erhalten. Kein Produktwrite.
+6. Paket `CONTENT-VERKAUFSPAKET-20261110-R172.md/.json`.08/14/19 unverändert; Receipt `unknown_no_claude_receipt`; keine neue Automation.

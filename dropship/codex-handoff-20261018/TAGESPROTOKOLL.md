@@ -1939,3 +1939,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Shopify-, Metricool-, Klaviyo-, Merchant-, Feed-, CJ-, DNS-, Theme-, Ads-, Budget-, Rabatt-, Kunden-, Social- oder Renderaktion | 08/14/19 unverändert; keine neue Automation |
 
 [LUXESTYLE_R171_20261110] [Bericht](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md) · [Beleg](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.json).
+
+### R172
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Tagesgrenze | R171, Projektgedächtnis, Übergabe und denselben10.11.-Tagesblock gelesen | R165-Metricool-Kennzahlen, R165/R166-Klaviyo, R162-GSC und breite Verkaufsdaten nicht wiederholt; Kauf-Watch beendet |
+| Identitäten | Shopify und Metricool samt sechs Kanälen frisch gebunden | LuxeStyle/luxestyle.ch/CHF/Schweiz und brandId6227837/Europe-Zurich vollständig passend; andere Marke ignoriert |
+| Metricool-Planung | 10.–18.11. in kleinen Tagesfenstern gelesen; Zustände, Drafts, Medien, Doppel und Kollisionen geprüft |66 Objekte/84 Zustände;62 aktiv/79 aktive Zustände,4 Drafts/5 Zustände;12 PUBLISHED/72 PENDING/0 FAILED; Lücken15.11 Pinterest/YT und16.–18.11 alle Kanäle;0 Writes |
+| Kennzahlen | Heutige R165-IDs/-Teilreihen wiederverwendet | Fehlende Tage unknown; keine kanalübergreifende Rate und keine Verkaufsableitung |
+| Produkte | Projektor und Futterspender gezielt auf Status, Preis, Varianten, Medien, Kaufbarkeit, Inventory, Tags, Publikationen geprüft | Beide ACTIVE/HTTP200/kaufbar/untracked-CONTINUE-Menge0; keine Bestands-/Lieferzeitzusage;0 Writes |
+| Master / Rechte | Aktuelles Shopify-Video an GID/Exporthash gebunden; Bild, historische Referenz und Pflichtmusik geprüft; denselben18s-Master präzisiert | Aktuelles Video852×480/25fps; A–G-/Einheiten-/Rechte-/native-Take-/Musikabnahme-/MP4-/Ledger-Gates offen; nur Storyboard,0 Render/Upload/Social |
+| Content | Zwei Hooks, exakter18s-Schnittplan, deutsche Overlays, sechs Kanaltexte und UTMs fortgeführt | Instagram/TikTok als Link-in-Bio; YouTube-/Pinterest-Gates erhalten; keine Terminierung |
+| Klaviyo | R165/R166-Belege wiederverwendet und einen engen Vse76a-Vorschlag erstellt | USD/CHF getrennt; XEGbTB LIVE, Vse76a/VbLQj6/RnTvsY DRAFT; keine zweite Abfrage, kein Write/Send |
+| Verkaufsaktion | Aktuellen Futterspenderclaim-Drift gegen R166 gebunden und exakten Restoration-Diff vorbereitet | Automatik-/Edelstahl-/2.2kg-Claims würden entfernt; Schutzfelder erhalten; zur Freigabe, nicht ausgeführt |
+| Dokumentation / Grenzen | R172-Paket, Maschinenbeleg und kanonische Übergabe additiv fortgeführt | Revision172 vorgesehen;0 Plattformwrites/neue Automation; Receipt unbekannt |
+
+[LUXESTYLE_R172_20261110] [Paket](CONTENT-VERKAUFSPAKET-20261110-R172.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261110-R172.json).

@@ -1506,3 +1506,13 @@ Der Inhaberlink `https://claude.ai/code/artifact/db0c6aa6-d997-44ef-a8d1-b0236a6
 Das widersprüchliche strukturierte Feld `explicitReceipt=true` wurde wegen unzugänglichem Inhalt, leerem Zitat und leeren Identitätsfeldern verworfen. Receipt bleibt `unknown_no_claude_receipt`; Revision170 bleibt fachlich unverändert. Keine externen oder operativen Writes. Belege `CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md/.json`.
 
 [LUXESTYLE_R171_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 172: Content-/Verkaufspaket am Abendlauf
+
+LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/Europe-Zurich samt sechs erwarteten Kanälen frisch PASS. Planung10.–18.11.:66 Objekte/84 Kanalzustände, davon62 aktive/79 aktive Zustände und vier Drafts/fünf Zustände am18.11.;12 fällige Zustände kanalweise `PUBLISHED`,0 `FAILED`,0 erkannte exakte kanalgleiche Text-/Medien-Doppel oder Zeitkollisionen. Aktive Lücken:15.11. Pinterest/YouTube;16.–18.11. alle sechs Kanäle. Drafts sind keine Abdeckung.0 Writes.
+
+Projektor15521256604033 ACTIVE/kaufbar; aktuelle Varianten A–G68122445283719–68122445480327, CHF34.90–51.90, untracked/CONTINUE/Menge0. Aktuelles Shopify-Video GID77496185356679, Exporthash `9ccfdc1b…65795`,852×480/25fps; Referenzfamilie passend, konkrete A–G-/Einheiten-/Rechtebindung fehlt. Derselbe18s-/540-Frame-Master wurde als Storyboard weitergeführt; keine professionelle MP4. Futterspender15523986473345 ACTIVE/CHF96.90, aber unbelegte Automatik-/Edelstahl-/2.2kg-Claims erneut live; exakter claim-sicherer Restoration-Diff vorbereitet, nicht geschrieben.
+
+R165-Kennzahlen und R165/R166-Klaviyo aus Tagesgründen wiederverwendet. Einziger Flowvorschlag: Vse76a aktuell binden und Platzhalter/Rabattclaim eng entfernen, DRAFT erhalten. Keine Verkäufe aus Kennzahlen abgeleitet. Belege `CONTENT-VERKAUFSPAKET-20261110-R172.md/.json`; Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R172_20261110]

@@ -2110,3 +2110,15 @@ Damit ist keine Claude-Kenntnisnahme belegt. Receipt bleibt `unknown_no_claude_r
 [R171 Bericht](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md) · [Maschinenbeleg](CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.json).
 
 [LUXESTYLE_R171_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 172: Abendpaket ohne Qualitätsabkürzung
+
+Shopify und Metricool wurden frisch und vollständig als LuxeStyle gebunden. Die Planung 10.–18.11. enthält 66 Objekte/84 Kanalzustände:62 aktive Objekte/79 aktive Zustände, vier Entwürfe/fünf Zustände und12 bereits fällige kanalweise `PUBLISHED`-Zustände ohne gelieferten Fehler. Aktive Abdeckung endet am15.11.; Pinterest/YouTube fehlen dort,16.–18.11. fehlen alle sechs Kanäle. Die vier Knoblauchhacker-Entwürfe am18.11. zählen nicht und bleiben mangels Produkt-/Rechte-/Audio-/Qualitätsnachweis gesperrt.0 Metricool-Writes.
+
+Das aktuelle Shopify-Projektorvideo wurde an GID `gid://shopify/Video/77496185356679` und CDN-Export SHA-256 `9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795` gebunden. Es zeigt passende Produktfamilie/Bedienung/Projektion, ist aber nur852×480/25fps, keiner aktuellen A–G-Ausführung zugeordnet und ohne kommerziellen Rechtebeleg. Der18s-Master bleibt ein präzises Storyboard, keine MP4. R165-Kennzahlen und R165/R166-Klaviyo wurden nicht wiederholt.
+
+Genau eine Verkaufsaktion liegt zur Freigabe vor: den erneut gedrifteten Futterspender-Body/SEO auf den R166-claim-sicheren Stand zurücksetzen; Produkt-/Varianten-ID, SKU, CHF96.90, Medien, Tags, Inventory und Publikationen erhalten. Einziger Klaviyo-Vorschlag: Vse76a aktuell binden, Mail-3-Platzhalter und unbelegten Mail-2-Rabattclaim entfernen, Flow DRAFT lassen. Keine Plattformwrites, Sendungen, Renders oder neue Automation; Receipt `unknown_no_claude_receipt`.
+
+[R172 Paket](CONTENT-VERKAUFSPAKET-20261110-R172.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R172.json).
+
+[LUXESTYLE_R172_20261110]
