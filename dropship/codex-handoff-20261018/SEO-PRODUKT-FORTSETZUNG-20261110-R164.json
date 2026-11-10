@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "marker": "[LUXESTYLE_R164_20261110]",
+  "revision": 164,
+  "observedAt": "2026-11-10T08:02:00+01:00",
+  "shopIdentity": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "verified": true
+  },
+  "product": {
+    "id": "gid://shopify/Product/15450832961921",
+    "title": "Intelligenter Rollball für Katzen",
+    "handle": "intelligenter-rollball-fur-katzen-776896",
+    "status": "ACTIVE",
+    "publicUrl": "https://luxestyle.ch/products/intelligenter-rollball-fur-katzen-776896",
+    "before": {
+      "seoDescriptionHadWelcome10": true,
+      "bodyHadUnboundClaims": [
+        "Bionische Bewegung",
+        "Hindernisvermeidung",
+        "43 mm",
+        "80 mAh",
+        "40 g",
+        "10–20 Werktage"
+      ],
+      "bodyHadEnglishExpression": "Smart-Modus"
+    },
+    "after": {
+      "seoTitle": "Intelligenter Rollball für Katzen | LuxeStyle CH",
+      "seoDescription": "Intelligenter Rollball für Katzen in Grün oder Pink und mehreren Stückzahlen. Verfügbare Ausführungen und aktuelle Preise bei LuxeStyle ansehen.",
+      "bodyScope": "verified_variant_colours_quantities_and_packaging_only",
+      "adminReadback": "PASS",
+      "publicReadback": {
+        "http": 200,
+        "h1Exact": true,
+        "titleExact": true,
+        "metaExact": true,
+        "selfCanonical": true,
+        "noindex": false
+      }
+    },
+    "protectedReadback": {
+      "variantCount": 19,
+      "mediaCount": 20,
+      "publicationCount": 8,
+      "allPublicationsPublished": true,
+      "untrackedContinueAvailableVariants": 18,
+      "trackedDenyUnavailableVariants": 1,
+      "idsSkusPricesInventoryMediaAndTagsPreserved": true,
+      "socialBlocker": "rueckhol-0907"
+    },
+    "merchantImageBlocker": {
+      "variantId": "gid://shopify/ProductVariant/55889732862337",
+      "sku": "CJ-CJJT149562611KP",
+      "variantTitle": "3 Stück Pink Englisch Verpackung-USB",
+      "priceCHF": "26.90",
+      "issueFrom20261108Csv": "Promotional overlay on image",
+      "variantMediaCount": 0,
+      "featuredImageSha256": "70cdeed0b98ade052b050a1fdba964bf7435d5a14f8b39b465ad608a0f926c25",
+      "featuredImageMismatch": "green_with_star3_overlay_but_variant_requires_pink_and_english_packaging",
+      "cleanExactReplacementBound": false,
+      "imageWrite": false,
+      "merchantIssueResolved": false
+    }
+  },
+  "article": {
+    "id": "gid://shopify/Article/1001546580353",
+    "handle": "geschenke-fuer-maenner-2026-schweiz",
+    "isPublished": true,
+    "publishedAt": "2026-05-29T13:35:06Z",
+    "title": "Geschenke für Männer 2026: Ideen nach Anlass und Preisrahmen",
+    "seoTitle": "Geschenke für Männer 2026: Anlass und Preisrahmen",
+    "seoDescription": "Geschenkideen für Männer nach Anlass und Interesse: praktische Auswahlhilfe für Geburtstag, Weihnachten und kleine Aufmerksamkeiten in der Schweiz.",
+    "summaryUpdated": true,
+    "bodyLanguage": "de-CH",
+    "oldTermsRemoved": [
+      "Slim Wallet",
+      "Stretch-Nylon",
+      "Homeoffice",
+      "In-Ears",
+      "Smartwatch",
+      "Tech Hero",
+      "sicherer Volltreffer",
+      "aus der Schweiz"
+    ],
+    "verifiedInternalTargets": [
+      "/collections/premium-geschenke",
+      "/collections/herrenuhren-schmuck",
+      "/collections/bestseller-premium-heroes",
+      "/policies/shipping-policy",
+      "/policies/refund-policy",
+      "/blogs/ratgeber/geschenke-fuer-frauen-2026-schweiz"
+    ],
+    "faqPageObjects": 1,
+    "faqQuestions": 4,
+    "image": {
+      "id": "gid://shopify/ArticleImage/405923660161",
+      "sha256": "b5b38ef6782bcd7f2bdef726cb26f26174a20b097c3aaa30061b2d762a223b30",
+      "visuallyInspected": true,
+      "alt": "Dunkles Kartenetui mit mehreren eingesteckten Karten"
+    },
+    "adminReadback": "PASS",
+    "publicReadback": {
+      "http": 200,
+      "h1Exact": true,
+      "titleAndMetaUpdated": true,
+      "selfCanonical": true,
+      "noindex": false,
+      "faqQuestions": 4,
+      "imageAltUpdated": true
+    }
+  },
+  "dailyLimits": {
+    "gscRequeried": false,
+    "merchantBroadQuery": false,
+    "salesReportQueried": false,
+    "klaviyoQueried": false,
+    "purchaseWatchQueried": false
+  },
+  "writes": {
+    "shopifyProductBodySeo": true,
+    "shopifyArticleBodySeoFaqImageAlt": true,
+    "merchant": false,
+    "feed": false,
+    "theme": false,
+    "menu": false,
+    "gtm": false,
+    "ads": false,
+    "budget": false,
+    "discount": false,
+    "flow": false,
+    "dns": false,
+    "social": false,
+    "orders": false,
+    "fulfillment": false,
+    "cj": false,
+    "paidRender": false
+  },
+  "documentationQa": {
+    "r163DailyLogCompletionWordingCorrected": true
+  },
+  "rankingImpact": "unknown",
+  "salesImpact": "unknown",
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

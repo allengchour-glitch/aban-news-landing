@@ -1420,3 +1420,17 @@ R162-Ratgeber erneut sauber. GSC nicht wiederholt. Der tatsächlich gepushte R16
 Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R163.md/.json`.
 
 [LUXESTYLE_R163_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 164: deutscher Rollball-Text und Männer-Geschenkratgeber live
+
+Shopify bestätigte frisch LuxeStyle/`luxestyle.ch`/CHF/Schweiz. Produkt `15450832961921` ist weiter ACTIVE und öffentlich erreichbar. Der alte Rabattcode sowie nicht gebundene Bewegungs-, Technik-, Mass-, Gewichts- und Lieferzeitaussagen wurden aus Produkttext und Meta entfernt. Der neue Text beschreibt ausschliesslich die in Shopify belegten Farben, Stückzahlen und Verpackungsarten. H1, Title, Meta, Canonical und Indexierbarkeit wurden öffentlich bestätigt; 19 Varianten, 20 Medien, acht Publikationen, Preise, Inventory-Zustände, Handle und Tags blieben erhalten. `rueckhol-0907` blockiert weiterhin Social.
+
+Die Google-Bildbeanstandung für Variante `55889732862337` bleibt ungelöst. Die Variante hat kein eigenes Medium; das Hauptbild zeigt einen grünen Ball mit `*3`-Overlay und passt weder zur pinken Farbe noch nachweislich zur englischen Verpackung. Ohne sauberes, rechtegeprüftes und exakt gebundenes Bild gab es keinen Bild-, Alttext-, Variantenmedien-, Feed- oder Merchant-Write.
+
+Artikel `1001546580353` wurde vollständig deutsch und produktneutral neu aufgebaut. Neuer H1/SEO/Meta, sechs geprüfte interne Ziele, genau ein Vier-Fragen-FAQPage und ein objektiver Bild-Alttext sind live. HTTP 200, Self-Canonical, kein Noindex und die neuen Werte wurden zurückgelesen. Alte englische Begriffe sowie ungeprüfte Preise, Materialien, Funktionen und Lieferaussagen fehlen im Artikelkörper. CHF 50 und die aktuellen Richtlinienlinks bleiben sichtbar.
+
+R163-Protokollsprache wurde auf den bereits vollzogenen Stand berichtigt. GSC nicht erneut gelesen; keine weiteren Plattform- oder Kontowrites. Wirkung auf Ranking und Verkauf unbekannt. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
+
+[LUXESTYLE_R164_20261110]

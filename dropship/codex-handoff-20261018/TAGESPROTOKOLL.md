@@ -1815,7 +1815,22 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Ratgeber | Frauen-Geschenkratgeber1001546514817 samt SEO-Metafeldern, FAQ und Artikelbild-Alttext bereinigt | Öffentlich HTTP200, Self-Canonical, indexierbar, vollständig deutsch; alte Artikelclaims entfernt; CHF50 erhalten |
 | CJ-Grind | Genau einen gehaltenen DRAFT auf aktuelle Varianten/SKUs gelesen | DRAFT16690383454599,4 SKUs, keine Storefront/Publikation; Preis-Ausreisser und fehlende PID/VID/Fracht/Rechte blockieren; kein CJ-Call/Write |
 | QA | R162-Weihnachtsgeschenke-Ratgeber öffentlich erneut geprüft | Weiterhin sauber; keine GSC-Wiederholung und keine Wirkungsbehauptung |
-| Dokumentation | R163-Bericht/Beleg und Handoff ergänzt; einzelne veraltete R162-Bericht-Hashreferenz zur Korrektur gebunden | Revision163 mit24 Aufgaben/126 Historieneinträgen vorgesehen; Claude-Empfang unbekannt |
+| Dokumentation | R163-Bericht/Beleg und Handoff ergänzt; einzelne veraltete R162-Bericht-Hashreferenz korrigiert | Revision163 mit24 Aufgaben/126 Historieneinträgen bestätigt; Claude-Empfang unbekannt |
 | Grenzen | Keine Theme-, Menü-, Merchant-, Feed-, GTM-, Ads-, Budget-, Rabatt-, Flow-, DNS-, Social- oder Renderänderung | Unbekanntes bleibt unbekannt; keine Käufe aus Inhalten abgeleitet |
 
 [LUXESTYLE_R163_20261110]
+
+### R164
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | R163, Projektgedächtnis, Claude-Handoff und denselben 10.11.-Tagesblock gelesen; Shopify frisch verifiziert | LuxeStyle/luxestyle.ch/CHF/Schweiz passend; heutige GSC-Abfrage nicht wiederholt |
+| Produkt-SEO | Rollball15450832961921 von altem Rabattcode, englischem Ausdruck und nicht gebundenen Funktions-/Mass-/Lieferclaims bereinigt; Body/SEO deutsch und claim-sicher aktualisiert | ACTIVE/HTTP200; exakter H1/Title/Meta, Self-Canonical, indexierbar; Handle, Tags,19 Varianten/SKUs/Preise/Inventory,20 Medien und8 Publikationen erhalten |
+| Social-Schutz | Produkttags vor und nach den Writes verglichen | `rueckhol-0907` erhalten; keine Social-Ausspielung |
+| Merchant-Bild | Zielvariante55889732862337 samt fehlendem Variantenmedium und Hauptbild visuell geprüft | Grün-`*3`-Overlay passt nicht zu Pink/englischer Verpackung; kein sauberes exaktes Ersatzbild, daher kein Bild-/Feed-/Merchant-Write; Problem offen |
+| Ratgeber | Männer-Geschenkratgeber1001546580353 samt SEO-Metafeldern, deutschem Body, FAQ und visuell geprüftem Bild-Alttext bereinigt | Öffentlich HTTP200, Self-Canonical, kein Noindex; sechs geprüfte Ziele, ein FAQPage/vier Fragen; alte englische und unbelegte Artikelclaims entfernt; CHF50 erhalten |
+| QA | Missverständliche R163-Protokollformulierung auf vollzogene Hashkorrektur und bestätigte Revision präzisiert | Historie erhalten; kein Reset und keine neue Automation |
+| Dokumentation | R164-Bericht/Beleg und Handoff additiv fortgeführt | Revision164 mit24 Aufgaben/127 Historieneinträgen vorbereitet; Claude-Receipt `unknown_no_claude_receipt` |
+| Grenzen | Keine GSC-Wiederholung und keine Theme-, Menü-, Merchant-, Feed-, GTM-, Ads-, Budget-, Rabatt-, Flow-, DNS-, Social-, CJ- oder Renderaktion | Keine Ranking- oder Verkaufswirkung behauptet; Unbekanntes bleibt unbekannt |
+
+[LUXESTYLE_R164_20261110]

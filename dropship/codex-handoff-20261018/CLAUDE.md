@@ -335,3 +335,17 @@ Belege: `GOOGLE-SEO-PUSH-20261110-R162.md/.json`. Kenntnisnahme durch Claude ble
 7. 08/14/19 Europe/Zurich unverändert; Claude-Kenntnisnahme bleibt bis zu einem echten Receipt unbekannt.
 
 Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R163.md/.json`.
+
+## R164 – Weiterarbeit nach Rollball- und Männer-Ratgeberbereinigung
+
+[LUXESTYLE_R164_20261110]
+
+1. Nicht erneut schreiben: Produkt `15450832961921` ist live mit deutschem claim-sicherem Body und neuer Meta ohne `WELCOME10`; 19 Varianten, 20 Medien, acht Publikationen, Preise, Inventory, Handle, Tags und `rueckhol-0907` sind erhalten. Kein Social.
+2. Merchant-Bildblocker bleibt offen: Variante `55889732862337` / SKU `CJ-CJJT149562611KP` hat kein eigenes Medium; Hauptbild grün mit `*3`-Overlay, Ziel Pink plus englische Verpackung. Kein Bild-/Feed-/Merchant-Write ohne exakte saubere Rechtequelle.
+3. Nicht erneut schreiben: Artikel `1001546580353` ist live mit deutschem H1/SEO/Meta/Body, sechs geprüften Zielen, einem `FAQPage`/vier Fragen und objektivem Bild-Alttext. Öffentliche Rücklesung PASS. Wirkung unbekannt; heutige GSC-Abfrage nicht wiederholen.
+4. Der globale Theme-Banner kann weiterhin `WELCOME10` enthalten. Nicht als Produkt- oder Artikelinhalt ausgeben und nicht aus diesem Handoff ändern.
+5. CJ-DRAFT `16690383454599` bleibt wie in R163 gesperrt. Vor jedem optionalen Read Runner/Credentials/Head frisch prüfen; keine Aktivierung ohne PID/VID, Fracht, CH-Lieferbarkeit, Marge, Tags und Medienrechte.
+6. Keine Theme-/Menü-/Merchant-/Feed-/GTM-/Ads-/Budget-/Rabatt-/Flow-/DNS-/Social-/Renderaktion aus diesem Handoff. 08/14/19 Europe/Zurich unverändert.
+7. Claude-Kenntnisnahme bleibt bis zu einem echten Receipt `unknown_no_claude_receipt`.
+
+Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.

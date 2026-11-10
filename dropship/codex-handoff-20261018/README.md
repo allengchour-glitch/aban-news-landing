@@ -2012,3 +2012,17 @@ Die fünf Bilder stützen Kamera, Halterung, Anschlusskabel und die Befestigung 
 | Grenzen | Keine Theme-/Menü-/Merchant-/Feed-/GTM-/Ads-/Budget-/Rabatt-/Flow-/DNS-/Social-/Renderaktion | Keine Ranking- oder Verkaufswirkung behauptet |
 
 [LUXESTYLE_R163_20261110] [Bericht](SEO-PRODUKT-FORTSETZUNG-20261110-R163.md) · [Beleg](SEO-PRODUKT-FORTSETZUNG-20261110-R163.json). Zwei Live-Inhaltskorrekturen, ein fail-closed CJ-Identitätsread.
+
+## Aktueller Stand – 10.11.2026, Revision 164: Rollball- und Männer-Ratgeber-SEO live bereinigt
+
+Shopify bestätigte erneut LuxeStyle/`luxestyle.ch`/CHF/Schweiz. ACTIVE `15450832961921` erhielt einen claim-sicheren deutschen Produkttext und eine neue Meta-Beschreibung ohne `WELCOME10`, feste Lieferzeit oder unbelegte Funktions-, Material- und Massangaben. Öffentliche Rücklesung: HTTP 200, exakter H1/Title/Meta, Self-Canonical, kein Noindex. Handle, Status, Tags, 19 Varianten/IDs/SKUs/Preise/Inventory-Zustände, 20 Medienquellen und acht Publikationen blieben unverändert. `rueckhol-0907` bleibt Social-Sperre.
+
+Das Merchant-Bildproblem der Variante `55889732862337` / `CJ-CJJT149562611KP` bleibt offen: kein Variantenmedium, Hauptbild grün mit `*3`-Overlay, Zielvariante Pink mit englischer Verpackung. Kein sauberes, exakt gebundenes Ersatzbild; daher kein Bild-, Feed- oder Merchant-Write und keine Behoben-Meldung.
+
+Artikel `1001546580353` ist jetzt vollständig deutsch und claim-sicher: neuer H1/SEO/Meta/Body nach Anlass und Preisrahmen, sechs öffentlich geprüfte interne Ziele, genau ein `FAQPage`-Objekt mit vier Fragen und ein visuell gebundener Bild-Alttext. Öffentliche Rücklesung: HTTP 200, Self-Canonical, indexierbar, neue Title-/Meta-/H1-Werte. Alte englische Begriffe sowie ungeprüfte Einzelpreis-, Material-, Funktions- und Lieferclaims fehlen im Artikelkörper. Die öffentliche Versandgrenze CHF 50 und Richtlinienlinks bleiben erhalten.
+
+GSC wurde heute nicht wiederholt. Keine Merchant-, Feed-, Theme-, Menü-, GTM-, Ads-, Budget-, Rabatt-, Flow-, DNS-, Social-, CJ- oder Renderaktion. Keine Ranking- oder Verkaufswirkung behauptet; Claude-Empfang unbekannt.
+
+[R164 Bericht](SEO-PRODUKT-FORTSETZUNG-20261110-R164.md) · [Maschinenbeleg](SEO-PRODUKT-FORTSETZUNG-20261110-R164.json).
+
+[LUXESTYLE_R164_20261110]
