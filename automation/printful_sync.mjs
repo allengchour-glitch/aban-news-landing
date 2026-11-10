@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* LuxeStyle — printful_sync.mjs (Version 3, 10.11.2026: «Bestellweg härten» nach der Gegenprüfung P1, zweite Runde nach den drei Gegenlesern: Fulfillment-Order-Status als Whitelist, frisches Lesen vergleicht Adresse/Positionen/Stopp-Tag,
+/* LuxeStyle — printful_sync.mjs (Version 3, 10.11.2026: «Bestellweg härten» nach der Gegenprüfung P1; Schlussprüfung 10.11.2026 (SYNC.md 7.13): scharf nur in GitHub Actions, Wartezeit vor dem Nachlesen der Markierung,
+ * Entwurfsstatus nach dem Anlegen, Fertigware ohne Kundendatei, strenge Kosten-Einstellungen, IN_PROGRESS gehalten; zweite Runde nach den drei Gegenlesern: Fulfillment-Order-Status als Whitelist, frisches Lesen vergleicht Adresse/Positionen/Stopp-Tag,
  * Anspruch mit Nachlesen statt blosser Markierung, Menge «unlesbar» ist hart, negativer Mindestgewinn ist ein Fehler; Version 2 vom 05.11.2026, Strom 3 von «Selbst gestalten 100 %»)
  * Verbindet den eigenen „Selbst gestalten"-Editor mit dem Druck-Anbieter PRINTFUL.
  * Für jede BEZAHLTE, noch nicht synchronisierte Shopify-Bestellung mit POD-Artikeln (Tag wunschdesign + Editor-Druckdatei-Eigenschaft) legt es einen Printful-Auftrag an.
@@ -19,7 +20,10 @@
  *   1b. Kurz vor dem Anlegen wird die Bestellung in Shopify FRISCH gelesen (bezahlt = PAID, nicht storniert, kein Test, noch nicht von einem anderen Lauf bearbeitet, UNVERÄNDERT seit dem Planen: Lieferadresse samt E-Mail, Positionen samt Mengen,
  *      Fulfillment-Order-Status der geplanten Positionen) und die Markierung `printful-anlegen-<Zeit>-<Sekunden/ms>-<Zufall>` gesetzt. Danach werden die Tags NOCHMAL gelesen: nur der Lauf mit der kleinsten aktiven Markierung legt an
  *      (zwei gleichzeitige scharfe Läufe, etwa lokal neben Actions, legen sonst beide an; in Actions schliesst die Concurrency-Gruppe das ohnehin aus). Scheitert eines davon, wird nichts angelegt.
- *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
+ *      Zwischen dem Setzen und dem Nachlesen wird GEWARTET (3000 ms): ohne die Wartezeit sah der spätere Lauf die noch nicht angekommene Markierung des früheren nicht (Schreiben und Lesen verschränkt), und beide legten an.
+ *      Brauchte das eigene Schreiben länger als die halbe Wartezeit, legt der Lauf nur an, wenn er allein markiert hat.
+ *   2. Auftrag als ENTWURF anlegen (mit external_id). Meldet Printful ihn NICHT mit Status «draft» zurück: harter Befund «nicht-als-entwurf-angelegt», Meldung, Tags, und der LAUF ENDET (keine weitere Bestellung, Exit 1).
+ *      Sonst sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
  *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
  *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).
  *      Der Entwurf wird gegen das Gesendete gehalten (gleiche Zahl Artikel, dieselben Dateitypen, Variante und Menge): leer oder abweichend ist ein Befund, nie «ok».
@@ -37,11 +41,14 @@
  *      [PRINTFUL_KI_KONTROLLE=aus|pflicht (Vorgabe aus, Besitzer-Entscheid 05.11.; pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
  *      [PRINTFUL_PAKET_BEZAHLT=kommagetrennte Platzierungs-IDs, die für alle Positionen als bezahlt gelten (Übergang; Standard leer = nur Vorderseite bezahlt; der Workflow reicht sie nicht durch)],
  *      [PRINTFUL_MAX_KOSTEN_USD=absolute Obergrenze der Printful-Summe je Auftrag in USD; Vorgabe aus (leer/0/aus); ein Auftrag darüber bleibt Entwurf mit Befund «kosten-obergrenze»; ein unbrauchbarer Wert beendet den Lauf mit Exit 1],
- *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten; eine NEGATIVE Zahl beendet den Lauf mit Exit 1], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
+ *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten; eine NEGATIVE Zahl oder ein Wert, der keine Dezimalzahl ist, beendet den Lauf mit Exit 1], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
  *      für Produkte mit Option stitch_color (Entscheid des Besitzers; ohne sie bleiben diese Aufträge Entwurf)], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
  *      [PF_PAUSE_MS=2500: Grundpause; die Wartezeit auf Dateien und Kosten ist 48 × PF_PAUSE_MS = 120 s],
  *      [PRINTFUL_LOG_DETAIL=1: Befundtexte auch in Log und Zusammenfassung (nur für Läufe auf dem eigenen Rechner: das Repo ist öffentlich, Actions-Protokolle sind es auch; sonst steht dort nur die Befundart)],
- *      [DRY_RUN: GESCHRIEBEN wird NUR bei ausdrücklichem 0/false/no/nein/off; alles andere, auch leer und nicht gesetzt, ist Trockenlauf: es wird gelesen, nichts geschrieben, nichts gemeldet (Stand 10.11.2026; vorher war «leer» scharf)]
+ *      [DRY_RUN: GESCHRIEBEN wird NUR bei ausdrücklichem 0/false/no/nein/off; alles andere, auch leer und nicht gesetzt, ist Trockenlauf: es wird gelesen, nichts geschrieben, nichts gemeldet (Stand 10.11.2026; vorher war «leer» scharf)].
+ *      SCHARF läuft das Skript NUR IN GITHUB ACTIONS (GITHUB_ACTIONS=true, setzt der Läufer selbst): sonst Exit 1 vor jedem Lesen und Schreiben. [PRINTFUL_LOKAL_SCHARF=1: die ausdrückliche Ausnahme für einen scharfen Lauf auf dem
+ *      eigenen Rechner (Warnzeile; nie gleichzeitig mit dem Workflow)], [PRINTFUL_ANSPRUCH_WARTE_MS=3000: Wartezeit vor dem Nachlesen der Markierung; NUR für Tests (kein Workflow setzt sie), unter 2000 ist ein Fehler, ausser
+ *      PRINTFUL_ANSPRUCH_TESTKENNUNG=nur-attrappe steht (nur für Läufe gegen Attrappen)]. PRINTFUL_MAX_KOSTEN_USD und PRINTFUL_MIN_NETTO_CHF nehmen nur Dezimalzahlen («0x10», «1e2», «abc»: Exit 1).
  */
 import { appendFileSync } from 'node:fs';
 import { randomBytes } from 'node:crypto';

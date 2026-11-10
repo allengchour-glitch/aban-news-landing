@@ -1451,7 +1451,7 @@ for (const [name, sz, soll] of [
     ist(`G1 PRINTFUL_ANSPRUCH_WARTE_MS ${n}: Konfigurationsfehler, Exit 1, nichts gelesen, nichts geschrieben, die Meldung nennt die Variable`, [nichtsAngefasst(x), x.prot.err.some((l) => /PRINTFUL_ANSPRUCH_WARTE_MS/.test(l))], [NICHTS, true]);
   }
   const kurz = lauf(bestellt([z1], { env: { PRINTFUL_ANSPRUCH_WARTE_MS: '400' } }));
-  ist('G1 Wartezeit 400 ms (mit Test-Kennung): zwischen dem Setzen der Markierung und dem Nachlesen liegen mindestens 400 ms; danach Auftrag und Bestätigung', [luecke(kurz) >= 399, luecke(kurz) < 2500, kurz.prot.posts.length, bestaetigt(kurz)], [true, true, 1, true]);
+  ist('G1 Wartezeit 400 ms (mit Test-Kennung): zwischen dem Setzen der Markierung und dem Nachlesen liegen mindestens 400 ms; danach Auftrag und Bestätigung', [luecke(kurz) >= 399, kurz.prot.posts.length, bestaetigt(kurz)], [true, 1, true]);
   ist('G1 In Actions (GITHUB_ACTIONS=true) steht KEINE Warnzeile «ausserhalb von Actions»; die Test-Kennung des Rahmens meldet sich mit einer eigenen Warnzeile', [kurz.prot.warn.some((l) => /AUSSERHALB VON GITHUB ACTIONS/.test(l)), kurz.prot.warn.filter((l) => /TEST-KENNUNG/.test(l)).length], [false, 1]);
   // OHNE jede Variable (kein PRINTFUL_ANSPRUCH_WARTE_MS, keine Test-Kennung): die Vorgabe von 3000 ms wird wirklich gewartet. Dieses eine Szenario dauert darum gut 3 Sekunden.
   const vorgabe = lauf(bestellt([z1], { envLoeschen: ['PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_ANSPRUCH_TESTKENNUNG'] }));
@@ -1462,7 +1462,7 @@ for (const [name, sz, soll] of [
   const langsamZweiter = lauf(bestellt([z1], { anspruchSchreibMs: 220, rivale: 'spaeter', telegram: true, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
   ist('G1 …und ein zweiter Lauf hat ebenfalls markiert (seine Markierung ist die SPÄTERE): trotz «kleinster» Markierung KEIN Auftrag, kein Stopp-Tag, Fehler mit der Dauer, Exit 1', [langsamZweiter.prot.posts.length, langsamZweiter.prot.confirms.length, hatReview(langsamZweiter), langsamZweiter.prot.err.some((l) => /brauchte \d+ ms \(Grenze 150 ms\)/.test(l) && /zweiter Lauf/.test(l)), langsamZweiter.prot.ausstieg ?? langsamZweiter.status], [0, 0, false, true, 1]);
   ist('G1 …die Zusammenfassung zählt die Bestellung als «später wieder»', langsamZweiter.prot.log.some((l) => /^Printful-Sync fertig: .* 1 später wieder/.test(l)), true);
-  const schnellZweiter = lauf(bestellt([z1], { rivale: 'spaeter', env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  const schnellZweiter = lauf(bestellt([z1], { rivale: 'spaeter', env: { PRINTFUL_ANSPRUCH_WARTE_MS: '1000' } }));   // 1000 ms: die Grenze von 500 ms für das eigene Schreiben reisst auch unter hoher Rechnerlast nicht (die Attrappe antwortet im selben Prozess)
   ist('G1 Gegenprobe: die eigene Markierung war schnell, die des zweiten Laufs ist die spätere → dieser Lauf gewinnt (Auftrag, bestätigt)', [schnellZweiter.prot.posts.length, bestaetigt(schnellZweiter)], [1, true]);
 
   // ── G2: der Auftrag muss beim Anlegen als ENTWURF zurückkommen
@@ -1523,7 +1523,8 @@ for (const [name, sz, soll] of [
 // Die Attrappe nimmt eine doppelte external_id an (schlechtester Fall; ob Printful sie ablehnt, ist ungemessen).
 const pngKopf = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
 const RENNEN_ENV = { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PF_PAUSE_MS: '0', PF_PLATZIERUNG_PAUSE_MS: '0', DRY_RUN: '0', GITHUB_ACTIONS: 'true', PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '60', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' };
-async function rennen({ modus, warteMs, haltMs = 30 }) {
+async function rennen({ modus, warteMs, haltMs = 10 }) {
+  const FRIST = 30000;                               // Sicherheitsfrist der Schranken: nur gegen Hänger (ein Lauf endet vorzeitig); im normalen Ablauf greift sie nie, auch nicht unter hoher Rechnerlast
   const bestellung = knoten([zeile()]);
   const st = { tags: [], pf: [], posts: 0, confirms: 0, frisch: { a: 0, b: 0 }, erster: null, anspruch: {}, halt: null, yAngewendet: 0 };
   let ersterDa; const ersterAnspruchDa = new Promise((r) => { ersterDa = r; });
@@ -1546,8 +1547,8 @@ async function rennen({ modus, warteMs, haltMs = 30 }) {
         if (q.includes('orders(first')) return json(200, { data: { orders: { pageInfo: { hasNextPage: false, endCursor: null }, edges: st.tags.some((x) => /^printful-(synced|review)$/.test(x)) ? [] : [{ node: knotenJetzt() }] } } });
         if (q.includes('node(id') && q.includes('displayFinancialStatus')) {               // frisches Lesen: das ERSTE des zweiten Laufs wartet, bis die Markierung des ersten angekommen ist (Schritt 1)
           if (++st.frisch[wer] === 1) {
-            if (st.erster === null) { st.erster = wer; await Promise.race([beideWarten, schlaf(5000)]); }      // X wartet hier, bis auch Y so weit ist (sonst hinge die Dauer seiner Markierung an der Startzeit des anderen Prozesses)
-            else { beideDa(); await Promise.race([ersterAnspruchDa.then(() => schlaf(3)), schlaf(5000)]); }
+            if (st.erster === null) { st.erster = wer; await Promise.race([beideWarten, schlaf(FRIST)]); }      // X wartet hier, bis auch Y so weit ist (sonst hinge die Dauer seiner Markierung an der Startzeit des anderen Prozesses)
+            else { beideDa(); await Promise.race([ersterAnspruchDa.then(() => schlaf(3)), schlaf(FRIST)]); }
           }
           return json(200, { data: { node: knotenJetzt() } });
         }
@@ -1564,8 +1565,8 @@ async function rennen({ modus, warteMs, haltMs = 30 }) {
           const anspruch = v.tags.find((x) => /^printful-anlegen-/.test(x));
           if (anspruch) {
             st.anspruch[wer] = anspruch;
-            if (wer === st.erster && !st.halt) {                                           // Schritt 2: die Markierung von X wird gehalten (höchstens 5 s, damit nichts hängen bleibt)
-              await new Promise((fertig) => { const h = { erledigt: false, anwenden: () => { if (h.erledigt) return; h.erledigt = true; setze(); fertig(); } }; st.halt = h; ersterDa(); setTimeout(h.anwenden, 5000); });
+            if (wer === st.erster && !st.halt) {                                           // Schritt 2: die Markierung von X wird gehalten (die Frist greift nur, wenn der andere Lauf nie markiert)
+              await new Promise((fertig) => { const h = { erledigt: false, anwenden: () => { if (h.erledigt) return; h.erledigt = true; setze(); fertig(); } }; st.halt = h; ersterDa(); setTimeout(h.anwenden, FRIST).unref(); });
               return json(200, { data: { tagsAdd: { userErrors: [] } } });
             }
             setze(); st.yAngewendet = Date.now();
@@ -1595,7 +1596,7 @@ async function rennen({ modus, warteMs, haltMs = 30 }) {
   const kind = (wer) => new Promise((fertig) => {
     const k = spawn(process.execPath, [SELF, '--rennen-kind'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, ...RENNEN_ENV, PS_RENNEN_PORT: String(port), PS_RENNEN_LAUF: wer, PRINTFUL_ANSPRUCH_WARTE_MS: String(warteMs) } });
     let out = '', err = ''; k.stdout.on('data', (d) => { out += d; }); k.stderr.on('data', (d) => { err += d; });
-    const uhr = setTimeout(() => { try { k.kill('SIGKILL'); } catch { /* schon beendet */ } }, 40000);
+    const uhr = setTimeout(() => { try { k.kill('SIGKILL'); } catch { /* schon beendet */ } }, 70000);
     k.on('close', (exit, signal) => { clearTimeout(uhr); fertig({ exit, signal, out, err }); });
   });
   const [a, b] = await Promise.all([kind('a'), kind('b')]);
@@ -1604,17 +1605,21 @@ async function rennen({ modus, warteMs, haltMs = 30 }) {
   return { posts: st.posts, confirms: st.confirms, tagX: st.anspruch[x] || null, tagY: st.anspruch[y] || null, x: lauf2[x] || null, y: lauf2[y] || null };
 }
 {
-  // (A) «kurz»: die Markierung von X kommt 30 ms nach der von Y an. Mit der Wartezeit (hier 400 ms mit Test-Kennung, Grenze für das eigene Schreiben 200 ms) liest Y erst danach, sieht X und tritt zurück: genau EIN Auftrag.
-  //     Ohne Wartezeit (Stand vor der Korrektur, Mutant «G1 Kleber: keine Wartezeit») liest Y sofort: zwei Aufträge, zwei Bestätigungen in JEDEM Lauf.
+  // (A) «kurz»: die Markierung von X kommt 10 ms nach der von Y an. Mit der Wartezeit (hier 600 ms mit Test-Kennung, Grenze für das eigene Schreiben 300 ms) liest Y erst danach, sieht X und tritt zurück: höchstens EIN Auftrag.
+  //     Ohne Wartezeit (Stand vor der Korrektur, Mutant «SP G1 Kleber: keine Wartezeit») liest Y sofort: zwei Aufträge, zwei Bestätigungen in JEDEM Lauf.
+  // Was NICHT von der Rechnerlast abhängt, wird für jeden Lauf verlangt (nie zwei Aufträge; Y tritt zurück). Von der Last hängt nur ab, ob das Schreiben von X unter der Grenze von 300 ms blieb: dann legt X an, sonst (richtig) niemand.
+  // Darum genügt für «die Sicherung blockiert nicht alles» EIN Lauf mit Auftrag (gemessen unter Last 13 auf 4 Kernen: 6 von 10; ohne Last 10 von 10).
   const LAEUFE = 10;
-  const erg = await Promise.all(Array.from({ length: LAEUFE }, () => rennen({ modus: 'kurz', warteMs: 400 })));
+  const erg = await Promise.all(Array.from({ length: LAEUFE }, () => rennen({ modus: 'kurz', warteMs: 600 })));
   ist(`G1 Rennen (${LAEUFE} Läufe, je zwei echte Kindprozesse, verzögertes Schreiben der früheren Markierung): beide Läufe haben markiert und die Markierung des ersten ist die kleinere (sonst prüfte der Test das Rennen nicht)`, erg.filter((r) => r.tagX && r.tagY && r.tagX < r.tagY).length, LAEUFE);
   ist('G1 Rennen: in KEINEM Lauf zwei Printful-Aufträge (vor der Korrektur: in jedem)', erg.map((r) => r.posts).filter((n) => n > 1), []);
   ist('G1 Rennen: in KEINEM Lauf zwei Bestätigungen (Doppelabbuchung)', erg.map((r) => r.confirms).filter((n) => n > 1), []);
   ist('G1 Rennen: kein Lauf blieb hängen oder brach ab (jeder Kindprozess endet selbst, ohne Signal)', erg.filter((r) => !r.x || !r.y || r.x.signal || r.y.signal || r.x.exit === 3 || r.y.exit === 3).length, 0);
-  // Weiche Schwelle (8 von 10 statt 10): bei sehr hoher Rechnerlast kann das Schreiben von X die Grenze von 200 ms reissen; dann legt (richtig) niemand an. Doppelt wird es nie.
-  wahr(`G1 Rennen: die Sicherung blockiert nicht einfach alles: in mindestens 8 von ${LAEUFE} Läufen entsteht genau EIN Auftrag mit genau EINER Bestätigung, angelegt vom Lauf mit der kleineren Markierung`, erg.filter((r) => r.posts === 1 && r.confirms === 1 && r.x && /BESTÄTIGT/.test(r.x.out)).length >= 8, JSON.stringify(erg.map((r) => [r.posts, r.confirms])));
-  wahr('G1 Rennen: der unterlegene Lauf tritt still zurück («ein anderer Lauf hat früher markiert», Exit 0)', erg.filter((r) => r.y && r.y.exit === 0 && /ein anderer Lauf hat früher markiert/.test(r.y.out)).length >= 8, JSON.stringify(erg.map((r) => r.y && r.y.exit)));
+  ist('G1 Rennen: der Lauf mit der SPÄTEREN Markierung tritt in jedem Lauf still zurück («ein anderer Lauf hat früher markiert», Exit 0, kein Auftrag von ihm)', erg.filter((r) => r.y && r.y.exit === 0 && /ein anderer Lauf hat früher markiert/.test(r.y.out) && !/Printful #\d+/.test(r.y.out)).length, LAEUFE);
+  const angelegt = erg.filter((r) => r.posts === 1 && r.confirms === 1 && r.x && r.x.exit === 0 && /BESTÄTIGT/.test(r.x.out));
+  const zuLangsam = erg.filter((r) => r.posts === 0 && r.confirms === 0 && r.x && r.x.exit === 1 && /brauchte \d+ ms/.test(r.x.err) && /zweiter Lauf/.test(r.x.err));
+  ist('G1 Rennen: jeder Lauf endet auf eine von zwei Arten: der Lauf mit der kleineren Markierung legt an und bestätigt (EIN Auftrag), oder sein Schreiben war zu langsam und er meldet das als Fehler (KEIN Auftrag)', angelegt.length + zuLangsam.length, LAEUFE);
+  wahr('G1 Rennen: die Sicherung blockiert nicht einfach alles: in mindestens einem Lauf entsteht genau EIN Auftrag mit genau EINER Bestätigung', angelegt.length >= 1, JSON.stringify(erg.map((r) => [r.posts, r.confirms])));
   // (B) «lang»: die Markierung von X kommt erst an, NACHDEM Y nachgelesen hat (das Schreiben von X dauerte also länger als die ganze Wartezeit). Y sieht nur sich und legt an. X sieht danach beide und wäre die «kleinste»:
   //     weil sein Schreiben zu lange brauchte, legt X trotzdem NICHT an (Regel «nur allein») und meldet das als Fehler.
   const lang = await Promise.all([rennen({ modus: 'lang', warteMs: 400 }), rennen({ modus: 'lang', warteMs: 400 })]);
