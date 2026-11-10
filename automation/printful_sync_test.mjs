@@ -154,6 +154,9 @@ if (process.argv[2] === '--szenario') {
       const spez = (sz.dateiPro || []).find((x) => url.includes(x.match)) || sz.datei || {};
       if (spez.wirft) throw new Error('ECONNRESET');
       // Weiterleitung nur für den Kopf-Abruf (Range); `weiterleitungImmer` leitet jedes Mal weiter (Schleife), sonst nur beim ersten Abruf dieser Adresse
+      // Eine Schleife wird nach 12 Weiterleitungen beendet (HTTP 500): der richtige Kleber hört nach drei Sprüngen von selbst auf (vier Abrufe); einer ohne diese Grenze hinge sonst bis zur Zeitüberschreitung des Kindprozesses
+      // und würde nur durch eine Ausnahme «erkannt» (Gegenleser Linse 2, Fund 8). So wird daraus eine rote Prüfung mit Namen: die Zahl der Abrufe stimmt nicht.
+      if (spez.weiterleitung && range && spez.weiterleitungImmer && prot.dateiRedirect.length >= 12) return mk(500, {});
       if (spez.weiterleitung && range && (spez.weiterleitungImmer || !prot.dateiRedirect.includes(url))) { prot.dateiRedirect.push(url); return mk(302, {}, { header: { location: spez.weiterleitung } }); }
       const status = spez.status || 200;
       if (status !== 200) return mk(status, {});
@@ -241,7 +244,11 @@ const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 const lauf = (sz, env = {}) => {
   const r = spawnSync(process.execPath, [SELF, '--szenario'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, PS_SZENARIO: JSON.stringify(sz), ...env }, encoding: 'utf8', timeout: 90000 });
   const m = String(r.stdout).match(/PS_ERGEBNIS (.*)\n/);
-  if (!m) throw new Error('Kindprozess ohne Ergebnis (Exit ' + r.status + '): ' + String(r.stderr).slice(0, 600) + String(r.stdout).slice(-300));
+  if (!m) {
+    // Ein Szenario, das hängt (Zeitüberschreitung) oder abstürzt, ist eine rote Prüfung mit Namen und kein Abbruch ohne Aussage (Gegenleser Linse 2, Fund 8): die Zeile steht VOR dem Abbruch im Protokoll.
+    fehl++; console.log(`✗ Szenario ohne Ergebnis (${r.error ? String(r.error.code || r.error.message) : r.signal ? 'Signal ' + r.signal : 'Exit ' + r.status}): ${JSON.stringify(sz).slice(0, 200)}`);
+    throw new Error('Kindprozess ohne Ergebnis (Exit ' + r.status + '): ' + String(r.stderr).slice(0, 600) + String(r.stdout).slice(-300));
+  }
   return (letzter = { status: r.status, prot: JSON.parse(m[1]), stderr: r.stderr, stdout: r.stdout });
 };
 const antwort = (pid) => ({ status: 200, body: { result: { variant: { id: MIT[pid].variante }, product: MIT[pid].produkt } } });
