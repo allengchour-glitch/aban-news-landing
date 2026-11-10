@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "run": "R170",
+  "checkedAt": "2026-11-10T17:26:22+01:00",
+  "approval": {
+    "scope": "one_internal_link_from_collection_page1_to_feeder_product",
+    "collectionPath": "/collections/tier-futterautomaten",
+    "productPath": "/products/futterautomat-fur-katze-527488",
+    "proposedHtml": "<p><a href=\"/products/futterautomat-fur-katze-527488\">Futterspender für Katzen ansehen</a>.</p>"
+  },
+  "identity": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "match": true
+  },
+  "product": {
+    "id": "gid://shopify/Product/15523986473345",
+    "title": "Automatischer Futterspender für Katzen",
+    "status": "ACTIVE",
+    "variantId": "gid://shopify/ProductVariant/56217490391425",
+    "sku": "CJ-1418384701726527488",
+    "priceCHF": "96.90",
+    "publicHttp": 200,
+    "selfCanonical": true,
+    "unverifiedClaimsObserved": [
+      "automatische Fütterung",
+      "Futterschale aus Edelstahl",
+      "ca. 2.2 kg"
+    ],
+    "productTextChanged": false
+  },
+  "collection": {
+    "id": "gid://shopify/Collection/756160627079",
+    "handle": "tier-futterautomaten",
+    "title": "Futterautomaten & Futterspender",
+    "updatedAtBeforeWrite": "2026-11-10T15:55:22Z",
+    "existingDescriptionHtml": "<p>Automatische Futterspender und Futterstationen für Hunde und Katzen: mit Zeitschaltung, Behälter oder App.</p><p>Auch dabei: <a href=\"/products/futterautomat-fur-katze-527488\">Automatischer Futterspender für Katzen</a>.</p>",
+    "existingTargetLinkCount": 1,
+    "existingAnchor": "Automatischer Futterspender für Katzen",
+    "targetAlreadySatisfiedBeforeWrite": true,
+    "parallelChangeCausation": "unknown"
+  },
+  "publicReadback": {
+    "collectionHttp": 200,
+    "collectionSelfCanonical": true,
+    "targetDomLinks": 1,
+    "targetRawOccurrences": 1,
+    "readSha256": [
+      "a1181c62c03408e0e883b39db759ef02e06470170b3f25c0cafa3d85474a3d78",
+      "09c4e6464e271ce4e0271f72e2ef02b52d6750b70f2918da96341f84d2386dc9"
+    ],
+    "dynamicHtmlHashesDiffer": true,
+    "structuralResultMatches": true
+  },
+  "decision": {
+    "collectionWrite": false,
+    "reason": "target_already_satisfied_before_write_avoid_duplicate_and_overwrite",
+    "rankingEffect": "unknown",
+    "salesEffect": "unknown"
+  },
+  "writes": {
+    "shopify": 0,
+    "collection": 0,
+    "product": 0,
+    "theme": 0,
+    "menu": 0,
+    "customers": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "flows": 0,
+    "dns": 0,
+    "social": 0
+  }
+}

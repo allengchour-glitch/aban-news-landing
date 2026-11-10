@@ -2090,3 +2090,13 @@ Klaviyo- und Kennzahlabfragen wurden wegen heutiger R165-Messung nicht wiederhol
 [R169 Bericht](CONTENT-VERKAUFSPAKET-20261110-R169.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R169.json).
 
 [LUXESTYLE_R169_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 170: freigegebener Kollektionslink bereits vorhanden
+
+Der Inhaber gab genau einen internen Link von `/collections/tier-futterautomaten` zu Produkt `15523986473345` frei. Die frische Pflichtgegenprobe zeigte vor einem Write bereits genau einen passenden Link in der Kollektionsbeschreibung. Admin-Read und zwei unabhängige öffentliche Reads bestätigten HTTP200, Self-Canonical und genau ein Zielvorkommen. Ein zusätzlicher Link wäre ein Duplikat; deshalb0 Shopify-/Kollektionswrites und kein Überschreiben der neueren Paralleländerung. Zeitpunkt/Verursacher bleiben unbekannt.
+
+Der frische Produktread zeigte erneut unbelegte Aussagen zu automatischer Fütterung, Edelstahl und ca.2.2kg. Diese Abweichung lag ausserhalb der engen Linkfreigabe und blieb unverändert. Keine Ranking-/Verkaufswirkung abgeleitet; Claude-Receipt unbekannt.
+
+[R170 Bericht](FREIGABE-KOLLEKTIONSLINK-20261110-R170.md) · [Maschinenbeleg](FREIGABE-KOLLEKTIONSLINK-20261110-R170.json).
+
+[LUXESTYLE_R170_20261110]

@@ -410,3 +410,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Master-ID unverändert. Quelle SHA2bb28156…/960×540/25fps nur Referenz; Ziel18s/540Frames/1080×1920/30fps. Hooks «Dein Raum. Neues Licht.»/«Licht im Detail.», CTA «Produkt ansehen». Sechs deutsche Entwürfe/UTMs im R169-Bericht;0 Render/Upload/Planung.
 5. Futterspender15523986473345 ACTIVE/kaufbar/CHF96.90. Öffentlicher Titel jetzt «Automatischer Futterspender für Katzen», Ursache der Abweichung von R166 unbekannt; nicht zurücksetzen. Interner Link von Kollektion Seite1 ist Freigabeentwurf.
 6. Kennzahlen/Klaviyo heute nicht wiederholen. Keine Plattformwrites. Belege `CONTENT-VERKAUFSPAKET-20261110-R169.md/.json`; Receipt `unknown_no_claude_receipt`.
+
+## R170 – Freigegebener Kollektionslink war bereits live
+
+[LUXESTYLE_R170_20261110]
+
+1. Inhaberfreigabe galt genau einem Link von `/collections/tier-futterautomaten` zu `/products/futterautomat-fur-katze-527488`.
+2. Pflichtgegenprobe: Shopidentität PASS; Produkt15523986473345 ACTIVE/CHF96.90; Kollektion756160627079 enthielt vor Write bereits genau einen passenden Link.
+3. Zwei unabhängige öffentliche Reads: HTTP200, Self-Canonical, je genau ein DOM-/Rohtextvorkommen. Kein zweiter Link anlegen und den neueren Kollektionsinhalt nicht überschreiben.
+4. 0 Shopify-/Kollektions-/Produkt-/Theme-/Menüwrites. Zeitpunkt/Verursacher der Paralleländerung unbekannt; Wirkung unbekannt.
+5. Aktueller Produktbody enthält wieder unbelegte Automatik-, Edelstahl- und2.2kg-Aussagen. Ausserhalb der engen Linkfreigabe, nicht verändert; getrennt frisch prüfen.
+6. Belege `FREIGABE-KOLLEKTIONSLINK-20261110-R170.md/.json`.08/14/19 unverändert; Receipt `unknown_no_claude_receipt`.

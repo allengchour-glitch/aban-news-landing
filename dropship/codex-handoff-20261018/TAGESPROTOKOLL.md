@@ -1915,3 +1915,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Shopify-, Merchant-, Feed-, Metricool-, Klaviyo-, Kunden-, DNS-, Theme-, Budget-, Rabatt- oder Renderänderung | Unbekanntes bleibt unbekannt |
 
 [LUXESTYLE_R169_20261110] [Bericht](CONTENT-VERKAUFSPAKET-20261110-R169.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261110-R169.json).
+
+### R170
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Inhaberfreigabe | Genau einen internen Link von der Futterautomaten-Kollektion zum Futterspender übernommen | Enger Umfang; keine allgemeine Produkt-/Shop-/SEO-Freigabe |
+| Shopify Preflight | Shop, Produkt und Kollektion unmittelbar vor Write frisch gelesen | Identität PASS; Produkt ACTIVE/CHF96.90; Kollektion bereits mit genau einem Ziel-Link |
+| Öffentliche Gegenprobe | Kollektions- und Produktseite sowie unabhängigen zweiten Kollektionsread geprüft | HTTP200/Self-Canonical; je genau ein Ziel-Link; dynamische HTML-Hashes, struktureller Befund identisch |
+| Write-Entscheid | Freigegebenen Zielzustand gegen aktuellen Inhalt verglichen | Bereits erfüllt;0 Shopify-/Kollektionswrites; kein Duplikat und kein Überschreiben; Verursacher unbekannt |
+| Produktabweichung | Aktuellen Admin-Body auf den früheren claim-sicheren Stand gegengeprüft | Automatik-/Edelstahl-/2.2kg-Aussagen wieder vorhanden; ausserhalb Linkfreigabe, nicht verändert |
+| Dokumentation / Claude | R170-Bericht, Beleg und kanonische Übergabe fortgeführt | Revision170 vorgesehen; Wirkung unbekannt; Receipt unbekannt |
+
+[LUXESTYLE_R170_20261110] [Bericht](FREIGABE-KOLLEKTIONSLINK-20261110-R170.md) · [Beleg](FREIGABE-KOLLEKTIONSLINK-20261110-R170.json).

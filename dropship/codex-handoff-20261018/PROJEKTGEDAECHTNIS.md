@@ -1490,3 +1490,11 @@ Projektor aktuell7 A–G-Varianten, alte Variante56197916361089 veraltet. ACTIVE
 Heutige Kennzahlen/Klaviyo nicht wiederholt; R165/R166 bleiben Tagesbeleg. Keine Social-, Shopify-, Theme-, Klaviyo-, Merchant-, Feed-, CJ-, DNS-, Ads-, Budget-, Rabatt- oder Renderwrites. Belege `CONTENT-VERKAUFSPAKET-20261110-R169.md/.json`. Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R169_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 170: enger Link-Write als bestätigter No-op
+
+Nach ausdrücklicher Freigabe wurde unmittelbar vor dem vorgesehenen Kollektionswrite Shop, Produkt und Kollektion frisch gelesen. Kollektion `756160627079` enthielt bereits genau einen Link auf `/products/futterautomat-fur-katze-527488`; öffentliche Doppelgegenprobe HTTP200/Self-Canonical/ein Ziel-Link. Der Zielzustand war damit vor Codex-Write erfüllt. Kein Duplikat, kein Überschreiben,0 Shopify-Writes; Paralleländerungszeitpunkt und Verursacher unbekannt.
+
+Produkt `15523986473345` bleibt ACTIVE/CHF96.90. Sein aktueller Admin-Body enthält erneut unbelegte Automatik-, Edelstahl- und2.2kg-Aussagen; wegen engem Freigabeumfang nicht verändert. Wirkung unbekannt. Belege `FREIGABE-KOLLEKTIONSLINK-20261110-R170.md/.json`; Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R170_20261110]
