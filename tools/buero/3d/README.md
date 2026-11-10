@@ -104,5 +104,5 @@ Auftrag des Besitzers: in jedem Büro ein grosser Monitor mit Dashboard-Inhalt, 
 - **Zentralmonitor:** `W.overview` und `W.campusPanel`, breites Brett (6,4 × 3,2 m) bei z = 11, Bild `T.liveboardUebersicht`.
 - **Monitoransicht:** `cmd('monitor:<Raum>')` oder `cmd('monitor:Zentral')`; die Kamera zielt auf `c` des Bretts (`az` 0, `el` 0,22 beziehungsweise 0,08 beim Zentralmonitor, damit Figuren den unteren Rand nicht verdecken), Beschriftungen, Marken und Sprechblasen sind aus. `cfg.onMonitorMode(an, name)` meldet den Namen an die Seite.
 - **Prüfhilfen für Tests:** `made.debug.live()`, `.monitor()`, `.project(x, y, z)`, `made.liveModelle()`, `made.W`, `made.R`.
-- **Prüfung:** `../pruefung/test_liveboard.js` (39 Prüfungen) und `../pruefung/mutation_liveboard.py` (17 absichtliche Fehler).
+- **Prüfung:** `../pruefung/test_liveboard.js` (39 Prüfungen) und `../pruefung/mutation_liveboard.py` (18 absichtliche Fehler, alle erkannt).
 
