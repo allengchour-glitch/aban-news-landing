@@ -591,6 +591,7 @@ export const MUTANTEN = [
   // Dritte Runde 11.11.2026 (eigene Durchsicht der zweiten Runde): ein Lesefehler ist sichtbar, kein stiller Verlust
   ['D3 Anspruch: eine fehlende eigene Markierung gilt als Verlust gegen einen anderen Lauf (still)', B, 'steht nicht (mehr) an der Bestellung\', art: \'eigene-fehlt\' }', 'steht nicht (mehr) an der Bestellung\', art: \'verloren\' }'],
   ['D3 Kleber: die fehlende eigene Markierung beim Nachlesen ist kein Lesefehler (kein Fehler, Exit 0)', S, 'if (g.art === \'eigene-fehlt\') return { art: \'unlesbar\', text: g.grund };', ''],
+  ['D3 CI: das Zeitlimit des Jobs «tests» steht auf 15 statt 20 Minuten (Doku und Messung nennen 20)', CIW, '    timeout-minutes: 20\n    steps:', '    timeout-minutes: 15\n    steps:'],
   ['D3 Kleber: eine geänderte Bestellung beim Anlegen fehlt in der Zusammenfassung', S, 'zeilen.push(`${o.name}: wartet (die Bestellung hat sich seit dem Planen geändert; der nächste Lauf liest neu)`); ', ''],
 ];
 

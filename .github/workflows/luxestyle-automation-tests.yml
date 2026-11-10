@@ -104,12 +104,12 @@ jobs:
     runs-on: ubuntu-latest
     # 8 statt 5 Minuten (28.10.2026): Nachspielung mit bash automation/ci_simulation.sh = 255 s (vorher 207 s, davor 186 s; die Mutationsprobe wuchs von 173 über 197 und 217 auf 221 Mutanten, die Schreibweg-Tests um 68 Pruefungen), 53 % der 480 s.
     # Ohne checkout/setup-node/setup-python, die in der Nachspielung fehlen, blieben von 300 s nur 93 s (31 %) Luft. Das Limit schuetzt vor haengenden Laeufen, nicht vor langsamen Tests.
-    # 15 statt 8 Minuten (10.11.2026, Fund 17 der Gegenprüfung P1). Der Job lief schon vor der Härtung mit 389 s von 480 s (81 %) in sein Limit. Die Härtung macht den Sync-Test länger (181 → 401 Prüfungen, 14.9 → 23.5 s),
-    # und pod_auswahl_mutation.mjs führt ihn für jeden Mutanten aus, den die schnelleren Tests nicht rot machen: LOKAL gemessen (gleiche Maschine, ruhig) 281.6 s auf dem Stand vor der Härtung, 386.7 s danach (+105 s). Dazu
-    # kommen der Test der Preisanpassung (3.0 s, neu), mutation.mjs --pruefen (0.1 → 10.6 s mit der Syntaxprüfung der Mutanten) und die längere Logik-Prüfung: zusammen rund +22 s. Obere Schranke für den Job: 389 s + 127 s = 516 s, mehr als
-    # die 480 s von vorher, bei 900 s Limit 57 % (Fund 17 verlangt: über 60 % der Grenze → anheben). Die Messumgebung ist eher langsamer als der Actions-Läufer, die wirkliche Zeit ist ungemessen (erster Lauf nach dem Merge ansehen).
-    # Das Limit schützt vor hängenden Läufen, nicht vor langsamen Tests; Zahlen und Rechnung: dropship/wp6-0611/SYNC.md 7.7. Ein Test (CI Fund 17) verlangt mindestens 10.
-    timeout-minutes: 15
+    # 20 statt 8 Minuten (10.11.2026, Fund 17 der Gegenprüfung P1; in der zweiten Runde von 15 auf 20 angehoben, Fund 2/7 der Gegenleser). Der Job lief schon vor der Härtung mit 389 s von 480 s (81 %) in sein Limit. Die Härtung macht
+    # den Sync-Test länger (181 → 474 Prüfungen, 14.9 → rund 25 s) und pod_auswahl_mutation.mjs führt ihn für jeden Mutanten aus, den die schnelleren Tests nicht rot machen (lokal 281.6 s vor, 386.7 s nach der ersten Runde der Härtung).
+    # Die frühere Rechnung «389 s + 127 s = 516 s als obere Schranke» ist zurückgenommen: ein Gegenleser hat alle `run:`-Schritte des Jobs nachgespielt (4 Kerne, ruhig) und 588.4 s gemessen, ohne checkout und Einrichtung der Laufzeiten,
+    # das sind 65 % von 900 s (die eigene Regel verlangt bei über 60 % ein höheres Limit). Wirkliche Laufzeit auf dem Actions-Läufer: ungemessen, nach dem ersten Lauf hier eintragen; liegt sie über 900 s, den Schritt pod_auswahl_mutation.mjs
+    # in einen eigenen Job auslagern. Das Limit schützt vor hängenden Läufen, nicht vor langsamen Tests; Zahlen und Rechnung: dropship/wp6-0611/SYNC.md 7.7 und 7.12. Ein Test (CI Fund 17 und R2 CI L2/7) verlangt mindestens 20 und höchstens 30.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:

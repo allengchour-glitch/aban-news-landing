@@ -1589,7 +1589,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       ist('R2 CI (L2/6): auch die Mutationsprobe (--pruefen) ist eine reine Zeile', jobTests.filter((l) => /^\s+node dropship\/selbst-gestalten-fertig-0511\/bestellweg\/mutation\.mjs --pruefen\s*(#.*)?$/.test(l)).length, 1);
       ist('R2 CI (L2/6): im Job «tests» steht weder «continue-on-error» noch «|| true» noch «set +e»', [/continue-on-error/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /\|\| true\b/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /set \+e/.test(jobTests.join('\n'))], [false, false, false]);
       const tm = /timeout-minutes: (\d+)/.exec(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n'));
-      ist('R2 CI (L2/7): das Zeitlimit des Jobs «tests» liegt zwischen 15 und 30 Minuten (lokal gemessen rund 600 s Schritte, also über 60 % von 15 Minuten; die Doku nennt keine «obere Schranke» mehr)', [!!tm, tm ? Number(tm[1]) >= 15 && Number(tm[1]) <= 30 : null], [true, true]);
+      ist('R2 CI (L2/7): das Zeitlimit des Jobs «tests» liegt zwischen 20 und 30 Minuten (lokal gemessen rund 600 s Schritte, also über 60 % von 15 Minuten; die Doku nennt keine «obere Schranke» mehr und SYNC.md 7.7 nennt 20)', [!!tm, tm ? Number(tm[1]) >= 20 && Number(tm[1]) <= 30 : null], [true, true]);
     }
   }
 }
