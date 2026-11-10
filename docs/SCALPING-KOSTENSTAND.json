@@ -1,0 +1,362 @@
+{
+  "erfasstes_buch": {
+    "status": "PAPIER, KEINE HANDELSFREIGABE",
+    "handelsfreigabe": false,
+    "buchinhalt_sha256": "c71d3db3713954d889aceff86e7ff9d304946ce68771faca9d54f057fbdc8f36",
+    "code_sha256": "70d4ad244bca09f46e1e2a1fcc8ea83a6db280c457dd32569935350d0cbfd332",
+    "letzter_lauf": {
+      "zeit": "2026-11-10T12:42:49+00:00",
+      "kerzen": 2854,
+      "trades": 536,
+      "hinweise": []
+    },
+    "hinweis": "",
+    "kostenmodell": {
+      "gebuehren": {
+        "M": 0.0002,
+        "T": 0.0005
+      },
+      "maerkte": {
+        "BTCUSDT": {
+          "tick": 0.1,
+          "slip": 0.0001
+        },
+        "ETHUSDT": {
+          "tick": 0.01,
+          "slip": 0.00015
+        }
+      },
+      "quelle": "Vorab festgelegte Modellannahmen, keine aktuell gemessenen Kontogebühren",
+      "nicht_erfasst": [
+        "Funding",
+        "Orderbuch-Warteschlange und Teilfüllungen",
+        "Unterschied zwischen Spot- und Futures-Kursen"
+      ]
+    },
+    "urteil": {
+      "urteil": "zu wenig Daten",
+      "tage": 7.02,
+      "je_stufe": {
+        "2.0": {
+          "BTC": {
+            "n": 755,
+            "netto_bp": -9.404,
+            "haelften": [
+              -0.3902543861341465,
+              -0.3197744283369162
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "ETH": {
+            "n": 819,
+            "netto_bp": -10.126,
+            "haelften": [
+              -0.40695916286363476,
+              -0.42234060850771304
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "reif": false,
+          "besteht": false
+        },
+        "2.5": {
+          "BTC": {
+            "n": 477,
+            "netto_bp": -8.364,
+            "haelften": [
+              -0.1962836210616287,
+              -0.20265624611571909
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "ETH": {
+            "n": 519,
+            "netto_bp": -8.19,
+            "haelften": [
+              -0.1822493467148223,
+              -0.24278673887859273
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "reif": false,
+          "besteht": false
+        },
+        "3.0": {
+          "BTC": {
+            "n": 306,
+            "netto_bp": -7.408,
+            "haelften": [
+              -0.11712594437117425,
+              -0.10955220289704005
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "ETH": {
+            "n": 344,
+            "netto_bp": -6.998,
+            "haelften": [
+              -0.11012196450275966,
+              -0.13060533335976865
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "reif": false,
+          "besteht": false
+        },
+        "3.5": {
+          "BTC": {
+            "n": 193,
+            "netto_bp": -6.949,
+            "haelften": [
+              -0.05508565651365363,
+              -0.07903230919584392
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "ETH": {
+            "n": 212,
+            "netto_bp": -5.889,
+            "haelften": [
+              -0.0451987661864668,
+              -0.07964059792721882
+            ],
+            "genug": false,
+            "besteht": false
+          },
+          "reif": false,
+          "besteht": false
+        }
+      },
+      "text": "zu wenig Daten (nötig: 14 Tage und 200 Trades je Markt; bisher 7,0 Tage). Der Prüfstand sagt: durchfallen"
+    },
+    "varianten": [
+      {
+        "markt": "BTC",
+        "k": 2.0,
+        "n": 755,
+        "erw_brutto_bp": -3.039,
+        "erw_netto_bp": -9.565,
+        "erw_je_tag": 119.7,
+        "offen": true,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.611,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 10.404,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.3298,
+        "brutto_bp": -2.793,
+        "netto_bp": -9.404,
+        "kosten_bp": -6.611,
+        "summe_pct": -71.0,
+        "einbruch_pct": -71.0,
+        "dauer_min": 9.4,
+        "nachgerechnet": 113
+      },
+      {
+        "markt": "BTC",
+        "k": 2.5,
+        "n": 477,
+        "erw_brutto_bp": -1.6,
+        "erw_netto_bp": -8.037,
+        "erw_je_tag": 76.7,
+        "offen": true,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.566,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 9.364,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.3753,
+        "brutto_bp": -1.797,
+        "netto_bp": -8.364,
+        "kosten_bp": -6.567,
+        "summe_pct": -39.89,
+        "einbruch_pct": -39.94,
+        "dauer_min": 11.9,
+        "nachgerechnet": 68
+      },
+      {
+        "markt": "BTC",
+        "k": 3.0,
+        "n": 306,
+        "erw_brutto_bp": -0.763,
+        "erw_netto_bp": -7.192,
+        "erw_je_tag": 49.1,
+        "offen": false,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.588,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 8.408,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.3791,
+        "brutto_bp": -0.82,
+        "netto_bp": -7.408,
+        "kosten_bp": -6.588,
+        "summe_pct": -22.67,
+        "einbruch_pct": -22.91,
+        "dauer_min": 13.0,
+        "nachgerechnet": 42
+      },
+      {
+        "markt": "BTC",
+        "k": 3.5,
+        "n": 193,
+        "erw_brutto_bp": -0.457,
+        "erw_netto_bp": -6.927,
+        "erw_je_tag": 30.5,
+        "offen": false,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.631,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 7.949,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.4041,
+        "brutto_bp": -0.318,
+        "netto_bp": -6.949,
+        "kosten_bp": -6.631,
+        "summe_pct": -13.41,
+        "einbruch_pct": -13.74,
+        "dauer_min": 13.3,
+        "nachgerechnet": 21
+      },
+      {
+        "markt": "ETH",
+        "k": 2.0,
+        "n": 819,
+        "erw_brutto_bp": -4.502,
+        "erw_netto_bp": -11.338,
+        "erw_je_tag": 126.7,
+        "offen": true,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.906,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 11.126,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.3724,
+        "brutto_bp": -3.22,
+        "netto_bp": -10.126,
+        "kosten_bp": -6.906,
+        "summe_pct": -82.93,
+        "einbruch_pct": -83.62,
+        "dauer_min": 8.5,
+        "nachgerechnet": 112
+      },
+      {
+        "markt": "ETH",
+        "k": 2.5,
+        "n": 519,
+        "erw_brutto_bp": -2.517,
+        "erw_netto_bp": -9.244,
+        "erw_je_tag": 81.9,
+        "offen": false,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.852,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 9.19,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.4008,
+        "brutto_bp": -1.338,
+        "netto_bp": -8.19,
+        "kosten_bp": -6.852,
+        "summe_pct": -42.5,
+        "einbruch_pct": -43.57,
+        "dauer_min": 11.1,
+        "nachgerechnet": 79
+      },
+      {
+        "markt": "ETH",
+        "k": 3.0,
+        "n": 344,
+        "erw_brutto_bp": -1.286,
+        "erw_netto_bp": -8.008,
+        "erw_je_tag": 53.1,
+        "offen": true,
+        "kostendiagnose": {
+          "ursache": "kein_bruttovorteil",
+          "modellkosten_bp": 6.811,
+          "kostenbudget_null_bp": null,
+          "abstand_mindestkante_bp": 7.998,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.4099,
+        "brutto_bp": -0.187,
+        "netto_bp": -6.998,
+        "kosten_bp": -6.811,
+        "summe_pct": -24.07,
+        "einbruch_pct": -25.58,
+        "dauer_min": 12.3,
+        "nachgerechnet": 52
+      },
+      {
+        "markt": "ETH",
+        "k": 3.5,
+        "n": 212,
+        "erw_brutto_bp": -0.719,
+        "erw_netto_bp": -7.485,
+        "erw_je_tag": 34.0,
+        "offen": false,
+        "kostendiagnose": {
+          "ursache": "kosten_verbrauchen_vorteil",
+          "modellkosten_bp": 6.821,
+          "kostenbudget_null_bp": 0.933,
+          "abstand_mindestkante_bp": 6.889,
+          "handelsfreigabe": false
+        },
+        "treffer": 0.4528,
+        "brutto_bp": 0.933,
+        "netto_bp": -5.889,
+        "kosten_bp": -6.822,
+        "summe_pct": -12.48,
+        "einbruch_pct": -15.01,
+        "dauer_min": 12.9,
+        "nachgerechnet": 32
+      }
+    ],
+    "grenze": "Beobachtete Papierergebnisse, keine zukünftige Renditeprognose. Günstigere Gebühren ändern weder Treffer noch Füllwahrscheinlichkeit automatisch."
+  },
+  "quelle": {
+    "repository": "allengchour-glitch/aban-news-landing",
+    "daten_commit": "1c4dc25c8",
+    "anwendungscode": "c53b7a366d0933ce9cfd15fa76a251a993e924a2",
+    "datenart": "Gespeicherter Papier-Vorwärtstest einschließlich anfänglicher Rückrechnung; keine Kontogewinne",
+    "datei_sha256": "e8c3dff4df26b079703b829659ce821355d2ca1ce38af9823add1cdd79b8a5fe"
+  },
+  "befund": {
+    "varianten": 8,
+    "alle_netto_negativ": true,
+    "brutto_maximum_bp": 0.933,
+    "keine_variante_erreicht_selbst_ohne_kosten_die_mindestkante": true
+  },
+  "originalquelle": {
+    "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+    "sha256": "4bc4693f7bed86fe36da20f673b1f6dc8839ab8129030f1dead44e5134dbd029",
+    "gelesener_abschnitt": "Kline/Candlestick data: Intervall 1m, Open-/Close-Time in Millisekunden, UTC; keine weitere Ausführungsgarantie daraus abgeleitet"
+  },
+  "unveraenderte_rechenfunktionen": [
+    "kosten_von",
+    "_stat",
+    "kerze",
+    "buche",
+    "kennzahlen",
+    "lauf",
+    "urteil"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "anwendungscode": "c53b7a366d0933ce9cfd15fa76a251a993e924a2",
+  "native_python": "3.12.14",
+  "pruefungen": {
+    "pruefstand": {
+      "ergebnis": "50 bestanden, 0 fehlgeschlagen",
+      "log_sha256": "aef9655deae72afddf42315aa24118e7afbc9c6cbdcccf933df012c5c2934049"
+    },
+    "labor": {
+      "ergebnis": "264 bestanden, 0 fehlgeschlagen",
+      "log_sha256": "dca399bc9847a304360ec8383fa477d923657509a55241f59bf411febb576b17"
+    },
+    "cockpit": {
+      "ergebnis": "510 bestanden, 0 fehlgeschlagen",
+      "log_sha256": "42dbaf936c7051f39770e3e9a6289a3b81531f095abf4e094d34d80903fb52a6"
+    },
+    "browser": {
+      "ergebnis": "43 Browser-Prüfungen bestanden",
+      "log_sha256": "28d67bee9bdf3ea0f2d55392ae8eb8fbee697bf808f4bab2546543d8e4c4b769"
+    },
+    "paketbau": {
+      "ergebnis": "35 bestanden, 0 fehlgeschlagen",
+      "log_sha256": "df54b4ba00d6ba62cb1307be137c6f0a27c60eec2166928d04f3d7d664fa27ff"
+    }
+  },
+  "allgemeine_ci": {
+    "revision": "c53b7a366d0933ce9cfd15fa76a251a993e924a2",
+    "suite": "ci-tests",
+    "image_id": "sha256:e3c589bab36cd426d83272f2f8216449683fdc8d1a223c7b8d53b64cb0d0222b",
+    "python": "3.12.16",
+    "node": "v22.23.4",
+    "tmp_anfangs_leer": true,
+    "netzwerk": "Docker --network none",
+    "steps": [
+      {
+        "name": "Renderer stays text-only (no rendering or network)",
+        "returncode": 0,
+        "sekunden": 0.83,
+        "unittest_anzahl": 3,
+        "stdout": "00.stdout.log",
+        "stderr": "00.stderr.log"
+      },
+      {
+        "name": "Syntax",
+        "returncode": 0,
+        "sekunden": 5.89,
+        "unittest_anzahl": 0,
+        "stdout": "01.stdout.log",
+        "stderr": "01.stderr.log"
+      },
+      {
+        "name": "Existing helper checks",
+        "returncode": 0,
+        "sekunden": 3.49,
+        "unittest_anzahl": 0,
+        "stdout": "02.stdout.log",
+        "stderr": "02.stderr.log"
+      },
+      {
+        "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+        "returncode": 0,
+        "sekunden": 74.35,
+        "unittest_anzahl": 0,
+        "stdout": "03.stdout.log",
+        "stderr": "03.stderr.log"
+      },
+      {
+        "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+        "returncode": 0,
+        "sekunden": 215.37,
+        "unittest_anzahl": 0,
+        "stdout": "04.stdout.log",
+        "stderr": "04.stderr.log"
+      },
+      {
+        "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+        "returncode": 0,
+        "sekunden": 448.73,
+        "unittest_anzahl": 0,
+        "stdout": "05.stdout.log",
+        "stderr": "05.stderr.log"
+      },
+      {
+        "name": "CJ failures and publication regressions (mock APIs only)",
+        "returncode": 0,
+        "sekunden": 29.43,
+        "unittest_anzahl": 0,
+        "stdout": "06.stdout.log",
+        "stderr": "06.stderr.log"
+      },
+      {
+        "name": "Shopify host, queue input and publication guards (mock APIs only)",
+        "returncode": 0,
+        "sekunden": 7.43,
+        "unittest_anzahl": 0,
+        "stdout": "07.stdout.log",
+        "stderr": "07.stderr.log"
+      },
+      {
+        "name": "Content preflight (offline evidence only)",
+        "returncode": 0,
+        "sekunden": 0.54,
+        "unittest_anzahl": 16,
+        "stdout": "08.stdout.log",
+        "stderr": "08.stderr.log"
+      }
+    ],
+    "bestanden": true
+  },
+  "programmpaket": {
+    "manifest": {
+      "format": 1,
+      "version": "2026-11-10.c53b7a3",
+      "commit": "c53b7a366d0933ce9cfd15fa76a251a993e924a2",
+      "gebaut": "2026-11-10T18:03:28Z",
+      "datei": "krypto-paket-2026-11-10.c53b7a3.zip",
+      "sha256": "b3ce00076dc4c62b39bb97a8ed3d906c375205d2be99f4629c18853348132363",
+      "groesse": 1113050,
+      "dateien": 128,
+      "hinweis": "Scalping: sichere Kerzenzeiten und transparente Kostenprüfung",
+      "uebersprungen": []
+    },
+    "sha256_frisch_geprueft": true,
+    "entpackter_pc_probelauf": "Syntax und 10 Selbsttests bestanden",
+    "netzwerk": "Docker --network none, keine Zugangsdateneinbindung"
+  },
+  "datenstand": "SCALPING-KOSTENSTAND.json",
+  "vorher_nachher": {
+    "vorher": "9 Datenvertragsfälle fehlgeschlagen, neue Kostenprüfung fehlte; insgesamt 10 Fehler im Vorlauf",
+    "nachher": "Alle 264 Laborprüfungen bestanden",
+    "browser_vorlauf": "Mobiler Test prüfte anfangs absichtlich versteckte Tabellenüberschriften; er prüft jetzt die sichtbaren data-label-Zellen. Keine Produktprüfung entfernt."
+  },
+  "umfang": "Kerzenvalidierung und Analyse/Anzeige; keine Signal-/Kosten-/Urteilsparameter verändert",
+  "grenzen": [
+    "Keine tatsächlichen Börsenaufträge",
+    "Keine verbesserten Handelsergebnisse behauptet",
+    "Kostenmodell unvollständig; Funding und tatsächliche Ausführung fehlen",
+    "Kein unabhängiges Claude-Review dieses Stands bestätigt",
+    "Keine Remote-Checks, Veröffentlichung oder PC-Installation bestätigt"
+  ]
+}

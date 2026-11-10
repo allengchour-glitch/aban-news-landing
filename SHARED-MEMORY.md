@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: Scalping-Datenvertrag und Kostenprüfung verbessert
+
+Nutzer «scalping perfektionieren». Branch `codex/scalping-qualitaet`, Anwendungscode `c53b7a366`: Ein nachgestellter Zukunftskerzen-Fehler und ungültige Minuten-/Preisfelder werden jetzt verworfen und gemeldet. Neue rein lesende `scalping_labor.py --kostencheck` ohne Netz, Reparatur, Schreiben oder Senden; Cockpit zeigt Brutto, Kosten, Netto, Abstand zu +1 bp und Ursache. Signalmaschine, Buchung, Stufen, Kostenkonstanten, Urteil und gespeichertes Papierbuch unverändert. `hashlib` ist die einzige zusätzliche erlaubte Standardbibliothek für Fingerabdrücke; Broker bleiben verboten.
+
+GEMESSEN: 50 Prüfstand-, 264 Labor-, 510 Cockpit-, 43 Browser- und 35 Paketbauprüfungen bestanden; alle neun allgemeinen lokalen CI-Abschnitte grün. Tatsächliches ZIP aus c53b7a366 per SHA256 zurückgelesen, entpackter PC-Probelauf mit zehn Selbsttests bestanden. [Änderung, Papierbefund, Quellen und strukturierte Nachweise](docs/SCALPING-VERBESSERUNG.md). Vorher neun schlechte Datenfälle rot plus fehlende Kostenprüfung; keine Vorläufe als grün ausgegeben.
+
+Der ausgewertete Repository-Papierstand aus main `1c4dc25c8` meldet 7,02 Datentage und acht negative Nettoergebnisse. Selbst vor Kosten liegt jede Variante unter der vorab festgelegten +1-bp-Kante. Kein Gewinner ausgewählt, keine verbesserte Rendite behauptet. Funding und echte Ausführung fehlen im Modell. Kein neuer Auftragspfad, keine aktivierte Scalping-Strategie, keine Risiko-/Schutz-/Zeitplanänderung. Frühere Live-/Mehrcoin-Arbeiten sind enthalten; tatsächliche GitHub-Checks, Veröffentlichung, PC-Installation und unabhängige Claude-Prüfung bleiben unbestätigt. Die aktuelle Netzwerkregel hat weiterhin keine benutzerdefinierten Freigaben. Frisch gelesenes main `250d44ffb` berührt die Scalping-Dateien nicht.
+
 ## ABAN-Download: Prüfwartezeit begrenzt ·10.11.2026
 
 Codex korrigiert einen lokal reproduzierten Hängefall der bestehenden Kit-Zahlungsprüfung: feste Frist für Transport und Antwortinhalt zusätzlich zum Abort-Signal.52 Download- und70 APIprüfungen lokal bestanden; keine echte Zahlung oder Anbieterabfrage. Details und tatsächlicher Bereitstellungsstand in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md) und zugehörigem PR. Keine Shop-/Metricool-Änderung.
