@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-09T12:47:41Z",
+ "stand": "2026-11-10T12:34:16Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
-   "u": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
-   "q": "Hugging Face",
-   "d": "2026-11-09T12:34:29Z",
-   "s": "",
+   "t": "Apple-CEO Ternus drängt auf mehr Tempo bei KI-Entwicklung",
+   "u": "https://www.heise.de/news/Apple-CEO-Ternus-draengt-auf-mehr-Tempo-bei-KI-Entwicklung-11519012.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-10T12:16:00Z",
+   "s": "Apples neuer CEO John Ternus drängt laut einem Bericht auf schnellere Fortschritte bei der künstlichen Intelligenz.",
+   "sprache": "de"
+  },
+  {
+   "t": "Helping caregivers use AI in everyday life",
+   "u": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+   "q": "OpenAI",
+   "d": "2026-11-10T12:00:00Z",
+   "s": "OpenAI Academy is bringing free, hands-on ChatGPT workshops to caregivers in five U.S. cities, helping them build practical AI skills for everyday life.",
    "sprache": "en"
   },
   {
-   "t": "Mail an Sam Altman: Warum ein Entwickler dem OpenAI-CEO jeden Tag eine Nachricht per Skript schickt",
-   "u": "https://t3n.de/news/sam-altman-mail-skript-entwickler-ram-1772368/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-09T12:30:02Z",
-   "s": "Ein Entwickler wehrt sich auf kreative Weise gegen Aussagen von Sam Altman. Er schickt ihm jeden Tag eine besondere E-Mail per Skript. Was er damit erreichen will. weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | So sichern Sie KI-Anwendungen und Agenten ab: Jenseits der Testpyramide",
-   "u": "https://www.heise.de/hintergrund/So-sichern-Sie-KI-Anwendungen-und-Agenten-ab-Jenseits-der-Testpyramide-11510121.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-11-09T12:30:00Z",
-   "s": "Die klassische Testpyramide stößt bei KI-Anwendungen an ihre Grenzen. Wie kombiniert man statistische Verfahren mit Laufzeitschutz und menschlicher Aufsicht?",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Coding-Agenten verfrachten Zugangsdaten in öffentliche Repositories",
-   "u": "https://www.heise.de/news/KI-Coding-Agenten-verfrachten-Zugangsdaten-in-oeffentliche-Repositories-11517278.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-09T12:23:00Z",
-   "s": "Wer mit KI-Coding-Agenten arbeitet, kann Zugangsdaten in öffentliche Repositories ausleiten. Schuld ist eine Komfortfunktion.",
-   "sprache": "de"
-  },
-  {
-   "t": "Cyberangriff auf WorkOS: Abtrünniger KI-Agent hackt Entwicklerplattform",
-   "u": "https://www.golem.de/news/cyberangriff-auf-workos-abtruenniger-ki-agent-hackt-entwicklerplattform-2611-214993.html",
+   "t": "Andrea Nahles: Bundesarbeitsagentur erwartet 800.000 Arbeitsplätze weniger durch KI",
+   "u": "https://www.golem.de/news/andrea-nahles-bundesarbeitsagentur-erwartet-800-000-arbeitsplaetze-weniger-durch-ki-2611-215038.html",
    "q": "Golem",
-   "d": "2026-11-09T12:14:02Z",
-   "s": "Ein KI-Agent eines Sicherheitsforschers hat unerwartet ein System von WorkOS attackiert und Kundendaten ausgeleitet. Der Forscher gestand die Panne. (Security, KI)",
+   "d": "2026-11-10T11:57:02Z",
+   "s": "Die Bundesarbeitsagentur rechnet wegen KI mit einem weitreichenden Umbau des Arbeitsmarkts. Besonders hart trifft es den Nachwuchs. (KI, Wirtschaft)",
    "sprache": "de"
   },
   {
-   "t": "Behördendaten, US-Dienste, KI-Streit: Der Schweizer Mythos Proton wird entzaubert",
-   "u": "https://www.golem.de/news/behoerdendaten-us-dienste-ki-streit-der-schweizer-mythos-proton-wird-entzaubert-2611-214978.html",
-   "q": "Golem",
-   "d": "2026-11-09T12:00:02Z",
-   "s": "Proton gibt Nutzerdaten an Behörden heraus, arbeitet mit US-Dienstleistern und setzt seine Mitarbeiter beim KI-Einsatz unter Druck. Wie passt das zum Anspruch des Schweizer Unternehmens? Eine Analyse …",
-   "sprache": "de"
-  },
-  {
-   "t": "Dieses neue Drohnen-Design übersteht Zusammenstöße",
-   "u": "https://t3n.de/news/entgegen-jahrhundertealter-tradition-dieses-neue-drohnen-design-uebersteht-zusammenstoesse-1772370/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Solopreneure in Gefahr: Experten erklären größtes Cybersecurity-Risiko und wie du dich als Einzelunternehmer schützt",
+   "u": "https://t3n.de/news/solopreneure-in-gefahr-experten-erklaeren-groesstes-cybersecurity-risiko-und-wie-du-dich-als-einzelunternehmer-schuetzt-1772138/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-09T10:45:11Z",
-   "s": "Seit über 100 Jahren prägen starre Rahmen die Konstruktion von Multicoptern. Mit Flexi Quad zeigt ein Schweizer Team, dass es auch anders geht: mit einem biegsamen Körper, kontrollierbarer Verformung …",
+   "d": "2026-11-10T11:15:32Z",
+   "s": "Dank generativer KI werden auch kleine Ziele wie Einzelunternehmer für Cyberkriminelle attraktiv. Zwei Experten erklären, warum es zum Schutz keine aufwendigen weiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Trainingsvideos für Verhaltensanalyse: Für die Überwachungs-KI gibt es nie genug Gewalt",
-   "u": "https://netzpolitik.org/2026/trainingsvideos-fuer-verhaltensanalyse-fuer-die-ueberwachungs-ki-gibt-es-nie-genug-gewalt/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-09T10:05:26Z",
-   "s": "Anhand von solchen Bildern soll die Überwachungssoftware lernen, wie Gewalt aussieht. – Gemeinfrei: KI-generiert, Screenshot von staige.comDer Berliner Verhaltensscanner wird mit KI-Videos trainiert. …",
+   "t": "Vor dem Börsengang: Wie riskant ist die Anthropic-Aktie?",
+   "u": "https://www.golem.de/news/vor-dem-boersengang-wie-riskant-ist-die-anthropic-aktie-2611-215031.html",
+   "q": "Golem",
+   "d": "2026-11-10T11:00:02Z",
+   "s": "Der IPO weckt Hoffnungen auf eine große KI-Aktie. Doch hohe Investitionen und unsicheres Wachstum werfen Fragen auf. Was Anleger wissen sollten. Eine Analyse von Ulrike Barth (Anthropic, Börse)",
    "sprache": "de"
   },
   {
-   "t": "The climate case for AI has not been made",
-   "u": "https://www.technologyreview.com/2026/11/09/1148166/the-climate-case-for-ai-has-not-been-made/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-09T10:00:00Z",
-   "s": "This week, as countries meet in Antalya, Turkey for the United Nations climate conference, one topic likely to dominate the conversation is artificial intelligence. The host has already called on coun…",
+   "t": "KI-Regulierung: Macron drängt auf internationale Sicherheitsstandards",
+   "u": "https://www.heise.de/news/KI-Regulierung-Macron-draengt-auf-internationale-Sicherheitsstandards-11518762.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-10T10:27:00Z",
+   "s": "Frankreichs Präsident Emmanuel Macron hat internationale Akteure zu einer Initiative für mehr Sicherheit und Transparenz bei KI-Modellen zusammengerufen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Das kann iOS 27.3 Beta: Apple bringt Health-App und KI-Tools",
+   "u": "https://t3n.de/news/ios-27-3-beta-funktionen-health-ki-1771753/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-10T09:55:00Z",
+   "s": "Apple hat die erste Beta-Version von iOS 27.3 veröffentlicht. Sie bringt ein Feature zurück, das aus der Vorversion gestrichen wurde. Auch das iPhone Duo bekommt neue Funktionen. weiterlesen auf t3n.d…",
+   "sprache": "de"
+  },
+  {
+   "t": "Closing the AI guidance gap in education",
+   "u": "https://openai.com/index/closing-ai-guidance-gap-education",
+   "q": "OpenAI",
+   "d": "2026-11-10T09:00:00Z",
+   "s": "New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
    "sprache": "en"
   },
   {
-   "t": "Is Jensen Huang’s job on the line? Yale’s Jeffrey Sonnenfeld estimates it’s “about a 50-50”",
-   "u": "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
+   "t": "Otter AI can now follow conversations across 30+ languages",
+   "u": "https://techcrunch.com/2026/11/09/otter-ai-can-now-follow-conversations-across-30-languages/",
    "q": "TechCrunch AI",
-   "d": "2026-11-09T05:26:29Z",
-   "s": "Nvidia’s board is investigating Jensen Huang over his relationship with a suspected Chinese spy, and Yale’s Jeffrey Sonnenfeld thinks it’s roughly a coin flip whether Huang stays on as CEO.",
+   "d": "2026-11-10T07:00:00Z",
+   "s": "Otter AI just added support for 27 languages and revealed an upcoming feature that can follow along if speakers switch between languages.",
+   "sprache": "en"
+  },
+  {
+   "t": "Anthropic reportedly plans to move forward with IPO plans",
+   "u": "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-10T01:27:12Z",
+   "s": "The AI company is expected to set its valuation range this week, the Wall Street Journal reported.",
    "sprache": "en"
   }
  ]
