@@ -321,3 +321,17 @@ Belege: `CJ-WEBCAM-PRUEFUNG-20261109-R161.md/.json`.
 7. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Feed-, GTM-, Ads-, Social- oder kostenpflichtige Renderaktion. 08/14/19 unverändert.
 
 Belege: `GOOGLE-SEO-PUSH-20261110-R162.md/.json`. Kenntnisnahme durch Claude bleibt unbekannt, bis ein echter Empfangsbeleg vorliegt.
+
+## R163 – Weiterarbeit nach Produkt- und Ratgeberbereinigung
+
+[LUXESTYLE_R163_20261110]
+
+1. Nicht erneut schreiben: Produkt `15458765570433` ist live deutsch/claim-sicher mit fünf neuen Alttexten; Handle, CHF23.90, Varianten/SKUs, Inventory, Medien, Publikationen und `rueckhol-0907` erhalten. Kein Social.
+2. Nicht erneut schreiben: Artikel `1001546514817` ist live mit neuem H1/SEO/Meta/Body, drei geprüften Links, einem FAQPage/4 Fragen und neuem Bild-Alttext. Wirkung unbekannt; heutige GSC-Abfrage nicht wiederholen.
+3. CJ-Kandidat DRAFT `16690383454599`: Varianten-SKUs `CJZR164957201AZ`, `CJZR164957202BY`, `CJZR164957203CX`, `CJZR164957237KP`; keine Storefront/Publikation. Preis-Ausreisser32 Zoll CHF18.90. Vor jedem CJ-Read Runner-Credentials/Head prüfen und genau eine SKU read-only binden; keine Aktivierung, bis PID/VID, Material, Längen/Dichte, Fracht, CH-Lieferbarkeit, Marge, Tags und Medienrechte belegt sind.
+4. R162-Weihnachtsgeschenke-Ratgeber bleibt öffentlich sauber. Nicht neu schreiben und keine sofortige Rankingwirkung behaupten.
+5. R162-Historienhash wurde auf den tatsächlich gepushten Berichtsblob `71b50e5903e1abca3e439dae0b68cdecdb31a140` korrigiert.
+6. Theme-/Menü-/Breadcrumb-/VideoObject-Aufgaben bleiben separat blockiert; keine Shop-/Merchant-/Feed-/GTM-/Ads-/Budget-/Rabatt-/Flow-/DNS-/Social-/Renderaktion aus diesem Handoff.
+7. 08/14/19 Europe/Zurich unverändert; Claude-Kenntnisnahme bleibt bis zu einem echten Receipt unbekannt.
+
+Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R163.md/.json`.

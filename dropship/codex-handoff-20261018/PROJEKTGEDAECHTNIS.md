@@ -1406,3 +1406,17 @@ Technischer Audit: fünf Seiten HTTP200/selbstkanonisch/indexierbar, aber778–8
 Belege: `GOOGLE-SEO-PUSH-20261110-R162.md/.json`. Keine Ranking- oder Verkaufswirkung behaupten. Claude-Receipt bleibt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R162_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 163: Produkt- und Ratgeberfehler live bereinigt
+
+Shopify bestätigte erneut LuxeStyle/luxestyle.ch/CHF. ACTIVE `15458765570433` wurde nach visueller Prüfung aller fünf Bilder von falschem `Kimonostreifen`-Titel, englischen Textteilen und unbelegten Material-/Liefer-/Rabattclaims bereinigt. Neuer Titel: `Langer Kimono mit Pfauenmotiv und Bindegürtel`; deutsche Beschreibung/SEO und fünf bildgenaue Alttexte live. Admin und öffentlich PASS; Handle, CHF23.90, drei Varianten/SKUs, untracked/CONTINUE/Menge0, fünf Medien, sieben Publikationen, Tags und `rueckhol-0907` erhalten. Keine Social-Ausspielung.
+
+Artikel `1001546514817` ist jetzt vollständig deutsch und claim-sicher: neuer H1/SEO/Meta, Auswahl nach Anlass/Interesse/Preisrahmen, drei geprüfte Links, genau ein Vier-Fragen-FAQPage und neuer Artikelbild-Alttext. Öffentliche Rücklesung HTTP200, Self-Canonical, indexierbar; `Selfcare`, konkrete unbelegte Material-/Wirkungs-/Preis-/Rückgabeclaims und alte Herkunftsformulierung fehlen. CHF50 erhalten.
+
+CJ-Grind nur read-only: DRAFT `16690383454599` besitzt vier Varianten-SKUs, keine Storefront und keine aktive Publikation. CHF18.90 für32 Zoll ist ein Preis-Ausreisser gegenüber CHF67.90–73.90; PID/VID, Material, Längen-/Dichtebindung, Fracht, CH-Lieferbarkeit, Marge und Medienrechte fehlen. Kein CJ-Call, Textwrite oder Aktivierung.
+
+R162-Ratgeber erneut sauber. GSC nicht wiederholt. Der tatsächlich gepushte R162-Bericht-Blob `71b50e5903e1abca3e439dae0b68cdecdb31a140` ersetzt in der Historie die einzelne veraltete Referenz. Keine Ranking-/Verkaufswirkung behaupten. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R163.md/.json`.
+
+[LUXESTYLE_R163_20261110]

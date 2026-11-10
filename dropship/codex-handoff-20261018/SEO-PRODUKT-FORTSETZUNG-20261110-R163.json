@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "revision": 163,
+  "marker": "[LUXESTYLE_R163_20261110]",
+  "recordedAt": "2026-11-10T01:30:14+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    }
+  },
+  "documentationPreWrite": {
+    "README.md": {
+      "sha256": "091c562872bc96c732e772de3696f19b638b7308aacb0b5c43e94182e5dde614",
+      "gitBlobSha": "32f946be2c7eaad8719d3f3960f2bc12e7cdd0c5"
+    },
+    "PROJEKTGEDAECHTNIS.md": {
+      "sha256": "f2f438cbd795dcc009c1dd9f91bf2fe0b95f753431fd6aee94441e25e258e4e7",
+      "gitBlobSha": "3bedf795efe39cea204833b7d71569088e7886e6"
+    },
+    "CLAUDE.md": {
+      "sha256": "ff7e9562b4c12e4e565b2007d9aca3c961a06219fd4085627dddc3caf78015e2",
+      "gitBlobSha": "9994ffab5c429fb9b8b73b8fcf98d2b23dc77189"
+    },
+    "TAGESPROTOKOLL.md": {
+      "sha256": "90ba7494514d6cccbf5c542f3f0c75232ef1e9d60475cf77a28245112cf045e0",
+      "gitBlobSha": "d399157e4c51608d53348fb36e4af93fae1eef96"
+    },
+    "ARBEITSSTAND.json": {
+      "sha256": "528b2c7053033d3ce95de29298242a85b6cae87c885c6a21d90818e4789a5bf4",
+      "gitBlobSha": "92060b9d197cdcd41912ad20a4c0ac56637a40a3"
+    }
+  },
+  "kimono": {
+    "productId": "15458765570433",
+    "status": "ACTIVE",
+    "handle": "langer-kimonostreifen-mit-seitenschlitzen-und-609800",
+    "beforeTitle": "Langer Kimonostreifen mit Seitenschlitzen und Gürtel",
+    "afterTitle": "Langer Kimono mit Pfauenmotiv und Bindegürtel",
+    "seoTitle": "Langer Kimono mit Pfauenmotiv und Gürtel | LuxeStyle",
+    "priceCHF": "23.90",
+    "variantCount": 3,
+    "availableVariants": 3,
+    "variantIds": [
+      "55924214399361",
+      "55924214432129",
+      "55924214464897"
+    ],
+    "skus": [
+      "CJ-CJQB298684701AZ",
+      "CJ-CJQB298684702BY",
+      "CJ-CJQB298684703CX"
+    ],
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "publicationCount": 7,
+    "mediaReady": 5,
+    "altTextWrites": 5,
+    "preserved": [
+      "handle",
+      "status",
+      "productType",
+      "tags",
+      "rueckhol-0907",
+      "variant ids",
+      "SKUs",
+      "price",
+      "inventory",
+      "publication count",
+      "media sources"
+    ],
+    "publicReadback": {
+      "httpStatus": 200,
+      "selfCanonical": true,
+      "noindex": false,
+      "titleExact": true,
+      "metaExact": true,
+      "h1Exact": true,
+      "cartPresent": true
+    },
+    "socialEligible": false,
+    "socialBlocker": "rueckhol-0907"
+  },
+  "womenGiftArticle": {
+    "articleId": "gid://shopify/Article/1001546514817",
+    "handle": "geschenke-fuer-frauen-2026-schweiz",
+    "published": true,
+    "beforeTitle": "Geschenke für Frauen 2026: Ideen mit Stil aus der Schweiz",
+    "afterTitle": "Geschenke für Frauen 2026: Ideen nach Anlass und Preisrahmen",
+    "seoTitle": "Geschenke für Frauen 2026: Anlass und Preisrahmen",
+    "seoDescription": "Geschenkideen für Frauen 2026: Auswahl nach Anlass, Interessen und Preisrahmen sowie Hinweise für eine passende und gut geplante Bestellung.",
+    "removedArticleClaims": [
+      "Selfcare",
+      "30-Tage-Rückgabe",
+      "unverified materials",
+      "unverified effects",
+      "unverified prices",
+      "unverified single-product recommendations",
+      "Swiss-origin implication"
+    ],
+    "internalLinksVerified": 3,
+    "faqBlocks": 1,
+    "faqQuestions": 4,
+    "articleImageAltUpdated": true,
+    "publicReadback": {
+      "httpStatus": 200,
+      "selfCanonical": true,
+      "noindex": false,
+      "titleExact": true,
+      "metaExact": true,
+      "h1Exact": true,
+      "faqJsonLdParsed": true,
+      "oldImageAltAbsent": true
+    },
+    "gscRequeried": false,
+    "rankingImpact": "unknown",
+    "salesImpact": "unknown"
+  },
+  "cjDraftBinding": {
+    "productId": "16690383454599",
+    "status": "DRAFT",
+    "handle": "perucke-lockig-echthaar-spitze-664896",
+    "onlineStoreUrl": null,
+    "activePublications": 0,
+    "variantSkus": [
+      "CJZR164957201AZ",
+      "CJZR164957202BY",
+      "CJZR164957203CX",
+      "CJZR164957237KP"
+    ],
+    "pricesCHF": [
+      "67.90",
+      "70.90",
+      "73.90",
+      "18.90"
+    ],
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "shopifyReadOnly": true,
+    "cjCalls": 0,
+    "writes": 0,
+    "activated": false,
+    "blockers": [
+      "32-inch price outlier",
+      "CJ PID/VID not bound",
+      "hair material and lace construction unverified",
+      "density and length mapping unverified",
+      "freight unknown",
+      "delivery to Switzerland unknown",
+      "price/margin unverified",
+      "commercial media rights unknown"
+    ]
+  },
+  "r162ArticleQa": {
+    "httpStatus": 200,
+    "selfCanonical": true,
+    "noindex": false,
+    "electronicsLinks": 7,
+    "faqQuestions": 4,
+    "articleOldClaimsAbsent": true
+  },
+  "documentationCorrection": {
+    "r162ReportActualGitBlobSha": "71b50e5903e1abca3e439dae0b68cdecdb31a140",
+    "staleHistoryReferenceToCorrect": "543f3c77d202c51546e2eb97c4e9817dd2dc3572"
+  },
+  "writesNotPerformed": [
+    "theme",
+    "menu",
+    "merchant",
+    "feed",
+    "gtm",
+    "google_ads",
+    "budget",
+    "discount",
+    "flow",
+    "dns",
+    "social",
+    "paid_render",
+    "cj_workflow",
+    "product_activation"
+  ],
+  "claudeReceipt": "unknown_no_claude_receipt"
+}
