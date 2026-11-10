@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "run": "R174",
+  "checkedAt": "2026-11-10T21:08:22+01:00",
+  "brand": {
+    "name": "LuxeStyle",
+    "shop": "luxestyle.ch",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "pinterestProfile": "luxestyleCH"
+  },
+  "authorization": {
+    "scope": "quality_and_rights_checked_luxestyle_social_publication_via_metricool",
+    "explicitRequest": "pinterest_push",
+    "paidAds": false,
+    "customersContacted": false
+  },
+  "product": {
+    "id": "gid://shopify/Product/15408458236289",
+    "variantId": "gid://shopify/ProductVariant/55732479590785",
+    "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+    "status": "ACTIVE",
+    "availableForSale": true,
+    "price": {
+      "amount": "29.90",
+      "currency": "CHF"
+    },
+    "inventory": {
+      "tracked": false,
+      "policy": "CONTINUE",
+      "quantity": 0,
+      "stockPromiseMade": false,
+      "deliveryPromiseMade": false
+    },
+    "guard": {
+      "tagsNonEmpty": true,
+      "blockedTags": [],
+      "rueckhol": false,
+      "eligible": true
+    }
+  },
+  "media": {
+    "shopifyMediaId": "gid://shopify/MediaImage/69731159474561",
+    "type": "IMAGE",
+    "format": "JPEG",
+    "width": 1601,
+    "height": 1601,
+    "originalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+    "metricoolUrl": "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg",
+    "originalSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "exportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "byteIdentical": true,
+    "rights": {
+      "state": "OWNER_ASSURANCE_ACCEPTED_FOR_DOCUMENTED_SHOP_PRODUCT_IMAGES",
+      "scope": "this_exact_product_image_for_organic_social",
+      "independentCopyrightChainVerified": false,
+      "paidAdsGrant": false
+    }
+  },
+  "content": {
+    "masterId": "luxe_photo_kosmetik_organizer_20261101",
+    "title": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+    "text": "Mehr Überblick auf deinem Schminktisch. Dieser Kosmetik-Organizer bringt deine Auswahl gestaffelt in Szene. Produkt und aktuelle Angaben ansehen.",
+    "altText": "Gestaffelter Kosmetik-Organizer mit dekorativ platzierten Flaschen und Pflegeprodukten.",
+    "link": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+    "board": {
+      "id": "1111333714239114020",
+      "name": "Geschenkideen Schweiz",
+      "owner": "luxestyleCH"
+    }
+  },
+  "duplicateCheck": {
+    "range": {
+      "from": "2026-11-01T00:00:00+01:00",
+      "to": "2026-11-18T23:59:59+01:00",
+      "timezone": "Europe/Zurich"
+    },
+    "dailyReads": 18,
+    "returnedObjects": 102,
+    "pinterestPins": 14,
+    "hashedPinterestMedia": 14,
+    "directMatches": 0,
+    "hashMatches": 0,
+    "boundedScopeCompleteAsReturned": true,
+    "olderOrHiddenHistory": "unknown",
+    "serverSideTruncation": "unknown"
+  },
+  "metricoolWrite": {
+    "writes": 1,
+    "retries": 0,
+    "id": 423622854,
+    "uuid": "6213007717183669914",
+    "plannedAt": "2026-11-15T20:00:00+01:00",
+    "timezone": "Europe/Zurich",
+    "network": "pinterest",
+    "status": "PENDING",
+    "publicationState": "scheduled_not_published",
+    "draft": false,
+    "autoPublish": true,
+    "boardId": "1111333714239114020",
+    "readbackCountAtSlot": 1,
+    "readbackMatched": [
+      "id",
+      "uuid",
+      "plannedAt",
+      "network",
+      "status",
+      "draft",
+      "autoPublish",
+      "boardId",
+      "title",
+      "text",
+      "link",
+      "altText",
+      "mediaSha256"
+    ],
+    "platformId": null,
+    "publicationUrl": null
+  },
+  "registers": {
+    "threadsPreserved": {
+      "path": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+      "sha256": "f3169fc73d0b30aa824dd3a574b47774859fa042375f905c7140a67247d90c53",
+      "changed": false
+    },
+    "pinterest": {
+      "path": "dropship/codex-handoff-20261018/register/pinterest-luxe_photo_kosmetik_organizer_20261101.json",
+      "sha256": "e47927f35474c743b93627d24bf59ffcdfb1dc2b72a2dca42bc4195e448c0323",
+      "state": "SCHEDULED_CONFIRMED"
+    }
+  },
+  "dailyLimits": {
+    "metricoolMetricsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "searchConsoleRepeated": false,
+    "broadSalesRepeated": false,
+    "merchantBroadRepeated": false,
+    "ordersQueried": false
+  },
+  "otherWrites": {
+    "shopify": 0,
+    "klaviyo": 0,
+    "customers": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "shopSettings": 0,
+    "flows": 0,
+    "dns": 0,
+    "paidRenders": 0
+  },
+  "projectorMaster": {
+    "resolved": false,
+    "professionalMasterMp4": false,
+    "unchangedFromR173": true
+  },
+  "existingCadence": "08:00_14:00_19:00_Europe_Zurich",
+  "newAutomation": false,
+  "receiptState": "unknown_no_claude_receipt"
+}

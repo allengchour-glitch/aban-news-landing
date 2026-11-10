@@ -2134,3 +2134,15 @@ Social blieb vollständig gesperrt: Die vier bytegleichen Knoblauchhacker-Drafts
 [R173 Umsetzungsbeleg](UMSETZUNGSBELEG-20261110-R173.md) · [Maschinenbeleg](UMSETZUNGSBELEG-20261110-R173.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R173_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 174: ein Pinterest-Pin kontrolliert terminiert
+
+Nach der ausdrücklichen Pinterest-Freigabe wurde genau ein rechte- und produktgebundener statischer Pin über Metricool angelegt. Produkt `15408458236289`, Variante `55732479590785`, SKU `LX-35-BAMBUS-KOSMETIK-ORGANIZE` ist `ACTIVE`, kaufbar, CHF 29.90, untracked/`CONTINUE`/Menge 0 und ohne Sperrtag- oder `rueckhol`-Treffer. Das geprüfte 1601×1601-JPEG und der Metricool-Export sind bytegleich, SHA-256 `73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e`. Die akzeptierte Inhaberbestätigung gilt für genau dieses Shop-Produktbild im organischen Social-Einsatz; eine unabhängige Copyright-Kette oder Paid-Ads-Freigabe ist damit nicht belegt.
+
+Metricool bestätigte ID `423622854`, UUID `6213007717183669914`, Board `1111333714239114020` «Geschenkideen Schweiz» / `luxestyleCH`, Termin 15.11.2026 um 20:00 Europe/Zurich, `PENDING`, `draft=false`, `autoPublish=true`. Genau ein Write, kein Retry; Plattform-ID und Publikations-URL bleiben bis zur Auslieferung unbekannt. Der gezielte Readback bestätigte Inhalt, UTM, Alttext, Board und bytegleiches Medium. Eine begrenzte Historienprüfung 01.–18.11. lieferte 102 Objekte,14 Pinterest-Pins und14 gehashte Medien ohne Treffer; ältere, versteckte oder trunkierte Historie bleibt unbekannt.
+
+Der bestehende Threads-Beleg blieb unverändert. Für Pinterest besteht ein eigener kanalbegrenzter Registereintrag. Projektor-Master und Knoblauchhacker-Sperren bleiben offen; keine Kennzahl-/Flow-/GSC-/breite Verkaufsabfrage wurde wiederholt und keine weitere Plattform-, Shop-, Kunden-, Budget-, DNS- oder Renderaktion ausgeführt.
+
+[R174 Pinterest-Bericht](PINTEREST-PUSH-20261110-R174.md) · [Maschinenbeleg](PINTEREST-PUSH-20261110-R174.json) · [Pinterest-Register](register/pinterest-luxe_photo_kosmetik_organizer_20261101.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R174_20261110]

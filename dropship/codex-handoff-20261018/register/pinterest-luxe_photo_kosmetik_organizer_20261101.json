@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "scope": {
+    "brandId": 6227837,
+    "brand": "luxestyle.ch",
+    "network": "pinterest",
+    "masterId": "luxe_photo_kosmetik_organizer_20261101",
+    "creativeId": "luxe_photo_kosmetik_organizer_20261101",
+    "productId": "gid://shopify/Product/15408458236289",
+    "variantId": "gid://shopify/ProductVariant/55732479590785"
+  },
+  "baseline": {
+    "historyState": "unknown",
+    "initialisation": "Additive Pinterest-only record for the existing master; the existing Threads register is preserved unchanged and no registry is reset.",
+    "boundedCountercheck": {
+      "from": "2026-11-01T00:00:00+01:00",
+      "to": "2026-11-18T23:59:59+01:00",
+      "timezone": "Europe/Zurich",
+      "dailyReads": 18,
+      "successfulDailyReads": 18,
+      "returnedObjects": 102,
+      "maxObjectsPerDay": 14,
+      "pinterestPosts": 14,
+      "uniquePinterestMediaUrls": 14,
+      "directPinterestMatches": 0,
+      "directMatchKeys": [
+        "luxe_photo_kosmetik_organizer_20261101",
+        "gid://shopify/Product/15408458236289",
+        "gid://shopify/ProductVariant/55732479590785",
+        "bambus-kosmetik-organizer-premium",
+        "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+      ],
+      "hashedPinterestMedia": 14,
+      "successfulMediaHashes": 14,
+      "assetSha256Matches": 0,
+      "pagination": "The exposed connector has no cursor, page, total or truncation field. Daily responses contained only data. The bounded connector view is fully enumerated, while hidden server-side truncation and pre-creation history remain unknown."
+    }
+  },
+  "media": {
+    "type": "IMAGE",
+    "originalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bambus-kosmetik-organizer-premium.jpg?v=1781959266",
+    "assetSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "width": 1601,
+    "height": 1601,
+    "bytes": 167314,
+    "localPath": "/dev/shm/luxestyle-pinterest-20261110/bambus-kosmetik-organizer-premium.jpg",
+    "metricoolMediaUrls": [
+      "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+    ],
+    "exportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+    "exportHashEqualsOriginal": true
+  },
+  "approval": {
+    "ownerAuthorisation": "Owner authorised quality- and rights-checked LuxeStyle social publications via Metricool and explicitly requested Pinterest push.",
+    "imageRights": "OWNER_ASSURANCE_ACCEPTED_FOR_DOCUMENTED_SHOP_PRODUCT_IMAGES for this exact product image.",
+    "boardId": "1111333714239114020",
+    "boardName": "Geschenkideen Schweiz",
+    "boardOwner": "luxestyleCH",
+    "title": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+    "text": "Mehr Überblick auf deinem Schminktisch. Dieser Kosmetik-Organizer bringt deine Auswahl gestaffelt in Szene. Produkt und aktuelle Angaben ansehen.",
+    "altText": "Gestaffelter Kosmetik-Organizer mit dekorativ platzierten Flaschen und Pflegeprodukten.",
+    "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+    "plannedAt": "2026-11-15T20:00:00+01:00",
+    "timezone": "Europe/Zurich"
+  },
+  "request": {
+    "blogId": "6227837",
+    "date": "2026-11-15T20:00:00+01:00",
+    "state": "SCHEDULED_CONFIRMED",
+    "attempts": 1,
+    "mediaFiles": [
+      "/dev/shm/luxestyle-pinterest-20261110/bambus-kosmetik-organizer-premium.jpg"
+    ],
+    "info": {
+      "text": "Mehr Überblick auf deinem Schminktisch. Dieser Kosmetik-Organizer bringt deine Auswahl gestaffelt in Szene. Produkt und aktuelle Angaben ansehen.",
+      "publicationDate": {
+        "dateTime": "2026-11-15T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "pinterest"
+        }
+      ],
+      "media": [],
+      "mediaAltText": [
+        "Gestaffelter Kosmetik-Organizer mit dekorativ platzierten Flaschen und Pflegeprodukten."
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": true,
+      "shortener": false,
+      "draft": false,
+      "pinterestData": {
+        "boardId": "1111333714239114020",
+        "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+        "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      }
+    },
+    "response": {
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=6213007717183669914",
+      "providerStatus": "PENDING",
+      "metricoolCreationDate": {
+        "dateTime": "2026-11-10T21:07:00",
+        "timezone": "Europe/Zurich"
+      },
+      "readbackCountAtSlot": 1,
+      "savedDraft": false,
+      "savedAutoPublish": true,
+      "savedBoardId": "1111333714239114020",
+      "savedSaveExternalMediaFiles": false,
+      "mediaUrl": "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg",
+      "mediaSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e"
+    }
+  },
+  "channelState": {
+    "network": "pinterest",
+    "status": "PENDING",
+    "plannedAt": "2026-11-15T20:00:00+01:00",
+    "timezone": "Europe/Zurich",
+    "draft": false,
+    "autoPublish": true,
+    "boardId": "1111333714239114020",
+    "metricoolId": 423622854,
+    "uuid": "6213007717183669914",
+    "platformId": null,
+    "publicationUrl": null
+  },
+  "checkpoint": {
+    "state": "SCHEDULED_CONFIRMED",
+    "claimOwner": "codex-r174-pinterest-20261110",
+    "preparedAt": "2026-11-10T21:03:36+01:00",
+    "requestStartedAt": "2026-11-10T21:07:08+01:00",
+    "acknowledgedAt": "2026-11-10T21:07:00+01:00",
+    "confirmedAt": "2026-11-10T21:08:22+01:00",
+    "rule": "Only one send after fresh identity/product/slot/duplicate checks. INFLIGHT, UNKNOWN or UNCERTAIN block resend. An unclear result is resolved only by targeted readback, never by blind retry.",
+    "acknowledgedAtPrecision": "minute",
+    "acknowledgedAtSource": "Metricool creationDate; not a second-precise ordering claim."
+  },
+  "history": [
+    {
+      "at": "2026-11-10T21:03:36+01:00",
+      "event": "Additive Pinterest-only checkpoint prepared for the existing master after bounded media-hash, content, product-link and slot counterchecks. Older history remains unknown."
+    },
+    {
+      "at": "2026-11-10T21:05:16+01:00",
+      "event": "PREPARED guard corrected to the exact owner-approved Pinterest title, text, UTM and alt text; local media path corrected after the workspace overlay reported no free space. No platform write yet."
+    },
+    {
+      "at": "2026-11-10T21:07:08+01:00",
+      "event": "Fresh Metricool identity, Shopify product/variant/storefront, repository tag guard, image hash/visual QA, bounded duplicate history and exact target slot all passed. Single-send claim moved PREPARED to INFLIGHT before the request."
+    },
+    {
+      "at": "2026-11-10T21:07:00+01:00",
+      "event": "Metricool acknowledged the single create request with ID 423622854 and UUID 6213007717183669914. Provider returned Pinterest PENDING; this is scheduled, not published."
+    },
+    {
+      "at": "2026-11-10T21:08:22+01:00",
+      "event": "Targeted slot and UUID readback found exactly one object with the approved text, title, UTM, board, alt text, draft=false and autoPublish=true. The Metricool JPEG is byte-identical to the approved original."
+    }
+  ]
+}

@@ -1528,3 +1528,13 @@ Social: null geeignete Objekte. Vier Knoblauchhacker-Drafts teilen SHA-256 `4684
 Kennzahlen, Flowreport, GSC, breite Verkaufs-/Merchantdaten und Bestellungen wurden nicht erneut gelesen. Belege `UMSETZUNGSBELEG-20261110-R173.md/.json`; Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R173_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 174: Pinterest-Lücke am 15.11. qualitätsgesichert belegt
+
+Genau ein neuer Pin wurde nach frischer LuxeStyle-/Metricool-, Produkt-, Board-, Rechte-, Sperrtag-, Medienhash-, Historien- und Slotprüfung angelegt. Kosmetik-Organizer `15408458236289`, Variante `55732479590785`, SKU `LX-35-BAMBUS-KOSMETIK-ORGANIZE`, CHF 29.90 ist `ACTIVE` und kaufbar; Inventory untracked/`CONTINUE`/Menge 0 begründet keine Bestands- oder Lieferzeitzusage. Das 1601×1601-Originalbild und Metricool-Medium sind bytegleich, SHA-256 `73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e`. Rechtebasis: akzeptierte Inhaberbestätigung für genau dieses Shop-Produktbild und organischen Social-Einsatz, keine unabhängige Copyright-Kettenprüfung oder Paid-Ads-Freigabe.
+
+Metricool ID `423622854`, UUID `6213007717183669914`, 15.11.2026 20:00 Europe/Zurich, Board `1111333714239114020` «Geschenkideen Schweiz» / `luxestyleCH`, `PENDING`, `draft=false`, `autoPublish=true`. Das bedeutet terminiert, nicht veröffentlicht; Plattform-ID und Publikations-URL fehlen bis zur Auslieferung. Ein Write, kein Retry. Gezielter Readback: genau ein Slotobjekt, Inhalt/UTM/Alttext/Board/Medium passend.
+
+Historiengegenprobe 01.–18.11.:102 gelieferte Objekte,14 Pins,14 erfolgreich gehashte Pinterest-Medien,0 direkte oder Hash-Treffer. Alte, versteckte oder serverseitig trunkierte Historie bleibt unbekannt. Die stabile Master-ID `luxe_photo_kosmetik_organizer_20261101` bleibt erhalten. Der Threads-Beleg wurde nicht verändert; neues Pinterest-Register separat. Projektor-Master bleibt ohne A–G-Bindung, Rechte und professionelle MP4 offen. Keine Tagesreports wiederholt. Belege `PINTEREST-PUSH-20261110-R174.md/.json`; Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R174_20261110]

@@ -1974,3 +1974,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Claude | R173-Umsetzungsbeleg und kanonische Übergabe additiv fortgeführt | Revision173/24 Aufgaben vorgesehen; Receipt unknown_no_claude_receipt |
 
 [LUXESTYLE_R173_20261110] [Bericht](UMSETZUNGSBELEG-20261110-R173.md) · [Beleg](UMSETZUNGSBELEG-20261110-R173.json).
+
+### R174
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Tagesgrenze | R173, Projektgedächtnis, Übergabe, heutigen Tagesblock und bestehendes Threads-Register gelesen | R165-Metricool-/Klaviyo-, R162-GSC-, breite Verkaufs-/Merchantdaten und Bestellungen nicht wiederholt; 08/14/19 unverändert |
+| Identitäten / Board | LuxeStyle, Metricool6227837/Europe-Zurich, Pinterest luxestyleCH und Board1111333714239114020 frisch gebunden | Board «Geschenkideen Schweiz» bestätigt; keine andere Marke oder unbekanntes Board verwendet |
+| Produkt / Guard | Organizer15408458236289, Variante55732479590785, SKU LX-35-BAMBUS-KOSMETIK-ORGANIZE, Tags, Kaufbarkeit und Inventory geprüft | ACTIVE/kaufbar/CHF29.90; keine Sperrtags oder rueckhol; untracked/CONTINUE/Menge0, keine Bestands-/Lieferzeitzusage |
+| Medium / Rechte | MediaImage69731159474561 visuell und per Hash gebunden; Original gegen Metricool-Export geprüft |1601×1601 JPEG, beide SHA-256 73a02bbe…275e; akzeptierte Inhaberbestätigung für genau dieses Produktbild/Organic Social, unabhängige Copyright-Kette unbekannt |
+| Historie / Doppelpost |01.–18.11. in kleinen Tagesfenstern auf Master-, Produkt-, Link-, Medien- und Hash-Treffer geprüft |102 Objekte/14 Pinterest-Pins/14 Hashes/0 Treffer im gelieferten Scope; ältere, versteckte oder trunkierte Historie unbekannt |
+| Pinterest-Write | Genau einen Pin auf 15.11. 20:00 Europe/Zurich an Board1111333714239114020 angelegt | ID423622854/UUID6213007717183669914, PENDING, draft=false, autoPublish=true;1 Write/0 Retries; terminiert, nicht veröffentlicht |
+| Readback / Ledger | Zielslot und UUID gezielt zurückgelesen; neues kanalbegrenztes Pinterest-Register angelegt | Genau ein passendes Slotobjekt; Titel/Text/UTM/Alt/Board/Medium bestätigt; Threads-Register unverändert; Plattform-ID/URL noch null |
+| Offene Grenzen | Projektor- und Knoblauchhacker-Gates unverändert erhalten | Keine professionelle Projektor-MP4; gesperrte Drafts nicht aktiviert; keine weiteren Plattform-/Shop-/Kunden-/Budget-/DNS-/Renderwrites |
+| Dokumentation / Claude | R174-Bericht, Maschinenbeleg und kanonische Übergabe additiv fortgeführt | Revision174/24 Aufgaben; Receipt unknown_no_claude_receipt |
+
+[LUXESTYLE_R174_20261110] [Bericht](PINTEREST-PUSH-20261110-R174.md) · [Beleg](PINTEREST-PUSH-20261110-R174.json) · [Register](register/pinterest-luxe_photo_kosmetik_organizer_20261101.json).
