@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Rechner: passendes Kaufziel auch bei Produkt-Abruffehlern
+
+Fortsetzung nach Shop-Ersatzanzeige PR3076; von main71211c0 auf eigenem Branch. AGENTS/CLAUDE/Shared Memory und offene Arbeiten gelesen. Stripe nur lesend: Konto lesbar, alle57 aktiven Zahlungslinks ohne weitere Seite erhalten; keine passend per Slug zugeordneten aktiven Links für Audit-Workbook/Notfall-Ordner/Komplettpaket gefunden. Daraus nicht das Fehlen sämtlicher Produkte/Zahlungsdienste ableiten. Checkout-Konfiguration und Audit-Katalog widersprechen sich weiterhin bei Voraussetzungen; keine Preise/Links im Konto angelegt oder geändert und keine Mail versendet. Angebote bleiben bei Anfrage, bis eigener Zahlungs- und geschützter Lieferweg bestätigt ist.
+
+Unabhängiger konkreter Verkaufsweg: Bei ausgefallenem JSON-Abruf blieben vier Rechner-Kaufknöpfe auf der allgemeinen Shopseite, ohne Produkt-Sprungziel. In acht Browserfällen vor Korrektur bestätigt. Je eine href-Zeile auf Budget-, Mietzins-, Schulden- und Finanz-Kompass-Seite führt jetzt im Fehlerfall zur vorhandenen passenden `#kit-<slug>`-Karte. Nutzt die bereits korrigierte Shop-Ersatzanzeige; keine neue Produktzuordnung erfunden. Normale direkte Checkoutlinks, Preise, Texte und Berechnungen unverändert.
+
+GEMESSEN:16 lokale Browserfälle (vier Seiten ×1440/390px × regulär/Netzfehler): reguläres Checkoutziel unverändert; bei Netzfehler tatsächlich zur passenden Karte navigiert und dort Kaufziel mit bestehendem Katalog verglichen. Kein Checkout geöffnet, keine Käufe oder Downloads; keine Seitenüberbreite/JavaScriptfehler. Katalogkonsistenzprüfung grün. Bereitstellung und frische öffentliche Gegenprobe im zugehörigen PR nachsehen. Keine neue Automation/Frequenzänderung, keine Shop-/Metricool-/Konto-/Budgetaktion. Finanzielle Wirkung nicht gemessen.
+
 ## Shop-Ersatzanzeige verwendet den bestehenden aktuellen Katalog
 
 Wirtschaftslauf10.11.: Von maindfb367f auf eigenem Branch, Regeln und offene Arbeiten geprüft; keine Änderungen an LuxeStyle-Produkten/Metricool. Konkreter Browserbefund: regulärer Produktabruf zeigt31 Angebote und BundleCHF39, fehlgeschlagener Abruf dagegen22, BundleCHF79, anderen Link und doppelte IDs «kit-undefined». Ursache: von Hand gepflegte Ersatzdatei `js/shop-config.js`, die der bestehende Katalogablauf nicht aktualisiert.
