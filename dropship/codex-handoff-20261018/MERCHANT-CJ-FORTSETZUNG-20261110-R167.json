@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "run": "R167",
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-10T10:48:17+01:00",
+  "writeSummary": {
+    "shopify": 0,
+    "merchant": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "customers": 0,
+    "dns": 0,
+    "theme": 0,
+    "paidRenders": 0,
+    "githubActionsReadOnly": 2
+  },
+  "drive": {
+    "fileId": "110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-",
+    "name": "product_issues_2026-11-08_07-46-23.csv",
+    "mimeType": "text/comma-separated-values",
+    "bytes": 110213899,
+    "sha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+    "isVideo": false
+  },
+  "attachments": {
+    "byteIdentical": true,
+    "bytesEach": 4951868,
+    "sha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4"
+  },
+  "largeCsv": {
+    "rows": 367594,
+    "malformedRows": 0,
+    "uniqueItemIds": 275537,
+    "uniqueTitles": 275158,
+    "exactDuplicateRows": 0,
+    "multiIssueItems": 83405,
+    "rowStatus": {
+      "ELIGIBLE_LIMITED": 362439,
+      "NOT_ELIGIBLE_OR_DISAPPROVED": 5155
+    },
+    "countries": {
+      "Liechtenstein": 358590,
+      "Switzerland": 7621,
+      "Germany": 1383
+    },
+    "traffic": {
+      "Free listings": 278084,
+      "Shopping ads": 85344,
+      "Dynamic remarketing": 4166
+    },
+    "issues": [
+      {"title": "Missing shipping info in some countries", "rows": 358792, "items": 275537},
+      {"title": "Over capacity Shopping ads CSS", "rows": 6456, "items": 3228},
+      {"title": "Promotional overlay on image", "rows": 1398, "items": 357},
+      {"title": "Personalized advertising: personal hardships", "rows": 448, "items": 224},
+      {"title": "Missing attribute: availability", "rows": 110, "items": 55},
+      {"title": "Image too small", "rows": 102, "items": 43},
+      {"title": "Product page unavailable", "rows": 36, "items": 6}
+    ],
+    "severityAllRows": "SEVERITY_DISAPPROVED",
+    "severityCaveat": "row property; not an additive product count"
+  },
+  "smallCsv": {
+    "rows": 14245,
+    "uniqueItems": 3826,
+    "languages": {"de": 12950, "fr": 1295},
+    "identicalGermanRowsAlsoInLarge": 12950,
+    "identicalFrenchRowsAlsoInLarge": 0,
+    "smallOnlyItemIds": 6,
+    "scope": "different language/feed snapshot; not a complete replacement"
+  },
+  "merchant": {
+    "account": {"displayName": "LuxeStyle CH", "merchantCenterId": "5797470070"},
+    "availabilityCase": {
+      "offerId": "13331643115375957532",
+      "productName": "accounts/5797470070/products/de~CH~13331643115375957532",
+      "dataSource": "accounts/5797470070/dataSources/10678939025",
+      "status": "DISAPPROVED",
+      "issue": "item_missing_required_attribute",
+      "attribute": "availability",
+      "countries": ["CH", "LI"],
+      "shopify": {
+        "productId": "15500960530817",
+        "variantId": "56110933803393",
+        "status": "ACTIVE",
+        "priceCHF": "15.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryTracked": false
+      },
+      "proposedAction": "derive in_stock from current Shopify availableForSale at the bound source; exact post-sync readback",
+      "executed": false
+    },
+    "staleLandingPageOffers": [
+      {"productId":"15516154462593","variantId":"56177866178945","offerId":"shopify_ZZ_15516154462593_56177866178945","shopify":"DRAFT_404_variant_missing","merchantExactRead":"present_disapproved","dataSource":"accounts/5797470070/dataSources/10667445201"},
+      {"productId":"15493853544833","variantId":"56080492429697","offerId":"shopify_ZZ_15493853544833_56080492429697","shopify":"DRAFT_404_variant_missing","merchantExactRead":"INVALID_ARGUMENT"},
+      {"productId":"15519834636673","variantId":"56191247778177","offerId":"shopify_ZZ_15519834636673_56191247778177","shopify":"DRAFT_404_variant_missing","merchantExactRead":"INVALID_ARGUMENT"},
+      {"productId":"15516156395905","variantId":"56177868177793","offerId":"shopify_ZZ_15516156395905_56177868177793","shopify":"DRAFT_404_variant_missing","merchantExactRead":"present_disapproved","dataSource":"accounts/5797470070/dataSources/10667445201"},
+      {"productId":"15524696949121","variantId":"56221047292289","offerId":"shopify_ZZ_15524696949121_56221047292289","shopify":"DRAFT_404_variant_missing","merchantExactRead":"INVALID_ARGUMENT"},
+      {"productId":"15522193998209","variantId":"56204390433153","offerId":"shopify_ZZ_15522193998209_56204390433153","shopify":"DRAFT_404_variant_missing","merchantExactRead":"INVALID_ARGUMENT"}
+    ],
+    "staleOfferAction": "exclude/remove only at verified source; do not activate DRAFT products",
+    "repoFeedCountercheck": {
+      "mainCommit": "a58f950030880f94fe7472dd1f8d30632aef3b8b",
+      "itemCount": 6241,
+      "availabilityCount": 6241,
+      "targetOfferOrProductPresent": false,
+      "conclusion": "repo generator is not proven source for numeric offer 13331643115375957532"
+    }
+  },
+  "pinterest": {
+    "ownerUsername": "luxestyleCH",
+    "ownerName": "LuxeStyle CH",
+    "ownerId": "1111333782956748766",
+    "boards": [
+      {"id":"1111333714239114020","name":"Geschenkideen Schweiz","url":"https://www.pinterest.com/luxestyleCH/geschenkideen-schweiz/"},
+      {"id":"1111333714239531706","name":"Herrenmode Schweiz","url":"https://www.pinterest.com/luxestyleCH/herrenmode-schweiz/"}
+    ],
+    "metricoolSelectable": null,
+    "writes": 0
+  },
+  "seo": {
+    "gscRepeated": false,
+    "obsoleteBlackFridayProductId": "15402554229121",
+    "obsoleteBlackFridayState": "DRAFT_404_not_in_current_product_sitemap",
+    "redirectCreated": false,
+    "feeder": {
+      "productId": "15523986473345",
+      "http": 200,
+      "canonical": "self",
+      "indexable": true,
+      "sitemap": "sitemap_products_47.xml",
+      "internalLinks": "three on page2 of matching collection with crawlable pagination",
+      "proposedAnchor": "Futterspender für Katzen in Weiss ansehen",
+      "proposedTarget": "/products/futterautomat-fur-katze-527488",
+      "executed": false
+    }
+  },
+  "cj": {
+    "shopifyProductId": "16690383454599",
+    "shopifyStatus": "DRAFT",
+    "targetVariantId": "67886035009927",
+    "targetSku": "CJZR164957201AZ",
+    "priceCHF": "67.90",
+    "remoteMain": "a58f950030880f94fe7472dd1f8d30632aef3b8b",
+    "productRun": {
+      "runId": 42793821605,
+      "jobId": 129753733206,
+      "conclusion": "success",
+      "pid": "1607242452115664896",
+      "productSku": "CJZR1649572",
+      "variantSetComplete": true,
+      "verified": true
+    },
+    "inventoryRun": {
+      "runId": 42794106913,
+      "jobId": 129754697683,
+      "conclusion": "success",
+      "inventoryPartial": false,
+      "countryAggregation": false,
+      "rows": 37,
+      "countries": ["CN"],
+      "deliveryToSwitzerland": null,
+      "verified": true
+    },
+    "currentSkuRows": [
+      {"sku":"CJZR164957201AZ","vid":"1607242452195356672","country":"CN","factoryInventory":12416,"cjInventory":0},
+      {"sku":"CJZR164957202BY","vid":"1607242452199550976","country":"CN","factoryInventory":10165,"cjInventory":0},
+      {"sku":"CJZR164957203CX","vid":"1607242452199550977","country":"CN","factoryInventory":10654,"cjInventory":0},
+      {"sku":"CJZR164957237KP","vid":"2507260157271607400","country":"CN","factoryInventory":9400,"cjInventory":0}
+    ],
+    "unknown": ["Swiss delivery", "freight", "delivery time", "Prime", "commercial media rights"],
+    "writes": 0
+  },
+  "master": {
+    "masterId": "projector-18s-open-master",
+    "driveProvidedFilm": false,
+    "professionalMp4": false,
+    "socialEligible": false,
+    "blockers": ["exact variant/motif/unit binding", "native 1080x1920/30fps footage", "commercial edit/advertising rights", "music rights/listening acceptance", "final MP4 and QA"]
+  },
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

@@ -2054,3 +2054,17 @@ Die zwei konkreten Freigabepunkte sind abgeschlossen. Projektor-Master, Social-L
 [R166 Bericht](OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md) · [Maschinenbeleg](OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.json).
 
 [LUXESTYLE_R166_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 167: Merchant-Export live eingeordnet und CJ-Kandidat gebunden
+
+Der Google-Drive-Link enthält keinen Film, sondern einen 110'213'899-Byte-Merchant-CSV-Export. Die vollständige Offline-Auswertung ergab 367'594 Problemzeilen für 275'537 eindeutige Items ohne exakte Vollzeilenduplikate. 358'792 Zeilen betreffen fehlenden Versand, davon 357'409 Liechtenstein; ohne belegte Lieferfähigkeit, Kosten und Laufzeiten keine Versandänderung. 6'456 CSS-Kapazitätsfälle sind kein Produktattributfehler. Die beiden kleineren Anhänge sind bytegleich und bilden eine abweichende DE/FR-Auswahl, keinen vollständigen Ersatz.
+
+HYPD bestätigte Merchant Center `5797470070`/LuxeStyle CH. Angebot `13331643115375957532` fehlt live `availability`, während Shopify-Produkt `15500960530817` ACTIVE/kaufbar und Variante `56110933803393` `availableForSale=true` ist. Betroffene Datenquelle: `10678939025`. Der Repo-Feed auf Main erzeugt bereits Availability und enthält dieses numerische Angebot nicht; ein Repo-Patch wäre nicht als Quellfix belegt. Genau sechs Landingpage-Fehler wurden live gegen Shopify geprüft: alle Produkte DRAFT, ohne Publikation, URLs HTTP404 und alte Varianten nicht mehr existent. Zwei Angebote sind in Quelle `10667445201` weiterhin disapproved; vier exakte HYPD-Lesungen antworteten `INVALID_ARGUMENT`. Kein Feed-Write und keine DRAFT-Aktivierung.
+
+Pinterest-Ownership ist geklärt: `1111333714239114020` = Geschenkideen Schweiz und `1111333714239531706` = Herrenmode Schweiz, beide öffentlich `luxestyleCH`. Metricool-Auswahlbarkeit bleibt unbekannt. R166-Futterspender ist weiterhin HTTP200/indexierbar und sitemapgebunden; ein passender interner Link ist vorbereitet, nicht live. GSC wurde heute nicht wiederholt.
+
+CJ-DRAFT `16690383454599` wurde in genau zwei hashgesicherten read-only Runs am Main-Commit `a58f9500…` gebunden: PID `1607242452115664896`, vollständiger Variantensatz; Inventory 37 Zeilen ausschliesslich CN. Die vier aktuellen SKUs zeigen CJ-Bestand0 und getrennte Fabrikwerte. CH-Lieferbarkeit, Fracht, Prime, Rechte und Lieferzeit bleiben unbekannt; keine Aktivierung. Der Drive-Link schliesst keine Master-/Rechtegates, daher keine MP4 oder Social-Planung.
+
+[R167 Bericht](MERCHANT-CJ-FORTSETZUNG-20261110-R167.md) · [Maschinenbeleg](MERCHANT-CJ-FORTSETZUNG-20261110-R167.json).
+
+[LUXESTYLE_R167_20261110]

@@ -1458,3 +1458,17 @@ Kanalpreflight read-only: Bioziele unbekannt; aktuelle Pinterest-Pins verwenden 
 Belege: `OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md/.json`.
 
 [LUXESTYLE_R166_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 167: Merchant-CSV, Pinterest und CJ-Gates
+
+Der Drive-Link `110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-` ist ein 110-MB-Merchant-CSV, kein Video-/Rechtepaket. R167 wertete 367'594 Zeilen/275'537 Items vollständig offline aus. Fehlender Versand dominiert mit 358'792 Zeilen; 357'409 davon LI. Keine Versand- oder CSS-Kontoänderung daraus ableiten. Die zwei kleinen Anhänge sind bytegleich, aber eine abweichende Sprach-/Feed-Auswahl.
+
+Merchant-Konto `5797470070` live passend. `13331643115375957532` fehlt in Datenquelle `10678939025` aktuell `availability`; Shopify `15500960530817`/Variante `56110933803393` ist ACTIVE, CHF15.90, availableForSale=true, untracked/CONTINUE. Nächster enger Verkaufsfix bleibt Source-Mapping true→in_stock mit exaktem Readback, nicht ausgeführt. Sechs Landingpage-Offers referenzieren heute DRAFT-Produkte, HTTP404 und nicht mehr vorhandene Varianten; an verifizierter Quelle ausschliessen, niemals dafür aktivieren.
+
+Pinterest-Boards `1111333714239114020`/Geschenkideen Schweiz und `1111333714239531706`/Herrenmode Schweiz gehören beide öffentlich `luxestyleCH`; nur Metricool-Auswahlbarkeit bleibt unbekannt. R166-Futterspender technisch sauber; interner Hub-Link nur Entwurf. GSC nicht wiederholt.
+
+CJ-Kandidat `16690383454599` wurde read-only gebunden: Produkt-Run `42793821605`, Inventory-Run `42794106913`, PID `1607242452115664896`, 37 vollständige CN-Zeilen. Vier aktuelle SKUs mit CJ0; CH-Lieferbarkeit/Fracht/Prime/Rechte/Lieferzeit unbekannt. DRAFT und Preise unverändert. Keine Route oder Aktivierung.
+
+Der Projektor-Master bleibt ohne neue Filmquelle, Produkt-/Variantenbindung, Rechte und finale MP4 blockiert. Belege: `MERCHANT-CJ-FORTSETZUNG-20261110-R167.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R167_20261110]

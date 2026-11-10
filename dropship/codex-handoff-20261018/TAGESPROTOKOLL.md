@@ -1868,3 +1868,21 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Claude Code | R166-Bericht, Beleg und kanonische Übergabe fortgeführt | Revision166 mit24 Aufgaben/129 Historieneinträgen vorgesehen;08/14/19 unverändert; Claude-Receipt unbekannt |
 
 [LUXESTYLE_R166_20261110]
+
+### R167
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Drive / Master | Verlinkte Drive-Datei frisch gelesen und heruntergeladen | 110-MB-Merchant-CSV, kein Film-/Rechtepaket; Master-MP4 weiterhin blockiert |
+| Merchant-CSV | Grossen Export vollständig streamingbasiert ausgewertet und zwei bytegleiche Anhänge verglichen | 367'594 Zeilen/275'537 Items; keine Vollzeilenduplikate; Versand357'409×LI dominiert; Snapshotgrenzen dokumentiert |
+| Merchant live | HYPD-Konto5797470070 und sieben exakte Angebote gelesen | Availability fehlt bei13331643115375957532; sechs Landingpage-Fälle an DRAFT/404/alten Varianten gebunden;0 Writes |
+| Shopify-Gegenprobe | Sechs Landingpage-Produkte und Bluetooth-Empfänger gezielt gelesen | Sechs DRAFT/unpubliziert/404; Bluetooth ACTIVE/kaufbar/CHF15.90/availableForSale=true |
+| Feedquelle | Aktuellen Main-Generator und veröffentlichten Repo-Feed gegengeprüft | Repo-Feed6241/6241 mit Availability, Zielangebot fehlt; kein unbelegter Codepatch |
+| Bilder | Vier Overlay-Fälle gegen Variantenmedien geprüft | Null sicher ausführbare Bildtausche; Variantenbindung und Rechte fehlen |
+| Pinterest | Beide Board-IDs öffentlich auf Owner/Name/URL gebunden | Geschenkideen Schweiz und Herrenmode Schweiz gehören luxestyleCH; Metricool-Auswahlbarkeit unbekannt |
+| SEO | Futterspender, Sitemap, interne Links und obsolete Black-Friday-Spur geprüft; GSC nicht wiederholt | Futterspender200/indexierbar; passender Hub-Link vorbereitet; DRAFT-404 erhält keinen falschen Redirect |
+| CJ | Genau einen Produkt- und einen Inventory-Lookup hashgesichert ausgeführt | PID1607242452115664896;37 CN-Zeilen; vier Shop-SKUs CJ0; CH/Fracht/Prime/Rechte/Lieferzeit unbekannt; DRAFT unverändert |
+| Dokumentation / Claude | R167-Bericht, Maschinenbeleg und kanonische Übergabe fortgeführt | Revision167 vorgesehen;08/14/19 unverändert; Receipt unbekannt |
+| Grenzen | Keine Shopify-, Merchant-, Feed-, Metricool-, Klaviyo-, Kunden-, DNS-, Theme-, Budget-, Rabatt- oder Renderänderung | Ranking-/Verkaufswirkung unbekannt |
+
+[LUXESTYLE_R167_20261110] [Bericht](MERCHANT-CJ-FORTSETZUNG-20261110-R167.md) · [Beleg](MERCHANT-CJ-FORTSETZUNG-20261110-R167.json). Merchant-Quellenfix konkret vorbereitet, noch nicht ausgeführt.

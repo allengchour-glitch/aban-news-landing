@@ -375,3 +375,16 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 6. YouTube-Preflight: fünf aktuelle PENDING-Posts10./11.11. sind draft=false, global autoPublish=true, privacy=public und madeForKids=false. Das ersetzt keine Master-/Rechtefreigabe; kanalbezogenes Auto-Publish unbekannt.
 7. Projektor-Master und Social-Lücken bleiben wegen Varianten-/Einheiten-/Quellen-/Rechte-/Musik- und MP4-Gates gesperrt. Keine Ersatzposts.
 8. R166-Belege: `OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md/.json`. 08/14/19 unverändert, keine neue Automation. Claude-Kenntnisnahme bleibt `unknown_no_claude_receipt`.
+
+## R167 – Merchant-CSV priorisiert, CJ-Kandidat 3 gebunden
+
+[LUXESTYLE_R167_20261110]
+
+1. Drive-Link ist CSV, kein Masterfilm: `product_issues_2026-11-08_07-46-23.csv`, 110'213'899 Byte, SHA256 `c5ea57cb…e7b1`. Master-/Rechte-/MP4-Gates bleiben offen; keine Social-Ausspielung.
+2. CSV nicht erneut breit scannen: 367'594 Zeilen, 275'537 Items, keine Vollzeilenduplikate. 358'792 Versandzeilen, davon357'409 LI; keine Liefer-/Versandaktivierung ohne Beleg. CSS-Kapazität6'456 ist Konto-/CSS-Thema.
+3. Merchant `5797470070`: Angebot `13331643115375957532`, Quelle `10678939025`, fehlt live `availability`. Shopify `15500960530817`/`56110933803393` ist ACTIVE, CHF15.90, availableForSale=true, untracked/CONTINUE. Konkreter Freigabeschritt: Source-Mapping true→in_stock und exakter Post-Sync-Readback; noch kein Write.
+4. Sechs Landingpage-Offers gehören heute zu DRAFT-Produkten, ohne Publikation, HTTP404 und mit nicht mehr vorhandenen Exportvarianten. Nur an verifizierter Quelle ausschliessen; Produkte nicht aktivieren und keine unpassenden Redirects setzen.
+5. Pinterest-Ownership aufgelöst: `1111333714239114020` Geschenkideen Schweiz, `1111333714239531706` Herrenmode Schweiz; beide `luxestyleCH`. Vor Metricool-Write Auswahlbarkeit, Postprodukt, Rechte, Boardpassung und Kollisionen frisch lesen.
+6. CJ `16690383454599`: Run42793821605/42794106913 am Main `a58f9500…`, PID1607242452115664896, kompletter Variantensatz,37 CN-Inventoryzeilen. Vier aktuelle SKUs CJ0; Fabrikwerte sind kein CH-Bestand. CH-Lieferbarkeit/Fracht/Prime/Rechte/Lieferzeit unbekannt; DRAFT erhalten.
+7. SEO: Futterspender R166 sauber/sitemapgebunden; vorbereiteter Hub-Anker `Futterspender für Katzen in Weiss ansehen`. GSC nicht wiederholen; Black-Friday-DRAFT-404 nicht auf unpassendes Produkt umleiten.
+8. Belege `MERCHANT-CJ-FORTSETZUNG-20261110-R167.md/.json`. 08/14/19 unverändert, keine neue Automation. Receipt `unknown_no_claude_receipt`.
