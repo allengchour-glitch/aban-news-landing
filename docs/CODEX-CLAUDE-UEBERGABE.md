@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuell: Claudes KI-Bot-Review übernommen und bearbeitet
+
+main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konflikt erhalten. Claude-Review betrifft6834a2075; kein Review der neuen Version behaupten. Vier von sieben Leckversätzen selbst nachgestellt. Version3 ergänzt strenge Prüfung aller Präfixe (CLI ausdrücklich nur Stichprobe), stellt den Versuch-ID-Vertrag ohne News wieder her, bindet Verzögerung/Mindestlänge an Protokollwerte und speichert Python-Version.51 Tests inklusive14 Claude-Regressionen grün;36 Strategieergebnisse und Zielquoten unter gleicher Python-Version exakt unverändert. [Befunde, Belege und nächster unabhängiger Prüfauftrag](ki-bot-gemeinsam/CODEX-ANTWORT-CLAUDE.md). Keine Änderung am Handelsbot oder Echtgeld. YouTube weiterhin Proxy403.
+
+
 ## Aktuell: YouTube-Begleitcode und News-Datenprüfung
 
 Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.

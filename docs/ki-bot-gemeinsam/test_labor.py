@@ -172,7 +172,7 @@ class DatenUndSignale(unittest.TestCase):
             self.assertFalse(result["handelsfreigabe"])
             self.assertFalse(result["datenqualitaet"]["aktuell"])
             self.assertTrue(result["signalpruefung"]["bestanden"])
-            self.assertEqual(result["protokoll"]["version"], 2)
+            self.assertEqual(result["protokoll"]["version"], 3)
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertEqual(out.read_bytes(), before)
             out.unlink()
@@ -293,6 +293,50 @@ class Nachrichten(unittest.TestCase):
             out.unlink()
             self.assertNotEqual(subprocess.run(cmd + pair[:2], capture_output=True).returncode, 0)
             self.assertFalse(out.exists())
+
+
+class ClaudeBefunde(unittest.TestCase):
+    def test_seltenes_zwei_tage_leck_alle_versatzwerte(self):
+        p = preise()
+        for intervall, versatzwerte in ((7, range(7)), (97, (5,))):
+            for versatz in versatzwerte:
+                def leak(x):
+                    return {"X": [float(i % intervall == versatz and i + 2 < len(x)
+                                        and x[i + 2] > x[i + 1]) for i in range(len(x))]}
+                with self.subTest(intervall=intervall, versatz=versatz):
+                    self.assertFalse(L.signalpruefung(p, leak)["bestanden"])
+
+    def test_stichprobe_ist_kein_strenger_nachweis(self):
+        p = preise()
+        def leak(x):
+            return {"X": [float(i % 7 == 1 and i + 2 < len(x) and x[i + 2] > x[i + 1])
+                          for i in range(len(x))]}
+        r = L.signalpruefung(p, leak, streng=False)
+        self.assertTrue(r["bestanden"])
+        self.assertEqual(r["modus"], "stichprobe")
+        self.assertEqual(L.signalpruefung(p, leak)["modus"], "alle_praefixe")
+
+    def test_protokoll_verzoegerung_wirkt(self):
+        alt = L.PROTOKOLL["signal_verzoegerung_tage"]
+        try:
+            L.PROTOKOLL["signal_verzoegerung_tage"] = 3
+            # Signal Tag0 kauft erst am Schluss von Tag2 und verpasst dessen Sprung.
+            r = L.simulieren([100., 100., 200., 200.], [1.] * 4, 0, start=1)
+            self.assertEqual(r["rendite"], 0)
+            L.PROTOKOLL["signal_verzoegerung_tage"] = 1
+            with self.assertRaises(ValueError):
+                L.simulieren([100., 100., 200.], [1.] * 3, 0, start=1)
+        finally:
+            L.PROTOKOLL["signal_verzoegerung_tage"] = alt
+
+    def test_protokoll_mindestlaenge_wirkt(self):
+        alt = L.PROTOKOLL["vorwaertstest_mindesttage"]
+        try:
+            L.PROTOKOLL["vorwaertstest_mindesttage"] = 5000
+            days = [date(2020, 1, 1) + timedelta(days=i) for i in range(2100)]
+            self.assertEqual(L.auswerten(days, preise(len(days))), {})
+        finally:
+            L.PROTOKOLL["vorwaertstest_mindesttage"] = alt
 
 
 if __name__ == "__main__":
