@@ -1,0 +1,7 @@
+Feed /tmp/claude-0/-home-user-aban-news-landing/f60e8419-5cec-583c-b9c3-333c2a6384f1/scratchpad/fortura0911/fortura_feed.csv: 20328 Zeilen → 18959 Artikelnummern (Fingerabdruck b7e8fa471f7c)
+Shop: 8416 Varianten mit SKU fortura-* auf 141 Seiten
+
+Abgleich: 8416 unverändert · 0 zu ändern (davon 0 auf 0) · 8 SKU nicht mehr im Feed (0.1 %) · 0 ohne Bestandsführung (unangetastet) · 0 ohne CH-Lagerzeile
+ACTIVE: 3998 Varianten · verkaufbar vorher 2178 → nachher 2178 (0 wegen Bazar-/Puffer-/Committed-Abzug nicht mehr bestellbar)
+
+[DRY] nichts geschrieben.
