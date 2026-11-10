@@ -417,6 +417,13 @@ const num = (x) => {
   const n = Number(t);
   return Number.isFinite(n) ? n : null;
 };
+/**
+ * Eine Einstellung (Umgebungsvariable) STRENG als Dezimalzahl lesen: nur «4», «0», «2.50», «-1» (Leerraum am Rand zählt nicht). «0x10» (Number() läse 16), «1e2» (100), «Infinity», «4,5», «+4», «4.» und Text sind null.
+ * Schlussprüfung 10.11.2026, Fund G4: PRINTFUL_MAX_KOSTEN_USD und PRINTFUL_MIN_NETTO_CHF wurden mit Number() gelesen; ein Tippfehler setzte still eine andere Grenze. @returns {number|null}
+ */
+export function dezimalLesen(roh) {
+  return num(roh);                                     // nur eine endliche Zahl oder eine Zeichenkette, die ganz eine Dezimalzahl ist; Arrays, true, Objekte und leere Werte sind null
+}
 /** Kleinste plausible Summe eines Printful-Auftrags in USD (der billigste Artikel samt Versand liegt weit darüber): darunter ist die Zahl keine gerechnete Summe. */
 export const KOSTEN_MIN_USD = 0.5;
 
@@ -626,18 +633,80 @@ export function anlegenAlterMin(tags, jetztMs) {
 export const anlegenGesperrt = (alterMin) => alterMin !== null && alterMin < ANLEGEN_SPERRE_MIN;
 /**
  * Hat der Anspruch `meinTag` gegen gleichzeitige Läufe gewonnen? (Gegenleser Linse 1: das Lesen der Markierung und das Setzen der eigenen sind kein atomarer Schritt; zwei scharfe Läufe, etwa lokal neben Actions,
- * könnten beide «frei» lesen und beide anlegen.) Nach dem Setzen der eigenen Markierung wird die Bestellung erneut gelesen: nur wer unter den AKTIVEN Ansprüchen (jünger als ANLEGEN_SPERRE_MIN) die kleinste
- * Zeichenkette hat, darf anlegen. Der frühere Schreiber hat die kleinere Zeichenkette und sieht den späteren nie (der spätere liest nach seinem Schreiben); darum legt in der Regel genau einer an. Rest: Uhren
- * der beiden Rechner weichen um mehr als die Schreibdauer ab (ungemessen). Kein Ersatz für die Concurrency-Gruppe des Workflows, nur die zweite Sicherung für lokale Läufe.
- * `art` trennt die zwei Arten des Nichtgewinnens (10.11.2026): «verloren» = ein anderer Lauf war früher (still richtig, es legt der andere an); «eigene-fehlt» = die eigene Markierung ist beim Nachlesen nicht zu sehen
- * (Shopify liest verzögert, das Tag wurde entfernt, die Antwort ist unvollständig): das ist kein Verlust, sondern ein Lesefehler und muss SICHTBAR werden (Fehler, Exit 1), sonst bliebe die Bestellung bei jedem Lauf still liegen.
- * @returns {{ok:boolean, grund:string|null, art:'gewonnen'|'verloren'|'eigene-fehlt'}}
+ * könnten beide «frei» lesen und beide anlegen.) Nach dem Setzen der eigenen Markierung WARTET der Kleber (`anspruchWarteLesen`, Vorgabe 3000 ms) und liest die Bestellung dann erneut: nur wer unter den AKTIVEN
+ * Ansprüchen (jünger als ANLEGEN_SPERRE_MIN) die kleinste Zeichenkette hat, darf anlegen.
+ * WARUM DIE WARTEZEIT (Schlussprüfung «Geld», 10.11.2026, Fund G1, gemessen 5 von 5 Doppelbestätigungen OHNE sie): der Rest ist NICHT die Uhr der beiden Rechner, sondern die Verschränkung von Schreiben und Lesen. Lauf X bildet
+ * die kleinere Markierung, sein Schreiben kommt aber erst an, NACHDEM Lauf Y geschrieben UND nachgelesen hat: Y sieht nur sich und gewinnt, X sieht danach beide und gewinnt als «kleinste» ebenfalls. Mit der Wartezeit liest Y erst,
+ * wenn das Schreiben von X angekommen ist, sofern es höchstens die halbe Wartezeit brauchte (`anspruchLangsam`). Brauchte das EIGENE Schreiben länger (Wiederholung nach 429/5xx, langsames Netz), gilt für diesen Lauf die strengere
+ * Regel `allein`: er legt nur an, wenn KEINE andere aktive Markierung an der Bestellung steht (wer allein ist, darf; wer spät ankam und einen zweiten sieht, legt nie an, auch nicht als «kleinster»). Beweis-Skizze: zwei Läufe mit
+ * der Regel «nur allein» können nie beide gewinnen (jeder liest erst nach dem Ankommen der eigenen Markierung: sähe keiner den anderen, müsste jede Markierung nach dem Lesen des anderen angekommen sein, ein Widerspruch).
+ * Was BLEIBT (ungemessen): Shopify zeigt eine geschriebene Markierung einem anderen Leser verzögert (Lesekonsistenz), oder die Uhren zweier Rechner weichen um mehr als die halbe Wartezeit voneinander ab. Darum ist das hier
+ * die ZWEITE Sicherung; das eigentliche Schloss ist die Concurrency-Gruppe des Workflows, und scharf läuft der Sync nur in GitHub Actions (`scharfErlaubt`).
+ * `art` trennt die Arten des Nichtgewinnens (10.11.2026): «verloren» = ein anderer Lauf war früher (still richtig, es legt der andere an); «eigene-fehlt» = die eigene Markierung ist beim Nachlesen nicht zu sehen
+ * (Shopify liest verzögert, das Tag wurde entfernt, die Antwort ist unvollständig): das ist kein Verlust, sondern ein Lesefehler und muss SICHTBAR werden (Fehler, Exit 1), sonst bliebe die Bestellung bei jedem Lauf still liegen;
+ * «nicht-allein» = die eigene Markierung brauchte zu lange und eine zweite steht an der Bestellung (ob der andere Lauf anlegt, ist offen: sichtbar machen, der nächste Lauf nach Ablauf der Sperre versucht es neu).
+ * @param {{allein?:boolean}} [opt] allein = die eigene Markierung brauchte zu lange (`anspruchLangsam`): nur ohne jede andere aktive Markierung gewinnen
+ * @returns {{ok:boolean, grund:string|null, art:'gewonnen'|'verloren'|'eigene-fehlt'|'nicht-allein'}}
  */
-export function anspruchGewonnen(tags, meinTag, jetztMs) {
+export function anspruchGewonnen(tags, meinTag, jetztMs, { allein = false } = {}) {
   const aktiv = (tags || []).filter((t) => { const ms = anspruchMs(t); return ms !== null && Math.max(0, Math.floor((jetztMs - ms) / 60000)) < ANLEGEN_SPERRE_MIN; });
   if (!aktiv.includes(meinTag)) return { ok: false, grund: 'die eigene Markierung steht nicht (mehr) an der Bestellung', art: 'eigene-fehlt' };
   const frueher = aktiv.filter((t) => t < meinTag);
-  return frueher.length ? { ok: false, grund: `ein anderer Lauf hat früher markiert (${frueher.length} ältere Markierung(en) der letzten ${ANLEGEN_SPERRE_MIN} Minuten)`, art: 'verloren' } : { ok: true, grund: null, art: 'gewonnen' };
+  if (frueher.length) return { ok: false, grund: `ein anderer Lauf hat früher markiert (${frueher.length} ältere Markierung(en) der letzten ${ANLEGEN_SPERRE_MIN} Minuten)`, art: 'verloren' };
+  const andere = aktiv.filter((t) => t !== meinTag);
+  if (allein && andere.length) return { ok: false, grund: `die eigene Markierung brauchte zu lange und ${andere.length} weitere Markierung(en) der letzten ${ANLEGEN_SPERRE_MIN} Minuten stehen an der Bestellung`, art: 'nicht-allein' };
+  return { ok: true, grund: null, art: 'gewonnen' };
+}
+
+// ───────────────────────────────────────────────────────────── Scharf nur in GitHub Actions, Wartezeit vor dem Nachlesen der Markierung (Schlussprüfung 10.11.2026, Fund G1)
+/**
+ * Darf dieser Lauf SCHREIBEN? Ein scharfer Lauf (DRY_RUN=0) ist nur in GitHub Actions erlaubt (dort setzt der Läufer GITHUB_ACTIONS=true, und die Concurrency-Gruppe «printful-sync» des Workflows lässt nie zwei Läufe
+ * gleichzeitig zu: das ist das eigentliche Schloss gegen zwei Aufträge für eine Bestellung). Auf dem eigenen Rechner gibt es dieses Schloss nicht: dort ist scharf ein Konfigurationsfehler (Exit 1, bevor irgendetwas gelesen
+ * oder geschrieben wird), ausser PRINTFUL_LOKAL_SCHARF steht ausdrücklich auf «1» (dann mit lauter Warnzeile; nie gleichzeitig mit dem Workflow starten). Der Trockenlauf ist überall erlaubt.
+ * @param {{dry:boolean, githubActions:any, lokalScharf:any}} p githubActions/lokalScharf = die rohen Umgebungswerte
+ * @returns {{ok:boolean, lokal:boolean, grund:string|null}} lokal = scharf ausserhalb von Actions mit ausdrücklicher Ausnahme
+ */
+export function scharfErlaubt({ dry = true, githubActions = undefined, lokalScharf = undefined } = {}) {
+  if (dry) return { ok: true, lokal: false, grund: null };
+  if (githubActions === 'true') return { ok: true, lokal: false, grund: null };
+  if (String(lokalScharf == null ? '' : lokalScharf).trim() === '1') return { ok: true, lokal: true, grund: null };
+  return { ok: false, lokal: false, grund: 'Scharf (DRY_RUN=0) läuft der Sync nur in GitHub Actions (GITHUB_ACTIONS=true): nur dort verhindert die Concurrency-Gruppe des Workflows zwei gleichzeitige Läufe und damit zwei Printful-Aufträge für eine Bestellung. Auf dem eigenen Rechner bitte den Trockenlauf nehmen (DRY_RUN nicht setzen) oder den Workflow von Hand starten; die ausdrückliche Ausnahme ist PRINTFUL_LOKAL_SCHARF=1 (nie gleichzeitig mit dem Workflow). Es wurde nichts gelesen und nichts geschrieben' };
+}
+/** Wartezeit zwischen dem Setzen der eigenen Markierung und dem Nachlesen (PRINTFUL_ANSPRUCH_WARTE_MS): Vorgabe, kleinster Wert eines echten Laufs, grösster Wert. Kein Workflow setzt die Variable (ein Test hält das fest). */
+export const ANSPRUCH_WARTE_MS_VORGABE = 3000, ANSPRUCH_WARTE_MS_MIN = 2000, ANSPRUCH_WARTE_MS_MAX = 60000;
+/** Test-Kennung (PRINTFUL_ANSPRUCH_TESTKENNUNG): NUR mit genau diesem Wert darf die Wartezeit unter ANSPRUCH_WARTE_MS_MIN liegen. Sie gehört in keine Workflow-Datei und in keinen echten Lauf (die Tests setzen sie für ihre Attrappen). */
+export const ANSPRUCH_TESTKENNUNG = 'nur-attrappe';
+/**
+ * PRINTFUL_ANSPRUCH_WARTE_MS lesen. Leer oder nicht gesetzt = Vorgabe 3000 ms. Sonst nur eine ganze Zahl von Millisekunden (Ziffern); alles andere ist ein Konfigurationsfehler. Unter 2000 ms ist ebenfalls ein Fehler
+ * (die Wartezeit ist eine Sicherung gegen doppelte Aufträge und darf nicht still wegfallen), ausser die Test-Kennung steht: dann ist jeder Wert ab 0 erlaubt (0 = die alte Abfolge ohne Warten, nur für Attrappen).
+ * @param {any} roh  @param {{testKennung?:any}} [opt] testKennung = der rohe Umgebungswert von PRINTFUL_ANSPRUCH_TESTKENNUNG
+ * @returns {{ms:number|null, fehler:string|null, test:boolean}}
+ */
+export function anspruchWarteLesen(roh, { testKennung = undefined } = {}) {
+  const test = testKennung === ANSPRUCH_TESTKENNUNG;
+  const t = String(roh == null ? '' : roh).trim();
+  if (t === '') return { ms: ANSPRUCH_WARTE_MS_VORGABE, fehler: null, test };
+  const zeig = `«${t.slice(0, 20)}»`;
+  if (!/^\d{1,9}$/.test(t)) return { ms: null, fehler: `PRINTFUL_ANSPRUCH_WARTE_MS ist keine ganze Zahl von Millisekunden (steht: ${zeig}; leer gilt ${ANSPRUCH_WARTE_MS_VORGABE}): es wird nichts angelegt`, test };
+  const ms = Number(t);
+  if (ms > ANSPRUCH_WARTE_MS_MAX) return { ms: null, fehler: `PRINTFUL_ANSPRUCH_WARTE_MS ist grösser als ${ANSPRUCH_WARTE_MS_MAX} (steht: ${zeig}): es wird nichts angelegt`, test };
+  if (ms < ANSPRUCH_WARTE_MS_MIN && !test) return { ms: null, fehler: `PRINTFUL_ANSPRUCH_WARTE_MS liegt unter ${ANSPRUCH_WARTE_MS_MIN} (steht: ${zeig}): die Wartezeit zwischen dem Setzen und dem Nachlesen der Markierung ist die Sicherung gegen zwei Aufträge für eine Bestellung und darf nicht wegfallen. Leer gilt ${ANSPRUCH_WARTE_MS_VORGABE}: es wird nichts angelegt`, test };
+  return { ms, fehler: null, test };
+}
+/**
+ * Brauchte das Schreiben der eigenen Markierung zu lange? Die Wartezeit der ANDEREN Läufe deckt nur ein Schreiben, das höchstens die HALBE Wartezeit dauerte (die andere Hälfte ist die Reserve für abweichende Uhren).
+ * Darüber gilt für diesen Lauf die Regel «nur allein» (`anspruchGewonnen` mit allein). Bei Wartezeit 0 (nur mit Test-Kennung) gibt es keine Grenze: das ist die alte Abfolge ohne Warten.
+ */
+export const anspruchLangsam = (schreibMs, warteMs) => warteMs > 0 && !(schreibMs <= warteMs / 2);
+/**
+ * Hat Printful den Auftrag beim Anlegen wirklich als ENTWURF zurückgemeldet? (Schlussprüfung 10.11.2026, Fund G2: «POST /orders ohne confirm = Entwurf» ist in diesem Repo ungemessen; eine Store-Einstellung
+ * «automatisch bestätigen», ein geänderter Vorgabewert oder eine API-Änderung hiesse: der Auftrag ist schon bezahlt, bevor Dateistatus, Kosten, Obergrenze, KI und das frische Lesen laufen.) Nur genau «draft» gilt; ein
+ * fehlender oder anderer Status ist KEIN Entwurf. @param {object} result `result` der Antwort auf POST /orders  @returns {{ok:boolean, status:string}}
+ */
+export function alsEntwurfAngelegt(result) {
+  const roh = result && typeof result === 'object' ? result.status : undefined;
+  const status = typeof roh === 'string' ? roh.trim().toLowerCase() : '';
+  return { ok: status === 'draft', status: status || '(fehlt)' };
 }
 
 /**
@@ -711,17 +780,21 @@ export function kleineKopieUrl(url, breite = 1400) {
 }
 
 // ───────────────────────────────────────────────────────────── Standort der Position (Fulfillment-Service)
-/** Status einer Fulfillment-Order, in dem sie zum Drucken bereit ist (QUELLE shopify.dev FulfillmentOrderStatus: OPEN = bereit, IN_PROGRESS = in Arbeit). Jeder andere offene Status heisst «nicht jetzt». */
-export const FO_DRUCKBAR = Object.freeze(['OPEN', 'IN_PROGRESS']);
+/**
+ * Status einer Fulfillment-Order, in dem sie zum Drucken bereit ist: NUR «OPEN» (QUELLE shopify.dev FulfillmentOrderStatus: OPEN = bereit). Jeder andere offene Status heisst «nicht jetzt».
+ * «IN_PROGRESS» (in Arbeit, etwa teilweise von Hand erfüllt) zählt seit der Schlussprüfung vom 10.11.2026 (Fund G5) NICHT mehr als druckbar: gedruckt würde die volle `currentQuantity`, ein schon versendeter Teil also
+ * nochmals (die noch offene Menge der Fulfillment-Order fragt der Sync nicht ab). Ein Mensch prüft und entfernt danach das Stopp-Tag.
+ */
+export const FO_DRUCKBAR = Object.freeze(['OPEN']);
 /**
  * Liegt die Position an einem Fulfillment-SERVICE-Standort (Location.isFulfillmentService, z. B. «Printful», wo die App die Produkte «Unisex-T-Shirt», «klassisches T-Shirt», «Hoodie», «Jutebeutel» führt;
  * GEMESSEN 09.11.2026 mit der Admin-Abfrage), meldet und druckt die App des Dienstes selbst. Ein zweiter Auftrag von diesem Sync wäre ein Doppeldruck (und die App druckt eventuell mit dem Muster-Design,
  * ungemessen). Die Prüfung liest `o.fulfillmentOrders` (Abfrage des Klebers: fulfillmentOrders{ status assignedLocation{ location{ id name isFulfillmentService } } lineItems{ lineItem{ id } } }, wie
  * automation/cj_tracking.mjs und printful_tracking.mjs); stornierte Fulfillment-Orders zählen nicht (ihre Angaben sind veraltet), geschlossene auch nicht, AUSSER eine geschlossene Order eines Dienst-Standorts steht neben einer offenen derselben Position (dann «unklar»).
- * Druckbar sind NUR die Status OPEN und IN_PROGRESS (Whitelist, 10.11.2026 Gegenleser Linse 1): ON_HOLD, SCHEDULED, INCOMPLETE und jeder unbekannte Status ergeben «gehalten» (Shopifys Mittel für Betrugsverdacht, falsche Adresse, Rückfrage der Kundin).
+ * Druckbar ist NUR der Status OPEN (Whitelist, 10.11.2026 Gegenleser Linse 1; IN_PROGRESS seit der Schlussprüfung nicht mehr, Fund G5): IN_PROGRESS, ON_HOLD, SCHEDULED, INCOMPLETE und jeder unbekannte Status ergeben «gehalten» (in Arbeit oder teilweise erfüllt; Shopifys Mittel für Betrugsverdacht, falsche Adresse, Rückfrage der Kundin).
  * @returns {{art:'dienst'|'frei'|'unklar'|'gehalten', name?:string, grund?:string, status?:string}}
  *   dienst  mindestens eine nicht geschlossene Fulfillment-Order der Position liegt an einem Dienst-Standort
- *   gehalten  eine Fulfillment-Order der Position hat einen Status ausser OPEN/IN_PROGRESS (und liegt nicht an einem Dienst-Standort): planeBestellung → HART «fulfillment-gehalten»
+ *   gehalten  eine Fulfillment-Order der Position hat einen Status ausser OPEN (und liegt nicht an einem Dienst-Standort): planeBestellung → HART «fulfillment-gehalten»
  *   frei    die Position steht in mindestens einer offenen Fulfillment-Order und ALLE ihre Standorte sind Händler-Standorte (isFulfillmentService === false)
  *   unklar  Daten fehlen (keine Fulfillment-Orders in den Bestelldaten, Position in keiner offenen Fulfillment-Order, Standort oder Flag fehlt, Liste abgeschnitten): nie als «frei» gelesen.
  *           planeBestellung behandelt «unklar» wie «dienst»: HART, kein Auftrag (10.11.2026: sieht das Token die Fulfillment-Order des Dienst-Standorts nicht, wäre «weich + Entwurf» ein Doppelentwurf neben dem Auftrag der Printful-App).
@@ -743,7 +816,7 @@ export function standortVon(o, positionId) {
     if (fo.lineItems && fo.lineItems.pageInfo && fo.lineItems.pageInfo.hasNextPage) unvollstaendig = unvollstaendig || 'eine Fulfillment-Order hat mehr Positionen, als eine Abfrage liefert';
     if (!drinIn(fo)) continue;
     if (ort && ort.isFulfillmentService === true) dienst = dienst || ort;               // an einem Dienst-Standort gilt jeder nicht geschlossene Status
-    if (!FO_DRUCKBAR.includes(st)) { gehalten = gehalten || (st || '(leer)'); continue; }   // ON_HOLD, SCHEDULED, INCOMPLETE und alles Unbekannte: nicht jetzt druckbar (Whitelist, nicht Blacklist)
+    if (!FO_DRUCKBAR.includes(st)) { gehalten = gehalten || (st || '(leer)'); continue; }   // IN_PROGRESS, ON_HOLD, SCHEDULED, INCOMPLETE und alles Unbekannte: nicht jetzt druckbar (Whitelist, nicht Blacklist)
     gefunden++;
     if (!(ort && ort.isFulfillmentService === true) && (!ort || ort.isFulfillmentService !== false)) offen = true;
   }
@@ -768,7 +841,7 @@ export function bestellStand(o, positionIds = []) {
 }
 /**
  * Hat sich die Bestellung seit dem Planen geändert? (Knoten aus dem FRISCHEN Lesen gegen `bestellStand`.) Geprüft werden Lieferadresse samt E-Mail, Positionen samt Mengen und der Fulfillment-Order-Status der geplanten
- * Positionen (ON_HOLD, Dienst-Standort, geschlossen …: alles ausser «frei» zählt). Fehlt ein Feld in der Antwort, ist das «unlesbar» (nie «unverändert»).
+ * Positionen (IN_PROGRESS, ON_HOLD, Dienst-Standort, geschlossen …: alles ausser «frei» zählt). Fehlt ein Feld in der Antwort, ist das «unlesbar» (nie «unverändert»).
  * @returns {null|{art:'geaendert'|'unlesbar', text:string}} null = unverändert
  */
 export function bestellAbweichung(n, soll) {
@@ -783,7 +856,7 @@ export function bestellAbweichung(n, soll) {
   if (JSON.stringify(positionenListe(n)) !== soll.positionen) return ge('die Positionen oder Mengen der Bestellung haben sich seit dem Planen geändert');
   for (const id of soll.positionIds) {
     const s = standortVon(n, id);
-    if (s.art !== 'frei') return ge(s.art === 'gehalten' ? `eine Fulfillment-Order der Position ist jetzt «${s.status}» (nicht OPEN oder IN_PROGRESS)` : s.art === 'dienst' ? `die Position liegt jetzt an einem Dienst-Standort («${s.name}»)` : `der Standort der Position ist nicht mehr eindeutig (${s.grund})`);
+    if (s.art !== 'frei') return ge(s.art === 'gehalten' ? `eine Fulfillment-Order der Position ist jetzt «${s.status}» (nicht OPEN)` : s.art === 'dienst' ? `die Position liegt jetzt an einem Dienst-Standort («${s.name}»)` : `der Standort der Position ist nicht mehr eindeutig (${s.grund})`);
   }
   return null;
 }
@@ -920,10 +993,13 @@ export async function planeBestellung(o, io, cfg = {}) {
     const stdo = standortVon(o, z.id);
     if (stdo.art === 'dienst') { hart('dienst-standort', vor(`liegt am Fulfillment-Service-Standort «${stdo.name}»: dessen App legt den Auftrag selbst an. KEIN zweiter Auftrag von diesem Sync (sonst Doppeldruck); im Printful-Dashboard prüfen`)); continue; }
     // «unklar» (Order unsichtbar, Standort unlesbar, Liste abgeschnitten) ist HART wie «dienst»: ob die Printful-App die Position selbst druckt, ist dann unbekannt, und ein Entwurf des Syncs wäre ein Doppelentwurf neben ihrem Auftrag.
-    if (stdo.art === 'gehalten') { hart('fulfillment-gehalten', vor(`Die Fulfillment-Order der Position hat den Status «${stdo.status}» (nicht OPEN oder IN_PROGRESS): Shopify hält sie, zum Beispiel bei Betrugsverdacht, falscher Adresse oder Rückfrage der Kundin. KEIN Auftrag von diesem Sync; nach der Freigabe in Shopify das Tag printful-review entfernen, dann versucht der nächste Lauf es neu`)); continue; }
+    if (stdo.art === 'gehalten') { hart('fulfillment-gehalten', vor(`Die Fulfillment-Order der Position hat den Status «${stdo.status}» (nicht OPEN): sie ist in Arbeit oder teilweise erfüllt (IN_PROGRESS), oder Shopify hält sie, zum Beispiel bei Betrugsverdacht, falscher Adresse oder Rückfrage der Kundin. KEIN Auftrag von diesem Sync; nach der Freigabe in Shopify das Tag printful-review entfernen, dann versucht der nächste Lauf es neu`)); continue; }
     if (stdo.art === 'unklar') { hart('dienst-standort-unklar', vor(`Standort der Position nicht prüfbar (${stdo.grund}${cfg.scopeHinweis ? '; ' + cfg.scopeHinweis : ''}): ob die Printful-App sie selbst druckt, ist unklar. KEIN Auftrag von diesem Sync; Fulfillment-Orders der Bestellung im Shopify-Admin ansehen, im Printful-Dashboard prüfen`)); continue; }
     if (!sku.vid) { hart('ohne-variante', vor('SKU ohne Printful-Variante')); continue; }
     let dateien = eig.dateien;
+    // FERTIGWARE (Tag printful_personalized_product, KEIN Editor-Produkt) druckt das FESTE Motiv des Besitzers. Eine Druckdatei-Eigenschaft an einer solchen Position stammt nie vom Editor (den gibt es dort nicht), sondern
+    // ist von Hand über /cart/add.js mitgegeben: sie darf das feste Motiv NICHT ersetzen (Schlussprüfung 10.11.2026, Fund G3: gedruckt und bestätigt wurde das Kundenmotiv). Hart, kein Auftrag; der Mensch klärt.
+    if (dateien.length && !editorProdukt(z)) { hart('datei-bei-fertigware', vor('Die Position trägt eine Druckdatei-Eigenschaft, das Produkt ist aber Fertigware mit festem Motiv (Tag printful_personalized_product, kein Editor-Produkt): die mitgegebene Datei ersetzt das feste Motiv NICHT. KEIN Auftrag von diesem Sync; selbst klären und bei Bedarf von Hand im Printful-Dashboard anlegen')); continue; }
     if (!dateien.length && !editorProdukt(z)) {              // FERTIG-Produkte ohne Editor-Upload: festes Motiv aus dem Produkt-Metafeld custom.print_file. Ein Editor-Produkt (Tag wunschdesign) druckt NIE das Muster des Besitzers: ohne Design der Kundin gilt «keine-druckdatei»
       const mf = z.product && z.product.metafield && z.product.metafield.value;
       let mfHost = null; try { mfHost = new URL(String(mf || '').trim()).hostname; } catch { /* kein Metafeld oder keine Adresse */ }

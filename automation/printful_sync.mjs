@@ -13,7 +13,7 @@
  *      v5: Vorne/Hinten; `_vorschau` ist KEINE Druckdatei) mit den ECHTEN Printful-Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und
  *      Mindest-dpi des Katalogs; dazu als weiche Gegenprobe die Angabe `_pod_karte.qd`), KI-Kontrolle, Empfänger. `_pod_karte.m` und `.pv` müssen zur SKU der Position passen.
  *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, gemischte Schlüssel, Karte widerspricht der SKU, Adresse unbrauchbar, mehr als 50 Positionen, Position am Fulfillment-Service-Standort «dienst-standort»,
- *      gedruckte Aufpreis-Platzierung ohne bezahltes Paket «aufpreis-unbezahlt», Fulfillment-Order nicht OPEN/IN_PROGRESS «fulfillment-gehalten», Menge nicht lesbar «menge-unlesbar»): KEIN Auftrag, Tag `printful-review`,
+ *      gedruckte Aufpreis-Platzierung ohne bezahltes Paket «aufpreis-unbezahlt», Fulfillment-Order nicht OPEN «fulfillment-gehalten» (auch IN_PROGRESS zählt als gehalten), Datei-Eigenschaft an Fertigware «datei-bei-fertigware», Menge nicht lesbar «menge-unlesbar»): KEIN Auftrag, Tag `printful-review`,
  *      eine Meldung. Eine bezahlte Bestellung OHNE Design (`keine-druckdatei`) bleibt so liegen: keine Mail an die Kundin und keine Rückerstattung durch dieses Skript (dropship/wp6-0611/OHNE-DESIGN.md).
  *      Stand der Befundnamen und der Messung: dropship/wp6-0611/SYNC.md.
  *   1b. Kurz vor dem Anlegen wird die Bestellung in Shopify FRISCH gelesen (bezahlt = PAID, nicht storniert, kein Test, noch nicht von einem anderen Lauf bearbeitet, UNVERÄNDERT seit dem Planen: Lieferadresse samt E-Mail, Positionen samt Mengen,
@@ -51,6 +51,7 @@ import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
   kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard, adresseProblem,
   zahlungPruefen, anlegenTag, anlegenAlterMin, anlegenGesperrt, anspruchGewonnen, ANLEGEN_SPERRE_MIN, vorhandenVergleichen, entwurfVergleichen, scopesBewerten, bestaetigenPlan, bestellStand, bestellAbweichung,
+  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -72,17 +73,21 @@ const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const TG_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const MAX = Math.max(1, parseInt(process.env.MAX || '20', 10) || 20);
 // Mindestgewinn je Auftrag (CHF, nach MWST, Gebühr und Printful-Kosten): Vorgabe 4 = das Ziel der Preisformel (werkzeuge/preisformel.mjs); 0 hält nur Verluste an.
-// Eine NEGATIVE Zahl ist ein Konfigurationsfehler (10.11.2026, Gegenleser Linse 1: «-100» hob die Verlustsperre still auf und bestätigte Verlustaufträge); ein Tippfehler wie «abc» fällt auf die sichere Vorgabe 4 zurück.
+// Eine NEGATIVE Zahl ist ein Konfigurationsfehler (10.11.2026, Gegenleser Linse 1: «-100» hob die Verlustsperre still auf und bestätigte Verlustaufträge); ein Tippfehler wie «abc» ist es seit der Schlussprüfung ebenfalls (siehe unten).
+// STRENG gelesen (Schlussprüfung 10.11.2026, Fund G4): nur eine Dezimalzahl wie «4», «0» oder «2.50» (dieselbe Regel wie für Printfuls Kostenzahlen in lib `num`). «0x10» (Number() läse 16), «1e2» (100), «abc», «Infinity»
+// und «aus» sind Konfigurationsfehler mit Exit 1: ein Tippfehler darf nicht still eine andere Grenze setzen (früher fiel «abc» auf 4 zurück und «0x10» galt als 16). Leer oder nicht gesetzt = Vorgabe 4.
 const NETTO_MIN_ROH = String(process.env.PRINTFUL_MIN_NETTO_CHF == null ? '' : process.env.PRINTFUL_MIN_NETTO_CHF).trim();
-const NETTO_MIN_ZAHL = Number(NETTO_MIN_ROH);
-const NETTO_MIN_FEHLER = NETTO_MIN_ROH !== '' && Number.isFinite(NETTO_MIN_ZAHL) && NETTO_MIN_ZAHL < 0;
-const NETTO_MIN = NETTO_MIN_ROH !== '' && Number.isFinite(NETTO_MIN_ZAHL) ? NETTO_MIN_ZAHL : 4;
+const NETTO_MIN_ZAHL = NETTO_MIN_ROH === '' ? null : dezimalLesen(NETTO_MIN_ROH);
+const NETTO_MIN_LESBAR = NETTO_MIN_ROH === '' || NETTO_MIN_ZAHL !== null;
+const NETTO_MIN_FEHLER = NETTO_MIN_ZAHL !== null && NETTO_MIN_ZAHL < 0;
+const NETTO_MIN = NETTO_MIN_ZAHL !== null ? NETTO_MIN_ZAHL : 4;
 // Absolute Obergrenze der Printful-Summe je Auftrag in USD (PRINTFUL_MAX_KOSTEN_USD). Vorgabe AUS (leer, 0, «aus»). Eine Zahl über 0 schaltet sie ein; jede andere Angabe (Tippfehler, negativ) ist ein Konfigurationsfehler
 // und beendet den Lauf mit Exit 1, bevor etwas angelegt wird (eine falsch geschriebene Sicherung darf nicht still ausfallen).
 const MAX_KOSTEN_ROH = String(process.env.PRINTFUL_MAX_KOSTEN_USD == null ? '' : process.env.PRINTFUL_MAX_KOSTEN_USD).trim().toLowerCase();
 const MAX_KOSTEN_AUS = MAX_KOSTEN_ROH === '' || MAX_KOSTEN_ROH === '0' || MAX_KOSTEN_ROH === 'aus';
-const MAX_KOSTEN_USD = MAX_KOSTEN_AUS ? null : Number(MAX_KOSTEN_ROH);
-const MAX_KOSTEN_FEHLER = !MAX_KOSTEN_AUS && !(Number.isFinite(MAX_KOSTEN_USD) && MAX_KOSTEN_USD > 0);
+// STRENG gelesen wie der Mindestgewinn (Fund G4): «0x10» und «1e2» galten früher als 16 und 100 USD; jetzt ist alles ausser einer Dezimalzahl über 0 ein Konfigurationsfehler.
+const MAX_KOSTEN_USD = MAX_KOSTEN_AUS ? null : dezimalLesen(MAX_KOSTEN_ROH);
+const MAX_KOSTEN_FEHLER = !MAX_KOSTEN_AUS && !(MAX_KOSTEN_USD !== null && MAX_KOSTEN_USD > 0);
 // Bezahltes Paket der Positionen (ÜBERGANG bis Phase 5 das Modell festlegt, siehe lib/printful_bestellweg.mjs `paketStandard`): Standard «nur Vorderseite bezahlt». PRINTFUL_PAKET_BEZAHLT = kommagetrennte Platzierungs-IDs
 // (z. B. «back,sleeve_left»), die für ALLE Positionen als bezahlt gelten; der Workflow reicht die Variable bewusst NICHT durch (nur für Läufe auf dem eigenen Rechner). Eine ungültige ID beendet den Lauf mit Exit 1.
 const PAKET_BEZAHLT = String(process.env.PRINTFUL_PAKET_BEZAHLT || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
@@ -96,6 +101,13 @@ const RUN_LIMIT_MS = Number.isFinite(Number(process.env.RUN_LIMIT_MS)) && proces
 // Geschrieben wird NUR bei einem ausdrücklichen Nein (0, false, no, nein, off). Nicht gesetzt, leer und jede andere Angabe (auch ein Tippfehler) ist Trockenlauf: ein Weg, der Geld bewegen kann, ist standardmässig zu.
 // Der Workflow setzt für «scharf» ausdrücklich DRY_RUN=0 (.github/workflows/printful-sync.yml); früher war das leere DRY_RUN «scharf».
 const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN).trim().toLowerCase());
+// SCHARF NUR IN GITHUB ACTIONS (Schlussprüfung 10.11.2026, Fund G1): zwei überlappende scharfe Läufe ergaben zwei Printful-Aufträge und zwei Bestätigungen (gemessen 5 von 5 mit verzögertem Tag-Schreiben). Das Schloss dagegen ist die
+// Concurrency-Gruppe des Workflows; ein scharfer Lauf auf dem eigenen Rechner hat es nicht und ist darum ein Konfigurationsfehler (Exit 1 vor jedem Lesen und Schreiben), ausser PRINTFUL_LOKAL_SCHARF=1 (laute Warnzeile).
+const SCHARF = scharfErlaubt({ dry: DRY, githubActions: process.env.GITHUB_ACTIONS, lokalScharf: process.env.PRINTFUL_LOKAL_SCHARF });
+// Wartezeit zwischen dem Setzen der eigenen Markierung und dem Nachlesen (zweite Sicherung, lib `anspruchGewonnen`): Vorgabe 3000 ms. PRINTFUL_ANSPRUCH_WARTE_MS ist NUR für Tests da (kein Workflow setzt sie, ein Test hält das fest);
+// unter 2000 ms ist ein Konfigurationsfehler, ausser die Test-Kennung PRINTFUL_ANSPRUCH_TESTKENNUNG steht (sie gehört in keinen echten Lauf und in keine Workflow-Datei).
+const WARTE = anspruchWarteLesen(process.env.PRINTFUL_ANSPRUCH_WARTE_MS, { testKennung: process.env.PRINTFUL_ANSPRUCH_TESTKENNUNG });
+const ANSPRUCH_WARTE_MS = WARTE.ms;
 // Shopify unterstützt 2026-01 bis ca. 16.01.2027 (QUELLE shopify.dev laut Prüfer 03.11.2026; Wiedervorlage Dezember 2026). Die alte Fassung lief auf dem abgelaufenen 2025-01.
 const API = '2026-01';
 // Bestellungen je Seite. GEMESSEN 05.11.2026 (extensions.cost): 10 Bestellungen × lineItems(first:50) = 158 angefragte Punkte, 25 × 25 = 206; verfügbar 2000. 20 × 50 bleibt weit darunter.
@@ -119,16 +131,22 @@ const fehlerLog = (f) => f.kurz + (DETAIL && f.detail ? ' | ' + f.detail : '');
 const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');
 const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0 };
 let scopeHinweis = '';   // Zusatz für den harten Befund «dienst-standort-unklar», wenn dem Token ein Recht für Fulfillment-Orders fehlt
+let abbruch = null;      // Grund, aus dem der Lauf für ALLE weiteren Bestellungen endet (Fund G2: Printful legte einen Auftrag nicht als Entwurf an). null = weiter
 
 // Bestätigen nur mit Kostenobergrenze UND eingeschalteter KI-Kontrolle (lib `bestaetigenPlan`); AUTO_CONFIRM=1 ohne Obergrenze ist ein Konfigurationsfehler, auch im Trockenlauf.
 const BEST = bestaetigenPlan({ autoConfirm: AUTO_CONFIRM, ki: KI, maxKostenAus: MAX_KOSTEN_AUS });
 const BESTAETIGEN = BEST.bestaetigen;
+if (!SCHARF.ok) { console.error(`❌ ${SCHARF.grund}.`); process.exit(1); }
+if (WARTE.fehler) { console.error(`❌ ${WARTE.fehler}.`); process.exit(1); }
 if (BEST.konfigFehler) { console.error(`❌ ${BEST.konfigFehler}.`); process.exit(1); }
+if (!NETTO_MIN_LESBAR) { console.error(`❌ PRINTFUL_MIN_NETTO_CHF ist keine Dezimalzahl (steht: «${NETTO_MIN_ROH.slice(0, 30)}»; erlaubt sind Zahlen wie 4, 0 oder 2.50, leer gilt 4): es wird nichts angelegt.`); process.exit(1); }
 if (NETTO_MIN_FEHLER) { console.error(`❌ PRINTFUL_MIN_NETTO_CHF ist negativ (steht: «${NETTO_MIN_ROH.slice(0, 30)}»): ein negativer Mindestgewinn würde die Verlustsperre aufheben. 0 hält nur Verluste an, leer gilt 4: es wird nichts angelegt.`); process.exit(1); }
 if (MAX_KOSTEN_FEHLER) { console.error(`❌ PRINTFUL_MAX_KOSTEN_USD ist keine Zahl über 0 (steht: «${MAX_KOSTEN_ROH.slice(0, 30)}»; leer, 0 oder «aus» schaltet die Obergrenze ab): es wird nichts angelegt.`); process.exit(1); }
 if (PAKET_FEHLER.length) { console.error(`❌ PRINTFUL_PAKET_BEZAHLT enthält ungültige Platzierungs-IDs (${PAKET_FEHLER.map((s) => s.slice(0, 20)).join(', ')}; erlaubt: a-z, 0-9, Unterstrich): es wird nichts angelegt.`); process.exit(1); }
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
+if (SCHARF.lokal) console.warn('⚠️ SCHARFER LAUF AUSSERHALB VON GITHUB ACTIONS (PRINTFUL_LOKAL_SCHARF=1): die Concurrency-Gruppe des Workflows schützt diesen Lauf NICHT. Nie gleichzeitig mit dem Workflow «Printful-Sync» starten, sonst sind zwei Aufträge für eine Bestellung möglich.');
+if (!DRY && WARTE.test) console.warn(`⚠️ TEST-KENNUNG gesetzt (PRINTFUL_ANSPRUCH_TESTKENNUNG): die Wartezeit vor dem Nachlesen der Markierung ist ${ANSPRUCH_WARTE_MS} ms. Das ist nur für Läufe gegen Attrappen gedacht, nie für einen echten Lauf.`);
 
 // ───────────────────────────────────────────── Telegram: true = zugestellt, false = Zustellung gescheitert, null = nicht konfiguriert oder Trockenlauf
 async function tg(text) {
@@ -243,12 +261,13 @@ async function frischLesen(tok, o, stufe, soll) {
   return { art: 'ok', text: 'bezahlt, nicht storniert, kein Test, unverändert seit dem Planen' };
 }
 // Nach dem Setzen der eigenen Markierung: gewinnt sie gegen gleichzeitige Läufe? Nur die Tags werden erneut gelesen.
-async function anspruchPruefen(tok, o, meinTag) {
+async function anspruchPruefen(tok, o, meinTag, allein = false) {
   let n = null;
   try { const r = await gql(tok, ANSPRUCH_Q, { id: o.id }); n = r && r.data && r.data.node; } catch (e) { return { art: 'unlesbar', text: `Shopify liess sich nicht lesen (${String(e && e.message || e).slice(0, 120)})` }; }
   if (!n || typeof n !== 'object' || n.id !== o.id || !Array.isArray(n.tags)) return { art: 'unlesbar', text: 'die Tags der Bestellung sind nicht lesbar' };
-  const g = anspruchGewonnen(n.tags, meinTag, Date.now());
+  const g = anspruchGewonnen(n.tags, meinTag, Date.now(), { allein });
   if (g.art === 'eigene-fehlt') return { art: 'unlesbar', text: g.grund };      // die eigene Markierung ist nicht zu sehen: ein Lesefehler, kein Verlust gegen einen anderen Lauf (sichtbar machen, nicht still liegen lassen)
+  if (g.art === 'nicht-allein') return { art: 'nicht-allein', text: g.grund };  // die eigene Markierung kam spät an und eine zweite steht da: nichts anlegen und SICHTBAR machen (ob der andere Lauf anlegt, ist offen)
   return g.ok ? { art: 'ok', text: '' } : { art: 'verloren', text: g.grund };
 }
 // Zugriffsrechte des Tokens: sieht es die Fulfillment-Orders des Händler- UND des Dienst-Standorts? (Diagnose; die Sperre pro Position gilt unabhängig davon.)
@@ -430,10 +449,17 @@ async function bearbeite(tok, o) {
   if (fr.art === 'zahlung') { zaehler.ohneAuftrag++; await befundMelden(tok, o, [{ art: 'zahlung-geaendert', text: `Die Bestellung ist laut frischem Lesen aus Shopify nicht mehr druckbar: ${fr.text}`, hart: true }], 'wurde NICHT an Printful übergeben'); return; }
   if (fr.art !== 'ok') { await vorlaeufigerFehler(tok, o, `Shopify lässt sich vor dem Anlegen nicht frisch lesen: es wird nichts angelegt`, fr.text); return; }
   // Der Anspruch trägt Sekunden, Millisekunden und einen Zufallsteil: zwei Läufe, die gleichzeitig markieren, haben verschiedene Tags. Danach wird nachgelesen; nur der Lauf mit der kleinsten Markierung legt an.
+  // Schlussprüfung 10.11.2026 (Fund G1): zwischen dem Setzen und dem Nachlesen wird GEWARTET (Vorgabe 3000 ms). Ohne die Wartezeit sah der spätere Lauf die noch nicht angekommene Markierung des früheren nicht und beide legten an
+  // (Schreiben und Lesen verschränkt; gemessen 5 von 5 Doppelbestätigungen). Die Dauer des eigenen Schreibens wird gemessen: brauchte es länger als die halbe Wartezeit, legt dieser Lauf nur an, wenn er ALLEIN markiert hat.
+  const t0Anspruch = performance.now();
   const meinTag = anlegenTag(Date.now(), randomBytes(4).toString('hex'));
   if (!(await tagsSetzen(tok, o, [meinTag]))) { fehlerAdd(`${o.name}: Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }
-  const anspruch = await anspruchPruefen(tok, o, meinTag);
+  const schreibMs = Math.round(performance.now() - t0Anspruch);
+  const langsam = anspruchLangsam(schreibMs, ANSPRUCH_WARTE_MS);
+  await pause(ANSPRUCH_WARTE_MS);
+  const anspruch = await anspruchPruefen(tok, o, meinTag, langsam);
   if (anspruch.art === 'verloren') { zaehler.vorhanden++; console.log(`${o.name}: ${anspruch.text}: nichts angelegt`); return; }
+  if (anspruch.art === 'nicht-allein') { zaehler.spaeter++; zeilen.push(`${o.name}: wartet (die eigene Markierung brauchte ${schreibMs} ms, eine zweite steht an der Bestellung)`); fehlerAdd(`${o.name}: die Markierung vor dem Anlegen brauchte ${schreibMs} ms (Grenze ${Math.floor(ANSPRUCH_WARTE_MS / 2)} ms) und ein zweiter Lauf hat ebenfalls markiert: es wird nichts angelegt. Legt der andere Lauf nicht an, versucht es der nächste Lauf nach Ablauf der Sperre (${ANLEGEN_SPERRE_MIN} Minuten)`); return; }
   if (anspruch.art !== 'ok') { fehlerAdd(`${o.name}: Markierung vor dem Anlegen gesetzt, aber nicht nachlesbar (${anspruch.text}): es wird nichts angelegt`); return; }
   // 2. Entwurf anlegen (nie wiederholen: ein Zeitüberschreitung-POST kann «gelang» heissen; darum danach über external_id nachfragen)
   const res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
@@ -453,6 +479,19 @@ async function bearbeite(tok, o) {
     if (nach4.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lehnte das Anlegen ab (HTTP ${res.status}); die Nachfrage nach der external_id blieb ohne Antwort (HTTP ${nach4.status})`, pfText(res)); return; }
     zaehler.ohneAuftrag++;
     await befundMelden(tok, o, [{ art: 'printful-abgelehnt', text: `Printful lehnt den Auftrag ab (${pfText(res)})`, hart: true }], 'wurde von Printful abgelehnt');
+    return;
+  }
+  // 2b. Ist der Auftrag wirklich ein ENTWURF? (Schlussprüfung 10.11.2026, Fund G2.) Meldet Printful etwas anderes als «draft» (Store-Einstellung «automatisch bestätigen», geänderter Vorgabewert, API-Änderung), ist er womöglich schon
+  // bezahlt, bevor Dateistatus, Kosten, Obergrenze, KI und frisches Lesen liefen. Dann: sofort melden (🔴), die Bestellung markieren (printful-synced + Stopp-Tag, damit kein Lauf sie nochmal anfasst) und den LAUF BEENDEN:
+  // keine weitere Bestellung wird angelegt, Exit 1. Nichts wird bestätigt, nichts storniert (das entscheidet der Mensch im Printful-Dashboard).
+  const entwurf = alsEntwurfAngelegt(res.j.result);
+  if (!entwurf.ok) {
+    abbruch = `Printful hat den Auftrag #${pfId} für ${o.name} NICHT als Entwurf angelegt (Status «${entwurf.status}»)`;
+    zaehler.entwuerfe++;
+    console.error(`🔴 ${o.name} → Printful #${pfId}: NICHT als Entwurf angelegt (Status «${entwurf.status}»): der Lauf endet hier, keine weitere Bestellung wird angelegt`);
+    fehlerAdd(`${o.name}: Printful hat den Auftrag #${pfId} nicht als Entwurf angelegt (Status «${entwurf.status}»): Lauf beendet, im Printful-Dashboard prüfen`);
+    if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) fehlerAdd(`${o.name}: Printful-Auftrag #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt`);
+    await befundMelden(tok, o, [{ art: 'nicht-als-entwurf-angelegt', text: `Printful hat den Auftrag #${pfId} beim Anlegen NICHT als Entwurf zurückgemeldet, sondern mit Status «${entwurf.status}»: er ist womöglich schon bestätigt und bezahlt, OHNE dass Dateien, Kosten, Obergrenze und KI geprüft wurden. Sofort im Printful-Dashboard ansehen (stornieren, falls nötig) und die Store-Einstellung zum automatischen Bestätigen prüfen. Der Lauf wurde beendet, keine weitere Bestellung angelegt`, hart: true }], `→ Printful #${pfId}: NICHT als Entwurf angelegt`);
     return;
   }
   // 3. Sofort markieren: Metafeld, dann Tag. Gelingt das nicht, wird NICHT bestätigt; der nächste Lauf findet den Entwurf über external_id und holt es nach.
@@ -570,6 +609,7 @@ const hatDruckdatei = (li) => (li.customAttributes || []).some((a) => /Druckdate
   for (const o of kandidaten.slice(0, MAX)) {
     if (Date.now() - START > RUN_LIMIT_MS) { fehlerAdd(`Zeitlimit (${Math.round(RUN_LIMIT_MS / 1000)} s) erreicht: ${o.name} und die folgenden Bestellungen bleiben für den nächsten Lauf`); break; }
     try { await bearbeite(tok, o); } catch (e) { fehlerAdd(`${o.name}: unerwarteter Fehler`, String(e && e.message || e).slice(0, 200)); }
+    if (abbruch) { const rest = kandidaten.slice(0, MAX).length - kandidaten.slice(0, MAX).indexOf(o) - 1; fehlerAdd(`LAUF BEENDET: ${abbruch}. ${rest} weitere Bestellung(en) dieses Laufs wurden NICHT bearbeitet`); break; }
   }
   const summary = `Printful-Sync fertig: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ` (DRY_RUN: ${zaehler.anstehend} Bestellung(en) würden angelegt)` : ''}.`;
   if (process.env.GITHUB_STEP_SUMMARY) { try { appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Printful-Sync\n\n${summary}\n\n${zeilen.length ? zeilen.map((z) => '- ' + z).join('\n') + '\n' : ''}${fehler.length ? '\n**Fehler:**\n' + fehler.map((f) => '- ' + fehlerLog(f)).join('\n') + '\n' : ''}`); } catch { /* Zusammenfassung ist Zugabe */ } }

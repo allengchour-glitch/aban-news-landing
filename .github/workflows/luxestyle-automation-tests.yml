@@ -74,6 +74,7 @@ on:
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
       - '.github/workflows/printful-reprice.yml'
+      - 'dropship/PRINTFUL-SYNC-FREI.txt'
       - 'dropship/wp6-0611/SYNC.md'
       - '.github/workflows/pod-page-update.yml'
       - '.github/workflows/pod-inject-designer.yml'
@@ -177,6 +178,7 @@ jobs:
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
             .github/workflows/printful-reprice.yml
+            dropship/PRINTFUL-SYNC-FREI.txt
             .github/workflows/pod-page-update.yml
             .github/workflows/pod-inject-designer.yml
             dropship/selbst-gestalten-fertig-0511/bestellweg

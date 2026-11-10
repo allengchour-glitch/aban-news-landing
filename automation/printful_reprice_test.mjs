@@ -214,5 +214,19 @@ const zusammenfassung = (e) => e.prot.log.find((l) => /Fertig:/.test(l)) || '';
   ist('Shopify-API: jeder Aufruf geht an 2026-01, dieselbe Version wie der Sync (die alte Fassung lief auf dem abgelaufenen 2025-01)', [[...new Set(e1.prot.api)], e1.prot.api.length >= 3], [['2026-01'], true]);
 }
 
+// 11. Schlussprüfung 10.11.2026 (Tests-Prüfer T4): das Schreib-Tor mit den Werten, die NICHT schreiben dürfen, und der Deckel MAX der Produktzahl
+{
+  for (const v of ['true', 'TRUE', '1', 'on', 'yes', 'ja', 'wahr', ' 1 ']) { const e = lauf({ senken: true, produkte: [produkt(1, 1)], env: { DRY_RUN: v } }); ist(`T4 DRY_RUN=«${v}»: Vorschau, nichts geschrieben (nur 0, false, no, nein, off schreiben)`, [e.prot.schreib.length, /WÜRDEN angepasst/.test(zusammenfassung(e))], [0, true]); }
+  for (const v of ['no', 'off', 'FALSE', ' 0 ']) { const e = lauf({ senken: true, produkte: [produkt(1, 1)], env: { DRY_RUN: v } }); ist(`T4 DRY_RUN=«${v}»: es wird geschrieben`, e.prot.schreib.length, 1); }
+  // Deckel: es wird nicht weitergeblättert, sobald MAX Produkte gelesen sind (Vorgabe 300)
+  const viele = Array.from({ length: 400 }, (_, i) => produkt(i + 1, 1));
+  const ohneMax = lauf({ dry: true, produktSeite: 100, produkte: viele });
+  ist('T4 Ohne MAX gilt die Vorgabe 300: bei 400 Produkten in Seiten zu 100 werden genau 3 Seiten gelesen (300 Produkte), nicht alle', [ohneMax.prot.produktAbfragen, ohneMax.prot.log.some((l) => /^Produkte: 300 /.test(l))], [3, true]);
+  for (const v of ['abc', '0', '']) { const e = lauf({ dry: true, produktSeite: 100, produkte: viele, env: { MAX: v } }); ist(`T4 MAX=«${v}» (unlesbar oder 0): Rückfall auf die Vorgabe 300 (3 Seiten), nie mehr`, e.prot.produktAbfragen, 3); }
+  const eins = lauf({ senken: true, produktSeite: 1, produkte: [produkt(1, 1), produkt(2, 1), produkt(3, 1)], env: { MAX: '1' } });
+  ist('T4 MAX=1 bei drei Produkten in Seiten zu 1: nur die erste Seite wird gelesen, nur das erste Produkt geschrieben', [eins.prot.produktAbfragen, eins.prot.schreib.map((s) => s.pid)], [1, ['gid://shopify/Product/1']]);
+}
+
+
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

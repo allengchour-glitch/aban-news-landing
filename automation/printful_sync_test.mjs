@@ -4,7 +4,8 @@
 // Konflikten aus dropship/pod-auswahl/bestellweg_katalog_auszug.json; Fehler 503, 429, 404, Netzfehler, Zahlung gescheitert). Geprüft wird, was an Printful
 // GESENDET wird (Entwurf anlegen, bestätigen, external_id, files[].type, options), welche Tags die Bestellung bekommt, was an Telegram geht und der Exit-Code.
 // Warum so: vorher prüfte ein Test nur per Regex den Quelltext; fünf von fünf Mutanten an der Platzierung überlebten. Lauf: /opt/node22/bin/node automation/printful_sync_test.mjs
-import { spawnSync } from 'node:child_process';
+import { spawnSync, spawn } from 'node:child_process';
+import { createServer } from 'node:http';
 import { readFileSync, writeSync, rmSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { anlegenTag } from './lib/printful_bestellweg.mjs';
@@ -24,15 +25,18 @@ if (process.argv[2] === '--szenario') {
   const ALLE_PLATZIERUNGEN = [...new Set([...Object.values(KAT), ...Object.values(MIT)].flatMap((x) => (x.produkt.files || []).flatMap((f) => [f.id, f.type])).filter((x) => /^[a-z0-9_]+$/.test(x)))].join(',');
   // Seit der Härtung vom 10.11.2026 bestätigt der Sync nur mit gesetzter Kostenobergrenze UND eingeschalteter KI-Kontrolle: der Rahmen setzt beides (Obergrenze 500 USD, KI «pflicht» mit Schlüssel; die Attrappe antwortet PASS),
   // damit die älteren Szenarien weiter «bestätigt» prüfen. Geschrieben wird nur bei DRY_RUN=0 (der Rahmen setzt es; `envLoeschen: ['DRY_RUN']` prüft die Vorgabe).
-  Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '500', DRY_RUN: '0' });
-  for (const k of ['PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS']) delete process.env[k];
+  // Seit der Schlussprüfung (Fund G1) läuft der Sync scharf nur in GitHub Actions und wartet 3000 ms zwischen Markieren und Nachlesen: der Rahmen täuscht Actions vor (GITHUB_ACTIONS=true) und setzt die Wartezeit mit der
+  // Test-Kennung auf 0 (sonst dauerte jedes Szenario mit einem Auftrag 3 s länger). Die Szenarien zu G1 löschen oder überschreiben diese Werte ausdrücklich.
+  Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '500', DRY_RUN: '0',
+    GITHUB_ACTIONS: 'true', PRINTFUL_ANSPRUCH_WARTE_MS: '0', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' });
+  for (const k of ['PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_LOKAL_SCHARF']) delete process.env[k];
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
   const kiArt = sz.ki || 'pass';                                              // Antwort der KI-Attrappe; 'aus' schaltet die Kontrolle ab, 'ohne-schluessel' lässt den Schlüssel weg
   if (kiArt === 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'aus'; delete process.env.GEMINI_API_KEY; }
   if (kiArt === 'ohne-schluessel') delete process.env.GEMINI_API_KEY;
   for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer); `env` setzt danach
   Object.assign(process.env, sz.env || {});
-  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '' };
+  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '', zeiten: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0, tagsJeBestellung: {} };   // tagsJeBestellung: was der Sync per tagsAdd gesetzt hat (das zweite Lesen nach dem Setzen der Markierung zeigt es)
   const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
@@ -95,7 +99,7 @@ if (process.argv[2] === '--szenario') {
         return mk(200, projiziere({ data: { orders: { pageInfo: { hasNextPage: !!weiter, endCursor: 'c' + (i + 1) }, edges: s.orders.map((node) => ({ node })) } } }, { data: parseAuswahl(q) }));
       }
       if (q.includes('node(id') && !q.includes('displayFinancialStatus')) {   // Anspruch nachlesen: nur die Tags (Markierung vor dem Anlegen; wer hat zuerst markiert?)
-        prot.anspruchQuery = q; const nr = prot.anspruch.length; prot.anspruch.push(b.variables.id);
+        prot.anspruchQuery = q; const nr = prot.anspruch.length; prot.anspruch.push(b.variables.id); prot.zeiten.push(['nachgelesen', performance.now()]);
         if (sz.anspruchFehler === 'http') return mk(500, {});
         if (sz.anspruchFehler === 'null') return mk(200, { data: { node: null } });
         const basis = alleBestellungen().find((x) => x.id === b.variables.id);
@@ -133,6 +137,10 @@ if (process.argv[2] === '--szenario') {
           if (sz.tagFehler === 'userErrors') return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'kaputt' }] } } });
           if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
         }
+        // Schlussprüfung G1: `anspruchSchreibMs` verzögert das Schreiben der MARKIERUNG (langsames Netz, Wiederholung nach 429/5xx); `zeiten` hält fest, wann sie stand und wann nachgelesen wurde
+        const istAnspruch = b.variables.tags.some((x) => /^printful-anlegen-/.test(x));
+        if (istAnspruch && sz.anspruchSchreibMs) await new Promise((r) => setTimeout(r, sz.anspruchSchreibMs));
+        if (istAnspruch) prot.zeiten.push(['markiert', performance.now()]);
         prot.tags.push({ id: b.variables.id, tags: b.variables.tags }); prot.folge.push('tags:' + b.variables.tags.join('+'));
         st.tagsJeBestellung[b.variables.id] = [...(st.tagsJeBestellung[b.variables.id] || []), ...b.variables.tags];
         return mk(200, { data: { tagsAdd: { userErrors: [] } } });
@@ -204,7 +212,9 @@ if (process.argv[2] === '--szenario') {
         const pr = folge(sz.post, prot.posts.length - 1);
         if (pr.wirft) throw new Error(pr.wirft);
         const status = pr.status || 200;
-        return mk(status, status === 200 ? { result: { id: 42, status: 'draft' } } : { error: { message: pr.meldung || 'fehlgeschlagen' } });
+        // `auftragStatus` (Schlussprüfung G2): der Status, mit dem Printful den angelegten Auftrag zurückmeldet (Vorgabe «draft»; null = das Feld fehlt ganz)
+        const angelegt = !('auftragStatus' in pr) ? { id: 42, status: 'draft' } : pr.auftragStatus === null ? { id: 42 } : { id: 42, status: pr.auftragStatus };
+        return mk(status, status === 200 ? { result: angelegt } : { error: { message: pr.meldung || 'fehlgeschlagen' } });
       }
       if ((r = /^\/orders\/(\d+)\/confirm$/.exec(p)) && m === 'POST') {
         prot.confirms.push(p); const c = sz.confirmFolge ? folge(sz.confirmFolge, prot.confirms.length - 1) : (sz.confirm || {});
@@ -233,6 +243,25 @@ if (process.argv[2] === '--szenario') {
   await Promise.race([ende, new Promise((r) => setTimeout(r, 20000))]);
   melde();
   process.exit(0);
+}
+
+// ═════════════════════════════════════════════════════════════ KINDPROZESS: ein Lauf des Rennens (Schlussprüfung 10.11.2026, Fund G1)
+// Zwei solche Kindprozesse laufen GLEICHZEITIG gegen EINE Attrappe im Elternprozess (Loopback-HTTP, siehe `rennen` unten): das echte Skript, das echte fetch, nur die Hosts sind auf 127.0.0.1 umgelenkt.
+// Kein anderer Host ist erreichbar. Der Kennbuchstabe des Laufs («a» oder «b») steht im Pfad, damit die Attrappe die beiden Läufe unterscheidet.
+if (process.argv[2] === '--rennen-kind') {
+  const port = process.env.PS_RENNEN_PORT, wer = process.env.PS_RENNEN_LAUF, echt = globalThis.fetch;
+  const DIENST = { 'api.printful.com': 'pf', 'res.cloudinary.com': 'cdn', 'generativelanguage.googleapis.com': 'gem', 'api.telegram.org': 'tg' };
+  globalThis.fetch = (u, o) => {
+    const url = new URL(String(u));
+    const svc = DIENST[url.hostname] || (url.hostname.endsWith('.myshopify.com') ? 'shop' : null);
+    if (!svc) return Promise.reject(new Error('Rennen: unbekannter Host ' + url.hostname));
+    return echt(`http://127.0.0.1:${port}/${svc}/${wer}${url.pathname}${url.search}`, o);
+  };
+  const log0 = console.log;
+  console.log = (...a) => { log0(...a); if (/^Printful-Sync fertig:/.test(a.join(' '))) setImmediate(() => process.exit(process.exitCode || 0)); };
+  await import('./printful_sync.mjs');
+  await new Promise((r) => setTimeout(r, 60000));
+  process.exit(3);                                   // das Skript hat seine Schlusszeile nie geschrieben
 }
 
 // ═════════════════════════════════════════════════════════════ PRÜFER
@@ -1221,12 +1250,18 @@ for (const [name, sz, soll] of [
   const z1 = zeile();
   const foMit = (status, ort) => { const f = fos([z1], ort); return { ...f, edges: [{ node: { ...f.edges[0].node, status } }] }; };
 
-  // ── Linse 1, Fund 1: Fulfillment-Order-Status ist eine WHITELIST (nur OPEN und IN_PROGRESS sind druckbar)
+  // ── Linse 1, Fund 1: Fulfillment-Order-Status ist eine WHITELIST (nur OPEN ist druckbar; IN_PROGRESS seit der Schlussprüfung nicht mehr, Fund G5)
   for (const st of ['ON_HOLD', 'SCHEDULED', 'INCOMPLETE', '', 'WEIRD']) {
     const e = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit(st) }, telegram: true }));
     ist(`R2 L1/1 Fulfillment-Order «${st || '(leer)'}»: HARTER Befund «fulfillment-gehalten», KEIN Auftrag, keine Netzabfrage für die Position, eine 🔴-Meldung (früher: angelegt und bestätigt)`, [...gesperrt(e), tags(e).includes('printful-review-fulfillment-gehalten'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), e.prot.variantGets.length, e.prot.exitCode], [0, 0, true, 1, true, 0, 0]);
   }
-  for (const st of ['OPEN', 'IN_PROGRESS']) { const e = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit(st) } })); ist(`R2 L1/1 Gegenprobe: Fulfillment-Order ${st} ist druckbar: Auftrag, bestätigt`, [e.prot.posts.length, bestaetigt(e)], [1, true]); }
+  for (const st of ['OPEN']) { const e = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit(st) } })); ist(`R2 L1/1 Gegenprobe: Fulfillment-Order ${st} ist druckbar: Auftrag, bestätigt`, [e.prot.posts.length, bestaetigt(e)], [1, true]); }
+  { // Schlussprüfung G5: IN_PROGRESS (in Arbeit, teilweise erfüllt) ist NICHT mehr druckbar: gedruckt würde die volle Menge, ein schon versendeter Teil also nochmals
+    const e = lauf(bestellt([z1], { telegram: true, order: { fulfillmentOrders: foMit('IN_PROGRESS') } }));
+    ist('G5 Fulfillment-Order IN_PROGRESS: KEIN Auftrag, keine Bestätigung, harter Befund «fulfillment-gehalten» (Tag, eine 🔴-Meldung mit dem Status), Exit 0', [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-fulfillment-gehalten'), e.prot.tg.filter((x) => /^🔴/.test(x) && /IN_PROGRESS/.test(x)).length, e.status], [0, 0, true, 1, 0]);
+    const spaet = lauf(bestellt([z1], { telegram: true, frischFolge: [{}, { fulfillmentOrders: foMit('IN_PROGRESS') }] }));
+    ist('G5 Die Fulfillment-Order wird erst NACH dem Anlegen IN_PROGRESS (frisches Lesen vor dem Bestätigen): Entwurf bleibt, NICHT bestätigt, Befund «bestellung-geaendert»', [spaet.prot.posts.length, spaet.prot.confirms.length, tags(spaet).includes('printful-review-bestellung-geaendert')], [1, 0, true]);
+  }
   const gehaltenDienst = lauf(bestellt([z1], { order: { fulfillmentOrders: foMit('ON_HOLD', FO_DIENST) }, telegram: true }));
   ist('R2 L1/1 Gehaltene Order am DIENST-Standort: bleibt «dienst-standort» (der Dienst hat Vorrang), kein Auftrag', [...gesperrt(gehaltenDienst), tags(gehaltenDienst).includes('printful-review-dienst-standort')], [0, 0, true]);
   const gehaltenUndOffen = lauf(bestellt([z1], { order: { fulfillmentOrders: { pageInfo: { hasNextPage: false }, edges: [foMit('ON_HOLD').edges[0], { node: { ...fos([z1]).edges[0].node, id: 'f2' } }] } } }));
@@ -1307,7 +1342,7 @@ for (const [name, sz, soll] of [
     }
     const trockenNeg = lauf(bestellt([z1], { env: { PRINTFUL_MIN_NETTO_CHF: '-1', DRY_RUN: '1' } }));
     ist('R2 L1/4 …auch im TROCKENLAUF (der Mangel soll sichtbar werden, bevor die Freigabedatei liegt)', [trockenNeg.prot.ausstieg, trockenNeg.prot.shop.length], [1, 0]);
-    for (const v of ['0', 'abc', '', '4', '1000']) {
+    for (const v of ['0', '', '4', '1000']) {       // «abc» stand bis zur Schlussprüfung hier (fiel still auf 4 zurück); seit Fund G4 ist es ein Konfigurationsfehler (unten)
       const x = lauf(bestellt([z1], { ...verlust, env: { PRINTFUL_MIN_NETTO_CHF: v } }));
       ist(`R2 L1/4 PRINTFUL_MIN_NETTO_CHF=«${v}»: kein Konfigurationsfehler; der Verlustauftrag (60 USD Kosten gegen 49.90 CHF Erlös) bleibt Entwurf, Befund «kosten»`, [x.prot.ausstieg ?? x.status, x.prot.posts.length, bestaetigt(x), tags(x).includes('printful-review-kosten')], [0, 1, false, true]);
     }
@@ -1376,6 +1411,215 @@ for (const [name, sz, soll] of [
     const ausKonfig = lauf(bestellt([z1], { env: { PRINTFUL_PAKET_BEZAHLT: 'back, Bad Wert', DRY_RUN: '1' } }));
     ist('R2 L2/5 Eine ungültige Platzierungs-ID in PRINTFUL_PAKET_BEZAHLT ist auch im Trockenlauf ein Konfigurationsfehler', [ausKonfig.prot.ausstieg, ausKonfig.prot.shop.length], [1, 0]);
   }
+}
+
+// ═════════════════════════════════════════════════════════════ SCHLUSSPRÜFUNG 10.11.2026 (zwei unabhängige Schlussprüfer, «mit Auflagen»): Funde G1 bis G5 und die Testlücken T3/T5
+{
+  const z1 = zeile();
+  const bestellt = (zeilen = [zeile()], extra = {}) => sz1(zeilen, extra);
+  // Kein einziger Schreibzugriff: kein POST, keine Bestätigung, kein Tag, kein Metafeld, keine Telegram-Meldung, kein Bild an die KI
+  const nichtsGeschrieben = (x) => [x.prot.posts.length, x.prot.confirms.length, x.prot.tags.length, x.prot.mf.length, x.prot.tg.length, x.prot.gemini.length];
+  // Gar nichts angefasst: auch kein Lesen (weder Shopify noch Printful)
+  const nichtsAngefasst = (x) => [x.prot.ausstieg, x.prot.api.length, x.prot.pf.length, ...nichtsGeschrieben(x)];
+  const NICHTS = [1, 0, 0, 0, 0, 0, 0, 0, 0];
+  const luecke = (x) => { const m = x.prot.zeiten.find((z) => z[0] === 'markiert'), n = x.prot.zeiten.find((z) => z[0] === 'nachgelesen'); return m && n ? n[1] - m[1] : null; };
+
+  // ── G1 (a): scharf nur in GitHub Actions
+  // (die vollständigen Wertetabellen für GITHUB_ACTIONS, PRINTFUL_LOKAL_SCHARF, die Wartezeit, die Dezimalzahlen und den Entwurfsstatus stehen im Logik-Test lib/printful_bestellweg_test.mjs; hier wird geprüft, dass der Kleber sie anwendet)
+  for (const [n, sz] of [['GITHUB_ACTIONS nicht gesetzt', { envLoeschen: ['GITHUB_ACTIONS'] }], ['GITHUB_ACTIONS=false', { env: { GITHUB_ACTIONS: 'false' } }]]) {
+    const x = lauf(bestellt([z1], { telegram: true, ...sz }));
+    ist(`G1 scharf (DRY_RUN=0) ausserhalb von GitHub Actions (${n}): Exit 1, nichts gelesen, nichts geschrieben`, nichtsAngefasst(x), NICHTS);
+    ist(`G1 …(${n}): die Meldung nennt GITHUB_ACTIONS, den Grund (Concurrency-Gruppe) und die Ausnahme PRINTFUL_LOKAL_SCHARF=1`, x.prot.err.some((l) => /GITHUB_ACTIONS/.test(l) && /Concurrency-Gruppe/.test(l) && /PRINTFUL_LOKAL_SCHARF=1/.test(l)), true);
+  }
+  const lokal = lauf(bestellt([z1], { envLoeschen: ['GITHUB_ACTIONS'], env: { PRINTFUL_LOKAL_SCHARF: '1' } }));
+  ist('G1 PRINTFUL_LOKAL_SCHARF=1 erlaubt den scharfen Lauf ausserhalb von Actions (Auftrag, bestätigt) und schreibt eine laute Warnzeile', [lokal.prot.posts.length, bestaetigt(lokal), lokal.prot.warn.filter((l) => /AUSSERHALB VON GITHUB ACTIONS/.test(l) && /PRINTFUL_LOKAL_SCHARF=1/.test(l) && /Nie gleichzeitig/.test(l)).length], [1, true, 1]);
+  for (const v of ['true']) {
+    const x = lauf(bestellt([z1], { envLoeschen: ['GITHUB_ACTIONS'], env: { PRINTFUL_LOKAL_SCHARF: v } }));
+    ist(`G1 PRINTFUL_LOKAL_SCHARF=«${v}» ist KEINE Ausnahme (nur genau «1»): Exit 1, nichts gelesen, nichts geschrieben`, nichtsAngefasst(x), NICHTS);
+  }
+  // Der Trockenlauf (Vorgabe) läuft weiter OHNE Actions und schreibt nichts
+  for (const [n, sz] of [['DRY_RUN nicht gesetzt', { envLoeschen: ['GITHUB_ACTIONS', 'DRY_RUN', 'PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_ANSPRUCH_TESTKENNUNG'] }]]) {
+    const x = lauf(bestellt([z1], { telegram: true, ...sz }));
+    ist(`G1 Trockenlauf ohne GITHUB_ACTIONS (${n}): läuft (Exit 0, die Bestellung wird gelesen und «würde angelegt»), schreibt nichts, keine Warnzeile`, [x.status, x.prot.shop.length, x.prot.log.some((l) => /^\[DRY\] #T1: 1 Artikel/.test(l)), nichtsGeschrieben(x), x.prot.warn.length], [0, 1, true, [0, 0, 0, 0, 0, 0], 0]);
+  }
+
+  // ── G1 (b): Wartezeit zwischen dem Setzen der Markierung und dem Nachlesen
+  for (const [n, sz] of [['1999 ohne Test-Kennung', { envLoeschen: ['PRINTFUL_ANSPRUCH_TESTKENNUNG'], env: { PRINTFUL_ANSPRUCH_WARTE_MS: '1999' } }],
+    ['1999 mit FALSCHER Kennung «1»', { env: { PRINTFUL_ANSPRUCH_WARTE_MS: '1999', PRINTFUL_ANSPRUCH_TESTKENNUNG: '1' } }], ['«abc» (auch mit Kennung)', { env: { PRINTFUL_ANSPRUCH_WARTE_MS: 'abc' } }],
+    ['0 ohne Kennung im TROCKENLAUF', { envLoeschen: ['PRINTFUL_ANSPRUCH_TESTKENNUNG'], env: { DRY_RUN: '1' } }]]) {
+    const x = lauf(bestellt([z1], { telegram: true, ...sz }));
+    ist(`G1 PRINTFUL_ANSPRUCH_WARTE_MS ${n}: Konfigurationsfehler, Exit 1, nichts gelesen, nichts geschrieben, die Meldung nennt die Variable`, [nichtsAngefasst(x), x.prot.err.some((l) => /PRINTFUL_ANSPRUCH_WARTE_MS/.test(l))], [NICHTS, true]);
+  }
+  const kurz = lauf(bestellt([z1], { env: { PRINTFUL_ANSPRUCH_WARTE_MS: '400' } }));
+  ist('G1 Wartezeit 400 ms (mit Test-Kennung): zwischen dem Setzen der Markierung und dem Nachlesen liegen mindestens 400 ms; danach Auftrag und Bestätigung', [luecke(kurz) >= 399, luecke(kurz) < 2500, kurz.prot.posts.length, bestaetigt(kurz)], [true, true, 1, true]);
+  ist('G1 In Actions (GITHUB_ACTIONS=true) steht KEINE Warnzeile «ausserhalb von Actions»; die Test-Kennung des Rahmens meldet sich mit einer eigenen Warnzeile', [kurz.prot.warn.some((l) => /AUSSERHALB VON GITHUB ACTIONS/.test(l)), kurz.prot.warn.filter((l) => /TEST-KENNUNG/.test(l)).length], [false, 1]);
+  // OHNE jede Variable (kein PRINTFUL_ANSPRUCH_WARTE_MS, keine Test-Kennung): die Vorgabe von 3000 ms wird wirklich gewartet. Dieses eine Szenario dauert darum gut 3 Sekunden.
+  const vorgabe = lauf(bestellt([z1], { envLoeschen: ['PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_ANSPRUCH_TESTKENNUNG'] }));
+  ist('G1 Vorgabe ohne jede Variable: zwischen Markieren und Nachlesen liegen mindestens 3000 ms; Auftrag und Bestätigung; keine Warnzeile zur Test-Kennung', [luecke(vorgabe) >= 2999, vorgabe.prot.posts.length, bestaetigt(vorgabe), vorgabe.prot.warn.some((l) => /TEST-KENNUNG/.test(l))], [true, 1, true, false]);
+  // Brauchte das EIGENE Schreiben länger als die halbe Wartezeit, legt der Lauf nur an, wenn er ALLEIN markiert hat
+  const langsamAllein = lauf(bestellt([z1], { anspruchSchreibMs: 220, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  ist('G1 Die eigene Markierung brauchte 220 ms bei 300 ms Wartezeit (Grenze 150), es gibt aber keinen zweiten Lauf: Auftrag und Bestätigung wie sonst (kein Stillstand im Normalfall)', [langsamAllein.prot.posts.length, bestaetigt(langsamAllein), langsamAllein.status], [1, true, 0]);
+  const langsamZweiter = lauf(bestellt([z1], { anspruchSchreibMs: 220, rivale: 'spaeter', telegram: true, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  ist('G1 …und ein zweiter Lauf hat ebenfalls markiert (seine Markierung ist die SPÄTERE): trotz «kleinster» Markierung KEIN Auftrag, kein Stopp-Tag, Fehler mit der Dauer, Exit 1', [langsamZweiter.prot.posts.length, langsamZweiter.prot.confirms.length, hatReview(langsamZweiter), langsamZweiter.prot.err.some((l) => /brauchte \d+ ms \(Grenze 150 ms\)/.test(l) && /zweiter Lauf/.test(l)), langsamZweiter.prot.ausstieg ?? langsamZweiter.status], [0, 0, false, true, 1]);
+  ist('G1 …die Zusammenfassung zählt die Bestellung als «später wieder»', langsamZweiter.prot.log.some((l) => /^Printful-Sync fertig: .* 1 später wieder/.test(l)), true);
+  const schnellZweiter = lauf(bestellt([z1], { rivale: 'spaeter', env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  ist('G1 Gegenprobe: die eigene Markierung war schnell, die des zweiten Laufs ist die spätere → dieser Lauf gewinnt (Auftrag, bestätigt)', [schnellZweiter.prot.posts.length, bestaetigt(schnellZweiter)], [1, true]);
+
+  // ── G2: der Auftrag muss beim Anlegen als ENTWURF zurückkommen
+  {
+    const zwei = [knoten([zeile()], { id: 'gid://shopify/Order/1', name: '#T1' }), knoten([zeile()], { id: 'gid://shopify/Order/2', name: '#T2' })];
+    const basis = { vid: 4025, variant: [{ kat: 71 }], orders: zwei, telegram: true };
+    const pend = lauf({ ...basis, post: [{ auftragStatus: 'pending' }] });
+    ist('G2 Printful meldet den angelegten Auftrag als «pending» (nicht «draft»): der Lauf ENDET, die zweite Bestellung wird nicht angelegt, nichts wird bestätigt, Exit 1', [pend.prot.posts.length, pend.prot.posts[0] && pend.prot.posts[0].body.external_id.startsWith('LXT1'), pend.prot.confirms.length, pend.prot.ausstieg ?? pend.status], [1, true, 0, 1]);
+    ist('G2 …die Bestellung trägt printful-synced, das Stopp-Tag und die Befundart; das Metafeld mit der Auftragsnummer steht', [['printful-synced', 'printful-review', 'printful-review-nicht-als-entwurf-angelegt'].filter((x) => !tags(pend).includes(x)), pend.prot.mf.map((m) => m.value), pend.prot.tags.every((x) => x.id === 'gid://shopify/Order/1')], [[], ['42'], true]);
+    ist('G2 …eine 🔴-Befundmeldung nennt den Status und «NICHT als Entwurf»; die Fehlerliste nennt den Abbruch und die unbearbeitete Bestellung', [pend.prot.tg.filter((x) => /^🔴 LuxeStyle POD: Bestellung/.test(x) && /pending/.test(x) && /NICHT als Entwurf/.test(x)).length, pend.prot.err.some((l) => /LAUF BEENDET/.test(l) && /1 weitere Bestellung/.test(l))], [1, true]);
+    for (const [n, s] of [['fehlt', null]]) {
+      const x = lauf({ ...basis, post: [{ auftragStatus: s }] });
+      ist(`G2 Status ${n} beim Anlegen: kein Entwurf → Lauf endet nach dem ersten Auftrag, nichts bestätigt, Tag nicht-als-entwurf-angelegt, Exit 1`, [x.prot.posts.length, x.prot.confirms.length, tags(x).includes('printful-review-nicht-als-entwurf-angelegt'), x.prot.ausstieg ?? x.status], [1, 0, true, 1]);
+    }
+    const gut = lauf({ ...basis, post: [{ auftragStatus: 'Draft' }, {}] });
+    ist('G2 Gegenprobe: «Draft» (Grossschreibung) und «draft» sind Entwürfe: beide Bestellungen werden angelegt und bestätigt, Exit 0', [gut.prot.posts.length, gut.prot.confirms.length, gut.status], [2, 2, 0]);
+  }
+
+  // ── G3: Fertigware druckt das feste Motiv; eine mitgegebene Datei-Eigenschaft ersetzt es nicht
+  {
+    const fertig = (attrs) => zeile({ customAttributes: attrs, product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } });
+    for (const [n, attrs] of [['v6-Schlüssel «🖼️ Druckdatei (front)»', [A('🖼️ Druckdatei (front)', V('kunde'))]]]) {
+      const x = lauf(sz1([fertig(attrs)], { vid: 8948, variant: [antwort(268)], telegram: true }));
+      ist(`G3 Fertigware mit Datei-Eigenschaft der Kundin (${n}): KEIN Auftrag (das Kundenmotiv ersetzt das feste Motiv nicht), harter Befund «datei-bei-fertigware», eine 🔴-Meldung, keine Printful-Abfrage zur Variante`, [x.prot.posts.length, x.prot.confirms.length, tags(x).includes('printful-review-datei-bei-fertigware'), x.prot.tg.filter((t) => /^🔴/.test(t)).length, x.prot.variantGets.length], [0, 0, true, 1, 0]);
+    }
+  }
+
+  // ── G4: PRINTFUL_MAX_KOSTEN_USD und PRINTFUL_MIN_NETTO_CHF werden STRENG gelesen (kein Hex, kein Exponent, kein Text)
+  for (const [name, werte] of [['PRINTFUL_MAX_KOSTEN_USD', ['0x10', '1e2']], ['PRINTFUL_MIN_NETTO_CHF', ['0x10', 'abc']]]) for (const v of werte) {
+    const x = lauf(bestellt([z1], { env: { [name]: v } }));
+    ist(`G4 ${name}=«${v}»: Konfigurationsfehler, Exit 1, nichts gelesen, nichts geschrieben, die Meldung nennt die Variable`, [nichtsAngefasst(x), x.prot.err.some((l) => l.includes(name))], [NICHTS, true]);
+  }
+  const trockenMin = lauf(bestellt([z1], { env: { PRINTFUL_MIN_NETTO_CHF: 'abc', DRY_RUN: '1' } }));
+  ist('G4 PRINTFUL_MIN_NETTO_CHF=abc ist auch im TROCKENLAUF ein Konfigurationsfehler (Exit 1, nichts gelesen)', [trockenMin.prot.ausstieg, trockenMin.prot.shop.length], [1, 0]);
+  const dezimal = lauf(bestellt([z1], { env: { PRINTFUL_MAX_KOSTEN_USD: ' 12.70 ', PRINTFUL_MIN_NETTO_CHF: ' 2.50 ' } }));
+  ist('G4 Gegenprobe: Dezimalzahlen mit Leerraum am Rand gelten (Obergrenze 12.70 bei 12.70 USD, Mindestgewinn 2.50): Auftrag und Bestätigung', [dezimal.prot.posts.length, bestaetigt(dezimal)], [1, true]);
+
+  // ── T3 (Tests-Prüfer): der Rückfall bei einem unlesbaren MAX bleibt bei 20 (der einzige Mengendeckel des Syncs)
+  {
+    const pod = (n) => knoten([zeile()], { id: 'gid://shopify/Order/' + n, name: '#Q' + n });
+    const seiten = [{ orders: Array.from({ length: 20 }, (_, i) => pod(i + 1)) }, { orders: [pod(21), pod(22)] }];
+    for (const v of ['abc', '', '0']) {
+      const x = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: seiten, env: { MAX: v, DRY_RUN: '1' } });
+      ist(`T3 MAX=«${v}» (unlesbar oder unter 1): bei 22 offenen Bestellungen werden höchstens 20 geplant (Rückfall auf die Vorgabe, nie mehr)`, [x.prot.log.filter((l) => /^\[DRY\] #Q\d+: 1 Artikel/.test(l)).length <= 20, x.prot.log.some((l) => /würden angelegt/.test(l))], [true, true]);
+    }
+    const drei = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: seiten, env: { MAX: '3', DRY_RUN: '1' } });
+    ist('T3 Gegenprobe: MAX=3 begrenzt auf 3', drei.prot.log.filter((l) => /^\[DRY\] #Q\d+: 1 Artikel/.test(l)).length, 3);
+  }
+}
+
+// ═════════════════════════════════════════════════════════════ DAS RENNEN (Schlussprüfung, Fund G1): zwei ECHTE Kindprozesse gegen EINE Attrappe
+// Vor der Korrektur ergaben zwei überlappende scharfe Läufe zwei Printful-Aufträge UND zwei Bestätigungen (gemessen 5 von 5): Lauf X bildet die kleinere Markierung, sein Schreiben kommt aber erst an, nachdem Lauf Y
+// geschrieben und nachgelesen hat. Die Attrappe (Loopback-HTTP im Elternprozess; Shopify, Printful, Datei-Host, KI) stellt genau diese Verschränkung her, ereignisgesteuert statt über Wartezeiten:
+//   1. Der zuerst beim frischen Lesen ankommende Lauf heisst X; er wartet dort, bis auch Y so weit ist. Das frische Lesen von Y wird erst beantwortet, wenn die Markierung von X bei der Attrappe ANGEKOMMEN ist
+//      (sie wird gehalten, noch nicht angewendet): Y markiert also später (grössere Zeichenkette) und sieht beim frischen Lesen noch keine Markierung.
+//   2. Die Markierung von Y wird sofort angewendet. Die von X erst `haltMs` danach (Modus «kurz») oder erst, nachdem Y nachgelesen hat (Modus «lang»).
+//   3. Liest Y nach, BEVOR die Haltezeit um ist (ein Kleber ohne Wartezeit tut das immer), sieht Y nur sich; X sieht danach beide und ist die «kleinste» → zwei Aufträge.
+// Die Attrappe nimmt eine doppelte external_id an (schlechtester Fall; ob Printful sie ablehnt, ist ungemessen).
+const pngKopf = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
+const RENNEN_ENV = { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PF_PAUSE_MS: '0', PF_PLATZIERUNG_PAUSE_MS: '0', DRY_RUN: '0', GITHUB_ACTIONS: 'true', PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '60', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' };
+async function rennen({ modus, warteMs, haltMs = 30 }) {
+  const bestellung = knoten([zeile()]);
+  const st = { tags: [], pf: [], posts: 0, confirms: 0, frisch: { a: 0, b: 0 }, erster: null, anspruch: {}, halt: null, yAngewendet: 0 };
+  let ersterDa; const ersterAnspruchDa = new Promise((r) => { ersterDa = r; });
+  let beideDa; const beideWarten = new Promise((r) => { beideDa = r; });
+  const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
+  const sicht = (po) => ({ id: po.id, external_id: po.external_id, status: po.status, error: null, recipient: po.recipient, costs: { currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '4.00', tax: '0.95', vat: '0.00', total: '12.70' },
+    items: po.items.map((it) => ({ variant_id: it.variant_id, quantity: it.quantity, files: [...it.files.map((f) => ({ type: f.type, status: 'ok', width: 1024, height: 1024 })), { type: 'preview', status: 'ok' }] })) });
+  const server = createServer(async (req, res) => {
+    const json = (status, obj) => { res.statusCode = status; res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(obj)); };
+    try {
+      const teile = []; for await (const c of req) teile.push(c);
+      const body = teile.length ? Buffer.concat(teile).toString('utf8') : '';
+      const [, svc, wer, ...rest] = new URL(req.url, 'http://x').pathname.split('/'); const pfad = '/' + rest.join('/');
+      if (svc === 'cdn') { res.statusCode = 200; res.setHeader('content-type', 'image/png'); return res.end(pngKopf(3000, 3000)); }
+      if (svc === 'gem') return json(200, { candidates: [{ content: { parts: [{ text: 'PASS - ok' }] } }] });
+      if (svc === 'shop') {
+        const b = JSON.parse(body || '{}'), q = String(b.query || ''), v = b.variables || {};
+        const knotenJetzt = () => ({ ...bestellung, tags: [...st.tags] });
+        if (q.includes('currentAppInstallation')) return json(200, { data: { currentAppInstallation: { accessScopes: ['read_orders', 'read_merchant_managed_fulfillment_orders', 'read_third_party_fulfillment_orders'].map((handle) => ({ handle })) } } });
+        if (q.includes('orders(first')) return json(200, { data: { orders: { pageInfo: { hasNextPage: false, endCursor: null }, edges: st.tags.some((x) => /^printful-(synced|review)$/.test(x)) ? [] : [{ node: knotenJetzt() }] } } });
+        if (q.includes('node(id') && q.includes('displayFinancialStatus')) {               // frisches Lesen: das ERSTE des zweiten Laufs wartet, bis die Markierung des ersten angekommen ist (Schritt 1)
+          if (++st.frisch[wer] === 1) {
+            if (st.erster === null) { st.erster = wer; await Promise.race([beideWarten, schlaf(5000)]); }      // X wartet hier, bis auch Y so weit ist (sonst hinge die Dauer seiner Markierung an der Startzeit des anderen Prozesses)
+            else { beideDa(); await Promise.race([ersterAnspruchDa.then(() => schlaf(3)), schlaf(5000)]); }
+          }
+          return json(200, { data: { node: knotenJetzt() } });
+        }
+        if (q.includes('node(id')) {                                                       // Markierungen nachlesen (Schritt 3)
+          const h = st.halt;
+          if (h && !h.erledigt && wer !== st.erster) {
+            if (modus === 'kurz' && Date.now() - st.yAngewendet >= haltMs) h.anwenden();                                     // die Haltezeit ist um: die Markierung von X ist angekommen, bevor Y liest
+            else { json(200, { data: { node: { id: bestellung.id, tags: [...st.tags] } } }); h.anwenden(); return undefined; }   // Y liest VOR dem Ankommen der Markierung von X
+          }
+          return json(200, { data: { node: { id: bestellung.id, tags: [...st.tags] } } });
+        }
+        if (q.includes('tagsAdd')) {
+          const setze = () => { for (const x of v.tags) if (!st.tags.includes(x)) st.tags.push(x); };
+          const anspruch = v.tags.find((x) => /^printful-anlegen-/.test(x));
+          if (anspruch) {
+            st.anspruch[wer] = anspruch;
+            if (wer === st.erster && !st.halt) {                                           // Schritt 2: die Markierung von X wird gehalten (höchstens 5 s, damit nichts hängen bleibt)
+              await new Promise((fertig) => { const h = { erledigt: false, anwenden: () => { if (h.erledigt) return; h.erledigt = true; setze(); fertig(); } }; st.halt = h; ersterDa(); setTimeout(h.anwenden, 5000); });
+              return json(200, { data: { tagsAdd: { userErrors: [] } } });
+            }
+            setze(); st.yAngewendet = Date.now();
+            if (modus === 'kurz' && st.halt) setTimeout(st.halt.anwenden, haltMs);
+            return json(200, { data: { tagsAdd: { userErrors: [] } } });
+          }
+          setze(); return json(200, { data: { tagsAdd: { userErrors: [] } } });
+        }
+        if (q.includes('metafieldsSet')) return json(200, { data: { metafieldsSet: { userErrors: [] } } });
+        if (/shop\s*\{/.test(q)) return json(200, { data: { shop: { name: 'x' } } });
+        return json(200, { errors: [{ message: 'unbekannte Abfrage' }] });
+      }
+      if (svc === 'pf') {
+        let m;
+        if ((m = /^\/orders\/@(.+)$/.exec(pfad)) && req.method === 'GET') { const po = st.pf.find((x) => x.external_id === decodeURIComponent(m[1])); return po ? json(200, { result: sicht(po) }) : json(404, { error: { message: 'Not Found' } }); }
+        if (pfad === '/orders' && req.method === 'POST') { const o = JSON.parse(body); st.posts++; const po = { id: 5000 + st.pf.length, external_id: o.external_id, status: 'draft', items: o.items, recipient: o.recipient }; st.pf.push(po); return json(200, { result: { id: po.id, external_id: po.external_id, status: 'draft' } }); }
+        if ((m = /^\/orders\/(\d+)\/confirm$/.exec(pfad)) && req.method === 'POST') { const po = st.pf.find((x) => String(x.id) === m[1]); if (!po || po.status !== 'draft') return json(400, { error: { message: 'kein Entwurf' } }); po.status = 'pending'; st.confirms++; return json(200, { result: { id: po.id, status: 'pending' } }); }
+        if ((m = /^\/orders\/(\d+)$/.exec(pfad)) && req.method === 'GET') { const po = st.pf.find((x) => String(x.id) === m[1]); return po ? json(200, { result: sicht(po) }) : json(404, { error: { message: 'Not Found' } }); }
+        if ((m = /^\/products\/variant\/(\d+)$/.exec(pfad))) return json(200, { result: { variant: { id: Number(m[1]) }, product: KAT[71].produkt } });
+        if ((m = /^\/mockup-generator\/(printfiles|templates)\/(\d+)$/.exec(pfad))) return json(200, { result: m[1] === 'printfiles' ? KAT[71].printfiles : KAT[71].templates });
+      }
+      return json(404, {});
+    } catch (e) { try { json(599, { fehler: String(e && e.message) }); } catch { /* Antwort schon gesendet */ } return undefined; }
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const port = server.address().port;
+  const kind = (wer) => new Promise((fertig) => {
+    const k = spawn(process.execPath, [SELF, '--rennen-kind'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, ...RENNEN_ENV, PS_RENNEN_PORT: String(port), PS_RENNEN_LAUF: wer, PRINTFUL_ANSPRUCH_WARTE_MS: String(warteMs) } });
+    let out = '', err = ''; k.stdout.on('data', (d) => { out += d; }); k.stderr.on('data', (d) => { err += d; });
+    const uhr = setTimeout(() => { try { k.kill('SIGKILL'); } catch { /* schon beendet */ } }, 40000);
+    k.on('close', (exit, signal) => { clearTimeout(uhr); fertig({ exit, signal, out, err }); });
+  });
+  const [a, b] = await Promise.all([kind('a'), kind('b')]);
+  await new Promise((r) => { if (server.closeAllConnections) server.closeAllConnections(); server.close(() => r()); });
+  const x = st.erster, y = x === 'a' ? 'b' : 'a', lauf2 = { a, b };
+  return { posts: st.posts, confirms: st.confirms, tagX: st.anspruch[x] || null, tagY: st.anspruch[y] || null, x: lauf2[x] || null, y: lauf2[y] || null };
+}
+{
+  // (A) «kurz»: die Markierung von X kommt 30 ms nach der von Y an. Mit der Wartezeit (hier 400 ms mit Test-Kennung, Grenze für das eigene Schreiben 200 ms) liest Y erst danach, sieht X und tritt zurück: genau EIN Auftrag.
+  //     Ohne Wartezeit (Stand vor der Korrektur, Mutant «G1 Kleber: keine Wartezeit») liest Y sofort: zwei Aufträge, zwei Bestätigungen in JEDEM Lauf.
+  const LAEUFE = 10;
+  const erg = await Promise.all(Array.from({ length: LAEUFE }, () => rennen({ modus: 'kurz', warteMs: 400 })));
+  ist(`G1 Rennen (${LAEUFE} Läufe, je zwei echte Kindprozesse, verzögertes Schreiben der früheren Markierung): beide Läufe haben markiert und die Markierung des ersten ist die kleinere (sonst prüfte der Test das Rennen nicht)`, erg.filter((r) => r.tagX && r.tagY && r.tagX < r.tagY).length, LAEUFE);
+  ist('G1 Rennen: in KEINEM Lauf zwei Printful-Aufträge (vor der Korrektur: in jedem)', erg.map((r) => r.posts).filter((n) => n > 1), []);
+  ist('G1 Rennen: in KEINEM Lauf zwei Bestätigungen (Doppelabbuchung)', erg.map((r) => r.confirms).filter((n) => n > 1), []);
+  ist('G1 Rennen: kein Lauf blieb hängen oder brach ab (jeder Kindprozess endet selbst, ohne Signal)', erg.filter((r) => !r.x || !r.y || r.x.signal || r.y.signal || r.x.exit === 3 || r.y.exit === 3).length, 0);
+  // Weiche Schwelle (8 von 10 statt 10): bei sehr hoher Rechnerlast kann das Schreiben von X die Grenze von 200 ms reissen; dann legt (richtig) niemand an. Doppelt wird es nie.
+  wahr(`G1 Rennen: die Sicherung blockiert nicht einfach alles: in mindestens 8 von ${LAEUFE} Läufen entsteht genau EIN Auftrag mit genau EINER Bestätigung, angelegt vom Lauf mit der kleineren Markierung`, erg.filter((r) => r.posts === 1 && r.confirms === 1 && r.x && /BESTÄTIGT/.test(r.x.out)).length >= 8, JSON.stringify(erg.map((r) => [r.posts, r.confirms])));
+  wahr('G1 Rennen: der unterlegene Lauf tritt still zurück («ein anderer Lauf hat früher markiert», Exit 0)', erg.filter((r) => r.y && r.y.exit === 0 && /ein anderer Lauf hat früher markiert/.test(r.y.out)).length >= 8, JSON.stringify(erg.map((r) => r.y && r.y.exit)));
+  // (B) «lang»: die Markierung von X kommt erst an, NACHDEM Y nachgelesen hat (das Schreiben von X dauerte also länger als die ganze Wartezeit). Y sieht nur sich und legt an. X sieht danach beide und wäre die «kleinste»:
+  //     weil sein Schreiben zu lange brauchte, legt X trotzdem NICHT an (Regel «nur allein») und meldet das als Fehler.
+  const lang = await Promise.all([rennen({ modus: 'lang', warteMs: 400 }), rennen({ modus: 'lang', warteMs: 400 })]);
+  ist('G1 Rennen «lang» (die frühere Markierung kommt erst nach dem Nachlesen des späteren Laufs an): genau EIN Auftrag und EINE Bestätigung je Lauf, nie zwei', lang.map((r) => [r.posts, r.confirms]), [[1, 1], [1, 1]]);
+  ist('G1 Rennen «lang»: der spätere Lauf legt an (Exit 0); der frühere legt NICHT an und endet mit Exit 1 und der Fehlerzeile zur Dauer seiner Markierung', lang.map((r) => [r.y && r.y.exit, r.y && /BESTÄTIGT/.test(r.y.out), r.x && r.x.exit, r.x && /brauchte \d+ ms/.test(r.x.err) && /zweiter Lauf/.test(r.x.err), r.tagX < r.tagY]), [[0, true, 1, true, true], [0, true, 1, true, true]]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

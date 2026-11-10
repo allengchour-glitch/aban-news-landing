@@ -2,7 +2,7 @@
 // Prüfdaten: Auszug aus dem ECHTEN Printful-Katalog (dropship/pod-auswahl/bestellweg_katalog_auszug.json: Tasse 19, T-Shirt 71, Kappe 206,
 // Poster 268, Kapuzenjacke 388, Strick 769, Hülle 798; gelesen 05.11.2026) und die echten Mitschnitte der Platzierung. Das Verhalten des ganzen Skripts (gefälschtes fetch)
 // prüft automation/printful_sync_test.mjs.
-import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -17,6 +17,7 @@ import {
   adresseNormal, EIGENE_CLOUDINARY_CLOUD, KOSTEN_MIN_USD, entwurfVergleichen, editorProdukt, zahlungPruefen, ANLEGEN_SPERRE_MIN, anlegenTag, anlegenAlterMin,
   vorhandenVergleichen, SCOPES_PFLICHT, scopesBewerten, bestaetigenPlan,
   EIGENER_SHOPIFY_CDN_PFAD, FO_DRUCKBAR, anlegenGesperrt, anspruchGewonnen, bestellStand, bestellAbweichung,
+  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -1325,9 +1326,9 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const ID1 = 'gid://shopify/LineItem/9001';
   const foNode = (status, ort = FO_HAENDLER, ids = [ID1]) => ({ node: { id: 'f-' + status, status, assignedLocation: { location: ort }, lineItems: { edges: ids.map((id) => ({ node: { lineItem: { id } } })) } } });
   const stand = (...nodes) => standortVon({ fulfillmentOrders: { edges: nodes } }, ID1);
-  ist('R2 Standort: die druckbaren Status sind nur OPEN und IN_PROGRESS', [...FO_DRUCKBAR], ['OPEN', 'IN_PROGRESS']);
-  for (const st of ['OPEN', 'IN_PROGRESS', 'open', 'in_progress']) ist(`R2 Standort: ${st} am Händler-Standort → frei`, stand(foNode(st)).art, 'frei');
-  for (const st of ['ON_HOLD', 'SCHEDULED', 'INCOMPLETE', 'REQUEST_DECLINED', 'WEIRD', '']) ist(`R2 Standort: «${st || '(leer)'}» am Händler-Standort → gehalten (nie druckbar)`, stand(foNode(st)), { art: 'gehalten', status: st ? st.toUpperCase() : '(leer)' });
+  ist('R2 Standort: der einzige druckbare Status ist OPEN (IN_PROGRESS seit der Schlussprüfung nicht mehr, Fund G5)', [...FO_DRUCKBAR], ['OPEN']);
+  for (const st of ['OPEN', 'open']) ist(`R2 Standort: ${st} am Händler-Standort → frei`, stand(foNode(st)).art, 'frei');
+  for (const st of ['IN_PROGRESS', 'ON_HOLD', 'SCHEDULED', 'INCOMPLETE', 'REQUEST_DECLINED', 'WEIRD', '']) ist(`R2 Standort: «${st || '(leer)'}» am Händler-Standort → gehalten (nie druckbar)`, stand(foNode(st)), { art: 'gehalten', status: st ? st.toUpperCase() : '(leer)' });
   ist('R2 Standort: ein Status ohne Wert (fehlt ganz) → gehalten', standortVon({ fulfillmentOrders: { edges: [{ node: { assignedLocation: { location: FO_HAENDLER }, lineItems: { edges: [{ node: { lineItem: { id: ID1 } } }] } } }] } }, ID1).art, 'gehalten');
   ist('R2 Standort: gehalten am DIENST-Standort → dienst (der Dienst hat Vorrang)', stand(foNode('ON_HOLD', FO_DIENST)).art, 'dienst');
   ist('R2 Standort: gehalten UND offen für dieselbe Position → gehalten', stand(foNode('ON_HOLD'), foNode('OPEN')).art, 'gehalten');
@@ -1435,6 +1436,90 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   }
 }
 
+
+// ═══════════════════════════════════════ SCHLUSSPRÜFUNG 10.11.2026 (zwei unabhängige Schlussprüfer): Funde G1 bis G5, reine Logik
+{
+  // ── G1 (a): scharf nur in GitHub Actions
+  ist('G1 scharfErlaubt: der Trockenlauf ist überall erlaubt (mit und ohne Actions, mit und ohne Ausnahme)', [scharfErlaubt({ dry: true }), scharfErlaubt({ dry: true, githubActions: 'false' }), scharfErlaubt({ dry: true, lokalScharf: '1' }), scharfErlaubt()], Array(4).fill({ ok: true, lokal: false, grund: null }));
+  ist('G1 scharfErlaubt: scharf in Actions (GITHUB_ACTIONS genau «true») ist erlaubt und gilt nicht als «lokal»', scharfErlaubt({ dry: false, githubActions: 'true' }), { ok: true, lokal: false, grund: null });
+  for (const ga of [undefined, null, '', 'false', 'TRUE', 'True', ' true', 'true ', '1', 'yes', true, 1]) {
+    const r = scharfErlaubt({ dry: false, githubActions: ga });
+    ist(`G1 scharfErlaubt: scharf mit GITHUB_ACTIONS=${JSON.stringify(ga)} (nicht genau die Zeichenkette «true») ist NICHT erlaubt; der Grund nennt GITHUB_ACTIONS, die Concurrency-Gruppe und die Ausnahme`, [r.ok, r.lokal, /GITHUB_ACTIONS/.test(r.grund) && /Concurrency-Gruppe/.test(r.grund) && /PRINTFUL_LOKAL_SCHARF=1/.test(r.grund)], [false, false, true]);
+  }
+  ist('G1 scharfErlaubt: die Ausnahme PRINTFUL_LOKAL_SCHARF=1 (auch « 1 » mit Leerraum) erlaubt scharf ausserhalb von Actions und wird als «lokal» gekennzeichnet (Warnzeile im Kleber)', [scharfErlaubt({ dry: false, lokalScharf: '1' }), scharfErlaubt({ dry: false, githubActions: 'false', lokalScharf: ' 1 ' })], Array(2).fill({ ok: true, lokal: true, grund: null }));
+  for (const ls of ['', '0', '2', '11', 'true', 'ja', 'yes', 'on', 'an', 'x', true]) ist(`G1 scharfErlaubt: PRINTFUL_LOKAL_SCHARF=${JSON.stringify(ls)} ist KEINE Ausnahme (nur genau «1»)`, scharfErlaubt({ dry: false, lokalScharf: ls }).ok, false);
+  ist('G1 scharfErlaubt: in Actions bleibt «lokal» falsch, auch wenn die Ausnahme zusätzlich gesetzt ist (keine Warnzeile im Workflow)', scharfErlaubt({ dry: false, githubActions: 'true', lokalScharf: '1' }), { ok: true, lokal: false, grund: null });
+
+  // ── G1 (b): Wartezeit vor dem Nachlesen der Markierung
+  ist('G1 Wartezeit: Vorgabe 3000 ms, kleinster Wert eines echten Laufs 2000 ms, grösster 60000 ms; die Test-Kennung heisst «nur-attrappe»', [ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG], [3000, 2000, 60000, 'nur-attrappe']);
+  for (const leer of [undefined, null, '', '   ']) ist(`G1 anspruchWarteLesen(${JSON.stringify(leer)}): die Vorgabe 3000 ms, kein Fehler, keine Test-Kennung`, anspruchWarteLesen(leer), { ms: 3000, fehler: null, test: false });
+  ist('G1 anspruchWarteLesen: 2000, 3000, « 4500 » und 60000 gelten ohne Test-Kennung', ['2000', '3000', ' 4500 ', '60000'].map((w) => anspruchWarteLesen(w).ms), [2000, 3000, 4500, 60000]);
+  for (const w of ['0', '1', '1999', '02', '0000']) {
+    const r = anspruchWarteLesen(w);
+    ist(`G1 anspruchWarteLesen(«${w}») OHNE Test-Kennung: Fehler (unter 2000), kein Wert; die Meldung nennt die Variable`, [r.ms, typeof r.fehler === 'string' && /PRINTFUL_ANSPRUCH_WARTE_MS/.test(r.fehler) && /2000/.test(r.fehler)], [null, true]);
+  }
+  for (const k of [undefined, '', '1', 'true', 'NUR-ATTRAPPE', 'nur-attrappe ', ' nur-attrappe', 'attrappe']) ist(`G1 anspruchWarteLesen(«1999») mit FALSCHER Test-Kennung ${JSON.stringify(k)}: weiter ein Fehler (nur genau «nur-attrappe» gilt)`, [anspruchWarteLesen('1999', { testKennung: k }).ms, anspruchWarteLesen('1999', { testKennung: k }).test], [null, false]);
+  ist('G1 anspruchWarteLesen: MIT Test-Kennung gelten 0, 1, 400 und 1999', ['0', '1', '400', '1999'].map((w) => anspruchWarteLesen(w, { testKennung: 'nur-attrappe' })), [0, 1, 400, 1999].map((ms) => ({ ms, fehler: null, test: true })));
+  for (const w of ['abc', '-1', '3000.5', '1e4', '0x10', '3 000', '3000ms', '+3000', '60001', '9999999999']) for (const k of [undefined, 'nur-attrappe']) {
+    const r = anspruchWarteLesen(w, { testKennung: k });
+    ist(`G1 anspruchWarteLesen(«${w}»${k ? ', mit Test-Kennung' : ''}): keine ganze Zahl von Millisekunden bis 60000 → Fehler, kein Wert`, [r.ms, typeof r.fehler === 'string' && /PRINTFUL_ANSPRUCH_WARTE_MS/.test(r.fehler)], [null, true]);
+  }
+  ist('G1 anspruchLangsam: das eigene Schreiben darf höchstens die HALBE Wartezeit dauern (genau die Hälfte gilt noch als schnell)', [anspruchLangsam(0, 3000), anspruchLangsam(1500, 3000), anspruchLangsam(1501, 3000), anspruchLangsam(3000, 3000), anspruchLangsam(200, 400), anspruchLangsam(201, 400)], [false, false, true, true, false, true]);
+  ist('G1 anspruchLangsam: eine nicht messbare Dauer gilt als langsam (nie raten); bei Wartezeit 0 (nur mit Test-Kennung) gibt es keine Grenze', [anspruchLangsam(NaN, 3000), anspruchLangsam(undefined, 3000), anspruchLangsam(99999, 0), anspruchLangsam(NaN, 0)], [true, true, false, false]);
+  {
+    const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345), mein = anlegenTag(T0, 'bbbbbbbb');
+    const spaeter = anlegenTag(T0 + 5000, 'aaaaaaaa'), frueher = anlegenTag(T0 - 5000, 'aaaaaaaa'), alt = anlegenTag(T0 - 70 * 60000, 'aaaaaaaa');
+    const g = (tags, allein) => anspruchGewonnen(tags, mein, T0 + 1000, { allein });
+    ist('G1 Regel «nur allein» (das eigene Schreiben war langsam): ganz allein → gewonnen', [g([mein], true).ok, g([mein], true).art], [true, 'gewonnen']);
+    ist('G1 Regel «nur allein»: eine SPÄTERE aktive Markierung eines anderen → NICHT gewonnen, Art «nicht-allein» (ohne die Regel gewänne dieser Lauf als «kleinster»)', [g([mein, spaeter], true).ok, g([mein, spaeter], true).art, /zu lange/.test(g([mein, spaeter], true).grund), g([mein, spaeter], false).ok], [false, 'nicht-allein', true, true]);
+    ist('G1 Regel «nur allein»: eine FRÜHERE Markierung eines anderen bleibt ein gewöhnlicher Verlust (Art «verloren»)', g([mein, frueher], true).art, 'verloren');
+    ist('G1 Regel «nur allein»: eine nicht mehr aktive Markierung (70 Minuten alt) und fremde Tags zählen nicht als zweiter Lauf', [g([mein, alt], true).ok, g([mein, 'printful-synced', 'cj-shipped', 'printful-versuch-1'], true).ok], [true, true]);
+    ist('G1 Regel «nur allein»: fehlt die eigene Markierung, bleibt es «eigene-fehlt» (Lesefehler)', g([spaeter], true).art, 'eigene-fehlt');
+    ist('G1 anspruchGewonnen ohne vierte Angabe verhält sich wie bisher (allein = false)', [anspruchGewonnen([mein, spaeter], mein, T0 + 1000).ok, anspruchGewonnen([mein, frueher], mein, T0 + 1000).art], [true, 'verloren']);
+    // T5 (Tests-Prüfer): fremde Tags, die alphabetisch VOR «printful-anlegen-» stehen, zählen nicht als Anspruch (sonst bliebe die Bestellung still liegen)
+    ist('T5 Anspruch: fremde Tags, die alphabetisch VOR «printful-anlegen-» sortieren («cj-shipped», «Aktion», «a1», «0815»), stören nicht → gewonnen', [g(['cj-shipped', 'Aktion', 'a1', '0815', mein], false), g(['cj-shipped', 'Aktion', 'a1', '0815', mein], true)], Array(2).fill({ ok: true, grund: null, art: 'gewonnen' }));
+    ist('T5 Anspruch: auch ein Tag, das nur so ÄHNLICH aussieht («printful-anlegen», «printful-anlegen-x», «printful-anlege-20261110t0937»), ist kein Anspruch', g(['printful-anlegen', 'printful-anlegen-x', 'printful-anlege-20261110t0937', mein], true).ok, true);
+  }
+
+  // ── G2: nur «draft» ist ein Entwurf
+  ist('G2 alsEntwurfAngelegt: «draft» (auch «Draft», « DRAFT ») ist ein Entwurf', ['draft', 'Draft', ' DRAFT '].map((s) => alsEntwurfAngelegt({ id: 1, status: s })), Array(3).fill({ ok: true, status: 'draft' }));
+  for (const s of ['pending', 'inprocess', 'fulfilled', 'failed', 'onhold', 'canceled', 'drafts', 'draft2', 'x']) ist(`G2 alsEntwurfAngelegt: Status «${s}» ist KEIN Entwurf`, alsEntwurfAngelegt({ id: 1, status: s }), { ok: false, status: s });
+  for (const [n, r] of [['Status fehlt', { id: 1 }], ['Status leer', { id: 1, status: '' }], ['Status null', { id: 1, status: null }], ['Status eine Zahl', { id: 1, status: 1 }], ['Status wahr', { id: 1, status: true }], ['Status ein Objekt', { id: 1, status: { a: 'draft' } }], ['kein Ergebnis', null], ['Ergebnis ist Text', 'draft']]) ist(`G2 alsEntwurfAngelegt: ${n} → KEIN Entwurf (nie raten), Anzeige «(fehlt)»`, alsEntwurfAngelegt(r), { ok: false, status: '(fehlt)' });
+
+  // ── G4: Einstellungen streng als Dezimalzahl
+  ist('G4 dezimalLesen: «4», «0», «2.50», «-1», « 12.70 », «007» und die Zahl 4 sind Zahlen', ['4', '0', '2.50', '-1', ' 12.70 ', '007', 4].map(dezimalLesen), [4, 0, 2.5, -1, 12.7, 7, 4]);
+  for (const w of ['0x10', '1e2', '1E2', 'Infinity', '-Infinity', 'NaN', 'abc', '60abc', '4,5', '+4', '4.', '.5', '1 000', '', '   ', 'aus', null, undefined, true, [4], {}]) ist(`G4 dezimalLesen(${JSON.stringify(w)}): keine Dezimalzahl → null (Number() läse «0x10» als 16 und «1e2» als 100)`, dezimalLesen(w), null);
+
+  // ── G3: Fertigware druckt das feste Motiv des Besitzers; eine mitgegebene Datei-Eigenschaft ersetzt es nie
+  {
+    const fertig = (attrs, extra = {}) => zeile({ customAttributes: attrs, product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9_19515', variant: { sku: '9_19515' }, ...extra });
+    for (const [n, attrs] of [['v6 «🖼️ Druckdatei (front)»', [A('🖼️ Druckdatei (front)', U('kunde'))]], ['v6 neu «_Druckdatei (front)»', [A('_Druckdatei (front)', U('kunde'))]], ['v5 «🖼️ Druckdatei (Vorne)»', [A('🖼️ Druckdatei (Vorne)', U('kunde'))]], ['v6 mit Karte', [A('🖼️ Druckdatei (front)', U('kunde')), karte6(['front'], { dt: { front: 'default' } })]]]) {
+      const io = mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) });
+      const p = await plane([fertig(attrs)], io);
+      ist(`G3 Fertigware mit Datei-Eigenschaft der Kundin (${n}): harter Befund «datei-bei-fertigware», KEIN Artikel, keine Netzabfrage (weder Variante noch Datei noch KI)`, [arten(p.befunde).filter((a) => a === 'datei-bei-fertigware').length, p.befunde.filter((b) => b.art === 'datei-bei-fertigware').every((b) => b.hart), p.items.length, io.log.produkt.length, io.log.kopf.length, io.log.kontrolle.length], [1, true, 0, 0, 0, 0]);
+    }
+    const p0 = await plane([fertig([])], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
+    ist('G3 Gegenprobe: Fertigware OHNE Datei-Eigenschaft druckt weiter das feste Motiv aus dem Metafeld', () => [p0.items[0].files, arten(p0.befunde)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], []]);
+    const ed = await plane([zeile()]);
+    ist('G3 Gegenprobe: ein EDITOR-Produkt (Tag wunschdesign) druckt weiter die Datei der Kundin', [ed.items.length, arten(ed.befunde).includes('datei-bei-fertigware')], [1, false]);
+    const text = (await plane([fertig([A('🖼️ Druckdatei (front)', U('kunde'))])])).befunde.find((b) => b.art === 'datei-bei-fertigware').text;
+    ist('G3 Der Befundtext nennt die Fertigware, enthält die Adresse der Kundendatei NICHT und bleibt unter 450 Zeichen', [/Fertigware/.test(text), /cloudinary/.test(text), text.length < 450], [true, false, true]);
+  }
+
+  // ── G5: Fulfillment-Order IN_PROGRESS ist nicht mehr druckbar
+  {
+    const ID1 = 'gid://shopify/LineItem/9001';
+    const fo = (status) => ({ edges: [{ node: { id: 'f', status, assignedLocation: { location: FO_HAENDLER }, lineItems: { edges: [{ node: { lineItem: { id: ID1 } } }] } } }] });
+    ist('G5 Standort: druckbar ist NUR «OPEN»', [...FO_DRUCKBAR], ['OPEN']);
+    ist('G5 Standort: IN_PROGRESS (in Arbeit, teilweise erfüllt) am Händler-Standort → gehalten', [standortVon({ fulfillmentOrders: fo('IN_PROGRESS') }, ID1), standortVon({ fulfillmentOrders: fo('in_progress') }, ID1)], Array(2).fill({ art: 'gehalten', status: 'IN_PROGRESS' }));
+    const io = mkIo();
+    const p = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: fo('IN_PROGRESS') }), io, { paket: paketAlles });
+    ist('G5 Plan: Fulfillment-Order IN_PROGRESS → HARTER Befund «fulfillment-gehalten», kein Artikel, keine Netzabfrage; der Text nennt den Status und «teilweise erfüllt»', [arten(p.befunde), p.befunde[0]?.hart, p.items.length, io.log.produkt.length, /IN_PROGRESS/.test(p.befunde[0]?.text), /teilweise erfüllt/.test(p.befunde[0]?.text), p.befunde[0]?.text.length < 450], [['fulfillment-gehalten'], true, 0, 0, true, true, true]);
+    const o = { ...bestellung([zeile()]), email: 'a@b.ch', shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' } };
+    const soll = bestellStand(o, [ID1]);
+    ist('G5 Frisches Lesen: wechselt die Fulfillment-Order nach dem Planen auf IN_PROGRESS, gilt die Bestellung als geändert (kein Anlegen, kein Bestätigen)', [bestellAbweichung(o, soll), bestellAbweichung({ ...o, fulfillmentOrders: fo('IN_PROGRESS') }, soll)?.art, /IN_PROGRESS/.test(bestellAbweichung({ ...o, fulfillmentOrders: fo('IN_PROGRESS') }, soll)?.text)], [null, 'geaendert', true]);
+  }
+}
 
 // ═══════════════════════════════════════ Workflow-Schalter (Fund 12/20/24): das Verhalten, nicht nur der Text
 // Der Schritt «Schreiben oder nur lesen?» aus printful-sync.yml wird ausgeführt (bash, leeres Verzeichnis, gefälschte Ausgabedateien), der Ausdruck für DRY_RUN nach den Regeln von GitHub Actions ausgewertet
@@ -1591,6 +1676,66 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       ist('R2 CI (L2/6): im Job «tests» steht weder «continue-on-error» noch «|| true» noch «set +e»', [/continue-on-error/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /\|\| true\b/.test(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n')), /set \+e/.test(jobTests.join('\n'))], [false, false, false]);
       const tm = /timeout-minutes: (\d+)/.exec(jobTests.filter((l) => !/^\s*#/.test(l)).join('\n'));
       ist('R2 CI (L2/7): das Zeitlimit des Jobs «tests» liegt zwischen 20 und 30 Minuten (lokal gemessen rund 600 s Schritte, also über 60 % von 15 Minuten; die Doku nennt keine «obere Schranke» mehr und SYNC.md 7.7 nennt 20)', [!!tm, tm ? Number(tm[1]) >= 20 && Number(tm[1]) <= 30 : null], [true, true]);
+    }
+  }
+
+  // ── SCHLUSSPRÜFUNG 10.11.2026 (Tests-Prüfer T1, T2, T6, T7; Geld-Prüfer G1): Verdrahtung, die bisher kein Test festhielt
+  {
+    const ohneKommentar = (text) => text.split('\n').filter((l) => !/^\s*#/.test(l)).join('\n');
+    const repo = fileURLToPath(new URL('../../', import.meta.url));
+    const TESTS = ['automation/lib/printful_bestellweg_test.mjs', 'automation/printful_sync_test.mjs', 'automation/printful_reprice_test.mjs', 'automation/lib/printful_platzierung_test.mjs', 'automation/printful_tracking_test.mjs'];
+    if (braucht(wfCi, '.github/workflows/luxestyle-automation-tests.yml')) {
+      const t = readFileSync(pfad(wfCi), 'utf8'), zeilen = t.split('\n');
+      const job = zeilen.slice(zeilen.findIndex((l) => /^  tests:\s*$/.test(l)), zeilen.findIndex((l) => /^  lagerbestand:\s*$/.test(l))).filter((l) => !/^\s*#/.test(l));
+      const schritte = []; for (const l of job) { if (/^      - /.test(l)) schritte.push([l]); else if (schritte.length) schritte[schritte.length - 1].push(l); }   // jeder Schritt beginnt mit «      - »
+      const ohneRest = (l) => l.trim().replace(/\s+#.*$/, '');
+      const mit = schritte.filter((s) => s.some((l) => TESTS.some((d) => ohneRest(l) === 'node ' + d)));
+      // T7: auch der Test der Rückmeldung (printful_tracking_test.mjs, Geldpfad Printful → Shopify) gehört in die geforderte Liste
+      ist('T1/T7 CI: alle fünf Tests des Bestellwegs samt Rückmeldung stehen in EINEM Schritt des Jobs «tests», jeder als reine Zeile', [mit.length, mit[0] ? TESTS.filter((d) => mit[0].filter((l) => ohneRest(l) === 'node ' + d).length !== 1) : TESTS], [1, []]);
+      const s = mit[0] || [];
+      ist('T1 CI: der Job «tests» hat keine Bedingung («if:» auf Job-Ebene; sonst liefe er zum Beispiel nur beim Handstart und bei Pull Requests nie)', job.filter((l) => /^    if\s*:/.test(l)), []);
+      ist('T1 CI: der Schritt mit den Bestellweg-Tests hat weder «if:» noch ein eigenes Zeitlimit noch «continue-on-error» noch eine eigene Shell', s.filter((l) => /^        (if|timeout-minutes|continue-on-error|shell|working-directory)\s*:/.test(l)), []);
+      const envSchluessel = (zs, ein) => { const i = zs.findIndex((l) => new RegExp(`^ {${ein}}env:\\s*$`).test(l)); if (i < 0) return []; const r = []; for (let k = i + 1; k < zs.length && new RegExp(`^ {${ein + 2}}\\S`).test(zs[k]); k++) r.push(zs[k].trim().split(':')[0]); return r; };
+      ist('T1 CI: der Schritt setzt als Umgebung nur CJ_PAUSE_MS (ein leer gesetztes CI oder GITHUB_ACTIONS machte aus «Datei fehlt im Auszug» einen stillen Übersprung)', envSchluessel(s, 8), ['CJ_PAUSE_MS']);
+      ist('T1 CI: nirgends im Workflow wird CI oder GITHUB_ACTIONS gesetzt (weder am Schritt noch am Job noch global)', [ohneKommentar(t).split('\n').filter((l) => /^\s*(CI|GITHUB_ACTIONS)\s*:/.test(l)), envSchluessel(job, 4), envSchluessel(ohneKommentar(t).split('\n'), 0)], [[], [], []]);
+      const r = s.findIndex((l) => /^        run: \|\s*$/.test(l));
+      const block = r < 0 ? [] : s.slice(r + 1);
+      const letzte = Math.max(-1, ...TESTS.map((d) => block.findIndex((l) => ohneRest(l) === 'node ' + d)));
+      ist('T1 CI: der Schritt hat genau einen «run: |»-Block, und bis zur letzten Testzeile des Bestellwegs steht darin nichts ausser reinen «node <Datei>»-Zeilen (kein «exit 0», «true», «:», «return», kein «;», «&&», «||»)', [s.filter((l) => /^        run:/.test(l)).length, r >= 0, letzte >= 0, block.slice(0, letzte + 1).filter((l) => l.trim() !== '' && !/^ {10}node [\w./-]+\.mjs( --pruefen)?\s*(#.*)?$/.test(l))], [1, true, true, []]);
+      ist('T2 CI: der Job «tests» läuft mit Node 22 (genau eine Angabe)', job.filter((l) => /node-version\s*:/.test(l)).map((l) => l.trim()), ["node-version: '22'"]);
+      // T6: die Freigabedatei schaltet den Zeitplan scharf; ein Pull Request, der NUR sie legt, muss die Tests auslösen, und der Auszug des Jobs muss sie enthalten (sonst sähe die Prüfung unten sie in der CI nie)
+      const eintraege = (von, bis) => { const a = zeilen.findIndex((l) => von.test(l)); if (a < 0) return []; const rest = zeilen.slice(a + 1); const b = rest.findIndex((l) => bis.test(l)); return (b < 0 ? rest : rest.slice(0, b)).map((x) => x.trim().replace(/^- /, '').replace(/^'|'$/g, '')); };
+      const sparse = (() => { const a = job.findIndex((l) => /sparse-checkout: \|\s*$/.test(l)); const x = []; for (let i = a + 1; a >= 0 && i < job.length && /^\s{12}\S/.test(job[i]); i++) x.push(job[i].trim()); return x; })();
+      ist('T6 CI: die Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt steht im Pfadfilter («paths:») UND im sparse-checkout des Jobs «tests»', [eintraege(/^\s{4}paths:\s*$/, /^\s{2}\S|^\S/).includes('dropship/PRINTFUL-SYNC-FREI.txt'), sparse.includes('dropship/PRINTFUL-SYNC-FREI.txt')], [true, true]);
+    }
+    if (braucht(wfSync, '.github/workflows/printful-sync.yml')) {
+      const c = ohneKommentar(readFileSync(pfad(wfSync), 'utf8'));
+      ist('T2 Workflow Sync: genau EIN Schritt startet ein Skript, einzeilig und ohne Zusatz: «node automation/printful_sync.mjs»', [...c.matchAll(/^\s+run: (?!\|)(.*)$/gm)].map((m) => m[1].trim()), ['node automation/printful_sync.mjs']);
+      ist('T2 Workflow Sync: im ganzen Workflow startet node kein anderes Skript', [...c.matchAll(/\bnode\s+(\S+\.(?:mjs|cjs|js))/g)].map((m) => m[1]), ['automation/printful_sync.mjs']);
+      ist('T2 Workflow Sync: der Lauf nutzt Node 22 (genau eine Angabe)', [...c.matchAll(/node-version\s*:\s*(.*)$/gm)].map((m) => m[1].trim()), ["'22'"]);
+      ist('G1 Workflow Sync: der Workflow setzt GITHUB_ACTIONS nicht selbst (der Läufer setzt es; nur dort darf der Sync schreiben)', /^\s*GITHUB_ACTIONS\s*:/m.test(c), false);
+    }
+    // G1: die drei Schalter des Rennens gehören in KEINE Workflow-Datei: die Wartezeit (nur für Tests senkbar), die Ausnahme für den eigenen Rechner und die Test-Kennung. Geprüft wird jede ausgecheckte Workflow-Datei, auch ihre Kommentare.
+    {
+      const dir = join(repo, '.github', 'workflows');
+      const dateien = existsSync(dir) ? readdirSync(dir).filter((f) => /\.ya?ml$/.test(f)).sort() : [];
+      const pflicht = ['printful-sync.yml', 'printful-reprice.yml', 'luxestyle-automation-tests.yml'];
+      if (pflicht.map((f) => braucht('../../.github/workflows/' + f, '.github/workflows/' + f)).every(Boolean)) {
+        const VERBOTEN = ['PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_LOKAL_SCHARF', 'PRINTFUL_ANSPRUCH_TESTKENNUNG', ANSPRUCH_TESTKENNUNG];
+        ist('G1 Workflows: in KEINER Workflow-Datei steht PRINTFUL_ANSPRUCH_WARTE_MS, PRINTFUL_LOKAL_SCHARF, PRINTFUL_ANSPRUCH_TESTKENNUNG oder der Wert der Test-Kennung (auch nicht in einem Kommentar)', dateien.flatMap((f) => { const t = readFileSync(join(dir, f), 'utf8'); return VERBOTEN.filter((v) => t.includes(v)).map((v) => `${f}: ${v}`); }), []);
+        ist('G1 Workflows: die drei Workflows des Bestellwegs gehören zu den geprüften Dateien', pflicht.filter((f) => !dateien.includes(f)), []);
+      }
+    }
+    // T6: der Stand der Freigabe ist eine AUSDRÜCKLICHE Testzeile. Wer dropship/PRINTFUL-SYNC-FREI.txt legt, schaltet den täglichen Lauf scharf und muss diese Zeile bewusst auf «liegt» ändern (im selben Pull Request).
+    {
+      const freigabe = (wurzel) => (existsSync(join(wurzel, 'dropship', 'PRINTFUL-SYNC-FREI.txt')) ? 'liegt' : 'fehlt');
+      ist('T6 Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt FEHLT (Stand: noch nicht freigegeben, der Zeitplan liest nur). Wer sie legt, schaltet den Zeitplan scharf und ändert diese Zeile bewusst auf «liegt»', freigabe(repo), 'fehlt');
+      const d = mkdtempSync(join(tmpdir(), 'pffrei-'));
+      try {
+        mkdirSync(join(d, 'dropship'));
+        const leer = freigabe(d); writeFileSync(join(d, 'dropship', 'PRINTFUL-SYNC-FREI.txt'), 'frei\n');
+        ist('T6 Gegenprobe des Messgeräts: ein Ordner ohne die Datei ist «fehlt», mit der Datei «liegt»', [leer, freigabe(d)], ['fehlt', 'liegt']);
+      } finally { rmSync(d, { recursive: true, force: true }); }
     }
   }
 }
