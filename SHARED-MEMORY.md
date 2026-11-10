@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## ABAN-Shop: Ersatzkatalog konsistent ·10.11.2026
+
+Codex behebt die veraltete Ersatzanzeige bei fehlgeschlagenem Produktabruf. Erzeugung aus unveränderter kanonischer Katalogdatei im bestehenden Ablauf; keine Stripe-Preis-/Produktänderung und kein Kauf. Zehn Browserfälle und vier Regressionen geprüft. Details und tatsächlicher Bereitstellungsstand in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), zugehöriger PR.
+
+
 ## ABAN-Download: Prüfwartezeit begrenzt ·10.11.2026
 
 Codex korrigiert einen lokal reproduzierten Hängefall der bestehenden Kit-Zahlungsprüfung: feste Frist für Transport und Antwortinhalt zusätzlich zum Abort-Signal.52 Download- und70 APIprüfungen lokal bestanden; keine echte Zahlung oder Anbieterabfrage. Details und tatsächlicher Bereitstellungsstand in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md) und zugehörigem PR. Keine Shop-/Metricool-Änderung.

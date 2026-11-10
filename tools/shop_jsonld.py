@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Schreibt die Produktliste (schema.org ItemList) in shop.html aus data/shop-products.json neu.
+"""Schreibt Suchmaschinen- und Ersatzanzeige aus demselben vorhandenen Shop-Katalog.
 
 Vorher war sie von Hand gepflegt: alte Preise, alte Stripe-Links, neue Produkte fehlten. Läuft im
 Stripe-Workflow nach jedem Abgleich, damit Suchmaschinen dieselben Preise sehen wie die Kasse.
@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SHOP, DATEN = ROOT / "shop.html", ROOT / "data" / "shop-products.json"
+FALLBACK = ROOT / "js" / "shop-config.js"
 
 
 def preis(text: str):
@@ -35,7 +36,7 @@ def itemlist(produkte: list) -> str:
             "offers": {"@type": "Offer", "price": betrag, "priceCurrency": waehrung,
                        "availability": "https://schema.org/InStock", "url": p["buy"]}}})
     return json.dumps({"@context": "https://schema.org", "@type": "ItemList", "name": "aban news Shop",
-                       "url": "https://abannews.com/shop.html", "itemListElement": items}, ensure_ascii=False, separators=(",", ":"))
+                       "url": "https://abannews.com/shop.html", "itemListElement": items}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
 def neu_schreiben(html: str, produkte: list) -> str:
@@ -46,16 +47,30 @@ def neu_schreiben(html: str, produkte: list) -> str:
     return html[:b.start(2)] + itemlist(produkte) + html[b.end(2):]
 
 
+def ersatzkatalog(produkte: list) -> str:
+    daten = json.dumps(produkte, ensure_ascii=False, indent=2)
+    for zeichen in ("<", ">", "&", "\u2028", "\u2029"):
+        daten = daten.replace(zeichen, "\\u" + format(ord(zeichen), "04x"))
+    return ("// Automatisch aus data/shop-products.json erzeugt; nicht von Hand pflegen.\n"
+            "// Ohne Konto- oder Preisänderung: Ersatzanzeige für einen fehlgeschlagenen Produktabruf.\n"
+            "// Aktualisieren: python3 tools/shop_jsonld.py\nwindow.ABAN_SHOP = " + daten + ";\n")
+
+
 def main() -> int:
     html = SHOP.read_text(encoding="utf-8")
-    neu = neu_schreiben(html, json.loads(DATEN.read_text(encoding="utf-8")))
-    anzahl = neu.count('"@type":"Product"')
+    produkte = json.loads(DATEN.read_text(encoding="utf-8"))
+    neu = neu_schreiben(html, produkte)
+    ersatz = ersatzkatalog(produkte)
+    dateien = [(SHOP, neu), (FALLBACK, ersatz)]
+    veraltet = [pfad.name for pfad, text in dateien
+                if not pfad.exists() or pfad.read_text(encoding="utf-8") != text]
     if "--pruefen" in sys.argv:
-        print("shop.html aktuell" if neu == html else "shop.html veraltet")
-        return 0 if neu == html else 1
-    if neu != html:
-        SHOP.write_text(neu, encoding="utf-8")
-    print(f"→ shop.html: {anzahl} Produkte in der ItemList")
+        print("Shop-Anzeigen aktuell" if not veraltet else "Veraltet: " + ", ".join(veraltet))
+        return 1 if veraltet else 0
+    for pfad, text in dateien:
+        if pfad.name in veraltet:
+            pfad.write_text(text, encoding="utf-8")
+    print(f"→ shop.html und shop-config.js: {len(produkte)} Katalogeinträge aus derselben Quelle")
     return 0
 
 

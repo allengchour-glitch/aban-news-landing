@@ -1,5 +1,17 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Shop-Ersatzanzeige verwendet den bestehenden aktuellen Katalog
+
+Wirtschaftslauf10.11.: Von maindfb367f auf eigenem Branch, Regeln und offene Arbeiten geprüft; keine Änderungen an LuxeStyle-Produkten/Metricool. Konkreter Browserbefund: regulärer Produktabruf zeigt31 Angebote und BundleCHF39, fehlgeschlagener Abruf dagegen22, BundleCHF79, anderen Link und doppelte IDs «kit-undefined». Ursache: von Hand gepflegte Ersatzdatei `js/shop-config.js`, die der bestehende Katalogablauf nicht aktualisiert.
+
+Stripe ausschließlich lesend: aktiver bestehender Bundle-Link, CHF39 einmalig, Slug-Zuordnung und Weiterleitung zum vorhandenen Danke-/Downloadweg bestätigt. Kein Checkout geöffnet, keine Preise/Links/Produkte im Konto geändert. Daraus keine Einnahmen-, Abonnenten- oder erfolgreiche Lieferabdeckung ableiten. Eigene fehlende Einzelprodukt-Checkout-Zuordnungen bleiben offen.
+
+`tools/shop_jsonld.py` erzeugt Ersatz-JavaScript samt Slugs aus derselben unveränderten `data/shop-products.json` wie Suchmaschinenanzeige und regulärer Shop. `--pruefen` erkennt Abweichungen beider Ausgaben, ohne zu schreiben. Bestehender Stripe-Katalogworkflow nimmt die erzeugte JS-Datei in seinen Commit auf; er wurde in diesem Lauf NICHT ausgeführt. Bestehende Deploy-Prüfung prüft Konsistenz und vier Regressionen. Keine neue Automation/Frequenz. JSON-Inhalte werden im Scriptkontext sicher escaped; Test mit schliessendem Script-Text bleibt idempotent.
+
+GEMESSEN: vor Korrektur drei fehlgeschlagene Regressionen, nachher vier grün. Zehn Browserfälle (1440/390px × normal/Netzfehler/HTTP500/defektes JSON/leeres Array): alle31 Karten, Inhalte, Kaufziele und eindeutigen Sprungmarken identisch, keine Seitenüberbreite. Keine Käufe oder geschützten Downloads. Lokale CI-Simulation scheitert an fehlender unshare-Berechtigung; kein lokaler CI-Erfolg behauptet. Echte Prüfungen, Merge und Produktion im zugehörigen PR lesen.
+
+Nutzen: bestehende Angebote und korrekte Kaufziele bleiben auch bei Abruffehlern erreichbar. Keine neue Preisentscheidung; Konto- und kanonische Katalogpreise unverändert. Finanzielle Wirkung nicht gemessen.
+
 ## Geschützte Kit-Lieferung: feste Frist für Zahlungsprüfung
 
 Wirtschaftslauf10.11.: von main061d4ee auf eigenem Branch, AGENTS/CLAUDE/Shared Memory/Arbeitsteilung und offene PRs geprüft. Keine Änderung am LuxeStyle-Shop oder Metricool-Planer. Neuer Backendfall gegenüber den erledigten Datei-/Frontendfristen: Stripe-Prüfung sendet nach8 Sekunden nur Abort. Wenn ein Adapter Abort ignoriert, bleibt der Handler hängen. Demo-Transport mit ignoriertem Signal am unveränderten Code reproduziert (Test «noch blockiert» fehlgeschlagen).
