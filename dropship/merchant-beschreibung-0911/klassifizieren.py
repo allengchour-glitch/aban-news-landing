@@ -8,6 +8,8 @@ Add to description; die ersten zwei Zeilen sind Name und Filter). Product ID hat
 Klassen (je Produkt, die Beschreibung der ersten Zeile des Produkts):
   echt       Google trägt die echte Produktbeschreibung (Anfang gleich dem Text in Shopify)
   seo_heute  Google trägt die SEO-Werbezeile, gleich der heutigen `seo.description`
+  pilot      Google trägt den Sachtext des Pilots (gleich der heutigen `seo.description`, keine Werbezeile): so zeigt die Nachmessung,
+             ob der Weg «App nimmt die SEO-Beschreibung» stimmt (siehe pilot_pullover.py)
   seo_alt    Google trägt eine SEO-Werbezeile älteren Wortlauts (Muster «bei LuxeStyle … Gratis-Versand ab CHF 50»)
   anderes    keines davon
 
@@ -47,6 +49,8 @@ def klassifiziere(csv_beschreibung, seo_beschreibung, koerper_klartext):
     c, seo, body = norm(csv_beschreibung), norm(seo_beschreibung), norm(koerper_klartext)
     if body and c[:50] == body[:50]:
         return 'echt'
+    if seo and c == seo and not ist_werbezeile(c):
+        return 'pilot'
     if ist_werbezeile(c):
         if seo and (c == seo or c.rstrip('.…') == seo.rstrip('.…') or c[:40] == seo[:40]):
             return 'seo_heute'
@@ -81,6 +85,9 @@ def selbsttest():
     ok('SEO-Werbezeile älteren Wortlauts',
        klassifiziere('Pullover – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.', seo, body) == 'seo_alt')
     ok('anderes', klassifiziere('Ein ganz anderer Text.', seo, body) == 'anderes')
+    pilot = 'Pullover für Damen. Material: Polyester. Muster: Unifarben. Grössen: S–XL.'
+    ok('Pilot-Text bei Google, gleich der heutigen SEO-Beschreibung', klassifiziere(pilot, pilot, body) == 'pilot')
+    ok('Pilot-Text ist nicht die Werbezeile und nicht «anderes»', klassifiziere(pilot, seo, body) == 'anderes')
     ok('Vorrang der echten Beschreibung, wenn SEO-Text leer', klassifiziere(body, '', body) == 'echt')
     ok('Produkt-ID aus Merchant-Format', produkt_id('shopify_ZZ_15449059426689_55878972342657') == '15449059426689')
     ok('Produkt-ID ohne Länderteil', produkt_id('15449059426689_cj-cjmy1sh') == '15449059426689')
