@@ -1399,7 +1399,8 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('R2 Anspruch: ein früherer Anspruch aus der alten Form (nur Minute) → verloren, ein späterer alter → gewonnen', [g([mein, anlegenTag(T0 - 60000)]).ok, g([mein, anlegenTag(T0 + 120000)]).ok], [false, true]);
     ist('R2 Anspruch: ein früherer Anspruch von vor mehr als 60 Minuten ist nicht mehr aktiv → gewonnen', g([mein, anlegenTag(T0 - 70 * 60000, 'aaaaaaaa')]).ok, true);
     ist('R2 Anspruch: ein früherer Anspruch von vor 59 Minuten ist noch aktiv → verloren', g([mein, anlegenTag(T0 - 59 * 60000, 'aaaaaaaa')]).ok, false);
-    ist('R2 Anspruch: die eigene Markierung fehlt in der Liste → verloren (nie raten)', [g([]).ok, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, anspruchGewonnen(null, mein, T0).ok], [false, false, false]);
+    ist('R2 Anspruch: die eigene Markierung fehlt in der Liste → nicht gewonnen (nie raten)', [g([]).ok, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, anspruchGewonnen(null, mein, T0).ok], [false, false, false]);
+    ist('R2 Anspruch: die Art trennt «verloren» (ein anderer war früher) von «eigene-fehlt» (Lesefehler, muss sichtbar werden) und «gewonnen»', [g([mein]).art, g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).art, g([]).art, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).art, anspruchGewonnen(null, mein, T0).art], ['gewonnen', 'verloren', 'eigene-fehlt', 'eigene-fehlt', 'eigene-fehlt']);
     ist('R2 Anspruch: fremde Tags (printful-synced, Versuchszähler) stören nicht', g([mein, 'printful-synced', 'printful-versuch-2', 'wunschdesign']).ok, true);
   }
 

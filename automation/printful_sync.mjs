@@ -248,6 +248,7 @@ async function anspruchPruefen(tok, o, meinTag) {
   try { const r = await gql(tok, ANSPRUCH_Q, { id: o.id }); n = r && r.data && r.data.node; } catch (e) { return { art: 'unlesbar', text: `Shopify liess sich nicht lesen (${String(e && e.message || e).slice(0, 120)})` }; }
   if (!n || typeof n !== 'object' || n.id !== o.id || !Array.isArray(n.tags)) return { art: 'unlesbar', text: 'die Tags der Bestellung sind nicht lesbar' };
   const g = anspruchGewonnen(n.tags, meinTag, Date.now());
+  if (g.art === 'eigene-fehlt') return { art: 'unlesbar', text: g.grund };      // die eigene Markierung ist nicht zu sehen: ein Lesefehler, kein Verlust gegen einen anderen Lauf (sichtbar machen, nicht still liegen lassen)
   return g.ok ? { art: 'ok', text: '' } : { art: 'verloren', text: g.grund };
 }
 // Zugriffsrechte des Tokens: sieht es die Fulfillment-Orders des Händler- UND des Dienst-Standorts? (Diagnose; die Sperre pro Position gilt unabhängig davon.)
@@ -425,7 +426,7 @@ async function bearbeite(tok, o) {
   const soll = bestellStand(o, plan.positionIds);
   const fr = await frischLesen(tok, o, 'anlegen', soll);
   if (fr.art === 'schon-bearbeitet') { zaehler.vorhanden++; console.log(`${o.name}: ${fr.text}: nichts angelegt`); return; }
-  if (fr.art === 'geaendert') { zaehler.spaeter++; console.log(`${o.name}: ${fr.text}: nichts angelegt (der Plan beruht auf einem veralteten Stand; der nächste Lauf liest neu)`); return; }
+  if (fr.art === 'geaendert') { zaehler.spaeter++; zeilen.push(`${o.name}: wartet (die Bestellung hat sich seit dem Planen geändert; der nächste Lauf liest neu)`); console.log(`${o.name}: ${fr.text}: nichts angelegt (der Plan beruht auf einem veralteten Stand; der nächste Lauf liest neu)`); return; }
   if (fr.art === 'zahlung') { zaehler.ohneAuftrag++; await befundMelden(tok, o, [{ art: 'zahlung-geaendert', text: `Die Bestellung ist laut frischem Lesen aus Shopify nicht mehr druckbar: ${fr.text}`, hart: true }], 'wurde NICHT an Printful übergeben'); return; }
   if (fr.art !== 'ok') { await vorlaeufigerFehler(tok, o, `Shopify lässt sich vor dem Anlegen nicht frisch lesen: es wird nichts angelegt`, fr.text); return; }
   // Der Anspruch trägt Sekunden, Millisekunden und einen Zufallsteil: zwei Läufe, die gleichzeitig markieren, haben verschiedene Tags. Danach wird nachgelesen; nur der Lauf mit der kleinsten Markierung legt an.

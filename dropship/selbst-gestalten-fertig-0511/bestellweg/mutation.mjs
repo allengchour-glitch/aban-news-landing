@@ -588,6 +588,10 @@ export const MUTANTEN = [
   ['R2 L1/7 Reprice: unbrauchbare Printful-Kosten gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=c;'],
   ['R2 L1/7 Reprice: Kosten 0 gelten als Preis', R, 'cost=Number.isFinite(c)&&c>0?c:null;', 'cost=Number.isFinite(c)&&c>=0?c:null;'],
   ['R2 L2/9 Reprice: die Shopify-API ist 2025-01', R, 'const API=\'2026-01\';', 'const API=\'2025-01\';'],
+  // Dritte Runde 11.11.2026 (eigene Durchsicht der zweiten Runde): ein Lesefehler ist sichtbar, kein stiller Verlust
+  ['D3 Anspruch: eine fehlende eigene Markierung gilt als Verlust gegen einen anderen Lauf (still)', B, 'steht nicht (mehr) an der Bestellung\', art: \'eigene-fehlt\' }', 'steht nicht (mehr) an der Bestellung\', art: \'verloren\' }'],
+  ['D3 Kleber: die fehlende eigene Markierung beim Nachlesen ist kein Lesefehler (kein Fehler, Exit 0)', S, 'if (g.art === \'eigene-fehlt\') return { art: \'unlesbar\', text: g.grund };', ''],
+  ['D3 Kleber: eine geänderte Bestellung beim Anlegen fehlt in der Zusammenfassung', S, 'zeilen.push(`${o.name}: wartet (die Bestellung hat sich seit dem Planen geändert; der nächste Lauf liest neu)`); ', ''],
 ];
 
 function zaehle(text, teil) { let n = 0, i = -1; while ((i = text.indexOf(teil, i + 1)) >= 0) n++; return n; }

@@ -629,13 +629,15 @@ export const anlegenGesperrt = (alterMin) => alterMin !== null && alterMin < ANL
  * könnten beide «frei» lesen und beide anlegen.) Nach dem Setzen der eigenen Markierung wird die Bestellung erneut gelesen: nur wer unter den AKTIVEN Ansprüchen (jünger als ANLEGEN_SPERRE_MIN) die kleinste
  * Zeichenkette hat, darf anlegen. Der frühere Schreiber hat die kleinere Zeichenkette und sieht den späteren nie (der spätere liest nach seinem Schreiben); darum legt in der Regel genau einer an. Rest: Uhren
  * der beiden Rechner weichen um mehr als die Schreibdauer ab (ungemessen). Kein Ersatz für die Concurrency-Gruppe des Workflows, nur die zweite Sicherung für lokale Läufe.
- * @returns {{ok:boolean, grund:string|null}}
+ * `art` trennt die zwei Arten des Nichtgewinnens (11.11.2026): «verloren» = ein anderer Lauf war früher (still richtig, es legt der andere an); «eigene-fehlt» = die eigene Markierung ist beim Nachlesen nicht zu sehen
+ * (Shopify liest verzögert, das Tag wurde entfernt, die Antwort ist unvollständig): das ist kein Verlust, sondern ein Lesefehler und muss SICHTBAR werden (Fehler, Exit 1), sonst bliebe die Bestellung bei jedem Lauf still liegen.
+ * @returns {{ok:boolean, grund:string|null, art:'gewonnen'|'verloren'|'eigene-fehlt'}}
  */
 export function anspruchGewonnen(tags, meinTag, jetztMs) {
   const aktiv = (tags || []).filter((t) => { const ms = anspruchMs(t); return ms !== null && Math.max(0, Math.floor((jetztMs - ms) / 60000)) < ANLEGEN_SPERRE_MIN; });
-  if (!aktiv.includes(meinTag)) return { ok: false, grund: 'die eigene Markierung steht nicht (mehr) an der Bestellung' };
+  if (!aktiv.includes(meinTag)) return { ok: false, grund: 'die eigene Markierung steht nicht (mehr) an der Bestellung', art: 'eigene-fehlt' };
   const frueher = aktiv.filter((t) => t < meinTag);
-  return frueher.length ? { ok: false, grund: `ein anderer Lauf hat früher markiert (${frueher.length} ältere Markierung(en) der letzten ${ANLEGEN_SPERRE_MIN} Minuten)` } : { ok: true, grund: null };
+  return frueher.length ? { ok: false, grund: `ein anderer Lauf hat früher markiert (${frueher.length} ältere Markierung(en) der letzten ${ANLEGEN_SPERRE_MIN} Minuten)`, art: 'verloren' } : { ok: true, grund: null, art: 'gewonnen' };
 }
 
 /**

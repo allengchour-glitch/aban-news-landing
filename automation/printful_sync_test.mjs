@@ -1257,6 +1257,13 @@ for (const [name, sz, soll] of [
     }
     const aend0 = lauf(bestellt([z1], { frischFolge: [{ shippingAddress: adr({ city: 'Bern' }) }], telegram: true }));
     ist('R2 L1/2 Die Adresse ändert sich zwischen Liste und Anlegen: NICHTS angelegt (der Plan beruht auf einem veralteten Stand), keine Tags, keine Meldung, Exit 0', [...gesperrt(aend0), aend0.prot.tags.length, tgAnzahl(aend0), aend0.prot.exitCode], [0, 0, 0, 0, 0]);
+    {
+      // Sichtbar, nicht still: eine Bestellung, die beim Anlegen als geändert gilt, steht mit Nummer in der Zusammenfassung (sonst bliebe ein dauerhafter Unterschied zwischen Liste und frischem Lesen unbemerkt)
+      const ds = '/tmp/ps_summary_geaendert_' + process.pid + '.md';
+      const sicht = lauf(bestellt([z1], { frischFolge: [{ shippingAddress: adr({ city: 'Bern' }) }], env: { GITHUB_STEP_SUMMARY: ds } }));
+      const text = readFileSync(ds, 'utf8'); try { rmSync(ds); } catch { /* egal */ }
+      ist('R2 L1/2 …die Zusammenfassung nennt die Bestellung mit «wartet (die Bestellung hat sich seit dem Planen geändert», zählt sie unter «später wieder» und es bleibt bei Exit 0', [/- #T1: wartet \(die Bestellung hat sich seit dem Planen geändert/.test(text), /1 später wieder/.test(sicht.prot.log[sicht.prot.log.length - 1]), sicht.prot.exitCode], [true, true, 0]);
+    }
     ist('R2 L1/2 Die frische Abfrage liest Adresse samt E-Mail und die Positionen mit Menge', [/\bemail\b/.test(stopp.prot.frischQuery), /shippingAddress\{[^}]*zip phone/.test(stopp.prot.frischQuery), /lineItems\(first:50\)\{ edges\{ node\{ currentQuantity quantity id/.test(stopp.prot.frischQuery)], [true, true, true]);
   }
 
@@ -1274,7 +1281,7 @@ for (const [name, sz, soll] of [
       ist(`R2 L1/3 ${n}: angelegt und bestätigt`, [x.prot.posts.length, bestaetigt(x)], [1, true]);
     }
     const ohneEigene = lauf(bestellt([z1], { anspruchOhneEigene: true }));
-    ist('R2 L1/3 Die eigene Markierung ist beim Nachlesen nicht zu sehen: NICHTS angelegt', gesperrt(ohneEigene), [0, 0]);
+    ist('R2 L1/3 Die eigene Markierung ist beim Nachlesen nicht zu sehen: NICHTS angelegt, aber SICHTBAR (Fehler «nicht nachlesbar», Exit 1; es ist ein Lesefehler und kein Verlust gegen einen anderen Lauf, sonst bliebe die Bestellung bei jedem Lauf still liegen)', [...gesperrt(ohneEigene), ohneEigene.prot.err.some((l) => /nicht nachlesbar/.test(l)), ohneEigene.prot.exitCode, ohneEigene.prot.log.some((l) => /früher markiert/.test(l))], [0, 0, true, 1, false]);
     for (const f of ['http', 'null']) {
       const x = lauf(bestellt([z1], { anspruchFehler: f }));
       ist(`R2 L1/3 Das Nachlesen der Markierung scheitert (${f}): NICHTS angelegt, Fehler «nicht nachlesbar», Exit 1`, [...gesperrt(x), x.prot.err.some((l) => /nicht nachlesbar/.test(l)), x.prot.exitCode], [0, 0, true, 1]);
