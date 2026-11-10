@@ -1060,6 +1060,30 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   }
 }
 
+// ═══════════════════════════════════════ Nachtrag 10.11.2026: Ausmass der harten Sperre «dienst-standort» (Funde der Gegenleser p1-bestellweg)
+// Die Sperre ist kein Randfall: 11 der 17 aktiven Editor-Produkte haben Varianten am Fulfillment-Service-Standort «Printful», bei 4 davon liegen nur einige Varianten dort (geteilt).
+// Die Rohdaten der Messung stehen in standort_messung_1011.json; SYNC.md (Abschnitt 7.2 und 7.8) und die README müssen dieselben Zahlen nennen, damit der Besitzer-Entscheid auf ihnen beruht.
+{
+  const S = lade('../../dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json');
+  const aktiv = S.produkte.filter((p) => p.status === 'ACTIVE' && p.tagWunschdesign);
+  const amDienst = aktiv.filter((p) => p.amDienst > 0), geteilt = amDienst.filter((p) => p.amDienst < p.varianten);
+  const summe = (l, f) => l.reduce((a, p) => a + p[f], 0);
+  const varianten = summe(aktiv, 'varianten'), variantenDienst = summe(aktiv, 'amDienst');
+  ist('Standort-Messung: die Rohdaten sind in sich stimmig (Dienst + Händler = Varianten, wo beide gelesen sind; nie mehr als die Varianten; geteilt nur mit gelesenen Händler-Varianten)', S.produkte.filter((p) => (p.amHaendler !== null ? p.amDienst + p.amHaendler !== p.varianten : p.amDienst > p.varianten) || (p.amDienst > 0 && p.amDienst < p.varianten && p.amHaendler === null)).map((p) => p.handle), []);
+  ist('Standort-Messung: Zahlen aus den Rohdaten (aktive Editor-Produkte, davon mit Varianten am Dienst, davon geteilt; Varianten, davon am Dienst)', [aktiv.length, amDienst.length, geteilt.length, varianten, variantenDienst], [17, 11, 4, 213, 53]);
+  ist('Standort-Messung: bei jedem geteilten Produkt liegt die ERSTE Variante am Dienst-Standort (sie wäre die Vorauswahl, wenn die Produktseite nach Position wählt: ungemessen)', geteilt.map((p) => p.ersteVarianteAmDienst), [true, true, true, true]);
+  ist('Standort-Messung: Bestellungen #1003 bis #1039 gelesen, keine mit Fulfillment-Order am Dienst-Standort, #1017 ohne Fulfillment-Order', [S.bestellungen.gelesen, S.bestellungen.mitFulfillmentOrder + S.bestellungen.ohneFulfillmentOrder.length, S.bestellungen.amDienstStandort, S.bestellungen.ohneFulfillmentOrder], [37, 37, 0, ['#1017']]);
+  // die Texte nennen dieselben Zahlen (SYNC.md liegt im CI-Auszug nicht aus: dann übersprungen)
+  const nennt = [`${amDienst.length} von ${aktiv.length} aktiven Editor-Produkten`, `${variantenDienst} von ${varianten} Varianten`, `${geteilt.length} davon geteilt`, `GEMESSEN ${S.stand.datum}`];
+  for (const [name, rel, extra] of [['SYNC.md', '../../dropship/wp6-0611/SYNC.md', true], ['README.md des Bestellwegs', '../../dropship/selbst-gestalten-fertig-0511/bestellweg/README.md', false]]) {
+    const pfad = fileURLToPath(new URL(rel, import.meta.url));
+    if (!existsSync(pfad)) { console.log(`(${name} nicht ausgecheckt → Zahlen-Abgleich übersprungen)`); continue; }
+    const t = readFileSync(pfad, 'utf8');
+    ist(`Standort-Messung: ${name} nennt das Ausmass (${nennt.join('; ')})`, nennt.filter((s) => !t.includes(s)), []);
+    if (extra) ist('Standort-Messung: SYNC.md sagt nicht mehr «nicht gezählt» und nennt das Messrezept sowie die Voraussetzung vor der Freigabedatei', [/nicht\*\* gezählt/.test(t), /inventoryLevels/.test(t), /Vor der Freigabedatei/.test(t)], [false, true, true]);
+  }
+}
+
 // Workflow: ein Zeitplan, Handstart standardmässig nur lesen, Einstellungen durchgereicht (GL1/GL2 Funde 2, 3, 9)
 {
   const wf = fileURLToPath(new URL('../../.github/workflows/printful-sync.yml', import.meta.url));

@@ -1,0 +1,53 @@
+{
+  "_zweck": "Rohdaten zum Ausmass der harten Sperre «dienst-standort» (Phase 1 «Editor-Parität», Funde der Gegenleser p1-bestellweg). Eine Momentaufnahme des Shops, KEIN Teil der Prüflogik: der Test rechnet die Summen aus dieser Datei und vergleicht sie mit den Zahlen in SYNC.md und README. Bei einer neuen Messung die Datei ersetzen und beide Texte nachführen (Rezept: dropship/wp6-0611/SYNC.md, Abschnitt 7.2).",
+  "stand": {
+    "datum": "10.11.2026",
+    "zeit": "kurz vor 00:10 UTC (nach dem Lauf von date -u gemessen, nicht aus dem Kopf)"
+  },
+  "quelle": "Shopify Admin-API über den Connector (API 2026-10), nur lesend, keine Storefront-Anfrage. (1) locations(includeLegacy:true): 7 Standorte. (2) Standort «Printful» (gid://shopify/Location/109743276417): inventoryLevels vollständig gelesen (2 Seiten, hasNextPage false) mit item.variants.product{handle status}. (3) products(status:active …) mit variantsCount. (4) Bei den 4 geteilten Produkten jede Variante einzeln: variants → inventoryItem{tracked inventoryLevels{location{name}}}. (5) orders(first:40, reverse:true): 37 Bestellungen, fulfillmentOrders{status assignedLocation{name}}.",
+  "standorte": {
+    "dienst": { "name": "Printful", "id": "gid://shopify/Location/109743276417", "isFulfillmentService": true },
+    "haendler": { "name": "Shop location", "id": "gid://shopify/Location/109350125953", "isFulfillmentService": false }
+  },
+  "produkte": [
+    { "handle": "unisex-t-shirt-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 25, "amDienst": 9, "amHaendler": 16, "ersteVarianteAmDienst": true, "beispielSkuDienst": "5599797_9526", "beispielSkuHaendler": "5599797_53681" },
+    { "handle": "unisex-hoodie-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 13, "amDienst": 8, "amHaendler": 5, "ersteVarianteAmDienst": true, "beispielSkuDienst": "1726823_5426", "beispielSkuHaendler": "1726823_20805" },
+    { "handle": "bio-jutebeutel-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 2, "amDienst": 1, "amHaendler": 1, "ersteVarianteAmDienst": true, "beispielSkuDienst": "2069171_10458", "beispielSkuHaendler": "2069171_10457" },
+    { "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 48, "amDienst": 16, "amHaendler": 32, "ersteVarianteAmDienst": true, "beispielSkuDienst": "3615382_20688", "beispielSkuHaendler": "3615382_16125" },
+    { "handle": "klassisches-unisex-t-shirt-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 8, "amDienst": 8, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "8481330_11576", "beispielSkuHaendler": null },
+    { "handle": "keramik-tasse-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 3, "amDienst": 3, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "9365183_1320", "beispielSkuHaendler": null },
+    { "handle": "dad-cap-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 1, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "8279135_7853", "beispielSkuHaendler": null },
+    { "handle": "alltags-umhangetasche-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 1, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "8524891_49310", "beispielSkuHaendler": null },
+    { "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 1, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "4950408_20175", "beispielSkuHaendler": null },
+    { "handle": "kiss-cut-aufkleber-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 4, "amDienst": 4, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "3424232_10163", "beispielSkuHaendler": null },
+    { "handle": "allover-stoffbeutel-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 1, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "magnet-zum-selbstgestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 3, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "tasse-zum-selbstgestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 2, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "shirt-zum-selbstgestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 15, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "mauspad-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "spiral-notizbuch-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 1, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "samsung-huelle-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": true, "varianten": 84, "amDienst": 0, "amHaendler": null, "ersteVarianteAmDienst": false, "beispielSkuDienst": null, "beispielSkuHaendler": null },
+    { "handle": "transparente-iphone®-hulle-selbst-gestalten", "status": "ACTIVE", "tagWunschdesign": false, "varianten": 31, "amDienst": 31, "amHaendler": 0, "ersteVarianteAmDienst": true, "beispielSkuDienst": "6267182_10996", "beispielSkuHaendler": null }
+  ],
+  "_hinweise_produkte": [
+    "amHaendler null = nicht einzeln gelesen; die Varianten stehen nicht im Bestand des Standorts «Printful» (dessen Bestandsstände wurden vollständig gelesen), also amDienst 0.",
+    "tagWunschdesign false (transparente iPhone-Hülle): der Sync liest nur Produkte mit dem POD-Tag (istPod), das Produkt fällt nie unter «dienst-standort» (eine Druckdatei-Eigenschaft daran wäre «druckdatei-ohne-pod»).",
+    "Bei den vier geteilten Produkten sind die Varianten am Dienst-Standort getrackt (tracked true), die am Händler-Standort nicht (tracked false). Warum das so ist, ist nicht gemessen (Hypothese: die erste, von der Printful-App angelegte Gruppe liegt am Dienst, die später im Shop ergänzten Varianten, z. B. die Materialauswahl vom 28.10., am Händler-Standort).",
+    "ersteVarianteAmDienst: die erste Variante in der Reihenfolge der Abfrage (variants(first:…), Position). Welche Variante die Produktseite vorwählt, ist NICHT gemessen (keine Storefront-Anfrage)."
+  ],
+  "nichtAktivAmDienst": {
+    "ENTWURF": 16,
+    "ARCHIVIERT": 1,
+    "hinweis": "Produkte mit Bestandsstand am Standort «Printful», nicht aktiv (unter anderem urban-umhangetasche, premium-hoodie, boardshorts, badeanzug, bomberjacke, kleid, jogginghosen, sport-bh, wm-trikot; dazu led-laterne-boho-rattan-optik-kabellos, kein Editor-Produkt). Nicht verkäuflich, für die Sperre ohne Wirkung, solange sie nicht aktiviert werden."
+  },
+  "bestellungen": {
+    "gelesen": 37,
+    "erste": "#1003",
+    "letzte": "#1039",
+    "mitFulfillmentOrder": 36,
+    "ohneFulfillmentOrder": ["#1017"],
+    "amDienstStandort": 0,
+    "amHaendlerStandort": 36,
+    "hinweis": "Keine Bestellung hatte je eine Fulfillment-Order am Dienst-Standort. Wie sich eine solche Order verhält (Status, Meldung der Printful-App), ist nie beobachtet worden. #1017 hat keine Fulfillment-Order: der Sync läse sie als «dienst-standort-unklar» (weich)."
+  }
+}

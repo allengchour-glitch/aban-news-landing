@@ -138,7 +138,49 @@ Eine Position, die in einer offenen Fulfillment-Order an einem **Fulfillment-Ser
 
 Der Kleber (`printful_sync.mjs`) liest dafür neu `variant{ sku title selectedOptions }` und `fulfillmentOrders(first:20){ id status assignedLocation{ location{ id name isFulfillmentService } } lineItems(first:50){ lineItem{ id } } }` (Vorbild `cj_tracking.mjs`, `printful_tracking.mjs`).
 
-**GEMESSEN 09.11.2026 (Admin-Abfrage über den Connector, nur lesend):** 7 Standorte, davon 6 Dienst-Standorte (`cjdropshipping`, `DropCommerceV2`, `gelato`, `Printful`, `Spocket`, `Zendrop`) und ein Händler-Standort («Shop location»). Die Fulfillment-Orders der letzten drei Bestellungen (#1037 bis #1039, CJ-Ware) liegen am Händler-Standort «Shop location». Wie viele Produkte am Standort «Printful» liegen, habe ich in dieser Sitzung **nicht** gezählt (das Gedächtnis nennt 25). Die Fabrik-Produkte (Canary-Tasse, Entwurf) liegen laut Gedächtnis am Händler-Standort und wären damit nicht gesperrt: **ungemessen für ein veröffentlichtes Fabrik-Produkt**.
+**GEMESSEN 09.11.2026 (Admin-Abfrage über den Connector, nur lesend):** 7 Standorte, davon 6 Dienst-Standorte (`cjdropshipping`, `DropCommerceV2`, `gelato`, `Printful`, `Spocket`, `Zendrop`) und ein Händler-Standort («Shop location»). Die Fulfillment-Orders der letzten drei Bestellungen (#1037 bis #1039, CJ-Ware) liegen am Händler-Standort «Shop location». Wie viele Produkte am Standort «Printful» liegen, steht in 7.2a (am 10.11.2026 nachgemessen, auf Variantenebene). Die Fabrik-Produkte (Canary-Tasse, Entwurf) haben keinen Bestandsstand am Standort «Printful» (7.2a) und wären damit nicht gesperrt: **ungemessen für ein veröffentlichtes Fabrik-Produkt**.
+
+### 7.2a Ausmass der Sperre (GEMESSEN 10.11.2026, Funde der Gegenleser p1-bestellweg)
+
+Die Sperre trifft einen grossen Teil der Editor-Produkte, und sie trifft **Varianten, nicht ganze Produkte**. Die erste Messung (Produkt-Ebene, nach der ersten Variante) nannte «11 von 17»; die Nachmessung aller Varianten ergibt dieselbe Produktzahl, aber vier geteilte Produkte. **GEMESSEN 10.11.2026 (Admin-Abfrage über den Connector, nur lesend, keine Storefront-Anfrage, kurz vor 00:10 UTC nach `date -u`; Rohdaten: `dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json`):** Der Bestand des Standorts «Printful» wurde vollständig gelesen (2 Seiten, `hasNextPage` false): 29 Produkte haben dort Bestandsstände, davon 12 ACTIVE, 16 Entwurf und 1 archiviert.
+
+* **11 von 17 aktiven Editor-Produkten** (Tag `wunschdesign`, Status ACTIVE) haben Varianten am Dienst-Standort: **53 von 213 Varianten** (25 %). Das 12. aktive Produkt am Dienst-Standort, die transparente iPhone-Hülle (31 Varianten), trägt das POD-Tag nicht; der Sync liest sie nicht (Befund `druckdatei-ohne-pod`, siehe README).
+* **7 liegen ganz am Dienst-Standort:** klassisches Unisex-T-Shirt (8 Varianten), Keramik-Tasse (3), Kiss-Cut-Aufkleber (4), Dad-Cap, Alltags-Umhängetasche, Edelstahl-Trinkflasche und Allover-Stoffbeutel (je 1).
+* **4 davon geteilt:**
+
+| Produkt | Varianten | am Dienst «Printful» (getrackt) | am Händler «Shop location» (nicht getrackt) |
+|---|---|---|---|
+| Unisex-T-Shirt | 25 | 9 | 16 |
+| Unisex-Hoodie | 13 | 8 | 5 |
+| Bio-Jutebeutel | 2 | 1 | 1 |
+| Hardcase-iPhone-Hülle mit MagSafe | 48 | 16 | 32 |
+
+  Bei allen vier steht die **erste** Variante der Abfrage (Position) am Dienst-Standort. Welche Variante die Produktseite vorwählt, ist **ungemessen** (keine Storefront-Anfrage). Warum die Produkte geteilt sind, ist nicht gemessen; Hypothese: die erste Gruppe legte die Printful-App an, die später im Shop ergänzten Varianten (Materialauswahl vom 28.10.) liegen am Händler-Standort.
+* Die 6 übrigen aktiven Editor-Produkte (Magnet, Tasse zum Selbstgestalten, Shirt zum Selbstgestalten, Mauspad, Spiral-Notizbuch, Samsung-Hülle; zusammen 106 Varianten) haben keinen Bestandsstand am Dienst-Standort: die Sperre greift dort nie.
+* **Bestellungen:** #1003 bis #1039 gelesen (37): 36 mit Fulfillment-Order, alle am «Shop location», #1017 ohne (der Sync läse sie als `dienst-standort-unklar`, weich). **Nie lag eine Fulfillment-Order am Dienst-Standort.** Wie sie sich verhält (Status, was die Printful-App druckt), ist nie beobachtet worden.
+
+**Folge im Betrieb (aus dem Code und seinen Tests, nicht an einer echten Bestellung beobachtet):**
+
+* Eine Variante am Dienst-Standort allein: kein Sync-Auftrag, Tags `printful-review` und `printful-review-dienst-standort`, eine 🔴-Meldung. Ob die Printful-App das Design der Kundin oder das Muster-Design druckt, ist **ungemessen**.
+* Ein Warenkorb mit einer Dienst-Variante UND einer Händler-Variante (bei den vier geteilten Produkten leicht möglich, z. B. zwei T-Shirt-Grössen aus verschiedenen Gruppen) hält die **ganze Bestellung** an: ein harter Befund verhindert den Auftrag für alle Positionen (Test «zwei Editor-Positionen, die erste am Dienst-Standort»). Auch die Händler-Variante wird dann nicht gedruckt, bis der Besitzer eingreift.
+* Die automatische Strecke deckt damit höchstens die übrigen 160 von 213 Varianten der 17 Produkte. Die Sperre ist die sichere Richtung (kein Doppeldruck, kein Geld), kein Codefehler; ihr Ausmass ist aber ein Entscheid des Besitzers (7.8, Punkt 2).
+
+**Messrezept (nur lesend; Seiten höchstens 100 je Verbindung; API 2026-10 lehnt das abgekündigte `InventoryItem.variant` ab, darum `variants`):**
+
+```graphql
+# 1 Standorte
+{ locations(first: 20, includeLegacy: true) { nodes { id name isFulfillmentService } } }
+# 2 Bestand des Dienst-Standorts «Printful», mit `after` bis hasNextPage false
+query($after: String) { location(id: "gid://shopify/Location/109743276417") { inventoryLevels(first: 100, after: $after) { pageInfo { hasNextPage endCursor } nodes { item { sku variants(first: 1) { nodes { product { handle status tags } } } } } } } }
+# 3 Varianten je aktivem Editor-Produkt
+{ products(first: 60, query: "status:active tag:wunschdesign") { nodes { handle variantsCount { count } } } }
+# 4 geteilte Produkte: je Variante der Standort (Beispiel T-Shirt)
+{ products(first: 1, query: "sku:5599797_9526") { nodes { handle variants(first: 60) { nodes { sku inventoryItem { tracked inventoryLevels(first: 3) { nodes { location { name } } } } } } } } }
+# 5 Bestellungen und ihre Fulfillment-Orders
+{ orders(first: 40, reverse: true) { pageInfo { hasNextPage } nodes { name fulfillmentOrders(first: 3) { nodes { status assignedLocation { name } } } } } }
+```
+
+Der Test `printful_bestellweg_test.mjs` rechnet die Summen aus der Rohdatei neu und prüft, dass dieser Abschnitt und die README dieselben Zahlen nennen. Wer neu misst, ersetzt die Rohdatei und führt beide Texte nach.
 
 ### 7.3 (b) Hart: `aufpreis-unbezahlt`, austauschbares Paket
 
@@ -205,7 +247,8 @@ Dazu `node --check` auf alle geänderten Skripte und `yaml.safe_load` auf `print
 ### 7.8 Offen und Entscheide des Besitzers
 
 1. **Unbezahlte Platzierung:** Nachzahlung verlangen oder nur die bezahlte Fläche drucken? Heute gilt: kein Auftrag, Handgriff des Besitzers.
-2. **Fulfillment-Service-Produkte (Standort «Printful»):** bleiben gesperrt (Sync druckt nie doppelt). Ob die Printful-App mit dem Muster-Design druckt, ist ungemessen; Entscheid, ob diese Produkte weiter verkauft werden.
+2. **Fulfillment-Service-Produkte (Standort «Printful»):** betrifft 11 von 17 aktiven Editor-Produkten, 53 von 213 Varianten, 4 Produkte geteilt (7.2a, GEMESSEN 10.11.2026). Der Sync druckt dort nie (kein Doppeldruck). Ob die Printful-App mit dem Muster-Design druckt, ist ungemessen. **Frage an den Besitzer** (Standard ohne Antwort: A, die Datei `PRINTFUL-SYNC-FREI.txt` bleibt ohnehin aus): (A) **gesperrt lassen** und die Bestellungen mit Dienst-Varianten von Hand klären; (B) die Varianten am Dienst-Standort **auf den Händler-Standort verlegen**, damit der Sync sie druckt (Folgen für die Printful-App, den Bestand und bestehende Käufe ungemessen; nicht Teil von Phase 1); (C) diese Varianten **vom Verkauf nehmen**. Bei den vier geteilten Produkten hält schon ein gemischter Warenkorb die ganze Bestellung an (7.2a).
+   **Vor der Freigabedatei** (Empfehlung: ohne diese drei Schritte `PRINTFUL-SYNC-FREI.txt` nicht legen): (1) das Messrezept aus 7.2a frisch fahren und die Rohdatei samt Zahlen nachführen (Fabrik-Produkte und Varianten ändern sich); (2) an EINEM Produkt, das ganz am Dienst-Standort liegt (z. B. Keramik-Tasse, 3 Varianten), eine Bestellung beobachten (abgefangener Kauf oder Wegwerf-Bestellung mit dem Besitzer): legt die Printful-App einen Auftrag an, mit welchem Design (Muster oder das der Kundin), welchen Status hat die Fulfillment-Order; (3) bei den geteilten Produkten beide Gruppen prüfen, auch einen Warenkorb mit je einer Variante aus beiden. Bis dahin bleibt «Verhalten am Dienst-Standort» **ungemessen**.
 3. **`qd-weicht-ab`:** Regel lassen (Fehlalarm bei kleinen Fotos) oder nur unter dem Minimum und über der Messung melden (7.5).
 4. **`PRINTFUL_MAX_KOSTEN_USD`:** setzen, und auf welchen Betrag? Heute aus (kein Standard im Workflow).
 5. **Preis der Rückseite und des Ärmels, Paketmodell:** Phase 5.

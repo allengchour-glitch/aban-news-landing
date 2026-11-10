@@ -743,6 +743,17 @@ for (const [name, sz, soll] of [
     ist('Phase 1 Dienst-Standort: das öffentliche Protokoll nennt nur Nummer und Befundart', [e.prot.warn.some((l) => /dienst-standort/.test(l)), e.prot.warn.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l)), e.prot.log.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l))], [true, false, false]);
     const zweit = lauf(shirt(vorneText, { order: { tags: ['printful-review', 'printful-review-dienst-standort'], fulfillmentOrders: fos([zeile({ id: 'gid://shopify/LineItem/9001' })], FO_DIENST) } }));
     ist('Phase 1 Dienst-Standort, zweiter Lauf: die Bestellung mit dem Review-Tag wird nicht mehr gelesen (Abfrage schliesst sie aus), nichts erneut gemeldet', [zweit.prot.shop[0].q.includes('-tag:printful-review'), tgAnzahl(zweit) <= 1], [true, true]);
+    // Nachtrag 10.11.2026 (SYNC.md 7.2a): bei vier Produkten liegen nur einige Varianten am Dienst-Standort. Ein Warenkorb mit einer Dienst- und einer Händler-Variante derselben Produkts hält die GANZE Bestellung an:
+    // auch die Händler-Position wird nicht gedruckt, bis der Besitzer eingreift (sichere Richtung, aber eine Folge, die der Besitzer kennen muss).
+    {
+      const attrT = attr(vorneText);
+      const zD = zeile({ id: 'gid://shopify/LineItem/9001', sku: SKU, variant: { sku: SKU }, title: 'T-Shirt selbst gestalten (Dienst-Variante)', customAttributes: attrT });
+      const zH = zeile({ id: 'gid://shopify/LineItem/9002', sku: SKU, variant: { sku: SKU }, title: 'T-Shirt selbst gestalten (Händler-Variante)', customAttributes: attrT });
+      const misch = lauf(sz1([zD, zH], { datei: { px: [1800, 2400] }, telegram: true, order: { fulfillmentOrders: { edges: [fos([zD], FO_DIENST).edges[0], fos([zH]).edges[0]] } } }));
+      ist('Phase 1 Dienst-Standort, GEMISCHTER Warenkorb (eine Position am Dienst, eine am Händler-Standort): KEIN Auftrag für keine der beiden, Review «dienst-standort», eine 🔴-Meldung, Exit 0', [misch.prot.posts.length, misch.prot.confirms.length, tags(misch).includes('printful-review-dienst-standort'), tags(misch).includes('printful-synced'), tgAnzahl(misch), /🔴/.test(misch.prot.tg[0] || ''), misch.status], [0, 0, true, false, 1, true, 0]);
+      const nurH = lauf(sz1([zH], { datei: { px: [1800, 2400] }, telegram: true, order: { fulfillmentOrders: fos([zH]) } }));
+      ist('Phase 1 Gegenprobe: dieselbe Händler-Position allein → ein Auftrag, kein Review (die Sperre kommt vom Warenkorb mit der Dienst-Position, nicht von der Händler-Position)', [nurH.prot.posts.length, hatReview(nurH)], [1, false]);
+    }
     const ohneFo = lauf(shirt(vorneText, { order: { fulfillmentOrders: undefined } }));
     ist('Phase 1: Antwort OHNE Fulfillment-Orders (nie «frei» geraten): der Auftrag wird als Entwurf angelegt, aber NICHT bestätigt, Review «dienst-standort-unklar»', [ohneFo.prot.posts.length, bestaetigt(ohneFo), tags(ohneFo).includes('printful-review-dienst-standort-unklar'), tags(ohneFo).includes('printful-synced')], [1, false, true, true]);
   }
