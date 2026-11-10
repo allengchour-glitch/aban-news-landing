@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Scalping-Labor — zeigt jeden Tag mit echten Kursen und allen Kosten, was Minuten-Handel (Scalping) wirklich bringt.
+"""Scalping-Labor — Papierhandel mit Minutenkursen und angesetztem Gebühren-/Schlupfmodell.
 PAPIER: kein Auftrag, kein Schlüssel, kein Geld im Spiel.
 
     python3 tools/trading/krypto_bot/scalping_labor.py --einmal           # neue Minutenkerzen holen, nachrechnen, Buch speichern
     python3 tools/trading/krypto_bot/scalping_labor.py --einmal --push    # dazu die Tageszusammenfassung aufs Handy (Telegram/ntfy, falls eingerichtet)
     python3 tools/trading/krypto_bot/scalping_labor.py --dauer            # Fenster offen lassen: jede Minute nachrechnen
     python3 tools/trading/krypto_bot/scalping_labor.py --status           # Tabelle und Urteil
+    python3 tools/trading/krypto_bot/scalping_labor.py --kostencheck      # Offline-Kostenprüfung, keine Schreibzugriffe
 
 Warum es das gibt: Der Prüfstand vom 13.10.2026 (scalping_pruefung.py, vorab festgelegt) hat sieben Scalping-Verfahren auf BTC und ETH mit
-Minutenkerzen von 2022 bis 2026 und den echten Binance-Gebühren geprüft. Alle verlieren nach Kosten; das am wenigsten schlechte im Schnitt
+Minutenkerzen von 2022 bis 2026 und angesetzten Binance-Gebühren geprüft. Alle verlieren nach Kosten; das am wenigsten schlechte im Schnitt
 rund −6,9 bp (−0,07 %) je Trade, keines besteht (`handelbar: []`). Der Besitzer will trotzdem «Trades, die immer scalpen» (03.11.2026). Im
 Testnetz-Konto geht das nicht sauber: Pilot und Satellit halten dort dieselben Coins, im Ein-Weg-Modus gäbe es je Symbol nur EINE
 Position, und Testnetz-Füllungen beweisen keine Rentabilität. Darum rechnet das Labor auf Papier mit denselben Regeln, Gebühren und
@@ -38,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
 import math
 import os
 import shutil
@@ -258,6 +260,23 @@ def kennzahlen(b):
             "einbruch_pct": round(100 * b["tiefst"], 2), "dauer_min": round(b["dauer_ms"] / n / MINUTE, 1)}
 
 
+def kosten_diagnose(b):
+    """Vergangene Papierergebnisse erklären, ohne Parameterwahl oder Handelsfreigabe.
+
+    Das Kostenbudget ist nur der beobachtete durchschnittliche Bruttoertrag bis
+    zur schwarzen Null. Es ist keine Prognose einer künftig tragbaren Gebühr.
+    """
+    if not b or not b["n"]:
+        return {"ursache": "keine_trades", "modellkosten_bp": None, "kostenbudget_null_bp": None,
+                "abstand_mindestkante_bp": None, "handelsfreigabe": False}
+    br, net = 1e4 * b["sum_br"] / b["n"], 1e4 * b["sum_net"] / b["n"]
+    ursache = ("kein_bruttovorteil" if br <= 0 else "kosten_verbrauchen_vorteil" if net <= 0
+               else "unter_mindestkante" if net < URTEIL_NETTO_BP_MIN else "mindestkante_erreicht")
+    return {"ursache": ursache, "modellkosten_bp": round(br - net, 3),
+            "kostenbudget_null_bp": round(br, 3) if br > 0 else None,
+            "abstand_mindestkante_bp": round(max(0.0, URTEIL_NETTO_BP_MIN - net), 3), "handelsfreigabe": False}
+
+
 # ───────────────────────── Kerzen holen ─────────────────────────
 def standard_hole():
     import binance_daten as BD     # öffentliche Marktdaten ohne Schlüssel (Spiegel data-api.binance.vision, Rückfall api.binance.com)
@@ -287,9 +306,13 @@ def holen_kerzen(sym, ab_ms, jetzt_ms, hole, max_seiten=MAX_SEITEN):
         offen, letzte_t = False, None
         for r in roh:
             try:
-                t, schluss = int(r[0]), int(r[6])
+                t, schluss = r[0], r[6]
+                if (type(t) is not int or type(schluss) is not int or t < 0
+                        or t % MINUTE != 0 or schluss != t + MINUTE - 1
+                        or any(isinstance(r[i], bool) for i in (1, 2, 3, 4))):
+                    raise ValueError("Kein gültiges Binance-Minutenintervall")
                 o, h, l, c = (float(r[i]) for i in (1, 2, 3, 4))  # noqa: E741
-            except (IndexError, TypeError, ValueError):
+            except (IndexError, KeyError, TypeError, ValueError, OverflowError):
                 defekt += 1
                 continue
             letzte_t = t if letzte_t is None or t > letzte_t else letzte_t
@@ -540,7 +563,7 @@ def tabelle(buch):
             kz = kennzahlen(b) if b else {"n": 0}
             erw = ERWARTUNG[(sym, k)]
             z = {"markt": kurz(sym), "k": k, "n": kz["n"], "erw_brutto_bp": erw[0], "erw_netto_bp": erw[1], "erw_je_tag": round(erw[2] / PRUEF_TAGE, 1),
-                 "offen": bool(b and b["pos"])}
+                 "offen": bool(b and b["pos"]), "kostendiagnose": kosten_diagnose(b)}
             if kz["n"]:
                 z.update({"treffer": kz["treffer"], "brutto_bp": kz["brutto_bp"], "netto_bp": kz["netto_bp"],
                           "kosten_bp": round(kz["netto_bp"] - kz["brutto_bp"], 3), "summe_pct": kz["summe_pct"], "einbruch_pct": kz["einbruch_pct"],
@@ -549,10 +572,24 @@ def tabelle(buch):
     return zeilen
 
 
+def kostenbericht(buch, hinweis=""):
+    """Reiner Offline-Bericht über alle acht festgelegten Varianten, kein Gewinner-Ranking."""
+    payload = json.dumps(buch, ensure_ascii=False, sort_keys=True, allow_nan=False).encode("utf-8")
+    return {"status": "PAPIER, KEINE HANDELSFREIGABE", "handelsfreigabe": False,
+            "buchinhalt_sha256": hashlib.sha256(payload).hexdigest(),
+            "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "letzter_lauf": buch.get("letzter_lauf"), "hinweis": hinweis,
+            "kostenmodell": {"gebuehren": dict(GEBUEHR), "maerkte": {sym: dict(par) for sym, par in MAERKTE.items()},
+                              "quelle": "Vorab festgelegte Modellannahmen, keine aktuell gemessenen Kontogebühren",
+                              "nicht_erfasst": ["Funding", "Orderbuch-Warteschlange und Teilfüllungen", "Unterschied zwischen Spot- und Futures-Kursen"]},
+            "urteil": urteil(buch), "varianten": tabelle(buch),
+            "grenze": "Beobachtete Papierergebnisse, keine zukünftige Renditeprognose. Günstigere Gebühren ändern weder Treffer noch Füllwahrscheinlichkeit automatisch."}
+
+
 def status_text(buch, jetzt_ms=None):
     zeilen = tabelle(buch)
     u = urteil(buch)
-    kopf = "Scalping-Labor — Papier, echte Kurse, alle Kosten (kein Geld im Spiel)"
+    kopf = "Scalping-Labor — Papier, Minutenkurse, Gebühren und Schlupf (kein Geld im Spiel)"
     daten = buch.get("daten_ab")
     if daten is None or not any(z["n"] for z in zeilen) and not any(m.get("letzte_kerze") for m in buch["maerkte"].values()):
         return kopf + "\nNoch kein Lauf. Start: python3 tools/trading/krypto_bot/scalping_labor.py --einmal"
@@ -698,13 +735,20 @@ def main(argv=None):
     ap.add_argument("--dauer", action="store_true", help="jede Minute nachrechnen, bis Strg+C")
     ap.add_argument("--push", action="store_true", help="die Tageszusammenfassung aufs Handy (einmal pro Tag)")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--kostencheck", action="store_true", help="gespeicherte Papierergebnisse ohne Netz und Schreibzugriffe als JSON prüfen")
     ap.add_argument("--sekunden", type=int, default=60)
     a = ap.parse_args(argv)
+    if a.kostencheck and (a.einmal or a.dauer or a.push):
+        ap.error("--kostencheck ist nur lesend; nicht mit --einmal, --dauer oder --push kombinieren")
     for strom in (sys.stdout, sys.stderr):                      # die Windows-Konsole (cp1252/cp850) kennt «−» und Emojis nicht: ersetzen statt abstürzen
         try:
             strom.reconfigure(errors="replace")
         except Exception:  # noqa: BLE001 — kein echter Textstrom (z. B. Umleitung in einen Test)
             pass
+    if a.kostencheck:
+        buch, hinweis = lesen(beiseite=False)
+        print(json.dumps(kostenbericht(buch, hinweis), ensure_ascii=False, indent=2, allow_nan=False))
+        return 1 if hinweis else 0
     if a.dauer:
         try:
             return dauer(a.sekunden, push=a.push)

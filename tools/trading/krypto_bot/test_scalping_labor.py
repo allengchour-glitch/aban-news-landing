@@ -17,7 +17,7 @@ import re
 import sys
 import tempfile
 import time
-from contextlib import redirect_stdout
+from contextlib import redirect_stdout, redirect_stderr
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -735,7 +735,7 @@ for knoten in ast.walk(baum):
         importiert |= {a.name.split(".")[0] for a in knoten.names}
     elif isinstance(knoten, ast.ImportFrom):
         importiert.add((knoten.module or "").split(".")[0])
-erlaubt = {"__future__", "argparse", "json", "math", "os", "shutil", "sys", "time", "contextlib", "datetime", "pathlib", "scalping_kern", "binance_daten", "signale"}
+erlaubt = {"__future__", "argparse", "json", "hashlib", "math", "os", "shutil", "sys", "time", "contextlib", "datetime", "pathlib", "scalping_kern", "binance_daten", "signale"}  # hashlib nur für den Offline-Datenfingerabdruck
 pruefe("Sicherheit: das Labor importiert nur Erlaubtes (nie Broker, Pilot, Satellit, Sperre, Cockpit, urllib)", importiert <= erlaubt, sorted(importiert - erlaubt))
 verboten = ("broker_futures", "broker_binance", "pilot", "satellit", "sperre", "cockpit", "ki_trader", "urllib", "requests", "http.client", "socket", "subprocess")
 pruefe("Sicherheit: keiner der Order-/Netz-Module taucht in einer Import-Zeile auf", not any(v in importiert for v in verboten), importiert)
@@ -789,6 +789,82 @@ for k in L.STUFEN:
     maschine(rows, k, 0.1)
 dauer_s = time.time() - t0
 pruefe("Tempo: 30 000 Kerzen × 4 Stufen in unter 30 Sekunden (gemessen: %.1f s)" % dauer_s, dauer_s < 30, dauer_s)
+
+# Datenvertrag der Binance-Minutenkerze: falsche Zeitangaben dürfen keinen Blick in die Zukunft erlauben.
+_jetzt_q = START + 10 * MIN
+_gueltig_q = [START, "100", "101", "99", "100", "1", START + MIN - 1]
+_faelle_q = {
+    "Zukunft mit gefälschter Schlusszeit": [START + 100 * MIN, "100", "101", "99", "100", "1", START + MIN - 1],
+    "keine Minutengrenze": [START + 1, "100", "101", "99", "100", "1", START + MIN],
+    "falsche Kerzenlänge": _gueltig_q[:6] + [START + MIN],
+    "Öffnungszeit als Float": [START + 0.5] + _gueltig_q[1:],
+    "Schlusszeit als Float": _gueltig_q[:6] + [START + MIN - 0.5],
+    "Zeit als Bool": [False, "100", "101", "99", "100", "1", MIN - 1],
+    "negative Zeit": [-MIN, "100", "101", "99", "100", "1", -1],
+    "Preis als Bool": [START, True, "2", "0.5", "1", "1", START + MIN - 1],
+    "Objekt statt Kerzenliste": {},
+}
+for _name_q, _zeile_q in _faelle_q.items():
+    try:
+        _rows_q, _hin_q = L.holen_kerzen("BTCUSDT", 0, _jetzt_q, lambda _, z=_zeile_q: [z])
+        _ok_q = not _rows_q and "unplausible" in _hin_q
+    except Exception as _ex_q:
+        _ok_q, _hin_q = False, type(_ex_q).__name__
+    pruefe("Minutenvertrag: " + _name_q + " verworfen und gemeldet", _ok_q, _hin_q)
+_rows_q, _hin_q = L.holen_kerzen("BTCUSDT", START, _jetzt_q, lambda _: [_gueltig_q])
+pruefe("Minutenvertrag: gültige abgeschlossene Kerze unverändert", _rows_q == [(START, 100.0, 101.0, 99.0, 100.0)] and not _hin_q)
+
+if not hasattr(L, "kosten_diagnose"):
+    pruefe("Kostenprüfung ist vorhanden", False)
+else:
+    for _br_q, _net_q, _urs_q, _budget_q, _abstand_q in [
+        (-2, -8, "kein_bruttovorteil", None, 9),
+        (0, -6, "kein_bruttovorteil", None, 7),
+        (1, -5, "kosten_verbrauchen_vorteil", 1, 6),
+        (6, 0, "kosten_verbrauchen_vorteil", 6, 1),
+        (6.5, 0.5, "unter_mindestkante", 6.5, 0.5),
+        (8, 2, "mindestkante_erreicht", 8, 0),
+    ]:
+        _b_q = L.neues_band_buch(2.0)
+        _b_q.update(n=10, sum_br=_br_q / 1000, sum_net=_net_q / 1000)
+        _d_q = L.kosten_diagnose(_b_q)
+        pruefe("Kostenprüfung: von Hand gerechneter Fall " + str((_br_q, _net_q)),
+               _d_q["ursache"] == _urs_q and _d_q["kostenbudget_null_bp"] == _budget_q
+               and _d_q["abstand_mindestkante_bp"] == _abstand_q and _d_q["handelsfreigabe"] is False, _d_q)
+    pruefe("Kostenprüfung: keine Trades bleibt unbekannt", L.kosten_diagnose(L.neues_band_buch(2.0))["ursache"] == "keine_trades")
+
+    # Der neue Aufruf darf auch ein beschädigtes Buch nicht umbenennen oder nachladen.
+    with tempfile.TemporaryDirectory() as _tmp_q:
+        _pfad_q = Path(_tmp_q) / "kaputt.json"
+        _pfad_q.write_text("{kaputt")
+        _alt_buch_q, _alt_hole_q = L.BUCH, L.standard_hole
+        L.BUCH = _pfad_q
+        L.standard_hole = lambda: (_ for _ in ()).throw(AssertionError("Kostencheck darf kein Netz laden"))
+        try:
+            _aus_q = io.StringIO()
+            with redirect_stdout(_aus_q):
+                _rc_q = L.main(["--kostencheck"])
+            _rep_q = json.loads(_aus_q.getvalue())
+            pruefe("Kostencheck: beschädigte Quelle wird laut gemeldet, ohne Reparatur/Netz", _rc_q == 1 and bool(_rep_q["hinweis"])
+                   and _pfad_q.read_text() == "{kaputt" and sorted(x.name for x in Path(_tmp_q).iterdir()) == ["kaputt.json"])
+            _pfad_q.write_text(json.dumps(L.neues_buch(START)))
+            _vor_q = _pfad_q.read_bytes()
+            _aus_q = io.StringIO()
+            with redirect_stdout(_aus_q):
+                _rc_q = L.main(["--kostencheck"])
+            _rep_q = json.loads(_aus_q.getvalue())
+            pruefe("Kostencheck: gültiges leeres Buch bleibt unverändert, acht Varianten ohne Freigabe", _rc_q == 0
+                   and len(_rep_q["varianten"]) == 8 and _rep_q["handelsfreigabe"] is False and _pfad_q.read_bytes() == _vor_q)
+            for _flag_q in ("--einmal", "--dauer", "--push"):
+                try:
+                    with redirect_stderr(io.StringIO()):
+                        L.main(["--kostencheck", _flag_q])
+                    _code_q = 0
+                except SystemExit as _ex_q:
+                    _code_q = _ex_q.code
+                pruefe("Kostencheck: Schreib-/Sendemodus nicht kombinierbar " + _flag_q, _code_q == 2)
+        finally:
+            L.BUCH, L.standard_hole = _alt_buch_q, _alt_hole_q
 
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

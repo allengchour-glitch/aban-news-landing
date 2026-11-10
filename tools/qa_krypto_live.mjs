@@ -27,7 +27,13 @@ try {
       tage: [['2026-11-01', 89]], kumuliert: [['2026-11-01', 89]]});
     const stand = () => ({zeit: new Date().toISOString(), modus: 'TESTNETZ', pause: true, notaus: false,
       maerkte: [], konto: null, kontostand: [], auftraege: [], gesundheit: [], ki: {letzter: null, vergleich: {}, kosten: 0},
-      sammler: null, backtest: {}, risiko: {stufe: 1, test: {}}, lage: {}, satellit: null, scalp: null,
+      sammler: null, backtest: {}, risiko: {stufe: 1, test: {}}, lage: {}, satellit: null,
+      scalp: {aus: false, gelaufen: true, urteil: {urteil: 'zu wenig Daten', tage: 7},
+        kosten_bp: 6, letzter_lauf: {zeit: new Date().toISOString()}, daten_ab: Date.now() - 7 * 86400000,
+        zeilen: [{markt: 'BTC', k: 2, n: 250, treffer: 0.6, brutto_bp: -2, kosten_bp: -6, netto_bp: -8, erw_netto_bp: -9,
+          kostendiagnose: {ursache: 'kein_bruttovorteil', abstand_mindestkante_bp: 9}},
+        {markt: 'ETH', k: 2, n: 250, treffer: 0.7, brutto_bp: 1, kosten_bp: -6, netto_bp: -5, erw_netto_bp: -7,
+          kostendiagnose: {ursache: 'kosten_verbrauchen_vorteil', abstand_mindestkante_bp: 6}}]},
       kurse: {}, kurse_schnitt: {}, calls: null, telegram: false});
     await context.route('**/*', async route => {
       const r = route.request(), u = new URL(r.url());
@@ -65,6 +71,10 @@ try {
     assert.match(await page.locator('#u-konto').innerText(), /1.?114/);
     checks++;
     assert.match(await page.locator('#p-kurve').innerText(), /mindestens zwei Tagesstände/);
+    checks++;
+    assert.match(await page.locator('#u-labor').innerText(), /Kein Bruttovorteil/);
+    assert.match(await page.locator('#u-labor').innerText(), /Kosten verbrauchen den Vorteil/);
+    assert.equal(await page.locator('#u-labor th').allTextContents().then(h => ['Brutto', 'Kosten', 'Ursache'].every(x => h.includes(x))), true);
     checks++;
     for (const [zeitraum, wert] of [['heute', '22'], ['7_tage', '35'], ['30_tage', '62'], ['gesamt', '114']]) {
       await page.locator(`[data-profit-zeitraum="${zeitraum}"]`).click();
@@ -116,6 +126,12 @@ try {
       await page.waitForTimeout(180);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Keine Überbreite bei ${width}px`);
       checks++;
+      if (width < 500) {
+        await page.locator('#u-labor .labor-tab summary').click();
+        assert.equal(await page.locator('#u-labor td[data-label="Brutto"]').first().isVisible(), true);
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'Scalping-Tabelle bleibt beim Aufklappen innerhalb der Seite');
+        checks++;
+      }
     }
     if (nurLesen) {
       assert.equal(await page.locator('#notaus').isVisible(), false);
