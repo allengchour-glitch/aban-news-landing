@@ -573,8 +573,10 @@
         zustand.anfragen.klasse = 'alle';
         zustand.anfragen.min = 1;
         zustand.anfragen.limit = SCHRITT;
-        $('ks-suche-anfragen').value = r.wort;
-        $('ks-min-anfragen').value = '1';
+        const feld = $('ks-suche-anfragen');
+        if (feld) feld.value = r.wort;
+        const min = $('ks-min-anfragen');
+        if (min) min.value = '1';
         chipsSetzen('ks-chips-anfragen', 'alle');
         zeigeTab('anfragen');
       });
@@ -662,8 +664,11 @@
   });
 
   // ---- Bedienung ----
+  // Ein Element kann fehlen (jemand hat es von Hand gelöscht): jedes Anbinden prüft zuerst, ob es da ist.
+  const on = (id, ev, fn) => { const e = $(id); if (e) e.addEventListener(ev, fn); };
+  const alle = (sel, fn) => document.querySelectorAll(sel).forEach(fn);
   function chipsSetzen(id, klasse) {
-    $(id).querySelectorAll('.ks-chip').forEach((c) => c.setAttribute('aria-pressed', c.dataset.klasse === klasse ? 'true' : 'false'));
+    alle('#' + id + ' .ks-chip', (c) => c.setAttribute('aria-pressed', c.dataset.klasse === klasse ? 'true' : 'false'));
   }
   function neuZeichnen(name) {
     ZEICHNUNGEN[name].forEach((d) => dash.draw(d));
@@ -671,54 +676,67 @@
   function zeigeTab(name, ohneLink) {
     if (TABS.indexOf(name) === -1) name = 'uebersicht';
     TABS.forEach((t) => {
-      $('ks-sec-' + t).hidden = t !== name;
+      const sec = $('ks-sec-' + t);
+      if (sec) sec.hidden = t !== name;
       const b = $('ks-tab-' + t);
-      b.setAttribute('aria-selected', t === name ? 'true' : 'false');
-      b.tabIndex = t === name ? 0 : -1;
+      if (b) {
+        b.setAttribute('aria-selected', t === name ? 'true' : 'false');
+        b.tabIndex = t === name ? 0 : -1;
+      }
     });
     if (!ohneLink) dash.setLink(name);
     neuZeichnen(name);
   }
   TABS.forEach((t) => {
-    $('ks-tab-' + t).addEventListener('click', () => zeigeTab(t));
-    $('ks-tab-' + t).addEventListener('keydown', (e) => {
+    on('ks-tab-' + t, 'click', () => zeigeTab(t));
+    on('ks-tab-' + t, 'keydown', (e) => {
       const i = TABS.indexOf(t);
       let n = null;
       if (e.key === 'ArrowRight') n = TABS[(i + 1) % TABS.length];
       else if (e.key === 'ArrowLeft') n = TABS[(i + TABS.length - 1) % TABS.length];
       else if (e.key === 'Home') n = TABS[0];
       else if (e.key === 'End') n = TABS[TABS.length - 1];
-      if (n) { e.preventDefault(); zeigeTab(n); $('ks-tab-' + n).focus(); }
+      if (n) {
+        e.preventDefault();
+        zeigeTab(n);
+        const ziel = $('ks-tab-' + n);
+        if (ziel) ziel.focus();
+      }
     });
   });
 
-  const redraw = (name, liste) => liste.forEach((d) => dash.draw(d));
-  $('ks-suche-anfragen').addEventListener('input', (e) => { zustand.anfragen.suche = e.target.value; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
-  $('ks-sort-anfragen').addEventListener('change', (e) => { zustand.anfragen.sort = e.target.value; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
-  $('ks-min-anfragen').addEventListener('change', (e) => { zustand.anfragen.min = Number(e.target.value) || 1; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
-  $('ks-chips-anfragen').querySelectorAll('.ks-chip').forEach((c) => c.addEventListener('click', () => {
+  const redraw = (liste) => liste.forEach((d) => dash.draw(d));
+  const ANF = ['anfragen-tabelle', 'zaehler-anfragen'];
+  const STW = ['stichwoerter-tabelle', 'zaehler-stichwoerter'];
+  const CHA = ['chancen-tabelle', 'zaehler-chancen'];
+  const IDE = ['ideen-tabelle', 'zaehler-ideen'];
+
+  on('ks-suche-anfragen', 'input', (e) => { zustand.anfragen.suche = e.target.value; zustand.anfragen.limit = SCHRITT; redraw(ANF); });
+  on('ks-sort-anfragen', 'change', (e) => { zustand.anfragen.sort = e.target.value; zustand.anfragen.limit = SCHRITT; redraw(ANF); });
+  on('ks-min-anfragen', 'change', (e) => { zustand.anfragen.min = Number(e.target.value) || 1; zustand.anfragen.limit = SCHRITT; redraw(ANF); });
+  alle('#ks-chips-anfragen .ks-chip', (c) => c.addEventListener('click', () => {
     zustand.anfragen.klasse = c.dataset.klasse || 'alle';
     zustand.anfragen.limit = SCHRITT;
     chipsSetzen('ks-chips-anfragen', zustand.anfragen.klasse);
-    redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']);
+    redraw(ANF);
   }));
-  $('ks-mehr-anfragen').addEventListener('click', () => { zustand.anfragen.limit += SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
+  on('ks-mehr-anfragen', 'click', () => { zustand.anfragen.limit += SCHRITT; redraw(ANF); });
 
-  $('ks-suche-stichwoerter').addEventListener('input', (e) => { zustand.stichwoerter.suche = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
-  $('ks-sort-stichwoerter').addEventListener('change', (e) => { zustand.stichwoerter.sort = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
-  $('ks-mehr-stichwoerter').addEventListener('click', () => { zustand.stichwoerter.limit += SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
+  on('ks-suche-stichwoerter', 'input', (e) => { zustand.stichwoerter.suche = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw(STW); });
+  on('ks-sort-stichwoerter', 'change', (e) => { zustand.stichwoerter.sort = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw(STW); });
+  on('ks-mehr-stichwoerter', 'click', () => { zustand.stichwoerter.limit += SCHRITT; redraw(STW); });
 
-  $('ks-suche-chancen').addEventListener('input', (e) => { zustand.chancen.suche = e.target.value; zustand.chancen.limit = SCHRITT; redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']); });
-  $('ks-chips-chancen').querySelectorAll('.ks-chip').forEach((c) => c.addEventListener('click', () => {
+  on('ks-suche-chancen', 'input', (e) => { zustand.chancen.suche = e.target.value; zustand.chancen.limit = SCHRITT; redraw(CHA); });
+  alle('#ks-chips-chancen .ks-chip', (c) => c.addEventListener('click', () => {
     zustand.chancen.klasse = c.dataset.klasse || 'alle';
     zustand.chancen.limit = SCHRITT;
     chipsSetzen('ks-chips-chancen', zustand.chancen.klasse);
-    redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']);
+    redraw(CHA);
   }));
-  $('ks-mehr-chancen').addEventListener('click', () => { zustand.chancen.limit += SCHRITT; redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']); });
+  on('ks-mehr-chancen', 'click', () => { zustand.chancen.limit += SCHRITT; redraw(CHA); });
 
-  $('ks-suche-ideen').addEventListener('input', (e) => { zustand.ideen.suche = e.target.value; zustand.ideen.limit = SCHRITT; redraw('ideen', ['ideen-tabelle', 'zaehler-ideen']); });
-  $('ks-mehr-ideen').addEventListener('click', () => { zustand.ideen.limit += SCHRITT; redraw('ideen', ['ideen-tabelle', 'zaehler-ideen']); });
+  on('ks-suche-ideen', 'input', (e) => { zustand.ideen.suche = e.target.value; zustand.ideen.limit = SCHRITT; redraw(IDE); });
+  on('ks-mehr-ideen', 'click', () => { zustand.ideen.limit += SCHRITT; redraw(IDE); });
 
   // Kopieren: Tabulator-getrennter Text, höchstens 5000 Zeilen, mit Kopfzeile.
   const SPALTEN = {
@@ -733,15 +751,15 @@
     return [sp.map(([l]) => l).join('\t')].concat(zeilen).join('\n');
   };
   Object.keys(SPALTEN).forEach((name) => {
-    const knopf = $('ks-kopie-' + name);
-    knopf.addEventListener('click', () => {
+    on('ks-kopie-' + name, 'click', () => {
       const okEl = $('ks-ok-' + name);
       const badEl = $('ks-bad-' + name);
-      okEl.hidden = true;
-      badEl.hidden = true;
+      if (okEl) okEl.hidden = true;
+      if (badEl) badEl.hidden = true;
       const fertig = (gut) => {
-        (gut ? okEl : badEl).hidden = false;
-        setTimeout(() => { okEl.hidden = true; badEl.hidden = true; }, 4000);
+        const zeig = gut ? okEl : badEl;
+        if (zeig) zeig.hidden = false;
+        setTimeout(() => { if (okEl) okEl.hidden = true; if (badEl) badEl.hidden = true; }, 4000);
       };
       try {
         navigator.clipboard.writeText(tsv(name)).then(() => fertig(true), () => fertig(false));

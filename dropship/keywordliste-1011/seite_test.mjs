@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const HIER = path.dirname(fileURLToPath(import.meta.url));
-const SEITE = fs.readFileSync(path.join(HIER, 'seite.html'), 'utf8');
+const SEITE = fs.readFileSync(process.env.SEITE_PFAD || path.join(HIER, 'seite.html'), 'utf8');
 
 const NAMEN = ['stand', 'anfragen', 'stichwoerter', 'chancen', 'ideen', 'seiten', 'tage'];
 
@@ -29,6 +29,7 @@ function synthetisch() {
       position: pos, klasse: ['top3', 'seite1', 'seite2', 'seite3-5', 'ab6'][i % 5], seite: i % 3 ? '/collections/' + w : '/products/' + w + '-1', seiten: 1
     });
   }
+  anfragen[3].anfrage = 'Uhr Spezial ' + 3;          // Grossschreibung in der Anfrage: die Suche muss Gross und klein gleich behandeln
   const stichw = woerter.map((w, i) => ({ wort: w, anfragen: 30 - i, klicks: 0, einblendungen: 300 - i * 20, position: 40 + i, beispiele: w + ' damen 1 · ' + w + ' herren 2', seite: '/collections/' + w }));
   const chancen = anfragen.filter((a) => a.position > 3 && a.position <= 50).map((a) => ({ anfrage: a.anfrage, einblendungen: a.einblendungen, klicks: a.klicks, position: a.position, klasse: a.klasse, seite: a.seite }));
   const ideen = [];
@@ -138,6 +139,14 @@ pruefe(zahlen.length === 12 && zahlen.every((t) => t !== '—' && t !== ''), 'Ko
 pruefe((await p.textContent('#ks-lead')).includes('4.10.2026'), 'Kopfsatz nennt das Startdatum im Format 4.10.2026');
 pruefe((await p.$$('#ks-klassen .ks-bar')).length === 5, 'fünf Balken je Platzklasse');
 pruefe((await p.$$('#ks-tage .ks-day')).length === daten.tage.length, 'ein Balken je Tag');
+const hoehen = await p.$$eval('#ks-tage .ks-day', (e) => e.map((x) => parseFloat(x.style.height)));
+const maxTag = Math.max(...daten.tage.map((t) => t.einblendungen));
+const idxMax = daten.tage.findIndex((t) => t.einblendungen === maxTag);
+pruefe(Math.abs(hoehen[idxMax] - 100) < 0.01 && hoehen.some((h) => h < 99), 'Tagesbalken: der höchste Tag hat 100 %, andere sind niedriger: ' + hoehen.slice(0, 4));
+const breiten = await p.$$eval('#ks-klassen .ks-fill', (e) => e.map((x) => parseFloat(x.style.width)));
+const ns = ['top3', 'seite1', 'seite2', 'seite3_5', 'ab6'].map((c) => daten.stand[0]['n_' + c]);
+const maxN = Math.max(...ns);
+pruefe(breiten.length === 5 && breiten.every((w, i) => Math.abs(w - 100 * ns[i] / maxN) < 0.01), 'Klassenbalken proportional zur Anfragenzahl: ' + breiten);
 pruefe((await p.$$('[data-draw="seiten-tabelle"] tr')).length === Math.min(10, daten.seiten.length), 'zehn Seiten in der Tabelle');
 pruefe((await p.$$eval('#ks-sec-anfragen', (e) => e[0].hidden)) === true, 'Reiter Anfragen ist anfangs verborgen');
 
@@ -184,6 +193,9 @@ pruefe(pos.length > 1 && pos.every((v, i) => i === 0 || pos[i - 1] <= v), 'Reihe
 await p.selectOption('#ks-sort-anfragen', 'az');
 const az = await p.$$eval('[data-draw="anfragen-tabelle"] tr .ks-q', (e) => e.map((x) => x.textContent.toLowerCase()));
 pruefe(az.every((v, i) => i === 0 || az[i - 1] <= v), 'Reihenfolge A bis Z');
+await p.selectOption('#ks-sort-anfragen', 'klicks');
+const kl = await p.$$eval('[data-draw="anfragen-tabelle"] tr td:nth-child(3)', (e) => e.map((x) => Number(x.textContent)));
+pruefe(kl.length > 1 && kl[0] >= 1 && kl.every((v, i) => i === 0 || kl[i - 1] >= v), 'Reihenfolge nach Klicks absteigend');
 await p.selectOption('#ks-sort-anfragen', 'einbl');
 // Mindest-Impressionen
 await p.selectOption('#ks-min-anfragen', '10');
@@ -249,6 +261,42 @@ await p.click('#ks-tab-uebersicht');
 pruefe((await p.$eval('#ks-sec-uebersicht', (e) => e.hidden)) === false, 'zurück zur Übersicht');
 pruefe(meldungen.length === 0, 'keine Seitenfehler oder Konsolenfehler: ' + meldungen.join(' | '));
 await ctx.close();
+
+// Robustheit: fehlen Elemente (von Hand gelöscht), darf nichts abstürzen und der Rest muss weiter gehen
+{
+  const muster = [
+    /<button type="button" class="ks-btn" id="ks-kopie-ideen">[^<]*<\/button>/,
+    /<button type="button" class="ks-btn" id="ks-mehr-chancen" hidden>[^<]*<\/button>/,
+    /<input type="search" class="ks-input" id="ks-suche-chancen"[^>]*>/,
+    /<select class="ks-select" id="ks-min-anfragen">[\s\S]*?<\/select>/,
+    /<section class="ks-sec" id="ks-sec-ideen"[\s\S]*?<\/section>/,
+    /<span class="ks-ok" id="ks-ok-anfragen"[^>]*>[^<]*<\/span>/,
+    /<span class="ks-bad" id="ks-bad-anfragen"[^>]*>[^<]*<\/span>/
+  ];
+  let seite = SEITE;
+  for (const re of muster) {
+    pruefe(re.test(seite), 'Testvorbereitung: Muster gefunden ' + re);
+    seite = seite.replace(re, '');
+  }
+  const ctx2 = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const q = await ctx2.newPage();
+  const fe = [];
+  q.on('pageerror', (e) => fe.push('pageerror: ' + e.message));
+  const teile = seite.split(/<script>/);
+  const skript = teile[1].replace(/<\/script>\s*$/, '');
+  await q.setContent('<!doctype html><html lang="de"><head><meta charset="utf-8"><style>' + TOKENS + '</style></head><body><div id="dash-root">' + teile[0] + '</div><script>window.__DATEN__ = ' + JSON.stringify(daten) + ';</script><script>' + ATTRAPPE + '</script><script>' + skript + '</script><script>window.__alleZeichnen();</script></body></html>');
+  await q.click('#ks-tab-anfragen');
+  await q.fill('#ks-suche-anfragen', 'uhr');
+  pruefe((await q.$$('[data-draw="anfragen-tabelle"] tr')).length > 0, 'ohne Mindest-Auswahl: Anfragenliste funktioniert weiter');
+  await q.evaluate(() => { Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.resolve() }, configurable: true }); });
+  await q.click('#ks-kopie-anfragen');
+  await q.waitForTimeout(300);
+  await q.click('#ks-tab-chancen');
+  pruefe((await q.$$('[data-draw="chancen-tabelle"] tr')).length > 0, 'ohne Suchfeld und Mehr-Knopf: Chancen funktionieren weiter');
+  await q.click('#ks-tab-ideen');
+  pruefe(fe.length === 0, 'fehlende Elemente führen zu keinem Seitenfehler: ' + fe.join(' | '));
+  await ctx2.close();
+}
 
 // Handy: kein seitliches Scrollen auf jedem Reiter; Bilder
 const bilder = process.env.KS_BILDER;
