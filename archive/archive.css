@@ -152,8 +152,14 @@
   margin: 0.25rem 0 0.5rem;
 }
 .issue-body {
+  max-width: 70ch;
+  overflow-wrap: anywhere;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+.issue-body img {
+  max-width: 100%;
+  height: auto;
 }
 .issue-body h2 {
   margin-top: 2.5rem;

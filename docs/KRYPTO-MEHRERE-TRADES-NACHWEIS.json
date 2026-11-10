@@ -1,0 +1,391 @@
+{
+  "status": "DEMONSTRATION, KEINE ECHTEN AUFTRÄGE",
+  "daten": "ausschließlich synthetische Kurse, Seed 7",
+  "kapital_usdt": {
+    "wert": 5000,
+    "art": "SETZUNG, erfundenes Konto"
+  },
+  "strategie": "unveränderte Satelliten-Regel",
+  "echte_auftraege": 0,
+  "echte_nachrichten": 0,
+  "netzwerk": "Docker --network none",
+  "gate_ergebnisse": [
+    {
+      "bestanden": true,
+      "text": "ok"
+    },
+    {
+      "bestanden": true,
+      "text": "ok"
+    },
+    {
+      "bestanden": true,
+      "text": "ok"
+    }
+  ],
+  "phasen": [
+    {
+      "phase": "Vorschau ohne Ausführung",
+      "simulierter_kurstag": "2018-08-30",
+      "rueckgabewert": 0,
+      "trocken": true,
+      "simulierte_auftraege": [],
+      "neue_stop_setzungen": 0,
+      "offene_positionen": {},
+      "meldungen": [
+        "Entscheidung vom 2018-08-30: SOL 10 %, XRP 10 %, TRX 10 %, AVAX 10 %, DOT 10 %",
+        "Satellit AVAX: aufbauen: BUY 0.065",
+        "Satellit DOT: aufbauen: BUY 0.088",
+        "Satellit SOL: aufbauen: BUY 0.149",
+        "Satellit TRX: aufbauen: BUY 0.184",
+        "Satellit XRP: aufbauen: BUY 0.229"
+      ]
+    },
+    {
+      "phase": "Mehrere Einstiege",
+      "simulierter_kurstag": "2018-08-30",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [
+        {
+          "symbol": "AVAXUSDT",
+          "seite": "BUY",
+          "menge": 0.065,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.9127
+        },
+        {
+          "symbol": "DOTUSDT",
+          "seite": "BUY",
+          "menge": 0.088,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.48
+        },
+        {
+          "symbol": "SOLUSDT",
+          "seite": "BUY",
+          "menge": 0.149,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.5885
+        },
+        {
+          "symbol": "TRXUSDT",
+          "seite": "BUY",
+          "menge": 0.184,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.936
+        },
+        {
+          "symbol": "XRPUSDT",
+          "seite": "BUY",
+          "menge": 0.229,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.6299
+        }
+      ],
+      "neue_stop_setzungen": 5,
+      "offene_positionen": {
+        "AVAXUSDT": {
+          "menge": 0.065,
+          "stop_anzahl": 1
+        },
+        "DOTUSDT": {
+          "menge": 0.088,
+          "stop_anzahl": 1
+        },
+        "SOLUSDT": {
+          "menge": 0.149,
+          "stop_anzahl": 1
+        },
+        "TRXUSDT": {
+          "menge": 0.184,
+          "stop_anzahl": 1
+        },
+        "XRPUSDT": {
+          "menge": 0.229,
+          "stop_anzahl": 1
+        }
+      },
+      "meldungen": [
+        "Entscheidung vom 2018-08-30: SOL 10 %, XRP 10 %, TRX 10 %, AVAX 10 %, DOT 10 %",
+        "Satellit AVAX: aufbauen: BUY 0.065 · Stop 1440.68",
+        "Satellit DOT: aufbauen: BUY 0.088 · Stop 1020.2",
+        "Satellit SOL: aufbauen: BUY 0.149 · Stop 602.785",
+        "Satellit TRX: aufbauen: BUY 0.184 · Stop 496.098",
+        "Satellit XRP: aufbauen: BUY 0.229 · Stop 397.539"
+      ]
+    },
+    {
+      "phase": "Zwischen Entscheidungstagen",
+      "simulierter_kurstag": "2018-08-31",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [],
+      "neue_stop_setzungen": 5,
+      "offene_positionen": {
+        "AVAXUSDT": {
+          "menge": 0.065,
+          "stop_anzahl": 1
+        },
+        "DOTUSDT": {
+          "menge": 0.088,
+          "stop_anzahl": 1
+        },
+        "SOLUSDT": {
+          "menge": 0.149,
+          "stop_anzahl": 1
+        },
+        "TRXUSDT": {
+          "menge": 0.184,
+          "stop_anzahl": 1
+        },
+        "XRPUSDT": {
+          "menge": 0.229,
+          "stop_anzahl": 1
+        }
+      },
+      "meldungen": [
+        "Satellit: nichts zu tun (5 Positionen, Ziele: SOL, XRP, TRX, AVAX, DOT)."
+      ]
+    },
+    {
+      "phase": "Nächster Regeltermin 7",
+      "simulierter_kurstag": "2018-09-06",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [
+        {
+          "symbol": "DOTUSDT",
+          "seite": "SELL",
+          "menge": 0.088,
+          "nur_verkleinern": true,
+          "wert_usdt": 94.8603
+        },
+        {
+          "symbol": "TRXUSDT",
+          "seite": "SELL",
+          "menge": 0.184,
+          "nur_verkleinern": true,
+          "wert_usdt": 89.0949
+        }
+      ],
+      "neue_stop_setzungen": 3,
+      "offene_positionen": {
+        "AVAXUSDT": {
+          "menge": 0.065,
+          "stop_anzahl": 1
+        },
+        "SOLUSDT": {
+          "menge": 0.149,
+          "stop_anzahl": 1
+        },
+        "XRPUSDT": {
+          "menge": 0.229,
+          "stop_anzahl": 1
+        }
+      },
+      "meldungen": [
+        "Entscheidung vom 2018-09-06: SOL 10 %, XRP 10 %, AVAX 10 %",
+        "Satellit DOT: schliessen (nicht mehr im Ziel): SELL 0.088",
+        "Satellit TRX: schliessen (nicht mehr im Ziel): SELL 0.184"
+      ]
+    },
+    {
+      "phase": "Nächster Regeltermin 14",
+      "simulierter_kurstag": "2018-09-13",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [
+        {
+          "symbol": "AVAXUSDT",
+          "seite": "SELL",
+          "menge": 0.065,
+          "nur_verkleinern": true,
+          "wert_usdt": 93.739
+        },
+        {
+          "symbol": "LINKUSDT",
+          "seite": "BUY",
+          "menge": 0.106,
+          "nur_verkleinern": false,
+          "wert_usdt": 99.5337
+        },
+        {
+          "symbol": "SOLUSDT",
+          "seite": "SELL",
+          "menge": 0.032,
+          "nur_verkleinern": true,
+          "wert_usdt": 27.4162
+        }
+      ],
+      "neue_stop_setzungen": 3,
+      "offene_positionen": {
+        "LINKUSDT": {
+          "menge": 0.106,
+          "stop_anzahl": 1
+        },
+        "SOLUSDT": {
+          "menge": 0.117,
+          "stop_anzahl": 1
+        },
+        "XRPUSDT": {
+          "menge": 0.229,
+          "stop_anzahl": 1
+        }
+      },
+      "meldungen": [
+        "Entscheidung vom 2018-09-13: SOL 10 %, XRP 10 %, LINK 10 %",
+        "Satellit AVAX: schliessen (nicht mehr im Ziel): SELL 0.065",
+        "Satellit LINK: aufbauen: BUY 0.106 · Stop 837.858",
+        "Satellit SOL: aufbauen: SELL 0.032 · Stop 768.454"
+      ]
+    },
+    {
+      "phase": "Pause",
+      "simulierter_kurstag": "2018-09-13",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [],
+      "neue_stop_setzungen": 0,
+      "offene_positionen": {
+        "LINKUSDT": {
+          "menge": 0.106,
+          "stop_anzahl": 1
+        },
+        "SOLUSDT": {
+          "menge": 0.117,
+          "stop_anzahl": 1
+        },
+        "XRPUSDT": {
+          "menge": 0.229,
+          "stop_anzahl": 1
+        }
+      },
+      "meldungen": [
+        "Satellit: Auto-Handel ist aus (Pause) — nichts gehandelt, Positionen bleiben mit ihrem Börsen-Stop."
+      ]
+    },
+    {
+      "phase": "Not-Aus im Demonstrationskonto",
+      "simulierter_kurstag": "2018-09-13",
+      "rueckgabewert": 0,
+      "trocken": false,
+      "simulierte_auftraege": [
+        {
+          "symbol": "LINKUSDT",
+          "seite": "SELL",
+          "menge": 0.106,
+          "nur_verkleinern": true,
+          "wert_usdt": 99.5337
+        },
+        {
+          "symbol": "SOLUSDT",
+          "seite": "SELL",
+          "menge": 0.117,
+          "nur_verkleinern": true,
+          "wert_usdt": 100.2406
+        },
+        {
+          "symbol": "XRPUSDT",
+          "seite": "SELL",
+          "menge": 0.229,
+          "nur_verkleinern": true,
+          "wert_usdt": 97.5364
+        }
+      ],
+      "neue_stop_setzungen": 0,
+      "offene_positionen": {},
+      "meldungen": [
+        "Satellit: Not-Aus aktiv — alle Positionen werden geschlossen.",
+        "Satellit LINK: schliessen (Not-Aus): SELL 0.106",
+        "Satellit SOL: schliessen (Not-Aus): SELL 0.117",
+        "Satellit XRP: schliessen (Not-Aus): SELL 0.229"
+      ]
+    }
+  ],
+  "pruefungen": [
+    {
+      "pruefung": "Vorschau ohne Ausführung: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Vorschau schreibt weder Buch noch Aufträge",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Mehrere Einstiege: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Mindestens drei unterschiedliche Altcoins gekauft",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Jeder Einstieg höchstens zwei Prozent des erfundenen Kontos",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Jede offene Position hat genau einen simulierten Stop",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Zwischen Entscheidungstagen: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Keine erzwungenen zusätzlichen Trades am Folgetag",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Nächster Regeltermin 7: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Nächster Regeltermin 14: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Pause: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Pause sendet auch in der Attrappe keinen Auftrag",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Not-Aus im Demonstrationskonto: ohne Warnung beendet",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Not-Aus hinterlässt keine offene simulierte Position",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Ausstiege verkleinern ausschließlich",
+      "bestanden": true
+    },
+    {
+      "pruefung": "BTC und ETH bleiben dem Piloten vorbehalten",
+      "bestanden": true
+    },
+    {
+      "pruefung": "Vor neuen Einstiegen bestehende Selbsttests bestanden",
+      "bestanden": true
+    }
+  ],
+  "quellen_sha256": {
+    "tools/trading/krypto_bot/satellit.py": "0962549ef88de0a7869e132ecc28db250d1981f024477e0e60c8e2aff8915a4e",
+    "tools/trading/krypto_bot/satellit_kern.py": "25115dffeecb95ec3fa2777b7abc4955819f7c935a0ca99644ac67e93cdbd9e2",
+    "tools/trading/krypto_bot/broker_futures.py": "16e86f3f50a226503a9f985326135bde6d34fe528b0853a2816fe547a20d507c",
+    "tools/trading/krypto_bot/satellit_testdaten.py": "93838638cb30d7a52302a75cf961a34c4beca83d329fefc2d1d97071b7ca1463",
+    "tools/trading/krypto_bot/test_satellit_lauf.py": "019d6312dc09e26b34dddaf598af7cca2179256f1fcb4719899fb60545843945"
+  },
+  "quellcommit": "404d34b22bb90ed165e8e65953213b2062497ebd",
+  "grenzen": [
+    "Keine echten Kurse oder tatsächlichen Kontostände",
+    "Keine tatsächlichen Börsenaufträge oder Nachrichten",
+    "Keine Renditeberechnung und keine Aussage zur Profitabilität",
+    "Simulation prüft Auftragserzeugung und gesetzte Stop-Aufträge, keine echten Börsenfüllungen",
+    "Kontomodus noch nicht vom Nutzer beantwortet; kein Zugriff auf dessen PC-Konto"
+  ]
+}

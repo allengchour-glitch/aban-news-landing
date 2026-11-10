@@ -1,0 +1,542 @@
+{
+  "status": "FORSCHUNG, KEINE HANDELSFREIGABE",
+  "protokoll": {
+    "version": 5,
+    "markt": "BTC-USD, Spot, Long/Cash, kein Hebel",
+    "trend_tage": [
+      150,
+      200
+    ],
+    "vol_tage": 30,
+    "vol_ziel": 0.25,
+    "handelsband": 0.1,
+    "signal_verzoegerung_tage": 2,
+    "historische_teilperioden": [
+      [
+        "2022-01-01",
+        "2024-01-01"
+      ],
+      [
+        "2024-01-01",
+        null
+      ]
+    ],
+    "kostenmodell": "Pauschale Forschungsszenarien, keine gemessenen Brokergebühren",
+    "kosten_szenarien_bp": {
+      "basis": {
+        "gebuehr": 10,
+        "halber_spread": 5,
+        "schlupf": 5
+      },
+      "stress": {
+        "gebuehr": 25,
+        "halber_spread": 10,
+        "schlupf": 15
+      },
+      "extrem": {
+        "gebuehr": 50,
+        "halber_spread": 25,
+        "schlupf": 25
+      }
+    },
+    "vorwaertstest_mindesttage": 180,
+    "numerik_grenzen": {
+      "kurs_min": 1e-12,
+      "kurs_max": 1000000000000.0,
+      "sprung_faktor_max": 1000000.0
+    }
+  },
+  "python_version": "3.12.14",
+  "protokoll_sha256": "ecec431bd4c9c658b0c3c324254e6b5cb82a0afd3fb360eee9bc4fe7b29673cd",
+  "daten_sha256": "d17fbfe2b735dac5d8da5d28c582c3016691d3d2254c755814fc98f8b421d6df",
+  "code_sha256": "780f171d87c9df74a70d004431d1fb5e6fab6b5c9d772688960cf960b0fcb4eb",
+  "daten_von": "2014-09-17",
+  "daten_bis": "2026-09-23",
+  "datenqualitaet": {
+    "stichtag_utc": "2026-10-29",
+    "alter_tage": 36,
+    "abgeschlossen": true,
+    "aktuell": false,
+    "befund": "Historische Daten: keine aktuelle Signalentscheidung möglich"
+  },
+  "signalpruefung": {
+    "bestanden": true,
+    "fehler": [],
+    "modus": "stichprobe",
+    "grenze": "Prüft diese Kursreihe und Historien; kein allgemeiner Beweis oder Schutz gegen externe Datenlecks"
+  },
+  "handelsfreigabe": false,
+  "historischer_signalbeleg": {
+    "stand": "2026-09-23",
+    "schlusskurs": 84232.671875,
+    "zielquoten": {
+      "Halten": 1.0,
+      "Trend 200": 1.0,
+      "Halten Risiko 25": 0.5680742606631556,
+      "Trend 150 Risiko 25": 0.5680742606631556,
+      "Trend 200 Risiko 25": 0.5680742606631556,
+      "Konsens 150/200": 0.5680742606631556
+    },
+    "warnung": "Historischer Rechenstand, kein Brokerauftrag oder aktuelles Handelssignal"
+  },
+  "hinweis": "Bekannte historische Daten, kein unabhängiger Holdout. Schlusskurs-Modell ohne Intraday-Ausführung; kein Funding, Spread in pauschalen Kosten, kein Börsenausfall. Kein KI-Nachweis.",
+  "ergebnisse": {
+    "2022-01-01": {
+      "von": "2022-01-01",
+      "bis": "2023-12-31",
+      "szenarien": {
+        "basis": {
+          "Halten": {
+            "rendite": -0.1172304880598416,
+            "max_einbruch": -0.6695989560128666,
+            "umsatz_pro_startkapital": 1.882542581134364,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.0037650851622687293,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9986301369863013,
+            "vol_realisiert": 0.5469576816508952,
+            "laengste_unterwasserphase_tage": 730,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.7337707666028241,
+            "max_einbruch": -0.2224723161446709,
+            "umsatz_pro_startkapital": 7.549709643576286,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.015099419287152572,
+            "auftraege": 6,
+            "exposure_schnitt": 0.4,
+            "vol_realisiert": 0.2913476870051469,
+            "laengste_unterwasserphase_tage": 118,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.11040334933695473,
+            "max_einbruch": -0.40597441229360975,
+            "umsatz_pro_startkapital": 5.8957862685713485,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.011791572537142699,
+            "auftraege": 46,
+            "exposure_schnitt": 0.544083606466972,
+            "vol_realisiert": 0.29140848287400345,
+            "laengste_unterwasserphase_tage": 676,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.24944663291207458,
+            "max_einbruch": -0.19142111650702587,
+            "umsatz_pro_startkapital": 13.704095375769846,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.027408190751539697,
+            "auftraege": 34,
+            "exposure_schnitt": 0.24878453455678878,
+            "vol_realisiert": 0.1801702970540251,
+            "laengste_unterwasserphase_tage": 297,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.32180210975653,
+            "max_einbruch": -0.18566450052954653,
+            "umsatz_pro_startkapital": 7.076573248660582,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.014153146497321162,
+            "auftraege": 21,
+            "exposure_schnitt": 0.24190201255616947,
+            "vol_realisiert": 0.17871709313841075,
+            "laengste_unterwasserphase_tage": 124,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.3275253049136855,
+            "max_einbruch": -0.16693513925713033,
+            "umsatz_pro_startkapital": 7.017739787293097,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.014035479574586191,
+            "auftraege": 22,
+            "exposure_schnitt": 0.2378869899471496,
+            "vol_realisiert": 0.1755599267898493,
+            "laengste_unterwasserphase_tage": 204,
+            "noch_nicht_erholt": true
+          }
+        },
+        "stress": {
+          "Halten": {
+            "rendite": -0.12251131545756289,
+            "max_einbruch": -0.6705852277859627,
+            "umsatz_pro_startkapital": 1.8769230510414459,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.009384615255207285,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9986301369863015,
+            "vol_realisiert": 0.5469710711172981,
+            "laengste_unterwasserphase_tage": 730,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.7028416875279504,
+            "max_einbruch": -0.2317470094648726,
+            "umsatz_pro_startkapital": 7.47826522652148,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.03739132613260738,
+            "auftraege": 6,
+            "exposure_schnitt": 0.4000000000000001,
+            "vol_realisiert": 0.2918264943570381,
+            "laengste_unterwasserphase_tage": 119,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.08707260635875702,
+            "max_einbruch": -0.4102874614990256,
+            "umsatz_pro_startkapital": 5.831435637170148,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.029157178185850733,
+            "auftraege": 46,
+            "exposure_schnitt": 0.544083606466972,
+            "vol_realisiert": 0.2914752911663103,
+            "laengste_unterwasserphase_tage": 678,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.19921584136625348,
+            "max_einbruch": -0.20956837112489524,
+            "umsatz_pro_startkapital": 13.42351399372613,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.06711756996863065,
+            "auftraege": 34,
+            "exposure_schnitt": 0.24878453455678876,
+            "vol_realisiert": 0.1807068093480167,
+            "laengste_unterwasserphase_tage": 297,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.2962288096978771,
+            "max_einbruch": -0.19390976416403005,
+            "umsatz_pro_startkapital": 7.0068629143623085,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.035034314571811526,
+            "auftraege": 21,
+            "exposure_schnitt": 0.24190201255616942,
+            "vol_realisiert": 0.17911025103078274,
+            "laengste_unterwasserphase_tage": 140,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.3021637997410893,
+            "max_einbruch": -0.17641486420883812,
+            "umsatz_pro_startkapital": 6.94922342820803,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.034746117141040145,
+            "auftraege": 22,
+            "exposure_schnitt": 0.2378869899471496,
+            "vol_realisiert": 0.17574888899155033,
+            "laengste_unterwasserphase_tage": 205,
+            "noch_nicht_erholt": true
+          }
+        },
+        "extrem": {
+          "Halten": {
+            "rendite": -0.13124298056072814,
+            "max_einbruch": -0.6722159939850421,
+            "umsatz_pro_startkapital": 1.867631352768948,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.018676313527689517,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9986301369863013,
+            "vol_realisiert": 0.5470293739594968,
+            "laengste_unterwasserphase_tage": 730,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.6525122179106708,
+            "max_einbruch": -0.2469603165186952,
+            "umsatz_pro_startkapital": 7.3612293395052655,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.07361229339505264,
+            "auftraege": 6,
+            "exposure_schnitt": 0.4,
+            "vol_realisiert": 0.2928180749160092,
+            "laengste_unterwasserphase_tage": 124,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.04927015361438958,
+            "max_einbruch": -0.41740084189037274,
+            "umsatz_pro_startkapital": 5.726342226161618,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.05726342226161617,
+            "auftraege": 46,
+            "exposure_schnitt": 0.544083606466972,
+            "vol_realisiert": 0.2916319064690595,
+            "laengste_unterwasserphase_tage": 700,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.1199395496269331,
+            "max_einbruch": -0.23890985657867847,
+            "umsatz_pro_startkapital": 12.972760355260064,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.1297276035526007,
+            "auftraege": 34,
+            "exposure_schnitt": 0.24878453455678876,
+            "vol_realisiert": 0.18206705287639458,
+            "laengste_unterwasserphase_tage": 306,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.25469608943787336,
+            "max_einbruch": -0.20746235887302822,
+            "umsatz_pro_startkapital": 6.892754990052201,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.06892754990052202,
+            "auftraege": 21,
+            "exposure_schnitt": 0.24190201255616942,
+            "vol_realisiert": 0.17995298463565848,
+            "laengste_unterwasserphase_tage": 141,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.2609613571536815,
+            "max_einbruch": -0.1919711552188872,
+            "umsatz_pro_startkapital": 6.837046572057164,
+            "mess_tage": 730,
+            "kosten_pro_startkapital": 0.06837046572057164,
+            "auftraege": 22,
+            "exposure_schnitt": 0.2378869899471496,
+            "vol_realisiert": 0.1762493260738967,
+            "laengste_unterwasserphase_tage": 226,
+            "noch_nicht_erholt": true
+          }
+        }
+      }
+    },
+    "2024-01-01": {
+      "von": "2024-01-01",
+      "bis": "2026-09-23",
+      "szenarien": {
+        "basis": {
+          "Halten": {
+            "rendite": 0.8995128264592114,
+            "max_einbruch": -0.5305998300134693,
+            "umsatz_pro_startkapital": 2.90132345740597,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.0058026469148119405,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9989969909729187,
+            "vol_realisiert": 0.4770696306987873,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.3940026497768181,
+            "max_einbruch": -0.3628138306475843,
+            "umsatz_pro_startkapital": 37.02754572166293,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.07405509144332588,
+            "auftraege": 30,
+            "exposure_schnitt": 0.59679037111334,
+            "vol_realisiert": 0.36834585424252725,
+            "laengste_unterwasserphase_tage": 610,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.39390044781066647,
+            "max_einbruch": -0.44514523428130304,
+            "umsatz_pro_startkapital": 12.724399104678094,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.025448798209356187,
+            "auftraege": 60,
+            "exposure_schnitt": 0.6090612073167974,
+            "vol_realisiert": 0.28579662415432,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.2797186887491945,
+            "max_einbruch": -0.24491315443979034,
+            "umsatz_pro_startkapital": 31.630679865625986,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.06326135973125198,
+            "auftraege": 62,
+            "exposure_schnitt": 0.35077462630521317,
+            "vol_realisiert": 0.20695445121769598,
+            "laengste_unterwasserphase_tage": 406,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.20911604442852583,
+            "max_einbruch": -0.23116209741324745,
+            "umsatz_pro_startkapital": 22.75681551837831,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.04551363103675661,
+            "auftraege": 62,
+            "exposure_schnitt": 0.36236674012451137,
+            "vol_realisiert": 0.21968742414382736,
+            "laengste_unterwasserphase_tage": 924,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.3289853654384225,
+            "max_einbruch": -0.17664101935943555,
+            "umsatz_pro_startkapital": 25.39421782978743,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.050788435659574874,
+            "auftraege": 56,
+            "exposure_schnitt": 0.32921449653958235,
+            "vol_realisiert": 0.20223581199603832,
+            "laengste_unterwasserphase_tage": 406,
+            "noch_nicht_erholt": true
+          }
+        },
+        "stress": {
+          "Halten": {
+            "rendite": 0.8881497251733039,
+            "max_einbruch": -0.5305998300134689,
+            "umsatz_pro_startkapital": 2.8926627903690543,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.014463313951845299,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9989969909729188,
+            "vol_realisiert": 0.4771403289670212,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.2740210033526682,
+            "max_einbruch": -0.38164576907508774,
+            "umsatz_pro_startkapital": 35.36968248643298,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.17684841243216487,
+            "auftraege": 30,
+            "exposure_schnitt": 0.5967903711133401,
+            "vol_realisiert": 0.3690477684209798,
+            "laengste_unterwasserphase_tage": 924,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.35552583330571363,
+            "max_einbruch": -0.4491124551801724,
+            "umsatz_pro_startkapital": 12.544928870605542,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.0627246443530277,
+            "auftraege": 60,
+            "exposure_schnitt": 0.6090612073167974,
+            "vol_realisiert": 0.2858253926711421,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.18702918748329123,
+            "max_einbruch": -0.27211459636151314,
+            "umsatz_pro_startkapital": 30.462283290556808,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.15231141645278407,
+            "auftraege": 62,
+            "exposure_schnitt": 0.35077462630521317,
+            "vol_realisiert": 0.20737448404084885,
+            "laengste_unterwasserphase_tage": 406,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.13921888349888412,
+            "max_einbruch": -0.24623109409944244,
+            "umsatz_pro_startkapital": 22.08921822531817,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.11044609112659085,
+            "auftraege": 62,
+            "exposure_schnitt": 0.36236674012451137,
+            "vol_realisiert": 0.22011292146642705,
+            "laengste_unterwasserphase_tage": 924,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.2497006215620201,
+            "max_einbruch": -0.19326402394443365,
+            "umsatz_pro_startkapital": 24.615325888484477,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.12307662944242237,
+            "auftraege": 56,
+            "exposure_schnitt": 0.32921449653958235,
+            "vol_realisiert": 0.20259005022016208,
+            "laengste_unterwasserphase_tage": 406,
+            "noch_nicht_erholt": true
+          }
+        },
+        "extrem": {
+          "Halten": {
+            "rendite": 0.8693612309678886,
+            "max_einbruch": -0.5305998300134691,
+            "umsatz_pro_startkapital": 2.878342677545344,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.02878342677545343,
+            "auftraege": 2,
+            "exposure_schnitt": 0.9989969909729187,
+            "vol_realisiert": 0.4772875651625753,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200": {
+            "rendite": 0.09655044422291303,
+            "max_einbruch": -0.41381628847673235,
+            "umsatz_pro_startkapital": 32.819439742221675,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.32819439742221673,
+            "auftraege": 30,
+            "exposure_schnitt": 0.59679037111334,
+            "vol_realisiert": 0.3707755723547196,
+            "laengste_unterwasserphase_tage": 924,
+            "noch_nicht_erholt": true
+          },
+          "Halten Risiko 25": {
+            "rendite": 0.2938923856001494,
+            "max_einbruch": -0.45566527682720515,
+            "umsatz_pro_startkapital": 12.253199636178923,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.12253199636178927,
+            "auftraege": 60,
+            "exposure_schnitt": 0.6090612073167974,
+            "vol_realisiert": 0.28591879798194875,
+            "laengste_unterwasserphase_tage": 352,
+            "noch_nicht_erholt": true
+          },
+          "Trend 150 Risiko 25": {
+            "rendite": 0.04721575496377328,
+            "max_einbruch": -0.32604625130980713,
+            "umsatz_pro_startkapital": 28.63895795589765,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.2863895795589765,
+            "auftraege": 62,
+            "exposure_schnitt": 0.3507746263052131,
+            "vol_realisiert": 0.20858870965657703,
+            "laengste_unterwasserphase_tage": 610,
+            "noch_nicht_erholt": true
+          },
+          "Trend 200 Risiko 25": {
+            "rendite": 0.031581779668723886,
+            "max_einbruch": -0.29543551364340737,
+            "umsatz_pro_startkapital": 21.033756084300382,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.2103375608430039,
+            "auftraege": 62,
+            "exposure_schnitt": 0.3623667401245113,
+            "vol_realisiert": 0.2211016242805078,
+            "laengste_unterwasserphase_tage": 924,
+            "noch_nicht_erholt": true
+          },
+          "Konsens 150/200": {
+            "rendite": 0.12792320283530811,
+            "max_einbruch": -0.23110937877620108,
+            "umsatz_pro_startkapital": 23.3862645582305,
+            "mess_tage": 997,
+            "kosten_pro_startkapital": 0.2338626455823051,
+            "auftraege": 56,
+            "exposure_schnitt": 0.32921449653958235,
+            "vol_realisiert": 0.20356175971564802,
+            "laengste_unterwasserphase_tage": 610,
+            "noch_nicht_erholt": true
+          }
+        }
+      }
+    }
+  },
+  "versuch_id": "579f8e56acfb76c5f97c2b365bb9d722ef62068097921f574c688ab1768b9696"
+}

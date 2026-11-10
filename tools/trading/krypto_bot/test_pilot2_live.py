@@ -788,7 +788,11 @@ voll = dict(E("BTC", 1.0), symbol="BTCUSDT", kurs=100000.0, schnitt=90000.0, tre
 nur_p2 = {k: v for k, v in ECHT.items() if k.startswith("PILOT2_")}
 try:
     # nur die Test-Werte: Schalter vom PC (ETH-Sparplan, Calls, Echtgeld …) dürfen den Selbsttest nicht beeinflussen
-    os.environ.clear(); os.environ.update({k: v for k, v in alt.items() if k.upper() in ("PATH", "SYSTEMROOT", "TEMP", "TMP", "HOME", "USERPROFILE")})
+    # Geerbte Proxyregeln erhalten: urllib speichert seinen Proxy-Handler, prüft NO_PROXY
+    # aber bei jeder Anfrage neu. Ohne die Loopback-Ausnahme landete der lokale Nachbau
+    # nach diesem Filter am Cloud-Proxy. Keine neuen Ausnahmen oder echten Ziele setzen.
+    os.environ.clear(); os.environ.update({k: v for k, v in alt.items() if k.upper() in
+        ("PATH", "SYSTEMROOT", "TEMP", "TMP", "HOME", "USERPROFILE", "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "NO_PROXY")})
     os.environ.update(TEST); X.reset()
     PI.handeln([voll], "Lage", trocken=False)
     pruefe("KRYPTO_PILOT2=an: Bot kauft über Spot, kein Futures-Auftrag", any(o[0] == "/api/v3/order" for o in markt_orders()) and not X.pos["BTCUSDT"])

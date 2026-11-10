@@ -204,4 +204,21 @@ with tempfile.TemporaryDirectory() as d:
     f = Path(d) / "b.md"
     W.schreiben(lbg, f, sb=sbg, jetzt=SPAET)
     ok("Tage her" in f.read_text(encoding="utf-8") and "lückenlos und aktuell" not in f.read_text(encoding="utf-8"), "schreiben: das übergebene «Jetzt» kommt bis in die Datei")
+# Gültiges JSON kann trotzdem die falsche Form haben. Ein defektes optionales
+# Buch darf weder den Hauptbericht stoppen noch eine grüne Gesamtmeldung ergeben.
+for name, key in (("Labor", "lab"), ("Satellit", "sb")):
+    for kaputt in ([], [1], "kaputt", 7):
+        try:
+            stand, text = W.abschnitt(lbg, jetzt=JETZT, **{key: kaputt})
+            bed = (stand == "2026-11-07" and "Pilot (alles Futures)" in text
+                   and f"{name}: Logbuch ist unlesbar" in text
+                   and "Alle Messreihen lückenlos und aktuell" not in text)
+        except Exception:
+            bed = False
+        ok(bed, f"Optionales {name}-Buch {kaputt!r}: Bericht bleibt nutzbar und meldet die Datenlücke")
+for name, key in (("Labor", "lab"), ("Satellit", "sb")):
+    for leer in (None, {}):
+        text = W.abschnitt(lbg, jetzt=JETZT, **{key: leer})[1]
+        ok("Logbuch ist unlesbar" not in text and "Alle Messreihen lückenlos und aktuell" in text,
+           f"Optionales {name}-Buch {leer!r}: noch nicht eingerichtet ist kein beschädigtes Buch")
 print(f"\n{ok_n} bestanden, {fail} fehlgeschlagen"); sys.exit(1 if fail else 0)

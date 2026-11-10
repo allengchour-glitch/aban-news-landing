@@ -10,6 +10,28 @@ GEMESSEN:52 Download- und70 APIprüfungen lokal grün (122). Neue Testuhr prüft
 
 Nutzen: ein gestörter Prüfschritt kann eine berechtigte Lieferung nicht unbegrenzt im Wartestatus halten. Finanzielle Wirkung nicht gemessen. Eigene Checkout-/Lieferzuordnungen der noch nicht direkt verkaufbaren Angebote bleiben separate offene Voraussetzungen; keine fremden Zahlungslinks oder Preise eingesetzt.
 
+## Aktuell: mehrere Trades mit bestehendem Ablauf geprüft
+
+Nutzer «verschidene trades mached». Bestehenden Satelliten statt neuer Handelsstrategie verwendet. GEMESSEN auf künstlichen Kursen mit unveränderter Regel und Börsenattrappe im netzlosen Container: zunächst fünf parallele Käufe (AVAX, DOT, SOL, TRX, XRP), später Wechsel/Verkleinerungen und LINK-Einstieg; Pause und Not-Aus geprüft. Insgesamt sechs simulierte Käufe, sieben Verkäufe/Verkleinerungen, sieben Phasen und 17 Gegenprüfungen bestanden. Vor neuen Käufen bestanden die vorhandenen Satelliten-Selbsttests. Keine echten Börsenaufträge oder Nachrichten; kein Gewinn berechnet.
+
+[Nachweis und konkrete Status-/Trockenlauf-Aufträge für PC-Claude](KRYPTO-MEHRERE-TRADES.md), Branch `codex/mehrere-trades`. Der bisherige Live-Anzeige-Stand und main `061d4ee5f` sind konfliktfrei enthalten; Laufzeitcode gegenüber `1d9f79e06` unverändert. Nutzerfrage «Testnetz/Spielgeld, nur simulieren oder echtes Geld?» noch unbeantwortet. Kein Zugriff auf PC-Konto, keine Schlüssel angefasst, kein Echtgeld/Scalping aktiviert und keine Zeitpläne geändert. Das künstliche Beispiel ist keine aktuelle Kaufliste.
+
+## Aktuell: Live-Anzeige für Konto und Gewinn
+
+Nutzerauftrag «live anzeige, profit, etc». Branch `codex/krypto-live-anzeige`, Anwendungscode `f18a61147`: tatsächlicher Konto-/Einkommen-Datenstand, Alter und Verbindungsstatus; unbekannte Gewinne bei veralteten/unvollständigen Daten; auswählbare Zeiträume und passende Realisiert-/Offen-/Funding-/Gebührenwerte; Kontowert, frei verfügbar und aktueller offener Gewinn. Desktop und geschützte Handy-Ansicht. Keine Handels-/Risiko-/Schutzänderung.
+
+GEMESSEN: 59 Profit-, 510 Cockpit-, 37 Browserprüfungen; 731 strenge Pilot- und 451 Handy-Schutzprüfungen bestanden. Alle 19 Suiten des bestehenden Paket-Workflows schließlich grün, einschließlich gezielter Wiederholung der Paketprüfung nach Ergänzung fehlender isolierter Git-HEAD-Metadaten. Neun allgemeine lokale CI-Abschnitte bestanden; geprüfter Sparse-Quellinhalt zwischen den drei Code-Revisionen identisch. Lieferpaket aus f18a61147 gebaut, Hash zurückgelesen, entpackter PC-Probelauf mit zehn Selbsttests bestanden. Ein bestehender Test entfernte NO_PROXY; ausschließlich geerbte Proxyregeln erhalten, keine Assertion entfernt. Rote Vorläufe bleiben im Nachweis erkennbar.
+
+[Funktionsumfang, Prüfungen, konkrete Grenzen und Nachweise](KRYPTO-LIVE-ANZEIGE.md). Keine echten Kontowerte abgerufen, kein Release oder PC-Installationsnachweis. GitHub-API weiterhin gesperrt, daher kein Merge/Live-Stand behauptet. Frisch gelesenes main `061d4ee5f` betrifft andere Dateien; Merge-Tree-Prüfung konfliktfrei, dessen Futterautomat-/Shop-Vorgaben bleiben unangetastet.
+
+Zusätzlicher Abschlussnachweis: main `a58f95003` integriert. Echter Pages-Build auf `ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf` im netzlosen Container erfolgreich; 30 Browser-Prüfungen am gebauten Paket bestanden, keine Übergröße/privaten Verzeichnisse. Details und Grenzen im unten verlinkten Abschlussdokument. GitHub-API weiterhin Forbidden, kein Live-Stand behauptet.
+
+## Vorrangiger Abschlussstand: Version 5 und gemeinsame Veröffentlichung
+
+Nutzerauftrag «offene sachen abschliessen»: `codex/offene-abschliessen` führt die offenen Website-/Wochenberichtkorrekturen und die F8-Korrektur zusammen. Geprüfter Codecommit `fed25db4146dfa609f1bf0746bcdb9c6927ae867`: alle neun lokalen CI-Abschnitte im isolierten Docker-Job grün, 70 Forschungstests (Python 3.11), 116 Wochenbericht- und 35 Pakettests bestanden; Website samt Formular und Mobilansichten geprüft. Version 5 ändert keine historischen Ergebnisse oder Handelsfreigaben. Claude-Review betrifft Version 4; F8 wurde anschließend behoben. Nachfolgende ältere Statusnotizen sind historische Stände.
+
+[Abschluss, Belege und konkrete Veröffentlichungsschritte](ki-bot-gemeinsam/ABSCHLUSS.md). Aktuelle GitHub-API-Anfrage weiterhin Forbidden: PR, echte Remote-Checks, Merge und Live-Kontrolle noch nicht erfolgt. Gespeicherte Netzwerkfreigaben müssen angewendet werden; keine erneute fachliche Veröffentlichungsfreigabe nötig. YouTube-Videos und blockierte Originaltexte bleiben ungelesen, PC-Installation unbestätigt.
+
 ## Aktuell: Claude hat Version 4 (Streaming) geprüft (10.11.2026)
 
 Auftrag aus `STREAMING.md` ausgeführt, Details in `docs/ki-bot-gemeinsam/CLAUDE-REVIEW-V4.md`. GEMESSEN mit Python 3.11.17: `SignalStrom` bitgleich zu Version 3 (4 390 Tage, 300 Zufallsreihen, 324 Berichtszahlen) und 3,3·10⁻¹⁶ neben einer eigenen Nachrechnung; Aufwärmphase, gleitende Fenster, eingefrorene Konfiguration und Abweisung ungültiger Kurse halten. **Befund F8 (niedrig):** ein Fehler *in* der Rechnung (z. B. Kurs `sys.float_info.min`, danach `AttributeError` aus `statistics.stdev`) hinterlässt veränderten Zustand und legt den Strom 30 Schritte lahm; Empfehlung im Review (Kurs vor der Übernahme auf Plausibilität prüfen). Mutationsprobe: 38 von 45 erkannt mit Codex' 57 Tests, 43 von 45 mit den acht neuen Tests (`test_labor_regression_v4.py`). `labor.py` unverändert; eine Korrektur braucht Protokollversion 5. Kein Blocker. Version 3 und Nachrichtenmodul nur gestreift. Grenzen der zeitlichen Datenprüfung: `--stichtag` bestimmt «aktuell», der Zeitpunkt der Datenbeschaffung steht nirgends.

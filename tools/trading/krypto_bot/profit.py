@@ -18,6 +18,7 @@ Ehrlich gerechnet:
 from __future__ import annotations
 
 import json
+import math
 import os
 import sys
 import threading
@@ -257,7 +258,15 @@ def auswerten(buch, konto, positionen, jetzt=None):
     for t in sorted(tage):
         s += tage[t]
         kumuliert.append([t, round(s, 4)])
-    return {"wallet": round(wallet, 2), "offen": round(offen, 4), "gesamt": round(wallet + offen, 2), "zeitraeume": zeitraeume,
+    verfuegbar = konto.get("availableBalance")
+    try:
+        verfuegbar = float(verfuegbar) if not isinstance(verfuegbar, bool) else None
+        if verfuegbar is not None and not math.isfinite(verfuegbar):
+            verfuegbar = None
+    except (TypeError, ValueError, OverflowError):
+        verfuegbar = None
+    return {"wallet": round(wallet, 2), "offen": round(offen, 4), "gesamt": round(wallet + offen, 2),
+            "verfuegbar": round(verfuegbar, 2) if verfuegbar is not None else None, "zeitraeume": zeitraeume,
             "pro_markt": pro_markt, "positionen": pos, "tage": [[t, tage[t]] for t in sorted(tage)][-60:], "kumuliert": kumuliert[-365:],
             "seit": datetime.fromtimestamp(erster / 1000).date().isoformat(), "nicht_umgerechnet": nicht_umgerechnet}
 
@@ -283,6 +292,7 @@ def abrufen(env=None, client=None, logbuch=None, jetzt=None):
             jetzt_ms = int(jetzt.timestamp() * 1000) if jetzt else c._zeit()
             konto = c.konto()
             positionen = c._req("GET", "/fapi/v2/positionRisk", signiert=True) or []
+            konto_zeit = datetime.now(timezone.utc).isoformat(timespec="seconds")
             if jetzt_ms - (buch.get("abgerufen_bis") or 0) >= EINKOMMEN_ALLE_MS:
                 try:
                     nachfuehren(buch, c, jetzt_ms)
@@ -303,8 +313,15 @@ def abrufen(env=None, client=None, logbuch=None, jetzt=None):
                 "Schlüssel ungültig (HTTP 401)." if ex.code == 401 else f"Binance lehnt ab (HTTP {ex.code})."}
     except (*BF.NETZFEHLER, KeyError, ValueError) as ex:
         return {"hinweis": f"Binance nicht erreichbar: {type(ex).__name__}"}
-    erg = {"modus": "ECHTGELD" if cfg["echtgeld"] else "TESTNETZ", "zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    erg = {"modus": "ECHTGELD" if cfg["echtgeld"] else "TESTNETZ", "zeit": konto_zeit,
            **auswerten(buch, konto, positionen, jetzt)}
+    # Ein erfolgreicher Kontoabruf bestätigt nicht die separat nachgeladene Gewinnhistorie.
+    # Nur nachfuehren setzt abgerufen_bis; ein Ausfall darf den Stand nicht vorschieben.
+    bis = buch.get("abgerufen_bis") or 0
+    erg["aktualitaet"] = {
+        "einkommen_bis": datetime.fromtimestamp(bis / 1000, timezone.utc).isoformat(timespec="seconds") if bis else None,
+        "einkommen_aktuell": bool(bis and 0 <= jetzt_ms - bis < EINKOMMEN_ALLE_MS),
+    }
     if lb.get("_warnung"):
         erg["warnung"] = lb["_warnung"]
     return erg
@@ -334,6 +351,8 @@ def text(p):
         t += f"\n⚠️ Nicht in USDT umrechenbar und darum NICHT enthalten: {', '.join(p['nicht_umgerechnet'])}"
     if p.get("warnung"):
         t += "\n⚠️ " + p["warnung"]
+    if p.get("aktualitaet", {}).get("einkommen_aktuell") is False:
+        t += "\n⚠️ Gewinnhistorie nicht aktuell — Gewinn/Verlust unvollständig; Kontostand separat abgerufen."
     for x in p["positionen"]:
         t += (f"\n{x['seite']} {x['menge']:g} {x['symbol']} · Einstieg {x['einstieg']:,.2f} · jetzt {x['mark']:,.2f} · "
               f"{z(x['gewinn'])} USDT" + (f" ({x['gewinn_prozent'] * 100:+.1f} % auf das Pfand)" if x["gewinn_prozent"] is not None else "")).replace(",", "'")
