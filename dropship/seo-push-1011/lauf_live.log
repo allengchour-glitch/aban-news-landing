@@ -1,0 +1,63 @@
+ok         S7 collection ft-maske
+ok         S1 collection kostueme-fasnacht
+ok         S1 collection kostueme-ch-lager
+ok         S3 collection ft-kinderkostuem
+ok         S3 collection ft-damenkostuem
+ok         S3 collection ft-herrenkostuem
+ok         S4 collection modellbau
+ok         S5 collection schmuckaufbewahrung
+ok         S5 collection velohelme-kinder
+ok         S6 collection ft-unisexkostuem
+ok         S6 collection ft-peruecke
+ok         S6 collection ft-kostuem-hut
+ok         S6 collection ft-kostuem-accessoire
+ok         S8 article powerbank-kaufen-2026-ratgeber
+ok         S8 article wireless-charger-3in1-ratgeber
+ok         S8 article halskette-richtig-wahlen-lange-material-stil-kombinieren
+ok         S8 article gaming-zubehor-guide-controller-headset-mehr
+ok         S8 article geschenke-fuer-kaffeeliebhaber
+ok         S8 article haustier-gadgets-smarte-helfer-fur-hund-katze
+ok         S9 collection tier-maentel-jacken
+ok         S9 collection tier-maentel-winter
+ok         S9 collection kerzen-kerzenhalter
+ok         S11 product polyester-aufbewahrungstasche-460096
+ok         S11 product aromatherapie-duftol-fur-luftbefeuchter-640556
+ok         S11 product universal-fernbedienung-fur-smartphones-386944
+ok         S11 product langer-damenmantel-im-kaschmir-look-600600
+ok         S11 product smarte-outdoor-kamera-mit-akku-758528
+ok         S11 product outdoor-aqua-schuhe-fur-damen-und-herren-896512
+ok         S12 collection premium-geschenke
+ok         S12 article geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass
+GLEICH      S7 ft-maske
+ft-maske: 57 Produkte (erwartet 45 bis 60)
+Masken-Link in S1: ja (ft-maske hat die neue Regel, 57 Produkte)
+GLEICH      S1 kostueme-fasnacht
+GLEICH      S1 kostueme-ch-lager
+GLEICH      S3 ft-kinderkostuem
+GLEICH      S3 ft-damenkostuem
+GLEICH      S3 ft-herrenkostuem
+GLEICH      S4 modellbau
+GLEICH      S5 schmuckaufbewahrung
+GLEICH      S5 velohelme-kinder
+GLEICH      S6 ft-unisexkostuem
+GLEICH      S6 ft-peruecke
+GLEICH      S6 ft-kostuem-hut
+GLEICH      S6 ft-kostuem-accessoire
+GLEICH      S8 powerbank-kaufen-2026-ratgeber
+GLEICH      S8 wireless-charger-3in1-ratgeber
+GLEICH      S8 halskette-richtig-wahlen-lange-material-stil-kombinieren
+GLEICH      S8 gaming-zubehor-guide-controller-headset-mehr
+GLEICH      S8 geschenke-fuer-kaffeeliebhaber
+GLEICH      S8 haustier-gadgets-smarte-helfer-fur-hund-katze
+GLEICH      S9 tier-maentel-jacken
+GLEICH      S9 tier-maentel-winter
+GLEICH      S9 kerzen-kerzenhalter
+GLEICH      S11 polyester-aufbewahrungstasche-460096
+GLEICH      S11 aromatherapie-duftol-fur-luftbefeuchter-640556
+GLEICH      S11 universal-fernbedienung-fur-smartphones-386944
+GLEICH      S11 langer-damenmantel-im-kaschmir-look-600600
+GLEICH      S11 smarte-outdoor-kamera-mit-akku-758528
+GLEICH      S11 outdoor-aqua-schuhe-fur-damen-und-herren-896512
+GLEICH      S12 premium-geschenke
+GLEICH      S12 geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass
+{"exit":0,"grund":null,"geschrieben":30}
