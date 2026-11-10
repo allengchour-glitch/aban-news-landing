@@ -37,15 +37,21 @@ export async function onRequestGet(context) {
 
   let session;
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
+  let timeout;
+  const deadline = new Promise((_, reject) => {
+    timeout = setTimeout(() => {
+      controller.abort();
+      reject(new Error("Zahlungsprüfung abgelaufen"));
+    }, 8000);
+  });
   try {
-    const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${id}`, {
+    const r = await Promise.race([fetch(`https://api.stripe.com/v1/checkout/sessions/${id}`, {
       headers: { Authorization: `Bearer ${key}` },
       signal: controller.signal,
-    });
+    }), deadline]);
     if (r.status === 404) return json({ error: "Zahlung nicht gefunden." }, 404);
     if (!r.ok) return json({ error: "Zahlung derzeit nicht prüfbar. Bitte später erneut prüfen." }, 503);
-    session = await r.json();
+    session = await Promise.race([r.json(), deadline]);
     if (!session || typeof session !== "object" || typeof session.payment_status !== "string") {
       return json({ error: "Verifizierung fehlgeschlagen." }, 502);
     }
