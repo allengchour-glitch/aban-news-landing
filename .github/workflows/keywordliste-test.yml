@@ -1,0 +1,67 @@
+name: Keywordliste Test
+
+# Offline-Tests (kein Shop, kein Schlüssel, keine Messwerte):
+#  1. Wortlogik, Datenbau und Ideen-Ernte (Selbsttests) samt Mutationsprobe,
+#  2. die Seite «Suchanfragen und Keywordliste» mit einer Attrappe der Dashboard-Laufzeit in Chromium (synthetische Daten),
+#  3. die erweiterte SEO-Monitor-Vorlage mit synthetischem Datenstand.
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
+on:
+  pull_request:
+    paths:
+      - 'dropship/keywordliste-1011/**'
+      - 'tools/buero/seo_monitor.html'
+      - '.github/workflows/keywordliste-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: keywordliste-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/keywordliste-1011
+          sparse-checkout-cone-mode: false
+      - name: Selbsttests (Wortlogik, Datenbau, Ideen-Ernte)
+        run: |
+          python3 -I -B dropship/keywordliste-1011/bauen.py --selbsttest
+          python3 -I -B dropship/keywordliste-1011/suggest.py --selbsttest
+      - name: Mutationsprobe (jede Änderung muss einen Selbsttest scheitern lassen)
+        run: python3 -I -B dropship/keywordliste-1011/mutationsprobe.py
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/keywordliste-1011
+            tools/buero/seo_monitor.html
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # npm in einen Unterordner auslagern: hält den Repo-Root sauber.
+      - name: Playwright (Chromium)
+        run: |
+          mkdir -p .pw && cd .pw
+          npm init -y >/dev/null 2>&1 || true
+          npm i playwright@1.63.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+      - name: Test der Seite (Attrappe der Dashboard-Laufzeit, synthetische Daten)
+        run: node dropship/keywordliste-1011/seite_test.mjs
+        env:
+          NODE_PATH: ${{ github.workspace }}/.pw/node_modules
+      - name: Test der erweiterten SEO-Monitor-Vorlage
+        run: node dropship/keywordliste-1011/monitor_test.mjs
+        env:
+          NODE_PATH: ${{ github.workspace }}/.pw/node_modules
