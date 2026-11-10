@@ -5,7 +5,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { platzierungFuer, entscheide, entscheideExplizit, platzierungsName, alteZuordnung, produktInfoAusAntwort, neuerPlatzierungsCache, platzierungenFuerDateien, druckbare, EINZEL_TYPEN, MEHRLAGEN_TYPEN } from './printful_platzierung.mjs';
 let ok = 0, fehl = 0;
-const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
+const wert = (a) => { if (typeof a !== 'function') return a; try { return a(); } catch (e) { return { Ausnahme: String((e && e.message) || e).slice(0, 200) }; } };
+const ist = (n, a0, b) => { const a = wert(a0); const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
 const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 const lade = (rel) => JSON.parse(readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8'));
 
@@ -216,7 +217,7 @@ wahr('explizit: der Grund nennt die Dateiliste des Produkts', /steht nicht in de
 { // Cache: die volle Antwort geht mit (Optionen, Techniken), nur bei brauchbarer Antwort
   const c = neuerPlatzierungsCache(async () => ({ status: 200, result: { product: { ...MIT[19].produkt, options: [{ id: 'x' }] } } }), { pause: async () => {} });
   const a = await c(1);
-  ist('Cache liefert die volle Antwort (roh.product.options) mit', [a.art, a.roh.product.options], ['ok', [{ id: 'x' }]]);
+  ist('Cache liefert die volle Antwort (roh.product.options) mit', () => [a.art, a.roh.product.options], ['ok', [{ id: 'x' }]]);
   const c2 = neuerPlatzierungsCache(async () => ({ status: 404, result: null }), { pause: async () => {} });
   ist('Cache: bei 404 gibt es keine Rohdaten', (await c2(1)).roh, null);
 }

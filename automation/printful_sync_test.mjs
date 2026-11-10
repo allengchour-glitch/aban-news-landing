@@ -238,7 +238,8 @@ if (process.argv[2] === '--szenario') {
 // ═════════════════════════════════════════════════════════════ PRÜFER
 let ok = 0, fehl = 0, letzter = null;
 // PS_DEBUG=1 zeigt bei einem Fehlschlag zusätzlich das Protokoll des zuletzt gefahrenen Szenarios (Log, Warnungen, Fehler, Telegram, Tags): Fehlersuche, nicht Teil der Prüfung
-const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a).slice(0, 700)}\n   soll: ${JSON.stringify(b).slice(0, 700)}`); if (process.env.PS_DEBUG && letzter) console.log('   [letztes Szenario]', JSON.stringify({ log: letzter.prot.log, warn: letzter.prot.warn, err: letzter.prot.err, tg: letzter.prot.tg, tags: letzter.prot.tags, posts: letzter.prot.posts.length, confirms: letzter.prot.confirms.length }).slice(0, 1800)); } };
+const wert = (a) => { if (typeof a !== 'function') return a; try { return a(); } catch (e) { return { Ausnahme: String((e && e.message) || e).slice(0, 200) }; } };
+const ist = (n, a0, b) => { const a = wert(a0); const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${String(JSON.stringify(a)).slice(0, 700)}\n   soll: ${String(JSON.stringify(b)).slice(0, 700)}`); if (process.env.PS_DEBUG && letzter) console.log('   [letztes Szenario]', JSON.stringify({ log: letzter.prot.log, warn: letzter.prot.warn, err: letzter.prot.err, tg: letzter.prot.tg, tags: letzter.prot.tags, posts: letzter.prot.posts.length, confirms: letzter.prot.confirms.length }).slice(0, 1800)); } };
 const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 
 const lauf = (sz, env = {}) => {
@@ -351,7 +352,7 @@ for (const [name, sz, soll] of [
 {
   const sechs = (extra = {}) => sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', V('v')), A('🖼️ Druckdatei (back)', V('h')), A('🖼️ Druckdatei (sleeve_left)', V('a')), karte6(['front', 'back', 'sleeve_left'], { dt: { front: 'default' } })] })], extra);
   const e = lauf(sechs());
-  ist('v6 T-Shirt vorne+hinten+Ärmel: files[] mit den ECHTEN Typen default/back/sleeve_left und ihren URLs, bestätigt', [e.prot.posts[0].body.items[0].files, bestaetigt(e), hatReview(e)], [[{ type: 'default', url: V('v') }, { type: 'back', url: V('h') }, { type: 'sleeve_left', url: V('a') }], true, false]);
+  ist('v6 T-Shirt vorne+hinten+Ärmel: files[] mit den ECHTEN Typen default/back/sleeve_left und ihren URLs, bestätigt', () => [e.prot.posts[0].body.items[0].files, bestaetigt(e), hatReview(e)], [[{ type: 'default', url: V('v') }, { type: 'back', url: V('h') }, { type: 'sleeve_left', url: V('a') }], true, false]);
   const o = lauf(sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (sleeve_left)', V('a')), karte6(['sleeve_left'])] })]));
   ist('v6 nur linker Ärmel: «sleeve_left» (der alte Weg hätte «front» daraus gemacht und den Ärmel auf die Brust gedruckt)', [o.prot.posts[0].body.items[0].files.map((f) => f.type), bestaetigt(o)], [['sleeve_left'], true]);
   const u = lauf(sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (hood)', V('k')), karte6(['hood'])] })], { telegram: true }));
@@ -400,7 +401,7 @@ for (const [name, sz, soll] of [
   const eigen = lauf(sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (Vorne)', 'https://bilder.luxestyle.ch/x.png')] })], { telegram: true, env: { PRINTFUL_DATEI_HOSTS: 'bilder.luxestyle.ch' } }));
   ist('PRINTFUL_DATEI_HOSTS erweitert die Liste', [eigen.prot.posts.length, hatReview(eigen)], [1, false]);
   const meta = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)] }));
-  ist('FERTIG-Produkt (Tag printful_personalized_product, KEIN wunschdesign) mit Metafeld custom.print_file (beliebiger https-Host): Datei gilt als Vorderseite, bestätigt', [meta.prot.posts[0].body.items[0].files, bestaetigt(meta)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], true]);
+  ist('FERTIG-Produkt (Tag printful_personalized_product, KEIN wunschdesign) mit Metafeld custom.print_file (beliebiger https-Host): Datei gilt als Vorderseite, bestätigt', () => [meta.prot.posts[0].body.items[0].files, bestaetigt(meta)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], true]);
   // Fund 22 (Gegenprüfung P1): ein EDITOR-Produkt (wunschdesign) druckt nie das Muster des Besitzers aus dem Metafeld
   const metaEd = lauf(sz1([zeile({ customAttributes: [], product: { productType: 'Poster', tags: ['wunschdesign', 'printful_personalized_product'], metafield: { value: 'https://bilder.luxestyle.ch/motiv.png' } }, sku: '9000001_8948', variant: { sku: '9000001_8948' } })], { vid: 8948, variant: [antwort(268)], telegram: true }));
   ist('EDITOR-Produkt (wunschdesign) ohne Design der Kundin, aber mit Metafeld custom.print_file: KEIN Auftrag (das Muster des Besitzers wird nie gedruckt), Befund «keine-druckdatei», eine 🔴-Meldung', [metaEd.prot.posts.length, metaEd.prot.confirms.length, tags(metaEd).includes('printful-review-keine-druckdatei'), tgAnzahl(metaEd), metaEd.prot.dateien.length], [0, 0, true, 1, 0]);
@@ -555,7 +556,7 @@ for (const [name, sz, soll] of [
   const nichtPod = (n) => knoten([zeile({ product: { productType: 'x', tags: ['cj'], metafield: null }, customAttributes: [] })], { id: 'gid://shopify/Order/' + n, name: '#N' + n });
   const pod = (n) => knoten([zeile()], { id: 'gid://shopify/Order/' + n, name: '#P' + n });
   const e = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: [{ orders: [nichtPod(1), nichtPod(2), nichtPod(3)] }, { orders: [nichtPod(4), pod(5)] }], env: { MAX: '1' } });
-  ist('Drei Nicht-POD-Bestellungen auf Seite 1, die POD-Bestellung auf Seite 2 (Codex-Fund: wurde bei MAX=1 nie gesehen): sie wird bearbeitet, die Abfrage blättert mit dem Cursor', [e.prot.posts.length, e.prot.posts[0].body.external_id, e.prot.shop.map((s) => s.c)], [1, 'LXP5', [null, 'c1']]);
+  ist('Drei Nicht-POD-Bestellungen auf Seite 1, die POD-Bestellung auf Seite 2 (Codex-Fund: wurde bei MAX=1 nie gesehen): sie wird bearbeitet, die Abfrage blättert mit dem Cursor', () => [e.prot.posts.length, e.prot.posts[0].body.external_id, e.prot.shop.map((s) => s.c)], [1, 'LXP5', [null, 'c1']]);
   const m = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: [{ orders: [pod(1), pod(2)] }, { orders: [pod(3)] }], env: { MAX: '2' } });
   ist('MAX=2: nach zwei POD-Bestellungen wird nicht weiter geblättert und keine dritte bearbeitet', [m.prot.posts.map((p) => p.body.external_id), m.prot.shop.length], [['LXP1', 'LXP2'], 1]);
   const f = lauf({ vid: 4025, variant: [{ kat: 71 }], shopSeiten: [{ orders: [nichtPod(1)] }], orders: [] });
@@ -629,7 +630,7 @@ for (const [name, sz, soll] of [
 // Fund 9 (GL2): entfernte und erstattete Einheiten werden nicht gedruckt
 {
   const teil = lauf(sz1([zeile({ quantity: 3, currentQuantity: 2, discountedTotalSet: { shopMoney: { amount: '89.70', currencyCode: 'CHF' } } })]));
-  ist('Drei bestellt, eine nachträglich entfernt (currentQuantity 2): an Printful gehen 2', teil.prot.posts[0].body.items[0].quantity, 2);
+  ist('Drei bestellt, eine nachträglich entfernt (currentQuantity 2): an Printful gehen 2', () => teil.prot.posts[0].body.items[0].quantity, 2);
   const weg = lauf(sz1([zeile({ quantity: 1, currentQuantity: 0 })], { telegram: true }));
   ist('Einzige Editor-Position vollständig entfernt (currentQuantity 0): die Bestellung ist kein Kandidat mehr (Log «Keine offenen POD-Bestellungen»), kein Printful-Aufruf, keine Tags, keine Meldung, Exit 0', [weg.prot.posts.length, weg.prot.pf.length, weg.prot.tags.length, weg.prot.tg.length, weg.prot.log.some((l) => /Keine offenen POD-Bestellungen/.test(l)), weg.prot.exitCode], [0, 0, 0, 0, true, 0]);
   const halb = lauf(sz1([zeile({ currentQuantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9005', title: 'Tasse' })]));
@@ -1172,7 +1173,7 @@ for (const [name, sz, soll] of [
   const e = lauf(sz1([zeile()], { order: { email: 'kundin@example.ch', shippingAddress: vollAdresse } }));
   ist('Fund 13 Feldtreue: der Empfänger an Printful trägt jedes Adressfeld und die E-Mail aus der Bestellung', e.prot.posts[0] && e.prot.posts[0].body.recipient, { name: 'Max Muster', address1: 'Weg 1', address2: '2. Stock', city: 'Basel', state_code: 'BS', country_code: 'CH', zip: '4000', email: 'kundin@example.ch', phone: '+41 61 000 00 00' });
   const ohneName = lauf(sz1([zeile()], { order: { shippingAddress: { ...vollAdresse, name: undefined } } }));
-  ist('Fund 13 Feldtreue: ohne «name» setzt sich der Empfängername aus Vor- und Nachname zusammen', ohneName.prot.posts[0] && ohneName.prot.posts[0].body.recipient.name, 'Max Muster');
+  ist('Fund 13 Feldtreue: ohne «name» setzt sich der Empfängername aus Vor- und Nachname zusammen', () => ohneName.prot.posts[0].body.recipient.name, 'Max Muster');
 
   const viele = lauf(sz1([zeile()], { order: { lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: zeile() }] } }, telegram: true }));
   ist('Fund 13 Feldtreue: mehr Positionen, als eine Abfrage liefert (pageInfo.hasNextPage der Positionsliste) → harter Befund «positionen-viele», kein Auftrag', [viele.prot.posts.length, tags(viele).includes('printful-review-positionen-viele')], [0, true]);

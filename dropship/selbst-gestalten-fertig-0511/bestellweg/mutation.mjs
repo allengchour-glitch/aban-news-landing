@@ -18,7 +18,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const REPO = fileURLToPath(new URL('../../..', import.meta.url));
-const DATEIEN = [
+export const DATEIEN = [
   'automation/printful_sync.mjs', 'automation/printful_sync_test.mjs',
   'automation/lib/printful_platzierung.mjs', 'automation/lib/printful_platzierung_test.mjs', 'automation/lib/printful_bestellweg.mjs', 'automation/lib/printful_bestellweg_test.mjs',
   'automation/lib/shopify_secret.mjs',
