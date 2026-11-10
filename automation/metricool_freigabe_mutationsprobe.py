@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 30 Stellen und prüft, dass der Test jedes Mal rot wird.
-Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 30 | erkannt: 30 | überlebt/nicht anwendbar: 0»)"""
+"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 48 Stellen und prüft, dass der Test jedes Mal rot wird.
+Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 48 | erkannt: 48 | überlebt/nicht anwendbar: 0»)"""
 import os, shutil, subprocess, sys, tempfile
 SRC = os.path.dirname(os.path.abspath(__file__))
 W = tempfile.mkdtemp(prefix='mfmut-')
@@ -34,11 +34,25 @@ M = [
  ("        if p.get('media') != erwartet['media']:", "        if False:"),
  ("        if not (jetzt - timedelta(hours=rueckblick_h) <= z <= jetzt - timedelta(minutes=45)):\n            continue", "        if z > jetzt:\n            continue"),
  ("            if not medien_ok(url):", "            if False:"),
- ("            if not any('Kopie' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]", "            if e['alt'] - jetzt <= timedelta(hours=stunden)]"),
+ ("            if not any('Kopie' in p or 'angehalten' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]", "            if e['alt'] - jetzt <= timedelta(hours=stunden)]"),
  ("e['alt'] - jetzt <= timedelta(hours=stunden)]", "e['alt'] - jetzt <= timedelta(days=99)]"),
  ("    if braucht_video and medien and not all(ist_video(u) for u in medien):", "    if False:"),
  ("        if not pd.get('boardId') or not pd.get('pinTitle'):", "        if False:"),
  ("    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 100:", "    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 1000:"),
+ ('        grund = halte_grund(p, halten)\n        if grund is not None:', '        grund = halte_grund(p, halten)\n        if False:'),
+ ("    for schluessel in (str(post['uuid']).lower(), str(post['id']).lower()):", "    for schluessel in (str(post['uuid']).lower(),):"),
+ ("    for schluessel in (str(post['uuid']).lower(), str(post['id']).lower()):", "    for schluessel in (str(post['uuid']), str(post['id']).lower()):"),
+ ("        out[teile[0].strip().lower()] = grund.strip() or 'ohne Grund'", "        out[teile[0].strip()] = grund.strip() or 'ohne Grund'"),
+ ("        out[teile[0].strip().lower()] = grund.strip() or 'ohne Grund'", '        out[teile[0].strip().lower()] = grund.strip()'),
+ ("        kopf, _, grund = zeile_.partition('#')", "        kopf, _, grund = zeile_.partition('//')"),
+ ('        if not teile:\n            continue\n        out[', '        if False:\n            continue\n        out['),
+ (' and halte_grund(p, halten) is None}', '}'),
+ ("if not any('Kopie' in p or 'angehalten' in p for p in e['probleme'])", "if not any('Kopie' in p for p in e['probleme'])"),
+ ('    halten = halten or {}\n', '    halten = {}\n'),
+ ("        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())", '        halten = {}'),
+ ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),
+ ('    except FileNotFoundError:\n        halten = {}', '    except FileNotFoundError:\n        raise'),
+ ("            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)", "            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt)')"),
 ]
 src = open(f'{SRC}/metricool_freigabe.py', encoding='utf-8').read()
 erkannt = 0; gleichwertig = []; ueberlebt = []
