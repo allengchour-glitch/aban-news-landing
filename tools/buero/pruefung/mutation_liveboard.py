@@ -53,6 +53,17 @@ MUTANTEN = [
      "if(previous){userDist=previous.dist;cam.go(previous,!!cfg.reduced);}", ""),
     ("uhr-leer", "3d/kb3d-buero.js",
      "var ents = (lastState && lastState.ents) || [], zeit = swissClock(),", "var ents = (lastState && lastState.ents) || [], zeit = '',"),
+    ("fusszeile-ueberlappt-letzte-zeile", "3d/kb3d-tex.js",
+     "y0 = 216, zh = 36, max = 7;", "y0 = 216, zh = 39, max = 7;"),
+    ("ueberlauf-hinweis-nicht-auf-der-fusszeile", "3d/kb3d-tex.js",
+     "' weitere Zeilen im Raum', 976, 492);", "' weitere Zeilen im Raum', 976, 511);"),
+    ("zentral-schrift-im-verdeckten-rand", "3d/kb3d-tex.js",
+     "m && m.zeit, farben, 28);", "m && m.zeit, farben, 0);"),
+    ("zentral-kacheln-im-verdeckten-rand", "3d/kb3d-tex.js",
+     "tw = 209, th = 168, gap = 12, x0 = 76, y0 = 120;", "tw = 221, th = 168, gap = 14, x0 = 48, y0 = 120;"),
+    ("zentral-kachelname-wird-abgekuerzt", "3d/kb3d-tex.js",
+     "g.font = 'bold 21px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 24), cx + 16, cy + 36);",
+     "g.font = 'bold 23px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 30), cx + 16, cy + 36);"),
 ]
 
 

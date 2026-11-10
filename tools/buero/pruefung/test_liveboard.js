@@ -116,6 +116,51 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   const leer = await p.evaluate(() => { const rec = [], orig = CanvasRenderingContext2D.prototype.fillText; CanvasRenderingContext2D.prototype.fillText = function (t) { rec.push(String(t)); return orig.apply(this, arguments); }; try { window.KB3D.tex.liveboard(null); window.KB3D.tex.liveboardUebersicht(null); } finally { CanvasRenderingContext2D.prototype.fillText = orig; } return rec; });
   ok('ohne Daten steht «Wartet auf …» statt leerer Fläche', leer.some((t) => /Wartet/.test(t)), leer.slice(0, 4));
 
+  // ---------- 4b) Geometrie der Bilder: nichts überlappt, nichts liegt im Randstreifen, den Nachbarwände verdecken ----------
+  const geo = await p.evaluate(() => {
+    const L = window.KB3D.Buero.last, T = window.KB3D.tex, mo = L.liveModelle();
+    function zeichne(fn) {
+      const rec = [], orig = CanvasRenderingContext2D.prototype.fillText;
+      CanvasRenderingContext2D.prototype.fillText = function (t, x, y) {
+        const w = this.measureText(String(t)).width, a = this.textAlign;
+        const l = a === 'right' ? x - w : a === 'center' ? x - w / 2 : x;
+        rec.push({ t: String(t), l: Math.round(l), r: Math.round(l + w), y: Math.round(y) });
+        return orig.apply(this, arguments);
+      };
+      try { fn(); } finally { CanvasRenderingContext2D.prototype.fillText = orig; }
+      return rec;
+    }
+    // genau n Zeilen, unabhängig vom Stand der Daten (fehlende werden mit Platzhaltern aufgefüllt)
+    function mitZeilen(n) {
+      const k = JSON.parse(JSON.stringify(mo['Shop'])); k.zeilen = k.zeilen.slice(0, n);
+      while (k.zeilen.length < n) k.zeilen.push({ name: 'Zusatz ' + k.zeilen.length, state: 'gruen', text: 'Test', frisch: 1 });
+      return k;
+    }
+    const k7 = mitZeilen(7), k9 = mitZeilen(9);
+    // Randstreifen als Pixel: Kacheln und Balken sind keine Texte, ihr Rand muss auch aus dem verdeckten Streifen bleiben
+    const zd = T.liveboardUebersicht(mo.__uebersicht).getContext('2d').getImageData(0, 0, 1024, 512).data;
+    const lum = (x, y) => { const i = (y * 1024 + x) * 4; return zd[i] + zd[i + 1] + zd[i + 2]; };
+    const rand = [];
+    for (let y = 130; y <= 470; y += 20) rand.push({ y, links: Math.abs(lum(58, y) - lum(30, y)), rechts: Math.abs(lum(966, y) - lum(990, y)) });
+    return {
+      sieben: zeichne(() => T.liveboard(k7)), neun: zeichne(() => T.liveboard(k9)), zentral: zeichne(() => T.liveboardUebersicht(mo.__uebersicht)),
+      namen7: k7.zeilen.map((z) => z.name), rand, kachelNamen: mo.__uebersicht.raeume.map((r) => r.titel).concat(['Alle zusammen']),
+    };
+  });
+  const trifft = (r, n) => r.t === n || (r.t.endsWith('…') && n.startsWith(r.t.slice(0, -1)));
+  const fuss7 = geo.sieben.find((r) => r.t.indexOf('Messstand') === 0);
+  const letzterName = geo.sieben.filter((r) => trifft(r, geo.namen7[6])).map((r) => r.y).sort((a, b) => b - a)[0];
+  ok('mit sieben Zeilen steht die Fusszeile klar unter der letzten Zeile (mindestens 24 px unter deren Grundlinie)', !!fuss7 && letzterName != null && fuss7.y - letzterName >= 24, { fuss: fuss7 && fuss7.y, letzterName });
+  ok('mit sieben Zeilen erscheint kein Überlauf-Hinweis', !geo.sieben.some((r) => /weitere Zeilen/.test(r.t)));
+  const fuss9 = geo.neun.find((r) => r.t.indexOf('Messstand') === 0), hinweis = geo.neun.find((r) => /weitere Zeilen im Raum/.test(r.t));
+  ok('mit neun Zeilen steht «+ 2 weitere Zeilen im Raum» rechts auf der Fusszeile, ohne sie zu berühren', !!hinweis && !!fuss9 && /^\+ 2 weitere/.test(hinweis.t) && Math.abs(hinweis.y - fuss9.y) <= 2 && hinweis.l >= fuss9.r + 24 && hinweis.r <= 976, { hinweis, fuss9 });
+  const aussen = geo.zentral.filter((r) => r.l < 64 || r.r > 960);
+  ok('Zentralmonitor: jeder Text liegt innerhalb von 64 bis 960 px (die Nachbarwände verdecken je nach Kamera bis zu 55 px Rand)', geo.zentral.length > 20 && aussen.length === 0, aussen.slice(0, 4));
+  const abgekuerzt = geo.kachelNamen.filter((n) => !geo.zentral.some((r) => r.t === n));
+  ok('Zentralmonitor: alle acht Kachelnamen stehen ausgeschrieben da (keiner mit «…» abgekürzt)', geo.kachelNamen.length === 8 && abgekuerzt.length === 0, abgekuerzt);
+  const unruhig = geo.rand.filter((s) => s.links > 15 || s.rechts > 15);
+  ok('Zentralmonitor: auch Kacheln und Balken bleiben aus dem Randstreifen (Pixel bei x = 58 und x = 966 gleichen dem Hintergrund)', geo.rand.length >= 10 && unruhig.length === 0, unruhig.slice(0, 4));
+
   // ---------- 5) Aktualisieren: nur ändern, was sich ändert ----------
   const retex = await p.evaluate(() => {
     const last = window.KB3D.Buero.last, W = last.W, R = last.R, mo = last.liveModelle();
