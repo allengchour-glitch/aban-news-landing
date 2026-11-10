@@ -8,7 +8,8 @@
  *   - Weisse Schrift bekommt keinen halbtransparenten Schatten mehr (Konstante WEISS_SCHATTEN, Vorgabe false): in Druckdatei, Vorschau und Bühne. GEWOLLTE Änderung der Druckdatei für weissen Text.
  *   - Handy: die Knöpfe «Text | Sticker | Bild» stehen direkt unter der Bühne statt am Ende der Seite.
  *   - Druckprüfung: die durchsichtige Druckdatei («Verbindliche Druckdatei» im Dialog, «Druck-Vorschau anzeigen») liegt auf einem Schachbrett, das zur Schrift passt: ein dunkles, wenn die Datei auf dem
- *     hellen schlecht lesbar wäre (weisse Schrift ist seit 6.4.1 auf dunklem Stoff der Normalfall), sonst das helle wie bisher. Nur die Anzeige; die Datei selbst wird nicht berührt.
+ *     hellen schlecht lesbar wäre (weisse Schrift ist seit 6.4.1 auf dunklem Stoff der Normalfall), sonst das helle wie bisher. Es zählen nur Pixel, hinter denen das Schachbrett sichtbar wird (halbdurchsichtige
+ *     und deckende am Rand einer Fläche), nicht das Innere eines Fotos. Nur die Anzeige; die Datei selbst wird nicht berührt.
  *   - Kleinigkeiten ohne Wirkung auf die Druckdatei: Beschriftung der Druckfläche bleibt im Rahmen, Vorschau ist ein tabpanel, Pfeile und Entf auf den Reitern der Platzierungen gehören dem Reiter,
  *     Schieberwerte folgen den Zahlenfeldern.
  *
@@ -129,6 +130,7 @@
   /** Die zwei Felder des Schachbretts hinter der durchsichtigen Druckdatei in den Prüfabbildungen (Hex), je Grund. Die CSS-Klassen .lsp6-review-print / .lsp6-checker (hell) und .lsp6-review-dunkel / .lsp6-checker-dunkel
    *  tragen dieselben Farben; ein Test hält beides gleich. */
   var PRUEF_GRUND = { hell: ['#ffffff', '#e6e6e6'], dunkel: ['#2b2b2b', '#474747'] };
+  var PRUEF_GRUND_DECKEND = 0.98;                 // ab dieser Deckkraft gilt ein Pixel der Druckdatei als deckend: es zählt für die Wahl nur noch, wenn es an ein durchsichtiges Pixel grenzt (Rand), nicht im Innern einer Fläche
   var PRUEF_GRUND_BREITE = 512;                   // die Druckdatei wird für die Wahl des Grundes in Schritten von höchstens 4 zu 1 auf eine Breite zwischen 128 und 512 px verkleinert (dünne Schrift soll nicht wegfallen)
   var ENTWURF_SCHLUESSEL = 'lspod6:entwurf:';
   var ENTWURF_MAX_ALTER_MS = 7 * 24 * 3600 * 1000;
@@ -680,7 +682,7 @@
   }
 
   /** Grund für die Prüfabbildung einer Druckdatei (Blob): 'hell' oder 'dunkel' (pruefGrund). Die Datei wird dafür nur gelesen, in Schritten von höchstens 4 zu 1 verkleinert (ein Sprung von 1800 auf 48 px
-   *  liess Schrift ab etwa 5 mm Höhe ausfallen, GEMESSEN in Chromium am 10.11.2026) und nie verändert. Jeder Fehler (Datei nicht lesbar, Leinwand verweigert) ergibt 'hell' wie bis 6.4.1; das Ergebnis ist nur Anzeige und beeinflusst weder Upload noch Eigenschaften. */
+   *  liess Schrift ab etwa 5 mm Höhe ausfallen, GEMESSEN in Chromium am 10.11.2026) und nie verändert. Jeder Fehler (Datei nicht lesbar, Leinwand verweigert) und jede Zeitüberschreitung ergibt 'hell' wie bis 6.4.0; das Ergebnis ist nur Anzeige und beeinflusst weder Upload noch Eigenschaften. */
   function druckGrundErmitteln(blob) {
     return new Promise(function (fertig) {
       var url = '';
@@ -689,21 +691,23 @@
       var bild = new Image();   // Blob-Adresse desselben Ursprungs: kein crossOrigin nötig, die Leinwand bleibt lesbar
       bild.onerror = function () { ende('hell'); };
       bild.onload = function () {
-        var wert = 'hell', quelle = bild, zwischen = null;
+        var wert = 'hell', quelle = bild, zwischen = null, cv = null;
         try {
           var bw = bild.naturalWidth || bild.width, bh = bild.naturalHeight || bild.height, w = bw;
           if (!(bw > 0 && bh > 0)) throw new Error('leer');
           do {
             var nw = w > PRUEF_GRUND_BREITE ? Math.ceil(w / 4) : w, nh = Math.max(1, Math.round(nw * bh / bw));
-            var cv = document.createElement('canvas');
+            cv = document.createElement('canvas');
             cv.width = nw; cv.height = nh;
-            cv.getContext('2d').drawImage(quelle, 0, 0, nw, nh);
+            var cx = cv.getContext('2d');
+            cx.imageSmoothingQuality = 'high';   // GEMESSEN in Chromium (172 Muster aus Streifen und Schrift, 4 Dateigrössen): mittlere Abweichung der erkannten Deckung 3,7 statt 8,3 %, im schlimmsten Fall 0,89 bis 1,50 statt 0,49 bis 1,78 des wahren Wertes; Safari und Firefox ungemessen
+            cx.drawImage(quelle, 0, 0, nw, nh);
             if (zwischen) leinwandFreigeben(zwischen);
             zwischen = cv; quelle = cv; w = nw;
           } while (w > PRUEF_GRUND_BREITE);
-          wert = pruefGrund(zwischen.getContext('2d').getImageData(0, 0, zwischen.width, zwischen.height).data);
+          wert = pruefGrund(zwischen.getContext('2d').getImageData(0, 0, zwischen.width, zwischen.height).data, zwischen.width, zwischen.height);
         } catch (x) { wert = 'hell'; }
-        leinwandFreigeben(zwischen);
+        leinwandFreigeben(zwischen); leinwandFreigeben(cv);   // auch die zuletzt angelegte Leinwand, wenn das Zeichnen oder Lesen scheiterte (zwischen ist dann noch die vorherige Stufe oder null)
         ende(wert);
       };
       bild.src = url;
@@ -885,17 +889,28 @@
   }
   /** Grund hinter der durchsichtigen Druckdatei in den Prüfabbildungen: 'dunkel', wenn mehr vom Design (alphagewichtet, Pixel ab Alpha 20 %) auf dem HELLEN Schachbrett schlecht lesbar ist als auf dem dunklen (Kontrastverhältnis unter
    *  KONTRAST_SCHWELLE, gegen das schlechtere der zwei Felder), sonst 'hell' (wie bis 6.4.0; auch bei Gleichstand, leerem Design und gemischtem Design, das auf keinem Grund besser lesbar wird).
-   *  data = RGBA-Pixel der (verkleinerten) Druckdatei. */
-  function pruefGrund(data) {
+   *  data = RGBA-Pixel der (verkleinerten) Druckdatei, breite und hoehe = ihre Grösse. Es zählen nur Pixel, hinter denen das Schachbrett sichtbar wird: halbdurchsichtige (Alpha unter PRUEF_GRUND_DECKEND) und deckende, die oben,
+   *  unten, links oder rechts an ein durchsichtiges Pixel (Alpha unter 20 %) grenzen. Das Innere einer deckenden Fläche (Foto, Produktbild mit Hintergrund) zählt nicht: dahinter sieht man den Grund nie; ausserhalb der Datei gibt es keine
+   *  Nachbarn. Fehlt die Grösse oder passt sie nicht zu data, ist die Lage der Pixel unbekannt und jedes Pixel ab Alpha 20 % zählt (wie in der ersten Fassung von 6.4.1). */
+  function pruefGrund(data, breite, hoehe) {
     var felder = [];   // je Feld des Schachbretts: Grund, Leuchtdichte und die schlecht lesbare Fläche des Designs (alphagewichtet, wie kontrastAnalyse; eine Leuchtdichte je Pixel statt vier)
     ['hell', 'dunkel'].forEach(function (art) {
       PRUEF_GRUND[art].forEach(function (hex) { var c = hexZuRgb(hex); felder.push({ art: art, l: leuchtdichte(c[0], c[1], c[2]), schlecht: 0 }); });
     });
-    for (var i = 0; i + 3 < data.length; i += 4) {
-      var a = data[i + 3] / 255;
-      if (!(a >= 0.2)) continue;   // durchsichtig: kein Design
-      var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);
-      for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l) < KONTRAST_SCHWELLE) felder[k].schlecht += a;
+    var ohneLage = !(breite > 0 && hoehe > 0 && data.length >= breite * hoehe * 4);
+    if (ohneLage) { breite = Math.floor(data.length / 4); hoehe = 1; }
+    var zeile = breite * 4;
+    function frei(j) { return !(data[j] / 255 >= 0.2); }   // j = Index des Alphakanals eines Nachbarn: durchsichtig
+    function randNah(i, x, y) { return (x > 0 && frei(i - 1)) || (x < breite - 1 && frei(i + 7)) || (y > 0 && frei(i - zeile + 3)) || (y < hoehe - 1 && frei(i + zeile + 3)); }
+    for (var y = 0; y < hoehe; y++) {
+      for (var x = 0; x < breite; x++) {
+        var i = y * zeile + x * 4;
+        var a = data[i + 3] / 255;
+        if (!(a >= 0.2)) continue;   // durchsichtig: kein Design
+        if (!ohneLage && a >= PRUEF_GRUND_DECKEND && !randNah(i, x, y)) continue;   // deckend und rundum Design: der Grund bleibt dahinter unsichtbar
+        var l = leuchtdichte(data[i], data[i + 1], data[i + 2]);
+        for (var k = 0; k < felder.length; k++) if (kontrastVerhaeltnis(l, felder[k].l) < KONTRAST_SCHWELLE) felder[k].schlecht += a;
+      }
     }
     function schlecht(art) {
       return Math.max.apply(null, felder.filter(function (f) { return f.art === art; }).map(function (f) { return f.schlecht; }));

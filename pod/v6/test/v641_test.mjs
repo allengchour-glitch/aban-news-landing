@@ -634,9 +634,9 @@ szenario('kaufvergleich', true, async (b, srv) => {
 // Seit 6.4.1 ist weisse Schrift auf dunklem Stoff der Normalfall. Die Abbildungen «Verbindliche Druckdatei» (Dialog «Druckvorschau prüfen») und «Druck-Vorschau anzeigen» zeigen die durchsichtige Datei auf einem
 // Schachbrett: ein helles reicht für dunkle Schrift, für weisse (Kontrast 1,0 bis 1,3 zu 1) nicht. Gemessen wird am GERENDERTEN Bild (Screenshot des Elements, das den Grund malt), nicht am CSS:
 // Maske und Farbe der deckenden Pixel aus der Druckdatei, die zwei Farben des Schachbretts aus dem Screenshot (dort, wo die Datei durchsichtig ist), Kontrast nach WCAG.
-async function lesbarkeit(p, grundSel, bildSel) {
+async function lesbarkeit(p, grundSel, bildSel, ab = 0) {   // ab: nur die Zeilen ab diesem Anteil der Höhe (von oben) zählen für die deckenden Pixel (z. B. 0,6: nur die Schrift unter einem Foto)
   const png = (await p.locator(grundSel).screenshot()).toString('base64');
-  return p.evaluate(async ([b64, bildSel, grundSel]) => {
+  return p.evaluate(async ([b64, bildSel, grundSel, ab]) => {
     const lum = (r, g, b) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
     const kon = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
     const bild = document.querySelector(bildSel), grund = document.querySelector(grundSel);
@@ -654,14 +654,14 @@ async function lesbarkeit(p, grundSel, bildSel) {
     for (let y = rand; y < h - rand; y++) for (let x = rand; x < w - rand; x++) {
       const i = (y * w + x) * 4, a = ad[i + 3];
       if (a === 0) { const k = sd[i] + ',' + sd[i + 1] + ',' + sd[i + 2]; grundFarben.set(k, (grundFarben.get(k) || 0) + 1); }
-      else if (a >= 250) deckend.push(lum(ad[i], ad[i + 1], ad[i + 2]));   // Farbe der Tinte aus der Datei selbst (am Rand schmaler Striche mischt der Browser beim Verkleinern anders als dieses Verkleinern)
+      else if (a >= 250 && y >= h * ab) deckend.push(lum(ad[i], ad[i + 1], ad[i + 2]));   // Farbe der Tinte aus der Datei selbst (am Rand schmaler Striche mischt der Browser beim Verkleinern anders als dieses Verkleinern)
     }
     const farben = [...grundFarben.entries()].sort((u, v) => v[1] - u[1]).slice(0, 2).map(([k]) => k.split(',').map(Number));
     const lg = farben.map((c) => lum(c[0], c[1], c[2]));
     let schlecht = 0, minK = Infinity;
     for (const lt of deckend) { const k = Math.min(...lg.map((l) => kon(lt, l))); if (k < 3) schlecht++; if (k < minK) minK = k; }
     return { deckend: deckend.length, anteilUnlesbar: deckend.length ? schlecht / deckend.length : null, minKontrast: deckend.length ? minK : null, grundFarben: farben.map((c) => c.join(',')), attr: bild.getAttribute('data-review-grund') };
-  }, [png, bildSel, grundSel]);
+  }, [png, bildSel, grundSel, ab]);
 }
 const REVIEW_BILD = 'img[data-review-print]';
 async function reviewOeffnen(p) {
@@ -795,20 +795,222 @@ szenario('druckpruefung', true, async (b, srv) => {
   }
 });
 
-// Die Wahl des Grundes ist nur Anzeige: scheitert das Lesen der Druckdatei (hier: getImageData wirft für die Analyse-Leinwand, 450 px breit bei der 1800-px-Datei der Vorderseite von Modell 71), gilt der helle Grund
-// wie bis 6.4.0, es gibt keinen Seitenfehler, und die Bestellung geht ganz normal bis in den Warenkorb.
+// ── Druckprüfung, zweite Runde (Gegenlesung 10.11.2026) ────────────────────────────────────────────
+/** Beobachter für die Grundwahl (Init-Skript): erkennt die Leinwände und die Blob-Adresse der Analyse (Bild mit blob:-Adresse, dann Leinwände, die daraus gezeichnet werden), nicht an Zahlen wie 450 px. Erst nach
+ *  «scharf» (window.__spion.scharf = true) aktiv. Betriebsarten: beobachten (nur zählen) · lesen-wirft (getImageData der Analyse-Leinwand wirft) · zeichnen-wirft (drawImage der Analyse wirft) · onerror (das Bild lädt nicht:
+ *  Fehlerereignis) · haengt (das Bild lädt nie) · verzoegert (das Bild lädt erst nach `verz` ms) · url-wirft (der erste createObjectURL nach «scharf» wirft). */
+const analyseSpion = (modus, verz = 0) => String.raw`(() => {
+  const modus = ${JSON.stringify(modus)}, verz = ${Number(verz)};
+  const S = window.__spion = { scharf: false, bildUrls: [], revoked: [], leinwaende: [], schritte: [], geworfen: 0, gelesen: 0, marken: new WeakSet(), urlGeworfen: false };
+  const erz = URL.createObjectURL.bind(URL), weg = URL.revokeObjectURL.bind(URL);
+  URL.createObjectURL = function (b) { if (modus === 'url-wirft' && S.scharf && !S.urlGeworfen) { S.urlGeworfen = true; S.geworfen++; throw new Error('url verboten'); } return erz(b); };
+  URL.revokeObjectURL = function (u) { S.revoked.push(u); return weg(u); };
+  const sd = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+  Object.defineProperty(HTMLImageElement.prototype, 'src', { configurable: true, enumerable: sd.enumerable, get: sd.get, set(v) {
+    if (S.scharf && typeof v === 'string' && v.slice(0, 5) === 'blob:') {
+      S.bildUrls.push(v);
+      if (modus === 'haengt') return;
+      if (modus === 'onerror') { sd.set.call(this, 'data:image/png;base64,AAAA'); return; }
+      if (modus === 'verzoegert') { const bild = this; setTimeout(() => sd.set.call(bild, v), verz); return; }
+    }
+    sd.set.call(this, v);
+  } });
+  const zeichnen = CanvasRenderingContext2D.prototype.drawImage, lesen = CanvasRenderingContext2D.prototype.getImageData;
+  CanvasRenderingContext2D.prototype.drawImage = function (q) {
+    if (S.scharf && ((q instanceof HTMLImageElement && S.bildUrls.includes(q.src)) || S.marken.has(q))) {
+      const cv = this.canvas; S.marken.add(cv); S.leinwaende.push(cv);
+      S.schritte.push([q.naturalWidth || q.width, cv.width, cv.height, this.imageSmoothingQuality]);
+      if (modus === 'zeichnen-wirft') { S.geworfen++; throw new Error('zeichnen verboten'); }
+    }
+    return zeichnen.apply(this, arguments);
+  };
+  CanvasRenderingContext2D.prototype.getImageData = function () {
+    if (S.marken.has(this.canvas)) { S.gelesen++; if (modus === 'lesen-wirft') { S.geworfen++; throw new Error('lesen verboten'); } }
+    return lesen.apply(this, arguments);
+  };
+})();`;
+const spionScharf = (p) => p.evaluate(() => { window.__spion.scharf = true; });
+const spionStand = (p) => p.evaluate(() => { const S = window.__spion; return { bildUrls: S.bildUrls.slice(), revoked: S.revoked.slice(), leinwaende: S.leinwaende.map((c) => [c.width, c.height]), schritte: S.schritte.slice(), geworfen: S.geworfen, gelesen: S.gelesen }; });
+/** Foto als Motiv (Produktfoto mit weissem Hintergrund und dunklem Gegenstand, Daten-URL 200 × 200, als 4000 px grosses Foto gemeldet). */
+const produktFoto = (p) => p.evaluate(() => {
+  const cv = document.createElement('canvas'); cv.width = 200; cv.height = 200;
+  const c = cv.getContext('2d'); c.fillStyle = '#ffffff'; c.fillRect(0, 0, 200, 200);
+  c.fillStyle = '#6a6a6a'; c.beginPath(); c.ellipse(100, 110, 60, 45, 0, 0, Math.PI * 2); c.fill();
+  return window.LSPOD6.editors[0].neuesBild(cv.toDataURL('image/png'), 4000, 4000).id;
+});
+const grundVon = async (p) => ({ attr: await p.locator(REVIEW_BILD).first().getAttribute('data-review-grund'), klasse: await p.locator(REVIEW_BILD).first().getAttribute('class') });
+const hell = (g) => g.attr === 'hell' && !g.klasse.includes('lsp6-review-dunkel');
+
+// Foto plus Beschriftung (Fund der Gegenlesung 10.11.2026, «wichtig»): die deckende Fläche eines Fotos darf den Grund nicht entscheiden, sichtbar wird er nur neben dem Foto, bei der Schrift.
+// 14 cm breites Foto oben (Y = 9 cm), 40 mm hohe Schrift darunter (Y = 33 cm); gemessen wird nur die Schrift (Zeilen ab 60 % der Höhe) am gerenderten Schachbrett.
+szenario('druckpruefung-foto', true, async (b, srv) => {
+  const faelle = [
+    ['dunkles Foto #202020 und weisse Standardschrift darunter (schwarzer Stoff)', { stoff: 1002, foto: '#202020' }, 'dunkel'],
+    ['mittleres dunkles Foto #505050 und weisse Standardschrift darunter (schwarzer Stoff)', { stoff: 1002, foto: '#505050' }, 'dunkel'],
+    ['Produktfoto mit weissem Hintergrund und dunkle Standardschrift darunter (weisser Stoff)', { stoff: 1001, produktfoto: true }, 'hell'],
+    ['helles Foto #f2f2f2 und dunkle Standardschrift darunter (weisser Stoff)', { stoff: 1001, foto: '#f2f2f2' }, 'hell'],
+  ];
+  for (const [name, o, soll] of faelle) {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, o.stoff);
+    if (o.produktfoto) await produktFoto(p); else await motivHinzu(p, o.foto, 4000);
+    await bilderGeladen(p);
+    await feldSetzen(p, 'Breite (cm)', 14); await feldSetzen(p, 'Y (cm)', 9);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40); await feldSetzen(p, 'Y (cm)', 33);
+    const t = await textEbenen(p);
+    pruefe(name + ': Testaufbau: Foto und Text, Text in der Standardfarbe des Stoffs', t.length === 1 && t[0].auto && t[0].color === (o.stoff === 1002 ? '#ffffff' : '#111111'), JSON.stringify(t));
+    await reviewOeffnen(p);
+    lesbarPruefen(name, await lesbarkeit(p, REVIEW_BILD, REVIEW_BILD, 0.6), soll);
+    pruefe(name + ': keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
+// «Druck-Vorschau anzeigen» (älterer Dialog, .lsp6-checker) in beide Richtungen: hell bleibt hell, dunkel wird dunkel, und der Grund folgt der Schrift, nicht dem Stoff (Fund der Gegenlesung 10.11.2026).
+async function vorschauAnzeigen(p) {
+  await p.locator('.lsp6-preview').click();
+  await p.waitForSelector('.lsp6-checker img', { timeout: 15000 });
+  await p.waitForFunction(() => { const i = document.querySelector('.lsp6-checker img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 15000 });
+  await p.evaluate(() => { const c = document.querySelector('.lsp6-checker'), i = c.querySelector('img'); i.setAttribute('data-review-print', 'vorschau'); i.setAttribute('data-review-grund', c.getAttribute('data-grund')); });
+}
+szenario('druckpruefung-vorschau', true, async (b, srv) => {
+  const faelle = [
+    ['schwarzer Stoff, weisse Standardschrift', 1002, null, 'dunkel'],
+    ['weisser Stoff, dunkle Standardschrift', 1001, null, 'hell'],
+    ['weisser Stoff, gewählte weisse Schrift', 1001, '#ffffff', 'dunkel'],
+    ['schwarzer Stoff, gewählte dunkle Schrift', 1002, '#111111', 'hell'],
+  ];
+  for (const [name, stoff, farbe, soll] of faelle) {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page; await sichtWarten(p);
+    await variante(p, stoff);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    if (farbe) await p.locator(`.lsp6-sw[data-c="${farbe}"]`).click();
+    await vorschauAnzeigen(p);
+    lesbarPruefen('Druck-Vorschau anzeigen, ' + name, await lesbarkeit(p, '.lsp6-checker', '.lsp6-checker img'), soll);
+    const klasse = await p.locator('.lsp6-checker').getAttribute('class');
+    pruefe('Druck-Vorschau anzeigen, ' + name + ': Klasse des Schachbretts passt zum Grund «' + soll + '»', klasse.includes('lsp6-checker-dunkel') === (soll === 'dunkel'), klasse);
+    pruefe('Druck-Vorschau anzeigen, ' + name + ': die Meldung «Druckdatei wird erstellt …» ist weg', (await p.locator('.lsp6-status').innerText()) === '');
+    pruefe('Druck-Vorschau anzeigen, ' + name + ': keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
+// Frist und Hängen der Grundwahl: lädt das Bild für die Analyse nie oder zu spät, erscheint der Dialog trotzdem nach der Frist des Kaufs (data-vorschau-zeit = 1000 ms, also 1000 ms), mit dem HELLEN Grund,
+// obwohl die Rechnung «dunkel» ergäbe (weisse Schrift auf schwarzem Stoff); die Bestellung geht weiter, nichts bricht. Beide Dialoge: Druckprüfung beim Kauf und «Druck-Vorschau anzeigen».
+szenario('druckpruefung-frist', true, async (b, srv) => {
+  for (const [name, modus, verz] of [['das Bild lädt nie', 'haengt', 0], ['das Bild lädt erst nach 3 s', 'verzoegert', 3000]]) {
+    // a) Druckprüfung beim Kauf
+    {
+      const s = await oeffnen(b, srv, T71 + '&vzeit=1000', { initSkript: analyseSpion(modus, verz) });
+      const p = s.page; await sichtWarten(p);
+      await variante(p, 1002);
+      await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+      await spionScharf(p);
+      const t0 = Date.now();
+      await p.locator('.lsp6-cta').click();
+      await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 12000 });
+      const dt = Date.now() - t0;
+      await p.waitForFunction(() => { const i = document.querySelector('img[data-review-print]'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 15000 });
+      pruefe(`Kauf, ${name}: der Dialog erscheint nach der Frist (nicht vorher, nicht erst nach Sekunden): ${dt} ms`, dt >= 900 && dt < 3500, dt + ' ms');
+      pruefe(`Kauf, ${name}: Rückfall auf den hellen Grund (die Rechnung ergäbe dunkel)`, hell(await grundVon(p)), JSON.stringify(await grundVon(p)));
+      pruefe(`Kauf, ${name}: die Analyse wurde wirklich angestossen (ein Bild mit blob:-Adresse)`, (await spionStand(p)).bildUrls.length === 1);
+      if (modus === 'verzoegert') {
+        await p.waitForTimeout(Math.max(0, 3300 + 400 - (Date.now() - t0)));
+        const st = await spionStand(p);
+        pruefe(`Kauf, ${name}: das spät eintreffende Ergebnis ändert nichts am Dialog und räumt auf (Blob-Adresse freigegeben, Leinwände freigegeben)`, hell(await grundVon(p)) && st.bildUrls.every((u) => st.revoked.includes(u)) && st.leinwaende.length > 0 && st.leinwaende.every(([w, h]) => w === 0 && h === 0), JSON.stringify(st));
+      }
+      pruefe(`Kauf, ${name}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+      await reviewBestaetigen(p);
+      await p.waitForURL('**/cart', { timeout: 30000 });
+      pruefe(`Kauf, ${name}: die Bestellung geht bis in den Warenkorb`, s.warenkorb.length === 1 && Object.keys(s.warenkorb[0].properties || {}).filter((k) => /Druckdatei|^_pod_karte$/.test(k)).length === 2, JSON.stringify(Object.keys((s.warenkorb[0] || {}).properties || {})));
+      await s.schliessen();
+    }
+    // b) «Druck-Vorschau anzeigen»
+    {
+      const s = await oeffnen(b, srv, T71 + '&vzeit=1000', { initSkript: analyseSpion(modus, verz) });
+      const p = s.page; await sichtWarten(p);
+      await variante(p, 1002);
+      await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+      await spionScharf(p);
+      const t0 = Date.now();
+      await p.locator('.lsp6-preview').click();
+      await p.waitForSelector('.lsp6-checker img', { timeout: 12000 });
+      const dt = Date.now() - t0;
+      pruefe(`Druck-Vorschau anzeigen, ${name}: der Dialog erscheint nach der Frist: ${dt} ms`, dt >= 900 && dt < 3500, dt + ' ms');
+      pruefe(`Druck-Vorschau anzeigen, ${name}: Rückfall auf den hellen Grund`, (await p.locator('.lsp6-checker').getAttribute('data-grund')) === 'hell' && !(await p.locator('.lsp6-checker').getAttribute('class')).includes('lsp6-checker-dunkel'));
+      pruefe(`Druck-Vorschau anzeigen, ${name}: die Meldung «Druckdatei wird erstellt …» ist weg`, (await p.locator('.lsp6-status').innerText()) === '');
+      pruefe(`Druck-Vorschau anzeigen, ${name}: die Analyse wurde wirklich angestossen`, (await spionStand(p)).bildUrls.length === 1);
+      if (modus === 'verzoegert') {
+        await p.waitForTimeout(Math.max(0, 3300 + 400 - (Date.now() - t0)));
+        pruefe(`Druck-Vorschau anzeigen, ${name}: das spät eintreffende Ergebnis ändert nichts`, (await p.locator('.lsp6-checker').getAttribute('data-grund')) === 'hell');
+      }
+      pruefe(`Druck-Vorschau anzeigen, ${name}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+      await s.schliessen();
+    }
+  }
+});
+
+// Fehler- und Aufräumpfade: jeder Fehler der Grundwahl ergibt den hellen Grund (die Rechnung ergäbe dunkel), keinen Seitenfehler und eine Bestellung, die ganz normal weitergeht; jede für die Analyse angelegte Leinwand wird
+// freigegeben (auch die, an der das Zeichnen scheiterte) und die Blob-Adresse zurückgegeben (revokeObjectURL). Der Normalfall dient als Gegenprobe: dunkel, in einem Schritt von höchstens 4 zu 1 auf 128 bis 512 px.
 szenario('druckpruefung-fehler', true, async (b, srv) => {
-  const s = await oeffnen(b, srv, T71, { initSkript: () => { const orig = CanvasRenderingContext2D.prototype.getImageData; CanvasRenderingContext2D.prototype.getImageData = function () { if (this.canvas && this.canvas.width === 450) throw new Error('lesen verboten'); return orig.apply(this, arguments); }; } });
+  const faelle = [
+    ['Normalfall (Gegenprobe)', 'beobachten', 'dunkel', { leinwand: true, url: true }],
+    ['getImageData wirft', 'lesen-wirft', 'hell', { leinwand: true, url: true }],
+    ['drawImage wirft', 'zeichnen-wirft', 'hell', { leinwand: true, url: true }],
+    ['das Bild lädt nicht (onerror)', 'onerror', 'hell', { leinwand: false, url: true }],
+    ['createObjectURL wirft', 'url-wirft', 'hell', { leinwand: false, url: false }],
+  ];
+  for (const [name, modus, soll, hygiene] of faelle) {
+    const s = await oeffnen(b, srv, T71, { initSkript: analyseSpion(modus) });
+    const p = s.page; await sichtWarten(p);
+    await variante(p, 1002);
+    await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+    await spionScharf(p);
+    await reviewOeffnen(p);
+    const g = await grundVon(p), st = await spionStand(p);
+    pruefe(`${name}: Grund «${soll}» (data-review-grund und Klasse)`, g.attr === soll && g.klasse.includes('lsp6-review-dunkel') === (soll === 'dunkel'), JSON.stringify(g));
+    if (modus !== 'beobachten') pruefe(`${name}: der eingebaute Fehler ist wirklich aufgetreten`, modus === 'onerror' ? st.bildUrls.length === 1 : st.geworfen === 1, JSON.stringify(st));
+    if (hygiene.leinwand) pruefe(`${name}: jede für die Analyse angelegte Leinwand ist freigegeben (Breite und Höhe 0)`, st.leinwaende.length > 0 && st.leinwaende.every(([w, h]) => w === 0 && h === 0), JSON.stringify(st.leinwaende));
+    else pruefe(`${name}: es wurde keine Analyse-Leinwand angelegt`, st.leinwaende.length === 0, JSON.stringify(st.leinwaende));
+    if (hygiene.url) pruefe(`${name}: die Blob-Adresse der Analyse ist zurückgegeben (revokeObjectURL)`, st.bildUrls.length === 1 && st.revoked.includes(st.bildUrls[0]), JSON.stringify(st));
+    if (modus === 'beobachten') {
+      pruefe('Normalfall: genau ein Schritt, von der vollen Breite der Datei auf 128 bis 512 px (Verhältnis höchstens 4 zu 1)', st.schritte.length === 1 && st.schritte[0][0] === 1800 && st.schritte[0][1] >= 128 && st.schritte[0][1] <= 512 && st.schritte[0][0] / st.schritte[0][1] <= 4 + 1e-9, JSON.stringify(st.schritte));
+      pruefe('Normalfall: die Analyse-Leinwand wurde gelesen', st.gelesen === 1, String(st.gelesen));
+      pruefe('Normalfall: es wird mit der Glättung «high» verkleinert (in Chromium gemessen genauer als die Vorgabe)', st.schritte.every((x) => x[3] === 'high'), JSON.stringify(st.schritte));
+    }
+    pruefe(`${name}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    if (modus !== 'beobachten') {
+      await reviewBestaetigen(p);
+      await p.waitForURL('**/cart', { timeout: 30000 });
+      pruefe(`${name}: die Bestellung geht bis in den Warenkorb (Druckdatei, Design, _pod_karte und Vorschau hochgeladen)`, s.warenkorb.length === 1 && Object.keys(s.warenkorb[0].properties || {}).filter((k) => /Druckdatei|^_pod_karte$|^_vorschau$/.test(k)).length === 3, JSON.stringify(Object.keys((s.warenkorb[0] || {}).properties || {})));
+      pruefe(`${name}: keine Seitenfehler bis zum Warenkorb`, kein(s), s.fehler.join(' | '));
+    }
+    await s.schliessen();
+  }
+});
+
+// Mehrstufiges Verkleinern: eine Druckdatei über 2048 px Breite (Tasse 19: 2700 px) wird in zwei Schritten von höchstens 4 zu 1 auf 128 bis 512 px gebracht, jeder Schritt aus dem Ergebnis des vorigen; alle Leinwände
+// werden freigegeben. Die gewählte weisse Schrift auf weisser Tasse ergibt den dunklen Grund.
+szenario('druckpruefung-gross', true, async (b, srv) => {
+  const s = await oeffnen(b, srv, T19, { initSkript: analyseSpion('beobachten') });
   const p = s.page; await sichtWarten(p);
-  await variante(p, 1002);
-  await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 40);
+  await textHinzufuegen(p, 'Hallo Welt'); await feldSetzen(p, 'Schrifthöhe (mm)', 20);
+  await p.locator('.lsp6-sw[data-c="#ffffff"]').click();
+  const render = await ed(p, '(ed) => ed.geo().render');
+  await spionScharf(p);
   await reviewOeffnen(p);
-  pruefe('Lesefehler: der Dialog öffnet sich mit dem hellen Grund (wie bis 6.4.0)', (await p.locator(REVIEW_BILD).getAttribute('data-review-grund')) === 'hell' && !(await p.locator(REVIEW_BILD).getAttribute('class')).includes('lsp6-review-dunkel'));
-  pruefe('Lesefehler: keine Seitenfehler', kein(s), s.fehler.join(' | '));
-  await reviewBestaetigen(p);
-  await p.waitForURL('**/cart', { timeout: 30000 });
-  pruefe('Lesefehler: die Bestellung geht bis in den Warenkorb (Druckdatei, Design, _pod_karte und Vorschau hochgeladen)', s.warenkorb.length === 1 && Object.keys(s.warenkorb[0].properties || {}).filter((k) => /Druckdatei|^_pod_karte$|^_vorschau$/.test(k)).length === 3, JSON.stringify(Object.keys((s.warenkorb[0] || {}).properties || {})));
-  pruefe('Lesefehler: keine Seitenfehler bis zum Warenkorb', kein(s), s.fehler.join(' | '));
+  const g = await grundVon(p), st = await spionStand(p);
+  pruefe('Tasse 19: die Druckdatei ist breiter als 2048 px (der Test prüft den Mehrschritt-Pfad)', render.w > 2048, JSON.stringify(render));
+  pruefe('Tasse 19: mindestens zwei Schritte', st.schritte.length >= 2, JSON.stringify(st.schritte));
+  pruefe('Tasse 19: der erste Schritt liest die volle Breite der Datei', st.schritte[0] && st.schritte[0][0] === render.w, JSON.stringify([st.schritte[0], render]));
+  pruefe('Tasse 19: jeder Schritt verkleinert höchstens 4 zu 1 und liest das Ergebnis des vorigen', st.schritte.every(([quelle, ziel], i) => ziel < quelle && quelle / ziel <= 4 + 1e-9 && (i === 0 || quelle === st.schritte[i - 1][1])), JSON.stringify(st.schritte));
+  pruefe('Tasse 19: die letzte Stufe ist 128 bis 512 px breit und hat das Seitenverhältnis der Datei', st.schritte.length > 0 && (() => { const [, w, h] = st.schritte[st.schritte.length - 1]; return w >= 128 && w <= 512 && Math.abs(h / w - render.h / render.w) < 0.02; })(), JSON.stringify(st.schritte));
+  pruefe('Tasse 19: jeder Schritt verkleinert mit der Glättung «high»', st.schritte.length > 0 && st.schritte.every((x) => x[3] === 'high'), JSON.stringify(st.schritte));
+  pruefe('Tasse 19: die gewählte weisse Schrift ergibt den dunklen Grund', g.attr === 'dunkel' && g.klasse.includes('lsp6-review-dunkel'), JSON.stringify(g));
+  pruefe('Tasse 19: alle Leinwände der Analyse sind freigegeben, die Blob-Adresse ist zurückgegeben', st.leinwaende.length === st.schritte.length && st.leinwaende.every(([w, h]) => w === 0 && h === 0) && st.bildUrls.length === 1 && st.revoked.includes(st.bildUrls[0]), JSON.stringify(st));
+  pruefe('Tasse 19: keine Seitenfehler', kein(s), s.fehler.join(' | '));
   await s.schliessen();
 });
 
