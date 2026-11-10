@@ -82,7 +82,7 @@ jobs:
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
-          HANDLES: 'ft-kostuem-accessoire,ft-kostuem-hut,spielzeug-ch-lager,blitzversand-schweiz,kostueme-ch-lager,kostueme-fasnacht'
+          HANDLES: 'ft-kostuem-accessoire,ft-kostuem-hut,spielzeug-ch-lager,blitzversand-schweiz,kostueme-ch-lager,kostueme-fasnacht,ft-kinderkostuem,ft-damenkostuem,ft-herrenkostuem,ft-unisexkostuem,ft-peruecke,ft-maske'
           SCHWELLE: '0.1'
         run: node automation/verfuegbar_zuerst.mjs 2>&1 | tee lauf-lager.txt
 

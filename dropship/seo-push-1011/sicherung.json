@@ -1,0 +1,656 @@
+{
+ "S7:ft-maske": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690577015169",
+  "handle": "ft-maske",
+  "roh": {
+   "handle": "ft-maske",
+   "title": "Masken",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Masken für Fasnacht, Halloween und jede Party – vom gruseligen Klassiker bis zum eleganten Venezianer. Kauf auf Rechnung mit Klarna.</p>",
+   "seoTitle": "Fasnacht- & Party-Masken kaufen | LuxeStyle Schweiz",
+   "seoDescription": "Masken für Fasnacht, Halloween & Party · grosse Auswahl · Lieferung in die ganze Schweiz.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "maske"
+     }
+    ]
+   },
+   "productsCount": 246
+  }
+ },
+ "S1:kostueme-fasnacht": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690562924929",
+  "handle": "kostueme-fasnacht",
+  "roh": {
+   "handle": "kostueme-fasnacht",
+   "title": "Kostüme & Fasnacht",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Kostüme, Perücken, Hüte, Masken und Accessoires für die Fasnacht, die am 11.11. beginnt, für Maskenbälle und Motto-Partys. Vieles kommt ab Schweizer Lager; das genaue Lieferdatum steht auf jeder Produktseite und in der Kasse.</p>",
+   "seoTitle": "Fasnachtskostüme: Kostüme, Perücken & Masken | LuxeStyle",
+   "seoDescription": "Fasnachtskostüme und Zubehör: Kostüme für Erwachsene und Kinder, Perücken, Hüte, Masken, Waggis-Mützen und Accessoires. Versand in die ganze Schweiz.",
+   "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostueme"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-ch-front"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "peruecke"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-hut"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "trachten"
+     }
+    ]
+   },
+   "productsCount": 1807
+  }
+ },
+ "S1:kostueme-ch-lager": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/692604469633",
+  "handle": "kostueme-ch-lager",
+  "roh": {
+   "handle": "kostueme-ch-lager",
+   "title": "Kostüme ab Schweizer Lager 🇨🇭",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Kostüme und Verkleidungen ab Schweizer Lager, solange der Vorrat reicht. Das voraussichtliche Lieferdatum steht beim Artikel und in der Kasse. Perfekt, wenn die Fasnacht (ab 11.11.), ein Maskenball oder die Motto-Party vor der Tür steht. Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt · 30 Tage Rückgabe.</p>",
+   "seoTitle": "Kostüme ab Schweizer Lager kaufen | LuxeStyle",
+   "seoDescription": "Kostüme und Verkleidungen ab Schweizer Lager für Fasnacht, Maskenball und Motto-Party. Voraussichtliches Lieferdatum beim Artikel.",
+   "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-ch-front"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "damenkostuem"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "herrenkostuem"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "unisexkostuem"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kinderkostuem"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "trachten"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-ch-zubehoer"
+     }
+    ]
+   },
+   "productsCount": 1673
+  }
+ },
+ "S3:ft-kinderkostuem": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576884097",
+  "handle": "ft-kinderkostuem",
+  "roh": {
+   "handle": "ft-kinderkostuem",
+   "title": "Kinderkostüme",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Kostüme für Kinder – Tiere, Helden &amp; mehr. Ab Schweizer Lager, meist 2–3 Werktage.</p>",
+   "seoTitle": "🧒 Kinderkostüme | LuxeStyle",
+   "seoDescription": "Kostüme für Kinder – Tiere, Helden & mehr. Ab Schweizer Lager, meist 2–3 Werktage.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kinderkostuem"
+     }
+    ]
+   },
+   "productsCount": 327
+  }
+ },
+ "S3:ft-damenkostuem": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576785793",
+  "handle": "ft-damenkostuem",
+  "roh": {
+   "handle": "ft-damenkostuem",
+   "title": "Damenkostüme",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Kostüme &amp; Verkleidung für Damen – Fasnacht, Halloween &amp; Motto-Partys. CH-Lager, meist in 2–3 Werktagen.</p>",
+   "seoTitle": "👗 Damenkostüme | LuxeStyle",
+   "seoDescription": "Kostüme & Verkleidung für Damen – Fasnacht, Halloween & Motto-Partys. CH-Lager, meist in 2–3 Werktagen.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "damenkostuem"
+     }
+    ]
+   },
+   "productsCount": 308
+  }
+ },
+ "S3:ft-herrenkostuem": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576818561",
+  "handle": "ft-herrenkostuem",
+  "roh": {
+   "handle": "ft-herrenkostuem",
+   "title": "Herrenkostüme",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Kostüme &amp; Verkleidung für Herren – ab Schweizer Lager, meist 2–3 Werktage.</p>",
+   "seoTitle": "🤵 Herrenkostüme | LuxeStyle",
+   "seoDescription": "Kostüme & Verkleidung für Herren – ab Schweizer Lager, meist 2–3 Werktage.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "herrenkostuem"
+     }
+    ]
+   },
+   "productsCount": 268
+  }
+ },
+ "S4:modellbau": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/755392676231",
+  "handle": "modellbau",
+  "roh": {
+   "handle": "modellbau",
+   "title": "Modellbau & Sammelfiguren",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Modellbausätze, Steckmodelle und Sammelfiguren zum Bauen, Bemalen und Ausstellen.</p>",
+   "seoTitle": "Modellbau & Sammelfiguren online kaufen | LuxeStyle CH",
+   "seoDescription": "Modellbau & Sammelfiguren: Bausätze, Steckmodelle und Sammelfiguren. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-modellbau"
+     }
+    ]
+   },
+   "productsCount": 34
+  }
+ },
+ "S5:schmuckaufbewahrung": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/755392577927",
+  "handle": "schmuckaufbewahrung",
+  "roh": {
+   "handle": "schmuckaufbewahrung",
+   "title": "Schmuckaufbewahrung & Displays",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Schmuckkästchen, Schmuckständer, Ringhalter und Reise-Etuis — damit Ketten, Ringe und Ohrringe geordnet bleiben.</p>",
+   "seoTitle": "Schmuckaufbewahrung & Displays online kaufen | LuxeStyle CH",
+   "seoDescription": "Schmuckaufbewahrung & Displays: Schmuckkästchen, Ständer und Reise-Etuis. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-schmuckaufbewahrung"
+     }
+    ]
+   },
+   "productsCount": 135
+  }
+ },
+ "S5:velohelme-kinder": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/756155351431",
+  "handle": "velohelme-kinder",
+  "roh": {
+   "handle": "velohelme-kinder",
+   "title": "Kinderhelme",
+   "sortOrder": "BEST_SELLING",
+   "descriptionHtml": "<p>Kinderhelme aus unserer Auswahl «Velohelme».</p>",
+   "seoTitle": "Kinderhelme online kaufen | LuxeStyle CH",
+   "seoDescription": "Kinderhelme online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-velohelme-kinder"
+     }
+    ]
+   },
+   "productsCount": 17
+  }
+ },
+ "S6:ft-unisexkostuem": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576851329",
+  "handle": "ft-unisexkostuem",
+  "roh": {
+   "handle": "ft-unisexkostuem",
+   "title": "Unisex-Kostüme & Tierkostüme",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Unisex-, Tier- &amp; Fantasiekostüme für alle. Ab Schweizer Lager.</p>",
+   "seoTitle": "🎭 Unisex- & Tierkostüme | LuxeStyle",
+   "seoDescription": "Unisex-, Tier- & Fantasiekostüme für alle. Ab Schweizer Lager.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "unisexkostuem"
+     }
+    ]
+   },
+   "productsCount": 126
+  }
+ },
+ "S6:ft-peruecke": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576949633",
+  "handle": "ft-peruecke",
+  "roh": {
+   "handle": "ft-peruecke",
+   "title": "Perücken",
+   "sortOrder": "CREATED_DESC",
+   "descriptionHtml": "<p>Perücken für jeden Look &amp; jedes Kostüm. Aus dem CH-Lager.</p>",
+   "seoTitle": "💇 Perücken | LuxeStyle",
+   "seoDescription": "Perücken für jeden Look & jedes Kostüm. Aus dem CH-Lager.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "peruecke"
+     }
+    ]
+   },
+   "productsCount": 191
+  }
+ },
+ "S6:ft-kostuem-hut": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690576982401",
+  "handle": "ft-kostuem-hut",
+  "roh": {
+   "handle": "ft-kostuem-hut",
+   "title": "Hüte & Kopfbedeckung",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Zylinder, Cowboy- und Hexenhüte, Helme, Kappen und Plüschmützen für Fasnacht, Halloween und Motto-Partys – von der Waggis-Zipfelmütze bis zum Piratenhut.</p><p>Alle Artikel liegen im Schweizer Lager: Lieferung meist in 2–3 Werktagen. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.</p>",
+   "seoTitle": "Kostümhüte & Kopfbedeckungen kaufen | LuxeStyle Schweiz",
+   "seoDescription": "Kostümhüte & Kopfbedeckungen: Zylinder, Cowboy- und Hexenhüte, Helme & Kappen ab Schweizer Lager, Lieferung meist in 2–3 Werktagen.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-hut"
+     }
+    ]
+   },
+   "productsCount": 167
+  }
+ },
+ "S6:ft-kostuem-accessoire": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/690577047937",
+  "handle": "ft-kostuem-accessoire",
+  "roh": {
+   "handle": "ft-kostuem-accessoire",
+   "title": "Kostüm-Accessoires",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Accessoires &amp; Scherzartikel, die dein Kostüm komplett machen.</p>",
+   "seoTitle": "🧤 Kostüm-Accessoires | LuxeStyle",
+   "seoDescription": "Accessoires & Scherzartikel, die dein Kostüm komplett machen.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kostuem-accessoire"
+     }
+    ]
+   },
+   "productsCount": 297
+  }
+ },
+ "S8:powerbank-kaufen-2026-ratgeber": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001799156097",
+  "handle": "powerbank-kaufen-2026-ratgeber",
+  "roh": {
+   "handle": "powerbank-kaufen-2026-ratgeber",
+   "updatedAt": "2026-10-14T07:14:51Z",
+   "body": "<p>In der heutigen schnelllebigen Welt ist ein leerer Akku am Smartphone oder Tablet mehr als nur eine Unannehmlichkeit – es kann ein echtes Problem darstellen. Ob auf dem Weg zur Arbeit, bei einem Ausflug in die Schweizer Berge oder auf einer Geschäftsreise, eine zuverlässige Powerbank ist 2026 ein unverzichtbarer Begleiter. Doch bei der riesigen Auswahl auf dem Markt stellt sich die Frage: Welche Powerbank ist die richtige für mich? Dieser Kaufratgeber hilft dir, die perfekte Wahl zu treffen, indem wir uns auf die wichtigsten Kriterien konzentrieren: Kapazität, Schnellladefähigkeit und Grösse.</p>\n\n<h2>Die richtige Kapazität wählen: Wie viel mAh brauche ich wirklich?</h2>\n<p>Die Kapazität einer Powerbank wird in Milliamperestunden (mAh) angegeben und ist der wohl wichtigste Faktor. Sie bestimmt, wie oft du deine Geräte aufladen kannst, bevor die Powerbank selbst wieder an die Steckdose muss. Um die ideale Kapazität zu finden, überlege, welche Geräte du wie oft laden möchtest:</p>\n<ul>\n    <li>\n<strong>Für den täglichen Gebrauch (5'000 – 10'000 mAh):</strong> Wenn du nur gelegentlich dein Smartphone über den Tag bringen musst oder eine kleine Reserve für Notfälle wünschst, ist eine Powerbank mit 5'000 bis 10'000 mAh oft ausreichend. Sie lädt ein typisches Smartphone (ca. 3'000-5'000 mAh Akku) ein bis zwei Mal vollständig auf. Diese Modelle sind in der Regel kompakt und leicht.</li>\n    <li>\n<strong>Für Wochenendtrips &amp; Vielnutzer (10'000 – 20'000 mAh):</strong> Bist du oft länger unterwegs, pendeln viel in der Schweiz oder nutzen dein Smartphone intensiv, bietet eine Powerbank dieser Grösse mehr Flexibilität. Sie ermöglicht mehrere Smartphone-Ladungen oder das Aufladen eines Tablets. Sie ist ein guter Kompromiss zwischen Kapazität und Portabilität.</li>\n    <li>\n<strong>Für längere Reisen &amp; mehrere Geräte (20'000 mAh und mehr):</strong> Für lange Reisen, Wanderungen ohne Steckdosenzugang oder wenn du mehrere Geräte (Smartphone, Tablet, Smartwatch, Kopfhörer) gleichzeitig oder mehrmals laden möchten, ist eine Powerbank mit 20'000 mAh oder mehr die beste Wahl. Bedenke, dass diese Modelle grösser und schwerer sind.</li>\n</ul>\n<p>Berechne grob den Akku deines Hauptgeräts und multipliziere ihn mit der gewünschten Anzahl an Ladungen, um eine Vorstellung zu bekommen. Ein kleiner Tipp: Durch Umwandlungsverluste liefern Powerbanks nie 100% ihrer angegebenen Kapazität an das Endgerät. Rechne mit etwa 70-85% der Effizienz.</p>\n\n<h2>Schnellladen verstehen: USB-C PD und Watt für zügiges Aufladen</h2>\n<p>Niemand hat Zeit, stundenlang auf eine volle Akkuladung zu warten. Hier kommt das Schnellladen ins Spiel. Achte beim Kauf auf folgende Standards:</p>\n<ul>\n    <li>\n<strong>USB Power Delivery (USB-C PD):</strong> Dies ist der aktuelle Standard für schnelles Laden, besonders bei neueren Smartphones, Tablets und sogar Laptops. Powerbanks mit USB-C PD können höhere Leistungen (Watt) liefern, was die Ladezeit erheblich verkürzt. Ein Smartphone, das PD unterstützt, lädt mit einer PD-kompatiblen Powerbank deutlich schneller.</li>\n    <li>\n<strong>Watt (W):</strong> Die Wattzahl gibt die Ladeleistung an. Für Smartphones sind 18W bis 30W üblich für schnelles Laden. Tablets profitieren von 30W oder mehr, während Laptops oft 45W, 60W oder sogar 100W benötigen. Überprüfe die maximale Ladeleistung deines Geräts, um die passende Powerbank zu wählen. Eine Powerbank mit 30W PD lädt dein iPhone oder Samsung Galaxy in der Regel sehr zügig auf.</li>\n    <li>\n<strong>Quick Charge (QC):</strong> Ein älterer, aber immer noch verbreiteter Schnellladestandard, primär bei Android-Geräten mit Qualcomm-Prozessoren. Viele Powerbanks unterstützen sowohl PD als auch QC, was die Kompatibilität erhöht.</li>\n</ul>\n<p>Stell sicher, dass sowohl deine Powerbank als auch dein Endgerät den gleichen Schnellladestandard unterstützen und ein entsprechendes Kabel verwendet wird, um die volle Geschwindigkeit zu nutzen. Entdecke auf LuxeStyle weitere <a href=\"/collections/elektronik-laden\">Ladegeräte &amp; Powerbanks</a>, die für schnelle und effiziente Energieversorgung sorgen.</p>\n\n<h2>Grösse und Gewicht: Die perfekte Powerbank für unterwegs und auf Reisen</h2>\n<p>Die Kapazität einer Powerbank korreliert direkt mit ihrer Grösse und ihrem Gewicht. Eine 20'000 mAh Powerbank ist naturgemäss grösser und schwerer als ein Modell mit 5'000 mAh. Überlege, wie du die Powerbank transportieren möchtest:</p>\n<ul>\n    <li>\n<strong>Für die Hosentasche oder kleine Handtasche:</strong> Hier eignen sich kompakte Modelle bis 10'000 mAh. Sie sind leicht und unauffällig.</li>\n    <li><strong>Für den Rucksack oder die\n<p>➡️ <a href=\"/collections/handy-zubehoer\">Handy-Zubehör</a></p></strong></li>\n</ul>\n<!-- lx-produkte -->\n<h2>Passend dazu im Shop</h2><ul>\n<li>\n<a href=\"/products/magnetische-powerbank-weiss-882433\">Magnetische Powerbank Weiss</a> – CHF 33.90</li>\n<li>\n<a href=\"/products/kleine-powerbank-mit-schnellladefunktion-619800\">Kleine Powerbank mit Schnellladefunktion</a> – CHF 14.90</li>\n<li>\n<a href=\"/products/mini-magnetisches-powerbank-fur-schnelles-lade-294976\">Mini Magnetisches Powerbank für schnelles Laden</a> – CHF 14.90</li>\n<li>\n<a href=\"/products/30000-mah-powerbank-mit-lcd-display-9a8211\">30000 mAh Powerbank mit LCD-Display</a> – CHF 21.90</li>\n</ul><p><a href=\"/collections/elektronik-laden\">Mehr dazu im Shop ansehen</a></p>\n<!-- /lx-produkte -->",
+   "body_laenge": 5399,
+   "body_sha256": "24d9636b324df13a2d726b2266b3172294086aa89058fbbffabc246064cc8ac6",
+   "metafield_global_title_tag": null,
+   "metafield_global_description_tag": null,
+   "_tt": null,
+   "_dt": null
+  }
+ },
+ "S8:wireless-charger-3in1-ratgeber": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001547202945",
+  "handle": "wireless-charger-3in1-ratgeber",
+  "roh": {
+   "handle": "wireless-charger-3in1-ratgeber",
+   "updatedAt": "2026-10-09T07:02:43Z",
+   "body": "<p>Drei Geräte, drei Kabel, drei Steckdosen – wer ein iPhone, AirPods und eine Apple Watch besitzt, kennt das Kabelchaos auf dem Nachttisch nur zu gut. Ein <strong>3 in 1 Wireless Charger</strong> löst dieses Problem elegant: Eine einzige Ladestation versorgt alle drei Geräte gleichzeitig, ganz ohne Stecker-Suche im Dunkeln. In diesem Ratgeber erklären wir, worauf es bei der Wahl wirklich ankommt, welche Geräte kompatibel sind und für wen sich die Anschaffung lohnt.</p>\n<h2>Was ist ein 3 in 1 Wireless Charger – und wie funktioniert er?</h2>\n<p>Ein 3 in 1 Wireless Charger ist eine Ladestation mit drei separaten Ladeflächen: eine für das Smartphone, eine für kabellose Kopfhörer und eine dedizierte Fläche für eine Smartwatch. Geladen wird per Induktion nach dem Qi-Standard – das Gerät überträgt Energie über ein Magnetfeld, ohne dass ein physischer Stecker nötig ist. Sie legen deine Geräte einfach ab, und der Ladevorgang startet automatisch.</p>\n<p>Der praktische Vorteil liegt auf der Hand: Statt drei Netzteilen und drei Kabeln brauchst du nur noch eine Steckdose. Das spart Platz auf dem Nachttisch oder dem Schreibtisch und sorgt für ein deutlich aufgeräumteres Bild. Unser <a href=\"/products/3-in-1-kabelloses-ladegerat-fur-apple-gerate-ecf92d\">3-in-1 Wireless Charger für iPhone, AirPods und Apple Watch</a> liefert bis zu 15 W an das Smartphone und ist für CHF 39.90 erhältlich.</p>\n<h2>Kompatibilität: Welche Geräte funktionieren?</h2>\n<p>Die wichtigste Frage vor dem Kauf lautet: Passt die Station zu meinen Geräten? Bei einem 3 in 1 Wireless Charger solltest du auf folgende Punkte achtest:</p>\n<ul>\n<li>\n<strong>iPhone:</strong> Kabelloses Laden wird ab dem iPhone 8 unterstützt. Neuere Modelle (iPhone 12 und später) nutzen zusätzlich die magnetische Ausrichtung, die das Telefon sauber auf der Ladefläche positioniert.</li>\n<li>\n<strong>AirPods:</strong> Voraussetzung ist ein Ladecase mit kabelloser Ladefunktion (Wireless Charging Case). AirPods Pro und die meisten aktuellen AirPods-Generationen erfüllen das.</li>\n<li>\n<strong>Apple Watch:</strong> Hier ist eine dedizierte Apple-Watch-Ladefläche entscheidend. Die Uhr nutzt ein eigenes Ladeverfahren und lässt sich nicht auf einer normalen Qi-Fläche laden – ein echter 3 in 1 Charger bringt diese Spezialfläche bereits mit.</li>\n</ul>\n<p>Ein angenehmer Nebeneffekt des Qi-Standards: Auch viele Android-Smartphones und andere Qi-fähige Kopfhörer laden problemlos auf der Smartphone-Fläche. Die Station ist also nicht zwingend an das Apple-Ökosystem gebunden, auch wenn die Watch-Fläche speziell auf die Apple Watch ausgelegt ist.</p>\n<h2>Auf diese Kaufkriterien solltest du achtest</h2>\n<p>Nicht jede Ladestation ist gleich. Diese vier Punkte trennen ein gutes Modell von einem mittelmässigen:</p>\n<p><strong>1. Ladeleistung (Watt).</strong> 15 W am Smartphone gelten heute als solider Standard für zügiges Laden. Achte darauf, dass die angegebene Leistung tatsächlich an der Smartphone-Fläche anliegt und nicht auf alle drei Flächen aufgeteilt wird.</p>\n<p><strong>2. Geräteausrichtung und Halt.</strong> Eine leicht geneigte oder magnetische Smartphone-Fläche hält das Telefon sicher in Position – praktisch, wenn du nebenher noch Benachrichtigungen lesen möchtest.</p>\n<p><strong>3. Sicherheitsfunktionen.</strong> Überhitzungsschutz, Überladeschutz und Fremdkörpererkennung sind kein Luxus, sondern sollten zum Standard gehören. Sie schützen sowohl die Ladestation als auch deine Geräte.</p>\n<p><strong>4. Verarbeitung und Optik.</strong> Eine Ladestation steht oft gut sichtbar auf dem Nachttisch oder Schreibtisch. Eine hochwertige Verarbeitung mit rutschfester Oberfläche zahlt sich im Alltag aus.</p>\n<h2>Für wen sich ein 3 in 1 Wireless Charger lohnt</h2>\n<p>Besonders profitieren Menschen, die ohnehin mehrere kabellose Geräte gleichzeitig nutzen. Wer abends iPhone, AirPods und Apple Watch ablegt, hat morgens alle drei Geräte voll geladen – ohne Kabelsalat. Auch im Homeoffice ist eine zentrale Ladestation auf dem Schreibtisch eine spürbare Erleichterung.</p>\n<p>Wenn du deinen Arbeitsplatz ohnehin gerade einrichtest, lässt sich der Charger gut mit weiterem Zubehör kombinieren. Eine <a href=\"/collections/licht-tischlampe\">dimmbare LED-Schreibtischlampe mit USB-C</a> für CHF 44.90 sorgt für angenehmes Licht, und für konzentriertes Arbeiten ohne Störgeräusche eignen sich <a href=\"/products/in-ear-bluetooth-kopfhorer-mit-anc-635800\">In-Ear Bluetooth-Kopfhörer mit ANC</a> für CHF 52.90 – die sich, falls Qi-fähig, gleich auf derselben Station mitladen lassen.</p>\n<h2>Ladestation und Smartwatch als Set – die clevere Kombination</h2>\n<p>Wer noch keine Smartwatch besitzt oder über ein Upgrade nachdenkt, sollte Ladegerät und Uhr zusammen denken. Eine <a href=\"/products/smartwatch-pro-1-78-amoled-herzfrequenz-fitness-tracker-bluetooth\">Smartwatch Pro mit AMOLED-Display</a> (CHF 69.90) bringt Herzfrequenz- und Schlaf-Tracking, mehrere Sport-Modi und einen langlebigen Akku mit – und findet abends ihren festen Platz auf der Ladestation.</p>\n<p>Wenn es ein Geschenk sein soll oder du das komplette Tech-Setup auf einmal möchtest, bündelt die <a href=\"/products/tech-hero-geschenkbox-smartwatch-anc-ladestation\">Tech Hero Gift Box</a> für CHF 199.90 die Smartwatch Pro, ANC-Kopfhörer und den 3-in-1 Wireless Charger in einer hochwertigen Geschenkbox. Eine durchdachte Lösung für alle, die nicht einzeln zusammenstellen möchten.</p>\n<h2>Häufige Fragen</h2>\n<p><strong>Kann ich mein iPhone und meine AirPods gleichzeitig laden?</strong>\nJa. Genau dafür ist ein 3 in 1 Wireless Charger gemacht. Alle drei Flächen arbeiten parallel, sodass iPhone, AirPods (mit kabellosem Ladecase) und Apple Watch gleichzeitig geladen werden.</p>\n<p><strong>Funktioniert die Station auch mit Android-Smartphones?</strong>\nAuf der Smartphone-Fläche ja, sofern das Gerät den Qi-Standard unterstützt. Das trifft auf die meisten aktuellen Android-Modelle zu. Die dedizierte Watch-Fläche ist allerdings auf die Apple Watch ausgelegt.</p>\n<p><strong>Brauche ich für das kabellose Laden ein bestimmtes AirPods-Modell?</strong>\nDu benötigst ein AirPods-Ladecase mit Wireless-Charging-Funktion. Modelle wie die AirPods Pro bringen das bereits mit; ältere Standard-AirPods nur mit dem entsprechenden Case.</p>\n<p><strong>Wie schnell lädt ein 3 in 1 Wireless Charger?</strong>\nDas hängt von der Ladeleistung ab. Bei 15 W am Smartphone laden moderne Geräte zügig. Kabelloses Laden ist in der Regel etwas langsamer als das Laden per Kabel, dafür deutlich komfortabler im Alltag.</p>\n<h2>Fazit und Empfehlung</h2>\n<p>Ein 3 in 1 Wireless Charger ist eine der praktischsten Aufrüstungen für jeden, der mehrere kabellose Apple-Geräte nutzt: weniger Kabel, mehr Ordnung und alle Geräte morgens voll geladen. Unser <a href=\"/products/3-in-1-kabelloses-ladegerat-fur-apple-gerate-ecf92d\">3-in-1 Wireless Charger mit 15 W</a> ist für CHF 39.90 ein guter Einstieg.</p>\n<p>Bei LuxeStyle CH profitierst du von kostenlosem Versand ab CHF 50, einer 30-tägigen Rückgabe und sicherer Bezahlung per TWINT, Karte oder PayPal. So kannst du in Ruhe ausprobieren, ob die Ladestation in deinen Alltag passt.</p>\n<h2>Das könnte dich auch interessieren</h2>\n<ul>\n<li>\n<a href=\"/blogs/ratgeber/smartwatch-einsteiger-ratgeber-2026\">Smartwatch für Einsteiger: Ratgeber 2026</a> — worauf du beim ersten Smartwatch-Kauf achtest, bevor sie auf deiner Ladestation landet.</li>\n<li>\n<a href=\"/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber\">Bluetooth Kopfhörer mit ANC: Kaufratgeber</a> — wie du Kopfhörer mit Active Noise Cancellation findest, die zu deinem Tech-Setup passen.</li>\n<li>\n<a href=\"/blogs/ratgeber/bluetooth-speaker-wasserdicht-outdoor-guide\">Bluetooth Speaker wasserdicht: Outdoor-Ratgeber</a> — der passende Sound-Begleiter für unterwegs, wenn das Kabelchaos zuhause bleibt.</li>\n<li>\n<a href=\"/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz\">Geschenke für Männer 2026: Ideen mit Stil</a> — Inspiration, falls die Ladestation oder ein Tech-Set ein Geschenk werden soll.</li>\n</ul><hr><p><strong>🛍️ Passend dazu bei LuxeStyle:</strong></p><ul>\n<li><a href=\"/collections/premium-geschenke\">Geschenkideen</a></li>\n<li><a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></li>\n</ul>\n\n<!-- lx-faq -->\n<h2>Häufige Fragen</h2><h3>Was ist ein 3 in 1 Wireless Charger und wie funktioniert er?</h3><p>Ein 3 in 1 Wireless Charger ist eine Ladestation mit drei separaten Ladeflächen für dein Smartphone, kabellose Kopfhörer und eine Smartwatch. Das Laden erfolgt per Induktion nach dem Qi-Standard, wobei Energie über ein Magnetfeld übertragen wird, ohne dass ein physischer Stecker nötig ist. Du legst deine Geräte einfach ab, und der Ladevorgang startet automatisch.</p><h3>Welche Apple-Geräte sind mit einem 3 in 1 Wireless Charger kompatibel?</h3><p>Dein iPhone muss kabelloses Laden unterstützen, was ab dem iPhone 8 der Fall ist; neuere Modelle ab dem iPhone 12 nutzen zusätzlich magnetische Ausrichtung. Für AirPods benötigst du ein Ladecase mit kabelloser Ladefunktion, wie es bei AirPods Pro und den meisten aktuellen Generationen vorhanden ist. Die Apple Watch benötigt eine dedizierte Ladefläche, da sie ein eigenes Ladeverfahren nutzt und nicht auf einer normalen Qi-Fläche lädt.</p><h3>Worauf sollte ich beim Kauf eines 3 in 1 Wireless Chargers achten?</h3><p>Achte auf eine Ladeleistung von 15 W am Smartphone für zügiges Laden und darauf, dass diese Leistung nicht aufgeteilt wird. Wichtig sind auch Sicherheitsfunktionen wie Überhitzungs- und Überladeschutz sowie Fremdkörpererkennung, die deine Geräte schützen. Eine hochwertige Verarbeitung, eine rutschfeste Oberfläche und eine gute Geräteausrichtung, zum Beispiel durch eine magnetische Fläche, sind ebenfalls entscheidend.</p><h3>Für wen lohnt sich die Anschaffung eines 3 in 1 Wireless Chargers besonders?</h3><p>Ein 3 in 1 Wireless Charger lohnt sich besonders für Personen, die mehrere kabellose Geräte wie iPhone, AirPods und Apple Watch gleichzeitig nutzen. Du profitierst von weniger Kabeln und mehr Ordnung, da alle drei Geräte morgens voll geladen sind. Auch im Homeoffice ist eine zentrale Ladestation auf dem Schreibtisch eine spürbare Erleichterung.</p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Was ist ein 3 in 1 Wireless Charger und wie funktioniert er?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ein 3 in 1 Wireless Charger ist eine Ladestation mit drei separaten Ladeflächen für dein Smartphone, kabellose Kopfhörer und eine Smartwatch. Das Laden erfolgt per Induktion nach dem Qi-Standard, wobei Energie über ein Magnetfeld übertragen wird, ohne dass ein physischer Stecker nötig ist. Du legst deine Geräte einfach ab, und der Ladevorgang startet automatisch.\"}}, {\"@type\": \"Question\", \"name\": \"Welche Apple-Geräte sind mit einem 3 in 1 Wireless Charger kompatibel?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Dein iPhone muss kabelloses Laden unterstützen, was ab dem iPhone 8 der Fall ist; neuere Modelle ab dem iPhone 12 nutzen zusätzlich magnetische Ausrichtung. Für AirPods benötigst du ein Ladecase mit kabelloser Ladefunktion, wie es bei AirPods Pro und den meisten aktuellen Generationen vorhanden ist. Die Apple Watch benötigt eine dedizierte Ladefläche, da sie ein eigenes Ladeverfahren nutzt und nicht auf einer normalen Qi-Fläche lädt.\"}}, {\"@type\": \"Question\", \"name\": \"Worauf sollte ich beim Kauf eines 3 in 1 Wireless Chargers achten?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Achte auf eine Ladeleistung von 15 W am Smartphone für zügiges Laden und darauf, dass diese Leistung nicht aufgeteilt wird. Wichtig sind auch Sicherheitsfunktionen wie Überhitzungs- und Überladeschutz sowie Fremdkörpererkennung, die deine Geräte schützen. Eine hochwertige Verarbeitung, eine rutschfeste Oberfläche und eine gute Geräteausrichtung, zum Beispiel durch eine magnetische Fläche, sind ebenfalls entscheidend.\"}}, {\"@type\": \"Question\", \"name\": \"Für wen lohnt sich die Anschaffung eines 3 in 1 Wireless Chargers besonders?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ein 3 in 1 Wireless Charger lohnt sich besonders für Personen, die mehrere kabellose Geräte wie iPhone, AirPods und Apple Watch gleichzeitig nutzen. Du profitierst von weniger Kabeln und mehr Ordnung, da alle drei Geräte morgens voll geladen sind. Auch im Homeoffice ist eine zentrale Ladestation auf dem Schreibtisch eine spürbare Erleichterung.\"}}]}</script>\n<!-- /lx-faq -->\n<!-- lx-produkte -->\n<h2>Passend dazu im Shop</h2><ul>\n<li>\n<a href=\"/products/wireless-controller-ladestation-mit-led-anzeig-602700\">Wireless Controller Ladestation mit LED-Anzeige</a> – CHF 18.90</li>\n<li>\n<a href=\"/products/kabellose-gamecontroller-ladestation-600000\">Kabellose Gamecontroller-Ladestation</a> – CHF 81.90</li>\n<li>\n<a href=\"/products/vr2-ladestation-mit-brillenhalterung-624000\">VR2 Ladestation mit Brillenhalterung</a> – CHF 24.90</li>\n<li>\n<a href=\"/products/3-in-1-magnetische-ladestation-621500\">3-in-1 Magnetische Ladestation</a> – CHF 196.90</li>\n</ul><p><a href=\"/collections/licht-tischlampe\">Mehr dazu im Shop ansehen</a></p>\n<!-- /lx-produkte -->",
+   "body_laenge": 13184,
+   "body_sha256": "d8986fe205191c3a76a3cb36219e2ad279be4c99eb25bcd1cc9d39b72bda7be1",
+   "metafield_global_title_tag": "3 in 1 Wireless Charger Ratgeber | LuxeStyle CH",
+   "metafield_global_description_tag": "Ein 3 in 1 Wireless Charger lädt iPhone, AirPods und Apple Watch gleichzeitig. Ratgeber zu Kompatibilität, Watt-Leistung und Kaufkriterien.",
+   "_tt": {
+    "id": "gid://shopify/Metafield/198190805418369",
+    "value": "3 in 1 Wireless Charger Ratgeber | LuxeStyle CH"
+   },
+   "_dt": {
+    "id": "gid://shopify/Metafield/198190805451137",
+    "value": "Ein 3 in 1 Wireless Charger lädt iPhone, AirPods und Apple Watch gleichzeitig. Ratgeber zu Kompatibilität, Watt-Leistung und Kaufkriterien."
+   }
+  }
+ },
+ "S8:halskette-richtig-wahlen-lange-material-stil-kombinieren": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001935896961",
+  "handle": "halskette-richtig-wahlen-lange-material-stil-kombinieren",
+  "roh": {
+   "handle": "halskette-richtig-wahlen-lange-material-stil-kombinieren",
+   "updatedAt": "2026-10-05T07:40:26Z",
+   "body": "<div style=\"background:#f7f4ee;border:1px solid #e7ddca;border-radius:12px;padding:14px 16px;margin:0 0 18px\">\n<strong>📌 Das Wichtigste in Kürze</strong><ul>\n<li>Wähle die Halskettenlänge passend zu Ausschnitt und Anlass für harmonische Proportionen.</li>\n<li>Berücksichtige Material und Hautton: Gold für warme, Silber für kühle Typen.</li>\n<li>Stimme den Stil der Kette auf deinen persönlichen Look und das Gesamtoutfit ab.</li>\n<li>Vermeide zu viele auffällige Schmuckstücke gleichzeitig – weniger ist oft mehr.</li>\n</ul>\n</div>\n<p>Eine Halskette ist mehr als nur ein Accessoire; sie kann dein Dekolleté betonen, deinem Outfit den letzten Schliff verleihen und deine Persönlichkeit unterstreichen. Doch wie wählst du aus der Fülle an Möglichkeiten die richtige Kette aus? Dieser Kaufratgeber hilft dir, Länge, Material und Stil so zu kombinieren, dass du immer perfekt gestylt bist.</p>\n<h2>Die richtige Länge wählen: Eine Frage der Proportionen</h2><p>Die Länge deiner Halskette hat einen grossen Einfluss darauf, wie sie wirkt und ob sie zu deinem Ausschnitt passt. Es gibt verschiedene Standardlängen, die jeweils eine eigene Wirkung erzielen:</p><ul>\n<li>\n<strong>Choker (ca. 35-40 cm):</strong> Liegt eng am Hals an, ideal für hochgeschlossene Oberteile oder um einen schlanken Hals zu betonen.</li>\n<li>\n<strong>Collier (ca. 40-45 cm):</strong> Eine klassische Länge, die am Schlüsselbein sitzt und zu fast jedem Ausschnitt passt. Perfekt für Anhänger.</li>\n<li>\n<strong>Prinzessin (ca. 45-50 cm):</strong> Fällt etwas tiefer als das Collier und ruht unterhalb des Schlüsselbeins. Ideal für V-Ausschnitte und um Akzente zu setzen.</li>\n<li>\n<strong>Matinee (ca. 50-60 cm):</strong> Reicht bis zur Brustmitte und eignet sich gut für Business-Outfits oder Rollkragenpullover.</li>\n<li>\n<strong>Opera (ca. 70-90 cm):</strong> Eine lange Kette, die oft doppelt getragen werden kann. Elegant für Abendgarderobe oder über schlichten Oberteilen.</li>\n<li>\n<strong>Rope (über 90 cm):</strong> Sehr lange Ketten, die mehrfach gewickelt oder mit Knoten versehen werden können. Bietet viele Styling-Möglichkeiten.</li>\n</ul><p><strong>Tipp:</strong> Berücksichtige immer deinen Körperbau und die Form deines Gesichts. Eine lange Kette streckt, während ein Choker das Gesicht runder wirken lassen kann.</p><h2>Materialien und ihre Wirkung: Gold, Silber und mehr</h2><p>Das Material deiner Halskette beeinflusst nicht nur den Preis, sondern auch die Ausstrahlung und die Kombinierbarkeit mit anderen Schmuckstücken.</p><ul>\n<li>\n<strong>Gold (Gelbgold, Weissgold, Roségold):</strong> Gold ist zeitlos und elegant. Gelbgold schmeichelt warmen Hauttönen, während Weissgold und Platin kühleren Typen besser stehen. Roségold ist eine moderne, romantische Wahl, die vielen Hauttönen schmeichelt.</li>\n<li>\n<strong>Silber:</strong> Silber ist vielseitig und erschwinglicher als Gold. Es passt hervorragend zu kühlen Hauttönen und lässt sich gut mit anderen Silberaccessoires kombinieren. Achte auf Sterling-Silber für hohe Qualität.</li>\n<li>\n<strong>Edelstahl:</strong> Eine robuste, moderne und hypoallergene Alternative. Ideal für den Alltag und sportliche Looks.</li>\n<li>\n<strong>Perlen:</strong> Perlenketten strahlen klassische Eleganz aus. Sie passen gut zu formellen Anlässen und können auch modernen Outfits einen Hauch von Raffinesse verleihen.</li>\n</ul><p><strong>Typischer Fehler:</strong> Versuche nicht, zu viele unterschiedliche Metalle zu mischen, es sei denn, es ist ein bewusst gewählter Layering-Look. Ein einheitlicher Metallton wirkt oft harmonischer.</p><h2>Stil und Anlass: Die Kette als Statement</h2><p>Der Stil deiner Halskette sollte zu deinem persönlichen Geschmack, dem Anlass und dem restlichen Outfit passen.</p><ul>\n<li>\n<strong>Minimalistisch:</strong> Eine zarte Kette mit einem kleinen Anhänger passt zu fast jedem Anlass und lässt sich gut layern.</li>\n<li>\n<strong>Statement-Ketten:</strong> Grosse, auffällige Ketten sind der Hingucker deines Outfits. Kombiniere sie mit schlichten Kleidungsstücken, um die Kette wirken zu lassen.</li>\n<li>\n<strong>Vintage &amp; Antik:</strong> Ketten mit historischem Charme verleihen deinem Look Individualität und eine besondere Note.</li>\n<li>\n<strong>Moderne Designs:</strong> Klare Linien, geometrische Formen oder unkonventionelle Materialien sind ideal für einen zeitgenössischen Stil.</li>\n</ul><p><strong>Anlass-Check:</strong> Für den Alltag eignen sich robuste, unkomplizierte Ketten. Für festliche Anlässe dürfen es edlere Materialien und auffälligere Designs sein. Im Berufsleben ist oft dezenter Schmuck angebracht.</p><h2>Kombinieren und Layering: Mehr ist manchmal mehr</h2><p>Das Kombinieren mehrerer Halsketten, auch Layering genannt, ist ein beliebter Trend, der deinem Look Tiefe und Individualität verleiht. Achte dabei auf folgende Punkte:</p><ul>\n<li>\n<strong>Verschiedene Längen:</strong> Kombiniere Ketten unterschiedlicher Längen, damit sie sich nicht überlappen und jede Kette sichtbar ist.</li>\n<li>\n<strong>Harmonie der Materialien:</strong> Bleib bei ähnlichen Materialien (z.B. nur Goldtöne oder nur Silbertöne) oder wähle bewusst einen Mix, der gut zusammenpasst.</li>\n<li>\n<strong>Balance finden:</strong> Beginne mit zwei bis drei Ketten. Eine zu grosse Anzahl kann überladen wirken. Eine Kette kann als Basis dienen, die anderen ergänzen.</li>\n<li>\n<strong>Anhänger variieren:</strong> Mische Ketten mit und ohne Anhänger oder wähle Anhänger unterschiedlicher Grösse und Form.</li>\n</ul><p><strong>Vermeide:</strong> Zu viele auffällige Statement-Ketten auf einmal. Wenn du eine auffällige Kette trägst, halte andere Schmuckstücke dezenter.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Halskettenlänge passt zu einem V-Ausschnitt?</h3><p>Für einen V-Ausschnitt eignen sich am besten Ketten der Collier- (40-45 cm) oder Prinzessin-Länge (45-50 cm). Diese Längen folgen der Form des Ausschnitts und betonen das Dekolleté harmonisch, ohne zu tief zu hängen oder im Ausschnitt zu verschwinden.</p>\n<h3>Kann ich Gold- und Silberschmuck mischen?</h3><p>Ja, das Mischen von Gold- und Silberschmuck ist möglich und kann sehr stilvoll aussehen. Achte darauf, dass es bewusst geschieht, zum Beispiel durch Layering von Ketten in beiden Metallen oder durch ein Schmuckstück, das selbst beide Metalle kombiniert. Es sollte nicht zufällig wirken.</p>\n<h3>Wie pflege ich meine Halskette richtig?</h3><p>Bewahre Halsketten separat auf, um Kratzer und Verwicklungen zu vermeiden. Reinige sie regelmässig mit einem weichen Tuch und bei Bedarf mit speziellen Schmuckreinigern. Vermeide den Kontakt mit Chemikalien wie Parfüm oder Haarspray, um Verfärbungen zu verhindern.</p>\n<h3>Welche Halskette passt zu einem Rollkragenpullover?</h3><p>Zu einem Rollkragenpullover passen längere Halsketten wie die Matinee- (50-60 cm) oder Opera-Länge (70-90 cm) besonders gut. Diese Ketten fallen elegant über den Stoff und strecken die Silhouette, wodurch der Rollkragen optisch aufgelockert wird.</p>\n<div style=\"background:linear-gradient(135deg,#20305a,#2b4a7a);color:#fff;border-radius:14px;padding:18px 20px;margin:22px 0 6px;text-align:center\">\n<div style=\"font-size:17px;font-weight:700;margin-bottom:6px\">Halsketten bei LuxeStyle entdecken</div>\n<div style=\"opacity:.9;font-size:14px;margin-bottom:12px\">🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · –10 % mit Code <strong>WELCOME10</strong>\n</div>\n<a href=\"/collections/sub-halsketten\" style=\"display:inline-block;background:#c6a664;color:#1c1b19;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:40px\">Jetzt shoppen →</a>\n</div>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Welche Halskettenlänge passt zu einem V-Ausschnitt?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Für einen V-Ausschnitt eignen sich am besten Ketten der Collier- (40-45 cm) oder Prinzessin-Länge (45-50 cm). Diese Längen folgen der Form des Ausschnitts und betonen das Dekolleté harmonisch, ohne zu tief zu hängen oder im Ausschnitt zu verschwinden.\"}},{\"@type\":\"Question\",\"name\":\"Kann ich Gold- und Silberschmuck mischen?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Ja, das Mischen von Gold- und Silberschmuck ist möglich und kann sehr stilvoll aussehen. Achte darauf, dass es bewusst geschieht, zum Beispiel durch Layering von Ketten in beiden Metallen oder durch ein Schmuckstück, das selbst beide Metalle kombiniert. Es sollte nicht zufällig wirken.\"}},{\"@type\":\"Question\",\"name\":\"Wie pflege ich meine Halskette richtig?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Bewahre Halsketten separat auf, um Kratzer und Verwicklungen zu vermeiden. Reinige sie regelmässig mit einem weichen Tuch und bei Bedarf mit speziellen Schmuckreinigern. Vermeide den Kontakt mit Chemikalien wie Parfüm oder Haarspray, um Verfärbungen zu verhindern.\"}},{\"@type\":\"Question\",\"name\":\"Welche Halskette passt zu einem Rollkragenpullover?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Zu einem Rollkragenpullover passen längere Halsketten wie die Matinee- (50-60 cm) oder Opera-Länge (70-90 cm) besonders gut. Diese Ketten fallen elegant über den Stoff und strecken die Silhouette, wodurch der Rollkragen optisch aufgelockert wird.\"}}]}</script>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Halskette richtig wählen: Länge, Material & Stil kombinieren\",\"inLanguage\":\"de-CH\",\"author\":{\"@type\":\"Organization\",\"name\":\"LuxeStyle\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"LuxeStyle\",\"url\":\"https://luxestyle.ch\"},\"about\":\"Halsketten\"}</script>",
+   "body_laenge": 9593,
+   "body_sha256": "9666e1dfb4474d27749896fa89a16c81ef5b4a3c7c19775d6b0f27fd2fb79303",
+   "metafield_global_title_tag": null,
+   "metafield_global_description_tag": null,
+   "_tt": null,
+   "_dt": null
+  }
+ },
+ "S8:gaming-zubehor-guide-controller-headset-mehr": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001921741185",
+  "handle": "gaming-zubehor-guide-controller-headset-mehr",
+  "roh": {
+   "handle": "gaming-zubehor-guide-controller-headset-mehr",
+   "updatedAt": "2026-10-20T07:40:29Z",
+   "body": "<h2>Gaming-Zubehör-Guide: Controller, Headset &amp; mehr</h2>\n\n<p>Du liebst es, in virtuelle Welten einzutauchen, dich spannenden Herausforderungen zu stellen und mit Freunden zu zocken? Dann weisst du, dass das richtige Gaming-Zubehör entscheidend für dein Spielerlebnis ist. Es geht nicht nur darum, überhaupt spielen zu können, sondern darum, dein Potenzial voll auszuschöpfen, komfortabel zu sein und jedes Detail des Spiels zu erleben. In diesem Guide helfen wir dir, die perfekte Ausrüstung zu finden, die genau zu dir und deinem Spielstil passt.</p>\n\n<p>Oftmals wird die Bedeutung von hochwertigem Zubehör unterschätzt. Doch ein präziser Controller, ein immersives Headset oder eine reaktionsschnelle Tastatur können den Unterschied zwischen Sieg und Niederlage, zwischen Frust und purem Spielspass ausmachen. Lass uns gemeinsam herausfinden, worauf du beim Kauf achten solltest, um typische Fehler zu vermeiden und lange Freude an deinem neuen Equipment zu haben.</p>\n\n<h2>Der Controller: Deine Kommandozentrale</h2>\n\n<p>Der Controller ist die direkte Verbindung zwischen dir und dem Spiel. Ob du ein Konsolenspieler bist oder am PC lieber mit Gamepad spielst – die Wahl des richtigen Controllers ist essenziell. Es gibt eine riesige Auswahl, von den Standard-Controllern der Konsolenhersteller bis hin zu spezialisierten Pro-Controllern.</p>\n\n<h3>Worauf du beim Controller-Kauf achten solltest:</h3>\n<ul>\n    <li>\n<strong>Ergonomie und Haptik:</strong> Liegt der Controller gut in deiner Hand? Sind die Tasten gut erreichbar? Dies ist besonders wichtig bei langen Gaming-Sessions, um Ermüdung vorzubeugen.</li>\n    <li>\n<strong>Konnektivität:</strong> Bevorzugst du kabellose Freiheit oder die zuverlässige Verbindung per Kabel? Kabellose Controller bieten mehr Bewegungsfreiheit, während Kabelcontroller keine Latenzprobleme haben und nicht aufgeladen werden müssen.</li>\n    <li>\n<strong>Zusätzliche Funktionen:</strong> Manche Controller bieten programmierbare Tasten, austauschbare Sticks oder spezielle Trigger-Stopper. Überlege, welche Funktionen für deine Spiele relevant sind.</li>\n    <li>\n<strong>Kompatibilität:</strong> Stelle sicher, dass der Controller mit deiner Plattform (PC, PlayStation, Xbox, Nintendo Switch) kompatibel ist.</li>\n</ul>\n<p>Ein häufiger Fehler ist, nur auf den Preis zu schauen. Ein günstiger Controller mag verlockend sein, kann aber schnell zu Frustration führen, wenn er unpräzise ist oder nach kurzer Zeit Defekte aufweist. Investiere lieber in ein Modell, das für seine Langlebigkeit und Präzision bekannt ist.</p>\n\n<h2>Das Gaming-Headset: Tauche ein ins Spiel</h2>\n\n<p>Ein gutes Gaming-Headset ist weit mehr als nur ein Kopfhörer. Es versetzt dich mitten ins Geschehen, lässt dich Schritte von Gegnern hören und ermöglicht dir eine klare Kommunikation mit deinem Team. Die Soundkulisse eines Spiels ist ein wichtiger Bestandteil der Immersion, und ein hochwertiges Headset holt das Maximum heraus.</p>\n\n<h3>Wichtige Aspekte beim Headset-Kauf:</h3>\n<ul>\n    <li>\n<strong>Klangqualität:</strong> Achte auf einen ausgewogenen Klang, der sowohl tiefe Bässe für Explosionen als auch klare Höhen für Details wie Schritte oder Dialoge liefert. Virtual Surround Sound kann dir helfen, Gegner besser zu orten.</li>\n    <li>\n<strong>Mikrofonqualität:</strong> Dein Team muss dich verstehen können. Ein gutes Mikrofon mit Geräuschunterdrückung ist Gold wert, besonders in lauten Umgebungen. Überprüfe, ob das Mikrofon abnehmbar oder hochklappbar ist, wenn du es nicht immer benötigst.</li>\n    <li>\n<strong>Tragekomfort:</strong> Auch hier gilt: Lange Sessions erfordern Komfort. Weiche Ohrpolster, ein verstellbarer Kopfbügel und ein geringes Gewicht sind entscheidend.</li>\n    <li>\n<strong>Konnektivität:</strong> USB, 3,5mm Klinke oder kabellos (2.4 GHz oder Bluetooth)? Jede Option hat ihre Vor- und Nachteile in Bezug auf Kompatibilität und Latenz.</li>\n</ul>\n<p>Ein typischer Fehler ist der Kauf eines \"Allround-Kopfhörers\", der zwar Musik gut wiedergibt, aber kein optimiertes Mikrofon oder den speziellen Gaming-Sound liefert. Für ein optimales Gaming-Erlebnis ist ein dediziertes Gaming-Headset die bessere Wahl.</p>\n\n<h2>Tastatur und Maus: Präzision für PC-Gamer</h2>\n\n<p>Für PC-Gamer sind Tastatur und Maus die wichtigsten Werkzeuge. Hier geht es um Geschwindigkeit, Präzision und individuelle Anpassbarkeit. Eine Standard-Büroausstattung reicht selten aus, um in kompetitiven Spielen zu bestehen.</p>\n\n<h3>Tastatur-Tipps:</h3>\n<ul>\n    <li>\n<strong>Mechanische Switches:</strong> Mechanische Tastaturen bieten eine bessere Rückmeldung und Langlebigkeit als Rubberdome-Tastaturen. Es gibt verschiedene Switch-Typen (z.B. Cherry MX Red, Blue, Brown) mit unterschiedlichen Eigenschaften in Bezug auf Betätigungskraft und Geräuschpegel.</li>\n    <li>\n<strong>Anti-Ghosting und N-Key Rollover:</strong> Diese Funktionen stellen sicher, dass alle gleichzeitig gedrückten Tasten korrekt registriert werden – unerlässlich für schnelle Aktionen.</li>\n    <li>\n<strong>Programmierbare Makro-Tasten:</strong> Für bestimmte Spiele oder komplexe Befehle können Makro-Tasten einen Vorteil bieten.</li>\n</ul>\n\n<h3>Maus-Tipps:</h3>\n<ul>\n    <li>\n<strong>Sensor:</strong> Optische Sensoren sind oft präziser als Laser-Sensoren. Achte auf eine hohe DPI (Dots Per Inch) und eine niedrige Lift-Off Distance.</li>\n    <li>\n<strong>Ergonomie:</strong> Die Maus muss perfekt in deiner Hand liegen. Es gibt Mäuse für verschiedene Griffstile (Palm, Claw, Fingertip).</li>\n    <li>\n<strong>Tastenanzahl:</strong> Neben den Standardtasten bieten viele Gaming-Mäuse programmierbare Zusatztasten, die besonders in MOBAs oder MMOs nützlich sein können.</li>\n    <li>\n<strong>Gewicht:</strong> Manche Mäuse bieten die Möglichkeit, das Gewicht anzupassen.</li>\n</ul>\n<p>Ein häufiger Fehler ist, eine sehr leichte Maus zu kaufen, wenn man einen ruhigeren, präziseren Griff bevorzugt, oder umgekehrt. Probiere verschiedene Modelle aus, um dein ideales Gewicht und deine Form zu finden.</p>\n\n<h2>Fazit: Dein optimales Gaming-Setup bei LuxeStyle</h2>\n\n<p>Die Wahl des richtigen Gaming-Zubehörs ist eine Investition in dein Spielerlebnis. Nimm dir die Zeit, dich zu informieren und die Produkte auszuwählen, die am besten zu deinen Bedürfnissen passen. Denke daran: <strong>Qualität zahlt sich aus</strong>. Ein gut gewähltes Setup steigert nicht nur deinen Spielspass, sondern kann auch deine Performance verbessern.</p>\n<p>Egal ob du auf der Suche nach einem neuen Controller, einem immersiven Headset oder präzisem PC-Zubehör bist, bei LuxeStyle findest du eine sorgfältig ausgewählte Auswahl an hochwertigem Gaming-Equipment. Entdecke jetzt unser Sortiment und rüste dich für dein nächstes Abenteuer: <a href=\"/collections/gaming\">Gaming bei LuxeStyle entdecken</a>.</p>\n<!-- lx-produkte -->\n<h2>Passend dazu im Shop</h2><ul>\n<li>\n<a href=\"/products/pod-sticker-game-controller\">Sticker «Game Controller» · 1 Stück</a> – CHF 4.90</li>\n<li>\n<a href=\"/products/bluetooth-wireless-gaming-controller-628600\">Bluetooth Wireless Gaming Controller</a> – CHF 58.90</li>\n<li>\n<a href=\"/products/lay-sda-p5-wireless-game-controller-632500\">Lay'sda P5 Wireless Game Controller</a> – CHF 47.90</li>\n<li>\n<a href=\"/products/metall-thumbsticks-fur-ps4-controller-636100\">Metall-Thumbsticks für PS4 Controller</a> – CHF 15.90</li>\n</ul><p><a href=\"/collections/gaming\">Mehr dazu im Shop ansehen</a></p>\n<!-- /lx-produkte -->",
+   "body_laenge": 7428,
+   "body_sha256": "390e5ab5751bca3d352b7bbb74675c9600a973381d4a10bf34374f3ea910f681",
+   "metafield_global_title_tag": null,
+   "metafield_global_description_tag": null,
+   "_tt": null,
+   "_dt": null
+  }
+ },
+ "S8:geschenke-fuer-kaffeeliebhaber": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001546547585",
+  "handle": "geschenke-fuer-kaffeeliebhaber",
+  "roh": {
+   "handle": "geschenke-fuer-kaffeeliebhaber",
+   "updatedAt": "2026-10-19T22:34:26Z",
+   "body": "<p>Wer Kaffee liebt, liebt nicht nur das Getränk – sondern das ganze Ritual drumherum. Das Mahlen der Bohnen, der erste Duft am Morgen, die ruhige Minute mit der vollen Tasse in der Hand. Genau deshalb sind Geschenke für Kaffeeliebhaber so dankbar: Sie treffen einen echten Lieblingsmoment des Alltags.</p>\n<p>Damit das Geschenk auch wirklich ankommt, lohnt es sich, über die hundertste Tüte Bohnen hinauszudenken. Hochwertige Zubehör- und Genuss-Geschenke begleiten den Beschenkten über Jahre – und werten jede Kaffeepause auf. In diesem Ratgeber findest du durchdachte Ideen für jedes Budget, jeden Anlass und jeden Typ von Kaffeefan.</p>\n<h2>Worauf es bei einem guten Kaffee-Geschenk ankommt</h2>\n<p>Bevor du loslegst, lohnt sich ein kurzer Gedanke an die Person. Wer trinkt seinen Kaffee schwarz und konzentriert beim Arbeiten? Wer zelebriert ihn am Wochenende in aller Ruhe? Und wer ist eher unterwegs als zu Hause?</p>\n<p>Drei Kriterien helfen bei der Auswahl:</p>\n<ul>\n<li>\n<strong>Qualität statt Spielerei.</strong> Ein Kaffee-Gadget, das nach zwei Wochen in der Schublade landet, freut niemanden. Langlebige Materialien wie Borosilikatglas, Edelstahl und Bambus sind eine sichere Wahl.</li>\n<li>\n<strong>Passend zum Alltag.</strong> Ein schönes Stück fürs Büro? Etwas für die gemütliche Ecke daheim? Oder ein Begleiter für unterwegs? Je näher das Geschenk am echten Leben ist, desto öfter wird es genutzt.</li>\n<li>\n<strong>Das Ritual im Blick.</strong> Die besten Geschenke verbessern nicht nur den Kaffee selbst, sondern den ganzen Moment – vom Aufbrühen bis zur ersten ruhigen Minute.</li>\n</ul>\n<h2>Für Genuss-Puristen: die French Press</h2>\n<p>Wer den vollen, runden Geschmack schätzt, kommt an der French Press kaum vorbei. Sie holt mehr Aromen aus den Bohnen als viele Filtermethoden und braucht keinen Strom, keine Kapseln, kein Papier – nur heisses Wasser und etwas Geduld.</p>\n<p>Besonders edel wird es mit einer doppelwandigen Variante. Die <a href=\"/products/french-press-kaffeebereiter-aus-borosilikatgla-600200\">French Press Doppelwand-Glas aus Borosilikat (ab CHF 15.90)</a> hält den Kaffee länger warm, beschlägt aussen kaum und sieht auf dem Frühstückstisch einfach gut aus. Praktisch: Sie funktioniert genauso für losen Tee – ein Pluspunkt, falls der Beschenkte beides mag. In drei Grössen erhältlich, von der Solo-Tasse bis zur Runde mit Gästen.</p>\n<p>Ein durchdachtes Geschenk für alle, die ihren Kaffee bewusst und ohne Hektik geniessen.</p>\n<h2>Für unterwegs: die Thermosflasche, die mithält</h2>\n<p>Nicht jeder trinkt seinen Kaffee zu Hause. Pendler, Wanderer und Vielbeschäftigte freuen sich über ein Geschenk, das den Lieblingskaffee zuverlässig mitnimmt – ohne dass er auf halber Strecke kalt wird.</p>\n<p>Die <a href=\"/products/edle-thermosflasche-aus-edelstahl-616400\">edle Thermosflasche aus Edelstahl (CHF 26.90)</a> hält Heisses lange warm und Kaltes lange kühl. So bleibt der Morgenkaffee auch im Zug oder am Schreibtisch noch angenehm temperiert. Das robuste Edelstahlgehäuse steckt den Alltag locker weg und kommt ganz ohne Wegwerf-Becher aus – schön fürs Gewissen und fürs Budget.</p>\n<p>Ein unkompliziertes, alltagstaugliches Geschenk, das im Alltag gerne in Gebrauch geht.</p>\n<h2>Für die gemütliche Kaffee-Ecke zu Hause</h2>\n<p>Manche Menschen geniessen ihren Kaffee am liebsten in einer kleinen Auszeit – aufgeklappt auf dem Sofa, mit Buch oder Gedanken. Für sie sind Geschenke ideal, die genau diese gemütliche Atmosphäre schaffen.</p>\n<p>Ein schlichtes Serviertablett verwandelt die Kaffeepause in ein kleines Ritual: Tasse, ein Stück Gebäck und vielleicht ein Buch finden darauf Platz. Passendes findest du in unserer <a href=\"/collections/sub-kueche\">Küchen-Auswahl</a>.</p>\n<p>Dazu passt warmes Licht und ein angenehmer Duft. Eine <a href=\"/collections/wohnen-dekoration\">rauchfreie Sojawachskerze (CHF 16.90)</a> sorgt für eine ruhige, einladende Stimmung – ideal für den Sonntagmorgen-Kaffee. Und wer es richtig gemütlich mag, ergänzt eine <a href=\"/products/wolldecke-mit-hahnentrittmuster-und-quasten-334336\">Decke mit Hahnentrittmuster (ab CHF 20.90)</a>, die zum Verweilen einlädt.</p>\n<p>Diese Kombination eignet sich besonders schön als kleines, liebevoll zusammengestelltes Geschenkpaket.</p>\n<h2>Für Vieldenker und Schreibtischtäter</h2>\n<p>Viele Kaffeeliebhaber verbinden ihre Tasse mit konzentrierter Arbeit, Ideen oder dem Festhalten von Gedanken. Hier macht ein Geschenk Sinn, das genau diesen Moment begleitet.</p>\n<p>Ein Notizbuch mit passendem Stift ist der ideale Begleiter neben der Kaffeetasse – ob im Café, im Homeoffice oder auf Reisen. Notizen, Skizzen, To-do-Listen: Passendes findest du unter <a href=\"/collections/buro-home-office\">Büro &amp; Schreibwaren</a>. Eine schöne Idee für alle, die gerne planen und ihren Kaffee als Denk-Treibstoff nutzen.</p>\n<h2>Geschenkideen nach Budget – auf einen Blick</h2>\n<p>Damit du schnell das Passende findest:</p>\n<ul>\n<li>\n<strong>Bis CHF 30:</strong> Soja-Duftkerzen-Set oder die Edelstahl-Thermosflasche – kleine Aufmerksamkeiten mit grosser Wirkung.</li>\n<li>\n<strong>CHF 30–50:</strong> French Press, Wellness-Tablett oder das Notebook-Set – solide Hauptgeschenke für echte Kaffeefans.</li>\n<li>\n<strong>Ab CHF 50:</strong> Eine Kombination, etwa Wolldecke plus Duftkerzen plus French Press, ergibt ein rundes Geschenkpaket für besondere Anlässe.</li>\n</ul>\n<p>Tipp: Wer mehrere Stücke kombiniert, profitiert ab einem bestimmten Bestellwert vom kostenlosen Versand – und macht aus Einzelteilen ein durchdachtes Set.</p>\n<h2>Häufige Fragen</h2>\n<p><strong>Was schenkt man jemandem, der schon eine Kaffeemaschine hat?</strong>\nSetze beim Drumherum an, nicht bei der Maschine. Eine French Press für andere Geschmacksnuancen, eine Thermosflasche für unterwegs oder ein gemütliches Set aus Tablett, Decke und Kerzen erweitern das Kaffeeerlebnis, ohne mit vorhandener Technik zu kollidieren.</p>\n<p><strong>Welches Kaffee-Geschenk eignet sich für Pendler?</strong>\nDie Edelstahl-Thermosflasche ist hier fast unschlagbar: Sie hält den Kaffee stundenlang warm, ist robust und spart Wegwerfbecher. Ein praktisches Geschenk, das täglich zum Einsatz kommt.</p>\n<p><strong>Wie schnell ist die Lieferung in der Schweiz?</strong>\nBestellungen werden in der Regel je nach Artikel innerhalb von 2–3 bis 10–20 Werktagen geliefert. Ab einem bestimmten Bestellwert ist der Versand kostenlos. Bezahlen kannst du bequem mit TWINT, Karte oder PayPal.</p>\n<p><strong>Was, wenn das Geschenk doch nicht passt?</strong>\nKein Problem: Du hast 30 Tage Rückgaberecht. So kannst du in Ruhe entscheiden, ob das ausgewählte Stück wirklich das richtige ist.</p>\n<h2>Das passende Geschenk finden</h2>\n<p>Das schönste Kaffee-Geschenk ist das, das zum Menschen passt – zum Genuss-Puristen, zum Pendler oder zum gemütlichen Sonntagstyp. Mit den Ideen oben findest du für jeden Kaffeefan eine durchdachte, langlebige Aufmerksamkeit.</p>\n<p>Stöbere in Ruhe durch die Auswahl bei LuxeStyle CH. Falls du zum ersten Mal bestellst, sichert dir der Code <strong>WELCOME10</strong> einen kleinen Willkommensrabatt – und einer entspannten Kaffeepause für die beschenkte Person steht nichts mehr im Weg.</p>\n<h2>Das könnte dich auch interessieren</h2>\n<ul>\n<li>\n<a href=\"/blogs/ratgeber/french-press-perfekter-kaffee-anleitung\">French Press Anleitung: perfekter Kaffee</a> — So holst du mit der French Press das volle Aroma aus deinen Bohnen, Schritt für Schritt.</li>\n<li>\n<a href=\"/blogs/ratgeber/thermosflasche-edelstahl-vorteile-vergleich\">Thermosflasche Edelstahl: Vorteile &amp; Vergleich</a> — Worauf du beim Kaffee-für-unterwegs achten solltest und welche Flasche wirklich warm hält.</li>\n<li>\n<a href=\"/blogs/ratgeber/geschenkboxen-sets-verschenken-ideen\">Geschenkboxen verschenken: kuratierte Sets</a> — Wie du aus Einzelteilen ein liebevoll zusammengestelltes Geschenkpaket machst.</li>\n<li>\n<a href=\"/blogs/ratgeber/wellness-geschenke-selfcare-ideen\">Wellness Geschenke &amp; Self-Care</a> — Noch mehr Ideen für entspannte Auszeiten, wenn der Kaffeemoment zum Ritual werden soll.</li>\n</ul><hr><p><strong>🛍️ Passend dazu bei LuxeStyle:</strong></p><ul>\n<li><a href=\"/collections/premium-geschenke\">Geschenkideen</a></li>\n<li><a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></li>\n</ul>\n<!-- lx-produkte -->\n<h2>Passend dazu im Shop</h2><ul>\n<li>\n<a href=\"/collections/kaffee-ecke\">Kompakte Hand-Kaffeemaschine für Kapseln &amp; Pulver</a> – CHF 34.90</li>\n<li>\n<a href=\"/products/mini-tragbare-kaffeemaschine-fur-unterwegs-628400\">Mini tragbare Kaffeemaschine für unterwegs</a> – CHF 56.90</li>\n<li>\n<a href=\"/products/tragbare-elektrische-kaffeemaschine-628200\">Tragbare elektrische Kaffeemaschine</a> – CHF 90.90</li>\n<li>\n<a href=\"/products/manuelle-espresso-kaffeemaschine-608400\">Manuelle Espresso-Kaffeemaschine</a> – CHF 20.90</li>\n</ul><p><a href=\"/collections/sub-kueche\">Mehr dazu im Shop ansehen</a></p>\n<!-- /lx-produkte -->",
+   "body_laenge": 8940,
+   "body_sha256": "2beb2e3ed2d2c4944aaee62a947a8a8850b902b2013f918b490d0ce5af5a36f6",
+   "metafield_global_title_tag": "Geschenke für Kaffeeliebhaber – Ideen & Tipps",
+   "metafield_global_description_tag": "Geschenke für Kaffeeliebhaber, die wirklich Freude machen: French Press, Thermosflasche, Bambus-Tablett & mehr. Premium-Auswahl bei LuxeStyle CH.",
+   "_tt": {
+    "id": "gid://shopify/Metafield/198190801781121",
+    "value": "Geschenke für Kaffeeliebhaber – Ideen & Tipps"
+   },
+   "_dt": {
+    "id": "gid://shopify/Metafield/198190801813889",
+    "value": "Geschenke für Kaffeeliebhaber, die wirklich Freude machen: French Press, Thermosflasche, Bambus-Tablett & mehr. Premium-Auswahl bei LuxeStyle CH."
+   }
+  }
+ },
+ "S8:haustier-gadgets-smarte-helfer-fur-hund-katze": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001931735425",
+  "handle": "haustier-gadgets-smarte-helfer-fur-hund-katze",
+  "roh": {
+   "handle": "haustier-gadgets-smarte-helfer-fur-hund-katze",
+   "updatedAt": "2026-09-15T05:11:12Z",
+   "body": "<h2>Haustier-Gadgets: smarte Helfer für Hund &amp; Katze</h2>\n\n<p>Du liebst dein Haustier über alles und möchtest ihm das Beste bieten? Dann bist du hier genau richtig! Moderne Haustier-Gadgets sind weit mehr als nur Spielereien. Sie sind smarte Helfer, die den Alltag mit Hund oder Katze erleichtern, die Sicherheit erhöhen und sogar zur Gesundheit deines Lieblings beitragen können. Aber bei der Fülle an Produkten auf dem Markt fragst du dich vielleicht: Was brauche ich wirklich? Worauf sollte ich achten? Dieser Kaufratgeber hilft dir, die perfekten Gadgets für dein Zuhause und deinen Vierbeiner zu finden.</p>\n\n<h2>Warum smarte Gadgets für dein Haustier?</h2>\n\n<p>Der technologische Fortschritt macht auch vor der Welt unserer Haustiere nicht Halt. Und das ist gut so! Smarte Gadgets bieten eine Vielzahl von Vorteilen:</p>\n<ul>\n    <li>\n<strong>Mehr Komfort für dich und dein Tier:</strong> Ob automatische Futterspender oder selbstreinigende Katzentoiletten – viele Gadgets nehmen dir repetitive Aufgaben ab.</li>\n    <li>\n<strong>Bessere Überwachung und Sicherheit:</strong> GPS-Tracker oder Überwachungskameras geben dir ein gutes Gefühl, wenn du nicht zu Hause bist.</li>\n    <li>\n<strong>Gesundheitsförderung:</strong> Aktivitätstracker helfen, das Bewegungspensum deines Tieres im Auge zu behalten und Übergewicht vorzubeugen.</li>\n    <li>\n<strong>Unterhaltung und Beschäftigung:</strong> Interaktive Spielzeuge sorgen für Abwechslung und geistige Stimulation.</li>\n</ul>\n\n<h2>Die beliebtesten Haustier-Gadgets im Überblick</h2>\n\n<p>Die Auswahl ist riesig, aber einige Kategorien haben sich als besonders nützlich erwiesen:</p>\n\n<h3>1. Futter- und Wasserspender</h3>\n<p>Automatische Futterspender sind ideal, wenn du unregelmässige Arbeitszeiten hast oder dein Tier zu festen Zeiten füttern möchtest. Achte hierbei auf:</p>\n<ul>\n    <li>\n<strong>Programmierbarkeit:</strong> Wie viele Mahlzeiten pro Tag und wie genau lässt sich die Portion einstellen?</li>\n    <li>\n<strong>Material:</strong> Lebensmittelechte Materialien wie Edelstahl oder BPA-freier Kunststoff sind wichtig.</li>\n    <li>\n<strong>Reinigung:</strong> Sind die Komponenten leicht zu zerlegen und zu reinigen?</li>\n    <li>\n<strong>App-Steuerung:</strong> Manche Modelle lassen sich per Smartphone steuern und bieten sogar eine Kamera zur Überwachung.</li>\n</ul>\n<p>Trinkbrunnen animieren Katzen und Hunde, mehr zu trinken, was besonders für die Nierengesundheit wichtig ist. Hier solltest du auf die Filterqualität und die Lautstärke achten.</p>\n\n<h3>2. Überwachung und Sicherheit</h3>\n<p>Wenn du wissen möchtest, was dein Liebling macht, während du weg bist, sind Kameras eine gute Wahl. Viele bieten:</p>\n<ul>\n    <li>\n<strong>Zwei-Wege-Audio:</strong> Sprich mit deinem Tier oder höre, was es macht.</li>\n    <li>\n<strong>Bewegungserkennung:</strong> Erhalte Benachrichtigungen bei Aktivität.</li>\n    <li>\n<strong>Leckerli-Spender:</strong> Belohne dein Tier aus der Ferne.</li>\n</ul>\n<p>GPS-Tracker sind unverzichtbar für Freigänger-Katzen oder Hunde, die gerne mal ausbüxen. Achte auf:</p>\n<ul>\n    <li>\n<strong>Akkulaufzeit:</strong> Wie lange hält der Akku bei regelmässiger Nutzung?</li>\n    <li>\n<strong>Grösse und Gewicht:</strong> Er sollte dein Tier nicht stören.</li>\n    <li>\n<strong>Wasserdichtigkeit:</strong> Ein Muss für Outdoor-Abenteuer.</li>\n    <li>\n<strong>Monatliche Kosten:</strong> Viele Tracker erfordern ein Abo für die SIM-Karte.</li>\n</ul>\n\n<h3>3. Aktivitätstracker und intelligente Spielzeuge</h3>\n<p>Ein Aktivitätstracker am Halsband deines Hundes oder deiner Katze gibt dir Aufschluss über Bewegung, Schlaf und manchmal sogar den Kalorienverbrauch. Dies hilft, ein gesundes Gewicht zu halten und Krankheiten vorzubeugen. Achte auf eine robuste Bauweise und lange Akkulaufzeit.</p>\n<p>Intelligente Spielzeuge, die sich von selbst bewegen oder Leckerlis freigeben, können Langeweile vertreiben und die geistige Fitness fördern. Hier ist die Interaktivität und die Robustheit des Materials entscheidend.</p>\n\n<h2>Worauf du beim Kauf achten solltest – typische Fehler vermeiden</h2>\n\n<p>Bevor du dich für ein Gadget entscheidest, überlege dir genau, welche Bedürfnisse dein Tier und du habt. Hier sind ein paar wichtige Tipps:</p>\n<ul>\n    <li>\n<strong>Kompatibilität:</strong> Achte darauf, dass das Gadget zu deinem Haustier passt (Grösse, Rasse, Temperament). Ein zu grosser Tracker ist für eine kleine Katze ungeeignet.</li>\n    <li>\n<strong>Qualität und Langlebigkeit:</strong> Investiere in hochwertige Produkte. Billige Gadgets können schnell kaputtgehen oder sogar gefährlich sein. Lies Kundenbewertungen!</li>\n    <li>\n<strong>Benutzerfreundlichkeit:</strong> Die Einrichtung und Bedienung sollte intuitiv sein, sowohl für dich als auch für dein Tier.</li>\n    <li>\n<strong>Datenschutz:</strong> Bei Gadgets mit Kameras oder GPS-Funktion solltest du die Datenschutzbestimmungen des Herstellers prüfen.</li>\n    <li>\n<strong>Reinigung:</strong> Besonders bei Futter- und Wasserspendern ist eine einfache Reinigung entscheidend für die Hygiene.</li>\n    <li>\n<strong>Akkulaufzeit:</strong> Nichts ist ärgerlicher als ein Gadget, das ständig aufgeladen werden muss.</li>\n    <li>\n<strong>Kein Ersatz für Aufmerksamkeit:</strong> Gadgets sind Helfer, aber kein Ersatz für deine Zeit, Zuneigung und Bewegung mit deinem Tier.</li>\n</ul>\n\n<p>Vermeide den Fehler, zu viele Gadgets auf einmal zu kaufen. Starte mit ein oder zwei Produkten, die dir am wichtigsten erscheinen, und erweitere dann bei Bedarf. Dein Haustier muss sich auch erst an die neuen Dinge gewöhnen.</p>\n\n<h2>Fazit: Smarte Investitionen für ein glückliches Haustierleben</h2>\n\n<p>Moderne Haustier-Gadgets sind eine Bereicherung für den Alltag mit Hund und Katze. Sie bieten Komfort, Sicherheit und können sogar zur Gesundheit deines Lieblings beitragen. Mit den richtigen Informationen und einer bewussten Auswahl findest du die perfekten Helfer, die dein Leben und das deines Vierbeiners noch schöner machen.</p>\n<p>Neugierig geworden? Dann schau doch mal bei uns vorbei und lass dich inspirieren: <a href=\"/collections/sub-haustier\">Haustier-Tech bei LuxeStyle entdecken</a>. Wir wünschen dir viel Spass beim Stöbern und deinem Haustier viel Freude mit den neuen smarten Begleitern!</p>",
+   "body_laenge": 6271,
+   "body_sha256": "cd496095c863e3591c3d6247abee51f730ccbe41d46fa29b144b3b690d55266d",
+   "metafield_global_title_tag": null,
+   "metafield_global_description_tag": null,
+   "_tt": null,
+   "_dt": null
+  }
+ },
+ "S9:tier-maentel-jacken": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/756161249671",
+  "handle": "tier-maentel-jacken",
+  "roh": {
+   "handle": "tier-maentel-jacken",
+   "title": "Mäntel, Jacken & Westen",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Wintermäntel, Regenjacken, Westen und Overalls für Hunde und Katzen.</p>",
+   "seoTitle": "Mäntel, Jacken & Westen online kaufen | LuxeStyle CH",
+   "seoDescription": "Mäntel, Jacken & Westen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-tier-maentel-jacken"
+     }
+    ]
+   },
+   "productsCount": 165
+  }
+ },
+ "S9:tier-maentel-winter": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/756161315207",
+  "handle": "tier-maentel-winter",
+  "roh": {
+   "handle": "tier-maentel-winter",
+   "title": "Winterjacken & warme Mäntel",
+   "sortOrder": "BEST_SELLING",
+   "descriptionHtml": "<p>Winterjacken &amp; warme Mäntel aus unserer Auswahl «Mäntel, Jacken &amp; Westen».</p>",
+   "seoTitle": "Winterjacken & warme Mäntel online kaufen | LuxeStyle CH",
+   "seoDescription": "Winterjacken & warme Mäntel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-tier-maentel-winter"
+     }
+    ]
+   },
+   "productsCount": 55
+  }
+ },
+ "S9:kerzen-kerzenhalter": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/756167115143",
+  "handle": "kerzen-kerzenhalter",
+  "roh": {
+   "handle": "kerzen-kerzenhalter",
+   "title": "Kerzen & Kerzenhalter",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Kerzenhalter, Teelichthalter, LED-Kerzen, Duftkerzen und Kerzenwärmer für Tisch, Wand und Fensterbank.</p>",
+   "seoTitle": "Kerzen & Kerzenhalter online kaufen | LuxeStyle CH",
+   "seoDescription": "Kerzen & Kerzenhalter online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "sort-kerzen-kerzenhalter"
+     }
+    ]
+   },
+   "productsCount": 27
+  }
+ },
+ "S11:polyester-aufbewahrungstasche-460096": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15455795741057",
+  "handle": "polyester-aufbewahrungstasche-460096",
+  "roh": {
+   "handle": "polyester-aufbewahrungstasche-460096",
+   "title": "Polyester-Aufbewahrungstasche",
+   "seoTitle": "Polyester-Aufbewahrungstasche | LuxeStyle CH",
+   "seoDescription": "Polyester-Aufbewahrungstasche bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  }
+ },
+ "S11:aromatherapie-duftol-fur-luftbefeuchter-640556": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15450831815041",
+  "handle": "aromatherapie-duftol-fur-luftbefeuchter-640556",
+  "roh": {
+   "handle": "aromatherapie-duftol-fur-luftbefeuchter-640556",
+   "title": "Aromatherapie-Duftöl für Luftbefeuchter",
+   "seoTitle": "Aromatherapie-Duftöl für Luftbefeuchter | LuxeStyle CH",
+   "seoDescription": "Aromatherapie-Duftöl für Luftbefeuchter bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  }
+ },
+ "S11:universal-fernbedienung-fur-smartphones-386944": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15454046323073",
+  "handle": "universal-fernbedienung-fur-smartphones-386944",
+  "roh": {
+   "handle": "universal-fernbedienung-fur-smartphones-386944",
+   "title": "Universal-Fernbedienung für Smartphones",
+   "seoTitle": "Universal-Fernbedienung für Smartphones | LuxeStyle CH",
+   "seoDescription": "Universal-Fernbedienung für Smartphones bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  }
+ },
+ "S11:langer-damenmantel-im-kaschmir-look-600600": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15448670962049",
+  "handle": "langer-damenmantel-im-kaschmir-look-600600",
+  "roh": {
+   "handle": "langer-damenmantel-im-kaschmir-look-600600",
+   "title": "Langer Damenmantel im Kaschmir-Look",
+   "seoTitle": "Langer Damenmantel im Kaschmir-Look | LuxeStyle CH",
+   "seoDescription": "Langer Damenmantel im Kaschmir-Look bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  }
+ },
+ "S11:smarte-outdoor-kamera-mit-akku-758528": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15502251753857",
+  "handle": "smarte-outdoor-kamera-mit-akku-758528",
+  "roh": {
+   "handle": "smarte-outdoor-kamera-mit-akku-758528",
+   "title": "Smarte Outdoor-Kamera mit Akku",
+   "seoTitle": "Smarte Outdoor-Kamera mit Akku | LuxeStyle CH",
+   "seoDescription": "Smarte Outdoor-Kamera mit Akku – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  }
+ },
+ "S11:outdoor-aqua-schuhe-fur-damen-und-herren-896512": {
+  "typ": "product",
+  "gid": "gid://shopify/Product/15497429942657",
+  "handle": "outdoor-aqua-schuhe-fur-damen-und-herren-896512",
+  "roh": {
+   "handle": "outdoor-aqua-schuhe-fur-damen-und-herren-896512",
+   "title": "Outdoor- & Aqua-Schuhe für Damen und Herren",
+   "seoTitle": "Outdoor- & Aqua-Schuhe für Damen und Herren | LuxeStyle CH",
+   "seoDescription": "Outdoor- & Aqua-Schuhe für Damen und Herren – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  }
+ },
+ "S12:premium-geschenke": {
+  "typ": "collection",
+  "gid": "gid://shopify/Collection/687793897857",
+  "handle": "premium-geschenke",
+  "roh": {
+   "handle": "premium-geschenke",
+   "title": "Geschenkideen & Weihnachtsgeschenke",
+   "sortOrder": "MANUAL",
+   "descriptionHtml": "<p>Geschenkideen für Weihnachten und jeden anderen Anlass: Uhren und Schmuck, Taschen und Lederwaren, Kuscheldecken, Kerzenwärmer und Diffuser, Tech wie Powerbanks und Sternenprojektoren, dazu Spiele und Plüschtiere für Kinder. Oben stehen abwechselnd die Warenarten, damit du schnell einen Überblick bekommst — Preise von CHF 19 bis 150.</p><p>Gezielt suchen: <a href=\"/collections/geschenke-fuer-sie\">Geschenke für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Geschenke für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a> · <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Geschenke bis CHF 30</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichtelgeschenke unter CHF 20</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a></p><p>Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe. Die Lieferzeit steht auf jeder Produktseite — für Weihnachten lohnt sich ein früher Blick darauf.</p>",
+   "seoTitle": "Geschenkideen & Weihnachtsgeschenke kaufen | LuxeStyle Schweiz",
+   "seoDescription": "Geschenkideen für Weihnachten: Uhren, Schmuck, Kuscheldecken, Kerzenwärmer, Tech und Spielzeug von CHF 19 bis 150. Gratis-Versand in der Schweiz ab CHF 50.",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-alle"
+     }
+    ]
+   },
+   "productsCount": 389
+  }
+ },
+ "S12:geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass": {
+  "typ": "article",
+  "gid": "gid://shopify/Article/1001699606913",
+  "handle": "geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass",
+  "roh": {
+   "handle": "geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass",
+   "updatedAt": "2026-10-23T07:18:28Z",
+   "body": "<p>Du suchst ein Geschenk, das wirklich Freude macht – ohne ewiges Suchen? Wir haben die schönsten <strong>Geschenkideen 2026</strong> nach Anlass und Person sortiert.</p><h2>Geschenke für Sie</h2><p>Zeitloser Schmuck, ein Seiden-Kissenbezug oder ein Beauty-Set kommen fast immer gut an. Stöbere in der Kategorie <a href=\"https://luxestyle.ch/collections/fur-sie\">Für Sie</a> nach eleganten Lieblingsstücken.</p><h2>Geschenke für Ihn</h2><p>Eine klassische Uhr, ein Lederaccessoire oder ein praktisches Gadget treffen den Geschmack vieler Männer. Inspiration findest du unter <a href=\"https://luxestyle.ch/collections/fur-ihn\">Für Ihn</a> und bei den <a href=\"https://luxestyle.ch/collections/herrenuhren-schmuck\">Herrenuhren &amp; Schmuck</a>.</p><h2>Kleine Geschenke unter CHF 30</h2><p>Nicht jedes Geschenk muss teuer sein. Liebevolle Kleinigkeiten gibt es in der Auswahl <a href=\"https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Geschenke unter CHF 30</a> – ideal als Mitbringsel oder fürs Wichteln.</p><h2>Geschenke nach Anlass</h2><ul>\n<li>\n<strong>Geburtstag:</strong> persönlich &amp; nach Hobby auswählen.</li>\n<li>\n<strong>Hochzeit:</strong> hochwertige Wohnaccessoires oder Schmuck.</li>\n<li>\n<strong>Muttertag &amp; Vatertag:</strong> Wellness für sie, Praktisches für ihn.</li>\n</ul><h2>Tipp: Bestseller schenken</h2><p>Wenn du unsicher bist, sind unsere <a href=\"https://luxestyle.ch/collections/bestseller-shop\">Bestseller</a> eine sichere Wahl – sie kommen bei vielen Kundinnen und Kunden gut an.</p><h2>Häufige Fragen</h2><p><strong>Wie schnell ist die Lieferung?</strong> In der Regel 7–14 Werktage innerhalb der Schweiz.</p><p><strong>Kann ich umtauschen?</strong> Ja, du hast 30 Tage Rückgaberecht.</p><hr><p>👉 Finde das passende Geschenk <a href=\"https://luxestyle.ch/collections/fur-sie\">für Sie</a>, <a href=\"https://luxestyle.ch/collections/fur-ihn\">für Ihn</a> oder <a href=\"https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">unter CHF 30</a>. 🇨🇭 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · <strong>−10% mit Code WELCOME10</strong>.</p>\n<!-- lx-produkte -->\n<h2>Passend dazu im Shop</h2><ul>\n<li>\n<a href=\"/products/winter-geschenkset-fur-kinder-654100\">Winter-Geschenkset für Kinder</a> – CHF 46.90</li>\n<li>\n<a href=\"/products/herren-business-geschenkset-uhr-halskette-636600\">Herren Business Geschenkset Uhr &amp; Halskette</a> – CHF 15.90</li>\n<li>\n<a href=\"/products/herren-business-geschenkset-armbanduhr-mit-acc-635200\">Herren Business-Geschenkset: Armbanduhr mit Accessoires</a> – CHF 15.90</li>\n<li>\n<a href=\"/products/paar-geschenkset-energie-quarzuhren-schmuck-639300\">Paar-Geschenkset: Energie Quarzuhren &amp; Schmuck</a> – CHF 17.90</li>\n</ul><p><a href=\"/collections/fur-sie\">Mehr dazu im Shop ansehen</a></p>\n<!-- /lx-produkte -->",
+   "body_laenge": 2812,
+   "body_sha256": "91b135176e023be035f09ad2ef3a89948e3de061772a3897de7abe7f5ef60556",
+   "metafield_global_title_tag": "Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass | LuxeStyle",
+   "metafield_global_description_tag": "Die besten Geschenkideen 2026 für die Schweiz: für Sie, für Ihn, Geburtstag, Hochzeit & unter CHF 30. Schnell geliefert, −10% mit WELCOME10, Gratis-Versand ab CHF 50.",
+   "_tt": {
+    "id": "gid://shopify/Metafield/198895779447169",
+    "value": "Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass | LuxeStyle"
+   },
+   "_dt": {
+    "id": "gid://shopify/Metafield/198895779479937",
+    "value": "Die besten Geschenkideen 2026 für die Schweiz: für Sie, für Ihn, Geburtstag, Hochzeit & unter CHF 30. Schnell geliefert, −10% mit WELCOME10, Gratis-Versand ab CHF 50."
+   }
+  }
+ }
+}

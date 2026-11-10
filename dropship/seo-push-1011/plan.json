@@ -1,0 +1,1141 @@
+{
+ "stand": "2026-11-10",
+ "reihenfolge": [
+  "S7",
+  "S1",
+  "S3",
+  "S4",
+  "S5",
+  "S6",
+  "S8",
+  "S9",
+  "S11",
+  "S12"
+ ],
+ "maskeGid": "gid://shopify/Collection/690577015169",
+ "maskeTyp": "Kostüme & Verkleidung",
+ "plaene": {
+  "S7": {
+   "kurz": "Die Sammlung ft-maske zeigt künftig nur noch Kostüm- und Verkleidungsmasken (57 Produkte, davon 54 aktiv und 23 kaufbar) statt 221 aktiver Produkte mit Kosmetik, Schlafmasken und Beauty-Geräten; SEO-Titel, Meta und Text nennen nur Maskenarten mit mindestens 2 kaufbaren Artikeln. Schritt 3 des Vorschlags (Link in den Fasnacht-Hubs) entfällt hier und gehört in S1, das ft-maske in die Linkzeile aufnimmt.",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690577015169",
+     "handle": "ft-maske",
+     "felder_vorher": {
+      "seoTitle": "Fasnacht- & Party-Masken kaufen | LuxeStyle Schweiz",
+      "seoDescription": "Masken für Fasnacht, Halloween & Party · grosse Auswahl · Lieferung in die ganze Schweiz.",
+      "descriptionHtml": "<p>Masken für Fasnacht, Halloween und jede Party – vom gruseligen Klassiker bis zum eleganten Venezianer. Kauf auf Rechnung mit Klarna.</p>",
+      "ruleSet": {
+       "appliedDisjunctively": false,
+       "rules": [
+        {
+         "column": "TAG",
+         "relation": "EQUALS",
+         "condition": "maske"
+        }
+       ]
+      },
+      "title": "Masken",
+      "sortOrder": "CREATED_DESC"
+     },
+     "felder_nachher": {
+      "seoTitle": "Masken für Fasnacht & Verkleidung kaufen | LuxeStyle",
+      "seoDescription": "Masken für Fasnacht und zum Verkleiden: Latex-, Clown-, Teufel- und Schädelmasken, Halbmasken, Augen- und Dominomasken sowie Steampunk-Masken.",
+      "descriptionHtml": "<p>Masken für Fasnacht und zum Verkleiden: Latex-, Clown-, Teufel- und Schädelmasken, Halbmasken, Augen- und Dominomasken sowie Steampunk-Masken.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex-Kostüme &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>",
+      "ruleSet": {
+       "appliedDisjunctively": false,
+       "rules": [
+        {
+         "column": "TAG",
+         "relation": "EQUALS",
+         "condition": "maske"
+        },
+        {
+         "column": "TYPE",
+         "relation": "EQUALS",
+         "condition": "Kostüme & Verkleidung"
+        },
+        {
+         "column": "TITLE",
+         "relation": "CONTAINS",
+         "condition": "maske"
+        }
+       ]
+      }
+     },
+     "bemerkung": "Sammlungstitel «Masken», Handle und sortOrder (CREATED_DESC, gelesen 10.11.; Sammlung zuletzt geändert 22.10.) werden NICHT geschrieben. appliedDisjunctively=false heisst: alle drei Regeln müssen zutreffen (UND); nicht auf true drehen. Den Fallback «TITLE CONTAINS aske» streichen: TITLE CONTAINS ist nicht gross-/kleinschreibungsabhängig (gemessen, siehe belege). Abweichung von beiden Prüfern: «Party» ist aus SEO-Titel, Meta und Text gestrichen (nur 1 von 54 Masken nennt Party, Soll mindestens 2) und durch «Verkleidung» ersetzt (Produktart aller 54 ist «Kostüme & Verkleidung»); statt «Totenkopf-» steht «Schädelmasken» (Totenkopf nur 1 Titel, Schädel 3); statt «Steampunk-Gesichtsmasken» steht «Steampunk-Masken» (Gesichtsmasken nur 1 kaufbar, Steampunk insgesamt 2). Alle übrigen Auflagen beider Prüfer sind umgesetzt (Pestarzt/Federmasken/Skelett raus, Satz «Grösse und Ausführung …» raus, Zahl 57/54/23, Reihenfolge-Schritt). Das Datum «die am 11.11. beginnt» in kostueme-fasnacht und die Linkzeile in kostueme-fasnacht/kostueme-ch-lager gehören zu S1, nicht hierher. Lizenzfiguren in der Sammlung (Maske Jack Skellington lieferbar, Spiderman, Joker ×2, Mr Smith ausverkauft) stehen nicht im Text; für den Besitzer im Zusammenhang mit der Lizenzname-Regel des Google-Schaufensters anmerken."
+    }
+   ],
+   "pruefung_nach": "VOR dem Schreiben: Arten frisch zählen (je Art mindestens 2 kaufbare Titel: Latex 8, Clown 2, Teufel 2, Schädel 3, Halbmaske 2, Augen-/Dominomaske 3, Steampunk 2); fällt eine Art unter 2 (Clown, Teufel, Halbmaske, Steampunk stehen genau auf 2), diese Art aus seoDescription UND descriptionHtml streichen und die Meta-Länge (120–155) neu zählen. Live-Stand vorher mit felder_vorher vergleichen (Regel, SEO, Text), sonst abbrechen. Reihenfolge: nur EIN collectionUpdate mit ruleSet, seo{title,description} und descriptionHtml. NACH dem Schreiben: (1) Sammlung frisch lesen, ruleSet = nachher (3 Regeln, appliedDisjunctively false), Titel «Masken» und sortOrder CREATED_DESC unverändert, seoTitle/seoDescription/descriptionHtml zeichengleich nachher. (2) productsCount alle 60 s abfragen, bis zu 15 Minuten (Zwischenwerte wie 246 oder Mischwerte sind normal, Shopify rechnet die Mitgliedschaft neu): Soll 57 (54 ACTIVE + 3 DRAFT), kaufbar 23; Abweichung bis ±3 als Drift protokollieren; nach 15 Minuten unter 45 oder über 60 → Rücknahme. (3) Alle Mitglieder (products first:250): jedes Produkt productType «Kostüme & Verkleidung», Titel enthält «maske», Tag maske; 0 Produkte der Typen Hautpflege, Beauty-Tools, Damenmode; von den ersten 24 aktiven keines Kosmetik. (4) Storefront, höchstens 1 Aufruf mit Browser-Kopf und 8 s Pause: /collections/ft-maske HTTP 200, <title> = seoTitle, Meta = seoDescription, H1 «Masken», die 7 Links im zweiten Absatz vorhanden. (5) Folgeschritt (eigener Aufruf, erst nach 1–4): Trockenlauf HANDLES=ft-maske node automation/verfuegbar_zuerst.mjs, dann LIVE=1 HANDLES=ft-maske; danach 0 Ausverkaufte unter den ersten 12 aktiven (vorher 8 von 12, 15 von 24); ft-maske in HANDLES von lager-waechter.yml gehört in den PR von S2. Erst danach darf S1 die Linkzeile mit ft-maske in kostueme-fasnacht und kostueme-ch-lager anhängen (Beschreibung dort frisch lesen, vorhandene Absätze byte-gleich lassen). RÜCKNAHME: collectionUpdate mit felder_vorher (ruleSet [TAG EQUALS maske], seoTitle, seoDescription, descriptionHtml exakt wie vorher) und sortOrder CREATED_DESC (stand bei MANUAL durch den Folgeschritt: ZURUECK=1 LIVE=1 HANDLES=ft-maske node automation/verfuegbar_zuerst.mjs bzw. direkt sortOrder CREATED_DESC schreiben); ein Rückschritt der Regel allein stellt eine MANUAL-Reihenfolge nicht zurück. ERWARTUNG ehrlich: Hygiene, die Seite hält ihr Versprechen (heute beginnt sie mit 21 Kosmetik- und Schlafmasken unter den ersten 24); belegte Nachfrage klein (rund 35 kostümbezogene Einblendungen in 3 Monaten, 0 Klicks, alle auf Produktseiten); Index- und Rangwirkung unbekannt. Messung am 25.11.: Google-Index-Status von ft-maske (heute «Discovered/unknown»), danach Einblendungen der Seite.",
+   "belege": [
+    {
+     "aussage": "Neue Regel (TAG maske UND TYPE «Kostüme & Verkleidung» UND Titel enthält «maske») trifft 57 Produkte",
+     "zaehlung": "Alle 246 heutigen Mitglieder frisch gelesen (10.11.): 221 ACTIVE + 25 DRAFT; Typ «Kostüme & Verkleidung» 65 (62 aktiv, 3 Entwurf); davon Titel enthält «maske» (gross/klein egal) 57 = 54 ACTIVE + 3 DRAFT (Schaumstoff Maske Skelett, Augenmaske Teufel, Strumpfmaske gestrickt); kaufbar (ACTIVE und nicht tracksInventory mit totalInventory ≤ 0): 23 von 54 (22 getrackt mit Bestand > 0, 1 ungetrackt = Steampunk Halbmaske für Maskenbälle), ausverkauft 31."
+    },
+    {
+     "aussage": "Die 8 aktiven Kostüm-Typ-Produkte ohne «maske» im Titel fallen heraus, es rutscht nichts Fremdes hinein",
+     "zaehlung": "Ausfälle: Spazierstock The Joker ×2, FX 3D Klebetattoo ×2, Gesichtsvisier ×2, Petticoat lang, Cape Carmilla schwarz = 8; 62 − 8 = 54. Es kommen keine Produkte neu dazu, weil die Regel nur eine Teilmenge der 246 Tag-Treffer bildet (TAG bleibt Pflicht). 0 von 54 haben einen anderen Typ."
+    },
+    {
+     "aussage": "TITLE CONTAINS ist nicht gross-/kleinschreibungsabhängig, der Fallback «aske» entfällt",
+     "zaehlung": "Live-Sammlungen nur mit kleingeschriebenen TITLE-CONTAINS-Regeln, Mitglieder nur über Gross-/Kleinschreibung erklärbar: grill-bbq 77 von 77 Mitgliedern, angeln 35 von 35, garten-werkzeug-pflege 22 von 26 (z. B. «Grosser Angelrucksack …» bei Regel «angelrucksack»). Für ft-maske: «maske» in Kleinschreibung steht nur in 25 der 57 Titel, 33 Titel enthalten «Maske» gross (ein Titel beides); bei Gross-/Kleinschreibung-Beachtung gäbe es 25 statt 57 Treffer, gemessen gilt aber 57."
+    },
+    {
+     "aussage": "Maskenarten im Text sind je durch mindestens 2 kaufbare Artikel belegt",
+     "zaehlung": "Titel gesamt / kaufbar (54 aktive): Latex 12/8, Clown 5/2, Teufel 4/2, Schädel 3/3 (Latex Ram Schädel, Halbmaske Drachenschädel, Maske Bullenschädel), Halbmaske 3/2, Augenmaske 5/3, Domino 3/3 (dieselben 3 «Domino / Augenmaske»), Steampunk 6/2 (Steampunk Gesichtsmaske, Steampunk Halbmaske für Maskenbälle). Gestrichen wegen Soll: Pest/Pestarzt/Plague 4/0, Federmaske 2/0, Skelett 2/0, Totenkopf 1/1, Steampunk-Gesichtsmaske allein 1 kaufbar (Gesichtsmaske Steampunk ×2 und Steambunny ausverkauft), Horror 1/1, Zombie/Walker 1/1."
+    },
+    {
+     "aussage": "Anlass «Fasnacht» ist belegt, «Party», «Motto», «Maskenball», «Venezianer», «Halloween» kommen nicht in den Text",
+     "zaehlung": "Beschreibungen der 54 aktiven: Fasnacht 18 (10 kaufbar); Halloween 12 (5 kaufbar, wegen Besitzerregel gestrichen); Party 1; Maskenball 1 (nur im Titel der Steampunk Halbmaske); Motto 0; Venezian 0; Cosplay 0. Produktart «Kostüme & Verkleidung» bei 54 von 54 → «zum Verkleiden» belegt."
+    },
+    {
+     "aussage": "Der Satz «Grösse und Ausführung stehen beim jeweiligen Artikel» ist nicht gedeckt und entfällt",
+     "zaehlung": "variantsCount der 54 aktiven: 53 mit 1 Variante («Default Title»), 1 mit 4 Varianten (Steampunk Halbmaske für Maskenbälle)."
+    },
+    {
+     "aussage": "Länge und Kollisionen",
+     "zaehlung": "seoTitle 52 Zeichen (Python len), seoDescription 142 Zeichen (120–155). Gegen alle 1 723 Sammlungen (7 Seiten, frisch 10.11.) gelesen: 0 gleiche SEO-Titel, 0 gleiche Sammlungstitel, 0 gleiche Meta-Beschreibungen; keine andere Sammlung heisst nach Kostümmasken (Namenssuche «mask» in Handle und Titel: nur ft-maske sowie Schlaf-, Sturmhauben-, LED-, Arbeitsschutz- und Gesichtsmasken-Sammlungen)."
+    },
+    {
+     "aussage": "Alle 7 Linkziele existieren live, sind im Online Store veröffentlicht und haben kaufbare Produkte",
+     "zaehlung": "Frisch gelesen: kostueme-fasnacht «Kostüme & Fasnacht» 1 538 aktiv/915 kaufbar; ft-kinderkostuem 294/165; ft-damenkostuem 264/159; ft-herrenkostuem 249/153; ft-unisexkostuem «Unisex-Kostüme & Tierkostüme» 109/68; ft-peruecke 179/137; ft-kostuem-accessoire 255/135; alle publishedOnPublication(Online Store) = true. ft-maske selbst: im Online Store veröffentlicht (true), in keinem Menü (beide Prüfer)."
+    },
+    {
+     "aussage": "Heutige Reihenfolge nach der Regeländerung beginnt mit viel Ausverkauftem",
+     "zaehlung": "Die 54 aktiven wurden an nur zwei Tagen angelegt (53 am 23.07., 1 am 04.07.); bei CREATED_DESC sind von den ersten 12 8 und von den ersten 24 15 ausverkauft → Sortierung danach nötig (siehe pruefung_nach_dem_schreiben)."
+    },
+    {
+     "aussage": "Vorher-Stand ist zeichengenau live gelesen und seit der ersten Lesung unverändert",
+     "zaehlung": "collectionByHandle ft-maske zweimal gelesen, bis auf Byte gleich (updatedAt 2026-10-22T04:38:57Z); productsCount 246; Regel TAG EQUALS maske, appliedDisjunctively false; sortOrder CREATED_DESC."
+    }
+   ]
+  },
+  "S1": {
+   "kurz": "An die Beschreibung von kostueme-fasnacht und kostueme-ch-lager wird je ein zweiter Absatz «Nach Kategorie stöbern» mit sieben Links auf die Fasnacht-Unterseiten (Kinder, Damen, Herren, Unisex/Tiere, Perücken, Hüte, Accessoires) angehängt; die vorhandenen Absätze bleiben byte-identisch. «Masken» fehlt mit Absicht, weil ft-maske live noch überwiegend Kosmetik zeigt; der Link kommt erst mit S7 Schritt 3 und nur unter maschinell prüfbarer Bedingung. Wirkung ist ein Crawl-Hinweis für fünf nicht indexierte Unterseiten (Hypothese, kein Rang-Hebel).",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690562924929",
+     "handle": "kostueme-fasnacht",
+     "felder_vorher": {
+      "descriptionHtml": "<p>Kostüme, Perücken, Hüte, Masken und Accessoires für die Fasnacht, die am 11.11. beginnt, für Maskenbälle und Motto-Partys. Vieles kommt ab Schweizer Lager; das genaue Lieferdatum steht auf jeder Produktseite und in der Kasse.</p>"
+     },
+     "felder_nachher": {
+      "descriptionHtml": "<p>Kostüme, Perücken, Hüte, Masken und Accessoires für die Fasnacht, die am 11.11. beginnt, für Maskenbälle und Motto-Partys. Vieles kommt ab Schweizer Lager; das genaue Lieferdatum steht auf jeder Produktseite und in der Kasse.</p><p>Nach Kategorie stöbern: <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-hut\">Hüte &amp; Kopfbedeckung</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Nur descriptionHtml wird geschrieben (collectionUpdate input {id, descriptionHtml}); SEO-Titel, SEO-Beschreibung, Sammlungstitel, sortOrder MANUAL und Regeln bleiben unberührt. VORGABE-ENDFASSUNG = SIEBEN Links, OHNE «Masken» (Auflage des Prüfers: ft-maske ist live noch die Kosmetik-Sammlung, ruleSet nur TAG EQUALS maske, 246 Produkte, 221 aktiv, 178 kaufbar, davon nur 26 kaufbar der Produktart «Kostüme & Verkleidung»). Es gibt damit keine Reihenfolgeabhängigkeit von S7. Der Masken-Link kommt erst mit S7 Schritt 3 und nur bedingt (siehe anwendungsreihenfolge_hinweis): Fragment «<a href=\"/collections/ft-maske\">Masken</a> · » genau einmal direkt hinter «<a href=\"/collections/ft-peruecke\">Perücken</a> · » einfügen, nur wenn (a) ft-maske.ruleSet eine Regel column=TYPE, relation=EQUALS, condition=«Kostüme & Verkleidung» enthält, (b) die Sammlung mindestens 2 kaufbare Produkte hat (erwartet 23) und (c) der frisch gelesene Text noch kein «collections/ft-maske» enthält (kein Doppel). Absatz 1 bleibt byte-identisch (enthält ein Datum bzw. Preis/Frist, siehe unten: nicht Teil dieses Vorschlags). Die Beschreibung rendert im Hero-Block (lx-hero__beschr), Links dort weiss und unterstrichen. Absatz 1 enthält «die am 11.11. beginnt» (ab 12.11. veraltet): eigener datumsfreier Folgevorschlag, hier bewusst nicht angefasst."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/692604469633",
+     "handle": "kostueme-ch-lager",
+     "felder_vorher": {
+      "descriptionHtml": "<p>Kostüme und Verkleidungen ab Schweizer Lager, solange der Vorrat reicht. Das voraussichtliche Lieferdatum steht beim Artikel und in der Kasse. Perfekt, wenn die Fasnacht (ab 11.11.), ein Maskenball oder die Motto-Party vor der Tür steht. Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt · 30 Tage Rückgabe.</p>"
+     },
+     "felder_nachher": {
+      "descriptionHtml": "<p>Kostüme und Verkleidungen ab Schweizer Lager, solange der Vorrat reicht. Das voraussichtliche Lieferdatum steht beim Artikel und in der Kasse. Perfekt, wenn die Fasnacht (ab 11.11.), ein Maskenball oder die Motto-Party vor der Tür steht. Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt · 30 Tage Rückgabe.</p><p>Nach Kategorie stöbern: <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-hut\">Hüte &amp; Kopfbedeckung</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Nur descriptionHtml wird geschrieben (collectionUpdate input {id, descriptionHtml}); SEO-Titel, SEO-Beschreibung, Sammlungstitel, sortOrder MANUAL und Regeln bleiben unberührt. VORGABE-ENDFASSUNG = SIEBEN Links, OHNE «Masken» (Auflage des Prüfers: ft-maske ist live noch die Kosmetik-Sammlung, ruleSet nur TAG EQUALS maske, 246 Produkte, 221 aktiv, 178 kaufbar, davon nur 26 kaufbar der Produktart «Kostüme & Verkleidung»). Es gibt damit keine Reihenfolgeabhängigkeit von S7. Der Masken-Link kommt erst mit S7 Schritt 3 und nur bedingt (siehe anwendungsreihenfolge_hinweis): Fragment «<a href=\"/collections/ft-maske\">Masken</a> · » genau einmal direkt hinter «<a href=\"/collections/ft-peruecke\">Perücken</a> · » einfügen, nur wenn (a) ft-maske.ruleSet eine Regel column=TYPE, relation=EQUALS, condition=«Kostüme & Verkleidung» enthält, (b) die Sammlung mindestens 2 kaufbare Produkte hat (erwartet 23) und (c) der frisch gelesene Text noch kein «collections/ft-maske» enthält (kein Doppel). Absatz 1 bleibt byte-identisch (enthält ein Datum bzw. Preis/Frist, siehe unten: nicht Teil dieses Vorschlags). Die Beschreibung rendert im Hero-Block (lx-hero__beschr), Links dort weiss und unterstrichen. Absatz 1 enthält schon heute «ab CHF 50 nach Rabatt · 30 Tage Rückgabe» (Preis und Frist, bewusste Besitzerregel Versandschwelle vom 04.10.) und «ab 11.11.» (Datum, ab 12.11. veraltet): das verstösst gegen die Textregel, wird hier weder neu eingeführt noch behoben und gehört in den Bericht; das Ergebnis darf NICHT als «regelkonformer Gesamttext» berichtet werden, nur der angehängte Absatz ist regelkonform."
+    }
+   ],
+   "pruefung_nach": "VOR dem Schreiben: pro Sammlung descriptionHtml == felder_vorher zeichengleich (sonst Abbruch, neu lesen); beide felder_vorher als Sicherungsdatei ablegen; es wird nur descriptionHtml gesendet. NACH dem Schreiben (collection frisch lesen, nach etwa einer Minute): descriptionHtml == felder_nachher zeichengleich (bei Abweichung nur durch &amp;-Normalisierung prüfen, nicht blind neu schreiben); Länge 699 (kostueme-fasnacht) bzw. 783 (kostueme-ch-lager); genau 7 Vorkommen von «collections/ft-» im Text, 0 von «ft-maske» (bzw. 8 und 1, falls S7 Schritt 3 danach ausgeführt wurde); seo.title/seo.description unverändert (56/149 bzw. 45/130 Zeichen), Titel, sortOrder MANUAL und productsCount (1807 bzw. 1673) unverändert; kein Markierungsblock verloren. Storefront (höchstens 2 Abrufe, Browser-Kopf, 8 s Pause): beide Seiten HTTP 200, 7 Links auf collections/ft- im Hero-Block lx-hero__beschr, kein noindex, Seitengrösse unter 2 MiB (2 097 152 Byte; Zuwachs rund 0,5 KB gegenüber 1,56 MB bzw. 1,64 MB). Die 7 Zielseiten liefern HTTP 200 (Admin: veröffentlicht, 7 Kanäle). Index-Nachmessung mit inspect_urls am 13.11., 18.11. und 25.11., nicht am selben Tag, nur Index-Status der Zielseiten (Erwartung ehrlich klein: Prioritätshinweis, Wirkung Hypothese; Klicks in diesem Winter nicht zu erwarten, kostueme-fasnacht 34 Einblendungen in 28 Tagen, Nachfrage eher Januar/Februar). Basis 10.11. ca. 12:15 UTC: Kinder und Damen indexiert; Herren, Unisex, Accessoires und Masken «Discovered»; Hüte «URL ist Google nicht bekannt»; Herren, Hüte, Accessoires und Masken wechseln zwischen «unknown» und «Discovered»; Perücken «Crawled – currently not indexed» (zuletzt gecrawlt 10.09.); beide Hauptseiten indexiert (Crawl 31.10. bzw. 02.11.). Rücknahme: descriptionHtml beider Sammlungen auf felder_vorher zurückschreiben (Sicherungsdatei).",
+   "belege": [
+    {
+     "aussage": "Live-Text beider Hauptseiten ist zeichengleich zum «vorher»; keine Markierungsblöcke; SEO-Felder unverändert",
+     "zaehlung": "Admin-API 10.11. ca. 12:11 und 12:17 UTC (zweimal gelesen, beide Male gleich): descriptionHtml kostueme-fasnacht 232 Zeichen, kostueme-ch-lager 316 Zeichen; '<!--' kommt in 0 von 2 Texten vor; SEO-Titel 56 bzw. 45 Zeichen, SEO-Beschreibung 149 bzw. 130 Zeichen (len()); sortOrder beide MANUAL; kostueme-fasnacht zuletzt geändert 03.11., kostueme-ch-lager 28.10."
+    },
+    {
+     "aussage": "Neuer Absatz = alter Text + genau ein <p> mit SIEBEN Links; nichts entfernt; Länge wie vom Prüfer vorgegeben",
+     "zaehlung": "Python: neu.startswith(alt) True/True; Absatz 467 Zeichen (481 Byte), sichtbarer Text 147 Zeichen; descriptionHtml kostueme-fasnacht 232 -> 699 Zeichen, kostueme-ch-lager 316 -> 783 Zeichen; HTMLParser: 7 Links, 0 Tag-Fehler, 0 offene Tags; 6 Mittelpunkte U+00B7 (dasselbe Zeichen wie im bestehenden Text von kostueme-ch-lager); 0 Ziffern, 0 «ß», 0 «Halloween», 0 Preise/Daten im Absatz; kein Link auf ft-maske"
+    },
+    {
+     "aussage": "Warum ohne Masken-Link: ft-maske zeigt live noch Kosmetik (S7 nicht angewendet)",
+     "zaehlung": "Admin-API 10.11. 12:12 UTC: ft-maske ruleSet = [TAG EQUALS maske], updatedAt 22.10., 246 Produkte, 221 aktiv, 178 kaufbar. Kaufbare nach Produktart: Hautpflege 84, Kostüme & Verkleidung 26, Beauty-Tools 24, Damenmode 20, Aufbewahrung 5, Spielzeug 4, Beauty & Pflege 4, Elektronik 3. Erst die S7-Regel (TAG maske + Produktart «Kostüme & Verkleidung» + Titel enthält «maske») ergäbe 57 Produkte = 54 aktiv = 23 kaufbar (nachgerechnet)"
+    },
+    {
+     "aussage": "Alle 7 Linkziele existieren, sind im Online Store veröffentlicht, haben kaufbare Produkte; keine Weiterleitung greift",
+     "zaehlung": "Admin-API 10.11.: je 7 Kanäle inkl. Online Store (isPublished true), Metafeld seo.hidden bei allen leer; URL-Weiterleitungen mit Pfad /collections/ft-: 0. Aktiv/kaufbar (ACTIVE und nicht (getrackt und Bestand ≤ 0)): Kinder 294/165, Damen 264/159, Herren 249/153, Unisex 109/68, Perücken 179/137, Hüte 161/103, Accessoires 255/135 (alle gesamt: 327, 308, 268, 126, 191, 167, 297)"
+    },
+    {
+     "aussage": "Anker «Kinderkostüme», «Damenkostüme», «Herrenkostüme» sind belegt (Anker = Sammlungstitel, kein Zusatzversprechen)",
+     "zaehlung": "Titel kaufbarer Produkte mit Kinder/Kids/Jungen/Mädchen/Baby/Jahre: 63 von 165; Damen/Frau/Lady: 16 von 159; Herren/Mann/Männer: 12 von 153. Die übrigen hängen am Lieferantentag kinderkostuem/damenkostuem/herrenkostuem (Regel jeder Sammlung ist dieser Tag: alle 165, 159 bzw. 153 kaufbaren Produkte tragen ihn). Prüfer 2 zählte im Volltext (Titel, Optionen, Beschreibung) Kinder bei 243 von 294 aktiven, Herren bei 24 von 249"
+    },
+    {
+     "aussage": "Anker «Unisex- & Tierkostüme» ist belegt",
+     "zaehlung": "68 kaufbare in ft-unisexkostuem (alle mit Tag unisexkostuem); Titel mit Tierwort (breite Wortliste von Katze bis Dinosaurier) 23 von 68, z. B. Erdmännchen, Bär, Dinosaurier; der Anker folgt dem Sammlungstitel «Unisex-Kostüme & Tierkostüme»"
+    },
+    {
+     "aussage": "Anker «Perücken», «Hüte & Kopfbedeckung», «Kostüm-Accessoires» sind belegt",
+     "zaehlung": "Perücken: 135 von 137 kaufbaren Titeln nennen Perücke/Haar/Zopf/Bart. Hüte: 96 von 103 nennen Hut/Mütze/Cap/Helm/Kappe/Haube/Krone/Stirnband/Kopf (weitere 3 sind Cowboy/Sombrero-Hüte; artfremd 4: Tutu ×2, Leggins, Maske Steampunk). Accessoires: 135 kaufbar, Produktart Kostüme & Verkleidung 97, Accessoires 32, Partydeko & Ballone 3, Spielzeug & Spiele 3 (Anker = Sammlungstitel)"
+    },
+    {
+     "aussage": "Halloween-/Horror-Anteil bei den Kostüm-Accessoires (Grund, den Link als letzten stehen zu lassen)",
+     "zaehlung": "Titel mit Halloween|Horror|Blut: 15 von 255 aktiven, 5 von 135 kaufbaren; mit breiter Wortliste (zusätzlich Skelett, Totenkopf, Zombie, Hexe, Teufel, Spinne, Vampir, Gruse, Geist, Sarg, Grab, Kürbis, Mumie, Monster): 33 von 255 aktiven, 11 von 135 kaufbaren. Der Prüfer 2 zählte mit eigener Wortliste 37 aktive (Zahl hängt an der Liste). Die frühere Angabe «36 von 255 Titeln Horror/Blut» ist nicht reproduzierbar und entfällt"
+    },
+    {
+     "aussage": "Hauptseiten und Menü verlinken die Unterseiten heute nicht; alle 14 ft-Sammlungen stehen in der Sitemap",
+     "zaehlung": "0 Links auf collections/ft-* in Fasnacht-Seite (Prüfer 1 und 2 unabhängig, 1 565 190 Byte bzw. 1 562 158 Byte), kostueme-ch-lager (Prüfer 2, 1 638 262 Byte), Startseite und Hauptmenü (784 Einträge); Sitemap-Datei seo1011/out/tech_sm_coll1.xml (Abruf 10.11. 09:00 UTC) selbst durchsucht: 14 verschiedene ft-Handles, darunter alle acht Zielhandles inkl. ft-maske; die Sitemap wurde von mir nicht neu abgerufen. Der Link ist ein Prioritätshinweis, kein neuer Entdeckungsweg; Wirkung Hypothese"
+    },
+    {
+     "aussage": "Index-Status der Ziele (frisch, inspect_urls 10.11. ca. 12:15 UTC, Property luxestyle.ch)",
+     "zaehlung": "ft-kinderkostuem und ft-damenkostuem «Submitted and indexed» (Crawl 21.09. bzw. 30.09.); ft-herrenkostuem, ft-unisexkostuem, ft-kostuem-accessoire und ft-maske «Discovered - currently not indexed»; ft-kostuem-hut «URL is unknown to Google»; ft-peruecke «Crawled - currently not indexed» (zuletzt gecrawlt 10.09.); kostueme-fasnacht (Crawl 31.10.) und kostueme-ch-lager (02.11.) «Submitted and indexed». Der Status von Herren, Hüte, Accessoires und Masken wechselt zwischen «unknown» und «Discovered» (um 11:45 UTC meldete der Prüfer Herren und Masken «unknown», Hüte und Accessoires «Discovered»): kein fester Befund, nur «nicht indexiert». Bei Perücken kennt Google die Seite schon: dort ist ein Linkgewinn nur eine Hypothese und wird nicht als Lösung versprochen"
+    },
+    {
+     "aussage": "Ausverkauft-Lage vorn auf den Zielseiten (Begründung für S2 vor S1)",
+     "zaehlung": "Von den ersten 24 aktiven Produkten in heutiger Seitenreihenfolge nicht kaufbar: Kinder 13, Damen 15, Herren 11, Unisex 5, Perücken 6, Hüte 1, Accessoires 3; von den ersten 48: 30, 26, 22, 15, 10, 2, 4. sortOrder: Kinder, Damen, Herren, Unisex, Perücken CREATED_DESC; Hüte und Accessoires MANUAL. HANDLES des Lager-Wächters (lager-waechter.yml Zeile 85, Repo gelesen): ft-kostuem-accessoire, ft-kostuem-hut, spielzeug-ch-lager, blitzversand-schweiz, kostueme-ch-lager, kostueme-fasnacht; die fünf CREATED_DESC-Sammlungen fehlen dort"
+    },
+    {
+     "aussage": "Nebenbefund ausserhalb von S1 (nicht geändert): Lieferzeit und «Halloween» in den Zielseiten selbst",
+     "zaehlung": "Frisch gelesen 10.11.: «meist 2–3 Werktage» (bzw. «meist in 2–3 Werktagen») steht in der SEO-Beschreibung UND im Beschreibungstext von ft-kinderkostuem, ft-damenkostuem, ft-herrenkostuem und ft-kostuem-hut (je 4 von 4; nicht bei Unisex, Perücken, Accessoires). Abweichung zum Prüfer-Wortlaut («Text nur bei Kinder und Herren»): frisch gezählt steht der Satz im Text auch bei Damen und Hüte. «Halloween» steht im Beschreibungstext von ft-damenkostuem, ft-kostuem-hut und ft-maske sowie in der SEO-Beschreibung von ft-damenkostuem und ft-maske. Dazu in ft-kostuem-hut «Gratis-Versand … ab CHF 50, 30 Tage Rückgabe». Eigener Folgevorschlag (S3/S6/S7), nicht Teil von S1"
+    }
+   ]
+  },
+  "S3": {
+   "kurz": "Die drei Fasnacht-Sammlungen Kinder, Damen und Herren bekommen SEO-Titel mit dem Suchwort «Fasnacht» (ohne Emoji), eine Meta-Beschreibung und eine Einleitung ohne «meist 2–3 Werktage» und ohne «Halloween», dazu eine Linkzeile auf sechs verwandte Fasnacht-Seiten. Genannt werden nur Sortimentsteile mit mindestens 2 kaufbaren Produkten (gezählt am 10.11.): Herren ohne Lederhosen, Trachtenhemden und Clown, Damen ohne Vampir und Trachtenbluse, Kinder ohne Meerjungfrau und Hase.",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576884097",
+     "handle": "ft-kinderkostuem",
+     "felder_vorher": {
+      "seoTitle": "🧒 Kinderkostüme | LuxeStyle",
+      "seoDescription": "Kostüme für Kinder – Tiere, Helden & mehr. Ab Schweizer Lager, meist 2–3 Werktage.",
+      "descriptionHtml": "<p>Kostüme für Kinder – Tiere, Helden &amp; mehr. Ab Schweizer Lager, meist 2–3 Werktage.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Kinderkostüme für Fasnacht & Party kaufen | LuxeStyle",
+      "seoDescription": "Kinderkostüme für Fasnacht und Motto-Party: Hexe, Prinzessin, Pirat und Ritter, Einhorn und Drache, Tierkostüme, dazu Umhänge und Tutus.",
+      "descriptionHtml": "<p>Kinderkostüme für Fasnacht, Umzug und Motto-Party. Die Auswahl reicht von Hexe, Prinzessin, Pirat und Ritter über Einhorn und Drache bis zu Tierkostümen, zum Beispiel als Tiger, Pinguin oder Marienkäfer, und Plüsch-Modellen. Dazu kommen Umhänge, Tutus und Overalls. Wo es mehrere Grössen gibt, wählst du sie auf der jeweiligen Produktseite.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Gesendet werden nur id, seo{title,description} und descriptionHtml. Kein sortOrder (live CREATED_DESC) und kein ruleSet (live eine Tag-Regel). Sammlungstitel unverändert. Live gelesen 10.11. 11:15 UTC, updatedAt 2026-10-24T21:22:49Z."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576785793",
+     "handle": "ft-damenkostuem",
+     "felder_vorher": {
+      "seoTitle": "👗 Damenkostüme | LuxeStyle",
+      "seoDescription": "Kostüme & Verkleidung für Damen – Fasnacht, Halloween & Motto-Partys. CH-Lager, meist in 2–3 Werktagen.",
+      "descriptionHtml": "<p>Kostüme &amp; Verkleidung für Damen – Fasnacht, Halloween &amp; Motto-Partys. CH-Lager, meist in 2–3 Werktagen.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Damenkostüme für Fasnacht & Party kaufen | LuxeStyle",
+      "seoDescription": "Damenkostüme für Fasnacht und Motto-Party: Dirndl und Dirndlblusen, Hexe, Piratin und Prinzessin, Steampunk, Charleston und Hippie-Looks.",
+      "descriptionHtml": "<p>Damenkostüme für Fasnacht, Maskenball und Motto-Party. Die Auswahl reicht von Dirndl und Dirndlblusen über Hexe, Piratin und Prinzessin bis zu Steampunk-, Charleston- und Hippie-Looks. Wo es mehrere Grössen gibt, wählst du sie auf der jeweiligen Produktseite.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Gesendet werden nur id, seo{title,description} und descriptionHtml. Kein sortOrder (live CREATED_DESC) und kein ruleSet (live eine Tag-Regel). Sammlungstitel unverändert. Live gelesen 10.11. 11:15 UTC, updatedAt 2026-10-18T20:45:23Z."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576818561",
+     "handle": "ft-herrenkostuem",
+     "felder_vorher": {
+      "seoTitle": "🤵 Herrenkostüme | LuxeStyle",
+      "seoDescription": "Kostüme & Verkleidung für Herren – ab Schweizer Lager, meist 2–3 Werktage.",
+      "descriptionHtml": "<p>Kostüme &amp; Verkleidung für Herren – ab Schweizer Lager, meist 2–3 Werktage.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Herrenkostüme für Fasnacht & Party kaufen | LuxeStyle",
+      "seoDescription": "Herrenkostüme für Fasnacht und Motto-Party: Mönch, Pirat und Vampir sowie Hippie- und Disco-Outfits für Maskenball, Umzug und Party.",
+      "descriptionHtml": "<p>Herrenkostüme für Fasnacht, Maskenball und Motto-Party. Die Auswahl reicht von Mönch, Pirat und Vampir bis zu Hippie- und Disco-Outfits. Wo es mehrere Grössen gibt, wählst du sie auf der jeweiligen Produktseite.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Gesendet werden nur id, seo{title,description} und descriptionHtml. Kein sortOrder (live CREATED_DESC) und kein ruleSet (live eine Tag-Regel). Sammlungstitel unverändert. Live gelesen 10.11. 11:15 UTC, updatedAt 2026-10-28T11:14:12Z."
+    }
+   ],
+   "pruefung_nach": "(1) Je Sammlung frisch zurücklesen und exakt mit felder_nachher vergleichen: seo.title, seo.description, descriptionHtml. Unverändert erwartet: Sammlungstitel (Kinderkostüme, Damenkostüme, Herrenkostüme), ruleSet je genau eine TAG-Regel (kinderkostuem, damenkostuem, herrenkostuem), 7 Kanäle, sortOrder wie unmittelbar vor dem Schreiben (heute CREATED_DESC; S2 kann es ändern), Produktzahl ± wenige (heute 327/308/268). (2) Je Sammlung ein Storefront-Abruf (Browser-Kopf, 8 s Pause, höchstens 3 Seiten): HTTP 200, <title> exakt der neue seo.title, Meta und og:description der neue Text, im Hero der Text und alle 6 Links sichtbar; Handy-Blick: Hero nicht überladen (Vergleichswert 110–120 Wörter vom 09.11.), wirkt es überladen oder fehlt ein Link, zurücknehmen. (3) Rücknahme: die drei Felder je Sammlung auf felder_vorher zurückschreiben (Roh-JSON mit Emojis aus der Sicherung), danach zurücklesen. (4) Am 25.11. kaufbar neu zählen: fällt ein genannter Begriff unter 2 kaufbare Titel (am ehesten Prinzessin und Charleston bei Damen, Ritter/Einhorn/Tiger/Pinguin/Marienkäfer bei Kinder), den Begriff aus Meta und Einleitung nehmen; die Texte altern mit dem Bestand. (5) Wirkung ehrlich: Hygiene und Suchwort «Fasnacht» im Titel, keine Rang- oder Klickwirkung belegbar (3 Monate: Kinder 2 Einblendungen Position 19, Damen 1 Einblendung Position 28, Herren 0, alle 0 Klicks); am 25.11. inspect_urls und Search Console je Seite, bei ft-herrenkostuem (laut Prüfern «Discovered – currently not indexed») nur «bekannt/indexiert ja/nein», kein Rangvergleich; ein Index-Antrag durch den Besitzer (nächste INDEX-LISTE) ist dort der eigentliche Hebel; Fasnacht-Nachfrage vermutlich erst ab Januar (Hypothese). (6) Im Bericht: «ohne Lieferversprechen» gilt nur für SEO-Titel, Meta und Hero-Text der drei Seiten; das FAQ-Akkordeon und das Chat-Skript derselben Seiten nennen weiter «meist 2–3 Werktage» (offene Besitzerfrage).",
+   "belege": [
+    {
+     "aussage": "Der Live-Stand («vorher») stimmt zeichengenau mit der Lesung dieses Baus überein; kein Markierungsblock (ls-verwandt, gd2) vorhanden",
+     "zaehlung": "Admin-API zweimal gelesen (Beginn und 11:15 UTC am 10.11.): seoTitle, seoDescription, descriptionHtml und updatedAt (24.10. / 18.10. / 28.10.) unverändert in 3 von 3 Sammlungen; «<!--» kommt in 0 von 3 Texten vor; je ein <p>"
+    },
+    {
+     "aussage": "Kaufbar nach der Aufgaben-Definition (ACTIVE und nicht (tracksInventory und totalInventory ≤ 0)) ist identisch mit availableForSale einer Variante",
+     "zaehlung": "Kinder 165 kaufbar von 294 aktiv (327 Produkte), Damen 159 von 264 (308), Herren 153 von 249 (268); Abweichung zwischen beiden Definitionen: 0 Produkte in allen drei Sammlungen"
+    },
+    {
+     "aussage": "Kinder: jeder genannte Begriff hat mindestens 2 kaufbare Titel (kaufbar von aktiv)",
+     "zaehlung": "Hexe 7/23, Prinzessin 7/13, Pirat 8/11, Ritter 3/6, Einhorn 3/5, Drache 4/6, Tiger 3/3, Pinguin 3/3, Marienkäfer 3/4, Plüsch 11/14, Umhang 6/17 (davon ein Lizenz-Titel «Batgirl», im Text nicht genannt), Tutu 8/11, Overall 8/11; Tierkostüme (Titel mit Tiername oder Fabelwesen): 37 kaufbar von 51 aktiv"
+    },
+    {
+     "aussage": "Damen: jeder genannte Begriff hat mindestens 2 kaufbare Titel",
+     "zaehlung": "Dirndl (ohne Bluse) 13/27, Dirndlbluse 4/7, Hexe 3/9, Piratin 4/5, Prinzessin 2/7, Steampunk 6/11, Charleston 2/4, Hippie 5/5; Prinzessin und Charleston stehen genau an der Untergrenze 2"
+    },
+    {
+     "aussage": "Herren: jeder genannte Begriff hat mindestens 2 kaufbare Titel",
+     "zaehlung": "Mönch 4/6, Pirat 4/5, Vampir 3/4, Hippie 3/4, Disco 4/5"
+    },
+    {
+     "aussage": "Gestrichene Begriffe tragen nicht (Auflage Prüfer 2): zu wenig kaufbar oder nicht passend",
+     "zaehlung": "Kinder Meerjungfrau 1/4, Hase 0/1; Damen Vampir 0/6, Trachtenbluse 1/4 (stattdessen Dirndlbluse 4/7); Herren Lederhose 1/15, Trachtenhemd 1/7, Clown 5/8 kaufbar, davon 4 von 5 Horror-, Böser- oder Weltraum-Horror-Clown"
+    },
+    {
+     "aussage": "Beispiele im Kinder-Text neu gewählt: Tiger, Pinguin, Marienkäfer statt Tiger, Löwe, Dinosaurier",
+     "zaehlung": "kaufbar Tiger 3, Pinguin 3, Marienkäfer 3 gegen Löwe 2 und Dinosaurier 2 (davon ein Skelett-Kostüm «Tyrannosaurus»); Hase 0 und Meerjungfrau 1 bleiben draussen"
+    },
+    {
+     "aussage": "Der Satz zur Grösse ist nur halb zutreffend und wurde deshalb auf «Wo es mehrere Grössen gibt, wählst du sie auf der jeweiligen Produktseite» eingeschränkt; «Ausführung» ist gestrichen",
+     "zaehlung": "Anteil kaufbarer Produkte mit Option «Grösse» und mindestens 2 Werten: Kinder 113 von 165 (68 %), Damen 130 von 159 (82 %), Herren 127 von 153 (83 %); andere Optionen mit Auswahl (Farbe, Modell, Ausführung): 0 bei Kinder und Damen, 1 bei Herren (Option «Design»); der Rest hat «Title» (Einzelprodukt)"
+    },
+    {
+     "aussage": "Alle Linkziele existieren, sind auf 7 Kanälen veröffentlicht und haben kaufbare Produkte; keine Weiterleitung übersteuert einen Pfad",
+     "zaehlung": "Admin-API 10.11.: kostueme-fasnacht 1 807 Produkte (915 kaufbar), ft-kinderkostuem 327, ft-damenkostuem 308, ft-herrenkostuem 268, ft-unisexkostuem 126 (68 kaufbar), ft-peruecke 191 (137), ft-kostuem-accessoire 297 (135); alle Resource-Publications 7; urlRedirects für alle 9 geprüften Pfade (auch ft-maske, ft-kostuem-hut): 0. Ankertext Unisex verkürzt wie in S1 («Unisex- & Tierkostüme»; Sammlungstitel «Unisex-Kostüme & Tierkostüme»), übrige Anker gleich dem Sammlungstitel"
+    },
+    {
+     "aussage": "Keine Titel- oder Beschreibungs-Kollision der neuen SEO-Felder mit den 1 723 Sammlungen",
+     "zaehlung": "Frisch gelesen (7 Seiten à 250 über collections(first:250), 10.11.): exakte Übereinstimmung mit einem SEO-Titel oder Sammlungstitel: 0, mit einer SEO-Beschreibung: 0; Sammlungen mit «Kinder-/Damen-/Herrenkostüm» im Titel oder SEO-Titel: nur die drei Sammlungen selbst"
+    },
+    {
+     "aussage": "Textregeln eingehalten",
+     "zaehlung": "Prüfskript über alle neun Felder: 0 Treffer für Ziffern, CHF, Werktag, Lieferung, Versand, Rabatt, Rückgabe, Garantie, Halloween, Weihnacht, ß, Marken und Lizenznamen (Widmann, Orlob, Disney, Marvel, Batman, Batgirl, Mario, Kitty, Jedi und weitere); keine Platzhalter; Emojis im SEO-Titel entfallen bewusst (Vorschlag und beide Prüfer); Markierungsblöcke waren nie vorhanden"
+    }
+   ]
+  },
+  "S4": {
+   "kurz": "Die Sammlung «Modellbau & Sammelfiguren» (34 aktive, kaufbare Produkte) behauptet in Titel, SEO-Feldern und Einleitung Sammelfiguren, Steckmodelle und Bemalen; das ist am Live-Stand nicht belegt (0 Treffer für «figur», «bemal», «steckmodell» in Titeln und Beschreibungen). Titel, SEO-Titel, Meta-Beschreibung und Einleitung werden auf belegte Sortimentsteile umgestellt (Metall, Holz, Papier, Kunststoff-Bausteinsets, fertige Flugzeug- und Automodelle); Handle, Regel, Sortierung und Produkte bleiben unberührt.",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/755392676231",
+     "handle": "modellbau",
+     "felder_vorher": {
+      "title": "Modellbau & Sammelfiguren",
+      "seoTitle": "Modellbau & Sammelfiguren online kaufen | LuxeStyle CH",
+      "seoDescription": "Modellbau & Sammelfiguren: Bausätze, Steckmodelle und Sammelfiguren. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Modellbausätze, Steckmodelle und Sammelfiguren zum Bauen, Bemalen und Ausstellen.</p>"
+     },
+     "felder_nachher": {
+      "title": "Modellbau & Bausätze",
+      "seoTitle": "Modellbau: Metallmodelle, 3D-Puzzles & Bausätze | LuxeStyle",
+      "seoDescription": "Modellbau: Metallmodelle, 3D-Puzzles und Holzbausätze zum Selberbauen sowie fertige Flugzeug- und Automodelle. Auswahl für die Schweiz bei LuxeStyle.",
+      "descriptionHtml": "<p>Bausätze und 3D-Puzzles aus Metall, Holz oder Papier zum Selberbauen, dazu Bausteinsets aus Kunststoff, darunter Spieluhren. Mehrere Modelle bilden Gebäude nach. Ausserdem gibt es fertige Modelle von Flugzeugen und Autos.</p>"
+     },
+     "bemerkung": "Nur diese vier Felder schreiben (collectionUpdate title, seo{title,description}, descriptionHtml); kein Handle, kein redirectNewHandle, kein ruleSet, kein sortOrder, kein Bildfeld. descriptionHtml enthält live keinen Markierungsblock (weder ls-verwandt noch gd2, 10.11. frisch gelesen): ändert sich das vor dem Schreiben, bricht die Gleichheitsprüfung gegen felder_vorher ab, dann Blöcke erhalten und nur den ersten Absatz ersetzen. OFFEN (nicht Teil dieses Schreibens): (1) Das Sammlungsbild pinnwand-modellbau.jpg (2000x1000, am 10.11. von mir angesehen) trägt eingebrannt «Modellbau & Sammelfiguren» und «34+ ARTIKEL»; sein Alt-Text lautet live «Modellbau & Sammelfiguren – LuxeStyle-Pinnwand». Das Wort «Sammelfiguren» bleibt auf der Seite sichtbar, bis das Banner mit kategorie_banner.mjs neu gebaut und getauscht ist; dabei den Alt-Text auf «Modellbau & Bausätze – LuxeStyle-Pinnwand» setzen (der Schreibweg kennt kein Bildfeld, und ein Alt-Text, der den eingebrannten Titel verschweigt, würde dem sichtbaren Bild widersprechen). (2) Hauptmenü: zwei Einträge «Modellbau & Sammelfiguren» (Wohnen & Garten > Basteln & DIY; Sport & Party > Sticker, Journaling & Modelle) ziehen nicht mit; nur per menuUpdate mit erhaltenen Ids ändern. (3) FR: nur der Titel ist übersetzt («Maquettes & figurines de collection», outdated false; body_html, meta_title, meta_description haben keine FR-Übersetzung); nach dem Schreiben wird er veraltet. Vorschlag für den Folgeschritt: translationsRegister mit frischem Digest (nach dem Titel-Update neu lesen, der Digest vom 10.11. d010b08a… gilt dann nicht mehr) auf «Maquettes & kits de construction», alter Wert zur Rücknahme sichern; /fr ist noindex, nur Kohärenz. (4) Repo: automation/lib/kategorien.mjs Zeilen 281 bis 283 (titel, beschreibung, seoBeschreibung des Eintrags modellbau) führen noch den alten Wortlaut; auf den neuen Stand nachführen, sonst bringt ein späterer Bild-/Bannerlauf «Sammelfiguren» zurück (kategorien_anlegen.mjs überschreibt Titel/SEO nur mit gesetztem «aktualisiere»); im FR-Wörterbuch (dropship/fr-uebersetzung-0811/menue_fr_1.mjs, sammlungen_fr_1.mjs) den Eintrag ebenfalls. Risiko-Ergänzung: Überschneidung mit modellautos (106 Produkte, 3 gemeinsam), puzzles-3d-holz, klemmbausteine-bausaetze; in der Search Console keine Anfrage mit «baus*» im Fenster 11.10.–07.11., also keine messbare Kannibalisierung. Erwartung ehrlich: Korrektur einer falschen Aussage (Hygiene), kein belegbarer Ranking-Gewinn (26 Einblendungen, 0 Klicks in 28 Tagen; «modellbau» 12 Einblendungen Position 11,1, «modelbau» 7 Position 10); Messung am 25.11. kann nur zeigen, ob die Seite indexiert bleibt und die Anfragen «modellbau»/«modelbau» auf ihr landen."
+    }
+   ],
+   "pruefung_nach": "Vor dem Schreiben: Live-Stand der vier Felder auf Gleichheit mit felder_vorher prüfen (zeichengenau), Sicherung der vier Altwerte als JSON ablegen, Trockenlauf als eigener Aufruf. Danach alle vier Felder frisch zurücklesen und gleich felder_nachher erwarten; erwartet ausserdem: handle weiter «modellbau», productsCount 34 (Rückfall: weicht die Zahl ab, ist das nicht durch dieses Schreiben verursacht, da weder ruleSet noch sortOrder geschrieben werden; trotzdem melden), ruleSet TAG = sort-modellbau unverändert, sortOrder MANUAL, image.altText unverändert, SEO-Titel höchstens 60 und Meta 149 Zeichen. Titelkollision nach dem Schreiben erneut gegen alle 1723 Sammlungen lesen (erwartet 0). Höchstens ein Storefront-Abruf (Browser-Kopf): <title> = SEO-Titel, H1 «Modellbau & Bausätze», Meta-Beschreibung gesetzt. Rücknahme: felder_vorher zurückschreiben (title, seo.title, seo.description, descriptionHtml). Messung der Wirkung am 25.11. (Anfragen «modellbau», «modelbau»; erwartet wird kein belegbarer Gewinn, nur Indexierung und Zuordnung prüfen).",
+   "belege": [
+    {
+     "aussage": "Die alten Versprechen «Sammelfiguren», «Steckmodelle», «Bemalen» sind unbelegt",
+     "zaehlung": "34 aktive Produkte der Sammlung (10.11.): «figur» 0 Titel / 0 Beschreibungen, «bemal» 0/0, «steckmodell» 0/0, «sammelfigur» 0/0"
+    },
+    {
+     "aussage": "Alle 34 Produkte sind kaufbar",
+     "zaehlung": "Status ACTIVE 34 von 34; tracksInventory false bei 34 von 34 (CJ-Ware, Bestand 0 heisst nicht ausverkauft) = 34 kaufbar; productsCount 34, Regel TAG sort-modellbau, MANUAL"
+    },
+    {
+     "aussage": "«Metallmodelle» (SEO-Titel, Meta) und «aus Metall» (Einleitung)",
+     "zaehlung": "Titel mit Metall/Edelstahl/Legierung 14 (exakt «Metall» 12), Beschreibungen 20; davon 6 Metall-Bausätze/-Puzzles zum Selberbauen (Big Bee, Tiger-Drachenklaue, Phönixkrone, Metallpuzzle Architektur, Metallpuzzle Motorrad, Fregatte)"
+    },
+    {
+     "aussage": "«3D-Puzzles» und «Holz»",
+     "zaehlung": "Titel mit «Puzzle» 5 (3D 9 Titel), Holz im Titel 4 (3D-Holzpuzzle Architektur, Punk-Uhr aus Holz, Retro Holzmodell, Holzbausätze), in allen 4 Beschreibungen Material Holz bestätigt"
+    },
+    {
+     "aussage": "«Papier»",
+     "zaehlung": "2 Produkte mit Material Papier (Mississippi-Steamboat: Papier und EPS-Schaumstoff; Miniatur-Gewächshaus: 3D-Papiermodell)"
+    },
+    {
+     "aussage": "«Bausteinsets aus Kunststoff, darunter Spieluhren»",
+     "zaehlung": "5 Kunststoff-Bausteinsets (Windmühlen-Spieluhr, Sonnensystem, Kirchenmodell, Lebkuchenhaus-Spieluhr, Auto-Bauset mit 1995 Kunststoffteilen), davon 2 Spieluhren; alle 5 nennen Kunststoff/ABS"
+    },
+    {
+     "aussage": "«Mehrere Modelle zeigen Gebäude und Architektur»",
+     "zaehlung": "5 Titel: 3D-Holzpuzzle Architektur-Modellbausatz, 3D Metallpuzzle Architekturmodell, Rotes Kirchenmodell, Lichter Hausmodell, Miniatur-Gewächshaus (dazu Windmühlen-Spieluhr)"
+    },
+    {
+     "aussage": "«fertige Modelle von Flugzeugen und Autos»",
+     "zaehlung": "Flugzeug 8 Titel (Dubai, A380, Su35, F-35A, Flugzeugmodell Metall, Militär, Legierung 1:400, Panda), Auto fertig 3 (Metall-Modellauto, MINI GT, GT-Sportcoupé); bei allen 11: 0 Treffer auf bausatz/zusammenbau/zum bauen/selberbau/montage in der Beschreibung. Das 4. Auto-Produkt ist ein Bauset (zählt unter Bausteinsets)"
+    },
+    {
+     "aussage": "Nicht genannt, weil unter 2 kaufbaren Produkten (Besitzerregel)",
+     "zaehlung": "Helikopter 1 (Poison Scorpion), fertiges Motorrad 1 (das zweite Motorrad ist ein Metallpuzzle-Bausatz, abgedeckt durch «aus Metall»), Werkzeug 1 (Dioramen-Werkzeug, Datenblatt widersprüchlich: «statisches Modell» und «arbeitet elektrisch»), Tram-Bus 1"
+    },
+    {
+     "aussage": "Der Satz «Masse, Material und Lieferumfang stehen beim jeweiligen Artikel» ist nicht belegt und entfällt",
+     "zaehlung": "Zeile «Material:» in 14 von 34 (Prüfer 1), Mass-Angabe grob in 20 von 34, Lieferumfang-Wort in 18 von 34 (Prüfer 1; Prüfer 2: 15 von 34 ohne Mass, 25 von 34 ohne Lieferumfang); alle drei zugleich nur 9 von 34 = nicht für die meisten"
+    },
+    {
+     "aussage": "Keine Titel- oder Meta-Kollision",
+     "zaehlung": "Alle 1723 Sammlungen frisch gelesen (7 Seiten à 250): Sammlungstitel «Modellbau & Bausätze» 0 Treffer, SEO-Titel 0 Treffer (weder als Sammlungs- noch als SEO-Titel), SEO-Beschreibung 0 Treffer; verwandte Titel: «Klemmbausteine & Bausätze», «Fahrzeug- & Militär-Bausätze», «Roboter & Technik-Bausätze»"
+    },
+    {
+     "aussage": "Banner und FR-Titel zeigen weiter den alten Titel",
+     "zaehlung": "Banner 2000x1000 gesichtet: Text «Modellbau & Sammelfiguren» und «34+ ARTIKEL»; FR-Titel «Maquettes & figurines de collection» outdated false, 1 von 4 übersetzbaren Feldern (body_html, meta_title, meta_description ohne FR)"
+    }
+   ]
+  },
+  "S5": {
+   "kurz": "Zwei Sammlungen bekommen belegte Texte: schmuckaufbewahrung (SEO-Titel/Meta mit «Schmuckbox», Kaufhilfe 13 → 95 Wörter) und velohelme-kinder (Titel bleibt «Kinderhelme», SEO-Titel/Meta nennen «Kinderhelme» und «Velohelme für Kinder», Text 5 → 44 Wörter mit Link auf die Eltern-Sammlung). Grund: «schmuckbox» und «kinderhelme» sind die einzigen Anfragen mit Position unter etwa 14, der übrige Text ist Hygiene gegen «dünne Seite»; die Wirkung ist ungemessen und klein.",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/755392577927",
+     "handle": "schmuckaufbewahrung",
+     "felder_vorher": {
+      "seoTitle": "Schmuckaufbewahrung & Displays online kaufen | LuxeStyle CH",
+      "seoDescription": "Schmuckaufbewahrung & Displays: Schmuckkästchen, Ständer und Reise-Etuis. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Schmuckkästchen, Schmuckständer, Ringhalter und Reise-Etuis — damit Ketten, Ringe und Ohrringe geordnet bleiben.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Schmuckbox & Schmuckaufbewahrung online kaufen | LuxeStyle",
+      "seoDescription": "Schmuckbox, Schmuckkästchen, Ringbox, Uhrenbox, Reise-Etui und Ständer: Modelle aus Samt, Leder, Holz und mehr. Auswahl für die Schweiz bei LuxeStyle.",
+      "descriptionHtml": "<p>Schmuckaufbewahrung für Ringe, Ketten, Ohrringe, Armbänder und Uhren: Schmuckboxen und Schmuckkästchen, Ringboxen, Uhrenboxen, Schmuckständer und Displays, Schmuck-Organizer und Boxen mit Schubladen oder Fächern sowie Reise-Etuis und Schmuckbeutel. Die Modelle bestehen unter anderem aus Samt, Leder, PU-Leder oder Holz.</p><p><strong>So wählst du:</strong> Überlege, was verstaut werden soll – nur Ringe, Ketten und Ohrringe oder auch Uhren – und ob die Box zu Hause stehen oder mit auf Reisen soll. Schubladen und Fächer halten die Teile getrennt, ein Ständer zeigt den Schmuck offen, ein Reise-Etui ist für unterwegs gedacht. Weitere Angaben findest du beim jeweiligen Artikel.</p>"
+     },
+     "bemerkung": "Frisch gelesen 10.11. 11:2x UTC (updatedAt 26.10.), 135 Produkte, davon 134 kaufbar (1 Lack-Juwelierbox mit Bestand 0 und tracksInventory). Sammlungstitel «Schmuckaufbewahrung & Displays», sortOrder MANUAL und ruleSet (Tag sort-schmuckaufbewahrung) NICHT senden. Keine Markierungsblöcke im Text; der Schreibweg liest descriptionHtml unmittelbar vor dem Schreiben frisch und bricht ab oder erhält <!-- ls-verwandt --> / <!-- gd2 -->, falls inzwischen einer angehängt wurde. SEO-Titel und Meta bei keiner der 1 723 Sammlungen vorhanden (Kollisionsprüfung exakt, Titel und SEO-Titel)."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/756155351431",
+     "handle": "velohelme-kinder",
+     "felder_vorher": {
+      "seoTitle": "Kinderhelme online kaufen | LuxeStyle CH",
+      "seoDescription": "Kinderhelme online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Kinderhelme aus unserer Auswahl «Velohelme».</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Kinderhelme & Velohelme für Kinder | LuxeStyle CH",
+      "seoDescription": "Kinderhelme und Velohelme für Kinder: für Velo, Skates und Balance-Bikes, teils mit Cartoon-Motiven. Auswahl für die Schweiz bei LuxeStyle.",
+      "descriptionHtml": "<p>Velohelme für Kinder: Kinderhelme für Velo und Fahrrad, für Skates und für Balance-Bikes, teils mit Cartoon-Motiven. Einzelne Modelle sind auch für Erwachsene aufgeführt. Angaben zu Grösse und Kopfumfang stehen, soweit vom Hersteller genannt, beim jeweiligen Artikel.</p><p>Alle Velohelme (auch für Erwachsene): <a href=\"/collections/velohelme\">Velohelme</a></p>"
+     },
+     "bemerkung": "Frisch gelesen 10.11. (updatedAt 02.11.), 17 Produkte, alle ACTIVE und kaufbar (tracksInventory false), sortOrder BEST_SELLING. Sammlungstitel «Kinderhelme» bleibt UNVERÄNDERT (title weder senden noch ändern; die französische Übersetzung «Casques pour enfants» bleibt gültig). Keine Markierungsblöcke. Linkziel /collections/velohelme existiert, 108 Produkte, auf 7 Kanälen veröffentlicht, enthält auch Erwachsenenhelme. Neuer SEO-Titel und Meta bei keiner anderen Sammlung vorhanden."
+    }
+   ],
+   "pruefung_nach": "Vor dem Schreiben beide Sammlungen frisch lesen und felder_vorher auf Gleichheit prüfen (descriptionHtml, seo.title, seo.description); weicht ein Wert ab oder ist ein Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->) dazugekommen, abbrechen bzw. den Block erhalten. Nur collectionUpdate mit seo {title, description} und descriptionHtml senden; NICHT senden: title (velohelme-kinder bleibt «Kinderhelme», schmuckaufbewahrung bleibt «Schmuckaufbewahrung & Displays»), sortOrder, ruleSet, handle. Danach beide Sammlungen zurücklesen und feldweise mit felder_nachher vergleichen; erwartet: productsCount schmuckaufbewahrung 135 (134 kaufbar), velohelme-kinder 17 (17 kaufbar), Titel unverändert, sortOrder MANUAL bzw. BEST_SELLING unverändert. Storefront (höchstens 2 Seiten, Browser-Kopf, 8 s Pause): <title> und Meta-Description entsprechen den neuen Werten, Text sichtbar, Link auf /collections/velohelme vorhanden. Zusätzliche Kontrolle: weder «Velohelme für Kinder» noch «Schmuckbox» als neuer Sammlungstitel irgendwo angelegt. Sicherung vor dem Schreiben im Repo (Muster dropship/ranking-0911/*), Rücknahme: felder_vorher zurückschreiben (ZURUECK=1). Messung 25.11. (Basis aus der Search Console, 11.10.–07.11. bzw. 13.10.–09.11.): schmuckaufbewahrung «schmuckbox» 9 Einblendungen / 2 Klicks / Position 13,2; velohelme-kinder «kinderhelme» 13 / 0 / 7,6, «velohelm kind» 21 / 0 / 97, «fahrradhelm kinder» 11 / 0 / 30,9. Rückfallgrenze: steht «schmuckbox» am 25.11. schlechter als 13,2 oder «kinderhelme» schlechter als 7,6, den jeweiligen SEO-Titel auf felder_vorher zurückschreiben (bei velohelme-kinder nur dann, wenn der Rückgang nicht durch dieselbe Seite mit weniger Einblendungen erklärbar ist). Erwartung: klein, Google-Neucrawl braucht 1–2 Wochen (schmuckaufbewahrung zuletzt gecrawlt 06.11., velohelme-kinder 02.11.).",
+   "belege": [
+    {
+     "aussage": "Schmuckaufbewahrung: Schmuckbox im Titel (belegt «Schmuckbox» in Titel/Meta/Text)",
+     "zaehlung": "Schmuckbox im Produkttitel: 35 von 134 kaufbaren (10.11.). Search Console 11.10.–07.11.: «schmuckbox» 9 Einblendungen, 2 Klicks, Position 13,2 (Prüfer 2: an 4 von 5 Tagen bereits Seite 1)."
+    },
+    {
+     "aussage": "Schmuckkästchen / Ringboxen / Uhrenboxen",
+     "zaehlung": "Titel kaufbar: Schmuckkästchen 20, Ringbox (inkl. Ringschatulle, Ring-Aufbewahrungsbox, Ringschmuckboxen) 8, Uhrenbox (inkl. -kiste, -schrank) 11."
+    },
+    {
+     "aussage": "Schmuckständer und Displays",
+     "zaehlung": "Ständer im Titel 4 (Windmühlen-, High-Heel-, Armband-/Halsketten-Ständer, Tisch-Display-Ständer), Display im Titel 2 (Tisch-Display-Ständer, Acryl-Schmuckdisplay)."
+    },
+    {
+     "aussage": "Schmuck-Organizer und Boxen mit Schubladen oder Fächern",
+     "zaehlung": "Organizer im Titel 10; Schubladen im Titel 2 («Organizer mit Schubladen», «mit 6 Schubladen»); Fächer im Titel 2 («Uhrenbox aus Holz mit 6 Fächern», «Organizer mit 10 Fächern»). Formulierung bewusst «Organizer und Boxen», weil nur 1 Organizer «Fächer» im Titel trägt."
+    },
+    {
+     "aussage": "Reise-Etuis und Schmuckbeutel",
+     "zaehlung": "Reise-Etui/-Schmucketui im Titel 2 (Reise-Schmucketui mit Reissverschluss, Reise Schmuck-Etui mit Reissverschluss); Beutel im Titel 4 (3 Schmuckbeutel + Samt-Armband-Aufbewahrungsbeutel); Reise im Titel 12."
+    },
+    {
+     "aussage": "Materialien Samt, Leder und PU-Leder, Holz",
+     "zaehlung": "Titel kaufbar: Samt 21, Leder 19 (davon PU-Leder 8), Holz 17–18. Keramik NICHT genannt (nur 2 Titel, davon 1 Deko-Figürchen)."
+    },
+    {
+     "aussage": "Verstauter Schmuck: Ringe, Ketten, Ohrringe, Armbänder, Uhren",
+     "zaehlung": "Titel: Ring-/Ringbox 21, Kette/Halskette 11, Ohrring 4, Armband 7, Uhr 14."
+    },
+    {
+     "aussage": "Letzter Schmuck-Satz «Weitere Angaben findest du beim jeweiligen Artikel.»",
+     "zaehlung": "Ersetzt «Masse und Ausstattung stehen beim jeweiligen Artikel»: Masse (cm/mm/N×N) nur bei 55 von 135, «Material:» bei 51 von 135 (Prüfer 2); neue Aussage gilt für alle."
+    },
+    {
+     "aussage": "Meta Schmuck ohne verteilende Materialaussage",
+     "zaehlung": "Ringbox × Leder: 0 Treffer (Ringbox × Samt 2, × Holz 4; Uhrenbox × Samt 3, × Leder 4, × Holz 4; Schmuckbox × Samt 12, × Leder 7, × Holz 4; Schmuckkästchen × Samt 8, × Leder 4, × Holz 3). Darum «Modelle aus Samt, Leder, Holz und mehr» statt «Ringbox und Uhrenbox aus Samt, Leder und Holz»."
+    },
+    {
+     "aussage": "Velohelme für Kinder: 17 Produkte kaufbar",
+     "zaehlung": "17 von 17 ACTIVE, tracksInventory false. Search Console: «kinderhelme» 13 Einblendungen Position 7,6 (einzige Anfrage unter Position 10), «velohelm kind» 21 Einblendungen Position 97, «fahrradhelm kinder» Position 30,9; Seite hat Einblendungen erst seit 03.11."
+    },
+    {
+     "aussage": "Velo und Fahrrad",
+     "zaehlung": "Velo im Titel 9, Fahrrad im Titel 2 (Kinderschutzhelm für Skate- und Fahrrad, Kinder Fahrradhelm)."
+    },
+    {
+     "aussage": "Skates und Rollschuhe",
+     "zaehlung": "Skate im Titel 4; Rollschuh/Roller-Skaten in Titel oder Beschreibung 2 Produkte (Kinderhelm für Rollschuh und Velo, Kinder-Helm mit Schutz)."
+    },
+    {
+     "aussage": "Balance-Bikes",
+     "zaehlung": "Balance im Titel 2 (Kinder Balance Bike Helm, Kinder-Helm für Balance-Bikes)."
+    },
+    {
+     "aussage": "Teils mit Cartoon-Motiven",
+     "zaehlung": "Cartoon im Titel 3, in Titel oder Beschreibung 5."
+    },
+    {
+     "aussage": "Marienkäfer weggelassen",
+     "zaehlung": "Marienkäfer nur in 1 Produkt (Titel «Velohelm Marienkäfer für Kinder»), unter der Grenze von 2 Produkten."
+    },
+    {
+     "aussage": "Einzelne Modelle auch für Erwachsene",
+     "zaehlung": "Erwachsene im Titel 2 (Velo- und Skates-Helm für Erwachsene und Kinder, Velohelm für Kinder und Erwachsene). Die Eltern-Sammlung beschreibt sich selbst als «Velohelme für Erwachsene und Kinder» (25 von 108 Titeln mit Erwachsenen-/Herren-/Damen-/Mountainbike-Bezug)."
+    },
+    {
+     "aussage": "Angaben zu Grösse und Kopfumfang beim Artikel, soweit vom Hersteller genannt",
+     "zaehlung": "Kopfumfang/Kopfgrösse in der Beschreibung bei 6 von 17, Grösse in Beschreibung oder Option bei 12 von 17, irgendeine Grössen-/Alters-/cm-Angabe bei 15 von 17 (nicht: Boiling Fish, Kinderschutzhelm mit Cartoon-Design); Verstellbarkeit nur 6 von 17 und deshalb nicht im Satz. Wegen 15/17 mit Einschränkung «soweit vom Hersteller genannt»."
+    },
+    {
+     "aussage": "Keine Norm-, Sicherheits- oder Prüfaussage",
+     "zaehlung": "EN 1078/EN 1080/CE/Zertifikat in 0 von 17 Datenblättern (nur die Vorlagenzeile «Geprüfte Angaben»); der Text nennt weder Schutz noch Norm noch Passform."
+    },
+    {
+     "aussage": "Keine Titelkollision",
+     "zaehlung": "Alle 1 723 Sammlungen frisch gelesen (Titel, SEO-Titel, SEO-Beschreibung): 0 Treffer für die vier neuen Werte. Helm-Sammlungen mit ähnlichem Wort: velohelme «Velohelme online kaufen | LuxeStyle CH», velohelme-mountainbike, sport-schutzausruestung-helme, velo-radsport «Fahrradhelm Kinder & Erwachsene, Velolicht | LuxeStyle» (keine Überschneidung)."
+    }
+   ]
+  },
+  "S6": {
+   "kurz": "Die vier Fasnacht-Sammlungen (Unisex-/Tierkostüme, Perücken, Hüte, Accessoires) bekommen einen Suchbegriff-Titel (Hut-Titel bleibt), eine Meta von 131 bis 147 Zeichen und eine kurze Einleitung, die nur Sortimentsteile mit mindestens 2 kaufbaren Produkten nennt; beim Hut entfallen Lieferfrist, Versandschwelle, Rückgabe und Halloween. Jede Seite bekommt eine «Mehr Auswahl»-Zeile mit den übrigen sieben Fasnacht-Sammlungen, inklusive Hüte; Wirkung auf Rang und Klicks ist nicht belegbar (Hygiene).",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576851329",
+     "handle": "ft-unisexkostuem",
+     "felder_vorher": {
+      "seoTitle": "🎭 Unisex- & Tierkostüme | LuxeStyle",
+      "seoDescription": "Unisex-, Tier- & Fantasiekostüme für alle. Ab Schweizer Lager.",
+      "descriptionHtml": "<p>Unisex-, Tier- &amp; Fantasiekostüme für alle. Ab Schweizer Lager.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Unisex- & Tierkostüme für Fasnacht | LuxeStyle",
+      "seoDescription": "Unisex- und Tierkostüme für Fasnacht und Party: Plüsch-Modelle, Onesies, Kigurumis, Einhorn-Kostüme, Umhänge und Trainingsanzüge.",
+      "descriptionHtml": "<p>Unisex- und Tierkostüme für Fasnacht und Motto-Party: Tierkostüme (zum Beispiel als Bär oder Ente), Plüsch-Modelle, Onesies, Kigurumis und Einhorn-Kostüme. Dazu kommen Umhänge und Trainingsanzüge.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-hut\">Hüte &amp; Kopfbedeckung</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Sammlungstitel (Unisex-Kostüme & Tierkostüme), Regel (TAG), sortOrder (CREATED_DESC) und Veröffentlichung bleiben unverändert. Live gelesen 10.11. ca. 11:20 UTC (updatedAt 2026-10-18T18:40:17Z); descriptionHtml enthält keinen Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->). Sollte beim Schreiben einer da sein: hinter den neuen Text hängen oder abbrechen."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576949633",
+     "handle": "ft-peruecke",
+     "felder_vorher": {
+      "seoTitle": "💇 Perücken | LuxeStyle",
+      "seoDescription": "Perücken für jeden Look & jedes Kostüm. Aus dem CH-Lager.",
+      "descriptionHtml": "<p>Perücken für jeden Look &amp; jedes Kostüm. Aus dem CH-Lager.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Perücken für Fasnacht & Kostüm kaufen | LuxeStyle",
+      "seoDescription": "Perücken für Fasnacht und Kostüm: blonde, neonfarbene und lange Modelle sowie Clown- und Rasta-Perücken und Modelle mit Zöpfen für Party und Umzug.",
+      "descriptionHtml": "<p>Perücken für Fasnacht, Maskenball und Motto-Party: blonde, neonfarbene und lange Modelle, dazu Clown-Modelle, Rasta-Looks und Varianten mit Zöpfen.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-kostuem-hut\">Hüte &amp; Kopfbedeckung</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Sammlungstitel (Perücken), Regel (TAG), sortOrder (CREATED_DESC) und Veröffentlichung bleiben unverändert. Live gelesen 10.11. ca. 11:20 UTC (updatedAt 2026-10-18T18:40:22Z); descriptionHtml enthält keinen Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->). Sollte beim Schreiben einer da sein: hinter den neuen Text hängen oder abbrechen."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690576982401",
+     "handle": "ft-kostuem-hut",
+     "felder_vorher": {
+      "seoTitle": "Kostümhüte & Kopfbedeckungen kaufen | LuxeStyle Schweiz",
+      "seoDescription": "Kostümhüte & Kopfbedeckungen: Zylinder, Cowboy- und Hexenhüte, Helme & Kappen ab Schweizer Lager, Lieferung meist in 2–3 Werktagen.",
+      "descriptionHtml": "<p>Zylinder, Cowboy- und Hexenhüte, Helme, Kappen und Plüschmützen für Fasnacht, Halloween und Motto-Partys – von der Waggis-Zipfelmütze bis zum Piratenhut.</p><p>Alle Artikel liegen im Schweizer Lager: Lieferung meist in 2–3 Werktagen. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Kostümhüte & Kopfbedeckungen kaufen | LuxeStyle Schweiz",
+      "seoDescription": "Kostümhüte und Kopfbedeckungen für Fasnacht und Motto-Party: Zylinder, Cowboy- und Piratenhüte, Helme, Mützen und Waggis-Zipfelmützen.",
+      "descriptionHtml": "<p>Zylinder, Cowboyhüte, Piratenhüte, Helme (zum Beispiel Wikingerhelme) und Mützen für Fasnacht und Motto-Partys – von der Waggis-Zipfelmütze bis zum Zylinder.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-accessoire\">Kostüm-Accessoires</a></p>"
+     },
+     "bemerkung": "Sammlungstitel (Hüte & Kopfbedeckung), Regel (TAG), sortOrder (MANUAL) und Veröffentlichung bleiben unverändert. Live gelesen 10.11. ca. 11:20 UTC (updatedAt 2026-11-03T00:24:05Z); descriptionHtml enthält keinen Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->). Sollte beim Schreiben einer da sein: hinter den neuen Text hängen oder abbrechen. seo.title wird unverändert mitgesendet."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/690577047937",
+     "handle": "ft-kostuem-accessoire",
+     "felder_vorher": {
+      "seoTitle": "🧤 Kostüm-Accessoires | LuxeStyle",
+      "seoDescription": "Accessoires & Scherzartikel, die dein Kostüm komplett machen.",
+      "descriptionHtml": "<p>Accessoires &amp; Scherzartikel, die dein Kostüm komplett machen.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Kostüm-Accessoires für Fasnacht & Party | LuxeStyle",
+      "seoDescription": "Kostüm-Zubehör für Fasnacht und Motto-Party: Engelsflügel, Kronen, Partybrillen, Hawaiiröcke und Fächer, die dein Kostüm komplett machen.",
+      "descriptionHtml": "<p>Zubehör, das dein Kostüm komplett macht: Engelsflügel, Kronen, Partybrillen, Hawaiiröcke und Fächer. Die Auswahl passt zu Fasnacht, Maskenball und Motto-Party.</p><p>Mehr Auswahl: <a href=\"/collections/kostueme-fasnacht\">Kostüme &amp; Fasnacht</a> · <a href=\"/collections/ft-kinderkostuem\">Kinderkostüme</a> · <a href=\"/collections/ft-damenkostuem\">Damenkostüme</a> · <a href=\"/collections/ft-herrenkostuem\">Herrenkostüme</a> · <a href=\"/collections/ft-unisexkostuem\">Unisex- &amp; Tierkostüme</a> · <a href=\"/collections/ft-peruecke\">Perücken</a> · <a href=\"/collections/ft-kostuem-hut\">Hüte &amp; Kopfbedeckung</a></p>"
+     },
+     "bemerkung": "Sammlungstitel (Kostüm-Accessoires), Regel (TAG), sortOrder (MANUAL) und Veröffentlichung bleiben unverändert. Live gelesen 10.11. ca. 11:20 UTC (updatedAt 2026-11-03T00:24:17Z); descriptionHtml enthält keinen Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->). Sollte beim Schreiben einer da sein: hinter den neuen Text hängen oder abbrechen."
+    }
+   ],
+   "pruefung_nach": "Vor dem Schreiben: je Sammlung seo.title, seo.description und descriptionHtml mit felder_vorher zeichengleich (sonst Abbruch und neu lesen); Sicherung der drei Felder je Sammlung; Zählung aller genannten Aussagen frisch (kaufbar = ACTIVE und nicht tracksInventory mit totalInventory ≤ 0), Schwelle ≥ 2 je Aussage, sonst die Aussage aus Text UND Meta streichen statt schreiben. Dünnste Stellen am 10.11.: Rasta-Perücken 2 (Bestand 51 und 9), Perücken mit Zöpfen 2 (52 und 4), Clown-Latzhosen 2 (3 und 2), Ente 2 (32 und 7), Bär 2 (45 und 51). Schreiben: collectionUpdate(input:{id, seo:{title, description}, descriptionHtml}) mit beiden SEO-Feldern, sonst nichts (kein sortOrder, kein ruleSet, kein Titel). Danach alle vier frisch zurücklesen und zeichenweise mit felder_nachher vergleichen; Soll: seo.title-Längen 46/49/55/51, seo.description-Längen 131/147/134/137; productsCount unverändert (126/191/167/297), ruleSet (TAG) unverändert, sortOrder CREATED_DESC/CREATED_DESC/MANUAL/MANUAL, 7 Kanäle; höchstens zwei Storefront-Abrufe (Browser-Kopf, 8 s Pause): <title> gleich seo.title, die acht Links erreichbar. Rücknahme: die drei Felder je Sammlung auf felder_vorher zurückschreiben (Emojis im Titel inklusive). Wirkung (Hypothese, nicht belegt): Messung mit inspect_urls am 18.11. und 25.11.; ft-unisexkostuem und ft-kostuem-hut auf die nächste Index-Liste für den Besitzer setzen.",
+   "belege": [
+    {
+     "aussage": "ft-unisexkostuem: genannte Sortimentsteile jeweils mit mindestens 2 kaufbaren Produkten (Status ACTIVE, nicht tracksInventory mit totalInventory ≤ 0)",
+     "zaehlung": "10.11. ca. 11:20 UTC, Titel: Plüsch 9 aktiv/7 kaufbar; Onesie (inkl. Tippfehler Onsie) 6/6; Kigurumi 3/3 (ohne Lizenzfigur Grinch 2); Einhorn 5/4; Clown-Latzhose 3/2; Umhang 15/6; Trainingsanzug 10/8; Bär (ohne Waschbär) 2/2; Ente (Duschente, Matrose Ente) 2/2"
+    },
+    {
+     "aussage": "ft-peruecke: genannte Sortimentsteile jeweils mit mindestens 2 kaufbaren Produkten",
+     "zaehlung": "10.11. ca. 11:20 UTC, Titel: blond 20 aktiv/16 kaufbar; neon 10/9; lang 17/12; Clown 9/8; Rasta 3/2; Zöpfe 4/2"
+    },
+    {
+     "aussage": "ft-kostuem-hut: genannte Sortimentsteile jeweils mit mindestens 2 kaufbaren Produkten",
+     "zaehlung": "10.11. ca. 11:20 UTC, Titel: Zylinder 18 aktiv/14 kaufbar; Cowboy 18/14; Piratenhut/Hut Pirat 6/5; Helm 27/20; Wikingerhelm 4/4; Mütze 26/12; Waggis 2/2"
+    },
+    {
+     "aussage": "ft-kostuem-accessoire: genannte Sortimentsteile jeweils mit mindestens 2 kaufbaren Produkten",
+     "zaehlung": "10.11. ca. 11:20 UTC, Titel: Engelsflügel 10 aktiv/7 kaufbar; Krone 6/4; Partybrille 9/7; Hawaiirock 9/6; Fächer 4/4"
+    },
+    {
+     "aussage": "Gestrichen, weil unter 2 kaufbar",
+     "zaehlung": "Unisex: Poncho 5 aktiv/0 kaufbar, Hase/Bugs Bunny 2/0, Dinosaurier 1/1, Panda 1/1, Pinguin 1/1. Hüte: Hexenhut 8/1. Accessoires: Haarreif 9/1, Zauberstab (Titel) 3/1."
+    },
+    {
+     "aussage": "Sätze zu Grösse/Ausführung/Farbe «beim jeweiligen Artikel» in allen vier Texten gestrichen (nicht bei den meisten wahr; Ausführung als zweite Auswahl nirgends)",
+     "zaehlung": "10.11.: ft-unisexkostuem: 68 kaufbar, 43 mit Grösse-Auswahl, 43 mit irgendeiner Auswahl; ft-peruecke: 137 kaufbar, 1 mit Grösse-Auswahl, 5 mit irgendeiner Auswahl; ft-kostuem-hut: 103 kaufbar, 1 mit Grösse-Auswahl, 1 mit irgendeiner Auswahl; ft-kostuem-accessoire: 135 kaufbar, 7 mit Grösse-Auswahl, 7 mit irgendeiner Auswahl"
+    },
+    {
+     "aussage": "Link-Ziele existieren, in 7 Kanälen veröffentlicht, keine URL-Weiterleitung auf /collections/ft-* und kostueme-fasnacht",
+     "zaehlung": "kostueme-fasnacht 1807 Produkte (56 von ersten 60 kaufbar), ft-kinderkostuem 327 (23 von 60), ft-damenkostuem 308 (25 von 60), ft-herrenkostuem 268 (31 von 60), ft-unisexkostuem 126, ft-peruecke 191, ft-kostuem-hut 167, ft-kostuem-accessoire 297; urlRedirects mit path:/collections/ft- = 0"
+    },
+    {
+     "aussage": "Keine Titel-/Meta-Kollision",
+     "zaehlung": "Neue SEO-Titel und -Beschreibungen exakt gegen alle 1723 Sammlungen (Handle, Titel, seo.title, seo.description) gelesen 10.11.: 0 Treffer; Hut-SEO-Titel bleibt unverändert. Prüfmuster auf CHF, Werktag, Rückgabe, Gratis, Halloween, Weihnacht, Widmann, Bestell*, Prozent, Datum, Rabatt, Code, Lieferung, Versand, Garantie, ß: 0 Treffer in Titeln, Metas und Texten"
+    },
+    {
+     "aussage": "Index-Status (Belegtext-Korrektur R1) ist nicht stabil",
+     "zaehlung": "inspect_urls 10.11. ca. 11:30 UTC: unisex «Gefunden – zurzeit nicht indexiert», Hut «Gefunden – zurzeit nicht indexiert» (Sitemap), Accessoire «URL ist Google nicht bekannt», Perücken «Gecrawlt – zurzeit nicht indexiert» (zuletzt 10.09.2026). Prüfer 1 (vormittags): unisex und Hut «unbekannt», Accessoire «Discovered»; Prüfer 2: unisex und Accessoire «Discovered», Hut «unbekannt»: dieselbe Seite liefert zwischen Abrufen verschiedene Zustände, daher im Bericht nur «nicht indexiert, teils Google unbekannt». Perücken: 4 Einblendungen, Position 13,8, 0 Klicks in 3 Monaten (nicht «keine Einblendungen»)."
+    }
+   ]
+  },
+  "S8": {
+   "kurz": "Sechs Ratgeber (Powerbank, Wireless Charger, Halskette, Gaming, Kaffee, Haustier-Gadgets) bekommen je einen Satz mit Link auf die thematisch gleiche Sammlung, als reine Einfügung ausserhalb der Markierungsblöcke und ohne Aussage über Produkte. Es ist Nutzerführung und Hygiene ohne Rang- oder Index-Erwartung (fünf der Ziele stehen schon im Hauptmenü, sechs von sieben Quellartikeln sind selbst nicht indexiert); der siebte Artikel («Besser schlafen») bleibt wegen eigener Test- und Wirkungsaussagen ungelinkt.",
+   "ziele": [
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001799156097",
+     "handle": "powerbank-kaufen-2026-ratgeber",
+     "felder_vorher": {
+      "updatedAt": "2026-10-14T07:14:51Z",
+      "body_laenge": 5399,
+      "body_sha256": "24d9636b324df13a2d726b2266b3172294086aa89058fbbffabc246064cc8ac6"
+     },
+     "felder_nachher": {
+      "body_laenge": 5486,
+      "body_sha256": "06a5b83c408152bd439f4c81b36187da8da23f96350beb8990122d5df3e62c0d"
+     },
+     "ersetzungen": [
+      {
+       "alt": "</ul>\n<!-- lx-produkte -->",
+       "neu": "</ul>\n<p>Eine Auswahl findest du unter <a href=\"/collections/powerbanks\">Powerbanks</a>.</p>\n<!-- lx-produkte -->"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/powerbanks. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/powerbanks enthält, überspringen."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001547202945",
+     "handle": "wireless-charger-3in1-ratgeber",
+     "felder_vorher": {
+      "updatedAt": "2026-10-09T07:02:43Z",
+      "body_laenge": 13183,
+      "body_sha256": "d8986fe205191c3a76a3cb36219e2ad279be4c99eb25bcd1cc9d39b72bda7be1"
+     },
+     "felder_nachher": {
+      "body_laenge": 13314,
+      "body_sha256": "f21b018299c1e60753f935cbd76a330a2217900db00bca41a1757ff5db9af7f4"
+     },
+     "ersetzungen": [
+      {
+       "alt": "auch wenn die Watch-Fläche speziell auf die Apple Watch ausgelegt ist.</p>",
+       "neu": "auch wenn die Watch-Fläche speziell auf die Apple Watch ausgelegt ist.</p>\n<p>Weitere kabellose Ladegeräte und Ladestationen findest du unter <a href=\"/collections/kabellos-laden\">Kabelloses Laden</a>.</p>"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/kabellos-laden. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/kabellos-laden enthält, überspringen."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001935896961",
+     "handle": "halskette-richtig-wahlen-lange-material-stil-kombinieren",
+     "felder_vorher": {
+      "updatedAt": "2026-10-05T07:40:26Z",
+      "body_laenge": 9590,
+      "body_sha256": "9666e1dfb4474d27749896fa89a16c81ef5b4a3c7c19775d6b0f27fd2fb79303"
+     },
+     "felder_nachher": {
+      "body_laenge": 9743,
+      "body_sha256": "6a361fb3a836dbd1afcd966c4b34cfcb19eb6e20f69b1b03ea9721a5814a1b14"
+     },
+     "ersetzungen": [
+      {
+       "alt": "Im Berufsleben ist oft dezenter Schmuck angebracht.</p>",
+       "neu": "Im Berufsleben ist oft dezenter Schmuck angebracht.</p><p>Halsketten mit Anhänger und einzelne Anhänger findest du unter <a href=\"/collections/ketten-mit-anhaenger\">Anhänger &amp; Ketten mit Anhänger</a>.</p>"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/ketten-mit-anhaenger. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/ketten-mit-anhaenger enthält, überspringen."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001921741185",
+     "handle": "gaming-zubehor-guide-controller-headset-mehr",
+     "felder_vorher": {
+      "updatedAt": "2026-10-20T07:40:29Z",
+      "body_laenge": 7428,
+      "body_sha256": "390e5ab5751bca3d352b7bbb74675c9600a973381d4a10bf34374f3ea910f681"
+     },
+     "felder_nachher": {
+      "body_laenge": 7538,
+      "body_sha256": "cc4824140ac98e16fabe778f741e331a6e0d828f8fc07c7eab6902183cb02797"
+     },
+     "ersetzungen": [
+      {
+       "alt": "Investiere lieber in ein Modell, das für seine Langlebigkeit und Präzision bekannt ist.</p>",
+       "neu": "Investiere lieber in ein Modell, das für seine Langlebigkeit und Präzision bekannt ist.</p>\n\n<p>Eine Auswahl findest du unter <a href=\"/collections/gaming-controller\">Controller &amp; Gamepads</a>.</p>"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/gaming-controller. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/gaming-controller enthält, überspringen."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001546547585",
+     "handle": "geschenke-fuer-kaffeeliebhaber",
+     "felder_vorher": {
+      "updatedAt": "2026-10-19T22:34:26Z",
+      "body_laenge": 8939,
+      "body_sha256": "2beb2e3ed2d2c4944aaee62a947a8a8850b902b2013f918b490d0ce5af5a36f6"
+     },
+     "felder_nachher": {
+      "body_laenge": 9022,
+      "body_sha256": "ccac010b1ab1e67aa17441562d36cfb6e53bd6b1183f28beae2ba973e4dd3a23"
+     },
+     "ersetzungen": [
+      {
+       "alt": "Passendes findest du in unserer <a href=\"/collections/sub-kueche\">Küchen-Auswahl</a>.</p>",
+       "neu": "Passendes findest du in unserer <a href=\"/collections/sub-kueche\">Küchen-Auswahl</a> und unter <a href=\"/collections/tassen-kaffeebecher\">Tassen &amp; Kaffeebecher</a>.</p>"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/tassen-kaffeebecher. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/tassen-kaffeebecher enthält, überspringen."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001931735425",
+     "handle": "haustier-gadgets-smarte-helfer-fur-hund-katze",
+     "felder_vorher": {
+      "updatedAt": "2026-09-15T05:11:12Z",
+      "body_laenge": 6271,
+      "body_sha256": "cd496095c863e3591c3d6247abee51f730ccbe41d46fa29b144b3b690d55266d"
+     },
+     "felder_nachher": {
+      "body_laenge": 6381,
+      "body_sha256": "4edf0b980851763da380a7c4b55898e6aa3a830bb18dbfb6f19c1787fd088633"
+     },
+     "ersetzungen": [
+      {
+       "alt": "<strong>Monatliche Kosten:</strong> Viele Tracker erfordern ein Abo für die SIM-Karte.</li>\n</ul>",
+       "neu": "<strong>Monatliche Kosten:</strong> Viele Tracker erfordern ein Abo für die SIM-Karte.</li>\n</ul>\n\n<p>Eine Auswahl findest du unter <a href=\"/collections/gps-tracker\">GPS-Tracker &amp; Ortungsgeräte</a>.</p>"
+      }
+     ],
+     "bemerkung": "Blog ratgeber. Link auf /collections/gps-tracker. Vorher/Nachher-Volltext in der Datei S8-artikel-links.json unter volltexte. Abbruch, wenn updatedAt abweicht oder alt nicht genau 1x vorkommt; wenn der Body schon einen Link auf /collections/gps-tracker enthält, überspringen."
+    }
+   ],
+   "pruefung_nach": "Vor dem Schreiben je Artikel: Body frisch lesen; abbrechen, wenn updatedAt abweicht, alt nicht genau 1x vorkommt oder der Body schon einen Link auf /collections/<ziel> trägt (dann überspringen); den alten Body sichern (Datei, volltexte.body_vorher). Schreiben nur body per articleUpdate. Danach je Artikel frisch zurücklesen und prüfen: (1) body gleich Soll (sha256 und Länge in felder_nachher: 5486, 13314, 9743, 7538, 9022, 6381 Zeichen), (2) genau 1 Link auf /collections/<ziel>, (3) lx-produkte/lx-faq-Blöcke byte-gleich, (4) Titel, Handle, Blog, Veröffentlichung und Metafelder global.title_tag/description_tag (Wireless, Kaffee) unverändert, (5) updatedAt neu. Erwartung 6 von 6 gleich; bei Abweichung den betroffenen Artikel sofort auf body_vorher zurückschreiben (sha256 aus felder_vorher). Rücknahme je Artikel: body_vorher zurückschreiben oder die Ersetzung umgekehrt (neu→alt, jeweils genau 1x). Wirkung: inspect_urls am 18.11. und 02.12. für powerbanks, kabellos-laden, ketten-mit-anhaenger, gaming-controller, tassen-kaffeebecher; Erwartung ≈ 0, ein Ausbleiben ist kein Fehler.",
+   "belege": [
+    {
+     "aussage": "Jede Ersetzung trifft genau eine Stelle",
+     "zaehlung": "alt-String im frisch gelesenen Body: 1 Treffer in 6 von 6 Artikeln, kein CR (10.11. 11:2x UTC); updatedAt von allen 7 Artikeln um 11:30 UTC nachgelesen und unverändert: 14.10., 09.10., 05.10., 20.10., 19.10., 15.09. (+ 08.10. Schlaf-Artikel)"
+    },
+    {
+     "aussage": "Die Ziel-Sammlungen sind bisher in keinem Quellartikel verlinkt",
+     "zaehlung": "Links auf /collections/<ziel> im Body vorher: 0 in 6 von 6, nachher genau 1 (lokal angewendet)"
+    },
+    {
+     "aussage": "Nur Einfügungen, Markierungsblöcke unverändert",
+     "zaehlung": "difflib-Opcodes nur «insert» (6 von 6); lx-produkte/lx-faq-Blöcke vor und nach byte-gleich (Powerbank 1, Wireless 2, Gaming 1, Kaffee 1, Halskette 0, Haustier 0); <p>-Zahl +1 in 5 Artikeln (8→9, 26→27, 13→14, 11→12, 13→14), Kaffee hängt an einen bestehenden Satz an (26→26)"
+    },
+    {
+     "aussage": "Einfügetiefe: Meta-Beschreibung und Zusammenfassung bleiben unberührt",
+     "zaehlung": "Klartextzeichen vor der Einfügung: 4279 (Powerbank), 2372 (Wireless), 3887 (Halskette), 2368 (Gaming), 3334 (Kaffee), 2845 (Haustier)"
+    },
+    {
+     "aussage": "Sammlung powerbanks: Satz darf nicht «alle» sagen",
+     "zaehlung": "170 aktiv/170 kaufbar, 170 von 170 Titeln mit «Powerbank»; shopweit 181 kaufbare Titel mit Wortanfang «Powerbank*», davon 146 in der Sammlung, 35 ausserhalb (Prüfer 2 zählte 39 von 209) → «Eine Auswahl»"
+    },
+    {
+     "aussage": "Sammlung kabellos-laden trägt «Ladegeräte und Ladestationen»",
+     "zaehlung": "178 aktiv/178 kaufbar; 171 Titel mit Ladegerät/Charger/Ladepad/Ladestation-Wörtern, 31 mit «Ladestation», 54 mit 3-in-1"
+    },
+    {
+     "aussage": "Sammlung ketten-mit-anhaenger: Halsketten mit Anhänger und einzelne Anhänger",
+     "zaehlung": "142 aktiv/142 kaufbar; 75 Titel mit Kette-Wort und Anhänger, 64 nur Anhänger, 3 nur Kette; «Kettenanhänger» steht nur in 1 Titel → Wortlaut «einzelne Anhänger»"
+    },
+    {
+     "aussage": "Sammlung gaming-controller: «Eine Auswahl» ist richtig",
+     "zaehlung": "216 gesamt, 138 aktiv, 137 kaufbar; 81 Titel ohne Zubehörwort (Hülle, Ladestation, Sticker, Halter …), 1 Titel mit «Gamepad»"
+    },
+    {
+     "aussage": "Sammlung tassen-kaffeebecher",
+     "zaehlung": "147 aktiv/147 kaufbar, 145 Titel mit Tasse/Becher/Mug/Cup/Tässchen"
+    },
+    {
+     "aussage": "Sammlung gps-tracker",
+     "zaehlung": "32 aktiv/32 kaufbar, 27 Titel mit Tracker/GPS/Ortung, 21 für Haustiere"
+    },
+    {
+     "aussage": "Link-Ziele existieren, sind veröffentlicht und nicht umgeleitet",
+     "zaehlung": "6 von 6 publishedOnPublication(Online Store)=true; urlRedirects mit Pfad /collections/<handle>: 0; Sammlungstitel live exakt: Powerbanks, Kabelloses Laden, Anhänger & Ketten mit Anhänger, Controller & Gamepads, Tassen & Kaffeebecher, GPS-Tracker & Ortungsgeräte. Storefront-Abruf nicht gemacht (globale Bremse 30/30 aufgebraucht), nicht unbedingt nötig"
+    },
+    {
+     "aussage": "Quellen nicht veraltet, keine Prüfaussagen (ausser Schlaf-Artikel)",
+     "zaehlung": "27 in den 7 Artikeln verlinkte Produkte: 27 von 27 ACTIVE, Preise im Text liegen in den Preisspannen (z. B. Wireless-Charger CHF 39.90 in 25.90–71.90); Textsuche nach getestet/geprüft/zertifiziert/TÜV/Siegel/Testsieger/Stiftung/CE: 0 Behauptungen in 6 Artikeln («Überprüfe …» sind Ratschläge), im Schlaf-Artikel 1 Teaser «Wir testen, ob …» plus Wirkungsaussagen → 1 von 7 ausgeschlossen"
+    },
+    {
+     "aussage": "Index-Stand und Erwartung (von den Prüfern übernommen, nicht neu gemessen)",
+     "zaehlung": "Quellartikel: nur haustier-gadgets indexiert, 0 Einblendungen bei allen 7 (Search Console 07.08.–07.11.); Ziele: powerbanks, kabellos-laden «unknown», ketten «Discovered», gaming-controller/tassen-kaffeebecher laut Prüfer 1 «unknown», laut Prüfer 2 «Discovered» (widersprüchlich, für den Text ohne Bedeutung); gps-tracker indexiert; Spearman Text-Links gegen Position −0,02 (48 Sammlungen)"
+    }
+   ]
+  },
+  "S9": {
+   "kurz": "Die zwei Hundemantel-Sammlungen (tier-maentel-jacken, tier-maentel-winter) bekommen SEO-Titel, Meta und eine kurze Einleitung mit dem Suchwort «Hund»; die Kerzen-Sammlung bekommt «Kerzenhalter» in Titel und Meta und eine Einleitung, in der nur noch Aussagen stehen, die mindestens zwei Produkte belegen (Kerzenleuchter, Keramik, Edelstahl, Holz, Wand, Fensterbank, Lieferumfang entfallen). Das ist Hygiene und Passung zu Googles Vorschlagsliste, kein belegter Ranggewinn: alle drei Seiten sind Google unbekannt, erst nach Indexierung ist eine Wirkung messbar (Messung 25.11. und 09.12.).",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/756161249671",
+     "handle": "tier-maentel-jacken",
+     "felder_vorher": {
+      "seoTitle": "Mäntel, Jacken & Westen online kaufen | LuxeStyle CH",
+      "seoDescription": "Mäntel, Jacken & Westen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Wintermäntel, Regenjacken, Westen und Overalls für Hunde und Katzen.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Hundemäntel, Hundejacken & Westen kaufen | LuxeStyle",
+      "seoDescription": "Mäntel, Jacken und Westen für Hunde: Winter- und Regenjacken, Fleecemodelle und reflektierende Modelle, dazu einzelne für Katzen. Auswahl bei LuxeStyle.",
+      "descriptionHtml": "<p>Mäntel, Jacken und Westen für Hunde: Wintermäntel und Winterjacken, Regenjacken, Westen, Overalls, Modelle aus Fleece und reflektierende Modelle. Dazu gibt es einzelne Modelle für Katzen. Grösse und Farbe wählst du, soweit angeboten, beim jeweiligen Artikel.</p><p>Weiter: <a href=\"/collections/tier-maentel-winter\">Winter-Hundemäntel</a> · <a href=\"/collections/tier-maentel-regen\">Regenjacken für Hunde</a> · <a href=\"/collections/hunde-katzen-kleidung\">Kleidung für Hunde &amp; Katzen</a></p>"
+     },
+     "bemerkung": "Sammlungstitel «Mäntel, Jacken & Westen», Handle, sortOrder (MANUAL) und Regel (Tag sort-tier-maentel-jacken) bleiben. Neu gegenüber dem Vorschlag: Link auf tier-maentel-regen (18 Produkte, alle für Hunde; optionale Auflage Prüfer 1), «Overalls» (4 Titel), «Grösse und Farbe wählst du, soweit angeboten» (Prüfer 2). Kein «wasserdicht» im Text (12 Titel, aber Geschwister tier-maentel-regen). Beobachtung ausserhalb von S9, nicht angefasst: im Produkt «Fuchs-Pelz Katzenanzug» steht «Pelz» im Titel (Datenblatt-Check der Pelz-Regel vom 04./05.11. als eigene Aufgabe); das Produkt «Tier-Halloween-Mantel» ist aktiv, der Text nennt es nicht."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/756161315207",
+     "handle": "tier-maentel-winter",
+     "felder_vorher": {
+      "seoTitle": "Winterjacken & warme Mäntel online kaufen | LuxeStyle CH",
+      "seoDescription": "Winterjacken & warme Mäntel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Winterjacken &amp; warme Mäntel aus unserer Auswahl «Mäntel, Jacken &amp; Westen».</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Winter-Hundemäntel & warme Hundejacken | LuxeStyle",
+      "seoDescription": "Warme Hundemäntel und Winterjacken: gefütterte Modelle, Fleecemodelle, Westen und reflektierende Modelle, einzelne auch für Katzen. Auswahl bei LuxeStyle.",
+      "descriptionHtml": "<p>Warme Hundemäntel und Winterjacken aus Wolle, Fleece und Baumwolle, dazu gefütterte Modelle, Westen und reflektierende Modelle. Es gibt einzelne Modelle für Katzen. Grösse und Farbe wählst du, soweit angeboten, beim jeweiligen Artikel.</p><p>Weiter: <a href=\"/collections/tier-maentel-jacken\">Mäntel, Jacken &amp; Westen für Hunde</a> · <a href=\"/collections/hunde-katzen-kleidung\">Kleidung für Hunde &amp; Katzen</a></p>"
+     },
+     "bemerkung": "Alle 55 Produkte dieser Sammlung liegen auch in tier-maentel-jacken (gemessen 55 von 55): die Winter-Seite ist eine Teilmenge. Sie ist nicht im Menü und wird nicht separat zur Indexierung beantragt; Titel und Meta unterscheiden sich von denen der Jacken-Seite («Winter-Hundemäntel & warme Hundejacken» gegen «Hundemäntel, Hundejacken & Westen»). Sammlungstitel, Handle, sortOrder (BEST_SELLING) und Regel bleiben. Meta mit 147 Zeichen unter der Grenze von 155 (der Vorschlag lag bei 154)."
+    },
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/756167115143",
+     "handle": "kerzen-kerzenhalter",
+     "felder_vorher": {
+      "seoTitle": "Kerzen & Kerzenhalter online kaufen | LuxeStyle CH",
+      "seoDescription": "Kerzen & Kerzenhalter online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+      "descriptionHtml": "<p>Kerzenhalter, Teelichthalter, LED-Kerzen, Duftkerzen und Kerzenwärmer für Tisch, Wand und Fensterbank.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Kerzenhalter, Kerzen & Teelichter kaufen | LuxeStyle",
+      "seoDescription": "Kerzenhalter und Kerzenständer aus Eisen, dazu LED-Kerzen, Teelichter, Duftkerzen sowie Kerzen- und Duftwärmer. Auswahl bei LuxeStyle.",
+      "descriptionHtml": "<p>Kerzenhalter und Kerzenständer aus Eisen, dazu LED-Kerzen, Teelichter, Duftkerzen sowie Kerzen- und Duftwärmer für gemütliche Abende. Angaben zu Material, Gewicht und Grösse stehen, soweit vorhanden, beim jeweiligen Artikel.</p><p>Passend dazu: <a href=\"/collections/deko-objekte-accessoires\">Dekoobjekte &amp; Accessoires</a> · <a href=\"/collections/nachtlichter-ambiente\">Nachtlichter &amp; Ambiente-Licht</a></p>"
+     },
+     "bemerkung": "Sammlungstitel «Kerzen & Kerzenhalter», Handle, sortOrder (MANUAL) und Regel bleiben. Gegenüber dem Vorschlag gestrichen: Kerzenleuchter (0 Treffer), Keramik (1 Titel mit Tippfehler «Ceramik» und widersprüchlicher Fakten-Zeile «Stein»), Edelstahl (1), Holz als Halter-Material (1 Halter), Wand (1), Fensterbank (1), Lieferumfang (nur bei 6 bis 8 von 27). Link auf saison-weihnachtsdeko ersetzt durch zwei zeitlose, veröffentlichte Ziele."
+    }
+   ],
+   "pruefung_nach": "Je Sammlung frisch aus Shopify lesen (nicht aus der Schreibantwort): seo.title, seo.description und descriptionHtml müssen zeichengleich felder_nachher sein; Längen SEO-Titel 52/50/52, Meta 153/147/144 (Python len, NFC); title, handle, sortOrder (MANUAL/BEST_SELLING/MANUAL), ruleSet und productsCount (165/55/27) müssen gleich dem Stand vorher bleiben; 7 Veröffentlichungen unverändert; kein Markierungsblock verloren (heute keiner vorhanden). Storefront höchstens 3 Seiten mit Browser-Kopf und 8 s Pause: HTTP 200, <title> enthält den neuen SEO-Titel (Cache-Verzug bis rund eine Minute möglich), alle Links in der Einleitung antworten 200. Nach Abschluss erneut je Sammlung gegen alle 1 723 Sammlungen auf doppelte SEO-Titel und Metas prüfen (erwartet 0). Rücknahme: felder_vorher je Sammlung zeichengleich zurückschreiben (descriptionHtml der Winter-Sammlung enthält &amp;). Messung: inspect_urls (Status «Submitted and indexed»?) und Search Console für /collections/tier-maentel-jacken, /collections/tier-maentel-winter und /collections/kerzen-kerzenhalter am 25.11. und 09.12.; 0 Einblendungen vor der Indexierung ist kein Misserfolg des Textes.",
+   "belege": [
+    {
+     "aussage": "tier-maentel-jacken: Hund/Welpe im Titel",
+     "zaehlung": "126 von 165 kaufbaren Produkten (alle 165 ACTIVE, 0 mit Bestandsführung; 10.11.)"
+    },
+    {
+     "aussage": "tier-maentel-jacken: Wintermäntel und Winterjacken",
+     "zaehlung": "Titel mit Wintermantel-Form 8, mit Winterjacke-Form 16 (Regex), mit «winter» insgesamt 39"
+    },
+    {
+     "aussage": "tier-maentel-jacken: Regenjacken",
+     "zaehlung": "Regen im Titel 8 (Regenjacke, Regenmantel, Regenponcho); alle 18 Produkte von tier-maentel-regen liegen auch hier"
+    },
+    {
+     "aussage": "tier-maentel-jacken: Fleece, Westen, Overalls, reflektierend",
+     "zaehlung": "Fleece 7; Weste 55; Overall/Jumpsuit 4; reflektierend/Reflex 14"
+    },
+    {
+     "aussage": "tier-maentel-jacken: einzelne Modelle für Katzen",
+     "zaehlung": "Katze/Sphynx im Titel 14 von 165 (8,5 %)"
+    },
+    {
+     "aussage": "tier-maentel-jacken: Grösse und Farbe «soweit angeboten»",
+     "zaehlung": "Option Grösse/Länge mit mindestens 2 Werten bei 149 von 165, Option Farbe bei 118 von 165"
+    },
+    {
+     "aussage": "tier-maentel-winter: Wolle, Fleece, Baumwolle",
+     "zaehlung": "Woll- im Titel 11, Fleece 7, Baumwoll-/Cotton 5 (von 55, alle ACTIVE)"
+    },
+    {
+     "aussage": "tier-maentel-winter: gefütterte Modelle, Westen, reflektierend",
+     "zaehlung": "gefüttert 4, Weste 9, reflektierend/Reflektor 4"
+    },
+    {
+     "aussage": "tier-maentel-winter: einzelne Modelle für Katzen; Winter; Hund",
+     "zaehlung": "Katze/Sphynx 5 von 55; «winter» im Titel 39; Hund 42; Grösse-Option 49 von 55, Farbe 39 von 55"
+    },
+    {
+     "aussage": "tier-maentel-winter ist Teilmenge von tier-maentel-jacken",
+     "zaehlung": "55 von 55 Produkten liegen in beiden Sammlungen; hunde-katzen-kleidung enthält 150 der Jacken- und 52 der Winter-Produkte"
+    },
+    {
+     "aussage": "kerzen-kerzenhalter: Kerzenhalter, Kerzenständer",
+     "zaehlung": "Kerzenhalter im Titel 10, Kerzenständer 2 (zusammen 12 von 27, alle ACTIVE, 0 mit Bestandsführung)"
+    },
+    {
+     "aussage": "kerzen-kerzenhalter: aus Eisen oder Glas",
+     "zaehlung": "Eisen im Titel 5 (6 mit Beschreibung); Glas im Titel 2 («Schmiedeeisen mit Glas», «Kerzenständer aus Glas»)"
+    },
+    {
+     "aussage": "kerzen-kerzenhalter: LED-Kerzen, Teelichter, Duftkerzen",
+     "zaehlung": "LED-Kerze im Titel 2 («LED-Kerzen Weihnachtsdeko», «Solar LED Outdoor-Kerze»); Teelicht 2; Duftkerze/Aromakerze/Aromatherapy Candle 4"
+    },
+    {
+     "aussage": "kerzen-kerzenhalter: Kerzen- und Duftwärmer",
+     "zaehlung": "«Kerzenwärmer» 1 Titel, «Duftwärmer» 1 Titel = 2 Wärmer; deshalb die Doppelform statt «Kerzenwärmer»"
+    },
+    {
+     "aussage": "kerzen-kerzenhalter: Angaben zu Material, Gewicht, Grösse «soweit vorhanden»",
+     "zaehlung": "Material in 17, Gewicht in 18 von 27 Produkttexten; Lieferumfang nur 6 bis 8, darum nicht genannt"
+    },
+    {
+     "aussage": "Gestrichene Kerzen-Aussagen (unter 2 Produkten)",
+     "zaehlung": "Kerzenleuchter 0; Keramik 1 Titel; Edelstahl 1; Holz als Kerzenhalter 1 (Holzkerzenhalter; Walnuss-Holz Kerzenwärmer ist ein Wärmer); Wand in 1 Text, Fensterbank in 1 Text (Tisch in 12 Texten, nicht im Titel, nicht aufgenommen)"
+    },
+    {
+     "aussage": "Linkziele existieren, sind veröffentlicht, haben Produkte",
+     "zaehlung": "tier-maentel-winter 55, tier-maentel-regen 18, tier-maentel-jacken 165, hunde-katzen-kleidung 370, deko-objekte-accessoires 86, nachtlichter-ambiente 143 (142 kaufbar); alle sechs mit 7 Veröffentlichungen (Admin 10.11.)"
+    },
+    {
+     "aussage": "Keine Titel-/Meta-Kollision",
+     "zaehlung": "Alle 1 723 Sammlungen gelesen: keine andere Sammlung mit gleichem SEO-Titel (auch ohne Suffix «| LuxeStyle») oder gleicher Meta, kein gleicher Sammlungstitel"
+    },
+    {
+     "aussage": "Live-Stand «vorher»",
+     "zaehlung": "Admin 10.11., zweimal gelesen (Hash der drei Kopf-Datensätze unverändert): seo.title, seo.description, descriptionHtml der drei Sammlungen zeichengleich zum Vorschlag; kein Markierungsblock (<!-- ls-verwandt -->, <!-- gd2 -->) in einer der drei"
+    }
+   ]
+  },
+  "S11": {
+   "kurz": "Sechs Produkte bekommen eine sachliche Meta-Beschreibung (128 bis 145 Zeichen) aus ihrer eigenen Produktbeschreibung statt der Vorlage mit Rabattcode und Rückgabefrist; bei der Fernbedienung wird zusätzlich der SEO-Titel auf «Handy-Fernbedienung per App (WiFi, Infrarot) | LuxeStyle CH» (59 Zeichen) geändert. Gegenüber dem Vorschlag sind «13 Düfte» (im Shop nur 12 wählbar) und «Sohle» (richtig: Aussensohle) korrigiert, bei der Kamera ist «wasser- und staubdicht» durch «für den Ausseneinsatz» ersetzt, weil das Datenblatt nicht lesbar ist.",
+   "ziele": [
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15455795741057",
+     "handle": "polyester-aufbewahrungstasche-460096",
+     "felder_vorher": {
+      "seoTitle": "Polyester-Aufbewahrungstasche | LuxeStyle CH",
+      "seoDescription": "Polyester-Aufbewahrungstasche bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+     },
+     "felder_nachher": {
+      "seoTitle": "Polyester-Aufbewahrungstasche | LuxeStyle CH",
+      "seoDescription": "Polyester-Aufbewahrungstasche in Grau für Bar-Zubehör und andere Utensilien. Masse 31 × 15 × 25,5 cm, Gewicht nur 137 g, leicht mitzunehmen."
+     },
+     "bemerkung": "seoTitle unverändert, wird aber mitgesendet, weil ProductInput.seo ersetzt (sonst null). Beide Felder immer senden."
+    },
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15450831815041",
+     "handle": "aromatherapie-duftol-fur-luftbefeuchter-640556",
+     "felder_vorher": {
+      "seoTitle": "Aromatherapie-Duftöl für Luftbefeuchter | LuxeStyle CH",
+      "seoDescription": "Aromatherapie-Duftöl für Luftbefeuchter bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+     },
+     "felder_nachher": {
+      "seoTitle": "Aromatherapie-Duftöl für Luftbefeuchter | LuxeStyle CH",
+      "seoDescription": "Wasserlösliches Aromatherapie-Duftöl für Luftbefeuchter und Duftlampen: Düfte wie Lavendel, Rose, Zitrone und Vanille, 10 ml pro Flasche."
+     },
+     "bemerkung": "seoTitle unverändert, wird aber mitgesendet, weil ProductInput.seo ersetzt (sonst null). Beide Felder immer senden."
+    },
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15454046323073",
+     "handle": "universal-fernbedienung-fur-smartphones-386944",
+     "felder_vorher": {
+      "seoTitle": "Universal-Fernbedienung für Smartphones | LuxeStyle CH",
+      "seoDescription": "Universal-Fernbedienung für Smartphones bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+     },
+     "felder_nachher": {
+      "seoTitle": "Handy-Fernbedienung per App (WiFi, Infrarot) | LuxeStyle CH",
+      "seoDescription": "Universelle WiFi-Infrarot-Fernbedienung fürs Handy: steuert TV-Boxen, Fernseher, Klimaanlagen, Ventilatoren und DVDs per App. Mit Lernfunktion."
+     },
+     "bemerkung": "seoTitle ÄNDERT sich (nur schreiben, wenn live noch exakt der Vorher-Titel steht); Beide Felder immer senden."
+    },
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15448670962049",
+     "handle": "langer-damenmantel-im-kaschmir-look-600600",
+     "felder_vorher": {
+      "seoTitle": "Langer Damenmantel im Kaschmir-Look | LuxeStyle CH",
+      "seoDescription": "Langer Damenmantel im Kaschmir-Look bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+     },
+     "felder_nachher": {
+      "seoTitle": "Langer Damenmantel im Kaschmir-Look | LuxeStyle CH",
+      "seoDescription": "Langer Damenmantel im Kaschmir-Look aus Baumwollgemisch: Grössen XS bis 3XL, viele Farben wie Schwarz, Teddybraun und Dunstblau."
+     },
+     "bemerkung": "seoTitle unverändert, wird aber mitgesendet, weil ProductInput.seo ersetzt (sonst null). Beide Felder immer senden."
+    },
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15502251753857",
+     "handle": "smarte-outdoor-kamera-mit-akku-758528",
+     "felder_vorher": {
+      "seoTitle": "Smarte Outdoor-Kamera mit Akku | LuxeStyle CH",
+      "seoDescription": "Smarte Outdoor-Kamera mit Akku – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+     },
+     "felder_nachher": {
+      "seoTitle": "Smarte Outdoor-Kamera mit Akku | LuxeStyle CH",
+      "seoDescription": "Smarte Outdoor-Kamera mit 5100-mAh-Akku, kabellos installierbar, für den Ausseneinsatz: 120°-Blickwinkel, Gegensprechfunktion, MicroSD bis 64 GB."
+     },
+     "bemerkung": "seoTitle unverändert, wird aber mitgesendet, weil ProductInput.seo ersetzt (sonst null). Beide Felder immer senden."
+    },
+    {
+     "typ": "product",
+     "gid": "gid://shopify/Product/15497429942657",
+     "handle": "outdoor-aqua-schuhe-fur-damen-und-herren-896512",
+     "felder_vorher": {
+      "seoTitle": "Outdoor- & Aqua-Schuhe für Damen und Herren | LuxeStyle CH",
+      "seoDescription": "Outdoor- & Aqua-Schuhe für Damen und Herren – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+     },
+     "felder_nachher": {
+      "seoTitle": "Outdoor- & Aqua-Schuhe für Damen und Herren | LuxeStyle CH",
+      "seoDescription": "Outdoor- und Aqua-Schuhe für Damen und Herren: atmungsaktives Mesh, schnelltrocknend, Aussensohle aus Naturkautschuk, in Rot, Schwarz und Orange."
+     },
+     "bemerkung": "seoTitle unverändert, wird aber mitgesendet, weil ProductInput.seo ersetzt (sonst null). Beide Felder immer senden."
+    }
+   ],
+   "pruefung_nach": "Vor dem Schreiben pro Produkt: aktueller seoTitle und seoDescription müssen zeichengenau felder_vorher entsprechen, sonst dieses Produkt überspringen und melden (Fernbedienungs-Titel nur bei Gleichheit mit dem Vorher-Titel). Schreiben: productUpdate(input:{id, seo:{title, description}}) mit API 2025-01, IMMER beide seo-Felder (seo ersetzt, sonst title = null). Danach frisch lesen: seo.title und seo.description aller sechs gleich felder_nachher (Erwartung: Beschreibungslängen 140/137/143/128/145/145, Titellängen 44/54/59/50/45/58), 0 Treffer von «WELCOME10», «Gratis-Versand» und «Rückgabe» in den sechs Metas, Status weiter ACTIVE. Storefront höchstens 2 Seiten (Fernbedienung und Tasche) mit Browser-Kopf und 8 s Pause: &lt;title&gt; und meta description gleich Soll (Cache-Verzug bis rund 20 Minuten möglich, dann später wiederholen, nicht Fehler nennen). Rücknahme: seo.title und seo.description auf felder_vorher zurückschreiben, aber nur bei Produkten, bei denen der Shop noch den neuen Wert trägt. Wirkung: keine CTR- oder Positionsaussage versprechen (23 bis 125 Einblendungen in drei Monaten, 0 Klicks); Messung 25.11. nur als Lebenszeichen für Tasche und Fernbedienung; Hypothese, nicht belegt: Merchant-Beschreibung der Google-&-YouTube-App übernimmt seo.description, Beobachtung ca. 16.11. Offene Befunde für den Besitzer (nicht in diesem Lauf geändert): Duftöl-Beschreibung nennt 13 Aromen, im Shop 12 wählbar; Mantel-Beschreibung nennt 20 Farben, im Shop 14; Kamera «wasser- und staubdicht» am CJ-Datenblatt prüfen, sobald das Lese-Budget wieder da ist.",
+   "belege": [
+    {
+     "aussage": "Alle sechs Produkte ACTIVE, kaufbar (tracksInventory false), seoTitle und seoDescription entsprechen zeichengenau dem Vorher-Schema (Gedankenstrich «–», «–10%»)",
+     "zaehlung": "6 von 6 live gelesen 10.11. 11:3x UTC; Variantenzahl und availableForSale: Mantel 98 von 98, Duftöl 15 von 15, Aqua 32 von 32, Fernbedienung 2 von 2, Tasche 1 von 1, Kamera 1 von 1"
+    },
+    {
+     "aussage": "Mantel: 14 Farben mit je allen sieben Grössen XS bis 3XL, alle verfügbar; Schwarz, Teddybraun, Dunstblau sind echte Optionswerte; Material «Baumwollgemisch» steht in der Beschreibung",
+     "zaehlung": "14 Farben × 7 Grössen = 98 Varianten, 98 verfügbar. «viele Farben» ist damit belegt. Die Beschreibung nennt «20 Farben» (stimmt nicht mit dem Shop), diese Zahl steht nicht im Meta."
+    },
+    {
+     "aussage": "Duftöl: Im Shop sind nur 12 Einzeldüfte wählbar (Osmanthus fehlt), daher keine Zahl im Meta; Lavendel, Rosé, Lemon, Vanilla sind echte Varianten",
+     "zaehlung": "15 Varianten = 12 Einzeldüfte (Violett, Cherry blossoms, Vanilla, Jasmine, Lily, Ocean, Rosé, Lemon, Lavendel, Sweet, Grüner Tee, Sandalwood) + 3 Sets; Beschreibung nennt 13 Aromen inkl. Osmanthus (Widerspruch Beschreibung gegen Shop, dem Besitzer als Befund melden, in diesem Lauf nicht ändern)"
+    },
+    {
+     "aussage": "Aqua-Schuhe: Beschreibung trennt «Innensohle aus Gummi» und «Aussensohle aus Naturkautschuk»; Farben Rot, Schwarz, Orange sind die einzigen Optionswerte",
+     "zaehlung": "3 Farben (Rot 8, Schwarz 12, Orange 12 Varianten, zusammen 32), Grössen 35 bis 46; Meta nennt Aussensohle und die drei Farben ohne Grösse"
+    },
+    {
+     "aussage": "Kamera: «wasser- und staubdicht» steht nur in der Produktbeschreibung, nicht prüfbar am CJ-Datenblatt (luxe_cj_product_read meldet product_request_budget_exhausted, kein Zwischenspeicher im Repo, git grep auf die PID ohne Treffer)",
+     "zaehlung": "1 von 1 CJ-Leseversuch am 10.11. 11:34 UTC mit Status unknown/budget exhausted; deshalb im Meta nur «für den Ausseneinsatz» (steht wörtlich als «ideal für den Ausseneinsatz geeignet» in der Beschreibung); 5100 mAh, 120°, Gegensprechfunktion, MicroSD bis 64 GB stehen in der Beschreibung"
+    },
+    {
+     "aussage": "Tasche und Fernbedienung: alle genannten Merkmale stehen in der Produktbeschreibung; Variantengewicht der Tasche 137 g",
+     "zaehlung": "Tasche 1 Variante, 137 g; Fernbedienung Beschreibung nennt TV-Boxen, Fernseher, Klimaanlagen, Ventilatoren, DVDs, Lernfunktion, App"
+    },
+    {
+     "aussage": "Keine Titelkollision für den neuen Fernbedienungs-SEO-Titel",
+     "zaehlung": "Abfrage Produkte mit «Handy-Fernbedienung»/«Handyfernbedienung» im Titel: 1 Treffer (Mavic-Pro-Halter, anderer Titel und SEO-Titel); Sammlungen mit «Fernbedienung» im Titel: 1 («Fernbedienungen», SEO-Titel «Fernbedienungen online kaufen | LuxeStyle CH»); 0 Kollisionen mit dem neuen SEO-Titel"
+    },
+    {
+     "aussage": "Keine verbotenen Inhalte in den neuen Texten",
+     "zaehlung": "0 Preise, 0 Fristen/Termine, 0 Rabattcodes, 0 Marken, 0 Gesundheits-/Sicherheits-/Prüfsiegel-/Wirkungsversprechen, 0 «ß», 0 doppelte Leerzeichen (Python-Prüfung)"
+    }
+   ]
+  },
+  "S12": {
+   "kurz": "Geschenk-Hub premium-geschenke und Ratgeber «Geschenkideen Schweiz 2026» verlieren Preisspanne, Versandschwelle, Rabattcode und Frist aus Meta und Sammlungstext (SEO-Titel 62 → 55 und 71 → 59 Zeichen, Metas 140 und 145 Zeichen); der unbelegte Satz zur Sortierung entfällt, jede Warenart im Text ist gezählt. Reine Hygiene, kein Rang-Effekt belegbar (Hub 1 Einblendung in 3 Monaten, Ratgeber 0).",
+   "ziele": [
+    {
+     "typ": "collection",
+     "gid": "gid://shopify/Collection/687793897857",
+     "handle": "premium-geschenke",
+     "felder_vorher": {
+      "seoTitle": "Geschenkideen & Weihnachtsgeschenke kaufen | LuxeStyle Schweiz",
+      "seoDescription": "Geschenkideen für Weihnachten: Uhren, Schmuck, Kuscheldecken, Kerzenwärmer, Tech und Spielzeug von CHF 19 bis 150. Gratis-Versand in der Schweiz ab CHF 50.",
+      "descriptionHtml": "<p>Geschenkideen für Weihnachten und jeden anderen Anlass: Uhren und Schmuck, Taschen und Lederwaren, Kuscheldecken, Kerzenwärmer und Diffuser, Tech wie Powerbanks und Sternenprojektoren, dazu Spiele und Plüschtiere für Kinder. Oben stehen abwechselnd die Warenarten, damit du schnell einen Überblick bekommst — Preise von CHF 19 bis 150.</p><p>Gezielt suchen: <a href=\"/collections/geschenke-fuer-sie\">Geschenke für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Geschenke für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a> · <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Geschenke bis CHF 30</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichtelgeschenke unter CHF 20</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a></p><p>Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe. Die Lieferzeit steht auf jeder Produktseite — für Weihnachten lohnt sich ein früher Blick darauf.</p>"
+     },
+     "felder_nachher": {
+      "seoTitle": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+      "seoDescription": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder.",
+      "descriptionHtml": "<p>Geschenkideen für Weihnachten und jeden anderen Anlass: Uhren und Schmuck, Taschen und Lederwaren, Kuscheldecken, Aroma-Diffuser, Tech wie Powerbanks, dazu Puzzles, Bausteine und Plüschtiere.</p><p>Gezielt suchen: <a href=\"/collections/geschenke-fuer-sie\">Geschenke für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Geschenke für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a> · <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichtelgeschenke &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a></p>"
+     },
+     "bemerkung": "collectionUpdate NUR mit id, seo{title,description} und descriptionHtml senden (kein title, handle, sortOrder, ruleSet; Sortierung MANUAL, Regel tag:geschenkwelt-alle und 389 Produkte bleiben). Live-Stand gelesen 10.11. 11:33 und 11:38 UTC (updatedAt 2026-11-05T06:06:22Z, beide Lesungen gleich): kein Markierungsblock und kein HTML-Kommentar im descriptionHtml; wenn vor dem Schreiben ein <!-- ls-verwandt --> oder <!-- gd2 --> auftaucht oder irgendein vorher-Feld abweicht: abbrechen, den Teil ab dem Marker erhalten, nie blind überschreiben. Absatz 2 (Linkzeile) hat dieselben sieben Ziele in derselben Reihenfolge, nur die Linktexte «Geschenke bis CHF 30» → «Kleine Geschenke» und «Wichtelgeschenke unter CHF 20» → «Wichtelgeschenke &amp; Mitbringsel» (Zahlen aus Linktexten, Besitzerregel); der Link auf die Emoji-Sammlung bleibt prozentkodiert (%F0%9F%8E%81-geschenke-bis-chf-30). Die Sammlungs-Metafelder global.title_tag/description_tag (Typ string) spiegeln seo.title/description; nicht separat schreiben, nur zurücklesen. Absatz 3 (Gratis-Versand/30 Tage Rückgabe/Lieferzeit) entfällt ersatzlos. Der Sammlungstitel «Geschenkideen & Weihnachtsgeschenke» bleibt."
+    },
+    {
+     "typ": "article",
+     "gid": "gid://shopify/Article/1001699606913",
+     "handle": "geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass",
+     "felder_vorher": {
+      "metafield_global_title_tag": "Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass | LuxeStyle",
+      "metafield_global_description_tag": "Die besten Geschenkideen 2026 für die Schweiz: für Sie, für Ihn, Geburtstag, Hochzeit & unter CHF 30. Schnell geliefert, −10% mit WELCOME10, Gratis-Versand ab CHF 50."
+     },
+     "felder_nachher": {
+      "metafield_global_title_tag": "Geschenkideen Schweiz 2026: für Sie und für Ihn | LuxeStyle",
+      "metafield_global_description_tag": "Geschenkideen für die Schweiz: für Sie und für Ihn, zum Geburtstag und zur Hochzeit sowie kleine Mitbringsel – mit Links zu passenden Sammlungen."
+     },
+     "bemerkung": "Die Meta dieses Artikels steht in den Artikel-Metafeldern namespace «global», Schlüssel «title_tag» und «description_tag», Typ single_line_text_field (live gelesen; das Feld summary ist ein Anreisser-Auszug und KEINE Meta und bleibt unverändert; der Artikel-Titel «Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass» bleibt). Schreiben per metafieldsSet (ownerId = Artikel-gid) mit genau diesen zwei Einträgen; body, title, handle, summary NICHT senden (body 2 809 Zeichen bleiben unberührt). Live-Stand gelesen 10.11. 11:33 und 11:38 UTC (updatedAt 2026-10-23T07:18:28Z, beide Lesungen gleich). Der Artikeltext selbst nennt weiter «7–14 Werktage», 30 Tage Rückgaberecht, Gratis-Versand ab CHF 50, WELCOME10 und Preise im Block lx-produkte; das ist nicht Teil dieses Vorschlags (bei der Messung am 18.11. mitdenken)."
+    }
+   ],
+   "pruefung_nach": "Reihenfolge: Trockenlauf als eigener Aufruf, dann LIVE; vor dem Schreiben alle vorher-Felder gegen den dann gültigen Live-Stand vergleichen (descriptionHtml, seo.title, seo.description der Sammlung; global.title_tag und global.description_tag des Artikels) und bei jeder Abweichung oder einem neuen Markierungsblock abbrechen. Danach frisch zurücklesen: (1) Sammlung seo.title = «Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz» (55 Zeichen), seo.description 140 Zeichen, descriptionHtml byte-gleich felder_nachher (2 Absätze, 7 Links), title «Geschenkideen & Weihnachtsgeschenke», handle, sortOrder MANUAL, ruleSet (EQUALS tag geschenkwelt-alle) und productsCount 389 unverändert; Sammlungs-Metafelder global.title_tag/description_tag gleich den neuen seo-Werten. (2) Artikel global.title_tag = 59 Zeichen, global.description_tag = 145 Zeichen, Typ single_line_text_field, body weiter 2 809 Zeichen und gleich dem Vorher-Stand, Artikel-Titel und handle unverändert. (3) Je Seite ein Storefront-Abruf, sobald die Bremse es zulässt (Browser-Kopf, 8 s Pause, 429 = Drosselung, nicht Fehler): title, meta description, og:title, og:description entsprechen den Werten (Sammlung: 55 Zeichen, weit unter dem 70-Zeichen-Hartschnitt; der Artikel-Titel enthält «LuxeStyle», also hängt das Theme nichts an). Rücknahme bei Abweichung oder Fehler: die felder_vorher-Werte zurückschreiben (Sammlung per collectionUpdate, Artikel per metafieldsSet) und erneut zurücklesen. Messung der Wirkung 18.11. (Search Console, Index-Status des Hubs); Erwartung ehrlich: kein Rang-Effekt belegbar, Basis Hub 1 Einblendung, Ratgeber 0.",
+   "belege": [
+    {
+     "aussage": "Bestand der Sammlung premium-geschenke",
+     "zaehlung": "389 Produkte: 386 ACTIVE, 3 DRAFT; 5 ACTIVE sind getrackt und ausverkauft; kaufbar (ACTIVE und nicht tracksInventory mit Bestand ≤ 0) = 381 (10.11. 11:33 UTC, Admin-API, alle 389 gelesen)"
+    },
+    {
+     "aussage": "«Uhren und Schmuck»",
+     "zaehlung": "Produktart Uhren 33 kaufbar, Schmuck 20 kaufbar (Titel mit «uhr» 31, davon 1 Spieluhr)"
+    },
+    {
+     "aussage": "«Taschen und Lederwaren»",
+     "zaehlung": "Produktart Taschen 56 kaufbar; «Leder» im Titel 31 kaufbar, davon nennen 30 im Datenblatttext echtes Leder (Rindsleder/Echtleder/Ziegenleder/Krokodilleder), bei 1 (Lederarmband) fehlt die Angabe; keiner nennt Kunstleder/PU/Imitat"
+    },
+    {
+     "aussage": "«Kuscheldecken»",
+     "zaehlung": "«Kuscheldecke» im Titel 10 kaufbar (11 aktiv); «decke» im Titel 21 zählt Keramiktassen «mit Deckel» mit: die frühere Zahl «Decke 22» war zu hoch"
+    },
+    {
+     "aussage": "«Aroma-Diffuser»",
+     "zaehlung": "«Diffuser/Diffusor» im Titel 15 kaufbar, alle mit «Aroma» im Titel (mit Aromakerze und Duft-Nachtlicht wären es 17); erster auf Platz 5"
+    },
+    {
+     "aussage": "«Tech wie Powerbanks»",
+     "zaehlung": "«Powerbank» im Titel 5 kaufbar (davon 3 als Handwärmer-Powerbank-Kombi); Elektronik 17 + Gadget 22 + Spass-Elektronik 5 kaufbar"
+    },
+    {
+     "aussage": "«Puzzles, Bausteine und Plüschtiere» (statt «Spiele und Plüschtiere für Kinder»)",
+     "zaehlung": "Puzzle im Titel 33, Baustein im Titel 33, Plüschtier/Stofftier/Kuscheltier im Titel 10 (alle kaufbar); «Spiel» im Titel nur 1 (Grosses Baukastenspiel): «Spiele» nicht gedeckt und gestrichen; Spielzeug-Produktart 62 kaufbar. «für Kinder» gestrichen: viele Holz- und Metallpuzzles/3D-Bausätze sind nicht kindgebunden"
+    },
+    {
+     "aussage": "Meta «Spielzeug» und «für Sie, Ihn und Kinder»",
+     "zaehlung": "Spielzeug-Produktart 62; Tags geschenkwelt-sie 152, geschenkwelt-ihn 95, geschenkwelt-kinder 74 kaufbar"
+    },
+    {
+     "aussage": "gestrichen: «Kerzenwärmer»",
+     "zaehlung": "Kerzenwärmer im Titel kaufbar nur 2 (Plätze 73 und 149) = Mindestgrenze, fällt bei einem Ausverkauf auf 1; durch Diffuser (15) ersetzt"
+    },
+    {
+     "aussage": "gestrichen: «Sternenprojektoren»",
+     "zaehlung": "Projektor/Sternenhimmel/Galaxy im Titel kaufbar nur 1"
+    },
+    {
+     "aussage": "gestrichen: Satz «Oben stehen abwechselnd die Warenarten …»",
+     "zaehlung": "Reihenfolge MANUAL: Plätze 1–10 sind 6 Uhren (1, 2, 4, 6, 8, 10); erstes Schmuck-Produkt Platz 63, erstes Spielzeug Platz 38, erstes Plüschtier Platz 122, erste Powerbank Platz 145 (Plätze mit Entwürfen gezählt); der Satz war schon live falsch"
+    },
+    {
+     "aussage": "gestrichen: «Preise von CHF 19 bis 150» und Absatz 3",
+     "zaehlung": "Mindestpreise der Varianten CHF 19.90 bis 140.90, teuerste Variante bis 226.90: «bis 150» stimmt nicht; Preis, Versandschwelle, Rückgabefrist und Lieferzeit stehen laut Besitzerregel nicht in Sammlungstexten"
+    },
+    {
+     "aussage": "Linkziele der Zeile «Gezielt suchen» existieren und haben kaufbare Produkte",
+     "zaehlung": "geschenke-fuer-sie 382, geschenke-fuer-ihn 287, geschenke-fuer-kinder 367, 🎁-geschenke-bis-chf-30 391 (alle Min-Preis ≤ 29.90, Titel trägt die Zahl selbst), kleine-geschenke-mitbringsel 308, weihnachten-2026 297 (166 Produkte der Art Deko, 272 Titel mit «Weihnacht»: «Weihnachtsdeko» gedeckt), adventskalender 31 kaufbar"
+    },
+    {
+     "aussage": "Ratgeber-Aussagen der neuen Meta",
+     "zaehlung": "Body 2 809 Zeichen gelesen: Abschnitte Geschenke für Sie, für Ihn, kleine Geschenke («ideal als Mitbringsel oder fürs Wichteln»), nach Anlass (Geburtstag, Hochzeit, Muttertag & Vatertag), Bestseller; 5 Sammlungslinks im Text (fur-sie 413, fur-ihn 4 106, herrenuhren-schmuck 2 002, bestseller-shop 18 Produkte, 🎁-geschenke-bis-chf-30): «mit Links zu passenden Sammlungen» gedeckt"
+    },
+    {
+     "aussage": "Keine Kollision der neuen Strings",
+     "zaehlung": "gegen alle 1 722 anderen Sammlungen (Titel, SEO-Titel, SEO-Beschreibung) und 350 andere Artikel (Titel, title_tag, description_tag) per normalisiertem Vergleich und Ähnlichkeit > 0.9: 0 Treffer für alle vier neuen Strings; Teil vor «|» ebenfalls ohne Treffer"
+    },
+    {
+     "aussage": "Verbotsmuster in den neuen Texten",
+     "zaehlung": "Suche nach CHF, Preis, Versand, Rückgabe, Lieferung, WELCOME, Rabatt, Halloween, ß, Werktag, Gratis, Jahreszahlen, MagSafe, geprüft, sicher, gesund in Sammlungstext, SEO-Titel, SEO-Beschreibung und Artikel-Beschreibung: 0 Treffer; einziger Treffer ist «2026» im Artikel-Titel-Tag (= Name des Artikels)"
+    },
+    {
+     "aussage": "Wirkungsbasis (ehrlich)",
+     "zaehlung": "Search Console 28 Tage und 3 Monate bis 07.11. (Prüfer, nicht von mir neu gezogen): Ratgeber 0 Einblendungen, premium-geschenke 1 Einblendung (Position 11, 0 Klicks); Index: Hub «Crawled - currently not indexed», Ratgeber «Submitted and indexed». Die Messung 18.11. kann keinen Effekt zeigen; für den Hub bringt erst ein Index-Antrag (Besitzer) etwas"
+    }
+   ]
+  }
+ }
+}

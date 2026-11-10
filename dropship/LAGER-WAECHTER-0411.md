@@ -19,6 +19,7 @@ Alle getrackten Produkte dieser Sammlungen sind Fortura-Ware (Tag `fortura`), di
 Workflow `.github/workflows/lager-waechter.yml`, einmal täglich 05:17 UTC (06:17 Schweizer Winterzeit), von Hand startbar. Er ruft das vorhandene, getestete Werkzeug `automation/verfuegbar_zuerst.mjs` auf:
 1. Alle Sammlungen des Hauptmenüs (`MENUE=1`, Schwelle 0.1: umsortiert wird erst, wenn mehr als 10 % der ersten 48 aktiven Produkte ausverkauft sind).
 2. Sechs Lager-/Kostüm-Sammlungen ausserhalb des Menüs (`ft-kostuem-accessoire`, `ft-kostuem-hut`, `spielzeug-ch-lager`, `blitzversand-schweiz`, `kostueme-ch-lager`, `kostueme-fasnacht`).
+   **Seit 10.11.2026 elf statt sechs:** dazu `ft-kinderkostuem`, `ft-damenkostuem`, `ft-herrenkostuem`, `ft-unisexkostuem`, `ft-peruecke` und `ft-maske` (SEO-Push, `dropship/seo-push-1011/README.md`). Das ist eine Ausdehnung der Freigabe vom 04.11. («ausverkaufte lager aufpassen») auf sechs weitere Sammlungen derselben Art; Rücknahme je Sammlung wie oben, `vorher=CREATED_DESC` (gemessen 10.11.).
 Umsortiert wird mit `collectionReorderProducts` (stabile Teilung: Verfügbares vorn, die bisherige Reihenfolge bleibt in beiden Gruppen). **Es wird nichts versteckt, gelöscht oder auf Entwurf gesetzt.** Jede Sammlung wird danach nachgelesen; ohne bestätigte Nachlese zählt sie als Fehler (Lauf rot).
 
 ## Freigabe (zwei Stufen)
