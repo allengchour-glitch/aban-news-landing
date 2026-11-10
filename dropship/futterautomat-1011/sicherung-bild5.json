@@ -1,0 +1,44 @@
+{
+ "produkt": "gid://shopify/Product/15523986473345",
+ "galerieVorher": [
+  {
+   "position": 1,
+   "id": "gid://shopify/MediaImage/70772684063105",
+   "alt": "Futterautomat für Katze – Bild 5 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889"
+  },
+  {
+   "position": 2,
+   "id": "gid://shopify/MediaImage/70772683899265",
+   "alt": "Futterautomat für Katze | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a463213d-2cfd-4561-b0f4-1aff53dbc828.jpg?v=1788416889"
+  },
+  {
+   "position": 3,
+   "id": "gid://shopify/MediaImage/70772683964801",
+   "alt": "Futterautomat für Katze – Bild 2 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5d06e60-ae6c-4b73-8683-077691bbf5ea.jpg?v=1788416890"
+  },
+  {
+   "position": 4,
+   "id": "gid://shopify/MediaImage/70772683997569",
+   "alt": "Futterautomat für Katze – Bild 3 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15c1017d-5d42-4b53-a694-6c0f3f0d3d08.jpg?v=1788416889"
+  },
+  {
+   "position": 5,
+   "id": "gid://shopify/MediaImage/70772684030337",
+   "alt": "Futterautomat für Katze – Bild 4 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/039e9a93-07ef-4038-81d3-6a4e300ac293.jpg?v=1788416890"
+  }
+ ],
+ "entfernt": {
+  "id": "gid://shopify/MediaImage/70772684030337",
+  "position": 5,
+  "alt": "Futterautomat für Katze – Bild 4 | LuxeStyle",
+  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/039e9a93-07ef-4038-81d3-6a4e300ac293.jpg?v=1788416890",
+  "breite": 799,
+  "hoehe": 800,
+  "sha256": "d42a504faade2a7ac6c88302716733f6bb1ac906715db64db33c1a846893d1f2"
+ }
+}

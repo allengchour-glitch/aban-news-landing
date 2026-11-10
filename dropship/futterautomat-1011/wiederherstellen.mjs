@@ -7,11 +7,18 @@
 // Automatic Feeding Machine», Beschreibung «Material: stainless steel · Features: automatic feeding · Colour: White»,
 // Packliste «Pet smart feeder*1», Gewicht 2200 g; Bilder: weisses Gehäuse, sichtbare Edelstahlschale.
 //
-// Trockenlauf ist Vorgabe. LIVE=1 schreibt (Sicherung der Kurzfassung vorher, Rücklesen danach).
-// ZURUECK=1 LIVE=1 stellt die Kurzfassung aus der Sicherung wieder her. FREMD_UEBERSCHREIBEN=1 schreibt auch dann,
-// wenn der Text weder Kurzfassung noch Soll ist (nur nach Blick auf den Stand).
+// Zweite Fassung (10.11. nachmittags): Der Besitzer überliess die Wahl auf die Frage «Welcher Text soll gelten?» mir
+// («entscheide du, am besten fertig fix und live»). Soll ist jetzt die belegte Fassung OHNE den Satz «auch wenn du
+// nicht zu Hause bist» (nur abgeleitet, nicht im Datenblatt; Codex hatte «Abwesenheitsclaims» als unbelegt bemängelt)
+// und mit der SEO-Beschreibung «… Futterschale aus Edelstahl, Gewicht ca. 2,2 kg.». Die Fassung von 10:27 UTC («V1»)
+// ist ein bekannter Vorgänger, die Kurzfassung von 08:46 UTC ebenfalls.
 //
-// Exit: 0 ok / schon im Soll / Trockenlauf · 3 falsches Produkt · 4 Text weder Kurzfassung noch Soll (jemand hat geändert)
+// Trockenlauf ist Vorgabe. LIVE=1 schreibt (Sicherung des Vorgängers vorher, Rücklesen danach). Die Sicherungen liegen
+// getrennt: Kurzfassung in sicherung-kurzfassung-0846.json, V1 in sicherung-v1-1027.json, Unbekanntes in sicherung-fremd.json.
+// ZURUECK=1 LIVE=1 stellt die Kurzfassung aus der Sicherung wieder her, ZURUECK=v1 LIVE=1 die Fassung von 10:27 UTC.
+// FREMD_UEBERSCHREIBEN=1 schreibt auch dann, wenn der Text weder Kurzfassung noch V1 noch Soll ist (nur nach Blick auf den Stand).
+//
+// Exit: 0 ok / schon im Soll / Trockenlauf · 3 falsches Produkt · 4 Text weder Kurzfassung noch V1 noch Soll (jemand hat geändert)
 //       5 Shopify meldet Fehler · 6 Rücklesen weicht ab
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,18 +32,25 @@ export const HANDLE = 'futterautomat-fur-katze-527488';
 // Die Kurzfassung von 10.11. 08:46 UTC (Urheber unbekannt), so gelesen um 09:27 und 09:56 UTC.
 export const KURZ_BODY = '<p>Dieser weisse Futterspender für Katzen ist in einer Ausführung erhältlich. Prüfe vor dem Kauf die aktuelle Produktseite.</p><p>Aktuelle Ausführung: Farbe Weiss; eine Ausführung. Der aktuelle Preis und die Verfügbarkeit werden auf der Produktseite angezeigt.</p>';
 
-export const ERSETZUNGEN = [
+// V1 = Fassung von 07:28 UTC, am 10.11. 10:27 UTC wieder eingespielt (zwei Ersetzungen am Original).
+export const ERSETZUNGEN_V1 = [
   ['Er besteht aus Edelstahl und hat eine automatische Fütterungsfunktion.', 'Er hat eine automatische Fütterungsfunktion und eine Futterschale aus Edelstahl.'],
   ['<li>Aus Edelstahl gefertigt</li>', '<li>Futterschale aus Edelstahl</li>'],
 ];
+// Soll = V1 ohne den abgeleiteten Satzteil «auch wenn du nicht zu Hause bist».
+export const ERSETZUNGEN = [
+  ...ERSETZUNGEN_V1,
+  ['mit Futter, auch wenn du nicht zu Hause bist.', 'mit Futter.'],
+];
 export const SOLL_TITEL = 'Automatischer Futterspender für Katzen';
-export const SOLL_SEO_BESCHREIBUNG = 'Automatischer Futterspender für Katzen in Weiss mit Fütterungsfunktion und Futterschale aus Edelstahl. Für die Futterausgabe, auch wenn du nicht zu Hause bist.';
+export const SEO_BESCHREIBUNG_V1 = 'Automatischer Futterspender für Katzen in Weiss mit Fütterungsfunktion und Futterschale aus Edelstahl. Für die Futterausgabe, auch wenn du nicht zu Hause bist.';
+export const SOLL_SEO_BESCHREIBUNG = 'Automatischer Futterspender für Katzen in Weiss mit Fütterungsfunktion und Futterschale aus Edelstahl, Gewicht ca. 2,2 kg.';
 export const SOLL_MATERIAL = 'Edelstahl (Futterschale)';
 
-// Soll-Zustand aus der Sicherung vom 10.11. 07:27 UTC (Stand VOR meiner ersten Korrektur) und den zwei Ersetzungen.
-export function baueSoll(orig) {
+// Zustand aus der Sicherung vom 10.11. 07:27 UTC (Stand VOR meiner ersten Korrektur) und den Ersetzungen.
+function bau(orig, ersetzungen, seoBeschreibung) {
   let body = orig.descriptionHtml;
-  for (const [a, b] of ERSETZUNGEN) {
+  for (const [a, b] of ersetzungen) {
     const n = body.split(a).length - 1;
     if (n !== 1) throw new Error(`Anker nicht genau einmal im Original: «${a}» (${n}x)`);
     body = body.split(a).join(b);
@@ -44,10 +58,12 @@ export function baueSoll(orig) {
   return {
     title: SOLL_TITEL,
     descriptionHtml: body,
-    seo: { title: orig.seo.title, description: SOLL_SEO_BESCHREIBUNG },
+    seo: { title: orig.seo.title, description: seoBeschreibung },
     material: SOLL_MATERIAL,
   };
 }
+export const baueSoll = (orig) => bau(orig, ERSETZUNGEN, SOLL_SEO_BESCHREIBUNG);
+export const baueSollV1 = (orig) => bau(orig, ERSETZUNGEN_V1, SEO_BESCHREIBUNG_V1);
 
 const LESEN = `query($id:ID!){product(id:$id){handle title status descriptionHtml seo{title description} material:metafield(namespace:"mm-google-shopping",key:"material"){id value}}}`;
 const SCHREIBEN = `mutation($i:ProductInput!){productUpdate(input:$i){userErrors{field message}}}`;
@@ -65,9 +81,15 @@ export async function lauf({ gql, live = false, zurueck = false, fremd = false, 
   if (!p || p.handle !== HANDLE) { log('ABBRUCH: Produkt oder Handle passt nicht:', p && p.handle); return 3; }
   log('Stand:', p.title, '|', p.status);
 
+  const orig = JSON.parse(fs.readFileSync(dateien.orig, 'utf8'));
+  const sollV1 = baueSollV1(orig);
+
   if (zurueck) {
-    const s = JSON.parse(fs.readFileSync(dateien.kurz, 'utf8'));
-    log(live ? 'ZURÜCK auf die Kurzfassung aus der Sicherung' : 'Trockenlauf Rücknahme (kein Schreiben)');
+    // «v1»: die Fassung von 10:27 UTC (aus dem Original gebaut, keine Datei nötig); sonst die gesicherte Kurzfassung.
+    const s = zurueck === 'v1'
+      ? { title: sollV1.title, descriptionHtml: sollV1.descriptionHtml, seo: sollV1.seo, material: null }
+      : JSON.parse(fs.readFileSync(dateien.kurz, 'utf8'));
+    log(live ? `ZURÜCK auf ${zurueck === 'v1' ? 'die Fassung von 10:27 UTC' : 'die Kurzfassung aus der Sicherung'}` : 'Trockenlauf Rücknahme (kein Schreiben)');
     if (!live) return 0;
     const input = { id: ID, title: s.title, descriptionHtml: s.descriptionHtml, seo: s.seo };
     if (s.material && s.material.id) input.metafields = [{ id: s.material.id, value: s.material.value }];
@@ -77,12 +99,13 @@ export async function lauf({ gql, live = false, zurueck = false, fremd = false, 
     return fehler.length ? 5 : 0;
   }
 
-  const orig = JSON.parse(fs.readFileSync(dateien.orig, 'utf8'));
   const soll = baueSoll(orig);
   if (gleichSoll(p, soll)) { log('Schon im Soll: nichts zu tun.'); return 0; }
 
-  if (p.descriptionHtml !== KURZ_BODY && !fremd) {
-    log('ABBRUCH: Der Text ist weder die Kurzfassung von 08:46 UTC noch das Soll. Jemand hat zwischenzeitlich geändert.');
+  const istKurz = p.descriptionHtml === KURZ_BODY;
+  const istV1 = p.descriptionHtml === sollV1.descriptionHtml;
+  if (!istKurz && !istV1 && !fremd) {
+    log('ABBRUCH: Der Text ist weder die Kurzfassung von 08:46 UTC noch die Fassung von 10:27 UTC noch das Soll. Jemand hat zwischenzeitlich geändert.');
     log('Aktueller Text:', p.descriptionHtml);
     log('Mit FREMD_UEBERSCHREIBEN=1 trotzdem schreiben (erst den Stand ansehen).');
     return 4;
@@ -95,7 +118,9 @@ export async function lauf({ gql, live = false, zurueck = false, fremd = false, 
   log('--- Material-Metafeld ---', p.material ? p.material.value : '(fehlt)', '->', soll.material);
   if (!live) { log('Trockenlauf: nichts geschrieben.'); return 0; }
 
-  fs.writeFileSync(dateien.kurz, JSON.stringify({ title: p.title, descriptionHtml: p.descriptionHtml, seo: p.seo, material: p.material }, null, 1));
+  // Jeder Vorgänger in seine eigene Sicherung: die Kurzfassung wird nie von einer späteren Sicherung überschrieben.
+  const sicherung = istKurz ? dateien.kurz : istV1 ? dateien.v1 : dateien.fremd;
+  fs.writeFileSync(sicherung, JSON.stringify({ title: p.title, descriptionHtml: p.descriptionHtml, seo: p.seo, material: p.material }, null, 1));
   const input = { id: ID, title: soll.title, descriptionHtml: soll.descriptionHtml, seo: soll.seo };
   if (p.material && p.material.value !== soll.material) input.metafields = [{ id: p.material.id, value: soll.material }];
   const m = await gql(SCHREIBEN, { i: input });
@@ -134,9 +159,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const code = await lauf({
     gql,
     live: process.env.LIVE === '1',
-    zurueck: process.env.ZURUECK === '1',
+    zurueck: process.env.ZURUECK === 'v1' ? 'v1' : process.env.ZURUECK === '1',
     fremd: process.env.FREMD_UEBERSCHREIBEN === '1',
-    dateien: { orig: path.join(hier, 'sicherung.json'), kurz: path.join(hier, 'sicherung-kurzfassung-0846.json') },
+    dateien: {
+      orig: path.join(hier, 'sicherung.json'),
+      kurz: path.join(hier, 'sicherung-kurzfassung-0846.json'),
+      v1: path.join(hier, 'sicherung-v1-1027.json'),
+      fremd: path.join(hier, 'sicherung-fremd.json'),
+    },
   });
   process.exit(code);
 }
