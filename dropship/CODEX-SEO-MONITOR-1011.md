@@ -3,7 +3,7 @@
 Der Besitzer schickte am 10.11.2026 ein Bild des SEO-Monitors aus dem Büro-Dashboard: Abschnitt «Suchanfragen und durchschnittliche Position» mit **15 Anfragen**, «Teilauszug» und dem Satz «Keine vollständige Keywordliste». Claude kann Codex von hier nicht aufrufen, darum dieser Auftrag als Datei (wie `CODEX-OPTIK-0911.md`).
 
 ## Was gemessen ist (10.11.2026, Search Console über OpenSEO)
-- Der Auszug mit 15 Zeilen war **kein Fehler der Anzeige, sondern der Abfrage**. Die Search Console liefert bis zu 1 000 Zeilen je Aufruf (`rowLimit`), weitere über `startRow`. Für luxestyle.ch gibt es vom 04.10. bis 07.11.2026 (35 Tage) **4 442 Anfragen**.
+- Der Auszug mit 15 Zeilen war **kein Fehler der Anzeige, sondern der Abfrage**. Ein Aufruf über OpenSEO liefert höchstens 1 000 Zeilen (`rowLimit`), weitere kommen über `startRow` (die Search-Console-Schnittstelle selbst erlaubt laut Google-Dokumentation bis zu 25 000 Zeilen je Aufruf; nicht neu geprüft). Für luxestyle.ch gibt es vom 04.10. bis 07.11.2026 (35 Tage) **4 442 Anfragen**.
 - Auch die vollständige Liste ist nicht das Ganze: sie deckt **87,0 % der Impressionen, aber nur 20,5 % der Klicks**. Vier Fünftel der Klicks stammen aus Anfragen, die Google nicht nennt (anonymisiert). Eine vollständige Keywordliste gibt es nicht; der Deckungssatz muss sichtbar bleiben.
 - Claude hat die Vorlage `tools/buero/seo_monitor.html` erweitert (PR #3050, gemergt): Suche über die Anfragen, «Mehr anzeigen» (50 Zeilen je Schritt), ein Satz zur Deckung der Website-Summe, Tagesbalken folgen der Zahl der Tage (vorher fest 28 Spalten). Alles Übrige ist unverändert, die Content-Security-Policy bleibt streng (`default-src 'none'`, `connect-src 'none'`).
 - Test der Vorlage: `dropship/keywordliste-1011/monitor_test.mjs` (Browser, nur synthetische Daten, Mutationsprobe 16 von 16 in `mutationsprobe_monitor.py`).
@@ -27,7 +27,7 @@ Den **Datenstand** für die Vorlage neu bauen, mit allen Zeilen statt dem Teilau
 ```
 
 Regeln:
-1. **`queries` mit allen Zeilen**: Seiten von 1 000 Zeilen holen (`startRow` 0, 1000, 2000 …), bis eine Seite weniger als 1 000 Zeilen liefert. `truncated: true` nur, wenn du wirklich nicht alles holen konntest.
+1. **`queries` mit allen Zeilen**: Seiten holen (bei 1 000 Zeilen je Seite `startRow` 0, 1000, 2000 …), bis eine Seite weniger Zeilen liefert als verlangt. `truncated: true` nur, wenn du wirklich nicht alles holen konntest.
 2. **`total` aus dem Aufruf ohne Dimension** (Summe der Website), nicht aus der Summe der Anfragen: so rechnet die Vorlage die Deckung.
 3. **`days`** je Tag des Fensters (gemeldete Null bleibt Null, fehlende Tage bleiben schraffiert, Position ohne Impressionen ist nicht messbar).
 4. **Keine Messwerte ins Git.** Der Datenstand wird beim Bau in die Vorlage eingesetzt und gehört nur ins private Dashboard (Codex-Regel aus `docs/CODEX-CLAUDE-UEBERGABE.md`). Claude hat dem Besitzer eine fertige Datei geschickt (`seo-monitor-datenstand-1011.json`, 4 442 Anfragen); sie liegt nicht im Repo.
