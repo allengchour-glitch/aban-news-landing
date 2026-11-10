@@ -1,5 +1,23 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: Claude hat Version 4 (Streaming) geprüft (10.11.2026)
+
+Auftrag aus `STREAMING.md` ausgeführt, Details in `docs/ki-bot-gemeinsam/CLAUDE-REVIEW-V4.md`. GEMESSEN mit Python 3.11.17: `SignalStrom` bitgleich zu Version 3 (4 390 Tage, 300 Zufallsreihen, 324 Berichtszahlen) und 3,3·10⁻¹⁶ neben einer eigenen Nachrechnung; Aufwärmphase, gleitende Fenster, eingefrorene Konfiguration und Abweisung ungültiger Kurse halten. **Befund F8 (niedrig):** ein Fehler *in* der Rechnung (z. B. Kurs `sys.float_info.min`, danach `AttributeError` aus `statistics.stdev`) hinterlässt veränderten Zustand und legt den Strom 30 Schritte lahm; Empfehlung im Review (Kurs vor der Übernahme auf Plausibilität prüfen). Mutationsprobe: 38 von 45 erkannt mit Codex' 57 Tests, 43 von 45 mit den acht neuen Tests (`test_labor_regression_v4.py`). `labor.py` unverändert; eine Korrektur braucht Protokollversion 5. Kein Blocker. Version 3 und Nachrichtenmodul nur gestreift. Grenzen der zeitlichen Datenprüfung: `--stichtag` bestimmt «aktuell», der Zeitpunkt der Datenbeschaffung steht nirgends.
+
+## Aktuell: KI-Bot-Forschung mit schrittweiser Signalschnittstelle
+
+Fortsetzung: Claudes EmpfehlungF2 strukturell umgesetzt. Version4: SignalStrom erhält pro Schritt nur einen Kurs, hält höchstens200 vergangene Werte und friert Konfiguration je Instanz ein; Batch-Adapter verwendet denselben Kern.57 Tests inklusive14 Claude-Regressionen grün;36 Ergebnisfälle und letzte Zielquoten exakt unverändert zu Version3. [Implementierung, Grenzen und nächster unabhängiger Claude-Auftrag](docs/ki-bot-gemeinsam/STREAMING.md). Keine Änderung am Handelsbot, Broker oder Echtgeld. Einzelkurse tragen keine Zeitstempel, Datenprüfung bleibt Aufgabe der Datenebene; kein Python-Sicherheits-Sandkasten. Claude hat Version4 noch nicht geprüft.
+
+
+## Aktuell: Claudes KI-Bot-Review übernommen und bearbeitet
+
+main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konflikt erhalten. Claude-Review betrifft6834a2075; kein Review der neuen Version behaupten. Vier von sieben Leckversätzen selbst nachgestellt. Version3 ergänzt strenge Prüfung aller Präfixe (CLI ausdrücklich nur Stichprobe), stellt den Versuch-ID-Vertrag ohne News wieder her, bindet Verzögerung/Mindestlänge an Protokollwerte und speichert Python-Version.51 Tests inklusive14 Claude-Regressionen grün;36 Strategieergebnisse und Zielquoten unter gleicher Python-Version exakt unverändert. [Befunde, Belege und nächster unabhängiger Prüfauftrag](docs/ki-bot-gemeinsam/CODEX-ANTWORT-CLAUDE.md). Keine Änderung am Handelsbot oder Echtgeld. YouTube weiterhin Proxy403.
+
+
+## Aktuell: YouTube-Begleitcode und News-Datenprüfung
+
+Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](docs/ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
+
 ## Büro: Tabellen und Statistik ·10.11.2026
 
 Codex ergänzt die generische Metricool-Monitorvorlage und die bestehende private Anzeige um Kanalvergleich, Tageswerte und Statistik mit belegter Datenbasis. Kein neuer Quellenabruf, keine Änderung im Metricool-Planer oder Shop. Private Messwerte bleiben außerhalb Git; Details und Tests in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), endgültiger Stand im zugehörigen PR.

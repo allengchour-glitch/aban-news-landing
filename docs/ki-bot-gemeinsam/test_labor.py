@@ -14,6 +14,9 @@ HIER = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location("ki_forschung", HIER / "labor.py")
 L = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(L)
+spec_news = importlib.util.spec_from_file_location("ki_nachrichten", HIER / "nachrichten.py")
+N = importlib.util.module_from_spec(spec_news)
+spec_news.loader.exec_module(N)
 
 
 def preise(n=800):
@@ -169,13 +172,237 @@ class DatenUndSignale(unittest.TestCase):
             self.assertFalse(result["handelsfreigabe"])
             self.assertFalse(result["datenqualitaet"]["aktuell"])
             self.assertTrue(result["signalpruefung"]["bestanden"])
-            self.assertEqual(result["protokoll"]["version"], 2)
+            self.assertEqual(result["protokoll"]["version"], 4)
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertEqual(out.read_bytes(), before)
             out.unlink()
             cmd[-1] = rows[-1][0]
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
             self.assertFalse(out.exists())
+
+
+class StromSchnittstelle(unittest.TestCase):
+    def test_einmaliger_iterator(self):
+        p = preise()
+        gesehen = []
+        def quelle():
+            for i, kurs in enumerate(p):
+                gesehen.append(i)
+                yield kurs
+        self.assertEqual(L.signale(quelle()), L.signale(p))
+        self.assertEqual(gesehen, list(range(len(p))))
+
+    def test_pausieren_und_fortsetzen(self):
+        p = preise()
+        strom = L.SignalStrom()
+        schritte = [strom.schritt(x) for x in p[:300]]
+        schritte += [strom.schritt(x) for x in p[300:]]
+        batch = L.signale(p)
+        for name in batch:
+            self.assertEqual([s[name] for s in schritte], batch[name])
+
+    def test_keine_zukunft_uebergeben(self):
+        p = preise()
+        a, b = L.SignalStrom(), L.SignalStrom()
+        erste = [a.schritt(x) for x in p[:400]]
+        zweite = [b.schritt(x) for x in p[:400]]
+        for x in p[400:]:
+            a.schritt(x)
+            b.schritt(x * 4)
+        self.assertEqual(erste, zweite)
+        batch = L.signale(p[:400])
+        for i, schritt in enumerate(erste):
+            self.assertEqual(schritt, {name: q[i] for name, q in batch.items()})
+
+    def test_konfiguration_bleibt_je_strom_fest(self):
+        p, strom = preise(), L.SignalStrom()
+        alt = L.PROTOKOLL["vol_ziel"]
+        try:
+            L.PROTOKOLL["vol_ziel"] = .5
+            schritte = [strom.schritt(x) for x in p]
+        finally:
+            L.PROTOKOLL["vol_ziel"] = alt
+        batch = L.signale(p)
+        for name in batch:
+            self.assertEqual([s[name] for s in schritte], batch[name])
+
+    def test_ungueltiger_kurs_veraendert_zustand_nicht(self):
+        a, b = L.SignalStrom(), L.SignalStrom()
+        for x in preise(300):
+            a.schritt(x)
+            b.schritt(x)
+        for kaputt in (0, -1, True, "100", float("nan"), float("inf")):
+            with self.assertRaises(ValueError):
+                a.schritt(kaputt)
+        self.assertEqual(a.anzahl, b.anzahl)
+        self.assertEqual(a.schritt(100.), b.schritt(100.))
+
+    def test_begrenzter_speicher_und_unveraenderte_belege(self):
+        strom = L.SignalStrom()
+        erster = strom.schritt(100.)
+        erwarteter = dict(erster)
+        for x in preise(1000):
+            strom.schritt(x)
+        self.assertEqual(len(strom._historie), 200)
+        self.assertEqual(erster, erwarteter)
+
+
+class Nachrichten(unittest.TestCase):
+    def artikel(self, **updates):
+        row = {"id": "eins", "headline": "Bitcoin Meldung", "symbol": "BTC-USD",
+               "source": "Erfundene Testquelle", "model_id": "erfundenes-modell@v1",
+               "published_at": "2026-10-29T12:00:00Z", "available_at": "2026-10-29T12:01:00Z",
+               "scored_at": "2026-10-29T12:02:00Z", "model_trained_until": "2025-01-01T00:00:00Z",
+               "probabilities": {"positive": .7, "negative": .1, "neutral": .2}}
+        row.update(updates)
+        return row
+
+    def check_news(self, rows):
+        return N.pruefen(rows, "2026-10-29T13:00:00Z", "BTC-USD")
+
+    def test_duplikate_verstaerken_stimmung_nicht(self):
+        a = self.check_news([self.artikel()])
+        b = self.check_news([self.artikel(id=str(i), headline="  BITCOIN   Meldung  ") for i in range(7)])
+        self.assertEqual(a["mittel_klassenwahrscheinlichkeiten"], b["mittel_klassenwahrscheinlichkeiten"])
+        self.assertEqual(b["verwendet"], 1)
+        self.assertEqual(b["verworfen"]["duplikat"], 6)
+        self.assertFalse(b["handelsfreigabe"])
+
+    def test_spaeterer_empfang(self):
+        r = self.check_news([self.artikel(available_at="2026-10-29T14:00:00Z", scored_at="2026-10-29T14:01:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+        self.assertIsNone(r["stimmungswert"])
+
+    def test_spaetere_modellbewertung(self):
+        r = self.check_news([self.artikel(scored_at="2026-10-29T14:00:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+
+    def test_spaeteres_modell(self):
+        r = self.check_news([self.artikel(model_trained_until="2026-10-29T14:00:00Z", scored_at="2026-10-29T15:00:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+
+    def test_zeitzonen(self):
+        a = self.check_news([self.artikel()])
+        b = N.pruefen([self.artikel()], "2026-10-29T15:00:00+02:00", "BTC-USD")
+        self.assertEqual(a, b)
+        with self.assertRaises(ValueError):
+            N.pruefen([], "2026-10-29T13:00:00", "BTC-USD")
+
+    def test_ungueltige_wahrscheinlichkeiten(self):
+        for probs in [{"positive": float("nan"), "negative": .1, "neutral": .2},
+                      {"positive": .7, "negative": .7, "neutral": .2},
+                      {"positive": True, "negative": 0, "neutral": 0},
+                      {"positive": .7, "negative": .1}]:
+            with self.subTest(probs=probs):
+                r = self.check_news([self.artikel(probabilities=probs)])
+                self.assertEqual(r["verworfen"]["ungueltig"], 1)
+                self.assertIsNone(r["stimmungswert"])
+
+    def test_fehlende_belege_und_falsche_zeitfolge(self):
+        for fields in [{"model_id": ""}, {"scored_at": None}, {"model_trained_until": None},
+                       {"available_at": "2026-10-29T11:00:00Z"},
+                       {"scored_at": "2026-10-29T12:00:00Z"}]:
+            with self.subTest(fields=fields):
+                self.assertEqual(self.check_news([self.artikel(**fields)])["verworfen"]["ungueltig"], 1)
+
+    def test_erste_beobachtung_unabhaengig_von_reihenfolge(self):
+        first = self.artikel()
+        later = self.artikel(scored_at="2026-10-29T12:30:00Z",
+                             probabilities={"positive": .1, "negative": .7, "neutral": .2})
+        self.assertEqual(self.check_news([first, later]), self.check_news([later, first]))
+
+    def test_modelle_nicht_mischen(self):
+        r = self.check_news([self.artikel(), self.artikel(model_id="anderes-modell@v2")])
+        self.assertEqual(r["status"], "verschiedene_modelle_nicht_vergleichbar")
+        self.assertIsNone(r["stimmungswert"])
+
+    def test_mittel_statt_aufaddierter_logits(self):
+        r = self.check_news([self.artikel(), self.artikel(id="zwei", headline="Andere Nachricht",
+                             probabilities={"positive": .1, "negative": .7, "neutral": .2})])
+        self.assertAlmostEqual(r["mittel_klassenwahrscheinlichkeiten"]["positive"], .4)
+        self.assertAlmostEqual(r["stimmungswert"], 0)
+
+    def test_alter_und_symbol(self):
+        r = self.check_news([self.artikel(published_at="2026-10-26T12:59:59Z"), self.artikel(symbol="SPY")])
+        self.assertEqual(r["verworfen"]["zu_alt"], 1)
+        self.assertEqual(r["verworfen"]["anderes_symbol"], 1)
+        boundary = self.artikel(published_at="2026-10-26T13:00:00Z")
+        self.assertEqual(self.check_news([boundary])["verwendet"], 1)
+
+    def test_keine_nachricht_ist_nicht_neutrale_prognose(self):
+        r = self.check_news([])
+        self.assertEqual(r["status"], "keine_verwendbaren_nachrichten")
+        self.assertIsNone(r["mittel_klassenwahrscheinlichkeiten"])
+
+    def test_cli_nachrichten_als_getrennten_datencheck(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            data, news, out = d / "kurse.json", d / "news.json", d / "bericht.json"
+            start = date(2020, 1, 1)
+            data.write_text(json.dumps([[str(start + timedelta(days=i)), p]
+                                        for i, p in enumerate(preise(2200))]))
+            news.write_text(json.dumps([self.artikel()]))
+            cmd = [sys.executable, str(HIER / "labor.py"), "--daten", str(data), "--ausgabe", str(out),
+                   "--stichtag", "2026-10-29"]
+            before = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(before.returncode, 0, before.stderr)
+            baseline = json.loads(out.read_text())
+            out.unlink()
+            pair = ["--nachrichten", str(news), "--entscheidungszeit", "2026-10-29T13:00:00Z"]
+            after = subprocess.run(cmd + pair, capture_output=True, text=True)
+            self.assertEqual(after.returncode, 0, after.stderr)
+            r = json.loads(out.read_text())
+            self.assertEqual(r["nachrichten_pruefung"]["verwendet"], 1)
+            self.assertFalse(r["handelsfreigabe"])
+            self.assertEqual(r["ergebnisse"], baseline["ergebnisse"])
+            self.assertNotEqual(r["versuch_id"], baseline["versuch_id"])
+            out.unlink()
+            self.assertNotEqual(subprocess.run(cmd + pair[:2], capture_output=True).returncode, 0)
+            self.assertFalse(out.exists())
+
+
+class ClaudeBefunde(unittest.TestCase):
+    def test_seltenes_zwei_tage_leck_alle_versatzwerte(self):
+        p = preise()
+        for intervall, versatzwerte in ((7, range(7)), (97, (5,))):
+            for versatz in versatzwerte:
+                def leak(x):
+                    return {"X": [float(i % intervall == versatz and i + 2 < len(x)
+                                        and x[i + 2] > x[i + 1]) for i in range(len(x))]}
+                with self.subTest(intervall=intervall, versatz=versatz):
+                    self.assertFalse(L.signalpruefung(p, leak)["bestanden"])
+
+    def test_stichprobe_ist_kein_strenger_nachweis(self):
+        p = preise()
+        def leak(x):
+            return {"X": [float(i % 7 == 1 and i + 2 < len(x) and x[i + 2] > x[i + 1])
+                          for i in range(len(x))]}
+        r = L.signalpruefung(p, leak, streng=False)
+        self.assertTrue(r["bestanden"])
+        self.assertEqual(r["modus"], "stichprobe")
+        self.assertEqual(L.signalpruefung(p, leak)["modus"], "alle_praefixe")
+
+    def test_protokoll_verzoegerung_wirkt(self):
+        alt = L.PROTOKOLL["signal_verzoegerung_tage"]
+        try:
+            L.PROTOKOLL["signal_verzoegerung_tage"] = 3
+            # Signal Tag0 kauft erst am Schluss von Tag2 und verpasst dessen Sprung.
+            r = L.simulieren([100., 100., 200., 200.], [1.] * 4, 0, start=1)
+            self.assertEqual(r["rendite"], 0)
+            L.PROTOKOLL["signal_verzoegerung_tage"] = 1
+            with self.assertRaises(ValueError):
+                L.simulieren([100., 100., 200.], [1.] * 3, 0, start=1)
+        finally:
+            L.PROTOKOLL["signal_verzoegerung_tage"] = alt
+
+    def test_protokoll_mindestlaenge_wirkt(self):
+        alt = L.PROTOKOLL["vorwaertstest_mindesttage"]
+        try:
+            L.PROTOKOLL["vorwaertstest_mindesttage"] = 5000
+            days = [date(2020, 1, 1) + timedelta(days=i) for i in range(2100)]
+            self.assertEqual(L.auswerten(days, preise(len(days))), {})
+        finally:
+            L.PROTOKOLL["vorwaertstest_mindesttage"] = alt
 
 
 if __name__ == "__main__":

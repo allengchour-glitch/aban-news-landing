@@ -1,0 +1,40 @@
+{
+  "datentyp": "AUSSCHLIESSLICH ERFUNDENE TESTDATEN; keine echte Modell- oder Nachrichtenmessung",
+  "code_sha256": "f9b525bb09b8db68e6aadf21bd4c428a3702d964f176064d0fe7f99cb018d4a8",
+  "input_sha256": "cddf02ca106590214a3fbd65dc333c3ba25148a61dbe5d7b85a9386d4526c5a8",
+  "ergebnis": {
+    "status": "historisches_merkmal",
+    "entscheidungszeit_utc": "2026-10-29T13:00:00+00:00",
+    "symbol": "BTC-USD",
+    "verwendet": 1,
+    "verworfen": {
+      "ungueltig": 0,
+      "anderes_symbol": 0,
+      "zukunft": 1,
+      "zu_alt": 1,
+      "duplikat": 1
+    },
+    "modelle": [
+      "fiktives-testmodell@v1"
+    ],
+    "mittel_klassenwahrscheinlichkeiten": {
+      "positive": 0.7,
+      "negative": 0.1,
+      "neutral": 0.2
+    },
+    "stimmungswert": 0.6,
+    "belege": [
+      {
+        "id": "test-1",
+        "source": "FIKTIVE TESTQUELLE",
+        "published_at": "2026-10-29T12:00:00Z",
+        "available_at": "2026-10-29T12:01:00Z",
+        "scored_at": "2026-10-29T12:02:00Z",
+        "model_trained_until": "2025-01-01T00:00:00Z",
+        "model_id": "fiktives-testmodell@v1"
+      }
+    ],
+    "handelsfreigabe": false,
+    "grenze": "Keine kalibrierte Kurs-/Gewinnprognose. Deklarierte Zeitstempel geprüft, Modellprovenienz nicht bewiesen. Semantische Duplikate nicht vollständig erkannt."
+  }
+}

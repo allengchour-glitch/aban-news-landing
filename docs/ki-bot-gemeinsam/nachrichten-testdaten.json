@@ -1,0 +1,66 @@
+[
+  {
+    "id": "test-1",
+    "headline": "Erfundene Bitcoin-Testmeldung",
+    "symbol": "BTC-USD",
+    "source": "FIKTIVE TESTQUELLE",
+    "model_id": "fiktives-testmodell@v1",
+    "published_at": "2026-10-29T12:00:00Z",
+    "available_at": "2026-10-29T12:01:00Z",
+    "scored_at": "2026-10-29T12:02:00Z",
+    "model_trained_until": "2025-01-01T00:00:00Z",
+    "probabilities": {
+      "positive": 0.7,
+      "negative": 0.1,
+      "neutral": 0.2
+    }
+  },
+  {
+    "id": "test-2",
+    "headline": "  ERFUNDENE  BITCOIN-TESTMELDUNG ",
+    "symbol": "BTC-USD",
+    "source": "ZWEITE FIKTIVE TESTQUELLE",
+    "model_id": "fiktives-testmodell@v1",
+    "published_at": "2026-10-29T12:00:00Z",
+    "available_at": "2026-10-29T12:01:00Z",
+    "scored_at": "2026-10-29T12:02:00Z",
+    "model_trained_until": "2025-01-01T00:00:00Z",
+    "probabilities": {
+      "positive": 0.7,
+      "negative": 0.1,
+      "neutral": 0.2
+    }
+  },
+  {
+    "id": "test-3",
+    "headline": "Erfundene zu spät empfangene Meldung",
+    "symbol": "BTC-USD",
+    "source": "FIKTIVE TESTQUELLE",
+    "model_id": "fiktives-testmodell@v1",
+    "published_at": "2026-10-29T12:00:00Z",
+    "available_at": "2026-10-29T14:00:00Z",
+    "scored_at": "2026-10-29T14:02:00Z",
+    "model_trained_until": "2025-01-01T00:00:00Z",
+    "probabilities": {
+      "positive": 0.7,
+      "negative": 0.1,
+      "neutral": 0.2
+    }
+  },
+  {
+    "id": "test-4",
+    "headline": "Erfundene alte Meldung",
+    "symbol": "BTC-USD",
+    "source": "FIKTIVE TESTQUELLE",
+    "model_id": "fiktives-testmodell@v1",
+    "published_at": "2026-10-25T12:00:00Z",
+    "available_at": "2026-10-25T12:01:00Z",
+    "scored_at": "2026-10-25T12:02:00Z",
+    "model_trained_until": "2025-01-01T00:00:00Z",
+    "probabilities": {
+      "positive": 0.7,
+      "negative": 0.1,
+      "neutral": 0.2
+    }
+  }
+]

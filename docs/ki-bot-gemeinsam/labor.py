@@ -6,13 +6,15 @@ import argparse
 import hashlib
 import json
 import math
+import platform
+from collections import deque
 from datetime import date, datetime, timezone
 from pathlib import Path
 from statistics import stdev
 
 ROOT = Path(__file__).resolve().parents[2]
 PROTOKOLL = {
-    "version": 2,
+    "version": 4,
     "markt": "BTC-USD, Spot, Long/Cash, kein Hebel",
     "trend_tage": [150, 200],
     "vol_tage": 30,
@@ -52,28 +54,58 @@ def laden(path):
     return tage, preise, hashlib.sha256(raw).hexdigest()
 
 
-def signale(p):
-    """Jedes Signal kennt nur den heutigen und frühere Schlusskurse."""
-    out = {"Halten": [1.0] * len(p), "Trend 200": [], "Halten Risiko 25": [],
-           "Trend 150 Risiko 25": [], "Trend 200 Risiko 25": [], "Konsens 150/200": []}
-    kurz, lang = PROTOKOLL["trend_tage"]
-    fenster = PROTOKOLL["vol_tage"]
-    for i, kurs in enumerate(p):
-        if i < max(lang - 1, fenster):
-            for name in out:
-                if name != "Halten":
-                    out[name].append(0.0)
-            continue
-        ma200 = sum(p[i - lang + 1:i + 1]) / lang
-        ma150 = sum(p[i - kurz + 1:i + 1]) / kurz
-        out["Trend 200"].append(float(kurs > ma200))
-        r = [p[j] / p[j - 1] - 1 for j in range(i - fenster + 1, i + 1)]
+class SignalStrom:
+    """Erhält genau einen bereits abgeschlossenen Kurs pro Schritt, keine Zukunftsreihe.
+
+    Begrenzte Historie und feste Konfiguration je Instanz. Kein Broker, keine
+    externe Datenquelle und keine Behauptung eines Python-Sicherheits-Sandkastens.
+    """
+    namen = ("Halten", "Trend 200", "Halten Risiko 25", "Trend 150 Risiko 25",
+             "Trend 200 Risiko 25", "Konsens 150/200")
+
+    def __init__(self):
+        self.kurz, self.lang = PROTOKOLL["trend_tage"]
+        self.fenster = PROTOKOLL["vol_tage"]
+        self.ziel = PROTOKOLL["vol_ziel"]
+        if any(isinstance(n, bool) or not isinstance(n, int) or n < 2
+               for n in (self.kurz, self.lang, self.fenster)):
+            raise ValueError("Indikatorfenster müssen ganze Zahlen ab 2 sein")
+        if (isinstance(self.ziel, bool) or not isinstance(self.ziel, (int, float))
+                or not math.isfinite(self.ziel) or not 0 < self.ziel <= 1):
+            raise ValueError("Ungültiges Schwankungsziel")
+        self._historie = deque(maxlen=max(self.kurz, self.lang, self.fenster + 1))
+        self.anzahl = 0
+
+    def schritt(self, kurs):
+        if (isinstance(kurs, bool) or not isinstance(kurs, (int, float))
+                or not math.isfinite(kurs) or kurs <= 0):
+            raise ValueError("Kurs muss endlich und positiv sein")
+        self._historie.append(float(kurs))
+        self.anzahl += 1
+        out = dict.fromkeys(self.namen, 0.0)
+        out["Halten"] = 1.0
+        if self.anzahl <= max(self.lang - 1, self.kurz - 1, self.fenster):
+            return out
+        p = list(self._historie)
+        ma200 = sum(p[-self.lang:]) / self.lang
+        ma150 = sum(p[-self.kurz:]) / self.kurz
+        r = [p[j] / p[j - 1] - 1 for j in range(len(p) - self.fenster, len(p))]
         vol = stdev(r) * math.sqrt(365)
-        q = min(1.0, PROTOKOLL["vol_ziel"] / vol) if vol > 0 else 0.0
-        out["Halten Risiko 25"].append(q)
-        out["Trend 150 Risiko 25"].append(q if kurs > ma150 else 0.0)
-        out["Trend 200 Risiko 25"].append(q if kurs > ma200 else 0.0)
-        out["Konsens 150/200"].append(q if kurs > ma150 and kurs > ma200 else 0.0)
+        q = min(1.0, self.ziel / vol) if vol > 0 else 0.0
+        out.update({"Trend 200": float(kurs > ma200), "Halten Risiko 25": q,
+                    "Trend 150 Risiko 25": q if kurs > ma150 else 0.0,
+                    "Trend 200 Risiko 25": q if kurs > ma200 else 0.0,
+                    "Konsens 150/200": q if kurs > ma150 and kurs > ma200 else 0.0})
+        return out
+
+
+def signale(p):
+    """Batch-Adapter über denselben schrittweisen Kern, auch für einmalige Iteratoren."""
+    strom = SignalStrom()
+    out = {name: [] for name in strom.namen}
+    for kurs in p:
+        for name, quote in strom.schritt(kurs).items():
+            out[name].append(quote)
     return out
 
 
@@ -87,8 +119,12 @@ def datenalter(tage, stichtag):
                       "Historische Daten: keine aktuelle Signalentscheidung möglich"}
 
 
-def signalpruefung(p, erzeuger=signale):
-    """Präfix und begrenzte Historien unabhängig mit dem vollen Lauf vergleichen."""
+def signalpruefung(p, erzeuger=signale, streng=True):
+    """Streng: jedes Präfix prüfen (quadratischer Aufwand). Sonst nur Stichproben.
+
+    Der CLI-Kurslauf nutzt ausschliesslich eingebaute, separat nachgerechnete
+    Strategien und kennzeichnet seine schnellere Stichprobe ausdrücklich.
+    """
     voll = erzeuger(p)
     fehler = []
     for name, q in voll.items():
@@ -97,8 +133,9 @@ def signalpruefung(p, erzeuger=signale):
             fehler.append(f"{name}: ungültige Positionsreihe")
     if fehler:
         return {"bestanden": False, "fehler": fehler}
-    for ende in sorted({250, min(400, len(p) - 1), len(p) - 1}):
-        if ende < 200:
+    enden = range(1, len(p)) if streng else sorted({250, min(400, len(p) - 1), len(p) - 1})
+    for ende in enden:
+        if ende < 1 or ende >= len(p):
             continue
         teil = erzeuger(p[:ende])
         if set(teil) != set(voll):
@@ -107,6 +144,8 @@ def signalpruefung(p, erzeuger=signale):
         for name, q in voll.items():
             if teil[name] != q[:ende]:
                 fehler.append(f"{name}: Zukunftswissen bei Präfix {ende}")
+        if fehler:
+            break
     for laenge in (250, 400, 1000):
         if len(p) <= laenge:
             continue
@@ -118,7 +157,8 @@ def signalpruefung(p, erzeuger=signale):
             if not teil[name] or abs(teil[name][-1] - q[-1]) > 1e-12:
                 fehler.append(f"{name}: abweichendes Live-Signal bei {laenge} Kerzen")
     return {"bestanden": not fehler, "fehler": fehler,
-            "grenze": "Nur diese Präfixe und Historien geprüft; kein vollständiger Beweis"}
+            "modus": "alle_praefixe" if streng else "stichprobe",
+            "grenze": "Prüft diese Kursreihe und Historien; kein allgemeiner Beweis oder Schutz gegen externe Datenlecks"}
 
 
 def simulieren(p, ziel, kosten, start=201, band=0.0):
@@ -138,6 +178,9 @@ def simulieren(p, ziel, kosten, start=201, band=0.0):
     if any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x)
            or not 0 <= x < 1 for x in (kosten, band)):
         raise ValueError("Kosten und Handelsband müssen endlich und zwischen 0 und 1 liegen")
+    verzoegerung = PROTOKOLL["signal_verzoegerung_tage"]
+    if isinstance(verzoegerung, bool) or not isinstance(verzoegerung, int) or verzoegerung < 2:
+        raise ValueError("Signalverzögerung muss mindestens zwei Tagesabschnitte betragen")
     cash, bestand, werte, umsatz = 1.0, 0.0, [1.0], 0.0
     renditen, exposure, gebuehren, auftraege = [], [], 0.0, 0
     for i in range(start, len(p)):
@@ -145,7 +188,8 @@ def simulieren(p, ziel, kosten, start=201, band=0.0):
         exposure.append(bestand / vorher)
         bestand *= p[i] / p[i - 1]
         kapital = cash + bestand
-        quote = ziel[i - 1]
+        signal_tag = i - verzoegerung + 1
+        quote = ziel[signal_tag] if signal_tag >= 0 else 0.0
         if quote == 0 or abs(quote - bestand / kapital) >= band:
             # Kosten für den Handel sind Teil der Zielgewichts-Gleichung.
             neu = quote * (kapital + kosten * bestand) / (1 + quote * kosten)
@@ -183,10 +227,13 @@ def simulieren(p, ziel, kosten, start=201, band=0.0):
 def auswerten(tage, p):
     qs = signale(p)
     out = {}
+    minimum = PROTOKOLL["vorwaertstest_mindesttage"]
+    if isinstance(minimum, bool) or not isinstance(minimum, int) or minimum < 1:
+        raise ValueError("Mindestlänge muss eine positive ganze Tageszahl sein")
     for beginn, ende in PROTOKOLL["historische_teilperioden"]:
         start = next((i for i, d in enumerate(tage) if d.isoformat() >= beginn), len(p))
         stop = next((i for i, d in enumerate(tage) if ende and d.isoformat() >= ende), len(p))
-        if start < 201 or stop - start < 180:
+        if start < 201 or stop - start < minimum:
             continue
         out[beginn] = {"von": str(tage[start]), "bis": str(tage[stop - 1]), "szenarien": {}}
         for szenario, teile in PROTOKOLL["kosten_szenarien_bp"].items():
@@ -204,16 +251,21 @@ def main():
     a.add_argument("--ausgabe", type=Path, required=True, help="Neue Ergebnisdatei; bestehende werden nicht überschrieben")
     a.add_argument("--stichtag", type=date.fromisoformat,
                    default=datetime.now(timezone.utc).date(), help="UTC-Stichtag für Datenalter")
+    a.add_argument("--nachrichten", type=Path, help="Optionale Offline-News mit Zeitstempeln und Modellwerten")
+    a.add_argument("--entscheidungszeit", help="ISO-Zeit mit Zeitzone; nur zusammen mit --nachrichten")
     args = a.parse_args()
+    if bool(args.nachrichten) != bool(args.entscheidungszeit):
+        a.error("--nachrichten und --entscheidungszeit müssen zusammen angegeben werden")
     tage, p, datenhash = laden(args.daten)
     qualitaet = datenalter(tage, args.stichtag)
     if not qualitaet["abgeschlossen"]:
         raise ValueError(qualitaet["befund"])
-    pruefung = signalpruefung(p)
+    pruefung = signalpruefung(p, streng=False)
     if not pruefung["bestanden"]:
         raise ValueError("Signalprüfung fehlgeschlagen: " + "; ".join(pruefung["fehler"]))
     protokollhash = hashlib.sha256(json.dumps(PROTOKOLL, sort_keys=True).encode()).hexdigest()
     result = {"status": "FORSCHUNG, KEINE HANDELSFREIGABE", "protokoll": PROTOKOLL,
+              "python_version": platform.python_version(),
               "protokoll_sha256": protokollhash, "daten_sha256": datenhash,
               "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "daten_von": str(tage[0]), "daten_bis": str(tage[-1]),
@@ -227,10 +279,26 @@ def main():
               "ergebnisse": auswerten(tage, p)}
     if not result["ergebnisse"]:
         raise ValueError("Keine ausreichend lange vorab festgelegte Teilperiode vorhanden")
-    result["versuch_id"] = hashlib.sha256(json.dumps({
+    if args.nachrichten:
+        from nachrichten import pruefen, zeit
+        entscheidung = zeit(args.entscheidungszeit)
+        if entscheidung.date() > args.stichtag:
+            raise ValueError("Nachrichten-Entscheidungszeit liegt nach dem gewählten Stichtag")
+        raw = args.nachrichten.read_bytes()
+        result["nachrichten_pruefung"] = pruefen(json.loads(raw), args.entscheidungszeit, "BTC-USD")
+        result["nachrichten_sha256"] = hashlib.sha256(raw).hexdigest()
+        result["nachrichten_code_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("nachrichten.py").read_bytes()).hexdigest()
+        result["nachrichten_strategiewirkung"] = "Keine: separater Datencheck, nicht rückwirkend in Kurssignale eingemischt"
+    fingerabdruck = {
         "code": result["code_sha256"], "daten": datenhash,
         "protokoll": protokollhash, "stichtag": str(args.stichtag),
-    }, sort_keys=True).encode()).hexdigest()
+    }
+    if args.nachrichten:
+        fingerabdruck.update(nachrichten=result["nachrichten_sha256"],
+                            nachrichten_code=result["nachrichten_code_sha256"],
+                            entscheidungszeit=args.entscheidungszeit)
+    result["versuch_id"] = hashlib.sha256(json.dumps(fingerabdruck, sort_keys=True).encode()).hexdigest()
     payload = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     with args.ausgabe.open("x", encoding="utf-8") as f:
         f.write(payload)

@@ -1,5 +1,22 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuell: Claude hat Version 4 (Streaming) geprüft (10.11.2026)
+
+Auftrag aus `STREAMING.md` ausgeführt, Details in `docs/ki-bot-gemeinsam/CLAUDE-REVIEW-V4.md`. GEMESSEN mit Python 3.11.17: `SignalStrom` bitgleich zu Version 3 (4 390 Tage, 300 Zufallsreihen, 324 Berichtszahlen) und 3,3·10⁻¹⁶ neben einer eigenen Nachrechnung; Aufwärmphase, gleitende Fenster, eingefrorene Konfiguration und Abweisung ungültiger Kurse halten. **Befund F8 (niedrig):** ein Fehler *in* der Rechnung (z. B. Kurs `sys.float_info.min`, danach `AttributeError` aus `statistics.stdev`) hinterlässt veränderten Zustand und legt den Strom 30 Schritte lahm; Empfehlung im Review (Kurs vor der Übernahme auf Plausibilität prüfen). Mutationsprobe: 38 von 45 erkannt mit Codex' 57 Tests, 43 von 45 mit den acht neuen Tests (`test_labor_regression_v4.py`). `labor.py` unverändert; eine Korrektur braucht Protokollversion 5. Kein Blocker. Version 3 und Nachrichtenmodul nur gestreift. Grenzen der zeitlichen Datenprüfung: `--stichtag` bestimmt «aktuell», der Zeitpunkt der Datenbeschaffung steht nirgends.
+
+## Aktuell: KI-Bot-Forschung mit schrittweiser Signalschnittstelle
+
+Fortsetzung: Claudes EmpfehlungF2 strukturell umgesetzt. Version4: SignalStrom erhält pro Schritt nur einen Kurs, hält höchstens200 vergangene Werte und friert Konfiguration je Instanz ein; Batch-Adapter verwendet denselben Kern.57 Tests inklusive14 Claude-Regressionen grün;36 Ergebnisfälle und letzte Zielquoten exakt unverändert zu Version3. [Implementierung, Grenzen und nächster unabhängiger Claude-Auftrag](ki-bot-gemeinsam/STREAMING.md). Keine Änderung am Handelsbot, Broker oder Echtgeld. Einzelkurse tragen keine Zeitstempel, Datenprüfung bleibt Aufgabe der Datenebene; kein Python-Sicherheits-Sandkasten. Claude hat Version4 noch nicht geprüft.
+
+
+## Aktuell: Claudes KI-Bot-Review übernommen und bearbeitet
+
+main9d0547049 in den Forschungsbranch integriert, beide Übergabetexte beim Konflikt erhalten. Claude-Review betrifft6834a2075; kein Review der neuen Version behaupten. Vier von sieben Leckversätzen selbst nachgestellt. Version3 ergänzt strenge Prüfung aller Präfixe (CLI ausdrücklich nur Stichprobe), stellt den Versuch-ID-Vertrag ohne News wieder her, bindet Verzögerung/Mindestlänge an Protokollwerte und speichert Python-Version.51 Tests inklusive14 Claude-Regressionen grün;36 Strategieergebnisse und Zielquoten unter gleicher Python-Version exakt unverändert. [Befunde, Belege und nächster unabhängiger Prüfauftrag](ki-bot-gemeinsam/CODEX-ANTWORT-CLAUDE.md). Keine Änderung am Handelsbot oder Echtgeld. YouTube weiterhin Proxy403.
+
+
+## Aktuell: YouTube-Begleitcode und News-Datenprüfung
+
+Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
 ## Metricool: Tabellen und belegte Statistik
 
 Nutzer: «tabellen und statistik». Eigene Bürobahn laut aktueller Arbeitsteilung1011, Metricool strikt nur lesend; keine Planeränderung. Von maina9bc9255 auf eigenem Branch. Generische Vorlage erweitert: Kanalvergleich mit jeweils datiertem Followerstand und absoluter Veränderung zwischen erstem/letztem vorhandenem Stand, Tageswerttabelle zur gewählten Messreihe, bekannte Summe/arithmetischer Mittelwert je gemeldetem Tag/Höchstwert/Datenabdeckung, kanalweise Kalenderauswertung mit eindeutigen Eintrags-IDs. Kanalsummen überlappen bei Mehrkanalbeiträgen und werden nicht addiert. Fehlende Werte bleiben unbekannt; keine Summierung von Followerständen oder erfundene Wachstumsprognose.
