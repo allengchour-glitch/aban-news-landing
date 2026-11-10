@@ -2122,3 +2122,15 @@ Genau eine Verkaufsaktion liegt zur Freigabe vor: den erneut gedrifteten Futters
 [R172 Paket](CONTENT-VERKAUFSPAKET-20261110-R172.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R172.json).
 
 [LUXESTYLE_R172_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 173: freigegebene Produkt- und Klaviyo-Korrekturen live abgeschlossen
+
+Der nach R172 freigegebene Futterspender-Diff wurde nach frischer LuxeStyle-/Produktbindung genau einmal geschrieben. Produkt `15523986473345`, Variante `56217490391425`, SKU `CJ-1418384701726527488`, CHF 96.90 ist live wieder als `Futterspender für Katzen in Weiss` mit den zwei neutralen Absätzen sowie claim-sicherem SEO-Titel und Meta vorhanden. `productUpdate` lieferte keine UserErrors; Admin-Readback und unabhängige öffentliche Gegenprobe bestätigten HTTP 200, exakten H1/Title/Meta, Self-Canonical, Warenkorb und Kaufbarkeit. Handle, ACTIVE, Variante, SKU, Preis, Medien, Alttexte, Tags, untracked/`CONTINUE`/Menge 0 und sieben Publikationen blieben erhalten.
+
+Im weiterhin inaktiven Klaviyo-Flow `Vse76a` wurden ausschliesslich die kunden sichtbaren Inhalte von Mail 2 (`VPmnEB`/`TDX7Ux`) und Mail 3 (`WNFHjV`/`WaQaDv`) neutralisiert. Flow und alle drei Mailaktionen bleiben DRAFT; Trigger `XhnJPv`, Placed-Order-Guard `W7XTVD`, 1 h / 23 h / 1 d, Links und Abmeldetoken blieben erhalten. Es gab zwei Vorlagen- und zwei Nachrichteninhaltswrites, keine Aktivierung, Testmail oder Kundensendung. Klaviyo normalisierte bei Mail 3 `reply_to_email` von `null` auf `info@luxestyle.ch`, identisch mit `from_email`; gemäss Stop-Regel kein Reparaturwrite.
+
+Social blieb vollständig gesperrt: Die vier bytegleichen Knoblauchhacker-Drafts verwenden SHA-256 `4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9`, 10,6 s, 1080×1920/25 fps. Produkt `15450838139265` trägt `rueckhol-0907`; Variantenbindung, kommerzielle Rechte, Pflichtmusiknachweis und Ledger fehlen. Daher null freigabefähige Objekte und null Metricool-Writes. Beim Projektor belegen die Frames nur die Produktfamilie; eine konkrete A–G-Ausführung bleibt mangels eindeutiger Kennung und durchgehender Verpackung-zu-Gerät-Bindung offen. Keine Master-MP4 und kein Render.
+
+[R173 Umsetzungsbeleg](UMSETZUNGSBELEG-20261110-R173.md) · [Maschinenbeleg](UMSETZUNGSBELEG-20261110-R173.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R173_20261110]

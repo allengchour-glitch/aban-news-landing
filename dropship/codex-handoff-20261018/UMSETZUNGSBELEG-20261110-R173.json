@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "run": "R173",
+  "checkedAt": "2026-11-10T20:33:29+01:00",
+  "brand": "luxestyle.ch",
+  "authorization": "owner_instruction_finish_missing_items_and_make_live_what_is_eligible",
+  "shopify": {
+    "identityMatch": true,
+    "productId": "gid://shopify/Product/15523986473345",
+    "variantId": "gid://shopify/ProductVariant/56217490391425",
+    "sku": "CJ-1418384701726527488",
+    "priceCHF": "96.90",
+    "mutationCount": 1,
+    "userErrors": [],
+    "after": {
+      "title": "Futterspender für Katzen in Weiss",
+      "bodyHtml": "<p>Dieser weisse Futterspender für Katzen ist in einer Ausführung erhältlich. Prüfe vor dem Kauf die aktuelle Produktseite.</p><p>Aktuelle Ausführung: Farbe Weiss; eine Ausführung. Der aktuelle Preis und die Verfügbarkeit werden auf der Produktseite angezeigt.</p>",
+      "seoTitle": "Futterspender für Katzen in Weiss | LuxeStyle",
+      "seoDescription": "Weisser Futterspender für Katzen in einer Ausführung. Aktuellen Preis und Verfügbarkeit direkt bei LuxeStyle prüfen."
+    },
+    "readback": {
+      "admin": "PASS",
+      "independentGuard": "PASS",
+      "publicHttp": 200,
+      "h1TitleMetaCanonicalCart": "PASS",
+      "availableForSale": true,
+      "protectedFieldsPreserved": true,
+      "publicationCount": 7
+    }
+  },
+  "klaviyo": {
+    "identityMatch": true,
+    "accountId": "XWqMAD",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "flowId": "Vse76a",
+    "flowStatusBefore": "draft",
+    "flowStatusAfter": "draft",
+    "triggerMetric": "XhnJPv",
+    "placedOrderGuardMetric": "W7XTVD",
+    "delaysPreserved": ["1h", "23h", "1d"],
+    "mail2": {
+      "actionId": "106812827",
+      "messageId": "VPmnEB",
+      "templateId": "TDX7Ux",
+      "subject": "Dein Einkauf ist noch gespeichert",
+      "preview": "Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse.",
+      "messageReadbackSha256": "2767b3d1aecefd4dc228872802a0d5e2304ed4b4ff7077e08fd7b7bd8b2fe2f3",
+      "htmlReadbackSha256": "bf7d4b6703be03cedcb959c07a7a6f777a8d8692c5cf4ef527b7bb2187ed1433",
+      "discountCodeAndMinimumClaimRemoved": true
+    },
+    "mail3": {
+      "actionId": "108024959",
+      "messageId": "WNFHjV",
+      "templateId": "WaQaDv",
+      "subject": "Möchtest du deine Bestellung fortsetzen?",
+      "messageReadbackSha256": "9d36fd092184975b1a90556024ed6d68bf1a6b5fcd3d478ce51904ee1b17789e",
+      "htmlReadbackSha256": "02efe83431a7b332c50cf47a7f235743afdbad9b0ed4cde381b08f1297e4f5ef",
+      "placeholderDiscountUrgencyRemoved": true,
+      "replyToBefore": null,
+      "replyToRequested": null,
+      "replyToReadback": "info@luxestyle.ch",
+      "replyToNormalizationAcceptedWithoutRetry": true
+    },
+    "flowDefinitionReadbackSha256": "294536beb9ec9cee4777d67e661b3f2f726e6070b88fa852edd9535576cf1f88",
+    "templateWrites": 2,
+    "flowActionContentWrites": 2,
+    "activationWrites": 0,
+    "testSends": 0,
+    "customerSends": 0,
+    "retryWrites": 0
+  },
+  "social": {
+    "eligibleObjects": 0,
+    "metricoolWrites": 0,
+    "draftObjects": 4,
+    "draftDate": "2026-11-18",
+    "sharedMediaSha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+    "mediaTechnical": {
+      "durationSeconds": 10.6,
+      "width": 1080,
+      "height": 1920,
+      "fps": 25,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "audioSampleRateHz": 48000,
+      "audioChannels": 2
+    },
+    "productId": "15450838139265",
+    "productActiveAndBuyable": true,
+    "blockingTag": "rueckhol-0907",
+    "canonicalMusicCorrelationMaxAbs": 0.089,
+    "blockers": [
+      "duration_and_fps_fail_master_requirement",
+      "rueckhol_blocks_new_social",
+      "exact_variant_binding_missing",
+      "commercial_edit_ad_metricool_rights_missing",
+      "publication_ledger_missing",
+      "canonical_music_and_mix_not_verified",
+      "instagram_tiktok_bio_target_unknown",
+      "pinterest_no_18_nov_draft"
+    ]
+  },
+  "projectorMaster": {
+    "videoGid": "gid://shopify/Video/77496185356679",
+    "videoSha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+    "productFamilyVisualMatch": true,
+    "exactVariantBinding": false,
+    "observations": [
+      "base_housing_matches_A_to_G_family",
+      "solar_system_purple_galaxy_and_stars_overlap_multiple_sets",
+      "C_and_E_share_image",
+      "D_and_F_share_image",
+      "variant_letter_sku_barcode_serial_full_set_and_continuous_unit_proof_missing"
+    ],
+    "commercialRightsVerified": false,
+    "professionalMasterMp4": false,
+    "renders": 0,
+    "uploads": 0
+  },
+  "dailyLimits": {
+    "metricoolMetricsRepeated": false,
+    "klaviyoFlowReportRepeated": false,
+    "gscRepeated": false,
+    "broadSalesRepeated": false,
+    "merchantBroadRepeated": false,
+    "ordersQueried": false,
+    "purchaseWatchEnded": true
+  },
+  "otherWrites": {
+    "customers": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "dns": 0,
+    "ads": 0,
+    "merchant": 0,
+    "feed": 0,
+    "cj": 0,
+    "theme": 0,
+    "renders": 0,
+    "uploads": 0
+  },
+  "receiptState": "unknown_no_claude_receipt",
+  "existingCadence": "08:00_14:00_19:00_Europe_Zurich",
+  "newAutomation": false
+}

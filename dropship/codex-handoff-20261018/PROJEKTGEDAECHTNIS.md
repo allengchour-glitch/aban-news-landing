@@ -1516,3 +1516,15 @@ Projektor15521256604033 ACTIVE/kaufbar; aktuelle Varianten A–G68122445283719�
 R165-Kennzahlen und R165/R166-Klaviyo aus Tagesgründen wiederverwendet. Einziger Flowvorschlag: Vse76a aktuell binden und Platzhalter/Rabattclaim eng entfernen, DRAFT erhalten. Keine Verkäufe aus Kennzahlen abgeleitet. Belege `CONTENT-VERKAUFSPAKET-20261110-R172.md/.json`; Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R172_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 173: Futterspender und Vse76a-Inhalte eng umgesetzt
+
+Nach der Inhaberfreigabe wurden genau die in R172 vorbereiteten Inhaltskorrekturen umgesetzt. Futterspender `15523986473345`/Variante `56217490391425`/SKU `CJ-1418384701726527488` ist live wieder claim-sicher: Titel `Futterspender für Katzen in Weiss`, zwei neutrale Absätze, SEO-Titel `Futterspender für Katzen in Weiss | LuxeStyle` und neutrale Meta. Ein `productUpdate`, `userErrors=[]`; Admin- und unabhängiger öffentlicher Readback PASS. Handle, ACTIVE, CHF 96.90, Variante/SKU, Medien/Alttexte, Tags, untracked/`CONTINUE`/Menge 0 und sieben Publikationen blieben erhalten.
+
+Klaviyo `Vse76a` bleibt DRAFT. Mail 2 `106812827`/`VPmnEB`/`TDX7Ux` erhielt Betreff `Dein Einkauf ist noch gespeichert`, neutralen Vorschautext und sichtbares HTML ohne 10-%-/WELCOME10-/Mindestbestellwertclaim. Mail 3 `108024959`/`WNFHjV`/`WaQaDv` erhielt Betreff `Möchtest du deine Bestellung fortsetzen?` und sichtbares HTML ohne Rabatt-, Knappheits- oder Heute-Zeitdruckclaim. Readback-SHAs: Mail 2 Nachricht `2767b3d1…e2f3`, HTML `bf7d4b67…1433`; Mail 3 Nachricht `9d36fd09…789e`, HTML `02efe834…f5ef`; Flow `294536be…1f88`. Klaviyo normalisierte Mail-3-Reply-to von null auf `info@luxestyle.ch`; kein Retry. Trigger, Guard, Zeitkette, Tracking, Smart Sending und alle DRAFT-Zustände erhalten; null Sendungen/Aktivierungen.
+
+Social: null geeignete Objekte. Vier Knoblauchhacker-Drafts teilen SHA-256 `4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9`, 10,6 s/1080×1920/25 fps; Produkt `15450838139265` ist durch `rueckhol-0907` blockiert. Exakte Variante, kommerzielle Rechte, Pflichtmusik und Ledger fehlen; null Social-Writes. Projektorvideo `gid://shopify/Video/77496185356679`, SHA-256 `9ccfdc1b…65795`: Frames passen zur Familie, nicht eindeutig zu A–G. Keine professionelle Master-MP4, kein Render.
+
+Kennzahlen, Flowreport, GSC, breite Verkaufs-/Merchantdaten und Bestellungen wurden nicht erneut gelesen. Belege `UMSETZUNGSBELEG-20261110-R173.md/.json`; Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R173_20261110]

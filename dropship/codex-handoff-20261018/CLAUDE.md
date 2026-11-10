@@ -443,3 +443,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Projektorvideo `gid://shopify/Video/77496185356679`, Exporthash `9ccfdc1b…65795`,852×480/25fps. Aktuelle Varianten A–G und echtes Bild gebunden; konkrete Filmvariante/Einheit, native Hochkanttakes, Rechte, Musik-Endabnahme, finale MP4 und Ledger fehlen. Master bleibt Storyboard.
 5. Futterspenderclaim-Drift exakt belegt. Enger Restoration-Diff auf R166-Stand liegt zur Inhaberfreigabe vor; Schutzfelder erhalten. Kein Produktwrite.
 6. Paket `CONTENT-VERKAUFSPAKET-20261110-R172.md/.json`.08/14/19 unverändert; Receipt `unknown_no_claude_receipt`; keine neue Automation.
+
+## R173 – Freigegebene Produkt- und Vse76a-Inhalte umgesetzt
+
+[LUXESTYLE_R173_20261110]
+
+1. Nicht erneut schreiben: Futterspender `15523986473345`/Variante `56217490391425`/SKU `CJ-1418384701726527488` ist live claim-sicher als `Futterspender für Katzen in Weiss`, zwei neutrale Absätze, SEO-Titel `Futterspender für Katzen in Weiss | LuxeStyle` und neutrale Meta. Ein `productUpdate`, `userErrors=[]`; Admin und unabhängiger öffentlicher Readback PASS.
+2. Erhalten: Handle, ACTIVE, CHF 96.90, Variante/SKU, Medien/Alttexte, Tags, untracked/`CONTINUE`/Menge 0 und sieben Publikationen. Keine Bestands-/Lieferzeitzusage und keine Automatik-/Edelstahl-/2,2-kg-Claims.
+3. Nicht erneut schreiben: Klaviyo `Vse76a` Mail 2 `106812827`/`VPmnEB`/`TDX7Ux` und Mail 3 `108024959`/`WNFHjV`/`WaQaDv` sind sichtbar neutralisiert. Flow und alle drei Mailaktionen bleiben DRAFT; Trigger `XhnJPv`, Guard `W7XTVD`, 1 h/23 h/1 d, Tracking, Smart Sending, Checkout und Abmeldung erhalten. Keine Aktivierung, Testmail oder Kundensendung.
+4. Readback: Mail-2-Nachricht `2767b3d1aecefd4dc228872802a0d5e2304ed4b4ff7077e08fd7b7bd8b2fe2f3`, HTML `bf7d4b6703be03cedcb959c07a7a6f777a8d8692c5cf4ef527b7bb2187ed1433`; Mail-3-Nachricht `9d36fd092184975b1a90556024ed6d68bf1a6b5fcd3d478ce51904ee1b17789e`, HTML `02efe83431a7b332c50cf47a7f235743afdbad9b0ed4cde381b08f1297e4f5ef`; Flow `294536beb9ec9cee4777d67e661b3f2f726e6070b88fa852edd9535576cf1f88`. Mail-3-Reply-to wurde von Klaviyo auf `info@luxestyle.ch` normalisiert; kein Retry.
+5. Social nicht schreiben: vier Knoblauchhacker-Drafts teilen MP4-SHA `4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9`, 10,6 s/1080×1920/25 fps. Produkt `15450838139265` trägt `rueckhol-0907`; Variante, Rechte, Pflichtmusik und Ledger offen. Null geeignete Objekte.
+6. Projektorvideo `gid://shopify/Video/77496185356679`, SHA `9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795`: Frames belegen nur die Produktfamilie, keine konkrete A–G-Ausführung. Rechte, physische Einheit, CJ-/Lieferantenbindung, native Hochkanttakes und Master-MP4 fehlen. Belege `UMSETZUNGSBELEG-20261110-R173.md/.json`; 08/14/19 unverändert; Receipt `unknown_no_claude_receipt`.

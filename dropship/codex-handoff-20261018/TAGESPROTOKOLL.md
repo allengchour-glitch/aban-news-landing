@@ -1956,3 +1956,21 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Grenzen | R172-Paket, Maschinenbeleg und kanonische Übergabe additiv fortgeführt | Revision172 vorgesehen;0 Plattformwrites/neue Automation; Receipt unbekannt |
 
 [LUXESTYLE_R172_20261110] [Paket](CONTENT-VERKAUFSPAKET-20261110-R172.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261110-R172.json).
+
+### R173
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Freigabe | R172, Projektgedächtnis und heutigen Tagesblock gelesen; Inhaberfreigabe auf die zwei exakt vorbereiteten Inhaltskorrekturen begrenzt | Kein allgemeiner Shop-/Flow-/Social-Scope; 08/14/19 unverändert |
+| Shopify Preflight | LuxeStyle/luxestyle.ch/CHF/Schweiz sowie Produkt, Variante, SKU, Preis und Schutzfelder unmittelbar vor Write gebunden | Produkt15523986473345/Variante56217490391425/SKU CJ-1418384701726527488/CHF96.90 PASS |
+| Futterspender | Titel, zwei Bodyabsätze, SEO-Titel und Meta genau auf den claim-sicheren R172-Zielstand gesetzt | Ein productUpdate, userErrors=[]; Admin und unabhängiger öffentlicher Readback PASS |
+| Produktschutz | Nicht freigegebene Felder vor/nach verglichen | Handle, ACTIVE, Variante/SKU, Preis, Medien/Alttexte, Tags, untracked/CONTINUE/Menge0 und sieben Publikationen erhalten |
+| Klaviyo Preflight | Konto XWqMAD und Vse76a mit Trigger, Guard, Zeitkette, drei Aktionen, Nachrichten und Vorlagen frisch gebunden | LuxeStyle CH/luxestyle.ch/EuropeZurich/USD; Shop-CHF getrennt; Flow/Aktionen DRAFT |
+| Klaviyo Inhalte | Mail2 und Mail3 kunden sichtbar neutralisiert | Zwei Vorlagen- und zwei Nachrichteninhaltswrites; keine Rabatt-/Knappheits-/Heute-Claims; keine Aktivierung, Testmail oder Sendung |
+| Klaviyo Readback | Nachrichten, HTML und Flowdefinition unabhängig hashgeprüft | Exakte fünf SHA-256 belegt; Mail3-Reply-to von Klaviyo auf info@luxestyle.ch normalisiert, kein Retry |
+| Social-Gate | Vier bytegleiche Knoblauchhacker-Drafts auf Produkt, Tags, Medienhash, Technik, Audio, Rechte und Kanalvoraussetzungen geprüft |0 geeignete Objekte; rueckhol-0907,10.6s/25fps, fehlende Variante/Rechte/Musik/Ledger;0 Metricool-Writes |
+| Master | Aktuelle Projektorframes gegen Varianten A–G verglichen | Nur Familienübereinstimmung; keine einzelne A–G-Bindung, Rechte oder professionelle Master-MP4;0 Render/Upload |
+| Tagesgrenzen | R165-Kennzahlen, R165/R166-Klaviyo-Report, R162-GSC und breite Verkaufs-/Merchantdaten nicht erneut abgefragt | Keine zusätzliche Tagesmessung, Bestell- oder Kauf-Watch-Abfrage; fehlende Daten bleiben unbekannt |
+| Dokumentation / Claude | R173-Umsetzungsbeleg und kanonische Übergabe additiv fortgeführt | Revision173/24 Aufgaben vorgesehen; Receipt unknown_no_claude_receipt |
+
+[LUXESTYLE_R173_20261110] [Bericht](UMSETZUNGSBELEG-20261110-R173.md) · [Beleg](UMSETZUNGSBELEG-20261110-R173.json).
