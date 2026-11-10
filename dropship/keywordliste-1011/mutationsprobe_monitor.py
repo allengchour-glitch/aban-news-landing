@@ -24,6 +24,7 @@ M=[
  ("[hidden]{display:none!important}","",'hidden wirkt optisch'),
  ("$('metric').addEventListener('change',draw);","$('metric').addEventListener('change',()=>{$('qsearch').value='';draw()});",'Messwert behält Suche'),
  ("if(t&&t.impressions>0)text+=","if(false)text+=",'Deckungssatz'),
+ ("$('bars').style.gridTemplateColumns='repeat('+dates.length+',minmax(0,1fr))';","",'Tagesbalken folgen der Tageszahl'),
  ("$('qsearch').addEventListener('input',()=>{qlimit=50;","$('qsearch').addEventListener('input',()=>{",'Suche setzt Grenze zurück'),
 ]
 env=dict(os.environ)

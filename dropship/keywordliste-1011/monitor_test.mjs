@@ -97,6 +97,16 @@ scope = await p.textContent('#scope');
 pruefe(scope.startsWith('15 angezeigte Anfragen · Teilauszug, weitere Top-Zeilen vorhanden.'), 'Teilauszug-Satz bleibt: ' + scope);
 pruefe(scope.includes('oder der Auszug gekürzt ist') && scope.includes('Keine vollständige Keywordliste.'), 'Teilauszug: gekürzt und ehrlicher Satz: ' + scope);
 
+// Anderes Zeitfenster: die Tagesbalken folgen der Zahl der Tage (nicht fest 28 Spalten)
+{
+  const lang = { ...snap, von: '2026-10-04', bis: '2026-11-07', sites: [{ ...snap.sites[0], days: tage('2026-10-04', 35) }] };
+  const q = await ctx.newPage();
+  await q.setContent(VORLAGE.replace('__SNAPSHOT__', JSON.stringify(lang)));
+  const spalten = await q.$eval('#bars', (e) => getComputedStyle(e).gridTemplateColumns.split(' ').length);
+  pruefe((await q.$$('#bars .bar')).length === 35 && spalten === 35, '35 Tage: 35 Balken in 35 Spalten (nicht 28): Spalten ' + spalten);
+  await q.close();
+}
+
 // Handy: kein seitliches Scrollen
 await p.setViewportSize({ width: 390, height: 844 });
 await p.selectOption('#site', 'beispiel-a.test');
