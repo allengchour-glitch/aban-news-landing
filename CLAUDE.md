@@ -86,6 +86,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** Marketing-
   Videos: **seit 2.11.2026 mit Hochdeutsch-Stimme erlaubt** (Piper, `SPRECHER=`; vorher OHNE Voiceover) + Musik **rotierend aus fünf Mixkit-Stücken**
   (`dropship/reel-vorlage/musik_waehlen.sh`, User 2.11.: keine Eigenproduktion mehr, nie zweimal dasselbe). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
+  **[AUSGESETZT 10.11. ca. 17:55 UTC: Besitzer «musik ist scheisse» zu den Reels Hacker und Haussocken (Mixkit «new-york-427», «violin-uplift-675»). Bis zur Klärung keine Hintergrundmusik in neuen Reels, vor dem nächsten Reel fragen; Stand und Metricool-Entwürfe: `SHARED-MEMORY.md`, Regel: `dropship/REEL-REGELN.md`.]**
 - **🤖 Modellwahl (FEST, User 2026-10-25: „ändere model haiku selber für einfache aufgaben, automatisch"):** Das
   Hauptmodell einer Sitzung stellt nur der User per `/model` um. Dafür **einfache, mechanische Teilaufgaben
   automatisch an Subagenten mit `model: "haiku"` geben** (Agent-Tool; in `Workflow` per `agent(..., {model:'haiku'})`):

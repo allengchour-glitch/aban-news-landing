@@ -6,3 +6,8 @@
 # Eintragen: Besitzer (direkt), Claude (auf Bedenken von Codex oder PC-Claude, mit Grund). Entfernen = Zeile löschen.
 # Beispiel (auskommentiert):
 # 3f2a9c1e-0000-0000-0000-000000000000   # Codex 10.11.: Rechte am Quellvideo unklar
+# Besitzer 10.11. ca. 17:55 UTC zu den Reels Hacker und Haussocken: «musik ist scheisse». Entwürfe des Hacker-Reels halten, bis die Musik entschieden ist (SHARED-MEMORY.md):
+4659816415037836014    # Claude 10.11.: Hacker-Reel IG+FB 18.11. 10:00, Musik vom Besitzer abgelehnt
+-8339089096074181290   # Claude 10.11.: Hacker-Reel Threads 18.11. 11:00, Musik vom Besitzer abgelehnt
+-8305910546945982140   # Claude 10.11.: Hacker-Reel TikTok 18.11. 12:00, Musik vom Besitzer abgelehnt
+-3731207601091163105   # Claude 10.11.: Hacker-Reel YouTube-Short 18.11. 18:00, Musik vom Besitzer abgelehnt

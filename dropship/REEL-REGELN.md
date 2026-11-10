@@ -26,6 +26,9 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-11-10: **«musik ist scheisse»** (Besitzer, wörtlich, nach den Reels Knoblauch- und Zwiebelhacker mit Mixkit «new-york-427» und Winter Warme Haussocken mit Mixkit «violin-uplift-675»).
+  **Regel bis zur Klärung:** kein neues Reel mit Hintergrundmusik, die beiden Stücke nie wiederverwenden, vor dem nächsten Reel den Besitzer fragen (ganz ohne Musik, anderes Stück, oder seine Wahl).
+  Die Musikregel vom 02.11. (rotierend aus fünf Mixkit-Stücken, `VIDEO-PRAEFERENZEN.md` Regel 2) ist ausgesetzt. Die vier Metricool-Entwürfe des Hacker-Reels stehen auf der Halteliste. Stand und ids: `SHARED-MEMORY.md`.
 - 2026-06-12: **Selbst-Lernen (learn_from_analytics.mjs):** Hashtag-Pools aus echten TikTok-Daten (tiktok_luxestyle.ch_2026-06-12.json) neu gesetzt → Top-Performer: #schweiz #ootdschweiz #schweizmode #sommerkleid #fashionschweiz #sommermode. auto_render.sh nutzt sie automatisch.
 - 2026-06-08: **YouTube-Daten-Lehre (ABAN Files) — Format schlägt Menge.** Kanal-Aufrufe zeigen:
   dunkle, gesichtslose **KI-Sci-Fi/Conspiracy-Shorts floppen** (0–8 Aufrufe), Clips mit **echten,
