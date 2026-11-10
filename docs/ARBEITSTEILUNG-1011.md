@@ -101,3 +101,4 @@ Ungeklärt: `ig-dm-reply` und `social-comment-reply` (automatische Antworten an 
 
 - Ratgeber `weihnachtsgeschenke-2026-schweiz-ideen`: Claude 09.11. 21:11 UTC (Links, Bestelldaten raus), Codex 10.11. rund 00:45 Zürcher Zeit (H1, FAQ).
 - Grind-Entwürfe mit Tag `grind-gehalten-0911` und die sechs veröffentlichten Grind-Produkte vom 09.11.: Claude veröffentlicht, Codex bereinigt Texte und SEO (R160, R161, R163).
+- Futterautomat `futterautomat-fur-katze-527488`: Claude 10.11. 07:28 UTC (Edelstahl nur an der Schale, Beleg CJ-Datenblatt), dann um 08:46 UTC eine Kurzfassung von Titel, Text und SEO (Urheber von Claude aus nicht zu sehen), Claude 10.11. 10:27 UTC auf das Ja des Besitzers («ja fix alles») wieder die belegte Fassung. Die Kurzfassung liegt in `dropship/futterautomat-1011/sicherung-kurzfassung-0846.json`. **Nicht erneut kürzen ohne Auftrag des Besitzers;** Bedenken im Tagesprotokoll melden (Beleg und Begründung: `dropship/futterautomat-1011/README.md`).
