@@ -10,7 +10,7 @@ Stripe ausschließlich lesend: aktiver bestehender Bundle-Link, CHF39 einmalig, 
 
 GEMESSEN: vor Korrektur drei fehlgeschlagene Regressionen, nachher vier grün. Zehn Browserfälle (1440/390px × normal/Netzfehler/HTTP500/defektes JSON/leeres Array): alle31 Karten, Inhalte, Kaufziele und eindeutigen Sprungmarken identisch, keine Seitenüberbreite. Keine Käufe oder geschützten Downloads. Lokale CI-Simulation scheitert an fehlender unshare-Berechtigung; kein lokaler CI-Erfolg behauptet. Echte Prüfungen, Merge und Produktion im zugehörigen PR lesen.
 
-Nutzen: bestehende Angebote und korrekte Kaufziele bleiben auch bei Abruffehlern erreichbar. Keine neue Preisentscheidung; Konto- und kanonische Katalogpreise unverändert. Finanzielle Wirkung nicht gemessen.
+Nutzen: bestehende Angebote und korrekte Kaufziele bleiben auch bei Abruffehlern erreichbar. Keine neue Preisentscheidung; Konto- und kanonische Katalogpreise unverändert. Finanzielle Wirkung nicht gemessen. Zwischenzeitlichen main250d44f per Merge integriert; beide Shared-Memory-Ergänzungen einschließlich Claudes neuer Musikregel unverändert erhalten. Der vorübergehende Mergekonflikt verhinderte die PR-Prüfungen, keine neue Automation als Ersatz angelegt.
 
 ## Geschützte Kit-Lieferung: feste Frist für Zahlungsprüfung
 

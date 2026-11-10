@@ -1,9 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: Musik in Reels ausgesetzt, Besitzer «musik ist scheisse» (10.11.2026, ca. 17:55 UTC)
+
+Der Besitzer hat die zwei neuen Reels angesehen (Knoblauch- und Zwiebelhacker mit Mixkit «new-york-427», Winter Warme Haussocken mit Mixkit «violin-uplift-675», Dateien `luxe-w1611-hacker-reel.mp4` und `luxe-w1611-haussocken-reel.mp4` in Shopify Files) und geschrieben: «musik ist scheisse» (wörtlich). Ob er jede Hintergrundmusik ablehnt oder nur diese Stücke, ist **nicht geklärt**. **Regel bis zur Klärung (Claude, nicht bestätigt):** kein neues Reel mit Hintergrundmusik bauen, anlegen oder einplanen; die beiden Stücke nicht wiederverwenden; vor dem nächsten Reel den Besitzer fragen (ganz ohne Musik, anderes Stück, oder seine Wahl). Die Musikregel vom 02.11. («rotierend aus fünf Mixkit-Stücken») ist damit **ausgesetzt**. Bestehende, vom Besitzer am 09.11. freigegebene Beiträge im Planer sind davon nicht betroffen (nichts angefasst).
+
+**Metricool:** Vom Hacker-Reel liegen vier **Entwürfe** im Planer (id/uuid: 423483793 / 4659816415037836014 IG+FB-Reel 18.11. 10:00; 423484712 / -8339089096074181290 Threads 18.11. 11:00; 423484773 / -8305910546945982140 TikTok 18.11. 12:00; 423484839 / -3731207601091163105 YouTube-Short 18.11. 18:00). Sie stehen auf der Halteliste `dropship/METRICOOL-HALTEN.txt`, die tägliche Freigabe plant sie also **nicht** ein. Für das Socken-Reel wurde nichts angelegt. Beide Reels bleiben unveröffentlicht, bis der Besitzer über die Musik entschieden hat. Wer die Reels neu rendert, ersetzt die Medien der vier Entwürfe (nicht neue Beiträge anlegen: ein Update kann Kopien erzeugen, vorher den Planer lesen) und nimmt die Zeilen danach aus der Halteliste. Planer schreiben nur Claude und die Freigabe-Automation (`docs/ARBEITSTEILUNG-1011.md`). Reel-Regel: `dropship/REEL-REGELN.md` (Verbesserungs-Log).
+
 ## ABAN-Shop: Ersatzkatalog konsistent ·10.11.2026
 
 Codex behebt die veraltete Ersatzanzeige bei fehlgeschlagenem Produktabruf. Erzeugung aus unveränderter kanonischer Katalogdatei im bestehenden Ablauf; keine Stripe-Preis-/Produktänderung und kein Kauf. Zehn Browserfälle und vier Regressionen geprüft. Details und tatsächlicher Bereitstellungsstand in [Codex-Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), zugehöriger PR.
-
 
 ## ABAN-Download: Prüfwartezeit begrenzt ·10.11.2026
 
