@@ -2,6 +2,11 @@
 
 Dieses Repo enthält mehrere Projekte. Das aktive Arbeitsgebiet ist der Shopify-Shop **LuxeStyle CH** (luxestyle.ch, Importe aus CJ und Fortura). Die ausführliche Fassung steht in `CLAUDE.md`; hier nur, was Codex nicht vergessen darf. Das Plugin `codex-mods/luxe-codex` setzt einen Teil davon maschinell durch (siehe `codex-mods/README.md`).
 
+## Arbeitsteilung und Metricool (10.11.2026)
+- Wer was macht, steht in `docs/ARBEITSTEILUNG-1011.md` (zuerst lesen, Kurzfassung oben).
+- **Metricool-Planer (Marke LuxeStyle 6227837): lesen ja, schreiben nein.** Beiträge anlegen, ändern, auf Entwurf stellen oder `autoPublish` ändern darf nur Claude (Cloud) und die Freigabe-Automation. Bedenken zu Qualität oder Rechten meldest du als Datei (`dropship/codex-social/antwort/`) und im Tagesprotokoll, mit Beitrag-uuid und Grund; Claude liest sie nach deinen Läufen und entscheidet am selben Tag. Die 38 Beiträge 10.–15.11. hat der Besitzer am 09.11. abends freigegeben (Quelle: `CLAUDE.md`, Stand-Block «Metricool-Freigabe»); sie bleiben so, bis er etwas anderes sagt.
+- Shop schreiben nur auf ausdrücklichen Auftrag des Besitzers, mit Objektliste; vorher frisch lesen, ob Claude dasselbe Objekt zuletzt geändert hat.
+
 ## Rolle
 - Standard ist **lesen und prüfen**. Schreiben nur, wenn der Auftrag es ausdrücklich verlangt, und nur Dateien, die der Auftrag nennt.
 - Preise, Rechtliches, Veröffentlichung und Kundenkontakt entscheidet der Besitzer, nicht Codex.
