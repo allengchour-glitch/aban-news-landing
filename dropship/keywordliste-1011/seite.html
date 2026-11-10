@@ -1,0 +1,756 @@
+<meta name="dash-one-writer">
+<style>
+  /* Layout: Kopf mit einem Satz, darunter Reiter (Übersicht, Anfragen, Stichwörter, Chancen, Ideen).
+     Jeder Reiter mit Liste hat Suche und Filter. Farben und Schriften nur aus den Tokens des Dashboards;
+     alle Selektoren auf Klassen mit Präfix ks-. */
+  .ks { display: flex; flex-direction: column; gap: var(--cds-gap-lg); max-width: 1040px; min-width: 0; }
+  .ks-head { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+  .ks-title { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.2; text-wrap: balance; }
+  .ks-lead { margin: 0; font-size: var(--cds-font-size-heading); line-height: 1.5; max-width: 64ch; }
+  .ks-lead b, .ks-p b { font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+  .ks-meta { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; max-width: 72ch; }
+  .ks-meta b { font-weight: var(--cds-font-weight-medium); }
+
+  .ks-tabs { display: flex; gap: var(--cds-gap-xs); overflow-x: auto; padding-bottom: 2px; border-bottom: 1px solid var(--color-border-line); }
+  .ks-tab { flex: 0 0 auto; display: inline-flex; align-items: baseline; gap: 6px; min-height: 40px; padding: 8px 14px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg-muted); background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer; }
+  .ks-tab:hover { color: var(--color-fg); }
+  .ks-tab:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
+  .ks-tab[aria-selected="true"] { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); border-bottom-color: var(--color-fg); }
+  .ks-tab-n { font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; opacity: 0.75; }
+
+  .ks-sec { display: flex; flex-direction: column; gap: var(--cds-gap-lg); min-width: 0; }
+  .ks-sec[hidden] { display: none; }
+  .ks-block { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-width: 0; }
+  .ks-h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .ks-p { margin: 0; max-width: 72ch; line-height: 1.55; }
+  .ks-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; max-width: 72ch; }
+
+  .ks-bars { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-height: 6rem; }
+  .ks-bar { display: flex; flex-direction: column; gap: 4px; }
+  .ks-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-md); flex-wrap: wrap; }
+  .ks-bar-label { min-width: 0; }
+  .ks-bar-val { font-variant-numeric: tabular-nums; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .ks-bar-val b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .ks-track { height: 10px; border-radius: 5px; background: var(--color-border-line); overflow: hidden; }
+  .ks-fill { height: 100%; border-radius: 5px; }
+
+  .ks-days { position: relative; display: flex; align-items: flex-end; gap: 2px; height: 110px; min-height: 110px; border-bottom: 1px solid var(--color-border-line); }
+  .ks-day { flex: 1 1 0; min-width: 3px; border-radius: 2px 2px 0 0; padding: 0; border: 0; cursor: pointer; }
+  .ks-day:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 1px; }
+  .ks-days-axis { display: flex; justify-content: space-between; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .ks-tip { position: absolute; top: 0; left: 0; z-index: 2; max-width: 14rem; padding: 6px 10px; font-size: var(--cds-font-size-caption); line-height: 1.4; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); color: var(--cds-text-secondary); pointer-events: none; }
+  .ks-tip[hidden] { display: none; }
+
+  .ks-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm) var(--cds-gap-md); }
+  .ks-input, .ks-select { min-height: 40px; padding: 6px 12px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background-color: var(--color-bg); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); min-width: 0; }
+  .ks-input { flex: 1 1 14rem; }
+  .ks-input:focus-visible, .ks-select:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 1px; }
+  .ks-lbl { display: inline-flex; align-items: center; gap: 8px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .ks-chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); }
+  .ks-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 14px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: transparent; border: 1px solid var(--color-border-line); border-radius: 999px; cursor: pointer; }
+  .ks-chip:hover { background: var(--color-panel); }
+  .ks-chip:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .ks-chip[aria-pressed="true"] { color: var(--color-bg); background: var(--color-fg); border-color: var(--color-fg); }
+  .ks-chip-n { font-variant-numeric: tabular-nums; opacity: 0.7; }
+  .ks-btn { min-height: 40px; padding: 6px 16px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); cursor: pointer; }
+  .ks-btn:hover { border-color: var(--color-fg-muted); }
+  .ks-btn:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .ks-btn[hidden] { display: none; }
+  .ks-count { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .ks-ok { color: var(--color-ok); font-size: var(--cds-font-size-caption); }
+  .ks-ok[hidden], .ks-bad[hidden] { display: none; }
+  .ks-bad { color: var(--color-bad); font-size: var(--cds-font-size-caption); }
+
+  .ks-tablewrap { overflow-x: auto; }
+  .ks-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); }
+  .ks-table th { padding: 8px 12px 8px 0; text-align: left; white-space: nowrap; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid var(--color-border-line); }
+  .ks-table td { padding: 10px 12px 10px 0; vertical-align: top; border-bottom: 1px solid var(--color-border-line); }
+  .ks-table th.ks-num, .ks-table td.ks-num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ks-table th.ks-num { padding-right: 12px; }
+  .ks-q { display: block; font-weight: var(--cds-font-weight-medium); overflow-wrap: anywhere; }
+  .ks-sub { display: block; margin-top: 2px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; overflow-wrap: anywhere; }
+  .ks-sub a { color: inherit; }
+  .ks-leer { padding: 16px 0; color: var(--color-fg-muted); }
+  .ks-link { padding: 0; min-height: 0; font: inherit; font-size: var(--cds-font-size-caption); color: var(--color-fg); background: none; border: 0; text-decoration: underline; cursor: pointer; }
+  .ks-link:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+
+  .ks-details { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.55; max-width: 72ch; }
+  .ks-details summary { cursor: pointer; color: var(--color-fg); }
+  .ks-details ul { display: flex; flex-direction: column; gap: var(--cds-gap-xs); margin: var(--cds-gap-sm) 0 0; padding-left: 1.2em; }
+
+  @media (max-width: 640px) {
+    .ks-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .ks-table, .ks-table tbody { display: block; }
+    .ks-table tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 16px; padding: 12px 0; border-bottom: 1px solid var(--color-border-line); }
+    .ks-table td { display: block; padding: 0; border: 0; }
+    .ks-table td:first-child { flex: 1 1 100%; }
+    .ks-table td.ks-num { text-align: left; font-size: var(--cds-font-size-caption); }
+    .ks-table td[data-label]::before { content: attr(data-label) " "; color: var(--color-fg-muted); }
+  }
+</style>
+
+<main class="ks">
+  <header class="ks-head">
+    <h1 class="ks-title" id="ks-titel">Suchanfragen und Keywordliste</h1>
+    <p class="ks-lead" id="ks-lead">Google zeigte luxestyle.ch vom <b data-draw="zahl" data-format="datum" data-source="stand" data-field="von" data-row="0">—</b> bis <b data-draw="zahl" data-format="datum" data-source="stand" data-field="bis" data-row="0">—</b> bei <b data-draw="zahl" data-source="stand" data-field="anfragen" data-row="0">—</b> verschiedenen Suchanfragen. Die Website erschien <b data-draw="zahl" data-source="stand" data-field="einblendungen_gesamt" data-row="0">—</b> Mal in den Ergebnissen und wurde <b data-draw="zahl" data-source="stand" data-field="klicks_gesamt" data-row="0">—</b> Mal angeklickt.</p>
+    <p class="ks-meta" id="ks-meta">Quelle: Google Search Console, Websuche, abgerufen am <b data-draw="zahl" data-format="datum" data-source="stand" data-field="abgerufen" data-row="0">—</b> über OpenSEO. Die jüngsten Tage sind vorläufig. Impressionen heissen so viel wie Einblendungen: so oft erschien eine Seite von luxestyle.ch in den Suchergebnissen. Platz 1 ist ganz oben, Platz 10 das Ende von Seite 1.</p>
+  </header>
+
+  <nav class="ks-tabs" role="tablist" aria-label="Ansichten">
+    <button type="button" class="ks-tab" id="ks-tab-uebersicht" role="tab" data-tab="uebersicht" aria-selected="true" aria-controls="ks-sec-uebersicht">Übersicht</button>
+    <button type="button" class="ks-tab" id="ks-tab-anfragen" role="tab" data-tab="anfragen" aria-selected="false" aria-controls="ks-sec-anfragen" tabindex="-1">Anfragen <span class="ks-tab-n" data-draw="zahl" data-source="stand" data-field="anfragen" data-row="0">—</span></button>
+    <button type="button" class="ks-tab" id="ks-tab-stichwoerter" role="tab" data-tab="stichwoerter" aria-selected="false" aria-controls="ks-sec-stichwoerter" tabindex="-1">Stichwörter <span class="ks-tab-n" data-draw="zahl" data-source="stand" data-field="stichwoerter" data-row="0">—</span></button>
+    <button type="button" class="ks-tab" id="ks-tab-chancen" role="tab" data-tab="chancen" aria-selected="false" aria-controls="ks-sec-chancen" tabindex="-1">Chancen <span class="ks-tab-n" data-draw="zahl" data-source="stand" data-field="chancen" data-row="0">—</span></button>
+    <button type="button" class="ks-tab" id="ks-tab-ideen" role="tab" data-tab="ideen" aria-selected="false" aria-controls="ks-sec-ideen" tabindex="-1">Ideen <span class="ks-tab-n" data-draw="zahl" data-source="stand" data-field="ideen" data-row="0">—</span></button>
+  </nav>
+
+  <!-- Übersicht -->
+  <section class="ks-sec" id="ks-sec-uebersicht" role="tabpanel" aria-labelledby="ks-tab-uebersicht">
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-deckung">Was die Liste zeigt und was nicht</h2>
+      <p class="ks-p">Google nennt nur Suchanfragen, die genug Menschen gesucht haben. Die Anfragenliste deckt <b data-draw="zahl" data-source="stand" data-field="anteil_einblendungen" data-row="0">—</b> % der Impressionen ab, aber nur <b data-draw="zahl" data-source="stand" data-field="anteil_klicks" data-row="0">—</b> % der Klicks. Die übrigen <b data-draw="zahl" data-source="stand" data-field="rest_klicks" data-row="0">—</b> % der Klicks stammen aus Anfragen, die Google nicht nennt. Eine vollständige Keywordliste gibt es deshalb nicht; diese Liste ist alles, was Google für diese Website ausweist. Aus der Schweiz kamen <b data-draw="zahl" data-source="stand" data-field="ch_anteil" data-row="0">—</b> % der Impressionen in der Liste.</p>
+    </div>
+
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-plaetze">Auf welchem Platz die Anfragen stehen</h2>
+      <p class="ks-p">Auf Seite 1 (Platz 1 bis 10) stehen <b data-draw="zahl" data-source="stand" data-field="n_auf_seite1" data-row="0">—</b> von <b data-draw="zahl" data-source="stand" data-field="anfragen" data-row="0">—</b> Anfragen. Der Platz ist Googles Durchschnitt über die erfassten Ergebnisse, kein festes Ranking.</p>
+      <div class="ks-bars" id="ks-klassen" data-draw="klassen" data-source="klassen"></div>
+    </div>
+
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-verlauf">Impressionen je Tag</h2>
+      <div class="ks-days" id="ks-tage" data-draw="tage" data-source="tage"></div>
+      <div class="ks-days-axis" aria-hidden="true"><span data-draw="tage-von" data-source="tage">—</span><span data-draw="tage-bis" data-source="tage">—</span></div>
+      <p class="ks-note">Die Messreihe beginnt am ersten Tag links; davor liefert die Search Console für diese Website keine Daten. Tippe auf einen Balken für den Tageswert.</p>
+    </div>
+
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-seiten">Welche Seiten sichtbar sind</h2>
+      <p class="ks-p">Die zehn Seiten mit den meisten Impressionen. Varianten-Adressen derselben Seite sind zusammengezählt; eine Anfrage kann bei mehreren Seiten zählen.</p>
+      <div class="ks-tablewrap">
+        <table class="ks-table" id="ks-tab-seiten" aria-label="Seiten mit den meisten Impressionen" data-source="seiten" data-row-key="seite">
+          <thead><tr>
+            <th scope="col" data-field="seite">Seite</th>
+            <th scope="col" class="ks-num" data-field="einblendungen">Impressionen</th>
+            <th scope="col" class="ks-num" data-field="klicks">Klicks</th>
+            <th scope="col" class="ks-num" data-field="anfragen">Anfragen</th>
+            <th scope="col" class="ks-num" data-field="position">Platz</th>
+          </tr></thead>
+          <tbody data-draw="seiten-tabelle"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="ks-details" id="ks-lesehilfe">
+      <summary>So ist die Seite gemeint</summary>
+      <ul>
+        <li>Alle Werte stammen aus der Google Search Console und sind ein Stand vom Abrufdatum oben. Diese Seite aktualisiert sich nicht selbst; für einen neuen Stand bitte mich fragen.</li>
+        <li>Impressionen zeigen, wo die Website erscheint, nicht wie oft insgesamt gesucht wird. Das Suchvolumen ist nicht bekannt, weil die Punkte bei OpenSEO und die Einheiten bei Semrush aufgebraucht sind.</li>
+        <li>Stichwörter fassen Wörter aus mindestens drei Anfragen zusammen. Eine Anfrage zählt in jeder ihrer Gruppen. Endungen sind vereinheitlicht (Armband, Armbänder), Funktionswörter und Kaufwörter wie kaufen, günstig oder Schweiz fehlen.</li>
+        <li>Chancen sind Anfragen auf Platz 4 bis 50 mit mindestens drei Impressionen. Die Reihenfolge ist eine Einschätzung (Impressionen geteilt durch die Wurzel des Platzes), keine Messung der Nachfrage.</li>
+        <li>Ideen stammen aus der Autovervollständigung von Google (Schweiz, Deutsch), abgefragt zu Suchanfragen aus der Chancen-Liste. Sie zeigen, was Menschen tippen, nicht wie oft.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- Anfragen -->
+  <section class="ks-sec" id="ks-sec-anfragen" role="tabpanel" aria-labelledby="ks-tab-anfragen" hidden>
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-anfragen">Alle Suchanfragen</h2>
+      <p class="ks-p">Jede Anfrage, die Google für luxestyle.ch ausweist, mit Impressionen, Klicks, durchschnittlichem Platz und der Seite mit den meisten Impressionen.</p>
+      <div class="ks-tools">
+        <input type="search" class="ks-input" id="ks-suche-anfragen" aria-label="Anfragen durchsuchen" placeholder="Wort oder Anfrage suchen" autocomplete="off">
+        <label class="ks-lbl" for="ks-sort-anfragen">Reihenfolge
+          <select class="ks-select" id="ks-sort-anfragen">
+            <option value="einbl">Meiste Impressionen</option>
+            <option value="pos">Bester Platz</option>
+            <option value="klicks">Meiste Klicks</option>
+            <option value="az">A bis Z</option>
+          </select></label>
+        <label class="ks-lbl" for="ks-min-anfragen">Mindestens
+          <select class="ks-select" id="ks-min-anfragen">
+            <option value="1">1 Impression</option>
+            <option value="2">2 Impressionen</option>
+            <option value="5">5 Impressionen</option>
+            <option value="10">10 Impressionen</option>
+            <option value="25">25 Impressionen</option>
+          </select></label>
+      </div>
+      <div class="ks-chips" role="group" aria-label="Platz" id="ks-chips-anfragen">
+        <button type="button" class="ks-chip" data-klasse="alle" aria-pressed="true">Alle <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="anfragen" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="top3" aria-pressed="false">Platz 1–3 <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="n_top3" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="seite1" aria-pressed="false">Platz 4–10 <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="n_seite1" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="seite2" aria-pressed="false">Platz 11–20 <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="n_seite2" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="seite3-5" aria-pressed="false">Platz 21–50 <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="n_seite3_5" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="ab6" aria-pressed="false">ab Platz 51 <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="n_ab6" data-row="0">—</span></button>
+      </div>
+      <div class="ks-tools">
+        <p class="ks-count" data-draw="zaehler-anfragen" aria-live="polite">—</p>
+        <button type="button" class="ks-btn" id="ks-kopie-anfragen">Liste kopieren</button>
+        <span class="ks-ok" id="ks-ok-anfragen" role="status" hidden>Kopiert. In Tabellen einfügen.</span>
+        <span class="ks-bad" id="ks-bad-anfragen" role="status" hidden>Kopieren hat nicht geklappt.</span>
+      </div>
+      <div class="ks-tablewrap">
+        <table class="ks-table" id="ks-tab-anfragenliste" aria-label="Suchanfragen" data-source="anfragen" data-row-key="anfrage">
+          <thead><tr>
+            <th scope="col" data-field="anfrage">Suchanfrage</th>
+            <th scope="col" class="ks-num" data-field="einblendungen">Impressionen</th>
+            <th scope="col" class="ks-num" data-field="klicks">Klicks</th>
+            <th scope="col" class="ks-num" data-field="position">Platz</th>
+          </tr></thead>
+          <tbody data-draw="anfragen-tabelle"></tbody>
+        </table>
+      </div>
+      <button type="button" class="ks-btn" id="ks-mehr-anfragen" hidden>Mehr anzeigen</button>
+    </div>
+  </section>
+
+  <!-- Stichwörter -->
+  <section class="ks-sec" id="ks-sec-stichwoerter" role="tabpanel" aria-labelledby="ks-tab-stichwoerter" hidden>
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-stichwoerter">Stichwörter in den Anfragen</h2>
+      <p class="ks-p">Wörter, die in mindestens drei Anfragen vorkommen, zusammengefasst nach Wortstamm. Das zeigt, rund um welche Begriffe die Website sichtbar ist. Eine Anfrage zählt in jeder ihrer Gruppen, die Zahlen lassen sich deshalb nicht addieren.</p>
+      <div class="ks-tools">
+        <input type="search" class="ks-input" id="ks-suche-stichwoerter" aria-label="Stichwörter durchsuchen" placeholder="Stichwort suchen" autocomplete="off">
+        <label class="ks-lbl" for="ks-sort-stichwoerter">Reihenfolge
+          <select class="ks-select" id="ks-sort-stichwoerter">
+            <option value="einbl">Meiste Impressionen</option>
+            <option value="anfragen">Meiste Anfragen</option>
+            <option value="pos">Bester Platz</option>
+            <option value="az">A bis Z</option>
+          </select></label>
+      </div>
+      <div class="ks-tools">
+        <p class="ks-count" data-draw="zaehler-stichwoerter" aria-live="polite">—</p>
+        <button type="button" class="ks-btn" id="ks-kopie-stichwoerter">Liste kopieren</button>
+        <span class="ks-ok" id="ks-ok-stichwoerter" role="status" hidden>Kopiert. In Tabellen einfügen.</span>
+        <span class="ks-bad" id="ks-bad-stichwoerter" role="status" hidden>Kopieren hat nicht geklappt.</span>
+      </div>
+      <div class="ks-tablewrap">
+        <table class="ks-table" id="ks-tab-stichwortliste" aria-label="Stichwörter" data-source="stichwoerter" data-row-key="wort">
+          <thead><tr>
+            <th scope="col" data-field="wort">Stichwort</th>
+            <th scope="col" class="ks-num" data-field="anfragen">Anfragen</th>
+            <th scope="col" class="ks-num" data-field="einblendungen">Impressionen</th>
+            <th scope="col" class="ks-num" data-field="klicks">Klicks</th>
+            <th scope="col" class="ks-num" data-field="position">Platz</th>
+          </tr></thead>
+          <tbody data-draw="stichwoerter-tabelle"></tbody>
+        </table>
+      </div>
+      <button type="button" class="ks-btn" id="ks-mehr-stichwoerter" hidden>Mehr anzeigen</button>
+    </div>
+  </section>
+
+  <!-- Chancen -->
+  <section class="ks-sec" id="ks-sec-chancen" role="tabpanel" aria-labelledby="ks-tab-chancen" hidden>
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-chancen">Chancen: Anfragen mit Luft nach oben</h2>
+      <p class="ks-p">Anfragen auf Platz 4 bis 50 mit mindestens drei Impressionen. Die Seite erscheint schon, steht aber nicht ganz vorn. Die Reihenfolge nimmt Impressionen geteilt durch die Wurzel des Platzes: nahe Plätze zählen bei gleicher Sichtbarkeit mehr. Das ist eine Einschätzung der Reihenfolge, keine Messung der Nachfrage.</p>
+      <div class="ks-tools">
+        <input type="search" class="ks-input" id="ks-suche-chancen" aria-label="Chancen durchsuchen" placeholder="Wort oder Anfrage suchen" autocomplete="off">
+      </div>
+      <div class="ks-chips" role="group" aria-label="Platz" id="ks-chips-chancen">
+        <button type="button" class="ks-chip" data-klasse="alle" aria-pressed="true">Alle <span class="ks-chip-n" data-draw="zahl" data-source="stand" data-field="chancen" data-row="0">—</span></button>
+        <button type="button" class="ks-chip" data-klasse="seite1" aria-pressed="false">Platz 4–10</button>
+        <button type="button" class="ks-chip" data-klasse="seite2" aria-pressed="false">Platz 11–20</button>
+        <button type="button" class="ks-chip" data-klasse="seite3-5" aria-pressed="false">Platz 21–50</button>
+      </div>
+      <div class="ks-tools">
+        <p class="ks-count" data-draw="zaehler-chancen" aria-live="polite">—</p>
+        <button type="button" class="ks-btn" id="ks-kopie-chancen">Liste kopieren</button>
+        <span class="ks-ok" id="ks-ok-chancen" role="status" hidden>Kopiert. In Tabellen einfügen.</span>
+        <span class="ks-bad" id="ks-bad-chancen" role="status" hidden>Kopieren hat nicht geklappt.</span>
+      </div>
+      <div class="ks-tablewrap">
+        <table class="ks-table" id="ks-tab-chancenliste" aria-label="Chancen" data-source="chancen" data-row-key="anfrage">
+          <thead><tr>
+            <th scope="col" data-field="anfrage">Suchanfrage</th>
+            <th scope="col" class="ks-num" data-field="einblendungen">Impressionen</th>
+            <th scope="col" class="ks-num" data-field="klicks">Klicks</th>
+            <th scope="col" class="ks-num" data-field="position">Platz</th>
+          </tr></thead>
+          <tbody data-draw="chancen-tabelle"></tbody>
+        </table>
+      </div>
+      <button type="button" class="ks-btn" id="ks-mehr-chancen" hidden>Mehr anzeigen</button>
+    </div>
+  </section>
+
+  <!-- Ideen -->
+  <section class="ks-sec" id="ks-sec-ideen" role="tabpanel" aria-labelledby="ks-tab-ideen" hidden>
+    <div class="ks-block">
+      <h2 class="ks-h2" id="ks-h-ideen">Ideen aus der Autovervollständigung</h2>
+      <p class="ks-p">Vorschläge, die Google in der Schweiz auf Deutsch zu <b data-draw="zahl" data-source="stand" data-field="ideen_seeds" data-row="0">—</b> Suchanfragen aus dieser Liste anzeigt. Enthalten sind nur Ideen, die noch nicht unter den Anfragen stehen, ohne Händler- und Markennamen. Treffer sagt, bei wie vielen Abrufen die Idee erschien. Ob und wie oft danach gesucht wird, ist nicht gemessen.</p>
+      <div class="ks-tools">
+        <input type="search" class="ks-input" id="ks-suche-ideen" aria-label="Ideen durchsuchen" placeholder="Wort suchen" autocomplete="off">
+      </div>
+      <div class="ks-tools">
+        <p class="ks-count" data-draw="zaehler-ideen" aria-live="polite">—</p>
+        <button type="button" class="ks-btn" id="ks-kopie-ideen">Liste kopieren</button>
+        <span class="ks-ok" id="ks-ok-ideen" role="status" hidden>Kopiert. In Tabellen einfügen.</span>
+        <span class="ks-bad" id="ks-bad-ideen" role="status" hidden>Kopieren hat nicht geklappt.</span>
+      </div>
+      <div class="ks-tablewrap">
+        <table class="ks-table" id="ks-tab-ideenliste" aria-label="Ideen" data-source="ideen" data-row-key="idee">
+          <thead><tr>
+            <th scope="col" data-field="idee">Idee</th>
+            <th scope="col" data-field="seed">Aus Suchanfrage</th>
+            <th scope="col" class="ks-num" data-field="treffer">Treffer</th>
+          </tr></thead>
+          <tbody data-draw="ideen-tabelle"></tbody>
+        </table>
+      </div>
+      <button type="button" class="ks-btn" id="ks-mehr-ideen" hidden>Mehr anzeigen</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  const SCHRITT = 100;
+  const TABS = ['uebersicht', 'anfragen', 'stichwoerter', 'chancen', 'ideen'];
+  const ZEICHNUNGEN = {
+    uebersicht: ['zahl', 'klassen', 'tage', 'tage-von', 'tage-bis', 'seiten-tabelle'],
+    anfragen: ['zahl', 'zaehler-anfragen', 'anfragen-tabelle'],
+    stichwoerter: ['zaehler-stichwoerter', 'stichwoerter-tabelle'],
+    chancen: ['zahl', 'zaehler-chancen', 'chancen-tabelle'],
+    ideen: ['zahl', 'zaehler-ideen', 'ideen-tabelle']
+  };
+  const KLASSEN = [
+    ['top3', 'Platz 1–3'],
+    ['seite1', 'Platz 4–10 (Seite 1)'],
+    ['seite2', 'Platz 11–20 (Seite 2)'],
+    ['seite3_5', 'Platz 21–50 (Seite 3–5)'],
+    ['ab6', 'ab Platz 51']
+  ];
+  const HINWEIS = {
+    'seite1': 'Fast ganz oben: Titel und Beschreibung der Seite auf diese Anfrage schärfen.',
+    'seite2': 'Seite 2: das Wort in Titel, Überschrift und Einleitung bringen, von starken Seiten verlinken.',
+    'seite3-5': 'Weit hinten: nur lohnend, wenn die Anfrage zum Sortiment passt.'
+  };
+  const zustand = {
+    anfragen: { suche: '', klasse: 'alle', sort: 'einbl', min: 1, limit: SCHRITT },
+    stichwoerter: { suche: '', sort: 'einbl', limit: SCHRITT },
+    chancen: { suche: '', klasse: 'alle', limit: SCHRITT },
+    ideen: { suche: '', limit: SCHRITT }
+  };
+  const letzte = {};
+
+  const $ = (id) => document.getElementById(id);
+  const mk = (tag, cls, txt) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt != null) e.textContent = txt;
+    return e;
+  };
+  const norm = (s) => String(s == null ? '' : s).toLowerCase().replace(/ß/g, 'ss');
+  const datum = (iso) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+    return m ? Number(m[3]) + '.' + Number(m[2]) + '.' + m[1] : '—';
+  };
+  const ok = (g) => g && g.status === 'ok' && Array.isArray(g.data);
+
+  dash.calc('klassen', {
+    title: 'Anfragen nach Platz',
+    description: 'Anzahl Anfragen und Impressionen je Platzklasse, aus den Spalten n_… und e_… des Datensatzes «Stand».',
+    inputs: ['stand'],
+    fn: (stand) => {
+      const s = stand[0] || {};
+      return KLASSEN.map(([code, label]) => ({
+        code: code,
+        klasse: label,
+        anfragen: Number(s['n_' + code] || 0),
+        einblendungen: Number(s['e_' + code] || 0)
+      }));
+    }
+  });
+
+  dash.draw('zahl', (el) => {
+    const g = dash.data(el.dataset.source);
+    const z = ok(g) && g.data[Number(el.dataset.row || 0)];
+    const v = z ? z[el.dataset.field] : undefined;
+    if (v == null) { el.textContent = '—'; return; }
+    el.textContent = el.dataset.format === 'datum' ? datum(v) : String(v);
+  });
+
+  dash.draw('klassen', (el) => {
+    const g = dash.data('klassen');
+    if (!ok(g)) { el.replaceChildren(); return; }
+    const max = Math.max(1, ...g.data.map((r) => r.anfragen));
+    el.replaceChildren(...g.data.map((r) => {
+      const row = mk('div', 'ks-bar');
+      const top = mk('div', 'ks-bar-top');
+      const val = mk('span', 'ks-bar-val');
+      const n = mk('b', null, String(r.anfragen));
+      n.setAttribute('data-source', 'klassen');
+      n.setAttribute('data-field', 'anfragen');
+      n.setAttribute('data-where', 'code=' + r.code);
+      const e = mk('span', null, String(r.einblendungen));
+      e.setAttribute('data-source', 'klassen');
+      e.setAttribute('data-field', 'einblendungen');
+      e.setAttribute('data-where', 'code=' + r.code);
+      val.append(n, ' Anfragen · ', e, ' Impressionen');
+      top.append(mk('span', 'ks-bar-label', r.klasse), val);
+      const track = mk('div', 'ks-track');
+      track.setAttribute('role', 'img');
+      track.setAttribute('aria-label', r.klasse + ': ' + r.anfragen + ' Anfragen, ' + r.einblendungen + ' Impressionen');
+      const fill = mk('div', 'ks-fill');
+      fill.style.width = (100 * r.anfragen / max) + '%';
+      fill.style.background = dash.colors[0];
+      track.append(fill);
+      row.append(top, track);
+      return row;
+    }));
+  });
+
+  dash.draw('tage', {
+    mount: (el) => {
+      const tip = mk('div', 'ks-tip');
+      tip.hidden = true;
+      return { tip: tip };
+    },
+    update: (el, made) => {
+      const g = dash.data('tage');
+      if (!ok(g)) { el.replaceChildren(); return; }
+      const max = Math.max(1, ...g.data.map((r) => Number(r.einblendungen)));
+      const bars = g.data.map((r) => {
+        const b = mk('button', 'ks-day');
+        b.type = 'button';
+        b.style.height = Math.max(2, 100 * Number(r.einblendungen) / max) + '%';
+        b.style.background = dash.colors[0];
+        const text = datum(r.datum) + ': ' + r.einblendungen + ' Impressionen, ' + r.klicks + ' Klicks, Platz ' + r.position;
+        b.setAttribute('aria-label', text);
+        const zeige = () => {
+          made.tip.textContent = text;
+          made.tip.hidden = false;
+          const links = Math.min(Math.max(0, b.offsetLeft - 60), Math.max(0, el.clientWidth - made.tip.offsetWidth));
+          made.tip.style.left = links + 'px';
+        };
+        b.addEventListener('pointerenter', zeige);
+        b.addEventListener('focus', zeige);
+        b.addEventListener('click', zeige);
+        b.addEventListener('pointerleave', () => { made.tip.hidden = true; });
+        b.addEventListener('blur', () => { made.tip.hidden = true; });
+        return b;
+      });
+      el.replaceChildren(...bars, made.tip);
+    },
+    unmount: () => {}
+  });
+
+  dash.draw('tage-von', (el) => {
+    const g = dash.data('tage');
+    el.textContent = ok(g) && g.data.length ? datum(g.data[0].datum) : '—';
+  });
+  dash.draw('tage-bis', (el) => {
+    const g = dash.data('tage');
+    el.textContent = ok(g) && g.data.length ? datum(g.data[g.data.length - 1].datum) : '—';
+  });
+
+  const nachricht = (tbody, spalten, text) => {
+    const tr = mk('tr');
+    const td = mk('td', 'ks-leer', text);
+    td.colSpan = spalten;
+    tr.append(td);
+    tbody.replaceChildren(tr);
+  };
+  const num = (wert, label, klasse) => {
+    const td = mk('td', 'ks-num' + (klasse ? ' ' + klasse : ''), String(wert));
+    td.setAttribute('data-label', label);
+    return td;
+  };
+  const seitenLink = (pfad) => {
+    const a = mk('a', null, pfad);
+    a.href = 'https://luxestyle.ch' + pfad;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    return a;
+  };
+
+  dash.draw('seiten-tabelle', (el) => {
+    const g = dash.data('seiten');
+    if (g.status === 'loading') { nachricht(el, 5, 'Lädt …'); return; }
+    if (!ok(g)) { nachricht(el, 5, 'Die Liste konnte nicht geladen werden.'); return; }
+    el.replaceChildren(...g.data.slice(0, 10).map((r) => {
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.seite);
+      const t = mk('td');
+      t.append(seitenLink(r.seite));
+      tr.append(t, num(r.einblendungen, 'Impr.'), num(r.klicks, 'Klicks'), num(r.anfragen, 'Anfragen'), num(r.position, 'Platz'));
+      return tr;
+    }));
+  });
+
+  // ---- Listen mit Suche, Filter, Reihenfolge und Mehr-Knopf ----
+  const sortiere = (rows, art) => {
+    const a = rows.slice();
+    const cmpText = (x, y) => (x < y ? -1 : x > y ? 1 : 0);
+    if (art === 'pos') a.sort((x, y) => (x.position - y.position) || (y.einblendungen - x.einblendungen));
+    else if (art === 'klicks') a.sort((x, y) => (y.klicks - x.klicks) || (y.einblendungen - x.einblendungen));
+    else if (art === 'anfragen') a.sort((x, y) => (y.anfragen - x.anfragen) || (y.einblendungen - x.einblendungen));
+    else if (art === 'az') a.sort((x, y) => cmpText(norm(x.anfrage || x.wort || x.idee), norm(y.anfrage || y.wort || y.idee)));
+    return a;
+  };
+  const passt = (r, suche, felder) => {
+    if (!suche) return true;
+    return felder.some((f) => norm(r[f]).indexOf(suche) !== -1);
+  };
+  const mehrKnopf = (name, gesamt, gezeigt) => {
+    const b = $('ks-mehr-' + name);
+    if (b) b.hidden = gezeigt >= gesamt;
+  };
+  const zaehlerText = (el, gefiltert, gesamt, gezeigt, einheit) => {
+    el.textContent = gefiltert === gesamt
+      ? gesamt + ' ' + einheit
+      : gefiltert + ' von ' + gesamt + ' ' + einheit;
+    if (gezeigt < gefiltert) el.textContent += ', ' + gezeigt + ' angezeigt';
+  };
+
+  const anfragenFiltern = () => {
+    const g = dash.data('anfragen');
+    if (!ok(g)) return null;
+    const z = zustand.anfragen;
+    const s = norm(z.suche.trim());
+    const rows = g.data.filter((r) =>
+      r.einblendungen >= z.min && (z.klasse === 'alle' || r.klasse === z.klasse) && passt(r, s, ['anfrage']));
+    return { gesamt: g.data.length, rows: sortiere(rows, z.sort) };
+  };
+  dash.draw('anfragen-tabelle', (el) => {
+    const g = dash.data('anfragen');
+    if (g.status === 'loading') { nachricht(el, 4, 'Lädt …'); return; }
+    const f = anfragenFiltern();
+    if (!f) { nachricht(el, 4, 'Die Liste konnte nicht geladen werden.'); return; }
+    letzte.anfragen = f.rows;
+    const z = zustand.anfragen;
+    const gezeigt = Math.min(z.limit, f.rows.length);
+    mehrKnopf('anfragen', f.rows.length, gezeigt);
+    if (!f.rows.length) { nachricht(el, 4, 'Keine Anfrage passt zu diesen Filtern.'); return; }
+    el.replaceChildren(...f.rows.slice(0, gezeigt).map((r) => {
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.anfrage);
+      const t = mk('td');
+      t.append(mk('span', 'ks-q', r.anfrage));
+      if (r.seite) {
+        const sub = mk('span', 'ks-sub');
+        sub.append(seitenLink(r.seite));
+        t.append(sub);
+      }
+      tr.append(t, num(r.einblendungen, 'Impr.'), num(r.klicks, 'Klicks'), num(r.position, 'Platz'));
+      return tr;
+    }));
+  });
+  dash.draw('zaehler-anfragen', (el) => {
+    const f = anfragenFiltern();
+    if (!f) { el.textContent = '—'; return; }
+    zaehlerText(el, f.rows.length, f.gesamt, Math.min(zustand.anfragen.limit, f.rows.length), 'Anfragen');
+  });
+
+  const stichwoerterFiltern = () => {
+    const g = dash.data('stichwoerter');
+    if (!ok(g)) return null;
+    const z = zustand.stichwoerter;
+    const s = norm(z.suche.trim());
+    return { gesamt: g.data.length, rows: sortiere(g.data.filter((r) => passt(r, s, ['wort', 'beispiele'])), z.sort) };
+  };
+  dash.draw('stichwoerter-tabelle', (el) => {
+    const g = dash.data('stichwoerter');
+    if (g.status === 'loading') { nachricht(el, 5, 'Lädt …'); return; }
+    const f = stichwoerterFiltern();
+    if (!f) { nachricht(el, 5, 'Die Liste konnte nicht geladen werden.'); return; }
+    letzte.stichwoerter = f.rows;
+    const gezeigt = Math.min(zustand.stichwoerter.limit, f.rows.length);
+    mehrKnopf('stichwoerter', f.rows.length, gezeigt);
+    if (!f.rows.length) { nachricht(el, 5, 'Kein Stichwort passt zur Suche.'); return; }
+    el.replaceChildren(...f.rows.slice(0, gezeigt).map((r) => {
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.wort);
+      const t = mk('td');
+      t.append(mk('span', 'ks-q', r.wort), mk('span', 'ks-sub', r.beispiele));
+      const knopf = mk('button', 'ks-link', 'Anfragen dazu zeigen');
+      knopf.type = 'button';
+      knopf.addEventListener('click', () => {
+        zustand.anfragen.suche = r.wort;
+        zustand.anfragen.klasse = 'alle';
+        zustand.anfragen.min = 1;
+        zustand.anfragen.limit = SCHRITT;
+        $('ks-suche-anfragen').value = r.wort;
+        $('ks-min-anfragen').value = '1';
+        chipsSetzen('ks-chips-anfragen', 'alle');
+        zeigeTab('anfragen');
+      });
+      const sub = mk('span', 'ks-sub');
+      sub.append(knopf);
+      t.append(sub);
+      tr.append(t, num(r.anfragen, 'Anfragen'), num(r.einblendungen, 'Impr.'), num(r.klicks, 'Klicks'), num(r.position, 'Platz'));
+      return tr;
+    }));
+  });
+  dash.draw('zaehler-stichwoerter', (el) => {
+    const f = stichwoerterFiltern();
+    if (!f) { el.textContent = '—'; return; }
+    zaehlerText(el, f.rows.length, f.gesamt, Math.min(zustand.stichwoerter.limit, f.rows.length), 'Stichwörter');
+  });
+
+  const chancenFiltern = () => {
+    const g = dash.data('chancen');
+    if (!ok(g)) return null;
+    const z = zustand.chancen;
+    const s = norm(z.suche.trim());
+    // Die Datei ist schon nach Gewicht sortiert (Impressionen / Wurzel des Platzes).
+    return { gesamt: g.data.length, rows: g.data.filter((r) => (z.klasse === 'alle' || r.klasse === z.klasse) && passt(r, s, ['anfrage'])) };
+  };
+  dash.draw('chancen-tabelle', (el) => {
+    const g = dash.data('chancen');
+    if (g.status === 'loading') { nachricht(el, 4, 'Lädt …'); return; }
+    const f = chancenFiltern();
+    if (!f) { nachricht(el, 4, 'Die Liste konnte nicht geladen werden.'); return; }
+    letzte.chancen = f.rows;
+    const gezeigt = Math.min(zustand.chancen.limit, f.rows.length);
+    mehrKnopf('chancen', f.rows.length, gezeigt);
+    if (!f.rows.length) { nachricht(el, 4, 'Keine Chance passt zu diesen Filtern.'); return; }
+    el.replaceChildren(...f.rows.slice(0, gezeigt).map((r) => {
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.anfrage);
+      const t = mk('td');
+      t.append(mk('span', 'ks-q', r.anfrage));
+      if (r.seite) {
+        const sub = mk('span', 'ks-sub');
+        sub.append(seitenLink(r.seite));
+        t.append(sub);
+      }
+      if (HINWEIS[r.klasse]) t.append(mk('span', 'ks-sub', HINWEIS[r.klasse]));
+      tr.append(t, num(r.einblendungen, 'Impr.'), num(r.klicks, 'Klicks'), num(r.position, 'Platz'));
+      return tr;
+    }));
+  });
+  dash.draw('zaehler-chancen', (el) => {
+    const f = chancenFiltern();
+    if (!f) { el.textContent = '—'; return; }
+    zaehlerText(el, f.rows.length, f.gesamt, Math.min(zustand.chancen.limit, f.rows.length), 'Chancen');
+  });
+
+  const ideenFiltern = () => {
+    const g = dash.data('ideen');
+    if (!ok(g)) return null;
+    const s = norm(zustand.ideen.suche.trim());
+    return { gesamt: g.data.length, rows: g.data.filter((r) => passt(r, s, ['idee', 'seed'])) };
+  };
+  dash.draw('ideen-tabelle', (el) => {
+    const g = dash.data('ideen');
+    if (g.status === 'loading') { nachricht(el, 3, 'Lädt …'); return; }
+    const f = ideenFiltern();
+    if (!f) { nachricht(el, 3, 'Die Liste konnte nicht geladen werden.'); return; }
+    letzte.ideen = f.rows;
+    const gezeigt = Math.min(zustand.ideen.limit, f.rows.length);
+    mehrKnopf('ideen', f.rows.length, gezeigt);
+    if (!f.rows.length) { nachricht(el, 3, 'Keine Idee passt zur Suche.'); return; }
+    el.replaceChildren(...f.rows.slice(0, gezeigt).map((r) => {
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.idee);
+      const t = mk('td');
+      t.append(mk('span', 'ks-q', r.idee));
+      const s = mk('td');
+      s.append(mk('span', 'ks-q', r.seed), mk('span', 'ks-sub', r.seed_info));
+      tr.append(t, s, num(r.treffer, 'Treffer'));
+      return tr;
+    }));
+  });
+  dash.draw('zaehler-ideen', (el) => {
+    const f = ideenFiltern();
+    if (!f) { el.textContent = '—'; return; }
+    zaehlerText(el, f.rows.length, f.gesamt, Math.min(zustand.ideen.limit, f.rows.length), 'Ideen');
+  });
+
+  // ---- Bedienung ----
+  function chipsSetzen(id, klasse) {
+    $(id).querySelectorAll('.ks-chip').forEach((c) => c.setAttribute('aria-pressed', c.dataset.klasse === klasse ? 'true' : 'false'));
+  }
+  function neuZeichnen(name) {
+    ZEICHNUNGEN[name].forEach((d) => dash.draw(d));
+  }
+  function zeigeTab(name, ohneLink) {
+    if (TABS.indexOf(name) === -1) name = 'uebersicht';
+    TABS.forEach((t) => {
+      $('ks-sec-' + t).hidden = t !== name;
+      const b = $('ks-tab-' + t);
+      b.setAttribute('aria-selected', t === name ? 'true' : 'false');
+      b.tabIndex = t === name ? 0 : -1;
+    });
+    if (!ohneLink) dash.setLink(name);
+    neuZeichnen(name);
+  }
+  TABS.forEach((t) => {
+    $('ks-tab-' + t).addEventListener('click', () => zeigeTab(t));
+    $('ks-tab-' + t).addEventListener('keydown', (e) => {
+      const i = TABS.indexOf(t);
+      let n = null;
+      if (e.key === 'ArrowRight') n = TABS[(i + 1) % TABS.length];
+      else if (e.key === 'ArrowLeft') n = TABS[(i + TABS.length - 1) % TABS.length];
+      else if (e.key === 'Home') n = TABS[0];
+      else if (e.key === 'End') n = TABS[TABS.length - 1];
+      if (n) { e.preventDefault(); zeigeTab(n); $('ks-tab-' + n).focus(); }
+    });
+  });
+
+  const redraw = (name, liste) => liste.forEach((d) => dash.draw(d));
+  $('ks-suche-anfragen').addEventListener('input', (e) => { zustand.anfragen.suche = e.target.value; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
+  $('ks-sort-anfragen').addEventListener('change', (e) => { zustand.anfragen.sort = e.target.value; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
+  $('ks-min-anfragen').addEventListener('change', (e) => { zustand.anfragen.min = Number(e.target.value) || 1; zustand.anfragen.limit = SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
+  $('ks-chips-anfragen').querySelectorAll('.ks-chip').forEach((c) => c.addEventListener('click', () => {
+    zustand.anfragen.klasse = c.dataset.klasse || 'alle';
+    zustand.anfragen.limit = SCHRITT;
+    chipsSetzen('ks-chips-anfragen', zustand.anfragen.klasse);
+    redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']);
+  }));
+  $('ks-mehr-anfragen').addEventListener('click', () => { zustand.anfragen.limit += SCHRITT; redraw('anfragen', ['anfragen-tabelle', 'zaehler-anfragen']); });
+
+  $('ks-suche-stichwoerter').addEventListener('input', (e) => { zustand.stichwoerter.suche = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
+  $('ks-sort-stichwoerter').addEventListener('change', (e) => { zustand.stichwoerter.sort = e.target.value; zustand.stichwoerter.limit = SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
+  $('ks-mehr-stichwoerter').addEventListener('click', () => { zustand.stichwoerter.limit += SCHRITT; redraw('stichwoerter', ['stichwoerter-tabelle', 'zaehler-stichwoerter']); });
+
+  $('ks-suche-chancen').addEventListener('input', (e) => { zustand.chancen.suche = e.target.value; zustand.chancen.limit = SCHRITT; redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']); });
+  $('ks-chips-chancen').querySelectorAll('.ks-chip').forEach((c) => c.addEventListener('click', () => {
+    zustand.chancen.klasse = c.dataset.klasse || 'alle';
+    zustand.chancen.limit = SCHRITT;
+    chipsSetzen('ks-chips-chancen', zustand.chancen.klasse);
+    redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']);
+  }));
+  $('ks-mehr-chancen').addEventListener('click', () => { zustand.chancen.limit += SCHRITT; redraw('chancen', ['chancen-tabelle', 'zaehler-chancen']); });
+
+  $('ks-suche-ideen').addEventListener('input', (e) => { zustand.ideen.suche = e.target.value; zustand.ideen.limit = SCHRITT; redraw('ideen', ['ideen-tabelle', 'zaehler-ideen']); });
+  $('ks-mehr-ideen').addEventListener('click', () => { zustand.ideen.limit += SCHRITT; redraw('ideen', ['ideen-tabelle', 'zaehler-ideen']); });
+
+  // Kopieren: Tabulator-getrennter Text, höchstens 5000 Zeilen, mit Kopfzeile.
+  const SPALTEN = {
+    anfragen: [['Suchanfrage', 'anfrage'], ['Impressionen', 'einblendungen'], ['Klicks', 'klicks'], ['Platz', 'position'], ['Seite', 'seite']],
+    stichwoerter: [['Stichwort', 'wort'], ['Anfragen', 'anfragen'], ['Impressionen', 'einblendungen'], ['Klicks', 'klicks'], ['Platz', 'position'], ['Seite', 'seite'], ['Beispiele', 'beispiele']],
+    chancen: [['Suchanfrage', 'anfrage'], ['Impressionen', 'einblendungen'], ['Klicks', 'klicks'], ['Platz', 'position'], ['Seite', 'seite']],
+    ideen: [['Idee', 'idee'], ['Aus Suchanfrage', 'seed'], ['Sichtbarkeit der Suchanfrage', 'seed_info'], ['Treffer', 'treffer'], ['Seite der Suchanfrage', 'seite']]
+  };
+  const tsv = (name) => {
+    const sp = SPALTEN[name];
+    const zeilen = (letzte[name] || []).slice(0, 5000).map((r) => sp.map(([, k]) => String(r[k] == null ? '' : r[k]).replace(/[\t\r\n]+/g, ' ')).join('\t'));
+    return [sp.map(([l]) => l).join('\t')].concat(zeilen).join('\n');
+  };
+  Object.keys(SPALTEN).forEach((name) => {
+    const knopf = $('ks-kopie-' + name);
+    knopf.addEventListener('click', () => {
+      const okEl = $('ks-ok-' + name);
+      const badEl = $('ks-bad-' + name);
+      okEl.hidden = true;
+      badEl.hidden = true;
+      const fertig = (gut) => {
+        (gut ? okEl : badEl).hidden = false;
+        setTimeout(() => { okEl.hidden = true; badEl.hidden = true; }, 4000);
+      };
+      try {
+        navigator.clipboard.writeText(tsv(name)).then(() => fertig(true), () => fertig(false));
+      } catch (e) {
+        fertig(false);
+      }
+    });
+  });
+
+  const h = (location.hash || '').replace('#', '');
+  if (TABS.indexOf(h) > 0) zeigeTab(h, true);
+</script>
