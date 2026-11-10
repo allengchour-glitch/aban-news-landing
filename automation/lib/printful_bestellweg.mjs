@@ -658,8 +658,8 @@ export function vorhandenVergleichen(order, o) {
     if (roh(r.zip).replace(/ /g, '') !== roh(emp.zip).replace(/ /g, '')) texte.push('die PLZ weicht ab');
     if (String(r.country_code || '').toUpperCase() !== String(emp.country_code || '').toUpperCase()) texte.push('das Land weicht ab');
   }
-  const podZeilen = ((o && o.lineItems && o.lineItems.edges) || []).map((e) => e && e.node).filter(Boolean).filter((z) => istPod(z) && mengeVon(z) !== 0);
-  const soll = podZeilen.reduce((a, z) => a + (mengeVon(z) > 0 ? mengeVon(z) : 0), 0);
+  const podZeilen = ((o && o.lineItems && o.lineItems.edges) || []).map((e) => e && e.node).filter(Boolean).filter((z) => istPod(z));
+  const soll = podZeilen.reduce((a, z) => a + (mengeVon(z) > 0 ? mengeVon(z) : 0), 0);   // entfernte Positionen (0) und unlesbare (-1) zählen nicht zur Soll-Menge; die unlesbaren meldet die Zeile darunter
   if (podZeilen.some((z) => mengeVon(z) < 0)) texte.push('die Menge einer Position der Bestellung ist nicht lesbar');
   const items = order && Array.isArray(order.items) ? order.items : null;
   if (!items) texte.push('die Artikel des vorhandenen Printful-Auftrags sind nicht lesbar');

@@ -450,7 +450,7 @@ export const MUTANTEN = [
   ['H10 F9 Vergleich: die Stückzahl wird nicht verglichen', B, 'if (ist !== soll) texte.push(', 'if (false) texte.push('],
   ['H10 F9 Vergleich: ein nicht lesbarer Empfänger gilt als passend', B, "else if (!r) texte.push('der Empfänger des vorhandenen Printful-Auftrags ist nicht lesbar');", ''],
   ['H10 F9 Vergleich: nicht lesbare Artikel gelten als passend', B, "if (!items) texte.push('die Artikel des vorhandenen Printful-Auftrags sind nicht lesbar');", 'if (!items) void 0;'],
-  ['H10 F9 Vergleich: entfernte Positionen zählen zur Soll-Menge', B, '.filter((z) => istPod(z) && mengeVon(z) !== 0)', '.filter((z) => istPod(z))'],
+  ['H10 F9 Vergleich: entfernte Positionen zählen zur Soll-Menge', B, 'a + (mengeVon(z) > 0 ? mengeVon(z) : 0), 0);', 'a + (mengeVon(z) > 0 ? mengeVon(z) : 1), 0);'],
   ['H10 F9 Vergleich: die Wörter des Namens werden nicht sortiert', B, ".split(' ').filter(Boolean).sort().join(' ');", ".split(' ').filter(Boolean).join(' ');"],
   // Fund 12: der Workflow-Schalter wird AUSGEFÜHRT geprüft
   ['H10 F12 Workflow: der Zeitplan schreibt, wenn die Freigabedatei FEHLT', W, 'if [ -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi', 'if [ ! -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi'],
