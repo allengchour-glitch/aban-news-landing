@@ -35,7 +35,14 @@ export async function validateLicense(key, env) {
     // Anbieterfehler sind kein Nachweis einer ungültigen Lizenz. Nicht cachen,
     // damit eine spätere manuelle Prüfung nach der Störung wieder möglich ist.
     if (!r.ok) return { ok: false, reason: "error", tier: null };
-    const d = await r.json().catch(() => ({}));
+    const d = await r.json();
+    // Nur eine ausdrückliche boolesche Entscheidung ist eine Lizenzantwort.
+    // HTML, leere oder unvollständige Antworten bleiben Anbieterfehler und
+    // dürfen die spätere manuelle Prüfung nicht durch einen Cache sperren.
+    if (!d || typeof d !== "object" || Array.isArray(d) || typeof d.valid !== "boolean"
+        || (d.valid && (typeof d.license_key?.status !== "string" || !d.license_key.status.trim()))) {
+      return { ok: false, reason: "error", tier: null };
+    }
     const status = (d && d.license_key && d.license_key.status) || "";
     const ok = !!(d && d.valid) && (status === "active" || status === "inactive");
     const variantId = d && d.meta && Number(d.meta.variant_id);

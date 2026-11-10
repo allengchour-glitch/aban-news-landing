@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lizenzantwort: defekter Inhalt darf keine Ablehnung zwischenspeichern
+
+Wirtschaftsauftrag10.11.: vorhandenen Verkaufs-/Freischaltweg statt neue Projekte priorisiert. Eigener Branch von mainb9a98150, AGENTS/CLAUDE/Shared Memory/Übergabe und offene PRs gelesen. Vorige HTTP-Störungsprüfung PR3015 nicht wiederholt: neuer reproduzierter Fall ist HTTP200 mit HTML, leerem/ungültigem JSON, fehlender boolescher Entscheidung oder bestätigter Gültigkeit ohne Status. Bisher entstand eine zehn Minuten gecachte Ablehnung, selbst nach Anbietererholung. Acht Eingaben mit je Fehler- und Wiederanlaufprobe vor Korrektur16 neue Fehler,54 bestehende Prüfungen grün.
+
+`functions/_pro.mjs` lässt JSON-Parsefehler in den bestehenden Fehlerpfad laufen und akzeptiert nur eindeutige boolesche Lizenzantworten; positiver Bescheid braucht einen nichtleeren Status. Fehler bleiben gesperrt, ohne negativen Cache. Bestätigte Ablehnung bleibt gecacht; bestehende Lizenz-/Produkt-/Tierregeln erhalten. Keine automatische Wiederholung.
+
+GEMESSEN:70 API-,84 Engine- und48 Downloadprüfungen grün (202). Zusätzliche direkte `/api/pro-validate`-Gegenprobe liefert nach defekter Demo-Antwort `{valid:false,status:error}` mit no-store und nach ausdrücklicher erneuter Prüfung die simulierte gültige Antwort. Ausschließlich erfundene Schlüssel und simulierte Anbieterantworten, keine echten Konto-, Modell-, Kunden- oder Zahlungsaufrufe. Lokale CI-Simulation am schreibgeschützten HOME blockiert; echte CI und Bereitstellung im zugehörigen PR prüfen. Vorhandener Hype-Filter-Testablauf führt die Testdatei bereits aus, keine neue Automation.
+
+Nutzen: Käufer sollen bei Anbieterstörung nicht zehn Minuten fälschlich als ungültig gelten. Finanzielle Wirkung nicht gemessen. Eigene Audit-/Workbook-Checkout-/Lieferzuordnung und Cockpit-/Studio-Lizenzabgrenzung bleiben separate offene Prüfungen; keine Preise oder fremden Zahlungslinks geändert.
+
 ## Metricool-Monitor mit tatsächlichen Quellenantworten
 
 Inhaber: «live auch metricool sachen monitor». Auf eigenem Branch von main4f16875b. Metricool-Marke anhand verbundener LuxeStyle-Kanäle und Europe/Zurich frisch lesend bestätigt. Bestehenden Kalender10.–16.11.2026 tageweise gelesen, nachdem Gesamtantwort zu groß war; alle sieben Einzelantworten erfolgreich. Offizielle verfügbare Metriken vor Datenabruf gelesen,28-Tage-Daten13.10.–09.11.2026 für Instagram/TikTok/Pinterest/YouTube erhalten. Keine Kontokennungen, Beitragstexte oder realen Messwerte im Repository. Private Rohdaten ausschließlich `/workspace/private-metricool-20261110/`.

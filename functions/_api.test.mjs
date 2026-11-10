@@ -256,6 +256,23 @@ async function run() {
     } finally {globalThis.fetch=realFetch;}
   }
 
+  console.log("\nTest 13 — Defekte Anbieterantwort ist keine Lizenzablehnung:");
+  for (const [name, body] of [
+    ['html', '<html>Wartung</html>'], ['leer', ''], ['objekt', '{}'],
+    ['null', 'null'], ['liste', '[]'], ['falscher-typ', '{"valid":"false"}'],
+    ['status-fehlt', '{"valid":true}'], ['status-leer', '{"valid":true,"license_key":{"status":""}}'],
+  ]) {
+    const realFetch=globalThis.fetch;let calls=0;
+    globalThis.fetch=async()=>{calls++;return calls===1?new Response(body,{status:200}):PRO_OK();};
+    try {
+      const key='nur-demo-kaputte-antwort-'+name;
+      const first=await validateLicense(key,{});
+      check(name+': bleibt gesperrt, meldet Anbieterfehler',first.ok===false&&first.reason==='error');
+      const second=await validateLicense(key,{});
+      check(name+': manuelle Prüfung erreicht erholten Anbieter',calls===2&&second.ok===true);
+    } finally {globalThis.fetch=realFetch;}
+  }
+
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
     "  (" + pass + " ok, " + fail + " fehlerhaft)");
   process.exit(fail === 0 ? 0 : 1);
