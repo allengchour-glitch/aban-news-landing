@@ -19,6 +19,9 @@ Tore je Entwurf (jedes Nein = Entwurf bleibt):
   7. Mindestens 3 Stunden Abstand zu jedem anderen Beitrag desselben Netzwerks (Stories und Pinterest ausgenommen);
      bei Verstoss wird am selben Tag zwischen 09:00 und 21:00 nach dem nächsten freien Platz gesucht.
   8. Der Entwurf kommt nur einmal im Planer vor (gleiche uuid mehrfach = Kopie, wird nie angefasst).
+  9. Der Entwurf steht NICHT auf der Halteliste dropship/METRICOOL-HALTEN.txt (eine uuid oder id je Zeile, danach «# Grund»).
+     So kann der Besitzer oder eine prüfende Sitzung (Codex) einen Entwurf anhalten, ohne im Planer zu schreiben.
+     Die Liste hält nur Entwürfe zurück; bereits eingeplante Beiträge fasst diese Automation nie an.
 
 Nach jedem Update wird der Planer frisch gelesen: genau ein Beitrag mit der uuid, geplant, Datum/Text/Medien wie erwartet.
 Bei der ersten Abweichung wird gestoppt (ein Update kann trotz Fehlermeldung eine Kopie anlegen).
@@ -294,13 +297,38 @@ def baue_put(post, ziel, text):
     return b
 
 
+HALTEN_DATEI = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dropship', 'METRICOOL-HALTEN.txt')
+
+
+def lade_halten(text):
+    """Halteliste lesen: je Zeile eine uuid oder id, danach optional «# Grund». Leere Zeilen und Zeilen mit # am Anfang zählen nicht.
+    Gibt {schlüssel: Grund} zurück (Schlüssel als Text, Gross-/Kleinschreibung der uuid egal)."""
+    out = {}
+    for zeile_ in (text or '').splitlines():
+        kopf, _, grund = zeile_.partition('#')
+        teile = kopf.split()
+        if not teile:
+            continue
+        out[teile[0].strip().lower()] = grund.strip() or 'ohne Grund'
+    return out
+
+
+def halte_grund(post, halten):
+    """Grund, falls der Entwurf auf der Halteliste steht (nach uuid oder id), sonst None."""
+    for schluessel in (str(post['uuid']).lower(), str(post['id']).lower()):
+        if schluessel in halten:
+            return halten[schluessel]
+    return None
+
+
 def zeit_von(post):
     return datetime.fromisoformat(post['publicationDate']['dateTime'])
 
 
-def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien_ok=lambda url: True):
+def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien_ok=lambda url: True, halten=None):
     """Reine Planung. Gibt Liste von Entscheidungen zurück:
     {'id','uuid','netze','alt','neu','text','text_neu','fixes','probleme','ok'}."""
+    halten = halten or {}
     uuid_zaehler = {}
     for p in planer:
         uuid_zaehler[p['uuid']] = uuid_zaehler.get(p['uuid'], 0) + 1
@@ -318,7 +346,7 @@ def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien
     kandidaten.sort(key=lambda p: (zeit_von(p), p['id']))
     ergebnis, freigegeben = [], 0
     vorlaeufig = {p['id']: [(netz_schluessel(p, q['network']), zeit_von(p)) for q in p['providers']]
-                  for p in kandidaten if zeit_von(p) >= jetzt + timedelta(hours=MIN_VORLAUF_H)}
+                  for p in kandidaten if zeit_von(p) >= jetzt + timedelta(hours=MIN_VORLAUF_H) and halte_grund(p, halten) is None}
     for p in kandidaten:
         vorlaeufig.pop(p['id'], None)
         netze = [q['network'] for q in p['providers']]
@@ -326,6 +354,10 @@ def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien
         e = {'id': p['id'], 'uuid': p['uuid'], 'netze': netze, 'alt': zeit_von(p), 'neu': None, 'text': p['text'],
              'text_neu': p['text'], 'fixes': [], 'probleme': [], 'ok': False, 'produkte': []}
         ergebnis.append(e)
+        grund = halte_grund(p, halten)
+        if grund is not None:
+            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)
+            continue
         if uuid_zaehler[p['uuid']] > 1:
             e['probleme'].append('uuid kommt mehrfach vor (Kopie), nicht angefasst')
             continue
@@ -499,9 +531,10 @@ def telegram(text, token, chat):
 
 def melde_liste(gehalten, jetzt, stunden=48):
     """Welche gehaltenen Entwürfe per Telegram genannt werden: nur Termine in den nächsten 48 Stunden (oder gerade vorbei), keine Kopien.
-    So kommt jeder Entwurf höchstens zwei- bis dreimal vor, eine bekannte Kopie nie (sie lässt sich nur von Hand im Planer löschen)."""
+    So kommt jeder Entwurf höchstens zwei- bis dreimal vor, eine bekannte Kopie nie (sie lässt sich nur von Hand im Planer löschen),
+    ein bewusst angehaltener Entwurf (Halteliste) auch nie."""
     return [e for e in gehalten
-            if not any('Kopie' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]
+            if not any('Kopie' in p or 'angehalten' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]
 
 
 def zeile(e):
@@ -548,7 +581,13 @@ def main(argv):
         produkte = wegweiser_produkte(shop, shopify_token(shop, os.environ.get('SHOPIFY_CLIENT_ID', ''), os.environ.get('SHOPIFY_CLIENT_SECRET', '')))
     print(f'Planer: {len(planer)} Beiträge | Wegweiser-Produkte: {len(produkte)} | {"LIVE" if live else "Trockenlauf"} | jetzt {jetzt:%d.%m. %H:%M}')
 
-    entscheidungen = plane_lauf(planer, produkte, jetzt, horizont, max_lauf, medium_erreichbar if not planer_datei else (lambda u: True))
+    try:
+        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())
+    except FileNotFoundError:
+        halten = {}
+    if halten:
+        print(f'Halteliste: {len(halten)} Eintrag/Einträge ({", ".join(sorted(halten)[:6])})')
+    entscheidungen = plane_lauf(planer, produkte, jetzt, horizont, max_lauf, medium_erreichbar if not planer_datei else (lambda u: True), halten)
     ok = [e for e in entscheidungen if e['ok']]
     gehalten = [e for e in entscheidungen if not e['ok']]
     for e in ok:
