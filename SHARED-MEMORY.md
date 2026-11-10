@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: Arbeitsteilung LuxeStyle (10.11.2026)
+
+Wer was macht: `docs/ARBEITSTEILUNG-1011.md` (Kurzfassung oben in der Datei). Sie ersetzt die veraltete Tabelle «Die Sessions & wem was „gehört"» weiter unten, soweit sie LuxeStyle betrifft. Kernpunkt: Der Metricool-Planer wird nur von Claude und der Freigabe-Automation geschrieben, alle anderen lesen.
+
 ## Aktuell: belegte KI-Bot-Prüfungen integriert
 
 Der spätere Nutzerauftrag «baue alles rein» erlaubt die Umsetzung der belegten technischen Rechercheergebnisse. Branch `codex/ki-bot-gemeinsam`: Datenalter/abgeschlossene Kerzen, Signal-/Historienprüfungen, Vergleiche mit gleichem Risikobudget, getrennte Zeiträume, aufgeschlüsselte Kosten und erweiterte Risikokennzahlen im Offline-Labor integriert.20 dauerhafte Tests und isolierter Testbaum bestanden; vier absichtliche Fehler erkannt,21 bestehende Binance-Spot-Tests mit Börsennachbau grün. Testaufruf im vorhandenen Deploy-Check ergänzt. [Integrationsmatrix und Grenzen](docs/ki-bot-gemeinsam/INTEGRATION.md). Keine Änderung am bestehenden Handelsbot, Echtgeld, Brokeraufträgen oder Not-Aus. Claude-Review liegt vor (09.11. abends, [CLAUDE-REVIEW.md](docs/ki-bot-gemeinsam/CLAUDE-REVIEW.md): kein Blocker, 14 Regressionstests neu, Mutationsprobe 11 → 29 von 32); ungelesene Paper (teils gelesen), vollständiger Modellnachweis und Live-Stand weiterhin offen. Ältere Pausenvermerke weiter unten sind durch den neueren Integrationsauftrag für diesen Umfang überholt.
@@ -200,6 +204,7 @@ Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. D
 ---
 
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
+> ⚠️ Für LuxeStyle seit 10.11.2026 ersetzt durch `docs/ARBEITSTEILUNG-1011.md`.
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
 | **abannews** | Newsletter/Hubs/Stripe-Shop auf abannews.com (KI-Content, GEO-Reports) | `PROJEKT.md` | eigene `claude/*` |
