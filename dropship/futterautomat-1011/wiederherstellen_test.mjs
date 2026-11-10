@@ -48,7 +48,10 @@ function attrappe(start, opts = {}) {
 }
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'futter-test-'));
-const dateien = () => ({ orig: ORIG, kurz: path.join(fs.mkdtempSync(path.join(tmp, 'l-')), 'kurz.json') });
+const dateien = () => {
+  const dir = fs.mkdtempSync(path.join(tmp, 'l-'));
+  return { orig: ORIG, kurz: path.join(dir, 'kurz.json'), v1: path.join(dir, 'v1.json'), fremd: path.join(dir, 'fremd.json') };
+};
 const fahre = (a, extra = {}) => { const d = dateien(); return M.lauf({ gql: a.gql, dateien: d, log: still, warte: async () => {}, ...extra }).then((code) => ({ code, d })); };
 
 const orig = JSON.parse(fs.readFileSync(ORIG, 'utf8'));
@@ -69,6 +72,17 @@ let wirft = false; try { M.baueSoll({ ...orig, descriptionHtml: orig.description
 pruefe('baueSoll: fehlender Anker wirft', wirft);
 wirft = false; try { M.baueSoll({ ...orig, descriptionHtml: orig.descriptionHtml + orig.descriptionHtml }); } catch { wirft = true; }
 pruefe('baueSoll: doppelter Anker wirft', wirft);
+wirft = false; try { M.baueSoll({ ...orig, descriptionHtml: orig.descriptionHtml.replace('mit Futter, auch wenn du nicht zu Hause bist.', 'mit Futter.') }); } catch { wirft = true; }
+pruefe('baueSoll: fehlender Anker des Abwesenheits-Satzes wirft', wirft);
+
+// 1b Soll (zweite Fassung): ohne den abgeleiteten Satz, SEO-Beschreibung mit dem belegten Gewicht
+const sollV1 = M.baueSollV1(orig);
+pruefe('Produkt-ID und Handle fest (nicht aus dem geprüften Modul abgeleitet)', M.ID === 'gid://shopify/Product/15523986473345' && M.HANDLE === 'futterautomat-fur-katze-527488');
+pruefe('Soll: kein «nicht zu Hause», keine «Abwesenheit» in Titel, Text, SEO', !/nicht zu Hause|abwesen/i.test(soll.title + soll.descriptionHtml + soll.seo.title + soll.seo.description));
+pruefe('Soll: Text sagt «versorgt deine Katze mit Futter.»', soll.descriptionHtml.includes('versorgt deine Katze mit Futter. Er hat eine automatische Fütterungsfunktion'));
+pruefe('Soll: SEO-Beschreibung nennt das belegte Gewicht und die Schale', soll.seo.description.includes('2,2 kg') && soll.seo.description.includes('Futterschale aus Edelstahl'));
+pruefe('V1 (10:27 UTC): trägt den Abwesenheits-Satz in Text und SEO', sollV1.descriptionHtml.includes('mit Futter, auch wenn du nicht zu Hause bist.') && /nicht zu Hause/.test(sollV1.seo.description));
+pruefe('V1 und Soll unterscheiden sich nur im Satzteil und in der SEO-Beschreibung', sollV1.descriptionHtml.replace('mit Futter, auch wenn du nicht zu Hause bist.', 'mit Futter.') === soll.descriptionHtml && sollV1.title === soll.title && sollV1.seo.title === soll.seo.title && sollV1.material === soll.material);
 
 // 2 Trockenlauf
 {
@@ -118,10 +132,12 @@ pruefe('baueSoll: doppelter Anker wirft', wirft);
   const z = kurzZustand(); z.descriptionHtml = '<p>Ganz anderer Text.</p>';
   const a = attrappe(z);
   const { code, d } = await fahre(a, { live: true });
-  pruefe('Fremde Änderung: Exit 4, nichts geschrieben, keine Sicherung', code === 4 && a.log.schreiben.length === 0 && !fs.existsSync(d.kurz), String(code));
+  pruefe('Fremde Änderung: Exit 4, nichts geschrieben, keine Sicherung', code === 4 && a.log.schreiben.length === 0 && !fs.existsSync(d.kurz) && !fs.existsSync(d.v1) && !fs.existsSync(d.fremd), String(code));
   const b = attrappe(z);
   const r = await fahre(b, { live: true, fremd: true });
-  pruefe('Fremde Änderung mit FREMD: schreibt und sichert', r.code === 0 && b.log.schreiben.length === 1 && fs.existsSync(r.d.kurz));
+  pruefe('Fremde Änderung mit FREMD: schreibt und sichert in die Fremd-Sicherung', r.code === 0 && b.log.schreiben.length === 1 && fs.existsSync(r.d.fremd) && !fs.existsSync(r.d.kurz) && !fs.existsSync(r.d.v1));
+  const sf = fs.existsSync(r.d.fremd) ? JSON.parse(fs.readFileSync(r.d.fremd, 'utf8')) : null;
+  pruefe('Fremd-Sicherung trägt den fremden Text', !!sf && sf.descriptionHtml === '<p>Ganz anderer Text.</p>');
 }
 
 // 7 falsches Produkt
@@ -156,6 +172,73 @@ pruefe('baueSoll: doppelter Anker wirft', wirft);
   const code = await M.lauf({ gql: a.gql, dateien: r1.d, log: still, zurueck: true, live: true, warte: async () => {} });
   pruefe('Rücknahme LIVE: Exit 0', code === 0, String(code));
   pruefe('Rücknahme: Kurzfassung wieder da (Titel, Text, SEO)', a.st.title === 'Futterspender für Katzen in Weiss' && a.st.descriptionHtml === M.KURZ_BODY && a.st.seo.title.endsWith('| LuxeStyle') && a.st.seo.description.startsWith('Weisser Futterspender'));
+}
+
+// 11 Vorgänger «V1» (Fassung von 10:27 UTC) -> Soll
+const v1Zustand = () => ({
+  handle: M.HANDLE, status: 'ACTIVE', title: sollV1.title, descriptionHtml: sollV1.descriptionHtml,
+  seo: { ...sollV1.seo }, material: { id: 'gid://shopify/Metafield/1', value: M.SOLL_MATERIAL },
+});
+{
+  const a = attrappe(v1Zustand());
+  const d = dateien();
+  fs.writeFileSync(d.kurz, 'KURZ-UNVERAENDERT');
+  const trocken = await M.lauf({ gql: a.gql, dateien: d, log: still, warte: async () => {} });
+  pruefe('V1 -> Soll Trockenlauf: Exit 0, nichts geschrieben, keine V1-Sicherung', trocken === 0 && a.log.schreiben.length === 0 && !fs.existsSync(d.v1));
+  const code = await M.lauf({ gql: a.gql, dateien: d, log: still, warte: async () => {}, live: true });
+  const i = a.log.schreiben[0] || {};
+  pruefe('V1 -> Soll: Exit 0, ein Schreibaufruf', code === 0 && a.log.schreiben.length === 1, String(code));
+  pruefe('V1 -> Soll: Produkt-ID, Titel, Text, SEO wie Soll', i.id === M.ID && i.title === soll.title && i.descriptionHtml === soll.descriptionHtml && i.seo && i.seo.description === soll.seo.description && i.seo.title === soll.seo.title);
+  pruefe('V1 -> Soll: Material gleich, also kein Metafeld im Aufruf', !i.metafields);
+  pruefe('V1 -> Soll: Zustand danach Soll', a.st.title === soll.title && a.st.descriptionHtml === soll.descriptionHtml && a.st.seo.description === soll.seo.description);
+  const s = fs.existsSync(d.v1) ? JSON.parse(fs.readFileSync(d.v1, 'utf8')) : null;
+  pruefe('V1 -> Soll: V1 in eigener Sicherung (Text, SEO)', !!s && s.descriptionHtml === sollV1.descriptionHtml && s.seo.description === sollV1.seo.description);
+  pruefe('V1 -> Soll: Sicherung der Kurzfassung bleibt unberührt', fs.readFileSync(d.kurz, 'utf8') === 'KURZ-UNVERAENDERT');
+  pruefe('V1 -> Soll: keine Fremd-Sicherung', !fs.existsSync(d.fremd));
+}
+
+// 12 Teilzustand: Text schon wie Soll, SEO-Beschreibung aber anders -> Exit 4 (jemand hat nur Teile geändert), nichts geschrieben
+{
+  const z = v1Zustand(); z.descriptionHtml = soll.descriptionHtml;
+  const a = attrappe(z);
+  const { code, d } = await fahre(a, { live: true });
+  pruefe('Teilzustand (Text Soll, SEO anders): Exit 4, nichts geschrieben, keine Sicherung', code === 4 && a.log.schreiben.length === 0 && !fs.existsSync(d.v1) && !fs.existsSync(d.fremd), String(code));
+}
+// ... und je ein einzelnes Feld abweichend, alles andere wie Soll: nie «Schon im Soll», nie stilles Überschreiben
+for (const [name, aendere] of [
+  ['Titel', (z) => { z.title = 'Anderer Titel'; }],
+  ['SEO-Titel', (z) => { z.seo = { ...z.seo, title: 'Anderer SEO-Titel' }; }],
+  ['SEO-Beschreibung', (z) => { z.seo = { ...z.seo, description: 'Andere Beschreibung.' }; }],
+  ['Material', (z) => { z.material = { ...z.material, value: 'Edelstahl' }; }],
+]) {
+  const z = v1Zustand(); z.descriptionHtml = soll.descriptionHtml; z.title = soll.title; z.seo = { ...soll.seo }; z.material = { ...z.material, value: soll.material };
+  aendere(z);
+  const a = attrappe(z);
+  const { code } = await fahre(a, { live: true });
+  pruefe(`Nur ${name} weicht ab: Exit 4, nichts geschrieben`, code === 4 && a.log.schreiben.length === 0, String(code));
+}
+
+// 13 Rücknahme auf V1 (Fassung von 10:27 UTC), ohne Sicherungsdatei: sie wird aus dem Original gebaut
+{
+  const z = v1Zustand(); z.descriptionHtml = soll.descriptionHtml; z.seo = { ...soll.seo };
+  const a = attrappe(z);
+  const d = dateien();
+  const probe = await M.lauf({ gql: a.gql, dateien: d, log: still, zurueck: 'v1', live: false, warte: async () => {} });
+  pruefe('Rücknahme V1 Trockenlauf: Exit 0 und nichts geschrieben', probe === 0 && a.log.schreiben.length === 0);
+  const code = await M.lauf({ gql: a.gql, dateien: d, log: still, zurueck: 'v1', live: true, warte: async () => {} });
+  const i = a.log.schreiben[0] || {};
+  pruefe('Rücknahme V1 LIVE: Exit 0, ein Schreibaufruf mit Produkt-ID, ohne Metafeld', code === 0 && a.log.schreiben.length === 1 && i.id === M.ID && !i.metafields, String(code));
+  pruefe('Rücknahme V1: Fassung von 10:27 UTC steht wieder (Titel, Text, SEO)', a.st.title === sollV1.title && a.st.descriptionHtml === sollV1.descriptionHtml && a.st.seo.description === sollV1.seo.description && a.st.seo.title === sollV1.seo.title);
+}
+
+// 14 Kurzfassung bleibt ein gültiger Vorgänger, auch wenn eine V1-Sicherung schon existiert
+{
+  const a = attrappe(kurzZustand());
+  const d = dateien();
+  fs.writeFileSync(d.v1, 'V1-ALT');
+  const code = await M.lauf({ gql: a.gql, dateien: d, log: still, warte: async () => {}, live: true });
+  const s = fs.existsSync(d.kurz) ? JSON.parse(fs.readFileSync(d.kurz, 'utf8')) : null;
+  pruefe('Kurzfassung mit vorhandener V1-Sicherung: Exit 0, Kurzfassung in kurz.json, V1-Sicherung unberührt', code === 0 && !!s && s.descriptionHtml === M.KURZ_BODY && fs.readFileSync(d.v1, 'utf8') === 'V1-ALT');
 }
 
 fs.rmSync(tmp, { recursive: true, force: true });
