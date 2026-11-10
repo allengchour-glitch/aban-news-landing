@@ -1,8 +1,8 @@
 # Gemeinsamer KI-Bot: umgesetzte Forschungsprüfungen
 
-Aktueller Stand: [Streaming-Schnittstelle, Version4](STREAMING.md),57 gemeinsame Tests bestanden. [ergebnis-v4.json](ergebnis-v4.json) reproduziert alle36 bisherigen Zahlen exakt. Keine veränderten Handelsregeln; Claudes erneute Prüfung dieser Version steht aus.
+Aktueller Stand: [Streaming-Schnittstelle, Version4](STREAMING.md),57 gemeinsame Tests bestanden. [ergebnis-v4.json](ergebnis-v4.json) reproduziert alle36 bisherigen Zahlen exakt. Keine veränderten Handelsregeln. Claude hat Version4 am 10.11.2026 unabhängig geprüft: [CLAUDE-REVIEW-V4.md](CLAUDE-REVIEW-V4.md) (kein Blocker; Befund F8 zur Zustandsneutralität bei Fehlern in der Rechnung; acht neue Tests; Mutationsprobe von 38 auf 43 von 45).
 
-Aktuell: [Codex-Antwort auf Claudes unabhängige Prüfung](CODEX-ANTWORT-CLAUDE.md), Protokollversion3 und51 gemeinsame Tests. [ergebnis-v3.json](ergebnis-v3.json) ist der aktuelle reine Kursbericht; Version2 bleibt historisch erhalten. Claude hat diese neue Version und das spätere Nachrichtenmodul noch nicht erneut geprüft.
+Aktuell: [Codex-Antwort auf Claudes unabhängige Prüfung](CODEX-ANTWORT-CLAUDE.md), Protokollversion3 und51 gemeinsame Tests. [ergebnis-v3.json](ergebnis-v3.json) ist der aktuelle reine Kursbericht; Version2 bleibt historisch erhalten. Version3 und das Nachrichtenmodul hat Claude am 10.11.2026 nur gestreift (Proben in CLAUDE-REVIEW-V4.md), nicht vollständig geprüft.
 
 Aktuelle Ergänzung aus der Tutorial-Recherche: [News-Sentiment prüfen statt Duplikate verstärken](YOUTUBE-RECHERCHE.md). Begleitcode auf GitHub gelesen; Videos selbst wegen Proxy403 noch nicht gesehen. Optionaler Zeit-/Duplikat-/Modellcheck integriert,33 Tests grün; keine News-Handelsstrategie oder echten Modellprognosen behauptet.
 

@@ -1,12 +1,14 @@
 # Prüfskripte zum Claude-Review (09.11.2026)
 
-Zu [CLAUDE-REVIEW.md](../CLAUDE-REVIEW.md). Nur lesend (schreiben nichts ins Repository), nur Standardbibliothek, Python 3.11 bis 3.13. Pfade ergeben sich aus dem Ort der Dateien.
+Zu [CLAUDE-REVIEW.md](../CLAUDE-REVIEW.md) und [CLAUDE-REVIEW-V4.md](../CLAUDE-REVIEW-V4.md). Nur lesend (schreiben nichts ins Repository), nur Standardbibliothek, Python 3.11 bis 3.13. Pfade ergeben sich aus dem Ort der Dateien.
 
 | Datei | Zweck | Laufzeit |
 |---|---|---|
 | `pruefung1.py` | eigene Nachrechnung gegen `labor.simulieren` (36 Kombinationen), Tabellen je Strategie, Exposure gegen Timing, Rendite je Kalenderjahr | rund 5 s |
 | `pruefung2.py` | Gegenbeispiele zu `signalpruefung` (spärliche und Zwei-Tage-Lecks, Störungsprobe), Datenprüfung, ungenutzte Protokollwerte | rund 15 s |
 | `pruefung3.py` | Alpha und Beta gegen Bitcoin mit Block-Bootstrap, Renditedifferenzen, Parameter-Nachbarschaft (24 Konfigurationen), Deflated Sharpe Ratio | rund 15 s |
+| `pruefung4.py` | Streaming-Fassung (Version 4): Strom gegen eigene Nachrechnung und Version 3, Aufwärmphase, Fenster, eingefrorene Konfiguration, Zustandsneutralität, Fehler mitten im Schritt (F8); mit `V3_LABOR=/pfad/zu/labor.py` auch der Vergleich mit Version 3 | rund 15 s |
+| `mutation_v4.py` | Mutationsprobe für Version 4 (45 Änderungen an `labor.py`, 4 Prozesse parallel; `--seriell` für einen); Ergebnis 38 von 45 mit Codex' 57 Tests, 43 von 45 mit `test_labor_regression_v4.py` | rund 8 Minuten |
 | `mutation.py` | Mutationsprobe der Tests (32 Änderungen an `labor.py` in Kopien; erkannt = mindestens ein Test rot); `--mit-regression` nimmt `test_labor_regression.py` dazu | 1 bis 2 Minuten |
 
 ```bash
