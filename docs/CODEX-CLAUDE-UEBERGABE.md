@@ -1,5 +1,7 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+Zusätzlicher Abschlussnachweis: main `a58f95003` integriert. Echter Pages-Build auf `ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf` im netzlosen Container erfolgreich; 30 Browser-Prüfungen am gebauten Paket bestanden, keine Übergröße/privaten Verzeichnisse. Details und Grenzen im unten verlinkten Abschlussdokument. GitHub-API weiterhin Forbidden, kein Live-Stand behauptet.
+
 ## Vorrangiger Abschlussstand: Version 5 und gemeinsame Veröffentlichung
 
 Nutzerauftrag «offene sachen abschliessen»: `codex/offene-abschliessen` führt die offenen Website-/Wochenberichtkorrekturen und die F8-Korrektur zusammen. Geprüfter Codecommit `fed25db4146dfa609f1bf0746bcdb9c6927ae867`: alle neun lokalen CI-Abschnitte im isolierten Docker-Job grün, 70 Forschungstests (Python 3.11), 116 Wochenbericht- und 35 Pakettests bestanden; Website samt Formular und Mobilansichten geprüft. Version 5 ändert keine historischen Ergebnisse oder Handelsfreigaben. Claude-Review betrifft Version 4; F8 wurde anschließend behoben. Nachfolgende ältere Statusnotizen sind historische Stände.

@@ -2,6 +2,16 @@
 
 Nutzerauftrag: «offene sachen abschliessen». Alle noch ausstehenden Codekorrekturen sind auf `codex/offene-abschliessen` zusammengeführt. Der neue Branch entstand von aktuellem `origin/main` `c33f30e00`; andere Sitzungsarbeiten wurden erhalten. Geprüfter Code-Commit: `fed25db4146dfa609f1bf0746bcdb9c6927ae867`. Nachfolgende Abschlussdokumentation verändert diesen geprüften Anwendungscode nicht.
 
+## Zusätzlicher Veröffentlichungsnachweis
+
+Nach «das geht besser weiter» wurde `main` bis `a58f95003` konfliktfrei übernommen. Geprüfter Build-Commit: `ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf`. Dessen Anwendungscode ist identisch zum bereits geprüften `fed25db41`; hinzu kamen ausschließlich Gedächtnis-/Übergabedateien und Claudes Indexliste.
+
+GEMESSEN: vollständiger frischer Git-Export, echter `bash build-pages.sh` im netzlosen Container, Exit0. Das fertige Paket enthält7381 Dateien;2707 HTML-Dateien wurden vom vorhandenen Reparaturprüfer gegengeprüft, keine zusätzliche Reparatur nötig. Keine Datei über24MiB, keine internen Markdown-Dateien außerhalb Produktdownloads und keine ausgeschlossenen privaten Verzeichnisse im Paket. Pflichtdateien, Social-PNG und Favicons vorhanden. Geschützte Kit-ZIPs ohne `DOWNLOAD_SALT` ausdrücklich nicht getestet.
+
+Anschließend30 Browser-Prüfungen am **gebauten Paket** bestanden: Formular mit/ohne JavaScript, verweigerte Anmeldung ohne Einwilligung oder mit falscher E-Mail, Rückkehrnavigation, Startseite/Über-uns/Archiv bei320/390/1280px, lange Links, große Bilder und Favicons. Externe Anfragen wurden abgefangen, keine echte Anmeldung. Sitemap, JSON-LD und Launch-Seite bestehen die zusätzlichen Original-Predeploy-Befehle. Die originale Brand-Voice-Dateiauswahl findet für diesen Branch keine anwendbaren Content-Markdown-Dateien.
+
+Warnungen korrekt eingeordnet: Die rohe Predeploy-Linkprüfung löst dynamische Ziele/Redirects nicht auf. Der Build-Linkprüfer meldet `/markt` in der ausgeschlossenen lokalen Cockpit-Vorlage; `cockpit.py` bedient diesen Pfad tatsächlich. Deshalb kein falscher Website- oder Bot-Linkfix. Keine vollständige Fehlerfreiheit aller Seiten behauptet. Rohprotokolle: `/workspace/ci-ergebnisse/abschluss-pages` und `/workspace/ci-ergebnisse/abschluss-predeploy`; sanitiserter Nachweis in [ABSCHLUSS-NACHWEIS.json](ABSCHLUSS-NACHWEIS.json).
+
 ## Erledigt
 
 | Punkt | Abschluss und Nachweis |

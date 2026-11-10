@@ -125,5 +125,55 @@
     "GitHub-API über Cloud-Proxy weiter Forbidden; keine PR-Erstellung, keine Remote-Check-/Merge-/Deploy-Bestätigung",
     "YouTube und wissenschaftliche Originalquellen teilweise netzwerkbedingt nicht gelesen",
     "Kein Zugriff auf den Windows-PC und kein beobachteter neuer Vorwärtstest"
-  ]
+  ],
+  "pages_build_und_browser": {
+    "revision": "ca289cde075a4cfbe2c4e3fa6f1c61a0d3d6b7cf",
+    "exitcode": 0,
+    "seconds": 31.72,
+    "network": "none",
+    "salt": "nicht gesetzt; geschützte Kit-ZIPs nicht geprüft",
+    "passed": true,
+    "files": 7381,
+    "html_checked": 2707,
+    "oversize_files": 0,
+    "browser_passed": true,
+    "browser_scope": "Formular mit/ohne JavaScript, Einwilligung, ungültige E-Mail, Rückkehr, 320/390/1280px, Bild/Favicons, Archiv; externe Anfragen abgefangen",
+    "private_dirs_excluded": true,
+    "internal_markdown_files": 0,
+    "og_image_exists": true,
+    "sitemap_valid": true,
+    "core_files_sha256": {
+      "index.html": "f6889b259086af8c7d0c45aa568d09d9147be6c3ad90e11f2cf6a4230e741cfc",
+      "about.html": "de0e3c09049680d5d4b745cd64128399c9eb5a7a2bec7245ba1aeef6beef0872",
+      "archive/archive.css": "02075a08293b490bdc1d0ba0f12599f1634d6dc5308395284e5720844002eae1",
+      "og-image.png": "da20080f64e879da5d73bb781b21fb7cc7933756578452488b047f0aa629695e"
+    },
+    "warnings": "Build meldet /markt in der nicht veröffentlichten lokalen Cockpit-Vorlage. Roh-Predeploy-Linkprüfung meldet dynamische Ziele ohne Auflösung der Redirects. Keine vollständige Fehlerfreiheit aller Seiten behauptet."
+  },
+  "predeploy_zusatz": {
+    "revision": "b165e9100",
+    "checks": [
+      {
+        "name": "Verify no broken internal links",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify sitemap.xml is valid XML",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify JSON-LD blocks",
+        "exitcode": 0
+      },
+      {
+        "name": "Verify launch.html present + noindex",
+        "exitcode": 0
+      },
+      {
+        "name": "Check launch.html size budget",
+        "exitcode": 0
+      }
+    ],
+    "voice_linter": "Originale Dateiauswahl gegen origin/main ausgeführt: keine anwendbaren Content-Markdown-Dateien; kein Lintdurchlauf nötig."
+  }
 }
