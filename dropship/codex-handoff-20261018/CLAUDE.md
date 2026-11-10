@@ -388,3 +388,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 6. CJ `16690383454599`: Run42793821605/42794106913 am Main `a58f9500…`, PID1607242452115664896, kompletter Variantensatz,37 CN-Inventoryzeilen. Vier aktuelle SKUs CJ0; Fabrikwerte sind kein CH-Bestand. CH-Lieferbarkeit/Fracht/Prime/Rechte/Lieferzeit unbekannt; DRAFT erhalten.
 7. SEO: Futterspender R166 sauber/sitemapgebunden; vorbereiteter Hub-Anker `Futterspender für Katzen in Weiss ansehen`. GSC nicht wiederholen; Black-Friday-DRAFT-404 nicht auf unpassendes Produkt umleiten.
 8. Belege `MERCHANT-CJ-FORTSETZUNG-20261110-R167.md/.json`. 08/14/19 unverändert, keine neue Automation. Receipt `unknown_no_claude_receipt`.
+
+## R168 – Availability-Freigabe als bestätigter No-op abgeschlossen
+
+[LUXESTYLE_R168_20261110]
+
+1. Inhaberfreigabe für Angebot `13331643115375957532`, Quelle `10678939025`, liegt vor.
+2. Vor Write frisch lesen: Merchant `5797470070` liefert bereits `availability=IN_STOCK`; frühere Availability-Beanstandung fehlt. Zweite enge Rücklesung und unabhängige Prüfung PASS.
+3. Shopify `15500960530817`/`56110933803393`: ACTIVE, öffentlich, CHF15.90, availableForSale=true, untracked/CONTINUE.
+4. Kein Write und nicht erneut schreiben: Der Zielzustand war bereits vorhanden; Zeitpunkt/Verursacher unbekannt.
+5. CH Free Listings freigegeben. Separate LI-Versandbeanstandung bleibt; ohne eigene Freigabe und Lieferbelege nichts ändern.
+6. Keine Versand-, Preis-, Länder-, Produktstatus-, Feed-, Social- oder sonstige Plattformänderung. Belege `MERCHANT-AVAILABILITY-READBACK-20261110-R168.md/.json`. Receipt `unknown_no_claude_receipt`.

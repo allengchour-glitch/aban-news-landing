@@ -1472,3 +1472,11 @@ CJ-Kandidat `16690383454599` wurde read-only gebunden: Produkt-Run `42793821605`
 Der Projektor-Master bleibt ohne neue Filmquelle, Produkt-/Variantenbindung, Rechte und finale MP4 blockiert. Belege: `MERCHANT-CJ-FORTSETZUNG-20261110-R167.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R167_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 168: Merchant-Availability ohne unnötigen Write bestätigt
+
+Nach ausdrücklicher Inhaberfreigabe wurde das Angebot `13331643115375957532` in Merchant Center `5797470070`, Quelle `10678939025`, unmittelbar vor dem vorgesehenen Write erneut gelesen. Der Zielzustand war bereits vorhanden: `availability=IN_STOCK`; die frühere Availability-Beanstandung fehlt. Shopify `15500960530817`/Variante `56110933803393` bleibt ACTIVE, öffentlich, CHF15.90, availableForSale=true, untracked/CONTINUE. Zweite Rücklesung und unabhängige Gegenprüfung PASS.
+
+Kein Merchant-/Feed-Write, weil kein Diff bestand. Zeitpunkt und Verursacher der Korrektur unbekannt. Schweiz Free Listings freigegeben; separate LI-Versandbeanstandung bleibt unverändert und ausserhalb der Freigabe. Keine Versand-, Länder-, Preis- oder Statusänderung. Belege: `MERCHANT-AVAILABILITY-READBACK-20261110-R168.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R168_20261110]

@@ -2068,3 +2068,13 @@ CJ-DRAFT `16690383454599` wurde in genau zwei hashgesicherten read-only Runs am 
 [R167 Bericht](MERCHANT-CJ-FORTSETZUNG-20261110-R167.md) · [Maschinenbeleg](MERCHANT-CJ-FORTSETZUNG-20261110-R167.json).
 
 [LUXESTYLE_R167_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 168: freigegebener Merchant-Zielzustand bereits erreicht
+
+Der Inhaber gab den exakt vorbereiteten Availability-Schritt für Angebot `13331643115375957532` in Datenquelle `10678939025` frei. Die Pflichtgegenprobe unmittelbar vor dem Write zeigte den Zielzustand bereits: Merchant Center `5797470070` liefert `availability=IN_STOCK`; die frühere Availability-Beanstandung fehlt. Shopify `15500960530817`/`56110933803393` bleibt ACTIVE, öffentlich, CHF15.90, `availableForSale=true`, untracked/`CONTINUE`. Eine zweite enge Rücklesung und unabhängige Prüfung bestätigten den Zustand.
+
+Kein Write wurde ausgeführt, weil kein fachlicher Diff mehr bestand. Zeitpunkt und Verursacher der bereits wirksamen Korrektur bleiben unbekannt. Free Listings Schweiz sind freigegeben; nur die getrennte Liechtenstein-Versandbeanstandung bleibt. Diese war nicht freigegeben und wurde nicht verändert. Keine Versand-, Preis-, Länder-, Status- oder sonstige Plattformänderung; keine Wirkung abgeleitet.
+
+[R168 Bericht](MERCHANT-AVAILABILITY-READBACK-20261110-R168.md) · [Maschinenbeleg](MERCHANT-AVAILABILITY-READBACK-20261110-R168.json).
+
+[LUXESTYLE_R168_20261110]

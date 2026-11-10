@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "run": "R168",
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-10T12:09:32+01:00",
+  "ownerApproval": {
+    "received": true,
+    "scope": "offer 13331643115375957532 in source 10678939025: derive in_stock from current Shopify availableForSale=true and exact readback"
+  },
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland"
+    },
+    "merchant": {
+      "displayName": "LuxeStyle CH",
+      "merchantCenterId": "5797470070"
+    }
+  },
+  "offer": {
+    "productName": "accounts/5797470070/products/de~CH~13331643115375957532",
+    "offerId": "13331643115375957532",
+    "contentLanguage": "de",
+    "feedLabel": "CH",
+    "dataSource": "accounts/5797470070/dataSources/10678939025",
+    "availability": "IN_STOCK",
+    "price": {
+      "amountMicros": "15900000",
+      "currencyCode": "CHF"
+    },
+    "availabilityIssuePresent": false,
+    "destinationStatuses": [
+      {
+        "reportingContext": "FREE_LISTINGS",
+        "approvedCountries": ["CH"],
+        "disapprovedCountries": ["LI"],
+        "pendingCountries": []
+      }
+    ],
+    "remainingIssues": [
+      {
+        "code": "missing_shipping_no_shipping_service_defined_for_country",
+        "attribute": "shipping",
+        "severity": "DISAPPROVED",
+        "applicableCountries": ["LI"]
+      }
+    ],
+    "merchantLastUpdateDate": "2026-11-08T02:03:31.208761Z"
+  },
+  "shopifyProduct": {
+    "productId": "15500960530817",
+    "variantId": "56110933803393",
+    "sku": "CJ-2410060358241610800",
+    "status": "ACTIVE",
+    "onlineStoreUrl": "https://luxestyle.ch/products/2-in-1-bluetooth-empfanger-610800",
+    "priceCHF": "15.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryTracked": false
+  },
+  "decision": {
+    "desiredStateAlreadyPresentBeforeWrite": true,
+    "mutationExecuted": false,
+    "reason": "no fachlicher Diff; a second write was unnecessary",
+    "causation": "unknown"
+  },
+  "writeSummary": {
+    "merchant": 0,
+    "feed": 0,
+    "shopify": 0,
+    "shipping": 0,
+    "price": 0,
+    "countries": 0,
+    "productStatus": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "customers": 0,
+    "dns": 0,
+    "theme": 0,
+    "budget": 0,
+    "discount": 0,
+    "paidRenders": 0
+  },
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

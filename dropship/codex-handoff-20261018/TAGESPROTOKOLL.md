@@ -1886,3 +1886,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Shopify-, Merchant-, Feed-, Metricool-, Klaviyo-, Kunden-, DNS-, Theme-, Budget-, Rabatt- oder Renderänderung | Ranking-/Verkaufswirkung unbekannt |
 
 [LUXESTYLE_R167_20261110] [Bericht](MERCHANT-CJ-FORTSETZUNG-20261110-R167.md) · [Beleg](MERCHANT-CJ-FORTSETZUNG-20261110-R167.json). Merchant-Quellenfix konkret vorbereitet, noch nicht ausgeführt.
+
+### R168
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Inhaberfreigabe | Freigabe für den exakt vorbereiteten Availability-Schritt übernommen | Umfang nur Angebot13331643115375957532/Quelle10678939025; keine Versand-/Preis-/Länderfreigabe |
+| Merchant-Gegenprobe | Konto, Angebot, Quelle, Attribut und Issues unmittelbar vor Write zweimal eng gelesen | `availability=IN_STOCK`; frühere Availability-Beanstandung fehlt; CH Free Listings freigegeben |
+| Shopify-Gegenprobe | Produkt15500960530817/Variante56110933803393 frisch gelesen | ACTIVE/öffentlich/CHF15.90/availableForSale=true/untracked/CONTINUE |
+| Write-Entscheid | Fachlichen Diff vor Mutation geprüft | Zielzustand bereits vorhanden;0 Merchant-/Feed-/Shopify-Writes; keine unnötige Wiederholung |
+| Restblocker | Verbleibende Beanstandung getrennt bewertet | LI-Versand bleibt ungeändert; Lieferfähigkeit/Kosten/Laufzeit nicht belegt und nicht freigegeben |
+| Dokumentation / Claude | R168-Bericht, Beleg und kanonische Übergabe fortgeführt | Revision168 vorgesehen; Zeitpunkt/Verursacher der bestehenden Korrektur unbekannt; Receipt unbekannt |
+
+[LUXESTYLE_R168_20261110] [Bericht](MERCHANT-AVAILABILITY-READBACK-20261110-R168.md) · [Beleg](MERCHANT-AVAILABILITY-READBACK-20261110-R168.json).
