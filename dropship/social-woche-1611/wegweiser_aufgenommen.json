@@ -1,0 +1,34 @@
+[
+ {
+  "zeit": "2026-11-11T11:39:44.234Z",
+  "art": "aufgenommen",
+  "produkte": [
+   {
+    "id": "gid://shopify/Product/16615812071815",
+    "handle": "weihnachtskugeln-beflockt-9-stuck-625300"
+   },
+   {
+    "id": "gid://shopify/Product/16613836456327",
+    "handle": "retro-keramik-kaffeetasse-mit-tiermotiv-621800"
+   },
+   {
+    "id": "gid://shopify/Product/15453775888769",
+    "handle": "weihnachtsstrumpf-mit-samt-optik-639700"
+   },
+   {
+    "id": "gid://shopify/Product/15449177620865",
+    "handle": "led-schminkspiegel-wiederaufladbar-tragbar-639500"
+   },
+   {
+    "id": "gid://shopify/Product/16603941536135",
+    "handle": "lichterbaum-musikbox-10x10x20-cm-604200"
+   },
+   {
+    "id": "gid://shopify/Product/15503083372929",
+    "handle": "schmuckkastchen-3d-holzpuzzle-611300"
+   }
+  ],
+  "vorher": 27,
+  "nachher": 33
+ }
+]

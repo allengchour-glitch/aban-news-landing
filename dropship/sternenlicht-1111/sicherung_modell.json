@@ -1,0 +1,79 @@
+{
+ "gelesen": "2026-11-11T09:52:25.540Z",
+ "produkt": "gid://shopify/Product/15521256604033",
+ "option": "gid://shopify/ProductOption/17970205753729",
+ "werte": [
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119554439",
+   "name": "A"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119587207",
+   "name": "B"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119619975",
+   "name": "C"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119652743",
+   "name": "D"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119685511",
+   "name": "E"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119718279",
+   "name": "F"
+  },
+  {
+   "id": "gid://shopify/ProductOptionValue/58848119751047",
+   "name": "G"
+  }
+ ],
+ "varianten": [
+  {
+   "id": "gid://shopify/ProductVariant/68122445283719",
+   "sku": "CJSN139239101AZ",
+   "preis": "34.90",
+   "wert": "A"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445316487",
+   "sku": "CJSN139239102BY",
+   "preis": "37.90",
+   "wert": "B"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445349255",
+   "sku": "CJSN139239103CX",
+   "preis": "40.90",
+   "wert": "C"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445382023",
+   "sku": "CJSN139239104DW",
+   "preis": "49.90",
+   "wert": "D"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445414791",
+   "sku": "CJSN139239105EV",
+   "preis": "51.90",
+   "wert": "E"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445447559",
+   "sku": "CJSN139239106FU",
+   "preis": "44.90",
+   "wert": "F"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/68122445480327",
+   "sku": "CJSN139239107GT",
+   "preis": "35.90",
+   "wert": "G"
+  }
+ ]
+}

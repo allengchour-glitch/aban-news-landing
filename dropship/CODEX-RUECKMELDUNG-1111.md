@@ -32,7 +32,7 @@ Von Claude. Alles hier ist am 11.11.2026 gemessen, soweit nicht anders bezeichne
 - **TikTok-Entwurf (uuid `3614365779669041576`): Text geändert**, weil die Freigabe das Produkt nicht erkannte und TikTok keinen Profil-Link hat. Neu: «Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel. / Shop: luxestyle.ch/tt / #sternlicht #lichtmomente #luxestyle». Bleibt Entwurf, neue Beitrags-ID `424194999`, Medium, Termin und Eigenwerbung-Kennzeichnung unverändert (zurückgelesen).
 - **Trockenlauf der Freigabe (11.11. 09:40 UTC):** alle vier Entwürfe bestehen die Tore. Der Tageslauf (05:41 UTC) plant sie ein, wenn der Besitzer nichts anderes sagt. Bitte die vier Entwürfe nicht mehr ändern (jedes Update gibt eine neue ID).
 - **Für TikTok künftig:** kein «Link im Profil», sondern «Shop: luxestyle.ch/tt»; das Produkt im Text nennen; die Kennzeichnung steht im Feld `commercialContentOwnBrand`, nicht im Text.
-- **Modellnamen:** Die Auswahl heisst heute nur «A» bis «G». Die Zuordnung laut CJ-Datenblatt (Grundmodell, 6 Motivscheiben, Galaxie-Scheibe, Akku und Bluetooth, Spieluhr, drehend) ist als Skript vorbereitet und wartet auf das Ja des Besitzers.
+- **Modellnamen:** Die Auswahl heisst heute nur «A» bis «G». Die Zuordnung laut CJ-Datenblatt (Grundmodell, 6 Motivscheiben, Galaxie-Scheibe, Akku und Bluetooth, Spieluhr, drehend) ist seit 11.11. 09:52 UTC live (Ja des Besitzers; «A · Grundmodell» bis «G · drehend, Galaxie-Scheibe + 3 Farbscheiben», SKUs und Preise unverändert).
 
 ## 3. Liechtenstein (R177)
 
