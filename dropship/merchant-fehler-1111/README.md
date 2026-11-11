@@ -70,4 +70,18 @@ Entscheid des Besitzers.
 - `MODUS=quellen` (Vorgabe bei Push) listet die Datenquellen und die Herkunft der Proben in `PROBEN`; `modus=bilder` (Handstart)
   liest alle Artikel (rund 15 Minuten). Konto-Nummern werden nie ausgegeben.
 - Seit 21:41 UTC wiederholt der Leser Netz-Zeitüberschreitungen (vorher brach der Lauf 43104452470 an einer ab).
-- Auswertung: `python3 -I fehler_auswerten.py <lauf.log> <aus.json>` (Scratch der Sitzung, gruppiert die FEHLER-Zeilen).
+- Auswertung: `python3 -I dropship/merchant-fehler-1111/fehler_auswerten.py <lauf.log> <aus.json>` (gruppiert die FEHLER-Zeilen nach Code und Attribut, nennt die Quelle je Angebot). Das Log am Ende zeigt die «Zeilen je Angebotsformat» (Shopify-App gegen Autofeed).
+
+## Plan 14. und 16.11. (vom Besitzer am 11.11. freigegeben, Sparmodus)
+
+**Sa 14.11. 08:13 UTC** (bestehender Wecker `trig_01WT4HUV8a5yCVezBtxmv6ey`, sein Text nennt nur die Bilder; die Punkte 3 und 4 gehören dazu, eine Änderung des Weckers wartet auf die Bestätigung des Besitzers):
+1. `merchant-bildprobleme.yml` auf `main` von Hand starten (`modus=bilder`), Log mit `fehler_auswerten.py` auswerten.
+2. Bildprobleme gegen 198 (11.11. 21:54 UTC) und 313 (18:53 UTC); `dropship/bildfix-1111/google_liste.mjs`: noch Produkte der 93 bereinigten dabei?
+3. Autofeed: «Preis fehlt» gegen 1 141, «Verfügbarkeit fehlt» gegen 49, «Zeilen je Angebotsformat». Nicht gesunken: dem Besitzer das Ausschalten empfehlen (Vorbehalt Schaufenster), selbst nichts ausschalten.
+4. Liechtenstein: «missing_shipping» gegen 256 124; `merchant-versand.yml` im Modus `pruefen`: steht der Dienst noch?
+5. Fünf Zeilen an den Besitzer, Zahlen hier nachtragen.
+
+**Mo 16.11.** (nach der Rücksetzung des Wochenlimits; ein Wecker dafür wartet auf die Bestätigung des Besitzers):
+1. Index-Wecker `trig_019nMZrhD1AcCgEKYuUYGRGE` der Shop-Sitzung: aus? Sonst ausschalten, nicht löschen.
+2. KI-Büro Design 16: Besitzer «evt macht der andere session». Zuerst nur lesen (`files/kb3d-code.js` mit `campus-einheitlich-16`?); erledigt: nur vergleichen und melden. Sonst und ohne andere schreibende Sitzung: Tabelle «Kanäle laut Metricool» zuerst ins Repo, dann ein einziger Bau nach `docs/KI-BUERO-DESIGN-16.md`.
+3. Wenn Zeit bleibt: «Hot Sale» in den Optionswerten von `herren-fleece-sport-freizeitschuhe-483776` neutral benennen.

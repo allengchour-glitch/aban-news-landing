@@ -185,6 +185,14 @@ def main():
         print(f"  {n:6d}  {c}  {a}")
     if beispiel:
         print("Beispiel eines Bildproblems (Struktur):", json.dumps(beispiel)[:600])
+    # Zeilen je Angebotsformat: Shopify-App «shopify_ZZ_…», Googles Autofeed als «<Produkt-ID>_<sku>» oder reine Nummer
+    # (Befund 11.11., dropship/merchant-fehler-1111/README.md). Zeilen, nicht Angebote: de und fr zählen je einmal.
+    formate = Counter()
+    for z in zeilen:
+        off = (z.get("productView") or {}).get("offerId", "")
+        formate["shopify-app" if off.startswith("shopify_") else "autofeed-produkt-sku" if "_" in off and off.split("_")[0].isdigit()
+                else "autofeed-nummer" if off.isdigit() else "andere"] += 1
+    print("Zeilen je Angebotsformat:", ", ".join(f"{k} {v}" for k, v in formate.most_common()))
     print(f"ERGEBNIS: {len(zeilen)} Artikel gelesen, {len(treffer)} Bildprobleme, {len(fehler)} übrige Probleme")
     with open("bildprobleme.json", "w") as f:
         json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "codes": dict(codes), "bild": treffer,

@@ -40,6 +40,15 @@ Rücknahme: `ZURUECK=1 LIVE=1 DATEN=dropship/kategorie-banner-v2 [HANDLES=a,b] n
 Wöchentlich: `PHASE=pruefen DATEN=dropship/kategorie-banner-v2 node …/kategorie_banner_v2.mjs` (Exit 3, wenn ein Quellprodukt
 nicht mehr aktiv, lieferbar oder Mitglied ist oder jemand das Bild geändert hat).
 
+## Nachtrag 22:43 bis 22:48 UTC
+
+- **Halloween-Seite** (Rang 7): Beschreibung ohne das falsche «kommt erst nach Halloween (31.10.)», ohne Rabattcode und Versand-/Rückgabezeile;
+  Link zu den Fasnachtskostümen; Ratgeber-Links bleiben; Alt-Text «Halloween – Kürbis-Schale». Alte Beschreibung: `sicherung/halloween-vorher-20261111.json`.
+- **Sechs Kategorien ohne Alt-Text** mit dem Werkzeug geprüft (Kontaktbogen gesichtet): `kinderschuhe` (Tanzschuhe von Erwachsenen → Baby-Plüschstiefel),
+  `sneaker-sportschuhe` (Lederhalbschuh → Plateau-Sneaker), `muetzen-schals` (Frischhalte-Tablett! → rote Bommelmütze aus dem Alpaka-Set),
+  `kostueme-ch-lager` (Perücke doppelt mit `kostueme-fasnacht` → Kobold-Kostüm) ersetzt; `jacken-outdoor` und `blitzversand-schweiz` nur Alt-Text.
+  Rücklesen 6 von 6 gleich, `PHASE=pruefen` 11 von 11 ok.
+
 ## Fehler beim ersten Lauf, behoben
 
 Shopify behält beim Tausch eines Collection-Bildes den **Dateinamen** und ändert nur `?v=` (weihnachten-2026: Datei
