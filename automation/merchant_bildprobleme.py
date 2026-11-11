@@ -64,11 +64,20 @@ def suchen(h, name, abfrage):
             body = {"query": abfrage, "pageSize": 1000}
             if token:
                 body["pageToken"] = token
-            for versuch in range(4):
-                r = requests.post(url, headers=h, json=body, timeout=60)
-                if r.status_code in (429, 500, 503):
+            r = None
+            for versuch in range(6):
+                try:
+                    r = requests.post(url, headers=h, json=body, timeout=120)
+                except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+                    # Lauf vom 11.11. 21:39 UTC brach an einem einzigen Lesefehler ab: Netzfehler wie 429/5xx wiederholen
+                    print(f"... Seite {seite + 1}: {type(e).__name__}, Versuch {versuch + 1} von 6", flush=True)
+                    r = None
+                    time.sleep(2 ** versuch * 3); continue
+                if r.status_code in (429, 500, 502, 503, 504):
                     time.sleep(2 ** versuch * 3); continue
                 break
+            if r is None:
+                print(f"ABBRUCH: reports:search {version}: Seite {seite + 1} nach 6 Versuchen nicht lesbar"); sys.exit(4)
             if r.status_code == 404 and seite == 0:
                 break  # diese Version gibt es nicht: nächste probieren
             if r.status_code != 200:
