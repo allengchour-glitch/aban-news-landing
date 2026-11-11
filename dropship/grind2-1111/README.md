@@ -36,3 +36,47 @@ Die Lückenanalyse vom 27.10. (`/tmp/grind2/luecken.json`) lag nur im temporäre
 
 **Offen:** für Skibrillen, Schneeschuhe und Trockenblumen fehlt eine Shop-Kategorie (`sort-`-Tag mit Collection); erst danach können
 dort Produkte kommen (Skill kategorien-nach-google).
+
+## Live-Lauf und Freigabe 11.11. (GEMESSEN)
+
+Der Grind legte am 11.11. sechs Entwürfe an (Fensteraufkleber, Filterkugeln, Katzentunnel, Motorrad-Dashcam, AirPods-Hülle, Angelrute).
+Jeder wurde von zwei unabhängigen Prüfern gegen Datenblatt, Bilder und Preis gelesen (Workflow `wf_3d2a3a72-d35`).
+Die Fliesstexte gingen über die Text-Kette (`STATUS_OK=DRAFT LEERE_PROSA_OK=1`), mit den Korrekturen der Gegenprüfung
+(Katzentunnel: zwei getrennte Filzteile statt «innen und aussen zwei Töne»; Fensteraufkleber: Format ohne Lesart «je Bogen»).
+
+**Veröffentlicht 20:13 UTC** (`automation/grind_freigabe.mjs`, Plan `plan_freigabe_1111.json`, je 6 Kanäle, frisch gelesen ACTIVE,
+Shopseite HTTP 200 mit `InStock`):
+
+| Produkt | Preis | Änderung vor der Freigabe |
+|---|---|---|
+| Weihnachts-Fensteraufkleber | 14.90 | Hauptbild, Farbe «Weiss oder bunt», Lieferumfang «1 Rolle mit 2 Bögen» |
+| Filterkugeln für Aquarium, 500 g, ca. 20 mm | 15.90 | Titel, Werbebild «Bio Balls … restore water quality» vom Produkt gelöst (`fileUpdate referencesToRemove`, Datei bleibt), «Kugeln» statt «Bälle», «ca. 20 mm» |
+| Katzentunnel aus Filz, verformbar und zusammenrollbar | 17.90 | Titel, Farben A bis F benannt (E «Orange/Grau»: oben orange, unten grau), Hauptbild |
+
+**Bleiben Entwurf** (Tag `grind-gehalten-0911`): Motorrad-Dashcam und AirPods-Hülle (Bild- und Datenblattfunde, Figurenmotive),
+Angelrute (Korrekturrunde offen: Längenliste, Bilder, Optionen in cm, Titel).
+
+**Werkzeug-Fehler behoben:** Shopify speichert einen SEO-Titel, der gleich dem Produkttitel ist, als leer (`seo.title: null`,
+gemessen am Katzentunnel). Das Rücklesen meldete darum «ABWEICHUNG: SEO» (Exit 4), obwohl alles stimmte. Neu `seoGleich()`:
+ein leerer SEO-Titel zählt wie der Produkttitel. Test 50 → 52, Gegenprobe mit dem alten Vergleich: beide neuen Prüfungen rot.
+
+Rücknahme je Produkt: `ZURUECK=1 LIVE=1 PLAN=… node automation/grind_freigabe.mjs` (Sicherung `dropship/grind-freigabe-0911/sicherung.json`);
+das gelöste Werbebild hängt `fileUpdate referencesToAdd` wieder an (`sicherung_medien_1111.json`).
+
+**Ungemessen:** Verkäufe, Google-Prüfung der drei neuen Produkte (sie kommen erst über das tägliche Schaufenster in den Google-Kanal).
+
+## Google-Rückholung 11.11. (zehn bewährte Produkte, Workflow `wf_5e6dea54-154`)
+
+Zehn Produkte der Stufe 0 (bestellt oder gut bewertet) standen nicht im Kanal «Google & YouTube». Je zwei Prüfer lasen alle Bilder
+auf Werbeüberlagerung und Fremdlogos und jedes Titelversprechen gegen das CJ-Datenblatt.
+
+**Aufgenommen 20:09 UTC** (`gmc_schaufenster.mjs PHASE=aufnehmen BUDGET=78000 ONLY=…`, frisch gelesen `publishedOnPublication: true`):
+`ultradunne-tragbare-lesebrille-aus-tr90-636700` (roter Dioptrien-Aufkleber «+1.00» auf allen Bildern, echtes Etikett, geringes Risiko)
+und `dreifachklinken-tennisarmband-mit-zirkon-613400` (Handgelenk-Foto vorher gelöst: es zeigt wahrscheinlich ein Armband mit grösseren Steinen).
+
+**Erst korrigieren (7):** Echtleder-Gürtel (Farbetiketten auf allen Bildern, Werbetext, «Material: Denim» im Kasten), Familien-Set
+(Grössentabelle mit chinesischer Schrift, «Baumwolle» unbelegt), Weste (Collagen mit Werbetext und Fremdmarke), Yoga-Top
+(Textschilder auf Haupt- und Variantenbildern), Armbanduhr («Gold» im Titel bei 6 Farben, Material widersprüchlich, «50 m»),
+Smartwatch (Collage als Hauptbild, chinesische Schrift), Silikon-Küchenhelfer (Werbe-Overlays auf Haupt- und Variantenbildern).
+**Nicht aufnehmen (1):** Mutter-Tochter-T-Shirt (Minnie Mouse ohne belegte Lizenz): Tag `lizenz-nicht-bewerben` gesetzt, Produkt bleibt im Shop.
+Die Berichte mit Korrekturvorschlägen liegen im Workflow-Protokoll; die Korrekturen sind noch nicht gemacht.

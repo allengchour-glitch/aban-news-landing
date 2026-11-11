@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { lauf, tore, planPruefen, seoFuer, htmlErsetzen, ohneOffen, mitGehalten, EXIT, MARKER_TEXT, MARKER_FAKTEN, TAG_OFFEN, TAG_GEHALTEN } from './grind_freigabe.mjs';
+import { lauf, tore, planPruefen, seoFuer, seoGleich, htmlErsetzen, ohneOffen, mitGehalten, EXIT, MARKER_TEXT, MARKER_FAKTEN, TAG_OFFEN, TAG_GEHALTEN } from './grind_freigabe.mjs';
 
 let n = 0, bad = 0;
 const t = async (name, f) => { try { await f(); n++; } catch (e) { bad++; console.error('✗', name, '\n  ', e.message.split('\n').slice(0, 4).join('\n   ')); } };
@@ -24,7 +24,7 @@ const produkt = (handle, extra = {}) => ({
   variants: { nodes: [{ id: `x1-${handle}`, sku: `SKU-${handle}-1`, price: '14.90' }, { id: `x2-${handle}`, sku: `SKU-${handle}-2`, price: '16.90' }] },
   gpc: { value: 'Luggage & Bags > Briefcases' }, pubs: [], ...extra });
 
-function shop(produkte, { fehler = {}, beiPublish = null, ignoriere = [], teilweise = false, beiSku = null } = {}) {
+function shop(produkte, { fehler = {}, beiPublish = null, ignoriere = [], teilweise = false, beiSku = null, seoWieShopify = false } = {}) {
   const S = { p: Object.fromEntries(produkte.map(x => [x.handle, structuredClone(x)])), schreib: [], fehler, ref: KAN };
   const wie = p => ({ ...structuredClone(p), resourcePublicationsV2: { nodes: p.pubs.map(id => ({ isPublished: true, publication: { id } })) } });
   S.gql = async (q, v = {}) => {
@@ -34,6 +34,7 @@ function shop(produkte, { fehler = {}, beiPublish = null, ignoriere = [], teilwe
       if (S.fehler.produkt?.(v.p)) return { productUpdate: { userErrors: [{ message: 'Attrappe: abgelehnt' }] } };
       const p = Object.values(S.p).find(x => x.id === v.p.id);
       for (const [k, w] of Object.entries(v.p)) { if (k === 'id' || ignoriere.includes(k)) continue; p[k === 'seo' ? 'seo' : k] = structuredClone(w); }
+      if (seoWieShopify && p.seo && p.seo.title === p.title) p.seo.title = null;   // Shopify speichert SEO-Titel = Produkttitel als leer
       return { productUpdate: { product: { id: p.id }, userErrors: [] } };
     }
     if (q.includes('productOptionUpdate')) {
@@ -62,10 +63,10 @@ function shop(produkte, { fehler = {}, beiPublish = null, ignoriere = [], teilwe
   return S;
 }
 
-function umgebung({ produkte, plan, live = false, freigeben = false, zurueck = false, frei = true, fehler = {}, beiPublish = null, status = 200, max, ignoriere = [], teilweise = false, beiSkuDatei = false }) {
+function umgebung({ produkte, plan, live = false, freigeben = false, zurueck = false, frei = true, fehler = {}, beiPublish = null, status = 200, max, ignoriere = [], teilweise = false, beiSkuDatei = false, seoWieShopify = false }) {
   const dir = mkdtempSync(join(tmpdir(), 'gf-'));
   let datei = null;
-  const S = shop(produkte, { fehler, beiPublish, ignoriere, teilweise, beiSku: beiSkuDatei ? () => { if (datei && existsSync(datei)) unlinkSync(datei); } : null });
+  const S = shop(produkte, { fehler, beiPublish, ignoriere, teilweise, seoWieShopify, beiSku: beiSkuDatei ? () => { if (datei && existsSync(datei)) unlinkSync(datei); } : null });
   const cfg = { plan, live, freigeben, zurueck, sicherung: join(dir, 'sicherung.json'), ledger: join(dir, 'ledger.txt'), freigabeDatei: join(dir, 'FREI.txt'), shopDomain: 'shop.test', max };
   if (frei) writeFileSync(cfg.freigabeDatei, 'frei');
   datei = cfg.freigabeDatei;
@@ -122,6 +123,15 @@ await t('Tor: Google-Kategorie fehlt', () => { rot(p => { p.gpc = null; }, 'Goog
 await t('Tor: Kanalliste fehlt oder zu kurz', () => { const p = gut(); for (const k of [null, [], ['a', 'b']]) assert.ok(tore(p, { kanaele: k }).some(x => x.name.includes('Kanalliste') && !x.ok)); });
 await t('Tor: Tag text-offen blockiert', () => rot(p => { p.tags.push(TAG_OFFEN); }, 'text-offen'));
 
+await t('SEO-Abgleich: leerer SEO-Titel zählt wie der Produkttitel, sonst genau', () => {
+  const soll = { title: 'Langer Titel', description: 'd' };
+  assert.equal(seoGleich({ title: 'Langer Titel', seo: { title: null, description: 'd' } }, soll), true);
+  assert.equal(seoGleich({ title: 'Langer Titel', seo: { title: '', description: 'd' } }, soll), true);
+  assert.equal(seoGleich({ title: 'Anders', seo: { title: null, description: 'd' } }, soll), false);
+  assert.equal(seoGleich({ title: 'Langer Titel', seo: { title: 'Langer Titel', description: 'x' } }, soll), false);
+  assert.equal(seoGleich({ title: 'Langer Titel', seo: { title: null, description: null } }, soll), false);
+  assert.equal(seoGleich({ title: 'X', seo: { title: 'Langer Titel', description: 'd' } }, soll), true);
+});
 // ── der Lauf ───────────────────────────────────────────────────────────────
 await t('Trockenlauf schreibt NICHTS (kein Shop-Schreibzugriff, keine Sicherung, kein Ledger)', async () => {
   const U = umgebung({ produkte: [produkt('a')], plan: PLAN1('a') });
@@ -266,6 +276,17 @@ await t('Kanäle nur teilweise veröffentlicht (Rücklesen) → zurück auf ENTW
 await t('Rücklesen nach dem Aufbereiten: ein still ignoriertes Feld wird als ABWEICHUNG gemeldet (Exit 4)', async () => {
   const U = umgebung({ produkte: [produkt('a')], plan: PLAN1('a'), live: true, freigeben: true, ignoriere: ['title'] });
   const r = await lauf(U.cfg, U.io); assert.equal(r.exit, EXIT.SCHREIBEN); assert.ok(U.zeilen.some(z => /ABWEICHUNG beim Rücklesen: .*Titel/.test(z)), U.zeilen.join('|')); assert.equal(U.S.p.a.status, 'DRAFT'); assert.ok(!U.S.schreib.some(s => s[0] === 'publish')); U.aus();
+});
+
+await t('Langer Titel: Shopify speichert den SEO-Titel leer → keine ABWEICHUNG, zweiter Lauf schreibt kein SEO', async () => {
+  const lang = 'Katzentunnel aus Filz, verformbar und zusammenrollbar';
+  const plan = { freigeben: [{ handle: 'a', titel: lang }], halten: [] };
+  const U = umgebung({ produkte: [produkt('a')], plan, live: true, seoWieShopify: true });
+  const r = await lauf(U.cfg, U.io); const p = U.S.p.a;
+  assert.equal(r.exit, EXIT.OK, U.zeilen.join('|')); assert.equal(p.title, lang); assert.equal(p.seo.title, null);
+  assert.ok(!U.zeilen.some(z => /ABWEICHUNG/.test(z)), U.zeilen.join('|')); assert.equal(r.zaehl.AUFBEREITET, 1);
+  const vorher = U.S.schreib.length; const r2 = await lauf(U.cfg, U.io);
+  assert.equal(r2.exit, EXIT.OK, U.zeilen.join('|')); assert.ok(!U.S.schreib.slice(vorher).some(s => s[0] === 'productUpdate'), JSON.stringify(U.S.schreib.slice(vorher))); U.aus();
 });
 
 console.log(`grind_freigabe_test: ${n} ok${bad ? `, ${bad} FEHLER` : ''}`);

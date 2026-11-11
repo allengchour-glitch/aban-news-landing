@@ -1,0 +1,25 @@
+{
+ "gelesen": "2026-11-11T20:03:19Z",
+ "zweck": "Werbebild «Bio Balls Filter Media / Help to restore water quality» vom Entwurf gelöst (fileUpdate referencesToRemove, Datei bleibt)",
+ "eintraege": [
+  {
+   "handle": "bakterienballe-aquarium-filtermaterial-643584",
+   "produkt": "gid://shopify/Product/16706218000775",
+   "medium": "gid://shopify/MediaImage/78014769136007",
+   "position": 0,
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d787efc9-5cb2-4394-9dc1-ad15ac813505.jpg",
+   "ruecknahme": "fileUpdate(files:[{id:medium, referencesToAdd:[produkt]}]) und productReorderMedia auf Position 0"
+  },
+  {
+   "handle": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+   "produkt": "gid://shopify/Product/16615274611079",
+   "medium": "gid://shopify/MediaImage/77494869819783",
+   "position": 3,
+   "alt": "Tennisarmband in Weiss am Handgelenk",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f85d3664-3084-4111-b39f-841b4db42936.jpg",
+   "grund": "Handgelenk-Foto zeigt wahrscheinlich ein anderes Armband (Steine ca. 6 mm statt 4 mm laut Datenblatt), Prüfer wf_5e6dea54-154",
+   "gesichert": "2026-11-11T20:07:03Z",
+   "ruecknahme": "fileUpdate referencesToAdd, dann productReorderMedia auf Position 3"
+  }
+ ]
+}
