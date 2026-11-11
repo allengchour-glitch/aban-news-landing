@@ -1,0 +1,266 @@
+<meta name="dash-one-writer">
+<style>
+  /* Layout: Kopf mit einem Satz, dann Balken (Abdeckung), dann Tabelle mit Filter nach Zuständigkeit.
+     Farben und Schriften nur aus den Tokens des Dashboards; alle Selektoren auf Klassen mit Präfix op-. */
+  .op { display: flex; flex-direction: column; gap: var(--cds-gap-xl); max-width: 980px; }
+  .op-head { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+  .op-title { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.2; text-wrap: balance; }
+  .op-lead { margin: 0; font-size: var(--cds-font-size-heading); line-height: 1.5; max-width: 64ch; }
+  .op-lead b { font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+  .op-meta { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; max-width: 72ch; }
+  .op-sec { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-width: 0; }
+  .op-h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .op-note { margin: var(--cds-gap-xs) 0 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; max-width: 72ch; }
+
+  .op-bars { display: flex; flex-direction: column; gap: var(--cds-gap-lg); min-height: 8rem; }
+  .op-bar { display: flex; flex-direction: column; gap: 6px; }
+  .op-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-md); }
+  .op-bar-label { min-width: 0; font-size: var(--cds-font-size-body); }
+  .op-bar-pct { white-space: nowrap; font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-heading); font-variant-numeric: tabular-nums; }
+  .op-track { height: 10px; border-radius: 5px; background: var(--color-border-line); overflow: hidden; }
+  .op-fill { height: 100%; border-radius: 5px; }
+  .op-bar-foot { display: flex; flex-wrap: wrap; gap: 2px 14px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+
+  .op-dot { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; box-sizing: border-box; }
+  .op-dot-heute { background: var(--color-ok); }
+  .op-dot-aelter { background: var(--color-warn); }
+  .op-dot-fehlt { border: 1.5px solid var(--color-fg-muted); }
+  .op-stand-line { white-space: nowrap; }
+
+  .op-chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); }
+  .op-chips-label { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin-right: var(--cds-gap-xs); }
+  .op-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 14px; font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: transparent; border: 1px solid var(--color-border-line); border-radius: 999px; cursor: pointer; }
+  .op-chip:hover { background: var(--color-panel); }
+  .op-chip:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .op-chip[aria-pressed="true"] { color: var(--color-bg); background: var(--color-fg); border-color: var(--color-fg); }
+  .op-chip-n { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+  .op-tablewrap { overflow-x: auto; }
+  .op-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); }
+  .op-table th { padding: 8px 14px 8px 0; text-align: left; white-space: nowrap; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid var(--color-border-line); }
+  .op-table td { padding: 12px 14px 12px 0; vertical-align: top; border-bottom: 1px solid var(--color-border-line); }
+  .op-table td:nth-child(1) { width: 1%; white-space: nowrap; color: var(--color-fg-muted); }
+  .op-table td:nth-child(3) { width: 1%; white-space: nowrap; }
+  .op-table td:nth-child(4) { white-space: nowrap; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .op-punkt { display: block; font-weight: var(--cds-font-weight-medium); }
+  .op-detail { display: block; max-width: 64ch; margin-top: 2px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; }
+  .op-messung { display: block; margin-top: 2px; }
+  .op-wer { display: inline-block; padding: 2px 10px; border: 1px solid var(--color-border-line); border-radius: 999px; font-size: var(--cds-font-size-caption); }
+  .op-wer-du { color: var(--color-bg); background: var(--color-fg); border-color: var(--color-fg); }
+  .op-leer { padding: 16px 0; color: var(--color-fg-muted); }
+
+  .op-details { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.55; max-width: 72ch; }
+  .op-details summary { cursor: pointer; color: var(--color-fg); }
+  .op-details ul { display: flex; flex-direction: column; gap: var(--cds-gap-xs); margin: var(--cds-gap-sm) 0 0; padding-left: 1.2em; }
+
+  @media (max-width: 640px) {
+    .op-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .op-table, .op-table tbody { display: block; }
+    .op-table tr { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid var(--color-border-line); }
+    .op-table td { display: block; width: auto; padding: 0; border: 0; white-space: normal; }
+    .op-table td:nth-child(1) { grid-column: 1; grid-row: 1; font-size: var(--cds-font-size-caption); letter-spacing: 0.05em; text-transform: uppercase; }
+    .op-table td:nth-child(3) { grid-column: 2; grid-row: 1; justify-self: end; }
+    .op-table td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+    .op-table td:nth-child(4) { grid-column: 1 / -1; grid-row: 3; }
+    .op-messung { display: inline; margin: 0 0 0 10px; }
+  }
+</style>
+
+<main class="op">
+  <header class="op-head">
+    <h1 class="op-title" id="op-titel">Was bei LuxeStyle noch fehlt</h1>
+    <p class="op-lead" id="op-lead">Offen sind <b data-draw="zahl" data-source="uebersicht" data-field="gesamt" data-row="0">—</b> Punkte: <b data-draw="zahl" data-source="uebersicht" data-field="du" data-row="0">—</b> brauchen dich, <b data-draw="zahl" data-source="uebersicht" data-field="claude" data-row="0">—</b> kann ich allein erledigen, <b data-draw="zahl" data-source="uebersicht" data-field="zeit" data-row="0">—</b> warten nur auf Zeit und <b data-draw="zahl" data-source="uebersicht" data-field="fremd" data-row="0">—</b> liegen bei PC-Claude oder Codex.</p>
+    <p class="op-meta" id="op-meta">Zusammengestellt am 09.11.2026 um 15:25 UTC, zuletzt aktualisiert am 11.11.2026 um 09:46 UTC, von Hand aus meinen Messungen und dem Projektgedächtnis. Es gibt keine Live-Abfrage. Jede Zeile nennt ihre eigene Messzeit.</p>
+  </header>
+
+  <section class="op-sec" aria-labelledby="op-h-balken">
+    <div>
+      <h2 class="op-h2" id="op-h-balken">Wie viel ist schon erledigt</h2>
+      <p class="op-note">Die Balken zeigen die Abdeckung heute, kein Ziel: 100 % ist nicht überall sinnvoll, etwa bei Bewertungen. Nur Punkte mit echter Zählung haben einen Balken, vom kleinsten Anteil an gereiht.</p>
+    </div>
+    <div class="op-bars" id="op-balken" data-draw="balken" data-source="abdeckung"></div>
+  </section>
+
+  <section class="op-sec" aria-labelledby="op-h-tabelle">
+    <h2 class="op-h2" id="op-h-tabelle">Alle offenen Punkte</h2>
+    <div class="op-chips" role="group" aria-label="Wer ist dran">
+      <span class="op-chips-label">Wer ist dran?</span>
+      <button type="button" class="op-chip" id="op-chip-alle" data-wer="Alle" aria-pressed="true">Alle <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="gesamt" data-row="0">—</span></button>
+      <button type="button" class="op-chip" id="op-chip-du" data-wer="Du" aria-pressed="false">Du <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="du" data-row="0">—</span></button>
+      <button type="button" class="op-chip" id="op-chip-claude" data-wer="Claude" aria-pressed="false">Claude <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="claude" data-row="0">—</span></button>
+      <button type="button" class="op-chip" id="op-chip-zeit" data-wer="Zeit" aria-pressed="false">Zeit <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="zeit" data-row="0">—</span></button>
+      <button type="button" class="op-chip" id="op-chip-pc" data-wer="PC-Claude" aria-pressed="false">PC-Claude <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="pc" data-row="0">—</span></button>
+      <button type="button" class="op-chip" id="op-chip-codex" data-wer="Codex" aria-pressed="false">Codex <span class="op-chip-n" data-draw="zahl" data-source="uebersicht" data-field="codex" data-row="0">—</span></button>
+    </div>
+    <div class="op-tablewrap">
+      <table class="op-table" id="op-tabelle" aria-label="Offene Punkte bei LuxeStyle" data-source="offen" data-row-key="id">
+        <thead>
+          <tr>
+            <th scope="col" data-field="bereich">Bereich</th>
+            <th scope="col" data-field="punkt">Was fehlt</th>
+            <th scope="col" data-field="wer">Dran</th>
+            <th scope="col" data-field="stand">Stand</th>
+          </tr>
+        </thead>
+        <tbody data-draw="tabelle"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details class="op-details" id="op-lesehilfe">
+    <summary>So ist die Seite gemeint</summary>
+    <ul>
+      <li>Dran: «Du» braucht deinen Entscheid oder deine Hände. «Claude» kann ich allein erledigen. «Zeit» läuft von selbst und braucht nur Zeit (Google, GitHub-Zeitplan, Messdatum). «PC-Claude» und «Codex» liegen dort.</li>
+      <li>Der Punkt neben dem Stand: grün = heute gemessen, gelb = früher gemessen und nicht erneuert, leer = Wirkung oder Wert ungemessen.</li>
+      <li>Innerhalb einer Gruppe stehen die Punkte in meiner Reihenfolge, was für Verkäufe am meisten zählt. Das ist eine Einschätzung, keine Messung.</li>
+      <li>Viele «Du»-Punkte sind Entscheide. Ohne Antwort gilt bei ihnen der bisherige Stand («bleibt»).</li>
+      <li>Eine Prozentzahl für «alles» gibt es nicht: Für einen Shop ist «fertig» nicht festgelegt. Prozent stehen nur dort, wo es eine echte Zählung gibt (x von y).</li>
+    </ul>
+  </details>
+</main>
+
+<script>
+  const RANG = { 'Du': 0, 'Claude': 1, 'Zeit': 2, 'PC-Claude': 3, 'Codex': 4 };
+  const MESSUNG = {
+    'heute': ['heute', 'heute gemessen'],
+    'älter': ['aelter', 'früher gemessen'],
+    'fehlt': ['fehlt', 'ungemessen']
+  };
+  let filter = 'Alle';
+
+  const mk = (tag, cls, txt) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt != null) e.textContent = txt;
+    return e;
+  };
+
+  dash.calc('uebersicht', {
+    title: 'Offene Punkte nach Zuständigkeit',
+    description: 'Zählt die Zeilen der Liste nach der Spalte «wer». «fremd» ist PC-Claude plus Codex.',
+    inputs: ['offen'],
+    fn: (offen) => {
+      const n = (w) => offen.filter((r) => r.wer === w).length;
+      return [{
+        gesamt: offen.length,
+        du: n('Du'),
+        claude: n('Claude'),
+        zeit: n('Zeit'),
+        pc: n('PC-Claude'),
+        codex: n('Codex'),
+        fremd: n('PC-Claude') + n('Codex')
+      }];
+    }
+  });
+
+  dash.calc('abdeckung', {
+    title: 'Abdeckung: wie viel ist schon erledigt',
+    description: 'Anteil = erledigt / gesamt in Prozent, nur für Zeilen mit echter Zählung (gesamt grösser 0). Unter 10 % mit einer Nachkommastelle, sonst ganze Zahl. Vom kleinsten Anteil an gereiht.',
+    inputs: ['offen'],
+    fn: (offen) => offen
+      .filter((r) => Number(r.gesamt) > 0)
+      .map((r) => {
+        const p = (100 * Number(r.erledigt)) / Number(r.gesamt);
+        return {
+          id: r.id,
+          kurz: r.kurz,
+          erledigt: Number(r.erledigt),
+          gesamt: Number(r.gesamt),
+          pct: p < 10 ? Math.round(p * 10) / 10 : Math.round(p),
+          stand: r.stand,
+          messung: r.messung
+        };
+      })
+      .sort((a, b) => a.pct - b.pct)
+  });
+
+  dash.draw('zahl', (el) => {
+    const g = dash.data('uebersicht');
+    const z = g.status === 'ok' && g.data && g.data[0];
+    const v = z ? z[el.dataset.field] : undefined;
+    el.textContent = v == null ? '—' : String(v);
+  });
+
+  dash.draw('balken', (el) => {
+    const g = dash.data('abdeckung');
+    if (g.status !== 'ok' || !Array.isArray(g.data)) { el.replaceChildren(); return; }
+    const fmt = (n) => n.toLocaleString('de-CH').replace(/['\u2019]/g, '\u00a0');
+    el.replaceChildren(...g.data.map((r) => {
+      const m = MESSUNG[r.messung] || MESSUNG['fehlt'];
+      const row = mk('div', 'op-bar');
+
+      const top = mk('div', 'op-bar-top');
+      const pct = mk('span', 'op-bar-pct');
+      const b = mk('b', null, String(r.pct));
+      b.setAttribute('data-source', 'abdeckung');
+      b.setAttribute('data-field', 'pct');
+      b.setAttribute('data-where', 'id=' + r.id);
+      pct.append(b, ' %');
+      top.append(mk('span', 'op-bar-label', r.kurz), pct);
+
+      const track = mk('div', 'op-track');
+      track.setAttribute('role', 'img');
+      track.setAttribute('aria-label', r.kurz + ': ' + fmt(r.erledigt) + ' von ' + fmt(r.gesamt) + ', ' + r.pct + ' Prozent');
+      const fill = mk('div', 'op-fill');
+      fill.style.width = (100 * r.erledigt / r.gesamt) + '%';
+      fill.style.background = dash.colors[0];
+      track.append(fill);
+
+      const foot = mk('div', 'op-bar-foot');
+      const st = mk('span', 'op-stand-line');
+      st.append(mk('span', 'op-dot op-dot-' + m[0]), r.stand + ', ' + m[1]);
+      foot.append(mk('span', null, fmt(r.erledigt) + ' von ' + fmt(r.gesamt)), st);
+
+      row.append(top, track, foot);
+      return row;
+    }));
+  });
+
+  dash.draw('tabelle', (el) => {
+    const g = dash.data('offen');
+    const nachricht = (text) => {
+      const tr = mk('tr');
+      const td = mk('td', 'op-leer', text);
+      td.colSpan = 4;
+      tr.append(td);
+      el.replaceChildren(tr);
+    };
+    if (g.status === 'loading') { nachricht('Lädt …'); return; }
+    if (g.status !== 'ok' || !Array.isArray(g.data)) { nachricht('Die Liste konnte nicht geladen werden.'); return; }
+    const rows = g.data
+      .map((r, i) => ({ r, i }))
+      .filter((x) => filter === 'Alle' || x.r.wer === filter)
+      .sort((a, b) => ((RANG[a.r.wer] ?? 9) - (RANG[b.r.wer] ?? 9)) || (a.i - b.i));
+    if (!rows.length) { nachricht('Hier ist nichts offen.'); return; }
+    el.replaceChildren(...rows.map(({ r }) => {
+      const m = MESSUNG[r.messung] || MESSUNG['fehlt'];
+      const tr = mk('tr');
+      tr.setAttribute('data-key', r.id);
+
+      const td1 = mk('td', null, r.bereich);
+
+      const td2 = mk('td');
+      td2.append(mk('span', 'op-punkt', r.punkt), mk('span', 'op-detail', r.detail));
+
+      const td3 = mk('td');
+      td3.append(mk('span', 'op-wer' + (r.wer === 'Du' ? ' op-wer-du' : ''), r.wer));
+
+      const td4 = mk('td');
+      const st = mk('span', 'op-stand-line');
+      st.append(mk('span', 'op-dot op-dot-' + m[0]), r.stand);
+      td4.append(st, mk('span', 'op-messung', m[1]));
+
+      tr.append(td1, td2, td3, td4);
+      return tr;
+    }));
+  });
+
+  const chips = document.querySelectorAll('.op-chip');
+  chips.forEach((c) => {
+    c.addEventListener('click', () => {
+      filter = c.dataset.wer || 'Alle';
+      chips.forEach((o) => o.setAttribute('aria-pressed', o === c ? 'true' : 'false'));
+      dash.draw('tabelle');
+    });
+  });
+</script>

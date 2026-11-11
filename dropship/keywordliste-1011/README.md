@@ -1,5 +1,7 @@
 # Suchanfragen und Keywordliste (10.11.2026)
 
+> **Seit 11.11.2026 liegt die Seite im Dashboard «KI-Büro»** (https://claude.ai/artifact/93LsR7UCQ3gN5mz8KW5MRN, Knopf «Suchanfragen»), zusammen mit «Offene Punkte». `seite.html` bleibt die Quelle; ins Dashboard kommt sie über `python3 -I tools/buero/dashboard/bauen.py` (Stil und Skript als `files/lx-suche.css` und `files/lx-suche.js`, das Gerüst als Abschnitt von `files/index.html`), nie mehr roh als `files/index.html`. Die sieben Datensätze liegen dort unter denselben Namen. Das frühere Artefakt «LuxeStyle Suchanfragen» wird nicht mehr nachgeführt. Anleitung: `tools/buero/dashboard/README.md`.
+
 **Anlass:** Besitzer 10.11. «suchanfrage und keywordliste erweitern», mit dem Bild des Codex-Monitors (Abschnitt «Suchanfragen und durchschnittliche Position»: 15 Anfragen, «Teilauszug, weitere Top-Zeilen vorhanden. Keine vollständige Keywordliste.»).
 **Auslegung (meine, nicht bestätigt):** alle Anfragen zeigen, die Google für luxestyle.ch ausweist, dazu eine brauchbare Keywordliste (Stichwörter, Chancen, Ideen). Der Codex-Monitor selbst bekommt nur die Fähigkeit, eine lange Liste zu zeigen; seine Daten holt Codex aus seinem eigenen Zugang.
 

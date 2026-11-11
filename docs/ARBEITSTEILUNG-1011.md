@@ -22,7 +22,7 @@ Wörter: **Besitzer** = der Mensch. **Zuständig** = wer an einer Sache schreibe
 - Bestellweg: CJ-Aufträge anlegen, Fortura, Printful, Nachverfolgung. Bezahlt wird nie automatisch.
 - Metricool-Planer der Marke LuxeStyle (6227837) und die tägliche Freigabe-Automation; Bau der Reels, Pins und Beitragstexte samt Prüfung.
 - Editor «Selbst gestalten»: Code in `pod/v6` und Ausführung des Rollouts in Stufen. Rollout-Werkzeug und Prüftor (`rollout-v63-direct`, Review-Gate) liegen bei Codex; dort ändert Claude nichts ohne Absprache.
-- Merge der eigenen PRs bei grünen echten Checks, `CLAUDE.md`-Stand, Dashboard «Offene Punkte» (nur Claude schreibt dort), Veröffentlichung der Büro-Seite im privaten Dashboard (Codex liefert die Datei).
+- Merge der eigenen PRs bei grünen echten Checks, `CLAUDE.md`-Stand, Dashboard «Offene Punkte» (nur Claude schreibt dort; seit 11.11. eine Seite im Dashboard KI-Büro), Veröffentlichung der Büro-Seite im privaten Dashboard (Codex liefert die Datei `tools/buero/seite.html`; hochgeladen wird seit 11.11. das Ergebnis von `tools/buero/dashboard/bauen.py`, nie die Datei roh).
 - Postfach lesen und Antworten vorbereiten; Aufträge an andere schreiben, deren Antworten prüfen; Wochenauswertung (Mo 16.11. früh).
 - Claude-Wecker (laufen nur, solange die Sitzung offen ist): CJ-Zahlungswache stündlich (legt bezahlte Bestellungen bezahlbereit bei CJ an, meldet, bezahlt nie), Bestellwächter, Wiedervorlagen. Fällt ein Wecker aus, verzögert sich die Arbeit bis zum nächsten Lauf; nichts geht verloren.
 

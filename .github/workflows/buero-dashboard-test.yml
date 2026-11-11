@@ -1,0 +1,42 @@
+name: Büro-Dashboard Bau-Test
+
+# Das private Dashboard «KI-Büro» trägt drei Seiten (Büro, Offene Punkte, Suchanfragen), gebaut von tools/buero/dashboard/bauen.py.
+# Ändert jemand eine der drei Quellen, muss der Bau weiter gelingen: keine doppelten Namen, keine abfärbenden Stile und
+# index.html unter der Grenze von 256 KB je Dokument. Ohne Browser, ohne Schlüssel. Eigene kleine Datei, damit es in den
+# geteilten Büro-Workflows keine Zusammenführungs-Konflikte gibt.
+on:
+  pull_request:
+    paths:
+      - 'tools/buero/seite.html'
+      - 'tools/buero/dashboard/**'
+      - 'dropship/keywordliste-1011/seite.html'
+      - '.github/workflows/buero-dashboard-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: buero-dashboard-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/buero/seite.html
+            tools/buero/dashboard
+            dropship/keywordliste-1011/seite.html
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bau-Test
+        run: python3 -I tools/buero/dashboard/test_bauen.py
+      - name: Mutationsprobe (nur Bau-Test, ohne Browser)
+        # Die Fehler in der Hülle (H01 bis H08) erkennt erst der Browsertest: hier laufen nur die Mutanten des Baus.
+        run: python3 tools/buero/dashboard/mutationsprobe.py $(seq -f 'B%02g' 1 31)
