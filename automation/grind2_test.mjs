@@ -9,7 +9,7 @@ import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import {
   EXIT, KOSTEN, konfigAus, schutzPruefen, bedarfAus, schreibZaehlerAusLedger, baumAbflachen, cjPfadVertraut, cjQuellenFuer, listeUrl, quellenSchluessel,
-  sperrwort, vorfilter, rangiere, vorfilterListe, verteile, titelBereinigen, titelPruefen, uebersetzungBrauchbar, TITEL_AUFTRAG, LABEL_AUFTRAG,
+  sperrwort, suchwortPasst, vorfilter, rangiere, vorfilterListe, verteile, titelBereinigen, titelPruefen, uebersetzungBrauchbar, TITEL_AUFTRAG, LABEL_AUFTRAG,
   productTypeTabelle, productTypeFuer, tagsFuer, preisMinFuer, preisUrteil, fristKopf, ledgerZeile, ledgerZeileGeschrieben, variantenVerbrauch, variantenBudget,
   toreNachAnlage, kanaeleAusReferenz, kontaktbogen, cjClient, modellJson, bilderPruefen, bildAliasBauen, ladeKategorienExtra, lauf, saisonSperre, zubehoerKonflikt, istEnglisch, faktenSprachfilter, faktenBlock,
   bestandJeVid, ledgerNeuesterStand, auswahlLedgerWaehlen, liveSortTags, hatLiveCollection, planVersion, planGueltig, planSchluessel, HANDPRUEFUNG_ZIELE, istHandpruefung, sperreHolen, sperreHerz, shopZugang,
@@ -196,6 +196,23 @@ ist('Vorfilter: Dublette über productSku-Präfix im Shop', (r => [r.nehmen, r.g
 ist('Vorfilter: ohne Index keine Dublettenprüfung (Gegenprobe: dasselbe Produkt geht durch)', vorfilter(gut({ pid: '2000000000000000999' }), { cfg: cfg0 }).nehmen, true);
 ist('Sperrwort: harmloser Titel hat keins', sperrwort('Full HD USB Webcam With Microphone'), null);
 ist('Sperrwort: «unisex» ist kein Sex-Wort, «analog» kein Anal-Wort', [sperrwort('Unisex Analog Watch'), sperrwort('Essex Style Mug')], [null, null]);
+// ── Suchwort-Pflicht (11.11.2026): CJ sucht unscharf, ein Treffer muss jedes Wort des Suchbegriffs im Namen tragen
+ist('Suchwort: alle Wörter da, Mehrzahl im Suchbegriff, Einzahl im Namen', suchwortPasst('LED String Light Christmas Decoration', 'string lights'), true);
+ist('Suchwort: Einzahl im Suchbegriff, Mehrzahl im Namen', suchwortPasst('Christmas Window Stickers Snowflake', 'window sticker'), true);
+ist('Suchwort: ein Wort fehlt (Eiskratzer für die Autoscheibe)', suchwortPasst('Electric Ice Scraper Car Window', 'window sticker'), false);
+ist('Suchwort: Teilwort zählt nicht («Lightning» ist kein «light»)', suchwortPasst('Lightning Cable String Holder', 'string lights'), false);
+ist('Suchwort: Gross/klein egal, Bindestrich trennt Wörter', [suchwortPasst('DASH-CAM 1080P Front', 'dash cam'), suchwortPasst('Mini Dashcam', 'dash cam')], [true, false]);
+ist('Suchwort: Füllwörter dürfen fehlen', suchwortPasst('Laptop Sleeve 13 Inch', 'sleeve for the laptop'), true);
+ist('Suchwort: Ziffern und Wortanfang («3d pen» in «3D Printing Pen»)', [suchwortPasst('3D Printing Pen Kids', '3d pen'), suchwortPasst('Pencil Case 3D', '3d pen')], [true, false]);
+ist('Suchwort: -es-Mehrzahl und Doppel-s bleiben richtig', [suchwortPasst('Ski Goggles Anti Fog', 'ski goggle'), suchwortPasst('Evening Dress Long', 'dress'), suchwortPasst('Address Label Printer', 'dress')], [true, true, false]);
+ist('Suchwort: Doppel-s am Ende wird nicht gekürzt («glass» ist nicht das deutsche «Glas»)', [suchwortPasst('Glas Vase Klar', 'glass'), suchwortPasst('Glass Vase Clear', 'glass'), suchwortPasst('Wine Glasses Set', 'glass')], [false, true, true]);
+ist('Suchwort: leerer Suchbegriff schränkt nicht ein, leerer Name passt nie', [suchwortPasst('Was auch immer', ''), suchwortPasst('', 'webcam'), suchwortPasst(undefined, 'webcam')], [true, false, false]);
+ist('Vorfilter: Suchtreffer ohne das Suchwort fällt mit eigenem Grund', vf(gut({ productNameEn: 'Car Sun Shade Windshield' }), { wort: 'window sticker' }).grund, 'suchwort-fehlt');
+ist('Vorfilter: ...mit dem Suchwort geht er durch', vf(gut({ productNameEn: 'Window Sticker Christmas Static' }), { wort: 'window sticker' }).nehmen, true);
+ist('Vorfilter: ohne Suchwort (Kategorie-Quelle) keine Suchwort-Prüfung', vf(gut({ productNameEn: 'Car Sun Shade Windshield' })).nehmen, true);
+ist('Vorfilter: SUCHWORT_PFLICHT=0 schaltet die Prüfung ab', vorfilter(gut({ productNameEn: 'Car Sun Shade Windshield' }), { cfg: { ...cfg0, suchwortPflicht: false }, index: INDEX0, erledigt: new Set(), wort: 'window sticker' }).nehmen, true);
+ist('Konfig: Suchwort-Pflicht ist Vorgabe, «0» schaltet ab', [konfigAus({}).suchwortPflicht, konfigAus({ SUCHWORT_PFLICHT: '0' }).suchwortPflicht, konfigAus({ SUCHWORT_PFLICHT: '1' }).suchwortPflicht], [true, false, true]);
+ist('Vorfilterliste: Suchwort wird je Treffer geprüft und gezählt', (r => [r.durch.map(d => d.pid), r.abgelehnt['suchwort-fehlt']])(vorfilterListe([gut({ pid: '2111111111111111201', productNameEn: 'Window Sticker Pack' }), gut({ pid: '2111111111111111202', productNameEn: 'Ice Scraper Window' })], { cfg: cfg0, index: INDEX0, erledigt: new Set(), wort: 'window sticker' })), [['2111111111111111201'], 1]);
 const LISTE = [gut(), gut({ pid: '2111111111111111112', listedNum: 900 }), gut({ pid: '2111111111111111112', listedNum: 900 }), gut({ pid: '2111111111111111113', productType: 'DIY_PRODUCT' }),
   gut({ pid: '2111111111111111114', listedNum: 900, sellPrice: '1.00' }), gut({ pid: '2111111111111111115', productNameEn: 'Pocket Knife' })];
 const VL = vorfilterListe(LISTE, { cfg: cfg0, index: INDEX0, erledigt: new Set() });
@@ -290,6 +307,8 @@ ist('Saison: ungültiger Monat sperrt nicht', [saisonSperre('Halloween Lights', 
 ist('Vorfilter: Saisonware ausserhalb des Fensters (Monat 11, Halloween)', vf(gut({ productNameEn: 'Halloween Pumpkin String Light' }), { monat: 11 }).grund, 'saison:Halloween');
 ist('Vorfilter: ...im Fenster (Monat 9) geht sie durch; ohne Monat wird nicht geprüft', [vf(gut({ productNameEn: 'Halloween Pumpkin String Light' }), { monat: 9 }).nehmen, vf(gut({ productNameEn: 'Halloween Pumpkin String Light' })).nehmen], [true, true]);
 const WEBCAMS = 'Cameras & Optics > Cameras > Webcams';
+ist('Zubehör: Fenstersticker unter «Home Decor Decals» ist die Ware selbst, kein Konflikt (11.11.2026)', zubehoerKonflikt({ titel: 'Weihnachts-Fenstersticker', cjName: 'Christmas Window Sticker', pfad: 'Home & Garden > Decor > Home Decor Decals' }), null);
+ist('Zubehör: ...ein Sticker für die Webcam bleibt ein Konflikt', zubehoerKonflikt({ titel: 'Webcam Sticker Abdeckung', cjName: 'Webcam Sticker', pfad: WEBCAMS }) !== null, true);
 ist('Zubehör: «Abdeckung» im Titel, Pfad nennt das Gerät → Konflikt (der Fall der ersten Probe)', zubehoerKonflikt({ titel: 'Webcam Laptop Linse Tablet Privatsphäre Kamera Abdeckung', cjName: 'Webcam cover', pfad: WEBCAMS }), { wort: 'abdeckung', quelle: 'Titel' });
 ist('Zubehör: Wortende zählt auch in Zusammensetzungen («Kameraabdeckung»)', zubehoerKonflikt({ titel: 'Kameraabdeckung', pfad: WEBCAMS })?.wort, 'abdeckung');
 ist('Zubehör: Zubehörwort nur im englischen CJ-Namen (Kopfglied «… Cover»)', zubehoerKonflikt({ titel: 'Webcam Schutz', cjName: 'Webcam Privacy Cover', pfad: WEBCAMS }), { wort: 'cover', quelle: 'CJ-Name' });
@@ -1090,7 +1109,8 @@ function handleVon(titel, pid) { return `${titel.toLowerCase().replace(/ß/g, 's
   const r2 = await lauf(W2.cfg, W2.io);
   ist('Saison im Lauf (15. Januar): Weihnachtsware ist ausserhalb des Fensters', [r2.bericht.vorfilter[0].abgelehnt.saison, r2.bericht.zeilen.length], [1, 0]);
   W2.weg();
-  const W3 = welt(sz2, { ZIELE: 'webcams', LIMIT: '1' });
+  // Die Weihnachtsware steht hier absichtlich in der Webcam-Suche (nur die Saison wird geprüft): die Suchwort-Pflicht würde sie sonst zu Recht abweisen.
+  const W3 = welt(sz2, { ZIELE: 'webcams', LIMIT: '1', SUCHWORT_PFLICHT: '0' });
   W3.io.jetzt = () => Date.parse('2026-10-27T12:00:00Z');
   const r3 = await lauf(W3.cfg, W3.io);
   ist('Saison im Lauf (27. Oktober): dieselbe Weihnachtsware ist im Fenster und kommt in die Prüfung', r3.bericht.zeilen.length, 1);
@@ -1832,6 +1852,28 @@ ist('VARIANTEN_LIMIT_RE und CJ_LAUF_RE erkennen die Fehlertexte, die der Lauf wi
   ist('F12: Links und E-Mail-Adressen des Lieferanten fallen aus dem Fakten-Block', [s.daten.length, s.lieferumfang, s.hinweise], [1, ['1 Webcam'], []]);
   ist('F12: ein Titel mit Link wird abgelehnt', titelPruefen('Webcam www.evil-shop.example 1080p', { cjName: 'Webcam 1080p', quelle: 'Product name: Webcam 1080p' }).ok, false);
   ist('F12: Gegenprobe — «USB 2.0», «1.5 m», «3.6 mm» sind keine Domains', [faktenSprachfilter({ daten: [{ label: 'Anschluss', wert: 'USB 2.0' }, { label: 'Länge', wert: '1.5 m' }], lieferumfang: [], anleitung: [], hinweise: [] }).daten.length], [2]);
+}
+
+// ── Suchwort-Pflicht im Lauf (11.11.2026): ein Treffer der Suche «webcam» ohne das Wort im Namen fällt vor jeder bezahlten Abfrage
+{
+  const sz = standardSz(), w = webcam(), lampe = { ...webcam('2000000000000000555'), productNameEn: 'LED Desk Lamp Dimmable Reading Light', productSku: 'CJLAM000001' };
+  sz.produkte[lampe.pid] = lampe; sz.listen['suche:webcam'] = [listeneintrag(lampe, { listedNum: 900 }), listeneintrag(w)];
+  const W = welt(sz, { ZIELE: 'webcams', LIMIT: '2' });
+  const r = await lauf(W.cfg, W.io);
+  ist('Suchwort im Lauf: die Lampe aus der Webcam-Suche fällt im Vorfilter, die Webcam kommt in die Prüfung', [r.bericht.vorfilter[0].abgelehnt['suchwort-fehlt'], r.bericht.vorfilter[0].durch, W.aus('cj').filter(x => x.pfad === 'product/query' && String(x.url || x.query || '').includes(lampe.pid)).length], [1, 1, 0]);
+  W.weg();
+  const W2 = welt(sz, { ZIELE: 'webcams', LIMIT: '2', SUCHWORT_PFLICHT: '0' });
+  const r2 = await lauf(W2.cfg, W2.io);
+  ist('Suchwort im Lauf: Gegenprobe mit SUCHWORT_PFLICHT=0, beide gehen durch den Vorfilter', [r2.bericht.vorfilter[0].abgelehnt['suchwort-fehlt'], r2.bericht.vorfilter[0].durch], [undefined, 2]);
+  W2.weg();
+  // Eine belegte CJ-Kategorie ist keine Suche: ihr Name («String Lights») muss nicht im Produktnamen stehen.
+  const sz3 = standardSz(), lk = { ...lichterkette(), productNameEn: 'Solar Garden Fairy Lamp Outdoor Decoration' };
+  sz3.produkte[lk.pid] = lk; sz3.listen['kategorie:CAT-STRING-LIGHTS'] = [listeneintrag(lk)];
+  const W3 = welt(sz3, { ZIELE: 'lichterketten', LIMIT: '1' });
+  const r3 = await lauf(W3.cfg, W3.io);
+  const k3 = r3.bericht.vorfilter.find(v => /Kategorie/.test(v.quelle));
+  ist('Suchwort im Lauf: Kategorie-Quelle wird nicht gegen Suchwörter geprüft', [k3 && k3.durch, k3 && k3.abgelehnt['suchwort-fehlt']], [1, undefined]);
+  W3.weg();
 }
 
 // ── Geld F7/F8 im Lauf: ein Laser-Pointer wird schon im Vorfilter abgelehnt (kostet keine Abfrage)

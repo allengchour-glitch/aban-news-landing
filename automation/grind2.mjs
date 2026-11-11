@@ -160,6 +160,7 @@ export function konfigAus(env = process.env, wurzel = WURZEL) {
     listedMin: z('LISTED_MIN', LISTED_MIN, { min: 0, max: 1e6 }),
     maxEk: z('MAX_EK', 40, { min: 1, max: 1000 }),
     produktarten: listeAus(env.PRODUKTARTEN, ['ORDINARY_PRODUCT']),
+    suchwortPflicht: env.SUCHWORT_PFLICHT !== '0',                           // SETZUNG 11.11.2026: Treffer einer Suche muss jedes Suchwort im CJ-Namen tragen (CJ sucht unscharf: «window sticker» lieferte Eiskratzer und Sonnenschutz)
     reserve: z('GRIND_RESERVE', 15000, { min: 5000, max: 1e6 }),
     punkteMax: z('PUNKTE_MAX', probe ? 600 : 6000, { min: 10, max: 1e6 }),
     // PFLICHTGRENZEN: per Umgebung dürfen sie nie in die unsichere Richtung verschoben werden (Gegenlesung 27.10.2026: PREIS_MIN=1, MIN_EINSTAND_CHF=0, USD_CHF=0.65 und MAX_PREIS=100000 wurden angenommen).
@@ -396,7 +397,7 @@ export function saisonSperre(name, monat) {
 export const ZUBEHOER_DE_RE = /(abdeckung|abdeckkappe|schutzfolie|halterung|ständer|stativ|aufkleber|sticker|schieber|adapter|ersatz(?:teil)?|wischtuch|wischtücher|etui|objektivdeckel)(?![a-zäöüß])/i;
 export const ZUBEHOER_EN_KOPF_RE = /^(covers?|cases?|holders?|stands?|mounts?|brackets?|stickers?|protectors?|sleeves?|replacements?|tripods?|adapters?)$/;
 export const KEIN_ZUBEHOER_DE_RE = /kissen(?:bezug|bezüge|hülle|hüllen)|bettbezug|bezug|sammelkarten|notizbuch|deckel/i;
-export const ZUBEHOER_PFAD_RE = /Accessor|Parts|Cases|Covers|Holders|Stands|Mounts|Bags|Straps|Adapters|Replacement|Stickers|Cleaning|Tripods|Brackets|Protectors/i;
+export const ZUBEHOER_PFAD_RE = /Accessor|Parts|Cases|Covers|Holders|Stands|Mounts|Bags|Straps|Adapters|Replacement|Stickers|Decals|Cleaning|Tripods|Brackets|Protectors/i;   // «Decals» seit 11.11.2026: bei Wandtattoos und Fensterstickern ist der Sticker die Ware selbst
 const kopfEn = name => { const w = String(name ?? '').split(/\s+(?:for|with|of|and)\s+/i)[0].trim().split(/\s+/); return (w[w.length - 1] || '').toLowerCase(); };
 export function zubehoerKonflikt({ titel = '', cjName = '', pfad = '' } = {}) {
   if (!pfad || ZUBEHOER_PFAD_RE.test(pfad)) return null;
@@ -430,7 +431,25 @@ export function dublettenUrteil(kandidat, ix, opt = {}) {
  * @param {{cfg:object, index?:object, erledigt?:Set<string>}} ctx
  * @returns {{nehmen:boolean, grund:string, pid?:string, name?:string, u?:object}}
  */
-export function vorfilter(t, { cfg, index, erledigt, monat } = {}) {
+/** Füllwörter, die im CJ-Namen fehlen dürfen. */
+const SUCH_FUELL = new Set(['for', 'and', 'the', 'of', 'with', 'a', 'an', 'in', 'to']);
+/**
+ * Trägt der englische CJ-Name jedes Wort des Suchbegriffs (als ganzes Wort, Mehrzahl auf -s/-es erlaubt, Gross/klein egal)?
+ * «string lights» passt zu «LED String Light Christmas», nicht zu «Crystal Table Lamp». Leerer Suchbegriff = passt (keine Einschränkung).
+ * GEMESSEN 11.11.2026: CJ product/list mit productNameEn sucht unscharf, von 10 Kandidaten aus «window sticker»/«string lights» trug keiner beide Wörter im Namen, alle 10 fielen später durch.
+ */
+export function suchwortPasst(name, wort) {
+  const woerter = String(wort ?? '').toLowerCase().split(/[^a-z0-9äöü]+/).filter(w => w && !SUCH_FUELL.has(w));
+  if (!woerter.length) return true;
+  const n = String(name ?? '').toLowerCase();
+  return woerter.every(w => {
+    const stamm = w.length > 3 && /[^s]s$/.test(w) ? w.slice(0, -1) : w;
+    const e = stamm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`(^|[^a-z0-9äöü])${e}(s|es)?($|[^a-z0-9äöü])`).test(n);
+  });
+}
+
+export function vorfilter(t, { cfg, index, erledigt, monat, wort } = {}) {
   const nein = grund => ({ nehmen: false, grund });
   const pid = pidNorm(t?.pid);
   if (!pid) return nein('pid-ungueltig');
@@ -450,6 +469,8 @@ export function vorfilter(t, { cfg, index, erledigt, monat } = {}) {
   if (sa) return nein(`saison:${sa.anlass}`);
   const m = pruefeProdukt({ titel: name, tags: [], bild: 'https://x', preis: 1, id: pid, link: 'x' });
   if (!m.ok) return nein(`merchant:${m.grund}`);
+  // Nach Sperrwort, Saison und Merchant (ihr Grund hat Vorrang im Bericht), vor der Dublettenprüfung; kostet keine CJ-Punkte.
+  if (wort && cfg?.suchwortPflicht !== false && !suchwortPasst(name, wort)) return nein('suchwort-fehlt');
   if (index) {
     const d = dublettenUrteil({ pid, productSku: t.productSku, titel: name }, index);
     if (d.dublette) return { nehmen: false, grund: 'dublette', detail: d.grund, treffer: d.treffer };
@@ -1327,7 +1348,7 @@ async function laufOhneSperre(cfg, io = {}) {
           const { items, aus, total } = await listeHolen(q, seite); seiten++;
           // CJ antwortet auf eine unbekannte oder veraltete categoryId mit Erfolg und leerer Liste (GEMESSEN 27.10.2026: code 200, total 0, list [], 50 Punkte) — das darf nicht wie «kein Bedarf» aussehen.
           if (!items.length) hinweis(`Zielblatt ${ziel.id}: ${q.art === 'kategorie' ? `Kategorie «${q.name}» (${q.id})` : `Suche «${q.wort}»`} lieferte ${seite > 1 ? 'auf Seite ' + seite + ' ' : ''}0 Treffer${q.art === 'kategorie' ? ' — ID veraltet oder Blatt leer?' : ''}`);
-          const vf = vorfilterListe(items, { cfg, index, erledigt, monat });
+          const vf = vorfilterListe(items, { cfg, index, erledigt, monat, wort: q.art === 'suche' ? q.wort : undefined });
           bericht.vorfilter.push({ ziel: ziel.name, quelle: `${q.art === 'kategorie' ? `Kategorie ${q.name}` : `Suche «${q.wort}»`} Seite ${seite} (${aus}${total ? `, ${total} insgesamt` : ''})`, treffer: items.length, durch: vf.durch.length, abgelehnt: vf.abgelehnt });
           log(`Stufe 2/3 ${ziel.id} · ${q.art === 'kategorie' ? q.name : `«${q.wort}»`} S.${seite}: ${items.length} Treffer (${aus}) → ${vf.durch.length} durch den Vorfilter`);
           for (const d of vf.durch) if (!kand.some(x => x.pid === d.pid)) kand.push(d);
