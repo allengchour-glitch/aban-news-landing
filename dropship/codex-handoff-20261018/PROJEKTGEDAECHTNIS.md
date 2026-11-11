@@ -1604,3 +1604,10 @@ SECO/KMU, Shopify-Lieferantenprüfung und TikTok-Creatives am 11.11.2026 als Art
 [Higgsfield-Wissen](HIGGSFIELD-WISSEN-20261111-R183.md), [Quellenbeleg](HIGGSFIELD-WISSEN-20261111-R183.json), [Promptpack](HIGGSFIELD-PRODUKT-PROMPTS-R183.md) und [Take-Prüfkarte](HIGGSFIELD-TAKE-PRUEFKARTE-R183.json) abgelegt. Fünf offizielle Seiten gelesen; zwei gezielte Suchen. Claudes datierten Ultra-Monats-/3'002-Credit-Bericht aus main übernommen, keine eigene Live-Kontoverifikation. Web-Unlimited, Connector und API-Kosten getrennt; öffentliche Preiswidersprüche dokumentiert. AGB23.10.: kommerzielle Outputs möglich, Inputrechte und Modellregeln prüfen; Training unter Standardvertrag, Ultra kein belegter Enterprise-Ausschluss. Entwurf für denselben Sternenlicht-Master, keine Referenzuploads/Renders/Creditkäufe/Plattformwrites oder Reminderänderungen. Vor einem späteren Take genaue Kosten und Befugnisse prüfen. R183-Empfang durch Claude unbekannt; keine andere Marke bearbeitet.
 
 [LUXESTYLE_R183_20261111]
+
+
+## R184 – Schweizer Shopvergleich und konkrete UX-Karten
+
+[IKEA/Westwing/LuxeStyle-Vergleich](WEBSITE-VERGLEICH-20261111-R184.md), [Quellenbeleg](WEBSITE-VERGLEICH-20261111-R184.json), [sechs Umsetzungskarten](UX-VERBESSERUNGEN-R184.json) und [mobiler Vorher-Screenshot](LUXESTYLE-MOBIL-20261111-R184.png) gespeichert. Zwei Wettbewerber zugänglich, Galaxus-CAPTCHA ohne Produktbefund. Eigene390×844-Ansicht: Warenkorbknopf beginnt am unteren Rand; einzelner Preis korrekt sichtbar. Organizer-Masse fehlen im gelesenen Haupttext; keine Schätzwerte ergänzen.30-Tage-Rückgabe nun direkt in aktueller Policy belegt, Bedingungen erhalten. Vorschläge: unveröffentlichte mobile Layoutvorschau, Originaldaten zu Massen/Lieferumfang, kompakte Servicebereiche und eigene kleine Themenwelt. Keine Theme-/Shop-/Rabatt-/Social-/Renderänderung, keine behaupteten Conversiongewinne. R184-Empfang durch Claude unbekannt.
+
+[LUXESTYLE_R184_20261111]

@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "revision": 184,
+  "observedAtUtc": "2026-11-11 19:16:44 UTC",
+  "scope": "bounded Swiss competitor UX research and LuxeStyle mobile improvement proposals",
+  "sources": [
+    {
+      "id": "GALAXUS-PDP",
+      "url": "https://www.galaxus.ch/de/s14/product/relaxdays-kosmetik-organizer-badaufbewahrung-41303616",
+      "httpStatus": 200,
+      "finalUrl": "https://www.galaxus.ch/captcha",
+      "scrapeId": "01a1cc05-5334-765a-85ed-e7332986152d",
+      "status": "blocked_captcha",
+      "productContentVerified": false
+    },
+    {
+      "id": "IKEA-CH",
+      "url": "https://www.ikea.com/ch/de/p/saxborga-kasten-mit-spiegeldeckel-kunststoff-kork-80391882/",
+      "httpStatus": 200,
+      "scrapeId": "01a1cc06-5ba4-7232-a845-4e78fd411a5f",
+      "status": "product_text_read",
+      "visualLayoutInspected": false,
+      "observations": [
+        "CH product title includes24x17cm; measurements section includes length,width,height.",
+        "Separate material/care, product usage, delivery lookup and product-bound reviews."
+      ]
+    },
+    {
+      "id": "WESTWING-CH",
+      "url": "https://www.westwing.ch/",
+      "httpStatus": 200,
+      "scrapeId": "01a1cc05-52ee-710c-9300-6c8464e86ae3",
+      "status": "text_read_mobile_screenshot_inspected",
+      "screenshotViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "observations": [
+        "Editorial hero with one visible CTA in inspected first viewport.",
+        "Text links connect category entrances and thematic collections to individual products.",
+        "Observed sale banners/person are not instructions to add discounts or people to LuxeStyle."
+      ]
+    },
+    {
+      "id": "LUXE-PDP",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "httpStatus": 200,
+      "scrapeId": "01a1cc05-5310-76d1-ad23-51a37b454ecf",
+      "status": "product_text_read",
+      "observations": [
+        "Public CHF29.90 and add-to-cart displayed; not an Admin inventory audit.",
+        "No product length/width/height in the inspected main specification section.",
+        "Shipping/returns appear in multiple text sections; not proven duplicated visible UI everywhere."
+      ]
+    },
+    {
+      "id": "LUXE-MOBILE",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "httpStatus": 200,
+      "scrapeId": "01a1cc05-f286-75c8-a3c9-0f4757c8083b",
+      "status": "screenshot_inspected",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshotPath": "LUXESTYLE-MOBIL-20261111-R184.png",
+      "sha256": "040e732d88c59e79541978f58ba40496aeed6b8df09219aed571962e12af9dd0",
+      "observations": [
+        "Large hero image precedes title/price; add-to-cart begins at lower viewport edge.",
+        "Price appears once in inspected viewport; extracted repeated sale/regular labels not confirmed as visible bug.",
+        "Top announcement retains SwitzerlandCHF50 threshold and Liechtenstein."
+      ]
+    },
+    {
+      "id": "LUXE-RETURNS",
+      "url": "https://luxestyle.ch/policies/refund-policy",
+      "httpStatus": 200,
+      "scrapeId": "01a1cc07-813d-776f-9ea4-b2f852e734a1",
+      "status": "public_policy_text_read",
+      "observations": [
+        "Site explicitly grants voluntary30-day return right with conditions/exceptions.",
+        "Advance registration, variable return address and customer-paid voluntary return costs are described.",
+        "This is a site statement, not independent legal compliance or supplier logistics verification."
+      ]
+    }
+  ],
+  "method": {
+    "newSearchCalls": 2,
+    "pageRetrievalCalls": 6,
+    "structuredProviderCalls": 1,
+    "provider": "ikea-com/products/search",
+    "providerMarket": "CH",
+    "providerPageCount": 1,
+    "competitorPagesAccessible": 2,
+    "competitorPagesBlocked": 1,
+    "visualViewportsInspected": 2,
+    "performanceMeasurements": false,
+    "conversionExperiment": false,
+    "newSocialVideoAnalyses": 0
+  },
+  "falsePositivesRejected": [
+    "CAPTCHA noindex is not Galaxus product noindex.",
+    "Hidden review wizard text does not prove review submitted or visible popup.",
+    "Extracted regular/sale labels do not prove duplicate visible price.",
+    "Rendered delivery date is not supplier timing proof.",
+    "IKEA product dimensions/reviews are not LuxeStyle product facts."
+  ],
+  "actions": {
+    "platformWrites": 0,
+    "themeChanges": 0,
+    "customerContacts": 0,
+    "budgetOrDiscountChanges": 0,
+    "newRenders": 0
+  },
+  "handoff": {
+    "claudeReceipt": "unknown_no_receipt_for_R184",
+    "implementationStatus": "approval_drafts_only"
+  },
+  "repositoryUpdate": {
+    "baseCommit": "2ca2957d6f97b22dbd35f2437b7a47310bb0cdf1",
+    "beforeFileBlobs": {
+      "ARBEITSSTAND.json": "d64831cadb7b8e8d53beace575b24549c0d74c89",
+      "README.md": "60c5465680248795d775d260f26be064ccb7c77c",
+      "CLAUDE.md": "75b3239cde5ebf2ad6330a458899b54c58659090",
+      "PROJEKTGEDAECHTNIS.md": "daef4f241d03501ecaef18cb8441cea7bb5bfbd6",
+      "TAGESPROTOKOLL.md": "4a3b362dd119be74a44b9f03e2b426032555125c"
+    },
+    "scope": "LuxeStyle handoff documents and own storefront screenshot only"
+  },
+  "toolingNotes": {
+    "scrapeFeedbackExpiredFor": [
+      "GALAXUS-PDP",
+      "LUXE-PDP",
+      "IKEA-CH"
+    ],
+    "sourceContentUnaffectedByFeedbackExpiry": true,
+    "noBlindFeedbackRetries": true
+  }
+}

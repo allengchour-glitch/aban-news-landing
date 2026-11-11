@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 183,
-  "updatedAt": "2026-11-11T20:08:31.669241+01:00",
+  "revision": 184,
+  "updatedAt": "2026-11-11T20:17:36.953989+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16914,6 +16914,36 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 184,
+      "at": "2026-11-11T20:17:36.953989+01:00",
+      "actor": "codex",
+      "summary": "Bounded competitor UX review: IKEA CH product and Westwing homepage read, Galaxus CAPTCHA recorded; own LuxeStyle product/policy read and two mobile screenshots visually inspected. Six source-bound improvement cards; actual30-day public returns promise confirmed, missing dimensions and mobile CTA preview opportunity documented; hidden extraction artefacts not treated as bugs. No shop/theme/platform writes or performance claims. Claude receipt unknown.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/WEBSITE-VERGLEICH-20261111-R184.md",
+          "gitBlobSha": "a6ca1fe7bd9e9188d9dabf91103dd80b2bb01ef5",
+          "sha256": "29c5e677b6882b778c3982c3cdb3e1a951a296f0c2734d4575a804321f3dc8de"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEBSITE-VERGLEICH-20261111-R184.json",
+          "gitBlobSha": "b4292300b97c1206874a085e4f05ccef77e4b1ca",
+          "sha256": "ee47de1a623f2f1da8692bcd98644fa79c64b14da7c24458b697bf8759704b4e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/UX-VERBESSERUNGEN-R184.json",
+          "gitBlobSha": "38ea6aa4c49f26f4b41022a8505f6f890d52cbee",
+          "sha256": "df06e37ecbebc4c0605129f3ec44c3d6ad5b5f384ba5764c185d2dbedc56284b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LUXESTYLE-MOBIL-20261111-R184.png",
+          "gitBlobSha": "63ee2f06eb9c7435bc0aa5bb29398104c46441fd",
+          "sha256": "040e732d88c59e79541978f58ba40496aeed6b8df09219aed571962e12af9dd0"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -17123,18 +17153,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 183,
+    "documentationRevision": 184,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "daef4f241d03501ecaef18cb8441cea7bb5bfbd6",
+    "gitBlobSha": "473eed808680adb064ddbc72a62cba5e5fd4bbb3",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "75b3239cde5ebf2ad6330a458899b54c58659090",
+    "entryGitBlobSha": "a140c65b6a0456f4bc60b06aa3296933d9674578",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R183 Higgsfield research and manual same-master production preparation; no render/account/platform changes",
-    "latestCanonicalRevision": 183,
-    "snapshotNote": "Five first-party source pages, actual prior Claude account report distinguished from live verification, price discrepancies and training terms documented. Ungenerated prompt pack and unsubmitted take card. R183 receipt unknown.",
+    "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
+    "latestCanonicalRevision": 184,
+    "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -38843,6 +38873,36 @@
     "newRenders": 0,
     "platformWrites": 0,
     "nextStep": "Claude uses existing connector read-only to bind exact original reference/model and obtain job-specific quote; paid render remains blocked without a specific superseding owner instruction.",
+    "receiptState": "unknown_no_claude_receipt"
+  },
+  "websiteComparisonR184": {
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/WEBSITE-VERGLEICH-20261111-R184.md",
+        "gitBlobSha": "a6ca1fe7bd9e9188d9dabf91103dd80b2bb01ef5",
+        "sha256": "29c5e677b6882b778c3982c3cdb3e1a951a296f0c2734d4575a804321f3dc8de"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WEBSITE-VERGLEICH-20261111-R184.json",
+        "gitBlobSha": "b4292300b97c1206874a085e4f05ccef77e4b1ca",
+        "sha256": "ee47de1a623f2f1da8692bcd98644fa79c64b14da7c24458b697bf8759704b4e"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/UX-VERBESSERUNGEN-R184.json",
+        "gitBlobSha": "38ea6aa4c49f26f4b41022a8505f6f890d52cbee",
+        "sha256": "df06e37ecbebc4c0605129f3ec44c3d6ad5b5f384ba5764c185d2dbedc56284b"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/LUXESTYLE-MOBIL-20261111-R184.png",
+        "gitBlobSha": "63ee2f06eb9c7435bc0aa5bb29398104c46441fd",
+        "sha256": "040e732d88c59e79541978f58ba40496aeed6b8df09219aed571962e12af9dd0"
+      }
+    ],
+    "competitorsAccessible": 2,
+    "competitorsBlocked": 1,
+    "measuredConversionUplift": null,
+    "platformWrites": 0,
+    "nextStep": "Claude reads current product section and tests UX184-MOBILE on an unpublished preview; obtain original exact-variant dimensions for UX184-DIMENSIONS, preserve30-day policy and CHF50/CHF45 instructions. No deployment authorised by the cards.",
     "receiptState": "unknown_no_claude_receipt"
   }
 }

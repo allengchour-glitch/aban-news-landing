@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "revision": 184,
+  "scope": "unpublished-preview proposals, no automatic mutation or deployment",
+  "productId": "gid://shopify/Product/15408458236289",
+  "variantId": "gid://shopify/ProductVariant/55732479590785",
+  "items": [
+    {
+      "id": "UX184-MOBILE",
+      "priority": 1,
+      "title": "Mobile Kaufaktion früher vollständig sichtbar machen",
+      "evidence": [
+        "LUXE-MOBILE"
+      ],
+      "status": "draft",
+      "change": "In einer unveröffentlichten Theme-Vorschau mobile Bildhöhe und vertikale Abstände begrenzt testen; Originalmotiv ohne Verzerrung erhalten.",
+      "preconditions": [
+        "Frisch aktives Theme und betroffene Produkt-Section lesen.",
+        "Aktuelle fremde Änderungen gegenprüfen; exakter Diff und Sicherung."
+      ],
+      "acceptance": [
+        "390x844 und360x800: primäre Kaufaktion gut lesbar, vollständig erreichbar, keine Überlagerung.",
+        "Bild bleibt vollständig/gezielt sinnvoll beschnitten, Layout bei200% Zoom bedienbar.",
+        "Preis, Liefer-/Retourenbedingungen und Kaufmechanik unverändert."
+      ],
+      "metric": "First functional/visual acceptance; later compare product-view to add-to-cart on comparable traffic, no promised uplift."
+    },
+    {
+      "id": "UX184-DIMENSIONS",
+      "priority": 1,
+      "title": "Entscheidende Masse aus Originaldaten ergänzen",
+      "evidence": [
+        "IKEA-CH",
+        "LUXE-PDP"
+      ],
+      "status": "blocked_missing_source",
+      "change": "Nach verifiziertem Datenblatt Breite,Tiefe,Höhe mit Einheiten in konsistenter Spezifikation anzeigen.",
+      "preconditions": [
+        "Exakte Lieferanten-VID/Ausführung und Hersteller-/CJ-Datenblatt.",
+        "Werte ausdrücklich Produkt- und nicht Verpackungsmasse."
+      ],
+      "acceptance": [
+        "Jeder Wert hat datierte Originalquelle und Variantenbindung.",
+        "Keine IKEA-Werte, Schätzwerte oder Ableitung aus Pixeln übernommen."
+      ],
+      "metric": "Data completeness; no conversion claim."
+    },
+    {
+      "id": "UX184-CONTENTS",
+      "priority": 1,
+      "title": "Lieferumfang trotz dekorierter Produktaufnahme eindeutig machen",
+      "evidence": [
+        "LUXE-MOBILE",
+        "LUXE-PDP"
+      ],
+      "status": "blocked_missing_source",
+      "change": "Lieferumfang nach Datenblatt nennen; erst nach Nachweis klarstellen, welche sichtbaren Dekoartikel nicht enthalten sind.",
+      "preconditions": [
+        "Original-Lieferumfang exakt bestätigt."
+      ],
+      "acceptance": [
+        "Kein ungeprüfter Satz 'ohne Flakons' oder erfundener Setumfang.",
+        "Keine fremden Marken als eigene Produkt- oder Werberechte ausgegeben."
+      ],
+      "metric": "Factual clarity."
+    },
+    {
+      "id": "UX184-SERVICE",
+      "priority": 2,
+      "title": "Versand und Rückgabe kompakt zusammenführen",
+      "evidence": [
+        "LUXE-PDP",
+        "LUXE-RETURNS"
+      ],
+      "status": "draft_requires_current_section_read",
+      "change": "Eine kurze Zusammenfassung bei der Kaufaktion; Details in klar benannten aufklappbaren Bereichen.",
+      "preconditions": [
+        "Aktuelle Sections und wirklich sichtbare Duplikate im Browser prüfen.",
+        "Rechtliche Bedingungen und OwnerCHF50/CHF45-Vorgaben erhalten."
+      ],
+      "acceptance": [
+        "30-tägige freiwillige Rückgabe mit Link und Einschränkungen erhalten.",
+        "Versandkosten/-grenzen und Angaben zuCH/LI konsistent; keine neue Lieferzeitzusage.",
+        "Nicht versteckte Template-Texte als UI-Bug entfernen."
+      ],
+      "metric": "Readability/visual acceptance first."
+    },
+    {
+      "id": "UX184-CURATION",
+      "priority": 2,
+      "title": "Eine kleine eigene Themenwelt direkt mit kaufbaren Produkten verbinden",
+      "evidence": [
+        "WESTWING-CH"
+      ],
+      "status": "idea_not_existing_luxe_defect_proven",
+      "change": "Eine eigene Schminktisch-Ordnung-Themenwelt mit maximal drei passenden bestehenden Produkten als Vorschau konzipieren.",
+      "preconditions": [
+        "Produkte und Zielseiten frisch prüfen.",
+        "Eigene lizenzierte Bilder und belegte Eigenschaften."
+      ],
+      "acceptance": [
+        "Jedes Motiv führt direkt zur passenden Produktseite.",
+        "Keine kopierten Westwing-Texte/Bilder, keine neuen Rabatte, keine erfundenen Bewertungen."
+      ],
+      "metric": "Subsequent measured category-to-product clicks; no target promised."
+    },
+    {
+      "id": "UX184-MEDIA",
+      "priority": 2,
+      "title": "Produktumfang und echte Grössenwirkung mit eigenem Material zeigen",
+      "evidence": [
+        "IKEA-CH",
+        "LUXE-MOBILE"
+      ],
+      "status": "draft_material_needed",
+      "change": "Echte Aufnahme aus zweiter belegter Perspektive und Detailansicht vorbereiten; bei Higgsfield nur geprüfte Geometrie/kleine Kamerabewegung.",
+      "preconditions": [
+        "Originalmaterial und Rechte vorhanden.",
+        "Higgsfield-R183-Gates, keine kostenpflichtigen Renders ohne konkrete Freigabe."
+      ],
+      "acceptance": [
+        "Form/Farbe/Teilezahl stimmen mit Original überein.",
+        "Keine generierte Massskala, kein erfundenes Material, keine Personen/Fremdmarken im Social-Film.",
+        "Nur ein professioneller Master weiterentwickelt, keine Foto-Zoom-Serie."
+      ],
+      "metric": "Creative acceptance, not proof of sales."
+    }
+  ]
+}

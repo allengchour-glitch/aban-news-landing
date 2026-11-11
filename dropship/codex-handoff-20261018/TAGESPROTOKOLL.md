@@ -2107,3 +2107,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Dokumentation | R183 additiv in Übergabe und Projektgedächtnis ergänzt | Keine Plattform-, Abo-, Erinnerungs-, Shop-, Budget- oder Musikänderung; R183-Empfang unbekannt |
 
 [LUXESTYLE_R183_20261111] [Bericht](HIGGSFIELD-WISSEN-20261111-R183.md).
+
+
+### R184
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Vergleich | Eine IKEA-CH-Produktseite und Westwing-Startseite gelesen; Galaxus-Produktabruf versucht | Zwei Wettbewerber als Stichprobe belegt; Galaxus-CAPTCHA unbekannt, kein Noindex-/Produkturteil |
+| Mobile Sichtung | LuxeStyle und Westwing je390×844-Screenshot tatsächlich betrachtet | Eigener CTA am unteren Rand; kein sichtbarer Doppelpreisfehler; keine Conversion-/Speedmessung |
+| Gegenprobe | Organizer-Haupttext und aktuelle Rückgaberichtlinie gelesen | Masse fehlen im Text; freiwillige30Tage mit Bedingungen auf aktueller Policy bestätigt |
+| Entwürfe | Sechs priorisierte UX-Karten mit Quellen, Voraussetzungen und Abnahmen erstellt | Mobile Vorschau und Originaldaten zuerst; keine erfundenen Masse/Lieferumfänge oder kopierten Reviews |
+| Übergabe | R184 und eigenen Vorher-Screenshot additiv gespeichert | Revision184/24 Aufgaben; keine Plattformwrites/Render/Automation, Claude-Empfang unbekannt |
+
+[LUXESTYLE_R184_20261111] [Bericht](WEBSITE-VERGLEICH-20261111-R184.md).
