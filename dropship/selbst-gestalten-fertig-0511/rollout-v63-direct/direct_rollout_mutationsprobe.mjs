@@ -23,6 +23,7 @@ const DATEI = {
   json: `${REL}/editor-release.json`,
   readme: `${REL}/README.md`,
   w64: '.github/workflows/pod-v64-description-rollout.yml',
+  wmf: '.github/workflows/magnet-freischaltung-test.yml',
   headers: '_headers',
 };
 
@@ -183,9 +184,22 @@ const MUTANTEN = [
   { id: 'F12', was: 'Einzelstufe frei-magnet zeigt auf die Tasse', edits: [z('lib', "'frei-magnet': canaryEintrag('frei-magnet',", "  'frei-magnet': canaryEintrag('frei-magnet', '15422823465345', 'keramik-tasse-selbst-gestalten'),")] },
   { id: 'F13', was: 'Apply frei-magnet nimmt die Rollback-Bestätigung', edits: [z('lib', "apply: Object.freeze({ 'canary-tasse': 'V64_CANARY_TASSE'", zeileErsetzt("'V64_FREI_MAGNET'", "'V64_ROLLBACK_MAGNET'"))] },
   { id: 'F14', was: 'FREIGESCHALTET leer (Magnet ohne Freischaltungsweg)', edits: [z('lib', "['15427217195393', 'magnet-zum-selbstgestalten', 'Produktion und Lieferung", null)] },
-  { id: 'F20', was: 'Runner: Kaufbarkeit des Magneten nie verlangt', edits: [z('skript', 'produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });', '    produktPruefen(p, rp, { kaufbarPflicht: false });')] },
-  { id: 'F21', was: 'Runner: Kaufbarkeit nicht verlangt, solange die Sperre in der Beschreibung steht (auch beim Schreiben)', edits: [z('skript', 'produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });', '    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt });')] },
-  { id: 'F22', was: 'Runner: Kaufbarkeit auch in fremden Stufen verlangt (Tasse bricht wegen der Bestandssperre des Magneten ab)', edits: [z('skript', 'produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });', '    produktPruefen(p, rp, { kaufbarPflicht: true });')] },
+  { id: 'F20', was: 'Runner: Kaufbarkeit des Magneten nie verlangt', edits: [z('skript', "produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });", '    produktPruefen(p, rp, { kaufbarPflicht: false });')] },
+  { id: 'F21', was: 'Runner: Kaufbarkeit nicht verlangt, solange die Sperre in der Beschreibung steht (auch beim Schreiben)', edits: [z('skript', "produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });", '    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt });')] },
+  { id: 'F22', was: 'Runner: Kaufbarkeit auch in fremden Stufen verlangt (Tasse bricht wegen der Bestandssperre des Magneten ab)', edits: [z('skript', "produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });", '    produktPruefen(p, rp, { kaufbarPflicht: true });')] },
+  { id: 'F27', was: 'Runner: auch der Plan verlangt die Kaufbarkeit (Bestandssperre muss wieder vor dem Plan fallen)', edits: [z('skript', "produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });", '    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });')] },
+  { id: 'F28', was: 'Runner: der Apply prüft die Kaufbarkeit erst beim Schreiben (Full würde vor dem Magneten schon schreiben)', edits: [z('skript', "produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });", zeileErsetzt("MODE !== 'plan'", "MODE !== 'apply'"))] },
+  { id: 'F29', was: 'Plan nennt den Schritt vor dem Apply nicht', edits: [z('skript', '...(vorDemApply.length ? { vorDemApply } : {})', zeileErsetzt('...(vorDemApply.length ? { vorDemApply } : {}), ', ''))] },
+  { id: 'F33', was: 'Plan nennt den Schritt vor dem Apply auch für kaufbare Produkte', edits: [z('skript', "x.freischaltung === true && x.kaufbar === false", zeileErsetzt(' && x.kaufbar === false', ''))] },
+  { id: 'R02', was: 'README: Rücknahme der Bestandssperre ohne NUR= (würde auch den Bügeltransfer kaufbar machen)', edits: [s('readme', /ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten node/g, 'ZURUECK=1 LIVE=1 node', { alle: true })] },
+  { id: 'R03', was: 'README: Rollback frei-magnet mit der Full-Bestätigung', edits: [t('readme', (x) => x.split('\n').map((l) => (l.includes('operation=rollback') && l.includes('scope=frei-magnet') ? l.replace('V64_ROLLBACK_MAGNET', 'V64_ROLLBACK_17_EDITOR') : l)).join('\n'))] },
+  { id: 'R04', was: 'README: Apply frei-magnet mit der Tassen-Bestätigung', edits: [t('readme', (x) => x.split('\n').map((l) => (l.includes('operation=apply') && l.includes('scope=frei-magnet') ? l.replace('V64_FREI_MAGNET', 'V64_CANARY_TASSE') : l)).join('\n'))] },
+  { id: 'R05', was: 'README: Wiedersperren mit ZURUECK=1 (würde entsperren statt sperren)', edits: [t('readme', (x) => x.split('\n').map((l) => (l.includes('Bestandssperre wieder setzen') ? l.replace('`LIVE=1 NUR=magnet', '`ZURUECK=1 LIVE=1 NUR=magnet') : l)).join('\n'))] },
+  // ---- CI-Verdrahtung (Nachbesserung 11.11.2026): der Workflow-Test darf sich in der CI nicht unbemerkt überspringen ------------------------
+  { id: 'C01', was: 'magnet-freischaltung-test.yml: pod-v64-description-rollout.yml fehlt im Checkout des Jobs rollout-werkzeug', edits: [z('wmf', '            .github/workflows/pod-v64-description-rollout.yml', null)] },
+  { id: 'C02', was: 'magnet-freischaltung-test.yml: Überspringen des Workflow-Tests fällt nicht auf', edits: [z('wmf', "if grep -q 'ÜBERSPRUNGEN: Workflow-Test' rollout-test.log", null)] },
+  { id: 'C03', was: 'magnet-freischaltung-test.yml: ohne pipefail (Exit von tee zählt)', edits: [z('wmf', 'set -o pipefail', null)] },
+  { id: 'C04', was: 'magnet-freischaltung-test.yml: Änderungen an den Eingaben des Baus lösen keinen Lauf aus', edits: [z('wmf', "- 'dropship/selbst-gestalten-fertig-0511/werkzeuge/**'", null)] },
   { id: 'F23', was: 'Runner: Freischaltung auch nach der Freischaltung (Sperre in der Beschreibung nicht geprüft)', edits: [z('skript', 'const nochGesperrt = Boolean(frei) && sperreLiegtVor(p.descriptionHtml);', '    const nochGesperrt = Boolean(frei);')] },
   { id: 'F24', was: 'Runner: full gilt nicht als Schreiblauf für den Magneten', edits: [z('skript', 'const wirdGeschrieben = !KONF.canary || KONF.canary.id === a.id;', '    const wirdGeschrieben = Boolean(KONF.canary) && KONF.canary.id === a.id;')] },
   { id: 'F25', was: 'Rollback: jedes Editorprodukt darf im alten Plan als Sperre stehen', edits: [z('skript', "const alteSperre = altArtefakt && x.kind === 'blocked' && Boolean(freigeschaltet(x.id));", "    const alteSperre = altArtefakt && x.kind === 'blocked';")] },
@@ -223,7 +237,7 @@ function kopieAnlegen() {
   for (const name of ['direct_rollout_lib.mjs', 'direct_rollout.mjs', 'editor_release_bauen.mjs', 'direct_rollout_test.mjs', 'direct_rollout_attrappe.mjs', 'direct_rollout_attrappe_test.mjs', 'editor-release.json', 'README.md']) cpSync(join(WURZEL, REL, name), join(ordner, name));
   cpSync(join(WURZEL, REL, 'fixtures'), join(ordner, 'fixtures'), { recursive: true });
   mkdirSync(join(dir, '.github/workflows'), { recursive: true });
-  for (const w of ['pod-v63-description-rollout.yml', 'pod-v64-description-rollout.yml']) cpSync(join(WURZEL, '.github/workflows', w), join(dir, '.github/workflows', w));
+  for (const w of ['pod-v63-description-rollout.yml', 'pod-v64-description-rollout.yml', 'magnet-freischaltung-test.yml']) cpSync(join(WURZEL, '.github/workflows', w), join(dir, '.github/workflows', w));
   cpSync(join(WURZEL, '_headers'), join(dir, '_headers'));
   symlinkSync(join(WURZEL, 'pod'), join(dir, 'pod'));
   symlinkSync(join(WURZEL, 'automation'), join(dir, 'automation'));
@@ -234,7 +248,7 @@ function kopieAnlegen() {
 const pfad = (dir, art) => join(dir, DATEI[art]);
 
 // Die Attrappen-Szenarien (rund 7 s) laufen immer, ausser bei Mutanten, die den Runner nachweislich nicht berühren (Workflow, _headers, README, Bauskript).
-const OHNE_RUNNER = new Set(['w64', 'headers', 'readme', 'bau']);
+const OHNE_RUNNER = new Set(['w64', 'wmf', 'headers', 'readme', 'bau']);
 function testLaufen(dir, mutant = null) {
   return new Promise((fertig) => {
     const ohne = mutant && mutant.edits.every((e) => OHNE_RUNNER.has(e.datei));

@@ -201,6 +201,25 @@ test('die Sicherung im Repo passt zum fest eingetragenen Ausgangsstand und nennt
   assert.deepEqual(Object.keys(s.produkte[0]).sort(), ['handle', 'id', 'status', 'varianten']);
   assert.doesNotMatch(JSON.stringify(s), /@|email|kunde|customer/i);
 });
+// Nachbesserung 11.11.2026 (Prüferfund «Befehle im README ungebunden»): die Tabelle «Schalter NUR=» ist die Vorlage für die
+// Freischaltung. Ein Befehl ohne NUR= würde den Bügeltransfer kaufbar machen, ZURUECK=1 beim Wiedersperren würde entsperren.
+test('README: Befehle der Tabelle «Schalter NUR=» und Reihenfolge der Freischaltung (Plan, Rücknahme, Apply)', () => {
+  const r = readFileSync(join(HIER, 'README.md'), 'utf8');
+  const zeile = (titel) => { const z = r.split('\n').filter((l) => l.startsWith(`| ${titel} |`)); assert.equal(z.length, 1, `Tabellenzeile «${titel}» fehlt oder doppelt`); return z[0]; };
+  const befehl = (l) => (l.match(/`([^`]*sperr_verfuegbar\.mjs)`/) || [])[1] || '';
+  assert.equal(befehl(zeile('Plan ansehen (schreibt nichts)')), `ZURUECK=1 NUR=${MAGNET} node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs`);
+  assert.equal(befehl(zeile('Nur den Magneten wieder kaufbar machen')), `ZURUECK=1 LIVE=1 NUR=${MAGNET} node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs`);
+  assert.equal(befehl(zeile('Nur den Magneten wieder sperren (Rückweg, solange seine Beschreibung die Sperre trägt)')), `LIVE=1 NUR=${MAGNET} node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs`);
+  // der Aufruf ohne NUR in der Übersicht trägt die Warnung «alle Produkte»
+  assert.match(zeile('`ZURUECK=1 LIVE=1 node …/sperr_verfuegbar.mjs`'), /\*\*alle\*\* Produkte/);
+  // Reihenfolge: Plan der Stufe frei-magnet vor der Rücknahme, Rücknahme vor dem Apply
+  const abs = r.slice(r.indexOf('**Reihenfolge der Freischaltung**'));
+  assert.ok(abs.length > 50, 'Absatz «Reihenfolge der Freischaltung» fehlt');
+  const satz = abs.split('\n')[0];
+  const i = (t) => { const x = satz.indexOf(t); assert.ok(x >= 0, `Reihenfolge nennt «${t}» nicht`); return x; };
+  assert.ok(i('dann der Plan der Stufe `frei-magnet`') < i('dann die Rücknahme mit `NUR=`') && i('dann die Rücknahme mit `NUR=`') < i('dann sofort der Apply'), 'Reihenfolge Plan, Rücknahme, Apply stimmt nicht');
+  assert.match(satz, /Scheitert der Apply, ohne zu schreiben: sofort die Zeile «Nur den Magneten wieder sperren»/);
+});
 
 rmSync(T, { recursive: true, force: true });
 console.log(`${ok} Tests bestanden, ${fehler} Fehler`);

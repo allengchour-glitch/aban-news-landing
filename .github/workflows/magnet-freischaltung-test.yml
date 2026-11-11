@@ -4,15 +4,24 @@ name: Magnet-Freischaltung Selbsttest
 #   1. Sperr-Skript mit dem Schalter NUR=<handle> gegen eine fetch-Attrappe, samt Mutationsprobe.
 #   2. Rollout-Bau: Allowlist und Karten sind aus den Quellen neu baubar (--check), der Beleg der Schweizer
 #      Lieferbarkeit ist per Prüfsumme gebunden, die Magnet-Karte trägt je Variante ihre eigene Druckdatei.
+#   3. Rollout-Werkzeug: direct_rollout_test.mjs MIT beiden Rollout-Workflows im Checkout. Im Job «selbst-gestalten» von
+#      luxestyle-automation-tests.yml fehlt pod-v64-description-rollout.yml, dort überspringt sich der Workflow-Test
+#      (Bestätigungen V64_FREI_MAGNET, V64_FULL_17_EDITOR …). Hier wird der Job rot, wenn er sich trotzdem überspringt.
 # Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
-# Der Job «selbst-gestalten» dort prüft weiter den direkten Beschreibungs-Rollout (direct_rollout_test.mjs).
 on:
   pull_request:
     paths:
       - 'dropship/sperre-verfuegbar-1111/**'
       - 'dropship/selbst-gestalten-fertig-0511/rollout-v63/**'
-      - 'pod/v6/maps/**'
-      - 'pod/v6/werkzeug/**'
+      - 'dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/**'
+      - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/**'
+      - 'dropship/selbst-gestalten-fertig-0511/target-katalog-20261108/**'
+      - 'pod/v6/**'
+      - 'automation/lib/shopify_gql.mjs'
+      - 'automation/lib/shopify_secret.mjs'
+      - '_headers'
+      - '.github/workflows/pod-v64-description-rollout.yml'
+      - '.github/workflows/pod-v63-description-rollout.yml'
       - '.github/workflows/magnet-freischaltung-test.yml'
   workflow_dispatch:
 
@@ -61,3 +70,29 @@ jobs:
           node dropship/selbst-gestalten-fertig-0511/rollout-v63/build.mjs --panel=84 --check
       - name: Bau-Test (Zähler, Beleg der Schweizer Lieferbarkeit, Magnet-Karte)
         run: node dropship/selbst-gestalten-fertig-0511/rollout-v63/build_test.mjs
+
+  rollout-werkzeug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/selbst-gestalten-fertig-0511
+            pod/v6
+            pod/live
+            automation/lib
+            _headers
+            .github/workflows/pod-v63-description-rollout.yml
+            .github/workflows/pod-v64-description-rollout.yml
+            .github/workflows/magnet-freischaltung-test.yml
+            dropship/CODEX-ROLLOUT-V64-0911.md
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rollout-Werkzeug samt Workflow-Test (Bestätigungen, Stufen) und Attrappen-Szenarien, kein Netz
+        run: |
+          set -o pipefail
+          node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs | tee rollout-test.log
+          if grep -q 'ÜBERSPRUNGEN: Workflow-Test' rollout-test.log; then echo 'Workflow-Test übersprungen: pod-v64-description-rollout.yml fehlt im Checkout'; exit 1; fi

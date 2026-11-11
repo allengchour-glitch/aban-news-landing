@@ -1144,6 +1144,80 @@ test('Magnet im echten Release: Karte lspod-15427217195393.karte.json ohne Produ
   const text = JSON.stringify(karte);
   for (const px of [900, 1200, 1800]) assert.ok(text.includes(String(px)), `Druckdatei ${px} px fehlt`);
 });
+// Nachbesserung 11.11.2026 (Prüferfund «Vertrauenszeile»): Vertrauenszeile, Aufklappbereich und Grössenhilfe im MAIN-Theme
+// (templates/product.json, gelesen 11.11.2026 12:1x UTC) zeigen «Ersatz bei Druckfehlern» statt «30 Tage Rückgabe» genau dann, wenn
+// `product.description contains 'lspod-designer'`. Die Freischaltung muss diese Zeichenkette in die Beschreibung bringen.
+test('Theme-Kopplung: nach der Freischaltung enthält die Beschreibung «lspod-designer» (Rückgabe-Hinweise schalten um), die Sperre enthält es nicht', () => {
+  const THEME_BEDINGUNG = 'lspod-designer';
+  assert.ok(!FXM.block.includes(THEME_BEDINGUNG), 'der Sperrbaustein enthält schon «lspod-designer»: die gesperrte Seite zeigte dann die Editor-Hinweise');
+  assert.ok(!magnetBeschr().includes(THEME_BEDINGUNG));
+  assert.ok(magnetNeu().includes(THEME_BEDINGUNG), 'der Editor-Baustein enthält «lspod-designer» nicht: die Vertrauenszeile bliebe bei «30 Tage Rückgabe»');
+  const g = freiPlan();
+  assert.ok(g.nachher.includes(THEME_BEDINGUNG));
+  assert.ok(!g.vorher.includes(THEME_BEDINGUNG));
+  // gilt für jeden Baustein des Werkzeugs, nicht nur für den Magneten
+  for (const rp of releaseReal.products) {
+    const p = { id: rp.id, handle: rp.handle, title: 'Titel', variants: { nodes: rp.variantIds.map((id) => ({ id: `gid://shopify/ProductVariant/${id}`, availableForSale: true })) } };
+    assert.ok(baustein({ product: p, releaseProduct: rp, editor: releaseReal.editor }).includes(THEME_BEDINGUNG), `${rp.handle}: Editor-Baustein ohne «lspod-designer»`);
+  }
+});
+
+// Nachbesserung 11.11.2026 (Prüferfund «Befehle ungebunden»): die Befehle für Rücknahme und Wiedersperren der Bestandssperre und die
+// Bestätigungen der Stufe frei-magnet stehen in drei Dokumenten. Ein Befehl ohne NUR= würde auch den Bügeltransfer kaufbar machen,
+// ein ZURUECK=1 beim Wiedersperren würde entsperren, eine falsche Bestätigung liefe ins Leere oder in die falsche Stufe.
+function magnetBefehlePruefen(text, quelle, { stufenZeilen = false } = {}) {
+  const zurueck = text.match(/ZURUECK=1 LIVE=1[^`\n]*?sperr_verfuegbar\.mjs/g) || [];
+  assert.ok(zurueck.length >= 1, `${quelle}: Befehl für die Rücknahme der Bestandssperre fehlt`);
+  for (const b of zurueck) assert.ok(b.includes('NUR=magnet-zum-selbstgestalten'), `${quelle}: Rücknahme ohne NUR=: ${b}`);
+  assert.match(text, /ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten node dropship\/sperre-verfuegbar-1111\/sperr_verfuegbar\.mjs/, `${quelle}: Rücknahme nicht wörtlich`);
+  // Wiedersperren: der Befehl steht mit einem Backtick direkt vor LIVE=1, also ohne ZURUECK=1 davor
+  assert.match(text, /`LIVE=1 NUR=magnet-zum-selbstgestalten node dropship\/sperre-verfuegbar-1111\/sperr_verfuegbar\.mjs`/, `${quelle}: Befehl zum Wiedersperren fehlt`);
+  if (!stufenZeilen) return;
+  const acks = (l) => l.match(/V64_[A-Z0-9_]+/g) || [];
+  const rb = text.split('\n').filter((l) => l.includes('operation=rollback') && l.includes('scope=frei-magnet'));
+  const ap = text.split('\n').filter((l) => l.includes('operation=apply') && l.includes('scope=frei-magnet'));
+  assert.ok(rb.length >= 1 && ap.length >= 1, `${quelle}: Zeile für Apply oder Rollback der Stufe frei-magnet fehlt`);
+  for (const l of rb) assert.deepEqual([...new Set(acks(l))], ['V64_ROLLBACK_MAGNET'], `${quelle}: Rollback frei-magnet mit falscher Bestätigung: ${l.slice(0, 160)}`);
+  for (const l of ap) assert.deepEqual([...new Set(acks(l))], ['V64_FREI_MAGNET'], `${quelle}: Apply frei-magnet mit falscher Bestätigung: ${l.slice(0, 160)}`);
+  const wieder = text.split('\n').filter((l) => l.includes('Bestandssperre wieder setzen'));
+  assert.ok(wieder.length >= 1, `${quelle}: Rücknahme-Schritt «Bestandssperre wieder setzen» fehlt`);
+  for (const l of wieder) { assert.ok(l.includes('`LIVE=1 NUR=magnet-zum-selbstgestalten node'), `${quelle}: ${l.slice(0, 160)}`); assert.ok(!l.includes('ZURUECK=1'), `${quelle}: Wiedersperren mit ZURUECK=1: ${l.slice(0, 160)}`); }
+}
+test('Befehle in den Dokumenten: Rücknahme nur mit NUR=, Wiedersperren ohne ZURUECK=1, je Zeile die Bestätigung der Stufe frei-magnet; Plan vor der Rücknahme', () => {
+  const r = readFileSync(HIER + 'README.md', 'utf8');
+  magnetBefehlePruefen(r, 'Rollout-README', { stufenZeilen: true });
+  // Reihenfolge: Plan (läuft trotz Sperre), dann Rücknahme, dann Apply; Rückweg bei gescheitertem Plan und Apply; Rollback full alt
+  const abschnitt = r.slice(r.indexOf('### Reihenfolge des Rollouts (nicht verhandelbar)\n\n**Vorbedingungen**\n0.'));
+  assert.ok(abschnitt.length > 100, 'Abschnitt «Reihenfolge des Rollouts» des Magneten fehlt');
+  const pos = (t) => { const i = abschnitt.indexOf(t); assert.ok(i >= 0, `Abschnitt nennt ${t} nicht`); return i; };
+  assert.ok(pos('1. **Plan**') < pos('2. **Unmittelbar vor dem Apply die Bestandssperre zurücknehmen') && pos('2. **Unmittelbar vor dem Apply') < pos('3. **Apply**'), 'Reihenfolge Plan, Rücknahme, Apply stimmt nicht');
+  for (const wort of ['**Scheitert der Plan:**', '**Scheitert der Apply, ohne zu schreiben**', 'vorDemApply', '`kaufbar: false`', '**Rollback `full` nach der Freischaltung:**', 'Ersatz bei Druckfehlern', "product.description contains 'lspod-designer'", '9490 Vaduz', 'Konturschnitt', '10,2 × 10,2 cm', 'zuerst den 6.4.2-PR mergen']) assert.ok(r.includes(wort), `Rollout-README nennt ${wort} nicht`);
+  const pv6 = WURZEL + 'pod/v6/README.md';
+  if (existsSync(pv6)) magnetBefehlePruefen(readFileSync(pv6, 'utf8'), 'pod/v6/README.md');
+  const codex = WURZEL + 'dropship/CODEX-ROLLOUT-V64-0911.md';
+  if (existsSync(codex)) magnetBefehlePruefen(readFileSync(codex, 'utf8'), 'CODEX-ROLLOUT-V64-0911.md');
+});
+
+// Nachbesserung 11.11.2026 (Prüferfund «CI überspringt»): der Workflow-Test oben überspringt sich im CI-Job «selbst-gestalten», weil dort
+// pod-v64-description-rollout.yml nicht im Checkout liegt. Der Job «rollout-werkzeug» von magnet-freischaltung-test.yml holt ihn.
+const WMF = WURZEL + '.github/workflows/magnet-freischaltung-test.yml';
+if (!existsSync(WMF)) console.log('ÜBERSPRUNGEN: CI-Verdrahtung (magnet-freischaltung-test.yml fehlt im Checkout)');
+else {
+  test('CI-Verdrahtung: magnet-freischaltung-test.yml fährt diesen Test mit beiden Rollout-Workflows und wird rot, wenn er sich überspringt; Eingaben des Baus lösen ihn aus', () => {
+    const w = readFileSync(WMF, 'utf8');
+    const pfade = (w.match(/^on:\n  pull_request:\n    paths:\n((?:      - .+\n)+)/m)?.[1] || '').split('\n').map((l) => l.replace(/^\s*- '?|'?\s*$/g, '')).filter(Boolean);
+    for (const p of ['dropship/selbst-gestalten-fertig-0511/werkzeuge/**', 'dropship/selbst-gestalten-fertig-0511/target-katalog-20261108/**', 'dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/**', 'dropship/selbst-gestalten-fertig-0511/rollout-v63/**', '.github/workflows/pod-v64-description-rollout.yml', '.github/workflows/pod-v63-description-rollout.yml', 'pod/v6/**', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', '_headers'])
+      assert.ok(pfade.includes(p), `paths: ${p} fehlt`);
+    const job = w.slice(w.indexOf('\n  rollout-werkzeug:\n'));
+    assert.ok(job.length > 20 && w.includes('\n  rollout-werkzeug:\n'), 'Job rollout-werkzeug fehlt');
+    const sparse = (job.match(/sparse-checkout: \|\n((?:            .+\n)+)/)?.[1] || '').split('\n').map((l) => l.trim()).filter(Boolean);
+    for (const p of ['.github/workflows/pod-v64-description-rollout.yml', '.github/workflows/pod-v63-description-rollout.yml', 'dropship/selbst-gestalten-fertig-0511', 'pod/v6', 'automation/lib', '_headers'])
+      assert.ok(sparse.includes(p), `sparse-checkout des Jobs rollout-werkzeug: ${p} fehlt`);
+    assert.match(job, /node dropship\/selbst-gestalten-fertig-0511\/rollout-v63-direct\/direct_rollout_test\.mjs/);
+    assert.match(job, /grep -q 'ÜBERSPRUNGEN: Workflow-Test'/, 'der Job prüft nicht, ob sich der Workflow-Test überspringt');
+    assert.match(job, /set -o pipefail\n\s*node dropship\/selbst-gestalten-fertig-0511\/rollout-v63-direct\/direct_rollout_test\.mjs \| tee/, 'ohne pipefail zählt der Exit von tee, nicht der des Tests');
+  });
+}
 
 // ---- Schreib- und Rollback-Pfad gegen die Offline-Attrappe (Shopify, Storefront, Assets; kein Netz, keine Zugangsdaten) ----------------
 // Eigene Datei, hier als Kindprozess eingehängt, damit der CI-Job «selbst-gestalten» (er startet nur diese Datei) sie mitprüft.
@@ -1155,7 +1229,7 @@ else {
     const m = (r.stdout || '').match(/^(\d+) Prüfungen, (\d+) Fehler/m);
     assert.ok(m, `keine Auswertung: ${(r.stdout || '').slice(0, 200)} ${(r.stderr || '').slice(0, 300)}`);
     assert.equal(r.status, 0, `${m[2]} Fehler in den Attrappen-Szenarien:\n${(r.stdout || '').slice(0, 1800)}`);
-    assert.ok(Number(m[1]) >= 140, `zu wenige Prüfungen (${m[1]}): Szenarien entfernt?`);
+    assert.ok(Number(m[1]) >= 146, `zu wenige Prüfungen (${m[1]}): Szenarien entfernt?`);
     ok += Number(m[1]) - 1;   // die Einzelprüfungen zählen mit
   });
 }

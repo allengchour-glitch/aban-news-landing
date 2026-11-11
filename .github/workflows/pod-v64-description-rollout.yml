@@ -7,7 +7,8 @@ name: POD v6.4 Beschreibungs-Rollout
 #   5. apply canary-jutebeutel  6. Gates + Beobachtung  7. apply full
 # Rollback in UMGEKEHRTER Reihenfolge, je mit dem Artefakt des zugehörigen Apply-Laufs.
 # Seit 11.11.2026 gibt es die Einzelstufe frei-magnet: sie ersetzt beim Magneten die Sperre durch den Editor (17 Editorprodukte,
-# 2 Sperrprodukte). Vorher muss die Bestandssperre NUR des Magneten zurückgenommen sein (README, «Magnet freigeschaltet»).
+# 2 Sperrprodukte). Der Plan läuft auch bei aktiver Bestandssperre; vor dem Apply muss die Bestandssperre NUR des Magneten
+# zurückgenommen sein (README, «Magnet freigeschaltet»).
 
 on:
   workflow_dispatch:

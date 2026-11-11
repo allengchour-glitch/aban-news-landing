@@ -157,11 +157,13 @@ async function planen(tok, release, vorgaenger) {
     const rp = byId.get(a.id);
     const p = await produkt(tok, a.id);
     // Früheres Sperrprodukt, dessen Beschreibung noch die Sperre trägt: Freischaltung statt Editor-Wechsel. Wird es in diesem Lauf
-    // nicht geschrieben (andere Einzelstufe), darf seine Bestandssperre noch aktiv sein; jeder Schreiblauf verlangt die Kaufbarkeit.
+    // nicht geschrieben (andere Einzelstufe), darf seine Bestandssperre noch aktiv sein. Ein Plan liest nur: er läuft auch bei aktiver
+    // Bestandssperre und vermerkt «kaufbar: false» (so bleibt der Magnet bis unmittelbar vor dem Apply gesperrt, und ein gescheiterter
+    // Plan lässt keinen kaufbaren Magneten ohne Editor zurück). Jeder Apply, der ihn schreibt, verlangt die Kaufbarkeit.
     const frei = freigeschaltet(a.id);
     const nochGesperrt = Boolean(frei) && sperreLiegtVor(p.descriptionHtml);
     const wirdGeschrieben = !KONF.canary || KONF.canary.id === a.id;
-    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });
+    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || (wirdGeschrieben && MODE !== 'plan') });
     await storefrontPruefen(p);
     await assetPruefen(rp.cardUrl, rp.cardSha256, 'karte');
     if (rp.previewUrl) await assetPruefen(rp.previewUrl, rp.previewSha256, 'vorschau');
@@ -361,7 +363,12 @@ if (MODE === 'rollback') {
   const { release, vorgaenger } = lokal;
   const alle = await planen(tok, release, vorgaenger);             // alle 19 vor jedem Write erneut prüfen
   const meta = planSchreiben(alle, release);
-  if (MODE === 'plan') console.log(JSON.stringify({ mode: MODE, editorVersion: EDITOR_VERSION, scope: SCOPE, productsChecked: alle.length, selected: auswahl(meta.products).map((x) => x.handle), output: OUT }, null, 2));
+  if (MODE === 'plan') {
+    // Ein ausgewähltes Produkt, das der Apply freischalten würde, aber noch nicht kaufbar ist: der Plan nennt den Schritt davor.
+    const vorDemApply = auswahl(meta.products).filter((x) => x.freischaltung === true && x.kaufbar === false)
+      .map((x) => `${x.handle}: noch nicht kaufbar. Unmittelbar vor dem Apply die Bestandssperre nur dieses Produkts zurücknehmen: ZURUECK=1 LIVE=1 NUR=${x.handle} node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs`);
+    console.log(JSON.stringify({ mode: MODE, editorVersion: EDITOR_VERSION, scope: SCOPE, productsChecked: alle.length, selected: auswahl(meta.products).map((x) => x.handle), ...(vorDemApply.length ? { vorDemApply } : {}), output: OUT }, null, 2));
+  }
   else {
     const { ledger } = await anwenden(tok, meta, OUT);
     // changed = echte Writes; unchanged = Zeilen ohne Write (Ziel schon da, Sperren)

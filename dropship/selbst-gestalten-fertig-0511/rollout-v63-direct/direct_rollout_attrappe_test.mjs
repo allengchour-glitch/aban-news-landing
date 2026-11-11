@@ -282,6 +282,7 @@ try {
     check('D1 Plan frei-magnet Exit 0, schreibt nichts, Auswahl ist der Magnet', r.code === 0 && writes(l).length === 0 && JSON.stringify(r.json?.selected) === JSON.stringify([MAGNET]), r.err.slice(0, 200));
     const p = lies(join(o('d1o'), 'plan.json')); const m = p.products.find((x) => x.handle === MAGNET);
     check('D1 Planzeile: Editorprodukt, geändert, Freischaltung, kaufbar; der Plan nennt Stufe und Produkt', m.kind === 'editor' && m.geaendert === true && m.freischaltung === true && m.kaufbar === true && p.scope === 'frei-magnet' && p.canary === MAGNET, JSON.stringify(m).slice(0, 200));
+    check('D1 kaufbarer Magnet: der Plan nennt keinen Schritt vor dem Apply', r.json?.vorDemApply === undefined, JSON.stringify(r.json));
     const rp = lies(join(o('d1o'), 'release.json')).products.find((x) => x.handle === MAGNET);
     check('D1 Release enthält den Magneten mit seiner Karte, ohne Vorschau, mit drei Varianten', Boolean(rp) && /\/lspod-15427217195393\.karte\.json$/.test(rp.cardUrl) && rp.previewUrl === null && rp.variantIds.length === 3, JSON.stringify(rp)); }
   // ---- D2/D3 Apply: genau ein Write, nur der Block wird getauscht; Rollback stellt die Sperre byte-genau zurück ---------------------------
@@ -313,10 +314,16 @@ try {
     check('D5 Bestandssperre aktiv: der Plan einer anderen Stufe läuft und vermerkt «nicht kaufbar»', r.code === 0 && m?.kaufbar === false && m?.freischaltung === true, r.err.slice(0, 300));
     const t = apply(s, l, o('d5t'), 'canary-tasse');
     check('D5 die andere Stufe schreibt wie gewohnt (nur die Tasse)', t.code === 0 && JSON.stringify(writes(l)) === JSON.stringify([TASSE]), t.err.slice(0, 200));
-    const pm = plan(s, l, o('d5m'), 'frei-magnet');
-    check('D5 Plan frei-magnet bricht ab und nennt den Weg (NUR=…)', pm.code !== 0 && /magnet-zum-selbstgestalten: keine kaufbare Variante/.test(pm.err) && /NUR=magnet-zum-selbstgestalten/.test(pm.err), pm.err.slice(0, 400));
+    // Seit der Nachbesserung vom 11.11.2026: der Plan liest nur und läuft auch bei aktiver Bestandssperre. So bleibt der Magnet bis
+    // unmittelbar vor dem Apply gesperrt; ein gescheiterter Plan hinterlässt keinen kaufbaren Magneten ohne Editor.
+    const pm = plan(s, l, o('d5m'), 'frei-magnet'); const mm = pm.code === 0 ? lies(join(o('d5m'), 'plan.json')).products.find((x) => x.handle === MAGNET) : null;
+    check('D5 Plan frei-magnet läuft trotz Bestandssperre, schreibt nichts und vermerkt «nicht kaufbar» samt Freischaltung', pm.code === 0 && mm?.kaufbar === false && mm?.freischaltung === true && mm?.geaendert === true && writes(l).length === 1, pm.err.slice(0, 400));
+    check('D5 Plan frei-magnet nennt den Schritt vor dem Apply (Rücknahme nur des Magneten mit NUR=)', Array.isArray(pm.json?.vorDemApply) && pm.json.vorDemApply.length === 1 && pm.json.vorDemApply[0].includes('ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs'), JSON.stringify(pm.json));
+    const pf = plan(s, l, o('d5pf'), 'full'); const mf = pf.code === 0 ? lies(join(o('d5pf'), 'plan.json')).products.find((x) => x.handle === MAGNET) : null;
+    check('D5 Plan full läuft trotz Bestandssperre und vermerkt den Magneten als nicht kaufbar', pf.code === 0 && mf?.kaufbar === false && Array.isArray(pf.json?.vorDemApply) && pf.json.vorDemApply.length === 1 && writes(l).length === 1, pf.err.slice(0, 400));
+    check('D5 Plan einer fremden Stufe nennt keinen Schritt für den Magneten', r.code === 0 && r.json?.vorDemApply === undefined, JSON.stringify(r.json));
     const am = apply(s, l, o('d5a'), 'frei-magnet'); const af = apply(s, l, o('d5f'), 'full');
-    check('D5 Apply frei-magnet und Apply full brechen ab und schreiben nichts', am.code !== 0 && af.code !== 0 && /keine kaufbare Variante/.test(am.err) && /keine kaufbare Variante/.test(af.err) && writes(l).length === 1, JSON.stringify(writes(l))); }
+    check('D5 Apply frei-magnet und Apply full brechen ab, nennen den Weg (NUR=…) und schreiben nichts', am.code !== 0 && af.code !== 0 && /magnet-zum-selbstgestalten: keine kaufbare Variante/.test(am.err) && /NUR=magnet-zum-selbstgestalten/.test(am.err) && /keine kaufbare Variante/.test(af.err) && writes(l).length === 1, JSON.stringify(writes(l))); }
   { const [s, l] = kopie('d5b', SHOP0); const r = apply(s, l, o('d5bo'), 'frei-magnet', { ATTRAPPE_UNKAUFBAR_SECOND_READ: MAGNET });
     check('D5b Bestandssperre zwischen Plan und Write: Abbruch unmittelbar vor dem Write', r.code !== 0 && /keine kaufbare Variante/.test(r.err) && writes(l).length === 0, r.err.slice(0, 300)); }
   // ---- D6 nur der unveränderte Sperrblock wird ersetzt; D7 Drift zwischen Plan und Write -----------------------------------------------------
