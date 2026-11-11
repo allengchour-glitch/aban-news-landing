@@ -2,6 +2,15 @@ name: Merchant-Zugang prüfen (nur lesen)
 
 on:
   workflow_dispatch:
+    inputs:
+      merchant_id:
+        description: 'Merchant-ID (nur für registrieren; wird im Log maskiert)'
+        required: false
+        default: ''
+      registrieren:
+        description: 'Google-Projekt beim Merchant-Konto als Entwickler anmelden (einmalig)'
+        type: boolean
+        default: false
   push:
     branches: [claude/merchant-probe-1111]
     paths: ['.github/workflows/merchant-probe.yml', 'automation/merchant_probe.py']
@@ -25,4 +34,8 @@ jobs:
       - name: Probe
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-        run: python3 automation/merchant_probe.py
+          MERCHANT_ID: ${{ inputs.merchant_id }}
+          REGISTRIEREN: ${{ inputs.registrieren }}
+        run: |
+          if [ -n "$MERCHANT_ID" ]; then echo "::add-mask::$MERCHANT_ID"; fi
+          python3 automation/merchant_probe.py

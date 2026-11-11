@@ -15,6 +15,13 @@ def kurz(t):
     return hashlib.sha256(str(t).encode()).hexdigest()[:8]
 
 def fehlergrund(r):
+    return _schwaerzen(_fehlergrund(r))
+
+def _schwaerzen(s):
+    mid = os.environ.get("MERCHANT_ID", "").strip()
+    return s.replace(mid, "<konto>") if mid else s
+
+def _fehlergrund(r):
     try:
         e = r.json().get("error", {})
     except Exception:
@@ -38,6 +45,18 @@ def main():
     cred.refresh(Request())
     h = {"Authorization": "Bearer " + cred.token}
     befunde = {}
+    mid = os.environ.get("MERCHANT_ID", "").strip()
+    if os.environ.get("REGISTRIEREN") == "true":
+        if not mid.isdigit():
+            print("REGISTRIEREN: abgebrochen, MERCHANT_ID fehlt oder ist keine Zahl"); return 2
+        # Meldet das Google-Projekt des Dienstkontos beim Merchant-Konto als Entwickler an (Pflicht der Merchant API).
+        # Ohne developerEmail: die Rolle «API-Entwickler» vergibt der Besitzer selbst im Merchant Center.
+        url = f"https://merchantapi.googleapis.com/accounts/v1/accounts/{mid}/developerRegistration:registerGcp"
+        r = requests.post(url, headers={**h, "Content-Type": "application/json"}, json={}, timeout=30)
+        if r.status_code == 200:
+            print("registerGcp: HTTP 200 (Projekt angemeldet)")
+        else:
+            print(f"registerGcp: HTTP {r.status_code} | {fehlergrund(r)}")
     proben = [
         ("merchantapi_accounts_v1", "https://merchantapi.googleapis.com/accounts/v1/accounts?pageSize=50"),
         ("merchantapi_accounts_v1beta", "https://merchantapi.googleapis.com/accounts/v1beta/accounts?pageSize=50"),
