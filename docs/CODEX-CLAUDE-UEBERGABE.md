@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Branchen-Bundle: unpassenden Ersparnisvergleich entfernt ·11.11.2026
+
+Von main7ad8a75 auf eigenem Branch; Regeln, aktuelle Claude-Übergaben und offene Arbeiten gelesen. Folgebefund aus PR3095 am echten Code geprüft: `automation/build_kit_zips.py` bildet Mitglieder aus dem Kit-Katalog ohne `bundle` und ohne `standalone` (aktuell19 Branchen-Kits). Die Shoprechnung summierte dagegen alle kaufbaren Nicht-Bundles, also auch separat angebotene Prompt-Bibliothek, Textvorlagen, Offline-Rechner und Strategie-Prüfstand. Vier Browsergegenproben1440/390px × regulär/Ersatzkatalog zeigten deshalb dieselbe unpassende Anzeige «Spare CHF350 (90%)».
+
+`shop.html` entfernt diese Vergleichsrechnung samt Zahlenanzeige, verwendet das neutrale Label «BUNDLE» und nennt auf der bestehenden Branchen-Bundlekarte die separaten Produktarten. Keine Ersatz-Ersparnis erfunden und keine neuen Zuordnungen oder Paketdateien gebaut. Katalog, Preise, Checkoutlinks, Lieferprüfung und bestehende Abruffehlerkorrekturen bleiben erhalten. Kein echter Kauf oder geschützter Dateiaufruf; Paketumfang anhand Baucode und Katalog geprüft, nicht als erfolgreicher bezahlter Download ausgegeben.
+
+GEMESSEN: vier lokale Browserfälle grün: Scopehinweis vorhanden, unpassende Zahlen fehlen, alle31 Kartentitel/Preise/Kaufziele gegen unveränderten Katalog, keine Seitenfehler/Überbreite. Handyscreenshot außerhalb Git angesehen. Vier vorhandene Katalogregressionen und Konsistenzprüfung grün. Keine neue Testdatei/Automation/Frequenz, keine Konto-/Kunden-/Social-/Preisänderung. Übergabe und zugehöriger PR nennen endgültige Bereitstellung/Gegenprobe. Wirtschaftlicher Bezug: korrekte Kaufentscheidung und weniger falsche Erwartungen zum Paketumfang; finanzielle Wirkung nicht gemessen. Eigene Mailangebot-Checkout-/Lieferzuordnung weiterhin offen.
+
 ## Shop: passende Produktart und Einstieg erklären ·11.11.2026
 
 Von main8d31dad auf eigenem Branch; Regeln, Shared Memory, Übergabe, aktuelle Claude-Zuständigkeiten und offene Arbeiten geprüft. Erledigte Kaufabruf-/Lizenzkorrekturen erhalten. Vorhandene öffentliche Katalogquelle umfasst neben Branchen-Kits auch Textvorlagen, Offline-Rechner und ein Python-Werkzeug. Die bisherige allgemeine Shopbeschreibung und FAQ versprachen dagegen pauschal Branchen-Kit-Inhalte und keine besondere Software.

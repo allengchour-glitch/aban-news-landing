@@ -142,25 +142,19 @@
       if(stand===gezeigt)return;
       gezeigt=stand;
       if(!items||!items.length){el.innerHTML='<p>Pakete sind in Vorbereitung.</p>';return;}
-      // Ersparnis des Bundles NICHT fest eintragen (veraltet sofort, sobald sich ein
-      // Einzelpreis ändert) — aus denselben Daten berechnen, die auch die Karten zeigen.
-      var zahl=function(p){var m=String(p.price).match(/[\d.,]+/);return m?parseFloat(m[0].replace(',','.')):0;};
-      var einzelSumme=items.filter(function(p){return !p.bundle&&p.buy;}).reduce(function(s,p){return s+zahl(p);},0);
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
                      :('<span class="btn soon">Bald verfügbar</span>');
-        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-bottom:.5rem">SPAR-PAKET</span><br>':'';
-        if(p.bundle&&einzelSumme>zahl(p)){
-          var spar=Math.round(einzelSumme-zahl(p)),proz=Math.round(100*spar/einzelSumme);
-          badge+='<div style="color:#15803d;font-size:.85rem;font-weight:700;margin-bottom:.3rem">Spare CHF '+spar+' ('+proz+' %) gegenüber Einzelkauf</div>';
-        }
+        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-bottom:.5rem">BUNDLE</span><br>':'';
+        // Das Branchen-Bundle enthält keine separat angebotenen Werkzeuge.
+        var umfang=p.slug==='alle-kits'?'<p style="font-size:.85rem;flex:0;margin-top:.6rem">Enthält die Branchen-Kits. Prompt-Bibliothek, Text-Vorlagen, Offline-Rechner und Strategie-Prüfstand sind separate Produkte.</p>':'';
         var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
         var lk='color:#b45309;font-size:.85rem;font-weight:600;text-decoration:none';
         var rel='';
         if(SICHT[p.slug]) rel+='<a href="/ki-sichtbarkeit-'+SICHT[p.slug]+'.html" style="'+lk+'">Wirst du von KI gefunden? →</a>';
         if(COMP[p.slug]) rel+=(rel?' &nbsp;·&nbsp; ':'')+'<a href="/ki-compliance-'+COMP[p.slug]+'.html" style="'+lk+'">KI rechtssicher →</a>';
         rel=rel?('<div style="margin-top:.6rem">'+rel+'</div>'):'';
-        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+rel+'</div>';
+        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p>'+umfang+'<div class="price">'+p.price+'</div>'+btn+rel+'</div>';
       }).join('');
       // Kommt der Besucher per #kit-<slug> aus einem Branchen-Hub: Karte hervorheben.
       if(location.hash){
