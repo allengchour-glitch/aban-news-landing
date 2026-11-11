@@ -70,4 +70,4 @@ Entscheid des Besitzers.
 - `MODUS=quellen` (Vorgabe bei Push) listet die Datenquellen und die Herkunft der Proben in `PROBEN`; `modus=bilder` (Handstart)
   liest alle Artikel (rund 15 Minuten). Konto-Nummern werden nie ausgegeben.
 - Seit 21:41 UTC wiederholt der Leser Netz-Zeitüberschreitungen (vorher brach der Lauf 43104452470 an einer ab).
-- Auswertung: `python3 -I fehler_auswerten.py <lauf.log> <aus.json>` (Scratch der Sitzung, gruppiert die FEHLER-Zeilen).
+- Auswertung: `python3 -I dropship/merchant-fehler-1111/fehler_auswerten.py <lauf.log> <aus.json>` (gruppiert die FEHLER-Zeilen nach Code und Attribut, nennt die Quelle je Angebot). Das Log am Ende zeigt die «Zeilen je Angebotsformat» (Shopify-App gegen Autofeed).
