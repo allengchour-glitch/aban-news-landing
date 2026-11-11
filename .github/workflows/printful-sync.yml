@@ -7,6 +7,8 @@ name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 # Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
 #   - Zeitplan OHNE Freigabedatei: nur LESEN (Trockenlauf). Der Lauf liest Shopify und Printful, zeigt in der Zusammenfassung, was er täte, legt nichts an, setzt keine Tags, sendet keine Telegram-Meldung.
 #   - Zeitplan MIT Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt im Repo: legt scharf Aufträge an. Datei löschen = Stopp (der nächste Lauf liest nur noch).
+#     Die Freigabedatei NUR per Pull Request legen und im selben Pull Request die Testzeile «T6 Freigabedatei … FEHLT» in automation/lib/printful_bestellweg_test.mjs auf «liegt» stellen
+#     (Gegenprüfung 11.11.2026: der Test-Workflow hat keinen push-Auslöser; ein direkter Commit auf main schaltet scharf, ohne dass ein Test läuft).
 #   - Handstart (workflow_dispatch): «Nur testen» an = Trockenlauf, aus = scharf (nur der ausdrückliche Wert false; eine leere Eingabe bleibt Trockenlauf). Die Freigabedatei gilt nur für den Zeitplan.
 #   - Jedes andere Ereignis (z. B. ein später ergänzter push- oder repository_dispatch-Auslöser) bleibt Trockenlauf; das Skript schreibt nur bei ausdrücklichem DRY_RUN=0.
 # Häufigkeit: EIN Zeitplan, 1× täglich um 13:37 UTC (14:37/15:37 Schweizer Zeit, vor der Rückmeldung printful-tracking um 15:23 UTC). Die Repo-Regel (SHARED-MEMORY, «Cron-Nulldiät» nach der Actions-Sperre vom
