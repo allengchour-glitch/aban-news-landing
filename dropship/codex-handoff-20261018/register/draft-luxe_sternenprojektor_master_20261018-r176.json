@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "scope": {
+    "brandId": 6227837,
+    "brand": "luxestyle.ch",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": null,
+    "networks": [
+      "instagram",
+      "facebook",
+      "tiktok",
+      "youtube"
+    ]
+  },
+  "baseline": {
+    "historyState": "unknown",
+    "initialisation": "Additive R176 draft-only checkpoint for this master and four networks. Existing registers, including the R174 Pinterest register, are preserved unchanged. This entry does not assert complete pre-R176 publication history.",
+    "completeHistoricalDedupe": null
+  },
+  "media": {
+    "type": "VIDEO",
+    "localPath": "/dev/shm/r176-video-20261111/luxestyle-sternenlicht-entwurf-r176.mp4",
+    "localPersistence": "volatile_dev_shm",
+    "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+    "bytes": 5535209,
+    "durationSeconds": 18.0,
+    "width": 1080,
+    "height": 1920,
+    "fps": 25,
+    "codec": "H264",
+    "pixelFormat": "yuv420p",
+    "audio": "AAC_44100Hz_stereo",
+    "professionalMasterApproval": false,
+    "colorMetadata": {
+      "range": "tv",
+      "space": "bt709",
+      "transfer": "bt709",
+      "primaries": "bt709"
+    }
+  },
+  "productGate": {
+    "status": "ACTIVE",
+    "publicHttpStatus": 200,
+    "purchasable": true,
+    "tagsNonEmpty": true,
+    "guardHits": [],
+    "rueckholHits": [],
+    "variants": "A_to_G",
+    "exactVariantBinding": null,
+    "collectionAusTiktokUndInstagram": false,
+    "releaseEligible": false
+  },
+  "rightsGate": {
+    "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "sourceVideoSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "sourceVideoCommercialRights": "open_not_hash_bound",
+    "masterProvenance": "open",
+    "ownerAuthorisation": "draft_delivery_only",
+    "publicationRightsApproved": false
+  },
+  "requestSummary": {
+    "ownerScope": "max_two_videos_draft_only",
+    "createAttempts": 4,
+    "successfulCreates": 4,
+    "updateAttempts": 5,
+    "successfulUpdates": 4,
+    "validationRejectedBeforeMutation": 1,
+    "blindRetries": 0,
+    "autoPublishEnables": 0,
+    "scheduleActions": 0,
+    "publishActions": 0
+  },
+  "channelDrafts": [
+    {
+      "network": "instagram",
+      "metricoolId": 424123014,
+      "uuid": "4156060813550767248",
+      "draftDate": "2026-11-16T19:00:00+01:00",
+      "remoteMediaUrlSuffix": "17906828818888044629.mp4",
+      "networkSettings": {
+        "contentType": "REEL"
+      },
+      "timezone": "Europe/Zurich",
+      "status": "PENDING",
+      "draft": true,
+      "autoPublish": false,
+      "scheduled": false,
+      "published": false,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "remoteMediaByteIdentical": true,
+      "previousMetricoolId": 424110822,
+      "remoteColorMetadata": "bt709/tv"
+    },
+    {
+      "network": "facebook",
+      "metricoolId": 424123199,
+      "uuid": "6680239273933357186",
+      "draftDate": "2026-11-16T19:00:00+01:00",
+      "remoteMediaUrlSuffix": "12120062633045835946.mp4",
+      "networkSettings": {
+        "contentType": "REEL"
+      },
+      "timezone": "Europe/Zurich",
+      "status": "PENDING",
+      "draft": true,
+      "autoPublish": false,
+      "scheduled": false,
+      "published": false,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "remoteMediaByteIdentical": true,
+      "previousMetricoolId": 424111092,
+      "remoteColorMetadata": "bt709/tv"
+    },
+    {
+      "network": "tiktok",
+      "metricoolId": 424123388,
+      "uuid": "3614365779669041576",
+      "draftDate": "2026-11-17T19:00:00+01:00",
+      "remoteMediaUrlSuffix": "14707599990910049871.mp4",
+      "networkSettings": {
+        "ownBrand": true,
+        "disclosure": "Eigenwerbung"
+      },
+      "timezone": "Europe/Zurich",
+      "status": "PENDING",
+      "draft": true,
+      "autoPublish": false,
+      "scheduled": false,
+      "published": false,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "remoteMediaByteIdentical": true,
+      "previousMetricoolId": 424111358,
+      "remoteColorMetadata": "bt709/tv"
+    },
+    {
+      "network": "youtube",
+      "metricoolId": 424123545,
+      "uuid": "-7647174116509334899",
+      "draftDate": "2026-11-19T19:00:00+01:00",
+      "remoteMediaUrlSuffix": "5018391867237613111.mp4",
+      "networkSettings": {
+        "madeForKids": false,
+        "titleMarker": "#Shorts"
+      },
+      "timezone": "Europe/Zurich",
+      "status": "PENDING",
+      "draft": true,
+      "autoPublish": false,
+      "scheduled": false,
+      "published": false,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "remoteMediaByteIdentical": true,
+      "previousMetricoolId": 424111650,
+      "remoteColorMetadata": "bt709/tv"
+    }
+  ],
+  "checkpoint": {
+    "state": "DRAFTS_CONFIRMED_NOT_PUBLISHED",
+    "documentedAt": "2026-11-11T09:16:00+01:00",
+    "rule": "These objects remain draft=true and autoPublish=false. PENDING plus a stored planner date is not evidence of scheduling or publication. Open product binding, collection, rights and master-acceptance gates block release. Unknown history blocks blind replacement or retry."
+  },
+  "history": [
+    {
+      "at": "2026-11-11T09:04:32+01:00",
+      "event": "Exactly one 18-second technical MP4 draft was recorded under the stable masterId. It is not approved as a professional master."
+    },
+    {
+      "at": "2026-11-11T09:04:32+01:00",
+      "event": "Exactly four Metricool create writes, with no retry, were read back as PENDING drafts with autoPublish=false. Remote media hashes match the local MP4."
+    },
+    {
+      "at": "2026-11-11T09:04:32+01:00",
+      "event": "No Threads or Pinterest draft was created; existing 18 November garlic drafts and the R174 Pinterest register were left unchanged."
+    },
+    {
+      "at": "2026-11-11T09:16:00+01:00",
+      "event": "Independent QA found incomplete colour signalling. The same film was re-exported with BT.709/tv metadata and the same four UUIDs were updated. Metricool assigned new numeric IDs; all objects remained PENDING drafts with autoPublish=false. One first Instagram update payload was rejected before mutation because it contained extraneous default Twitter data; a targeted readback confirmed the original object unchanged before the corrected update. No replacement post was created."
+    }
+  ]
+}

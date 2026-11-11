@@ -2011,3 +2011,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Shopify-, Collection-, Metricool-, Klaviyo-, Kunden-, Merchant-, Feed-, CJ-, DNS-, Ads-, Budget-, Rabatt-, Flow- oder Renderänderung | Wirkung und vollständige Historie unbekannt |
 
 [LUXESTYLE_R175_20261111] [Paket](CONTENT-VERKAUFSPAKET-20261111-R175.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261111-R175.json).
+
+### R176
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Besitzerumfang | Direkte Bestätigung `max2 Videos, Draft-only` auf diesen Auftrag angewandt | Genau1 Film und4 Metricool-Drafts; keine Terminierung, kein Auto-Publish, keine Publikation |
+| Identität | Shopify/Produkt und Metricool-Marke mit allen sechs LuxeStyle-Kanälen vor den Draft-Writes geprüft | luxestyle.ch/CHF/Schweiz und brand6227837/Europe-Zurich PASS; andere Marke unberührt |
+| Produkt / Collection | Projektor15521256604033 auf Status, HTTP, Warenkorb, Varianten, Inventory, Tags/Sperren und Collection geprüft | ACTIVE/kaufbar; A–G verfügbar, untracked/CONTINUE/q0; keine Sperren; genaue A–G-Bindung offen; nicht in `aus-tiktok-und-instagram`;0 Shop-/Collectionwrites |
+| Film / Musik | Einen18s-Entwurf gerendert und Technik, Bild, Claims, Ton, Quellen und Musikprovenienz geprüft; gefundene Farbraumsignalisierung korrigiert | MP4 SHA fac2f767…27df6a,1080×1920/25fps,H264/AAC,BT.709/tv; Pflichtmusik a7674eca…16688; technisch vorhanden, aber keine professionelle Masterfreigabe |
+| Metricool-Drafts | Genau vier kanalbezogene Drafts angelegt; finale BT.709-Datei über dieselben UUIDs aktualisiert, gehasht und gezielt zurückgelesen | IG424123014,FB424123199,TikTok424123388,YT424123545; alle PENDING/drafttrue/autopublishfalse;4 Creates+4 Updates;1 Validierungsabweisung vor Mutation,0 Blind-Retry; remote bytegleich |
+| Kanäle / bestehende Objekte | Threads/Pinterest ausgelassen; Knoblauch18.11 und R174-Pinterest-Beleg erhalten | Keine aktiven Termine oder Veröffentlichungen; keine Fremdobjekte verändert |
+| Rechte / Qualitätsgates | A–G-Bindung, Filmquellenrechte, Master-Provenienz, professionelle Abnahme und Persistenz getrennt dokumentiert | Draft-only bleibt gesperrt; keine Produkt-/Rechte-/Publikationsfreigabe abgeleitet |
+| Persistenz | Lokalen Speicherzustand berücksichtigt | `/workspace` voll; MP4 nur in `/dev/shm`, Metricool-Remotemedien gespeichert; lokales Archiv offen |
+| Dokumentation / Claude | R176-Bericht, Maschinenbeleg, Draft-Register und kanonische Übergabe additiv fortgeführt | Revision176/24 Aufgaben; Receipt `unknown_no_claude_receipt` |
+| Grenzen | Keine Shopify-, Collection-, Klaviyo-, DNS-, Merchant-, Feed-, Kunden-, Ads-, Budget-, Rabatt- oder Paid-Renderänderung | Ranking-/Verkaufswirkung und vollständige Historie unbekannt |
+
+[LUXESTYLE_R176_20261111] [Bericht](VIDEO-MASTER-DRAFTS-20261111-R176.md) · [Beleg](VIDEO-MASTER-DRAFTS-20261111-R176.json) · [Register](register/draft-luxe_sternenprojektor_master_20261018-r176.json).

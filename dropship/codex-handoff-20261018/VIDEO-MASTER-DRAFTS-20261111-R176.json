@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "revision": 176,
+  "documentedAt": "2026-11-11T09:16:00+01:00",
+  "localDate": "2026-11-11",
+  "timezone": "Europe/Zurich",
+  "scope": {
+    "brand": "LuxeStyle",
+    "shopDomain": "luxestyle.ch",
+    "metricoolBrandId": 6227837,
+    "ownerDirective": "maximum_two_videos_draft_only",
+    "videosCreated": 1,
+    "otherBrandsTouched": false
+  },
+  "authorisation": {
+    "directOwnerConfirmationInChat": true,
+    "sourceInstructionBranch": "claude/luxestyle-sparmodus-1111",
+    "sourceInstructionPullRequest": 3085,
+    "sourceInstructionMergedToMain": false,
+    "effect": "For this R176 task the previously unconfirmed interpretation in CODEX-VIDEO-MUSIK-1111.md is confirmed only as maximum two videos and Metricool draft-only delivery.",
+    "limits": {
+      "maximumVideos": 2,
+      "actualVideos": 1,
+      "draftOnly": true,
+      "autoPublish": false,
+      "schedule": false,
+      "publish": false
+    },
+    "doesNotApprove": [
+      "professional_master_release",
+      "commercial_source_rights",
+      "exact_A_to_G_variant_binding",
+      "shop_or_collection_changes",
+      "customer_contact",
+      "budget_or_discount",
+      "paid_render"
+    ]
+  },
+  "identity": {
+    "result": "PASS",
+    "shopify": {
+      "shop": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "CH"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "separateBrandTouched": false
+  },
+  "film": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "classification": "TECHNICAL_DRAFT_MP4_NOT_PROFESSIONAL_MASTER_APPROVED",
+    "renderScript": {
+      "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+      "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+      "syntaxCheck": "PASS"
+    },
+    "localPath": "/dev/shm/r176-video-20261111/luxestyle-sternenlicht-entwurf-r176.mp4",
+    "persistentLocalCopy": false,
+    "localStorageReason": "workspace_persistent_disk_full",
+    "remoteMetricoolCopiesStored": true,
+    "remoteMetricoolCopiesDurability": "unknown",
+    "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+    "bytes": 5535209,
+    "durationSeconds": 18.0,
+    "width": 1080,
+    "height": 1920,
+    "fps": 25,
+    "videoCodec": "H264",
+    "pixelFormat": "yuv420p",
+    "colorRange": "limited",
+    "audioCodec": "AAC",
+    "audioSampleRateHz": 44100,
+    "audioChannels": 2,
+    "audioQuality": {
+      "integratedLufs": -13.3,
+      "truePeakDbTp": -1.8,
+      "sourceAudioRemoved": true,
+      "voiceover": false
+    },
+    "visualReview": {
+      "taupeCreamOverlays": true,
+      "persons": false,
+      "hands": false,
+      "prices": false,
+      "deliveryClaims": false,
+      "stockClaims": false,
+      "foreignBrands": false,
+      "foreignText": false
+    },
+    "sourceVideo": {
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "width": 960,
+      "height": 540,
+      "fps": 25,
+      "usedSegmentsSeconds": [
+        [
+          12.0,
+          17.0
+        ],
+        [
+          22.0,
+          27.96
+        ]
+      ],
+      "sourceAudioRemoved": true
+    },
+    "productReferenceImage": {
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "binding": "product_level_only"
+    },
+    "music": {
+      "repositoryPath": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "tool": "Python MIDI + FluidSynth; mastering with SoX/FFmpeg",
+      "soundfont": "FluidR3_GM.sf2",
+      "packageReference": "Debian fluid-soundfont 3.1-6",
+      "license": "MIT",
+      "licenseEvidence": "Debian package evidence",
+      "ownerHearingApprovalForDraftDelivery": true,
+      "historicalWavBuildVersionHashBound": false
+    },
+    "professionalMasterApproval": false,
+    "releaseEligible": false,
+    "openGates": [
+      "exact_A_to_G_variant_binding",
+      "hash_bound_commercial_edit_social_metricool_rights_for_source_video_and_master_provenance",
+      "premium_master_acceptance_including_product_identity_and_platform_crops",
+      "persistent_local_archive"
+    ],
+    "ownerDirectedDraftDeliveryDespiteOpenGates": true,
+    "colorMetadata": {
+      "range": "tv",
+      "space": "bt709",
+      "transfer": "bt709",
+      "primaries": "bt709",
+      "validation": "PASS"
+    }
+  },
+  "product": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "status": "ACTIVE",
+    "publicHttpStatus": 200,
+    "storefrontCartFormPresent": true,
+    "purchasable": true,
+    "tagsNonEmpty": true,
+    "channelGuardHits": [],
+    "rueckholHits": [],
+    "variants": {
+      "count": 7,
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "allAvailableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "exactFilmBinding": null,
+      "exactBindingState": "unknown_open"
+    },
+    "collectionGate": {
+      "handle": "aus-tiktok-und-instagram",
+      "freshCompleteCollectionRead": true,
+      "member": false,
+      "collectionWrite": false
+    },
+    "stockInterpretation": "inventory_quantity_0_is_not_out_of_stock_evidence",
+    "deliveryPromiseMade": false
+  },
+  "metricoolDrafts": {
+    "allRemoteMediaByteIdentical": true,
+    "allRemoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+    "allReadback": true,
+    "allDraft": true,
+    "allAutoPublishFalse": true,
+    "allStatus": "PENDING",
+    "scheduledCount": 0,
+    "publishedCount": 0,
+    "records": [
+      {
+        "network": "instagram",
+        "metricoolId": 424123014,
+        "uuid": "4156060813550767248",
+        "draftDate": "2026-11-16T19:00:00+01:00",
+        "remoteMediaUrlSuffix": "17906828818888044629.mp4",
+        "networkSettings": {
+          "contentType": "REEL"
+        },
+        "timezone": "Europe/Zurich",
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "scheduled": false,
+        "published": false,
+        "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "remoteMediaByteIdentical": true,
+        "previousMetricoolId": 424110822,
+        "remoteColorMetadata": "bt709/tv"
+      },
+      {
+        "network": "facebook",
+        "metricoolId": 424123199,
+        "uuid": "6680239273933357186",
+        "draftDate": "2026-11-16T19:00:00+01:00",
+        "remoteMediaUrlSuffix": "12120062633045835946.mp4",
+        "networkSettings": {
+          "contentType": "REEL"
+        },
+        "timezone": "Europe/Zurich",
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "scheduled": false,
+        "published": false,
+        "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "remoteMediaByteIdentical": true,
+        "previousMetricoolId": 424111092,
+        "remoteColorMetadata": "bt709/tv"
+      },
+      {
+        "network": "tiktok",
+        "metricoolId": 424123388,
+        "uuid": "3614365779669041576",
+        "draftDate": "2026-11-17T19:00:00+01:00",
+        "remoteMediaUrlSuffix": "14707599990910049871.mp4",
+        "networkSettings": {
+          "ownBrand": true,
+          "disclosure": "Eigenwerbung"
+        },
+        "timezone": "Europe/Zurich",
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "scheduled": false,
+        "published": false,
+        "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "remoteMediaByteIdentical": true,
+        "previousMetricoolId": 424111358,
+        "remoteColorMetadata": "bt709/tv"
+      },
+      {
+        "network": "youtube",
+        "metricoolId": 424123545,
+        "uuid": "-7647174116509334899",
+        "draftDate": "2026-11-19T19:00:00+01:00",
+        "remoteMediaUrlSuffix": "5018391867237613111.mp4",
+        "networkSettings": {
+          "madeForKids": false,
+          "titleMarker": "#Shorts"
+        },
+        "timezone": "Europe/Zurich",
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "scheduled": false,
+        "published": false,
+        "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "remoteMediaByteIdentical": true,
+        "previousMetricoolId": 424111650,
+        "remoteColorMetadata": "bt709/tv"
+      }
+    ],
+    "networksWithoutNewDrafts": [
+      "threads",
+      "pinterest"
+    ],
+    "existingGarlicDraftsOn2026_11_18Touched": false,
+    "createWrites": 4,
+    "updateWrites": 4,
+    "successfulMutations": 8,
+    "validationRejectedAttempts": 1,
+    "blindRetries": 0
+  },
+  "ledger": {
+    "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+    "state": "DRAFTS_CONFIRMED_NOT_PUBLISHED",
+    "completeHistoricalDedupe": null
+  },
+  "writeSummary": {
+    "localVideoRenders": 1,
+    "metricoolDraftCreates": 4,
+    "metricoolSchedules": 0,
+    "metricoolAutoPublishEnables": 0,
+    "metricoolPublishes": 0,
+    "threadsDrafts": 0,
+    "pinterestDrafts": 0,
+    "shopify": 0,
+    "collections": 0,
+    "customers": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "merchant": 0,
+    "feeds": 0,
+    "ads": 0,
+    "budgets": 0,
+    "discounts": 0,
+    "paidRenders": 0,
+    "metricoolDraftUpdates": 4,
+    "metricoolSuccessfulMutations": 8,
+    "metricoolValidationRejectedAttempts": 1,
+    "metricoolBlindRetries": 0
+  },
+  "untouched": {
+    "r174PinterestPinAndRegister": true,
+    "existing2026_11_18GarlicDrafts": true,
+    "otherBrands": true
+  },
+  "salesAttribution": "unknown_not_claimed",
+  "rankingImpact": "unknown",
+  "fullPublicationHistory": "unknown",
+  "claudeReceipt": "unknown_no_claude_receipt",
+  "correctionLog": {
+    "reason": "Independent QA found non-BT.709 signalling in the first export.",
+    "firstExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+    "firstExportMetricoolIds": [
+      424110822,
+      424111092,
+      424111358,
+      424111650
+    ],
+    "firstInstagramUpdateRejectedBeforeMutation": "networkData contained default twitter data not listed in providers",
+    "targetedReadbackAfterRejection": "unchanged",
+    "correctiveAction": "Same four stable UUIDs updated once with clean BT.709 export; no replacement posts.",
+    "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+  }
+}

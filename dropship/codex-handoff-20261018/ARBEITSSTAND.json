@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 175,
-  "updatedAt": "2026-11-11T08:27:31+01:00",
+  "revision": 176,
+  "updatedAt": "2026-11-11T09:16:00+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2984,12 +2984,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r175_read_only_content_sales_package_current_plan_metrics_products_master_klaviyo_seo_receipt_unknown",
+      "state": "r176_one_bt709_technical_projector_draft_four_metricool_drafts_no_schedule_no_publish_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_CANONICAL_CONTENT_SALES_READ_ONLY_PLAN_METRICS_PRODUCTS_MASTER_KLAVIYO_SEO_HANDOFF_NO_WRITES",
-      "lastEvidence": "R175 bindet Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/EuropeZurich/sechs Kanäle. Plan11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Draftzustände; YouTube15.11 und alle sechs16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt unverändert PENDING und nicht veröffentlicht. Einmalige Tageskennzahlen und ein Klaviyo-Report mit unknown-Lücken; zwei Produkte und Mastergates geprüft. Ein Beauty-SEO- und ein VbLQj6-Betreffentwurf zur Freigabe.0 Plattformwrites; Receipt unknown. Access-Nachtrag: Repo-CJ-Helfer vorhanden; im aktuellen Prozess keine CJ-Laufzeit-Credential-Variablennamen und vier lokale Referenzpfade fehlen. Kein Connector-Negativbeweis;0 CJ-/API-/Katalogreads oder Writes.",
-      "nextAllowedStep": "Claude Code liest Revision175 und bestätigt Kenntnisnahme nur mit echtem LuxeStyle-/Branch-/Revisions- oder Commit-Receipt. R174-Pin nach Fälligkeit über dieselbe UUID lesen. Beauty-Collection- und VbLQj6-Diff nur nach konkreter Freigabe und frischem Original/Diff; Klaviyo DRAFT lassen. Keine neue Automation oder Frequenz.",
+      "belegArt": "R176_OWNER_DRAFT_ONLY_RENDER_BT709_HASH_REMOTE_BYTE_IDENTITY_AND_CHANNEL_READBACK",
+      "lastEvidence": "R176 direct owner scope applied: exactly one 18s 1080x1920/25fps BT.709/tv technical projector MP4, SHA fac2f767…27df6a, and four Metricool drafts. The same UUIDs were updated after QA; IG424123014, FB424123199, TikTok424123388 and YT424123545 are PENDING/draft=true/autoPublish=false and final remote media hashes match. One first IG update payload was rejected before mutation, targeted readback was unchanged, then one corrected write succeeded;0 blind retry. No active schedule/publication. Exact A–G binding, collection membership, hash-bound source rights, premium master acceptance and persistent archive remain open.",
+      "nextAllowedStep": "Claude Code reads revision176 and acknowledges only with a real branch/revision/commit receipt. Keep the four objects as drafts until exact variant, collection, rights, premium QA and archive gates pass; then the existing approval automation may evaluate them. Do not create replacement posts or enable autoPublish blindly.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3256,6 +3256,30 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+          "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+          "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+          "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+          "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+          "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+          "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+          "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+          "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+          "readAt": "2026-11-11T09:16:00+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3591,6 +3615,38 @@
             "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-11T09:09:37+01:00",
+          "sourceRevision": 175,
+          "previous": {
+            "state": "r175_read_only_content_sales_package_current_plan_metrics_products_master_klaviyo_seo_receipt_unknown",
+            "belegArt": "R175_CANONICAL_CONTENT_SALES_READ_ONLY_PLAN_METRICS_PRODUCTS_MASTER_KLAVIYO_SEO_HANDOFF_NO_WRITES",
+            "lastEvidence": "R175 bindet Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/EuropeZurich/sechs Kanäle. Plan11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Draftzustände; YouTube15.11 und alle sechs16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt unverändert PENDING und nicht veröffentlicht. Einmalige Tageskennzahlen und ein Klaviyo-Report mit unknown-Lücken; zwei Produkte und Mastergates geprüft. Ein Beauty-SEO- und ein VbLQj6-Betreffentwurf zur Freigabe.0 Plattformwrites; Receipt unknown. Access-Nachtrag: Repo-CJ-Helfer vorhanden; im aktuellen Prozess keine CJ-Laufzeit-Credential-Variablennamen und vier lokale Referenzpfade fehlen. Kein Connector-Negativbeweis;0 CJ-/API-/Katalogreads oder Writes.",
+            "nextAllowedStep": "Claude Code liest Revision175 und bestätigt Kenntnisnahme nur mit echtem LuxeStyle-/Branch-/Revisions- oder Commit-Receipt. R174-Pin nach Fälligkeit über dieselbe UUID lesen. Beauty-Collection- und VbLQj6-Diff nur nach konkreter Freigabe und frischem Original/Diff; Klaviyo DRAFT lassen. Keine neue Automation oder Frequenz.",
+            "blockers": [
+              "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+              "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+              "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+              "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+              "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+              "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+              "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+              "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+              "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+              "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+              "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -3952,18 +4008,170 @@
           "cjWrites": 0,
           "apiWrites": 0
         }
+      },
+      "run176": {
+        "documentationRevision": 176,
+        "observedAt": "2026-11-11T09:16:00+01:00",
+        "ownerDirective": "maximum_two_videos_metricool_draft_only",
+        "identity": {
+          "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+          "metricoolBrandId": 6227837,
+          "timezone": "Europe/Zurich",
+          "channelsMatchExpected": true,
+          "otherBrandsTouched": false
+        },
+        "film": {
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "classification": "technical_review_draft_not_professional_master",
+          "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "bytes": 5535209,
+          "durationSeconds": 18.0,
+          "width": 1080,
+          "height": 1920,
+          "fps": 25,
+          "videoCodec": "H264",
+          "audioCodec": "AAC",
+          "professionalMasterApproved": false,
+          "persistentLocalCopy": false,
+          "colorMetadata": {
+            "range": "tv",
+            "space": "bt709",
+            "transfer": "bt709",
+            "primaries": "bt709",
+            "validation": "PASS"
+          }
+        },
+        "music": {
+          "path": "automation/music/luxe-premium.wav",
+          "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+          "tool": "Python MIDI + FluidSynth; SoX/FFmpeg mastering",
+          "soundfont": "FluidR3_GM.sf2",
+          "packageReference": "Debian fluid-soundfont 3.1-6",
+          "license": "MIT",
+          "historicalWavBuildVersionHashBound": false,
+          "ownerHearingApprovalForDraftDelivery": true
+        },
+        "product": {
+          "productId": "15521256604033",
+          "status": "ACTIVE",
+          "publicHttpStatus": 200,
+          "storefrontCartFormPresent": true,
+          "purchasable": true,
+          "guardHits": [],
+          "rueckholHits": [],
+          "variants": "A_to_G",
+          "exactVariantBinding": null,
+          "collectionAusTiktokUndInstagram": false
+        },
+        "metricool": {
+          "drafts": 4,
+          "scheduled": 0,
+          "published": 0,
+          "allStatus": "PENDING",
+          "allDraft": true,
+          "allAutoPublishFalse": true,
+          "remoteMediaByteIdentical": true,
+          "instagram": {
+            "id": 424123014,
+            "uuid": "4156060813550767248",
+            "previousId": 424110822
+          },
+          "facebook": {
+            "id": 424123199,
+            "uuid": "6680239273933357186",
+            "previousId": 424111092
+          },
+          "tiktok": {
+            "id": 424123388,
+            "uuid": "3614365779669041576",
+            "previousId": 424111358
+          },
+          "youtube": {
+            "id": 424123545,
+            "uuid": "-7647174116509334899",
+            "previousId": 424111650
+          },
+          "createWrites": 4,
+          "updateWrites": 4,
+          "successfulMutations": 8,
+          "validationRejectedBeforeMutation": 1,
+          "blindRetries": 0,
+          "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+        },
+        "openGates": [
+          "exact_A_to_G_variant_binding",
+          "product_missing_from_aus_tiktok_und_instagram",
+          "hash_bound_commercial_source_and_edit_social_metricool_rights",
+          "premium_master_acceptance",
+          "persistent_local_archive"
+        ],
+        "otherWrites": {
+          "shopify": 0,
+          "collections": 0,
+          "klaviyo": 0,
+          "dns": 0,
+          "merchant": 0,
+          "feeds": 0,
+          "ads": 0,
+          "budgets": 0,
+          "discounts": 0,
+          "customers": 0,
+          "paidRenders": 0
+        },
+        "receiptState": "unknown_no_claude_receipt",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+            "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+            "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+            "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+            "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+            "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+            "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+            "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+            "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          }
+        ],
+        "instructionSource": {
+          "branch": "claude/luxestyle-sparmodus-1111",
+          "pullRequest": 3085,
+          "mergedToMain": false,
+          "directChatConfirmationApplied": true
+        },
+        "correctionLog": {
+          "reason": "initial export lacked clean BT.709 signalling",
+          "initialExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+          "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "stableUuidsPreserved": true,
+          "replacementPosts": 0,
+          "firstInstagramUpdateRejectedBeforeMutation": true,
+          "targetedReadbackBeforeCorrectedWrite": "unchanged"
+        }
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r175_storyboard_only_source_reference_and_music_technical_read_a_to_g_rights_native_takes_and_master_mp4_missing",
+      "state": "r176_bt709_technical_mp4_and_four_drafts_professional_master_and_release_still_blocked",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_PROJECTOR_CURRENT_VARIANTS_REFERENCE_SOURCE_MUSIC_AND_EXACT_18S_STORYBOARD_NO_GO_NO_RENDER",
-      "lastEvidence": "Projektor15521256604033 ACTIVE/HTTP200/kaufbar; A–G68122445283719–68122445480327, CHF34.90–51.90, untracked/CONTINUE/Menge0 und Tag `auswahl-offen`. Referenzquelle SHA2bb28156…d57 ist960×540/25fps; 9:16 nutzt nur etwa304×540, verwirft rund68% Breite und erfordert3.55-fache Skalierung. Pflichtmusik a7674eca…88 ist technisch vorhanden, aber Manifest/Lizenz/Hör-/Mixabnahme fehlen. Zwei Hooks und ein exakter18s-/540-Frame-Plan fortgeführt. A–G-/Einheitenbindung, native Takes, dateigebundene Rechte, finale MP4, Qualitätsabnahme und Ledger fehlen.0 Render/Upload/Publish. Lokale source-/Storyboard-/Aktualisierungs- und social-audio-korrektur-Pfade fehlen aktuell; Repo-Helfer belegen keinen nutzbaren CJ-Runtime-Zugang. Keine CJ-/API-/Katalogabfrage.",
-      "nextAllowedStep": "Genau eine A–G-Ausführung über Varianten-ID, SKU, CJ-VID, vollständiges Motivset und dieselbe physische Einheit binden. Vier native1080×1920/30fps-Takes mit Mindestlängen, Hashes und kontinuierlichem Einheitenbeleg sowie kommerziellen Rechten beschaffen. Musikrecht/Hör-/Mixabnahme schliessen; erst dann kostenlos lokal18s/540Frames rendern und vollständig prüfen.",
+      "belegArt": "R176_ACTUAL_MP4_TECHNICAL_QA_BT709_MUSIC_MATCH_PRODUCT_AND_METRICOOL_DRAFT_READBACK",
+      "lastEvidence": "One actual technical MP4 exists:18s,1080x1920/25fps,H264/AAC,BT.709/tv,SHA fac2f767…27df6a, canonical music matched, no persons/hands/prices/delivery/stock/foreign brands/text. It is not a professional master: A–G and rights are open;960x540 source, blur fill,6s still animation, projection without visible device and volatile archive fail premium release. Four stable channel UUIDs are confirmed drafts only.",
+      "nextAllowedStep": "Bind one exact A–G variant and motif to the footage, obtain hash-bound commercial edit/social/Metricool rights, add the product to the required social collection only after explicit shop-change approval, replace weak landscape/still sections with native vertical product-action footage, export clean BT.709, archive persistently and review the same master before any release.",
       "blockers": [
         "Keine aktuelle A–G-Ausführung, kein Motivset und keine physische Filmeinheit gebunden.",
         "Vorhandene960x540/25fps-Quelle ist keine professionelle native Hochkantquelle.",
@@ -4377,6 +4585,30 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+          "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+          "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+          "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+          "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+          "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+          "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+          "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+          "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+          "readAt": "2026-11-11T09:16:00+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4875,6 +5107,35 @@
             "R173: Framevergleich belegt nur die Produktfamilie; Motivüberschneidungen und identische C/E- sowie D/F-Bilder verhindern eine eindeutige A–G-Zuordnung."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-11T09:09:37+01:00",
+          "sourceRevision": 175,
+          "previous": {
+            "state": "r175_storyboard_only_source_reference_and_music_technical_read_a_to_g_rights_native_takes_and_master_mp4_missing",
+            "belegArt": "R175_PROJECTOR_CURRENT_VARIANTS_REFERENCE_SOURCE_MUSIC_AND_EXACT_18S_STORYBOARD_NO_GO_NO_RENDER",
+            "lastEvidence": "Projektor15521256604033 ACTIVE/HTTP200/kaufbar; A–G68122445283719–68122445480327, CHF34.90–51.90, untracked/CONTINUE/Menge0 und Tag `auswahl-offen`. Referenzquelle SHA2bb28156…d57 ist960×540/25fps; 9:16 nutzt nur etwa304×540, verwirft rund68% Breite und erfordert3.55-fache Skalierung. Pflichtmusik a7674eca…88 ist technisch vorhanden, aber Manifest/Lizenz/Hör-/Mixabnahme fehlen. Zwei Hooks und ein exakter18s-/540-Frame-Plan fortgeführt. A–G-/Einheitenbindung, native Takes, dateigebundene Rechte, finale MP4, Qualitätsabnahme und Ledger fehlen.0 Render/Upload/Publish. Lokale source-/Storyboard-/Aktualisierungs- und social-audio-korrektur-Pfade fehlen aktuell; Repo-Helfer belegen keinen nutzbaren CJ-Runtime-Zugang. Keine CJ-/API-/Katalogabfrage.",
+            "nextAllowedStep": "Genau eine A–G-Ausführung über Varianten-ID, SKU, CJ-VID, vollständiges Motivset und dieselbe physische Einheit binden. Vier native1080×1920/30fps-Takes mit Mindestlängen, Hashes und kontinuierlichem Einheitenbeleg sowie kommerziellen Rechten beschaffen. Musikrecht/Hör-/Mixabnahme schliessen; erst dann kostenlos lokal18s/540Frames rendern und vollständig prüfen.",
+            "blockers": [
+              "Keine aktuelle A–G-Ausführung, kein Motivset und keine physische Filmeinheit gebunden.",
+              "Vorhandene960x540/25fps-Quelle ist keine professionelle native Hochkantquelle.",
+              "Vier native1080x1920/30fps-Pflichtaufnahmen derselben Einheit fehlen.",
+              "Hashgebundene kommerzielle Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanalrechte fehlen.",
+              "Musikprovenienz sowie Hör- und Mixabnahme fehlen.",
+              "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Publikationsfreigabe.",
+              "R167: Der bereitgestellte Drive-Link ist ein Merchant-CSV und liefert kein Film-, Produktbindungs- oder Rechteartefakt.",
+              "R169: Aktuelle Tags enthalten `auswahl-offen`; keine konkrete A–G-Ausführung oder gefilmte Einheit gebunden.",
+              "R169: Rechtebogen bleibt unausgefüllter Entwurf und ist keine Lizenz; professionelle Master-MP4 fehlt.",
+              "R172: Aktueller Shopify-CDN-Export852×480/25fps ist nur Referenz, keine professionelle native Hochkantquelle.",
+              "R172: Video-GID/Exporthash belegen keine konkrete A–G-Ausführung, physische Einheit, Lieferumfangs- oder Werberechtebindung.",
+              "R172: `/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4` fehlt aktuell; keine korrigierte Kristallausspielung.",
+              "R173: Framevergleich belegt nur die Produktfamilie; Motivüberschneidungen und identische C/E- sowie D/F-Bilder verhindern eine eindeutige A–G-Zuordnung.",
+              "R175: Referenzquelle960×540/25fps verliert beim9:16-Crop rund68 Prozent Breite und ist keine professionelle native Hochkantquelle.",
+              "R175: Musikdatei ist technisch vorhanden; Manifest-/Lizenzbeleg sowie finale Hör- und Mixabnahme fehlen.",
+              "R175: Keine professionelle Master-MP4; Storyboard ist kein Video und keine Publikationsfreigabe.",
+              "R175: Lokale source-, social-audio-korrektur-, MASTER-STORYBOARD- und AKTUALISIERUNG-Referenzen fehlen aktuell; CJ-Runtime war mangels Prozess-Credentialvariablennamen nicht nutzbar."
+            ]
+          }
         }
       ],
       "visualAcceptanceDraft": {
@@ -5520,6 +5781,158 @@
           "catalogReads": 0,
           "cjWrites": 0,
           "apiWrites": 0
+        }
+      },
+      "run176": {
+        "documentationRevision": 176,
+        "observedAt": "2026-11-11T09:16:00+01:00",
+        "ownerDirective": "maximum_two_videos_metricool_draft_only",
+        "identity": {
+          "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+          "metricoolBrandId": 6227837,
+          "timezone": "Europe/Zurich",
+          "channelsMatchExpected": true,
+          "otherBrandsTouched": false
+        },
+        "film": {
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "classification": "technical_review_draft_not_professional_master",
+          "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "bytes": 5535209,
+          "durationSeconds": 18.0,
+          "width": 1080,
+          "height": 1920,
+          "fps": 25,
+          "videoCodec": "H264",
+          "audioCodec": "AAC",
+          "professionalMasterApproved": false,
+          "persistentLocalCopy": false,
+          "colorMetadata": {
+            "range": "tv",
+            "space": "bt709",
+            "transfer": "bt709",
+            "primaries": "bt709",
+            "validation": "PASS"
+          }
+        },
+        "music": {
+          "path": "automation/music/luxe-premium.wav",
+          "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+          "tool": "Python MIDI + FluidSynth; SoX/FFmpeg mastering",
+          "soundfont": "FluidR3_GM.sf2",
+          "packageReference": "Debian fluid-soundfont 3.1-6",
+          "license": "MIT",
+          "historicalWavBuildVersionHashBound": false,
+          "ownerHearingApprovalForDraftDelivery": true
+        },
+        "product": {
+          "productId": "15521256604033",
+          "status": "ACTIVE",
+          "publicHttpStatus": 200,
+          "storefrontCartFormPresent": true,
+          "purchasable": true,
+          "guardHits": [],
+          "rueckholHits": [],
+          "variants": "A_to_G",
+          "exactVariantBinding": null,
+          "collectionAusTiktokUndInstagram": false
+        },
+        "metricool": {
+          "drafts": 4,
+          "scheduled": 0,
+          "published": 0,
+          "allStatus": "PENDING",
+          "allDraft": true,
+          "allAutoPublishFalse": true,
+          "remoteMediaByteIdentical": true,
+          "instagram": {
+            "id": 424123014,
+            "uuid": "4156060813550767248",
+            "previousId": 424110822
+          },
+          "facebook": {
+            "id": 424123199,
+            "uuid": "6680239273933357186",
+            "previousId": 424111092
+          },
+          "tiktok": {
+            "id": 424123388,
+            "uuid": "3614365779669041576",
+            "previousId": 424111358
+          },
+          "youtube": {
+            "id": 424123545,
+            "uuid": "-7647174116509334899",
+            "previousId": 424111650
+          },
+          "createWrites": 4,
+          "updateWrites": 4,
+          "successfulMutations": 8,
+          "validationRejectedBeforeMutation": 1,
+          "blindRetries": 0,
+          "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+        },
+        "openGates": [
+          "exact_A_to_G_variant_binding",
+          "product_missing_from_aus_tiktok_und_instagram",
+          "hash_bound_commercial_source_and_edit_social_metricool_rights",
+          "premium_master_acceptance",
+          "persistent_local_archive"
+        ],
+        "otherWrites": {
+          "shopify": 0,
+          "collections": 0,
+          "klaviyo": 0,
+          "dns": 0,
+          "merchant": 0,
+          "feeds": 0,
+          "ads": 0,
+          "budgets": 0,
+          "discounts": 0,
+          "customers": 0,
+          "paidRenders": 0
+        },
+        "receiptState": "unknown_no_claude_receipt",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+            "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+            "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+            "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+            "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+            "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+            "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+            "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+            "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          }
+        ],
+        "instructionSource": {
+          "branch": "claude/luxestyle-sparmodus-1111",
+          "pullRequest": 3085,
+          "mergedToMain": false,
+          "directChatConfirmationApplied": true
+        },
+        "correctionLog": {
+          "reason": "initial export lacked clean BT.709 signalling",
+          "initialExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+          "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "stableUuidsPreserved": true,
+          "replacementPosts": 0,
+          "firstInstagramUpdateRejectedBeforeMutation": true,
+          "targetedReadbackBeforeCorrectedWrite": "unchanged"
         }
       }
     },
@@ -13111,12 +13524,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r175_metricool_plan_read_only_r174_pinterest_pending_unchanged_unknown_board_fail_closed_no_social_write",
+      "state": "r176_four_projector_bt709_review_drafts_confirmed_no_active_schedule_or_publish",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_METRICOOL_IDENTITY_PLAN_DUE_STATES_GAPS_DRAFTS_DUPLICATES_R174_PIN_AND_UNKNOWN_BOARD_READ_ONLY",
-      "lastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten PASS. Planung11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Zustände am18.11.;0 erkannte exakte kanalgleiche Slot-/Text-/Mediendoppel. YouTube15.11 und alle sechs Kanäle16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt 15.11.20:00 PENDING/draftfalse/autopublishtrue auf Board1111333714239114020, unverändert und nicht veröffentlicht. Pin422791720 nutzt Board1111333714239114033; Name/Eigentum unbekannt.0 Socialwrites.",
-      "nextAllowedStep": "R174-UUID6213007717183669914 nach15.11.20:00 kanalbezogen lesen; nur PUBLISHED mit Plattform-ID/URL als veröffentlicht bezeichnen, bei unknown keinen Ersatz/Retry. Board1111333714239114033 nicht kopieren oder ändern. Planlücken nur mit qualifiziertem, produkt-/rechtegebundenem Medium und vollständigem Kanalpreflight schliessen.",
+      "belegArt": "R176_METRICOOL_FOUR_CHANNEL_DRAFT_CREATE_UPDATE_AND_READBACK_REMOTE_HASH_MATCH",
+      "lastEvidence": "Brand6227837/Europe-Zurich and expected channels PASS. Four projector drafts were created and the same UUIDs updated with the corrected BT.709 export: IG424123014, FB424123199, TikTok424123388, YouTube424123545; all PENDING/draft=true/autoPublish=false, final remote MP4 byte-identical. One IG validation rejection occurred before mutation; targeted readback was unchanged and no blind retry/replacement occurred. Desired draft dates16/17/19 Nov are not active schedules. Existing garlic drafts and R174 Pinterest register untouched.",
+      "nextAllowedStep": "Keep current UUIDs and read these exact objects; no retry or replacement. Approval automation may act only after all product, collection, rights, premium-quality and archive gates pass. A PENDING draft date is never publication evidence.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -13304,6 +13717,30 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+          "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+          "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+          "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+          "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+          "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+          "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+          "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+          "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+          "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+          "readAt": "2026-11-11T09:16:00+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -13634,6 +14071,36 @@
             "R174: Historienprüfung01.–18.11. lieferte0 Treffer im begrenzten Scope; ältere, versteckte oder serverseitig trunkierte Pinterest-Historie bleibt unbekannt."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-11T09:09:37+01:00",
+          "sourceRevision": 175,
+          "previous": {
+            "state": "r175_metricool_plan_read_only_r174_pinterest_pending_unchanged_unknown_board_fail_closed_no_social_write",
+            "belegArt": "R175_METRICOOL_IDENTITY_PLAN_DUE_STATES_GAPS_DRAFTS_DUPLICATES_R174_PIN_AND_UNKNOWN_BOARD_READ_ONLY",
+            "lastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten PASS. Planung11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Zustände am18.11.;0 erkannte exakte kanalgleiche Slot-/Text-/Mediendoppel. YouTube15.11 und alle sechs Kanäle16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt 15.11.20:00 PENDING/draftfalse/autopublishtrue auf Board1111333714239114020, unverändert und nicht veröffentlicht. Pin422791720 nutzt Board1111333714239114033; Name/Eigentum unbekannt.0 Socialwrites.",
+            "nextAllowedStep": "R174-UUID6213007717183669914 nach15.11.20:00 kanalbezogen lesen; nur PUBLISHED mit Plattform-ID/URL als veröffentlicht bezeichnen, bei unknown keinen Ersatz/Retry. Board1111333714239114033 nicht kopieren oder ändern. Planlücken nur mit qualifiziertem, produkt-/rechtegebundenem Medium und vollständigem Kanalpreflight schliessen.",
+            "blockers": [
+              "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
+              "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
+              "R174: Der konkrete Organizer-Pin ist auf dem verifizierten Board terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben bis zum fälligen UUID-Readback unbekannt.",
+              "Kanalbezogenes Auto-Publish ist ausser Instagram im Payload unbekannt.",
+              "Vollständige Master-/Kanalhistorie und Plattformzustände sind aus der Zukunftsplanung nicht geliefert.",
+              "R174: Pinterest15.11 ist durch genau einen qualifizierten PENDING-Termin belegt; übrige Kanal-/Tageslücken dürfen weiterhin nicht mit minderwertigen oder duplizierten Ersatzposts gefüllt werden.",
+              "R169: Pin422791720/UUID2095739444122305341 verwendet Board1111333714239114033; Name/Eigentum nach exakter öffentlicher Gegenprobe unbekannt.",
+              "R169: Planlücken15.11. Pinterest/YouTube und16.–18.11. alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+              "R172: Aktive Planlücken15.11 Pinterest/YouTube und16.–18.11 alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+              "R172: Vier Knoblauchhacker-Drafts/fünf Zustände am18.11 sind keine Abdeckung und ohne Produkt-/Rechte-/Audio-/Qualitätsnachweis gesperrt.",
+              "R172: Ein globaler PUBLISHED-/PENDING-Zähler ersetzt keine kanalbezogene Plattform-ID/Publikations-URL; fehlende Lieferung bleibt unbekannt.",
+              "R173: Produkt15450838139265 trägt `rueckhol-0907`; vier bytegleiche Knoblauchhacker-Drafts bleiben unabhängig von Technik/Rechten für neue Ausspielung blockiert.",
+              "R173: MP4 4684d4e7…af8e9 ist10.6s/25fps statt15–20s/30fps; exakte Variante, kommerzielle Rechte, Pflichtmusiknachweis und Ledger fehlen.",
+              "R174: PENDING ist kein Publikationsbeleg; Plattform-ID und Publikations-URL sind bis zur Auslieferung unbekannt.",
+              "R174: Historienprüfung01.–18.11. lieferte0 Treffer im begrenzten Scope; ältere, versteckte oder serverseitig trunkierte Pinterest-Historie bleibt unbekannt.",
+              "R175: R174-Pin bleibt PENDING; Plattform-ID/Publikations-URL und tatsächliche Auslieferung sind noch unbekannt.",
+              "R175: Board1111333714239114033 ist nach aktuellem Read weiterhin in Name und Eigentum unbekannt.",
+              "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
+            ]
+          }
         }
       ],
       "latestScheduleReadR67": {
@@ -14448,6 +14915,158 @@
             "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
+      },
+      "run176": {
+        "documentationRevision": 176,
+        "observedAt": "2026-11-11T09:16:00+01:00",
+        "ownerDirective": "maximum_two_videos_metricool_draft_only",
+        "identity": {
+          "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+          "metricoolBrandId": 6227837,
+          "timezone": "Europe/Zurich",
+          "channelsMatchExpected": true,
+          "otherBrandsTouched": false
+        },
+        "film": {
+          "masterId": "luxe_sternenprojektor_master_20261018",
+          "classification": "technical_review_draft_not_professional_master",
+          "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "bytes": 5535209,
+          "durationSeconds": 18.0,
+          "width": 1080,
+          "height": 1920,
+          "fps": 25,
+          "videoCodec": "H264",
+          "audioCodec": "AAC",
+          "professionalMasterApproved": false,
+          "persistentLocalCopy": false,
+          "colorMetadata": {
+            "range": "tv",
+            "space": "bt709",
+            "transfer": "bt709",
+            "primaries": "bt709",
+            "validation": "PASS"
+          }
+        },
+        "music": {
+          "path": "automation/music/luxe-premium.wav",
+          "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+          "tool": "Python MIDI + FluidSynth; SoX/FFmpeg mastering",
+          "soundfont": "FluidR3_GM.sf2",
+          "packageReference": "Debian fluid-soundfont 3.1-6",
+          "license": "MIT",
+          "historicalWavBuildVersionHashBound": false,
+          "ownerHearingApprovalForDraftDelivery": true
+        },
+        "product": {
+          "productId": "15521256604033",
+          "status": "ACTIVE",
+          "publicHttpStatus": 200,
+          "storefrontCartFormPresent": true,
+          "purchasable": true,
+          "guardHits": [],
+          "rueckholHits": [],
+          "variants": "A_to_G",
+          "exactVariantBinding": null,
+          "collectionAusTiktokUndInstagram": false
+        },
+        "metricool": {
+          "drafts": 4,
+          "scheduled": 0,
+          "published": 0,
+          "allStatus": "PENDING",
+          "allDraft": true,
+          "allAutoPublishFalse": true,
+          "remoteMediaByteIdentical": true,
+          "instagram": {
+            "id": 424123014,
+            "uuid": "4156060813550767248",
+            "previousId": 424110822
+          },
+          "facebook": {
+            "id": 424123199,
+            "uuid": "6680239273933357186",
+            "previousId": 424111092
+          },
+          "tiktok": {
+            "id": 424123388,
+            "uuid": "3614365779669041576",
+            "previousId": 424111358
+          },
+          "youtube": {
+            "id": 424123545,
+            "uuid": "-7647174116509334899",
+            "previousId": 424111650
+          },
+          "createWrites": 4,
+          "updateWrites": 4,
+          "successfulMutations": 8,
+          "validationRejectedBeforeMutation": 1,
+          "blindRetries": 0,
+          "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+        },
+        "openGates": [
+          "exact_A_to_G_variant_binding",
+          "product_missing_from_aus_tiktok_und_instagram",
+          "hash_bound_commercial_source_and_edit_social_metricool_rights",
+          "premium_master_acceptance",
+          "persistent_local_archive"
+        ],
+        "otherWrites": {
+          "shopify": 0,
+          "collections": 0,
+          "klaviyo": 0,
+          "dns": 0,
+          "merchant": 0,
+          "feeds": 0,
+          "ads": 0,
+          "budgets": 0,
+          "discounts": 0,
+          "customers": 0,
+          "paidRenders": 0
+        },
+        "receiptState": "unknown_no_claude_receipt",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+            "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+            "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+            "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+            "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+            "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+            "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+            "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+            "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+            "readAt": "2026-11-11T09:16:00+01:00"
+          }
+        ],
+        "instructionSource": {
+          "branch": "claude/luxestyle-sparmodus-1111",
+          "pullRequest": 3085,
+          "mergedToMain": false,
+          "directChatConfirmationApplied": true
+        },
+        "correctionLog": {
+          "reason": "initial export lacked clean BT.709 signalling",
+          "initialExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+          "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+          "stableUuidsPreserved": true,
+          "replacementPosts": 0,
+          "firstInstagramUpdateRejectedBeforeMutation": true,
+          "targetedReadbackBeforeCorrectedWrite": "unchanged"
+        }
       }
     },
     {
@@ -16175,6 +16794,24 @@
         "evidenceGitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686"
       },
       "summary": "R175 fresh LuxeStyle/Metricool identities and11–19 Nov planning read:53 active objects/67 PENDING states, four non-covering drafts, no detected exact same-channel collision; R174 pin remains unchanged and pending. Once-daily04–10 Nov channel metrics and one Klaviyo30-day report preserve unknown gaps. Two products checked; the one18s projector master remains NO-GO/storyboard only without A–G binding, native takes, rights or MP4. One Beauty SEO and one Welcome-subject approval draft; zero platform/social/render writes, receipt unknown. Precision addendum: repository CJ helpers exist, but current-process CJ runtime credential variables and four named local references were unavailable; this is no proof of a missing connector and no CJ/API/catalog call occurred.",
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 176,
+      "at": "2026-11-11T09:16:00+01:00",
+      "actor": "codex",
+      "source": {
+        "reportPath": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+        "reportGitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+        "evidencePath": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+        "evidenceGitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+        "registerPath": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+        "registerGitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+        "renderScriptPath": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+        "renderScriptGitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab"
+      },
+      "summary": "R176 rendered one 18-second 1080x1920/25fps technical projector draft with the canonical music and created four Metricool drafts after identity checks. Independent QA found incomplete colour signalling; the film was re-exported as BT.709/tv and the same four UUIDs were updated. Final IDs IG424123014, FB424123199, TikTok424123388, YT424123545 remain PENDING/draft=true/autoPublish=false with byte-identical remote media. One first Instagram update payload was rejected before mutation; targeted readback was unchanged, then one corrected write succeeded. Nothing was scheduled or published. Exact A-G binding, social collection membership, hash-bound source rights, premium master acceptance and persistent local archive remain open.",
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
     }
@@ -37613,6 +38250,310 @@
       "catalogReads": 0,
       "cjWrites": 0,
       "apiWrites": 0
+    }
+  },
+  "videoMasterDraftsR176": {
+    "documentationRevision": 176,
+    "observedAt": "2026-11-11T09:16:00+01:00",
+    "ownerDirective": "maximum_two_videos_metricool_draft_only",
+    "identity": {
+      "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+      "metricoolBrandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channelsMatchExpected": true,
+      "otherBrandsTouched": false
+    },
+    "film": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "classification": "technical_review_draft_not_professional_master",
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "bytes": 5535209,
+      "durationSeconds": 18.0,
+      "width": 1080,
+      "height": 1920,
+      "fps": 25,
+      "videoCodec": "H264",
+      "audioCodec": "AAC",
+      "professionalMasterApproved": false,
+      "persistentLocalCopy": false,
+      "colorMetadata": {
+        "range": "tv",
+        "space": "bt709",
+        "transfer": "bt709",
+        "primaries": "bt709",
+        "validation": "PASS"
+      }
+    },
+    "music": {
+      "path": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "tool": "Python MIDI + FluidSynth; SoX/FFmpeg mastering",
+      "soundfont": "FluidR3_GM.sf2",
+      "packageReference": "Debian fluid-soundfont 3.1-6",
+      "license": "MIT",
+      "historicalWavBuildVersionHashBound": false,
+      "ownerHearingApprovalForDraftDelivery": true
+    },
+    "product": {
+      "productId": "15521256604033",
+      "status": "ACTIVE",
+      "publicHttpStatus": 200,
+      "storefrontCartFormPresent": true,
+      "purchasable": true,
+      "guardHits": [],
+      "rueckholHits": [],
+      "variants": "A_to_G",
+      "exactVariantBinding": null,
+      "collectionAusTiktokUndInstagram": false
+    },
+    "metricool": {
+      "drafts": 4,
+      "scheduled": 0,
+      "published": 0,
+      "allStatus": "PENDING",
+      "allDraft": true,
+      "allAutoPublishFalse": true,
+      "remoteMediaByteIdentical": true,
+      "instagram": {
+        "id": 424123014,
+        "uuid": "4156060813550767248",
+        "previousId": 424110822
+      },
+      "facebook": {
+        "id": 424123199,
+        "uuid": "6680239273933357186",
+        "previousId": 424111092
+      },
+      "tiktok": {
+        "id": 424123388,
+        "uuid": "3614365779669041576",
+        "previousId": 424111358
+      },
+      "youtube": {
+        "id": 424123545,
+        "uuid": "-7647174116509334899",
+        "previousId": 424111650
+      },
+      "createWrites": 4,
+      "updateWrites": 4,
+      "successfulMutations": 8,
+      "validationRejectedBeforeMutation": 1,
+      "blindRetries": 0,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+    },
+    "openGates": [
+      "exact_A_to_G_variant_binding",
+      "product_missing_from_aus_tiktok_und_instagram",
+      "hash_bound_commercial_source_and_edit_social_metricool_rights",
+      "premium_master_acceptance",
+      "persistent_local_archive"
+    ],
+    "otherWrites": {
+      "shopify": 0,
+      "collections": 0,
+      "klaviyo": 0,
+      "dns": 0,
+      "merchant": 0,
+      "feeds": 0,
+      "ads": 0,
+      "budgets": 0,
+      "discounts": 0,
+      "customers": 0,
+      "paidRenders": 0
+    },
+    "receiptState": "unknown_no_claude_receipt",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+        "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+        "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+        "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+        "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+        "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+        "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+        "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+        "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      }
+    ],
+    "instructionSource": {
+      "branch": "claude/luxestyle-sparmodus-1111",
+      "pullRequest": 3085,
+      "mergedToMain": false,
+      "directChatConfirmationApplied": true
+    },
+    "correctionLog": {
+      "reason": "initial export lacked clean BT.709 signalling",
+      "initialExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+      "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "stableUuidsPreserved": true,
+      "replacementPosts": 0,
+      "firstInstagramUpdateRejectedBeforeMutation": true,
+      "targetedReadbackBeforeCorrectedWrite": "unchanged"
+    }
+  },
+  "run176": {
+    "documentationRevision": 176,
+    "observedAt": "2026-11-11T09:16:00+01:00",
+    "ownerDirective": "maximum_two_videos_metricool_draft_only",
+    "identity": {
+      "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+      "metricoolBrandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channelsMatchExpected": true,
+      "otherBrandsTouched": false
+    },
+    "film": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "classification": "technical_review_draft_not_professional_master",
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "bytes": 5535209,
+      "durationSeconds": 18.0,
+      "width": 1080,
+      "height": 1920,
+      "fps": 25,
+      "videoCodec": "H264",
+      "audioCodec": "AAC",
+      "professionalMasterApproved": false,
+      "persistentLocalCopy": false,
+      "colorMetadata": {
+        "range": "tv",
+        "space": "bt709",
+        "transfer": "bt709",
+        "primaries": "bt709",
+        "validation": "PASS"
+      }
+    },
+    "music": {
+      "path": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "tool": "Python MIDI + FluidSynth; SoX/FFmpeg mastering",
+      "soundfont": "FluidR3_GM.sf2",
+      "packageReference": "Debian fluid-soundfont 3.1-6",
+      "license": "MIT",
+      "historicalWavBuildVersionHashBound": false,
+      "ownerHearingApprovalForDraftDelivery": true
+    },
+    "product": {
+      "productId": "15521256604033",
+      "status": "ACTIVE",
+      "publicHttpStatus": 200,
+      "storefrontCartFormPresent": true,
+      "purchasable": true,
+      "guardHits": [],
+      "rueckholHits": [],
+      "variants": "A_to_G",
+      "exactVariantBinding": null,
+      "collectionAusTiktokUndInstagram": false
+    },
+    "metricool": {
+      "drafts": 4,
+      "scheduled": 0,
+      "published": 0,
+      "allStatus": "PENDING",
+      "allDraft": true,
+      "allAutoPublishFalse": true,
+      "remoteMediaByteIdentical": true,
+      "instagram": {
+        "id": 424123014,
+        "uuid": "4156060813550767248",
+        "previousId": 424110822
+      },
+      "facebook": {
+        "id": 424123199,
+        "uuid": "6680239273933357186",
+        "previousId": 424111092
+      },
+      "tiktok": {
+        "id": 424123388,
+        "uuid": "3614365779669041576",
+        "previousId": 424111358
+      },
+      "youtube": {
+        "id": 424123545,
+        "uuid": "-7647174116509334899",
+        "previousId": 424111650
+      },
+      "createWrites": 4,
+      "updateWrites": 4,
+      "successfulMutations": 8,
+      "validationRejectedBeforeMutation": 1,
+      "blindRetries": 0,
+      "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a"
+    },
+    "openGates": [
+      "exact_A_to_G_variant_binding",
+      "product_missing_from_aus_tiktok_und_instagram",
+      "hash_bound_commercial_source_and_edit_social_metricool_rights",
+      "premium_master_acceptance",
+      "persistent_local_archive"
+    ],
+    "otherWrites": {
+      "shopify": 0,
+      "collections": 0,
+      "klaviyo": 0,
+      "dns": 0,
+      "merchant": 0,
+      "feeds": 0,
+      "ads": 0,
+      "budgets": 0,
+      "discounts": 0,
+      "customers": 0,
+      "paidRenders": 0
+    },
+    "receiptState": "unknown_no_claude_receipt",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+        "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+        "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+        "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+        "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+        "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+        "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+        "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+        "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+        "readAt": "2026-11-11T09:16:00+01:00"
+      }
+    ],
+    "instructionSource": {
+      "branch": "claude/luxestyle-sparmodus-1111",
+      "pullRequest": 3085,
+      "mergedToMain": false,
+      "directChatConfirmationApplied": true
+    },
+    "correctionLog": {
+      "reason": "initial export lacked clean BT.709 signalling",
+      "initialExportSha256": "f2d2310d9211e9f6625c0c03b1606017233683e2750de56576f82c3c518ad131",
+      "finalExportSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "stableUuidsPreserved": true,
+      "replacementPosts": 0,
+      "firstInstagramUpdateRejectedBeforeMutation": true,
+      "targetedReadbackBeforeCorrectedWrite": "unchanged"
     }
   }
 }

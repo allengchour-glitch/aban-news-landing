@@ -2164,3 +2164,17 @@ Repo-Access-Nachtrag: Vorhandene CJ-Helfer/Workflows einschliesslich `automation
 [R175 Paket](CONTENT-VERKAUFSPAKET-20261111-R175.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261111-R175.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R175_20261111]
+
+## Aktueller Stand – 11.11.2026, Revision 176: ein Film als vier gesperrte Metricool-Drafts
+
+Die direkte Besitzerbestätigung begrenzt R176 auf höchstens zwei Videos und ausschliesslich Metricool-Drafts. Genau ein 18.000-Sekunden-Film wurde als technischer Entwurf erzeugt: `luxe_sternenprojektor_master_20261018`, 1080×1920/25 fps, H.264/AAC, BT.709/tv, SHA-256 `fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a`. Die Pflichtmusik `automation/music/luxe-premium.wav` trägt SHA-256 `a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688`; Python-MIDI + FluidSynth, Mastering mit SoX/FFmpeg, `FluidR3_GM.sf2`, Debian `fluid-soundfont` 3.1-6 und MIT sind dokumentiert. Die historische Build-Version der WAV ist nicht hashgebunden. Der Quellton wurde entfernt; -13.3 LUFS und -1.8 dBTP wurden gemessen.
+
+Shopify-Produkt `15521256604033` ist ACTIVE, HTTP200, mit vorhandenem Warenkorbformular und kaufbaren Varianten, ohne Sperrtag-/`rueckhol`-Treffer. Alle sieben A–G-Varianten sind verfügbar, ungetrackt, `CONTINUE`, Menge0. Die exakte A–G-Filmbindung bleibt unbekannt. Das Produkt ist nach vollständigem frischem Read nicht in `aus-tiktok-und-instagram`; keine Kollektionsänderung erfolgte. Filmquellenrechte, Master-Provenienz und professionelle Master-Abnahme bleiben offen. Die gerenderte Datei ist deshalb ein technischer Draft, keine freigegebene professionelle Master-MP4.
+
+Nach vollständiger LuxeStyle-/Metricool-Identitätsprüfung wurden genau vier Objekte angelegt. Eine unabhängige QA fand danach fehlende BT.709-Signalisierung; derselbe Film wurde korrigiert und über dieselben vier UUIDs aktualisiert. Aktueller Readback: Instagram ID `424123014`/UUID `4156060813550767248` und Facebook ID `424123199`/UUID `6680239273933357186` mit Entwurfsdatum 16.11.19:00; TikTok ID `424123388`/UUID `3614365779669041576` mit Entwurfsdatum 17.11.19:00, `ownBrand=true`; YouTube ID `424123545`/UUID `-7647174116509334899` mit Entwurfsdatum 19.11.19:00, `madeForKids=false`, `#Shorts`. Alle Zeiten Europe/Zurich; alle `PENDING`, `draft=true`, `autoPublish=false`. Ein erster Instagram-Update-Payload wurde vor Mutation abgewiesen; nach gezieltem unverändertem Readback folgte genau ein korrigierter Write. Die finalen Remote-MP4s sind bytegleich zur lokalen BT.709-Datei. Diese Zustände sind Drafts, keine aktiven Termine oder Veröffentlichungen.
+
+Keine Threads-/Pinterest-Drafts, keine Shopify-/Kollektions-/sonstigen Writes und keine Änderung der Knoblauchhacker-Drafts vom18.11. oder des R174-Pinterest-Registers. `/workspace` war voll; die lokale MP4 liegt flüchtig in `/dev/shm`, die Metricool-Medien sind remote gespeichert. Verkauf-, Ranking- und vollständige Historienwirkung bleiben unbekannt.
+
+[R176 Bericht](VIDEO-MASTER-DRAFTS-20261111-R176.md) · [Maschinenbeleg](VIDEO-MASTER-DRAFTS-20261111-R176.json) · [Draft-Register](register/draft-luxe_sternenprojektor_master_20261018-r176.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R176_20261111]
