@@ -465,3 +465,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Genau ein Write, kein Retry. Readback bestätigte genau ein Slotobjekt samt Titel, Text, UTM, Alttext, Board und Medium. Plattform-ID/Publikations-URL bleiben bis zur tatsächlichen Auslieferung unbekannt.
 5. Neues Pinterest-Register `register/pinterest-luxe_photo_kosmetik_organizer_20261101.json`; bestehenden Threads-Beleg nicht verändern. Begrenzte Historie 01.–18.11.:102 Objekte/14 Pins/14 Hashes/0 Treffer; ältere/versteckte/trunkierte Historie unbekannt.
 6. Projektor-Master und Knoblauchhacker-Sperren bleiben offen. Keine Kennzahlen-, Klaviyo-, GSC-, breite Verkaufs-/Merchant- oder Bestellabfrage wiederholen. Belege `PINTEREST-PUSH-20261110-R174.md/.json`; 08/14/19 unverändert; Receipt `unknown_no_claude_receipt`.
+
+## R175 – Content-/Verkaufspaket 11.11., keine operativen Writes
+
+[LUXESTYLE_R175_20261111]
+
+1. Identitäten PASS. Metricool11.–15.11.:53 aktive Objekte/67 PENDING-Zustände;15.11 YouTube offen,16.–19.11 alle sechs offen.18.11-Drafts zählen nicht. R174-Pin ID423622854/UUID6213007717183669914 bleibt15.11.20:00 PENDING/draftfalse/autopublishtrue, nicht veröffentlicht. Board1111333714239114033 eines anderen Pins unbekannt; nicht kopieren/ändern.
+2. Kennzahlen04.–10.11. heute einmalig gelesen: IG750 Views; TT2810 Views/7 Interaktionen auf6 Tagen; YT609 Views auf5; Pinterest4383 Impressionen/56 Interaktionen auf5. FB/Threads und fehlende Tage unknown. Keine Verkaufsableitung und heute nicht wiederholen.
+3. Produkte: Projektor15521256604033 mit sieben A–G-Varianten CHF34.90–51.90 und Organizer15408458236289/Variante55732479590785/CHF29.90 ACTIVE/kaufbar/untracked/CONTINUE. Menge0 ist kein Bestands-/Lieferzeitbeleg. Projektor `auswahl-offen`; historische Variante56197916361089 nicht verwenden.
+4. Master bleibt Storyboard: Quelle960×540/25fps/SHA2bb28156…d57; A–G-/Einheitenbindung, native Hochkanttakes, dateigebundene Rechte, Musikmanifest/-lizenz/-Mixabnahme, finale1080×1920/30fps-MP4 und Ledger fehlen. Kein Render/Upload/Termin.
+5. Klaviyo: W7XTVD; Vse76a/VbLQj6/RnTvsY DRAFT, XEGbTB LIVE. Einziger Vorschlag: VbLQj6-Betreff `Willkommen bei LuxeStyle`, Flow DRAFT lassen bis Angebot/Capture belegt. Keine Rabattfreigabe, Aktivierung oder Sendung.
+6. Verkaufsfreigabeentwurf: `/collections/beauty-selfcare` claim-sicher kürzen und Organizerlink ergänzen; CHF50 erhalten,30-Tage-Rückgabe mangels heutiger Policy-Prüfung nicht neu behaupten. Vor Write Body/Theme-Ziel/Diff frisch lesen. Belege `CONTENT-VERKAUFSPAKET-20261111-R175.md/.json`;08/14/19 unverändert; Receipt `unknown_no_claude_receipt`.

@@ -1538,3 +1538,15 @@ Metricool ID `423622854`, UUID `6213007717183669914`, 15.11.2026 20:00 Europe/Zu
 Historiengegenprobe 01.–18.11.:102 gelieferte Objekte,14 Pins,14 erfolgreich gehashte Pinterest-Medien,0 direkte oder Hash-Treffer. Alte, versteckte oder serverseitig trunkierte Historie bleibt unbekannt. Die stabile Master-ID `luxe_photo_kosmetik_organizer_20261101` bleibt erhalten. Der Threads-Beleg wurde nicht verändert; neues Pinterest-Register separat. Projektor-Master bleibt ohne A–G-Bindung, Rechte und professionelle MP4 offen. Keine Tagesreports wiederholt. Belege `PINTEREST-PUSH-20261110-R174.md/.json`; Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R174_20261110]
+
+## Aktueller Stand – 11.11.2026, Revision 175: Content-/Verkaufspaket ohne Qualitätsabkürzung
+
+Identitäten PASS: LuxeStyle/luxestyle.ch/CHF/Schweiz; Metricool6227837/Europe-Zurich und sechs bekannte Kanäle. Plan11.–19.11.:53 aktive Objekte/67 PENDING-Zustände bis15.11.; YouTube15.11. offen, alle sechs16.–19.11. offen. Vier Knoblauchhacker-Drafts18.11. bleiben Draft/Auto aus und gesperrt. R174-Pin423622854/UUID6213007717183669914 bleibt15.11.20:00 PENDING, nicht veröffentlicht. Andere Pinterest-Board-ID1111333714239114033 unbekannt.0 Writes.
+
+Kennzahlen04.–10.11. einmalig kanalgetrennt gelesen: IG750 Views vollständig; TT2810/7 auf6 bekannten Tagen; YT609 auf5; Pinterest4383 Impressionen/56 Interaktionen auf5. FB/Threads sowie fehlende Tage unknown; keine Verkaufsableitung.
+
+Projektor15521256604033 und Organizer15408458236289 ACTIVE/kaufbar/untracked/CONTINUE. Projektor-A–G-Bindung, native30fps-Hochkanttakes, Rechte, Musikendprüfung und professionelle MP4 fehlen. Quelle960×540/25fps/2bb28156…d57 bleibt technisch ungeeignet; ein18s-Storyboard mit zwei Hooks und sechs deutschen Kanalentwürfen ist kein Video.
+
+Klaviyo: W7XTVD; Vse76a/VbLQj6/RnTvsY DRAFT, XEGbTB LIVE. USD/CHF getrennt. Ein Vorschlag: VbLQj6-Betreff auf `Willkommen bei LuxeStyle`, weiterhin DRAFT. Verkaufsentwurf: Beauty-Collection claim-sicher kürzen und Organizer intern verlinken; CHF50 erhalten, unverifizierte30-Tage-Rückgabe nicht neu übernehmen. Keine Writes; Belege `CONTENT-VERKAUFSPAKET-20261111-R175.md/.json`; Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R175_20261111]

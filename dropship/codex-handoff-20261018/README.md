@@ -2146,3 +2146,19 @@ Der bestehende Threads-Beleg blieb unverändert. Für Pinterest besteht ein eige
 [R174 Pinterest-Bericht](PINTEREST-PUSH-20261110-R174.md) · [Maschinenbeleg](PINTEREST-PUSH-20261110-R174.json) · [Pinterest-Register](register/pinterest-luxe_photo_kosmetik_organizer_20261101.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R174_20261110]
+
+## Aktueller Stand – 11.11.2026, Revision 175: geprüftes Paket, Master und Planung weiter offen
+
+Shopify und Metricool wurden frisch vollständig als LuxeStyle gebunden. Die Planung 11.–19.11. enthält 53 aktive Objekte/67 aktive Kanalzustände, alle `PENDING`; am15.11. fehlt YouTube, am16.–19.11. fehlen alle sechs Kanäle. Vier Knoblauchhacker-Drafts am18.11. sind Draft/Auto aus und zählen nicht. Keine exakten kanalgleichen Slot-/Text-/Mediendoppel im gelieferten Fenster. Der R174-Organizer-Pin ID `423622854`/UUID `6213007717183669914` bleibt für15.11.20:00 `PENDING`, `draft=false`, `autoPublish=true`; noch nicht veröffentlicht. Board `1111333714239114033` eines anderen Pins bleibt unbekannt.
+
+Die einmalige heutige Kennzahlmessung04.–10.11. bleibt kanalbezogen: Instagram750 Views vollständig; TikTok2'810 Views/7 Interaktionen auf6 bekannten Tagen; YouTube609 Views auf5 Tagen; Pinterest4'383 Impressionen/56 Interaktionen auf5 Tagen. Facebook und Threads sind stark unvollständig. Fehlende Tage unbekannt, keine Verkaufsableitung.
+
+Projektor und Organizer sind ACTIVE, kaufbar und untracked/`CONTINUE`; Menge0 ist kein Ausverkaufsbeleg. Beim Projektor blockieren `auswahl-offen`, fehlende A–G-/Einheitenbindung, native Hochkanttakes, hashgebundene Rechte, Musik-Endabnahme und professionelle MP4. Der18s-/540-Frame-Plan mit zwei Hooks und sechs deutschen Kanalentwürfen wurde fortgeführt; kein Render, Upload oder Social-Write.
+
+Klaviyo `W7XTVD` wurde frisch entdeckt. `Vse76a`, `VbLQj6` und `RnTvsY` sind DRAFT; `XEGbTB` ist LIVE. USD und CHF bleiben getrennt; fehlende Reportzeilen unknown. Einziger Klaviyo-Freigabeentwurf: den unbelegten Rabattbetreff von `VbLQj6` auf `Willkommen bei LuxeStyle` neutralisieren und den Flow DRAFT lassen.
+
+Höchste Verkaufsaktion zur Freigabe: `/collections/beauty-selfcare` claim-sicher kürzen und intern zum kaufbaren Organizer verlinken; GratisversandCHF50 erhalten. 30-Tage-Rückgabe wurde nicht neu verifiziert und fehlt deshalb im neuen Entwurf. Keine Plattform-, Shop-, Flow-, Kunden-, Merchant-, DNS-, Budget-, Rabatt- oder Renderwrites; Wirkung unbekannt.
+
+[R175 Paket](CONTENT-VERKAUFSPAKET-20261111-R175.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261111-R175.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R175_20261111]

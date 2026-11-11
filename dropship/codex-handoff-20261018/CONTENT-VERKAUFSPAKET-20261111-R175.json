@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 1,
+  "run": "R175",
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-11T08:12:02+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "timezone": "CET",
+      "match": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "match": true,
+      "otherBrandIgnored": 7967118
+    }
+  },
+  "metricoolPlan": {
+    "readAt": "2026-11-11T08:08:00+01:00",
+    "from": "2026-11-11T00:00:00+01:00",
+    "toInclusive": "2026-11-19T23:59:59+01:00",
+    "smallDailyReads": 9,
+    "activeObjects": 53,
+    "activeChannelStates": 67,
+    "activeProviderStatus": "PENDING",
+    "futureFailedStates": 0,
+    "activeCoverage": {
+      "2026-11-11": {
+        "objects": 14,
+        "channelStates": 17,
+        "instagram": 4,
+        "facebook": 4,
+        "threads": 1,
+        "tiktok": 4,
+        "pinterest": 1,
+        "youtube": 3
+      },
+      "2026-11-12": {
+        "objects": 10,
+        "channelStates": 13,
+        "instagram": 3,
+        "facebook": 3,
+        "threads": 1,
+        "tiktok": 3,
+        "pinterest": 1,
+        "youtube": 2
+      },
+      "2026-11-13": {
+        "objects": 13,
+        "channelStates": 17,
+        "instagram": 4,
+        "facebook": 4,
+        "threads": 1,
+        "tiktok": 4,
+        "pinterest": 1,
+        "youtube": 3
+      },
+      "2026-11-14": {
+        "objects": 10,
+        "channelStates": 13,
+        "instagram": 3,
+        "facebook": 3,
+        "threads": 1,
+        "tiktok": 3,
+        "pinterest": 1,
+        "youtube": 2
+      },
+      "2026-11-15": {
+        "objects": 6,
+        "channelStates": 7,
+        "instagram": 2,
+        "facebook": 2,
+        "threads": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "youtube": 0
+      },
+      "2026-11-16": {
+        "objects": 0,
+        "channelStates": 0,
+        "instagram": 0,
+        "facebook": 0,
+        "threads": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "youtube": 0
+      },
+      "2026-11-17": {
+        "objects": 0,
+        "channelStates": 0,
+        "instagram": 0,
+        "facebook": 0,
+        "threads": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "youtube": 0
+      },
+      "2026-11-18": {
+        "objects": 0,
+        "channelStates": 0,
+        "instagram": 0,
+        "facebook": 0,
+        "threads": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "youtube": 0
+      },
+      "2026-11-19": {
+        "objects": 0,
+        "channelStates": 0,
+        "instagram": 0,
+        "facebook": 0,
+        "threads": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "youtube": 0
+      }
+    },
+    "drafts2026_11_18": {
+      "objects": 4,
+      "channelStates": 5,
+      "draft": true,
+      "autoPublish": false,
+      "pinterestObjects": 0,
+      "countsAsCoverage": false,
+      "reasonBlocked": [
+        "rueckhol-0907",
+        "variant_binding_missing",
+        "commercial_rights_missing",
+        "mandatory_music_missing",
+        "publication_ledger_missing",
+        "10_6_seconds_25fps_not_professional_master"
+      ]
+    },
+    "gaps": {
+      "2026-11-15": [
+        "youtube"
+      ],
+      "2026-11-16": [
+        "instagram",
+        "facebook",
+        "threads",
+        "tiktok",
+        "pinterest",
+        "youtube"
+      ],
+      "2026-11-17": [
+        "instagram",
+        "facebook",
+        "threads",
+        "tiktok",
+        "pinterest",
+        "youtube"
+      ],
+      "2026-11-18": [
+        "instagram",
+        "facebook",
+        "threads",
+        "tiktok",
+        "pinterest",
+        "youtube"
+      ],
+      "2026-11-19": [
+        "instagram",
+        "facebook",
+        "threads",
+        "tiktok",
+        "pinterest",
+        "youtube"
+      ]
+    },
+    "exactSameChannelTextMediaDuplicates": 0,
+    "sameChannelTimeCollisions": 0,
+    "olderMasterHistory": "unknown",
+    "due2026_11_10": {
+      "returnedObjects": 10,
+      "allReturnedChannelStates": "PUBLISHED",
+      "platformIdsOrUrlsReturned": true,
+      "failed": 0,
+      "ownPublicationThisRun": false
+    },
+    "r174Pinterest": {
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "plannedAt": "2026-11-15T20:00:00+01:00",
+      "status": "PENDING",
+      "draft": false,
+      "autoPublish": true,
+      "boardId": "1111333714239114020",
+      "unchanged": true,
+      "published": false
+    },
+    "unverifiedBoardObject": {
+      "date": "2026-11-12",
+      "id": 422791720,
+      "boardId": "1111333714239114033",
+      "boardName": "unknown",
+      "ownership": "unknown",
+      "doNotCloneOrModify": true
+    },
+    "writes": 0
+  },
+  "metricoolAnalytics": {
+    "period": "2026-11-04/2026-11-10",
+    "readOnceOnLocalDate": "2026-11-11",
+    "missingIsUnknown": true,
+    "salesAttribution": "not_inferred",
+    "instagram": {
+      "metricIds": [
+        "IGEV05",
+        "IGEV38"
+      ],
+      "views": 750,
+      "viewKnownDays": 7,
+      "interactions": 5,
+      "interactionKnownDays": 3,
+      "interactionUnknownDays": 4,
+      "contentItems": 12
+    },
+    "facebook": {
+      "metricIds": [
+        "FBEV30",
+        "FBEV34"
+      ],
+      "impressions": {
+        "knownDate": "2026-11-10",
+        "value": 0,
+        "unknownDays": 6
+      },
+      "interactions": {
+        "knownDate": "2026-11-04",
+        "value": 1,
+        "unknownDays": 6
+      },
+      "contentItems": 18
+    },
+    "tiktok": {
+      "metricIds": [
+        "TKEV02",
+        "TKEV06"
+      ],
+      "views": 2810,
+      "interactions": 7,
+      "knownDays": 6,
+      "unknownDates": [
+        "2026-11-09"
+      ],
+      "videos": 12
+    },
+    "youtube": {
+      "metricIds": [
+        "YTEV02"
+      ],
+      "views": 609,
+      "knownDays": 5,
+      "unknownDates": [
+        "2026-11-09",
+        "2026-11-10"
+      ],
+      "completeInteractions": "unknown"
+    },
+    "pinterest": {
+      "metricIds": [
+        "PIEV01",
+        "PIEV04"
+      ],
+      "impressions": 4383,
+      "interactions": 56,
+      "knownDays": 5,
+      "unknownDates": [
+        "2026-11-09",
+        "2026-11-10"
+      ],
+      "pins": 16
+    },
+    "threads": {
+      "metricIds": [
+        "THEV06",
+        "THEV05"
+      ],
+      "knownDate": "2026-11-10",
+      "views": 0,
+      "interactions": 0,
+      "unknownDates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09"
+      ],
+      "knownPosts": 2
+    }
+  },
+  "products": {
+    "projector": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "publicHttp": 200,
+      "selfCanonical": true,
+      "cartForm": true,
+      "available": true,
+      "variants": [
+        {
+          "label": "A",
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "sku": "CJSN139239101AZ",
+          "priceCHF": "34.90"
+        },
+        {
+          "label": "B",
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "sku": "CJSN139239102BY",
+          "priceCHF": "37.90"
+        },
+        {
+          "label": "C",
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "sku": "CJSN139239103CX",
+          "priceCHF": "40.90"
+        },
+        {
+          "label": "D",
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "sku": "CJSN139239104DW",
+          "priceCHF": "49.90"
+        },
+        {
+          "label": "E",
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "sku": "CJSN139239105EV",
+          "priceCHF": "51.90"
+        },
+        {
+          "label": "F",
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "sku": "CJSN139239106FU",
+          "priceCHF": "44.90"
+        },
+        {
+          "label": "G",
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "sku": "CJSN139239107GT",
+          "priceCHF": "35.90"
+        }
+      ],
+      "allAvailableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "sellableOnlineQuantity": 0,
+      "stockPromiseMade": false,
+      "deliveryPromiseMade": false,
+      "featuredImage": {
+        "mediaId": "70733173424513",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "width": 1920,
+        "height": 1919,
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+      },
+      "tagsNonEmpty": true,
+      "channelGuardHits": [],
+      "rueckholHits": [],
+      "selectionTag": "auswahl-offen",
+      "historicalVariant56197916361089": "stale_do_not_use",
+      "unverifiedLiveClaims": [
+        "materials",
+        "dimensions",
+        "technical_features",
+        "box_contents"
+      ],
+      "socialEligible": false,
+      "conversionApprovalDraft": "Preis und Inhalt beziehen sich auf die gewählte Ausführung A–G. Bitte Auswahl vor dem Kauf prüfen."
+    },
+    "organizer": {
+      "productId": "gid://shopify/Product/15408458236289",
+      "variantId": "gid://shopify/ProductVariant/55732479590785",
+      "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+      "title": "Kosmetik-Organizer für den Schminktisch",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+      "publicHttp": 200,
+      "selfCanonical": true,
+      "cartForm": true,
+      "availableForSale": true,
+      "priceCHF": "29.90",
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "sellableOnlineQuantity": 0,
+      "stockPromiseMade": false,
+      "deliveryPromiseMade": false,
+      "featuredImage": {
+        "mediaId": "69731159474561",
+        "width": 1601,
+        "height": 1601,
+        "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e"
+      },
+      "tagsNonEmpty": true,
+      "channelGuardHits": [],
+      "rueckholHits": [],
+      "unverifiedClaimsNotReused": [
+        "material",
+        "sustainability",
+        "swiss_brand",
+        "vegan"
+      ],
+      "staticContentCandidate": true,
+      "r174PinUnchanged": true
+    }
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "status": "storyboard_not_video",
+    "professionalMp4": false,
+    "renders": 0,
+    "uploads": 0,
+    "referenceSource": {
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "width": 960,
+      "height": 540,
+      "fps": 25,
+      "durationSeconds": 27.96,
+      "cropSourcePixels": "approximately_304x540",
+      "widthDiscardPercent": 68,
+      "scaleFactorApprox": 3.55,
+      "repeatedFramePositionsAt18s25to30": 90
+    },
+    "referenceImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "productLevelOnly": true
+    },
+    "music": {
+      "path": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "sampleRateHz": 44100,
+      "channels": 2,
+      "durationSeconds": 64.31,
+      "technicalAvailable": true,
+      "buildManifest": "missing",
+      "soundfontProvenance": "missing",
+      "licenseBinding": "missing",
+      "finalListeningMixApproval": false
+    },
+    "missingCorrectedCrystalPath": "/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4",
+    "target": {
+      "durationSeconds": 18,
+      "frames": 540,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "codec": "H264 High",
+      "pixelFormat": "yuv420p",
+      "audio": "one AAC stereo stream",
+      "voiceover": false
+    },
+    "hooks": [
+      {
+        "id": "A",
+        "text": [
+          "Dein Raum.",
+          "Neues Licht."
+        ],
+        "gate": "exact_projection_motif_variant_binding_required"
+      },
+      {
+        "id": "B",
+        "text": [
+          "Licht im Detail."
+        ],
+        "preferredUntilBinding": true
+      }
+    ],
+    "cutPlan": [
+      {
+        "from": 0.0,
+        "to": 2.0,
+        "source": "P_PROJECTION_or_P_DETAIL",
+        "action": "bound_projection_or_product_detail",
+        "overlay": "selected_hook"
+      },
+      {
+        "from": 2.0,
+        "to": 4.6,
+        "source": "P_OPERATION",
+        "action": "hand_operates_device_contact_visible",
+        "overlay": "Sternenlicht-Projektor"
+      },
+      {
+        "from": 4.6,
+        "to": 7.6,
+        "source": "P_OPERATION",
+        "action": "continuous_operation",
+        "overlay": "Aus der Nähe entdecken."
+      },
+      {
+        "from": 7.6,
+        "to": 12.4,
+        "source": "P_PROJECTION",
+        "action": "exact_bound_motif_in_room",
+        "overlay": "Für besondere Lichtmomente."
+      },
+      {
+        "from": 12.4,
+        "to": 14.0,
+        "source": "P_DETAIL",
+        "action": "housing_lens_controls_connector",
+        "overlay": null
+      },
+      {
+        "from": 14.0,
+        "to": 18.0,
+        "source": "P_HERO",
+        "action": "steady_product_take_with_cta_space",
+        "overlay": [
+          "Produkt ansehen",
+          "LuxeStyle · luxestyle.ch"
+        ]
+      }
+    ],
+    "requiredNewTakes": {
+      "P_OPERATION_minSeconds": 7.6,
+      "P_PROJECTION_minSeconds": 8.8,
+      "P_DETAIL_minSeconds": 5.6,
+      "P_HERO_minSeconds": 6.0,
+      "nativeMinimum": "1080x1920_true_30fps",
+      "identityClip": "uncut_sku_or_cj_vid_to_device_to_motif",
+      "hashAndCommercialRightsPerFile": true
+    },
+    "blockers": [
+      "exact_current_variant_sku_cj_vid_physical_unit_and_motif_binding",
+      "native_vertical_true_30fps_sources",
+      "file_bound_commercial_edit_social_metricool_ads_rights",
+      "music_buildmanifest_soundfont_license_and_final_mix_approval",
+      "final_mp4_quality_crops_and_ledger"
+    ],
+    "captions": {
+      "instagram": {
+        "text": "Licht im Detail. Entdecke den Sternenlicht-Projektor aus der Nähe. Die aktuelle Ausführung findest du über den Link im Profil.",
+        "linkMode": "link_in_bio",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_instagram"
+      },
+      "tiktok": {
+        "text": "Erst das Detail. Dann das Licht im Raum. Die aktuelle Ausführung über den Link im Profil ansehen.",
+        "linkMode": "link_in_bio",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_tiktok"
+      },
+      "youtube": {
+        "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+        "description": "Ein genauer Blick auf den Sternenlicht-Projektor. Aktuelle Ausführung auf der Produktseite prüfen.",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_youtube",
+        "newPostGate": "set_and_readback_madeForKids_false_title_file_status"
+      },
+      "facebook": {
+        "text": "Licht im Detail: den Sternenlicht-Projektor ansehen und die aktuelle Ausführung auf der Produktseite prüfen.",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_facebook"
+      },
+      "threads": {
+        "text": "Ein genauer Blick auf Form und Licht des Sternenlicht-Projektors. Aktuelle Ausführung auf der Produktseite prüfen.",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_threads"
+      },
+      "pinterest": {
+        "title": "Sternenlicht-Projektor im Detail | LuxeStyle",
+        "description": "Sternenlicht-Projektor im Detail: Produktansichten und aktuelle Ausführung bei LuxeStyle entdecken.",
+        "utm": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_202611&utm_content=luxe_sternenprojektor_master_20261018_hookb_pinterest",
+        "boardGate": "fresh_account_and_topic_verification_required"
+      }
+    }
+  },
+  "klaviyo": {
+    "readOnceOnLocalDate": "2026-11-11",
+    "accountId": "XWqMAD",
+    "accountName": "LuxeStyle CH",
+    "domain": "luxestyle.ch",
+    "timezone": "Europe/Zurich",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "currenciesMixed": false,
+    "placedOrderMetric": {
+      "id": "W7XTVD",
+      "source": "Shopify"
+    },
+    "flows": {
+      "Vse76a": "DRAFT",
+      "VbLQj6": "DRAFT",
+      "RnTvsY": "DRAFT",
+      "XEGbTB": "LIVE"
+    },
+    "recoveryFlow": {
+      "id": "XEGbTB",
+      "triggerMetric": "XhnJPv",
+      "placedOrderExclusion": "W7XTVD",
+      "liveMails": [
+        "after_1_hour",
+        "after_24_hours"
+      ],
+      "performance": "not_in_this_report_unknown"
+    },
+    "addedToCartMetric": {
+      "id": "TFy7Yn",
+      "flowTriggerReturned": false,
+      "interpretation": "unknown_not_zero"
+    },
+    "welcomeList": {
+      "id": "T2VHfu",
+      "name": "Newsletter Subscribers",
+      "optIn": "single",
+      "profiles": 13,
+      "associatedWelcomeFlows": 3,
+      "associatedFlowsState": "DRAFT"
+    },
+    "forms": {
+      "returnedData": [],
+      "next": null,
+      "liveCapture": "unknown_not_proven"
+    },
+    "thirtyDayFlowReport": {
+      "VbLQj6Email1": {
+        "recipients": 6,
+        "delivered": 6,
+        "uniqueOpens": 4,
+        "uniqueClicks": 1,
+        "placedOrderConversionsAttributed": 0
+      },
+      "RnTvsYReview": {
+        "recipients": 8,
+        "delivered": 8,
+        "uniqueOpens": 3,
+        "uniqueClicks": 1,
+        "placedOrderConversionsAttributed": 0
+      },
+      "Vse76a": "no_result_row_unknown",
+      "XEGbTB": "not_in_report_unknown"
+    },
+    "singleApprovalProposal": {
+      "flowId": "VbLQj6",
+      "currentSubjectMeaning": "Willkommen – Hier sind deine 10%",
+      "proposedSubject": "Willkommen bei LuxeStyle",
+      "keepDraft": true,
+      "requiresOfferAndLiveCaptureProofBeforeActivation": true,
+      "discountApproval": false,
+      "activate": false,
+      "testSend": false,
+      "customerSend": false
+    },
+    "writes": 0
+  },
+  "seoSalesApprovalDraft": {
+    "collectionUrl": "https://luxestyle.ch/collections/beauty-selfcare",
+    "publicHttp": 200,
+    "selfCanonical": true,
+    "indexable": true,
+    "inSitemap": true,
+    "htmlBytes": 1840150,
+    "internalAnchors": 1599,
+    "uniqueInternalTargets": 799,
+    "organizerHandleOccurrences": 0,
+    "collectionMembershipFromThisCheck": "unknown",
+    "rankings": "unknown",
+    "unboundLiveClaims": [
+      "hochwertig",
+      "Anti-Aging",
+      "feuchtigkeitsspendend",
+      "RF & LED Geräte",
+      "makelloser Teint"
+    ],
+    "afterHtml": "<p>Beauty & Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p><p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p><p>Gratis-Versand in der Schweiz ab CHF 50.</p>",
+    "thirtyDayReturnInCurrentLiveText": true,
+    "thirtyDayReturnVerifiedThisRun": false,
+    "includedInNewDraft": false,
+    "requiresFreshBodyThemeSectionAndDiffBeforeWrite": true,
+    "executed": false,
+    "rankingEffect": "unknown",
+    "salesEffect": "unknown"
+  },
+  "merchantCsvNarrowCheck": {
+    "files": 2,
+    "byteIdentical": true,
+    "sha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4",
+    "organizerVariantRows": 0,
+    "projectorVariantRows": 0,
+    "absenceMeaning": "neither_error_free_nor_excluded",
+    "feedChanges": 0,
+    "broadMerchantReadRepeated": false
+  },
+  "writeSummary": {
+    "metricool": 0,
+    "social": 0,
+    "shopify": 0,
+    "collection": 0,
+    "theme": 0,
+    "menu": 0,
+    "klaviyo": 0,
+    "customers": 0,
+    "merchant": 0,
+    "feed": 0,
+    "cj": 0,
+    "dns": 0,
+    "ads": 0,
+    "budget": 0,
+    "discount": 0,
+    "shopSettings": 0,
+    "flows": 0,
+    "paidRenders": 0,
+    "uploads": 0
+  },
+  "rankingImpact": "unknown",
+  "salesImpact": "unknown",
+  "fullHistory": "unknown",
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

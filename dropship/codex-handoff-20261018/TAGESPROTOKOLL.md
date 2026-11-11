@@ -1990,3 +1990,23 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Claude | R174-Bericht, Maschinenbeleg und kanonische Übergabe additiv fortgeführt | Revision174/24 Aufgaben; Receipt unknown_no_claude_receipt |
 
 [LUXESTYLE_R174_20261110] [Bericht](PINTEREST-PUSH-20261110-R174.md) · [Beleg](PINTEREST-PUSH-20261110-R174.json) · [Register](register/pinterest-luxe_photo_kosmetik_organizer_20261101.json).
+
+## 11.11.2026
+
+### R175
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Tagesgrenze | R174, Projektgedächtnis, Arbeitsstand, Übergabe und letzten Tagesblock gelesen | Heute zuvor kein Metricool-/Klaviyo-/GSC-/breiter Verkaufsreport dokumentiert; Bestell-Watch beendet;08/14/19 unverändert |
+| Identitäten | Shopify und Metricool samt sechs Kanälen frisch gebunden | LuxeStyle/luxestyle.ch/CHF/Schweiz und brandId6227837/Europe-Zurich PASS; andere Marke ignoriert |
+| Metricool-Planung |11.–19.11. in kleinen Tagesfenstern auf Zustände, Drafts, Medien, Doppel und Kollisionen gelesen |53 aktive Objekte/67 PENDING-Zustände bis15.11.; YT15.11 offen, alle sechs16.–19.11 offen;18.11-Drafts zählen nicht;0 Writes |
+| Fällige Zustände / R174 |10.11.-Objekte kanalbezogen sowie R174-Pin gezielt zurückgelesen | Zurückgelieferte10.11.-Zustände PUBLISHED mit Plattformbeleg; R174-Pin423622854/UUID6213007717183669914 weiter PENDING, noch nicht veröffentlicht |
+| Kennzahlen | Gültige IDs entdeckt und04.–10.11. einmalig kanalgetrennt gelesen | IG750 Views; TT2810/7 auf6 Tagen; YT609 auf5; Pinterest4383/56 auf5; FB/Threads lückenhaft; fehlende Tage unknown; keine Verkaufsableitung |
+| Produkte / Guard | Projektor und Organizer gezielt auf Varianten, Preise, Medien, Kaufbarkeit, Inventory, Tags, Sperren geprüft | Beide ACTIVE/HTTP200/kaufbar/untracked-CONTINUE-Menge0; Projektor `auswahl-offen`; keine Bestands-/Lieferzeitzusage;0 Writes |
+| Master / Content | Quelle, Referenzbild, Musik, lokales Korrekturasset und denselben18s-Master geprüft; Storyboard/Hook-/Kanaltexte präzisiert | Nur Storyboard;960×540/25fps, A–G-/Einheiten-/Rechte-/native-Take-/Musik-/MP4-/Ledger-Gates offen;0 Render/Upload/Social |
+| Klaviyo | W7XTVD entdeckt, Flows/Capture/Liste und einmaligen30-Tage-Report gelesen | Vse/Vb/Rn DRAFT, XEGbTB LIVE; USD/CHF getrennt; fehlende Zeilen unknown; ein Betreffvorschlag,0 Write/Send |
+| SEO / Verkauf | Home-/robots-/Sitemap-/Produkt-/Beauty-Collection eng gelesen; zwei Merchant-CSVs hashverglichen | Beauty-Collection HTTP200/indexierbar, HTML-/Linkblocker fortbesteht; claim-sicherer Organizer-Link-Entwurf zur Freigabe; keine GSC-/Merchant-Vollabfrage/Änderung |
+| Dokumentation / Claude | R175-Paket, Maschinenbeleg und kanonische Übergabe additiv fortgeführt | Revision175/24 Aufgaben vorgesehen; Receipt `unknown_no_claude_receipt` |
+| Grenzen | Keine Shopify-, Collection-, Metricool-, Klaviyo-, Kunden-, Merchant-, Feed-, CJ-, DNS-, Ads-, Budget-, Rabatt-, Flow- oder Renderänderung | Wirkung und vollständige Historie unbekannt |
+
+[LUXESTYLE_R175_20261111] [Paket](CONTENT-VERKAUFSPAKET-20261111-R175.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261111-R175.json).
