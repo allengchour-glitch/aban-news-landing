@@ -1560,3 +1560,13 @@ Produkt15521256604033 ist ACTIVE/HTTP200/Warenkorb-kaufbar, sieben A–G-Variant
 Metricool brand6227837/Europe-Zurich und sechs erwartete Kanäle PASS. Vier Draft-Creates plus vier gezielte BT.709-Medienupdates derselben UUIDs. Ein erster IG-Payload wurde vor Mutation abgewiesen; gezielter unveränderter Readback, danach ein korrigierter Write,0 Blind-Retry. Final: IG424123014/UUID4156060813550767248 und FB424123199/UUID6680239273933357186 für16.11.19:00; TikTok424123388/UUID3614365779669041576 für17.11.19:00, ownBrand; YouTube424123545/UUID-7647174116509334899 für19.11.19:00, madeForKids=false/#Shorts. Alle `PENDING`, `draft=true`, `autoPublish=false`; Remote-MP4s hashgleich. Nicht terminiert, nicht veröffentlicht. Keine Threads-/Pinterest-Drafts, Knoblauch18.11 und R174-Register unverändert. `/workspace` voll; lokale Datei nur `/dev/shm`, Remote-Medien gespeichert. Belege `VIDEO-MASTER-DRAFTS-20261111-R176.md/.json` und `register/draft-luxe_sternenprojektor_master_20261018-r176.json`; Receipt unknown.
 
 [LUXESTYLE_R176_20261111]
+
+## Aktueller Stand – 11.11.2026, Revision 177: LI-Versandwrite mangels authentifizierter UI offen
+
+Der Besitzer hat genau einen separaten Liechtenstein-Versanddienst im Merchant Center `5797470070` freigegeben: CHF14.90 pauschal, kein Gratisversand, Bearbeitung1–3 Werktage und Lieferzeit15–45 Tage; den Schweizer Dienst nicht anfassen. Kontoidentität read-only `LuxeStyle CH` PASS. HYPD stellt Merchant-Lesezugriff bereit; Windsor und die vorhandenen Repo-Helfer bieten keine Versanddienst-/Kontoversand-Write-Aktion.
+
+Die konkrete Merchant-URL leitete mit einer Profilkopie auf `accounts.google.com` zur Anmeldung weiter. Der verbindliche Repo-Auftrag verlangt dort anzuhalten. Es gab0 Eingaben/Klicks/Writes; der LI-Dienst wurde nicht angelegt und nicht zurückgelesen. Der Schweizer Dienst wurde nicht verändert, doch sein eingeloggter Vorher-/Nachher-Zustand bleibt unbekannt. Die Diagnosezahl «Missing shipping info» und eine Google-Verarbeitung bleiben unbekannt.
+
+Nächster zulässiger Schritt: in der bereits authentifizierten lokalen Brave-/PC-Claude-Sitzung zuerst Versanddienste und Diagnose lesen und Vorher-Screenshots erstellen, dann nur den separaten LI-Dienst speichern und danach LI sowie unveränderten CH-Dienst gezielt zurücklesen. Keine Credentials/2FA im Chat. Belege `MERCHANT-LI-VERSAND-20261111-R177.md/.json` und Screenshot `MERCHANT-LI-LOGINWAND-20261111-R177.png`; Receipt unknown.
+
+[LUXESTYLE_R177_20261111]

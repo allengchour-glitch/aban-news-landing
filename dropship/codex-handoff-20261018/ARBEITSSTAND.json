@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 176,
-  "updatedAt": "2026-11-11T09:16:00+01:00",
+  "revision": 177,
+  "updatedAt": "2026-11-11T10:26:28+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16814,6 +16814,22 @@
       "summary": "R176 rendered one 18-second 1080x1920/25fps technical projector draft with the canonical music and created four Metricool drafts after identity checks. Independent QA found incomplete colour signalling; the film was re-exported as BT.709/tv and the same four UUIDs were updated. Final IDs IG424123014, FB424123199, TikTok424123388, YT424123545 remain PENDING/draft=true/autoPublish=false with byte-identical remote media. One first Instagram update payload was rejected before mutation; targeted readback was unchanged, then one corrected write succeeded. Nothing was scheduled or published. Exact A-G binding, social collection membership, hash-bound source rights, premium master acceptance and persistent local archive remain open.",
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 177,
+      "at": "2026-11-11T10:26:28+01:00",
+      "actor": "codex",
+      "source": {
+        "reportPath": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.md",
+        "reportGitBlobSha": "f513358fdee41510a86e45a27010c0e216698cfd",
+        "evidencePath": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.json",
+        "evidenceGitBlobSha": "f486b84764104e4eeb941cfb5a6fb0ecee6fdb11",
+        "screenshotPath": "dropship/codex-handoff-20261018/MERCHANT-LI-LOGINWAND-20261111-R177.png",
+        "screenshotGitBlobSha": "fa15e8ab76eaa537381b31212ac44b8bad6b2bfc"
+      },
+      "summary": "R177 bound the explicit owner-approved separate Liechtenstein Merchant shipping service to account5797470070/LuxeStyle CH: CHF14.90 flat, no free shipping,1–3 business-day handling and15–45-day transit; Switzerland must remain unchanged. The supplied Merchant URL redirected to the Google sign-in page. The repository stop rule was applied: zero inputs, clicks or Merchant writes. HYPD is read-only and neither Windsor nor repository helpers expose a shipping-service write. The LI service was not created or read back, LI/diagnostics remain unknown, and CH was untouched by zero writes but lacks authenticated before/after readback. Next step requires the already authenticated local Brave/PC-Claude session without sending credentials or 2FA in chat.",
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -17023,18 +17039,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 175,
+    "documentationRevision": 177,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "ba4b549b9e8f2d2a89fd9825d49d8c26d55e4b59",
+    "gitBlobSha": "e687fd543e800f96ebb3baeb6a19a7edfe882b28",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "11a6803518727229d2d430e2ff5110942bdfbb41",
+    "entryGitBlobSha": "40a9b66fc64ebcaa625d781f0084afd1580a8f15",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R175 read-only LuxeStyle package: fresh Shopify/Metricool identities,11–19 Nov planning and due-state readback; once-daily04–10 Nov channel metrics and one Klaviyo30-day report; two targeted products; same professional projector master remains NO-GO/storyboard only; one claim-safe Beauty SEO and one neutral Welcome subject approval draft; zero platform/social/render writes; R174 Pinterest register unchanged; additive access precision: repo CJ helpers present, current-process CJ runtime credentials and four local references unavailable, no CJ/API/catalog read or write",
-    "latestCanonicalRevision": 175,
-    "snapshotNote": "R175 records53 active Metricool objects/67 PENDING states through15 Nov, open coverage from15 Nov, and four non-covering drafts. R174 Pin423622854 remains PENDING and unchanged. Missing metric/report days stay unknown. No professional MP4, product binding or rights clearance exists. Beauty and VbLQj6 changes are approval drafts only. Receipt remains unknown_no_claude_receipt. Access precision: repository helpers do not prove a usable runtime; four named local references were absent and no CJ/API/catalog call occurred.",
+    "scope": "R177 exact owner-authorized separate Liechtenstein Merchant shipping service; identity5797470070/LuxeStyle CH confirmed read-only; Google login wall triggered mandatory stop; zero inputs/clicks/writes; service not created/read back; LI/diagnostic state unknown; CH untouched by zero writes but authenticated readback unknown; HYPD/Windsor/repo lack shipping-service write; authenticated local Brave/PC-Claude required without credentials or 2FA in chat",
+    "latestCanonicalRevision": 177,
+    "snapshotNote": "R177 documents a blocked Merchant write, not a completed service. Approved target: LI, CHF14.90 flat, no free shipping, handling1–3 business days, transit15–45 days; CH must remain unchanged. The supplied URL reached accounts.google.com login. No Merchant settings were loaded or changed and no diagnostics were re-read. Receipt remains unknown_no_claude_receipt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -38555,5 +38571,139 @@
       "firstInstagramUpdateRejectedBeforeMutation": true,
       "targetedReadbackBeforeCorrectedWrite": "unchanged"
     }
+  },
+  "merchantLiechtensteinR177": {
+    "documentationRevision": 177,
+    "observedAt": "2026-11-11T10:26:28+01:00",
+    "ownerAuthorization": {
+      "scope": "create_separate_liechtenstein_shipping_service_only",
+      "merchantCenterId": "5797470070",
+      "country": "LI",
+      "currency": "CHF",
+      "flatRate": "14.90",
+      "freeShipping": false,
+      "handlingBusinessDays": [
+        1,
+        3
+      ],
+      "transitDays": [
+        15,
+        45
+      ],
+      "switzerlandMustRemainUnchanged": true
+    },
+    "identity": {
+      "merchantCenterId": "5797470070",
+      "displayName": "LuxeStyle CH",
+      "readOnlyConfirmed": true
+    },
+    "access": {
+      "browser": "LOGIN_WALL_ACCOUNTS_GOOGLE_COM",
+      "hypd": "READ_ONLY_NO_SHIPPING_WRITE",
+      "windsor": "CONNECTED_CORRECT_ACCOUNT_NO_SHIPPING_SERVICE_ACTION",
+      "repositoryHelper": "NONE_FOUND_FOR_AUTHENTICATED_SHIPPING_SERVICE_WRITE"
+    },
+    "result": {
+      "serviceCreated": false,
+      "serviceReadBack": false,
+      "merchantWrites": 0,
+      "browserInputs": 0,
+      "browserClicks": 0,
+      "liechtensteinState": "UNKNOWN_LOGIN_REQUIRED",
+      "switzerlandWrites": 0,
+      "switzerlandReadBack": false,
+      "diagnosticIssueCountAfter": "UNKNOWN_NOT_READ",
+      "googleProcessingClaimedComplete": false
+    },
+    "stopRule": "repo_instruction_stop_at_login_wall_2fa_or_security_challenge",
+    "nextStep": "Use authenticated local Brave/PC-Claude, capture current shipping and diagnostic screenshots, create only the separate LI service, then read back LI and unchanged CH; never send credentials or 2FA in chat.",
+    "receiptState": "unknown_no_claude_receipt",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.md",
+        "gitBlobSha": "f513358fdee41510a86e45a27010c0e216698cfd",
+        "sha256": "e4de2d3d12c689b95941dffc2400f0b1b485791c36ea30f159184f4e1aa7c216",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.json",
+        "gitBlobSha": "f486b84764104e4eeb941cfb5a6fb0ecee6fdb11",
+        "sha256": "13c7dab2a12dab40d90400dd989cdd2f59b1500a01d85407182ba65ba0b08953",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-LOGINWAND-20261111-R177.png",
+        "gitBlobSha": "fa15e8ab76eaa537381b31212ac44b8bad6b2bfc",
+        "sha256": "f07986ea4e6cdb3c48b510ffb451d831ea28dd8f4aacc10bc112cbc65ed88731",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      }
+    ]
+  },
+  "run177": {
+    "documentationRevision": 177,
+    "observedAt": "2026-11-11T10:26:28+01:00",
+    "ownerAuthorization": {
+      "scope": "create_separate_liechtenstein_shipping_service_only",
+      "merchantCenterId": "5797470070",
+      "country": "LI",
+      "currency": "CHF",
+      "flatRate": "14.90",
+      "freeShipping": false,
+      "handlingBusinessDays": [
+        1,
+        3
+      ],
+      "transitDays": [
+        15,
+        45
+      ],
+      "switzerlandMustRemainUnchanged": true
+    },
+    "identity": {
+      "merchantCenterId": "5797470070",
+      "displayName": "LuxeStyle CH",
+      "readOnlyConfirmed": true
+    },
+    "access": {
+      "browser": "LOGIN_WALL_ACCOUNTS_GOOGLE_COM",
+      "hypd": "READ_ONLY_NO_SHIPPING_WRITE",
+      "windsor": "CONNECTED_CORRECT_ACCOUNT_NO_SHIPPING_SERVICE_ACTION",
+      "repositoryHelper": "NONE_FOUND_FOR_AUTHENTICATED_SHIPPING_SERVICE_WRITE"
+    },
+    "result": {
+      "serviceCreated": false,
+      "serviceReadBack": false,
+      "merchantWrites": 0,
+      "browserInputs": 0,
+      "browserClicks": 0,
+      "liechtensteinState": "UNKNOWN_LOGIN_REQUIRED",
+      "switzerlandWrites": 0,
+      "switzerlandReadBack": false,
+      "diagnosticIssueCountAfter": "UNKNOWN_NOT_READ",
+      "googleProcessingClaimedComplete": false
+    },
+    "stopRule": "repo_instruction_stop_at_login_wall_2fa_or_security_challenge",
+    "nextStep": "Use authenticated local Brave/PC-Claude, capture current shipping and diagnostic screenshots, create only the separate LI service, then read back LI and unchanged CH; never send credentials or 2FA in chat.",
+    "receiptState": "unknown_no_claude_receipt",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.md",
+        "gitBlobSha": "f513358fdee41510a86e45a27010c0e216698cfd",
+        "sha256": "e4de2d3d12c689b95941dffc2400f0b1b485791c36ea30f159184f4e1aa7c216",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-20261111-R177.json",
+        "gitBlobSha": "f486b84764104e4eeb941cfb5a6fb0ecee6fdb11",
+        "sha256": "13c7dab2a12dab40d90400dd989cdd2f59b1500a01d85407182ba65ba0b08953",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-LOGINWAND-20261111-R177.png",
+        "gitBlobSha": "fa15e8ab76eaa537381b31212ac44b8bad6b2bfc",
+        "sha256": "f07986ea4e6cdb3c48b510ffb451d831ea28dd8f4aacc10bc112cbc65ed88731",
+        "readAt": "2026-11-11T10:26:28+01:00"
+      }
+    ]
   }
 }

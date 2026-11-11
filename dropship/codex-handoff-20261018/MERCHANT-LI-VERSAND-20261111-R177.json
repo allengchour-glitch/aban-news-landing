@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "marker": "LUXESTYLE_R177_20261111",
+  "observedAt": "2026-11-11T10:26:28+01:00",
+  "brand": "luxestyle.ch",
+  "merchant": {
+    "merchantCenterId": "5797470070",
+    "displayName": "LuxeStyle CH",
+    "identityReadOnlyConfirmed": true
+  },
+  "ownerAuthorization": {
+    "date": "2026-11-11",
+    "scope": "create_separate_liechtenstein_shipping_service_only",
+    "country": "LI",
+    "currency": "CHF",
+    "flatRate": "14.90",
+    "freeShipping": false,
+    "handlingBusinessDays": {
+      "min": 1,
+      "max": 3
+    },
+    "transitDays": {
+      "min": 15,
+      "max": 45
+    },
+    "switzerlandServiceMustRemainUnchanged": true
+  },
+  "browserCheck": {
+    "requestedHost": "merchants.google.com",
+    "finalHost": "accounts.google.com",
+    "pageTitle": "Google Merchant Center",
+    "loginWall": true,
+    "merchantAccountLoaded": false,
+    "originalBrowserProfileChanged": false,
+    "inputs": 0,
+    "clicks": 0,
+    "writes": 0,
+    "screenshot": {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-LI-LOGINWAND-20261111-R177.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "f07986ea4e6cdb3c48b510ffb451d831ea28dd8f4aacc10bc112cbc65ed88731"
+    }
+  },
+  "availableAccess": {
+    "hypd": "read_only_no_shipping_settings_write",
+    "windsor": "connected_correct_account_no_shipping_service_action",
+    "repositoryHelper": "none_found_for_authenticated_merchant_shipping_service_write",
+    "authenticatedMerchantUi": false
+  },
+  "result": {
+    "serviceCreated": false,
+    "serviceReadBack": false,
+    "liechtensteinCurrentState": "unknown_login_required",
+    "switzerlandWriteCount": 0,
+    "switzerlandReadBack": false,
+    "merchantWriteCount": 0,
+    "diagnosticIssueCountAfter": "unknown_not_read",
+    "googleProcessingClaimedComplete": false
+  },
+  "stopReason": "repository_instruction_requires_stop_at_login_wall",
+  "nextAllowedStep": "Use the authenticated local Brave/PC-Claude session, capture current shipping and diagnostics, create only the separate LI service with the authorized values, then read back LI and unchanged CH. Do not send credentials or 2FA codes in chat.",
+  "sources": [
+    {
+      "path": "dropship/BROWSER-BEFEHL-MERCHANT-LI-0811.md",
+      "ref": "origin/main@cb0242799f2a08e8348b9a5ae48394f2efa3029f",
+      "gitBlobSha": "1f2b19a452ce24050e610b5257ab07cf7669449b"
+    },
+    {
+      "path": "dropship/BROWSER-AGENT-SETUP.md",
+      "ref": "origin/main@cb0242799f2a08e8348b9a5ae48394f2efa3029f",
+      "gitBlobSha": "9696b2c324ade9bba8c748b198929ee3afd3c787"
+    },
+    {
+      "path": "dropship/merchant-probleme-0811/README.md",
+      "ref": "origin/main@cb0242799f2a08e8348b9a5ae48394f2efa3029f",
+      "gitBlobSha": "1e5394924647c5db651b58447427aab81d28a4a5"
+    }
+  ],
+  "receiptState": "unknown_no_claude_receipt"
+}

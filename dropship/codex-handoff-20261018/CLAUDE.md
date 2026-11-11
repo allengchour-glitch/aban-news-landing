@@ -488,3 +488,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Vier Metricool-Drafts, danach vier gezielte BT.709-Medienupdates derselben UUIDs. Ein erster IG-Payload wurde vor Mutation abgewiesen; unveränderter Readback, dann genau ein korrigierter Write,0 Blind-Retry. Final remote hashgleich und `PENDING/draft=true/autoPublish=false`: IG424123014/UUID4156060813550767248 und FB424123199/UUID6680239273933357186 am16.11.19:00; TikTok424123388/UUID3614365779669041576 am17.11.19:00, ownBrand; YouTube424123545/UUID-7647174116509334899 am19.11.19:00, madeForKids=false/#Shorts. Datumsfelder sind Entwurfsdaten, keine aktiven Termine.
 5. Kein Threads-/Pinterest-Draft; Knoblauch-Drafts18.11 und R174-Pinterest-Register unverändert. Keine Terminierung, kein Auto-Publish, keine Veröffentlichung. Bei offenem Gate oder unklarem Status keine Aktivierung, kein Ersatzobjekt, kein Retry.
 6. Lokale MP4 liegt wegen vollem `/workspace` nur in `/dev/shm`; Remote-Medien sind gespeichert. Belege `VIDEO-MASTER-DRAFTS-20261111-R176.md/.json` und `register/draft-luxe_sternenprojektor_master_20261018-r176.json`; Receipt `unknown_no_claude_receipt`.
+
+## R177 – Merchant-LI-Freigabe, Loginwand blockiert Write
+
+[LUXESTYLE_R177_20261111]
+
+1. Besitzerfreigabe: separater Liechtenstein-Versanddienst in Merchant Center5797470070; CHF14.90 pauschal, kein Gratisversand, Bearbeitung1–3 Werktage, Lieferzeit15–45 Tage. Schweizer Dienst nicht ändern.
+2. Identität read-only PASS: `5797470070` / `LuxeStyle CH`. HYPD ist hierfür read-only; Windsor und Repo bieten keine Shipping-Service-Write-Aktion.
+3. Angegebene Merchant-URL leitete auf `accounts.google.com` / «Anmeldung – Weiter zum Google Merchant Center». Repo-Regel verlangt bei Loginwand/2FA/Sicherheitsabfrage Stop.0 Eingaben,0 Merchant-Writes.
+4. Dienst nicht angelegt; LI-Zustand und Diagnosezahl unknown. CH blieb durch0 Writes unverändert, aber kein eingeloggter Vorher-/Nachher-Readback.
+5. Nächster Schritt nur in authentifizierter lokaler Brave-/PC-Claude-Sitzung: vorher Versand/Diagnose lesen und Screenshots; nur LI-Dienst speichern; LI und unveränderten CH-Dienst zurücklesen und Nachher-Screenshots. Keine Zugangsdaten/2FA im Chat.
+6. Belege `MERCHANT-LI-VERSAND-20261111-R177.md/.json` und `MERCHANT-LI-LOGINWAND-20261111-R177.png`; Receipt `unknown_no_claude_receipt`.

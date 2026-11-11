@@ -2178,3 +2178,13 @@ Keine Threads-/Pinterest-Drafts, keine Shopify-/Kollektions-/sonstigen Writes un
 [R176 Bericht](VIDEO-MASTER-DRAFTS-20261111-R176.md) · [Maschinenbeleg](VIDEO-MASTER-DRAFTS-20261111-R176.json) · [Draft-Register](register/draft-luxe_sternenprojektor_master_20261018-r176.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R176_20261111]
+
+## Aktueller Stand – 11.11.2026, Revision 177: Merchant-LI an Loginwand gestoppt
+
+Der Besitzer hat einen separaten Versanddienst für Liechtenstein im Merchant Center `5797470070` ausdrücklich freigegeben: CHF 14.90 pauschal, kein Gratisversand, 1–3 Werktage Bearbeitung und 15–45 Tage Lieferzeit; der Schweizer Dienst muss unverändert bleiben. Das verbundene Konto wurde read-only als `LuxeStyle CH` bestätigt. HYPD bietet nur Merchant-Lesezugriff; die passende Windsor-Verbindung und das Repository stellen keine Versanddienst-Write-Aktion bereit.
+
+Die angegebene Merchant-URL leitete mit einer unveränderten Kopie des lokalen Chromium-Profils auf die Google-Anmeldeseite um. Gemäss dem verbindlichen Browser-Auftrag wurde bei der Loginwand angehalten: null Eingaben, null Merchant-Writes, kein Dienst gespeichert und kein Versandzustand zurückgelesen. Der Schweizer Dienst blieb durch Nichtänderung unangetastet; ein eingeloggter Vorher-/Nachher-Readback ist unbekannt. Die Diagnosezahl wurde nicht als behoben oder null ausgegeben.
+
+[R177 Bericht](MERCHANT-LI-VERSAND-20261111-R177.md) · [Maschinenbeleg](MERCHANT-LI-VERSAND-20261111-R177.json) · [Loginwand-Screenshot](MERCHANT-LI-LOGINWAND-20261111-R177.png). Nächster zulässiger Schritt ist die Ausführung in der bereits authentifizierten lokalen Brave-/PC-Claude-Sitzung mit Vorher-/Nachher-Screenshots und gezieltem LI-/CH-Readback; keine Zugangsdaten oder 2FA-Codes im Chat. Claude-Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R177_20261111]

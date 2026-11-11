@@ -2028,3 +2028,18 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine Shopify-, Collection-, Klaviyo-, DNS-, Merchant-, Feed-, Kunden-, Ads-, Budget-, Rabatt- oder Paid-Renderänderung | Ranking-/Verkaufswirkung und vollständige Historie unbekannt |
 
 [LUXESTYLE_R176_20261111] [Bericht](VIDEO-MASTER-DRAFTS-20261111-R176.md) · [Beleg](VIDEO-MASTER-DRAFTS-20261111-R176.json) · [Register](register/draft-luxe_sternenprojektor_master_20261018-r176.json).
+
+### R177
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Besitzerfreigabe | Exakten LI-Versandumfang aus Chat und Repo-Auftrag gebunden | Separater Dienst: CHF14.90, kein Gratisversand,1–3 Werktage Bearbeitung,15–45 Tage Lieferzeit; CH unverändert lassen |
+| Merchant-Identität | Verbundenes Konto read-only geprüft | `5797470070` / `LuxeStyle CH` PASS |
+| Zugriffswege | HYPD, Windsor-Aktionsinventar und vorhandene Repo-Helfer auf Versanddienst-Write geprüft | Kein Versanddienst-/Kontoversand-Write verfügbar; authentifizierte UI erforderlich |
+| Browser | Angegebene Merchant-URL mit unveränderter Profilkopie geöffnet und Screenshot/Hash gesichert | Redirect zu `accounts.google.com`, Loginwand; Konto/Versandseite nicht geladen |
+| Write-Entscheid | Verbindliche Stop-Regel bei Loginwand angewandt |0 Eingaben/Klicks/Merchant-Writes; LI-Dienst nicht angelegt; kein blinder Retry |
+| Readback | Dienst-, CH- und Diagnosezustand nach dem blockierten Versuch bewertet | Kein eingeloggter Rücklesebeleg; LI/Diagnose unknown. CH durch0 Writes unangetastet, Readback unknown |
+| Nächster Schritt | Authentifizierten PC-Claude-/Brave-Handoff exakt beschrieben | Vorher-Screenshots, nur separaten LI-Dienst speichern, LI und unveränderten CH-Dienst zurücklesen; keine Zugangsdaten/2FA im Chat |
+| Dokumentation | R177-Bericht, Maschinenbeleg, Loginwand-Screenshot und kanonische Übergabe fortgeführt | Revision177 vorgesehen; Receipt `unknown_no_claude_receipt` |
+
+[LUXESTYLE_R177_20261111] [Bericht](MERCHANT-LI-VERSAND-20261111-R177.md) · [Beleg](MERCHANT-LI-VERSAND-20261111-R177.json) · [Loginwand](MERCHANT-LI-LOGINWAND-20261111-R177.png).
