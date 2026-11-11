@@ -1,0 +1,23 @@
+{
+ "freigeben": [
+  {"handle": "weihnachts-fensteraufkleber-531584",
+   "medienNachVorn": "6977dd2a-992c-4718-a7d2-b8c12e5c90d3",
+   "html": [[">Weiss</td>", ">Weiss oder bunt (je nach Ausführung)</td>"],
+            ["<li>1 Fensteraufkleber</li>", "<li>1 Rolle Fensteraufkleber mit 2 Bögen</li>"]]},
+  {"handle": "bakterienballe-aquarium-filtermaterial-643584",
+   "titel": "Filterkugeln für Aquarium, 500 g, ca. 20 mm",
+   "medienNachVorn": "a2481535-1ecc-4f23-998e-80c7f135df90",
+   "html": [["<li>500G Bakterienbälle</li>", "<li>500 g Filterkugeln</li>"],
+            ["neue Bälle mit den restlichen alten Bällen verwenden</li>", "neue Kugeln mit den restlichen alten Kugeln verwenden</li>"],
+            [">20 mm</td>", ">ca. 20 mm</td>"]]},
+  {"handle": "katzentunnel-filz-verformbar-zusammenklappbar-296064",
+   "titel": "Katzentunnel aus Filz, verformbar und zusammenrollbar",
+   "optionen": {"Farbe": {"A Stil": "Dunkelgrau/Orange", "B Stil": "Braun/Grün", "C Stil": "Dunkelblau/Beige", "D Stil": "Gelb/Braun", "E Stil": "Orange/Grau", "F Stil": "Blau/Gelb"}},
+   "medienNachVorn": "7f29d7f8-a488-4947-8b65-53bc427469ff"}
+ ],
+ "halten": [
+  {"handle": "motorrad-dashcam-2b5ac8", "grund": "Sichtung 11.11.: Bild- und Datenblattfunde, bleibt Entwurf"},
+  {"handle": "airpods-hulle-schutz-cartoon-silikon-546325", "grund": "Sichtung 11.11.: Figurenmotive (Lizenzrisiko) und Schrift auf Bildern, bleibt Entwurf"},
+  {"handle": "angelrute-450888", "grund": "Korrekturrunde offen: Längenliste, Bilder, Optionen in cm, Titel (folgt)"}
+ ]
+}
