@@ -441,7 +441,7 @@ const KB_MUTANTEN = [
   ['K01 Kartenbau prüft die Printful-Varianten nicht gegen den Katalog', "if (fremd.length) {", "if (false) {"],
   ['K02 ohneAufpreis wirkt nicht', "if (opt.ohneAufpreis) roh = roh.filter(", "if (false) roh = roh.filter("],
   ['K03 ohneEtiketten wirkt nicht', "if (opt.ohneEtiketten) roh = roh.filter(", "if (false) roh = roh.filter("],
-  ['K04 Rundum-Druck wird nicht abgewiesen', "if (k.klasse === 'PANEL' && !opt.panelErlauben) {", "if (false) {"],
+  ['K04 Rundum-Druck wird nicht abgewiesen', "if (klasse === 'PANEL' && !opt.panelErlauben) {", "if (false) {"],
   ['K05 Bündel: unbekannte Printful-Variante wird nicht gemeldet', "if (!m) { fehlt.push(", "if (false) { fehlt.push("],
   ['K06 Bündel: Variante in zwei Katalogen wird nicht gemeldet', "if (besitzer.has(id)) throw new Error(", "if (false) throw new Error("],
   ['K07 GID-Schlüssel werden nicht erkannt', "(?:gid:\\/\\/shopify\\/ProductVariant\\/)?", ""],
@@ -450,6 +450,13 @@ const KB_MUTANTEN = [
   ['K10 Bündel: dasselbe Modell zweimal wird angenommen', "if (modelle[pid]) throw new Error(", "if (false) throw new Error("],
   ['K11 Filter lassen leere Karte zu', "if (!roh.length) throw new Error(", "if (false) throw new Error("],
   ['K12 Zuordnung mit Bruch als Printful-Variante wird angenommen', "if (!Number.isInteger(pv) || pv <= 0) {", "if (false) {"],
+  // lieferbarCh (11.11.2026, Magnet 656): gemessene Schweizer Lieferbarkeit hebt NUR den Liefergrund auf
+  ['K13 lieferbarCh wirkt nicht (Magnet bleibt UNGEEIGNET)', "const klasse = opt.lieferbarCh && k.klasse === 'UNGEEIGNET' && KLASSEN_ZEICHENBAR.includes(k.technischeKlasse) ? k.technischeKlasse : k.klasse;", "const klasse = k.klasse;"],
+  // K14 («KLASSEN_ZEICHENBAR.includes(k.technischeKlasse)» weglassen) ist GLEICHWERTIG und steht deshalb nicht in der Liste: ist die technische Klasse UNGEEIGNET,
+  // liefert auch der Mutant UNGEEIGNET (k.technischeKlasse), und die Modellkarte setzt technischeKlasse immer auf einen Wert aus KLASSEN. Gemessen 11.11.2026: überlebt unit_test.
+  ['K15 die technische Klasse gilt auch ohne lieferbarCh', "const klasse = opt.lieferbarCh && k.klasse === 'UNGEEIGNET'", "const klasse = k.klasse === 'UNGEEIGNET'"],
+  ['K16 die Karte trägt weiter die Klasse der Modellkarte statt der wirksamen', "titelEn: k.titelEn, klasse, standardTechnik:", "titelEn: k.titelEn, klasse: k.klasse, standardTechnik:"],
+  ['K17 PANEL-Sperre prüft die Modellkarte statt der wirksamen Klasse', "if (klasse === 'PANEL' && !opt.panelErlauben) {", "if (k.klasse === 'PANEL' && !opt.panelErlauben) {"],
 ];
 
 // Mutanten des Vorschaubauers (nur unit_test.mjs, V6_VORSCHAUBAUER zeigt auf die Kopie)

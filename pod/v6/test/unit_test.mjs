@@ -271,6 +271,10 @@ if (katalogOrdner && existsSync(join(katalogOrdner, '71.json'))) {
     && /PANEL/.test(werft(() => karteFuerEditor(kat(388), { lieferbarCh: true })) || ''));
   const kat656Gutschein = JSON.parse(JSON.stringify(kat656)); kat656Gutschein.produkt.title = 'Gift card sample';   // technisch ungeeignet (kein gestaltbares Produkt), Druckdatei und Vorlage vorhanden
   pruefe('lieferbarCh: hebt nur den Liefergrund auf, ein technisch ungeeignetes Modell bleibt UNGEEIGNET', karteFuerEditor(kat656Gutschein).klasse === 'UNGEEIGNET' && karteFuerEditor(kat656Gutschein, { lieferbarCh: true }).klasse === 'UNGEEIGNET');
+  // Rundum-Druck nur in den USA: mit lieferbarCh wird die Klasse PANEL, und die PANEL-Sperre muss die WIRKSAME Klasse prüfen (nicht die Einstufung mit EU-Lagerregel)
+  const kat388Us = JSON.parse(JSON.stringify(kat(388))); for (const v of kat388Us.varianten) { v.status = { US: 'in_stock' }; v.regionen = ['US']; }
+  pruefe('lieferbarCh: Rundum-Druck nur in den USA bricht ohne panelErlauben ab und wird mit ihr PANEL',
+    karteFuerEditor(kat388Us).klasse === 'UNGEEIGNET' && /PANEL/.test(werft(() => karteFuerEditor(kat388Us, { lieferbarCh: true })) || '') && karteFuerEditor(kat388Us, { lieferbarCh: true, panelErlauben: true }).klasse === 'PANEL');
   // Bündel
   const b = kartenbuendelFuerEditor([kat(19), kat(206)], { 111: v19, 222: v206 });
   gleich('Bündel: Modelle', Object.keys(b.modelle).sort(), ['19', '206']);
