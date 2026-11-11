@@ -1,0 +1,86 @@
+{
+ "gesichert": "2026-11-11T21:17:36.334Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15496703181185",
+  "handle": "bluetooth-audio-empfanger-furs-auto-a0dc61",
+  "titel": "Bluetooth Audio Empfänger fürs Auto",
+  "status": "ACTIVE",
+  "tags": [
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "elektronik",
+   "empfaenger",
+   "gadget",
+   "neuheit",
+   "sort-auto-multimedia-navi",
+   "tech"
+  ],
+  "seo": {
+   "title": "Bluetooth Audio Empfänger fürs Auto | LuxeStyle CH",
+   "description": "Bluetooth Audio Empfänger fürs Auto – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  },
+  "html": "<p>Dieser Bluetooth Audio Empfänger macht dein Auto zum vernetzten Entertainment-System. Geniesse hochwertige Audioübertragung direkt von deinem Smartphone auf die Auto-Lautsprecher. Dank Bluetooth 5.0 Standard profitierst du von einer stabilen und schnellst Verbindung. Das Gerät ist speziell für die Nutzung im Auto konzipiert und unterstützt neben der Musikwiedergabe auch Anrufe und Navigationsansagen. Die Sprachsteuerungsfunktion erhöht den Bedienkomfort und die Sicherheit während der Fahrt. Einfach zu installieren und mit den meisten Fahrzeugen kompatibel, die über einen AUX-Eingang verfügen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Bluetooth 5.0 für stabile Audioübertragung</li>\n<li>Unterstützt Musik, Anrufe und Navigation</li>\n<li>Integrierte Sprachsteuerungsfunktion</li>\n<li>Einfache Mono-Kanal-Verbindung</li>\n<li>Ideal für den Freisprechbetrieb im Auto</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+  "optionen": [
+   {
+    "name": "Title",
+    "werte": [
+     {
+      "name": "Default Title",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70513728356737",
+    "alt": "Bluetooth Audio Empfänger fürs Auto – Bild 1 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4847139112289.png?v=1786612640"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70513728291201",
+    "alt": "Bluetooth Audio Empfänger fürs Auto – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1723637154132.png?v=1786612640"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70513728323969",
+    "alt": "Bluetooth Audio Empfänger fürs Auto – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8514719232316.png?v=1786612640"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70513728389505",
+    "alt": "Bluetooth Audio Empfänger fürs Auto – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3521329534988.png?v=1786612641"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56096079184257",
+    "titel": "Default Title",
+    "sku": "CJ-F7B07258-283B-48C7-BD0B-E53CD0A0DC61",
+    "preis": "21.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Title",
+      "value": "Default Title"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 40
+    },
+    "medien": []
+   }
+  ]
+ }
+}

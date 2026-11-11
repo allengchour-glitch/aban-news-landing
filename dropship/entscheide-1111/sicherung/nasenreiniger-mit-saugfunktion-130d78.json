@@ -1,0 +1,160 @@
+{
+ "gesichert": "2026-11-11T21:17:23.430Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15449431638401",
+  "handle": "nasenreiniger-mit-saugfunktion-130d78",
+  "titel": "Nasenreiniger mit Saugfunktion",
+  "status": "ACTIVE",
+  "tags": [
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "neu",
+   "rueckhol-0907",
+   "sort-gesundheit-alltagshilfen",
+   "trend",
+   "video-hit",
+   "viral"
+  ],
+  "seo": {
+   "title": "Nasenreiniger mit Saugfunktion | LuxeStyle CH",
+   "description": "Nasenreiniger mit Saugfunktion bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  },
+  "html": "<p>Effizienter Nasenreiniger zur sanften Entfernung von Schmutz, Talg und Mitesser. Mit spezieller Saugtechnologie für eine gründliche Reinigung der Poren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Mikrokristallines Reinigungsgerät für präzise Anwendung</li>\n<li>Modell LY-9128 mit 2,5 W Leistung und 3,7 V Spannung</li>\n<li>Maximale Saugkraft bis 53 kPa für effektive Reinigung</li>\n<li>Ladzeit ca. 90 Minuten für lange Nutzung</li>\n<li>Normkonform nach Q/SKT 005-2019</li>\n<li>Empfohlene Vorbehandlung: Gesicht mit Dampf oder warmen Tüchern öffnen</li>\n<li>Verwende zuerst die Hinterhand als Testfläche</li>\n<li>Vermeide Pausen an einer Stelle, um Rötungen zu verhindern</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+  "optionen": [
+   {
+    "name": "Farbe",
+    "werte": [
+     {
+      "name": "Weiss Set-USB",
+      "mitVarianten": true
+     },
+     {
+      "name": "Weiss Set 1-USB",
+      "mitVarianten": true
+     },
+     {
+      "name": "Weiss-USB",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69872093168001",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2232905319318.jpg?v=1783291009"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093135233",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 1 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a291a4ee-c6ab-4fdb-b782-9f82c9de1289.jpg?v=1783291010"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093200769",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8b4306f4-3a6e-4cdd-b7d2-d72b3a90c405.jpg?v=1783291010"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093233537",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6139044225895.jpg?v=1783291009"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093266305",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d8748a8e-9650-4fd5-8a8e-0209df2c032a.jpg?v=1783291009"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093299073",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 6 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/422867981859.jpg?v=1783291009"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093331841",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 7 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/38182036519128.jpg?v=1783291009"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093364609",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 8 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2823675102739.jpg?v=1783291009"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881796354433",
+    "titel": "Weiss Set-USB",
+    "sku": "CJ-CJBJMRDD00187-White set-USB",
+    "preis": "28.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Weiss Set-USB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 320
+    },
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881796387201",
+    "titel": "Weiss Set 1-USB",
+    "sku": "CJ-CJBJMRDD00187-White set1-USB",
+    "preis": "17.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Weiss Set 1-USB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 320
+    },
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881796419969",
+    "titel": "Weiss-USB",
+    "sku": "CJ-CJBJMRDD00187-White-USB",
+    "preis": "17.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Weiss-USB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 320
+    },
+    "medien": []
+   }
+  ]
+ }
+}

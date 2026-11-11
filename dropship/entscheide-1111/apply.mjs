@@ -112,9 +112,11 @@ function textSoll(t, snap) {
   };
 }
 function textGleich(t, snap) {
-  const z = zerlege(snap.html);
+  // Der neue Kopf kann nach dem ersten </ul> weitergehen (Hinweis-Absatz): darum «beginnt mit», nicht «gleich dem Kopf»
+  const s = String(snap.html || '');
+  const ohneMarker = s.startsWith(MARKER) ? s.slice(MARKER.length) : s;
   const seoSoll = seoTitel(t.titel).title;
-  return snap.titel === t.titel && z && z.kopf === t.kopf_neu
+  return snap.titel === t.titel && ohneMarker.startsWith(t.kopf_neu)
     && (snap.seo.title === seoSoll || (snap.seo.title == null && seoSoll === t.titel))
     && snap.seo.description === t.seo_beschreibung
     && !snap.medien.some(m => m.alt.includes(t.erwartet_titel));
@@ -251,8 +253,39 @@ async function entwurf() {
   }
 }
 
+// ---------- Folge von 1: Kategorie (Tag der Sammlung, Shopify-Kategorie, Google-Kategorie) ----------
+const QK = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id title tags category{ id }
+  mf: metafield(namespace:"mm-google-shopping", key:"google_product_category"){ value } } }`;
+const M_MF = `mutation($m:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$m){ metafields{ id } userErrors{ field message } } }`;
+async function kategorie() {
+  for (const k of plan.kategorie || []) {
+    const h = k.handle;
+    try {
+      const lies = async () => (await gql(QK, { h })).productByIdentifier;
+      const p = await lies();
+      const im = (x, kat, goo, tagDa, tagWeg) => x.category?.id === kat && x.mf?.value === goo && x.tags.includes(tagDa) && !x.tags.includes(tagWeg);
+      const [kat, goo, tagDa, tagWeg] = ZURUECK ? [k.kategorie_alt, k.google_alt, k.tag_weg, k.tag_neu] : [k.kategorie_neu, k.google_neu, k.tag_neu, k.tag_weg];
+      if (im(p, kat, goo, tagDa, tagWeg)) { zeile(h, 'Kategorie schon im Soll'); bericht.schon++; continue; }
+      if (!ZURUECK && !(p.category?.id === k.kategorie_alt && p.mf?.value === k.google_alt && p.tags.includes(k.tag_weg))) {
+        zeile(h, `ABBRUCH Kategorie: ist ${p.category?.id} / «${p.mf?.value}»`); bericht.abbruch++; continue;
+      }
+      console.log(`${h}: Kategorie ${p.category?.id} → ${kat}, Google → «${goo}», Tag ${tagWeg} → ${tagDa}`);
+      if (!LIVE) continue;
+      fehler((await gql(M_PROD, { p: { id: p.id, category: kat } })).productUpdate, 'Kategorie');
+      fehler((await gql(M_MF, { m: [{ ownerId: p.id, namespace: 'mm-google-shopping', key: 'google_product_category', type: 'single_line_text_field', value: goo }] })).metafieldsSet, 'Google-Kategorie');
+      fehler((await gql(M_TAG_ADD, { id: p.id, t: [tagDa] })).tagsAdd, 'Tag');
+      fehler((await gql(M_TAG_DEL, { id: p.id, t: [tagWeg] })).tagsRemove, 'Tag weg');
+      let n = await lies();
+      for (let i = 0; i < 5 && !im(n, kat, goo, tagDa, tagWeg); i++) { await warte(3000); n = await lies(); }
+      if (im(n, kat, goo, tagDa, tagWeg)) { zeile(h, 'Kategorie GLEICH'); bericht.ok++; }
+      else { zeile(h, `Kategorie WEICHT AB: ${n.category?.id} / «${n.mf?.value}»`); bericht.fehler++; }
+    } catch (x) { zeile(h, 'FEHLER Kategorie ' + x.message); bericht.fehler++; }
+  }
+}
+
 console.log(`Modus: ${ZURUECK ? 'ZURÜCK' : 'VOR'} · ${LIVE ? 'LIVE' : 'TROCKENLAUF'} · ${new Date().toISOString()}`);
 await texte();
+await kategorie();
 await varianten();
 await entwurf();
 console.log(`\nErgebnis: ok ${bericht.ok} · schon im Soll ${bericht.schon} · ABBRUCH ${bericht.abbruch} · FEHLER ${bericht.fehler}`);

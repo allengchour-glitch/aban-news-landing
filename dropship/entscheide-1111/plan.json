@@ -122,5 +122,17 @@
    "grund": "Besitzer 11.11. «5entwurf»: elektronischer Haustierzaun mit Halsbandempfänger (Tierschutzfrage)"
   }
  ],
- "tag_entwurf": "entwurf-besitzer-1111-nicht-live"
+ "tag_entwurf": "entwurf-besitzer-1111-nicht-live",
+ "kategorie": [
+  {
+   "handle": "sace-lady-flussig-mascara-wasserfest-langanhal-ebb71b",
+   "tag_weg": "sort-mascara-wimperntusche",
+   "tag_neu": "sort-augenbrauen-wimpernpflege",
+   "kategorie_alt": "gid://shopify/TaxonomyCategory/hb-3-2-6-3-8",
+   "kategorie_neu": "gid://shopify/TaxonomyCategory/hb-3-2-6-3-3",
+   "google_alt": "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Mascara",
+   "google_neu": "Health & Beauty > Personal Care > Cosmetics > Makeup > Eye Makeup > Eyebrow Enhancers",
+   "grund": "Folge von «1 ja»: Augenbrauen-Gel gehört in «Augenbrauen & Wimpernserum» (Kategorie Eyebrow Enhancers wie 34 andere Brauenprodukte), nicht in «Mascara»."
+  }
+ ]
 }

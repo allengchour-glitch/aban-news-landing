@@ -1,0 +1,153 @@
+{
+ "gesichert": "2026-11-11T21:17:31.255Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15495082770817",
+  "handle": "externe-mobile-festplatte-usb-3-0-543424",
+  "titel": "Externe Mobile Festplatte USB 3.0",
+  "status": "ACTIVE",
+  "tags": [
+   "auswahl-nachgeruestet",
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "gadgets",
+   "gaming",
+   "konsole",
+   "neuheit",
+   "ps4",
+   "ps5",
+   "rueckhol-0907",
+   "sort-pc-komponenten",
+   "sort-ssd-festplatten",
+   "xbox"
+  ],
+  "seo": {
+   "title": "Externe Mobile Festplatte USB 3.0 | LuxeStyle CH",
+   "description": "Externe Mobile Festplatte USB 3.0 – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  },
+  "html": "<p>Diese brandneue externe Festplatte ist die ideale Speichererweiterung für deine PlayStation 4, PlayStation 5 oder Xbox. Mit ihrer Plug-and-Play-Funktionalität ist sie sofort einsatzbereit, ohne dass eine komplizierte Installation erforderlich ist. Schliesse die Festplatte einfach über das mitgelieferte USB 3.0 Kabel an deine Konsole an und erweitere deinen Speicherplatz im Handumdrehen. Erhältlich ist die Festplatte in verschiedenen Kapazitäten von 500 GB, 1 TB oder 2 TB, sodass du genügend Platz für all deine Spiele, Spielstände und Medieninhalte hast. Das robuste Kunststoffgehäuse in Schwarz schützt die 2,5-Zoll-Festplatte zuverlässig.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Plug-and-Play für sofortige Nutzung</li>\n<li>USB 3.0 Schnittstelle für schnelle Datenübertragung</li>\n<li>Erhältlich in 500 GB, 1 TB oder 2 TB Kapazität</li>\n<li>Robustes Kunststoffgehäuse in Schwarz</li>\n<li>Keine externe Stromversorgung nötig</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+  "optionen": [
+   {
+    "name": "Speicher",
+    "werte": [
+     {
+      "name": "500 GB",
+      "mitVarianten": true
+     },
+     {
+      "name": "1 TB",
+      "mitVarianten": true
+     },
+     {
+      "name": "2 TB",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70499516842369",
+    "alt": "Externe Mobile Festplatte USB 3.0 – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/934ed512-2eea-4a6b-bc86-d0acce246023.jpg?v=1786504429"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499516809601",
+    "alt": "Externe Mobile Festplatte USB 3.0 – Bild 1 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/db35a59d-5c81-4421-b08e-502195ebd89b.jpg?v=1786504430"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499516776833",
+    "alt": "Externe Mobile Festplatte USB 3.0 – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/453f0cde-79cd-4cf1-a6bb-9cb2411bc16f.jpg?v=1786504430"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499516875137",
+    "alt": "Externe Mobile Festplatte USB 3.0 – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6e84d988-209b-46a9-a7ac-ef9067efc6b2.jpg?v=1786504430"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499516907905",
+    "alt": "Externe Mobile Festplatte USB 3.0 – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a0ca086-64ba-4207-898e-291d9ac152d8.jpg?v=1786504430"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56086633906561",
+    "titel": "500 GB",
+    "sku": "CJYX134930001AZ",
+    "preis": "93.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Speicher",
+      "value": "500 GB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 600
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70499516776833"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67757329678727",
+    "titel": "1 TB",
+    "sku": "CJYX134930002BY",
+    "preis": "130.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Speicher",
+      "value": "1 TB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 600
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70499516809601"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67757329711495",
+    "titel": "2 TB",
+    "sku": "CJYX134930003CX",
+    "preis": "173.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Speicher",
+      "value": "2 TB"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 600
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70499516875137"
+    ]
+   }
+  ]
+ }
+}
