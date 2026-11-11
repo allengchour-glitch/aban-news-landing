@@ -1,0 +1,2428 @@
+{
+ "punk-gothic-schmuck": {
+  "alt": "<p>Schmuck im Punk-, Gothic- und Hip-Hop-Stil, auch mit Totenkopf.</p>",
+  "neu": "<p>Schmuck im Punk- und Hip-Hop-Stil, dazu einige Stücke im Gothic-Stil. Am häufigsten sind Armbänder, es gibt auch Ringe, Halsketten, Anhänger und einige Sets. Viele Stücke tragen ein Totenkopf-Motiv. Im Hip-Hop-Stil gibt es Tennis- und Cuban-Armbänder sowie Modelle, die laut Artikelangabe mit Zirkonia besetzt sind. Als Material nennen die Artikel Edelstahl (teils als Titanstahl bezeichnet), Kupfer oder eine Legierung, bei einigen Armbändern auch geflochtenes Leder. Mehrere Modelle sind gold- oder silberfarben.</p><p><strong>So wählst du:</strong> Bei Ringen zählt die Grössennummer, bei einigen ist das US-Mass genannt. Vergleiche sie mit der Grösse eines Rings, der dir passt. Armbandlängen stehen je nach Artikel in Zentimetern oder in Zoll, 7 Zoll sind rund 17,8 cm. Bei einigen Anhängern wählst du, ob die Kette dabei ist. Viele Modelle sind als Unisex beschrieben, andere für Herren oder für Damen. Die genauen Angaben stehen beim jeweiligen Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "Punk-Stil",
+    "muster": "punk",
+    "felder": [
+     "title"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Hip-Hop-Stil",
+    "muster": "hip-hop",
+    "felder": [
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "einige Stücke im Gothic-Stil",
+    "muster": "gothic",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Am häufigsten sind Armbänder",
+    "muster": "armband|armreif",
+    "felder": [
+     "title"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "Ringe",
+    "muster": "(^|[\\s-])ring\\b|(titanstahl|schmuck|totenkopf|piraten|schädel)ring\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Halsketten",
+    "muster": "^(?!halskette im hip-hop-stil$).*halskette|(titanstahl|schlangenknochen-)kette\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Anhänger",
+    "muster": "anhänger",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Sets",
+    "muster": "\\bset\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Viele Stücke tragen ein Totenkopf-Motiv",
+    "muster": "totenkopf|schädel|skull",
+    "felder": [
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "Tennis-Armbänder",
+    "muster": "tennis\\s?armband",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Cuban-Armbänder",
+    "muster": "cuban",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "laut Artikelangabe mit Zirkonia besetzt",
+    "muster": "zirkonia",
+    "felder": [
+     "title"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Material Edelstahl",
+    "muster": "edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Titanstahl als Bezeichnung",
+    "muster": "titanstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Edelstahl teils als Titanstahl bezeichnet (Titel nennt das eine, Text das andere)",
+    "muster": "^[^|]*edelstahl[^|]*\\|.*titan(stahl|ium)|^[^|]*titan(stahl|ium)[^|]*\\|.*edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Material Kupfer",
+    "muster": "kupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Material Legierung",
+    "muster": "legierung",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "einige Armbänder mit Leder",
+    "muster": "lederarmband",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "geflochtenes Leder (Kombination im selben Artikel)",
+    "muster": "geflochten\\w*\\s+(rinds)?leder|leder\\w*, das kunstvoll geflochten|geflochtenes lederarmband",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Mehrere Modelle goldfarben (Farbwahl Gold)",
+    "muster": "\\bgold\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Mehrere Modelle silberfarben (Farbwahl Silber)",
+    "muster": "\\bsilber\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Ringe nach Grössennummer",
+    "muster": "\\b(us\\s?)?no\\.?\\s?\\d+\\b|\\bus\\d+\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "bei einigen ist das US-Mass genannt",
+    "muster": "\\bus[- ]?(no\\.?\\s?\\d|\\d|grösse|mass)",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Armbandlängen in Zentimetern",
+    "muster": "(?<![\\d.])(?<!necklace )\\d+(\\.\\d+)?\\s?cm\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Armbandlängen in Zoll",
+    "muster": "\\d\\s?zoll\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "7 Zoll sind rund 17,8 cm (Artikel nennen 17.78 cm)",
+    "muster": "17[.,]78\\s?cm",
+    "felder": [
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Bei einigen Anhängern wählbar, ob die Kette dabei ist",
+    "muster": "(mit|ohne) kette\\b|mit oder ohne kette",
+    "felder": [
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Viele Modelle als Unisex beschrieben",
+    "muster": "unisex|damen und herren|männer und frauen|damen als auch herren|männer als auch für frauen|gender-neutral",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "andere für Herren",
+    "muster": "\\bherren\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "andere für Damen",
+    "muster": "\\bdamen\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   }
+  ],
+  "hinweise": "NACHGEBESSERT am 11.11.2026 nach der unabhängigen Prüfung. Der Prüfer meldete 6 Funde, alle klein, alle sind eingearbeitet. Die Daten habe ich frisch und nur lesend über adm.mjs gelesen. Sie sind gleich wie beim Lesestand von 09:28 (48 Produkte, alle ACTIVE).\n\nWas sich geändert hat:\n- Muster «Halsketten» enger: 6 statt 8. Zwei Titel mit «Halskette» oder «Kette» sind laut Optionen und Text Armbänder: «Halskette im Hip-Hop-Stil» und «Hip-Hop Kette aus Edelstahl, vergoldet oder Stahl». Der Beleg zählt sie nicht mehr.\n- Muster «Armbandlängen in Zentimetern» enger: 8 statt 9. Die Kettenlänge «Necklace 45cm» zählt nicht mehr.\n- Beleg Edelstahl und Titanstahl: Er zählt jetzt nur Fälle, in denen der Titel das eine und der Text das andere nennt (4, Minimum 3). Eindeutig dasselbe Stück unter beiden Namen sind 3 Artikel. Die Titanstahlkette nennt den Anhänger einmal «aus Edelstahl» und einmal «Titanstahl (Anhänger)». Die Aufzählung bei der Zirkonia-Halskette zählt nicht mehr.\n- Beleg Zirkonia: Muster ist jetzt das Wort «zirkonia», 5 Treffer, Minimum 4. Zwei weitere Titel nennen nur Zirkon oder Zirkonen und zählen nicht.\n- Beleg «geflochtenes Leder»: Er zählt nur, wenn Leder und geflochten im selben Artikel stehen (2). Das «Personalisierte geflochtene Totenkopf-Armband» ist aus Seil oder Faden. Kunstleder oder PU kommt in der Sammlung nicht vor (0 Treffer).\n- Drei Sätze klingen anders, die Aussagen sind gleich: «es gibt auch Ringe …», «Bei Ringen zählt die Grössennummer … Vergleiche sie mit der Grösse eines Rings, der dir passt.» und «Viele Modelle sind als Unisex beschrieben».\n\nPrüfung: Alle 30 Belege sind erreicht. Die Gegenprobe mit der unveränderten Funktion zaehle_belege aus origin/main:dropship/ranking-0911/apply_einleitungen.py zeigt 0 Abweichungen. Das Werkzeug findet keine verbotenen Muster. text_fehler aus der Kopie von apply.py ist leer. status_fuer ergibt AENDERN. Der Text hat 139 Wörter, kein «ß» und keinen Gedankenstrich.\n\nFünf Belege stehen genau auf dem Minimum: Gothic 2, Tennis 2, Cuban 2, Lederarmband und geflochtenes Leder je 2, Kette wählbar 2. Fehlt beim Einspielen einer davon, den Satzteil streichen statt das Minimum zu senken:\n- Gothic fehlt: «Schmuck im Punk- und Hip-Hop-Stil.»\n- Tennis oder Cuban fehlt: «Im Hip-Hop-Stil gibt es Modelle, die laut Artikelangabe mit Zirkonia besetzt sind.»\n- Leder fehlt: Der Satz endet nach «Legierung.»\n- Kette wählbar fehlt: Den Satz «Bei einigen Anhängern …» streichen.\n\nGothic ist dünn belegt: Das «Nischen-Armband im Gothic-Stil» sagt im eigenen Text «im Punk-Stil gehalten», nur der Titel nennt Gothic.\n\nUnverändert offen (nicht Teil dieser Aufgabe):\n- Fremdkörper: Uhren-Set, Taillenkette.\n- Titel, die nicht zum Produkt passen: «Halskette im Hip-Hop-Stil» ist ein Armband. «Personalisiert» steht im Titel, aber es gibt keine Option dafür.\n- Unbelegte Echtheitswörter in den Produkten: S925, vergoldet, Diamant.\n- Englische Reste und Lieferantencodes in den Optionen.\n- Die SEO-Beschreibung nennt «Gratis-Versand ab CHF 50».\n\nNichts in Shop, Repo oder Netz geschrieben.\n\nDateien:\n- Eintrag: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/eintrag.json\n- Lesestand: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/daten.json\n- Zählung: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/belege_zaehlen.py\n- Gegenprobe: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/gegenprobe.py\n- Nachprüfung der Muster: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/nachbessern_pruef.py\n- Protokoll: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/lauf.log\n- Hinweise: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/punk-gothic-schmuck/hinweise.txt\n- Vorstand vor dem Nachbessern: die Dateien *.vor-nachbessern.* im selben Ordner."
+ },
+ "damen-jacken-kunstfell": {
+  "alt": "<p>Fell- &amp; Plüschjacken aus unserer Auswahl «Jacken &amp; Mäntel» für Damen.</p>",
+  "neu": "<p>Fell- und Plüschjacken für Damen, von der kurzen Jacke bis zum langen Mantel. Viele Modelle haben einen Fellkragen oder eine Fellkapuze, darunter gefütterte und gesteppte Mäntel sowie Parkas. Dazu kommen Plüschjacken, einige aus Fleece, sowie Modelle im Lammfell- oder Shearling-Stil. Viele Artikel geben Kunstfell oder Fellimitat an. Als Material ist meist Polyester genannt, bei einigen auch Baumwolle.</p><p><strong>So wählst du:</strong> Lege zuerst die Länge fest: kurz, mittellang oder lang. Bei vielen Artikeln steht sie in Zentimetern, oft als Spanne. Schau dann auf Schnitt, Kragen und Verschluss: Viele Modelle sind locker geschnitten, einige schmal. Bei einigen lässt sich der Fellkragen abnehmen, mehrere schliessen mit Reissverschluss, einige mit Knöpfen. Die meisten Modelle gibt es mindestens bis Grösse XL, viele bis XXL, einige bis 6XL. Mehrere Artikel weisen darauf hin, dass die Grössen kleiner ausfallen: Lies deshalb die Grössenangaben beim Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "für Damen (ohne den Baustein «Damenmode» am Textende)",
+    "muster": "\\bdamen(?!mode)|\\bfrauen",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "kurze Jacke / kurz",
+    "muster": "\\bkurz",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "langer Mantel / lang",
+    "muster": "\\blang(er|e|mantel)\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "mittellang",
+    "muster": "mittellang|mittlere länge",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Modelle mit Fellkragen oder Fellkapuze (Ponchos und Cape nicht mitgezählt)",
+    "muster": "^(?!.*(poncho|cape)).*((fell|pelz)kragen|fell-?kapuze)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "gefütterte Mäntel",
+    "muster": "gefüttert",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "gesteppte Mäntel (Steppmantel, Steppjacke)",
+    "muster": "stepp(mantel|jacke)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Parkas",
+    "muster": "\\bparka\\b|-parka\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Plüschjacken (nur Jacken: ohne Plüschmantel und Plüschweste)",
+    "muster": "plüsch-?(kapuzen)?jacke",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Plüschjacken aus Fleece (Fleece-Material laut Text)",
+    "muster": "fleece[\\s‑-]?material",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Lammfell-Stil",
+    "muster": "lammfell",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Shearling-Stil",
+    "muster": "shearling",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Artikel geben Kunstfell oder Fellimitat an",
+    "muster": "kunstfell|kunstpelz|faux-(pelz|lammfell)|fellimitat|imitation-fuchsfell",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "Material meist Polyester",
+    "muster": "polyester",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 18
+   },
+   {
+    "aussage": "bei einigen Baumwolle",
+    "muster": "baumwoll",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Länge bei vielen Artikeln in Zentimetern",
+    "muster": "läng[^.]{0,80}\\d{2,3}\\s?cm|\\d{2,3}\\s?cm lang",
+    "felder": [
+     "text"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "Länge oft als Spanne (z. B. 50 bis 65 cm)",
+    "muster": "läng[^.]{0,60}\\d{2,3}\\s?(cm)?\\s?(bis|und|[-–‑])\\s?\\d{2,3}\\s?cm",
+    "felder": [
+     "text"
+    ],
+    "minimum": 7
+   },
+   {
+    "aussage": "viele Modelle locker geschnitten",
+    "muster": "\\blocker|oversize",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "einige schmal geschnitten",
+    "muster": "\\bschmal|slim[\\s‑-]?fit|\\btailliert",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "bei einigen Fellkragen abnehmbar (nur mit Fell- oder Pelzwort)",
+    "muster": "abnehmbarer\\s+(fell|pelz)kragen|(fell|pelz)kragen ist abnehmbar",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "mehrere mit Reissverschluss",
+    "muster": "reissverschluss",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "einige mit Knöpfen",
+    "muster": "knöpfe|knopfverschluss",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "die meisten Modelle mindestens bis Grösse XL (XL wählbar)",
+    "muster": "\\bXL\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 18
+   },
+   {
+    "aussage": "viele bis XXL (XXL oder 2XL wählbar)",
+    "muster": "\\b(XXL|2XL)\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 9
+   },
+   {
+    "aussage": "einige bis 6XL",
+    "muster": "\\b6XL\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "mehrere Artikel: Grössen fallen kleiner aus",
+    "muster": "asiatisch|kleiner aus",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Grössenangaben beim Artikel (Option «Grösse»)",
+    "muster": "\\bgrösse\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 18
+   }
+  ],
+  "hinweise": "Stand: gelesen 11.11.2026 ca. 09:30 UTC und für die Nachbesserung frisch nachgelesen 11:06 UTC (Admin-API, nur lesend; beide Lesungen byte-gleich). Sammlung «Fell- & Plüschjacken» (Handle damen-jacken-kunstfell): 35 Produkte, 34 aktiv, 1 Entwurf («Vielseitiger Baumwollmantel mit Pelzkragen», Text nennt Marderhundfell; nicht gezählt). Alter Text 11 Wörter, kein Markierungsblock. Nichts geschrieben, nur Dateien im Scratch.\n\nNachbesserung nach der Prüfung (alle sechs Funde eingearbeitet, alle Belege neu gezählt): (1) wichtig: Fellkragen und Fellkapuze sind in den Produktdaten nicht sauber getrennt (die 6 Fellkapuzen-Titel nennen im Text nur «Fellkragen», auf den Fotos des Prüfers haben 14 von 17 eine Kapuze mit Fellbesatz). Der Satz heisst jetzt «Viele Modelle haben einen Fellkragen oder eine Fellkapuze», ein gemeinsamer Beleg (17, Ponchos und Cape ausgenommen) ersetzt die zwei getrennten. (2) «Plüsch- und Fleecejacken» war eine Art doppelt: jetzt «Plüschjacken, einige aus Fleece»; Beleg Plüschjacken enger (nur Titel mit Plüsch-Jacke/Plüschjacke/Plüsch-Kapuzenjacke: 3, ohne Plüschmantel und Plüschweste), Fleece nur noch über «Fleece-Material» im Text (2: die zwei Plüschjacken; Mantel mit «Fleece-Auslage» und Weste nicht mehr gezählt). (3) «mindestens bis Grösse XL» statt «bis Grösse XL» (gezählt ist «XL wählbar»: 24; grösste Grösse XL nur bei 8). (4) «oft als Spanne» ergänzt, eigener Beleg 10 von 13 Längenangaben sind Spannen (50 bis 65 cm usw.). (5) Muster «abnehmbarer Fellkragen» verlangt jetzt das Fell- oder Pelzwort (3 statt 4), Muster «Grösse» mit Wortgrenze (29 statt 30, der Farbwert «Regenbogen-Einheitsgrösse» zählt nicht mehr). (6) knappe Belege siehe unten.\n\nWas wirklich verkauft wird: überwiegend Mäntel und Jacken mit Fellkragen oder Fellkapuze (17 von 34 Titeln), dazu 7 Modelle im Lammfell- oder Shearling-Stil, 5 Plüsch-Titel (3 Jacken, 1 Mantel, 1 Weste). Ganze «Felljacken» sind die Minderheit; der Text sagt das so.\n\nGrenzfälle, im Text bewusst NICHT beschrieben: 3 Ponchos («Poncho mit Faux-Pelzkragen», «Poncho mit Pelzkragen», «Damen-Poncho mit Fellkugel», Produkttyp «Accessoires») und «Mittellanger Cape-Mantel mit Fellkragen» (der Beschreibungstext spricht von einem Cardigan aus 100 % Baumwolle und nennt «Wetterfest», Handle knitted-cardigan-…): keine Jacken. «Damen-Plüschweste, doppelseitig tragbar» ist eine Weste, «Kurze Biker-Jacke aus Lederimitat und Fell» ein Einzelfall. Der Beleg «Fellkragen oder Fellkapuze» zählt Ponchos und Cape nicht mit.\n\nFell-Fragen für den Besitzer (nicht im Text, keine Echtheitsaussage gemacht): Der Handle sagt «kunstfell», aber nur 13 von 34 aktiven Produkten nennen Kunstfell, Kunstpelz, Faux oder Imitat. 18 Titel tragen ein Fell-/Pelz-/Shearling-Wort ohne solchen Hinweis in Titel oder Text. Auffällig: drei aktive Titel mit «Pelzkragen» ohne Tierart und ohne Faux-Hinweis («Poncho mit Pelzkragen», «Gefütterter Baumwollmantel mit Pelzkragen», «Damen-Kurzmantel mit grossem Pelzkragen»); «Lammfellmantel mit integriertem Fellfutter» nennt «Fellfutter aus Lammwolle» (Echtmaterial behauptet); «Kurze Lammfell-Jacke mit Kunstfellkragen» und «Farbiger Patchwork Lammfell-Mantel» tragen «Lammfell» im Titel, der Text sagt Polyester bzw. Kunstfell; «Damen Steppjacke mit grossem Fellkragen» nennt «Füllung aus Daunen und Baumwolle» und «Kompakter Fellkapuzenmantel für Damen» eine «Down-Cotton-Füllung» (vermutlich Übersetzung von «down cotton», unbelegt). Der Text nennt deshalb weder Daunen noch Echtfell und formuliert «Viele Artikel geben Kunstfell oder Fellimitat an» als Aussage über die Artikelangaben. «Fellkragen» und «Fellkapuze» folgen dem Wortlaut der Titel; die 6 Fellkapuzen-Titel nennen im Text nur einen Fellkragen (Titel und Text widersprechen sich, nicht angefasst).\n\nWeitere Auffälligkeiten an Produkten (nicht angefasst): «Gothic-Stil Plüschmantel mit Fell-Bustier» hat Produkttyp «Spielzeug & Spiele» und die Tags kat-kinder-baby, sort-kinder-baby, sort-puppen, spielzeug (ist ein Damenmantel S bis XXL). «Kuhfell-Plüschjacke mit Knöpfen»: Kuhfell ist laut Text ein Print. Titel mit einer Farbe bei mehreren Farben in der Auswahl: «Schwarzer Parka …» (4 Farben), «Schwarzer Steppmantel …» (3), «Langer Fellmantel mit Zottelfell in Weiss» (5, Text: «Keine Fellkragen»), «Navy-blauer Damen-Mantel …» (2). «Zwei-farbiger Fell-Kapuzen-Mantel»: Text «aus Spandex gefertigt».\n\nZum Text: 138 Wörter (Grenze 140), zwei Absätze. Bewusst weggelassen: Wärme- und Wetterschutzaussagen, Farben, Taschen, Gewicht, Stoffdicke (nur 9 von 34), Einheitsgrösse (2, davon ein Poncho). Kein «Fleece-» mit Bindestrich im Text (die Verbotsliste des Einspielskripts vom 09.11. enthält «CE-» ohne Gross/Klein; Text gegen diese Liste und gegen die eigene geprüft: 0 Treffer). Schwellen bei 34 Produkten: «viele» ab 9 (ein Viertel = 8,5), «meist / die meisten» ab 18, «mehrere» ab 3, «einige» ab 2. Das Muster «für Damen» schliesst den Baustein «Damenmode · Bestseller» am Ende jeder Beschreibung aus (sonst träfe es alle 34). Alle Beschreibungen enthalten den Baustein «Sorglos shoppen … Geprüfte Angaben … Lieferung 10–20 Werktage»; kein Muster stützt sich darauf. Das Muster «schmal» enthält im Zeichensatz einen geschützten Bindestrich (U+2011), weil ein Produkttext «Slim‑Fit» so schreibt.\n\nKnappe Belege (vor dem Einspielen frisch zählen; das Einspielskript vom 09.11. bricht bei einem fehlenden Beleg den ganzen Lauf ab): genau auf dem Minimum 2 stehen Parkas («Schwarzer Parka mit Fellkapuze und Taillenzug», «Schwarzer mittellanger Damen-Parka mit Fellkapuze»), Shearling («Kurzer Wende-Shearling-Mantel für Damen», «Kurze Shearling-Jacke aus Kunstfell für Damen»), Fleece («Damen Plüsch-Jacke mit Reissverschluss», «Plüsch-Kapuzenjacke mit Reissverschluss»), Knöpfe («Gothic-Stil Plüschmantel mit Fell-Bustier», «Kuhfell-Plüschjacke mit Knöpfen») und 6XL («Gefütterter Wintermantel mit Fellkragen», «Kurzer Wende-Shearling-Mantel für Damen»). Knapp darüber: Plüschjacken 3 (Minimum 2), Fellkragen abnehmbar 3 (2), «locker geschnitten» 10 (9). Fällt ein Beleg, den Satzteil streichen statt den Lauf zu erzwingen: «sowie Parkas», «oder Shearling-», «, einige aus Fleece,», «, einige mit Knöpfen», «, einige bis 6XL». Weich, aber auch streng erreicht: «mittellang» 3 (ohne das Cape 2), «Baumwolle» 6 (als Obermaterial 3, zweimal nur als Füllung, einmal das Cape).\n\nNicht Teil der Aufgabe, unverändert: Die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt».\n\nDateien: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/damen-jacken-kunstfell/eintrag.json (Eintrag), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/damen-jacken-kunstfell/belege.py (Zählskript, «--zeigen» listet die treffenden Titel), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/damen-jacken-kunstfell/laden.py (lesende Abfrage), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/damen-jacken-kunstfell/roh.json (Rohdaten, Lesung 11:06 UTC), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/damen-jacken-kunstfell/roh_0930.json (erste Lesung 09:30 UTC)."
+ },
+ "uhren-herren": {
+  "alt": "<p>⌚ Herrenuhren bei LuxeStyle — kuratierte Auswahl, Schweizer Online-Shop.</p>",
+  "neu": "<p>Armbanduhren für Herren: Viele Modelle sind Quarzuhren, dazu kommen mechanische Uhren, zum Teil mit Automatikwerk, einige Uhren im Skelett-Design sowie einige mit Digitalanzeige. Als Armband gibt es laut Artikelangabe Leder oder Kunstleder, Edelstahl und Silikon, vereinzelt ein Milanaise-Geflecht. Neben runden Zifferblättern findest du quadratische Modelle und einige in Tonneau-Form. Zu den Funktionen gehören Kalender oder Datumsanzeige und Leuchtzeiger, bei einigen Uhren ein Chronograph oder eine zweite Zeitzone.</p><p><strong>So wählst du:</strong> Lege zuerst das Uhrwerk fest. Quarzuhren laufen in der Regel mit Batterie, mechanische Werke, auch Automatikwerke, kommen ohne aus. Vergleiche Durchmesser und Dicke mit einer Uhr, die dir passt: Viele Artikel nennen diese Masse in Millimetern. Beim Armband zählt auch die Schliesse, zum Beispiel Dornschliesse oder Faltschliesse. Meist wählst du zwischen mehreren Farben. Angaben zum Schutz vor Wasser unterscheiden sich und fehlen teilweise: Lies beim jeweiligen Artikel nach.</p>",
+  "belege": [
+   {
+    "aussage": "Uhren für Herren (Titel nennt Herrenuhr)",
+    "muster": "herren-?\\s?uhr",
+    "felder": [
+     "title"
+    ],
+    "minimum": 250
+   },
+   {
+    "aussage": "Armbanduhren (Artikel nennt ein Armband)",
+    "muster": "armband",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 153
+   },
+   {
+    "aussage": "Viele Modelle sind Quarzuhren (viele = mindestens ein Viertel)",
+    "muster": "quarz(?!glas)",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 77
+   },
+   {
+    "aussage": "mechanische Uhren (Titel nennt mechanisch, Artikel nennt kein Quarzwerk)",
+    "muster": "^(?!.*quarz(?!glas))[^|]*mechanisch",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 15
+   },
+   {
+    "aussage": "zum Teil mit Automatikwerk (Titel nennt Automatik, Artikel nennt kein Quarzwerk)",
+    "muster": "^(?!.*quarz(?!glas))[^|]*automati",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 15
+   },
+   {
+    "aussage": "einige Uhren im Skelett-Design",
+    "muster": "skelett|skeleton",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "einige Uhren mit Digitalanzeige (ohne Artikel, die zugleich ein mechanisches Werk nennen)",
+    "muster": "^(?!.*mechanisch).*(?<!keine )digital",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Armband aus Leder laut Artikelangabe (Titel nennt Lederarmband, Text nennt kein Kunstleder)",
+    "muster": "^(?!.*(kunstleder|pu-leder))[^|]*(lederarmband|lederband)",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Armband aus Kunstleder",
+    "muster": "kunstleder|pu-leder",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Armband aus Edelstahl",
+    "muster": "edelstahlarmband|edelstahlband|edelstahl-mesh-armband|armband aus edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 15
+   },
+   {
+    "aussage": "Armband aus Silikon",
+    "muster": "silikonarmband|silikonband|silikon-armband|armband aus silikon",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "vereinzelt ein Milanaise-Geflecht",
+    "muster": "milanaise",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "runde Zifferblätter",
+    "muster": "\\brunde[snmr]?\\s+(zifferblatt|gehäuse|edelstahlgehäuse|gehäuseform|form|design)|zifferblatt(form)?:?\\s+rund\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "quadratische Modelle (ohne «quadratisches Stahlband»)",
+    "muster": "quadratisch(?!e[mn] stahlband)",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "einige in Tonneau-Form",
+    "muster": "tonneau|tonneförmig",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Kalender oder Datumsanzeige",
+    "muster": "kalender|datumsanzeige",
+    "felder": [
+     "title"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "Leuchtzeiger",
+    "muster": "leuchtzeiger|leuchtende[nr]? zeiger",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 25
+   },
+   {
+    "aussage": "bei einigen Uhren ein Chronograph (Text nennt ihn ausdrücklich als Funktion, ohne «Look eines Chronographen»)",
+    "muster": "^(?!.*look eines chronographen).*(funktion[^.|]{0,100}chronograph|chronograph(en)?-?funktion)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "bei einigen Uhren eine zweite Zeitzone",
+    "muster": "zeitzone|weltzeit|dualzeit",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Quarzuhren laufen in der Regel mit Batterie: Allgemeinwissen; schwacher Beleg = Datenblattzeile «Stromversorgung: Batterie» oder Knopfzelle bei Quarz-Artikeln (die Zeile steht auch bei 2 mechanischen Artikeln, unterscheidet also nicht)",
+    "muster": "(?=.*quarz(?!glas))(?=.*(stromversorgung:\\s*batterie|knopfzelle))",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "mechanische Werke, auch Automatikwerke, kommen ohne Batterie aus (Texte, alle mechanisch oder Automatik)",
+    "muster": "(ohne|keine)\\s+batterie|batterie braucht sie deshalb nicht",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Viele Artikel nennen den Durchmesser in Millimetern (viele = mindestens ein Viertel)",
+    "muster": "durchmesser[^.|]{0,40}\\d+([.,]\\d+)?\\s?mm|\\d+([.,]\\d+)?\\s?mm[^.|]{0,25}durchmesser",
+    "felder": [
+     "text"
+    ],
+    "minimum": 77
+   },
+   {
+    "aussage": "Viele Artikel nennen die Dicke in Millimetern (viele = mindestens ein Viertel)",
+    "muster": "(dicke|dick|höhe)[^.|]{0,25}\\d+([.,]\\d+)?\\s?mm|\\d+([.,]\\d+)?\\s?mm\\s+(dick|dünn|flach)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 77
+   },
+   {
+    "aussage": "Dornschliessen",
+    "muster": "dornschliesse",
+    "felder": [
+     "text"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "Faltschliessen",
+    "muster": "faltschliesse",
+    "felder": [
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Meist wählst du zwischen mehreren Farben (meist = über die Hälfte der Artikel hat die Option Farbe)",
+    "muster": "\\bfarbe\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 153
+   },
+   {
+    "aussage": "Angaben zum Schutz vor Wasser sind bei vielen Artikeln vorhanden",
+    "muster": "wasserdicht|wasserschutz|wasserfest|spritzwasser|wasserbeständig",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 77
+   },
+   {
+    "aussage": "Angaben zum Schutz vor Wasser unterscheiden sich: Angabe 30 Meter oder 3 ATM",
+    "muster": "\\b30\\s?(m|meter|metern)\\b|\\b3\\s?atm\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 30
+   },
+   {
+    "aussage": "Angaben zum Schutz vor Wasser unterscheiden sich: andere Werte (10, 20, 50, 100 Meter, 5 ATM)",
+    "muster": "\\b(10|20|50|100)\\s?(m|meter|metern)\\b|\\b5\\s?atm\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Angaben zum Schutz vor Wasser fehlen teilweise oder verneinen ihn",
+    "muster": "wasser[^.|]{0,80}(nichts genannt|keine angaben?|nicht angegeben)|nicht wasserdicht",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   }
+  ],
+  "hinweise": "Fassung 2 (Nachbesserung nach unabhängiger Prüfung, 11.11.2026 ca. 11:10 UTC). Daten um 11:07 UTC frisch über adm.mjs gelesen (nur lesend): 743 Produkte in der Sammlung, 305 ACTIVE (nur diese gezählt), 438 DRAFT; gegen die Lesung von 09:36 UTC verglichen: 0 Produkte verändert. Smart-Sammlung: Titel enthält «Herrenuhr» ODER «Herren-Uhr» ODER «Herren Uhr»; Reihenfolge MANUAL; kein Markierungsblock. Alter Text: 9 Wörter, mit Emoji (U+231A) und Gedankenstrich (U+2014). Die SEO-Beschreibung der Sammlung nennt Gratis-Versand, CHF 50, 30 Tage Rückgabe und WELCOME10 (laut Auftrag unverändert, nur zur Kenntnis).\n\nEingearbeitete Prüfer-Funde (alle 9, alle «klein»): (1) mechanisch/Automatik: Muster schliessen jetzt Artikel aus, deren Titel oder Text ein Quarzwerk nennt (mechanisch 35 → 32, Automatik 36 → 35; raus: «Mechanische Herrenuhr für Schüler», «Vintage Skelett Mechanische Herrenuhr», «Mechanische Herren-Uhr mit Kalenderquarz», «Automatische Herrenuhr aus Edelstahl»). (2) Wortlaut: Automatik steht jetzt als Unterart der mechanischen Uhr («mechanische Uhren, zum Teil mit Automatikwerk»; «mechanische Werke, auch Automatikwerke, kommen ohne aus»). (3) Letzter Satz: «Lies beim jeweiligen Artikel nach.» (4) Chronograph: Beleg zählt nur noch Texte, die ihn ausdrücklich als Funktion nennen, ohne den Artikel mit «Look eines Chronographen» (6, Minimum 4; strenger als der Prüfervorschlag mit 10, weil der Satz unter «Zu den Funktionen gehören» steht und vier Titel ohne Funktionsangabe im Text sonst mitzählten, darunter «Multifunktionaler Chronograph Kalender Herrenuhr»). (5) quadratisch ohne «quadratisches Stahlband» (12 → 11). (6) Leder: Beleg ohne den Artikel mit PU-Leder im Text (22 → 21), und im Text steht jetzt «laut Artikelangabe» vor der Materialliste des Armbands (Leder ist nur Lieferantenangabe). (7) Digital: Prüfer sah keinen Änderungsbedarf; trotzdem eng gefasst, ohne die 2 Artikel, die zugleich ein mechanisches Werk nennen (10 → 8, Minimum 5). (8) Beleg «Quarz und Batterie» heisst jetzt ehrlich «Allgemeinwissen; schwacher Beleg» (13 Artikel, die Datenblattzeile steht auch bei 2 mechanischen Artikeln). (9) Zahlen in den Hinweisen berichtigt (siehe unten). Ergebnis: 138 Wörter, 30 Belege, alle erreicht.\n\nWas verkauft wird (Zählung an den 305 aktiven): fast nur Armbanduhren. Quarz in 152 Artikeln (Titel oder Text); mechanisch 32 Titel und Automatik 35 Titel, je ohne Quarzangabe im Artikel (zusammen 59, 8 Titel tragen beides); Digitalanzeige 8 (ohne die 2 Artikel mit mechanischem Werk). 59 Artikel nennen kein Uhrwerk (keines der Wörter Quarz, mechanisch, Automatik/automatisch, digital, elektronisch, Solar, Uhrwerk in Titel oder Text; nur mit Quarz, mechanisch, Automatik, digital gezählt wären es 75). Armband: Edelstahl 47, Silikon 27, Lederarmband 21 Titel (ohne PU-Leder-Artikel), Kunstleder 10, Milanaise 5. Formen: rundes Zifferblatt 44 Texte, quadratisch 11, Tonneau 6. Funktionen: Kalender/Datumsanzeige 40 Titel, Leuchtzeiger 42, Chronograph 7 Titel; ausdrückliche Funktionsangabe im Text bei 6 Artikeln (2 davon mit Chronograph im Titel, 4 ohne), zweite Zeitzone 11 (7 davon «Dual», «zweite» oder «doppelte» Zeitzone, 4 «Weltzeit»). Option «Farbe» bei 249 Artikeln (alle 249 mit mindestens zwei Werten).\n\nFremdkörper (aktiv, im Text nicht beschrieben): «Herrenuhren Leder Crossbody Tasche» (Produkttyp Taschen, keine Uhr) und «Elastisches Stoff-Armband für Herrenuhr» (Ersatzarmband). Beide rutschen über die Titelregel herein. Grenzfälle: 7 Sets (u. a. «Herren Uhren-Set mit Geldbörse, Gürtel & Schlüsselanhänger», «Quarz-Herrenuhr mit Armband und Halsketten», drei Geschenksets); 3 Artikel mit Damen-Ausführung in den Optionen; 2 Texte nennen die Uhr unisex.\n\nFür die Hauptsitzung (Titel-Wahrheit, ausserhalb dieses Auftrags, nichts geändert): Titel widerspricht eigenem Text bei «Mechanische Herrenuhr für Schüler» (Text: «Quarzwerk und kein mechanisches Werk»), «Vintage Skelett Mechanische Herrenuhr» (Uhrwerk: Quarz), «Mechanische Herren-Uhr mit Kalenderquarz» (Kalenderquarz, Stromversorgung Batterie), «Automatische Herrenuhr aus Edelstahl» («automatischen Quarzwerk»), «Sportliche Herrenuhr mit Chronograph» (Text: nur «Look eines Chronographen»), «Multifunktionaler Chronograph Kalender Herrenuhr» (Funktionen laut Text: Dekoration, Leuchtfunktion, Kalender), «Wasserdichte Tonneau-Herrenuhr mit Lederarmband» (Text: PU-Leder). Die Datenblätter von «Automatische Mechanische Herrenuhr Miller» und «Herrenuhr mit ewigem Kalender und Mondphase» nennen digitale Anzeige neben mechanischem Werk (widersprüchlich).\n\nLieferantenangaben, die ich bewusst NICHT übernommen habe (Prüfung durch die Hauptsitzung oder den Besitzer): «Tritium Herrenuhr» (Text behauptet Tritium-Leuchtmittel, radioaktiver Stoff, ungeprüft); Tourbillon (1 Titel, 6 Texte); Saphirglas (3 Titel, 8 Artikel); «Diamant» in 2 Titeln; «importiertes Schweizer Quarzwerk» im Text von «Magnetische Herrenuhr mit Levitation» (Herkunftsangabe Schweiz, unbelegt); Markenwerke Seagull und Miyota Citizen (je 1 Text); Echtleder-Aussagen in 26 Texten; «wasserdicht» in 56 Titeln (57 mit «Wasserschutz») und Wasserangaben in 191 Artikeln, darunter «30 ATM» bei «SLR Kamera Herrenuhr» (unplausibel); «Premium» in 3 Titeln; Markennamen in 12 Titeln (NAVIFORCE, NIBOSI, CRRJU, SKMEI u. a.). 39 Artikel haben «ß» und holprige Übersetzungen in den Optionswerten («Schwarz Nudeln», «Weißmehl Gold», «Gürtel» für Armband).\n\nZum Text: «viele» steht nur, wo mindestens ein Viertel der Artikel (77) den Beleg trägt (Quarz 152, Durchmesser in mm 123, Dicke in mm 159); «meist» für die Farbwahl (249 von 305). Skelett: 15 Titel, davon 10 mechanisch oder Automatik ohne Quarzangabe und 3 mit Quarz, darum «einige Uhren» und nicht «einige davon». «Quarzuhren laufen in der Regel mit Batterie» ist Allgemeinwissen mit schwachem Beleg (13 Quarz-Artikel mit Datenblattzeile «Stromversorgung: Batterie» oder Knopfzelle; dieselbe Zeile steht bei 2 mechanischen Artikeln; 2 Solar-Quarzuhren, darum «in der Regel»). Der zweite Satzteil (mechanische Werke ohne Batterie) ist sauber belegt: 5 Texte, alle mechanisch oder Automatik. «laut Artikelangabe» gilt für die ganze Materialliste des Armbands. Der Wasser-Satz vermeidet das verbotene Wort und behauptet keinen Schutz, er verweist nur auf die Artikelangabe (110 von 305 Artikeln haben kein Wort zu Wasser, 6 sagen ausdrücklich «keine Angabe» oder «nicht wasserdicht»). Ist er nicht gewünscht: letzten Satz streichen, es bleiben 123 Wörter. Nicht erwähnt, obwohl vorhanden: Mineralglas (66 Texte), Holzuhren (3), Mondphase (2), Solar (2), Kompass (2), Stilwörter Business (19 Titel), sportlich (22), Retro (9).\n\nKnappe Belege (fällt einer unter das Minimum, verweigert das Einspielen zu Recht, dann den Satzteil streichen): Milanaise 5 (min 3), Tonneau 6 (min 3), Chronograph 6 (min 4), «ohne Batterie» 5 (min 3), «Wasserangabe fehlt oder verneint» 6 (min 3), Digitalanzeige 8 (min 5). Mehrere Belege nutzen Vorausschauen mit «^» und «.*» (mechanisch, Automatik, Digital, Leder, Chronograph, Quarz und Batterie); sie brauchen einzeilige Felder, so liefert sie die Ladefunktion lade() (Leerraum zusammengefasst) und daten.json. Kontrolle: kein Text-Beleg trifft den Standard-Baustein der Produktseiten (Sorglos shoppen, Lieferung, Rückgabe). Gegenprobe (gegenprobe.py, ohne Bytecode): alle 30 Belege mit der echten Funktion zaehle_belege aus origin/main identisch gezählt, text_fehler des Einspielwerkzeugs meldet nichts, Status gegen den heutigen Text AENDERN.\n\nDateien (unter /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/uhren-herren/): eintrag.json (dieser Eintrag), belege.py (Text, Belege, Zählung, Regelprüfung), gegenprobe.py, laden.py, daten.json (Rohdaten 11:07 UTC), daten_0936.json (erste Lesung), v2/sichten.py (Sichtung der Prüfer-Funde); erste Fassung als belege_v1.py, eintrag_v1.json, hinweise_v1.txt."
+ },
+ "zirkonia-moissanit-ketten": {
+  "alt": "<p>Halsketten mit Zirkonia, Strass oder Moissanit.</p>",
+  "neu": "<p>Halsketten mit Steinbesatz: Laut Artikelangabe tragen viele Zirkonia oder Strass, einige Moissanit. Oft hängt ein Anhänger an der Kette, etwa Kreuz, Herz oder Tropfen. Dazu kommen Tennis-Halsketten, kubanische Gliederketten und Ketten im Hip-Hop-Stil. Als Material nennen viele Artikel Kupfer, andere Edelstahl oder Titanstahl. Bei den Moissanit-Ketten steht meist 925er Sterlingsilber. Häufig ist angegeben, dass das Metall galvanisiert oder beschichtet ist.</p><p><strong>So wählst du:</strong> Achte zuerst auf die Länge. Bei mehreren Ketten steht 41 bis 50 cm, einige haben eine Verlängerung. Kurze Ketten liegen nah am Hals, längere fallen tiefer. Überlege dann, ob ein Stein am Anhänger genügt oder die ganze Kette besetzt sein soll, wie bei Tennis-Halsketten. Farbe oder Ausführung wählst du bei vielen Modellen beim Artikel, oft in Gold- oder Silberton, bei einigen in Roségold. Bei den Moissanit-Ketten steht dort meist die Karat-Angabe des Steins.</p>",
+  "belege": [
+   {
+    "aussage": "viele mit Zirkonia (ab einem Viertel; nur das Wort «Zirkonia» im Titel, «Zirkon» zählt nicht)",
+    "muster": "zirkonia",
+    "felder": [
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "viele mit Strass (ab einem Viertel)",
+    "muster": "strass",
+    "felder": [
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "einige mit Moissanit",
+    "muster": "moissanit",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "oft hängt ein Anhänger an der Kette (ab einem Viertel; «Anhänger» im Titel, ohne die zwei losen Bastel-Anhänger «5er-Set …» und «…-Halskettenanhänger»)",
+    "muster": "^(?!5er-set)(?![^|]*halskettenanhänger)[^|]*anhänger",
+    "felder": [
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "Anhänger als Kreuz (nur Titel)",
+    "muster": "kreuz",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Anhänger als Herz (nur Titel, ohne Tennis-Halskette mit Herz-Elementen)",
+    "muster": "^(?![^|]*tennis)[^|]*\\bherz",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Anhänger als Tropfen",
+    "muster": "tropfen",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Tennis-Halsketten",
+    "muster": "tennis-halskette",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "kubanische Gliederketten",
+    "muster": "kubanische",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Ketten im Hip-Hop-Stil",
+    "muster": "hip[- ]?hop",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Artikel nennen Kupfer (ab einem Viertel)",
+    "muster": "\\bkupfer",
+    "felder": [
+     "text"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "andere nennen Edelstahl (ohne «nicht um Edelstahl»)",
+    "muster": "(?<!nicht um )edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "andere nennen Titanstahl",
+    "muster": "titanstahl",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "bei den Moissanit-Ketten steht meist 925er Sterlingsilber (Moissanit im TITEL erzwungen, danach 925/S925 mit «Sterling»; mehr als die Hälfte der 6 Moissanit-Titel)",
+    "muster": "^[^|]*moissanit[^|]*\\|.*(?<!\\d)s?925(?:er)?[- ]?sterling",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "häufig galvanisiert oder beschichtet angegeben (ab einem Viertel)",
+    "muster": "galvanisi|beschicht|plattier|vergoldet",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "bei mehreren Ketten steht 41 bis 50 cm",
+    "muster": "41\\s?(cm)?\\s?(–|-|bis)\\s?50\\s?cm",
+    "felder": [
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "einige haben eine Verlängerung (Verlängerungskette oder Längenangabe wie 40+5 cm)",
+    "muster": "verlängerungskette|\\b\\d{2}\\s?\\+\\s?\\d{1,2}\\s?cm",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "ganze Kette mit Steinen besetzt, wie bei Tennis-Halsketten",
+    "muster": "tennis-halskette|gliederkette mit strass|rundum[^.]{0,40}besetzt",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Farbe oder Ausführung bei vielen Modellen wählbar (Optionsname vorhanden; echte Auswahl mit mindestens 2 Werten: 29, das Werkzeug kann die Zahl der Werte nicht prüfen)",
+    "muster": "\\b(farbe|modell|grösse|stil|ausführung|variante)\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "oft in Gold- oder Silberton (Optionswert, ab einem Viertel)",
+    "muster": "\\bgold|silber",
+    "felder": [
+     "options"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "bei einigen in Roségold (Optionswert)",
+    "muster": "ros[ée]gold",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Moissanit-Ketten: meist Karat-Angabe des Steins als Zahl mit ct/Karat (mehr als die Hälfte der 6 Moissanit-Titel; Moissanit im TITEL erzwungen; «Zwei-Karat-Modell» zählt nicht)",
+    "muster": "^[^|]*moissanit[^|]*\\|.*\\b[1-9](?:[.,]\\d)?\\s?(?:ct|karat)\\b",
+    "felder": [
+     "title",
+     "text",
+     "options"
+    ],
+    "minimum": 4
+   }
+  ],
+  "hinweise": "Nachbesserung 11.11.2026 nach dem Prüferbericht (7 Funde + 1 Hinweis, kein Blocker). Daten frisch gelesen 11.11. 11:09 UTC über adm.mjs (nur lesend): 45 Produkte, alle ACTIVE, gegenüber dem ersten Lesen keine Änderung (Titel, Status, Optionen, Text, Sammlungstext gleich); kein Markierungsblock; heutiger Text 6 Wörter. Nichts geschrieben (kein Shop, kein Repo, kein Netz ausser den lesenden Admin-Abfragen).\nEINGEARBEITET: (1 wichtig) «die meisten Zirkonia» -> «viele Zirkonia oder Strass»; Beleg nur noch «zirkonia» im Titel (21, Minimum 12; 6 Titel sagen nur «Zirkon» und zählen nicht). (2) Karat: Moissanit im TITEL erzwungen, Zahl mit ct/Karat, Minimum 4, gezählt 5 («Zwei-Karat-Modell» der Blatt-Halskette ohne Moissanit im Text zählt nicht mehr); Wortlaut «steht dort meist die Karat-Angabe des Steins» (5 von 6 Moissanit-Titeln) (Karat ist eine Gewichtsangabe, darum nicht «Steingrösse»). (3) «oder Buchstabe» gestrichen samt Beleg. (4) Optionen-Beleg: Aussage berichtigt (Optionsname vorhanden; echte Auswahl mit mindestens 2 Werten 29, nicht 30; «Glücks-Halskette Fortune» hat einen einzigen Wert). (5) 925: Moissanit im TITEL erzwungen, 925/S925 mit «Sterling» danach, Minimum 4 (mehr als die Hälfte von 6), gezählt 5; eigener Satz «Bei den Moissanit-Ketten steht meist 925er Sterlingsilber.» (6) «Viele Artikel nennen, ob …» -> «Häufig ist angegeben, dass das Metall galvanisiert oder beschichtet ist.» (7) Stil: «viele» von sechs auf drei; Farbton in den Auswahlsatz verschoben («oft in Gold- oder Silberton, bei einigen in Roségold»). (8) Zusätzlich eng gezählt: Anhänger ohne die zwei losen Bastel-Anhänger (16, Minimum 12), Herz ohne die Tennis-Halskette mit Herz-Elementen (3, Minimum 2).\nWAS VERKAUFT WIRD (Zählung per Skript, 45 aktive Produkte): «Zirkonia» in 21 Titeln (dazu 6 nur «Zirkon»), Strass 13, Moissanit(e) 6; Anhänger an Ketten 16 (+2 lose Bastel-Anhänger); Kreuz 7, Herz-Anhänger 3, Tropfen 3; Tennis-Halskette 2, kubanische Gliederkette 3, Hip-Hop 4; Material laut Text: Kupfer 15, Edelstahl 8, Titanstahl 6, 925er Sterlingsilber 6 (5 Moissanit-Ketten und «Wassertropfen»); Farbwahl Gold/Silber bei 16 (beide Töne zur Wahl bei 11), Roségold bei 4; echte Auswahl (mindestens 2 Werte) bei 29, «Default Title» bei 15.\nFREMDKÖRPER (Vorschlag für die Hauptsitzung, nicht Teil dieser Aufgabe): Tag «sort-zirkonia-moissanit-ketten» an zwei losen Bastel-Anhängern ohne Kette entfernen und danach neu zählen: «Elegante Zirkon-Halskettenanhänger» (elegante-zirkon-halskettenanhanger-601700; Kunststoff/Metall, «DIY-Earring-Projekte», 28 Stil-Varianten in mm) und «5er-Set Messing-Anhänger mit Zirkonia-Pavé» (5er-set-messing-anhanger-mit-zirkonia-pave-775874). Ohne sie: Zirkonia 20, Beschichtung 16; alle Minima bleiben erreicht (Anhänger-Beleg schliesst sie schon aus). Gemischte Auswahl: «Strass-Anhänger Kette» mit Ohrstecker-Varianten, «Halskette mit Zirkonia-Tropfenanhänger» mit Ring/Ohrstecker/Set; kubanische Gliederketten und Tennis-Halskette führen auch Armband-Längen.\nPRODUKTFEHLER (für die Titel-Wahrheit-Liste): «Initialen-Halskette mit Zirkonia · Buchstaben-Anhänger» verspricht «26 verschiedene Buchstaben zur Auswahl (A-Z)», hat aber nur «Default Title»; «Buchstaben-Anhänger mit Strass» lässt nur die Anzahl der Buchstaben wählen («Gold-2 letters» …), nicht den Buchstaben. «Moissanite-Halskette mit Zirkon-Blatt-Anhänger»: Text nennt nur blauen Zirkon und Kupfer, kein Moissanit. «Edle Moissanite-Halskette»: «höchstens 20 cm lang» und «Wahl zwischen Moissanite und Zirkon, 1 oder 2 Karat», aber nur «Default Title». «Tennis-Halskette mit Zirkonia-Einlagen»: Text nennt Stahl-/Goldfarbe und Breiten 3/4/5 mm, aber «Default Title». «Layered Zirkonia-Halskette mit Hufeisen-Schliff»: gemeint ist «Horse Eye» (Marquise-Schliff); Optionswerte «… Diamant»/«Small Diamond» bei Zirkonia. «Aquamarin-Anhänger …» ohne Beleg für Aquamarin. Moissanit-Texte: «D-VVS1», «GRA-Zertifikat … bestätigt Qualität und Authentizität» (Lieferantenangaben, im Kaufhilfe-Text nicht übernommen). Unbelegt im Produkttext: Karat-Gold-Angaben («18k», «14k»), «Achat-Naturstein», «natürliche Perlen», «Hautfreundlichkeit», «positives Karma». Optionswerte teils Codes oder englisch («NE2A2002G», «Jingou Cuban Link Chain», «Gold-2 letters»). «Zirkonia-Kette Stella» und «Glücks-Halskette Fortune»: alter Textaufbau mit Lieferzeit, «Gratis-Versand … WELCOME10».\nKNAPPE BELEGE: Tennis-Halsketten 2 (Minimum 2), Strass 13 (Minimum 12). Fällt ein Produkt weg, verweigert das Einspielen zu Recht; dann den Tennis-Vergleich streichen bzw. «viele Zirkonia oder Strass» in «viele Zirkonia, etliche Strass» ändern.\nBEWUSST WEGGELASSEN: Buchstabe (siehe Produktfehler), Choker (1 Titel), Hufeisen, Kleeblatt, Schmetterling, Schleife, Schlüssel (je 1), Perlen und Geburtsmonat-Steine (je 2), Geschenkbox (Lieferumfang nach Lieferant), Unisex; «Labor-Steine» (kein Produkttext nennt Labor/synthetisch), Pflege- und Wasserhinweise, GRA-Zertifikat, Reinheitsgrade; kein Wert- oder Diamantvergleich. «41 bis 50 cm» ist beim Lieferanten wohl eine Längenklasse, darum «steht» statt «messen».\nPRÜFUNG: belege.py zählt 22 Belege gegen die 45 aktiven Produkte (alle erreicht), 136 Wörter; gegenprobe.py prüft den Eintrag offline mit dem echten Werkzeug (Kopie von kaufhilfen1111/apply.py und origin/main:dropship/ranking-0911/apply_einleitungen.py): text_fehler leer, Zählung des Werkzeugs gleich «gezaehlt», Status AENDERN, drei Mutationen erkannt.\nSEO-Felder unverändert gelassen; die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt» (bestehende Shop-Regel, nicht angefasst).\nDATEIEN im selben Ordner: eintrag.json (dieser Eintrag), belege.py (Text, Belege, Zählung), gegenprobe.py (Prüfung mit dem echten Werkzeug), laden.py, roh.json (frisch), roh_vorher.json, eintrag_entwurf1.json, belege_entwurf1.py, hinweise_entwurf1.txt, pruef/ (Prüferbericht-Dateien)."
+ },
+ "tier-pullover": {
+  "alt": "<p>Pullover, Strickjacken und Hoodies für Hunde und Katzen, auch für haarlose Katzen.</p>",
+  "neu": "<p>Strickpullover, Cardigans (Strickjacken) und Hoodies (Kapuzenpullover) für Hunde und Katzen. Die meisten Modelle sind für Hunde, ein Teil für Katzen, darunter einige für haarlose Katzen. Es gibt Modelle für Welpen, kleine und grosse Hunde. Genannt werden Materialien wie Wolle, Polyester, Acryl, Baumwolle oder Fleece. Zu den Mustern zählen Streifen, Karo und Motive wie Herzen oder Bären.</p><p><strong>So wählst du:</strong> Miss Brustumfang, Rückenlänge und Halsumfang deines Tiers. Ein Teil der Artikel nennt Masse in Zentimetern, manche einen Gewichtsbereich in Kilogramm. Die meisten Modelle gibt es in S bis XL, viele auch in XS und XXL, einige in 3XL und grösser. Mehrere Artikel geben asiatische Grössen an, die laut Angabe ein bis zwei Nummern kleiner ausfallen als europäische. Bei Zwischengrössen raten einige zur grösseren. Manche Modelle haben Knöpfe oder ein Futter. Pflegehinweise wie Maschinen- oder Handwäsche nennen nur einige Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "Strickpullover",
+    "muster": "strick",
+    "felder": [
+     "title"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Cardigans (Strickjacken)",
+    "muster": "cardigan|strickjacke",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Hoodies (Kapuzenpullover)",
+    "muster": "hoodie|kapuze",
+    "felder": [
+     "title"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Die meisten Modelle sind für Hunde",
+    "muster": "hund|welpe",
+    "felder": [
+     "title"
+    ],
+    "minimum": 85
+   },
+   {
+    "aussage": "ein Teil für Katzen",
+    "muster": "katze",
+    "felder": [
+     "title"
+    ],
+    "minimum": 17
+   },
+   {
+    "aussage": "einige für haarlose Katzen",
+    "muster": "haarlose[nr]? katzen?\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle für Welpen",
+    "muster": "welpen?\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Modelle für kleine Hunde",
+    "muster": "kleine[nr]? (hunde?|rassen)\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle für grosse Hunde",
+    "muster": "(?<!mittel)gro(ss|ß)en? hunde?\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "genannt wird Wolle (Baumwolle zählt nicht)",
+    "muster": "(?<!baum)woll",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "genannt wird Polyester",
+    "muster": "polyester",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "genannt wird Acryl",
+    "muster": "acryl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "genannt wird Baumwolle",
+    "muster": "baumwoll",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "genannt wird Fleece",
+    "muster": "fleece",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Muster Streifen",
+    "muster": "gestreift|streifen",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Muster Karo",
+    "muster": "karo(muster)?\\b|kariert|\\bplaid\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Motiv Herzen",
+    "muster": "\\bherz(en|chen|motiv|muster|design)?\\b",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Motiv Bären",
+    "muster": "\\bbär",
+    "felder": [
+     "title",
+     "options"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Mass Brustumfang",
+    "muster": "brust(umfang|weite)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Mass Rückenlänge",
+    "muster": "rückenlänge",
+    "felder": [
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Mass Halsumfang",
+    "muster": "hals(umfang|weite)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "ein Teil der Artikel nennt Masse in Zentimetern (Körpermass mit Zahl)",
+    "muster": "(brust|rücken|hals)\\w*[^.|]{0,60}\\d\\s?cm\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 30
+   },
+   {
+    "aussage": "manche nennen einen Gewichtsbereich in Kilogramm (Tiergewicht, kein Produktgewicht in kg)",
+    "muster": "\\d\\s?kg\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "die meisten Modelle gibt es in S bis XL (S, M, L und XL als Optionswerte)",
+    "muster": "(?=.*\\bS\\b)(?=.*\\bM\\b)(?=.*\\bL\\b)(?=.*\\bXL\\b)",
+    "felder": [
+     "options"
+    ],
+    "minimum": 85
+   },
+   {
+    "aussage": "viele auch in XS",
+    "muster": "\\bXS\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 43
+   },
+   {
+    "aussage": "viele auch in XXL (auch als 2XL geschrieben)",
+    "muster": "\\bXXL\\b|\\b2XL\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 43
+   },
+   {
+    "aussage": "einige in 3XL und grösser",
+    "muster": "\\b([3-9]|1[01])XL\\b|\\bXXXL\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "mehrere Artikel: ein bis zwei Nummern kleiner",
+    "muster": "(1|eine?)\\s?(bis|[-–‑])\\s?(2|zwei) (nummern|grössen) kleiner",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "mehrere Artikel geben asiatische Grössen an, die ein bis zwei Nummern kleiner ausfallen",
+    "muster": "asiatisch[^.]{0,80}(1|eine?)\\s?(bis|[-–‑])\\s?(2|zwei) (nummern|grössen) kleiner",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "kleiner als europäische Grössen",
+    "muster": "(1|eine?)\\s?(bis|[-–‑])\\s?(2|zwei) (nummern|grössen) kleiner[^.]{0,80}europäisch|europäisch[^.]{0,120}(1|eine?)\\s?(bis|[-–‑])\\s?(2|zwei) (nummern|grössen) kleiner",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "bei Zwischengrössen raten einige zur grösseren",
+    "muster": "(zwischen zwei grössen|zwischengrösse)[^.]{0,60}grösser",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "manche Modelle haben Knöpfe",
+    "muster": "knopf|knöpf",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "manche Modelle haben ein Futter",
+    "muster": "(innen|fleece)[\\s‑-]?futter\\b|gefüttert",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Pflegehinweis Maschinenwäsche (nur einige Artikel)",
+    "muster": "maschinenw",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Pflegehinweis Handwäsche (nur einige Artikel)",
+    "muster": "handwäsche",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   }
+  ],
+  "hinweise": "GEMESSEN am 11.11.2026 (Admin-API, nur lesend): Sammlung «tier-pullover», Titel «Pullover, Strick & Hoodies», 169 Produkte, alle 169 ACTIVE, 4 Seiten gelesen (productsCount 169 = gelesen 169). Um 11:13 UTC frisch nachgelesen: gleich dem Stand von 09:49 UTC (0 Produkte weg, 0 neu, 0 geändert). Alte Einleitung 12 Wörter, kein Markierungsblock. Gegenprobe ohne Netz mit der Zählfunktion aus origin/main (apply_einleitungen.zaehle_belege) und den Textregeln des Einspielskripts (kaufhilfen1111/apply.py: text_fehler, status_fuer): 35 Belege gleich gezählt, 0 Regelverstösse, 138 Wörter (Zählung des Werkzeugs gleich), Status AENDERN, Negativprobe erkannt, jedes Stichwort des Textes hat einen Beleg.\n\nNACHBESSERUNG (Fassung 2, alle 9 Funde des Prüfers eingearbeitet): (1, wichtig) Pflege: jetzt «nennen nur einige Artikel» statt «stehen beim jeweiligen Artikel» (Maschinenwäsche 17, Handwäsche 9, zusammen 26 von 169). (2) «Hoodies (Kapuzenpullover)» mit einem Beleg hoodie|kapuze (13 Titel, Minimum 5; ohne die 3 fraglichen Produkte noch 10). Die Kapuze in Absatz 2 und ihr Beleg entfallen. (3) Grössenhinweis mit Bezugsgrösse: «asiatische Grössen, die laut Angabe ein bis zwei Nummern kleiner ausfallen als europäische» (Belege 11, 11 und 8). Die zwei Texte, die ihre eigene Angabe europäisch nennen, sind darin mitgezählt; ohne sie bleiben 9 und 6, beide über dem Minimum 5. (4) «einige in 3XL und grösser» steht jetzt bei den Grössenbuchstaben in Absatz 2 und nicht mehr hinter «grosse Hunde»; das Muster deckt auch 10XL/11XL ab (16). (5) Norwegermuster gestrichen. (6) Material ohne Gewichtung: «Genannt werden Materialien wie …». 140 von 169 Produkten nennen eines der fünf Materialien, 29 keines, darum nicht «die Artikel nennen». Die Minima liegen jetzt bei je 5. (7) Welpen (3, Minimum 2) und kleine Hunde (8, Minimum 3) sind getrennt belegt. (8) Engere Muster: Karo 5, Futter nur bei Innen- oder Fleecefutter oder «gefüttert» 6, Herz 5, S, M, L und XL einzeln 145, Zwischengrösse nur zusammen mit dem Rat zur grösseren 7 (alle 7 Texte raten zur grösseren). (9) Die Mengenwörter sind abwechslungsreicher («manche», «nur einige»). Zusätzlich geprüft: alle 22 kg-Treffer sind Tiergewichte, kein Produktgewicht in kg; «woll» trifft nur Wörter rund um Wolle (kein Verb «wollen»). Der erste Satz heisst jetzt «Strickpullover, Cardigans (Strickjacken) und Hoodies (Kapuzenpullover) für Hunde und Katzen.», damit der Text unter der Wortgrenze bleibt.\n\nInhalt: fast durchgehend Pullover für Hunde und Katzen. Im Titel nennen 116 Produkte Hund oder Welpe, 34 Katze (17 davon beides) und 28 «Haustier». Das Material ist überall nur eine Angabe des Lieferanten, darum sagt der Text «genannt werden». «Wolle» steht bei 60 Produkten (22 Texte sagen «100 % Wolle»): bei dieser Ware ungeprüft und eher unwahrscheinlich. Bei Durchsicht nennen nur rund 46 von 169 Produkten Körpermasse in Zentimetern (das enge Belegmuster zählt 40), 2 sagen ausdrücklich, dass Masse fehlen: darum «ein Teil der Artikel» und nicht «viele».\n\nFremdkörper und Auffälligkeiten (im Text NICHT beschrieben, bitte prüfen):\n1. vintage-kapuzenpullover-mit-cartoon-print-604400: liest sich wie Kleidung für Menschen (Länge 65 cm, Variante «Hose», 490 bis 550 g, kein Tier im Text). Wahrscheinlich falsch einsortiert.\n2. tie-dye-hoodie-fur-haustiere-besitzer-625300 (Varianten «Pet» und «Person», Produktart «Damenmode») und hunde-hoodie-mit-buchstabenmuster-624900 (Grössen «XL Pet … 9XL Pet» neben «Master S … Master XXXL»): Partnerlook mit Menschengrössen im selben Produkt.\n3. Zubehör als Variante: haustier-pullover-oder-mutze-im-japan-stil-628700 (Schalmütze), winterpullover-fur-hund-katze-877056 (Variante «Hut»), weicher-gestreifter-hundepullover-695936 (Grösse «Blanket 75x75»), katzenpullover-aus-lammwolle-617800 («Nur Weste»).\n4. Titel und Text passen nicht zusammen: hundemantel-golden-retriever-labrador-anti-rab-246720 (Titel «Hundepullover schwarz für grosse Hunde», Text «Hundemantel», «für Hunde über 90 kg», «warme Tage im Frühling und Sommer», nur Default Title); lila-hundemutze-mit-cardigan-stil-607600 (Titel Pullover, Text «Hundemütze»); wolldecke-mit-kapuze-fur-hunde-695168 (Text «Hundemantel»).\n5. Unbelegte Eigenschaften in Titel oder Text der Produkte: hundepullover-wasserdicht-aus-wolle-606900 («wasserdicht»), katzenpullover-warm-und-winddicht-628700 und vier-jahreszeiten-pullover-fur-haustiere-471936 («winddicht»), 5 weitere Texte «schützt vor Wind»; kleiner-duft-cardigan-aus-wolle-rosa-807744 («Leichter Duft im Gewebe», wohl Übersetzungsfehler); Sicherheits- und Wirkungssätze in einzelnen Texten: «Keine losen Teile für sichere Nutzung», «ohne Druckstellen», «für empfindliche Haut», «Keine Metallteile, tierfreundlich», «reduziert den Haarausfall in der Wohnung» (fleece-kapuzenpullover-fur-hunde-mit-fruchtede-192512).\n6. Tierfaser-Angaben nur vom Lieferanten (Fell-Thema vom 04./05.11.): «Angorawolle» (hund-cardigan-mit-angoraboden-413504), «Kaninchenfleece» (pullover-fur-hund-und-katze-aus-kaninchenfleec-552768), «Kaninchen-Velours-Kernspinngarn» (warmer-haustierpullover-mit-blumenmuster-839040), «Nerz-Samtstoff» (katzen-kapuzenpullover-mit-fleecefutter-635400), «Lammwolle» (katzenpullover-aus-lammwolle-617800), «Lammschurwolle» (koreanischer-doppel-layer-fleece-hundekittel-782016), «Kaschmir» (kaschmir-pullover-fur-haustiere-mit-zopfmuster-938304), Variante «Mohair» (hundelange-farbblock-cardigan-607500). Im Text bewusst nicht genannt.\n7. Abgeschnittene oder schiefe Titel: «Strickpullover für kleinen und mittleren H», «Karo Rundhalspullover für H», «Wollpullover für H, S bis XXL», «Kuschelschmuck: Katzen- und Hundesweater in Lila», «Weihnachtspullover für Hund – S», «Wollpullover für Hund – blau, Grösse M» (nur Default Title), Titel nur aus Rassennamen («Bichon Pomeranian Teddy Schnauzer Pullover braun», «Bichon Corgi Winterpullover Blau»). 3 Produkte ohne Auswahl (Default Title).\n8. Rohe Optionswerte: «Number12 … Number28», «Grau KL FZ 95», «XLL», «M L, SM, SG, SS, AS», «L  plus», «Gelb XINGX Pullover», Farbe «Kleidung/Hut», «Pet/Person». Einheiten: «Jin» in 3 Texten, englisch «Bust/Back length» in einem.\n9. Falsche Produktart: hundepullover-im-sport-design-227792 («Aufbewahrung & Organizer»), plusch-hundepullover-einfarbig-942400 («Spielzeug & Spiele»), tie-dye-hoodie-fur-haustiere-besitzer-625300 («Damenmode»).\n10. Saisonware: 18 Produkte mit Weihnachtsbezug, 4 mit Halloween oder Kürbis. Der Text nennt beides nicht (verbotenes Wort bzw. Verfallsdatum).\n11. Die Fusszeile «Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe» steht in 166 von 169 Beschreibungen (nicht Teil dieser Aufgabe).\n12. Die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt»; sie bleibt unverändert (ersetzt wird nur descriptionHtml).\n\nKnappe Belege (brechen als erste, wenn Produkte wegfallen): Welpen 3 (Minimum 2), Knöpfe 5 (zwei davon «Reissverschluss mit Knopf» bzw. Druckknöpfe), Karo 5, Herzen 5, Bären 5, grosse Hunde 5 (eines davon das Produkt aus Punkt 4), Körpermass in Zentimetern 40 (Minimum 30), europäische Grössen 8 (Minimum 5). Weggelassen, weil Einzelfall oder unbelegt: Norwegermuster oder Fair Isle (3), Sweatshirts (2), Reissverschluss (1), dünne Ausführung (1), Set mit Mütze, Jacquard, Regenbogen, Blumen, Zopfmuster, Leopard. Getrennte Aufgabe ausserhalb dieses Textes (Vorschlag des Prüfers): die 22 Beschreibungen mit «100 % Wolle» nach dem Verfahren «titel-wahrheit» prüfen. Der Rat «Miss Brustumfang, Rückenlänge und Halsumfang» folgt den Massen, die die Artikel selbst nennen (34, 25 und 19 Texte).\n\nDateien: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/tier-pullover/eintrag.json (Eintrag Fassung 2), belege_zaehlen.py (Text, Belege, Zählung, Textregeln), gegenprobe.py (Zählung mit der Funktion aus origin/main, ohne Netz), pruef_nachbessern.py (Trefferstellen der neuen Muster), laden.py und daten.json (Lesestand 11.11. 11:13 UTC), daten_0949.json, eintrag_entwurf1.json und belege_zaehlen_entwurf1.py (Fassung 1). Nichts in den Shop, ins Repo oder ins Netz geschrieben."
+ },
+ "personalisierte-ringe": {
+  "alt": "<p>Ringe mit Gravur, Namen oder Buchstaben als persönliches Geschenk.</p>",
+  "neu": "<p>Hier findest du Ringe mit Gravur, mit Buchstaben oder Namen und mit Geburtsstein. Viele Modelle sind laut Artikelangabe mit Zirkonia besetzt, darunter einige Geburtsstein-Ringe. Als Material nennen die Artikel meist Kupfer, oft galvanisiert, bei einigen Edelstahl, Titanstahl oder Messing. Viele Ringe gibt es in den Farbtönen Silber, Gold oder Roségold, einige auch in Schwarz. Dazu kommen einige Ringe zum Studienabschluss und einige offene, verstellbare Modelle.</p><p><strong>So wählst du:</strong> Die Grösse wählst du bei den meisten Ringen als Nummer, bei vielen von 5 bis 13. Nur einige Artikel nennen ausdrücklich US-Grössen. Miss deshalb einen passenden Ring und vergleiche ihn mit einer Ringgrössentabelle. Material und Farbton stehen beim Artikel. Frag vor der Bestellung nach, wenn das Grössensystem unklar ist.</p>",
+  "belege": [
+   {
+    "aussage": "Ringe mit Gravur (Titel nennt Gravur oder graviert; nur gravierbare zählen nicht)",
+    "muster": "gravur|graviert",
+    "felder": [
+     "title"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Ringe mit Buchstaben",
+    "muster": "buchstabe",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Ringe mit Namen (einige, nur Titel)",
+    "muster": "\\bnamen\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Ringe mit Geburtsstein (viele; ohne Ring, dessen Text «kein Stein» sagt)",
+    "muster": "^(?!.*kein stein).*geburtsstein",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "viele Modelle laut Artikelangabe mit Zirkonia besetzt (streng: nur das Wort Zirkonia)",
+    "muster": "zirkonia",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "darunter einige Geburtsstein-Ringe mit Zirkonia",
+    "muster": "^(?!.*kein stein).*(?:geburtsstein.*zirkonia|zirkonia.*geburtsstein)",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Material meist Kupfer (mehr als die Hälfte)",
+    "muster": "\\bkupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "Kupfer oft galvanisiert (Text nennt Kupfer und Galvanisierung/Elektroplattierung)",
+    "muster": "kupfer.*(?:galvan|elektroplatt|electroplating)|(?:galvan|elektroplatt|electroplating).*kupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "einige Ringe aus Edelstahl",
+    "muster": "edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "einige Ringe aus Titanstahl",
+    "muster": "titanstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Ringe aus Messing",
+    "muster": "\\bmessing\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele im Farbton Silber (Auswahl)",
+    "muster": "\\bsilber\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "viele im Farbton Gold (Auswahl)",
+    "muster": "\\bgold\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "viele im Farbton Roségold (Auswahl)",
+    "muster": "\\bros[ée]gold\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "einige auch in Schwarz (Auswahl)",
+    "muster": "\\bschwarz\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Ringe zum Studienabschluss (nur ausdrückliche Abschlussringe)",
+    "muster": "abschlussring|college-ring|bachelor-ring|class ring",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "einige offene, verstellbare Modelle (eng; ohne Ring mit festen Grössen S/L/M)",
+    "muster": "offen und verstellbar|offenen, verstellbaren|verstellbare öffnung",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "bei den meisten Ringen Grösse als Nummer wählbar",
+    "muster": "(?:grösse|ringgrösse)\\b.*\\d|\\bnr\\. ?\\d",
+    "felder": [
+     "options"
+    ],
+    "minimum": 25
+   },
+   {
+    "aussage": "bei vielen Grössenauswahl von 5 bis 13",
+    "muster": "\\b5\\b.*\\b13\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "nur einige Artikel nennen ausdrücklich US-Grössen (Auswahl oder Text)",
+    "muster": "\\bUS ?\\d|\\(US\\)",
+    "felder": [
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Material steht beim Artikel",
+    "muster": "\\bkupfer|edelstahl|titanstahl|\\bmessing\\b|sterlingsilber|legierung|material:",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 30
+   },
+   {
+    "aussage": "Farbton steht beim Artikel (Option Farbe mit Silber/Gold/Roségold/Schwarz)",
+    "muster": "\\bfarbe\\b.*\\b(?:silber|gold|ros[ée]gold|schwarz)\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 20
+   }
+  ],
+  "hinweise": "FASSUNG 2 nach unabhängiger Prüfung (11.11.2026, Daten frisch gelesen 11:17 UTC, Admin-API nur lesend; luxestyle.ch nicht abgerufen; Belege neu gezählt, gleich wie beim Prüfer). Eingearbeitet: (a) wichtig: die Sätze «Was sich personalisieren lässt, unterscheidet sich je Ring» und «… einen eigenen Text gravieren lassen möchtest» gestrichen (unbelegt, 0 von 39 Texten beschreiben einen Übermittlungsweg); neu nur Rat ohne Behauptung: «Frag vor der Bestellung nach, ob ein Ring deinen eigenen Text oder Namen bekommen kann und wie du ihn übermittelst.»; (b) «Das Material steht beim Artikel, den Farbton wählst du meist dort aus» → «Material und Farbton stehen beim Artikel» (bei 7 Ringen steckt die Grösse in der Option «Farbe»); (c) Satz 1 mit Verb, «Viele Ringe gibt es …»; (d) engere Belege: Gravur nur Titel «gravur|graviert» (14; die nur «gravierbaren» zählen nicht), Geburtsstein ohne den Ring mit «Eingelegt ist kein Stein» (15), Studienabschluss nur ausdrückliche Abschlussringe (4: Abschlussring, College-Ring, Bachelor-Ring, Class Ring), offen/verstellbar nur wörtliche Fügungen (2; der «Edelstahlring mit 26 Buchstaben» mit Grössen S/L/M zählt nicht mehr), US-Grössen auch im Text (4). Text 135 Wörter, Prüfung der Verbotsliste des Einspielwerkzeugs: 0 Treffer. GEMESSEN 11.11.2026: 39 Produkte, alle ACTIVE, alles Ringe. Heutiger Text 9 Wörter, kein Markierungsblock. (1) WICHTIGSTER BEFUND, Entscheid Besitzer: Die Personalisierung ist nicht belegt lieferbar. 0 von 39 Produkttexten beschreiben, wie ein eigener Text, Name oder Geburtsmonat übermittelt wird (kein Eingabefeld, keine Bestellnotiz erwähnt). Nur 2 Produkte bilden eine Wahl über Varianten ab («Edelstahlring mit 26 Buchstaben»: Buchstabe in der Option «Farbe», die Buchstaben L, M und S fehlen dort, die Option «Grösse» hat die Werte S, L, M; «Personalisierbarer Ring mit Stein»: 2 bis 7 Geburtssteine). 4 Produkte haben nur «Default Title». Ob die Produktseite ein Eingabefeld zeigt, ist ungemessen; CJ-Standardware kommt in der Regel wie abgebildet. Darum verspricht die Kaufhilfe keine Gravur nach Wunsch, sondern nennt nur die Ringarten und rät zur Nachfrage vor der Bestellung. Sammlungstitel, SEO-Titel und 24 Produkttitel mit «Personalis…» versprechen mehr, als die Daten belegen. (2) Fremdkörper (laut eigenem Text nicht personalisierbar): «Pusteblumen-Ring Dandelion» (festes graviertes Motiv; sein Text nennt ausserdem «Lieferzeit … Werktage» und «Premium Schmuck») sowie 4 Produkte, deren Text kein Personalisierungs-Wort enthält: «Personalisierter Retro Silberring mit unregelmässiger Form», «Vintage-Ring mit Personalisierung, Unisex», «Personalisierter Damen Geburtssteinring», «Personalisierter Antik-Stil Geometrischer Ring» (Text: «Meilad-Stil Rosa»). Im Text nicht beschrieben. (3) Titel gegen Text: «Kupferring mit Gravur und Geburtsstein» sagt im Text «Eingelegt ist kein Stein». (4) Echtheits- und Wertwörter in Produkttexten, bewusst NICHT übernommen: 2 Ringe «S925/925er Sterlingsilber» (nur Lieferantenangabe; einer davon mit Farbwahl Silber/Gold), 7 Texte mit «Diamant-Inlay/Diamantintarsien/diamantförmig» (Name einer Fassung, kein Diamant), 1 Text «14-karätiger Gold- oder Stahlglanz» (Edelstahlring mit 26 Buchstaben). 10 Texte schreiben «Zirkon» statt «Zirkonia» (Zirkon wäre ein Naturmineral): der Beleg zählt darum streng nur das Wort «Zirkonia» (12 Produkte), breit wären es 22. Farben stehen im Text als «Farbtöne» (Auswahlwerte Silber/Gold/Roségold), nicht als Metall. (5) Auswahl unsauber: 5 Ringe führen die Grössen 5 bis 9 in der Option «Farbe» («Silber-5») und 10 bis 13 in «Grösse»; 2 Ringe haben die Grösse nur in «Farbe» («Stahlfarbe, Nr. 7», «Wie abgebildet-Nr. 7»); «Personalisierter Edelstahlring» hat 16 Farbwerte inklusive «Gestreift» und «Kariert» (unplausibel); 5 Ringe haben keine Grössenwahl und sind nicht als verstellbar beschrieben (Personalisierter Edelstahlring, Stahlring mit zwei Namen, Personalisierbarer Geburtsstein-Ring, Personalisierter Ring mit Stein, Edelstahlring mit Buchstaben). Das Grössensystem ist nur bei 3 Ringen in der Auswahl als US bezeichnet (dazu 1 Text), Millimeter-Angaben fehlen (2 Texte erwähnen Umfang oder Innendurchmesser, einer davon nur, dass er nicht aufgeführt ist): daher der Rat «messen, vergleichen, nachfragen». Der «DAD Ring» (US 4 bis US 15) zählt beim Beleg «5 bis 13» mit, weil seine Auswahl den Bereich umfasst. (6) Knappe Belege ohne Reserve: «Namen» 2, «Titanstahl» 2, «Messing» 2, «offen und verstellbar» 2 (Minimum je 2). Fällt eines dieser Produkte weg, überspringt das Einspielwerkzeug die Sammlung; dann «oder Namen», «Titanstahl», «oder Messing» bzw. «und einige offene, verstellbare Modelle» streichen und neu zählen. Datenfehler für eine eigene Aufgabe (shop-auswahl-varianten, Entscheid Besitzer): bei 7 Ringen Farbe und Grösse in einer Option vermischt. (7) Nicht verwendet, weil Einzelfall oder unbelegt: Vatertag/DAD-Ring (1), Gedenkring (1), Sterlingsilber, Legierung, Gewichte, Pflegehinweis für galvanisierten Schmuck (1 Text). Skripte und Daten: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/personalisierte-ringe/ (laden.py, daten.json frisch 11:17 UTC, daten_0947.json alter Stand, belege_zaehlen.py Fassung 2, belege_zaehlen_v1.py, eintrag.json, eintrag_v1.json)."
+ },
+ "personalisierte-ketten": {
+  "alt": "<p>Halsketten mit Gravur, Namen oder Buchstaben als persönliches Geschenk.</p>",
+  "neu": "<p>Halsketten mit Buchstaben- oder Herz-Anhänger, für dich selbst oder als Geschenk. Rund die Hälfte der Modelle trägt einen Buchstaben-Anhänger, einige ein Herz. Dazu kommen Modelle, die der Artikel als Namens-, Gravur- oder Geburtsstein-Kette bezeichnet. Als Material nennen die Artikel meist Edelstahl oder Kupfer, einige Titanstahl, oft mit einer Beschichtung.</p><p><strong>So wählst du:</strong> Schau zuerst, was sich beim Artikel auswählen lässt. Bei einigen Modellen wählst du den Buchstaben von A bis Z, bei anderen den Monat. Viele Modelle gibt es nur in einer Ausführung, ohne Auswahl. Achte auf die Kettenlänge: Mehrere Modelle nennen 41 bis 50 cm, einige sind verstellbar. Gold, Silber und Roségold bezeichnen in der Farbauswahl den Farbton. Die genauen Angaben findest du beim jeweiligen Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "rund die Hälfte der Modelle trägt einen Buchstaben-Anhänger (Titel)",
+    "muster": "buchstabe|initial",
+    "felder": [
+     "title"
+    ],
+    "minimum": 14
+   },
+   {
+    "aussage": "einige tragen ein Herz (Titel)",
+    "muster": "\\bherz\\b|herz-",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle, die der Artikel als Namens-Kette bezeichnet (Titel)",
+    "muster": "\\bnamens?\\b|namensanhänger|-name\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle, die der Artikel als Gravur-Kette bezeichnet (Titel)",
+    "muster": "gravur|graviert",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle, die der Artikel als Geburtsstein-Kette bezeichnet (Titel)",
+    "muster": "geburtsstein",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Material meist Edelstahl oder Kupfer (mehr als die Hälfte)",
+    "muster": "edelstahl|kupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 16
+   },
+   {
+    "aussage": "Edelstahl (viele)",
+    "muster": "edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Kupfer (viele)",
+    "muster": "kupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "einige Titanstahl",
+    "muster": "titanstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "oft mit einer Beschichtung (Galvanik, Plattierung, Auflage)",
+    "muster": "galvan|plattier|plating|goldauflage|beschicht|überzogen|vergoldet",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "bei einigen Modellen Buchstabe A bis Z wählbar (Auswahl)",
+    "muster": "\\bA B C D\\b|Modell A Modell B",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "bei anderen Modellen Monat wählbar (Auswahl)",
+    "muster": "\\bJanuar\\b.*\\bDezember\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Modelle nur in einer Ausführung, ohne Auswahl",
+    "muster": "\\bTitle Default Title\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Kettenlänge 41 bis 50 cm (mehrere Modelle)",
+    "muster": "41\\s?cm (bis|und) 50\\s?cm|41\\s?[–-]\\s?50\\s?cm",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "einige Ketten verstellbar (verstellbar oder Länge mit Verlängerung, z. B. 42+5 cm)",
+    "muster": "verstellbar|\\b\\d{2}\\s?\\+\\s?\\d{1,2}\\s?cm\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Farbauswahl Gold oder Silber (Option heisst Farbe)",
+    "muster": "\\bFarbe\\b.*\\b(Gold|Silber)\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Farbauswahl Roségold",
+    "muster": "\\bFarbe\\b.*\\bRos[eé]\\s?gold\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   }
+  ],
+  "hinweise": "Nachgebessert 11.11.2026 nach unabhängiger Prüfung; Daten frisch gelesen (Admin-API, nur lesend), gleich dem Stand vom Vormittag: 31 Produkte, alle ACTIVE, alle Halsketten. Blocker behoben: Absatz 2 fordert nicht mehr auf, einen Namen, Gravurtext oder eine Anzahl Buchstaben, Namen oder Steine festzulegen. Grund (GEMESSEN 11.11., MAIN-Theme gid://shopify/OnlineStoreTheme/213013037447): templates/product.json enthält 0-mal «properties[», 0 input, 0 textarea, keinen Block product-custom-property, App-Blöcke nur Judge.me; alle 31 Produkte ohne templateSuffix, keine Beschreibung mit lspod-designer oder Eingabefeld. Auf diesen Seiten lässt sich also kein eigener Name, Gravurtext oder Buchstabe eingeben, nur die angelegten Varianten wählen. Der Text nennt darum nur Auswahlen, die als Variante bestehen (Buchstabe A bis Z bei 3 Modellen, Monat bei 3) und sagt, dass viele Modelle keine Auswahl haben (15 von 31). Ebenso gestrichen: «viele Artikel nennen das Alphabet von A bis Z» (nur 3 von 11 Belegprodukten bieten A bis Z wirklich an). Erster Satz ohne «Namen» und «Gravur», damit er keine eigene Gravur verspricht; Namens-, Gravur- und Geburtsstein-Kette stehen nur als Bezeichnung des Artikels. Geburtsstein jetzt nur im Titel gezählt (2), Verstellbarkeit inkl. Länge mit Verlängerung (3). WICHTIG für den Besitzer (Entscheid, nicht Teil dieses Auftrags): Die Sammlung heisst «Personalisierte Ketten», aber keine Seite nimmt einen Namen oder Text an. Varianten wie «Zwei Namen», «Gold-3 letters» (Buchstaben-Anhänger mit Strass), «2 Buchstaben 1 Herz» (Herz-Halskette mit Buchstaben) oder «3 Stück Geburtsstein» lassen sich bestellen, ohne dass die Kundin angeben kann, welche Namen, Buchstaben oder Monate gemeint sind. 13 der 15 Produkte ohne Auswahl versprechen in Titel oder Text Buchstabe, Name oder Gravur (z. B. Dopamin-Halskette mit Initialen, Hufeisen-Herz-Halskette mit Namen, Schlangen-Kettchen mit Gravur, Goldüberzogener Namensanhänger). Weg: Eingabefeld (Theme-Block product-custom-property oder App) oder diese Varianten und Titel bereinigen. Weitere Unstimmigkeiten in den Produktdaten: «Dopamine Buchstabenkette für Damen» bietet nur Y und Z plus Monate, der Text nennt 26 Buchstaben; Optionswerte teils englisch oder unsauber («Gold-2 letters», «Rose Gold-One name», «Bildzahlung»); Material Titanstahl gegen Edelstahl widersprüchlich (4 der 5 Titanstahl-Produkte nennen auch Edelstahl, z. B. «Personalisierte Titanstahl-Halskette für Damen»: Titel Titanstahl, Text Edelstahl; «Edelstahl 3D Katzenpendant»: umgekehrt); der Kaufhilfetext bleibt richtig, weil er nur sagt, was die Artikel nennen. «Halskette mit OM-Projektion und Gravur»: Text Kupfer, Produktdetails «Kunststoff, Metall». Bewusst weggelassen: Edelmetall- und Steinangaben nur vom Lieferanten (S925 Silber, 18K Gold, Echtgold-Galvanisierung, Zirkonia, Perlmutt); Gold, Silber, Roségold nur als Farbton. Knappe Belege (Zählung gleich Minimum): Geburtsstein-Kette 2 von 2; fällt eines dieser Produkte weg, hält das Einspielwerkzeug die Sammlung an. Nicht Teil des Auftrags, unverändert: SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt»; Produkttexte tragen den Standardblock «30 Tage Rückgabe» (bei personalisierter Ware fraglich, Entscheid Besitzer). Kein Markierungsblock in der heutigen Beschreibung. Geprüft: zaehlen.py (17 von 17 Belegen erreicht, 117 Wörter, keine verbotenen Wörter) und gegenprobe.py mit den Funktionen des Einspielwerkzeugs (text_fehler keine, Zählungen gleich, Status AENDERN). Nichts geschrieben, nur Dateien im Scratch: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/personalisierte-ketten/eintrag.json (Vorfassung werk2/eintrag_v1.json, frische Lesung roh2.json, Theme-Lesung werk2/theme_lesung.json)."
+ },
+ "kochutensilien-sets": {
+  "alt": "<p>Kochlöffel, Pfannenwender, Zangen und Küchenhelfer-Sets aus Silikon, Holz und Edelstahl, dazu Rührschüsseln, Ofenhandschuhe und Topflappen.</p>",
+  "neu": "<p>Küchenhelfer-Sets und Kochlöffel-Sets zum Rühren, Wenden und Schöpfen. Viele Sets bestehen aus Silikon, einige davon mit Holzgriff. Dazu kommen Sets aus Edelstahl und Helfer aus Holz, etwa aus Teak oder Akazie, sowie einzelne Spatel. Es gibt kleine Sets mit 5 bis 7 Teilen, mittlere mit 10 bis 12 und grosse mit 20 und mehr Teilen. Manche Sets bringen einen Halter oder Aufbewahrungsbehälter mit, einige lassen sich aufhängen. Ergänzend findest du Rührschüsseln, Ofenhandschuhe und Backhelfer-Sets.</p><p><strong>So wählst du:</strong> Schau zuerst auf deine Pfannen und Töpfe. Einige Sets sind laut Artikelangabe für Kochgeschirr mit Antihaftbeschichtung gedacht. Prüfe dann, was im Set liegt: Wender, Schöpfkelle, Sieblöffel, Schneebesen, Pinsel oder Zange sind nicht überall dabei. Überlege, ob die Helfer im Halter stehen, hängen oder in die Schublade sollen. Manche Artikel nennen eine Höchsttemperatur für das Material. Teilezahl und Farben stehen beim jeweiligen Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "Küchenhelfer-Sets (Hauptinhalt der Sammlung)",
+    "muster": "küchenhelfer[- ]?set|küchenutensilien|kochutensilien|kochbesteck-set|küchen-set",
+    "felder": [
+     "title"
+    ],
+    "minimum": 22
+   },
+   {
+    "aussage": "Kochlöffel-Sets",
+    "muster": "kochlöffel-set",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "zum Rühren",
+    "muster": "\\brühren\\b|umrühren",
+    "felder": [
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "zum Wenden",
+    "muster": "\\bwenden\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "zum Schöpfen",
+    "muster": "schöpfen\\b|schöpfst|schöpfkelle|schöpflöffel|schöpfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Viele Sets bestehen aus Silikon («viele» = mindestens ein Viertel; nur Titel mit Silikon und Set, ohne Ofenhandschuhe, Backhelfer und Mischsets mit Edelstahl)",
+    "muster": "^(?!.*(ofenhandschuh|backhelfer|backutensilien|edelstahl)).*(silikon.*set|set.*silikon)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 22
+   },
+   {
+    "aussage": "einige davon mit Holzgriff (Silikon-Set mit Holzgriff im selben Titel, ohne einzelne Spatel und Schaufeln)",
+    "muster": "^(?=.*set).*silikon.*holzgriff",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Sets aus Edelstahl (ohne Schüssel-Set)",
+    "muster": "^(?!.*schüssel).*(set.*edelstahl|edelstahl.*set)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Helfer aus Holz (ohne blosse Holzgriffe)",
+    "muster": "holz(?!griff)|\\bteak\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Teak (nicht «Steak»)",
+    "muster": "teakholz|\\bteak\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Akazie (nur Titel: Spatel und Set aus Akazienholz, nicht die Silikon-Schaufel mit Akazien-Griff)",
+    "muster": "akazienholz",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einzelne Spatel (Titel ohne «Set», ohne Pizzaschaufel)",
+    "muster": "^(?!.*(set|pizza)).*(spatel|kochschaufel)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "kleine Sets mit 5 bis 7 Teilen",
+    "muster": "\\b[5-7][- ]teilig|\\b7er-set|fünfteilig",
+    "felder": [
+     "title"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "mittlere Sets mit 10 bis 12 Teilen",
+    "muster": "\\b1[0-2][- ]teilig|\\b10er-set",
+    "felder": [
+     "title"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "grosse Sets mit 20 und mehr Teilen (ohne BBQ- und Back-Geschenkset)",
+    "muster": "^(?!.*bbq)(?=.*\\b[2-4]\\d[- ]teilig)",
+    "felder": [
+     "title",
+     "options"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Halter oder Aufbewahrungsbehälter im Set",
+    "muster": "utensilienhalter|drehbare[mn]? ständer|mitgelieferten halters|praktischen halter\\b|passender halter|aufbewahrungs(eimer|behälter|box|rahmen|zylinder|system)|\\beimer\\b|\\bbehälter\\b",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "lassen sich aufhängen (Öse oder Loch am Helfer; Hängeleisten zählen zum Halter)",
+    "muster": "aufhängeöse|\\böse\\b|loch zum aufhängen",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Rührschüsseln (ohne Edelstahl-Schüssel-Set mit Sieb, Reisschale und Reibe)",
+    "muster": "rührschüssel|backschüssel",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Ofenhandschuhe",
+    "muster": "ofenhandschuh",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Backhelfer-Sets (ohne BBQ- und Back-Geschenkset)",
+    "muster": "^(?!.*bbq).*(backhelfer-set|backutensilien[- ]set)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Sets für Kochgeschirr mit Antihaftbeschichtung gedacht (laut Artikelangabe, «einige»: unter einem Viertel; nur Titel mit «Set», einzelner Wender ausgenommen)",
+    "muster": "^(?=[^|]*set)(?=.*(antihaft[- ]?(kochgeschirr|pfanne|oberfläch)|antihaftbeschichtete[nr]?\\s+(pfanne|töpfe|oberfläche|kochgeschirr)|antihaft-geeignet))",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Teil: Wender",
+    "muster": "wender",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Teil: Schöpfkelle",
+    "muster": "schöpfkelle|schöpflöffel|suppenkelle|suppenlöffel|\\bkelle\\b",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Teil: Sieblöffel",
+    "muster": "sieblöffel|seiher|abtropflöffel|abseihlöffel|schaumlöffel",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Teil: Schneebesen",
+    "muster": "schneebesen",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Teil: Pinsel",
+    "muster": "\\bpinsel\\b|silikonpinsel",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Teil: Zange",
+    "muster": "\\bzange\\b|essenszange|greifzange",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Höchsttemperatur in Grad beim Artikel",
+    "muster": "\\d{2,3}\\s*°\\s*c\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Farbauswahl beim Artikel (Option «Farbe»)",
+    "muster": "\\bfarbe\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Teilezahl beim Artikel",
+    "muster": "\\d+[- ]teilig|\\d+er-set|\\d+\\s*stück|fünfteilig|sechsteilig|dreiteilig",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 22
+   }
+  ],
+  "hinweise": "Sammlung «Kochlöffel, Zangen & Utensilien-Sets»: 87 Produkte, alle ACTIVE; alter Text 15 Wörter, kein Markierungsblock am Ende. Hauptinhalt sind Küchenhelfer-Sets (49 Titel), davon 31 reine Silikon-Sets (ohne die zwei Mischsets Edelstahl und Silikon). FREMDKÖRPER (im Text nicht beschrieben): Fleischklopfer aus Edelstahl (fleischklopfer-aus-edelstahl-774784), 48-Pin Steak-Zartmacher (48-pin-steak-zartmacher-9afd36), Creative Bear Claw Shredder, Fleischkrallen (creative-bear-claw-shredder-2-stuck-f04ffb), Silberner Pancake-Clip (silberner-pancake-clip-666432), Pizzaspatel, eine Pizzaschaufel 44 x 33 cm (pizzaspatel-249856), Silikon-Backhelfer-Set für perfektes Gebäck, hohle Silikonstopfen (silikon-backhelfer-set-fur-perfektes-geback-043649), 30-teiliges BBQ- & Back-Geschenkset (30-teiliges-bbq-back-geschenkset-479616), Ofenhandschuh & Topfuntersetzer-Set mit Mops-Print (Produktart «Accessoires», Optionen sind Hunderassen), dazu zwei Gadget-Sets ohne Kochlöffel: Stahlküchengeräte-Set 6-8 Stück (Schneebesen, Reibe, Schäler, Messer, Flaschenöffner) und Küchenhelfer-Set aus Edelstahl (Dosenöffner, Pizzaschneider, Sparschäler). Rührschüsseln (4), Ofenhandschuhe (3) und Backhelfer-Sets (4) nennt schon der alte Text sinngemäss, darum stehen sie im neuen Text unter «Ergänzend». ZANGEN: Der Sammlungstitel verspricht Zangen, es gibt aber kein einzelnes Zangen-Produkt. Nur 3 Sets nennen eine Zange als Teil, im Text darum nur als Set-Teil. «Topflappen» aus dem alten Text ist nicht belegt (nur ein Topfuntersetzer) und entfällt. Pfannenwender gibt es nur als Set-Teil (2 Titel mit «Wender»). MUSTER-FALLE: «teak» trifft «Steak-Zartmacher», der Beleg hat darum eine Wortgrenze. «antihaft» allein trifft auch Sätze über beschichtete Helfer und die Edelstahl-Warnung, der Beleg ist darum eng und zählt nur Set-Titel (17 statt 24, also «einige», nicht «viele»). Die Produkttexte tragen einen Baustein («Geprüfte Angaben», «Lieferung 10–20 Werktage», «30 Tage Rückgabe», «Bestseller»), die Muster meiden diese Wörter. NICHT übernommen, weil nur Lieferantenangabe oder Zusage: «vergoldet» (2 Titel), «lebensmittelecht», «BPA-frei», «FDA-zugelassen», «ungiftig» (10-teiliges Silikon Küchenhelfer-Set), «verbrühungssicher für maximale Sicherheit» (12-teiliges Set mit drehbarem Ständer), «spülmaschinenfest». Hitze steht nur als Verweis im Text («Manche Artikel nennen eine Höchsttemperatur», 4 Artikel mit Gradangabe). NEBENBEFUNDE an den Produkten (nicht angefasst): Mindestens 10 Produkte haben englische Optionswerte («8 Pieces Including Paper Box», «Spatula», «Gray 10 Pieces», «Kitchenware 19PCs Light Green», «Six packs»). Optionen sind falsch benannt («Grösse» enthält Farben, «Farbe» enthält Setgrössen, «Schwarz Anzug», «7-Teiliger Anzug», Modell «Babyflasche» beim Backschüssel-Set, «Reply Weiss», «Approval Schwarz»). Titel widersprechen Optionen: «6-teiliges Küchenhelfer-Set aus Edelstahl» bietet auch 9-teilige Sets, «Stahlküchengeräte-Set 6-8 Stück» bietet 6 und 9. «Keramik-Rührschüssel» ist laut Text aus Porzellan. Der Silikon-Kochspatel mit Holzgriff nennt «ca. 1.1 kg» für einen einzelnen Spatel. Der Titel «Creative Bear Claw Shredder» ist englisch. Der Titel «für perfektes Gebäck» trägt ein Wirkungsversprechen im Text. Das Backutensilien-Set nennt die Fremdmarke «KAWASIMAYA/Kawashima House». Mehrere Produkte heissen fast gleich (vier 10-teilige und sechs 12-teilige Silikon-Sets). Die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt» (nicht Teil dieser Aufgabe, unverändert). NACHBESSERUNG 11.11.: Alle 8 Funde des Prüfers sind eingearbeitet. Die Belege wurden mit frischem Lesestand von 11:17 UTC neu gezählt, die Sammlung hat weiter 87 aktive Produkte. (1) Satz 3 lautet neu «Sets aus Edelstahl und Helfer aus Holz, etwa aus Teak oder Akazie», weil es nur ein Akazien-Set gibt (dazu einen Akazien-Spatel). Der Beleg Akazie zählt nur noch im Titel (2), die Silikon-Kochschaufel mit Akazien-Griff zählt nicht mehr. (2) Der Holzgriff-Beleg zählt nur noch Silikon-Sets (7 statt 10, ohne einzelne Spatel und Schaufeln). (3) «einzelne Spatel» ohne Pizzaschaufel (6 statt 7). (4) «grosse Sets mit 20 und mehr Teilen» ohne das BBQ- und Back-Geschenkset (6 statt 7). Die Backhelfer-Sets zählen dieses Set ebenfalls nicht mehr (4 statt 5). (5) Rührschüsseln ohne das Edelstahl-Schüssel-Set (Sieb, Reisschale, Reibe): 4 statt 5. (6) «lassen sich aufhängen» zählt nur noch Öse oder Loch am Helfer (3). Die zwei Hängeleisten zählen beim Halter. (7) Der Antihaft-Beleg zählt nur noch Titel mit «Set» (17 statt 18, ohne den einzelnen Silikon-Wender). Der Silikon-Beleg zählt keine Mischsets mit Edelstahl mehr (31 statt 33, über dem Viertel von 22). (8) Stil: zweimal «Einige» durch «Manche» ersetzt (Satz 4 und Satz 12). Der Text hat jetzt 139 Wörter. Zusätzlich selbst nachgesehen: Alle 17 Antihaft-Fundstellen sind zustimmende Artikelangaben (keine Verneinung). Alle 18 Halter-Treffer nennen einen Halter, Eimer, Behälter, Ständer, Rahmen oder ein Aufbewahrungssystem im Lieferumfang oder als Option. Gegenprobe mit der Originalfunktion zaehle_belege aus origin/main und beiden Verbotslisten: 132 Prüfungen, alle in Ordnung. Dateien: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/kochutensilien-sets/eintrag.json (Eintrag), belege_zaehlen.py, gegenprobe.py, lauf.log, daten.json (Lesestand 11.11. 11:17 UTC). Vorfassungen liegen als *_vor_nachbesserung.* daneben. Nichts in Shop, Repo oder Netz geschrieben."
+ },
+ "haltungsgurte-ruecken": {
+  "alt": "<p>Haltungsgurte, Rückenstützgurte und Lendenstützen.</p>",
+  "neu": "<p>Haltungsgurte und Rückenstützen in verschiedenen Bauarten: Gurte für Rücken und Schultern, Gurte für den Lendenbereich und Modelle für Kinder. Einzelne Geräte geben per Vibration ein Signal, einzelne Lendengurte haben laut Artikelangabe eine Wärmefunktion. Als Materialien nennen die Artikel unter anderem Polyester, Nylon und Neopren, mehrere beschreiben ihr Gewebe als atmungsaktiv. Viele Gurte sind schwarz, einige blau oder grau.</p><p><strong>So wählst du:</strong> Überlege zuerst, wo der Gurt sitzen soll: an Rücken und Schultern oder im Lendenbereich. Viele Modelle gibt es in mehreren Grössen, meist von S bis XL, einige auch in 2XL. Andere gibt es nur in einer Einheitsgrösse. Miss Brust- oder Taillenumfang, bevor du eine Grösse wählst. Einzelne Artikel nennen dazu Zentimeterwerte oder den Hinweis, dass die Grössen kleiner ausfallen. Achte auch auf Material und Verschluss, soweit beim Artikel beschrieben. Einige Modelle sind laut Artikelangabe unter der Kleidung tragbar.</p>",
+  "belege": [
+   {
+    "aussage": "Haltungsgurte (Haltung im Titel)",
+    "muster": "haltung",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Rückenstützen (Rückenstütz-, Rückenstabilisator-, Rücken-Spannungs-, Traktionsgurt, Lendenwirbelstütze im Titel)",
+    "muster": "rücken-?\\w*(gurt|stütz|stabilis)|lendenwirbelstütze|traktionsgurt",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Gurte für Rücken und Schultern (Schultergurt, Schulterträger, offene Schulter, für Rücken und Schultern)",
+    "muster": "schulter(gurt|träger)|offene schulter|für rücken und schultern",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Gurte für den Lendenbereich",
+    "muster": "lenden",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Modelle für Kinder",
+    "muster": "für kinder\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Einzelne Geräte (Artikeltext nennt «Gerät»)",
+    "muster": "\\bgerät\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Signal per Vibration",
+    "muster": "vibration",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Einzelne Lendengurte mit Wärmefunktion laut Artikelangabe",
+    "muster": "wärmegurt|selbstheizend",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Material Polyester",
+    "muster": "polyester",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Material Nylon (ohne Nylonfaden)",
+    "muster": "nylon(?!faden)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Material Neopren",
+    "muster": "neopren",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Mehrere beschreiben ihr Gewebe als atmungsaktiv",
+    "muster": "atmungsaktiv",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Viele Gurte sind schwarz (Titel nennt Gurt, Korrektur, Stütze, Stabilisator oder Korsett; ohne Transfergurt)",
+    "muster": "^(?=[^|]*(gurt|korrekt|stütz|stabilis|korsett))(?![^|]*transfer)[^|]*\\|.*\\bschwarz",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Einige Gurte blau (Titel nennt Gurt oder Korrektur; ohne Kissen und Trainer)",
+    "muster": "^(?=[^|]*(gurt|korrekt))[^|]*\\|.*\\bblau\\b",
+    "felder": [
+     "title",
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Einige Gurte grau (Titel nennt Gurt oder Korrektur; ohne Kissen)",
+    "muster": "^(?=[^|]*(gurt|korrekt))[^|]*\\|.*\\bgrau\\b",
+    "felder": [
+     "title",
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Viele Modelle in mehreren Grössen (S, M, L)",
+    "muster": "\\bgrösse\\b(?=.*\\bS\\b)(?=.*\\bM\\b)(?=.*\\bL\\b)",
+    "felder": [
+     "options"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Grössen meist von S bis XL",
+    "muster": "\\bgrösse\\b(?=.*\\bS\\b)(?=.*\\bXL\\b)",
+    "felder": [
+     "options"
+    ],
+    "minimum": 7
+   },
+   {
+    "aussage": "Einige auch in 2XL (2XL oder XXL als Grösse)",
+    "muster": "\\bgrösse\\b.*\\b(2XL|XXL)\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Andere nur in einer Einheitsgrösse (keine Option Grösse, Text nennt Einheitsgrösse)",
+    "muster": "^(?![^|]*\\bgrösse\\b)[^|]*\\|.*einheitsgrösse",
+    "felder": [
+     "options",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Einzelne Artikel nennen Brust- oder Taillenumfang in Zentimetern",
+    "muster": "(brust|taillen)umf[aä]ng\\w*.{0,120}\\d\\s?cm\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Einzelne Artikel mit Hinweis, dass die Grössen kleiner ausfallen",
+    "muster": "asiatische grössen[^.]{0,60}kleiner",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Einige Modelle unter der Kleidung tragbar laut Artikelangabe",
+    "muster": "unter der kleidung",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   }
+  ],
+  "hinweise": "GEMESSEN am 11.11.2026 (Admin-API, nur lesend): 22 Produkte in der Sammlung, alle 22 ACTIVE. Heutige Einleitung 5 Wörter, kein Markierungsblock. Fremdkörper (im Text nicht beschrieben): «Rückenstrecker Kissen» (ruckenstrecker-kissen-721664, Dehnkissen aus EVA-Schaumstoff, kein Gurt) und «Transfergurt mit vier Griffen» (transfergurt-mit-vier-griffen-629400, Hilfsmittel zum Umsetzen von Personen, kein Haltungs- oder Stützgurt). Grenzfälle, die eher Geräte oder Kompressen als Stützgurte sind: «Smarter Haltungstrainer», «Infrarot-Wärmegurt für Lendenwirbel & Unterleib», «Kühlende Lendenwirbelstütze» (Heiss-/Kaltkompresse), «Rücken-Spannungsgurt zur Dekompression», «Lendenwirbel-Traktionsgurt für Zuhause», «Atmungsaktives Korsett zur Haltungskorrektur». Vibration und Wärme stehen im Text nur als Bauart, Wärme mit «laut Artikelangabe» (ein Gurt nennt 10 W über USB, der andere «selbstheizend» mit Magneten, nicht nachprüfbar). Bewusst weggelassen: jede Wirkungsaussage, die Begriffe Traktion und Dekompression, Einzelfälle (Korsett 1, 8-Form 1, Jugendliche 1, Klettverschluss 1, Stahlplatte 1, PU-Leder 1) und die «Set»-Varianten (3 Produkte, Inhalt unklar). Verschluss: nur 1 Artikeltext nennt einen Klettverschluss, 2 eine Schnalle (einer davon der Transfergurt); darum steht der Verschluss nur als Prüfpunkt «soweit beim Artikel beschrieben». Zentimeterwerte zur Grösse nennen nur 2 Artikel; der Text verspricht deshalb keine Grössentabelle. Nachgebessert nach der Prüfung (11.11., fünf kleine Funde, alle eingearbeitet): (1) «Rückengurte» ersetzt durch «Rückenstützen» (Name der Sammlung); Beleg nur eigenständige Rückenstützen im Titel, 5 (Kühlende Lendenwirbelstütze, Rücken-Spannungsgurt, Lendenwirbel-Traktionsgurt, Nano-Kohlenstoff-Rückenstabilisator, Selbstheizender Rückenstützgurt); das vorgeschlagene Muster ohne «-?» traf den Rücken-Spannungsgurt nicht und zählte 4, darum «rücken-?\\w*». (2) Schultern ohne die Körperbeschreibung beim Rückenstabilisator: 4 (S-Träger, «Offene Schulter Korrektur», «für Rücken und Schultern», Schultergurt des Smarten Haltungstrainers). (3) Farben zählen nur Produkte, deren Titel einen Gurt oder eine Korrektur nennt: blau 3 und grau 3 (ohne Rückenstrecker-Kissen und Smarten Haltungstrainer); schwarz gleich behandelt (Titel mit Gurt, Korrektur, Stütze, Stabilisator oder Korsett, ohne Transfergurt): 12. (4) «Einheitsgrösse» zählt nur Produkte ohne Option Grösse: 4 (Kühlende Lendenwirbelstütze, Verstellbarer Haltungskorrektur-Gurt, Infrarot-Wärmegurt, Selbstheizender Rückenstützgurt); der Rücken-Spannungsgurt (Option S/M/L, Text «Einheitsgrösse ohne Stange») ist ausgenommen. (5) Grössensatz getrennt: «… einige auch in 2XL. Andere gibt es nur in einer Einheitsgrösse.» Statt des Vorschlags «Einige gibt es …» steht «Andere», damit nicht zweimal «einige» hintereinander steht und klar ist, dass es eine eigene Gruppe ist. Kein Feld eines aktiven Produkts enthält «|» (gemessen), die Muster mit «|» trennen also sicher die Felder. In den eigenen Sperrlisten (belege.py, gegenprobe.py) ist «stütz» nur noch nach «Rücken» erlaubt, für das Wort «Rückenstützen». Kein ärztlicher Hinweis im Text, weil der Auftrag nur Bauarten, Grössen, Materialien und Verschlüsse zulässt; ob ein Satz wie «ersetzt keine ärztliche Abklärung» gewünscht ist (drei Kindermodelle), entscheidet der Besitzer. Ausserhalb des Auftrags gesehen, nichts geändert: 13 von 22 Produkttexten enthalten Wirkungs- oder Gesundheitswörter (z. B. «einer Kyphose entgegenzuwirken», «Wirbelsäule zu korrigieren», «Physiotherapie», «orthopädisches Gerät», «entlastet»); Lieferantenreste in Texten und Optionen («Leica» statt Lycra, «Farbe: Arrow Fishbone», Farbe «Regulärer Code», Gewicht «75 g – 2.8 kg», «Hook-and-Chain-Stil»); Produktarten passen nicht (Hautpflege, Elektronik, Damenmode, Aufbewahrung & Organizer, Heimtextilien). Wortzahl 139, gezählt wie im Einspielskript; Regelprüfung mit text_fehler aus kaufhilfen1111/apply.py ohne Befund, Status gegen den heutigen Text «AENDERN». Nachbesserung: Sammlung am 11.11. frisch gelesen (roh.json, gleich der ersten Lesung roh_vor_nachbessern.json); Gegenprobe (frisch gelesen, eigene Zählschleife): alter Text gleich, 22 aktive Produkte, alle 22 Belege gleich gezählt, Messgerät fällt bei «Klettverschluss, Minimum 2» wie erwartet durch, Ausschlüsse geprüft (die neuen Muster treffen weder Kissen, Transfergurt, Trainer bei blau, noch den Rücken-Spannungsgurt bei Einheitsgrösse, noch den Rückenstabilisator bei Schultern). Dateien: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/haltungsgurte-ruecken/eintrag.json (Eintrag), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/haltungsgurte-ruecken/belege.py (Text, Belege, Zählung), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/haltungsgurte-ruecken/gegenprobe.py (Gegenprobe), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/haltungsgurte-ruecken/roh.json (gelesene Produkte), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/haltungsgurte-ruecken/lauf.log (Trefferkontext je Beleg); erster Entwurf gesichert als eintrag_entwurf1.json, belege_entwurf1.py, hinweise_entwurf1.txt. Nichts in Shop, Repo oder Netz geschrieben."
+ },
+ "armreifen-bangles": {
+  "alt": "<p>Feste und offene Armreifen aus Metall, auch mit Zirkonia.</p>",
+  "neu": "<p>Armreifen und Manschettenarmbänder: offene Reife, Modelle mit Verschluss oder Schnalle, breite Reife und Manschetten sowie einige Armreif-Sets. Als Material sind unter anderem Edelstahl, Titanstahl, Kupfer und Legierungen angegeben, teils galvanisch beschichtet, etwa in Gold- oder Silberfarbe. Viele Modelle sind laut Artikelangabe mit Zirkonia besetzt, einige mit Strasssteinen. Die Stile reichen von Vintage und Retro bis minimalistisch. Als Motive kommen Herzen und Blumen vor.</p><p><strong>So wählst du:</strong> Zuerst die Form. Ein offener Reif hat eine Lücke und lässt sich so an- und ablegen. Einige Modelle sind als verstellbar angegeben. Bei einigen Reifen wählst du zwischen mehreren Grössen in Millimetern oder Zentimetern. Vergleiche die Angabe mit einem Armreif oder Armband, das dir gut passt. Nennt ein Artikel keine Weite, frag vor dem Kauf bei uns nach. Material, Farbe und Gewicht stehen, soweit angegeben, beim jeweiligen Artikel.</p>",
+  "belege": [
+   {
+    "aussage": "Manschetten (Manschette oder Cuff im Titel)",
+    "muster": "manschette|cuff",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "offene Reife",
+    "muster": "\\boffen(e[rnsm]?)?\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 20
+   },
+   {
+    "aussage": "Modelle mit Verschluss oder Schnalle",
+    "muster": "verschluss|schnalle",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "breite Reife",
+    "muster": "\\bbreite[rs]?,? (\\w+ )?(armreif|design)|breite von \\d|\\d\\s?cm breit|breiter \\(\\d",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "einige Armreif-Sets",
+    "muster": "armreif-set",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Material Edelstahl (ohne die Verneinung «nicht um Edelstahl»)",
+    "muster": "(?<!nicht um )edelstahl",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "Material Titanstahl «angegeben» (ohne «Titanstahl-Schliesse» am Lederarmband; Minimum 3, weil bei 3 der 6 Treffer Titel und Text desselben Artikels Edelstahl und Titanstahl gegeneinander nennen)",
+    "muster": "titanstahl(?!-schliesse)",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Material Kupfer",
+    "muster": "kupfer",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "Material Legierungen",
+    "muster": "legierung",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "teils galvanisch beschichtet",
+    "muster": "galvan|ele[ck]troplat",
+    "felder": [
+     "text"
+    ],
+    "minimum": 15
+   },
+   {
+    "aussage": "Goldfarbe (Farbwert Gold in der Auswahl oder goldfarben/golden im Titel)",
+    "muster": "\\bgold\\b|goldfarben|\\bgoldene[rsnm]?\\b",
+    "felder": [
+     "options",
+     "title"
+    ],
+    "minimum": 12
+   },
+   {
+    "aussage": "Silberfarbe (Farbwert Silber in der Auswahl)",
+    "muster": "\\bsilber\\b",
+    "felder": [
+     "options"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "viele mit Zirkonia (ab einem Viertel der Produkte; nur «Zirkonia», nicht der Stein Zirkon)",
+    "muster": "zirkonia",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 28
+   },
+   {
+    "aussage": "einige mit Strasssteinen",
+    "muster": "strass",
+    "felder": [
+     "title"
+    ],
+    "minimum": 4
+   },
+   {
+    "aussage": "Stil Vintage und Retro",
+    "muster": "vintage|retro",
+    "felder": [
+     "title"
+    ],
+    "minimum": 10
+   },
+   {
+    "aussage": "Stil minimalistisch",
+    "muster": "minimalist",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "Motiv Herzen (ohne «Herz-Sutra»)",
+    "muster": "herz(?!-sutra)",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Motiv Blumen",
+    "muster": "blume|blüte",
+    "felder": [
+     "title"
+    ],
+    "minimum": 8
+   },
+   {
+    "aussage": "offener Reif lässt sich an- und ablegen (so in den Artikeltexten)",
+    "muster": "offen[^.]{0,80}(an- und ab|anlegen)",
+    "felder": [
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "einige Modelle als verstellbar angegeben",
+    "muster": "verstellbar",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "einige Reife in mehreren Grössen (Auswahl «Grösse»)",
+    "muster": "grösse",
+    "felder": [
+     "options"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "einige Reife mit Grössen in Millimetern oder Zentimetern (Auswahlwerte; nur die drei Reife mit Durchmesser, ohne die Längen 19/21/23 cm von Lederarmband und Schiffsschraubenarmreif)",
+    "muster": "\\d\\s?mm\\b|\\d(\\.\\d)?\\s?cm diameter",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einzelne Artikel nennen keine Weite",
+    "muster": "nicht angegeben|angabe zur weite gibt es nicht",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Gewicht ist bei einem Teil der Artikel angegeben",
+    "muster": "gewicht: ca|\\bwiegt\\b",
+    "felder": [
+     "text"
+    ],
+    "minimum": 15
+   }
+  ],
+  "hinweise": "GEMESSEN 11.11.2026 (Admin-API, nur lesend): Sammlung «Armreifen & Manschettenarmbänder», 109 Produkte, alle 109 ACTIVE; heutige Einleitung 9 Wörter, kein Markierungsblock. Nichts geschrieben. FREMDKÖRPER/GRENZFÄLLE nach Titel und Text (Bilder nicht gesichtet), im Text nicht beschrieben: «Hotan-Jade Ziegenfett Rundperle Armreif» und «Steinperlen-Doppelarmreif» (Perlenarmbänder), «Leder-Riemen-Armreif» (Lederarmband mit Schliesse), «Goldener Schiffsschraubenarmreif» (Längen 19/21/23 cm), «Antiker 3-Reihen Armreif» (23 cm lang, «Full-Magnetisches Design»), «Eleganter Herrenarmreif mit Zirkonia» (Grössen 7inch bis 9inch, Federklickverschluss), «Sterlingsilber veredelter Lotosblumen Armreif» (geflochten, Kettenverbindung), «Reiseglobus-Armreif» (DIY-Stück mit Perle), «Armreif Sky-blue Heavy Embroidery» (Glas mit «Stickereien», Text widersprüchlich). BEWUSST NICHT IM TEXT (nur Lieferantenangabe, unbelegt): Silber 925/999 (7 Produkte im Text, einer mit «Echtheitszertifikat»; beim Altsilber-Armreif stehen «Reinsilber» und «silberbeschichtet» im selben Text), Jade (2 Titel, «natürlich»), 18K/vergoldet/Goldauflage (13 Texte, einmal «echte Goldüberziehung»), Magnete in Kupfer-Armreifen (4 Texte, keine Wirkungsaussage dort), «hypoallergen, nickelarm, wasserfest, anlauffrei» (Edelstahl-Armreif «Couleur»). Gold und Silber stehen im Text nur als Farbe (Beleg: Farbwert in der Auswahl). PERSONALISIERUNG nicht genannt: «Armreif mit personalisierbarem Namen» (Auswahl nur Farbe und Menge) und «Personalisierter Buchstabenarmreif» (keine Auswahl) haben kein Feld für Name oder Buchstabe. DATENQUALITÄT (nicht Teil der Aufgabe): Lieferantencodes als Auswahlwerte bei 5 Produkten (JDB…, TB…, PBR…, SZ…); unpassende Werte «Slim Fit, Regular Fit, Streifen, Punkte» (Vergoldeter Kupfer-Armreif mit Zirkonia) und «Denim, Jeans, Flieder …» (Zirkon-Armreif mit Buchstaben-Design); «Diamant/Saphir» in Auswahlwerten von 3 Produkten und «Diamant-Design» in 2 Titeln; «ß» in Auswahlwerten von 3 Produkten; englische Reste «5.7cm diameter», «7inch»; 4 Titel mit Luxus/Premium/Exquisit; Titel «European American Zircon Herz Armband Luxus Armreif Damen»; «Offener Manschetten-Armreif aus Titanstahl» nennt im Text Edelstahl; 25 Zirkonia-Armreifen tragen dieselbe Auswahl «Muster 1-1 Stück …» und nennen kein Material (sehr ähnliche Reihe). Die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt» (bleibt unberührt). BELEGE: jedes Textmuster wurde gegen den Shop-Baustein («Sorglos shoppen … Geprüfte Angaben …») geprüft, keines trifft ihn; zwei Muster schliessen bekannte Fehltreffer aus (Verneinung «nicht um Edelstahl», «Titanstahl-Schliesse» am Lederarmband, «Herz-Sutra»). KNAPP: «Manschette/Cuff» steht nur in 2 Titeln (Minimum 2): fällt dort ein Produkt weg, hält das Einspielskript an, das ist gewollt. NACHBESSERUNG 11.11.2026 nach unabhängiger Prüfung (Produktdaten frisch gelesen, unverändert 109 ACTIVE): (1) Schlusssatz jetzt «Material, Farbe und Gewicht stehen, soweit angegeben, beim jeweiligen Artikel» (10 Artikel nennen kein Material). (2) Grössenhilfe ohne «Miss dein Handgelenk»: die mm/cm-Werte der Reife sind Durchmesser (Strass-Besatz «diameter», Xinjiang-Jade «Innendurchmesser», Silberarmreif gebürstet 54 bis 64 mm ohne Text), die 19/21/23 cm von Lederarmband und Schiffsschraubenarmreif sind Längen; jetzt «Vergleiche die Angabe mit einem Armreif oder Armband, das dir gut passt» (ohne «am besten»: das Wort «beste» ist im Text verboten). Beleg nur noch die drei Reife (Muster \\d\\s?mm\\b|\\d(\\.\\d)?\\s?cm diameter, Auswahl, 3, Minimum 2). (3) «seitlich über das Handgelenk geschoben» gestrichen (0 Treffer für seitlich/Lücke/Öffnung), ersetzt durch «lässt sich so an- und ablegen» mit eigenem Beleg (6 Artikeltexte); Satz in zwei Sätze geteilt. «Hat eine Lücke» ist nur die Erklärung von «offen», keine Artikelangabe. (4) Zirkonia-Beleg nur noch «zirkonia» (Titel und Text 35, nur Titel 29; «Zirkon» allein ist ein anderer Stein): alle 6 Treffer nur im Text von Hand gelesen, echte Zirkonia-Angaben, keine Verneinung. (5) Titanstahl bleibt mit «angegeben», Minimum 3, weil bei 3 der 6 Treffer Titel und Text desselben Artikels Edelstahl und Titanstahl gegeneinander nennen (Sonnen-Wukong, Doppelschlange, Offener Manschetten-Armreif). (6) «fürs Handgelenk» weg, Stil- und Motivsatz geteilt. Zählskript: belege.py im selben Ordner (nutzt zaehle_belege aus origin/main und text_fehler aus ../apply.py); Stand vor der Nachbesserung in belege.vor-nachbessern.py und eintrag.vor-nachbessern.json."
+ },
+ "creolen-ohrclips": {
+  "alt": "<p>Creolen, Huggies, Ohrclips und Ear Cuffs; Ohrclips brauchen kein Ohrloch.</p>",
+  "neu": "<p>Hier findest du Ohrschmuck in mehreren Bauarten: Creolen, Huggies, Ear Cuffs und Ohrklemmen, dazu viele Artikel mit der Bezeichnung Ohrclip. Laut Artikelangabe bestehen viele Stücke aus 925er Sterlingsilber, einige aus Edelstahl oder Kupfer. Viele sind laut Angabe galvanisch veredelt oder beschichtet, einige tragen Zirkonia, Moissanit oder Perlmutt. Die Designs sind oft geometrisch, dazu kommen einige Blumenmotive.</p><p><strong>So wählst du:</strong> Kläre zuerst, ob du Ohrlöcher hast. Die Bezeichnung Ohrclip heisst hier nicht automatisch, dass ein Stück ohne Ohrloch getragen wird: Nur einige Artikel geben das ausdrücklich an. Schau dir deshalb den Verschluss auf den Bildern an. Vergleiche danach Material und Farbton: Mehrere Artikel gibt es im Goldton und im Silber- oder Weissgoldton. Nennt die Auswahl nur nummerierte Modelle, vergleiche sie auf den Bildern. Achte auch darauf, ob ein Paar oder ein Set geliefert wird.</p>",
+  "belege": [
+   {
+    "aussage": "viele Artikel mit der Bezeichnung Ohrclip",
+    "muster": "ohrclip",
+    "felder": [
+     "title"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "Bauart Ohrklemmen",
+    "muster": "ohrklemme",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Bauart Creolen",
+    "muster": "creole",
+    "felder": [
+     "title"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "Bauart Huggies",
+    "muster": "huggie",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Bauart Ear Cuffs (Titel «Ear Cuff» oder «Conch»)",
+    "muster": "ear[- ]?cuff|\\bconch\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Artikel nennen 925er Sterlingsilber",
+    "muster": "sterling[\\s-]?silber|\\bs?925(er)?\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "einige Artikel nennen Edelstahl",
+    "muster": "\\bedelstahl\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Artikel nennen Kupfer",
+    "muster": "\\bkupfer\\b",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "viele Stücke galvanisch veredelt oder beschichtet (laut Artikelangabe)",
+    "muster": "galvan|elektroplating|plattierung|verplattung|vergold|goldauflage|beschichtung",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "einige Modelle mit Zirkonia (laut Artikelangabe)",
+    "muster": "\\bzirkonia\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Modelle mit Moissanit (laut Artikelangabe)",
+    "muster": "\\bmoissanite?\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "einige Modelle mit Perlmutt (laut Artikelangabe)",
+    "muster": "\\bperlmutt\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Designs oft geometrisch",
+    "muster": "\\bgeometrisch",
+    "felder": [
+     "text"
+    ],
+    "minimum": 6
+   },
+   {
+    "aussage": "einige Blumenmotive",
+    "muster": "\\bblumen\\b",
+    "felder": [
+     "title"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Name Ohrclip ohne Angabe «ohne Ohrloch» in der Beschreibung",
+    "muster": "^(?=[^|]*ohrclip)(?!.*((ohne|keine)\\s+(dass\\s+)?ohrl(o|ö)ch|ohne piercing))",
+    "felder": [
+     "title",
+     "text"
+    ],
+    "minimum": 3
+   },
+   {
+    "aussage": "einige Artikel geben «ohne Ohrloch» ausdrücklich an",
+    "muster": "(ohne|keine)\\s+(dass\\s+)?ohrl(o|ö)ch|ohne piercing",
+    "felder": [
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "mehrere Artikel im Goldton und im Silber-, Weissgold- oder Platinton wählbar",
+    "muster": "^(?=.*\\bgold\\b)(?=.*(\\bweissgold\\b|\\bplatin\\b|(?<!925 )\\bsilber\\b))",
+    "felder": [
+     "options"
+    ],
+    "minimum": 5
+   },
+   {
+    "aussage": "Auswahl nennt nur nummerierte Modelle (alle Optionswerte «Modell/Muster/Stil N»)",
+    "muster": "^[^\\W\\d_]+(\\s+(modell|muster|stil)\\s?\\d+(-1 paar)?)+$",
+    "felder": [
+     "options"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Lieferung als Paar",
+    "muster": "\\bpaar\\b",
+    "felder": [
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   },
+   {
+    "aussage": "Lieferung als Set",
+    "muster": "\\bset\\b|\\d+er-set\\b",
+    "felder": [
+     "title",
+     "options",
+     "text"
+    ],
+    "minimum": 2
+   }
+  ],
+  "hinweise": "Kein Fremdkörper: alle 23 aktiven Produkte sind Ohrschmuck (productsCount 23, gelesen 11.11.2026). Kein Markierungsblock in der Beschreibung. WICHTIG: Der alte Satz «Ohrclips brauchen kein Ohrloch» ist durch die Produkte nicht gedeckt und wurde bewusst nicht übernommen. GEMESSEN: nur 5 von 23 Beschreibungen sagen «ohne Ohrlöcher» oder «ohne Piercing» (vergoldete-mehrlagige-conch-ohrklemmen-626400, ohrclips-set-im-vintage-stil-609600, elegante-s925-silber-ohrclips-fur-damen-630000, old-money-style-ohrklemmen-mit-perlmutt-224514, ear-cuffs-papillon-blauer-schmetterling); 9 von 11 Produkten mit «Ohrclip» im Titel sagen es nicht. Meine Sichtung der 23 Hauptbilder (verkleinert auf 300 px, nach Augenschein, nicht vermessen): Die meisten «Ohrclips» sind Klappcreolen, Huggies oder Hänger mit Stift oder Bügel, also für Ohrlöcher (z. B. Opal-Ohrclip, Zirkonia-Ohrclips mit Brisur, beide Blumen-Ohrclips, Saturn, Kreis und Karo). Klar als Klemme ohne Stift erkennbar sind nur die Conch-Ohrklemmen, die S925-Ohrclips und der Schmetterling-Ohrclip. «Ohrclip» ist hier vermutlich die Übersetzung von «ear clip/ear buckle» (Hypothese). Der neue Text rät deshalb, den Verschluss auf den Bildern anzusehen. Einzelne Seiten zum Prüfen (im Text nicht beschrieben): (1) ohrclips-set-im-vintage-stil-609600: Die Beschreibung sagt «ohne Ohrlöcher», das Hauptbild zeigt Klappcreolen mit Stift. (2) doppelseitige-perlmutt-ear-cuffs-old-money-sty-448002: Titel «Ear Cuffs», das Hauptbild zeigt Ohrringe mit Bügelverschluss und Stift. (3) ear-cuffs-papillon-blauer-schmetterling: Titel «blauer Schmetterling», das Hauptbild zeigt zwei blaue Rosenformen. (4) schmetterling-ohrclip-ohrhaken-486336: Produktart «Haushalt & Wohnen», Optionswerte teils englisch («Left Gold», «Right Gold»). Heikle Angaben in Produkttexten, nicht übernommen: «Echtvergoldung» auch bei der Farbe Silber (wasser-tropfen-ohrclips-hochwertige-ohrringe-620200), «hypoallergen» (kreis-und-karo-hochwertiger-925-silberohrclip-604000, creolen-ohrhanger-cascade-mit-tropfen-gold), «0.1ct D-VVS1 Moissanite» (herzformige-huggie-ohrringe-mit-moissanite-012801), «14K Vergoldung … garantiert» (moissanit-ohrclips-mit-gedrehtem-design-624600), «umweltfreundlich» und fehlende Umlaute (blumen-ohrclip-629200), «natürliches Perlmutt» (2 Produkte). Edelmetall-, Stein- und Beschichtungsangaben stehen im Text nur mit «laut Artikelangabe». Als Einzelfall weggelassen: Opal, Perlen, Strass, Titanstahl, Legierung, Herz, Saturn, Tropfen, Grössenwahl in mm (nur 1 Produkt), Schmetterling (2 Titel, davon 1 mit zweifelhaftem Bild). Die SEO-Beschreibung der Sammlung nennt «Gratis-Versand ab CHF 50 nach Rabatt» (unverändert, nicht Teil dieser Aufgabe). Der Beleg «Bauart Ear Cuffs» umfasst jetzt auch den Titel «Conch Ohrklemmen» (laut Prüfer zeigt das Hauptbild einen Cuff). Die beiden Titel mit «Ear Cuffs» haben zweifelhafte Hauptbilder (Perlmutt-Ohrringe mit Bügel und Stift; blaue Rosen statt Schmetterling): Titel oder Bild dem Besitzer melden, das ist nicht Teil dieser Einspielung. NACHBESSERUNG 11.11. nach der Prüfung (alle 5 Funde eingearbeitet): (1) «Ohrclips» steht nicht mehr als Bauart in Absatz 1, sondern als «viele Artikel mit der Bezeichnung Ohrclip» (11 Titel, Minimum 6). Absatz 2 sagt, dass die Bezeichnung nicht automatisch «ohne Ohrloch» heisst. Damit widerspricht sich der Text nicht mehr. (2) «hält» ersetzt durch «getragen wird» (Wortlaut der Produkttexte). (3) Doppelter Satzbeginn «Laut …» aufgelöst, neu «Die Designs sind oft geometrisch». (4) Nummerierte Auswahl als konkrete Handlung («vergleiche sie auf den Bildern»). Der Beleg ist enger: Er zählt nur Produkte, bei denen ALLE Optionswerte «Modell/Muster/Stil N» heissen (8 Produkte). (5) Ear-Cuff-Muster um «Conch» erweitert (3 Titel). Die Produktdaten wurden vor dem Nachzählen frisch gelesen (11.11., byte-gleich zum Stand des Entwurfs). Gegenproben nach der Nachbesserung: muster_probe.py mit 34 Gegenproben, alle ok (neu: nur nummerierte Auswahl, Conch, Bezeichnung Ohrclip). Einspielwerkzeug kaufhilfen1111/apply.py (nur Import): text_fehler leer, 20 von 20 Belegen erreicht, Zählung gleich eintrag.json, Status AENDERN. Das Wort «geliefert» im Schlusssatz meint den Lieferumfang (Paar oder Set), keine Lieferzeit. Vorstand gesichert: eintrag.vor-nachbessern.json, zaehlen.vor-nachbessern.py, produkte.vor-nachbessern.json. Nichts in Shop, Repo oder Netz geschrieben. Dateien: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/eintrag.json (Eintrag), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/zaehlen.py (Belegzählung und Textregeln), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/muster_probe.py (Gegenproben der Muster), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/lade.py (lesende Abfrage), /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/produkte.json, /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/sammlung.json, /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/bilder/bogen.png (Kontaktbogen der Hauptbilder), Prüferdateien unter /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufhilfen1111/creolen-ohrclips/pruef/."
+ }
+}
