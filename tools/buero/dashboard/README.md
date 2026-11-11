@@ -9,8 +9,8 @@ Das Dashboard **KI-Büro** (https://claude.ai/artifact/93LsR7UCQ3gN5mz8KW5MRN) t
 | Offene Punkte | `tools/buero/dashboard/offen.html` | `offen` (Berechnungen `uebersicht`, `abdeckung`) |
 | Suchanfragen | `dropship/keywordliste-1011/seite.html` | `stand`, `anfragen`, `stichwoerter`, `chancen`, `ideen`, `seiten`, `tage` (Berechnung `klassen`) |
 
-Die früheren Artefakte «LuxeStyle Offene Punkte» und «LuxeStyle Suchanfragen» sind damit überholt. Wer dort noch Daten
-nachführt, ändert eine Kopie, die niemand mehr liest.
+Die früheren Artefakte «LuxeStyle Offene Punkte» und «LuxeStyle Suchanfragen» sind seit 11.11.2026 gelöscht (auf das Ja des
+Besitzers), ihre Links sind tot. Alle Daten liegen im KI-Büro.
 
 ## Wichtigste Regel
 
