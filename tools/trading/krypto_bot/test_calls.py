@@ -3,10 +3,12 @@
 python3 tools/trading/krypto_bot/test_calls.py"""
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import hmac
 import json
 import math
+import os
 import random
 import sys
 import tempfile
@@ -24,6 +26,7 @@ import calls_kopierer as CK  # noqa: E402
 import calls_leser as CL  # noqa: E402
 import calls_parser as CP  # noqa: E402
 import calls_pruefung as CQ  # noqa: E402
+import ki_trader as KT  # noqa: E402
 import broker_futures as BF  # noqa: E402
 import sperre as SP  # noqa: E402
 import testumgebung  # noqa: E402
@@ -122,13 +125,105 @@ class FakeClaude:
 
 fc = FakeClaude({"ist_call": True, "symbol": "op/usdt", "richtung": "LONG", "einstieg": [1.52, 1.55], "ziele": [1.6, 1.7], "stop": 1.45, "hebel": 10})
 cc, info = CP.parse_mit_claude("Grab OP around 1.52-1.55, aim 1.60 then 1.70, invalid below 1.45", client=fc)
-pruefe("Claude-Rückfall: Symbol vereinheitlicht, Schema, Rückfall-Modelle, niedriger Aufwand, Kosten",
+pruefe("Claude-Rückfall: Symbol vereinheitlicht, Schema, Haiku zuerst (ohne Ersatzmodell: dort nicht erlaubt), niedriger Aufwand, Kosten",
        cc and cc["symbol"] == "OPUSDT" and cc["quelle"] == "claude" and cc["stimmig"] and info["kosten_usd"] > 0
-       and fc.aufrufe[0]["output_config"]["format"]["type"] == "json_schema" and fc.aufrufe[0]["fallbacks"] == "default"
-       and fc.aufrufe[0]["output_config"]["effort"] == "low", (cc, info))
+       and fc.aufrufe[0]["model"] == "claude-haiku-5-5" and "fallbacks" not in fc.aufrufe[0] and "betas" not in fc.aufrufe[0]
+       and fc.aufrufe[0]["output_config"]["format"]["type"] == "json_schema" and fc.aufrufe[0]["output_config"]["effort"] == "low", (cc, info))
 pruefe("Claude: «kein Call» und Ablehnung → None", CP.parse_mit_claude("x", client=FakeClaude({**fc.antwort, "ist_call": False}))[0] is None
        and CP.parse_mit_claude("x", client=FakeClaude(fc.antwort, stop="refusal"))[0] is None)
 pruefe("Claude nur mit CALLS_CLAUDE=1", CP.parse_mit_claude("x")[0] is None)
+
+
+def _ki_stufen_calls():
+    """Stufen der Calls-Lesung (Haiku zuerst, Opus bei Unstimmigkeit); in einer Funktion, damit keine Namen überschrieben werden."""
+    # ── Stufen: Haiku liest zuerst, Opus liest nur bei einem unstimmigen Ergebnis nach (Besitzer 11.11.: «nicht alles auf Opus, auch Haiku, sparen») ──
+    HAIKU, OPUS = "claude-haiku-5-5", "claude-opus-5-5"
+    _KI_ENV = ("KI_SPAREN", "KI_MODELL_ENTSCHEID", "KI_MODELL_RUHETAG", "KI_MODELL_CALLS", "KI_MODELL_CALLS_ZWEIT", "KI_TRADER_MODELL", "CALLS_CLAUDE_MODELL")
+
+
+    @contextlib.contextmanager
+    def ki_env(**neu):
+        """Die Modell-Schalter des PCs dürfen die Tests nicht ändern: für die Dauer sind sie weg (oder so gesetzt wie in `neu`)."""
+        alt = {k: os.environ.pop(k) for k in _KI_ENV if k in os.environ}
+        os.environ.update(neu)
+        try:
+            yield
+        finally:
+            for k in _KI_ENV:
+                os.environ.pop(k, None)
+            os.environ.update(alt)
+
+
+    class FakeStufen:
+        """Antwortet je nach angefragtem Modell ({Modell: Antwort-dict oder Ausnahme}), zählt die Anfragen; Tokens 400/120 wie FakeClaude."""
+
+        def __init__(self, antworten):
+            self.antworten, self.aufrufe = antworten, []
+            self.beta = SimpleNamespace(messages=SimpleNamespace(create=self._create))
+
+        @property
+        def modelle(self):
+            return [a["model"] for a in self.aufrufe]
+
+        def _create(self, **kw):
+            self.aufrufe.append(kw)
+            a = self.antworten[kw["model"]]
+            if isinstance(a, Exception):
+                raise a
+            return SimpleNamespace(content=[SimpleNamespace(type="text", text=json.dumps(a))], stop_reason="end_turn",
+                                   model=kw["model"], usage=SimpleNamespace(input_tokens=400, output_tokens=120))
+
+
+    schief = {"ist_call": True, "symbol": "OP/USDT", "richtung": "LONG", "einstieg": [1.52, 1.55], "ziele": [1.6, 1.7], "stop": 1.7, "hebel": 10}  # Stop über dem Einstieg: unstimmig
+    gerade = {**schief, "stop": 1.45}
+    with tempfile.TemporaryDirectory() as tmp_c, ki_env():
+        pruefe("Calls in Stufen: ein stimmiger Haiku-Call braucht keine zweite Anfrage",
+               len(fc.aufrufe) == 1 and "zweitleser" not in info and info["modell"] == HAIKU)
+        buch_c = Path(tmp_c) / "ki-kosten.json"
+        fs = FakeStufen({HAIKU: schief, OPUS: gerade})
+        c2, i2 = CP.parse_mit_claude("Grab OP around 1.52-1.55, aim 1.60 then 1.70, invalid below 1.45", client=fs, buch=buch_c)
+        pruefe("Calls in Stufen: Haiku liest unstimmig → Opus liest nach (mit Ersatzmodell) und hat das letzte Wort",
+               fs.modelle == [HAIKU, OPUS] and c2 and c2["stop"] == 1.45 and c2["stimmig"] and c2["quelle"] == "claude"
+               and i2["zweitleser"] == OPUS and i2["modell"] == OPUS and "fallbacks" not in fs.aufrufe[0] and fs.aufrufe[1]["fallbacks"] == "default"
+               and fs.aufrufe[0]["output_config"]["effort"] == "low" and fs.aufrufe[1]["output_config"]["effort"] == "low", (c2, i2, fs.modelle))
+        pruefe("Calls in Stufen: die Kosten beider Anfragen stehen in der Info (Haiku 0,0001 + Opus 0,004)", abs(i2["kosten_usd"] - 0.0041) < 1e-9, i2)
+        b_c = KT.lies_kosten(buch_c)
+        pruefe("Calls in Stufen: beide Anfragen im Kostenbuch, Aufgaben «calls» und «calls_zweit»",
+               b_c["summen"][HAIKU]["n"] == 1 and b_c["summen"][OPUS]["n"] == 1 and [z["aufgabe"] for z in b_c["zeilen"]] == ["calls", "calls_zweit"], b_c)
+        fs3 = FakeStufen({HAIKU: schief, OPUS: schief})
+        c3, i3 = CP.parse_mit_claude("x", client=fs3)
+        pruefe("Calls in Stufen: auch Opus liest unstimmig → dessen Lesung gilt (unstimmig, wird nicht gehandelt), keine dritte Anfrage",
+               fs3.modelle == [HAIKU, OPUS] and c3 and c3["stimmig"] is False and not CP.plausibel(c3, 1.5), (c3, fs3.modelle))
+        fs4 = FakeStufen({HAIKU: schief, OPUS: {**gerade, "ist_call": False}})
+        pruefe("Calls in Stufen: sagt Opus nach Haikus unstimmigem Call «kein Call», ist es keiner", CP.parse_mit_claude("x", client=fs4)[0] is None and fs4.modelle == [HAIKU, OPUS])
+        fs5 = FakeStufen({HAIKU: {**gerade, "ist_call": False}, OPUS: gerade})
+        pruefe("Calls in Stufen: sagt Haiku «kein Call», gilt das ohne zweite Anfrage (ein verpasster Call ist die sichere Richtung)",
+               CP.parse_mit_claude("x", client=fs5)[0] is None and fs5.modelle == [HAIKU])
+        fs6 = FakeStufen({HAIKU: ConnectionError("weg"), OPUS: gerade})
+        c6, i6 = CP.parse_mit_claude("x", client=fs6)
+        pruefe("Calls in Stufen: Netzfehler bei Haiku → kein Call, Hinweis, keine zweite Anfrage (Opus hätte denselben Fehler)",
+               c6 is None and "nicht erreichbar" in i6["hinweis"] and fs6.modelle == [HAIKU])
+        echtes = KT.KOSTEN_BUCH.read_bytes() if KT.KOSTEN_BUCH.exists() else None
+        CP.parse_mit_claude("x", client=FakeStufen({HAIKU: schief, OPUS: gerade}))
+        pruefe("Calls: ein eingesetzter Client bucht ohne `buch` nichts (Tests dürfen das echte Kostenbuch nie anfassen)",
+               (KT.KOSTEN_BUCH.read_bytes() if KT.KOSTEN_BUCH.exists() else None) == echtes)
+        with ki_env(KI_SPAREN="aus"):
+            fs7 = FakeStufen({OPUS: gerade})
+            c7, i7 = CP.parse_mit_claude("x", client=fs7)
+            pruefe("KI_SPAREN=aus: Calls lesen wieder nur mit Opus (eine Anfrage, mit Ersatzmodell)",
+                   fs7.modelle == [OPUS] and c7 and c7["stimmig"] and fs7.aufrufe[0]["fallbacks"] == "default" and "zweitleser" not in i7)
+        with ki_env(CALLS_CLAUDE_MODELL="claude-sonnet-5-5"):
+            fs8 = FakeStufen({"claude-sonnet-5-5": schief, OPUS: gerade})
+            c8, i8 = CP.parse_mit_claude("x", client=fs8)
+            pruefe("Alter Schalter CALLS_CLAUDE_MODELL gilt weiter (Sonnet zuerst, bei Unstimmigkeit Opus)",
+                   fs8.modelle == ["claude-sonnet-5-5", OPUS] and fs8.aufrufe[0]["fallbacks"] == "default" and c8["stop"] == 1.45)
+        with ki_env(KI_MODELL_CALLS_ZWEIT=HAIKU):
+            fs9 = FakeStufen({HAIKU: schief})
+            c9, i9 = CP.parse_mit_claude("x", client=fs9)
+            pruefe("Zweitleser = Erstleser: keine zweite Anfrage", fs9.modelle == [HAIKU] and c9 and c9["stimmig"] is False)
+
+
+_ki_stufen_calls()
 
 # ───────────────────────── Prüfstand: ein Call ─────────────────────────
 T0 = int(datetime(2026, 3, 2, 10, 0, tzinfo=timezone.utc).timestamp() * 1000)

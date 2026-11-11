@@ -88,6 +88,243 @@ d5, i5 = KT.frage_claude("x")
 pruefe("ohne Schlüssel: freundlicher Hinweis", d5 is None and "ANTHROPIC_API_KEY" in i5["hinweis"])
 __import__("os").environ.update(alt_env)
 
+
+def _ki_stufen():
+    """Stufen der KI-Anfragen (Haiku für Routine, Opus für die echte Entscheidung) samt Kostenbuch; in einer Funktion, damit keine Namen überschrieben werden."""
+    # ── Stufen: Haiku für Routine, Opus für die echte Entscheidung (Besitzer 11.11.: «nicht alles auf Opus, auch Haiku, sparen») ──
+    import contextlib as _cl_ki  # noqa: E402
+    import os as _os_ki  # noqa: E402
+
+    HAIKU, OPUS = "claude-haiku-5-5", "claude-opus-5-5"
+    _KI_ENV = ("KI_SPAREN", "KI_MODELL_ENTSCHEID", "KI_MODELL_RUHETAG", "KI_MODELL_CALLS", "KI_MODELL_CALLS_ZWEIT", "KI_TRADER_MODELL", "CALLS_CLAUDE_MODELL")
+
+
+    @_cl_ki.contextmanager
+    def ki_env(**neu):
+        """Die Modell-Schalter des PCs dürfen die Tests nicht ändern: für die Dauer sind sie weg (oder so gesetzt wie in `neu`)."""
+        alt = {k: _os_ki.environ.pop(k) for k in _KI_ENV if k in _os_ki.environ}
+        _os_ki.environ.update(neu)
+        try:
+            yield
+        finally:
+            for k in _KI_ENV:
+                _os_ki.environ.pop(k, None)
+            _os_ki.environ.update(alt)
+
+
+    class FakeModelle:
+        """Antwortet je nach angefragtem Modell ({Modell: Antwort-dict oder Ausnahme}) und zählt die Anfragen; Tokens 2000/1500 wie FakeClaude."""
+
+        def __init__(self, antworten):
+            self.antworten, self.aufrufe = antworten, []
+            self.beta = SimpleNamespace(messages=SimpleNamespace(create=self._create))
+
+        @property
+        def modelle(self):
+            return [a["model"] for a in self.aufrufe]
+
+        def _create(self, **kw):
+            self.aufrufe.append(kw)
+            a = self.antworten[kw["model"]]
+            if isinstance(a, Exception):
+                raise a
+            return SimpleNamespace(model=kw["model"], stop_reason="end_turn", usage=SimpleNamespace(input_tokens=2000, output_tokens=1500),
+                                   content=[SimpleNamespace(type="text", text=json.dumps(a))])
+
+
+    vorher_pos = {"stand": tag(398), "btc": {"position": 1.0}, "eth": {"position": -0.4}}
+    ruhig_ja = {"btc": {"position": 1.0, "begruendung": "unverändert", "sicherheit": 0.8},
+                "eth": {"position": -0.4, "begruendung": "unverändert", "sicherheit": 0.7}, "kommentar": "Ruhig."}
+
+    # Modell je Aufgabe und Umgebung
+    pruefe("Modell je Aufgabe: Vorgaben Opus (Entscheid), Haiku (Ruhetag, Calls), Opus (Zweitleser der Calls)",
+           [KT.modell_fuer(a, env={}) for a in ("entscheid", "ruhetag", "calls", "calls_zweit")] == [OPUS, HAIKU, HAIKU, OPUS])
+    pruefe("Umgebung: neuer Name vor altem, alter Name gilt weiter, leerer Wert zählt nicht",
+           KT.modell_fuer("entscheid", env={"KI_TRADER_MODELL": "claude-sonnet-5-5"}) == "claude-sonnet-5-5"
+           and KT.modell_fuer("entscheid", env={"KI_TRADER_MODELL": "alt", "KI_MODELL_ENTSCHEID": "neu"}) == "neu"
+           and KT.modell_fuer("calls", env={"CALLS_CLAUDE_MODELL": "claude-sonnet-5-5"}) == "claude-sonnet-5-5"
+           and KT.modell_fuer("calls", env={"CALLS_CLAUDE_MODELL": "alt", "KI_MODELL_CALLS": "neu"}) == "neu"
+           and KT.modell_fuer("ruhetag", env={"KI_MODELL_RUHETAG": "  "}) == HAIKU)
+    pruefe("KI_SPAREN=aus: jede Aufgabe nimmt das Entscheid-Modell (auch ein selbst gewähltes), «an» und leer ändern nichts",
+           [KT.modell_fuer(a, env={"KI_SPAREN": "aus"}) for a in ("ruhetag", "calls", "calls_zweit")] == [OPUS] * 3
+           and KT.modell_fuer("ruhetag", env={"KI_SPAREN": " AUS ", "KI_TRADER_MODELL": "claude-sonnet-5-5"}) == "claude-sonnet-5-5"
+           and KT.sparen_aus({"KI_SPAREN": "0"}) and KT.sparen_aus({"KI_SPAREN": "nein"}) and not KT.sparen_aus({"KI_SPAREN": "an"})
+           and not KT.sparen_aus({}) and KT.modell_fuer("calls", env={"KI_SPAREN": "an"}) == HAIKU)
+    pruefe("Kurznamen fürs Cockpit", [KT.kurzname(m) for m in (HAIKU, OPUS, "claude-sonnet-5-5", "claude-fable-5-2", None, "x-y")] == ["Haiku", "Opus", "Sonnet", "Fable", "?", "x-y"])
+
+    # Ruhetag: rein gerechnet, kein Modell
+    r_ja, g_ja = KT.ruhig(reihen, [vorher_pos])
+    pruefe("Ruhetag: sanfter Anstieg, nichts gekreuzt, Einschätzung von gestern → ruhig", r_ja is True and g_ja.startswith("ruhig") and "Bitcoin" in g_ja and "Ethereum" in g_ja, g_ja)
+    pruefe("kein Ruhetag ohne frühere Einschätzung", KT.ruhig(reihen, []) == (False, "noch keine frühere Einschätzung"))
+    pruefe("kein Ruhetag, wenn die letzte Einschätzung zu alt ist (19 Tage)", KT.ruhig(reihen, [{**vorher_pos, "stand": tag(380)}])[0] is False
+           and "19 Tage her" in KT.ruhig(reihen, [{**vorher_pos, "stand": tag(380)}])[1] and KT.ruhig(reihen, [{**vorher_pos, "stand": tag(396)}])[0] is True)
+    pruefe("eine Einschätzung vom selben Stand zählt nicht als frühere (--neu)", KT.ruhig(reihen, [{**vorher_pos, "stand": tag(399)}])[0] is False)
+    reihen_sprung = {"btc": reihen["btc"][:399] + [(tag(399), 50000 + 100 * 399 + 3000)], "eth": reihen["eth"]}   # Bitcoin +3,4 % an einem Tag
+    ok_s, g_s = KT.ruhig(reihen_sprung, [vorher_pos])
+    pruefe("kein Ruhetag bei grosser Tagesbewegung", ok_s is False and "an einem Tag" in g_s and "Bitcoin" in g_s, g_s)
+    reihen_woche = {"btc": [(tag(i), 50000 + 100 * i) if i < 392 else (tag(i), round((50000 + 100 * 392) * 1.013 ** (i - 392), 2)) for i in range(400)],
+                    "eth": reihen["eth"]}   # jeden Tag +1,3 % (unter der Tagesgrenze), in 7 Tagen +9,5 %
+    ok_w, g_w = KT.ruhig(reihen_woche, [vorher_pos])
+    pruefe("kein Ruhetag bei grosser Wochenbewegung, auch wenn jeder Tag für sich ruhig ist", ok_w is False and "in 7 Tagen" in g_w, g_w)
+    reihen_eth = {"btc": reihen["btc"], "eth": reihen["eth"][:399] + [(tag(399), 3000 + 2 * 399 + 400)]}   # nur Ethereum bewegt sich (+11 %)
+    pruefe("kein Ruhetag, wenn nur Ethereum ausschlägt", KT.ruhig(reihen_eth, [vorher_pos])[0] is False and "Ethereum" in KT.ruhig(reihen_eth, [vorher_pos])[1])
+    flach = {"btc": [(tag(i), 100.0) for i in range(400)], "eth": [(tag(i), 50.0) for i in range(400)]}
+    flach_kreuz = {"btc": flach["btc"][:399] + [(tag(399), 100.5)], "eth": flach["eth"]}   # nur +0,5 %, aber über den 50-Tage-Schnitt
+    ok_k, g_k = KT.ruhig(flach_kreuz, [vorher_pos])
+    pruefe("kein Ruhetag, wenn ein Schnitt gekreuzt wird (auch bei kleiner Tagesbewegung)", ok_k is False and "kreuzt den 50-Tage-Schnitt" in g_k, g_k)
+    pruefe("flacher Markt ohne Kreuzung ist ein Ruhetag", KT.ruhig(flach, [vorher_pos])[0] is True)
+    pruefe("kein Ruhetag mit zu wenig Kursen", KT.ruhig({"btc": reihen["btc"][:5], "eth": reihen["eth"][:5]}, [{**vorher_pos, "stand": tag(3)}])
+           == (False, "zu wenig Kurse für Bitcoin"))
+
+    # Zweifel: wann Haiku an einem Ruhetag nicht allein entscheiden darf
+    pruefe("Zweifel: gleiche Position und sicher → keiner; Grenzen (0,60 sicher, 0,25 Sprung) gelten noch",
+           KT.zweifel(ruhig_ja, vorher_pos) is None
+           and KT.zweifel({**ruhig_ja, "eth": {**ruhig_ja["eth"], "sicherheit": 0.6}}, vorher_pos) is None
+           and KT.zweifel({**ruhig_ja, "btc": {**ruhig_ja["btc"], "position": 0.75}}, vorher_pos) is None)
+    pruefe("Zweifel: unsicher, grosser Sprung, unlesbare frühere Position",
+           "sicher bei Ethereum" in KT.zweifel({**ruhig_ja, "eth": {**ruhig_ja["eth"], "sicherheit": 0.59}}, vorher_pos)
+           and "Bitcoin um 0.30 verschieben" in KT.zweifel({**ruhig_ja, "btc": {**ruhig_ja["btc"], "position": 0.7}}, vorher_pos)
+           and "nicht lesbar" in KT.zweifel(ruhig_ja, {"stand": tag(1)}))
+
+
+    # Stufen der Tages-Entscheidung
+    def stufen(antworten, frueher=None, serie=None, **kw):
+        fm = FakeModelle(antworten)
+        d, info = KT.entscheide(serie or reihen, "Lage", [vorher_pos] if frueher is None else frueher, fm, **kw)
+        return fm, d, info
+
+
+    with tempfile.TemporaryDirectory() as tmp_s, ki_env():
+        buch_s = Path(tmp_s) / "ki-kosten.json"
+        fm, d, info = stufen({HAIKU: ruhig_ja, OPUS: gut}, buch=buch_s)
+        pruefe("Stufen: ruhiger Tag, Haiku sicher und ohne grossen Sprung → nur Haiku gefragt",
+               fm.modelle == [HAIKU] and info["stufe"] == "haiku" and info["modell"] == HAIKU and d["btc"]["position"] == 1.0 and d["eth"]["position"] == -0.4
+               and info["ruhe"].startswith("ruhig") and "eskaliert" not in info, (info, fm.modelle))
+        pruefe("Haiku-Anfrage: ohne Ersatzmodell (dort nicht erlaubt), Aufwand niedrig, strukturierte Ausgabe",
+               "fallbacks" not in fm.aufrufe[0] and "betas" not in fm.aufrufe[0] and fm.aufrufe[0]["output_config"]["effort"] == "low"
+               and fm.aufrufe[0]["output_config"]["format"]["type"] == "json_schema" and "thinking" not in fm.aufrufe[0], fm.aufrufe[0].keys())
+        pruefe("Kosten Haiku: 2000 × 0,10 + 1500 × 0,50 je Mio.", info["kosten_usd"] == round(2000 / 1e6 * 0.10 + 1500 / 1e6 * 0.50, 6), info)
+        for name, haiku_antwort, stichwort in (
+                ("unsicher", {**ruhig_ja, "eth": {**ruhig_ja["eth"], "sicherheit": 0.4}}, "sicher bei Ethereum"),
+                ("will stark verschieben", {**ruhig_ja, "btc": {**ruhig_ja["btc"], "position": -0.5}}, "Bitcoin um 1.50 verschieben")):
+            fm2, d2, i2 = stufen({HAIKU: haiku_antwort, OPUS: gut}, buch=buch_s)
+            pruefe(f"Stufen: Haiku {name} → danach fragt Opus (mit Ersatzmodell, Aufwand hoch) und entscheidet",
+                   fm2.modelle == [HAIKU, OPUS] and i2["stufe"] == "opus" and i2["modell"] == OPUS and i2["eskaliert"]["von"] == HAIKU
+                   and stichwort in i2["eskaliert"]["grund"] and d2["btc"]["position"] == 1.0 and d2["eth"]["position"] == -0.4
+                   and fm2.aufrufe[1]["fallbacks"] == "default" and fm2.aufrufe[1]["output_config"]["effort"] == "high", (i2, fm2.modelle))
+            pruefe(f"Stufen: Kosten beider Anfragen stehen im Entscheid ({name})",
+                   abs(i2["kosten_usd"] - (0.00095 + 0.038)) < 1e-9, i2["kosten_usd"])
+        fm_e, d_e, i_e = stufen({HAIKU: ConnectionError("weg"), OPUS: gut}, buch=buch_s)
+        pruefe("Stufen: scheitert Haiku (Netz), fragt Opus, nur dessen Kosten zählen, der Grund steht im Entscheid",
+               fm_e.modelle == [HAIKU, OPUS] and i_e["stufe"] == "opus" and "nicht erreichbar" in i_e["eskaliert"]["grund"] and d_e is not None
+               and abs(i_e["kosten_usd"] - 0.038) < 1e-9, i_e)
+        fm3, d3, i3 = stufen({HAIKU: ruhig_ja, OPUS: gut}, frueher=[], buch=buch_s)
+        pruefe("Stufen: kein Ruhetag (keine frühere Einschätzung) → gleich Opus, Haiku wird nicht gefragt",
+               fm3.modelle == [OPUS] and i3["stufe"] == "opus" and "eskaliert" not in i3 and "ruhe" not in i3 and i3["kosten_usd"] == 0.038, i3)
+        fm4, d4, i4 = stufen({HAIKU: ruhig_ja, OPUS: gut}, serie=reihen_sprung)
+        pruefe("Stufen: kein Ruhetag (grosse Bewegung) → gleich Opus; ohne `buch` wird nichts gebucht", fm4.modelle == [OPUS] and i4["stufe"] == "opus")
+        fm_g, d_g, i_g = stufen({HAIKU: ruhig_ja, OPUS: ConnectionError("weg")}, serie=reihen_sprung)
+        pruefe("Stufen: scheitert auch Opus → kein Entscheid, Hinweis", d_g is None and "nicht erreichbar" in i_g["hinweis"])
+        with ki_env(KI_SPAREN="aus"):
+            fm5, d5, i5 = stufen({OPUS: gut})   # Haiku fehlt im Antwortbuch: jede Anfrage daran würde als Fehler zählen
+            pruefe("KI_SPAREN=aus: alles wieder auf Opus, Haiku wird nie gefragt", fm5.modelle == [OPUS] and i5["stufe"] == "opus" and "eskaliert" not in i5, (fm5.modelle, i5))
+        with ki_env(KI_MODELL_RUHETAG=OPUS):
+            fm6, d6, i6 = stufen({OPUS: gut})
+            pruefe("Ruhetag-Modell = Entscheid-Modell: keine Vorprüfung, eine Anfrage", fm6.modelle == [OPUS])
+        b_s = KT.lies_kosten(buch_s)
+        pruefe("Kostenbuch nach den Läufen: jede Anfrage einmal gebucht (Haiku 3, Opus 4; der Netzfehler kostete nichts), Aufgaben richtig",
+               b_s["summen"][HAIKU]["n"] == 3 and b_s["summen"][OPUS]["n"] == 4 and len(b_s["zeilen"]) == 7
+               and {z["aufgabe"] for z in b_s["zeilen"] if z["modell"] == HAIKU} == {"ruhetag"}
+               and {z["aufgabe"] for z in b_s["zeilen"] if z["modell"] == OPUS} == {"entscheid"}, b_s["summen"])
+
+    # Kostenbuch: buchen, kürzen, nie ein Absturz
+    with tempfile.TemporaryDirectory() as tmp_k:
+        pk = Path(tmp_k) / "daten" / "ki-kosten.json"   # den Ordner gibt es noch nicht: er wird angelegt
+        t_h = datetime(2026, 11, 11, 7, 0, tzinfo=timezone.utc)
+        inf_h = {"modell": HAIKU, "tokens_ein": 2000, "tokens_aus": 1500, "kosten_usd": 0.00095}
+        inf_o = {"modell": OPUS, "tokens_ein": 2000, "tokens_aus": 1500, "kosten_usd": 0.038}
+        pruefe("Kostenbuch: Buchung legt Ordner und Datei an, keine Zwischendatei bleibt", KT.kosten_buchen("ruhetag", inf_h, pk, t_h) is True and pk.exists()
+               and not list(pk.parent.glob("*.tmp")))
+        KT.kosten_buchen("entscheid", inf_o, pk, t_h)
+        KT.kosten_buchen("ruhetag", inf_h, pk, t_h + timedelta(days=1))
+        b = KT.lies_kosten(pk)
+        pruefe("Kostenbuch: Summen je Modell (Anfragen, Tokens, Kosten, was dieselben Tokens auf Opus gekostet hätten)",
+               b["summen"][HAIKU]["n"] == 2 and b["summen"][HAIKU]["ein"] == 4000 and b["summen"][HAIKU]["aus"] == 3000
+               and abs(b["summen"][HAIKU]["usd"] - 0.0019) < 1e-9 and abs(b["summen"][HAIKU]["usd_opus"] - 0.076) < 1e-9
+               and b["summen"][OPUS]["n"] == 1 and abs(b["summen"][OPUS]["usd"] - 0.038) < 1e-9 and abs(b["summen"][OPUS]["usd_opus"] - 0.038) < 1e-9, b["summen"])
+        pruefe("Kostenbuch: Tagessummen und Zeilen (neueste zuletzt, mit Zeit und Aufgabe)",
+               b["tage"]["2026-11-11"]["n"] == 2 and b["tage"]["2026-11-12"]["n"] == 1 and abs(b["tage"]["2026-11-11"]["usd"] - 0.03895) < 1e-9
+               and [z["modell"] for z in b["zeilen"]] == [HAIKU, OPUS, HAIKU] and b["zeilen"][0]["aufgabe"] == "ruhetag" and b["zeilen"][0]["zeit"].startswith("2026-11-11T07:00:00"), b["zeilen"])
+        alt_z, alt_t = KT.KOSTEN_ZEILEN, KT.KOSTEN_TAGE
+        KT.KOSTEN_ZEILEN, KT.KOSTEN_TAGE = 3, 2
+        try:
+            for i in range(5):
+                KT.kosten_buchen("ruhetag", inf_h, pk, t_h + timedelta(days=2 + i))
+        finally:
+            KT.KOSTEN_ZEILEN, KT.KOSTEN_TAGE = alt_z, alt_t
+        b2 = KT.lies_kosten(pk)
+        pruefe("Kostenbuch: nur die letzten Zeilen und Tage bleiben, die Summen je Modell bleiben ganz",
+               [z["zeit"][:10] for z in b2["zeilen"]] == ["2026-11-15", "2026-11-16", "2026-11-17"] and sorted(b2["tage"]) == ["2026-11-16", "2026-11-17"] and b2["summen"][HAIKU]["n"] == 7 and b2["summen"][OPUS]["n"] == 1, (b2["tage"].keys(), b2["summen"]))
+        (Path(tmp_k) / "datei.txt").write_text("x", encoding="utf-8")
+        pruefe("Kostenbuch: ohne Modell, ohne Info oder mit unbeschreibbarem Pfad keine Buchung und kein Absturz",
+               KT.kosten_buchen("x", {"kosten_usd": 1.0}, pk) is False and KT.kosten_buchen("x", None, pk) is False
+               and KT.kosten_buchen("x", inf_h, Path(tmp_k) / "datei.txt" / "ki.json") is False)
+        kaputt = Path(tmp_k) / "kaputt.json"
+        kaputt.write_text("{halb", encoding="utf-8")
+        pruefe("Kostenbuch: ein kaputtes Buch wird neu angelegt statt zu stoppen", KT.lies_kosten(kaputt)["zeilen"] == [] and KT.kosten_buchen("ruhetag", inf_h, kaputt, t_h) is True
+               and KT.lies_kosten(kaputt)["summen"][HAIKU]["n"] == 1)
+        pu = Path(tmp_k) / "u.json"
+        for inf_, z_ in ((inf_h, "ruhetag"), (inf_o, "entscheid"), (inf_o, "calls_zweit")):
+            KT.kosten_buchen(z_, inf_, pu, t_h)
+        u = KT.kosten_uebersicht(KT.lies_kosten(pu), jetzt=t_h)
+        pruefe("Kostenübersicht fürs Cockpit: Modelle nach Kosten, Summe, gespart gegen Opus, günstiger Anteil, heute, letzte Anfragen neueste zuerst",
+               [m["kurz"] for m in u["modelle"]] == ["Opus", "Haiku"] and u["n"] == 3 and abs(u["usd"] - 0.07695) < 1e-9
+               and abs(u["usd_opus"] - 0.114) < 1e-9 and abs(u["gespart"] - 0.03705) < 1e-9 and abs(u["guenstig_anteil"] - 1 / 3) < 1e-9
+               and u["heute"]["n"] == 3 and abs(u["heute"]["usd"] - 0.07695) < 1e-9 and [z["aufgabe"] for z in u["letzte"]] == ["calls_zweit", "entscheid", "ruhetag"], u)
+        pruefe("Kostenübersicht: an einem anderen Tag ist «heute» leer", KT.kosten_uebersicht(KT.lies_kosten(pu), jetzt=t_h + timedelta(days=1))["heute"] == {"n": 0, "usd": 0.0})
+        pruefe("Kostenübersicht: höchstens sechs letzte Anfragen", len(KT.kosten_uebersicht({"zeilen": [{"zeit": str(i), "aufgabe": "x", "modell": HAIKU, "usd": 0.1} for i in range(9)]})["letzte"]) == 6)
+        schrott = (None, {}, [], "x", {"summen": "x", "tage": 5, "zeilen": 7},
+                   {"summen": {OPUS: "kaputt", HAIKU: {"n": "x", "usd": float("nan"), "usd_opus": float("inf")}}, "tage": {"2026-11-11": "x"}, "zeilen": ["x", 3, {"zeit": 1}]})
+        ok_schrott = True
+        for s_ in schrott:
+            try:
+                r_ = KT.kosten_uebersicht(s_, jetzt=t_h)
+                ok_schrott = ok_schrott and r_["n"] == 0 and r_["usd"] == 0.0 and r_["gespart"] == 0.0 and r_["guenstig_anteil"] is None
+            except Exception as ex_:  # noqa: BLE001
+                ok_schrott = False
+                print("Schrott löst aus:", s_, ex_)
+        pruefe("Kostenübersicht: leeres oder kaputtes Buch gibt n = 0 und wirft nie", ok_schrott)
+
+    # ganzer Lauf: Tag 1 Opus (noch keine Einschätzung), Tag 2 ruhig → Haiku; Kostenbuch neben dem Logbuch
+    with tempfile.TemporaryDirectory() as tmp_l, ki_env():
+        lb_l = Path(tmp_l) / "ki.json"
+        alt_pilot_l, alt_buch_l = KT.PILOT_LOGBUCH, KT.KOSTEN_BUCH
+        KT.PILOT_LOGBUCH = Path(tmp_l) / "pilot.json"
+        echtes_buch = alt_buch_l.read_bytes() if alt_buch_l.exists() else None
+        try:
+            reihen_a = {"btc": reihen["btc"][:399], "eth": reihen["eth"][:399]}
+            fm_l = FakeModelle({HAIKU: ruhig_ja, OPUS: gut})
+            e1 = KT.lauf(client=fm_l, logbuch=lb_l, kurse=reihen_a, lage_text="x", push=False)
+            e2 = KT.lauf(client=fm_l, logbuch=lb_l, kurse=reihen, lage_text="x", push=False)
+            j_l = json.loads(lb_l.read_text(encoding="utf-8"))
+            pruefe("Lauf in Stufen: Tag 1 Opus (noch keine Einschätzung), Tag 2 ruhig → Haiku, beide im Logbuch mit Stufe und Modell",
+                   fm_l.modelle == [OPUS, HAIKU] and [x["stufe"] for x in j_l["entscheide"]] == ["opus", "haiku"] and [x["modell"] for x in j_l["entscheide"]] == [OPUS, HAIKU]
+                   and e2["stand"] == tag(399), j_l["entscheide"])
+            b_l = KT.lies_kosten(Path(tmp_l) / KT.KOSTEN_BUCH.name)
+            pruefe("Lauf: das Kostenbuch liegt neben dem Logbuch, nicht im echten data-Ordner",
+                   b_l["summen"][OPUS]["n"] == 1 and b_l["summen"][HAIKU]["n"] == 1 and (alt_buch_l.read_bytes() if alt_buch_l.exists() else None) == echtes_buch)
+            t_s = KT.stand_text(j_l, {})
+            pruefe("Stand-Text nennt Modell und Stufe", "(Schattenkonto · Haiku (ruhiger Tag))" in t_s, t_s)
+            pruefe("Stand-Text: nach Opus-Entscheid «Opus», nach Haiku-Vorprüfung mit Eskalation der Hinweis",
+                   "(Schattenkonto · Opus)" in KT.stand_text({"entscheide": j_l["entscheide"][:1]}, {})
+                   and "Opus (nach Haiku-Vorprüfung)" in KT.stand_text({"entscheide": [{**j_l["entscheide"][0], "eskaliert": {"von": HAIKU, "grund": "x"}}]}, {})
+                   and "(Schattenkonto · Opus)" in KT.stand_text({"entscheide": [{k: v for k, v in j_l["entscheide"][0].items() if k != "stufe"}]}, {}))
+        finally:
+            KT.PILOT_LOGBUCH = alt_pilot_l
+
+
+_ki_stufen()
+
 # ── Schattenkonto ──
 kurse = {tag(0): 100.0, tag(1): 110.0, tag(2): 99.0, tag(3): 99.0}
 k = KT.kurve({tag(0): 1.0, tag(2): 0.0}, kurse, tag(0))
@@ -166,6 +403,20 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Cockpit: Testnetz-Anzeige ohne doppelte Freigabe", s["modus"] == "TESTNETZ"
                and C.stand(env={"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"})["modus"] == "ECHTGELD")
         pruefe("Cockpit: JSON ohne Schlüssel", "KEY" not in json.dumps(s))
+        pruefe("Cockpit-Stand: KI-Kosten live — ohne Kostenbuch 0 Anfragen, nichts erfunden",
+               s["ki"]["modelle"]["n"] == 0 and s["ki"]["modelle"]["modelle"] == [] and s["ki"]["modelle"]["heute"] == {"n": 0, "usd": 0.0}
+               and s["ki"]["modelle"]["guenstig_anteil"] is None, s["ki"]["modelle"])
+        KT.kosten_buchen("ruhetag", {"modell": "claude-haiku-5-5", "tokens_ein": 2000, "tokens_aus": 1500, "kosten_usd": 0.00095}, Path(tmp) / KT.KOSTEN_BUCH.name)
+        km = C.stand(env={})["ki"]["modelle"]
+        pruefe("Cockpit-Stand: eine gebuchte Haiku-Anfrage erscheint live mit Kurzname, Kosten und gerechneter Ersparnis gegen Opus",
+               km["n"] == 1 and km["modelle"][0]["kurz"] == "Haiku" and abs(km["usd"] - 0.00095) < 1e-9 and abs(km["gespart"] - 0.03705) < 1e-9
+               and km["letzte"][0]["aufgabe"] == "ruhetag" and km["guenstig_anteil"] == 1.0, km)
+        (Path(tmp) / KT.KOSTEN_BUCH.name).write_text("{kaputt", encoding="utf-8")
+        pruefe("Cockpit-Stand: ein kaputtes Kostenbuch lässt den Stand nicht stürzen", C.stand(env={})["ki"]["modelle"]["n"] == 0)
+        (Path(tmp) / KT.KOSTEN_BUCH.name).unlink()
+        html = (HIER / "cockpit.html").read_text(encoding="utf-8")
+        pruefe("Cockpit-Seite: Kosten-Anzeige in der Claude-Karte (Modell und Stufe der Entscheidung, Tabelle je Modell, Ersparnis), Texte maskiert",
+               "d.ki.modelle" in html and "kiKosten(" in html and "kiWer(ki)" in html and "esc(m.kurz)" in html and "esc(z.kurz)" in html and "gespart" in html)
 
         C.Cockpit.port = 0
         srv = ThreadingHTTPServer(("127.0.0.1", 0), C.Cockpit)

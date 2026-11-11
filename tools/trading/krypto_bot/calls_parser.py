@@ -315,26 +315,21 @@ SYSTEM = ("Du liest Krypto-Trading-Signale aus Telegram-Gruppen und gibst sie al
           "(leer, wenn «Markt»/«CMP»). ist_call = false bei Erfolgsmeldungen, Werbung, Analysen ohne Einstieg.")
 
 
-def parse_mit_claude(text, client=None, modell=None):
-    """→ (call oder None, info). Nur wenn CALLS_CLAUDE=1 (oder client übergeben). Wirft nie."""
-    if client is None:
-        if os.environ.get("CALLS_CLAUDE") != "1":
-            return None, {"hinweis": "Claude-Rückfall aus (CALLS_CLAUDE=1 schaltet ihn ein)"}
-        try:
-            import anthropic
-        except ImportError:
-            return None, {"hinweis": "Paket fehlt: py -m pip install anthropic"}
-        client = anthropic.Anthropic()
+def _lese_mit(text, client, modell, aufgabe, buch):
+    """Eine Anfrage an `modell` → (call oder None, info). Die Info trägt Modell, Tokens und Kosten (fürs Kostenbuch). Wirft nie."""
     import ki_trader as KT
-    modell = modell or os.environ.get("CALLS_CLAUDE_MODELL") or KT.MODELL_STANDARD
     extra = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"} if modell in KT.MIT_FALLBACK else {}
     try:
         r = client.beta.messages.create(model=modell, max_tokens=4000, system=SYSTEM, messages=[{"role": "user", "content": text[:4000]}],
-                                        output_config={"effort": "low", "format": {"type": "json_schema", "schema": SCHEMA}}, **extra)
+                                        output_config={"effort": KT.aufwand_fuer(aufgabe), "format": {"type": "json_schema", "schema": SCHEMA}}, **extra)
     except Exception as ex:  # noqa: BLE001
         return None, {"hinweis": f"Claude nicht erreichbar: {type(ex).__name__}"}
-    ein, aus = KT.PREISE.get(getattr(r, "model", modell) or modell, KT.PREISE.get(modell, (0.0, 0.0)))
-    info = {"kosten_usd": round(r.usage.input_tokens / 1e6 * ein + r.usage.output_tokens / 1e6 * aus, 5)}
+    benutzt = getattr(r, "model", modell) or modell
+    ein, aus = KT.PREISE.get(benutzt, KT.PREISE.get(modell, (0.0, 0.0)))
+    info = {"modell": benutzt, "tokens_ein": r.usage.input_tokens, "tokens_aus": r.usage.output_tokens,
+            "kosten_usd": round(r.usage.input_tokens / 1e6 * ein + r.usage.output_tokens / 1e6 * aus, 6)}
+    if buch is not None:  # auch abgelehnte Anfragen kosten Tokens
+        KT.kosten_buchen(aufgabe, info, buch)
     if r.stop_reason in ("refusal", "max_tokens"):
         return None, {**info, "hinweis": f"Claude: {r.stop_reason}"}
     try:
@@ -353,6 +348,32 @@ def parse_mit_claude(text, client=None, modell=None):
     if not c["ziele"] and c["stop"] is None:
         return None, info
     c["stimmig"] = stimmig(c)
+    return c, info
+
+
+def parse_mit_claude(text, client=None, modell=None, buch=None, zweit=None):
+    """→ (call oder None, info). Nur wenn CALLS_CLAUDE=1 (oder client übergeben). Wirft nie.
+    Stufen (spart Geld): Haiku liest zuerst, er schreibt nur ab. Ist sein Call in sich unstimmig (Stop auf der falschen Seite …),
+    liest das grosse Modell nach und hat das letzte Wort (info['zweitleser']; die Kosten beider Anfragen stehen in kosten_usd).
+    Sagt Haiku «kein Call», gilt das: ein verpasster Call ist die sichere Richtung. `buch` = Kostenbuch (echter Client: das echte Buch)."""
+    echt = client is None
+    if echt:
+        if os.environ.get("CALLS_CLAUDE") != "1":
+            return None, {"hinweis": "Claude-Rückfall aus (CALLS_CLAUDE=1 schaltet ihn ein)"}
+        try:
+            import anthropic
+        except ImportError:
+            return None, {"hinweis": "Paket fehlt: py -m pip install anthropic"}
+        client = anthropic.Anthropic()
+    import ki_trader as KT
+    buch = buch if buch is not None else (KT.KOSTEN_BUCH if echt else None)
+    modell = modell or KT.modell_fuer("calls")
+    zweit = zweit or KT.modell_fuer("calls_zweit")
+    c, info = _lese_mit(text, client, modell, "calls", buch)
+    if c is not None and not c["stimmig"] and zweit != modell:
+        c2, info2 = _lese_mit(text, client, zweit, "calls_zweit", buch)
+        info = {**info2, "kosten_usd": round(info.get("kosten_usd", 0.0) + info2.get("kosten_usd", 0.0), 6), "zweitleser": zweit}
+        return c2, info
     return c, info
 
 

@@ -12,8 +12,12 @@ Warum nur Schattenkonto:
   py tools/trading/krypto_bot/ki_trader.py --stand     # Schattenkonto: Claude gegen Pilot und Halten
 
 Braucht einen API-Schlüssel von console.anthropic.com (ANTHROPIC_API_KEY) und `py -m pip install anthropic`.
-Modell: KI_TRADER_MODELL (Standard claude-opus-5-5). Lehnt das Modell eine Anfrage ab, übernimmt serverseitig
-automatisch ein Ersatzmodell (fallbacks). Die Kosten jedes Laufs werden aus der API-Antwort berechnet und gespeichert.
+Modelle nach Aufgabe (Stufen, das spart Geld): die echte Tages-Entscheidung macht Opus (KI_MODELL_ENTSCHEID, alt KI_TRADER_MODELL,
+Standard claude-opus-5-5). An ruhigen Tagen fragt er zuerst Haiku (KI_MODELL_RUHETAG, Standard claude-haiku-5-5) und fragt Opus nur,
+wenn Haiku unsicher ist oder eine Position stark verschieben will. Calls aus Telegram abschreiben macht Haiku (KI_MODELL_CALLS), bei
+einem unstimmigen Ergebnis liest Opus nach (KI_MODELL_CALLS_ZWEIT). `setx KI_SPAREN aus` = alles wieder auf dem grossen Modell.
+Lehnt Opus eine Anfrage ab, übernimmt serverseitig automatisch ein Ersatzmodell (fallbacks; Haiku hat keins). Die Kosten jeder
+Anfrage werden aus der API-Antwort berechnet und im Kostenbuch data/ki-kosten.json gebucht (das Cockpit zeigt sie live).
 Logbuch: data/ki-trader.json. Keine Anlageberatung.
 """
 from __future__ import annotations
@@ -23,7 +27,7 @@ import json
 import math
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -39,6 +43,21 @@ MIT_FALLBACK = {"claude-opus-5-5", "claude-opus-5", "claude-fable-5-1", "claude-
 PREISE = {"claude-opus-5-5": (4.0, 20.0), "claude-opus-5": (5.0, 25.0), "claude-opus-4-8": (5.0, 25.0),
           "claude-fable-5-1": (10.0, 50.0), "claude-sonnet-5-5": (2.0, 10.0), "claude-sonnet-5": (2.0, 10.0),
           "claude-haiku-5-5": (0.10, 0.50)}  # USD je 1 Mio. Tokens (Eingabe, Ausgabe)
+MODELL_GUENSTIG = "claude-haiku-5-5"
+KOSTEN_BUCH = ROOT / "data" / "ki-kosten.json"
+KOSTEN_ZEILEN, KOSTEN_TAGE = 300, 60       # so viele einzelne Anfragen und Tagessummen bleiben im Kostenbuch (die Summen je Modell bleiben ganz)
+# Wer macht was? Aufgabe → (Umgebungsvariablen in Rangfolge, Vorgabe, Aufwand). Opus nur, wo Urteil gebraucht wird (die echte
+# Tages-Entscheidung, der Zweitblick bei Zweifeln); Haiku für Routine (ruhige Tage bestätigen, Calls abschreiben).
+AUFGABEN = {
+    "entscheid": (("KI_MODELL_ENTSCHEID", "KI_TRADER_MODELL"), MODELL_STANDARD, "high"),
+    "ruhetag": (("KI_MODELL_RUHETAG",), MODELL_GUENSTIG, "low"),
+    "calls": (("KI_MODELL_CALLS", "CALLS_CLAUDE_MODELL"), MODELL_GUENSTIG, "low"),
+    "calls_zweit": (("KI_MODELL_CALLS_ZWEIT",), MODELL_STANDARD, "low"),
+}
+# Ruhetag (rein gerechnet, ohne Modell): beide Coins höchstens so weit bewegt, kein 50-/150-/200-Tage-Schnitt gekreuzt;
+# Haiku gilt nur, wenn er sich bei beiden Coins mindestens so sicher ist und keine Position weiter verschiebt als dies.
+RUHE_TAG, RUHE_WOCHE, RUHE_ALTER_TAGE = 0.02, 0.08, 3
+RUHE_MIN_SICHER, RUHE_MAX_SPRUNG = 0.6, 0.25
 GEBUEHR, FUNDING_TAG = 0.0005, 0.0003     # wie im Pilot-Test: 0,05 % je Umschichtung, 0,01 % je 8 h
 COINS = {"btc": "BTC-USD", "eth": "ETH-USD"}
 
@@ -112,10 +131,204 @@ def lagebericht(reihen, lage_text, frueher):
     return "\n".join(teile)
 
 
+# ───────────────────────── Welches Modell, was kostet es (Stufen, Kostenbuch) ─────────────────────────
+def sparen_aus(env=None):
+    """KI_SPAREN=aus (auch 0, nein, off) → alles wieder auf dem grossen Modell: der Rückweg in einem Wort."""
+    return ((os.environ if env is None else env).get("KI_SPAREN") or "").strip().lower() in ("aus", "0", "nein", "off")
+
+
+def modell_fuer(aufgabe, env=None):
+    """Modell einer Aufgabe: Umgebung (neuer Name vor altem), sonst die Vorgabe. Bei KI_SPAREN=aus nimmt jede Aufgabe das Entscheid-Modell."""
+    env = os.environ if env is None else env
+    if aufgabe != "entscheid" and sparen_aus(env):
+        aufgabe = "entscheid"
+    namen, vorgabe, _ = AUFGABEN[aufgabe]
+    for n in namen:
+        wert = (env.get(n) or "").strip()
+        if wert:
+            return wert
+    return vorgabe
+
+
+def aufwand_fuer(aufgabe):
+    return AUFGABEN[aufgabe][2]
+
+
+def kurzname(modell):
+    m = (modell or "").lower()
+    for n in ("haiku", "sonnet", "opus", "fable", "mythos"):
+        if n in m:
+            return n.capitalize()
+    return str(modell or "?")
+
+
+def usd_auf(modell, ein, aus):
+    """Was diese Tokens auf `modell` kosten würden (Preisliste PREISE; unbekanntes Modell = 0)."""
+    e, a = PREISE.get(modell, (0.0, 0.0))
+    return ein / 1e6 * e + aus / 1e6 * a
+
+
+def lies_kosten(pfad=None):
+    pfad = Path(pfad) if pfad else KOSTEN_BUCH
+    try:
+        b = json.loads(pfad.read_text(encoding="utf-8")) if pfad.exists() else {}
+    except (OSError, ValueError):
+        b = {}
+    b = b if isinstance(b, dict) else {}
+    b["version"] = 1
+    for k, leer in (("summen", {}), ("tage", {}), ("zeilen", [])):
+        if not isinstance(b.get(k), type(leer)):
+            b[k] = leer
+    return b
+
+
+def kosten_buchen(aufgabe, info, pfad=None, jetzt=None):
+    """Bucht eine Anfrage (Modell, Tokens, Kosten) ins Kostenbuch; das Cockpit zeigt es live. Wirft nie — ein Buchungsfehler darf nie
+    eine Entscheidung kosten. `usd_opus` = was dieselben Tokens auf dem grossen Modell gekostet hätten (Annahme «gleiche Token»)."""
+    try:
+        modell = (info or {}).get("modell")
+        if not modell:
+            return False
+        pfad = Path(pfad) if pfad else KOSTEN_BUCH
+        jetzt = jetzt or datetime.now(timezone.utc)
+        ein, aus = int(info.get("tokens_ein") or 0), int(info.get("tokens_aus") or 0)
+        usd = float(info.get("kosten_usd") or 0.0)
+        opus = usd_auf(MODELL_STANDARD, ein, aus)
+        b = lies_kosten(pfad)
+        s = b["summen"].setdefault(modell, {"n": 0, "ein": 0, "aus": 0, "usd": 0.0, "usd_opus": 0.0})
+        s["n"] += 1
+        s["ein"] += ein
+        s["aus"] += aus
+        s["usd"], s["usd_opus"] = round(s["usd"] + usd, 6), round(s["usd_opus"] + opus, 6)
+        t = b["tage"].setdefault(jetzt.date().isoformat(), {"n": 0, "usd": 0.0, "usd_opus": 0.0})
+        t["n"] += 1
+        t["usd"], t["usd_opus"] = round(t["usd"] + usd, 6), round(t["usd_opus"] + opus, 6)
+        for alt in sorted(b["tage"])[:-KOSTEN_TAGE]:
+            del b["tage"][alt]
+        b["zeilen"] = (b["zeilen"] + [{"zeit": jetzt.isoformat(timespec="seconds"), "aufgabe": aufgabe, "modell": modell,
+                                       "ein": ein, "aus": aus, "usd": round(usd, 6)}])[-KOSTEN_ZEILEN:]
+        pfad.parent.mkdir(parents=True, exist_ok=True)
+        tmp = pfad.with_name(pfad.name + ".tmp")
+        tmp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        os.replace(tmp, pfad)  # atomar: das Cockpit liest nie eine halbe Datei
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def _zahl(x, standard=0.0):
+    return float(x) if isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) else standard
+
+
+def kosten_uebersicht(buch, jetzt=None):
+    """Fürs Cockpit (nur rechnen, nie schreiben): Anfragen und Kosten je Modell, heute, Summe, was dieselben Tokens auf dem grossen Modell
+    gekostet hätten (`gespart`; «gleiche Token» ist eine Annahme, Opus denkt meist länger, die Ersparnis ist eher grösser), die letzten
+    Anfragen. Wirft nie; ein leeres oder kaputtes Buch gibt n = 0."""
+    b = buch if isinstance(buch, dict) else {}
+    summen = b.get("summen") if isinstance(b.get("summen"), dict) else {}
+    modelle, n_alle, n_billig, usd, opus = [], 0, 0, 0.0, 0.0
+    grenze = PREISE[MODELL_STANDARD][0]
+    for m, s in summen.items():
+        if not isinstance(s, dict):
+            continue
+        n = int(_zahl(s.get("n")))
+        modelle.append({"modell": str(m), "kurz": kurzname(m), "n": n, "ein": int(_zahl(s.get("ein"))), "aus": int(_zahl(s.get("aus"))),
+                        "usd": round(_zahl(s.get("usd")), 6)})
+        n_alle += n
+        usd += _zahl(s.get("usd"))
+        opus += _zahl(s.get("usd_opus"))
+        if PREISE.get(m, (grenze, 0))[0] < grenze:
+            n_billig += n
+    modelle.sort(key=lambda x: (-x["usd"], x["modell"]))
+    heute_tag = (jetzt or datetime.now(timezone.utc)).date().isoformat()
+    t = (b.get("tage") or {}).get(heute_tag) if isinstance(b.get("tage"), dict) else None
+    t = t if isinstance(t, dict) else {}
+    zeilen = [z for z in (b.get("zeilen") or []) if isinstance(z, dict)] if isinstance(b.get("zeilen"), list) else []
+    letzte = [{"zeit": str(z.get("zeit", "")), "aufgabe": str(z.get("aufgabe", "")), "kurz": kurzname(z.get("modell")),
+               "usd": round(_zahl(z.get("usd")), 6)} for z in reversed(zeilen[-6:])]
+    return {"modelle": modelle, "n": n_alle, "usd": round(usd, 6), "usd_opus": round(opus, 6), "gespart": round(opus - usd, 6),
+            "guenstig_anteil": (n_billig / n_alle) if n_alle else None,
+            "heute": {"n": int(_zahl(t.get("n"))), "usd": round(_zahl(t.get("usd")), 6)}, "letzte": letzte}
+
+
+# ───────────────────────── Ruhetag und Stufen ─────────────────────────
+def ruhig(reihen, frueher):
+    """Ist heute ein Ruhetag? → (ja/nein, Satz). Rein gerechnet, kein Modell: beide Coins höchstens RUHE_TAG am Tag und RUHE_WOCHE in 7 Tagen
+    bewegt, kein 50-/150-/200-Tage-Schnitt gekreuzt, und es gibt eine frühere Einschätzung von höchstens RUHE_ALTER_TAGE Tagen vorher."""
+    stand = min(r[-1][0] for r in reihen.values())
+    vorher = [e for e in frueher if e.get("stand") and e["stand"] < stand]
+    if not vorher:
+        return False, "noch keine frühere Einschätzung"
+    try:
+        alter = (date.fromisoformat(stand) - date.fromisoformat(vorher[-1]["stand"])).days
+    except ValueError:
+        return False, "Datum der letzten Einschätzung nicht lesbar"
+    if alter > RUHE_ALTER_TAGE:
+        return False, f"letzte Einschätzung {alter} Tage her"
+    teile = []
+    for coin, name in (("btc", "Bitcoin"), ("eth", "Ethereum")):
+        reihe = [x for x in reihen[coin] if x[0] <= stand]
+        if len(reihe) < 9:
+            return False, f"zu wenig Kurse für {name}"
+        k, kv = kennzahlen(reihe), kennzahlen(reihe[:-1])
+        t1, t7 = k["ver"][1], k["ver"][7]
+        if abs(t1) > RUHE_TAG:
+            return False, f"{name} {prozent(t1)} an einem Tag"
+        if abs(t7) > RUHE_WOCHE:
+            return False, f"{name} {prozent(t7)} in 7 Tagen"
+        for n in (50, 150, 200):
+            heute_s, gestern_s = k["schnitt"][n], kv["schnitt"][n]
+            if heute_s and gestern_s and (k["schluss"] > heute_s) != (kv["schluss"] > gestern_s):
+                return False, f"{name} kreuzt den {n}-Tage-Schnitt"
+        teile.append(f"{name} {prozent(t1)} (1 T.), {prozent(t7)} (7 T.)")
+    return True, "ruhig: " + "; ".join(teile) + "; kein Schnitt gekreuzt"
+
+
+def zweifel(d, vorher):
+    """Warum Haiku an einem Ruhetag nicht allein entscheiden darf → ein Satz, sonst None."""
+    for coin, name in (("btc", "Bitcoin"), ("eth", "Ethereum")):
+        try:
+            sicher, neu, alt = d[coin]["sicherheit"], d[coin]["position"], vorher[coin]["position"]
+        except (KeyError, TypeError):
+            return f"frühere Position von {name} nicht lesbar"
+        if sicher < RUHE_MIN_SICHER:
+            return f"nur {sicher:.2f} sicher bei {name}"
+        if abs(neu - alt) > RUHE_MAX_SPRUNG + 1e-9:
+            return f"will {name} um {abs(neu - alt):.2f} verschieben"
+    return None
+
+
+def entscheide(reihen, lage_text, frueher, client=None, buch=None):
+    """Die Tages-Entscheidung in Stufen. Ruhiger Tag → erst Haiku; ist er unsicher, will er stark verschieben oder scheitert er → Opus.
+    Jeder andere Tag geht gleich an Opus. → (antwort oder None, info mit `stufe` «haiku» oder «opus»). Die Kosten beider Anfragen stehen in `kosten_usd`."""
+    text = lagebericht(reihen, lage_text, frueher)
+    gross, klein = modell_fuer("entscheid"), modell_fuer("ruhetag")
+    ruhetag, grund = ruhig(reihen, frueher)
+    eskaliert, kosten_klein = None, 0.0
+    if ruhetag and klein != gross:
+        d, info = frage_claude(text, client, modell=klein, aufgabe="ruhetag", buch=buch)
+        kosten_klein = float(info.get("kosten_usd") or 0.0)
+        if d is not None:
+            stand = min(r[-1][0] for r in reihen.values())
+            z = zweifel(d, [e for e in frueher if e.get("stand") and e["stand"] < stand][-1])
+            if z is None:
+                return d, {**info, "stufe": "haiku", "ruhe": grund}
+            eskaliert = {"von": klein, "grund": f"Haiku {z}"}
+        else:
+            eskaliert = {"von": klein, "grund": str(info.get("hinweis", "keine Antwort"))[:160]}
+    d, info = frage_claude(text, client, modell=gross, aufgabe="entscheid", buch=buch)
+    info = {**info, "stufe": "opus"}
+    if eskaliert:
+        info["eskaliert"] = eskaliert
+        info["kosten_usd"] = round(float(info.get("kosten_usd") or 0.0) + kosten_klein, 6)
+    return d, info
+
+
 # ───────────────────────── Claude fragen ─────────────────────────
-def frage_claude(text, client=None, modell=None):
-    """→ (antwort-dict oder None, info-dict). Wirft nie; Fehler stehen in info['hinweis']."""
-    modell = modell or os.environ.get("KI_TRADER_MODELL") or MODELL_STANDARD
+def frage_claude(text, client=None, modell=None, aufgabe="entscheid", buch=None):
+    """→ (antwort-dict oder None, info-dict). Wirft nie; Fehler stehen in info['hinweis']. `aufgabe` wählt Modell und Aufwand (AUFGABEN),
+    `buch` = Pfad des Kostenbuchs (None = nicht buchen, so buchen Tests nie ins echte Buch)."""
+    modell = modell or modell_fuer(aufgabe)
     if client is None:
         if not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN") or os.environ.get("ANTHROPIC_PROFILE")):
             return None, {"hinweis": "ANTHROPIC_API_KEY fehlt (Schlüssel auf console.anthropic.com anlegen, dann setx ANTHROPIC_API_KEY \"…\")."}
@@ -128,14 +341,16 @@ def frage_claude(text, client=None, modell=None):
     try:
         r = client.beta.messages.create(
             model=modell, max_tokens=16000, system=SYSTEM, messages=[{"role": "user", "content": text}],
-            output_config={"effort": "high", "format": {"type": "json_schema", "schema": SCHEMA}}, **extra)
+            output_config={"effort": aufwand_fuer(aufgabe), "format": {"type": "json_schema", "schema": SCHEMA}}, **extra)
     except Exception as ex:  # noqa: BLE001 — Netz, Schlüssel, Limit: der Pilot läuft trotzdem weiter
         return None, {"hinweis": f"Claude nicht erreichbar: {type(ex).__name__}: {str(ex)[:160]}"}
     benutzt = getattr(r, "model", modell) or modell
     ein, aus = PREISE.get(benutzt, PREISE.get(modell, (0.0, 0.0)))
     u = r.usage
     info = {"modell": benutzt, "tokens_ein": u.input_tokens, "tokens_aus": u.output_tokens,
-            "kosten_usd": round(u.input_tokens / 1e6 * ein + u.output_tokens / 1e6 * aus, 4)}
+            "kosten_usd": round(u.input_tokens / 1e6 * ein + u.output_tokens / 1e6 * aus, 6)}
+    if buch is not None:  # auch abgelehnte und abgeschnittene Anfragen kosten Tokens
+        kosten_buchen(aufgabe, info, buch)
     if r.stop_reason == "refusal":
         return None, {**info, "hinweis": "Claude hat die Anfrage abgelehnt (auch das Ersatzmodell)."}
     if r.stop_reason == "max_tokens":
@@ -230,7 +445,8 @@ def stand_text(ki, vgl):
     def richtung(x):
         return "LONG" if x > 0 else "SHORT" if x < 0 else "FLACH"
 
-    t = (f"🤖 Claude {e['stand']} (Schattenkonto)\n"
+    wer = kurzname(e.get("modell")) + (" (ruhiger Tag)" if e.get("stufe") == "haiku" else " (nach Haiku-Vorprüfung)" if e.get("eskaliert") else "")
+    t = (f"🤖 Claude {e['stand']} (Schattenkonto · {wer})\n"
          f"BTC {richtung(e['btc']['position'])} {abs(e['btc']['position']):.2f} — {e['btc']['begruendung']}\n"
          f"ETH {richtung(e['eth']['position'])} {abs(e['eth']['position']):.2f} — {e['eth']['begruendung']}\n"
          f"{e['kommentar']}")
@@ -254,7 +470,7 @@ def lauf(neu=False, client=None, jetzt=None, logbuch=None, kurse=None, lage_text
             lage_text = I.text(I.lagebild())
         except Exception:  # noqa: BLE001
             lage_text = "nicht verfügbar"
-    d, info = frage_claude(lagebericht(reihen, lage_text, ki["entscheide"]), client)
+    d, info = entscheide(reihen, lage_text, ki["entscheide"], client, buch=KOSTEN_BUCH if logbuch is None else Path(logbuch).with_name(KOSTEN_BUCH.name))
     if d is None:
         print("KI-Trader: " + info["hinweis"])
         # Fürs Cockpit: der GRUND steht dann in der Gesundheits-Zeile («Schlüssel ungültig», «Guthaben leer» …), nicht nur im Log. Wirft nie.

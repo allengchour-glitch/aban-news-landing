@@ -344,12 +344,36 @@ Die Indikatoren sind Anzeigen, keine Handelssignale — getestet und handelnd is
 2. `py -m pip install anthropic`
 3. `py tools\trading\krypto_bot\ki_trader.py --lauf`, später `--stand` für den Vergleich.
 
-Claude (Modell `claude-opus-5-5`, änderbar mit `KI_TRADER_MODELL`) bekommt nur abgeschlossene Tage: Kurse,
+Claude bekommt nur abgeschlossene Tage: Kurse,
 Veränderungen, Abstand zu den Trend-Schnitten, Schwankung und das Lagebild. Daraus gibt es pro Coin eine Position
 von −1 bis +1, eine Begründung, eine Sicherheit und einen Marktkommentar. Den Entscheid des Piloten sieht Claude nicht —
-sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernimmt serverseitig ein Ersatzmodell.
-**Kosten (Schätzung):** pro Lauf rund 2'000 Tokens hinein und 1'500–4'000 heraus (inkl. Denken), nach Preisliste
-(4 / 20 USD je Million) also etwa 4–10 US-Cent pro Tag. Die echten Kosten jedes Laufs stehen im Logbuch `data/ki-trader.json` und im Cockpit.
+sonst wäre der Vergleich nicht fair. Lehnt Opus eine Anfrage ab, übernimmt serverseitig ein Ersatzmodell (Haiku hat keins).
+
+**Modelle in Stufen (11.11.2026, spart Geld): Opus nur für die echte Entscheidung, Haiku für Routine.**
+
+| Aufgabe | Modell (Vorgabe) | Schalter |
+|---|---|---|
+| Tages-Entscheidung | Opus 5.5, Aufwand hoch | `KI_MODELL_ENTSCHEID` (alt: `KI_TRADER_MODELL`) |
+| ruhiger Tag: erst Haiku fragen | Haiku 5.5, Aufwand niedrig | `KI_MODELL_RUHETAG` |
+| Calls aus Telegram abschreiben | Haiku 5.5, Aufwand niedrig | `KI_MODELL_CALLS` (alt: `CALLS_CLAUDE_MODELL`) |
+| Call nachlesen, wenn Haikus Ergebnis unstimmig ist | Opus 5.5, Aufwand niedrig | `KI_MODELL_CALLS_ZWEIT` |
+
+**Ruhetag** heisst, rein gerechnet und ohne Modell: Bitcoin und Ethereum haben sich höchstens 2 % an einem Tag und 8 % in 7 Tagen
+bewegt, kein 50-/150-/200-Tage-Schnitt wurde gekreuzt, und es gibt eine Einschätzung von höchstens 3 Tagen vorher. Nur dann fragt
+der Lauf zuerst Haiku. Haikus Antwort gilt, wenn er sich bei beiden Coins mindestens 0,60 sicher ist und keine Position um mehr als
+0,25 verschiebt; sonst (oder bei einem Fehler) fragt der Lauf Opus, und der entscheidet. An jedem anderen Tag fragt er gleich Opus.
+Das Logbuch trägt je Entscheid `modell` und `stufe` («haiku» oder «opus», bei einer Eskalation mit `eskaliert`), die
+Kosten beider Anfragen stehen in `kosten_usd`. **Calls:** Haiku liest zuerst; ist sein Call in sich unstimmig (Stop auf der falschen
+Seite …), liest Opus nach und hat das letzte Wort. Sagt Haiku «kein Call», gilt das (ein verpasster Call ist die sichere Richtung).
+**Rückweg in einem Wort:** `setx KI_SPAREN aus` (neues Fenster) = jede Aufgabe nimmt wieder das Entscheid-Modell, keine Vorprüfung.
+
+**Kosten (Schätzung, ungemessen am echten Konto):** Opus-Lauf rund 2'000 Tokens hinein und 1'500–4'000 heraus (inkl. Denken),
+nach Preisliste (4 / 20 USD je Million) etwa 4–10 US-Cent; derselbe Lauf mit Haiku (0,10 / 0,50 USD je Million) rund 0,1–0,3 US-Cent.
+**Gemessen (Kursgeschichte, `ki_trader.ruhig`):** seit 2018 sind 28 % der Tage Ruhetage, in den letzten 365 Tagen 41 %, in den letzten 90 Tagen 50 % (Kursreihe im Repo, endet am 23.09.2026);
+wie oft Haiku dann auch gilt (ohne Eskalation), zeigt erst der Betrieb. Die echten Kosten jeder Anfrage stehen im **Kostenbuch `data/ki-kosten.json`**
+(Summen je Modell bleiben, die letzten 300 Anfragen und 60 Tage) und **live im Cockpit** (Karte «Claude», Abschnitt «Modelle und Kosten»:
+Anfragen und Kosten je Modell, heute, insgesamt, «dieselben Tokens nur auf Opus» als Vergleich, die letzten Anfragen). Der Vergleich nimmt gleiche Tokens an;
+Opus denkt meist länger, die Ersparnis ist also eher grösser. Tests: `test_cockpit.py` und `test_calls.py`.
 
 **Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
 (Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
@@ -484,7 +508,7 @@ Teil-Gewinnmitnahmen an der Börse. 1 % Risiko je Call (`CALLS_RISIKO`, höchste
 Call 50× sagt**, höchstens 25 % des Kontos (`CALLS_ANTEIL`) und 1000 USDT (`CALLS_MAX_AUFTRAG`) je Call, höchstens 3 Calls
 gleichzeitig (`CALLS_MAX_OFFEN`), je Coin einer. Bitcoin und Ethereum gehören dem Pilot (nur Schatten). Not-Aus schliesst
 auch kopierte Calls, Pause = keine neuen. Telegram `/calls` zeigt die Bilanz. Unlesbare Formate kann Claude lesen
-(`CALLS_CLAUDE=1`, ein paar Zehntel-Cent je Nachricht) — Claude liest nur ab, entscheidet nichts.
+(`CALLS_CLAUDE=1`; Haiku liest zuerst, Opus liest nur bei einem unstimmigen Ergebnis nach, siehe «Modelle in Stufen») — Claude liest nur ab, entscheidet nichts.
 `…\calls_kopierer.py --probe "LONG #SOLUSDT Entry 145-148 TP 152 SL 140"` zeigt, was mit einer Nachricht passieren würde.
 
 ## 👥 «Die Besten kopieren» (Binance Copy-Trading) — ehrlich geprüft (`copytrading_pruefung.py`)
