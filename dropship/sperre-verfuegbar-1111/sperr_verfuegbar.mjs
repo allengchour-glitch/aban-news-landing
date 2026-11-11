@@ -18,6 +18,7 @@
 // Aufrufe:   node sperr_verfuegbar.mjs                    Trockenlauf (Vorgabe): liest und zeigt den Plan
 //            LIVE=1 node sperr_verfuegbar.mjs             sperrt, liest frisch zurück (Exit 1 bei Abweichung)
 //            PRUEFEN=1 node sperr_verfuegbar.mjs          nur lesen: Exit 2, wenn ein gesperrtes Produkt kaufbar ist
+//            PRUEFEN=1 BEKANNT_KAUFBAR=handle1,handle2 …        dieselbe Prüfung; die genannten Produkte zählen nicht (bekannte Lücke, z. B. Dad-Cap)
 //            ZURUECK=1 LIVE=1 node sperr_verfuegbar.mjs   stellt den Ausgangsstand wieder her
 // WICHTIG für den Editor-Rollout: VOR dem Entsperren eines der drei Produkte die Rücknahme fahren, sonst meldet das
 //   Rollout-Werkzeug «keine kaufbare Variante».
@@ -31,6 +32,7 @@ const SICHERUNG = process.env.SICHERUNG || join(HIER, 'sicherung.json');
 const LIVE = process.env.LIVE === '1';
 const ZURUECK = process.env.ZURUECK === '1';
 const PRUEFEN = process.env.PRUEFEN === '1';
+const BEKANNT = new Set((process.env.BEKANNT_KAUFBAR || '').split(',').map((s) => s.trim()).filter(Boolean));   // nur für PRUEFEN: bekannte Lücken zählen nicht
 const HANDLES = ['magnet-zum-selbstgestalten', 'buegeltransfer-selbst-gestalten', 'dad-cap-selbst-gestalten'];
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const API = '2026-01';
@@ -96,9 +98,11 @@ const ist = await lesen();
 if (PRUEFEN) {
   let offen = 0;
   for (const p of ist) for (const v of p.varianten) {
-    const schlecht = p.gesperrt && v.kaufbar;
+    const kaufbarTrotzSperre = p.gesperrt && v.kaufbar;
+    const bekannt = kaufbarTrotzSperre && BEKANNT.has(p.handle);
+    const schlecht = kaufbarTrotzSperre && !bekannt;
     if (schlecht) offen++;
-    console.log(`${schlecht ? 'KAUFBAR TROTZ SPERRE' : 'ok'} ${p.handle} | ${v.titel} | sperre=${p.gesperrt} ${zeile(v)}`);
+    console.log(`${schlecht ? 'KAUFBAR TROTZ SPERRE' : bekannt ? 'bekannte Lücke (zählt nicht)' : 'ok'} ${p.handle} | ${v.titel} | sperre=${p.gesperrt} ${zeile(v)}`);
   }
   console.log(offen ? `${offen} Variante(n) gesperrter Produkte sind kaufbar.` : 'Kein gesperrtes Produkt ist kaufbar.');
   process.exit(offen ? 2 : 0);

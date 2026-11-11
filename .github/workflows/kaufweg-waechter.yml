@@ -50,3 +50,50 @@ jobs:
           DRY: ${{ inputs.trockenlauf && '1' || '' }}
           ALWAYS_NOTIFY: ${{ inputs.immer_melden && '1' || '' }}
         run: node automation/kaufweg_waechter.mjs
+
+  # Zweiter Wächter (11.11.2026): Die drei «Selbst gestalten»-Produkte mit der Sperre «Personalisierung derzeit nicht
+  # bestellbar» dürfen nicht kaufbar sein (Doku: dropship/sperre-verfuegbar-1111/README.md). Nur lesend (Admin-API).
+  # Setzt jemand den Bestand zurück (z. B. ein Abgleich von Printful) oder holt den Dad-Cap auf die Kanäle zurück,
+  # wird der Lauf rot und meldet es per Telegram. Der Dad-Cap ist im Onlineshop als bekannte Lücke ausgenommen.
+  sperre:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs
+            dropship/sperre-verfuegbar-1111/dad_cap_kanaele.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Gesperrte Produkte prüfen (nur lesen)
+        id: pruefung
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          if [ -z "$SHOPIFY_CLIENT_ID" ] || [ -z "$SHOPIFY_CLIENT_SECRET" ]; then
+            echo "Shopify-Zugang fehlt in den Secrets: Prüfung übersprungen (kein Alarm)." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          set +e
+          PRUEFEN=1 BEKANNT_KAUFBAR=dad-cap-selbst-gestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs > sperre.log 2>&1; a=$?
+          PRUEFEN=1 node dropship/sperre-verfuegbar-1111/dad_cap_kanaele.mjs >> sperre.log 2>&1; b=$?
+          set -e
+          cat sperre.log
+          { echo '### Gesperrte «Selbst gestalten»-Produkte'; echo '```'; cat sperre.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          # Exit 2 = klarer Befund (kaufbar trotz Sperre). Alles andere ungleich 0 = nicht messbar (Netz, Zugang): kein Alarm, Lauf gelb im Text.
+          if [ "$a" = "2" ] || [ "$b" = "2" ]; then echo "befund=1" >> "$GITHUB_OUTPUT"; exit 1; fi
+          if [ "$a" != "0" ] || [ "$b" != "0" ]; then echo "::warning::Sperr-Prüfung nicht messbar (Exit $a/$b)"; echo "Prüfung nicht messbar (Exit $a/$b): kein Alarm." | tee -a "$GITHUB_STEP_SUMMARY"; fi
+      - name: Telegram bei Befund
+        if: failure() && steps.pruefung.outputs.befund == '1' && !inputs.trockenlauf
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then echo "Telegram nicht eingerichtet."; exit 0; fi
+          text="⚠️ LuxeStyle: ein gesperrtes «Selbst gestalten»-Produkt ist wieder kaufbar oder der Dad-Cap steht wieder auf den Kanälen. Lauf: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          curl -sS -m 20 "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${text}" > /dev/null || echo "Telegram nicht erreichbar"
