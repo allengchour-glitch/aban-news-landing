@@ -155,7 +155,8 @@ def _ki_stufen_calls():
 
 
     class FakeStufen:
-        """Antwortet je nach angefragtem Modell ({Modell: Antwort-dict oder Ausnahme}), zählt die Anfragen; Tokens 400/120 wie FakeClaude."""
+        """Antwortet je nach angefragtem Modell ({Modell: Antwort-dict, Ausnahme, (Antwort, stop_reason) oder roher Text}), zählt die Anfragen;
+        Tokens 400/120 wie FakeClaude."""
 
         def __init__(self, antworten):
             self.antworten, self.aufrufe = antworten, []
@@ -167,10 +168,12 @@ def _ki_stufen_calls():
 
         def _create(self, **kw):
             self.aufrufe.append(kw)
-            a = self.antworten[kw["model"]]
+            a, stop = self.antworten[kw["model"]], "end_turn"
             if isinstance(a, Exception):
                 raise a
-            return SimpleNamespace(content=[SimpleNamespace(type="text", text=json.dumps(a))], stop_reason="end_turn",
+            if isinstance(a, tuple):
+                a, stop = a
+            return SimpleNamespace(content=[SimpleNamespace(type="text", text=a if isinstance(a, str) else json.dumps(a))], stop_reason=stop,
                                    model=kw["model"], usage=SimpleNamespace(input_tokens=400, output_tokens=120))
 
 
@@ -201,8 +204,21 @@ def _ki_stufen_calls():
                CP.parse_mit_claude("x", client=fs5)[0] is None and fs5.modelle == [HAIKU])
         fs6 = FakeStufen({HAIKU: ConnectionError("weg"), OPUS: gerade})
         c6, i6 = CP.parse_mit_claude("x", client=fs6)
-        pruefe("Calls in Stufen: Netzfehler bei Haiku → kein Call, Hinweis, keine zweite Anfrage (Opus hätte denselben Fehler)",
-               c6 is None and "nicht erreichbar" in i6["hinweis"] and fs6.modelle == [HAIKU])
+        pruefe("Calls in Stufen: scheitert Haikus Anfrage (Netz, oder die Schnittstelle lehnt etwas für ihn ab), liest Opus nach: der Rückfall bleibt nicht stumm",
+               c6 and c6["stop"] == 1.45 and c6["stimmig"] and i6["zweitleser"] == OPUS and fs6.modelle == [HAIKU, OPUS], (c6, i6, fs6.modelle))
+        pruefe("Calls in Stufen: eine gescheiterte Anfrage kostet nichts (nur Opus steht in den Kosten: 0,004)", abs(i6["kosten_usd"] - 0.004) < 1e-9, i6)
+        fs6b = FakeStufen({HAIKU: ConnectionError("weg"), OPUS: ConnectionError("auch weg")})
+        c6b, i6b = CP.parse_mit_claude("x", client=fs6b)
+        pruefe("Calls in Stufen: scheitern beide Anfragen → kein Call, Hinweis, genau zwei Anfragen, keine Kosten",
+               c6b is None and "nicht erreichbar" in i6b["hinweis"] and fs6b.modelle == [HAIKU, OPUS] and i6b["kosten_usd"] == 0.0, (c6b, i6b))
+        for stop in ("refusal", "max_tokens"):
+            fs6c = FakeStufen({HAIKU: (gerade, stop), OPUS: gerade})
+            c6c, i6c = CP.parse_mit_claude("x", client=fs6c)
+            pruefe(f"Calls in Stufen: Haiku endet mit «{stop}» → Opus liest nach (Haikus Tokens bleiben in den Kosten: 0,0041)",
+                   c6c and c6c["stop"] == 1.45 and fs6c.modelle == [HAIKU, OPUS] and abs(i6c["kosten_usd"] - 0.0041) < 1e-9, (c6c, i6c))
+        fs6d = FakeStufen({HAIKU: "das ist kein JSON", OPUS: gerade})
+        c6d, i6d = CP.parse_mit_claude("x", client=fs6d)
+        pruefe("Calls in Stufen: Haikus Antwort ist unlesbar → Opus liest nach", c6d and c6d["stop"] == 1.45 and fs6d.modelle == [HAIKU, OPUS], (c6d, i6d))
         echtes = KT.KOSTEN_BUCH.read_bytes() if KT.KOSTEN_BUCH.exists() else None
         CP.parse_mit_claude("x", client=FakeStufen({HAIKU: schief, OPUS: gerade}))
         pruefe("Calls: ein eingesetzter Client bucht ohne `buch` nichts (Tests dürfen das echte Kostenbuch nie anfassen)",
@@ -212,6 +228,9 @@ def _ki_stufen_calls():
             c7, i7 = CP.parse_mit_claude("x", client=fs7)
             pruefe("KI_SPAREN=aus: Calls lesen wieder nur mit Opus (eine Anfrage, mit Ersatzmodell)",
                    fs7.modelle == [OPUS] and c7 and c7["stimmig"] and fs7.aufrufe[0]["fallbacks"] == "default" and "zweitleser" not in i7)
+            fs7b = FakeStufen({OPUS: ConnectionError("weg")})
+            c7b, i7b = CP.parse_mit_claude("x", client=fs7b)
+            pruefe("KI_SPAREN=aus: scheitert Opus, gibt es keine zweite Anfrage an dasselbe Modell", c7b is None and fs7b.modelle == [OPUS] and "zweitleser" not in i7b, (c7b, i7b))
         with ki_env(CALLS_CLAUDE_MODELL="claude-sonnet-5-5"):
             fs8 = FakeStufen({"claude-sonnet-5-5": schief, OPUS: gerade})
             c8, i8 = CP.parse_mit_claude("x", client=fs8)

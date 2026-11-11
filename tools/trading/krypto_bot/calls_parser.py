@@ -323,7 +323,7 @@ def _lese_mit(text, client, modell, aufgabe, buch):
         r = client.beta.messages.create(model=modell, max_tokens=4000, system=SYSTEM, messages=[{"role": "user", "content": text[:4000]}],
                                         output_config={"effort": KT.aufwand_fuer(aufgabe), "format": {"type": "json_schema", "schema": SCHEMA}}, **extra)
     except Exception as ex:  # noqa: BLE001
-        return None, {"hinweis": f"Claude nicht erreichbar: {type(ex).__name__}"}
+        return None, {"hinweis": f"Claude nicht erreichbar: {type(ex).__name__}", "unbrauchbar": True}
     benutzt = getattr(r, "model", modell) or modell
     ein, aus = KT.PREISE.get(benutzt, KT.PREISE.get(modell, (0.0, 0.0)))
     info = {"modell": benutzt, "tokens_ein": r.usage.input_tokens, "tokens_aus": r.usage.output_tokens,
@@ -331,11 +331,11 @@ def _lese_mit(text, client, modell, aufgabe, buch):
     if buch is not None:  # auch abgelehnte Anfragen kosten Tokens
         KT.kosten_buchen(aufgabe, info, buch)
     if r.stop_reason in ("refusal", "max_tokens"):
-        return None, {**info, "hinweis": f"Claude: {r.stop_reason}"}
+        return None, {**info, "hinweis": f"Claude: {r.stop_reason}", "unbrauchbar": True}
     try:
         d = json.loads(next(b.text for b in r.content if b.type == "text"))
     except (StopIteration, ValueError):
-        return None, {**info, "hinweis": "Antwort nicht lesbar"}
+        return None, {**info, "hinweis": "Antwort nicht lesbar", "unbrauchbar": True}
     if not d.get("ist_call") or not d.get("symbol"):
         return None, info
     sym = re.sub(r"[^A-Z0-9]", "", d["symbol"].upper())
@@ -353,9 +353,10 @@ def _lese_mit(text, client, modell, aufgabe, buch):
 
 def parse_mit_claude(text, client=None, modell=None, buch=None, zweit=None):
     """→ (call oder None, info). Nur wenn CALLS_CLAUDE=1 (oder client übergeben). Wirft nie.
-    Stufen (spart Geld): Haiku liest zuerst, er schreibt nur ab. Ist sein Call in sich unstimmig (Stop auf der falschen Seite …),
+    Stufen (spart Geld): Haiku liest zuerst, er schreibt nur ab. Ist sein Call in sich unstimmig (Stop auf der falschen Seite …)
+    oder gibt es von ihm gar keine brauchbare Antwort (Anfrage abgelehnt oder gescheitert, Ablehnung, abgeschnitten, unlesbar),
     liest das grosse Modell nach und hat das letzte Wort (info['zweitleser']; die Kosten beider Anfragen stehen in kosten_usd).
-    Sagt Haiku «kein Call», gilt das: ein verpasster Call ist die sichere Richtung. `buch` = Kostenbuch (echter Client: das echte Buch)."""
+    Sagt Haiku ordentlich «kein Call», gilt das: ein verpasster Call ist die sichere Richtung. `buch` = Kostenbuch (echter Client: das echte Buch)."""
     echt = client is None
     if echt:
         if os.environ.get("CALLS_CLAUDE") != "1":
@@ -370,7 +371,8 @@ def parse_mit_claude(text, client=None, modell=None, buch=None, zweit=None):
     modell = modell or KT.modell_fuer("calls")
     zweit = zweit or KT.modell_fuer("calls_zweit")
     c, info = _lese_mit(text, client, modell, "calls", buch)
-    if c is not None and not c["stimmig"] and zweit != modell:
+    nachlesen = bool(info.get("unbrauchbar")) or (c is not None and not c["stimmig"])
+    if nachlesen and zweit != modell:
         c2, info2 = _lese_mit(text, client, zweit, "calls_zweit", buch)
         info = {**info2, "kosten_usd": round(info.get("kosten_usd", 0.0) + info2.get("kosten_usd", 0.0), 6), "zweitleser": zweit}
         return c2, info

@@ -356,7 +356,7 @@ sonst wäre der Vergleich nicht fair. Lehnt Opus eine Anfrage ab, übernimmt ser
 | Tages-Entscheidung | Opus 5.5, Aufwand hoch | `KI_MODELL_ENTSCHEID` (alt: `KI_TRADER_MODELL`) |
 | ruhiger Tag: erst Haiku fragen | Haiku 5.5, Aufwand niedrig | `KI_MODELL_RUHETAG` |
 | Calls aus Telegram abschreiben | Haiku 5.5, Aufwand niedrig | `KI_MODELL_CALLS` (alt: `CALLS_CLAUDE_MODELL`) |
-| Call nachlesen, wenn Haikus Ergebnis unstimmig ist | Opus 5.5, Aufwand niedrig | `KI_MODELL_CALLS_ZWEIT` |
+| Call nachlesen, wenn Haikus Ergebnis unstimmig oder unbrauchbar ist | Opus 5.5, Aufwand niedrig | `KI_MODELL_CALLS_ZWEIT` |
 
 **Ruhetag** heisst, rein gerechnet und ohne Modell: Bitcoin und Ethereum haben sich höchstens 2 % an einem Tag und 8 % in 7 Tagen
 bewegt, kein 50-/150-/200-Tage-Schnitt wurde gekreuzt, und es gibt eine Einschätzung von höchstens 3 Tagen vorher. Nur dann fragt
@@ -364,7 +364,9 @@ der Lauf zuerst Haiku. Haikus Antwort gilt, wenn er sich bei beiden Coins mindes
 0,25 verschiebt; sonst (oder bei einem Fehler) fragt der Lauf Opus, und der entscheidet. An jedem anderen Tag fragt er gleich Opus.
 Das Logbuch trägt je Entscheid `modell` und `stufe` («haiku» oder «opus», bei einer Eskalation mit `eskaliert`), die
 Kosten beider Anfragen stehen in `kosten_usd`. **Calls:** Haiku liest zuerst; ist sein Call in sich unstimmig (Stop auf der falschen
-Seite …), liest Opus nach und hat das letzte Wort. Sagt Haiku «kein Call», gilt das (ein verpasster Call ist die sichere Richtung).
+Seite …) oder kommt von ihm gar keine brauchbare Antwort (Anfrage gescheitert oder von der Schnittstelle abgelehnt, Ablehnung, abgeschnitten,
+unlesbar), liest Opus nach und hat das letzte Wort. Sagt Haiku ordentlich «kein Call», gilt das (ein verpasster Call ist die sichere Richtung).
+So kann eine Anfrage, die nur für Haiku nicht passt (zum Beispiel ein abgelehnter Parameter), den Rückfall nicht still lahmlegen.
 **Rückweg in einem Wort:** `setx KI_SPAREN aus` (neues Fenster) = jede Aufgabe nimmt wieder das Entscheid-Modell, keine Vorprüfung.
 
 **Kosten (Schätzung, ungemessen am echten Konto):** Opus-Lauf rund 2'000 Tokens hinein und 1'500–4'000 heraus (inkl. Denken),
