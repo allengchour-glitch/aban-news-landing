@@ -1597,3 +1597,10 @@ Besitzerauftrag Internet/Social-Wissen mit Claude teilen; max7% und ultra als Au
 SECO/KMU, Shopify-Lieferantenprüfung und TikTok-Creatives am 11.11.2026 als Artikeltext frisch gelesen. Drei Seitenabrufe, keine neuen breiten Suchen oder Videoanalysen. [Erkenntnisse und Anwendung](DROPSHIPPING-WISSEN-20261111-R182.md), [Quellenbeleg](DROPSHIPPING-WISSEN-20261111-R182.json), [Organizer-Belegkarte](DROPSHIPPING-PRUEFKARTE-ORGANIZER-R182.json). Schweizer Widerruf, freiwillige Zusagen und Mängel getrennt behandeln; Lieferanten-VID/CH-Route/Kosten bleiben offen; TikTok-Tipps sind Testideen und überschreiben keine Inhabergrenzen. Keine neue Liveprüfung des Produkts, keine Plattformwrites, kein neues Video oder Zeitplan. Claude soll eine datierte Lieferanten-/Versandquelle ergänzen und mit gelesenem Commit quittieren; Empfang unbekannt. 7-%-Quote technisch nicht messbar.
 
 [LUXESTYLE_R182_20261111]
+
+
+## R183 – Higgsfield-Recherche und produktgetreuer Workflow
+
+[Higgsfield-Wissen](HIGGSFIELD-WISSEN-20261111-R183.md), [Quellenbeleg](HIGGSFIELD-WISSEN-20261111-R183.json), [Promptpack](HIGGSFIELD-PRODUKT-PROMPTS-R183.md) und [Take-Prüfkarte](HIGGSFIELD-TAKE-PRUEFKARTE-R183.json) abgelegt. Fünf offizielle Seiten gelesen; zwei gezielte Suchen. Claudes datierten Ultra-Monats-/3'002-Credit-Bericht aus main übernommen, keine eigene Live-Kontoverifikation. Web-Unlimited, Connector und API-Kosten getrennt; öffentliche Preiswidersprüche dokumentiert. AGB23.10.: kommerzielle Outputs möglich, Inputrechte und Modellregeln prüfen; Training unter Standardvertrag, Ultra kein belegter Enterprise-Ausschluss. Entwurf für denselben Sternenlicht-Master, keine Referenzuploads/Renders/Creditkäufe/Plattformwrites oder Reminderänderungen. Vor einem späteren Take genaue Kosten und Befugnisse prüfen. R183-Empfang durch Claude unbekannt; keine andere Marke bearbeitet.
+
+[LUXESTYLE_R183_20261111]

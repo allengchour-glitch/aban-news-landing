@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 182,
-  "updatedAt": "2026-11-11T19:53:11.035657+01:00",
+  "revision": 183,
+  "updatedAt": "2026-11-11T20:08:31.669241+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16884,6 +16884,36 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 183,
+      "at": "2026-11-11T20:08:31.669241+01:00",
+      "actor": "codex",
+      "summary": "Higgsfield research: five first-party pages, two searches; dated Claude Ultra monthly report reconciled, no own account read. Commercial output/input/training clauses and web-vs-connector-vs-API costs documented with source discrepancies. Same-master prompt pack and non-executable take card, no uploads/renders/credit purchase/platform writes; independent read-only review PASS. Claude receipt unknown.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-WISSEN-20261111-R183.md",
+          "gitBlobSha": "f1d60a1296b3d75f2977c02e6e67815ad31fe921",
+          "sha256": "9e3db7337b423d516da1f1588cb30a1b960c5e0c2d79c7e445f193e7c43457e6"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-WISSEN-20261111-R183.json",
+          "gitBlobSha": "c1f680dde79bed0aa270ba56ace6af066d71828e",
+          "sha256": "7fbce72712ce6308112fa3814777c971610b39e62653afbdd00c5aa48447ab9b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-PRODUKT-PROMPTS-R183.md",
+          "gitBlobSha": "0dfcbc240971281ae4095b43bf847593fff7860d",
+          "sha256": "1cda2ee80cefae97c599f4e22869bde6769975b992d903083963ed33fe1a095e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-TAKE-PRUEFKARTE-R183.json",
+          "gitBlobSha": "a7ea2a2b419b54c12e5a21eb3d734697ff124f1f",
+          "sha256": "42a915f60e09650541ae41a1acedf306a310a5ee8fce4c5ce18f492039742f06"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -17093,18 +17123,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 182,
+    "documentationRevision": 183,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "c0d6ee5902329caa3ea68a49b67a4c0103fb75a7",
+    "gitBlobSha": "daef4f241d03501ecaef18cb8441cea7bb5bfbd6",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "cb894464a2f56f859b7a34832cbe215e50e14ba2",
+    "entryGitBlobSha": "75b3239cde5ebf2ad6330a458899b54c58659090",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R182 bounded dropshipping learning, three primary article reads, one non-authorising product evidence card, no platform writes",
-    "latestCanonicalRevision": 182,
-    "snapshotNote": "R182 available on the handoff branch. Public source guidance and historical product reads do not replace live gates. Receipt of R182 unknown.",
+    "scope": "R183 Higgsfield research and manual same-master production preparation; no render/account/platform changes",
+    "latestCanonicalRevision": 183,
+    "snapshotNote": "Five first-party source pages, actual prior Claude account report distinguished from live verification, price discrepancies and training terms documented. Ungenerated prompt pack and unsubmitted take card. R183 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -38783,5 +38813,36 @@
     "receiptState": "unknown_no_claude_receipt",
     "usagePercentage": "unknown_not_measurable",
     "platformWrites": 0
+  },
+  "higgsfieldKnowledgeR183": {
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/HIGGSFIELD-WISSEN-20261111-R183.md",
+        "gitBlobSha": "f1d60a1296b3d75f2977c02e6e67815ad31fe921",
+        "sha256": "9e3db7337b423d516da1f1588cb30a1b960c5e0c2d79c7e445f193e7c43457e6"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/HIGGSFIELD-WISSEN-20261111-R183.json",
+        "gitBlobSha": "c1f680dde79bed0aa270ba56ace6af066d71828e",
+        "sha256": "7fbce72712ce6308112fa3814777c971610b39e62653afbdd00c5aa48447ab9b"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/HIGGSFIELD-PRODUKT-PROMPTS-R183.md",
+        "gitBlobSha": "0dfcbc240971281ae4095b43bf847593fff7860d",
+        "sha256": "1cda2ee80cefae97c599f4e22869bde6769975b992d903083963ed33fe1a095e"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/HIGGSFIELD-TAKE-PRUEFKARTE-R183.json",
+        "gitBlobSha": "a7ea2a2b419b54c12e5a21eb3d734697ff124f1f",
+        "sha256": "42a915f60e09650541ae41a1acedf306a310a5ee8fce4c5ce18f492039742f06"
+      }
+    ],
+    "accountEvidence": "dated_Claude_report_not_current_live_verification",
+    "currentAccountBalance": null,
+    "renderAuthorisedByThisResearch": false,
+    "newRenders": 0,
+    "platformWrites": 0,
+    "nextStep": "Claude uses existing connector read-only to bind exact original reference/model and obtain job-specific quote; paid render remains blocked without a specific superseding owner instruction.",
+    "receiptState": "unknown_no_claude_receipt"
   }
 }

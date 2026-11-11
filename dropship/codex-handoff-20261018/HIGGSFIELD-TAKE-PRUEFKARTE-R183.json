@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "purpose": "manual_read_only_preproduction_record_not_api_request",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "shopProductId": "gid://shopify/Product/15521256604033",
+  "exactVariantId": null,
+  "status": "NOT_READY_FOR_RENDER",
+  "reference": {
+    "originalImageUrl": null,
+    "sourceImageSha256": null,
+    "sourceRightsEvidence": null,
+    "exactVariantMatch": "unknown",
+    "allowedVisibleAngles": null,
+    "startFrameSha256": null,
+    "endFrameSha256": null
+  },
+  "jobProposal": {
+    "provider": "Higgsfield",
+    "accessRoute": null,
+    "modelExactVersion": null,
+    "aspectRatio": "9:16",
+    "durationSeconds": null,
+    "resolution": null,
+    "nativeOutputFps": null,
+    "audio": "off",
+    "numberOfVersions": 1,
+    "promptId": null
+  },
+  "quote": {
+    "quotedAt": null,
+    "credits": null,
+    "moneyCurrency": null,
+    "moneyAmount": null,
+    "usesSubscriptionOrApiBalance": null,
+    "unlimitedForThisExactJob": "unknown",
+    "autoRefill": "unknown",
+    "ownerAuthorisationForThisSpend": null,
+    "submitted": false
+  },
+  "review": {
+    "firstFrameProductMatch": "unknown",
+    "middleFramesProductMatch": "unknown",
+    "lastFrameProductMatch": "unknown",
+    "shapeAndLogo": "unknown",
+    "colourAndMaterial": "unknown",
+    "realFunctionPreserved": "unknown",
+    "allFramesReviewed": false,
+    "personsAbsent": "unknown",
+    "voiceoverAbsent": "unknown",
+    "generatedTextAbsent": "unknown",
+    "platformSafeZones": "unknown",
+    "nativeFpsVerified": "unknown",
+    "musicRightsAndHearingApproval": "unknown",
+    "creativeOwnerApproval": "unknown"
+  },
+  "output": {
+    "filePath": null,
+    "sha256": null,
+    "jobId": null,
+    "draftMetricoolUuid": null,
+    "rendered": false,
+    "published": false
+  },
+  "limits": {
+    "doNotSubmitFromThisFile": true,
+    "noPaidRenderAuthorisedByResearch": true,
+    "noNewPublisher": true,
+    "noAutomaticRetry": true,
+    "noCustomerData": true
+  }
+}

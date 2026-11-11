@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "revision": 183,
+  "observedAtUtc": "2026-11-11 19:06:42 UTC",
+  "scope": "LuxeStyle Higgsfield research and draft-only production preparation",
+  "sources": [
+    {
+      "id": "HF-PRODUCT",
+      "url": "https://higgsfield.ai/ai-product-video-generator",
+      "title": "AI Product Video Generator - Animate Any Product Free",
+      "httpStatus": 200,
+      "scrapeId": "01a1cbfd-1e1b-725a-ac2e-4ed01a674542",
+      "readScope": "returned_full_article_markdown",
+      "type": "first_party_marketing_or_help",
+      "creditsReported": 1
+    },
+    {
+      "id": "HF-PRICE-GUIDE",
+      "url": "https://higgsfield.ai/blog/higgsfield-pricing-explained",
+      "title": "Higgsfield Pricing Explained: Plans, Credits, and What’s Included",
+      "httpStatus": 200,
+      "scrapeId": "01a1cbfd-1d13-756f-8ce9-0dbf6e85dcb5",
+      "readScope": "returned_full_article_markdown",
+      "type": "first_party_marketing_or_help",
+      "creditsReported": 1
+    },
+    {
+      "id": "HF-KLING-O1",
+      "url": "https://higgsfield.ai/blog/Kling-01-is-Here-A-Complete-Guide-to-Video-Model",
+      "title": "Kling O1 is Here: A Complete Guide to Video & Edit Model",
+      "httpStatus": 200,
+      "scrapeId": "01a1cbfd-fc55-745d-9d2d-f7780a38ee8d",
+      "readScope": "returned_full_article_markdown",
+      "type": "first_party_model_guide_not_live_schema",
+      "creditsReported": 1
+    },
+    {
+      "id": "HF-TERMS",
+      "url": "https://higgsfield.ai/terms-of-use-agreement",
+      "title": "Terms of Use Agreement",
+      "version": "2026-10-23",
+      "httpStatus": 200,
+      "scrapeId": "01a1cbfd-107d-7402-840a-450dee6c3e42",
+      "readScope": "full_page_read_by_research_subagent",
+      "creditsReported": 1
+    },
+    {
+      "id": "HF-PRICING",
+      "url": "https://higgsfield.ai/pricing",
+      "title": "Pricing plans",
+      "version": null,
+      "httpStatus": 200,
+      "scrapeId": "01a1cbfd-4be5-74be-a9b7-1e61c31c2fbc",
+      "readScope": "full_page_read_by_research_subagent",
+      "creditsReported": 1
+    }
+  ],
+  "account": {
+    "ownerReportedAccess": true,
+    "liveVerifiedHere": false,
+    "rootCallableHiggsfieldToolsFound": 0,
+    "claudeReportedConnection": true,
+    "reportSource": "origin/main@83827004e0c546360f85d7412e54c846c499f7bb:CLAUDE.md",
+    "reportedObservationUtc": "2026-11-11 18:2x UTC",
+    "reportedPlan": "ultra",
+    "reportedCreditBalance": 3002,
+    "reportedSubscriptionCreditTransaction": {
+      "amount": 3000,
+      "atUtc": "2026-11-11T18:13:28Z"
+    },
+    "reportedIntroPriceAmount": 79,
+    "reportedFollowingMonthlyPriceAmount": 129,
+    "reportedPriceDisplayCurrency": "$",
+    "verifiedIsoCurrency": null,
+    "renewalDate": "unknown_not_verified",
+    "note": "Dated Claude record, not current balance, checkout, entitlement or permission to spend."
+  },
+  "costs": {
+    "guidance": "Read-only exact quote for model, route, duration, aspect, resolution, audio and versions before a proposed job. Web unlimited is not MCP/CLI/API entitlement.",
+    "publicGuideConflicts": [
+      {
+        "field": "Starter monthly credits",
+        "guide": 200,
+        "pricingPage": 270
+      },
+      {
+        "field": "Plus monthly credits",
+        "guide": 1000,
+        "pricingPage": 1200
+      },
+      {
+        "field": "Seedance2.0 720p-to-1080p ratio",
+        "guideProse": "almost triples",
+        "guideTable": "30 to 60 credits, twofold"
+      }
+    ],
+    "exactCurrentJobQuote": null,
+    "grossFirecrawlCreditsReported": 9,
+    "feedbackCreditsRefundedReported": 3,
+    "chatgptUsagePercentage": "unknown_not_measurable"
+  },
+  "rights": {
+    "termsVersion": "2026-10-23",
+    "commercialOutput": "section4.4, subject to applicable restrictions and lawful inputs",
+    "inputRights": "section4.2",
+    "inputServiceLicense": "section4.3",
+    "training": "section4.4 allows training; separate Enterprise agreement exception, Ultra alone not shown to opt out",
+    "thirdPartyModelRules": "section8",
+    "noGuaranteeOriginalityOrLegality": "section13.2",
+    "privacyPolicyRead": false,
+    "trainingExceptionForAccount": "unknown"
+  },
+  "production": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "classification": "unrendered_prompt_and_quality_plan",
+    "newReferenceUploads": 0,
+    "newRenders": 0,
+    "paidRenders": 0,
+    "platformWrites": 0,
+    "musicReplaced": false,
+    "quotesExecuted": false,
+    "notAccountControlAuthority": true
+  },
+  "handoff": {
+    "claudeReceipt": "unknown_no_receipt_for_R183",
+    "repoReport": "HIGGSFIELD-WISSEN-20261111-R183.md",
+    "promptPack": "HIGGSFIELD-PRODUKT-PROMPTS-R183.md",
+    "pilotCard": "HIGGSFIELD-TAKE-PRUEFKARTE-R183.json"
+  },
+  "repositoryUpdate": {
+    "baseCommit": "3ce2b9d26c5387ab122cddc2b5c60c361b6c1d2e",
+    "beforeFileBlobs": {
+      "ARBEITSSTAND.json": "dc85b5ff28cacbb0c7ef8b34a1f68d9526055496",
+      "README.md": "63376d5e38739ddf66504cb8538ad9b964c62af2",
+      "CLAUDE.md": "cb894464a2f56f859b7a34832cbe215e50e14ba2",
+      "PROJEKTGEDAECHTNIS.md": "c0d6ee5902329caa3ea68a49b67a4c0103fb75a7",
+      "TAGESPROTOKOLL.md": "78c70a8e475e1da9cb65f35951223b17209115d4"
+    },
+    "scope": "LuxeStyle handoff documentation only"
+  },
+  "peerReview": {
+    "scope": "official-terms/pricing consistency and accidental spend-authorisation check",
+    "result": "PASS_no_material_overclaims_found",
+    "reviewer": "read_only_codex_research_subagent",
+    "claudeReceipt": false
+  }
+}
