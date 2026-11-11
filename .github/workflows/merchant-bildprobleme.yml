@@ -2,8 +2,12 @@ name: Merchant-Bildprobleme lesen (nur lesen)
 
 on:
   workflow_dispatch:
+    inputs:
+      modus:
+        description: 'bilder = alle Artikel lesen (rund 15 Minuten), quellen = Datenquellen und Proben (kurz)'
+        default: bilder
   push:
-    branches: [claude/shop-bilder-1111]
+    branches: [claude/merchant-fehler-1111]
     paths: ['.github/workflows/merchant-bildprobleme.yml', 'automation/merchant_bildprobleme.py']
 
 permissions:
@@ -25,6 +29,8 @@ jobs:
       - name: Bildprobleme lesen
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          # Ein Push prüft nur die Datenquellen (kurz); der volle Lesedurchgang braucht einen Handstart mit modus=bilder.
+          MODUS: ${{ github.event_name == 'workflow_dispatch' && inputs.modus || 'quellen' }}
         run: python3 automation/merchant_bildprobleme.py
       - uses: actions/upload-artifact@v4
         if: always()
