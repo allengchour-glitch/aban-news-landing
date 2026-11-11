@@ -1,12 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
-## KI-Büro Design16: Ergebnisse statt Linkkarten ·11.11.2026
+## Higgsfield-Verbrauch 20:33 bis 21:24 UTC geklärt · Grind und Google-Rückholung, Claude, 11.11.2026 21:38 UTC
 
-Codex entwickelt auf Besitzerfeedback denselben PR3114 weiter: bessere Materialien/Normalen und direkte Ergebnisanzeigen. Statusleser verwarf den echten12er-Bericht wegen falscher11er-Liste; reproduziert und korrigiert. Gemeinsames Journal für3D/2D/Handy ohne WebGL, explizite Abschlussbelege und Duplikaterkennung. [Prüfung und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-16.md). Private Daten erhalten, keine neue Automation. GitHub-Checks zuletzt queued; privater Upload und Claude-Kenntnisnahme unbekannt.
-
-## KI-Büro Design15 vorbereitet ·11.11.2026
-
-Codex setzt den Besitzerauftrag zu Bewegung, Monitoren und Raumgestaltung um.49 Monitor-,80 Dashboard- und68 Python-Prüfungen grün; Uhr-/Datenalterfehler korrigiert, keine neuen privaten Daten oder Automationen. [Prüfbeleg und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-15.md), [PR3114](https://github.com/allengchour-glitch/aban-news-landing/pull/3114). Öffentliche Ansicht im PR nachgeführt. Private Darstellung muss mit dem bestehenden Drei-Seiten-Bauer aktualisiert und im Artefakt zurückgelesen werden; Upload und Kenntnisnahme unbekannt. GitHub-Checks zuletzt queued; lokale CI-Simulation hier an `unshare` blockiert.
+**Die rund 116 Higgsfield-Credits seit 20:33 UTC** (Frage im Block «nach 22 Uhr») stammen vom **Hauptvideo-Workflow** dieser Sitzung (Rahmen 950 Credits, Auftrag des Besitzers; Job-IDs in `scratchpad/hero1111b/ledger.csv` der Grind-Sitzung). Er läuft nach dem Container-Neustart weiter und verbraucht weiter Credits, nichts davon ist live.
+**Bitte nicht anfassen ohne Rücksprache:** die drei neu veröffentlichten Grind-Produkte (Fensteraufkleber, Filterkugeln, Katzentunnel, PR #3113) und sieben bewährte Produkte, für die Claude Bild- und Textkorrekturen vor der Rückkehr zu Google vorbereitet (Echtleder-Gürtel, Familien-Set kariert, taillierte Weste, Yoga-Tanktop, Armbanduhr Chronograph, Smartwatch mit Headset, Silikon-Küchenhelfer-Set). Lesebrille TR90 und Tennisarmband sind seit 20:09 UTC wieder im Google-Kanal, das Mutter-Tochter-T-Shirt trägt `lizenz-nicht-bewerben` (Minnie Mouse). Abgeglichen: keine Überschneidung mit `dropship/bildfix-1111` und `dropship/entscheide-1111`.
+**Picsart (Besitzer 11.11.): «nur gratis, sonst sein lassen».** Export und Kontaktbogen nennen keinen Preis, darum nicht benutzen.
 
 ## Sechs Produkte auf Entwurf, zwei Varianten gelöscht (Entscheid des Besitzers), Claude, 11.11.2026 21:22 UTC
 
@@ -23,6 +21,16 @@ Der Besitzer wollte statt dreier Artefakte eines («kannst du bei ki büro, luxs
 ## Aktuell: KI-Trader läuft täglich in der Cloud (Schattenkonto), Claude, 11.11.2026
 
 Seit 11.11. holt `tages-update.yml` (Job `ki-trader-cloud`, ruft `.github/workflows/ki-trader-cloud.yml`) einmal täglich Claudes Einschätzung für Bitcoin und Ethereum und schreibt sie nach `data/ki-cloud/` (Logbuch und Kostenbuch, Commit durch den Lauf mit `[skip ci]`). **Nur Schattenkonto, kein Auftrag, kein Broker.** Kosten: Secret `ANTHROPIC_API_KEY` (dasselbe Konto wie die KI-Tools von abannews.com), Grenzen 3 USD je Monat und 4 Anfragen je Tag. **Stopp: `docs/KI-TRADER-CLOUD-FREI.txt` löschen.** Erster echter Lauf 11.11. 09:43 UTC: Opus, 0,023 USD. Bitte `data/ki-cloud/`, `automation/ki_trader_cloud.py` und den Job nicht nebenbei ändern; Details in `docs/KRYPTO-AUTONOMIE.md` (Abschnitt «KI-Trader in der Cloud») und im obersten Stand-Block von `CLAUDE.md`. Die Shop-Punkte (Bestellweg-Härtung, Editor 6.4.2, Social-Woche) hat Claude in dieser Sitzung bewusst NICHT angefasst: die Shop-Sitzung arbeitete zur selben Zeit daran.
+
+## KI-Büro Design16: Ergebnisse statt Linkkarten ·11.11.2026
+
+Codex entwickelt auf Besitzerfeedback denselben PR3114 weiter: bessere Materialien/Normalen und direkte Ergebnisanzeigen. Statusleser verwarf den echten12er-Bericht wegen falscher11er-Liste; reproduziert und korrigiert. Gemeinsames Journal für3D/2D/Handy ohne WebGL, explizite Abschlussbelege und Duplikaterkennung. [Prüfung und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-16.md). Private Daten erhalten, keine neue Automation. GitHub-Checks zuletzt queued; privater Upload und Claude-Kenntnisnahme unbekannt.
+
+## KI-Büro Design15 vorbereitet ·11.11.2026 (historischer Stand vor Upload-Quittung)
+
+Codex setzt den Besitzerauftrag zu Bewegung, Monitoren und Raumgestaltung um.49 Monitor-,80 Dashboard- und68 Python-Prüfungen grün; Uhr-/Datenalterfehler korrigiert, keine neuen privaten Daten oder Automationen. [Prüfbeleg und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-15.md), [PR3114](https://github.com/allengchour-glitch/aban-news-landing/pull/3114). Öffentliche Ansicht im PR nachgeführt. Private Darstellung muss mit dem bestehenden Drei-Seiten-Bauer aktualisiert und im Artefakt zurückgelesen werden; Upload und Kenntnisnahme unbekannt. GitHub-Checks zuletzt queued; lokale CI-Simulation hier an `unshare` blockiert.
+
+Aktuelle Ergänzung: Claudes Quittung für den Upload von Design15 ist in `dropship/CODEX-RUECKMELDUNG-1111.md`, Abschnitt7, gelesen. Sie betrifft d37850fe85. Der neue Design16-Code ist dort noch nicht quittiert. Bürocode gegenüber dem geprüften Commit1927eed0 unverändert; nur aktuelle Hauptzweig-Notizen integriert.
 
 ## Aktuell: KI-Büro auf Design 14 (Liveboards, grössere Räume), Claude, 10.11.2026 abends
 
