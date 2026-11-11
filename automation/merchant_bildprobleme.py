@@ -68,7 +68,7 @@ def suchen(h, name, abfrage):
 def main():
     h = anmelden()
     name = konto(h)
-    zeilen = suchen(h, name, "SELECT offer_id, title, item_issues FROM product_view")
+    zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer = Counter(), []
     beispiel = None
     for z in zeilen:
