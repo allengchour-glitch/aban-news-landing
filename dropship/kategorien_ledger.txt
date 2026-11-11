@@ -10238,3 +10238,7 @@
 2026-11-10T12:33:20.585Z · verfuegbar-zuerst ft-herrenkostuem vorher=CREATED_DESC verfuegbar=153 uebrige=115
 2026-11-10T12:33:31.653Z · verfuegbar-zuerst ft-unisexkostuem vorher=CREATED_DESC verfuegbar=68 uebrige=58
 2026-11-10T12:33:42.522Z · verfuegbar-zuerst ft-peruecke vorher=CREATED_DESC verfuegbar=137 uebrige=54
+2026-11-11T08:42:16.528Z · verfuegbar-zuerst kostueme-fasnacht vorher=MANUAL verfuegbar=915 uebrige=892
+2026-11-11T08:42:44.284Z · verfuegbar-zuerst kostueme-ch-lager vorher=MANUAL verfuegbar=919 uebrige=754
+2026-11-11T08:43:14.373Z · verfuegbar-zuerst ft-kostuem-accessoire vorher=MANUAL verfuegbar=135 uebrige=162
+2026-11-11T08:43:25.353Z · verfuegbar-zuerst ft-kostuem-hut vorher=MANUAL verfuegbar=103 uebrige=64
