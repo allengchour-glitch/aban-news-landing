@@ -1,0 +1,167 @@
+{
+ "gesichert": "2026-11-11T21:17:38.479Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15503303934337",
+  "handle": "kabelloser-elektronischer-haustierzaun-e02b75",
+  "titel": "Kabelloser elektronischer Haustierzaun",
+  "status": "ACTIVE",
+  "tags": [
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "haustier",
+   "hund",
+   "kat-haustier",
+   "katze",
+   "pet",
+   "sort-haustier",
+   "varianten-nachgezogen-1025"
+  ],
+  "seo": {
+   "title": "Kabelloser elektronischer Haustierzaun | LuxeStyle CH",
+   "description": "Kabelloser elektronischer Haustierzaun – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  },
+  "html": "<!-- ls-var-v1 --><p>Dieses kabellose elektronische Zaunsystem bietet eine innovative Lösung, um deine Haustiere sicher in einem definierten Bereich zu halten. Es arbeitet komplett kabellos und erzeugt ein kreisförmiges Signalbegrenzungsfeld mit einer Reichweite von bis zu 500 Metern. Der Halsbandempfänger ist wasserdicht, wiederaufladbar und verfügt über einen progressiven Warnton, der dein Haustier sanft auf die Grenze aufmerksam macht. Die Feldbreite lässt sich variabel einstellen und eine Geschwindigkeitserkennung verhindert, dass dein Tier einfach durchläuft. Das System unterstützt den Betrieb mit mehreren Halsbändern, sodass es für Haushalte mit mehreren Hunden geeignet ist.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Komplettes kabelloses System</li>\n<li>Kreisförmiges Signalbegrenzungsfeld</li>\n<li>Progressiver Warnton</li>\n<li>Variable Feldbreitenkontrolle</li>\n<li>Geschwindigkeitssensor gegen Durchrennen</li>\n<li>Betrieb mit mehreren Halsbändern möglich</li>\n<li>Wasserdichter und wiederaufladbarer Halsbandempfänger</li>\n<li>Wasserabweisendes TPU-Halsband für Halsgrössen von 20,32 cm bis 53,34 cm</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+  "optionen": [
+   {
+    "name": "Ausführung",
+    "werte": [
+     {
+      "name": "Weiß2 · Für 3 Hunde",
+      "mitVarianten": true
+     },
+     {
+      "name": "Weiß1 · Für 2 Hunde",
+      "mitVarianten": true
+     },
+     {
+      "name": "Weiss · Für 1 Hund",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70575760146817",
+    "alt": "Kabelloser elektronischer Haustierzaun | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1604786886321.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760310657",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5108819912091.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760343425",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1109544951266.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760376193",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/979281377995.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760408961",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/453313288434.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760441729",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 6 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/284781542442.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760474497",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 7 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2329360680495.jpg?v=1787040950"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70575760507265",
+    "alt": "Kabelloser elektronischer Haustierzaun – Bild 8 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1905087736319.jpg?v=1787040949"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122579435911",
+    "titel": "Weiß2 · Für 3 Hunde",
+    "sku": "CJJJCWGX00194-White2-For 3 dogs-EU",
+    "preis": "92.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Ausführung",
+      "value": "Weiß2 · Für 3 Hunde"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70575760343425"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122579468679",
+    "titel": "Weiß1 · Für 2 Hunde",
+    "sku": "CJJJCWGX00194-White1-For 2 dogs-EU",
+    "preis": "92.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Ausführung",
+      "value": "Weiß1 · Für 2 Hunde"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70575760441729"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122579501447",
+    "titel": "Weiss · Für 1 Hund",
+    "sku": "CJJJCWGX00194-White-For 1 dog-EU",
+    "preis": "92.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Ausführung",
+      "value": "Weiss · Für 1 Hund"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70575760507265"
+    ]
+   }
+  ]
+ }
+}
