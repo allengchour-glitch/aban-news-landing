@@ -26,16 +26,27 @@ export async function validateLicense(key, env) {
   if (c && c.exp > now) return { ok: c.ok, reason: "cache", status: c.status, tier: c.tier };
 
   const yearlyId = Number((env && env.PRO_YEARLY_VARIANT_ID) || YEARLY_VARIANT_ID_DEFAULT);
+  const controller = new AbortController();
+  let timeout;
+  // Eine gemeinsame Frist für Transport und Inhalt; Abort allein reicht nicht
+  // bei blockierten Adaptern. Keine Wiederholung oder negative Cache-Antwort.
+  const deadline = new Promise((_, reject) => {
+    timeout = setTimeout(() => {
+      controller.abort();
+      reject(new Error("Lizenzprüfung abgelaufen"));
+    }, 8000);
+  });
   try {
-    const r = await fetch(LS_VALIDATE, {
+    const r = await Promise.race([fetch(LS_VALIDATE, {
       method: "POST",
       headers: { "Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded" },
       body: "license_key=" + encodeURIComponent(key),
-    });
+      signal: controller.signal,
+    }), deadline]);
     // Anbieterfehler sind kein Nachweis einer ungültigen Lizenz. Nicht cachen,
     // damit eine spätere manuelle Prüfung nach der Störung wieder möglich ist.
     if (!r.ok) return { ok: false, reason: "error", tier: null };
-    const d = await r.json();
+    const d = await Promise.race([r.json(), deadline]);
     // Nur eine ausdrückliche boolesche Entscheidung ist eine Lizenzantwort.
     // HTML, leere oder unvollständige Antworten bleiben Anbieterfehler und
     // dürfen die spätere manuelle Prüfung nicht durch einen Cache sperren.
@@ -52,6 +63,8 @@ export async function validateLicense(key, env) {
     return { ok, reason: ok ? "valid" : "invalid", status, tier };
   } catch (e) {
     return { ok: false, reason: "error", tier: null };
+  } finally {
+    clearTimeout(timeout);
   }
 }
 

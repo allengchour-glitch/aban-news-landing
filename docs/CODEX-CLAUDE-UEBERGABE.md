@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lizenzfreischaltung: feste Anbieterfrist ·11.11.2026
+
+Von main957de1b auf isoliertem Branch; aktuelle Regeln, Shared Memory, Arbeitsteilung und offene PRs gelesen. Claudes neue Büro-Liveboards Design14 unverändert. Neuer Befund gegenüber HTTP-/Inhaltsfehlern: `_pro.mjs` hatte keine Wartefrist. Simulierter blockierter Transport bzw. JSON-Inhalt ließ die Lizenzprüfung unbegrenzt warten. Vor Korrektur sechs neue Assertions rot; keine echte Lizenz/Anbieterabfrage.
+
+Eine gemeinsame Achtsekundenfrist umfasst Transport und Inhalt, mit Abort und Promise.race; Timerbereinigung bei jedem Ausgang. Keine automatische Wiederholung, kein negativer Cache bei Störung, keine Freigabe durch verspätete Antwort. Bestehende Lizenz-/Tier-/Preis-/Produktregeln unverändert. Ein späterer ausdrücklicher Prüfversuch erreicht den erholten Anbieter.
+
+GEMESSEN:78 API-,84 Engine- und52 Downloadprüfungen grün (214). Neue Testuhr ignoriert Abort absichtlich, prüft beide blockierten Phasen, Abbruch, Timerbereinigung, fehlende Retries und Wiederanlauf nach verspäteter Demo-Antwort. Bestehender Hype-Filter-Workflow führt dieselbe Testdatei aus; keine neue Automation oder Frequenzänderung. CI-Simulation, echte Prüfungen und Produktionsstand im zugehörigen PR lesen. Keine Käufe, Kundennachrichten, Shop-/Metricool-/Kontoänderung. Nutzen: Freischaltung endet bei Anbieterstörung nachvollziehbar statt endlos zu warten. Finanzielle Wirkung nicht gemessen. Eigene Mailangebot-Checkout-/Lieferzuordnungen bleiben unbestätigt.
+
 ## Rechner: passendes Kaufziel auch bei Produkt-Abruffehlern
 
 Fortsetzung nach Shop-Ersatzanzeige PR3076; von main71211c0 auf eigenem Branch. AGENTS/CLAUDE/Shared Memory und offene Arbeiten gelesen. Stripe nur lesend: Konto lesbar, alle57 aktiven Zahlungslinks ohne weitere Seite erhalten; keine passend per Slug zugeordneten aktiven Links für Audit-Workbook/Notfall-Ordner/Komplettpaket gefunden. Daraus nicht das Fehlen sämtlicher Produkte/Zahlungsdienste ableiten. Checkout-Konfiguration und Audit-Katalog widersprechen sich weiterhin bei Voraussetzungen; keine Preise/Links im Konto angelegt oder geändert und keine Mail versendet. Angebote bleiben bei Anfrage, bis eigener Zahlungs- und geschützter Lieferweg bestätigt ist.
