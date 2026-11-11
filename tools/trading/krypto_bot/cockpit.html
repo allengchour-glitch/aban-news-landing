@@ -62,6 +62,10 @@ dt{color:var(--ink-3)}dd{margin:0;font-variant-numeric:tabular-nums}
 .hinweis{border-left:3px solid var(--warning);padding:4px 10px;color:var(--ink-2);font-size:14px}
 .brems{border-left-color:var(--critical)}
 .ki p{margin:6px 0;color:var(--ink-2);font-size:14px}
+.kikosten{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.kikosten h3{margin:0 0 6px;font-size:14px}
+.kikosten th.r,.kikosten td.r{text-align:right}
+.kikosten .klein{color:var(--ink-3);font-size:12px;margin-top:6px;line-height:1.45}
 .bar{height:6px;border-radius:999px;background:var(--grid);overflow:hidden;width:120px;display:inline-block;vertical-align:middle}
 .bar i{display:block;height:100%;background:var(--ink-3)}
 .lage{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
@@ -610,6 +614,23 @@ const $ = id => document.getElementById(id);
 const fmtZahl = (x, s = 0) => x == null ? "—" : x.toLocaleString("de-CH", {minimumFractionDigits: s, maximumFractionDigits: s});
 const fmtPct = x => x == null ? "—" : (x >= 0 ? "+" : "") + fmtZahl(x * 100, 1) + " %";
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+// KI-Anfragen: wer hat entschieden (Stufe) und was kosten die Modelle (Kostenbuch, aktualisiert sich mit jedem Abruf)
+const kiAufgabe = {entscheid: "Tages-Entscheid", ruhetag: "Ruhetag", calls: "Call lesen", calls_zweit: "Call nachlesen"};
+const kiUsd = x => fmtZahl(x, x !== 0 && Math.abs(x) < 0.1 ? 4 : 2) + " USD";
+const kiWer = k => esc(String(k.modell || "?").replace(/^claude-/, "")) + (k.stufe === "haiku" ? " · ruhiger Tag" : k.eskaliert ? " · nach Haiku-Vorprüfung" : "");
+function kiKosten(km) {
+  if (!km || !km.n) return `<div class="kikosten"><h3>💶 Modelle und Kosten (live)</h3><div class="klein">Noch keine Anfrage im Kostenbuch.</div></div>`;
+  const zeilen = (km.modelle || []).map(m => `<tr><td>${esc(m.kurz)}</td><td class="r">${fmtZahl(m.n)}</td><td class="r">${kiUsd(m.usd)}</td></tr>`).join("");
+  const spar = km.gespart > 0 && km.usd_opus > 0
+    ? ` · dieselben Tokens nur auf Opus: ${kiUsd(km.usd_opus)} → gespart ${kiUsd(km.gespart)} (${fmtZahl(km.gespart / km.usd_opus * 100)} %)` : "";
+  const heute = km.heute || {n: 0, usd: 0};
+  const uhr = s => { const t = new Date(s); return isNaN(t) ? "" : t.toLocaleTimeString("de-CH", {hour: "2-digit", minute: "2-digit"}); };  // Ortszeit des Betrachters, das Buch führt UTC
+  const letzte = (km.letzte || []).map(z => `${esc(uhr(z.zeit))} ${esc(z.kurz)} · ${esc(kiAufgabe[z.aufgabe] || z.aufgabe)} · ${kiUsd(z.usd)}`).join("<br>");
+  return `<div class="kikosten"><h3>💶 Modelle und Kosten (live)</h3>
+    <table><thead><tr><th>Modell</th><th class="r">Anfragen</th><th class="r">Kosten</th></tr></thead><tbody>${zeilen}</tbody></table>
+    <div class="klein">Heute ${fmtZahl(heute.n)} Anfragen · ${kiUsd(heute.usd)} · insgesamt ${kiUsd(km.usd)}${spar}</div>
+    ${letzte ? `<div class="klein">Zuletzt:<br>${letzte}</div>` : ""}</div>`;
+}
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 // Lesemodus (Handy-Ansicht): der Server setzt data-nur-lesen auf <html>. Dann gibt es keine Knöpfe, und die Seite fragt nichts Schreibendes mehr (der Server verbietet es ohnehin).
 const NUR_LESEN = document.documentElement.hasAttribute("data-nur-lesen");
@@ -1415,8 +1436,9 @@ function zeichne(d) {
       <div style="margin-bottom:10px"><div class="kopf"><span class="name">${c.toUpperCase()}</span>${richtung(ki[c].position)}</div>
       <p>${esc(ki[c].begruendung)}</p>
       <div style="font-size:13px;color:var(--ink-3)">Sicherheit <span class="bar"><i style="width:${Math.round(ki[c].sicherheit * 100)}%"></i></span> ${fmtZahl(ki[c].sicherheit * 100)} %</div></div>`).join("")
-      + `<p>💬 ${esc(ki.kommentar)}</p><div style="font-size:12px;color:var(--ink-3)">${esc(ki.stand)} · ${esc(ki.modell)} · API-Kosten bisher ${fmtZahl(d.ki.kosten, 2)} USD</div>`
+      + `<p>💬 ${esc(ki.kommentar)}</p><div style="font-size:12px;color:var(--ink-3)">${esc(ki.stand)} · ${kiWer(ki)} · API-Kosten bisher ${fmtZahl(d.ki.kosten, 2)} USD</div>`
     : `<p class="leer">Noch keine Einschätzung. ANTHROPIC_API_KEY setzen, dann: py tools\\trading\\krypto_bot\\ki_trader.py --lauf</p>`;
+  $("ki").insertAdjacentHTML("beforeend", kiKosten(d.ki.modelle));
   const v = d.ki.vergleich || {};
   linie($("c-vgl"), [["Claude", "--s-claude"], ["Pilot", "--s-pilot"], ["Halten", "--s-halten"]].map(([n, f]) => ({name: n, farbe: f, punkte: v[n] || []})),
     {fmt: relPct, titel: "Schattenkonto seit Claudes Start", leer: "Startet mit Claudes erster Einschätzung. Zwei Tage braucht es für die erste Linie."});

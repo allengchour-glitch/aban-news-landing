@@ -973,7 +973,8 @@ def stand(env=None):
             "notaus": notaus_env_aktiv(env), "pause": PAUSE.exists(), "maerkte": [markt_mit_stop(maerkte[m]) for m in PI.MAERKTE if m in maerkte], "konto": konto,
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
-                   "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
+                   "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2),
+                   "modelle": KT.kosten_uebersicht(_json(KT.KOSTEN_BUCH.name, {}))},  # Anfragen und Kosten je Modell (Entscheide UND Calls), live
             "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")),
             "calls": calls_stand(), "programm": {"geladen": VERSION_GELADEN, "auf_platte": programm_version()},
             "satellit": satellit_stand(env), "scalp": scalp_stand(env), "kurse": kurse[0], "kurse_schnitt": kurse[1]}
