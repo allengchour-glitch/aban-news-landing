@@ -1,0 +1,93 @@
+{
+ "tag": "2026-11-22",
+ "handle": "christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+ "produkt_id": "gid://shopify/Product/16603943436679",
+ "titel": "Christbaumdecke mit goldenen Pailletten-Schneeflocken",
+ "preis_ab": "CHF 23.90",
+ "zeiten": {
+  "instagram_facebook": "2026-11-22T17:00:00+01:00",
+  "tiktok": "2026-11-22T18:00:00+01:00",
+  "threads": "2026-11-22T11:00:00+01:00",
+  "pinterest": "2026-11-22T20:00:00+01:00"
+ },
+ "bilder": {
+  "instagram_facebook": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/christbaumdecke-mit-goldenen-pailletten-schnee-634500/ig_1.jpg"
+  ],
+  "tiktok": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/christbaumdecke-mit-goldenen-pailletten-schnee-634500/tt_1.jpg"
+  ],
+  "pinterest": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/christbaumdecke-mit-goldenen-pailletten-schnee-634500/pin.png"
+ },
+ "texte": {
+  "instagram_facebook": "Was liegt bei dir unter dem Baum, bevor die Geschenke kommen? 🎄\n\nDie Christbaumdecke mit goldenen Pailletten-Schneeflocken liegt rund um den Baumständer. Sie ist aus Plüsch und misst 90 cm im Durchmesser. In der Mitte hat sie eine runde Öffnung für den Stamm.\n\nCHF 23.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #christbaumdecke #weihnachtsbaum #weihnachten #wohnideen\n\nShop: luxestyle.ch/ig",
+  "tiktok": "Goldene Schneeflocken für unter den Baum 🎄\n\nChristbaumdecke mit goldenen Pailletten-Schneeflocken: aus Plüsch, 90 cm Durchmesser, mit runder Öffnung für den Stamm. Sie liegt rund um den Baumständer. CHF 23.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #christbaumdecke #weihnachtsbaum #weihnachten\n\nShop: luxestyle.ch/tt",
+  "threads": "Was kommt bei dir zuerst unter den Weihnachtsbaum? Unsere Christbaumdecke aus Plüsch misst 90 cm im Durchmesser, trägt goldene Pailletten-Schneeflocken und liegt rund um den Baumständer.\n\nhttps://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+  "pinterest": {
+   "titel": "Christbaumdecke mit goldenen Pailletten-Schneeflocken, 90 cm",
+   "beschreibung": "Runde Christbaumdecke aus Plüsch mit einem Muster aus goldenen Pailletten-Schneeflocken. Sie misst 90 cm im Durchmesser und hat in der Mitte eine runde Öffnung, durch die der Stamm des Weihnachtsbaums kommt. Unter dem Baum liegt sie rund um den Baumständer. Gewicht laut Produktseite ca. 320 g.",
+   "alt": "Runde, weisse Plüschdecke mit goldenen Schneeflocken auf dunklem Holzboden unter einem Tannenbaum. Durch die runde Öffnung in der Mitte sind der Stamm und ein dunkler Baumständer zu sehen. Am Baum hängen zwei weisse Kugeln mit silbernem Glitzermuster und eine silberne Kugel. Unten steht auf hellem Band «Christbaumdecke mit goldenen Pailletten», darunter «90 cm Durchmesser» und «luxestyle.ch».",
+   "link": "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+   "board_id": "1111333714239114033"
+  }
+ },
+ "aussagen": [
+  {
+   "aussage": "Produktname «Christbaumdecke mit goldenen Pailletten-Schneeflocken» (Instagram/Facebook, TikTok, Pinterest-Titel); «Christbaumdecke» (Threads, Pinterest-Beschreibung); Pin-Titelzeile «Christbaumdecke mit goldenen Pailletten» (39 Zeichen, gekürzter Produkttitel)",
+   "beleg": "Produkttitel im Shop «Christbaumdecke mit goldenen Pailletten-Schneeflocken» (Admin-API, gelesen 11.11.2026 12:49 UTC; Storefront /products/christbaumdecke-mit-goldenen-pailletten-schnee-634500.js, 12:56 UTC, gleicher Titel)"
+  },
+  {
+   "aussage": "Muster aus goldenen Pailletten-Schneeflocken / «goldene Pailletten-Schneeflocken» / Hook «Goldene Schneeflocken» / Pin-Titelzeile «mit goldenen Pailletten»",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml): «Sie zeichnet sich durch ein Muster aus goldenen Pailletten-Schneeflocken aus.» und Aufzählung «Goldene Pailletten-Details»; Medium 1 (files/5916a885-…png) gesichtet: goldene Schneeflocken auf der ganzen Decke"
+  },
+  {
+   "aussage": "Die Decke ist aus Plüsch (Instagram/Facebook, TikTok, Threads, Pinterest); «Plüschdecke» im Alt-Text",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml): «Die Decke ist aus weichem Plüsch gefertigt» und «Aus weichem Plüschmaterial» (das Wort «weich» bewusst nicht übernommen)"
+  },
+  {
+   "aussage": "Durchmesser 90 cm (alle Texte, Pinterest-Titel, Pin-Unterzeile «90 cm Durchmesser»)",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml): «misst 90 cm im Durchmesser» und «Durchmesser von 90 cm»; einzige Ausführung «Default Title» (eine Variante). Infobild Medium 3 (MediaImage 77438116069767, c209bfc7, Galeriebild 4 der Produktseite) nennt 78/90/122/152 cm, «Golden/Silver snowflake» und trägt französischen Text: andere Grössen und Silber gibt es im Shop nicht, darum nur 90 cm genannt und Medium 3 nicht verwendet. Lösen aus der Galerie vorbereitet in seite.mjs, Fassung 2 (fileUpdate referencesToRemove, die Datei bleibt unter Inhalt > Dateien; im selben Lauf Beitragsfoto 5916a885 an Stelle 1 und 0c0fd880 ans Ende; Trockenlauf 11.11.2026 15:46 UTC, nichts geschrieben); bis zum LIVE-Lauf zeigt die Produktseite das Bild weiter. CJ-Datenblatt (Gegenprüfung 11.11.2026 15:0x UTC): genau eine CJ-Variante «Golden Leaf Tree Skirt-90cm», Material Plush"
+  },
+  {
+   "aussage": "Christbaumdecke für unter den Weihnachtsbaum; liegt rund um den Baumständer (Instagram/Facebook, TikTok, Threads, Pinterest); «für unter den Baum» (TikTok-Hook); «Unter dem Baum» (Pinterest)",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml): «Für eine festliche Atmosphäre unter deinem Weihnachtsbaum sorgt diese Christbaumdecke.»; Medium 1 und Medium 2 gesichtet: Decke liegt unter einem Tannenbaum um den Ständer. Seit der Nachbesserung 11.11.2026 steht dieser Satz in allen vier Texten anstelle von «fängt herabfallende Nadeln auf» (Gegenprüfung 11.11.2026: im Bild belegt)"
+  },
+  {
+   "aussage": "Rund, mit runder Öffnung in der Mitte für den Stamm (Instagram/Facebook, TikTok, Pinterest, Alt-Text)",
+   "beleg": "Medium 1 gesichtet: Stamm und Ständer stehen in einer runden Öffnung in der Mitte der Decke; Medium 0 (flach auf Weiss) gesichtet: runde Decke mit rundem Loch in der Mitte; Beschreibung nennt einen «Durchmesser»"
+  },
+  {
+   "aussage": "Gewicht ca. 320 g (nur Pinterest-Beschreibung, als «laut Produktseite»)",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml), Block Produktdetails: «Gewicht: ca. 320 g»"
+  },
+  {
+   "aussage": "Preis «CHF 23.90» (Instagram/Facebook, TikTok); kein Preis in Threads, Pinterest und im Pin",
+   "beleg": "Variante gid://shopify/ProductVariant/67612945547655 «Default Title»: price 23.90, compareAtPrice null, availableForSale true (Admin-API, gelesen 11.11.2026 12:49 UTC); Storefront .js 12:56 UTC: price 2390, available true. Frisch gelesen 11.11.2026 13:33 UTC: price 23.90, compareAtPrice null, availableForSale true, status ACTIVE, im Online Store veröffentlicht, keines der Sperr-Tags. Keine Aktion, kein Vergleichspreis. Erneut gelesen 11.11.2026 14:24 UTC (Admin-API: price 23.90, compareAtPrice null, availableForSale true, status ACTIVE) und 14:25 UTC (Storefront .js: price 2390, available true, HTTP 200)"
+  },
+  {
+   "aussage": "«Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.» im selben Absatz wie der Preis",
+   "beleg": "Wortlaut nach Auftragsvorgabe (Inhaltsregel 3); Versand CHF 7.00 nach Zürich gemessen vom Kaufweg-Wächter 09.11.2026 (CLAUDE.md); Schwelle CHF 50 gilt nach Rabatt (dropship/VERSAND-SCHWELLE.md auf origin/main, Korrektur 23.10.2026)"
+  },
+  {
+   "aussage": "Hooks «Was liegt bei dir unter dem Baum, bevor die Geschenke kommen?» und «Was kommt bei dir zuerst unter den Weihnachtsbaum?»",
+   "beleg": "Fragen an die Leserin, keine Sachaussage über das Produkt, kein Liefer- oder Zeitversprechen. Termin nach Prüfung 11.11. von Do 26.11. auf So 22.11. vorgezogen: Die Produktseite rechnet 11 bis 21 Werktage (Storefront 11.11.2026: «Lieferung voraussichtlich 26. Nov. – 10. Dez.» bei Bestellung am 11.11.); ab So 22.11. gerechnet 7.12. bis 21.12. (Rechnung, nicht gemessen), also vor Heiligabend. Am 26.11. wäre das späte Ende gerechnet der 25.12. gewesen. Gegenstück vollzogen: kaffeebecher-edelstahl-607200/pack.json steht auf 2026-11-26 (gelesen 11.11.2026 14:2x UTC); Metricool-Planer So 22.11. leer (getScheduledPosts 22.11. 00:00 bis 23:59 Europe/Zurich, gelesen 11.11.2026 14:24 UTC)"
+  },
+  {
+   "aussage": "Alt-Text: weisse Plüschdecke auf dunklem Holzboden unter einem Tannenbaum, Stamm und dunkler Baumständer in der Mittelöffnung, zwei weisse Kugeln mit silbernem Glitzermuster und eine silberne Kugel",
+   "beleg": "Beschreibt nur das Pin-Foto = Medium 1 (files/5916a885-dcdc-43f6-80ab-727dcb7ffa53.png?v=1790932709, 1080×1080), in voller Auflösung und vergrössert gesichtet; Baum, Kugeln und Ständer gehören zum Foto, nicht zum Lieferumfang (im Text nicht als Lieferumfang genannt)"
+  },
+  {
+   "aussage": "Alt-Text: Textband «Christbaumdecke mit goldenen Pailletten», «90 cm Durchmesser», «luxestyle.ch»",
+   "beleg": "Eigene Beschriftung im Pin (pin.png, bauen.sh), Inhalt wie oben belegt"
+  },
+  {
+   "aussage": "Links: Shop: luxestyle.ch/ig, Shop: luxestyle.ch/tt, https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500 (Threads, Pinterest mit UTM)",
+   "beleg": "Handle christbaumdecke-mit-goldenen-pailletten-schnee-634500 (Admin-API, gelesen 11.11.2026 12:49 UTC, onlineStoreUrl https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500); Storefront .js HTTP 200. /ig und /tt führen auf die Wegweiser-Sammlung aus-tiktok-und-instagram, (Collection gid://shopify/Collection/756379189639). Um 12:57 und 13:33 UTC fehlte das Produkt dort (hasProduct false, 33 Produkte); der Auftraggeber hat es um 14:07 UTC aufgenommen (sw2211/wegweiser_aufgenommen.json, 33 auf 39). Frisch gelesen 11.11.2026 14:24 UTC und 14:30 UTC: hasProduct true, 39 Produkte (Admin-API)"
+  },
+  {
+   "aussage": "Nicht übernommen: «halb-handwerklich und halb-maschinell», «schützt deinen Boden vor Harzflecken», «weich», «festliche Atmosphäre», Lieferzeit «10–20 Werktage», «30 Tage Rückgabe», «fängt herabfallende Nadeln auf» (seit 11.11.2026)",
+   "beleg": "Produktbeschreibung (Admin-API, gelesen 11.11.2026 12:49 UTC, descriptionHtml) enthält diese Angaben; weggelassen nach Inhaltsregeln 2 und 3 (Herstellungsangabe, Wirkungsversprechen, Lieferzeit). «Sie fängt herabfallende Nadeln auf» steht nur im Shop-Text; das CJ-Datenblatt (pid 2511230402481634500, Beschreibung «Color Gold Sequin Tree Skirt-90cm, Material Plush, Craft Semi-handmade Semi-mechanical, Packing list: 1* Tree Skirt», Gegenprüfung 11.11.2026 15:0x UTC) sagt nichts dazu: in der Nachbesserung 11.11.2026 aus allen vier Texten genommen"
+  }
+ ],
+ "in_wegweiser": true
+}

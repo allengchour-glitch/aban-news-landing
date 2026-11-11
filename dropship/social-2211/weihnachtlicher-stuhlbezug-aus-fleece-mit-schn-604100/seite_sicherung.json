@@ -1,0 +1,131 @@
+{
+ "fassung": 2,
+ "gelesen": "2026-11-11T16:52:20.638Z",
+ "produkt": "gid://shopify/Product/16603897692551",
+ "handle": "weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100",
+ "option": {
+  "id": "gid://shopify/ProductOption/19549722345863",
+  "name": "Farbe",
+  "werte": [
+   {
+    "id": "gid://shopify/ProductOptionValue/58678972973447",
+    "name": "Alter Mann"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58678973006215",
+    "name": "Schneemann"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58678973038983",
+    "name": "Elch"
+   }
+  ]
+ },
+ "variantenWerte": {
+  "gid://shopify/ProductVariant/67844134896007": "Alter Mann",
+  "gid://shopify/ProductVariant/67844134928775": "Schneemann",
+  "gid://shopify/ProductVariant/67844134961543": "Elch"
+ },
+ "descriptionHtml": "<!-- ls-var-v1 --><p>An festlichen Feiertagen schützt der Stuhlbezug vor Staub und Kratzern. Der Bezug besteht aus weichem Fleece. Er misst 52 cm in der Breite und 46 cm in der Höhe. Die Lieferung enthält einen einzelnen Stuhlbezug.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Einfache Anbringung</li>\n<li>Pflegeleicht</li>\n<li>Weihnachtliches Design</li>\n<li>Kompatibel mit Standardstühlen</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 144 g – 164 g (je nach Variante)</li>\n<li>\n<strong>Masse:</strong> 52 cm  ×  46 cm</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "seo": {
+  "title": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Des… | LuxeStyle",
+  "description": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – jetzt bei LuxeStyle Schweiz (Partydeko & Ballone). Gratis-Versand ab CHF 50, 30 Tage Rückgabe…"
+ },
+ "medien": [
+  {
+   "id": "gid://shopify/MediaImage/77437871489415",
+   "position": 0,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 4 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/415244a0-feda-47da-9267-6b330e85d9a1.jpg?v=1790929791"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871423879",
+   "position": 1,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 2 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5322595c-56a6-47ab-8d43-62d6249ec3d0.jpg?v=1790929791"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871260039",
+   "position": 2,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e6f50d01-eea9-44e0-8f32-b56d9b17e78b.jpg?v=1790929792"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871456647",
+   "position": 3,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 3 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f63288f-0b3f-4161-8822-f3edbfb35dac.jpg?v=1790929791"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871522183",
+   "position": 4,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 5 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a3712049-4372-4f3c-a640-984d11ac84e6.jpg?v=1790929791"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871554951",
+   "position": 5,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 6 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1045598e-753e-4653-9224-277ae79252d0.jpg?v=1790929792"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871587719",
+   "position": 6,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 7 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94514a60-5c3a-4955-8541-75133ff404d3.jpg?v=1790929791"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871620487",
+   "position": 7,
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 8 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/88e467dc-cc4b-4997-93f5-5be71304c5c2.jpg?v=1790929791"
+  }
+ ],
+ "variantenMedien": {
+  "gid://shopify/ProductVariant/67844134896007": [
+   "gid://shopify/MediaImage/77437871489415"
+  ],
+  "gid://shopify/ProductVariant/67844134928775": [
+   "gid://shopify/MediaImage/77437871554951"
+  ],
+  "gid://shopify/ProductVariant/67844134961543": [
+   "gid://shopify/MediaImage/77437871456647"
+  ]
+ },
+ "entfernen": [
+  {
+   "id": "gid://shopify/MediaImage/77437871423879",
+   "datei": "5322595c-56a6-47ab-8d43-62d6249ec3d0",
+   "md5": "ced821266c0707436f84ad33271a5efb",
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 2 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5322595c-56a6-47ab-8d43-62d6249ec3d0.jpg?v=1790929791",
+   "position": 1,
+   "grund": "Bild 2: Weinflasche gross im Bild, Etikett «McKenzie, Barossa Valley» lesbar (Fremdmarke)",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100/seite_sicherung_5322595c-56a6-47ab-8d43-62d6249ec3d0.jpg",
+   "cj_url": "https://cf.cjdropshipping.com/quick/product/5322595c-56a6-47ab-8d43-62d6249ec3d0.jpg"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871260039",
+   "datei": "e6f50d01-eea9-44e0-8f32-b56d9b17e78b",
+   "md5": "0bdc7416b269a8af39f39b8747661c28",
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e6f50d01-eea9-44e0-8f32-b56d9b17e78b.jpg?v=1790929792",
+   "position": 2,
+   "grund": "Bild 3: Weinflasche hinter den Stühlen, Etikett «McKenzie» in voller Auflösung lesbar (Fremdmarke); die drei Motive auf Stühlen zeigt auch Bild 5 (a3712049) ohne lesbare Fremdschrift",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100/seite_sicherung_e6f50d01-eea9-44e0-8f32-b56d9b17e78b.jpg",
+   "cj_url": "https://cf.cjdropshipping.com/quick/product/e6f50d01-eea9-44e0-8f32-b56d9b17e78b.jpg"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77437871587719",
+   "datei": "94514a60-5c3a-4955-8541-75133ff404d3",
+   "md5": "b13d90ecb7aa0594d5987b330604464b",
+   "alt": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design – Bild 7 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94514a60-5c3a-4955-8541-75133ff404d3.jpg?v=1790929791",
+   "position": 6,
+   "grund": "Bild 7: Weinflasche gross im Bild, Etikett «McKenzie, Barossa Valley» lesbar (Fremdmarke)",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100/seite_sicherung_94514a60-5c3a-4955-8541-75133ff404d3.jpg",
+   "cj_url": "https://cf.cjdropshipping.com/quick/product/94514a60-5c3a-4955-8541-75133ff404d3.jpg"
+  }
+ ],
+ "kernFest": "{\"produkt\":[\"Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design\",\"weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100\",\"ACTIVE\",\"Partydeko & Ballone\"],\"tags\":[\"cj-real\",\"dekoration\",\"dropship\",\"geschenk\",\"neuheit\",\"party\",\"partydeko\",\"sort-sofaueberzuege\",\"varianten-nachgezogen-1025\",\"weihnachten\",\"wohnen\"],\"sammlungen\":[\"aus-tiktok-und-instagram\",\"bestseller-unter-50\",\"fortura-weihnachten\",\"geschenke-unter-30\",\"neu-eingetroffen\",\"party-deko-ch\",\"sofa-moebelueberzuege\",\"weihnachten-2026\",\"wohnen-dekoration\"],\"kanaele\":[\"301970915713=an\",\"301971014017=an\",\"302032716161=an\",\"302566834561=an\",\"302994456961=an\",\"391626359175=an\"],\"varianten\":[[\"gid://shopify/ProductVariant/67844134896007\",\"CJYS263112101AZ\",\"21.90\",null,1,\"CONTINUE\",true],[\"gid://shopify/ProductVariant/67844134928775\",\"CJYS263112102BY\",\"21.90\",null,2,\"CONTINUE\",true],[\"gid://shopify/ProductVariant/67844134961543\",\"CJYS263112103CX\",\"21.90\",null,3,\"CONTINUE\",true]]}"
+}

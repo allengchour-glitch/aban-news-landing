@@ -1,0 +1,111 @@
+{
+ "tag": "2026-11-26",
+ "handle": "kaffeebecher-edelstahl-607200",
+ "produkt_id": "gid://shopify/Product/15458603336065",
+ "titel": "Kaffeebecher Edelstahl",
+ "preis_ab": "CHF 15.90",
+ "zeiten": {
+  "instagram_facebook": "2026-11-26T17:00:00+01:00",
+  "tiktok": "2026-11-26T18:00:00+01:00",
+  "threads": "2026-11-26T11:00:00+01:00",
+  "pinterest": "2026-11-26T20:00:00+01:00"
+ },
+ "bilder": {
+  "instagram_facebook": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/ig_1.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/ig_2.jpg"
+  ],
+  "tiktok": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/tt_1.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/tt_2.jpg"
+  ],
+  "pinterest": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/pin.png",
+  "threads": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/kaffeebecher-edelstahl-607200/ig_1.jpg"
+  ]
+ },
+ "texte": {
+  "instagram_facebook": "Kaffeebecher in Gelb oder Dunkelblau? ☕\n\nDer Kaffeebecher ist aus Edelstahl und fasst 300 ml. Er kommt ohne Henkel aus, das Design ist schlicht und minimalistisch. Bei Mattgelb und Matt Dunkelblau ist er aussen farbig, Rand und Innenseite zeigen das Metall.\n\nSechs Ausführungen stehen zur Wahl, darunter Beige, Schwarz, Mattgelb, Matt Dunkelblau und Olivgrün.\n\nCHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\nWelche Farbe nimmst du?\n\n#kaffeebecher #edelstahl #kaffeezeit #kaffeepause #schweiz\n\nShop: luxestyle.ch/ig",
+  "tiktok": "Gelb oder Dunkelblau: Welcher Kaffeebecher wäre deiner?\n\nKaffeebecher aus Edelstahl, 300 ml, ohne Henkel, minimalistisches Design. Sechs Ausführungen zur Wahl. CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#kaffeebecher #edelstahl #kaffee #schweiz\n\nShop: luxestyle.ch/tt",
+  "threads": "Kaffeebecher aus Edelstahl: 300 ml, ohne Henkel, schlichtes Design. Sechs Ausführungen stehen zur Wahl, im Bild Mattgelb. Welche Farbe wäre deine?\n\nhttps://luxestyle.ch/products/kaffeebecher-edelstahl-607200?variant=67670514467207",
+  "pinterest": {
+   "titel": "Kaffeebecher aus Edelstahl, 300 ml, ohne Henkel",
+   "beschreibung": "Schlichter Kaffeebecher aus Edelstahl mit 300 ml Fassungsvermögen. Er kommt ohne Henkel aus, das Design ist minimalistisch. Bei Mattgelb und Matt Dunkelblau ist der Becher aussen farbig, Rand und Innenseite zeigen das Metall. Sechs Ausführungen stehen zur Wahl, darunter Beige, Schwarz, Mattgelb, Matt Dunkelblau und Olivgrün. Für den täglichen Gebrauch gedacht.",
+   "alt": "Gelber Becher ohne Henkel mit metallischem Rand und metallischer Innenseite auf hellem, leicht warmem Grund. Darunter auf beigem Band der Schriftzug «Kaffeebecher aus Edelstahl» und luxestyle.ch.",
+   "link": "https://luxestyle.ch/products/kaffeebecher-edelstahl-607200?variant=67670514467207&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_kaffeebecher-edelstahl-607200",
+   "board_id": "1111333714239114020"
+  }
+ },
+ "aussagen": [
+  {
+   "aussage": "Kaffeebecher aus Edelstahl / «Der Kaffeebecher ist aus Edelstahl» (Instagram/Facebook, TikTok, Threads, Pinterest-Titel und -Beschreibung, Hashtag #edelstahl, Titelzeile im Pin «Kaffeebecher aus Edelstahl»)",
+   "beleg": "Produkttitel «Kaffeebecher Edelstahl»; Beschreibung Satz 1: «Dieser Kaffeebecher aus Edelstahl ist ideal für den täglichen Gebrauch.» (Admin-API frisch gelesen 11.11.2026 12:39 UTC (product gid://shopify/Product/15458603336065)). Das Wort «hochwertig» aus Satz 3 und «für Langlebigkeit» aus der Aufzählung sind nicht übernommen."
+  },
+  {
+   "aussage": "Fasst 300 ml / 300 ml / 300 ml Fassungsvermögen (Instagram/Facebook, TikTok, Threads, Pinterest-Titel und -Beschreibung)",
+   "beleg": "Beschreibung Satz 2: «Er bietet eine Kapazität von 300ml …»; Aufzählung «Das zeichnet es aus»: «300ml Fassungsvermögen»; alle sechs Variantennamen der Option «Volumen» beginnen mit «300 ml · »."
+  },
+  {
+   "aussage": "Ohne Henkel (Instagram/Facebook, TikTok, Threads, Pinterest-Titel, -Beschreibung und Alt-Text)",
+   "beleg": "Nur Bildbeleg (die Beschreibung nennt keinen Henkel): Medium 4 (ed22b3f9-…jpg, 1920×1920, Variantenbild Mattgelb) und Medium 6 (0f0e8e50-…jpg, 1920×1920, Variantenbild Matt Dunkelblau) am 11.11.2026 ganz und als Ausschnitt des Bechers in voller Auflösung angesehen: Becher ohne Henkel. Erneut 11.11.2026 14:08 UTC: alle sieben Galeriebilder angesehen, keines zeigt einen Henkel."
+  },
+  {
+   "aussage": "Das Design ist schlicht und minimalistisch / minimalistisches Design / schlichtes Design / schlichter Kaffeebecher (Instagram/Facebook, TikTok, Threads, Pinterest)",
+   "beleg": "Beschreibung Satz 3: «… verfügt über ein einfaches, minimalistisches Design.»; Aufzählung: «Minimalistisches Design». «schlicht» steht für «einfach»."
+  },
+  {
+   "aussage": "Bei Mattgelb und Matt Dunkelblau ist er aussen farbig, Rand und Innenseite zeigen das Metall (Instagram/Facebook, Pinterest-Beschreibung)",
+   "beleg": "Bild: Medium 4 = Variantenbild «300 ml · Mattgelb» (SKU CJYD298294804DW) aussen gelb, Medium 6 = Variantenbild «300 ml · Matt Dunkelblau» (SKU CJYD298294805EV) aussen dunkelblau; bei beiden sind der umgebördelte Rand und die Innenseite metallisch (Ausschnitte 2-fach vergrössert angesehen). Variantennamen «Mattgelb», «Matt Dunkelblau»."
+  },
+  {
+   "aussage": "Sechs Ausführungen stehen zur Wahl, darunter Beige, Schwarz, Mattgelb, Matt Dunkelblau und Olivgrün (Instagram/Facebook, Pinterest); «Sechs Ausführungen zur Wahl» (TikTok); «sechs Ausführungen» (Threads). Die sechste Ausführung wird bewusst nicht beim Namen genannt.",
+   "beleg": "Option «Volumen», sechs Varianten, alle availableForSale=true, Preis je 15.90: «300 ml · Edelstahl natur» (SKU CJYD298294801AZ), «300 ml · Beige», «300 ml · Schwarz», «300 ml · Mattgelb», «300 ml · Matt Dunkelblau», «300 ml · Olivgrün» (Admin-API frisch gelesen 11.11.2026 13:29 UTC); Beschreibung Satz 2: «… ist in verschiedenen Farben erhältlich». Der Name «Edelstahl natur» (bis 11.11. «Mehrfarbig») ist nicht gegen den CJ-Variantennamen geprüft: CJ-Lesung 11.11.2026 13:28 UTC state unknown, «product_request_budget_exhausted». Darum steht er nicht mehr im Text (Prüfer-Fund, Ersatzsatz übernommen). Stand 14:07 UTC unverändert (Option heisst noch «Volumen»; seite.mjs benennt sie bei LIVE in «Ausführung» um, Werte, SKUs und Preise bleiben)."
+  },
+  {
+   "aussage": "Gelb oder Dunkelblau (Hook Instagram/Facebook und TikTok)",
+   "beleg": "Die beiden abgebildeten Ausführungen der Karussells: ig_1/tt_1 = Mattgelb (Quelle ed22b3f9-…jpg, Alt «Bild 5», Variantenbild «300 ml · Mattgelb»), ig_2/tt_2 = Matt Dunkelblau (Quelle 0f0e8e50-…jpg, Alt «Bild 7», Variantenbild «300 ml · Matt Dunkelblau»); Threads fragt nicht mehr nach Gelb oder Dunkelblau, weil Threads nur ig_1 bekommt."
+  },
+  {
+   "aussage": "CHF 15.90 (Instagram/Facebook, TikTok), im selben Absatz «Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.»",
+   "beleg": "Alle sechs Varianten price 15.90, compareAtPrice null, priceRangeV2 min = max = 15.9 CHF (Admin-API frisch gelesen 11.11.2026 12:39, 13:29 und 14:07 UTC, unverändert); Produktseite luxestyle.ch einmal abgerufen 11.11.2026 12:41 UTC (HTTP 200, Browser-Kopf): JSON-LD sechs Offers je 15.90 CHF, InStock. Der Preis gilt damit für jede genannte Ausführung. Versandsatz wörtlich nach Auftrag (Inhaltsregel 3)."
+  },
+  {
+   "aussage": "Für den täglichen Gebrauch gedacht (Pinterest-Beschreibung)",
+   "beleg": "Beschreibung Satz 1: «… ist ideal für den täglichen Gebrauch.» (das Werturteil «ideal» nicht übernommen)."
+  },
+  {
+   "aussage": "Hook «Kaffeebecher in Gelb oder Dunkelblau?» (Instagram/Facebook); Hashtags #kaffeebecher #edelstahl #kaffeezeit #kaffeepause #schweiz (Instagram, 5) und #kaffeebecher #edelstahl #kaffee #schweiz (TikTok, 4)",
+   "beleg": "Themen-Hashtags und Hook ohne Produkteigenschaft; «Kaffeebecher» ist der Produkttitel; der Hook nennt die zwei abgebildeten Ausführungen. «Sonntagskaffee»/#sonntagskaffee am 11.11.2026 entfernt, weil der Beitrag auf Do 26.11.2026 umgelegt ist. Keine Aussage über Temperatur, Isolierung, Wirkung, Lieferzeit, Bestand, Rabatt oder Aktion. Am 11.11.2026 nach der Gegenprüfung «Kaffee in …» durch «Kaffeebecher in …» ersetzt (las sich, als sei der Kaffee farbig)."
+  },
+  {
+   "aussage": "Fragen «Welche Farbe nimmst du?» (Instagram/Facebook), «Welcher Kaffeebecher wäre deiner?» (TikTok), «Welche Farbe wäre deine?» (Threads)",
+   "beleg": "Keine Tatsachenbehauptung; Frage an die Leserin."
+  },
+  {
+   "aussage": "Schlusszeilen «Shop: luxestyle.ch/ig», «Shop: luxestyle.ch/tt», Threads-Link https://luxestyle.ch/products/kaffeebecher-edelstahl-607200?variant=67670514467207, Absender «luxestyle.ch» im Pin, Pin-Link mit ?variant=67670514467207 vor den UTM-Parametern (w2211)",
+   "beleg": "Vorgaben des Auftrags (Inhaltsregel 6); Produktseite HTTP 200 am 11.11.2026 12:41 UTC, onlineStoreUrl https://luxestyle.ch/products/kaffeebecher-edelstahl-607200. Variante 67670514467207 = «300 ml · Mattgelb» (SKU CJYD298294804DW): Admin-API frisch gelesen 11.11.2026 15:57 UTC availableForSale true, Preis 15.90, Produkt ACTIVE, eigenes Variantenbild (MediaImage 69967368618369 = Quelle von ig_1 und pin.png). Grund: Threads-Bild und Pin zeigen den gelben Becher; ohne ?variant= öffnet die Seite auf der ersten Variante «Edelstahl natur» (Gegenprüfung 11.11.2026, JSON-LD erste Offer variant=55923772948865)."
+  },
+  {
+   "aussage": "Bildinhalt ig_1 und tt_1: gelber Becher (Mattgelb) freigestellt auf hellem Grund #F4F0EA; ig_2 und tt_2: dunkelblauer Becher (Matt Dunkelblau) freigestellt auf hellem Grund (tt_N ist die Verkleinerung von ig_N auf 864×1080)",
+   "beleg": "Quelle Medium 4 (ed22b3f9-03e7-47e7-91bf-f4cb389eed78.jpg, md5 96bb0110…) und Medium 6 (0f0e8e50-92c8-4286-ba58-349184a59e61.jpg, md5 1194bce2…) vom Shopify-CDN; mit ffmpeg nur zugeschnitten (1200×1500 um die gemessene Bechermitte), verkleinert (Faktor 0,9) und der weisse Fotohintergrund durch den hellen Grund ersetzt (bauen.sh). Nichts hinzugefügt. Ganze Bilder und Rand-/Bodenausschnitte 2-fach angesehen: nichts abgeschnitten, nicht verzerrt, kein Saum, keine Schrift, keine Marke, kein Wasserzeichen, keine Person."
+  },
+  {
+   "aussage": "TikTok-Fotos tt_1 und tt_2: dieselben Motive, 864×1080 (4:5, keine Seite über 1080 px)",
+   "beleg": "Neu gebaut 11.11.2026 aus ig_1/ig_2 mit «ffmpeg -i ig_N.jpg -vf scale=864:1080:flags=lanczos -q:v 2» (byte-gleich der Ersatzdatei des Prüfers, md5 e663a75a… und 0b0b5af8…); ffprobe: Breite 864, Höhe 1080; angesehen: gelber bzw. dunkelblauer Becher, nichts abgeschnitten, keine Schrift. Regel 7 und Lehre 03.11. (über 1080 px = picture_size_check_failed)."
+  },
+  {
+   "aussage": "Pin pin.png 1000×1500: gelber Becher oben, unten Titelzeile «Kaffeebecher aus Edelstahl» (26 Zeichen, zwei Zeilen) und «luxestyle.ch», ohne Preis",
+   "beleg": "Quelle Medium 4, Zuschnitt 1180×1180 um die Bechermitte, verkleinert auf 1000×1000 (Faktor 0,85), weisser Hintergrund durch #F4F0EA ersetzt; Band 1000×500 #EDE6DB, Schrift Gelasio Bold 96 px (social1611/fonts) und DejaVu Sans Bold 30 px; seitlicher Abstand der Schrift rund 170 px (mindestens 60 verlangt). ffprobe 1000×1500, angesehen."
+  },
+  {
+   "aussage": "Alt-Text des Pins: gelber Becher ohne Henkel, metallischer Rand und Innenseite, heller Grund, beiges Band mit Schriftzug «Kaffeebecher aus Edelstahl» und luxestyle.ch",
+   "beleg": "pin.png selbst, am 11.11.2026 angesehen; beschreibt nur Sichtbares."
+  },
+  {
+   "aussage": "Threads: «Sechs Ausführungen stehen zur Wahl, im Bild Mattgelb.»",
+   "beleg": "Threads bekommt genau ein Bild, bilder.threads = ig_1.jpg (entwuerfe_anlegen.py der Woche 16.11. nimmt instagram_facebook[:1]); ig_1.jpg am 11.11.2026 angesehen: gelber Becher = Variantenbild «300 ml · Mattgelb» (SKU CJYD298294804DW, md5 Quelle 96bb0110…). Sechs Varianten, Admin-API 11.11.2026 14:07 UTC."
+  }
+ ],
+ "in_wegweiser": true,
+ "in_wegweiser_beleg": "Admin-API 11.11.2026 14:07 UTC: collections des Produkts enthält «aus-tiktok-und-instagram» (16 Sammlungen). Aufnahme durch den Auftraggeber, nicht durch diesen Schritt."
+}

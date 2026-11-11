@@ -1,0 +1,45 @@
+{
+ "gelesen": "2026-11-11T11:42:27.690Z",
+ "id": "gid://shopify/Product/15453775888769",
+ "descriptionHtml": "<p>Dieser Weihnachtsstrumpf mit seiner roten und grünen Samt-Optik und der dreieckigen Form ist ein dekoratives Accessoire für die Weihnachtszeit.</p><h3>Das zeichnet es aus</h3><ul>\n<li>rotes und grünes Samt-Design</li>\n<li>dreieckige Form</li>\n<li>Tassel-Detail am oberen Ende</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 85 g</li>\n<li>\n<strong>Masse:</strong> 10 × 19 Zoll</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17886644797825",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12314896957825",
+     "name": "Rot, 10x19inch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12314896990593",
+     "name": "Grün, 10x19inch"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/56066483880321",
+    "sku": "CJ-CJYS297898001AZ",
+    "price": "15.90",
+    "selectedOptions": [
+     {
+      "value": "Rot, 10x19inch"
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56066483913089",
+    "sku": "CJ-CJYS297898002BY",
+    "price": "15.90",
+    "selectedOptions": [
+     {
+      "value": "Grün, 10x19inch"
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "gelesen": "2026-11-11T16:53:31.463Z",
+ "produkt": "gid://shopify/Product/16615812956551",
+ "handle": "weihnachts-rattan-girlande-mit-zapfen-und-schl-616100",
+ "title": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife",
+ "seo": {
+  "title": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife | LuxeStyle CH",
+  "description": "Für eine festliche Atmosphäre in deinem Zuhause sorgt diese Weihnachts-Rattan-Girlande."
+ },
+ "descriptionHtml": "<p>Für eine festliche Atmosphäre in deinem Zuhause sorgt diese Weihnachts-Rattan-Girlande. Sie ist ideal, um Schaufenster oder Innenräume an den Feiertagen zu schmücken. Die Girlande ist aus PVC gefertigt und im europäischen Stil gehalten. Sie ist mit Kiefernzapfen und chinesischem Weissdorn verziert.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Mit warmem oder farbigem Licht erhältlich</li>\n<li>Dekoration für die Festtage</li>\n<li>Moderne Kunstgestaltung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 1 kg</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "option": {
+  "id": "gid://shopify/ProductOption/19606560178567",
+  "name": "Ausführung",
+  "optionValues": [
+   {
+    "id": "gid://shopify/ProductOptionValue/58504200880519",
+    "name": "Zapfen · Schleife",
+    "hasVariants": true
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58504200913287",
+    "name": "Zapfen · Schleife · Warmlicht",
+    "hasVariants": true
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58504200946055",
+    "name": "Zapfen · Schleife · Farblicht",
+    "hasVariants": true
+   }
+  ]
+ },
+ "varianten": [
+  {
+   "id": "gid://shopify/ProductVariant/67668285718919",
+   "sku": "CJYS246934901AZ",
+   "price": "31.90",
+   "media": [
+    "gid://shopify/MediaImage/77496769479047"
+   ],
+   "wert": "Zapfen · Schleife"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67738939621767",
+   "sku": "CJYS246934902BY",
+   "price": "40.90",
+   "media": [
+    "gid://shopify/MediaImage/77496769380743"
+   ],
+   "wert": "Zapfen · Schleife · Warmlicht"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67738939654535",
+   "sku": "CJYS246934903CX",
+   "price": "40.90",
+   "media": [
+    "gid://shopify/MediaImage/77496769511815"
+   ],
+   "wert": "Zapfen · Schleife · Farblicht"
+  }
+ ],
+ "galerie": [
+  {
+   "id": "gid://shopify/MediaImage/77496769315207",
+   "position": 0,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d86d8083-362e-450a-8ea7-1c91dd78c364.jpg?v=1791783523"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769347975",
+   "position": 1,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 2 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/594dc5e7-e424-42fa-a8de-82d6a782a921.jpg?v=1791783524"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769380743",
+   "position": 2,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 3 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4de1ad72-dd56-4acb-a500-249c67f75d3f_trans.jpg?v=1791783524"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769413511",
+   "position": 3,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 4 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34784cba-50e0-47da-8910-b5a46d209a3b.jpg?v=1791783530"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769446279",
+   "position": 4,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 5 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a48b567d-01bf-4f2f-af09-7ce1cd3a790a.jpg?v=1791783524"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769479047",
+   "position": 5,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 6 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c733214-70ef-4f0f-b880-abc97549241d_trans.jpg?v=1791783524"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769511815",
+   "position": 6,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 7 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08905d6c-bf09-4831-bb1b-18542e23f918_trans.jpg?v=1791783524"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769544583",
+   "position": 7,
+   "alt": "Weihnachts-Rattan-Girlande mit Zapfen und Schleife – Bild 8 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05b79042-6319-4702-8591-4e2878d34969.jpg?v=1791783525"
+  }
+ ],
+ "balken": [
+  {
+   "id": "gid://shopify/MediaImage/77496769380743",
+   "datei": "4de1ad72-dd56-4acb-a500-249c67f75d3f_trans",
+   "sha": "bec6dd4db12775304faa585cb5ba16f979e24ca30576970f75f3dadbed4a584b",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachts-rattan-girlande-mit-zapfen-und-schl-616100/seite_sicherung_bild3.jpg"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769479047",
+   "datei": "2c733214-70ef-4f0f-b880-abc97549241d_trans",
+   "sha": "cc8d1b522c1c18b6ddbe790b6cb718b3cdd4a6729d7a712624e4bc7798967883",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachts-rattan-girlande-mit-zapfen-und-schl-616100/seite_sicherung_bild6.jpg"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496769511815",
+   "datei": "08905d6c-bf09-4831-bb1b-18542e23f918_trans",
+   "sha": "23500e3c29b9f9b13546e33ce3d741ef37d38546a2bbbf5cdac857eb8202d76e",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachts-rattan-girlande-mit-zapfen-und-schl-616100/seite_sicherung_bild7.jpg"
+  }
+ ],
+ "kern": "{\"handle\":\"weihnachts-rattan-girlande-mit-zapfen-und-schl-616100\",\"status\":\"ACTIVE\",\"productType\":\"Partydeko & Ballone\",\"vendor\":\"LuxeStyle\",\"tags\":[\"auswahl-nachgeruestet\",\"cj-real\",\"dekoration\",\"dropship\",\"geschenk\",\"neuheit\",\"party\",\"partydeko\",\"weihnachten\",\"wohnen\"],\"tracksInventory\":false,\"option\":[[\"gid://shopify/ProductOption/19606560178567\",\"Ausführung\",[\"gid://shopify/ProductOptionValue/58504200880519\",\"gid://shopify/ProductOptionValue/58504200913287\",\"gid://shopify/ProductOptionValue/58504200946055\"]]],\"varianten\":[[\"gid://shopify/ProductVariant/67668285718919\",\"CJYS246934901AZ\",\"31.90\",null,\"CONTINUE\",true],[\"gid://shopify/ProductVariant/67738939621767\",\"CJYS246934902BY\",\"40.90\",null,\"CONTINUE\",true],[\"gid://shopify/ProductVariant/67738939654535\",\"CJYS246934903CX\",\"40.90\",null,\"CONTINUE\",true]],\"sammlungen\":[\"gid://shopify/Collection/687409594753\",\"gid://shopify/Collection/687522775425\",\"gid://shopify/Collection/687523266945\",\"gid://shopify/Collection/687980052865\",\"gid://shopify/Collection/690563023233\",\"gid://shopify/Collection/690563056001\"],\"kanaele\":[[\"gid://shopify/Publication/301970915713\",true],[\"gid://shopify/Publication/301971014017\",true],[\"gid://shopify/Publication/302032716161\",true],[\"gid://shopify/Publication/302566834561\",true],[\"gid://shopify/Publication/302994456961\",true],[\"gid://shopify/Publication/391626359175\",true]],\"metafelder\":[[\"mm-google-shopping\",\"age_group\",\"adult\"],[\"mm-google-shopping\",\"condition\",\"new\"],[\"mm-google-shopping\",\"custom_product\",\"true\"],[\"mm-google-shopping\",\"excluded_destination\",\"[\\\"Shopping_ads\\\"]\"],[\"mm-google-shopping\",\"gender\",\"unisex\"],[\"mm-google-shopping\",\"google_product_category\",\"Arts & Entertainment > Party & Celebration > Party Supplies\"],[\"mm-google-shopping\",\"material\",\"Kunststoff\"]]}"
+}
