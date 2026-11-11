@@ -1,0 +1,102 @@
+{
+ "tag": "2026-11-18",
+ "handle": "weihnachtsstrumpf-mit-samt-optik-639700",
+ "produkt_id": "gid://shopify/Product/15453775888769",
+ "titel": "Weihnachtsstrumpf mit Samt-Optik",
+ "preis_ab": "CHF 15.90",
+ "zeiten": {
+  "instagram_facebook": "2026-11-18T17:00:00+01:00",
+  "tiktok": "2026-11-18T18:00:00+01:00",
+  "threads": "2026-11-18T14:00:00+01:00",
+  "pinterest": "2026-11-18T20:00:00+01:00"
+ },
+ "bilder": {
+  "instagram_facebook": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/ig_1.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/ig_2.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/ig_3.jpg"
+  ],
+  "tiktok": [
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/tt_1.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/tt_2.jpg",
+   "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/tt_3.jpg"
+  ],
+  "pinterest": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw1611/weihnachtsstrumpf-mit-samt-optik-639700/pin.png"
+ },
+ "texte": {
+  "instagram_facebook": "Rot oder Grün: welche Farbe hängst du auf? 🎄\n\nDer Weihnachtsstrumpf mit Samt-Optik kommt in zwei Farben. Der rote hat einen grünen Umschlag, der grüne einen roten. Der Umschlag läuft spitz zu. Am Rand sitzt eine Kordel in Rot und Gold, vorn am Umschlag hängt eine goldgelbe Quaste. Oben ist eine Schlaufe zum Aufhängen.\n\nGrösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll).\nRot oder Grün, je CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent #dekoideen\n\nShop: luxestyle.ch/ig",
+  "tiktok": "Rot oder Grün? Wisch durch und sag es uns. 🎄\n\nWeihnachtsstrumpf mit Samt-Optik: spitz zulaufender Umschlag in der Gegenfarbe, Kordel in Rot und Gold, goldgelbe Quaste und Schlaufe zum Aufhängen. Je Farbe CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent\n\nShop: luxestyle.ch/tt",
+  "threads": "Rot mit grünem Umschlag oder Grün mit rotem? Der Weihnachtsstrumpf mit Samt-Optik hat eine goldgelbe Quaste und eine Schlaufe zum Aufhängen.\n\nhttps://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700",
+  "pinterest": {
+   "titel": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+   "beschreibung": "Weihnachtsstrumpf mit Samt-Optik als Deko für die Weihnachtszeit. Es gibt ihn in Rot mit grünem Umschlag oder in Grün mit rotem Umschlag. Der Umschlag läuft spitz zu und trägt eine Kordel in Rot und Gold sowie eine goldgelbe Quaste. Oben sitzt eine Schlaufe zum Aufhängen. Grösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll).",
+   "alt": "Zwei Weihnachtsstrümpfe mit Samt-Optik nebeneinander auf hellem Grund: links ein roter mit grünem Umschlag, rechts ein grüner mit rotem Umschlag. Beide haben eine Kordel in Rot und Gold am Umschlag, eine goldgelbe Quaste und oben eine Schlaufe. Darunter steht «Weihnachtsstrumpf mit Samt-Optik».",
+   "link": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+   "board_id": "1111333714239114033"
+  }
+ },
+ "aussagen": [
+  {
+   "aussage": "Produktname «Weihnachtsstrumpf mit Samt-Optik» (alle Texte und die Titelzeile im Pin)",
+   "beleg": "Produkttitel im Shop (Admin-API 11.11.2026, Storefront-Seitentitel 11.11.2026 10:07 UTC); Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026): «Dieser Weihnachtsstrumpf mit seiner roten und grünen Samt-Optik …»"
+  },
+  {
+   "aussage": "Es gibt zwei Farben: Rot oder Grün (IG/FB, TikTok, Threads, Pinterest)",
+   "beleg": "Varianten «Rot, 10x19inch» und «Grün, 10x19inch» (Option «Farbe»), beide availableForSale=true; Produktbild 1 zeigt beide, die Variantenbilder je eine Farbe"
+  },
+  {
+   "aussage": "Der rote Strumpf hat einen grünen Umschlag, der grüne einen roten («Umschlag in der Gegenfarbe»)",
+   "beleg": "Produktbilder (Bild 1: beide Strümpfe; Variantenbild Rot; Variantenbild Grün), von mir gesichtet; Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026): «rotes und grünes Samt-Design»"
+  },
+  {
+   "aussage": "Der Umschlag läuft spitz zu",
+   "beleg": "Produktbilder: der Umschlag endet vorn in einer Spitze (V-Form); Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026): «dreieckige Form»"
+  },
+  {
+   "aussage": "Am Rand des Umschlags sitzt eine Kordel in Rot und Gold",
+   "beleg": "Produktbilder (alle drei Motive): gedrehte rot-goldene Kordel entlang der Umschlagkante; nur im Bild belegt, die Beschreibung nennt die Kordel nicht"
+  },
+  {
+   "aussage": "Vorn am Umschlag hängt eine goldgelbe Quaste (IG/FB «vorn am Umschlag»; TikTok, Threads, Pinterest nur «goldgelbe Quaste»)",
+   "beleg": "Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026): «Tassel-Detail am oberen Ende»; Produktbilder (ig_1 bis ig_3, roh/m0.jpg), von mir am 11.11. erneut gesichtet: die Quaste hängt an der V-Spitze der Umschlag-Lasche im oberen Drittel, nicht an der Strumpfspitze (Zehenbereich); Farbe aus dem Bild"
+  },
+  {
+   "aussage": "Oben ist eine Schlaufe zum Aufhängen",
+   "beleg": "Produktbilder: Schlaufe am oberen Rand, der Strumpf hängt im Foto an einer Nadel in dieser Schlaufe; nur im Bild belegt"
+  },
+  {
+   "aussage": "Grösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll), Schweizer Masse vorn (IG/FB und Pinterest)",
+   "beleg": "Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026), Produktdetails: «Masse: 10 × 19 Zoll»; Variantentitel «Rot, 10x19inch» und «Grün, 10x19inch» (Admin-API 11.11.2026, erneut gelesen); Umrechnung 10 × 2,54 = 25,4 cm und 19 × 2,54 = 48,3 cm, gerundet auf 25 × 48 cm; die Zoll-Angabe der Produktseite steht in Klammern"
+  },
+  {
+   "aussage": "Je Farbe CHF 15.90",
+   "beleg": "Variantenpreise Admin-API 11.11.2026: Rot 15.90, Grün 15.90 (min = max = 15.90); Storefront-JSON-LD 11.11.2026 10:07 UTC: zwei Angebote 15.90 CHF, InStock"
+  },
+  {
+   "aussage": "Deko für die Weihnachtszeit (Pinterest-Beschreibung)",
+   "beleg": "Produktbeschreibung (Admin-API, descriptionHtml, gelesen 11.11.2026): «… ist ein dekoratives Accessoire für die Weihnachtszeit.»"
+  },
+  {
+   "aussage": "«Wisch durch» (TikTok): der Beitrag hat mehrere Bilder",
+   "beleg": "Beitrag selbst: drei Bilder (tt_1 beide Farben, tt_2 Rot, tt_3 Grün), je 864 × 1080 px (ffprobe 11.11.), dieselben Motive wie ig_1 bis ig_3 ohne Beschnitt verkleinert"
+  },
+  {
+   "aussage": "Alt-Texte der IG/FB- und TikTok-Bilder (Datei alt_texte.json): Bild 1 beide Strümpfe auf hellem Grund, Bild 2 rot mit grünem Umschlag, Bild 3 grün mit rotem Umschlag, je mit Kordel in Rot und Gold, goldgelber Quaste und Schlaufe",
+   "beleg": "ig_1 bis ig_3 und tt_1 bis tt_3, von mir am 11.11. gesichtet"
+  },
+  {
+   "aussage": "Pinterest-Board 1111333714239531706 (texte.pinterest.board_id)",
+   "beleg": "planer_0911_1611.json (Metricool-Planer 09.-16.11., gelesen am 10.11.): alle 6 Pins vom 09. bis 14.11. nutzen dieses Board, darunter «Hirsch-Kerzenhalter aus Eisen · Adventsdeko»; dasselbe Board steht im Paket weihnachtskugeln-beflockt-9-stuck-625300"
+  },
+  {
+   "aussage": "Alt-Text des Pins: zwei Strümpfe nebeneinander auf hellem Grund, links rot mit grünem Umschlag, rechts grün mit rotem, Kordel, Quaste, Schlaufe, Titelzeile",
+   "beleg": "pin.png, von mir gesichtet (Produktbild 1 auf hellem Grund, darunter die Zeile «Weihnachtsstrumpf mit Samt-Optik»)"
+  }
+ ],
+ "in_wegweiser": false,
+ "_vorher_claude": {
+  "board_id": "1111333714239531706",
+  "ig": "Rot oder Grün: welche Farbe hängst du auf? 🎄\n\nDer Weihnachtsstrumpf mit Samt-Optik kommt in zwei Farben. Der rote hat einen grünen Umschlag, der grüne einen roten. Der Umschlag läuft spitz zu. Am Rand sitzt eine Kordel in Rot und Gold, vorn am Umschlag hängt eine goldgelbe Quaste. Oben ist eine Schlaufe zum Aufhängen.\n\nGrösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll).\nRot oder Grün, je CHF 15.90.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent #dekoideen\n\nShop: luxestyle.ch/ig",
+  "tt": "Rot oder Grün? Wisch durch und sag es uns. 🎄\n\nWeihnachtsstrumpf mit Samt-Optik: spitz zulaufender Umschlag in der Gegenfarbe, Kordel in Rot und Gold, goldgelbe Quaste und Schlaufe zum Aufhängen. Je Farbe CHF 15.90.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent\n\nShop: luxestyle.ch/tt"
+ }
+}

@@ -1,0 +1,181 @@
+{
+ "gelesen": "2026-11-11T16:53:11.477Z",
+ "produkt": "gid://shopify/Product/15458603336065",
+ "handle": "kaffeebecher-edelstahl-607200",
+ "title": "Kaffeebecher Edelstahl",
+ "option": {
+  "id": "gid://shopify/ProductOption/19564451168647",
+  "name": "Volumen",
+  "werte": [
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475075463",
+    "name": "300 ml · Edelstahl natur"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475108231",
+    "name": "300 ml · Beige"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475140999",
+    "name": "300 ml · Schwarz"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475173767",
+    "name": "300 ml · Mattgelb"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475206535",
+    "name": "300 ml · Matt Dunkelblau"
+   },
+   {
+    "id": "gid://shopify/ProductOptionValue/58411475239303",
+    "name": "300 ml · Olivgrün"
+   }
+  ]
+ },
+ "seo": {
+  "title": "Kaffeebecher Edelstahl | LuxeStyle CH",
+  "description": "Kaffeebecher Edelstahl – der Trend-Hit bei LuxeStyle Schweiz."
+ },
+ "varianten": [
+  {
+   "id": "gid://shopify/ProductVariant/55923772948865",
+   "sku": "CJYD298294801AZ",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Edelstahl natur"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368651137"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67670514401671",
+   "sku": "CJYD298294802BY",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Beige"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368520065"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67670514434439",
+   "sku": "CJYD298294803CX",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Schwarz"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368585601"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67670514467207",
+   "sku": "CJYD298294804DW",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Mattgelb"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368618369"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67670514499975",
+   "sku": "CJYD298294805EV",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Matt Dunkelblau"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368683905"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67670514532743",
+   "sku": "CJYD298294806FU",
+   "price": "15.90",
+   "compareAtPrice": null,
+   "inventoryPolicy": "CONTINUE",
+   "selectedOptions": [
+    {
+     "name": "Volumen",
+     "value": "300 ml · Olivgrün"
+    }
+   ],
+   "media": {
+    "pageInfo": {
+     "hasNextPage": false
+    },
+    "nodes": [
+     {
+      "id": "gid://shopify/MediaImage/69967368552833"
+     }
+    ]
+   }
+  }
+ ],
+ "kern": "{\"title\":\"Kaffeebecher Edelstahl\",\"handle\":\"kaffeebecher-edelstahl-607200\",\"status\":\"ACTIVE\",\"descriptionHtml\":\"<p>Dieser Kaffeebecher aus Edelstahl ist ideal für den täglichen Gebrauch. Er bietet eine Kapazität von 300ml und ist in verschiedenen Farben erhältlich. Der Becher ist aus hochwertigem Edelstahl gefertigt und verfügt über ein einfaches, minimalistisches Design.</p><h3>Das zeichnet es aus</h3><ul>\\n<li>Edelstahl-Konstruktion für Langlebigkeit</li>\\n<li>300ml Fassungsvermögen</li>\\n<li>Minimalistisches Design</li>\\n</ul><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/trends-gadgets\\\">Trends &amp; Gadgets</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"tags\":[\"auswahl-nachgeruestet\",\"becher\",\"bild-ok\",\"bildmass-ok-0906\",\"cj-real\",\"dropship\",\"geschenkidee\",\"geschenkideen\",\"geschenkwelt-unter30\",\"geschenkwelt-wichtel\",\"mengenrabatt-a\",\"neu\",\"rueckhol-0907\",\"sort-tassen-kaffeebecher\",\"sort-tassen-kaffeebecher-tee-kaffee\",\"tassen-becher\",\"trend\",\"video-hit\",\"viral\"],\"seoTitle\":\"Kaffeebecher Edelstahl | LuxeStyle CH\",\"werte\":[[[\"gid://shopify/ProductOptionValue/58411475075463\",\"300 ml · Edelstahl natur\"],[\"gid://shopify/ProductOptionValue/58411475108231\",\"300 ml · Beige\"],[\"gid://shopify/ProductOptionValue/58411475140999\",\"300 ml · Schwarz\"],[\"gid://shopify/ProductOptionValue/58411475173767\",\"300 ml · Mattgelb\"],[\"gid://shopify/ProductOptionValue/58411475206535\",\"300 ml · Matt Dunkelblau\"],[\"gid://shopify/ProductOptionValue/58411475239303\",\"300 ml · Olivgrün\"]]],\"varianten\":[[\"gid://shopify/ProductVariant/55923772948865\",\"CJYD298294801AZ\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Edelstahl natur\"]],[\"gid://shopify/ProductVariant/67670514401671\",\"CJYD298294802BY\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Beige\"]],[\"gid://shopify/ProductVariant/67670514434439\",\"CJYD298294803CX\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Schwarz\"]],[\"gid://shopify/ProductVariant/67670514467207\",\"CJYD298294804DW\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Mattgelb\"]],[\"gid://shopify/ProductVariant/67670514499975\",\"CJYD298294805EV\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Matt Dunkelblau\"]],[\"gid://shopify/ProductVariant/67670514532743\",\"CJYD298294806FU\",\"15.90\",null,\"CONTINUE\",[\"300 ml · Olivgrün\"]]],\"variantenbilder\":[[\"gid://shopify/ProductVariant/55923772948865\",[\"gid://shopify/MediaImage/69967368651137\"]],[\"gid://shopify/ProductVariant/67670514401671\",[\"gid://shopify/MediaImage/69967368520065\"]],[\"gid://shopify/ProductVariant/67670514434439\",[\"gid://shopify/MediaImage/69967368585601\"]],[\"gid://shopify/ProductVariant/67670514467207\",[\"gid://shopify/MediaImage/69967368618369\"]],[\"gid://shopify/ProductVariant/67670514499975\",[\"gid://shopify/MediaImage/69967368683905\"]],[\"gid://shopify/ProductVariant/67670514532743\",[\"gid://shopify/MediaImage/69967368552833\"]]],\"medien\":[\"gid://shopify/MediaImage/69967368487297\",\"gid://shopify/MediaImage/69967368520065\",\"gid://shopify/MediaImage/69967368552833\",\"gid://shopify/MediaImage/69967368585601\",\"gid://shopify/MediaImage/69967368618369\",\"gid://shopify/MediaImage/69967368651137\",\"gid://shopify/MediaImage/69967368683905\"],\"sammlungen\":[\"gid://shopify/Collection/687409594753\",\"gid://shopify/Collection/687522251137\",\"gid://shopify/Collection/687937257857\",\"gid://shopify/Collection/688577577345\",\"gid://shopify/Collection/689055629697\",\"gid://shopify/Collection/689282220417\",\"gid://shopify/Collection/689746903425\",\"gid://shopify/Collection/689884168577\",\"gid://shopify/Collection/754049941895\",\"gid://shopify/Collection/755384910215\",\"gid://shopify/Collection/755517522311\",\"gid://shopify/Collection/756164067719\",\"gid://shopify/Collection/756164166023\",\"gid://shopify/Collection/756379189639\",\"gid://shopify/Collection/756480377223\",\"gid://shopify/Collection/756480442759\"],\"kanaele\":[[\"gid://shopify/Publication/301970915713\",true],[\"gid://shopify/Publication/301971014017\",true],[\"gid://shopify/Publication/302032716161\",true],[\"gid://shopify/Publication/302566834561\",true],[\"gid://shopify/Publication/302994456961\",true],[\"gid://shopify/Publication/391626359175\",true]]}"
+}

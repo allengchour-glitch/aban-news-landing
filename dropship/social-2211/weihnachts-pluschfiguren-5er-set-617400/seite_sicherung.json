@@ -1,0 +1,78 @@
+{
+ "gelesen": "2026-11-11T15:26:50.158Z",
+ "produkt": "gid://shopify/Product/16615813972359",
+ "handle": "weihnachts-pluschfiguren-5er-set-617400",
+ "medien": [
+  {
+   "id": "gid://shopify/MediaImage/77496776884615",
+   "position": 0,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0344d6f0-2841-42a4-941e-20f9b3265356.jpg?v=1791784235"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496776917383",
+   "position": 1,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 2 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c503be0d-a168-4c31-b20e-47fd12fc898d.jpg?v=1791784237"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496776950151",
+   "position": 2,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 3 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf119e32-dfed-4be2-815c-1f973f5087d9.jpg?v=1791784236"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496776982919",
+   "position": 3,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 4 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29b3a07d-8e20-4d58-b7a5-fcb9c3fca766.jpg?v=1791784235"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496777015687",
+   "position": 4,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 5 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/28ac74aa-3706-4e6e-9ace-a74fc62cb1e7.jpg?v=1791784235"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496777048455",
+   "position": 5,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 6 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4282720b-c70e-4da1-ba0f-4607acec7768.jpg?v=1791784236"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496777081223",
+   "position": 6,
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 7 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b38310b8-fd23-4524-b621-364723d97052.jpg?v=1791784236"
+  }
+ ],
+ "variantenMedien": {
+  "gid://shopify/ProductVariant/67843732177287": [
+   "gid://shopify/MediaImage/77496777048455"
+  ],
+  "gid://shopify/ProductVariant/67843732210055": [
+   "gid://shopify/MediaImage/77496776917383"
+  ]
+ },
+ "entfernen": [
+  {
+   "id": "gid://shopify/MediaImage/77496776950151",
+   "datei": "cf119e32-dfed-4be2-815c-1f973f5087d9",
+   "md5": "b9ceaab73c0a046f6a9a17c6e46fa200",
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 3 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf119e32-dfed-4be2-815c-1f973f5087d9.jpg?v=1791784236",
+   "grund": "gekacheltes Lieferanten-Wasserzeichen (chinesische Schriftzeichen und Logo) über die ganze Fläche",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachts-pluschfiguren-5er-set-617400/seite_sicherung_cf119e32-dfed-4be2-815c-1f973f5087d9.jpg"
+  },
+  {
+   "id": "gid://shopify/MediaImage/77496777015687",
+   "datei": "28ac74aa-3706-4e6e-9ace-a74fc62cb1e7",
+   "md5": "7dc34b4308fb2534bccbafde440da4bf",
+   "alt": "Weihnachts-Plüschfiguren – 5er-Set – Bild 5 | LuxeStyle",
+   "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/28ac74aa-3706-4e6e-9ace-a74fc62cb1e7.jpg?v=1791784235",
+   "grund": "englische Schrift «All for love» (Tüte, Schachtel) und Karte mit englischem Text; Valentinstags-Requisiten ausserhalb des Lieferumfangs",
+   "kopie": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/sw2211/weihnachts-pluschfiguren-5er-set-617400/seite_sicherung_28ac74aa-3706-4e6e-9ace-a74fc62cb1e7.jpg"
+  }
+ ],
+ "kern": "{\"title\":\"Weihnachts-Plüschfiguren – 5er-Set\",\"handle\":\"weihnachts-pluschfiguren-5er-set-617400\",\"status\":\"ACTIVE\",\"productType\":\"Spielzeug & Spiele\",\"descriptionHtml\":\"<!-- ls-var-v1 --><p>Für eine festliche Dekoration an Weihnachten sind diese Plüschfiguren eine charmante Ergänzung. Du erhältst ein Set aus fünf verschiedenen Plüsch-Hängedekorationen. Die Figuren sind aus Stoff gefertigt und eignen sich zum Aufhängen.</p><h3>Das zeichnet es aus</h3><ul>\\n<li>Set mit 5 Plüschfiguren</li>\\n<li>Aus weichem Stoff gefertigt</li>\\n<li>Zum Hängen geeignet</li>\\n</ul>\\n<div class=\\\"ls-produktdetails\\\">\\n<!--ls-feed-details--><h4>Produktdetails</h4>\\n<ul><li>\\n<strong>Gewicht:</strong> ca. 15 g</li></ul>\\n</div>\\n<div style=\\\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\\\">\\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/wohnen-dekoration\\\">Wohnen &amp; Deko</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"tags\":[\"auswahl-offen\",\"cj-real\",\"dekoration\",\"dropship\",\"geschenk\",\"mengenrabatt-a\",\"neuheit\",\"party\",\"partydeko\",\"sort-kinder-baby\",\"sort-puppen\",\"spielzeug\",\"varianten-nachgezogen-1025\",\"weihnachten\",\"wohnen\"],\"seo\":{\"title\":\"Weihnachts-Plüschfiguren – 5er-Set | LuxeStyle CH\",\"description\":\"Für eine festliche Dekoration an Weihnachten sind diese Plüschfiguren eine charmante Ergänzung. Set mit 5 Plüschfiguren.\"},\"options\":[{\"name\":\"Modell\",\"optionValues\":[{\"name\":\"Modell 1\"},{\"name\":\"Modell 2\"}]}],\"varianten\":[[\"gid://shopify/ProductVariant/67843732177287\",\"Modell 1\",\"CJYS227268601AZ\",\"16.90\",null,\"CONTINUE\",true,[{\"name\":\"Modell\",\"value\":\"Modell 1\"}]],[\"gid://shopify/ProductVariant/67843732210055\",\"Modell 2\",\"CJYS227268602BY\",\"16.90\",null,\"CONTINUE\",true,[{\"name\":\"Modell\",\"value\":\"Modell 2\"}]]],\"sammlungen\":[\"aus-tiktok-und-instagram\",\"bestseller-unter-50\",\"fortura-weihnachten\",\"geschenke-unter-30\",\"kinderspielzeug\",\"mengenrabatt-ab-2-stueck\",\"neu-eingetroffen\",\"party-deko-ch\",\"puppen-spielfiguren\",\"spielzeug\",\"spielzeug-neuheiten\",\"sub-baby-kids\",\"weihnachten-2026\",\"wohnen-dekoration\"]}"
+}

@@ -1,0 +1,34 @@
+[
+ {
+  "zeit": "2026-11-11T14:07:18.176Z",
+  "art": "aufgenommen",
+  "produkte": [
+   {
+    "id": "gid://shopify/Product/15458603336065",
+    "handle": "kaffeebecher-edelstahl-607200"
+   },
+   {
+    "id": "gid://shopify/Product/16603897692551",
+    "handle": "weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100"
+   },
+   {
+    "id": "gid://shopify/Product/16615820624263",
+    "handle": "weihnachtsbaum-anhanger-alpaka-set-617100"
+   },
+   {
+    "id": "gid://shopify/Product/15473085514113",
+    "handle": "kartenetui-aus-aluminium-618500"
+   },
+   {
+    "id": "gid://shopify/Product/16603943436679",
+    "handle": "christbaumdecke-mit-goldenen-pailletten-schnee-634500"
+   },
+   {
+    "id": "gid://shopify/Product/16615813972359",
+    "handle": "weihnachts-pluschfiguren-5er-set-617400"
+   }
+  ],
+  "vorher": 33,
+  "nachher": 39
+ }
+]
