@@ -1,0 +1,167 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Pia, Kurzfolge pia-warum-1-tiere (3D)</title>
+<style>
+  html,body{margin:0;background:#000;overflow:hidden;width:1080px;height:1920px;position:relative}
+  canvas{position:absolute;left:0;top:0;display:block}
+  .schild{position:absolute;left:90px;width:900px;box-sizing:border-box;padding:18px 26px;text-align:center;font:900 54px/1.12 system-ui,'Segoe UI',Arial,sans-serif;color:#1d1d22;background:#ffd23f;border:6px solid #1d1d22;border-radius:26px;box-shadow:0 10px 0 rgba(29,29,34,.35);opacity:0;transform-origin:50% 100%}
+  #schild{top:300px}
+  #quelle{top:470px;font-size:30px;font-weight:800;background:#fff;padding:8px 18px;border-width:4px;border-radius:16px;width:640px;left:220px;box-shadow:0 6px 0 rgba(29,29,34,.25)}
+  .karte{position:absolute;left:110px;width:860px;box-sizing:border-box;padding:12px 30px;display:flex;align-items:center;gap:26px;background:#fff;border:6px solid #1d1d22;border-radius:30px;box-shadow:0 10px 0 rgba(29,29,34,.35);opacity:0;font-family:system-ui,'Segoe UI',Arial,sans-serif;transform-origin:50% 100%}
+  .gross{font-size:112px;font-weight:900;color:#e05a1c;min-width:300px;text-align:center;line-height:1}
+  .klein{font-size:40px;font-weight:800;color:#1d1d22;line-height:1.15}
+</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script src="zeiten.js"></script>
+<script src="folge.js"></script>
+<div id="schild" class="schild"></div>
+<div id="quelle" class="schild">Quelle: Our World in Data</div>
+<div id="k0" class="karte" style="top:980px"><div class="gross"></div><div class="klein"></div></div>
+<div id="k1" class="karte" style="top:1180px"><div class="gross"></div><div class="klein"></div></div>
+<div id="k2" class="karte" style="top:1380px"><div class="gross"></div><div class="klein"></div></div>
+<script type="module">
+import * as THREE from 'three';
+import { erzeugeWelt } from '../../lib/welt3d.js';
+import { erzeugePia, spieler } from '../../lib/pia3d.js';
+import { kamera } from '../../lib/kamera3d.js';
+import { nachbearbeitung } from '../../lib/post.js';
+import { toon, koerper } from '../../lib/toon.js';
+import * as B from '../../lib/bausteine3d.js';
+
+const W = 1080, H = 1920, FPS = 30, Z = window.__ZEITEN, G = Z.gesamt, PI = Math.PI;
+const IDS = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10'];
+const F = window.__FOLGE || {};
+const SC = IDS.map((id, n) => Z.szenen.find((s) => s.id === id) || { id, t0: G + 10 + n, t1: G + 11 + n, zeilen: [], fehlt: true });
+const FOLGE = Z.szenen.map((s) => IDS.indexOf(s.id));   // Reihenfolge im Film als Nummern der Bühnen
+if (FOLGE.includes(-1) || new Set(FOLGE).size !== FOLGE.length) throw new Error('stimme.txt: unbekannte oder doppelt verwendete Szene');
+// Eine Szene endet, wo die nächste beginnt (Bühne und Kamera wechseln im selben Bild); die letzte endet mit dem Film.
+const ENDE = IDS.map((_, n) => { const j = FOLGE.indexOf(n); return j < 0 ? SC[n].t1 : (j + 1 < FOLGE.length ? SC[FOLGE[j + 1]].t0 : G); });
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(36, W / H, 0.1, 700);
+const welt = erzeugeWelt(scene, { dauer: 40, schattenGroesse: 2048 });
+const post = nachbearbeitung(renderer, scene, cam, W, H, { samples: Number(new URLSearchParams(location.search).get('aa') ?? 4) });
+const glatt = (x) => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+const lin = (a, b, t) => Math.min(1, Math.max(0, (t - a) / (b - a)));
+
+// ---- Bühnen: je eine Einstellung auf eigenem Boden weit ausserhalb des Dorfs (Radius 300 m) ----
+const ORT = IDS.map((_, i) => { const a = 0.4 + i * 0.62; return { x: 300 * Math.cos(a), z: 300 * Math.sin(a) }; });
+const BODEN = [0x86b85a, 0xa9a35a, 0x86b85a, 0x7cc06a, 0x86b85a, 0x6f8f5a, 0x86b85a, 0x7fae6a, 0x5d6a58, 0x8cb85a];
+const st = IDS.map((_, i) => { const g = B.buehne(scene, ORT[i].x, BODEN[i], 3 + i); g.position.z = ORT[i].z; const fl = new THREE.PointLight(0xfff0d8, 1.4, 60); fl.position.set(0, 8, 10); g.add(fl); g.visible = false; return g; });
+const anim = IDS.map(() => []);                       // je Szene: Funktionen (tl, u)
+const pias = [];
+const mkPia = (i, x, z, ry, segs) => { const f = erzeugePia({ skala: 0.7 }); st[i].add(f.wurzel); const sp = spieler(f, segs, [{ t: 0, x, z, ry }], { y: () => 0 }); pias[i] = sp; return sp; };
+const add = (i, obj, x, y, z, ry = 0) => { obj.position.set(x, y, z); obj.rotation.y = ry; st[i].add(obj); if (obj.update) anim[i].push((tl, u) => obj.update(tl, u)); return obj; };
+const K = (geom, farbe, o = { umriss: 0.03 }) => koerper(geom, farbe, o);
+const P = (m, x, y, z) => { m.position.set(x, y, z); return m; };
+const tisch = (i, x, z, l = 3.2, h = 0.8) => { const t = new THREE.Group(); t.add(P(K(new THREE.BoxGeometry(l, 0.1, 1.3), 0xd9a458), 0, h, 0)); for (const sx of [-l / 2 + 0.2, l / 2 - 0.2]) for (const sz of [-0.5, 0.5]) { const b = K(new THREE.CylinderGeometry(0.07, 0.08, h, 8), 0x6a4630, { umriss: 0.02 }); b.position.set(sx, h / 2, sz); t.add(b); } return add(i, t, x, 0, z); };
+const teller = (i, x, z, mitEssen = true) => { const g = new THREE.Group(); g.add(P(K(new THREE.CylinderGeometry(0.62, 0.54, 0.06, 28), 0xffffff, { umriss: 0.02 }), 0, 0.03, 0)); if (mitEssen) for (const [dx, dz, r, f] of [[-0.2, 0.05, 0.2, 0xd62839], [0.12, -0.12, 0.2, 0x4fb069], [0.15, 0.17, 0.17, 0xf78c1f], [-0.12, -0.2, 0.15, 0xe3b84a]]) g.add(P(K(new THREE.SphereGeometry(r, 12, 10), f, { umriss: 0.015 }), dx, 0.2, dz)); return add(i, g, x, 0.86, z); };
+
+// S1: Teller
+mkPia(0, 0, -1.3, 0, [{ t0: 0, t1: 99, clip: 'zeigen' }]); tisch(0, 0, 0); teller(0, 0, 0.1);
+// S2: Fläche in der Tiefe geteilt: vorne drei Viertel Tierfläche, hinten ein Viertel Menschennahrung
+{ const vor = new THREE.Mesh(new THREE.PlaneGeometry(18, 18), toon(0xb3a85a, { rim: 0 })); vor.rotation.x = -PI / 2; vor.position.set(0, 0.03, 3); vor.receiveShadow = true; st[1].add(vor);
+  const hint = new THREE.Mesh(new THREE.PlaneGeometry(18, 6), toon(0x5fbf4f, { rim: 0 })); hint.rotation.x = -PI / 2; hint.position.set(0, 0.04, -9); hint.receiveShadow = true; st[1].add(hint);
+  for (let k = 0; k < 6; k++) add(1, B.kuh({ ph: k * 1.3, s: 0.85 }), -5.5 + (k % 3) * 5.5, 0, 1 + Math.floor(k / 3) * 5.5, 0.4 + k * 0.6);
+  for (let k = 0; k < 3; k++) add(1, B.schwein({ ph: k }), -5 + k * 5, 0, 10.2, 2.4);
+  for (let k = 0; k < 3; k++) { add(1, K(new THREE.BoxGeometry(3.6, 0.3, 1.3), 0x7a5230), -4 + k * 4, 0.15, -9.4); for (let j = 0; j < 3; j++) add(1, B.soja({ ph: k + j }), -4.9 + k * 4 + j * 0.9, 0.1, -9.4); }
+  for (let k = 0; k < 9; k++) add(1, K(new THREE.BoxGeometry(0.15, 1.0, 0.15), 0x6a4630, { umriss: 0.015 }), -8 + k * 2, 0.5, -6);
+  mkPia(1, 0, -5.0, 0, [{ t0: 0, t1: 99, clip: 'zeigen' }]); }
+// S3: Soja: hinten Pflanzen, Trog mit grossem Haufen (77 %), später der kleine Tofuteller (7 %)
+{ for (let a = 0; a < 3; a++) for (let b = 0; b < 6; b++) add(2, B.soja({ ph: a + b }), -6 + b * 2.4, 0, -11 - a * 1.4);
+  const tr = B.trog({ l: 5 }); add(2, tr, 0, 0, -3, 0); anim[2].push((tl) => tr.update(tl, glatt(lin(0.4, 4.0, tl))));
+  for (let k = 0; k < 2; k++) add(2, B.kuh({ ph: k * 2, s: 0.85 }), -4.6 + k * 9.2, 0, -2.4, k ? PI * 0.9 : PI * 0.1);
+  tisch(2, -4.4, 4.8, 1.6, 0.7); add(2, B.tofu({ n: 3 }), -4.4, 0.76, 4.8); mkPia(2, -4.4, 3.4, 0.2, [{ t0: 0, t1: 3.5, clip: 'staunen' }, { t0: 3.5, t1: 99, clip: 'zeigen' }]); }
+// S4: Wasser: Säule mit 70 % Landwirtschaft, dahinter Fluss
+{ const f = new THREE.Mesh(new THREE.PlaneGeometry(80, 10), new THREE.MeshToonMaterial({ color: 0x3fa7e6 })); f.rotation.x = -PI / 2; f.position.set(0, 0.04, -9); st[3].add(f);
+  for (let k = 0; k < 10; k++) { const s = K(new THREE.SphereGeometry(0.5, 8, 6), 0xdff4ff, { umriss: 0.005 }); s.scale.set(1.6, 0.12, 0.5); st[3].add(s); anim[3].push((tl) => { s.position.set(-30 + ((tl * 2.2 + k * 6.3) % 60), 0.1, -11 + (k % 3) * 2.4); }); }
+  const w = B.wasserSaeule({ h: 5, r: 1.2 }); add(3, w, 0, 0, 0); anim[3].push((tl) => w.update(tl, 0.7 * glatt(lin(1.2, 5.5, tl))));
+  mkPia(3, 2.5, 2.0, -0.4, [{ t0: 0, t1: 99, clip: 'zeigen' }]); }
+// S5: Tiere auf der Wiese, rund zehn Hühner um Pia (ein Mensch)
+{ for (let k = 0; k < 3; k++) add(4, B.kuh({ ph: k * 1.7, s: 0.9 }), -7 + k * 2.8, 0, -3.5 - k * 0.6, 0.5 + k * 0.4);
+  for (let k = 0; k < 3; k++) add(4, B.schwein({ ph: k * 2 }), 4 + k * 2.2, 0, -3 - k * 0.5, PI - 0.4 + k * 0.3);
+  for (let k = 0; k < 10; k++) { const h = B.huhn({ ph: k * 0.9, s: 1.5 }); const a = (k / 10) * 2 * PI, rr = 2.0 + (k % 2) * 0.5; add(4, h, Math.cos(a) * rr, 0, Math.sin(a) * rr, -a + PI / 2); const t0 = (F.huehnerAb ?? 1.0) + k * (F.huehnerTakt ?? 0.45); anim[4].push((tl) => { h.visible = tl > t0; h.scale.setScalar(1.5 * glatt((tl - t0) / 0.35)); }); }
+  mkPia(4, 0, 0, 0, [{ t0: 0, t1: 99, clip: 'ernst' }]); }
+// S6: Tortendiagramm, ein Viertel orange schiebt sich heraus
+{ const t = B.torte({ r: 2.3 }); add(5, t, 0, 3.4, 0); anim[5].push((tl) => t.update(tl, glatt(lin(1.5, 4.5, tl))));
+  mkPia(5, 4.2, 1.4, -0.7, [{ t0: 0, t1: 6, clip: 'zeigen' }, { t0: 6, t1: 99, clip: 'ernst' }]); }
+// S7: Verluste: Tisch mit Äpfeln, ein Viertel fällt in die Tonne
+{ tisch(6, 0, 0, 4.2, 0.8); const bin = K(new THREE.CylinderGeometry(0.7, 0.55, 1.1, 14), 0x4a4f57); add(6, bin, 2.4, 0.55, 1.1);
+  for (let k = 0; k < 8; k++) { const a = K(new THREE.SphereGeometry(0.2, 12, 10), k < 6 ? 0xd62839 : 0xb5651d, { umriss: 0.015 }); st[6].add(a); const x0 = -1.6 + k * 0.45, tf = 3.0 + (k - 6) * 2.2;
+    anim[6].push((tl) => { const p = tl - tf; if (k < 6 || p < 0) { a.position.set(x0, 1.07, 0); return; } const q = Math.min(1, p / 0.9); a.position.set(x0 + (2.4 - x0) * q, 1.07 + 1.4 * q * (1 - q) - 0.22 * q, 1.1 * q); }); }
+  mkPia(6, -1.5, -1.6, 0.2, [{ t0: 0, t1: 99, clip: 'ernst' }]); }
+// S8: Modellrechnung: vier Felder, drei werden Wald
+{ const bgr = new THREE.Color(0xb89a5e), gr = new THREE.Color(0x4fa04a);
+  for (let k = 0; k < 4; k++) { const x = (k % 2 ? 1 : -1) * 2.0, z = (k < 2 ? -1 : 1) * 2.0; const m = new THREE.Mesh(new THREE.BoxGeometry(3.9, 0.2, 3.9), new THREE.MeshToonMaterial({ color: bgr.clone() })); m.position.set(x, 0.1, z); m.receiveShadow = true; st[7].add(m);
+    const baeume = []; for (let b = 0; b < 4; b++) { const t = B.baum({ s: 0.55 }); t.position.set(x + (b % 2 ? 0.9 : -0.9), 0.2, z + (b < 2 ? -0.9 : 0.9)); t.visible = false; st[7].add(t); baeume.push(t); }
+    const t0 = k === 0 ? 99 : 2.2 + k * 1.7; anim[7].push((tl) => { const q = glatt(lin(t0, t0 + 1.4, tl)); m.material.color.copy(bgr).lerp(gr, q); for (const t of baeume) { t.visible = q > 0.05; t.scale.setScalar(0.55 * q + 0.001); } }); }
+  mkPia(7, 2.8, 5.6, -0.3, [{ t0: 0, t1: 99, clip: 'zeigen' }]); }
+// S9: das System: Tor mit Warenschild
+{ add(8, B.tor(), 0, 0, -3); for (let k = 0; k < 5; k++) add(8, B.kuh({ ph: k, s: 0.55 }), -6 + k * 2.6, 0, -6.5, PI / 2 + 0.2 * k);
+  mkPia(8, 0, 2.0, 0, [{ t0: 0, t1: 99, clip: 'ernst' }]); }
+// S10: Teller mit Pflanzlichem, Pia freut sich
+mkPia(9, 0, -1.3, 0, [{ t0: 0, t1: SC[9].t1 - SC[9].t0 - 3.2, clip: 'zeigen' }, { t0: SC[9].t1 - SC[9].t0 - 3.2, t1: 99, clip: 'jubeln' }]); tisch(9, 0, 0); teller(9, 0, 0.1);
+{ const D = SC[9].t1 - SC[9].t0; for (let k = 0; k < 70; k++) { const m = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.02, 0.08), new THREE.MeshBasicMaterial({ color: [0xff5a5a, 0xffd23f, 0x5bbd4a, 0x4fa7e6][k % 4] })); st[9].add(m);
+  const t0 = D - 3.2 + (k % 14) * 0.1, sx = Math.sin(k * 12.9) * 2.4, sz = Math.cos(k * 7.3) * 1.2 - 1.2; anim[9].push((tl) => { const p = tl - t0; m.visible = p > 0; m.position.set(sx + Math.sin(p * 3 + k) * 0.3, 4.4 - 2.6 * p, sz); m.rotation.set(p * 6 + k, p * 4, p * 5); }); } }
+
+// ---- Kamera (lokale Schlüssel + Bühnenursprung) ----
+const L = (i, p, z) => [[ORT[i].x + p[0], p[1], ORT[i].z + p[2]], [ORT[i].x + z[0], z[1], ORT[i].z + z[2]]];
+const KS = (i, ease, shake, keys) => ({ t0: SC[i].t0, t1: ENDE[i] + (ENDE[i] >= G ? 0.01 : 0), ease, shake, keys: ((F.kamera || {})[IDS[i]] || keys).map(([u, p, z, fov]) => { const [P, Zp] = L(i, p, z); return { u, p: P, z: Zp, fov }; }) });
+const cm = kamera([
+  KS(0, 'glatt', 0.008, [[0, [0.4, 1.15, 3.4], [0, 0.95, 0], 30], [1, [1.4, 1.55, 5.6], [0, 1.15, -1.3], 36]]),
+  KS(1, 'glatt', 0.006, [[0, [0, 26, 28], [0, 0, 0], 42], [0.5, [7, 6, 17], [0, 1, -2], 40], [1, [3.5, 2.6, 6.5], [0, 1.2, -8], 36]]),
+  KS(2, 'glatt', 0.008, [[0, [0.5, 3.4, 11], [0, 0.9, -3], 42], [0.42, [0, 3.4, 11], [0, 0.9, -3], 42], [0.8, [-3.2, 1.8, 10], [-4.4, 1.0, 4.0], 34], [1, [-3.4, 1.7, 9], [-4.4, 1.0, 4.0], 32]]),
+  KS(3, 'glatt', 0.008, [[0, [-1.6, 2.0, 13], [0.6, 2.4, 0], 42], [1, [1.2, 3.6, 11], [0.8, 2.8, 0], 40]]),
+  KS(4, 'glatt', 0.01, [[0, [-8, 2.2, 10], [-2, 1, -1], 40], [1, [1.2, 1.7, 5.4], [0, 1.2, 0], 30]]),
+  KS(5, 'glatt', 0.008, [[0, [-3, 3.4, 18], [0, 3.4, 0], 40], [1, [3.5, 3.4, 16], [0.6, 3.4, 0], 38]]),
+  KS(6, 'glatt', 0.008, [[0, [1.0, 2.4, 10.5], [0.4, 0.9, 0], 40], [1, [0.6, 1.9, 8.2], [0.8, 1.0, 0.2], 34]]),
+  KS(7, 'sanft', 0.006, [[0, [0, 17, 13], [0, 0, 0], 40], [1, [6, 6, 13], [0, 0.4, 0], 40]]),
+  KS(8, 'glatt', 0.008, [[0, [3.6, 1.3, 13], [0, 2.6, -3], 38], [1, [-3.0, 1.6, 12], [0, 2.8, -3], 36]]),
+  KS(9, 'glatt', 0.008, [[0, [4, 1.5, 7], [0, 1.1, -0.4], 36], [1, [0.6, 1.5, 4.4], [0, 1.3, -1.3], 28]])
+]);
+
+// ---- Schilder und Karten ----
+const schild = document.getElementById('schild'), quelle = document.getElementById('quelle'), kk = [0, 1, 2].map((i) => document.getElementById('k' + i));
+const zl = Z.szenen.flatMap((s) => s.zeilen);
+const pop = (el, u) => { const a = Math.min(1, u / 0.12), b = Math.min(1, Math.max(0, (1 - u) / 0.1)); const o = Math.min(a, b); const s = 0.85 + 0.15 * (1 - Math.pow(1 - a, 3)) + (u < 0.12 ? 0.05 * Math.sin(u / 0.12 * PI) : 0); el.style.opacity = o; el.style.transform = `scale(${s})`; };
+const zahl = (ziel, tl, t0, dauer = 2.2) => Math.round(ziel * glatt(lin(t0, t0 + dauer, tl)));
+function karten(i, tl, D) {   // Liste [gross, klein, t0] je Karte
+  const a = [];
+  const eigene = (F.karten || {})[IDS[i]]; if (eigene) return eigene({ zahl, tl, D });
+  switch (i) {
+    case 1: a.push(['¾', 'der Agrarfläche gehören Tieren', 2.2], ['18 %', 'der Kalorien kommen daraus', 7.0]); break;
+    case 2: a.push([zahl(77, tl, 1.4) + ' %', 'der Sojabohnen: Tierfutter', 1.4], [zahl(7, tl, 5.2, 1.2) + ' %', 'direkt auf dem Teller', 5.2]); break;
+    case 3: a.push([zahl(70, tl, 1.6, 3.0) + ' %', 'des Süsswassers gehen in die Landwirtschaft', 1.6]); break;
+    case 4: a.push([zahl(80, tl, 1.2, 4.0) + ' Mrd.', 'Landtiere pro Jahr, rund 10 pro Mensch', 1.2]); break;
+    case 5: a.push(['¼', 'der Treibhausgase stammt aus dem Essen', 3.2]); break;
+    case 6: a.push(['¼', 'der Kalorien gehen verloren', 3.0]); break;
+    case 7: a.push(['4 → 1', 'Milliarden Hektar Agrarland (Modellrechnung)', 2.6]); break;
+    case 9: { const d = D - 9.0; a.push(['¾', 'Fläche', 2.4 + d * 0], ['77', 'Soja', 5.0], ['70', 'Wasser', 7.2]); break; }
+  }
+  return a;
+}
+
+window.__seek3d = async (t) => {
+  t = Math.min(t, G);
+  let j = 0; for (let k = 0; k < FOLGE.length; k++) if (t >= SC[FOLGE[k]].t0) j = k;
+  const i = FOLGE[j], sc = SC[i], tl = t - sc.t0, D = ENDE[i] - sc.t0, u = tl / D;
+  st.forEach((g, k) => { g.visible = k === i; });
+  pias[i].setzeZeit(tl); for (const f of anim[i]) f(tl, u);
+  const base = [3, 8, 11, 14, 17, 21, 23, 24, 32, 25], wz = base[i] + 0.9 * u, c = cm.bei(t);
+  welt.update(wz, new THREE.Vector3(c.z[0], 0, c.z[2]));
+  cam.fov = c.fov; cam.position.set(...c.p); cam.up.set(Math.sin(c.roll), Math.cos(c.roll), 0); cam.lookAt(...c.z); cam.updateProjectionMatrix();
+  let aktiv = null; for (const z of zl) if (z.titel && t >= z.start - 0.15 && t <= z.start + z.dauer + 0.5) aktiv = z;
+  if (!aktiv && t < zl[0].start) aktiv = zl[0];
+  if (aktiv) { schild.textContent = aktiv.titel; const us = (t - (aktiv.start - 0.15)) / (aktiv.dauer + 0.65);
+    if (aktiv === zl[0] && us < 0.12) { schild.style.opacity = 1; schild.style.transform = 'scale(1)'; } else pop(schild, us); } else schild.style.opacity = 0;
+  if (i >= 1 && i <= 7 && tl > 1.0 && tl < 4.6) { pop(quelle, (tl - 1.0) / 3.6); } else quelle.style.opacity = 0;
+  const ks = karten(i, tl, D);
+  kk.forEach((el, n) => { el.style.top = ((F.kartenTop || {})[IDS[i]] || [980, 1180, 1380])[n] + 'px'; const k = ks[n]; if (!k || tl < k[2]) { el.style.opacity = 0; return; } el.firstChild.textContent = k[0]; el.lastChild.textContent = k[1]; const x = lin(0, 0.45, tl - k[2]), c1 = 1.70158, back = 1 + (c1 + 1) * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); const aus = glatt(lin(0, 0.25, D - 0.3 - tl)) * (k[3] != null ? glatt(lin(0, 0.25, k[3] - tl)) : 1); el.style.opacity = Math.min(1, (tl - k[2]) / 0.15) * aus; el.style.transform = `scale(${0.55 + 0.45 * back}) rotate(${(1 - back) * -3}deg)`; });
+  const blende = (j === 0 ? 1 : 0.15 + 0.85 * glatt(lin(0, 0.22, tl))) * (j === FOLGE.length - 1 ? Math.min(1, (G - t) / 0.35) : 0.15 + 0.85 * glatt(lin(0, 0.22, D - tl)));
+  post.setze({ blende: Math.max(0, blende), bild: Math.round(t * FPS), waerme: wz < 7 ? 0.7 : wz < 20 ? 0.35 : 0.6 });
+  post.render();
+};
+Motion.fertig(G);
+</script>

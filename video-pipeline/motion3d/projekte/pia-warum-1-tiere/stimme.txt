@@ -1,0 +1,6 @@
+S1	Warum vegan leben? Pias erster Grund: die Tiere.	Warum vegan leben? Grund 1: die Tiere
+S5	Über achtzig Milliarden Landtiere werden jedes Jahr für Fleisch geschlachtet.	Über 80 Milliarden Landtiere im Jahr
+S5	Das sind rund zehn für jeden Menschen.	Rund 10 für jeden Menschen
+S5	Und auch sie fühlen Schmerz.	Auch sie fühlen Schmerz
+S10	Für einen pflanzlichen Teller wird kein Tier geschlachtet.	Pflanzlich: kein Tier geschlachtet
+S10	So wird die Welt ein Stück friedlicher.	So wird die Welt ein Stück friedlicher
