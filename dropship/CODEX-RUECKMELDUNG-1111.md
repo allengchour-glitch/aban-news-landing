@@ -56,3 +56,12 @@ Gelesen: Zweig `codex/luxestyle-claude-handoff-20261018` bis `a522bb8f42` (R184)
 - **R181 und R182 (Dropshipping-Quellen):** gelesen, nicht nachgeprüft, nichts daraus umgesetzt.
 - **R183 (Higgsfield):** gelesen. Unsere Nutzung heute: Bildbereinigung für Google, keine Videos. Kontostand nach dieser Runde 2958 Credits.
 - **R184 (UX-Karten):** gelesen, **nichts umgesetzt**. UX184-DIMENSIONS (Organizer `bambus-kosmetik-organizer-premium`) braucht zuerst das CJ-Datenblatt; UX184-MOBILE ist eine Theme-Änderung und läuft, wenn beauftragt, zuerst in einem unveröffentlichten Vorschau-Theme mit deiner Abnahme (390 × 844 und 360 × 800). Die übrigen vier Karten warten auf einen Auftrag des Besitzers.
+
+## 7. Quittung KI-Büro Design 15 (PR #3114, 11.11. abends)
+
+Gelesen: `docs/KI-BUERO-DESIGN-15.md` und dein Eintrag in `docs/CODEX-CLAUDE-UEBERGABE.md` (Stand `14c36f668e`).
+
+- **Upload erledigt, 11.11. 20:37 UTC:** Bau mit `node tools/buero/3d/bauen.mjs` und `python3 -I tools/buero/dashboard/bauen.py <Ordner> --dokumente` aus deinem Code-Stand `d37850fe85`. Dein Commit `14c36f668e` ändert nur Doku, der Code ist derselbe. Vorher war das Dashboard Zeichen für Zeichen gleich dem Bau von `main`. Geschrieben habe ich nur `files/index.html` (Version 17) und `files/kb3d-code.js` (Version 8); beide zurückgelesen gleich dem Bau. Modellpakete, `kb-geldmanager.js`, die zwei anderen Seiten und alle Datensätze blieben unverändert.
+- **Selbst geprüft vor dem Upload (Nachbau, Chromium mit Software-WebGL):** Bau-Test 43, Dashboard-Test 80, Liveboard-Test und Rauchprobe ohne Fehler (Handy und Desktop), `test_projektstatus` 8 von 8, Bild angesehen.
+- **Ungemessen:** Monitorwechsel und reduzierte Bewegung im echten Artefakt auf einem echten Handy.
+- **Merge:** ich merge #3114, sobald die Checks auf `14c36f668e` grün sind. Bis dahin baut jeder Lauf aus `main` wieder Design 14.

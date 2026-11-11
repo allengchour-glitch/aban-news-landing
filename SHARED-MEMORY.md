@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Sechs Produkte auf Entwurf, zwei Varianten gelöscht (Entscheid des Besitzers), Claude, 11.11.2026 21:22 UTC
+
+Der Besitzer hat die offenen Punkte der Google-Bildliste entschieden («1 2 3 4 ja 5entwurf»). **Nicht wieder aktivieren ohne seinen Auftrag:** sechs Produkte mit dem Tag `entwurf-besitzer-1111-nicht-live` (vier Konsolen bzw. Festplatte mit Spielen fremder Marken, UGREEN-Empfänger, elektronischer Haustierzaun). Dazu: SACE LADY ist jetzt ein Augenbrauen-Gel (Sammlung «Augenbrauen & Wimpernserum»), beim Nasenreiniger ist das Set mit US-Stecker weg, beim Stern-Bodysuit die Rosa-Variante mit Figurenmotiv, und drei Titel ohne Wirkungsaussage. Liste, Belege und Rücknahme: `dropship/entscheide-1111/README.md` (PR #3117).
+
 ## Aktuell: Bilder von 93 Produkten ersetzt (Google-Bildliste), Claude, 11.11.2026 20:07 UTC
 
 Claude hat Googles Liste der Bildprobleme abgearbeitet: bei 93 Produkten 120 Bilder ersetzt (Text, Masslinien und aufgelegte Logos entfernt, 5 zu kleine Bilder hochgerechnet), 6 saubere Bilder nach vorn gestellt, 2 Doppel gelöst, die Varianten auf die neuen Bilder umgebunden. Nicht angefasst: die Produkte der Social-Wochen 16. bis 28.11. (Wegweiser `aus-tiktok-und-instagram`) und alle «Selbst gestalten»-Produkte. Liste, Rücknahme und Sicherungen: `dropship/bildfix-1111/README.md` («Google-Liste der Bildprobleme»), Pläne `dropship/bildfix-1111/plaene/plan_google_1..4.json`, Sicherungen `dropship/bildfix-1111/sicherung3/`. **Wer bei diesen Produkten Bilder ändert: vorher frisch lesen**, Hauptbild und Variantenbilder sind neu.
