@@ -1,0 +1,111 @@
+{
+ "gelesen": "2026-11-11T09:06:31.484Z",
+ "produkte": [
+  {
+   "id": "gid://shopify/Product/15427217195393",
+   "handle": "magnet-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "varianten": [
+    {
+     "id": "gid://shopify/ProductVariant/55791941812609",
+     "titel": "7,6 × 7,6 cm",
+     "sku": "9000001_16366",
+     "kaufbar": true,
+     "policy": "CONTINUE",
+     "item": "gid://shopify/InventoryItem/55140680860033",
+     "tracked": false,
+     "staende": [
+      {
+       "ort": "gid://shopify/Location/109350125953",
+       "name": "Shop location",
+       "dienst": false,
+       "menge": 0
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55791941845377",
+     "titel": "10 × 10 cm",
+     "sku": "9000001_16367",
+     "kaufbar": true,
+     "policy": "CONTINUE",
+     "item": "gid://shopify/InventoryItem/55140680892801",
+     "tracked": false,
+     "staende": [
+      {
+       "ort": "gid://shopify/Location/109350125953",
+       "name": "Shop location",
+       "dienst": false,
+       "menge": 0
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55791941878145",
+     "titel": "15 × 15 cm",
+     "sku": "9000001_16465",
+     "kaufbar": true,
+     "policy": "CONTINUE",
+     "item": "gid://shopify/InventoryItem/55140680925569",
+     "tracked": false,
+     "staende": [
+      {
+       "ort": "gid://shopify/Location/109350125953",
+       "name": "Shop location",
+       "dienst": false,
+       "menge": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Product/15423895830913",
+   "handle": "buegeltransfer-selbst-gestalten",
+   "status": "ACTIVE",
+   "varianten": [
+    {
+     "id": "gid://shopify/ProductVariant/55784678654337",
+     "titel": "Gross (A3, ~30×21 cm)",
+     "sku": "TRANSFER-A3",
+     "kaufbar": true,
+     "policy": "CONTINUE",
+     "item": "gid://shopify/InventoryItem/55133354131841",
+     "tracked": false,
+     "staende": [
+      {
+       "ort": "gid://shopify/Location/109350125953",
+       "name": "Shop location",
+       "dienst": false,
+       "menge": -1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Product/15422849188225",
+   "handle": "dad-cap-selbst-gestalten",
+   "status": "ACTIVE",
+   "varianten": [
+    {
+     "id": "gid://shopify/ProductVariant/55778063843713",
+     "titel": "Default Title",
+     "sku": "8279135_7853",
+     "kaufbar": true,
+     "policy": "CONTINUE",
+     "item": "gid://shopify/InventoryItem/55126661628289",
+     "tracked": true,
+     "staende": [
+      {
+       "ort": "gid://shopify/Location/109743276417",
+       "name": "Printful",
+       "dienst": true,
+       "menge": 9999
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
