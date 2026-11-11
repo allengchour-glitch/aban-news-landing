@@ -92,6 +92,11 @@ def einfuegen(h, name, s):
                       json=body, timeout=60)
     if r.status_code != 200:
         print(f"ABBRUCH: shippingSettings:insert HTTP {r.status_code}: {r.text[:500]}"); sys.exit(6)
+    try:
+        antwort = r.json()
+        print("insert-Antwort, Dienste:", [d.get("serviceName") for d in antwort.get("services") or []])
+    except Exception:
+        print("insert-Antwort ohne JSON")
 
 
 def ohne_name(s):
