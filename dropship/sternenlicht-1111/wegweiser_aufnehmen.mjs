@@ -18,7 +18,9 @@ const HANDLES = (process.env.HANDLES || '').split(',').map((s) => s.trim()).filt
 const SAMMLUNG = 'aus-tiktok-und-instagram';
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const API = '2026-01';
-const SPERRE = /nicht-live|nicht-bewerben|gesperrt|adult|18plus|compliance|lizenz|rueckhol|stecker-nicht-ch|grind-gehalten|google-bild-abgelehnt/i;
+// `rueckhol` steht bewusst NICHT in der Liste: das Chargen-Tag `rueckhol-0907` liegt auf über 10 000 aktiven Produkten
+// und ist kein Sperrgrund (Skill shop-messen-nicht-raten, Lehre 17.10.; am 11.11. hielt es hier drei Produkte fälschlich zurück).
+const SPERRE = /nicht-live|nicht-bewerben|gesperrt|adult|18plus|compliance|lizenz|stecker-nicht-ch|grind-gehalten|google-bild-abgelehnt/i;
 if (!HANDLES.length) { console.error('HANDLES=a,b fehlt'); process.exit(1); }
 
 let token = null;
