@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Shop: Kaufkarten bei hängendem Abruf sofort sichtbar ·11.11.2026
+
+Von maincd8ce54 auf isoliertem Branch, aktuelle Regeln, Übergaben und offene PRs geprüft. Neuer Fall gegenüber PR3076/3077: Ersatzkatalog war zwar aktuell, wurde aber erst nach Ende des Produktabrufs gerendert. Browsergegenprobe mit offen gehaltenem JSON-Request: auf1440/390px jeweils null Kaufkarten trotz vorhandenem Ersatzkatalog. Keine Anbieter-/Kontoabfrage.
+
+`shop.html` zeigt sofort den unveränderten generierten Katalog. Ein späterer erfolgreicher Abruf darf aktualisieren; identischer Inhalt wird nicht erneut gerendert, damit Karten, Sprungziel und Tastaturfokus erhalten bleiben. Fehler lassen vorhandene Angebote stehen. Keine Preise, Produktdaten, Checkoutlinks oder Lieferregeln geändert, keine zusätzlichen Abrufe/Automationen/Retry-Schleifen.
+
+GEMESSEN: sechs Browserfälle (1440/390px × spät identisch/spät geändert/spät fehlgeschlagen), jeweils31 Karten bereits während ausstehender Antwort und alle Kaufziele gegen kanonische Quelle verglichen. Identische Antwort/Fehler erhalten Kartenelement und Fokus; abweichende Demo-Antwort aktualisiert. Keine Seitenüberbreite oder Seitenfehler; kein Checkout geöffnet. Vier bestehende Katalogregressionen und Konsistenzprüfung grün. Neue Browserprüfung nur temporär außerhalb Git, keine Workflow-/Testdatei geändert. Konkrete CI, Bereitstellung und frische Live-Gegenprobe im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen; Nutzen: vorhandene Angebote bleiben bei langsamem Abruf erreichbar. Eigene Mailangebot-Checkout-/Lieferzuordnungen weiterhin unbestätigt.
+
 ## Lizenzfreischaltung: feste Anbieterfrist ·11.11.2026
 
 Von main957de1b auf isoliertem Branch; aktuelle Regeln, Shared Memory, Arbeitsteilung und offene PRs gelesen. Claudes neue Büro-Liveboards Design14 unverändert. Neuer Befund gegenüber HTTP-/Inhaltsfehlern: `_pro.mjs` hatte keine Wartefrist. Simulierter blockierter Transport bzw. JSON-Inhalt ließ die Lizenzprüfung unbegrenzt warten. Vor Korrektur sechs neue Assertions rot; keine echte Lizenz/Anbieterabfrage.
