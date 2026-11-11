@@ -36,7 +36,8 @@ Drei Dinge fielen beim Ansehen der Folgen auf (Bild für Bild, Kontaktbögen):
   Keine Gesundheitsaussagen.
 - **Leise Hintergrundmusik, zwei feste Stücke.** Der Besitzer hörte am 11.11.2026 vier Mixkit-Stücke unter Folge 1 und
   wählte zwei: «a und b, du kannst die nächste weiter runter dimmen musik lautstärke». A = «Sleepy Cat» (Klavier, Mixkit 135),
-  B = «Forest Treasure» (Natur-Klänge, Mixkit 138). `bauen.sh` nimmt bei ungerader Folge A, bei gerader B, und legt die Musik
+  B = «Forest Treasure» (Natur-Klänge, Mixkit 138). Danach schrieb er «pia a»: `bauen.sh` nimmt für alle Folgen A (B bleibt
+  mit `MUSIK=b` wählbar) und legt die Musik
   bei −32 LUFS unter die Stimme (−16 LUFS); unter der Stimme duckt sie zusätzlich. Die Shop-Reels sind davon nicht betroffen:
   dort bleibt die Musik ausgesetzt, bis der Besitzer etwas anderes sagt.
 - Mixkit-Lizenz («Mixkit Stock Music Free License», auf jeder Seite der Stücke genannt): frei auch für kommerzielle Videos,

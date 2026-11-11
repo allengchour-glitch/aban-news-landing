@@ -8,7 +8,7 @@
 #   STIMME (Standard de-DE-KatjaNeural über edge-tts; Piper: z. B. de_DE-ramona-low),
 #   STIMME_RATE (+0%), STIMME_PAUSE (0.5), STIMME_BEGINN (0.25; wirkt nur mit edge-tts), EDGE_CA_BUNDLE (bei Proxy),
 #   MUSIK: a = «Sleepy Cat» (Klavier), b = «Forest Treasure» (Natur), beide Mixkit, vom Besitzer am 11.11.2026 gewählt;
-#          ohne = nur Stimme; oder ein Dateiname in automation/music. Vorgabe: ungerade Folge a, gerade Folge b.
+#          ohne = nur Stimme; oder ein Dateiname in automation/music. Vorgabe: a (Besitzer 11.11.2026: «pia a»).
 #   MUSIK_LUFS: Lautstärke der Musik (Vorgabe -32; die Stimme liegt bei -16, die Musik duckt zusätzlich unter der Stimme).
 set -euo pipefail
 cd "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/../.."
@@ -31,9 +31,8 @@ if [ "$modus" != "--nur-ton" ]; then
 fi
 [ -f "ausgabe/$f-stumm.mp4" ] && [ -f "ausgabe/$f-stimme.wav" ] || { echo "FEHLER: ausgabe/$f-stumm.mp4 oder -stimme.wav fehlt (erst ohne --nur-ton bauen)" >&2; exit 2; }
 
-# Musik wählen: Folge N aus dem Ordnernamen (pia-warum-N-…), ungerade a, gerade b
-musik="${MUSIK:-}"
-if [ -z "$musik" ]; then n="$(echo "$f" | sed -n 's/^pia-warum-\([0-9]\+\)-.*/\1/p')"; musik=a; [ -n "$n" ] && [ $((n % 2)) -eq 0 ] && musik=b; fi
+# Musik wählen: Vorgabe a für alle Folgen (Besitzer 11.11.2026: «pia a»); b und ohne bleiben wählbar
+musik="${MUSIK:-a}"
 case "$musik" in
   a) nr=135; name=sleepy-cat; start=1 ;;
   b) nr=138; name=forest-treasure; start=3 ;;
