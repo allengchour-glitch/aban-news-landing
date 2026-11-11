@@ -27,6 +27,33 @@
   function xf(m, x, y, z) { return [m[0] * x + m[4] * y + m[8] * z + m[12], m[1] * x + m[5] * y + m[9] * z + m[13], m[2] * x + m[6] * y + m[10] * z + m[14]]; }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
+  function zeileModell(e) {
+    var t = Date.parse(e.gemessen), now = Date.now(), gueltig = isFinite(t) && t <= now + 300000;
+    var minuten = gueltig ? Math.max(0, Math.floor((now - t) / 60000)) : 0;
+    var alter = e.zeitUnklar ? 'Zeit unklar' : !gueltig ? 'Nicht gemessen' : minuten < 1 ? 'Eben gemessen' : minuten < 60 ? 'vor ' + minuten + ' min' : minuten < 1440 ? 'vor ' + Math.floor(minuten / 60) + ' h' : 'vor ' + Math.floor(minuten / 1440) + ' d';
+    var ende = Date.parse(e.laufEnde), abschluss = gueltig && e.laufStatus === 'completed' && e.laufErgebnis === 'success' && isFinite(ende) && ende <= now + 300000;
+    var wort = !gueltig ? 'Noch nicht gemessen' : e.state === 'alt' ? 'Messung veraltet' : abschluss && e.state === 'gelb' ? 'Ergebnisprüfung offen' : abschluss ? 'Lauf abgeschlossen' : e.laufStatus === 'in_progress' ? 'Lauf aktiv gemeldet' : e.laufStatus === 'queued' ? 'Wartet auf Start' : e.laufStatus === 'completed' && e.laufErgebnis === 'failure' ? 'Lauf fehlgeschlagen' : e.state === 'rot' ? 'Fehler gemeldet' : e.state === 'alt' ? 'Messung veraltet' : e.state === 'gelb' ? 'Prüfung offen' : 'Stand gemeldet';
+    var ev = Date.parse(e.ereignisIso), sort = abschluss ? ende : gueltig && isFinite(ev) && ev <= now + 300000 ? ev : gueltig ? t : 0;
+    return { id: e.id, bereich: e.bereich, name: e.kurz || e.name || e.id, state: e.state, text: e.ereignis || '', befund: e.befund || '', naechster: e.naechster || '', quelle: e.quelle || '', laufStatus: e.laufStatus || '', laufErgebnis: e.laufErgebnis || '', laufId: e.laufId || '', abgeschlossen: abschluss, ergebnisWort: wort, sortZeit: sort, frisch: e.frisch == null ? null : e.frisch, alter: alter, gemessen: gueltig ? e.gemessen : '', messText: gueltig ? (e.gemessen_text || '') : '' };
+  }
+  function messstand(liste) {
+    var zeiten = liste.filter(function (e) { var t = Date.parse(e.gemessen); return isFinite(t) && t <= Date.now() + 300000; }).sort(function (a, b) { return Date.parse(a.gemessen) - Date.parse(b.gemessen); });
+    if (!zeiten.length) return '';
+    var a = zeiten[0], b = zeiten[zeiten.length - 1];
+    function datum(e) { return new Date(e.gemessen).toLocaleString('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }); }
+    return a.gemessen === b.gemessen ? datum(a) : datum(a) + ' bis ' + datum(b);
+  }
+  /* Ohne WebGL nutzbar: derselbe Ergebnisbestand für Bühne, Handy und Textansicht. */
+  K.arbeitsJournal = function (state) {
+    var ents = state && state.ents || [], gesehen = {};
+    var journal = ents.map(zeileModell).sort(function (a, b) { return b.sortZeit - a.sortZeit; }).filter(function (z) { if (!z.laufId) return true; if (gesehen[z.laufId]) return false; gesehen[z.laufId] = true; return true; });
+    return { stand: messstand(ents),
+      abgeschlossen: journal.filter(function (z) { return z.abgeschlossen && z.state === 'gruen'; }),
+      meldungen: journal.filter(function (z) { return z.gemessen && !z.abgeschlossen; }),
+      blocker: journal.filter(function (z) { return z.gemessen && (z.state === 'rot' || z.state === 'gelb'); }).sort(function (a, b) { return (a.state === 'rot' ? 0 : 1) - (b.state === 'rot' ? 0 : 1) || b.sortZeit - a.sortZeit; }),
+      unbekannt: journal.filter(function (z) { return !z.gemessen && z.state !== 'du'; }).length };
+  };
+
   /* Eine kleine Zahl in einer Sprechblase (für die Zahl der offenen Punkte). */
   function numberBubble(n) {
     var o = T.mk(64, 64), g = o.g;
@@ -157,7 +184,7 @@
       }
       function applyScreen(seat, kind, ent) {
         if (ent && T.station) {
-          var model = zeileModell(ent), key = JSON.stringify([model.name, model.state, model.text, model.alter]);
+          var model = zeileModell(ent), key = JSON.stringify([model.name, model.state, model.text, model.alter, model.ergebnisWort, model.befund]);
           if (!seat.dataTex) seat.dataTex = R.texture(T.station(model));
           else if (seat.dataKey !== key) R.retex(seat.dataTex, T.station(model));
           seat.dataKey = key; seat.screenKind = 'status';
@@ -187,19 +214,6 @@
       var lastState = null, lastZeit = '';
       function farbenHex() { var o = {}; ZUSTAENDE.forEach(function (k) { o[k] = (lastState && lastState.colors && lastState.colors[k]) || (cfg.colors && cfg.colors[k]) || DEF[k]; }); return o; }
       function zaehlen(liste) { var z = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 }; liste.forEach(function (e) { if (z[e.state] != null) z[e.state]++; else z.alt++; }); return z; }
-      function zeileModell(e) {
-        var t = Date.parse(e.gemessen), now = Date.now(), gueltig = isFinite(t) && t <= now + 300000;
-        var minuten = gueltig ? Math.max(0, Math.floor((now - t) / 60000)) : 0;
-        var alter = e.zeitUnklar ? 'Zeit unklar' : !gueltig ? 'Nicht gemessen' : minuten < 1 ? 'Eben gemessen' : minuten < 60 ? 'vor ' + minuten + ' min' : minuten < 1440 ? 'vor ' + Math.floor(minuten / 60) + ' h' : 'vor ' + Math.floor(minuten / 1440) + ' d';
-        return { name: e.kurz || e.name || e.id, state: e.state, text: e.ereignis || '', frisch: e.frisch == null ? null : e.frisch, alter: alter, gemessen: gueltig ? e.gemessen : '', messText: gueltig ? (e.gemessen_text || '') : '' };
-      }
-      function messstand(liste) {
-        var zeiten = liste.filter(function (e) { var t = Date.parse(e.gemessen); return isFinite(t) && t <= Date.now() + 300000; }).sort(function (a, b) { return Date.parse(a.gemessen) - Date.parse(b.gemessen); });
-        if (!zeiten.length) return '';
-        var a = zeiten[0], b = zeiten[zeiten.length - 1];
-        function datum(e) { return new Date(e.gemessen).toLocaleString('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }); }
-        return a.gemessen === b.gemessen ? datum(a) : datum(a) + ' bis ' + datum(b);
-      }
       /* Aus den Zeilen je Raum das, was das Liveboard zeigt (nur vorhandene Werte, nichts erfunden). */
       function liveModelle() {
         var ents = (lastState && lastState.ents) || [], zeit = swissClock(), farben = farbenHex(), out = {}, raeume = [], summe = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 };
@@ -212,7 +226,8 @@
           raeume.push({ titel: RAUMTITEL[name] || name, n: liste.length, zaehler: z });
           ZUSTAENDE.forEach(function (k) { summe[k] += z[k]; });
         });
-        out.__uebersicht = { zeit: zeit, stand: messstand(ents), farben: farben, raeume: raeume, summe: summe, n: ents.length };
+        out.__uebersicht = Object.assign(K.arbeitsJournal(lastState), { zeit: zeit, farben: farben, raeume: raeume, summe: summe, n: ents.length });
+
         return out;
       }
       function liveAktualisieren() { if (W.updateLive) { lastZeit = swissClock(); W.updateLive(lastState ? liveModelle() : {}); made.dirty = true; } }
@@ -425,7 +440,7 @@
         var day = clamp((Math.cos((hour - 13) / 24 * PI * 2) + 0.35) / 1.35, 0, 1);
         var k = 0.82 + 0.18 * day;
         var L = [-0.45, 0.8, 0.55], l = Math.hypot(L[0], L[1], L[2]);
-        return { l: [L[0] / l, L[1] / l, L[2] / l], lc: [0.50 * k, 0.48 * k, 0.43 * (0.9 + 0.1 * day)], sky: [0.62 * k, 0.64 * k, 0.70 * (0.92 + 0.08 * day)], gnd: [0.47 * k, 0.45 * k, 0.43 * k], shadowA: made.shadows === false ? 0 : 0.30, shadowY: 0.02 };
+        return { l: [L[0] / l, L[1] / l, L[2] / l], lc: [0.50 * k, 0.48 * k, 0.43 * (0.9 + 0.1 * day)], sky: [0.62 * k, 0.64 * k, 0.70 * (0.92 + 0.08 * day)], gnd: [0.47 * k, 0.45 * k, 0.43 * k], shadowA: made.shadows === false ? 0 : 0.20, shadowY: 0.02 };
       }
       function lamp(state) { return col[state] || col.alt; }
 
@@ -435,6 +450,14 @@
         resize();
         cam.update(made.aspect || 1.33);
         R.begin(cam, env());
+        // Monitoransicht isoliert das echte Gerät: Nachbarwände und Figuren verdecken keine Messwerte.
+        if (monitorMode) {
+          var board = monitorName === 'Zentral' ? W.overview : W.live[monitorName];
+          if (board) { if (board.caseMesh) R.draw(board.caseMesh, null); R.draw(board.mesh, null); }
+          R.end();
+          labels.forEach(function (l) { l.el.style.display = 'none'; });
+          return;
+        }
         K.drawWorld(W, R, t, hour, belt, still);
         var i, seat, f;
         for (i = 0; i < W.seats.length; i++) {

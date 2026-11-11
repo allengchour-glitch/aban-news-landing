@@ -158,8 +158,8 @@ def github_lesen(root, token, call=http, ids=None):
             r = runs[0]
             config = (Path(root) / ".github/workflows" / filename).read_text(encoding="utf-8")
             geplant = bool(re.search(r"^  schedule:\s*$", config, re.M) and re.search(r"^    - cron:", config, re.M))
-            result[ident] = {"workflow": filename, "status": r["status"], "conclusion": r.get("conclusion"),
-                             "zeit": r.get("run_started_at") or r["created_at"], "geplant": geplant, "html_url": r.get("html_url", "")}
+            result[ident] = {"workflow": filename, "lauf_id": str(r.get("id", "")), "status": r["status"], "conclusion": r.get("conclusion"),
+                             "zeit": r.get("run_started_at") or r["created_at"], "ende_zeit": r.get("updated_at", "") if r["status"] == "completed" else "", "geplant": geplant, "html_url": r.get("html_url", "")}
         except (ValueError, KeyError, TypeError, IndexError, OSError):
             result[ident] = {"fehler": "GitHub-Antwort oder Workflow-Datei nicht auswertbar"}
     return result

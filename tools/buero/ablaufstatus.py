@@ -17,14 +17,25 @@ def bereinigen(runs, jetzt=None):
                'ereignis':'Laufstatus nicht verfügbar','ereignis_iso':'',
                'befund':'Der letzte Ablauf konnte nicht gelesen werden. Ausführung und Ergebnis sind unbekannt.',
                'quelle':'Automatischer Abruf der Ablaufstände',
-               'naechster_schritt':'Zugang oder letzten Ablauf prüfen. Ein Link allein bestätigt keine Ausführung.'}
+               'naechster_schritt':'Zugang oder letzten Ablauf prüfen. Ein Link allein bestätigt keine Ausführung.',
+               'lauf_status':'','lauf_ergebnis':'','lauf_ende':'','lauf_id':''}
         try:
             t = datetime.fromisoformat(r['zeit'].replace('Z','+00:00'))
             if r.get('fehler') or t.tzinfo is None or t > jetzt+timedelta(minutes=5): raise ValueError()
             status, ende = r.get('status'), r.get('conclusion')
             if status not in ('queued','in_progress','completed','waiting','pending','requested'): raise ValueError()
             if status=='completed' and ende not in ('success','failure','cancelled','timed_out','action_required','neutral','skipped','stale','startup_failure'): raise ValueError()
-            row.update(gemessen=t.isoformat(),gemessen_text=t.strftime('%d.%m. %H:%M UTC'),ereignis_iso=t.isoformat())
+            row.update(gemessen=t.isoformat(),gemessen_text=t.strftime('%d.%m. %H:%M UTC'),ereignis_iso=t.isoformat(),
+                       lauf_status=status,lauf_ergebnis=ende or '')
+            ident_lauf = str(r.get('lauf_id') or '')
+            if ident_lauf.isascii() and ident_lauf.isdecimal() and len(ident_lauf) <= 20: row['lauf_id'] = ident_lauf
+            # GitHub liefert updated_at, keine exakte Dauer: nur bei abgeschlossenem Lauf als Quellzeit übernehmen.
+            if status == 'completed' and r.get('ende_zeit'):
+                try:
+                    fertig = datetime.fromisoformat(r['ende_zeit'].replace('Z','+00:00'))
+                    if fertig.tzinfo is not None and t <= fertig <= jetzt + timedelta(minutes=5):
+                        row['lauf_ende'] = fertig.isoformat()
+                except (ValueError, TypeError, AttributeError): pass
             row['status'] = 'gruen' if status=='completed' and ende=='success' else 'rot' if status=='completed' and ende in ('failure','timed_out','startup_failure') else 'gelb'
             row['ereignis'] = 'Letzter Lauf erfolgreich' if row['status']=='gruen' else 'Letzter Lauf fehlgeschlagen' if row['status']=='rot' else 'Ergebnis noch zu prüfen'
             row['befund'] = ('Der letzte Ablauf endete erfolgreich. Das bestätigt nur den Ablauf, keine Verkäufe und keinen fehlerfreien Shop.' if row['status']=='gruen' else
@@ -55,6 +66,7 @@ def bereinigen(runs, jetzt=None):
                 row['befund']='Der Studio-Ablauf mit Skript- und Videoentwurfsbau endete erfolgreich. Kein Upload und kein bestätigter Kanalbetrieb.'
                 row['naechster_schritt']='Entwürfe prüfen; Zielkanal und Veröffentlichungsweg getrennt bestätigen.'
             if ident=='yt_wachstum':
+                row.update(lauf_status='',lauf_ergebnis='',lauf_ende='',lauf_id='')
                 row['status']='gelb'
                 row['ereignis']='Kanalzuordnung offen'
                 row['befund']='Entwurfsbau ist vom Kanalbetrieb getrennt. Follower, Veröffentlichung und Wachstum sind nicht gemessen.'

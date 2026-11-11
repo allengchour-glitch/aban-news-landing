@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-15).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-16).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-15';
+  K.DESIGN_VERSION = 'campus-einheitlich-16';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -155,16 +155,30 @@
         for (var a = 0; a < 11; a++) B.box(0.5 + a * 0.19, 1.7, t + 0.055, 0.075, 3.08, 0.06, '#bba17f');
       }
     }
+    // Ein abgerundetes Gehäuse: Geometrie statt scharfkantiger Quader an den Monitoren.
+    function gehaeuse(x, y, z, w, h, d, r, col, emi, builder) {
+      var G = builder || B;
+      G.push().t(x, y, z).rx(PI / 2);
+      G.box(0, 0, 0, w - 2 * r, d, h, col, emi);
+      G.box(0, 0, 0, w, d, h - 2 * r, col, emi);
+      [-1, 1].forEach(function (sx) { [-1, 1].forEach(function (sz) {
+        G.cyl(sx * (w / 2 - r), 0, sz * (h / 2 - r), r, r, d, 12, col, emi);
+      }); });
+      G.pop();
+    }
     /* Das Liveboard an der Nordwand: Rahmen, Leuchtleiste, Bild (wird von W.updateLive gezeichnet). uc = Mitte in u. */
     function liveBoard(name, uc) {
-      var d = ROOMS[name], t = 0.18;
-      B.box(uc, BY, t + 0.05, BW + 0.3, BH + 0.3, 0.1, '#16222b');
+      var d = ROOMS[name], t = 0.18, rahmenB = new K.Builder();
+      rahmenB.t(wingX, 0, wingZ);
+      gehaeuse(uc, BY, t + 0.04, BW + 0.42, BH + 0.42, 0.12, 0.14, '#82969a', 0, rahmenB);
+      gehaeuse(uc, BY, t + 0.07, BW + 0.24, BH + 0.24, 0.1, 0.10, '#122b35', 0, rahmenB);
+      var caseMesh = stat(R.mesh(rahmenB)); caseMesh.roughness = 0.48; caseMesh.specular = 0.34;
       B.box(uc, BY - BH / 2 - 0.2, t + 0.1, BW + 0.2, 0.045, 0.03, '#7ad6c4', 0.5);
       B.box(uc, BY + BH / 2 + 0.2, t + 0.1, BW + 0.2, 0.03, 0.03, '#7ad6c4', 0.35);
       var tx = R.texture(T.liveboard(null), { mip: false });
-      var m = stat(quad({ x: uc, y: BY, z: t + 0.105, w: BW, h: BH, emi: 0.95, tex: tx }));
-      var cx = d.x0 + uc, cz = d.z0 + t + 0.1;
-      W.live[name] = { room: name, mesh: m, tex: tx, key: '', c: [cx, BY, cz], w: BW, h: BH, mn: [cx - BW / 2 - 0.15, BY - BH / 2 - 0.15, cz - 0.12], mx: [cx + BW / 2 + 0.15, BY + BH / 2 + 0.15, cz + 0.35], az: 0 };
+      var m = stat(quad({ x: uc, y: BY, z: t + 0.145, w: BW, h: BH, emi: 1, tex: tx }));
+      var cx = d.x0 + uc, cz = d.z0 + t + 0.145;
+      W.live[name] = { room: name, mesh: m, caseMesh: caseMesh, tex: tx, key: '', c: [cx, BY, cz], w: BW, h: BH, mn: [cx - BW / 2 - 0.15, BY - BH / 2 - 0.15, cz - 0.12], mx: [cx + BW / 2 + 0.15, BY + BH / 2 + 0.15, cz + 0.35], az: 0 };
     }
     var skyTex = R.texture(T.skyline(12), { mip: false });
     W.sky = { tex: skyTex };
@@ -196,6 +210,14 @@
         P.desk(B, o);
       }
       W.seats.push({ spec: s, idx: idx, key: s.room + ':' + s.i, o: o, screens: [], x: s.x, z: s.z, h: s.h, seed: hs });
+    });
+    // Weiche Kontaktflächen unter Tisch und Stuhl: aus vorhandener Schatten-Textur,
+    // statisch und unabhängig von der Zahl der laufenden Aufgaben.
+    var kontakt = tex('moebelKontakt', T.shadow);
+    W.seats.forEach(function (seat) {
+      var s = seat.spec, sc = s.sc || 1, c = Math.cos(s.h), sn = Math.sin(s.h), dz = 0.30 + 0.4 * sc;
+      stat(quad({ x: s.x + dz * sn, y: 0.018, z: s.z + dz * c, rx: -PI / 2, w: 2.05 * sc, h: 1.5 * sc, tex: kontakt, alpha: 0.2 }));
+      stat(quad({ x: s.x, y: 0.019, z: s.z, rx: -PI / 2, w: 1.1 * sc, h: 1.1 * sc, tex: kontakt, alpha: 0.12 }));
     });
     /* Arbeitsort-Schilder: kleine Aufsteller auf dem Tisch. Wer zur Kamera schaut (h = 0), bekommt es vorn in der Mitte vor den Bildschirm,
        wer wegschaut (h = PI), seitlich am Rand der Figur, damit weder Figur noch Bildschirm das Schild verdecken. Das Chefbüro hat keins. */
@@ -415,14 +437,17 @@
 
     /* =============================== CAMPUSPLATZ =============================== */
     // Zentralmonitor: breites, niedriges Brett auf zwei Pfosten (weit genug von den Räumen, damit er sie nicht verdeckt)
-    var CZ = 11.0, CW = 6.4, CH = 3.2, CY = 2.35;
-    B.box(0, 0.06, CZ, 7.4, 0.12, 1.1, '#263c49');
-    B.box(-3.55, 1.0, CZ - 0.06, 0.2, 2.0, 0.3, '#48616c'); B.box(3.55, 1.0, CZ - 0.06, 0.2, 2.0, 0.3, '#48616c');
-    B.box(0, CY, CZ, CW + 0.3, CH + 0.3, 0.26, '#172b38');
-    B.box(0, CY + CH / 2 + 0.2, CZ, CW + 0.4, 0.05, 0.3, '#79d7c8', 0.35);
+    var CZ = 11.0, CW = 8.8, CH = 4.4, CY = 2.75;
+    gehaeuse(0, 0.12, CZ, 10.1, 0.32, 1.4, 0.14, '#335254');
+    B.box(-4.2, 1.1, CZ - 0.06, 0.18, 2.0, 0.3, '#819998'); B.box(4.2, 1.1, CZ - 0.06, 0.18, 2.0, 0.3, '#819998');
+    var zentralB = new K.Builder();
+    gehaeuse(0, CY, CZ - 0.02, CW + 0.62, CH + 0.62, 0.28, 0.22, '#9db0ab', 0, zentralB);
+    gehaeuse(0, CY, CZ + 0.02, CW + 0.30, CH + 0.30, 0.26, 0.15, '#132f3a', 0, zentralB);
+    var zentralCase = stat(R.mesh(zentralB)); zentralCase.roughness = 0.48; zentralCase.specular = 0.34;
+    B.box(0, CY + CH / 2 + 0.22, CZ, CW + 0.10, 0.035, 0.3, '#cce8de', 0.4);
     var ovTex = R.texture(T.liveboardUebersicht(null), { mip: false });
-    var ovM = stat(quad({ x: 0, y: CY, z: CZ + 0.14, w: CW, h: CH, emi: 0.9, tex: ovTex }));
-    W.overview = { mesh: ovM, tex: ovTex, key: '', c: [0, CY, CZ + 0.14], w: CW, h: CH, az: 0 };
+    var ovM = stat(quad({ x: 0, y: CY, z: CZ + 0.16, w: CW, h: CH, emi: 1, tex: ovTex }));
+    W.overview = { mesh: ovM, caseMesh: zentralCase, tex: ovTex, key: '', c: [0, CY, CZ + 0.16], w: CW, h: CH, az: 0 };
     W.campusPanel = { mn: [-CW / 2 - 0.15, CY - CH / 2 - 0.15, CZ - 0.1], mx: [CW / 2 + 0.15, CY + CH / 2 + 0.15, CZ + 0.35] };
     // Sitzbereiche und Pflanzen auf dem Platz
     [-8.2, 8.2].forEach(function (x) {
