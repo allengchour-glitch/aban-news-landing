@@ -34,8 +34,14 @@ Drei Dinge fielen beim Ansehen der Folgen auf (Bild für Bild, Kontaktbögen):
 - Der **Schluss ist immer derselbe Gedanke**: «So wird die Welt ein Stück friedlicher.» Das ist Pias Wertung, keine Messung.
 - Ton der Serie (`../youtube-kanal/wissen-vegan.md`): klar gegen das System, freundlich zu Menschen, ohne Befehlsform.
   Keine Gesundheitsaussagen.
-- **Keine Hintergrundmusik** (nur Stimme). `../../../motion/mix.sh` nimmt die Mixkit-Stücke der Shop-Reels, und die hat der
-  Besitzer am 10.11. abgelehnt. Mit `MUSIK=auto` legt `bauen.sh` wieder Musik darunter.
+- **Leise Hintergrundmusik, zwei feste Stücke.** Der Besitzer hörte am 11.11.2026 vier Mixkit-Stücke unter Folge 1 und
+  wählte zwei: «a und b, du kannst die nächste weiter runter dimmen musik lautstärke». A = «Sleepy Cat» (Klavier, Mixkit 135),
+  B = «Forest Treasure» (Natur-Klänge, Mixkit 138). `bauen.sh` nimmt bei ungerader Folge A, bei gerader B, und legt die Musik
+  bei −32 LUFS unter die Stimme (−16 LUFS); unter der Stimme duckt sie zusätzlich. Die Shop-Reels sind davon nicht betroffen:
+  dort bleibt die Musik ausgesetzt, bis der Besitzer etwas anderes sagt.
+- Mixkit-Lizenz («Mixkit Stock Music Free License», auf jeder Seite der Stücke genannt): frei auch für kommerzielle Videos,
+  ohne Namensnennung; das Stück selbst nicht weitergeben. Darum liegen die Dateien nicht im Repo: `bauen.sh` lädt sie
+  bei Bedarf nach `ausgabe/musik/` (in `.gitignore`).
 - Wichtige Inhalte liegen zwischen 15 und 75 Prozent der Bildhöhe (oben und unten liegen in der YouTube-App Bedienflächen;
   diese Zone ist eine Annahme, nicht gemessen).
 
@@ -59,7 +65,8 @@ Vorschlag für die Veröffentlichung (erst nach dem Ja des Besitzers):
 - Titel: Warum vegan leben? Grund 1: die Tiere
 - Beschreibung: Warum vegan leben? Pias erster Grund: die Tiere. Über 80 Milliarden Landtiere werden jedes Jahr für Fleisch
   geschlachtet (2022: 83 Milliarden), das sind rund zehn für jeden Menschen. Für einen pflanzlichen Teller wird kein Tier
-  geschlachtet. Quelle: Our World in Data (Daten der Welternährungsorganisation). Stimme und Bilder sind computererzeugt.
+  geschlachtet. Quelle: Our World in Data (Daten der Welternährungsorganisation). Musik: «Sleepy Cat», Mixkit (Lizenz ohne
+  Namensnennung). Stimme und Bilder sind computererzeugt.
 - Hashtags: Shorts, vegan, Pia. Kennzeichnung «veränderte oder synthetische Inhalte»: Ja. Nicht für Kinder. Kategorie Film und Animation.
 - Weg: Metricool, Marke «Pias friedliche Welt» (`7967118`), YouTube-Short, wie Folge 1 und 2.
 
@@ -85,7 +92,11 @@ npm install                                              # three.js
 python3 -m pip install edge-tts                          # Stimme
 python3 -I projekte/pia-warum/anlegen.py pia-warum-1-tiere   # szene.html neu schreiben (nach Änderungen an der Vorlage)
 bash projekte/pia-warum/bauen.sh pia-warum-1-tiere       # Stimme, Zeiten, Render, Ton → ausgabe/pia-warum-1-tiere.mp4
+MUSIK=b bash projekte/pia-warum/bauen.sh pia-warum-1-tiere --nur-ton   # nur den Ton neu (andere Musik), ohne neuen Render
 ```
+
+`MUSIK` ist `a`, `b`, `ohne` oder ein Dateiname in `automation/music`; `MUSIK_LUFS` (Vorgabe −32) macht die Musik lauter
+oder leiser.
 
 Hinter einem Proxy `EDGE_CA_BUNDLE=<Zertifikatsbündel>` setzen. Der Lauf in der Cloud (Software-WebGL) braucht für rund 810
 Bilder etwa eine halbe Stunde; mit Grafikkarte `WEBGL=gpu`. Standbilder zur Kontrolle (rund 2,5 s je Bild):

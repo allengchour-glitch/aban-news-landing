@@ -60,13 +60,15 @@ ersetze("const i = Math.max(0, SC.findIndex((s) => t >= s.t0 && t < s.t1)), sc =
         "let j = 0; for (let k = 0; k < FOLGE.length; k++) if (t >= SC[FOLGE[k]].t0) j = k;\n"
         "  const i = FOLGE[j], sc = SC[i], tl = t - sc.t0, D = ENDE[i] - sc.t0, u = tl / D;")
 
-# Das erste Schild steht ab dem ersten Bild voll da (kein Einblenden am Anfang)
+# Das erste Schild steht ab dem ersten Bild voll da (kein Einblenden am Anfang). Ein Schild gehört zu seiner Szene:
+# es blendet mit ihr aus und steht nie über der nächsten Bühne.
 ersetze("let aktiv = null; for (const z of zl) if (z.titel && t >= z.start - 0.15 && t <= z.start + z.dauer + 0.5) aktiv = z;\n"
         "  if (aktiv) { schild.textContent = aktiv.titel; pop(schild, (t - (aktiv.start - 0.15)) / (aktiv.dauer + 0.65)); } else schild.style.opacity = 0;",
-        "let aktiv = null; for (const z of zl) if (z.titel && t >= z.start - 0.15 && t <= z.start + z.dauer + 0.5) aktiv = z;\n"
+        "let aktiv = null; for (const z of zl) if (z.titel && sc.zeilen.includes(z) && t >= z.start - 0.15 && t <= z.start + z.dauer + 0.5) aktiv = z;\n"
         "  if (!aktiv && t < zl[0].start) aktiv = zl[0];\n"
         "  if (aktiv) { schild.textContent = aktiv.titel; const us = (t - (aktiv.start - 0.15)) / (aktiv.dauer + 0.65);\n"
-        "    if (aktiv === zl[0] && us < 0.12) { schild.style.opacity = 1; schild.style.transform = 'scale(1)'; } else pop(schild, us); } else schild.style.opacity = 0;")
+        "    if (aktiv === zl[0] && us < 0.12) { schild.style.opacity = 1; schild.style.transform = 'scale(1)'; } else pop(schild, us);\n"
+        "    if (j < FOLGE.length - 1) schild.style.opacity = schild.style.opacity * Math.min(1, Math.max(0, (D - tl) / 0.22)); } else schild.style.opacity = 0;")
 
 # Oberkante der drei Karten je Bühne einstellbar (kartenTop: { S10: [1260, 1435, 1610] }), damit sie nichts Wichtiges verdecken
 ersetze("kk.forEach((el, n) => { const k = ks[n];",
