@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-10T12:34:16Z",
+ "stand": "2026-11-11T11:51:04Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Apple-CEO Ternus drängt auf mehr Tempo bei KI-Entwicklung",
-   "u": "https://www.heise.de/news/Apple-CEO-Ternus-draengt-auf-mehr-Tempo-bei-KI-Entwicklung-11519012.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-10T12:16:00Z",
-   "s": "Apples neuer CEO John Ternus drängt laut einem Bericht auf schnellere Fortschritte bei der künstlichen Intelligenz.",
-   "sprache": "de"
-  },
-  {
-   "t": "Helping caregivers use AI in everyday life",
-   "u": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
-   "q": "OpenAI",
-   "d": "2026-11-10T12:00:00Z",
-   "s": "OpenAI Academy is bringing free, hands-on ChatGPT workshops to caregivers in five U.S. cities, helping them build practical AI skills for everyday life.",
-   "sprache": "en"
-  },
-  {
-   "t": "Andrea Nahles: Bundesarbeitsagentur erwartet 800.000 Arbeitsplätze weniger durch KI",
-   "u": "https://www.golem.de/news/andrea-nahles-bundesarbeitsagentur-erwartet-800-000-arbeitsplaetze-weniger-durch-ki-2611-215038.html",
-   "q": "Golem",
-   "d": "2026-11-10T11:57:02Z",
-   "s": "Die Bundesarbeitsagentur rechnet wegen KI mit einem weitreichenden Umbau des Arbeitsmarkts. Besonders hart trifft es den Nachwuchs. (KI, Wirtschaft)",
-   "sprache": "de"
-  },
-  {
-   "t": "Solopreneure in Gefahr: Experten erklären größtes Cybersecurity-Risiko und wie du dich als Einzelunternehmer schützt",
-   "u": "https://t3n.de/news/solopreneure-in-gefahr-experten-erklaeren-groesstes-cybersecurity-risiko-und-wie-du-dich-als-einzelunternehmer-schuetzt-1772138/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Sam Altman versprach die „Rettung des Klimas“ durch KI: Was ist davon heute übrig?",
+   "u": "https://t3n.de/news/sam-altman-versprach-die-rettung-des-klimas-durch-ki-was-ist-davon-heute-uebrig-1772410/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-10T11:15:32Z",
-   "s": "Dank generativer KI werden auch kleine Ziele wie Einzelunternehmer für Cyberkriminelle attraktiv. Zwei Experten erklären, warum es zum Schutz keine aufwendigen weiterlesen auf t3n.de",
+   "d": "2026-11-11T11:00:21Z",
+   "s": "Auf der UN-Klimakonferenz in Antalya steht Künstliche Intelligenz ganz oben auf der Agenda. Laut einer Prognose könnte KI tatsächlich zur Senkung von CO2-Emissiweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Vor dem Börsengang: Wie riskant ist die Anthropic-Aktie?",
-   "u": "https://www.golem.de/news/vor-dem-boersengang-wie-riskant-ist-die-anthropic-aktie-2611-215031.html",
-   "q": "Golem",
-   "d": "2026-11-10T11:00:02Z",
-   "s": "Der IPO weckt Hoffnungen auf eine große KI-Aktie. Doch hohe Investitionen und unsicheres Wachstum werfen Fragen auf. Was Anleger wissen sollten. Eine Analyse von Ulrike Barth (Anthropic, Börse)",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Regulierung: Macron drängt auf internationale Sicherheitsstandards",
-   "u": "https://www.heise.de/news/KI-Regulierung-Macron-draengt-auf-internationale-Sicherheitsstandards-11518762.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Auto SR: Microsofts KI-Upscaler läuft auf der Xbox Ally X jetzt auch mobil",
+   "u": "https://www.heise.de/news/Auto-SR-Microsofts-KI-Upscaler-laeuft-auf-der-Xbox-Ally-X-jetzt-auch-mobil-11520596.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-10T10:27:00Z",
-   "s": "Frankreichs Präsident Emmanuel Macron hat internationale Akteure zu einer Initiative für mehr Sicherheit und Transparenz bei KI-Modellen zusammengerufen.",
+   "d": "2026-11-11T11:00:00Z",
+   "s": "Microsofts KI-Upscaler Auto SR ist auf der ROG Xbox Ally X offiziell verfügbar und läuft nun auch im Handheld-Modus. Neu ist ein Modus für bis zu 120 fps.",
    "sprache": "de"
   },
   {
-   "t": "Das kann iOS 27.3 Beta: Apple bringt Health-App und KI-Tools",
-   "u": "https://t3n.de/news/ios-27-3-beta-funktionen-health-ki-1771753/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Nach Sicherheitsvorfall mit OpenAI: Australien prüft Straftatbestand gegen unsichere KI",
+   "u": "https://www.golem.de/news/nach-sicherheitsvorfall-mit-openai-australien-prueft-straftatbestand-gegen-unsichere-ki-2611-215079.html",
+   "q": "Golem",
+   "d": "2026-11-11T10:47:02Z",
+   "s": "Neben der Schaffung einer neuen Sicherheitsbehörde will Australien Unternehmen, die wissentlich unsichere KI-Modelle auf den Markt bringen, bestrafen. (KI, Politik)",
+   "sprache": "de"
+  },
+  {
+   "t": "IT-Jobs: Produktmanager sind Gewinner des KI-Zeitalters",
+   "u": "https://www.golem.de/news/it-jobs-produktmanager-sind-gewinner-des-ki-zeitalters-2611-215076.html",
+   "q": "Golem",
+   "d": "2026-11-11T10:22:01Z",
+   "s": "In den USA werden immer weniger Softwareentwickler eingestellt. Auch wird der Umgang mit KI zu einem essenziellen Skill bei der Jobsuche. (Arbeit, Softwareentwicklung)",
+   "sprache": "de"
+  },
+  {
+   "t": "Open-Source-Low-Code: Budibase 4.0 vereinfacht Firmenprozesse",
+   "u": "https://www.heise.de/news/Open-Source-Low-Code-Budibase-4-0-vereinfacht-Firmenprozesse-11520118.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-11T09:49:00Z",
+   "s": "Mehr Kontrolle über KI-Agenten und Workflows: Die Low-Code-Plattform Budibase 4.0 protokolliert Ausführungsschritte im Detail und bündelt Freigaben im Portal.",
+   "sprache": "de"
+  },
+  {
+   "t": "Experience the art and legacy of Dr. Esther Mahlangu",
+   "u": "https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu/",
+   "q": "Google AI",
+   "d": "2026-11-11T09:00:00Z",
+   "s": "A new online archive of Esther Mahlangu’s life and art is now on Google Arts & Culture.",
+   "sprache": "en"
+  },
+  {
+   "t": "KI-Stimmen mit Emotionen: DeepL stellt neues Modell Aure vor",
+   "u": "https://t3n.de/news/ki-stimmen-mit-emotionen-deepl-stellt-neues-modell-aure-vor-1772684/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-10T09:55:00Z",
-   "s": "Apple hat die erste Beta-Version von iOS 27.3 veröffentlicht. Sie bringt ein Feature zurück, das aus der Vorversion gestrichen wurde. Auch das iPhone Duo bekommt neue Funktionen. weiterlesen auf t3n.d…",
+   "d": "2026-11-11T08:03:52Z",
+   "s": "Mit einem neuen KI-Modell will DeepL menschenähnliche Übersetzungen mit ausdrucksstarken, generierten Stimmen ermöglichen. Welche Techniken Aure dabei im Gegensatz zu vorherigen Modellen nutzt. weiter…",
    "sprache": "de"
   },
   {
-   "t": "Closing the AI guidance gap in education",
-   "u": "https://openai.com/index/closing-ai-guidance-gap-education",
+   "t": "ChatGPT Plus for veterans and servicemembers",
+   "u": "https://openai.com/index/chatgpt-plus-for-veterans",
    "q": "OpenAI",
-   "d": "2026-11-10T09:00:00Z",
-   "s": "New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
+   "d": "2026-11-11T08:00:00Z",
+   "s": "More than 20,000 veterans and transitioning service members have claimed a free year of ChatGPT Plus. See how they use it to prepare for civilian careers.",
    "sprache": "en"
   },
   {
-   "t": "Otter AI can now follow conversations across 30+ languages",
-   "u": "https://techcrunch.com/2026/11/09/otter-ai-can-now-follow-conversations-across-30-languages/",
+   "t": "Nvidia’s crisis has corporate governance experts reaching for the popcorn",
+   "u": "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/",
    "q": "TechCrunch AI",
-   "d": "2026-11-10T07:00:00Z",
-   "s": "Otter AI just added support for 27 languages and revealed an upcoming feature that can follow along if speakers switch between languages.",
+   "d": "2026-11-11T07:30:51Z",
+   "s": "The governance experts we talked to say nobody has seen anything like what's unfolding right now.",
    "sprache": "en"
   },
   {
-   "t": "Anthropic reportedly plans to move forward with IPO plans",
-   "u": "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-10T01:27:12Z",
-   "s": "The AI company is expected to set its valuation range this week, the Wall Street Journal reported.",
-   "sprache": "en"
+   "t": "KI-Infrastruktur und Politik: Die neuen Powerplayer bei Meta",
+   "u": "https://netzpolitik.org/2026/ki-infrastruktur-und-politik-die-neuen-powerplayer-bei-meta/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-11T06:33:08Z",
+   "s": "Die neue Meta-Präsidentin Dina Powell McCormick hat beste Kontakte zu Republikanern: Im September war sie beim Friedensinstitut von Donald Trump zu Gast. – Alle Rechte vorbehalten: UPI PhotoIm Wettren…",
+   "sprache": "de"
   }
  ]
 }
