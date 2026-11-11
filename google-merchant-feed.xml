@@ -3997,27 +3997,6 @@
 <g:shipping><g:country>CH</g:country><g:price>7.00 CHF</g:price></g:shipping>
 </item>
 <item>
-<g:id>dad-cap-selbst-gestalten</g:id>
-<g:title>Dad-Cap – Selbst gestalten</g:title>
-<g:description>Druck auf Bestellung. Die voraussichtliche Lieferzeit hängt von Artikel, Variante, Druckstandort und Lieferadresse ab. Eine aktuelle Prognose wird im Bestellablauf angezeigt, soweit verfügbar. Versand in die Schweiz und nach Liechtenstein. html:has([data-lspod-blocked=&quot;15422849188225&quot;]) form[action*=&quot;/cart/add&quot;] button[type=&quot;submit&quot;],html:has([data-lspod-blocked=&quot;15422849188225&quot;]) form[action*=&quot;/cart/add&quot;] input[type=&quot;submit&quot;],html:has([data-lspod-blocked=&quot;15422849188225&quot;]) .shopify-payment-button{pointer-events:none!important;opacity:.45!important} Personalisierung derzeit nicht bestellbar Die nötige Stickplatzierung und ihre Produktionsoptionen sind noch nicht vollständig geprüft. Wir schalten die Gestaltung erst nach der technischen Prüfung frei. (function(s){var ids=[&quot;55778063843713&quot;];var root=s.previousElementSibling;function ours(f){var i=f&amp;&amp;f.querySelector&amp;&amp;f.querySelector(&apos;[na...</g:description>
-<g:link>https://luxestyle.ch/products/dad-cap-selbst-gestalten</g:link>
-<g:image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dad-cap-selbst-gestalten.jpg?v=1781356270</g:image_link>
-<g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/yqgoo7yqjcddfo2hlcpt.png?v=1781719037</g:additional_image_link>
-<g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_yupoong6245cm_flatlay_back_base.png?v=1793617214</g:additional_image_link>
-<g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_yupoong6245cm_flatlay_front_base.png?v=1793617215</g:additional_image_link>
-<g:availability>in stock</g:availability>
-<g:price>31.90 CHF</g:price>
-<g:condition>new</g:condition>
-<g:brand>LuxeStyle</g:brand>
-<g:mpn>8279135_7853</g:mpn>
-<g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Hats</g:google_product_category>
-<g:product_type>Accessoires</g:product_type>
-<g:item_group_id>dad-cap-selbst-gestalten</g:item_group_id>
-<g:age_group>adult</g:age_group>
-<g:gender>female</g:gender>
-<g:shipping><g:country>CH</g:country><g:price>7.00 CHF</g:price></g:shipping>
-</item>
-<item>
 <g:id>alltags-umhangetasche-selbst-gestalten</g:id>
 <g:title>Alltags-Umhängetasche – Selbst gestalten</g:title>
 <g:description>Druck auf Bestellung. Die voraussichtliche Lieferzeit hängt von Artikel, Variante, Druckstandort und Lieferadresse ab. Eine aktuelle Prognose wird im Bestellablauf angezeigt, soweit verfügbar. Versand in die Schweiz und nach Liechtenstein. Suchst du nach einer vielseitigen Unisex-Tasche mit klassischer Silhouette? Diese Tasche ist eine ausgezeichnete Wahl für den Alltag. Sie ist eine praktische Umhängetasche mit minimalistischem Design, die sich leicht mit verschiedenen Styles kombinieren lässt. Der verstellbare Schultergurt sorgt für hohen Tragekomfort, während der Reissverschluss deine wichtigsten Dinge sicher verstaut. Kompakt, aber geräumig genug für alles, was du täglich brauchst. • 100 % recyceltes Polyester • Einheitsgrösse: 45 × 22 × 12 cm • Fassungsvermögen: 12 Liter • Wasserabweisendes Material • Zwei-Wege-Reissverschluss für einfachen Zugriff • Aussentasche vorne mit Kordel...</g:description>
@@ -4442,7 +4421,7 @@
 <g:description>📦 Lieferzeit Schweiz: 7–14 Werktage · Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein html:has([data-lspod-blocked=&quot;15423895830913&quot;]) form[action*=&quot;/cart/add&quot;] button[type=&quot;submit&quot;],html:has([data-lspod-blocked=&quot;15423895830913&quot;]) form[action*=&quot;/cart/add&quot;] input[type=&quot;submit&quot;],html:has([data-lspod-blocked=&quot;15423895830913&quot;]) .shopify-payment-button{pointer-events:none!important;opacity:.45!important} Personalisierung derzeit nicht bestellbar Fremd-Fulfillment: Die Druckdatenübergabe an den Produktionspartner ist noch nicht bestätigt. Wir schalten die Gestaltung erst nach der technischen Prüfung frei. (function(s){var ids=[&quot;55784678654337&quot;];var root=s.previousElementSibling;function ours(f){var i=f&amp;&amp;f.querySelector&amp;&amp;f.querySelector(&apos;[name=&quot;id&quot;]&apos;);return !!(i&amp;&amp;ids.indexOf(String(i.value))&gt;=0)}function warn(e){e.preventDefault();e.stopImmediatePropagation();root&amp;&amp;r...</g:description>
 <g:link>https://luxestyle.ch/products/buegeltransfer-selbst-gestalten</g:link>
 <g:image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/buegeltransfer.jpg?v=1781356273</g:image_link>
-<g:availability>in stock</g:availability>
+<g:availability>out of stock</g:availability>
 <g:price>35.90 CHF</g:price>
 <g:condition>new</g:condition>
 <g:brand>LuxeStyle</g:brand>
@@ -4644,7 +4623,7 @@
 <g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_diecutmagnets_flat_1_base.jpg?v=1793617251</g:additional_image_link>
 <g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_diecutmagnets_flat_2_base.jpg?v=1793617250</g:additional_image_link>
 <g:additional_image_link>https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_diecutmagnets_flat_3_base.jpg?v=1793617250</g:additional_image_link>
-<g:availability>in stock</g:availability>
+<g:availability>out of stock</g:availability>
 <g:price>16.90 CHF</g:price>
 <g:condition>new</g:condition>
 <g:brand>LuxeStyle</g:brand>
@@ -105245,7 +105224,7 @@
 <g:price>82.90 CHF</g:price>
 <g:condition>new</g:condition>
 <g:brand>LuxeStyle</g:brand>
-<g:mpn>CJ-2605010333381628300</g:mpn>
+<g:mpn>CJYD286476702BY</g:mpn>
 <g:google_product_category>Animals &amp; Pet Supplies &gt; Pet Supplies &gt; Pet Bowls, Feeders &amp; Waterers</g:google_product_category>
 <g:product_type>Haustierbedarf</g:product_type>
 <g:item_group_id>smarter-5l-futterautomat-mit-app-steuerung-628300</g:item_group_id>
