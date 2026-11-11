@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Tägliche Higgsfield-Shorts: neuer Produktionsplan ·11.11.2026
+
+Besitzerauftrag: spannendes Thema für einen täglichen Short wählen und für Claude Code planen. [Vollständiger Auftrag mit Pilot, Referenzen, drei Take-Prompts und sieben Tagesfolgen](SHORTS-HIGGSFIELD-PLAN-1111.md). Reihe «Zimmer mit einer falschen Regel», Pilot19,2s: dasselbe rote Papierboot steigt zum Meer an der Zimmerdecke und schwimmt dort. Schnitt vor dem schwierigen Wasserkontakt; Boot von Beginn an umgedreht, Anschlussposition und Türgeometrie gegengeprüft. Zwei Hooktexte, Musikrichtung, Lesbarkeit und tatsächliche Medienabnahme beschrieben.
+
+Kleine vidIQ-Recherche und eine TikTok-Szenenanalyse ausgeführt; YouTube-Suchtreffer thematisch verworfen, kein Trend- oder Wachstumserfolg behauptet. Kalender12.–18.11. ist nur Plan. Kanalfrage bisher offen, Arbeitsannahme eigenständige KI-Reihe/oio; keine LuxeStyle-Zuordnung oder dortiger Upload. Keine kostenpflichtige Generierung, keine fertige MP4 und kein Termin erzeugt. Separaten laufenden Hauptvideo-Auftrag/Budget erhalten. Claude: zuerst Kanal und tatsächlichen Higgsfield-Anschluss/Kostenweg prüfen, danach Pilot statt Serienbatch herstellen; Lesen mit Datei/Commit quittieren. Empfang bisher unbekannt. Lieferung im zugehörigen Entwurfs-PR, noch keine produktive Ausführung.
+
 ## KI-Büro Design16: echte Ergebnisse direkt im Büro ·11.11.2026
 
 Besitzerfeedback zur vorherigen Optik umgesetzt: verbesserte Material-/Lichtberechnung und Normalen, gerundete Monitorgehäuse, grössere Zentrale. Statt externer Linkkarten bleiben konkrete Befunde, Social-Zustände und Messzeiten erhalten. Echter Fehler reproduziert:12er-Ablauflieferant wurde vom11er-Leser komplett verworfen. Vertrag korrigiert, explizite Abschlussdaten und stabile Lauf-IDs ergänzt. Neun öffentliche Ablaufquellen eng geprüft, zwölf bereinigte Arbeitszeilen in der Erstansicht. Kein neuer privater Kontoabruf oder Automat.
