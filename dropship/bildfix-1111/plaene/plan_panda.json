@@ -1,0 +1,27 @@
+[
+ {
+  "handle": "panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550337229185",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550337229185",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-1.jpg?v=1794423126",
+    "alt_text": "Panda-Handyhalter, sitzend"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550337196417",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-2.jpg?v=1794423133",
+    "alt_text": "Panda-Handyhalter mit Krone"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550337327489",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-3.jpg?v=1794423140",
+    "alt_text": "Panda-Handyhalter mit Boxhandschuhen"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650059493761"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69550337261953"
+ }
+]

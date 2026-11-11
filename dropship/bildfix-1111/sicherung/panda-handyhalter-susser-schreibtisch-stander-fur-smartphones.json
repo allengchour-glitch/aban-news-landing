@@ -1,0 +1,92 @@
+{
+ "zeit": "2026-11-11T18:52:50.476Z",
+ "plan": {
+  "handle": "panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550337229185",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550337229185",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-1.jpg?v=1794423126",
+    "alt_text": "Panda-Handyhalter, sitzend"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550337196417",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-2.jpg?v=1794423133",
+    "alt_text": "Panda-Handyhalter mit Krone"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550337327489",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/panda-handyhalter-ohne-balken-3.jpg?v=1794423140",
+    "alt_text": "Panda-Handyhalter mit Boxhandschuhen"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650059493761"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69550337261953"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412301922689",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550337229185",
+    "alt": "Panda Smartphone-Ständer",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550337261953",
+    "alt": "Panda Handyhalter Deko",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550337196417",
+    "alt": "Panda Handyhalter Schreibtisch",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550337294721",
+    "alt": "Panda Halter Geschenk",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550337327489",
+    "alt": "Panda Handyständer Tisch",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650059493761",
+    "alt": "LuxeStyle-Edit · Panda Handyhalter – süßer Schreibtisch-Ständer für Smartphones",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67788961939847",
+    "titel": "Niedlicher Panda",
+    "medien": [
+     "gid://shopify/MediaImage/69550337229185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788961972615",
+    "titel": "Cartoon-Panda",
+    "medien": [
+     "gid://shopify/MediaImage/69550337196417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788962005383",
+    "titel": "Panda Beine und Füße",
+    "medien": [
+     "gid://shopify/MediaImage/69550337327489"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550337229185": "gid://shopify/MediaImage/78014641406343",
+  "gid://shopify/MediaImage/69550337196417": "gid://shopify/MediaImage/78014641504647",
+  "gid://shopify/MediaImage/69550337327489": "gid://shopify/MediaImage/78014641570183"
+ }
+}

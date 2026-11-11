@@ -1,0 +1,105 @@
+{
+ "zeit": "2026-11-11T18:46:07.526Z",
+ "plan": {
+  "handle": "kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550450999681",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650072076673"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69550451032449"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412432175489",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550450999681",
+    "alt": "Cooling Blanket leicht",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550450966913",
+    "alt": "Kühlende Sommerdecke Cool-Feel",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451032449",
+    "alt": "Kühldecke Sommer",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451065217",
+    "alt": "Cool-Feel Decke waschbar",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451097985",
+    "alt": "Kühlende Decke Bett",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650072076673",
+    "alt": "LuxeStyle-Edit · Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829723062663",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789064864135",
+    "titel": "Grau Batik / 127 × 178 cm",
+    "medien": [
+     "gid://shopify/MediaImage/77829723062663"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789064896903",
+    "titel": "Grau Batik / 150 × 200 cm",
+    "medien": [
+     "gid://shopify/MediaImage/77829723062663"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789064929671",
+    "titel": "Grau Batik / 200 × 220 cm",
+    "medien": [
+     "gid://shopify/MediaImage/77829723062663"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789064962439",
+    "titel": "Grau Batik / 229 × 274 cm",
+    "medien": [
+     "gid://shopify/MediaImage/77829723062663"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789064995207",
+    "titel": "Blau Batik / 127 × 178 cm",
+    "medien": [
+     "gid://shopify/MediaImage/69550451065217"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789065027975",
+    "titel": "Blau Batik / 150 × 200 cm",
+    "medien": [
+     "gid://shopify/MediaImage/69550451065217"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789065060743",
+    "titel": "Blau Batik / 200 × 220 cm",
+    "medien": [
+     "gid://shopify/MediaImage/69550451065217"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

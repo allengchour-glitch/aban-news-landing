@@ -1,0 +1,37 @@
+{
+ "zeit": "2026-11-11T18:57:47.508Z",
+ "plan": {
+  "handle": "premium-bambus-aroma-diffuser-300ml",
+  "erwartet_erstes": "gid://shopify/MediaImage/69731158983041",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69731158983041",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_185557_795f330e-b80e-4bdb-a401-e682ec58f045.png",
+    "alt_text": "Aroma-Diffuser in Holzoptik mit Licht"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15408457744769",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69731158983041",
+    "alt": "Premium Bambus Aroma Diffuser 300ml – LuxeStyle Schweiz",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55732479099265",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69731158983041": "gid://shopify/MediaImage/78014654513543"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "zeit": "2026-11-11T18:46:19.350Z",
+ "plan": {
+  "handle": "elektrischer-krallenschleifer-fur-hund-katze-leise-usb-akku-mit-led",
+  "erwartet_erstes": "gid://shopify/MediaImage/69650076860801",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650076860801"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69550726513025"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412677607809",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69650076860801",
+    "alt": "LuxeStyle-Edit · Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit LED",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550726414721",
+    "alt": "Elektrischer Krallenschleifer Hund Katze",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550726447489",
+    "alt": "Pet Nail Grinder USB",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550726480257",
+    "alt": "Krallenpflege Tier leise",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550726513025",
+    "alt": "Nagelschleifer Haustier",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550726545793",
+    "alt": "Krallenschleifer Akku LED",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829751439751",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789168673159",
+    "titel": "Basis Stil",
+    "medien": [
+     "gid://shopify/MediaImage/69550726414721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789168705927",
+    "titel": "Basis Modell 1 Schleifscheibe",
+    "medien": [
+     "gid://shopify/MediaImage/77829751439751"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789168738695",
+    "titel": "Basis Modell 2 Schleifscheiben",
+    "medien": [
+     "gid://shopify/MediaImage/69550726447489"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

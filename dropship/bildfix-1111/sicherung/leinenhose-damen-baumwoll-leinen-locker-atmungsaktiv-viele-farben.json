@@ -1,0 +1,341 @@
+{
+ "zeit": "2026-11-11T18:46:25.290Z",
+ "plan": {
+  "handle": "leinenhose-damen-baumwoll-leinen-locker-atmungsaktiv-viele-farben",
+  "erwartet_erstes": "gid://shopify/MediaImage/69551639462273",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650080104833"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69552094708097"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412825129345",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69551639462273",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551639495041",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551639527809",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552094708097",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552094740865",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650080104833",
+    "alt": "LuxeStyle-Edit · Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben)",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551639560577",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551639593345",
+    "alt": "Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben) – LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55747627712897",
+    "titel": "Mintgrün / S",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627745665",
+    "titel": "Mintgrün / M",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627778433",
+    "titel": "Mintgrün / L",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627811201",
+    "titel": "Mintgrün / XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627843969",
+    "titel": "Mintgrün / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627876737",
+    "titel": "Mintgrün / 3XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627909505",
+    "titel": "Mintgrün / 4XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627942273",
+    "titel": "Mintgrün / 5XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639462273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747627975041",
+    "titel": "Hellblau / S",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628007809",
+    "titel": "Hellblau / M",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628040577",
+    "titel": "Hellblau / L",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628073345",
+    "titel": "Hellblau / XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628106113",
+    "titel": "Hellblau / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628138881",
+    "titel": "Hellblau / 3XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628171649",
+    "titel": "Hellblau / 4XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628204417",
+    "titel": "Hellblau / 5XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639495041"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628237185",
+    "titel": "Pink / S",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628269953",
+    "titel": "Pink / M",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628302721",
+    "titel": "Pink / L",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628335489",
+    "titel": "Pink / XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628368257",
+    "titel": "Pink / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628401025",
+    "titel": "Pink / 3XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628433793",
+    "titel": "Pink / 4XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628466561",
+    "titel": "Pink / 5XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639527809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628499329",
+    "titel": "Armeegrün / S",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628532097",
+    "titel": "Armeegrün / M",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628564865",
+    "titel": "Armeegrün / L",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628597633",
+    "titel": "Armeegrün / XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628630401",
+    "titel": "Armeegrün / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628663169",
+    "titel": "Armeegrün / 3XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628695937",
+    "titel": "Armeegrün / 4XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628728705",
+    "titel": "Armeegrün / 5XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639560577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628761473",
+    "titel": "Kastanienbraun / S",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628794241",
+    "titel": "Kastanienbraun / M",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628827009",
+    "titel": "Kastanienbraun / L",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628859777",
+    "titel": "Kastanienbraun / XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628892545",
+    "titel": "Kastanienbraun / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628925313",
+    "titel": "Kastanienbraun / 3XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628958081",
+    "titel": "Kastanienbraun / 4XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747628990849",
+    "titel": "Kastanienbraun / 5XL",
+    "medien": [
+     "gid://shopify/MediaImage/69551639593345"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

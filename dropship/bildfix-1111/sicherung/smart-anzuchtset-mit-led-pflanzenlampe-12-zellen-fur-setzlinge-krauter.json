@@ -1,0 +1,64 @@
+{
+ "zeit": "2026-11-11T18:51:08.914Z",
+ "plan": {
+  "handle": "smart-anzuchtset-mit-led-pflanzenlampe-12-zellen-fur-setzlinge-krauter",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550728413569",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550728413569",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184521_90720ff2-cfa6-4d85-9578-e3c27a4f3095.png",
+    "alt_text": "Smart-Anzuchtset mit LED-Pflanzenlampe und Abdeckhaube"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650077712769"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412678328705",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550728413569",
+    "alt": "Smart Anzuchtschale mit Grow-Light",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550728446337",
+    "alt": "Anzuchtset LED Pflanzenlampe",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550728479105",
+    "alt": "Seedling Tray Grow Light",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550728511873",
+    "alt": "Anzuchtschale 12 Zellen",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550728544641",
+    "alt": "Pflanzenanzucht LED",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650077712769",
+    "alt": "LuxeStyle-Edit · Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzlinge & Kräuter",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55747075342721",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550728413569": "gid://shopify/MediaImage/78014637703559"
+ }
+}

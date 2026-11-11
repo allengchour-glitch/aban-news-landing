@@ -1,0 +1,82 @@
+{
+ "zeit": "2026-11-11T18:46:37.034Z",
+ "plan": {
+  "handle": "augenmassagegerat-mit-warme-musik-bluetooth-faltbar-gegen-mude-augen",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550383071617",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/77949924409735"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412306215297",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550383071617",
+    "alt": "Augenmassagegerät mit Wärme",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383104385",
+    "alt": "Eye Massager Bluetooth",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383137153",
+    "alt": "Augenmassage faltbar",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383169921",
+    "alt": "Augenmassagegerät Entspannung",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949924409735",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949924442503",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949924475271",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948417712519",
+    "titel": "Weiss / Chinesisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924409735"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417745287",
+    "titel": "Weiss / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924409735"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417778055",
+    "titel": "Set1 / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924442503"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417810823",
+    "titel": "Set2 / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924475271"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

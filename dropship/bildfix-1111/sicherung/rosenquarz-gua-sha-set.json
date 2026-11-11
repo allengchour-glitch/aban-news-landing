@@ -1,0 +1,42 @@
+{
+ "zeit": "2026-11-11T18:57:58.198Z",
+ "plan": {
+  "handle": "rosenquarz-gua-sha-set",
+  "erwartet_erstes": "gid://shopify/MediaImage/69528090280321",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69528090280321",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_185557_c972c5a3-7d06-48dd-9df8-6a1f35b6b6ae.png",
+    "alt_text": "Drei Gua-Sha-Steine aus Rosenquarz"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15408457941377",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69528090280321",
+    "alt": "Rosenquarz Gua Sha Set - 3 Schaber fuer Gesichtsmassage",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69528090345857",
+    "alt": "Rosenquarz Gua Sha Geschenkset mit Roller",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55732479295873",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69528090280321": "gid://shopify/MediaImage/78014655005063"
+ }
+}

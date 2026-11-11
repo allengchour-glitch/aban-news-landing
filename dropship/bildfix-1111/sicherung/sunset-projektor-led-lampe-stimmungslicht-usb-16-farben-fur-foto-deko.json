@@ -1,0 +1,59 @@
+{
+ "zeit": "2026-11-11T18:50:34.172Z",
+ "plan": {
+  "handle": "sunset-projektor-led-lampe-stimmungslicht-usb-16-farben-fur-foto-deko",
+  "erwartet_erstes": "gid://shopify/MediaImage/69547736138113",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69547736138113",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184520_35451888-02fe-450a-afef-5400dd6feafa.png",
+    "alt_text": "LED-Schreibtischlampe mit Akku, weiss"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650054644097"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15411565035905",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69547736138113",
+    "alt": "Sunset Projektor LED-Lampe",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650054644097",
+    "alt": "LuxeStyle-Edit · LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77409983005063",
+    "alt": "LuxeStyle LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus – Bild 3 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77409983037831",
+    "alt": "LuxeStyle LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus – Bild 4 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77409983070599",
+    "alt": "LuxeStyle LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus – Bild 5 – LuxeStyle Schweiz",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55743351882113",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69547736138113": "gid://shopify/MediaImage/78014636622215"
+ }
+}
