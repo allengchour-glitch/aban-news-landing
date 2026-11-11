@@ -1,0 +1,204 @@
+{
+ "zeit": "2026-11-11T18:50:15.160Z",
+ "plan": {
+  "handle": "regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550341816705",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550341816705",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184523_61f53936-d0ec-4212-a8a8-6c67b0b40812.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, gelb"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550341849473",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184521_62b2cdbe-4f43-4c99-b2ef-fab7ef124bd9.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, lila"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77829706187143",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184522_34b6f1a0-1adf-439f-9d8a-a64913142249.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, schwarz"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77829706219911",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184522_cae2f809-8d16-4008-8054-84ac67c34a31.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, rot"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77829706252679",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184521_eecaf07d-8ccc-4f98-92e3-ad9e5f948852.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, blau"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77829706285447",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184524_5147f1a5-07c5-42f1-aaaf-3ed67464eb0f.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, orange"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77829706318215",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184520_32ecec0c-f3a4-46fb-8ad3-8a63a143b23e.png",
+    "alt_text": "Handy-Sonnenschirm mit Clip, silber"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650063098241"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412302512513",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550341816705",
+    "alt": "Regenschirm UV-Schutz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550341718401",
+    "alt": "Regenschirm mit Handy-Halterung",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550341751169",
+    "alt": "Schirm freihändig Handy",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550341783937",
+    "alt": "Schirm Handy-Mount",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550341849473",
+    "alt": "Schirm Outdoor Creator",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650063098241",
+    "alt": "LuxeStyle-Edit · Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829706187143",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829706219911",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829706252679",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829706285447",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829706318215",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67788980650375",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77829706187143"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980683143",
+    "titel": "Rosa",
+    "medien": [
+     "gid://shopify/MediaImage/69550341816705"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980715911",
+    "titel": "Gelb",
+    "medien": [
+     "gid://shopify/MediaImage/69550341816705"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980748679",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/77829706219911"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980781447",
+    "titel": "Saphir Blau",
+    "medien": [
+     "gid://shopify/MediaImage/77829706252679"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980814215",
+    "titel": "Orange",
+    "medien": [
+     "gid://shopify/MediaImage/77829706285447"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980846983",
+    "titel": "Camouflage",
+    "medien": [
+     "gid://shopify/MediaImage/69550341849473"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980879751",
+    "titel": "Silber",
+    "medien": [
+     "gid://shopify/MediaImage/77829706318215"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980912519",
+    "titel": "Rosenrot",
+    "medien": [
+     "gid://shopify/MediaImage/69550341849473"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980945287",
+    "titel": "Grün",
+    "medien": [
+     "gid://shopify/MediaImage/69550341816705"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788980978055",
+    "titel": "Violett",
+    "medien": [
+     "gid://shopify/MediaImage/69550341849473"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788981010823",
+    "titel": "Himmelblau",
+    "medien": [
+     "gid://shopify/MediaImage/69550341849473"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550341816705": "gid://shopify/MediaImage/78014634787207",
+  "gid://shopify/MediaImage/69550341849473": "gid://shopify/MediaImage/78014634852743",
+  "gid://shopify/MediaImage/77829706187143": "gid://shopify/MediaImage/78014634885511",
+  "gid://shopify/MediaImage/77829706219911": "gid://shopify/MediaImage/78014635114887",
+  "gid://shopify/MediaImage/77829706252679": "gid://shopify/MediaImage/78014635377031",
+  "gid://shopify/MediaImage/77829706285447": "gid://shopify/MediaImage/78014635868551",
+  "gid://shopify/MediaImage/77829706318215": "gid://shopify/MediaImage/78014636163463"
+ }
+}

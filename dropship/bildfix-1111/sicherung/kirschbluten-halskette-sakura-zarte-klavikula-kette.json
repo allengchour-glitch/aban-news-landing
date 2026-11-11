@@ -1,0 +1,58 @@
+{
+ "zeit": "2026-11-11T18:46:31.153Z",
+ "plan": {
+  "handle": "kirschbluten-halskette-sakura-zarte-klavikula-kette",
+  "erwartet_erstes": "gid://shopify/MediaImage/69551958327681",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650085609857"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69552062726529"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412911079809",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69551958327681",
+    "alt": "Zarte Kirschblüten-Halskette «Sakura» – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552062726529",
+    "alt": "Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552062759297",
+    "alt": "Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552062792065",
+    "alt": "Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552062824833",
+    "alt": "Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette – LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650085609857",
+    "alt": "LuxeStyle-Edit · Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55747874685313",
+    "titel": "Weissgold",
+    "medien": [
+     "gid://shopify/MediaImage/69551958327681"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

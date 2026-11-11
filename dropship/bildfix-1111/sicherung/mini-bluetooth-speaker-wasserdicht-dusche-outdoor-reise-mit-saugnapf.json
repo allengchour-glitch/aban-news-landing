@@ -1,0 +1,132 @@
+{
+ "zeit": "2026-11-11T18:45:55.636Z",
+ "plan": {
+  "handle": "mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf",
+  "erwartet_erstes": "gid://shopify/MediaImage/69547731321217",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650054119809"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/77829655888263"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15411564446081",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69547731321217",
+    "alt": "Speaker Dusche",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69547731288449",
+    "alt": "Mini Bluetooth Speaker",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69547731353985",
+    "alt": "Speaker Saugnapf",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69547731386753",
+    "alt": "Speaker Detail",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69547731419521",
+    "alt": "Speaker Farben",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69547731452289",
+    "alt": "Speaker tragbar",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650054119809",
+    "alt": "LuxeStyle-Edit · Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829655888263",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829655921031",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829655953799",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829655986567",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67788853281159",
+    "titel": "Mit Radio / Rot",
+    "medien": [
+     "gid://shopify/MediaImage/69547731288449"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853313927",
+    "titel": "Mit Radio / Gold",
+    "medien": [
+     "gid://shopify/MediaImage/77829655888263"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853346695",
+    "titel": "Mit Radio / Orange",
+    "medien": [
+     "gid://shopify/MediaImage/77829655921031"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853379463",
+    "titel": "Mit Radio / Blau",
+    "medien": [
+     "gid://shopify/MediaImage/69547731288449"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853412231",
+    "titel": "Ohne Radio / Rot",
+    "medien": [
+     "gid://shopify/MediaImage/77829655953799"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853444999",
+    "titel": "Ohne Radio / Gold",
+    "medien": [
+     "gid://shopify/MediaImage/77829655986567"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853477767",
+    "titel": "Ohne Radio / Orange",
+    "medien": [
+     "gid://shopify/MediaImage/69547731386753"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788853510535",
+    "titel": "Ohne Radio / Blau",
+    "medien": [
+     "gid://shopify/MediaImage/69547731321217"
+    ]
+   }
+  ]
+ },
+ "neu": {}
+}

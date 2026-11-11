@@ -1,0 +1,99 @@
+{
+ "zeit": "2026-11-11T18:50:54.975Z",
+ "plan": {
+  "handle": "mini-usb-taschenlampe-edelstahl-wiederaufladbar-fur-schlusselbund-4-farben",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550674575745",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550674608513",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184523_23a04018-4a8b-4f3f-b28e-f59b05da25a7.png",
+    "alt_text": "Mini USB-Taschenlampen in vier Farben"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550674641281",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184520_b23ba9a4-171d-4319-9b2b-01e5369cf3e4.png",
+    "alt_text": "Mini USB-Taschenlampen in vier Farben, Ansicht 2"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550674674049",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_184521_d47a49d9-d589-4c33-944a-2806da560dd6.png",
+    "alt_text": "Mini USB-Taschenlampen in vier Farben, Ansicht 3"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69650076467585"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/77829263950215"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412659978625",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550674575745",
+    "alt": "Mini USB-Taschenlampe Edelstahl",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550674608513",
+    "alt": "Mini-Taschenlampe Schlüsselbund",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550674641281",
+    "alt": "USB Flashlight kompakt",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550674674049",
+    "alt": "Taschenlampe USB Farben",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650076467585",
+    "alt": "LuxeStyle-Edit · Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund (4 Farben)",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829263950215",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67788112658823",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/69550674641281"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788112691591",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/69550674608513"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788112724359",
+    "titel": "Roségold",
+    "medien": [
+     "gid://shopify/MediaImage/77829263950215"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788112757127",
+    "titel": "Silber",
+    "medien": [
+     "gid://shopify/MediaImage/69550674674049"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550674608513": "gid://shopify/MediaImage/78014636818823",
+  "gid://shopify/MediaImage/69550674641281": "gid://shopify/MediaImage/78014637080967",
+  "gid://shopify/MediaImage/69550674674049": "gid://shopify/MediaImage/78014637375879"
+ }
+}

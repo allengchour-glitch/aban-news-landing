@@ -1,0 +1,56 @@
+{
+ "zeit": "2026-11-11T18:46:01.594Z",
+ "plan": {
+  "handle": "xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550392574337",
+  "ersatz": [],
+  "loesen": [
+   "gid://shopify/MediaImage/69650066735489"
+  ],
+  "nach_vorn": "gid://shopify/MediaImage/69550392672641"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412307657089",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550392574337",
+    "alt": "XXL Leselupe mit Licht",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550392607105",
+    "alt": "Leselupe 5x 10x",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550392639873",
+    "alt": "Handlupe beleuchtet",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550392672641",
+    "alt": "Lupe Lesen Hobby",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550392705409",
+    "alt": "Leselupe Griff",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650066735489",
+    "alt": "LuxeStyle-Edit · XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstufen",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55746215117185",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}
