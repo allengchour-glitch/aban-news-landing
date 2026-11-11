@@ -400,9 +400,9 @@ szenario('poster-pixel', true, async (b, srv) => {
   const s3 = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268' });
   await editorBereit(s3.page);
   await textHinzufuegen(s3.page, 'Poster');
-  await s3.page.locator('.lsp6-cta').click();
+  await s3.page.locator('.lsp6-cta').click({ force: true });   // 6.4.2: aria-disabled (E5), der Klick erklärt weiter, was fehlt
   await s3.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
-  pruefe('Poster ohne Zuordnung: Kauf gesperrt, kein Upload, kein Warenkorb', s3.uploads.length === 0 && s3.warenkorb.length === 0 && (await s3.page.locator('.lsp6-cta').isEnabled()));
+  pruefe('Poster ohne Zuordnung: Kauf gesperrt, kein Upload, kein Warenkorb', s3.uploads.length === 0 && s3.warenkorb.length === 0 && (await s3.page.locator('.lsp6-cta').evaluate((e) => !e.disabled)));
   await s3.schliessen();
 });
 
@@ -847,9 +847,9 @@ szenario('buendel-tshirt', true, async (b, srv) => {
   await t.page.locator('input[name="id"][value="1004"]').check();
   await t.page.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
   pruefe('Variante ausserhalb der Zuordnung: Hinweis «nicht eingerichtet»', /nicht eingerichtet/.test(await t.page.locator('[data-feld="modellhinweis"]').innerText()));
-  await t.page.locator('.lsp6-cta').click();
+  await t.page.locator('.lsp6-cta').click({ force: true });
   await t.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
-  pruefe('Variante ausserhalb der Zuordnung: Kauf gesperrt (es gibt nie still die Standardgeometrie)', t.uploads.length === 0 && t.warenkorb.length === 0 && (await t.page.locator('.lsp6-cta').isEnabled()));
+  pruefe('Variante ausserhalb der Zuordnung: Kauf gesperrt (es gibt nie still die Standardgeometrie)', t.uploads.length === 0 && t.warenkorb.length === 0 && (await t.page.locator('.lsp6-cta').evaluate((e) => !e.disabled)));
   await t.schliessen();
   // Plan B: Bündel als Datei (data-karte-url) statt Inline-JSON in der Beschreibung
   const v = await seiteOeffnen(b, srv.url, { ...PC, query: BUENDEL + '&karteurl=1' });
@@ -871,7 +871,7 @@ szenario('ausfuehrung-ohne-zuordnung', true, async (b, srv) => {
   const p = s.page;
   await p.locator('input[name="id"][value="1003"]').check();
   await textHinzufuegen(p, 'Tasse');
-  await p.locator('.lsp6-cta').click();
+  await p.locator('.lsp6-cta').click({ force: true });
   await p.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
   pruefe('Tasse (3 Druckdateien) ohne Zuordnung: Kauf gesperrt, kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0 && !(await p.locator('[data-feld="modellhinweis"]').isHidden()));
   await s.schliessen();
@@ -882,7 +882,7 @@ szenario('ausfuehrung-ohne-zuordnung', true, async (b, srv) => {
   pruefe('zugeordnete Variante: kein Hinweis', await t.page.locator('[data-feld="modellhinweis"]').isHidden());
   await t.page.locator('input[name="id"][value="1003"]').check();
   await t.page.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
-  await t.page.locator('.lsp6-cta').click();
+  await t.page.locator('.lsp6-cta').click({ force: true });
   await t.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
   pruefe('nicht zugeordnete Variante (20 oz): gesperrt', t.uploads.length === 0 && t.warenkorb.length === 0);
   await t.page.locator('input[name="id"][value="1002"]').check();
@@ -1628,7 +1628,7 @@ const auswahl = szenarien.filter((x) => (nur === 'kern' ? x.kern : !nur || x.nam
 for (const sz of auswahl) {
   const t0 = Date.now();
   const vorher = fehler.length;
-  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, 3).join(' / ')}`); if (process.env.V6_ABBRUCH) process.exit(1); }
+  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, process.env.V6_VOLL ? 40 : 3).join(' / ')}`); if (process.env.V6_VOLL) console.log('    ' + (e.stack || '').split('\n').filter((l) => /_test.mjs/.test(l)).slice(0, 3).join(' | ')); if (process.env.V6_ABBRUCH) process.exit(1); }
   console.log(`${fehler.length === vorher ? '✓' : '✗'} ${sz.name} (${((Date.now() - t0) / 1000).toFixed(1)} s)`);
 }
 await browser.close(); await srv.stop();

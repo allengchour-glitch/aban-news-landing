@@ -18,6 +18,10 @@ let n = 0; const fehler = [];
 function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); if (process.env.V6_ABBRUCH) process.exit(1); } }   // V6_ABBRUCH=1 (nur Mutationsprobe): beim ersten Fehler beenden
 function nahe(name, ist, soll, eps) { pruefe(name, Math.abs(ist - soll) <= eps, `ist=${ist} soll=${soll} (±${eps})`); }
 const nur = process.argv[2] || '';
+/** Seit 6.4.1 gilt für weisse Schrift kein Schatten mehr (Konstante WEISS_SCHATTEN = false); 6.4.0 und früher, oder mit der Konstante auf true, zeichnen den Schatten wie bisher. */
+const OHNE_WEISS_SCHATTEN = /var WEISS_SCHATTEN = false;/.test(readFileSync(V6_DATEI, 'utf8'));
+/** Seit 6.4.2 (E2) rutschen Löschkreuz und Skalieren-Griff auch in der «Druckversion» (und der flachen Bühne) nach innen; bis 6.4.1 blieb die Druckversion beim Verhalten von 6.3.1 (Griffe am Rand beschnitten). */
+const GRIFFE_INNEN_ÜBERALL = /var VERSION = '6\.(4\.([2-9]|\d\d)|[5-9])/.test(readFileSync(V6_DATEI, 'utf8'));
 const szenarien = [];
 function szenario(name, kern, fn) { szenarien.push({ name, kern, fn }); }
 
@@ -987,6 +991,15 @@ szenario('rueckfall-bild', true, async (b, srv) => {
   pruefe('spätes 404: die Ansicht fällt auf «Druckversion» zurück und sagt es ruhig', (await sicht(t.page)) === 'druck' && /Produktfoto lädt gerade nicht/.test(await t.page.locator('[data-feld="sichthinweis"]').innerText()));
   pruefe('spätes 404: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
+  // 6.4.2: treffen die Vorschaudaten erst NACH der Wartezeit des Baus ein (VORSCHAU_WARTE_MS = 500 ms; hier 900 ms), steht der Editor zuerst ohne sie da und das Foto wird erst beim nachträglichen Setzen der Daten angefordert.
+  // Das sofortige 404 trifft dann ein, bevor «Bearbeiten» die Bühne aufgebaut hat: der Rückfall kommt aus der Prüfung am Ende des Aufbaus (Mutant B46 «Produktfoto war schon vor dem Aufbau kaputt»). Bis 6.4.1 lag
+  // dieser Weg auch bei sofortigen Daten an; seit E7 gehen rechtzeitige Daten in den ersten Durchlauf, darum braucht dieser Fall die verspäteten.
+  const u = await oeffnen(b, srv, SHIRT_Q(undefined, 'vverz=900'), { printfulBild: (x) => (/\/m\//.test(x) ? { status: 404, typ: 'text/plain', body: '' } : null) });
+  await sichtWarten(u.page);
+  await u.page.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'druck', null, { timeout: 8000 });
+  pruefe('späte Vorschaudaten (900 ms) und sofortiges 404: die Ansicht fällt auf «Druckversion» zurück und sagt es ruhig', (await sicht(u.page)) === 'druck' && /Produktfoto lädt gerade nicht/.test(await u.page.locator('[data-feld="sichthinweis"]').innerText()));
+  pruefe('späte Vorschaudaten (900 ms) und sofortiges 404: keine Seitenfehler', u.fehler.length === 0, u.fehler.join(' | '));
+  await u.schliessen();
 });
 
 szenario('statische-pruefung', true, async () => {
@@ -1048,9 +1061,13 @@ szenario('griffe-rand', true, async (b, srv) => {
     nahe(`${name}: der Griff am Bühnenrand skaliert nach dem Abstand zur Mitte der Ebene (Faktor ${(abstand(Z, C) / abstand(H, C)).toFixed(2)})`, e1.scale / e0.scale, abstand(Z, C) / abstand(H, C), 0.12);
     const g1 = await griffLage(p);
     pruefe(`${name}: nach dem Skalieren liegen Griff und Löschknopf weiter in der Bühne`, imStueck(g1, 'handle') && imStueck(g1, 'del'));
-    // Druckversion: die Griffe sitzen wieder in der Ebene, ohne Verschiebung (6.3.1); zurück in «Bearbeiten» sind sie wieder innen
+    // Druckversion: bis 6.4.1 sitzen die Griffe in der Ebene, ohne Verschiebung (6.3.1); seit 6.4.2 liegen sie auch dort vollständig in der Bühne und sind trefferbar. Zurück in «Bearbeiten» sind sie wieder innen.
     await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
-    pruefe(`${name}: Druckversion: Griff und Löschknopf ohne Verschiebung (transform none)`, await p.evaluate(() => ['.lsp6-handle', '.lsp6-del'].every((q) => getComputedStyle(document.querySelector(q)).transform === 'none')));
+    if (GRIFFE_INNEN_ÜBERALL) {
+      await p.waitForTimeout(80); await buehneZeigen(p);
+      const gd = await griffLage(p);
+      pruefe(`${name}: Druckversion (6.4.2): Griff und Löschknopf liegen vollständig in der Bühne`, imStueck(gd, 'handle') && imStueck(gd, 'del'), JSON.stringify({ h: gd.handle, d: gd.del, st: gd.stage }));
+    } else pruefe(`${name}: Druckversion: Griff und Löschknopf ohne Verschiebung (transform none)`, await p.evaluate(() => ['.lsp6-handle', '.lsp6-del'].every((q) => getComputedStyle(document.querySelector(q)).transform === 'none')));
     await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
     const g2 = await griffLage(p);
     pruefe(`${name}: zurück in «Bearbeiten»: Griff und Löschknopf wieder in der Bühne`, imStueck(g2, 'handle') && imStueck(g2, 'del'));
@@ -1268,6 +1285,7 @@ szenario('text-gleich', true, async (b, srv) => {
     const sch = await p.evaluate((i) => { const ed = window.LSPOD6.editors[0], e = ed.st.ebenen[ed.st.aktiv].find((q) => q.id === i); e.color = '#ffffff'; ed.ui.schriftwahl.dispatchEvent(new Event('change', { bubbles: true })); const c = document.querySelector('.lsp6-layer > div'), cs = getComputedStyle(c); return { schatten: cs.textShadow, px: parseFloat(cs.fontSize) }; }, id);
     const mm = /rgba\(0, 0, 0, ([\d.]+)\) (-?[\d.]+)px (-?[\d.]+)px ([\d.]+)px/.exec(sch.schatten);
     if (aus) pruefe(`${name}: weisse Schrift: der Schatten der Bühne bleibt wie in 6.3.1 (Versatz 1 px)`, !!mm && Number(mm[3]) === 1, sch.schatten);
+    else if (OHNE_WEISS_SCHATTEN) pruefe(`${name}: weisse Schrift: kein Schatten (6.4.1: WEISS_SCHATTEN = false, wie die Leinwand von Vorschau und Druckdatei)`, sch.schatten === 'none', sch.schatten);
     else pruefe(`${name}: weisse Schrift: Schatten ohne Versatz, Unschärfe 0,12 · Schrifthöhe, Deckkraft 0,4 (wie ctx.shadowBlur)`, !!mm && Number(mm[2]) === 0 && Number(mm[3]) === 0 && Math.abs(Number(mm[4]) - sch.px * 0.12) <= 0.15 && Math.abs(Number(mm[1]) - 0.4) <= 0.01, `${sch.schatten} (Schrifthöhe ${sch.px})`);
     pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();
@@ -1282,7 +1300,7 @@ const auswahl = szenarien.filter((x) => (nur === 'kern' ? x.kern : !nur || x.nam
 for (const sz of auswahl) {
   const t0 = Date.now();
   const vorher = fehler.length;
-  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, 3).join(' / ')}`); if (process.env.V6_ABBRUCH) process.exit(1); }
+  try { await sz.fn(browser, srv); } catch (e) { n++; fehler.push(`${sz.name}: Ausnahme ${e.message.split('\n')[0]}`); console.log(`  ✗ ${sz.name}: Ausnahme ${e.message.split('\n').slice(0, process.env.V6_VOLL ? 40 : 3).join(' / ')}`); if (process.env.V6_ABBRUCH) process.exit(1); }
   console.log(`${fehler.length === vorher ? '✓' : '✗'} ${sz.name} (${((Date.now() - t0) / 1000).toFixed(1)} s)`);
 }
 await browser.close(); await srv.stop();

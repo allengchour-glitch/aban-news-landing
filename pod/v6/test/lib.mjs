@@ -22,9 +22,9 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-/** Die geprüfte Fassung des Editors: 6.4.0. Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
+/** Die geprüfte Fassung des Editors: 6.4.2 (6.4.1 ist die eingefrorene Referenz der Kaufvergleiche in v642_test.mjs, 6.4.0 die der Kaufvergleiche in v641_test.mjs). Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
  *  (Prüfungen der neuen Ansichten gibt es dort nicht: bearbeiten_test.mjs prüft die Version und beendet sich sonst). */
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.0.js');
+export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.2.js');
 /** Referenzfassung für Vergleiche (gleiche Eingaben, andere Datei): Standard 6.3.1. Die Mock-Seite lädt sie mit dem Parameter editor=ref. */
 export const V6_REF_DATEI = process.env.V6_REF_DATEI || join(v6Ordner, 'lspod-designer-v6-6.3.1.js');
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
@@ -65,7 +65,7 @@ export function starteServer() {
     // verzoegerung=ms: Vorschaudaten treffen verspätet ein (Test: Daten kommen erst NACH der ersten Änderung des Kunden)
     const verz = /^\/vorschau\//.test(u.pathname) ? Number(u.searchParams.get('verzoegerung')) || 0 : 0;
     const senden = verz > 0 ? (typ, inhalt, code = 200) => { setTimeout(() => senden0(typ, inhalt, code), verz); } : senden0;
-    if (u.pathname === '/mock.html') return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));
+    if (u.pathname === '/mock.html' || /^\/products\/[^/.]+$/.test(u.pathname)) return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));   // 6.4.2: /products/<handle> ist dieselbe Seite (der Editor liest den Handle aus der Adresse)
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
     if (u.pathname === '/lspod-designer-v6-ref.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_REF_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
@@ -243,6 +243,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text()) && !(opt.corsErwartet && /blocked by CORS policy/.test(m.text()))) fehler.push('console.error: ' + m.text()); });
   /** opt.printfulBild / opt.shopifyBild: (url) → { status?, typ, body, cors?: false } oder null (dann gilt die Standard-Attrappe). Zähler: bildAnfragen (Adressen aller Bild-Anfragen an Printful und Shopify Files). */
   const bildAnfragen = [];
+  const produktAnfragen = [];   // 6.4.2: Handles der Anfragen an /products/<handle>.js
   function bildAntwort(route, r) {
     if (r.status && r.status !== 200) return route.fulfill({ status: r.status, contentType: 'text/plain', body: 'nicht da' });
     // cors: false = der Server gibt die Freigabe nur einem FREMDEN Ursprung (Chromium lehnt ein Bild mit crossOrigin=anonymous dann ab). Ganz ohne Kopf ginge es nicht: Playwright ergänzt bei
@@ -308,8 +309,19 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   // wie in einem Shop ohne Rollout-Eingriff (Startansicht «Bearbeiten», drei Reiter), mit 1 oder angebot gilt der jeweilige Wert. So laufen editor_test und vorschau_test auch im Standard der echten Seite.
   let query = opt.query || '';
   if (process.env.V6_BEARBEITEN && !/(^|&)bearbeiten=/.test(query)) query += (query ? '&' : '') + 'bearbeiten=' + process.env.V6_BEARBEITEN;
-  await page.goto(`${basis}/mock.html?${query}`, { waitUntil: 'domcontentloaded' });
-  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
+  // 6.4.2: opt.produktJs = (handle) → { status?, body } oder null: Antwort auf /products/<handle>.js (Lagerstand des Shops); null = nicht erreichbar (404 vom Test-Server). opt.seitenPfad: z. B. '/products/test-shirt'
+  produktAnfragen.length = 0;
+  await page.route('**/products/*.js', async (route) => {
+    const u = new URL(route.request().url());
+    const h = decodeURIComponent((/\/products\/([^/]+)\.js$/.exec(u.pathname) || [])[1] || '');
+    produktAnfragen.push(h);
+    const a = opt.produktJs ? opt.produktJs(h) : null;
+    if (!a) return route.fulfill({ status: 404, contentType: 'text/plain', body: 'nicht da' });
+    if (a.verzoegerung > 0) await new Promise((r) => setTimeout(r, a.verzoegerung));   // a.verzoegerung: ms bis zur Antwort (Test: die Lagerdaten treffen verspätet ein)
+    return route.fulfill({ status: a.status || 200, contentType: a.typ || 'application/json', body: typeof a.body === 'string' ? a.body : JSON.stringify(a.body) });
+  });
+  await page.goto(`${basis}${opt.seitenPfad || '/mock.html'}?${query}`, { waitUntil: 'domcontentloaded' });
+  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, produktAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 
 /** Warten, bis der v6-Editor gebaut ist. */
