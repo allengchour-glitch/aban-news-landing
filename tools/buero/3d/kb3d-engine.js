@@ -1,6 +1,6 @@
 /* KB3D: kleine WebGL-Engine für das KI-Büro.
    Eigener Code, keine Bibliothek: der Dashboard-Typ lässt nur Dateien des Dashboards als Skript zu.
-   Einheiten: Meter. y zeigt nach oben. Farben in sRGB, gerechnet wird ohne Gamma.
+   Einheiten: Meter. y zeigt nach oben. Farben in sRGB; Licht wird näherungsweise linear gerechnet und danach in sRGB ausgegeben.
    Schatten: Teile werfen einen flach auf den Boden gedrückten Schatten (Stencil gegen doppeltes Abdunkeln). */
 (function (root) {
   'use strict';
@@ -143,8 +143,8 @@
   Builder.prototype.rz = function (a) { this.st.rz(a); return this; };
   Builder.prototype.push = function () { this.st.push(); return this; };
   Builder.prototype.pop = function () { this.st.pop(); return this; };
-  Builder.prototype._nm = function () {
-    var m = this.st.m, q = this.nm;
+  /* Kofaktormatrix mit Determinantenvorzeichen: nach Normalisierung dieselbe Richtung wie invers-transponiert. */
+  function normalMatrix(m, q) {
     var A00 = m[0], A10 = m[1], A20 = m[2], A01 = m[4], A11 = m[5], A21 = m[6], A02 = m[8], A12 = m[9], A22 = m[10];
     var C00 = A11 * A22 - A12 * A21, C01 = A12 * A20 - A10 * A22, C02 = A10 * A21 - A11 * A20,
       C10 = A02 * A21 - A01 * A22, C11 = A00 * A22 - A02 * A20, C12 = A01 * A20 - A00 * A21,
@@ -153,7 +153,9 @@
     q[0] = C00 * s; q[3] = C01 * s; q[6] = C02 * s;
     q[1] = C10 * s; q[4] = C11 * s; q[7] = C12 * s;
     q[2] = C20 * s; q[5] = C21 * s; q[8] = C22 * s;
-  };
+    return q;
+  }
+  Builder.prototype._nm = function () { normalMatrix(this.st.m, this.nm); };
   Builder.prototype._c = function (c, emi) {
     if (c != null) this.col = col(c);
     this.emi = emi || 0;
@@ -410,23 +412,32 @@
   /* ---------- Shader ---------- */
   var VS = [
     'attribute vec3 aPos; attribute vec3 aNor; attribute vec4 aCol; attribute vec2 aUV;',
-    'uniform mat4 uVP; uniform mat4 uModel; uniform vec2 uUVS; uniform vec2 uUVO; uniform vec4 uPal[16]; uniform float uPalOn;',
-    'varying vec3 vN; varying vec4 vC; varying vec2 vUV; varying float vL;',
-    'void main(){ vec4 w = uModel * vec4(aPos, 1.0); vN = mat3(uModel) * aNor; vec4 c = aCol; vL = 0.0; if (uPalOn > 0.5) { c = uPal[int(aCol.r * 16.0 + 0.5)]; vL = aCol.g; } vC = c; vUV = aUV * uUVS + uUVO; gl_Position = uVP * w; }'
+    'uniform mat4 uVP; uniform mat4 uModel; uniform mat3 uNormal; uniform vec2 uUVS; uniform vec2 uUVO; uniform vec4 uPal[16]; uniform float uPalOn; uniform vec2 uMaterial;',
+    'varying vec3 vN; varying vec3 vP; varying vec4 vC; varying vec2 vUV; varying float vL; varying float vR;',
+    'void main(){ vec4 w = uModel * vec4(aPos, 1.0); vP = w.xyz; vN = uNormal * aNor; vec4 c = aCol; vL = 0.0; vR = uMaterial.x; if (uPalOn > 0.5) { c = uPal[int(aCol.r * 16.0 + 0.5)]; vL = aCol.g; vR = aCol.b > 0.01 ? aCol.b : uMaterial.x; } vC = c; vUV = aUV * uUVS + uUVO; gl_Position = uVP * w; }'
   ].join('\n');
   var FS = [
     '#ifdef GL_FRAGMENT_PRECISION_HIGH', 'precision highp float;', '#else', 'precision mediump float;', '#endif',
-    'varying vec3 vN; varying vec4 vC; varying vec2 vUV; varying float vL;',
-    'uniform vec3 uL; uniform vec3 uLC; uniform vec3 uSky; uniform vec3 uGnd;',
+    'varying vec3 vN; varying vec3 vP; varying vec4 vC; varying vec2 vUV; varying float vL; varying float vR;',
+    'uniform vec3 uL; uniform vec3 uLC; uniform vec3 uSky; uniform vec3 uGnd; uniform vec3 uEye; uniform vec3 uFill; uniform float uExposure; uniform vec2 uMaterial;',
     'uniform sampler2D uTex; uniform float uUseTex; uniform float uAlpha; uniform float uEmi; uniform vec3 uTint;',
     'void main(){',
     '  vec4 b = vec4(vC.rgb, 1.0);',
     '  if (uUseTex > 0.5) { vec4 t = texture2D(uTex, vUV); b.rgb *= t.rgb; b.a = t.a; }',
     '  b.rgb *= uTint;',
-    '  vec3 n = normalize(vN);',
-    '  vec3 amb = mix(uGnd, uSky, n.y * 0.5 + 0.5);',
-    '  float nd = max(dot(n, uL), 0.0);',
-    '  vec3 lit = b.rgb * (amb + uLC * nd) * (1.0 + 0.75 * vL);',
+    '  vec3 n = vN / max(length(vN), 0.00001); vec3 eye = normalize(uEye - vP + vec3(0.0, 0.00001, 0.0));',
+    '  float rough = clamp(vR, 0.22, 1.0);',
+    '  vec3 base = pow(max(b.rgb, vec3(0.0)), vec3(2.2));',
+    '  vec3 amb = mix(uGnd * 0.46, uSky * 0.78, n.y * 0.5 + 0.5);',
+    '  float nd = max((dot(n, uL) + 0.14) / 1.14, 0.0);',
+    '  vec3 fillDir = normalize(vec3(-uL.z, 0.45, -uL.x));',
+    '  vec3 diffuse = amb + uLC * nd + uFill * max(dot(n, fillDir), 0.0);',
+    '  vec3 halfDir = normalize(uL + eye);',
+    '  float highlight = pow(max(dot(n, halfDir), 0.0), mix(88.0, 9.0, rough)) * max(dot(n, uL), 0.0);',
+    '  float rim = pow(1.0 - max(dot(n, eye), 0.0), 4.0);',
+    '  vec3 spec = uLC * highlight * uMaterial.y * (1.0 - 0.65 * rough);',
+    '  vec3 lit = base * diffuse * (1.0 + 0.45 * vL) + spec + base * uFill * rim * 0.32;',
+    '  lit = pow(clamp(lit * uExposure, 0.0, 1.0), vec3(1.0 / 2.2));',
     '  float e = clamp(vC.a + uEmi, 0.0, 1.0);',
     '  gl_FragColor = vec4(mix(lit, b.rgb, e), b.a * uAlpha);',
     '}'
@@ -476,7 +487,7 @@
     canvas.addEventListener('webglcontextlost', function (ev) { ev.preventDefault(); self.lost = true; if (self.onlost) self.onlost(); }, false);
 
     this.pm = program(gl, VS, FS, ['aPos', 'aNor', 'aCol', 'aUV']);
-    this.um = locs(gl, this.pm, ['uVP', 'uModel', 'uUVS', 'uUVO', 'uL', 'uLC', 'uSky', 'uGnd', 'uTex', 'uUseTex', 'uAlpha', 'uEmi', 'uTint', 'uPalOn']);
+    this.um = locs(gl, this.pm, ['uVP', 'uModel', 'uNormal', 'uUVS', 'uUVO', 'uL', 'uLC', 'uSky', 'uGnd', 'uEye', 'uFill', 'uExposure', 'uMaterial', 'uTex', 'uUseTex', 'uAlpha', 'uEmi', 'uTint', 'uPalOn']);
     this.um.uPal = gl.getUniformLocation(this.pm, 'uPal[0]');
     this.ps = program(gl, SVS, SFS, ['aPos']);
     this.us = locs(gl, this.ps, ['uVP', 'uSh', 'uModel', 'uA']);
@@ -488,6 +499,7 @@
     for (i = 0; i < 400; i++) this.pool.push(new Float32Array(16));
     this.pi = 0;
     this.shM = new Float32Array(16);
+    this.normalM = new Float32Array(9);
     this.env = null;
     this.cam = null;
 
@@ -585,6 +597,9 @@
     gl.uniform3fv(u.uLC, env.lc);
     gl.uniform3fv(u.uSky, env.sky);
     gl.uniform3fv(u.uGnd, env.gnd);
+    gl.uniform3fv(u.uEye, cam.eye);
+    gl.uniform3fv(u.uFill, env.fill || [0.10, 0.13, 0.17]);
+    gl.uniform1f(u.uExposure, env.exposure || 1);
     gl.uniform1i(u.uTex, 0);
     // Schattenmatrix: drückt Punkte entlang des Lichts auf die Ebene y = sy
     var L = env.l, sy = env.shadowY || 0.02, k = 1 / L[1], m = this.shM;
@@ -604,6 +619,8 @@
   Renderer.prototype._draw = function (mesh, model, alpha, pal) {
     var gl = this.gl, u = this.um;
     gl.uniformMatrix4fv(u.uModel, false, model || IDENT);
+    gl.uniformMatrix3fv(u.uNormal, false, normalMatrix(model || IDENT, this.normalM));
+    gl.uniform2f(u.uMaterial, mesh.roughness == null ? 0.76 : mesh.roughness, mesh.specular == null ? 0.24 : mesh.specular);
     if (mesh.pal) { gl.uniform1f(u.uPalOn, 1); gl.uniform4fv(u.uPal, pal || mesh.palette); } else gl.uniform1f(u.uPalOn, 0);
     if (mesh.tex) {
       gl.activeTexture(gl.TEXTURE0);
@@ -701,7 +718,7 @@
     } catch (e) { return false; }
   };
 
-  E.M = { ident: ident, copy: copy, mul: mul, persp: persp, lookAt: lookAt };
+  E.M = { ident: ident, copy: copy, mul: mul, persp: persp, lookAt: lookAt, normal: normalMatrix };
   E.Stack = Stack;
   E.Builder = Builder;
   E.Camera = Camera;

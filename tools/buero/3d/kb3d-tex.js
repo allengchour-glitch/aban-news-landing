@@ -60,7 +60,7 @@
      model = { titel, zeit, stand, farben, zaehler:{gruen,gelb,rot,du,alt}, kpi:{wert,label}|null,
                zeilen:[{ name, state, text, frisch (0..1 oder null) }] }   (null = noch keine Daten) */
   var LB_FARBE = { gruen: '#2f9e5b', gelb: '#d99a1b', rot: '#e04b4b', du: '#4f86f0', alt: '#8b949e' };
-  var LB_WORT = { gruen: 'Läuft', gelb: 'Prüfen', rot: 'Steht', du: 'Für dich', alt: 'Alt' };
+  var LB_WORT = { gruen: 'Okay', gelb: 'Prüfen', rot: 'Fehler', du: 'Für dich', alt: 'Alt' };
   var LB_ZUSTAENDE = ['gruen', 'gelb', 'rot', 'du', 'alt'];
   function lbFit(g, text, maxW) {
     text = String(text == null ? '' : text);
@@ -80,102 +80,119 @@
   }
   function lbKopf(g, kicker, titel, zeit, farben, ins) {
     ins = ins || 0;           // Randstreifen innen: Nachbarwände verdecken beim Zentralmonitor den Rand des Bildes
-    var grad = g.createLinearGradient(0, 0, 1024, 512); grad.addColorStop(0, '#0f2a3d'); grad.addColorStop(1, '#16213a');
-    g.fillStyle = '#08121f'; g.fillRect(0, 0, 1024, 512);
+    var grad = g.createLinearGradient(0, 0, 0, 512); grad.addColorStop(0, '#13283b'); grad.addColorStop(1, '#0c1729');
+    g.fillStyle = '#060e19'; g.fillRect(0, 0, 1024, 512);
     g.fillStyle = grad; rr(g, 8, 8, 1008, 496, 18); g.fill();
+    g.fillStyle = '#74dece'; rr(g, 48 + ins, 18, 56, 4, 2); g.fill();
     g.fillStyle = '#7ad6c4'; g.font = 'bold 17px ' + FONT; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
     g.fillText(kicker, 48 + ins, 44);
-    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(lbFit(g, titel, 560), 48 + ins, 92);
-    // Uhr und «live»-Punkt
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 42px ' + FONT; g.fillText(lbFit(g, titel, 500), 48 + ins, 92);
+    // Die laufende Uhr ist keine Aussage über die Frische der Daten.
     g.textAlign = 'right';
-    g.fillStyle = '#a5e9df'; g.font = 'bold 16px ' + FONT; g.fillText('LIVE', 976 - ins, 38);
-    g.fillStyle = farben.gruen; g.beginPath(); g.arc(976 - ins - g.measureText('LIVE').width - 14, 33, 6, 0, PI * 2); g.fill();
+    g.fillStyle = '#9cb8c8'; g.font = 'bold 15px ' + FONT; g.fillText('BÜRO-UHR', 976 - ins, 38);
     g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(zeit || '--:--', 976 - ins, 82);
     g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('Schweizer Zeit', 976 - ins, 103);
     g.textAlign = 'left';
   }
+  function lbZeilen(g, text, breite, max) {
+    var woerter = String(text || '').replace(/\s+/g, ' ').trim().split(' '), out = [], zeile = '';
+    woerter.forEach(function (w) { var neu = zeile ? zeile + ' ' + w : w; if (g.measureText(neu).width > breite && zeile) { out.push(zeile); zeile = w; } else zeile = neu; });
+    if (zeile) out.push(zeile);
+    return out.slice(0, max).map(function (z, i) { return lbFit(g, z + (i === max - 1 && out.length > max ? ' …' : ''), breite); });
+  }
+  /* Kleine Arbeitsplatz-Monitore: derselbe belegte Befund wie Figur und Wandmonitor. */
+  T.station = function (m) {
+    var o = mk(384, 240), g = o.g, c = LB_FARBE[m.state] || LB_FARBE.alt;
+    g.fillStyle = '#0d1a2a'; g.fillRect(0, 0, 384, 240);
+    g.fillStyle = '#182d43'; g.fillRect(0, 0, 384, 40);
+    g.fillStyle = '#a4c6dc'; g.font = 'bold 14px ' + FONT; g.fillText('ARBEITSSTAND', 18, 26);
+    g.fillStyle = '#f1f8ff'; g.font = 'bold 25px ' + FONT; g.fillText(lbFit(g, m.name, 348), 18, 76);
+    lbLampe(g, m.state, 25, 103, 7, c);
+    g.fillStyle = c; g.font = 'bold 17px ' + FONT; g.fillText(lbFit(g, m.ergebnisWort || LB_WORT[m.state], 322), 42, 109);
+    g.fillStyle = '#d5e2eb'; g.font = '17px ' + FONT; lbZeilen(g, m.befund || m.text || 'Kein Ergebnis übermittelt.', 348, 3).forEach(function (z, i) { g.fillText(z, 18, 143 + i * 22); });
+    g.fillStyle = '#91aabe'; g.font = '15px ' + FONT; g.fillText(lbFit(g, m.alter || 'Nicht gemessen', 348), 18, 224);
+    return o.c;
+  };
   T.liveboard = function (m) {
     var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i;
-    lbKopf(g, 'LIVEBOARD', m ? m.titel : 'Liveboard', m && m.zeit, farben);
+    lbKopf(g, 'STATUSBOARD / MESSDATEN', m ? m.titel : 'Liveboard', m && m.zeit, farben);
     if (!m) {
       g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen dieses Raums …', 48, 250);
       return o.c;
     }
     // Sonder-Kennzahl (zum Beispiel offene Bestellungen) als Plakette neben der Uhr
     if (m.kpi) {
-      g.fillStyle = 'rgba(122,214,196,0.16)'; rr(g, 560, 52, 230, 58, 14); g.fill();
+      g.fillStyle = 'rgba(122,214,196,0.10)'; rr(g, 560, 52, 230, 58, 10); g.fill();
       g.fillStyle = '#f3f8ff'; g.font = 'bold 38px ' + FONT; g.textAlign = 'left'; g.fillText(String(m.kpi.wert), 576, 95);
       var nw = g.measureText(String(m.kpi.wert)).width;
       g.fillStyle = '#a5e9df'; g.font = '15px ' + FONT;
       g.fillText(lbFit(g, m.kpi.label, 790 - 576 - nw - 20), 576 + nw + 12, 94);
     }
     // Fünf Zähler
-    var tw = 176, th = 78, ty = 112;
+    var tw = 176, th = 58, ty = 112;
     for (i = 0; i < 5; i++) {
       var st = LB_ZUSTAENDE[i], tx = 48 + i * (tw + 12), n = (m.zaehler && m.zaehler[st]) || 0;
-      g.fillStyle = 'rgba(255,255,255,0.075)'; rr(g, tx, ty, tw, th, 14); g.fill();
+      g.fillStyle = 'rgba(255,255,255,0.055)'; rr(g, tx, ty, tw, th, 10); g.fill();
+      g.strokeStyle = 'rgba(184,211,235,0.14)'; g.lineWidth = 1; rr(g, tx + 0.5, ty + 0.5, tw - 1, th - 1, 10); g.stroke();
       g.fillStyle = farben[st]; rr(g, tx, ty + 10, 6, th - 20, 3); g.fill();
-      g.fillStyle = n > 0 || st === 'gruen' ? '#f3f8ff' : '#7f93a3'; g.font = 'bold 50px ' + FONT; g.textAlign = 'left'; g.fillText(String(n), tx + 22, ty + 52);
-      g.fillStyle = '#b5cad6'; g.font = '18px ' + FONT; g.fillText(LB_WORT[st], tx + 22, ty + 72);
-      lbLampe(g, st, tx + tw - 28, ty + 26, 9, farben[st]);
+      g.fillStyle = n > 0 || st === 'gruen' ? '#f3f8ff' : '#7f93a3'; g.font = 'bold 38px ' + FONT; g.textAlign = 'left'; g.fillText(String(n), tx + 22, ty + 39);
+      g.fillStyle = '#b5cad6'; g.font = '14px ' + FONT; g.fillText(LB_WORT[st], tx + 78, ty + 38);
+      lbLampe(g, st, tx + tw - 20, ty + 20, 6, farben[st]);
     }
-    // Zeilen
-    var zeilen = m.zeilen || [], y0 = 216, zh = 36, max = 7;
-    g.fillStyle = '#7ad6c4'; g.font = 'bold 16px ' + FONT; g.fillText('ABLAUF', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 452, y0 - 6); g.fillText('FRISCHE', 840, y0 - 6);
+    // Der letzte konkrete Befund steht gross über der Ablauf-Tabelle.
+    var zeilen = m.zeilen || [], aktuell = zeilen.filter(function (z) { return z.gemessen; }).sort(function (a, b) { return b.sortZeit - a.sortZeit; })[0];
+    g.fillStyle = '#193347'; rr(g, 40, 181, 944, 80, 10); g.fill();
+    g.fillStyle = '#7ad6c4'; g.font = 'bold 13px ' + FONT; g.fillText(aktuell ? aktuell.ergebnisWort.toLocaleUpperCase('de') : 'KEINE DATIERTE MELDUNG', 56, 202);
+    g.fillStyle = '#edf4fa'; g.font = '20px ' + FONT;
+    lbZeilen(g, aktuell ? aktuell.befund || aktuell.text : 'Für diesen Raum liegt noch kein aktueller Ergebnistext vor.', 912, 2).forEach(function (z, i) { g.fillText(z, 56, 226 + i * 25); });
+    var y0 = 280, zh = 25, max = 7;
+    g.fillStyle = '#8fb0c8'; g.font = 'bold 15px ' + FONT; g.fillText('AUFGABE', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 430, y0 - 6); g.fillText('MESSUNG', 840, y0 - 6);
     for (i = 0; i < Math.min(max, zeilen.length); i++) {
       var z = zeilen[i], y = y0 + 6 + i * zh, c = farben[z.state] || farben.alt;
       if (i % 2 === 0) { g.fillStyle = 'rgba(255,255,255,0.045)'; rr(g, 40, y - 2, 944, zh - 2, 8); g.fill(); }
       lbLampe(g, z.state, 62, y + zh / 2 - 2, 10, c);
-      g.fillStyle = '#f3f8ff'; g.font = 'bold 25px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, z.name, 355), 84, y + 27);
-      g.fillStyle = '#b5cad6'; g.font = '21px ' + FONT; g.fillText(lbFit(g, z.text || '', 370), 452, y + 27);
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 20px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, z.name, 328), 84, y + 19);
+      g.fillStyle = '#c0d2e1'; g.font = '17px ' + FONT; g.fillText(lbFit(g, z.text || '', 390), 430, y + 19);
       // Frische-Balken: voll = eben gemessen, leer = Messung ist so alt wie die Frist
-      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, 840, y + 12, 130, 12, 6); g.fill();
+      g.fillStyle = z.state === 'alt' ? farben.alt : z.frisch == null ? '#9cb8c8' : '#d9e7f2';
+      g.font = '14px ' + FONT; g.fillText(lbFit(g, z.alter || (z.frisch == null ? 'Nicht gemessen' : 'Messwert'), 136), 840, y + 16);
+      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, 840, y + 20, 130, 3, 2); g.fill();
       if (z.frisch != null) {
         var f = Math.max(0, Math.min(1, z.frisch));
-        g.fillStyle = f > 0.5 ? farben.gruen : f > 0.2 ? farben.gelb : farben.rot;
-        if (f > 0.02) { rr(g, 840, y + 12, Math.max(12, 130 * f), 12, 6); g.fill(); }
-      } else { g.fillStyle = '#7f93a3'; g.font = '15px ' + FONT; g.fillText('kein Alter', 846, y + 24); }
+        g.fillStyle = z.state === 'alt' ? farben.alt : f > 0.5 ? '#74dece' : farben.gelb;
+        if (f > 0.02) { rr(g, 840, y + 20, Math.max(4, 130 * f), 3, 2); g.fill(); }
+      }
     }
     g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
-    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Lampen und Balken sind Messwerte, kein Livesignal' : 'Messstand unbekannt', 48, 492);
+    g.fillText(lbFit(g, m.stand ? 'Messstand ' + m.stand : 'Messstand unbekannt', zeilen.length > max ? 620 : 928), 48, 492);
     // Mehr Zeilen als Platz: der Hinweis steht rechts auf der Fusszeile (unter den Zeilen ist kein Platz mehr)
     if (zeilen.length > max) { g.fillStyle = '#9cb8c8'; g.textAlign = 'right'; g.fillText('+ ' + (zeilen.length - max) + ' weitere Zeilen im Raum', 976, 492); g.textAlign = 'left'; }
     return o.c;
   };
-  /* Zentralmonitor: alle Räume nebeneinander. model = { zeit, stand, farben, summe:{...}, n, raeume:[{ titel, n, zaehler }] } */
+  /* Zentralmonitor: konkrete letzte Meldungen, bestätigte Laufabschlüsse und Blocker. */
   T.liveboardUebersicht = function (m) {
-    var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i, k;
-    lbKopf(g, 'ZENTRALMONITOR', 'Alle Räume im Blick', m && m.zeit, farben, 28);
+    var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {});
+    lbKopf(g, 'ARBEITSJOURNAL', 'Was im Büro passiert', m && m.zeit, farben, 28);
     if (!m) { g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen des Büros …', 76, 250); return o.c; }
-    var raeume = (m.raeume || []).slice(0, 7), tw = 209, th = 168, gap = 12, x0 = 76, y0 = 120;   // Rand 76 px: die Wände der Nachbarräume verdecken je nach Kamera bis zu 55 px
-    function kachel(idx, titel, zaehler, n, gross) {
-      var cx = x0 + (idx % 4) * (tw + gap), cy = y0 + Math.floor(idx / 4) * (th + gap), j, summe = 0;
-      g.fillStyle = gross ? 'rgba(122,214,196,0.15)' : 'rgba(255,255,255,0.075)'; rr(g, cx, cy, tw, th, 16); g.fill();
-      g.fillStyle = '#f3f8ff'; g.font = 'bold 21px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 24), cx + 16, cy + 36);
-      g.fillStyle = '#b5cad6'; g.font = '16px ' + FONT; g.fillText(n + (n === 1 ? ' Eintrag' : ' Einträge'), cx + 16, cy + 60);
-      for (j = 0; j < 5; j++) summe += zaehler[LB_ZUSTAENDE[j]] || 0;
-      // Balken: Anteile der fünf Zustände
-      var bx = cx + 16, bw = tw - 32, by = cy + 76, off = 0;
-      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, bx, by, bw, 14, 7); g.fill();
-      if (summe > 0) {
-        g.save(); rr(g, bx, by, bw, 14, 7); g.clip();
-        for (j = 0; j < 5; j++) {
-          var cnt = zaehler[LB_ZUSTAENDE[j]] || 0; if (!cnt) continue;
-          var w = bw * cnt / summe; g.fillStyle = farben[LB_ZUSTAENDE[j]]; g.fillRect(bx + off, by, w + 0.5, 14); off += w;
-        }
-        g.restore();
-      }
-      // Zahlen mit Lampen
-      for (j = 0; j < 5; j++) {
-        var st = LB_ZUSTAENDE[j], px = cx + 16 + (j % 3) * 66, py = cy + 122 + Math.floor(j / 3) * 34;
-        lbLampe(g, st, px + 8, py - 6, 7, farben[st]);
-        g.fillStyle = (zaehler[st] || 0) > 0 ? '#f3f8ff' : '#6f8394'; g.font = 'bold 22px ' + FONT; g.fillText(String(zaehler[st] || 0), px + 22, py);
-      }
+    function karte(z, x, y, w, h) {
+      var c = farben[z.state] || farben.alt;
+      g.fillStyle = '#172b3e'; rr(g, x, y, w, h, 10); g.fill();
+      g.fillStyle = c; rr(g, x, y + 10, 4, h - 20, 2); g.fill();
+      g.fillStyle = '#f2f7fc'; g.font = 'bold 22px ' + FONT; g.fillText(lbFit(g, z.name, w - 32), x + 16, y + 29);
+      g.fillStyle = c; g.font = '14px ' + FONT; g.fillText(lbFit(g, z.ergebnisWort + ' · ' + z.alter, w - 32), x + 16, y + 52);
+      g.fillStyle = '#becfdd'; g.font = '18px ' + FONT;
+      lbZeilen(g, z.befund || z.text || 'Kein Befund übermittelt.', w - 32, h > 120 ? 3 : 2).forEach(function (t, i) { g.fillText(t, x + 16, y + 77 + i * 22); });
     }
-    for (i = 0; i < raeume.length; i++) kachel(i, raeume[i].titel, raeume[i].zaehler || {}, raeume[i].n || 0, false);
-    kachel(7, 'Alle zusammen', m.summe || {}, m.n || 0, true);
-    g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
-    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Antippen: grosse Ansicht' : 'Messstand unbekannt', 76, 492);
+    g.fillStyle = '#8fb0c8'; g.font = 'bold 15px ' + FONT; g.fillText('LETZTE ABSCHLÜSSE UND MELDUNGEN', 76, 130); g.fillText('AUFMERKSAMKEIT', 658, 130);
+    var links = (m.abgeschlossen || []).concat(m.meldungen || []).sort(function(a,b){return b.sortZeit-a.sortZeit;}).slice(0, 3);
+    if (!links.length) { g.fillStyle = '#c3d6e2'; g.font = '24px ' + FONT; lbZeilen(g, 'Noch keine datierte Arbeitsmeldung geladen.', 530, 3).forEach(function (z, i) { g.fillText(z, 92, 196 + i * 34); }); }
+    links.forEach(function (z, i) { karte(z, 76, 146 + i * 106, 558, 98); });
+    var rechts = (m.blocker || []).slice(0, 2);
+    rechts.forEach(function (z, i) { karte(z, 658, 146 + i * 159, 290, 151); });
+    if (!rechts.length) { g.fillStyle = '#96b2c6'; g.font = '20px ' + FONT; lbZeilen(g, 'Kein konkreter Blocker gemeldet.', 258, 3).forEach(function (z, i) { g.fillText(z, 674, 182 + i * 28); }); }
+    g.fillStyle = '#8fa6b5'; g.font = '15px ' + FONT; g.textAlign = 'left';
+    g.fillText(lbFit(g, m.stand ? 'Messstand ' + m.stand : 'Messstand unbekannt', 620), 76, 492);
+    if (m.unbekannt) { g.textAlign = 'right'; g.fillText(m.unbekannt + ' ohne Messzeit', 948, 492); g.textAlign = 'left'; }
     return o.c;
   };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
@@ -272,30 +289,17 @@
       }
       case 'chart': {
         g.fillStyle = '#101725'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'BTC/USDT');
-        g.fillStyle = 'rgba(255,255,255,0.08)';
-        for (i = 1; i < 5; i++) g.fillRect(0, 12 + i * 22, W, 1);
-        var v = 70;
-        for (i = 0; i < 20; i++) {
-          var open = v, d = (r() - 0.46) * 16; v = Math.max(26, Math.min(104, v - d));
-          var hi = Math.min(open, v) - r() * 6 - 1, lo = Math.max(open, v) + r() * 6 + 1;
-          g.fillStyle = v < open ? '#2ecf7d' : '#f0556a';
-          g.fillRect(i * 6 + 6, hi, 1, lo - hi);
-          g.fillRect(i * 6 + 4, Math.min(open, v), 5, Math.abs(open - v) + 1);
-        }
-        g.strokeStyle = '#ffd166'; g.lineWidth = 1; g.beginPath(); g.moveTo(0, v); g.lineTo(W, v); g.stroke();
+        chrome(g, W, 'Krypto');
+        g.fillStyle = '#7da6be'; g.font = 'bold 14px ' + FONT; g.fillText('KEIN KURS', 18, 58);
+        g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 86);
         break;
       }
       case 'map': {
-        g.fillStyle = '#e8eef2'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'Sendungen');
-        g.strokeStyle = '#c4ced6'; g.lineWidth = 4;
-        for (i = 0; i < 4; i++) { g.beginPath(); g.moveTo(0, 28 + i * 24); g.lineTo(W, 20 + i * 26); g.stroke(); }
-        for (i = 0; i < 3; i++) { g.beginPath(); g.moveTo(24 + i * 38, 12); g.lineTo(34 + i * 34, H); g.stroke(); }
-        g.strokeStyle = '#e48a3f'; g.lineWidth = 3; g.setLineDash([6, 4]);
-        g.beginPath(); g.moveTo(16, 100); g.lineTo(46, 70); g.lineTo(78, 82); g.lineTo(108, 36); g.stroke(); g.setLineDash([]);
-        g.fillStyle = '#d95555'; g.beginPath(); g.arc(108, 36, 6, 0, 7); g.fill();
-        g.fillStyle = '#fff'; g.fillRect(105, 34, 6, 5);
+        g.fillStyle = '#172333'; g.fillRect(0, 0, W, H);
+        chrome(g, W, 'Versand');
+        g.strokeStyle = '#d9b184'; g.lineWidth = 3; g.strokeRect(40, 40, 48, 44);
+        g.beginPath(); g.moveTo(64, 40); g.lineTo(64, 63); g.stroke();
+        g.fillStyle = '#b8c9da'; g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 111);
         break;
       }
       case 'shop': {
@@ -343,13 +347,10 @@
       }
       case 'dash': {
         g.fillStyle = '#12202b'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'Übersicht');
-        var bars = [0.5, 0.8, 0.35, 0.65, 0.9, 0.55];
-        for (i = 0; i < bars.length; i++) {
-          g.fillStyle = ['#7ee787', '#79c0ff', '#ffa657', '#d2a8ff', '#7ee787', '#79c0ff'][i];
-          g.fillRect(10 + i * 19, 112 - bars[i] * 80, 13, bars[i] * 80);
-        }
-        g.fillStyle = 'rgba(255,255,255,0.7)'; g.font = 'bold 12px ' + FONT; g.fillText('12 · 3 · 0', 10, 26);
+        chrome(g, W, 'Chefbüro');
+        g.strokeStyle = '#79b9bd'; g.lineWidth = 2;
+        [[12, 30], [68, 30], [12, 64], [68, 64]].forEach(function (p) { rr(g, p[0], p[1], 48, 26, 4); g.stroke(); });
+        g.fillStyle = '#b8c9da'; g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 111);
         break;
       }
       case 'logo': {

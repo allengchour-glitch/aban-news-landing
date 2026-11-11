@@ -1,0 +1,156 @@
+{
+ "gesichert": "2026-11-11T21:16:59.712Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15509401502081",
+  "handle": "led-lichttherapie-maske-fur-strahlende-haut-395db3",
+  "titel": "LED-Lichttherapie-Maske für strahlende Haut",
+  "status": "ACTIVE",
+  "tags": [
+   "beauty",
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "haarstyling",
+   "pflege",
+   "sort-led-masken-lichtgeraete",
+   "varianten-nachgezogen-1025"
+  ],
+  "seo": {
+   "title": "LED-Lichttherapie-Maske für strahlende Haut | LuxeStyle CH",
+   "description": "LED-Lichttherapie-Maske für strahlende Haut – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+  },
+  "html": "<!-- ls-var-v1 --><p>Diese LED-Lichttherapie-Maske nutzt spezifische Wellenlängen von rotem und blauem Licht, um deine Haut zu revitalisieren. Das Licht dringt tief in die Hautoberfläche ein, erreicht die subkutane Fettschicht und stimuliert dort die Kapillaren. Dies fördert die Zellproduktion, verbessert die Blutzirkulation und regt die Bildung von Kollagen und Elastin an. Die Maske ist ideal, um das Erscheinungsbild von Unreinheiten, Falten und Pigmentflecken zu mindern und die Hautelastizität zu steigern. Sie verhilft deiner Haut zu einem gesunden und vitalen Zustand zurück.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rotes und blaues Licht zur Hautrevitalisierung</li>\n<li>Fördert Kollagen- und Elastinproduktion</li>\n<li>Mildert Unreinheiten, Falten und Pigmentflecken</li>\n<li>Verbessert die Blutzirkulation und Zellproduktion</li>\n<li>Unterstützt die Haut bei der aeroben Atmung</li>\n<li>Kann Poren verfeinern und Hautunreinheiten vorbeugen</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+  "optionen": [
+   {
+    "name": "Farbe",
+    "werte": [
+     {
+      "name": "Drei Farben Licht Stecker",
+      "mitVarianten": true
+     },
+     {
+      "name": "7 Farben",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70626923348353",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/776878295605.jpg?v=1787379598"
+   },
+   {
+    "id": "gid://shopify/MediaImage/78014953750919",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Ansicht 2",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_194307_da05d3fb-a1ac-4652-ad55-43fb7aff7ba5.png?v=1794427556"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923381121",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a928cbf-1bbe-49fa-b77e-a22ce5957410.jpg?v=1787379597"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923413889",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6071497370412.jpg?v=1787379598"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923446657",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12106092066997.jpg?v=1787379597"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923479425",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 6 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/946871126233.jpg?v=1787379597"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923512193",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 7 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6287868928787.jpg?v=1787379597"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923544961",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 8 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/632471007990.jpg?v=1787379598"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923577729",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 9 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2607334866586.png?v=1787379598"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923610497",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 10 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/385527165321.png?v=1787379597"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923643265",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 11 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/13299063652984.png?v=1787379597"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948408242567",
+    "titel": "Drei Farben Licht Stecker",
+    "sku": "CJBJMRDD00119-Three color light plug in",
+    "preis": "24.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Drei Farben Licht Stecker"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70626923381121"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948408275335",
+    "titel": "7 Farben",
+    "sku": "CJBJMRDD00119-7colors",
+    "preis": "25.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "7 Farben"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/78014953750919"
+    ]
+   }
+  ]
+ }
+}

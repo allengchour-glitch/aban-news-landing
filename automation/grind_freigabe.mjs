@@ -65,6 +65,13 @@ export function seoFuer(titel) {
   return { title: seoTitel, description: b.length <= 160 ? b : `${b.slice(0, 159).trimEnd()}…` };
 }
 
+/** Gleicht den gelesenen SEO-Stand mit dem Soll ab. Shopify speichert einen SEO-Titel, der gleich dem Produkttitel ist, als leer
+ *  (Lesung `seo.title: null`, gemessen 11.11.2026 am Katzentunnel); ein leerer SEO-Titel zählt darum wie der Produkttitel. */
+export function seoGleich(p, soll) {
+  const titel = p?.seo?.title == null || p.seo.title === '' ? p?.title : p.seo.title;
+  return titel === soll.title && (p?.seo?.description ?? null) === soll.description;
+}
+
 /** Wendet [[alt, neu]] auf die Beschreibung an. Jeder Treffer muss genau einmal vorkommen; ist `neu` schon da und `alt` weg, gilt der Schritt als erledigt. */
 export function htmlErsetzen(html, paare) {
   let h = String(html);
@@ -219,7 +226,7 @@ export async function lauf(cfg, io) {
       const tagsNeu = ohneOffen(p.tags);
       const felder = {};
       if (e.titel && p.title !== e.titel) felder.title = e.titel;
-      if (seoNeu && (p.seo?.title !== seoNeu.title || p.seo?.description !== seoNeu.description)) felder.seo = seoNeu;
+      if (seoNeu && !seoGleich({ ...p, title: e.titel }, seoNeu)) felder.seo = seoNeu;
       if (htmlNeu !== p.descriptionHtml) felder.descriptionHtml = htmlNeu;
       if (!gleich(tagsNeu, p.tags)) felder.tags = tagsNeu;
       if (Object.keys(felder).length) schritte.push(`Felder ${Object.keys(felder).join(', ')}`);
@@ -259,7 +266,7 @@ export async function lauf(cfg, io) {
         p = await lies(e.handle);
         const abw = [];
         if (e.titel && p.title !== e.titel) abw.push('Titel');
-        if (seoNeu && (p.seo?.title !== seoNeu.title || p.seo?.description !== seoNeu.description)) abw.push('SEO');
+        if (seoNeu && !seoGleich(p, seoNeu)) abw.push('SEO');
         if (p.descriptionHtml !== htmlNeu) abw.push('Beschreibung');
         if (p.tags.includes(TAG_OFFEN)) abw.push('Tag');
         for (const { o, upd } of optionen) { const nach = p.options.find(x => x.id === o.id); for (const u of upd) if (!nach?.optionValues.some(v => v.id === u.id && v.name === u.name)) abw.push(`Option ${o.name}`); }

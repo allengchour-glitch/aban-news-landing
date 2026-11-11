@@ -13,6 +13,15 @@
   }
   MD.has = function (id) { return !!PACK[id]; };
   MD.ids = function () { return Object.keys(PACK); };
+  // Gestalterische Rauheit aus den vorhandenen Materialnamen, kein neues Materialversprechen.
+  function rauheit(name) {
+    name = (name || '').toLowerCase();
+    if (/chrom|metall|edelstahl|felge|becken|griff/.test(name)) return 0.30;
+    if (/glas|scheibe|scheinwerfer|monitor/.test(name)) return 0.28;
+    if (/polster|kissen|stoff|erde|reifen/.test(name)) return 0.94;
+    if (/blatt|stamm|holz|platte|kante/.test(name)) return 0.72;
+    return 0.60;
+  }
 
   /* Baut ein Modell: groups[name] = Netz (mit mesh.pal = true), size, b (Box), names, pal. crease = Knickwinkel in Grad. */
   MD.load = function (R, id, opt) {
@@ -39,7 +48,7 @@
       var data = new Float32Array(corners * 12), cast = new Float32Array(corners * 3), w = 0, cw = 0;
       list.forEach(function (p) {
         var v0 = p[2], vn = p[3], t0 = p[4], tn = p[5], slot = p[1];
-        var fnx = new Float32Array(tn), fny = new Float32Array(tn), fnz = new Float32Array(tn), fa = new Float32Array(tn);
+        var fnx = new Float32Array(tn), fny = new Float32Array(tn), fnz = new Float32Array(tn), winkel = new Float32Array(tn * 3);
         var cnt = new Uint32Array(vn + 1), t, k, a, b2, c2;
         for (t = 0; t < tn; t++) {
           a = iq[(t0 + t) * 3] - v0; b2 = iq[(t0 + t) * 3 + 1] - v0; c2 = iq[(t0 + t) * 3 + 2] - v0;
@@ -48,7 +57,13 @@
           var vx = pos[(v0 + c2) * 3] - ax, vy = pos[(v0 + c2) * 3 + 1] - ay, vz = pos[(v0 + c2) * 3 + 2] - az;
           var nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
           var l = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
-          fa[t] = l; fnx[t] = nx / l; fny[t] = ny / l; fnz[t] = nz / l;
+          fnx[t] = nx / l; fny[t] = ny / l; fnz[t] = nz / l;
+          // Winkelgewichte erhalten Rundungen auch bei ungleich grossen Dreiecken.
+          var vl = Math.hypot(ux, uy, uz), wl = Math.hypot(vx, vy, vz), dot = ux * vx + uy * vy + uz * vz;
+          var wa = vl && wl ? Math.acos(Math.max(-1, Math.min(1, dot / (vl * wl)))) : 0;
+          var ex = vx - ux, ey = vy - uy, ez = vz - uz, el = Math.hypot(ex, ey, ez);
+          var wb = vl && el ? Math.acos(Math.max(-1, Math.min(1, (-ux * ex - uy * ey - uz * ez) / (vl * el)))) : 0;
+          winkel[t * 3] = wa; winkel[t * 3 + 1] = wb; winkel[t * 3 + 2] = Math.max(0, Math.PI - wa - wb);
           cnt[a]++; cnt[b2]++; cnt[c2]++;
         }
         // Nachbarschaft Punkt -> Dreiecke
@@ -56,18 +71,20 @@
         for (k = 0; k < vn; k++) { start[k] = s; s += cnt[k]; }
         start[vn] = s;
         var fill = new Uint32Array(vn), adj = new Uint32Array(s);
-        for (t = 0; t < tn; t++) for (k = 0; k < 3; k++) { var vv = iq[(t0 + t) * 3 + k] - v0; adj[start[vv] + fill[vv]++] = t; }
+        for (t = 0; t < tn; t++) for (k = 0; k < 3; k++) { var vv = iq[(t0 + t) * 3 + k] - v0; adj[start[vv] + fill[vv]++] = t * 3 + k; }
         for (t = 0; t < tn; t++) {
           for (k = 0; k < 3; k++) {
             var vi = iq[(t0 + t) * 3 + k], lv = vi - v0, sx = 0, sy = 0, sz = 0;
             for (var j = start[lv]; j < start[lv + 1]; j++) {
-              var f = adj[j];
-              if (fnx[f] * fnx[t] + fny[f] * fny[t] + fnz[f] * fnz[t] >= cosC) { sx += fnx[f] * fa[f]; sy += fny[f] * fa[f]; sz += fnz[f] * fa[f]; }
+              var ecke = adj[j], f = Math.floor(ecke / 3), gewicht = winkel[ecke];
+              if (fnx[f] * fnx[t] + fny[f] * fny[t] + fnz[f] * fnz[t] >= cosC) { sx += fnx[f] * gewicht; sy += fny[f] * gewicht; sz += fnz[f] * gewicht; }
             }
-            var ll = Math.sqrt(sx * sx + sy * sy + sz * sz) || 1;
+            var ll = Math.sqrt(sx * sx + sy * sy + sz * sz);
+            if (ll < 1e-8) { sx = fnx[t]; sy = fny[t]; sz = fnz[t]; ll = Math.hypot(sx, sy, sz); }
+            if (ll < 1e-8) { sx = 0; sy = 1; sz = 0; ll = 1; }
             data[w] = pos[vi * 3]; data[w + 1] = pos[vi * 3 + 1]; data[w + 2] = pos[vi * 3 + 2];
             data[w + 3] = sx / ll; data[w + 4] = sy / ll; data[w + 5] = sz / ll;
-            data[w + 6] = slot / 16; data[w + 7] = opt.lift ? opt.lift(g, data[w], data[w + 1], data[w + 2]) : 0; data[w + 8] = 0; data[w + 9] = 0;
+            data[w + 6] = slot / 16; data[w + 7] = opt.lift ? opt.lift(g, data[w], data[w + 1], data[w + 2]) : 0; data[w + 8] = rauheit((d.n || [])[slot]); data[w + 9] = 0;
             data[w + 10] = 0; data[w + 11] = 0;
             w += 12;
             cast[cw] = data[w - 12]; cast[cw + 1] = data[w - 11]; cast[cw + 2] = data[w - 10]; cw += 3;
@@ -88,13 +105,14 @@
     list.forEach(function (it) { corners += model.cpu[it[0]].n; });
     var data = new Float32Array(corners * 12), cast = new Float32Array(corners * 3), w = 0, cw = 0;
     list.forEach(function (it) {
-      var src = model.cpu[it[0]], m = it[1], n = src.n, d = src.data;
+      var src = model.cpu[it[0]], m = it[1], n = src.n, d = src.data, nm = K.M.normal(m, new Float32Array(9));
       for (var i = 0; i < n; i++) {
         var o = i * 12, x = d[o], y = d[o + 1], z = d[o + 2], nx = d[o + 3], ny = d[o + 4], nz = d[o + 5];
         var px = m[0] * x + m[4] * y + m[8] * z + m[12], py = m[1] * x + m[5] * y + m[9] * z + m[13], pz = m[2] * x + m[6] * y + m[10] * z + m[14];
         data[w] = px; data[w + 1] = py; data[w + 2] = pz;
-        data[w + 3] = m[0] * nx + m[4] * ny + m[8] * nz; data[w + 4] = m[1] * nx + m[5] * ny + m[9] * nz; data[w + 5] = m[2] * nx + m[6] * ny + m[10] * nz;
-        data[w + 6] = d[o + 6]; data[w + 7] = 0; data[w + 8] = 0; data[w + 9] = 0; data[w + 10] = 0; data[w + 11] = 0;
+        var tx = nm[0] * nx + nm[3] * ny + nm[6] * nz, ty = nm[1] * nx + nm[4] * ny + nm[7] * nz, tz = nm[2] * nx + nm[5] * ny + nm[8] * nz, nl = Math.hypot(tx, ty, tz) || 1;
+        data[w + 3] = tx / nl; data[w + 4] = ty / nl; data[w + 5] = tz / nl;
+        data[w + 6] = d[o + 6]; data[w + 7] = d[o + 7]; data[w + 8] = d[o + 8]; data[w + 9] = d[o + 9]; data[w + 10] = 0; data[w + 11] = 0;
         cast[cw] = px; cast[cw + 1] = py; cast[cw + 2] = pz;
         w += 12; cw += 3;
       }

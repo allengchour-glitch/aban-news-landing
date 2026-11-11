@@ -1,0 +1,131 @@
+{
+ "gesichert": "2026-11-11T21:17:29.091Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15479434740097",
+  "handle": "kabellose-mini-hd-motion-sensing-spielekonsole-836992",
+  "titel": "Kabellose Mini HD Motion-Sensing Spielekonsole",
+  "status": "ACTIVE",
+  "tags": [
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "gadgets",
+   "gaming",
+   "konsole",
+   "ps4",
+   "ps5",
+   "rueckhol-0907",
+   "sort-konsolen",
+   "sort-spielkonsolen-retro-handhelds",
+   "varianten-nachgezogen-1025",
+   "xbox"
+  ],
+  "seo": {
+   "title": "Kabellose Mini HD Motion-Sensing Spielekonsole | LuxeStyle",
+   "description": "Kabellose Mini HD Motion-Sensing Spielekonsole – jetzt bei LuxeStyle Schweiz (Gaming-Zubehör). Gratis-Versand ab CHF 50, 30 Tage Rückgabe, sichere Zahlung. C…"
+  },
+  "html": "<!-- ls-var-v1 --><p>Erlebe interaktiven Spielspass mit dieser kabellosen Mini HD Spielekonsole. Sie ist ideal für actionreiche Games und bietet dank Bewegungssensorik ein immersives Spielerlebnis. Die Konsole wird mit zwei kabellosen Controllern geliefert und ist sofort einsatzbereit.</p><p>Verbinde die Konsole einfach über HDMI mit deinem HD-Fernseher und tauche ein in die Welt der ACT-Actionspiele. Dank der einfachen Handhabung ist sie für Spieler ab 8 Jahren geeignet und bietet Unterhaltung für zwei Personen. Die kompakte Grösse und das geringe Gewicht machen sie zudem leicht transportierbar.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Interaktive Bewegungssensorik für immersives Gameplay</li>\n<li>Inklusive zwei kabellosen Controllern für Multiplayer-Spass</li>\n<li>Einfache Verbindung über HDMI mit HD-Fernsehern</li>\n<li>Kompaktes Design aus ABS-Material</li>\n<li>Geeignet für Spieler ab 8 Jahren</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+  "optionen": [
+   {
+    "name": "Modell",
+    "werte": [
+     {
+      "name": "830games",
+      "mitVarianten": true
+     },
+     {
+      "name": "Y2 FIT Zweite Generation",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70342834553217",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 1 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b90fe4a8-9b49-4298-acb0-cb3b4925f8c9.jpg?v=1785463613"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342834225537",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9928fefe-31b2-4e61-a5a6-40def78109cb.jpg?v=1785463613"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342834585985",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0caf2d74-34ec-48a8-a77d-cbc9986951b8.jpg?v=1785463614"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342834618753",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b7d87f0-981c-446f-8caa-22a53786f2f4.jpg?v=1785463613"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342834651521",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/462b4ace-e52c-4067-894d-f1ad512ea617.jpg?v=1785463614"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342834684289",
+    "alt": "Kabellose Mini HD Motion-Sensing Spielekonsole – Bild 6 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4bc7933d-e2a1-4182-a7b4-8ad7e6d88414.jpg?v=1785463614"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874177352071",
+    "titel": "830games",
+    "sku": "CJYX165471601AZ",
+    "preis": "32.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Modell",
+      "value": "830games"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70342834225537"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874177384839",
+    "titel": "Y2 FIT Zweite Generation",
+    "sku": "CJYX165471602BY",
+    "preis": "33.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Modell",
+      "value": "Y2 FIT Zweite Generation"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "KILOGRAMS",
+     "value": 0
+    },
+    "medien": [
+     "gid://shopify/MediaImage/70342834684289"
+    ]
+   }
+  ]
+ }
+}

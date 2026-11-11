@@ -1,0 +1,139 @@
+{
+ "gesichert": "2026-11-11T21:17:04.857Z",
+ "produkt": {
+  "id": "gid://shopify/Product/15455081824641",
+  "handle": "gesichtshochheber-nackenmassagegerat-2a3655",
+  "titel": "Gesichtshochheber & Nackenmassagegerät",
+  "status": "ACTIVE",
+  "tags": [
+   "beauty",
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "dropship",
+   "haarstyling",
+   "nackenmassagegeraet",
+   "pflege",
+   "rueckhol-0907",
+   "sort-nacken-ruecken-massagegeraete"
+  ],
+  "seo": {
+   "title": "Gesichtshochheber & Nackenmassagegerät | LuxeStyle CH",
+   "description": "Gesichtshochheber & Nackenmassagegerät bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+  },
+  "html": "<p>Das Gesichtshochheber &amp; Nackenmassagegerät nutzt sanfte Pulssteuerung, um bis zu 3-5 cm unter die Haut zu wirken. Es öffnet Schmerzpunkte und Meridiane, um Verspannungen im Nacken zu reduzieren. Der USB-Anschluss sorgt für einfache Handhabung und mobile Nutzung.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Sanfte Pulssteuerung für tiefere Wirkung</li>\n<li>Öffnet Schmerzpunkte und Meridiane</li>\n<li>Reduziert Nackenverspannungen</li>\n<li>USB-Ladefunktion für Mobilität</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+  "optionen": [
+   {
+    "name": "Farbe",
+    "werte": [
+     {
+      "name": "Weiss",
+      "mitVarianten": true
+     },
+     {
+      "name": "Pink",
+      "mitVarianten": true
+     }
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69943127671169",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 6 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/33670498108.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127507329",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 1 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/671518936180.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127540097",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2917999703205.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127572865",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 3 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/932673879737.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127605633",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 4 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1451615659750.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127638401",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 5 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2727123507729.jpg?v=1784016566"
+   },
+   {
+    "id": "gid://shopify/MediaImage/78014946410887",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Ansicht 7",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193845_9d48980b-998c-445e-b8d4-5c5fe6cf6adc.png?v=1794427537"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77452339773831",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 2 | LuxeStyle",
+    "status": "READY",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/932673879737_c37aa553-3335-4651-bdd1-a030d80c2bc1.jpg?v=1791165770"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56068468605313",
+    "titel": "Weiss",
+    "sku": "CJ-CJBJMRDD00165-White",
+    "preis": "86.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 762
+    },
+    "medien": [
+     "gid://shopify/MediaImage/78014946410887"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56068468638081",
+    "titel": "Pink",
+    "sku": "CJ-CJBJMRDD00165-Pink",
+    "preis": "86.90",
+    "vergleichspreis": null,
+    "policy": "CONTINUE",
+    "steuer": true,
+    "optionen": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     }
+    ],
+    "verfolgt": false,
+    "gewicht": {
+     "unit": "GRAMS",
+     "value": 762
+    },
+    "medien": [
+     "gid://shopify/MediaImage/77452339773831"
+    ]
+   }
+  ]
+ }
+}
