@@ -1,0 +1,63 @@
+name: Magnet-Freischaltung Selbsttest
+
+# Offline-Tests (kein Shop, kein Printful, keine Zugangsdaten) für die Freischaltung des Magneten vom 11.11.2026:
+#   1. Sperr-Skript mit dem Schalter NUR=<handle> gegen eine fetch-Attrappe, samt Mutationsprobe.
+#   2. Rollout-Bau: Allowlist und Karten sind aus den Quellen neu baubar (--check), der Beleg der Schweizer
+#      Lieferbarkeit ist per Prüfsumme gebunden, die Magnet-Karte trägt je Variante ihre eigene Druckdatei.
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
+# Der Job «selbst-gestalten» dort prüft weiter den direkten Beschreibungs-Rollout (direct_rollout_test.mjs).
+on:
+  pull_request:
+    paths:
+      - 'dropship/sperre-verfuegbar-1111/**'
+      - 'dropship/selbst-gestalten-fertig-0511/rollout-v63/**'
+      - 'pod/v6/maps/**'
+      - 'pod/v6/werkzeug/**'
+      - '.github/workflows/magnet-freischaltung-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: magnet-freischaltung-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sperre:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/sperre-verfuegbar-1111
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sperr-Skript mit NUR= gegen die Attrappe
+        run: node dropship/sperre-verfuegbar-1111/sperr_verfuegbar_test.mjs
+      - name: Mutationsprobe des Schalters (rund 1 Minute)
+        run: node dropship/sperre-verfuegbar-1111/sperr_verfuegbar_mutation.mjs
+
+  rollout-bau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/selbst-gestalten-fertig-0511
+            pod/v6
+            pod/live
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Allowlist und Karten sind aus den Quellen neu baubar
+        run: |
+          node dropship/selbst-gestalten-fertig-0511/rollout-v63/allowlist_bauen.mjs --panel=84 --check
+          node dropship/selbst-gestalten-fertig-0511/rollout-v63/build.mjs --panel=84 --check
+      - name: Bau-Test (Zähler, Beleg der Schweizer Lieferbarkeit, Magnet-Karte)
+        run: node dropship/selbst-gestalten-fertig-0511/rollout-v63/build_test.mjs

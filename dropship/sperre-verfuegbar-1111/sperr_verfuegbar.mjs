@@ -20,8 +20,12 @@
 //            PRUEFEN=1 node sperr_verfuegbar.mjs          nur lesen: Exit 2, wenn ein gesperrtes Produkt kaufbar ist
 //            PRUEFEN=1 BEKANNT_KAUFBAR=handle1,handle2 …        dieselbe Prüfung; die genannten Produkte zählen nicht (bekannte Lücke, z. B. Dad-Cap)
 //            ZURUECK=1 LIVE=1 node sperr_verfuegbar.mjs   stellt den Ausgangsstand wieder her
-// WICHTIG für den Editor-Rollout: VOR dem Entsperren eines der drei Produkte die Rücknahme fahren, sonst meldet das
-//   Rollout-Werkzeug «keine kaufbare Variante».
+//            NUR=handle1[,handle2] …                      jeder der Aufrufe oben, aber nur für die genannten Produkte: die übrigen
+//                                                         werden weder geändert noch zurückgelesen noch geprüft. Ein unbekanntes
+//                                                         Handle bricht ab, bevor irgendetwas gelesen wird.
+// WICHTIG für den Editor-Rollout: VOR dem Entsperren eines der drei Produkte die Rücknahme NUR für dieses Produkt fahren
+//   (Magnet: ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten), sonst meldet das Rollout-Werkzeug «keine kaufbare Variante».
+//   Ohne NUR würden auch die Produkte wieder kaufbar, die gesperrt bleiben sollen.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,6 +38,19 @@ const ZURUECK = process.env.ZURUECK === '1';
 const PRUEFEN = process.env.PRUEFEN === '1';
 const BEKANNT = new Set((process.env.BEKANNT_KAUFBAR || '').split(',').map((s) => s.trim()).filter(Boolean));   // nur für PRUEFEN: bekannte Lücken zählen nicht
 const HANDLES = ['magnet-zum-selbstgestalten', 'buegeltransfer-selbst-gestalten', 'dad-cap-selbst-gestalten'];
+// NUR=<handle>[,<handle>]: Eingrenzung auf einzelne Produkte (alle Modi). Leer oder nicht gesetzt = alle drei wie bisher.
+// Gelesen werden immer alle drei (die Sicherung bleibt vollständig); bearbeitet, zurückgelesen und geprüft nur die gewählten.
+const NUR_ROH = process.env.NUR ?? '';
+const NUR = NUR_ROH.split(',').map((s) => s.trim()).filter(Boolean);
+{
+  const fremd = NUR.filter((h) => !HANDLES.includes(h));
+  // «NUR=,» oder ein Tippfehler darf nie still zu «alle drei» werden: das würde bei ZURUECK auch die anderen Sperren aufheben.
+  if (fremd.length || (NUR_ROH.trim() !== '' && !NUR.length) || new Set(NUR).size !== NUR.length) {
+    console.error(`NUR ist unbrauchbar (${JSON.stringify(NUR_ROH)}): erlaubt sind ${HANDLES.join(', ')}, je höchstens einmal. Nichts gelesen, nichts geschrieben.`);
+    process.exit(1);
+  }
+}
+const gewaehlt = (p) => !NUR.length || NUR.includes(p.handle);
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const API = '2026-01';
 const V = (n) => 'gid://shopify/ProductVariant/' + n;
@@ -93,7 +110,9 @@ async function setze(produkt, v, ziel) {
   if (!ziel.tracked && v.tracked) fehler(await gql(M_ITEM, { id: v.item, input: { tracked: false } }), 'inventoryItemUpdate');
 }
 
-const ist = await lesen();
+const alle = await lesen();
+const ist = alle.filter(gewaehlt);
+if (NUR.length) console.log(`NUR ${NUR.join(', ')}: ${alle.filter((p) => !gewaehlt(p)).map((p) => p.handle).join(', ')} werden weder geändert noch zurückgelesen noch geprüft.`);
 
 if (PRUEFEN) {
   let offen = 0;
@@ -108,15 +127,15 @@ if (PRUEFEN) {
   process.exit(offen ? 2 : 0);
 }
 
-const wieAusgang = ist.every((p) => p.varianten.every((v) => { const a = AUSGANG[v.id]; return a && v.tracked === a.tracked && v.policy === a.policy && v.staende.length === 1 && v.staende[0].menge === a.menge; }));
+const wieAusgang = alle.every((p) => p.varianten.every((v) => { const a = AUSGANG[v.id]; return a && v.tracked === a.tracked && v.policy === a.policy && v.staende.length === 1 && v.staende[0].menge === a.menge; }));
 if (!existsSync(SICHERUNG)) {
   if (ZURUECK) { console.error('keine Sicherung vorhanden: ' + SICHERUNG); process.exit(1); }
   if (LIVE) {
     if (!wieAusgang) { console.error('Shop ist nicht im Ausgangsstand vom 11.11. und es gibt keine Sicherung: nichts geschrieben.'); process.exit(1); }
-    writeFileSync(SICHERUNG, JSON.stringify({ gelesen: new Date().toISOString(), produkte: ist.map(({ gesperrt, ...p }) => p) }, null, 1), { flag: 'wx' });
+    writeFileSync(SICHERUNG, JSON.stringify({ gelesen: new Date().toISOString(), produkte: alle.map(({ gesperrt, ...p }) => p) }, null, 1), { flag: 'wx' });
   }
 }
-const sicherung = existsSync(SICHERUNG) ? JSON.parse(readFileSync(SICHERUNG, 'utf8')) : { produkte: ist };
+const sicherung = existsSync(SICHERUNG) ? JSON.parse(readFileSync(SICHERUNG, 'utf8')) : { produkte: alle };
 const ausSicherung = (pid, vid) => sicherung.produkte.find((x) => x.id === pid)?.varianten.find((x) => x.id === vid);
 for (const p of sicherung.produkte) for (const v of p.varianten) {
   const a = AUSGANG[v.id];
@@ -147,7 +166,7 @@ for (const p of ist) {
 if (!LIVE) { console.log('Trockenlauf: nichts geschrieben.'); process.exit(abweichung ? 1 : 0); }
 
 // Frisch zurücklesen: erst die geschriebenen Felder, dann availableForSale (rechnet Shopify zeitversetzt nach, bis rund 90 s)
-let neu = await lesen(); let felder = 0;
+let neu = (await lesen()).filter(gewaehlt); let felder = 0;
 for (const p of neu) for (const v of p.varianten) { const ziel = zielFuer(p, v); if (ziel && (ZURUECK || p.gesperrt) && !erreicht(v, ziel)) felder++; }
 const sollKaufbar = (p, v) => (ZURUECK ? ausSicherung(p.id, v.id)?.kaufbar : !p.gesperrt);
 let wartet = 0;
@@ -155,7 +174,7 @@ for (let versuch = 1; versuch <= 15; versuch++) {
   wartet = 0;
   for (const p of neu) for (const v of p.varianten) if (v.kaufbar !== sollKaufbar(p, v)) wartet++;
   if (!wartet) break;
-  await warte(6000); neu = await lesen();
+  await warte(6000); neu = (await lesen()).filter(gewaehlt);
 }
 for (const p of neu) for (const v of p.varianten) {
   const ziel = zielFuer(p, v); const okFelder = !ziel || !(ZURUECK || p.gesperrt) || erreicht(v, ziel); const okKauf = v.kaufbar === sollKaufbar(p, v);

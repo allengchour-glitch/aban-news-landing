@@ -31,7 +31,8 @@
 | `node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` | Trockenlauf (Vorgabe), zeigt den Plan |
 | `LIVE=1 node …/sperr_verfuegbar.mjs` | sperrt, legt `sicherung.json` an, liest frisch zurück |
 | `PRUEFEN=1 node …/sperr_verfuegbar.mjs` | nur lesen, Exit 2, wenn ein gesperrtes Produkt kaufbar ist |
-| `ZURUECK=1 LIVE=1 node …/sperr_verfuegbar.mjs` | stellt den Ausgangsstand wieder her |
+| `ZURUECK=1 LIVE=1 node …/sperr_verfuegbar.mjs` | stellt den Ausgangsstand wieder her (**alle** Produkte) |
+| `NUR=<handle>[,<handle>]` vor einem der Aufrufe | derselbe Aufruf, aber nur für die genannten Produkte (seit 11.11., Abschnitt «Schalter NUR=») |
 
 Trockenlauf am 11.11. (Exit 0): Magnet 3 Varianten und Bügeltransfer 1 Variante am Standort «Shop location» (nicht bestandsgeführt, Menge 0 bzw. −1), Dad-Cap 1 Variante am Standort «Printful» (Menge 9999). `PRUEFEN=1` vor der Änderung: 5 Varianten «kaufbar trotz Sperre» (Exit 2).
 
@@ -45,7 +46,7 @@ Trockenlauf am 11.11. (Exit 0): Magnet 3 Varianten und Bügeltransfer 1 Variante
 ## Auflagen aus der Gegenlesung (zwei Prüfer, beide «ausführen mit Änderungen», alle wichtigen Funde eingearbeitet)
 
 1. **Dad-Cap ist nicht dauerhaft gesperrt:** Sein Bestand liegt am Standort des Printful-Dienstes. Printfuls Lagerabgleich und Shopifys stündliche Abfrage können die 0 wieder auf 9999 setzen, dann ist er trotz DENY wieder kaufbar. Nach dem Live-Lauf frühestens nach 70 Minuten und nach 24 Stunden `PRUEFEN=1` fahren, danach in eine tägliche Kontrolle nehmen (Vorschlag: Kaufweg-Wächter, `GET /products/<handle>.js` liefert `available` ohne Admin-Zugang). Fällt er zurück: kein stiller Zweitversuch, sondern Entscheid mit dem Besitzer.
-2. **Vor dem Entsperren eines der drei Produkte zuerst die Rücknahme fahren.** Das Rollout-Werkzeug (`rollout-v63-direct/direct_rollout_lib.mjs`, `produktPruefen`) wirft sonst «keine kaufbare Variante». Solange die drei auf seiner Blockliste stehen, bricht ein Plan-Lauf nicht (er prüft dort nur Identität, Status ACTIVE, Adresse und Varianten-IDs).
+2. **Vor dem Entsperren eines der drei Produkte zuerst die Rücknahme fahren, und zwar nur für dieses Produkt (`NUR=<handle>`, Abschnitt «Schalter NUR=»).** Das Rollout-Werkzeug (`rollout-v63-direct/direct_rollout_lib.mjs`, `produktPruefen`) wirft sonst «keine kaufbare Variante». Solange die drei auf seiner Blockliste stehen, bricht ein Plan-Lauf nicht (er prüft dort nur Identität, Status ACTIVE, Adresse und Varianten-IDs).
 3. Die Sicherung entsteht nur aus dem fest eingetragenen Ausgangsstand vom 11.11. (`AUSGANG` im Skript); weicht der Shop ab und fehlt die Datei, schreibt das Skript nichts.
 4. Die Mengen-Mutation nutzt die Form der API 2026-01 (`changeFromQuantity`, `@idempotent`); die ältere Form entfällt mit 2026-04.
 5. Status ENTWURF oder Kanal-Abwahl wären schlechter: ENTWURF bricht das Rollout-Werkzeug (erwartet ACTIVE) und gibt 404, fehlende Kanäle zieht `publish_guard.mjs` montags nach, und `/cart/add.js` nähme weiter an.
@@ -68,3 +69,23 @@ Lokal geprüft am 11.11. (der Schritt des Workflows als Shell-Skript, vier Fäll
 ## Magnet: Sperrgrund gemessen (11.11.2026 09:50 UTC)
 
 Der Rollout sperrte den Magneten wegen `REGIONAL_AVAILABILITY_UNKNOWN` (`rollout-v63/allowlist.json`). GEMESSEN über die Printful-API: Modell 656 «Die-Cut Magnets», drei Varianten (`16366`, `16367`, `16465`), alle `in_stock`, Herstellung nur in den USA; `POST /shipping/rates` nach Zürich liefert für jede Variante «Flat Rate» CHF 6.84, 10 bis 15 Tage. Zoll und Einfuhrsteuer für US-Ware: ungemessen. Der Magnet kann also freigeschaltet werden. Das ist ein Schritt des Editor-Rollouts (Codex, Ja des Besitzers je Stufe); vorher die Rücknahme oben fahren. Hinweis an Codex: `dropship/CODEX-RUECKMELDUNG-1111.md`.
+
+## Schalter NUR= (11.11.2026, für die Freischaltung des Magneten)
+
+**Warum:** `ZURUECK=1 LIVE=1` ohne Eingrenzung stellt alle Produkte der Sicherung zurück. Für die Freischaltung des Magneten wäre damit auch der Bügeltransfer wieder kaufbar, obwohl seine Seite gesperrt bleibt. GEMESSEN gegen die Attrappe mit dem Skript von vor dem Schalter: Magnet **und** Bügeltransfer gehen zurück (der Test «nur die drei Magnet-Varianten» schlägt mit «Bügeltransfer verändert» fehl).
+
+**Was der Schalter tut:** `NUR=handle1[,handle2]` gilt für jeden Modus (Trockenlauf, `LIVE=1`, `ZURUECK=1 LIVE=1`, `PRUEFEN=1`). Gelesen werden weiter alle drei Produkte, damit die Sicherung vollständig bleibt. Bearbeitet, zurückgelesen und geprüft werden nur die genannten. Die erste Ausgabezeile nennt die ausgelassenen Produkte. Ein unbrauchbarer Wert (unbekanntes Handle, nur Kommas, doppeltes Handle) bricht mit Exit 1 ab, **bevor** irgendetwas gelesen wird. So wird ein Tippfehler nie still zu «alle drei». Ein leeres `NUR=` zählt als nicht gesetzt.
+
+| Zweck | Befehl |
+|---|---|
+| Plan ansehen (schreibt nichts) | `ZURUECK=1 NUR=magnet-zum-selbstgestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` |
+| Nur den Magneten wieder kaufbar machen | `ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` |
+| Nur den Magneten wieder sperren (Rückweg, solange seine Beschreibung die Sperre trägt) | `LIVE=1 NUR=magnet-zum-selbstgestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` |
+
+**Reihenfolge der Freischaltung** (ganzer Ablauf: `dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/README.md`, Abschnitt «Magnet freigeschaltet (11.11.2026)»): erst die Karte ausgeliefert, dann die Rücknahme mit `NUR=`, dann Plan und Apply der Stufe `frei-magnet`. Zwischen Rücknahme und Apply ist der Magnet kaufbar, seine Seite zeigt aber noch die Sperre: beide Schritte in einem Zug fahren. Läuft der tägliche Wächter (08:53 UTC) in diesem Fenster, meldet er den Magneten als «kaufbar trotz Sperre»; das ist dann erwartet. Nach dem Apply trägt die Beschreibung kein `mode=blocked` mehr, der Wächter prüft den Magneten nicht mehr, und ein späteres `LIVE=1` überspringt ihn.
+
+**Geprüft (GEMESSEN 11.11.2026, kein Netz, kein Shop):**
+- `node dropship/sperre-verfuegbar-1111/sperr_verfuegbar_test.mjs`: 17 Tests bestanden. Das Skript läuft als Kindprozess gegen `sperr_verfuegbar_attrappe.mjs` (ersetzt `fetch`; Ausgangsstand aus `sicherung.json`; die Sicherung des Laufs liegt in einem Temp-Ordner). Abgedeckt: nur der Magnet geht zurück und Bügeltransfer und Dad-Cap bleiben Byte für Byte, Trockenlauf, zweiter Lauf ohne Schreibzugriff, Rückweg, zwei Handles, unbrauchbare Werte in allen vier Modi ohne einen Netzaufruf, Sicherung vollständig trotz `NUR`, zeitversetzte Kaufbarkeit, Verhalten ohne `NUR` wie bisher.
+- `node dropship/sperre-verfuegbar-1111/sperr_verfuegbar_mutation.mjs`: 22 von 22 Mutanten erkannt, 0 überlebt, 0 ungeklärt (18 zum Schalter, 4 zu bestehenden Schutzregeln). Der erste Lauf liess einen überleben («Rücknahme ohne Sicherung läuft weiter»); ein zusätzlicher Fall schliesst die Lücke.
+
+**Ungemessen:** ein Lauf mit `NUR=` gegen den echten Shop (in dieser Arbeit war kein Schreibzugriff erlaubt, auch kein lesender Lauf des Skripts mit Zugangsdaten). Die Attrappe bildet nur nach, was am 11.11. gemessen wurde (Kaufbarkeit aus Bestandsführung, Regel und Menge; `INVALID_LOCATION` am Printful-Standort). Vor dem scharfen Lauf zuerst den Trockenlauf aus der Tabelle fahren und die drei Planzeilen lesen. Die beiden Testdateien sind in keinem CI-Lauf verdrahtet ausser im eigenen Workflow `magnet-freischaltung-test.yml` (erster Lauf in GitHub Actions ungemessen).
