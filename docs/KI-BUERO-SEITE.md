@@ -336,3 +336,8 @@ Monitoranzeigen bleiben an belegte Quellzeilen gebunden: Arbeitsplatz, Wandmonit
 Im öffentlichen Bau war `Date.now()` durch einen nicht ersetzten Testplatzhalter ungültig. Der Bau entfernt diesen Teststub jetzt geprüft und nutzt die Browseruhr. Die vorhandene Statusnachführung liest die zwei öffentlichen gleichnamigen Berichte im bestehenden Fünf-Minuten-Takt; keine neue Quelle, Automation oder private Kontoverbindung. Die15 eingebetteten öffentlichen Zeilen sind beim Designwechsel inhaltlich unverändert geblieben. Ein Abruffehler erzeugt keine Ersatzwerte.
 
 **Bereitstellung:** `tools/buero/seite.html` und der 3D-Code tragen `campus-einheitlich-15`. Für das private Dashboard ist ausschliesslich der kombinierte Bau aus `tools/buero/dashboard/bauen.py` zu verwenden: «Offene Punkte» und «Suchanfragen» sowie alle bestehenden privaten Datensätze erhalten. Codex kann den Claude-Artefaktspeicher hier nicht schreiben; Aktualisierung dort durch Claude samt Versionsvergleich und Rücklesen. Die öffentliche Webansicht wird als `ki-buero.html` mitgeführt. Prüfung, PR und tatsächlicher Auslieferungsstand stehen in der aktuellen Codex-Übergabe.
+
+
+## Design 16: aktuelle Befunde im Büro statt externer Verweise
+
+Fortsetzung vom 11.11.2026: Modellbeleuchtung, Materialrauheit und Normalen verbessert, Zentrale vergrössert, Monitorgehäuse abgerundet. Fokus ohne verdeckende Wände. Konkrete Befunde und echte Abschlussbelege direkt auf Arbeitsplatz-/Wandmonitor und im Arbeitsjournal, auch ohne WebGL. Falsche 11/12-Zeilen-Abstimmung im bestehenden Statusleser korrigiert; keine neue Quelle oder Frequenz. [Prüfbelege und Claude-Übernahme](KI-BUERO-DESIGN-16.md). Private Aktualisierung und Live-Auslieferung weiter getrennt bestätigen.

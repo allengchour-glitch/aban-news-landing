@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## KI-Büro Design16: Ergebnisse statt Linkkarten ·11.11.2026
+
+Codex entwickelt auf Besitzerfeedback denselben PR3114 weiter: bessere Materialien/Normalen und direkte Ergebnisanzeigen. Statusleser verwarf den echten12er-Bericht wegen falscher11er-Liste; reproduziert und korrigiert. Gemeinsames Journal für3D/2D/Handy ohne WebGL, explizite Abschlussbelege und Duplikaterkennung. [Prüfung und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-16.md). Private Daten erhalten, keine neue Automation. GitHub-Checks zuletzt queued; privater Upload und Claude-Kenntnisnahme unbekannt.
+
 ## KI-Büro Design15 vorbereitet ·11.11.2026
 
 Codex setzt den Besitzerauftrag zu Bewegung, Monitoren und Raumgestaltung um.49 Monitor-,80 Dashboard- und68 Python-Prüfungen grün; Uhr-/Datenalterfehler korrigiert, keine neuen privaten Daten oder Automationen. [Prüfbeleg und Claude-Uploadauftrag](docs/KI-BUERO-DESIGN-15.md), [PR3114](https://github.com/allengchour-glitch/aban-news-landing/pull/3114). Öffentliche Ansicht im PR nachgeführt. Private Darstellung muss mit dem bestehenden Drei-Seiten-Bauer aktualisiert und im Artefakt zurückgelesen werden; Upload und Kenntnisnahme unbekannt. GitHub-Checks zuletzt queued; lokale CI-Simulation hier an `unshare` blockiert.

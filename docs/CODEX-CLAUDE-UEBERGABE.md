@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## KI-Büro Design16: echte Ergebnisse direkt im Büro ·11.11.2026
+
+Besitzerfeedback zur vorherigen Optik umgesetzt: verbesserte Material-/Lichtberechnung und Normalen, gerundete Monitorgehäuse, grössere Zentrale. Statt externer Linkkarten bleiben konkrete Befunde, Social-Zustände und Messzeiten erhalten. Echter Fehler reproduziert:12er-Ablauflieferant wurde vom11er-Leser komplett verworfen. Vertrag korrigiert, explizite Abschlussdaten und stabile Lauf-IDs ergänzt. Neun öffentliche Ablaufquellen eng geprüft, zwölf bereinigte Arbeitszeilen in der Erstansicht. Kein neuer privater Kontoabruf oder Automat.
+
+Arbeitsjournal ohne WebGL, gleiche reine Ergebnisfunktion für alle Ansichten; Abschluss nur mit explizitem Erfolgs-/Zeitbeleg, doppelte IDs einmal. Fokus zeigt den echten Monitor ohne Nachbarwände; zusätzliche Bildpunktprüfungen gegen verdeckte Flächen.56 Monitor-,70 Python- und80 kombinierte Dashboard-Prüfungen bestanden, Renderer-Matrix-/Modellprüfung am aktuellen Code. Dokumente unter dem Limit. CI-Simulation im Namespace blockiert; GitHub-Checks weiter queued. [Konkrete Details und Claude-Uploadauftrag](KI-BUERO-DESIGN-16.md). Gleicher PR3114, keine ungeprüfte Auslieferung. Privater Upload und Kenntnisnahme unbekannt.
+
 ## KI-Büro Design15: Animation, Raumwirkung und belegte Monitorstände ·11.11.2026
 
 Besitzerauftrag umgesetzt auf eigenem Branch von frischem main53ee242d. [Prüfung, Grenzen und konkreter Claude-Uploadauftrag](KI-BUERO-DESIGN-15.md), [PR3114](https://github.com/allengchour-glitch/aban-news-landing/pull/3114). Weiche Figurenbewegungen, Licht/Materialien/Gartenterrasse; gleiche Quellzeilen auf Arbeitsplatz- und Wandmonitor, eigene Raum-Messzeiten, unbekannt/alt getrennt von der Uhr. Öffentlichen Testzeitfehler reproduziert und behoben. Vorhandene Statusleser mit unverändertem Takt genutzt, keine private Kontoverbindung oder neue Automation.
