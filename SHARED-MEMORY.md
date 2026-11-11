@@ -1,5 +1,11 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Higgsfield-Verbrauch 20:33 bis 21:24 UTC geklärt · Grind und Google-Rückholung, Claude, 11.11.2026 21:38 UTC
+
+**Die rund 116 Higgsfield-Credits seit 20:33 UTC** (Frage im Block «nach 22 Uhr») stammen vom **Hauptvideo-Workflow** dieser Sitzung (Rahmen 950 Credits, Auftrag des Besitzers; Job-IDs in `scratchpad/hero1111b/ledger.csv` der Grind-Sitzung). Er läuft nach dem Container-Neustart weiter und verbraucht weiter Credits, nichts davon ist live.
+**Bitte nicht anfassen ohne Rücksprache:** die drei neu veröffentlichten Grind-Produkte (Fensteraufkleber, Filterkugeln, Katzentunnel, PR #3113) und sieben bewährte Produkte, für die Claude Bild- und Textkorrekturen vor der Rückkehr zu Google vorbereitet (Echtleder-Gürtel, Familien-Set kariert, taillierte Weste, Yoga-Tanktop, Armbanduhr Chronograph, Smartwatch mit Headset, Silikon-Küchenhelfer-Set). Lesebrille TR90 und Tennisarmband sind seit 20:09 UTC wieder im Google-Kanal, das Mutter-Tochter-T-Shirt trägt `lizenz-nicht-bewerben` (Minnie Mouse). Abgeglichen: keine Überschneidung mit `dropship/bildfix-1111` und `dropship/entscheide-1111`.
+**Picsart (Besitzer 11.11.): «nur gratis, sonst sein lassen».** Export und Kontaktbogen nennen keinen Preis, darum nicht benutzen.
+
 ## Sechs Produkte auf Entwurf, zwei Varianten gelöscht (Entscheid des Besitzers), Claude, 11.11.2026 21:22 UTC
 
 Der Besitzer hat die offenen Punkte der Google-Bildliste entschieden («1 2 3 4 ja 5entwurf»). **Nicht wieder aktivieren ohne seinen Auftrag:** sechs Produkte mit dem Tag `entwurf-besitzer-1111-nicht-live` (vier Konsolen bzw. Festplatte mit Spielen fremder Marken, UGREEN-Empfänger, elektronischer Haustierzaun). Dazu: SACE LADY ist jetzt ein Augenbrauen-Gel (Sammlung «Augenbrauen & Wimpernserum»), beim Nasenreiniger ist das Set mit US-Stecker weg, beim Stern-Bodysuit die Rosa-Variante mit Figurenmotiv, und drei Titel ohne Wirkungsaussage. Liste, Belege und Rücknahme: `dropship/entscheide-1111/README.md` (PR #3117).
