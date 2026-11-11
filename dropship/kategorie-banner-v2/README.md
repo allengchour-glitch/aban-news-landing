@@ -84,3 +84,46 @@ kosten); Weiterleitung von `/collections/halloween`; Beschreibungen kürzen oder
 Zahlen, Preise, Lieferzeiten ins Bild brennen.
 
 **Ungemessen:** Safari und echtes Handy, Wirkung auf Absprung und Käufe, ob ChatGPT oder Google die og:images/Bild-Sitemap nutzen.
+
+## Nachtrag 11.11. 23 Uhr: `hero_image_guard.mjs` gehärtet (Punkt 6 der Rangliste)
+
+Der Montagslauf von `shop-guards.yml` (Mo 07:00 UTC, LIVE) setzte jeder Menü-Collection ohne Bild das Titelbild ihres
+**ersten** Produkts, ohne Prüfung: so kamen BigBuy-Bilder von Entwürfen und gelöschter Markenware in die Köpfe. Jetzt
+(`automation/lib/hero_bild_wahl.mjs`, Test `hero_bild_wahl_test.mjs`, 41 Prüfungen, Mutationsprobe 16 von 16):
+
+- Bild nur von einem Produkt, das **aktiv**, **im Onlineshop** (`onlineStoreUrl`), mit mindestens einer **lieferbaren**
+  Variante, **ohne Sperr-Tag** (Liste der Taxonomie plus `google-bild-abgelehnt`, `bild-zu-klein`, `cj-ausgelistet`) und
+  mit Titelbild ab **800 × 800 px** ist; gesucht wird unter den ersten 30 Produkten der Collection.
+- Ein vorhandenes Bild wird **nie** ersetzt; höchstens `MAX_SCHREIBEN` (Vorgabe 25) Bilder je Lauf; nach dem Schreiben
+  wird die Collection frisch gelesen.
+- Lese- und Schreibfehler werden gezählt und beenden den Lauf mit **Exit 1** (früher still verschluckt, immer Exit 0);
+  der folgende Schritt «Rating guard» läuft trotzdem (`if: success() || failure()`).
+- Das Bild wird in Paketen zu 20 gelesen, Produkte nur für Collections ohne Bild.
+
+GEMESSEN (Trockenlauf 11.11. 22:55 UTC, echter Shop, nur lesend): 740 Menü-Collections, **0 ohne Bild**, 0 Lesefehler,
+16 s. Die Produktabfrage (API 2025-01) an vier echten Collections gelesen: Halloween, Damen-Schuhe, Weihnachten 2026,
+Fasnacht wählen je ein aktives, lieferbares Produkt. **Ungemessen:** der erste Montagslauf mit der neuen Fassung (16.11.).
+Grenze: ob das gewählte Bild Fremdtext oder ein Fremdlogo trägt, prüft der Wächter nicht (dafür das Banner-Werkzeug mit
+Sichtprüfung).
+
+## Nachtrag 11.11. 23:11 bis 23:15 UTC: 12 Kategorie-Bilder ersetzt, Alt-Text überall bis auf eine
+
+Anlass: 13 Menü-Collections hatten ein Bild ohne Alt-Text (GEMESSEN, alle 740 Menü-Collections gelesen). Der Trockenlauf
+mit `TEILE=bild,alt` zeigte, dass bei 11 davon das Bild selbst nicht taugt (Quelle ist ein Entwurf, Text oder Logo im Bild,
+Collage, Produkt passt nicht zur Kategorie). Alle Bilder im Raster von Hand angesehen. **LIVE (zurückgelesen gleich,
+0 Fehler):** neues Bild bei `smoke-zubehoer`, `geschenkverpackung`, `viral-hits`, `eu-lager-schnell`, `fussball-fanshop`,
+`vr-ai-neuheiten`, `sub-stiefel-boots`, `wandern-trekking`, `gaming-controller` (Handy-Controller ohne Marke; Gemini gab kein
+Urteil, darum `UNGEPRUEFT_OK=1` nach eigener Sichtung) und `westen-gilets` (rote Damenweste); nur Alt-Text bei
+`damen-strick-pullover` und `herren-pullover`. Danach gemessen: **1 von 740** Menü-Collections ohne Alt-Text.
+
+Von Hand verworfen: ein Xbox-ähnlicher Controller (Markenoptik), eine Babyweste für «Herbst & Übergang > Westen & Gilets»,
+Uhrenarmbänder und eine Apple-Watch-Ansicht für `ersatzteile-zubehoer`. **Offen:** `ersatzteile-zubehoer` hängt im Menü unter
+«Wohnen & Garten > Putzen & Haushalt», die Regel nimmt aber auch Uhrenarmbänder und Ladekabel auf (Titel enthält …): Menüplatz
+oder Regel klären (Skill kategorien-nach-google), dann erst ein Bild. Rücknahme: `ZURUECK=1 [LIVE=1] HANDLES=…` mit diesem
+Ledger.
+
+**Korrektur zu Punkt 10 der Rangliste:** `hundewelt` ist KEINE tote Kachel. Die Collection existiert (2 679 Produkte, Seite
+HTTP 200), aber die Repo-App (Client-Credentials) sieht sie in keiner API-Version (`collection(id:)` und `collectionByHandle`
+geben null); der Shopify-Anschluss der Sitzung sieht sie. Ursache unbekannt. Folge: Messungen mit den Repo-Skripten können
+einzelne Collections übersehen; eine «fehlt»-Meldung immer über den Onlineshop gegenprüfen. `weihnachten-2026` steht zweimal
+im Menü (unter «Geschenke & Weihnachten» und «Sport & Party»): bewusst gelassen, der Menü-Umbau lohnt dafür nicht.

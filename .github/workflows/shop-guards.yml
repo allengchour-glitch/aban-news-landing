@@ -54,4 +54,6 @@ jobs:
       - name: Hero image guard (collection covers)
         run: node automation/hero_image_guard.mjs
       - name: Rating guard (pull weak products from promo)
+        # Läuft auch, wenn der Hero-Wächter einen Lese- oder Schreibfehler meldet (Exit 1 seit 12.11.2026).
+        if: success() || failure()
         run: node automation/rating_guard.mjs
