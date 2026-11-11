@@ -1,0 +1,61 @@
+{
+ "zeit": "2026-11-11T19:08:50.397Z",
+ "plan": {
+  "handle": "handliches-massagegerat-vibrations-massage-mit-mehreren-stufen",
+  "erwartet_erstes": "gid://shopify/MediaImage/69550451556737",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550451622273",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_190706_26c6fcf5-b30c-4505-aff3-ed3f7b8d2177.png",
+    "alt_text": "Handliches Massagegerät in der Hand"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69550451589505",
+   "gid://shopify/MediaImage/69550451655041",
+   "gid://shopify/MediaImage/69550451687809"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412433256833",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69550451556737",
+    "alt": "Massagegerät Wellness Körper",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451622273",
+    "alt": "Körpermassage Gerät",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451589505",
+    "alt": "Massager Vibration",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451655041",
+    "alt": "Massagegerät Stufen",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550451687809",
+    "alt": "Wellness Massager",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55746542469505",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550451622273": "gid://shopify/MediaImage/78014706385287"
+ }
+}
