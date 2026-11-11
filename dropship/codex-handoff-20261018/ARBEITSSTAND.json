@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 181,
-  "updatedAt": "2026-11-11T18:41:28.785503+00:00",
+  "revision": 182,
+  "updatedAt": "2026-11-11T19:53:11.035657+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16859,6 +16859,31 @@
       "actor": "codex",
       "summary": "Started source-based dropshipping curriculum from three bounded web searches; saved five source URLs, evidence limits and next two-source learning step. Owner requests max7%/ultra: minimise work, quota not technically measurable. No platform writes or new automation. Claude receipt unknown.",
       "taskCount": 24
+    },
+    {
+      "revision": 182,
+      "at": "2026-11-11T19:53:11.035657+01:00",
+      "actor": "codex",
+      "summary": "Completed a bounded full-article learning round: SECO/KMU returns, Shopify supplier vetting, TikTok creatives. Three source reads and limited read-only peer review, no new searches/videos/live data. Added one Organizer evidence card with unknown costs and supplier binding. Source guidance distinguished from product proof and creative hypotheses. No platform writes; Claude receipt unknown.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/DROPSHIPPING-WISSEN-20261111-R182.md",
+          "gitBlobSha": "ef5236449a70808a89cd64e121b33c4ea36007f3",
+          "sha256": "1f5583ee0db784e2bda9779cbc0f82e5fb138b345b86a54fee2f090144cff110"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DROPSHIPPING-WISSEN-20261111-R182.json",
+          "gitBlobSha": "9255cd9c99e07421cf87c0f068b0e97e76883967",
+          "sha256": "e603a8520d6a4a0bb27396bc9a76e80bebbb3d6952e98f28254aef226cdb6c80"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DROPSHIPPING-PRUEFKARTE-ORGANIZER-R182.json",
+          "gitBlobSha": "102a62c357a23511afc97cce7a90c6e8621f1639",
+          "sha256": "ba0b7439354be94fe5277e34387ef9bbc815e36c0756f4f61f6c90c0cee8aebb"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -17068,18 +17093,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 177,
+    "documentationRevision": 182,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "e687fd543e800f96ebb3baeb6a19a7edfe882b28",
+    "gitBlobSha": "c0d6ee5902329caa3ea68a49b67a4c0103fb75a7",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "40a9b66fc64ebcaa625d781f0084afd1580a8f15",
+    "entryGitBlobSha": "cb894464a2f56f859b7a34832cbe215e50e14ba2",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R177 exact owner-authorized separate Liechtenstein Merchant shipping service; identity5797470070/LuxeStyle CH confirmed read-only; Google login wall triggered mandatory stop; zero inputs/clicks/writes; service not created/read back; LI/diagnostic state unknown; CH untouched by zero writes but authenticated readback unknown; HYPD/Windsor/repo lack shipping-service write; authenticated local Brave/PC-Claude required without credentials or 2FA in chat",
-    "latestCanonicalRevision": 177,
-    "snapshotNote": "R177 documents a blocked Merchant write, not a completed service. Approved target: LI, CHF14.90 flat, no free shipping, handling1–3 business days, transit15–45 days; CH must remain unchanged. The supplied URL reached accounts.google.com login. No Merchant settings were loaded or changed and no diagnostics were re-read. Receipt remains unknown_no_claude_receipt.",
+    "scope": "R182 bounded dropshipping learning, three primary article reads, one non-authorising product evidence card, no platform writes",
+    "latestCanonicalRevision": 182,
+    "snapshotNote": "R182 available on the handoff branch. Public source guidance and historical product reads do not replace live gates. Receipt of R182 unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -38734,5 +38759,29 @@
         "readAt": "2026-11-11T10:26:28+01:00"
       }
     ]
+  },
+  "dropshippingLearningR182": {
+    "status": "SOURCE_LEARNING_COMPLETE_PRODUCT_FIELDS_OPEN",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/DROPSHIPPING-WISSEN-20261111-R182.md",
+        "gitBlobSha": "ef5236449a70808a89cd64e121b33c4ea36007f3",
+        "sha256": "1f5583ee0db784e2bda9779cbc0f82e5fb138b345b86a54fee2f090144cff110"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/DROPSHIPPING-WISSEN-20261111-R182.json",
+        "gitBlobSha": "9255cd9c99e07421cf87c0f068b0e97e76883967",
+        "sha256": "e603a8520d6a4a0bb27396bc9a76e80bebbb3d6952e98f28254aef226cdb6c80"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/DROPSHIPPING-PRUEFKARTE-ORGANIZER-R182.json",
+        "gitBlobSha": "102a62c357a23511afc97cce7a90c6e8621f1639",
+        "sha256": "ba0b7439354be94fe5277e34387ef9bbc815e36c0756f4f61f6c90c0cee8aebb"
+      }
+    ],
+    "nextStep": "Use existing supplier evidence to bind this one Organizer SKU/VID to actual CH shipping, returns and costs; research BAZG/ESTV separately before claiming import-tax knowledge. No purchase/contact/installation.",
+    "receiptState": "unknown_no_claude_receipt",
+    "usagePercentage": "unknown_not_measurable",
+    "platformWrites": 0
   }
 }

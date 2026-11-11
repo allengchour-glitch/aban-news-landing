@@ -2208,3 +2208,10 @@ WISSENSTRANSFER-CLAUDE-20261111-R180.md enthält vidIQ-YouTube403-Ausweg, neue M
 ## R181 – sparsamer Dropshipping-Lernplan
 
 Besitzerauftrag Internet/Social-Wissen mit Claude teilen; max7% und ultra als Aufwandbegrenzung/hohe Sorgfalt. DROPSHIPPING-LERNPLAN-20261111-R181.md enthält erste Quellen, A–Z-Themen und nächsten begrenzten Lernschritt. Nur Suchauszüge gelesen, keine komplette Ausbildung/Liveänderung. Keine neue Frequenz, Quote nicht messbar, Claude-Empfang unbekannt.
+
+
+## R182 – geprüfte Lernrunde: Retouren, Lieferanten, Social
+
+SECO/KMU, Shopify-Lieferantenprüfung und TikTok-Creatives am 11.11.2026 als Artikeltext frisch gelesen. Drei Seitenabrufe, keine neuen breiten Suchen oder Videoanalysen. [Erkenntnisse und Anwendung](DROPSHIPPING-WISSEN-20261111-R182.md), [Quellenbeleg](DROPSHIPPING-WISSEN-20261111-R182.json), [Organizer-Belegkarte](DROPSHIPPING-PRUEFKARTE-ORGANIZER-R182.json). Schweizer Widerruf, freiwillige Zusagen und Mängel getrennt behandeln; Lieferanten-VID/CH-Route/Kosten bleiben offen; TikTok-Tipps sind Testideen und überschreiben keine Inhabergrenzen. Keine neue Liveprüfung des Produkts, keine Plattformwrites, kein neues Video oder Zeitplan. Claude soll eine datierte Lieferanten-/Versandquelle ergänzen und mit gelesenem Commit quittieren; Empfang unbekannt. 7-%-Quote technisch nicht messbar.
+
+[LUXESTYLE_R182_20261111]

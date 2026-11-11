@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "cardId": "luxe-organizer-evidence-r182",
+  "purpose": "review_preparation_not_publish_gate",
+  "createdAtUtc": "2026-11-11 18:52:12 UTC",
+  "identity": {
+    "shopDomain": "luxestyle.ch",
+    "productId": "gid://shopify/Product/15408458236289",
+    "variantId": "gid://shopify/ProductVariant/55732479590785",
+    "sku": "LX-35-BAMBUS-KOSMETIK-ORGANIZE",
+    "supplierProductId": null,
+    "supplierVariantId": null,
+    "targetCountries": [
+      "CH"
+    ],
+    "currency": "CHF"
+  },
+  "historicalRead": {
+    "source": "CONTENT-VERKAUFSPAKET-20261111-R178.md and WISSENSTRANSFER-CLAUDE-20261111-R180.md",
+    "localDate": "2026-11-11",
+    "priceCHF": "29.90",
+    "status": "ACTIVE",
+    "availableForSale": true,
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "quantity": 0,
+    "freshlyRecheckedInR182": false,
+    "note": "Dated own read evidence only; not current stock, delivery or source-quality proof."
+  },
+  "allowedStates": [
+    "belegt_erfuellt",
+    "belegt_nicht_erfuellt",
+    "offen",
+    "nicht_anwendbar_mit_begruendung"
+  ],
+  "fields": [
+    {
+      "field": "supplier_identity",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Supplier record bound to exact SKU and VID; LuxeStyle SKU and title alone insufficient."
+    },
+    {
+      "field": "variant_image_binding",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Match actual product and variant to authorised original images; no AI-render as identity proof."
+    },
+    {
+      "field": "materials_dimensions_function",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Manufacturer/CJ datasheet for exact variant; tags such as bambus or vegan are not evidence."
+    },
+    {
+      "field": "warehouse_availability",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Current supplier inventory for exact VID and actual fulfilment warehouse."
+    },
+    {
+      "field": "sample_quality",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Existing physical sample or documented QC; no sample order authorised by this card."
+    },
+    {
+      "field": "shipping_lane_ch",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Actual service to Switzerland, handling and transit evidence, tracking and delivered total."
+    },
+    {
+      "field": "returns_and_defects",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Current customer promise, recipient address, supplier claim conditions, costs and deadlines separately."
+    },
+    {
+      "field": "safety_and_importer",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Determine applicable product duties and importer role from relevant official sources; not researched in this round."
+    },
+    {
+      "field": "commercial_media_rights",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Exact images/footage, permitted edit and organic/advertising/channel scope."
+    },
+    {
+      "field": "all_variable_costs",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "All cost fields complete on consistent tax/currency basis."
+    },
+    {
+      "field": "social_preflight",
+      "status": "offen",
+      "source": null,
+      "observedAt": null,
+      "nextEvidence": "Fresh ACTIVE/nonempty tags/guard/rueckhol, storefront buyability and channel requirements immediately before any write."
+    }
+  ],
+  "unitEconomics": {
+    "currency": "CHF",
+    "taxBasis": "unknown",
+    "productNetRevenue": null,
+    "customerShippingNetRevenue": null,
+    "supplierProductCost": null,
+    "supplierFreightCost": null,
+    "nonRecoverableDutiesAndTaxes": null,
+    "paymentAndVariablePlatformCosts": null,
+    "expectedReturnAndDefectLoss": null,
+    "otherVariableCosts": null,
+    "contributionBeforeAcquisition": null,
+    "fixedCostsExcluded": true,
+    "maximumAcquisitionCost": null,
+    "rule": "Unknown is null, never zero. Include a cost once only; net revenue and costs on the same tax/currency basis. No margin or budget recommendation until verified."
+  },
+  "conclusions": {
+    "supplierApproved": false,
+    "publishApproved": false,
+    "liveChangeMade": false,
+    "profitability": "unknown",
+    "nextAction": "Read existing supplier evidence for this one SKU/VID and confirm the actual CH shipping lane using existing read-only helpers. No supplier/customer contact, order, import or paid render."
+  }
+}
