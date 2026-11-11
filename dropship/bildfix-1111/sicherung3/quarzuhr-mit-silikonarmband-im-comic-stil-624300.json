@@ -1,0 +1,94 @@
+{
+ "zeit": "2026-11-11T20:01:53.491Z",
+ "plan": {
+  "handle": "quarzuhr-mit-silikonarmband-im-comic-stil-624300",
+  "erwartet_erstes": "gid://shopify/MediaImage/70451373048193",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70451373113729",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-8-1111.jpg?v=1794427071",
+    "alt_text": "Quarzuhr mit Silikonarmband im Comic-Stil – Ansicht 5"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/70451373146497",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-9-1111.jpg?v=1794427078",
+    "alt_text": "Quarzuhr mit Silikonarmband im Comic-Stil – Ansicht 6"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15491403940225",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70451373048193",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451372786049",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373015425",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373080961",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373113729",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373146497",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373179265",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70451373212033",
+    "alt": "Quarzuhr mit Silikonarmband im Comic-Stil – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67814685475207",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70451373080961"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814685507975",
+    "titel": "Hellblau",
+    "medien": [
+     "gid://shopify/MediaImage/70451373113729"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814685540743",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70451373146497"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70451373113729": "gid://shopify/MediaImage/78014931108231",
+  "gid://shopify/MediaImage/70451373146497": "gid://shopify/MediaImage/78014931566983"
+ }
+}

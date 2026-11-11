@@ -1,0 +1,113 @@
+{
+ "zeit": "2026-11-11T20:04:26.406Z",
+ "plan": {
+  "handle": "megapixel-wifi-aussenkamera-4k-338816",
+  "erwartet_erstes": "gid://shopify/MediaImage/70562280898945",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70562280898945",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194114_d80ad435-6c1d-4f6e-9ef1-b544e569eb6d.png",
+    "alt_text": "Megapixel Wifi Aussenkamera 4K – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15502390591873",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70562280898945",
+    "alt": "Megapixel Wifi Aussenkamera 4K – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70562280636801",
+    "alt": "Megapixel Wifi Aussenkamera 4K | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70562280931713",
+    "alt": "Megapixel Wifi Aussenkamera 4K – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70562280964481",
+    "alt": "Megapixel Wifi Aussenkamera 4K – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70562280997249",
+    "alt": "Megapixel Wifi Aussenkamera 4K – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70562281030017",
+    "alt": "Megapixel Wifi Aussenkamera 4K – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874408366471",
+    "titel": "8MP",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408399239",
+    "titel": "4MP",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408432007",
+    "titel": "8MP 32G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408464775",
+    "titel": "8MP 64G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408497543",
+    "titel": "8MP 128G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408530311",
+    "titel": "4MP 32G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408563079",
+    "titel": "4MP 64G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874408595847",
+    "titel": "4MP 128G Karte",
+    "medien": [
+     "gid://shopify/MediaImage/70562280636801"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70562280898945": "gid://shopify/MediaImage/78014937530759"
+ }
+}

@@ -1,0 +1,177 @@
+{
+ "zeit": "2026-11-11T20:04:22.882Z",
+ "plan": {
+  "handle": "beheizbare-wimpernzange-mit-temperaturkontroll-659840",
+  "erwartet_erstes": "gid://shopify/MediaImage/69887076794753",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69887076794753",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193841_d3493170-bd5e-4838-a600-c50a0aebfcad.png",
+    "alt_text": "Beheizbare Wimpernzange mit Temperaturkontrolle – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450836697473",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69887076794753",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887076925825",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887076958593",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887076991361",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077024129",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077056897",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077089665",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077122433",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077155201",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077187969",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077220737",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077253505",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077286273",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077319041",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077351809",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077384577",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077417345",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077450113",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887077482881",
+    "alt": "Beheizbare Wimpernzange mit Temperaturkontrolle – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889784799617",
+    "titel": "Pink-USB-1 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784832385",
+    "titel": "Weiss-USB-1 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784865153",
+    "titel": "Lila-USB-1 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784897921",
+    "titel": "Weiss, teuer, USB, 1 PC",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784930689",
+    "titel": "Pink-USB-2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784963457",
+    "titel": "Pink-USB-3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889784996225",
+    "titel": "Weiss-USB-2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889785028993",
+    "titel": "Weiss-USB-3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889785061761",
+    "titel": "Pink-Weiss-USB-1 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889785094529",
+    "titel": "Pink expensive-USB-1PC",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889785127297",
+    "titel": "Lila, teuer, USB, 1 PC",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69887076794753": "gid://shopify/MediaImage/78014937432455"
+ }
+}

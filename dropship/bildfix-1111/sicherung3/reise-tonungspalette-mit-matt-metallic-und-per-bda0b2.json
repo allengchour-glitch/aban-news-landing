@@ -1,0 +1,100 @@
+{
+ "zeit": "2026-11-11T20:03:24.754Z",
+ "plan": {
+  "handle": "reise-tonungspalette-mit-matt-metallic-und-per-bda0b2",
+  "erwartet_erstes": "gid://shopify/MediaImage/70813640851841",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77829923897735",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194429_b8ab2e17-d1fb-4b18-a0ec-b0fb1938fa13.png",
+    "alt_text": "Reise-Tönungspalette mit Matt, Metallic und Perlen – Ansicht 8"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525457265025",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70813640851841",
+    "alt": "Reise‑Tönungspalette mit Matt, Metallic und Perlen | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813640917377",
+    "alt": "Reise‑Tönungspalette mit Matt, Metallic und Perlen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813640950145",
+    "alt": "Reise‑Tönungspalette mit Matt, Metallic und Perlen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813640982913",
+    "alt": "Reise‑Tönungspalette mit Matt, Metallic und Perlen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813641015681",
+    "alt": "Reise‑Tönungspalette mit Matt, Metallic und Perlen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829923832199",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829923864967",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829923897735",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829923930503",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789815415175",
+    "titel": "Prague",
+    "medien": [
+     "gid://shopify/MediaImage/77829923832199"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789815447943",
+    "titel": "Turkey",
+    "medien": [
+     "gid://shopify/MediaImage/77829923864967"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789815480711",
+    "titel": "Pass",
+    "medien": [
+     "gid://shopify/MediaImage/77829923897735"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789815513479",
+    "titel": "Paris",
+    "medien": [
+     "gid://shopify/MediaImage/77829923930503"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77829923897735": "gid://shopify/MediaImage/78014935499143"
+ }
+}

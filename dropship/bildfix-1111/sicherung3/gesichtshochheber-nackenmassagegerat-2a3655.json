@@ -1,0 +1,81 @@
+{
+ "zeit": "2026-11-11T20:05:38.913Z",
+ "plan": {
+  "handle": "gesichtshochheber-nackenmassagegerat-2a3655",
+  "erwartet_erstes": "gid://shopify/MediaImage/69943127671169",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77452339741063",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193845_9d48980b-998c-445e-b8d4-5c5fe6cf6adc.png",
+    "alt_text": "Gesichtshochheber & Nackenmassagegerät – Ansicht 7"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15455081824641",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69943127671169",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127507329",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127540097",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127572865",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127605633",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69943127638401",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77452339741063",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77452339773831",
+    "alt": "Gesichtshochheber & Nackenmassagegerät – Bild 2 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56068468605313",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/77452339741063"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56068468638081",
+    "titel": "Pink",
+    "medien": [
+     "gid://shopify/MediaImage/77452339773831"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77452339741063": "gid://shopify/MediaImage/78014946410887"
+ }
+}

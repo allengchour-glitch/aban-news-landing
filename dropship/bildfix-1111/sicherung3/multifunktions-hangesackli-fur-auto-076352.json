@@ -1,0 +1,244 @@
+{
+ "zeit": "2026-11-11T20:02:38.757Z",
+ "plan": {
+  "handle": "multifunktions-hangesackli-fur-auto-076352",
+  "erwartet_erstes": "gid://shopify/MediaImage/69872049521025",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/69872049979777"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449429967233",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69872049521025",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049586561",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049619329",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049652097",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049684865",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049717633",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049750401",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049783169",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049815937",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049848705",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049881473",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049914241",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049947009",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872049979777",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050012545",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050045313",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050078081",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050110849",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050143617",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050176385",
+    "alt": "Multifunktions-Hängesäckli für Auto – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881773678977",
+    "titel": "Schwarz",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773711745",
+    "titel": "Kaffeebraun",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773744513",
+    "titel": "Beige",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773777281",
+    "titel": "Weinrot",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773810049",
+    "titel": "Braun",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773842817",
+    "titel": "Grau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773875585",
+    "titel": "Beige Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773908353",
+    "titel": "Beige Set 2",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773941121",
+    "titel": "Beige · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881773973889",
+    "titel": "Schwarz · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774006657",
+    "titel": "Braun · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774039425",
+    "titel": "Kaffeebraun · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774072193",
+    "titel": "Grau · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774104961",
+    "titel": "Weinrot · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774137729",
+    "titel": "Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774170497",
+    "titel": "Set 2",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774203265",
+    "titel": "Set 3",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774236033",
+    "titel": "Set 4",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774268801",
+    "titel": "Set 5",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774301569",
+    "titel": "Set 6",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774334337",
+    "titel": "Schwarz Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774367105",
+    "titel": "Weinrot Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774399873",
+    "titel": "Braun Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774432641",
+    "titel": "Kaffeebraun Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774465409",
+    "titel": "Grau Set 1",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

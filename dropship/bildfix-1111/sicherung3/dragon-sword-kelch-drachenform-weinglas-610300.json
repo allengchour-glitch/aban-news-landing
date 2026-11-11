@@ -1,0 +1,71 @@
+{
+ "zeit": "2026-11-11T20:01:36.700Z",
+ "plan": {
+  "handle": "dragon-sword-kelch-drachenform-weinglas-610300",
+  "erwartet_erstes": "gid://shopify/MediaImage/70479330312577",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70479330476417",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194305_597a3d6f-5a9f-44ce-8507-fc6190b3ddf2.png",
+    "alt_text": "Dragon Sword Kelch – Drachenform Weinglas – Ansicht 6"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15493873893761",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70479330312577",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479330345345",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479330378113",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479330410881",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479330443649",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479330476417",
+    "alt": "Dragon Sword Kelch – Drachenform Weinglas – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67822138294663",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/70479330345345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822138327431",
+    "titel": "Gelb",
+    "medien": [
+     "gid://shopify/MediaImage/70479330476417"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70479330476417": "gid://shopify/MediaImage/78014930846087"
+ }
+}

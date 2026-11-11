@@ -1,0 +1,99 @@
+{
+ "zeit": "2026-11-11T20:05:22.935Z",
+ "plan": {
+  "handle": "turreck-fur-klimmzuge-878784",
+  "erwartet_erstes": "gid://shopify/MediaImage/70614928949633",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70614928916865",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194306_70717640-2d8e-4823-be29-3f25bcbbfb34.png",
+    "alt_text": "Türreck für Klimmzüge – Ansicht 4"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/70614928982401",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194306_40771f4c-2850-4e55-9ad2-66436ba07ee6.png",
+    "alt_text": "Türreck für Klimmzüge – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15508422295937",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70614928949633",
+    "alt": "Türreck für Klimmzüge – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614928851329",
+    "alt": "Türreck für Klimmzüge | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614928884097",
+    "alt": "Türreck für Klimmzüge – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614928916865",
+    "alt": "Türreck für Klimmzüge – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614928982401",
+    "alt": "Türreck für Klimmzüge – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614929015169",
+    "alt": "Türreck für Klimmzüge – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614929047937",
+    "alt": "Türreck für Klimmzüge – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614929080705",
+    "alt": "Türreck für Klimmzüge – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614929113473",
+    "alt": "Türreck für Klimmzüge – Bild 9 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56150636790145",
+    "titel": "65–96 cm",
+    "medien": [
+     "gid://shopify/MediaImage/70614928916865"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67750874743175",
+    "titel": "90–125 cm",
+    "medien": [
+     "gid://shopify/MediaImage/70614928982401"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67750874775943",
+    "titel": "100–150 cm",
+    "medien": [
+     "gid://shopify/MediaImage/70614928884097"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70614928916865": "gid://shopify/MediaImage/78014943822215",
+  "gid://shopify/MediaImage/70614928982401": "gid://shopify/MediaImage/78014944117127"
+ }
+}

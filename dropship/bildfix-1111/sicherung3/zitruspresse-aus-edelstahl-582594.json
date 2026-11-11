@@ -1,0 +1,52 @@
+{
+ "zeit": "2026-11-11T20:02:58.276Z",
+ "plan": {
+  "handle": "zitruspresse-aus-edelstahl-582594",
+  "erwartet_erstes": "gid://shopify/MediaImage/69862767952257",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69862767952257",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193728_f2bc1535-158a-40c0-a438-a0976434354c.png",
+    "alt_text": "Zitruspresse aus Edelstahl – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15448965546369",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69862767952257",
+    "alt": "Zitruspresse aus Edelstahl – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69862767886721",
+    "alt": "Zitruspresse aus Edelstahl – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69862767919489",
+    "alt": "Zitruspresse aus Edelstahl – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69862767985025",
+    "alt": "Zitruspresse aus Edelstahl – Bild 4 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55878388580737",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69862767952257": "gid://shopify/MediaImage/78014934581639"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "zeit": "2026-11-11T20:06:32.840Z",
+ "plan": {
+  "handle": "18-farben-lidschatten-palette-rose-gold-184960",
+  "erwartet_erstes": "gid://shopify/MediaImage/70640623976833",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70640623976833",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194428_286138e1-fe5f-4a93-ad0f-b24708592bff.png",
+    "alt_text": "18-Farben Lidschatten-Palette Rose Gold – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15510922199425",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70640623976833",
+    "alt": "18-Farben Lidschatten-Palette Rose Gold | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70640624009601",
+    "alt": "18-Farben Lidschatten-Palette Rose Gold – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70640624042369",
+    "alt": "18-Farben Lidschatten-Palette Rose Gold – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70640624075137",
+    "alt": "18-Farben Lidschatten-Palette Rose Gold – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70640624107905",
+    "alt": "18-Farben Lidschatten-Palette Rose Gold – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56164308418945",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70640623976833": "gid://shopify/MediaImage/78014964040071"
+ }
+}

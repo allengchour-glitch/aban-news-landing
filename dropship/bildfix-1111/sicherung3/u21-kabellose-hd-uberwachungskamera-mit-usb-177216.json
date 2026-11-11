@@ -1,0 +1,97 @@
+{
+ "zeit": "2026-11-11T20:01:44.958Z",
+ "plan": {
+  "handle": "u21-kabellose-hd-uberwachungskamera-mit-usb-177216",
+  "erwartet_erstes": "gid://shopify/MediaImage/70741537325441",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70741537259905",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194430_8f6dcadd-6c72-4f62-8e11-9e45e2c1e727.png",
+    "alt_text": "U21 Kabellose HD Überwachungskamera mit USB – Ansicht 2"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15522109882753",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70741537325441",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741537259905",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741537292673",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741537358209",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741537390977",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741537423745",
+    "alt": "U21 Kabellose HD Überwachungskamera mit USB – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77925241618823",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874402468231",
+    "titel": "A",
+    "medien": [
+     "gid://shopify/MediaImage/77925241618823"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874402500999",
+    "titel": "B",
+    "medien": [
+     "gid://shopify/MediaImage/70741537259905"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874402533767",
+    "titel": "C",
+    "medien": [
+     "gid://shopify/MediaImage/70741537292673"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874402566535",
+    "titel": "D",
+    "medien": [
+     "gid://shopify/MediaImage/70741537358209"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874402599303",
+    "titel": "Speicherkarte 16G",
+    "medien": [
+     "gid://shopify/MediaImage/70741537390977"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70741537259905": "gid://shopify/MediaImage/78014931009927"
+ }
+}

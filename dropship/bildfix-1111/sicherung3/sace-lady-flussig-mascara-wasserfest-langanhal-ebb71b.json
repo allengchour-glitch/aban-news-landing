@@ -1,0 +1,112 @@
+{
+ "zeit": "2026-11-11T20:03:55.661Z",
+ "plan": {
+  "handle": "sace-lady-flussig-mascara-wasserfest-langanhal-ebb71b",
+  "erwartet_erstes": "gid://shopify/MediaImage/70563439739265",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70563439739265",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193214_0c92bde4-c189-4e80-a6e8-df3b1dfc46eb.png",
+    "alt_text": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15502535852417",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70563439739265",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439673729",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439706497",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439772033",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439804801",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439837569",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439870337",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439903105",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439935873",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70563439968641",
+    "alt": "SACE LADY Flüssig-Mascara – Wasserfest & Langanhaltend – Bild 10 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56118128574849",
+    "titel": "Dunkelgrau",
+    "medien": [
+     "gid://shopify/MediaImage/70563439837569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67657086828935",
+    "titel": "Hellbraun",
+    "medien": [
+     "gid://shopify/MediaImage/70563439968641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67657086861703",
+    "titel": "Braun",
+    "medien": [
+     "gid://shopify/MediaImage/70563439706497"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67657086894471",
+    "titel": "Schwarzbraun",
+    "medien": [
+     "gid://shopify/MediaImage/70563439870337"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67657086927239",
+    "titel": "Dunkelbraun",
+    "medien": [
+     "gid://shopify/MediaImage/70563439772033"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70563439739265": "gid://shopify/MediaImage/78014936351111"
+ }
+}

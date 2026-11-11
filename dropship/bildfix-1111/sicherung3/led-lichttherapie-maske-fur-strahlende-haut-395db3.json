@@ -1,0 +1,96 @@
+{
+ "zeit": "2026-11-11T20:05:58.583Z",
+ "plan": {
+  "handle": "led-lichttherapie-maske-fur-strahlende-haut-395db3",
+  "erwartet_erstes": "gid://shopify/MediaImage/70626923348353",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70626923315585",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194307_da05d3fb-a1ac-4652-ad55-43fb7aff7ba5.png",
+    "alt_text": "LED-Lichttherapie-Maske für strahlende Haut – Ansicht 2"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15509401502081",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70626923348353",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923315585",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923381121",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923413889",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923446657",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923479425",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923512193",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923544961",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923577729",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923610497",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70626923643265",
+    "alt": "LED-Lichttherapie-Maske für strahlende Haut – Bild 11 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948408242567",
+    "titel": "Drei Farben Licht Stecker",
+    "medien": [
+     "gid://shopify/MediaImage/70626923381121"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948408275335",
+    "titel": "7 Farben",
+    "medien": [
+     "gid://shopify/MediaImage/70626923315585"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70626923315585": "gid://shopify/MediaImage/78014953750919"
+ }
+}

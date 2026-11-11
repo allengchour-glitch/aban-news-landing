@@ -1,0 +1,200 @@
+{
+ "zeit": "2026-11-11T20:04:48.390Z",
+ "plan": {
+  "handle": "farbwechselnder-diamant-perlen-lidschatten-2-g-067200",
+  "erwartet_erstes": "gid://shopify/MediaImage/77787778777479",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77787814166919",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193412_93a96991-8136-4c73-8c9b-d53c38ecfadb.png",
+    "alt_text": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Ansicht 21"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16654415724935",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77787778777479",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787778974087",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779006855",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779039623",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779072391",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779105159",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779137927",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779170695",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779203463",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779236231",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779268999",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779301767",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779334535",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779367303",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779400071",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 15 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779432839",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 16 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779465607",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 17 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779498375",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 18 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779531143",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 19 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787779563911",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g – Bild 20 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787814166919",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77787814199687",
+    "alt": "Farbwechselnder Diamant-Perlen-Lidschatten, 2 g",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67748184424839",
+    "titel": "Modell 1",
+    "medien": [
+     "gid://shopify/MediaImage/77787779367303"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223811975",
+    "titel": "Modell 2",
+    "medien": [
+     "gid://shopify/MediaImage/77787779465607"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223844743",
+    "titel": "Modell 3",
+    "medien": [
+     "gid://shopify/MediaImage/77787814166919"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223877511",
+    "titel": "Modell 4",
+    "medien": [
+     "gid://shopify/MediaImage/77787779203463"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223910279",
+    "titel": "Modell 5",
+    "medien": [
+     "gid://shopify/MediaImage/77787778777479"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223943047",
+    "titel": "Modell 6",
+    "medien": [
+     "gid://shopify/MediaImage/77787779236231"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748223975815",
+    "titel": "Modell 7",
+    "medien": [
+     "gid://shopify/MediaImage/77787779268999"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748224008583",
+    "titel": "Modell 8",
+    "medien": [
+     "gid://shopify/MediaImage/77787779531143"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67748224041351",
+    "titel": "Modell 9",
+    "medien": [
+     "gid://shopify/MediaImage/77787814199687"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77787814166919": "gid://shopify/MediaImage/78014939300231"
+ }
+}

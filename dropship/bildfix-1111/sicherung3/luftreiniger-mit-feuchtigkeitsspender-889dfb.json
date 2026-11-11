@@ -1,0 +1,69 @@
+{
+ "zeit": "2026-11-11T20:03:00.126Z",
+ "plan": {
+  "handle": "luftreiniger-mit-feuchtigkeitsspender-889dfb",
+  "erwartet_erstes": "gid://shopify/MediaImage/69872119447937",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/69872120693121"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449433080193",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69872119447937",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/69879466754433",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120660353",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120693121",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120725889",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120758657",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120791425",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872120824193",
+    "alt": "Luftreiniger mit Feuchtigkeitsspender – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881808216449",
+    "titel": "Schwarz",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881808249217",
+    "titel": "Weiss",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

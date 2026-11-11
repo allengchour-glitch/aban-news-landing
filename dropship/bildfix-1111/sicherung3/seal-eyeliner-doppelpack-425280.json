@@ -1,0 +1,73 @@
+{
+ "zeit": "2026-11-11T20:04:59.727Z",
+ "plan": {
+  "handle": "seal-eyeliner-doppelpack-425280",
+  "erwartet_erstes": "gid://shopify/MediaImage/70612590821761",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70612590952833",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194307_5d74af4c-0f32-48c1-8ead-3288af9c3ae6.png",
+    "alt_text": "Seal Eyeliner Doppelpack – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15508302463361",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70612590821761",
+    "alt": "Seal Eyeliner Doppelpack | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612590854529",
+    "alt": "Seal Eyeliner Doppelpack – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612590887297",
+    "alt": "Seal Eyeliner Doppelpack – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612590920065",
+    "alt": "Seal Eyeliner Doppelpack – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612590952833",
+    "alt": "Seal Eyeliner Doppelpack – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67871058198919",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70612590854529"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871058231687",
+    "titel": "Dunkelbraun",
+    "medien": [
+     "gid://shopify/MediaImage/70612590952833"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871058264455",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70612590887297"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70612590952833": "gid://shopify/MediaImage/78014940381575"
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "zeit": "2026-11-11T20:03:42.243Z",
+ "plan": {
+  "handle": "usb-gewitterwolken-licht-mit-app-musik-sync-105984",
+  "erwartet_erstes": "gid://shopify/MediaImage/69886930878849",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69886930878849",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193726_c26f17e5-fc78-4898-97a7-14b3257070c7.png",
+    "alt_text": "USB Gewitterwolken-Licht mit App & Musik-Sync – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450831520129",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69886930878849",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886930944385",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886930977153",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886931009921",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886931042689",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886931075457",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886931108225",
+    "alt": "USB Gewitterwolken-Licht mit App & Musik-Sync – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889718903169",
+    "titel": "Weiss-USB",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69886930878849": "gid://shopify/MediaImage/78014935859591"
+ }
+}

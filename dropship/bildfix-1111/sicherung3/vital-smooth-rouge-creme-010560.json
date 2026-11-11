@@ -1,0 +1,127 @@
+{
+ "zeit": "2026-11-11T20:04:31.829Z",
+ "plan": {
+  "handle": "vital-smooth-rouge-creme-010560",
+  "erwartet_erstes": "gid://shopify/MediaImage/77436051521927",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77436051521927",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194602_8f0ab8d0-b0f3-473b-b149-e831245f09dc.png",
+    "alt_text": "Rouge-Creme in sechs Farbnuancen – Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77436051620231",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194601_3cb050c4-7dc6-4cca-a3e1-c3253ecaa677.png",
+    "alt_text": "Rouge-Creme in sechs Farbnuancen – Ansicht 5"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77436051554695",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194604_7d3d8e3c-52b6-4469-8fef-089624161f5f.png",
+    "alt_text": "Rouge-Creme in sechs Farbnuancen – Ansicht 3"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77436051587463",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194601_faf97799-3cd7-4ee7-847c-42db58185fac.png",
+    "alt_text": "Rouge-Creme in sechs Farbnuancen – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16603590033799",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77436051521927",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051489159",
+    "alt": "Rouge-Creme in sechs Farbnuancen | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051554695",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051587463",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051620231",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051652999",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436051685767",
+    "alt": "Rouge-Creme in sechs Farbnuancen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/77447301431687",
+    "alt": "Rouge-Creme in sechs Farbnuancen",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790150467975",
+    "titel": "Rosé Creme1",
+    "medien": [
+     "gid://shopify/MediaImage/77436051521927"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790150500743",
+    "titel": "Rosé Creme2",
+    "medien": [
+     "gid://shopify/MediaImage/77436051620231"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790150533511",
+    "titel": "Rosé Creme3",
+    "medien": [
+     "gid://shopify/MediaImage/77436051554695"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790150566279",
+    "titel": "Rosé Creme4",
+    "medien": [
+     "gid://shopify/MediaImage/77436051587463"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790150599047",
+    "titel": "Rosé Creme5",
+    "medien": [
+     "gid://shopify/MediaImage/77436051652999"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790150631815",
+    "titel": "Rosé Creme6",
+    "medien": [
+     "gid://shopify/MediaImage/77436051685767"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77436051521927": "gid://shopify/MediaImage/78014937268615",
+  "gid://shopify/MediaImage/77436051620231": "gid://shopify/MediaImage/78014937399687",
+  "gid://shopify/MediaImage/77436051554695": "gid://shopify/MediaImage/78014937563527",
+  "gid://shopify/MediaImage/77436051587463": "gid://shopify/MediaImage/78014937792903"
+ }
+}

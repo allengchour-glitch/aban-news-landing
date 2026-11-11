@@ -1,0 +1,82 @@
+{
+ "zeit": "2026-11-11T20:06:01.677Z",
+ "plan": {
+  "handle": "leuchtender-trainingsfussball-fur-abendtrainin-760768",
+  "erwartet_erstes": "gid://shopify/MediaImage/77494200500615",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77494200566151",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194721_5c0802d9-d19d-4024-8dd8-52d0b218915d.png",
+    "alt_text": "Leuchtender Trainingsfussball für Abendtraining – Ansicht 4"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77494200631687",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194721_e6636204-ba85-4429-a22f-4bc770293342.png",
+    "alt_text": "Leuchtender Trainingsfussball für Abendtraining – Ansicht 6"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16614829687175",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77494200500615",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200402311",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200533383",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200566151",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200598919",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200631687",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494200664455",
+    "alt": "Leuchtender Trainingsfussball für Abendtraining – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67665455710599",
+    "titel": "Modell 1 / Modell 1",
+    "medien": [
+     "gid://shopify/MediaImage/77494200566151"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67671550427527",
+    "titel": "Modell 2 / Modell 2",
+    "medien": [
+     "gid://shopify/MediaImage/77494200631687"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77494200566151": "gid://shopify/MediaImage/78014952833415",
+  "gid://shopify/MediaImage/77494200631687": "gid://shopify/MediaImage/78014954897799"
+ }
+}

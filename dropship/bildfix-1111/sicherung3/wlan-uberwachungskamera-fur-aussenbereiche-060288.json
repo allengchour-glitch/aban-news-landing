@@ -1,0 +1,57 @@
+{
+ "zeit": "2026-11-11T20:01:44.797Z",
+ "plan": {
+  "handle": "wlan-uberwachungskamera-fur-aussenbereiche-060288",
+  "erwartet_erstes": "gid://shopify/MediaImage/70352527032705",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70352527032705",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193956_5fe67561-f9bd-4234-9715-c7d71c3dd343.png",
+    "alt_text": "WLAN-Überwachungskamera für Aussenbereiche – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15480833474945",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70352527032705",
+    "alt": "WLAN-Überwachungskamera für Aussenbereiche – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70352527065473",
+    "alt": "WLAN-Überwachungskamera für Aussenbereiche – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70352527098241",
+    "alt": "WLAN-Überwachungskamera für Aussenbereiche – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70352527131009",
+    "alt": "WLAN-Überwachungskamera für Aussenbereiche – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70352527163777",
+    "alt": "WLAN-Überwachungskamera für Aussenbereiche – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56005043945857",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70352527032705": "gid://shopify/MediaImage/78014930977159"
+ }
+}

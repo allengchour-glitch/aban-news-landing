@@ -1,0 +1,83 @@
+{
+ "zeit": "2026-11-11T20:02:30.366Z",
+ "plan": {
+  "handle": "oculus-quest-2-link-kabel-usb-c-46da21",
+  "erwartet_erstes": "gid://shopify/MediaImage/70472661598593",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70472661926273",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193957_177fd6db-1cfa-439d-b4a5-8652d03d7ff8.png",
+    "alt_text": "Oculus Quest 2 Link Kabel USB-C – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15493444370817",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70472661598593",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70472661827969",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70472661860737",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70472661893505",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70472661926273",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70472661959041",
+    "alt": "Oculus Quest 2 Link Kabel USB-C – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829755208071",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789180895623",
+    "titel": "3 m",
+    "medien": [
+     "gid://shopify/MediaImage/77829755208071"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789180928391",
+    "titel": "4 m",
+    "medien": [
+     "gid://shopify/MediaImage/70472661926273"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789180961159",
+    "titel": "5 m",
+    "medien": [
+     "gid://shopify/MediaImage/77829755208071"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70472661926273": "gid://shopify/MediaImage/78014933500295"
+ }
+}

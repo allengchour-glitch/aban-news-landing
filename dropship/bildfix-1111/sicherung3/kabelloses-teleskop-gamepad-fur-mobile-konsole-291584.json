@@ -1,0 +1,167 @@
+{
+ "zeit": "2026-11-11T20:06:58.556Z",
+ "plan": {
+  "handle": "kabelloses-teleskop-gamepad-fur-mobile-konsole-291584",
+  "erwartet_erstes": "gid://shopify/MediaImage/70345536602497",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70345537028481",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193953_40a165e5-c68a-45d0-9d15-db1f26a5670d.png",
+    "alt_text": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Ansicht 3"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/70345537094017",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193954_3eb989f4-55dd-4183-a04a-92424fbefa5c.png",
+    "alt_text": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15479635607937",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70345536602497",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345536995713",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537028481",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537061249",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537094017",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537126785",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537159553",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537192321",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537225089",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70345537257857",
+    "alt": "Kabelloses Teleskop-Gamepad für Mobile & Konsole – Bild 10 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789998424455",
+    "titel": "Schwarz / Vollgriff",
+    "medien": [
+     "gid://shopify/MediaImage/70345537028481"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998457223",
+    "titel": "Schwarz / Mobilversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537028481"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998489991",
+    "titel": "Schwarz / Universalversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537028481"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998522759",
+    "titel": "Blau / Mobilversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998555527",
+    "titel": "Blau / Universalversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998588295",
+    "titel": "Grün / Mobilversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998621063",
+    "titel": "Grün / Universalversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998653831",
+    "titel": "Rot / Blau / Mobilversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998686599",
+    "titel": "Rot / Blau / Universalversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537094017"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998719367",
+    "titel": "Weiss / Vollgriff",
+    "medien": [
+     "gid://shopify/MediaImage/70345537061249"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998752135",
+    "titel": "Weiss / Mobilversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537061249"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789998784903",
+    "titel": "Weiss / Universalversion",
+    "medien": [
+     "gid://shopify/MediaImage/70345537061249"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70345537028481": "gid://shopify/MediaImage/78014969184647",
+  "gid://shopify/MediaImage/70345537094017": "gid://shopify/MediaImage/78014970724743"
+ }
+}

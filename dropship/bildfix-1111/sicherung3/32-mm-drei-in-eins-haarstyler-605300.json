@@ -1,0 +1,83 @@
+{
+ "zeit": "2026-11-11T20:05:27.225Z",
+ "plan": {
+  "handle": "32-mm-drei-in-eins-haarstyler-605300",
+  "erwartet_erstes": "gid://shopify/MediaImage/69942156296577",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69942156296577",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193845_3885f0fb-c6ee-4ad2-bc90-431618b907ca.png",
+    "alt_text": "32 mm Drei-in-Eins Haarstyler – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15454916051329",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69942156296577",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156329345",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156362113",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156394881",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156427649",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156460417",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69942156493185",
+    "alt": "32 mm Drei-in-Eins Haarstyler – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67879982596487",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/69942156329345"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879982629255",
+    "titel": "Rosa",
+    "medien": [
+     "gid://shopify/MediaImage/69942156296577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879982662023",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/69942156460417"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69942156296577": "gid://shopify/MediaImage/78014944444807"
+ }
+}

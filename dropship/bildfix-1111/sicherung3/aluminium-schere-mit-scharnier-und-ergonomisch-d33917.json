@@ -1,0 +1,73 @@
+{
+ "zeit": "2026-11-11T20:04:58.541Z",
+ "plan": {
+  "handle": "aluminium-schere-mit-scharnier-und-ergonomisch-d33917",
+  "erwartet_erstes": "gid://shopify/MediaImage/77460491895175",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77829975802247",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194604_c07f786a-42b8-4609-857f-95df019edeaf.png",
+    "alt_text": "Schere aus Chrom-Vanadium-Stahl für Aluminium und Blech, ergonomischer Griff – Ansicht 3"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16608454902151",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77460491895175",
+    "alt": "Aluminium-Schere mit Scharnier und ergonomischem Griff | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77460491927943",
+    "alt": "Aluminium-Schere mit Scharnier und ergonomischem Griff – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829975802247",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829975835015",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829975867783",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790032273799",
+    "titel": "2-Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77829975802247"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790032306567",
+    "titel": "3-Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77829975835015"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790032339335",
+    "titel": "1-Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77829975867783"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77829975802247": "gid://shopify/MediaImage/78014940217735"
+ }
+}

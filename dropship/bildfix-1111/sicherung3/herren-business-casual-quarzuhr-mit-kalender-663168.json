@@ -1,0 +1,175 @@
+{
+ "zeit": "2026-11-11T20:04:21.279Z",
+ "plan": {
+  "handle": "herren-business-casual-quarzuhr-mit-kalender-663168",
+  "erwartet_erstes": "gid://shopify/MediaImage/70568139817345",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70568140046721",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193215_b398ef47-bb06-4e18-a043-e1b9525368da.png",
+    "alt_text": "Herren Business Casual Quarzuhr mit Kalender – Ansicht 9"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77862363169159",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193216_3e88a537-73e4-418a-835e-985267936984.png",
+    "alt_text": "Herren Business Casual Quarzuhr mit Kalender – Ansicht 17"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77862363201927",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193215_3aa83f9c-5d6c-455d-b738-551e52c482ce.png",
+    "alt_text": "Herren Business Casual Quarzuhr mit Kalender – Ansicht 18"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77862363234695",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193214_9345fd7a-34a6-4d68-850d-2fd72d7147f3.png",
+    "alt_text": "Herren Business Casual Quarzuhr mit Kalender – Ansicht 19"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15503083667841",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70568139817345",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139391361",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139850113",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139882881",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139915649",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139948417",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568139981185",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140013953",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140046721",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140079489",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140112257",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140145025",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140177793",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140210561",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70568140243329",
+    "alt": "Herren Business Casual Quarzuhr mit Kalender – Bild 15 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77862363136391",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77862363169159",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77862363201927",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77862363234695",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67814695600519",
+    "titel": "Roségold Schuppen Schwarz Gürtel",
+    "medien": [
+     "gid://shopify/MediaImage/77862363136391"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814695633287",
+    "titel": "Silber Schuppen Schwarz Gürtel",
+    "medien": [
+     "gid://shopify/MediaImage/70568140046721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814695666055",
+    "titel": "Weiss Fläche Silber Streifen",
+    "medien": [
+     "gid://shopify/MediaImage/77862363169159"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814695698823",
+    "titel": "Schwarz Fläche Silber Streifen",
+    "medien": [
+     "gid://shopify/MediaImage/77862363201927"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814695731591",
+    "titel": "Blau Fläche Silber Streifen",
+    "medien": [
+     "gid://shopify/MediaImage/77862363234695"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70568140046721": "gid://shopify/MediaImage/78014936908167",
+  "gid://shopify/MediaImage/77862363169159": "gid://shopify/MediaImage/78014937072007",
+  "gid://shopify/MediaImage/77862363201927": "gid://shopify/MediaImage/78014937235847",
+  "gid://shopify/MediaImage/77862363234695": "gid://shopify/MediaImage/78014937366919"
+ }
+}

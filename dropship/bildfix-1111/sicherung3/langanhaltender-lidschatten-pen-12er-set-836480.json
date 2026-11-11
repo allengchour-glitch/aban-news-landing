@@ -1,0 +1,66 @@
+{
+ "zeit": "2026-11-11T20:04:48.905Z",
+ "plan": {
+  "handle": "langanhaltender-lidschatten-pen-12er-set-836480",
+  "erwartet_erstes": "gid://shopify/MediaImage/70612559987073",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70612559987073",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194304_33a4f686-0458-4193-8eb4-4482039db164.png",
+    "alt_text": "Langanhaltender Lidschatten Pen – 12er Set – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15508294467969",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70612559987073",
+    "alt": "Langanhaltender Lidschatten Pen – 12er Set | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612560249217",
+    "alt": "Langanhaltender Lidschatten Pen – 12er Set – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612560281985",
+    "alt": "Langanhaltender Lidschatten Pen – 12er Set – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612560314753",
+    "alt": "Langanhaltender Lidschatten Pen – 12er Set – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70612560347521",
+    "alt": "Langanhaltender Lidschatten Pen – 12er Set – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122292978055",
+    "titel": "DNM12 1 Hell Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70612560314753"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122293010823",
+    "titel": "DNM12 2 Sanft Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70612560281985"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70612559987073": "gid://shopify/MediaImage/78014939398535"
+ }
+}

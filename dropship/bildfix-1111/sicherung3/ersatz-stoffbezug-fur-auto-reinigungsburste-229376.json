@@ -1,0 +1,120 @@
+{
+ "zeit": "2026-11-11T20:06:41.877Z",
+ "plan": {
+  "handle": "ersatz-stoffbezug-fur-auto-reinigungsburste-229376",
+  "erwartet_erstes": "gid://shopify/MediaImage/70342632571265",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70342632735105",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193956_b56b1792-d164-4a91-b5bd-01a11102d2a5.png",
+    "alt_text": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Ansicht 7"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15479417209217",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70342632571265",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632505729",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632604033",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632636801",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632669569",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632702337",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632735105",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632767873",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632800641",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632833409",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632866177",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342632898945",
+    "alt": "Ersatz-Stoffbezug für Auto-Reinigungsbürste – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829854626183",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789532365191",
+    "titel": "Creme",
+    "medien": [
+     "gid://shopify/MediaImage/77829854626183"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789532397959",
+    "titel": "Anthrazit",
+    "medien": [
+     "gid://shopify/MediaImage/70342632571265"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789532430727",
+    "titel": "Dunkelblau",
+    "medien": [
+     "gid://shopify/MediaImage/70342632735105"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789532463495",
+    "titel": "Beige",
+    "medien": [
+     "gid://shopify/MediaImage/70342632669569"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70342632735105": "gid://shopify/MediaImage/78014965809543"
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "zeit": "2026-11-11T20:06:30.007Z",
+ "plan": {
+  "handle": "smartwatch-fur-sport-fitness-624900",
+  "erwartet_erstes": "gid://shopify/MediaImage/70342623953281",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70342624051585",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193956_398d115a-28e3-4a59-9e5d-6f89b2bfe3e7.png",
+    "alt_text": "Smartwatch für Sport & Fitness – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15479416258945",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70342623953281",
+    "alt": "Smartwatch für Sport & Fitness – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342623887745",
+    "alt": "Smartwatch für Sport & Fitness – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342623986049",
+    "alt": "Smartwatch für Sport & Fitness – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342624018817",
+    "alt": "Smartwatch für Sport & Fitness – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342624051585",
+    "alt": "Smartwatch für Sport & Fitness – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342624084353",
+    "alt": "Smartwatch für Sport & Fitness – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342624117121",
+    "alt": "Smartwatch für Sport & Fitness – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70342624149889",
+    "alt": "Smartwatch für Sport & Fitness – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790450065799",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70342624084353"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790450098567",
+    "titel": "Rosa",
+    "medien": [
+     "gid://shopify/MediaImage/70342623887745"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790450131335",
+    "titel": "Gold",
+    "medien": [
+     "gid://shopify/MediaImage/70342624051585"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790450164103",
+    "titel": "Silber",
+    "medien": [
+     "gid://shopify/MediaImage/70342624018817"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70342624051585": "gid://shopify/MediaImage/78014963286407"
+ }
+}

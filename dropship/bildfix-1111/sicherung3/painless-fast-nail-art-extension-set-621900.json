@@ -1,0 +1,247 @@
+{
+ "zeit": "2026-11-11T20:05:35.488Z",
+ "plan": {
+  "handle": "painless-fast-nail-art-extension-set-621900",
+  "erwartet_erstes": "gid://shopify/MediaImage/69834391093633",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70535061012865",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193412_99c9fb22-9b72-4953-8be6-443fc4391963.png",
+    "alt_text": "Painless Fast Nail Art Extension Set – Ansicht 20"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15445274919297",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69834391093633",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834390831489",
+    "alt": "Painless Fast Nail Art Extension Set",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391126401",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391159169",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391191937",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391224705",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391257473",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69834391290241",
+    "alt": "Painless Fast Nail Art Extension Set – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060652417",
+    "alt": "LuxeStyle Painless Fast Nail Art Extension Set – Bild 9 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060685185",
+    "alt": "LuxeStyle Painless Fast Nail Art Extension Set – Bild 10 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060717953",
+    "alt": "LuxeStyle Painless Fast Nail Art Extension Set – Bild 11 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060750721",
+    "alt": "LuxeStyle Painless Fast Nail Art Extension Set – Bild 12 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060783489",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060816257",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060849025",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060881793",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060914561",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060947329",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535060980097",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535061012865",
+    "alt": "Painless Fast Nail Art Extension Set – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535061045633",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535061078401",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70535061111169",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56061668786561",
+    "titel": "F301",
+    "medien": [
+     "gid://shopify/MediaImage/70535060652417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668819329",
+    "titel": "F302",
+    "medien": [
+     "gid://shopify/MediaImage/70535060685185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668852097",
+    "titel": "F303",
+    "medien": [
+     "gid://shopify/MediaImage/70535060717953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668884865",
+    "titel": "F304",
+    "medien": [
+     "gid://shopify/MediaImage/70535060750721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668917633",
+    "titel": "F305",
+    "medien": [
+     "gid://shopify/MediaImage/70535060783489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668950401",
+    "titel": "F306",
+    "medien": [
+     "gid://shopify/MediaImage/70535060816257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061668983169",
+    "titel": "F307",
+    "medien": [
+     "gid://shopify/MediaImage/70535060849025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669015937",
+    "titel": "F308",
+    "medien": [
+     "gid://shopify/MediaImage/70535060881793"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669048705",
+    "titel": "Butterfly 301",
+    "medien": [
+     "gid://shopify/MediaImage/70535060914561"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669081473",
+    "titel": "Butterfly 302",
+    "medien": [
+     "gid://shopify/MediaImage/70535060947329"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669114241",
+    "titel": "Butterfly 330",
+    "medien": [
+     "gid://shopify/MediaImage/70535060980097"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669147009",
+    "titel": "Butterfly 304",
+    "medien": [
+     "gid://shopify/MediaImage/70535061012865"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669179777",
+    "titel": "Butterfly 305",
+    "medien": [
+     "gid://shopify/MediaImage/70535061045633"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669212545",
+    "titel": "Butterfly 306",
+    "medien": [
+     "gid://shopify/MediaImage/70535061078401"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56061669245313",
+    "titel": "Butterfly 307",
+    "medien": [
+     "gid://shopify/MediaImage/70535061111169"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70535061012865": "gid://shopify/MediaImage/78014945624455"
+ }
+}

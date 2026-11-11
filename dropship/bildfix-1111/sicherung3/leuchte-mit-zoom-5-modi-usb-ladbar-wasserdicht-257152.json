@@ -1,0 +1,86 @@
+{
+ "zeit": "2026-11-11T20:05:15.487Z",
+ "plan": {
+  "handle": "leuchte-mit-zoom-5-modi-usb-ladbar-wasserdicht-257152",
+  "erwartet_erstes": "gid://shopify/MediaImage/69941710619009",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69941710815617",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193844_ae410a55-23bd-42f8-9f9b-1d4262878bc0.png",
+    "alt_text": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Ansicht 8"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15454894031233",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69941710619009",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710553473",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710651777",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710684545",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710717313",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710750081",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710782849",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710815617",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69941710848385",
+    "alt": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für Outdoor – Bild 9 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789363904903",
+    "titel": "A",
+    "medien": [
+     "gid://shopify/MediaImage/69941710815617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789363937671",
+    "titel": "B",
+    "medien": [
+     "gid://shopify/MediaImage/69941710684545"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69941710815617": "gid://shopify/MediaImage/78014942773639"
+ }
+}

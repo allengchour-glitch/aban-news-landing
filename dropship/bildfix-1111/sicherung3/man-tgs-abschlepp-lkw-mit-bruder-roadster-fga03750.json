@@ -1,0 +1,37 @@
+{
+ "zeit": "2026-11-11T20:06:19.259Z",
+ "plan": {
+  "handle": "man-tgs-abschlepp-lkw-mit-bruder-roadster-fga03750",
+  "erwartet_erstes": "gid://shopify/MediaImage/70130966200705",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70130966200705",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193953_078429a9-4f3e-4294-b6d9-7d1173a4682d.png",
+    "alt_text": "MAN TGS Abschlepp-LKW mit BRUDER Roadster und Light & Sound Module – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15470027080065",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70130966200705",
+    "alt": "MAN TGS Abschlepp-LKW mit BRUDER Roadster und Light & Sound Module – Bild 1 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55970898870657",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70130966200705": "gid://shopify/MediaImage/78014959747463"
+ }
+}

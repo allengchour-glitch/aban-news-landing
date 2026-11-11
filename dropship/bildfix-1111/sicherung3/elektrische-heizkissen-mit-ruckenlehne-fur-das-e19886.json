@@ -1,0 +1,99 @@
+{
+ "zeit": "2026-11-11T20:05:10.299Z",
+ "plan": {
+  "handle": "elektrische-heizkissen-mit-ruckenlehne-fur-das-e19886",
+  "erwartet_erstes": "gid://shopify/MediaImage/77461732884871",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77461732983175",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194601_9fc0fd52-daa9-4949-9860-a5ab4c3aac6a.png",
+    "alt_text": "Elektrische Heizkissen mit Rückenlehne für das Auto – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16608629031303",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77461732884871",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77461732917639",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77461732950407",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77461732983175",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77461733015943",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77461733048711",
+    "alt": "Elektrische Heizkissen mit Rückenlehne für das Auto – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790045282695",
+    "titel": "Schwarz / Two",
+    "medien": [
+     "gid://shopify/MediaImage/77461733015943"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790045315463",
+    "titel": "Braun / One",
+    "medien": [
+     "gid://shopify/MediaImage/77461732983175"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790045348231",
+    "titel": "Schwarz / One",
+    "medien": [
+     "gid://shopify/MediaImage/77461732884871"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790045380999",
+    "titel": "Grau / Two",
+    "medien": [
+     "gid://shopify/MediaImage/77461732950407"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790045413767",
+    "titel": "Grau / One",
+    "medien": [
+     "gid://shopify/MediaImage/77461732917639"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790045446535",
+    "titel": "Braun / Two",
+    "medien": [
+     "gid://shopify/MediaImage/77461733048711"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77461732983175": "gid://shopify/MediaImage/78014941888903"
+ }
+}

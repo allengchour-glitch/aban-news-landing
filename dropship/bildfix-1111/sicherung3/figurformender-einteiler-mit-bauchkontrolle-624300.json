@@ -1,0 +1,144 @@
+{
+ "zeit": "2026-11-11T20:01:26.286Z",
+ "plan": {
+  "handle": "figurformender-einteiler-mit-bauchkontrolle-624300",
+  "erwartet_erstes": "gid://shopify/MediaImage/70334883398017",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/70334883430785"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15478787834241",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70334883398017",
+    "alt": "Figurformender Einteiler mit Bauchkontrolle – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70334883430785",
+    "alt": "Figurformender Einteiler mit Bauchkontrolle – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70334883103105",
+    "alt": "Figurformender Einteiler mit Bauchkontrolle – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70334883299713",
+    "alt": "Figurformender Einteiler mit Bauchkontrolle – Bild 4 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55998430118273",
+    "titel": "Schwarz / XS",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430151041",
+    "titel": "Schwarz / S",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430183809",
+    "titel": "Schwarz / M",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430216577",
+    "titel": "Schwarz / L",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430249345",
+    "titel": "Schwarz / XL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430282113",
+    "titel": "Schwarz / XXL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430314881",
+    "titel": "Schwarz / 3XL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430347649",
+    "titel": "Braun / XS",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430380417",
+    "titel": "Braun / S",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430413185",
+    "titel": "Braun / M",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430445953",
+    "titel": "Braun / L",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430478721",
+    "titel": "Braun / XL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430511489",
+    "titel": "Braun / XXL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430544257",
+    "titel": "Braun / 3XL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430577025",
+    "titel": "Nude / XS",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430609793",
+    "titel": "Nude / S",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430642561",
+    "titel": "Nude / M",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430675329",
+    "titel": "Nude / L",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430708097",
+    "titel": "Nude / XL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430740865",
+    "titel": "Nude / XXL",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55998430773633",
+    "titel": "Nude / 3XL",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

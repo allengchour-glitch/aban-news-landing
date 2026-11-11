@@ -1,0 +1,94 @@
+{
+ "zeit": "2026-11-11T20:01:51.660Z",
+ "plan": {
+  "handle": "led-werbe-display-287552",
+  "erwartet_erstes": "gid://shopify/MediaImage/70383108063617",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/70383108194689"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15483934605697",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70383108063617",
+    "alt": "LED Werbe-Display – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108096385",
+    "alt": "LED Werbe-Display – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108129153",
+    "alt": "LED Werbe-Display – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108161921",
+    "alt": "LED Werbe-Display – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108194689",
+    "alt": "LED Werbe-Display – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108227457",
+    "alt": "LED Werbe-Display – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108260225",
+    "alt": "LED Werbe-Display – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108292993",
+    "alt": "LED Werbe-Display – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108325761",
+    "alt": "LED Werbe-Display – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70383108358529",
+    "alt": "LED Werbe-Display – Bild 10 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56026873266561",
+    "titel": "7x17cm",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56026873299329",
+    "titel": "9.2x37.2cm",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56026873332097",
+    "titel": "12x47cm",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56026873364865",
+    "titel": "12x59cm",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56026873397633",
+    "titel": "12x68cm",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

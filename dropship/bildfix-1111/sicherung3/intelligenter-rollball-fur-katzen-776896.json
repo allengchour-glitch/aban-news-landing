@@ -1,0 +1,224 @@
+{
+ "zeit": "2026-11-11T20:04:03.671Z",
+ "plan": {
+  "handle": "intelligenter-rollball-fur-katzen-776896",
+  "erwartet_erstes": "gid://shopify/MediaImage/69886967185793",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69886967185793",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193841_77a80dfd-e221-4342-b016-588cf5239662.png",
+    "alt_text": "Intelligenter Rollball für Katzen – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450832961921",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69886967185793",
+    "alt": "Intelligenter Rollball für Katzen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967218561",
+    "alt": "Intelligenter Rollball für Katzen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967251329",
+    "alt": "Intelligenter Rollball für Katzen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967284097",
+    "alt": "Intelligenter Rollball für Katzen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967316865",
+    "alt": "Intelligenter Rollball für Katzen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967349633",
+    "alt": "Intelligenter Rollball für Katzen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967382401",
+    "alt": "Intelligenter Rollball für Katzen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967415169",
+    "alt": "Intelligenter Rollball für Katzen – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967447937",
+    "alt": "Intelligenter Rollball für Katzen – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967480705",
+    "alt": "Intelligenter Rollball für Katzen – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967513473",
+    "alt": "Intelligenter Rollball für Katzen – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967546241",
+    "alt": "Intelligenter Rollball für Katzen – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967579009",
+    "alt": "Intelligenter Rollball für Katzen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967611777",
+    "alt": "Intelligenter Rollball für Katzen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967644545",
+    "alt": "Intelligenter Rollball für Katzen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967677313",
+    "alt": "Intelligenter Rollball für Katzen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967710081",
+    "alt": "Intelligenter Rollball für Katzen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967742849",
+    "alt": "Intelligenter Rollball für Katzen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967775617",
+    "alt": "Intelligenter Rollball für Katzen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886967808385",
+    "alt": "Intelligenter Rollball für Katzen – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889732534657",
+    "titel": "Grün-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732567425",
+    "titel": "Pink-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732600193",
+    "titel": "Pink Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732632961",
+    "titel": "Grün Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732665729",
+    "titel": "3 Stück Grün-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732698497",
+    "titel": "5 Stück Grün-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732731265",
+    "titel": "3 Stück Grün Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732764033",
+    "titel": "5 Stück Grün Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732796801",
+    "titel": "3 Stück Pink-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732829569",
+    "titel": "5 Stück Pink-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732862337",
+    "titel": "3 Stück Pink Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732895105",
+    "titel": "5 Stück Pink Englisch Verpackung-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732927873",
+    "titel": "2 Stück-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732960641",
+    "titel": "Bundle1-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889732993409",
+    "titel": "2 Stück in Pink-USB",
+    "medien": [
+     "gid://shopify/MediaImage/69886967415169"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889733026177",
+    "titel": "2 Stück in Grün-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889733058945",
+    "titel": "Grün Englisch Verpackung · 2 Stück-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889733091713",
+    "titel": "Pink Englisch Verpackung · 2 Stück-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889733124481",
+    "titel": "Set-USB",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69886967185793": "gid://shopify/MediaImage/78014936646023"
+ }
+}

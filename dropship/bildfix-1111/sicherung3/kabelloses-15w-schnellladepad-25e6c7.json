@@ -1,0 +1,100 @@
+{
+ "zeit": "2026-11-11T20:04:37.251Z",
+ "plan": {
+  "handle": "kabelloses-15w-schnellladepad-25e6c7",
+  "erwartet_erstes": "gid://shopify/MediaImage/70607550251393",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70607550251393",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194304_537cc61c-ecea-43e4-8afa-0bd294412c6f.png",
+    "alt_text": "Kabelloses 15W Schnellladepad – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15507580649857",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70607550251393",
+    "alt": "Kabelloses 15W Schnellladepad | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550480769",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550513537",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550546305",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550579073",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550611841",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550644609",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550677377",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70607550710145",
+    "alt": "Kabelloses 15W Schnellladepad – Bild 9 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874464858503",
+    "titel": "Weißer Kreis",
+    "medien": [
+     "gid://shopify/MediaImage/70607550579073"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874464891271",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70607550251393"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874464924039",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70607550611841"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874464956807",
+    "titel": "Schwarzer Kreis",
+    "medien": [
+     "gid://shopify/MediaImage/70607550480769"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70607550251393": "gid://shopify/MediaImage/78014938087815"
+ }
+}

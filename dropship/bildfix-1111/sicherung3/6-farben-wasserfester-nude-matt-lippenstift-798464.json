@@ -1,0 +1,154 @@
+{
+ "zeit": "2026-11-11T20:03:54.286Z",
+ "plan": {
+  "handle": "6-farben-wasserfester-nude-matt-lippenstift-798464",
+  "erwartet_erstes": "gid://shopify/MediaImage/70813662118273",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70813662118273",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194605_03dbf709-9a39-44ff-af0d-53f9ae2dd77e.png",
+    "alt_text": "6-Farben wasserfester Nude-Matt-Lippenstift – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525458248065",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70813662118273",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662282113",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662314881",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662347649",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662380417",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662413185",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662445953",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662478721",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662511489",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662544257",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662577025",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662609793",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662642561",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662675329",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662708097",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 15 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813662740865",
+    "alt": "6‑Farben wasserfester Nude‑Matt‑Lippenstift – Bild 16 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949931258247",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948435407239",
+    "titel": "Stil01",
+    "medien": [
+     "gid://shopify/MediaImage/70813662740865"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948435440007",
+    "titel": "Stil02",
+    "medien": [
+     "gid://shopify/MediaImage/70813662380417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948435472775",
+    "titel": "Stil03",
+    "medien": [
+     "gid://shopify/MediaImage/70813662347649"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948435505543",
+    "titel": "Stil04",
+    "medien": [
+     "gid://shopify/MediaImage/70813662609793"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948435538311",
+    "titel": "Stil05",
+    "medien": [
+     "gid://shopify/MediaImage/77949931258247"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948435571079",
+    "titel": "Stil06",
+    "medien": [
+     "gid://shopify/MediaImage/70813662478721"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70813662118273": "gid://shopify/MediaImage/78014936318343"
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "zeit": "2026-11-11T20:02:06.454Z",
+ "plan": {
+  "handle": "smartwatch-mit-touchscreen-bluetooth-herzfrequ-377728",
+  "erwartet_erstes": "gid://shopify/MediaImage/70776222908801",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70776223039873",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-10-1111.jpg?v=1794427086",
+    "alt_text": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15524360028545",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70776222908801",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70776222941569",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70776223007105",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70776223039873",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70776223072641",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70776223105409",
+    "alt": "Smartwatch mit Touchscreen, Bluetooth, Herzfrequenz – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67801774522759",
+    "titel": "Silber",
+    "medien": [
+     "gid://shopify/MediaImage/70776223039873"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801774555527",
+    "titel": "Gold",
+    "medien": [
+     "gid://shopify/MediaImage/70776223105409"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70776223039873": "gid://shopify/MediaImage/78014931992967"
+ }
+}

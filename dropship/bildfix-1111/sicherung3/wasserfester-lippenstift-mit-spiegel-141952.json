@@ -1,0 +1,149 @@
+{
+ "zeit": "2026-11-11T20:03:41.459Z",
+ "plan": {
+  "handle": "wasserfester-lippenstift-mit-spiegel-141952",
+  "erwartet_erstes": "gid://shopify/MediaImage/70813655007617",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70813655105921",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194604_ed81b738-4b5c-4a89-aec6-7b1f272ff192.png",
+    "alt_text": "Wasserfester Lippenstift mit Spiegel – Ansicht 4"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/70813655302529",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194601_e532b331-bd56-417e-a1c6-c1d2e5f9e83d.png",
+    "alt_text": "Wasserfester Lippenstift mit Spiegel – Ansicht 10"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525457953153",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70813655007617",
+    "alt": "Wasserfester Lippenstift mit Spiegel | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655040385",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655073153",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655105921",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655138689",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655171457",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655204225",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655236993",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655269761",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655302529",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70813655335297",
+    "alt": "Wasserfester Lippenstift mit Spiegel – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/70839811801473",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122258112903",
+    "titel": "Nude 01",
+    "medien": [
+     "gid://shopify/MediaImage/70813655236993"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258145671",
+    "titel": "Nude 02",
+    "medien": [
+     "gid://shopify/MediaImage/70813655269761"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258178439",
+    "titel": "Orange 01",
+    "medien": [
+     "gid://shopify/MediaImage/70813655040385"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258211207",
+    "titel": "Orange 02",
+    "medien": [
+     "gid://shopify/MediaImage/70813655105921"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258243975",
+    "titel": "Purpur 01",
+    "medien": [
+     "gid://shopify/MediaImage/70813655302529"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258276743",
+    "titel": "Purpur 02",
+    "medien": [
+     "gid://shopify/MediaImage/70813655204225"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258309511",
+    "titel": "Rot 01",
+    "medien": [
+     "gid://shopify/MediaImage/70813655138689"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122258342279",
+    "titel": "Rot 02",
+    "medien": [
+     "gid://shopify/MediaImage/70813655335297"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70813655105921": "gid://shopify/MediaImage/78014935761287",
+  "gid://shopify/MediaImage/70813655302529": "gid://shopify/MediaImage/78014935826823"
+ }
+}

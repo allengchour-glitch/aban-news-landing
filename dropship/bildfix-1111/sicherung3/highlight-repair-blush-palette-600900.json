@@ -1,0 +1,76 @@
+{
+ "zeit": "2026-11-11T20:03:43.912Z",
+ "plan": {
+  "handle": "highlight-repair-blush-palette-600900",
+  "erwartet_erstes": "gid://shopify/MediaImage/70551075455361",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70551075651969",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193214_3ac3225c-023e-48d6-81dc-120a21ee025c.png",
+    "alt_text": "Highlight Repair Blush Palette – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15500947652993",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70551075455361",
+    "alt": "Highlight Repair Blush Palette – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075553665",
+    "alt": "Highlight Repair Blush Palette – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075586433",
+    "alt": "Highlight Repair Blush Palette – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075619201",
+    "alt": "Highlight Repair Blush Palette – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075651969",
+    "alt": "Highlight Repair Blush Palette – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075684737",
+    "alt": "Highlight Repair Blush Palette – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70551075717505",
+    "alt": "Highlight Repair Blush Palette – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67814983827847",
+    "titel": "2 Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70551075684737"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814983860615",
+    "titel": "3 Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70551075651969"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70551075651969": "gid://shopify/MediaImage/78014935957895"
+ }
+}

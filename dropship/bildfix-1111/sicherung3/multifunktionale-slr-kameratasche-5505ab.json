@@ -1,0 +1,52 @@
+{
+ "zeit": "2026-11-11T20:05:35.890Z",
+ "plan": {
+  "handle": "multifunktionale-slr-kameratasche-5505ab",
+  "erwartet_erstes": "gid://shopify/MediaImage/70618242187649",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70618242187649",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194307_6fb10c05-8b6a-4b07-9b5d-b96f77832fdb.png",
+    "alt_text": "Multifunktionale SLR-Kameratasche – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15508716224897",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70618242187649",
+    "alt": "Multifunktionale SLR-Kameratasche | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70618242253185",
+    "alt": "Multifunktionale SLR-Kameratasche – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70618242285953",
+    "alt": "Multifunktionale SLR-Kameratasche – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70618242318721",
+    "alt": "Multifunktionale SLR-Kameratasche – Bild 4 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56152234819969",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70618242187649": "gid://shopify/MediaImage/78014945788295"
+ }
+}

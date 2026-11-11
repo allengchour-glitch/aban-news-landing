@@ -1,0 +1,99 @@
+{
+ "zeit": "2026-11-11T20:05:21.894Z",
+ "plan": {
+  "handle": "smartwatch-fur-sport-und-gesundheitsuberwachun-917696",
+  "erwartet_erstes": "gid://shopify/MediaImage/77482439901575",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77482440032647",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194603_67a77e3c-baf5-4a98-b56c-f04728943221.png",
+    "alt_text": "Smartwatch für Sport und Gesundheitsüberwachung – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16612790731143",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77482439901575",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77482439967111",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77482439999879",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77482440032647",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77482440065415",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77482440098183",
+    "alt": "Smartwatch für Sport und Gesundheitsüberwachung – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67814881100167",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/77482439967111"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814881132935",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77482440098183"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814881165703",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/77482439901575"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814881198471",
+    "titel": "Schwarz Leder",
+    "medien": [
+     "gid://shopify/MediaImage/77482440032647"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814881231239",
+    "titel": "Braun Leder",
+    "medien": [
+     "gid://shopify/MediaImage/77482439999879"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814881264007",
+    "titel": "Three Stahl Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77482440065415"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77482440032647": "gid://shopify/MediaImage/78014943789447"
+ }
+}

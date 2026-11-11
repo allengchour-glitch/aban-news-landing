@@ -1,0 +1,565 @@
+{
+ "zeit": "2026-11-11T20:02:16.168Z",
+ "plan": {
+  "handle": "einfarbiger-uv-led-nagellack-777152",
+  "erwartet_erstes": "gid://shopify/MediaImage/70444273598849",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70444274024833",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193954_1d8641bc-226a-4dae-a5c5-a0b76a2fd84c.png",
+    "alt_text": "Einfarbiger UV/LED Nagellack – Ansicht 16"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15490872377729",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70444273598849",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273533313",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273566081",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273631617",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273664385",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273697153",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273729921",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273762689",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273795457",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273828225",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273860993",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273893761",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273926529",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273959297",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444273992065",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444274024833",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444274057601",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444274090369",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444274123137",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70444274155905",
+    "alt": "Einfarbiger UV/LED Nagellack – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840044423",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840077191",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840109959",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840142727",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840175495",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840208263",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840241031",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840273799",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840306567",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840339335",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840372103",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840404871",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840437639",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840470407",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840503175",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840535943",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840568711",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840601479",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829840634247",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789484851591",
+    "titel": "BWH38 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840044423"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789484884359",
+    "titel": "BWH86 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273664385"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789484917127",
+    "titel": "BWH33 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840077191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789484949895",
+    "titel": "BWH34 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273566081"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789484982663",
+    "titel": "BWH74 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273959297"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485015431",
+    "titel": "BWH15 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273795457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485048199",
+    "titel": "BWH107 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444274024833"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485080967",
+    "titel": "BWH59 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444274155905"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485113735",
+    "titel": "BWH60 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273762689"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485146503",
+    "titel": "BWH11 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840109959"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485179271",
+    "titel": "BWH87 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840142727"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485212039",
+    "titel": "BWH83 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444274057601"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485244807",
+    "titel": "BWH82 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840175495"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485277575",
+    "titel": "BWH58 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840208263"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485310343",
+    "titel": "BWH10 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273992065"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485343111",
+    "titel": "BWH09 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273762689"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485375879",
+    "titel": "BWH13 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273598849"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485408647",
+    "titel": "BWH14 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273959297"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485441415",
+    "titel": "BWH06 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840241031"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485474183",
+    "titel": "BWH66 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840273799"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485506951",
+    "titel": "BWH43 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840306567"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485539719",
+    "titel": "BWH07 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840339335"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485572487",
+    "titel": "BWH79 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273893761"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485605255",
+    "titel": "BWH80 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273893761"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485638023",
+    "titel": "BWH08 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840372103"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485670791",
+    "titel": "BWH42 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840404871"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485703559",
+    "titel": "BWH49 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485736327",
+    "titel": "BWH48 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485769095",
+    "titel": "BWH16 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485801863",
+    "titel": "BWH29 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840437639"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485834631",
+    "titel": "BWH47 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485867399",
+    "titel": "BWH28 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273566081"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485900167",
+    "titel": "BWH50 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485932935",
+    "titel": "BWH51 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273631617"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485965703",
+    "titel": "BWH52 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840470407"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789485998471",
+    "titel": "BWH30 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273828225"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486031239",
+    "titel": "BWH72 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840503175"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486064007",
+    "titel": "BWH73 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273729921"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486096775",
+    "titel": "BWH39 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444274090369"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486129543",
+    "titel": "BWH27 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273926529"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486162311",
+    "titel": "BWH17 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840535943"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486195079",
+    "titel": "BWH71 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273566081"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486227847",
+    "titel": "BWH26 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840568711"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486260615",
+    "titel": "BWH19 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273860993"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486293383",
+    "titel": "BWH61 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273697153"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486326151",
+    "titel": "BWH62 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444274123137"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486358919",
+    "titel": "BWH63 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840601479"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486391687",
+    "titel": "BWH20 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/70444273533313"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789486424455",
+    "titel": "BWH37 Variante",
+    "medien": [
+     "gid://shopify/MediaImage/77829840634247"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70444274024833": "gid://shopify/MediaImage/78014932353415"
+ }
+}

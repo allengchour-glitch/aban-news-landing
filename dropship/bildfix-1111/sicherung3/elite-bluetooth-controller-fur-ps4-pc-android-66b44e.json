@@ -1,0 +1,82 @@
+{
+ "zeit": "2026-11-11T20:03:50.218Z",
+ "plan": {
+  "handle": "elite-bluetooth-controller-fur-ps4-pc-android-66b44e",
+  "erwartet_erstes": "gid://shopify/MediaImage/70501694112129",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77481017835911",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194114_0e2de8a7-5400-4312-bdaf-fcdb80c7ae24.png",
+    "alt_text": "Elite Bluetooth Controller für PS4/PC/Android – Ansicht 6"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77481017868679",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194112_7e7c8ef8-28a8-4d2d-82e7-8a2692a65298.png",
+    "alt_text": "Elite Bluetooth Controller für PS4/PC/Android – Ansicht 7"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15495222722945",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70501694112129",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70501693981057",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70501694144897",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70501694177665",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70501694210433",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77481017835911",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77481017868679",
+    "alt": "Elite Bluetooth Controller für PS4/PC/Android",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56087254303105",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/77481017835911"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652514382215",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77481017868679"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77481017835911": "gid://shopify/MediaImage/78014935990663",
+  "gid://shopify/MediaImage/77481017868679": "gid://shopify/MediaImage/78014936252807"
+ }
+}

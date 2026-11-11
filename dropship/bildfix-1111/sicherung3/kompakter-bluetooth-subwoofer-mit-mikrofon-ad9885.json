@@ -1,0 +1,111 @@
+{
+ "zeit": "2026-11-11T20:02:17.699Z",
+ "plan": {
+  "handle": "kompakter-bluetooth-subwoofer-mit-mikrofon-ad9885",
+  "erwartet_erstes": "gid://shopify/MediaImage/70757041963393",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70757041963393",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194428_ed8e7942-8e38-47bb-a9ef-981b67d6ece8.png",
+    "alt_text": "Kompakter Bluetooth Subwoofer mit Mikrofon – Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77925249581447",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194427_52624532-e089-496c-8667-74935b2fba2f.png",
+    "alt_text": "Kompakter Bluetooth Subwoofer mit Mikrofon – Ansicht 7"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15523129852289",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70757041963393",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70757041897857",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70757041996161",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70757042028929",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70757042061697",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/77438285611399",
+    "alt": "Kompakter Bluetooth Subwoofer mit Mikrofon",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77925249581447",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77925249614215",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77925249646983",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77925249679751",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874409611655",
+    "titel": "4 Upgrade-Version",
+    "medien": [
+     "gid://shopify/MediaImage/77925249581447"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874409644423",
+    "titel": "2 Upgrade-Version",
+    "medien": [
+     "gid://shopify/MediaImage/77925249614215"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874409677191",
+    "titel": "3 Standard-Edition",
+    "medien": [
+     "gid://shopify/MediaImage/77925249646983"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874409709959",
+    "titel": "1 Standard-Edition",
+    "medien": [
+     "gid://shopify/MediaImage/77925249679751"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70757041963393": "gid://shopify/MediaImage/78014932058503",
+  "gid://shopify/MediaImage/77925249581447": "gid://shopify/MediaImage/78014932255111"
+ }
+}

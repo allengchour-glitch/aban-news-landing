@@ -1,0 +1,91 @@
+{
+ "zeit": "2026-11-11T20:05:47.793Z",
+ "plan": {
+  "handle": "3-in-1-magnetische-ladestation-621500",
+  "erwartet_erstes": "gid://shopify/MediaImage/69850936246657",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70553173688705",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193413_fb906ed5-df7a-45a5-a85c-417bef3690ec.png",
+    "alt_text": "3-in-1 Magnetische Ladestation – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15447560978817",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69850936246657",
+    "alt": "3-in-1 Magnetische Ladestation",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936279425",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936312193",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936344961",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936377729",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936410497",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936443265",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69850936476033",
+    "alt": "3-in-1 Magnetische Ladestation – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70553173688705",
+    "alt": "LuxeStyle 3-in-1 Magnetische Ladestation – Bild 9 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70553173721473",
+    "alt": "LuxeStyle 3-in-1 Magnetische Ladestation – Bild 10 – LuxeStyle Schweiz",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56063588598145",
+    "titel": "Grau-Einzeln",
+    "medien": [
+     "gid://shopify/MediaImage/70553173688705"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56063588630913",
+    "titel": "Silber-Einzeln",
+    "medien": [
+     "gid://shopify/MediaImage/70553173721473"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70553173688705": "gid://shopify/MediaImage/78014949851527"
+ }
+}

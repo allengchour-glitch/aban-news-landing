@@ -1,0 +1,59 @@
+{
+ "zeit": "2026-11-11T20:02:45.773Z",
+ "plan": {
+  "handle": "wlan-garagentor-steuerung-mit-app-161024",
+  "erwartet_erstes": "gid://shopify/MediaImage/69861881774465",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69861881774465",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png",
+    "alt_text": "WLAN Garagentor-Steuerung mit App – Ansicht 1"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69861881807233"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15448882938241",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69861881774465",
+    "alt": "WLAN Garagentor-Steuerung mit App – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861881708929",
+    "alt": "WLAN Garagentor-Steuerung mit App",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861881741697",
+    "alt": "WLAN Garagentor-Steuerung mit App – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861881807233",
+    "alt": "WLAN Garagentor-Steuerung mit App – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861881840001",
+    "alt": "WLAN Garagentor-Steuerung mit App – Ansicht 5",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55878125060481",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69861881774465": "gid://shopify/MediaImage/78014934286727"
+ }
+}
