@@ -11,7 +11,8 @@ import {
   blockerBaustein, blockerProduktPruefen, editorReleasePlanen, integritySha256, produktPruefen,
   releaseAusAllowlist, releasePruefen, sha256,
   VORHER_EDITOR,
-  CANARY_V64, ROLLOUT_V63, ROLLOUT_V64, APPLY_LEDGER_ZUSTAENDE, ROLLBACK_SCHREIBBAR, auswahlPlanen, canaryLedgerPruefen, editorAusRelease,
+  CANARY_V64, FREIGESCHALTET, SCOPES_V64, ROLLOUT_V63, ROLLOUT_V64, APPLY_LEDGER_ZUSTAENDE, ROLLBACK_SCHREIBBAR, auswahlPlanen, canaryLedgerPruefen, editorAusRelease,
+  freigeschaltet, freischaltungPlanen, sperreLiegtVor,
   editorBlockNormalisieren, editorReleaseFormPruefen, editorUrl, produktIdentitaetPruefen, rolloutKonfig, rollbackLedgerAuswerten,
   vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
@@ -58,11 +59,24 @@ const sourceProducts = [
 const sourceAssets = new Map(ALLOWLIST.flatMap((a) => [[`lspod-${a.numericId}.karte.json`, H], ...(PREVIEW_IDS.includes(a.numericId) ? [[`lspod-${a.numericId}.vorschau.json`, H]] : [])]));
 const sourceAllowlist = { schema: 1, editorSha256: H, products: sourceProducts, blocked: [{ shopifyProductId: BLOCKLIST[0].id, handle: BLOCKLIST[0].handle, reasons: ['NON_PRINTFUL_FULFILLMENT'] }] };
 
-test('Allowlist hat exakt 16 eindeutige Produkte und keine drei gesperrten Produkte', () => {
-  assert.equal(ALLOWLIST.length, 16); assert.equal(new Set(ALLOWLIST.map((x) => x.id)).size, 16);
-  assert.ok(ALLOWLIST.every((x) => !/buegeltransfer|dad-cap|magnet-zum/.test(x.handle)));
-  assert.equal(BLOCKLIST.length, 3); assert.equal(new Set(BLOCKLIST.map((x) => x.id)).size, 3);
+test('Allowlist hat exakt 17 eindeutige Produkte (seit 11.11.2026 mit dem Magneten) und keines der zwei gesperrten Produkte', () => {
+  assert.equal(ALLOWLIST.length, 17); assert.equal(new Set(ALLOWLIST.map((x) => x.id)).size, 17); assert.equal(new Set(ALLOWLIST.map((x) => x.handle)).size, 17);
+  assert.ok(ALLOWLIST.every((x) => !/buegeltransfer|dad-cap/.test(x.handle)));
+  assert.deepEqual(BLOCKLIST.map((x) => x.handle), ['buegeltransfer-selbst-gestalten', 'dad-cap-selbst-gestalten']);
+  assert.equal(new Set(BLOCKLIST.map((x) => x.id)).size, 2);
   assert.ok(BLOCKLIST.every((x) => !ALLOWLIST.some((a) => a.id === x.id)));
+  assert.equal(ALLOWLIST.length + BLOCKLIST.length, 19);
+  assert.deepEqual(ALLOWLIST.map((x) => x.handle), [...ALLOWLIST.map((x) => x.handle)].sort(), 'Allowlist nicht nach Handle sortiert');
+});
+test('Freigeschaltet ist genau der Magnet: Editorprodukt, kein Sperrprodukt mehr, alter Grundtext der Sperre bleibt festgehalten', () => {
+  assert.deepEqual(FREIGESCHALTET.map((x) => [x.id, x.numericId, x.handle, x.seit]), [['gid://shopify/Product/15427217195393', '15427217195393', 'magnet-zum-selbstgestalten', '2026-11-11']]);
+  assert.equal(FREIGESCHALTET[0].reason, 'Produktion und Lieferung dieser Ausführung in die Schweiz sind derzeit nicht bestätigt.');
+  assert.ok(Object.isFrozen(FREIGESCHALTET) && Object.isFrozen(FREIGESCHALTET[0]));
+  assert.ok(ALLOWLIST.some((a) => a.id === FREIGESCHALTET[0].id && a.handle === FREIGESCHALTET[0].handle));
+  assert.ok(!BLOCKLIST.some((b) => b.id === FREIGESCHALTET[0].id || b.handle === FREIGESCHALTET[0].handle));
+  assert.ok(!PREVIEW_IDS.includes(FREIGESCHALTET[0].numericId), 'der Magnet hat keine belegte Produktvorschau');
+  assert.equal(freigeschaltet(FREIGESCHALTET[0].id).handle, 'magnet-zum-selbstgestalten');
+  assert.equal(freigeschaltet(ALLOWLIST[0].id), null); assert.equal(freigeschaltet(BLOCKLIST[1].id), null); assert.equal(freigeschaltet(undefined), null);
 });
 test('Kanonische v6.3-Allowlist wird deterministisch in das Release übersetzt', () => assert.deepEqual(releaseAusAllowlist(sourceAllowlist, { editorSha256: H, assetSha256: sourceAssets }), release));
 test('Produktiver Editor und Allowlist sind auf denselben Release-Hash gebunden', () => {
@@ -77,7 +91,22 @@ test('Produktiver Editor und Allowlist sind auf denselben Release-Hash gebunden'
   assert.equal(integritySha256(produktiv.editorSha256), 'sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA=');
 });
 test('Release exakt vollständig', () => assert.equal(releasePruefen(release), true));
-test('Release lehnt fehlendes Produkt ab', () => wirft(() => releasePruefen({ ...release, products: products.slice(1) }), /erwartet 16/));
+test('Release lehnt fehlendes Produkt ab', () => wirft(() => releasePruefen({ ...release, products: products.slice(1) }), /erwartet 17 Produkte, gefunden 16; fehlt: allover-stoffbeutel/));
+test('Release: 9 Vorschauen und 8 Druckdatei-Ansichten; ein Artefakt von vor der Freischaltung (ohne den Magneten) ist nur mit altOhneFreigeschaltete lesbar', () => {
+  assert.equal(release.products.filter((p) => p.previewUrl).length, 9); assert.equal(release.products.filter((p) => !p.previewUrl).length, 8);
+  const ohneMagnet = { ...release, products: products.filter((p) => p.handle !== 'magnet-zum-selbstgestalten') };
+  assert.equal(ohneMagnet.products.length, 16);
+  wirft(() => releasePruefen(ohneMagnet), /erwartet 17 Produkte, gefunden 16; fehlt: magnet-zum-selbstgestalten/);
+  wirft(() => releasePruefen(ohneMagnet, { altOhneFreigeschaltete: false }), /erwartet 17 Produkte/);
+  wirft(() => releasePruefen(ohneMagnet, { altOhneFreigeschaltete: 1 }), /erwartet 17 Produkte/);   // nur das ausdrückliche true zählt
+  assert.equal(releasePruefen(ohneMagnet, { altOhneFreigeschaltete: true }), true);
+  assert.equal(releasePruefen(release, { altOhneFreigeschaltete: true }), true);
+  // die Nachsicht gilt nur für FREIGESCHALTET-Produkte: fehlt ein anderes (oder zusätzlich ein anderes), wirft die Prüfung weiter
+  wirft(() => releasePruefen({ ...release, products: products.filter((p) => p.handle !== 'mauspad-selbst-gestalten') }, { altOhneFreigeschaltete: true }), /erwartet 17 Produkte, gefunden 16; fehlt: mauspad/);
+  wirft(() => releasePruefen({ ...release, products: products.filter((p) => !/magnet-zum|mauspad/.test(p.handle)) }, { altOhneFreigeschaltete: true }), /erwartet 17 Produkte, gefunden 15/);
+  // eine Vorschau für den Magneten ist nicht belegt
+  wirft(() => releasePruefen({ ...release, products: products.map((p) => (p.handle === 'magnet-zum-selbstgestalten' ? { ...p, previewUrl: 'https://abannews.com/pod/v6/maps/lspod-15427217195393.vorschau.json', previewSha256: H } : p)) }), /keine Produktprojektion belegt/);
+});
 test('Release bindet die neun Vorschauen und Karten an die exakte Produkt-ID', () => {
   const i = products.findIndex((p) => p.previewUrl);
   wirft(() => releasePruefen({ ...release, products: products.map((p, n) => n === i ? { ...p, previewUrl: null, previewSha256: null } : p) }), /belegte Vorschau/);
@@ -387,9 +416,10 @@ test('editor_release_bauen (Kommandozeile): schreibt, --pruefen schlägt bei ge�
 
 // ---- Eingaben, Bestätigungen, Canary-Tabelle ------------------------------------------------------------
 const ALLE_ACKS = ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE',
-  'V64_CANARY_TASSE', 'V64_CANARY_JUTEBEUTEL', 'V64_FULL_16_EDITOR', 'V64_ROLLBACK_TASSE', 'V64_ROLLBACK_JUTEBEUTEL', 'V64_ROLLBACK_16_EDITOR',
-  '', 'v64_canary_tasse', 'V64_CANARY_TASSE ', ' V64_CANARY_TASSE', 'V64_FULL_16_EDITOR\n', 'V64_CANARY', 'V64_FULL_19_SAFE', 'V63_FULL_16_EDITOR'];
-const SOLL64 = { apply: { 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', full: 'V64_FULL_16_EDITOR' }, rollback: { 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', full: 'V64_ROLLBACK_16_EDITOR' } };
+  'V64_CANARY_TASSE', 'V64_CANARY_JUTEBEUTEL', 'V64_FREI_MAGNET', 'V64_FULL_17_EDITOR', 'V64_ROLLBACK_TASSE', 'V64_ROLLBACK_JUTEBEUTEL', 'V64_ROLLBACK_MAGNET', 'V64_ROLLBACK_17_EDITOR',
+  '', 'v64_canary_tasse', 'V64_CANARY_TASSE ', ' V64_CANARY_TASSE', 'V64_FULL_17_EDITOR\n', 'V64_CANARY', 'V64_FULL_19_SAFE', 'V63_FULL_17_EDITOR',
+  'V64_FULL_16_EDITOR', 'V64_ROLLBACK_16_EDITOR', 'V64_CANARY_MAGNET', 'V64_FREI_MAGNET ', 'v64_frei_magnet'];   // die alten 16er-Bestätigungen (bis 10.11.2026) gelten nicht mehr
+const SOLL64 = { apply: { 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', 'frei-magnet': 'V64_FREI_MAGNET', full: 'V64_FULL_17_EDITOR' }, rollback: { 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', 'frei-magnet': 'V64_ROLLBACK_MAGNET', full: 'V64_ROLLBACK_17_EDITOR' } };
 const SOLL63 = { apply: { canary: 'V63_CANARY_TASSE', full: 'V63_FULL_19_SAFE' }, rollback: { canary: 'V63_ROLLBACK_TASSE', full: 'V63_ROLLBACK_19_SAFE' } };
 test('6.4.0: jeder Schreiblauf nimmt genau die eine zugehörige V64-Bestätigung, keine V63-, keine fremde, keine fast richtige', () => {
   let geprueft = 0;
@@ -399,10 +429,11 @@ test('6.4.0: jeder Schreiblauf nimmt genau die eine zugehörige V64-Bestätigung
     else wirft(() => rolloutKonfig(eingabe), /braucht ACK=/);
     geprueft++;
   }
-  assert.equal(geprueft, 2 * 3 * ALLE_ACKS.length);
+  assert.equal(geprueft, 2 * 4 * ALLE_ACKS.length);
+  assert.equal(new Set([...Object.values(SOLL64.apply), ...Object.values(SOLL64.rollback)]).size, 8, 'jede Stufe hat ihre eigene Bestätigung');
 });
 test('6.4.0: die vier alten V63-Zeichenketten bestätigen nie einen 6.4.0-Schreiblauf; V64-Zeichenketten nie einen 6.3.1-Lauf', () => {
-  for (const [mode, scope] of [['apply', 'canary-tasse'], ['apply', 'canary-jutebeutel'], ['apply', 'full'], ['rollback', 'canary-tasse'], ['rollback', 'canary-jutebeutel'], ['rollback', 'full']]) {
+  for (const [mode, scope] of [['apply', 'canary-tasse'], ['apply', 'canary-jutebeutel'], ['apply', 'frei-magnet'], ['apply', 'full'], ['rollback', 'canary-tasse'], ['rollback', 'canary-jutebeutel'], ['rollback', 'frei-magnet'], ['rollback', 'full']]) {
     for (const ack of ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE']) wirft(() => rolloutKonfig({ mode, scope, ack, live: true, editorVersion: '6.4.0' }), /braucht ACK=V64_/);
   }
   for (const mode of ['apply', 'rollback']) for (const scope of ['canary', 'full']) {
@@ -410,14 +441,16 @@ test('6.4.0: die vier alten V63-Zeichenketten bestätigen nie einen 6.4.0-Schrei
     assert.equal(rolloutKonfig({ mode, scope, ack: SOLL63[mode][scope], live: true }).ack, SOLL63[mode][scope], 'alter Pfad: richtige V63-Bestätigung abgelehnt');
   }
 });
-test('Eingaben: Plan braucht weder LIVE noch Bestätigung, Schreiben braucht LIVE=1; 6.4.0 kennt nur die drei festen Scopes', () => {
-  for (const scope of ['canary-tasse', 'canary-jutebeutel', 'full']) {
+test('Eingaben: Plan braucht weder LIVE noch Bestätigung, Schreiben braucht LIVE=1; 6.4.0 kennt nur die vier festen Scopes', () => {
+  assert.deepEqual([...SCOPES_V64], ['canary-tasse', 'canary-jutebeutel', 'frei-magnet', 'full']); assert.ok(Object.isFrozen(SCOPES_V64));
+  for (const scope of ['canary-tasse', 'canary-jutebeutel', 'frei-magnet', 'full']) {
     const k = rolloutKonfig({ mode: 'plan', scope, ack: '', live: false, editorVersion: '6.4.0' });
     assert.equal(k.mode, 'plan'); assert.equal(k.ack, ''); assert.equal(k.editorUrlPfad, '/pod/v6/lspod-designer-v6-6.4.0.js');
     wirft(() => rolloutKonfig({ mode: 'apply', scope, ack: SOLL64.apply[scope], live: false, editorVersion: '6.4.0' }), /LIVE=1 fehlt/);
     wirft(() => rolloutKonfig({ mode: 'rollback', scope, ack: SOLL64.rollback[scope], live: false, editorVersion: '6.4.0' }), /LIVE=1 fehlt/);
   }
-  for (const scope of ['canary', 'CANARY-HOODIE', 'canary-tasse;x', 'alle', '', undefined, 'canary-tasse ', 'full,canary-tasse']) wirft(() => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' }), /SCOPE muss canary-tasse, canary-jutebeutel oder full sein/);
+  for (const scope of ['canary', 'CANARY-HOODIE', 'canary-tasse;x', 'alle', '', undefined, 'canary-tasse ', 'full,canary-tasse', 'magnet', 'frei', 'frei-magnet ', 'canary-magnet', 'frei-dad-cap']) wirft(() => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' }), /SCOPE muss canary-tasse, canary-jutebeutel, frei-magnet oder full sein/);
+  wirft(() => rolloutKonfig({ mode: 'plan', scope: 'frei-magnet' }), /SCOPE muss canary oder full sein/);   // der alte Pfad kennt die Einzelstufe nicht
   wirft(() => rolloutKonfig({ mode: 'plan', scope: 'canary-tasse', editorVersion: '6.4.1' }), /EDITOR_VERSION muss/);
   wirft(() => rolloutKonfig({ mode: 'plan', scope: 'canary-tasse', editorVersion: '6.3.0' }), /EDITOR_VERSION muss/);
   wirft(() => rolloutKonfig({ mode: 'loeschen', scope: 'full', editorVersion: '6.4.0' }), /MODE muss/);
@@ -426,8 +459,11 @@ test('Eingaben: Plan braucht weder LIVE noch Bestätigung, Schreiben braucht LIV
   const alt = rolloutKonfig({});
   assert.equal(alt.editorVersion, ROLLOUT_V63); assert.equal(alt.scope, 'canary'); assert.equal(alt.mode, 'plan'); assert.equal(alt.editorUrlPfad, '/pod/v6/lspod-designer-v6-6.3.1.js');
 });
-test('Canary-Tabelle ist fest einprogrammiert: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel, full hat keinen Canary; beide stehen in der Allowlist', () => {
-  assert.deepEqual(Object.keys(CANARY_V64), ['canary-tasse', 'canary-jutebeutel']);
+test('Einzelstufen sind fest einprogrammiert: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel, Freischaltung Magnet; full hat kein Einzelprodukt; alle stehen in der Allowlist', () => {
+  assert.deepEqual(Object.keys(CANARY_V64), ['canary-tasse', 'canary-jutebeutel', 'frei-magnet']);
+  assert.equal(CANARY_V64['frei-magnet'].id, 'gid://shopify/Product/15427217195393');
+  assert.equal(CANARY_V64['frei-magnet'].handle, 'magnet-zum-selbstgestalten');
+  assert.equal(CANARY_V64['frei-magnet'].id, FREIGESCHALTET[0].id);
   assert.equal(CANARY_V64['canary-tasse'].id, 'gid://shopify/Product/15422823465345');
   assert.equal(CANARY_V64['canary-tasse'].handle, 'keramik-tasse-selbst-gestalten');
   assert.equal(CANARY_V64['canary-jutebeutel'].id, 'gid://shopify/Product/15422819991937');
@@ -437,6 +473,7 @@ test('Canary-Tabelle ist fest einprogrammiert: Stufe A Keramik-Tasse, Stufe B Bi
   const k = (scope) => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' });
   assert.equal(k('canary-tasse').canary.handle, 'keramik-tasse-selbst-gestalten');
   assert.equal(k('canary-jutebeutel').canary.handle, 'bio-jutebeutel-selbst-gestalten');
+  assert.equal(k('frei-magnet').canary.handle, 'magnet-zum-selbstgestalten');
   assert.equal(k('full').canary, null);
   assert.equal(rolloutKonfig({ mode: 'plan', scope: 'canary' }).canary.handle, 'keramik-tasse-selbst-gestalten');   // alter Pfad: wie bisher die Tasse
   // keine Umgebungsvariable und kein Eingabefeld wählt das Canary-Produkt
@@ -449,10 +486,12 @@ test('Auswahl: Canary genau ein festes Produkt; Full (6.4.0) prüft die Sperrpro
   const k = (scope, editorVersion = '6.4.0') => rolloutKonfig({ mode: 'plan', scope, editorVersion });
   assert.deepEqual(auswahlPlanen(plan, k('canary-tasse')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
   assert.deepEqual(auswahlPlanen(plan, k('canary-jutebeutel')).map((x) => x.handle), ['bio-jutebeutel-selbst-gestalten']);
+  assert.deepEqual(auswahlPlanen(plan, k('frei-magnet')).map((x) => [x.kind, x.handle]), [['editor', 'magnet-zum-selbstgestalten']]);
   const voll = auswahlPlanen(plan, k('full'));
   assert.equal(voll.length, 19);
-  assert.deepEqual(voll.slice(0, 3).map((x) => x.kind), ['blocked', 'blocked', 'blocked']);
-  assert.deepEqual(voll.slice(3).map((x) => x.handle), ALLOWLIST.map((a) => a.handle), 'Reihenfolge der Editorprodukte geändert');
+  assert.deepEqual(voll.slice(0, 2).map((x) => x.kind), ['blocked', 'blocked']);
+  assert.deepEqual(voll.slice(2).map((x) => x.handle), ALLOWLIST.map((a) => a.handle), 'Reihenfolge der Editorprodukte geändert');
+  assert.equal(voll.filter((x) => x.kind === 'editor').length, 17); assert.ok(voll.some((x) => x.kind === 'editor' && x.handle === 'magnet-zum-selbstgestalten'));
   assert.deepEqual(auswahlPlanen(plan, k('full', '6.3.1')), plan, 'alter Pfad: Full unverändert in Planreihenfolge');
   assert.deepEqual(auswahlPlanen(plan, k('canary', '6.3.1')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
   wirft(() => auswahlPlanen(plan.filter((x) => x.handle !== 'bio-jutebeutel-selbst-gestalten'), k('canary-jutebeutel')), /Canary nicht genau einmal/);
@@ -462,11 +501,17 @@ test('Auswahl: Canary genau ein festes Produkt; Full (6.4.0) prüft die Sperrpro
   const kr = (scope, editorVersion = '6.4.0') => rolloutKonfig({ mode: 'rollback', scope, ack: SOLL64.rollback[scope] || SOLL63.rollback[scope], live: true, editorVersion });
   assert.deepEqual(auswahlPlanen(plan, kr('full')), plan, 'Rollback full: Planreihenfolge ohne Vorrang für Sperren');
   assert.deepEqual(auswahlPlanen(plan, kr('canary-tasse')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
+  assert.deepEqual(auswahlPlanen(plan, kr('frei-magnet')).map((x) => x.handle), ['magnet-zum-selbstgestalten']);
+  wirft(() => auswahlPlanen(plan.filter((x) => x.handle !== 'magnet-zum-selbstgestalten'), k('frei-magnet')), /Canary nicht genau einmal/);
   assert.equal(auswahlPlanen(plan, k('full'))[0].kind, 'blocked', 'Plan/Apply full: Sperren weiter zuerst');
 });
 test('Canary-Ledger: nur exakt das Canary-Produkt (Rollback-Schutz), bei Full keine Einschränkung', () => {
   const k = (scope) => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' });
-  const tasse = CANARY_V64['canary-tasse'].id; const beutel = CANARY_V64['canary-jutebeutel'].id;
+  const tasse = CANARY_V64['canary-tasse'].id; const beutel = CANARY_V64['canary-jutebeutel'].id; const magnet = CANARY_V64['frei-magnet'].id;
+  assert.equal(canaryLedgerPruefen(k('frei-magnet'), [magnet]), true);
+  wirft(() => canaryLedgerPruefen(k('frei-magnet'), [tasse]), /Canary-Ledger enthält nicht exakt das Canary-Produkt magnet-zum-selbstgestalten/);
+  wirft(() => canaryLedgerPruefen(k('frei-magnet'), [magnet, tasse]), /Canary-Ledger/);
+  wirft(() => canaryLedgerPruefen(k('canary-tasse'), [magnet]), /Canary-Ledger/);
   assert.equal(canaryLedgerPruefen(k('canary-tasse'), [tasse]), true);
   assert.equal(canaryLedgerPruefen(k('canary-jutebeutel'), [beutel]), true);
   wirft(() => canaryLedgerPruefen(k('canary-tasse'), [beutel]), /Canary-Ledger/);
@@ -507,11 +552,16 @@ test('direct_rollout.mjs (Kindprozess): falsche Bestätigungen, Scopes und fehle
   const faelle = [
     [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'canary-tasse', ACK: 'V63_CANARY_TASSE' }, /Apply \(canary-tasse\) braucht ACK=V64_CANARY_TASSE/],
     [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'canary-jutebeutel', ACK: 'V64_CANARY_TASSE' }, /braucht ACK=V64_CANARY_JUTEBEUTEL/],
-    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'full', ACK: 'V63_FULL_19_SAFE' }, /braucht ACK=V64_FULL_16_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'full', ACK: 'V63_FULL_19_SAFE' }, /braucht ACK=V64_FULL_17_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'full', ACK: 'V64_FULL_16_EDITOR' }, /braucht ACK=V64_FULL_17_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'frei-magnet', ACK: 'V64_FULL_17_EDITOR' }, /Apply \(frei-magnet\) braucht ACK=V64_FREI_MAGNET/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'frei-magnet', ACK: 'V64_FREI_MAGNET' }, /Rollback \(frei-magnet\) braucht ACK=V64_ROLLBACK_MAGNET/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', SCOPE: 'frei-magnet', ACK: 'V64_FREI_MAGNET' }, /LIVE=1 fehlt/],
+    [{ MODE: 'apply', LIVE: '1', SCOPE: 'frei-magnet', ACK: 'V64_FREI_MAGNET' }, /SCOPE muss canary oder full sein/],
     [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'canary-tasse', ACK: 'V63_ROLLBACK_TASSE' }, /braucht ACK=V64_ROLLBACK_TASSE/],
-    [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'full', ACK: 'V64_FULL_16_EDITOR' }, /braucht ACK=V64_ROLLBACK_16_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'full', ACK: 'V64_FULL_17_EDITOR' }, /braucht ACK=V64_ROLLBACK_17_EDITOR/],
     [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', SCOPE: 'canary-tasse', ACK: 'V64_CANARY_TASSE' }, /LIVE=1 fehlt/],
-    [{ EDITOR_VERSION: '6.4.0', MODE: 'plan', SCOPE: 'canary' }, /SCOPE muss canary-tasse, canary-jutebeutel oder full sein/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'plan', SCOPE: 'canary' }, /SCOPE muss canary-tasse, canary-jutebeutel, frei-magnet oder full sein/],
     [{ EDITOR_VERSION: '6.4.0', MODE: 'plan' }, /SCOPE muss canary-tasse/],
     [{ EDITOR_VERSION: '6.4.1', MODE: 'plan', SCOPE: 'full' }, /EDITOR_VERSION muss/],
     [{ MODE: 'apply', LIVE: '1', SCOPE: 'canary', ACK: 'V64_CANARY_TASSE' }, /Canary braucht ACK=V63_CANARY_TASSE/],
@@ -590,7 +640,33 @@ test('Rollback (Kindprozess): das Artefakt wird vor dem Zugang gegen Editor-Rele
     const d = (n) => join(t, n);
     artefaktBauen(d('tasse')); gut('gültiges Tassen-Artefakt', d('tasse'), 'canary-tasse', 'V64_ROLLBACK_TASSE');
     artefaktBauen(d('beutel'), { scope: 'canary-jutebeutel' }); gut('gültiges Jutebeutel-Artefakt', d('beutel'), 'canary-jutebeutel', 'V64_ROLLBACK_JUTEBEUTEL');
-    artefaktBauen(d('full'), { scope: 'full' }); gut('gültiges Full-Artefakt', d('full'), 'full', 'V64_ROLLBACK_16_EDITOR');
+    artefaktBauen(d('full'), { scope: 'full' }); gut('gültiges Full-Artefakt', d('full'), 'full', 'V64_ROLLBACK_17_EDITOR');
+    schlecht('Full-Artefakt mit der alten 16er-Bestätigung', d('full'), 'full', 'V64_ROLLBACK_16_EDITOR', /braucht ACK=V64_ROLLBACK_17_EDITOR/);
+    artefaktBauen(d('magnet'), { scope: 'frei-magnet' }); gut('gültiges Magnet-Artefakt', d('magnet'), 'frei-magnet', 'V64_ROLLBACK_MAGNET');
+    schlecht('Magnet-Artefakt als Tassen-Rollback', d('magnet'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    schlecht('Tassen-Artefakt als Magnet-Rollback', d('tasse'), 'frei-magnet', 'V64_ROLLBACK_MAGNET', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('magnetledger'), { scope: 'frei-magnet', ledgerProdukte: [CANARY_V64['canary-tasse'].id] });
+    schlecht('Magnet-Artefakt mit fremdem Ledger-Produkt', d('magnetledger'), 'frei-magnet', 'V64_ROLLBACK_MAGNET', /Canary-Ledger enthält nicht exakt das Canary-Produkt magnet-zum-selbstgestalten/);
+    // Artefakte von VOR der Freischaltung (bis 10.11.2026): der Magnet steht als Sperre im Plan und fehlt im Release. Nur der Rollback liest sie.
+    const MAGNET_ID = FREIGESCHALTET[0].id;
+    const altPlan = (m) => { m.products = m.products.map((x) => (x.id === MAGNET_ID ? { ...x, kind: 'blocked', nachherSha256: x.vorherSha256, geaendert: false } : x)); return m; };
+    const relOhneMagnet = { ...releaseReal, products: releaseReal.products.filter((p) => p.id !== MAGNET_ID) };
+    const ohneMagnetIds = ALLOWLIST.filter((a) => a.id !== MAGNET_ID).map((a) => a.id);
+    const altSicherung = (dir) => writeFileSync(join(dir, '15427217195393.after.html'), readFileSync(join(dir, '15427217195393.before.html')));
+    artefaktBauen(d('altfull'), { scope: 'full', release: relOhneMagnet, metaMut: altPlan, ledgerProdukte: ohneMagnetIds }); altSicherung(d('altfull'));
+    gut('Full-Artefakt von vor der Freischaltung (Magnet als Sperre, Release mit 16 Produkten)', d('altfull'), 'full', 'V64_ROLLBACK_17_EDITOR');
+    artefaktBauen(d('alttasse'), { release: relOhneMagnet, metaMut: altPlan }); altSicherung(d('alttasse'));
+    gut('Tassen-Artefakt von vor der Freischaltung', d('alttasse'), 'canary-tasse', 'V64_ROLLBACK_TASSE');
+    artefaktBauen(d('altnurplan'), { scope: 'full', metaMut: altPlan, ledgerProdukte: ohneMagnetIds }); altSicherung(d('altnurplan'));
+    gut('alter Plan mit neuem Release (Magnet schon im Release) bleibt lesbar', d('altnurplan'), 'full', 'V64_ROLLBACK_17_EDITOR');
+    artefaktBauen(d('altnurrelease'), { scope: 'full', release: relOhneMagnet, ledgerProdukte: ohneMagnetIds });
+    gut('neuer Plan mit altem Release (ohne den Magneten) bleibt lesbar', d('altnurrelease'), 'full', 'V64_ROLLBACK_17_EDITOR');
+    artefaktBauen(d('altfremd'), { scope: 'full', release: relOhneMagnet, ledgerProdukte: ohneMagnetIds, metaMut: (m) => { altPlan(m); m.products = m.products.map((x) => (x.handle === 'mauspad-selbst-gestalten' ? { ...x, kind: 'blocked' } : x)); return m; } }); altSicherung(d('altfremd'));
+    schlecht('ein anderes Editorprodukt als Sperre im Plan', d('altfremd'), 'full', 'V64_ROLLBACK_17_EDITOR', /Planprodukt unzulässig\/doppelt/);
+    artefaktBauen(d('altsperrealseditor'), { scope: 'full', metaMut: (m) => { m.products = m.products.map((x) => (x.handle === 'dad-cap-selbst-gestalten' ? { ...x, kind: 'editor' } : x)); return m; } });
+    schlecht('ein Sperrprodukt als Editorprodukt im Plan', d('altsperrealseditor'), 'full', 'V64_ROLLBACK_17_EDITOR', /Planprodukt unzulässig\/doppelt/);
+    artefaktBauen(d('altrelzwei'), { scope: 'full', release: { ...relOhneMagnet, products: relOhneMagnet.products.filter((p) => p.handle !== 'mauspad-selbst-gestalten') }, metaMut: altPlan, ledgerProdukte: ohneMagnetIds }); altSicherung(d('altrelzwei'));
+    schlecht('altes Release, dem ein weiteres Produkt fehlt', d('altrelzwei'), 'full', 'V64_ROLLBACK_17_EDITOR', /Release-Manifest: erwartet 17 Produkte, gefunden 15/);
     schlecht('Artefakt der anderen Stufe', d('beutel'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
     schlecht('Full-Artefakt als Canary', d('full'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
     artefaktBauen(d('ohneversion'), { metaMut: (m) => { delete m.editorVersion; return m; } });
@@ -612,7 +688,7 @@ test('Rollback (Kindprozess): das Artefakt wird vor dem Zugang gegen Editor-Rele
     artefaktBauen(d('wirkungslos'), { ledgerMut: (l) => { l.products.forEach((x) => { x.state = 'unchanged'; }); return l; } });
     schlecht('Artefakt eines wirkungslosen Apply (Ledger nur «unchanged»)', d('wirkungslos'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /nichts zurückzunehmen/);
     artefaktBauen(d('wirkungslosfull'), { scope: 'full', ledgerMut: (l) => { l.products.forEach((x, i) => { x.state = i % 2 ? 'rejected' : 'unchanged'; }); return l; } });
-    schlecht('Full-Artefakt ohne einen einzigen Write', d('wirkungslosfull'), 'full', 'V64_ROLLBACK_16_EDITOR', /nichts zurückzunehmen/);
+    schlecht('Full-Artefakt ohne einen einzigen Write', d('wirkungslosfull'), 'full', 'V64_ROLLBACK_17_EDITOR', /nichts zurückzunehmen/);
     artefaktBauen(d('writing'), { ledgerMut: (l) => { l.products[0].state = 'writing'; return l; } });
     gut('Absichtszeile «writing» (Lauf abgebrochen) bleibt rücknehmbar', d('writing'), 'canary-tasse', 'V64_ROLLBACK_TASSE');
     artefaktBauen(d('zustandfremd'), { ledgerMut: (l) => { l.products[0].state = 'halb-fertig'; return l; } });
@@ -672,8 +748,9 @@ const OHNE_VORSCHAU = FX.produkte.find((p) => p.handle === 'allover-stoffbeutel-
 const SKRIPT630 = BASIS.block.match(/<script [^>]*><\/script>/)[0];
 const SKRIPT631 = FX.tasse631.block.match(/<script [^>]*><\/script>/)[0];
 
-test('Fixtures: 16 Editor-Blöcke in Allowlist-Reihenfolge plus der 6.3.1-Block der Tasse, nur Editor-Blöcke (keine Kundentexte)', () => {
-  assert.deepEqual(FX.produkte.map((p) => [p.id, p.handle]), ALLOWLIST.map((a) => [a.id, a.handle]));
+test('Fixtures: 16 Editor-Blöcke in Allowlist-Reihenfolge (ohne den Magneten, der am 08.11. noch die Sperre trug) plus der 6.3.1-Block der Tasse, nur Editor-Blöcke (keine Kundentexte)', () => {
+  assert.deepEqual(FX.produkte.map((p) => [p.id, p.handle]), ALLOWLIST.filter((a) => !freigeschaltet(a.id)).map((a) => [a.id, a.handle]));
+  assert.equal(FX.produkte.length, 16);
   for (const f of [...FX.produkte, FX.tasse631]) {
     assert.ok(f.block.startsWith(`<!-- lx-v63-editor:start product=${f.id} card=`), f.handle);
     assert.match(f.block, /<!-- lx-v63-editor:end -->\s*$/);
@@ -840,26 +917,28 @@ const W64 = WURZEL + '.github/workflows/pod-v64-description-rollout.yml';
 const W63 = WURZEL + '.github/workflows/pod-v63-description-rollout.yml';
 if (!existsSync(W64)) console.log('ÜBERSPRUNGEN: Workflow-Test 6.4.0 (pod-v64-description-rollout.yml fehlt im Checkout; der CI-Job «selbst-gestalten» holt nur ausgewählte Pfade)');
 else {
-  test('Workflow 6.4.0: nur manuell, Default-Branch, exakter Commit, feste EDITOR_VERSION, sechs V64-Bestätigungen, drei feste Scopes, eigene Artefakte', () => {
+  test('Workflow 6.4.0: nur manuell, Default-Branch, exakter Commit, feste EDITOR_VERSION, acht V64-Bestätigungen, vier feste Scopes, eigene Artefakte', () => {
     const w = readFileSync(W64, 'utf8');
     assert.match(w, /^on:\n  workflow_dispatch:/m);
     assert.doesNotMatch(w, /^\s*(schedule|push|pull_request|pull_request_target|workflow_run|workflow_call):/m);
     assert.match(w, /test "\$REF_NAME" = "\$DEFAULT_BRANCH"/);
     assert.match(w, /ref: \$\{\{ github\.sha \}\}/); assert.doesNotMatch(w, /ref: \$\{\{ github\.event\.repository\.default_branch \}\}/);
-    assert.match(w, /options: \[plan, apply, rollback\]/); assert.match(w, /options: \[canary-tasse, canary-jutebeutel, full\]/);
+    assert.match(w, /options: \[plan, apply, rollback\]/); assert.match(w, /options: \[canary-tasse, canary-jutebeutel, frei-magnet, full\]/);
     assert.match(w, /EDITOR_VERSION: '6\.4\.0'/); assert.doesNotMatch(w, /EDITOR_VERSION: \$\{\{/);
     assert.doesNotMatch(w, /V63_/, 'V63-Bestätigung im 6.4.0-Workflow');
     const faelle = [
-      ['apply:canary-tasse', 'V64_CANARY_TASSE', false], ['apply:canary-jutebeutel', 'V64_CANARY_JUTEBEUTEL', false], ['apply:full', 'V64_FULL_16_EDITOR', false],
-      ['rollback:canary-tasse', 'V64_ROLLBACK_TASSE', true], ['rollback:canary-jutebeutel', 'V64_ROLLBACK_JUTEBEUTEL', true], ['rollback:full', 'V64_ROLLBACK_16_EDITOR', true],
+      ['apply:canary-tasse', 'V64_CANARY_TASSE', false], ['apply:canary-jutebeutel', 'V64_CANARY_JUTEBEUTEL', false], ['apply:frei-magnet', 'V64_FREI_MAGNET', false], ['apply:full', 'V64_FULL_17_EDITOR', false],
+      ['rollback:canary-tasse', 'V64_ROLLBACK_TASSE', true], ['rollback:canary-jutebeutel', 'V64_ROLLBACK_JUTEBEUTEL', true], ['rollback:frei-magnet', 'V64_ROLLBACK_MAGNET', true], ['rollback:full', 'V64_ROLLBACK_17_EDITOR', true],
     ];
+    assert.deepEqual(faelle.map(([kombi, ack]) => [kombi.split(':')[1], ack]).sort(), [...Object.entries(SOLL64.apply), ...Object.entries(SOLL64.rollback)].sort(), 'Workflow und Bibliothek nennen nicht dieselben Bestätigungen');
+    assert.doesNotMatch(w, /16_EDITOR/, 'alte 16er-Bestätigung im Workflow');
     for (const [kombi, ack, mitRun] of faelle) {
       const zeile = w.split('\n').find((l) => l.trim().startsWith(`${kombi})`));
       assert.ok(zeile, `${kombi}: case-Zeile fehlt`);
       assert.ok(zeile.includes(`test "$CONFIRMATION" = ${ack};`), `${kombi}: falsche Bestätigung: ${zeile}`);
       assert.equal(zeile.includes('SOURCE_RUN_ID" =~'), mitRun, `${kombi}: Run-ID-Regel`);
     }
-    assert.match(w, /plan:canary-tasse\|plan:canary-jutebeutel\|plan:full\) test -z "\$CONFIRMATION"; test -z "\$SOURCE_RUN_ID"/);
+    assert.match(w, /plan:canary-tasse\|plan:canary-jutebeutel\|plan:frei-magnet\|plan:full\) test -z "\$CONFIRMATION"; test -z "\$SOURCE_RUN_ID"/);
     assert.match(w, /\*\) echo "Unzulässige Eingabekombination" >&2; exit 2 ;;/);
     assert.match(w, /SHOPIFY_CLIENT_ID: \$\{\{ secrets\.SHOPIFY_CLIENT_ID \}\}/); assert.match(w, /SHOPIFY_CLIENT_SECRET: \$\{\{ secrets\.SHOPIFY_CLIENT_SECRET \}\}/);
     assert.match(w, /actions\/upload-artifact@v4/); assert.match(w, /actions\/download-artifact@v4/);
@@ -875,7 +954,7 @@ else {
     assert.match(w, /direct_rollout_test\.mjs/); assert.match(w, /editor_release_bauen\.mjs --pruefen/);
     assert.match(w, /timeout-minutes: 30/); assert.match(w, /permissions:\n  contents: read\n  actions: read/);
   });
-  test('Workflow 6.4.0: die Eingabeprüfung läuft in bash und lässt genau die neun gültigen Kombinationen durch (Plan leer, Apply/Rollback nur mit der eigenen Bestätigung, Rollback mit Run-ID)', () => {
+  test('Workflow 6.4.0: die Eingabeprüfung läuft in bash und lässt genau die zwölf gültigen Kombinationen durch (Plan leer, Apply/Rollback nur mit der eigenen Bestätigung, Rollback mit Run-ID)', () => {
     if (spawnSync('bash', ['-c', 'true']).status !== 0) { console.log('ÜBERSPRUNGEN: bash fehlt, Eingabeprüfung des Workflows nicht ausgeführt'); return; }
     const zeilen = readFileSync(W64, 'utf8').split('\n');
     const stepIdx = zeilen.findIndex((l) => l.includes('name: Eingaben und Default-Branch prüfen'));
@@ -886,17 +965,18 @@ else {
     const skript = block.join('\n');
     assert.match(skript, /case "\$OPERATION:\$SCOPE" in/);
     const lauf1 = (env) => spawnSync('bash', ['-c', skript], { env: { PATH: process.env.PATH || '/usr/bin:/bin', REF_NAME: 'main', DEFAULT_BRANCH: 'main', ...env }, encoding: 'utf8' });
-    const acks = [...Object.values(SOLL64.apply), ...Object.values(SOLL64.rollback), 'V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE', ''];
+    const acks = [...Object.values(SOLL64.apply), ...Object.values(SOLL64.rollback), 'V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE', 'V64_FULL_16_EDITOR', 'V64_ROLLBACK_16_EDITOR', ''];
     let gueltig = 0; let geprueft = 0;
-    for (const op of ['plan', 'apply', 'rollback']) for (const scope of ['canary-tasse', 'canary-jutebeutel', 'full', 'canary']) for (const ack of acks) for (const run of ['', '123']) {
+    for (const op of ['plan', 'apply', 'rollback']) for (const scope of ['canary-tasse', 'canary-jutebeutel', 'frei-magnet', 'full', 'canary']) for (const ack of acks) for (const run of ['', '123']) {
       const r = lauf1({ OPERATION: op, SCOPE: scope, CONFIRMATION: ack, SOURCE_RUN_ID: run });
       const soll = op === 'plan' ? scope !== 'canary' && ack === '' && run === ''
         : (scope !== 'canary' && ack === SOLL64[op][scope] && (op === 'apply' ? run === '' : run === '123'));
       assert.equal(r.status === 0, soll, `${op}/${scope}/${JSON.stringify(ack)}/${JSON.stringify(run)}: Exit ${r.status}, erwartet ${soll ? 0 : 'ungleich 0'}`);
       geprueft++; if (soll) gueltig++;
     }
-    assert.equal(gueltig, 9); assert.equal(geprueft, 3 * 4 * acks.length * 2);
-    assert.equal(lauf1({ OPERATION: 'rollback', SCOPE: 'full', CONFIRMATION: 'V64_ROLLBACK_16_EDITOR', SOURCE_RUN_ID: '12a' }).status === 0, false, 'nicht numerische Run-ID wurde akzeptiert');
+    assert.equal(gueltig, 12); assert.equal(geprueft, 3 * 5 * acks.length * 2);
+    assert.equal(lauf1({ OPERATION: 'rollback', SCOPE: 'full', CONFIRMATION: 'V64_ROLLBACK_17_EDITOR', SOURCE_RUN_ID: '12a' }).status === 0, false, 'nicht numerische Run-ID wurde akzeptiert');
+    assert.equal(lauf1({ OPERATION: 'rollback', SCOPE: 'frei-magnet', CONFIRMATION: 'V64_ROLLBACK_MAGNET', SOURCE_RUN_ID: '' }).status === 0, false, 'Magnet-Rollback ohne Run-ID wurde akzeptiert');
     assert.equal(lauf1({ OPERATION: 'plan', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '', REF_NAME: 'feature' }).status, 2, 'Nicht-Default-Branch wurde nicht abgewiesen');
     assert.equal(lauf1({ OPERATION: 'loeschen', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '' }).status, 2);
   });
@@ -923,10 +1003,146 @@ else {
     assert.doesNotMatch(w63, /V64_|EDITOR_VERSION|canary-jutebeutel/, 'der alte Workflow wurde angefasst');
   });
 }
-test('README dokumentiert den 6.4.0-Ablauf, alle sechs Bestätigungen, die Gates und den Rückweg', () => {
+test('README dokumentiert den 6.4.0-Ablauf, alle acht Bestätigungen, die Gates, den Rückweg und die Freischaltung des Magneten', () => {
   const r = readFileSync(HIER + 'README.md', 'utf8');
   for (const ack of Object.values(SOLL64.apply).concat(Object.values(SOLL64.rollback))) assert.ok(r.includes(ack), `README nennt ${ack} nicht`);
-  for (const wort of ['editor-release.json', 'editor_release_bauen.mjs', 'canary-tasse', 'canary-jutebeutel', 'Rollback', 'pod-v64-description-rollout.yml', 'Handrückweg', 'skipped-not-written', 'nichts zurückzunehmen', 'failed-changed', 'writing', 'direct_rollout_attrappe_test.mjs']) assert.ok(r.includes(wort), `README nennt ${wort} nicht`);
+  for (const wort of ['editor-release.json', 'editor_release_bauen.mjs', 'canary-tasse', 'canary-jutebeutel', 'Rollback', 'pod-v64-description-rollout.yml', 'Handrückweg', 'skipped-not-written', 'nichts zurückzunehmen', 'failed-changed', 'writing', 'direct_rollout_attrappe_test.mjs',
+    'Magnet freigeschaltet (11.11.2026)', 'frei-magnet', 'NUR=magnet-zum-selbstgestalten', 'sperr_verfuegbar.mjs', 'lieferbarkeit-ch-1111.json', 'lspod-15427217195393.karte.json']) assert.ok(r.includes(wort), `README nennt ${wort} nicht`);
+  // erlaubt ist die alte 16er-Bestätigung nur mit dem Vermerk «(bis 10.11.2026)» direkt dahinter (auch nach dem schliessenden Backtick)
+  assert.doesNotMatch(r, /V64_(FULL|ROLLBACK)_16_EDITOR(?!`? \(bis 10\.11\.2026\))/, 'README nennt die alte 16er-Bestätigung noch als gültig');
+  assert.equal((r.match(/V64_(FULL|ROLLBACK)_16_EDITOR/g) || []).length, 2, 'README: die alte 16er-Bestätigung genau zweimal, nur im Vermerk «gelten nicht mehr»');
+});
+
+// ---- Freischaltung des Magneten (11.11.2026) ------------------------------------------------------------
+// Der Magnet trug bis zur Freischaltung den Sperrbaustein. Genau ein Übergang ist zulässig: unveränderte Sperre -> Editor-Baustein.
+const FXM = JSON.parse(readFileSync(HIER + 'fixtures/live-sperrblock-magnet-1111.json', 'utf8'));
+const MAGNET = FREIGESCHALTET[0];
+const magnetLive = (kaufbar = true) => ({ id: MAGNET.id, handle: MAGNET.handle, title: 'Magnet zum Selbstgestalten', status: 'ACTIVE', onlineStoreUrl: `https://luxestyle.ch/products/${MAGNET.handle}`, variants: { pageInfo: { hasNextPage: false }, nodes: FXM.produkt.variantIds.map((id) => ({ id: `gid://shopify/ProductVariant/${id}`, availableForSale: kaufbar })) } });
+const magnetRp = releaseReal.products.find((p) => p.id === MAGNET.id);
+const magnetNeu = (rel = releaseReal, product = magnetLive()) => baustein({ product, releaseProduct: rel.products.find((p) => p.id === MAGNET.id), editor: rel.editor });
+const magnetBeschr = (block = FXM.block) => `<p>Vorspann &amp; Umlaute äöü</p>\n${block}<p>Rest</p>`;
+const freiPlan = (alt = magnetBeschr(), neuB = magnetNeu(), opt = { product: magnetLive(), frei: MAGNET }, ed = releaseReal.editor) => freischaltungPlanen(alt, neuB, ed, opt);
+
+test('Magnet-Fixture: nur der Marker-Block der Live-Beschreibung vom 11.11.2026 (Sperre), Varianten wie im Release, Prüfsumme stimmt', () => {
+  assert.equal(FXM.schema, 1); assert.equal(FXM.produkt.id, MAGNET.id); assert.equal(FXM.produkt.handle, MAGNET.handle);
+  assert.equal(sha256(FXM.block), FXM.blockSha256);
+  assert.ok(FXM.block.startsWith(`<!-- lx-v63-editor:start product=${MAGNET.id} mode=blocked -->\n`)); assert.ok(FXM.block.endsWith('<!-- lx-v63-editor:end -->\n'));
+  assert.equal(zaehle(FXM.block, 'lx-v63-editor:start'), 1); assert.equal(zaehle(FXM.block, 'lx-v63-editor:end'), 1);
+  assert.equal(FXM.beschreibung.marker, 1);
+  assert.doesNotMatch(FXM.block, /lspod-designer-v6|ls-liefer|ls-pod-retoure|info@/, 'Block enthält mehr als die Sperre');
+  assert.deepEqual([...FXM.produkt.variantIds].sort(), [...magnetRp.variantIds].sort(), 'Varianten der Live-Lesung und des Release weichen ab');
+  assert.equal(FXM.produkt.variantIds.length, 3);
+  for (const id of FXM.produkt.variantIds) assert.ok(FXM.block.includes(`"${id}"`), `Variante ${id} fehlt im Sperrskript`);
+});
+test('Magnet: der Sperrbaustein aus dem Generator ist bytegleich der Live-Sperre (Voraussetzung der Freischaltung)', () => {
+  assert.equal(blockerBaustein({ product: magnetLive(false), blocker: MAGNET }), FXM.block);
+  assert.equal(blockerBaustein({ product: magnetLive(true), blocker: MAGNET }), FXM.block, 'die Kaufbarkeit darf den Sperrbaustein nicht ändern');
+  assert.ok(FXM.block.includes(`<p style="margin:0">${MAGNET.reason} Wir schalten die Gestaltung erst nach der technischen Prüfung frei.</p>`));
+});
+test('sperreLiegtVor: erkennt nur den Marker, den der Sperrbaustein schreibt', () => {
+  assert.equal(sperreLiegtVor(FXM.block), true); assert.equal(sperreLiegtVor(magnetBeschr()), true);
+  assert.equal(sperreLiegtVor(blockerBaustein({ product: blockedLive(), blocker: BLOCKLIST[0] })), true);
+  assert.equal(sperreLiegtVor(magnetBeschr(magnetNeu())), false, 'Editor-Baustein als Sperre erkannt');
+  assert.equal(sperreLiegtVor(BASIS.block), false);
+  for (const x of ['', null, undefined, '<p>mode=blocked</p>', '<div class="lspod-v63-blocked" data-lspod-blocked="1"></div>', '<!-- lx-v63-editor:start product=gid://shopify/Product/abc mode=blocked -->', `<!-- lx-v63-editor:start product=${MAGNET.id} card=${H} -->`]) assert.equal(sperreLiegtVor(x), false, String(x));
+});
+test('Freischaltung: aus der unveränderten Sperre wird genau der Editor-Baustein mit dem Ziel-Release; alles ausserhalb bleibt bytegleich', () => {
+  const g = freiPlan();
+  assert.equal(g.freischaltung, true); assert.equal(g.geaendert, true);
+  assert.equal(g.vorher, magnetBeschr()); assert.equal(g.vorherSha256, sha256(magnetBeschr()));
+  assert.equal(g.nachher, magnetBeschr(magnetNeu())); assert.equal(g.nachherSha256, sha256(magnetBeschr(magnetNeu())));
+  assert.ok(g.nachher.startsWith(`<p>Vorspann &amp; Umlaute äöü</p>\n<!-- lx-v63-editor:start product=${MAGNET.id} card=${magnetRp.cardSha256} -->\n`) && g.nachher.endsWith('<!-- lx-v63-editor:end -->\n<p>Rest</p>'));
+  assert.equal(zaehle(g.nachher, SKRIPT640), 1); assert.equal(zaehle(g.nachher, 'lx-v63-editor:start'), 1); assert.equal(zaehle(g.nachher, '<div class="lspod-designer-v6"'), 1);
+  assert.doesNotMatch(g.nachher, /lspod-v63-blocked|data-lspod-blocked|mode=blocked|nicht bestellbar|MutationObserver/);
+  assert.ok(g.nachher.includes(`data-karte-url="https://abannews.com/pod/v6/maps/lspod-15427217195393.karte.json?v=${magnetRp.cardSha256.slice(0, 16)}"`));
+  assert.ok(g.nachher.includes('data-karte-pflicht="1"')); assert.ok(g.nachher.includes(`data-variant="${FXM.produkt.variantIds[0]}"`));
+  assert.doesNotMatch(g.nachher, /data-vorschau-url|vorschau\.json/, 'der Magnet hat keine belegte Produktvorschau');
+  // der zweite Plan auf dem Ergebnis ist ein gewöhnlicher Editor-Release-Plan ohne Änderung
+  const g2 = editorReleasePlanen(g.nachher, magnetNeu(), releaseReal.editor, { vorgaenger: VG });
+  assert.equal(g2.geaendert, false); assert.equal(g2.nachher, g.nachher);
+});
+test('Freischaltung: mit der echten Umgebung der Live-Beschreibung bleiben Vor- und Nachspann zeichengenau (Längenrechnung aus der Fixture)', () => {
+  const vor = 'v'.repeat(FXM.beschreibung.blockAb); const nach = 'n'.repeat(FXM.beschreibung.zeichenNachBlock);
+  assert.equal((vor + FXM.block + nach).length, FXM.beschreibung.zeichen);
+  const g = freiPlan(vor + FXM.block + nach);
+  assert.equal(g.nachher, vor + magnetNeu() + nach); assert.equal(g.nachher.length, FXM.beschreibung.zeichen - FXM.block.length + magnetNeu().length);
+});
+test('Freischaltung lehnt jede andere Ausgangslage ab: veränderte Sperre, andere Varianten, kein/zweiter Marker, schon freigeschaltet, Reste', () => {
+  wirft(() => freiPlan(magnetBeschr(FXM.block.replace('derzeit nicht bestätigt', 'derzeit nicht bestaetigt'))), /Sperrbaustein weicht vom Generator ab; Freischaltung nur aus der unveränderten Sperre/);
+  wirft(() => freiPlan(magnetBeschr(FXM.block.replace('opacity:.45', 'opacity:.5'))), /Sperrbaustein weicht vom Generator ab/);
+  wirft(() => freiPlan(magnetBeschr(FXM.block.replace(/\n$/, ''))), /Sperrbaustein weicht vom Generator ab/);
+  const andereVarianten = { ...magnetLive(), variants: { pageInfo: { hasNextPage: false }, nodes: [{ id: 'gid://shopify/ProductVariant/1', availableForSale: true }] } };
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(releaseReal, andereVarianten), { product: andereVarianten, frei: MAGNET }), /Sperrbaustein weicht vom Generator ab/);
+  wirft(() => freiPlan('<p>ohne Baustein</p>'), /Freischaltung braucht genau einen bestehenden Marker, gefunden 0/);
+  wirft(() => freiPlan(magnetBeschr() + FXM.block), /genau einen bestehenden Marker, gefunden 2/);
+  wirft(() => freiPlan(magnetBeschr() + BASIS.block), /genau einen bestehenden Marker, gefunden 2/);
+  wirft(() => freiPlan(magnetBeschr(magnetNeu())), /Sperrbaustein weicht vom Generator ab/);   // schon freigeschaltet: dafür ist editorReleasePlanen zuständig
+  wirft(() => freiPlan(magnetBeschr() + '<div data-lspod-blocked="15427217195393"></div>'), /Reste der Sperre blieben/);
+  wirft(() => freiPlan(magnetBeschr() + '<p class="lspod-v63-blocked">x</p>'), /Reste der Sperre blieben/);
+});
+test('Freischaltung lehnt einen falschen neuen Baustein ab: anderes Produkt, anderes Editor-Release, Sperre statt Editor', () => {
+  wirft(() => freiPlan(magnetBeschr(), neuerBlock(BASIS)), /der neue Baustein gehört nicht zu diesem Produkt/);
+  const rel631 = { ...releaseReal, editor: { url: editorUrl('6.3.1'), sha256: VG[1].sha256 } };
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(rel631)), /nicht genau einmal das Ziel-Release/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu() + SKRIPT640), /nicht genau einmal das Ziel-Release/);
+  wirft(() => freiPlan(magnetBeschr(), FXM.block), /nicht eindeutig/);
+  wirft(() => freiPlan(magnetBeschr(), ''), /nicht eindeutig/);
+  // String.replace deutet «$`» im Ersatz als «Text vor dem Treffer»: ein solcher Produkttitel verdoppelt den Vorspann. Der Byte-Vergleich
+  // ausserhalb des Sperrbausteins muss das abfangen (nachgestellt 11.11.2026; ohne ihn würde der Vorspann still verdoppelt geschrieben).
+  const dollar = { ...magnetLive(), title: 'Magnet $` Test' };
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(releaseReal, dollar), { product: dollar, frei: MAGNET }), /Freischaltung würde Bytes ausserhalb des Sperrbausteins ändern/);
+});
+test('Freischaltung ist nur für ein FREIGESCHALTET-Produkt vorgesehen und nur mit passendem Produkt', () => {
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: magnetLive() }), /Freischaltung ist für dieses Produkt nicht vorgesehen/);
+  // ohne Optionen direkt aufrufen: freiPlan(…, undefined) nähme den Vorgabewert seines Parameters (Gutfall)
+  wirft(() => freischaltungPlanen(magnetBeschr(), magnetNeu(), releaseReal.editor), /nicht vorgesehen/);
+  wirft(() => freischaltungPlanen(magnetBeschr(), magnetNeu(), releaseReal.editor, undefined), /nicht vorgesehen/);
+  wirft(() => freischaltungPlanen(magnetBeschr(), magnetNeu(), releaseReal.editor, {}), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: magnetLive(), frei: null }), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { frei: MAGNET }), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: live(), frei: MAGNET }), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: { ...magnetLive(), handle: 'magnet-anders' }, frei: MAGNET }), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: magnetLive(), frei: { ...MAGNET, handle: 'magnet-anders' } }), /nicht vorgesehen/);
+  wirft(() => freiPlan(magnetBeschr(), magnetNeu(), { product: live(), frei: { id: ALLOWLIST[0].id, handle: ALLOWLIST[0].handle, reason: 'x' } }), /nicht vorgesehen/);
+  // die Dad-Cap (weiter gesperrt) lässt sich so nicht freischalten
+  const cap = BLOCKLIST[1]; const capLive = blockedLive(cap);
+  wirft(() => freischaltungPlanen(blockerBaustein({ product: capLive, blocker: cap }), magnetNeu(), releaseReal.editor, { product: capLive, frei: cap }), /dad-cap-selbst-gestalten: Freischaltung ist für dieses Produkt nicht vorgesehen/);
+});
+test('Produktgate und Freischaltung: der Magnet braucht in jedem Schreiblauf eine kaufbare Variante; nur der Planer darf darauf verzichten', () => {
+  assert.equal(produktPruefen(magnetLive(true), magnetRp), true);
+  wirft(() => produktPruefen(magnetLive(false), magnetRp), /magnet-zum-selbstgestalten: keine kaufbare Variante \(Bestandssperre noch aktiv\? .*dropship\/sperre-verfuegbar-1111\/sperr_verfuegbar\.mjs mit ZURUECK=1 LIVE=1 NUR=magnet-zum-selbstgestalten\)$/);
+  wirft(() => produktPruefen(magnetLive(false), magnetRp, {}), /keine kaufbare Variante/);
+  wirft(() => produktPruefen(magnetLive(false), magnetRp, { kaufbarPflicht: true }), /keine kaufbare Variante/);
+  for (const falsch of [0, null, '', undefined, 'false']) wirft(() => produktPruefen(magnetLive(false), magnetRp, { kaufbarPflicht: falsch }), /keine kaufbare Variante/, `kaufbarPflicht=${String(falsch)}`);
+  assert.equal(produktPruefen(magnetLive(false), magnetRp, { kaufbarPflicht: false }), true);
+  // der Verzicht gilt nur für die Kaufbarkeit, nie für Status, Storefront oder Variantenscope
+  wirft(() => produktPruefen({ ...magnetLive(false), status: 'DRAFT' }, magnetRp, { kaufbarPflicht: false }), /Status DRAFT/);
+  wirft(() => produktPruefen({ ...magnetLive(false), onlineStoreUrl: null }, magnetRp, { kaufbarPflicht: false }), /keine bestätigte Storefront-URL/);
+  wirft(() => produktPruefen({ ...magnetLive(false), variants: { pageInfo: { hasNextPage: false }, nodes: magnetLive(false).variants.nodes.slice(1) } }, magnetRp, { kaufbarPflicht: false }), /Varianten-Scope weicht ab \(Shop 2, Release 3\)/);
+  wirft(() => produktPruefen({ ...magnetLive(false), variants: { pageInfo: { hasNextPage: true }, nodes: magnetLive(false).variants.nodes } }, magnetRp, { kaufbarPflicht: false }), /unvollständig/);
+  // ein gewöhnliches Editorprodukt bekommt den Hinweis auf die Bestandssperre nicht
+  wirft(() => produktPruefen({ ...live(), variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', availableForSale: false }] } }, products[0]), /keine kaufbare Variante$/);
+});
+test('Magnet im echten Release: Karte lspod-15427217195393.karte.json ohne Produktvorschau, Allowlist «ready-binding» mit Beleg der Schweizer Lieferbarkeit', () => {
+  assert.equal(magnetRp.handle, MAGNET.handle);
+  assert.equal(magnetRp.cardUrl, 'https://abannews.com/pod/v6/maps/lspod-15427217195393.karte.json');
+  assert.equal(magnetRp.cardSha256, sha256(readFileSync(WURZEL + 'pod/v6/maps/lspod-15427217195393.karte.json')));
+  assert.equal(magnetRp.previewUrl, null); assert.equal(magnetRp.previewSha256, null);
+  assert.ok(!existsSync(WURZEL + 'pod/v6/maps/lspod-15427217195393.vorschau.json'), 'für den Magneten liegt eine Vorschau-Datei, die das Release nicht kennt');
+  const a = allowlistReal.products.find((p) => p.handle === MAGNET.handle);
+  assert.equal(a.rolloutStatus, 'ready-binding'); assert.deepEqual(a.reasonCodes, []); assert.equal(a.shopifyProductId, MAGNET.id);
+  assert.ok(!(allowlistReal.blocked || []).some((b) => b.handle === MAGNET.handle || b.shopifyProductId === MAGNET.id));
+  assert.equal(allowlistReal.source.availabilityCh.products.length, 1);
+  assert.deepEqual(allowlistReal.source.availabilityCh.products[0], { handle: MAGNET.handle, model: 656, printfulVariantIds: [16366, 16367, 16465] });
+  assert.equal(allowlistReal.source.availabilityCh.sha256, sha256(readFileSync(WURZEL + 'dropship/selbst-gestalten-fertig-0511/rollout-v63/' + allowlistReal.source.availabilityCh.path)), 'Beleg der Lieferbarkeit passt nicht mehr zur Allowlist');
+  // die Karte selbst: je Variante eine eigene Druckdatei mit 300 dpi, jede Shopify-Variante zugeordnet
+  const karte = JSON.parse(readFileSync(WURZEL + 'pod/v6/maps/lspod-15427217195393.karte.json', 'utf8'));
+  assert.equal(karte.klasse, 'FLACH');
+  const pf = Object.fromEntries(Object.entries(karte.shop.varianten).map(([sv, pv]) => [sv, pv]));
+  assert.deepEqual(pf, { 55791941812609: 16366, 55791941845377: 16367, 55791941878145: 16465 });
+  assert.deepEqual(Object.keys(karte.shop.varianten).sort(), [...magnetRp.variantIds].sort());
+  const text = JSON.stringify(karte);
+  for (const px of [900, 1200, 1800]) assert.ok(text.includes(String(px)), `Druckdatei ${px} px fehlt`);
 });
 
 // ---- Schreib- und Rollback-Pfad gegen die Offline-Attrappe (Shopify, Storefront, Assets; kein Netz, keine Zugangsdaten) ----------------
@@ -935,11 +1151,11 @@ test('README dokumentiert den 6.4.0-Ablauf, alle sechs Bestätigungen, die Gates
 if (process.env.DIREKT_ROLLOUT_OHNE_ATTRAPPE === '1') console.log('ÜBERSPRUNGEN: Attrappen-Szenarien (DIREKT_ROLLOUT_OHNE_ATTRAPPE=1, nur für die Mutationsprobe)');
 else {
   test('Attrappen-Szenarien (direct_rollout_attrappe_test.mjs): Plan, Apply je Stufe, Rollback, Hash-Schutz, Ledger-/OUT_DIR-Sperre, Live-Gates, Rücklesen, kein Wiederholen; Rollback unabhängig von Sperrseiten, ENTWURF und lokalen Dateien', () => {
-    const r = spawnSync(process.execPath, [HIER + 'direct_rollout_attrappe_test.mjs'], { encoding: 'utf8', timeout: 240000, env: { PATH: process.env.PATH || '', HOME: tmpdir() } });
+    const r = spawnSync(process.execPath, [HIER + 'direct_rollout_attrappe_test.mjs'], { encoding: 'utf8', timeout: 240000, env: { PATH: process.env.PATH || '', HOME: tmpdir(), ...(process.env.TMPDIR ? { TMPDIR: process.env.TMPDIR } : {}) } });
     const m = (r.stdout || '').match(/^(\d+) Prüfungen, (\d+) Fehler/m);
     assert.ok(m, `keine Auswertung: ${(r.stdout || '').slice(0, 200)} ${(r.stderr || '').slice(0, 300)}`);
     assert.equal(r.status, 0, `${m[2]} Fehler in den Attrappen-Szenarien:\n${(r.stdout || '').slice(0, 1800)}`);
-    assert.ok(Number(m[1]) >= 100, `zu wenige Prüfungen (${m[1]}): Szenarien entfernt?`);
+    assert.ok(Number(m[1]) >= 140, `zu wenige Prüfungen (${m[1]}): Szenarien entfernt?`);
     ok += Number(m[1]) - 1;   // die Einzelprüfungen zählen mit
   });
 }

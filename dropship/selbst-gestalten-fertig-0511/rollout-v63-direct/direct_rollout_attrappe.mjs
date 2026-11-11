@@ -6,7 +6,9 @@
 //
 // Der Ausgangszustand entsteht aus den 16 Live-Blöcken in fixtures/live-editor-bloecke-0811.json (nur Editor-Blöcke, keine
 // Kundentexte) plus erfundenem Vor- und Nachtext; die Tasse trägt den 6.3.1-Block (Stand nach dem Canary vom 08.11.), die
-// drei Sperrprodukte den heutigen Sperrblock aus dem Generator. Jeder Schreibzugriff wird mitgeschrieben (ATTRAPPE_LOG).
+// zwei Sperrprodukte den heutigen Sperrblock aus dem Generator. Der Magnet (seit 11.11.2026 Editorprodukt, FREIGESCHALTET) trägt
+// im Ausgangszustand noch seinen alten Sperrblock, wie live vor der Freischaltung. Ein Produkt mit `kaufbar: false` im Zustand
+// meldet alle Varianten als nicht kaufbar (Bestandssperre). Jeder Schreibzugriff wird mitgeschrieben (ATTRAPPE_LOG).
 //
 // Fehlerschalter (je ein Produkt-Handle oder 1), nur für Tests:
 //   ATTRAPPE_FAIL_UPDATE=<handle>        productUpdate antwortet mit userErrors (abgelehnt)
@@ -14,6 +16,7 @@
 //   ATTRAPPE_READBACK_WRONG=<handle>     geschriebene Beschreibung kommt mit einem zusätzlichen Zeilenumbruch zurück
 //   ATTRAPPE_DRIFT_SECOND_READ=<handle>  beim zweiten Lesen hat jemand fremd angehängt (Drift zwischen Plan und Write)
 //   ATTRAPPE_DRAFT_SECOND_READ=<handle>  beim zweiten Lesen steht das Produkt auf ENTWURF (Status-Wechsel zwischen Plan und Write)
+//   ATTRAPPE_UNKAUFBAR_SECOND_READ=<h>   beim zweiten Lesen ist keine Variante mehr kaufbar (Bestandssperre zwischen Plan und Write)
 //   ATTRAPPE_EXIT_AFTER_WRITE=<handle>   Prozess endet NACH dem gespeicherten Write und VOR dem Ledger (Abbruch im Actions-UI)
 //   ATTRAPPE_MISSING=<handle>            Produkt existiert nicht mehr (product = null)
 //   ATTRAPPE_BAD_CANONICAL=<handle>      Storefront meldet einen anderen Canonical
@@ -24,7 +27,7 @@
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ALLOWLIST, BLOCKLIST, blockerBaustein } from './direct_rollout_lib.mjs';
+import { ALLOWLIST, BLOCKLIST, blockerBaustein, freigeschaltet } from './direct_rollout_lib.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HIER, '../../..');
@@ -36,6 +39,17 @@ export function zustandBauen({ tasse631 = true } = {}) {
   const allowlist = JSON.parse(readFileSync(join(HIER, '../rollout-v63/allowlist.json'), 'utf8'));
   const store = { products: {}, writes: 0 };
   for (const a of ALLOWLIST) {
+    const frei = freigeschaltet(a.id);
+    if (frei) {   // früheres Sperrprodukt: Ausgangszustand = unveränderter Sperrblock zwischen erfundenem Vor- und Nachtext
+      const row = allowlist.products.find((p) => p.shopifyProductId === a.id);
+      const ids = row.variants.map((v) => String(v.shopifyVariantId));
+      const sperre = blockerBaustein({ product: { handle: a.handle, variants: { nodes: ids.map((i) => ({ id: `gid://shopify/ProductVariant/${i}` })) } }, blocker: frei });
+      store.products[a.id] = {
+        id: a.id, handle: a.handle, title: 'Magnet zum Selbstgestalten & mehr', status: 'ACTIVE', updatedAt: '2026-11-11T09:06:46Z',
+        onlineStoreUrl: `https://luxestyle.ch/products/${a.handle}`, descriptionHtml: `<p>Vorspann ${a.handle} &amp; äöü</p>\n${sperre}<p>Nachspann ${a.handle}</p>`, variants: ids,
+      };
+      continue;
+    }
     const fix = tasse631 && a.id === fx.tasse631.id ? fx.tasse631 : fx.produkte.find((p) => p.id === a.id);
     const block = fix.block;
     const standard = block.match(/data-variant="(\d+)"/)[1];
@@ -91,9 +105,10 @@ if (STATE) {
         p.reads = (p.reads || 0) + 1;
         if (env('DRIFT_SECOND_READ') && p.handle === env('DRIFT_SECOND_READ') && p.reads === 2) { p.descriptionHtml += '<!-- fremd -->'; log({ t: 'DRIFT', handle: p.handle }); }
         if (env('DRAFT_SECOND_READ') && p.handle === env('DRAFT_SECOND_READ') && p.reads === 2) { p.status = 'DRAFT'; log({ t: 'DRAFT', handle: p.handle }); }
+        if (env('UNKAUFBAR_SECOND_READ') && p.handle === env('UNKAUFBAR_SECOND_READ') && p.reads === 2) { p.kaufbar = false; log({ t: 'UNKAUFBAR', handle: p.handle }); }
         speichere(s);
         log({ t: 'READ', id: v.id, handle: p.handle });
-        return json({ data: { product: { id: p.id, handle: p.handle, title: p.title, status: p.status, updatedAt: p.updatedAt, tags: [], onlineStoreUrl: p.onlineStoreUrl, descriptionHtml: p.descriptionHtml, variants: { pageInfo: { hasNextPage: false }, nodes: p.variants.map((x) => ({ id: `gid://shopify/ProductVariant/${x}`, sku: 's', availableForSale: true, inventoryPolicy: 'CONTINUE', inventoryItem: { tracked: false } })) } } } });
+        return json({ data: { product: { id: p.id, handle: p.handle, title: p.title, status: p.status, updatedAt: p.updatedAt, tags: [], onlineStoreUrl: p.onlineStoreUrl, descriptionHtml: p.descriptionHtml, variants: { pageInfo: { hasNextPage: false }, nodes: p.variants.map((x) => ({ id: `gid://shopify/ProductVariant/${x}`, sku: 's', availableForSale: p.kaufbar !== false, inventoryPolicy: p.kaufbar === false ? 'DENY' : 'CONTINUE', inventoryItem: { tracked: p.kaufbar === false } })) } } } });
       }
       throw new Error(`Attrappe kennt die Abfrage nicht: ${q.slice(0, 80)}`);
     }

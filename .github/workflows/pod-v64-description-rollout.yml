@@ -6,6 +6,8 @@ name: POD v6.4 Beschreibungs-Rollout
 #   1. plan (alle Stufen: prüft immer alle 19 Produkte)  2. Artefakt lesen  3. apply canary-tasse  4. Gates
 #   5. apply canary-jutebeutel  6. Gates + Beobachtung  7. apply full
 # Rollback in UMGEKEHRTER Reihenfolge, je mit dem Artefakt des zugehörigen Apply-Laufs.
+# Seit 11.11.2026 gibt es die Einzelstufe frei-magnet: sie ersetzt beim Magneten die Sperre durch den Editor (17 Editorprodukte,
+# 2 Sperrprodukte). Vorher muss die Bestandssperre NUR des Magneten zurückgenommen sein (README, «Magnet freigeschaltet»).
 
 on:
   workflow_dispatch:
@@ -17,11 +19,11 @@ on:
         default: plan
         options: [plan, apply, rollback]
       scope:
-        description: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel oder alle 16 Editorprodukte
+        description: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel, Freischaltung Magnet oder alle 17 Editorprodukte
         type: choice
         required: true
         default: canary-tasse
-        options: [canary-tasse, canary-jutebeutel, full]
+        options: [canary-tasse, canary-jutebeutel, frei-magnet, full]
       confirmation:
         description: Apply/Rollback erfordert den dokumentierten exakten Bestätigungstext
         type: string
@@ -60,13 +62,15 @@ jobs:
           set -euo pipefail
           test "$REF_NAME" = "$DEFAULT_BRANCH" || { echo "Nur der Default-Branch darf ausrollen" >&2; exit 2; }
           case "$OPERATION:$SCOPE" in
-            plan:canary-tasse|plan:canary-jutebeutel|plan:full) test -z "$CONFIRMATION"; test -z "$SOURCE_RUN_ID" ;;
+            plan:canary-tasse|plan:canary-jutebeutel|plan:frei-magnet|plan:full) test -z "$CONFIRMATION"; test -z "$SOURCE_RUN_ID" ;;
             apply:canary-tasse) test "$CONFIRMATION" = V64_CANARY_TASSE; test -z "$SOURCE_RUN_ID" ;;
             apply:canary-jutebeutel) test "$CONFIRMATION" = V64_CANARY_JUTEBEUTEL; test -z "$SOURCE_RUN_ID" ;;
-            apply:full) test "$CONFIRMATION" = V64_FULL_16_EDITOR; test -z "$SOURCE_RUN_ID" ;;
+            apply:frei-magnet) test "$CONFIRMATION" = V64_FREI_MAGNET; test -z "$SOURCE_RUN_ID" ;;
+            apply:full) test "$CONFIRMATION" = V64_FULL_17_EDITOR; test -z "$SOURCE_RUN_ID" ;;
             rollback:canary-tasse) test "$CONFIRMATION" = V64_ROLLBACK_TASSE; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
             rollback:canary-jutebeutel) test "$CONFIRMATION" = V64_ROLLBACK_JUTEBEUTEL; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
-            rollback:full) test "$CONFIRMATION" = V64_ROLLBACK_16_EDITOR; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
+            rollback:frei-magnet) test "$CONFIRMATION" = V64_ROLLBACK_MAGNET; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
+            rollback:full) test "$CONFIRMATION" = V64_ROLLBACK_17_EDITOR; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
             *) echo "Unzulässige Eingabekombination" >&2; exit 2 ;;
           esac
 

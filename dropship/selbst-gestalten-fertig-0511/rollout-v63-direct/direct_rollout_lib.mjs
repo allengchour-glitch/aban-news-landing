@@ -9,6 +9,7 @@ export const ALLOWLIST = Object.freeze([
   ['15422823465345', 'keramik-tasse-selbst-gestalten'],
   ['15422942609793', 'kiss-cut-aufkleber-selbst-gestalten'],
   ['15422857642369', 'klassisches-unisex-t-shirt-selbst-gestalten'],
+  ['15427217195393', 'magnet-zum-selbstgestalten'],   // seit 11.11.2026 freigeschaltet (siehe FREIGESCHALTET)
   ['15451569160577', 'mauspad-selbst-gestalten'],
   ['16672778289543', 'samsung-huelle-selbst-gestalten'],
   ['15427283157377', 'shirt-zum-selbstgestalten'],
@@ -22,8 +23,19 @@ export const ALLOWLIST = Object.freeze([
 export const BLOCKLIST = Object.freeze([
   ['15423895830913', 'buegeltransfer-selbst-gestalten', 'Fremd-Fulfillment: Die Druckdatenübergabe an den Produktionspartner ist noch nicht bestätigt.'],
   ['15422849188225', 'dad-cap-selbst-gestalten', 'Die nötige Stickplatzierung und ihre Produktionsoptionen sind noch nicht vollständig geprüft.'],
-  ['15427217195393', 'magnet-zum-selbstgestalten', 'Produktion und Lieferung dieser Ausführung in die Schweiz sind derzeit nicht bestätigt.'],
 ].map(([id, handle, reason]) => Object.freeze({ id: `gid://shopify/Product/${id}`, numericId: id, handle, reason })));
+
+/** Frühere Sperrprodukte, die jetzt Editorprodukte sind. Der Magnet (Printful 656) war bis 11.11.2026 gesperrt, weil die Lieferung
+ *  in die Schweiz unbelegt war (gemessen: rollout-v63/source/lieferbarkeit-ch-1111.json). Die Liste hält den Grundtext der alten
+ *  Sperre fest: damit lässt der Planer genau EINEN Übergang zu (unveränderter Sperrbaustein → Editor-Baustein, freischaltungPlanen),
+ *  und Artefakte von vor der Freischaltung (Planzeile «blocked», Release ohne dieses Produkt) bleiben im Rollback lesbar. */
+export const FREIGESCHALTET = Object.freeze([
+  ['15427217195393', 'magnet-zum-selbstgestalten', 'Produktion und Lieferung dieser Ausführung in die Schweiz sind derzeit nicht bestätigt.', '2026-11-11'],
+].map(([id, handle, reason, seit]) => Object.freeze({ id: `gid://shopify/Product/${id}`, numericId: id, handle, reason, seit })));
+for (const f of FREIGESCHALTET) {
+  if (!ALLOWLIST.some((a) => a.id === f.id && a.handle === f.handle) || BLOCKLIST.some((b) => b.id === f.id)) throw new Error(`FREIGESCHALTET passt nicht zu Allowlist/Sperrliste: ${f.handle}`);
+}
+export const freigeschaltet = (id) => FREIGESCHALTET.find((f) => f.id === id) || null;
 
 export const PREVIEW_IDS = Object.freeze([
   '15422854463873', '15422819991937', '15422823465345',
@@ -110,6 +122,7 @@ export const vorgaengerAusRelease = (er) => er.vorgaenger.map((v) => ({ url: v.u
 
 // ---- Eingaben, Bestätigungen, Canary-Tabelle -------------------------------------------------------
 // Ein Skript, zwei Pfade: EDITOR_VERSION=6.3.1 (Vorgabe, wie bisher) und EDITOR_VERSION=6.4.0 (neu).
+// Seit 11.11.2026: 17 Editorprodukte (mit dem Magneten) und 2 Sperrprodukte, zusammen weiter 19.
 // Gewählt statt eines zweiten Skripts, weil Plan, Ledger, Rollback und Schreibschutz dann EIN Code sind
 // und der alte Pfad für die alten Tests unverändert bleibt. Die Bestätigungen sind je Pfad getrennt:
 // eine V63_-Zeile aus der alten Doku bestätigt nie einen 6.4.0-Schreiblauf (und umgekehrt).
@@ -118,8 +131,8 @@ const ACKS_V63 = Object.freeze({
   rollback: Object.freeze({ canary: 'V63_ROLLBACK_TASSE', full: 'V63_ROLLBACK_19_SAFE' }),
 });
 const ACKS_V64 = Object.freeze({
-  apply: Object.freeze({ 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', full: 'V64_FULL_16_EDITOR' }),
-  rollback: Object.freeze({ 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', full: 'V64_ROLLBACK_16_EDITOR' }),
+  apply: Object.freeze({ 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', 'frei-magnet': 'V64_FREI_MAGNET', full: 'V64_FULL_17_EDITOR' }),
+  rollback: Object.freeze({ 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', 'frei-magnet': 'V64_ROLLBACK_MAGNET', full: 'V64_ROLLBACK_17_EDITOR' }),
 });
 const V63_MELDUNG = Object.freeze({
   apply: Object.freeze({ canary: 'Canary braucht ACK=', full: 'Vollausrollung braucht ACK=' }),
@@ -130,12 +143,15 @@ function canaryEintrag(scope, numericId, handle) {
   if (!a || a.handle !== handle) throw new Error(`Canary-Tabelle: ${scope} passt nicht zur Allowlist`);
   return Object.freeze({ scope, id: a.id, numericId: a.numericId, handle: a.handle });
 }
-// Fest einprogrammiert, keine freie Eingabe: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel.
+// Fest einprogrammiert, keine freie Eingabe: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel und die Einzelstufe «frei-magnet»
+// (Freischaltung des Magneten: genau dieses eine Produkt, eigene Bestätigung, eigener Rückweg).
 export const CANARY_V63 = canaryEintrag('canary', '15422823465345', 'keramik-tasse-selbst-gestalten');
 export const CANARY_V64 = Object.freeze({
   'canary-tasse': canaryEintrag('canary-tasse', '15422823465345', 'keramik-tasse-selbst-gestalten'),
   'canary-jutebeutel': canaryEintrag('canary-jutebeutel', '15422819991937', 'bio-jutebeutel-selbst-gestalten'),
+  'frei-magnet': canaryEintrag('frei-magnet', '15427217195393', 'magnet-zum-selbstgestalten'),
 });
+export const SCOPES_V64 = Object.freeze([...Object.keys(CANARY_V64), 'full']);
 
 export function rolloutKonfig({ mode, scope, ack, live, editorVersion } = {}) {
   const ev = String(editorVersion || ROLLOUT_V63);
@@ -144,8 +160,8 @@ export function rolloutKonfig({ mode, scope, ack, live, editorVersion } = {}) {
   const m = String(mode || 'plan').toLowerCase();
   const s = String(scope || (v64 ? '' : 'canary')).toLowerCase();   // 6.4.0 hat keinen Vorgabe-Scope
   if (!['plan', 'apply', 'rollback'].includes(m)) throw new Error('MODE muss plan, apply oder rollback sein');
-  const erlaubt = v64 ? ['canary-tasse', 'canary-jutebeutel', 'full'] : ['canary', 'full'];
-  if (!erlaubt.includes(s)) throw new Error(v64 ? 'SCOPE muss canary-tasse, canary-jutebeutel oder full sein' : 'SCOPE muss canary oder full sein');
+  const erlaubt = v64 ? SCOPES_V64 : ['canary', 'full'];
+  if (!erlaubt.includes(s)) throw new Error(v64 ? 'SCOPE muss canary-tasse, canary-jutebeutel, frei-magnet oder full sein' : 'SCOPE muss canary oder full sein');
   if (m !== 'plan' && live !== true) throw new Error(`${m}: LIVE=1 fehlt`);
   let soll = '';
   if (m !== 'plan') {
@@ -268,7 +284,9 @@ export function releaseAusAllowlist(allowlist, { editorSha256, assetSha256, edit
   return { schema: 1, editor: zielEditor, products };
 }
 
-export function releasePruefen(release, { editorPfad = '/pod/v6/lspod-designer-v6-6.3.1.js' } = {}) {
+/** `altOhneFreigeschaltete` (nur der Rollback setzt es): das Release eines Artefakts von VOR einer Freischaltung enthält die
+ *  FREIGESCHALTET-Produkte noch nicht. Es bleibt lesbar; jedes andere fehlende Produkt wirft weiter. */
+export function releasePruefen(release, { editorPfad = '/pod/v6/lspod-designer-v6-6.3.1.js', altOhneFreigeschaltete = false } = {}) {
   if (!release || release.schema !== 1 || !Array.isArray(release.products)) throw new Error('Release-Manifest: Schema 1/products fehlt');
   if (!release.editor || !assetPfad(release.editor.url, editorPfad) || !/^[a-f0-9]{64}$/.test(release.editor.sha256 || '')) {
     throw new Error('Release-Manifest: Editor-URL oder SHA-256 unbrauchbar');
@@ -286,12 +304,16 @@ export function releasePruefen(release, { editorPfad = '/pod/v6/lspod-designer-v
     if (!sollPreview && (p.previewUrl != null || p.previewSha256 != null)) throw new Error(`${p.handle}: für dieses Produkt ist keine Produktprojektion belegt`);
     if (!Array.isArray(p.variantIds) || !p.variantIds.length || new Set(p.variantIds.map(String)).size !== p.variantIds.length) throw new Error(`${p.handle}: variantIds fehlen oder sind doppelt`);
   }
-  if (gesehen.size !== ALLOWLIST.length) {
-    const fehlt = ALLOWLIST.filter((x) => !gesehen.has(x.id)).map((x) => x.handle);
-    throw new Error(`Release-Manifest: erwartet ${ALLOWLIST.length} Produkte, gefunden ${gesehen.size}; fehlt: ${fehlt.join(', ')}`);
+  const fehlend = ALLOWLIST.filter((x) => !gesehen.has(x.id));
+  const nurFreigeschaltete = altOhneFreigeschaltete === true && fehlend.every((x) => freigeschaltet(x.id));
+  if (fehlend.length && !nurFreigeschaltete) {
+    throw new Error(`Release-Manifest: erwartet ${ALLOWLIST.length} Produkte, gefunden ${gesehen.size}; fehlt: ${fehlend.map((x) => x.handle).join(', ')}`);
   }
   const mitVorschau = release.products.filter((p) => p.previewUrl).length;
-  if (mitVorschau !== 9) throw new Error(`Release-Manifest: erwartet 9 ehrliche Produktvorschauen und 7 Druckdatei-Ansichten, gefunden ${mitVorschau}/${release.products.length - mitVorschau}`);
+  const ohneVorschau = release.products.length - mitVorschau;
+  if (mitVorschau !== PREVIEW_IDS.length || ohneVorschau !== ALLOWLIST.length - PREVIEW_IDS.length - fehlend.length) {
+    throw new Error(`Release-Manifest: erwartet ${PREVIEW_IDS.length} ehrliche Produktvorschauen und ${ALLOWLIST.length - PREVIEW_IDS.length} Druckdatei-Ansichten, gefunden ${mitVorschau}/${ohneVorschau}`);
+  }
   return true;
 }
 
@@ -360,6 +382,34 @@ export function editorReleasePlanen(alt, neuerBaustein, editor, { vorgaenger = [
   throw new Error(`Editor-Release-Ausgangslage unzulässig (alt=${vorgSumme}, neu=${zielAnzahl})`);
 }
 
+/** Trägt die Beschreibung (noch) einen Sperrbaustein? Massgeblich ist der Marker, den nur blockerBaustein schreibt. */
+export function sperreLiegtVor(html) {
+  return /<!-- lx-v63-editor:start product=gid:\/\/shopify\/Product\/\d+ mode=blocked -->/.test(String(html || ''));
+}
+
+/** Freischaltung eines früheren Sperrprodukts (FREIGESCHALTET): die Beschreibung trägt noch den Sperrbaustein.
+ *  Zulässig ist genau EIN Übergang: der eine Marker-Block ist BYTEGLEICH der Sperrbaustein aus dem Generator (alter Grundtext,
+ *  heutige Varianten des Produkts) und wird durch den Editor-Baustein mit dem Ziel-Release ersetzt. Alles ausserhalb des Blocks
+ *  bleibt bytegleich. Jede andere Lage wirft: von Hand veränderte Sperre, zweiter Marker, anderes Produkt, Reste der Sperre. */
+export function freischaltungPlanen(alt, neuerBaustein, editor, { product, frei } = {}) {
+  if (!frei || !freigeschaltet(frei.id) || freigeschaltet(frei.id).handle !== frei.handle || !product || product.id !== frei.id || product.handle !== frei.handle) {
+    throw new Error(`${product?.handle || frei?.handle || '?'}: Freischaltung ist für dieses Produkt nicht vorgesehen`);
+  }
+  const text = String(alt || '');
+  const marker = text.match(/<!-- lx-v63-editor:start\b[\s\S]*?<!-- lx-v63-editor:end -->\s*/giu) || [];
+  if (marker.length !== 1) throw new Error(`Freischaltung braucht genau einen bestehenden Marker, gefunden ${marker.length}`);
+  const sperre = blockerBaustein({ product, blocker: freigeschaltet(frei.id) });
+  if (marker[0] !== sperre) throw new Error(`${frei.handle}: Sperrbaustein weicht vom Generator ab; Freischaltung nur aus der unveränderten Sperre`);
+  const ziel = editorScript(editor);
+  const geplant = beschreibungPlanen(text, neuerBaustein);
+  if (geplant.nachher.split(ziel).length - 1 !== 1) throw new Error('Freischaltung: der neue Baustein trägt nicht genau einmal das Ziel-Release');
+  const pos = text.indexOf(sperre);
+  if (geplant.nachher !== text.slice(0, pos) + neuerBaustein + text.slice(pos + sperre.length)) throw new Error('Freischaltung würde Bytes ausserhalb des Sperrbausteins ändern');
+  if (!neuerBaustein.startsWith(`<!-- lx-v63-editor:start product=${frei.id} card=`)) throw new Error('Freischaltung: der neue Baustein gehört nicht zu diesem Produkt');
+  if (/lspod-v63-blocked|data-lspod-blocked|mode=blocked/.test(geplant.nachher)) throw new Error('Freischaltung: Reste der Sperre blieben in der Beschreibung');
+  return { ...geplant, freischaltung: true };
+}
+
 export function blockerBaustein({ product, blocker }) {
   const varianten = (product.variants?.nodes || []).map((v) => numericId(v.id)).filter((x) => /^\d+$/.test(x));
   if (!varianten.length) throw new Error(`${product.handle}: keine Shopify-Variante für den Sperrbaustein`);
@@ -392,14 +442,18 @@ export function beschreibungPlanen(html, neu, { blocked = false } = {}) {
   return { vorher: alt, nachher, vorherSha256: sha256(alt), nachherSha256: sha256(nachher), geaendert: alt !== nachher };
 }
 
-export function produktPruefen(product, releaseProduct) {
+/** `kaufbarPflicht: false` setzt nur der Planer, und nur für ein FREIGESCHALTET-Produkt, das noch die Sperre trägt und in diesem
+ *  Lauf NICHT geschrieben wird (seine Bestandssperre ist dann erwartet). Jeder Schreiblauf prüft die Kaufbarkeit. */
+export function produktPruefen(product, releaseProduct, { kaufbarPflicht = true } = {}) {
   const a = ALLOWLIST.find((x) => x.id === product.id);
   if (!a || product.handle !== a.handle || releaseProduct.id !== a.id || releaseProduct.handle !== a.handle) throw new Error(`${product.handle || product.id}: Identität weicht von der Allowlist ab`);
   if (product.status !== 'ACTIVE') throw new Error(`${product.handle}: Status ${product.status}, erwartet ACTIVE`);
   if (!product.onlineStoreUrl || !/^https:\/\/luxestyle\.ch\/products\//.test(product.onlineStoreUrl)) throw new Error(`${product.handle}: keine bestätigte Storefront-URL`);
   if (product.variants?.pageInfo?.hasNextPage) throw new Error(`${product.handle}: Variantenabfrage ist unvollständig`);
   const varianten = product.variants?.nodes || [];
-  if (!varianten.some((v) => v.availableForSale)) throw new Error(`${product.handle}: keine kaufbare Variante`);
+  if (kaufbarPflicht !== false && !varianten.some((v) => v.availableForSale)) {
+    throw new Error(`${product.handle}: keine kaufbare Variante${freigeschaltet(product.id) ? ' (Bestandssperre noch aktiv? Zuerst die Kaufbarkeit dieses Produkts wiederherstellen: dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs mit ZURUECK=1 LIVE=1 NUR=' + product.handle + ')' : ''}`);
+  }
   const ist = sortIds(varianten.map((v) => numericId(v.id)));
   const soll = sortIds(releaseProduct.variantIds);
   if (JSON.stringify(ist) !== JSON.stringify(soll)) throw new Error(`${product.handle}: Varianten-Scope weicht ab (Shop ${ist.length}, Release ${soll.length})`);

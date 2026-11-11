@@ -8,12 +8,12 @@ import { karteFuerEditor } from '../../../pod/v6/werkzeug/karte_fuer_editor.mjs'
 let n = 0; const errors = [];
 function test(name, ok, detail = '') { n++; if (!ok) { errors.push(`${name}: ${detail}`); console.log(`x ${name} ${detail}`); } }
 
-function editorHelpers() {
+function editorHelpers(version = '6.3.1') {
   const g = { Shopify: { locale: 'de-CH' }, location: { search: '' }, console, setTimeout: () => 0, addEventListener() {} };
   g.window = g;
   g.document = { readyState: 'complete', documentElement: { lang: 'de-CH' }, querySelectorAll: () => [], getElementById: () => null, addEventListener() {} };
   const context = vm.createContext(g);
-  vm.runInContext(readFileSync(resolve('pod/v6/lspod-designer-v6-6.3.1.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(resolve(`pod/v6/lspod-designer-v6-${version}.js`), 'utf8'), context);
   return g.LSPOD6.hilfen;
 }
 
@@ -45,10 +45,14 @@ test('Magnet hat drei unbekannte EU-Werte', report.availabilityUnknown.filter((e
   });
   test('Magnet: jede Variante hat ihre eigene quadratische Druckdatei (900, 1200, 1800 px bei 300 dpi = 3, 4, 6 Zoll)', JSON.stringify(jeVariante) === JSON.stringify([[16366, 183, 900, 900, 300], [16367, 184, 1200, 1200, 300], [16465, 419, 1800, 1800, 300]]), JSON.stringify(jeVariante));
   test('Magnet: je Druckdatei eine eigene Vorlagengeometrie, nur die kostenlose Flaeche «default»', karte.platzierungen.length === 1 && karte.platzierungen[0].id === 'default' && JSON.stringify(karte.platzierungen[0].geometrien.map((g) => [g.printfileId, g.vorlage.flaecheBreite, g.vorlage.flaecheHoehe])) === '[[183,518,518],[184,590,590],[419,699,699]]');
-  const norm = H.karteNormalisieren(karte);
-  test('Magnet: der Editor (6.3.1, reine Logik) liest die Zuordnung Shopify-Variante -> Printful-Variante', Boolean(norm.karte) && JSON.stringify(norm.karte.shop) === JSON.stringify({ 55791941812609: 16366, 55791941845377: 16367, 55791941878145: 16465 }), JSON.stringify(norm.karte?.shop));
-  const geo = [16366, 16367, 16465].map((pv) => { const g = H.geometrieFuer(norm.karte, norm.karte.platzierungen[0], pv); return [g.printfile.printfileId, g.printfile.breitePx, g.printfile.hoehePx, g.printfile.dpi, g.vorlage.flaecheBreite]; });
-  test('Magnet: der Editor nimmt je Variante die eigene Druckdatei und Vorlagengeometrie', JSON.stringify(geo) === '[[183,900,900,300,518],[184,1200,1200,300,590],[419,1800,1800,300,699]]', JSON.stringify(geo));
+  // reine Editor-Logik (kein Browser): 6.3.1 (Referenz), 6.4.0 (live am 11.11.2026) und 6.4.2 (bereit) lesen dieselbe Karte gleich
+  for (const version of ['6.3.1', '6.4.0', '6.4.2']) {
+    const HV = version === '6.3.1' ? H : editorHelpers(version);
+    const norm = HV.karteNormalisieren(karte);
+    test(`Magnet: der Editor ${version} (reine Logik) liest die Zuordnung Shopify-Variante -> Printful-Variante`, Boolean(norm.karte) && JSON.stringify(norm.karte.shop) === JSON.stringify({ 55791941812609: 16366, 55791941845377: 16367, 55791941878145: 16465 }), JSON.stringify(norm.karte?.shop) + ' ' + (norm.fehler || ''));
+    const geo = norm.karte ? [16366, 16367, 16465].map((pv) => { const g = HV.geometrieFuer(norm.karte, norm.karte.platzierungen[0], pv); return [g.printfile.printfileId, g.printfile.breitePx, g.printfile.hoehePx, g.printfile.dpi, g.vorlage.flaecheBreite]; }) : null;
+    test(`Magnet: der Editor ${version} nimmt je Variante die eigene Druckdatei und Vorlagengeometrie`, JSON.stringify(geo) === '[[183,900,900,300,518],[184,1200,1200,300,590],[419,1800,1800,300,699]]', JSON.stringify(geo));
+  }
   test('Magnet: CH-Beleg ist an die Allowlist gebunden (Pfad, SHA-256, drei Varianten)', allow.source.availabilityCh?.path === 'source/lieferbarkeit-ch-1111.json' && /^[a-f0-9]{64}$/.test(allow.source.availabilityCh.sha256) && JSON.stringify(allow.source.availabilityCh.products) === JSON.stringify([{ handle: 'magnet-zum-selbstgestalten', model: 656, printfulVariantIds: [16366, 16367, 16465] }]));
   test('Magnet: der Bau meldet den Beleg im Bericht', JSON.stringify(report.availabilityCh.handles) === '["magnet-zum-selbstgestalten"]' && report.availabilityCh.evidence === 'source/lieferbarkeit-ch-1111.json');
   const beleg = JSON.parse(readFileSync(resolve('dropship/selbst-gestalten-fertig-0511/rollout-v63/source/lieferbarkeit-ch-1111.json'), 'utf8'));

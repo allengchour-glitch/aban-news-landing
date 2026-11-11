@@ -7,15 +7,17 @@ import { shopifyClientSecret } from '../../../automation/lib/shopify_secret.mjs'
 import {
   ALLOWLIST, APPLY_LEDGER_ZUSTAENDE, BLOCKLIST, PREVIEW_IDS, ROLLBACK_SCHREIBBAR, ROLLOUT_V63, VORHER_EDITOR, assetUrl, auswahlPlanen,
   baustein, beschreibungPlanen, blockerBaustein, blockerProduktPruefen, canaryLedgerPruefen, editorAusRelease,
-  editorReleaseFormPruefen, editorReleasePlanen, numericId, produktIdentitaetPruefen, produktPruefen, releaseAusAllowlist,
-  releasePruefen, rolloutKonfig, rollbackLedgerAuswerten, sha256, vorgaengerAusRelease,
+  editorReleaseFormPruefen, editorReleasePlanen, freigeschaltet, freischaltungPlanen, numericId, produktIdentitaetPruefen, produktPruefen, releaseAusAllowlist,
+  releasePruefen, rolloutKonfig, rollbackLedgerAuswerten, sha256, sperreLiegtVor, vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HIER, '../../..');
 
 // EDITOR_VERSION=6.3.1 (Vorgabe) = alter Pfad, EDITOR_VERSION=6.4.0 = neuer Pfad (Ziel aus editor-release.json,
-// Scopes canary-tasse|canary-jutebeutel|full, Bestätigungen V64_*). Der 6.4.0-Workflow setzt es fest.
+// Scopes canary-tasse|canary-jutebeutel|frei-magnet|full, Bestätigungen V64_*). Der 6.4.0-Workflow setzt es fest.
+// Seit 11.11.2026 ist der Magnet ein Editorprodukt (17 Editor-, 2 Sperrprodukte). Solange seine Beschreibung noch den
+// Sperrbaustein trägt, plant der Lauf für ihn die Freischaltung (Sperrbaustein → Editor-Baustein, freischaltungPlanen).
 const KONF = rolloutKonfig({
   mode: process.env.MODE,
   scope: process.env.SCOPE,
@@ -154,12 +156,20 @@ async function planen(tok, release, vorgaenger) {
   for (const a of ALLOWLIST) {
     const rp = byId.get(a.id);
     const p = await produkt(tok, a.id);
-    produktPruefen(p, rp);
+    // Früheres Sperrprodukt, dessen Beschreibung noch die Sperre trägt: Freischaltung statt Editor-Wechsel. Wird es in diesem Lauf
+    // nicht geschrieben (andere Einzelstufe), darf seine Bestandssperre noch aktiv sein; jeder Schreiblauf verlangt die Kaufbarkeit.
+    const frei = freigeschaltet(a.id);
+    const nochGesperrt = Boolean(frei) && sperreLiegtVor(p.descriptionHtml);
+    const wirdGeschrieben = !KONF.canary || KONF.canary.id === a.id;
+    produktPruefen(p, rp, { kaufbarPflicht: !nochGesperrt || wirdGeschrieben });
     await storefrontPruefen(p);
     await assetPruefen(rp.cardUrl, rp.cardSha256, 'karte');
     if (rp.previewUrl) await assetPruefen(rp.previewUrl, rp.previewSha256, 'vorschau');
-    const diff = editorReleasePlanen(p.descriptionHtml, baustein({ product: p, releaseProduct: rp, editor: release.editor }), release.editor, { vorgaenger });
-    plaene.push({ kind: 'editor', id: p.id, numericId: numericId(p.id), handle: p.handle, title: p.title, updatedAt: p.updatedAt, onlineStoreUrl: p.onlineStoreUrl, expectedVariantIds: rp.variantIds.map(String), ...diff });
+    const neu = baustein({ product: p, releaseProduct: rp, editor: release.editor });
+    const diff = nochGesperrt
+      ? freischaltungPlanen(p.descriptionHtml, neu, release.editor, { product: p, frei })
+      : editorReleasePlanen(p.descriptionHtml, neu, release.editor, { vorgaenger });
+    plaene.push({ kind: 'editor', id: p.id, numericId: numericId(p.id), handle: p.handle, title: p.title, updatedAt: p.updatedAt, onlineStoreUrl: p.onlineStoreUrl, expectedVariantIds: rp.variantIds.map(String), ...(nochGesperrt ? { kaufbar: (p.variants?.nodes || []).some((v) => v.availableForSale) } : {}), ...diff });
   }
   for (const b of BLOCKLIST) {
     const p = await produkt(tok, b.id);
@@ -197,10 +207,14 @@ function planMetaPruefen(meta, quelle) {
   if ((ALT_PFAD ? meta.editorVersion !== undefined : meta.editorVersion !== EDITOR_VERSION) || meta.canary !== (KONF.canary ? KONF.canary.handle : null) || meta.scope !== SCOPE) throw new Error('Plan gehört zu einem anderen Editor-Release oder Scope');
   const soll = new Map([...ALLOWLIST.map((x) => [x.id, { ...x, kind: 'editor' }]), ...BLOCKLIST.map((x) => [x.id, { ...x, kind: 'blocked' }])]);
   if (meta.products.length !== soll.size) throw new Error(`Plan muss exakt ${soll.size} Produkte enthalten`);
+  // Nur der Rollback liest Artefakte von VOR einer Freischaltung: dort steht das Produkt noch als Sperre im Plan (nie geschrieben,
+  // Ledger «unchanged») und fehlt im Release. Plan und Apply schreiben immer den heutigen Stand.
+  const altArtefakt = MODE === 'rollback';
   const gesehen = new Set();
   for (const x of meta.products) {
     const s = soll.get(x.id);
-    if (!s || gesehen.has(x.id) || x.handle !== s.handle || x.numericId !== s.numericId || x.kind !== s.kind) throw new Error(`Planprodukt unzulässig/doppelt: ${x.id || '?'}`);
+    const alteSperre = altArtefakt && x.kind === 'blocked' && Boolean(freigeschaltet(x.id));
+    if (!s || gesehen.has(x.id) || x.handle !== s.handle || x.numericId !== s.numericId || (x.kind !== s.kind && !alteSperre)) throw new Error(`Planprodukt unzulässig/doppelt: ${x.id || '?'}`);
     gesehen.add(x.id);
     if (!/^[a-f0-9]{64}$/.test(x.vorherSha256 || '') || !/^[a-f0-9]{64}$/.test(x.nachherSha256 || '')) throw new Error(`${x.handle}: Beschreibungshash fehlt`);
     if (!Array.isArray(x.expectedVariantIds) || !x.expectedVariantIds.length || x.expectedVariantIds.some((id) => !/^\d+$/.test(String(id))) || new Set(x.expectedVariantIds.map(String)).size !== x.expectedVariantIds.length) throw new Error(`${x.handle}: Variantenscope im Plan unbrauchbar`);
@@ -210,7 +224,7 @@ function planMetaPruefen(meta, quelle) {
   }
   const releasePfad = join(quelle, 'release.json');
   if (!existsSync(releasePfad) || sha256(readFileSync(releasePfad)) !== meta.releaseSha256) throw new Error('Release-Sicherung fehlt oder Hash weicht ab');
-  releasePruefen(JSON.parse(readFileSync(releasePfad, 'utf8')), { editorPfad: KONF.editorUrlPfad });
+  releasePruefen(JSON.parse(readFileSync(releasePfad, 'utf8')), { editorPfad: KONF.editorUrlPfad, altOhneFreigeschaltete: altArtefakt });
   return true;
 }
 
