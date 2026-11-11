@@ -1,0 +1,28 @@
+name: Merchant-Zugang prüfen (nur lesen)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/merchant-probe-1111]
+    paths: ['.github/workflows/merchant-probe.yml', 'automation/merchant_probe.py']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: automation/merchant_probe.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet google-auth requests
+      - name: Probe
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: python3 automation/merchant_probe.py
