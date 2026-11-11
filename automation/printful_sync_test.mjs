@@ -1672,7 +1672,9 @@ async function rennen({ modus, warteMs, haltMs = 10 }) {
 }
 {
   // (A) «kurz»: die Markierung von X kommt 10 ms nach der von Y an. Mit der Wartezeit (hier 600 ms mit Test-Kennung, Grenze für das eigene Schreiben 300 ms) liest Y erst danach, sieht X und tritt zurück: höchstens EIN Auftrag.
-  //     Ohne Wartezeit (Stand vor der Korrektur, Mutant «SP G1 Kleber: keine Wartezeit») liest Y sofort: zwei Aufträge, zwei Bestätigungen in JEDEM Lauf.
+  //     Ohne Wartezeit (Stand vor der Korrektur, Mutant «SP G1 Kleber: keine Wartezeit») liest Y sofort und legt an; ob X dann ebenfalls anlegt, hängt von der Last ab: gemessen in 2 bis 3 von 10 Läufen
+  //     (Gegenprüfung 11.11.2026, nicht «in jedem Lauf», wie hier bis dahin stand). Dieser Modus ist darum nur ein schwacher Fühler; zuverlässig rot machen den fehlenden Abstand die zwei Läufe «lang» und die
+  //     Zeitprüfungen (400 ms, 3000 ms), alle vier Varianten der Gegenprüfung (Wartezeit weg, Wartezeit 0, Nachlesen vor dem Warten, «await» fehlt) wurden dort erkannt.
   // Was NICHT von der Rechnerlast abhängt, wird für jeden Lauf verlangt (nie zwei Aufträge; Y tritt zurück). Von der Last hängt nur ab, ob das Schreiben von X unter der Grenze von 300 ms blieb: dann legt X an, sonst (richtig) niemand.
   // Darum genügt für «die Sicherung blockiert nicht alles» EIN Lauf mit Auftrag (gemessen unter Last 13 auf 4 Kernen: 6 von 10; ohne Last 10 von 10).
   const LAEUFE = 10;
