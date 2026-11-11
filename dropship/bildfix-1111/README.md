@@ -26,6 +26,23 @@ gleich, nur Text, Masslinien, Pfeile und Marken weg. Kosten Higgsfield: 15 Bilde
 
 Nichts wurde gelöscht. «Lösen» heisst `fileUpdate` mit `referencesToRemove`: die Datei bleibt unter Inhalt > Dateien.
 
+## Wirkungsversprechen (Besitzer 11.11. abends: «ja die mit burn fat weg, wirkungsversprechen fix oder weg»)
+
+LIVE 11.11. zwischen 19:00 und 19:10 UTC, je frisch zurückgelesen «GLEICH», Shop-Seite (`/products/<handle>.js`) gelesen:
+
+| Produkt | Bilder | Text |
+|---|---|---|
+| Handliches Massagegerät | Bild 2 bereinigt (Frau ohne Symbolspalte «Burn fat»), Bilder 3, 4, 5 (Wirkungsgrafiken) gelöst; jetzt 2 Bilder | Lieferumfang «1 Set Fettverlust-Tester» → «1 Massagegerät»; SEO ohne «löst Verspannungen» |
+| Augenmassagegerät | Bilder 2 bis 4 bereinigt («Heat Therapy», «Eye SPA Treatment», «eye protection» weg), Bild 5 (Modus-Grafik) gelöst; jetzt 6 Bilder | Titel ohne «gegen müde Augen»; SEO ohne «Akupressur … entspannt müde Augen» |
+
+Meine Auslegung (nicht bestätigt): «fix oder weg» gilt auch für die Texte dieser zwei Produkte. Higgsfield: 4 Bilder je 0,25 Credits.
+Der Handle des Augenmassagegeräts trägt weiter «gegen-mude-augen» (Adresse nicht geändert, sonst bräuchte es eine Weiterleitung).
+
+Rücknahme, in dieser Reihenfolge (die Dateien in `sicherung2/` tragen dieselben Namen wie die des ersten Laufs in `sicherung/`):
+1. Texte: `ZURUECK=1 LIVE=1 NODE_USE_ENV_PROXY=1 node dropship/bildfix-1111/wirkung.mjs` (Sicherungen `sicherung/wirkung_*.json`).
+2. Bilder dieses Laufs: `ZURUECK=1 LIVE=1 NODE_USE_ENV_PROXY=1 node dropship/bildfix-1111/ersetzen.mjs dropship/bildfix-1111/plaene/plan_wirkung.json dropship/bildfix-1111/sicherung2`.
+3. Erst danach, falls gewollt, der erste Lauf mit `sicherung/`.
+
 ## Werkzeuge
 
 - `lesen.mjs <handles.txt> <ordner>`: liest Produkte nur lesend, baut je Produkt einen Kontaktbogen (H = Hauptbild,
@@ -57,7 +74,7 @@ Nichts wurde gelöscht. «Lösen» heisst `fileUpdate` mit `referencesToRemove`:
 - Nicht angefasst, weil mehr als Text das Problem ist: Tech-Hero-Geschenkbox (Bild zeigt Geräte einer fremden Marke),
   Bambus-Aufbewahrungssystem (Bilder einer fremden Marke «Kitchen Edge», Rechte unklar), Herrenuhr «Executive»
   (Marke «TOMI» auf dem Zifferblatt), Edelstahl-Trinkflasche (Variantenbilder nur 209 und 290 Pixel breit, bessere Quelle nötig).
-- In den Galerien stehen weiter Bilder mit Text, die nicht Hauptbild sind; beim Massagegerät und beim Augenmassagegerät
-  mit Wirkungsversprechen («Burn fat», «Eye Skin Treatment»): Entscheid des Besitzers, ob sie weg sollen.
+- In den Galerien der anderen Produkte stehen weiter Bilder mit Text, die nicht Hauptbild sind (Massagegerät und
+  Augenmassagegerät: erledigt, siehe oben).
 - Die «zu kleinen» Modebilder (500 bis 800 Pixel) sind für Google gross genug (Mindestmass 250 Pixel bei Kleidung);
   hochrechnen nur, wenn Google sie meldet.

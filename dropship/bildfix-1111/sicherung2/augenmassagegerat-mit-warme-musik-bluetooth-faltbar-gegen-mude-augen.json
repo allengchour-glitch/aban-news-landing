@@ -1,0 +1,104 @@
+{
+ "zeit": "2026-11-11T19:09:11.176Z",
+ "plan": {
+  "handle": "augenmassagegerat-mit-warme-musik-bluetooth-faltbar-gegen-mude-augen",
+  "erwartet_erstes": "gid://shopify/MediaImage/77949924409735",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69550383071617",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_190707_a90070dd-2ec8-4443-af90-de08c736c1df.png",
+    "alt_text": "Augenmassagegerät getragen, Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550383104385",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_190707_7ee663b1-787e-465d-91a1-182db8777dd8.png",
+    "alt_text": "Augenmassagegerät getragen, Ansicht 2"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69550383137153",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_190706_b2348820-6dc7-4d19-8508-96e66de88b1f.png",
+    "alt_text": "Augenmassagegerät getragen, Ansicht 3"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/69550383169921"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15412306215297",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77949924409735",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383071617",
+    "alt": "Augenmassagegerät mit Wärme",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383104385",
+    "alt": "Eye Massager Bluetooth",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383137153",
+    "alt": "Augenmassage faltbar",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69550383169921",
+    "alt": "Augenmassagegerät Entspannung",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949924442503",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949924475271",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948417712519",
+    "titel": "Weiss / Chinesisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924409735"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417745287",
+    "titel": "Weiss / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924409735"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417778055",
+    "titel": "Set1 / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924442503"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948417810823",
+    "titel": "Set2 / Englisch",
+    "medien": [
+     "gid://shopify/MediaImage/77949924475271"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69550383071617": "gid://shopify/MediaImage/78014706516359",
+  "gid://shopify/MediaImage/69550383104385": "gid://shopify/MediaImage/78014706614663",
+  "gid://shopify/MediaImage/69550383137153": "gid://shopify/MediaImage/78014706712967"
+ }
+}
