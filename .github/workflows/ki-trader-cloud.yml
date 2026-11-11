@@ -1,0 +1,65 @@
+name: KI-Trader Cloud (Schattenkonto, Spielgeld)
+
+# Claudes tägliche Einschätzung für Bitcoin und Ethereum, NUR im Schattenkonto: kein Auftrag, kein Broker, kein Geld an einer Börse.
+# Kein eigener Zeitplan (Regel: höchstens ein Cron pro Tag): tages-update.yml ruft diese Datei einmal täglich auf. Handstart: «Run workflow».
+# Schalter: docs/KI-TRADER-CLOUD-FREI.txt (Datei löschen = Stopp). Kosten: Secret ANTHROPIC_API_KEY; Grenzen 3 USD je Monat und
+# 4 Anfragen je Tag (automation/ki_trader_cloud.py; die Repo-Variablen KI_CLOUD_MAX_USD_MONAT und KI_CLOUD_MAX_ANFRAGEN_TAG übersteuern).
+# Logbuch: data/ki-cloud/ (der Git-Verlauf ist der Zeitstempel). Doku: docs/KRYPTO-AUTONOMIE.md, Abschnitt «KI-Trader in der Cloud».
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  lauf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    concurrency:
+      group: ki-trader-cloud
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          sparse-checkout: |
+            automation/ki_trader_cloud.py
+            automation/test_ki_trader_cloud.py
+            tools/trading
+            data/ki-cloud
+            data/krypto-pilot-schatten.json
+            docs/KI-TRADER-CLOUD-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Selbsttest (ohne Netz, ohne Schlüssel)
+        # Fällt der Test durch, läuft nichts: keine Anfrage, kein Eintrag.
+        run: python automation/test_ki_trader_cloud.py
+      - name: Anthropic-Paket installieren (nur mit Schlüssel und Freigabe)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ] && [ -f docs/KI-TRADER-CLOUD-FREI.txt ]; then
+            pip install -q 'anthropic>=2.8,<3'
+          else
+            echo "Kein Schlüssel oder keine Freigabe: nichts zu installieren."
+          fi
+      - name: Einschätzung holen (Schattenkonto)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KI_CLOUD_MAX_USD_MONAT: ${{ vars.KI_CLOUD_MAX_USD_MONAT }}
+          KI_CLOUD_MAX_ANFRAGEN_TAG: ${{ vars.KI_CLOUD_MAX_ANFRAGEN_TAG }}
+        run: python automation/ki_trader_cloud.py --lauf
+      - name: Logbuch committen (falls geändert)
+        run: |
+          if [ -d data/ki-cloud ]; then git add data/ki-cloud; fi
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(ki-trader): Einschätzung des Tages im Schattenkonto [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase origin main || true; sleep 3; done
+          else
+            echo "Keine Änderung."
+          fi
