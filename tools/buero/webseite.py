@@ -62,7 +62,11 @@ def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
             row['befund'] = row['befund'].replace('Lokaler Prototyp;', 'Geprüfter Prototyp;').replace('Kein Dauerlauf.', 'Automatischer Prüflauf geplant alle sechs Stunden; kein ständig aktiver Agent.')
     tree=ast.parse((ROOT/'pruefung/harness.py').read_text())
     template=next(ast.literal_eval(n.value) for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='KOPF' for t in n.targets))
-    template=template.replace("  var NOW = Date.parse('2026-11-05T20:30:00Z');\n  Date.now = function () { return NOW; };\n",'')
+    # Die feste Testuhr gehört nur in den Nachbau, nie auf die öffentliche Seite.
+    uhrstub = r"(?m)^  var NOW = Date\.parse\('[^'\n]+'\);\n  Date\.now = function \(\) \{ return NOW; \};\n"
+    template, entfernt = re.subn(uhrstub, '', template)
+    if entfernt != 1 or '%%JETZT%%' in template or re.search(r'\bDate\.now\s*=', template):
+        raise ValueError("Die Testuhr lässt sich nicht sicher aus der Webvorlage entfernen.")
     template=template.replace('<html lang="de"><head>','<html lang="de"><head><title>KI-Büro – Webansicht</title><meta name="robots" content="noindex,nofollow">')
     body=(ROOT/'seite.html').read_text()
     with tempfile.TemporaryDirectory() as tmp:
@@ -90,8 +94,8 @@ def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
     body=notice+body
     result=template.replace('%%ROWS%%',json.dumps(rows,ensure_ascii=False)).replace('%%BODY%%',body)
     result=result.replace("</body>", "<script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);</script></body>")
-    if werkstatt_status:
-        result = result.replace('</body>', '<script>' + (ROOT/'status_anzeige.js').read_text() + '</script></body>')
+    # Bestehende öffentliche Berichte lesen, auch wenn kein Bericht beim Bau übergeben wurde.
+    result = result.replace('</body>', '<script>' + (ROOT/'status_anzeige.js').read_text() + '</script></body>')
     Path(ziel).write_text(result,encoding='utf-8')
     return rows
 

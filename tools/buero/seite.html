@@ -459,7 +459,7 @@
 @media(max-width:640px){.kb{gap:12px}.kb .kb-head{padding:16px 18px}.kb .kb-head .kb-take{font-size:15px}.kb .kb-head .kb-stand{font-size:13px}.kb3-stage{height:64dvh;min-height:360px}.kb3-desktop-hint{display:none}.kb-mobile-nav button{font-size:13px}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-14">
+<div class="kb" data-design="campus-einheitlich-15">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -905,8 +905,10 @@
   function eff(r, now) {
     var h = Number(r.frisch_h);
     var t = Date.parse(r.gemessen);
+    if (h > 0 && (!isFinite(t) || t > now + 300000)) return r.status === 'rot' ? 'rot' : 'gelb';
     if (h > 0 && isFinite(t) && (now - t) / 3600000 > h) return 'alt';
-    return ORDER.indexOf(r.status) < 0 || r.status === 'alt' ? 'gelb' : r.status;
+    if (r.status === 'gruen' && !(h > 0 && isFinite(t))) return 'gelb';
+    return ORDER.indexOf(r.status) < 0 ? 'gelb' : r.status;
   }
 
   function arbeitsansicht(original) {
@@ -1541,8 +1543,9 @@
     var ents = data.map(function (r) {
       var e = eff(r, now);
       var gem = Date.parse(r.gemessen), fh = Number(r.frisch_h);
-      var frisch = fh > 0 && isFinite(gem) ? Math.max(0, Math.min(1, 1 - (now - gem) / 3600000 / fh)) : null;
-      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge, ereignis: r.ereignis || '', frisch: frisch, ortArt: r.ort_art, ortKurz: r.ort_kurz, rolle: (fachTeam().find(function(x){return x.station===r.id;})||{}).stil };
+      var gemGueltig = isFinite(gem) && gem <= now + 300000;
+      var frisch = fh > 0 && gemGueltig ? Math.max(0, Math.min(1, 1 - (now - gem) / 3600000 / fh)) : null;
+      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge, ereignis: r.ereignis || '', frisch: frisch, gemessen: gemGueltig ? r.gemessen : '', gemessen_text: gemGueltig ? r.gemessen_text : '', frisch_h: fh, zeitUnklar: !!r.gemessen && !gemGueltig, ortArt: r.ort_art, ortKurz: r.ort_kurz, rolle: (fachTeam().find(function(x){return x.station===r.id;})||{}).stil };
     });
     var es = ents.map(function (e) { return e.state; });
     var blaetter = ents.filter(function (e) { return e.figur === 'papier'; }).length;
@@ -1552,7 +1555,7 @@
     return { ents: ents, chef: { pose: pose, blaetter: blaetter }, sel: gewaehlt, colors: lampHex(), stand: stand };
   }
   /* Textfassung des gerade grossen Liveboards (am Handy lesbar, für Screenreader): nur Werte aus dem Modell der Szene */
-  var LL_WORT = { gruen: 'läuft', gelb: 'prüfen', rot: 'steht', du: 'für dich', alt: 'alt' }, LL_ZEICHEN = { gruen: '●', gelb: '▲', rot: '■', du: '◆', alt: '○' };
+  var LL_WORT = { gruen: 'okay', gelb: 'prüfen', rot: 'Fehler', du: 'für dich', alt: 'alt' }, LL_ZEICHEN = { gruen: '●', gelb: '▲', rot: '■', du: '◆', alt: '○' };
   function liveText(name) {
     var box = viewer && viewer.querySelector('[data-live-text]');
     if (!box) return;
@@ -1572,6 +1575,7 @@
         l.style.color = farben[z.state] || farben.alt;
         li.appendChild(l); li.appendChild(el('span', 'll-name', z.name + ' – ' + (LL_WORT[z.state] || z.state)));
         if (z.text) li.appendChild(el('span', 'll-ereignis', z.text));
+        li.appendChild(el('span', 'll-ereignis', z.alter || 'Nicht gemessen'));
         ul.appendChild(li);
       });
     } else if (u) {
@@ -1580,7 +1584,8 @@
     }
     box.appendChild(ul);
     var stand = (m || u || {}).stand;
-    box.appendChild(el('p', '', stand ? 'Messstand ' + stand + '. Lampen und Balken sind Messwerte, kein Livesignal.' : 'Messstand unbekannt.'));
+    box.appendChild(el('p', '', stand ? 'Messstand ' + stand + '. Jeder Eintrag behält seine eigene Messzeit.' : 'Messstand unbekannt.'));
+    box.appendChild(el('p', '', 'Die Uhr zeigt die Schweizer Zeit. Laufdaten sind gespeicherte Messungen.'));
     box.hidden = false;
   }
   function beschriftung3d(ent) {
@@ -1682,6 +1687,7 @@
       if (!m || !m.ok || !m.update) return;
       var data = rows();
       m.update(data ? zustand3d(data, Date.now()) : { ents: [], chef: { pose: 'rest', blaetter: 0 }, sel: gewaehlt, colors: lampHex() });
+      if (m.monitorName && m.monitorName()) liveText(m.monitorName());
     },
     unmount: function (el, m) {
       if (m && m.destroy) m.destroy();
@@ -1707,6 +1713,22 @@
     });
   }
   uhrStellen();
-  setInterval(uhrStellen, 30000);
+  // Nur die Anzeige altern lassen: kein neuer Datenabruf und kein Arbeitslauf.
+  var lokaleSignatur = '', lokaleMinute = -1;
+  function anzeigeAltern() {
+    if (document.hidden) return;
+    uhrStellen();
+    var data = rows();
+    if (!data) return;
+    var now = Date.now(), minute = Math.floor(now / 60000);
+    var signatur = data.map(function (r) { return r.id + ':' + eff(r, now) + ':' + aktiv(r, now); }).join('|');
+    if (signatur !== lokaleSignatur) {
+      lokaleSignatur = signatur;
+      ['n', 'rows', 'raum', 'chef', 'blaetter', 'tafeln', 'detail', 'szene3d'].forEach(function (name) { dash.draw(name); });
+    } else if (minute !== lokaleMinute) dash.draw('szene3d');
+    lokaleMinute = minute;
+  }
+  setInterval(anzeigeAltern, 30000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) anzeigeAltern(); });
 })();
 </script>

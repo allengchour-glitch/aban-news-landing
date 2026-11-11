@@ -60,7 +60,7 @@
      model = { titel, zeit, stand, farben, zaehler:{gruen,gelb,rot,du,alt}, kpi:{wert,label}|null,
                zeilen:[{ name, state, text, frisch (0..1 oder null) }] }   (null = noch keine Daten) */
   var LB_FARBE = { gruen: '#2f9e5b', gelb: '#d99a1b', rot: '#e04b4b', du: '#4f86f0', alt: '#8b949e' };
-  var LB_WORT = { gruen: 'Läuft', gelb: 'Prüfen', rot: 'Steht', du: 'Für dich', alt: 'Alt' };
+  var LB_WORT = { gruen: 'Okay', gelb: 'Prüfen', rot: 'Fehler', du: 'Für dich', alt: 'Alt' };
   var LB_ZUSTAENDE = ['gruen', 'gelb', 'rot', 'du', 'alt'];
   function lbFit(g, text, maxW) {
     text = String(text == null ? '' : text);
@@ -80,30 +80,43 @@
   }
   function lbKopf(g, kicker, titel, zeit, farben, ins) {
     ins = ins || 0;           // Randstreifen innen: Nachbarwände verdecken beim Zentralmonitor den Rand des Bildes
-    var grad = g.createLinearGradient(0, 0, 1024, 512); grad.addColorStop(0, '#0f2a3d'); grad.addColorStop(1, '#16213a');
-    g.fillStyle = '#08121f'; g.fillRect(0, 0, 1024, 512);
+    var grad = g.createLinearGradient(0, 0, 0, 512); grad.addColorStop(0, '#13283b'); grad.addColorStop(1, '#0c1729');
+    g.fillStyle = '#060e19'; g.fillRect(0, 0, 1024, 512);
     g.fillStyle = grad; rr(g, 8, 8, 1008, 496, 18); g.fill();
+    g.fillStyle = '#74dece'; rr(g, 48 + ins, 18, 56, 4, 2); g.fill();
     g.fillStyle = '#7ad6c4'; g.font = 'bold 17px ' + FONT; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
     g.fillText(kicker, 48 + ins, 44);
-    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(lbFit(g, titel, 560), 48 + ins, 92);
-    // Uhr und «live»-Punkt
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 42px ' + FONT; g.fillText(lbFit(g, titel, 500), 48 + ins, 92);
+    // Die laufende Uhr ist keine Aussage über die Frische der Daten.
     g.textAlign = 'right';
-    g.fillStyle = '#a5e9df'; g.font = 'bold 16px ' + FONT; g.fillText('LIVE', 976 - ins, 38);
-    g.fillStyle = farben.gruen; g.beginPath(); g.arc(976 - ins - g.measureText('LIVE').width - 14, 33, 6, 0, PI * 2); g.fill();
+    g.fillStyle = '#9cb8c8'; g.font = 'bold 15px ' + FONT; g.fillText('BÜRO-UHR', 976 - ins, 38);
     g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(zeit || '--:--', 976 - ins, 82);
     g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('Schweizer Zeit', 976 - ins, 103);
     g.textAlign = 'left';
   }
+  /* Kleine Arbeitsplatz-Monitore: dieselbe Messung wie Figur und Wandmonitor. */
+  T.station = function (m) {
+    var o = mk(256, 160), g = o.g, c = LB_FARBE[m.state] || LB_FARBE.alt;
+    g.fillStyle = '#0d1a2a'; g.fillRect(0, 0, 256, 160);
+    g.fillStyle = '#182d43'; g.fillRect(0, 0, 256, 30);
+    g.fillStyle = '#a4c6dc'; g.font = 'bold 12px ' + FONT; g.fillText('ARBEITSPLATZ / MESSDATEN', 12, 20);
+    g.fillStyle = '#f1f8ff'; g.font = 'bold 21px ' + FONT; g.fillText(lbFit(g, m.name, 230), 12, 59);
+    lbLampe(g, m.state, 20, 82, 6, c);
+    g.fillStyle = c; g.font = 'bold 17px ' + FONT; g.fillText(m.state === 'gruen' ? 'Messung okay' : LB_WORT[m.state] || 'Unbekannt', 34, 88);
+    g.fillStyle = '#c1d4e4'; g.font = '15px ' + FONT; g.fillText(lbFit(g, m.text || 'Kein Ereignis gemeldet', 230), 12, 118);
+    g.fillStyle = '#91aabe'; g.font = '13px ' + FONT; g.fillText(lbFit(g, m.alter || 'Nicht gemessen', 230), 12, 146);
+    return o.c;
+  };
   T.liveboard = function (m) {
     var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i;
-    lbKopf(g, 'LIVEBOARD', m ? m.titel : 'Liveboard', m && m.zeit, farben);
+    lbKopf(g, 'STATUSBOARD / MESSDATEN', m ? m.titel : 'Liveboard', m && m.zeit, farben);
     if (!m) {
       g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen dieses Raums …', 48, 250);
       return o.c;
     }
     // Sonder-Kennzahl (zum Beispiel offene Bestellungen) als Plakette neben der Uhr
     if (m.kpi) {
-      g.fillStyle = 'rgba(122,214,196,0.16)'; rr(g, 560, 52, 230, 58, 14); g.fill();
+      g.fillStyle = 'rgba(122,214,196,0.10)'; rr(g, 560, 52, 230, 58, 10); g.fill();
       g.fillStyle = '#f3f8ff'; g.font = 'bold 38px ' + FONT; g.textAlign = 'left'; g.fillText(String(m.kpi.wert), 576, 95);
       var nw = g.measureText(String(m.kpi.wert)).width;
       g.fillStyle = '#a5e9df'; g.font = '15px ' + FONT;
@@ -113,7 +126,8 @@
     var tw = 176, th = 78, ty = 112;
     for (i = 0; i < 5; i++) {
       var st = LB_ZUSTAENDE[i], tx = 48 + i * (tw + 12), n = (m.zaehler && m.zaehler[st]) || 0;
-      g.fillStyle = 'rgba(255,255,255,0.075)'; rr(g, tx, ty, tw, th, 14); g.fill();
+      g.fillStyle = 'rgba(255,255,255,0.055)'; rr(g, tx, ty, tw, th, 10); g.fill();
+      g.strokeStyle = 'rgba(184,211,235,0.14)'; g.lineWidth = 1; rr(g, tx + 0.5, ty + 0.5, tw - 1, th - 1, 10); g.stroke();
       g.fillStyle = farben[st]; rr(g, tx, ty + 10, 6, th - 20, 3); g.fill();
       g.fillStyle = n > 0 || st === 'gruen' ? '#f3f8ff' : '#7f93a3'; g.font = 'bold 50px ' + FONT; g.textAlign = 'left'; g.fillText(String(n), tx + 22, ty + 52);
       g.fillStyle = '#b5cad6'; g.font = '18px ' + FONT; g.fillText(LB_WORT[st], tx + 22, ty + 72);
@@ -121,23 +135,25 @@
     }
     // Zeilen
     var zeilen = m.zeilen || [], y0 = 216, zh = 36, max = 7;
-    g.fillStyle = '#7ad6c4'; g.font = 'bold 16px ' + FONT; g.fillText('ABLAUF', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 452, y0 - 6); g.fillText('FRISCHE', 840, y0 - 6);
+    g.fillStyle = '#8fb0c8'; g.font = 'bold 15px ' + FONT; g.fillText('AUFGABE', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 430, y0 - 6); g.fillText('MESSUNG', 840, y0 - 6);
     for (i = 0; i < Math.min(max, zeilen.length); i++) {
       var z = zeilen[i], y = y0 + 6 + i * zh, c = farben[z.state] || farben.alt;
       if (i % 2 === 0) { g.fillStyle = 'rgba(255,255,255,0.045)'; rr(g, 40, y - 2, 944, zh - 2, 8); g.fill(); }
       lbLampe(g, z.state, 62, y + zh / 2 - 2, 10, c);
-      g.fillStyle = '#f3f8ff'; g.font = 'bold 25px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, z.name, 355), 84, y + 27);
-      g.fillStyle = '#b5cad6'; g.font = '21px ' + FONT; g.fillText(lbFit(g, z.text || '', 370), 452, y + 27);
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 24px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, z.name, 328), 84, y + 25);
+      g.fillStyle = '#c0d2e1'; g.font = '20px ' + FONT; g.fillText(lbFit(g, z.text || '', 390), 430, y + 25);
       // Frische-Balken: voll = eben gemessen, leer = Messung ist so alt wie die Frist
-      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, 840, y + 12, 130, 12, 6); g.fill();
+      g.fillStyle = z.state === 'alt' ? farben.alt : z.frisch == null ? '#9cb8c8' : '#d9e7f2';
+      g.font = '16px ' + FONT; g.fillText(lbFit(g, z.alter || (z.frisch == null ? 'Nicht gemessen' : 'Messwert'), 136), 840, y + 19);
+      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, 840, y + 25, 130, 4, 2); g.fill();
       if (z.frisch != null) {
         var f = Math.max(0, Math.min(1, z.frisch));
-        g.fillStyle = f > 0.5 ? farben.gruen : f > 0.2 ? farben.gelb : farben.rot;
-        if (f > 0.02) { rr(g, 840, y + 12, Math.max(12, 130 * f), 12, 6); g.fill(); }
-      } else { g.fillStyle = '#7f93a3'; g.font = '15px ' + FONT; g.fillText('kein Alter', 846, y + 24); }
+        g.fillStyle = z.state === 'alt' ? farben.alt : f > 0.5 ? '#74dece' : farben.gelb;
+        if (f > 0.02) { rr(g, 840, y + 25, Math.max(4, 130 * f), 4, 2); g.fill(); }
+      }
     }
     g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
-    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Lampen und Balken sind Messwerte, kein Livesignal' : 'Messstand unbekannt', 48, 492);
+    g.fillText(lbFit(g, m.stand ? 'Messstand ' + m.stand : 'Messstand unbekannt', zeilen.length > max ? 620 : 928), 48, 492);
     // Mehr Zeilen als Platz: der Hinweis steht rechts auf der Fusszeile (unter den Zeilen ist kein Platz mehr)
     if (zeilen.length > max) { g.fillStyle = '#9cb8c8'; g.textAlign = 'right'; g.fillText('+ ' + (zeilen.length - max) + ' weitere Zeilen im Raum', 976, 492); g.textAlign = 'left'; }
     return o.c;
@@ -272,30 +288,17 @@
       }
       case 'chart': {
         g.fillStyle = '#101725'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'BTC/USDT');
-        g.fillStyle = 'rgba(255,255,255,0.08)';
-        for (i = 1; i < 5; i++) g.fillRect(0, 12 + i * 22, W, 1);
-        var v = 70;
-        for (i = 0; i < 20; i++) {
-          var open = v, d = (r() - 0.46) * 16; v = Math.max(26, Math.min(104, v - d));
-          var hi = Math.min(open, v) - r() * 6 - 1, lo = Math.max(open, v) + r() * 6 + 1;
-          g.fillStyle = v < open ? '#2ecf7d' : '#f0556a';
-          g.fillRect(i * 6 + 6, hi, 1, lo - hi);
-          g.fillRect(i * 6 + 4, Math.min(open, v), 5, Math.abs(open - v) + 1);
-        }
-        g.strokeStyle = '#ffd166'; g.lineWidth = 1; g.beginPath(); g.moveTo(0, v); g.lineTo(W, v); g.stroke();
+        chrome(g, W, 'Krypto');
+        g.fillStyle = '#7da6be'; g.font = 'bold 14px ' + FONT; g.fillText('KEIN KURS', 18, 58);
+        g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 86);
         break;
       }
       case 'map': {
-        g.fillStyle = '#e8eef2'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'Sendungen');
-        g.strokeStyle = '#c4ced6'; g.lineWidth = 4;
-        for (i = 0; i < 4; i++) { g.beginPath(); g.moveTo(0, 28 + i * 24); g.lineTo(W, 20 + i * 26); g.stroke(); }
-        for (i = 0; i < 3; i++) { g.beginPath(); g.moveTo(24 + i * 38, 12); g.lineTo(34 + i * 34, H); g.stroke(); }
-        g.strokeStyle = '#e48a3f'; g.lineWidth = 3; g.setLineDash([6, 4]);
-        g.beginPath(); g.moveTo(16, 100); g.lineTo(46, 70); g.lineTo(78, 82); g.lineTo(108, 36); g.stroke(); g.setLineDash([]);
-        g.fillStyle = '#d95555'; g.beginPath(); g.arc(108, 36, 6, 0, 7); g.fill();
-        g.fillStyle = '#fff'; g.fillRect(105, 34, 6, 5);
+        g.fillStyle = '#172333'; g.fillRect(0, 0, W, H);
+        chrome(g, W, 'Versand');
+        g.strokeStyle = '#d9b184'; g.lineWidth = 3; g.strokeRect(40, 40, 48, 44);
+        g.beginPath(); g.moveTo(64, 40); g.lineTo(64, 63); g.stroke();
+        g.fillStyle = '#b8c9da'; g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 111);
         break;
       }
       case 'shop': {
@@ -343,13 +346,10 @@
       }
       case 'dash': {
         g.fillStyle = '#12202b'; g.fillRect(0, 0, W, H);
-        chrome(g, W, 'Übersicht');
-        var bars = [0.5, 0.8, 0.35, 0.65, 0.9, 0.55];
-        for (i = 0; i < bars.length; i++) {
-          g.fillStyle = ['#7ee787', '#79c0ff', '#ffa657', '#d2a8ff', '#7ee787', '#79c0ff'][i];
-          g.fillRect(10 + i * 19, 112 - bars[i] * 80, 13, bars[i] * 80);
-        }
-        g.fillStyle = 'rgba(255,255,255,0.7)'; g.font = 'bold 12px ' + FONT; g.fillText('12 · 3 · 0', 10, 26);
+        chrome(g, W, 'Chefbüro');
+        g.strokeStyle = '#79b9bd'; g.lineWidth = 2;
+        [[12, 30], [68, 30], [12, 64], [68, 64]].forEach(function (p) { rr(g, p[0], p[1], 48, 26, 4); g.stroke(); });
+        g.fillStyle = '#b8c9da'; g.font = '11px ' + FONT; g.fillText('Messdaten am Board', 10, 111);
         break;
       }
       case 'logo': {

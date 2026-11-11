@@ -155,7 +155,15 @@
         if (pose === 'rest') return 'idle';
         return room === 'Krypto' ? 'chart' : room === 'Versand' ? 'map' : room === 'Shop' ? 'shop' : room === 'Chefbüro' ? 'dash' : 'code';
       }
-      function applyScreen(seat, kind) {
+      function applyScreen(seat, kind, ent) {
+        if (ent && T.station) {
+          var model = zeileModell(ent), key = JSON.stringify([model.name, model.state, model.text, model.alter]);
+          if (!seat.dataTex) seat.dataTex = R.texture(T.station(model));
+          else if (seat.dataKey !== key) R.retex(seat.dataTex, T.station(model));
+          seat.dataKey = key; seat.screenKind = 'status';
+          seat.screens.forEach(function (m) { m.tex = seat.dataTex; m.uvs = [1, 1]; m.uvo = [0, 0]; });
+          return;
+        }
         seat.screenKind = kind;
         var st = W.screenTex(kind, seat.seed);
         seat.screens.forEach(function (m, k) {
@@ -179,23 +187,37 @@
       var lastState = null, lastZeit = '';
       function farbenHex() { var o = {}; ZUSTAENDE.forEach(function (k) { o[k] = (lastState && lastState.colors && lastState.colors[k]) || (cfg.colors && cfg.colors[k]) || DEF[k]; }); return o; }
       function zaehlen(liste) { var z = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 }; liste.forEach(function (e) { if (z[e.state] != null) z[e.state]++; else z.alt++; }); return z; }
+      function zeileModell(e) {
+        var t = Date.parse(e.gemessen), now = Date.now(), gueltig = isFinite(t) && t <= now + 300000;
+        var minuten = gueltig ? Math.max(0, Math.floor((now - t) / 60000)) : 0;
+        var alter = e.zeitUnklar ? 'Zeit unklar' : !gueltig ? 'Nicht gemessen' : minuten < 1 ? 'Eben gemessen' : minuten < 60 ? 'vor ' + minuten + ' min' : minuten < 1440 ? 'vor ' + Math.floor(minuten / 60) + ' h' : 'vor ' + Math.floor(minuten / 1440) + ' d';
+        return { name: e.kurz || e.name || e.id, state: e.state, text: e.ereignis || '', frisch: e.frisch == null ? null : e.frisch, alter: alter, gemessen: gueltig ? e.gemessen : '', messText: gueltig ? (e.gemessen_text || '') : '' };
+      }
+      function messstand(liste) {
+        var zeiten = liste.filter(function (e) { var t = Date.parse(e.gemessen); return isFinite(t) && t <= Date.now() + 300000; }).sort(function (a, b) { return Date.parse(a.gemessen) - Date.parse(b.gemessen); });
+        if (!zeiten.length) return '';
+        var a = zeiten[0], b = zeiten[zeiten.length - 1];
+        function datum(e) { return new Date(e.gemessen).toLocaleString('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }); }
+        return a.gemessen === b.gemessen ? datum(a) : datum(a) + ' bis ' + datum(b);
+      }
       /* Aus den Zeilen je Raum das, was das Liveboard zeigt (nur vorhandene Werte, nichts erfunden). */
       function liveModelle() {
-        var ents = (lastState && lastState.ents) || [], zeit = swissClock(), farben = farbenHex(), stand = (lastState && lastState.stand) || '', out = {}, raeume = [], summe = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 };
+        var ents = (lastState && lastState.ents) || [], zeit = swissClock(), farben = farbenHex(), out = {}, raeume = [], summe = { gruen: 0, gelb: 0, rot: 0, du: 0, alt: 0 };
         RAUMFOLGE.forEach(function (name) {
           var liste = ents.filter(function (e) { return e.bereich === name; });
           var z = zaehlen(liste), kpi = null;
-          liste.forEach(function (e) { if (!kpi && (e.figur === 'tafel' || e.figur === 'paket') && e.menge != null && e.menge !== '') kpi = { wert: e.menge, label: e.kurz || e.name || '' }; });
-          out[name] = { titel: RAUMTITEL[name] || name, zeit: zeit, stand: stand, farben: farben, zaehler: z, kpi: kpi,
-            zeilen: liste.map(function (e) { return { name: e.kurz || e.name || e.id, state: e.state, text: e.ereignis || '', frisch: e.frisch == null ? null : e.frisch }; }) };
+          liste.forEach(function (e) { if (!kpi && (e.figur === 'tafel' || e.figur === 'paket') && e.menge != null && e.menge !== '') kpi = { wert: e.menge, label: e.kurz || e.name || '', state: e.state }; });
+          out[name] = { titel: RAUMTITEL[name] || name, zeit: zeit, stand: messstand(liste), farben: farben, zaehler: z, kpi: kpi,
+            zeilen: liste.map(zeileModell) };
           raeume.push({ titel: RAUMTITEL[name] || name, n: liste.length, zaehler: z });
           ZUSTAENDE.forEach(function (k) { summe[k] += z[k]; });
         });
-        out.__uebersicht = { zeit: zeit, stand: stand, farben: farben, raeume: raeume, summe: summe, n: ents.length };
+        out.__uebersicht = { zeit: zeit, stand: messstand(ents), farben: farben, raeume: raeume, summe: summe, n: ents.length };
         return out;
       }
       function liveAktualisieren() { if (W.updateLive) { lastZeit = swissClock(); W.updateLive(lastState ? liveModelle() : {}); made.dirty = true; } }
       made.liveModelle = liveModelle;
+      made.monitorName = function () { return monitorMode ? monitorName : null; };
 
       /* Neue Daten: ents = [{id, bereich, figur, kurz, name, state, pose, menge, ereignis, frisch}], chef = {pose, blaetter}, stand = Messstand als Text */
       made.update = function (state) {
@@ -221,7 +243,7 @@
             seat.entId = e.id; seat.ent = e; seat.used = true; seat.state = e.state; seat.pose = e.pose;
             seat.fig.setPose(e.pose);
             if(seat.fig.setRole)seat.fig.setRole(e.rolle);
-            applyScreen(seat, screenKindFor(e.bereich, e.pose, true));
+            applyScreen(seat, screenKindFor(e.bereich, e.pose, true), e);
             if (seat.sign) seat.sign.tex = e.ortArt ? W.ortTex(e.ortArt, e.ortKurz) : null;
             var h = seat.h, c = Math.cos(h), s = Math.sin(h);
             picks.push({ id: e.id, mn: [seat.x - 0.95, 0, Math.min(seat.z - 0.4 * c, seat.z + 1.2 * c)], mx: [seat.x + 0.95, 1.9, Math.max(seat.z - 0.4 * c, seat.z + 1.2 * c)] });
@@ -250,6 +272,7 @@
             ci++;
           }
         });
+        W.seats.forEach(function (seat) { if (!seat.spec.boss && !seat.used) applyScreen(seat, 'sleep'); });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
         if(W.campusPanel)picks.push({id:'__campus',mn:W.campusPanel.mn,mx:W.campusPanel.mx});
         Object.keys(W.live).forEach(function (name) { var b = W.live[name]; picks.push({ id: '__live:' + name, mn: b.mn, mx: b.mx }); });
@@ -412,7 +435,7 @@
         resize();
         cam.update(made.aspect || 1.33);
         R.begin(cam, env());
-        K.drawWorld(W, R, t, hour, belt);
+        K.drawWorld(W, R, t, hour, belt, still);
         var i, seat, f;
         for (i = 0; i < W.seats.length; i++) {
           seat = W.seats[i];

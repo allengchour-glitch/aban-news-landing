@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-14).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-15).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-14';
+  K.DESIGN_VERSION = 'campus-einheitlich-15';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -68,6 +68,7 @@
     var texCache = {}, ST = new K.Stack(), i, j;
     function tex(key, make, opt) { if (!texCache[key]) texCache[key] = R.texture(make(), opt || {}); return texCache[key]; }
     var wingX = 0, wingZ = 0;
+    var THEMEN = { 'Chefbüro': ['#e4e7df', '#385c54'], 'Krypto': ['#d2dedf', '#355a68'], 'Shop': ['#ede5d8', '#9e7561'], 'Versand': ['#e0e5da', '#7c8d6b'], 'Social Media': ['#e6deea', '#867395'], 'Entwicklerbüro': ['#dbe7e4', '#477c79'], 'YouTube-Studio': ['#dde2ec', '#576f97'] };
     function beginRoom(name) { var d = ROOMS[name]; wingX = d.x0; wingZ = d.z0; B.push().t(wingX, 0, wingZ); }
     function endRoom() { B.pop(); wingX = 0; wingZ = 0; }
     function quad(o) {
@@ -98,17 +99,21 @@
       W.inst.push(it);
       return it;
     }
-    function floorMesh(x0, z0, x1, z1, key, make, tile) {
+    function floorMesh(x0, z0, x1, z1, key, make, tile, y) {
       var FB = new K.Builder();
-      FB.floor(x0 + wingX, z0 + wingZ, x1 + wingX, z1 + wingZ, 0, [1, 1, 1], 0, (x1 - x0) / tile, (z1 - z0) / tile);
+      FB.floor(x0 + wingX, z0 + wingZ, x1 + wingX, z1 + wingZ, y || 0, [1, 1, 1], 0, (x1 - x0) / tile, (z1 - z0) / tile);
       var m = R.mesh(FB);
       m.tex = tex(key, make, { repeat: true });
       stat(m);
     }
 
     /* ---------- Gelände: Plattform mit Gassen, Rampe im Osten, weicher Schatten darunter ---------- */
-    B.box(0, -0.5, 11.5, 26.4, 0.7, 52, '#3a3f4b');
-    B.floor(-13.2, -14.5, 13.2, 37.5, GY + 0.004, '#d3ddd8', 0);
+    B.box(0, -0.5, 11.5, 26.4, 0.7, 52, '#334d4a');
+    floorMesh(-13.2, -14.5, 13.2, 37.5, 'campusStein', function () { return T.concrete('#d5dbcf', 51); }, 3.2, GY + 0.004);
+    // Gestufter Sockel und dezente Lichtfugen statt einer grauen, ungegliederten Platte.
+    B.box(0, -0.78, 11.5, 27.0, 0.16, 52.6, '#a0b4a8');
+    B.box(13.22, -0.29, 17.3, 0.045, 0.045, 37.8, '#d9d0af', 0.4);
+    B.box(-13.22, -0.29, 11.5, 0.045, 0.045, 51.7, '#d9d0af', 0.4);
     B.box(14.8, -0.5, 2.8, 3.2, 0.7, 8.4, '#3a3f4b');
     B.floor(13.2, -1.4, 16.4, 7.0, GY + 0.004, '#4b505b', 0);
     for (j = 0; j < 8; j++) B.floor(15.9, -1.1 + j * 1.0, 15.98, -0.55 + j * 1.0, GY + 0.007, '#e8e6e0', 0);
@@ -116,7 +121,7 @@
 
     /* ---------- Hülle eines Raums: Boden, Plattformrand, hohe Nord- und (aussen) Westwand, niedrige übrige Wände mit Durchgängen ---------- */
     function huelle(name, o) {
-      var t = 0.18, wand = o.wand || '#d8dfd7', sockel = '#6c8178', LOW = 0.95, hoch = ROOMS[name].west === 'hoch';
+      var thema = THEMEN[name], t = 0.18, wand = o.wand || thema[0], sockel = thema[1], LOW = 0.95, hoch = ROOMS[name].west === 'hoch';
       floorMesh(0, 0, RW, RD, o.key, o.floor, o.tile || 2);
       B.blk(RW / 2, GY, RD / 2, RW + 0.4, -GY - 0.004, RD + 0.4, '#b9c4bf');
       B.blk(RW / 2, 0, t / 2, RW, WH, t, wand);
@@ -142,6 +147,13 @@
       // Ostwand (niedrig) mit Durchgang
       if (o.ost) { low(RW - t, 0, RW, o.ost[0]); low(RW - t, o.ost[1], RW, RD); rahmen([RW - t / 2, RW - t / 2], [o.ost[0], o.ost[1]], true); }
       else low(RW - t, 0, RW, RD);
+      // Warme Lichtfugen, farbige Sockel und Akustiklamellen gliedern jeden Pavillon.
+      B.box(RW / 2, WH - 0.15, t + 0.035, RW - 0.4, 0.045, 0.035, '#fff1d1', 0.8);
+      B.box(RW / 2, 0.08, RD - t - 0.025, RW - 0.5, 0.035, 0.025, '#e4d9b8', 0.45);
+      if (name !== 'Chefbüro') {
+        B.box(1.45, 1.7, t + 0.016, 2.1, 3.08, 0.03, thema[1]);
+        for (var a = 0; a < 11; a++) B.box(0.5 + a * 0.19, 1.7, t + 0.055, 0.075, 3.08, 0.06, '#bba17f');
+      }
     }
     /* Das Liveboard an der Nordwand: Rahmen, Leuchtleiste, Bild (wird von W.updateLive gezeichnet). uc = Mitte in u. */
     function liveBoard(name, uc) {
@@ -425,12 +437,44 @@
     // Türkise Randlinien der Plattform
     B.floor(-13.2, 6.9, 13.2, 7.02, GY + 0.01, '#68b8ad', 0.2);
     B.floor(-13.2, 14.0, 13.2, 14.12, GY + 0.01, '#68b8ad', 0.2);
-    // Pausengarten im freien Feld neben dem YouTube-Studio
-    B.floor(1.4, 25.8, 11.8, 33.8, GY + 0.012, '#a9cfa9', 0);
-    B.floor(3.2, 27.0, 10.0, 32.6, GY + 0.016, '#bfdcbc', 0);
-    [[2.4, 26.9], [10.8, 26.9], [2.4, 32.8], [10.8, 32.8]].forEach(function (p) { place('planter', p[0], GY, p[1], 0, 0.7); });
-    [[4.6, 30.0], [8.2, 29.0], [6.6, 32.0]].forEach(function (p) { place('plant', p[0], GY, p[1], 0, 1.2); });
-    B.box(6.4, 0.2 + GY, 27.6, 2.6, 0.16, 0.7, '#b99a73'); B.box(6.4, 0.55 + GY, 27.28, 2.6, 0.55, 0.1, '#7b9c91');
+    // Gartenterrasse: Besprechungsecke, offene Pergola, Wasser und breite Wege.
+    // Reine Raumgestaltung; Wasserbewegung bildet keine betriebliche Aktivität ab.
+    B.box(6.6, GY + 0.05, 29.8, 10.4, 0.1, 8.0, '#879a83');
+    for (j = 0; j < 23; j++) B.box(6.6, GY + 0.12, 26.0 + j * 0.34, 10.0, 0.04, 0.3, j % 2 ? '#c8ae88' : '#bfa47d');
+    [[2.1, 26.5], [6.1, 26.5], [2.1, 31.6], [6.1, 31.6]].forEach(function (p) {
+      B.cylb(p[0], GY + 0.14, p[1], 0.06, 0.06, 2.8, 8, '#56766a');
+    });
+    B.box(4.1, 2.73, 26.5, 4.25, 0.14, 0.16, '#45675b');
+    B.box(4.1, 2.73, 31.6, 4.25, 0.14, 0.16, '#45675b');
+    // Wenige Dachlatten lassen die Kamera und die Sicht auf die Terrasse frei.
+    for (j = 0; j < 5; j++) B.box(2.1 + j, 2.85, 29.05, 0.095, 0.12, 5.4, '#93ad97');
+    B.cylb(4.1, GY + 0.14, 28.9, 0.08, 0.18, 0.7, 12, '#4d695e');
+    B.cyl(4.1, 0.74, 28.9, 0.95, 0.95, 0.09, 32, '#e7ddc9');
+    [[2.7, 28.9], [5.5, 28.9], [4.1, 27.5], [4.1, 30.3]].forEach(function (p) {
+      B.cylb(p[0], GY + 0.14, p[1], 0.29, 0.22, 0.45, 16, '#81988c');
+      B.cyl(p[0], 0.49, p[1], 0.3, 0.3, 0.08, 16, '#e8cfab');
+    });
+    // Rundes Wasserbecken mit flachem Rand. Alle Ringe teilen dasselbe Netz.
+    var fx = 9.0, fz = 29.8;
+    B.cylb(fx, GY + 0.14, fz, 1.45, 1.5, 0.37, 40, '#627e72');
+    B.cyl(fx, 0.385, fz, 1.28, 1.28, 0.035, 40, '#69a69f', 0.18);
+    B.push().t(fx, 0.43, fz).rx(-PI / 2).torus(0, 0, 0, 1.36, 0.095, 40, 6, '#d9d4bc').pop();
+    B.cylb(fx, 0.39, fz, 0.18, 0.32, 0.39, 16, '#a4b5a0');
+    B.cyl(fx, 0.8, fz, 0.42, 0.42, 0.1, 24, '#d9d4bc');
+    var eau = new K.Builder();
+    [0.38, 0.68, 0.98].forEach(function (r) { eau.push().rx(-PI / 2).torus(0, 0, 0, r, 0.014, 32, 4, '#c9eece', 0.2).pop(); });
+    W.garden = { mesh: R.mesh(eau), m: M.ident(), x: fx, z: fz, y: 0.412 };
+    [[2.1, 32.7], [6.4, 32.7], [10.9, 26.7], [10.9, 32.7]].forEach(function (p) { place('planter', p[0], GY + 0.14, p[1], 0, 0.85); });
+    // Klare Wegmarkierungen und niedrige Leuchten; die Mitte bleibt frei begehbar.
+    [-9.3, -6.2, -3.1, 3.1, 6.2, 9.3].forEach(function (x) {
+      B.box(x, GY + 0.018, 8.0, 1.8, 0.025, 0.1, '#b7c6b3');
+      B.box(x, GY + 0.018, 13.5, 1.8, 0.025, 0.1, '#b7c6b3');
+    });
+    [[-12.5, 8.4], [12.5, 8.4], [-12.5, 24.1], [12.5, 24.1], [0, 34.7]].forEach(function (p) {
+      B.blk(p[0], GY, p[1], 0.16, 0.55, 0.16, '#45675b');
+      B.box(p[0], GY + 0.46, p[1], 0.18, 0.1, 0.18, '#fff0cb', 0.8);
+    });
+
     // Laternen in den Gassen
     [[0, -3.0], [0, 8.2], [0, 24.0]].forEach(function (p) { B.cylb(p[0], GY, p[1], 0.05, 0.05, 2.6, 8, '#39424b'); B.sph(p[0], 2.75 + GY, p[1], 0.16, 0.16, 0.16, 10, 6, '#fff0cf', 0.8); });
 
@@ -495,7 +539,9 @@
   };
 
   /* Pro Bild: Matrizen der bewegten Weltteile aktualisieren und alles Weltliche zeichnen. */
-  K.drawWorld = function (W, R, t, hour, belt) {
+  K.drawWorld = function (W, R, t, hour, belt, still) {
+    // Reduzierte Bewegung friert auch die dekorative Welt ein; Uhrzeit bleibt echt.
+    if (still) t = 0;
     var i, j, m, it;
     for (i = 0; i < W.statics.length; i++) R.draw(W.statics[i], null);
     for (i = 0; i < W.shadowStatics.length; i++) R.shadow(W.shadowStatics[i], null);
@@ -515,6 +561,11 @@
     m = W.crystal.m; M.ident(m); m[12] = W.crystal.p[0]; m[13] = W.crystal.p[1] + Math.sin(t * 1.6) * 0.05; m[14] = W.crystal.p[2];
     c = Math.cos(t * -0.7); s = Math.sin(t * -0.7); m[0] = c; m[2] = -s; m[8] = s; m[10] = c;
     R.draw(W.crystal.mesh, m);
+    if (W.garden) {
+      var g = W.garden, wave = 1 + Math.sin(t * 0.65) * 0.06;
+      M.ident(g.m); g.m[0] = wave; g.m[10] = wave; g.m[12] = g.x; g.m[13] = g.y; g.m[14] = g.z;
+      R.draw(g.mesh, g.m);
+    }
     var H = W.hands, hh = (hour % 12) / 12 * PI * 2, mm = (hour % 1) * PI * 2;
     M.ident(H.mh); M.ident(H.mm);
     var ch = Math.cos(-hh), sh = Math.sin(-hh); H.mh[0] = ch; H.mh[1] = sh; H.mh[4] = -sh; H.mh[5] = ch; H.mh[12] = H.c[0]; H.mh[13] = H.c[1]; H.mh[14] = H.c[2];

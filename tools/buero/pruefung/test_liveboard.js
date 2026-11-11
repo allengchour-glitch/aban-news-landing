@@ -1,4 +1,4 @@
-// Prüfung der Liveboards und der grösseren Räume (Design campus-einheitlich-14) gegen den Nachbau der Dashboard-Werte.
+// Prüfung der Liveboards und der grösseren Räume (Design campus-einheitlich-15) gegen den Nachbau der Dashboard-Werte.
 // Aufruf: node test_liveboard.js <Ordner>   (Ordner mit seite.html, buero.json, kb3d-*.js und harness.html; Chromium mit Software-WebGL genügt)
 // Alle erwarteten Zahlen werden aus den Daten der Seite gerechnet (window.__ROWS und die Einträge der Szene), nichts steht fest im Test.
 const { chromium } = require('playwright');
@@ -15,6 +15,11 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   // reducedMotion: die Seite zeichnet dann nur bei Änderungen (die Software-Grafik wäre sonst dauernd belegt und Klicks kämen nicht durch)
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
   const p = await ctx.newPage();
+  await p.addInitScript(() => {
+    window.__kbAnzeigeTimer = [];
+    const set = window.setInterval;
+    window.setInterval = function (fn, ms) { if (ms === 30000) window.__kbAnzeigeTimer.push(fn); return set.apply(this, arguments); };
+  });
   const errs = [];
   p.on('pageerror', (e) => errs.push('pageerror: ' + String(e).slice(0, 200)));
   p.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text().slice(0, 200)); });
@@ -32,7 +37,7 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
     const K = window.KB3D, last = K.Buero.last;
     return { ver: K.DESIGN_VERSION, attr: document.querySelector('.kb').getAttribute('data-design'), rooms: K.ROOMS, size: K.ROOM_SIZE, live: Object.keys(last.debug.live()), seats: last.debug.seats.map((s) => ({ room: s.spec.room, i: s.spec.i, x: s.x, z: s.z, used: !!s.used, boss: !!s.spec.boss })) };
   });
-  ok('Designversion von Seite und Code gleich und 14', w.ver === w.attr && w.ver === 'campus-einheitlich-14', [w.ver, w.attr]);
+  ok('Designversion von Seite und Code gleich und 15', w.ver === w.attr && w.ver === 'campus-einheitlich-15', [w.ver, w.attr]);
   ok('sieben Räume bekannt', Object.keys(w.rooms).length === 7 && FOLGE.every((n) => w.rooms[n]), Object.keys(w.rooms));
   ok('Räume sind gross (mindestens 80 m², mindestens 10 × 8 m)', w.size[0] >= 10 && w.size[1] >= 8 && w.size[0] * w.size[1] >= 80, w.size);
   // Abstand zwischen zwei Räumen (Gasse): in x oder in z mindestens 2,5 m Luft
@@ -255,6 +260,48 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   await klick('.kb3-live');
   ok('Knopf «Liveboard» ohne Raum öffnet den Zentralmonitor', (await p.evaluate(() => window.KB3D.Buero.last.debug.monitor())) === 'Zentral');
   await klick('[data-cmd="monitorBack"]');
+
+  // Messfehler dürfen keine grünen Lampen und keine fremde Raum-Messzeit erzeugen.
+  const frische = await p.evaluate(() => {
+    const vorher = window.__ROWS, nowFn = Date.now, jetzt = Date.now();
+    const iso = (t) => new Date(t).toISOString(), T = window.KB3D.tex;
+    let aus;
+    try {
+      window.__ROWS = vorher.map((r) => {
+        const n = Object.assign({}, r);
+        if (n.bereich === 'Shop') Object.assign(n, { status: 'gruen', gemessen: iso(jetzt - 48 * 3600000), frisch_h: 24, aktiv_h: 0 });
+        if (n.bereich === 'Krypto') Object.assign(n, { status: 'gruen', gemessen: iso(jetzt), frisch_h: 24, aktiv_h: 0 });
+        return n;
+      });
+      window.__runAll();
+      const L = window.KB3D.Buero.last, mo = L.liveModelle();
+      const eigenerStand = new Date(jetzt - 48 * 3600000).toLocaleString('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+      const alt = mo.Shop.zeilen.every((z) => z.state === 'alt' && /vor 2 d/.test(z.alter));
+      const raum = mo.Shop.stand === eigenerStand && mo.Shop.stand !== mo.Krypto.stand;
+      ['auswahl', 'schaufenster', 'waechter'].forEach((id, i) => {
+        Object.assign(window.__ROWS.find((r) => r.id === id), { status: 'gruen', gemessen: ['', 'kaputt', iso(jetzt + 86400000)][i], frisch_h: 24 });
+      });
+      window.__runAll();
+      const unbekannt = ['auswahl', 'schaufenster', 'waechter'].map((id) => L.ents.find((e) => e.id === id).state);
+      const missing = L.liveModelle().Shop.zeilen.filter((z) => /Nicht gemessen|Zeit unklar/.test(z.alter)).length;
+      const texte = [], fill = CanvasRenderingContext2D.prototype.fillText;
+      CanvasRenderingContext2D.prototype.fillText = function (t) { texte.push(String(t)); return fill.apply(this, arguments); };
+      try { T.liveboard(null); T.liveboardUebersicht(null); T.station({ name: 'Quellzeile', state: 'gelb', text: 'Echter Ereignistext', alter: 'Nicht gemessen' }); T.screen('chart'); T.screen('dash'); } finally { CanvasRenderingContext2D.prototype.fillText = fill; }
+      window.__ROWS = vorher.map((r) => Object.assign({}, r, r.id === 'auswahl' ? { status: 'gruen', gemessen: iso(jetzt), frisch_h: 1, aktiv_h: 0 } : {}));
+      window.__runAll();
+      Date.now = () => jetzt + 2 * 3600000;
+      window.__kbAnzeigeTimer.forEach((fn) => fn());
+      const gealtert = L.ents.find((e) => e.id === 'auswahl').state;
+      aus = { alt, raum, unbekannt, missing, gealtert, timer: window.__kbAnzeigeTimer.length,
+        quellentext: texte.includes('Quellzeile') && texte.includes('Echter Ereignistext') && texte.includes('Nicht gemessen'),
+        keinFalschesLive: !texte.includes('LIVE') && !texte.includes('BTC/USDT') && !texte.includes('12 · 3 · 0') };
+    } finally { Date.now = nowFn; window.__ROWS = vorher; window.__runAll(); }
+    return aus;
+  });
+  ok('alte Zeilen bleiben alt, jeder Raum trägt seine eigene Messzeit', frische.alt && frische.raum, frische);
+  ok('fehlende, ungültige und zukünftige Messzeiten bleiben sichtbar ungeklärt', frische.unbekannt.every((s) => s === 'gelb') && frische.missing === 3, frische);
+  ok('Arbeitsplatz zeigt die Quellzeile; Uhr und Platzhalter behaupten keine Live-Metriken', frische.quellentext && frische.keinFalschesLive, frische);
+  ok('lokaler Anzeige-Timer lässt Messungen auch mit reduzierter Bewegung altern', frische.timer > 0 && frische.gealtert === 'alt', frische);
 
   // ---------- 8) Aufwand und Fehler ----------
   const last = await p.evaluate(() => window.KB3D.Buero.last.debug.render(1.7, true));

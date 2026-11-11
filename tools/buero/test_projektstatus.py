@@ -1,5 +1,6 @@
 from datetime import datetime, timezone, timedelta
 import json
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -63,7 +64,28 @@ class ProjektstatusTest(unittest.TestCase):
             with patch.object(webseite.subprocess, 'run', side_effect=self.modellbau):
                 rows = webseite.bauen(p)
             self.assertTrue(all(r['ereignis']=='Nicht verbunden' for r in rows))
-            self.assertNotIn('__aktualisiereProjektstatus', p.read_text())
+            self.assertIn('__aktualisiereProjektstatus', p.read_text())
+            self.assertIn("'/buero-projektstatus.json'", p.read_text())
+            self.assertIn("'/buero-ablaufstatus.json'", p.read_text())
+
+    def test_oeffentliche_uhr_bleibt_die_browseruhr(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / 'index.html'
+            with patch.object(webseite.subprocess, 'run', side_effect=self.modellbau):
+                webseite.bauen(p)
+            html = p.read_text()
+            self.assertFalse('%%JETZT%%' in html, 'Platzhalter der Testuhr ist in der Webansicht.')
+            bootstrap = re.search(r'<script>(.*?)</script>', html, re.S).group(1)
+            # Derselbe JavaScript-Kontext wie im Browser: die native Uhr darf nicht ersetzt werden.
+            code = """const vm=require('node:vm'),fs=require('node:fs');
+const ctx=vm.createContext({window:{},document:{querySelectorAll(){return [];}}});
+vm.runInContext('window.vorher=Date.now();window.uhr=Date.now;',ctx);
+vm.runInContext(fs.readFileSync(0,'utf8'),ctx);
+const r=vm.runInContext('({gleich:Date.now===window.uhr,vorher:window.vorher,jetzt:Date.now(),nachher:new Date().getTime()})',ctx);
+if(!r.gleich||!Number.isFinite(r.jetzt)||r.jetzt<r.vorher||r.jetzt>r.nachher)process.exit(1);
+"""
+            probe = subprocess.run(['node', '-e', code], input=bootstrap, text=True, capture_output=True)
+            self.assertEqual(probe.returncode, 0, probe.stderr or 'Öffentliche Uhr wurde überschrieben.')
 
     def test_bestaetigter_bau_braucht_tatsaechliche_pakete(self):
         with tempfile.TemporaryDirectory() as tmp:
