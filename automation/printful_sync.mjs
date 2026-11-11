@@ -10,6 +10,7 @@
  *      Ja → nichts anlegen, nur Tag `printful-synced` + Metafeld nachtragen (ein gescheitertes Markieren führt nie mehr zu einem zweiten Auftrag), ABER erst nach dem Vergleich von Empfänger (Name, PLZ, Land) und Stückzahl:
  *      weicht der vorhandene Auftrag ab (fremder «LX…»-Auftrag, wiederverwendete Bestellnummer), gilt die Bestellung NICHT als erledigt (harter Befund «vorhanden-fremd»). Nicht prüfbar → nichts anlegen, später wieder.
  *      Hat ein früherer Lauf vor weniger als einer Stunde den Auftrag angelegt (Anspruchs-Tag `printful-anlegen-<JJJJMMTT>t<HHMM>-<SS><mmm>-<Zufall>`, gesetzt VOR dem POST und danach neu gelesen: den kleinsten Anspruch der letzten Stunde behält der Lauf, der übrige tritt zurück) und Printful zeigt ihn noch nicht, wird nichts neu angelegt.
+ *      Kein Tag, das der Sync schreibt, ist länger als 40 Zeichen (Grenze von Shopify je Order-Tag, lib TAG_MAX; Gegenprüfung 11.11.2026): die Markierung ist genau 40 Zeichen lang (3 Zufallszeichen), die Namen der Befundarten sind höchstens 24 Zeichen lang.
  *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6 ALT «🖼️ Druckdatei (<Platzierung>)», v6 NEU «_Druckdatei (<Platzierung>)» (vorgesehen, heute schreibt sie kein Editor),
  *      v5: Vorne/Hinten; `_vorschau` ist KEINE Druckdatei) mit den ECHTEN Printful-Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und
  *      Mindest-dpi des Katalogs; dazu als weiche Gegenprobe die Angabe `_pod_karte.qd`), KI-Kontrolle, Empfänger. `_pod_karte.m` und `.pv` müssen zur SKU der Position passen.
@@ -22,7 +23,7 @@
  *      (zwei gleichzeitige scharfe Läufe, etwa lokal neben Actions, legen sonst beide an; in Actions schliesst die Concurrency-Gruppe das ohnehin aus). Scheitert eines davon, wird nichts angelegt.
  *      Zwischen dem Setzen und dem Nachlesen wird GEWARTET (3000 ms): ohne die Wartezeit sah der spätere Lauf die noch nicht angekommene Markierung des früheren nicht (Schreiben und Lesen verschränkt), und beide legten an.
  *      Brauchte das eigene Schreiben länger als die halbe Wartezeit, legt der Lauf nur an, wenn er allein markiert hat.
- *   2. Auftrag als ENTWURF anlegen (mit external_id). Meldet Printful ihn NICHT mit Status «draft» zurück: harter Befund «nicht-als-entwurf-angelegt», Meldung, Tags, und der LAUF ENDET (keine weitere Bestellung, Exit 1).
+ *   2. Auftrag als ENTWURF anlegen (mit external_id). Meldet Printful ihn NICHT mit Status «draft» zurück: harter Befund «kein-entwurf», Meldung, Tags, und der LAUF ENDET (keine weitere Bestellung, Exit 1).
  *      Sonst sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
  *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
  *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).
@@ -58,7 +59,7 @@ import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
   kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard, adresseProblem,
   zahlungPruefen, anlegenTag, anlegenAlterMin, anlegenGesperrt, anspruchGewonnen, ANLEGEN_SPERRE_MIN, vorhandenVergleichen, entwurfVergleichen, scopesBewerten, bestaetigenPlan, bestellStand, bestellAbweichung,
-  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen,
+  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, anspruchZufall, vorhandenArt,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -136,7 +137,7 @@ const zeilen = [];          // Zusammenfassung je Bestellung (öffentlich: Numme
 const fehlerAdd = (kurz, detail = '') => { fehler.push({ kurz, detail: String(detail || '') }); };
 const fehlerLog = (f) => f.kurz + (DETAIL && f.detail ? ' | ' + f.detail : '');
 const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');
-const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0 };
+const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0, keinEntwurf: 0 };   // keinEntwurf: Fund G2, eigener Zähler (Gegenprüfung 11.11.2026: zählte vorher als «Entwurf/Review»)
 let scopeHinweis = '';   // Zusatz für den harten Befund «dienst-standort-unklar», wenn dem Token ein Recht für Fulfillment-Orders fehlt
 let abbruch = null;      // Grund, aus dem der Lauf für ALLE weiteren Bestellungen endet (Fund G2: Printful legte einen Auftrag nicht als Entwurf an). null = weiter
 
@@ -459,7 +460,7 @@ async function bearbeite(tok, o) {
   // Schlussprüfung 10.11.2026 (Fund G1): zwischen dem Setzen und dem Nachlesen wird GEWARTET (Vorgabe 3000 ms). Ohne die Wartezeit sah der spätere Lauf die noch nicht angekommene Markierung des früheren nicht und beide legten an
   // (Schreiben und Lesen verschränkt; gemessen 5 von 5 Doppelbestätigungen). Die Dauer des eigenen Schreibens wird gemessen: brauchte es länger als die halbe Wartezeit, legt dieser Lauf nur an, wenn er ALLEIN markiert hat.
   const t0Anspruch = performance.now();
-  const meinTag = anlegenTag(Date.now(), randomBytes(4).toString('hex'));
+  const meinTag = anlegenTag(Date.now(), anspruchZufall(randomBytes(4)));
   if (!(await tagsSetzen(tok, o, [meinTag]))) { fehlerAdd(`${o.name}: Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }
   const schreibMs = Math.round(performance.now() - t0Anspruch);
   const langsam = anspruchLangsam(schreibMs, ANSPRUCH_WARTE_MS);
@@ -491,24 +492,21 @@ async function bearbeite(tok, o) {
   // 2b. Ist der Auftrag wirklich ein ENTWURF? (Schlussprüfung 10.11.2026, Fund G2.) Meldet Printful etwas anderes als «draft» (Store-Einstellung «automatisch bestätigen», geänderter Vorgabewert, API-Änderung), ist er womöglich schon
   // bezahlt, bevor Dateistatus, Kosten, Obergrenze, KI und frisches Lesen liefen. Dann: sofort melden (🔴), die Bestellung markieren (printful-synced + Stopp-Tag, damit kein Lauf sie nochmal anfasst) und den LAUF BEENDEN:
   // keine weitere Bestellung wird angelegt, Exit 1. Nichts wird bestätigt, nichts storniert (das entscheidet der Mensch im Printful-Dashboard).
+  // Gegenprüfung 11.11.2026: dieselbe Prüfung gilt auch für den über die external_id WIEDERGEFUNDENEN Auftrag (Antwort verloren, vorhandenBehandeln mit `eigen`) und für das ERSTE NACHLESEN (unten).
   const entwurf = alsEntwurfAngelegt(res.j.result);
-  if (!entwurf.ok) {
-    abbruch = `Printful hat den Auftrag #${pfId} für ${o.name} NICHT als Entwurf angelegt (Status «${entwurf.status}»)`;
-    zaehler.entwuerfe++;
-    console.error(`🔴 ${o.name} → Printful #${pfId}: NICHT als Entwurf angelegt (Status «${entwurf.status}»): der Lauf endet hier, keine weitere Bestellung wird angelegt`);
-    fehlerAdd(`${o.name}: Printful hat den Auftrag #${pfId} nicht als Entwurf angelegt (Status «${entwurf.status}»): Lauf beendet, im Printful-Dashboard prüfen`);
-    if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) fehlerAdd(`${o.name}: Printful-Auftrag #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt`);
-    await befundMelden(tok, o, [{ art: 'nicht-als-entwurf-angelegt', text: `Printful hat den Auftrag #${pfId} beim Anlegen NICHT als Entwurf zurückgemeldet, sondern mit Status «${entwurf.status}»: er ist womöglich schon bestätigt und bezahlt, OHNE dass Dateien, Kosten, Obergrenze und KI geprüft wurden. Sofort im Printful-Dashboard ansehen (stornieren, falls nötig) und die Store-Einstellung zum automatischen Bestätigen prüfen. Der Lauf wurde beendet, keine weitere Bestellung angelegt`, hart: true }], `→ Printful #${pfId}: NICHT als Entwurf angelegt`);
-    return;
-  }
+  if (!entwurf.ok) { await keinEntwurfAbbrechen(tok, o, pfId, entwurf.status, 'in der Antwort auf das Anlegen'); return; }
   // 3. Sofort markieren: Metafeld, dann Tag. Gelingt das nicht, wird NICHT bestätigt; der nächste Lauf findet den Entwurf über external_id und holt es nach.
   if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehlerAdd(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext} und markiert ihn nach)`); zaehler.entwuerfe++; return; }
   // 4. Entwurf nachlesen: Dateien und Kosten
   const weich = befunde.slice();
   const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), v: entwurfVergleichen(ord, plan.items), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN, maxUsd: MAX_KOSTEN_USD }) });
   // fertig = Printful hat die Dateien geprüft (nicht «waiting») UND die Kosten gerechnet (total vorhanden, nicht «calculating»); sonst nach kurzer Pause nochmal lesen
-  const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
+  // Kein Entwurf mehr (Gegenprüfung 11.11.2026, G2 beim ersten Nachlesen): sofort aufhören zu warten, unten bricht der Lauf ab.
+  const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; if (!alsEntwurfAngelegt(ord).ok) return u; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
   console.log(`${o.name}: Printful-Entwurf #${pfId}: Dateien und Kosten ${lese.urteil ? 'fertig' : 'NICHT fertig'} nach ${lese.sek} s Wartezeit`);   // misst, wie lange Printful wirklich braucht (bisher ungemessen)
+  // G2 beim ersten Nachlesen: meldete der POST «draft», zeigt das Nachlesen aber etwas anderes (Store-Einstellung, Printful bestätigt selbst), ist der Auftrag womöglich schon bezahlt. Derselbe Abbruch wie oben (printful-synced steht schon).
+  const nachEntwurf = lese.order ? alsEntwurfAngelegt(lese.order) : null;
+  if (nachEntwurf && !nachEntwurf.ok) { await keinEntwurfAbbrechen(tok, o, pfId, nachEntwurf.status, 'beim ersten Nachlesen des Entwurfs', false); return; }
   if (!lese.order) weich.push({ art: 'entwurf-nicht-lesbar', text: `Entwurf #${pfId} lässt sich nach ${lese.sek} s nicht nachlesen (HTTP ${lese.status || 0}): Dateien und Kosten ungeprüft`, hart: false });
   else {
     const { d, v, k } = lese.urteil || urteilEntwurf(lese.order);
@@ -560,20 +558,38 @@ async function bearbeite(tok, o) {
   await befundMelden(tok, o, [{ art, text: st ? st.text : `Status von Auftrag #${pfId} nach dem Bestätigen nicht lesbar${unklar ? ' (Bestätigen unklar: ' + pfText(c) + ')' : ''}`, hart: false }], `→ Printful #${pfId}: NICHT als bestätigt gemeldet`);
 }
 
+// Fund G2 (Schlussprüfung 10.11.2026, erweitert in der Gegenprüfung 11.11.2026): ein Auftrag, den DIESER Lauf angelegt hat, ist kein Entwurf (POST-Antwort, über die external_id wiedergefunden nach verlorener Antwort,
+// oder erstes Nachlesen). Er ist womöglich schon bezahlt, bevor Dateistatus, Kosten, Obergrenze, KI und frisches Lesen liefen: sofort melden (🔴), die Bestellung markieren (printful-synced + Stopp-Tag, damit kein Lauf sie
+// nochmal anfasst) und den LAUF BEENDEN (keine weitere Bestellung, Exit 1, eigener Zähler, keine Erfolgsmeldung). Nichts wird bestätigt, nichts storniert (das entscheidet der Mensch im Printful-Dashboard).
+async function keinEntwurfAbbrechen(tok, o, pfId, status, wo, markieren = true) {
+  abbruch = `Printful hat den Auftrag #${pfId} für ${o.name} NICHT als Entwurf angelegt (Status «${status}» ${wo})`;
+  zaehler.keinEntwurf++;
+  console.error(`🔴 ${o.name} → Printful #${pfId}: NICHT als Entwurf angelegt (Status «${status}» ${wo}): der Lauf endet hier, keine weitere Bestellung wird angelegt`);
+  fehlerAdd(`${o.name}: Printful hat den Auftrag #${pfId} nicht als Entwurf angelegt (Status «${status}» ${wo}): Lauf beendet, im Printful-Dashboard prüfen`);
+  if (markieren && !(await tagsSetzen(tok, o, ['printful-synced'], pfId))) fehlerAdd(`${o.name}: Printful-Auftrag #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt`);
+  await befundMelden(tok, o, [{ art: 'kein-entwurf', text: `Printful führt den Auftrag #${pfId} NICHT als Entwurf, sondern mit Status «${status}» (${wo}): er ist womöglich schon bestätigt und bezahlt, OHNE dass Dateien, Kosten, Obergrenze und KI geprüft wurden. Sofort im Printful-Dashboard ansehen (stornieren, falls nötig) und die Store-Einstellung zum automatischen Bestätigen prüfen. Der Lauf wurde beendet, keine weitere Bestellung angelegt`, hart: true }], `→ Printful #${pfId}: NICHT als Entwurf angelegt`);
+}
+
 // Der Auftrag existiert schon (external_id): Tag und Metafeld nachtragen, nie ein zweiter Auftrag
 async function vorhandenBehandeln(tok, o, ext, ord, grund) {
-  zaehler.vorhanden++;
   // Passt der vorhandene Auftrag zu DIESER Bestellung (Empfänger, Stückzahl)? Sonst ist die Kennung fremd belegt (wiederverwendete Bestellnummer, von Hand angelegter «LX…»-Auftrag): die Bestellung gilt NICHT als erledigt.
   const passt = vorhandenVergleichen(ord, o);
   if (!passt.ok) {
+    zaehler.vorhanden++;
     console.log(`${o.name}: Printful-Auftrag #${ord.id} trägt die external_id ${ext}, passt aber nicht zur Bestellung (${passt.texte.length} Abweichung(en)): nichts angelegt, nicht als erledigt markiert`);
     await befundMelden(tok, o, [{ art: 'vorhanden-fremd', text: `Printful-Auftrag #${ord.id} trägt die external_id ${ext}, passt aber nicht zu dieser Bestellung (${passt.texte.join('; ')}). Nichts angelegt und nicht als erledigt markiert; selbst klären`, hart: true }], 'hat einen fremden Printful-Auftrag mit gleicher Kennung');
     return;
   }
+  // Mit `grund` kommt der Aufruf aus dem EIGENEN Anlegen dieses Laufs (Antwort verloren oder abgelehnt, der Auftrag existiert aber): dann gilt G2 wie bei einer quittierten Antwort, nur «draft» ist erlaubt
+  // (Gegenprüfung 11.11.2026: ein schon «pending» gemeldeter Auftrag bekam hier nur printful-synced, und der Lauf bestätigte die nächste Bestellung).
+  const eigen = !!grund;
+  const eigenerStatus = eigen ? alsEntwurfAngelegt(ord) : null;
+  if (eigenerStatus && !eigenerStatus.ok) { await keinEntwurfAbbrechen(tok, o, ord.id, eigenerStatus.status, `nach dem Anlegen über die external_id wiedergefunden; ${grund}`); return; }
+  zaehler.vorhanden++;
   const s = statusBewerten(ord);
   console.log(`${o.name}: Printful-Auftrag #${ord.id} existiert schon (external_id ${ext}, Status ${ord.status})${grund ? ': ' + grund : ''}: nichts angelegt`);
   if (!DRY && !(await tagsSetzen(tok, o, ['printful-synced'], ord.id))) fehlerAdd(`${o.name}: Printful-Auftrag #${ord.id} existiert, Metafeld/Tag konnten nicht nachgetragen werden`);
-  if (s.art === 'problem') await befundMelden(tok, o, [{ art: 'vorhanden-' + s.befund, text: `Printful-Auftrag #${ord.id} existiert schon (${ext}): ${s.text}`, hart: false }], 'hat schon einen Printful-Auftrag');
+  if (s.art === 'problem') await befundMelden(tok, o, [{ art: vorhandenArt(s.befund), text: `Printful-Auftrag #${ord.id} existiert schon (${ext}): ${s.text}`, hart: false }], 'hat schon einen Printful-Auftrag');
   else if (s.art === 'wartet') await befundMelden(tok, o, [{ art: 'vorhanden-entwurf', text: `Printful-Auftrag #${ord.id} existiert schon (${ext}) und ist noch ein Entwurf: im Printful-Dashboard prüfen und bestätigen`, hart: false }], 'hat schon einen Printful-Entwurf');
 }
 
@@ -618,9 +634,10 @@ const hatDruckdatei = (li) => (li.customAttributes || []).some((a) => /Druckdate
     try { await bearbeite(tok, o); } catch (e) { fehlerAdd(`${o.name}: unerwarteter Fehler`, String(e && e.message || e).slice(0, 200)); }
     if (abbruch) { const rest = kandidaten.slice(0, MAX).length - kandidaten.slice(0, MAX).indexOf(o) - 1; fehlerAdd(`LAUF BEENDET: ${abbruch}. ${rest} weitere Bestellung(en) dieses Laufs wurden NICHT bearbeitet`); break; }
   }
-  const summary = `Printful-Sync fertig: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ` (DRY_RUN: ${zaehler.anstehend} Bestellung(en) würden angelegt)` : ''}.`;
+  // Nach einem Abbruch (G2) beginnt die Zusammenfassung mit «LAUF ABGEBROCHEN» und es geht KEINE Erfolgsmeldung raus (Gegenprüfung 11.11.2026: die letzte Nachricht auf dem Handy war ein Häkchen).
+  const summary = `${abbruch ? 'LAUF ABGEBROCHEN, Printful-Sync' : 'Printful-Sync fertig'}: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.keinEntwurf ? zaehler.keinEntwurf + ' NICHT als Entwurf angelegt (Lauf beendet), ' : ''}${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ` (DRY_RUN: ${zaehler.anstehend} Bestellung(en) würden angelegt)` : ''}.`;
   if (process.env.GITHUB_STEP_SUMMARY) { try { appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Printful-Sync\n\n${summary}\n\n${zeilen.length ? zeilen.map((z) => '- ' + z).join('\n') + '\n' : ''}${fehler.length ? '\n**Fehler:**\n' + fehler.map((f) => '- ' + fehlerLog(f)).join('\n') + '\n' : ''}`); } catch { /* Zusammenfassung ist Zugabe */ } }
   if (fehler.length) { fehler.forEach((f) => console.error('✗', fehlerLog(f))); await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fehler.slice(0, 8).map((f) => esc(fehlerTg(f))).join('\n')}`); process.exitCode = 1; }
-  if ((zaehler.bestaetigt || zaehler.entwuerfe) && !DRY) await tg(`✅ LuxeStyle POD: ${esc(summary)}`);
+  if ((zaehler.bestaetigt || zaehler.entwuerfe) && !DRY && !abbruch) await tg(`✅ LuxeStyle POD: ${esc(summary)}`);
   console.log(summary);
 })().catch(async (e) => { console.error('Fataler Fehler:', e); await tg(`🔴 LuxeStyle POD-Sync: fataler Fehler ${esc(e && e.message)}`); process.exit(1); });

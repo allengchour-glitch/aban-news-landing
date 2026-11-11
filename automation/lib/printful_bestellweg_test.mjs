@@ -18,6 +18,7 @@ import {
   vorhandenVergleichen, SCOPES_PFLICHT, scopesBewerten, bestaetigenPlan,
   EIGENER_SHOPIFY_CDN_PFAD, FO_DRUCKBAR, anlegenGesperrt, anspruchGewonnen, bestellStand, bestellAbweichung,
   scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG,
+  TAG_MAX, BEFUND_ART_MAX, ANSPRUCH_ZUFALL_LAENGE, anspruchZufall, vorhandenArt,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -1385,24 +1386,25 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   {
     const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345);
     ist('R2 Anspruch: ohne Zufallsteil die alte Form (Minute)', anlegenTag(T0), 'printful-anlegen-20261110t0937');
-    ist('R2 Anspruch: mit Zufallsteil Sekunden und Millisekunden dazu', anlegenTag(T0, 'ab12cd34'), 'printful-anlegen-20261110t0937-12345-ab12cd34');
-    ist('R2 Anspruch: Zufallsteil wird klein geschrieben', anlegenTag(T0, 'AB12CD34'), 'printful-anlegen-20261110t0937-12345-ab12cd34');
-    for (const z of ['abc', 'a'.repeat(13), 'ab cd', 'ab-cd', 'äbcdef']) { let f = null; try { anlegenTag(T0, z); } catch (e) { f = e.message; } wahr(`R2 Anspruch: ungültiger Zufallsteil «${z}» wirft`, typeof f === 'string' && /Zufallsteil/.test(f), String(f)); }
-    ist('R2 Anspruch: die frühere Zeit hat die kleinere Zeichenkette (über Sekunde, Minute, Stunde und Tag)', [anlegenTag(T0 - 1, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa'), anlegenTag(T0 - 60000, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa'), anlegenTag(T0 - 86400000, 'zzzzzzzz') < anlegenTag(T0, 'aaaaaaaa')], [true, true, true]);
-    ist('R2 Anspruch: anlegenAlterMin liest beide Formen (Minuten-Auflösung)', [anlegenAlterMin([anlegenTag(T0)], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab12cd34')], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab12cd34'), anlegenTag(T0 - 3600000, 'aaaaaaaa')], T0 + 5 * 60000)], [5, 5, 5]);
+    ist('R2 Anspruch: mit Zufallsteil Sekunden und Millisekunden dazu', () => anlegenTag(T0, 'ab1'), 'printful-anlegen-20261110t0937-12345-ab1');
+    ist('R2 Anspruch: Zufallsteil wird klein geschrieben', () => anlegenTag(T0, 'AB1'), 'printful-anlegen-20261110t0937-12345-ab1');
+    for (const z of ['', 'ab', 'abcd', 'ab12cd34', 'a'.repeat(13), 'a c', 'a-c', 'äbc']) { let f = null; try { anlegenTag(T0, z); } catch (e) { f = e.message; } wahr(`R2 Anspruch: ungültiger Zufallsteil «${z}» wirft`, typeof f === 'string' && /Zufallsteil/.test(f), String(f)); }
+    ist('R2 Anspruch: die frühere Zeit hat die kleinere Zeichenkette (über Sekunde, Minute, Stunde und Tag)', [anlegenTag(T0 - 1, 'zzz') < anlegenTag(T0, 'aaa'), anlegenTag(T0 - 60000, 'zzz') < anlegenTag(T0, 'aaa'), anlegenTag(T0 - 86400000, 'zzz') < anlegenTag(T0, 'aaa')], [true, true, true]);
+    ist('R2 Anspruch: anlegenAlterMin liest beide Formen (Minuten-Auflösung)', [anlegenAlterMin([anlegenTag(T0)], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab1')], T0 + 5 * 60000), anlegenAlterMin([anlegenTag(T0, 'ab1'), anlegenTag(T0 - 3600000, 'aaa')], T0 + 5 * 60000)], [5, 5, 5]);
+    ist('Tag-Länge Anspruch: die bis zum 11.11.2026 gebildete LANGE Form (8 Zufallszeichen, 45 Zeichen) wird weiter als Markierung gelesen (Alter, Sperre)', [anlegenAlterMin(['printful-anlegen-20261110t0937-12345-ab12cd34'], T0 + 5 * 60000), 'printful-anlegen-20261110t0937-12345-ab12cd34'.length], [5, 45]);
     ist('R2 Anspruch: ein Tag mit falschem Suffix wird nicht als Markierung gelesen', anlegenAlterMin(['printful-anlegen-20261110t0937-1234-ab12cd34', 'printful-anlegen-20261110t0937-12345-xy', 'printful-anlegen-20261110t0937-12345-AB12CD34'], T0), null);
     ist('R2 Sperre: genau ANLEGEN_SPERRE_MIN Minuten alt sperrt NICHT mehr, eine weniger sperrt, keine Markierung sperrt nicht', [anlegenGesperrt(ANLEGEN_SPERRE_MIN - 1), anlegenGesperrt(ANLEGEN_SPERRE_MIN), anlegenGesperrt(ANLEGEN_SPERRE_MIN + 1), anlegenGesperrt(0), anlegenGesperrt(null)], [true, false, false, true, false]);
-    const mein = anlegenTag(T0, 'bbbbbbbb');
+    const mein = anlegenTag(T0, 'bbb');
     const g = (tags) => anspruchGewonnen(tags, mein, T0 + 1000);
     ist('R2 Anspruch: nur die eigene Markierung → gewonnen', g([mein]).ok, true);
-    ist('R2 Anspruch: ein früherer Anspruch eines anderen → verloren, der Grund nennt ihn', [g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, /früher markiert/.test(g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).grund)], [false, true]);
-    ist('R2 Anspruch: ein späterer Anspruch eines anderen → gewonnen (der andere unterliegt)', g([mein, anlegenTag(T0 + 5000, 'aaaaaaaa')]).ok, true);
-    ist('R2 Anspruch: gleiche Zeit, kleinerer Zufallsteil des anderen → verloren; grösserer → gewonnen', [g([mein, anlegenTag(T0, 'aaaaaaaa')]).ok, g([mein, anlegenTag(T0, 'cccccccc')]).ok], [false, true]);
+    ist('R2 Anspruch: ein früherer Anspruch eines anderen → verloren, der Grund nennt ihn', [g([mein, anlegenTag(T0 - 5000, 'aaa')]).ok, /früher markiert/.test(g([mein, anlegenTag(T0 - 5000, 'aaa')]).grund)], [false, true]);
+    ist('R2 Anspruch: ein späterer Anspruch eines anderen → gewonnen (der andere unterliegt)', g([mein, anlegenTag(T0 + 5000, 'aaa')]).ok, true);
+    ist('R2 Anspruch: gleiche Zeit, kleinerer Zufallsteil des anderen → verloren; grösserer → gewonnen', [g([mein, anlegenTag(T0, 'aaa')]).ok, g([mein, anlegenTag(T0, 'ccc')]).ok], [false, true]);
     ist('R2 Anspruch: ein früherer Anspruch aus der alten Form (nur Minute) → verloren, ein späterer alter → gewonnen', [g([mein, anlegenTag(T0 - 60000)]).ok, g([mein, anlegenTag(T0 + 120000)]).ok], [false, true]);
-    ist('R2 Anspruch: ein früherer Anspruch von vor mehr als 60 Minuten ist nicht mehr aktiv → gewonnen', g([mein, anlegenTag(T0 - 70 * 60000, 'aaaaaaaa')]).ok, true);
-    ist('R2 Anspruch: ein früherer Anspruch von vor 59 Minuten ist noch aktiv → verloren', g([mein, anlegenTag(T0 - 59 * 60000, 'aaaaaaaa')]).ok, false);
-    ist('R2 Anspruch: die eigene Markierung fehlt in der Liste → nicht gewonnen (nie raten)', [g([]).ok, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).ok, anspruchGewonnen(null, mein, T0).ok], [false, false, false]);
-    ist('R2 Anspruch: die Art trennt «verloren» (ein anderer war früher) von «eigene-fehlt» (Lesefehler, muss sichtbar werden) und «gewonnen»', [g([mein]).art, g([mein, anlegenTag(T0 - 5000, 'aaaaaaaa')]).art, g([]).art, g([anlegenTag(T0 - 5000, 'aaaaaaaa')]).art, anspruchGewonnen(null, mein, T0).art], ['gewonnen', 'verloren', 'eigene-fehlt', 'eigene-fehlt', 'eigene-fehlt']);
+    ist('R2 Anspruch: ein früherer Anspruch von vor mehr als 60 Minuten ist nicht mehr aktiv → gewonnen', g([mein, anlegenTag(T0 - 70 * 60000, 'aaa')]).ok, true);
+    ist('R2 Anspruch: ein früherer Anspruch von vor 59 Minuten ist noch aktiv → verloren', g([mein, anlegenTag(T0 - 59 * 60000, 'aaa')]).ok, false);
+    ist('R2 Anspruch: die eigene Markierung fehlt in der Liste → nicht gewonnen (nie raten)', [g([]).ok, g([anlegenTag(T0 - 5000, 'aaa')]).ok, anspruchGewonnen(null, mein, T0).ok], [false, false, false]);
+    ist('R2 Anspruch: die Art trennt «verloren» (ein anderer war früher) von «eigene-fehlt» (Lesefehler, muss sichtbar werden) und «gewonnen»', [g([mein]).art, g([mein, anlegenTag(T0 - 5000, 'aaa')]).art, g([]).art, g([anlegenTag(T0 - 5000, 'aaa')]).art, anspruchGewonnen(null, mein, T0).art], ['gewonnen', 'verloren', 'eigene-fehlt', 'eigene-fehlt', 'eigene-fehlt']);
     ist('R2 Anspruch: fremde Tags (printful-synced, Versuchszähler) stören nicht', g([mein, 'printful-synced', 'printful-versuch-2', 'wunschdesign']).ok, true);
   }
 
@@ -1467,8 +1469,8 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('G1 anspruchLangsam: das eigene Schreiben darf höchstens die HALBE Wartezeit dauern (genau die Hälfte gilt noch als schnell)', [anspruchLangsam(0, 3000), anspruchLangsam(1500, 3000), anspruchLangsam(1501, 3000), anspruchLangsam(3000, 3000), anspruchLangsam(200, 400), anspruchLangsam(201, 400)], [false, false, true, true, false, true]);
   ist('G1 anspruchLangsam: eine nicht messbare Dauer gilt als langsam (nie raten); bei Wartezeit 0 (nur mit Test-Kennung) gibt es keine Grenze', [anspruchLangsam(NaN, 3000), anspruchLangsam(undefined, 3000), anspruchLangsam(99999, 0), anspruchLangsam(NaN, 0)], [true, true, false, false]);
   {
-    const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345), mein = anlegenTag(T0, 'bbbbbbbb');
-    const spaeter = anlegenTag(T0 + 5000, 'aaaaaaaa'), frueher = anlegenTag(T0 - 5000, 'aaaaaaaa'), alt = anlegenTag(T0 - 70 * 60000, 'aaaaaaaa');
+    const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345), mein = anlegenTag(T0, 'bbb');
+    const spaeter = anlegenTag(T0 + 5000, 'aaa'), frueher = anlegenTag(T0 - 5000, 'aaa'), alt = anlegenTag(T0 - 70 * 60000, 'aaa');
     const g = (tags, allein) => anspruchGewonnen(tags, mein, T0 + 1000, { allein });
     ist('G1 Regel «nur allein» (das eigene Schreiben war langsam): ganz allein → gewonnen', [g([mein], true).ok, g([mein], true).art], [true, 'gewonnen']);
     ist('G1 Regel «nur allein»: eine SPÄTERE aktive Markierung eines anderen → NICHT gewonnen, Art «nicht-allein» (ohne die Regel gewänne dieser Lauf als «kleinster»)', [g([mein, spaeter], true).ok, g([mein, spaeter], true).art, /zu lange/.test(g([mein, spaeter], true).grund), g([mein, spaeter], false).ok], [false, 'nicht-allein', true, true]);
@@ -1802,6 +1804,29 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     if (b) hashes.set(v, createHash('sha256').update(b).digest('hex').slice(0, 16));
   }
   ist('Editor-Vertrag: alle ausgelieferten Fassungen schreiben die Warenkorb-Eigenschaften mit demselben Code (sonst gilt der Mitschnitt von 6.4.0 für die neue Fassung nicht)', [...new Set(hashes.values())].length <= 1, true);
+}
+
+// ═══════════════════════════════════════ GEGENPRÜFUNG 11.11.2026 (zwei Gegenprüfer nach der Schlussprüfung): reine Logik
+{
+  // ── Tag-Länge: Shopify lässt je Order-Tag höchstens 40 Zeichen zu (QUELLE shopify.dev, Order.tags). Die Markierung war 45 Zeichen lang, drei Befund-Tags 42 bis 48.
+  const T0 = Date.UTC(2026, 10, 10, 9, 37, 12, 345);
+  ist('Tag-Länge: TAG_MAX ist 40, der Name einer Befundart darf 24 Zeichen lang sein, der Zufallsteil der Markierung hat 3 Zeichen', [TAG_MAX, BEFUND_ART_MAX, ANSPRUCH_ZUFALL_LAENGE], [40, 24, 3]);
+  ist('Tag-Länge Anspruch: die Markierung mit Zufallsteil ist GENAU 40 Zeichen lang (Mitternacht am Jahresanfang, letzte Millisekunde des Jahres, einstellige Millisekunde)', [T0, Date.UTC(2027, 0, 1, 0, 0, 0, 0), Date.UTC(2026, 11, 31, 23, 59, 59, 999), Date.UTC(2030, 5, 15, 12, 0, 0, 7)].map((ms) => anlegenTag(ms, 'zz9').length), [40, 40, 40, 40]);
+  ist('Tag-Länge Anspruch: die alte Form ohne Zufallsteil ist 30 Zeichen lang', anlegenTag(T0).length, 30);
+  ist('Tag-Länge Anspruch: würde die Markierung länger als 40 Zeichen (Jahr 10000), wirft anlegenTag, statt ein zu langes Tag zu liefern', (() => { try { return anlegenTag(Date.UTC(10000, 0, 1), 'abc').length; } catch (e) { return /40/.test(e.message) ? 'wirft' : e.message; } })(), 'wirft');
+  ist('Tag-Länge anspruchZufall: genau 3 Zeichen a-z0-9 aus 4 Zufallsbytes (die Bytes als Zahl modulo 36³ = 46 656; Array, Uint8Array und Buffer)', [anspruchZufall([0, 0, 0, 0]), anspruchZufall([0, 0, 0, 35]), anspruchZufall([0, 0, 0, 36]), anspruchZufall([0, 0, 182, 63]), anspruchZufall([0, 0, 182, 64]), anspruchZufall(new Uint8Array([255, 255, 255, 255])), anspruchZufall(Buffer.from([1, 2, 3, 4]))], ['000', '00z', '010', 'zzz', '000', '1z3', 'f44']);
+  ist('Tag-Länge anspruchZufall: zu wenige Bytes, kein Byte-Array oder Werte ausserhalb 0 bis 255 werfen (nie ein fester oder leerer Zufallsteil)', [[], [1, 2, 3], null, undefined, 'abcd', [1, 2, 3, 256], [1, 2, 3, -1], [1, 2, 3, 1.5]].map((b) => { try { return anspruchZufall(b); } catch { return 'wirft'; } }), Array(8).fill('wirft'));
+  ist('Tag-Länge anspruchZufall: jeder Wert ergibt eine gültige Markierung von 40 Zeichen, die als Markierung gelesen wird', [[0, 0, 0, 0], [255, 255, 255, 255], [9, 8, 7, 6]].map((b) => { const t = anlegenTag(T0, anspruchZufall(b)); return [t.length, anlegenAlterMin([t], T0 + 60000)]; }), [[40, 1], [40, 1], [40, 1]]);
+  ist('Tag-Länge befundTag: ein Name über 24 Zeichen wird auf 40 Zeichen gekürzt (ohne Bindestrich am Ende), ein kurzer bleibt unverändert', [befundTag('x'.repeat(30)).length, befundTag('abcdefghijklmnopqrstuvw-yz'), befundTag('kein-entwurf'), befundTag('abcdefghijklmnopqrstuvwx')], [40, 'printful-review-abcdefghijklmnopqrstuvw', 'printful-review-kein-entwurf', 'printful-review-abcdefghijklmnopqrstuvwx']);
+  ist('Tag-Länge befundPlan: auch eine gekürzte Art wird beim nächsten Lauf wiedererkannt (kein zweiter Alarm), und kein Tag des Plans ist länger als 40 Zeichen', (() => { const lang = 'eine-sehr-lange-befundart-ueber-24-zeichen'; const b = [{ art: lang, text: 't', hart: true }]; const p1 = befundPlan({ tags: [], befunde: b }); const p2 = befundPlan({ tags: p1.hinzu, befunde: b }); return [p1.hinzu.filter((x) => x.length > 40), p1.alarm, p2.alarm, p2.hinzu]; })(), [[], true, false, []]);
+  // JEDER Name im Quelltext, der eine Befundart sein kann: alle Zeichenketten in Kleinbuchstaben mit Bindestrich in den drei Quelldateien des Bestellwegs (eine Obermenge: auch «printful-synced» oder «retry-after» zählen mit)
+  const quellen = ['../printful_sync.mjs', './printful_bestellweg.mjs', './printful_platzierung.mjs'].map((r) => readFileSync(fileURLToPath(new URL(r, import.meta.url)), 'utf8')).join('\n');
+  const namen = [...new Set([...quellen.matchAll(/'([a-z][a-z0-9]*(?:-[a-z0-9]+)+)'/g)].map((m) => m[1]))];
+  ist('Tag-Länge: das Messgerät findet die Namen im Quelltext (über 50, darunter die neuen kurzen und die aus einem Ausdruck gebildeten)', [namen.length > 50, ['kein-entwurf', 'datei-bei-fertigware', 'zahlung-fehlgeschlagen', 'bestellung-geaendert', 'zahlung-unlesbar', 'vorhanden-failed', 'vorhanden-problem', 'wiederholt-gescheitert'].filter((n) => !namen.includes(n))], [true, []]);
+  ist('Tag-Länge: KEIN solcher Name im Quelltext ist länger als 24 Zeichen (sonst würde sein Tag «printful-review-<art>» gekürzt)', namen.filter((n) => n.length > BEFUND_ART_MAX), []);
+  ist('Tag-Länge: jedes Tag, das der Sync aus diesen Namen bilden kann, hat höchstens 40 Zeichen; ebenso die festen Tags und der Versuchszähler', [...namen.map(befundTag), REVIEW_TAG, 'printful-synced', 'printful-confirmed', versuchTag(MAX_VERSUCHE), versuchTag(999999)].filter((x) => x.length > TAG_MAX), []);
+  ist('Tag-Länge vorhandenArt: ein kurzer Name für jeden Problem-Status eines schon vorhandenen Auftrags; Unbekanntes (auch ein geerbter Schlüssel) heisst «vorhanden-problem»', ['zahlung-fehlgeschlagen', 'angehalten', 'storniert', 'status-unbekannt', 'etwas-neues', 'toString', undefined].map(vorhandenArt), ['vorhanden-failed', 'vorhanden-angehalten', 'vorhanden-storniert', 'vorhanden-unbekannt', 'vorhanden-problem', 'vorhanden-problem', 'vorhanden-problem']);
+  ist('Tag-Länge vorhandenArt: für JEDEN Status, den statusBewerten als Problem meldet, gibt es eine eigene Art, und ihr Tag ist höchstens 40 Zeichen lang', (() => { const a = ['failed', 'onhold', 'canceled', 'archived', '', 'xyz'].map((s) => statusBewerten({ status: s })).filter((s) => s.art === 'problem').map((s) => vorhandenArt(s.befund)); return [a.map(befundTag).filter((x) => x.length > 40), new Set(a).size, a.includes('vorhanden-problem'), a.length]; })(), [[], 4, false, 6]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

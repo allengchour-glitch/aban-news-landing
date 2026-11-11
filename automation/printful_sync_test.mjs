@@ -36,7 +36,7 @@ if (process.argv[2] === '--szenario') {
   if (kiArt === 'ohne-schluessel') delete process.env.GEMINI_API_KEY;
   for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer); `env` setzt danach
   Object.assign(process.env, sz.env || {});
-  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '', zeiten: [] };
+  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '', zeiten: [], tagsZuLang: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0, tagsJeBestellung: {} };   // tagsJeBestellung: was der Sync per tagsAdd gesetzt hat (das zweite Lesen nach dem Setzen der Markierung zeigt es)
   const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
@@ -106,7 +106,7 @@ if (process.argv[2] === '--szenario') {
         if (!basis) return mk(200, { data: { node: null } });
         const eigene = st.tagsJeBestellung[b.variables.id] || [];
         // Rivalen: `frueher` = ein anderer Lauf hat 5 s VOR uns markiert (kleinere Zeichenkette), `spaeter` = 5 s danach, `alt` = vor 70 Minuten (nicht mehr aktiv)
-        const rivalen = { frueher: [anlegenTag(Date.now() - 5000, 'aaaaaaaa')], spaeter: [anlegenTag(Date.now() + 5000, 'ffffffff')], alt: [anlegenTag(Date.now() - 70 * 60000, 'aaaaaaaa')], beide: [anlegenTag(Date.now() + 5000, 'ffffffff'), anlegenTag(Date.now() - 5000, 'aaaaaaaa')] }[sz.rivale] || [];
+        const rivalen = { frueher: [anlegenTag(Date.now() - 5000, 'aaa')], spaeter: [anlegenTag(Date.now() + 5000, 'fff')], alt: [anlegenTag(Date.now() - 70 * 60000, 'aaa')], beide: [anlegenTag(Date.now() + 5000, 'fff'), anlegenTag(Date.now() - 5000, 'aaa')] }[sz.rivale] || [];
         const tags = sz.anspruchOhneEigene ? [...(basis.tags || []), ...rivalen] : [...(basis.tags || []), ...eigene, ...rivalen];
         return mk(200, projiziere({ data: { node: { id: basis.id, tags, ...folge(sz.anspruchFolge, nr) } } }, { data: parseAuswahl(q) }));
       }
@@ -136,6 +136,14 @@ if (process.argv[2] === '--szenario') {
           if (sz.tagFehler === 'http') return mk(500, {});
           if (sz.tagFehler === 'userErrors') return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'kaputt' }] } } });
           if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
+        }
+        // Gegenprüfung 11.11.2026: Shopify lässt je Order-Tag höchstens 40 Zeichen zu (QUELLE shopify.dev; ob ein längeres Tag abgelehnt oder gekürzt wird, ist ungemessen). Die Attrappe LEHNT ein längeres Tag ab (userErrors, nichts
+        // gesetzt) oder kürzt es mit `tagLang: 'kuerzen'` still auf 40 Zeichen; `tagsZuLang` hält jedes zu lange Tag fest, das der Sync gesendet hat (die Prüfung am Ende der Datei verlangt: keines, in keinem Szenario).
+        const zuLang = b.variables.tags.filter((x) => String(x).length > 40);
+        if (zuLang.length) {
+          prot.tagsZuLang.push(...zuLang);
+          if (sz.tagLang !== 'kuerzen') return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'Tag is too long (maximum is 40 characters)' }] } } });
+          b.variables.tags = b.variables.tags.map((x) => String(x).slice(0, 40));
         }
         // Schlussprüfung G1: `anspruchSchreibMs` verzögert das Schreiben der MARKIERUNG (langsames Netz, Wiederholung nach 429/5xx); `zeiten` hält fest, wann sie stand und wann nachgelesen wurde
         const istAnspruch = b.variables.tags.some((x) => /^printful-anlegen-/.test(x));
@@ -209,11 +217,16 @@ if (process.argv[2] === '--szenario') {
       if (m === 'POST' && p === '/orders') {
         prot.postSignale.push(!!o.signal);
         const body = JSON.parse(o.body); prot.posts.push({ p, body }); st.ext = body.external_id; prot.folge.push('POST');
+        // Ein NEU angelegter Auftrag ist noch nicht bestätigt (Gegenprüfung 11.11.2026: alle Aufträge der Attrappe tragen die Nummer 42; ohne das Zurücksetzen las die zweite Bestellung den bestätigten Auftrag der ersten
+        // als ihren Entwurf «pending», und seit G2 auch beim ersten Nachlesen gilt, brach der Lauf dort ab)
+        st.bestaetigt = false;
         const pr = folge(sz.post, prot.posts.length - 1);
         if (pr.wirft) throw new Error(pr.wirft);
         const status = pr.status || 200;
         // `auftragStatus` (Schlussprüfung G2): der Status, mit dem Printful den angelegten Auftrag zurückmeldet (Vorgabe «draft»; null = das Feld fehlt ganz)
         const angelegt = !('auftragStatus' in pr) ? { id: 42, status: 'draft' } : pr.auftragStatus === null ? { id: 42 } : { id: 42, status: pr.auftragStatus };
+        // `leer` (Gegenprüfung 11.11.2026): HTTP 200, aber ohne result (Antwort verloren, der Auftrag ist trotzdem angelegt)
+        if (pr.leer) return mk(200, { code: 200, result: null });
         return mk(status, status === 200 ? { result: angelegt } : { error: { message: pr.meldung || 'fehlgeschlagen' } });
       }
       if ((r = /^\/orders\/(\d+)\/confirm$/.exec(p)) && m === 'POST') {
@@ -233,7 +246,7 @@ if (process.argv[2] === '--szenario') {
     }
     return mk(200, {});
   };
-  console.log = (...a) => { const t = a.join(' '); prot.log.push(t); if (/^Printful-Sync fertig:/.test(t)) { prot.exitCode = process.exitCode || 0; fertig(); } };
+  console.log = (...a) => { const t = a.join(' '); prot.log.push(t); if (/^(Printful-Sync fertig|LAUF ABGEBROCHEN, Printful-Sync):/.test(t)) { prot.exitCode = process.exitCode || 0; fertig(); } };
   console.warn = (...a) => { prot.warn.push(a.join(' ')); };
   console.error = (...a) => { prot.err.push(a.join(' ')); };
   let gesendet = false;
@@ -258,7 +271,7 @@ if (process.argv[2] === '--rennen-kind') {
     return echt(`http://127.0.0.1:${port}/${svc}/${wer}${url.pathname}${url.search}`, o);
   };
   const log0 = console.log;
-  console.log = (...a) => { log0(...a); if (/^Printful-Sync fertig:/.test(a.join(' '))) setImmediate(() => process.exit(process.exitCode || 0)); };
+  console.log = (...a) => { log0(...a); if (/^(Printful-Sync fertig|LAUF ABGEBROCHEN, Printful-Sync):/.test(a.join(' '))) setImmediate(() => process.exit(process.exitCode || 0)); };
   await import('./printful_sync.mjs');
   await new Promise((r) => setTimeout(r, 60000));
   process.exit(3);                                   // das Skript hat seine Schlusszeile nie geschrieben
@@ -271,6 +284,7 @@ const wert = (a) => { if (typeof a !== 'function') return a; try { return a(); }
 const ist = (n, a0, b) => { const a = wert(a0); const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${String(JSON.stringify(a)).slice(0, 700)}\n   soll: ${String(JSON.stringify(b)).slice(0, 700)}`); if (process.env.PS_DEBUG && letzter) console.log('   [letztes Szenario]', JSON.stringify({ log: letzter.prot.log, warn: letzter.prot.warn, err: letzter.prot.err, tg: letzter.prot.tg, tags: letzter.prot.tags, posts: letzter.prot.posts.length, confirms: letzter.prot.confirms.length }).slice(0, 1800)); } };
 const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
 
+const TAGS_ZU_LANG = new Set(); let TAG_LAENGSTES = '', TAG_ANZAHL = 0, SZENARIEN = 0;
 const lauf = (sz, env = {}) => {
   const r = spawnSync(process.execPath, [SELF, '--szenario'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, PS_SZENARIO: JSON.stringify(sz), ...env }, encoding: 'utf8', timeout: 90000 });
   const m = String(r.stdout).match(/PS_ERGEBNIS (.*)\n/);
@@ -279,7 +293,12 @@ const lauf = (sz, env = {}) => {
     fehl++; console.log(`✗ Szenario ohne Ergebnis (${r.error ? String(r.error.code || r.error.message) : r.signal ? 'Signal ' + r.signal : 'Exit ' + r.status}): ${JSON.stringify(sz).slice(0, 200)}`);
     throw new Error('Kindprozess ohne Ergebnis (Exit ' + r.status + '): ' + String(r.stderr).slice(0, 600) + String(r.stdout).slice(-300));
   }
-  return (letzter = { status: r.status, prot: JSON.parse(m[1]), stderr: r.stderr, stdout: r.stdout });
+  letzter = { status: r.status, prot: JSON.parse(m[1]), stderr: r.stderr, stdout: r.stdout };
+  SZENARIEN++;
+  // Über ALLE Szenarien gesammelt (Prüfung am Ende der Datei): jedes Tag, das der Sync an Shopify gesendet hat, mit seiner Länge. Die Attrappe lehnt Tags über 40 Zeichen ab wie (vermutlich) Shopify.
+  for (const x of letzter.prot.tagsZuLang || []) TAGS_ZU_LANG.add(x);
+  for (const x of letzter.prot.tags.flatMap((y) => y.tags)) { TAG_ANZAHL++; if (String(x).length > TAG_LAENGSTES.length) TAG_LAENGSTES = String(x); }
+  return letzter;
 };
 const antwort = (pid) => ({ status: 200, body: { result: { variant: { id: MIT[pid].variante }, product: MIT[pid].produkt } } });
 const V = (s) => 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/' + s + '.png';
@@ -330,7 +349,7 @@ for (const [name, sz, soll] of [
   ist('der Entwurf wird OHNE confirm angelegt (POST /orders), bestätigt wird in einem eigenen Schritt', [p.p, e.prot.confirms], ['/orders', ['/orders/42/confirm']]);
   ist('Reihenfolge: zuerst nach bestehendem Auftrag fragen, dann anlegen, markieren, nachlesen, bestätigen, Status nachlesen', e.prot.pf.filter((x) => !/products|mockup/.test(x)), ['GET /orders/@LXT1', 'POST /orders', 'GET /orders/42', 'POST /orders/42/confirm', 'GET /orders/42']);
   ist('Die Markierung «printful-anlegen-<Zeit>» wird VOR dem POST gesetzt (erste Tag-Mutation), danach Tag printful-synced (vor dem Bestätigen), Metafeld printful.order_id = 42',
-    [e.prot.tags[0].tags.map((t) => t.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}$/, '<zeit>')), e.prot.tags[1].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-anlegen-<zeit>'], ['printful-synced'], [['printful', 'order_id', '42']]]);
+    [e.prot.tags[0].tags.map((t) => t.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{3}$/, '<zeit>')), e.prot.tags[1].tags, e.prot.mf.map((m) => [m.namespace, m.key, m.value])], [['printful-anlegen-<zeit>'], ['printful-synced'], [['printful', 'order_id', '42']]]);
   ist('Empfänger und Artikel gehen mit: Name, Ort, Land, Menge; Artikel-external_id = Nummer der Bestellposition', [p.body.recipient.name, p.body.recipient.city, p.body.recipient.country_code, p.body.items[0].quantity, p.body.items[0].external_id], ['T', 'Basel', 'CH', 1, '9001']);
 }
 { // T-Shirt vorne + hinten (v5): beide Seiten, URLs bleiben ihrer Seite zugeordnet, nur EINE Abfrage (Cache)
@@ -463,7 +482,7 @@ for (const [name, sz, soll] of [
   const exd = lauf(sz1([zeile()], { lookup: [{ status: 200, order: { status: 'draft' } }], telegram: true }));
   ist('Auftrag existiert als ENTWURF: nicht angelegt, nicht automatisch bestätigt, Review «vorhanden-entwurf», eine Meldung', [exd.prot.posts.length, exd.prot.confirms.length, tags(exd).includes('printful-review-vorhanden-entwurf'), tgAnzahl(exd)], [0, 0, true, 1]);
   const exf = lauf(sz1([zeile()], { lookup: [{ status: 200, order: { status: 'failed', error: 'Invalid Card Number' } }], telegram: true }));
-  ist('Auftrag existiert, Status failed: nichts angelegt, Befund «vorhanden-zahlung-fehlgeschlagen» mit dem Grund der Karte', [exf.prot.posts.length, tags(exf).includes('printful-review-vorhanden-zahlung-fehlgeschlagen'), /Invalid Card Number/.test(exf.prot.tg[0])], [0, true, true]);
+  ist('Auftrag existiert, Status failed: nichts angelegt, Befund «vorhanden-failed» mit dem Grund der Karte', [exf.prot.posts.length, tags(exf).includes('printful-review-vorhanden-failed'), /Invalid Card Number/.test(exf.prot.tg[0])], [0, true, true]);
   const ex5 = lauf(sz1([zeile()], { lookup: [{ status: 500 }] }));
   ist('Nach dem Auftrag lässt sich nicht fragen (HTTP 500): NICHTS anlegen (sonst Doppel), Versuchszähler printful-versuch-1, Exit 1', [ex5.prot.posts.length, tags(ex5), ex5.prot.exitCode], [0, ['printful-versuch-1'], 1]);
   const exn = lauf(sz1([zeile()], { lookup: [{ wirft: 'ECONNRESET' }] }));
@@ -1120,7 +1139,7 @@ for (const [name, sz, soll] of [
   // ── Fund 6: Markierung VOR dem Anlegen; ein Lauf kurz darauf legt nichts neu an
   {
     const e = lauf(bestellt());
-    ist('Fund 6 Die Markierung «printful-anlegen-<Zeit>» steht VOR dem POST (Reihenfolge der Aufrufe am Shop und bei Printful) und trägt die Uhrzeit des Laufs (höchstens zwei Minuten alt)', [e.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}/, '<zeit>')), markenTags(e).length, Math.abs(Date.parse(markenTags(e)[0].replace(/^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})-\d{5}-[a-z0-9]{8}$/, '$1-$2-$3T$4:$5:00Z')) - Date.now()) < 120000], [['tags:printful-anlegen-<zeit>', 'POST'], 1, true]);
+    ist('Fund 6 Die Markierung «printful-anlegen-<Zeit>» steht VOR dem POST (Reihenfolge der Aufrufe am Shop und bei Printful) und trägt die Uhrzeit des Laufs (höchstens zwei Minuten alt)', [e.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{3}$/, '<zeit>')), markenTags(e).length, Math.abs(Date.parse(markenTags(e)[0].replace(/^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})-\d{5}-[a-z0-9]{3}$/, '$1-$2-$3T$4:$5:00Z')) - Date.now()) < 120000], [['tags:printful-anlegen-<zeit>', 'POST'], 1, true]);
     const jung = lauf(bestellt([zeile()], { order: { tags: [markeVor(10)] }, lookup: [{ status: 404 }], telegram: true }));
     ist('Fund 6 Ein früherer Lauf hat vor 10 Minuten angefangen und Printful zeigt den Auftrag (noch) nicht: NICHTS neu angelegt, kein Tag, keine Meldung, kein Fehler, «wartet» in der Zusammenfassung', [...gesperrt(jung), jung.prot.tags.length, tgAnzahl(jung), jung.prot.exitCode, jung.prot.log.some((l) => /vor 10 Minuten angefangen/.test(l)), jung.prot.frisch.length], [0, 0, 0, 0, 0, true, 0]);
     const grenze59 = lauf(bestellt([zeile()], { order: { tags: [markeVor(59)] } }));
@@ -1313,7 +1332,7 @@ for (const [name, sz, soll] of [
   // ── Linse 1, Fund 3: Anspruch mit Nachlesen. Wer unter den aktiven Markierungen NICHT die kleinste hat, legt nichts an.
   {
     const e = lauf(bestellt([z1]));
-    ist('R2 L1/3 Normalfall: die Markierung hat Sekunden, Millisekunden und einen Zufallsteil, danach werden die Tags EINMAL nachgelesen (nur Tags), dann angelegt', [/^printful-anlegen-\d{8}t\d{4}-\d{5}-[a-z0-9]{8}$/.test(markenTags(e)[0]), e.prot.anspruch.length, /id tags/.test(e.prot.anspruchQuery) && !/displayFinancialStatus/.test(e.prot.anspruchQuery), e.prot.posts.length, bestaetigt(e)], [true, 1, true, 1, true]);
+    ist('R2 L1/3 Normalfall: die Markierung hat Sekunden, Millisekunden und einen Zufallsteil von 3 Zeichen (genau 40 Zeichen, die Grenze von Shopify je Tag), danach werden die Tags EINMAL nachgelesen (nur Tags), dann angelegt', [/^printful-anlegen-\d{8}t\d{4}-\d{5}-[a-z0-9]{3}$/.test(markenTags(e)[0]) && markenTags(e)[0].length === 40, e.prot.anspruch.length, /id tags/.test(e.prot.anspruchQuery) && !/displayFinancialStatus/.test(e.prot.anspruchQuery), e.prot.posts.length, bestaetigt(e)], [true, 1, true, 1, true]);
     ist('R2 L1/3 Zwei Läufe erzeugen verschiedene Markierungen (Zufallsteil)', new Set([markenTags(lauf(bestellt([z1])))[0], markenTags(lauf(bestellt([z1])))[0]]).size, 2);
     for (const [n, rivale] of [['ein anderer Lauf hat 5 s FRÜHER markiert', 'frueher'], ['früher und später', 'beide']]) {
       const x = lauf(bestellt([z1], { rivale, telegram: true }));
@@ -1330,7 +1349,7 @@ for (const [name, sz, soll] of [
       ist(`R2 L1/3 Das Nachlesen der Markierung scheitert (${f}): NICHTS angelegt, Fehler «nicht nachlesbar», Exit 1`, [...gesperrt(x), x.prot.err.some((l) => /nicht nachlesbar/.test(l)), x.prot.exitCode], [0, 0, true, 1]);
     }
     const reihenfolge = lauf(bestellt([z1]));
-    ist('R2 L1/3 Reihenfolge: Markierung setzen, DANN Tags nachlesen, DANN POST (die Tag-Aufrufe stehen vor dem POST)', [reihenfolge.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{8}/, '<zeit>')), reihenfolge.prot.anspruch.length], [['tags:printful-anlegen-<zeit>', 'POST'], 1]);
+    ist('R2 L1/3 Reihenfolge: Markierung setzen, DANN Tags nachlesen, DANN POST (die Tag-Aufrufe stehen vor dem POST)', [reihenfolge.prot.folge.slice(0, 2).map((x) => x.replace(/\d{8}t\d{4}-\d{5}-[a-z0-9]{3}$/, '<zeit>')), reihenfolge.prot.anspruch.length], [['tags:printful-anlegen-<zeit>', 'POST'], 1]);
   }
 
   // ── Linse 1, Fund 4: ein negativer Mindestgewinn hebt die Verlustsperre NICHT auf, er ist ein Konfigurationsfehler
@@ -1471,14 +1490,31 @@ for (const [name, sz, soll] of [
     const basis = { vid: 4025, variant: [{ kat: 71 }], orders: zwei, telegram: true };
     const pend = lauf({ ...basis, post: [{ auftragStatus: 'pending' }] });
     ist('G2 Printful meldet den angelegten Auftrag als «pending» (nicht «draft»): der Lauf ENDET, die zweite Bestellung wird nicht angelegt, nichts wird bestätigt, Exit 1', [pend.prot.posts.length, pend.prot.posts[0] && pend.prot.posts[0].body.external_id.startsWith('LXT1'), pend.prot.confirms.length, pend.prot.ausstieg ?? pend.status], [1, true, 0, 1]);
-    ist('G2 …die Bestellung trägt printful-synced, das Stopp-Tag und die Befundart; das Metafeld mit der Auftragsnummer steht', [['printful-synced', 'printful-review', 'printful-review-nicht-als-entwurf-angelegt'].filter((x) => !tags(pend).includes(x)), pend.prot.mf.map((m) => m.value), pend.prot.tags.every((x) => x.id === 'gid://shopify/Order/1')], [[], ['42'], true]);
+    ist('G2 …die Bestellung trägt printful-synced, das Stopp-Tag und die Befundart; das Metafeld mit der Auftragsnummer steht', [['printful-synced', 'printful-review', 'printful-review-kein-entwurf'].filter((x) => !tags(pend).includes(x)), pend.prot.mf.map((m) => m.value), pend.prot.tags.every((x) => x.id === 'gid://shopify/Order/1')], [[], ['42'], true]);
     ist('G2 …eine 🔴-Befundmeldung nennt den Status und «NICHT als Entwurf»; die Fehlerliste nennt den Abbruch und die unbearbeitete Bestellung', [pend.prot.tg.filter((x) => /^🔴 LuxeStyle POD: Bestellung/.test(x) && /pending/.test(x) && /NICHT als Entwurf/.test(x)).length, pend.prot.err.some((l) => /LAUF BEENDET/.test(l) && /1 weitere Bestellung/.test(l))], [1, true]);
     for (const [n, s] of [['fehlt', null]]) {
       const x = lauf({ ...basis, post: [{ auftragStatus: s }] });
-      ist(`G2 Status ${n} beim Anlegen: kein Entwurf → Lauf endet nach dem ersten Auftrag, nichts bestätigt, Tag nicht-als-entwurf-angelegt, Exit 1`, [x.prot.posts.length, x.prot.confirms.length, tags(x).includes('printful-review-nicht-als-entwurf-angelegt'), x.prot.ausstieg ?? x.status], [1, 0, true, 1]);
+      ist(`G2 Status ${n} beim Anlegen: kein Entwurf → Lauf endet nach dem ersten Auftrag, nichts bestätigt, Tag kein-entwurf, Exit 1`, [x.prot.posts.length, x.prot.confirms.length, tags(x).includes('printful-review-kein-entwurf'), x.prot.ausstieg ?? x.status], [1, 0, true, 1]);
     }
     const gut = lauf({ ...basis, post: [{ auftragStatus: 'Draft' }, {}] });
     ist('G2 Gegenprobe: «Draft» (Grossschreibung) und «draft» sind Entwürfe: beide Bestellungen werden angelegt und bestätigt, Exit 0', [gut.prot.posts.length, gut.prot.confirms.length, gut.status], [2, 2, 0]);
+    ist('G2 Gegenprobe: ohne Abbruch endet der Lauf mit «Printful-Sync fertig» und einer ✅-Meldung (2 bestätigt)', [gut.prot.log.some((l) => /^Printful-Sync fertig: 2 bestätigt/.test(l)), gut.prot.tg.filter((x) => /^✅/.test(x)).length], [true, 1]);
+    // Gegenprüfung 11.11.2026: nach dem Abbruch zählt der Fall NICHT als «Entwurf/Review», die Zusammenfassung beginnt mit «LAUF ABGEBROCHEN», und es geht KEINE ✅-Meldung raus (vorher war sie die letzte Nachricht)
+    ist('G2 Abbruch: die Zusammenfassung beginnt mit «LAUF ABGEBROCHEN», zählt «1 NICHT als Entwurf angelegt» und 0 Entwurf/Review', [pend.prot.log.filter((l) => /^LAUF ABGEBROCHEN, Printful-Sync: 0 bestätigt, 0 Entwurf\/Review, 1 NICHT als Entwurf angelegt \(Lauf beendet\), /.test(l)).length, pend.prot.log.some((l) => /^Printful-Sync fertig/.test(l))], [1, false]);
+    ist('G2 Abbruch: keine ✅-Meldung; die letzte Telegram-Nachricht ist die 🔴-Fehlerliste mit «LAUF BEENDET»', [pend.prot.tg.filter((x) => /^✅/.test(x)).length, /^🔴 LuxeStyle POD-Sync Fehler/.test(pend.prot.tg[pend.prot.tg.length - 1] || '') && /LAUF BEENDET/.test(pend.prot.tg[pend.prot.tg.length - 1] || '')], [0, true]);
+    // G2 auch dann, wenn die Antwort auf das Anlegen VERLOREN geht und der Auftrag über die external_id wiedergefunden wird (vorher: nur printful-synced, kein Befund, und der Lauf bestätigte die nächste Bestellung)
+    for (const [n, post] of [['die Verbindung bricht nach dem Anlegen ab', { wirft: 'ECONNRESET' }], ['HTTP 500 nach dem Anlegen', { status: 500 }], ['HTTP 200 ohne result', { leer: true }]]) {
+      const x = lauf({ ...basis, post: [post, {}], lookup: [{ status: 404 }, { status: 200, order: { status: 'pending' } }, { status: 404 }] });
+      ist(`G2 Antwort verloren (${n}), der wiedergefundene Auftrag steht auf «pending»: der Lauf ENDET (eine Anlage, nichts bestätigt, Bestellung 2 unberührt), Exit 1`, [x.prot.posts.length, x.prot.confirms.length, x.prot.tags.every((t) => t.id === 'gid://shopify/Order/1'), x.prot.ausstieg ?? x.status], [1, 0, true, 1]);
+      ist(`G2 Antwort verloren (${n}): printful-synced, Stopp-Tag und Befundart kein-entwurf stehen; 🔴-Meldung nennt «wiedergefunden»; Fehlerliste «LAUF BEENDET»; keine ✅-Meldung`, [['printful-synced', 'printful-review', 'printful-review-kein-entwurf'].filter((t) => !tags(x).includes(t)), x.prot.tg.filter((t) => /^🔴 LuxeStyle POD: Bestellung/.test(t) && /pending/.test(t) && /wiedergefunden/.test(t)).length, x.prot.err.some((l) => /LAUF BEENDET/.test(l)), x.prot.tg.filter((t) => /^✅/.test(t)).length], [[], 1, true, 0]);
+    }
+    const wiederDraft = lauf({ ...basis, post: [{ status: 500 }, {}], lookup: [{ status: 404 }, { status: 200 }, { status: 404 }] });
+    ist('G2 Gegenprobe: Antwort verloren, der wiedergefundene Auftrag ist ein Entwurf: kein Abbruch, Befund «vorhanden-entwurf» (nicht bestätigt), die zweite Bestellung wird angelegt und bestätigt', [wiederDraft.prot.posts.length, wiederDraft.prot.confirms.length, tags(wiederDraft).includes('printful-review-vorhanden-entwurf'), tags(wiederDraft).includes('printful-review-kein-entwurf'), wiederDraft.prot.err.some((l) => /LAUF BEENDET/.test(l))], [2, 1, true, false, false]);
+    // G2 beim ERSTEN NACHLESEN: der POST meldet «draft», das Nachlesen zeigt «pending» (vorher: nur der weiche Befund «bestaetigen-abgelehnt», der Lauf lief weiter)
+    // die Kosten sind noch «calculating»: ohne den sofortigen Abbruch beim Nicht-Entwurf würde der Lauf alle 8 Lesungen abwarten
+    const nachPend = lauf({ ...basis, entwurf: { status: 'pending', costs: { currency: 'USD', total: null, calculation_status: 'calculating' } } });
+    ist('G2 erstes Nachlesen zeigt «pending» (Kosten noch nicht gerechnet): der Lauf ENDET sofort nach der ersten Lesung (eine Anlage, nichts bestätigt), Exit 1', [nachPend.prot.posts.length, nachPend.prot.confirms.length, nachPend.prot.leseVor, nachPend.prot.ausstieg ?? nachPend.status], [1, 0, 1, 1]);
+    ist('G2 erstes Nachlesen: Stopp-Tag und Befundart kein-entwurf, printful-synced nur EINMAL gesetzt, 🔴-Meldung nennt «ersten Nachlesen», keine ✅-Meldung, kein «bestaetigen-abgelehnt»', [['printful-review', 'printful-review-kein-entwurf'].filter((t) => !tags(nachPend).includes(t)), nachPend.prot.tags.filter((t) => t.tags.includes('printful-synced')).length, nachPend.prot.tg.filter((t) => /^🔴 LuxeStyle POD: Bestellung/.test(t) && /ersten Nachlesen/.test(t)).length, nachPend.prot.tg.filter((t) => /^✅/.test(t)).length, tags(nachPend).includes('printful-review-bestaetigen-abgelehnt')], [[], 1, 1, 0, false]);
   }
 
   // ── G3: Fertigware druckt das feste Motiv; eine mitgegebene Datei-Eigenschaft ersetzt es nicht
@@ -1616,6 +1652,7 @@ async function rennen({ modus, warteMs, haltMs = 10 }) {
   ist('G1 Rennen: in KEINEM Lauf zwei Bestätigungen (Doppelabbuchung)', erg.map((r) => r.confirms).filter((n) => n > 1), []);
   ist('G1 Rennen: kein Lauf blieb hängen oder brach ab (jeder Kindprozess endet selbst, ohne Signal)', erg.filter((r) => !r.x || !r.y || r.x.signal || r.y.signal || r.x.exit === 3 || r.y.exit === 3).length, 0);
   ist('G1 Rennen: der Lauf mit der SPÄTEREN Markierung tritt in jedem Lauf still zurück («ein anderer Lauf hat früher markiert», Exit 0, kein Auftrag von ihm)', erg.filter((r) => r.y && r.y.exit === 0 && /ein anderer Lauf hat früher markiert/.test(r.y.out) && !/Printful #\d+/.test(r.y.out)).length, LAEUFE);
+  ist('G1 Rennen: jede der 20 Markierungen ist genau 40 Zeichen lang (Grenze von Shopify je Tag) und ihre Zufallsteile sind nicht alle gleich (ein fester Zufallsteil trennte zwei Läufe derselben Millisekunde nicht)', [erg.flatMap((r) => [r.tagX, r.tagY]).filter((t) => !/^printful-anlegen-\d{8}t\d{4}-\d{5}-[a-z0-9]{3}$/.test(String(t)) || String(t).length !== 40), new Set(erg.flatMap((r) => [r.tagX, r.tagY]).map((t) => String(t).slice(-3))).size > 1], [[], true]);
   const angelegt = erg.filter((r) => r.posts === 1 && r.confirms === 1 && r.x && r.x.exit === 0 && /BESTÄTIGT/.test(r.x.out));
   const zuLangsam = erg.filter((r) => r.posts === 0 && r.confirms === 0 && r.x && r.x.exit === 1 && /brauchte \d+ ms/.test(r.x.err) && /zweiter Lauf/.test(r.x.err));
   ist('G1 Rennen: jeder Lauf endet auf eine von zwei Arten: der Lauf mit der kleineren Markierung legt an und bestätigt (EIN Auftrag), oder sein Schreiben war zu langsam und er meldet das als Fehler (KEIN Auftrag)', angelegt.length + zuLangsam.length, LAEUFE);
@@ -1625,6 +1662,15 @@ async function rennen({ modus, warteMs, haltMs = 10 }) {
   const lang = await Promise.all([rennen({ modus: 'lang', warteMs: 400 }), rennen({ modus: 'lang', warteMs: 400 })]);
   ist('G1 Rennen «lang» (die frühere Markierung kommt erst nach dem Nachlesen des späteren Laufs an): genau EIN Auftrag und EINE Bestätigung je Lauf, nie zwei', lang.map((r) => [r.posts, r.confirms]), [[1, 1], [1, 1]]);
   ist('G1 Rennen «lang»: der spätere Lauf legt an (Exit 0); der frühere legt NICHT an und endet mit Exit 1 und der Fehlerzeile zur Dauer seiner Markierung', lang.map((r) => [r.y && r.y.exit, r.y && /BESTÄTIGT/.test(r.y.out), r.x && r.x.exit, r.x && /brauchte \d+ ms/.test(r.x.err) && /zweiter Lauf/.test(r.x.err), r.tagX < r.tagY]), [[0, true, 1, true, true], [0, true, 1, true, true]]);
+}
+
+// ═════════════════════════════════════════════════════════════ GEGENPRÜFUNG 11.11.2026: kein Tag über 40 Zeichen (Shopify lässt je Order-Tag höchstens 40 zu)
+{
+  // Vor der Korrektur war die Markierung 45 Zeichen lang und drei Befund-Tags 42 bis 48: lehnt Shopify sie ab, legte der scharfe Sync NIE einen Auftrag an («Markierung vor dem Anlegen nicht gesetzt», Exit 1).
+  const kuerzt = lauf(sz1([zeile()], { tagLang: 'kuerzen' }));
+  ist('Tag-Länge: auch gegen ein Shopify, das zu lange Tags still auf 40 Zeichen KÜRZT, legt der Sync an und bestätigt (kein Tag ist länger, also wird nichts gekürzt; die eigene Markierung wird wiedergefunden)', [kuerzt.prot.posts.length, bestaetigt(kuerzt), kuerzt.prot.tagsZuLang, kuerzt.status], [1, true, [], 0]);
+  ist(`Tag-Länge: in KEINEM der ${SZENARIEN} Szenarien dieser Datei hat der Sync ein Tag mit mehr als 40 Zeichen gesendet (die Attrappe lehnt solche Tags ab wie vermutlich Shopify)`, [...TAGS_ZU_LANG], []);
+  ist('Tag-Länge: das Messgerät hat etwas gemessen (über 300 gesendete Tags; das längste ist die Markierung mit genau 40 Zeichen)', [TAG_ANZAHL > 300, TAG_LAENGSTES.length, /^printful-anlegen-/.test(TAG_LAENGSTES)], [true, 40, true]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

@@ -477,6 +477,13 @@ export function statusBewerten(order) {
 }
 
 /**
+ * Befundart für einen SCHON VORHANDENEN Printful-Auftrag (external_id), dessen Status ein Problem ist: «vorhanden-<kurz>». Die Namen sind kurz gehalten, damit das Tag «printful-review-<art>» in 40 Zeichen passt
+ * (Gegenprüfung 11.11.2026: «vorhanden-zahlung-fehlgeschlagen» ergab ein Tag mit 48 Zeichen, «vorhanden-status-unbekannt» eines mit 42). @param {string} befund `statusBewerten(...).befund`
+ */
+const VORHANDEN_ART = Object.freeze({ 'zahlung-fehlgeschlagen': 'vorhanden-failed', angehalten: 'vorhanden-angehalten', storniert: 'vorhanden-storniert', 'status-unbekannt': 'vorhanden-unbekannt' });
+export const vorhandenArt = (befund) => (Object.prototype.hasOwnProperty.call(VORHANDEN_ART, befund) ? VORHANDEN_ART[befund] : 'vorhanden-problem');
+
+/**
  * Dateien des Auftrags laut Printful (items[].files[].status/warning; GEMESSEN 05.11.: {"type":"default","status":"ok","width":1024,"height":1024,"dpi":72}).
  * Ein Auftrag ist nur dann «ok», wenn JEDER Artikel mindestens eine echte Datei führt (10.11.2026, Gegenleser Linse 2: bei zwei Artikeln mit Dateien nur am ersten gab die Prüfung «ok», weil nur die Gesamtzahl der
  * Dateien zählte; ein Warenkorb mit mehreren selbst gestalteten Artikeln ist der Normalfall).
@@ -558,8 +565,19 @@ export function empfaengerAus(o) {
 
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 export const REVIEW_TAG = 'printful-review';
-/** Tag einer Befundart; mit `printful-review` zusammen gesetzt (wie `printful-problem-<art>` in printful_tracking.mjs). */
-export const befundTag = (art) => `${REVIEW_TAG}-${slug(art)}`;
+/**
+ * Grösste Länge eines Order-Tags in Shopify: 40 Zeichen (QUELLE shopify.dev, Order.tags: «Each individual tag is limited to 40 characters in length»; ob Shopify ein längeres Tag bei tagsAdd ablehnt oder kürzt, ist in
+ * diesem Repo UNGEMESSEN, kein Lauf hat je scharf geschrieben). Gegenprüfung 11.11.2026: die Markierung vor dem Anlegen war 45 Zeichen lang, drei Befund-Tags 42 bis 48; lehnt Shopify sie ab, legte der scharfe Sync NIE einen
+ * Auftrag an («Markierung nicht gesetzt», Exit 1). Seither ist KEIN Tag, das der Sync schreibt, länger als TAG_MAX (Test über alle Befundarten; der Kleber schreibt ein längeres Tag gar nicht erst).
+ */
+export const TAG_MAX = 40;
+/** Grösste Länge des Namens einer Befundart, damit ihr Tag «printful-review-<art>» in TAG_MAX passt (40 - 16 = 24). */
+export const BEFUND_ART_MAX = TAG_MAX - (REVIEW_TAG.length + 1);
+/**
+ * Tag einer Befundart; mit `printful-review` zusammen gesetzt (wie `printful-problem-<art>` in printful_tracking.mjs). Nie länger als TAG_MAX: ein längerer Name wird am Ende gekürzt (Setzen und Wiedererkennen nutzen
+ * dieselbe Funktion, die Art bleibt also «schon gemeldet»); die Namen im Code sind alle kurz genug, ein Test hält das fest.
+ */
+export const befundTag = (art) => `${REVIEW_TAG}-${slug(art)}`.slice(0, TAG_MAX).replace(/-+$/, '');
 
 /**
  * Welche Tags setzt eine Befundliste, und muss gemeldet werden? Eine Befundart wird nur EINMAL gemeldet: steht ihr Tag schon an der Bestellung, ist sie nicht neu.
@@ -606,19 +624,33 @@ export function zahlungPruefen(n) {
 /** Markierung VOR dem Anlegen eines Printful-Auftrags (Tag `printful-anlegen-<JJJJMMTT>t<HHMM>` in UTC): ein späterer Lauf legt innerhalb von ANLEGEN_SPERRE_MIN Minuten nichts neu an, auch wenn Printful den Auftrag noch nicht zeigt. */
 export const ANLEGEN_SPERRE_MIN = 60;
 const zwei = (n) => String(n).padStart(2, '0');
+/** Länge des Zufallsteils der Markierung: 3 Zeichen a-z0-9. Mehr passt nicht: «printful-anlegen-JJJJMMTTtHHMM-SSmmm-zzz» ist genau TAG_MAX = 40 Zeichen lang (17 + 13 + 6 + 4). */
+export const ANSPRUCH_ZUFALL_LAENGE = 3;
 /**
- * Markierung (Anspruch) vor dem Anlegen. Ohne `zufall`: die alte Form «printful-anlegen-JJJJMMTTtHHMM». Mit `zufall` (4 bis 12 Zeichen a-z0-9): «printful-anlegen-JJJJMMTTtHHMM-SSmmm-<zufall>». Die Zeichenkette ist nach der Zeit
- * des Schreibens geordnet (Minute, dann Sekunden und Millisekunden); bei zwei Läufen, die gleichzeitig anlegen wollen, gewinnt der Anspruch mit der KLEINSTEN Zeichenkette (`anspruchGewonnen`).
+ * Markierung (Anspruch) vor dem Anlegen. Ohne `zufall`: die alte Form «printful-anlegen-JJJJMMTTtHHMM» (30 Zeichen). Mit `zufall` (genau 3 Zeichen a-z0-9): «printful-anlegen-JJJJMMTTtHHMM-SSmmm-<zufall>», genau 40 Zeichen
+ * (Shopify lässt je Order-Tag höchstens 40 zu, siehe TAG_MAX; bis zur Gegenprüfung vom 11.11.2026 trug die Markierung 8 Zufallszeichen und war 45 Zeichen lang). Die Zeichenkette ist nach der Zeit des Schreibens geordnet
+ * (Minute, dann Sekunden und Millisekunden); bei zwei Läufen, die gleichzeitig anlegen wollen, gewinnt der Anspruch mit der KLEINSTEN Zeichenkette (`anspruchGewonnen`). Der Zufallsteil trennt nur zwei Läufe, die in DERSELBEN
+ * Millisekunde markieren (36³ = 46 656 Möglichkeiten).
  */
 export function anlegenTag(jetztMs, zufall = null) {
   const d = new Date(jetztMs);
   const basis = `printful-anlegen-${d.getUTCFullYear()}${zwei(d.getUTCMonth() + 1)}${zwei(d.getUTCDate())}t${zwei(d.getUTCHours())}${zwei(d.getUTCMinutes())}`;
   if (zufall === null || zufall === undefined) return basis;
   const z = String(zufall).toLowerCase();
-  if (!/^[a-z0-9]{4,12}$/.test(z)) throw new Error('anlegenTag: der Zufallsteil muss aus 4 bis 12 Zeichen a-z0-9 bestehen');
-  return `${basis}-${zwei(d.getUTCSeconds())}${String(d.getUTCMilliseconds()).padStart(3, '0')}-${z}`;
+  if (!new RegExp(`^[a-z0-9]{${ANSPRUCH_ZUFALL_LAENGE}}$`).test(z)) throw new Error(`anlegenTag: der Zufallsteil muss aus genau ${ANSPRUCH_ZUFALL_LAENGE} Zeichen a-z0-9 bestehen`);
+  const tag = `${basis}-${zwei(d.getUTCSeconds())}${String(d.getUTCMilliseconds()).padStart(3, '0')}-${z}`;
+  if (tag.length > TAG_MAX) throw new Error(`anlegenTag: die Markierung wäre ${tag.length} Zeichen lang (Shopify lässt höchstens ${TAG_MAX} zu)`);   // nur bei einem Datum ausserhalb der Jahre 1000 bis 9999
+  return tag;
 }
-const ANSPRUCH_TAG = /^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})(?:-\d{5}-[a-z0-9]{4,12})?$/;
+/** Zufallsteil einer Markierung aus Zufallsbytes (z. B. `randomBytes(4)`): genau ANSPRUCH_ZUFALL_LAENGE Zeichen a-z0-9, gleichmässig verteilt über 36³ Werte (die Bytes als Zahl, modulo 46 656; die Schiefe bei 4 Bytes liegt unter 0,002 %). */
+export function anspruchZufall(bytes) {
+  const b = bytes && typeof bytes.length === 'number' ? Array.from(bytes) : [];
+  if (b.length < 4 || b.some((x) => !Number.isInteger(x) || x < 0 || x > 255)) throw new Error('anspruchZufall: mindestens 4 Zufallsbytes (0 bis 255) nötig');
+  const zahl = ((b[0] * 256 + b[1]) * 256 + b[2]) * 256 + b[3];
+  return (zahl % 36 ** ANSPRUCH_ZUFALL_LAENGE).toString(36).padStart(ANSPRUCH_ZUFALL_LAENGE, '0');
+}
+// Gelesen werden die alte Form ohne Zusatz, die heutige (3 Zufallszeichen) und die bis zum 11.11.2026 gebildete lange Form (4 bis 12 Zufallszeichen; sie steht an keiner echten Bestellung, kein Lauf hat je scharf geschrieben).
+const ANSPRUCH_TAG = /^printful-anlegen-(\d{4})(\d{2})(\d{2})t(\d{2})(\d{2})(?:-\d{5}-[a-z0-9]{3,12})?$/;
 const anspruchMs = (t) => { const m = ANSPRUCH_TAG.exec(String(t)); if (!m) return null; const ms = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]); return Number.isFinite(ms) ? ms : null; };
 /** Alter der JÜNGSTEN Markierung in Minuten (nie negativ); null, wenn keine da ist. */
 export function anlegenAlterMin(tags, jetztMs) {
