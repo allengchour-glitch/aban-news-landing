@@ -385,8 +385,8 @@ jobs:
           node automation/printful_sync_test.mjs
           # Preisanpassung der Editor-Produkte (nur Erhöhungen, Senken nur mit Haken; 10.11.2026, Fund 10/11/15 der Gegenprüfung P1)
           node automation/printful_reprice_test.mjs
-          # Die Fundstellen ALLER Mutanten des Bestellwegs (die Zahl steht am Anfang der Ausgabe) müssen noch genau einmal vorkommen und keiner darf ein Syntaxfehler sein. Die volle Probe dauert mit den gehärteten Tests rund eine
-          # Stunde und läuft von Hand, auf mehrere Prozesse verteilbar: SHARD=1/3, 2/3, 3/3 node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs (Zahlen: dropship/wp6-0611/SYNC.md 7.7)
+          # Die Fundstellen ALLER Mutanten des Bestellwegs (die Zahl steht am Anfang der Ausgabe) müssen noch genau einmal vorkommen und keiner darf ein Syntaxfehler sein. Die volle Probe dauert mehrere
+          # Stunden (11.11.2026: 652 Mutanten, rund 290 Minuten Rechenzeit) und läuft von Hand, auf Prozesse verteilbar: SHARD=1/8 … 8/8 node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs (Zahlen: dropship/wp6-0611/SYNC.md 7.14)
           node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs --pruefen
           # Rückmeldung Printful → Shopify (03.11.2026): reine Zuordnung + Verhalten des Skripts im Kindprozess (gefälschtes Shopify/Printful/Telegram)
           node automation/printful_tracking_test.mjs

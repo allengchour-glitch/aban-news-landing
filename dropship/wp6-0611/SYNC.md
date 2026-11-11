@@ -474,4 +474,18 @@ Dazu gelten wie bisher: kein Befund, Kosten ≤ Obergrenze, Mindestgewinn, und d
 
 **Nicht behoben, mit Grund:** Leseverzug von Shopify über die Wartezeit (Fall (c)): nur mit einer echten Messung zweier Clients zu beziffern; die Wartezeit zu verlängern kostet jede Bestellung Zeit, ohne dass ein Wert belegt ist. `Order.risk` bleibt offen (7.13). Ein `push`-Auslöser des Test-Workflows nur für die Freigabedatei wurde nicht eingebaut (er würde bei jedem Push auf `main` den 15-Minuten-Job starten).
 
-**Stand der Tests und der Mutationsprobe:** AUSSTEHEND (wird nach dem vollen Lauf eingetragen).
+**Stand der Tests und der Mutationsprobe (11.11.2026, selbst gefahren, `env -i`, Node 22):**
+
+| Datei | Ergebnis |
+|---|---|
+| `automation/lib/printful_bestellweg_test.mjs` | **1165 ok, 0 Fehler** (in der CI-Nachstellung 1166: dort zählt zusätzlich «die Prüfung sieht über 150 Workflow-Dateien», gesehen 198) |
+| `automation/lib/printful_platzierung_test.mjs` | **212 ok** |
+| `automation/printful_sync_test.mjs` | **558 ok** (rund 55 bis 75 s je nach Last) |
+| `automation/printful_reprice_test.mjs` | **73 ok** |
+| `automation/pod_auswahl_test.mjs` | **112 ok** |
+| `automation/printful_tracking_test.mjs` | **301 bestanden** |
+
+* **Mutationsprobe:** 652 Mutanten (601 bis zur Gegenprüfung, 51 neue `GP …`), `--pruefen`: jeder genau einmal anwendbar, kein Syntaxfehler. **Voller Lauf am eingefrorenen Stand des Commits `0186f45201`** (Code und Tests; spätere Commits ändern nur Kommentare und Doku), in 8 Teilen (`SHARD=i/8`), höchstens zwei gleichzeitig, `nice -n 15`: **652 von 652 erkannt, alle durch eine benannte Prüfung, 0 überlebt, 0 ungeklärt, 0 ungültig** (Teile 82, 82, 82, 82, 81, 81, 81, 81). Dauer: 11:21 bis 13:49 UTC, also rund 2 h 27 min Uhrzeit und rund 290 Minuten Rechenzeit über alle Teile (Teile 7 und 8 wurden nach 3 Minuten einmal neu gestartet, weil der Treiber an sein eigenes Zeitlimit kam). Protokolle im Scratch (`bw4_logs/voll_shard_<i>_von_8.log`), nicht im Repo.
+* **Verlauf, ehrlich:** ein erster Lauf nur der `GP`-Mutanten (am Commit `2043efe057`, 25 Mutanten) liess einen überleben: «nach dem Abbruch geht die ✅-Meldung trotzdem raus» war im reinen Abbruchfall gleichwertig (der Zähler der Erfolge ist dort 0). Geschlossen mit dem Szenario «erste Bestellung bestätigt, zweite bricht ab». Der erste Durchgang des vollen Laufs wurde nach einer Minute abgebrochen (beide Teile schrieben in dieselbe Protokolldatei) und neu gestartet.
+* **Nachstellen des Jobs `tests`** (Werkzeug des Gegenprüfers: Auszug mit den 75 Mustern des Jobs, 848 Dateien, jeder `run:`-Schritt mit `bash -e`, leere Umgebung, `CI=true`, `GITHUB_ACTIONS=true`; Commit `a07543bedd`): **alle 9 Schritte Exit 0, Summe 896.8 s = 50 % von 1800 s** (Last 1.4 bis 1.7, ruhige Maschine; ohne checkout und Einrichtung der Laufzeiten), davon `pod_auswahl_mutation.mjs` 615.5 s und «Kategorien, Auswahl, Texte, Feed» 224.4 s. Der Gegenprüfer mass am Stand davor 912 s allein und 1043 s unter Last: mit 20 Minuten Limit 76 bis 87 %, mit 30 Minuten 51 bis 58 %. Wirkliche Laufzeit auf dem Actions-Läufer: weiter **ungemessen**.
+* **Rennen** (Skript `s3b.mjs` des Geld-Prüfers, unverändert bis auf die Umgebung: GitHub Actions und `GITHUB_WORKFLOW_REF` des Sync-Workflows vorgetäuscht; je 5 Rennen, die Markierung des früheren Laufs verzögert): am alten Stand `5404001d97` **5 von 5 mit zwei Entwürfen und 5 von 5 mit zwei Bestätigungen** (Printful nimmt die doppelte `external_id` an) bzw. 5 von 5 mit zwei Entwürfen und 0 Bestätigungen (Printful lehnt ab); am Stand `0186f45201` **0 von 10 mit zwei Entwürfen, 0 mit zwei Bestätigungen, in jedem Rennen genau ein Auftrag**. Mit nur `GITHUB_ACTIONS=true` (ohne Workflow-Ref) stellt der neue Stand **keine einzige Anfrage** (scharf verweigert). Der eigene Rennen-Test in `printful_sync_test.mjs` (10 gleichzeitige Rennen mit echter Wartezeit plus zwei Läufe «lang») war in allen Läufen dieser Runde grün.
