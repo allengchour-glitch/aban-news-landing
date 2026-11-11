@@ -28,7 +28,7 @@ if (process.argv[2] === '--szenario') {
   // Seit der Schlussprüfung (Fund G1) läuft der Sync scharf nur in GitHub Actions und wartet 3000 ms zwischen Markieren und Nachlesen: der Rahmen täuscht Actions vor (GITHUB_ACTIONS=true) und setzt die Wartezeit mit der
   // Test-Kennung auf 0 (sonst dauerte jedes Szenario mit einem Auftrag 3 s länger). Die Szenarien zu G1 löschen oder überschreiben diese Werte ausdrücklich.
   Object.assign(process.env, { PRINTFUL_PAKET_BEZAHLT: ALLE_PLATZIERUNGEN, PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PRINTFUL_AUTO_CONFIRM: '1', PF_PLATZIERUNG_PAUSE_MS: '0', PF_PAUSE_MS: '0', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '500', DRY_RUN: '0',
-    GITHUB_ACTIONS: 'true', PRINTFUL_ANSPRUCH_WARTE_MS: '0', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' });
+    GITHUB_ACTIONS: 'true', GITHUB_WORKFLOW_REF: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main', PRINTFUL_ANSPRUCH_WARTE_MS: '0', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' });
   for (const k of ['PRINTFUL_STORE_ID', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'RUN_LIMIT_MS', 'PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_LOKAL_SCHARF']) delete process.env[k];
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
   const kiArt = sz.ki || 'pass';                                              // Antwort der KI-Attrappe; 'aus' schaltet die Kontrolle ab, 'ohne-schluessel' lässt den Schlüssel weg
@@ -39,7 +39,9 @@ if (process.argv[2] === '--szenario') {
   const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '', kiDateien: [], frisch: [], frischQuery: '', scopeAbfragen: 0, tagOps: 0, dateiRedirect: [], folge: [], anspruch: [], anspruchQuery: '', zeiten: [], tagsZuLang: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0, tagsJeBestellung: {} };   // tagsJeBestellung: was der Sync per tagsAdd gesetzt hat (das zweite Lesen nach dem Setzen der Markierung zeigt es)
-  const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
+  const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); if (x.header && x.header[l] !== undefined) return x.header[l]; if (l === 'retry-after') return sz.retryAfter ? String(sz.retryAfter) : null;
+    // Kopf «Date» wie bei jedem echten Server (Gegenprüfung 11.11.2026, Uhrvergleich): `uhrVersatzMs` = so viel geht die Uhr des Rechners gegenüber Shopify vor; `dateKopf` setzt den Kopf roh (null = fehlt)
+    if (l === 'date') return 'dateKopf' in sz ? sz.dateKopf : new Date(Date.now() - (sz.uhrVersatzMs || 0)).toUTCString(); return null; } },
     json: async () => { if (x.roh !== undefined) throw new Error('kein JSON'); return body; }, arrayBuffer: async () => (x.bytes ? x.bytes.buffer.slice(x.bytes.byteOffset, x.bytes.byteOffset + x.bytes.byteLength) : new ArrayBuffer(0)) });
   const png = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
   const folge = (liste, n) => (Array.isArray(liste) && liste.length ? liste[Math.min(n, liste.length - 1)] : {});
@@ -112,6 +114,8 @@ if (process.argv[2] === '--szenario') {
       }
       if (q.includes('node(id')) {                       // frisches Lesen einer Bestellung (vor dem Anlegen, vor dem Bestätigen)
         prot.frischQuery = q; const nr = prot.frisch.length; prot.frisch.push(b.variables.id);
+        // `frischMs` (Gegenprüfung 11.11.2026): die ERSTE frische Lesung antwortet so viele ms später (hängende Antwort; die Dauer des Anspruchs zählt ab dieser Lesung)
+        if (sz.frischMs && nr === 0) await new Promise((r) => setTimeout(r, sz.frischMs));
         if (sz.frischFehler && nr >= (sz.frischFehlerAb || 0)) {                       // `frischFehlerAb`: ab der n-ten frischen Lesung (0 = ab der ersten)
           if (sz.frischFehler === 'http') return mk(500, {});
           if (sz.frischFehler === 'null') return mk(200, { data: { node: null } });
@@ -1456,6 +1460,32 @@ for (const [name, sz, soll] of [
     const x = lauf(bestellt([z1], { envLoeschen: ['GITHUB_ACTIONS'], env: { PRINTFUL_LOKAL_SCHARF: v } }));
     ist(`G1 PRINTFUL_LOKAL_SCHARF=«${v}» ist KEINE Ausnahme (nur genau «1»): Exit 1, nichts gelesen, nichts geschrieben`, nichtsAngefasst(x), NICHTS);
   }
+  // Gegenprüfung 11.11.2026: GITHUB_ACTIONS allein genügt nicht mehr, der Lauf muss aus dem Workflow printful-sync.yml kommen (GITHUB_WORKFLOW_REF); CI=true ist keine Ausnahme; jede Schreibweise des scharfen DRY_RUN braucht Actions
+  for (const [n, sz] of [['GITHUB_ACTIONS=true, aber Workflow printful-reprice.yml', { env: { GITHUB_WORKFLOW_REF: 'eigentuemer/aban-news-landing/.github/workflows/printful-reprice.yml@refs/heads/main' } }],
+    ['GITHUB_ACTIONS=true, GITHUB_WORKFLOW_REF fehlt', { envLoeschen: ['GITHUB_WORKFLOW_REF'] }], ['GITHUB_ACTIONS=true, Workflow in einem Unterordner', { env: { GITHUB_WORKFLOW_REF: 'a/b/.github/workflows/x/printful-sync.yml@refs/heads/main' } }],
+    ['GITHUB_ACTIONS fehlt, CI=true', { envLoeschen: ['GITHUB_ACTIONS'], env: { CI: 'true' } }],
+    ...['false', 'no', 'nein', 'off', 'FALSE', ' 0 '].map((d) => [`DRY_RUN=«${d}» ohne GITHUB_ACTIONS`, { envLoeschen: ['GITHUB_ACTIONS'], env: { DRY_RUN: d } }])]) {
+    const x = lauf(bestellt([z1], { telegram: true, ...sz }));
+    ist(`GP G1 scharf (${n}): Exit 1, nichts gelesen, nichts geschrieben; die Meldung nennt GITHUB_WORKFLOW_REF und printful-sync.yml`, [nichtsAngefasst(x), x.prot.err.some((l) => /GITHUB_WORKFLOW_REF/.test(l) && /printful-sync\.yml/.test(l))], [NICHTS, true]);
+  }
+  const fremdLokal = lauf(bestellt([z1], { env: { GITHUB_WORKFLOW_REF: 'eigentuemer/aban-news-landing/.github/workflows/printful-reprice.yml@refs/heads/main', PRINTFUL_LOKAL_SCHARF: '1' } }));
+  ist('GP G1 Fremder Workflow mit PRINTFUL_LOKAL_SCHARF=1: läuft (Auftrag, bestätigt) mit der lauten Warnzeile', [fremdLokal.prot.posts.length, bestaetigt(fremdLokal), fremdLokal.prot.warn.filter((l) => /AUSSERHALB VON GITHUB ACTIONS ODER DES WORKFLOWS printful-sync\.yml/.test(l)).length], [1, true, 1]);
+  // Uhr gegen den Date-Kopf von Shopify (Restfenster der zweiten Sicherung): scharf nur bei höchstens 60 s Abweichung
+  for (const [n, sz] of [['Uhr 61 s vor', { uhrVersatzMs: 61000 }], ['Uhr 61 s nach', { uhrVersatzMs: -61000 }], ['Uhr 2 Stunden vor', { uhrVersatzMs: 7200000 }], ['Kopf «Date» fehlt', { dateKopf: null }], ['Kopf «Date» unlesbar («2026»)', { dateKopf: '2026' }]]) {
+    const x = lauf(bestellt([z1], { telegram: true, ...sz }));
+    ist(`GP Uhr ${n}: scharf Exit 1, nur gelesen (Anmeldung), nichts geschrieben ausser der 🔴-Meldung, die Bestellungen nicht einmal gelistet`, [x.prot.ausstieg ?? x.status, x.prot.posts.length, x.prot.confirms.length, x.prot.tags.length, x.prot.mf.length, x.prot.shop.length, x.prot.tg.length, /^🔴 LuxeStyle POD-Sync: die Uhr/.test(x.prot.tg[0] || ''), x.prot.err.some((l) => /Uhr dieses Rechners/.test(l))], [1, 0, 0, 0, 0, 0, 1, true, true]);
+  }
+  for (const [n, v] of [['59 s vor', 59000], ['59 s nach', -59000]]) {
+    const x = lauf(bestellt([z1], { uhrVersatzMs: v }));
+    ist(`GP Uhr ${n}: innerhalb der Grenze, Auftrag und Bestätigung wie sonst; die Zeile «Uhr gegen Shopify» nennt den Versatz`, [x.prot.posts.length, bestaetigt(x), x.prot.log.some((l) => /^Uhr gegen Shopify: [+-]\d+ ms$/.test(l))], [1, true, true]);
+  }
+  const uhrDry = lauf(bestellt([z1], { uhrVersatzMs: 7200000, env: { DRY_RUN: '1' } }));
+  ist('GP Uhr im Trockenlauf 2 Stunden daneben: kein Abbruch (Exit 0, die Bestellung wird gelesen), nur die Zeile mit dem Grund', [uhrDry.status, uhrDry.prot.shop.length, uhrDry.prot.log.some((l) => /^Uhr gegen Shopify: \+720\d{4} ms \(die Uhr dieses Rechners weicht um 720[01] s/.test(l))], [0, 1, true]);
+  // Die Dauer des Anspruchs zählt ab dem FRISCHEN LESEN: hängt diese Lesung (220 ms bei 300 ms Wartezeit, Grenze 150) und ein zweiter Lauf hat markiert, legt dieser Lauf nicht an (vorher zählte nur das Schreiben)
+  const frischHaengt = lauf(bestellt([z1], { frischMs: 220, rivale: 'spaeter', telegram: true, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  ist('GP Restfenster: die frische Lesung hing 220 ms (Grenze 150) und ein zweiter Lauf hat markiert: KEIN Auftrag, Fehler «brauchte … ab dem frischen Lesen», Exit 1', [frischHaengt.prot.posts.length, frischHaengt.prot.confirms.length, frischHaengt.prot.err.some((l) => /brauchte \d+ ms ab dem frischen Lesen/.test(l)), frischHaengt.prot.ausstieg ?? frischHaengt.status], [0, 0, true, 1]);
+  const frischHaengtAllein = lauf(bestellt([z1], { frischMs: 220, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
+  ist('GP Restfenster Gegenprobe: dieselbe hängende Lesung ohne zweiten Lauf: Auftrag und Bestätigung wie sonst', [frischHaengtAllein.prot.posts.length, bestaetigt(frischHaengtAllein)], [1, true]);
   // Der Trockenlauf (Vorgabe) läuft weiter OHNE Actions und schreibt nichts
   for (const [n, sz] of [['DRY_RUN nicht gesetzt', { envLoeschen: ['GITHUB_ACTIONS', 'DRY_RUN', 'PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_ANSPRUCH_TESTKENNUNG'] }]]) {
     const x = lauf(bestellt([z1], { telegram: true, ...sz }));
@@ -1479,7 +1509,7 @@ for (const [name, sz, soll] of [
   const langsamAllein = lauf(bestellt([z1], { anspruchSchreibMs: 220, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
   ist('G1 Die eigene Markierung brauchte 220 ms bei 300 ms Wartezeit (Grenze 150), es gibt aber keinen zweiten Lauf: Auftrag und Bestätigung wie sonst (kein Stillstand im Normalfall)', [langsamAllein.prot.posts.length, bestaetigt(langsamAllein), langsamAllein.status], [1, true, 0]);
   const langsamZweiter = lauf(bestellt([z1], { anspruchSchreibMs: 220, rivale: 'spaeter', telegram: true, env: { PRINTFUL_ANSPRUCH_WARTE_MS: '300' } }));
-  ist('G1 …und ein zweiter Lauf hat ebenfalls markiert (seine Markierung ist die SPÄTERE): trotz «kleinster» Markierung KEIN Auftrag, kein Stopp-Tag, Fehler mit der Dauer, Exit 1', [langsamZweiter.prot.posts.length, langsamZweiter.prot.confirms.length, hatReview(langsamZweiter), langsamZweiter.prot.err.some((l) => /brauchte \d+ ms \(Grenze 150 ms\)/.test(l) && /zweiter Lauf/.test(l)), langsamZweiter.prot.ausstieg ?? langsamZweiter.status], [0, 0, false, true, 1]);
+  ist('G1 …und ein zweiter Lauf hat ebenfalls markiert (seine Markierung ist die SPÄTERE): trotz «kleinster» Markierung KEIN Auftrag, kein Stopp-Tag, Fehler mit der Dauer, Exit 1', [langsamZweiter.prot.posts.length, langsamZweiter.prot.confirms.length, hatReview(langsamZweiter), langsamZweiter.prot.err.some((l) => /brauchte \d+ ms ab dem frischen Lesen \(Grenze 150 ms\)/.test(l) && /zweiter Lauf/.test(l)), langsamZweiter.prot.ausstieg ?? langsamZweiter.status], [0, 0, false, true, 1]);
   ist('G1 …die Zusammenfassung zählt die Bestellung als «später wieder»', langsamZweiter.prot.log.some((l) => /^Printful-Sync fertig: .* 1 später wieder/.test(l)), true);
   const schnellZweiter = lauf(bestellt([z1], { rivale: 'spaeter', env: { PRINTFUL_ANSPRUCH_WARTE_MS: '1000' } }));   // 1000 ms: die Grenze von 500 ms für das eigene Schreiben reisst auch unter hoher Rechnerlast nicht (die Attrappe antwortet im selben Prozess)
   ist('G1 Gegenprobe: die eigene Markierung war schnell, die des zweiten Laufs ist die spätere → dieser Lauf gewinnt (Auftrag, bestätigt)', [schnellZweiter.prot.posts.length, bestaetigt(schnellZweiter)], [1, true]);
@@ -1558,7 +1588,7 @@ for (const [name, sz, soll] of [
 //   3. Liest Y nach, BEVOR die Haltezeit um ist (ein Kleber ohne Wartezeit tut das immer), sieht Y nur sich; X sieht danach beide und ist die «kleinste» → zwei Aufträge.
 // Die Attrappe nimmt eine doppelte external_id an (schlechtester Fall; ob Printful sie ablehnt, ist ungemessen).
 const pngKopf = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
-const RENNEN_ENV = { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PF_PAUSE_MS: '0', PF_PLATZIERUNG_PAUSE_MS: '0', DRY_RUN: '0', GITHUB_ACTIONS: 'true', PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '60', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' };
+const RENNEN_ENV = { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', PF_PAUSE_MS: '0', PF_PLATZIERUNG_PAUSE_MS: '0', DRY_RUN: '0', GITHUB_ACTIONS: 'true', GITHUB_WORKFLOW_REF: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main', PRINTFUL_AUTO_CONFIRM: '1', PRINTFUL_KI_KONTROLLE: 'pflicht', GEMINI_API_KEY: 'g', PRINTFUL_MAX_KOSTEN_USD: '60', PRINTFUL_ANSPRUCH_TESTKENNUNG: 'nur-attrappe' };
 async function rennen({ modus, warteMs, haltMs = 10 }) {
   const FRIST = 30000;                               // Sicherheitsfrist der Schranken: nur gegen Hänger (ein Lauf endet vorzeitig); im normalen Ablauf greift sie nie, auch nicht unter hoher Rechnerlast
   const bestellung = knoten([zeile()]);

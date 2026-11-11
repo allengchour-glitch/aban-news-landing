@@ -698,11 +698,32 @@ export function anspruchGewonnen(tags, meinTag, jetztMs, { allein = false } = {}
  * @param {{dry:boolean, githubActions:any, lokalScharf:any}} p githubActions/lokalScharf = die rohen Umgebungswerte
  * @returns {{ok:boolean, lokal:boolean, grund:string|null}} lokal = scharf ausserhalb von Actions mit ausdrücklicher Ausnahme
  */
-export function scharfErlaubt({ dry = true, githubActions = undefined, lokalScharf = undefined } = {}) {
+export function scharfErlaubt({ dry = true, githubActions = undefined, workflowRef = undefined, lokalScharf = undefined } = {}) {
   if (dry) return { ok: true, lokal: false, grund: null };
-  if (githubActions === 'true') return { ok: true, lokal: false, grund: null };
+  // Gegenprüfung 11.11.2026: GITHUB_ACTIONS allein stand stellvertretend für «läuft unter der Concurrency-Gruppe printful-sync», prüfte das aber nicht (jeder andere Workflow dürfte scharf laufen, ohne Schloss und ohne
+  // Warnzeile). Darum zusätzlich GITHUB_WORKFLOW_REF (setzt der Läufer selbst, Form «<Besitzer>/<Repo>/.github/workflows/<Datei>@<Ref>»): nur der Workflow printful-sync.yml gilt als «in Actions».
+  if (githubActions === 'true' && SYNC_WORKFLOW_REF.test(String(workflowRef == null ? '' : workflowRef))) return { ok: true, lokal: false, grund: null };
   if (String(lokalScharf == null ? '' : lokalScharf).trim() === '1') return { ok: true, lokal: true, grund: null };
-  return { ok: false, lokal: false, grund: 'Scharf (DRY_RUN=0) läuft der Sync nur in GitHub Actions (GITHUB_ACTIONS=true): nur dort verhindert die Concurrency-Gruppe des Workflows zwei gleichzeitige Läufe und damit zwei Printful-Aufträge für eine Bestellung. Auf dem eigenen Rechner bitte den Trockenlauf nehmen (DRY_RUN nicht setzen) oder den Workflow von Hand starten; die ausdrückliche Ausnahme ist PRINTFUL_LOKAL_SCHARF=1 (nie gleichzeitig mit dem Workflow). Es wurde nichts gelesen und nichts geschrieben' };
+  return { ok: false, lokal: false, grund: 'Scharf (DRY_RUN=0) läuft der Sync nur in GitHub Actions (GITHUB_ACTIONS=true) und dort nur im Workflow printful-sync.yml (GITHUB_WORKFLOW_REF): nur dort verhindert die Concurrency-Gruppe des Workflows zwei gleichzeitige Läufe und damit zwei Printful-Aufträge für eine Bestellung. Auf dem eigenen Rechner bitte den Trockenlauf nehmen (DRY_RUN nicht setzen) oder den Workflow von Hand starten; die ausdrückliche Ausnahme ist PRINTFUL_LOKAL_SCHARF=1 (nie gleichzeitig mit dem Workflow). Es wurde nichts gelesen und nichts geschrieben' };
+}
+/** GITHUB_WORKFLOW_REF des Sync-Workflows (Gegenprüfung 11.11.2026): «<Besitzer>/<Repo>/.github/workflows/printful-sync.yml@<Ref>», genau diese Datei, keine andere und kein Unterordner. */
+export const SYNC_WORKFLOW_REF = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/\.github\/workflows\/printful-sync\.yml@\S+$/;
+/**
+ * Uhr dieses Rechners gegen den Date-Kopf einer Shopify-Antwort (Gegenprüfung 11.11.2026, Restfenster der zweiten Sicherung): die Markierungen zweier Läufe werden nach ihrer Zeit verglichen, und ihre Sperre gilt 60 Minuten.
+ * Gemessen: bei Uhren mehr als 60 Minuten daneben legten zwei gleichzeitige Läufe in 18 von 32 Rennen beide an und bestätigten. Ein scharfer Lauf bricht darum ab, wenn die eigene Uhr mehr als UHR_GRENZE_MS vom Date-Kopf
+ * abweicht oder der Kopf fehlt (nicht messbar = nicht sicher). Der Kopf hat Sekunden-Auflösung und kommt eine Laufzeit zu spät: eine richtige Uhr liegt 0 bis rund 2 Sekunden VOR ihm.
+ * @param {number} eigeneMs  Date.now() beim Empfang der Antwort   @param {any} dateKopf  der rohe Wert des Kopfs «Date»
+ * @returns {{ok:boolean, versatzMs:number|null, grund:string|null}}
+ */
+export const UHR_GRENZE_MS = 60000;
+export function uhrBewerten(eigeneMs, dateKopf) {
+  const roh = String(dateKopf == null ? '' : dateKopf).trim();
+  // Nur die Form des HTTP-Kopfs (RFC 9110 IMF-fixdate, z. B. «Wed, 11 Nov 2026 10:49:01 GMT»); Date.parse allein nähme auch «1» oder «2026» an
+  const ms = /^[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT$/.test(roh) ? Date.parse(roh) : NaN;
+  if (!Number.isFinite(ms) || !Number.isFinite(eigeneMs)) return { ok: false, versatzMs: null, grund: `die Uhr dieses Rechners lässt sich nicht gegen Shopify prüfen (Kopf «Date» ${roh ? '«' + roh.slice(0, 40) + '» unlesbar' : 'fehlt'})` };
+  const versatzMs = Math.round(eigeneMs - ms);
+  if (Math.abs(versatzMs) > UHR_GRENZE_MS) return { ok: false, versatzMs, grund: `die Uhr dieses Rechners weicht um ${Math.round(versatzMs / 1000)} s von Shopify ab (erlaubt sind ${UHR_GRENZE_MS / 1000} s): die Markierungen vor dem Anlegen würden falsch verglichen` };
+  return { ok: true, versatzMs, grund: null };
 }
 /** Wartezeit zwischen dem Setzen der eigenen Markierung und dem Nachlesen (PRINTFUL_ANSPRUCH_WARTE_MS): Vorgabe, kleinster Wert eines echten Laufs, grösster Wert. Kein Workflow setzt die Variable (ein Test hält das fest). */
 export const ANSPRUCH_WARTE_MS_VORGABE = 3000, ANSPRUCH_WARTE_MS_MIN = 2000, ANSPRUCH_WARTE_MS_MAX = 60000;

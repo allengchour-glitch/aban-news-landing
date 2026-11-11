@@ -59,7 +59,7 @@ import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
   kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard, adresseProblem,
   zahlungPruefen, anlegenTag, anlegenAlterMin, anlegenGesperrt, anspruchGewonnen, ANLEGEN_SPERRE_MIN, vorhandenVergleichen, entwurfVergleichen, scopesBewerten, bestaetigenPlan, bestellStand, bestellAbweichung,
-  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, anspruchZufall, vorhandenArt,
+  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, anspruchZufall, vorhandenArt, uhrBewerten,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -111,7 +111,8 @@ const RUN_LIMIT_MS = Number.isFinite(Number(process.env.RUN_LIMIT_MS)) && proces
 const DRY = !['0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN).trim().toLowerCase());
 // SCHARF NUR IN GITHUB ACTIONS (Schlussprüfung 10.11.2026, Fund G1): zwei überlappende scharfe Läufe ergaben zwei Printful-Aufträge und zwei Bestätigungen (gemessen 5 von 5 mit verzögertem Tag-Schreiben). Das Schloss dagegen ist die
 // Concurrency-Gruppe des Workflows; ein scharfer Lauf auf dem eigenen Rechner hat es nicht und ist darum ein Konfigurationsfehler (Exit 1 vor jedem Lesen und Schreiben), ausser PRINTFUL_LOKAL_SCHARF=1 (laute Warnzeile).
-const SCHARF = scharfErlaubt({ dry: DRY, githubActions: process.env.GITHUB_ACTIONS, lokalScharf: process.env.PRINTFUL_LOKAL_SCHARF });
+// Gegenprüfung 11.11.2026: dazu GITHUB_WORKFLOW_REF, nur der Workflow printful-sync.yml (mit der Concurrency-Gruppe) gilt.
+const SCHARF = scharfErlaubt({ dry: DRY, githubActions: process.env.GITHUB_ACTIONS, workflowRef: process.env.GITHUB_WORKFLOW_REF, lokalScharf: process.env.PRINTFUL_LOKAL_SCHARF });
 // Wartezeit zwischen dem Setzen der eigenen Markierung und dem Nachlesen (zweite Sicherung, lib `anspruchGewonnen`): Vorgabe 3000 ms. PRINTFUL_ANSPRUCH_WARTE_MS ist NUR für Tests da (kein Workflow setzt sie, ein Test hält das fest);
 // unter 2000 ms ist ein Konfigurationsfehler, ausser die Test-Kennung PRINTFUL_ANSPRUCH_TESTKENNUNG steht (sie gehört in keinen echten Lauf und in keine Workflow-Datei).
 const WARTE = anspruchWarteLesen(process.env.PRINTFUL_ANSPRUCH_WARTE_MS, { testKennung: process.env.PRINTFUL_ANSPRUCH_TESTKENNUNG });
@@ -153,7 +154,7 @@ if (MAX_KOSTEN_FEHLER) { console.error(`❌ PRINTFUL_MAX_KOSTEN_USD ist keine Za
 if (PAKET_FEHLER.length) { console.error(`❌ PRINTFUL_PAKET_BEZAHLT enthält ungültige Platzierungs-IDs (${PAKET_FEHLER.map((s) => s.slice(0, 20)).join(', ')}; erlaubt: a-z, 0-9, Unterstrich): es wird nichts angelegt.`); process.exit(1); }
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
-if (SCHARF.lokal) console.warn('⚠️ SCHARFER LAUF AUSSERHALB VON GITHUB ACTIONS (PRINTFUL_LOKAL_SCHARF=1): die Concurrency-Gruppe des Workflows schützt diesen Lauf NICHT. Nie gleichzeitig mit dem Workflow «Printful-Sync» starten, sonst sind zwei Aufträge für eine Bestellung möglich.');
+if (SCHARF.lokal) console.warn('⚠️ SCHARFER LAUF AUSSERHALB VON GITHUB ACTIONS ODER DES WORKFLOWS printful-sync.yml (PRINTFUL_LOKAL_SCHARF=1): die Concurrency-Gruppe des Workflows schützt diesen Lauf NICHT. Nie gleichzeitig mit dem Workflow «Printful-Sync» starten, sonst sind zwei Aufträge für eine Bestellung möglich.');
 if (!DRY && WARTE.test) console.warn(`⚠️ TEST-KENNUNG gesetzt (PRINTFUL_ANSPRUCH_TESTKENNUNG): die Wartezeit vor dem Nachlesen der Markierung ist ${ANSPRUCH_WARTE_MS} ms. Das ist nur für Läufe gegen Attrappen gedacht, nie für einen echten Lauf.`);
 
 // ───────────────────────────────────────────── Telegram: true = zugestellt, false = Zustellung gescheitert, null = nicht konfiguriert oder Trockenlauf
@@ -167,12 +168,15 @@ async function tg(text) {
 }
 
 // ───────────────────────────────────────────── Shopify
+// Uhrvergleich (Gegenprüfung 11.11.2026): Zeitpunkt und Kopf «Date» der ERSTEN Shopify-Antwort des Laufs; geprüft in main, bevor irgendetwas geschrieben wird
+let UHR_MESSUNG = null;
 async function gql(tok, query, variables, wiederholbar = true) {
   let letzte = new Error('Shopify: kein Versuch');
   const n = wiederholbar ? 3 : 1;
   for (let i = 0; i < n; i++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query, variables }), signal: AbortSignal.timeout(30000) });
+      if (!UHR_MESSUNG) UHR_MESSUNG = { eigeneMs: Date.now(), kopf: r.headers && typeof r.headers.get === 'function' ? r.headers.get('date') : null };
       if (r.status === 429 || r.status >= 500) { letzte = new Error('Shopify HTTP ' + r.status); if (i < n - 1) await pause(PAUSE_MS * (i + 1)); continue; }
       const j = await r.json().catch(() => null);
       if (!j || typeof j !== 'object') { letzte = new Error('Shopify: keine lesbare Antwort (HTTP ' + r.status + ')'); if (i < n - 1) await pause(PAUSE_MS * (i + 1)); continue; }
@@ -451,6 +455,9 @@ async function bearbeite(tok, o) {
   }
   // 1b. Frisch lesen (bezahlt, nicht storniert, kein Test, nicht von einem anderen Lauf bearbeitet, unverändert seit dem Planen) und die Markierung VOR dem POST setzen. Scheitert eines von beiden, wird nichts angelegt.
   const soll = bestellStand(o, plan.positionIds);
+  // Die Dauer zählt AB DEM FRISCHEN LESEN (Gegenprüfung 11.11.2026, Restfenster): hing diese Lesung (Antwort Sekunden später), stammt ihr Bild aus der Zeit VOR einer fremden Markierung; zusammen mit einer um Sekunden
+  // falschen Uhr legten so zwei Läufe an (gemessen 9 von 9). Zählt die hängende Lesung mit, gilt der Lauf als «langsam» und legt nur an, wenn er allein markiert hat.
+  const t0Anspruch = performance.now();
   const fr = await frischLesen(tok, o, 'anlegen', soll);
   if (fr.art === 'schon-bearbeitet') { zaehler.vorhanden++; console.log(`${o.name}: ${fr.text}: nichts angelegt`); return; }
   if (fr.art === 'geaendert') { zaehler.spaeter++; zeilen.push(`${o.name}: wartet (die Bestellung hat sich seit dem Planen geändert; der nächste Lauf liest neu)`); console.log(`${o.name}: ${fr.text}: nichts angelegt (der Plan beruht auf einem veralteten Stand; der nächste Lauf liest neu)`); return; }
@@ -459,7 +466,6 @@ async function bearbeite(tok, o) {
   // Der Anspruch trägt Sekunden, Millisekunden und einen Zufallsteil: zwei Läufe, die gleichzeitig markieren, haben verschiedene Tags. Danach wird nachgelesen; nur der Lauf mit der kleinsten Markierung legt an.
   // Schlussprüfung 10.11.2026 (Fund G1): zwischen dem Setzen und dem Nachlesen wird GEWARTET (Vorgabe 3000 ms). Ohne die Wartezeit sah der spätere Lauf die noch nicht angekommene Markierung des früheren nicht und beide legten an
   // (Schreiben und Lesen verschränkt; gemessen 5 von 5 Doppelbestätigungen). Die Dauer des eigenen Schreibens wird gemessen: brauchte es länger als die halbe Wartezeit, legt dieser Lauf nur an, wenn er ALLEIN markiert hat.
-  const t0Anspruch = performance.now();
   const meinTag = anlegenTag(Date.now(), anspruchZufall(randomBytes(4)));
   if (!(await tagsSetzen(tok, o, [meinTag]))) { fehlerAdd(`${o.name}: Markierung vor dem Anlegen nicht gesetzt: es wird nichts angelegt`); return; }
   const schreibMs = Math.round(performance.now() - t0Anspruch);
@@ -467,7 +473,7 @@ async function bearbeite(tok, o) {
   await pause(ANSPRUCH_WARTE_MS);
   const anspruch = await anspruchPruefen(tok, o, meinTag, langsam);
   if (anspruch.art === 'verloren') { zaehler.vorhanden++; console.log(`${o.name}: ${anspruch.text}: nichts angelegt`); return; }
-  if (anspruch.art === 'nicht-allein') { zaehler.spaeter++; zeilen.push(`${o.name}: wartet (die eigene Markierung brauchte ${schreibMs} ms, eine zweite steht an der Bestellung)`); fehlerAdd(`${o.name}: die Markierung vor dem Anlegen brauchte ${schreibMs} ms (Grenze ${Math.floor(ANSPRUCH_WARTE_MS / 2)} ms) und ein zweiter Lauf hat ebenfalls markiert: es wird nichts angelegt. Legt der andere Lauf nicht an, versucht es der nächste Lauf nach Ablauf der Sperre (${ANLEGEN_SPERRE_MIN} Minuten)`); return; }
+  if (anspruch.art === 'nicht-allein') { zaehler.spaeter++; zeilen.push(`${o.name}: wartet (die eigene Markierung brauchte ${schreibMs} ms, eine zweite steht an der Bestellung)`); fehlerAdd(`${o.name}: die Markierung vor dem Anlegen brauchte ${schreibMs} ms ab dem frischen Lesen (Grenze ${Math.floor(ANSPRUCH_WARTE_MS / 2)} ms) und ein zweiter Lauf hat ebenfalls markiert: es wird nichts angelegt. Legt der andere Lauf nicht an, versucht es der nächste Lauf nach Ablauf der Sperre (${ANLEGEN_SPERRE_MIN} Minuten)`); return; }
   if (anspruch.art !== 'ok') { fehlerAdd(`${o.name}: Markierung vor dem Anlegen gesetzt, aber nicht nachlesbar (${anspruch.text}): es wird nichts angelegt`); return; }
   // 2. Entwurf anlegen (nie wiederholen: ein Zeitüberschreitung-POST kann «gelang» heissen; darum danach über external_id nachfragen)
   const res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
@@ -598,6 +604,10 @@ const hatDruckdatei = (li) => (li.customAttributes || []).some((a) => /Druckdate
 (async function main() {
   const tok = await resolveToken();
   if (!tok) { console.error('❌ Keine funktionierende Shopify-Auth.'); await tg('🔴 LuxeStyle POD-Sync: keine funktionierende Shopify-Anmeldung, der Bestellweg läuft nicht.'); process.exit(1); return; }
+  // Uhr gegen Shopify (Gegenprüfung 11.11.2026): scharf nur bei höchstens 60 s Abweichung, sonst Exit 1, bevor irgendetwas geschrieben wird. Im Trockenlauf nur eine Zeile.
+  const uhr = uhrBewerten(UHR_MESSUNG && UHR_MESSUNG.eigeneMs, UHR_MESSUNG && UHR_MESSUNG.kopf);
+  console.log(`Uhr gegen Shopify: ${uhr.versatzMs === null ? 'nicht messbar' : (uhr.versatzMs >= 0 ? '+' : '') + uhr.versatzMs + ' ms'}${uhr.ok ? '' : ' (' + uhr.grund + ')'}`);
+  if (!uhr.ok && !DRY) { console.error(`❌ ${uhr.grund}: es wird nichts angelegt.`); await tg(`🔴 LuxeStyle POD-Sync: ${esc(uhr.grund)}. Der Lauf hat nichts angelegt.`); process.exit(1); return; }
   // Zugriffsrechte des Tokens für Fulfillment-Orders: fehlt eines, sind die Orders dieser Standortart unsichtbar (die Standort-Sperre käme nur noch über «unklar»). Im scharfen Lauf wird dann nichts bearbeitet; im Trockenlauf wird weiter gelesen (Exit 1 macht den Mangel sichtbar).
   const scopes = await scopesLesen(tok);
   console.log(`Zugriffsrechte des Tokens für Fulfillment-Orders: ${scopes.art === 'ok' ? 'beide Standortarten lesbar' : scopes.art === 'fehlt' ? 'FEHLT: ' + scopes.fehlt.join(', ') : 'nicht abfragbar (die Sperre pro Position gilt trotzdem)'}`);

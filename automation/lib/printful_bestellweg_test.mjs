@@ -17,7 +17,7 @@ import {
   adresseNormal, EIGENE_CLOUDINARY_CLOUD, KOSTEN_MIN_USD, entwurfVergleichen, editorProdukt, zahlungPruefen, ANLEGEN_SPERRE_MIN, anlegenTag, anlegenAlterMin,
   vorhandenVergleichen, SCOPES_PFLICHT, scopesBewerten, bestaetigenPlan,
   EIGENER_SHOPIFY_CDN_PFAD, FO_DRUCKBAR, anlegenGesperrt, anspruchGewonnen, bestellStand, bestellAbweichung,
-  scharfErlaubt, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG,
+  scharfErlaubt, SYNC_WORKFLOW_REF, uhrBewerten, UHR_GRENZE_MS, anspruchWarteLesen, anspruchLangsam, alsEntwurfAngelegt, dezimalLesen, ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG,
   TAG_MAX, BEFUND_ART_MAX, ANSPRUCH_ZUFALL_LAENGE, anspruchZufall, vorhandenArt,
 } from './printful_bestellweg.mjs';
 
@@ -1443,14 +1443,32 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
 {
   // ── G1 (a): scharf nur in GitHub Actions
   ist('G1 scharfErlaubt: der Trockenlauf ist überall erlaubt (mit und ohne Actions, mit und ohne Ausnahme)', [scharfErlaubt({ dry: true }), scharfErlaubt({ dry: true, githubActions: 'false' }), scharfErlaubt({ dry: true, lokalScharf: '1' }), scharfErlaubt()], Array(4).fill({ ok: true, lokal: false, grund: null }));
-  ist('G1 scharfErlaubt: scharf in Actions (GITHUB_ACTIONS genau «true») ist erlaubt und gilt nicht als «lokal»', scharfErlaubt({ dry: false, githubActions: 'true' }), { ok: true, lokal: false, grund: null });
+  ist('G1 scharfErlaubt: scharf in Actions (GITHUB_ACTIONS genau «true») im Workflow printful-sync.yml ist erlaubt und gilt nicht als «lokal»', scharfErlaubt({ dry: false, githubActions: 'true', workflowRef: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main' }), { ok: true, lokal: false, grund: null });
   for (const ga of [undefined, null, '', 'false', 'TRUE', 'True', ' true', 'true ', '1', 'yes', true, 1]) {
     const r = scharfErlaubt({ dry: false, githubActions: ga });
     ist(`G1 scharfErlaubt: scharf mit GITHUB_ACTIONS=${JSON.stringify(ga)} (nicht genau die Zeichenkette «true») ist NICHT erlaubt; der Grund nennt GITHUB_ACTIONS, die Concurrency-Gruppe und die Ausnahme`, [r.ok, r.lokal, /GITHUB_ACTIONS/.test(r.grund) && /Concurrency-Gruppe/.test(r.grund) && /PRINTFUL_LOKAL_SCHARF=1/.test(r.grund)], [false, false, true]);
   }
   ist('G1 scharfErlaubt: die Ausnahme PRINTFUL_LOKAL_SCHARF=1 (auch « 1 » mit Leerraum) erlaubt scharf ausserhalb von Actions und wird als «lokal» gekennzeichnet (Warnzeile im Kleber)', [scharfErlaubt({ dry: false, lokalScharf: '1' }), scharfErlaubt({ dry: false, githubActions: 'false', lokalScharf: ' 1 ' })], Array(2).fill({ ok: true, lokal: true, grund: null }));
   for (const ls of ['', '0', '2', '11', 'true', 'ja', 'yes', 'on', 'an', 'x', true]) ist(`G1 scharfErlaubt: PRINTFUL_LOKAL_SCHARF=${JSON.stringify(ls)} ist KEINE Ausnahme (nur genau «1»)`, scharfErlaubt({ dry: false, lokalScharf: ls }).ok, false);
-  ist('G1 scharfErlaubt: in Actions bleibt «lokal» falsch, auch wenn die Ausnahme zusätzlich gesetzt ist (keine Warnzeile im Workflow)', scharfErlaubt({ dry: false, githubActions: 'true', lokalScharf: '1' }), { ok: true, lokal: false, grund: null });
+  ist('G1 scharfErlaubt: in Actions bleibt «lokal» falsch, auch wenn die Ausnahme zusätzlich gesetzt ist (keine Warnzeile im Workflow)', scharfErlaubt({ dry: false, githubActions: 'true', workflowRef: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main', lokalScharf: '1' }), { ok: true, lokal: false, grund: null });
+  // Gegenprüfung 11.11.2026: GITHUB_ACTIONS=true genügt nur zusammen mit GITHUB_WORKFLOW_REF des Workflows printful-sync.yml (ein anderer Workflow hätte die Concurrency-Gruppe nicht)
+  for (const ref of [undefined, '', 'a/b/.github/workflows/printful-reprice.yml@refs/heads/main', 'a/b/.github/workflows/printful-sync.yaml@refs/heads/main', 'a/b/.github/workflows/x/printful-sync.yml@refs/heads/main',
+    'a/b/.github/workflows/printful-sync.yml@', 'a/b/.github/workflows/printful-sync.yml', 'printful-sync.yml@refs/heads/main', 'a/b/.github/workflows/printful-sync.yml@refs/heads/main x', ' a/b/.github/workflows/printful-sync.yml@main',
+    'a/b/.github/workflows/kopie-printful-sync.yml@main', 'a/b/.github/workflows/printful-sync.ymlx@main', 'a/b/c/.github/workflows/printful-sync.yml@main']) {
+    const r = scharfErlaubt({ dry: false, githubActions: 'true', workflowRef: ref });
+    ist(`GP G1 scharfErlaubt: GITHUB_ACTIONS=true mit GITHUB_WORKFLOW_REF=${JSON.stringify(ref)} ist NICHT erlaubt; der Grund nennt GITHUB_WORKFLOW_REF und printful-sync.yml`, [r.ok, r.lokal, /GITHUB_WORKFLOW_REF/.test(r.grund || '') && /printful-sync\.yml/.test(r.grund || '')], [false, false, true]);
+  }
+  ist('GP G1 scharfErlaubt: dieselben falschen Workflows mit PRINTFUL_LOKAL_SCHARF=1 laufen als «lokal» (mit Warnzeile)', scharfErlaubt({ dry: false, githubActions: 'true', workflowRef: 'a/b/.github/workflows/printful-reprice.yml@refs/heads/main', lokalScharf: '1' }), { ok: true, lokal: true, grund: null });
+  ist('GP G1 scharfErlaubt: GITHUB_WORKFLOW_REF des Sync-Workflows OHNE GITHUB_ACTIONS=true genügt nicht', [scharfErlaubt({ dry: false, workflowRef: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main' }).ok, scharfErlaubt({ dry: false, githubActions: 'TRUE', workflowRef: 'eigentuemer/aban-news-landing/.github/workflows/printful-sync.yml@refs/heads/main' }).ok], [false, false]);
+  ist('GP G1 SYNC_WORKFLOW_REF: Besitzer und Repo mit Punkt, Bindestrich, Unterstrich; jede Ref (Zweig, Tag, Pull Request) wird angenommen', ['o.n-e/r_e.po/.github/workflows/printful-sync.yml@refs/heads/main', 'o/r/.github/workflows/printful-sync.yml@refs/tags/v1', 'o/r/.github/workflows/printful-sync.yml@refs/pull/7/merge'].map((x) => SYNC_WORKFLOW_REF.test(x)), [true, true, true]);
+  // Uhr gegen den Date-Kopf von Shopify
+  {
+    const kopf = 'Wed, 11 Nov 2026 10:49:01 GMT', t = Date.parse(kopf);
+    ist('GP Uhr: Grenze 60 s; ein Versatz bis 60 s ist erlaubt (in beide Richtungen, genau 60 000 ms noch)', [UHR_GRENZE_MS, uhrBewerten(t, kopf), uhrBewerten(t + 60000, kopf).ok, uhrBewerten(t - 60000, kopf).ok, uhrBewerten(t + 1500, kopf).versatzMs], [60000, { ok: true, versatzMs: 0, grund: null }, true, true, 1500]);
+    ist('GP Uhr: über 60 s daneben (vor oder nach, auch Stunden) ist NICHT erlaubt; der Grund nennt die Sekunden', [uhrBewerten(t + 60001, kopf).ok, uhrBewerten(t - 60001, kopf).ok, uhrBewerten(t + 3600000, kopf).versatzMs, /weicht um -7200 s/.test(uhrBewerten(t - 7200000, kopf).grund)], [false, false, 3600000, true]);
+    ist('GP Uhr: ein fehlender oder unlesbarer Kopf ist NICHT erlaubt (nicht messbar = nicht sicher); nur die Form des HTTP-Kopfs gilt', ['', null, undefined, '2026', '1', 'gestern', '2026-11-11T10:49:01Z', 'Wed, 11 Nov 2026 10:49:01 UTC', 'Wed, 11 Nov 2026 10:49:01'].map((k) => uhrBewerten(t, k).ok), Array(9).fill(false));
+    ist('GP Uhr: eine nicht messbare eigene Zeit ist NICHT erlaubt', [uhrBewerten(NaN, kopf).ok, uhrBewerten(undefined, kopf).ok, uhrBewerten(null, kopf).ok], [false, false, false]);
+  }
 
   // ── G1 (b): Wartezeit vor dem Nachlesen der Markierung
   ist('G1 Wartezeit: Vorgabe 3000 ms, kleinster Wert eines echten Laufs 2000 ms, grösster 60000 ms; die Test-Kennung heisst «nur-attrappe»', [ANSPRUCH_WARTE_MS_VORGABE, ANSPRUCH_WARTE_MS_MIN, ANSPRUCH_WARTE_MS_MAX, ANSPRUCH_TESTKENNUNG], [3000, 2000, 60000, 'nur-attrappe']);
