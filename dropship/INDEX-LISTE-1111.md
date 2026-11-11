@@ -24,3 +24,10 @@ Alle Seiten liegen unter `https://luxestyle.ch/collections/`. Klickweg: Link öf
 **Reserve** (bei Google nicht indexiert, technisch nicht geprüft): `tier-kauspielzeug`, `bausteine-blumen-deko`, `kinder-baby-strampler-bodys`, `geometrischer-schmuck`, `tier-intelligenzspielzeug`, `herren-jacken-kapuze`, `spielzeug-roboter`, `damen-jacken-kunstfell`.
 
 Gegenmessung morgen früh (12.11. ca. 06:30 UTC), nicht am selben Tag. Wirkung auf Rang und Verkäufe: unbekannt.
+
+## Nachtrag 11.11. abends
+
+- **Frische Links 20:35 UTC** (zweite Messung, gleiche zehn Seiten): noch keine indexiert; neu von Google gefunden seit 16:34 UTC
+  `premium-schmuck` und `trinkflaschen-thermosflaschen` («Gefunden – zurzeit nicht indexiert»), die übrigen unverändert.
+- **Besitzer 21:09 UTC: «10 indexdiert»** = für alle zehn Seiten die Indexierung beantragt (Besitzer-Angabe, nicht nachgemessen).
+  Gegenmessung 12.11. ca. 06:30 UTC (Wecker `trig_01SUP9y19UNXxqd2nv4d5FAF`); Anträge zeigen sich erst nach Stunden.
