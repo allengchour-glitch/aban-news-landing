@@ -273,6 +273,36 @@ async function run() {
     } finally {globalThis.fetch=realFetch;}
   }
 
+  console.log("\nTest 14 — Feste Lizenzprüffrist mit Wiederanlauf:");
+  for (const phase of ['transport', 'inhalt']) {
+    const realFetch = globalThis.fetch, realSet = globalThis.setTimeout, realClear = globalThis.clearTimeout;
+    const timers = new Map(); let timerId = 0, finish, signal, calls = 0;
+    globalThis.setTimeout = (fn, ms) => { timers.set(++timerId, {fn, ms}); return timerId; };
+    globalThis.clearTimeout = id => timers.delete(id);
+    globalThis.fetch = async (_, init) => {
+      calls++; signal = init.signal;
+      const pending = new Promise(resolve => { finish = resolve; });
+      return phase === 'transport' ? pending : {ok:true, json:() => pending};
+    };
+    try {
+      const key = 'nur-demo-prueffrist-' + phase;
+      let result;
+      const pending = validateLicense(key, {}).then(value => { result = value; });
+      for (let n=0; n<8; n++) await Promise.resolve();
+      const deadline = [...timers.values()].find(t => t.ms === 8000);
+      if (deadline) deadline.fn();
+      for (let n=0; n<12; n++) await Promise.resolve();
+      check(phase + ': endet gesperrt mit Anbieterfehler', result?.ok === false && result?.reason === 'error');
+      check(phase + ': Signal abgebrochen, Timer entfernt, kein Retry', signal?.aborted === true && timers.size === 0 && calls === 1);
+      finish(phase === 'transport' ? PRO_OK() : {valid:true,license_key:{status:'active'}});
+      await pending;
+      globalThis.fetch = async () => { calls++; return PRO_OK(); };
+      const recovered = await validateLicense(key, {});
+      check(phase + ': verspätete Antwort nicht gecacht, manuell erneut prüfbar', calls === 2 && recovered.ok === true);
+      check(phase + ': Timer nach Erfolg entfernt', timers.size === 0);
+    } finally { globalThis.fetch = realFetch; globalThis.setTimeout = realSet; globalThis.clearTimeout = realClear; }
+  }
+
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
     "  (" + pass + " ok, " + fail + " fehlerhaft)");
   process.exit(fail === 0 ? 0 : 1);
