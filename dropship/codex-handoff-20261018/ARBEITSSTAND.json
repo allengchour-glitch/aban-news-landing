@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
   "revision": 175,
-  "updatedAt": "2026-11-11T08:12:02+01:00",
+  "updatedAt": "2026-11-11T08:27:31+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-11",
     "currentDayEvidenceKind": "R175_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_KLAVIYO_FLOW_REPORT_AND_NARROW_SEO_READ_ONLY",
-    "currentDayEvidence": "Vor Abfragen Revision174, Projektgedächtnis, Arbeitsstand, Übergabe und den letzten Tagesblock geprüft. Einmalig04.–10.11.: sechs gültige Metricool-Kennzahl-IDs und sechs kleine kanalgetrennte Reihen gelesen; fehlende Tage/null bleiben unbekannt. Nach frischer Placed-Order-Metrik W7XTVD genau ein kleiner Klaviyo-Flowreport über30 Tage; fehlende Flowzeilen und Live-Capture bleiben unbekannt. Planung11.–19.11. in kleinen Tagesfenstern, zwei gezielte Shopify-Produkte sowie enge öffentliche SEO-/CSV-Gegenproben wurden read-only gelesen. Keine GSC-/Merchant-Vollabfrage, keine Bestellung/Kauf-Watch, keine Umsatz- oder Verkaufsableitung.0 Plattformwrites. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo-Flowreport, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen.",
+    "currentDayEvidence": "Vor Abfragen Revision174, Projektgedächtnis, Arbeitsstand, Übergabe und den letzten Tagesblock geprüft. Einmalig04.–10.11.: sechs gültige Metricool-Kennzahl-IDs und sechs kleine kanalgetrennte Reihen gelesen; fehlende Tage/null bleiben unbekannt. Nach frischer Placed-Order-Metrik W7XTVD genau ein kleiner Klaviyo-Flowreport über30 Tage; fehlende Flowzeilen und Live-Capture bleiben unbekannt. Planung11.–19.11. in kleinen Tagesfenstern, zwei gezielte Shopify-Produkte sowie enge öffentliche SEO-/CSV-Gegenproben wurden read-only gelesen. Keine GSC-/Merchant-Vollabfrage, keine Bestellung/Kauf-Watch, keine Umsatz- oder Verkaufsableitung.0 Plattformwrites. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo-Flowreport, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen. R175-Präzisionsnachtrag: vorhandene CJ-Helfer/Workflows im Repo bestätigt; im aktuellen Prozess keine Namen von CJ-Laufzeit-Credential-Variablen gefunden und vier benannte lokale Referenzpfade nicht vorhanden. Das ist kein Connector-Negativbeweis. Keine CJ-/API-/Katalogabfrage und kein Write.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-11",
@@ -74,7 +74,18 @@
       "ordersQueried": false,
       "purchaseWatchEnded": true,
       "broadSalesRepeated": false,
-      "merchantBroadRepeated": false
+      "merchantBroadRepeated": false,
+      "accessPreflightR175": {
+        "localDate": "2026-11-11",
+        "source": "R175_precision_addendum",
+        "repositoryHelpersPresent": true,
+        "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+        "missingLocalReferencePaths": 4,
+        "missingConnectorProven": false,
+        "cjApiReads": 0,
+        "catalogReads": 0,
+        "writes": 0
+      }
     },
     "dayHistory": [
       {
@@ -2977,7 +2988,7 @@
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-11",
       "belegArt": "R175_CANONICAL_CONTENT_SALES_READ_ONLY_PLAN_METRICS_PRODUCTS_MASTER_KLAVIYO_SEO_HANDOFF_NO_WRITES",
-      "lastEvidence": "R175 bindet Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/EuropeZurich/sechs Kanäle. Plan11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Draftzustände; YouTube15.11 und alle sechs16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt unverändert PENDING und nicht veröffentlicht. Einmalige Tageskennzahlen und ein Klaviyo-Report mit unknown-Lücken; zwei Produkte und Mastergates geprüft. Ein Beauty-SEO- und ein VbLQj6-Betreffentwurf zur Freigabe.0 Plattformwrites; Receipt unknown.",
+      "lastEvidence": "R175 bindet Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/EuropeZurich/sechs Kanäle. Plan11.–19.11.:53 aktive Objekte/67 PENDING-Zustände,4 Draftobjekte/5 Draftzustände; YouTube15.11 und alle sechs16.–19.11 offen. R174-Pin423622854/UUID6213007717183669914 bleibt unverändert PENDING und nicht veröffentlicht. Einmalige Tageskennzahlen und ein Klaviyo-Report mit unknown-Lücken; zwei Produkte und Mastergates geprüft. Ein Beauty-SEO- und ein VbLQj6-Betreffentwurf zur Freigabe.0 Plattformwrites; Receipt unknown. Access-Nachtrag: Repo-CJ-Helfer vorhanden; im aktuellen Prozess keine CJ-Laufzeit-Credential-Variablennamen und vier lokale Referenzpfade fehlen. Kein Connector-Negativbeweis;0 CJ-/API-/Katalogreads oder Writes.",
       "nextAllowedStep": "Claude Code liest Revision175 und bestätigt Kenntnisnahme nur mit echtem LuxeStyle-/Branch-/Revisions- oder Commit-Receipt. R174-Pin nach Fälligkeit über dieselbe UUID lesen. Beauty-Collection- und VbLQj6-Diff nur nach konkreter Freigabe und frischem Original/Diff; Klaviyo DRAFT lassen. Keine neue Automation oder Frequenz.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
@@ -2998,7 +3009,8 @@
         "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
         "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
         "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
-        "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen."
+        "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+        "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -3235,15 +3247,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3896,17 +3908,50 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
-        ]
+        ],
+        "accessStatus": {
+          "checkedAt": "2026-11-11T08:27:31+01:00",
+          "repositoryHelpersPresent": true,
+          "repositoryExamples": [
+            "automation/lib/cj_fetch.mjs",
+            "existing_dropship_scripts_and_workflows"
+          ],
+          "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+          "localReferences": [
+            {
+              "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+              "available": false
+            },
+            {
+              "path": "/workspace/social-audio-korrektur",
+              "available": false
+            },
+            {
+              "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+              "available": false
+            },
+            {
+              "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+              "available": false
+            }
+          ],
+          "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+          "missingConnectorProven": false,
+          "cjApiReads": 0,
+          "catalogReads": 0,
+          "cjWrites": 0,
+          "apiWrites": 0
+        }
       }
     },
     {
@@ -3917,7 +3962,7 @@
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-11",
       "belegArt": "R175_PROJECTOR_CURRENT_VARIANTS_REFERENCE_SOURCE_MUSIC_AND_EXACT_18S_STORYBOARD_NO_GO_NO_RENDER",
-      "lastEvidence": "Projektor15521256604033 ACTIVE/HTTP200/kaufbar; A–G68122445283719–68122445480327, CHF34.90–51.90, untracked/CONTINUE/Menge0 und Tag `auswahl-offen`. Referenzquelle SHA2bb28156…d57 ist960×540/25fps; 9:16 nutzt nur etwa304×540, verwirft rund68% Breite und erfordert3.55-fache Skalierung. Pflichtmusik a7674eca…88 ist technisch vorhanden, aber Manifest/Lizenz/Hör-/Mixabnahme fehlen. Zwei Hooks und ein exakter18s-/540-Frame-Plan fortgeführt. A–G-/Einheitenbindung, native Takes, dateigebundene Rechte, finale MP4, Qualitätsabnahme und Ledger fehlen.0 Render/Upload/Publish.",
+      "lastEvidence": "Projektor15521256604033 ACTIVE/HTTP200/kaufbar; A–G68122445283719–68122445480327, CHF34.90–51.90, untracked/CONTINUE/Menge0 und Tag `auswahl-offen`. Referenzquelle SHA2bb28156…d57 ist960×540/25fps; 9:16 nutzt nur etwa304×540, verwirft rund68% Breite und erfordert3.55-fache Skalierung. Pflichtmusik a7674eca…88 ist technisch vorhanden, aber Manifest/Lizenz/Hör-/Mixabnahme fehlen. Zwei Hooks und ein exakter18s-/540-Frame-Plan fortgeführt. A–G-/Einheitenbindung, native Takes, dateigebundene Rechte, finale MP4, Qualitätsabnahme und Ledger fehlen.0 Render/Upload/Publish. Lokale source-/Storyboard-/Aktualisierungs- und social-audio-korrektur-Pfade fehlen aktuell; Repo-Helfer belegen keinen nutzbaren CJ-Runtime-Zugang. Keine CJ-/API-/Katalogabfrage.",
       "nextAllowedStep": "Genau eine A–G-Ausführung über Varianten-ID, SKU, CJ-VID, vollständiges Motivset und dieselbe physische Einheit binden. Vier native1080×1920/30fps-Takes mit Mindestlängen, Hashes und kontinuierlichem Einheitenbeleg sowie kommerziellen Rechten beschaffen. Musikrecht/Hör-/Mixabnahme schliessen; erst dann kostenlos lokal18s/540Frames rendern und vollständig prüfen.",
       "blockers": [
         "Keine aktuelle A–G-Ausführung, kein Motivset und keine physische Filmeinheit gebunden.",
@@ -3935,7 +3980,8 @@
         "R173: Framevergleich belegt nur die Produktfamilie; Motivüberschneidungen und identische C/E- sowie D/F-Bilder verhindern eine eindeutige A–G-Zuordnung.",
         "R175: Referenzquelle960×540/25fps verliert beim9:16-Crop rund68 Prozent Breite und ist keine professionelle native Hochkantquelle.",
         "R175: Musikdatei ist technisch vorhanden; Manifest-/Lizenzbeleg sowie finale Hör- und Mixabnahme fehlen.",
-        "R175: Keine professionelle Master-MP4; Storyboard ist kein Video und keine Publikationsfreigabe."
+        "R175: Keine professionelle Master-MP4; Storyboard ist kein Video und keine Publikationsfreigabe.",
+        "R175: Lokale source-, social-audio-korrektur-, MASTER-STORYBOARD- und AKTUALISIERUNG-Referenzen fehlen aktuell; CJ-Runtime war mangels Prozess-Credentialvariablennamen nicht nutzbar."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -4322,15 +4368,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5431,17 +5477,50 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
-        ]
+        ],
+        "accessStatus": {
+          "checkedAt": "2026-11-11T08:27:31+01:00",
+          "repositoryHelpersPresent": true,
+          "repositoryExamples": [
+            "automation/lib/cj_fetch.mjs",
+            "existing_dropship_scripts_and_workflows"
+          ],
+          "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+          "localReferences": [
+            {
+              "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+              "available": false
+            },
+            {
+              "path": "/workspace/social-audio-korrektur",
+              "available": false
+            },
+            {
+              "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+              "available": false
+            },
+            {
+              "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+              "available": false
+            }
+          ],
+          "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+          "missingConnectorProven": false,
+          "cjApiReads": 0,
+          "catalogReads": 0,
+          "cjWrites": 0,
+          "apiWrites": 0
+        }
       }
     },
     {
@@ -10797,15 +10876,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -11633,15 +11712,15 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
       }
@@ -12176,15 +12255,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -12429,15 +12508,15 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
       }
@@ -12616,15 +12695,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -13015,15 +13094,15 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
       }
@@ -13216,15 +13295,15 @@
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-          "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-          "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+          "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+          "readAt": "2026-11-11T08:27:31+01:00"
         },
         {
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-          "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-          "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-          "readAt": "2026-11-11T08:12:02+01:00"
+          "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+          "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+          "readAt": "2026-11-11T08:27:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14358,15 +14437,15 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-            "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-            "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+            "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+            "readAt": "2026-11-11T08:27:31+01:00"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-            "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-            "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-            "readAt": "2026-11-11T08:12:02+01:00"
+            "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+            "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+            "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
       }
@@ -16091,11 +16170,11 @@
       "actor": "codex",
       "source": {
         "reportPath": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-        "reportGitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
+        "reportGitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
         "evidencePath": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-        "evidenceGitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5"
+        "evidenceGitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686"
       },
-      "summary": "R175 fresh LuxeStyle/Metricool identities and11–19 Nov planning read:53 active objects/67 PENDING states, four non-covering drafts, no detected exact same-channel collision; R174 pin remains unchanged and pending. Once-daily04–10 Nov channel metrics and one Klaviyo30-day report preserve unknown gaps. Two products checked; the one18s projector master remains NO-GO/storyboard only without A–G binding, native takes, rights or MP4. One Beauty SEO and one Welcome-subject approval draft; zero platform/social/render writes, receipt unknown.",
+      "summary": "R175 fresh LuxeStyle/Metricool identities and11–19 Nov planning read:53 active objects/67 PENDING states, four non-covering drafts, no detected exact same-channel collision; R174 pin remains unchanged and pending. Once-daily04–10 Nov channel metrics and one Klaviyo30-day report preserve unknown gaps. Two products checked; the one18s projector master remains NO-GO/storyboard only without A–G binding, native takes, rights or MP4. One Beauty SEO and one Welcome-subject approval draft; zero platform/social/render writes, receipt unknown. Precision addendum: repository CJ helpers exist, but current-process CJ runtime credential variables and four named local references were unavailable; this is no proof of a missing connector and no CJ/API/catalog call occurred.",
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
     }
@@ -16309,16 +16388,16 @@
   "claudeCodeHandoff": {
     "documentationRevision": 175,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "091a067b0f369de1c8c902a55dfe0b93b3c0b042",
+    "gitBlobSha": "ba4b549b9e8f2d2a89fd9825d49d8c26d55e4b59",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "4374246bfa341307ea1a7b4580811dc7be588b34",
+    "entryGitBlobSha": "11a6803518727229d2d430e2ff5110942bdfbb41",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R175 read-only LuxeStyle package: fresh Shopify/Metricool identities,11–19 Nov planning and due-state readback; once-daily04–10 Nov channel metrics and one Klaviyo30-day report; two targeted products; same professional projector master remains NO-GO/storyboard only; one claim-safe Beauty SEO and one neutral Welcome subject approval draft; zero platform/social/render writes; R174 Pinterest register unchanged",
+    "scope": "R175 read-only LuxeStyle package: fresh Shopify/Metricool identities,11–19 Nov planning and due-state readback; once-daily04–10 Nov channel metrics and one Klaviyo30-day report; two targeted products; same professional projector master remains NO-GO/storyboard only; one claim-safe Beauty SEO and one neutral Welcome subject approval draft; zero platform/social/render writes; R174 Pinterest register unchanged; additive access precision: repo CJ helpers present, current-process CJ runtime credentials and four local references unavailable, no CJ/API/catalog read or write",
     "latestCanonicalRevision": 175,
-    "snapshotNote": "R175 records53 active Metricool objects/67 PENDING states through15 Nov, open coverage from15 Nov, and four non-covering drafts. R174 Pin423622854 remains PENDING and unchanged. Missing metric/report days stay unknown. No professional MP4, product binding or rights clearance exists. Beauty and VbLQj6 changes are approval drafts only. Receipt remains unknown_no_claude_receipt.",
+    "snapshotNote": "R175 records53 active Metricool objects/67 PENDING states through15 Nov, open coverage from15 Nov, and four non-covering drafts. R174 Pin423622854 remains PENDING and unchanged. Missing metric/report days stay unknown. No professional MP4, product binding or rights clearance exists. Beauty and VbLQj6 changes are approval drafts only. Receipt remains unknown_no_claude_receipt. Access precision: repository helpers do not prove a usable runtime; four named local references were absent and no CJ/API/catalog call occurred.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -17168,22 +17247,55 @@
     "contentSalesPackageR175": {
       "report": {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-        "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-        "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+        "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+        "readAt": "2026-11-11T08:27:31+01:00"
       },
       "evidence": {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-        "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-        "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+        "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+        "readAt": "2026-11-11T08:27:31+01:00"
       },
       "metricoolWrites": 0,
       "shopifyWrites": 0,
       "klaviyoWrites": 0,
       "renderWrites": 0,
       "r174PinterestUnchanged": true,
-      "receiptState": "unknown_no_claude_receipt"
+      "receiptState": "unknown_no_claude_receipt",
+      "accessStatus": {
+        "checkedAt": "2026-11-11T08:27:31+01:00",
+        "repositoryHelpersPresent": true,
+        "repositoryExamples": [
+          "automation/lib/cj_fetch.mjs",
+          "existing_dropship_scripts_and_workflows"
+        ],
+        "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+        "localReferences": [
+          {
+            "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+            "available": false
+          },
+          {
+            "path": "/workspace/social-audio-korrektur",
+            "available": false
+          },
+          {
+            "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+            "available": false
+          },
+          {
+            "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+            "available": false
+          }
+        ],
+        "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+        "missingConnectorProven": false,
+        "cjApiReads": 0,
+        "catalogReads": 0,
+        "cjWrites": 0,
+        "apiWrites": 0
+      }
     }
   },
   "claudeCodeHandoffHistory": [
@@ -37350,17 +37462,50 @@
     "sources": [
       {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-        "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-        "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+        "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+        "readAt": "2026-11-11T08:27:31+01:00"
       },
       {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-        "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-        "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+        "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+        "readAt": "2026-11-11T08:27:31+01:00"
       }
-    ]
+    ],
+    "accessStatus": {
+      "checkedAt": "2026-11-11T08:27:31+01:00",
+      "repositoryHelpersPresent": true,
+      "repositoryExamples": [
+        "automation/lib/cj_fetch.mjs",
+        "existing_dropship_scripts_and_workflows"
+      ],
+      "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+      "localReferences": [
+        {
+          "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+          "available": false
+        },
+        {
+          "path": "/workspace/social-audio-korrektur",
+          "available": false
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+          "available": false
+        },
+        {
+          "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+          "available": false
+        }
+      ],
+      "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+      "missingConnectorProven": false,
+      "cjApiReads": 0,
+      "catalogReads": 0,
+      "cjWrites": 0,
+      "apiWrites": 0
+    }
   },
   "run175": {
     "documentationRevision": 175,
@@ -37425,16 +37570,49 @@
     "sources": [
       {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
-        "gitBlobSha": "7d22504df5c71783f3ca9679eca8b7b087d53cfd",
-        "sha256": "9fc0ef752d629e6be14ae1467571c62d2c64746b07d3e647c8cca294d40010cd",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+        "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+        "readAt": "2026-11-11T08:27:31+01:00"
       },
       {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
-        "gitBlobSha": "ec2dce92f57a568fa929dacbc08fdb08cbcd3dc5",
-        "sha256": "72c1ca55bea5096c0c71d7d3c017a0f50414ccf1f96488dd76c1b72ce6ffbb1e",
-        "readAt": "2026-11-11T08:12:02+01:00"
+        "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+        "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+        "readAt": "2026-11-11T08:27:31+01:00"
       }
-    ]
+    ],
+    "accessStatus": {
+      "checkedAt": "2026-11-11T08:27:31+01:00",
+      "repositoryHelpersPresent": true,
+      "repositoryExamples": [
+        "automation/lib/cj_fetch.mjs",
+        "existing_dropship_scripts_and_workflows"
+      ],
+      "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+      "localReferences": [
+        {
+          "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+          "available": false
+        },
+        {
+          "path": "/workspace/social-audio-korrektur",
+          "available": false
+        },
+        {
+          "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+          "available": false
+        },
+        {
+          "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+          "available": false
+        }
+      ],
+      "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+      "missingConnectorProven": false,
+      "cjApiReads": 0,
+      "catalogReads": 0,
+      "cjWrites": 0,
+      "apiWrites": 0
+    }
   }
 }

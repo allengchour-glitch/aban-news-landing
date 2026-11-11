@@ -158,6 +158,12 @@ Die 30-Tage-Rückgabe im bestehenden Live-Text wurde in diesem Lauf nicht gegen 
 
 Die zwei angehängten Merchant-CSVs sind bytegleich, SHA-256 `e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4`. Eine enge Suche ergab keine Zeile zu den aktuellen Organizer- oder Projektorvarianten. Daraus folgt weder Fehlerfreiheit noch Ausschluss; es wurde keine Feedänderung abgeleitet. Keine GSC- oder Merchant-Vollabfrage wurde wiederholt.
 
+## CJ- und lokale Referenzzugänge
+
+Das Repository enthält vorhandene CJ-Helfer und Workflows, darunter `automation/lib/cj_fetch.mjs` sowie bestehende Dropship-Skripte. Im aktuellen Prozess wurden jedoch keine Namen von CJ-Laufzeit-Credential-Variablen gefunden. Die lokalen Referenzpfade `/workspace/luxestyle-review/next-improvements-20261018/source`, `/workspace/social-audio-korrektur`, `/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md` und `/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md` sind aktuell nicht vorhanden.
+
+Das ist kein Beweis für einen fehlenden CJ-Connector oder generell fehlende Zugangsdaten. Es bedeutet nur, dass CJ-Runtime und diese lokalen Referenzen in diesem Lauf nicht nutzbar waren. Es wurde keine CJ-/API-/Katalogabfrage und kein CJ-/API-Write ausgeführt.
+
 ## Writes und offene Grenzen
 
 - Metricool/Social: 0 Writes; R174-Pin unverändert erhalten.

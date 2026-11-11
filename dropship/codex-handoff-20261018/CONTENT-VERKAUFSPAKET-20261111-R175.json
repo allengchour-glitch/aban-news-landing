@@ -720,5 +720,38 @@
   "rankingImpact": "unknown",
   "salesImpact": "unknown",
   "fullHistory": "unknown",
-  "claudeReceipt": "unknown_no_claude_receipt"
+  "claudeReceipt": "unknown_no_claude_receipt",
+  "accessStatus": {
+    "checkedAt": "2026-11-11T08:27:31+01:00",
+    "repositoryHelpersPresent": true,
+    "repositoryExamples": [
+      "automation/lib/cj_fetch.mjs",
+      "existing_dropship_scripts_and_workflows"
+    ],
+    "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+    "localReferences": [
+      {
+        "path": "/workspace/luxestyle-review/next-improvements-20261018/source",
+        "available": false
+      },
+      {
+        "path": "/workspace/social-audio-korrektur",
+        "available": false
+      },
+      {
+        "path": "/workspace/luxestyle-review/owner-review-20261018/content/MASTER-STORYBOARD.md",
+        "available": false
+      },
+      {
+        "path": "/workspace/luxestyle-review/conversion-next-20261018/master/AKTUALISIERUNG.md",
+        "available": false
+      }
+    ],
+    "interpretation": "cj_runtime_and_named_local_references_not_usable_in_this_run",
+    "missingConnectorProven": false,
+    "cjApiReads": 0,
+    "catalogReads": 0,
+    "cjWrites": 0,
+    "apiWrites": 0
+  }
 }

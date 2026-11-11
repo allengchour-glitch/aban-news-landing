@@ -2159,6 +2159,8 @@ Klaviyo `W7XTVD` wurde frisch entdeckt. `Vse76a`, `VbLQj6` und `RnTvsY` sind DRA
 
 Höchste Verkaufsaktion zur Freigabe: `/collections/beauty-selfcare` claim-sicher kürzen und intern zum kaufbaren Organizer verlinken; GratisversandCHF50 erhalten. 30-Tage-Rückgabe wurde nicht neu verifiziert und fehlt deshalb im neuen Entwurf. Keine Plattform-, Shop-, Flow-, Kunden-, Merchant-, DNS-, Budget-, Rabatt- oder Renderwrites; Wirkung unbekannt.
 
+Repo-Access-Nachtrag: Vorhandene CJ-Helfer/Workflows einschliesslich `automation/lib/cj_fetch.mjs` sind im Repository belegt. Im aktuellen Prozess wurden keine CJ-Laufzeit-Credential-Variablennamen gefunden; vier benannte lokale Master-/Quellpfade fehlen aktuell. Das beweist keinen fehlenden Connector, blockiert aber CJ-Runtime und diese lokalen Referenzen in diesem Lauf. Keine CJ-/API-/Katalogabfrage und kein Write.
+
 [R175 Paket](CONTENT-VERKAUFSPAKET-20261111-R175.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261111-R175.json). 08:00/14:00/19:00 Europe/Zurich unverändert; Claude-Receipt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R175_20261111]
