@@ -15,7 +15,7 @@
 
 **Trockenlauf der Freigabe danach (09:40 UTC):** alle vier Entwürfe bestehen die Tore. Der Tageslauf (05:41 UTC) plant sie ein. **Stopp:** die uuids in `dropship/METRICOOL-HALTEN.txt` eintragen (Instagram `4156060813550767248`, Facebook `6680239273933357186`, TikTok `3614365779669041576`, YouTube `-7647174116509334899`).
 
-## Vorbereitet, noch NICHT live: verständliche Modellnamen
+## Verständliche Modellnamen (LIVE 11.11. 09:52 UTC, zurückgelesen)
 
 Die Auswahl heisst nur «A» bis «G». Zuordnung laut CJ-Datenblatt (pid `1477820492730732544`, Feld «Light color», gelesen 11.11. 09:40 UTC) und laut den Variantenbildern (gesichtet):
 
@@ -29,7 +29,7 @@ Die Auswahl heisst nur «A» bis «G». Zuordnung laut CJ-Datenblatt (pid `14778
 | F | F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben |
 | G | G · drehend, Galaxie-Scheibe + 3 Farbscheiben |
 
-Werkzeug `modell_namen.mjs` (Trockenlauf Vorgabe; prüft vor dem Schreiben, dass jede Variante die SKU ihres Buchstabens trägt; ändert nur die Namen der Optionswerte; Sicherung `sicherung_modell.json`; Rücknahme `ZURUECK=1 LIVE=1`). **Der Live-Lauf wurde am 11.11. vom Berechtigungssystem der Sitzung abgelehnt und nicht umgangen:** er braucht das ausdrückliche Ja des Besitzers. Das Video zeigt eine Galaxie-Projektion; eine Galaxie-Scheibe liegt laut Datenblatt nur den Modellen C, E und G bei.
+Werkzeug `modell_namen.mjs` (Trockenlauf Vorgabe; prüft vor dem Schreiben, dass jede Variante die SKU ihres Buchstabens trägt; ändert nur die Namen der Optionswerte; Sicherung `sicherung_modell.json`; Rücknahme `ZURUECK=1 LIVE=1`). Der Live-Lauf wurde zuerst vom Berechtigungssystem der Sitzung abgelehnt und nicht umgangen; nach dem Ja des Besitzers auf eine gezielte Frage (11.11.) lief er um 09:52 UTC: sieben Werte umbenannt, SKUs und Preise unverändert (frisch gelesen), Seite am Handy gesichtet. Sicherung `sicherung_modell.json` liegt in diesem Ordner. Das Video zeigt eine Galaxie-Projektion; eine Galaxie-Scheibe liegt laut Datenblatt nur den Modellen C, E und G bei.
 
 ## Ungemessen
 

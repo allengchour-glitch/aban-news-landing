@@ -1,0 +1,170 @@
+{
+ "gelesen": "2026-11-11T11:35:46.991Z",
+ "id": "gid://shopify/Product/15524699767169",
+ "title": "Kubanische Gliederkette mit Strass, 45 cm",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Diese kubanische Gliederkette ergänzt dein Outfit. Du kannst sie im Alltag oder zu besonderen Anlässen tragen. Die Kette ist aus einer Zinklegierung gefertigt und mit Strasssteinen besetzt. Sie hat eine Länge von 45 cm. Im Lieferumfang ist eine Halskette enthalten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Aus Zinklegierung gefertigt</li>\n<li>Mit Strasssteinen besetzt</li>\n<li>45 cm lang</li>\n<li>In Gold erhältlich</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Metall</li>\n<li>\n<strong>Gewicht:</strong> ca. 56 g – 155 g (je nach Variante)</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/premium-schmuck\">Schmuck &amp; Uhren</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "seo": {
+  "title": "Kubanische Gliederkette mit Strass, 45 cm | LuxeStyle CH",
+  "description": "Diese kubanische Gliederkette ergänzt dein Outfit. 45 cm lang."
+ },
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17974928703873",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911507847",
+     "name": "Gold"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911540615",
+     "name": "Silber"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/19621048320391",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911573383",
+     "name": "8inch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911606151",
+     "name": "18inch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911638919",
+     "name": "20inch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58624911671687",
+     "name": "24inch"
+    }
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/67801649480071",
+   "sku": "CJSL269105301AZ",
+   "price": "22.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Gold"
+    },
+    {
+     "name": "Grösse",
+     "value": "8inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649512839",
+   "sku": "CJSL269105302BY",
+   "price": "25.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Gold"
+    },
+    {
+     "name": "Grösse",
+     "value": "18inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649545607",
+   "sku": "CJSL269105303CX",
+   "price": "26.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Gold"
+    },
+    {
+     "name": "Grösse",
+     "value": "20inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649578375",
+   "sku": "CJSL269105304DW",
+   "price": "27.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Gold"
+    },
+    {
+     "name": "Grösse",
+     "value": "24inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649611143",
+   "sku": "CJSL269105305EV",
+   "price": "22.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Silber"
+    },
+    {
+     "name": "Grösse",
+     "value": "8inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649643911",
+   "sku": "CJSL269105306FU",
+   "price": "25.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Silber"
+    },
+    {
+     "name": "Grösse",
+     "value": "18inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649676679",
+   "sku": "CJSL269105307GT",
+   "price": "26.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Silber"
+    },
+    {
+     "name": "Grösse",
+     "value": "20inch"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductVariant/67801649709447",
+   "sku": "CJSL269105308HS",
+   "price": "27.90",
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Silber"
+    },
+    {
+     "name": "Grösse",
+     "value": "24inch"
+    }
+   ]
+  }
+ ]
+}
