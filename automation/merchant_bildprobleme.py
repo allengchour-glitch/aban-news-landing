@@ -101,9 +101,64 @@ def suchen(h, name, abfrage):
     print("ABBRUCH: keine Reports-Version erreichbar"); sys.exit(4)
 
 
+# Proben für MODUS=quellen (11.11.): Angebote aus der zweiten Quelle ohne Preis, Angebote mit reiner Nummer
+# (Preis, Verfügbarkeit, Bild) und ein Angebot der Google-App zum Vergleich. Angebots-IDs sind öffentlich
+# (Produkt-ID und SKU stehen im Shop); Konto-Nummern werden nie ausgegeben.
+PROBEN = ["15495230718337_cj-cjyd285445402by", "15497428402561_cj-cjns259100719sh",
+          "15496264679809_cj-cjpb139647947uf", "2381394981998237883", "4785933318456622497",
+          "1712380121484223412", "13406024595176656169", "16882423843509892988",
+          "5516027656239708718", "6668478736552488073"]
+
+
+def quellen(h, name):
+    """Nur lesen: Datenquellen des Kontos und die Herkunft der Proben (ohne Konto-Nummer)."""
+    r = requests.get(f"https://merchantapi.googleapis.com/datasources/v1/{name}/dataSources?pageSize=100",
+                     headers=h, timeout=60)
+    print(f"Datenquellen: HTTP {r.status_code}")
+    namen = {}
+    if r.status_code == 200:
+        for d in r.json().get("dataSources") or []:
+            art = "primär" if "primaryProductDataSource" in d else "ergänzend" if "supplementalProductDataSource" in d \
+                else "andere:" + ",".join(k for k in d if k.endswith("DataSource"))
+            teil = d.get("primaryProductDataSource") or d.get("supplementalProductDataSource") or {}
+            dsid = str(d.get("dataSourceId", ""))
+            namen[dsid] = d.get("displayName", "")
+            abruf = ((d.get("fileInput") or {}).get("fetchSettings") or {}).get("fetchUri", "")
+            host = abruf.split("/")[2] if abruf.count("/") >= 2 else ""
+            print(f"  Quelle …{dsid[-4:]}: «{d.get('displayName', '')}» · Eingang {d.get('input', '')} · {art}"
+                  f" · Sprache {teil.get('contentLanguage', '-')} · Label {teil.get('feedLabel', '-')}"
+                  f" · Länder {','.join(teil.get('countries') or []) or '-'}" + (f" · Abruf von {host}" if host else ""))
+    else:
+        print("  " + r.text[:300].replace(name, "<konto>"))
+    liste = ",".join("'" + p + "'" for p in PROBEN)
+    zeilen = suchen(h, name, f"SELECT id, offer_id, title, price, availability, feed_label, language_code "
+                             f"FROM product_view WHERE offer_id IN ({liste})")
+    for z in zeilen:
+        pv = z.get("productView") or {}
+        rid = pv.get("id", "")                                   # channel~sprache~label~angebot
+        teile = rid.split("~")
+        pname = "~".join(teile[1:]) if len(teile) == 4 else rid
+        q = "?"
+        for version, pid in (("v1", pname), ("v1beta", rid)):
+            rp = requests.get(f"https://merchantapi.googleapis.com/products/{version}/{name}/products/{pid}",
+                              headers=h, timeout=60)
+            if rp.status_code == 200:
+                ds = str(rp.json().get("dataSource", ""))
+                q = namen.get(ds.rsplit("/", 1)[-1], "…" + ds[-4:])
+                break
+            q = f"HTTP {rp.status_code}"
+        preis = pv.get("price") or {}
+        print(f"  PROBE {pv.get('offerId', '')} | {sauber(pv.get('title'), 50)} | Quelle «{q}» | Preis "
+              f"{preis.get('amountMicros', '-')} {preis.get('currencyCode', '')} | Verfügbarkeit {pv.get('availability', '-')}"
+              f" | Label {pv.get('feedLabel', '-')}")
+    return 0
+
+
 def main():
     h = anmelden()
     name = konto(h)
+    if os.environ.get("MODUS", "bilder") == "quellen":
+        return quellen(h, name)
     zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None
