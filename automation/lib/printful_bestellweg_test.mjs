@@ -1478,6 +1478,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     const r = anspruchWarteLesen(w);
     ist(`G1 anspruchWarteLesen(«${w}») OHNE Test-Kennung: Fehler (unter 2000), kein Wert; die Meldung nennt die Variable`, [r.ms, typeof r.fehler === 'string' && /PRINTFUL_ANSPRUCH_WARTE_MS/.test(r.fehler) && /2000/.test(r.fehler)], [null, true]);
   }
+  ist('GP G1 anspruchWarteLesen: leer oder nicht gesetzt gilt auch MIT Test-Kennung die Vorgabe 3000 ms (nie 0)', [anspruchWarteLesen('', { testKennung: ANSPRUCH_TESTKENNUNG }), anspruchWarteLesen(undefined, { testKennung: ANSPRUCH_TESTKENNUNG }), anspruchWarteLesen('  ', { testKennung: ANSPRUCH_TESTKENNUNG })], Array(3).fill({ ms: 3000, fehler: null, test: true }));
   for (const k of [undefined, '', '1', 'true', 'NUR-ATTRAPPE', 'nur-attrappe ', ' nur-attrappe', 'attrappe']) ist(`G1 anspruchWarteLesen(«1999») mit FALSCHER Test-Kennung ${JSON.stringify(k)}: weiter ein Fehler (nur genau «nur-attrappe» gilt)`, [anspruchWarteLesen('1999', { testKennung: k }).ms, anspruchWarteLesen('1999', { testKennung: k }).test], [null, false]);
   ist('G1 anspruchWarteLesen: MIT Test-Kennung gelten 0, 1, 400 und 1999', ['0', '1', '400', '1999'].map((w) => anspruchWarteLesen(w, { testKennung: 'nur-attrappe' })), [0, 1, 400, 1999].map((ms) => ({ ms, fehler: null, test: true })));
   for (const w of ['abc', '-1', '3000.5', '1e4', '0x10', '3 000', '3000ms', '+3000', '60001', '9999999999']) for (const k of [undefined, 'nur-attrappe']) {
@@ -1520,6 +1521,12 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     }
     const p0 = await plane([fertig([])], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
     ist('G3 Gegenprobe: Fertigware OHNE Datei-Eigenschaft druckt weiter das feste Motiv aus dem Metafeld', () => [p0.items[0].files, arten(p0.befunde)], [[{ type: 'default', url: 'https://bilder.luxestyle.ch/motiv.png' }], []]);
+    // Gegenprüfung 11.11.2026: auch OHNE festes Motiv im Metafeld druckt Fertigware nie die Kundendatei (bisher prüfte jeder Fall ein Metafeld mit)
+    {
+      const ohneMotiv = zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('kunde'))], product: { productType: 'Poster', tags: ['printful_personalized_product'] }, sku: '9_19515', variant: { sku: '9_19515' } });
+      const pm = await plane([ohneMotiv], mkIo({ produkt: () => prodVon(268), kopf: () => ({ status: 200, bytes: png(7000, 5000) }) }));
+      ist('GP G3 Fertigware OHNE Metafeld, mit Datei-Eigenschaft der Kundin: harter Befund «datei-bei-fertigware», KEIN Artikel (die Kundendatei wird nie gedruckt)', () => [arten(pm.befunde).includes('datei-bei-fertigware'), pm.befunde.filter((b) => b.art === 'datei-bei-fertigware').every((b) => b.hart), pm.items.length, JSON.stringify(pm.items).includes('kunde')], [true, true, 0, false]);
+    }
     const ed = await plane([zeile()]);
     ist('G3 Gegenprobe: ein EDITOR-Produkt (Tag wunschdesign) druckt weiter die Datei der Kundin', [ed.items.length, arten(ed.befunde).includes('datei-bei-fertigware')], [1, false]);
     const text = (await plane([fertig([A('🖼️ Druckdatei (front)', U('kunde'))])])).befunde.find((b) => b.art === 'datei-bei-fertigware').text;
@@ -1726,6 +1733,14 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       // T6: die Freigabedatei schaltet den Zeitplan scharf; ein Pull Request, der NUR sie legt, muss die Tests auslösen, und der Auszug des Jobs muss sie enthalten (sonst sähe die Prüfung unten sie in der CI nie)
       const eintraege = (von, bis) => { const a = zeilen.findIndex((l) => von.test(l)); if (a < 0) return []; const rest = zeilen.slice(a + 1); const b = rest.findIndex((l) => bis.test(l)); return (b < 0 ? rest : rest.slice(0, b)).map((x) => x.trim().replace(/^- /, '').replace(/^'|'$/g, '')); };
       const sparse = (() => { const a = job.findIndex((l) => /sparse-checkout: \|\s*$/.test(l)); const x = []; for (let i = a + 1; a >= 0 && i < job.length && /^\s{12}\S/.test(job[i]); i++) x.push(job[i].trim()); return x; })();
+      // Gegenprüfung 11.11.2026: weitere stille Abschaltungen des Jobs «tests» (je ein Mutant überlebte)
+      const tOhne = ohneKommentar(t);
+      ist('GP T1 CI: kein «defaults:» im Workflow (eine Vorgabe-Shell ohne «-e» liesse einen roten Test mitten im Block durchlaufen)', /^\s*defaults\s*:/m.test(tOhne), false);
+      ist('GP T1 CI: der Job «tests» hängt an keinem anderen Job («needs:»; läuft der nicht, läuft «tests» nie)', job.filter((l) => /^    ['"]?needs['"]?\s*:/.test(l)).length, 0);
+      ist('GP T1 CI: auch ein «if» in Anführungszeichen fehlt am Job und am Schritt mit den Tests', [job.filter((l) => /^    ['"]if['"]\s*:/.test(l)).length, s.filter((l) => /^\s+(- )?['"]if['"]\s*:/.test(l)).length], [0, 0]);
+      ist('GP T1 CI: kein Schritt des Jobs «tests» schreibt nach GITHUB_ENV (ein früherer Schritt könnte CI oder GITHUB_ACTIONS leeren oder setzen)', job.filter((l) => /GITHUB_ENV/.test(l)).length, 0);
+      // Der Auszug des Jobs enthält den GANZEN Ordner der Workflows: die Prüfungen unten («nur printful-sync.yml startet den Sync», «kein Schalter in einer Workflow-Datei») sehen in der CI sonst nur 8 von rund 200 Dateien
+      ist('GP G1 CI: der sparse-checkout des Jobs «tests» enthält den ganzen Ordner .github/workflows', sparse.includes('.github/workflows'), true);
       ist('T6 CI: die Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt steht im Pfadfilter («paths:») UND im sparse-checkout des Jobs «tests»', [eintraege(/^\s{4}paths:\s*$/, /^\s{2}\S|^\S/).includes('dropship/PRINTFUL-SYNC-FREI.txt'), sparse.includes('dropship/PRINTFUL-SYNC-FREI.txt')], [true, true]);
     }
     if (braucht(wfSync, '.github/workflows/printful-sync.yml')) {
@@ -1733,6 +1748,8 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
       ist('T2 Workflow Sync: genau EIN Schritt startet ein Skript, einzeilig und ohne Zusatz: «node automation/printful_sync.mjs»', [...c.matchAll(/^\s+run: (?!\|)(.*)$/gm)].map((m) => m[1].trim()), ['node automation/printful_sync.mjs']);
       ist('T2 Workflow Sync: im ganzen Workflow startet node kein anderes Skript', [...c.matchAll(/\bnode\s+(\S+\.(?:mjs|cjs|js))/g)].map((m) => m[1]), ['automation/printful_sync.mjs']);
       ist('T2 Workflow Sync: der Lauf nutzt Node 22 (genau eine Angabe)', [...c.matchAll(/node-version\s*:\s*(.*)$/gm)].map((m) => m[1].trim()), ["'22'"]);
+      ist('GP T2 Workflow Sync: weder am Job noch an einem Schritt «continue-on-error» (ein Exit 1 des Syncs: Konfigurationsfehler, Abbruch, Fehlerliste, muss den Lauf rot machen)', /continue-on-error/.test(c), false);
+      ist('GP T2 Workflow Sync: kein «defaults:» (die Vorgabe-Shell von GitHub bleibt)', /^\s*defaults\s*:/m.test(c), false);
       ist('G1 Workflow Sync: der Workflow setzt GITHUB_ACTIONS nicht selbst (der Läufer setzt es; nur dort darf der Sync schreiben)', /^\s*GITHUB_ACTIONS\s*:/m.test(c), false);
     }
     // G1: die drei Schalter des Rennens gehören in KEINE Workflow-Datei: die Wartezeit (nur für Tests senkbar), die Ausnahme für den eigenen Rechner und die Test-Kennung. Geprüft wird jede ausgecheckte Workflow-Datei, auch ihre Kommentare.
@@ -1744,6 +1761,10 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
         const VERBOTEN = ['PRINTFUL_ANSPRUCH_WARTE_MS', 'PRINTFUL_LOKAL_SCHARF', 'PRINTFUL_ANSPRUCH_TESTKENNUNG', ANSPRUCH_TESTKENNUNG];
         ist('G1 Workflows: in KEINER Workflow-Datei steht PRINTFUL_ANSPRUCH_WARTE_MS, PRINTFUL_LOKAL_SCHARF, PRINTFUL_ANSPRUCH_TESTKENNUNG oder der Wert der Test-Kennung (auch nicht in einem Kommentar)', dateien.flatMap((f) => { const t = readFileSync(join(dir, f), 'utf8'); return VERBOTEN.filter((v) => t.includes(v)).map((v) => `${f}: ${v}`); }), []);
         ist('G1 Workflows: die drei Workflows des Bestellwegs gehören zu den geprüften Dateien', pflicht.filter((f) => !dateien.includes(f)), []);
+        // Gegenprüfung 11.11.2026: das Schloss gegen zwei gleichzeitige scharfe Läufe ist die Concurrency-Gruppe von printful-sync.yml. Startet ein anderer Workflow den Sync, fehlt sie (der Kleber verlangt zusätzlich GITHUB_WORKFLOW_REF).
+        ist('GP G1 Workflows: nur printful-sync.yml STARTET printful_sync.mjs (der CI-Workflow nennt nur die Testdateien und prüft die Syntax)', dateien.filter((f) => /\bnode\s+(?!--check\b)\S*printful_sync\.mjs\b/.test(readFileSync(join(dir, f), 'utf8'))), ['printful-sync.yml']);
+        ist('GP G1 Workflows: printful-sync.yml trägt die Gruppe «printful-sync» mit cancel-in-progress: false', (() => { const c = readFileSync(join(dir, 'printful-sync.yml'), 'utf8'); return [/^concurrency:\s*\n\s+group:\s*printful-sync\s*$/m.test(c), /^\s+cancel-in-progress:\s*false\s*$/m.test(c)]; })(), [true, true]);
+        if (inCI) ist('GP G1 Workflows: in der CI sieht die Prüfung den ganzen Ordner (über 150 Workflow-Dateien, nicht nur die 8 des alten Auszugs)', dateien.length > 150, true);
       }
     }
     // T6: der Stand der Freigabe ist eine AUSDRÜCKLICHE Testzeile. Wer dropship/PRINTFUL-SYNC-FREI.txt legt, schaltet den täglichen Lauf scharf und muss diese Zeile bewusst auf «liegt» ändern (im selben Pull Request).

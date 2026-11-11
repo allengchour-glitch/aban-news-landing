@@ -110,7 +110,9 @@ jobs:
     # Die frühere Rechnung «389 s + 127 s = 516 s als obere Schranke» ist zurückgenommen: ein Gegenleser hat alle `run:`-Schritte des Jobs nachgespielt (4 Kerne, ruhig) und 588.4 s gemessen, ohne checkout und Einrichtung der Laufzeiten,
     # das sind 65 % von 900 s (die eigene Regel verlangt bei über 60 % ein höheres Limit). Wirkliche Laufzeit auf dem Actions-Läufer: ungemessen, nach dem ersten Lauf hier eintragen; liegt sie über 900 s, den Schritt pod_auswahl_mutation.mjs
     # in einen eigenen Job auslagern. Das Limit schützt vor hängenden Läufen, nicht vor langsamen Tests; Zahlen und Rechnung: dropship/wp6-0611/SYNC.md 7.7 und 7.12. Ein Test (CI Fund 17 und R2 CI L2/7) verlangt mindestens 20 und höchstens 30.
-    timeout-minutes: 20
+    # 30 statt 20 Minuten (11.11.2026, Gegenprüfung nach der Schlussprüfung): der Sync-Test wurde länger (36 → rund 60 s) und läuft im Job achtmal (direkt und in pod_auswahl_mutation.mjs); ein Gegenprüfer spielte alle
+    # `run:`-Schritte nach: 912 s allein und 1043 s unter Last (76 bis 87 % von 1200 s). Neue Messung samt Anteil an 1800 s: dropship/wp6-0611/SYNC.md 7.14. Auf dem Actions-Läufer weiter ungemessen.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -181,6 +183,7 @@ jobs:
             dropship/PRINTFUL-SYNC-FREI.txt
             .github/workflows/pod-page-update.yml
             .github/workflows/pod-inject-designer.yml
+            .github/workflows
             dropship/selbst-gestalten-fertig-0511/bestellweg
             dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs
             dropship/wp6-0611/SYNC.md

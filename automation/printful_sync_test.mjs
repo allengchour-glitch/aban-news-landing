@@ -1557,7 +1557,7 @@ for (const [name, sz, soll] of [
   }
 
   // ── G4: PRINTFUL_MAX_KOSTEN_USD und PRINTFUL_MIN_NETTO_CHF werden STRENG gelesen (kein Hex, kein Exponent, kein Text)
-  for (const [name, werte] of [['PRINTFUL_MAX_KOSTEN_USD', ['0x10', '1e2']], ['PRINTFUL_MIN_NETTO_CHF', ['0x10', 'abc']]]) for (const v of werte) {
+  for (const [name, werte] of [['PRINTFUL_MAX_KOSTEN_USD', ['0x10', '1e2']], ['PRINTFUL_MIN_NETTO_CHF', ['0x10', 'abc', 'aus', 'off', '0,5']]]) for (const v of werte) {   // «aus» gilt nur bei der Obergrenze (Gegenprüfung 11.11.2026: beim Mindestgewinn ungeprüft)
     const x = lauf(bestellt([z1], { env: { [name]: v } }));
     ist(`G4 ${name}=«${v}»: Konfigurationsfehler, Exit 1, nichts gelesen, nichts geschrieben, die Meldung nennt die Variable`, [nichtsAngefasst(x), x.prot.err.some((l) => l.includes(name))], [NICHTS, true]);
   }
