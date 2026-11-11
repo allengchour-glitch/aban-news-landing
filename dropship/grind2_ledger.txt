@@ -147,3 +147,43 @@ C0248372-A6D0-4F2A-B4AD-EFD311844636 · 2026-11-08T22:31:55.614Z · GESCHRIEBEN 
 1424681496672866304 · 2026-11-08T22:32:36.336Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
 7BCDF4EB-436C-419F-8B55-AC0AD2E08574 · 2026-11-08T22:32:36.342Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
 AB10107F-BB63-454E-BE52-C565C987BE22 · 2026-11-08T22:32:36.347Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+5BB44D7E-10C7-410E-8437-D56F2D9CFBF5 · 2026-11-11T19:21:26.978Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+6D766994-1C43-441F-A7EA-B7D60A8A642C · 2026-11-11T19:21:26.985Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Farbe","wert":"Golden"},{"option":"Modell","wert":"Ipad air2 ipad5"
+DB857359-B497-4C40-A07D-1CCF71E968A0 · 2026-11-11T19:21:26.991Z · UEBERSPRUNGEN · zurückgestellt: auswahl: Auswahl nicht baubar: Übersetzung macht Werte von «Grösse» gleich
+CCEFFAD8-59E8-44BE-9911-E8243DE6BF94 · 2026-11-11T19:21:26.996Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Christmas Decoration Supplies» ist unrein (häufigster Pfad nur 50 % von 4) und der Ti
+2410230521201600900 · 2026-11-11T19:21:27.002Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Christmas Decoration Supplies» ist unrein (häufigster Pfad nur 50 % von 4) und der Ti
+1453244683860971520 · 2026-11-11T19:21:27.007Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Farbe","wert":"Warm gold"},{"option":"Farbe","wert":"Warm silver"}]
+1469520390878531584 · 2026-11-11T19:21:50.717Z · GESCHRIEBEN · 2 Varianten · weihnachts-fensteraufkleber-531584 · gid://shopify/Product/16706216132999 · fensterdeko
+7FAA7D0E-B2BD-4A89-A309-6C84C42B5AC8 · 2026-11-11T19:22:19.978Z · GESCHRIEBEN · 4 Varianten · motorrad-dashcam-2b5ac8 · gid://shopify/Product/16706216526215 · dashcams
+A9F1E481-B52C-40F2-AC1B-C3F9EC46A51E · 2026-11-11T19:22:25.695Z · UEBERSPRUNGEN · zurückgestellt: Preis bis 82.90 CHF über der Obergrenze 80.00 CHF
+1376073362803134464 · 2026-11-11T19:22:25.703Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Apparel & Accessories > Clothing Accessories > Cufflinks
+21FEC4EC-7D6C-40DB-97D2-EE8A5E45DE27 · 2026-11-11T19:22:25.712Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Modell","wert":"IPhone X Xs"},{"option":"Modell","wert":"IPhone 7 8
+FCD2DF69-8AFF-484C-893C-62AA0300DDC2 · 2026-11-11T19:22:25.718Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Photography > Lighting & Studio) passt zu keinem der beobachteten 
+1360529089496223744 · 2026-11-11T19:22:25.724Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1393142086294966272 · 2026-11-11T19:22:25.730Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Postal 12-50, PostNL 15-45)
+1414867936581128192 · 2026-11-11T19:22:25.738Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1559424205752643584 · 2026-11-11T19:22:48.066Z · GESCHRIEBEN · 1 Varianten · bakterienballe-aquarium-filtermaterial-643584 · gid://shopify/Product/16706218000775 · aquariumzubehoer
+A7DA2626-4518-4D1A-8A4B-D8CA46E8E8AA · 2026-11-11T19:22:53.716Z · UEBERSPRUNGEN · zurückgestellt: nur Sonderlinien (Sensitive/Liquid) nach CH, keine normale Linie
+1691272538522923008 · 2026-11-11T19:22:53.725Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titelregeln widersprechen sich (Electronics > Communications > Telephony > Mobile Phone Acce
+1355AFF2-4533-4772-A5AC-0F0D74F00E26 · 2026-11-11T19:22:53.737Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (71 > 40) — später, wenn das Tageskontingent reicht; optionswerte-sicher: nicht sicher überse
+1560147417893449728 · 2026-11-11T19:22:53.743Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Night Lights» ist unrein (häufigster Pfad nur 29 % von 7) und der Titel nennt keine b
+1387240026089328640 · 2026-11-11T19:22:53.750Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Cameras > Webcams) passt zu keinem der beobachteten Pfade des Blat
+3C0D0424-3716-4BE0-B913-58B89F5888E5 · 2026-11-11T19:22:53.756Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (68 > 40) — später, wenn das Tageskontingent reicht; auswahl: Auswahl nicht baubar: Übersetzu
+A95208AE-D4C1-424F-B495-1C878ECD6817 · 2026-11-11T19:23:14.032Z · UEBERSPRUNGEN · zurückgestellt: Text offen: zu wenig belegte Angaben (2)
+6B118F9C-2E24-4E17-B0E0-F943B72F90FF · 2026-11-11T19:23:14.039Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: PostNL 15-45, CJPacket Postal 12-50)
+1505829773766045696 · 2026-11-11T19:23:14.046Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Christmas Decoration Supplies» ist unrein (häufigster Pfad nur 50 % von 4) und der Ti
+1715243321012006912 · 2026-11-11T19:23:14.053Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Farbe","wert":"Bearded Old Man"},{"option":"Farbe","wert":"Bell"},{
+1552963293667667968 · 2026-11-11T19:23:14.059Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Home & Garden > Decor > Home Decor Decals) passt zu keinem der beobachteten Pfade des
+1F8D1B20-6FE8-4E7F-AAD8-0BA01F9E8FB0 · 2026-11-11T19:23:14.065Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Postal 12-50, PostNL 15-45)
+1542088110782296064 · 2026-11-11T19:23:35.563Z · GESCHRIEBEN · 6 Varianten · katzentunnel-filz-verformbar-zusammenklappbar-296064 · gid://shopify/Product/16706218951047 · katzentunnel
+1378223730123214848 · 2026-11-11T19:23:41.313Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Apparel & Accessories > Clothing Accessories > Cufflinks
+1494560538947096576 · 2026-11-11T19:23:41.322Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Modell","wert":"IPhone X"},{"option":"Modell","wert":"IPhone XS"},{
+2406210737371616500 · 2026-11-11T19:23:41.333Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Farbe","wert":"Men's Folding Mouth"},{"option":"Farbe","wert":"Wome
+FF3915D5-7167-445F-94F5-40C784546325 · 2026-11-11T19:23:57.510Z · GESCHRIEBEN · 2 Varianten · airpods-hulle-schutz-cartoon-silikon-546325 · gid://shopify/Product/16706219213191 · airpods
+1377886215918981120 · 2026-11-11T19:24:03.169Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Postal 12-50, PostNL 15-45)
+34BDDD46-6012-45FB-BBF7-6C2284450888 · 2026-11-11T19:24:29.706Z · GESCHRIEBEN · 3 Varianten · angelrute-450888 · gid://shopify/Product/16706219442567 · angeln
+2412230136341627800 · 2026-11-11T19:24:51.909Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titelregeln widersprechen sich (Animals & Pet Supplies > Pet Supplies > Fish Supplies > Aqua
+80D1A743-6AFD-472A-929A-452004D90244 · 2026-11-11T19:24:51.917Z · UEBERSPRUNGEN · zurückgestellt: nur Sonderlinien (Sensitive/Liquid) nach CH, keine normale Linie
+1509072395112558592 · 2026-11-11T19:24:51.923Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titelregeln widersprechen sich (Electronics > Communications > Telephony > Mobile Phone Acce
+8806BDEE-622A-40B6-9110-581A08CA153C · 2026-11-11T19:24:51.929Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (41 > 40) — später, wenn das Tageskontingent reicht; optionswerte-sicher: nicht sicher überse
+FCDBF329-E67E-41A2-84AF-8039FE8E9F6C · 2026-11-11T19:24:51.934Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Electronics > Video > Video Accessories > Projector Accessories > Projection Sc
