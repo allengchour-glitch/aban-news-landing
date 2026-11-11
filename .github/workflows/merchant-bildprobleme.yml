@@ -3,7 +3,7 @@ name: Merchant-Bildprobleme lesen (nur lesen)
 on:
   workflow_dispatch:
   push:
-    branches: [claude/shop-bilder-1111]
+    branches: [claude/merchant-fehler-1111]
     paths: ['.github/workflows/merchant-bildprobleme.yml', 'automation/merchant_bildprobleme.py']
 
 permissions:

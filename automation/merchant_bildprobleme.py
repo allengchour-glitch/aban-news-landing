@@ -6,8 +6,9 @@ im Merchant Center rund 357 Artikel mit «Werbeeinblendung im Bild» und 43 mit 
 betroffenen Artikel, damit die Bilder gezielt bereinigt werden können.
 
 Gibt KEINE Merchant-Nummer aus (Actions-Protokolle sind öffentlich): das Konto kommt aus der Kontoliste des
-Dienstkontos. Ausgegeben werden Zählungen je Problemcode und je Bild-Problem die Zeile
-«BILD|<code>|<offer_id>|<titel>», dazu die Datei bildprobleme.json (Workflow-Artefakt). Schreibt nichts im Merchant Center.
+Dienstkontos. Ausgegeben werden Zählungen je Problemcode, je Bild-Problem die Zeile «BILD|<code>|<offer_id>|<titel>»
+und je übriges Problem (ohne die Massencodes in MASSE) die Zeile «FEHLER|<code>|<attribut>|<offer_id>|<titel>»,
+dazu die Datei bildprobleme.json (Workflow-Artefakt). Schreibt nichts im Merchant Center.
 """
 import json, os, sys, time
 from collections import Counter
@@ -17,6 +18,23 @@ from google.auth.transport.requests import Request
 
 SCOPE = "https://www.googleapis.com/auth/content"
 BILD = ("image", "overlay", "small")
+# Diese Codes betreffen fast alle Artikel und werden nur gezählt, nicht einzeln ausgegeben.
+MASSE = ("missing_shipping_no_shipping_service_defined_for_country", "item_limit_reached_ads_css")
+
+
+def sauber(t, n=70):
+    return " ".join(str(t or "").replace("|", "/").split())[:n]
+
+
+def zeile(pv, iss):
+    """Ausgabezeile für ein Problem oder None (Massencode)."""
+    typ = iss.get("type") or {}
+    code = typ.get("code") or "?"
+    if any(w in code.lower() for w in BILD):
+        return f"BILD|{code}|{pv.get('offerId', '')}|{sauber(pv.get('title'))}"
+    if code in MASSE:
+        return None
+    return f"FEHLER|{code}|{typ.get('canonicalAttribute', '')}|{pv.get('offerId', '')}|{sauber(pv.get('title'))}"
 
 
 def anmelden():
@@ -62,9 +80,9 @@ def suchen(h, name, abfrage):
             for z in neu:  # Treffer sofort ausgeben, damit auch ein abgebrochener Lauf etwas liefert
                 pv = z.get("productView") or {}
                 for iss in pv.get("itemIssues") or []:
-                    code = ((iss.get("type") or {}).get("code") or "?")
-                    if any(w in code.lower() for w in BILD):
-                        print(f"BILD|{code}|{pv.get('offerId', '')}", flush=True)
+                    t = zeile(pv, iss)
+                    if t:
+                        print(t, flush=True)
             if seite % 20 == 0:
                 print(f"... Seite {seite}, {len(zeilen)} Zeilen", flush=True)
             token = j.get("nextPageToken")
@@ -77,28 +95,36 @@ def suchen(h, name, abfrage):
 def main():
     h = anmelden()
     name = konto(h)
-    zeilen = suchen(h, name, "SELECT id, offer_id, item_issues FROM product_view")
-    codes, treffer = Counter(), []
+    zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
+    codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None
     for z in zeilen:
         pv = z.get("productView") or {}
         for iss in pv.get("itemIssues") or []:
-            code = ((iss.get("type") or {}).get("code") or "?")
+            typ = iss.get("type") or {}
+            code = typ.get("code") or "?"
             codes[code] += 1
+            sev = (iss.get("severity") or {}).get("aggregatedSeverity", "")
+            eintrag = {"code": code, "offer_id": pv.get("offerId", ""), "titel": (pv.get("title") or "")[:80], "schwere": sev}
             if any(w in code.lower() for w in BILD):
                 beispiel = beispiel or iss
-                sev = (iss.get("severity") or {}).get("aggregatedSeverity", "")
-                treffer.append({"code": code, "offer_id": pv.get("offerId", ""), "titel": (pv.get("title") or "")[:80],
-                                "schwere": sev})
+                treffer.append(eintrag)
+            elif code not in MASSE:
+                eintrag["attribut"] = typ.get("canonicalAttribute", "")
+                attribute[(code, eintrag["attribut"])] += 1
+                fehler.append(eintrag)
     print("Problemcodes (alle Artikel):")
     for c, n in codes.most_common(40):
         print(f"  {n:6d}  {c}")
+    print("Übrige Probleme nach Code und Attribut:")
+    for (c, a), n in attribute.most_common(60):
+        print(f"  {n:6d}  {c}  {a}")
     if beispiel:
         print("Beispiel eines Bildproblems (Struktur):", json.dumps(beispiel)[:600])
-    print(f"ERGEBNIS: {len(zeilen)} Artikel gelesen, {len(treffer)} Bildprobleme")
+    print(f"ERGEBNIS: {len(zeilen)} Artikel gelesen, {len(treffer)} Bildprobleme, {len(fehler)} übrige Probleme")
     with open("bildprobleme.json", "w") as f:
-        json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "codes": dict(codes), "bild": treffer}, f,
-                  ensure_ascii=False, indent=1)
+        json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "codes": dict(codes), "bild": treffer,
+                   "fehler": fehler}, f, ensure_ascii=False, indent=1)
     return 0
 
 
