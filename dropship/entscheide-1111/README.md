@@ -42,6 +42,10 @@ dieser Weg ist nicht erprobt.
 
 ## Offen
 
-- Stern-Bodysuit: die Variantenbilder 3, 4 und 6 und das Galeriebild 2 tragen Werbeschrift («DON'T let a baby mom see
-  this»); gleiche Art wie die Google-Liste, noch nicht bereinigt.
+- ~~Stern-Bodysuit: Werbeschrift auf den Bildern 2, 3, 4 und 6~~ **erledigt 21:29 UTC:** mit Higgsfield bereinigt (GPT Image 2.6,
+  4 × 0,25 Credits; Schrift, Emoji, Beschriftungen und Pfeile weg, Anzug, Baby und Bett unverändert, jedes Bild neben dem
+  Original angesehen), mit `dropship/bildfix-1111/ersetzen.mjs` und Plan `dropship/bildfix-1111/plaene/plan_stern_1111.json`
+  ersetzt (Sicherung `dropship/bildfix-1111/sicherung4/`, «GLEICH», 4 Varianten umgebunden). Storefront: Bilder 2 bis 5 und die
+  Varianten Blau und Gelb zeigen die neuen Dateien. Die neuen Bilder sind 1024 × 1024 (vorher 1600 bzw. 2048). Rücknahme:
+  `ZURUECK=1 LIVE=1 NODE_USE_ENV_PROXY=1 node dropship/bildfix-1111/ersetzen.mjs dropship/bildfix-1111/plaene/plan_stern_1111.json dropship/bildfix-1111/sicherung4`.
 - Wirkung auf Google (Merchant) und Verkäufe: ungemessen.
