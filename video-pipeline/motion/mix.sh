@@ -3,6 +3,7 @@
 # Aufruf:  bash mix.sh <stumm.mp4> <ausgabe.mp4>
 # Umgebung (alle optional):
 #   MUSIK          Dateiname in automation/music (Vorgabe: auto = dropship/reel-vorlage/musik_waehlen.sh, rotiert, nie zweimal hintereinander gleich)
+#   MUSIK_DATEI    statt MUSIK: fertige Musikdatei mit Pfad (z. B. von einem bauen.sh geladen); MUSIK_START ist dann Pflicht
 #   MUSIK_START    Startsekunde im Stück (Vorgabe: aus musik-start.txt)
 #   MUSIK_LUFS     Lautstärke der Musik (Vorgabe -22, leise)
 #   STIMME_DATEI   fertige Sprachaufnahme (wav/mp3); Musik duckt darunter (Sidechain, wie reel_karte.sh). Piper selbst startet dieses Skript nicht:
@@ -16,9 +17,14 @@ in="$1"; out="$2"; [ -f "$in" ] || fail "Eingabe fehlt: $in"
 here="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"; repo="$(cd "$here/../.." && pwd)"
 vr="$repo/dropship/reel-vorlage"
 dur="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$in")"; [ -n "$dur" ] || fail "Dauer nicht lesbar"
-musik="${MUSIK:-auto}"; [ "$musik" = auto ] && musik="$("$vr/musik_waehlen.sh")"
-case "$musik" in */*|*..*) fail "MUSIK ist ein Dateiname ohne Pfad";; esac
-mp="$repo/automation/music/$musik"; [ -f "$mp" ] || fail "Musikdatei fehlt: $mp"
+if [ -n "${MUSIK_DATEI:-}" ]; then
+  mp="$MUSIK_DATEI"; musik="$(basename "$mp")"; [ -f "$mp" ] || fail "MUSIK_DATEI fehlt: $mp"
+  [ -n "${MUSIK_START:-}" ] || fail "MUSIK_START fehlt (Pflicht mit MUSIK_DATEI)"
+else
+  musik="${MUSIK:-auto}"; [ "$musik" = auto ] && musik="$("$vr/musik_waehlen.sh")"
+  case "$musik" in */*|*..*) fail "MUSIK ist ein Dateiname ohne Pfad";; esac
+  mp="$repo/automation/music/$musik"; [ -f "$mp" ] || fail "Musikdatei fehlt: $mp"
+fi
 ms="${MUSIK_START:-$("$vr/musik_waehlen.sh" --start "$musik")}"; [[ "$ms" =~ ^[0-9]+$ ]] || fail "MUSIK_START muss eine ganze Zahl sein"
 mdur="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$mp")"
 awk -v s="$ms" -v d="$dur" -v m="$mdur" 'BEGIN{exit !(s+d<=m)}' || fail "Stück zu kurz: $musik hat $mdur s, gebraucht werden $ms + $dur s"

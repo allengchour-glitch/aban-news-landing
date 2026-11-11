@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """stimme_edge.py — wie stimme.sh (Format «S1<TAB>Text<TAB>Titel»), aber mit neuronaler Stimme über edge-tts.
 Aufruf:  python3 stimme_edge.py <stimme.txt> <ausgabe.wav> <zeiten.json>
-Umgebung: STIMME (Vorgabe de-DE-KatjaNeural), STIMME_RATE (Vorgabe -8%), STIMME_PAUSE (Vorgabe 0.9 s),
+Umgebung: STIMME (Vorgabe de-DE-KatjaNeural), STIMME_RATE (Vorgabe -8%), STIMME_PAUSE (Vorgabe 0.9 s), STIMME_BEGINN (Vorgabe 0.6 s),
           EDGE_CA_BUNDLE (Zertifikatsbündel, wenn ein Proxy das TLS neu terminiert; die Prüfung bleibt immer an).
 Hinweis: inoffizieller Client des Vorlese-Dienstes von Microsoft Edge, keine Lizenz für veröffentlichte Videos belegt.
 Zeiten wie stimme.sh: erste Zeile ab 0.6 s, danach Dauer plus Pause; Szene beginnt 0.4 s vor ihrer ersten Zeile,
@@ -35,7 +35,7 @@ async def sprechen():
     for i, z in enumerate(zeilen, 1):
         await edge_tts.Communicate(z["text"], voice, rate=rate).save(f"{work}/z{i}.mp3")
 asyncio.run(sprechen())
-t = 0.6
+t = float(os.environ.get("STIMME_BEGINN", "0.6"))   # Sekunde, ab der die erste Zeile spricht
 for i, z in enumerate(zeilen, 1):
     d = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"{work}/z{i}.mp3"], text=True).strip())
     z["start"], z["dauer"] = round(t, 3), round(d, 3); t += d + pause
