@@ -1,7 +1,7 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
- * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), C (Editor 6.4.1: Delta zu 6.4.0, Szenarien in v641_test.mjs), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), D (Editor 6.4.2: Delta zu 6.4.1, Szenarien in v642_test.mjs; DA bis DF: Korrekturrunde vom 11.11.2026 nach der Abnahme mit 21 Funden), C (Editor 6.4.1: Delta zu 6.4.0, Szenarien in v641_test.mjs), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
  * Gleichwertige Mutanten (kein sichtbarer Unterschied in Chromium) stehen mit Begründung unten bei ihrem Muster; B63 und B64 sind nur in einer Umgebung ohne ResizeObserver sichtbar (Szenario ohne-resizeobserver).
  * Stand 6.4.0: die Muster N05 und N12 sind entfernt (der Code, den sie trafen, gibt es seit 6.3.0 nicht mehr: Prüfung des Standes statt Variantenvergleich, kein Verkleinern nach der Freigabe); M32, N18 und W27 sind an den Code von 6.3.0/6.4.0 angepasst.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
@@ -9,8 +9,8 @@
  * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
  * (4) ein Lauf, der an der Umgebung scheitert (Chromium weg, Platte voll, Port belegt: lib.mjs: istUmgebungsfehler), zählt ebenfalls als «ungeklärt»; (5) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder B oder K oder V; mehrere mit Komma: B09,B10)
- *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
- * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.1), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
+ *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine zwei Einträge dasselbe Paar tragen und keine Kennung doppelt ist; keine Tests)
+ * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.2), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
  * Die Kopien liegen in einem eigenen, neu angelegten Temp-Ordner (mkdtemp): parallele Läufe stören sich nicht.
  */
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
@@ -59,7 +59,7 @@ const MUTANTEN = [
   ['M32 Foto-Einpassen entfällt (Foto ragt über flache Fläche)', "if (faktor < 1) { reviewAenderung(); e.scale", "if (false) { reviewAenderung(); e.scale"],
   // ── neu nach den Funden der Gegenleser ──
   ['N01 Bündel: das Modell wechselt nicht mit der Variante', "      karte = neu;\n      if (!platzierungIn(karte, st.aktiv)", "      if (!platzierungIn(karte, st.aktiv)"],
-  ['N02 Motiv auf nicht vorhandener Platzierung sperrt den Kauf nicht', "if (fremde.length) { meldung(fmt(T.orphan, { a: fremde.map(", "if (false) { meldung(fmt(T.orphan, { a: fremde.map("],
+  ['N02 Motiv auf nicht vorhandener Platzierung sperrt den Kauf nicht', "if (fremde.length) { abbruch(fmt(T.orphan, { a: fremde.map(", "if (false) { abbruch(fmt(T.orphan, { a: fremde.map("],
   ['N03 Bündel: Variante ohne Zuordnung gilt als eingerichtet', "if (buendel) return !!zuordnungFuer(st.shopVariante);", "if (buendel) return true;"],
   ['N04 Mehrere Druckdateien ohne Zuordnung: Standardgeometrie statt Sperre', "if (mehrereGeometrien() && st.pfVariante == null) return false;", ""],
   // Einfrieren ganz entfernt: Geometrie folgt immer der Seite UND der Variantenwächter läuft auch während des Bauens (einzeln wäre jede Hälfte durch die andere gedeckt)
@@ -91,7 +91,7 @@ const MUTANTEN = [
   ['W02 Warnstufe endet bei 100 statt 150 dpi', "return dpi < Math.min(DPI_GUT, d) - 1e-9 ? 'mittel' : 'gut';", "return dpi < Math.min(100, d) - 1e-9 ? 'mittel' : 'gut';"],
   ['W03 Genau der Mindestwert sperrt noch', "if (dpi < Math.min(minDpi, d) - 1e-9) return 'sperre';", "if (dpi < Math.min(minDpi, d) + 1e-9) return 'sperre';"],
   ['W04 Anzeige rundet unter der Sperre auf («75» neben der Sperre)', "function dpiGanz(dpi, stufe) { return stufe === 'sperre' ? Math.floor(dpi + 1e-9) : Math.round(dpi); }", "function dpiGanz(dpi, stufe) { return Math.round(dpi); }"],
-  ['W05 Kaufsperre bei zu kleinem Foto entfällt', "if (qs) { meldung(qs, 'err'); return; }", ""],
+  ['W05 Kaufsperre bei zu kleinem Foto entfällt', "if (qs) { abbruch(qs); return; }", ""],
   ['W06 Sperrliste rechnet ohne Dichte der Druckdatei', "if (qualitaetStufe(d, karte.minDpi, g.printfile.dpi * g.render.k) === 'sperre') lage.sperren.push(", "if (qualitaetStufe(d, karte.minDpi, null) === 'sperre') lage.sperren.push("],
   ['W07 Anzeige rechnet ohne Dichte der Druckdatei', "var dichte = g.printfile.dpi * g.render.k;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);", "var dichte = 0;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);"],
   ['W08 qd fehlt in _pod_karte', "o.qd = Math.floor(lage.min + 1e-9);", ""],
@@ -227,7 +227,7 @@ const MUTANTEN = [
   // in 6.4.0/6.4.1 blieb die Verschiebung eines Griffs in der «Druckversion» sichtbar stehen (dort rechnete niemand sie neu). Seit E2 ruft `chromeAbgleichen()` am Ende `chromeNachziehen()`, und das rechnet die Griffe der gewählten Ebene
   // auch ohne Schicht neu (`griffeInnen` schreibt den Wert, wenn er vom aktuellen abweicht); alle anderen Ebenen haben versteckte Griffe (`waehlen`: `handle.hidden = !an`). Gemessen: der Mutant besteht alle Suiten vollständig
   // (unit 514, vorschau 196, editor 393, bearbeiten 986, v641 393, v642 427) und lief in der ersten Gesamtprobe 6.4.2 als einziger neben B46 durch (B46 ist mit einem Fall in `rueckfall-bild` geschlossen).
-  ['B70 nur der Skalieren-Griff rutscht nach innen, der Löschknopf nicht', "[[k.handle, 1], [k.del, -1]].forEach(", "[[k.handle, 1]].forEach("],
+  ['B70 nur der Skalieren-Griff rutscht nach innen, der Löschknopf nicht', "        if (g[0].style.transform !== t) g[0].style.transform = t;", "        if (g[1] > 0 && g[0].style.transform !== t) g[0].style.transform = t;"],   // 6.4.2 (BE-1): Muster an die zwei Durchgänge (lagen) angepasst
   ['B71 Schalter: off, false, nein, no schalten die Ansicht nicht ab', "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus'", "return /^(0|aus)$/.test(a) ? 'aus'"],
   ['B72 Schalter: Gross- und Kleinschreibung und Leerzeichen zählen', "a = a === null ? '' : String(a).trim().toLowerCase();", "a = a === null ? '' : String(a);"],
   ['B73 nach einem Ladefehler des Produktfotos kein neuer Versuch bei erneuter Wahl', "var neuLaden = art === 'bearbeiten' && !!ui.tplFehlerUrl;", "var neuLaden = false;"],
@@ -357,8 +357,9 @@ const MUTANTEN = [
   ['D05 E3 Entwurf: Winkel ausserhalb von ±180 bleibt', "scale: bereich(0.06, 3, n.scale), rot: rotNorm(n.rot) };", "scale: bereich(0.06, 3, n.scale), rot: n.rot };", 'zahlen'],
   ['D06 E3 Zwei-Finger-Geste: Winkel nicht zurückgerechnet', "e.rot = rotNorm(modus.rot0 + (Math.atan2(p2.y - p1.y, p2.x - p1.x) - modus.w0) * 180 / Math.PI);", "e.rot = modus.rot0 + (Math.atan2(p2.y - p1.y, p2.x - p1.x) - modus.w0) * 180 / Math.PI;", 'zahlen'],
   ['D07 E3 Drehgriff: Winkel nicht zurückgerechnet', "e.rot = rotNorm(modus.rot0 + (Math.atan2(ev.clientY - modus.cy, ev.clientX - modus.cx) - modus.w0) * 180 / Math.PI);", "e.rot = modus.rot0 + (Math.atan2(ev.clientY - modus.cy, ev.clientX - modus.cx) - modus.w0) * 180 / Math.PI;", 'zahlen'],
-  ['D08 E3 Schieber «Grösse» beginnt wieder bei 0,15', "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.02);", "ui.rangeGroesse = regler(T.sizeL, 0.15, 3, 0.02);", 'zahlen'],
-  ['D09 E3 Schieber «Grösse» mit Schritt 0,05', "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.02);", "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.05);", 'zahlen'],
+  ['D08 E3 Schieber «Grösse» beginnt wieder bei 0,15', "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.01);", "ui.rangeGroesse = regler(T.sizeL, 0.15, 3, 0.01);", 'zahlen'],
+  ['D09 E3 Schieber «Grösse» mit Schritt 0,05', "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.01);", "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.05);", 'zahlen'],
+  ['D0A BE-3 Schieber «Grösse» wieder mit Schritt 0,02 (0,35, 0,55 und 1,5 liegen nicht im Raster)', "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.01);", "ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.02);", 'zahlen'],
   // E4 Fehlertexte, kaputte Bilddatei
   ['D10 E4 eigene Meldungen des Editors gehen nicht durch', "if (eigenerText(roh)) return roh;", "", 'fehlertexte'],
   ['D11 E4 Text des Shops wird nicht gekürzt', "if (err && err.shopText) return roh.length > 120 ? roh.slice(0, 119) + '…' : roh;", "if (err && err.shopText) return roh;", 'fehlertexte'],
@@ -372,9 +373,9 @@ const MUTANTEN = [
   ['D19 E4 kaputte Bilddatei: die Ebene bleibt', "ebeneAusPlatzierungEntfernen(e.id);\n          meldung(T.badImg, 'err');", "meldung(T.badImg, 'err');", 'fehlertexte'],
   ['D20 E4 kaputte Bilddatei: keine Meldung', "meldung(T.badImg, 'err');", "", 'fehlertexte'],
   ['D21 E4 kaputte Bilddatei: der Upload-Rückruf läuft trotzdem', "if (e.kaputt) return;", "", 'fehlertexte'],
-  ['D22 E4 Upload-Fehler zeigt den Rohtext', "meldung(T.upErr + fehlerText(err, err.gross ? T.tooBig : T.upFallback), 'err'); return; }", "meldung(T.upErr + (err.message || T.upFallback), 'err'); return; }", 'fehlertexte'],
+  ['D22 E4 Upload-Fehler zeigt den Rohtext', "meldung(T.upErr + fehlerText(err, err.pixel ? T.tooManyPx : err.gross ? T.tooBig : T.upFallback), 'err'); return; }", "meldung(T.upErr + (err.message || T.upFallback), 'err'); return; }", 'fehlertexte'],
   ['D23 E4 Fehler beim Warenkorb zeigt den Rohtext', "reviewAufraeumen(false, '');\n      meldung(T.addErr + fehlerText(err, T.genErr), 'err');\n      varianteGeprueft();", "reviewAufraeumen(false, '');\n      meldung(T.addErr + (err && err.message || T.genErr), 'err');\n      varianteGeprueft();", 'fehlertexte'],
-  ['D24 E4 Fehler beim Aufbau der Prüfung zeigt den Rohtext', "reviewAufraeumen(false, '');\n        meldung(T.addErr + fehlerText(err, T.genErr), 'err');", "reviewAufraeumen(false, '');\n        meldung(T.addErr + (err && err.message || T.genErr), 'err');", 'fehlertexte'],
+  ['D24 E4 Fehler beim Aufbau der Prüfung zeigt den Rohtext', "reviewAufraeumen(false, '');\n        abbruch(T.addErr + fehlerText(err, T.genErr));", "reviewAufraeumen(false, '');\n        abbruch(T.addErr + (err && err.message || T.genErr));", 'fehlertexte'],
   ['D25 E4 gekürzter Text des Shops ohne Auslassungszeichen', "roh.slice(0, 119) + '…'", "roh.slice(0, 120)", 'fehlertexte'],
   ['D26 E1 Ebenen anderer Platzierungen als der aktiven werden nicht entfernt (Rückseite bleibt)', "if (pid === st.aktiv) { ebeneEntfernen(id); return true; }", "if (pid === st.aktiv) { ebeneEntfernen(id); return true; }\n      if (pid !== st.aktiv) return false;", 'leere'],
   // E1 leere Textebene
@@ -384,10 +385,10 @@ const MUTANTEN = [
   ['D33 E1 jede Ebene ohne Text gilt als leer (auch Fotos)', "if (e.type === 'text' && !(e.text && e.text.trim())) leer.push(e.id); else rest++;", "if (!(e.text && e.text.trim())) leer.push(e.id); else rest++;", 'leere'],
   ['D34 E1 leere Ebenen werden gezählt, aber nicht entfernt', "leer.forEach(ebeneAusPlatzierungEntfernen);", "", 'leere'],
   ['D35 E1 die Aufräumung entfällt', "var leerEntfernt = leereTextebenenEntfernen();", "var leerEntfernt = 0;", 'leere'],
-  ['D36 E1 kein Hinweis auf die entfernte Ebene', "if (leerEntfernt) meldung(leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone, 'ok'); else meldung('');", "meldung('');", 'leere'],
+  ['D36 E1 kein Hinweis auf die entfernte Ebene', "if (leerHinweis) meldung(leerHinweis, 'ok'); else meldung('');", "meldung('');", 'leere'],
   ['D37 E1 Hinweis immer in der Einzahl', "leerEntfernt > 1 ? T.emptyGoneMany", "leerEntfernt > 5 ? T.emptyGoneMany", 'leere'],
   ['D38 E1 die Zahl der entfernten Ebenen geht verloren', "leer.forEach(ebeneAusPlatzierungEntfernen);\n      return leer.length;", "leer.forEach(ebeneAusPlatzierungEntfernen);\n      return 0;", 'leere'],
-  ['D39 E1 Entfernen einer Ebene einer anderen Platzierung lässt den Reiter markiert', "tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();\n      return true;", "aufpreisSummeAktualisieren(); speichern();\n      return true;", 'leere'],
+  ['D39 E1 Entfernen einer Ebene einer anderen Platzierung lässt den Reiter markiert', "tabsAktualisieren(); aufpreisSummeAktualisieren(); formularSynchronisieren(); speichern();", "aufpreisSummeAktualisieren(); formularSynchronisieren(); speichern();", 'leere'],
   ['D3A E1 Entfernen in der aktiven Platzierung geht am Knoten vorbei', "if (pid === st.aktiv) { ebeneEntfernen(id); return true; }", "if (false) { ebeneEntfernen(id); return true; }", 'leere'],
   // E5 ausverkaufte Ausführung
   ['D40 E5 ausverkauft gilt bei true statt bei false', "lager.byId[String(st.shopVariante)] === false", "lager.byId[String(st.shopVariante)] === true", 'ausverkauft'],
@@ -395,13 +396,13 @@ const MUTANTEN = [
   ['D42 E5 Anfrage auch ohne Handle in der Adresse', "if (legacy || !h || lager.laeuft || typeof fetch !== 'function') return;", "if (legacy || lager.laeuft || typeof fetch !== 'function') return;", 'ausverkauft'],
   ['D43 E5 Lagerstand wird bei jedem Variantenwechsel neu gelesen', "if (Date.now() - lager.stand > 120000) verfuegbarkeitLaden();", "if (Date.now() - lager.stand > 120) verfuegbarkeitLaden();", 'ausverkauft'],
   ['D44 E5 Lagerstand wird nie neu gelesen', "if (Date.now() - lager.stand > 120000) verfuegbarkeitLaden();", "", 'ausverkauft'],
-  ['D45 E5 nach einem Fehler des Abrufs wird bei jedem Wechsel neu gefragt', ".catch(function () { lager.laeuft = false; lager.stand = Date.now(); });", ".catch(function () { lager.laeuft = false; });", 'ausverkauft'],
+  ['D45 E5 nach einem Fehler des Abrufs wird bei jedem Wechsel neu gefragt', ".catch(function () { lager.laeuft = false; lager.stand = Date.now(); try {", ".catch(function () { lager.laeuft = false; try {", 'ausverkauft'],
   ['D46 E5 nach einer Antwort wird bei jedem Wechsel neu gefragt', "lager.laeuft = false; lager.stand = Date.now();\n          if (!j ||", "lager.laeuft = false;\n          if (!j ||", 'ausverkauft'],
   ['D47 E5 Kaufknopf sieht bei ausverkauft nicht gesperrt aus', "if (text || !ausfuehrungOk() || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", "if (text || !ausfuehrungOk()) ui.cta.setAttribute('aria-disabled', 'true');", 'ausverkauft'],
   ['D48 E5 Kaufknopf sieht bei fehlender Kombination nicht gesperrt aus', "if (text || !ausfuehrungOk() || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", "if (text || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", 'ausverkauft'],
   ['D49 E5 kein Hinweis bei ausverkauft', "else if (ausverkauft()) text = T.soldOut;", "", 'ausverkauft'],
-  ['D50 E5 der Klick auf den gesperrten Knopf startet trotzdem die Prüfung', "if (ausverkauft()) { meldung(T.soldOut, 'err'); return; }", "", 'ausverkauft'],
-  ['D51 E5 späte Antwort aktualisiert Hinweis und Knopf nicht', "lager.byId = karteVerf;\n          modellHinweisAktualisieren(); qualitaetPruefen();", "lager.byId = karteVerf;", 'ausverkauft'],
+  ['D50 E5 der Klick auf den gesperrten Knopf startet trotzdem die Prüfung', "if (ausverkauft()) { if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut); return; }", "", 'ausverkauft'],
+  ['D51 E5 späte Antwort aktualisiert Hinweis und Knopf nicht', "lager.byId = k;\n      modellHinweisAktualisieren(); qualitaetPruefen();", "lager.byId = k;", 'ausverkauft'],
   ['D52 E5 der Lagerstand wird nie gelesen', "verfuegbarkeitLaden();   // 6.4.2 (E5): asynchron; bis die Antwort da ist, gilt «unbekannt = erlauben»", "", 'ausverkauft'],
   ['D53 E5 Varianten ohne available gelten als ausverkauft', "if (v && v.id != null && typeof v.available === 'boolean') karteVerf[String(v.id)] = v.available;", "if (v && v.id != null) karteVerf[String(v.id)] = !!v.available;", 'ausverkauft'],
   ['D54 E5 englischer Hinweis verkürzt', "soldOut: 'This option is sold out. Please pick another one.'", "soldOut: 'Sold out.'", 'ausverkauft'],
@@ -420,7 +421,7 @@ const MUTANTEN = [
   ['D70 E7 keine Wartezeit auf die Vorschaudaten', "var VORSCHAU_WARTE_MS = 500;", "var VORSCHAU_WARTE_MS = 0;", 'layoutsprung'],
   ['D71 E7 Wartezeit 5 s', "var VORSCHAU_WARTE_MS = 500;", "var VORSCHAU_WARTE_MS = 5000;", 'layoutsprung'],
   ['D72 E7 der Bau wartet immer die volle Zeit', "return Promise.race([vorschauVersprechen, new Promise(function (ok) { setTimeout(ok, VORSCHAU_WARTE_MS); })]).then(function () { return karte; });", "return new Promise(function (ok) { setTimeout(ok, VORSCHAU_WARTE_MS); }).then(function () { return karte; });", 'layoutsprung'],
-  ['D73 E7 rechtzeitige Daten werden nicht gesetzt', "if (vorschauRoh !== undefined) { if (vorschauRoh) editor.vorschauDatenSetzen(vorschauRoh); }", "if (vorschauRoh !== undefined) { }", 'layoutsprung'],
+  ['D73 E7 rechtzeitige Daten werden nicht gesetzt', "if (vorschauRoh !== undefined) { if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); }", "if (vorschauRoh !== undefined) { if (false) { try { editor.vorschauDatenSetzen(vorschauRoh); }", 'layoutsprung'],
   ['D74 E7 verspätete Daten werden nicht mehr gesetzt', "          else vorschauVersprechen.then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });", "", 'layoutsprung'],
   ['D75 E7 der Bau wartet nie auf eine Quelle ohne Daten (Zeitgeber auch ohne Quelle)', "var vorschauVersprechen = hatVorschauQuelle(container) ? vorschauLesen(container) : Promise.resolve(null);", "var vorschauVersprechen = new Promise(function () { });", 'layoutsprung'],
   // E2 Griffe
@@ -431,9 +432,62 @@ const MUTANTEN = [
   ['D84 E2 Griffe: kein Versatz nach aussen in der Breite', "var ox = g[1] * (bw - lw) / 2, oy = g[1] * (bh - lh) / 2;", "var ox = 0, oy = g[1] * (bh - lh) / 2;", 'griffe'],
   ['D85 E2 Griffe: kein Versatz nach aussen in der Höhe', "var ox = g[1] * (bw - lw) / 2, oy = g[1] * (bh - lh) / 2;", "var ox = g[1] * (bw - lw) / 2, oy = 0;", 'griffe'],
   ['D86 E2 Griffe: Verschiebung in x falsch zurückgerechnet', "var tx = ox + dx * co + dy * si,", "var tx = ox + dx * co - dy * si,", 'griffe'],
-  ['D87 E2 Griffe: Abstand zur Bühnenkante 0', "var GRIFF_RAND = 17;", "var GRIFF_RAND = 0;", 'griffe'],
+  ['D87 E4 Foto-Upload zu gross: allgemeiner Satz statt «Datei zu gross» (RO-6; vorher eine Dublette von B67)', "err.pixel ? T.tooManyPx : err.gross ? T.tooBig : T.upFallback)", "err.pixel ? T.tooManyPx : err.gross ? T.upFallback : T.upFallback)", 'fehlertexte'],
   ['D88 E2 Mindestschicht 32 px statt 64', "var CHROME_MIN = 64;", "var CHROME_MIN = 32;", 'griffe'],
   ['D89 E2 flache Bühne: Mindestschicht für die Höhe nach der Breite gerechnet', "Math.max(CHROME_MIN, k.root.offsetHeight), k.root.offsetWidth, k.root.offsetHeight);", "Math.max(CHROME_MIN, k.root.offsetWidth), k.root.offsetWidth, k.root.offsetHeight);", 'griffe'],
+  // ── Korrekturrunde vom 11.11.2026 (Abnahme 6.4.2: 21 Funde): RO-6 (Testlücken des Deltas) und je Fix eigene Mutanten (DA BE-1, DB KA-01/KA-02, DC KA-03/KA-04/RO-5, DD KA-05/BE-2, DE RO-1 bis RO-3, DF RO-4/BE-4) ──
+  // Gleichwertig, darum nicht in der Liste (RO-6 (d), Abnahme 11.11.): «if (!fokus.length) return;» im Fokus-Wächter (solange der Prüfdialog offen ist, gibt es immer «Zurück» und die Checkbox); reviewAenderung() im Zweig
+  // der anderen Platzierung von ebeneAusPlatzierungEntfernen (der einzige Aufrufer vor der Prüfung ist reviewStarten, dort gibt es noch keine Prüfung). KA-01: die Zeile «if (ausverkauft()) { reviewAufraeumen(true, T.soldOut);
+  // return; }» in reviewBestaetigen ist gleichwertig, solange lagerSetzen einen offenen oder entstehenden Dialog schliesst (dann gilt r !== review und «Bestätigen» bricht mit reviewChanged ab); sie bleibt als zweite Sicherung.
+  ['D90 E4 englischer Text zur kaputten Datei verkürzt', "badImg: 'This file cannot be opened. Please choose another image (PNG, JPG or WebP).'", "badImg: 'Bad.'", 'fehlertexte'],
+  ['D91 E4 englischer Standardsatz verkürzt', "genErr: 'That did not work. Please try again.'", "genErr: 'Err.'", 'fehlertexte'],
+  ['D92 E4 englischer Satz zum Foto-Upload verkürzt', "upFallback: 'The photo could not be uploaded. Please try again.'", "upFallback: 'Up.'", 'fehlertexte'],
+  ['D93 E1 englischer Hinweis in der Mehrzahl verkürzt', "emptyGoneMany: 'Empty text layers removed.'", "emptyGoneMany: 'Gone.'", 'leere'],
+  ['D94 E5 Shopify.routes.root wird übergangen (Seiten unter /fr/)', "var wurzelPfad = (window.Shopify && Shopify.routes && typeof Shopify.routes.root === 'string' && Shopify.routes.root) || '/';", "var wurzelPfad = '/';", 'ausverkauft'],
+  ['D95 E7 beschädigte Pflichtkarte wartet auf die Vorschaudaten (Kaufknöpfe 500 ms ungesperrt)', "      if (!karte) return null;\n      if (vorschauRoh !== undefined) return karte;", "      if (vorschauRoh !== undefined) return karte;", 'vorschau-fehlergrenze'],
+  ['D96 E5 Handle mit Sonderzeichen wird doppelt kodiert (® in der Adresse)', "return m ? decodeURIComponent(m[1]) : '';", "return m ? m[1] : '';", 'ausverkauft'],
+  // BE-1: ein an die Bühnenkante geklemmter Knopf lag über der Mitte der Ebene (Tipp auf die Mitte löschte) oder auf dem anderen Knopf
+  ['DA0 BE-1 keine Mindestluft zur Mitte der Ebene', "var GRIFF_LUFT = 22;", "var GRIFF_LUFT = 0;", 'griffe'],
+  ['DA1 BE-1 Tippfläche nicht eingerechnet (nur der Knopfmittelpunkt zählt)', "var TIPP_HALB = 22;", "var TIPP_HALB = 0;", 'eckzone'],
+  ['DA2 BE-1 der andere Knopf zählt nicht als belegt', "belegt = [lagen[1 - i].qx, lagen[1 - i].qy];", "belegt = null;", 'eckzone'],
+  // DA3 «das Kreuz meidet die geklemmte statt der endgültigen Lage des Griffs» (Zeile «L.qx = qx; L.qy = qy;» entfernt) ist gleichwertig für alle Prüfkriterien: Rastersuche 11.11. (4 Bühnen × PC/Handy × 3 Texte
+  // × 12 Drehungen × 15 × 15 Lagen = 64 800 Lagen): 200 Lagen (alle auf dem Stoffbeutel) ergeben eine andere, ebenfalls freie Lage des Kreuzes, in keiner der beiden Fassungen überlappen sich die Tippflächen.
+  ['DA4 BE-1 Ausweichlage ausserhalb der Bühne erlaubt', "if (c[0] < x0 - 0.01 || c[0] > x1 + 0.01 || c[1] < y0 - 0.01 || c[1] > y1 + 0.01 || !frei(c[0], c[1])) return;", "if (!frei(c[0], c[1])) return;", 'griffe'],
+  ['DA5 BE-1 auch ungeklemmte Knöpfe rücken weg (6.4.1-Lagen ändern sich)', "if ((qx !== px || qy !== py) && !frei(qx, qy)) {", "if (!frei(qx, qy)) {", 'griffe'],
+  ['DA6 BE-1 der sichtbare Teil einer angeschnittenen Ebene zählt nicht', "if (vr > vl && vb > vt && (!punkte.length ||", "if (false && vr > vl && vb > vt && (!punkte.length ||", 'eckzone'],
+  ['DA7 BE-1 Druckfläche beschneidet in «Bearbeiten» nicht', "var clip = ui.stage.getAttribute('data-ansicht') === 'bearbeiten' ? ui.host.getBoundingClientRect() : s;", "var clip = s;", 'eckzone'],
+  ['DA8 BE-1 kein Ausweichen auf die Lage neben dem anderen Knopf', "if (belegt) kand.push([belegt[0] - 2 * TIPP_HALB, qy],", "if (false) kand.push([belegt[0] - 2 * TIPP_HALB, qy],", 'eckzone'],
+  // KA-01: späte Lagerantwort bei offenem oder entstehendem Prüfdialog; KA-02: Neu-Lesen beim Klick, unbrauchbare Antwort heisst «unbekannt», Meldung «ausverkauft» verschwindet, wenn sie nicht mehr gilt
+  ['DB0 KA-01 späte Antwort «ausverkauft» schliesst den Prüfdialog nicht', "if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, T.soldOut); return; }", "", 'ausverkauft'],
+  ['DB1 KA-01 nur ein offener Dialog wird geschlossen, nicht einer im Aufbau', "if (ausverkauft() && (reviewBaut || review) && !eingefroren)", "if (ausverkauft() && review && !eingefroren)", 'ausverkauft'],
+  ['DB2 KA-02 der Klick auf die Sperre liest den Lagerstand nie neu', "if (ausverkauft()) { if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut); return; }", "if (ausverkauft()) { abbruch(T.soldOut); return; }", 'ausverkauft'],
+  ['DB3 KA-02 der Klick auf die Sperre liest bei jedem Klick neu (keine Drossel)', "if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut);", "verfuegbarkeitLaden(); abbruch(T.soldOut);", 'ausverkauft'],
+  ['DB4 KA-02 unbrauchbare Antwort lässt den alten Lagerstand stehen', "if (!j || !Array.isArray(j.variants)) { lagerSetzen(null); return; }", "if (!j || !Array.isArray(j.variants)) return;", 'ausverkauft'],
+  ['DB5 KA-02 Netzfehler lässt den alten Lagerstand stehen', "try { lagerSetzen(null); } catch (x) { /* Oberfläche nicht bereit */ }", "", 'ausverkauft'],
+  ['DB6 KA-02 nach dem Wechsel auf eine lieferbare Ausführung bleibt «ausverkauft» stehen', "      soldOutMeldungPruefen();   // 6.4.2 (KA-02): nach dem Wechsel", "      // 6.4.2 (KA-02): nach dem Wechsel", 'ausverkauft'],
+  ['DB7 KA-02 nach einem neuen Lagerstand bleibt «ausverkauft» stehen', "{ reviewAufraeumen(true, T.soldOut); return; }\n      soldOutMeldungPruefen();", "{ reviewAufraeumen(true, T.soldOut); return; }", 'ausverkauft'],
+  ['DB8 KA-02 die Meldung «ausverkauft» wird nie gelöscht', "if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) meldung('');", "", 'ausverkauft'],
+  // KA-03/RO-5: Abbruch nach dem Aufräumen nennt die entfernte Ebene, Formularfelder und Entwurf folgen; KA-04: nur die Ablehnung von bildLaden entfernt das Foto
+  ['DC0 KA-03 Abbruch ohne Hinweis auf die entfernte Ebene', "function abbruch(text) { meldung(leerHinweis ? text + ' ' + leerHinweis : text, 'err'); }", "function abbruch(text) { meldung(text, 'err'); }", 'leere'],
+  ['DC1 KA-03 versteckte Formularfelder bleiben nach dem Entfernen auf einer anderen Platzierung alt', "tabsAktualisieren(); aufpreisSummeAktualisieren(); formularSynchronisieren(); speichern();", "tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();", 'leere'],
+  ['DC2 RO-5 Abbruch im Aufbau der Prüfung ohne Hinweis', "reviewAufraeumen(false, '');\n        abbruch(T.addErr + fehlerText(err, T.genErr));", "reviewAufraeumen(false, '');\n        meldung(T.addErr + fehlerText(err, T.genErr), 'err');", 'leere'],
+  ['DC5 KA-04 eine Ausnahme beim Einpassen eines gültigen Fotos entfernt es', ["        }, function () {\n          // 6.4.2 (F1)", "}).catch(function () { /* egal (wie bis 6.4.1) */ });"], ["        }).catch(function () {\n          // 6.4.2 (F1)", "});"], 'fehlertexte'],
+  // KA-05/BE-2: eine Ausnahme beim Setzen der optionalen Vorschaudaten sperrt weder Editor noch Warenkorb
+  ['DD0 KA-05 Ausnahme beim Setzen der Vorschaudaten sperrt den Editor (Fassung vor der Korrektur)', "if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } }", "if (vorschauRoh) editor.vorschauDatenSetzen(vorschauRoh); }", 'vorschau-fehlergrenze'],
+  ['DD1 KA-05 Ausnahme beim Setzen der Vorschaudaten ohne Warnung in der Konsole', "catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); }", "catch (ve) { }", 'vorschau-fehlergrenze'],
+  // RO-1: Verlauf ohne die kaputte Ebene; RO-2: zu viele Pixel; RO-3: die Meldung zur kaputten Datei bleibt
+  ['DE0 RO-1 die kaputte Ebene bleibt im Verlauf (Rückgängig und Wiederholen holen sie zurück)', "          ebeneAusVerlaufStreichen(e.id);   // 6.4.2 (RO-1)", "          // 6.4.2 (RO-1)", 'fehlertexte'],
+  ['DE1 RO-1 gleiche Nachbarstände bleiben (leerer Schritt beim Rückgängig)', "if (!neu.length || stand(neu[neu.length - 1]) !== stand(k)) neu.push(k);", "neu.push(k);", 'fehlertexte'],
+  ['DE5 RO-2 zu viele Pixel ergibt «Datei zu gross (max 10 MB)»', "err.pixel ? T.tooManyPx : err.gross", "err.pixel ? T.tooBig : err.gross", 'fehlertexte'],
+  ['DE6 RO-2 die Pixelgrenze wird nicht erkannt', "err.pixel = /megapixel|dimension|pixels/i.test(detail || '');", "err.pixel = false;", 'fehlertexte'],
+  ['DE7 RO-2 englischer Satz zu vielen Pixeln verkürzt', "tooManyPx: 'The photo has too many pixels to upload. Please use a smaller version.',", "tooManyPx: 'Pixels.',", 'fehlertexte'],
+  ['DE8 RO-3 der fertige Upload eines anderen Fotos löscht die Meldung zur kaputten Datei', "e.printUrl = url; if (ui.status.textContent !== T.badImg) meldung(''); geaendert();", "e.printUrl = url; meldung(''); geaendert();", 'fehlertexte'],
+  // RO-4: Ursache eines Upload-Fehlers in der Konsole, Netzfehler in der Ursache; BE-4: Beschriftung unter dem Löschkreuz
+  ['DF0 RO-4 Netzfehler in der Ursache ergibt keine Meldung zur Verbindung', "if (det && NETZ_FEHLER.test(det)) return T.netErr;", "", 'fehlertexte'],
+  ['DF1 RO-4 die Ursache geht nicht in die Konsole', "var log = det && det !== roh ? (roh ? roh + ' | ' : '') + det : roh;", "var log = roh;", 'fehlertexte'],
+  ['DF2 RO-4 gleiche Meldung und Ursache stehen doppelt in der Konsole', "var log = det && det !== roh ?", "var log = det ?", 'fehlertexte'],
+  ['DF3 RO-4 Konsolenzeile ungekürzt', "if (log) warnung('Fehler: ' + log.slice(0, 300));", "if (log) warnung('Fehler: ' + log);", 'fehlertexte'],
+  ['DF5 BE-4 Beschriftung wieder über dem Löschkreuz (z-index 660)', "'.lsp6-tag{position:absolute;z-index:590;", "'.lsp6-tag{position:absolute;z-index:660;", 'eckzone'],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
@@ -490,8 +544,20 @@ if (nur === '--muster') {
   for (const [name, alt] of MUTANTEN) { const c = zaehle(original, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
   for (const [name, alt] of KB_MUTANTEN) { const c = zaehle(originalKb, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
   for (const [name, alt] of VB_MUTANTEN) { const c = zaehle(originalVb, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
-  console.log(`${MUTANTEN.length + KB_MUTANTEN.length + VB_MUTANTEN.length} Muster geprüft, ${schlecht} nicht anwendbar`);
-  process.exit(schlecht ? 1 : 0);
+  // RO-6 (Abnahme 11.11.): keine zwei Einträge mit demselben Paar (Suchmuster, Ersatz), sonst zählt die Gesamtzahl einen Mutanten doppelt (so war D87 = B67)
+  let doppelt = 0;
+  for (const liste of [MUTANTEN, KB_MUTANTEN, VB_MUTANTEN]) {
+    const gesehen = new Map();
+    for (const [name, alt, neu] of liste) {
+      const k = JSON.stringify([[].concat(alt), [].concat(neu)]);
+      if (gesehen.has(k)) { doppelt++; console.log(`=  ${name}: gleiches Paar wie ${gesehen.get(k)}`); } else gesehen.set(k, name);
+    }
+  }
+  const namen = [...MUTANTEN, ...KB_MUTANTEN, ...VB_MUTANTEN].map(([n]) => n.split(' ')[0]);
+  const namenDoppelt = namen.filter((n, i) => namen.indexOf(n) !== i);
+  if (namenDoppelt.length) console.log(`=  Kennung mehrfach vergeben: ${namenDoppelt.join(', ')}`);
+  console.log(`${MUTANTEN.length + KB_MUTANTEN.length + VB_MUTANTEN.length} Muster geprüft, ${schlecht} nicht anwendbar, ${doppelt} Dubletten, ${namenDoppelt.length} doppelte Kennungen`);
+  process.exit(schlecht || doppelt || namenDoppelt.length ? 1 : 0);
 }
 
 const ordner = mkdtempSync(join(tmpdir(), 'v6-mutation-'));
@@ -527,7 +593,7 @@ if (!process.env.V6_OHNE_AUSGANGSLAGE) {
   const stufen = [['unit_test.mjs', []]];
   if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']], ['v641_test.mjs', ['kern']]);
   // v642_test.mjs: nur wenn Mutanten des Deltas (D) laufen und in zwei Hälften (jede unter dem Zeitlimit von 300 s)
-  if (gewaehlt.some((a) => /^D/.test(a.name))) stufen.push(['v642_test.mjs', ['leere']], ['v642_test.mjs', ['zahlen']], ['v642_test.mjs', ['fehlertexte']], ['v642_test.mjs', ['griffe']], ['v642_test.mjs', ['ausverkauft']], ['v642_test.mjs', ['esc']], ['v642_test.mjs', ['layoutsprung']], ['v642_test.mjs', ['kaufvergleich']]);
+  if (gewaehlt.some((a) => /^D/.test(a.name))) stufen.push(['v642_test.mjs', ['leere']], ['v642_test.mjs', ['zahlen']], ['v642_test.mjs', ['fehlertexte']], ['v642_test.mjs', ['griffe']], ['v642_test.mjs', ['eckzone']], ['v642_test.mjs', ['ausverkauft']], ['v642_test.mjs', ['esc']], ['v642_test.mjs', ['layoutsprung']], ['v642_test.mjs', ['vorschau-fehlergrenze']], ['v642_test.mjs', ['kaufvergleich']]);
   for (const [datei, args] of stufen) {
     const r = await lauf(datei, args, {});
     if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
@@ -568,7 +634,7 @@ async function arbeiter() {
       // C (6.4.1) zuerst bei den Mutanten des Deltas; bei allen anderen als letzte Stufe (zusätzliche Deckung)
       // D (6.4.2): zuerst das Szenario von v642_test.mjs, das der Mutant treffen soll, danach die übrigen Szenarien einzeln (jedes für sich unter dem Zeitlimit), zuletzt die alten Stufen
       const D = (s) => ['v642_test:' + s, 'v642_test.mjs', [s]];
-      const ALLE_D = ['leere', 'zahlen', 'fehlertexte', 'griffe', 'ausverkauft', 'esc', 'layoutsprung', 'kaufvergleich'];
+      const ALLE_D = ['leere', 'zahlen', 'fehlertexte', 'griffe', 'eckzone', 'ausverkauft', 'esc', 'layoutsprung', 'vorschau-fehlergrenze', 'kaufvergleich'];   // 'ausverkauft' umfasst 'ausverkauft-adresse' (Anfang des Namens)
       const folge = /^D/.test(a.name) ? [U, D(a.ziel), ...ALLE_D.filter((s) => s !== a.ziel).map(D), BT, E, V, C]
         : /^C/.test(a.name) ? [U, C, BT, E, V] : /^B/.test(a.name) ? [U, BT, E, V, C] : /^W/.test(a.name) ? [U, V, E, BT, C] : [U, E, V, BT, C];
       for (const [name, f, args] of folge) {

@@ -9,6 +9,11 @@
  *   - E5 Eine ausverkaufte Ausführung (und eine Kombination, die es nicht gibt) sperrt den Kaufknopf sichtbar und vor jedem Upload (Verfügbarkeit aus /products/<handle>.js; unbekannt heisst erlauben).
  *   - E6 Esc schliesst die Dialoge auch nach einem Klick auf Text oder Bild darin; die Tab-Falle hält den Fokus im Prüfdialog.
  *   - E7 Die Vorschaudaten werden parallel zur Karte geholt (höchstens 500 ms Wartezeit): kein Layoutsprung mehr beim späten Eintreffen.
+ *   - Korrekturrunde vom 11.11.2026 (Abnahme mit drei Gegenlesern, vor dem Rollout): ein an die Bühnenkante geklemmter Knopf weicht der Ebenenmitte und dem anderen Knopf aus (BE-1); die Beschriftung der Druckfläche
+ *     liegt unter der gewählten Ebene (BE-4); Schieber «Grösse» in Schritten von 0,01 (BE-3); der Hinweis auf entfernte leere Ebenen steht auch bei einem Abbruch der Prüfung (KA-03, RO-5); ein veralteter Lagerstand
+ *     sperrt nicht weiter (KA-02), eine erst nach dem Klick eintreffende Antwort «ausverkauft» schliesst den Prüfdialog bzw. verhindert «Bestätigen» (KA-01, die einzige Änderung am Kaufweg: dort gibt es jetzt
+ *     keinen Upload und keine Warenkorb-Anfrage mehr, 6.4.1 scheiterte im Warenkorb); Fehlertexte bei Pixelgrenze (RO-2) und Netzabbruch der Druckdatei (RO-4); die Meldung zur kaputten Datei bleibt (RO-3) und die
+ *     Ebene kommt über Rückgängig nicht zurück (RO-1); Ausnahmen beim Einpassen eines Fotos (KA-04) und beim frühen Setzen der Vorschaudaten (KA-05, BE-2) wirken wie bis 6.4.1.
  *   NICHT in 6.4.2 (E8, braucht ein Ja des Besitzers, es ändert die Druckdatei in einem Ablauf): Einpassung eines Fotos in der Ansicht «Vorschau», Stickerei ohne Vorschau.
  *
  * NEU in 6.4.1 (Delta zu 6.4.0; Druckdatei, _pod_karte, _vorschau und Eigenschaften sind sonst byte-gleich):
@@ -240,6 +245,7 @@
       netErr: 'Verbindung unterbrochen. Bitte erneut versuchen.',
       genErr: 'Das hat nicht geklappt. Bitte erneut versuchen.',
       upFallback: 'Das Foto konnte nicht hochgeladen werden. Bitte erneut versuchen.',
+      tooManyPx: 'Das Foto hat zu viele Pixel für den Upload. Bitte nimm eine kleinere Fassung.',
       soldOut: 'Diese Ausführung ist ausverkauft. Bitte wähle eine andere.',
     },
     en: {
@@ -319,6 +325,7 @@
       netErr: 'Connection lost. Please try again.',
       genErr: 'That did not work. Please try again.',
       upFallback: 'The photo could not be uploaded. Please try again.',
+      tooManyPx: 'The photo has too many pixels to upload. Please use a smaller version.',
       soldOut: 'This option is sold out. Please pick another one.',
     },
   };
@@ -611,12 +618,14 @@
     err.detail = detail || '';
     err.status = status || 0;
     err.gross = status === 413 || /size|large|megapixel|too big|dimension|pixels|zu gross/i.test(detail || '');
+    err.pixel = /megapixel|dimension|pixels/i.test(detail || '');   // 6.4.2 (RO-2): abgelehnt wegen der Pixelzahl, nicht wegen der Bytes (ein Foto über 10 MB weist der Editor schon vorher ab)
     return err;
   }
 
   /** 6.4.2 (F2): Text für die Statuszeile bei einem Fehler. Durch gehen nur die eigenen Fehlermeldungen des Editors (FEHLER_SCHLUESSEL) und der Text des Shops zur Warenkorb-Antwort (`err.shopText`, auf 120 Zeichen
    *  gekürzt, ohne HTML); Netzfehler des Browsers («Failed to fetch», «Load failed», «NetworkError …») ergeben die Meldung zur Verbindung; alles andere (JSON-Fehler einer HTML-Fehlerseite, Kürzel wie «img» oder
-   *  «failed», englische Servertexte) ergibt den deutschen Standardsatz `vorgabe`. Der Rohtext geht zusätzlich in die Konsole. */
+   *  «failed», englische Servertexte) ergibt den deutschen Standardsatz `vorgabe`. Der Rohtext geht zusätzlich in die Konsole.
+   *  RO-4: bei Uploads ist `err.message` die eigene Meldung und die Ursache steht in `err.detail` (Text des Browsers oder Servers): auch sie geht in die Konsole, und ein Netzfehler dort ergibt die Meldung zur Verbindung. */
   var EIGENE_TEXTE = null;
   var NETZ_FEHLER = /failed to fetch|load failed|networkerror|network request failed|network connection was lost|internet connection appears to be offline|err_internet|err_network|err_connection/i;
   var FEHLER_SCHLUESSEL = ['empty', 'printErr', 'tooHeavy', 'reviewChanged', 'tooMany', 'upTimeout'];   // die Meldungen, die der Editor selbst als Fehler wirft (new Error(T.…)) und die er so sagen will
@@ -630,7 +639,10 @@
   function fehlerText(err, vorgabe) {
     var roh = err && err.message != null ? String(err.message) : (typeof err === 'string' ? err : '');
     roh = roh.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-    if (roh) warnung('Fehler: ' + roh.slice(0, 300));
+    var det = err && err.detail ? String(err.detail).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : '';
+    var log = det && det !== roh ? (roh ? roh + ' | ' : '') + det : roh;
+    if (log) warnung('Fehler: ' + log.slice(0, 300));
+    if (det && NETZ_FEHLER.test(det)) return T.netErr;
     if (!roh) return vorgabe;
     if (eigenerText(roh)) return roh;
     if (err && err.shopText) return roh.length > 120 ? roh.slice(0, 119) + '…' : roh;
@@ -1079,7 +1091,7 @@
     '.lsp6-host{position:absolute;pointer-events:none}',
     '.lsp6-veil{position:absolute;background:rgba(255,255,255,.5);pointer-events:none;z-index:500}',
     '.lsp6-frame{position:absolute;border:2px dashed var(--golddk);box-shadow:0 0 0 1px rgba(255,255,255,.9);pointer-events:none;z-index:650}',
-    '.lsp6-tag{position:absolute;z-index:660;display:flex;padding:2px 7px;border-radius:6px;background:rgba(22,21,26,.85);color:#fff;font-size:11px;font-weight:700;pointer-events:none;white-space:nowrap}',
+    '.lsp6-tag{position:absolute;z-index:590;display:flex;padding:2px 7px;border-radius:6px;background:rgba(22,21,26,.85);color:#fff;font-size:11px;font-weight:700;pointer-events:none;white-space:nowrap}',   // 6.4.2 (BE-4): unter der gewählten Ebene (600) und ihren Knöpfen, über dem Vorhang (500); bis 6.4.1 660 (das an die Kante geklemmte Löschkreuz lag zu 63 % dahinter). Der Rahmen (650) bleibt über allem
     // 6.4.1: die Beschriftung der Druckfläche ragt nicht mehr über den Rahmen (ganzes Produkt, kleine Fläche): erst kürzt sich das Wort «Druckfläche», dann die Zahlen (max-width setzt buehneAufbauen)
     '.lsp6-tag-l{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:pre}.lsp6-tag-z{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}',
     '.lsp6-readout{position:absolute;left:8px;top:8px;z-index:800;padding:4px 8px;border-radius:8px;background:rgba(22,21,26,.85);color:#fff;font-size:12px;font-weight:700;pointer-events:none}',
@@ -1383,13 +1395,24 @@
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
           lager.laeuft = false; lager.stand = Date.now();
-          if (!j || !Array.isArray(j.variants)) return;
+          if (!j || !Array.isArray(j.variants)) { lagerSetzen(null); return; }   // KA-02: eine unbrauchbare Antwort heisst «unbekannt», auch beim Neu-Lesen (sonst bliebe ein altes «ausverkauft» stehen)
           var karteVerf = {};
           j.variants.forEach(function (v) { if (v && v.id != null && typeof v.available === 'boolean') karteVerf[String(v.id)] = v.available; });
-          lager.byId = karteVerf;
-          modellHinweisAktualisieren(); qualitaetPruefen();
+          lagerSetzen(karteVerf);
         })
-        .catch(function () { lager.laeuft = false; lager.stand = Date.now(); });
+        .catch(function () { lager.laeuft = false; lager.stand = Date.now(); try { lagerSetzen(null); } catch (x) { /* Oberfläche nicht bereit */ } });
+    }
+    /** 6.4.2 (KA-02, KA-01): Lagerstand übernehmen (null = unbekannt = Kauf erlaubt), Hinweis und Kaufknopf nachziehen. Ist die gewählte Ausführung danach ausverkauft und ein Prüfdialog offen oder im Aufbau
+     *  (die Antwort kam erst nach dem Klick), schliesst er sich, bevor «Bestätigen» etwas hochlädt; nach «Bestätigen» (eingefroren) nicht mehr, dann lehnt der Warenkorb ab wie bis 6.4.1. */
+    function lagerSetzen(k) {
+      lager.byId = k;
+      modellHinweisAktualisieren(); qualitaetPruefen();
+      if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, T.soldOut); return; }
+      soldOutMeldungPruefen();
+    }
+    /** 6.4.2 (KA-02): eine Meldung «ausverkauft» in der Statuszeile löschen, sobald sie nicht mehr gilt (neuer Lagerstand oder andere Ausführung). */
+    function soldOutMeldungPruefen() {
+      if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) meldung('');
     }
     /** true nur, wenn der Shop die gewählte Ausführung ausdrücklich als nicht verfügbar meldet. */
     function ausverkauft() {
@@ -1617,6 +1640,8 @@
     var CHROME_MIN = 64;   // kleinste Seite der Schicht für Griffe in Pixeln (siehe chromeNachziehen)
     var GRIFF_UEBERSTAND = 6;   // Mitte des Griffs liegt so viele Pixel ausserhalb der Ecke der Schicht (CSS: right/bottom -21 px bei 30 px Durchmesser)
     var GRIFF_RAND = 17;        // so nah (Mitte des Griffs) darf er an die Kante der Bühne: Radius 15 px plus 2 px Luft
+    var TIPP_HALB = 22;         // halbe Tippfläche der Knöpfe (CSS ::before, inset -9 px um 26 px)
+    var GRIFF_LUFT = 22;        // so viel Luft bleibt mindestens zwischen der Mitte der Ebene und der Tippfläche eines an die Bühnenkante geklemmten Knopfes (ungeklemmt sind es mindestens 22,6 px); Chromium wählt bei Berührung Ziele bis rund 9 px neben dem Finger (GEMESSEN)
     function chromeNachziehen() {
       var k = st.sel && knoten[st.sel];
       if (ui.chromeRoot.hidden) {
@@ -1649,10 +1674,40 @@
       var mx = r.left + r.width / 2, my = r.top + r.height / 2;
       // bw × bh = Mindestschicht (gewünschte Lage der Griffe), lw × lh = die Grösse, an der sie wirklich hängen (in der Schicht gleich bw × bh; in der Ebene selbst die der Ebene): der Unterschied rückt sie nach aussen
       lw = lw == null ? bw : lw; lh = lh == null ? bh : lh;
-      [[k.handle, 1], [k.del, -1]].forEach(function (g) {
+      var x0 = s.left + GRIFF_RAND, x1 = s.right - GRIFF_RAND, y0 = s.top + GRIFF_RAND, y1 = s.bottom - GRIFF_RAND, belegt = null;
+      // BE-1: ein geklemmter Knopf darf weder über der Mitte der Ebene liegen (ein Tipp auf die Mitte löschte, Ziehen aus der Mitte skalierte auf 3 und drehte) noch auf dem anderen Knopf.
+      // Frei bleiben die Mitte der Ebene, wenn man sie sieht, und die Mitte ihres sichtbaren Teils (Bühne; in «Bearbeiten» beschneidet zusätzlich die Druckfläche): liegt die Mitte auf dem Rand der
+      // Druckfläche oder der Bühne, greift man die Ebene dort, wo man sie sieht (Abnahme 11.11.: sonst löschte ein Tipp auf den sichtbaren Teil). Ist die Ebene ganz sichtbar, ist das nur die Mitte.
+      var clip = ui.stage.getAttribute('data-ansicht') === 'bearbeiten' ? ui.host.getBoundingClientRect() : s;
+      var vl = Math.max(r.left, s.left, clip.left), vr = Math.min(r.right, s.right, clip.right), vt = Math.max(r.top, s.top, clip.top), vb = Math.min(r.bottom, s.bottom, clip.bottom), punkte = [];
+      if (mx >= vl && mx <= vr && my >= vt && my <= vb) punkte.push([mx, my]);
+      if (vr > vl && vb > vt && (!punkte.length || Math.abs((vl + vr) / 2 - mx) > 0.5 || Math.abs((vt + vb) / 2 - my) > 0.5)) punkte.push([(vl + vr) / 2, (vt + vb) / 2]);
+      if (!punkte.length) punkte.push([mx, my]);
+      function luft(P, ax, ay) { return Math.hypot(Math.max(0, Math.abs(P[0] - ax) - TIPP_HALB), Math.max(0, Math.abs(P[1] - ay) - TIPP_HALB)); }   // Abstand des Punktes P zur Tippfläche um (ax|ay)
+      function spalt(d) { var q = Math.max(0, Math.abs(d) - TIPP_HALB); return TIPP_HALB + Math.sqrt(Math.max(0, GRIFF_LUFT * GRIFF_LUFT - q * q)); }   // Abstand zum Punkt entlang einer Kante, ab dem luft() reicht
+      function frei(x, y) { return punkte.every(function (P) { return luft(P, x, y) >= GRIFF_LUFT - 0.01; }) && !(belegt && Math.abs(x - belegt[0]) < 2 * TIPP_HALB && Math.abs(y - belegt[1]) < 2 * TIPP_HALB); }
+      // Erst beide Lagen (an die Kante geklemmt), dann je Knopf ausweichen: der Griff meidet die Lage des Kreuzes, das Kreuz die endgültige des Griffs (Abnahme 11.11.: sonst überlappten die Tippflächen)
+      var lagen = [[k.handle, 1], [k.del, -1]].map(function (g) {
         var lx = g[1] * (bw / 2 + GRIFF_UEBERSTAND), ly = g[1] * (bh / 2 + GRIFF_UEBERSTAND);
         var px = mx + lx * co - ly * si, py = my + lx * si + ly * co;
-        var dx = Math.min(Math.max(px, s.left + GRIFF_RAND), s.right - GRIFF_RAND) - px, dy = Math.min(Math.max(py, s.top + GRIFF_RAND), s.bottom - GRIFF_RAND) - py;
+        return { g: g, px: px, py: py, qx: Math.min(Math.max(px, x0), x1), qy: Math.min(Math.max(py, y0), y1) };
+      });
+      lagen.forEach(function (L, i) {
+        var g = L.g, px = L.px, py = L.py, qx = L.qx, qy = L.qy;
+        belegt = [lagen[1 - i].qx, lagen[1 - i].qy];
+        if ((qx !== px || qy !== py) && !frei(qx, qy)) {   // nur ein geklemmter Knopf rutscht weiter, entlang der Kante auf die nächste freie Lage in der Bühne (sonst bleibt er wie bisher)
+          var kand = [], best = null, bestD = Infinity;
+          punkte.forEach(function (P) { var gx = spalt(qy - P[1]), gy = spalt(qx - P[0]); kand.push([P[0] - gx, qy], [P[0] + gx, qy], [qx, P[1] - gy], [qx, P[1] + gy]); });
+          if (belegt) kand.push([belegt[0] - 2 * TIPP_HALB, qy], [belegt[0] + 2 * TIPP_HALB, qy], [qx, belegt[1] - 2 * TIPP_HALB], [qx, belegt[1] + 2 * TIPP_HALB]);
+          kand.forEach(function (c) {
+            if (c[0] < x0 - 0.01 || c[0] > x1 + 0.01 || c[1] < y0 - 0.01 || c[1] > y1 + 0.01 || !frei(c[0], c[1])) return;
+            var d = Math.hypot(c[0] - qx, c[1] - qy);
+            if (d < bestD) { bestD = d; best = c; }
+          });
+          if (best) { qx = best[0]; qy = best[1]; }
+        }
+        L.qx = qx; L.qy = qy;
+        var dx = qx - px, dy = qy - py;
         var ox = g[1] * (bw - lw) / 2, oy = g[1] * (bh - lh) / 2;   // nach aussen, im Koordinatensystem der gedrehten Ebene
         var tx = ox + dx * co + dy * si, ty = oy + dy * co - dx * si;
         var t = Math.abs(tx) < 0.5 && Math.abs(ty) < 0.5 ? '' : 'translate(' + tx + 'px,' + ty + 'px)';
@@ -2100,7 +2155,7 @@
       reviewAenderung();
       var liste = st.ebenen[pid];
       for (var i = 0; i < liste.length; i++) if (liste[i].id === id) { liste.splice(i, 1); break; }
-      tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();
+      tabsAktualisieren(); aufpreisSummeAktualisieren(); formularSynchronisieren(); speichern();   // KA-03: auch die versteckten Formularfelder und der Entwurf (bis 6.4.2 blieben sie bis zur nächsten Änderung alt, wenn danach die Prüfung abbrach)
       return true;
     }
     /** 6.4.2 (E1, Fund OFF-01): Textebenen ohne Text (leer oder nur Leerzeichen) neben anderem Inhalt vor der Druckprüfung entfernen. Sie zeichnen nichts (Vorschau, Druckdatei) und sperrten bis 6.4.1 den ganzen Kauf
@@ -2246,6 +2301,18 @@
       aufpreisSummeAktualisieren();
       st.sel = null;
       if (merke && ebeneMitId(merke)) waehlen(merke); else felderAktualisieren();
+      verlaufKnoepfe();
+    }
+    /** 6.4.2 (E4, RO-1): eine Ebene aus allen Ständen des Verlaufs streichen (Bilddatei, die sich nicht öffnen lässt) und gleiche Nachbarstände zusammenlegen: Rückgängig und Wiederholen holen sie nie zurück. */
+    function ebeneAusVerlaufStreichen(id) {
+      var neu = [], idx = -1;
+      verlauf.stack.forEach(function (s, i) {
+        var k = {};
+        Object.keys(s).forEach(function (pid) { k[pid] = s[pid].filter(function (e) { return e.id !== id; }); });
+        if (!neu.length || stand(neu[neu.length - 1]) !== stand(k)) neu.push(k);
+        if (i <= verlauf.idx) idx = neu.length - 1;
+      });
+      verlauf.stack = neu; verlauf.idx = idx;
       verlaufKnoepfe();
     }
     function zurueck() { if (verlauf.idx > 0) { verlauf.idx--; wiederherstellen(verlauf.stack[verlauf.idx]); } }
@@ -3202,7 +3269,7 @@
       var r = el('input', { type: 'range', min: String(min), max: String(max), step: String(schritt), 'aria-label': beschriftung });
       return r;
     }
-    ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.02);   // 6.4.2: Minimum wie die Ebene (bis 6.4.1 0,15: unter 0,15 zeigte der Schieber einen falschen Wert und sprang beim Bedienen)
+    ui.rangeGroesse = regler(T.sizeL, 0.06, 3, 0.01);   // 6.4.2: Minimum wie die Ebene (bis 6.4.1 0,15: unter 0,15 zeigte der Schieber einen falschen Wert und sprang beim Bedienen); BE-3: Schritt 0,01, damit Textstart 0,35/0,55, Sticker 0,8 und die Knöpfe 0,6/1/1,5/2/3 im Raster liegen
     ui.pGroesse = el('div', { class: 'lsp6-panel flexp' }, [el('span', { class: 'lsp6-lab', text: T.sizeL }), ui.rangeGroesse]);
     ui.rangeDrehen = regler(T.rotL, -180, 180, 1);
     ui.drehenWert = el('span', { class: 'lsp6-lab', style: 'min-width:44px;text-align:right;font-weight:600', text: '0\xB0' });
@@ -3555,19 +3622,21 @@
           origMass[e.id] = { w: e._origW, h: e._origH };
           einpassen(e, { w: e._origW, h: e._origH });
           if (st.sel === e.id) aufloesungPruefen(e);
-        }).catch(function () {
-          // 6.4.2 (F1): die Datei lässt sich nicht als Bild öffnen (kaputt, umbenannte HEIC/TIFF): die eben angelegte Ebene wieder entfernen, sonst bleibt eine unsichtbare Ebene, und der Kauf bricht mit «img» ab
+        }, function () {
+          // 6.4.2 (F1): die Datei lässt sich nicht als Bild öffnen (kaputt, umbenannte HEIC/TIFF): die eben angelegte Ebene wieder entfernen, sonst bleibt eine unsichtbare Ebene, und der Kauf bricht mit «img» ab.
+          // KA-04: nur die Ablehnung von bildLaden landet hier; eine Ausnahme beim Einpassen eines GÜLTIGEN Fotos entfernt es nicht (catch unten, wie bis 6.4.1).
           e.kaputt = true;
           ebeneAusPlatzierungEntfernen(e.id);
           meldung(T.badImg, 'err');
-        });
+          ebeneAusVerlaufStreichen(e.id);   // 6.4.2 (RO-1): sonst holt «Rückgängig» oder «Wiederholen» die unsichtbare Ebene zurück
+        }).catch(function () { /* egal (wie bis 6.4.1) */ });
         var nr0 = bildVersion[e.id] || 0;
         hochladen(f, false, function (err, url) {
           if (e.kaputt) return;                            // 6.4.2: die Ebene gibt es nicht mehr, die Meldung dazu steht
           if ((bildVersion[e.id] || 0) !== nr0) return;   // inzwischen bearbeitet: die Bearbeitung hat ihren eigenen Upload
           e.uploading = false;
-          if (err) { meldung(T.upErr + fehlerText(err, err.gross ? T.tooBig : T.upFallback), 'err'); return; }
-          e.printUrl = url; meldung(''); geaendert();
+          if (err) { meldung(T.upErr + fehlerText(err, err.pixel ? T.tooManyPx : err.gross ? T.tooBig : T.upFallback), 'err'); return; }   // RO-2: zu viele Pixel ist nicht «zu gross (max 10 MB)»
+          e.printUrl = url; if (ui.status.textContent !== T.badImg) meldung(''); geaendert();   // RO-3: die Meldung zu einer kaputten Datei bleibt stehen, auch wenn der Upload eines anderen Fotos fertig wird
         }, uploadZeit);
       };
       leser.readAsDataURL(f);
@@ -3782,6 +3851,7 @@
     function reviewBestaetigen(r) {
       varianteGeprueft();
       if (r !== review || !r.accept.checked || !reviewStandGueltig(r.stand, aktuellerReviewStand())) { reviewAufraeumen(true, T.reviewChanged); return; }
+      if (ausverkauft()) { reviewAufraeumen(true, T.soldOut); return; }   // 6.4.2 (KA-01): die Lagerantwort kann erst eingetroffen sein, als der Dialog schon offen war oder gebaut wurde: kein Upload, kein Warenkorb
       r.confirm.disabled = true;
       eingefroren = { sv: r.stand.sv, pv: r.stand.pv };
       if (reviewModal && reviewModal.parentNode) reviewModal.parentNode.removeChild(reviewModal);
@@ -3831,22 +3901,25 @@
       if (eingefroren || reviewBaut || review) return;
       varianteGeprueft();
       var leerEntfernt = leereTextebenenEntfernen();   // 6.4.2 (E1): leere Textebenen neben anderem Inhalt sind weg, bevor die Prüfkette läuft
+      var leerHinweis = !leerEntfernt ? '' : leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone;
+      /** 6.4.2 (KA-03, RO-5): bricht die Prüfung nach dem Aufräumen ab, steht der Hinweis auf die entfernte Ebene hinter dem Grund (sonst verschwände sie ohne Erklärung). */
+      function abbruch(text) { meldung(leerHinweis ? text + ' ' + leerHinweis : text, 'err'); }
       var fremde = fremdeMitEbenen();
       var verwendet = verwendetePlatzierungen();
-      if (!verwendet.length && !fremde.length) { meldung(T.empty, 'err'); return; }
-      if (fremde.length) { meldung(fmt(T.orphan, { a: fremde.map(function (id) { return titelVon(platzierung(id)); }).join(', ') }), 'err'); return; }
-      if (verwendet.some(function (p) { return st.ebenen[p.id].some(function (e) { return e.uploading; }); })) { meldung(T.stillUp, 'err'); return; }
-      if (!st.shopVariante) { meldung(T.noVar, 'err'); return; }
-      if (!ausfuehrungOk()) { meldung(T.noMap, 'err'); return; }
-      if (ausverkauft()) { meldung(T.soldOut, 'err'); return; }   // 6.4.2 (E5): vor jedem Upload, nicht erst beim Warenkorb
+      if (!verwendet.length && !fremde.length) { abbruch(T.empty); return; }
+      if (fremde.length) { abbruch(fmt(T.orphan, { a: fremde.map(function (id) { return titelVon(platzierung(id)); }).join(', ') })); return; }
+      if (verwendet.some(function (p) { return st.ebenen[p.id].some(function (e) { return e.uploading; }); })) { abbruch(T.stillUp); return; }
+      if (!st.shopVariante) { abbruch(T.noVar); return; }
+      if (!ausfuehrungOk()) { abbruch(T.noMap); return; }
+      if (ausverkauft()) { if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut); return; }   // 6.4.2 (E5): vor jedem Upload, nicht erst beim Warenkorb; KA-02: der Klick auf die Sperre liest den Lagerstand neu (höchstens alle 15 s), der nächste Klick nach der Antwort kauft
       for (var i = 0; i < verwendet.length; i++) {
         var b = blockiertDurch(verwendet[i].id);
-        if (b.length) { meldung(fmt(T.blocked, { a: titelVon(verwendet[i]), b: b.map(function (q) { return titelVon(platzierung(q)); }).join(', ') }), 'err'); return; }
+        if (b.length) { abbruch(fmt(T.blocked, { a: titelVon(verwendet[i]), b: b.map(function (q) { return titelVon(platzierung(q)); }).join(', ') })); return; }
       }
       var qs = qualitaetSperre();
-      if (qs) { meldung(qs, 'err'); return; }
-      if (podKarteWert(verwendet).length > POD_KARTE_MAX) { meldung(T.tooMany, 'err'); return; }
-      if (!CLOUDINARY_AKTIV) { meldung(T.addErr + T.printErr, 'err'); return; }
+      if (qs) { abbruch(qs); return; }
+      if (podKarteWert(verwendet).length > POD_KARTE_MAX) { abbruch(T.tooMany); return; }
+      if (!CLOUDINARY_AKTIV) { abbruch(T.addErr + T.printErr); return; }
       var gepruefterStand = aktuellerReviewStand();
       var nr = ++reviewNr;
       reviewBaut = true;
@@ -3866,12 +3939,12 @@
         }
         reviewBaut = false;
         review = { nr: nr, stand: gepruefterStand, dateien: dateien, urls: [], produkt: produktName(), variante: ausfuehrungName() };
-        if (leerEntfernt) meldung(leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone, 'ok'); else meldung('');   // 6.4.2 (E1): der Hinweis steht hinter dem Dialog und bleibt nach «Weiter gestalten»
+        if (leerHinweis) meldung(leerHinweis, 'ok'); else meldung('');   // 6.4.2 (E1): der Hinweis steht hinter dem Dialog und bleibt nach «Weiter gestalten»
         reviewModalOeffnen(review);
       }).catch(function (err) {
         if (nr !== reviewNr) return;
         reviewAufraeumen(false, '');
-        meldung(T.addErr + fehlerText(err, T.genErr), 'err');
+        abbruch(T.addErr + fehlerText(err, T.genErr));   // RO-5: auch hier mit dem Hinweis auf entfernte leere Ebenen
       });
     }
     // v6.3: verbindliche Druckpruefung vor jedem Upload und Warenkorb-POST
@@ -3923,6 +3996,7 @@
       if (eingefroren) return;   // während die Druckdateien gebaut werden, gilt die eingefrorene Variante
       if (!variantenLesen()) return;
       if (Date.now() - lager.stand > 120000) verfuegbarkeitLaden();   // 6.4.2 (E5): der Lagerstand ändert sich; höchstens alle zwei Minuten neu lesen
+      soldOutMeldungPruefen();   // 6.4.2 (KA-02): nach dem Wechsel auf eine lieferbare Ausführung steht «ausverkauft» nicht mehr in der Statuszeile
       reviewAenderung();
       if (legacy) { bildSetzen(ui.bg, legacyBild()); return; }
       var modellGewechselt = modellAnpassen();
@@ -4092,7 +4166,7 @@
         // Die Vorschaudaten blockieren den Start nicht (höchstens VORSCHAU_WARTE_MS nach der Karte); ohne sie (oder im v5-Modus) bleibt der Editor, wie er ist.
         // Sind sie schon da (6.4.2), werden sie im selben Durchlauf gesetzt, also vor dem ersten Zeichnen; sonst nachträglich wie bisher.
         if (karte) {
-          if (vorschauRoh !== undefined) { if (vorschauRoh) editor.vorschauDatenSetzen(vorschauRoh); }
+          if (vorschauRoh !== undefined) { if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } }   // KA-05/BE-2: optionale Daten; eine Ausnahme hier sperrt nie Editor und Warenkorb (wie bis 6.4.1)
           else vorschauVersprechen.then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });
         }
       } catch (err) {

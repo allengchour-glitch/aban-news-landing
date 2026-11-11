@@ -65,7 +65,7 @@ export function starteServer() {
     // verzoegerung=ms: Vorschaudaten treffen verspätet ein (Test: Daten kommen erst NACH der ersten Änderung des Kunden)
     const verz = /^\/vorschau\//.test(u.pathname) ? Number(u.searchParams.get('verzoegerung')) || 0 : 0;
     const senden = verz > 0 ? (typ, inhalt, code = 200) => { setTimeout(() => senden0(typ, inhalt, code), verz); } : senden0;
-    if (u.pathname === '/mock.html' || /^\/products\/[^/.]+$/.test(u.pathname)) return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));   // 6.4.2: /products/<handle> ist dieselbe Seite (der Editor liest den Handle aus der Adresse)
+    if (u.pathname === '/mock.html' || /^(\/[a-z]{2}(-[a-z]{2})?)?(\/collections\/[^/]+)?\/products\/[^/.]+$/.test(u.pathname)) return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));   // 6.4.2: /products/<handle> ist dieselbe Seite (der Editor liest den Handle aus der Adresse)
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
     if (u.pathname === '/lspod-designer-v6-ref.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_REF_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
@@ -244,6 +244,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   /** opt.printfulBild / opt.shopifyBild: (url) → { status?, typ, body, cors?: false } oder null (dann gilt die Standard-Attrappe). Zähler: bildAnfragen (Adressen aller Bild-Anfragen an Printful und Shopify Files). */
   const bildAnfragen = [];
   const produktAnfragen = [];   // 6.4.2: Handles der Anfragen an /products/<handle>.js
+  const produktPfade = [];   // dazu der ganze Pfad (Sprachpräfix aus Shopify.routes.root)
   function bildAntwort(route, r) {
     if (r.status && r.status !== 200) return route.fulfill({ status: r.status, contentType: 'text/plain', body: 'nicht da' });
     // cors: false = der Server gibt die Freigabe nur einem FREMDEN Ursprung (Chromium lehnt ein Bild mit crossOrigin=anonymous dann ab). Ganz ohne Kopf ginge es nicht: Playwright ergänzt bei
@@ -310,18 +311,20 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   let query = opt.query || '';
   if (process.env.V6_BEARBEITEN && !/(^|&)bearbeiten=/.test(query)) query += (query ? '&' : '') + 'bearbeiten=' + process.env.V6_BEARBEITEN;
   // 6.4.2: opt.produktJs = (handle) → { status?, body } oder null: Antwort auf /products/<handle>.js (Lagerstand des Shops); null = nicht erreichbar (404 vom Test-Server). opt.seitenPfad: z. B. '/products/test-shirt'
-  produktAnfragen.length = 0;
+  produktAnfragen.length = 0; produktPfade.length = 0;
   await page.route('**/products/*.js', async (route) => {
     const u = new URL(route.request().url());
     const h = decodeURIComponent((/\/products\/([^/]+)\.js$/.exec(u.pathname) || [])[1] || '');
-    produktAnfragen.push(h);
-    const a = opt.produktJs ? opt.produktJs(h) : null;
+    produktAnfragen.push(h); produktPfade.push(u.pathname);
+    const a = opt.produktJs ? opt.produktJs(h, u.pathname) : null;
     if (!a) return route.fulfill({ status: 404, contentType: 'text/plain', body: 'nicht da' });
+    if (a.abbruch) return route.abort('failed');   // a.abbruch: Netzfehler (fetch verwirft, Korrekturrunde 11.11.: KA-02 über den catch-Zweig)
+    if (a.warten) await a.warten;   // a.warten: Promise, die der Test selbst einlöst (Antwort genau dann, wenn der Test es will; unabhängig von der Last der Maschine)
     if (a.verzoegerung > 0) await new Promise((r) => setTimeout(r, a.verzoegerung));   // a.verzoegerung: ms bis zur Antwort (Test: die Lagerdaten treffen verspätet ein)
     return route.fulfill({ status: a.status || 200, contentType: a.typ || 'application/json', body: typeof a.body === 'string' ? a.body : JSON.stringify(a.body) });
   });
   await page.goto(`${basis}${opt.seitenPfad || '/mock.html'}?${query}`, { waitUntil: 'domcontentloaded' });
-  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, produktAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
+  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, produktAnfragen, produktPfade, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 
 /** Warten, bis der v6-Editor gebaut ist. */

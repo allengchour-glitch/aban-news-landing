@@ -883,7 +883,40 @@ if (SOLL_VERSION >= '6.4.2') {
     pruefe('eine Zeichenkette als Fehler: roh → Standardsatz, Netz → Verbindung', ft('boom', V) === V && /Verbindung/.test(ft('Failed to fetch', V)));
     pruefe('ohne shopText zählt ein Satz wie ein Shop-Text NICHT (nur gekennzeichnete Texte gehen durch)', ft(new Error('The product is sold out.'), V) === V);
     pruefe('der Rohtext geht in die Konsole (warn), höchstens 300 Zeichen', warnungen.some((w) => /Failed to fetch/.test(w)) && ft(new Error('q'.repeat(900)), V) === V && warnungen.every((w) => w.length < 340), JSON.stringify(warnungen.slice(0, 2)));
+    // RO-4 (Korrekturrunde 11.11.): Fehler eines Uploads tragen die eigene Meldung in message und die Ursache in detail (wie uploadFehler): ein Netzfehler dort ergibt die Meldung zur Verbindung,
+    // die Ursache geht in die Konsole (einmal, auch wenn message und detail gleich sind), die Länge bleibt begrenzt
+    const printErr = texteAusQuelltext('de', 'printErr'), upTimeout = texteAusQuelltext('de', 'upTimeout');
+    const up = (m, d) => { const e = new Error(m); e.detail = d; return e; };
+    for (const d of ['Failed to fetch', 'Load failed', 'NetworkError when attempting to fetch resource.']) pruefe(`Upload (message printErr, detail «${d}») → Meldung zur Verbindung`, /Verbindung unterbrochen/.test(ft(up(printErr, d), V)), ft(up(printErr, d), V));
+    pruefe('Upload (printErr, detail «mock-fehler») → printErr', ft(up(printErr, 'mock-fehler'), V) === printErr, ft(up(printErr, 'mock-fehler'), V));
+    pruefe('Upload (printErr, ohne detail) → printErr', ft(up(printErr, ''), V) === printErr);
+    pruefe('Upload (upTimeout, detail «timeout») → upTimeout', ft(up(upTimeout, 'timeout'), V) === upTimeout);
+    warnungen.length = 0;
+    ft(up(printErr, 'Failed to fetch'), V);
+    pruefe('Upload: die Ursache steht in der Konsole neben der eigenen Meldung', warnungen.length === 1 && warnungen[0].includes(printErr) && /\| Failed to fetch/.test(warnungen[0]), JSON.stringify(warnungen));
+    warnungen.length = 0;
+    ft(up('Failed to fetch', 'Failed to fetch'), V);
+    pruefe('Foto-Upload (message und detail gleich): die Ursache steht genau einmal in der Konsole', warnungen.length === 1 && warnungen[0].split('Failed to fetch').length === 2, JSON.stringify(warnungen));
+    warnungen.length = 0;
+    ft(up(printErr, 'z'.repeat(900)), V);
+    pruefe('Upload mit sehr langem detail: die Konsolenzeile bleibt kürzer als 340 Zeichen', warnungen.length === 1 && warnungen[0].length < 340, String(warnungen[0] && warnungen[0].length));
+    pruefe('Upload: HTML im detail wird entfernt', (() => { warnungen.length = 0; ft(up(printErr, '<b>boom</b>'), V); return warnungen.length === 1 && !/<b>/.test(warnungen[0]) && /boom/.test(warnungen[0]); })(), JSON.stringify(warnungen));
     win.console = alt;
+  }
+  // BE-4 (Korrekturrunde 11.11.): Stapelfolge der Bühne aus dem Quelltext: Rahmen der Druckfläche > gewählte Ebene (samt Knöpfen) > Beschriftung > Vorhang; die Griffschicht der Produktbühne liegt über der Beschriftung
+  {
+    const q = readFileSync(V6_DATEI, 'utf8');
+    const z = (sel) => { const m = new RegExp("'" + sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "\\{[^']*?z-index:(\\d+)").exec(q); return m ? Number(m[1]) : NaN; };
+    const w = { frame: z('.lsp6-frame'), sel: z('.lsp6-layer.sel'), tag: z('.lsp6-tag'), veil: z('.lsp6-veil'), chrome: z('.lsp6-chrome-host') };
+    pruefe('Stapelfolge: Rahmen > gewählte Ebene > Beschriftung > Vorhang, Griffschicht > Beschriftung', w.frame > w.sel && w.sel > w.tag && w.tag > w.veil && w.chrome > w.tag, JSON.stringify(w));
+  }
+  // BE-3 (Korrekturrunde 11.11.): Startgrössen und Knöpfe liegen im Raster des Schiebers «Grösse» (Minimum und Schritt aus dem Quelltext)
+  {
+    const q = readFileSync(V6_DATEI, 'utf8');
+    const m = /ui\.rangeGroesse = regler\(T\.sizeL, ([\d.]+), ([\d.]+), ([\d.]+)\)/.exec(q);
+    const [mn, mx, sch] = m ? [Number(m[1]), Number(m[2]), Number(m[3])] : [NaN, NaN, NaN];
+    const ausserhalb = [0.35, 0.55, 0.6, 0.8, 1, 1.5, 2, 3].filter((v) => { const k = (v - mn) / sch; return !(Math.abs(k - Math.round(k)) < 1e-6) || v < mn - 1e-9 || v > mx + 1e-9; });
+    pruefe(`Schieber «Grösse» (${mn} … ${mx}, Schritt ${sch}): Textstart 0,35/0,55, Sticker 0,8, Knöpfe 0,6/1/1,5/2 und das Maximum 3 liegen im Raster`, !!m && ausserhalb.length === 0, JSON.stringify(ausserhalb));
   }
   pruefe('VORSCHAU_WARTE_MS = 500', H.VORSCHAU_WARTE_MS === 500);
 }
@@ -900,11 +933,11 @@ if (SOLL_VERSION >= '6.4.2') {
   pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '96eff4192f344f963a380d5a45981fb330ae202978ef0dd62b3cd1a45818708b' && v641.length === 279455, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
 }
 
-// 6.4.2 (eingefroren am 10.11.2026): wie 6.4.1 — jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash. Der Test läuft nur gegen die Datei im Repo
+// 6.4.2 (eingefroren am 10.11.2026, nach der Korrekturrunde vom 11.11.2026 neu eingefroren): wie 6.4.1 — jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash. Der Test läuft nur gegen die Datei im Repo
 // (V6_DATEI zeigt bei der Mutationsprobe auf eine Kopie, die Datei im Repo bleibt die geprüfte). editor-release-6.4.2.json trägt dieselbe Prüfsumme (CI: editor_release_bauen.mjs --pruefen).
 {
   const v642 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.2.js'));
-  pruefe('v6.4.2 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v642).digest('hex') === '886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938' && v642.length === 294981, `${createHash('sha256').update(v642).digest('hex').slice(0, 12)} ${v642.length}`);
+  pruefe('v6.4.2 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v642).digest('hex') === 'd5d15060fdc17ce4920913623b1e851229ac539e7babd09a0d9e3d3045954ed3' && v642.length === 304527, `${createHash('sha256').update(v642).digest('hex').slice(0, 12)} ${v642.length}`);
 }
 
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
