@@ -77,7 +77,7 @@ test('lokale Quellen stimmen exakt mit der expliziten Allowlist ueberein', () =>
     report.readyPreviewProductCount, report.readyPreviewVariantCount,
     report.readyBindingProductCount, report.readyBindingVariantCount,
     report.blockedProductCount, report.blockedVariantCount, report.excludedActiveCount,
-  ], [9, 73, 7, 167, 2, 4, 1]);
+  ], [9, 73, 8, 170, 1, 1, 1]);
   assert.equal(Object.keys(intendedAssets).length, allow.products.length + allow.products.filter((product) => product.previewAsset).length + 1);
 });
 

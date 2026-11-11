@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "zweck": "Beleg für die Lieferbarkeit in die Schweiz von Printful-Modellen, die Printful in der Region EU nicht listet (Rollout-Sperrgrund REGIONAL_AVAILABILITY_UNKNOWN). Nur gemessene Werte; allowlist_bauen.mjs und build.mjs binden diese Datei per SHA-256.",
+  "gemessen": "2026-11-11T10:09:11.479Z",
+  "erstmessung": "2026-11-11T09:50:00Z (Hauptsitzung, gleiche Werte; hier unabhängig wiederholt)",
+  "methode": {
+    "lager": "GET /products/656 (in_stock und availability_status je Variante)",
+    "druckdateien": "GET /mockup-generator/printfiles/656 und GET /mockup-generator/templates/656",
+    "versand": "POST /shipping/rates je Variante, recipient {country_code: CH, city: Zürich, zip: 8001}, items [{variant_id, quantity: 1}], einmal mit currency CHF und einmal ohne (USD). Reine Preisauskunft: es entsteht kein Auftrag und kein Entwurf."
+  },
+  "katalogabgleich": {
+    "schnappschuss": "../target-katalog-20261108/katalog/656.json",
+    "schnappschussGeholt": "2026-11-08T11:25:49.866Z",
+    "schnappschussSha256": "3336c982deb088163f3e2060902fa86de082051be984a600541cefcf197993b8",
+    "frischGeholt": "2026-11-11T10:08:38.364Z",
+    "gleich": [
+      "varianten",
+      "printfiles",
+      "templates"
+    ],
+    "abweichung": [
+      "produkt.options[license_type].values: 3 neue Werte (OSUTAG, NDTAG, OHT), ohne Wirkung auf Karte, Varianten und Druckdateien"
+    ]
+  },
+  "modelle": {
+    "656": {
+      "titel": "Die-Cut Magnets",
+      "herstellung": "United States",
+      "regionen": [
+        "US"
+      ],
+      "varianten": [
+        {
+          "printfulVariantId": 16366,
+          "groesse": "3″×3″",
+          "inStock": true,
+          "status": {
+            "US": "in_stock"
+          },
+          "raten": [
+            {
+              "id": "STANDARD",
+              "name": "Flat Rate",
+              "chf": "6.84",
+              "usd": "8.29",
+              "tageMin": 10,
+              "tageMax": 15
+            }
+          ]
+        },
+        {
+          "printfulVariantId": 16367,
+          "groesse": "4″×4″",
+          "inStock": true,
+          "status": {
+            "US": "in_stock"
+          },
+          "raten": [
+            {
+              "id": "STANDARD",
+              "name": "Flat Rate",
+              "chf": "6.84",
+              "usd": "8.29",
+              "tageMin": 10,
+              "tageMax": 15
+            }
+          ]
+        },
+        {
+          "printfulVariantId": 16465,
+          "groesse": "6″×6″",
+          "inStock": true,
+          "status": {
+            "US": "in_stock"
+          },
+          "raten": [
+            {
+              "id": "STANDARD",
+              "name": "Flat Rate",
+              "chf": "6.84",
+              "usd": "8.29",
+              "tageMin": 10,
+              "tageMax": 15
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nichtGemessen": [
+    "Zoll und Einfuhrsteuer für Ware aus den USA",
+    "echte Laufzeit einer Sendung (die Tage sind Printfuls Schätzung)",
+    "Lieferbarkeit nach Liechtenstein"
+  ]
+}

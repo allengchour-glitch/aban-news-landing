@@ -1,7 +1,9 @@
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { bauen, panel84Pruefen } from './build.mjs';
+import { bauen, chBelegLaden, panel84Pruefen } from './build.mjs';
+import { chBelegPruefen } from './allowlist_bauen.mjs';
+import { karteFuerEditor } from '../../../pod/v6/werkzeug/karte_fuer_editor.mjs';
 
 let n = 0; const errors = [];
 function test(name, ok, detail = '') { n++; if (!ok) { errors.push(`${name}: ${detail}`); console.log(`x ${name} ${detail}`); } }
@@ -21,12 +23,52 @@ test('PANEL84 braucht auch bei Import einen expliziten Schalter', missingPanelBl
 const { allow, outputs, report } = bauen({ write: false, panelModels: [84] });
 const H = editorHelpers();
 test('vollstaendiger Printful-Scope', outputs.length === 18 && outputs.reduce((sum, output) => sum + output.variants, 0) === 244);
-test('Status-Scope 9/73 + 7/167 + 2/4', report.readyPreviewProductCount === 9 && report.readyPreviewVariantCount === 73
-  && report.readyBindingProductCount === 7 && report.readyBindingVariantCount === 167 && report.blockedProductCount === 2 && report.blockedVariantCount === 4);
+test('Status-Scope 9/73 + 8/170 + 1/1', report.readyPreviewProductCount === 9 && report.readyPreviewVariantCount === 73
+  && report.readyBindingProductCount === 8 && report.readyBindingVariantCount === 170 && report.blockedProductCount === 1 && report.blockedVariantCount === 1);
+test('einziger Printful-Blocker ist die Dad-Cap', JSON.stringify(outputs.filter((output) => output.status === 'blocked').map((output) => output.handle)) === '["dad-cap-selbst-gestalten"]');
 test('aktives Nicht-Printful-Produkt bleibt ausgeschlossen', report.excludedActiveCount === 1 && allow.blocked[0].handle === 'buegeltransfer-selbst-gestalten');
 test('Katalogbeleg 22/22 ohne Fehler', report.catalogEvidence.workflowRun === 42475585326 && report.catalogEvidence.branchCommit === '68975230b' && report.catalogEvidence.filesRead === 22 && report.catalogEvidence.errors.length === 0);
 test('regionale Unbekannt-Werte bleiben unbekannt', report.availabilityUnknown.length === 4 && report.availabilityUnknown.every((entry) => entry.euStatus === 'unknown'));
 test('Magnet hat drei unbekannte EU-Werte', report.availabilityUnknown.filter((entry) => entry.model === 656).length === 3);
+
+// ---- Magnet (Modell 656), freigegeben am 11.11.2026: nur mit Beleg der Schweizer Lieferbarkeit ----
+{
+  const magnet = allow.products.find((product) => product.handle === 'magnet-zum-selbstgestalten');
+  const magnetOut = outputs.find((output) => output.handle === 'magnet-zum-selbstgestalten');
+  const karte = JSON.parse(magnetOut.text);
+  test('Magnet: ready-binding, drei Varianten, keine Vorschau, keine Sperrgruende', magnet.rolloutStatus === 'ready-binding' && magnet.variants.length === 3 && magnet.previewAsset === null && magnet.reasonCodes.length === 0 && magnetOut.previewText === null);
+  test('Magnet: Karte ist keine Sperrkarte und traegt die technische Klasse FLACH', karte.blocked === undefined && karte.printfulProductId === 656 && karte.klasse === 'FLACH');
+  test('Magnet: Shopify-Variante -> Printful-Variante wie im Shop gelesen (SKU 9000001_<Printful-Variante>)', JSON.stringify(karte.shop.varianten) === JSON.stringify({ 55791941812609: 16366, 55791941845377: 16367, 55791941878145: 16465 }));
+  const jeVariante = karte.varianten.map((variant) => {
+    const id = karte.druckdateiGruppen[variant.druckdateiGruppe].platzierungen.default; const d = karte.druckdateien[id];
+    return [variant.printfulVariantId, id, d.breitePx, d.hoehePx, d.dpi];
+  });
+  test('Magnet: jede Variante hat ihre eigene quadratische Druckdatei (900, 1200, 1800 px bei 300 dpi = 3, 4, 6 Zoll)', JSON.stringify(jeVariante) === JSON.stringify([[16366, 183, 900, 900, 300], [16367, 184, 1200, 1200, 300], [16465, 419, 1800, 1800, 300]]), JSON.stringify(jeVariante));
+  test('Magnet: je Druckdatei eine eigene Vorlagengeometrie, nur die kostenlose Flaeche «default»', karte.platzierungen.length === 1 && karte.platzierungen[0].id === 'default' && JSON.stringify(karte.platzierungen[0].geometrien.map((g) => [g.printfileId, g.vorlage.flaecheBreite, g.vorlage.flaecheHoehe])) === '[[183,518,518],[184,590,590],[419,699,699]]');
+  const norm = H.karteNormalisieren(karte);
+  test('Magnet: der Editor (6.3.1, reine Logik) liest die Zuordnung Shopify-Variante -> Printful-Variante', Boolean(norm.karte) && JSON.stringify(norm.karte.shop) === JSON.stringify({ 55791941812609: 16366, 55791941845377: 16367, 55791941878145: 16465 }), JSON.stringify(norm.karte?.shop));
+  const geo = [16366, 16367, 16465].map((pv) => { const g = H.geometrieFuer(norm.karte, norm.karte.platzierungen[0], pv); return [g.printfile.printfileId, g.printfile.breitePx, g.printfile.hoehePx, g.printfile.dpi, g.vorlage.flaecheBreite]; });
+  test('Magnet: der Editor nimmt je Variante die eigene Druckdatei und Vorlagengeometrie', JSON.stringify(geo) === '[[183,900,900,300,518],[184,1200,1200,300,590],[419,1800,1800,300,699]]', JSON.stringify(geo));
+  test('Magnet: CH-Beleg ist an die Allowlist gebunden (Pfad, SHA-256, drei Varianten)', allow.source.availabilityCh?.path === 'source/lieferbarkeit-ch-1111.json' && /^[a-f0-9]{64}$/.test(allow.source.availabilityCh.sha256) && JSON.stringify(allow.source.availabilityCh.products) === JSON.stringify([{ handle: 'magnet-zum-selbstgestalten', model: 656, printfulVariantIds: [16366, 16367, 16465] }]));
+  test('Magnet: der Bau meldet den Beleg im Bericht', JSON.stringify(report.availabilityCh.handles) === '["magnet-zum-selbstgestalten"]' && report.availabilityCh.evidence === 'source/lieferbarkeit-ch-1111.json');
+  const beleg = JSON.parse(readFileSync(resolve('dropship/selbst-gestalten-fertig-0511/rollout-v63/source/lieferbarkeit-ch-1111.json'), 'utf8'));
+  const produkt = { shopifyHandle: magnet.handle, variants: magnet.variants };
+  const wirft = (fn, rx) => { try { fn(); return false; } catch (error) { return rx.test(String(error.message)); } };
+  const mut = (aendern) => { const kopie = JSON.parse(JSON.stringify(beleg)); aendern(kopie); return kopie; };
+  test('CH-Beleg: der echte Beleg besteht (Lager und Rate je Variante)', chBelegPruefen(beleg, produkt, 656) === true);
+  test('CH-Beleg: jede der drei Varianten traegt eine Rate in CHF mit Lieferzeit', beleg.modelle['656'].varianten.length === 3 && beleg.modelle['656'].varianten.every((v) => v.inStock === true && v.raten.some((r) => Number(r.chf) > 0 && r.tageMin > 0 && r.tageMax >= r.tageMin)));
+  test('CH-Beleg: fehlende Variante bricht ab', wirft(() => chBelegPruefen(mut((b) => { b.modelle['656'].varianten.pop(); }), produkt, 656), /CH_DELIVERY_EVIDENCE_MISSING.*16465/));
+  test('CH-Beleg: Variante nicht auf Lager bricht ab', wirft(() => chBelegPruefen(mut((b) => { b.modelle['656'].varianten[1].inStock = false; }), produkt, 656), /nicht auf Lager/));
+  test('CH-Beleg: Variante ohne Rate bricht ab', wirft(() => chBelegPruefen(mut((b) => { b.modelle['656'].varianten[0].raten = []; }), produkt, 656), /keine Schweizer Versandrate/));
+  test('CH-Beleg: Rate 0 CHF oder ohne Lieferzeit zaehlt nicht', wirft(() => chBelegPruefen(mut((b) => { b.modelle['656'].varianten[0].raten[0].chf = '0'; }), produkt, 656), /keine Schweizer Versandrate/) && wirft(() => chBelegPruefen(mut((b) => { delete b.modelle['656'].varianten[2].raten[0].tageMin; }), produkt, 656), /keine Schweizer Versandrate/));
+  test('CH-Beleg: fehlendes Modell, doppelte Variante, fremdes Schema brechen ab', wirft(() => chBelegPruefen(mut((b) => { delete b.modelle['656']; }), produkt, 656), /Modell 656 fehlt/) && wirft(() => chBelegPruefen(mut((b) => { b.modelle['656'].varianten.push(b.modelle['656'].varianten[0]); }), produkt, 656), /nicht genau einmal/) && wirft(() => chBelegPruefen(mut((b) => { b.schema = 2; }), produkt, 656), /Schema 1/));
+  test('CH-Beleg: ein Produkt mit einer Variante eines anderen Modells bricht ab', wirft(() => chBelegPruefen(beleg, { shopifyHandle: 'x', variants: [...magnet.variants, { printfulProductId: 358, printfulVariantId: 10163 }] }, 656), /ausserhalb von Modell 656/));
+  test('Bau: ein veraenderter Beleg (SHA weicht von der Allowlist ab) bricht ab', wirft(() => chBelegLaden(allow, () => Buffer.from(JSON.stringify(mut((b) => { b.modelle['656'].varianten[0].raten[0].chf = '9.99'; })))), /CH_DELIVERY_EVIDENCE_MISMATCH/));
+  test('Bau: ohne Eintrag in der Allowlist gilt kein Produkt als CH-belegt', chBelegLaden({ ...allow, source: { ...allow.source, availabilityCh: undefined } }).size === 0);
+  const katalog656 = JSON.parse(readFileSync(resolve('dropship/selbst-gestalten-fertig-0511/target-katalog-20261108/katalog/656.json'), 'utf8'));
+  test('Kartenwerkzeug: ohne lieferbarCh bleibt Modell 656 UNGEEIGNET (kein EU-Lager), mit lieferbarCh gilt die Druckgeometrie', karteFuerEditor(katalog656).klasse === 'UNGEEIGNET' && karteFuerEditor(katalog656, { lieferbarCh: true }).klasse === 'FLACH');
+}
+test('keine freigegebene Karte traegt die Klasse UNGEEIGNET', outputs.filter((output) => output.status !== 'blocked').every((output) => { const card = JSON.parse(output.text); return (card.modelle ? Object.values(card.modelle) : [card]).every((model) => model.klasse !== 'UNGEEIGNET'); }));
 test('T-Shirt-Variante 12872 hat unbekannten EU-Wert', report.availabilityUnknown.some((entry) => entry.model === 71 && entry.printfulVariantId === 12872));
 
 for (const output of outputs) {

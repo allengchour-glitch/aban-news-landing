@@ -261,6 +261,16 @@ if (katalogOrdner && existsSync(join(katalogOrdner, '71.json'))) {
   pruefe('ohneEtiketten: keine Etiketten, Vorderseite und Rückseite bleiben', !ohneEt.platzierungen.some((p) => p.art === 'etikett') && ohneEt.platzierungen.some((p) => p.id === 'back') && k71.platzierungen.some((p) => p.art === 'etikett'));
   pruefe('ohneAufpreis bei Dad-Cap (jede Stickerei kostet extra) → Abbruch statt leerer Karte', /bleibt keine Platzierung/.test(werft(() => karteFuerEditor(kat(206), { ohneAufpreis: true })) || ''));
   pruefe('Rundum-Druck (PANEL) → Abbruch ohne panelErlauben (Gegenleser 2, F8)', /PANEL/.test(werft(() => karteFuerEditor(kat(388))) || '') && karteFuerEditor(kat(388), OPT_TEST).klasse === 'PANEL');
+  // lieferbarCh (11.11.2026, Magnet 656): Modell ohne EU-Lager. Ohne die Option UNGEEIGNET, mit der Option die technische Klasse; sonst ändert die Option nichts.
+  const kat656 = JSON.parse(readFileSync(join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'target-katalog-20261108', 'katalog', '656.json'), 'utf8'));
+  const ohneKlasse = (k) => JSON.stringify({ ...k, klasse: null });
+  pruefe('lieferbarCh: Magnet 656 (nur Region US) ist ohne die Option UNGEEIGNET, mit ihr FLACH; der Rest der Karte bleibt gleich',
+    karteFuerEditor(kat656).klasse === 'UNGEEIGNET' && karteFuerEditor(kat656, { lieferbarCh: true }).klasse === 'FLACH' && ohneKlasse(karteFuerEditor(kat656)) === ohneKlasse(karteFuerEditor(kat656, { lieferbarCh: true })));
+  pruefe('lieferbarCh: Modelle mit EU-Lager bleiben unverändert (Tasse, T-Shirt); PANEL braucht weiter panelErlauben',
+    JSON.stringify(karteFuerEditor(kat(19), { lieferbarCh: true })) === JSON.stringify(karteFuerEditor(kat(19))) && JSON.stringify(karteFuerEditor(kat(71), { lieferbarCh: true })) === JSON.stringify(karteFuerEditor(kat(71)))
+    && /PANEL/.test(werft(() => karteFuerEditor(kat(388), { lieferbarCh: true })) || ''));
+  const kat656Gutschein = JSON.parse(JSON.stringify(kat656)); kat656Gutschein.produkt.title = 'Gift card sample';   // technisch ungeeignet (kein gestaltbares Produkt), Druckdatei und Vorlage vorhanden
+  pruefe('lieferbarCh: hebt nur den Liefergrund auf, ein technisch ungeeignetes Modell bleibt UNGEEIGNET', karteFuerEditor(kat656Gutschein).klasse === 'UNGEEIGNET' && karteFuerEditor(kat656Gutschein, { lieferbarCh: true }).klasse === 'UNGEEIGNET');
   // Bündel
   const b = kartenbuendelFuerEditor([kat(19), kat(206)], { 111: v19, 222: v206 });
   gleich('Bündel: Modelle', Object.keys(b.modelle).sort(), ['19', '206']);

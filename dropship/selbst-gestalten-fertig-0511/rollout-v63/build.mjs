@@ -6,6 +6,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { karteFuerEditor, kartenbuendelFuerEditor } from '../../../pod/v6/werkzeug/karte_fuer_editor.mjs';
 import { korrigiereKartenJson, korrigiereVorschauJson } from '../../../pod/v6/werkzeug/geometrie_korrektur.mjs';
+import { chBelegPruefen } from './allowlist_bauen.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HIER, '../../../');
@@ -143,18 +144,39 @@ function validateAllowlist(allow) {
   if (allow.schema !== 1 || allow.products.length !== 18 || allow.products.reduce((sum, product) => sum + product.variants.length, 0) !== 244) throw new Error('Allowlist ist nicht 18/244');
   const counts = Object.fromEntries(['ready-preview', 'ready-binding', 'blocked'].map((status) => [status, allow.products.filter((product) => product.rolloutStatus === status)]));
   if (counts['ready-preview'].length !== 9 || counts['ready-preview'].reduce((sum, product) => sum + product.variants.length, 0) !== 73
-    || counts['ready-binding'].length !== 7 || counts['ready-binding'].reduce((sum, product) => sum + product.variants.length, 0) !== 167
-    || counts.blocked.length !== 2 || counts.blocked.reduce((sum, product) => sum + product.variants.length, 0) !== 4) throw new Error('Allowlist ist nicht 9/73 + 7/167 + 2/4');
+    || counts['ready-binding'].length !== 8 || counts['ready-binding'].reduce((sum, product) => sum + product.variants.length, 0) !== 170
+    || counts.blocked.length !== 1 || counts.blocked.reduce((sum, product) => sum + product.variants.length, 0) !== 1) throw new Error('Allowlist ist nicht 9/73 + 8/170 + 1/1');
   if (new Set(allow.products.map((product) => product.shopifyProductId)).size !== 18 || new Set(allow.products.flatMap((product) => product.variants.map((variant) => variant.shopifyVariantId))).size !== 244) throw new Error('Doppelte Produkt-/Varianten-ID');
   if (allow.blocked.length !== 1 || allow.blocked[0].handle !== 'buegeltransfer-selbst-gestalten') throw new Error('Nicht-Printful-Ausschluss weicht ab');
   if (JSON.stringify(allow.policy.panelModels) !== '[84]' || !/^--panel=84:/.test(allow.policy.panelEvaluation)) throw new Error('PANEL-84-Freigabebeleg fehlt');
   if (sha256(readFileSync(EDITOR)) !== allow.editorSha256) throw new Error('Editor-SHA weicht ab');
 }
 
-function buildBindingCard(product, catalogs, panelModels) {
+/**
+ * Beleg der Schweizer Lieferbarkeit (source/lieferbarkeit-ch-1111.json): an die Allowlist per SHA-256 gebunden und hier
+ * je Produkt nochmals gegen die verkauften Varianten geprueft. Gibt die Handles zurueck, deren Karte nach der
+ * Druckgeometrie eingestuft werden darf (karteFuerEditor, Option lieferbarCh).
+ */
+export function chBelegLaden(allow, lesen = (pfad) => readFileSync(resolve(HIER, pfad))) {
+  const quelle = allow.source?.availabilityCh;
+  if (!quelle || !Array.isArray(quelle.products)) return new Set();
+  const bytes = lesen(quelle.path);
+  if (sha256(bytes) !== quelle.sha256) throw new Error('CH_DELIVERY_EVIDENCE_MISMATCH: Beleg der Schweizer Lieferbarkeit weicht von der Allowlist ab');
+  const beleg = JSON.parse(bytes);
+  const handles = new Set();
+  for (const entry of quelle.products) {
+    const product = allow.products.find((candidate) => candidate.handle === entry.handle);
+    if (!product || product.rolloutStatus !== 'ready-binding' || JSON.stringify(product.models) !== JSON.stringify([entry.model])) throw new Error(`CH_DELIVERY_EVIDENCE_MISMATCH: ${entry.handle}`);
+    chBelegPruefen(beleg, { shopifyHandle: product.handle, variants: product.variants }, entry.model);
+    handles.add(product.handle);
+  }
+  return handles;
+}
+
+function buildBindingCard(product, catalogs, panelModels, lieferbarCh = false) {
   const modelCatalogs = product.models.map((model) => catalogs.get(Number(model)));
   const mapping = expectedShopMap(product, false);
-  const opt = { ohneAufpreis: true, ohneEtiketten: true, panelErlauben: true };
+  const opt = { ohneAufpreis: true, ohneEtiketten: true, panelErlauben: true, lieferbarCh };
   let card = modelCatalogs.length === 1
     ? karteFuerEditor(modelCatalogs[0], { ...opt, shopVarianten: mapping })
     : kartenbuendelFuerEditor(modelCatalogs, mapping, opt);
@@ -162,7 +184,12 @@ function buildBindingCard(product, catalogs, panelModels) {
     if (!panelModels.has(84)) throw new Error('PANEL84_EXPLICIT_APPROVAL_MISSING');
     panel84Pruefen(card, modelCatalogs[0], product);
   }
-  card = trimCard(card, product); verifyShopMap(card, product); return card;
+  card = trimCard(card, product); verifyShopMap(card, product);
+  // Eine freigegebene Karte darf nie die Klasse UNGEEIGNET tragen (Modell ohne EU-Lager und ohne Beleg der Schweizer Lieferbarkeit).
+  for (const model of card.modelle ? Object.values(card.modelle) : [card]) {
+    if (model.klasse === 'UNGEEIGNET') throw new Error(`${product.handle}: Modell ${model.printfulProductId} ist UNGEEIGNET (kein EU-Lager, kein Beleg der Schweizer Lieferbarkeit)`);
+  }
+  return card;
 }
 
 export function bauen({ write = true, panelModels = [] } = {}) {
@@ -183,6 +210,7 @@ export function bauen({ write = true, panelModels = [] } = {}) {
     catalogs.set(Number(source.model), JSON.parse(bytes));
   }
   if (catalogs.size !== 22) throw new Error('Katalogbeleg ist nicht 22/22');
+  const chBelegt = chBelegLaden(allow);
   const outputs = [], unknown = [];
   for (const product of allow.products) {
     let card, preview = null;
@@ -192,7 +220,7 @@ export function bauen({ write = true, panelModels = [] } = {}) {
       if (sha256(cardBytes) !== product.sourceAssets.cardSha256 || sha256(previewBytes) !== product.sourceAssets.previewSha256) throw new Error(`${product.handle}: Audit-Asset weicht ab`);
       card = trimCard(JSON.parse(cardBytes), product); verifyShopMap(card, product);
       preview = scopePreview(JSON.parse(previewBytes), card, product);
-    } else if (product.rolloutStatus === 'ready-binding') card = buildBindingCard(product, catalogs, requestedPanels);
+    } else if (product.rolloutStatus === 'ready-binding') card = buildBindingCard(product, catalogs, requestedPanels, chBelegt.has(product.handle));
     else card = blockedCard(product);
     // Gemessene Druckfläche je Modell (pod/v6/werkzeug/geometrie_korrektur.json, Messung 08.11.2026, Referenz Printfuls Mockup-Generator):
     // nur die Ansicht (Bühne, «Auf dem Produkt»); Katalog, Audit-Belege und die allgemeinen Karten-Werkzeuge bleiben bei den Zahlen von GET /templates.
@@ -214,9 +242,10 @@ export function bauen({ write = true, panelModels = [] } = {}) {
     readyBindingProductCount: select('ready-binding').length, readyBindingVariantCount: select('ready-binding').reduce((sum, output) => sum + output.variants, 0),
     blockedProductCount: select('blocked').length, blockedVariantCount: select('blocked').reduce((sum, output) => sum + output.variants, 0),
     excludedActiveCount: allow.blocked.length, blockedActiveCount: select('blocked').length + allow.blocked.length,
-    productProjection: { verifiedProducts: 9, bindingOnlyProducts: 7, blockedProducts: 2 },
+    productProjection: { verifiedProducts: 9, bindingOnlyProducts: 8, blockedProducts: 1 },
     catalogEvidence: { workflowRun: 42475585326, branchCommit: '68975230b', filesRead: 22, errors: [] },
     availabilityUnknown: unknown,
+    availabilityCh: { evidence: allow.source?.availabilityCh?.path || null, measuredAt: allow.source?.availabilityCh?.measuredAt || null, handles: [...chBelegt] },
     assets: outputs.map(({ text, previewText, ...output }) => output),
   };
   if (unknown.length !== 4 || unknown.filter((entry) => entry.model === 656).length !== 3 || !unknown.some((entry) => entry.model === 71 && entry.printfulVariantId === 12872)) throw new Error('Regionale Unbekannt-Scope weicht ab');
@@ -232,5 +261,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (readFileSync(resolve(MAPS, output.asset), 'utf8') !== output.text) throw new Error(`${output.asset}: Kartenasset weicht ab`);
     if (output.previewText && readFileSync(resolve(MAPS, output.previewAsset), 'utf8') !== output.previewText) throw new Error(`${output.previewAsset}: Previewasset weicht ab`);
   }
-  console.log(`V63_ROLLOUT_OK products=18 variants=244 preview=9/73 binding=7/167 blocked=2/4 excluded=1 mode=${check ? 'check' : 'build'}`);
+  console.log(`V63_ROLLOUT_OK products=18 variants=244 preview=9/73 binding=8/170 blocked=1/1 excluded=1 mode=${check ? 'check' : 'build'}`);
 }

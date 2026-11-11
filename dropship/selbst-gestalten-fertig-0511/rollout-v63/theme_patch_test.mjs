@@ -46,8 +46,8 @@ for (const product of allowlist.products) {
 assert.equal((patched.match(/assign lspod_v63_vorschau = 'lspod-[^']+\.json'/g) || []).length,
   allowlist.products.filter((product) => product.previewAsset).length, 'nur belegte Vorschau-Assets werden zugeordnet');
 assert.equal(allowlist.products.filter((product) => product.rolloutStatus === 'ready-preview').length, 9, 'neun final belegte Produktvorschauen');
-assert.equal(allowlist.products.filter((product) => product.rolloutStatus === 'ready-binding').length, 7, 'sieben Karten-only-Produkte');
-assert.equal(allowlist.products.filter((product) => product.rolloutStatus === 'blocked').length, 2, 'zwei fail-closed Blocker-Mappings');
+assert.equal(allowlist.products.filter((product) => product.rolloutStatus === 'ready-binding').length, 8, 'acht Karten-only-Produkte (seit 11.11.2026 mit dem Magneten)');
+assert.equal(allowlist.products.filter((product) => product.rolloutStatus === 'blocked').length, 1, 'ein fail-closed Blocker-Mapping (Dad-Cap)');
 for (const product of allowlist.products.filter((entry) => entry.rolloutStatus !== 'ready-preview')) {
   assert.doesNotMatch(caseSegment(patched, product.handle), /lspod_v63_vorschau/, `${product.handle}: ohne belegte Vorschau keine Projektion`);
 }
@@ -101,7 +101,7 @@ const synthetic18 = {
       rolloutStatus: 'READY',
       status: 'ACTIVE',
     })),
-    ...Array.from({ length: 7 }, (_, i) => ({
+    ...Array.from({ length: 8 }, (_, i) => ({
       handle: `karten-produkt-${i + 1}`,
       asset: `lspod-karte-ohne-vorschau-produkt-${i + 1}.json`,
       previewAsset: null,
@@ -111,13 +111,6 @@ const synthetic18 = {
     {
       handle: 'dad-cap-selbst-gestalten',
       asset: 'lspod-blockiert-dad-cap.json',
-      previewAsset: null,
-      rolloutStatus: 'BLOCKED',
-      status: 'ACTIVE',
-    },
-    {
-      handle: 'magnet-zum-selbstgestalten',
-      asset: 'lspod-blockiert-magnet.json',
       previewAsset: null,
       rolloutStatus: 'BLOCKED',
       status: 'ACTIVE',
@@ -178,4 +171,4 @@ for (const count of [0, 2]) {
   assert.equal(result.blockerHost.blocker?.id, 'lspod-v63-blocker', `${count} Container: sichtbarer Blocker`);
 }
 
-console.log(`THEME_PATCH_OK products=${allowlist.products.length} synthetic_products=18 preview=9 card_only=7 blocked_maps=2 tests=76`);
+console.log(`THEME_PATCH_OK products=${allowlist.products.length} synthetic_products=18 preview=9 card_only=8 blocked_maps=1 tests=76`);

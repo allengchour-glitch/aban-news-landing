@@ -131,10 +131,27 @@
       "scriptSha256": "d28b5c0a5845a8d1b4827ad43bf2d9a1939734a0d96326f2d47aa99fea8cc1de",
       "readyProducts": 9,
       "readyVariants": 73,
-      "bindingOnlyProducts": 7,
-      "bindingOnlyVariants": 167,
-      "blockedPrintfulProducts": 2,
-      "blockedPrintfulVariants": 4
+      "bindingOnlyProducts": 8,
+      "bindingOnlyVariants": 170,
+      "blockedPrintfulProducts": 1,
+      "blockedPrintfulVariants": 1
+    },
+    "availabilityCh": {
+      "path": "source/lieferbarkeit-ch-1111.json",
+      "sha256": "372d41a6d5291f05f3d3e8fe5dc223267f4afb5b048ce2cf13a35489fe24e679",
+      "measuredAt": "2026-11-11T10:09:11.479Z",
+      "method": "Printful POST /shipping/rates (recipient CH) je Variante; GET /products/<Modell> fuer den Lagerstatus",
+      "products": [
+        {
+          "handle": "magnet-zum-selbstgestalten",
+          "model": 656,
+          "printfulVariantIds": [
+            16366,
+            16367,
+            16465
+          ]
+        }
+      ]
     }
   },
   "editorSha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
@@ -150,7 +167,7 @@
       84
     ],
     "panelEvaluation": "--panel=84: binding-print-area-only-after-geometry-check",
-    "reason": "Neun Produkte erhalten eine gepruefte proportionale Produktvorschau, sieben nur die verbindliche Druckflaeche. Cap und Magnet bleiben mit deterministischem Blocker-Asset fail-closed."
+    "reason": "Neun Produkte erhalten eine gepruefte proportionale Produktvorschau, acht nur die verbindliche Druckflaeche. Die Cap bleibt mit deterministischem Blocker-Asset fail-closed. Der Magnet (Modell 656, nur Region US) ist seit 11.11.2026 freigegeben, weil die Lieferung in die Schweiz je Variante gemessen ist (source/lieferbarkeit-ch-1111.json)."
   },
   "products": [
     {
@@ -657,12 +674,10 @@
       "shopifyProductId": "gid://shopify/Product/15427217195393",
       "handle": "magnet-zum-selbstgestalten",
       "status": "ACTIVE",
-      "rolloutStatus": "blocked",
+      "rolloutStatus": "ready-binding",
       "asset": "lspod-15427217195393.karte.json",
       "previewAsset": null,
-      "reasonCodes": [
-        "REGIONAL_AVAILABILITY_UNKNOWN"
-      ],
+      "reasonCodes": [],
       "sourceAssets": null,
       "models": [
         656

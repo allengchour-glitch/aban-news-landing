@@ -17,6 +17,9 @@
  *   ohneAufpreis   Platzierungen mit Aufpreis weglassen (solange der Aufpreis im Warenkorb nicht abgerechnet wird, Entscheid 1)
  *   ohneEtiketten  Etiketten-Platzierungen (art «etikett») weglassen
  *   panelErlauben  Rundum-Druck (Klasse PANEL) zulassen; ohne diese Option bricht der Bau ab (die Masse sind die des Druckbogens, nicht des Schnittteils)
+ *   lieferbarCh    Die Lieferung in die Schweiz ist für dieses Modell GEMESSEN (POST /shipping/rates je Variante, Beleg beim Aufrufer). Die Modellkarte stuft
+ *                  ein Modell ohne EU-Lager als UNGEEIGNET ein (Annahme «die Schweiz wird aus der EU beliefert»). Mit dieser Option gilt stattdessen die
+ *                  technische Klasse (nur Druckgeometrie). Sie hebt NUR den Liefergrund auf: ein technisch ungeeignetes Modell bleibt UNGEEIGNET, PANEL braucht weiter panelErlauben.
  */
 import { modellkarteBauen } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { aufpreisChf } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
@@ -26,6 +29,8 @@ export const BEKANNTE_HINWEIS_CODES = Object.freeze(['stickerei', 'gestrickt', '
 /** Längster Wert einer Warenkorb-Eigenschaft (QUELLE: Dritt-Anleitungen zu Shopify-Line-Item-Properties, nicht an Shopify gemessen) und Obergrenze der Druckdatei im Editor. */
 export const POD_KARTE_MAX = 255;
 export const MAX_PIXEL_STANDARD = 16777216;
+/** Klassen, die der Editor zeichnen kann (technische Klasse der Modellkarte). UNGEEIGNET gehört nie dazu. */
+const KLASSEN_ZEICHENBAR = Object.freeze(['FLACH', 'FLACH_MIT_HINWEIS', 'PANEL']);
 
 /** Shopify-Variante → Printful-Variante prüfen und normalisieren: Schlüssel «123» oder «gid://shopify/ProductVariant/123», Wert eine ganze Zahl > 0. Wirft bei Unsinn. */
 export function shopVariantenNormalisieren(roh) {
@@ -51,7 +56,9 @@ function variantenIds(katalog) {
 /** Karte EINES Modells ohne Shop-Zuordnung. */
 function modellKarte(katalog, opt) {
   const k = modellkarteBauen(katalog);
-  if (k.klasse === 'PANEL' && !opt.panelErlauben) {
+  // Klasse der Karte: mit gemessener Schweizer Lieferbarkeit zählt die Druckgeometrie, sonst die Einstufung der Modellkarte (mit EU-Lagerregel)
+  const klasse = opt.lieferbarCh && k.klasse === 'UNGEEIGNET' && KLASSEN_ZEICHENBAR.includes(k.technischeKlasse) ? k.technischeKlasse : k.klasse;
+  if (klasse === 'PANEL' && !opt.panelErlauben) {
     throw new Error(`Modell ${k.printfulProductId}: Klasse PANEL (Rundum-Druck). Die Masse im Editor wären die des Druckbogens, nicht die des Schnittteils (Gegenleser 2, F8). Nur mit panelErlauben nach Prüfung an einem Muster.`);
   }
   const minDpi = Number(katalog.templates?.min_dpi);
@@ -77,7 +84,7 @@ function modellKarte(katalog, opt) {
   const gebraucht = new Set(platzierungen.flatMap((p) => [p.printfile.printfileId, ...(p.geometrien ?? []).map((g) => g.printfileId)]));
   for (const [id, d] of Object.entries(k.druckdateien)) if (gebraucht.has(Number(id))) druckdateien[id] = { printfileId: d.printfileId, breitePx: d.breitePx, hoehePx: d.hoehePx, dpi: d.dpi };
   const karte = {
-    schema: 1, printfulProductId: k.printfulProductId, typ: k.typ, titelEn: k.titelEn, klasse: k.klasse, standardTechnik: k.standardTechnik,
+    schema: 1, printfulProductId: k.printfulProductId, typ: k.typ, titelEn: k.titelEn, klasse, standardTechnik: k.standardTechnik,
     minDpi: Number.isFinite(minDpi) && minDpi > 0 ? minDpi : null,
     platzierungen, druckdateien,
     hinweise: k.hinweise.filter((h) => h.art === 'einschraenkung' || BEKANNTE_HINWEIS_CODES.includes(h.code))
@@ -97,7 +104,7 @@ function modellKarte(katalog, opt) {
 /**
  * Karte für ein Shop-Produkt mit EINEM Printful-Modell.
  * @param {object} katalog   geparste Katalogdatei
- * @param {{shopVarianten?: Record<string, number>, ohneAufpreis?: boolean, ohneEtiketten?: boolean, panelErlauben?: boolean}} [opt]   Shopify-Varianten-ID → Printful-Variante
+ * @param {{shopVarianten?: Record<string, number>, ohneAufpreis?: boolean, ohneEtiketten?: boolean, panelErlauben?: boolean, lieferbarCh?: boolean}} [opt]   Shopify-Varianten-ID → Printful-Variante
  * @throws wenn eine zugeordnete Printful-Variante nicht zum Modell gehört (Tippfehler, Variante eines anderen Modells: dafür gibt es das Kartenbündel)
  */
 export function karteFuerEditor(katalog, opt = {}) {
@@ -182,7 +189,7 @@ export function kartenWarnungen(karteOderBuendel) {
 }
 
 // Kommandozeile:
-//   node karte_fuer_editor.mjs <katalogdatei>[,<katalogdatei2>,…] [shop-varianten.json] [--ohne-aufpreis] [--ohne-etiketten] [--panel]
+//   node karte_fuer_editor.mjs <katalogdatei>[,<katalogdatei2>,…] [shop-varianten.json] [--ohne-aufpreis] [--ohne-etiketten] [--panel] [--lieferbar-ch]
 // Eine Katalogdatei → Einzelkarte, mehrere (mit Komma) → Kartenbündel (dann ist shop-varianten.json Pflicht). Ausgabe: JSON auf der Standardausgabe, Warnungen auf der Fehlerausgabe.
 if (import.meta.url === `file://${process.argv[1]}`) {
   const { readFileSync } = await import('node:fs');
@@ -190,7 +197,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const flags = args.filter((a) => a.startsWith('--'));
   const [dateien, shopDatei] = args.filter((a) => !a.startsWith('--'));
   if (!dateien) { console.error('Aufruf: node karte_fuer_editor.mjs <katalog/ID.json>[,<katalog/ID2.json>…] [shop-varianten.json] [--ohne-aufpreis] [--ohne-etiketten] [--panel]'); process.exit(2); }
-  const opt = { ohneAufpreis: flags.includes('--ohne-aufpreis'), ohneEtiketten: flags.includes('--ohne-etiketten'), panelErlauben: flags.includes('--panel') };
+  const opt = { ohneAufpreis: flags.includes('--ohne-aufpreis'), ohneEtiketten: flags.includes('--ohne-etiketten'), panelErlauben: flags.includes('--panel'), lieferbarCh: flags.includes('--lieferbar-ch') };
   const liste = dateien.split(',').map((d) => JSON.parse(readFileSync(d, 'utf8')));
   const shop = shopDatei ? JSON.parse(readFileSync(shopDatei, 'utf8')) : undefined;
   try {
