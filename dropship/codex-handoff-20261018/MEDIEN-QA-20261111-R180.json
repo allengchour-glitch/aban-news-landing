@@ -1,0 +1,34 @@
+{
+  "filename": "luxestyle-sternenlicht-entwurf-r176.mp4",
+  "bytes": 5535209,
+  "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+  "duration": "18.000000",
+  "video": [
+    {
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1920,
+      "r_frame_rate": "25/1",
+      "avg_frame_rate": "25/1",
+      "pix_fmt": "yuv420p",
+      "color_range": "tv",
+      "color_space": "bt709",
+      "color_transfer": "bt709",
+      "color_primaries": "bt709"
+    }
+  ],
+  "audio": [
+    {
+      "codec_name": "aac",
+      "sample_rate": "44100",
+      "channels": 2
+    }
+  ],
+  "creativeApproval": "unknown",
+  "productBinding": "unknown",
+  "rightsApproval": "unknown",
+  "notes": [
+    "Frame-rate metadata does not prove native capture or unique frames.",
+    "Audio stream presence does not prove approved music or absence of speech."
+  ]
+}

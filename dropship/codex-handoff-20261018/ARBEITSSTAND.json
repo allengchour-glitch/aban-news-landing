@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 179,
-  "updatedAt": "2026-11-11T13:28:59.677283+00:00",
+  "revision": 180,
+  "updatedAt": "2026-11-11T18:04:40.378248+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16844,6 +16844,13 @@
       "actor": "codex",
       "at": "2026-11-11T13:28:59.677283+00:00",
       "summary": "Existing R176 MP4 copied, hashed and bundled as downloadable handoff with reference, contact sheet, render script, technique manifest and six full UTM captions.27-Reels partial-review design lessons versioned. No render/platform write; /tmp is not guaranteed permanent archive.",
+      "taskCount": 24
+    },
+    {
+      "revision": 180,
+      "at": "2026-11-11T18:04:40.378248+00:00",
+      "actor": "codex",
+      "summary": "Owner-authorized Claude knowledge handoff: verified vidIQ YouTube403 workaround, music preference corrections, read-only ffprobe helper tested, fresh identities/planning and organizer; daily analytics/Klaviyo reused. Claude main response R176/R177 read; R180 receipt unknown. No platform writes.",
       "taskCount": 24
     }
   ],
