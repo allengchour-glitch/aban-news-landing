@@ -1,5 +1,19 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## KI-Büro Design16: echte Ergebnisse direkt im Büro ·11.11.2026
+
+Besitzerfeedback zur vorherigen Optik umgesetzt: verbesserte Material-/Lichtberechnung und Normalen, gerundete Monitorgehäuse, grössere Zentrale. Statt externer Linkkarten bleiben konkrete Befunde, Social-Zustände und Messzeiten erhalten. Echter Fehler reproduziert:12er-Ablauflieferant wurde vom11er-Leser komplett verworfen. Vertrag korrigiert, explizite Abschlussdaten und stabile Lauf-IDs ergänzt. Neun öffentliche Ablaufquellen eng geprüft, zwölf bereinigte Arbeitszeilen in der Erstansicht. Kein neuer privater Kontoabruf oder Automat.
+
+Arbeitsjournal ohne WebGL, gleiche reine Ergebnisfunktion für alle Ansichten; Abschluss nur mit explizitem Erfolgs-/Zeitbeleg, doppelte IDs einmal. Fokus zeigt den echten Monitor ohne Nachbarwände; zusätzliche Bildpunktprüfungen gegen verdeckte Flächen.56 Monitor-,70 Python- und80 kombinierte Dashboard-Prüfungen bestanden, Renderer-Matrix-/Modellprüfung am aktuellen Code. Dokumente unter dem Limit. CI-Simulation im Namespace blockiert; GitHub-Checks weiter queued. [Konkrete Details und Claude-Uploadauftrag](KI-BUERO-DESIGN-16.md). Gleicher PR3114, keine ungeprüfte Auslieferung. Privater Upload und Kenntnisnahme unbekannt.
+
+## KI-Büro Design15: Animation, Raumwirkung und belegte Monitorstände ·11.11.2026
+
+Besitzerauftrag umgesetzt auf eigenem Branch von frischem main53ee242d. [Prüfung, Grenzen und konkreter Claude-Uploadauftrag](KI-BUERO-DESIGN-15.md), [PR3114](https://github.com/allengchour-glitch/aban-news-landing/pull/3114). Weiche Figurenbewegungen, Licht/Materialien/Gartenterrasse; gleiche Quellzeilen auf Arbeitsplatz- und Wandmonitor, eigene Raum-Messzeiten, unbekannt/alt getrennt von der Uhr. Öffentlichen Testzeitfehler reproduziert und behoben. Vorhandene Statusleser mit unverändertem Takt genutzt, keine private Kontoverbindung oder neue Automation.
+
+GEMESSEN:49 Monitor-,80 kombinierte Dashboard- und68 Python-Prüfungen grün;9000 Animationsbilder geprüft. Desktop/Handy ohne Seitenfehler und Überbreite; alle15 eingebetteten öffentlichen Datenzeilen unverändert. Dateien unter dem Dokumentlimit. Lokale CI-Simulation durch `unshare: Operation not permitted` blockiert; GitHub-Checks zuletzt queued. Keine ungeprüfte Zusammenführung oder Auslieferung behauptet. Öffentliche Statusdateien aus dieser Umgebung HTTP403, keine Ersatzwerte erfunden. Private Daten nicht gelesen/geändert.
+
+Claude: vollständigen kombinierten Drei-Seiten-Bau aus `tools/buero/dashboard/bauen.py` verwenden, frische Artefakt-Versionen und private Links abgleichen, nur Darstellung schreiben und zurücklesen. Niemals `seite.html` roh als `index.html` hochladen. Privater Upload und Claude-Kenntnisnahme sind noch unbekannt.
+
 ## Branchen-Bundle: unpassenden Ersparnisvergleich entfernt ·11.11.2026
 
 Von main7ad8a75 auf eigenem Branch; Regeln, aktuelle Claude-Übergaben und offene Arbeiten gelesen. Folgebefund aus PR3095 am echten Code geprüft: `automation/build_kit_zips.py` bildet Mitglieder aus dem Kit-Katalog ohne `bundle` und ohne `standalone` (aktuell19 Branchen-Kits). Die Shoprechnung summierte dagegen alle kaufbaren Nicht-Bundles, also auch separat angebotene Prompt-Bibliothek, Textvorlagen, Offline-Rechner und Strategie-Prüfstand. Vier Browsergegenproben1440/390px × regulär/Ersatzkatalog zeigten deshalb dieselbe unpassende Anzeige «Spare CHF350 (90%)».

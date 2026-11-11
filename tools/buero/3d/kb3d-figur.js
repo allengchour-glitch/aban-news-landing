@@ -9,6 +9,8 @@
 
   function sstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
   function mixv(a, b, t) { return a + (b - a) * t; }
+  // Fünfgliedriges Easing: Geschwindigkeit und Beschleunigung enden bei null.
+  function weich(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * t * (t * (t * 6 - 15) + 10); }
 
   /* ---------- Bildchen für Sprechblasen, Dampf usw. ---------- */
   K.fx = function (R) {
@@ -231,6 +233,7 @@
     this.hx = seat.x; this.hz = seat.z;
     this.mugMesh = null;
     this.state = { s: 0 };
+    this._motion = { name: null, last: null, start: 0, from: new Float32Array(15), values: new Float32Array(15), target: new Float32Array(15) };
   }
   Figure.prototype.setPose = function (name) { this.pose = name; };
   // Fachrollen ändern Kleidung und Hilfsmittel, nicht das gemessene Arbeitssignal.
@@ -246,53 +249,87 @@
   };
 
 
-  /* Berechnet alle Matrizen für die Zeit t (Sekunden) in der aktuellen Haltung. */
-  Figure.prototype.compute = function (t, still) {
-    var s = this.seat, ph = this.ph, name = this.pose, tt = still ? 0 : t;
-    var lean = 0.08, hx = 0.1, hy = 0, hz = 0, eye = 1, mo = 1, mw = 1, bounce = 0;
-    var uN = 0.6, aN = -0.2, fN = 1.05, uP = 0.6, aP = -0.2, fP = 1.05;
-    var sip = 0;
-    var blinkT = (tt * 0.25 + ph) % 1;
-    var blink = !still && blinkT > 0.96 && name !== 'sleep' ? 0.1 : 1;
+  /* Ein ruhiger Bewegungsablauf je Haltung. Die Haltung bleibt ein abgeleiteter Messstand,
+     keine Behauptung, dass die Sitzung im Hintergrund gerade arbeitet. */
+  function poseWerte(v, name, t, still, ph) {
+    var tt = still ? 0 : t, bewegung = still ? 0 : 1;
+    var lean = 0.08, hx = 0.1, hy = 0, hz = 0, eye = 1, mo = 1, mw = 1;
+    var uN = 0.6, aN = -0.2, fN = 1.05, uP = 0.6, aP = -0.2, fP = 1.05, sip = 0;
     switch (name) {
-      case 'busy':
-        lean = 0.10; hx = 0.16 + 0.018 * sin(0.9 * tt + ph); hy = 0.055 * sin(0.45 * tt + ph);
-        uN = 0.30 + 0.018 * sin(4.2 * tt + ph); aN = -0.28; fN = 1.40 + 0.045 * sin(5.2 * tt + ph + 1.3);
-        uP = 0.30 + 0.018 * sin(4.2 * tt + ph + PI); aP = -0.28; fP = 1.40 + 0.045 * sin(5.2 * tt + ph + 4.4);
+      case 'busy': {
+        // Kurze Tippgruppen mit Pausen; beide Hände sind leicht versetzt.
+        var cyc = (tt + ph * 1.7) % 7.4;
+        var tippt = bewegung * (weich(0.3, 0.8, cyc) - weich(4.4, 5.2, cyc));
+        lean = 0.10 + 0.007 * tippt;
+        hx = 0.16 + bewegung * (0.015 * sin(0.9 * tt + ph) - 0.025 * (1 - tippt));
+        hy = bewegung * (0.04 * sin(0.45 * tt + ph) + 0.025 * (1 - tippt));
+        uN = 0.30 + tippt * 0.014 * sin(4.2 * tt + ph); aN = -0.28;
+        fN = 1.40 + tippt * (0.034 * sin(7.1 * tt + ph) + 0.012 * sin(11 * tt + ph));
+        uP = 0.30 + tippt * 0.012 * sin(3.8 * tt + ph + 1.8); aP = -0.28;
+        fP = 1.40 + tippt * (0.030 * sin(6.3 * tt + ph + 2.4) + 0.010 * sin(10.1 * tt + ph));
         break;
+      }
       case 'rest': {
         lean = 0.03;
-        var cyc = ((tt / 8) + ph / 6.28) % 1;
-        sip = still ? 0.0 : Math.min(1, sstep(0, 0.16, cyc) - sstep(0.5, 0.68, cyc));
-        hx = 0.05 - 0.14 * sip; hy = 0.08 * sin(0.4 * tt + ph) * (1 - sip);
+        // Erst ruhen, dann anheben, halten und langsam absetzen; kein Sprung am Zyklusende.
+        var kaffee = (tt + ph * 2.3) % 15.6;
+        sip = still ? 0 : weich(3.2, 4.6, kaffee) - weich(6.2, 7.9, kaffee);
+        hx = 0.05 - 0.14 * sip; hy = bewegung * 0.065 * sin(0.34 * tt + ph) * (1 - sip);
+        hz = bewegung * 0.014 * sin(0.49 * tt + ph) * (1 - sip);
         uN = 0.35; aN = -0.25; fN = 1.35;
         uP = mixv(0.35, 0.85, sip); aP = mixv(-0.25, -0.30, sip); fP = mixv(1.35, 2.6, sip);
         break;
       }
       case 'warn':
-        lean = 0.05; hx = 0.06; hz = 0.12 + 0.05 * sin(0.9 * tt + ph); hy = 0.08 * sin(0.5 * tt);
+        lean = 0.05; hx = 0.06 + bewegung * 0.012 * sin(0.55 * tt + ph);
+        hz = 0.12 + bewegung * 0.026 * sin(0.7 * tt + ph); hy = bewegung * 0.045 * sin(0.4 * tt + ph);
         uN = 0.35; aN = -0.25; fN = 1.35;
-        uP = 1.0; aP = -0.5; fP = 2.6 + 0.035 * sin(2 * tt + ph); mw = 0.8;
+        uP = 1.0; aP = -0.5; fP = 2.6 + bewegung * 0.018 * sin(1.1 * tt + ph); mw = 0.8;
         break;
       case 'alarm':
         lean = 0.01; hx = -0.04; eye = 1.12; mo = 1.4; mw = 1.05;
-        uN = 0.4; uP = 2.4 + 0.045 * sin(2 * tt + ph);
-        aN = -0.25; aP = -0.38;
-        fN = 1.3; fP = 0.35;
+        uN = 0.4; uP = 2.4 + bewegung * 0.025 * sin(1.3 * tt + ph);
+        aN = -0.25; aP = -0.38; fN = 1.3; fP = 0.35;
         break;
       case 'sleep':
-        lean = 0.22 + 0.012 * sin(1.2 * tt + ph); hx = 0.28; hz = 0.06; eye = 0.06; mo = 0.5; mw = 0.7;
+        lean = 0.22 + bewegung * 0.008 * sin(1.0 * tt + ph);
+        hx = 0.28 + bewegung * 0.008 * sin(0.5 * tt + ph); hz = 0.06; eye = 0.06; mo = 0.5; mw = 0.7;
         uN = 0.38; aN = -0.23; fN = 1.3; uP = 0.38; aP = -0.23; fP = 1.3;
         break;
       default: break;
     }
-    eye *= name === 'alarm' ? 1 : blink;
+    // Nur die Oberkörperhaltung atmet; Beine und Sitzposition bleiben fest verankert.
+    lean += bewegung * 0.0035 * sin(1.3 * tt + ph);
+    var werte = [lean, hx, hy, hz, eye, mo, mw, uN, aN, fN, uP, aP, fP, sip,
+      bewegung * 0.005 * sin(0.7 * tt + ph)];
+    for (var i = 0; i < werte.length; i++) v[i] = werte[i];
+  }
+
+  /* Berechnet Matrizen; Messstand-Wechsel gleiten in die neue Haltung, statt zu springen. */
+  Figure.prototype.compute = function (t, still) {
+    var s = this.seat, ph = this.ph, name = this.pose, q = this._motion;
+    t = Number.isFinite(t) ? t : 0;
+    poseWerte(q.target, name, t, still, ph);
+    if (still || q.last === null || t < q.last) {
+      q.values.set(q.target); q.from.set(q.target); q.name = name; q.start = t - 1;
+    } else {
+      if (q.name !== name) { q.from.set(q.values); q.start = t; q.name = name; }
+      var anteil = weich(0, 0.72, t - q.start);
+      for (var i = 0; i < q.values.length; i++) q.values[i] = mixv(q.from[i], q.target[i], anteil);
+    }
+    q.last = t;
+    var v = q.values, lean = v[0], hx = v[1], hy = v[2], hz = v[3], eye = v[4], mo = v[5], mw = v[6];
+    var uN = v[7], aN = v[8], fN = v[9], uP = v[10], aP = v[11], fP = v[12], sip = v[13], twist = v[14], bounce = 0;
+    // Kurzes weiches Schliessen und Öffnen statt eines harten Ein-Bild-Blinzelns.
+    var blinkT = (t + ph * 3) % (5.4 + ph * 0.2);
+    var blink = still ? 1 : 1 - 0.94 * (weich(0, 0.085, blinkT) - weich(0.11, 0.24, blinkT));
+    eye *= blink;
     var S = ST, m = this.m;
     // Wurzel: Platz, Blickrichtung (Modell schaut nach -z, die Figur nach +z), Hüfte auf Sitzhöhe
     S.reset(); S.t(s.x, 0, s.z).ry(s.h + PI).t(0, -DY + bounce, 0);
     M.copy(this.rootM, S.m);
     // Rumpf: dreht um die Hüfte (Vorneigen = -z, also negativer Winkel)
-    S.push(); S.t(0, HIP, 0).rx(-lean).t(0, -HIP, 0); M.copy(m.torso, S.m);
+    S.push(); S.t(0, HIP, 0).rx(-lean).ry(twist).t(0, -HIP, 0); M.copy(m.torso, S.m);
     M.copy(m.tie, S.m);
     //   Kopf
     S.push(); S.t(0, NECK, 0).rx(-hx).ry(hy).rz(hz).t(0, -NECK, 0); M.copy(m.head, S.m); M.copy(m.extraHead, S.m);

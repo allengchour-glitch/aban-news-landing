@@ -1,4 +1,4 @@
-// Prüfung der Liveboards und der grösseren Räume (Design campus-einheitlich-14) gegen den Nachbau der Dashboard-Werte.
+// Prüfung der Liveboards und der grösseren Räume (Design campus-einheitlich-16) gegen den Nachbau der Dashboard-Werte.
 // Aufruf: node test_liveboard.js <Ordner>   (Ordner mit seite.html, buero.json, kb3d-*.js und harness.html; Chromium mit Software-WebGL genügt)
 // Alle erwarteten Zahlen werden aus den Daten der Seite gerechnet (window.__ROWS und die Einträge der Szene), nichts steht fest im Test.
 const { chromium } = require('playwright');
@@ -15,6 +15,11 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   // reducedMotion: die Seite zeichnet dann nur bei Änderungen (die Software-Grafik wäre sonst dauernd belegt und Klicks kämen nicht durch)
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
   const p = await ctx.newPage();
+  await p.addInitScript(() => {
+    window.__kbAnzeigeTimer = [];
+    const set = window.setInterval;
+    window.setInterval = function (fn, ms) { if (ms === 30000) window.__kbAnzeigeTimer.push(fn); return set.apply(this, arguments); };
+  });
   const errs = [];
   p.on('pageerror', (e) => errs.push('pageerror: ' + String(e).slice(0, 200)));
   p.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text().slice(0, 200)); });
@@ -32,7 +37,7 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
     const K = window.KB3D, last = K.Buero.last;
     return { ver: K.DESIGN_VERSION, attr: document.querySelector('.kb').getAttribute('data-design'), rooms: K.ROOMS, size: K.ROOM_SIZE, live: Object.keys(last.debug.live()), seats: last.debug.seats.map((s) => ({ room: s.spec.room, i: s.spec.i, x: s.x, z: s.z, used: !!s.used, boss: !!s.spec.boss })) };
   });
-  ok('Designversion von Seite und Code gleich und 14', w.ver === w.attr && w.ver === 'campus-einheitlich-14', [w.ver, w.attr]);
+  ok('Designversion von Seite und Code gleich und 16', w.ver === w.attr && w.ver === 'campus-einheitlich-16', [w.ver, w.attr]);
   ok('sieben Räume bekannt', Object.keys(w.rooms).length === 7 && FOLGE.every((n) => w.rooms[n]), Object.keys(w.rooms));
   ok('Räume sind gross (mindestens 80 m², mindestens 10 × 8 m)', w.size[0] >= 10 && w.size[1] >= 8 && w.size[0] * w.size[1] >= 80, w.size);
   // Abstand zwischen zwei Räumen (Gasse): in x oder in z mindestens 2,5 m Luft
@@ -144,7 +149,7 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
     for (let y = 130; y <= 470; y += 20) rand.push({ y, links: Math.abs(lum(58, y) - lum(30, y)), rechts: Math.abs(lum(966, y) - lum(990, y)) });
     return {
       sieben: zeichne(() => T.liveboard(k7)), neun: zeichne(() => T.liveboard(k9)), zentral: zeichne(() => T.liveboardUebersicht(mo.__uebersicht)),
-      namen7: k7.zeilen.map((z) => z.name), rand, kachelNamen: mo.__uebersicht.raeume.map((r) => r.titel).concat(['Alle zusammen']),
+      namen7: k7.zeilen.map((z) => z.name), rand, journalNamen: (mo.__uebersicht.abgeschlossen || []).slice(0, 2).concat(mo.__uebersicht.meldungen || []).slice(0, 3).map((r) => r.name),
     };
   });
   const trifft = (r, n) => r.t === n || (r.t.endsWith('…') && n.startsWith(r.t.slice(0, -1)));
@@ -155,9 +160,9 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   const fuss9 = geo.neun.find((r) => r.t.indexOf('Messstand') === 0), hinweis = geo.neun.find((r) => /weitere Zeilen im Raum/.test(r.t));
   ok('mit neun Zeilen steht «+ 2 weitere Zeilen im Raum» rechts auf der Fusszeile, ohne sie zu berühren', !!hinweis && !!fuss9 && /^\+ 2 weitere/.test(hinweis.t) && Math.abs(hinweis.y - fuss9.y) <= 2 && hinweis.l >= fuss9.r + 24 && hinweis.r <= 976, { hinweis, fuss9 });
   const aussen = geo.zentral.filter((r) => r.l < 64 || r.r > 960);
-  ok('Zentralmonitor: jeder Text liegt innerhalb von 64 bis 960 px (die Nachbarwände verdecken je nach Kamera bis zu 55 px Rand)', geo.zentral.length > 20 && aussen.length === 0, aussen.slice(0, 4));
-  const abgekuerzt = geo.kachelNamen.filter((n) => !geo.zentral.some((r) => r.t === n));
-  ok('Zentralmonitor: alle acht Kachelnamen stehen ausgeschrieben da (keiner mit «…» abgekürzt)', geo.kachelNamen.length === 8 && abgekuerzt.length === 0, abgekuerzt);
+  ok('Zentralmonitor: jeder Text liegt innerhalb von 64 bis 960 px (die Nachbarwände verdecken je nach Kamera bis zu 55 px Rand)', geo.zentral.length > 10 && aussen.length === 0, aussen.slice(0, 4));
+  const abgekuerzt = geo.journalNamen.filter((n) => !geo.zentral.some((r) => trifft(r, n)));
+  ok('Zentralmonitor zeigt die tatsächlichen letzten Arbeitsmeldungen', geo.journalNamen.length > 0 && abgekuerzt.length === 0 && geo.zentral.some((r) => r.t === 'Was im Büro passiert'), abgekuerzt);
   const unruhig = geo.rand.filter((s) => s.links > 15 || s.rechts > 15);
   ok('Zentralmonitor: auch Kacheln und Balken bleiben aus dem Randstreifen (Pixel bei x = 58 und x = 966 gleichen dem Hintergrund)', geo.rand.length >= 10 && unruhig.length === 0, unruhig.slice(0, 4));
 
@@ -256,10 +261,123 @@ const FOLGE = ['Chefbüro', 'Krypto', 'Shop', 'Versand', 'Social Media', 'Entwic
   ok('Knopf «Liveboard» ohne Raum öffnet den Zentralmonitor', (await p.evaluate(() => window.KB3D.Buero.last.debug.monitor())) === 'Zentral');
   await klick('[data-cmd="monitorBack"]');
 
+  // Ein grüner, wartender oder laufender Vorgang ist kein erledigter Auftrag.
+  const journal = await p.evaluate(() => {
+    const original = window.__ROWS, jetzt = Date.now(), iso = (n) => new Date(n).toISOString();
+    try {
+      window.__ROWS = original.map((r) => Object.assign({}, r));
+      const setzen = (id, werte) => Object.assign(window.__ROWS.find((r) => r.id === id), { gemessen: iso(jetzt), gemessen_text: 'Testmessung', frisch_h: 24, status: 'gruen', lauf_ende: iso(jetzt - 60000), lauf_status: 'completed', lauf_ergebnis: 'success' }, werte);
+      setzen('auswahl', { lauf_id: 'probe-1', befund: 'GitHub: fünf Varianten im Test geprüft.' });
+      setzen('schaufenster', { lauf_id: 'probe-1' });
+      setzen('waechter', { lauf_id: 'probe-2', lauf_ergebnis: 'failure', status: 'rot' });
+      setzen('autopilot', { lauf_id: 'probe-3', lauf_status: 'in_progress' });
+      setzen('fortura', { lauf_id: 'probe-4', lauf_status: 'queued' });
+      setzen('printful', { lauf_id: 'probe-5', lauf_ende: iso(jetzt + 86400000) });
+      window.__runAll();
+      const m = window.KB3D.Buero.last.liveModelle().__uebersicht;
+      const text = document.querySelector('.kb-ergebnisse').textContent;
+      return { abgeschlossen: m.abgeschlossen.map((r) => r.id), meldungen: m.meldungen.map((r) => r.id), blocker: m.blocker.map((r) => r.id), ergebnisErhalten: text.includes('GitHub: fünf Varianten im Test geprüft.'), keinHauptlink: document.querySelectorAll('.kb-arbeitslinks a[href],.kb3-monitor-tools a[href]').length === 0 };
+    } finally { window.__ROWS = original; window.__runAll(); }
+  });
+  ok('nur bestätigter erfolgreicher Abschluss zählt, gleiche Lauf-ID wird einmal gezeigt', journal.abgeschlossen.length === 1 && journal.abgeschlossen[0] === 'auswahl', journal);
+  ok('Fehler, wartende/aktive Vorgänge und zukünftiges Ende bleiben ohne Abschluss', journal.blocker.includes('waechter') && ['autopilot','fortura','printful'].every((id) => journal.meldungen.includes(id)), journal);
+  ok('Befunde bleiben erhalten; die Hauptansicht ist kein Direktlink-Verzeichnis', journal.ergebnisErhalten && journal.keinHauptlink, journal);
+
+  // Messfehler dürfen keine grünen Lampen und keine fremde Raum-Messzeit erzeugen.
+  const frische = await p.evaluate(() => {
+    const vorher = window.__ROWS, nowFn = Date.now, jetzt = Date.now();
+    const iso = (t) => new Date(t).toISOString(), T = window.KB3D.tex;
+    let aus;
+    try {
+      window.__ROWS = vorher.map((r) => {
+        const n = Object.assign({}, r);
+        if (n.bereich === 'Shop') Object.assign(n, { status: 'gruen', gemessen: iso(jetzt - 48 * 3600000), frisch_h: 24, aktiv_h: 0 });
+        if (n.bereich === 'Krypto') Object.assign(n, { status: 'gruen', gemessen: iso(jetzt), frisch_h: 24, aktiv_h: 0 });
+        return n;
+      });
+      window.__runAll();
+      const L = window.KB3D.Buero.last, mo = L.liveModelle();
+      const eigenerStand = new Date(jetzt - 48 * 3600000).toLocaleString('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+      const alt = mo.Shop.zeilen.every((z) => z.state === 'alt' && /vor 2 d/.test(z.alter));
+      const raum = mo.Shop.stand === eigenerStand && mo.Shop.stand !== mo.Krypto.stand;
+      ['auswahl', 'schaufenster', 'waechter'].forEach((id, i) => {
+        Object.assign(window.__ROWS.find((r) => r.id === id), { status: 'gruen', gemessen: ['', 'kaputt', iso(jetzt + 86400000)][i], frisch_h: 24 });
+      });
+      window.__runAll();
+      const unbekannt = ['auswahl', 'schaufenster', 'waechter'].map((id) => L.ents.find((e) => e.id === id).state);
+      const missing = L.liveModelle().Shop.zeilen.filter((z) => /Nicht gemessen|Zeit unklar/.test(z.alter)).length;
+      const texte = [], fill = CanvasRenderingContext2D.prototype.fillText;
+      CanvasRenderingContext2D.prototype.fillText = function (t) { texte.push(String(t)); return fill.apply(this, arguments); };
+      try { T.liveboard(null); T.liveboardUebersicht(null); T.station({ name: 'Quellzeile', state: 'gelb', text: 'Echter Ereignistext', alter: 'Nicht gemessen' }); T.screen('chart'); T.screen('dash'); } finally { CanvasRenderingContext2D.prototype.fillText = fill; }
+      window.__ROWS = vorher.map((r) => Object.assign({}, r, r.id === 'auswahl' ? { status: 'gruen', gemessen: iso(jetzt), frisch_h: 1, aktiv_h: 0 } : {}));
+      window.__runAll();
+      Date.now = () => jetzt + 2 * 3600000;
+      window.__kbAnzeigeTimer.forEach((fn) => fn());
+      const gealtert = L.ents.find((e) => e.id === 'auswahl').state;
+      aus = { alt, raum, unbekannt, missing, gealtert, timer: window.__kbAnzeigeTimer.length,
+        quellentext: texte.includes('Quellzeile') && texte.includes('Echter Ereignistext') && texte.includes('Nicht gemessen'),
+        keinFalschesLive: !texte.includes('LIVE') && !texte.includes('BTC/USDT') && !texte.includes('12 · 3 · 0') };
+    } finally { Date.now = nowFn; window.__ROWS = vorher; window.__runAll(); }
+    return aus;
+  });
+  ok('alte Zeilen bleiben alt, jeder Raum trägt seine eigene Messzeit', frische.alt && frische.raum, frische);
+  ok('fehlende, ungültige und zukünftige Messzeiten bleiben sichtbar ungeklärt', frische.unbekannt.every((s) => s === 'gelb') && frische.missing === 3, frische);
+  ok('Arbeitsplatz zeigt die Quellzeile; Uhr und Platzhalter behaupten keine Live-Metriken', frische.quellentext && frische.keinFalschesLive, frische);
+  ok('lokaler Anzeige-Timer lässt Messungen auch mit reduzierter Bewegung altern', frische.timer > 0 && frische.gealtert === 'alt', frische);
+
+  // Gerenderte Bildpunkte prüfen: ein gültiges Modell allein erkennt verdeckte Bildschirmflächen nicht.
+  const bildprobe = await p.evaluate(() => {
+    const L = window.KB3D.Buero.last, result = {};
+    function vergleichen(name, fokus) {
+      if (fokus) L.cmd('monitor:' + name); else L.goView(name, true);
+      Object.assign(L.debug.cam, L.debug.cam.g); L.debug.render(1.7, true);
+      const bd = name === 'Zentral' ? L.W.overview : L.W.live[name], mo = L.liveModelle();
+      const src = name === 'Zentral' ? window.KB3D.tex.liveboardUebersicht(mo.__uebersicht) : window.KB3D.tex.liveboard(mo[name]);
+      const ctx = src.getContext('2d'), gl = L.R.gl, canvas = gl.canvas;
+      const punkte = [[80,80],[512,80],[930,80],[90,180],[500,180],[930,180],[90,360],[500,360],[930,360],[80,480],[930,480]];
+      let passend = 0;
+      punkte.forEach(([u,v]) => {
+        const q = L.debug.project(bd.c[0]+(u/1024-0.5)*bd.w,bd.c[1]+(0.5-v/512)*bd.h,bd.c[2]);
+        if(!q)return;
+        const px=Math.floor(q.x*canvas.width/L.R.w),py=Math.floor(canvas.height-q.y*canvas.height/L.R.h);
+        if(px<0||py<0||px>=canvas.width||py>=canvas.height)return;
+        const rgb=new Uint8Array(4);gl.readPixels(px,py,1,1,gl.RGBA,gl.UNSIGNED_BYTE,rgb);
+        const soll=ctx.getImageData(u,v,1,1).data;
+        if(Math.abs(rgb[0]-soll[0])+Math.abs(rgb[1]-soll[1])+Math.abs(rgb[2]-soll[2])<100)passend++;
+      });
+      return passend;
+    }
+    result.raum=vergleichen('Shop',false);result.zentral=vergleichen('Zentral',true);L.cmd('monitorBack');
+    return result;
+  });
+  ok('Raummonitor bleibt vor seinem Gehäuse sichtbar (Bildpunkt-Gegenprobe)', bildprobe.raum >= 8, bildprobe);
+  ok('Zentralmonitor ist in der Fokusansicht ohne verdeckende Nachbarwände lesbar', bildprobe.zentral >= 8, bildprobe);
+
   // ---------- 8) Aufwand und Fehler ----------
   const last = await p.evaluate(() => window.KB3D.Buero.last.debug.render(1.7, true));
   ok('Zeichenaufrufe und Dreiecke bleiben im Rahmen (unter 1400 und 900 000)', last.draws < 1400 && last.tris < 900000, last);
   ok('keine Seiten- oder Konsolenfehler', errs.length === 0, errs);
+  // Arbeitsdaten müssen ohne 3D am Handy und im WebGL-Rückfall sichtbar bleiben.
+  for (const [name, width] of [['Handy-Start', 390], ['Desktop ohne WebGL', 1280]]) {
+    const fallbackCtx = await b.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+    const fallback = await fallbackCtx.newPage();
+    await fallback.addInitScript(() => {
+      const get = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (kind) { return /webgl/.test(kind) ? null : get.apply(this, arguments); };
+    });
+    await fallback.goto('file://' + dir + '/harness.html');
+    await fallback.evaluate(() => {
+      const jetzt = Date.now(), original = window.__ROWS[0];
+      window.__ROWS = [Object.assign({}, original, { id: 'auswahl', status: 'gruen', gemessen: new Date(jetzt).toISOString(), frisch_h: 24, lauf_id: 'fallback-beleg', lauf_status: 'completed', lauf_ergebnis: 'success', lauf_ende: new Date(jetzt - 60000).toISOString(), befund: 'Der belegte Testlauf bleibt ohne 3D sichtbar.' })];
+      window.__runAll();
+    });
+    const gesehen = await fallback.evaluate(() => {
+      const box = document.querySelector('.kb-ergebnisse');
+      return { text: box.textContent, sichtbar: !box.closest('[hidden]') && box.offsetHeight > 0, ausserhalb3D: !box.closest('#kb-pane-3d'), canvas: document.querySelectorAll('.kb3-canvas').length, tab: document.querySelector('#kb-tab-buero').getAttribute('aria-selected'), journal: window.KB3D.arbeitsJournal ? true : false };
+    });
+    ok(name + ': belegte Ergebnisse ohne WebGL sichtbar, gleiche gemeinsame Logik', gesehen.sichtbar && gesehen.ausserhalb3D && gesehen.canvas === 0 && gesehen.tab === 'true' && gesehen.journal && gesehen.text.includes('Der belegte Testlauf bleibt ohne 3D sichtbar.') && gesehen.text.includes('Lauf abgeschlossen'), gesehen);
+    await fallbackCtx.close();
+  }
   await b.close();
   console.log(fehler ? '\n' + fehler + ' FEHLER' : '\nalles ok');
   process.exit(fehler ? 1 : 0);
