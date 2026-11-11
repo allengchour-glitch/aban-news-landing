@@ -31,11 +31,15 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install --quiet google-auth requests
+      # Die Merchant-Nummer zuerst maskieren: GitHub druckt Umgebung und Skript eines Schritts, bevor er läuft.
+      # Darum liest dieser Schritt die Eingabe aus der Ereignisdatei (der Wert steht nie im Skripttext).
+      - name: Nummer maskieren
+        run: |
+          MID=$(jq -r '.inputs.merchant_id // ""' "$GITHUB_EVENT_PATH")
+          if [ -n "$MID" ]; then echo "::add-mask::$MID"; fi
       - name: Probe
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           MERCHANT_ID: ${{ inputs.merchant_id }}
           REGISTRIEREN: ${{ inputs.registrieren }}
-        run: |
-          if [ -n "$MERCHANT_ID" ]; then echo "::add-mask::$MERCHANT_ID"; fi
-          python3 automation/merchant_probe.py
+        run: python3 automation/merchant_probe.py
