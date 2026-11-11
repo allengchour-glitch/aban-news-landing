@@ -15,7 +15,7 @@ oder falsche Angaben (Gürtel «Material: Denim», Uhr «Gold» bei 6 Farben, Ti
 | yoga-tanktop-mit-uberkreuztem-rucken-609800 | 8 | 15 | 21 | 7 Textstellen, Campinggrün→Türkis | aufgenommen |
 | smartwatch-mit-bluetooth-headset-sportarmband-617400 | 4 | 9 | 4 | 3 Textstellen, 4 Optionswerte | aufgenommen |
 | antihaft-silikon-kuchenhelfer-set-602100 | 10 | 13 | 36 | 4 Textstellen | aufgenommen |
-| wasserdichte-armbanduhr-gold-chronograph-604800 | 7 | 9 | 6 | Titel «Digitale Armbanduhr wasserdicht 5 bar mit Stoppuhr und Beleuchtung», SEO, 5 Textstellen, Metafeld color gelöscht | **bleibt draussen** (Marken-Entscheid) |
+| wasserdichte-armbanduhr-gold-chronograph-604800 | 7 | 9 | 6 | Titel «Digitale Armbanduhr wasserdicht 5 bar mit Stoppuhr und Beleuchtung», SEO, 5 Textstellen, Metafeld color gelöscht | aufgenommen 22:40 UTC nach Besitzer-Entscheid |
 
 Jedes Produkt: Trockenlauf als eigener Aufruf, dann `LIVE=1 NUR=<handle>`, danach «NACHGELESEN OK» (Galerie, Hauptbild,
 Variantenbilder, Titel, Beschreibung, SEO, Optionen, Metafelder). Gelöste Medien bleiben als Dateien in Shopify (nicht gelöscht).
@@ -32,10 +32,17 @@ Google-Kanal: `PHASE=aufnehmen BUDGET=78000 ONLY=<6 Handles>` (Trockenlauf, dann
 (Uhr: `alle_plaene_v2_diag_uhr.json`). Die Rücknahme bricht ab (Exit 6), wenn jemand das Produkt inzwischen geändert hat;
 `ZURUECK_FREMD=1` übersteuert. Aus dem Google-Kanal: `PHASE=abwaehlen ONLY=<handle>` in `automation/gmc_schaufenster.mjs`.
 
-## Offen (Besitzer)
+## Uhr: Marke SKMEI (Besitzer 11.11. ca. 22:37 UTC «Hersteller SKMEI, dann Google»)
 
-- **Uhr:** Vendor und JSON-LD nennen «LuxeStyle», alle Bilder zeigen die Marke SKMEI (Aufdruck auf der Ware). Entweder
-  vendor «SKMEI» + `custom_product` false (MPN 2710) und dann Google, oder das Produkt bleibt ausserhalb von Google.
+LIVE 22:38 UTC: vendor «LuxeStyle» → «SKMEI», `mm-google-shopping.custom_product` true → false, Varianten-Metafeld
+`mm-google-shopping.mpn` = «2710» an allen 6 Varianten (QUELLE CJ-Datenblatt «Model 2710»; vorher leer). Rückgabe der
+Mutation ohne Fehler. 22:40 UTC in den Google-Kanal aufgenommen (Trockenlauf, dann LIVE 1 von 1). Rücknahme: vendor zurück,
+`custom_product` true, die 6 `mpn` löschen, `PHASE=abwaehlen ONLY=…`. Ob CJ Originalware liefert, ist unbekannt.
+
+## Offen
+
+- ~~**Uhr:** Vendor und JSON-LD nennen «LuxeStyle», alle Bilder zeigen die Marke SKMEI (Aufdruck auf der Ware). Entweder
+  vendor «SKMEI» + `custom_product` false (MPN 2710) und dann Google, oder das Produkt bleibt ausserhalb von Google.~~ Entschieden, siehe oben.
 - Kariertes Set: Altersgruppe je Variante und Aufteilen der Option nicht gemacht (nicht Teil des Werkzeugs).
 - Gürtel: neue Bilder 700 × 700 aus Quellen mit 617 bis 655 px (weiss aufgefüllt, nicht hochskaliert).
 - Wirkung bei Google ungemessen (Prüfung dauert Stunden bis Tage).
