@@ -148,6 +148,15 @@ jobs:
             echo "Keine Aenderung."
           fi
 
+  # Claudes tägliche Einschätzung für Bitcoin und Ethereum im Schattenkonto (Spielgeld, kein Auftrag, kein Broker). Kein eigener Zeitplan:
+  # hängt am Tages-Update. Schalter docs/KI-TRADER-CLOUD-FREI.txt (löschen = Stopp); Kostengrenze (3 USD je Monat) und Tagesgrenze
+  # (4 Anfragen) stehen in automation/ki_trader_cloud.py. Ohne Schlüssel oder ohne Freigabe endet der Lauf grün und ohne Anfrage.
+  ki-trader-cloud:
+    needs: ki-bot-schatten
+    if: always()
+    uses: ./.github/workflows/ki-trader-cloud.yml
+    secrets: inherit
+
   merchant-feed:
     # Google-Merchant-Feed fuer LuxeStyle taeglich neu erzeugen und auf
     # https://abannews.com/google-merchant-feed.xml ausliefern.

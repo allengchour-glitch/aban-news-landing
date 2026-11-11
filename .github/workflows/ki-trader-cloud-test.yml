@@ -1,0 +1,43 @@
+name: KI-Trader Cloud Selbsttest
+
+# Offline-Test (kein Schlüssel, kein Netz) und Mutationsprobe für den Cloud-Lauf des KI-Traders. Läuft bei Änderungen am Lauf,
+# an seinen Tests, an den beiden Workflows und an ki_trader.py (dessen Schnittstelle der Lauf benutzt).
+# Eigene kleine Datei statt einer Zeile in einem geteilten Test-Workflow: so gibt es keine Zusammenführungs-Konflikte.
+on:
+  pull_request:
+    paths:
+      - 'automation/ki_trader_cloud.py'
+      - 'automation/test_ki_trader_cloud.py'
+      - 'automation/ki_trader_cloud_mutationsprobe.py'
+      - 'tools/trading/krypto_bot/ki_trader.py'
+      - '.github/workflows/ki-trader-cloud.yml'
+      - '.github/workflows/ki-trader-cloud-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ki-trader-cloud-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/ki_trader_cloud.py
+            automation/test_ki_trader_cloud.py
+            automation/ki_trader_cloud_mutationsprobe.py
+            tools/trading
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Selbsttest
+        run: python automation/test_ki_trader_cloud.py
+      - name: Mutationsprobe (jeder eingebaute Fehler muss den Test rot machen)
+        run: python automation/ki_trader_cloud_mutationsprobe.py

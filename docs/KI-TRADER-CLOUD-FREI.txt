@@ -1,0 +1,12 @@
+KI-Trader in der Cloud: freigegeben.
+
+Solange diese Datei in main liegt, holt der tägliche Lauf (tages-update.yml ruft ki-trader-cloud.yml) Claudes Einschätzung für
+Bitcoin und Ethereum und schreibt sie ins Schattenkonto unter data/ki-cloud/. Nur Spielgeld: kein Auftrag, kein Broker, kein Geld
+an einer Börse.
+
+Kosten: der Anthropic-Schlüssel des Repos (Secret ANTHROPIC_API_KEY). Grenzen: 3 USD je Monat, 4 Anfragen je Tag.
+
+Stopp: diese Datei löschen.
+
+Grundlage: Besitzer am 11.11.2026 («link für github» auf die Frage nach dem täglichen Cloud-Lauf, danach «mach du offene punkte
+fertig»). Das ist die Auslegung von Claude, nicht wörtlich bestätigt.

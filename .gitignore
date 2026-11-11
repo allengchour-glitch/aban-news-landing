@@ -135,6 +135,7 @@ tools/trading/daten/binance_1d/
 data/krypto-pilot.json
 data/eth-sammler.json
 data/ki-trader.json
+data/ki-kosten.json
 data/krypto-einstellungen.json
 data/krypto-profit.json
 data/krypto-auto.log
