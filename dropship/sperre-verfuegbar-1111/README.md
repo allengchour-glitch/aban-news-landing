@@ -53,3 +53,18 @@ Trockenlauf am 11.11. (Exit 0): Magnet 3 Varianten und Bügeltransfer 1 Variante
 ## Ungemessen
 
 Ob Shopify das Setzen der Menge am Printful-Standort annimmt; wie schnell Printful zurücksetzt; ob die Google-App «out of stock» meldet und wie schnell; Wirkung auf Besuche und Käufe.
+
+## Täglicher Wächter (seit 11.11.2026)
+
+Der Workflow `kaufweg-waechter.yml` (täglich 08:53 UTC, Handstart möglich) hat einen zweiten Job `sperre`. Er liest nur (Admin-API) und prüft:
+
+1. `PRUEFEN=1 BEKANNT_KAUFBAR=dad-cap-selbst-gestalten node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs`: kein gesperrtes Produkt ist kaufbar. Der Dad-Cap ist als bekannte Lücke ausgenommen (im Onlineshop weiter kaufbar, siehe oben).
+2. `PRUEFEN=1 node dropship/sperre-verfuegbar-1111/dad_cap_kanaele.mjs`: der Dad-Cap steht nur im Onlineshop und trägt das Tag.
+
+Exit 2 eines der beiden Skripte = Befund: der Lauf wird rot und meldet per Telegram (nicht beim Handstart mit `trockenlauf`). Fehlender oder falscher Zugang = «nicht messbar»: kein Alarm, Warnung im Lauf. Sobald ein Produkt entsperrt ist (kein `mode=blocked` mehr in der Beschreibung), prüfen die Skripte es nicht mehr.
+
+Lokal geprüft am 11.11. (der Schritt des Workflows als Shell-Skript, vier Fälle): echter Shop → Exit 0; ohne die Ausnahme für den Dad-Cap → Exit 1 mit `befund=1`; ohne Zugang → übersprungen; falscher Zugang → nicht messbar. **Ungemessen:** der erste Lauf in GitHub Actions und die Zustellung der Telegram-Meldung.
+
+## Magnet: Sperrgrund gemessen (11.11.2026 09:50 UTC)
+
+Der Rollout sperrte den Magneten wegen `REGIONAL_AVAILABILITY_UNKNOWN` (`rollout-v63/allowlist.json`). GEMESSEN über die Printful-API: Modell 656 «Die-Cut Magnets», drei Varianten (`16366`, `16367`, `16465`), alle `in_stock`, Herstellung nur in den USA; `POST /shipping/rates` nach Zürich liefert für jede Variante «Flat Rate» CHF 6.84, 10 bis 15 Tage. Zoll und Einfuhrsteuer für US-Ware: ungemessen. Der Magnet kann also freigeschaltet werden. Das ist ein Schritt des Editor-Rollouts (Codex, Ja des Besitzers je Stufe); vorher die Rücknahme oben fahren. Hinweis an Codex: `dropship/CODEX-RUECKMELDUNG-1111.md`.

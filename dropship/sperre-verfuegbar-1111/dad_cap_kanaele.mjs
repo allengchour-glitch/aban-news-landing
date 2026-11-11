@@ -13,6 +13,7 @@
 // Aufrufe:  node dad_cap_kanaele.mjs                     Trockenlauf (Vorgabe)
 //           LIVE=1 node dad_cap_kanaele.mjs              schreibt, legt sicherung_dad_cap.json an, liest zurück
 //           ZURUECK=1 LIVE=1 node dad_cap_kanaele.mjs    veröffentlicht wieder auf den Kanälen der Sicherung, Tag weg
+//           PRUEFEN=1 node dad_cap_kanaele.mjs           nur lesen: Exit 2, wenn das gesperrte Produkt wieder auf anderen Kanälen steht oder das Tag fehlt
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,6 +22,7 @@ const HIER = dirname(fileURLToPath(import.meta.url));
 const SICHERUNG = process.env.SICHERUNG || join(HIER, 'sicherung_dad_cap.json');
 const LIVE = process.env.LIVE === '1';
 const ZURUECK = process.env.ZURUECK === '1';
+const PRUEFEN = process.env.PRUEFEN === '1';
 const HANDLE = 'dad-cap-selbst-gestalten';
 const PRODUKT = 'gid://shopify/Product/15422849188225';
 const TAG = 'editor-gesperrt-nicht-live';
@@ -50,6 +52,14 @@ const namen = (ks) => ks.map((k) => k.titel.replace(/^Channel Catalog \d+ for /,
 
 const ist = await lesen();
 console.log(`IST ${ist.handle} | ${ist.status} | Sperre in der Beschreibung: ${ist.gesperrt} | Tag gesetzt: ${ist.tags.includes(TAG)} | Kanäle: ${namen(ist.kanaele)}`);
+
+if (PRUEFEN) {
+  if (!ist.gesperrt) { console.log('Die Beschreibung trägt kein «mode=blocked» mehr: Produkt ist entsperrt, nichts zu prüfen.'); process.exit(0); }
+  const fremd = ist.kanaele.filter((k) => !istOnlineshop(k.titel));
+  const ok = fremd.length === 0 && ist.tags.includes(TAG);
+  console.log(ok ? 'Zwischenlösung steht: nur Onlineshop, Tag gesetzt.' : `ABWEICHUNG: weitere Kanäle: ${namen(fremd)} | Tag gesetzt: ${ist.tags.includes(TAG)}`);
+  process.exit(ok ? 0 : 2);
+}
 
 if (ZURUECK) {
   if (!existsSync(SICHERUNG)) { console.error('keine Sicherung vorhanden: ' + SICHERUNG); process.exit(1); }
