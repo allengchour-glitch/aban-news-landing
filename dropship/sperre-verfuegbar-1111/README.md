@@ -1,6 +1,19 @@
 # Gesperrte «Selbst gestalten»-Produkte: auch serverseitig nicht kaufbar (11.11.2026)
 
-**Stand: gebaut und von zwei unabhängigen Prüfern gegengelesen, NOCH NICHT LIVE.** Der Live-Lauf wurde am 11.11. von der Berechtigungsprüfung der Sitzung abgelehnt (Änderung an geteilter Ressource) und nicht umgangen. Er braucht das ausdrückliche Ja des Besitzers; danach derselbe Befehl.
+**Stand: LIVE seit 11.11.2026, 09:06 UTC (Magnet, Bügeltransfer) und 09:12 UTC (Dad-Cap), auf zwei ausdrückliche Antworten des Besitzers.** Der erste Live-Versuch wurde von der Berechtigungsprüfung der Sitzung abgelehnt und nicht umgangen; nach der gezielten Frage («Ja, nicht kaufbar stellen») lief derselbe Befehl.
+
+## Ergebnis des Live-Laufs (GEMESSEN)
+
+| Produkt | Vorher | Jetzt | Beleg |
+|---|---|---|---|
+| Magnet (3 Varianten) | kaufbar, `InStock` | Bestandsführung an, DENY, nicht kaufbar | Admin frisch gelesen; `cart/add.js` für alle drei Varianten HTTP 422 «bereits ausverkauft»; Seite 09:22 UTC: «Momentan ausverkauft», JSON-LD `OutOfStock` |
+| Bügeltransfer (1 Variante) | kaufbar, `InStock` | Bestandsführung an, DENY, nicht kaufbar (Menge bleibt −1) | Admin frisch gelesen; Seite 09:22 UTC: «Momentan ausverkauft», JSON-LD `OutOfStock`; `cart/add.js` von aussen nicht messbar (HTTP 429, Drosselung) |
+| Dad-Cap (1 Variante) | kaufbar, 8 Kanäle | **unverändert kaufbar im Onlineshop**, aber nur noch im Kanal Online Store, Tag `editor-gesperrt-nicht-live` | `inventorySetQuantities` am Standort «Printful»: `INVALID_LOCATION` (Shopify lässt uns dort nicht schreiben); `dad_cap_kanaele.mjs` frisch nachgelesen: ACTIVE, 1 Kanal, Tag gesetzt; Seite 09:22 UTC weiter `InStock` und «Bestelle jetzt» |
+
+- **Dad-Cap ist eine Zwischenlösung.** Entscheid des Besitzers am 11.11.: «1, solange nicht du fix» (von den Kanälen nehmen, bis er richtig freigeschaltet ist). Restlücke: ein direkter Warenkorb-Link im Onlineshop. Offen: Dad-Cap entweder richtig freischalten (Stickplatzierung prüfen) oder aus «Selbst gestalten» nehmen.
+- **Nicht ausgeführt:** `promo_raus.mjs` (Bügeltransfer aus `hype-jetzt`/`viral-hits` und aus der Hand-Sammlung `bestseller-premium-heroes` nehmen, weil er dort jetzt als «ausverkauft» vorn steht). Die Berechtigungsprüfung lehnte den Lauf zweimal ab; er braucht ein ausdrückliches Ja.
+- `PRUEFEN=1 node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` meldet nach dem Lauf: 4 Varianten ok, Dad-Cap «kaufbar trotz Sperre» (Exit 2). Das ist der erwartete Stand, bis der Dad-Cap gelöst ist.
+- Rücknahme: `ZURUECK=1 LIVE=1 node dropship/sperre-verfuegbar-1111/sperr_verfuegbar.mjs` (Magnet, Bügeltransfer) und `ZURUECK=1 LIVE=1 node dropship/sperre-verfuegbar-1111/dad_cap_kanaele.mjs` (Kanäle und Tag). Sicherungen: `sicherung.json`, `sicherung_dad_cap.json`.
 
 ## Befund (GEMESSEN 11.11.2026, 08:55 bis 09:10 UTC)
 
@@ -11,7 +24,7 @@
 
 ## Was das Skript tut
 
-`sperr_verfuegbar.mjs` (Kopfkommentar lesen). Nur diese drei Produkte, nur solange die Beschreibung `mode=blocked` trägt, je Variante: Bestandsführung an, Mengen über 0 auf 0, zuletzt die Regel DENY. Status, Kanäle, Beschreibung, Preise und Tags bleiben.
+`sperr_verfuegbar.mjs` (Kopfkommentar lesen), dazu `dad_cap_kanaele.mjs` (Kanäle und Sperr-Tag für den Dad-Cap) und `promo_raus.mjs` (nicht ausgeführt). Nur diese drei Produkte, nur solange die Beschreibung `mode=blocked` trägt, je Variante: Bestandsführung an, Mengen über 0 auf 0, zuletzt die Regel DENY. Status, Kanäle, Beschreibung, Preise und Tags bleiben.
 
 | Aufruf | Wirkung |
 |---|---|
@@ -22,7 +35,7 @@
 
 Trockenlauf am 11.11. (Exit 0): Magnet 3 Varianten und Bügeltransfer 1 Variante am Standort «Shop location» (nicht bestandsgeführt, Menge 0 bzw. −1), Dad-Cap 1 Variante am Standort «Printful» (Menge 9999). `PRUEFEN=1` vor der Änderung: 5 Varianten «kaufbar trotz Sperre» (Exit 2).
 
-## Sichtbare Folgen nach dem Live-Lauf (laut Gegenlesung, nach dem Lauf nachmessen)
+## Sichtbare Folgen (laut Gegenlesung; Produktseiten am 11.11. nachgemessen, Sammlungen und Katalogfenster noch nicht)
 
 - Produktseite: rote Pille «Momentan ausverkauft» ohne Lieferbox statt «Bestelle jetzt». JSON-LD `OutOfStock` (Seiten-Cache kann rund 20 Minuten nachhinken).
 - Sammlungskarten: Abzeichen «Ausverkauft». Der Bügeltransfer steht in `hype-jetzt` und in der Sammlung «Selbst gestalten» auf Platz 1: danach `HANDLES=hype-jetzt node automation/verfuegbar_zuerst.mjs` im Trockenlauf prüfen.
