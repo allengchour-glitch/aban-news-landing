@@ -56,8 +56,17 @@ def suchen(h, name, abfrage):
             if r.status_code != 200:
                 print(f"ABBRUCH: reports:search {version} HTTP {r.status_code}: {r.text[:300]}"); sys.exit(4)
             j = r.json()
-            zeilen += j.get("results") or []
+            neu = j.get("results") or []
+            zeilen += neu
             seite += 1
+            for z in neu:  # Treffer sofort ausgeben, damit auch ein abgebrochener Lauf etwas liefert
+                pv = z.get("productView") or {}
+                for iss in pv.get("itemIssues") or []:
+                    code = ((iss.get("type") or {}).get("code") or "?")
+                    if any(w in code.lower() for w in BILD):
+                        print(f"BILD|{code}|{pv.get('offerId', '')}", flush=True)
+            if seite % 20 == 0:
+                print(f"... Seite {seite}, {len(zeilen)} Zeilen", flush=True)
             token = j.get("nextPageToken")
             if not token:
                 print(f"reports {version}: {seite} Seiten, {len(zeilen)} Zeilen")
@@ -68,7 +77,7 @@ def suchen(h, name, abfrage):
 def main():
     h = anmelden()
     name = konto(h)
-    zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
+    zeilen = suchen(h, name, "SELECT id, offer_id, item_issues FROM product_view")
     codes, treffer = Counter(), []
     beispiel = None
     for z in zeilen:
@@ -86,8 +95,6 @@ def main():
         print(f"  {n:6d}  {c}")
     if beispiel:
         print("Beispiel eines Bildproblems (Struktur):", json.dumps(beispiel)[:600])
-    for t in sorted(treffer, key=lambda t: (t["code"], t["offer_id"])):
-        print(f"BILD|{t['code']}|{t['schwere']}|{t['offer_id']}|{t['titel']}")
     print(f"ERGEBNIS: {len(zeilen)} Artikel gelesen, {len(treffer)} Bildprobleme")
     with open("bildprobleme.json", "w") as f:
         json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "codes": dict(codes), "bild": treffer}, f,
