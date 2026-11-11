@@ -1,0 +1,478 @@
+{
+ "plans": {
+  "wasserdichte-armbanduhr-gold-chronograph-604800": {
+   "handle": "wasserdichte-armbanduhr-gold-chronograph-604800",
+   "machbar": true,
+   "hauptbild": "gid://shopify/MediaImage/77802095804807",
+   "kontaktbogen": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/kontaktbogen_v2.png",
+   "titel_neu": "Digitale Armbanduhr wasserdicht 5 bar mit Stoppuhr und Beleuchtung",
+   "medien_loesen": [
+    {
+     "media_id": "gid://shopify/MediaImage/77802095870343",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a22d1d87-e5c3-4c7c-9ba9-12e7a00d1fce_water.jpg?v=1792658258",
+     "grund": "Gold auf blauem Grund. Retuschefleck oben links auf Farbverlauf (GEMESSEN mit Hochpass). Weisses Auffüllen ginge nur sichtbar. Ein Zuschnitt ab y≈90 schneidet das obere Armbandglied an. Wird ersatzlos gelöst, die Goldvariante hat ein eigenes sauberes Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802096099719",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93248f8d-c30f-40e0-b430-1cc2c82a7ce2_water.jpg?v=1792658258",
+     "grund": "Retuschefleck oben links und lesbarer Text «Beast» auf der Panzerkette unten (GEMESSEN, angesehen). Beides zugleich wegschneiden ergibt weniger als 700 px. Ersatzlos lösen."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802095903111",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7045119-6636-4b6a-bea8-94d6510db657_water.jpg?v=1792658258",
+     "grund": "Variantenbild Aprikose mit Retuschefleck oben links. Wird durch neu_03.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802095935879",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b1b9cf3b-3128-4acd-8431-1798957d97a1_water.jpg?v=1792658258",
+     "grund": "Schwarz beleuchtet, Vorderansicht, mit Retuschefleck oben links. Wird durch neu_04.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802095968647",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5ebea57-268a-45eb-8c8a-7e4cdbf5aa08_water.jpg?v=1792658258",
+     "grund": "Variantenbild Titanfarbe mit Retuschefleck oben links. Wird durch neu_05.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802096001415",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/028d8221-7988-4972-ac73-b093d19028e8_water.jpg?v=1792658259",
+     "grund": "Variantenbild Silber mit Retuschefleck oben links. Wird durch neu_06.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802096034183",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/220749fb-c127-4a66-9bbd-43f81e4b98be_water.jpg?v=1792658258",
+     "grund": "Variantenbild Gold mit Retuschefleck oben links. Wird durch neu_07.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802096066951",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72470a71-a62b-4256-9913-19d9e6f5e6f7_water.jpg?v=1792658258",
+     "grund": "Variantenbild Armeegrün mit Retuschefleck oben links. Wird durch neu_08.png ersetzt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77802096132487",
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abce3ade-f302-4147-9c0d-0270a64ccf09_water.jpg?v=1792658258",
+     "grund": "Variantenbild Schwarz mit Retuschefleck oben links. Wird durch neu_10.png ersetzt."
+    }
+   ],
+   "neue_bilder": [
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_04.png",
+     "alt": "Digitale Armbanduhr in Schwarz mit beleuchteter Anzeige, Vorderansicht",
+     "aus_media_id": "gid://shopify/MediaImage/77802095935879",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 2,
+     "varianten_ids": []
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_10.png",
+     "alt": "Digitale Armbanduhr in Schwarz",
+     "aus_media_id": "gid://shopify/MediaImage/77802096132487",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 3,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691586951"
+     ]
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_05.png",
+     "alt": "Digitale Armbanduhr in Titanfarbe",
+     "aus_media_id": "gid://shopify/MediaImage/77802095968647",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 4,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691619719"
+     ]
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_08.png",
+     "alt": "Digitale Armbanduhr in Armeegrün",
+     "aus_media_id": "gid://shopify/MediaImage/77802096066951",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 5,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691652487"
+     ]
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_03.png",
+     "alt": "Digitale Armbanduhr in Aprikose",
+     "aus_media_id": "gid://shopify/MediaImage/77802095903111",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 6,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691685255"
+     ]
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_07.png",
+     "alt": "Digitale Armbanduhr in Gold",
+     "aus_media_id": "gid://shopify/MediaImage/77802096034183",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 7,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691718023"
+     ]
+    },
+    {
+     "datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/wasserdichte-armbanduhr-gold-chronograph-604800/neu_v2/neu_06.png",
+     "alt": "Digitale Armbanduhr in Silber",
+     "aus_media_id": "gid://shopify/MediaImage/77802096001415",
+     "breite": 800,
+     "hoehe": 800,
+     "position": 8,
+     "varianten_ids": [
+      "gid://shopify/ProductVariant/67801691750791"
+     ]
+    }
+   ],
+   "html_paare": [
+    {
+     "alt": "<p>Für den Alltag oder sportliche Aktivitäten ist diese Armbanduhr ein praktischer Zeitmesser. ",
+     "neu": "<p>Diese digitale Armbanduhr ist ein praktischer Zeitmesser. ",
+     "treffer": 1
+    },
+    {
+     "alt": "Sie ist bis zu 50 Meter wasserdicht und wiegt 58,6 Gramm.",
+     "neu": "Sie ist wasserdicht bis 5 bar (Aufdruck WR5BAR) und wiegt 58,6 Gramm.",
+     "treffer": 1
+    },
+    {
+     "alt": "<li>Robustes Harzglas</li>",
+     "neu": "<li>Uhrglas aus Harz</li>",
+     "treffer": 1
+    },
+    {
+     "alt": "<strong>Material:</strong> Metall</li>",
+     "neu": "<strong>Material:</strong> Gehäuse und Armband aus ABS-Kunststoff, Verschluss aus Edelstahl</li>",
+     "treffer": 1
+    },
+    {
+     "alt": "<strong>Stromversorgung:</strong> Batterie/Akku</li>",
+     "neu": "<strong>Stromversorgung:</strong> Batterie</li>",
+     "treffer": 1
+    }
+   ],
+   "metafelder": [
+    {
+     "namespace": "mm-google-shopping",
+     "key": "color",
+     "typ": "single_line_text_field",
+     "alt": "Gold",
+     "neu": "",
+     "aktion": "loeschen (metafieldsDelete mit ownerId, namespace, key)"
+    },
+    {
+     "namespace": "global",
+     "key": "title_tag",
+     "typ": "string",
+     "alt": "Wasserdichte Armbanduhr Gold Chronograph | LuxeStyle CH",
+     "neu": "Digitale Armbanduhr wasserdicht 5 bar mit Stoppuhr | LuxeStyle CH"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "typ": "string",
+     "alt": "Für den Alltag oder sportliche Aktivitäten ist diese Armbanduhr ein praktischer Zeitmesser. 12/24-Stunden-Format wählbar.",
+     "neu": "Digitale Armbanduhr, wasserdicht bis 5 bar, mit Stoppuhr, Wecker, Datum und Hintergrundbeleuchtung. 12/24-Stunden-Format wählbar. Sechs Farben."
+    }
+   ],
+   "optionen": [],
+   "offen": [
+    "GOOGLE-AUFNAHME GESPERRT bis zum Marken-Entscheid des Besitzers (Fund 3 des Gegenprüfers). Der Plan ändert nur die Produktseite. Er veröffentlicht nichts auf «Google & YouTube». GEMESSEN 11.11. 21:39 UTC: nicht auf dem Kanal, vendor LuxeStyle, alle 6 Varianten ohne Barcode.",
+    "custom_product ENTFÄLLT in diesem Plan (Auftrag Workflow-Leiter, Fund 1 des Gegenprüfers): mm-google-shopping.custom_product bleibt true. Es ist ein Marken- und Feed-Entscheid des Besitzers und gehört zusammen mit vendor «SKMEI» (MPN 2710 nach Wahl). Sonst bleibt das Produkt draussen. Hypothese, nicht gemessen: false ohne GTIN und mit Marke LuxeStyle führt zu einer Meldung «fehlende Kennung». QUELLE Gegenprüfer: automation/lib/gmc_feed_item.mjs liest custom_product nicht, betroffen wäre nur der Shopify-Kanal.",
+    "MARKE (Besitzer-Entscheid): vendor und JSON-LD nennen «LuxeStyle», alle Bilder zeigen SKMEI. QUELLE CJ pid 2609240158591604800: productName beginnt mit 时刻美 (chinesischer Name von SKMEI laut Zweitprüfer, aus Wissen), Model 2710, Rohtitel «现货批发商» (Grosshändler). Ob CJ Originalware liefert, ist unbekannt.",
+    "PRODUKTAUFDRUCK (Entscheid Workflow-Leiter, Fund 2, keine Planänderung): alle 9 künftigen Bilder zeigen «SKMEI» und «WR5BAR» auf dem Gehäuse und Ziffern in der Anzeige. Das ist Aufdruck auf der Ware, kein Overlay (GEMESSEN angesehen). Meint «ohne Logo» auch den Aufdruck, ist das Produkt nicht machbar.",
+    "COLOR-METAFELD (Fund 4 behoben): mm-google-shopping.color («Gold», falsch für 5 von 6 Varianten) wird mit metafieldsDelete gelöscht, nicht leer geschrieben. Shopify lehnt einen leeren Wert ab (Gegenprüfer). metafieldsDelete GEMESSEN im Schema 2026-10 vorhanden (graphql_schema). Hypothese, nicht gemessen: die Google-App nimmt danach die Option «Farbe» je Variante. Nach einer späteren Aufnahme im Merchant Center prüfen, ob jede Variante ihre eigene Farbe trägt.",
+    "ALT-TEXTE (Fund 5 behoben): die zwei behaltenen Medien bekommen feste neue Texte im Feld medien_alt. 77802095804807 zeigt eine schwarze Uhr im Wasser, 77802095837575 eine silberne Uhr am Handgelenk (GEMESSEN angesehen, cdn_v2/00.jpg und 01.jpg). Weg: fileUpdate mit id und alt.",
+    "TEXT (Fund 6 behoben): Paar 2 sagt jetzt «wasserdicht bis 5 bar (Aufdruck WR5BAR)». Das Wort «Herstellerangabe» ist weg. Der Beleg ist der Aufdruck auf dem Gehäuse (GEMESSEN angesehen). Die «50 meters» von CJ sind eine Lieferantenangabe und stehen nicht mehr im Text. Alle 5 Paare GEMESSEN je genau 1 Treffer im frischen descriptionHtml (11.11. 21:39 UTC, unverändert seit dem Planstand). Ergebnis desc_neu_v2.html: 0 mal Metall, Akku, Gold, Chronograph, Herstellerangabe, 50 Meter.",
+    "FRISCH GELESEN 11.11. 21:39 UTC (Admin-API, nur Abfrage, gkorr_werkzeug/uhr/uhr_lies_v2.mjs, Ergebnis prod_frisch_v2.json): ACTIVE, updatedAt 07.11. 12:37:46Z, 11 Medien READY 800 x 800, featuredMedia 77802095804807, 6 Varianten, jede an das Bild aus medien_loesen gebunden, das ihr neues Bild ersetzt. Alle 9 media_id und URL in medien_loesen stimmen mit dem Shop überein.",
+    "BILDER FASSUNG 2 (neu_v2): aus den frisch geladenen CDN-Bildern neu gebaut (cdn_v2/, md5 gleich orig/ und gegen/cdn/, 11 von 11). Verfahren gkorr_werkzeug/uhr/bauen_v2.py, kein KI-Eingriff: das reine Hintergrundfeld oben links weiss aufgefüllt (281 x 126 px, bei neu_04 256 x 119 px). Ausserhalb der Felder bytegleich zum Shopbild, kleinster überschriebener Originalwert 248, Naht 254 bis 255. neu_03, 05, 06, 07, 08, 10 pixelgleich zu Fassung 1.",
+    "NEU in Fassung 2 bei neu_04: Mit 16facher Kontrastverstärkung blieb rechts neben dem Feld ein schwacher Blockrest des Retuscheflecks (x 256 bis 271, y 64 bis 95, Werte 253 und 254, GEMESSEN rest_v2.py). Das zweite Feld füllt ihn weiss. Abstand zum nächsten Produktpixel 8,5 px, kleinster überschriebener Wert 253. Danach rest_v2.py: 0 Restpixel bei 04, 05, 06, 10. Die übrigen Treffer bei 03, 07, 08 (x 320 bis 340) sind JPEG-Kantenblöcke entlang der Uhr. Sie folgen der Produktkante und stehen auch im Original (angesehen, ansicht_v2/lupe_rand.png).",
+    "ANGESEHEN: alle 7 Dateien in neu_v2 einzeln in voller Grösse, die Ecken vorher und nachher verstärkt (ansicht_v2/ecken_vorher_nachher.png, lupe04_v2.png) und der Kontaktbogen kontaktbogen_v2.png in der künftigen Reihenfolge. Kein Fleck, kein Overlay-Text, Uhr vollständig im Bild, 800 x 800 PNG.",
+    "REIHENFOLGE nach dem Lösen: 0 Wasser schwarz (Hauptbild, bleibt), 1 Handgelenk silber (bleibt), 2 neu_04, 3 Schwarz, 4 Titanfarbe, 5 Armeegrün, 6 Aprikose, 7 Gold, 8 Silber. Variantenbindung je Farbe wie in neue_bilder: erst neues Medium READY, dann productVariantDetachMedia des alten Bilds und productVariantAppendMedia des neuen, dann lösen per fileUpdate referencesToRemove, dann productReorderMedia und bis 60 s nachlesen.",
+    "TITEL: «Gold» ist falsch für 5 von 6 Varianten (Standardvariante Schwarz). «Digitale … mit Stoppuhr und Beleuchtung» ist belegt durch CJ: Movement Electronic, Kategorie Digital Watches, Functions Stopwatch und EL Backlight. «wasserdicht 5 bar» belegt durch den Aufdruck WR5BAR. Der Handle bleibt (keine Umleitung nötig). SEO-Titel ist nicht gleich dem Produkttitel, wird also nicht als null gespeichert.",
+    "MATERIAL: das CJ-Datenblatt widerspricht sich (Beschreibung «Case: ABS, Strap: ABS, Clasp: Stainless Steel» gegen materialNameEn «Metal» und entryNameEn «Stainless Steel Watch»). Der Plan folgt der Beschreibung, so steht es auch schon im Fliesstext. Sicher wäre erst ein Muster.",
+    "CJ-BELEGE: aus der Prüferdatei pruef/wasserdichte-armbanduhr-gold-chronograph-604800/zweit/cj.json (product/query pid 2609240158591604800, 11.11. ca. 19:58 UTC), in dieser Runde selbst gelesen. Kein neuer CJ-Abruf.",
+    "Nicht angefasst: der shopweite Vertrauensblock und «Gratis-Versand … WELCOME10» in der Beschreibung; excluded_destination [\"Shopping_ads\"]; gender «unisex» (CJ nennt «Men's»); Optionswert «Aprikose» (CJ «Apricot», Bild wirkt beige); «Gewicht: 58.6g»; judgeme.review_widget_data nennt den alten Titel (Hypothese: Judge.me gleicht das selbst ab)."
+   ]
+  }
+ },
+ "urteile": {
+  "echtleder-gurtel-mit-dornschliesse-605400": {
+   "handle": "echtleder-gurtel-mit-dornschliesse-605400",
+   "urteil": "ok",
+   "funde": [
+    {
+     "schwere": "klein",
+     "was": "Die neuen Bilder sind 700×700, aber der Gürtel ist darin nur so gross wie in den Quellen (617 bis 655 px breit). Die 700 px entstehen allein durch weissen Rand. Die Regel ist damit erfüllt, denn Auffüllen ist erlaubt und nichts ist hochskaliert. Grössere Originale gibt es nicht.",
+     "beleg": "GEMESSEN 11.11. ca. 20:50 UTC: ffprobe 700×700 yuvj444p bei allen vier. Die Quellen m1/m2/m4/m5 sind 635×431, 655×424, 650×426 und 617×415. Ich habe jedes Bild aus der Quelle nachgebaut (crop=iw:ih-118:0:118, pad auf 700×700 mittig, weiss), und das Ergebnis ist byte-gleich zur Plan-Datei (PSNR inf, 4 von 4). Gürtel-Rahmen bei Schwelle 250: links 58 bis 77 px, rechts mindestens 88 px, oben mindestens 228 px, unten mindestens 246 px. Der Plan nennt «mindestens 74 px». Das stimmt nur bei Schwelle 200, bei 250 sind es 58 px (weicher Schatten). Angeschnitten ist trotzdem nichts.",
+     "aenderung": "Keine Änderung nötig. Den Hinweis «Inhalt unter 700 px» beim Besitzer stehen lassen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Bei Elefantengrau und Khaki zeigt ein 25-fach verstärktes Kontrastbild schwache senkrechte Rechtecke vom Freistellen. Im normalen Bild sind sie unsichtbar. Es ist kein Text, kein Logo und kein Wasserzeichen.",
+     "beleg": "GEMESSEN: kontrast_neu.png angesehen. Hintergrund ausserhalb des Gürtels: p2 und p3 mindestens 253, p0 und p1 = 255. In den Zeilen 0 bis 200 und ab 470 gibt es in allen vier Bildern 0 Pixel unter 250. Alle vier Dateien einzeln mit Read angesehen: kein Text, kein Etikett, keine Pfeile, keine Masslinien, nicht angeschnitten.",
+     "aenderung": "Keine. Optional die Werte 253 und 254 auf 255 setzen (Pegel), falls erlaubt. Nötig ist das nicht."
+    },
+    {
+     "schwere": "klein",
+     "was": "Neue Medien werden in Shopify hinten angehängt. p0_schwarz.jpg wird nur dann Hauptbild, wenn die vier Bilder in der Reihenfolge p0 bis p3 angelegt und danach alle 10 alten Medien gelöscht werden. Sonst braucht es ein productReorderMedia.",
+     "beleg": "GEMESSEN Admin-Lesung 11.11. 20:4x UTC: featuredMedia = 70683031273857 (m0, Etikett Khaki/KHAKI). Die 10 Medien-IDs und die 16 Varianten-Bindungen (m6 bis m9) sind gleich dem Plan. Alle 10 CDN-Dateien neu geladen: md5 gleich den lokalen Kopien (10 von 10), m6=m4, m7=m5, m8=m1, m9=m2.",
+     "aenderung": "Beim Einspielen p0 zuerst anlegen oder die Reihenfolge danach setzen. Am Ende frisch lesen: featuredMedia ist das p0-Medium (so steht es im Plan schon)."
+    },
+    {
+     "schwere": "klein",
+     "was": "Der Optionswert «Khaki» zeigt einen rosé-beigen Gürtel. Das ist optional und für die Aufnahme nicht nötig. Der Name stammt vom Lieferanten.",
+     "beleg": "QUELLE CJ cj.json des Zweitprüfers (gelesen 19:46 UTC): Variante «Khaki-95CM» usw. Das neue Bild p3 habe ich angesehen, es wirkt eher Nude oder Altrosa (Eindruck). Die Farbtonmessung des Plans (rund 19°) habe ich nicht wiederholt.",
+     "aenderung": "Entscheid des Besitzers, im Plan nichts ändern."
+    },
+    {
+     "schwere": "klein",
+     "was": "Das CJ-Datenblatt konnte ich nicht frisch lesen: luxe_cj_product_read meldet product_request_budget_exhausted. Die Textbelege habe ich deshalb aus der Datei des Zweitprüfers geprüft.",
+     "beleg": "QUELLE: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/pruef/echtleder-gurtel-mit-dornschliesse-605400/z2/cj.json (pid 2602260743541605400). Sie nennt «Main Material: Full-Grain Leather», productNameEn «… Made Of Cowhide», entryNameEn «Women's Cowhide Belt», materialNameEn [Leather, Others] und Width 2.8 cm. «denim» kommt 0-mal vor, «crack», «fade» und «durable» ebenfalls 0-mal. Die SKUs CJYD276827202BY bis …217QJ passen zu den Farben des Shops (Black=Schwarz, Caramel=Karamell, Elephant Grey=Elefantengrau, Khaki=Khaki). Die neue Zeile «Rindsleder (Vollnarbenleder, Angabe des Lieferanten)» ist damit belegt. Gestrichen werden nur unbelegte Aussagen. Die frisch gelesene descriptionHtml ist byte-gleich mit beschreibung_vorher.html (1213 Zeichen). Jedes der 3 html-Paare kommt genau 1-mal vor. Das Ergebnis ist gleich beschreibung_nachher.html, und der Satzübergang «… Freizeitoutfits. Er ist ideal …» ist sauber.",
+     "aenderung": "Keine."
+    }
+   ]
+  },
+  "taillierte-weste-fur-anzuge-635100": {
+   "handle": "taillierte-weste-fur-anzuge-635100",
+   "urteil": "ok",
+   "funde": [
+    {
+     "schwere": "klein",
+     "was": "Bilder und Varianten bestätigt, kein Widerspruch zum Plan gefunden.",
+     "beleg": "GEMESSEN 11.11. ca. 20:50 UTC (Admin GraphQL frisch, alle 7 Medien selbst mit curl geholt und angesehen): m1 (990×990) zeigt Werbetext «Simple and Fashionable», «Versatile Lightweight Vest» und die Mickey-Tasche. m2 (800×800) zeigt «Simple, Spring and summer simple style vest», «S P R I N G», «Life rhythm», sechs Zeilen Werbetext und die blaue Tasche mit S-Verschluss. m0, m3 und m4 sind ohne Text, Logo oder Wasserzeichen. Saum und Schultern im Hauptbild m0 vergrössert geprüft, nicht angeschnitten. md5: m5 = m0 (03da109d…), m6 = m4 (1a36193f…). Alle 10 Varianten binden an m5 (5× Schwarz) oder m6 (5× Cremeweiss), keine an m1 oder m2. featuredMedia = 69853045621121. Nach dem Lösen bleiben 5 Medien mit 3 verschiedenen sauberen Ansichten.",
+     "aenderung": "Keine."
+    },
+    {
+     "schwere": "klein",
+     "was": "Html-Paare und Belege bestätigt.",
+     "beleg": "GEMESSEN: descriptionHtml frisch gelesen, updatedAt 2026-11-03T20:34:05Z, also gleich desc_frisch.json (md5 0b565bdd…). Jedes alt kommt genau 1 mal vor, kein alt steckt in einem neu, Anwendung ergibt byte-gleich desc_neu.html, Tags danach ausgeglichen (li 12/12, ul 2/2). Danach 0 mal «Beige», 0 mal «Standard-Fit», 0 mal «regulären Schnitt». QUELLE CJ product/query pid 2603150208231635100 (Rohdaten der Prüfer, pruef/…/cj.json und zweit/cj.json gleich; mein eigener luxe_cj_product_read meldete product_request_budget_exhausted): «Fit: Standard», «Body Length: Regular Style (50cm < Body Length ≤ 65cm)», Varianten «Creamy white», «Asian sizes are 1 to 2 sizes smaller … Choose the larger size», «Sizes: M 85-100 jin … 3XL 134-150 jin». Umrechnung 1 Jin = 0,5 kg nachgerechnet, alle 10 Werte stimmen.",
+     "aenderung": "Keine."
+    },
+    {
+     "schwere": "klein",
+     "was": "«Körpergewicht» ist eine Deutung. CJ schreibt nur «Sizes: M 85-100 jin», nicht ausdrücklich Körpergewicht.",
+     "beleg": "QUELLE CJ: Produktgewicht 300 bis 380 g, also kann die Jin-Angabe nur das Körpergewicht der Trägerin meinen. Eine Bewertung im Judge.me-Metafeld sagt ebenfalls «ein bis zwei Grössen grösser» bestellen. Deutung gut gestützt (Hypothese, aber naheliegend), der Text sagt «Richtwert … laut Lieferant».",
+     "aenderung": "Kann so bleiben."
+    },
+    {
+     "schwere": "klein",
+     "was": "Kanalzahl im Plan: 7 statt 6 Kanäle.",
+     "beleg": "GEMESSEN resourcePublications: Online Store, Shop, TikTok, Facebook & Instagram, Pinterest, Headless, Luxe Style Headless, alle veröffentlicht. Google & YouTube (Publication 302872297857) fehlt, wie im Plan gesagt.",
+     "aenderung": "Nur Angabe im Plan; keine Folge für die Korrektur."
+    },
+    {
+     "schwere": "klein",
+     "was": "Keine Nebenwirkung beim Lösen gefunden.",
+     "beleg": "GEMESSEN: kein Metafeld nennt eab3ae37 oder 18e36806. Judge.me image_url und product_variant_image_url zeigen auf 16baac06 (Bild 0, bleibt). translatableResource fr: 0 Übersetzungen, also veraltet nach der Textänderung keine Fremdsprache.",
+     "aenderung": "Keine. Den Hinweis im Plan beachten: Kopien 70622428561793 und 70622428594561 nur lösen, wenn die Varianten vorher an die Originale gebunden sind."
+    }
+   ]
+  },
+  "yoga-tanktop-mit-uberkreuztem-rucken-609800": {
+   "handle": "yoga-tanktop-mit-uberkreuztem-rucken-609800",
+   "urteil": "nachbessern",
+   "funde": [
+    {
+     "schwere": "wichtig",
+     "was": "Die fünf Zuschnitte Türkis, Sumpfgrün, Kastanienbraun, Nachtmeerblau und Schwarz tragen links und rechts je 27 px reines Weiss auf grau-lila Hintergrund. Das wirkt wie ein Rahmen. Google nennt Rahmen ausdrücklich als Ablehnungsgrund. Die Annahme im Plan («Google lehnt Ränder meines Wissens nicht ab») ist damit widerlegt. Betroffen sind die Variantenbilder (image_link) von 15 der 21 Varianten. Bei Türkis ist der Streifen schwächer, bei den vier anderen deutlich.",
+     "beleg": "QUELLE Google Merchant Help «Image link [image_link]» (support.google.com/merchants/answer/6324350, am 11.11. gelesen): Unter «Image requirements → Avoid image disapprovals» steht «Don't use an image with a border … don't include borders around your image». GEMESSEN Pixel in neu/*.jpg: x 0 bis 26 und x 693 bis 719 = 255,255,255. Direkt daneben bei x 27 und x 692 liegt der Hintergrund bei etwa 206,208,224 (Sumpfgrün, Nachtmeerblau, Schwarz, Kastanienbraun) und bei etwa 230,231,227 (Türkis). Ich habe die Zuschnitte aus shop/m0, m1, m3, m5, m9 mit crop=666:720:134:80,pad=720:720:27:0:white nachgebaut. PSNR 49,9 bis 50,7 dB, die Quellen stimmen also. Ein quadratischer Zuschnitt ab 700 px ohne Auffüllen geht nicht: Das Etikett liegt bei x 59 bis 128, rechts davon bleiben nur 671 px.",
+     "aenderung": "Die fünf Bilder neu bauen, gleicher Zuschnitt, aber mit der Hintergrundfarbe des Bildes statt Weiss auffüllen. Die Farbe ist aus dem eigenen Bildrand gemessen (Spalten 27 bis 31 und 688 bis 692, Zeilen 0 bis 300). Das ist kein KI-Eingriff und keine Retusche am Produkt. Werte: Sumpfgrün pad=…:color=0xCED1E1, Nachtmeerblau 0xCED0E0, Schwarz 0xCFD0E1, Kastanienbraun 0xD1D3E4, Türkis 0xE6E7E3 (nur aus dem linken Rand gemessen, rechts liegt Haut). Probedateien liegen unter /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/yoga-tanktop-mit-uberkreuztem-rucken-609800/gegen3/<farbe>_bg.jpg. Ich habe alle angesehen (gegen3/bg_alle.jpg): 720 x 720, kein Rand sichtbar, kein Etikett, Top ganz. Erlaubt die Hausregel nur weisses Auffüllen, muss der Besitzer entscheiden, ob dieses Rahmenrisiko für 15 Varianten getragen wird."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die Toleranz «bis 2 cm» übernimmt nur die Grössentabelle. Der CJ-Text derselben Quelle nennt 2 bis 3 cm.",
+     "beleg": "QUELLE CJ-Beschreibungsbild 85488926 (desc/d0.jpg, selbst abgelesen): «manual measurement (unit CM) error 2CM». QUELLE CJ-Beschreibung (cj_desc.html): «Please allow 2-3cm differences due to manual measurement».",
+     "aenderung": "In Paar 7 «(Toleranz bis 2 cm)» ersetzen durch «(Messtoleranz 2 bis 3 cm)». Diese Angabe deckt beide CJ-Quellen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Das Shopify-Farbfeld nennt nach der Umbenennung keine Farbe für die Türkis-Varianten. Es ist kein Google-Grund, aber die Shop-Filter nach Farbe finden Türkis nicht.",
+     "beleg": "GEMESSEN (graphql_query, 11.11.): Produkt-Metafeld shopify.color-pattern = 5 Metaobjekte mit den Labels Pink, Grün, Blau, Braun und Schwarz. Varianten-Metafelder mm-google-shopping enthalten nur size, keine Farbe.",
+     "aenderung": "Optional ein bestehendes Metaobjekt Türkis anhängen, falls es eines gibt. Sonst unverändert lassen und als offen notieren."
+    },
+    {
+     "schwere": "klein",
+     "was": "Auf allen 8 neuen Bildern ist unten die passende Leggings angeschnitten zu sehen. Google führt «Don't include any product that's not sold together with the main product» in derselben Ablehnungsliste.",
+     "beleg": "QUELLE gleiche Google-Seite, «Avoid image disapprovals». GEMESSEN angesehen: Leggings unten im Bild bei allen 8 Dateien. Hypothese: Fotos, auf denen ein Modell die Ware trägt, werden bei Kleidung in der Regel angenommen. Der neue Text sagt «1 Top (ohne Leggings)». Saubere CJ-Fotos ohne Leggings gibt es laut Plan nicht.",
+     "aenderung": "Keine Änderung. Nach der Freigabe den Merchant-Status dieser Bilder beobachten."
+    },
+    {
+     "schwere": "klein",
+     "was": "Bestätigt ohne Befund: Bilder, Bindung, Textpaare und Belege.",
+     "beleg": "GEMESSEN 11.11. ca. 20:50 UTC (graphql_query, frisch): ACTIVE, updatedAt 2026-11-08T23:19:36Z (unverändert), 15 Medien, featuredMedia 69855053906305. Die 21 Varianten-IDs stimmen mit dem Plan überein, und alle sind heute an Bilder mit Etikett gebunden. Bilder: Alle 8 neuen Dateien einzeln angesehen, dazu Zoom mit Kontrast auf Pink, Babyblau, den Saum von Sumpfgrün und die oberen linken Ecken der Zuschnitte. Kein Text, kein Etikett, kein Logo, kein Etikettrest. Alle quadratisch, 720 bis 800 px. Das Top ist überall ganz, auch der Sumpfgrün-Saum bei y ≈ 617. Babyblau 2 liegt in d8 (07fe5e36) bei x 60 und y 190: Der lila Rand der Quelle endet bei x 55, der Text «COMEFORTABLE FABRIC» beginnt bei y ≈ 1390, das Bild endet bei y 918. Pink und Babyblau stimmen farblich mit m2 und m6 überein. Textpaare: In der Beschreibung (gleich prod.json) kommt jedes der 7 Paare genau einmal vor. In Reihenfolge angewandt ergibt sich byte-gleich desc_neu.html, ohne Kollision. Belege für jede neue Aussage stehen im CJ-Datenblatt (Applicable Scenarios, How to Wear: Pullover, Note 1, Packing list «Top x 1pc», Bild d0 mit Massen und Körbchengrössen, beides selbst abgelesen). Danach bleiben 8 Bilder (mindestens 3 verlangt). Verloren gehen nur die zwei Werbebilder m4 und m7.",
+     "aenderung": "Keine Änderung."
+    }
+   ]
+  },
+  "kariertes-freizeit-set-fur-die-ganze-familie-738944": {
+   "handle": "kariertes-freizeit-set-fur-die-ganze-familie-738944",
+   "urteil": "ok",
+   "funde": [
+    {
+     "schwere": "klein",
+     "was": "Kind- und Strampler-Varianten (22 von 50) bleiben auf den Flatlays m8 und m10. Diese zeigen zwei Erwachsenen-Sets, ein Kinder-Set und einen Strampler. Eine Einzelansicht fehlt. Die Begründung des Plans stimmt.",
+     "beleg": "GEMESSEN 11.11.: Produkt frisch gelesen, 50 Varianten, 12 Medien, md5 aller 12 Live-Bilder gleich den Plan-Dateien (m4 = m8 ff797e0b, m7 = m10 26b0a7f0). Alle 20 übrigen CJ-Bilder angesehen (Kontaktbogen /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/kariertes-freizeit-set-fur-die-ganze-familie-738944/pruef3/bogen_rest.jpg). Jede Einzelansicht von Kind oder Strampler trägt «Kids», «Baby» oder einen Kalender «02 DECEMBER». Beim roten Strampler (CJ 1737374138227625984) endet der Kalender bei x 189, der linke Ärmel beginnt bei x 184: ein gerader Zuschnitt schneidet den Ärmel an. m8 und m10 selbst sind ohne Overlay. QUELLE Zweitprüfer: «eine Variante pro Bild» ist Best Practice, keine Pflicht.",
+     "aenderung": "Keine. Erst wenn CJ oder ein Muster eine saubere Einzelansicht liefert, die Kind- und Strampler-Varianten neu binden."
+    },
+    {
+     "schwere": "klein",
+     "was": "rot_hose_detail.jpg hat am linken Rand noch einen grauen Schattenfleck vom weggeschnittenen fremden Kleidungsstück. Er hat keinen Inhalt, lässt sich aber leicht vermeiden.",
+     "beleg": "GEMESSEN: Ausschnitt /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/korr/kariertes-freizeit-set-fur-die-ganze-familie-738944/pruef3/z_hose_schatten.png: Fleck bei x ca. 21 bis 30, y ca. 370 bis 430 im neuen Bild. Die Hose beginnt erst bei x ca. 220 (in m6 bei x ca. 240). Sonst ist das Bild in Ordnung: 800×800, kein Text, kein Etikett, Hose unten mit ca. 30 px Rand, nur ein Weihnachtsmann-Plüsch als Requisit ohne Schrift.",
+     "aenderung": "Zuschnitt aus m6 bei x 55 statt x 42 beginnen (x 55 bis 799, 745 px), dann weiss auf 800×800 auffüllen und neu ansehen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die zwei neuen Erwachsenen-Bilder haben weisse Seitenbalken auf grauem Fotogrund (Grün 230 px je Seite, Rot 150 px). Das ist nach den Regeln erlaubt. Ob Google solche Balken als Rand wertet, ist offen.",
+     "beleg": "GEMESSEN: gruen_erwachsenen_set.jpg 1160×1160, rot_erwachsenen_set.jpg 760×760, beide ohne Text ausser dem Aufdruck «Merry Christmas» auf dem Produkt. Kein Etikett: «MEN» (ab x 955) liegt ausserhalb des Ausschnitts (bis x 945), das Geschenk rot (ab x ca. 645) ausserhalb von x 639. Der dunkle Fleck im Hosenbund ist ein Geweih im Muster, kein Etikett. Ränder: Grün oben ca. 35 px, unten ca. 35 px, Rot oben ca. 30 px, links und rechts ca. 55 px. Mutter-Set (m5 «WOMEN») ist im Muster gleich dem Vater-Set, die Bindung an die Mutter-Varianten passt. Hypothese: Google meldet das nicht.",
+     "aenderung": "Keine Pflicht. Falls Google «border» meldet, mit dem Fotogrund-Grau auffüllen statt mit Weiss."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die SEO-Beschreibung liest sich so, als bestehe das Haustier aus Polyester.",
+     "beleg": "GEMESSEN: neuer Wert «… Einzelset für Vater, Mutter, Kind, Baby oder Haustier aus 65 % Polyester und 35 % Baumwolle.» (155 Zeichen). Inhaltlich belegt: Grössentabelle 2403020428350326800.jpg «65%Polyester 35%Cotton», CJ «Suitable height: Mom, dad, kid, romper, pet clothes».",
+     "aenderung": "Satz umstellen, gleiche Länge (155 Zeichen): «Karierter Weihnachts-Pyjama im Familien-Look in Grün oder Rot. Einzelset aus 65 % Polyester und 35 % Baumwolle für Vater, Mutter, Kind, Baby oder Haustier.»"
+    },
+    {
+     "schwere": "klein",
+     "was": "SEO-Titel und SEO-Beschreibung sind als Metafelder global.title_tag und global.description_tag mit Typ «string» geplant. Der Typ ist veraltet.",
+     "beleg": "GEMESSEN: beide Metafelder stehen heute mit type «string» und entsprechen seo{title description}. Hypothese: metafieldsSet mit Typ «string» lehnt Shopify ab oder legt einen Typkonflikt an. Der Plan nennt das selbst unter «offen».",
+     "aenderung": "Beim Schreiben productUpdate mit seo{title, description} nehmen, nicht metafieldsSet. Danach frisch lesen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die Materialangabe 65 % Polyester, 35 % Baumwolle gilt im Text für beide Farben. Die Herstellertabelle nennt aber nur den grünen Artikel.",
+     "beleg": "GEMESSEN: Tabelle size1.jpg (/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc1111/pruef/kariertes-freizeit-set-fur-die-ganze-familie-738944/cjbilder/size1.jpg) trägt «Item number: JJF32-230 green». Für JJF32-889 Rot gibt es keine eigene Tabelle. Die CJ-Felder sagen «Cotton», entryNameEn sagt «polyester home clothing». Hypothese: Rot ist dieselbe Serie (JJF32) und hat dasselbe Gewebe. Alle übrigen neuen Aussagen sind belegt: Haustier-Masse 49/33/24 bis 79/63,5/55,5 cm (m1 und size2), Strampler-Alter 3M = 3 bis 6M bis 18M = 18 bis 24M (Babyspalte), «error of 1-3cm» (Tabelle), «1 to 2 sizes smaller» und «Choose the larger size» (CJ-Hinweis), «Pajamas*1» (Packliste), Langarm und lange Hose (Ärmellänge 63,5 cm, Länge 108 cm, Fotos).",
+     "aenderung": "Keine. Beim ersten Muster oder bei einer Rückfrage an CJ die Faser für Rot bestätigen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Bleibende Unschärfen im Google-Feed: age_group «adult» für 21 Kind- und Strampler-Varianten, Kategorie «Pajamas» auch für 8 Haustier-Varianten, Option «Farbe» enthält Person und Grösse. Alles ist im Plan als offen benannt. Es ist kein Rückschritt.",
+     "beleg": "GEMESSEN: Metafelder mm-google-shopping age_group=adult, gender=female, Kategorie Outfit Sets; 0 Variantenmetafelder; eine Option «Farbe» mit 50 Werten. Die Paare sind gezählt: alle 4 alt-Texte kommen in der frisch gelesenen descriptionHtml genau einmal vor (die gespeicherte desc_frisch.html ist gleich dem Live-Stand). Nach dem Einsetzen ist das HTML wohlgeformt und gleich desc_neu.html. Die 21 Optionswerte (11 mal Y zu J, 10 mal Romper zu Strampler) gibt es alle, Kollisionen keine. Variantenlisten der neuen Bilder: genau die 10 Vater- und Mutter-Varianten je Farbe, Kind 2J/2Y nicht dabei. Nach dem Plan sind alle 50 Varianten gebunden (10+10 neu, 11+11 Flatlay, 4+4 Hund). Es bleiben 9 Bilder. Hauptbild m0 ist sauber («Merry Christmas» nur auf Kranz und Schild).",
+     "aenderung": "Als eigenen Schritt: Optionen in «Farbe» und «Grösse» aufteilen (Skill shop-auswahl-varianten). Vorher messen, ob die Google-App age_group je Variante liest. Sonst die Kind-, Strampler- und Haustier-Varianten als eigene Produkte führen."
+    }
+   ]
+  },
+  "wasserdichte-armbanduhr-gold-chronograph-604800": {
+   "handle": "wasserdichte-armbanduhr-gold-chronograph-604800",
+   "urteil": "nachbessern",
+   "funde": [
+    {
+     "schwere": "wichtig",
+     "was": "Der Plan stellt mm-google-shopping.custom_product von true auf false, obwohl die Marke (vendor «LuxeStyle») bleibt. In «offen» schreibt der Plan selbst, das sei «besser zusammen mit dem Marken-Entscheid» und Google melde danach «wohl fehlende Kennung». Der Plan führt also eine Feed-Änderung aus, für die er selbst eine neue Google-Meldung vorhersagt. Die zugehörige Entscheidung zur Marke ist noch offen. Plan und offen-Liste widersprechen sich.",
+     "beleg": "GEMESSEN 11.11. ca. 21:05 UTC (Admin, nur lesend): custom_product = true, vendor = LuxeStyle, alle 6 Varianten ohne Barcode (barcodes leer), Produkt nicht auf dem Kanal «Google & YouTube» (publishedOnPublication false laut Prüferdatei). Mit false und ohne GTIN sendet Google & YouTube Marke LuxeStyle ohne Kennung (Hypothese, nicht gemessen). Der Zweitprüfer verlangte ausdrücklich beides zusammen: Feed-Marke SKMEI und custom_product entfernen, sonst draussen lassen. Das eigene Feed-Skript automation/lib/gmc_feed_item.mjs liest custom_product gar nicht. Betroffen ist also nur der Shopify-Kanal.",
+     "aenderung": "Den Eintrag custom_product aus «metafelder» streichen und auf true lassen. Erst zusammen mit dem Marken-Entscheid ändern: vendor «SKMEI» und custom_product false (MPN 2710 nach Wahl). Oder das Produkt bleibt ganz draussen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Alle 7 neuen Bilder (und die 2 behaltenen) zeigen Aufdruck auf dem Produkt: «SKMEI», «WR5BAR» und die Ziffern der Anzeige. Wörtlich verlangt die Regel «ohne jeden Text, ohne Logo». Es ist aber kein Overlay. Google erlaubt Marken, die zum Produkt gehören (aus Wissen, nicht neu gelesen).",
+     "beleg": "GEMESSEN: neu_03 bis neu_10 und Medium 0 und 1 einzeln angesehen. Der Aufdruck sitzt auf Gehäuse und Anzeige, nichts liegt über dem Bild. Ohne Aufdruck gibt es kein Foto dieses Produkts.",
+     "aenderung": "Keine Änderung am Plan. Der Workflow-Leiter muss entscheiden, ob «ohne Logo» auch den Aufdruck auf dem Produkt meint. Wenn ja, ist das Produkt nicht machbar."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die Marke ist falsch: vendor und JSON-LD nennen «LuxeStyle», das Produkt ist eine SKMEI 2710. Der Plan überlässt das zu Recht dem Besitzer. Er darf das Produkt aber vor diesem Entscheid nicht auf Google aufnehmen.",
+     "beleg": "GEMESSEN: vendor LuxeStyle (Admin). QUELLE CJ: productName beginnt mit 时刻美, Model 2710. Alle 11 Bilder zeigen SKMEI. Google-Regel: Shopname nur als Marke, wenn man das Produkt selbst herstellt (aus Wissen).",
+     "aenderung": "Im Plan festhalten: Aufnahme auf Google erst nach dem Marken-Entscheid. Diesen Entscheid zusammen mit custom_product treffen."
+    },
+    {
+     "schwere": "klein",
+     "was": "mm-google-shopping.color mit neu \"\" lässt sich nicht schreiben, denn Shopify lehnt einen leeren Wert ab. Gemeint ist Löschen. Dass Google & YouTube danach die Option «Farbe» je Variante nimmt, ist nicht gemessen.",
+     "beleg": "GEMESSEN: Produktmetafeld color = «Gold», Option «Farbe» mit 6 Werten. Der heutige Wert ist für 5 von 6 Varianten falsch. Löschen ist darum besser als stehen lassen.",
+     "aenderung": "Im Plan «löschen (metafieldsDelete)» schreiben statt neu \"\". Nach der Aufnahme im Merchant Center prüfen, ob jede Variante ihre eigene Farbe trägt."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die Alt-Texte der zwei behaltenen Medien nennen noch «Gold Chronograph», das Hauptbild zeigt aber eine schwarze Uhr. Der Plan nennt neue Texte nur als Vorschlag in «offen», nicht als ausführbaren Eintrag.",
+     "beleg": "GEMESSEN: 77802095804807 alt «Wasserdichte Armbanduhr Gold Chronograph | LuxeStyle» (schwarze Uhr im Wasser). 77802095837575 alt «… – Bild 2 | LuxeStyle» (silberne Uhr am Handgelenk).",
+     "aenderung": "Die zwei Alt-Texte als feste Änderung aufnehmen: «Digitale Armbanduhr in Schwarz im Wasser» und «Digitale Armbanduhr in Silber am Handgelenk»."
+    },
+    {
+     "schwere": "klein",
+     "was": "«(Herstellerangabe: 50 Meter)»: Diese Zahl stammt aus dem CJ-Datenblatt, CJ ist Händler und nicht Hersteller. Vom Hersteller stammt nur der Aufdruck WR5BAR.",
+     "beleg": "QUELLE CJ product/query pid 2609240158591604800: «Water Resistance: 50 meters». Rohtitel «现货批发商» (Grosshändler).",
+     "aenderung": "Statt «Herstellerangabe» lieber «Lieferantenangabe» schreiben, oder kurz «wasserdicht bis 5 bar (WR5BAR)»."
+    }
+   ]
+  },
+  "smartwatch-mit-bluetooth-headset-sportarmband-617400": {
+   "handle": "smartwatch-mit-bluetooth-headset-sportarmband-617400",
+   "urteil": "ok",
+   "funde": [
+    {
+     "schwere": "klein",
+     "was": "Kein Mangel, nur Gegenprobe: Die Prüfpunkte 1 bis 5 sind bestanden. Ich habe versucht, den Plan zu widerlegen, und es ist mir nicht gelungen.",
+     "beleg": "GEMESSEN 11.11. ca. 21:00 UTC, Admin-API nur gelesen. Der Stand im Shop ist gleich wie im Plan: 11 Medien, 6 Varianten, alle Paare Variante zu Bild stimmen, alle 9 Lösen-IDs stimmen mit ihrer URL. Die 11 CDN-Dateien sind md5-gleich mit orig/. (1) Ich habe die vier neuen Bilder selbst angesehen. Sie sind 800×800, quadratisch, ohne «+», ohne Schrift, ohne Logo, und das Produkt ist nicht angeschnitten. Diff Original gegen neu: Abweichungen über 40 gibt es nur in den Kästen «+» (z. B. x 425–512, y 336–423) und Schrift (x 740–795). Ausserhalb von x 300 sind 0 rote Pixel und 0 rosa Saum. Das Rot bei x 69–131 ist das Uhrdisplay. Im übermalten Bereich ist der Wert mindestens 253, also kein graues Rechteck. Im Original lagen dort nur Pixel des «+» und der Schrift. In der Vergrösserung ist das Armband unberührt. Alle Ränder sind 255. (2) Das Hauptbild ed43a5dc und 7bb879bb habe ich selbst angesehen, beide sind sauber. Danach hat jede der 6 Varianten ein sauberes Bild. (3) Gezählt an der frisch gelesenen descriptionHtml: Jedes der 3 Paare kommt genau einmal vor. Das Ergebnis ist zeichengleich mit desc_neu.html. (4) QUELLE CJ cj.json vom 11.11. (pid 2507021348391617400): «step counting, heart rate monitoring», «Wristband material: Alloy, silicone», Farben «black black Milan strap … black black leather strap». Die Reihenfolge passt dazu, dass «Black And Black Watch» das schwarze Milanaise-Armband ist (Bild 675f85d5 zeigt es). (5) Es bleiben 6 Bilder. Die Lösegründe für c60a2001 (Werbetext) und 0d3363ab (braunes Leder ist keine Variante) habe ich selbst gesehen. Die Randwerte von c3bfd59d, cf5bc77c und c784cc32 habe ich nachgemessen (190; 132/188; 125/100/131). Für fr gibt es keine Übersetzungen. Die Metafelder sind wie im Plan beschrieben.",
+     "aenderung": "keine"
+    },
+    {
+     "schwere": "klein",
+     "was": "Das Binden an die Varianten in der Reihenfolge «erst neu binden, dann alt lösen» scheitert wahrscheinlich mit productVariantAppendMedia, weil jede der vier Varianten schon ein Bild hat.",
+     "beleg": "QUELLE: Das Shopify-Schema 2026-10 (MediaUserErrorCode) kennt PRODUCT_VARIANT_ALREADY_HAS_MEDIA. Die Shopify-Doku «Manage media» nennt productVariantsBulkUpdate mit mediaId für bestehende Varianten. Am Produkt ist das nicht getestet (Hypothese). Ein Fehlschlag wäre nur ein userError, es entsteht kein Schaden.",
+     "aenderung": "Je Variante productVariantsBulkUpdate mit der mediaId des neuen Bildes nutzen, das ersetzt die Bindung. Oder pro Variante productVariantDetachMedia und gleich danach productVariantAppendMedia. Erst danach die alten Medien löschen und frisch lesen (variants.media)."
+    },
+    {
+     "schwere": "klein",
+     "was": "Der neue Optionswert «Silber Silikonarmband» ist mehrdeutig. Das Armband ist schwarz. Nach dem bestehenden Muster («Silber Milanaise Armband» heisst alles silbern, «Silber Schwarz Milanaise Armband» heisst Gehäuse silber, Armband schwarz) liest man ihn als silbernes Silikonarmband.",
+     "beleg": "GEMESSEN: Das Variantenbild 7bb879bb zeigt ein silbernes Gehäuse mit schwarzem Silikonarmband. QUELLE CJ: «Foreign Edition Silver».",
+     "aenderung": "«Silber Schwarz Silikonarmband» statt «Silber Silikonarmband». Optional nur sprachlich: «Schwarz Lederoptik-Armband» statt «Schwarz Lederoptik Armband»."
+    },
+    {
+     "schwere": "klein",
+     "was": "Drei Bilder, die alle Prüfer sauber nannten (c3bfd59d mit schwebenden Ohrhörern, cf5bc77c Frontansicht, c784cc32), werden nur wegen Randlinien von 1 bis 2 px gelöst. Danach zeigt die Galerie 2 verschiedene Motive und 4 fast gleiche Bündel-Aufnahmen.",
+     "beleg": "GEMESSEN: Die Randzeilen und -spalten haben die Mittelwerte 190 (c3bfd59d oben), 132/188 (cf5bc77c rechts/unten) und 125/100/131 (c784cc32). Dass Google das beanstandet, ist Hypothese, und der Plan nennt es selbst so. Ein Zuschnitt würde unter 700 px führen und ist darum nach der Regel nicht erlaubt. Die Mindestzahl von 3 Bildern ist erfüllt (6).",
+     "aenderung": "Wie im Plan offen gelassen: Der Besitzer entscheidet. Meine Empfehlung: c3bfd59d behalten (nur eine helle Linie oben, zeigt das Headset am deutlichsten). Das ist kein Hindernis für die Umsetzung."
+    },
+    {
+     "schwere": "klein",
+     "was": "Die zwei behaltenen Bilder tragen weiter die Alt-Texte «… – Bild 3 | LuxeStyle» und «… – Bild 10 | LuxeStyle». Nach dem Umordnen stehen sie aber auf den Plätzen 1 und 2.",
+     "beleg": "GEMESSEN: Alt-Texte von MediaImage 70344852767105 und 70344852996481 aus der frischen Lesung.",
+     "aenderung": "Optional beschreibend setzen wie bei den neuen Bildern, z. B. «Smartwatch mit Bluetooth-Headset in Schwarz mit Silikonarmband und Ohrhörern» und «… in Silber mit schwarzem Silikonarmband und Ohrhörern»."
+    }
+   ]
+  },
+  "antihaft-silikon-kuchenhelfer-set-602100": {
+   "handle": "antihaft-silikon-kuchenhelfer-set-602100",
+   "urteil": "ok",
+   "funde": [
+    {
+     "schwere": "klein",
+     "was": "Der Bindeschritt scheitert, wenn er mit productVariantAppendMedia läuft. Alle 36 Varianten haben heute schon ein Medium, und Shopify lehnt ein zweites ab.",
+     "beleg": "GEMESSEN 11.11. ca. 21:10 UTC (Admin, nur lesend): Jede der 36 Varianten hat genau ein Medium. Im Schema (MediaUserErrorCode) stehen PRODUCT_VARIANT_ALREADY_HAS_MEDIA und NON_READY_MEDIA. ProductVariantsBulkInput hat das Feld mediaId. Dass mediaId die alte Bindung ersetzt, ist Hypothese (übliches Verhalten). Der Fehler wäre harmlos, weil dabei nichts geändert wird.",
+     "aenderung": "Je Variante productVariantsBulkUpdate mit mediaId verwenden. Oder erst productVariantDetachMedia mit dem alten Medium, dann productVariantAppendMedia. Vor dem Binden warten, bis die 10 neuen Medien READY sind. Die Reihenfolge im Plan bleibt: binden, frisch lesen (36 von 36 mit neuer Medien-ID), erst danach die 13 alten Medien lösen."
+    },
+    {
+     "schwere": "klein",
+     "was": "Nach dem Plan zeigt die Galerie die Farben Schwarz (ausser beim 43er), Mint bzw. «Dunkelgrün» und Crème nicht mehr, auch nicht als Miniatur. Für Google ist das kein Ablehnungsgrund, für die Kundin aber eine Lücke.",
+     "beleg": "GEMESSEN: Nur die Farbleisten von Medium 0, 1, 5, 6, 7, 8, 11 und 12 zeigen alle vier Farben. Medium 6 (3c8420f8, 27er) hat eine Leiste ohne Text. Alle neuen Bilder ausser neu_43er_schwarz zeigen nur Rosa-Beige. Das Hauptbild Medium 3 zeigt Crème, ist aber an keine Variante gebunden.",
+     "aenderung": "Optional, für Google nicht nötig: das Original von Medium 6 ohne Variantenbindung ans Ende der Galerie setzen, damit die Farbübersicht bleibt. Hypothese: Eine Collage als additional_image_link schadet nicht. Sonst so lassen und Farbbilder bei CJ anfragen (steht im Plan unter «offen»)."
+    },
+    {
+     "schwere": "klein",
+     "was": "Der Aufdruck «KITCHEN UTENSIL SET / FOOD&DRINK» mit Bildzeichen auf dem Halter steht auf allen 10 neuen Bildern und auf dem Hauptbild. Auf neu_43er_schwarz kommen eingravierte Masszahlen auf den Messlöffeln dazu. Nach dem Wortlaut der Regel («ohne jeden Text, ohne Logo») wäre das ein Verstoss.",
+     "beleg": "GEMESSEN: Alle 11 Bilder angesehen. Der Aufdruck gehört zum Produkt (CJ-Beschreibungsbild «Storage Bucket», 16 × 12 cm, mit demselben Druck). Unter den 15 CJ-Produktbildern gibt es kein Bild ohne diesen Halter. Dass Google ihn nicht als «Promotional overlay» wertet, ist Hypothese (Produktaufdruck, kein Overlay). Der Plan nennt das selbst.",
+     "aenderung": "Keine. Als Produktaufdruck hinnehmen, sonst lässt sich das Produkt gar nicht korrigieren. Die Wirkung im Merchant Center nach der Aufnahme beobachten."
+    },
+    {
+     "schwere": "klein",
+     "was": "Das Bild für das 26er-Set (CJ ebee751a) ist eine Hypothese, aber gut gestützt. CJs eigene 26er-Bindung ist kein Gegenbeleg, denn CJ hat für das 26er die Daten des 24er-Sets kopiert.",
+     "beleg": "QUELLE CJ-Datenblatt (Zwischenspeicher der Erstprüfer, pid 2406150920131602100): Das 26er hat dasselbe variantImage (fafa07cb = 24er-Foto) und dasselbe Gewicht 1430 g wie das 24er. CJ-Beschreibungsbild: «Measuring Spoon 10psc». GEMESSEN: Auf ebee751a habe ich selbst 9 grosse und 6 kleine Helfer plus Halter gezählt, mit dem 10-teiligen Messset also 26 Teile. Das bisherige Foto zeigt 13 plus Halter plus 10 = 24. Das Bildetikett 1451 g liegt über den 1388 g des 24er-Fotos. ebee751a ist das einzige Setbild bei CJ, das keiner Grösse zugeordnet ist.",
+     "aenderung": "Keine. Als Hypothese stehen lassen, wie im Plan beschrieben, mit dem Rückweg «26er auf neu_24er.jpg»."
+    },
+    {
+     "schwere": "klein",
+     "was": "Der Alt-Text des neuen Hauptbilds (Medium 3) bleibt «Antihaft Silikon Küchenhelfer Set – Bild 4 | LuxeStyle», obwohl das Bild auf Position 1 rückt.",
+     "beleg": "GEMESSEN 11.11. (Admin): alt von gid://shopify/MediaImage/70500666769793 = «… – Bild 4 | LuxeStyle». Der Plan ändert diesen Alt-Text nicht.",
+     "aenderung": "Optional: Alt-Text auf «Silikon-Küchenhelfer-Set im Utensilienhalter, Crème» setzen. Rein kosmetisch."
+    }
+   ]
+  }
+ },
+ "_hinweis": "NUR DIAGNOSE: Kopie des Uhr-Plans v2 ohne google_aufnahme_erlaubt/google_aufnahme_bedingung/medien_alt, color.neu null -> \"\" (Löschen nach Werkzeug-Konvention). Kein Plan zum Einspielen."
+}
