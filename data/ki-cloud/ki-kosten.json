@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "summen": {
+  "claude-opus-5-5": {
+   "n": 1,
+   "ein": 1542,
+   "aus": 840,
+   "usd": 0.022968,
+   "usd_opus": 0.022968
+  }
+ },
+ "tage": {
+  "2026-11-11": {
+   "n": 1,
+   "usd": 0.022968,
+   "usd_opus": 0.022968
+  }
+ },
+ "zeilen": [
+  {
+   "zeit": "2026-11-11T09:43:52+00:00",
+   "aufgabe": "entscheid",
+   "modell": "claude-opus-5-5",
+   "ein": 1542,
+   "aus": 840,
+   "usd": 0.022968
+  }
+ ]
+}

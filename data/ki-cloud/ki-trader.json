@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "entscheide": [
+  {
+   "stand": "2026-11-10",
+   "zeit": "2026-11-11T09:43:52+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1542,
+   "tokens_aus": 840,
+   "kosten_usd": 0.022968,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.2,
+    "begruendung": "Klarer kurzfristiger Abwärtstrend: 7 T. -4,7 %, 30 T. -11,9 %, 9,4 % unter dem 50-Tage-Schnitt und tiefere Tiefs seit Mitte Oktober. Der Kurs liegt aber nur noch knapp über dem 150- und 200-Tage-Schnitt (+1,3 % bzw. +0,8 %). Dort ist eine Unterstützung oder ein Rücksetzer nach oben möglich. Angst&Gier 32 ist noch nicht extrem. Deshalb nur ein kleiner Short, der zusätzlich leicht positives Funding erhält.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.35,
+    "begruendung": "Klar schwächer als BTC: 7 T. -9,8 %, 30 T. -19,1 %, 16,5 % unter dem 50-Tage-Schnitt und bereits unter dem 150- und 200-Tage-Schnitt. Der Tagesschluss von 2'050 ist ein neues Tief der Serie, die relative Schwäche hält an. Dagegen sprechen MVRV 0,94 (unterbewertet), Funding bei null und die Gefahr einer Gegenbewegung nach dem starken Rückgang. Bei 52 % Schwankung daher nur ein moderater Short.",
+    "sicherheit": 0.4
+   },
+   "kommentar": "Beide Coins im kurzfristigen Abwärtstrend, ETH deutlich schwächer. Die Bewertung ist schon gedrückt (ETH-MVRV unter 1, Stimmung ängstlich), daher nur kleine Shorts statt voller Positionen. Bei einem BTC-Schluss klar unter dem 200-Tage-Schnitt Short ausbauen, bei Rückeroberung von etwa 77'000 bzw. ETH 2'250 schliessen.",
+   "kurse": {
+    "btc": 73720.1171875,
+    "eth": 2050.180908203125
+   }
+  }
+ ]
+}
