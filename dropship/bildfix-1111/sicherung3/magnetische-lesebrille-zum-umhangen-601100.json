@@ -1,0 +1,527 @@
+{
+ "zeit": "2026-11-11T20:02:20.106Z",
+ "plan": {
+  "handle": "magnetische-lesebrille-zum-umhangen-601100",
+  "erwartet_erstes": "gid://shopify/MediaImage/77497741181319",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70571183309185",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193216_c27a6f7d-d394-49ab-b910-1a4cfe8dd4e6.png",
+    "alt_text": "Magnetische Lesebrille zum Umhängen – Ansicht 11"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15447919722881",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77497741181319",
+    "alt": "Magnetische Lesebrille zum Umhängen",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587655553",
+    "alt": "Magnetische Lesebrille zum Umhängen",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587688321",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587721089",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587753857",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587786625",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587819393",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587852161",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852587884929",
+    "alt": "Magnetische Lesebrille zum Umhängen – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183276417",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183309185",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183341953",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183374721",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183407489",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183440257",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70571183473025",
+    "alt": "Magnetische Lesebrille zum Umhängen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56052961509761",
+    "titel": "100 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961542529",
+    "titel": "100 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961575297",
+    "titel": "100 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961608065",
+    "titel": "100 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961640833",
+    "titel": "100 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961673601",
+    "titel": "100 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961706369",
+    "titel": "100 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961739137",
+    "titel": "125 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961771905",
+    "titel": "125 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961804673",
+    "titel": "125 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961837441",
+    "titel": "125 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961870209",
+    "titel": "125 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961902977",
+    "titel": "125 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961935745",
+    "titel": "125 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052961968513",
+    "titel": "150 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962001281",
+    "titel": "150 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962034049",
+    "titel": "150 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962066817",
+    "titel": "150 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962099585",
+    "titel": "150 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962132353",
+    "titel": "150 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962165121",
+    "titel": "150 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962197889",
+    "titel": "175 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962230657",
+    "titel": "175 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962263425",
+    "titel": "175 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962296193",
+    "titel": "175 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962328961",
+    "titel": "175 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962361729",
+    "titel": "175 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962394497",
+    "titel": "175 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962427265",
+    "titel": "200 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962460033",
+    "titel": "200 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962492801",
+    "titel": "200 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962525569",
+    "titel": "200 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962558337",
+    "titel": "200 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962591105",
+    "titel": "200 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962623873",
+    "titel": "200 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962656641",
+    "titel": "225 Grad, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962689409",
+    "titel": "225 Grad, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962722177",
+    "titel": "225 Grad, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962754945",
+    "titel": "225 Grad, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962787713",
+    "titel": "225 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962820481",
+    "titel": "225 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962853249",
+    "titel": "225 Grad, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962886017",
+    "titel": "250 degrees, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962918785",
+    "titel": "250 degrees, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962951553",
+    "titel": "250 degrees, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052962984321",
+    "titel": "250 degrees, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963017089",
+    "titel": "250 Grad, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963049857",
+    "titel": "250 Grad, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963082625",
+    "titel": "250 degrees, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963115393",
+    "titel": "275 degrees, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963148161",
+    "titel": "275 degrees, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963180929",
+    "titel": "275 degrees, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963213697",
+    "titel": "275 degrees, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963246465",
+    "titel": "275 degrees, Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70571183407489"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963279233",
+    "titel": "275 degrees, Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70571183440257"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963312001",
+    "titel": "275 degrees, Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70571183473025"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963344769",
+    "titel": "300 degrees, Schwarzer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183276417"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963377537",
+    "titel": "300 degrees, Schwarzer Rahmen, Graues Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183309185"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963410305",
+    "titel": "300 degrees, Brauner Rahmen, Schwarzes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183341953"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052963443073",
+    "titel": "300 degrees, Grauer Rahmen, Rotes Seil",
+    "medien": [
+     "gid://shopify/MediaImage/70571183374721"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70571183309185": "gid://shopify/MediaImage/78014932976007"
+ }
+}

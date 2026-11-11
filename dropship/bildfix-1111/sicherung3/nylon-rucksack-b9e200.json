@@ -1,0 +1,105 @@
+{
+ "zeit": "2026-11-11T20:06:38.230Z",
+ "plan": {
+  "handle": "nylon-rucksack-b9e200",
+  "erwartet_erstes": "gid://shopify/MediaImage/77777672470919",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77781131231623",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194720_b20f7b4d-e3bc-48cf-820d-8d72b3e9611d.png",
+    "alt_text": "Nylon-Rucksack – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16651920343431",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77777672470919",
+    "alt": "Nylon-Rucksack | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777672503687",
+    "alt": "Nylon-Rucksack – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777672536455",
+    "alt": "Nylon-Rucksack – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777672569223",
+    "alt": "Nylon-Rucksack – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777672601991",
+    "alt": "Nylon-Rucksack – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777672634759",
+    "alt": "Nylon-Rucksack – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77781131166087",
+    "alt": "Nylon-Rucksack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77781131198855",
+    "alt": "Nylon-Rucksack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77781131231623",
+    "alt": "Nylon-Rucksack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77781131264391",
+    "alt": "Nylon-Rucksack",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67737325928839",
+    "titel": "Schwarz / S",
+    "medien": [
+     "gid://shopify/MediaImage/77781131166087"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67740994011527",
+    "titel": "Schwarz / L",
+    "medien": [
+     "gid://shopify/MediaImage/77781131231623"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67740994044295",
+    "titel": "Hellgrau / S",
+    "medien": [
+     "gid://shopify/MediaImage/77781131198855"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67740994077063",
+    "titel": "Hellgrau / L",
+    "medien": [
+     "gid://shopify/MediaImage/77781131264391"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77781131231623": "gid://shopify/MediaImage/78014965154183"
+ }
+}

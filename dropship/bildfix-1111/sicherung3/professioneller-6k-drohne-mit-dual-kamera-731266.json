@@ -1,0 +1,62 @@
+{
+ "zeit": "2026-11-11T20:03:20.831Z",
+ "plan": {
+  "handle": "professioneller-6k-drohne-mit-dual-kamera-731266",
+  "erwartet_erstes": "gid://shopify/MediaImage/69873483547009",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69873483547009",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193727_90d11b67-579e-4892-b427-3ec1a280e0b7.png",
+    "alt_text": "Professioneller 6K-Drohne mit Dual-Kamera – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449487671681",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69873483547009",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873483481473",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873483514241",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873483579777",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873483612545",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873483645313",
+    "alt": "Professioneller 6K-Drohne mit Dual-Kamera – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55882220863873",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69873483547009": "gid://shopify/MediaImage/78014935335303"
+ }
+}

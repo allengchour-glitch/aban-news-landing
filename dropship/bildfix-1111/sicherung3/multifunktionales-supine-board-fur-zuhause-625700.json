@@ -1,0 +1,116 @@
+{
+ "zeit": "2026-11-11T20:04:14.702Z",
+ "plan": {
+  "handle": "multifunktionales-supine-board-fur-zuhause-625700",
+  "erwartet_erstes": "gid://shopify/MediaImage/70560769900929",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70560769900929",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194112_817ce122-a72d-464d-8de9-ad3855ff14f0.png",
+    "alt_text": "Multifunktionales Supine Board für zuhause – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15502137360769",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70560769900929",
+    "alt": "Multifunktionales Supine Board für zuhause | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560769966465",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560769999233",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770032001",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770064769",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770097537",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770130305",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770163073",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770195841",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770228609",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770261377",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770294145",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770326913",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770359681",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70560770392449",
+    "alt": "Multifunktionales Supine Board für zuhause – Bild 15 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56115531743617",
+    "titel": "Violett",
+    "medien": [
+     "gid://shopify/MediaImage/70560769999233"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67653886902663",
+    "titel": "Grau",
+    "medien": [
+     "gid://shopify/MediaImage/70560769900929"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70560769900929": "gid://shopify/MediaImage/78014937203079"
+ }
+}

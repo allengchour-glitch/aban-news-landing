@@ -1,0 +1,112 @@
+{
+ "zeit": "2026-11-11T20:03:52.944Z",
+ "plan": {
+  "handle": "halterung-fur-ruckspiegel-handy-045440",
+  "erwartet_erstes": "gid://shopify/MediaImage/69886935105921",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69886935105921",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193724_f2c9b963-838a-4dab-862e-be11592aa4fb.png",
+    "alt_text": "Halterung für Rückspiegel-Handy – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450831716737",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69886935105921",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935007617",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935040385",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935073153",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935138689",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935171457",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935204225",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935236993",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935269761",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935302529",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935335297",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935368065",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935400833",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886935433601",
+    "alt": "Halterung für Rückspiegel-Handy – Bild 2 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889719656833",
+    "titel": "Schwarz",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889719689601",
+    "titel": "Schwarz · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889719722369",
+    "titel": "Schwarz · 3 Stück",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69886935105921": "gid://shopify/MediaImage/78014936285575"
+ }
+}

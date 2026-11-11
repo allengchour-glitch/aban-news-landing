@@ -1,0 +1,72 @@
+{
+ "zeit": "2026-11-11T20:03:31.553Z",
+ "plan": {
+  "handle": "5-in-1-magnetisches-wireless-ladegerat-mit-nac-274304",
+  "erwartet_erstes": "gid://shopify/MediaImage/69886884544897",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69886884544897",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193726_e5069906-d0da-45b8-bea7-1f48db9ddedc.png",
+    "alt_text": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450829357441",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69886884544897",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884577665",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884479361",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884512129",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884610433",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884643201",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886884675969",
+    "alt": "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889689018753",
+    "titel": "Schwarz-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889689051521",
+    "titel": "Weiss-USB",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69886884544897": "gid://shopify/MediaImage/78014935597447"
+ }
+}

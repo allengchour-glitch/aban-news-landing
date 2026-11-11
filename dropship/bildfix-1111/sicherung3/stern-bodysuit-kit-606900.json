@@ -1,0 +1,214 @@
+{
+ "zeit": "2026-11-11T20:01:19.450Z",
+ "plan": {
+  "handle": "stern-bodysuit-kit-606900",
+  "erwartet_erstes": "gid://shopify/MediaImage/70320611918209",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77492180976007",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-5-1111.jpg?v=1794427063",
+    "alt_text": "Stern-Bodysuit-Kit – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15477467283841",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70320611918209",
+    "alt": "Stern-Bodysuit-Kit – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70320611950977",
+    "alt": "Stern-Bodysuit-Kit – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70320611983745",
+    "alt": "Stern-Bodysuit-Kit – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70320612016513",
+    "alt": "Stern-Bodysuit-Kit – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70320612049281",
+    "alt": "Stern-Bodysuit-Kit – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70320612082049",
+    "alt": "Stern-Bodysuit-Kit – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/77468002058631",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492180943239",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492180976007",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181008775",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181041543",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181074311",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181107079",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181139847",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77492181172615",
+    "alt": "Stern-Bodysuit-Kit",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55993143755137",
+    "titel": "Blau / Materialset",
+    "medien": [
+     "gid://shopify/MediaImage/70320611983745"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192654215",
+    "titel": "Blau / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/70320612082049"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192686983",
+    "titel": "Rosa / Materialset",
+    "medien": [
+     "gid://shopify/MediaImage/70320612049281"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192719751",
+    "titel": "Rosa / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/70320612049281"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192752519",
+    "titel": "Gelb / Materialset",
+    "medien": [
+     "gid://shopify/MediaImage/70320612016513"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192785287",
+    "titel": "Gelb / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/70320612016513"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192818055",
+    "titel": "Hellrosa / Materialset",
+    "medien": [
+     "gid://shopify/MediaImage/70320611918209"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192850823",
+    "titel": "Hellrosa / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/70320611918209"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192916359",
+    "titel": "Rot / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492180943239"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663192981895",
+    "titel": "Beige / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492180976007"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193047431",
+    "titel": "Lila / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181008775"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193112967",
+    "titel": "Weihnachtsmann mit Sternen / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181041543"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193178503",
+    "titel": "Baby-Schneemann mit Stern / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181074311"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193244039",
+    "titel": "Lebkuchen-Baby / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181107079"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193309575",
+    "titel": "Weihnachtsbaum / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181139847"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67663193375111",
+    "titel": "Weihnachtself mit Stern / Fertigprodukt",
+    "medien": [
+     "gid://shopify/MediaImage/77492181172615"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77492180976007": "gid://shopify/MediaImage/78014929994119"
+ }
+}

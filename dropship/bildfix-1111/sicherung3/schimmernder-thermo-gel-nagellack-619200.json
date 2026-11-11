@@ -1,0 +1,249 @@
+{
+ "zeit": "2026-11-11T20:02:27.936Z",
+ "plan": {
+  "handle": "schimmernder-thermo-gel-nagellack-619200",
+  "erwartet_erstes": "gid://shopify/MediaImage/69861208424833",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77480728822151",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png",
+    "alt_text": "Schimmernder Thermo-Gel Nagellack – Ansicht 9"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69861208424833",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png",
+    "alt_text": "Schimmernder Thermo-Gel Nagellack – Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69861208555905",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png",
+    "alt_text": "Schimmernder Thermo-Gel Nagellack – Ansicht 5"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69861208490369",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png",
+    "alt_text": "Schimmernder Thermo-Gel Nagellack – Ansicht 3"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15448834736513",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69861208424833",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208457601",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208490369",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208523137",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208555905",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208588673",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208621441",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69861208654209",
+    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728822151",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728854919",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728887687",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728920455",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728953223",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480728985991",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480729018759",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480729051527",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77480729084295",
+    "alt": "Schimmernder Thermo-Gel Nagellack",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55877809340801",
+    "titel": "Modell 1",
+    "medien": [
+     "gid://shopify/MediaImage/77480728822151"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260299143",
+    "titel": "Modell 2",
+    "medien": [
+     "gid://shopify/MediaImage/69861208588673"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260331911",
+    "titel": "Modell 3",
+    "medien": [
+     "gid://shopify/MediaImage/69861208654209"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260364679",
+    "titel": "Modell 4",
+    "medien": [
+     "gid://shopify/MediaImage/77480728854919"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260397447",
+    "titel": "Modell 5",
+    "medien": [
+     "gid://shopify/MediaImage/77480728887687"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260430215",
+    "titel": "Modell 6",
+    "medien": [
+     "gid://shopify/MediaImage/69861208424833"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260462983",
+    "titel": "Modell 7",
+    "medien": [
+     "gid://shopify/MediaImage/69861208555905"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260495751",
+    "titel": "Modell 8",
+    "medien": [
+     "gid://shopify/MediaImage/69861208523137"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260528519",
+    "titel": "Modell 9",
+    "medien": [
+     "gid://shopify/MediaImage/77480728920455"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260561287",
+    "titel": "Modell 10",
+    "medien": [
+     "gid://shopify/MediaImage/69861208457601"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260594055",
+    "titel": "Modell 11",
+    "medien": [
+     "gid://shopify/MediaImage/69861208490369"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260626823",
+    "titel": "Modell 12",
+    "medien": [
+     "gid://shopify/MediaImage/77480728953223"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260659591",
+    "titel": "Modell 13",
+    "medien": [
+     "gid://shopify/MediaImage/77480728985991"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260692359",
+    "titel": "Modell 14",
+    "medien": [
+     "gid://shopify/MediaImage/77480729018759"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260725127",
+    "titel": "Modell 15",
+    "medien": [
+     "gid://shopify/MediaImage/77480729051527"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260757895",
+    "titel": "Modell 16",
+    "medien": [
+     "gid://shopify/MediaImage/69861208621441"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67652260790663",
+    "titel": "Modell 17",
+    "medien": [
+     "gid://shopify/MediaImage/77480729084295"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77480728822151": "gid://shopify/MediaImage/78014931960199",
+  "gid://shopify/MediaImage/69861208424833": "gid://shopify/MediaImage/78014932091271",
+  "gid://shopify/MediaImage/69861208555905": "gid://shopify/MediaImage/78014932943239",
+  "gid://shopify/MediaImage/69861208490369": "gid://shopify/MediaImage/78014933205383"
+ }
+}

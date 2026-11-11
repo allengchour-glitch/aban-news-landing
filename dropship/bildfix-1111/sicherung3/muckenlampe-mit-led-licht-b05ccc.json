@@ -1,0 +1,73 @@
+{
+ "zeit": "2026-11-11T20:05:33.490Z",
+ "plan": {
+  "handle": "muckenlampe-mit-led-licht-b05ccc",
+  "erwartet_erstes": "gid://shopify/MediaImage/77489513234823",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77489513136519",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194719_426978ea-25d7-4616-8312-2b558b503c0a.png",
+    "alt_text": "Mückenlampe mit LED-Licht – Ansicht 2"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16613829640583",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77489513234823",
+    "alt": "Mückenlampe mit LED-Licht – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77489513136519",
+    "alt": "Mückenlampe mit LED-Licht | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77489513202055",
+    "alt": "Mückenlampe mit LED-Licht – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77489513267591",
+    "alt": "Mückenlampe mit LED-Licht – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77489513300359",
+    "alt": "Mückenlampe mit LED-Licht – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67660482969991",
+    "titel": "USB",
+    "medien": [
+     "gid://shopify/MediaImage/77489513300359"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67670832546183",
+    "titel": "4000MA",
+    "medien": [
+     "gid://shopify/MediaImage/77489513136519"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67670832578951",
+    "titel": "2000MA",
+    "medien": [
+     "gid://shopify/MediaImage/77489513267591"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77489513136519": "gid://shopify/MediaImage/78014945591687"
+ }
+}

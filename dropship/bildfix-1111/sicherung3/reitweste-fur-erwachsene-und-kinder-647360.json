@@ -1,0 +1,127 @@
+{
+ "zeit": "2026-11-11T20:04:35.934Z",
+ "plan": {
+  "handle": "reitweste-fur-erwachsene-und-kinder-647360",
+  "erwartet_erstes": "gid://shopify/MediaImage/77436850471303",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77436850569607",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193411_38b5db98-62b0-4f15-acb6-82e9fd47660b.png",
+    "alt_text": "Reitweste für Erwachsene und Kinder – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16603764195719",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77436850471303",
+    "alt": "Reitweste für Erwachsene und Kinder | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436850504071",
+    "alt": "Reitweste für Erwachsene und Kinder – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436850536839",
+    "alt": "Reitweste für Erwachsene und Kinder – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436850569607",
+    "alt": "Reitweste für Erwachsene und Kinder – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436850602375",
+    "alt": "Reitweste für Erwachsene und Kinder – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77836606669191",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67797489484167",
+    "titel": "Erwachsenen Schwarz / S",
+    "medien": [
+     "gid://shopify/MediaImage/77836606669191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489516935",
+    "titel": "Erwachsenen Schwarz / M",
+    "medien": [
+     "gid://shopify/MediaImage/77836606669191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489549703",
+    "titel": "Erwachsenen Schwarz / L",
+    "medien": [
+     "gid://shopify/MediaImage/77836606669191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489582471",
+    "titel": "Erwachsenen Schwarz / XL",
+    "medien": [
+     "gid://shopify/MediaImage/77836606669191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489615239",
+    "titel": "Erwachsenen Schwarz / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/77836606669191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489648007",
+    "titel": "Kinder Schwarz C / S",
+    "medien": [
+     "gid://shopify/MediaImage/77436850569607"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489680775",
+    "titel": "Kinder Schwarz C / M",
+    "medien": [
+     "gid://shopify/MediaImage/77436850569607"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489713543",
+    "titel": "Kinder Schwarz C / L",
+    "medien": [
+     "gid://shopify/MediaImage/77436850569607"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489746311",
+    "titel": "Kinder Schwarz C / XL",
+    "medien": [
+     "gid://shopify/MediaImage/77436850569607"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67797489779079",
+    "titel": "Kinder Schwarz C / 2XL",
+    "medien": [
+     "gid://shopify/MediaImage/77436850569607"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77436850569607": "gid://shopify/MediaImage/78014937989511"
+ }
+}

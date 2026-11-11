@@ -43,8 +43,66 @@ Rücknahme, in dieser Reihenfolge (die Dateien in `sicherung2/` tragen dieselben
 2. Bilder dieses Laufs: `ZURUECK=1 LIVE=1 NODE_USE_ENV_PROXY=1 node dropship/bildfix-1111/ersetzen.mjs dropship/bildfix-1111/plaene/plan_wirkung.json dropship/bildfix-1111/sicherung2`.
 3. Erst danach, falls gewollt, der erste Lauf mit `sicherung/`.
 
+## Google-Liste der Bildprobleme (11.11. abends)
+
+Quelle: `automation/merchant_bildprobleme.py` (Workflow `merchant-bildprobleme.yml`, Lauf 43082038253), Merchant API
+`product_view` mit `item_issues`. 313 Angebote mit einem Bildproblem: 281 «Werbeeinblendung im Bild»
+(`image_unwanted_overlays`), 29 «Bild zu klein» (`image_too_small`), 3 auf Googles Seite (Abruf ausstehend, interner
+Fehler). Die Zahlen im Merchant Center (357 und 43) stammen aus einem anderen Stand oder zählen anders (nicht nachgemessen).
+
+`google_liste.mjs` (nur lesend) ordnet jedes Angebot dem Bild zu, das Google bekommt (Variantenbild, sonst Hauptbild):
+309 von 313 Angeboten zuordenbar (166 der Google-App `shopify_ZZ_…`, 143 einer zweiten Quelle `<Produkt>_<sku>`,
+4 nur mit einer Nummer). Ergebnis: 102 Produkte, alle ACTIVE, 137 Bilder (45 Hauptbilder, 92 Variantenbilder).
+
+LIVE 11.11. zwischen 20:01 und 20:07 UTC, je Produkt frisch zurückgelesen «GLEICH» (93 von 93). Unabhängige Nachprüfung
+20:08 UTC: 120 neue Bilder, kein beanstandetes Bild mehr am Produkt, 119 von 119 Varianten zeigen ihr neues Bild; die
+Shop-Seite (`/products/<handle>.js`) war an 6 Produkten gleich dem Admin-Stand.
+
+| Was | Bilder |
+|---|---|
+| Text, Masslinien, Symbole und aufgelegte Logos entfernt (Higgsfield, GPT Image 2.6) | 114 |
+| «10 Pairs» ohne KI mit dem weissen Hintergrund überdeckt (Füsslinge; Higgsfield lehnte das Bild mit Beinen ab) | 1 |
+| Zu kleine Bilder hochgerechnet (Higgsfield-Upscale 2k, danach auf höchstens 2048 Pixel verkleinert) | 5 |
+| Vorhandenes sauberes Bild nach vorn, weil das Hauptbild beanstandet war | 6 |
+| Gelöst, weil seine bereinigte Fassung das Hauptbild ersetzt (sonst doppelt in der Galerie) | 2 |
+| Nicht angefasst | 11 |
+
+Kosten Higgsfield: 39,25 Credits (117 Bearbeitungen je 0,25 inklusive 3 Neuversuche, 5 Upscales je 2), danach 2958 Credits.
+
+Jedes neue Bild wurde neben dem Original angesehen: Produkt, Form, Farben und Teile gleich, nur die Einblendung weg.
+Drei Bilder wurden neu gemacht: der Drachenkelch (die erste Fassung aus dem 90-Pixel-Bild veränderte den Kelch; die neue
+stammt aus Bild 3 ohne den zweiten Kelch) und zwei Drohnen-Varianten (die KI hatte Akkus erfunden, wo «3PCBattary» und
+«2PCBattary» stand; die Akkuzahl steht weiter im Variantennamen).
+
+Meine Auslegung (nicht bestätigt): Logos, die nur über das Bild gelegt sind (KLASVSA beim Fussbad, ROSEER beim Subwoofer,
+ATTACK SHARK bei der Maus), zählen für Google zu den Werbeeinblendungen und sind entfernt. Schrift und Marken, die auf dem
+Produkt selbst stehen, bleiben.
+
+Nicht angefasst (Entscheid beim Besitzer):
+- Spielkonsolen und eine Festplatte mit vorinstallierten Spielen (X9, Y2HDMAX, Mini HD Motion-Sensing, externe
+  Festplatte USB 3.0): Rechte an den Spielen.
+- Bluetooth Audio Empfänger fürs Auto: Bilder der Marke UGREEN.
+- Kabelloser elektronischer Haustierzaun mit Halsbändern: Tierschutz.
+- Drei Fortura-Artikel: Googles Abruf steht aus oder scheiterte bei Google; nichts zu tun.
+
+Funde ohne Änderung:
+- «SACE LADY Flüssig-Mascara»: Varianten Dunkelgrau, Hellbraun, Braun, Schwarzbraun, Dunkelbraun; die Bilder zeigen ein
+  Augenbrauen-Gel. Titel und Text sagen Mascara. Das CJ-Datenblatt war von hier nicht lesbar.
+- Nasenreiniger mit Saugfunktion: die Variante «Weiss Set-USB» zeigt ein Gesichtsdampfgerät mit US-Stecker.
+- Stern-Bodysuit: eine Ausführung zeigt ein Motiv, das wie die Figur «Patrick Star» aussieht.
+- Titel mit Wirkungs- oder Gesundheitsaussage (Kandidaten): «LED-Lichttherapie-Maske für strahlende Haut», «Smartwatch für
+  Sport und Gesundheitsüberwachung», «Gesichtshochheber Nackenmassagegerät».
+
+Rücknahme je Teil (Sicherungen in `sicherung3/`):
+`ZURUECK=1 LIVE=1 NODE_USE_ENV_PROXY=1 node dropship/bildfix-1111/ersetzen.mjs dropship/bildfix-1111/plaene/plan_google_<1 bis 4>.json dropship/bildfix-1111/sicherung3`
+
+Ungemessen: wann Google die Bilder neu abruft und die Zahl der beanstandeten Artikel sinkt (Prüfweg: Workflow
+`merchant-bildprobleme.yml` in einigen Tagen neu laufen lassen und mit `google_liste.mjs` auswerten).
+
 ## Werkzeuge
 
+- `google_liste.mjs <angebote.txt> <ausgabe.json>`: liest die Produkte der Google-Liste nur lesend und nennt je Angebot
+  das Bild, das Google bekommt. `angebote.txt` hat je Zeile `code|angebot` aus dem Workflow-Ergebnis.
 - `lesen.mjs <handles.txt> <ordner>`: liest Produkte nur lesend, baut je Produkt einen Kontaktbogen (H = Hauptbild,
   V = Variantenbild).
 - `ersetzen.mjs <plan.json> <sicherungsordner>`: Trockenlauf Vorgabe, `LIVE=1` schreibt, sichert vorher je Produkt den
@@ -70,7 +128,7 @@ Rücknahme, in dieser Reihenfolge (die Dateien in `sicherung2/` tragen dieselben
 
 ## Offen
 
-- Google-Liste der Bildprobleme abarbeiten (Workflow-Ergebnis lesen).
+- Google-Liste der Bildprobleme: abgearbeitet, siehe oben; die 11 nicht angefassten Bilder und die Funde liegen beim Besitzer.
 - Nicht angefasst, weil mehr als Text das Problem ist: Tech-Hero-Geschenkbox (Bild zeigt Geräte einer fremden Marke),
   Bambus-Aufbewahrungssystem (Bilder einer fremden Marke «Kitchen Edge», Rechte unklar), Herrenuhr «Executive»
   (Marke «TOMI» auf dem Zifferblatt), Edelstahl-Trinkflasche (Variantenbilder nur 209 und 290 Pixel breit, bessere Quelle nötig).

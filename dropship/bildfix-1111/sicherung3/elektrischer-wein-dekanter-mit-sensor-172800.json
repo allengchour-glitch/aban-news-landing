@@ -1,0 +1,115 @@
+{
+ "zeit": "2026-11-11T20:04:02.995Z",
+ "plan": {
+  "handle": "elektrischer-wein-dekanter-mit-sensor-172800",
+  "erwartet_erstes": "gid://shopify/MediaImage/70505727754625",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70505727820161",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194115_b918aeed-146a-4b8c-a263-d1e8211e7c3d.png",
+    "alt_text": "Elektrischer Wein-Dekanter mit Sensor – Ansicht 3"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15496184267137",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70505727754625",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727787393",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727820161",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727852929",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727885697",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727918465",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727951233",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505727984001",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505728016769",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70505728049537",
+    "alt": "Elektrischer Wein-Dekanter mit Sensor – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949782000007",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949782032775",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948161663367",
+    "titel": "Maschine Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/77949782000007"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948161696135",
+    "titel": "Maschine Weiss Bodenbecken",
+    "medien": [
+     "gid://shopify/MediaImage/77949782032775"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948161728903",
+    "titel": "Doppelnutzung",
+    "medien": [
+     "gid://shopify/MediaImage/70505728016769"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948161761671",
+    "titel": "Maschine Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70505727820161"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70505727820161": "gid://shopify/MediaImage/78014936613255"
+ }
+}

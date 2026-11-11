@@ -1,0 +1,150 @@
+{
+ "zeit": "2026-11-11T20:05:19.792Z",
+ "plan": {
+  "handle": "ps5-gamepad-618700",
+  "erwartet_erstes": "gid://shopify/MediaImage/77265195762055",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77265195794823",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193413_572b6d94-d32e-45ff-93ee-5ca65512a0ab.png",
+    "alt_text": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Ansicht 4"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77265195860359",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193412_17753609-4eca-4919-b736-299fcd934f8c.png",
+    "alt_text": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Ansicht 6"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77265202020743",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193410_4ee3e91c-7cef-4d7b-a895-f8389c66ce13.png",
+    "alt_text": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Ansicht 9"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77265201955207",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193410_2ebb35da-c1df-4fec-b3c1-1301175ad80c.png",
+    "alt_text": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Ansicht 7"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77265201987975",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193409_23b3ca3c-09c6-475c-8cd8-04532ac64d00.png",
+    "alt_text": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Ansicht 8"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15433464381825",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77265195762055",
+    "alt": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69712351723905",
+    "alt": "PS5-Gamepad",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265195696519",
+    "alt": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265195794823",
+    "alt": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265195827591",
+    "alt": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265195860359",
+    "alt": "Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265201955207",
+    "alt": "LuxeStyle Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Bild 7 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265201987975",
+    "alt": "LuxeStyle Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Bild 8 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265202020743",
+    "alt": "LuxeStyle Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Bild 9 – LuxeStyle Schweiz",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77265202053511",
+    "alt": "LuxeStyle Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads – Bild 10 – LuxeStyle Schweiz",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67788517867911",
+    "titel": "PS5",
+    "medien": [
+     "gid://shopify/MediaImage/77265195794823"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788517900679",
+    "titel": "PS4",
+    "medien": [
+     "gid://shopify/MediaImage/77265195860359"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788517933447",
+    "titel": "XBOX",
+    "medien": [
+     "gid://shopify/MediaImage/77265202020743"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788517966215",
+    "titel": "Switchpro",
+    "medien": [
+     "gid://shopify/MediaImage/77265201955207"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788517998983",
+    "titel": "Switch Joycon Weiß",
+    "medien": [
+     "gid://shopify/MediaImage/77265195827591"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788518031751",
+    "titel": "Switch Joycon Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77265195762055"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67788518064519",
+    "titel": "XBOX Elite Griff",
+    "medien": [
+     "gid://shopify/MediaImage/77265201987975"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77265195794823": "gid://shopify/MediaImage/78014940447111",
+  "gid://shopify/MediaImage/77265195860359": "gid://shopify/MediaImage/78014941135239",
+  "gid://shopify/MediaImage/77265202020743": "gid://shopify/MediaImage/78014941823367",
+  "gid://shopify/MediaImage/77265201955207": "gid://shopify/MediaImage/78014942577031",
+  "gid://shopify/MediaImage/77265201987975": "gid://shopify/MediaImage/78014943330695"
+ }
+}

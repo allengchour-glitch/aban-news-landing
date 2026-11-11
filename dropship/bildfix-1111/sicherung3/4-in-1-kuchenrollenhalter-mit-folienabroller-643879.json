@@ -1,0 +1,77 @@
+{
+ "zeit": "2026-11-11T20:03:10.576Z",
+ "plan": {
+  "handle": "4-in-1-kuchenrollenhalter-mit-folienabroller-643879",
+  "erwartet_erstes": "gid://shopify/MediaImage/69886963351937",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69886963351937",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193215_1cba4710-0c65-4d23-bc53-518ae54304b8.png",
+    "alt_text": "4-in-1 Küchenrollenhalter mit Folienabroller – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450832765313",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69886963351937",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963384705",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963417473",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963450241",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963483009",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963515777",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69886963548545",
+    "alt": "4-in-1 Küchenrollenhalter mit Folienabroller – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889729290625",
+    "titel": "Weiss",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889729323393",
+    "titel": "Grau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889729356161",
+    "titel": "Braun",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69886963351937": "gid://shopify/MediaImage/78014935040391"
+ }
+}

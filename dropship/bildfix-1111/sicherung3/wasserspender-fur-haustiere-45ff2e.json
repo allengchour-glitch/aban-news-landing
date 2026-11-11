@@ -1,0 +1,143 @@
+{
+ "zeit": "2026-11-11T20:04:05.089Z",
+ "plan": {
+  "handle": "wasserspender-fur-haustiere-45ff2e",
+  "erwartet_erstes": "gid://shopify/MediaImage/70814258725249",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70814258790785",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194602_8c46b844-35f2-46b0-b02b-0518a1fb3303.png",
+    "alt_text": "Wasserspender für Haustiere – Ansicht 2"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525499076993",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70814258725249",
+    "alt": "Wasserspender für Haustiere | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258790785",
+    "alt": "Wasserspender für Haustiere – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258823553",
+    "alt": "Wasserspender für Haustiere – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258856321",
+    "alt": "Wasserspender für Haustiere – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258889089",
+    "alt": "Wasserspender für Haustiere – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258921857",
+    "alt": "Wasserspender für Haustiere – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258954625",
+    "alt": "Wasserspender für Haustiere – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814258987393",
+    "alt": "Wasserspender für Haustiere – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814259020161",
+    "alt": "Wasserspender für Haustiere – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814259052929",
+    "alt": "Wasserspender für Haustiere – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77830126010759",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77830126043527",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790219280775",
+    "titel": "Blau / Essen",
+    "medien": [
+     "gid://shopify/MediaImage/70814258725249"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219313543",
+    "titel": "Grün / Wasser",
+    "medien": [
+     "gid://shopify/MediaImage/77830126010759"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219346311",
+    "titel": "Rosa / Essen",
+    "medien": [
+     "gid://shopify/MediaImage/70814258987393"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219379079",
+    "titel": "Rosa / Wasser",
+    "medien": [
+     "gid://shopify/MediaImage/70814258856321"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219411847",
+    "titel": "Blau / Wasser",
+    "medien": [
+     "gid://shopify/MediaImage/70814259052929"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219444615",
+    "titel": "Grau / Wasser",
+    "medien": [
+     "gid://shopify/MediaImage/70814258790785"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219477383",
+    "titel": "Grün / Essen",
+    "medien": [
+     "gid://shopify/MediaImage/77830126043527"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790219510151",
+    "titel": "Grau / Essen",
+    "medien": [
+     "gid://shopify/MediaImage/70814258823553"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70814258790785": "gid://shopify/MediaImage/78014936678791"
+ }
+}

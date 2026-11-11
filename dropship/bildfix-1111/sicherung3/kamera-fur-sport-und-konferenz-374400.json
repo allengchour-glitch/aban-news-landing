@@ -1,0 +1,101 @@
+{
+ "zeit": "2026-11-11T20:03:09.119Z",
+ "plan": {
+  "handle": "kamera-fur-sport-und-konferenz-374400",
+  "erwartet_erstes": "gid://shopify/MediaImage/69873458610561",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77958777373063",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193725_086df86f-7012-4edb-8f7a-49982719eb08.png",
+    "alt_text": "Kamera für Sport und Konferenz – Ansicht 12"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449485967745",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69873458610561",
+    "alt": "Kamera für Sport und Konferenz – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458643329",
+    "alt": "Kamera für Sport und Konferenz – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458676097",
+    "alt": "Kamera für Sport und Konferenz – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458708865",
+    "alt": "Kamera für Sport und Konferenz – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458741633",
+    "alt": "Kamera für Sport und Konferenz – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458774401",
+    "alt": "Kamera für Sport und Konferenz – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458807169",
+    "alt": "Kamera für Sport und Konferenz – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458839937",
+    "alt": "Kamera für Sport und Konferenz – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458872705",
+    "alt": "Kamera für Sport und Konferenz – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458905473",
+    "alt": "Kamera für Sport und Konferenz – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69873458938241",
+    "alt": "Kamera für Sport und Konferenz – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958777373063",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122762379655",
+    "titel": "1080p Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/69873458741633"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122762412423",
+    "titel": "WIFI Schwarz 1080p",
+    "medien": [
+     "gid://shopify/MediaImage/77958777373063"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77958777373063": "gid://shopify/MediaImage/78014934942087"
+ }
+}

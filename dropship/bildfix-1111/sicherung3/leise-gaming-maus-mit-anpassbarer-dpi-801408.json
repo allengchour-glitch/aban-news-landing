@@ -1,0 +1,94 @@
+{
+ "zeit": "2026-11-11T20:06:55.921Z",
+ "plan": {
+  "handle": "leise-gaming-maus-mit-anpassbarer-dpi-801408",
+  "erwartet_erstes": "gid://shopify/MediaImage/70741353365889",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70741353464193",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194429_657dec32-9720-48b5-ac42-1da577dfc3e5.png",
+    "alt_text": "Leise Gaming Maus mit anpassbarer DPI – Ansicht 3"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15522098119041",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70741353365889",
+    "alt": "Leise Gaming Maus mit anpassbarer DPI | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741353431425",
+    "alt": "Leise Gaming Maus mit anpassbarer DPI – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741353464193",
+    "alt": "Leise Gaming Maus mit anpassbarer DPI – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741353496961",
+    "alt": "Leise Gaming Maus mit anpassbarer DPI – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70741353529729",
+    "alt": "Leise Gaming Maus mit anpassbarer DPI – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68164998201735",
+    "titel": "Weiss / Audioversion",
+    "medien": [
+     "gid://shopify/MediaImage/70741353529729"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68164998234503",
+    "titel": "Weiss / Lautlos-Version",
+    "medien": [
+     "gid://shopify/MediaImage/70741353529729"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68164998267271",
+    "titel": "Star Schwarz / Audioversion",
+    "medien": [
+     "gid://shopify/MediaImage/70741353431425"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68164998300039",
+    "titel": "Star Schwarz / Lautlos-Version",
+    "medien": [
+     "gid://shopify/MediaImage/70741353431425"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68164998332807",
+    "titel": "Galvanik Schwarz / Audioversion",
+    "medien": [
+     "gid://shopify/MediaImage/70741353464193"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68164998365575",
+    "titel": "Galvanik Schwarz / Lautlos-Version",
+    "medien": [
+     "gid://shopify/MediaImage/70741353464193"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70741353464193": "gid://shopify/MediaImage/78014969807239"
+ }
+}

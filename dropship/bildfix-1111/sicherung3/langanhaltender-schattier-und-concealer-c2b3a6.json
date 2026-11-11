@@ -1,0 +1,105 @@
+{
+ "zeit": "2026-11-11T20:03:01.180Z",
+ "plan": {
+  "handle": "langanhaltender-schattier-und-concealer-c2b3a6",
+  "erwartet_erstes": "gid://shopify/MediaImage/70806858301825",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77958618186119",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194430_e7d75ded-fb18-45e0-bb4e-e943e2e363e6.png",
+    "alt_text": "Langanhaltender Schattier- und Concealer – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525142593921",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70806858301825",
+    "alt": "Langanhaltender Schattier- und Concealer | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806858727809",
+    "alt": "Langanhaltender Schattier- und Concealer – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806858760577",
+    "alt": "Langanhaltender Schattier- und Concealer – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806858793345",
+    "alt": "Langanhaltender Schattier- und Concealer – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806858826113",
+    "alt": "Langanhaltender Schattier- und Concealer – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806858858881",
+    "alt": "Langanhaltender Schattier- und Concealer – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958618120583",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958618153351",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958618186119",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958618218887",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122269581703",
+    "titel": "Hellbeige",
+    "medien": [
+     "gid://shopify/MediaImage/77958618120583"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122269614471",
+    "titel": "Natur",
+    "medien": [
+     "gid://shopify/MediaImage/77958618153351"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122269647239",
+    "titel": "Weizen",
+    "medien": [
+     "gid://shopify/MediaImage/77958618186119"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122269680007",
+    "titel": "Hautaufhellung",
+    "medien": [
+     "gid://shopify/MediaImage/77958618218887"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77958618186119": "gid://shopify/MediaImage/78014934679943"
+ }
+}

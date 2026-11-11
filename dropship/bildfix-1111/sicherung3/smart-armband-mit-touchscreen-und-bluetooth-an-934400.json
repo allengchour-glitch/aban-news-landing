@@ -1,0 +1,189 @@
+{
+ "zeit": "2026-11-11T20:03:13.007Z",
+ "plan": {
+  "handle": "smart-armband-mit-touchscreen-und-bluetooth-an-934400",
+  "erwartet_erstes": "gid://shopify/MediaImage/70806875767169",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77843123995015",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194426_b438e55a-4e25-4a1f-8857-432091ee3e68.png",
+    "alt_text": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Ansicht 23"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15525144101249",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70806875767169",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875799937",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875832705",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875865473",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875898241",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875931009",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875963777",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806875996545",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876029313",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876062081",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876094849",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876127617",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876160385",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876193153",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876225921",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 15 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876258689",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 16 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876291457",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 17 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876324225",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 18 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806876356993",
+    "alt": "Smart-Armband mit Touchscreen und Bluetooth-Anrufen – Bild 19 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77843123896711",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77843123929479",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77843123962247",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77843123995015",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77843124027783",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67801761055111",
+    "titel": "Vinyl",
+    "medien": [
+     "gid://shopify/MediaImage/77843123896711"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801761087879",
+    "titel": "Goldkapseln",
+    "medien": [
+     "gid://shopify/MediaImage/77843123929479"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801761120647",
+    "titel": "Graukleber",
+    "medien": [
+     "gid://shopify/MediaImage/77843123962247"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801761153415",
+    "titel": "Roségoldnetz",
+    "medien": [
+     "gid://shopify/MediaImage/70806876160385"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801761186183",
+    "titel": "Schwarznetz",
+    "medien": [
+     "gid://shopify/MediaImage/77843123995015"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67801761218951",
+    "titel": "Silbernetz",
+    "medien": [
+     "gid://shopify/MediaImage/77843124027783"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77843123995015": "gid://shopify/MediaImage/78014935138695"
+ }
+}

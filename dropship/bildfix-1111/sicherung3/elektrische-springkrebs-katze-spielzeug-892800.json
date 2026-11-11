@@ -1,0 +1,107 @@
+{
+ "zeit": "2026-11-11T20:04:14.432Z",
+ "plan": {
+  "handle": "elektrische-springkrebs-katze-spielzeug-892800",
+  "erwartet_erstes": "gid://shopify/MediaImage/69887011029377",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69887011029377",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193843_3c68e607-1a13-4d62-80d5-7b9654b936bd.png",
+    "alt_text": "Elektrische Springkrebs Katze Spielzeug – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450834731393",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69887011029377",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887010931073",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887010996609",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011062145",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011094913",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011127681",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011160449",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011193217",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011225985",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011258753",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011291521",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011324289",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887011357057",
+    "alt": "Elektrische Springkrebs Katze Spielzeug – Bild 1 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889756094849",
+    "titel": "Hüpfende Garnele, zufällige Farbe, ca. 35 CM, USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889756127617",
+    "titel": "Weiche, aufgenähte Augen Version, ca. 32 CM, USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889756160385",
+    "titel": "2 Stk. Hüpfende Garnele, zufällige Farbe, ca. 35 CM, USB",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69887011029377": "gid://shopify/MediaImage/78014937170311"
+ }
+}

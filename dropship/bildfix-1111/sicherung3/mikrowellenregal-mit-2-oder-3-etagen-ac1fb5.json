@@ -1,0 +1,71 @@
+{
+ "zeit": "2026-11-11T20:06:43.677Z",
+ "plan": {
+  "handle": "mikrowellenregal-mit-2-oder-3-etagen-ac1fb5",
+  "erwartet_erstes": "gid://shopify/MediaImage/70699359732097",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70699359830401",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194429_84efc087-9afa-4606-a503-d7aa7b30b029.png",
+    "alt_text": "Mikrowellenregal mit 2 oder 3 Etagen – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15518601216385",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70699359732097",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70699359764865",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70699359797633",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70699359830401",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70699359863169",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70699359895937",
+    "alt": "Mikrowellenregal mit 2 oder 3 Etagen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790002454919",
+    "titel": "2 Lagen",
+    "medien": [
+     "gid://shopify/MediaImage/70699359830401"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002487687",
+    "titel": "3 Lagen",
+    "medien": [
+     "gid://shopify/MediaImage/70699359764865"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70699359830401": "gid://shopify/MediaImage/78014966661511"
+ }
+}

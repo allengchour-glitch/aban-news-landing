@@ -1,0 +1,167 @@
+{
+ "zeit": "2026-11-11T20:03:21.458Z",
+ "plan": {
+  "handle": "phoera-magnificent-metals-liquid-lidschatten-950def",
+  "erwartet_erstes": "gid://shopify/MediaImage/69887465652609",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69887465652609",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193215_5a0d1f8a-56a2-489b-99d9-e43e7af96914.png",
+    "alt_text": "PHOERA Magnificent Metals Liquid Lidschatten – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15450853998977",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69887465652609",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465488769",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465521537",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465554305",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465587073",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465619841",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465685377",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465718145",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465750913",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465783681",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465816449",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465849217",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465881985",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465914753",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465947521",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887465980289",
+    "alt": "PHOERA Magnificent Metals Liquid Lidschatten – Bild 4 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55889957060993",
+    "titel": "Creme",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957093761",
+    "titel": "Unicorn Hype",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957126529",
+    "titel": "Trust fund",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957159297",
+    "titel": "Forest",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957192065",
+    "titel": "Roségold",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957224833",
+    "titel": "Dare",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957257601",
+    "titel": "Pinch me",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957290369",
+    "titel": "Midnight",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957323137",
+    "titel": "Baby Rosé",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957355905",
+    "titel": "Ice",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957388673",
+    "titel": "Viridian",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889957421441",
+    "titel": "Azul lemonade",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69887465652609": "gid://shopify/MediaImage/78014935368071"
+ }
+}

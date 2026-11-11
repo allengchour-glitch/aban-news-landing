@@ -1,0 +1,59 @@
+{
+ "zeit": "2026-11-11T20:06:21.967Z",
+ "plan": {
+  "handle": "intelligenter-sprachubersetzer-468980",
+  "erwartet_erstes": "gid://shopify/MediaImage/70635100930433",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70635100930433",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194308_a2e191b0-3705-4e9b-96b6-62eebf30dc3f.png",
+    "alt_text": "Intelligenter Sprachübersetzer – Ansicht 1"
+   }
+  ],
+  "loesen": [
+   "gid://shopify/MediaImage/70635100963201"
+  ],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15510409675137",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70635100930433",
+    "alt": "Intelligenter Sprachübersetzer | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70635100963201",
+    "alt": "Intelligenter Sprachübersetzer – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70635100995969",
+    "alt": "Intelligenter Sprachübersetzer – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70635101028737",
+    "alt": "Intelligenter Sprachübersetzer – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70635101061505",
+    "alt": "Intelligenter Sprachübersetzer – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56160666878337",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70635100930433": "gid://shopify/MediaImage/78014961254791"
+ }
+}

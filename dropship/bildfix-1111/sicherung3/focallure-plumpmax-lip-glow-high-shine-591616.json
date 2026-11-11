@@ -1,0 +1,99 @@
+{
+ "zeit": "2026-11-11T20:01:58.150Z",
+ "plan": {
+  "handle": "focallure-plumpmax-lip-glow-high-shine-591616",
+  "erwartet_erstes": "gid://shopify/MediaImage/70746651984257",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70746651984257",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194426_bccfaff5-dab0-4680-9d79-a3f8d4db4752.png",
+    "alt_text": "FOCALLURE PLUMPMAX Lip Glow High Shine – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15522213986689",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70746651984257",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652049793",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652082561",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652115329",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652148097",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652180865",
+    "alt": "FOCALLURE PLUMPMAX Lip Glow High Shine – Bild 6 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122245267847",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70746652180865"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245300615",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70746652082561"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245333383",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/70746652049793"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245366151",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/70746652115329"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245398919",
+    "titel": "Grün",
+    "medien": [
+     "gid://shopify/MediaImage/70746652148097"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245431687",
+    "titel": "Gelb",
+    "medien": [
+     "gid://shopify/MediaImage/70746651984257"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70746651984257": "gid://shopify/MediaImage/78014931665287"
+ }
+}

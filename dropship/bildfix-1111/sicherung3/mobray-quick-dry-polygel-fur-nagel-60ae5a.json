@@ -1,0 +1,216 @@
+{
+ "zeit": "2026-11-11T20:03:32.238Z",
+ "plan": {
+  "handle": "mobray-quick-dry-polygel-fur-nagel-60ae5a",
+  "erwartet_erstes": "gid://shopify/MediaImage/70499468018049",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70499468640641",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193213_2950b32a-2528-4b5d-a1b2-16a7c09a134c.png",
+    "alt_text": "Mobray Quick-Dry Polygel für Nägel – Ansicht 14"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15495081525633",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70499468018049",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468247425",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468280193",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468312961",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468345729",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468378497",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468411265",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468444033",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468476801",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468509569",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468542337",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468575105",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468607873",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468640641",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499468673409",
+    "alt": "Mobray Quick-Dry Polygel für Nägel – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542613895",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542646663",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542679431",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542712199",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542744967",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77872542777735",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67822102839687",
+    "titel": "2Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542613895"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822102872455",
+    "titel": "7Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542646663"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822102905223",
+    "titel": "10Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468018049"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822102937991",
+    "titel": "5Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542679431"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822102970759",
+    "titel": "12Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468345729"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103003527",
+    "titel": "1Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468378497"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103036295",
+    "titel": "8Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468280193"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103069063",
+    "titel": "6Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542712199"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103101831",
+    "titel": "11Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542744967"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103134599",
+    "titel": "3Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468640641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103167367",
+    "titel": "9Stil",
+    "medien": [
+     "gid://shopify/MediaImage/70499468673409"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67822103200135",
+    "titel": "4Stil",
+    "medien": [
+     "gid://shopify/MediaImage/77872542777735"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70499468640641": "gid://shopify/MediaImage/78014935662983"
+ }
+}

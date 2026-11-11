@@ -1,0 +1,132 @@
+{
+ "zeit": "2026-11-11T20:05:50.743Z",
+ "plan": {
+  "handle": "hd-himmel-fotografie-uav-mit-hindernisvermeidu-251264",
+  "erwartet_erstes": "gid://shopify/MediaImage/69972979876225",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69972979876225",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193844_787e0c21-28e7-4164-b579-9afb8fb2c3e2.png",
+    "alt_text": "HD-Kameradrohne für Luftaufnahmen – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15458984755585",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69972979876225",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980007297",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980040065",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980072833",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980105601",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980138369",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980171137",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980203905",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980236673",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980269441",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980302209",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980334977",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980367745",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980400513",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980433281",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980466049",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980498817",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980531585",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980564353",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69972980597121",
+    "alt": "HD-Himmel Fotografie UAV mit Hindernisvermeidung – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55924587626881",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69972979876225": "gid://shopify/MediaImage/78014950703495"
+ }
+}

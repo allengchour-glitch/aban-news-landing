@@ -1,0 +1,244 @@
+{
+ "zeit": "2026-11-11T20:02:32.373Z",
+ "plan": {
+  "handle": "portabler-luftreiniger-aschenbecher-437952",
+  "erwartet_erstes": "gid://shopify/MediaImage/69871900426625",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/69871900983681"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449425314177",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69871900426625",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900459393",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900492161",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900524929",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900557697",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900590465",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900623233",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900656001",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900688769",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900721537",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900754305",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900787073",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900819841",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900852609",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900885377",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900918145",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900950913",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871900983681",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871901016449",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871901049217",
+    "alt": "Portabler Luftreiniger Aschenbecher – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881712697729",
+    "titel": "Sternenhimmel Grün",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712730497",
+    "titel": "Grau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712763265",
+    "titel": "Weiss",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712796033",
+    "titel": "Quadratisch Grün",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712828801",
+    "titel": "Quadratisch Grau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712861569",
+    "titel": "Quadratisch Blau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712894337",
+    "titel": "Round filter",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712927105",
+    "titel": "Square filter",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712959873",
+    "titel": "Round filter 10pcs",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881712992641",
+    "titel": "Square filter 10pcs",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713025409",
+    "titel": "Round filter2pcs",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713058177",
+    "titel": "Set 1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713090945",
+    "titel": "Set 2",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713123713",
+    "titel": "Set 3",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713156481",
+    "titel": "Set 4",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713189249",
+    "titel": "Set 5",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713222017",
+    "titel": "Set 6",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713254785",
+    "titel": "Set 7",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713287553",
+    "titel": "Set 8",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713320321",
+    "titel": "Set 9",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713353089",
+    "titel": "Round filter 5pcs",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713385857",
+    "titel": "Grau · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713418625",
+    "titel": "Starry Sky Green2pcs",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713451393",
+    "titel": "Weiss · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881713484161",
+    "titel": "Filter cotton sheets 5pcs",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

@@ -1,0 +1,172 @@
+{
+ "zeit": "2026-11-11T20:02:03.220Z",
+ "plan": {
+  "handle": "gesten-ferngesteuertes-deformationsauto-936320",
+  "erwartet_erstes": "gid://shopify/MediaImage/70397019193729",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70397019521409",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193953_ec774a5f-ce5b-4282-b6b6-f9289c78e530.png",
+    "alt_text": "Gesten-Ferngesteuertes Deformationsauto – Ansicht 8"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15485599318401",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70397019193729",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019324801",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019357569",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019390337",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019423105",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019455873",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019488641",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70397019521409",
+    "alt": "Gesten-Ferngesteuertes Deformationsauto – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790002585991",
+    "titel": "Grün / Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70397019357569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002618759",
+    "titel": "Grün / Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70397019357569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002651527",
+    "titel": "Grün / Gestreift",
+    "medien": [
+     "gid://shopify/MediaImage/70397019357569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002684295",
+    "titel": "Grün / Modell 2023",
+    "medien": [
+     "gid://shopify/MediaImage/70397019357569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002717063",
+    "titel": "Grün / Geblümt",
+    "medien": [
+     "gid://shopify/MediaImage/70397019357569"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002749831",
+    "titel": "Blau / Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70397019488641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002782599",
+    "titel": "Blau / Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70397019488641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002815367",
+    "titel": "Blau / Gestreift",
+    "medien": [
+     "gid://shopify/MediaImage/70397019488641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002848135",
+    "titel": "Blau / Modell 2023",
+    "medien": [
+     "gid://shopify/MediaImage/70397019488641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002880903",
+    "titel": "Blau / Geblümt",
+    "medien": [
+     "gid://shopify/MediaImage/70397019488641"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002913671",
+    "titel": "Orange / Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70397019521409"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002946439",
+    "titel": "Orange / Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/70397019521409"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790002979207",
+    "titel": "Orange / Gestreift",
+    "medien": [
+     "gid://shopify/MediaImage/70397019521409"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790003011975",
+    "titel": "Orange / Modell 2023",
+    "medien": [
+     "gid://shopify/MediaImage/70397019521409"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790003044743",
+    "titel": "Orange / Geblümt",
+    "medien": [
+     "gid://shopify/MediaImage/70397019521409"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70397019521409": "gid://shopify/MediaImage/78014931829127"
+ }
+}

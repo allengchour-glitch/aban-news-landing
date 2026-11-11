@@ -1,0 +1,173 @@
+{
+ "zeit": "2026-11-11T20:06:10.292Z",
+ "plan": {
+  "handle": "sequin-nagellack-gel-kit-mit-lichthartungsgera-658688",
+  "erwartet_erstes": "gid://shopify/MediaImage/70634679697793",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77958609731975",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194308_3b8e7c6d-a8f9-49fe-b62f-1d9057d18479.png",
+    "alt_text": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Ansicht 14"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15510337290625",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70634679697793",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679730561",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679763329",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679796097",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679828865",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679861633",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679894401",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679927169",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679959937",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634679992705",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634680025473",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634680058241",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70634680091009",
+    "alt": "Sequin Nagellack Gel-Kit mit Lichthärtungsgerät – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958609731975",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958609764743",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958609797511",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958609830279",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77958609863047",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/68122225738119",
+    "titel": "Stil 1",
+    "medien": [
+     "gid://shopify/MediaImage/77958609731975"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225770887",
+    "titel": "Stil 2",
+    "medien": [
+     "gid://shopify/MediaImage/77958609764743"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225803655",
+    "titel": "Stil 3",
+    "medien": [
+     "gid://shopify/MediaImage/77958609797511"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225836423",
+    "titel": "Stil 4",
+    "medien": [
+     "gid://shopify/MediaImage/70634679697793"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225869191",
+    "titel": "Stil 5",
+    "medien": [
+     "gid://shopify/MediaImage/70634679796097"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225901959",
+    "titel": "Stil 6",
+    "medien": [
+     "gid://shopify/MediaImage/77958609830279"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225934727",
+    "titel": "Stil 7",
+    "medien": [
+     "gid://shopify/MediaImage/70634680058241"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122225967495",
+    "titel": "Modell 8",
+    "medien": [
+     "gid://shopify/MediaImage/77958609863047"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77958609731975": "gid://shopify/MediaImage/78014957027719"
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "zeit": "2026-11-11T20:05:11.486Z",
+ "plan": {
+  "handle": "elektrisches-fussbad-mit-heizfunktion-285312",
+  "erwartet_erstes": "gid://shopify/MediaImage/70614878749057",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70614878749057",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194307_7602b80a-769b-4483-8f96-fd3d5d512be0.png",
+    "alt_text": "Elektrisches Fussbad mit Heizfunktion – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15508418855297",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70614878749057",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878716289",
+    "alt": "Elektrisches Fussbad mit Heizfunktion | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878781825",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878814593",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878847361",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878880129",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70614878912897",
+    "alt": "Elektrisches Fussbad mit Heizfunktion – Bild 7 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56150621290881",
+    "titel": "Default Title",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70614878749057": "gid://shopify/MediaImage/78014942118279"
+ }
+}

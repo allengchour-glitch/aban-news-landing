@@ -1,0 +1,85 @@
+{
+ "zeit": "2026-11-11T20:06:24.499Z",
+ "plan": {
+  "handle": "kabellose-drei-modi-maus-fur-buro-und-e-sport-617000",
+  "erwartet_erstes": "gid://shopify/MediaImage/77502704976263",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77502704976263",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194719_14474cc5-675e-4d6e-9e59-4d3d76697931.png",
+    "alt_text": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77502705009031",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194721_13e1d5dd-c976-4ff5-abc3-2cf988734471.png",
+    "alt_text": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Ansicht 2"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77502705074567",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194722_03ceda4f-f58c-41b8-b1b3-e520f1b75b9a.png",
+    "alt_text": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16616684781959",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77502704976263",
+    "alt": "Kabellose Drei-Modi-Maus für Büro und E-Sport | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77502705009031",
+    "alt": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77502705041799",
+    "alt": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77502705074567",
+    "alt": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77502705107335",
+    "alt": "Kabellose Drei-Modi-Maus für Büro und E-Sport – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67672429789575",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77502704976263"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67674890862983",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/77502705009031"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67674890895751",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/77502705074567"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77502704976263": "gid://shopify/MediaImage/78014958567815",
+  "gid://shopify/MediaImage/77502705009031": "gid://shopify/MediaImage/78014960075143",
+  "gid://shopify/MediaImage/77502705074567": "gid://shopify/MediaImage/78014961910151"
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "zeit": "2026-11-11T20:05:46.735Z",
+ "plan": {
+  "handle": "brottablett-aus-massivholz-dd0065",
+  "erwartet_erstes": "gid://shopify/MediaImage/70623067275649",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70623067242881",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194306_a558244b-f103-4861-9820-e7275498d989.png",
+    "alt_text": "Brottablett aus Massivholz – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15509340094849",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70623067275649",
+    "alt": "Brottablett aus Massivholz – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70623067210113",
+    "alt": "Brottablett aus Massivholz – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70623066620289",
+    "alt": "Brottablett aus Massivholz | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70623067177345",
+    "alt": "Brottablett aus Massivholz – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70623067242881",
+    "alt": "Brottablett aus Massivholz – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70623067308417",
+    "alt": "Brottablett aus Massivholz – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949798777223",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948185289095",
+    "titel": "50X38X1.5CM",
+    "medien": [
+     "gid://shopify/MediaImage/70623067275649"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948185321863",
+    "titel": "40.5x30.5x1.5cm",
+    "medien": [
+     "gid://shopify/MediaImage/77949798777223"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948185354631",
+    "titel": "Gross",
+    "medien": [
+     "gid://shopify/MediaImage/70623067242881"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70623067242881": "gid://shopify/MediaImage/78014949392775"
+ }
+}

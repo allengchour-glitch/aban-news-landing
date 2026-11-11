@@ -1,0 +1,88 @@
+{
+ "zeit": "2026-11-11T20:02:47.552Z",
+ "plan": {
+  "handle": "schwarzer-6-schicht-trolley-fur-kuche-629800",
+  "erwartet_erstes": "gid://shopify/MediaImage/70766894743937",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70766894842241",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194430_35e2dfdb-2f45-4c65-9fe5-5dfb0cac3b97.png",
+    "alt_text": "Schwarzer 6-Schicht-Trolley für Küche – Ansicht 7"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15523817816449",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70766894743937",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894449025",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894678401",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894711169",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894776705",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894809473",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894842241",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70766894875009",
+    "alt": "Schwarzer 6‑Schicht‑Trolley für Küche – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67948104450439",
+    "titel": "Schwarz fünfschichtig mit Rollen",
+    "medien": [
+     "gid://shopify/MediaImage/70766894842241"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948104483207",
+    "titel": "Schwarz sechsschichtig mit Rollen",
+    "medien": [
+     "gid://shopify/MediaImage/70766894875009"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948104515975",
+    "titel": "Weiss 6-schichtig erhöht mit Rad",
+    "medien": [
+     "gid://shopify/MediaImage/70766894711169"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70766894842241": "gid://shopify/MediaImage/78014934319495"
+ }
+}

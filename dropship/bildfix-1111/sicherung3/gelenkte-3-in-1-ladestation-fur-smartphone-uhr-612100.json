@@ -1,0 +1,76 @@
+{
+ "zeit": "2026-11-11T20:05:03.647Z",
+ "plan": {
+  "handle": "gelenkte-3-in-1-ladestation-fur-smartphone-uhr-612100",
+  "erwartet_erstes": "gid://shopify/MediaImage/69904803856769",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69904803889537",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193845_4e651708-67b5-4489-b42e-e2f054a7a26d.png",
+    "alt_text": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Ansicht 4"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15452719350145",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69904803856769",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69904803791233",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69904803824001",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69904803889537",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69904803922305",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69904803955073",
+    "alt": "Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/77439890620807",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55898701562241",
+    "titel": "Weiss",
+    "medien": [
+     "gid://shopify/MediaImage/69904803824001"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737462342023",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/69904803889537"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69904803889537": "gid://shopify/MediaImage/78014941004167"
+ }
+}

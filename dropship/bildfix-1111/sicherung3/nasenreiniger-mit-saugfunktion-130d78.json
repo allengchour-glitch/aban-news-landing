@@ -1,0 +1,74 @@
+{
+ "zeit": "2026-11-11T20:02:54.628Z",
+ "plan": {
+  "handle": "nasenreiniger-mit-saugfunktion-130d78",
+  "erwartet_erstes": "gid://shopify/MediaImage/69872093135233",
+  "ersatz": [],
+  "loesen": [],
+  "nach_vorn": "gid://shopify/MediaImage/69872093168001"
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449431638401",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69872093135233",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093168001",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093200769",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093233537",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093266305",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093299073",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093331841",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872093364609",
+    "alt": "Nasenreiniger mit Saugfunktion – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881796354433",
+    "titel": "Weiss Set-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881796387201",
+    "titel": "Weiss Set 1-USB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881796419969",
+    "titel": "Weiss-USB",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {}
+}

@@ -1,0 +1,127 @@
+{
+ "zeit": "2026-11-11T20:06:06.419Z",
+ "plan": {
+  "handle": "mini-quadcopter-mit-dual-kamera-221888",
+  "erwartet_erstes": "gid://shopify/MediaImage/70013677207937",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70013677207937",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193954_f4d2dbc2-edd4-4a7c-bac1-15322582d7d5.png",
+    "alt_text": "Mini Quadcopter mit Dual-Kamera – Ansicht 1"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/70013678223745",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193954_a4b0de38-4a73-434b-9e35-2357c94e877e.png",
+    "alt_text": "Mini Quadcopter mit Dual-Kamera – Ansicht 2"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15460660380033",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70013677207937",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678223745",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678256513",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678289281",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678322049",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678354817",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70013678387585",
+    "alt": "Mini Quadcopter mit Dual-Kamera – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829770412423",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829770445191",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789233619335",
+    "titel": "Modell A",
+    "medien": [
+     "gid://shopify/MediaImage/70013678387585"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233652103",
+    "titel": "Modell B",
+    "medien": [
+     "gid://shopify/MediaImage/70013678289281"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233684871",
+    "titel": "Modell C",
+    "medien": [
+     "gid://shopify/MediaImage/77829770412423"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233717639",
+    "titel": "Modell D",
+    "medien": [
+     "gid://shopify/MediaImage/77829770445191"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233750407",
+    "titel": "Modell E",
+    "medien": [
+     "gid://shopify/MediaImage/70013677207937"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233783175",
+    "titel": "Modell F",
+    "medien": [
+     "gid://shopify/MediaImage/70013678223745"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789233815943",
+    "titel": "Modell G",
+    "medien": [
+     "gid://shopify/MediaImage/70013678256513"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70013677207937": "gid://shopify/MediaImage/78014954865031",
+  "gid://shopify/MediaImage/70013678223745": "gid://shopify/MediaImage/78014956077447"
+ }
+}

@@ -1,0 +1,195 @@
+{
+ "zeit": "2026-11-11T20:04:48.906Z",
+ "plan": {
+  "handle": "ultrasonisches-reinigungsgerat-352128",
+  "erwartet_erstes": "gid://shopify/MediaImage/69894396871041",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69894396903809",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193844_ba3fb0ee-4c0e-4b0b-b7bc-e9f6091047af.png",
+    "alt_text": "Ultraschall-Reinigungsgerät – Ansicht 2"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/77830110577031",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193841_ee117ad5-8da9-4bbe-a641-4cf8441185ff.png",
+    "alt_text": "Ultraschall-Reinigungsgerät – Ansicht 23"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69894396936577",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193841_5be83c0d-ef46-46ef-9974-dfcf1564fc9a.png",
+    "alt_text": "Ultraschall-Reinigungsgerät – Ansicht 3"
+   },
+   {
+    "alt": "gid://shopify/MediaImage/69894397165953",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193842_b7d7a769-48ab-4f27-a91a-647857716694.png",
+    "alt_text": "Ultraschall-Reinigungsgerät – Ansicht 10"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15451605500289",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69894396871041",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894396903809",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894396936577",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894396969345",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397002113",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397034881",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397067649",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397100417",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397133185",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397165953",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397198721",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397231489",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397264257",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397297025",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397329793",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397362561",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397395329",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397428097",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397460865",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69894397493633",
+    "alt": "Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/Video/77439886000519",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77830110544263",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77830110577031",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67790204535175",
+    "titel": "Cremeweiss",
+    "medien": [
+     "gid://shopify/MediaImage/77830110544263"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790204567943",
+    "titel": "Offwhite 2 Teile",
+    "medien": [
+     "gid://shopify/MediaImage/69894396903809"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790204600711",
+    "titel": "Offwhite mit blauem Stoff",
+    "medien": [
+     "gid://shopify/MediaImage/77830110577031"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790204633479",
+    "titel": "Set",
+    "medien": [
+     "gid://shopify/MediaImage/69894396936577"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67790204666247",
+    "titel": "Offwhite 3 Teile",
+    "medien": [
+     "gid://shopify/MediaImage/69894397165953"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69894396903809": "gid://shopify/MediaImage/78014937891207",
+  "gid://shopify/MediaImage/77830110577031": "gid://shopify/MediaImage/78014938218887",
+  "gid://shopify/MediaImage/69894396936577": "gid://shopify/MediaImage/78014939005319",
+  "gid://shopify/MediaImage/69894397165953": "gid://shopify/MediaImage/78014939332999"
+ }
+}

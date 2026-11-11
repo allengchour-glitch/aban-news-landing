@@ -1,0 +1,61 @@
+{
+ "zeit": "2026-11-11T20:05:45.182Z",
+ "plan": {
+  "handle": "werkzeugtasche-aus-1680d-canvas-150-kg-tragkra-57d428",
+  "erwartet_erstes": "gid://shopify/MediaImage/77494116057479",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77494116090247",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194720_6a88d0a2-0d39-4fa0-b05c-09ef8ac76fa6.png",
+    "alt_text": "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft – Ansicht 3"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16614814843271",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77494116057479",
+    "alt": "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494116024711",
+    "alt": "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77494116090247",
+    "alt": "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77501069459847",
+    "alt": "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67665420288391",
+    "titel": "16 Zoll",
+    "medien": [
+     "gid://shopify/MediaImage/77501069459847"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67671552459143",
+    "titel": "18 Zoll",
+    "medien": [
+     "gid://shopify/MediaImage/77494116090247"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77494116090247": "gid://shopify/MediaImage/78014948573575"
+ }
+}

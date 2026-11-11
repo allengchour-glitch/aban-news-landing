@@ -1,0 +1,267 @@
+{
+ "zeit": "2026-11-11T20:02:47.821Z",
+ "plan": {
+  "handle": "ruckenstrecker-kissen-721664",
+  "erwartet_erstes": "gid://shopify/MediaImage/69872050209153",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/69872050209153",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193213_9ecb48c1-dbcd-46b4-bc97-900efa23d711.png",
+    "alt_text": "Rückenstrecker Kissen – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15449430000001",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69872050209153",
+    "alt": "Rückenstrecker Kissen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050241921",
+    "alt": "Rückenstrecker Kissen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050274689",
+    "alt": "Rückenstrecker Kissen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050307457",
+    "alt": "Rückenstrecker Kissen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050340225",
+    "alt": "Rückenstrecker Kissen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050372993",
+    "alt": "Rückenstrecker Kissen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050405761",
+    "alt": "Rückenstrecker Kissen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050438529",
+    "alt": "Rückenstrecker Kissen – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050471297",
+    "alt": "Rückenstrecker Kissen – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050504065",
+    "alt": "Rückenstrecker Kissen – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050536833",
+    "alt": "Rückenstrecker Kissen – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050569601",
+    "alt": "Rückenstrecker Kissen – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050602369",
+    "alt": "Rückenstrecker Kissen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050635137",
+    "alt": "Rückenstrecker Kissen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050667905",
+    "alt": "Rückenstrecker Kissen – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050700673",
+    "alt": "Rückenstrecker Kissen – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050733441",
+    "alt": "Rückenstrecker Kissen – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050766209",
+    "alt": "Rückenstrecker Kissen – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050798977",
+    "alt": "Rückenstrecker Kissen – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69872050831745",
+    "alt": "Rückenstrecker Kissen – Bild 8 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55881774498177",
+    "titel": "Pink",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774530945",
+    "titel": "Grau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774563713",
+    "titel": "Blau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774596481",
+    "titel": "Lila",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774629249",
+    "titel": "Dunkelblau",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774662017",
+    "titel": "Blau SetA",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774694785",
+    "titel": "Blau SetB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774727553",
+    "titel": "Grau SetA",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774760321",
+    "titel": "Grau SetB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774793089",
+    "titel": "Pink SetA",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774825857",
+    "titel": "Pink SetB",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774858625",
+    "titel": "Blau · 3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774891393",
+    "titel": "Blau · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774924161",
+    "titel": "Grau · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774956929",
+    "titel": "Grau · 3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881774989697",
+    "titel": "Pink · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775022465",
+    "titel": "Pink · 3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775055233",
+    "titel": "Lila · 2 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775088001",
+    "titel": "Lila · 3 Stück",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775120769",
+    "titel": "Suit1",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775153537",
+    "titel": "Suit2",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775186305",
+    "titel": "Suit3",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775219073",
+    "titel": "Suit4",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775251841",
+    "titel": "Suit5",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775284609",
+    "titel": "Suit6",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775317377",
+    "titel": "Suit7",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775350145",
+    "titel": "Suit8",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881775382913",
+    "titel": "Suit9",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/69872050209153": "gid://shopify/MediaImage/78014934385031"
+ }
+}

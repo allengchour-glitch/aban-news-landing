@@ -1,0 +1,71 @@
+{
+ "zeit": "2026-11-11T20:02:44.732Z",
+ "plan": {
+  "handle": "vintage-haarschneider-fur-prazise-schnitte-f14993",
+  "erwartet_erstes": "gid://shopify/MediaImage/70479775367553",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77829933990279",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193954_ad19a968-2118-4da5-86c4-a4f807834eaa.png",
+    "alt_text": "Vintage Haarschneider für präzise Schnitte – Ansicht 5"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15493934776705",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70479775367553",
+    "alt": "Vintage Haarschneider für präzise Schnitte – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479775302017",
+    "alt": "Vintage Haarschneider für präzise Schnitte – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479775334785",
+    "alt": "Vintage Haarschneider für präzise Schnitte – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70479775400321",
+    "alt": "Vintage Haarschneider für präzise Schnitte – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829933990279",
+    "alt": "",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77829934023047",
+    "alt": "",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789877936519",
+    "titel": "Flugdrache",
+    "medien": [
+     "gid://shopify/MediaImage/77829933990279"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789877969287",
+    "titel": "Wukong",
+    "medien": [
+     "gid://shopify/MediaImage/77829934023047"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77829933990279": "gid://shopify/MediaImage/78014934253959"
+ }
+}

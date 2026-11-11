@@ -1,0 +1,52 @@
+{
+ "zeit": "2026-11-11T20:01:08.439Z",
+ "plan": {
+  "handle": "kostum-hase-fgssck1091",
+  "erwartet_erstes": "gid://shopify/MediaImage/70130574557569",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70130574557569",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-4-1111.jpg?v=1794427056",
+    "alt_text": "Kostüm Hase – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15469962789249",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70130574557569",
+    "alt": "Kostüm Hase – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70160650862977",
+    "alt": "Kostüm Hase – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70160650895745",
+    "alt": "Kostüm Hase – Bild 3 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55970748301697",
+    "titel": "164 cm",
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55970748334465",
+    "titel": "180 cm",
+    "medien": []
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70130574557569": "gid://shopify/MediaImage/78014929863047"
+ }
+}

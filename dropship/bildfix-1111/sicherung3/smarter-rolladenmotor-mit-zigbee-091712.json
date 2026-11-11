@@ -1,0 +1,121 @@
+{
+ "zeit": "2026-11-11T20:02:33.342Z",
+ "plan": {
+  "handle": "smarter-rolladenmotor-mit-zigbee-091712",
+  "erwartet_erstes": "gid://shopify/MediaImage/70758797902209",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77924784865671",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194428_b30632c8-a285-4521-9e1e-789dfd7b51b4.png",
+    "alt_text": "Smarter Rolladenmotor mit Zigbee – Ansicht 16"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15523186475393",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/70758797902209",
+    "alt": "Smarter Rolladenmotor mit Zigbee | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758797934977",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758797967745",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798000513",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798033281",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 5 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798066049",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 6 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798098817",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 7 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798131585",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 8 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798164353",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 9 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798197121",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 10 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798229889",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 11 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798262657",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 12 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798295425",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 13 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798328193",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 14 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70758798360961",
+    "alt": "Smarter Rolladenmotor mit Zigbee – Bild 15 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77924784865671",
+    "alt": "Smarter Rolladenmotor mit Zigbee",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67874137014663",
+    "titel": "USB-Ladung",
+    "medien": [
+     "gid://shopify/MediaImage/70758798295425"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874137047431",
+    "titel": "EU",
+    "medien": [
+     "gid://shopify/MediaImage/77924784865671"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77924784865671": "gid://shopify/MediaImage/78014933533063"
+ }
+}

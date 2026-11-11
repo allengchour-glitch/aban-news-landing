@@ -1,0 +1,91 @@
+{
+ "zeit": "2026-11-11T20:01:54.824Z",
+ "plan": {
+  "handle": "10-paar-damen-fusslinge-seidig-glatt-257473",
+  "erwartet_erstes": "gid://shopify/MediaImage/69852653879681",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70579938394497",
+    "neu_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-gbild-38-1111.jpg?v=1794427092",
+    "alt_text": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15447933550977",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69852653879681",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653715841",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653781377",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653814145",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653846913",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653912449",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653945217",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653977985",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70579938394497",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70579938427265",
+    "alt": "10 Paar Damen Füsslinge Seidig Glatt – Bild 2 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56052990968193",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70579938394497"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052991000961",
+    "titel": "Beige",
+    "medien": [
+     "gid://shopify/MediaImage/70579938427265"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70579938394497": "gid://shopify/MediaImage/78014931632519"
+ }
+}

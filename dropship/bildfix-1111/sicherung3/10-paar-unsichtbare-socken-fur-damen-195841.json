@@ -1,0 +1,91 @@
+{
+ "zeit": "2026-11-11T20:01:44.770Z",
+ "plan": {
+  "handle": "10-paar-unsichtbare-socken-fur-damen-195841",
+  "erwartet_erstes": "gid://shopify/MediaImage/69852652962177",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/70579937837441",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_193410_da6d7c15-25b6-41af-9d29-2735861071ac.png",
+    "alt_text": "10 Paar unsichtbare Socken für Damen – Ansicht 9"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/15447933354369",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69852652962177",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 2",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852652929409",
+    "alt": "10 Paar unsichtbare Socken für Damen",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852652994945",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 3",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653027713",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 4",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653060481",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 5",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653093249",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 6",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653126017",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 7",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852653158785",
+    "alt": "10 Paar unsichtbare Socken für Damen – Ansicht 8",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70579937837441",
+    "alt": "10 Paar unsichtbare Socken für Damen – Bild 1 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70579937870209",
+    "alt": "10 Paar unsichtbare Socken für Damen – Bild 2 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/56052990640513",
+    "titel": "Skin",
+    "medien": [
+     "gid://shopify/MediaImage/70579937837441"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/56052990673281",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/70579937870209"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/70579937837441": "gid://shopify/MediaImage/78014930944391"
+ }
+}

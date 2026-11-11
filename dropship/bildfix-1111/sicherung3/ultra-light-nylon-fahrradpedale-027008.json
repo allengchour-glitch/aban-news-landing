@@ -1,0 +1,73 @@
+{
+ "zeit": "2026-11-11T20:04:46.605Z",
+ "plan": {
+  "handle": "ultra-light-nylon-fahrradpedale-027008",
+  "erwartet_erstes": "gid://shopify/MediaImage/77447094206855",
+  "ersatz": [
+   {
+    "alt": "gid://shopify/MediaImage/77447094206855",
+    "neu_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261111_194603_e0e30ea0-259e-44ab-a085-f8c1874cb917.png",
+    "alt_text": "Ultra-Light Nylon Fahrradpedale – Ansicht 1"
+   }
+  ],
+  "loesen": [],
+  "nach_vorn": null
+ },
+ "vorher": {
+  "id": "gid://shopify/Product/16606108123527",
+  "status": "ACTIVE",
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77447094206855",
+    "alt": "Ultra-Light Nylon Fahrradpedale – Bild 2 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447094174087",
+    "alt": "Ultra-Light Nylon Fahrradpedale | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447094239623",
+    "alt": "Ultra-Light Nylon Fahrradpedale – Bild 3 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447094272391",
+    "alt": "Ultra-Light Nylon Fahrradpedale – Bild 4 | LuxeStyle",
+    "status": "READY"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447094305159",
+    "alt": "Ultra-Light Nylon Fahrradpedale – Bild 5 | LuxeStyle",
+    "status": "READY"
+   }
+  ],
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/67789999440263",
+    "titel": "Rot",
+    "medien": [
+     "gid://shopify/MediaImage/77447094206855"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789999473031",
+    "titel": "Blau",
+    "medien": [
+     "gid://shopify/MediaImage/77447094239623"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67789999505799",
+    "titel": "Schwarz",
+    "medien": [
+     "gid://shopify/MediaImage/77447094305159"
+    ]
+   }
+  ]
+ },
+ "neu": {
+  "gid://shopify/MediaImage/77447094206855": "gid://shopify/MediaImage/78014939136391"
+ }
+}
