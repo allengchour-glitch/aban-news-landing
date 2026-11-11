@@ -81,7 +81,7 @@ Der KI-Trader (`ki_trader.py`: Claudes tägliche Einschätzung für Bitcoin und 
 - **Vergleich:** Claude gegen Halten (je 50 % Bitcoin und Ethereum) und gegen den Piloten aus dessen Schattenbuch (`data/krypto-pilot-schatten.json`), mit Gebühr und Funding, ab Claudes erstem Entscheid.
 - **Geprüft:** `automation/test_ki_trader_cloud.py` (47 Prüfungen, ohne Netz und ohne Schlüssel), Mutationsprobe `automation/ki_trader_cloud_mutationsprobe.py` 35 von 35 erkannt; beides läuft bei Änderungen in `.github/workflows/ki-trader-cloud-test.yml`, der Selbsttest zusätzlich vor jedem Lauf. Die Aufrufform (`output_config`, `fallbacks="default"`, Beta `server-side-fallback-2026-07-01`) passt zur Signatur des Anthropic-Pakets 2.8.0 (offline gelesen).
 - **Kosten (Schätzung, bis zum ersten Monat nicht gemessen):** Opus-Entscheid 4 bis 10 US-Cent, Haiku-Entscheid 0,1 bis 0,3 US-Cent; im Monat 1 bis 3 USD. Der Schlüssel gehört auch zu den KI-Tools von abannews.com: dasselbe Konto.
-- **Grenzen:** ein paar Wochen Schattenkonto sind Rauschen, kein Urteil. Für Claude gibt es keinen ehrlichen Rückblick (das Modell kennt die Kursgeschichte), darum zählt nur vorwärts. Echtes Geld bleibt Zone Rot.
+- **Grenzen:** ein paar Wochen Schattenkonto sind Rauschen, kein Urteil. Für Claude gibt es keinen ehrlichen Rückblick (das Modell kennt die Kursgeschichte), darum zählt nur vorwärts. Der tägliche Lauf startet rund 12 Stunden nach dem Tagesschluss (GitHub startet den Zeitplan gegen Mittag UTC), das Schattenkonto rechnet die Position aber ab dem Tagesschluss: Claude sieht nur Kurse bis zum Schluss, die Rechnung ist trotzdem eine Vereinfachung zu seinen Gunsten oder Ungunsten, je nach den ersten Stunden des Tages. Echtes Geld bleibt Zone Rot.
 
 ## Drei Zonen
 | Zone | Was | Wie |
