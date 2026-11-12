@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 186,
-  "updatedAt": "2026-11-12T20:13:18.604485+00:00",
+  "revision": 187,
+  "updatedAt": "2026-11-12T21:43:53.091219+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-12",
     "currentDayEvidenceKind": "R185_DAILY_REPORTS_ONCE_REUSED_LATER_AND_SCOPED_OWNER_APPROVED_IMPLEMENTATION",
-    "currentDayEvidence": "Morning05–11.11 six Metricool definitions/data queries and one Klaviyo flowreport after W7XTVD discovery. Reused14h/evening; missing rows/days unknown, no broad sales/orders. Explicit Implement proposed plan: four targeted Metricool draft holds and one Beauty description update read back; Klaviyo preview write blocked before dispatch. No new professional render or publication. R186: owner duplicate-post concern investigated with eight bounded planner/history reads and three targeted media downloads; zero analytics/flow/order queries or platform writes.",
+    "currentDayEvidence": "Morning05–11.11 six Metricool definitions/data queries and one Klaviyo flowreport after W7XTVD discovery. Reused14h/evening; missing rows/days unknown, no broad sales/orders. Explicit Implement proposed plan: four targeted Metricool draft holds and one Beauty description update read back; Klaviyo preview write blocked before dispatch. No new professional render or publication. R186: owner duplicate-post concern investigated with eight bounded planner/history reads and three targeted media downloads; zero analytics/flow/order queries or platform writes. R187: new owner indexing/404 finding justified24 targeted URL index inspections, without repeating performance analytics, flows or broad sales; no shop/indexing writes.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-12",
@@ -53,6 +53,19 @@
         "analyticsRepeated": false,
         "klaviyoRepeated": false,
         "proof": "dropship/codex-handoff-20261018/DOPPELPOST-PRUEFUNG-20261112-R186.json",
+        "claudeReceipt": "unknown_no_receipt"
+      },
+      "index404R187": {
+        "at": "2026-11-12T21:43:53.091219+00:00",
+        "reason": "New owner request for eight alternative indexing URLs and concrete 404 screenshot",
+        "urlInspections": 24,
+        "selectedNonIndexedOrUnknownUrls": 8,
+        "currentServer404Examples": 6,
+        "fullCatalogRate": "unknown",
+        "shopWrites": 0,
+        "indexingRequests": 0,
+        "analyticsReportsRepeated": false,
+        "proof": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.json",
         "claudeReceipt": "unknown_no_receipt"
       }
     },
@@ -17068,6 +17081,26 @@
           "path": "dropship/codex-handoff-20261018/DOPPELPOST-PRUEFUNG-20261112-R186.json",
           "sha256": "84cf74c9e5842bbdc539e87a66745f1efc2fa6e2dffd7e6a6b59158208e2a86c",
           "gitBlobSha": "44fcc123c55cc20fbd509bf74b3f1c5c8bd1a4b6"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 187,
+      "at": "2026-11-12T21:43:53.091219+00:00",
+      "actor": "codex",
+      "summary": "Eight replacement URLs selected after direct GSC checks. Six screenshot examples confirmed current HTTP404; validation pending count is not a product count or repair proof. No shop/redirect/indexing writes.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.json",
+          "sha256": "b3496c7492c99449cb7c664b17e137ad14025eb9694476047f6347df5a5680c1",
+          "gitBlobSha": "52d304959f8f8ffdd1ed698f1f988bca0dbc777c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.md",
+          "sha256": "a1c91cf7c2ae57f4ff44635ea26159264cfdeac254e918fd1f3f7db8505acd50",
+          "gitBlobSha": "fddb704c3ece3531fe3836259b713c6a0b4696cf"
         }
       ],
       "taskCount": 24,
@@ -39354,6 +39387,19 @@
     "analyticsRepeated": false,
     "klaviyoRepeated": false,
     "proof": "dropship/codex-handoff-20261018/DOPPELPOST-PRUEFUNG-20261112-R186.json",
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run187": {
+    "at": "2026-11-12T21:43:53.091219+00:00",
+    "reason": "New owner request for eight alternative indexing URLs and concrete 404 screenshot",
+    "urlInspections": 24,
+    "selectedNonIndexedOrUnknownUrls": 8,
+    "currentServer404Examples": 6,
+    "fullCatalogRate": "unknown",
+    "shopWrites": 0,
+    "indexingRequests": 0,
+    "analyticsReportsRepeated": false,
+    "proof": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.json",
     "claudeReceipt": "unknown_no_receipt"
   }
 }

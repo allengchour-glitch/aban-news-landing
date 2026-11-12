@@ -1,0 +1,1178 @@
+{
+  "dateZurich": "2026-11-12",
+  "brand": "luxestyle.ch",
+  "scope": "Owner requests eight new indexing URLs after eight of first list already indexed, then reports 404 validation count.",
+  "verifiedSearchConsoleProperty": "https://luxestyle.ch/",
+  "originalListAlreadyIndexedPerOwner": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "firstListOtherStatuses": "not_inferred",
+  "selectedEight": [
+    {
+      "url": "https://luxestyle.ch/collections/hundewelt",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Gefunden – zurzeit nicht indexiert",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+        "sitemap": [
+          "https://luxestyle.ch/sitemap.xml"
+        ],
+        "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=CPxe7_F_dqGYRmPdEkYfyA&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/collections/hundewelt",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hundewelt",
+        "title": "Hundebett, Hundeleine & Hundegeschirr kaufen | LuxeStyle CH",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/hundewelt\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 305757,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Gefunden – zurzeit nicht indexiert",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+        "sitemap": [
+          "https://luxestyle.ch/sitemap.xml"
+        ],
+        "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=fLGfpP9ZUse8n0EAHrA9Pw&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "title": "Futterautomaten & Futterspender online kaufen | LuxeStyle CH",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/tier-futterautomaten\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 281569,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "URL ist Google nicht bekannt",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=tFAaZmRED81NHmIawK9_mw&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "title": "Camping-Geschirr, Kochsets & Grills online kaufen\n – LuxeStyle",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/camping-geschirr-kochsets\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 268385,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-09-07T06:53:01Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "userCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "sitemap": [
+          "https://luxestyle.ch/sitemap.xml"
+        ],
+        "referringUrls": [
+          "https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger?_pos=1&_sid=ba7ce05ca&_ss=r",
+          "https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen",
+          "https://luxestyle.ch/collections/premium-beauty"
+        ],
+        "crawledAs": "MOBILE"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=lO1bd4JcZlIEw5uvNB4qWA&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "title": "Selbst gestalten kaufen | LuxeStyle Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/selbst-gestalten-1\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 284171,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/pages/alle-kategorien",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Gefunden – zurzeit nicht indexiert",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+        "sitemap": [
+          "https://luxestyle.ch/sitemap.xml"
+        ],
+        "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=G_GJ420fgpsY8t1XHdRqFw&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/pages/alle-kategorien",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/pages/alle-kategorien",
+        "title": "Alle Kategorien — der ganze Shop auf einen Blick\n – LuxeStyle",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/pages/alle-kategorien\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 207453,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "URL ist Google nicht bekannt",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=xquaI2IWSKecnbXg_PFwOw&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000",
+        "title": "Schirm-Aufsatz für Reithelm | LuxeStyle Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 274669,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "URL ist Google nicht bekannt",
+        "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=uKLUIT0lW2ApAG5TjnWq1A&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000",
+        "title": "Ventileinsatz-Werkzeug für Tubeless-Reifen | LuxeStyle",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 287083,
+        "error": null
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-11-06T10:36:54Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+        "userCanonical": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+        "referringUrls": [
+          "https://luxestyle.ch/fr/products/elegante-taille-verjungung-rock-fur-frauen-609600"
+        ],
+        "crawledAs": "MOBILE"
+      },
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=nFJXCquECYiS4bca6krxJg&utm_medium=link&utm_source=api",
+      "live": {
+        "url": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+        "title": "Damenkleid mit Drapierung | LuxeStyle Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600\">"
+        ],
+        "robotsTags": [],
+        "headBytes": 299464,
+        "error": null
+      }
+    }
+  ],
+  "allEighteenTargetedIndexInspections": [
+    {
+      "url": "https://luxestyle.ch/collections/winter-kaelte",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=S692lCm2Asc13xzBbApPcg&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-23T15:40:43Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/winter-kaelte",
+            "userCanonical": "https://luxestyle.ch/collections/winter-kaelte",
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/vorratsdosen",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=zqDgKo8bzFeaYY7Y_JQ7vQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-29T23:10:11Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/vorratsdosen",
+            "userCanonical": "https://luxestyle.ch/collections/vorratsdosen",
+            "referringUrls": [
+              "https://luxestyle.ch/products/atmungsaktive-herren-loafer-aus-leder-627800?variant=56003295740289"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/hundewelt",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=CPxe7_F_dqGYRmPdEkYfyA&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "Gefunden – zurzeit nicht indexiert",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=fLGfpP9ZUse8n0EAHrA9Pw&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "Gefunden – zurzeit nicht indexiert",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/sub-taschen",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=KzeHWkYLuIRdj9a6TlQX0g&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-11-10T21:06:35Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/sub-taschen",
+            "userCanonical": "https://luxestyle.ch/collections/sub-taschen",
+            "referringUrls": [
+              "https://luxestyle.ch/collections/sub-reise",
+              "https://luxestyle.ch/products/sommerkleid-sole-casual-midi-raglan-armel"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=tFAaZmRED81NHmIawK9_mw&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "URL ist Google nicht bekannt",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=lO1bd4JcZlIEw5uvNB4qWA&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-09-07T06:53:01Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+            "userCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "referringUrls": [
+              "https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger?_pos=1&_sid=ba7ce05ca&_ss=r",
+              "https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen",
+              "https://luxestyle.ch/collections/premium-beauty"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/pages/alle-kategorien",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=G_GJ420fgpsY8t1XHdRqFw&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "Gefunden – zurzeit nicht indexiert",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/damen-schals-tuecher-schal",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=ul9WblUAAkerTA6HekTZrA&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-31T22:28:24Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/damen-schals-tuecher-schal",
+            "userCanonical": "https://luxestyle.ch/collections/damen-schals-tuecher-schal",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/basteln-diy",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=9RIo1UpC0nGVQRqGtsF5bQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-09-12T00:13:36Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/basteln-diy",
+            "userCanonical": "https://luxestyle.ch/collections/basteln-diy",
+            "referringUrls": [
+              "https://luxestyle.ch/products/camping-geschirr-set-picknick-outdoor?_pos=1&_sid=9eee32060&_ss=r"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/schmuck-selbermachen",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=-XhTRiOqQDchupO_w7vx0g&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-28T13:05:27Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/collections/schmuck-selbermachen",
+            "userCanonical": "https://luxestyle.ch/collections/schmuck-selbermachen",
+            "referringUrls": [
+              "https://luxestyle.ch/products/beissfester-hanf-beissstab-fur-hunde-30cm-411648?_pos=1&_sid=4bb203755&_ss=r"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=CpDo5ySf0o6-5e_10b_ywQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-15T06:24:06Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+            "userCanonical": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+            "sitemap": [
+              "https://luxestyle.ch/sitemap.xml"
+            ],
+            "referringUrls": [
+              "https://luxestyle.ch/products/futterautomat-fur-katze-527488?variant=56217490391425"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Produkt-Snippets",
+                "items": [
+                  {
+                    "name": "Futterautomat für Katze",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"review\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"aggregateRating\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Händlereinträge",
+                "items": [
+                  {
+                    "name": "Futterautomat für Katze",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/laser-entfernungsmessgerat-456064",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=BJDP5JfhZO4wNvAd-7MNLQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-08-17T09:10:35Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/products/laser-entfernungsmessgerat-456064",
+            "userCanonical": "https://luxestyle.ch/products/laser-entfernungsmessgerat-456064",
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Produkt-Snippets",
+                "items": [
+                  {
+                    "name": "Laser-Entfernungsmessgerät",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"review\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"aggregateRating\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Händlereinträge",
+                "items": [
+                  {
+                    "name": "Laser-Entfernungsmessgerät",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Qf8_hxNEE9BpQa0kagOGtw&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-14T14:26:24Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+            "userCanonical": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+            "referringUrls": [
+              "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet?variant=55746191884673"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Produkt-Snippets",
+                "items": [
+                  {
+                    "name": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"aggregateRating\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"review\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Händlereinträge",
+                "items": [
+                  {
+                    "name": "Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=aEWGeLFqR8CKEtycRVMr3A&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Gesendet und indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-11-04T22:28:14Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+            "userCanonical": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Produkt-Snippets",
+                "items": [
+                  {
+                    "name": "Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"aggregateRating\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"review\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Händlereinträge",
+                "items": [
+                  {
+                    "name": "Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones - Niedlicher Panda",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"description\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones - Cartoon-Panda",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"description\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones - Panda Beine und Füße",
+                    "issues": [
+                      {
+                        "issueMessage": "Feld \"description\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                        "severity": "WARNING"
+                      },
+                      {
+                        "issueMessage": "Feld \"shippingDetails\" fehlt",
+                        "severity": "WARNING"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "richResultType": "Navigationspfade",
+                "items": [
+                  {
+                    "name": "Unbenanntes Element"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=xquaI2IWSKecnbXg_PFwOw&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "URL ist Google nicht bekannt",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=uKLUIT0lW2ApAG5TjnWq1A&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "URL ist Google nicht bekannt",
+            "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+            "indexingState": "INDEXING_STATE_UNSPECIFIED",
+            "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+      "result": {
+        "inspection_result": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=nFJXCquECYiS4bca6krxJg&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "NEUTRAL",
+            "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-11-06T10:36:54Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+            "userCanonical": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+            "referringUrls": [
+              "https://luxestyle.ch/fr/products/elegante-taille-verjungung-rock-fur-frauen-609600"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          }
+        }
+      }
+    }
+  ],
+  "screenshot404Validation": {
+    "pending": 14469,
+    "failed": 0,
+    "startDate": "2026-11-12",
+    "source": "owner screenshot; not full export or count of unique products",
+    "meaning": "validation pending, not evidence of repair"
+  },
+  "six404Examples": [
+    {
+      "url": "https://luxestyle.ch/products/schwangerschaftskissen-fur-seitenschlafer-611100",
+      "public": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/",
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-12T21:18:47Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/3d-holzpuzzle-luftschiff-modellbausatz-483905",
+      "public": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/",
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-12T15:17:56Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/lange-herren-pullover-636000?variant=55905423163777&country=CH&currency=CHF",
+      "public": {
+        "status": 404,
+        "finalUrl": "https://luxestyle.ch/products/lange-herren-pullover-636000?variant=55905423163777&country=CH&currency=CHF",
+        "title": "404 Nicht gefunden\n – LuxeStyle",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/404\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-10T14:50:59Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/pgm-golfschlager-holz-fur-damen-und-herren-604000",
+      "public": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/",
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-12T16:02:59Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/automatischer-lockenstab-fur-grosse-wellen-623500",
+      "public": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/",
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-11T13:56:40Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/zitruspresse-fur-zitrone-und-limette-502081",
+      "public": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/",
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonicalTags": [
+          "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+        ],
+        "error": null,
+        "hasRawHtml": true
+      },
+      "google": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Nicht gefunden (404)",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-11-12T14:18:03Z",
+        "pageFetchState": "NOT_FOUND",
+        "crawledAs": "MOBILE"
+      }
+    }
+  ],
+  "localHistorySearch": "No exact dated delete/rename/redirect evidence found for the six screenshot handles in available handoff or local code/docs.",
+  "changes": {
+    "shopWrites": 0,
+    "redirectWrites": 0,
+    "indexingRequestsSubmitted": 0,
+    "analyticsReports": 0,
+    "broadCatalogScan": false,
+    "otherBrandsChanged": false
+  },
+  "limitations": [
+    "Read-only index inspection returns Google's stored state, not a live Google test or indexing guarantee.",
+    "The six current server-status checks do not establish a catalog-wide error rate.",
+    "Firecrawl ended on the homepage for five examples while direct initial GET returned404 without Location; do not treat rendered homepage as a301 fix.",
+    "No exact successor product mapping established; do not invent redirect targets."
+  ],
+  "directHttpCountercheck": {
+    "previousAttempt": "Body download aborted with IncompleteRead; no target verdict from that attempt retained. Corrected read limited to response headers.",
+    "results": [
+      {
+        "url": "https://luxestyle.ch/products/schwangerschaftskissen-fur-seitenschlafer-611100",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      },
+      {
+        "url": "https://luxestyle.ch/products/3d-holzpuzzle-luftschiff-modellbausatz-483905",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      },
+      {
+        "url": "https://luxestyle.ch/products/lange-herren-pullover-636000?variant=55905423163777&country=CH&currency=CHF",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      },
+      {
+        "url": "https://luxestyle.ch/products/pgm-golfschlager-holz-fur-damen-und-herren-604000",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      },
+      {
+        "url": "https://luxestyle.ch/products/automatischer-lockenstab-fur-grosse-wellen-623500",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      },
+      {
+        "url": "https://luxestyle.ch/products/zitruspresse-fur-zitrone-und-limette-502081",
+        "method": "GET",
+        "bodyRead": false,
+        "initialStatus": 404,
+        "locationHeader": null,
+        "xRobotsTag": null
+      }
+    ]
+  },
+  "recordedAtUTC": "2026-11-12T21:43:53.091219+00:00"
+}

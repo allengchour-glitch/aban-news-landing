@@ -2153,3 +2153,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Dokumentation | Belegte Fälle und umfassendere Prüfregel für Claude gespeichert | Keine Plattformwrites/Löschung/Terminänderung, keine Tagesreport-Wiederholung; kein neuer deployter Guard und Claude-Empfang unbekannt |
 
 [LUXESTYLE_R186_20261112] [Bericht](DOPPELPOST-PRUEFUNG-20261112-R186.md) · [Beleg](DOPPELPOST-PRUEFUNG-20261112-R186.json).
+
+### R187 – Indexierungslinks und 404-Screenshot
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Ersatzlinks | 18 alternative URLs einzeln über frisch bestätigte Search-Console-Property geprüft; acht passende öffentlich gegengeprüft | Acht nicht indexiert/Google unbekannt, alle HTTP 200/Self-Canonical; keine Indexierungsanfrage |
+| 404-Stichprobe | Sechs vollständig sichtbare Screenshot-URLs via Google und öffentlichem Abruf geprüft; direkte GET-Antwortheader gegengeprüft | Alle sechs aktuell HTTP 404; fünf gerenderte Abrufe enden auf der Startseite, keine belegte 301. Erster Body-Read unvollständig, danach begrenzte Header-Gegenprobe |
+| Einordnung / Quellen | 14’469 ausstehende Validierungsfälle aus Screenshot und lokale Handle-Historie getrennt bewertet | Keine Zahl gelöschter Produkte oder globale Fehlerquote; für sechs Handles keine genaue lokale Nachfolger-/Löschquelle gefunden |
+| Vorbereitung / Grenzen | Acht geprüfte Links, Belege und nächsten Zuordnungsschritt für Claude gespeichert | Keine Shop-/Redirect-/Sitemap-/Flow-/Socialänderung, kein breiter Scan und keine wiederholten Performanceberichte; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R187_20261112] [Bericht](INDEXIERUNG-UND-404-20261112-R187.md) · [Beleg](INDEXIERUNG-UND-404-20261112-R187.json).

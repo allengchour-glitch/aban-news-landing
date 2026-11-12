@@ -1624,3 +1624,9 @@ Vier R176-Projektor-UUIDs gezielt als Entwürfe mit Autopublish aus bestätigt; 
 TikTok: Uhr06./11.11., Waschbär07./10.11. und Rucksack08./12.11. jeweils mit wortgleicher Original-Caption als Foto und späteres Video bestätigt. Beim Waschbär ist Foto2 auch im4s-Videoframe sichtbar; kein Nachweis derselben vollständigen MP4 oder eines technischen Doppelversands. Geschenkaktion11.11. auf IG/FB als Reel und Karussell thematisch wiederholt.51 veröffentlichte Objekte/68 Kanalzustände und53 kommende Objekte begrenzt geprüft; kein exakter Text-/URL-/Produktlink-Treffer veröffentlicht→künftig aktiv, aber keine vollständige visuelle/ältere Historie.0 Plattformänderungen, keine Löschung, Tagesreports nicht wiederholt; vier R176-Holds weiterhin Draft. [Bericht](DOPPELPOST-PRUEFUNG-20261112-R186.md) · [Beleg](DOPPELPOST-PRUEFUNG-20261112-R186.json). Prüfanweisung für Claude dokumentiert, kein neuer deployter Guard; Empfang unbekannt.
 
 [LUXESTYLE_R186_20261112]
+
+## R187 – 12.11.2026: acht Ersatzlinks und echte 404-Stichprobe
+
+18 alternative URLs direkt mit der Search Console geprüft; acht aktuell nicht indexiert oder Google unbekannt, jeweils öffentlich HTTP 200/Self-Canonical bestätigt. Besitzer-Screenshot: 14’469 ausstehende 404-Validierungsfälle, keine Produktanzahl oder Behebung. Alle sechs sichtbaren Beispieladressen liefern auch aktuell direkt HTTP 404 ohne Location; fünf gerenderte Abrufe endeten auf der Startseite, kein 301-Beleg. Exakte Nachfolger und Ursache unbekannt. Nächster Schritt: sechs alte Handles gezielt zuordnen, keine pauschalen Weiterleitungen. Keine Shopänderung oder Indexierungsanfrage, keine erneuten Performance-/Flowreports. [Bericht](INDEXIERUNG-UND-404-20261112-R187.md) · [Beleg](INDEXIERUNG-UND-404-20261112-R187.json). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R187_20261112]
