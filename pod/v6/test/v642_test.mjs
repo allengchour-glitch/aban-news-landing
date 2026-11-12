@@ -8,7 +8,7 @@
  *   E6 Esc und Fokus in den Dialogen (OFF-05)
  *   E7 kein Layoutsprung, wenn die Vorschaudaten rechtzeitig eintreffen (OFF-11)
  *   Korrekturrunde 11.11.2026 (Abnahme): «eckzone» (BE-1, BE-4: geklemmte Knöpfe über der Ebenenmitte, Beschriftung über dem Kreuz, echte Bedienung), «ausverkauft-adresse» (KA-07),
- *   «vorschau-fehlergrenze» (KA-05, BE-2, BE-6), dazu neue Fälle in «leere-textebene» (KA-03, RO-5), «zahlen» (BE-3), «fehlertexte» (KA-04, RO-1 bis RO-4, RO-6), «ausverkauft» (KA-01, KA-02), «kaufvergleich» (KA-06).
+ *   «vorschau-fehlergrenze» (KA-05, BE-2, BE-6), dazu neue Fälle in «leere-textebene» (KA-03, RO-5), «zahlen» (BE-3), «fehlertexte» (KA-04, RO-1 bis RO-4, RO-6), «ausverkauft» (KA-01, KA-02, KA2-03), «kaufvergleich» (KA-06).
  *   «kaufvergleich»: Druckdatei (PNG-Bytes), Warenkorb-Eigenschaften, _pod_karte und _vorschau (JPEG-Bytes) sind in allen Abläufen BYTEGLEICH zu 6.4.1 (der Referenz, über editor=ref auf derselben
  *   Attrappenseite); die bewusst abweichenden Abläufe stehen einzeln darin, jeder mit seiner Begründung.
  * Aufruf: node v642_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = alle)
@@ -233,7 +233,84 @@ szenario('leere-textebene', true, async (b, srv) => {
     const st = await statusText(p), info = await ebenenInfo(p);
     pruefe('Fall 10: ausverkauft nach dem Aufräumen: «… ausverkauft … Leere Textebenen entfernt.», kein Dialog, kein Upload', /^Diese Ausführung ist ausverkauft\. Bitte wähle eine andere\. Leere Textebenen entfernt\.$/.test(st) && !(await dialogOffen(p)) && s.uploads.length === 0, st);
     pruefe('Fall 10: nur das Foto bleibt', info.length === 1 && info[0].e.length === 1 && info[0].e[0].type === 'image', JSON.stringify(info));
+    // RO2-03 (KA-02): auch in der zusammengesetzten Meldung «… ausverkauft … Leere Textebenen entfernt.» fällt «ausverkauft» weg, sobald eine lieferbare Ausführung gewählt ist (Präfix, nicht nur
+    // der genaue Text); KA2-01: der Hinweis auf die entfernten Ebenen bleibt stehen (Klasse ok), die Ebenen sind ja weg
+    await p.locator('input[name="id"][value="1003"]').check();
+    await warteBis(async () => !(await ctaGesperrt(p)));
+    await p.waitForTimeout(200);
+    const k10 = await status(p).getAttribute('class');
+    pruefe('Fall 10: danach eine lieferbare Ausführung (1003): Knopf frei, «ausverkauft» fällt weg, «Leere Textebenen entfernt.» bleibt (Klasse ok)', !(await ctaGesperrt(p)) && (await statusText(p)) === 'Leere Textebenen entfernt.' && /\bok\b/.test(k10 || '') && !/\berr\b/.test(k10 || ''), `${await statusText(p)} | ${k10}`);
     pruefe('Fall 10: keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // Fall 11 (KA2-01): die Lagerprüfung beendet den Kauf erst NACH dem Aufräumen auf dem neuen Weg KA-02 (Neu-Lesen); der Hinweis auf die entfernte Ebene geht dabei nicht verloren.
+  // Die späte Antwort bei offenem Dialog und während des Dialogbaus (KA-01) mit einer und zwei leeren Ebenen prüft «ausverkauft» Fall 8, 8d und 9 (RO2-01).
+  const SOLD11 = 'Diese Ausführung ist ausverkauft. Bitte wähle eine andere.';
+  const ZWEITE = T71.replace(/varianten=[^&]*/, 'varianten=1002:Schwarz,1001:Weiss,1003:Pink');
+  const gesperrt11 = (p) => p.locator('.lsp6-cta').getAttribute('aria-disabled').then((a) => a === 'true');
+  const klasse11 = (p) => status(p).getAttribute('class');
+  // 11c: KA-02 beim Laden ausverkauft, der Klick nach mehr als 15 s liest neu, Antwort «lieferbar»: «ausverkauft» fällt weg, der Hinweis bleibt (Klasse ok) und steht beim nächsten Klick hinter dem Dialog
+  {
+    let nr = 0, frei; const tor = new Promise((r) => { frei = r; });
+    const UHR = '(function () { var alt = Date.now; window.__dt = 0; Date.now = function () { return alt.call(Date) + window.__dt; }; })();';
+    const s = await oeffnen(b, srv, ZWEITE, { ...E5_SEITE, initSkript: UHR, produktJs: () => (nr++ === 0 ? PRODUKT({ 1002: false }) : PRODUKT({}, { warten: tor })) });
+    const p = s.page;
+    await sichtWarten(p);
+    await motivHinzu(p); await bilderGeladen(p); await p.getByRole('button', { name: '➕ Text' }).click();
+    await warteBis(() => gesperrt11(p), 8000);
+    await p.evaluate(() => { window.__dt = 600000; });
+    await ctaKlick(p);
+    await warteBis(() => s.produktAnfragen.length >= 2); await p.waitForTimeout(150);
+    const st0 = await statusText(p);
+    pruefe('Fall 11c: Vorbereitung: Klick auf die Sperre: «… ausverkauft … Leere Textebene entfernt.», zweite Anfrage läuft', st0 === SOLD11 + ' Leere Textebene entfernt.' && s.produktAnfragen.length === 2, st0);
+    frei();
+    await warteBis(async () => !(await gesperrt11(p)), 8000); await p.waitForTimeout(200);
+    const st1 = await statusText(p), k1 = await klasse11(p);
+    pruefe('Fall 11c (KA2-01): Antwort «lieferbar»: «ausverkauft» fällt weg, «Leere Textebene entfernt.» bleibt (Klasse ok)', st1 === 'Leere Textebene entfernt.' && /\bok\b/.test(k1) && !/\berr\b/.test(k1), `${st1} | ${k1}`);
+    await ctaKlick(p);
+    const offen = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
+    pruefe('Fall 11c (KA2-01): der nächste Klick öffnet den Dialog, der Hinweis steht dahinter', offen && (await statusText(p)) === 'Leere Textebene entfernt.', await statusText(p));
+    pruefe('Fall 11c: keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 11d: Gegenprobe: nach «Weiter gestalten» und einer Änderung am Entwurf gilt der alte Hinweis nicht mehr (der neue Klick entfernt nichts): Statuszeile hinter dem Dialog leer
+  {
+    const s = await oeffnen(b, srv, ZWEITE, { ...E5_SEITE, produktJs: () => PRODUKT({}) });
+    const p = s.page;
+    await sichtWarten(p);
+    await warteBis(() => s.produktAnfragen.length >= 1); await p.waitForTimeout(300);
+    await motivHinzu(p); await bilderGeladen(p); await p.getByRole('button', { name: '➕ Text' }).click();
+    await ctaKlick(p);
+    await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 });
+    await p.locator('.lsp6-review-back').click(); await p.waitForTimeout(200);
+    await textHinzufuegen(p, 'Neu');
+    await ctaKlick(p);
+    await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 });
+    pruefe('Fall 11d (KA2-01): nach einer Änderung und neuem Klick ohne leere Ebene: kein alter Hinweis', (await statusText(p)) === '', await statusText(p));
+    await s.schliessen();
+  }
+  // 11e (Mutant DH4): der Hinweis ist noch gültig (wie 11c: Neu-Lesen, Antwort «lieferbar», kein Dialog dazwischen geschlossen); dann ändert die Kundin den Entwurf: der neue Klick entfernt nichts
+  // und nennt den alten Hinweis nicht mehr (nur «Weiter gestalten» prüft 11d, das löscht den Hinweis schon selbst)
+  {
+    let nr = 0, frei; const tor = new Promise((r) => { frei = r; });
+    const UHR = '(function () { var alt = Date.now; window.__dt = 0; Date.now = function () { return alt.call(Date) + window.__dt; }; })();';
+    const s = await oeffnen(b, srv, ZWEITE, { ...E5_SEITE, initSkript: UHR, produktJs: () => (nr++ === 0 ? PRODUKT({ 1002: false }) : PRODUKT({}, { warten: tor })) });
+    const p = s.page;
+    await sichtWarten(p);
+    await motivHinzu(p); await bilderGeladen(p); await p.getByRole('button', { name: '➕ Text' }).click();
+    await warteBis(() => gesperrt11(p), 8000);
+    await p.evaluate(() => { window.__dt = 600000; });
+    await ctaKlick(p);
+    await warteBis(() => s.produktAnfragen.length >= 2); await p.waitForTimeout(150);
+    frei();
+    await warteBis(async () => !(await gesperrt11(p)), 8000); await p.waitForTimeout(200);
+    const st1 = await statusText(p);
+    pruefe('Fall 11e: Vorbereitung: «Leere Textebene entfernt.» steht nach der Antwort «lieferbar» (wie 11c)', st1 === 'Leere Textebene entfernt.', st1);
+    await textHinzufuegen(p, 'Neu');
+    await ctaKlick(p);
+    const offen = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
+    pruefe('Fall 11e (KA2-01, DH4): nach einer Änderung öffnet der neue Klick den Dialog ohne den alten Hinweis', offen && (await statusText(p)) === '', `${offen} | ${await statusText(p)}`);
+    pruefe('Fall 11e: keine Seitenfehler', kein(s), s.fehler.join(' | '));
     await s.schliessen();
   }
   // Fall 7: die Druckdatei des Kaufs mit der leeren Ebene ist byte-gleich zu der OHNE sie (6.4.2 räumt nur auf); die Gegenprobe gegen 6.4.1 steht im «kaufvergleich»
@@ -472,18 +549,41 @@ szenario('fehlertexte', true, async (b, srv) => {
     pruefe(`RO-1 (${vp}): keine Seitenfehler`, kein(s), s.fehler.join(' | '));
     await s.schliessen();
   }
+  // RO-1 (RO2-03): kaputte Bilddatei auf einer leeren Bühne: nach dem Streichen gibt es nichts zurückzunehmen und nichts zu wiederholen, beide Verlaufsknöpfe sind wieder blass (0.45).
+  // Mit Text davor sind sie vor und nach dem Streichen gleich (Rückgängig aktiv): nur dieser Fall zeigt, ob ebeneAusVerlaufStreichen die Knöpfe nachzieht.
+  {
+    const s = await oeffnen(b, srv, T71);
+    const p = s.page;
+    await sichtWarten(p);
+    await p.route('https://api.cloudinary.com/**', NEIN400);
+    await p.locator('input[type=file]').setInputFiles({ name: 'kaputt.png', mimeType: 'image/png', buffer: Buffer.from('das ist kein Bild, nur Text') });
+    await statusWarten(p, 'nicht öffnen');
+    await p.waitForTimeout(500);
+    const deckkraft = async () => (await p.getByRole('button', { name: '↶ Rückgängig' }).evaluate((k) => k.style.opacity)) + '|' + (await p.getByRole('button', { name: '↷ Wiederholen' }).evaluate((k) => k.style.opacity));
+    const vorher = await deckkraft();
+    pruefe('RO-1 kaputte Datei auf leerer Bühne: «Rückgängig» und «Wiederholen» sind blass (0.45|0.45), es gibt keinen Schritt', vorher === '0.45|0.45', vorher);
+    await ed(p, '(ed) => ed.zurueck()');
+    pruefe('RO-1 kaputte Datei auf leerer Bühne: «Rückgängig» ändert nichts (keine Ebene, Knöpfe weiter blass)', (await ebenenAnzahl(p)) === 0 && (await deckkraft()) === '0.45|0.45', await deckkraft());
+    pruefe('RO-1 kaputte Datei auf leerer Bühne: keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
   // RO-2, RO-6: Cloudinary lehnt das Foto ab, weil es zu viele Pixel oder zu viele Bytes hat, oder antwortet mit 413 ohne Text: je die passende Meldung, kein englischer Servertext
+  // RO2-03: der Satz der Attrappe enthält «dimensions» UND «megapixels»; der Wortlaut aus der Cloudinary-Dokumentation («Maximum image size is <n> Megapixels. Requested <n> Megapixels», dort für die
+  // Auslieferung belegt, für den Upload ungemessen) hat kein «dimension» und enthält «size» (das allein ergäbe «Datei zu gross (max 10 MB)»): ein eigener Fall mit genau diesem Text.
+  const CLD_PIXEL = 'Maximum image size is 25 Megapixels. Requested 59.84 Megapixels';
   for (const [name, opt, datei, soll, nicht, grund] of [
     ['Pixel', { cloudinaryMaxPixel: 500000 }, pngErzeugen(1000, 1000), /^Upload-Fehler: Das Foto hat zu viele Pixel für den Upload\. Bitte nimm eine kleinere Fassung\.$/, /10 MB|Image dimensions/, 'pixel'],
     ['Pixel, Englisch', { cloudinaryMaxPixel: 500000, lang: 'en' }, pngErzeugen(1000, 1000), /^Upload error: The photo has too many pixels to upload\. Please use a smaller version\.$/, /10 MB|Image dimensions/, 'pixel'],
+    ['Pixel, Wortlaut «Maximum image size is … Megapixels» (ohne «dimension»)', { pixelText: CLD_PIXEL }, pngErzeugen(400, 400), /^Upload-Fehler: Das Foto hat zu viele Pixel für den Upload\. Bitte nimm eine kleinere Fassung\.$/, /10 MB|Maximum|Megapixels/, null],
     ['Bytes', { cloudinaryMaxBytes: 100000 }, pngRauschen(300, 300), /^Upload-Fehler: Datei zu gross \(max 10 MB\)\.$/, /File size|Pixel/, 'bytes'],
     ['413 ohne Text', { status413: true }, pngErzeugen(400, 400), /^Upload-Fehler: Datei zu gross \(max 10 MB\)\.$/, /failed/, null],
   ]) {
-    const { lang, status413, ...seiteOpt } = opt;
+    const { lang, status413, pixelText, ...seiteOpt } = opt;
     const s = await oeffnen(b, srv, T71 + (lang ? '&lang=' + lang : ''), seiteOpt);
     const p = s.page;
     await sichtWarten(p);
     if (status413) await p.route('https://api.cloudinary.com/**', (r) => r.fulfill({ status: 413, contentType: 'text/html', headers: { 'access-control-allow-origin': '*' }, body: '<html><body>Request Entity Too Large</body></html>' }));
+    if (pixelText) await p.route('https://api.cloudinary.com/**', (r) => r.fulfill({ status: 400, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ error: { message: pixelText } }) }));
     await p.locator('input[type=file]').setInputFiles({ name: 'foto.png', mimeType: 'image/png', buffer: datei });
     await statusWarten(p, 'Upload-Fehler|Upload error');
     const st = await statusText(p);
@@ -614,6 +714,8 @@ szenario('griffe-klein-rand', true, async (b, srv) => {
             if (g.h && !(await knopfTrifft(p, g.h, '.lsp6-handle'))) probleme.push('Skalieren-Griff nicht trefferbar');
             if (g.d && !(await knopfTrifft(p, g.d, '.lsp6-del'))) probleme.push('Löschknopf nicht trefferbar');
             if (g.sicht && (await unterKnopf(p, g.sicht))) probleme.push('Mitte der Ebene liegt unter einem Griff');   // BE-6: an allen Lagen, auch in den Ecken (bis zur Korrektur nur Mitte und Kantenmitten); die echte Bedienung prüft «eckzone»
+            // BE2-3: die Tippflächen drehen mit der Ebene; liegt die Ebene ganz in der Bühne, hat ihre Mitte zu beiden gedrehten Tippflächen mindestens 21,5 px Luft (bis zur Korrektur nur der Pixel der Mitte geprüft)
+            if (g.L && g.sicht && g.h && g.d && Math.abs(g.sicht.x - g.L.x) < 0.5 && Math.abs(g.sicht.y - g.L.y) < 0.5) { const lf = Math.min(tippLuft(g.L, g.h, rot), tippLuft(g.L, g.d, rot)); if (lf < 21.5) probleme.push(`Mitte nur ${lf.toFixed(1)} px neben einer gedrehten Tippfläche`); }
             if (probleme.length) ungueltig.push(`${was}: ${probleme.join(', ')}`);
           }
         }
@@ -676,6 +778,16 @@ const ECK_FAELLE = [
   ['Mitte auf der Bühnenecke oben links', { x: 0, y: 0 }, 0, 'Mama', 'sichtbar'],
   ['Mitte schräg bei (37|45)', { x: 37, y: 45 }, 0, '♥', 'tipp'],
   ['Mitte bei (30|40)', { x: 30, y: 40 }, 0, '♥', 'tipp'],
+  // BE2-3: gedrehte Lagen, an denen 6.4.2 (8df7dcbacf) die Tippflächen überlappen liess (BE2-2) oder ein Finger auf die Mitte löschte (BE2-1); Lage fx/fy = Anteil der Druckfläche (0 … 1)
+  ['obere Kante nahe der Ecke, 45°, ein Zeichen (BE2-2)', { fx: 0.05, fy: 0 }, 45, 'A', 'tipp'],
+  ['obere Kante nahe der Ecke, 45°, ein Zeichen (BE2-2)', { fx: 0.12, fy: 0 }, 45, 'A', 'zieh'],
+  ['Mitte auf der Ecke oben links, 45°, ein Zeichen (BE2-1)', { fx: 0, fy: 0 }, 45, 'A', 'tipp'],
+  ['Mitte auf der Ecke oben links, −45°, ein Zeichen (BE2-1)', { fx: 0, fy: 0 }, -45, 'A', 'tipp'],
+  ['Mitte auf der Ecke unten rechts, 135°, ein Zeichen', { fx: 1, fy: 1 }, 135, 'A', 'tipp'],
+  ['Mitte auf der linken Kante, 20°', { fx: 0, fy: 0.5 }, 20, 'Mama', 'tipp'],
+  // Mutanten DA6 und DA7 (BE-1): hier rückt ein geklemmter Knopf an die Mitte des sichtbaren Teils, wenn diese nicht zählt (Stoffbeutel PC, 30°: Tippfläche über ihr) oder die Druckfläche in «Bearbeiten» nicht beschneidet (Produktbühne Handy, −45°: 18 px Luft); gefunden im Raster vom 11.11. (1 152 Lagen)
+  ['Mitte auf der Ecke oben links, 30°, sichtbarer Teil', { fx: 0, fy: 0 }, 30, 'Mama', 'sichtbar'],
+  ['obere Kante nahe der Ecke, −45°, ein Zeichen, sichtbarer Teil', { fx: 0.04, fy: 0 }, -45, 'A', 'sichtbar'],
 ];
 const eckLage = (p) => p.evaluate(() => {
   const sb = document.querySelector('.lsp6-stage').getBoundingClientRect(), L = document.querySelector('.lsp6-layer.sel'), lr = L && L.getBoundingClientRect();
@@ -689,7 +801,17 @@ const eckLage = (p) => p.evaluate(() => {
     const e = document.elementFromPoint(lr.left + lr.width / 2, lr.top + lr.height / 2);
     trifft = !e ? 'nichts' : e.closest('.lsp6-handle, .lsp6-del') ? 'knopf' : e.closest('.lsp6-layer.sel') ? 'ebene' : 'anderes';
   }
-  return { st: { l: sb.left, t: sb.top, r: sb.right, b: sb.bottom }, c: lr && { x: lr.left + lr.width / 2, y: lr.top + lr.height / 2 }, w: lr && lr.width, h: lr && lr.height, h0: m('.lsp6-handle'), d0: m('.lsp6-del'), sicht, trifft };
+  // BE2-3: Drehung der gewählten Ebene; die Knöpfe und ihre Tippflächen (::before, 44 × 44 px) drehen mit ihr
+  const ed = window.LSPOD6.editors[0], sel = ed && Object.values(ed.st.ebenen).flat().find((x) => x.id === ed.st.sel), rot = sel ? sel.rot || 0 : 0;
+  const h0 = m('.lsp6-handle'), d0 = m('.lsp6-del'), c = lr && { x: lr.left + lr.width / 2, y: lr.top + lr.height / 2 };
+  // Gemessen, nicht gerechnet: kleinster Abstand der Mitte zu einem Punkt, der einen Knopf trifft (Raster 0,5 px bis 40 px), und Punkte der gedrehten Tippfläche (ohne 3 px Rand, Raster 2 px) eines Knopfes, die den anderen treffen
+  let domLuft = Infinity, ueber = 0;
+  if (c && h0 && d0) {
+    for (let dy = -40; dy <= 40; dy += 0.5) for (let dx = -40; dx <= 40; dx += 0.5) { const dd = Math.hypot(dx, dy); if (dd > 40 || dd >= domLuft) continue; const e = document.elementFromPoint(c.x + dx, c.y + dy); if (e && e.closest('.lsp6-handle, .lsp6-del')) domLuft = dd; }
+    const w = rot * Math.PI / 180, co = Math.cos(w), si = Math.sin(w);
+    for (const [k, ander] of [[h0, '.lsp6-del'], [d0, '.lsp6-handle']]) for (let u = -19; u <= 19; u += 2) for (let v = -19; v <= 19; v += 2) { const e = document.elementFromPoint(k.x + u * co - v * si, k.y + u * si + v * co); if (e && e.closest(ander)) ueber++; }
+  }
+  return { st: { l: sb.left, t: sb.top, r: sb.right, b: sb.bottom }, c, w: lr && lr.width, h: lr && lr.height, h0, d0, sicht, trifft, rot, domLuft, ueber, ow: L && L.offsetWidth, oh: L && L.offsetHeight };
 });
 /** Die Mitte der gewählten Ebene so legen, dass ihre Hülle die genannten Abstände zur Bühnenkante hat (über die Felder X/Y in cm; die Druckfläche begrenzt die Mitte auf 0 … 1). */
 async function eckLegen(p, lage, rot) {
@@ -701,7 +823,8 @@ async function eckLegen(p, lage, rot) {
   if (lage.x != null) x = g.sb.l + lage.x; if (lage.y != null) y = g.sb.t + lage.y;
   if (lage.l != null) x = g.sb.l + lage.l + g.w / 2; if (lage.r != null) x = g.sb.r - lage.r - g.w / 2;
   if (lage.o != null) y = g.sb.t + lage.o + g.h / 2; if (lage.u != null) y = g.sb.b - lage.u - g.h / 2;
-  const cx = Math.max(0, Math.min(1, (x - g.hb.l) / g.hb.w)), cy = Math.max(0, Math.min(1, (y - g.hb.t) / g.hb.h));
+  let cx = Math.max(0, Math.min(1, (x - g.hb.l) / g.hb.w)), cy = Math.max(0, Math.min(1, (y - g.hb.t) / g.hb.h));
+  if (lage.fx != null) cx = lage.fx; if (lage.fy != null) cy = lage.fy;
   await feldSetzen(p, 'X (cm)', (cx * masse.breite).toFixed(2)); await feldSetzen(p, 'Y (cm)', (cy * masse.hoehe).toFixed(2));
   await p.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); document.querySelector('.lsp6-stage').scrollIntoView({ block: 'center' }); });
   await p.waitForTimeout(60);
@@ -712,8 +835,21 @@ async function eckNeu(p, text) {
   await ed(p, '(ed) => { Object.keys(ed.st.ebenen).forEach((id) => ed.st.ebenen[id].slice().forEach((e) => ed.entfernen(e.id))); }');
   await p.getByRole('button', { name: '➕ Text' }).click(); await p.locator('.lsp6-text').fill(text); await p.waitForTimeout(40);
 }
-/** Abstand eines Punktes zur Tippfläche (44 × 44 px) um die Mitte eines Knopfes. */
-const tippLuft = (pt, k) => Math.hypot(Math.max(0, Math.abs(pt.x - k.x) - 22), Math.max(0, Math.abs(pt.y - k.y) - 22));
+/** Abstand eines Punktes zur Tippfläche (44 × 44 px) um die Mitte eines Knopfes. Die Tippfläche dreht mit der Ebene (rot in Grad); BE2-3: bis zur Korrektur achsparallel gerechnet, das stimmt nur bei 0°, 90° und 180°. */
+const imSystem = (dx, dy, rot) => { const w = rot * Math.PI / 180, co = Math.cos(w), si = Math.sin(w); return [dx * co + dy * si, dy * co - dx * si]; };
+const tippLuft = (pt, k, rot = 0) => { const l = imSystem(pt.x - k.x, pt.y - k.y, rot); return Math.hypot(Math.max(0, Math.abs(l[0]) - 22), Math.max(0, Math.abs(l[1]) - 22)); };
+/** Trennung zweier gleich gedrehter Tippflächen: grösster Abstand der Mitten entlang einer Achse der Ebene (getrennt ab 44 px). */
+const knopfTrennung = (a, b, rot = 0) => { const l = imSystem(a.x - b.x, a.y - b.y, rot); return Math.max(Math.abs(l[0]), Math.abs(l[1])); };
+/** Finger: CDP-Berührung mit Kontaktfläche (Radius in px); Playwrights touchscreen.tap sendet Radius 1 (GEMESSEN an touch.radiusX). */
+async function fingerTipp(p, cdp, x, y, r = 16) {
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, radiusX: r, radiusY: r, force: 1, id: 1 }] });
+  await p.waitForTimeout(40);
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await p.waitForTimeout(120);
+}
+/** Ziel des ersten pointerdown seit dem letzten Aufruf von pdLeeren (Griff, Kreuz, Ebene, anderes). */
+const pdLeeren = (p) => p.evaluate(() => { if (!window.__pdLauscher) { window.__pdLauscher = 1; document.addEventListener('pointerdown', (e) => { const z = e.target && e.target.closest ? e.target : null; window.__pd.push(!z ? 'anderes' : z.closest('.lsp6-handle') ? 'Griff' : z.closest('.lsp6-del') ? 'Kreuz' : z.closest('.lsp6-layer') ? 'Ebene' : 'anderes'); }, { capture: true }); } window.__pd = []; });
+const pdZiel = (p) => p.evaluate(() => window.__pd[0] || 'kein');
 /** Anteil der Pixel in einem Kreis (Mitte, Radius) oder einem Rechteck (Mitte, halbe Breite rx, halbe Höhe ry), die sich ändern, wenn eine Klasse unsichtbar gemacht wird (Bildschirmfoto mit und ohne; Unterschied je Kanal über 24). */
 async function anteilVerdeckt(p, mitte, radius, unsichtbar, ry = null) {
   const rx = radius, hy = ry == null ? radius : ry;
@@ -739,6 +875,7 @@ szenario('eckzone', true, async (b, srv) => {
   for (const [sName, query, sicht] of ECK_SEITEN) for (const [vName, vp] of [['Handy', MOBIL], ['PC', PC]]) {
     const s = await oeffnen(b, srv, query, vp);
     const p = s.page;
+    const cdp = vp.mobil ? await p.context().newCDPSession(p) : null;
     if (sicht) { await sichtWarten(p); if (sicht === 'zoom') await ed(p, '(ed) => ed.zoomSetzen("flaeche")'); else await ed(p, '(ed, v) => ed.sichtSetzen(v)', sicht); await p.waitForTimeout(200); }
     const probleme = [];
     for (const [fName, lage, rot, text, art] of ECK_FAELLE) {
@@ -748,9 +885,22 @@ szenario('eckzone', true, async (b, srv) => {
       if (!g.c || !g.h0 || !g.d0) { probleme.push(`${was}: Ebene oder Knopf fehlt`); continue; }
       const imSt = (k) => k.x - 15 >= g.st.l - 0.6 && k.y - 15 >= g.st.t - 0.6 && k.x + 15 <= g.st.r + 0.6 && k.y + 15 <= g.st.b + 0.6;
       if (!imSt(g.h0) || !imSt(g.d0)) probleme.push(`${was}: Knopf nicht ganz in der Bühne`);
-      if (Math.max(Math.abs(g.h0.x - g.d0.x), Math.abs(g.h0.y - g.d0.y)) < 43.5) probleme.push(`${was}: die Tippflächen von Kreuz und Griff überlappen (${JSON.stringify([g.d0, g.h0])})`);
-      const lH = tippLuft(g.c, g.h0), lD = tippLuft(g.c, g.d0);
-      if (Math.min(lH, lD) < 21.5) probleme.push(`${was}: Ebenenmitte nur ${Math.min(lH, lD).toFixed(1)} px neben einer Tippfläche`);
+      const tr = knopfTrennung(g.h0, g.d0, g.rot);
+      if (tr < 43.5) probleme.push(`${was}: die gedrehten Tippflächen von Kreuz und Griff überlappen (Trennung ${tr.toFixed(1)} px im System der Ebene, ${g.rot}°)`);
+      if (g.ueber > 0) probleme.push(`${was}: elementFromPoint: ${g.ueber} Punkte der gedrehten Tippfläche eines Knopfes treffen den anderen`);
+      const lH = tippLuft(g.c, g.h0, g.rot), lD = tippLuft(g.c, g.d0, g.rot);
+      if (Math.min(lH, lD) < 21.5) probleme.push(`${was}: Ebenenmitte nur ${Math.min(lH, lD).toFixed(1)} px neben einer gedrehten Tippfläche`);
+      if (g.domLuft < 19.5) probleme.push(`${was}: elementFromPoint: ein Knopf trifft schon ${g.domLuft.toFixed(1)} px neben der Ebenenmitte`);
+      // BE-1 (Mutanten DA6, DA7): ein an die Bühnenkante geklemmter Knopf lässt auch zur Mitte des sichtbaren Teils einer angeschnittenen Ebene 22 px Luft (dort greift man sie). Geklemmt ist er, wenn seine Ecke
+      // der Mindestschicht (CHROME_MIN 64 px, Überstand 6 px, gedreht um die Mitte) ausserhalb des Rahmens 17 px innerhalb der Bühne läge; ein nicht geklemmter Knopf sitzt an seiner Ecke wie in 6.4.1
+      // (GEMESSEN im Raster vom 11.11.: bis 0,4 px von der gerechneten Ecke) und ist ausgenommen.
+      if (g.sicht && Math.hypot(g.sicht.x - g.c.x, g.sicht.y - g.c.y) > 0.5) for (const [nm, k, sg] of [['Griff', g.h0, 1], ['Kreuz', g.d0, -1]]) {
+        const w = g.rot * Math.PI / 180, lx = sg * (Math.max(64, g.ow) / 2 + 6), ly = sg * (Math.max(64, g.oh) / 2 + 6);
+        const nx = g.c.x + lx * Math.cos(w) - ly * Math.sin(w), ny = g.c.y + lx * Math.sin(w) + ly * Math.cos(w);
+        if (nx >= g.st.l + 16.99 && nx <= g.st.r - 16.99 && ny >= g.st.t + 16.99 && ny <= g.st.b - 16.99) continue;
+        const lf = tippLuft(g.sicht, k, g.rot);
+        if (lf < 21.5) probleme.push(`${was}: geklemmtes ${nm} nur ${lf.toFixed(1)} px neben der Mitte des sichtbaren Teils (gedrehte Tippfläche)`);
+      }   // 2 px unter 21,5: die ::before-Fläche liegt rund 0,9 px neben der Knopfmitte (GEMESSEN), Raster 0,5 px
       const vorher = await ersteEbene(p), n0 = await ebenenAnzahl(p);
       // Liegt die Mitte ausserhalb des sichtbaren Teils (Produktbühne: der Host beschneidet das Motiv an der Druckfläche, die Mitte liegt auf deren Kante), greift man die Ebene dort, wo man sie sieht
       const ziel = art === 'sichtbar' || g.trifft === 'anderes' || g.trifft === 'nichts' ? g.sicht : g.c;
@@ -769,8 +919,31 @@ szenario('eckzone', true, async (b, srv) => {
           if (!versch || skal) probleme.push(`${was}: Ziehen aus der Mitte ${skal ? `SKALIERT/DREHT (${vorher.scale.toFixed(2)} → ${z.scale.toFixed(2)}, ${vorher.rot.toFixed(0)}° → ${z.rot.toFixed(0)}°)` : 'verschiebt nicht'}`);
         }
       }
+      // BE2-3: echte Finger. Chromium wählt bei einer Berührung mit Kontaktfläche ein Ziel neben dem Punkt (Touch-Anpassung); der Playwright-Tipp oben hat Radius 1 und sieht das nicht.
+      if (cdp) {
+        await eckNeu(p, text);
+        const gf = await eckLegen(p, lage, rot), zf = art === 'sichtbar' || gf.trifft === 'anderes' || gf.trifft === 'nichts' ? gf.sicht : gf.c;
+        if (zf) {
+          const n1 = await ebenenAnzahl(p);
+          await pdLeeren(p); await fingerTipp(p, cdp, zf.x, zf.y, 16);
+          if ((await ebenenAnzahl(p)) < n1) { probleme.push(`${was}: Finger (Radius 16) auf die ${art === 'sichtbar' ? 'sichtbare Ebene' : 'Mitte'} LÖSCHT (pointerdown auf ${await pdZiel(p)})`); await ed(p, '(ed) => ed.zurueck()'); }
+        }
+      }
+      // BE2-3: wer den Griff 3 px neben seiner Mitte (zum Kreuz hin) trifft, greift den Griff und löscht nie (BE2-2: an der oberen Kante mit 45° traf das das Kreuz)
+      for (const wie of cdp ? ['Tipp', 'Finger (Radius 16)'] : ['Klick']) {
+        await eckNeu(p, text);
+        const gg = await eckLegen(p, lage, rot);
+        const ex = gg.d0.x - gg.h0.x, ey = gg.d0.y - gg.h0.y, eL = Math.hypot(ex, ey) || 1, pt = { x: gg.h0.x + ex / eL * 3, y: gg.h0.y + ey / eL * 3 };
+        const n2 = await ebenenAnzahl(p);
+        await pdLeeren(p);
+        if (wie === 'Tipp') await p.touchscreen.tap(pt.x, pt.y); else if (wie === 'Klick') await p.mouse.click(pt.x, pt.y); else await fingerTipp(p, cdp, pt.x, pt.y, 16);
+        await p.waitForTimeout(80);
+        const ziel = await pdZiel(p), n3 = await ebenenAnzahl(p);
+        if (n3 < n2) { probleme.push(`${was}: ${wie} 3 px neben der Griffmitte LÖSCHT (pointerdown auf ${ziel})`); await ed(p, '(ed) => ed.zurueck()'); }
+        else if (ziel !== 'Griff') probleme.push(`${was}: ${wie} 3 px neben der Griffmitte trifft ${ziel} statt den Griff`);
+      }
     }
-    pruefe(`${sName}, ${vName}: ${ECK_FAELLE.length} Lagen am Rand: Knöpfe in der Bühne, ohne Überlappung, Ebenenmitte frei; Tipp/Klick auf die Mitte löscht nie, Ziehen aus der Mitte verschiebt`, probleme.length === 0, probleme.slice(0, 5).join(' | ') + (probleme.length > 5 ? ` … (${probleme.length} Fälle)` : ''));
+    pruefe(`${sName}, ${vName}: ${ECK_FAELLE.length} Lagen am Rand, auch gedreht: Knöpfe in der Bühne, gedrehte Tippflächen ohne Überlappung, Ebenenmitte frei (gedreht gerechnet und per elementFromPoint); Tipp/Klick${vp.mobil ? ' und Finger (Radius 16)' : ''} auf die Mitte löscht nie, ${vp.mobil ? 'Tipp und Finger' : 'Klick'} 3 px neben der Griffmitte trifft den Griff, Ziehen aus der Mitte verschiebt`, probleme.length === 0, probleme.slice(0, process.env.BE23_ALLE ? 1e9 : 5).join(' | ') + (probleme.length > 5 ? ` … (${probleme.length} Fälle)` : ''));
     // Das Kreuz bleibt bedienbar: Klick auf das Kreuz löscht weiterhin
     await eckNeu(p, 'Mama');
     const g = await eckLegen(p, { l: 2, o: 2 }, 0);
@@ -785,7 +958,8 @@ szenario('eckzone', true, async (b, srv) => {
     const p = s.page;
     await eckNeu(p, 'Mama');
     const g = await eckLegen(p, { l: 60, o: 2 }, 0);
-    const tag = await p.evaluate(() => { const r = document.querySelector('.lsp6-tag').getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom }; });
+    // Grundlage der Beschriftung (BE2-4: bei gewählter Ebene weicht sie dem Kreuz nach unten aus; die Vorbereitung prüft, dass das Kreuz auf ihrer Grundlage liegt)
+    const tag = await p.evaluate(() => { const t = document.querySelector('.lsp6-tag'), r = t.getBoundingClientRect(), tf = getComputedStyle(t).transform, dy = tf && tf !== 'none' ? new DOMMatrixReadOnly(tf).f : 0; return { l: r.left, t: r.top - dy, r: r.right, b: r.bottom - dy }; });
     const ueber = Math.max(0, Math.min(tag.r, g.d0.x + 15) - Math.max(tag.l, g.d0.x - 15)) * Math.max(0, Math.min(tag.b, g.d0.y + 15) - Math.max(tag.t, g.d0.y - 15)) / 900;
     pruefe(`BE-4 ${sName}, ${vName}: Vorbereitung: das Löschkreuz liegt im Bereich der Beschriftung (Überdeckung der Rechtecke ${Math.round(ueber * 100)} %)`, ueber > 0.2, JSON.stringify([tag, g.d0]));
     const a = await anteilVerdeckt(p, g.d0, 15, '.lsp6-tag');
@@ -842,6 +1016,237 @@ szenario('eckzone', true, async (b, srv) => {
     pruefe(`BE-1 Produktbühne Zoom «Produkt», ${vName}: Vorbereitung: mindestens 8 von ${n} Lagen ohne Klemmen, davon mindestens 6 von der Druckfläche angeschnitten`, n - geklemmt >= 8 && angeschnitten >= 6, JSON.stringify({ n, geklemmt, angeschnitten }));
     pruefe(`BE-1 Produktbühne Zoom «Produkt», ${vName}: ungeklemmte Knöpfe bleiben an der Lage von 6.4.1 (kein transform, Abweichung höchstens 1,5 px), auch bei angeschnittener Ebene`, probleme.length === 0, probleme.slice(0, 4).join(' | '));
     pruefe(`BE-1 Produktbühne Zoom «Produkt», ${vName}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
+// BE2-4: deckt die GEWÄHLTE Ebene die Beschriftung «Druckfläche … cm» (flache Bühne, «Druckversion»), bleibt sie sichtbar: über der Ebene, an einer Lage ohne Knopf; Kreuz und Griff bleiben frei (BE-4);
+// nach dem Abwählen liegt sie wieder an ihrer Grundlage. In der ersten Fassung von 6.4.2 (Beschriftung 590 unter der Ebene 600) war sie bis zum Abwählen ganz weg (0 % sichtbar, 6.4.1: 99 %).
+szenario('beschriftung', true, async (b, srv) => {
+  const tagLage = (p) => p.evaluate(() => {
+    const t = document.querySelector('.lsp6-tag'), r = t.getBoundingClientRect(), f = document.querySelector('.lsp6-frame').getBoundingClientRect(), s = document.querySelector('.lsp6-stage').getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2, l: r.left, t: r.top, w: r.width, h: r.height, sichtbar: !t.hidden && r.width > 0,
+      innen: r.left >= Math.max(f.left, s.left) - 0.5 && r.right <= Math.min(f.right, s.right) + 0.5 && r.top >= Math.max(f.top, s.top) - 0.5 && r.bottom <= Math.min(f.bottom, s.bottom) + 0.5 };
+  });
+  const tagSichtbar = (p, g) => anteilVerdeckt(p, g, g.w / 2, '.lsp6-tag', g.h / 2);   // Anteil der Pixel im Rechteck der Beschriftung, die sie selbst malt
+  const knopf = (p, q) => p.evaluate((q) => { const e = document.querySelector(q); if (!e || e.hidden) return null; const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }, q);
+  // Lage der Beschriftung gegen die Knöpfe: Grundlage = Rechteck ohne Verschiebung; knopfAufGrundlage = ein Knopf (3 px Luft) liegt auf ihr; luft = kleinster Abstand zwischen Beschriftung und Knopf
+  const tagStimmigInfo = (p) => p.evaluate(() => {
+    const t = document.querySelector('.lsp6-tag'), r = t.getBoundingClientRect(), tf = getComputedStyle(t).transform, dy = tf && tf !== 'none' ? new DOMMatrixReadOnly(tf).f : 0;
+    const g = { l: r.left, r: r.right, t: r.top - dy, b: r.bottom - dy }, jetzt = { l: r.left, r: r.right, t: r.top, b: r.bottom };
+    const kn = [...document.querySelectorAll('.lsp6-layer.sel .lsp6-del, .lsp6-layer.sel .lsp6-handle')].filter((x) => !x.hidden).map((x) => x.getBoundingClientRect());
+    const schn = (a, b, m) => a.l < b.right + m && a.r > b.left - m && a.t < b.bottom + m && a.b > b.top - m;
+    const abst = (a, b) => Math.max(b.left - a.r, a.l - b.right, b.top - a.b, a.t - b.bottom);
+    const L = document.querySelector('.lsp6-layer.sel'), lr = L && L.getBoundingClientRect();
+    return { oben: t.hasAttribute('data-oben'), tf: t.style.transform, knopfAufGrundlage: kn.some((b) => schn(g, b, 3)), knopfJetzt: kn.some((b) => schn(jetzt, b, 0)), luft: kn.length ? Math.min(...kn.map((b) => abst(jetzt, b))) : 99,
+      ebeneDeckt: !!lr && lr.left < g.r && lr.right > g.l && lr.top < g.b && lr.bottom > g.t };
+  });
+  // stimmig: eine gehobene Beschriftung liegt auf keinem Knopf; ist ihre Grundlage frei, ist sie nicht verschoben
+  const tagStimmig = async (p) => { const v = await tagStimmigInfo(p); return !(v.oben && v.knopfJetzt) && (v.knopfAufGrundlage || !v.tf); };
+  const deckt = (p, g) => p.evaluate((g) => { const l = document.querySelector('.lsp6-layer.sel'); if (!l) return 0; const r = l.getBoundingClientRect(); return Math.max(0, Math.min(r.right, g.l + g.w) - Math.max(r.left, g.l)) * Math.max(0, Math.min(r.bottom, g.t + g.h) - Math.max(r.top, g.t)) / (g.w * g.h); }, g);
+  for (const [sName, query] of [['Tasse', T19], ['Stoffbeutel', STOFFBEUTEL], ['Kiss-Cut 5,5″', KISSCUT]]) for (const [vName, vp] of [['Handy', MOBIL], ['PC', PC]]) {
+    const s = await oeffnen(b, srv, query, vp);
+    const p = s.page;
+    await buehneZeigen(p); await p.waitForTimeout(60);
+    const g0 = await tagLage(p);
+    pruefe(`BE2-4 ${sName}, ${vName}: Vorbereitung: Beschriftung da und ohne Ebene sichtbar`, g0.sichtbar && (await tagSichtbar(p, g0)) >= 0.8, JSON.stringify(g0));
+    // 1. Bild Grösse 2 (Breite = Druckfläche) in der Mitte: deckt die ganze Druckfläche, bleibt gewählt
+    await motivHinzu(p, '#2040c0', 4000); await bilderGeladen(p);
+    const masse = await ed(p, '(ed) => ed.geo().masse');   // Bild: Breite = Grösse · halbe Druckfläche, also Grösse 2 = ganze Breite
+    await feldSetzen(p, 'Breite (cm)', masse.breite.toFixed(2)); await feldSetzen(p, 'X (cm)', (masse.breite / 2).toFixed(2)); await feldSetzen(p, 'Y (cm)', (masse.hoehe / 2).toFixed(2));
+    await p.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); document.querySelector('.lsp6-stage').scrollIntoView({ block: 'center' }); });
+    await bilderGeladen(p); await p.waitForTimeout(100);
+    pruefe(`BE2-4 ${sName}, ${vName}: Vorbereitung: das gewählte Bild deckt die Grundlage der Beschriftung`, (await deckt(p, g0)) > 0.99, String(await deckt(p, g0)));
+    const g1 = await tagLage(p), a1 = await tagSichtbar(p, g1);
+    pruefe(`BE2-4 ${sName}, ${vName}: gewähltes Bild über der Druckfläche: die Beschriftung bleibt sichtbar (${(a1 * 100).toFixed(1)} % ihrer Pixel, mindestens 80 %)`, a1 >= 0.8, String(a1));
+    pruefe(`BE2-4 ${sName}, ${vName}: die Beschriftung bleibt in der sichtbaren Druckfläche`, g1.innen, JSON.stringify(g1));
+    for (const [kName, q] of [['Löschkreuz', '.lsp6-del'], ['Skalieren-Griff', '.lsp6-handle']]) {
+      const k = await knopf(p, q);
+      const a = k ? await anteilVerdeckt(p, k, 15, '.lsp6-tag') : 1;
+      pruefe(`BE2-4 ${sName}, ${vName}: ${kName} frei (die Beschriftung ändert ${(a * 100).toFixed(1)} % seiner Pixel, höchstens 5 %)`, !!k && a <= 0.05, JSON.stringify(k));
+    }
+    // 1b. Ein einziges Neuzeichnen, das die Knöpfe neu klemmt (Schieber «Drehen» auf 180°: Kreuz und Griff tauschen die Ecken): die Beschriftung rechnet mit den neuen Lagen
+    await ed(p, '(ed) => { ed.ui.rangeDrehen.value = 180; ed.ui.rangeDrehen.dispatchEvent(new Event("input")); }'); await p.waitForTimeout(80);
+    pruefe(`BE2-4 ${sName}, ${vName}: nach Drehen auf 180° (ein Neuzeichnen) passt die Lage der Beschriftung zu den neuen Knöpfen`, await tagStimmig(p), JSON.stringify(await tagStimmigInfo(p)));
+    // 2. Abwählen: zurück an der Grundlage
+    await ed(p, '(ed) => ed.waehlen(null)'); await p.waitForTimeout(80);
+    const g2 = await tagLage(p), a2 = await tagSichtbar(p, g2);
+    pruefe(`BE2-4 ${sName}, ${vName}: nach dem Abwählen liegt die Beschriftung wieder an der Grundlage und ist sichtbar`, Math.abs(g2.l - g0.l) < 0.5 && Math.abs(g2.t - g0.t) < 0.5 && a2 >= 0.8, JSON.stringify([g0, g2, a2]));
+    // 3. BE-4-Lage: Text an der oberen Kante, 60 px vom linken Rand (das Kreuz rutscht auf die Beschriftung)
+    if (sName !== 'Tasse') {
+      await eckNeu(p, 'Mama');
+      const g = await eckLegen(p, { l: 60, o: 2 }, 0);
+      const g3 = await tagLage(p), a3 = await tagSichtbar(p, g3), ak = await anteilVerdeckt(p, g.d0, 15, '.lsp6-tag'), ah = await anteilVerdeckt(p, g.h0, 15, '.lsp6-tag');
+      pruefe(`BE2-4 ${sName}, ${vName}: Text an der oberen Kante: Beschriftung sichtbar (${(a3 * 100).toFixed(1)} %, mindestens 80 %), Kreuz und Griff frei (${(ak * 100).toFixed(1)} / ${(ah * 100).toFixed(1)} %, höchstens 5 %), in der Druckfläche`, a3 >= 0.8 && ak <= 0.05 && ah <= 0.05 && g3.innen, JSON.stringify([g3, g.d0, g.h0]));
+      pruefe(`BE2-4 ${sName}, ${vName}: Text an der oberen Kante: Lage der Beschriftung passt zu den Knöpfen`, await tagStimmig(p), JSON.stringify(await tagStimmigInfo(p)));
+    }
+    // 6. Ein einziges Neuzeichnen (Knopf «Mitte horizontal»): die Beschriftung rechnet mit den NEUEN Lagen der Knöpfe (erst die Knöpfe, dann die Beschriftung)
+    // 7. Ein Knopf liegt auf der Beschriftung, die Ebene selbst deckt sie nicht: die Beschriftung bleibt an ihrer Grundlage (sie springt nicht ohne Grund)
+    if (sName === 'Stoffbeutel') {
+      await ed(p, '(ed) => { Object.keys(ed.st.ebenen).forEach((id) => ed.st.ebenen[id].slice().forEach((e) => ed.entfernen(e.id))); }');
+      await motivHinzu(p, '#20a040', 4000); await bilderGeladen(p);
+      const m6 = await ed(p, '(ed) => ed.geo().masse');
+      await feldSetzen(p, 'Breite (cm)', (m6.breite * 0.175).toFixed(2)); await feldSetzen(p, 'X (cm)', (m6.breite * 0.2).toFixed(2)); await feldSetzen(p, 'Y (cm)', (m6.hoehe * 0.1).toFixed(2));   // Grösse 0,35 bei (0,2|0,1)
+      await buehneZeigen(p); await bilderGeladen(p); await p.waitForTimeout(80);
+      const v6 = await tagStimmigInfo(p);
+      pruefe(`BE2-4 ${sName}, ${vName}: Vorbereitung: kleines Bild auf der Beschriftung, Kreuz auf ihrer Grundlage, Beschriftung gehoben und verschoben`, v6.oben && !!v6.tf && v6.knopfAufGrundlage, JSON.stringify(v6));
+      pruefe(`BE2-4 ${sName}, ${vName}: gehobene Beschriftung mit Luft zu den Knöpfen (mindestens 2 px)`, v6.luft >= 2, JSON.stringify(v6));
+      await ed(p, '(ed) => ed.ui.mitteH.click()'); await p.waitForTimeout(80);
+      pruefe(`BE2-4 ${sName}, ${vName}: nach «Mitte horizontal» (ein Neuzeichnen) passt die Lage der Beschriftung zu den neuen Knöpfen`, await tagStimmig(p), JSON.stringify(await tagStimmigInfo(p)));
+      await eckNeu(p, 'Mama');
+      const g7 = await eckLegen(p, { l: 60, o: 30 }, 0);
+      const v7 = await tagStimmigInfo(p);
+      pruefe(`BE2-4 ${sName}, ${vName}: Vorbereitung: Kreuz auf der Grundlage der Beschriftung, die Ebene deckt sie nicht`, v7.knopfAufGrundlage && !v7.ebeneDeckt, JSON.stringify([v7, g7.d0]));
+      pruefe(`BE2-4 ${sName}, ${vName}: die Beschriftung bleibt dann an ihrer Grundlage`, !v7.tf && !v7.oben, JSON.stringify(v7));
+    }
+    // 3b. Tasse (Druckfläche kleiner als die Bühne): die verschobene Beschriftung muss in die DRUCKFLÄCHE passen, nicht nur in die Bühne; ist sie dafür zu hoch, bleibt sie unter der Ebene
+    if (sName === 'Tasse') {
+      await eckNeu(p, 'Mama');
+      const g8 = await eckLegen(p, { l: 60, o: 2 }, 0);
+      const v8 = await p.evaluate(() => { const t = document.querySelector('.lsp6-tag'), r = t.getBoundingClientRect(), f = document.querySelector('.lsp6-frame').getBoundingClientRect(), s = document.querySelector('.lsp6-stage').getBoundingClientRect(); return { tf: t.style.transform, oben: t.hasAttribute('data-oben'), top: r.top, h: r.height, fb: f.bottom, sb: s.bottom }; });
+      const hoch = Math.ceil(v8.fb - 4 - v8.top + 3);   // so hoch, dass die verschobene Beschriftung 3 px über die Druckfläche (minus 4 px Rand) ragt
+      pruefe(`BE2-4 ${sName}, ${vName}: Vorbereitung: Beschriftung verschoben und gehoben, zwischen Druckfläche und Bühne ist Platz`, !!v8.tf && v8.oben && v8.top + hoch <= v8.sb - 4, JSON.stringify([v8, hoch, g8.d0]));
+      await p.evaluate((h) => { const s = document.createElement('style'); s.id = '__hoch'; s.textContent = '.lsp6-tag{min-height:' + h + 'px!important}'; document.head.appendChild(s); }, hoch);
+      await ed(p, '(ed) => { ed.ui.rangeDrehen.value = 0; ed.ui.rangeDrehen.dispatchEvent(new Event("input")); }'); await p.waitForTimeout(80);   // gleiche Lage, nur neu zeichnen
+      const r8 = await p.evaluate(() => { const t = document.querySelector('.lsp6-tag'); return { oben: t.hasAttribute('data-oben'), tf: t.style.transform }; });
+      await p.evaluate(() => document.getElementById('__hoch').remove());
+      pruefe(`BE2-4 ${sName}, ${vName}: zu hohe Beschriftung bleibt unter der Ebene statt unter die Druckfläche zu rutschen`, !r8.oben && !r8.tf, JSON.stringify(r8));
+    }
+    // 4. Rückfall: passt die Beschriftung unter den Knöpfen nicht mehr in die Druckfläche (hier künstlich 600 px hoch), bleibt sie unter der Ebene (kein data-oben, keine Verschiebung) und die Knöpfe sind frei
+    if (sName === 'Stoffbeutel') {
+      await ed(p, '(ed) => { Object.keys(ed.st.ebenen).forEach((id) => ed.st.ebenen[id].slice().forEach((e) => ed.entfernen(e.id))); }');
+      await motivHinzu(p, '#2040c0', 4000); await bilderGeladen(p);
+      const m4 = await ed(p, '(ed) => ed.geo().masse');
+      await feldSetzen(p, 'Breite (cm)', m4.breite.toFixed(2)); await feldSetzen(p, 'X (cm)', (m4.breite / 2).toFixed(2)); await feldSetzen(p, 'Y (cm)', (m4.hoehe / 2).toFixed(2));
+      await buehneZeigen(p); await p.waitForTimeout(80);
+      const vorher = await p.evaluate(() => document.querySelector('.lsp6-tag').hasAttribute('data-oben'));
+      await p.evaluate(() => { const s = document.createElement('style'); s.id = '__hoch'; s.textContent = '.lsp6-tag{min-height:600px!important}'; document.head.appendChild(s); });
+      await feldSetzen(p, 'X (cm)', (m4.breite / 2 + 0.1).toFixed(2));   // zeichnet die Ebene neu (chromeNachziehen)
+      await buehneZeigen(p); await p.waitForTimeout(80);
+      const r4 = await p.evaluate(() => { const t = document.querySelector('.lsp6-tag'); return { oben: t.hasAttribute('data-oben'), tf: t.style.transform, z: getComputedStyle(t).zIndex }; });
+      const kd = await knopf(p, '.lsp6-del'), kh = await knopf(p, '.lsp6-handle');
+      const ad = kd ? await anteilVerdeckt(p, kd, 15, '.lsp6-tag') : 1, ah = kh ? await anteilVerdeckt(p, kh, 15, '.lsp6-tag') : 1;
+      await p.evaluate(() => document.getElementById('__hoch').remove());
+      pruefe(`BE2-4 ${sName}, ${vName}: Rückfall ohne freie Lage: Beschriftung unter der Ebene (vorher gehoben: ${vorher}), Kreuz und Griff frei (${(ad * 100).toFixed(1)} / ${(ah * 100).toFixed(1)} %)`, vorher && !r4.oben && !r4.tf && r4.z === '590' && ad <= 0.05 && ah <= 0.05, JSON.stringify(r4));
+    }
+    pruefe(`BE2-4 ${sName}, ${vName}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 5. «Bearbeiten» (Griffschicht 700 über der Beschriftung): die Beschriftung bleibt, wo sie ist, auch wenn ein Knopf auf ihr liegt und die gewählte Ebene sie deckt
+  for (const [vName, vp] of [['Handy', MOBIL], ['PC', PC]]) {
+    const s = await oeffnen(b, srv, T71, vp);
+    const p = s.page;
+    await sichtWarten(p); await ed(p, '(ed) => ed.zoomSetzen("flaeche")'); await p.waitForTimeout(200);
+    await buehneZeigen(p); await p.waitForTimeout(60);
+    const g0 = await tagLage(p);
+    await motivHinzu(p, '#c02040', 4000); await bilderGeladen(p);
+    const m5 = await ed(p, '(ed) => ed.geo().masse');
+    await feldSetzen(p, 'Breite (cm)', (m5.breite * 0.175).toFixed(2)); await feldSetzen(p, 'X (cm)', (m5.breite * 0.2).toFixed(2)); await feldSetzen(p, 'Y (cm)', (m5.hoehe * 0.1).toFixed(2));
+    await p.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); document.querySelector('.lsp6-stage').scrollIntoView({ block: 'center' }); });
+    await bilderGeladen(p); await p.waitForTimeout(100);
+    const kd = await knopf(p, '.lsp6-del');
+    const vor = await p.evaluate(([g, k]) => { const l = document.querySelector('.lsp6-layer.sel').getBoundingClientRect(); const deckt = l.right > g.l && l.left < g.l + g.w && l.bottom > g.t && l.top < g.t + g.h; const knopf = k && k.x + 18 > g.l && k.x - 18 < g.l + g.w && k.y + 18 > g.t && k.y - 18 < g.t + g.h; return { deckt, knopf }; }, [g0, kd]);
+    const g1 = await tagLage(p), r5 = await p.evaluate(() => { const t = document.querySelector('.lsp6-tag'); return { oben: t.hasAttribute('data-oben'), tf: t.style.transform }; });
+    pruefe(`BE2-4 Shirt «Bearbeiten» Zoom «Druckfläche», ${vName}: Vorbereitung: gewähltes Bild deckt die Beschriftung, das Kreuz liegt auf ihr`, vor.deckt && vor.knopf, JSON.stringify([vor, g0, kd]));
+    pruefe(`BE2-4 Shirt «Bearbeiten» Zoom «Druckfläche», ${vName}: die Beschriftung bleibt an ihrer Grundlage (kein data-oben, keine Verschiebung)`, !r5.oben && !r5.tf && Math.abs(g1.t - g0.t) < 0.5 && Math.abs(g1.l - g0.l) < 0.5, JSON.stringify([r5, g0, g1]));
+    pruefe(`BE2-4 Shirt «Bearbeiten», ${vName}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
+// BE2-6: ein Fingertipp auf eine kleine gewählte Ebene löschte sie. Das Löschkreuz hatte einen eigenen click-Zuhörer, die Ebene nicht: die Touch-Anpassung von Chromium zog den Tipp
+// bis rund 16 px weit zum Kreuz (auf der Produktbühne seit 6.4.0, in der flachen Bühne und der «Druckversion» seit E2). Jetzt nimmt die Bühne den Klick des Kreuzes ab; echte Fingertipps
+// (CDP Input.dispatchTouchEvent mit Kontaktradius 1, 16 und 24 px) auf die Ebene löschen nie, ein Fingerzug verschiebt, ein Tipp, ein Mausklick und click() auf das Kreuz löschen weiter.
+const FK_STOFF = 'karte=live-15422950474113&karteurl=1&pflicht=1&bearbeiten=fehlt&themeregel=1&varianten=55778472591745:V0';
+const FK_BUEHNEN = [['Produktbühne Shirt', T71, null], ['Tasse flach', T19, null], ['Stoffbeutel flach', FK_STOFF, null], ['Shirt Druckversion', T71, 'druck']];
+const FK_LAGEN = [['A', 0, 0.5, 0.5], ['Mama', 0, 0.5, 0.5], ['Mama', 45, 0.5, 0.5]];   // [Text, Winkel, cx, cy]: Mitte der Druckfläche
+const FK_KANTE = [['Mama', 135, 0, 0.35], ['Mama', -45, 0, 0.5], ['Mama', 45, 0.35, 0]];   // am Stoffbeutel: an der Kante angeschnitten (Tipp auf die Mitte des sichtbaren Teils)
+const FK_SETUP = ([text, rot, cx, cy]) => {
+  const ed = window.LSPOD6.editors[0], ui = ed.ui;
+  Object.keys(ed.st.ebenen).forEach((id) => ed.st.ebenen[id].slice().forEach((e) => ed.entfernen(e.id)));
+  const e = ed.neuerText(text); ui.stage.scrollIntoView({ block: 'center' });
+  e.cx = cx; e.cy = cy; e.rot = rot; ed.waehlen(e.id); ui.felder.rot.input.dispatchEvent(new Event('input'));
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  const k = document.querySelector('.lsp6-layer.sel'), lr = k.getBoundingClientRect(), s = ui.stage.getBoundingClientRect();
+  const clip = ui.stage.getAttribute('data-ansicht') === 'bearbeiten' ? ui.host.getBoundingClientRect() : s;
+  const vl = Math.max(lr.left, s.left, clip.left), vr = Math.min(lr.right, s.right, clip.right), vt = Math.max(lr.top, s.top, clip.top), vb = Math.min(lr.bottom, s.bottom, clip.bottom);
+  const d = (!ui.chromeRoot.hidden ? ui.chromeRoot : k).querySelector('.lsp6-del').getBoundingClientRect();
+  const w = rot * Math.PI / 180, mx = lr.left + lr.width / 2, my = lr.top + lr.height / 2;
+  // Rasterpunkte in Ebenenkoordinaten (10 %, 50 %, 90 %), gedreht wie die Ebene, nur Punkte im sichtbaren Teil
+  const raster = [];
+  for (const fx of [0.1, 0.5, 0.9]) for (const fy of [0.1, 0.5, 0.9]) {
+    const lx = (fx - 0.5) * k.offsetWidth, ly = (fy - 0.5) * k.offsetHeight;
+    const x = mx + lx * Math.cos(w) - ly * Math.sin(w), y = my + lx * Math.sin(w) + ly * Math.cos(w);
+    if (x > vl + 0.5 && x < vr - 0.5 && y > vt + 0.5 && y < vb - 0.5) raster.push([+x.toFixed(2), +y.toFixed(2)]);
+  }
+  return { raster, sicht: [(vl + vr) / 2, (vt + vb) / 2], del: [d.left + d.width / 2, d.top + d.height / 2], ow: k.offsetWidth, oh: k.offsetHeight };
+};
+const FK_ZUSTAND = () => { const l = Object.values(window.LSPOD6.editors[0].st.ebenen).flat(); const e = l[0]; return { n: l.length, scale: e && e.scale, rot: e && e.rot, cx: e && e.cx, cy: e && e.cy }; };
+
+szenario('finger-kreuz', true, async (b, srv) => {
+  for (const [bname, q, sicht] of FK_BUEHNEN) {
+    const s = await oeffnen(b, srv, q, MOBIL);
+    const p = s.page;
+    await p.waitForSelector('[data-feld="sicht"]:not([hidden])', { timeout: 8000 }).catch(() => {});
+    if (sicht) { await p.evaluate((x) => window.LSPOD6.editors[0].sichtSetzen(x), sicht); await p.waitForTimeout(250); }
+    const ansicht = await p.evaluate(() => window.LSPOD6.editors[0].ui.stage.getAttribute('data-ansicht'));
+    const cdp = await s.ctx.newCDPSession(p);
+    const finger = async (pts, r) => {
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: pts[0][0], y: pts[0][1], radiusX: r, radiusY: r, force: 1, id: 1 }] });
+      for (let i = 1; i < pts.length; i++) { await p.waitForTimeout(16); await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: pts[i][0], y: pts[i][1], radiusX: r, radiusY: r, force: 1, id: 1 }] }); }
+      await p.waitForTimeout(25);
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await p.waitForTimeout(130);
+      return p.evaluate(FK_ZUSTAND);
+    };
+    const lagen = bname === 'Stoffbeutel flach' ? FK_LAGEN.concat(FK_KANTE) : FK_LAGEN;
+    for (const [text, rot, cx, cy] of lagen) {
+      const was = `${bname} (${ansicht}), «${text}» ${rot}° (${cx}|${cy})`;
+      const G = await p.evaluate(FK_SETUP, [text, rot, cx, cy]);
+      const punkte = cx === 0.5 && cy === 0.5 ? G.raster : [G.sicht];
+      let geloescht = 0, tipps = 0; const bsp = [];
+      for (const r of [1, 16, 24]) for (const P of punkte) {
+        await p.evaluate(FK_SETUP, [text, rot, cx, cy]);
+        const z = await finger([P], r); tipps++;
+        if (z.n === 0) { geloescht++; if (bsp.length < 3) bsp.push(`r${r} (${P})`); }
+      }
+      pruefe(`${was}: Fingertipps auf die Ebene löschen sie nicht`, geloescht === 0, `${geloescht}/${tipps} gelöscht, z. B. ${bsp.join(', ')}`);
+      // Fingerzug aus dem Tipp-Punkt (Mitte bzw. Mitte des sichtbaren Teils), Radius 16: verschiebt, Grösse und Winkel bleiben
+      const P0 = cx === 0.5 && cy === 0.5 ? [G.raster[4] ? G.raster[4][0] : G.sicht[0], G.raster[4] ? G.raster[4][1] : G.sicht[1]] : G.sicht;
+      await p.evaluate(FK_SETUP, [text, rot, cx, cy]); const z0 = await p.evaluate(FK_ZUSTAND);
+      const zug = [P0]; for (let i = 1; i <= 6; i++) zug.push([P0[0] + 3 * i, P0[1] + 2 * i]);
+      const z1 = await finger(zug, 16);
+      pruefe(`${was}: Fingerzug (Radius 16) verschiebt, Grösse und Winkel bleiben`, z1.n === 1 && (z1.cx !== z0.cx || z1.cy !== z0.cy) && Math.abs(z1.scale - z0.scale) <= 0.004 && Math.abs(z1.rot - z0.rot) <= 0.5,
+        `vorher ${JSON.stringify(z0)} nachher ${JSON.stringify(z1)}`);
+    }
+    // Das Kreuz bleibt bedienbar: Fingertipp genau darauf (Radius 1 und 16) und click() ohne Zeiger (Bildschirmleser) löschen
+    for (const r of [1, 16]) {
+      const G = await p.evaluate(FK_SETUP, ['Mama', 0, 0.5, 0.5]);
+      const z = await finger([G.del], r);
+      pruefe(`${bname}: Fingertipp auf das Kreuz (Radius ${r}) löscht`, z.n === 0, JSON.stringify(z));
+    }
+    await p.evaluate(FK_SETUP, ['Mama', 0, 0.5, 0.5]);
+    await p.evaluate(() => { const ui = window.LSPOD6.editors[0].ui; (!ui.chromeRoot.hidden ? ui.chromeRoot : document.querySelector('.lsp6-layer.sel')).querySelector('.lsp6-del').click(); });
+    await p.waitForTimeout(80);
+    pruefe(`${bname}: click() auf das Kreuz ohne Zeiger löscht`, (await p.evaluate(FK_ZUSTAND)).n === 0);
+    // «Rückgängig» bringt die Ebene zurück
+    await p.evaluate(() => window.LSPOD6.editors[0].zurueck()); await p.waitForTimeout(80);
+    pruefe(`${bname}: Rückgängig nach dem Löschen bringt die Ebene zurück`, (await p.evaluate(FK_ZUSTAND)).n === 1);
+    pruefe(`${bname}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.slice(0, 2).join(' | '));
+    await s.schliessen();
+  }
+  // PC: Mausklick auf das Kreuz löscht, Mausklick auf die Ebene nicht (Produktbühne und Tasse)
+  for (const [bname, q] of [['Produktbühne Shirt', T71], ['Tasse flach', T19]]) {
+    const s = await oeffnen(b, srv, q, PC);
+    const p = s.page;
+    await p.waitForSelector('[data-feld="sicht"]:not([hidden])', { timeout: 8000 }).catch(() => {});
+    let G = await p.evaluate(FK_SETUP, ['A', 0, 0.5, 0.5]);
+    await p.mouse.click(G.raster[4][0], G.raster[4][1]); await p.waitForTimeout(80);
+    pruefe(`PC ${bname}: Mausklick auf die Ebene löscht nicht`, (await p.evaluate(FK_ZUSTAND)).n === 1);
+    G = await p.evaluate(FK_SETUP, ['A', 0, 0.5, 0.5]);
+    await p.mouse.click(G.del[0], G.del[1]); await p.waitForTimeout(80);
+    pruefe(`PC ${bname}: Mausklick auf das Kreuz löscht`, (await p.evaluate(FK_ZUSTAND)).n === 0);
+    pruefe(`PC ${bname}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.slice(0, 2).join(' | '));
     await s.schliessen();
   }
 });
@@ -986,41 +1391,78 @@ szenario('ausverkauft', true, async (b, srv) => {
   // ── Korrekturrunde 11.11. (KA-01, KA-02) ──
   const ZEIT_UHR = '(function () { var alt = Date.now; window.__dt = 0; Date.now = function () { return alt.call(Date) + window.__dt; }; })();';
   // 8. KA-01: die Antwort «ausverkauft» kommt erst, wenn der Prüfdialog schon offen ist: der Dialog schliesst sich von selbst, «Bestätigen» lädt nichts hoch, kein Warenkorb
-  {
+  //    RO2-01: dazu mit einer und mit zwei leeren Textebenen, die reviewStarten entfernt hat: die Statuszeile nennt nach dem Schliessen den Grund UND die entfernte Ebene (wie die frühen Abbrüche, README E1);
+  //    ohne leere Ebene steht genau «ausverkauft» da (kein angehängter Rest)
+  const SOLD = 'Diese Ausführung ist ausverkauft. Bitte wähle eine andere.';
+  const LEER_SOLL = ['', ' Leere Textebene entfernt.', ' Leere Textebenen entfernt.'];
+  const statusRoh = (p) => p.locator('[data-feld="status"]').textContent();   // ungekürzt: auch ein angehängtes Leerzeichen ohne Hinweis fällt auf
+  const leereEbenen = async (p, k) => { for (let i = 0; i < k; i++) await p.getByRole('button', { name: '➕ Text' }).click(); if (k) await ed(p, '(ed) => ed.waehlen(null)'); };
+  for (const leer of [0, 1, 2]) {
+    const tag = leer ? `8 (KA-01, RO2-01, ${leer} leere Textebene${leer > 1 ? 'n' : ''})` : '8 (KA-01)';
     let antworten; const tor = new Promise((r) => { antworten = r; });   // die Lagerantwort kommt genau dann, wenn der Test sie freigibt (fest unter Last, nicht nach einer Wartezeit)
     const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, produktJs: () => PRODUKT({ 1002: false }, { warten: tor }) });
     const p = s.page;
     await sichtWarten(p);
     await textHinzufuegen(p, 'Test');
+    await leereEbenen(p, leer);
     await ctaKlick(p);
     const offen = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
-    pruefe('8 (KA-01): Vorbereitung: der Dialog ist offen, bevor die Lagerantwort da ist', offen && s.produktAnfragen.length === 1 && !(await ctaGesperrt(p)));
+    pruefe(`${tag}: Vorbereitung: der Dialog ist offen, bevor die Lagerantwort da ist`, offen && s.produktAnfragen.length === 1 && !(await ctaGesperrt(p)));
+    if (leer) pruefe(`${tag}: Vorbereitung: die leeren Ebenen sind entfernt, der Hinweis steht hinter dem Dialog`, (await statusText(p)) === LEER_SOLL[leer].trim() && (await ebenenAnzahl(p)) === 1, await statusText(p));
     antworten();
     await warteBis(() => ctaGesperrt(p), 8000);
     await p.waitForTimeout(200);
-    pruefe('8 (KA-01): späte Antwort «ausverkauft» bei offenem Dialog: der Dialog schliesst sich von selbst, Meldung «ausverkauft», Fokus auf dem Kaufknopf', !(await dialogOffen(p)) && /ausverkauft/.test(await statusText(p)) && (await p.evaluate(() => !!document.activeElement && document.activeElement.classList.contains('lsp6-cta'))), await statusText(p));
-    pruefe('8 (KA-01): kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0, `uploads ${s.uploads.length} | warenkorb ${s.warenkorb.length}`);
-    pruefe('8 (KA-01): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    pruefe(`${tag}: späte Antwort «ausverkauft» bei offenem Dialog: der Dialog schliesst sich von selbst, Meldung «ausverkauft», Fokus auf dem Kaufknopf`, !(await dialogOffen(p)) && /ausverkauft/.test(await statusText(p)) && (await p.evaluate(() => !!document.activeElement && document.activeElement.classList.contains('lsp6-cta'))), await statusText(p));
+    pruefe(`${tag}: Statuszeile genau «${SOLD}${LEER_SOLL[leer]}»`, (await statusRoh(p)) === SOLD + LEER_SOLL[leer], JSON.stringify(await statusRoh(p)));
+    pruefe(`${tag}: kein Upload, kein Warenkorb`, s.uploads.length === 0 && s.warenkorb.length === 0, `uploads ${s.uploads.length} | warenkorb ${s.warenkorb.length}`);
+    pruefe(`${tag}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 8d. RO2-01: kein veralteter Hinweis. Erster Durchgang entfernt eine leere Ebene («Weiter gestalten»), der zweite entfernt nichts; die späte Antwort «ausverkauft» im zweiten Durchgang nennt nur den Grund
+  {
+    let antworten; const tor = new Promise((r) => { antworten = r; });
+    const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, produktJs: () => PRODUKT({ 1002: false }, { warten: tor }) });
+    const p = s.page;
+    await sichtWarten(p);
+    await textHinzufuegen(p, 'Test');
+    await leereEbenen(p, 1);
+    await ctaKlick(p);
+    const offen1 = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
+    const st1 = await statusText(p);
+    if (offen1) await p.locator('.lsp6-review-back').click();
+    await p.waitForTimeout(200);
+    await ctaKlick(p);
+    const offen2 = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
+    pruefe('8d (RO2-01): Vorbereitung: erster Durchgang mit Hinweis, zweiter Dialog offen, Lagerantwort noch nicht da', offen1 && st1 === LEER_SOLL[1].trim() && offen2 && s.produktAnfragen.length === 1 && (await ebenenAnzahl(p)) === 1, `${st1} | ${offen1}/${offen2}`);
+    antworten();
+    await warteBis(() => ctaGesperrt(p), 8000);
+    await p.waitForTimeout(200);
+    pruefe(`8d (RO2-01): späte Antwort im zweiten Durchgang: Dialog zu, Statuszeile genau «${SOLD}» (kein Hinweis aus dem ersten Durchgang), kein Upload`, !(await dialogOffen(p)) && (await statusRoh(p)) === SOLD && s.uploads.length === 0 && s.warenkorb.length === 0, await statusText(p));
+    pruefe('8d (RO2-01): keine Seitenfehler', kein(s), s.fehler.join(' | '));
     await s.schliessen();
   }
   // 9. KA-01: die Antwort «ausverkauft» kommt, WÄHREND der Dialog gebaut wird (künstlich langsames Handy: toBlob 1,5 s): der Dialog öffnet sich gar nicht, kein Upload
-  {
+  //    RO2-01: ebenso mit einer leeren Textebene (Grund UND Hinweis), ohne leere Ebene genau «ausverkauft»
+  for (const leer of [0, 1]) {
+    const tag = leer ? '9 (KA-01, RO2-01, 1 leere Textebene)' : '9 (KA-01)';
     const LANGSAM = '(function () { var alt = HTMLCanvasElement.prototype.toBlob; HTMLCanvasElement.prototype.toBlob = function () { var t = this, a = arguments; setTimeout(function () { alt.apply(t, a); }, 2000); }; })();';
     let antworten; const tor = new Promise((r) => { antworten = r; });
     const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, initSkript: LANGSAM, produktJs: () => PRODUKT({ 1002: false }, { warten: tor }) });
     const p = s.page;
     await sichtWarten(p);
     await textHinzufuegen(p, 'Test');
+    await leereEbenen(p, leer);
     const frei = !(await ctaGesperrt(p));
     await ctaKlick(p);
     await p.waitForTimeout(150);
-    pruefe('9 (KA-01): Vorbereitung: beim Klick war die Antwort noch nicht da, der Dialog wird gebaut', frei && s.produktAnfragen.length === 1 && /erstellt|wird/.test(await statusText(p)), await statusText(p));
+    pruefe(`${tag}: Vorbereitung: beim Klick war die Antwort noch nicht da, der Dialog wird gebaut`, frei && s.produktAnfragen.length === 1 && /erstellt|wird/.test(await statusText(p)), await statusText(p));
     antworten();   // während toBlob noch 2 s wartet
     const gesehen = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 10000 }).then(() => true, () => false);
-    pruefe('9 (KA-01): Antwort «ausverkauft» während des Dialogbaus: der Dialog öffnet sich nicht', !gesehen && (await ctaGesperrt(p)) && /ausverkauft/.test(await statusText(p)), await statusText(p));
+    pruefe(`${tag}: Antwort «ausverkauft» während des Dialogbaus: der Dialog öffnet sich nicht`, !gesehen && (await ctaGesperrt(p)) && /ausverkauft/.test(await statusText(p)), await statusText(p));
+    pruefe(`${tag}: Statuszeile genau «${SOLD}${LEER_SOLL[leer]}», die leere Ebene ist weg`, (await statusRoh(p)) === SOLD + LEER_SOLL[leer] && (await ebenenAnzahl(p)) === 1, `${JSON.stringify(await statusRoh(p))} | ${await ebenenAnzahl(p)} Ebenen`);
     if (await dialogOffen(p)) { await p.locator('.lsp6-review-accept').check(); await p.locator('.lsp6-review-confirm').click(); await p.waitForTimeout(1500); }   // gegen eine Fassung ohne die Korrektur: zeigen, was «Bestätigen» täte
-    pruefe('9 (KA-01): kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0, `uploads ${s.uploads.length} | warenkorb ${s.warenkorb.length}`);
-    pruefe('9 (KA-01): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    pruefe(`${tag}: kein Upload, kein Warenkorb`, s.uploads.length === 0 && s.warenkorb.length === 0, `uploads ${s.uploads.length} | warenkorb ${s.warenkorb.length}`);
+    pruefe(`${tag}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
     await s.schliessen();
   }
   // 10. KA-02: beim Laden ausverkauft, später aufgefüllt: der Klick auf die Sperre liest neu (höchstens alle 15 s), danach ist die Ausführung kaufbar
@@ -1065,6 +1507,129 @@ szenario('ausverkauft', true, async (b, srv) => {
     await ctaKlick(p);
     pruefe(`11 (KA-02) ${name}: der Klick öffnet den Prüfdialog`, await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 15000 }).then(() => true, () => false), await statusText(p));
     pruefe(`11 (KA-02) ${name}: keine Seitenfehler`, kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // ── KA2-02: Frist der Lagerabfrage (8 s). Eine hängende Antwort (Verbindung offen, keine Antwort) gilt nach der Frist als «unbekannt» (Kauf erlaubt) und blockiert das nächste Lesen nicht ──
+  const HAENGT = () => PRODUKT({}, { warten: new Promise(() => {}) });   // nie eingelöst: die Attrappe antwortet nie
+  const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
+  // 12. beim Laden ausverkauft; der Klick auf die Sperre (20 s später) liest neu und diese Anfrage hängt: nach der Frist frei, späteres Lesen geht wieder, der Kauf läuft
+  {
+    let nr = 0;
+    const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, initSkript: ZEIT_UHR, produktJs: () => (nr++ === 0 ? PRODUKT({ 1002: false }) : HAENGT()) });
+    const p = s.page;
+    await sichtWarten(p);
+    await textHinzufuegen(p, 'Test');
+    await warteBis(() => ctaGesperrt(p), 8000);
+    await p.evaluate(() => { window.__dt = 20000; });
+    await ctaKlick(p);
+    await warteBis(() => s.produktAnfragen.length >= 2, 4000);
+    const t1 = Date.now();
+    await p.waitForTimeout(1000);
+    pruefe('12 (KA2-02): Vorbereitung: Anfrage 2 hängt, 1 s danach ist 1002 noch gesperrt (die Frist schneidet nicht sofort ab)', s.produktAnfragen.length === 2 && (await ctaGesperrt(p)), JSON.stringify(s.produktAnfragen));
+    await schlaf(Math.max(0, 9500 - (Date.now() - t1)));
+    pruefe('12 (KA2-02): 9,5 s nach dem Start der hängenden Anfrage: Knopf frei, kein Hinweis, Statuszeile leer', !(await ctaGesperrt(p)) && !(await hinweisSichtbar(p)) && (await statusText(p)) === '', `${await hinweisText(p)} | ${await statusText(p)}`);
+    await p.evaluate(() => { window.__dt = 20000 + 600000; });
+    await p.locator('input[name="id"][value="1003"]').check(); await p.waitForTimeout(200);
+    await p.locator('input[name="id"][value="1002"]').check(); await p.waitForTimeout(300);
+    pruefe('12 (KA2-02): zehn Minuten später liest der Wechsel der Ausführung neu (dritte Anfrage; vorher blieb es bei zwei)', s.produktAnfragen.length >= 3, JSON.stringify(s.produktAnfragen));
+    await ctaKlick(p);
+    pruefe('12 (KA2-02): der Klick öffnet den Prüfdialog (unbekannt = Kauf erlaubt, wie 6.4.1)', await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 15000 }).then(() => true, () => false), await statusText(p));
+    pruefe('12 (KA2-02): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 13. eine langsame, aber gültige Antwort «ausverkauft» (3 s) gilt und bleibt nach Ablauf der Frist stehen
+  {
+    const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, produktJs: () => PRODUKT({ 1002: false }, { verzoegerung: 3000 }) });
+    const t0 = Date.now();
+    const p = s.page;
+    await sichtWarten(p);
+    await textHinzufuegen(p, 'Test');
+    pruefe('13 (KA2-02): die Antwort nach 3 s sperrt 1002', await warteBis(() => ctaGesperrt(p), 7000));
+    await schlaf(Math.max(0, 11000 - (Date.now() - t0)));
+    await ctaKlick(p); await p.waitForTimeout(400);
+    pruefe('13 (KA2-02): 11 s nach dem Laden (Frist vorbei) weiter gesperrt: Klick ohne Dialog, ohne Upload, Meldung «ausverkauft»', (await ctaGesperrt(p)) && !(await dialogOffen(p)) && s.uploads.length === 0 && /ausverkauft/.test(await statusText(p)), await statusText(p));
+    pruefe('13 (KA2-02): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 14. Browser ohne AbortController: die abgelaufene Anfrage antwortet sehr spät («ausverkauft»), nachdem eine NEUERE Anfrage «lieferbar» gemeldet hat: die alte Antwort zählt nicht mehr
+  {
+    let nr = 0;
+    const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, initSkript: ZEIT_UHR + '(function () { window.AbortController = undefined; })();', produktJs: () => { nr++; return nr === 1 ? PRODUKT({ 1002: false }) : nr === 2 ? PRODUKT({ 1002: false }, { verzoegerung: 15000 }) : PRODUKT({}); } });
+    const p = s.page;
+    await sichtWarten(p);
+    await textHinzufuegen(p, 'Test');
+    await warteBis(() => ctaGesperrt(p), 8000);
+    await p.evaluate(() => { window.__dt = 20000; });
+    await ctaKlick(p);
+    await warteBis(() => s.produktAnfragen.length >= 2, 4000);
+    const t1 = Date.now();
+    await schlaf(Math.max(0, 9500 - (Date.now() - t1)));
+    pruefe('14 (KA2-02): ohne AbortController: nach der Frist frei', !(await ctaGesperrt(p)) && (await p.evaluate(() => typeof window.AbortController === 'undefined')));
+    await p.evaluate(() => { window.__dt = 20000 + 150000; });
+    await p.locator('input[name="id"][value="1003"]').check(); await p.waitForTimeout(200);
+    await warteBis(() => s.produktAnfragen.length >= 3, 4000);
+    await p.locator('input[name="id"][value="1002"]').check(); await p.waitForTimeout(300);
+    pruefe('14 (KA2-02): Anfrage 3 meldet «lieferbar»: 1002 frei', s.produktAnfragen.length === 3 && !(await ctaGesperrt(p)), JSON.stringify(s.produktAnfragen));
+    await schlaf(Math.max(0, 17000 - (Date.now() - t1)));   // die späte Antwort von Anfrage 2 (15 s) ist inzwischen angekommen
+    pruefe('14 (KA2-02): die späte Antwort der abgelaufenen Anfrage 2 überschreibt die neuere nicht (1002 bleibt frei)', !(await ctaGesperrt(p)) && !(await hinweisSichtbar(p)), await hinweisText(p));
+    pruefe('14 (KA2-02): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 15. schon die ERSTE Anfrage hängt: der Kauf bleibt erlaubt, und nach Frist und zwei Minuten liest der Wechsel neu (vorher nie wieder)
+  {
+    let nr = 0;
+    const s = await oeffnen(b, srv, T71, { ...E5_SEITE, initSkript: ZEIT_UHR, produktJs: () => (nr++ === 0 ? HAENGT() : PRODUKT({ 1002: false })) });
+    const t0 = Date.now();
+    const p = s.page;
+    await sichtWarten(p);
+    await textHinzufuegen(p, 'Test');
+    pruefe('15 (KA2-02): erste Anfrage hängt: Kaufknopf frei', !(await ctaGesperrt(p)) && s.produktAnfragen.length === 1, JSON.stringify(s.produktAnfragen));
+    await schlaf(Math.max(0, 9500 - (Date.now() - t0)));
+    await p.evaluate(() => { window.__dt = 130000; });
+    await p.locator('input[name="id"][value="1003"]').check();
+    await warteBis(() => s.produktAnfragen.length >= 2, 4000); await p.waitForTimeout(300);
+    await p.locator('input[name="id"][value="1002"]').check();
+    pruefe('15 (KA2-02): nach Frist und zwei Minuten liest der Wechsel neu (Anfrage 2), 1002 wird als ausverkauft gesperrt', (await warteBis(() => ctaGesperrt(p), 3000)) && s.produktAnfragen.length === 2, JSON.stringify(s.produktAnfragen));
+    pruefe('15 (KA2-02): keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // 16. KA2-03: die Antwort «ausverkauft» kommt erst NACH «Bestätigen», während die Druckdatei hochlädt: das greift nicht mehr (eingefroren), der Kauf läuft wie in 6.4.1 weiter,
+  //     genau eine Warenkorb-Anfrage, Bytes gleich 6.4.1 (eine wirklich ausverkaufte Ausführung lehnt der Warenkorb des Shops ab). Der erste Upload öffnet das Tor selbst und wird gehalten,
+  //     bis die Seite die Antwort verarbeitet hat (Hinweis «ausverkauft»): so liegt die Antwort unter jeder Last zwischen «Bestätigen» und dem Ende dieses Uploads.
+  {
+    const ref = await kauf(b, srv, true, zweiteZuerst(), aktionMotiv(1002, null), E5_SEITE);
+    let antworten; const tor = new Promise((r) => { antworten = r; });
+    const s = await oeffnen(b, srv, zweiteZuerst(), { ...E5_SEITE, produktJs: () => PRODUKT({ 1002: false }, { warten: tor }) });
+    const p = s.page;
+    const hashes = {}; let zaehler = 0; let verarbeitet = null;
+    await p.route('https://api.cloudinary.com/**', async (route) => {
+      const buf = route.request().postDataBuffer() || Buffer.alloc(0);
+      const idx = ++zaehler;
+      const png = pngAusKoerper(buf);
+      if (png) hashes[idx] = 'png:' + sha256(png.png);
+      else { const a = buf.indexOf(Buffer.from([0xff, 0xd8, 0xff])), e = buf.lastIndexOf(Buffer.from([0xff, 0xd9])); hashes[idx] = a >= 0 && e > a ? 'jpg:' + sha256(buf.subarray(a, e + 2)) : 'roh:' + sha256(buf); }
+      if (idx === 1) {
+        antworten();
+        verarbeitet = await warteBis(async () => /ausverkauft/.test(await hinweisText(p)), 15000);
+        await new Promise((r) => setTimeout(r, 150));
+      }
+      await route.fallback();
+    });
+    await sichtWarten(p);
+    await aktionMotiv(1002, null)(p);
+    await ctaKlick(p);
+    const offen = await p.locator('[data-lsp6-review="1"]').waitFor({ state: 'visible', timeout: 20000 }).then(() => true, () => false);
+    pruefe('16 (KA2-03): Vorbereitung: der Dialog ist offen, die Lagerantwort noch nicht da, noch kein Upload', offen && s.produktAnfragen.length === 1 && zaehler === 0 && !(await ctaGesperrt(p)) && !(await hinweisSichtbar(p)), `${JSON.stringify(s.produktAnfragen)} | uploads ${zaehler}`);
+    await reviewBestaetigen(p);
+    const imKorb = await p.waitForURL('**/cart', { timeout: 20000 }).then(() => true, () => false);
+    pruefe('16 (KA2-03): die Antwort «ausverkauft» kam nach «Bestätigen», während der erste Upload offen war', verarbeitet === true, `verarbeitet ${verarbeitet}, uploads ${zaehler}`);
+    pruefe('16 (KA2-03): der Kauf läuft weiter wie in 6.4.1: genau eine Warenkorb-Anfrage, danach die Warenkorb-Seite', imKorb && s.warenkorb.length === 1, `warenkorb ${s.warenkorb.length} | ${imKorb ? 'Warenkorb-Seite' : await statusText(p)}`);
+    const wk = s.warenkorb[0]; const props = {};
+    for (const [k, w] of Object.entries((wk && wk.properties) || {})) { const m = /\/mock\/(\d+)\.png$/.exec(String(w)); props[k] = m ? (hashes[Number(m[1])] || 'unbekannt:' + m[1]) : w; }
+    const d = unterschiede(ref.props, props);
+    pruefe('16 (KA2-03): Druckdatei, _pod_karte, _vorschau und alle Eigenschaften byte-gleich zu 6.4.1', !!wk && d.length === 0 && Object.keys(ref.props).length >= 3, `Unterschiede: ${d.join(', ')}`);
+    pruefe('16 (KA2-03): Uploads (Anzahl und SHA-256) und die übrige Warenkorb-Anfrage gleich 6.4.1', JSON.stringify(ref.uploads) === JSON.stringify(Object.values(hashes)) && JSON.stringify(ref.rest) === JSON.stringify(wk ? { ...wk, properties: undefined } : null), JSON.stringify([ref.uploads, Object.values(hashes)]));
+    pruefe('16 (KA2-03): keine Seitenfehler', kein(s) && ref.fehler.length === 0 && ref.warenkorbAnzahl === 1, s.fehler.concat(ref.fehler).join(' | '));
     await s.schliessen();
   }
 });
@@ -1185,6 +1750,40 @@ szenario('esc-fokus', true, async (b, srv) => {
     await p.waitForTimeout(80);
     pruefe('«Druck-Vorschau anzeigen»: Esc nach einem Klick auf die Überschrift schliesst den Dialog', (await p.locator('.lsp6-modal').count()) === 0);
     pruefe('keine Seitenfehler', kein(s), s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // BE2-5: Tab-Falle für Zuschneiden und «Druck-Vorschau anzeigen»; Esc und Tab wirken auch mit dem Fokus ausserhalb; danach ist die Seite frei
+  for (const [vpName, vp] of [['PC', PC], ['Handy', MOBIL]]) {
+    const s = await oeffnen(b, srv, T71, vp);
+    const p = s.page;
+    await sichtWarten(p);
+    const bild = await motivHinzu(p, '#2040c0', 4000); await bilderGeladen(p);
+    const wo = () => p.evaluate(() => { const m = document.querySelector('.lsp6-modal'); const f = m ? [...m.querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])')].filter((x) => !x.disabled && !x.hidden && x.offsetParent !== null) : []; const a = document.activeElement; return { drin: !!m && m.contains(a), erstes: f[0] === a, letztes: f.length > 0 && f[f.length - 1] === a }; });
+    const rand = (r) => p.evaluate((x) => { const m = document.querySelector('.lsp6-modal'); const f = [...m.querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])')].filter((n) => !n.disabled && !n.hidden && n.offsetParent !== null); (x ? f[f.length - 1] : f[0]).focus(); }, r);
+    const oeffner = [
+      ['Zuschneiden', async () => { await ed(p, '(ed, id) => ed.waehlen(id)', bild); await p.getByRole('button', { name: /Zuschneiden/ }).click(); await p.locator('.lsp6-modal').waitFor({ state: 'visible', timeout: 8000 }); }],
+      ['«Druck-Vorschau anzeigen»', async () => { await p.locator('.lsp6-preview').click(); await p.locator('.lsp6-modal').waitFor({ state: 'visible', timeout: 20000 }); }],
+    ];
+    for (const [dn, auf] of oeffner) {
+      await auf();
+      await rand(true); await p.keyboard.press('Tab'); let w = await wo();
+      pruefe(`${vpName} ${dn}: Tab vom letzten Element bleibt im Dialog, auf dem ersten`, w.drin && w.erstes, JSON.stringify(w));
+      await rand(false); await p.keyboard.press('Shift+Tab'); w = await wo();
+      pruefe(`${vpName} ${dn}: Umschalt+Tab vom ersten Element bleibt im Dialog, auf dem letzten`, w.drin && w.letztes, JSON.stringify(w));
+      await p.locator('.lsp6-modal-t').first().click();
+      pruefe(`${vpName} ${dn}: Klick auf die Überschrift: der Fokus liegt auf dem Dialog (nicht auf BODY)`, await p.evaluate(() => document.activeElement === document.querySelector('.lsp6-modal')));   // sonst überleben D62/D63 (tabindex weg): Esc und Tab wirken dank des Handlers am Dokument auch ohne ihn
+      await p.keyboard.press('Shift+Tab'); w = await wo();
+      pruefe(`${vpName} ${dn}: Klick auf die Überschrift, Umschalt+Tab: letztes Element des Dialogs`, w.drin && w.letztes, JSON.stringify(w));
+      await p.evaluate(() => document.activeElement && document.activeElement.blur()); await p.keyboard.press('Tab'); w = await wo();
+      pruefe(`${vpName} ${dn}: Fokus auf BODY, Tab: erstes Element des Dialogs`, w.drin && w.erstes, JSON.stringify(w));
+      await p.evaluate(() => document.getElementById('theme-kaufen').focus()); await p.keyboard.press('Escape'); await p.waitForTimeout(80);
+      const zu = (await p.locator('.lsp6-modal').count()) === 0;
+      pruefe(`${vpName} ${dn}: Fokus auf dem Theme-Kaufknopf hinter dem Dialog, Esc schliesst den Dialog`, zu);
+      if (!zu) await p.evaluate(() => document.querySelectorAll('.lsp6-modal').forEach((m) => m.remove()));
+      await p.evaluate(() => document.getElementById('theme-kaufen').focus()); await p.keyboard.press('Tab');
+      pruefe(`${vpName} ${dn}: nach dem Schliessen führt Tab in der Seite weiter (kein Handler bleibt am Dokument)`, (await p.evaluate(() => document.activeElement && document.activeElement.id)) === 'designzwang');
+    }
+    pruefe(`${vpName}: Tab-Falle der Dialoge ohne Seitenfehler, Theme-Formular nie abgeschickt`, kein(s) && !(await p.evaluate(() => window.__themeKnopf || 0)), s.fehler.join(' | '));
     await s.schliessen();
   }
 });
@@ -1329,6 +1928,33 @@ szenario('vorschau-fehlergrenze', true, async (b, srv) => {
     pruefe('(d) beschädigte Pflichtkarte: die Sperre kommt sofort (weniger als 300 ms nach dem Start), nicht erst nach der Wartezeit auf die Vorschaudaten', r.busy !== null && r.blocked !== null && r.blocked - r.busy < 300, JSON.stringify(r));
     await s.schliessen();
   }
+  // (e) RO2-02: die Vorschaudaten kommen SPÄT (langsamer Weg: der Editor steht schon, die Daten treffen mehr als VORSCHAU_WARTE_MS nach der Karte ein, wie im Mobilfunknetz) und das Setzen wirft.
+  // Dieselbe Fehlergrenze wie beim rechtzeitigen Setzen: Warnung in der Konsole statt unbehandelter Ablehnung (bis zur Korrektur «pageerror», auch in 6.4.1), Editor und Warenkorb bleiben; mit Pflichtkarte geht der Kauf durch.
+  // Der Stempel belegt, dass wirklich der langsame Weg lief (init=1 VOR der Ankunft der Daten); sonst prüfte der Fall nur den schnellen Weg aus (a).
+  for (const pflicht of ['', '&pflicht=1']) {
+    const WARN_E = '(function () { window.__warn = []; var w = console.warn; console.warn = function () { window.__warn.push(Array.prototype.join.call(arguments, " ")); return w.apply(console, arguments); }; })();';
+    const STEMPEL_E = '(function () { window.__init1 = null; window.__vAnkunft = null; var alt = window.fetch; window.fetch = function (u) { var r = alt.apply(this, arguments); if (/\\/vorschau\\//.test(String(u && u.url || u))) r.then(function () { if (window.__vAnkunft === null) window.__vAnkunft = performance.now(); }, function () {}); return r; }; new MutationObserver(function () { var c = document.querySelector(".lspod-designer-v6"); if (c && c.getAttribute("data-init-v6") === "1" && window.__init1 === null) window.__init1 = performance.now(); }).observe(document, { subtree: true, attributes: true, attributeFilter: ["data-init-v6"] }); })();';
+    const s = await seiteOeffnen(b, srv.url, { ...PC, ...GEISTER, query: T71.replace('&vorschau=', '&vverz=2000&vorschau=') + pflicht, initSkript: WARN_E + STEMPEL_E + VF_WIRFT(true) });
+    const p = s.page;
+    await vfFertig(p);
+    await p.waitForFunction(() => window.__vAnkunft !== null && performance.now() > window.__vAnkunft + 300, null, { timeout: 15000 }).catch(() => {});
+    const r = await vfLage(p);
+    const z = await p.evaluate(() => ({ init1: window.__init1, ankunft: window.__vAnkunft, warn: (window.__warn || []).filter((w) => /lspod6/.test(w)) }));
+    const was = `(e) RO2-02 Vorschaudaten nach 2000 ms, Setzen wirft${pflicht ? ', Pflichtkarte' : ''}`;
+    pruefe(`${was}: der langsame Weg lief (Editor stand vor der Ankunft der Daten)`, z.init1 !== null && z.ankunft !== null && z.init1 < z.ankunft, JSON.stringify(z));
+    pruefe(`${was}: init=1, ein Editor, eine Wurzel, Warenkorb frei`, r.init === '1' && r.editoren === 1 && r.wurzeln === 1 && !r.karteNoetig && !r.themeGesperrt && !r.formGesperrt, JSON.stringify(r));
+    pruefe(`${was}: Warnung «[lspod6] Vorschaudaten nicht gesetzt: PROBE …» in der Konsole`, z.warn.some((w) => /^\[lspod6\] Vorschaudaten nicht gesetzt: PROBE/.test(w)), JSON.stringify(z.warn));
+    pruefe(`${was}: keine Seitenfehler (keine unbehandelte Ablehnung)`, kein(s), s.fehler.join(' | '));
+    if (pflicht && r.init === '1') {
+      await textHinzufuegen(p, 'Hallo Welt');
+      await ed(p, '(ed) => ed.waehlen(null)');
+      await ctaKlick(p);
+      await reviewBestaetigen(p);
+      await p.waitForURL('**/cart', { timeout: 30000 }).catch(() => {});
+      pruefe(`${was}: der Kauf geht durch (genau eine Warenkorb-Anfrage mit Druckdatei und _pod_karte)`, s.warenkorb.length === 1 && Object.keys((s.warenkorb[0] || {}).properties || {}).some((k) => /Druckdatei/.test(k)) && !!((s.warenkorb[0] || {}).properties || {})._pod_karte, JSON.stringify(s.warenkorb.map((w) => Object.keys(w.properties || {}))));
+    }
+    await s.schliessen();
+  }
 });
 
 
@@ -1452,6 +2078,7 @@ szenario('kaufvergleich', true, async (b, srv) => {
     ['Tasse, Text und Bild gedreht um 15°', T19, {}, aktionTasse(true)],
     ['Shirt auf einer Produktseite mit Lagerangabe (alles lieferbar)', T71, LAGER_ALLES_DA, aktionMotiv(1001, null)],
     ['Shirt, Lagerabruf scheitert (HTTP 500): Kauf bleibt erlaubt', T71, { seitenPfad: '/products/test-shirt', produktJs: () => ({ status: 500, body: 'x' }) }, aktionMotiv(1001, null)],
+    ['Shirt, Lagerabruf hängt, Frist vor dem Kauf abgelaufen (KA2-02): Kauf bleibt erlaubt', T71, { seitenPfad: '/products/test-shirt', produktJs: () => PRODUKT({}, { warten: new Promise(() => {}) }) }, async (p) => { await aktionMotiv(1001, null)(p); await p.waitForFunction(() => performance.now() > 9500, null, { timeout: 20000 }); }],
     ...KA06_FAELLE,
   ];
   for (const [name, query, opt, aktion] of gleich) {

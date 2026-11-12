@@ -6,7 +6,7 @@
  * Stand 6.4.0: die Muster N05 und N12 sind entfernt (der Code, den sie trafen, gibt es seit 6.3.0 nicht mehr: Prüfung des Standes statt Variantenvergleich, kein Verkleinern nach der Freigabe); M32, N18 und W27 sind an den Code von 6.3.0/6.4.0 angepasst.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
  * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
- * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
+ * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s, beim Szenario «eckzone» 600 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
  * (4) ein Lauf, der an der Umgebung scheitert (Chromium weg, Platte voll, Port belegt: lib.mjs: istUmgebungsfehler), zählt ebenfalls als «ungeklärt»; (5) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder B oder K oder V; mehrere mit Komma: B09,B10)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine zwei Einträge dasselbe Paar tragen und keine Kennung doppelt ist; keine Tests)
@@ -396,7 +396,7 @@ const MUTANTEN = [
   ['D42 E5 Anfrage auch ohne Handle in der Adresse', "if (legacy || !h || lager.laeuft || typeof fetch !== 'function') return;", "if (legacy || lager.laeuft || typeof fetch !== 'function') return;", 'ausverkauft'],
   ['D43 E5 Lagerstand wird bei jedem Variantenwechsel neu gelesen', "if (Date.now() - lager.stand > 120000) verfuegbarkeitLaden();", "if (Date.now() - lager.stand > 120) verfuegbarkeitLaden();", 'ausverkauft'],
   ['D44 E5 Lagerstand wird nie neu gelesen', "if (Date.now() - lager.stand > 120000) verfuegbarkeitLaden();", "", 'ausverkauft'],
-  ['D45 E5 nach einem Fehler des Abrufs wird bei jedem Wechsel neu gefragt', ".catch(function () { lager.laeuft = false; lager.stand = Date.now(); try {", ".catch(function () { lager.laeuft = false; try {", 'ausverkauft'],
+  ['D45 E5 nach einem Fehler des Abrufs wird bei jedem Wechsel neu gefragt', "clearTimeout(frist); lager.laeuft = false; lager.stand = Date.now(); try {", "clearTimeout(frist); lager.laeuft = false; try {", 'ausverkauft'],
   ['D46 E5 nach einer Antwort wird bei jedem Wechsel neu gefragt', "lager.laeuft = false; lager.stand = Date.now();\n          if (!j ||", "lager.laeuft = false;\n          if (!j ||", 'ausverkauft'],
   ['D47 E5 Kaufknopf sieht bei ausverkauft nicht gesperrt aus', "if (text || !ausfuehrungOk() || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", "if (text || !ausfuehrungOk()) ui.cta.setAttribute('aria-disabled', 'true');", 'ausverkauft'],
   ['D48 E5 Kaufknopf sieht bei fehlender Kombination nicht gesperrt aus', "if (text || !ausfuehrungOk() || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", "if (text || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true');", 'ausverkauft'],
@@ -414,15 +414,15 @@ const MUTANTEN = [
   ['D63 E6 Druck-Vorschau nimmt den Fokus nicht', "'aria-label': T.previewHead, tabindex: '-1' });", "'aria-label': T.previewHead });", 'esc'],
   ['D64 E6 Tab mit dem Fokus auf dem Dialog selbst verlässt den Dialog', "if (fokus.indexOf(document.activeElement) < 0) { ev.preventDefault(); (ev.shiftKey ? letzter : erster).focus(); return; }", "", 'esc'],
   ['D65 E6 Tab und Umschalt+Tab vom Dialog aus vertauscht', "if (fokus.indexOf(document.activeElement) < 0) { ev.preventDefault(); (ev.shiftKey ? letzter : erster).focus(); return; }", "if (fokus.indexOf(document.activeElement) < 0) { ev.preventDefault(); (ev.shiftKey ? erster : letzter).focus(); return; }", 'esc'],
-  ['D66 E6 Esc mit dem Fokus ausserhalb des Dialogs schliesst nicht', "if (!m || !m.parentNode || m.contains(ev.target)) return;\n      if (ev.key === 'Escape') { ev.preventDefault(); reviewAufraeumen(true, ''); return; }", "if (!m || !m.parentNode || m.contains(ev.target)) return;", 'esc'],
+  ['D66 E6 Esc mit dem Fokus ausserhalb des Dialogs schliesst nicht', "if (!m || !m.parentNode || m.contains(ev.target)) return;\n      if (ev.key === 'Escape') { ev.preventDefault(); reviewSchliessen(); return; }", "if (!m || !m.parentNode || m.contains(ev.target)) return;", 'esc'],
   ['D67 E6 Tab und Umschalt+Tab ausserhalb des Dialogs vertauscht', "(ev.shiftKey ? fokus[fokus.length - 1] : fokus[0]).focus();\n    }, true);", "(ev.shiftKey ? fokus[0] : fokus[fokus.length - 1]).focus();\n    }, true);", 'esc'],
   ['D68 E6 der Handler am Dokument fängt auch Tasten im Dialog ab', "if (!m || !m.parentNode || m.contains(ev.target)) return;", "if (!m || !m.parentNode) return;", 'esc'],
   // E7 Layoutsprung
   ['D70 E7 keine Wartezeit auf die Vorschaudaten', "var VORSCHAU_WARTE_MS = 500;", "var VORSCHAU_WARTE_MS = 0;", 'layoutsprung'],
   ['D71 E7 Wartezeit 5 s', "var VORSCHAU_WARTE_MS = 500;", "var VORSCHAU_WARTE_MS = 5000;", 'layoutsprung'],
   ['D72 E7 der Bau wartet immer die volle Zeit', "return Promise.race([vorschauVersprechen, new Promise(function (ok) { setTimeout(ok, VORSCHAU_WARTE_MS); })]).then(function () { return karte; });", "return new Promise(function (ok) { setTimeout(ok, VORSCHAU_WARTE_MS); }).then(function () { return karte; });", 'layoutsprung'],
-  ['D73 E7 rechtzeitige Daten werden nicht gesetzt', "if (vorschauRoh !== undefined) { if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); }", "if (vorschauRoh !== undefined) { if (false) { try { editor.vorschauDatenSetzen(vorschauRoh); }", 'layoutsprung'],
-  ['D74 E7 verspätete Daten werden nicht mehr gesetzt', "          else vorschauVersprechen.then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });", "", 'layoutsprung'],
+  ['D73 E7 rechtzeitige Daten werden nicht gesetzt', "if (vorschauRoh !== undefined) vorschauSetzen(vorschauRoh);", "if (vorschauRoh !== undefined) { }", 'layoutsprung'],
+  ['D74 E7 verspätete Daten werden nicht mehr gesetzt', "          else vorschauVersprechen.then(vorschauSetzen);", "", 'layoutsprung'],
   ['D75 E7 der Bau wartet nie auf eine Quelle ohne Daten (Zeitgeber auch ohne Quelle)', "var vorschauVersprechen = hatVorschauQuelle(container) ? vorschauLesen(container) : Promise.resolve(null);", "var vorschauVersprechen = new Promise(function () { });", 'layoutsprung'],
   // E2 Griffe
   ['D80 E2 flache Bühne und Druckversion: keine Mindestschicht für kleine Ebenen', "if (k && !k.handle.hidden) griffeInnen(k, Math.max(CHROME_MIN, k.root.offsetWidth), Math.max(CHROME_MIN, k.root.offsetHeight), k.root.offsetWidth, k.root.offsetHeight);", "if (k && !k.handle.hidden) griffeInnen(k, k.root.offsetWidth, k.root.offsetHeight, k.root.offsetWidth, k.root.offsetHeight);", 'griffe'],
@@ -456,24 +456,26 @@ const MUTANTEN = [
   ['DA5 BE-1 auch ungeklemmte Knöpfe rücken weg (6.4.1-Lagen ändern sich)', "if ((qx !== px || qy !== py) && !frei(qx, qy)) {", "if (!frei(qx, qy)) {", 'griffe'],
   ['DA6 BE-1 der sichtbare Teil einer angeschnittenen Ebene zählt nicht', "if (vr > vl && vb > vt && (!punkte.length ||", "if (false && vr > vl && vb > vt && (!punkte.length ||", 'eckzone'],
   ['DA7 BE-1 Druckfläche beschneidet in «Bearbeiten» nicht', "var clip = ui.stage.getAttribute('data-ansicht') === 'bearbeiten' ? ui.host.getBoundingClientRect() : s;", "var clip = s;", 'eckzone'],
+  // DA8: seit BE2-1 (Suche entlang der Kante) sehr wahrscheinlich gleichwertig: im Raster vom 11.11. (1 152 Lagen) liegen die Knöpfe mit und ohne DA8 an derselben Stelle (0,0 px); nicht bewiesen
   ['DA8 BE-1 kein Ausweichen auf die Lage neben dem anderen Knopf', "if (belegt) kand.push([belegt[0] - 2 * TIPP_HALB, qy],", "if (false) kand.push([belegt[0] - 2 * TIPP_HALB, qy],", 'eckzone'],
   // KA-01: späte Lagerantwort bei offenem oder entstehendem Prüfdialog; KA-02: Neu-Lesen beim Klick, unbrauchbare Antwort heisst «unbekannt», Meldung «ausverkauft» verschwindet, wenn sie nicht mehr gilt
-  ['DB0 KA-01 späte Antwort «ausverkauft» schliesst den Prüfdialog nicht', "if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, T.soldOut); return; }", "", 'ausverkauft'],
+  ['DB0 KA-01 späte Antwort «ausverkauft» schliesst den Prüfdialog nicht', "if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, mitLeerHinweis(T.soldOut)); return; }", "", 'ausverkauft'],
   ['DB1 KA-01 nur ein offener Dialog wird geschlossen, nicht einer im Aufbau', "if (ausverkauft() && (reviewBaut || review) && !eingefroren)", "if (ausverkauft() && review && !eingefroren)", 'ausverkauft'],
   ['DB2 KA-02 der Klick auf die Sperre liest den Lagerstand nie neu', "if (ausverkauft()) { if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut); return; }", "if (ausverkauft()) { abbruch(T.soldOut); return; }", 'ausverkauft'],
   ['DB3 KA-02 der Klick auf die Sperre liest bei jedem Klick neu (keine Drossel)', "if (Date.now() - lager.stand > 15000) verfuegbarkeitLaden(); abbruch(T.soldOut);", "verfuegbarkeitLaden(); abbruch(T.soldOut);", 'ausverkauft'],
   ['DB4 KA-02 unbrauchbare Antwort lässt den alten Lagerstand stehen', "if (!j || !Array.isArray(j.variants)) { lagerSetzen(null); return; }", "if (!j || !Array.isArray(j.variants)) return;", 'ausverkauft'],
   ['DB5 KA-02 Netzfehler lässt den alten Lagerstand stehen', "try { lagerSetzen(null); } catch (x) { /* Oberfläche nicht bereit */ }", "", 'ausverkauft'],
   ['DB6 KA-02 nach dem Wechsel auf eine lieferbare Ausführung bleibt «ausverkauft» stehen', "      soldOutMeldungPruefen();   // 6.4.2 (KA-02): nach dem Wechsel", "      // 6.4.2 (KA-02): nach dem Wechsel", 'ausverkauft'],
-  ['DB7 KA-02 nach einem neuen Lagerstand bleibt «ausverkauft» stehen', "{ reviewAufraeumen(true, T.soldOut); return; }\n      soldOutMeldungPruefen();", "{ reviewAufraeumen(true, T.soldOut); return; }", 'ausverkauft'],
-  ['DB8 KA-02 die Meldung «ausverkauft» wird nie gelöscht', "if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) meldung('');", "", 'ausverkauft'],
+  ['DB7 KA-02 nach einem neuen Lagerstand bleibt «ausverkauft» stehen', "   // KA2-01, RO2-01: mit dem Hinweis auf entfernte leere Ebenen\n      soldOutMeldungPruefen();", "   // KA2-01, RO2-01: mit dem Hinweis auf entfernte leere Ebenen", 'ausverkauft'],
+  ['DB8 KA-02 die Meldung «ausverkauft» wird nie gelöscht', "if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) { if (leerHinweisOffen) meldung(leerHinweisOffen, 'ok'); else meldung(''); }", "", 'ausverkauft'],
+  ['DB9 KA2-03 späte Antwort «ausverkauft» bricht auch nach «Bestätigen» ab (Bedingung ohne !eingefroren)', "if (ausverkauft() && (reviewBaut || review) && !eingefroren) {", "if (ausverkauft() && (reviewBaut || review)) {", 'ausverkauft'],
   // KA-03/RO-5: Abbruch nach dem Aufräumen nennt die entfernte Ebene, Formularfelder und Entwurf folgen; KA-04: nur die Ablehnung von bildLaden entfernt das Foto
   ['DC0 KA-03 Abbruch ohne Hinweis auf die entfernte Ebene', "function abbruch(text) { meldung(leerHinweis ? text + ' ' + leerHinweis : text, 'err'); }", "function abbruch(text) { meldung(text, 'err'); }", 'leere'],
   ['DC1 KA-03 versteckte Formularfelder bleiben nach dem Entfernen auf einer anderen Platzierung alt', "tabsAktualisieren(); aufpreisSummeAktualisieren(); formularSynchronisieren(); speichern();", "tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();", 'leere'],
   ['DC2 RO-5 Abbruch im Aufbau der Prüfung ohne Hinweis', "reviewAufraeumen(false, '');\n        abbruch(T.addErr + fehlerText(err, T.genErr));", "reviewAufraeumen(false, '');\n        meldung(T.addErr + fehlerText(err, T.genErr), 'err');", 'leere'],
   ['DC5 KA-04 eine Ausnahme beim Einpassen eines gültigen Fotos entfernt es', ["        }, function () {\n          // 6.4.2 (F1)", "}).catch(function () { /* egal (wie bis 6.4.1) */ });"], ["        }).catch(function () {\n          // 6.4.2 (F1)", "});"], 'fehlertexte'],
   // KA-05/BE-2: eine Ausnahme beim Setzen der optionalen Vorschaudaten sperrt weder Editor noch Warenkorb
-  ['DD0 KA-05 Ausnahme beim Setzen der Vorschaudaten sperrt den Editor (Fassung vor der Korrektur)', "if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } }", "if (vorschauRoh) editor.vorschauDatenSetzen(vorschauRoh); }", 'vorschau-fehlergrenze'],
+  ['DD0 KA-05 Ausnahme beim Setzen der Vorschaudaten sperrt den Editor (Fassung vor der Korrektur, in beiden Wegen ohne Fehlergrenze)', "var vorschauSetzen = function (roh) { if (roh) { try { editor.vorschauDatenSetzen(roh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } };", "var vorschauSetzen = function (roh) { if (roh) editor.vorschauDatenSetzen(roh); };", 'vorschau-fehlergrenze'],
   ['DD1 KA-05 Ausnahme beim Setzen der Vorschaudaten ohne Warnung in der Konsole', "catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); }", "catch (ve) { }", 'vorschau-fehlergrenze'],
   // RO-1: Verlauf ohne die kaputte Ebene; RO-2: zu viele Pixel; RO-3: die Meldung zur kaputten Datei bleibt
   ['DE0 RO-1 die kaputte Ebene bleibt im Verlauf (Rückgängig und Wiederholen holen sie zurück)', "          ebeneAusVerlaufStreichen(e.id);   // 6.4.2 (RO-1)", "          // 6.4.2 (RO-1)", 'fehlertexte'],
@@ -488,6 +490,60 @@ const MUTANTEN = [
   ['DF2 RO-4 gleiche Meldung und Ursache stehen doppelt in der Konsole', "var log = det && det !== roh ?", "var log = det ?", 'fehlertexte'],
   ['DF3 RO-4 Konsolenzeile ungekürzt', "if (log) warnung('Fehler: ' + log.slice(0, 300));", "if (log) warnung('Fehler: ' + log);", 'fehlertexte'],
   ['DF5 BE-4 Beschriftung wieder über dem Löschkreuz (z-index 660)', "'.lsp6-tag{position:absolute;z-index:590;", "'.lsp6-tag{position:absolute;z-index:660;", 'eckzone'],
+  // Zweite Korrekturrunde vom 11.11.2026 (15 Funde; je Mutant das Szenario, das ihn treffen soll)
+  // RO2-02: dieselbe Fehlergrenze auch im langsamen Weg (Daten nach mehr als VORSCHAU_WARTE_MS); bis zur Korrektur (und in 6.4.1) dort eine unbehandelte Ablehnung ohne Warnung
+  ['DD2 RO2-02 verspätete Vorschaudaten ohne Fehlergrenze (Fassung vor der Korrektur, wie 6.4.1)', "          else vorschauVersprechen.then(vorschauSetzen);", "          else vorschauVersprechen.then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });", 'vorschau-fehlergrenze'],
+  ['DD3 RO2-02 rechtzeitige Vorschaudaten ohne Fehlergrenze (nur der schnelle Weg)', "if (vorschauRoh !== undefined) vorschauSetzen(vorschauRoh);", "if (vorschauRoh !== undefined) { if (vorschauRoh) editor.vorschauDatenSetzen(vorschauRoh); }", 'vorschau-fehlergrenze'],
+  // KA2-01, RO2-01: der Hinweis auf entfernte leere Ebenen bleibt auf den Abbruchwegen KA-01 (späte Lagerantwort) und KA-02 (Neu-Lesen) erhalten; er gilt bis zur nächsten Änderung oder bis die Kundin den Dialog schliesst
+  ['DH0 KA2-01 späte Antwort «ausverkauft» ohne Hinweis auf die entfernte Ebene', "reviewAufraeumen(true, mitLeerHinweis(T.soldOut)); return; }   // KA2-01, RO2-01", "reviewAufraeumen(true, T.soldOut); return; }   // KA2-01, RO2-01", 'ausverkauft'],
+  ['DH1 KA2-01 Antwort «lieferbar» löscht auch den Hinweis', "{ if (leerHinweisOffen) meldung(leerHinweisOffen, 'ok'); else meldung(''); }", "meldung('');", 'leere'],
+  ['DH2 KA2-01 der verbleibende Hinweis steht als Fehler da', "meldung(leerHinweisOffen, 'ok'); else meldung(''); }", "meldung(leerHinweisOffen, 'err'); else meldung(''); }", 'leere'],
+  ['DH3 KA2-01 der nächste Klick vergisst den noch gültigen Hinweis', "      var leerHinweis = leerHinweisOffen;\n", "      var leerHinweis = !leerEntfernt ? '' : leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone;\n", 'leere'],
+  ['DH4 KA2-01 nach einer Änderung bleibt der alte Hinweis stehen', "      leerHinweisOffen = '';   // KA2-01: nach einer Änderung gilt der alte Hinweis nicht mehr\n", "", 'leere'],
+  ['DH5 KA2-01 der Hinweis wird nie vorgemerkt', "      if (leerEntfernt) leerHinweisOffen = leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone;", "      if (leerEntfernt) void 0;", 'leere'],
+  ['DH6 RO2-01 nach «Weiter gestalten» gilt der alte Hinweis für den nächsten Durchgang weiter', "function reviewSchliessen() { leerHinweisOffen = ''; reviewAufraeumen(true, ''); }", "function reviewSchliessen() { reviewAufraeumen(true, ''); }", 'ausverkauft'],
+  // Gleichwertig (KA2-01, nicht aufgenommen): «mitLeerHinweis» in reviewBestaetigen; die Zeile ist über die Oberfläche nicht erreichbar, solange lagerSetzen einen offenen Dialog schliesst (siehe KA-01 oben).
+  // KA2-02: Frist der Lagerabfrage
+  ['DI0 KA2-02 Lagerabfrage ohne Frist (Fassung vor der Korrektur)', "      var frist = setTimeout(function () {", "      var frist = 0 && setTimeout(function () {", 'ausverkauft'],
+  ['DI1 KA2-02 Frist 60 s statt 8 s', "var LAGER_FRIST_MS = 8000;", "var LAGER_FRIST_MS = 60000;", 'ausverkauft'],
+  ['DI2 KA2-02 nach der Frist bleibt der alte Lagerstand stehen', "        try { lagerSetzen(null); } catch (x) { /* Frist: Oberfläche nicht bereit */ }\n", "", 'ausverkauft'],
+  ['DI3 KA2-02 nach der Frist bleibt das Lesen gesperrt (lager.laeuft bleibt true)', "        lager.nr++;   // eine späte Antwort dieser Anfrage zählt nicht mehr (Browser ohne AbortController)\n        lager.laeuft = false; lager.stand = Date.now();", "        lager.nr++;   // eine späte Antwort dieser Anfrage zählt nicht mehr (Browser ohne AbortController)\n        lager.stand = Date.now();", 'ausverkauft'],
+  ['DI4 KA2-02 die Frist hebt eine gültige Antwort wieder auf (kein clearTimeout)', "          if (nr !== lager.nr) return;   // KA2-02: Frist abgelaufen, diese Antwort gilt nicht mehr\n          clearTimeout(frist);\n", "          if (nr !== lager.nr) return;   // KA2-02: Frist abgelaufen, diese Antwort gilt nicht mehr\n", 'ausverkauft'],
+  ['DI5 KA2-02 die späte Antwort einer abgelaufenen Anfrage zählt noch', "          if (nr !== lager.nr) return;   // KA2-02: Frist abgelaufen, diese Antwort gilt nicht mehr\n", "", 'ausverkauft'],
+  // RO2-03 (Testlücken der Robustheitszweige): je ein Mutant gegen die neuen Prüfungen in «fehlertexte» und «leere-textebene» Fall 10 (Fall 9b = DB9 oben, nicht doppelt)
+  ['DJ0 RO-1 die Verlaufsknöpfe werden nach dem Streichen der kaputten Ebene nicht nachgezogen', "      verlauf.stack = neu; verlauf.idx = idx;\n      verlaufKnoepfe();", "      verlauf.stack = neu; verlauf.idx = idx;", 'fehlertexte'],
+  ['DJ1 RO-2 die Pixelgrenze wird nur am Wort «dimension» erkannt (Wortlaut «Maximum image size is … Megapixels» ergäbe «Datei zu gross»)', "err.pixel = /megapixel|dimension|pixels/i.test(detail || '');", "err.pixel = /dimension/i.test(detail || '');", 'fehlertexte'],
+  ['DJ2 KA-02 «ausverkauft» mit Hinweis dahinter bleibt nach dem Wechsel auf eine lieferbare Ausführung stehen (nur der genaue Text wird gelöscht)', "ui.status.textContent.indexOf(T.soldOut) === 0) { if (leerHinweisOffen)", "ui.status.textContent === T.soldOut) { if (leerHinweisOffen)", 'leere'],
+  // Gleichwertig (RO2-03, nicht aufgenommen): (1) «idx = neu.length - 1» statt «if (i <= verlauf.idx) idx = neu.length - 1»: ebeneAusVerlaufStreichen läuft nur direkt nach ebeneEntfernen, dessen
+  // speichern() den Verlauf auf den letzten Stand setzt; (2) «err.pixel = /megapixel/i»: beide bekannten Wortlaute (Attrappe, Cloudinary-Dokumentation) enthalten «megapixel(s)».
+  // BE2-5: Tab-Falle für Zuschneiden und «Druck-Vorschau anzeigen»
+  ['DK0 BE2-5 Tab-Falle: kein Handler am Dokument (Esc und Tab bei Fokus ausserhalb wirkungslos)', "      document.addEventListener('keydown', amDokument, true);\n", "", 'esc'],
+  ['DK1 BE2-5 Tab-Falle: Tab im Dialog nicht abgefangen', "      modal.addEventListener('keydown', function (ev) { if (ev.key === 'Tab') tab(ev); });\n", "", 'esc'],
+  ['DK2 BE2-5 Tab-Falle: Handler bleibt nach dem Schliessen am Dokument', ["        if (!modal.parentNode) { document.removeEventListener('keydown', amDokument, true); return; }\n", "      return function () { document.removeEventListener('keydown', amDokument, true); };\n"], ['', "      return function () {};\n"], 'esc'],
+  // BE2-6: den Klick des Löschkreuzes nimmt die Bühne ab (Touch-Anpassung von Chromium)
+  ['DL0 BE2-6 das Kreuz hört wieder selbst auf click (Touch-Anpassung zieht den Finger zum Kreuz)', "      // Der Klick auf das Löschkreuz wird an der Bühne abgenommen (BE2-6, siehe ui.stage click)\n", "      del.addEventListener('click', function (ev) { ev.stopPropagation(); ebeneEntfernen(e.id); });\n", 'finger'],
+  ['DL1 BE2-6 die Bühne löscht beim Klick auf das Kreuz nicht', "      for (var i = 0; i < liste.length; i++) { var k = knoten[liste[i].id]; if (k && k.del === d) { ev.stopPropagation(); ebeneEntfernen(liste[i].id); return; } }\n", "", 'finger'],
+  ['DL2 BE2-6 jeder Klick in der Bühne löscht die gewählte Ebene', "var d = ev.target && ev.target.closest ? ev.target.closest('.lsp6-del') : null;", "var d = ev.target && ev.target.closest ? (ev.target.closest('.lsp6-del') || (knoten[st.sel] && knoten[st.sel].del)) : null;", 'finger'],
+  // BE2-1, BE2-2, BE2-3: Luft und Trennung der geklemmten Knöpfe im Koordinatensystem der gedrehten Ebene
+  ['DM0 BE2-1 achsparallele Luft statt gedrehter', "function luft(P, ax, ay) { var l = lokal(P[0] - ax, P[1] - ay); return", "function luft(P, ax, ay) { var l = [P[0] - ax, P[1] - ay]; return", 'eckzone'],
+  // DM1: überlebt; im Raster vom 11.11. (1 152 Lagen) verschiebt er die Knöpfe in 55 Lagen, die gedrehten Tippflächen überlappen aber nie (kleinste Trennung 47 px): die Luft zur Mitte bindet dort stärker. Nicht gleichwertig bewiesen
+  ['DM1 BE2-2 achsparallele Trennung der Knöpfe statt gedrehter', "var l = belegt && lokal(x - belegt[0], y - belegt[1]);", "var l = belegt && [x - belegt[0], y - belegt[1]];", 'eckzone'],
+  ['DM2 BE2-1 keine Suche entlang der Kante (nur die geschlossenen Kandidaten von 0°)', "          [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (u) {", "          [].forEach(function (u) {", 'eckzone'],
+  ['DM3 BE2-1 Mitte genau auf dem Rand der Druckfläche zählt nicht', "if (mx >= vl - 1 && mx <= vr + 1 && my >= vt - 1 && my <= vb + 1) punkte.push([mx, my]);", "if (mx >= vl + 1 && mx <= vr - 1 && my >= vt + 1 && my <= vb - 1) punkte.push([mx, my]);", 'eckzone'],
+  // BE2-4: die Beschriftung weicht einer gewählten Ebene über ihr aus (Szenario «eckzone-beschriftung», Teil «eckzone»)
+  ['DN0 BE2-4 Beschriftung wird nie gehoben', "          t.setAttribute('data-oben', '');\n", "", 'beschriftung'],
+  ['DN1 BE2-4 gehoben ohne Knopfprüfung', "        if (!im.length) {\n", "        if (true) {\n", 'beschriftung'],
+  ['DN2 BE2-4 Verschiebung wird nicht zurückgesetzt', "      if (t.style.transform) t.style.transform = '';\n", "", 'beschriftung'],
+  ['DN3 BE2-4 data-oben wird nicht zurückgesetzt', "      if (t.hasAttribute('data-oben')) t.removeAttribute('data-oben');\n", "", 'beschriftung'],
+  ['DN4 BE2-4 passt nicht mehr: trotzdem gehoben', "          if (lage.bottom > unten + 0.5) return;   // passt nicht mehr in die Druckfläche: bleibt unter der Ebene\n", "", 'beschriftung'],
+  ['DN5 BE2-4 erst Beschriftung, dann Knöpfe', "function chromeNachziehen() { griffeNachziehen(); tagAusweichen(); }", "function chromeNachziehen() { tagAusweichen(); griffeNachziehen(); }", 'beschriftung'],
+  ['DN6 BE2-4 tagAusweichen nie aufgerufen', "function chromeNachziehen() { griffeNachziehen(); tagAusweichen(); }", "function chromeNachziehen() { griffeNachziehen(); }", 'beschriftung'],
+  ['DN7 BE2-4 auch in «Bearbeiten»', " || ui.stage.getAttribute('data-ansicht') === 'bearbeiten') return;\n      var r = t.getBoundingClientRect();", ") return;\n      var r = t.getBoundingClientRect();", 'beschriftung'],
+  ['DN8 BE2-4 gehobene Beschriftung bleibt auf 590', "'.lsp6-tag[data-oben]{z-index:620}'", "'.lsp6-tag[data-oben]{z-index:590}'", 'beschriftung'],
+  ['DN9 BE2-4 gehobene Beschriftung über dem Rahmen (660)', "'.lsp6-tag[data-oben]{z-index:620}'", "'.lsp6-tag[data-oben]{z-index:660}'", 'beschriftung'],
+  ['DNa BE2-4 nur das Kreuz zählt als Knopf', "var knoepfe = [k.del, k.handle].map(", "var knoepfe = [k.del].map(", 'beschriftung'],
+  ['DNb BE2-4 hebt auch ohne Deckung durch die Ebene', " || !schneidet(r, k.root.getBoundingClientRect(), 0)) return;", ") return;", 'beschriftung'],
+  ['DNc BE2-4 Unterkante gegen die Bühne statt gegen die Druckfläche', "unten = Math.min(f.bottom, s.bottom) - 4;", "unten = s.bottom - 4;", 'beschriftung'],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
@@ -569,7 +625,7 @@ function lauf(datei, args, env) {
     const sammeln = (d) => { if (aus.length < 40000) aus += d; };
     k.stdout.on('data', sammeln); k.stderr.on('data', sammeln);
     let zeit = false;
-    const t = setTimeout(() => { zeit = true; k.kill('SIGKILL'); }, 300000);
+    const t = setTimeout(() => { zeit = true; k.kill('SIGKILL'); }, args.includes('eckzone') ? 600000 : 300000);   // «eckzone» braucht seit BE2-3 (Finger per CDP an 20 Lagen × 4 Bühnen) allein rund 270 s (GEMESSEN 11.11.)
     k.on('close', (code, signal) => { clearTimeout(t); ok({ code, signal, zeit, aus }); });
   });
 }
@@ -593,7 +649,7 @@ if (!process.env.V6_OHNE_AUSGANGSLAGE) {
   const stufen = [['unit_test.mjs', []]];
   if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']], ['v641_test.mjs', ['kern']]);
   // v642_test.mjs: nur wenn Mutanten des Deltas (D) laufen und in zwei Hälften (jede unter dem Zeitlimit von 300 s)
-  if (gewaehlt.some((a) => /^D/.test(a.name))) stufen.push(['v642_test.mjs', ['leere']], ['v642_test.mjs', ['zahlen']], ['v642_test.mjs', ['fehlertexte']], ['v642_test.mjs', ['griffe']], ['v642_test.mjs', ['eckzone']], ['v642_test.mjs', ['ausverkauft']], ['v642_test.mjs', ['esc']], ['v642_test.mjs', ['layoutsprung']], ['v642_test.mjs', ['vorschau-fehlergrenze']], ['v642_test.mjs', ['kaufvergleich']]);
+  if (gewaehlt.some((a) => /^D/.test(a.name))) stufen.push(['v642_test.mjs', ['leere']], ['v642_test.mjs', ['zahlen']], ['v642_test.mjs', ['fehlertexte']], ['v642_test.mjs', ['griffe']], ['v642_test.mjs', ['eckzone']], ['v642_test.mjs', ['beschriftung']], ['v642_test.mjs', ['finger']], ['v642_test.mjs', ['ausverkauft']], ['v642_test.mjs', ['esc']], ['v642_test.mjs', ['layoutsprung']], ['v642_test.mjs', ['vorschau-fehlergrenze']], ['v642_test.mjs', ['kaufvergleich']]);
   for (const [datei, args] of stufen) {
     const r = await lauf(datei, args, {});
     if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
@@ -616,7 +672,7 @@ async function arbeiter() {
     // Ergebnis einer Stufe: true = erkannt (weiter zum nächsten Mutanten), 'ungeklaert' = Zeitüberschreitung oder Umgebungsfehler, false = nicht erkannt (nächste Stufe)
     const stufe = async (name, datei, args, umg) => {
       const r = await lauf(datei, args, { ...umg, V6_ABBRUCH: '1' });   // beim ersten Fehler beenden: zum Erkennen genügt er
-      if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach 300 s abgebrochen, ungeklärt`); return 'ungeklaert'; }
+      if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach dem Zeitlimit abgebrochen, ungeklärt`); return 'ungeklaert'; }
       if (gescheitert(r) && istUmgebungsfehler(r.aus)) { ergebnis.ungeklaert.push(`${a.name} (${name}: Umgebung, nicht der Test: ${ersterFehler(r.aus)})`); console.log(`?  ${a.name}: ${name} scheitert an der Umgebung (${ersterFehler(r.aus)}), ungeklärt`); return 'ungeklaert'; }
       if (gescheitert(r)) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch ${name}: ${ersterFehler(r.aus)}`); return true; }
       return false;
@@ -634,7 +690,7 @@ async function arbeiter() {
       // C (6.4.1) zuerst bei den Mutanten des Deltas; bei allen anderen als letzte Stufe (zusätzliche Deckung)
       // D (6.4.2): zuerst das Szenario von v642_test.mjs, das der Mutant treffen soll, danach die übrigen Szenarien einzeln (jedes für sich unter dem Zeitlimit), zuletzt die alten Stufen
       const D = (s) => ['v642_test:' + s, 'v642_test.mjs', [s]];
-      const ALLE_D = ['leere', 'zahlen', 'fehlertexte', 'griffe', 'eckzone', 'ausverkauft', 'esc', 'layoutsprung', 'vorschau-fehlergrenze', 'kaufvergleich'];   // 'ausverkauft' umfasst 'ausverkauft-adresse' (Anfang des Namens)
+      const ALLE_D = ['leere', 'zahlen', 'fehlertexte', 'griffe', 'eckzone', 'beschriftung', 'finger', 'ausverkauft', 'esc', 'layoutsprung', 'vorschau-fehlergrenze', 'kaufvergleich'];   // 'ausverkauft' umfasst 'ausverkauft-adresse' (Anfang des Namens)
       const folge = /^D/.test(a.name) ? [U, D(a.ziel), ...ALLE_D.filter((s) => s !== a.ziel).map(D), BT, E, V, C]
         : /^C/.test(a.name) ? [U, C, BT, E, V] : /^B/.test(a.name) ? [U, BT, E, V, C] : /^W/.test(a.name) ? [U, V, E, BT, C] : [U, E, V, BT, C];
       for (const [name, f, args] of folge) {

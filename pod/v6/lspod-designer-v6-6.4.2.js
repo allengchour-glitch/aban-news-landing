@@ -1,7 +1,9 @@
 /*!
  * LuxeStyle «Selbst gestalten»: Editor v6.4.2 «Auf dem Produkt bearbeiten» (10.11.2026; 6.4.1, 6.4.0, 6.3.0 und 6.3.1 bleiben unverändert als Rücknahme).
  *
- * NEU in 6.4.2 (Delta zu 6.4.1, aus der Fehlersuche vom 10.11.2026; Druckdatei, _pod_karte, _vorschau und Eigenschaften sind in jedem bisher erfolgreichen Ablauf byte-gleich zu 6.4.1, ohne Ausnahme; Beleg und Grenzen im README «Version 6.4.2»):
+ * NEU in 6.4.2 (Delta zu 6.4.1, aus der Fehlersuche vom 10.11.2026; Druckdatei, _pod_karte, _vorschau und Eigenschaften sind bei gleichem Design in jedem bisher erfolgreichen Ablauf byte-gleich zu 6.4.1,
+ * mit einer gewollten Ausnahme der Bedienung: dieselbe Bedienung des Schiebers «Grösse» (Pfeiltaste, Pos1, Klick) ergibt seit E3/BE-3 eine andere Grösse und damit eine andere Druckdatei (KA2-04);
+ * Beleg und Grenzen im README «Version 6.4.2»):
  *   - E1 Eine leere Textebene neben anderem Inhalt sperrt den Kauf nicht mehr: sie wird vor der Druckprüfung entfernt («Leere Textebene entfernt.»); nur eine leere Ebene allein bleibt abgelehnt.
  *   - E2 Löschkreuz und Skalieren-Griff bleiben auch in der flachen Bühne und in der «Druckversion» im sichtbaren Bereich der Bühne und treffbar, auch bei sehr kleinen Ebenen (Mindestschicht wie auf der Produktbühne).
  *   - E3 Der Schieber «Grösse» beginnt bei 0,06 wie die Ebene; die Drehung wird auf −180 bis 180 Grad gehalten (Griff, Zwei-Finger-Geste, Entwurf).
@@ -14,6 +16,10 @@
  *     sperrt nicht weiter (KA-02), eine erst nach dem Klick eintreffende Antwort «ausverkauft» schliesst den Prüfdialog bzw. verhindert «Bestätigen» (KA-01, die einzige Änderung am Kaufweg: dort gibt es jetzt
  *     keinen Upload und keine Warenkorb-Anfrage mehr, 6.4.1 scheiterte im Warenkorb); Fehlertexte bei Pixelgrenze (RO-2) und Netzabbruch der Druckdatei (RO-4); die Meldung zur kaputten Datei bleibt (RO-3) und die
  *     Ebene kommt über Rückgängig nicht zurück (RO-1); Ausnahmen beim Einpassen eines Fotos (KA-04) und beim frühen Setzen der Vorschaudaten (KA-05, BE-2) wirken wie bis 6.4.1.
+ *   - Zweite Korrekturrunde vom 11.11.2026 (Abnahme der Korrekturrunde, 15 Funde): Luft und Trennung der geklemmten Knöpfe im Koordinatensystem der gedrehten Ebene (BE2-1, BE2-2); den Klick des
+ *     Löschkreuzes nimmt die Bühne ab, damit die Touch-Anpassung einen Finger nicht zum Kreuz zieht (BE2-6); die Beschriftung der Druckfläche weicht einer gewählten Ebene über ihr aus (BE2-4);
+ *     Tab-Falle auch für Zuschneiden und «Druck-Vorschau anzeigen» (BE2-5); der Hinweis auf entfernte leere Ebenen bleibt auch beim späten «ausverkauft» und beim Neu-Lesen (KA2-01, RO2-01);
+ *     die Lagerabfrage hat eine Frist von 8 s (KA2-02, danach «unbekannt» = Kauf erlaubt); verspätete Vorschaudaten setzt der Editor mit derselben Fehlergrenze wie rechtzeitige (RO2-02).
  *   NICHT in 6.4.2 (E8, braucht ein Ja des Besitzers, es ändert die Druckdatei in einem Ablauf): Einpassung eines Fotos in der Ansicht «Vorschau», Stickerei ohne Vorschau.
  *
  * NEU in 6.4.1 (Delta zu 6.4.0; Druckdatei, _pod_karte, _vorschau und Eigenschaften sind sonst byte-gleich):
@@ -1093,6 +1099,7 @@
     '.lsp6-frame{position:absolute;border:2px dashed var(--golddk);box-shadow:0 0 0 1px rgba(255,255,255,.9);pointer-events:none;z-index:650}',
     '.lsp6-tag{position:absolute;z-index:590;display:flex;padding:2px 7px;border-radius:6px;background:rgba(22,21,26,.85);color:#fff;font-size:11px;font-weight:700;pointer-events:none;white-space:nowrap}',   // 6.4.2 (BE-4): unter der gewählten Ebene (600) und ihren Knöpfen, über dem Vorhang (500); bis 6.4.1 660 (das an die Kante geklemmte Löschkreuz lag zu 63 % dahinter). Der Rahmen (650) bleibt über allem
     // 6.4.1: die Beschriftung der Druckfläche ragt nicht mehr über den Rahmen (ganzes Produkt, kleine Fläche): erst kürzt sich das Wort «Druckfläche», dann die Zahlen (max-width setzt buehneAufbauen)
+    '.lsp6-tag[data-oben]{z-index:620}',   // BE2-4: über der gewählten Ebene (600), nur an einer Lage ohne Knopf (tagAusweichen); unter dem Rahmen (650)
     '.lsp6-tag-l{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:pre}.lsp6-tag-z{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}',
     '.lsp6-readout{position:absolute;left:8px;top:8px;z-index:800;padding:4px 8px;border-radius:8px;background:rgba(22,21,26,.85);color:#fff;font-size:12px;font-weight:700;pointer-events:none}',
     '.lsp6-guide{position:absolute;display:none;pointer-events:none;z-index:700}',
@@ -1382,7 +1389,13 @@
     // ── Verfügbarkeit der gewählten Ausführung (6.4.2, E5) ──────────────────────────────────────────
     // Der Editor kannte nur die Zuordnung zu Printful, nicht den Lagerstand des Shops: eine ausverkaufte Ausführung ging bis zu den Uploads durch und scheiterte erst im Warenkorb. Jetzt wird /products/<handle>.js gelesen
     // (kleine JSON-Datei des Shops, alle Varianten mit `available`); ist sie nicht erreichbar oder unbrauchbar (429, Netz, andere Seite), gilt «unbekannt» und der Kauf bleibt erlaubt: ein Messfehler sperrt nie einen Kauf.
-    var lager = { byId: null, stand: 0, laeuft: false };   // byId: Shopify-Variante → available (true/false); null = unbekannt
+    var lager = { byId: null, stand: 0, laeuft: false, nr: 0 };   // byId: Shopify-Variante → available (true/false); null = unbekannt; nr: laufende Anfrage (nur ihre Antwort zählt)
+    var LAGER_FRIST_MS = 8000;   // KA2-02: so lange darf eine Lagerabfrage dauern; danach gilt «unbekannt» (Kauf erlaubt) und der nächste Anlass liest neu
+    /** 6.4.2 (KA2-01, RO2-01): Hinweis auf leere Textebenen, die der laufende Kaufversuch entfernt hat (reviewStarten). Er steht auch hinter «ausverkauft», wenn erst die späte Lagerantwort (KA-01)
+     *  oder das Neu-Lesen (KA-02) den Kauf beendet; sonst verschwände die Ebene ohne Erklärung. Er gilt, bis der Entwurf sich ändert (reviewAenderung) oder die Kundin den Prüfdialog selbst schliesst
+     *  («Weiter gestalten», Esc, Klick daneben): ein späterer Durchgang ohne neue Entfernung nennt ihn nicht mehr. Nur Text der Statuszeile: Druckdatei, Warenkorb und Entwurf unberührt. */
+    var leerHinweisOffen = '';
+    function mitLeerHinweis(text) { return leerHinweisOffen ? text + ' ' + leerHinweisOffen : text; }
     function produktHandle() {
       try { var m = /\/products\/([^\/?#]+)/.exec(window.location.pathname || ''); return m ? decodeURIComponent(m[1]) : ''; } catch (x) { return ''; }
     }
@@ -1390,29 +1403,43 @@
       var h = produktHandle();
       if (legacy || !h || lager.laeuft || typeof fetch !== 'function') return;
       lager.laeuft = true;
+      var nr = ++lager.nr;
+      var ctrl = window.AbortController ? new AbortController() : null;
+      // KA2-02: Frist. Hängt die Antwort (Verbindung offen, keine Antwort), bliebe lager.laeuft sonst bis zum Neuladen true, jedes weitere Lesen entfiele und ein altes «ausverkauft» sperrte weiter.
+      var frist = setTimeout(function () {
+        if (nr !== lager.nr) return;
+        lager.nr++;   // eine späte Antwort dieser Anfrage zählt nicht mehr (Browser ohne AbortController)
+        lager.laeuft = false; lager.stand = Date.now();
+        if (ctrl) { try { ctrl.abort(); } catch (x) { /* egal */ } }
+        try { lagerSetzen(null); } catch (x) { /* Frist: Oberfläche nicht bereit */ }
+      }, LAGER_FRIST_MS);
       var wurzelPfad = (window.Shopify && Shopify.routes && typeof Shopify.routes.root === 'string' && Shopify.routes.root) || '/';
-      fetch(wurzelPfad + 'products/' + encodeURIComponent(h) + '.js', { credentials: 'same-origin', headers: { Accept: 'application/json' } })
+      var abrufOpt = { credentials: 'same-origin', headers: { Accept: 'application/json' } };
+      if (ctrl) abrufOpt.signal = ctrl.signal;
+      fetch(wurzelPfad + 'products/' + encodeURIComponent(h) + '.js', abrufOpt)
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
+          if (nr !== lager.nr) return;   // KA2-02: Frist abgelaufen, diese Antwort gilt nicht mehr
+          clearTimeout(frist);
           lager.laeuft = false; lager.stand = Date.now();
           if (!j || !Array.isArray(j.variants)) { lagerSetzen(null); return; }   // KA-02: eine unbrauchbare Antwort heisst «unbekannt», auch beim Neu-Lesen (sonst bliebe ein altes «ausverkauft» stehen)
           var karteVerf = {};
           j.variants.forEach(function (v) { if (v && v.id != null && typeof v.available === 'boolean') karteVerf[String(v.id)] = v.available; });
           lagerSetzen(karteVerf);
         })
-        .catch(function () { lager.laeuft = false; lager.stand = Date.now(); try { lagerSetzen(null); } catch (x) { /* Oberfläche nicht bereit */ } });
+        .catch(function () { if (nr !== lager.nr) return; clearTimeout(frist); lager.laeuft = false; lager.stand = Date.now(); try { lagerSetzen(null); } catch (x) { /* Oberfläche nicht bereit */ } });
     }
     /** 6.4.2 (KA-02, KA-01): Lagerstand übernehmen (null = unbekannt = Kauf erlaubt), Hinweis und Kaufknopf nachziehen. Ist die gewählte Ausführung danach ausverkauft und ein Prüfdialog offen oder im Aufbau
      *  (die Antwort kam erst nach dem Klick), schliesst er sich, bevor «Bestätigen» etwas hochlädt; nach «Bestätigen» (eingefroren) nicht mehr, dann lehnt der Warenkorb ab wie bis 6.4.1. */
     function lagerSetzen(k) {
       lager.byId = k;
       modellHinweisAktualisieren(); qualitaetPruefen();
-      if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, T.soldOut); return; }
+      if (ausverkauft() && (reviewBaut || review) && !eingefroren) { reviewAufraeumen(true, mitLeerHinweis(T.soldOut)); return; }   // KA2-01, RO2-01: mit dem Hinweis auf entfernte leere Ebenen
       soldOutMeldungPruefen();
     }
     /** 6.4.2 (KA-02): eine Meldung «ausverkauft» in der Statuszeile löschen, sobald sie nicht mehr gilt (neuer Lagerstand oder andere Ausführung). */
     function soldOutMeldungPruefen() {
-      if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) meldung('');
+      if (ui.status && !ausverkauft() && ui.status.textContent.indexOf(T.soldOut) === 0) { if (leerHinweisOffen) meldung(leerHinweisOffen, 'ok'); else meldung(''); }   // KA2-01: nur «ausverkauft» fällt weg, der Hinweis bleibt
     }
     /** true nur, wenn der Shop die gewählte Ausführung ausdrücklich als nicht verfügbar meldet. */
     function ausverkauft() {
@@ -1641,8 +1668,9 @@
     var GRIFF_UEBERSTAND = 6;   // Mitte des Griffs liegt so viele Pixel ausserhalb der Ecke der Schicht (CSS: right/bottom -21 px bei 30 px Durchmesser)
     var GRIFF_RAND = 17;        // so nah (Mitte des Griffs) darf er an die Kante der Bühne: Radius 15 px plus 2 px Luft
     var TIPP_HALB = 22;         // halbe Tippfläche der Knöpfe (CSS ::before, inset -9 px um 26 px)
-    var GRIFF_LUFT = 22;        // so viel Luft bleibt mindestens zwischen der Mitte der Ebene und der Tippfläche eines an die Bühnenkante geklemmten Knopfes (ungeklemmt sind es mindestens 22,6 px); Chromium wählt bei Berührung Ziele bis rund 9 px neben dem Finger (GEMESSEN)
-    function chromeNachziehen() {
+    var GRIFF_LUFT = 22;        // so viel Luft bleibt mindestens zwischen der Mitte der Ebene und der (mitgedrehten) Tippfläche eines an die Bühnenkante geklemmten Knopfes, gerechnet im Koordinatensystem der Ebene (BE2-1; ungeklemmt sind es mindestens 22,6 px). Die Touch-Anpassung von Chromium zieht einen Finger bis rund 16 px weit zu einem Element mit eigenem click-Zuhörer (GEMESSEN 11.11.); darum hört seit BE2-6 die Bühne für das Löschkreuz zu, nicht das Kreuz selbst
+    function chromeNachziehen() { griffeNachziehen(); tagAusweichen(); }   // BE2-4: erst die Knöpfe, dann die Beschriftung, die ihnen ausweicht
+    function griffeNachziehen() {
       var k = st.sel && knoten[st.sel];
       if (ui.chromeRoot.hidden) {
         // 6.4.2 (E2): flache Bühne und «Druckversion» haben keine Schicht über dem Vorlagenbild; Löschkreuz und Griff sind Kinder der Ebene und werden von der Bühne beschnitten (overflow:hidden).
@@ -1680,12 +1708,19 @@
       // Druckfläche oder der Bühne, greift man die Ebene dort, wo man sie sieht (Abnahme 11.11.: sonst löschte ein Tipp auf den sichtbaren Teil). Ist die Ebene ganz sichtbar, ist das nur die Mitte.
       var clip = ui.stage.getAttribute('data-ansicht') === 'bearbeiten' ? ui.host.getBoundingClientRect() : s;
       var vl = Math.max(r.left, s.left, clip.left), vr = Math.min(r.right, s.right, clip.right), vt = Math.max(r.top, s.top, clip.top), vb = Math.min(r.bottom, s.bottom, clip.bottom), punkte = [];
-      if (mx >= vl && mx <= vr && my >= vt && my <= vb) punkte.push([mx, my]);
+      if (mx >= vl - 1 && mx <= vr + 1 && my >= vt - 1 && my <= vb + 1) punkte.push([mx, my]);   // BE2-1: auch eine Mitte genau auf dem Rand der Druckfläche (Lage 0 oder 1) trifft ein Tipp noch (GEMESSEN), Rechenrundung 1 px
       if (vr > vl && vb > vt && (!punkte.length || Math.abs((vl + vr) / 2 - mx) > 0.5 || Math.abs((vt + vb) / 2 - my) > 0.5)) punkte.push([(vl + vr) / 2, (vt + vb) / 2]);
       if (!punkte.length) punkte.push([mx, my]);
-      function luft(P, ax, ay) { return Math.hypot(Math.max(0, Math.abs(P[0] - ax) - TIPP_HALB), Math.max(0, Math.abs(P[1] - ay) - TIPP_HALB)); }   // Abstand des Punktes P zur Tippfläche um (ax|ay)
-      function spalt(d) { var q = Math.max(0, Math.abs(d) - TIPP_HALB); return TIPP_HALB + Math.sqrt(Math.max(0, GRIFF_LUFT * GRIFF_LUFT - q * q)); }   // Abstand zum Punkt entlang einer Kante, ab dem luft() reicht
-      function frei(x, y) { return punkte.every(function (P) { return luft(P, x, y) >= GRIFF_LUFT - 0.01; }) && !(belegt && Math.abs(x - belegt[0]) < 2 * TIPP_HALB && Math.abs(y - belegt[1]) < 2 * TIPP_HALB); }
+      // BE2-1, BE2-2: die Knöpfe drehen sich mit der Ebene (Kinder der gedrehten Ebene bzw. der gedrehten Schicht), ihre Tippflächen sind um e.rot gedrehte Quadrate. Darum werden Luft zur Mitte und
+      // Trennung der zwei Knöpfe im Koordinatensystem der Ebene gerechnet (lokal); bis zur zweiten Korrekturrunde achsparallel (bei 45° nur 12 bis 13 px Luft, Tippflächen überlappten).
+      function lokal(dx, dy) { return [dx * co + dy * si, dy * co - dx * si]; }
+      function luft(P, ax, ay) { var l = lokal(P[0] - ax, P[1] - ay); return Math.hypot(Math.max(0, Math.abs(l[0]) - TIPP_HALB), Math.max(0, Math.abs(l[1]) - TIPP_HALB)); }   // Abstand des Punktes P zur gedrehten Tippfläche um (ax|ay)
+      function spalt(d) { var q = Math.max(0, Math.abs(d) - TIPP_HALB); return TIPP_HALB + Math.sqrt(Math.max(0, GRIFF_LUFT * GRIFF_LUFT - q * q)); }   // bei 0°: Abstand zum Punkt entlang einer Kante, ab dem luft() reicht
+      function frei(x, y) {
+        if (!punkte.every(function (P) { return luft(P, x, y) >= GRIFF_LUFT - 0.01; })) return false;
+        var l = belegt && lokal(x - belegt[0], y - belegt[1]);   // die Tippflächen beider Knöpfe sind gleich gedreht: getrennt, wenn sie es im Koordinatensystem der Ebene sind
+        return !(l && Math.abs(l[0]) < 2 * TIPP_HALB && Math.abs(l[1]) < 2 * TIPP_HALB);
+      }
       // Erst beide Lagen (an die Kante geklemmt), dann je Knopf ausweichen: der Griff meidet die Lage des Kreuzes, das Kreuz die endgültige des Griffs (Abnahme 11.11.: sonst überlappten die Tippflächen)
       var lagen = [[k.handle, 1], [k.del, -1]].map(function (g) {
         var lx = g[1] * (bw / 2 + GRIFF_UEBERSTAND), ly = g[1] * (bh / 2 + GRIFF_UEBERSTAND);
@@ -1699,6 +1734,19 @@
           var kand = [], best = null, bestD = Infinity;
           punkte.forEach(function (P) { var gx = spalt(qy - P[1]), gy = spalt(qx - P[0]); kand.push([P[0] - gx, qy], [P[0] + gx, qy], [qx, P[1] - gy], [qx, P[1] + gy]); });
           if (belegt) kand.push([belegt[0] - 2 * TIPP_HALB, qy], [belegt[0] + 2 * TIPP_HALB, qy], [qx, belegt[1] - 2 * TIPP_HALB], [qx, belegt[1] + 2 * TIPP_HALB]);
+          // BE2-1: die geschlossenen Kandidaten oben gelten nur ohne Drehung; dazu entlang beider Kanten in 1-px-Schritten die erste freie Lage suchen und die Grenze halbieren
+          [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (u) {
+            var a = 0, b = 0;
+            for (var t = 1; t <= 4000; t++) {
+              var sx = qx + u[0] * t, sy = qy + u[1] * t;
+              if (sx < x0 - 0.01 || sx > x1 + 0.01 || sy < y0 - 0.01 || sy > y1 + 0.01) return;
+              if (frei(sx, sy)) { b = t; break; }
+              a = t;
+            }
+            if (!b) return;
+            for (var j = 0; j < 12; j++) { var mt = (a + b) / 2; if (frei(qx + u[0] * mt, qy + u[1] * mt)) b = mt; else a = mt; }
+            kand.push([qx + u[0] * b, qy + u[1] * b]);
+          });
           kand.forEach(function (c) {
             if (c[0] < x0 - 0.01 || c[0] > x1 + 0.01 || c[1] < y0 - 0.01 || c[1] > y1 + 0.01 || !frei(c[0], c[1])) return;
             var d = Math.hypot(c[0] - qx, c[1] - qy);
@@ -1713,6 +1761,35 @@
         var t = Math.abs(tx) < 0.5 && Math.abs(ty) < 0.5 ? '' : 'translate(' + tx + 'px,' + ty + 'px)';
         if (g[0].style.transform !== t) g[0].style.transform = t;
       });
+    }
+    var TAG_LUFT = 3;   // so viel Luft (px) bleibt zwischen der gehobenen Beschriftung und einem Knopf
+    function schneidet(a, b, m) { return a.left < b.right + m && a.right > b.left - m && a.top < b.bottom + m && a.bottom > b.top - m; }
+    /** BE2-4: In der flachen Bühne und der «Druckversion» sind Löschkreuz und Griff Kinder der gewählten Ebene (z-index 600); die Beschriftung «Druckfläche … cm» liegt darunter (590), damit sie die
+     *  Knöpfe nie verdeckt (BE-4). Deckt die gewählte Ebene die Beschriftung, wäre sie bis zum Abwählen ganz weg (bis 6.4.1 lag sie immer darüber). Darum hebt diese Funktion sie über die Ebene
+     *  (data-oben, 620, unter dem Rahmen 650), aber nur an einer Lage ohne Knopf (TAG_LUFT Abstand): oben links in der Druckfläche wie bisher, sonst so weit nach unten, bis kein Knopf mehr darunter
+     *  liegt, solange sie in der sichtbaren Druckfläche bleibt. Gibt es keine solche Lage, bleibt sie unter der Ebene. In «Bearbeiten» liegen die Knöpfe in der Griffschicht (700) über der Beschriftung
+     *  (590 über dem Host): dort bleibt alles wie bisher. Nur Anzeige: Druckdatei, Vorschau und Warenkorb lesen die Beschriftung nicht. */
+    function tagAusweichen() {
+      var t = ui.tag;
+      if (t.style.transform) t.style.transform = '';
+      if (t.hasAttribute('data-oben')) t.removeAttribute('data-oben');
+      var k = st.sel && knoten[st.sel];
+      if (legacy || t.hidden || !k || k.handle.hidden || ui.stage.getAttribute('data-ansicht') === 'bearbeiten') return;
+      var r = t.getBoundingClientRect();
+      if (!(r.width > 0 && r.height > 0) || !schneidet(r, k.root.getBoundingClientRect(), 0)) return;   // die Ebene deckt die Beschriftung nicht: sie bleibt, wo sie ist
+      var f = ui.frame.getBoundingClientRect(), s = ui.stage.getBoundingClientRect(), unten = Math.min(f.bottom, s.bottom) - 4;   // tiefste Unterkante: 4 px über dem Ende der sichtbaren Druckfläche
+      var knoepfe = [k.del, k.handle].map(function (n) { return n.getBoundingClientRect(); }), dy = 0;
+      for (var i = 0; i < 3; i++) {
+        var lage = { left: r.left, right: r.right, top: r.top + dy, bottom: r.bottom + dy };
+        var im = knoepfe.filter(function (b) { return schneidet(lage, b, TAG_LUFT); });
+        if (!im.length) {
+          if (lage.bottom > unten + 0.5) return;   // passt nicht mehr in die Druckfläche: bleibt unter der Ebene
+          if (dy) t.style.transform = 'translateY(' + dy + 'px)';
+          t.setAttribute('data-oben', '');
+          return;
+        }
+        dy = Math.max.apply(null, im.map(function (b) { return b.bottom + TAG_LUFT; })) - r.top;   // unter den Knopf, der im Weg liegt
+      }
     }
     function chromeAbgleichen() {
       var ueber = !legacy && ui.stage.getAttribute('data-ansicht') === 'bearbeiten';
@@ -2390,7 +2467,7 @@
       root.addEventListener('pointermove', bewegt); handle.addEventListener('pointermove', bewegt);
       root.addEventListener('pointerup', hoch); root.addEventListener('pointercancel', hoch);
       handle.addEventListener('pointerup', hoch); handle.addEventListener('pointercancel', hoch);
-      del.addEventListener('click', function (ev) { ev.stopPropagation(); ebeneEntfernen(e.id); });
+      // Der Klick auf das Löschkreuz wird an der Bühne abgenommen (BE2-6, siehe ui.stage click)
       del.addEventListener('pointerdown', function (ev) { ev.stopPropagation(); });
     }
     function anzeigeLage(e) {
@@ -3402,6 +3479,16 @@
     ui.zoomMinus.addEventListener('click', function () { zoomSetzen(ZOOM_STUFEN.indexOf(st.zoom) - 1); });
     ui.zoomPlus.addEventListener('click', function () { zoomSetzen(ZOOM_STUFEN.indexOf(st.zoom) + 1); });
     ui.stage.addEventListener('pointerdown', function (ev) { if (!ev.target.closest('[data-lid]')) abwaehlen(); });
+    // BE2-6: Den Klick auf das Löschkreuz nimmt die Bühne ab, nicht das Kreuz selbst. Ein Element mit eigenem click-Listener zieht in Chromium (Touch-Anpassung) einen Fingertipp bis rund
+    // 16 px weit an sich, pointerdown eingeschlossen, und die Ebene unter dem Finger zählt dabei nicht (GEMESSEN 11.11.: ein Tipp auf eine kleine Ebene löschte sie, auf die Mitte ab Radius 16,
+    // am Rand zum Kreuz schon ab Radius 1; auf der Produktbühne seit 6.4.0). Hört die Bühne zu, sind Ebene und Kreuz gleichrangig und es gewinnt, was unter dem Finger liegt.
+    // Ablauf und Wirkung eines Klicks auf das Kreuz bleiben wie bis 6.4.2 (pointerup, dann click, dann ebeneEntfernen); der click läuft wie bisher nicht über die Bühne hinaus.
+    ui.stage.addEventListener('click', function (ev) {
+      var d = ev.target && ev.target.closest ? ev.target.closest('.lsp6-del') : null;
+      if (!d) return;
+      var liste = ebenenAktiv();
+      for (var i = 0; i < liste.length; i++) { var k = knoten[liste[i].id]; if (k && k.del === d) { ev.stopPropagation(); ebeneEntfernen(liste[i].id); return; } }
+    });
 
     ui.addText.addEventListener('click', function () { ui.picker.hidden = true; ebeneHinzufuegen(neuerText()); ui.textfeld.focus(); });
     ui.addSticker.addEventListener('click', function () { ui.pText.hidden = true; ui.picker.hidden = !ui.picker.hidden; stickerListeLaden(); });
@@ -3544,6 +3631,29 @@
     ui.btnReset.addEventListener('click', function () { var e = gewaehltesBild(); if (e) { e.edit = neueBearbeitung(); filterKnoepfeSetzen(e); bildUebernehmen(e); } });
     ui.btnCrop.addEventListener('click', function () { var e = gewaehltesBild(); if (e) zuschneiden(e); });
 
+    /** 6.4.2 (BE2-5): Tastatur für Zuschneiden und «Druck-Vorschau anzeigen» wie beim Prüfdialog. Tab und Umschalt+Tab bleiben im Dialog (vom letzten zum ersten Element und zurück, vom Dialog selbst
+     *  zum ersten bzw. letzten). Liegt der Fokus ausserhalb (BODY, Seite dahinter), schliesst Esc den Dialog, und Tab/Umschalt+Tab holen den Fokus zurück. Esc im Dialog bleibt beim eigenen Handler
+     *  des Dialogs. Gibt eine Funktion zurück, die den Handler am Dokument wieder entfernt (beim Schliessen). Druckdatei und Warenkorb berührt das nicht. */
+    function dialogFalle(modal, zu) {
+      function bedienbar() { return Array.prototype.filter.call(modal.querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])'), function (n) { return !n.disabled && !n.hidden && n.offsetParent !== null; }); }
+      function tab(ev) {
+        var f = bedienbar();
+        if (!f.length) { ev.preventDefault(); return; }
+        var i = f.indexOf(document.activeElement);
+        if (i < 0) { ev.preventDefault(); (ev.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+        else if (ev.shiftKey && i === 0) { ev.preventDefault(); f[f.length - 1].focus(); }
+        else if (!ev.shiftKey && i === f.length - 1) { ev.preventDefault(); f[0].focus(); }
+      }
+      function amDokument(ev) {
+        if (!modal.parentNode) { document.removeEventListener('keydown', amDokument, true); return; }
+        if (modal.contains(ev.target)) return;
+        if (ev.key === 'Escape') { ev.preventDefault(); zu(); return; }
+        if (ev.key === 'Tab') tab(ev);
+      }
+      modal.addEventListener('keydown', function (ev) { if (ev.key === 'Tab') tab(ev); });
+      document.addEventListener('keydown', amDokument, true);
+      return function () { document.removeEventListener('keydown', amDokument, true); };
+    }
     /** Zuschneiden: Rahmen auf dem Originalbild ziehen (Ausschnitt in Anteilen des Originals). */
     function zuschneiden(e) {
       bildLaden(e.origSrc || e.src).then(function () {
@@ -3594,9 +3704,11 @@
         [rahmen, griff].forEach(function (n) {
           n.addEventListener('pointermove', ziehen); n.addEventListener('pointerup', loslassen); n.addEventListener('pointercancel', loslassen);
         });
-        function zu() { modal.remove(); }
+        var los = null;
+        function zu() { if (los) los(); modal.remove(); }
         abbruch.addEventListener('click', zu);
         modal.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') zu(); });
+        los = dialogFalle(modal, zu);   // 6.4.2 (BE2-5)
         ok.addEventListener('click', function () {
           var m = bildMass(), r = lesen();
           e.edit.cx0 = Math.max(0, r.x / m.w); e.edit.cy0 = Math.max(0, r.y / m.h);
@@ -3690,9 +3802,11 @@
         var ruck = el('div', { class: 'lsp6-checker' + (grund === 'dunkel' ? ' lsp6-checker-dunkel' : ''), 'data-grund': grund === 'dunkel' ? 'dunkel' : 'hell' }, [el('img', { src: url, alt: '', style: 'display:block;max-width:82vw;max-height:58vh' })]);
         modal.appendChild(ruck);
         var zuBtn = el('button', { type: 'button', class: 'go', text: T.close });
-        function zu() { modal.remove(); try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } }
+        var los = null;
+        function zu() { if (los) los(); modal.remove(); try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } }
         zuBtn.addEventListener('click', zu);
         modal.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') zu(); });
+        los = dialogFalle(modal, zu);   // 6.4.2 (BE2-5)
         modal.appendChild(zuBtn);
         document.body.appendChild(modal);
         zuBtn.focus();
@@ -3729,9 +3843,13 @@
     /** Jede inhaltliche Aenderung entwertet auch eine noch im Aufbau befindliche Pruefung. */
     function reviewAenderung() {
       st.beruehrt = true;   // der Kunde hat etwas geändert: die Ansicht springt nicht mehr von selbst (Vorschaudaten, die später eintreffen)
+      leerHinweisOffen = '';   // KA2-01: nach einer Änderung gilt der alte Hinweis nicht mehr
       if (reviewBaut || review || reviewModal) reviewAufraeumen(false, T.reviewChanged);
       else reviewNr++;
     }
+    /** 6.4.2 (RO2-01): die Kundin schliesst den Prüfdialog selbst («Weiter gestalten», Esc, Klick daneben). Der Hinweis auf entfernte leere Ebenen bleibt sichtbar stehen, gilt aber für einen
+     *  späteren Durchgang nicht mehr (der entfernt nichts Neues; eine späte Antwort «ausverkauft» nennt dann nur den Grund). */
+    function reviewSchliessen() { leerHinweisOffen = ''; reviewAufraeumen(true, ''); }
     function mitFrist(arbeit, ms, rueckfall) {
       return new Promise(function (fertig) {
         var aus = false;
@@ -3802,11 +3920,11 @@
       r.modal = modal; r.accept = akzept; r.confirm = bestaetigen;
       reviewModal = modal;
       akzept.addEventListener('change', function () { bestaetigen.disabled = !akzept.checked; });
-      zurueckBtn.addEventListener('click', function () { reviewAufraeumen(true, ''); });
+      zurueckBtn.addEventListener('click', reviewSchliessen);
       bestaetigen.addEventListener('click', function () { if (akzept.checked) reviewBestaetigen(r); });
-      modal.addEventListener('click', function (ev) { if (ev.target === modal) reviewAufraeumen(true, ''); });
+      modal.addEventListener('click', function (ev) { if (ev.target === modal) reviewSchliessen(); });
       modal.addEventListener('keydown', function (ev) {
-        if (ev.key === 'Escape') { ev.preventDefault(); reviewAufraeumen(true, ''); return; }
+        if (ev.key === 'Escape') { ev.preventDefault(); reviewSchliessen(); return; }
         if (ev.key !== 'Tab') return;
         var fokus = Array.prototype.filter.call(modal.querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])'), function (n) { return !n.disabled && !n.hidden && n.offsetParent !== null; });
         if (!fokus.length) { ev.preventDefault(); return; }
@@ -3851,7 +3969,7 @@
     function reviewBestaetigen(r) {
       varianteGeprueft();
       if (r !== review || !r.accept.checked || !reviewStandGueltig(r.stand, aktuellerReviewStand())) { reviewAufraeumen(true, T.reviewChanged); return; }
-      if (ausverkauft()) { reviewAufraeumen(true, T.soldOut); return; }   // 6.4.2 (KA-01): die Lagerantwort kann erst eingetroffen sein, als der Dialog schon offen war oder gebaut wurde: kein Upload, kein Warenkorb
+      if (ausverkauft()) { reviewAufraeumen(true, mitLeerHinweis(T.soldOut)); return; }   // 6.4.2 (KA-01): die Lagerantwort kann erst eingetroffen sein, als der Dialog schon offen war oder gebaut wurde: kein Upload, kein Warenkorb
       r.confirm.disabled = true;
       eingefroren = { sv: r.stand.sv, pv: r.stand.pv };
       if (reviewModal && reviewModal.parentNode) reviewModal.parentNode.removeChild(reviewModal);
@@ -3901,7 +4019,8 @@
       if (eingefroren || reviewBaut || review) return;
       varianteGeprueft();
       var leerEntfernt = leereTextebenenEntfernen();   // 6.4.2 (E1): leere Textebenen neben anderem Inhalt sind weg, bevor die Prüfkette läuft
-      var leerHinweis = !leerEntfernt ? '' : leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone;
+      if (leerEntfernt) leerHinweisOffen = leerEntfernt > 1 ? T.emptyGoneMany : T.emptyGone;   // KA2-01: ohne neue Entfernung bleibt ein noch gültiger Hinweis des letzten Klicks (Abbruch «ausverkauft» und Neu-Lesen, KA-02); RO2-01: nach dem Schliessen des Dialogs durch die Kundin nicht mehr
+      var leerHinweis = leerHinweisOffen;
       /** 6.4.2 (KA-03, RO-5): bricht die Prüfung nach dem Aufräumen ab, steht der Hinweis auf die entfernte Ebene hinter dem Grund (sonst verschwände sie ohne Erklärung). */
       function abbruch(text) { meldung(leerHinweis ? text + ' ' + leerHinweis : text, 'err'); }
       var fremde = fremdeMitEbenen();
@@ -3954,7 +4073,7 @@
     document.addEventListener('keydown', function (ev) {
       var m = reviewModal;
       if (!m || !m.parentNode || m.contains(ev.target)) return;
-      if (ev.key === 'Escape') { ev.preventDefault(); reviewAufraeumen(true, ''); return; }
+      if (ev.key === 'Escape') { ev.preventDefault(); reviewSchliessen(); return; }
       if (ev.key !== 'Tab') return;
       var fokus = Array.prototype.filter.call(m.querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])'), function (n) { return !n.disabled && !n.hidden && n.offsetParent !== null; });
       if (!fokus.length) return;
@@ -4166,8 +4285,10 @@
         // Die Vorschaudaten blockieren den Start nicht (höchstens VORSCHAU_WARTE_MS nach der Karte); ohne sie (oder im v5-Modus) bleibt der Editor, wie er ist.
         // Sind sie schon da (6.4.2), werden sie im selben Durchlauf gesetzt, also vor dem ersten Zeichnen; sonst nachträglich wie bisher.
         if (karte) {
-          if (vorschauRoh !== undefined) { if (vorschauRoh) { try { editor.vorschauDatenSetzen(vorschauRoh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } }   // KA-05/BE-2: optionale Daten; eine Ausnahme hier sperrt nie Editor und Warenkorb (wie bis 6.4.1)
-          else vorschauVersprechen.then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });
+          // KA-05/BE-2, RO2-02: optionale Daten; eine Ausnahme beim Setzen sperrt nie Editor und Warenkorb und geht als Warnung in die Konsole, rechtzeitig wie verspätet (bis 6.4.1 im then ohne Fehlergrenze: unbehandelte Ablehnung)
+          var vorschauSetzen = function (roh) { if (roh) { try { editor.vorschauDatenSetzen(roh); } catch (ve) { warnung('Vorschaudaten nicht gesetzt: ' + (ve && ve.message)); } } };
+          if (vorschauRoh !== undefined) vorschauSetzen(vorschauRoh);
+          else vorschauVersprechen.then(vorschauSetzen);
         }
       } catch (err) {
         if (container.getAttribute('data-karte-pflicht') === '1') {

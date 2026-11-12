@@ -384,6 +384,35 @@ test('editor_release_bauen (Kommandozeile): schreibt, --pruefen schl채gt bei ge�
     assert.equal(cli('--pruefen', '--version', '6.4.1').status, 1);
   } finally { rmSync(t, { recursive: true, force: true }); }
 });
+test('editor_release_bauen (Kommandozeile, RO2-05): --pruefen mit --vorgaenger verlangt genau diese Vorg채nger in der Datei', () => {
+  const t = mkdtempSync(join(tmpdir(), 'v64-vorg-'));
+  try {
+    mkdirSync(join(t, 'pod/v6'), { recursive: true });
+    for (const [v, text] of Object.entries({ '6.3.0': 'a', '6.3.1': 'b', '6.4.0': 'c', '6.4.1': 'd', '6.4.2': 'e' })) writeFileSync(join(t, `pod/v6/lspod-designer-v6-${v}.js`), text);
+    const out = join(t, 'er.json');
+    const cli = (...a) => spawnSync(process.execPath, [HIER + 'editor_release_bauen.mjs', '--root', t, '--out', out, ...a], { encoding: 'utf8', timeout: 20000 });
+    const LISTE = '6.3.0,6.3.1,6.4.0,6.4.1';
+    const w = cli('--version', '6.4.2', '--vorgaenger', LISTE); assert.equal(w.status, 0, w.stderr);
+    const ok = cli('--pruefen', '--version', '6.4.2', '--vorgaenger', LISTE);
+    assert.equal(ok.status, 0, ok.stderr);
+    assert.equal(cli('--pruefen', '--version', '6.4.2').status, 0, 'ohne --vorgaenger bleibt die Pr체fung wie bisher (Bytes und Version)');
+    for (const andere of ['6.3.0', '6.3.0,6.3.1,6.4.0', '9.9.9', '6.3.1,6.3.0,6.4.0,6.4.1', '6.3.0,6.3.1,6.4.0,6.4.1,6.4.0']) {
+      const p = cli('--pruefen', '--version', '6.4.2', '--vorgaenger', andere);
+      assert.equal(p.status, 1, `--vorgaenger ${andere} gegen eine Datei mit ${LISTE} muss scheitern`);
+      assert.match(p.stderr, /Vorg채nger 6\.3\.0, 6\.3\.1, 6\.4\.0, 6\.4\.1 statt /);
+    }
+    const json = JSON.parse(readFileSync(out, 'utf8'));
+    for (const weg of ['6.4.1', '6.3.0']) {
+      writeFileSync(out, editorReleaseText({ ...json, vorgaenger: json.vorgaenger.filter((v) => v.version !== weg) }));
+      const vorher = readFileSync(out, 'utf8');
+      const p = cli('--pruefen', '--version', '6.4.2', '--vorgaenger', LISTE);
+      assert.equal(p.status, 1, `Datei ohne Vorg채nger ${weg} blieb beim CI-Aufruf gr체n`);
+      assert.match(p.stderr, /statt 6\.3\.0, 6\.3\.1, 6\.4\.0, 6\.4\.1/);
+      assert.equal(readFileSync(out, 'utf8'), vorher, '--pruefen darf nichts schreiben');
+    }
+    assert.match(ok.stdout, /Ziel 6\.4\.2, 4 Vorg채nger: 6\.3\.0, 6\.3\.1, 6\.4\.0, 6\.4\.1\)/, 'Meldung nennt die Vorg채nger der Datei, nicht die Zahl der Argumente');
+  } finally { rmSync(t, { recursive: true, force: true }); }
+});
 
 // ---- Eingaben, Best채tigungen, Canary-Tabelle ------------------------------------------------------------
 const ALLE_ACKS = ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE',

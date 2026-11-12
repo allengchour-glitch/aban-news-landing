@@ -74,8 +74,11 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       const json = JSON.parse(readFileSync(out, 'utf8'));
       const abw = editorReleaseAbgleichen(json, { root });
       if (o.version && json.version !== o.version) abw.push(`Version ${json.version} statt ${o.version}`);
+      // RO2-05: eine übergebene Vorgängerliste muss genau (Reihenfolge eingeschlossen) die der Datei sein, wie ein Neubau mit denselben Argumenten.
+      const istVorg = Array.isArray(json.vorgaenger) ? json.vorgaenger.map((v) => (v && v.version) || '?') : [];
+      if (o.vorgaenger && istVorg.join(',') !== vorgaenger.join(',')) abw.push(`Vorgänger ${istVorg.join(', ') || '-'} statt ${vorgaenger.join(', ')}`);
       if (abw.length) { console.error(`editor-release.json weicht von den Dateien ab:\n- ${abw.join('\n- ')}\nNeu erzeugen: node editor_release_bauen.mjs`); process.exit(1); }
-      console.log(`editor-release.json ist konsistent (Ziel ${version}, ${vorgaenger.length} Vorgänger)`);
+      console.log(`editor-release.json ist konsistent (Ziel ${json.version}, ${istVorg.length} Vorgänger: ${istVorg.join(', ')})`);
     } else {
       const er = editorReleaseErzeugen({ root, version, vorgaenger });
       writeFileSync(out, editorReleaseText(er));

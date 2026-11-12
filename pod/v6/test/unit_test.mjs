@@ -907,8 +907,10 @@ if (SOLL_VERSION >= '6.4.2') {
   {
     const q = readFileSync(V6_DATEI, 'utf8');
     const z = (sel) => { const m = new RegExp("'" + sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "\\{[^']*?z-index:(\\d+)").exec(q); return m ? Number(m[1]) : NaN; };
-    const w = { frame: z('.lsp6-frame'), sel: z('.lsp6-layer.sel'), tag: z('.lsp6-tag'), veil: z('.lsp6-veil'), chrome: z('.lsp6-chrome-host') };
+    const w = { frame: z('.lsp6-frame'), tagOben: z('.lsp6-tag[data-oben]'), sel: z('.lsp6-layer.sel'), tag: z('.lsp6-tag'), veil: z('.lsp6-veil'), chrome: z('.lsp6-chrome-host') };
     pruefe('Stapelfolge: Rahmen > gewählte Ebene > Beschriftung > Vorhang, Griffschicht > Beschriftung', w.frame > w.sel && w.sel > w.tag && w.tag > w.veil && w.chrome > w.tag, JSON.stringify(w));
+    // BE2-4 (zweite Korrekturrunde): die gehobene Beschriftung (data-oben, nur an einer Lage ohne Knopf) liegt über der gewählten Ebene und unter dem Rahmen
+    pruefe('Stapelfolge BE2-4: Rahmen > gehobene Beschriftung > gewählte Ebene', w.frame > w.tagOben && w.tagOben > w.sel, JSON.stringify(w));
   }
   // BE-3 (Korrekturrunde 11.11.): Startgrössen und Knöpfe liegen im Raster des Schiebers «Grösse» (Minimum und Schritt aus dem Quelltext)
   {
@@ -933,11 +935,11 @@ if (SOLL_VERSION >= '6.4.2') {
   pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '96eff4192f344f963a380d5a45981fb330ae202978ef0dd62b3cd1a45818708b' && v641.length === 279455, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
 }
 
-// 6.4.2 (eingefroren am 10.11.2026, nach der Korrekturrunde vom 11.11.2026 neu eingefroren): wie 6.4.1 — jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash. Der Test läuft nur gegen die Datei im Repo
+// 6.4.2 (eingefroren am 10.11.2026, nach der Korrekturrunde und der zweiten Korrekturrunde vom 11.11.2026 neu eingefroren): wie 6.4.1, jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash. Der Test läuft nur gegen die Datei im Repo
 // (V6_DATEI zeigt bei der Mutationsprobe auf eine Kopie, die Datei im Repo bleibt die geprüfte). editor-release-6.4.2.json trägt dieselbe Prüfsumme (CI: editor_release_bauen.mjs --pruefen).
 {
   const v642 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.2.js'));
-  pruefe('v6.4.2 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v642).digest('hex') === 'd5d15060fdc17ce4920913623b1e851229ac539e7babd09a0d9e3d3045954ed3' && v642.length === 304527, `${createHash('sha256').update(v642).digest('hex').slice(0, 12)} ${v642.length}`);
+  pruefe('v6.4.2 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v642).digest('hex') === '7d4c3639d310bc2a5592f6a8d21a6e347f1875bd7eeb3b8177aee7af5faf35ff' && v642.length === 316496, `${createHash('sha256').update(v642).digest('hex').slice(0, 12)} ${v642.length}`);
 }
 
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
