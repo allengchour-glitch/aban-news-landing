@@ -2236,3 +2236,9 @@ SECO/KMU, Shopify-Lieferantenprüfung und TikTok-Creatives am 11.11.2026 als Art
 Vier R176-Projektor-UUIDs gezielt als Entwürfe mit Autopublish aus bestätigt; numerische IDs IG426033327/FB426034581/TT426034638/YT426038749. YouTube war neu fremd aktiviert, keine Premiumfreigabe. Beauty-Collection nur im Intro live geändert und mobil/öffentlich bestätigt. VfffLv-Vorschautext mangels belegtem Connector-Schreibvertrag offen, kein Flowwrite. Heutige Morgenreports wiederverwendet; andere Abläufe veröffentlichten12Kanalzustände, keine eigenen Publikationen. IG/FB/TT/PI/Threads technisch12.–19.11 abgedeckt, YT15.–19.11 offen. Neuer professioneller Film weiterhin blockiert; Aufnahmekarte und sechsUTMs geliefert. [Paket](CONTENT-VERKAUFSPAKET-20261112-R185.md) · [Beleg](IMPLEMENTIERUNG-20261112-R185.json). Bestehendes Register/Historie erhalten, Claude-Empfang dieses Pakets unbekannt.
 
 [LUXESTYLE_R185_20261112]
+
+## R186 – 12.11.2026: Doppelpost-Hinweis geprüft
+
+TikTok: Uhr06./11.11., Waschbär07./10.11. und Rucksack08./12.11. jeweils mit wortgleicher Original-Caption als Foto und späteres Video bestätigt. Beim Waschbär ist Foto2 auch im4s-Videoframe sichtbar; kein Nachweis derselben vollständigen MP4 oder eines technischen Doppelversands. Geschenkaktion11.11. auf IG/FB als Reel und Karussell thematisch wiederholt.51 veröffentlichte Objekte/68 Kanalzustände und53 kommende Objekte begrenzt geprüft; kein exakter Text-/URL-/Produktlink-Treffer veröffentlicht→künftig aktiv, aber keine vollständige visuelle/ältere Historie.0 Plattformänderungen, keine Löschung, Tagesreports nicht wiederholt; vier R176-Holds weiterhin Draft. [Bericht](DOPPELPOST-PRUEFUNG-20261112-R186.md) · [Beleg](DOPPELPOST-PRUEFUNG-20261112-R186.json). Prüfanweisung für Claude dokumentiert, kein neuer deployter Guard; Empfang unbekannt.
+
+[LUXESTYLE_R186_20261112]

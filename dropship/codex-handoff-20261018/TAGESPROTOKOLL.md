@@ -2141,3 +2141,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Gedächtnis / Beleg | R185-Paket, Tagesblock, Revision185 und vorhandenes Draftregister additiv gesichert | Vorherhistorie und stabile Aufgaben-/Master-/UUID-Identitäten erhalten; Claude-Empfang fürR185 unbekannt |
 
 [LUXESTYLE_R185_20261112] [Paket](CONTENT-VERKAUFSPAKET-20261112-R185.md) · [Beleg](IMPLEMENTIERUNG-20261112-R185.json).
+
+### R186 – Doppelpost-Hinweis des Besitzers
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Historie / Planung | Frische Identitäten und acht kleine Planungs-/Historienabfragen06.–19.11. geprüft;134 Kanalzeilen lokal verglichen |68 PUBLISHED,57 künftig mit aktiven globalen Flags,9 Draft/non-autopublish; keine vollständige ältere oder visuelle Historie |
+| Wiederholungen | Drei originale TikTok-Captionpaare direkt verglichen | Uhr06./11., Waschbär07./10. und Rucksack08./12. wortgleich; Foto zu Video. Technischer Doppelversand unbekannt |
+| Bildprüfung | Zwei Fotos und eine MP4 gezielt geladen/gehasht; Foto2 und4s-Videoframe tatsächlich betrachtet | Waschbär-Foto wiederverwendet; kein vollständiger Filmvergleich und kein neuer Kreativrender |
+| Gegenprobe / Grenzen | Geschenkaktion11.11. und Gemüsehobel13.11. als verschiedene Formate getrennt bewertet; kommende Planung mit publizierten Daten abgeglichen | Keine exakte Text-/Medien-URL-/Produktlink-Paarung veröffentlicht→künftig aktiv; keine pauschale Duplikatfreiheit. Vier R176-Holds weiterhin Draft |
+| Dokumentation | Belegte Fälle und umfassendere Prüfregel für Claude gespeichert | Keine Plattformwrites/Löschung/Terminänderung, keine Tagesreport-Wiederholung; kein neuer deployter Guard und Claude-Empfang unbekannt |
+
+[LUXESTYLE_R186_20261112] [Bericht](DOPPELPOST-PRUEFUNG-20261112-R186.md) · [Beleg](DOPPELPOST-PRUEFUNG-20261112-R186.json).
