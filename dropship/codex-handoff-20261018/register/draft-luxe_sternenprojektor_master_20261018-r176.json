@@ -48,8 +48,9 @@
     "rueckholHits": [],
     "variants": "A_to_G",
     "exactVariantBinding": null,
-    "collectionAusTiktokUndInstagram": false,
-    "releaseEligible": false
+    "collectionAusTiktokUndInstagram": true,
+    "releaseEligible": false,
+    "collectionVerifiedAt": "2026-11-12T13:05:48Z"
   },
   "rightsGate": {
     "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
@@ -74,12 +75,13 @@
   "channelDrafts": [
     {
       "network": "instagram",
-      "metricoolId": 424123014,
+      "metricoolId": 426033327,
       "uuid": "4156060813550767248",
       "draftDate": "2026-11-16T19:00:00+01:00",
       "remoteMediaUrlSuffix": "17906828818888044629.mp4",
       "networkSettings": {
-        "contentType": "REEL"
+        "contentType": "REEL",
+        "autoPublish": false
       },
       "timezone": "Europe/Zurich",
       "status": "PENDING",
@@ -89,12 +91,20 @@
       "published": false,
       "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "remoteMediaByteIdentical": true,
-      "previousMetricoolId": 424110822,
-      "remoteColorMetadata": "bt709/tv"
+      "previousMetricoolId": 424392901,
+      "remoteColorMetadata": "bt709/tv",
+      "metricoolIdHistory": [
+        424110822,
+        424123014,
+        424392901,
+        426033327
+      ],
+      "lastReadbackAt": "2026-11-12T18:10:25.555997+00:00",
+      "remoteMediaUrl": "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
     },
     {
       "network": "facebook",
-      "metricoolId": 424123199,
+      "metricoolId": 426034581,
       "uuid": "6680239273933357186",
       "draftDate": "2026-11-16T19:00:00+01:00",
       "remoteMediaUrlSuffix": "12120062633045835946.mp4",
@@ -109,12 +119,20 @@
       "published": false,
       "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "remoteMediaByteIdentical": true,
-      "previousMetricoolId": 424111092,
-      "remoteColorMetadata": "bt709/tv"
+      "previousMetricoolId": 424392994,
+      "remoteColorMetadata": "bt709/tv",
+      "metricoolIdHistory": [
+        424111092,
+        424123199,
+        424392994,
+        426034581
+      ],
+      "lastReadbackAt": "2026-11-12T18:10:25.555997+00:00",
+      "remoteMediaUrl": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
     },
     {
       "network": "tiktok",
-      "metricoolId": 424123388,
+      "metricoolId": 426034638,
       "uuid": "3614365779669041576",
       "draftDate": "2026-11-17T19:00:00+01:00",
       "remoteMediaUrlSuffix": "14707599990910049871.mp4",
@@ -130,12 +148,20 @@
       "published": false,
       "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "remoteMediaByteIdentical": true,
-      "previousMetricoolId": 424111358,
-      "remoteColorMetadata": "bt709/tv"
+      "previousMetricoolId": 424393517,
+      "remoteColorMetadata": "bt709/tv",
+      "metricoolIdHistory": [
+        424111358,
+        424123388,
+        424393517,
+        426034638
+      ],
+      "lastReadbackAt": "2026-11-12T18:10:25.555997+00:00",
+      "remoteMediaUrl": "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
     },
     {
       "network": "youtube",
-      "metricoolId": 424123545,
+      "metricoolId": 426038749,
       "uuid": "-7647174116509334899",
       "draftDate": "2026-11-19T19:00:00+01:00",
       "remoteMediaUrlSuffix": "5018391867237613111.mp4",
@@ -151,14 +177,22 @@
       "published": false,
       "remoteMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "remoteMediaByteIdentical": true,
-      "previousMetricoolId": 424111650,
-      "remoteColorMetadata": "bt709/tv"
+      "previousMetricoolId": 425725830,
+      "remoteColorMetadata": "bt709/tv",
+      "metricoolIdHistory": [
+        424111650,
+        424123545,
+        425725830,
+        426038749
+      ],
+      "lastReadbackAt": "2026-11-12T18:10:25.555997+00:00",
+      "remoteMediaUrl": "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
     }
   ],
   "checkpoint": {
-    "state": "DRAFTS_CONFIRMED_NOT_PUBLISHED",
-    "documentedAt": "2026-11-11T09:16:00+01:00",
-    "rule": "These objects remain draft=true and autoPublish=false. PENDING plus a stored planner date is not evidence of scheduling or publication. Open product binding, collection, rights and master-acceptance gates block release. Unknown history blocks blind replacement or retry."
+    "state": "QUALITY_HOLD_FOUR_DRAFTS_CONFIRMED",
+    "documentedAt": "2026-11-12T18:10:25.555997+00:00",
+    "rule": "All four stable UUIDs confirmed draft=true/autoPublish=false after explicit implementation. Variant/source/premium/music/archival gates remain open; no blind reactivation. Unknown earlier publication history preserved."
   },
   "history": [
     {
@@ -176,6 +210,127 @@
     {
       "at": "2026-11-11T09:16:00+01:00",
       "event": "Independent QA found incomplete colour signalling. The same film was re-exported with BT.709/tv metadata and the same four UUIDs were updated. Metricool assigned new numeric IDs; all objects remained PENDING drafts with autoPublish=false. One first Instagram update payload was rejected before mutation because it contained extraneous default Twitter data; a targeted readback confirmed the original object unchanged before the corrected update. No replacement post was created."
+    },
+    {
+      "at": "2026-11-12T18:10:25.555997+00:00",
+      "event": "R185: four targeted draft holds read back independently; numerical IDs updated under unchanged UUIDs. YouTube had been externally activated since afternoon and was held too. Collection membership now verified; quality approval remains false.",
+      "evidence": "IMPLEMENTIERUNG-20261112-R185.json",
+      "channelChanges": [
+        {
+          "network": "instagram",
+          "uuid": "4156060813550767248",
+          "oldMetricoolId": 424392901,
+          "newMetricoolId": 426033327,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+          ],
+          "textSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": false
+        },
+        {
+          "network": "facebook",
+          "uuid": "6680239273933357186",
+          "oldMetricoolId": 424392994,
+          "newMetricoolId": 426034581,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+          ],
+          "textSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": null
+        },
+        {
+          "network": "tiktok",
+          "uuid": "3614365779669041576",
+          "oldMetricoolId": 424393517,
+          "newMetricoolId": 426034638,
+          "publicationDate": {
+            "dateTime": "2026-11-17T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+          ],
+          "textSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": null
+        },
+        {
+          "network": "youtube",
+          "uuid": "-7647174116509334899",
+          "oldMetricoolId": 425725830,
+          "newMetricoolId": 426038749,
+          "publicationDate": {
+            "dateTime": "2026-11-19T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+          ],
+          "textSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+          "textMediaDateUnchanged": true,
+          "youtubeData": {
+            "title": "Sternenlicht-Projektor im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "sternlicht",
+              "lichtmomente",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          },
+          "instagramAutoPublish": null
+        }
+      ]
     }
   ]
 }

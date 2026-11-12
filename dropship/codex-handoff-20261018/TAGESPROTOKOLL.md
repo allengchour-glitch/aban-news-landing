@@ -2120,3 +2120,24 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Übergabe | R184 und eigenen Vorher-Screenshot additiv gespeichert | Revision184/24 Aufgaben; keine Plattformwrites/Render/Automation, Claude-Empfang unbekannt |
 
 [LUXESTYLE_R184_20261111] [Bericht](WEBSITE-VERGLEICH-20261111-R184.md).
+
+
+## 12.11.2026
+
+### R185 – konsolidierter Abendstand, Morgen-/Nachmittagsprüfung und freigegebene Umsetzung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Konten | Vor jedem Lauf Übergaben gelesen; Shop und sechs Metricool-Kanäle frisch gebunden | luxestyle.ch/CHF/CH und6227837/EuropeZurich PASS; alte Kennzahlberichte nicht neu abgerufen |
+| Kennzahlen / Klaviyo morgens |05.–11.11 einmalig sechs Definition-/sechs Datenabfragen und nach W7XTVD einen Flowreport gelesen | Teilreihen/null unbekannt; zwei zugestellte Flow-Mailzeilen, keine Klicks/zugeordneten Conversions; keine Verkaufs-/Syncableitung; USD/CHF getrennt |
+| Produkte / Collection | Zwei Produkte eng Admin/Storefront/Bilder/Guard geprüft; nachmittags Collection direkt gegengeprüft | ACTIVE/kaufbar, untracked/CONTINUE/q0; ProjektorCollectionhasProduct=true; Filmvariante und Organizerbildbeschriftung offen |
+| Planung / fremde Auslieferung | Kleine Tagesfenster und Zustandswechsel gelesen | Zum Abend9bestehende Objekte/12PUBLISHED-Kanalzustände mit Plattformbelegen; keine eigene Publikation. Andere18./19.-Fotoaktivierungen sind keine eigene Umsetzung oder Qualitätsabnahme |
+| R176-Identität | Vier unterschiedliche MedienURLs morgens streamend gehasht, später URLs verglichen | Alle5'535'209Bytes/SHAfac2f767…27df6a; technische18sMP4 mit negativer Premiumprüfung, kein neuer Master |
+| Metricool-Umsetzung | Vier bestehende UUIDs gezielt auf Draft/Autopublish aus gesetzt und je Kanal zurückgelesen | IG426033327/FB426034581/TT426034638/YT426038749; UUID/Datum/Text/Medien erhalten. Genau4erfolgreicheUpdates/0Creates. Ein optionaler Uploadparameterfehler, Original unverändert gegengeprüft, danach korrigiert;0blindeRetries |
+| Beauty live | Nur descriptionHtml von Collection687698313601 mit einem Write geändert | Sachlicher Intro+Organizerlink+Rückgabebedingungen; ls-verwandt bytegleich, CHF50 und Schutzfelder erhalten; Admin/HTTP/390×844+360×800 live PASS; erste Locatorfehler später begrenzt erfolgreich gegengeprüft, kein Write-Retry |
+| Klaviyo-Umsetzung | VfffLv vor Write frisch gelesen und Connectorvertrag geprüft | Vorschautextänderung vor Dispatch blockiert;0Writes. SPNjDp und Flowstatus unverändert |
+| Master / Content | Denselben18sMaster mit25sOriginal-Aufnahmekarte,zweiHooks und sechs vollständigenUTMs versioniert | Storyboard/Produktionsvorbereitung, keine neue professionelle MP4, kein Render/Upload |
+| Siebentage-Grenze | Technische Abdeckung nach Holds bewertet | IG/FB/TT/Pinterest/Threads12.–19.11; YouTube15.–19.11 offen. Keine Qualität oder kompletten Historien daraus abgeleitet |
+| Gedächtnis / Beleg | R185-Paket, Tagesblock, Revision185 und vorhandenes Draftregister additiv gesichert | Vorherhistorie und stabile Aufgaben-/Master-/UUID-Identitäten erhalten; Claude-Empfang fürR185 unbekannt |
+
+[LUXESTYLE_R185_20261112] [Paket](CONTENT-VERKAUFSPAKET-20261112-R185.md) · [Beleg](IMPLEMENTIERUNG-20261112-R185.json).

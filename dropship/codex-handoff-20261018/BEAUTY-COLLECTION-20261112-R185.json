@@ -1,0 +1,44 @@
+{
+  "collectionId": "gid://shopify/Collection/687698313601",
+  "url": "https://luxestyle.ch/collections/beauty-selfcare",
+  "shopDomain": "luxestyle.ch",
+  "currency": "CHF",
+  "writeCount": 1,
+  "writeFields": [
+    "descriptionHtml"
+  ],
+  "writeConfirmedAt": "2026-11-12T18:03:23Z",
+  "beforeSha256": "bc2e0147829b0016b0dd16963034b896cf92049e24ec8e44150c1a8a41f6cdc4",
+  "afterSha256": "8ea71cab4df02f65dde2606947adae8a1633c24f1a0d7b50fd5f0f12f548c436",
+  "actualChangedFields": [
+    "descriptionHtml",
+    "updatedAt"
+  ],
+  "relatedRestByteEqual": true,
+  "previewStatus": "pass",
+  "publicStatus": "pass",
+  "publicResponseDates": [
+    "Thu, 12 Nov 2026 18:05:54 GMT",
+    "Thu, 12 Nov 2026 18:05:53 GMT"
+  ],
+  "protectedFieldsUnchanged": [
+    "id",
+    "title",
+    "handle",
+    "imageUrl",
+    "imageAltText",
+    "sortOrder",
+    "collectionType",
+    "rules",
+    "currencyCode",
+    "productsCount",
+    "products"
+  ],
+  "knownLimitations": [
+    "temporary_private_evidence",
+    "no_conversion_or_ranking_effect_measured",
+    "first_browser_readback_timed_out_before_later_successful_public_reads"
+  ],
+  "noOtherShopObjectsWritten": true,
+  "repositoryEdits": false
+}

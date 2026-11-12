@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 184,
-  "updatedAt": "2026-11-11T20:17:36.953989+01:00",
+  "revision": 185,
+  "updatedAt": "2026-11-12T18:10:25.555997+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,23 +16,21 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-11",
-    "currentDayEvidenceKind": "R175_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_KLAVIYO_FLOW_REPORT_AND_NARROW_SEO_READ_ONLY",
-    "currentDayEvidence": "Vor Abfragen Revision174, Projektgedächtnis, Arbeitsstand, Übergabe und den letzten Tagesblock geprüft. Einmalig04.–10.11.: sechs gültige Metricool-Kennzahl-IDs und sechs kleine kanalgetrennte Reihen gelesen; fehlende Tage/null bleiben unbekannt. Nach frischer Placed-Order-Metrik W7XTVD genau ein kleiner Klaviyo-Flowreport über30 Tage; fehlende Flowzeilen und Live-Capture bleiben unbekannt. Planung11.–19.11. in kleinen Tagesfenstern, zwei gezielte Shopify-Produkte sowie enge öffentliche SEO-/CSV-Gegenproben wurden read-only gelesen. Keine GSC-/Merchant-Vollabfrage, keine Bestellung/Kauf-Watch, keine Umsatz- oder Verkaufsableitung.0 Plattformwrites. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo-Flowreport, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen. R175-Präzisionsnachtrag: vorhandene CJ-Helfer/Workflows im Repo bestätigt; im aktuellen Prozess keine Namen von CJ-Laufzeit-Credential-Variablen gefunden und vier benannte lokale Referenzpfade nicht vorhanden. Das ist kein Connector-Negativbeweis. Keine CJ-/API-/Katalogabfrage und kein Write.",
+    "currentDayEvidenceDate": "2026-11-12",
+    "currentDayEvidenceKind": "R185_DAILY_REPORTS_ONCE_REUSED_LATER_AND_SCOPED_OWNER_APPROVED_IMPLEMENTATION",
+    "currentDayEvidence": "Morning05–11.11 six Metricool definitions/data queries and one Klaviyo flowreport after W7XTVD discovery. Reused14h/evening; missing rows/days unknown, no broad sales/orders. Explicit Implement proposed plan: four targeted Metricool draft holds and one Beauty description update read back; Klaviyo preview write blocked before dispatch. No new professional render or publication.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-11",
-        "range": "2026-11-04/2026-11-10",
-        "source": "R175",
+        "localDate": "2026-11-12",
+        "range": "2026-11-05/2026-11-11",
         "definitionCalls": 6,
         "dataCalls": 6,
-        "partialRows": true,
-        "missingIsUnknown": true
+        "missingIsUnknown": true,
+        "source": "METRICOOL-KENNZAHLEN-20261112-R185.json"
       },
       "klaviyo": {
-        "localDate": "2026-11-11",
-        "range": "rolling_30_days",
-        "source": "R175",
+        "localDate": "2026-11-12",
+        "range": "2026-11-05/2026-11-11",
         "metricDiscoveryCalls": 1,
         "flowReportCalls": 1,
         "missingRowsUnknown": true,
@@ -40,52 +38,10 @@
         "shopCurrency": "CHF",
         "currenciesMixed": false
       },
-      "targetedProductsR175": {
-        "localDate": "2026-11-11",
-        "shopifyProducts": 2,
-        "broadPagination": false
-      },
-      "planningR175": {
-        "localDate": "2026-11-11",
-        "range": "2026-11-11/2026-11-19",
-        "activeObjects": 53,
-        "activeStates": 67,
-        "draftObjects": 4,
-        "draftStates": 5,
-        "writes": 0
-      },
-      "seoNarrowR175": {
-        "localDate": "2026-11-11",
-        "publicPages": [
-          "home",
-          "robots",
-          "sitemap",
-          "projector",
-          "organizer",
-          "beauty_selfcare_collection"
-        ],
-        "merchantCsvFiles": 2,
-        "merchantCsvHashEqual": true,
-        "searchConsoleRepeated": false,
-        "merchantBroadRepeated": false,
-        "writes": 0
-      },
-      "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+      "proof": "IMPLEMENTIERUNG-20261112-R185.json",
       "ordersQueried": false,
       "purchaseWatchEnded": true,
-      "broadSalesRepeated": false,
-      "merchantBroadRepeated": false,
-      "accessPreflightR175": {
-        "localDate": "2026-11-11",
-        "source": "R175_precision_addendum",
-        "repositoryHelpersPresent": true,
-        "currentProcessCjRuntimeCredentialVariableNamesFound": false,
-        "missingLocalReferencePaths": 4,
-        "missingConnectorProven": false,
-        "cjApiReads": 0,
-        "catalogReads": 0,
-        "writes": 0
-      }
+      "broadSalesRepeated": false
     },
     "dayHistory": [
       {
@@ -467,6 +423,86 @@
               "merchantBroadRepeated": false,
               "ordersQueried": false,
               "proof": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.json"
+            }
+          }
+        }
+      },
+      {
+        "dateZurich": "2026-11-11",
+        "record": {
+          "timezone": "Europe/Zurich",
+          "checkLogBeforeReading": true,
+          "metricsFlowAndBroadSalesMaxPerDay": 1,
+          "exception": "new_concrete_finding_with_recorded_reason",
+          "currentDayEvidenceDate": "2026-11-11",
+          "currentDayEvidenceKind": "R175_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_KLAVIYO_FLOW_REPORT_AND_NARROW_SEO_READ_ONLY",
+          "currentDayEvidence": "Vor Abfragen Revision174, Projektgedächtnis, Arbeitsstand, Übergabe und den letzten Tagesblock geprüft. Einmalig04.–10.11.: sechs gültige Metricool-Kennzahl-IDs und sechs kleine kanalgetrennte Reihen gelesen; fehlende Tage/null bleiben unbekannt. Nach frischer Placed-Order-Metrik W7XTVD genau ein kleiner Klaviyo-Flowreport über30 Tage; fehlende Flowzeilen und Live-Capture bleiben unbekannt. Planung11.–19.11. in kleinen Tagesfenstern, zwei gezielte Shopify-Produkte sowie enge öffentliche SEO-/CSV-Gegenproben wurden read-only gelesen. Keine GSC-/Merchant-Vollabfrage, keine Bestellung/Kauf-Watch, keine Umsatz- oder Verkaufsableitung.0 Plattformwrites. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo-Flowreport, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen. R175-Präzisionsnachtrag: vorhandene CJ-Helfer/Workflows im Repo bestätigt; im aktuellen Prozess keine Namen von CJ-Laufzeit-Credential-Variablen gefunden und vier benannte lokale Referenzpfade nicht vorhanden. Das ist kein Connector-Negativbeweis. Keine CJ-/API-/Katalogabfrage und kein Write.",
+          "completedReports": {
+            "metricool": {
+              "localDate": "2026-11-11",
+              "range": "2026-11-04/2026-11-10",
+              "source": "R175",
+              "definitionCalls": 6,
+              "dataCalls": 6,
+              "partialRows": true,
+              "missingIsUnknown": true
+            },
+            "klaviyo": {
+              "localDate": "2026-11-11",
+              "range": "rolling_30_days",
+              "source": "R175",
+              "metricDiscoveryCalls": 1,
+              "flowReportCalls": 1,
+              "missingRowsUnknown": true,
+              "accountCurrency": "USD",
+              "shopCurrency": "CHF",
+              "currenciesMixed": false
+            },
+            "targetedProductsR175": {
+              "localDate": "2026-11-11",
+              "shopifyProducts": 2,
+              "broadPagination": false
+            },
+            "planningR175": {
+              "localDate": "2026-11-11",
+              "range": "2026-11-11/2026-11-19",
+              "activeObjects": 53,
+              "activeStates": 67,
+              "draftObjects": 4,
+              "draftStates": 5,
+              "writes": 0
+            },
+            "seoNarrowR175": {
+              "localDate": "2026-11-11",
+              "publicPages": [
+                "home",
+                "robots",
+                "sitemap",
+                "projector",
+                "organizer",
+                "beauty_selfcare_collection"
+              ],
+              "merchantCsvFiles": 2,
+              "merchantCsvHashEqual": true,
+              "searchConsoleRepeated": false,
+              "merchantBroadRepeated": false,
+              "writes": 0
+            },
+            "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+            "ordersQueried": false,
+            "purchaseWatchEnded": true,
+            "broadSalesRepeated": false,
+            "merchantBroadRepeated": false,
+            "accessPreflightR175": {
+              "localDate": "2026-11-11",
+              "source": "R175_precision_addendum",
+              "repositoryHelpersPresent": true,
+              "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+              "missingLocalReferencePaths": 4,
+              "missingConnectorProven": false,
+              "cjApiReads": 0,
+              "catalogReads": 0,
+              "writes": 0
             }
           }
         }
@@ -2984,12 +3020,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r176_one_bt709_technical_projector_draft_four_metricool_drafts_no_schedule_no_publish_receipt_unknown",
+      "state": "r185_four_quality_hold_drafts_confirmed_professional_master_not_approved",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
-      "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R176_OWNER_DRAFT_ONLY_RENDER_BT709_HASH_REMOTE_BYTE_IDENTITY_AND_CHANNEL_READBACK",
-      "lastEvidence": "R176 direct owner scope applied: exactly one 18s 1080x1920/25fps BT.709/tv technical projector MP4, SHA fac2f767…27df6a, and four Metricool drafts. The same UUIDs were updated after QA; IG424123014, FB424123199, TikTok424123388 and YT424123545 are PENDING/draft=true/autoPublish=false and final remote media hashes match. One first IG update payload was rejected before mutation, targeted readback was unchanged, then one corrected write succeeded;0 blind retry. No active schedule/publication. Exact A–G binding, collection membership, hash-bound source rights, premium master acceptance and persistent archive remain open.",
-      "nextAllowedStep": "Claude Code reads revision176 and acknowledges only with a real branch/revision/commit receipt. Keep the four objects as drafts until exact variant, collection, rights, premium QA and archive gates pass; then the existing approval automation may evaluate them. Do not create replacement posts or enable autoPublish blindly.",
+      "lastEvidenceDate": "2026-11-12",
+      "belegArt": "R185_EXPLICIT_OWNER_IMPLEMENTATION_AND_PER_CHANNEL_READBACK",
+      "lastEvidence": "Four stable UUIDs confirmed draft=true/autoPublish=false, latest IDs IG426033327/FB426034581/TT426034638/YT426038749. Source R176 hash unchanged; collection membership directly verified. Beauty text live; Klaviyo preview blocked. No new master, publication or re-query of daily reports.",
+      "nextAllowedStep": "Keep four UUIDs as drafts until exact film variant, high-quality original device/projection footage, source/music rights and premium QA pass. Produce from one >=25s source take, review same18s master, no paid render or duplicate post. Claude acknowledgement only with dated receipt.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3647,6 +3683,12 @@
               "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
             ]
           }
+        },
+        {
+          "at": "2026-11-12T18:10:25.555997+00:00",
+          "previousState": "r176_one_bt709_technical_projector_draft_four_metricool_drafts_no_schedule_no_publish_receipt_unknown",
+          "previousEvidence": "R176 direct owner scope applied: exactly one 18s 1080x1920/25fps BT.709/tv technical projector MP4, SHA fac2f767…27df6a, and four Metricool drafts. The same UUIDs were updated after QA; IG424123014, FB424123199, TikTok424123388 and YT424123545 are PENDING/draft=true/autoPublish=false and final remote media hashes match. One first IG update payload was rejected before mutation, targeted readback was unchanged, then one corrected write succeeded;0 blind retry. No active schedule/publication. Exact A–G binding, collection membership, hash-bound source rights, premium master acceptance and persistent archive remain open.",
+          "previousNextStep": "Claude Code reads revision176 and acknowledges only with a real branch/revision/commit receipt. Keep the four objects as drafts until exact variant, collection, rights, premium QA and archive gates pass; then the existing approval automation may evaluate them. Do not create replacement posts or enable autoPublish blindly."
         }
       ],
       "reviewPacket": {
@@ -4160,36 +4202,27 @@
           "firstInstagramUpdateRejectedBeforeMutation": true,
           "targetedReadbackBeforeCorrectedWrite": "unchanged"
         }
+      },
+      "run185": {
+        "source": "IMPLEMENTIERUNG-20261112-R185.json",
+        "claudeReceipt": "unknown_no_claude_receipt"
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r176_bt709_technical_mp4_and_four_drafts_professional_master_and_release_still_blocked",
+      "state": "r185_four_quality_hold_drafts_confirmed_professional_master_not_approved",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R176_ACTUAL_MP4_TECHNICAL_QA_BT709_MUSIC_MATCH_PRODUCT_AND_METRICOOL_DRAFT_READBACK",
-      "lastEvidence": "One actual technical MP4 exists:18s,1080x1920/25fps,H264/AAC,BT.709/tv,SHA fac2f767…27df6a, canonical music matched, no persons/hands/prices/delivery/stock/foreign brands/text. It is not a professional master: A–G and rights are open;960x540 source, blur fill,6s still animation, projection without visible device and volatile archive fail premium release. Four stable channel UUIDs are confirmed drafts only.",
-      "nextAllowedStep": "Bind one exact A–G variant and motif to the footage, obtain hash-bound commercial edit/social/Metricool rights, add the product to the required social collection only after explicit shop-change approval, replace weak landscape/still sections with native vertical product-action footage, export clean BT.709, archive persistently and review the same master before any release.",
+      "lastEvidenceDate": "2026-11-12",
+      "belegArt": "R185_EXPLICIT_OWNER_IMPLEMENTATION_AND_PER_CHANNEL_READBACK",
+      "lastEvidence": "Four stable UUIDs confirmed draft=true/autoPublish=false, latest IDs IG426033327/FB426034581/TT426034638/YT426038749. Source R176 hash unchanged; collection membership directly verified. Beauty text live; Klaviyo preview blocked. No new master, publication or re-query of daily reports.",
+      "nextAllowedStep": "Keep four UUIDs as drafts until exact film variant, high-quality original device/projection footage, source/music rights and premium QA pass. Produce from one >=25s source take, review same18s master, no paid render or duplicate post. Claude acknowledgement only with dated receipt.",
       "blockers": [
-        "Keine aktuelle A–G-Ausführung, kein Motivset und keine physische Filmeinheit gebunden.",
-        "Vorhandene960x540/25fps-Quelle ist keine professionelle native Hochkantquelle.",
-        "Vier native1080x1920/30fps-Pflichtaufnahmen derselben Einheit fehlen.",
-        "Hashgebundene kommerzielle Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanalrechte fehlen.",
-        "Musikprovenienz sowie Hör- und Mixabnahme fehlen.",
-        "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Publikationsfreigabe.",
-        "R167: Der bereitgestellte Drive-Link ist ein Merchant-CSV und liefert kein Film-, Produktbindungs- oder Rechteartefakt.",
-        "R169: Aktuelle Tags enthalten `auswahl-offen`; keine konkrete A–G-Ausführung oder gefilmte Einheit gebunden.",
-        "R169: Rechtebogen bleibt unausgefüllter Entwurf und ist keine Lizenz; professionelle Master-MP4 fehlt.",
-        "R172: Aktueller Shopify-CDN-Export852×480/25fps ist nur Referenz, keine professionelle native Hochkantquelle.",
-        "R172: Video-GID/Exporthash belegen keine konkrete A–G-Ausführung, physische Einheit, Lieferumfangs- oder Werberechtebindung.",
-        "R172: `/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4` fehlt aktuell; keine korrigierte Kristallausspielung.",
-        "R173: Framevergleich belegt nur die Produktfamilie; Motivüberschneidungen und identische C/E- sowie D/F-Bilder verhindern eine eindeutige A–G-Zuordnung.",
-        "R175: Referenzquelle960×540/25fps verliert beim9:16-Crop rund68 Prozent Breite und ist keine professionelle native Hochkantquelle.",
-        "R175: Musikdatei ist technisch vorhanden; Manifest-/Lizenzbeleg sowie finale Hör- und Mixabnahme fehlen.",
-        "R175: Keine professionelle Master-MP4; Storyboard ist kein Video und keine Publikationsfreigabe.",
-        "R175: Lokale source-, social-audio-korrektur-, MASTER-STORYBOARD- und AKTUALISIERUNG-Referenzen fehlen aktuell; CJ-Runtime war mangels Prozess-Credentialvariablennamen nicht nutzbar."
+        "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
+        "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
+        "Quellen-/Musikrechte sowie Hör-, Bild-, Text- und Plattformausschnittabnahme am endgültigen Film bleiben offen.",
+        "Dauerhaftes Medienarchiv und vollständige ältere Masterhistorie sind nicht belegt."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -5136,6 +5169,31 @@
               "R175: Lokale source-, social-audio-korrektur-, MASTER-STORYBOARD- und AKTUALISIERUNG-Referenzen fehlen aktuell; CJ-Runtime war mangels Prozess-Credentialvariablennamen nicht nutzbar."
             ]
           }
+        },
+        {
+          "at": "2026-11-12T18:10:25.555997+00:00",
+          "previousState": "r176_bt709_technical_mp4_and_four_drafts_professional_master_and_release_still_blocked",
+          "previousEvidence": "One actual technical MP4 exists:18s,1080x1920/25fps,H264/AAC,BT.709/tv,SHA fac2f767…27df6a, canonical music matched, no persons/hands/prices/delivery/stock/foreign brands/text. It is not a professional master: A–G and rights are open;960x540 source, blur fill,6s still animation, projection without visible device and volatile archive fail premium release. Four stable channel UUIDs are confirmed drafts only.",
+          "previousNextStep": "Bind one exact A–G variant and motif to the footage, obtain hash-bound commercial edit/social/Metricool rights, add the product to the required social collection only after explicit shop-change approval, replace weak landscape/still sections with native vertical product-action footage, export clean BT.709, archive persistently and review the same master before any release.",
+          "previousBlockers": [
+            "Keine aktuelle A–G-Ausführung, kein Motivset und keine physische Filmeinheit gebunden.",
+            "Vorhandene960x540/25fps-Quelle ist keine professionelle native Hochkantquelle.",
+            "Vier native1080x1920/30fps-Pflichtaufnahmen derselben Einheit fehlen.",
+            "Hashgebundene kommerzielle Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanalrechte fehlen.",
+            "Musikprovenienz sowie Hör- und Mixabnahme fehlen.",
+            "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Publikationsfreigabe.",
+            "R167: Der bereitgestellte Drive-Link ist ein Merchant-CSV und liefert kein Film-, Produktbindungs- oder Rechteartefakt.",
+            "R169: Aktuelle Tags enthalten `auswahl-offen`; keine konkrete A–G-Ausführung oder gefilmte Einheit gebunden.",
+            "R169: Rechtebogen bleibt unausgefüllter Entwurf und ist keine Lizenz; professionelle Master-MP4 fehlt.",
+            "R172: Aktueller Shopify-CDN-Export852×480/25fps ist nur Referenz, keine professionelle native Hochkantquelle.",
+            "R172: Video-GID/Exporthash belegen keine konkrete A–G-Ausführung, physische Einheit, Lieferumfangs- oder Werberechtebindung.",
+            "R172: `/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4` fehlt aktuell; keine korrigierte Kristallausspielung.",
+            "R173: Framevergleich belegt nur die Produktfamilie; Motivüberschneidungen und identische C/E- sowie D/F-Bilder verhindern eine eindeutige A–G-Zuordnung.",
+            "R175: Referenzquelle960×540/25fps verliert beim9:16-Crop rund68 Prozent Breite und ist keine professionelle native Hochkantquelle.",
+            "R175: Musikdatei ist technisch vorhanden; Manifest-/Lizenzbeleg sowie finale Hör- und Mixabnahme fehlen.",
+            "R175: Keine professionelle Master-MP4; Storyboard ist kein Video und keine Publikationsfreigabe.",
+            "R175: Lokale source-, social-audio-korrektur-, MASTER-STORYBOARD- und AKTUALISIERUNG-Referenzen fehlen aktuell; CJ-Runtime war mangels Prozess-Credentialvariablennamen nicht nutzbar."
+          ]
         }
       ],
       "visualAcceptanceDraft": {
@@ -5934,6 +5992,15 @@
           "firstInstagramUpdateRejectedBeforeMutation": true,
           "targetedReadbackBeforeCorrectedWrite": "unchanged"
         }
+      },
+      "run185": {
+        "source": "IMPLEMENTIERUNG-20261112-R185.json",
+        "claudeReceipt": "unknown_no_claude_receipt"
+      },
+      "closedGatesR185": {
+        "collectionAusTiktokUndInstagram": true,
+        "verifiedBy": "Admin collection756379189639 hasProduct=true,12.11.2026",
+        "fourExistingPostHolds": true
       }
     },
     {
@@ -16944,6 +17011,34 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 185,
+      "at": "2026-11-12T18:10:25.555997+00:00",
+      "actor": "codex",
+      "summary": "Four targeted R176 draft holds and one live Beauty description update after explicit implementation; unchanged UUID/content/media/date read back; Klaviyo preview write blocked; morning daily reports reused; professional master still pending original footage/approval.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/IMPLEMENTIERUNG-20261112-R185.json",
+          "gitBlobSha": "304d118789a2985eefdc7e54ced2432e7637628b",
+          "sha256": "7471d09963d41564a2fa2938a70032670662a2a13effbb849b086147b2587853"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261112-R185.md",
+          "gitBlobSha": "3e47a3ad415daa60ee029e3ae2068debaafc1ca0",
+          "sha256": "9b6e727200416ec7c337c86b9b233cf08d9bc1a2a455b119801a2be7641bce8e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-KENNZAHLEN-20261112-R185.json",
+          "gitBlobSha": "a1fb680863072c23de394da47ae9b196a11a883a",
+          "sha256": "d5d309a852034b63d9f62fcfa7998ee7a0a98a1386a60cbd121e9541eccf5946"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BEAUTY-COLLECTION-20261112-R185.json",
+          "gitBlobSha": "558e6cc6487c99d02513415d90e814a06dec7ec1",
+          "sha256": "a0fbf25c98c6c2eef9ac9732f5dd3539454aa232c70467cd8d177802e640f025"
+        }
+      ]
     }
   ],
   "salesGoal": {
@@ -38904,5 +38999,315 @@
     "platformWrites": 0,
     "nextStep": "Claude reads current product section and tests UX184-MOBILE on an unpublished preview; obtain original exact-variant dimensions for UX184-DIMENSIONS, preserve30-day policy and CHF50/CHF45 instructions. No deployment authorised by the cards.",
     "receiptState": "unknown_no_claude_receipt"
+  },
+  "run185": {
+    "schemaVersion": 1,
+    "revision": 185,
+    "documentedAt": "2026-11-12T18:10:25.555997+00:00",
+    "timezone": "Europe/Zurich",
+    "brand": "luxestyle.ch",
+    "authorisation": "Explicit owner: Implement the proposed plan; subsequent recurring audit does not cancel this concrete scope",
+    "identity": {
+      "shop": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "CH",
+      "metricoolBrandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "sixChannelsMatch": true,
+      "freshBeforeEachSuccessfulMetricoolWrite": true
+    },
+    "metricool": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "sourceMp4Sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "mediaByteCheck": "2026-11-12 morning; later URL equality only",
+      "channels": [
+        {
+          "network": "instagram",
+          "uuid": "4156060813550767248",
+          "oldMetricoolId": 424392901,
+          "newMetricoolId": 426033327,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+          ],
+          "textSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": false
+        },
+        {
+          "network": "facebook",
+          "uuid": "6680239273933357186",
+          "oldMetricoolId": 424392994,
+          "newMetricoolId": 426034581,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+          ],
+          "textSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": null
+        },
+        {
+          "network": "tiktok",
+          "uuid": "3614365779669041576",
+          "oldMetricoolId": 424393517,
+          "newMetricoolId": 426034638,
+          "publicationDate": {
+            "dateTime": "2026-11-17T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+          ],
+          "textSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+          "textMediaDateUnchanged": true,
+          "youtubeData": null,
+          "instagramAutoPublish": null
+        },
+        {
+          "network": "youtube",
+          "uuid": "-7647174116509334899",
+          "oldMetricoolId": 425725830,
+          "newMetricoolId": 426038749,
+          "publicationDate": {
+            "dateTime": "2026-11-19T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+          ],
+          "textSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+          "textMediaDateUnchanged": true,
+          "youtubeData": {
+            "title": "Sternenlicht-Projektor im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "sternlicht",
+              "lichtmomente",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          },
+          "instagramAutoPublish": null
+        }
+      ],
+      "successfulUpdates": 4,
+      "creates": 0,
+      "publishes": 0,
+      "activationWrites": 0,
+      "blindRetries": 0,
+      "transportErrors": [
+        {
+          "network": "instagram",
+          "reason": "mediaFiles treated existing HTTPS URL as local upload file; os error2",
+          "targetedReadback": "original id424392901 and original flags/media unchanged",
+          "resolution": "Omit optional upload argument; preserve existing media in info; fresh identity and targeted readback before corrected request"
+        }
+      ],
+      "externalYoutubeActivationObserved": {
+        "previousId": 424123545,
+        "observedId": 425725830,
+        "restoredDraftId": 426038749,
+        "uuid": "-7647174116509334899"
+      },
+      "otherActivatedDrafts": "seven objects observed activated by other workflow, not by this run; quality approval not inferred",
+      "latestBroadPlanningReadAt": "2026-11-12T18:04:42Z",
+      "technicalCoverageAfterFourHolds": {
+        "instagram": "12–19.11",
+        "facebook": "12–19.11",
+        "tiktok": "12–19.11",
+        "pinterest": "12–19.11",
+        "threads": "12–19.11",
+        "youtube": "12–14.11;15–19.11 gaps"
+      },
+      "coverageDefinition": "Presence of PUBLISHED or non-draft/global-autoPublish PENDING per day, not a quality or rights approval",
+      "publishedByOtherWorkflowsToday": {
+        "objects": 9,
+        "channelStates": 12,
+        "instagram": 3,
+        "facebook": 3,
+        "tiktok": 3,
+        "youtube": 2,
+        "threads": 1
+      },
+      "completeMasterHistory": "unknown"
+    },
+    "shopify": {
+      "collectionId": "gid://shopify/Collection/687698313601",
+      "url": "https://luxestyle.ch/collections/beauty-selfcare",
+      "shopDomain": "luxestyle.ch",
+      "currency": "CHF",
+      "writeCount": 1,
+      "writeFields": [
+        "descriptionHtml"
+      ],
+      "writeConfirmedAt": "2026-11-12T18:03:23Z",
+      "beforeSha256": "bc2e0147829b0016b0dd16963034b896cf92049e24ec8e44150c1a8a41f6cdc4",
+      "afterSha256": "8ea71cab4df02f65dde2606947adae8a1633c24f1a0d7b50fd5f0f12f548c436",
+      "actualChangedFields": [
+        "descriptionHtml",
+        "updatedAt"
+      ],
+      "relatedRestByteEqual": true,
+      "previewStatus": "pass",
+      "publicStatus": "pass",
+      "publicResponseDates": [
+        "Thu, 12 Nov 2026 18:05:54 GMT",
+        "Thu, 12 Nov 2026 18:05:53 GMT"
+      ],
+      "protectedFieldsUnchanged": [
+        "id",
+        "title",
+        "handle",
+        "imageUrl",
+        "imageAltText",
+        "sortOrder",
+        "collectionType",
+        "rules",
+        "currencyCode",
+        "productsCount",
+        "products"
+      ],
+      "knownLimitations": [
+        "temporary_private_evidence",
+        "no_conversion_or_ranking_effect_measured",
+        "first_browser_readback_timed_out_before_later_successful_public_reads"
+      ],
+      "noOtherShopObjectsWritten": true,
+      "repositoryEdits": false
+    },
+    "klaviyo": {
+      "metricId": "W7XTVD",
+      "reportDate": "2026-11-12",
+      "range": "2026-11-05T00:00:00+01:00/2026-11-12T00:00:00+01:00",
+      "reportsToday": 1,
+      "requeriedInImplementation": false,
+      "accountCurrency": "USD",
+      "shopCurrency": "CHF",
+      "currenciesMixed": false,
+      "flows": {
+        "Vse76a": "draft",
+        "VbLQj6": "draft",
+        "RnTvsY": "draft",
+        "XEGbTB": "live"
+      },
+      "reportedMessages": 2,
+      "deliveredMessages": 2,
+      "clicksInReturnedRows": 0,
+      "attributedPlacedOrdersInReturnedRows": 0,
+      "otherRows": "unknown",
+      "previewChange": {
+        "messageId": "VfffLv",
+        "expectedBefore": "Dein Warenkorb ist gespeichert — in einem Klick zurück an der Kasse.",
+        "approvedAfter": "Dein Einkauf ist gespeichert. Prüfe deine Auswahl und die aktuellen Angaben an der Kasse.",
+        "state": "blocked_before_dispatch",
+        "reason": "No update_flow_message tool; update_flow supports status only; update_flow_action has no verified preview_text write contract",
+        "writeAttempts": 0,
+        "SPNjDpChanged": false,
+        "flowStatusChanged": false
+      }
+    },
+    "products": {
+      "checkedAt": "2026-11-12T13:05:48Z",
+      "projector": {
+        "id": "15521256604033",
+        "active": true,
+        "priceRangeCHF": [
+          "34.90",
+          "51.90"
+        ],
+        "availableVariants": 7,
+        "tracking": false,
+        "inventoryPolicy": "CONTINUE",
+        "quantity": 0,
+        "collectionId": "756379189639",
+        "collectionHasProduct": true,
+        "exactFilmVariant": null
+      },
+      "organizer": {
+        "id": "15408458236289",
+        "variantId": "55732479590785",
+        "priceCHF": "29.90",
+        "active": true,
+        "purchasable": true,
+        "tracking": false,
+        "inventoryPolicy": "CONTINUE",
+        "quantity": 0,
+        "newVideoImageGate": "Visible perfume lettering/logotype traces; not approved as brand-free video frame"
+      }
+    },
+    "master": {
+      "newRender": false,
+      "professionalApproval": false,
+      "nextInput": "One >=25s variant/motif-bound native vertical original take with device and actual projection visible together",
+      "contentDocument": "MASTER-CONTENT-20261112-R185.md"
+    },
+    "reportsReused": {
+      "metricool": "Morning05–11.11, six small definition calls and six data calls; no repeat",
+      "klaviyo": "Morning05–11.11 single report, no repeat"
+    },
+    "untouched": [
+      "customers",
+      "orders",
+      "ended_purchase_watch",
+      "discounts",
+      "budgets",
+      "shipping_settings",
+      "customer_account_domain",
+      "DNS",
+      "Merchant",
+      "paid_renders",
+      "other_brands",
+      "schedules_frequency"
+    ],
+    "claudeReceipt": {
+      "knownPrevious": "R180–R184 acknowledged in main receipt",
+      "thisPacket": "unknown_no_claude_receipt"
+    }
   }
 }

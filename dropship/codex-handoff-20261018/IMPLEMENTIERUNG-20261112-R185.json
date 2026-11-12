@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "revision": 185,
+  "documentedAt": "2026-11-12T18:10:25.555997+00:00",
+  "timezone": "Europe/Zurich",
+  "brand": "luxestyle.ch",
+  "authorisation": "Explicit owner: Implement the proposed plan; subsequent recurring audit does not cancel this concrete scope",
+  "identity": {
+    "shop": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "CH",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "sixChannelsMatch": true,
+    "freshBeforeEachSuccessfulMetricoolWrite": true
+  },
+  "metricool": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "sourceMp4Sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+    "mediaByteCheck": "2026-11-12 morning; later URL equality only",
+    "channels": [
+      {
+        "network": "instagram",
+        "uuid": "4156060813550767248",
+        "oldMetricoolId": 424392901,
+        "newMetricoolId": 426033327,
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "textSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+        "textMediaDateUnchanged": true,
+        "youtubeData": null,
+        "instagramAutoPublish": false
+      },
+      {
+        "network": "facebook",
+        "uuid": "6680239273933357186",
+        "oldMetricoolId": 424392994,
+        "newMetricoolId": 426034581,
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "textSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+        "textMediaDateUnchanged": true,
+        "youtubeData": null,
+        "instagramAutoPublish": null
+      },
+      {
+        "network": "tiktok",
+        "uuid": "3614365779669041576",
+        "oldMetricoolId": 424393517,
+        "newMetricoolId": 426034638,
+        "publicationDate": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "textSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+        "textMediaDateUnchanged": true,
+        "youtubeData": null,
+        "instagramAutoPublish": null
+      },
+      {
+        "network": "youtube",
+        "uuid": "-7647174116509334899",
+        "oldMetricoolId": 425725830,
+        "newMetricoolId": 426038749,
+        "publicationDate": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "textSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+        "textMediaDateUnchanged": true,
+        "youtubeData": {
+          "title": "Sternenlicht-Projektor im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "sternlicht",
+            "lichtmomente",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        },
+        "instagramAutoPublish": null
+      }
+    ],
+    "successfulUpdates": 4,
+    "creates": 0,
+    "publishes": 0,
+    "activationWrites": 0,
+    "blindRetries": 0,
+    "transportErrors": [
+      {
+        "network": "instagram",
+        "reason": "mediaFiles treated existing HTTPS URL as local upload file; os error2",
+        "targetedReadback": "original id424392901 and original flags/media unchanged",
+        "resolution": "Omit optional upload argument; preserve existing media in info; fresh identity and targeted readback before corrected request"
+      }
+    ],
+    "externalYoutubeActivationObserved": {
+      "previousId": 424123545,
+      "observedId": 425725830,
+      "restoredDraftId": 426038749,
+      "uuid": "-7647174116509334899"
+    },
+    "otherActivatedDrafts": "seven objects observed activated by other workflow, not by this run; quality approval not inferred",
+    "latestBroadPlanningReadAt": "2026-11-12T18:04:42Z",
+    "technicalCoverageAfterFourHolds": {
+      "instagram": "12–19.11",
+      "facebook": "12–19.11",
+      "tiktok": "12–19.11",
+      "pinterest": "12–19.11",
+      "threads": "12–19.11",
+      "youtube": "12–14.11;15–19.11 gaps"
+    },
+    "coverageDefinition": "Presence of PUBLISHED or non-draft/global-autoPublish PENDING per day, not a quality or rights approval",
+    "publishedByOtherWorkflowsToday": {
+      "objects": 9,
+      "channelStates": 12,
+      "instagram": 3,
+      "facebook": 3,
+      "tiktok": 3,
+      "youtube": 2,
+      "threads": 1
+    },
+    "completeMasterHistory": "unknown"
+  },
+  "shopify": {
+    "collectionId": "gid://shopify/Collection/687698313601",
+    "url": "https://luxestyle.ch/collections/beauty-selfcare",
+    "shopDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "writeCount": 1,
+    "writeFields": [
+      "descriptionHtml"
+    ],
+    "writeConfirmedAt": "2026-11-12T18:03:23Z",
+    "beforeSha256": "bc2e0147829b0016b0dd16963034b896cf92049e24ec8e44150c1a8a41f6cdc4",
+    "afterSha256": "8ea71cab4df02f65dde2606947adae8a1633c24f1a0d7b50fd5f0f12f548c436",
+    "actualChangedFields": [
+      "descriptionHtml",
+      "updatedAt"
+    ],
+    "relatedRestByteEqual": true,
+    "previewStatus": "pass",
+    "publicStatus": "pass",
+    "publicResponseDates": [
+      "Thu, 12 Nov 2026 18:05:54 GMT",
+      "Thu, 12 Nov 2026 18:05:53 GMT"
+    ],
+    "protectedFieldsUnchanged": [
+      "id",
+      "title",
+      "handle",
+      "imageUrl",
+      "imageAltText",
+      "sortOrder",
+      "collectionType",
+      "rules",
+      "currencyCode",
+      "productsCount",
+      "products"
+    ],
+    "knownLimitations": [
+      "temporary_private_evidence",
+      "no_conversion_or_ranking_effect_measured",
+      "first_browser_readback_timed_out_before_later_successful_public_reads"
+    ],
+    "noOtherShopObjectsWritten": true,
+    "repositoryEdits": false
+  },
+  "klaviyo": {
+    "metricId": "W7XTVD",
+    "reportDate": "2026-11-12",
+    "range": "2026-11-05T00:00:00+01:00/2026-11-12T00:00:00+01:00",
+    "reportsToday": 1,
+    "requeriedInImplementation": false,
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "currenciesMixed": false,
+    "flows": {
+      "Vse76a": "draft",
+      "VbLQj6": "draft",
+      "RnTvsY": "draft",
+      "XEGbTB": "live"
+    },
+    "reportedMessages": 2,
+    "deliveredMessages": 2,
+    "clicksInReturnedRows": 0,
+    "attributedPlacedOrdersInReturnedRows": 0,
+    "otherRows": "unknown",
+    "previewChange": {
+      "messageId": "VfffLv",
+      "expectedBefore": "Dein Warenkorb ist gespeichert — in einem Klick zurück an der Kasse.",
+      "approvedAfter": "Dein Einkauf ist gespeichert. Prüfe deine Auswahl und die aktuellen Angaben an der Kasse.",
+      "state": "blocked_before_dispatch",
+      "reason": "No update_flow_message tool; update_flow supports status only; update_flow_action has no verified preview_text write contract",
+      "writeAttempts": 0,
+      "SPNjDpChanged": false,
+      "flowStatusChanged": false
+    }
+  },
+  "products": {
+    "checkedAt": "2026-11-12T13:05:48Z",
+    "projector": {
+      "id": "15521256604033",
+      "active": true,
+      "priceRangeCHF": [
+        "34.90",
+        "51.90"
+      ],
+      "availableVariants": 7,
+      "tracking": false,
+      "inventoryPolicy": "CONTINUE",
+      "quantity": 0,
+      "collectionId": "756379189639",
+      "collectionHasProduct": true,
+      "exactFilmVariant": null
+    },
+    "organizer": {
+      "id": "15408458236289",
+      "variantId": "55732479590785",
+      "priceCHF": "29.90",
+      "active": true,
+      "purchasable": true,
+      "tracking": false,
+      "inventoryPolicy": "CONTINUE",
+      "quantity": 0,
+      "newVideoImageGate": "Visible perfume lettering/logotype traces; not approved as brand-free video frame"
+    }
+  },
+  "master": {
+    "newRender": false,
+    "professionalApproval": false,
+    "nextInput": "One >=25s variant/motif-bound native vertical original take with device and actual projection visible together",
+    "contentDocument": "MASTER-CONTENT-20261112-R185.md"
+  },
+  "reportsReused": {
+    "metricool": "Morning05–11.11, six small definition calls and six data calls; no repeat",
+    "klaviyo": "Morning05–11.11 single report, no repeat"
+  },
+  "untouched": [
+    "customers",
+    "orders",
+    "ended_purchase_watch",
+    "discounts",
+    "budgets",
+    "shipping_settings",
+    "customer_account_domain",
+    "DNS",
+    "Merchant",
+    "paid_renders",
+    "other_brands",
+    "schedules_frequency"
+  ],
+  "claudeReceipt": {
+    "knownPrevious": "R180–R184 acknowledged in main receipt",
+    "thisPacket": "unknown_no_claude_receipt"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "brandId": "6227837",
+  "brand": "luxestyle.ch",
+  "timezone": "Europe/Zurich",
+  "queriedAtLocalDate": "2026-11-12",
+  "queriedDuring": "morning_run",
+  "exactQueryTimestampUTC": null,
+  "range": {
+    "from": "2026-11-05T00:00:00+01:00",
+    "to": "2026-11-11T23:59:59+01:00"
+  },
+  "source": "existing_functions_store_luxe12_metricool_morning_reads",
+  "reusedWithoutNewMetricQueries": true,
+  "definitionCallsInOriginalMorningReport": 6,
+  "dataCallsInOriginalMorningReport": 6,
+  "newDefinitionCallsForThisExport": 0,
+  "newDataCallsForThisExport": 0,
+  "missingIsUnknown": true,
+  "missingDatesAreNotZero": true,
+  "rawRowsPreserveNulls": true,
+  "salesInference": false,
+  "scopeNotes": [
+    "IGEV05 includes account content, stories and profile; organic and paid. IGEV38 includes feed posts and reels, not stories.",
+    "TKEV12 is video views in period; TKEV06 is video interactions. Scope differences prevent a combined engagement ratio.",
+    "YouTube interaction fields are visited-video likes/comments/shares, not a guaranteed complete interaction total.",
+    "Partial daily series must not be labelled complete seven-day totals."
+  ],
+  "networks": {
+    "instagram": {
+      "columns": [
+        "IGEV05",
+        "IGEV38",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "IGEV05",
+          "metricName": "views",
+          "metricLabel": "Instagram Evolution > Views",
+          "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV38",
+          "metricName": "postsInteractions",
+          "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "121.0",
+          null,
+          "20261110"
+        ],
+        [
+          "80.0",
+          null,
+          "20261111"
+        ],
+        [
+          "176.0",
+          "1.0",
+          "20261105"
+        ],
+        [
+          "127.0",
+          "1.0",
+          "20261106"
+        ],
+        [
+          "191.0",
+          "3.0",
+          "20261107"
+        ],
+        [
+          "36.0",
+          null,
+          "20261108"
+        ],
+        [
+          "66.0",
+          null,
+          "20261109"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    },
+    "facebook": {
+      "columns": [
+        "FBEV49",
+        "FBEV34",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "FBEV49",
+          "metricName": "pageMediaView",
+          "metricLabel": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "FBEV34",
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "5.0",
+          null,
+          "20261110"
+        ],
+        [
+          "61.0",
+          "0.0",
+          "20261111"
+        ],
+        [
+          "98.0",
+          null,
+          "20261105"
+        ],
+        [
+          "9.0",
+          null,
+          "20261106"
+        ],
+        [
+          "73.0",
+          null,
+          "20261107"
+        ],
+        [
+          "12.0",
+          null,
+          "20261108"
+        ],
+        [
+          "3.0",
+          null,
+          "20261109"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    },
+    "tiktok": {
+      "columns": [
+        "TKEV12",
+        "TKEV06",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "TKEV12",
+          "metricName": "accountViews",
+          "metricLabel": "TikTok Evolution > Video views in period",
+          "description": "Number of video views in the period",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV06",
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "799.0",
+          "3.0",
+          "20261110"
+        ],
+        [
+          null,
+          "4.0",
+          "20261111"
+        ],
+        [
+          "474.0",
+          "1.0",
+          "20261105"
+        ],
+        [
+          "663.0",
+          "1.0",
+          "20261106"
+        ],
+        [
+          "397.0",
+          "2.0",
+          "20261107"
+        ],
+        [
+          "301.0",
+          "0.0",
+          "20261108"
+        ],
+        [
+          "26.0",
+          null,
+          "20261109"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    },
+    "youtube": {
+      "columns": [
+        "YTEV02",
+        "YTEV14",
+        "YTEV16",
+        "YTEV18",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "YTEV02",
+          "metricName": "videoViews",
+          "metricLabel": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV14",
+          "metricName": "visitedVideoLikes",
+          "metricLabel": "Youtube Evolution > Visited Videos Likes",
+          "description": "Number of likes of the visited videos",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV16",
+          "metricName": "visitedVideoComments",
+          "metricLabel": "Youtube Evolution > Visited Videos Comments",
+          "description": "Number of comments received by visited video",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV18",
+          "metricName": "visitedVideoVideoShares",
+          "metricLabel": "Youtube Evolution > Visited Videos Shares",
+          "description": "Number of shares of the visited videos",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "147.0",
+          "0.0",
+          "0.0",
+          "0.0",
+          "20261105"
+        ],
+        [
+          "74.0",
+          "0.0",
+          "0.0",
+          "0.0",
+          "20261106"
+        ],
+        [
+          "381.0",
+          "1.0",
+          "0.0",
+          "0.0",
+          "20261107"
+        ],
+        [
+          "7.0",
+          "0.0",
+          "0.0",
+          "0.0",
+          "20261108"
+        ],
+        [
+          "4.0",
+          null,
+          null,
+          null,
+          "20261109"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    },
+    "threads": {
+      "columns": [
+        "THEV06",
+        "THEV05",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "THEV06",
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "THEV05",
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "1.0",
+          "1.0",
+          "20261111"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    },
+    "pinterest": {
+      "columns": [
+        "PIEV01",
+        "PIEV04",
+        "PIEV06",
+        "date_YYYYMMDD"
+      ],
+      "metrics": [
+        {
+          "fieldId": "PIEV01",
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV04",
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV06",
+          "metricName": "pinterestOutboundClicks",
+          "metricLabel": "Pinterest Evolution > Outbound clicks in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "rows": [
+        [
+          "443.0",
+          "8.0",
+          "2.0",
+          "20261105"
+        ],
+        [
+          "370.0",
+          "4.0",
+          "0.0",
+          "20261106"
+        ],
+        [
+          "399.0",
+          "11.0",
+          "1.0",
+          "20261107"
+        ],
+        [
+          "1046.0",
+          "13.0",
+          "0.0",
+          "20261108"
+        ],
+        [
+          "764.0",
+          "19.0",
+          "2.0",
+          "20261109"
+        ]
+      ],
+      "status": "available_partial_or_full_rows"
+    }
+  }
+}
