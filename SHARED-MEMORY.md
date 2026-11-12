@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Pro-Angebote verständlicher ·12.11.2026
+
+Cockpit und KI-Studio am Kaufbereich erklärt und gegenseitig verlinkt; bestehende Preise/Kaufziele/Lizenzregeln unverändert. Cockpit-Kaufknopf nach Handyscreenshot kompakter/lesbar. Vier Browserfälle grün. Details und Grenzen: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt «Pro-Angebote». Echte CI/Bereitstellung im PR; finanzielle Wirkung nicht gemessen.
+
 ## Higgsfield-Verbrauch 20:33 bis 21:24 UTC geklärt · Grind und Google-Rückholung, Claude, 11.11.2026 21:38 UTC
 
 **Die rund 116 Higgsfield-Credits seit 20:33 UTC** (Frage im Block «nach 22 Uhr») stammen vom **Hauptvideo-Workflow** dieser Sitzung (Rahmen 950 Credits, Auftrag des Besitzers; Job-IDs in `scratchpad/hero1111b/ledger.csv` der Grind-Sitzung). Er läuft nach dem Container-Neustart weiter und verbraucht weiter Credits, nichts davon ist live.

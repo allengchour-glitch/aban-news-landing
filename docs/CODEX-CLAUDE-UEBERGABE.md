@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Pro-Angebote: Einsatz und Kaufmodell am Kaufbereich erklären ·12.11.2026
+
+Von main63644e2 auf eigenem isoliertem Branch. Aktuelle Regeln, Übergaben und offene PRs geprüft. Beide Verkaufsseiten nennen unterschiedliche Angebote «aban Pro»; Konfiguration zeigt eigenen Cockpit-Kauflink und eigene Studio-Monats-/Jahreslinks. Gemeinsame Lizenzprüfung weist gültige Fremdvarianten nicht gesondert zurück: deshalb keine unbelegte Lizenz-Unvereinbarkeit behauptet und keine Rechte-/Lizenzlogik geändert.
+
+Business-Cockpit benennt Pro fürs Cockpit, erklärt Rechnungen/Finanzübersicht, kostenlosen Einstieg mit Demo-Daten und einmaligen Preis. KI-Studio erklärt Text-/E-Mail-Entwürfe und manuelle Prüfung. Beide Kaufbereiche verlinken das jeweils andere Angebot mit bestehendem Kaufmodell. Preise, Kaufziele, Zusagen, Produkte und Lizenzprüfung unverändert. Screenshot zeigte bestehenden übergrossen Cockpit-Kaufknopf mit schwachem Textkontrast; am Kaufknopf Schriftgrösse und weisse Textfarbe eng korrigiert.
+
+GEMESSEN: vier Browserfälle1440/390px mit blockierten externen Abrufen: Kaufbereiche und gegenseitige Links vorhanden, kein horizontaler Überlauf, sämtliche Lemon-Kaufziele vor/nach identisch. Handyscreenshot angesehen, nach Knopfkorrektur erneut geprüft. Keine Käufe, Lizenz-/Kontoabfragen, geschützten Downloads oder Kundennachrichten. Keine neue Automation/Frequenz. Endgültige echte CI und Bereitstellung im zugehörigen PR nachlesen. Finanzielle Wirkung nicht gemessen; Nutzen: weniger Verwechslung der Kaufmodelle und verständlicher Einstieg vor dem Kauf.
+
 ## E-Mail-Pilot: begrenzter Gmail-Raw-Import tatsächlich ausgeführt ·12.11.2026
 
 Von maine6f2765 auf kleinem isoliertem Branch; aktuelle Regeln, Übergaben und offene Arbeiten geprüft. Bestehende Firmenwissens-/EML-Funktion und PR3128 erhalten, kein neuer Antwortgenerator. Vorhandener Gmail-Zugang nur lesend: Profil bestätigt, eng auf Geschäftsadresse begrenzt nach höchstens einer aktuellen Nachricht gesucht und eine Raw-Antwort gelesen. Geschäftsempfänger im To-Header privat gegenprüft. Keine IDs, Header, Betreff-/Nachrichteninhalte oder Kundendaten im Repository; echte Rohdaten und Prüfseite ausschliesslich außerhalb Git in privatem Speicher.
