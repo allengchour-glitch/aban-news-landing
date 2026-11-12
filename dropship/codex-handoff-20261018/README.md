@@ -2262,3 +2262,9 @@ LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Der direkte Shop-Profil-Editoraufr
 Bestehendes Shop-Files-Profilbild mit image_gen transparent ohne «SCHWEIZER SHOP» angepasst: zweizeilige LuxeStyle-Wortmarke mit Stern, 1254×1254 RGBA, runde 135-/52-px-Vorschau geprüft. Genau ein Upload, MediaImage 78029348438407, API READY/CDN 200; verlustfreie CDN-Rekompression mit identischen Pixeln/Alpha zur erzeugten PNG. Profilzuweisung 0: frischer Editor an Shopify-Anmeldung gestoppt, keine Eingabe/Save. Vorhandene Datei über Header → Logo → Bild auswählen übernehmen, nicht erneut hochladen. R188 erhalten, kein live gesetztes Profilbild behauptet. [Bericht](SHOP-PROFILBILD-20261113-R189.md) · [Beleg](SHOP-PROFILBILD-20261113-R189.json). Claude-Empfang unbekannt.
 
 [LUXESTYLE_R189_20261113]
+
+## R190 – 13.11.2026: Higgsfield-Shop-Videohintergrund als MP4-Entwurf
+
+Auf ausdrücklichen Videoauftrag zwei kostenlose Higgsfield-Jobs gerendert; Creditstand2544.22 blieb gleich. Eine vorherige1080p-Unlimited-Anfrage vor Joberstellung abgewiesen, keine kostenpflichtige Ausweichgenerierung. Job2 mit fester Produktansicht/Lichtbewegung ausgewählt; tatsächliche Quelle960×960/24fps, Shop-Export8s/1080×1170/30fps/4.95MB. Produktform/Motive in Stichproben und finaler Ausschnitt geprüft; anfängliche falsche Motivzählung nach Galeriegegenprobe korrigiert. Kreative/rechtliche und native Shop-Overlayabnahme offen, keine Profilzuweisung oder Videoupload. [Film](SHOP-VIDEOHINTERGRUND-20261113-R190.mp4) · [Bericht](SHOP-VIDEOHINTERGRUND-20261113-R190.md) · [Beleg](SHOP-VIDEOHINTERGRUND-20261113-R190.json). R189-Logo liegt bereits inShopifyDateien, noch nicht zugewiesen; Claude-Empfang unbekannt.
+
+[LUXESTYLE_R190_20261113]

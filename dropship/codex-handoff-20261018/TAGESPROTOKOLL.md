@@ -2189,3 +2189,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Übergabe / Grenzen | Bestehende Upload-Datei und manuellen Logo-Auswahlschritt dokumentiert; R188 erhalten | Kein Doppelupload, keine Produkt-/Rabatt-/Theme-/Social-/Einstellungsänderung oder Videorenders; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R189_20261113] [Bericht](SHOP-PROFILBILD-20261113-R189.md) · [Beleg](SHOP-PROFILBILD-20261113-R189.json).
+
+### R190 – Higgsfield-Videohintergrund für Shop
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Zugriff / Kosten | Higgsfield-Konto, Ultra/Unlimited und genaue Modellgrenzen gelesen, Kosten vorgeprüft | Erste1080p-Anfrage vor Jobstart abgewiesen;0Credits-Schätzung allein war keine Entitlement-Prüfung.128Credits-Nativangebot nicht gestartet |
+| Produktion | Zwei kostenlose8s-Seedance2.0-Jobs mit echter Produktbildreferenz erstellt und abgeholt | Beide completed; Creditstand2544.22 unverändert, kein dritter/kein bezahlter Render. Feste Lichtfassung Job2 ausgewählt |
+| Produkt-QA | Original, zweiGalerieansichten, zweiKontaktbögen und Anfang/Mitte/Ende mit unabhängiger Gegenprobe angesehen | Form/Henkel/sichtbare Motive in Job2 PASS. Falsche anfängliche Zählung korrigiert:2Frontvögel plus rechtesTeilmotiv; keine erfundene-Vogel-Behauptung fortführen |
+| Export-QA | MP4 auf8.000s/1080×1170/30fps/H.264/stumm exportiert und Kontaktbogen betrachtet |4.95MB/SHA3fa1008a…21071; echte Quelle960×960/24fps, Skalierung und Frameduplikation offengelegt. Rechts knapper Rand; nativen Overlaytest nicht ersetzen |
+| Freigabe / Übergabe | Ausgewählte MP4, Job-IDs, Kosten-/Rechte-/QA-Grenzen und nächsten Übernahmeschritt gespeichert | Entwurf, keine Premium-/Rechtefreigabe,0Shop-Videouploads/Profil-/Metricoolwrites; Editor-Loginblock bleibt. Projektorregister und Tagesreports unverändert |
+
+[LUXESTYLE_R190_20261113] [Film](SHOP-VIDEOHINTERGRUND-20261113-R190.mp4) · [Bericht](SHOP-VIDEOHINTERGRUND-20261113-R190.md).

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 189,
-  "updatedAt": "2026-11-12T23:37:40.864530+00:00",
+  "revision": 190,
+  "updatedAt": "2026-11-12T23:55:40.210323+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17146,6 +17146,31 @@
           "path": "dropship/codex-handoff-20261018/SHOP-PROFILBILD-20261113-R189.json",
           "sha256": "bd77892714d6135726443e17c6cc7fc1b3407cff17143e0231500149b0bcc998",
           "gitBlobSha": "24691685a72fefb0b101df2a7f521ee6c9a3118e"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 190,
+      "at": "2026-11-12T23:55:40.210323+00:00",
+      "actor": "codex",
+      "summary": "Rendered two zero-credit Higgsfield Shop-header drafts, selected fixed-perspective lighting loop and exported actual MP4; corrected motif-count error after gallery review. No paid render, profile/video upload or publication; creative/rights/native overlay review remains.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.md",
+          "sha256": "06701357d2e8a023b77533f4ca1cf80df502aae8291cbbfd82c5b694bbe869e7",
+          "gitBlobSha": "4b597c1d14a216e1de466aee6e453c419bcebe2f"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.json",
+          "sha256": "a0a15e5054c3b296b787d6f30cb8dc4e1630959e1429ac71359594c3f08fb15a",
+          "gitBlobSha": "f97d4659fa34b11cd79f38ac3fc6d515582b5a5e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.mp4",
+          "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+          "gitBlobSha": "3291618c32c6ef3033750dc66d5c8ec8cee23af8"
         }
       ],
       "taskCount": 24,
@@ -39505,5 +39530,37 @@
       }
     ],
     "claudeReceipt": "unknown_no_claude_receipt"
+  },
+  "run190": {
+    "dateZurich": "2026-11-13",
+    "assetId": "luxe_shop_header_retro_schwalbe_20261113",
+    "successfulHiggsfieldJobs": 2,
+    "paidRenders": 0,
+    "selectedJobId": "36f59449-cf27-4599-ae70-f6b2dc141335",
+    "creditBalanceBefore": 2544.22,
+    "creditBalanceAfter": 2544.22,
+    "export": {
+      "file": "luxestyle-shop-videohintergrund-entwurf.mp4",
+      "bytes": 4945164,
+      "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+      "width": 1080,
+      "height": 1170,
+      "frameRate": "30/1",
+      "duration": 8.0,
+      "audioStreams": 0,
+      "sourceNative": [
+        960,
+        960,
+        24
+      ],
+      "nativeUpscaleAndFrameDuplicationDisclosed": true,
+      "creativeApproval": false,
+      "shopAssigned": false
+    },
+    "profileWrites": 0,
+    "shopVideoUploads": 0,
+    "creativeRightsApproval": false,
+    "proof": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.json",
+    "claudeReceipt": "unknown_no_receipt"
   }
 }

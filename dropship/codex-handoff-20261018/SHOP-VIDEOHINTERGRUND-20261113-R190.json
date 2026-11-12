@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "revision": 190,
+  "recordedAtUTC": "2026-11-12T23:55:40.210323+00:00",
+  "dateZurich": "2026-11-13",
+  "brand": "LuxeStyle",
+  "shopDomain": "luxestyle.ch",
+  "assetId": "luxe_shop_header_retro_schwalbe_20261113",
+  "purpose": "Shop app video header draft explicitly requested by owner; no Social/Metricool publication",
+  "product": {
+    "productId": "gid://shopify/Product/16617685418375",
+    "variantId": "gid://shopify/ProductVariant/67675894710663",
+    "variant": "Schwalbe",
+    "status": "ACTIVE",
+    "tagsNonEmpty": true,
+    "storefrontAvailable": true,
+    "inventoryZeroDoesNotProveStockout": true,
+    "referenceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+    "referenceImageSha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237"
+  },
+  "execution": {
+    "balanceBefore": {
+      "credits": 2544.22,
+      "plan": "ultra"
+    },
+    "balanceAfter": {
+      "credits": 2544.22,
+      "plan": "ultra"
+    },
+    "unlimitedModelConfig": {
+      "model": "seedance_2_0",
+      "mode": "std",
+      "resolution": "720p",
+      "maxDuration": 15,
+      "unlimitedAvailable": true,
+      "expiryUTC": "2026-11-14T17:23:22Z"
+    },
+    "firstRejected": {
+      "model": "seedance_2_5",
+      "resolution": "1080p",
+      "use_unlim": true,
+      "outcome": "INVALID_ARGUMENT_NO_JOB",
+      "costPreflight": 0,
+      "reason": "Configuration not covered; zero quote alone was not entitlement validation"
+    },
+    "native1080Quote": {
+      "model": "seedance_2_5",
+      "duration": 8,
+      "resolution": "1080p",
+      "credits": 128,
+      "submitted": false
+    },
+    "actualJobIds": [
+      "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+      "36f59449-cf27-4599-ae70-f6b2dc141335"
+    ],
+    "selectedJobId": "36f59449-cf27-4599-ae70-f6b2dc141335",
+    "renderLimit": 2,
+    "referenceMotifCorrection": "Original has two full front birds plus partly obscured third near handle, confirmed by two gallery photos; initial invention allegation withdrawn.",
+    "independentQA": {
+      "selectedSecondClip": "visible product shape, motif and first/last composition pass in three samples; native crop still to inspect; no temporal full-film or creative/rights approval",
+      "firstClip": "stronger than requested orbit; keep as superseded draft; no proven invented motif"
+    },
+    "shopProfileWrites": 0,
+    "shopVideoUploads": 0,
+    "metricoolWrites": 0,
+    "ownerCreativeApproval": false,
+    "commercialImageEditingRightsEvidence": "not independently established; deliver draft per owner instruction"
+  },
+  "firstAttemptAndFirstJobCheckpoint": {
+    "state": "COMPLETED_PENDING_LOCAL_QA",
+    "submittedAtUTC": "2026-11-12T23:37:22.014876+00:00",
+    "model": "seedance_2_0",
+    "params": {
+      "model": "seedance_2_0",
+      "mode": "std",
+      "aspect_ratio": "1:1",
+      "duration": 8,
+      "resolution": "720p",
+      "bitrate_mode": "high",
+      "generate_audio": false,
+      "count": 1,
+      "use_unlim": true,
+      "prompt": "Premium e-commerce background film for the LuxeStyle Shop app. Use ONLY the supplied real brown ceramic swallow mug reference as the visual identity anchor: preserve the exact asymmetric organic handle, the two dark swallow motifs, brown glaze, rim thickness and full silhouette. The mug remains completely stationary on the same stone surface with the existing dry twigs at left. A real, controlled cinematic camera makes a tiny slow lateral arc of at most 2 degrees, creating genuine optical depth and foreground/background parallax; no flat 2D slideshow zoom. Soft warm window light grazes the glaze and the natural stone, taupe and cream editorial palette, refined calm physical materials, shallow realistic depth of field. One continuous 8-second shot, no cuts, no fade-in, no title card. Ease the camera back to its identical starting position for a seamless loop. Keep the entire handle and cup visible inside the central 70% width so a slight portrait crop remains safe. Upper quarter stays visually quiet for the app logo and the bottom fifth quiet for product cards; do not draw UI, logos, text, prices, stars or reviews into the film. No people, no hands, no added objects, no invented product operation, no liquid pour, no steam. No narration or audio. Photorealistic detailed ceramic; stable temporal consistency and smooth movement. Match the supplied first and final frame faithfully.",
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521"
+        },
+        {
+          "role": "end_image",
+          "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521"
+        }
+      ]
+    },
+    "estimatedCredits": 0,
+    "use_unlim": true,
+    "attempts": 2,
+    "shopUpload": false,
+    "shopProfileAssignment": false,
+    "rejection": {
+      "code": "INVALID_ARGUMENT",
+      "reason": "Unlimited entitlement does not cover submitted configuration; no job ID returned. Quote zero did not validate entitlement."
+    },
+    "attemptHistory": [
+      {
+        "state": "REJECTED_NO_JOB",
+        "submittedAtUTC": "2026-11-12T23:35:29.549589+00:00",
+        "model": "seedance_2_5",
+        "params": {
+          "model": "seedance_2_5",
+          "mode": "omni_reference",
+          "aspect_ratio": "1:1",
+          "duration": 8,
+          "resolution": "1080p",
+          "bitrate_mode": "high",
+          "generate_audio": false,
+          "draft": false,
+          "count": 1,
+          "use_unlim": true,
+          "prompt": "Premium e-commerce background film for the LuxeStyle Shop app. Use ONLY the supplied real brown ceramic swallow mug reference as the visual identity anchor: preserve the exact asymmetric organic handle, the two dark swallow motifs, brown glaze, rim thickness and full silhouette. The mug remains completely stationary on the same stone surface with the existing dry twigs at left. A real, controlled cinematic camera makes a tiny slow lateral arc of at most 2 degrees, creating genuine optical depth and foreground/background parallax; no flat 2D slideshow zoom. Soft warm window light grazes the glaze and the natural stone, taupe and cream editorial palette, refined calm physical materials, shallow realistic depth of field. One continuous 8-second shot, no cuts, no fade-in, no title card. Ease the camera back to its identical starting position for a seamless loop. Keep the entire handle and cup visible inside the central 70% width so a slight portrait crop remains safe. Upper quarter stays visually quiet for the app logo and the bottom fifth quiet for product cards; do not draw UI, logos, text, prices, stars or reviews into the film. No people, no hands, no added objects, no invented product operation, no liquid pour, no steam. No narration or audio. Photorealistic detailed ceramic; stable temporal consistency and smooth movement. Match the supplied first and final frame faithfully.",
+          "medias": [
+            {
+              "role": "start_image",
+              "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521"
+            },
+            {
+              "role": "end_image",
+              "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521"
+            }
+          ]
+        },
+        "estimatedCredits": 0,
+        "use_unlim": true,
+        "attempts": 1,
+        "shopUpload": false,
+        "shopProfileAssignment": false,
+        "rejection": {
+          "code": "INVALID_ARGUMENT",
+          "reason": "Unlimited entitlement does not cover submitted configuration; no job ID returned. Quote zero did not validate entitlement."
+        }
+      }
+    ],
+    "jobId": "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+    "submission": {
+      "id": "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+      "type": "video",
+      "status": "pending",
+      "model": "seedance_2_0",
+      "params": {
+        "prompt": "Premium e-commerce background film for the LuxeStyle Shop app. Use ONLY the supplied real brown ceramic swallow mug reference as the visual identity anchor: preserve the exact asymmetric organic handle, the two dark swallow motifs, brown glaze, rim thickness and full silhouette. The mug remains completely stationary on the same stone surface with the existing dry twigs at left. A real, controlled cinematic camera makes a tiny slow lateral arc of at most 2 degrees, creating genuine optical depth and foreground/background parallax; no flat 2D slideshow zoom. Soft warm window light grazes the glaze and the natural stone, taupe and cream editorial palette, refined calm physical materials, shallow realistic depth of field. One continuous 8-second shot, no cuts, no fade-in, no title card. Ease the camera back to its identical starting position for a seamless loop. Keep the entire handle and cup visible inside the central 70% width so a slight portrait crop remains safe. Upper quarter stays visually quiet for the app logo and the bottom fifth quiet for product cards; do not draw UI, logos, text, prices, stars or reviews into the film. No people, no hands, no added objects, no invented product operation, no liquid pour, no steam. No narration or audio. Photorealistic detailed ceramic; stable temporal consistency and smooth movement. Match the supplied first and final frame faithfully.",
+        "aspect_ratio": "1:1",
+        "duration": 8,
+        "reference_images": [
+          "12d5ab6b-788a-415f-9182-f893b1c6d7d0",
+          "c57d691b-d8b4-4438-915b-f7cdbfb459e4"
+        ],
+        "mode": "std",
+        "resolution": "720p",
+        "bitrate_mode": "high",
+        "generate_audio": false
+      }
+    },
+    "firstAttemptJobs": 0,
+    "paidJobs": 0,
+    "result": {
+      "index": 1,
+      "job_id": "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+      "status": "completed",
+      "type": "video",
+      "model": "seedance_2_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261112_233724_e7efd0d2-88a9-4f94-b38b-cb23a7f19b86.mp4"
+    }
+  },
+  "secondJobCheckpoint": {
+    "state": "COMPLETED_PENDING_LOCAL_QA",
+    "reason": "Observed extra swallow motif and excessive orbit in first completed draft; one bounded corrective render, same product and header content.",
+    "previousJobId": "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+    "maxSuccessfulRenders": 2,
+    "successfulRendersBefore": 1,
+    "submittedAtUTC": "2026-11-12T23:44:18.445846+00:00",
+    "params": {
+      "model": "seedance_2_0",
+      "mode": "std",
+      "aspect_ratio": "1:1",
+      "duration": 8,
+      "resolution": "720p",
+      "bitrate_mode": "high",
+      "generate_audio": false,
+      "count": 1,
+      "use_unlim": true,
+      "prompt": "Create one premium 8-second silent cinematic background loop from the exact supplied ceramic mug photograph for a merchant profile. Product fidelity is the absolute priority. LOCK THE CAMERA COMPLETELY: no orbit, no dolly, no camera angle change, no pan, no zoom. The mug, organic loop handle, rim, two swallow bird decorations, stone slab, left stone and dry twigs must retain the exact same shape, orientation, relative positions and proportions in EVERY frame. Exactly TWO dark swallow motifs, as shown in the reference; never reveal or invent a third motif, text, logos or an unseen side. Do not rotate, translate, deform, reshape or animate the mug. Create motion ONLY through a very gentle physically plausible slow soft daylight/reflection shift across the BACKGROUND WALL and stone surface; a refined subtle warm sun reflection on the glaze may brighten and dim but must not redraw the texture or motifs. Start and end on the identical provided composition and illumination, return very gradually to the original light level, seamless loop. The reference photo's taupe/cream warm editorial styling stays intact. No smoke, no steam, no pouring, no people, no hands, no extra props, no added scene elements, no overlays, no UI, no captions or prices. No cuts or fades. Keep product pixels/shape consistent and the full handle visible; no transformations of the entire still photo.",
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "12d5ab6b-788a-415f-9182-f893b1c6d7d0"
+        },
+        {
+          "role": "end_image",
+          "value": "c57d691b-d8b4-4438-915b-f7cdbfb459e4"
+        }
+      ]
+    },
+    "use_unlim": true,
+    "expectedCredits": 0,
+    "submission": {
+      "id": "36f59449-cf27-4599-ae70-f6b2dc141335",
+      "type": "video",
+      "status": "pending",
+      "model": "seedance_2_0",
+      "params": {
+        "prompt": "Create one premium 8-second silent cinematic background loop from the exact supplied ceramic mug photograph for a merchant profile. Product fidelity is the absolute priority. LOCK THE CAMERA COMPLETELY: no orbit, no dolly, no camera angle change, no pan, no zoom. The mug, organic loop handle, rim, two swallow bird decorations, stone slab, left stone and dry twigs must retain the exact same shape, orientation, relative positions and proportions in EVERY frame. Exactly TWO dark swallow motifs, as shown in the reference; never reveal or invent a third motif, text, logos or an unseen side. Do not rotate, translate, deform, reshape or animate the mug. Create motion ONLY through a very gentle physically plausible slow soft daylight/reflection shift across the BACKGROUND WALL and stone surface; a refined subtle warm sun reflection on the glaze may brighten and dim but must not redraw the texture or motifs. Start and end on the identical provided composition and illumination, return very gradually to the original light level, seamless loop. The reference photo's taupe/cream warm editorial styling stays intact. No smoke, no steam, no pouring, no people, no hands, no extra props, no added scene elements, no overlays, no UI, no captions or prices. No cuts or fades. Keep product pixels/shape consistent and the full handle visible; no transformations of the entire still photo.",
+        "aspect_ratio": "1:1",
+        "duration": 8,
+        "reference_images": [
+          "12d5ab6b-788a-415f-9182-f893b1c6d7d0",
+          "c57d691b-d8b4-4438-915b-f7cdbfb459e4"
+        ],
+        "mode": "std",
+        "resolution": "720p",
+        "bitrate_mode": "high",
+        "generate_audio": false
+      }
+    },
+    "jobId": "36f59449-cf27-4599-ae70-f6b2dc141335",
+    "qaCorrection": "The original has2full birds plus a partly obscured third motif; prompt exact2 is too strict. Preserve original visible details; reject output if any original motif is removed.",
+    "result": {
+      "index": 1,
+      "job_id": "36f59449-cf27-4599-ae70-f6b2dc141335",
+      "status": "completed",
+      "type": "video",
+      "model": "seedance_2_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261112_234419_36f59449-cf27-4599-ae70-f6b2dc141335.mp4"
+    }
+  },
+  "firstNativeSource": {
+    "jobId": "e7efd0d2-88a9-4f94-b38b-cb23a7f19b86",
+    "bytes": 30441457,
+    "sourceSha256": "94155db0b37bb2963c003fb2c5efbc5d4932ac0a46935e1842bd5a222c9bfa97",
+    "width": 960,
+    "height": 960,
+    "frameRate": "24/1",
+    "duration": 8.041667,
+    "audioStreams": 0,
+    "profileAssignment": false,
+    "publicationApproval": false
+  },
+  "selectedNativeSource": {
+    "jobId": "36f59449-cf27-4599-ae70-f6b2dc141335",
+    "bytes": 24435492,
+    "sourceSha256": "560d8a64ff337e83ec3b5e7e99ce463430b054bb1a40766c32971931e593a353",
+    "width": 960,
+    "height": 960,
+    "frameRate": "24/1",
+    "duration": 8.041667,
+    "audioStreams": 0,
+    "profileAssignment": false,
+    "publicationApproval": false
+  },
+  "export": {
+    "file": "luxestyle-shop-videohintergrund-entwurf.mp4",
+    "bytes": 4945164,
+    "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+    "width": 1080,
+    "height": 1170,
+    "frameRate": "30/1",
+    "duration": 8.0,
+    "audioStreams": 0,
+    "sourceNative": [
+      960,
+      960,
+      24
+    ],
+    "nativeUpscaleAndFrameDuplicationDisclosed": true,
+    "creativeApproval": false,
+    "shopAssigned": false
+  },
+  "referenceGalleryProof": [
+    {
+      "path": "/tmp/luxe-higgsfield-shopheader-20261113/references/gallery-3.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/828b86a3-820a-45b1-9a22-87865616b4ee.jpg?v=1791947522",
+      "sha256": "fd265d9fb907e8c16926de2608ec3494af4ecfb8e06bc2a94aeae64a1bce5c1e"
+    },
+    {
+      "path": "/tmp/luxe-higgsfield-shopheader-20261113/references/gallery-4.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a12a0d-69d5-48cc-a136-46e337ba6c83.jpg?v=1791947521",
+      "sha256": "1d699e048608b509dcc4ae8538908fc1caaa046c8efc77c3dda535edb34a2df8"
+    }
+  ],
+  "qa": {
+    "rootViewed": [
+      "original product image",
+      "two further original gallery images",
+      "first source timeline",
+      "second source timeline",
+      "export timeline"
+    ],
+    "independentAgentViewed": [
+      "original product image",
+      "first/middle/last of both sources",
+      "two original gallery images"
+    ],
+    "selected": "second render with fixed perspective and gentle moving daylight",
+    "visibleProductFormAndMotifs": "PASS in timeline and beginning/middle/end samples",
+    "firstLastComposition": "visually close in sampled endpoints; no full temporal playback certification",
+    "originalMotifCorrection": "Two full front birds and partly hidden third at right; initial alleged invented bird was retracted after gallery inspection. Correction prompt exact-two was too restrictive but sampled output retains the real partial motif. Do not reuse that exact count blindly.",
+    "finalCrop": "Root and independent agent inspected all8 export-crop samples; cup and handle fully visible, right margin tight; native Shop overlay still to check",
+    "nativeQualityDisclosure": "Actual960x960/24fps source, scaled/cropped to1080x1170 with30fps frame duplication; no native1080p or native30fps claim",
+    "creativeApproval": false,
+    "commercialEditingRightsEvidence": "not independently established; draft delivery allowed by owner",
+    "nativeShopOverlayQA": "blocked by Shopify login"
+  },
+  "limits": {
+    "newSuccessfulHiggsfieldJobs": 2,
+    "failedBeforeJobCreation": 1,
+    "thirdRender": false,
+    "paidRenders": 0,
+    "shopVideoUploads": 0,
+    "shopProfileWrites": 0,
+    "metricoolWrites": 0,
+    "videoMusic": "Silent background, no third-party music or voiceover",
+    "competitorMaterial": "Owner SNOCKS screenshots viewed for design direction only; no competitor photos/logos/reviews uploaded or copied",
+    "projectorMasterAndLedgerUnchanged": true
+  },
+  "nextStep": "Owner reviews selected draft; confirm image editing rights and native Shop overlay in authenticated editor, then upload this exact export once as header media. No new generation or automatic activation until resolved.",
+  "claudeReceipt": "unknown_no_receipt"
+}
