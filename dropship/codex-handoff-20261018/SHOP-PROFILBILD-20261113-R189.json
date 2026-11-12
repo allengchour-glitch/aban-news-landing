@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "revision": 189,
+  "documentedAt": "2026-11-12T23:37:40.864530+00:00",
+  "dateZurich": "2026-11-13",
+  "timezone": "Europe/Zurich",
+  "brand": "luxestyle.ch",
+  "documentationBaseCommit": "f135afd77dd595c6521cfd6ccc573e22d62913ba",
+  "activityActor": "root; child recorded existing local evidence only",
+  "originalLogoSources": [
+    {
+      "file": "logo-original.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-ch-logo.png?v=1781123787",
+      "http": 200,
+      "dimensions": [
+        732,
+        150
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 9271,
+      "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6"
+    },
+    {
+      "file": "logo-alternative.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-ch-logo_58da73c7-a62c-4790-b820-b5d38b61fa19.png?v=1783620379",
+      "http": 200,
+      "dimensions": [
+        732,
+        150
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 9271,
+      "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6"
+    },
+    {
+      "file": "favicon-original.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-favicon.png?v=1786912722",
+      "http": 200,
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 2090,
+      "sha256": "e912f0b98c8f49910bca63b5fef96c7db46536f72fda1933ab1593d333416b3a"
+    }
+  ],
+  "shopFilesProfileSources": [
+    {
+      "localFile": "profil-original-1080.png",
+      "mediaImageId": "gid://shopify/MediaImage/69620138672513",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/LuxeStyle_Profilbild.png?v=1780682039",
+      "selectedForImageGen": false,
+      "source": "root Shop Files readback"
+    },
+    {
+      "localFile": "profil-alternative-1080.jpg",
+      "mediaImageId": "gid://shopify/MediaImage/69664155009409",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-profil.jpg?v=1781304921",
+      "selectedForImageGen": true,
+      "source": "root Shop Files readback"
+    }
+  ],
+  "edit": {
+    "tool": "image_gen",
+    "input": "profil-alternative-1080.jpg",
+    "output": "luxestyle-shop-logo-transparent.png",
+    "description": "Compact two-line LuxeStyle wordmark plus star, transparent background; SCHWEIZER SHOP removed",
+    "notTheGoldLFavicon": true,
+    "sourceOriginalPixelIdentityClaimed": false,
+    "videoRenders": 0
+  },
+  "localFiles": [
+    {
+      "file": "logo-original.png",
+      "bytes": 9271,
+      "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6",
+      "dimensions": [
+        732,
+        150
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "logo-alternative.png",
+      "bytes": 9271,
+      "sha256": "f3895f88a567548072f6e48fab5a4bfe1ee09935e0a0b784040da6a0b02d32c6",
+      "dimensions": [
+        732,
+        150
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "favicon-original.png",
+      "bytes": 2090,
+      "sha256": "e912f0b98c8f49910bca63b5fef96c7db46536f72fda1933ab1593d333416b3a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "profil-original-1080.png",
+      "bytes": 39057,
+      "sha256": "0e26029cf2359e6af7f3fddf9671933d9a8c07b7ec618d84eec76072aabb62b8",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "profil-alternative-1080.jpg",
+      "bytes": 32283,
+      "sha256": "37936c8f85112e16d0e9b41f91c314e17a21fb28eb129e1f53223bee21dbbe90",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "luxestyle-shop-logo-transparent.png",
+      "bytes": 272731,
+      "sha256": "f8c01d45d4e76434cc57392eeaf4417722c40a7d7a01a8283f9e8210c03cdc68",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "shopify-logo-readback.png",
+      "bytes": 209631,
+      "sha256": "7ecb73ded08d2e077d8f546b79a4b74decbad6c5ad8e37d008d4c22aec08157e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "profilbild-vorschau.png",
+      "bytes": 28629,
+      "sha256": "981b57d60c93b767b18354540a9e82cfc591c11c74e82261fa76dbf144416b61",
+      "dimensions": [
+        800,
+        440
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "upload": {
+    "state": "FILE_UPLOADED_AND_CDN_READBACK_CONFIRMED",
+    "shop": "luxestyle.ch",
+    "filename": "luxestyle-shop-logo-transparent-20261113.png",
+    "sha256": "f8c01d45d4e76434cc57392eeaf4417722c40a7d7a01a8283f9e8210c03cdc68",
+    "profileAssignment": "not_performed",
+    "attempts": 1,
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-shop-logo-transparent-20261113.png?v=1794526174",
+    "fileId": "gid://shopify/MediaImage/78029348438407",
+    "cdnReadback": {
+      "http": 200,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "7ecb73ded08d2e077d8f546b79a4b74decbad6c5ad8e37d008d4c22aec08157e"
+    }
+  },
+  "apiFileReadback": {
+    "fileStatus": "READY",
+    "width": 1254,
+    "height": 1254,
+    "source": "root confirmed fresh Shopify API readback"
+  },
+  "pixelQA": {
+    "cdnPixelEquality": true,
+    "alphaEquality": true,
+    "localPixelSha256": "cbf3379c078b2449a7bf2eb810d17dc01c631ac6dbfb681ea8b918556022a67c",
+    "cdnPixelSha256": "cbf3379c078b2449a7bf2eb810d17dc01c631ac6dbfb681ea8b918556022a67c"
+  },
+  "pixelQAScope": "Generated local PNG versus CDN readback only; not original JPG versus generated PNG",
+  "visualQA": {
+    "actor": "root",
+    "roundPreviewPixels": [
+      135,
+      52
+    ],
+    "reviewed": true,
+    "source": "root direct inspection; profilbild-vorschau.png retained locally"
+  },
+  "profileAssignment": {
+    "writes": 0,
+    "state": "NOT_ASSIGNED_LOGIN_REQUIRED",
+    "freshEditorAttempt": "Shopify login page",
+    "stoppedImmediately": true,
+    "credentialsEntered": false,
+    "formInputs": 0,
+    "saves": 0,
+    "publishedProfileClaimed": false
+  },
+  "nextStep": "Authenticated Shop-profile editor: Header > Logo > Bild auswählen; select existing uploaded filename and read saved profile back. No duplicate upload.",
+  "unchanged": {
+    "r188Package": true,
+    "products": true,
+    "discounts": true,
+    "theme": true,
+    "social": true,
+    "otherShops": true,
+    "settings": true
+  },
+  "documentationSubtaskPlatformCalls": 0,
+  "dailyReportsRepeated": false,
+  "claudeReceipt": "unknown_no_claude_receipt",
+  "documentationPreWrite": {
+    "README.md": {
+      "sha256": "a904b246cdfe4c45358b3934732de6b87d158cc80f17da82e4f704e8545aa5f1",
+      "gitBlobSha": "b880c98070c976ba92ede7e3a781f27a677458f2"
+    },
+    "PROJEKTGEDAECHTNIS.md": {
+      "sha256": "31cd7f75d395021321a7b43b55577bb7d49badc4ab76d0cdb8ea1cecb5f4be49",
+      "gitBlobSha": "12c6853cd5c21a59912ca2cbb10d882b55381ecf"
+    },
+    "ARBEITSSTAND.json": {
+      "sha256": "c6136ec31bd8e7bf7f26bd384c98fb9fd4c0d97bc3220c061c58ac76ffbbc674",
+      "gitBlobSha": "dcd055d450cd6eadf69045c2f5711dd0eedfbebb"
+    },
+    "TAGESPROTOKOLL.md": {
+      "sha256": "82eb0cf7555d4776e7082fd955b2f9d7ceb605322b549b2c1d7d3d2651c95b93",
+      "gitBlobSha": "2684ca8cf1a550197e89754a1a1d122be97d6e57"
+    }
+  },
+  "report": {
+    "path": "dropship/codex-handoff-20261018/SHOP-PROFILBILD-20261113-R189.md",
+    "sha256": "6ab2e82812cd36ae12f858b10b1f3a87610aa9785a1ad033e78c86b5016ff41b",
+    "gitBlobSha": "2b75e0a3598e46f27d4f081206fb43c086b31e8d"
+  }
+}

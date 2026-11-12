@@ -2178,3 +2178,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Übergabe / Grenzen | Paket und exakten Übernahmeplan für authentifizierten Editor gesichert |0 Profil-/Produkt-/Rabatt-/Socialwrites; keine Reports/Bestellungen/Video-Renders. Freie Layoutkontrolle, Rechte, Nachtlicht-Farbbindung und Shop-Verfügbarkeit bleiben vor Liveübernahme zu prüfen; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R188_20261113] [Bericht](SHOP-PROFIL-ENTWURF-20261113-R188.md) · [Dateipaket](SHOP-PROFIL-ENTWURF-20261113-R188.zip).
+
+### R189 – Shop-Profilbild: Datei fertig, Zuweisung offen
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Logoquellen / Bearbeitung | Wortmarken/Favicon und zwei Shop-Profilbilder geprüft; gewähltes JPG mit image_gen transparent ohne «SCHWEIZER SHOP» angepasst | Zweizeilige Wortmarke mit Stern, 1254×1254 RGBA; runde 135-/52-px-Vorschau gesehen |
+| Upload / Rücklesen | Genau eine Bilddatei hochgeladen; API und CDN gegengeprüft | MediaImage 78029348438407,READY/HTTP 200; verlustfreie CDN-Rekompression, RGBA-Pixel und Alpha gleich |
+| Profilzugriff | Shop-Profil-Editor frisch geöffnet und an Shopify-Anmeldung gestoppt | 0 Eingaben/Save/Profilzuweisungen; Datei ist kein live gesetztes Profilbild |
+| Übergabe / Grenzen | Bestehende Upload-Datei und manuellen Logo-Auswahlschritt dokumentiert; R188 erhalten | Kein Doppelupload, keine Produkt-/Rabatt-/Theme-/Social-/Einstellungsänderung oder Videorenders; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R189_20261113] [Bericht](SHOP-PROFILBILD-20261113-R189.md) · [Beleg](SHOP-PROFILBILD-20261113-R189.json).

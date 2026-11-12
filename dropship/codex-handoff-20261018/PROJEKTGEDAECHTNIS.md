@@ -1638,3 +1638,9 @@ LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Der direkte Shop-Profil-Editoraufr
 [Übernahmeplan](SHOP-PROFIL-ENTWURF-20261113-R188.md) · [Beleg](SHOP-PROFIL-ENTWURF-20261113-R188.json) · [Dateipaket mit Vorschau und Header](SHOP-PROFIL-ENTWURF-20261113-R188.zip). Claude-Kenntnisnahme unbekannt.
 
 [LUXESTYLE_R188_20261113]
+
+## R189 – 13.11.2026: Logo-Datei für Shop-Profil hochgeladen
+
+Bestehendes Shop-Files-Profilbild mit image_gen transparent ohne «SCHWEIZER SHOP» angepasst: zweizeilige LuxeStyle-Wortmarke mit Stern, 1254×1254 RGBA, runde 135-/52-px-Vorschau geprüft. Genau ein Upload, MediaImage 78029348438407, API READY/CDN 200; verlustfreie CDN-Rekompression mit identischen Pixeln/Alpha zur erzeugten PNG. Profilzuweisung 0: frischer Editor an Shopify-Anmeldung gestoppt, keine Eingabe/Save. Vorhandene Datei über Header → Logo → Bild auswählen übernehmen, nicht erneut hochladen. R188 erhalten, kein live gesetztes Profilbild behauptet. [Bericht](SHOP-PROFILBILD-20261113-R189.md) · [Beleg](SHOP-PROFILBILD-20261113-R189.json). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R189_20261113]
