@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 187,
-  "updatedAt": "2026-11-12T21:43:53.091219+00:00",
+  "revision": 188,
+  "updatedAt": "2026-11-12T23:17:20.225271+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17101,6 +17101,31 @@
           "path": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.md",
           "sha256": "a1c91cf7c2ae57f4ff44635ea26159264cfdeac254e918fd1f3f7db8505acd50",
           "gitBlobSha": "fddb704c3ece3531fe3836259b713c6a0b4696cf"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 188,
+      "at": "2026-11-12T23:17:20.225271+00:00",
+      "actor": "codex",
+      "summary": "Prepared a genuine-product Shop-profile design, exact-size header and two-product merchandising preview; mobile QA passed. Live editor requires login, no shop/product/discount/publication writes.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-ENTWURF-20261113-R188.md",
+          "sha256": "aa899b940e5fa07c702380e03d5300f435ea77e2dc4dcb9bb035565a735ffb11",
+          "gitBlobSha": "46e0a43048ac844dabd3b39453ee123c8871f6c0"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-ENTWURF-20261113-R188.json",
+          "sha256": "79c8619bad84818e99ab8c3255fbc2a90d8bda35f2de3c120e3f25aa2f20bc02",
+          "gitBlobSha": "ade251a2bfe361423365cb671f2d0e006c907cb9"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-ENTWURF-20261113-R188.zip",
+          "sha256": "94dd9c8e0354cdb91b8cce881d52db7ebcd4c62398f736d62b40615dfb6533cd",
+          "gitBlobSha": "0d018faa9248a74a12a4a3fd2bb705b07849fc2b"
         }
       ],
       "taskCount": 24,
@@ -39400,6 +39425,31 @@
     "indexingRequests": 0,
     "analyticsReportsRepeated": false,
     "proof": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.json",
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run188": {
+    "dateZurich": "2026-11-13",
+    "kind": "Shop_profile_design_and_product_merchandising_draft",
+    "identityMatch": true,
+    "editorStatus": "LOGIN_BLOCKED",
+    "profileWrites": 0,
+    "productWrites": 0,
+    "discountWrites": 0,
+    "previewReady": true,
+    "headerDimensions": [
+      1080,
+      1170
+    ],
+    "mobileQA": "images_loaded_no_horizontal_overflow",
+    "openGates": [
+      "authenticated editor",
+      "Shop channel eligibility",
+      "commercial image rights",
+      "nightlight exact colour image binding",
+      "native layout controls"
+    ],
+    "proof": "dropship/codex-handoff-20261018/SHOP-PROFIL-ENTWURF-20261113-R188.json",
+    "dailyAnalyticsQueried": false,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

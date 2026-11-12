@@ -1,0 +1,124 @@
+{
+  "dateZurich": "2026-11-13",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland"
+  },
+  "status": "PREVIEW_READY_LIVE_EDITOR_BLOCKED_BY_LOGIN",
+  "editor": {
+    "url": "https://admin.shopify.com/store/luxestyle-ch/apps/shop-72/merchant/editor?previewPath=home",
+    "observed": "Shopify Log in / Continue to Shopify; stopped without credentials or form submission",
+    "sharedDesktopCapabilities": [],
+    "profileWrites": 0,
+    "productWrites": 0
+  },
+  "officialHelp": "https://help.shopify.com/en/manual/online-sales-channels/shop/manage-shop-store/customize/shop-store",
+  "supportedControls": [
+    "Header logo and background",
+    "Collection lists and list order",
+    "Collection cover images",
+    "Navigation collections"
+  ],
+  "headerRequirement": {
+    "width": 1080,
+    "height": 1170,
+    "maxImageMB": 15
+  },
+  "logoRequirement": "Square transparent SVG/PNG/WEBP, at least512px; mockup wordmark is only a design proposal",
+  "discountBanner": "Existing automatic-discount banner must remain controlled by current discount; no discount changes authorised by this design task",
+  "proposedFirstProducts": [
+    {
+      "id": 16617685418375,
+      "title": "Retro-Vogel-Keramikbecher mit Ballgriff",
+      "variantId": 67675894710663,
+      "variant": "Schwalbe",
+      "priceCHF": "17.90",
+      "storefrontAvailable": true,
+      "imageVariantBindingVerified": true
+    },
+    {
+      "id": 16638319788423,
+      "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+      "priceCHF": "28.90",
+      "storefrontAvailable": true,
+      "imageVariantBindingVerified": false,
+      "openGate": "Atmosphere main image belongs to this product; exact colour variant binding remains open"
+    }
+  ],
+  "excludedForFirstRow": {
+    "organizer": "Selected main image contains third-party perfume branding; requires suitable original image",
+    "otherImages": "Measurement diagram and supplier text-overlay photo not chosen as cover",
+    "adultOrRecallTags": "Candidates carrying18plus or rueckhol not selected"
+  },
+  "mockupLimits": [
+    "Preview is not a screenshot of a saved Shop editor state.",
+    "Exact text, logo positions, direct product curation and supported section controls must be verified in authenticated editor; do not promise custom CSS in Shop.",
+    "No new collection created or published; product selection is a merchandising draft.",
+    "Commercial image rights and Shop-channel eligibility require final verification before publication.",
+    "Storefront availability does not prove physical stock or delivery time."
+  ],
+  "qa": {
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Originalproduktfoto des braunen Retro-Keramikbechers"
+      },
+      {
+        "loaded": true,
+        "alt": "Retro-Vogel-Keramikbecher, Schwalbe"
+      },
+      {
+        "loaded": true,
+        "alt": "Tulpen-Nachtlicht auf einem Tisch"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "path": "assets/retro.jpg",
+      "bytes": 315897,
+      "sha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237"
+    },
+    {
+      "path": "assets/product-2.jpg",
+      "bytes": 74491,
+      "sha256": "d0f3394434f7ce431c8c866314c5469762a3392ba91e94e0340bfe4714bb1a20"
+    },
+    {
+      "path": "shop-profil-vorschau.png",
+      "bytes": 489505,
+      "sha256": "14cdaaa6a6c51ee600f881317e9b9fb62632abaa6ad839d53c9d174ff02ff5d4",
+      "dimensions": [
+        980,
+        1167
+      ]
+    },
+    {
+      "path": "shop-profil-mobil.png",
+      "bytes": 360704,
+      "sha256": "2031f6929b8fb8e0e175772c74e45e7f50bf7fb286e0e9362e759eda1ef35d01",
+      "dimensions": [
+        390,
+        1100
+      ]
+    },
+    {
+      "path": "header-1080x1170.png",
+      "bytes": 1502223,
+      "sha256": "17b46abedb179cc9a73d9ddb902287c57146554ceaaa3991f64daa77dbe0958f",
+      "dimensions": [
+        1080,
+        1170
+      ]
+    },
+    {
+      "path": "vorschau.html",
+      "bytes": 7133,
+      "sha256": "db50d1b62c980c92d0d0975da6fc00e54edfacf15d44291dea31dc0a2859bd0f"
+    }
+  ]
+}

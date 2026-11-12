@@ -1630,3 +1630,11 @@ TikTok: Uhr06./11.11., Waschbär07./10.11. und Rucksack08./12.11. jeweils mit wo
 18 alternative URLs direkt mit der Search Console geprüft; acht aktuell nicht indexiert oder Google unbekannt, jeweils öffentlich HTTP 200/Self-Canonical bestätigt. Besitzer-Screenshot: 14’469 ausstehende 404-Validierungsfälle, keine Produktanzahl oder Behebung. Alle sechs sichtbaren Beispieladressen liefern auch aktuell direkt HTTP 404 ohne Location; fünf gerenderte Abrufe endeten auf der Startseite, kein 301-Beleg. Exakte Nachfolger und Ursache unbekannt. Nächster Schritt: sechs alte Handles gezielt zuordnen, keine pauschalen Weiterleitungen. Keine Shopänderung oder Indexierungsanfrage, keine erneuten Performance-/Flowreports. [Bericht](INDEXIERUNG-UND-404-20261112-R187.md) · [Beleg](INDEXIERUNG-UND-404-20261112-R187.json). Claude-Empfang unbekannt.
 
 [LUXESTYLE_R187_20261112]
+
+## R188 – 13.11.2026: Shop-Profil und Produktauswahl vorbereitet
+
+LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Der direkte Shop-Profil-Editoraufruf endet an der Shopify-Anmeldung; keine Eingabe und kein Save. Konkrete Gestaltung mit echtem Keramikfoto, exakt1080×1170-Header, mobiler Vorschau und passender erster Produktreihe vorbereitet: Retro-Vogel-Keramikbecher Schwalbe und Tulpen-Nachtlicht. Beide ACTIVE/öffentlich kaufbar; Nachtlicht-Farbbindung, Shop-Kanalverfügbarkeit und kommerzielle Bildrechte vor Übernahme offen. Native Shopify-Hilfe gelesen: Header/Logo/Kollektionslisten/Navigation unterstützt; freies HTML und beliebige Positionierung nicht belegt. Rabattzeile ist automatisch rabattgebunden und bleibt unverändert. Keine Profil-, Produkt-, Rabatt-, Theme- oder Socialwrites; Vorschau ist keine Live-Änderung.
+
+[Übernahmeplan](SHOP-PROFIL-ENTWURF-20261113-R188.md) · [Beleg](SHOP-PROFIL-ENTWURF-20261113-R188.json) · [Dateipaket mit Vorschau und Header](SHOP-PROFIL-ENTWURF-20261113-R188.zip). Claude-Kenntnisnahme unbekannt.
+
+[LUXESTYLE_R188_20261113]

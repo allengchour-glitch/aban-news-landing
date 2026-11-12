@@ -2164,3 +2164,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Vorbereitung / Grenzen | Acht geprüfte Links, Belege und nächsten Zuordnungsschritt für Claude gespeichert | Keine Shop-/Redirect-/Sitemap-/Flow-/Socialänderung, kein breiter Scan und keine wiederholten Performanceberichte; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R187_20261112] [Bericht](INDEXIERUNG-UND-404-20261112-R187.md) · [Beleg](INDEXIERUNG-UND-404-20261112-R187.json).
+
+## 13.11.2026
+
+### R188 – Shop-Profil-Gestaltung und Produktdarstellung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Zugriff | LuxeStyle/Domain/CHF frisch gebunden; konkreten Shop-Profil-Editor read-only geöffnet | Shopify-Anmeldung; gestoppt, keine Credentials/Form-/Profilwrites; Produkt-Connector lesbar |
+| Produkte / Bilder | Kleine gezielte Produktgruppen und vier Einzelprodukte gelesen; zwei passende Produkte öffentlich geprüft, mehrere Originalbilder tatsächlich angesehen | Retrobecher Schwalbe bildgebunden und kaufbar; Nachtlicht kaufbar, genaue Foto-Farbvariante offen. Massgrafik, Lieferantentext und Parfummarkenfoto nicht für Titelbild gewählt |
+| Gestaltungsentwurf | Cream/Taupe-Konzept, echte Produktfotos, erste Produktreihe und Themenbereiche vorbereitet | Interaktive HTML-Vorschau, mobile PNG, Erläuterungs-PNG und1080×1170-Headerdatei; kein Online-Store-Theme oder Live-Shop-Profil |
+| Validierung / Hilfe | Offizielle Shop-Editor-Hilfe und mobile390px-Ansicht geprüft; Vorschau und Header tatsächlich betrachtet | Alle Bilder laden, kein horizontaler Überlauf; Header1.50MB/1080×1170. Direkter file-Aufruf zuerst browserseitig blockiert, lokaler HTTP-Vorschaurender danach erfolgreich |
+| Übergabe / Grenzen | Paket und exakten Übernahmeplan für authentifizierten Editor gesichert |0 Profil-/Produkt-/Rabatt-/Socialwrites; keine Reports/Bestellungen/Video-Renders. Freie Layoutkontrolle, Rechte, Nachtlicht-Farbbindung und Shop-Verfügbarkeit bleiben vor Liveübernahme zu prüfen; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R188_20261113] [Bericht](SHOP-PROFIL-ENTWURF-20261113-R188.md) · [Dateipaket](SHOP-PROFIL-ENTWURF-20261113-R188.zip).
