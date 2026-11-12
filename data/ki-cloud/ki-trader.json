@@ -24,6 +24,30 @@
     "btc": 73720.1171875,
     "eth": 2050.180908203125
    }
+  },
+  {
+   "stand": "2026-11-11",
+   "zeit": "2026-11-12T12:47:14+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1577,
+   "tokens_aus": 669,
+   "kosten_usd": 0.019688,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.2,
+    "begruendung": "Kurzfristiger Abwärtstrend: 7 T. -8 %, 30 T. -9,5 %, 8,8 % unter dem 50-Tage-Schnitt. Der Kurs liegt aber nur noch 1,2 % über dem 200-Tage-Schnitt, dort ist eine Unterstützung möglich. Angst&Gier 29 deutet auf überverkauft hin. Ich halte deshalb den kleinen Short ohne Umschichtung, das spart Gebühr. Positives Funding bringt dem Short einen leichten Ertrag.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.35,
+    "begruendung": "ETH ist deutlich schwächer als BTC: 7 T. -15 %, unter allen gleitenden Schnitten, auch 4,4 % unter dem 200-Tage-Schnitt. Die Tiefs werden laufend tiefer (2121 → 2050). MVRV 0,95 und 15,8 % Abstand zum 50-Tage-Schnitt sprechen für eine Überdehnung und damit für Erholungsrisiko. Ich halte den Short unverändert und baue nicht aus.",
+    "sicherheit": 0.4
+   },
+   "kommentar": "Positionen unverändert, keine Gebühren. Der Trend spricht für Short, ETH ist relativ schwächer. Die Stimmung im Angstbereich und die Nähe von BTC zum 200-Tage-Schnitt bremsen eine Aufstockung. Reduktion, falls BTC über 76'000 bzw. ETH über 2'240 schliesst.",
+   "kurse": {
+    "btc": 73964.46875,
+    "eth": 2055.876220703125
+   }
   }
  ]
 }
