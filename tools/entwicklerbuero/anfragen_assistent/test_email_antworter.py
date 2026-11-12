@@ -9,6 +9,38 @@ from email_antworter import verarbeiten
 
 
 class EmailTest(unittest.TestCase):
+    def test_quellzuordnung_fuer_alle_ergebnisarten(self):
+        from html import escape
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "eingang"
+            source.mkdir()
+            for name, text, sender in [
+                ("01-kunde&team.eml", "Welche Öffnungszeiten haben Sie?", "kunde@example.invalid"),
+                ("02-unklar.eml", "Welche Sonderanfertigung ist möglich?", "kunde@example.invalid"),
+                ("03-automatisch.eml", "Öffnungszeiten", "no-reply@example.invalid"),
+            ]:
+                m = EmailMessage()
+                m['From'] = sender
+                m['To'] = 'buero@example.invalid'
+                m['Subject'] = 'Anfrage'
+                m.set_content(text)
+                (source / name).write_bytes(m.as_bytes())
+            faq = root / 'faq.json'
+            faq.write_text(json.dumps({'faq':[{'stichwoerter':['Öffnungszeiten'], 'antwort':'Montags 09–12 Uhr.'}]}))
+            report = verarbeiten(source, root / 'out', 'Demo', 'buero@example.invalid', faq)
+            self.assertEqual([r['status'] for r in report['ergebnisse']],
+                             ['Entwurf prüfen', 'Manuell prüfen', 'Übersprungen'])
+            names = sorted(p.name for p in source.iterdir())
+            self.assertEqual([r.get('quelldatei') for r in report['ergebnisse']], names)
+            saved = json.loads((root/'out/bericht.json').read_text())
+            self.assertEqual(saved['ergebnisse'], report['ergebnisse'])
+            html = (root/'out/index.html').read_text()
+            for name in names:
+                self.assertIn('Quelldatei: ' + escape(name), html)
+            self.assertNotIn(str(source), html)
+            self.assertEqual((report['entwuerfe'],report['manuell_pruefen'],report['versendet']), (1,1,0))
+
     def faq_lauf(self, root, text, faq):
         p = self.mail(root, Subject="Anfrage")
         m = BytesParser(policy=policy.default).parsebytes(p.read_bytes())

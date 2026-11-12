@@ -149,6 +149,7 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
     out.mkdir(parents=True)
     seen, ergebnisse, ansicht = set(), [], []
     for nummer, (mail, grund) in enumerate(gelesen, 1):
+        quelle = dateien[nummer - 1].name
         if mail and mail["message_id"] in seen:
             mail, grund = None, "Message-ID in diesem Stapel bereits verarbeitet"
         if mail and mail["message_id"]:
@@ -157,22 +158,22 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
         if mail and faq is not None:
             antwort, grund = firmenantwort(mail, faq)
             if antwort is None:
-                ansicht.append({"nummer": nummer, "status": "Manuell prüfen", "grund": grund,
+                ansicht.append({"nummer": nummer, "quelldatei": quelle, "status": "Manuell prüfen", "grund": grund,
                                 "betreff": mail["betreff"], "original": mail["text"]})
-                ergebnisse.append({"nummer": nummer, "status": "Manuell prüfen", "grund": grund})
+                ergebnisse.append({"nummer": nummer, "quelldatei": quelle, "status": "Manuell prüfen", "grund": grund})
                 continue
         if mail:
             reply, kategorie, prioritaet = antwort_erstellen(mail, absender, firma, antwort)
             name = f"antwort-{nummer:04d}.eml"
             (out / name).write_bytes(reply.as_bytes())
-            ansicht.append({"nummer": nummer, "betreff": mail["betreff"], "empfaenger": str(mail["ziel"]),
+            ansicht.append({"nummer": nummer, "quelldatei": quelle, "betreff": mail["betreff"], "empfaenger": str(mail["ziel"]),
                             "original": mail["text"], "entwurf": reply.get_content(),
                             "kategorie": kategorie, "prioritaet": prioritaet})
-            ergebnisse.append({"nummer": nummer, "status": "Entwurf prüfen", "datei": name,
+            ergebnisse.append({"nummer": nummer, "quelldatei": quelle, "status": "Entwurf prüfen", "datei": name,
                                "kategorie": kategorie, "prioritaet": prioritaet})
         else:
-            ansicht.append({"nummer": nummer, "grund": grund})
-            ergebnisse.append({"nummer": nummer, "status": "Übersprungen", "grund": grund})
+            ansicht.append({"nummer": nummer, "quelldatei": quelle, "grund": grund})
+            ergebnisse.append({"nummer": nummer, "quelldatei": quelle, "status": "Übersprungen", "grund": grund})
     (out / "index.html").write_text(erstellen(ansicht, firma), encoding="utf-8")
     bericht = {"version": VERSION, "gelesen": len(dateien), "entwuerfe": sum("datei" in r for r in ergebnisse),
                "manuell_pruefen": sum(r["status"] == "Manuell prüfen" for r in ergebnisse),

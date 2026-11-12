@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## E-Mail-Pilot: Quelldatei bis zur Entwurfsprüfung erhalten ·12.11.2026
+
+Von main4b956e5 auf kleinem isoliertem Branch; Regeln, aktuelle Übergaben und offene Arbeiten gelesen. Vorhandene Firmenwissensfunktion zuerst geprüft: eindeutiger FAQ-Treffer ergibt ungesendeten Entwurf, unbekannte/mehrdeutige/kritische Anliegen bleiben manuell. Diese Funktion ist bereits implementiert und wurde nicht als neu ausgegeben. Keine produktive Postfachanbindung im Programm; Preisentscheidung/eigener Pilot-Checkout und abgenommener Kundenpilot weiterhin offen.
+
+Konkrete Verbesserung für EINEN E-Mail-Pilot: bisher fehlte die ursprüngliche EML-Datei in Bericht und Prüfseite bei allen Ergebnisarten; neue Gegenprobe mit Entwurf/manuell/übersprungen zeigte drei fehlende Zuordnungen. Jede Ergebniszeile trägt jetzt `quelldatei` (nur Dateiname), auch in `bericht.json`; die HTML-Prüfseite zeigt und durchsucht ihn sicher escaped. Keine Datei-Öffnungslinks oder absoluten Betriebspfade. Firmenwissen, Empfänger, Antworttext, Einstufung und Nullversand bleiben unverändert. Dateinamen können ebenfalls vertraulich sein; Dokumentation verlangt weiterhin lokalen freigegebenen Betriebsspeicher.
+
+GEMESSEN: neue Regression vor Korrektur rot, danach40 Pilottests grün. Vollständiger bestehender Werkstattbau erfolgreich, drei Werkstattgegenproben grün. Tatsächliches ZIP außerhalb Git entpackt:40 Tests auch aus Lieferpaket grün, geänderte Quelle/Prüfseite enthalten. Drei erfundene EMLs mit FAQ verarbeitet:ein Entwurf,ein manueller Fall,eine automatische Nachricht ausgesondert,null Versand. Browser1440/390px:alle drei Quelldateien suchbar, manuelle Nachricht ohne Antwort-/Sendeknopf, kein Netz/Überlauf. Fortschrittsprozente nicht geändert.
+
+Bestehender Entwicklerbüro-Workflow testet und paketiert diese Dateien bereits; keine neue Automation/Frequenz und kein neuer Publisher. Lokale CI-Simulation, echte CI/Artefaktbereitstellung und abschließender Stand im zugehörigen PR lesen. Es handelt sich um ein verbessertes lokales Pilotpaket, keinen bestätigten autonomen Kundendienst. Keine Kundennachrichten, Konto-/Preis-/Produkt-/Zahlungsänderung oder echten Kundendaten. Finanzielle Wirkung nicht gemessen; Nutzen: offene Fälle und Entwürfe verlässlich dem Originalexport zuordnen, weniger manuelle Suche.
+
 ## Download-Rückkehr: fehlende Kennung ist kein Neukaufgrund ·12.11.2026
 
 Von maind4a4aed auf isoliertem Branch; Regeln, aktuelle Übergaben/Zuständigkeiten und offene Arbeiten gelesen. Mailangebot-Checkoutkonfiguration weiterhin leer; keine Zuordnung erfunden oder fremde Links eingesetzt. Neuer reproduzierter Fehler im vorhandenen Lieferweg: ohne session_id zeigte die Downloadseite «Bitte über den Shop kaufen», obwohl eine fehlende Rückkehrkennung keine unbezahlte Bestellung belegt. Bei beschädigter Kennung lief außerdem ein unnötiger API-/Wiederholpfad.

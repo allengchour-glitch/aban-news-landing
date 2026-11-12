@@ -6,14 +6,16 @@ def erstellen(eintraege, firma):
     karten = []
     for eintrag in eintraege:
         nummer = eintrag['nummer']
+        quelle = '<p class="hinweis">Quelldatei: ' + escape(eintrag['quelldatei']) + '</p>' if eintrag.get('quelldatei') else ''
         if 'entwurf' not in eintrag:
             manuell = eintrag.get('status') == 'Manuell prüfen'
             art, status = ('manuell', 'Manuell prüfen') if manuell else ('übersprungen', 'Übersprungen')
             original = ('<h3>' + escape(eintrag['betreff']) + '</h3><pre>' + escape(eintrag['original']) + '</pre>') if manuell else ''
-            karten.append(f'<article data-art="{art}"><h2>Nachricht {nummer}</h2><p class="marke">{status}</p><p>{escape(eintrag["grund"])}</p>{original}</article>')
+            karten.append(f'<article data-art="{art}"><h2>Nachricht {nummer}</h2>{quelle}<p class="marke">{status}</p><p>{escape(eintrag["grund"])}</p>{original}</article>')
             continue
         karten.append(f'''<article data-art="entwurf">
 <h2>{escape(eintrag['betreff'])}</h2>
+{quelle}
 <p class="marke">Entwurf · {escape(eintrag['kategorie'])} · {escape(eintrag['prioritaet'])}</p>
 <p>An: {escape(eintrag['empfaenger'])}</p>
 <details><summary>Ursprüngliche Nachricht lesen</summary><pre>{escape(eintrag['original'])}</pre></details>
