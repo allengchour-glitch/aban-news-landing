@@ -35,6 +35,21 @@ Ohne Firmenwissen nutzen die Entwürfe feste Vorlagen. Mit `--wissen /pfad/firme
 
 Stichworttreffer verstehen weder Verneinungen noch vollständige Mailverläufe. Auch ein eindeutiger Treffer kann unpassend sein und muss vor Verwendung geprüft werden. Eine kontextbezogene KI-Antwort oder Verarbeitung von Anhängen ist nicht angebunden. Die Gmail-/Outlook-Anbindung ist offen; Zugangsdaten gehören nicht in das Repository oder in den Chat.
 
+## Gespeicherte Gmail-Rohdaten übernehmen
+
+`gmail_import.py` schliesst die lokale Formatlücke zwischen einem vorhandenen lesenden Gmail-Zugang und dem EML-Beantworter. Das Werkzeug ruft selbst kein Konto auf und braucht keine Zugangsdaten. Ein freigegebener lesender Zugang muss die gewählten Nachrichten zuerst im Gmail-Format `raw` liefern. Speichere die eigentliche Antwort als JSON mit `id` und `raw`, oder als Liste solcher Objekte, im privaten Betriebsspeicher. `raw` ist der Base64url-kodierte vollständige Nachrichtentext der Gmail-API; eine Nachrichtensuche oder ein Textauszug reicht nicht.
+
+```bash
+python3 gmail_import.py /privat/gmail-raw.json /privat/email-import
+python3 email_antworter.py /privat/email-import /privat/email-pruefen --firma "Pilotbetrieb" --absender buero@example.invalid --wissen /privat/freigegebene-faq.json
+```
+
+Beide Ausgabeordner müssen neu sein. Der Import nimmt höchstens 100 Nachrichten, 2 MiB je dekodierter Nachricht und 8 MiB je Exportdatei an. Vor der Ausgabe wird der gesamte Stapel geprüft; ungültige Rohdaten oder doppelte Gmail-Kennungen werden abgewiesen. Bei Schreibfehlern kann ein unvollständiger Ausgabeordner zurückbleiben; Fehlermeldung prüfen, statt ihn als fertige Lieferung zu verwenden. Es gibt keine automatische Wiederholung.
+
+Die EML-Dateien bleiben bytegleich zur gelesenen Quelle. Dateinamen sind neutral nummeriert; `import.json` verbindet sie mit der Gmail-Kennung. Die Prüfseite des Beantworters nennt anschliessend diese Quelldateien. Ganze EML-Dateien können Anhänge und vertrauliche Header enthalten; sie werden nur lokal gespeichert, Anhänge vom Beantworter weiterhin nicht ausgewertet oder in Antworten übernommen. Importdateien, Kennungen und Ausgaben niemals ins Repository oder in öffentliche Anzeigen schreiben.
+
+Der Import erzeugt keine Gmail-Entwürfe, ändert keine Labels, markiert nichts als gelesen und versendet nichts. Er ist keine dauerhafte Postfachsynchronisierung und führt kein Senderecht oder Firmenkonto ein. Für einen echten Pilot bleiben freigegebener Exportzugriff, passende Firmen-FAQ, Inhalts-/Empfängerprüfung und Importprüfung im vorgesehenen Mailclient erforderlich. Eine in dieser Sitzung lesbare Verbindung ist keine Kontoverbindung des Programms.
+
 ## Kommentar-Beantworter im Entwurfsmodus
 
 ```bash
