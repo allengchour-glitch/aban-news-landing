@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Download-Rückkehr: fehlende Kennung ist kein Neukaufgrund ·12.11.2026
+
+Von maind4a4aed auf isoliertem Branch; Regeln, aktuelle Übergaben/Zuständigkeiten und offene Arbeiten gelesen. Mailangebot-Checkoutkonfiguration weiterhin leer; keine Zuordnung erfunden oder fremde Links eingesetzt. Neuer reproduzierter Fehler im vorhandenen Lieferweg: ohne session_id zeigte die Downloadseite «Bitte über den Shop kaufen», obwohl eine fehlende Rückkehrkennung keine unbezahlte Bestellung belegt. Bei beschädigter Kennung lief außerdem ein unnötiger API-/Wiederholpfad.
+
+`danke-kit.html` benennt fehlende/ungültige Bestellkennung und verweist auf ursprünglichen Rückkehr-Link bzw. vorhandenen Support, ausdrücklich kein erneuter Kauf bei bereits erfolgter Zahlung. Gleiche Formatprüfung wie Backend, kein API-Aufruf oder Retryknopf im Kennungsfehlerfall. Neutrale Überschrift statt unbelegtem Kaufdank. Kein automatischer Wiederherstellungs-/Liefererfolg behauptet; bestehende gültige Kennung, Zahlungs-/Dateiprüfung und manuelle Wiederaufnahme bleiben erhalten.
+
+GEMESSEN: neue Regression am unveränderten Code rot; nach Korrektur57 Download-,78 API- und84 Engineprüfungen grün (219). Acht Browserfälle (1440/390px × fehlend/leer/ungültig/HTML-artige Kennung): Erklärung, kein Neukaufaufruf, null APIaufrufe, kein Downloadlink/Retry, Supportlink vorhanden, keine Seitenfehler/Überbreite. Nur erfundene Eingaben, kein Kauf oder geschützter Dateiaufruf. Bestehender Hype-Filter-Workflow führt die erweiterten Tests aus; keine neue Automation/Frequenz. CI-Simulation, echte Prüfungen und Bereitstellung im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen; Nutzen: vermeidet falsche Neukaufempfehlung und unnötige Prüfungen.
+
+Arbeitsumgebung: erster eigener Checkout wegen Speicherplatz fehlgeschlagen, unvollständiger Worktree automatisch nicht registriert. Den neuen eigenen Baum ohne Checkout neu initialisiert und auf benötigte Dateien beschränkt; keine fremden/älteren Arbeitsbäume oder privaten Finanzdaten gelöscht.
+
 ## KI-Büro Design16: echte Ergebnisse direkt im Büro ·11.11.2026
 
 Besitzerfeedback zur vorherigen Optik umgesetzt: verbesserte Material-/Lichtberechnung und Normalen, gerundete Monitorgehäuse, grössere Zentrale. Statt externer Linkkarten bleiben konkrete Befunde, Social-Zustände und Messzeiten erhalten. Echter Fehler reproduziert:12er-Ablauflieferant wurde vom11er-Leser komplett verworfen. Vertrag korrigiert, explizite Abschlussdaten und stabile Lauf-IDs ergänzt. Neun öffentliche Ablaufquellen eng geprüft, zwölf bereinigte Arbeitszeilen in der Erstansicht. Kein neuer privater Kontoabruf oder Automat.
