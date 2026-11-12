@@ -139,4 +139,12 @@ function page(replies,search='?session_id=cs_test_demo'){
  p.button.click();await settle();assert.equal(p.calls(),2);assert.match(p.box.innerHTML,/Kit herunterladen/);assert.equal(p.timers.size,0);checks++;
  finish({ok:true,url:'/downloads/kits/'+'c'.repeat(24)+'.zip'});await settle();assert.ok(!p.box.innerHTML.includes('c'.repeat(24)));assert.equal(p.calls(),2);checks++;
 }
+// Fehlende/defekte Rückkehrkennung ist kein Grund für einen erneuten Kauf.
+for (const search of ['', '?session_id=', '?session_id=ungueltig', '?session_id=%3Cimg%3E']) {
+ const p=page([],search);await settle();
+ assert.equal(p.calls(),0);assert.equal(p.button.hidden,true);assert.equal(p.timers.size,0);
+ assert.match(p.box.textContent,/Bestellkennung/);assert.match(p.box.textContent,/nicht nochmals kaufen/);
+ assert.doesNotMatch(p.box.textContent,/Bitte über den Shop kaufen/);checks++;
+}
+assert.doesNotMatch(html,/<h1>Danke für deinen Kauf!/);checks++;
 console.log(`${checks} ok, 0 Fehler`);

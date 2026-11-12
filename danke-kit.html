@@ -15,7 +15,7 @@
 </head>
 <body>
   <p style="color:#9a3412;font-weight:700">☕ aban news</p>
-  <h1>Danke für deinen Kauf!</h1>
+  <h1>Dein Kit-Download</h1>
   <div class="box" id="box" role="status" aria-live="polite"><p>Zahlung wird geprüft …</p></div>
   <button class="btn" id="erneut" type="button" hidden>Zahlung erneut prüfen</button>
   <p class="muted">Problem mit dem Download? Schreib mir: <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
@@ -25,7 +25,7 @@
     var box=document.getElementById('box');
     var erneut=document.getElementById('erneut');
     var sid=new URLSearchParams(location.search).get('session_id');
-    if(!sid){box.innerHTML='<p>Kein gültiger Kauf-Link. Bitte über den Shop kaufen.</p>';return;}
+    if(!sid||!/^cs_[A-Za-z0-9_]+$/.test(sid)){box.textContent='Die Bestellkennung fehlt oder ist ungültig. Öffne den ursprünglichen Rückkehr-Link nach deiner Zahlung erneut oder kontaktiere den Support unten. Falls du bereits bezahlt hast: bitte nicht nochmals kaufen.';return;}
     function pruefen(){
     erneut.hidden=true;erneut.disabled=true;
     box.textContent='Zahlung wird geprüft …';
