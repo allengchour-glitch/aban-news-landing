@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-11T11:51:04Z",
+ "stand": "2026-11-12T12:37:09Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -8,94 +8,94 @@
   "MIT Tech Review",
   "heise",
   "Golem",
-  "t3n",
-  "netzpolitik.org"
+  "t3n"
  ],
  "nicht_erreichbar": [
   "VentureBeat AI",
+  "netzpolitik.org",
   "BSI"
  ],
  "fenster_h": 72,
  "items": [
   {
-   "t": "Sam Altman versprach die „Rettung des Klimas“ durch KI: Was ist davon heute übrig?",
-   "u": "https://t3n.de/news/sam-altman-versprach-die-rettung-des-klimas-durch-ki-was-ist-davon-heute-uebrig-1772410/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Weltuntergang am 13. November 2026? Was eine Doomsday-Formel von 1960 über KI verrät",
+   "u": "https://t3n.de/news/weltuntergang-2026-doomsday-formel-ki-1771528/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-11T11:00:21Z",
-   "s": "Auf der UN-Klimakonferenz in Antalya steht Künstliche Intelligenz ganz oben auf der Agenda. Laut einer Prognose könnte KI tatsächlich zur Senkung von CO2-Emissiweiterlesen auf t3n.de",
+   "d": "2026-11-12T11:55:00Z",
+   "s": "Weltuntergang am 13. November 2026? Eine 1960 in Science veröffentlichte Formel, die für 2026 eine katastrophale Überbevölkerung vorhersagte, hat sich nicht besweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Auto SR: Microsofts KI-Upscaler läuft auf der Xbox Ally X jetzt auch mobil",
-   "u": "https://www.heise.de/news/Auto-SR-Microsofts-KI-Upscaler-laeuft-auf-der-Xbox-Ally-X-jetzt-auch-mobil-11520596.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Harbor: Neue App von Apple-Tochter Claris für lokale KI-Modelle",
+   "u": "https://www.heise.de/news/Harbor-Neue-App-von-Apple-Tochter-Claris-fuer-lokale-KI-Modelle-11519932.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-11T11:00:00Z",
-   "s": "Microsofts KI-Upscaler Auto SR ist auf der ROG Xbox Ally X offiziell verfügbar und läuft nun auch im Handheld-Modus. Neu ist ein Modus für bis zu 120 fps.",
+   "d": "2026-11-12T11:26:00Z",
+   "s": "Die Macher hinter FileMaker beschäftigen sich mit lokalen KI-Modellen auf dem Mac. Die App soll auch das Zusammenschalten von Rechnern erleichtern.",
    "sprache": "de"
   },
   {
-   "t": "Nach Sicherheitsvorfall mit OpenAI: Australien prüft Straftatbestand gegen unsichere KI",
-   "u": "https://www.golem.de/news/nach-sicherheitsvorfall-mit-openai-australien-prueft-straftatbestand-gegen-unsichere-ki-2611-215079.html",
-   "q": "Golem",
-   "d": "2026-11-11T10:47:02Z",
-   "s": "Neben der Schaffung einer neuen Sicherheitsbehörde will Australien Unternehmen, die wissentlich unsichere KI-Modelle auf den Markt bringen, bestrafen. (KI, Politik)",
-   "sprache": "de"
-  },
-  {
-   "t": "IT-Jobs: Produktmanager sind Gewinner des KI-Zeitalters",
-   "u": "https://www.golem.de/news/it-jobs-produktmanager-sind-gewinner-des-ki-zeitalters-2611-215076.html",
-   "q": "Golem",
-   "d": "2026-11-11T10:22:01Z",
-   "s": "In den USA werden immer weniger Softwareentwickler eingestellt. Auch wird der Umgang mit KI zu einem essenziellen Skill bei der Jobsuche. (Arbeit, Softwareentwicklung)",
-   "sprache": "de"
-  },
-  {
-   "t": "Open-Source-Low-Code: Budibase 4.0 vereinfacht Firmenprozesse",
-   "u": "https://www.heise.de/news/Open-Source-Low-Code-Budibase-4-0-vereinfacht-Firmenprozesse-11520118.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "US-Firmen verkaufen wohl KI-Trainingsdaten an China",
+   "u": "https://www.heise.de/news/US-Firmen-verkaufen-wohl-KI-Trainingsdaten-an-China-11521993.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-11T09:49:00Z",
-   "s": "Mehr Kontrolle über KI-Agenten und Workflows: Die Low-Code-Plattform Budibase 4.0 protokolliert Ausführungsschritte im Detail und bündelt Freigaben im Portal.",
+   "d": "2026-11-12T11:23:00Z",
+   "s": "US-Firmen, die auch OpenAI und Anthropic beliefern, verkaufen ihre Trainingsdaten und RL-Umgebungen wohl an chinesische KI-Unternehmen.",
    "sprache": "de"
   },
   {
-   "t": "Experience the art and legacy of Dr. Esther Mahlangu",
-   "u": "https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu/",
-   "q": "Google AI",
-   "d": "2026-11-11T09:00:00Z",
-   "s": "A new online archive of Esther Mahlangu’s life and art is now on Google Arts & Culture.",
-   "sprache": "en"
-  },
-  {
-   "t": "KI-Stimmen mit Emotionen: DeepL stellt neues Modell Aure vor",
-   "u": "https://t3n.de/news/ki-stimmen-mit-emotionen-deepl-stellt-neues-modell-aure-vor-1772684/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Anthropic-IPO: Banken drängen auf höhere Bewertung",
+   "u": "https://t3n.de/news/anthropic-ipo-banken-draengen-auf-hoehere-bewertung-1773181/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-11T08:03:52Z",
-   "s": "Mit einem neuen KI-Modell will DeepL menschenähnliche Übersetzungen mit ausdrucksstarken, generierten Stimmen ermöglichen. Welche Techniken Aure dabei im Gegensatz zu vorherigen Modellen nutzt. weiter…",
+   "d": "2026-11-12T11:00:00Z",
+   "s": "Der KI-Konzern Anthropic hat seine Roadshow gestartet und könnte beim Börsengang bis zu 90,4 Milliarden Dollar einnehmen. Doch jetzt drängen die begleitenden Banken auf einen höheren Ausgabepreis von …",
    "sprache": "de"
   },
   {
-   "t": "ChatGPT Plus for veterans and servicemembers",
-   "u": "https://openai.com/index/chatgpt-plus-for-veterans",
+   "t": "Augmented Reality: Apple-Zulieferer verrät Arbeiten an geheimer KI-Brille",
+   "u": "https://www.golem.de/news/augmented-reality-apple-zulieferer-verraet-arbeiten-an-geheimer-ki-brille-2611-215122.html",
+   "q": "Golem",
+   "d": "2026-11-12T10:00:01Z",
+   "s": "Ein chinesischer Zulieferer spricht überraschend offen über das Brillen-Projekt und neue Ohrhörer von Apple. (Apple, Augmented Reality)",
+   "sprache": "de"
+  },
+  {
+   "t": "Ask Me Anything am 26.11.: Wie viel KI verträgt die Softwareentwicklung?",
+   "u": "https://www.golem.de/news/ask-me-anything-am-26-11-wie-viel-ki-vertraegt-die-softwareentwicklung-2611-215098.html",
+   "q": "Golem",
+   "d": "2026-11-12T09:30:02Z",
+   "s": "Welche Entwicklungsaufgaben lassen sich sinnvoll an KI delegieren und unter welchen Voraussetzungen? Im Live-AMA gibt Experte Fabian Deitelhoff praktische Tipps. (KI, Softwareentwicklung)",
+   "sprache": "de"
+  },
+  {
+   "t": "Holiday Extras is rethinking what it can build with Codex",
+   "u": "https://openai.com/business/customer-stories/holidays-extras-codex",
    "q": "OpenAI",
-   "d": "2026-11-11T08:00:00Z",
-   "s": "More than 20,000 veterans and transitioning service members have claimed a free year of ChatGPT Plus. See how they use it to prepare for civilian careers.",
+   "d": "2026-11-12T09:30:00Z",
+   "s": "With Codex, Holiday Extras is turning customer expertise into better apps, higher booking conversion and new possibilities for growth.",
    "sprache": "en"
   },
   {
-   "t": "Nvidia’s crisis has corporate governance experts reaching for the popcorn",
-   "u": "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/",
+   "t": "Who could replace Jensen Huang? A highly unscientific list of possible successors",
+   "u": "https://techcrunch.com/2026/11/11/who-could-replace-jensen-huang-a-highly-unscientific-list-of-possible-successors/",
    "q": "TechCrunch AI",
-   "d": "2026-11-11T07:30:51Z",
-   "s": "The governance experts we talked to say nobody has seen anything like what's unfolding right now.",
+   "d": "2026-11-12T03:13:10Z",
+   "s": "Nvidia has no succession plan and a CEO in hot water, so we’ve drafted a shortlist.",
    "sprache": "en"
   },
   {
-   "t": "KI-Infrastruktur und Politik: Die neuen Powerplayer bei Meta",
-   "u": "https://netzpolitik.org/2026/ki-infrastruktur-und-politik-die-neuen-powerplayer-bei-meta/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-11T06:33:08Z",
-   "s": "Die neue Meta-Präsidentin Dina Powell McCormick hat beste Kontakte zu Republikanern: Im September war sie beim Friedensinstitut von Donald Trump zu Gast. – Alle Rechte vorbehalten: UPI PhotoIm Wettren…",
-   "sprache": "de"
+   "t": "Supporting research on AI and children’s safety",
+   "u": "https://openai.com/index/children-first-declaration",
+   "q": "OpenAI",
+   "d": "2026-11-12T00:00:00Z",
+   "s": "OpenAI commits $2 million to research on AI and children’s safety. The work supports shared tools to measure risks and opportunities for young people.",
+   "sprache": "en"
+  },
+  {
+   "t": "The unfolding Jensen Huang scandal: a timeline",
+   "u": "https://techcrunch.com/2026/11/11/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-11T23:50:00Z",
+   "s": "The affair could have ramifications for national security as the U.S. and China race to develop the most advanced AI infrastructure.",
+   "sprache": "en"
   }
  ]
 }
