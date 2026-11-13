@@ -1,5 +1,9 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R198 – 14.11.2026: Shop-Händleranmeldung technisch blockiert
+
+[Anmeldeblock und nächster Schritt](SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.md) · [Beleg](SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json). Der neue Link erreichte Google; der Inhaber zeigt eine Browser-Sicherheitsablehnung. Im selben Browser zeigte die offizielle Shopify-Rückkehr anschliessend «Something went wrong». Sitzung beendet, keine Umgehung oder Profiländerung. Shopify-API und bestätigte R197-Kollektion/Becherkorrekturen funktionieren bzw. bleiben gespeichert. Für native Platzierung fehlt technischer Händlerbrowserzugriff, keine erneute Gestaltungsfreigabe. Keine neuen Reports/Plattformwrites; alle24Aufgaben, Historien und Tagesgrenzen erhalten.
+
 ## R197 – 13./14.11.2026: Shop-App-Auswahl tatsächlich veröffentlicht, Zugang separat blockiert
 
 [Verbindlicher R197-Stand](UEBERGABE-SHOP-APP-20261113-R197.md) · [Shop-App-Belege](SHOP-APP-WEITERARBEIT-20261113-R197.json) · [Becherkorrektur](BECHER-KORREKTUR-20261113-R197.json) · [Queue/Doppelpostprüfung](METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json).

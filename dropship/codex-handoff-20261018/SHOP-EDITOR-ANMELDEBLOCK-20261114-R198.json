@@ -1,0 +1,28 @@
+{
+  "recordedAtUTC": "2026-11-13 23:16:40 UTC",
+  "observedGoogleError": "Couldn’t sign you in / This browser or app may not be secure",
+  "officialShopifyRecovery": {
+    "navigationReturnedError": true,
+    "errorDetailNotRetained": true,
+    "targetedReadbackTitle": "Something went wrong",
+    "originPath": "https://accounts.shopify.com/lookup",
+    "noFurtherAttempts": true
+  },
+  "stop": {
+    "success": true,
+    "status": "stopped",
+    "creditsBilled": 57,
+    "isError": false
+  },
+  "profileWrites": 0,
+  "securitySettingsChanged": false,
+  "googleReattempts": 0,
+  "sameBrowser": true,
+  "revision": 198,
+  "meaning": "Technical browser authentication blocker, not missing owner permission or failed Shopify API reauth",
+  "shopifyApiConnection": "working as confirmed R197; no reauthentication repeated",
+  "noSecurityBypass": true,
+  "noBuyerAccountDataRead": true,
+  "shopProfileStatus": "no native menu/header/avatar Save; R197 Shop-only collection and product corrections remain confirmed",
+  "existingAuthorizationsPreserved": true
+}
