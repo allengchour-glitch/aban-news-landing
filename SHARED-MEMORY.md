@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Downloadanzeige prüft HTTP und Freigabe ·13.11.2026
+
+Reproduzierten Fehler bei widersprüchlicher Fehlerantwort korrigiert: Downloadknopf nur bei erfolgreichem HTTP-Status und exakt booleschem true.64 Downloadprüfungen grün, Backend/Lieferzuordnung unverändert. Details und endgültige Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Keine Käufe/geschützten Dateiaufrufe; finanzielle Wirkung nicht gemessen.
+
 ## Codex: Pro-Angebote verständlicher ·12.11.2026
 
 Cockpit und KI-Studio am Kaufbereich erklärt und gegenseitig verlinkt; bestehende Preise/Kaufziele/Lizenzregeln unverändert. Cockpit-Kaufknopf nach Handyscreenshot kompakter/lesbar. Vier Browserfälle grün. Details und Grenzen: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt «Pro-Angebote». Echte CI/Bereitstellung im PR; finanzielle Wirkung nicht gemessen.

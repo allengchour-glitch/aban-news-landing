@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Downloadanzeige: erfolgreiche Antwort ausdrücklich verlangen ·13.11.2026
+
+Von main60e940e auf isoliertem Branch. Regeln, Übergaben und offene Arbeiten gelesen. Neue Gegenprobe am unveränderten Code: simulierte HTTP402-Antwort mit widersprüchlichem ok:true zeigt trotzdem einen Downloadknopf; auch wahrheitswertige Zeichenketten werden bisher angenommen. Das ist ein Darstellungs-/Vertragsfehler, kein Nachweis einer umgangenen serverseitigen Zahlungsprüfung.
+
+`danke-kit.html` verlangt jetzt erfolgreichen HTTP-Status und exakt boolesches true vor der Anzeige eines URL-geprüften Links. Bestehende Fehlermeldung, manuelle Wiederaufnahme, Fristen und Schutz vor erneuter Kaufempfehlung erhalten. Keine Backend-, Zahlungs-, Preis-, Lizenz- oder Dateizuordnung geändert. Kein neuer Automat/Takt/Retry.
+
+GEMESSEN: Regression vor Korrektur rot, danach64 Downloadprüfungen grün; bestehende API- und Engineprüfungen ebenfalls grün. Drei Fehlerstatus402/429/500 mit widersprüchlicher Freigabe bleiben ohne Link und lassen anschliessend erfolgreiche manuelle Wiederaufnahme zu; vier nicht-boolesche Freigaben abgewiesen. Nur erfundene Kennungen und Antworten. Browser und CI/Bereitstellung abschliessend im zugehörigen PR nachsehen. Keine echten Käufe oder geschützten Dateien abgerufen. Finanzielle Wirkung nicht gemessen; Nutzen: keine fälschlich fertige Lieferung bei widersprüchlicher Störungsantwort, weniger irreführende Downloadversuche.
+
 ## Pro-Angebote: Einsatz und Kaufmodell am Kaufbereich erklären ·12.11.2026
 
 Von main63644e2 auf eigenem isoliertem Branch. Aktuelle Regeln, Übergaben und offene PRs geprüft. Beide Verkaufsseiten nennen unterschiedliche Angebote «aban Pro»; Konfiguration zeigt eigenen Cockpit-Kauflink und eigene Studio-Monats-/Jahreslinks. Gemeinsame Lizenzprüfung weist gültige Fremdvarianten nicht gesondert zurück: deshalb keine unbelegte Lizenz-Unvereinbarkeit behauptet und keine Rechte-/Lizenzlogik geändert.
