@@ -42,6 +42,13 @@ Dieser Code ergänzt weder eine Abosynchronisierung noch Versand und aktiviert k
 Zeitplan. Die vorhandene Deploy-Prüfung führt die Offline-Gegenproben aus.
 
 ## Ehrlich
+Ein belegter API-Treffer bleibt positiv. Ein negatives Gesamtergebnis erfordert
+verwertbare Antworten aller angefragten Anbieter für alle geplanten Prompts
+(höchstens5 je Anbieter). Anbieterfehler, leere Antworten oder abgebrochene
+Prüfungen ohne Treffer bleiben unbekannt. Der Report zeigt das ausdrücklich,
+erfindet keinen Rückgang und ersetzt dadurch keinen früheren bekannten Status.
+Ohne neuen bekannten Status bleibt die Verlaufsdatei unverändert.
+
 Kein Live-ChatGPT, keine Garantie auf Nennung. Der Wert ist das monatliche Dranbleiben +
 der Maßnahmenplan. Daten „ohne Gewähr".
 

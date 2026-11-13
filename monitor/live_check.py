@@ -105,7 +105,7 @@ def run_live(input_data, prompts, env=None):
                 engines.append({"engine": name, "fehler": _safe(e)})
                 geprueft = -1
                 break
-            if ans is None:
+            if not isinstance(ans, str) or not ans.strip():
                 break
             geprueft += 1
             if _mentioned(ans, firma):
@@ -113,13 +113,16 @@ def run_live(input_data, prompts, env=None):
                 if not beispiel:
                     beispiel = p
         if geprueft >= 0:
-            g = treffer > 0
+            g = True if treffer > 0 else False if geprueft > 0 and geprueft == len(prompts[:5]) else None
             genannt_irgendwo = genannt_irgendwo or g
             engines.append({"engine": name, "geprueft": geprueft, "treffer": treffer,
                             "genannt": g, "beispiel_prompt": beispiel})
     if not engines:
         return None
-    return {"live": True, "genannt": genannt_irgendwo, "engines": engines}
+    # Ein Treffer ist belegt; ein negatives Gesamturteil braucht vollständige
+    # Antworten aller angefragten Anbieter. Ausfall/Leere bleibt unbekannt.
+    genannt = True if genannt_irgendwo else False if all(e.get("genannt") is False for e in engines) else None
+    return {"live": True, "genannt": genannt, "engines": engines}
 
 
 def _has_key(name, env):
