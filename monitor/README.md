@@ -1,8 +1,9 @@
 # KI-Sichtbarkeits-Monitor — Abo-Produkt (`monitor/`)
 
-Wiederkehrendes Mikro-SaaS (MRR), **ohne Kundenkontakt**: jeden Monat ein automatischer
-Report, ob die Firma einer Abonnent:in in KI-Antworten genannt wird — mit Veränderung
-zum Vormonat und Maßnahmen. Baut auf der Logik von `functions/_visibility-engine.mjs` auf.
+Report-Generator für das bestehende Monitor-Angebot. Quellcode und ein gespeicherter
+Auftrag belegen keinen laufenden Abo-/Versandbetrieb. Abgleich bezahlter Abos und
+Reportversand sind hier nicht angebunden. Baut auf der Logik von
+`functions/_visibility-engine.mjs` auf.
 
 - **Verkaufsseite:** `ki-sichtbarkeit-monitor.html` (Self-Checkout, 9 €/Monat, kündbar).
 - **Report-Engine:** `monitor/generate_report.py` (stdlib; optional `anthropic`).
@@ -10,8 +11,15 @@ zum Vormonat und Maßnahmen. Baut auf der Logik von `functions/_visibility-engin
 ## Bauen / testen
 ```bash
 cd monitor
-python3 generate_report.py            # nutzt abos.json, sonst abos.example.json (Trockenlauf)
+python3 generate_report.py --beispiel # offline, auch bei gesetzten Anbieter-Keys
+python3 -B -m unittest discover -p 'test_generate_report.py'
+python3 generate_report.py            # erfordert abos.json; kann Anbieter aufrufen
 ```
+Fehlt `abos.json`, endet der normale Lauf mit Exitcode2 vor jeder Anbieteranfrage und
+ohne Ausgabe oder Verlauf. Kein automatischer Ersatz durch Beispielkund:innen.
+`--beispiel` nutzt ausschliesslich `abos.example.json`, überspringt alle Anbieter,
+schreibt nach `ausgabe/beispiel/` und verändert `verlauf.json` nicht. Die HTML-Datei
+ist als Offline-Beispiel markiert; sie ist kein Kundenreport und wird nicht versandt.
 Ohne `ANTHROPIC_API_KEY`: Report mit Prompts + Selbst-Test + Maßnahmen. Mit Key zusätzlich
 Stellvertreter-Check (kennt ein Modell die Firma?) + Veränderung ggü. Vormonat (`verlauf.json`).
 Output: `monitor/ausgabe/<id>-<YYYYMM>.html` (git-ignored). `abos.json` + `verlauf.json` sind
@@ -27,9 +35,11 @@ git-ignored (enthalten Kundendaten/E-Mails — **nie committen**).
    Dienst erzwungen wird.)
 
 ## Automatik
-`.github/workflows/sichtbarkeit-monitor.yml` läuft **monatlich** (Cron) + manuell. Ohne Secrets
-baut er nur den Beispiel-Report als Artefakt; mit `ANTHROPIC_API_KEY` den echten Check. Der
-eigentliche Versand bleibt dein Schritt (siehe oben).
+Der Cron in `.github/workflows/sichtbarkeit-monitor.yml` ist pausiert; der Workflow
+ist nur manuell auslösbar. Er erwartet eine bereitgestellte private Abodatei, die ein
+normaler Repository-Checkout nicht enthält. Ohne sie bricht er vor Anbieteranfragen ab.
+Dieser Code ergänzt weder eine Abosynchronisierung noch Versand und aktiviert keinen
+Zeitplan. Die vorhandene Deploy-Prüfung führt die Offline-Gegenproben aus.
 
 ## Ehrlich
 Kein Live-ChatGPT, keine Garantie auf Nennung. Der Wert ist das monatliche Dranbleiben +
