@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: KI-Studio-Freischaltung mit Browserfrist ·13.11.2026
+
+Blockierten Transport/Antwortinhalt im Browser nachgestellt und gemeinsame15-Sekundenfrist ergänzt; bestehende Störungsmeldung, Schlüsselerhalt und manuelle Wiederaufnahme.102 API-,64 Download-,84 Engineprüfungen grün. Keine Backend-/Lizenz-/Preisänderung, kein neuer Automat. Details und endgültige CI/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: Downloadanzeige prüft HTTP und Freigabe ·13.11.2026
 
 Reproduzierten Fehler bei widersprüchlicher Fehlerantwort korrigiert: Downloadknopf nur bei erfolgreichem HTTP-Status und exakt booleschem true.64 Downloadprüfungen grün, Backend/Lieferzuordnung unverändert. Details und endgültige Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Keine Käufe/geschützten Dateiaufrufe; finanzielle Wirkung nicht gemessen.

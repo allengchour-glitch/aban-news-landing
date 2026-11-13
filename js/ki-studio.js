@@ -64,10 +64,17 @@
     k = (k || '').trim();
     if (!k) return;
     var btn = $('proUnlock'); if (btn && !quiet) { btn.disabled = true; btn.textContent = T.working; }
-    fetch('/api/pro-validate', {
+    var controller = new AbortController(), timer;
+    // Eine Frist umfasst Transport und Antwortinhalt; keine automatische Wiederholung.
+    var deadline = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        controller.abort(); reject(new Error('Lizenzprüfung abgelaufen'));
+      }, 15000);
+    });
+    Promise.race([fetch('/api/pro-validate', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ license_key: k })
-    }).then(function (r) { return r.json(); }).then(function (d) {
+      body: JSON.stringify({ license_key: k }), signal: controller.signal
+    }).then(function (r) { return r.json(); }), deadline]).then(function (d) {
       if (d && d.valid) {
         key = k; try { localStorage.setItem(KEY, k); } catch (e) {}
         setUnlocked(true);
@@ -78,7 +85,7 @@
         if (subEl && (!quiet || unavailable)) subEl.textContent = unavailable ? T.licenseUnavailable : T.invalid;
       }
     }).catch(function () { if (subEl) subEl.textContent = T.licenseUnavailable; })
-      .finally(function () { if (btn) { btn.disabled = false; btn.textContent = T.unlock; } });
+      .finally(function () { clearTimeout(timer); if (btn) { btn.disabled = false; btn.textContent = T.unlock; } });
   }
 
   var unlockBtn = $('proUnlock');

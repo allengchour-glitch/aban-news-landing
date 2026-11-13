@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## KI-Studio: Browser-Freischaltung endet bei blockierter Anfrage ·13.11.2026
+
+Von main7f04a46 auf isoliertem Branch; aktuelle Regeln, Übergaben, Zuständigkeiten und offene PRs gelesen. Backend-Frist bereits vorhanden und nicht erneut implementiert. Neuer Browserbefund: `validate` in `js/ki-studio.js` wartet ohne Grenze auf Transport oder Antwortinhalt; manuell bleibt der Knopf gesperrt, stille Prüfung ohne Störungshinweis.16 neue Gegenprüfungen am alten Code rot.
+
+Eine gemeinsame15-Sekundenfrist über Transport und Inhalt, Abort plus Promise.race, Timerbereinigung bei jedem Ausgang. Vorhandene zweisprachige Störungsmeldung statt Ablehnung/Neukauf, Schlüssel erhalten. Verspätete Antwort nach Frist ändert Zustand nicht; ausdrückliche neue Prüfung nach Erholung funktioniert. Keine automatische Wiederholung, kein neuer Automat oder Takt. Backend/Lizenz-/Tier-/Preis-/Checkoutregeln unverändert.
+
+GEMESSEN:102 API-,64 Download- und84 Engineprüfungen grün. Neue Testuhr prüft beide blockierten Phasen bei manueller und stiller Prüfung, ignoriert absichtlich Abort, prüft Timer, Nullretry, Schlüsselerhalt, verspätete Antwort und Wiederaufnahme. Nur erfundene Schlüssel/Antworten, keine Konto-/Lizenz-/Kundenanfrage oder Modellaufrufe. Downloadtest im eigenen Sparse-Baum zunächst wegen fehlender unveränderter danke-kit.html abgebrochen; Datei ausgecheckt und64 Prüfungen erfolgreich. Browser, CI-Simulation, echte CI und endgültige Bereitstellung im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen; Nutzen: bezahlter Zugang bei Netzstörung wieder prüfbar, weniger blockierte Freischaltungen/Supportfälle.
+
 ## Downloadanzeige: erfolgreiche Antwort ausdrücklich verlangen ·13.11.2026
 
 Von main60e940e auf isoliertem Branch. Regeln, Übergaben und offene Arbeiten gelesen. Neue Gegenprobe am unveränderten Code: simulierte HTTP402-Antwort mit widersprüchlichem ok:true zeigt trotzdem einen Downloadknopf; auch wahrheitswertige Zeichenketten werden bisher angenommen. Das ist ein Darstellungs-/Vertragsfehler, kein Nachweis einer umgangenen serverseitigen Zahlungsprüfung.
