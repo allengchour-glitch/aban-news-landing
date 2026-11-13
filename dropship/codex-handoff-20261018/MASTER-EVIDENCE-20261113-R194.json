@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-13T07:09:19.519490+00:00",
+  "mode": "LOCAL_DRAFT_ONLY",
+  "memoryRevisionRead": 193,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "productId": "15521256604033",
+  "plannedReferenceVariantId": "68122445283719",
+  "exactFilmVariantBinding": null,
+  "exactMotifBinding": null,
+  "referenceImage": {
+    "path": "dropship/codex-handoff-20261018/PROJECTOR-A-REFERENZ-20261113-R194.jpg",
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+    "visuallyReviewed": true,
+    "collageIsNotFunctionOrRightsEvidence": true,
+    "sourceWorkspacePath": "/tmp/luxe-audit-20261113/products/projector-base-variant.jpg"
+  },
+  "oldSource": {
+    "path": "/workspace/luxestyle-review/master-shopify-refresh-20261108/shopify-source.mp4",
+    "present": true,
+    "bytes": 3679836,
+    "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "duration": 27.96,
+    "width": 960,
+    "height": 540,
+    "fps": 25,
+    "ffprobeToday": true,
+    "existingContactSheetsViewed": true,
+    "fullVideoRewatchedToday": false
+  },
+  "r176": {
+    "actualTechnicalMp4HistoricallyExisted": true,
+    "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+    "volatileLocalFileExists": false,
+    "professionalApproved": false,
+    "renderScriptSha256Today": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+    "renderScriptExecuted": false,
+    "registerReadable": true,
+    "lastDocumentedChannelReadback": "R185,2026-11-12",
+    "freshMetricoolQueryByThisAgent": false
+  },
+  "canonicalMusic": {
+    "repositoryPath": "automation/music/luxe-premium.wav",
+    "checkoutFilePresentInCheckedPaths": false,
+    "localGitBlobReadableWithoutNetwork": true,
+    "gitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+    "bytes": 11343950,
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "sampleRate": 44100,
+    "sampleWidth": 2,
+    "channels": 2,
+    "duration": 64.30766439909297,
+    "newHearingApproval": false,
+    "historicalProvenance": "R176: Python MIDI + FluidSynth; FluidR3_GM.sf2, Debian fluid-soundfont3.1-6/MIT; SoX/FFmpeg",
+    "historicalBuildHashBinding": false
+  },
+  "target": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540,
+    "cutsArePlansForMissingOriginalTake": true,
+    "cuts": [
+      {
+        "startFrame": 0,
+        "endFrameInclusive": 71,
+        "sourceSeconds": [
+          0,
+          2.4
+        ],
+        "overlay": "Vom Gerät zum Lichtbild."
+      },
+      {
+        "startFrame": 72,
+        "endFrameInclusive": 179,
+        "sourceSeconds": [
+          4,
+          7.6
+        ],
+        "overlay": null
+      },
+      {
+        "startFrame": 180,
+        "endFrameInclusive": 305,
+        "sourceSeconds": [
+          9,
+          13.2
+        ],
+        "overlay": "Sternenlicht-Projektor"
+      },
+      {
+        "startFrame": 306,
+        "endFrameInclusive": 431,
+        "sourceSeconds": [
+          15,
+          19.2
+        ],
+        "overlay": null
+      },
+      {
+        "startFrame": 432,
+        "endFrameInclusive": 539,
+        "sourceSeconds": [
+          21,
+          24.6
+        ],
+        "overlay": "Produkt ansehen"
+      }
+    ],
+    "hooks": [
+      "Vom Gerät zum Lichtbild.",
+      "Was steckt hinter diesem Licht?"
+    ],
+    "oneMasterOnly": true,
+    "paidOrFreeRenders": 0
+  },
+  "gates": [
+    "exact filmed unit to current variant binding",
+    "exact motif and inclusion binding",
+    "native vertical device-and-real-projection original take",
+    "hash-bound commercial source/edit/social/Metricool rights",
+    "final professional picture/sound/text/platform crop review and owner acceptance",
+    "persistent source and actual MP4 archive",
+    "fresh channel/identity/history checks before later action"
+  ],
+  "draftDocument": {
+    "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261113-R194.md",
+    "bytes": 12624,
+    "sha256": "28116f3ff19f45725c7830ba93e973d601f3e946de939dbfabb293c36b722ed3",
+    "utmSources": [
+      "instagram",
+      "tiktok",
+      "youtube",
+      "facebook",
+      "threads",
+      "pinterest"
+    ]
+  },
+  "writes": {
+    "localDraftFilesOnly": true,
+    "renders": 0,
+    "uploads": 0,
+    "platformWrites": 0,
+    "repoEdits": 0,
+    "installs": 0
+  },
+  "claudeReceiptForThisPacket": "unknown_not_claimed",
+  "sourceDraftDocument": {
+    "path": "/tmp/luxe-audit-20261113/master/MASTER-CONTENT-20261113.md",
+    "bytes": 12560,
+    "sha256": "2664924c7277b074ea72ea5ce37c37ba5c511b0283f2df72f98302c791094628",
+    "utmSources": [
+      "instagram",
+      "tiktok",
+      "youtube",
+      "facebook",
+      "threads",
+      "pinterest"
+    ]
+  },
+  "documentationAndUnmodifiedReferenceImageOnlyNoVideoArchiveAdded": true
+}

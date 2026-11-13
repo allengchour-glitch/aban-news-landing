@@ -1,0 +1,12 @@
+{
+  "productId": "gid://shopify/Product/16617685418375",
+  "proposalOnly": true,
+  "writes": 0,
+  "oldDescriptionSha256": "6b384f4332dd56f4e6dceee5f4ca00434c9957bf688cbad48f404678b99c3094",
+  "oldDescriptionHtml": "<p>Für den täglichen Kaffeegenuss im Büro oder zu Hause bietet dieser handgefertigte Keramikbecher ein klassisches Retro-Design. Der Becher fasst 201–300 ml und misst 10,2 cm in der Höhe. Er ist einlagig gefertigt, rund geformt und verfügt über einen Ballgriff. Das Muster zeigt florale Vögel in den Farben Steinbraun bzw. Weiss. Der Becher ist nicht mikrowellengeeignet.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Einlagige Keramik</li>\n<li>Ballgriff für sicheren Halt</li>\n<li>Floral‑Vogel‑Muster</li>\n<li>Kapazität bis 300 ml</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Stein</li>\n<li>\n<strong>Gewicht:</strong> ca. 380 g</li>\n<li>\n<strong>Fassungsvermögen:</strong> 201–300 ml</li>\n<li>\n<strong>Muster:</strong> Blumen</li>\n<li>\n<strong>Form:</strong> rund</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+  "proposedDescriptionHtml": "<p>Ein Becher im Retro-Stil mit auffälligem Griff.</p>\n<h3>Ausführungen</h3>\n<ul><li>Schwalbe</li><li>Schmetterling · Weiss</li></ul>\n<p>Wähle deine Ausführung im Auswahlfeld. Der angezeigte Preis gilt für die gewählte Ausführung.</p>",
+  "proposedDescriptionSha256": "7379962488860efd98a2f6d4dccbebcfb788cab8d85201235756e9ea9c1fa5a1",
+  "reason": "Fresh current text says ceramic/handcrafted while material detail says stone; no current supplier proof. Draft neutralizes material/handmade/size/performance/delivery claims rather than inventing replacement facts.",
+  "scope": "Only descriptionHtml of one existing product after approval and fresh prewrite countercheck; price/variants/status/tags/images/channels/discounts/flows untouched",
+  "openGate": "Supplier material/handcraft/measurement evidence not established; new title is not proposed"
+}

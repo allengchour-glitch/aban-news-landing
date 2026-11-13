@@ -1,0 +1,1351 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-13T07:04:56.217333+00:00",
+  "localDate": "2026-11-13",
+  "timezone": "Europe/Zurich",
+  "brandId": "6227837",
+  "identityEvidence": "PLANUNG-20261113-R194.json",
+  "dailyReadGate": {
+    "memoryRevision": 193,
+    "baseCommit": "43b5a2e33904078b8fdd8e169f78d44a399019d7",
+    "existingLastReportDate": "2026-11-12",
+    "currentDayReportBeforeThisRun": false
+  },
+  "metricool": {
+    "definitionCalls": 6,
+    "dataCalls": 6,
+    "rangeLocalInclusive": {
+      "from": "2026-11-06T00:00:00+01:00",
+      "to": "2026-11-12T23:59:59+01:00"
+    },
+    "rangeUTCInclusive": {
+      "from": "2026-11-05T23:00:00Z",
+      "to": "2026-11-12T22:59:59Z"
+    },
+    "missingIsUnknown": true,
+    "outOfRangeHandling": [
+      "threads: provider returned out-of-range rows; retained in raw but excluded from06–12Nov analysis"
+    ],
+    "networks": {
+      "instagram": {
+        "columns": [
+          "IGEV05",
+          "IGEV38",
+          "IGEV43",
+          "IGEV44",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "121.0",
+            null,
+            "1.0",
+            "1.0",
+            "20261110"
+          ],
+          [
+            "93.0",
+            null,
+            "0.0",
+            "1.0",
+            "20261111"
+          ],
+          [
+            "112.0",
+            "1.0",
+            null,
+            null,
+            "20261112"
+          ],
+          [
+            "127.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "20261106"
+          ],
+          [
+            "191.0",
+            "3.0",
+            "0.0",
+            "1.0",
+            "20261107"
+          ],
+          [
+            "36.0",
+            null,
+            "0.0",
+            "1.0",
+            "20261108"
+          ],
+          [
+            "66.0",
+            null,
+            "1.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "121.0",
+            null,
+            "1.0",
+            "1.0",
+            "20261110"
+          ],
+          [
+            "93.0",
+            null,
+            "0.0",
+            "1.0",
+            "20261111"
+          ],
+          [
+            "112.0",
+            "1.0",
+            null,
+            null,
+            "20261112"
+          ],
+          [
+            "127.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "20261106"
+          ],
+          [
+            "191.0",
+            "3.0",
+            "0.0",
+            "1.0",
+            "20261107"
+          ],
+          [
+            "36.0",
+            null,
+            "0.0",
+            "1.0",
+            "20261108"
+          ],
+          [
+            "66.0",
+            null,
+            "1.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "excludedOutOfRangeRows": [],
+        "metrics": [
+          {
+            "fieldId": "IGEV05",
+            "label": "Instagram Evolution > Views",
+            "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+            "dailyValues": {
+              "20261106": 127.0,
+              "20261107": 191.0,
+              "20261108": 36.0,
+              "20261109": 66.0,
+              "20261110": 121.0,
+              "20261111": 93.0,
+              "20261112": 112.0
+            },
+            "knownDays": 7,
+            "expectedDays": 7,
+            "missingDays": [],
+            "sumOfKnownDays": 746.0,
+            "isCompleteSevenDayTotal": true
+          },
+          {
+            "fieldId": "IGEV38",
+            "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+            "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+            "dailyValues": {
+              "20261106": 1.0,
+              "20261107": 3.0,
+              "20261108": null,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": 1.0
+            },
+            "knownDays": 3,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261108",
+              "20261109",
+              "20261110",
+              "20261111"
+            ],
+            "sumOfKnownDays": 5.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "IGEV43",
+            "label": "Instagram Evolution > Followers Gained",
+            "description": "Number of followers gained.",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 0.0,
+              "20261108": 0.0,
+              "20261109": 1.0,
+              "20261110": 1.0,
+              "20261111": 0.0,
+              "20261112": null
+            },
+            "knownDays": 6,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261112"
+            ],
+            "sumOfKnownDays": 2.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "IGEV44",
+            "label": "Instagram Evolution > Followers Lost",
+            "description": "Number of followers lost.",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 1.0,
+              "20261108": 1.0,
+              "20261109": 0.0,
+              "20261110": 1.0,
+              "20261111": 1.0,
+              "20261112": null
+            },
+            "knownDays": 6,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261112"
+            ],
+            "sumOfKnownDays": 4.0,
+            "isCompleteSevenDayTotal": false
+          }
+        ],
+        "salesInference": false
+      },
+      "facebook": {
+        "columns": [
+          "FBEV49",
+          "FBEV34",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "5.0",
+            null,
+            "20261110"
+          ],
+          [
+            "61.0",
+            null,
+            "20261111"
+          ],
+          [
+            "27.0",
+            "0.0",
+            "20261112"
+          ],
+          [
+            "9.0",
+            null,
+            "20261106"
+          ],
+          [
+            "86.0",
+            null,
+            "20261107"
+          ],
+          [
+            "12.0",
+            null,
+            "20261108"
+          ],
+          [
+            "3.0",
+            null,
+            "20261109"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "5.0",
+            null,
+            "20261110"
+          ],
+          [
+            "61.0",
+            null,
+            "20261111"
+          ],
+          [
+            "27.0",
+            "0.0",
+            "20261112"
+          ],
+          [
+            "9.0",
+            null,
+            "20261106"
+          ],
+          [
+            "86.0",
+            null,
+            "20261107"
+          ],
+          [
+            "12.0",
+            null,
+            "20261108"
+          ],
+          [
+            "3.0",
+            null,
+            "20261109"
+          ]
+        ],
+        "excludedOutOfRangeRows": [],
+        "metrics": [
+          {
+            "fieldId": "FBEV49",
+            "label": "Facebook Evolution > Page Media View",
+            "description": "Page content views.",
+            "dailyValues": {
+              "20261106": 9.0,
+              "20261107": 86.0,
+              "20261108": 12.0,
+              "20261109": 3.0,
+              "20261110": 5.0,
+              "20261111": 61.0,
+              "20261112": 27.0
+            },
+            "knownDays": 7,
+            "expectedDays": 7,
+            "missingDays": [],
+            "sumOfKnownDays": 203.0,
+            "isCompleteSevenDayTotal": true
+          },
+          {
+            "fieldId": "FBEV34",
+            "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+            "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+            "dailyValues": {
+              "20261106": null,
+              "20261107": null,
+              "20261108": null,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": 0.0
+            },
+            "knownDays": 1,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261106",
+              "20261107",
+              "20261108",
+              "20261109",
+              "20261110",
+              "20261111"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          }
+        ],
+        "salesInference": false
+      },
+      "tiktok": {
+        "columns": [
+          "TKEV12",
+          "TKEV06",
+          "TKEV08",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "799.0",
+            "3.0",
+            "2.0",
+            "20261110"
+          ],
+          [
+            "1038.0",
+            "4.0",
+            "1.0",
+            "20261111"
+          ],
+          [
+            null,
+            "1.0",
+            "-2.0",
+            "20261112"
+          ],
+          [
+            "663.0",
+            "1.0",
+            null,
+            "20261106"
+          ],
+          [
+            "397.0",
+            "2.0",
+            "0.0",
+            "20261107"
+          ],
+          [
+            "301.0",
+            "0.0",
+            "1.0",
+            "20261108"
+          ],
+          [
+            "26.0",
+            null,
+            "-3.0",
+            "20261109"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "799.0",
+            "3.0",
+            "2.0",
+            "20261110"
+          ],
+          [
+            "1038.0",
+            "4.0",
+            "1.0",
+            "20261111"
+          ],
+          [
+            null,
+            "1.0",
+            "-2.0",
+            "20261112"
+          ],
+          [
+            "663.0",
+            "1.0",
+            null,
+            "20261106"
+          ],
+          [
+            "397.0",
+            "2.0",
+            "0.0",
+            "20261107"
+          ],
+          [
+            "301.0",
+            "0.0",
+            "1.0",
+            "20261108"
+          ],
+          [
+            "26.0",
+            null,
+            "-3.0",
+            "20261109"
+          ]
+        ],
+        "excludedOutOfRangeRows": [],
+        "metrics": [
+          {
+            "fieldId": "TKEV12",
+            "label": "TikTok Evolution > Video views in period",
+            "description": "Number of video views in the period",
+            "dailyValues": {
+              "20261106": 663.0,
+              "20261107": 397.0,
+              "20261108": 301.0,
+              "20261109": 26.0,
+              "20261110": 799.0,
+              "20261111": 1038.0,
+              "20261112": null
+            },
+            "knownDays": 6,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261112"
+            ],
+            "sumOfKnownDays": 3224.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "TKEV06",
+            "label": "TikTok Evolution > Interactions",
+            "description": "Number of interactions on videos: Likes, Comments and Shares.",
+            "dailyValues": {
+              "20261106": 1.0,
+              "20261107": 2.0,
+              "20261108": 0.0,
+              "20261109": null,
+              "20261110": 3.0,
+              "20261111": 4.0,
+              "20261112": 1.0
+            },
+            "knownDays": 6,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261109"
+            ],
+            "sumOfKnownDays": 11.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "TKEV08",
+            "label": "TikTok Evolution > New Followers",
+            "description": "Balance of daily followers gained or lost",
+            "dailyValues": {
+              "20261106": null,
+              "20261107": 0.0,
+              "20261108": 1.0,
+              "20261109": -3.0,
+              "20261110": 2.0,
+              "20261111": 1.0,
+              "20261112": -2.0
+            },
+            "knownDays": 6,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261106"
+            ],
+            "sumOfKnownDays": -1.0,
+            "isCompleteSevenDayTotal": false
+          }
+        ],
+        "salesInference": false
+      },
+      "youtube": {
+        "columns": [
+          "YTEV02",
+          "YTEV14",
+          "YTEV16",
+          "YTEV18",
+          "YTEV05",
+          "YTEV06",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "256.0",
+            null,
+            null,
+            null,
+            "0.0",
+            "0.0",
+            "20261110"
+          ],
+          [
+            "74.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "20261106"
+          ],
+          [
+            "381.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "1.0",
+            "0.0",
+            "20261107"
+          ],
+          [
+            "7.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "20261108"
+          ],
+          [
+            "4.0",
+            null,
+            null,
+            null,
+            "0.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "256.0",
+            null,
+            null,
+            null,
+            "0.0",
+            "0.0",
+            "20261110"
+          ],
+          [
+            "74.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "20261106"
+          ],
+          [
+            "381.0",
+            "1.0",
+            "0.0",
+            "0.0",
+            "1.0",
+            "0.0",
+            "20261107"
+          ],
+          [
+            "7.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "20261108"
+          ],
+          [
+            "4.0",
+            null,
+            null,
+            null,
+            "0.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "excludedOutOfRangeRows": [],
+        "metrics": [
+          {
+            "fieldId": "YTEV02",
+            "label": "Youtube Evolution > Video Views",
+            "description": "Number of times the videos were watched",
+            "dailyValues": {
+              "20261106": 74.0,
+              "20261107": 381.0,
+              "20261108": 7.0,
+              "20261109": 4.0,
+              "20261110": 256.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 722.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "YTEV14",
+            "label": "Youtube Evolution > Visited Videos Likes",
+            "description": "Number of likes of the visited videos",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 1.0,
+              "20261108": 0.0,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 3,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261109",
+              "20261110",
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 1.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "YTEV16",
+            "label": "Youtube Evolution > Visited Videos Comments",
+            "description": "Number of comments received by visited video",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 0.0,
+              "20261108": 0.0,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 3,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261109",
+              "20261110",
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "YTEV18",
+            "label": "Youtube Evolution > Visited Videos Shares",
+            "description": "Number of shares of the visited videos",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 0.0,
+              "20261108": 0.0,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 3,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261109",
+              "20261110",
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "YTEV05",
+            "label": "Youtube Evolution > Followers Gained",
+            "description": "Subscribers gained in the period selected.",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 1.0,
+              "20261108": 0.0,
+              "20261109": 0.0,
+              "20261110": 0.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 1.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "YTEV06",
+            "label": "Youtube Evolution > Followers Lost",
+            "description": "Subscribers lost in the period selected.",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 0.0,
+              "20261108": 0.0,
+              "20261109": 0.0,
+              "20261110": 0.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          }
+        ],
+        "salesInference": false
+      },
+      "threads": {
+        "columns": [
+          "THEV06",
+          "THEV05",
+          "THEV03",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "1.0",
+            null,
+            "0.0",
+            "20261111"
+          ],
+          [
+            null,
+            "0.0",
+            "0.0",
+            "20261112"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261110"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261105"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261108"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261106"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261109"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261107"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "1.0",
+            null,
+            "0.0",
+            "20261111"
+          ],
+          [
+            null,
+            "0.0",
+            "0.0",
+            "20261112"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261110"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261108"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261106"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261109"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261107"
+          ]
+        ],
+        "excludedOutOfRangeRows": [
+          [
+            null,
+            null,
+            "0.0",
+            "20261105"
+          ]
+        ],
+        "metrics": [
+          {
+            "fieldId": "THEV06",
+            "label": "Threads Evolution > Post Views",
+            "description": "Total number of times that the post is displayed.",
+            "dailyValues": {
+              "20261106": null,
+              "20261107": null,
+              "20261108": null,
+              "20261109": null,
+              "20261110": null,
+              "20261111": 1.0,
+              "20261112": null
+            },
+            "knownDays": 1,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261106",
+              "20261107",
+              "20261108",
+              "20261109",
+              "20261110",
+              "20261112"
+            ],
+            "sumOfKnownDays": 1.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "THEV05",
+            "label": "Threads Evolution > Interactions",
+            "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+            "dailyValues": {
+              "20261106": null,
+              "20261107": null,
+              "20261108": null,
+              "20261109": null,
+              "20261110": null,
+              "20261111": null,
+              "20261112": 0.0
+            },
+            "knownDays": 1,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261106",
+              "20261107",
+              "20261108",
+              "20261109",
+              "20261110",
+              "20261111"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "THEV03",
+            "label": "Threads Evolution > Delta Followers",
+            "description": "Balance of daily followers gained or lost",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 0.0,
+              "20261108": 0.0,
+              "20261109": 0.0,
+              "20261110": 0.0,
+              "20261111": 0.0,
+              "20261112": 0.0
+            },
+            "knownDays": 7,
+            "expectedDays": 7,
+            "missingDays": [],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": true
+          }
+        ],
+        "salesInference": false
+      },
+      "pinterest": {
+        "columns": [
+          "PIEV01",
+          "PIEV04",
+          "PIEV06",
+          "PIEV10",
+          "date_YYYYMMDD"
+        ],
+        "rawRows": [
+          [
+            "863.0",
+            "19.0",
+            "2.0",
+            "0.0",
+            "20261110"
+          ],
+          [
+            null,
+            null,
+            null,
+            "0.0",
+            "20261111"
+          ],
+          [
+            null,
+            null,
+            null,
+            "0.0",
+            "20261112"
+          ],
+          [
+            "370.0",
+            "4.0",
+            "0.0",
+            null,
+            "20261106"
+          ],
+          [
+            "399.0",
+            "11.0",
+            "1.0",
+            null,
+            "20261107"
+          ],
+          [
+            "1046.0",
+            "13.0",
+            "0.0",
+            "0.0",
+            "20261108"
+          ],
+          [
+            "764.0",
+            "19.0",
+            "2.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "retainedRowsWithinRequestedDates": [
+          [
+            "863.0",
+            "19.0",
+            "2.0",
+            "0.0",
+            "20261110"
+          ],
+          [
+            null,
+            null,
+            null,
+            "0.0",
+            "20261111"
+          ],
+          [
+            null,
+            null,
+            null,
+            "0.0",
+            "20261112"
+          ],
+          [
+            "370.0",
+            "4.0",
+            "0.0",
+            null,
+            "20261106"
+          ],
+          [
+            "399.0",
+            "11.0",
+            "1.0",
+            null,
+            "20261107"
+          ],
+          [
+            "1046.0",
+            "13.0",
+            "0.0",
+            "0.0",
+            "20261108"
+          ],
+          [
+            "764.0",
+            "19.0",
+            "2.0",
+            "0.0",
+            "20261109"
+          ]
+        ],
+        "excludedOutOfRangeRows": [],
+        "metrics": [
+          {
+            "fieldId": "PIEV01",
+            "label": "Pinterest Evolution > Impressions in period",
+            "description": "",
+            "dailyValues": {
+              "20261106": 370.0,
+              "20261107": 399.0,
+              "20261108": 1046.0,
+              "20261109": 764.0,
+              "20261110": 863.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 3442.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "PIEV04",
+            "label": "Pinterest Evolution > Interactions in period",
+            "description": "",
+            "dailyValues": {
+              "20261106": 4.0,
+              "20261107": 11.0,
+              "20261108": 13.0,
+              "20261109": 19.0,
+              "20261110": 19.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 66.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "PIEV06",
+            "label": "Pinterest Evolution > Outbound clicks in period",
+            "description": "",
+            "dailyValues": {
+              "20261106": 0.0,
+              "20261107": 1.0,
+              "20261108": 0.0,
+              "20261109": 2.0,
+              "20261110": 2.0,
+              "20261111": null,
+              "20261112": null
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261111",
+              "20261112"
+            ],
+            "sumOfKnownDays": 5.0,
+            "isCompleteSevenDayTotal": false
+          },
+          {
+            "fieldId": "PIEV10",
+            "label": "Pinterest Evolution > Delta followers",
+            "description": "Increase / Decrease of followers an account has",
+            "dailyValues": {
+              "20261106": null,
+              "20261107": null,
+              "20261108": 0.0,
+              "20261109": 0.0,
+              "20261110": 0.0,
+              "20261111": 0.0,
+              "20261112": 0.0
+            },
+            "knownDays": 5,
+            "expectedDays": 7,
+            "missingDays": [
+              "20261106",
+              "20261107"
+            ],
+            "sumOfKnownDays": 0.0,
+            "isCompleteSevenDayTotal": false
+          }
+        ],
+        "salesInference": false
+      }
+    },
+    "watchTimeAndAverageViewDuration": "unknown; not delivered by these bounded evolution queries",
+    "salesInferred": false
+  },
+  "klaviyo": {
+    "conversionMetricId": "W7XTVD",
+    "conversionMetricName": "Placed Order",
+    "metricDiscoveryCalls": 1,
+    "flowReportCalls": 1,
+    "rangeUTCInclusive": {
+      "start": "2026-11-05T23:00:00Z",
+      "end": "2026-11-12T22:59:59Z"
+    },
+    "account": {
+      "type": "account",
+      "id": "XWqMAD",
+      "attributes": {
+        "contact_information": {
+          "organization_name": "LuxeStyle CH",
+          "website_url": "https://luxestyle.ch"
+        },
+        "preferred_currency": "USD",
+        "timezone": "Europe/Zurich",
+        "test_account": false
+      },
+      "links": {
+        "self": "https://a.klaviyo.com/api/accounts/XWqMAD/"
+      }
+    },
+    "flowsReadFresh": {
+      "Vse76a": {
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "trigger_type": "Metric",
+        "updated": "2026-10-10T08:13:07+00:00"
+      },
+      "VbLQj6": {
+        "name": "Welcome Series",
+        "status": "draft",
+        "trigger_type": "Added to List",
+        "updated": "2026-11-02T22:55:34+00:00"
+      },
+      "RnTvsY": {
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft",
+        "trigger_type": "Metric",
+        "updated": "2026-11-02T22:55:37+00:00"
+      }
+    },
+    "reportedFlow": "XEGbTB",
+    "reportedFlowStatus": "live",
+    "reportedMessageRows": 2,
+    "deliveredMessagesInReturnedRows": 2,
+    "opensUniquePerMessageSumInReturnedRows": 1,
+    "clicksUniquePerMessageSumInReturnedRows": 0,
+    "attributedPlacedOrderConversionsInReturnedRows": 0,
+    "otherFlowRows": "unknown; missing flow report rows never interpreted as0",
+    "uniqueCustomerCount": "unknown; two delivered messages may concern the same recipient",
+    "liveFormsApi": {
+      "returnedCount": 0,
+      "next": null,
+      "scope": "Klaviyo live forms only; this does not establish whether other Shopify capture exists"
+    },
+    "firstReminder": {
+      "id": "VfffLv",
+      "subject": "Dein Einkauf wartet auf dich",
+      "previewText": "Dein Warenkorb ist gespeichert — in einem Klick zurück an der Kasse.",
+      "alreadyApprovedPreview": "Dein Einkauf ist gespeichert. Prüfe deine Auswahl und die aktuellen Angaben an der Kasse.",
+      "approvalState": "Already approved before R185; no repeated permission request needed",
+      "writeState": "not implemented; current connector preview_text write contract not established",
+      "onlyImprovement": "Continue this same already-approved preview-text correction, with no status/discount changes or customer sends"
+    },
+    "validationError": "One message sparse-fields query rejected before read for unsupported name/content enum; corrected read omitted sparse fields. No second flow report or analytics rerun.",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "currencyConversionOrRevenueMixing": false,
+    "actualShopSalesOrOrderSync": "not queried; no claim of absent purchases or absent sync"
+  },
+  "mutations": 0,
+  "purchaseWatchChecks": 0,
+  "callCounts": {
+    "metricoolDefinitions": 6,
+    "metricoolData": 6,
+    "klaviyoMetricsDiscovery": 1,
+    "klaviyoFlowReports": 1,
+    "klaviyoAccount": 1,
+    "klaviyoFlowReads": 3,
+    "klaviyoLiveFormsRead": 1,
+    "klaviyoMessageReadSuccess": 1,
+    "klaviyoMessageValidationRejected": 1
+  },
+  "numericProseCorrection": {
+    "recordedAtUTC": "2026-11-13T07:11:52.636359+00:00",
+    "correction": "IGEV05 manual prose total846 was wrong; actual source sum746. summary.json already correct and unchanged. REPORT.md and builder prose corrected.",
+    "allMetricSumsIndependentlyRecheckedWithDecimal": true,
+    "primaryMetricChecks": [
+      {
+        "network": "instagram",
+        "fieldId": "IGEV05",
+        "sumOfKnownDays": "746.0",
+        "knownDays": 7,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": true
+      },
+      {
+        "network": "facebook",
+        "fieldId": "FBEV49",
+        "sumOfKnownDays": "203.0",
+        "knownDays": 7,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": true
+      },
+      {
+        "network": "tiktok",
+        "fieldId": "TKEV12",
+        "sumOfKnownDays": "3224.0",
+        "knownDays": 6,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": false
+      },
+      {
+        "network": "youtube",
+        "fieldId": "YTEV02",
+        "sumOfKnownDays": "722.0",
+        "knownDays": 5,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": false
+      },
+      {
+        "network": "threads",
+        "fieldId": "THEV06",
+        "sumOfKnownDays": "1.0",
+        "knownDays": 1,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": false
+      },
+      {
+        "network": "pinterest",
+        "fieldId": "PIEV01",
+        "sumOfKnownDays": "3442.0",
+        "knownDays": 5,
+        "expectedDays": 7,
+        "isCompleteSevenDayTotal": false
+      }
+    ],
+    "newApiCalls": 0,
+    "reportSha256": "74b20a31565d13e8f2325a4066332f1b37f761a2ce80be781a176971b60d84dc"
+  },
+  "overlapRevisionVersusPriorReport": {
+    "priorReportDate": "2026-11-12",
+    "currentReportDate": "2026-11-13",
+    "changes": [
+      {
+        "network": "instagram",
+        "date": "20261111",
+        "fieldId": "IGEV05",
+        "priorValue": "80.0",
+        "currentValue": "93.0",
+        "meaning": "source backfill/revision; not evidence of a new publication or sales effect"
+      },
+      {
+        "network": "facebook",
+        "date": "20261107",
+        "fieldId": "FBEV49",
+        "priorValue": "73.0",
+        "currentValue": "86.0",
+        "meaning": "source backfill/revision; not evidence of a new publication or sales effect"
+      },
+      {
+        "network": "facebook",
+        "date": "20261111",
+        "fieldId": "FBEV34",
+        "priorValue": "0.0",
+        "currentValue": null,
+        "meaning": "source backfill/revision; not evidence of a new publication or sales effect"
+      },
+      {
+        "network": "tiktok",
+        "date": "20261111",
+        "fieldId": "TKEV12",
+        "priorValue": null,
+        "currentValue": "1038.0",
+        "meaning": "source backfill/revision; not evidence of a new publication or sales effect"
+      },
+      {
+        "network": "threads",
+        "date": "20261111",
+        "fieldId": "THEV05",
+        "priorValue": "1.0",
+        "currentValue": null,
+        "meaning": "source backfill/revision; not evidence of a new publication or sales effect"
+      }
+    ]
+  }
+}

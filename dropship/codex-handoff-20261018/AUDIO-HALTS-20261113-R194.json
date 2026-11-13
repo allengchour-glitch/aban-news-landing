@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-13T07:19:10.905751+00:00",
+  "brandId": 6227837,
+  "timezone": "Europe/Zurich",
+  "policySource": "Current express owner instruction: preserve R125 audio holds; no voiceover, canonical music only, release same UUIDs only after product/rights/audio/quality validation.",
+  "reason": "Four current URL downloads are byte-identical to three previously audited R125 files; technical requiredMusicMatch=false remains bound to these bytes; crystal additionally retains documented two-ASR German-speech result. No new speech/rights/human hearing conclusion.",
+  "currentSourceEvidence": [
+    {
+      "checkedAt": "2026-11-13T07:03:59.950317+00:00",
+      "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+      "httpStatus": 200,
+      "headers": {
+        "Content-Type": "video/mp4",
+        "Content-Length": "1783832",
+        "Date": "Fri, 13 Nov 2026 07:04:00 GMT",
+        "ETag": "\"9580bb243ee1b98de174e8fdcf9f171a\"",
+        "Last-Modified": "Mon, 02 Nov 2026 21:48:33 GMT"
+      },
+      "localPath": "/tmp/luxe-audit-20261113/master/crystal-current.mp4",
+      "bytes": 1783832,
+      "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "9.400000",
+          "size": "1783832"
+        }
+      },
+      "r125KnownHash": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+      "byteIdentityToR125": true,
+      "newAudioListening": false,
+      "newASR": false,
+      "newRender": false,
+      "platformWrites": 0
+    },
+    {
+      "files": [
+        {
+          "checkedAt": "2026-11-13T07:06:37.763195+00:00",
+          "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+          "httpStatus": 200,
+          "headers": {
+            "Content-Type": "video/mp4",
+            "Content-Length": "6670409",
+            "Date": "Fri, 13 Nov 2026 07:06:36 GMT",
+            "ETag": "\"774a522dfcfc04b90342f33f36c9d035\"",
+            "Last-Modified": "Wed, 04 Nov 2026 06:02:08 GMT"
+          },
+          "localPath": "/tmp/luxe-audit-20261113/master/gemuesehobel-4484538235821608627.mp4",
+          "bytes": 6670409,
+          "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+          "r125KnownHash": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+          "byteIdentityToR125": true
+        },
+        {
+          "checkedAt": "2026-11-13T07:06:38.447953+00:00",
+          "url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4",
+          "httpStatus": 200,
+          "headers": {
+            "Content-Type": "video/mp4",
+            "Content-Length": "6670409",
+            "Date": "Fri, 13 Nov 2026 07:06:39 GMT",
+            "ETag": "\"774a522dfcfc04b90342f33f36c9d035\"",
+            "Last-Modified": "Wed, 04 Nov 2026 06:02:04 GMT"
+          },
+          "localPath": "/tmp/luxe-audit-20261113/master/gemuesehobel-6485766386185117874.mp4",
+          "bytes": 6670409,
+          "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+          "r125KnownHash": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+          "byteIdentityToR125": true
+        }
+      ],
+      "r125HistoricalAudioFinding": {
+        "requiredMusicMatch": false,
+        "maxAbsoluteMusicCorrelation": 0.090047,
+        "speechSegments": 0,
+        "caveat": "Historical ASR non-detection is not human hearing clearance or proof of silence. Exact fresh byte identity binds the existing missing-canonical-music finding."
+      },
+      "newAudioListening": false,
+      "newASR": false,
+      "newRender": false,
+      "platformWrites": 0
+    },
+    {
+      "checkedAt": "2026-11-13T07:13:00.831335+00:00",
+      "network": "threads",
+      "metricoolId": 422274702,
+      "uuid": "8935974072695279179",
+      "plannedAt": "2026-11-15T11:00:00+01:00",
+      "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+      "httpStatus": 200,
+      "headers": {
+        "Content-Type": "video/mp4",
+        "Content-Length": "9139031",
+        "Date": "Fri, 13 Nov 2026 07:13:01 GMT",
+        "ETag": "\"8700f5c11af5c7c55837b859055f2b13\"",
+        "Last-Modified": "Wed, 04 Nov 2026 06:00:00 GMT"
+      },
+      "localPath": "/tmp/luxe-audit-20261113/master/threads-8433270664969267227.mp4",
+      "bytes": 9139031,
+      "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+      "r125KnownHash": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+      "byteIdentityToR125": true,
+      "r125HistoricalAudioFinding": {
+        "requiredMusicMatch": false,
+        "maxAbsoluteMusicCorrelation": 0.075525,
+        "speechSegments": 0,
+        "caveat": "Historical ASR non-detection is not proof of silence or human hearing approval. Fresh byte identity binds the previous missing-canonical-music finding."
+      },
+      "newAudioListening": false,
+      "newASR": false,
+      "newRender": false,
+      "platformWrites": 0,
+      "otherQueueMediaRead": 0
+    }
+  ],
+  "writes": {
+    "updatedPostObjects": 7,
+    "inactiveChannelStates": 9,
+    "newPosts": 0,
+    "deletedPosts": 0,
+    "mediaUploads": 0,
+    "captionTitleAudienceDateOrMediaChanges": 0,
+    "newPublishes": 0,
+    "newRenders": 0
+  },
+  "validationFailures": [
+    {
+      "stage": "host_file_upload_before_mutation",
+      "message": "Optional mediaFiles treated public HTTPS as local path; No such file or directory",
+      "countercheck": "OriginalID422278757/UUID1744402171830094170 and flags unchanged",
+      "correction": "Omit optional upload; preserve existing media URLs in full info body"
+    },
+    {
+      "stage": "provider_body_validation_before_mutation",
+      "message": "Returned twitterData default is not listed among real providers",
+      "countercheck": "Original ID/UUID/flags/media unchanged",
+      "correction": "Strip only unused non-provider default networkData when sending; preserve all actual provider content fields. Different corrected input; no same-input retry."
+    }
+  ],
+  "apiNormalization": "Non-provider instagramData.autoPublish is regenerated false when global autoPublish=false; no Instagram provider added. Content/time/media/audience unchanged verified independently.",
+  "checks": [
+    {
+      "uuid": "1744402171830094170",
+      "oldId": 422278757,
+      "newId": 426612259,
+      "publicationDate": {
+        "dateTime": "2026-11-13T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "uuid": "5647388074617226143",
+      "oldId": 422279177,
+      "newId": 426613048,
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "uuid": "-4472725258033347244",
+      "oldId": 422279285,
+      "newId": 426613069,
+      "publicationDate": {
+        "dateTime": "2026-11-13T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "uuid": "2172266762404316928",
+      "oldId": 422203752,
+      "newId": 426613082,
+      "publicationDate": {
+        "dateTime": "2026-11-13T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+      ]
+    },
+    {
+      "uuid": "3963843144054620883",
+      "oldId": 422202434,
+      "newId": 426613103,
+      "publicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ]
+    },
+    {
+      "uuid": "-7002936161864562103",
+      "oldId": 422203798,
+      "newId": 426613132,
+      "publicationDate": {
+        "dateTime": "2026-11-13T13:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "contentAudienceMediaTimePreserved": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ]
+    },
+    {
+      "uuid": "8935974072695279179",
+      "oldId": 422274702,
+      "newId": 426615714,
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "contentAudienceMediaTimePreserved": true
+    }
+  ],
+  "scopeLimit": "This run checks only queued exact known R125 URL matches, current four source URLs/three file hashes. No full audio/rights audit of all57planned objects; no deleted or repeated replacement copies."
+}

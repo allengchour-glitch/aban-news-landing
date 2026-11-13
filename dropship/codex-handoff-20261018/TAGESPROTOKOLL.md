@@ -2234,3 +2234,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Übergabe / Grenzen | Neue feste IDs und Übernahmeschritte für Shop-Profil dokumentiert | Kollektionen erstellt, unveröffentlicht/nicht eingebunden. Loginblock ausR192; Shopverfügbarkeit/Varianten/Rechte/native Vorschau offen.0Produkt-/Kanal-/Profil-/Social-/Rabatt-/Budget-/Flow-/DNSwrites, keine Renders/Reports; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R193_20261113] [Bericht](SHOP-KATEGORIEN-20261113-R193.md) · [Beleg](SHOP-KATEGORIEN-20261113-R193.json).
+
+### R194 – Morgenprüfung, gezielte Audio-Holds und neuer Freigabeentwurf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Planung | Shopify/Metricool/alleKanalidentitäten frisch geprüft;13.–20.11. und begrenzte Historie gelesen, nachWrites gezielt zurückgelesen |57Objekte/71Zustände;42aktiveObjekte/53Zustände,15inaktive/18Zustände. IG/FB/TT/PI technisch täglich;Threads15.11./YT15.–20.11. offen. Kein vollständiger Rechts-/Altmedien-/Auslieferungsbeleg |
+| Tatsächliche Audioänderung | Vier aktuelleURLs/3MP4Hashes zuR125 gegengeprüft, sieben bestehendePostUUIDs aufDraft/Autopublishaus gesetzt |7Objekte/9Kanäle frisch bestätigt, Inhalte/Medien/Zielgruppen/Zeiten erhalten.2klareAblehnungen vorMutation mitunverändertemReadback, danachkorrigiert;0Publikationen/Neuanlagen/Uploads/Renders |
+| Tageskennzahlen / Klaviyo |6Definitionen+6kleineMetricooldatenabfragen06.–12.11.;PlacedOrderW7XTVD entdeckt und1Flowreport gelesen |IG746Views/FB203vollständig, andere Teilreihen unbekannt. XEGbTBlive/2Nachrichten/1Öffnung/0Klicks/0zugeordneteBestellungen nurinderRückgabe;KontoUSD separatCHF. Welcome/PostPurchase/alterAbbruchdraft;keineFlowänderung |
+| Produkt / Master |2ACTIVEProdukte/9Varianten mitTags/CHF/Bildern/Kaufbarkeit/Tracking/Policy geprüft;A68122445283719 referenziert;540Frame-Schnitt/2Hooks/sechsCaptionsUTMs ausgearbeitet |Menge0/ungetrackt/CONTINUE keinAusverkaufsbeweis. EinStoryboard, keinneuerFilm;nativeQuelle/echteEinheit/Motiv/Rechte/Endabnahmeoffen. PflichtWAVimlokalenGitblobhashgleich,keinHörtest |
+| SEO / Verkaufsentwurf |6exaktealte404Handles inAdmin undHTTP gegengeprüft;1neutralenBecherbeschreibungs-Diff erstellt |Alle6DRAFT+HTTP404,keinepauschalenRedirects/Aktivierungen. BechertextnurEntwurf,keinShopwrite. BereitsgenehmigterVfffLvTextweiterSchreibwegblocker |
+| Kontinuität / Grenzen |NeueBelege/Prüfstände und heutigeTagesgrenze dokumentiert;R193 und24Aufgaben/Historien erhalten |R193Kollektionenunveröffentlicht;manuelleScreenshotsnurVorschau/keineigenesLive.0Kaufwatch/Shop-/Flow-/Budget-/Rabatt-/DNS-/Feedänderungen,keineneueAutomation;ClaudeEmpfangunbekannt |
+
+[LUXESTYLE_R194_20261113] [Paket](CONTENT-VERKAUFSPAKET-20261113-R194.md) · [Audio-Holds](AUDIO-HALTS-20261113-R194.json) · [Kennzahlen](KENNZAHLEN-KLAVIYO-20261113-R194.json).

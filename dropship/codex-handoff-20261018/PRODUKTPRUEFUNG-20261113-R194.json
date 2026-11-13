@@ -1,0 +1,608 @@
+{
+  "recordedAtUTC": "2026-11-13T07:03:52.331542+00:00",
+  "scope": "Exactly two active Shopify products, nine variants, three existing R193 collections; no pagination/orders/customer/cart creation or writes",
+  "identity": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "planName": "Shopify",
+    "currencyCode": "CHF",
+    "timezone": "CET",
+    "country": "Switzerland",
+    "criticalUserMessage": ""
+  },
+  "products": [
+    {
+      "key": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "currency": "CHF",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "allVariants": [
+        {
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "title": "A · Grundmodell",
+          "sku": "CJSN139239101AZ",
+          "price": "34.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "title": "B · mit 6 Motivscheiben",
+          "sku": "CJSN139239102BY",
+          "price": "37.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+          "sku": "CJSN139239103CX",
+          "price": "40.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+          "sku": "CJSN139239104DW",
+          "price": "49.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "sku": "CJSN139239105EV",
+          "price": "51.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+          "sku": "CJSN139239106FU",
+          "price": "44.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+          "sku": "CJSN139239107GT",
+          "price": "35.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        }
+      ],
+      "referenceVariantId": "gid://shopify/ProductVariant/68122445283719",
+      "referenceVariantImage": {
+        "id": 83513734431105,
+        "product_id": 15521256604033,
+        "position": 11,
+        "created_at": "2026-08-31T07:11:27+02:00",
+        "updated_at": "2026-08-31T07:11:30+02:00",
+        "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+        "width": 800,
+        "height": 654,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "variant_ids": [
+          68122445283719
+        ]
+      },
+      "physicalStock": "unknown",
+      "deliveryTime": "not newly verified or promised"
+    },
+    {
+      "key": "mug",
+      "id": "gid://shopify/Product/16617685418375",
+      "title": "Retro-Vogel-Keramikbecher mit Ballgriff",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "becher",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kueche",
+        "neuheit",
+        "sort-retro",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-keramik",
+        "tassen-becher",
+        "wohnen"
+      ],
+      "currency": "CHF",
+      "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+      "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+      "allVariants": [
+        {
+          "id": "gid://shopify/ProductVariant/67675894710663",
+          "title": "Schwalbe",
+          "sku": "CJYD310614901AZ",
+          "price": "17.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67681398489479",
+          "title": "Schmetterling · Weiss",
+          "sku": "CJYD310614902BY",
+          "price": "17.90",
+          "inventoryQuantity": 0,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryTracked": false,
+          "storefrontAvailable": true
+        }
+      ],
+      "referenceVariantId": "gid://shopify/ProductVariant/67675894710663",
+      "referenceVariantImage": {
+        "id": 100770069741959,
+        "product_id": 16617685418375,
+        "position": 1,
+        "created_at": "2026-10-14T05:11:59+02:00",
+        "updated_at": "2026-10-14T05:12:01+02:00",
+        "alt": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle",
+        "width": 1493,
+        "height": 1493,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "variant_ids": [
+          67675894710663
+        ]
+      },
+      "physicalStock": "unknown",
+      "deliveryTime": "not newly verified or promised"
+    }
+  ],
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/757437432199",
+      "title": "Geschenkideen",
+      "handle": "shop-geschenkideen",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280"
+      },
+      "productsCount": {
+        "count": 2
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/15497451929985"
+          },
+          {
+            "id": "gid://shopify/Product/16617685418375"
+          }
+        ]
+      },
+      "resourcePublicationsCount": {
+        "count": 0
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/757437530503",
+      "title": "Licht & Wohnen",
+      "handle": "shop-licht-wohnen",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282"
+      },
+      "productsCount": {
+        "count": 2
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/15521256604033"
+          },
+          {
+            "id": "gid://shopify/Product/16638319788423"
+          }
+        ]
+      },
+      "resourcePublicationsCount": {
+        "count": 0
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/757437563271",
+      "title": "Beauty & Ordnung",
+      "handle": "shop-beauty-ordnung",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284"
+      },
+      "productsCount": {
+        "count": 2
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16615385727367"
+          },
+          {
+            "id": "gid://shopify/Product/16655083274631"
+          }
+        ]
+      },
+      "resourcePublicationsCount": {
+        "count": 0
+      }
+    }
+  ],
+  "guardSource": {
+    "repository": "allengchour-glitch/aban-news-landing",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "commit": "cd1986044c98d14a5d72f30e2ae0b2a6fafcf959",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+    "additionalOwnerRules": [
+      "empty or missing tags block",
+      "every rueckhol blocks"
+    ]
+  },
+  "guardResults": [
+    {
+      "key": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "tagsNonEmpty": true,
+      "status": "ACTIVE",
+      "guardTags": [],
+      "ownerExtraRueckhol": []
+    },
+    {
+      "key": "mug",
+      "id": "gid://shopify/Product/16617685418375",
+      "tagsNonEmpty": true,
+      "status": "ACTIVE",
+      "guardTags": [],
+      "ownerExtraRueckhol": []
+    }
+  ],
+  "schemaDiscoveryNote": "ProductVariant.image is absent in the currently pinned schema; no guessed field executed. Exact public .js featured_image binding used instead.",
+  "claimsLimits": [
+    "Storefront public available=true confirms catalogue buyability, no checkout/payment/order or cart was executed.",
+    "Product quantity0 does not establish out-of-stock, ship time or physical inventory.",
+    "Current image association is not independent commercial editing-rights evidence.",
+    "Master variant56197916361089 is historical; currentA68122445283719 used only as current catalogue reference, not asserted match to the old film.",
+    "Shop-profile screenshot selected a different existing Geschenkideen & Weihnachtsgeschenke; R193 groups remain unpublished.",
+    "Mug fields currently conflict: product title/paragraph Keramik versus structured detail MaterialStein; handgefertigt is existing text, not newly substantiated. Do not newly advertise these claims."
+  ],
+  "writes": 0,
+  "publicReadbacks": {
+    "at": "2026-11-13T07:02:19.171851+00:00",
+    "results": [
+      {
+        "key": "projector",
+        "kind": "html",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1115980,
+        "sha256": "eb07accb19c65586a5588eeed45603fed9d65241e8faecf3ff1ca5230cd6a2a4",
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "title": [
+          "\n  Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle\n"
+        ]
+      },
+      {
+        "key": "projector",
+        "kind": "js",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "contentType": "text/javascript; charset=utf-8",
+        "bytes": 24690,
+        "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+        "id": 15521256604033,
+        "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+        "available": true,
+        "priceMin": 3490,
+        "variants": [
+          {
+            "id": 68122445283719,
+            "title": "A · Grundmodell",
+            "sku": "CJSN139239101AZ",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734431105,
+              "product_id": 15521256604033,
+              "position": 11,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+              "width": 800,
+              "height": 654,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+              "variant_ids": [
+                68122445283719
+              ]
+            },
+            "available": true,
+            "price": 3490,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445316487,
+            "title": "B · mit 6 Motivscheiben",
+            "sku": "CJSN139239102BY",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734398337,
+              "product_id": 15521256604033,
+              "position": 10,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+              "width": 800,
+              "height": 800,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+              "variant_ids": [
+                68122445316487
+              ]
+            },
+            "available": true,
+            "price": 3790,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445349255,
+            "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239103CX",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734168961,
+              "product_id": 15521256604033,
+              "position": 3,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+              "variant_ids": [
+                68122445349255,
+                68122445414791
+              ]
+            },
+            "available": true,
+            "price": 4090,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445382023,
+            "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+            "sku": "CJSN139239104DW",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734300033,
+              "product_id": 15521256604033,
+              "position": 7,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 668,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+              "variant_ids": [
+                68122445382023,
+                68122445447559
+              ]
+            },
+            "available": true,
+            "price": 4990,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445414791,
+            "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239105EV",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734168961,
+              "product_id": 15521256604033,
+              "position": 3,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+              "variant_ids": [
+                68122445349255,
+                68122445414791
+              ]
+            },
+            "available": true,
+            "price": 5190,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445447559,
+            "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "sku": "CJSN139239106FU",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734300033,
+              "product_id": 15521256604033,
+              "position": 7,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 668,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+              "variant_ids": [
+                68122445382023,
+                68122445447559
+              ]
+            },
+            "available": true,
+            "price": 4490,
+            "inventory_management": null
+          },
+          {
+            "id": 68122445480327,
+            "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+            "sku": "CJSN139239107GT",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 83513734201729,
+              "product_id": 15521256604033,
+              "position": 4,
+              "created_at": "2026-08-31T07:11:27+02:00",
+              "updated_at": "2026-08-31T07:11:30+02:00",
+              "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+              "width": 390,
+              "height": 325,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+              "variant_ids": [
+                68122445480327
+              ]
+            },
+            "available": true,
+            "price": 3590,
+            "inventory_management": null
+          }
+        ]
+      },
+      {
+        "key": "projector",
+        "kind": "image",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "httpStatus": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "contentType": "image/jpeg",
+        "bytes": 118008,
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+      },
+      {
+        "key": "mug",
+        "kind": "html",
+        "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1051871,
+        "sha256": "f5574dead9241f485b486975dd55aa649fd8fca59217eae8f281ae50edf4792d",
+        "canonical": [
+          "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200"
+        ],
+        "title": [
+          "\n  Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle CH\n"
+        ]
+      },
+      {
+        "key": "mug",
+        "kind": "js",
+        "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200.js",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200.js",
+        "contentType": "text/javascript; charset=utf-8",
+        "bytes": 9850,
+        "sha256": "44649ad32b244b3107505a57b7b2add87b707fb4ddb43d7a7ab1d93cbb3992b6",
+        "id": 16617685418375,
+        "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+        "available": true,
+        "priceMin": 1790,
+        "variants": [
+          {
+            "id": 67675894710663,
+            "title": "Schwalbe",
+            "sku": "CJYD310614901AZ",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 100770069741959,
+              "product_id": 16617685418375,
+              "position": 1,
+              "created_at": "2026-10-14T05:11:59+02:00",
+              "updated_at": "2026-10-14T05:12:01+02:00",
+              "alt": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle",
+              "width": 1493,
+              "height": 1493,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+              "variant_ids": [
+                67675894710663
+              ]
+            },
+            "available": true,
+            "price": 1790,
+            "inventory_management": null
+          },
+          {
+            "id": 67681398489479,
+            "title": "Schmetterling · Weiss",
+            "sku": "CJYD310614902BY",
+            "requires_shipping": true,
+            "featured_image": {
+              "id": 100770069873031,
+              "product_id": 16617685418375,
+              "position": 2,
+              "created_at": "2026-10-14T05:12:00+02:00",
+              "updated_at": "2026-10-14T05:12:02+02:00",
+              "alt": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 2 | LuxeStyle",
+              "width": 1920,
+              "height": 1920,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c3a9f2e7-1e77-45fe-a714-422674769866.jpg?v=1791947522",
+              "variant_ids": [
+                67681398489479
+              ]
+            },
+            "available": true,
+            "price": 1790,
+            "inventory_management": null
+          }
+        ]
+      },
+      {
+        "key": "mug",
+        "kind": "image",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "httpStatus": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "contentType": "image/jpeg",
+        "bytes": 315897,
+        "sha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237"
+      }
+    ]
+  },
+  "viewedImages": [
+    "projector.jpg: clean original product photo, no further variant identity inferred",
+    "projector-base-variant.jpg: exact current A featured_image composite; product appearance with extra projection/package insets, no supplied film licence or proved projection content",
+    "mug.jpg: current true Schwalbe product image, handle/body/two front birds and right partly obscured motif visible"
+  ]
+}

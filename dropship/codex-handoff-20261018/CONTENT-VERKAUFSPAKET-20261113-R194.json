@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "revision": 194,
+  "recordedAtUTC": "2026-11-13T07:26:50.005541+00:00",
+  "dateZurich": "2026-11-13",
+  "brand": "luxestyle.ch",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "actualChanges": {
+    "metricoolUpdatedObjects": 7,
+    "channelStatesHeld": 9,
+    "draft": true,
+    "autoPublish": false,
+    "successfulPublications": 0,
+    "newPosts": 0,
+    "newUploads": 0,
+    "newRenders": 0,
+    "shopWrites": 0,
+    "flowWrites": 0,
+    "ordersQueried": false,
+    "purchaseWatchEnded": true
+  },
+  "planning": {
+    "scope": "13.–20.11.2026 Europe/Zurich, including full20Nov; 4initialboundedreads plus targeted13/15Novwrite-readbacks",
+    "totalObjects": 57,
+    "totalChannelStates": 71,
+    "activeObjects": 42,
+    "activeChannelStates": 53,
+    "inactiveObjects": 15,
+    "inactiveChannelStates": 18,
+    "dayCoverage": {
+      "2026-11-13": {
+        "instagram": 2,
+        "facebook": 2,
+        "tiktok": 2,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 1
+      },
+      "2026-11-14": {
+        "instagram": 3,
+        "facebook": 3,
+        "tiktok": 3,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 2
+      },
+      "2026-11-15": {
+        "instagram": 2,
+        "facebook": 2,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-16": {
+        "instagram": 1,
+        "facebook": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 0
+      },
+      "2026-11-17": {
+        "instagram": 1,
+        "facebook": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 0
+      },
+      "2026-11-18": {
+        "instagram": 1,
+        "facebook": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 0
+      },
+      "2026-11-19": {
+        "instagram": 1,
+        "facebook": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 0
+      },
+      "2026-11-20": {
+        "instagram": 1,
+        "facebook": 1,
+        "tiktok": 1,
+        "pinterest": 1,
+        "threads": 1,
+        "youtube": 0
+      }
+    },
+    "gaps": {
+      "instagram": [],
+      "facebook": [],
+      "tiktok": [],
+      "pinterest": [],
+      "threads": [
+        "2026-11-15"
+      ],
+      "youtube": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20"
+      ]
+    },
+    "limits": "Technical global flags/PENDING only; channelAutoPublish missing outsideIG is unknown. All content/rights of all57objects not re-audited. Pending not publication."
+  },
+  "sourceAudioChecks": "AUDIO-HALTS-20261113-R194.json",
+  "reportSummary": "KENNZAHLEN-KLAVIYO-20261113-R194.json",
+  "products": "PRODUKTPRUEFUNG-20261113-R194.json",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "masterEvidence": "MASTER-EVIDENCE-20261113-R194.json",
+  "masterDraft": "MASTER-CONTENT-20261113-R194.md",
+  "newSalesProposalOnly": "VERKAUFSAKTION-20261113-R194.json",
+  "seoSixDraft404": "SEO-404-GEGENPROBE-20261113-R194.json",
+  "priorApprovedKlaviyoPreview": "Approval persists from R185; current unchanged preview read; no verified write contract, no repeat permission request",
+  "manualOwnerPreview": "Screenshots show user editor selections only, not an own Codex profile write or independently read back published Shop state",
+  "claudeReceipt": "unknown_no_receipt",
+  "noSalesFromSocialMetrics": true,
+  "scopeLimits": "Technical global flags/PENDING only; channelAutoPublish missing outsideIG is unknown. All content/rights of all57objects not re-audited. Pending not publication."
+}
