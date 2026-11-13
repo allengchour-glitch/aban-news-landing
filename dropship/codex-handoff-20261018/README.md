@@ -2280,3 +2280,9 @@ Auf ausdrücklichen Videoauftrag zwei kostenlose Higgsfield-Jobs gerendert; Cred
 «Mach live» als ausdrücklichen Auftrag festgehalten; Shopify/READY-Logo/READY-Video frisch bestätigt. Neuer read-only Editoraufruf landet bei «Log in — Shopify», keine Eingabe/Save; Sitzung sofort beendet (16s/7Firecrawl-Credits). Keine Profilzuweisung, neue Uploads/Renders oder weitere Plattformwrites. Zwei gezielte offizielle API-Dokusuchen lieferten keinen passenden Shop-Profil-Vertrag; Checkoutbranding ist kein Ersatz. Vorhandene Dateien im authentifizierten nativen Editor auswählen, Vorschau prüfen und speichern; Besitzerfreigabe nicht erneut anfragen. [Bericht](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.md) · [Beleg](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json). Claude-Empfang unbekannt.
 
 [LUXESTYLE_R192_20261113]
+
+## R193 – 13.11.2026: drei Shop-Auswahlkollektionen erstellt
+
+Auf ausdrücklichen Kategorieauftrag Geschenkideen757437432199, Licht & Wohnen757437530503 und Beauty & Ordnung757437563271 angelegt. Je zwei exakt zurückgelesene Produkte, echte Titelbilder/CDN200; alle drei Kanalpublikationszähler0. Sechs ACTIVE-Produkte mit aktuellen Tags über vorhandenen Wächter plus jede-rueckhol-/Leertag-Sperre geprüft. Bestehende grosse Kategorien unverändert; keine Kanalaktivierung, Profileinfügung, Publikation oder neuer Render. In R192 belegter Loginblock/Shopverfügbarkeit/Rechte und native Darstellung bleiben offen. Vorhandene IDs später übernehmen, nicht neu erstellen. [Bericht](SHOP-KATEGORIEN-20261113-R193.md) · [Beleg](SHOP-KATEGORIEN-20261113-R193.json). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R193_20261113]

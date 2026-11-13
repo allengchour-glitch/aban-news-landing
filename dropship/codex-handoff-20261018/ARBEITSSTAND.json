@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 192,
-  "updatedAt": "2026-11-13T00:16:51.931680+00:00",
+  "revision": 193,
+  "updatedAt": "2026-11-13T00:24:56.405623+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17211,6 +17211,26 @@
           "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json",
           "sha256": "a88641b69f124718d9891a54c902de33ef5a18ba136dd9b73da968cee95175a9",
           "gitBlobSha": "7c081b1b0032abc93971bdf11020ecda8e4b66b0"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 193,
+      "at": "2026-11-13T00:24:56.405623+00:00",
+      "actor": "codex",
+      "summary": "Created three owner-requested curated Shop collections with two manually selected current guarded products each and real product cover images. Fresh readback confirms exact membership and zero active publications; CDN images checked. No profile placement, product/channel writes, publication or render. Existing category structures, tasks and daily policy preserved; authenticated Shop editor/eligibility/rights/native preview remain needed.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KATEGORIEN-20261113-R193.md",
+          "sha256": "3768e05af3336271c053c48081c44d6ca05c58c53155936948dad95888cc7604",
+          "gitBlobSha": "48d1ab948564d3f138970cdab321305dcfef4fe6"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KATEGORIEN-20261113-R193.json",
+          "sha256": "1a3093b40f74a518f5a13eeb4fc3449cae82e5a4da13d67c13575e9b05846555",
+          "gitBlobSha": "cb7daf94b671d8a75e5862e6f607520b06152b41"
         }
       ],
       "taskCount": 24,
@@ -39633,6 +39653,40 @@
     "newRenders": 0,
     "publicProfileApiContract": "not identified in two targeted official searches",
     "proof": "dropship/codex-handoff-20261018/SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json",
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run193": {
+    "dateZurich": "2026-11-13",
+    "ownerInstruction": "kategorie erstellen dort auch",
+    "collectionsCreated": [
+      {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "productsCount": 2,
+        "activePublicationsCount": 0
+      },
+      {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "productsCount": 2,
+        "activePublicationsCount": 0
+      },
+      {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "productsCount": 2,
+        "activePublicationsCount": 0
+      }
+    ],
+    "profileWrites": 0,
+    "productChannelWrites": 0,
+    "collectionPublishWrites": 0,
+    "newRenders": 0,
+    "newBrowserSessions": 0,
+    "proof": "dropship/codex-handoff-20261018/SHOP-KATEGORIEN-20261113-R193.json",
     "claudeReceipt": "unknown_no_receipt"
   }
 }

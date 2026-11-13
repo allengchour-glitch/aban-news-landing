@@ -1,0 +1,722 @@
+{
+  "ownerInstruction": "kategorie erstellen dort auch",
+  "scope": "Shop-App-Profil; drei kleine Auswahlkollektionen angelegt, keine Kanalpublikation oder Profileinbindung",
+  "brand": "LuxeStyle",
+  "domain": "luxestyle.ch",
+  "currency": "CHF",
+  "collectionReadback": {
+    "data": {
+      "gift": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+          "altText": "Retro-Vogel-Keramikbecher als Geschenkidee",
+          "width": 1493,
+          "height": 1493
+        },
+        "productsCount": {
+          "count": 2
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15497451929985"
+            },
+            {
+              "id": "gid://shopify/Product/16617685418375"
+            }
+          ]
+        },
+        "resourcePublicationsCount": {
+          "count": 0
+        }
+      },
+      "light": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+          "altText": "Tulpen-Nachtlicht für Licht und Wohnen",
+          "width": 900,
+          "height": 900
+        },
+        "productsCount": {
+          "count": 2
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15521256604033"
+            },
+            {
+              "id": "gid://shopify/Product/16638319788423"
+            }
+          ]
+        },
+        "resourcePublicationsCount": {
+          "count": 0
+        }
+      },
+      "beauty": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff",
+          "width": 1200,
+          "height": 1200
+        },
+        "productsCount": {
+          "count": 2
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16615385727367"
+            },
+            {
+              "id": "gid://shopify/Product/16655083274631"
+            }
+          ]
+        },
+        "resourcePublicationsCount": {
+          "count": 0
+        }
+      }
+    }
+  },
+  "createCheckpoint": {
+    "state": "THREE_COLLECTIONS_TWO_PRODUCTS_AND_IMAGES_READBACK_CONFIRMED_UNPUBLISHED",
+    "at": "2026-11-13T00:21:04.766546+00:00",
+    "attempts": 1,
+    "expectedCollections": 3,
+    "expectedProductsPerCollection": 2,
+    "collisionCheck": "targeted current handle/title query returned0",
+    "identity": "LuxeStyle/luxestyle.ch/CHF",
+    "publicationIntention": "unpublished; no publishablePublish; Shop editor insertion still blocked",
+    "newProfileWrites": 0,
+    "createdIds": [
+      "gid://shopify/Collection/757437432199",
+      "gid://shopify/Collection/757437530503",
+      "gid://shopify/Collection/757437563271"
+    ],
+    "userErrors": [
+      [],
+      [],
+      []
+    ],
+    "atCompleted": "2026-11-13T00:22:37.202623+00:00",
+    "actualCollectionIds": [
+      "gid://shopify/Collection/757437432199",
+      "gid://shopify/Collection/757437530503",
+      "gid://shopify/Collection/757437563271"
+    ],
+    "confirmedProductCounts": [
+      2,
+      2,
+      2
+    ],
+    "confirmedPublicationCounts": [
+      0,
+      0,
+      0
+    ]
+  },
+  "createInputs": [
+    {
+      "title": "Geschenkideen",
+      "handle": "shop-geschenkideen",
+      "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+      "sortOrder": "MANUAL",
+      "image": {
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "altText": "Retro-Vogel-Keramikbecher als Geschenkidee"
+      },
+      "sources": [
+        {
+          "source": {
+            "title": "Ausgewählte Produkte",
+            "targetType": "PRODUCTS",
+            "inclusion": {
+              "selections": [
+                {
+                  "productId": "gid://shopify/Product/16617685418375"
+                },
+                {
+                  "productId": "gid://shopify/Product/15497451929985"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Licht & Wohnen",
+      "handle": "shop-licht-wohnen",
+      "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+      "sortOrder": "MANUAL",
+      "image": {
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1791999508",
+        "altText": "Tulpen-Nachtlicht für Licht und Wohnen"
+      },
+      "sources": [
+        {
+          "source": {
+            "title": "Ausgewählte Produkte",
+            "targetType": "PRODUCTS",
+            "inclusion": {
+              "selections": [
+                {
+                  "productId": "gid://shopify/Product/16638319788423"
+                },
+                {
+                  "productId": "gid://shopify/Product/15521256604033"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Beauty & Ordnung",
+      "handle": "shop-beauty-ordnung",
+      "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+      "sortOrder": "MANUAL",
+      "image": {
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1792508297",
+        "altText": "Kosmetik-Organizer mit Tragegriff"
+      },
+      "sources": [
+        {
+          "source": {
+            "title": "Ausgewählte Produkte",
+            "targetType": "PRODUCTS",
+            "inclusion": {
+              "selections": [
+                {
+                  "productId": "gid://shopify/Product/16655083274631"
+                },
+                {
+                  "productId": "gid://shopify/Product/16615385727367"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "createResult": {
+    "data": {
+      "gift": {
+        "collection": {
+          "id": "gid://shopify/Collection/757437432199",
+          "title": "Geschenkideen",
+          "handle": "shop-geschenkideen",
+          "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+          "sortOrder": "MANUAL",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+            "altText": "Retro-Vogel-Keramikbecher als Geschenkidee",
+            "width": 1493,
+            "height": 1493
+          },
+          "productsCount": {
+            "count": 0
+          },
+          "resourcePublicationsCount": {
+            "count": 0
+          }
+        },
+        "userErrors": []
+      },
+      "light": {
+        "collection": {
+          "id": "gid://shopify/Collection/757437530503",
+          "title": "Licht & Wohnen",
+          "handle": "shop-licht-wohnen",
+          "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+          "sortOrder": "MANUAL",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+            "altText": "Tulpen-Nachtlicht für Licht und Wohnen",
+            "width": 900,
+            "height": 900
+          },
+          "productsCount": {
+            "count": 0
+          },
+          "resourcePublicationsCount": {
+            "count": 0
+          }
+        },
+        "userErrors": []
+      },
+      "beauty": {
+        "collection": {
+          "id": "gid://shopify/Collection/757437563271",
+          "title": "Beauty & Ordnung",
+          "handle": "shop-beauty-ordnung",
+          "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+          "sortOrder": "MANUAL",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+            "altText": "Kosmetik-Organizer mit Tragegriff",
+            "width": 1200,
+            "height": 1200
+          },
+          "productsCount": {
+            "count": 0
+          },
+          "resourcePublicationsCount": {
+            "count": 0
+          }
+        },
+        "userErrors": []
+      }
+    }
+  },
+  "productSnapshots": [
+    {
+      "id": "gid://shopify/Product/16617685418375",
+      "title": "Retro-Vogel-Keramikbecher mit Ballgriff",
+      "status": "ACTIVE",
+      "productType": "Haushalt & Wohnen",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "becher",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kueche",
+        "neuheit",
+        "sort-retro",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-keramik",
+        "tassen-becher",
+        "wohnen"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67675894710663",
+          "title": "Schwalbe",
+          "sku": "CJYD310614901AZ",
+          "price": "17.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67681398489479",
+          "title": "Schmetterling · Weiss",
+          "sku": "CJYD310614902BY",
+          "price": "17.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    },
+    {
+      "id": "gid://shopify/Product/15497451929985",
+      "title": "Keramikbecher \"Happy Birthday Rabbit\"",
+      "status": "ACTIVE",
+      "productType": "Küche & Bar",
+      "tags": [
+        "becher",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "neuheit",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-keramik",
+        "tassen-becher"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e46fad2d-bcf6-49c9-bf43-0fa72d8d987a.jpg?v=1786673497",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/56099918184833",
+          "title": "Default Title",
+          "sku": "CJ-1583369849630371840",
+          "price": "17.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    },
+    {
+      "id": "gid://shopify/Product/16638319788423",
+      "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+      "status": "ACTIVE",
+      "productType": "Beleuchtung",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "geschenkwelt-kinder",
+        "geschenkwelt-unter30",
+        "kat-nachtlicht-projektor",
+        "lampe",
+        "licht",
+        "neuheit",
+        "sort-nachtlichter",
+        "wohnen"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1791999508",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67679682953607",
+          "title": "Rosa",
+          "sku": "CJJT285433601AZ",
+          "price": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67679802884487",
+          "title": "Blau",
+          "sku": "CJJT285433602BY",
+          "price": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67679802917255",
+          "title": "Weiss",
+          "sku": "CJJT285433603CX",
+          "price": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67679802950023",
+          "title": "Orange",
+          "sku": "CJJT285433604DW",
+          "price": "28.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    },
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "productType": "Elektronik",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "title": "A · Grundmodell",
+          "sku": "CJSN139239101AZ",
+          "price": "34.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "title": "B · mit 6 Motivscheiben",
+          "sku": "CJSN139239102BY",
+          "price": "37.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+          "sku": "CJSN139239103CX",
+          "price": "40.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+          "sku": "CJSN139239104DW",
+          "price": "49.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "sku": "CJSN139239105EV",
+          "price": "51.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+          "sku": "CJSN139239106FU",
+          "price": "44.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+          "sku": "CJSN139239107GT",
+          "price": "35.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    },
+    {
+      "id": "gid://shopify/Product/16655083274631",
+      "title": "Grosses vertikales Kosmetik-Organizer mit Tragegriff",
+      "status": "ACTIVE",
+      "productType": "Aufbewahrung & Organizer",
+      "tags": [
+        "aufbewahrung",
+        "auswahl-offen",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-kosmetik-schmuck-organizer",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1792508297",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67843408331143",
+          "title": "Große Schultertasche",
+          "sku": "CJMJ325565101AZ",
+          "price": "16.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67843408363911",
+          "title": "Kleine Schultertasche",
+          "sku": "CJMJ325565102BY",
+          "price": "16.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    },
+    {
+      "id": "gid://shopify/Product/16615385727367",
+      "title": "Kosmetik-Organizer für Bad und Schminktisch",
+      "status": "ACTIVE",
+      "productType": "Aufbewahrung & Organizer",
+      "tags": [
+        "aufbewahrung",
+        "auswahl-offen",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-kosmetik-schmuck-organizer",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "totalInventory": 0,
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ee30188-c042-484f-ac4b-5d029e09cbcc.jpg?v=1791735448",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67948099305863",
+          "title": "Transparent / Weiss",
+          "sku": "CJYD305783101AZ",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67948099338631",
+          "title": "Rauchgrau",
+          "sku": "CJYD305783102BY",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67948099371399",
+          "title": "Milchweiss",
+          "sku": "CJYD305783103CX",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67948099404167",
+          "title": "Dunkelgrün",
+          "sku": "CJYD305783104DW",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67948099436935",
+          "title": "Bernstein",
+          "sku": "CJYD305783105EV",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67948099469703",
+          "title": "Schwarz",
+          "sku": "CJYD305783106FU",
+          "price": "47.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "currencyCode": "CHF"
+    }
+  ],
+  "tagGuardResults": [
+    {
+      "id": "gid://shopify/Product/16617685418375",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    },
+    {
+      "id": "gid://shopify/Product/15497451929985",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    },
+    {
+      "id": "gid://shopify/Product/16638319788423",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    },
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    },
+    {
+      "id": "gid://shopify/Product/16655083274631",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    },
+    {
+      "id": "gid://shopify/Product/16615385727367",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "blocked": [],
+      "currency": "CHF",
+      "inventoryZero": true
+    }
+  ],
+  "tagGuardSource": {
+    "path": "automation/lib/kanal_sperren.mjs",
+    "scope": "Existing main-worktree HEAD source read with git show; user extra rule blocks every rueckhol and empty tags",
+    "mainCommitRead": "cd1986044c98d14a5d72f30e2ae0b2a6fafcf959",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+  },
+  "collectionCoverReadback": [
+    {
+      "category": "gift",
+      "httpStatus": 200,
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+      "width": 1493,
+      "height": 1493,
+      "sha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237",
+      "sameRgbPixelsAsReviewedProductSource": true
+    },
+    {
+      "category": "light",
+      "httpStatus": 200,
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+      "width": 900,
+      "height": 900,
+      "sha256": "51888c99c5c3485550f0647cace2769b2b7044fa14de50fda3492580e3d72daf",
+      "sameRgbPixelsAsReviewedProductSource": false
+    },
+    {
+      "category": "beauty",
+      "httpStatus": 200,
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+      "width": 1200,
+      "height": 1200,
+      "sha256": "333756bd8829eae4c45a6fd56d8c0980c7799ad90994c18186c38f6f736c9c05",
+      "sameRgbPixelsAsReviewedProductSource": true
+    }
+  ],
+  "lightCoverReencoding": {
+    "sameDimensions": true,
+    "meanAbsoluteRgbError": [
+      0.004518518518518519,
+      0.007833333333333333,
+      0.0217641975308642
+    ],
+    "interpretation": "Shopify collection JPEG differs from source bytes/pixels; same 900x900 dimensions. Root visually compared this readback; no content change observed, no byte identity claim."
+  },
+  "qa": {
+    "sourceCoversViewed": true,
+    "lampCollectionReadbackViewed": true,
+    "giftAndBeautyCopyRgbIdenticalToViewedSource": true,
+    "coverContentNote": "Beauty cover has incidental decorative books; no perfume-product branding or supplier overlay selected. Alternative source image with large English text and measurement diagram rejected as covers.",
+    "initialMutationProductCounts": "0 immediately, later fresh query each2 with exact expected product IDs; no product-add retry",
+    "existingCollectionsSearch": "first20 matching existing results, hasNextPage=true; narrowed queries used instead of pagination. No entire catalogue scan.",
+    "searchCountCaveat": "Product-search aggregate counts inconsistent with returned nodes; not used as catalogue totals or absence proof.",
+    "independentReview": {
+      "scope": "Six current product tag sets checked using the actual guard function plus every-rueckhol rule; input scope and exact readback membership/publication counts reviewed independently",
+      "result": "PASS for scope and membership",
+      "orderingLimitation": "Returned product order is reversed versus selections input; category arrangement remains proposed, no persisted product order claimed."
+    }
+  },
+  "remainingGates": [
+    "Authenticated Shop-profile editor and native collection-list/navigation preview",
+    "Actual current Shop-channel availability of these collections/products, no bulk activation",
+    "Commercial image rights; exact colour/variant binding before specific variant advertising"
+  ],
+  "changes": {
+    "collectionsCreated": 3,
+    "membershipsCreated": 6,
+    "newCollectionCovers": 3,
+    "existingCollectionsModified": 0,
+    "productRecordOrChannelWrites": 0,
+    "collectionPublishWrites": 0,
+    "shopProfileWrites": 0,
+    "newUploads": 0,
+    "newRenders": 0,
+    "metricoolWrites": 0,
+    "discountBudgetFlowDnsWrites": 0,
+    "dailyMetricsFlowOrderReports": 0,
+    "newBrowserSessions": 0
+  },
+  "nextStep": "Use these same three collection IDs under Shop profile > Add section > Collection list and Navigation after confirming channel eligibility/rights in an authenticated editor; do not recreate or publish all channels. Header/logo assets from R191 remain unchanged.",
+  "claudeReceipt": "unknown_no_receipt",
+  "schemaVersion": 1,
+  "revision": 193,
+  "recordedAtUTC": "2026-11-13T00:24:56.405623+00:00",
+  "dateZurich": "2026-11-13"
+}

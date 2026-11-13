@@ -2223,3 +2223,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Übergabe / Grenzen | Vorhandene Dateien und konkret verbleibenden nativen Auswahlschritt dokumentiert | Nicht live; Besitzerfreigabe vorhanden, authentifizierter Zugriff/Overlaytest fehlen und unabhängige Bildrechte unbekannt.0weiterePlattformwrites oder Reports; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R192_20261113] [Bericht](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.md) · [Beleg](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json).
+
+### R193 – Drei Kategorien als Auswahlkollektionen erstellt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Auswahl / Gegenprobe | Bestehende Kollektionen begrenzt gesucht, Zielhandles geprüft und sechs Produkte einzeln gelesen | Keine Zielhandle-Kollision; ACTIVE/CHF/nichtleereTags. Vorhandenen Wächter plus jedes rueckhol angewendet, ausgewählte sechs ohne Treffer |
+| Erstellung | Drei neue manuelle Auswahlkollektionen mit je zwei Produkten, Beschreibung und echtem Titelbild angelegt | Geschenkideen757437432199, Licht & Wohnen757437530503, Beauty & Ordnung757437563271; keine bestehenden Kategorien geändert |
+| Rücklesen / Bilder | Exakte IDs/Mitgliedschaften und alle drei Collection-CDN-Bilder geprüft | Je2erwarteteProdukte und0aktiveKanalpublikationen; alle BilderHTTP200, Lampen-JPEG neu kodiert/visuell gegengeprüft. InitialeCount0nicht als fertiger Zustand übernommen |
+| Übergabe / Grenzen | Neue feste IDs und Übernahmeschritte für Shop-Profil dokumentiert | Kollektionen erstellt, unveröffentlicht/nicht eingebunden. Loginblock ausR192; Shopverfügbarkeit/Varianten/Rechte/native Vorschau offen.0Produkt-/Kanal-/Profil-/Social-/Rabatt-/Budget-/Flow-/DNSwrites, keine Renders/Reports; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R193_20261113] [Bericht](SHOP-KATEGORIEN-20261113-R193.md) · [Beleg](SHOP-KATEGORIEN-20261113-R193.json).
