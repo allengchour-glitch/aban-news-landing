@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 194,
-  "updatedAt": "2026-11-13T07:26:50.005541+00:00",
+  "revision": 195,
+  "updatedAt": "2026-11-13T13:26:09.362978+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4213,12 +4213,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r194_current_A_reference_storyboard_updated_no_professional_master",
+      "state": "r195_source_to_shot_matrix_excludes_old_hand_detail_no_new_master",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-13",
-      "belegArt": "R194_FRESH_IDENTITY_PRODUCT_AUDIO_HASHES_AND_PER_CHANNEL_DRAFT_READBACK",
-      "lastEvidence": "Same masterId retained. Current planned reference A68122445283719/SKU CJSN139239101AZ is ACTIVE/CHF34.90 and untracked CONTINUE/storefront available, but filmed-unit/motif binding remains unknown. One18s/540frame source intake and six channel captions/UTMs updated. Old960x540/25fps source present and canonical music git blob hash checked; no new render or final acceptance. Existing four R176 UUIDs remain draft in fresh initial planner read; seven separate R125 audio objects held by minimal confirmed updates.",
-      "nextAllowedStep": "Keep the existing master and four UUIDs. Acquire one verifiable native-portrait source with the exact current device and its real supplied motif, commercial source/edit/social rights, then produce and review the same18s master with hash-bound canonical music. No photo-zoom substitute, blind reactivation, paid render, new daily report or duplicate post.",
+      "belegArt": "R195_SIX_ACTUAL_SOURCE_FRAMES_HASH_TIME_REVIEW_AND_UNCHANGED_HOLDS",
+      "lastEvidence": "Six actual frames from the existing27.96s960x540/25fps source were hash/time-checked and viewed. Frame0 black;5s compatible device family but no exact unit/SKU proof;10/24s projection without device, A motif unknown. Retained17.20s frame already violates hand-free/full-contour detail requirements;18.80s is out-point of half-open trim. Historical interval is not a premium replacement for the planned4.2s detail. Same R19418s/540frame briefing/hooks/captions/UTMs retained; no video/music render or upload. Four R176 and seven audio holds unchanged in current full-provider comparison.",
+      "nextAllowedStep": "Keep the same master and existing UUIDs. Obtain a verified native-portrait take of the exact current A unit and actual supplied projection, including at least4.2s usable full-contour hand-free detail plus handles. Do not reuse17.20–18.80 as a premium substitute or infer SKU/motif from sampled form compatibility. Use R194 hooks/captions/UTMs, prove rights and complete final QA before any later approved action; today reports remain reused.",
       "blockers": [
         "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
         "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
@@ -4649,6 +4649,12 @@
           "sha256": "9c1583c7ccc01881111df489a7c81226378f28341518378e43aee53a34468bff",
           "gitBlobSha": "be3af3432065d7e6b5f563c1105c82743c223347",
           "readAt": "2026-11-13T07:26:50.005541+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+          "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
+          "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746",
+          "readAt": "2026-11-13T13:26:09.362978+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5214,6 +5220,17 @@
               "gitBlobSha": "be3af3432065d7e6b5f563c1105c82743c223347"
             }
           ]
+        },
+        {
+          "dateZurich": "2026-11-13",
+          "revision": 195,
+          "localRun": "14h",
+          "summary": "Six actual frames from the existing27.96s960x540/25fps source were hash/time-checked and viewed. Frame0 black;5s compatible device family but no exact unit/SKU proof;10/24s projection without device, A motif unknown. Retained17.20s frame already violates hand-free/full-contour detail requirements;18.80s is out-point of half-open trim. Historical interval is not a premium replacement for the planned4.2s detail. Same R19418s/540frame briefing/hooks/captions/UTMs retained; no video/music render or upload. Four R176 and seven audio holds unchanged in current full-provider comparison.",
+          "source": {
+            "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+            "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
+            "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746"
+          }
         }
       ],
       "visualAcceptanceDraft": {
@@ -6041,6 +6058,27 @@
           "3614365779669041576",
           "-7647174116509334899"
         ]
+      },
+      "run195": {
+        "localRun": "14h",
+        "sourceFrameSamples": 6,
+        "oldSourceIntervalRejectedForHandFreeDetail": [
+          17.2,
+          18.8
+        ],
+        "exactFilmSku": null,
+        "exactMotif": null,
+        "newVideoOrMusicRender": false,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+          "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
+          "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746"
+        },
+        "holdsUnchangedSource": {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-14H-R195.json",
+          "sha256": "e723aeee1a551320e0d8f26d5496559d282b260201f5bc72ca401791668a62f7",
+          "gitBlobSha": "20361961c1ca481357cd745744bf82d8a06ba095"
+        }
       }
     },
     {
@@ -11056,12 +11094,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r175_beauty_collection_indexable_server_html_missing_organizer_link_claim_safe_copy_approval_draft_no_write",
+      "state": "r195_one_category_hub_main_head_counterchecked_no_page_level_noindex_finding",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_NARROW_PUBLIC_SEO_COLLECTION_PRODUCT_SITEMAP_AND_CSV_CHECK_CLAIM_SAFE_APPROVAL_DRAFT_NO_WRITE",
-      "lastEvidence": "Home/robots/sitemap sowie Projektor, Organizer und Beauty-Collection eng öffentlich geprüft. Beide Produkte und Collection HTTP200/self-canonical/indexierbar/im Sitemap; alter Projektorhandle404. Beauty-Collection liefert1’840’150 Bytes,1599 interne Anker/799 eindeutige Ziele, aber0 Organizerhandle-Vorkommen im Server-HTML und unbelegte Marketingclaims. Claim-sicherer Kurztext plus Organizerlink und einzig bestätigtem Versandclaim CHF50 vorbereitet.30-Tage-Rückgabe heute nicht gegen Policy geprüft und nicht übernommen.0 Write; Ranking unbekannt.",
-      "nextAllowedStep": "Nur nach konkreter Inhaberfreigabe Collection-Body und tatsächliches Theme-Ziel frisch lesen, exakten HTML-Diff mit Organizerlink und CHF50-Versandzeile anwenden und öffentlich zurücklesen.30-Tage-Rückgabe erst nach aktueller Policy-Prüfung verwenden. Ranking nach angemessenem Crawlzeitraum eng messen.",
+      "lastEvidenceDate": "2026-11-13",
+      "belegArt": "R195_SINGLE_HUB_DIRECT_HTTP_MAIN_HEAD_AND_412_MAIN_LINK_TARGET_COUNTERCHECK",
+      "lastEvidence": "One category hub/pages/alle-kategorien freshly returned200/selfcanonical with exactly one mainH1. Main document head has no robots tag; direct HTTP has no X-Robots-Tag. Aggregated robots=none belongs to a second returned document head titled Mit Shop einloggen, not the category hub head. Among412main anchors no matches for six exact R194-known DRAFT/404handles. Scope does not establish full-site link freedom, robots.txt allowance, current Google indexing or rankings, or resolve all SEO tasks. R185 documents the Beauty intro correction as implemented and read back; Beauty was not re-read in this14h run, so the old R175 approval/implementation is not a new pending request. No repair/redirect/reactivation/index request; R194 mug description remains the only reused sales proposal.",
+      "nextAllowedStep": "Preserve this single-hub evidence and existing drafts. Do not repeat the already documented R185 Beauty intro implementation or seek its old R175 approval again; freshly compare current objects before any dependent later write. For later SEO findings isolate the actual main document head and HTTP robots header, never mixed login metadata. Investigate exact further source/target pages only with bounded scope. No blanket redirect, product activation, all-SEO completion claim or new approval scope derived from this check.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -11405,6 +11443,12 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+          "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+          "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c",
+          "readAt": "2026-11-13T13:26:09.362978+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -11729,6 +11773,17 @@
             "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "dateZurich": "2026-11-13",
+          "revision": 195,
+          "localRun": "14h",
+          "summary": "One category hub/pages/alle-kategorien freshly returned200/selfcanonical with exactly one mainH1. Main document head has no robots tag; direct HTTP has no X-Robots-Tag. Aggregated robots=none belongs to a second returned document head titled Mit Shop einloggen, not the category hub head. Among412main anchors no matches for six exact R194-known DRAFT/404handles. Scope does not establish full-site link freedom, robots.txt allowance, current Google indexing or rankings, or resolve all SEO tasks. R185 documents the Beauty intro correction as implemented and read back; Beauty was not re-read in this14h run, so the old R175 approval/implementation is not a new pending request. No repair/redirect/reactivation/index request; R194 mug description remains the only reused sales proposal.",
+          "source": {
+            "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+            "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+            "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -12243,6 +12298,31 @@
             "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
+      },
+      "run195": {
+        "localRun": "14h",
+        "hub": "https://luxestyle.ch/pages/alle-kategorien",
+        "httpStatus": 200,
+        "selfCanonical": true,
+        "mainH1Count": 1,
+        "mainRobotsMetaTags": [],
+        "httpXRobotsTag": null,
+        "mainAnchorCount": 412,
+        "sixKnownDraftHandleMatches": 0,
+        "indexingOrRankingVerified": false,
+        "allSeoResolved": false,
+        "beautyIntroR185": {
+          "state": "historically documented implemented/read back; not re-read14h",
+          "source": "dropship/codex-handoff-20261018/IMPLEMENTIERUNG-20261112-R185.json",
+          "sha256": "7471d09963d41564a2fa2938a70032670662a2a13effbb849b086147b2587853",
+          "noRepeatOldApprovalOrBlindImplementation": true
+        },
+        "writes": 0,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+          "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+          "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
+        }
       }
     },
     {
@@ -17527,6 +17607,56 @@
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-R194.json",
           "sha256": "15c151f5306d726805b52a8893adb76b86c4679be79686821b105e108cd9c2db",
           "gitBlobSha": "488a916e2ea7de46e469bea50a1bd4ebaab27d05"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 195,
+      "at": "2026-11-13T13:26:09.362978+00:00",
+      "actor": "codex",
+      "summary": "14h follow-up: five provider-published states from four existing posts observed with IDs/URLs, no own publishing or platform writes. Seven audio holds and four R176 drafts unchanged. Once-daily R194 metrics/Klaviyo reused exactly. Six source-frame observations reject historical hand-detail substitute; same master briefing retained. One category-hub main head/HTTP/412 anchors counterchecked, mixed login-document robots metadata not a hub noindex defect. Two products and three unpublished collections unchanged. Only existing sales proposal reused; owner Shop-app view distinguished from own live save.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-14H-R195.json",
+          "sha256": "e723aeee1a551320e0d8f26d5496559d282b260201f5bc72ca401791668a62f7",
+          "gitBlobSha": "20361961c1ca481357cd745744bf82d8a06ba095"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261113-14H-R195.json",
+          "sha256": "2dfb675110d041f0348543f7f5c71e8e6a51a3d2bd6fdbb1cc091638313b77e5",
+          "gitBlobSha": "56a7b8000c3ca010909f64f4ff16565398dc0b74"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.md",
+          "sha256": "4d87788a732a650074d4f970e30ce0780edf1d7e2174f4db33eff97ea8d7f244",
+          "gitBlobSha": "c0ccfc8d1e48808fdb9c546db3342336468c0899"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+          "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
+          "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.md",
+          "sha256": "659032beeedb0fc59cc699614d27e9cffcb175c6f935bfccfc5d7e05c1cd06cf",
+          "gitBlobSha": "623f888ce992a1e38b2d57856d3cca3877633f6b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+          "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+          "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-14H-R195.md",
+          "sha256": "192b571b2849c9dc31bb72a421d1ac07b9384daad69d8a752e5c1262dd1dd88b",
+          "gitBlobSha": "ba8a929ed08e4ad86320d1a295bfe0937b33efca"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-14H-R195.json",
+          "sha256": "6edafe4b6245a38fe46061315bbf834b069046d67645286ca929dc2bcac7b960",
+          "gitBlobSha": "0eb358862755540b350683efec3024f74e265b76"
         }
       ],
       "taskCount": 24,
@@ -40639,6 +40769,52 @@
     "shopWrites": 0,
     "flowWrites": 0,
     "ordersQueried": false,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run195": {
+    "dateZurich": "2026-11-13",
+    "localRun": "14h",
+    "identityPass": true,
+    "observedPublishedTodayChannelStates": 5,
+    "observedPublishedTodayObjects": 4,
+    "ownPublications": 0,
+    "platformWrites": 0,
+    "activePendingObjects": 38,
+    "activePendingChannelStates": 48,
+    "audioHoldsObjectsUnchanged": 7,
+    "audioHoldsChannelStatesUnchanged": 9,
+    "r176HoldsObjectsUnchanged": 4,
+    "reportsReused": true,
+    "newMetricDefinitions": 0,
+    "newMetricDataCalls": 0,
+    "newKlaviyoMetricDiscoveries": 0,
+    "newFlowReports": 0,
+    "newSalesOrOrderReports": 0,
+    "planning": {
+      "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-14H-R195.json",
+      "sha256": "e723aeee1a551320e0d8f26d5496559d282b260201f5bc72ca401791668a62f7",
+      "gitBlobSha": "20361961c1ca481357cd745744bf82d8a06ba095"
+    },
+    "products": {
+      "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261113-14H-R195.json",
+      "sha256": "2dfb675110d041f0348543f7f5c71e8e6a51a3d2bd6fdbb1cc091638313b77e5",
+      "gitBlobSha": "56a7b8000c3ca010909f64f4ff16565398dc0b74"
+    },
+    "masterDelta": {
+      "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+      "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
+      "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746"
+    },
+    "seoOneHub": {
+      "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+      "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+      "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
+    },
+    "existingSalesProposal": "VERKAUFSAKTION-20261113-R194.json",
+    "noNewApprovalScope": true,
+    "ownerShopAppViewShownNotOwnSave": true,
+    "newRenders": 0,
+    "newUploads": 0,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

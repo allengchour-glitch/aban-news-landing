@@ -1,0 +1,2970 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-13T13:26:09.362978+00:00",
+  "identity": {
+    "id": 6227837,
+    "timezone": "Europe/Zurich",
+    "networksData": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "freshIdentityPass": true
+  },
+  "summary": {
+    "checkedAtUTC": "2026-11-13T13:04:43.600193+00:00",
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "freshIdentityPass": true,
+    "scope": {
+      "fullLocalDates": "2026-11-13/2026-11-20",
+      "requiredRollingFuture": "2026-11-13T14:00:00+01:00/2026-11-20T14:00:00+01:00",
+      "full20NovIncluded": true,
+      "todayElapsedReadInFirstQuery": true,
+      "comparison": "R194 final snapshot morning08h with canonical full readback precedence over two stale derived IG fields",
+      "brandCalls": 1,
+      "queueCalls": 4,
+      "extraHistoryCalls": 0,
+      "analyticsCalls": 0,
+      "flowCalls": 0,
+      "salesCalls": 0,
+      "writes": 0
+    },
+    "baselineDerivedCorrections": [
+      {
+        "uuid": "1744402171830094170",
+        "network": "instagram",
+        "derivedFlattenedValue": true,
+        "canonicalFullReadbackValue": false,
+        "canonicalSource": "final-today-planning.json",
+        "platformWriteRequired": false
+      },
+      {
+        "uuid": "3963843144054620883",
+        "network": "instagram",
+        "derivedFlattenedValue": true,
+        "canonicalFullReadbackValue": false,
+        "canonicalSource": "final-today-planning.json",
+        "platformWriteRequired": false
+      }
+    ],
+    "totalObjects": 57,
+    "totalChannelStates": 71,
+    "states": {
+      "PUBLISHED": 5,
+      "PENDING": 66
+    },
+    "activeGlobalFlagsObjects": 42,
+    "activeGlobalFlagsChannelStates": 53,
+    "activePendingObjects": 38,
+    "activePendingChannelStates": 48,
+    "inactiveObjects": 15,
+    "inactiveChannelStates": 18,
+    "observedPublishedTodayObjects": 4,
+    "observedPublishedTodayChannelStates": 5,
+    "ownPublications": 0,
+    "publishedTodayByChannel": {
+      "facebook": 1,
+      "instagram": 1,
+      "tiktok": 1,
+      "threads": 1,
+      "youtube": 1
+    },
+    "publishedToday": [
+      {
+        "origin": "fresh_14h_planning",
+        "network": "facebook",
+        "id": 407894075,
+        "uuid": "-1741815444231403909",
+        "date": "2026-11-13T12:15:00",
+        "timezone": "Europe/Zurich",
+        "draft": false,
+        "autoPublish": true,
+        "channelAutoPublish": "unknown",
+        "status": "PUBLISHED",
+        "technicalActivePending": false,
+        "activeGlobalFlags": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Kaiserpinguin 26 cm",
+          "Plüsch Kaiserpinguin 26 cm"
+        ],
+        "format": "POST",
+        "platformId": "1049840534888592_122152968393350792",
+        "platformUrl": "https://facebook.com/122108214291350792/posts/122152968393350792",
+        "pinterestBoard": null,
+        "youtubeMadeForKids": null,
+        "youtubeTitle": null,
+        "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+      },
+      {
+        "origin": "fresh_14h_planning",
+        "network": "instagram",
+        "id": 407894075,
+        "uuid": "-1741815444231403909",
+        "date": "2026-11-13T12:15:00",
+        "timezone": "Europe/Zurich",
+        "draft": false,
+        "autoPublish": true,
+        "channelAutoPublish": true,
+        "status": "PUBLISHED",
+        "technicalActivePending": false,
+        "activeGlobalFlags": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Kaiserpinguin 26 cm",
+          "Plüsch Kaiserpinguin 26 cm"
+        ],
+        "format": "POST",
+        "platformId": "https://www.instagram.com/p/DfrgKNZiF-m/",
+        "platformUrl": "https://www.instagram.com/p/DfrgKNZiF-m/",
+        "pinterestBoard": null,
+        "youtubeMadeForKids": null,
+        "youtubeTitle": null,
+        "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+      },
+      {
+        "origin": "fresh_14h_planning",
+        "network": "tiktok",
+        "id": 422278897,
+        "uuid": "4651045624279025767",
+        "date": "2026-11-13T09:00:00",
+        "timezone": "Europe/Zurich",
+        "draft": false,
+        "autoPublish": true,
+        "channelAutoPublish": "unknown",
+        "status": "PUBLISHED",
+        "technicalActivePending": false,
+        "activeGlobalFlags": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+        ],
+        "mediaAltText": [
+          "Text-Video: XXL Hoodie-Decke mit Taschen, CHF 37.90"
+        ],
+        "format": "unknown",
+        "platformId": "7707563517016018209",
+        "platformUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209",
+        "pinterestBoard": null,
+        "youtubeMadeForKids": null,
+        "youtubeTitle": null,
+        "textSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421"
+      },
+      {
+        "origin": "fresh_14h_planning",
+        "network": "threads",
+        "id": 422279075,
+        "uuid": "-8797746381899281322",
+        "date": "2026-11-13T11:00:00",
+        "timezone": "Europe/Zurich",
+        "draft": false,
+        "autoPublish": true,
+        "channelAutoPublish": "unknown",
+        "status": "PUBLISHED",
+        "technicalActivePending": false,
+        "activeGlobalFlags": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+        ],
+        "mediaAltText": [
+          "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+        ],
+        "format": "POST",
+        "platformId": "18182777908431347",
+        "platformUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x",
+        "pinterestBoard": null,
+        "youtubeMadeForKids": null,
+        "youtubeTitle": null,
+        "textSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075"
+      },
+      {
+        "origin": "fresh_14h_planning",
+        "network": "youtube",
+        "id": 422285770,
+        "uuid": "-9210583075457839526",
+        "date": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich",
+        "draft": false,
+        "autoPublish": true,
+        "channelAutoPublish": "unknown",
+        "status": "PUBLISHED",
+        "technicalActivePending": false,
+        "activeGlobalFlags": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+        ],
+        "mediaAltText": [
+          "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+        ],
+        "format": "short",
+        "platformId": "DDjWSjBNH5c",
+        "platformUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c",
+        "pinterestBoard": null,
+        "youtubeMadeForKids": false,
+        "youtubeTitle": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+        "textSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864"
+      }
+    ],
+    "coverage": {
+      "2026-11-13": {
+        "instagram": {
+          "published": 1,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 1,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 1,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 1,
+          "activePending": 0
+        },
+        "youtube": {
+          "published": 1,
+          "activePending": 0
+        }
+      },
+      "2026-11-14": {
+        "instagram": {
+          "published": 0,
+          "activePending": 3
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 3
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 3
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 2
+        }
+      },
+      "2026-11-15": {
+        "instagram": {
+          "published": 0,
+          "activePending": 2
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 2
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 0
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      },
+      "2026-11-16": {
+        "instagram": {
+          "published": 0,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      },
+      "2026-11-17": {
+        "instagram": {
+          "published": 0,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      },
+      "2026-11-18": {
+        "instagram": {
+          "published": 0,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      },
+      "2026-11-19": {
+        "instagram": {
+          "published": 0,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      },
+      "2026-11-20": {
+        "instagram": {
+          "published": 0,
+          "activePending": 1
+        },
+        "facebook": {
+          "published": 0,
+          "activePending": 1
+        },
+        "tiktok": {
+          "published": 0,
+          "activePending": 1
+        },
+        "pinterest": {
+          "published": 0,
+          "activePending": 1
+        },
+        "threads": {
+          "published": 0,
+          "activePending": 1
+        },
+        "youtube": {
+          "published": 0,
+          "activePending": 0
+        }
+      }
+    },
+    "gapsWhenPublishedTodayCountsAsDeliveredDailyCoverage": {
+      "instagram": [],
+      "facebook": [],
+      "tiktok": [],
+      "pinterest": [],
+      "threads": [
+        "2026-11-15"
+      ],
+      "youtube": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20"
+      ]
+    },
+    "unpublishedElapsedActivePending": [],
+    "nonPendingOrPublishedStatuses": [],
+    "newOrRemovedKeys": {
+      "added": [],
+      "removed": []
+    },
+    "contentFlagAudienceIdChanges": [],
+    "statusTransitionsFromR194": [
+      {
+        "uuid": "-9210583075457839526",
+        "network": "youtube",
+        "id": 422285770,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T10:00:00",
+        "platformId": "DDjWSjBNH5c",
+        "platformUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c"
+      },
+      {
+        "uuid": "-8797746381899281322",
+        "network": "threads",
+        "id": 422279075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T11:00:00",
+        "platformId": "18182777908431347",
+        "platformUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x"
+      },
+      {
+        "uuid": "-1741815444231403909",
+        "network": "instagram",
+        "id": 407894075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T12:15:00",
+        "platformId": "https://www.instagram.com/p/DfrgKNZiF-m/",
+        "platformUrl": "https://www.instagram.com/p/DfrgKNZiF-m/"
+      },
+      {
+        "uuid": "4651045624279025767",
+        "network": "tiktok",
+        "id": 422278897,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T09:00:00",
+        "platformId": "7707563517016018209",
+        "platformUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209"
+      },
+      {
+        "uuid": "-1741815444231403909",
+        "network": "facebook",
+        "id": 407894075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T12:15:00",
+        "platformId": "1049840534888592_122152968393350792",
+        "platformUrl": "https://facebook.com/122108214291350792/posts/122152968393350792"
+      }
+    ],
+    "exactDuplicateCandidatesWithinCurrentWindow": [],
+    "sevenAudioHoldsObjects": 7,
+    "sevenAudioHoldChannelStates": 9,
+    "fourR176HoldsObjects": 4,
+    "limitations": [
+      "PUBLISHED provider state and delivered URL/ID confirm observed status, not independent click playback verification or our own publication.",
+      "Current queue is not full historical master ledger; older/unreturned/deleted history unknown.",
+      "Global active flags and PENDING are only technical queue coverage; creative/product/audio/rights approval of all content was not repeated.",
+      "Channel-specific autopublish missing outside IG remains unknown.",
+      "No analytics/flows repeated; daily R194 reports retained.",
+      "No known hold released or material swapped; no new low-quality gap filler."
+    ]
+  },
+  "channelRows": [
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "date": "2026-11-13T12:15:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm",
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "format": "POST",
+      "platformId": "1049840534888592_122152968393350792",
+      "platformUrl": "https://facebook.com/122108214291350792/posts/122152968393350792",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "date": "2026-11-13T12:15:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm",
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "format": "POST",
+      "platformId": "https://www.instagram.com/p/DfrgKNZiF-m/",
+      "platformUrl": "https://www.instagram.com/p/DfrgKNZiF-m/",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "date": "2026-11-14T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ],
+      "mediaAltText": [
+        "bworld Rennrad mit Radfahrer",
+        "bworld Rennrad mit Radfahrer"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "date": "2026-11-14T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ],
+      "mediaAltText": [
+        "bworld Rennrad mit Radfahrer",
+        "bworld Rennrad mit Radfahrer"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 415081189,
+      "uuid": "3126986420977421943",
+      "date": "2026-11-13T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+      ],
+      "mediaAltText": [
+        "Weisser 3-in-1-Gemüsehobel mit Zucchini-Spiralen, Text: Spiralen in Sekunden"
+      ],
+      "format": "STORY",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 415081189,
+      "uuid": "3126986420977421943",
+      "date": "2026-11-13T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+      ],
+      "mediaAltText": [
+        "Weisser 3-in-1-Gemüsehobel mit Zucchini-Spiralen, Text: Spiralen in Sekunden"
+      ],
+      "format": "STORY",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "date": "2026-11-14T19:30:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ],
+      "mediaAltText": [
+        "Automatischer Kaffeebecher mit Rührfunktion in Kaffeebraun, Text: Der Löffel hat Feierabend"
+      ],
+      "format": "STORY",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "date": "2026-11-14T19:30:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ],
+      "mediaAltText": [
+        "Automatischer Kaffeebecher mit Rührfunktion in Kaffeebraun, Text: Der Löffel hat Feierabend"
+      ],
+      "format": "STORY",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422278897,
+      "uuid": "4651045624279025767",
+      "date": "2026-11-13T09:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: XXL Hoodie-Decke mit Taschen, CHF 37.90"
+      ],
+      "format": "unknown",
+      "platformId": "7707563517016018209",
+      "platformUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 422279075,
+      "uuid": "-8797746381899281322",
+      "date": "2026-11-13T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+      ],
+      "format": "POST",
+      "platformId": "18182777908431347",
+      "platformUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "date": "2026-11-14T09:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Haarspange Keks, CHF 15.90"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "fabc4983426df8bb3ccca6c15b5326420e7739ec6969826eac2a9fdb92204150"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "date": "2026-11-14T10:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: bworld Rennrad mit Radfahrer, CHF 25.90"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Wichtelgeschenk ab 4 Jahren: bworld Rennrad mit Radfahrer #Shorts",
+      "textSha256": "61c0b1b7734418c0e8891c1b7e349df0a9fad37dd8ed4ddba299bf0c8b7b3fe1"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "date": "2026-11-14T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "ecb52f6dbaa8b93a7482448a4d1dd6b100d91b0def82a3a6b0d5a7cc94148262"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422279700,
+      "uuid": "8178449842924373712",
+      "date": "2026-11-14T12:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "f8b5f927339ad3a67bd68d59ffda62848b028c5e8df225063a702c74fac86f65"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 422279805,
+      "uuid": "-2924344703561023385",
+      "date": "2026-11-14T15:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 422279805,
+      "uuid": "-2924344703561023385",
+      "date": "2026-11-14T15:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 422279920,
+      "uuid": "8229862176301272727",
+      "date": "2026-11-14T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Wichtelgeschenk für sie: Lederarmband mit Hufeisen-Schnalle #Shorts",
+      "textSha256": "27e4a74fca962cabb2f9ed46604922502205839f081d0d7ea8ba57be9239bb7f"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422280035,
+      "uuid": "-6748893881700627372",
+      "date": "2026-11-14T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: bworld Rennrad mit Radfahrer, CHF 25.90"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "c0ff8f88bef3ef06fbf5b6d50a05068857ccaf2bc65a26334bfb9c3d1bf7a2bb"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 422285770,
+      "uuid": "-9210583075457839526",
+      "date": "2026-11-13T10:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+      ],
+      "format": "short",
+      "platformId": "DDjWSjBNH5c",
+      "platformUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+      "textSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422285897,
+      "uuid": "673796377030903265",
+      "date": "2026-11-13T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "501c9af803fd18d1c286d5a25e107e20a3e0d080b11685af67f35b42aa796c83"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 422791764,
+      "uuid": "-2331828084021443536",
+      "date": "2026-11-13T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114020",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "7adba52cb2538f653dd4754fdd234fdd33a38872855ffb2d6244b0c34dbfb9c1"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 422791801,
+      "uuid": "-3513321668753471647",
+      "date": "2026-11-14T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+      ],
+      "mediaAltText": [
+        "bworld Rennrad mit Radfahrer"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114020",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e81d476db687fdf2b5e07b0d0c862a8b9b0a9af72942598566477e33077e8516"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 426612259,
+      "uuid": "1744402171830094170",
+      "date": "2026-11-13T09:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "40a3ef23a9f40aea2a3305fd619a98c95a5e3e63c35666638842634d8c24a949"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 426612259,
+      "uuid": "1744402171830094170",
+      "date": "2026-11-13T09:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": false,
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "40a3ef23a9f40aea2a3305fd619a98c95a5e3e63c35666638842634d8c24a949"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 426613048,
+      "uuid": "5647388074617226143",
+      "date": "2026-11-13T12:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "922d6e5df9798ca83fe2a1f7240c4c86dcd6c84e28758700a4801e4ff9d6fef1"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 426613069,
+      "uuid": "-4472725258033347244",
+      "date": "2026-11-13T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+      "textSha256": "dbd6a84cc5cd0e32bc6affcd8d26617dfa581441be48dba52cdbe5798ccebdac"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 426613082,
+      "uuid": "2172266762404316928",
+      "date": "2026-11-13T15:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "f8904d4c4f08c83e04a023e64c5446209762381d6ceec6c053c30605aef44513"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 426613103,
+      "uuid": "3963843144054620883",
+      "date": "2026-11-13T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 426613103,
+      "uuid": "3963843144054620883",
+      "date": "2026-11-13T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": false,
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 426613132,
+      "uuid": "-7002936161864562103",
+      "date": "2026-11-13T13:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+      "textSha256": "c2aeb6719d19c018fa21dd18728e598ffa487050c2409e497eaba4c69070095c"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 420726136,
+      "uuid": "6199136659928140012",
+      "date": "2026-11-15T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ],
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "03c57641306fb43e0bb3fc3fbd11c3ce64d3ec9bdf574fc1cb4c997dd5da0bcc"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 420728374,
+      "uuid": "7768651932591999367",
+      "date": "2026-11-15T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ],
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "8d24a2d67d6f3ad370ef40a3c9e53163725ef988e109542752644b9e9e477bec"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 422280155,
+      "uuid": "-3833193365444016309",
+      "date": "2026-11-15T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ],
+      "mediaAltText": [
+        "USB-Stick Flaschenöffner aus Metall",
+        "USB-Stick Flaschenöffner aus Metall"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 422280155,
+      "uuid": "-3833193365444016309",
+      "date": "2026-11-15T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ],
+      "mediaAltText": [
+        "USB-Stick Flaschenöffner aus Metall",
+        "USB-Stick Flaschenöffner aus Metall"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422295156,
+      "uuid": "-6967517640837021033",
+      "date": "2026-11-15T12:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Panda 15 cm, CHF 19.90"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "0430c85438fc92eaddca91f659ebb47eb5056271ee1397b4c344795c4a852ce4"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "date": "2026-11-15T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+      ],
+      "mediaAltText": [
+        "Gestaffelter Kosmetik-Organizer mit dekorativ platzierten Flaschen und Pflegeprodukten."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114020",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "ffcce11c514ebceee6cde34515f89aaf64e500581fab7cbd82a909b8f977e9f1"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 424392566,
+      "uuid": "-8080777271331700055",
+      "date": "2026-11-16T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+      ],
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "595043bb83e96c9a64496083717d9385d5dca746230fba7fb899e6b5b4706a85"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 424392702,
+      "uuid": "7991040995405613204",
+      "date": "2026-11-16T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+      ],
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 2",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 424392702,
+      "uuid": "7991040995405613204",
+      "date": "2026-11-16T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+      ],
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 2",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 424392795,
+      "uuid": "-580082399036486516",
+      "date": "2026-11-16T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+      ],
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 2",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 3"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e0c0d3989d22e3075ac878009afefa5c5110ff2f622a9db86b53840554631dfe"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 424393081,
+      "uuid": "-8863891854936750949",
+      "date": "2026-11-16T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+      ],
+      "mediaAltText": [
+        "Neun weinrote Weihnachtskugeln liegen in einem Karton mit neun Fächern. Jede Kugel hat ein Zierband mit hellen Steinchen und eine goldfarbene Kappe. Darunter steht auf hellem Grund «9 beflockte Weihnachtskugeln» und luxestyle.ch."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114033",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "cdc0e000a666e0ffc31bd7a0c6e359bf82177903a00433a5c277b03dfaa85c9d"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 426033327,
+      "uuid": "4156060813550767248",
+      "date": "2026-11-16T19:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": false,
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ],
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 426034581,
+      "uuid": "6680239273933357186",
+      "date": "2026-11-16T19:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ],
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 426615714,
+      "uuid": "8935974072695279179",
+      "date": "2026-11-15T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 423483793,
+      "uuid": "4659816415037836014",
+      "date": "2026-11-18T10:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "70a15eb9e882edf2626d676a381f387c54dda6eedb636950fa73a825bc698017"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 423483793,
+      "uuid": "4659816415037836014",
+      "date": "2026-11-18T10:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": false,
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "format": "REEL",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "70a15eb9e882edf2626d676a381f387c54dda6eedb636950fa73a825bc698017"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 423484712,
+      "uuid": "-8339089096074181290",
+      "date": "2026-11-18T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "3b5942ea45fa93ebe08e250adbecaa906461d716dbb15d3c917f04ff1e06bf11"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 423484773,
+      "uuid": "-8305910546945982140",
+      "date": "2026-11-18T12:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "c222003edee7aa32a869af251b05d9c2f8f6be9428ab166290bac4db83c15553"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 423484839,
+      "uuid": "-3731207601091163105",
+      "date": "2026-11-18T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+      "textSha256": "a78f1a102b153c230e27d6e3f6d9a7e61326d39ef48f5149663b889140be1bab"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 424393187,
+      "uuid": "-2055061205905158476",
+      "date": "2026-11-17T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+      ],
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "c9a61509ef4e9057cb9e313708712f36382b2825ea195c06d0c138feaafd7263"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 424393289,
+      "uuid": "-326770756211684563",
+      "date": "2026-11-17T16:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+      ],
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 2",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 3"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6f7c6d12a7c279ff7aff51fc0c1fd7fe637ae8c11f3e8b2921afb5324436ab06"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 424393422,
+      "uuid": "8906814597211638530",
+      "date": "2026-11-17T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+      ],
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 2",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 424393422,
+      "uuid": "8906814597211638530",
+      "date": "2026-11-17T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+      ],
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 2",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 424393614,
+      "uuid": "9119250214596987223",
+      "date": "2026-11-17T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+      ],
+      "mediaAltText": [
+        "Braune Keramiktasse mit dunklen Schwalbenmotiven und gewelltem Henkel, gefüllt mit Milchkaffee, auf einem Holztisch. Darunter der Schriftzug «Retro-Tasse mit Tiermotiv» und luxestyle.ch."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114020",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "a247614370cc822edfe962fbb4abf7c4b7047642429ad7ec333b8010cf61aea0"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 424393691,
+      "uuid": "-2256568300747601062",
+      "date": "2026-11-18T14:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+      ],
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "c913dbe147a2ca111da6192bf40e904fc3c3640dd60079e2d8963326f211f143"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 425725034,
+      "uuid": "5511347900019396585",
+      "date": "2026-11-18T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+      ],
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 2",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 425725034,
+      "uuid": "5511347900019396585",
+      "date": "2026-11-18T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+      ],
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 2",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 425725162,
+      "uuid": "-4254912497617780595",
+      "date": "2026-11-18T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+      ],
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 2",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 3"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "ed9e35e99fd317011cb535c442f147ef37db94369fa85886bc91c25958f10323"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 425725272,
+      "uuid": "-5899965466644493317",
+      "date": "2026-11-18T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+      ],
+      "mediaAltText": [
+        "Zwei Weihnachtsstrümpfe mit Samt-Optik nebeneinander auf hellem Grund: links ein roter mit grünem Umschlag, rechts ein grüner mit rotem Umschlag. Beide haben eine Kordel in Rot und Gold am Umschlag, eine goldgelbe Quaste und oben eine Schlaufe. Darunter steht «Weihnachtsstrumpf mit Samt-Optik»."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114033",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "88e8fbdaa5c05da9aeffb48a4f5372b3cddc2d4b19f0a178cdf4e499ade9dca0"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 426034638,
+      "uuid": "3614365779669041576",
+      "date": "2026-11-17T19:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ],
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 425725415,
+      "uuid": "2120727659527094958",
+      "date": "2026-11-19T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+      ],
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "32fb690e1c4e62764ac544ae718e748d8972935f4a6648b82087616d8970643d"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 425725555,
+      "uuid": "4792908094992761420",
+      "date": "2026-11-19T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+      ],
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 2",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 3",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 4"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 425725555,
+      "uuid": "4792908094992761420",
+      "date": "2026-11-19T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+      ],
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 2",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 3",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 4"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 425725709,
+      "uuid": "-1560468010126717309",
+      "date": "2026-11-19T18:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+      ],
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 2",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 3",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 4"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "6246a80be39c053e0a20f0062ba7fdccc3c78a01f90e3818d50965289f4d04c8"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 425725932,
+      "uuid": "6443070221295305315",
+      "date": "2026-11-19T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+      ],
+      "mediaAltText": [
+        "Rosa Schminkspiegel zum Aufklappen auf weissem Grund: zwei Spiegelflächen, die untere mit leuchtendem weissem Rahmen und rundem Lampensymbol. Daneben derselbe Spiegel halb geöffnet von aussen, mit einer Buchse am Gehäuse. Unten der Schriftzug «Tragbarer LED-Schminkspiegel» und luxestyle.ch."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114020",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "1993fc01907a5ece40d813e83f5675565e0cc4fbe25e5f12541882ea7d76db0f"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 425726070,
+      "uuid": "-6491658134482960242",
+      "date": "2026-11-20T14:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+      ],
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "2de678da0fafa2787d7383d4ff62cb05f0158d82ecb0cd8e922501602db3fca6"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 425726186,
+      "uuid": "5095221239706765903",
+      "date": "2026-11-20T15:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+      ],
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "227a9c412ec7c931c16e690c6b72a02506aa6ccff5c2eb84969315d91b5e6220"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 425726329,
+      "uuid": "108318075245381964",
+      "date": "2026-11-20T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+      ],
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 425726329,
+      "uuid": "108318075245381964",
+      "date": "2026-11-20T17:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+      ],
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+      ],
+      "format": "POST",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "pinterest",
+      "id": 425726479,
+      "uuid": "-457707186698434580",
+      "date": "2026-11-20T20:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": true,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+      ],
+      "mediaAltText": [
+        "Grüner Deko-Tannenbaum mit rotem Stern an der Spitze, bunten Lichtpunkten, rotem Band und kleinen Häusern steht auf einem Holztisch. Im Hintergrund unscharf ein Wohnzimmer mit Kamin, Lampe und Sofa. Darunter der Schriftzug «Lichterbaum-Musikbox»."
+      ],
+      "format": "unknown",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": "1111333714239114033",
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "fdc627d9f49c8128ad0a62697541040bb3baf808346e83ceea62949cbaaf46ac"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 426038749,
+      "uuid": "-7647174116509334899",
+      "date": "2026-11-19T19:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": true,
+      "autoPublish": false,
+      "channelAutoPublish": "unknown",
+      "status": "PENDING",
+      "technicalActivePending": false,
+      "activeGlobalFlags": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ],
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "format": "short",
+      "platformId": "unknown",
+      "platformUrl": "unknown",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Sternenlicht-Projektor im Detail #Shorts",
+      "textSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6"
+    }
+  ],
+  "publishedToday": [
+    {
+      "origin": "fresh_14h_planning",
+      "network": "facebook",
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "date": "2026-11-13T12:15:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm",
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "format": "POST",
+      "platformId": "1049840534888592_122152968393350792",
+      "platformUrl": "https://facebook.com/122108214291350792/posts/122152968393350792",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "instagram",
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "date": "2026-11-13T12:15:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": true,
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm",
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "format": "POST",
+      "platformId": "https://www.instagram.com/p/DfrgKNZiF-m/",
+      "platformUrl": "https://www.instagram.com/p/DfrgKNZiF-m/",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "tiktok",
+      "id": 422278897,
+      "uuid": "4651045624279025767",
+      "date": "2026-11-13T09:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: XXL Hoodie-Decke mit Taschen, CHF 37.90"
+      ],
+      "format": "unknown",
+      "platformId": "7707563517016018209",
+      "platformUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "threads",
+      "id": 422279075,
+      "uuid": "-8797746381899281322",
+      "date": "2026-11-13T11:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+      ],
+      "format": "POST",
+      "platformId": "18182777908431347",
+      "platformUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": null,
+      "youtubeTitle": null,
+      "textSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075"
+    },
+    {
+      "origin": "fresh_14h_planning",
+      "network": "youtube",
+      "id": 422285770,
+      "uuid": "-9210583075457839526",
+      "date": "2026-11-13T10:00:00",
+      "timezone": "Europe/Zurich",
+      "draft": false,
+      "autoPublish": true,
+      "channelAutoPublish": "unknown",
+      "status": "PUBLISHED",
+      "technicalActivePending": false,
+      "activeGlobalFlags": true,
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+      ],
+      "format": "short",
+      "platformId": "DDjWSjBNH5c",
+      "platformUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c",
+      "pinterestBoard": null,
+      "youtubeMadeForKids": false,
+      "youtubeTitle": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+      "textSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864"
+    }
+  ],
+  "holdPreservation": {
+    "audioHolds": [
+      {
+        "uuid": "-4472725258033347244",
+        "ids": [
+          426613069
+        ],
+        "channels": [
+          "youtube"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "ids": [
+          426613132
+        ],
+        "channels": [
+          "youtube"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "1744402171830094170",
+        "ids": [
+          426612259
+        ],
+        "channels": [
+          "facebook",
+          "instagram"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 2
+      },
+      {
+        "uuid": "2172266762404316928",
+        "ids": [
+          426613082
+        ],
+        "channels": [
+          "tiktok"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "3963843144054620883",
+        "ids": [
+          426613103
+        ],
+        "channels": [
+          "facebook",
+          "instagram"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 2
+      },
+      {
+        "uuid": "5647388074617226143",
+        "ids": [
+          426613048
+        ],
+        "channels": [
+          "tiktok"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "8935974072695279179",
+        "ids": [
+          426615714
+        ],
+        "channels": [
+          "threads"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      }
+    ],
+    "projectorR176Holds": [
+      {
+        "uuid": "-7647174116509334899",
+        "ids": [
+          426038749
+        ],
+        "channels": [
+          "youtube"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "3614365779669041576",
+        "ids": [
+          426034638
+        ],
+        "channels": [
+          "tiktok"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "4156060813550767248",
+        "ids": [
+          426033327
+        ],
+        "channels": [
+          "instagram"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      },
+      {
+        "uuid": "6680239273933357186",
+        "ids": [
+          426034581
+        ],
+        "channels": [
+          "facebook"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "contentMediaTimeAudienceAndIdsUnchangedFromR194": true,
+        "channelStates": 1
+      }
+    ],
+    "source": "R194 final local snapshot and current four bounded fresh API responses",
+    "independentFreshWrites": 0,
+    "fullActualProviderPayloadComparison": {
+      "source": "Full R194 morning snapshots, with targeted final13/15Nov snapshots taking precedence",
+      "checks": [
+        {
+          "uuid": "-4472725258033347244",
+          "id": 426613069,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "-7002936161864562103",
+          "id": 426613132,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "1744402171830094170",
+          "id": 426612259,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "2172266762404316928",
+          "id": 426613082,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "3963843144054620883",
+          "id": 426613103,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "5647388074617226143",
+          "id": 426613048,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "8935974072695279179",
+          "id": 426615714,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "-7647174116509334899",
+          "id": 426038749,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "3614365779669041576",
+          "id": 426034638,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "4156060813550767248",
+          "id": 426033327,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        },
+        {
+          "uuid": "6680239273933357186",
+          "id": 426034581,
+          "draft": true,
+          "autoPublish": false,
+          "contentAndActualProviderPayloadExactlyUnchanged": true
+        }
+      ],
+      "allPass": true
+    }
+  },
+  "diffVsR194": {
+    "newOrRemovedKeys": {
+      "added": [],
+      "removed": []
+    },
+    "contentFlagAudienceIdChanges": [],
+    "statusTransitionsFromR194": [
+      {
+        "uuid": "-9210583075457839526",
+        "network": "youtube",
+        "id": 422285770,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T10:00:00",
+        "platformId": "DDjWSjBNH5c",
+        "platformUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c"
+      },
+      {
+        "uuid": "-8797746381899281322",
+        "network": "threads",
+        "id": 422279075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T11:00:00",
+        "platformId": "18182777908431347",
+        "platformUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x"
+      },
+      {
+        "uuid": "-1741815444231403909",
+        "network": "instagram",
+        "id": 407894075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T12:15:00",
+        "platformId": "https://www.instagram.com/p/DfrgKNZiF-m/",
+        "platformUrl": "https://www.instagram.com/p/DfrgKNZiF-m/"
+      },
+      {
+        "uuid": "4651045624279025767",
+        "network": "tiktok",
+        "id": 422278897,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T09:00:00",
+        "platformId": "7707563517016018209",
+        "platformUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209"
+      },
+      {
+        "uuid": "-1741815444231403909",
+        "network": "facebook",
+        "id": 407894075,
+        "from": "PENDING",
+        "to": "PUBLISHED",
+        "at": "2026-11-13T12:15:00",
+        "platformId": "1049840534888592_122152968393350792",
+        "platformUrl": "https://facebook.com/122108214291350792/posts/122152968393350792"
+      }
+    ]
+  },
+  "rawCaptionHandling": "Original post text omitted here, SHA retained; primary full snapshots remain local source evidence. No complete historical/visual master ledger inferred."
+}

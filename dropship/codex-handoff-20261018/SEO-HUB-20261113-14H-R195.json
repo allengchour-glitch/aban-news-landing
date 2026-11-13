@@ -1,0 +1,125 @@
+{
+  "checkedAtUTC": "2026-11-13T13:08:53.900513+00:00",
+  "scope": "Exactly one category hub and six specified DRAFT product-handle anchor targets; no crawl, Google-index inspection, Search Console/GA4 report or store change",
+  "sourceUrl": "https://luxestyle.ch/pages/alle-kategorien",
+  "directHttpHeadCountercheck": {
+    "atUTC": "2026-11-13T13:05:38.717990+00:00",
+    "url": "https://luxestyle.ch/pages/alle-kategorien",
+    "httpStatus": 200,
+    "finalUrl": "https://luxestyle.ch/pages/alle-kategorien",
+    "headers": {
+      "Content-Type": "text/html; charset=utf-8",
+      "X-Robots-Tag": null,
+      "Location": null,
+      "Link": "<https://cdn.shopify.com>; rel=\"preconnect\", <https://cdn.shopify.com>; rel=\"preconnect\"; crossorigin, <//luxestyle.ch/cdn/shop/t/26/assets/base.css?v=110558660533795380521793600025>; as=\"style\"; rel=\"preload\", <//luxestyle.ch/cdn/shop/t/26/assets/overflow-list.css?v=16727044177065489451793600025>; as=\"style\"; rel=\"preload\", <https://luxestyle.ch/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css>; as=\"style\"; rel=\"preload\"; crossorigin, <//luxestyle.ch/cdn/shop/t/26/compiled_assets/styles.css?v=6653652060603765471794438331&subset=AB4AAAAABAAAwAAAAEAIAgBBgQMAHCAAAFAAgYgwTQAB>; as=\"style\"; rel=\"preload\"; crossorigin, </.well-known/ucp>; rel=\"ucp\"; version=\"2026-08-25\""
+    },
+    "readBytes": 250000,
+    "fullDocumentDownloaded": false,
+    "mainHeadComplete": true,
+    "mainHeadSha256": "af162eca0e30d7f8cb59dd33954179700c9aa10644e3c258595c7a2c5d10e4a3",
+    "title": "Alle Kategorien — der ganze Shop auf einen Blick – LuxeStyle",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Alle Kategorien von LuxeStyle auf einen Blick: Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme – meist zwei Klicks bis zum passenden Produkt."
+      }
+    ],
+    "canonicals": [
+      {
+        "rel": "canonical",
+        "href": "https://luxestyle.ch/pages/alle-kategorien"
+      }
+    ],
+    "note": "Separate direct HTTP countercheck of actual main-document head and X-Robots-Tag. Never use scraper combined iframe metadata as a page-level noindex finding."
+  },
+  "renderedMainExtract": {
+    "reportedStatus": 200,
+    "reportedFinalUrl": "https://luxestyle.ch/pages/alle-kategorien",
+    "mainFound": true,
+    "mainH1s": [
+      "Alle Kategorien"
+    ],
+    "canonicalTags": [
+      "<link rel=\"canonical\" href=\"https://luxestyle.ch/pages/alle-kategorien\">"
+    ],
+    "mainDescription": [
+      "<meta name=\"description\" content=\"Alle Kategorien von LuxeStyle auf einen Blick: Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme – meist zwei Klicks bis zum passenden Produkt.\">"
+    ],
+    "mainLinkCount": 412,
+    "targetedSixDraftHandleMatches": [
+      {
+        "handle": "schwangerschaftskissen-fur-seitenschlafer-611100",
+        "matches": []
+      },
+      {
+        "handle": "3d-holzpuzzle-luftschiff-modellbausatz-483905",
+        "matches": []
+      },
+      {
+        "handle": "lange-herren-pullover-636000",
+        "matches": []
+      },
+      {
+        "handle": "pgm-golfschlager-holz-fur-damen-und-herren-604000",
+        "matches": []
+      },
+      {
+        "handle": "automatischer-lockenstab-fur-grosse-wellen-623500",
+        "matches": []
+      },
+      {
+        "handle": "zitruspresse-fur-zitrone-und-limette-502081",
+        "matches": []
+      }
+    ]
+  },
+  "metadataScopeCountercheck": {
+    "headDocuments": [
+      {
+        "index": 0,
+        "offset": 31,
+        "title": "Alle Kategorien — der ganze Shop auf einen Blick\n – LuxeStyle",
+        "robotsTags": []
+      },
+      {
+        "index": 1,
+        "offset": 626150,
+        "title": "Mit Shop einloggen",
+        "robotsTags": [
+          "<meta name=\"robots\" content=\"none\">"
+        ]
+      }
+    ],
+    "allRawRobotsTags": [
+      {
+        "offset": 626340,
+        "tag": "<meta name=\"robots\" content=\"none\">"
+      }
+    ],
+    "iframeCount": 0,
+    "scraperAggregateRobots": "none"
+  },
+  "conclusion": "Main page200/selfcanonical/one mainH1, no robots directive in first main head or X-Robots-Tag. Zero matches among412main anchors for six known DRAFT404handles. The robots=none tag occurs only in the second returned head titled Mit Shop einloggen, not in the main category hub head.",
+  "limits": [
+    "Only one source page; other site links and sitemap coverage remain unmeasured",
+    "No claim of current Google indexing, ranking, traffic gains, robots.txt allowance or Core Web Vitals",
+    "Body outside the single hub and six targets not crawled",
+    "No link cleanup or settings edits performed"
+  ],
+  "errorsHandled": [
+    {
+      "operation": "First scrape",
+      "code": 400,
+      "reason": "timeout30 rejected before retrieval; minimum1000ms",
+      "resolution": "Corrected to30000ms; one successful current fetch"
+    },
+    {
+      "operation": "Optional scrape feedback",
+      "code": 409,
+      "reason": "FEEDBACK_WINDOW_EXPIRED",
+      "retried": false,
+      "dataImpact": "none; target audit independently confirmed via directHTTPhead"
+    }
+  ],
+  "writes": 0
+}

@@ -1,0 +1,145 @@
+{
+  "checkedAt": "2026-11-13T13:02:01.919918+00:00",
+  "sourcePath": "/workspace/luxestyle-review/master-shopify-refresh-20261108/shopify-source.mp4",
+  "sourceSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+  "sourceBytes": 3679836,
+  "sourceFps": 25,
+  "frames": [
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-01.jpg",
+      "sourceFrameIndex": 0,
+      "nominalSourcePtsSeconds": 0.0,
+      "bytes": 3281,
+      "sha256": "ca35299617d01c3172244b6bbef0624269cfb5ec6f69ec303e531fbfc2fcf03c",
+      "actualShowinfoPtsSeconds": 0.0,
+      "assistantVisualReview": true,
+      "observation": "Black frame.",
+      "masterUse": "reject_as_hook_or_ending"
+    },
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-02.jpg",
+      "sourceFrameIndex": 125,
+      "nominalSourcePtsSeconds": 5.0,
+      "bytes": 22936,
+      "sha256": "bd102a69fc6fe2e6b973c113fc2b625f68cff69b6ecddbbbbb25b0c8b4589788",
+      "actualShowinfoPtsSeconds": 5.0,
+      "assistantVisualReview": true,
+      "observation": "White round device, U bracket, radial lower-shell ribs, multiple round front controls and right-side connected cable. Hands partly obscure controls and base.",
+      "shapeComparison": "compatible_device_family_not_exact_unit_or_SKU_proof",
+      "masterUse": "not_a_hand_free_device_or_detail_shot"
+    },
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-03.jpg",
+      "sourceFrameIndex": 250,
+      "nominalSourcePtsSeconds": 10.0,
+      "bytes": 28216,
+      "sha256": "174d5184133e48ed81d39f4b53404facded3c9794e0740b6116f97bc3e8af791",
+      "actualShowinfoPtsSeconds": 10.0,
+      "assistantVisualReview": true,
+      "observation": "Planet projection with English labels, device absent.",
+      "masterUse": "A_motif_and_device_connection_unknown"
+    },
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-04.jpg",
+      "sourceFrameIndex": 430,
+      "nominalSourcePtsSeconds": 17.2,
+      "bytes": 42482,
+      "sha256": "94330bede4b9778228befa11c15e1ab909e403d549b0703aa9ae89d70869724d",
+      "actualShowinfoPtsSeconds": 17.2,
+      "assistantVisualReview": true,
+      "observation": "Close view into bright opening, lit rim, hand at right; product contours extend beyond frame; no identifiable front or bracket.",
+      "masterUse": "reject_for_hand_free_detail_slot"
+    },
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-05.jpg",
+      "sourceFrameIndex": 470,
+      "nominalSourcePtsSeconds": 18.8,
+      "bytes": 31462,
+      "sha256": "95aaefb029164f9b8c625acc9d0f4bdc6cf5678034b50a21b1548d83a49762e1",
+      "actualShowinfoPtsSeconds": 18.8,
+      "assistantVisualReview": true,
+      "observation": "Lit shell, dark upper opening; hand at right and bottom; top and side contours cut off.",
+      "masterUse": "reject_for_hand_free_detail_slot"
+    },
+    {
+      "file": "/tmp/luxe-followup-20261113-14h/master/source-frame-06.jpg",
+      "sourceFrameIndex": 600,
+      "nominalSourcePtsSeconds": 24.0,
+      "bytes": 41672,
+      "sha256": "6ec9437ae960ef058a63dd9a1d94585dc573c719718d0f52310724cbf1e5cfa9",
+      "actualShowinfoPtsSeconds": 24.0,
+      "assistantVisualReview": true,
+      "observation": "Galaxy and star projection, device absent; different projected design from10s.",
+      "masterUse": "A_motif_and_device_connection_unknown_not_device_ending"
+    }
+  ],
+  "sourceOnlyQAFrames": true,
+  "videoExports": 0,
+  "platformWrites": 0,
+  "reviewedAt": "2026-11-13T13:04:12.520846+00:00",
+  "memoryRevisionRead": 194,
+  "memoryFilesRead": [
+    {
+      "path": "/tmp/luxe-followup-current/README.md",
+      "sha256": "e7938e7e4cf3dbcb667f705374b501f1070d29be3e000330b947dcfef3ff09d0"
+    },
+    {
+      "path": "/tmp/luxe-followup-current/PROJEKTGEDAECHTNIS.md",
+      "sha256": "fb0a195b5cb859ea9a234263f54d7d62bb0dbfa798e48a55b85c22246e8883b3"
+    },
+    {
+      "path": "/tmp/luxe-followup-current/ARBEITSSTAND.json",
+      "sha256": "25a455bdf90b4cdc05cb9167cea5335ea2ef5586b51bbdae518c34a18d5f98d9"
+    },
+    {
+      "path": "/tmp/luxe-followup-current/TAGESPROTOKOLL.md",
+      "sha256": "3ef547f6e4680fb01f117bdfcd456f02176ee82fe5f0dbd3335f99ce7e00be49"
+    }
+  ],
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "reference": {
+    "variantId": "68122445283719",
+    "sku": "CJSN139239101AZ",
+    "path": "dropship/codex-handoff-20261018/PROJECTOR-A-REFERENZ-20261113-R194.jpg",
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+    "visuallyReviewed": true,
+    "provesActualFilmSku": false,
+    "sourceWorkspacePath": "/tmp/luxe-audit-20261113/products/projector-base-variant.jpg"
+  },
+  "result": {
+    "shapeFamilyCompatible": true,
+    "exactFilmedUnit": null,
+    "exactFilmedSku": null,
+    "AIncludedProjectionMotifs": null,
+    "provenDifferentDevice": false,
+    "fullTimeContinuityVerified": false,
+    "excludedOldDetailSourceIntervalSeconds": [
+      17.2,
+      18.8
+    ],
+    "reason": "Both sampled endpoints contain hands and cut product contours. No full inner-interval transition claim.",
+    "source1720To1880UsableForHandFreeDetail": false,
+    "exclusiveOutPointCaveat": "At half-open trim [17.20,18.80), frame18.80 is the out-point, not retained. Retained frame17.20 alone already fails hand/contour conditions."
+  },
+  "masterAdjustment": {
+    "preserve540FramePlanHooksCaptionsUTMs": true,
+    "missingNativePortraitSourceRemains": true,
+    "requiredNewDetailUsableSeconds": 4.2,
+    "newMovieOrVideoExport": false
+  },
+  "newDailyReportQueries": 0,
+  "uploads": 0,
+  "remoteCalls": 0,
+  "repoEdits": 0,
+  "report": {
+    "path": "dropship/codex-handoff-20261018/MASTER-SOURCE-MATRIX-20261113-14H-R195.md",
+    "bytes": 5479,
+    "sha256": "4d87788a732a650074d4f970e30ce0780edf1d7e2174f4db33eff97ea8d7f244"
+  },
+  "archiveScopeNote": "This packet contains only the source-to-shot matrix, source/frame hashes and observations. No source MP4 or extracted QA-frame image is copied. The unchanged R194 reference image is already in the repository.",
+  "sourceReport": {
+    "path": "/tmp/luxe-followup-20261113-14h/master/SOURCE-TO-SHOT-MATRIX-20261113-14h.md",
+    "bytes": 4983,
+    "sha256": "2f4aa609c965ab045c218233fb82dc850361124553c0598b58fa6c00f950db28"
+  }
+}

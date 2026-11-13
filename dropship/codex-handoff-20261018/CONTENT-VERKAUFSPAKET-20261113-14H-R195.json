@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "revision": 195,
+  "recordedAtUTC": "2026-11-13T13:26:09.362978+00:00",
+  "dateZurich": "2026-11-13",
+  "localRun": "14h",
+  "brand": "luxestyle.ch",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "freshIdentityPass": true
+    }
+  },
+  "actualPlatformChanges": 0,
+  "ownPublications": 0,
+  "observedPublishedTodayObjects": 4,
+  "observedPublishedTodayChannelStates": 5,
+  "observedPublicationProof": "PLANUNG-20261113-14H-R195.json",
+  "observedDoesNotMeanCodexCaused": true,
+  "planningCounts": {
+    "totalObjects": 57,
+    "totalChannelStates": 71,
+    "states": {
+      "PUBLISHED": 5,
+      "PENDING": 66
+    },
+    "activeGlobalFlagsObjects": 42,
+    "activeGlobalFlagsChannelStates": 53,
+    "activePendingObjects": 38,
+    "activePendingChannelStates": 48,
+    "inactiveObjects": 15,
+    "inactiveChannelStates": 18,
+    "gapsWhenPublishedTodayCountsAsDeliveredDailyCoverage": {
+      "instagram": [],
+      "facebook": [],
+      "tiktok": [],
+      "pinterest": [],
+      "threads": [
+        "2026-11-15"
+      ],
+      "youtube": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20"
+      ]
+    }
+  },
+  "holdsUnchanged": {
+    "audioObjects": 7,
+    "audioChannelStates": 9,
+    "r176Objects": 4,
+    "proof": "PLANUNG-20261113-14H-R195.json"
+  },
+  "derivedR194IgNormalizationOnly": [
+    {
+      "uuid": "1744402171830094170",
+      "network": "instagram",
+      "derivedFlattenedValue": true,
+      "canonicalFullReadbackValue": false,
+      "canonicalSource": "final-today-planning.json",
+      "platformWriteRequired": false
+    },
+    {
+      "uuid": "3963843144054620883",
+      "network": "instagram",
+      "derivedFlattenedValue": true,
+      "canonicalFullReadbackValue": false,
+      "canonicalSource": "final-today-planning.json",
+      "platformWriteRequired": false
+    }
+  ],
+  "reportsReused": true,
+  "existingMorningReports": {
+    "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261113-R194.json",
+    "sha256": "80d4435fd4d49e0ca09ffad1cf2e814994dbe1d51af693f14c3638682cec8b62",
+    "gitBlobSha": "3364e707ed7b24a4c73f95b4c2ee9a4de4d73f66"
+  },
+  "newMetricDefinitionCalls": 0,
+  "newMetricDataCalls": 0,
+  "newKlaviyoMetricDiscoveries": 0,
+  "newKlaviyoFlowReports": 0,
+  "newSalesReports": 0,
+  "ordersQueried": false,
+  "purchaseWatchEnded": true,
+  "products": "PRODUKTPRUEFUNG-20261113-14H-R195.json",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "masterProgress": {
+    "matrix": "MASTER-SOURCE-MATRIX-20261113-14H-R195.json",
+    "existingBriefing": "MASTER-CONTENT-20261113-R194.md",
+    "newHooks": 0,
+    "newCaptionsOrUtms": 0,
+    "newMp4": false,
+    "sourceFramesReviewed": 6,
+    "source1720To1880RejectedForHandFreeDetail": true,
+    "sourceAndFrameImagesNotCopied": true
+  },
+  "seoOneHubOnly": "SEO-HUB-20261113-14H-R195.json",
+  "salesActionReusedOnly": {
+    "proposal": "VERKAUFSAKTION-20261113-R194.json",
+    "newApprovalScope": false,
+    "implemented": false
+  },
+  "priorApprovedKlaviyoPreview": "R185/R194 approval persists; no verified preview_text write contract or change in this run",
+  "ownerShopAppScreenshot": {
+    "fileReference": "1000149207",
+    "evidenceType": "Owner-supplied customer Shop-app view, not all screenshots are editor-only",
+    "visible": "Mug background, large white LuxeStyle, For-you recommendations",
+    "notClaimed": [
+      "Codex Save",
+      "Exact MP4 identity/motion",
+      "Independent live UI readback",
+      "Manual curation of personalised recommendations"
+    ],
+    "threeR193CollectionsStillApiUnpublished": true
+  },
+  "directBrowserControlConnection": "not newly confirmed in this run",
+  "noCustomerContactOrBudgetDiscountFlowDnsFeedWrites": true,
+  "noNewVideoOrMusicRendersOrUploads": true,
+  "claudeReceipt": "unknown_no_receipt"
+}
