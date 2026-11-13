@@ -6,6 +6,8 @@
 import { onRequest, onRequestPost, onRequestOptions } from "./api/hype-check.js";
 
 import { validateLicense } from "./_pro.mjs";
+import { readFileSync } from "node:fs";
+import vm from "node:vm";
 
 let pass = 0, fail = 0;
 function check(name, cond, extra = "") {
@@ -301,6 +303,37 @@ async function run() {
       check(phase + ': verspätete Antwort nicht gecacht, manuell erneut prüfbar', calls === 2 && recovered.ok === true);
       check(phase + ': Timer nach Erfolg entfernt', timers.size === 0);
     } finally { globalThis.fetch = realFetch; globalThis.setTimeout = realSet; globalThis.clearTimeout = realClear; }
+  }
+
+  console.log("\nTest 15 — Browser-Lizenzprüfung endet und bleibt manuell prüfbar:");
+  const studioSource=readFileSync(new URL('../js/ki-studio.js',import.meta.url),'utf8');
+  const validateSource=studioSource.slice(studioSource.indexOf('  function validate('),studioSource.indexOf('  var unlockBtn ='));
+  for(const phase of ['transport','inhalt']) for(const quiet of [false,true]){
+    const timers=new Map();let timerId=0,calls=0,finish,signal,unlocked=false;
+    const btn={disabled:false,textContent:'Freischalten'},sub={textContent:''},saved=[];
+    const context={AbortController,Promise,JSON,Error,
+      $:()=>btn,subEl:sub,KEY:'demo',key:'demo-gespeichert',
+      T:{working:'Arbeite',unlock:'Freischalten',licenseUnavailable:'Bitte nicht nochmals kaufen',invalid:'Ungültig'},
+      localStorage:{setItem:(...args)=>saved.push(args)},setUnlocked:on=>{unlocked=on;},applyTier:()=>{},
+      setTimeout:(fn,ms)=>{timers.set(++timerId,{fn,ms});return timerId;},clearTimeout:id=>timers.delete(id),
+      fetch:async(_,opts)=>{calls++;signal=opts.signal;const pending=new Promise(resolve=>{finish=resolve;});
+        return phase==='transport'?pending:{json:()=>pending};}
+    };
+    vm.createContext(context);vm.runInContext(validateSource,context);
+    context.validate('demo-schluessel',quiet);
+    await new Promise(resolve=>setImmediate(resolve));
+    const timer=[...timers.values()].find(t=>t.ms===15000);
+    check(phase+'/'+quiet+': feste 15-Sekundenfrist vorhanden',!!timer);
+    if(timer)timer.fn();await new Promise(resolve=>setImmediate(resolve));
+    check(phase+'/'+quiet+': Störung klar benannt, Knopf wieder bedienbar',sub.textContent.includes('nicht nochmals kaufen')&&!btn.disabled);
+    check(phase+'/'+quiet+': kein Retry, Signal abgebrochen, Timer entfernt',calls===1&&signal?.aborted===true&&timers.size===0);
+    check(phase+'/'+quiet+': gespeicherten Schlüssel erhalten, keine Freigabe',context.key==='demo-gespeichert'&&!unlocked&&saved.length===0);
+    finish(phase==='transport'?{json:async()=>({valid:true,tier:'monthly'})}:{valid:true,tier:'monthly'});
+    await new Promise(resolve=>setImmediate(resolve));
+    check(phase+'/'+quiet+': verspätete Antwort gibt nicht frei',!unlocked&&saved.length===0);
+    context.fetch=async()=>{calls++;return {json:async()=>({valid:true,tier:'monthly'})};};
+    context.validate('demo-schluessel',false);await new Promise(resolve=>setImmediate(resolve));
+    check(phase+'/'+quiet+': manuelle Prüfung nach Erholung erfolgreich',calls===2&&unlocked&&!btn.disabled&&timers.size===0);
   }
 
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
