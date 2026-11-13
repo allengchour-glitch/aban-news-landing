@@ -48,6 +48,30 @@
     "btc": 73964.46875,
     "eth": 2055.876220703125
    }
+  },
+  {
+   "stand": "2026-11-12",
+   "zeit": "2026-11-13T12:18:29+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1601,
+   "tokens_aus": 720,
+   "kosten_usd": 0.020804,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.2,
+    "begruendung": "Klarer Abwärtstrend: -3,5 % heute, -14 % in 30 Tagen, neues Monatstief bei 71'343. Kurs liegt unter 50-, 150- und 200-Tage-Schnitt, Momentum negativ. Short wird gehalten. 11,8 % unter dem 50-Tage-Schnitt und Angst&Gier 28 erhöhen aber das Risiko einer Gegenbewegung, deshalb kein Ausbau. Unverändert lassen spart Gebühren, positives Funding bringt dem Short einen kleinen Ertrag.",
+    "sicherheit": 0.55
+   },
+   "eth": {
+    "position": -0.35,
+    "begruendung": "ETH ist schwächer als BTC: -19 % in 30 Tagen, 17 % unter dem 50-Tage-Schnitt und unter dem 200-Tage-Schnitt, die Serie tieferer Hochs hält an. MVRV 0,94 deutet auf Halter im Verlust, also weiterer Verkaufsdruck möglich, aber auch nahe Unterbewertung. Die bestehende Short-Position bleibt, kein Ausbau wegen Überdehnung und 50 % Volatilität.",
+    "sicherheit": 0.55
+   },
+   "kommentar": "Beide Positionen unverändert, keine Gebühren. Trend klar abwärts, Markt aber kurzfristig überverkauft. Bei Erholung über die Zone 75'000 BTC bzw. 2'150–2'250 ETH die Shorts reduzieren.",
+   "kurse": {
+    "btc": 71342.96875,
+    "eth": 2016.8297119140625
+   }
   }
  ]
 }
