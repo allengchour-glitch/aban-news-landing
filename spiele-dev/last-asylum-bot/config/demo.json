@@ -1,0 +1,30 @@
+{
+  "_hinweis": "Spielzeug-Konfiguration zum Ausprobieren ohne Handy. Erst `python3 tools/make_demo.py` laufen lassen, dann `python3 bot.py replay demo/frames --config config/demo.json`.",
+
+  "package": "com.beispiel.demo",
+  "base_width": 540,
+  "default_threshold": 0.9,
+  "loop_delay": [0.2, 0.4],
+  "templates_dir": "../templates",
+
+  "tabu_regionen": [
+    { "name": "Beispiel-Shop oben rechts", "box": [0.8, 0.0, 1.0, 0.08] }
+  ],
+
+  "rules": [
+    {
+      "name": "werbung-schliessen",
+      "priority": 200,
+      "match": { "template": "demo/close_x.png", "threshold": 0.9 },
+      "do": [ { "tap_match": {} }, { "sleep": 0.2 } ]
+    },
+    {
+      "name": "belohnung-abholen",
+      "priority": 150,
+      "match": { "template": "demo/claim.png", "threshold": 0.9 },
+      "do": [ { "tap_match": {} }, { "sleep": 0.2 } ]
+    }
+  ],
+
+  "tasks": []
+}

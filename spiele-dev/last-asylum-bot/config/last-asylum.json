@@ -1,0 +1,7079 @@
+{
+  "_hinweis": "Last Asylum: Plague (com.phs.global), deutsche UI, 1440 px breit. Die Templates in templates/nav und templates/ui sind aus echten Screenshots geschnitten und laufen sofort. Alles mit 'optional: true' überspringt der Bot, bis du den Ausschnitt selbst anlegst – `python3 bot.py check` listet auf, was noch fehlt.",
+  "package": "com.phs.global",
+  "activity": null,
+  "base_width": 1440,
+  "default_threshold": 0.88,
+  "loop_delay": [
+    0.6,
+    1.2
+  ],
+  "tempo": 0.55,
+  "tempo_untergrenze": 0.35,
+  "_tempo": "EIN Regler fuer alle 186 Wartepunkte der Datei (zusammen rund 347 s - der groesste Zeitfresser, groesser als die gesamte Bilderkennung). 0.55 heisst: knapp doppelt so schnell. Die Untergrenze von 0.35 s verhindert, dass eine Wartezeit, die eine Animation abdecken soll, auf null zusammenfaellt - dann tippt der Bot, bevor der Bildschirm umgeschaltet hat, und der Tipp geht ins Leere. Wird der Bot ungenau oder tippt er daneben, ist dieser Wert das Erste, was man wieder hochsetzt (0.7, dann 1.0).",
+  "stuck_seconds": 120,
+  "templates_dir": "../templates",
+  "input_method": "input",
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. Zur Farbe der Kaufknoepfe siehe _farben - kurz: Gold wird nie blind angetippt, weil dieselbe Farbe fuer harmlose und fuer kostende Knoepfe benutzt wird.",
+  "tabu_regionen": [
+    {
+      "name": "Echtgeld-Shop und Diamanten-Aufladung oben rechts",
+      "box": [
+        0.62,
+        0.0,
+        1.0,
+        0.075
+      ]
+    }
+  ],
+  "texte": {
+    "allianz_admin": [
+      "Guten Morgen Leute! Denkt an die Tagesziele und Allianz-Geschenke.",
+      "Erinnerung: Hilfe geben kostet nichts und beschleunigt alle Bauten.",
+      "Allianz-Truhen sind offen - holt eure Belohnungen ab!",
+      "Wer Ressourcen braucht, meldet sich. Wir helfen uns gegenseitig.",
+      "Denkt an die Forschung - lasst sie nie stillstehen.",
+      "Sammelt fleissig, damit wir das naechste Geschenk-Level knacken."
+    ]
+  },
+  "on_stuck": [
+    {
+      "log": "Bild bewegt sich nicht mehr - Bildschirm-Pfeil oder Startseite versuchen (NICHT die Android-Zurueck-Taste, die oeffnet 'Spiel beenden?')"
+    },
+    {
+      "screenshot": "haenger"
+    },
+    {
+      "wenn": {
+        "match": {
+          "template": "ui/back_arrow.png",
+          "threshold": 0.85,
+          "region": [
+            0.0,
+            0.0,
+            0.3,
+            0.15
+          ]
+        },
+        "dann": [
+          {
+            "tap_match": {}
+          }
+        ],
+        "sonst": [
+          {
+            "tap_first": {
+              "of": [
+                {
+                  "template": "nav/startseite.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.7,
+                    0.85,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "template": "nav/burg.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.0,
+                    0.4,
+                    0.35,
+                    0.85
+                  ]
+                }
+              ],
+              "fallback": [
+                [
+                  0.5,
+                  0.95
+                ],
+                [
+                  0.22,
+                  0.93
+                ],
+                [
+                  0.35,
+                  0.16
+                ],
+                [
+                  0.12,
+                  0.7
+                ],
+                [
+                  0.86,
+                  0.44
+                ]
+              ]
+            }
+          },
+          {
+            "tap": [
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ],
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.75,
+                0.2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sleep": [
+        2,
+        3
+      ]
+    }
+  ],
+  "on_unknown": [
+    {
+      "screenshot": "unbekannt"
+    },
+    {
+      "tap_template": {
+        "template": "ui/popup_close.png",
+        "optional": true,
+        "threshold": 0.84
+      }
+    },
+    {
+      "sleep": 1.0
+    },
+    {
+      "tap_template": {
+        "template": "ui/close_x_hell.png",
+        "optional": true,
+        "threshold": 0.84
+      }
+    },
+    {
+      "sleep": 1.0
+    },
+    {
+      "wenn": {
+        "match": {
+          "template": "ui/back_arrow.png",
+          "threshold": 0.85,
+          "region": [
+            0.0,
+            0.0,
+            0.3,
+            0.15
+          ]
+        },
+        "dann": [
+          {
+            "tap_match": {}
+          }
+        ],
+        "sonst": [
+          {
+            "tap_first": {
+              "of": [
+                {
+                  "template": "nav/startseite.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.7,
+                    0.85,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "template": "nav/burg.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.0,
+                    0.4,
+                    0.35,
+                    0.85
+                  ]
+                }
+              ],
+              "fallback": [
+                [
+                  0.5,
+                  0.95
+                ],
+                [
+                  0.22,
+                  0.93
+                ],
+                [
+                  0.35,
+                  0.16
+                ],
+                [
+                  0.12,
+                  0.7
+                ],
+                [
+                  0.86,
+                  0.44
+                ]
+              ]
+            }
+          },
+          {
+            "tap": [
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ],
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.75,
+                0.2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sleep": 1.5
+    },
+    {
+      "tap": [
+        [
+          0.5,
+          0.95
+        ],
+        [
+          0.22,
+          0.93
+        ],
+        [
+          0.78,
+          0.93
+        ],
+        [
+          0.35,
+          0.16
+        ],
+        [
+          0.12,
+          0.7
+        ],
+        [
+          0.86,
+          0.44
+        ],
+        [
+          0.2,
+          0.3
+        ],
+        [
+          0.75,
+          0.2
+        ]
+      ]
+    },
+    {
+      "sleep": 1.2
+    }
+  ],
+  "rules": [
+    {
+      "name": "versammlung-sofort-beitreten",
+      "priority": 205,
+      "cooldown": 3,
+      "_zweck": "ZEITKRITISCH: eine Versammlung steht laut Nutzer nur etwa EINE MINUTE offen. Die Aufgabe 'versammlung-beitreten' laeuft alle fuenf Minuten und geht den ganzen Weg ueber das Allianz-Menue - damit kommt der Bot regelmaessig zu spaet. Diese Regel greift stattdessen, sobald der blaue Beitreten-Knopf ueberhaupt sichtbar ist, egal wo der Bot gerade steht. Prioritaet 205 liegt ueber DRINGEND_AB (200), sie darf also auch eine laufende Aufgabe unterbrechen - genau dafuer ist die Zwischenpruefung gebaut. Braucht allianz/beitreten.png; bis die Vorlage da ist, greift sie nie (optional), schadet aber auch nicht.",
+      "match": {
+        "template": "allianz/beitreten.png",
+        "threshold": 0.87,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Versammlung offen - sofort beitreten"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.6
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              1.0,
+              1.6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ladebildschirm-abwarten",
+      "priority": 245,
+      "cooldown": 0,
+      "geduldig": 900,
+      "_zweck": "Der Startbildschirm mit dem LAST-ASYLUM-Logo. Hier gibt es nichts zu tippen - das Spiel laedt. Ohne diese Regel ist der Bildschirm fuer den Bot unbekannt: er sucht Knoepfe, tippt daneben und lernt aus dem Unsinn auch noch dazu. 'geduldig' nimmt ihn aus beiden Schleifen-Bremsen und aus der Festgefahren-Pruefung, aber nur 15 Minuten lang. Ein Ladebildschirm, der laedt, ist bis dahin fertig; einer, der haengt, wird danach wie jeder andere Haenger behandelt - Ausweg suchen, notfalls App neu starten.",
+      "match": {
+        "template": "ui/ladebildschirm.png",
+        "threshold": 0.8,
+        "region": [
+          0.0,
+          0.0,
+          1.0,
+          0.4
+        ],
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Ladebildschirm - abwarten, nicht tippen"
+        },
+        {
+          "sleep": [
+            6.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "spiel-beenden-abbrechen",
+      "priority": 260,
+      "_zweck": "Notbremse: 'Spiel beenden?' zeigt Abbrechen (blau) und Bestaetigen (orange) nebeneinander. Ein Fehlgriff auf Bestaetigen beendet das Spiel. Erkennt der Bot beide Knoepfe in der Bildmitte, tippt er den blauen.",
+      "match": {
+        "all": [
+          {
+            "farbknopf": {
+              "rgb": [
+                247,
+                168,
+                52
+              ],
+              "tolerance": 40,
+              "min_w": 0.15,
+              "max_w": 0.45,
+              "min_h": 0.02,
+              "max_h": 0.07,
+              "region": [
+                0.5,
+                0.3,
+                1.0,
+                0.72
+              ]
+            }
+          },
+          {
+            "farbknopf": {
+              "rgb": [
+                58,
+                142,
+                230
+              ],
+              "tolerance": 40,
+              "min_w": 0.15,
+              "max_w": 0.45,
+              "min_h": 0.02,
+              "max_h": 0.07,
+              "region": [
+                0.0,
+                0.3,
+                0.55,
+                0.72
+              ]
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "'Spiel beenden?' erkannt - Abbrechen"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "spiel-update-bestaetigen",
+      "priority": 255,
+      "cooldown": 20,
+      "_zweck": "'Neue Version verfuegbar. Tippe auf Bestaetigen, um zu aktualisieren.' Bis das bestaetigt ist, geht im Spiel gar nichts mehr - der Bot stuende bis zum naechsten Neustart davor. Dieser eine goldene Knopf muss also angetippt werden, obwohl Gold sonst tabu ist (siehe _farben). Sicher wird das durch die Bedingung DANEBEN: ein Kauf-Dialog hat immer einen zweiten Knopf - blau 'Abbrechen' oder rot - auf derselben Hoehe. Steht der goldene Knopf allein in der Bildmitte, ist es ein Hinweis, kein Kauf. Angebote mit Preis liegen ausserdem ganz oben oder ganz unten, nicht in der Mitte.",
+      "match": {
+        "all": [
+          {
+            "farbknopf": {
+              "rgb": [
+                237,
+                170,
+                55
+              ],
+              "tolerance": 40,
+              "min_w": 0.14,
+              "max_w": 0.5,
+              "min_h": 0.02,
+              "max_h": 0.08,
+              "region": [
+                0.2,
+                0.4,
+                0.8,
+                0.68
+              ],
+              "min_fuellung": 0.45
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  58,
+                  142,
+                  230
+                ],
+                "tolerance": 40,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  228,
+                  58,
+                  52
+                ],
+                "tolerance": 45,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "Hinweis mit einzelnem Bestaetigen-Knopf - annehmen"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.5,
+            4.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "alles-abholen",
+      "priority": 216,
+      "cooldown": 1.0,
+      "_zweck": "Der orange 'Alles abholen' im Beute-Fenster raeumt eine ganze Kiste auf einmal ab - deshalb noch vor dem einzelnen Abholen-Knopf.",
+      "match": {
+        "template": "ui/btn_alles_abholen.png",
+        "threshold": 0.86,
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "offline-einnahmen-abholen",
+      "priority": 215,
+      "cooldown": 1.0,
+      "_zweck": "Der orange 'Abholen'-Knopf beim Offline-Einnahmen-Dialog (Zuflucht).",
+      "match": {
+        "template": "ui/btn_abholen_orange.png",
+        "threshold": 0.85
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "belohnung-abholen",
+      "priority": 210,
+      "cooldown": 0.5,
+      "match": {
+        "template": "ui/btn_abholen.png",
+        "threshold": 0.85
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.6,
+            1.1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dialog-schliessen",
+      "priority": 200,
+      "cooldown": 1.5,
+      "match": {
+        "template": "ui/popup_close.png",
+        "threshold": 0.86,
+        "region": [
+          0.45,
+          0.05,
+          1.0,
+          0.75
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dialog-schliessen-hell",
+      "priority": 199,
+      "cooldown": 1.5,
+      "_zweck": "Weisses X auf dunklem Grund (Vollbild-Dialoge wie Offline-Einnahmen).",
+      "match": {
+        "template": "ui/close_x_hell.png",
+        "threshold": 0.86,
+        "region": [
+          0.45,
+          0.05,
+          1.0,
+          0.75
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "werbung-schliessen",
+      "priority": 195,
+      "cooldown": 2.0,
+      "match": {
+        "template": "ui/ad_close.png",
+        "threshold": 0.82,
+        "region": [
+          0.6,
+          0.0,
+          1.0,
+          0.25
+        ],
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.2,
+            2.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "verbindung-verloren",
+      "priority": 190,
+      "cooldown": 60,
+      "match": {
+        "template": "ui/reconnect.png",
+        "threshold": 0.85,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Verbindungsabbruch erkannt - App neu starten"
+        },
+        {
+          "restart_app": [
+            25,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "name": "belohnung-bestaetigen",
+      "priority": 180,
+      "cooldown": 1.0,
+      "match": {
+        "all": [
+          {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  58,
+                  142,
+                  230
+                ],
+                "tolerance": 40,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  228,
+                  58,
+                  52
+                ],
+                "tolerance": 45,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.3
+          ]
+        }
+      ],
+      "_zweck": "Tippt den goldenen 'Bestaetigen'-Knopf. Bis zum 02.08. war die Vorlage nicht vorhanden, die Regel lief also nie - seit die Vorlage da ist, greift sie, und Gold kann im Spiel Geld oder Diamanten kosten. Sie bekommt darum dieselbe Sicherung wie spiel-update-bestaetigen: nur tippen, wenn KEIN blauer oder roter Knopf auf derselben Hoehe danebensteht. Ein Kauf-Dialog hat immer einen zweiten Knopf; ein blosser Hinweis nicht."
+    },
+    {
+      "name": "allianz-hilfe-geben",
+      "priority": 175,
+      "cooldown": 45,
+      "_zweck": "Der gelbe Hand-Knopf neben 'Allianz' erscheint, wenn jemand Hilfe braucht. Kostet nichts, beschleunigt alle in der Allianz.",
+      "match": {
+        "template": "allianz/hilfe.png",
+        "threshold": 0.86,
+        "region": [
+          0.6,
+          0.6,
+          1.0,
+          0.95
+        ]
+      },
+      "do": [
+        {
+          "log": "Allianz-Hilfe geben"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zuflucht-angriff",
+      "priority": 165,
+      "cooldown": 120,
+      "_zweck": "Der rote Totenkopf-Zaehler in der Zuflucht (Angriffs-/Schwarm-Ereignis) wird geoeffnet, damit die Belohnungs-Regeln greifen.",
+      "match": {
+        "template": "zuflucht/angriff.png",
+        "threshold": 0.86,
+        "region": [
+          0.6,
+          0.4,
+          1.0,
+          0.8
+        ]
+      },
+      "do": [
+        {
+          "log": "Angriffs-Ereignis in der Zuflucht"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.5,
+            2.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zuflucht-geschenk",
+      "priority": 160,
+      "cooldown": 3.0,
+      "_zweck": "Geschenk-Blasen und das gruene Geschenk-Symbol in der Zuflucht einsammeln.",
+      "match": {
+        "any": [
+          {
+            "template": "zuflucht/geschenk_blase.png",
+            "threshold": 0.84
+          },
+          {
+            "template": "zuflucht/geschenk_gruen.png",
+            "threshold": 0.86
+          }
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gruener-knopf-generisch",
+      "priority": 145,
+      "cooldown": 10.0,
+      "_zweck": "Findet gruene Knoepfe ueber Farbe und Form statt ueber ein Template - faengt 'Abholen', 'Upgrade', 'Los', 'Bestaetigen' und alles andere Gruene ab, auch wenn die Beschriftung wechselt. Greift erst, wenn keine genauere Regel gepasst hat.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            120,
+            181,
+            54
+          ],
+          "tolerance": 38,
+          "min_w": 0.15,
+          "max_w": 0.75,
+          "min_h": 0.02,
+          "max_h": 0.08,
+          "region": [
+            0.0,
+            0.25,
+            1.0,
+            0.98
+          ],
+          "min_fuellung": 0.55
+        }
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-erneut-herausfordern",
+      "priority": 150,
+      "cooldown": 300,
+      "_zweck": "Nach einer Niederlage in der Kampagne steht unten rechts 'Erneut herausfordern'. Der Nutzer will immer angreifen, also wird wieder angetreten. ABKUEHLZEIT 300 SEKUNDEN mit Absicht: die gesammelte Ansicht 21-01010102.png zeigt eine Niederlage bei Stufe 28-16 - wer dieselbe Stufe im Sekundentakt neu angeht, verliert nur schneller. Zwischen zwei Versuchen sollen die Aufwert-Aufgaben (Heldenlevel, Ausruestung, Technologie, alle drei auf demselben Bildschirm angeboten) etwas bewirkt haben. Der Knopf ist ORANGE, kostet aber kein Geld - das ist an der Beschriftung nachgesehen, nicht an der Farbe geraten.",
+      "match": {
+        "template": "kampf/erneut_herausfordern.png",
+        "threshold": 0.86,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Niederlage - erneut herausfordern"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blauer-knopf-generisch",
+      "priority": 144,
+      "cooldown": 120,
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07. NACHGEMESSEN 28.08. an austausch/ansichten/24-04070305.png: in der Tasche, Reiter Spezial, steht bei ausgewaehltem Ausdauer-Flaeschchen ein blaues 'Verwenden' - und diese Regel findet es punktgenau (x=226 y=544 w=268 h=74 im halben Bild). Sie haette also Ausdauer-Flaeschchen verbraucht, was der Nutzer ausdruecklich verboten hat (siehe _ausdauer). Darum die Sperre auf den Spezial-Reiter: der trifft dort mit 0.984 und ist damit ein verlaesslicher Melder fuer 'die Tasche ist offen'. Entwarnung dagegen bei den Aufgaben: ui/btn_benutzen.png kommt auf diesem Bildschirm nur auf 0.390 und tasche/truhe.png auf 0.526 - beide weit unter ihrer Schwelle, die tippen dort also nichts an. ABKUEHLZEIT 25 auf 120 Sekunden (28.08.): austausch/ansichten/26-04070305.png zeigt die Tagesquests - vier blaue 'Los' untereinander, jedes fuehrt woanders hin, und der naechste Bildschirm hat wieder eines. Mit 25 Sekunden Abkuehlzeit haengt der Bot in so einer Kette fest und wandert nur noch durch Menues; die Stilllege-Bremse greift dabei nie, weil sich das Bild ja jedes Mal aendert. Als Notausgang aus einem Event-Popup reicht ein Griff alle zwei Minuten voellig.",
+      "match": {
+        "all": [
+          {
+            "farbknopf": {
+              "rgb": [
+                58,
+                142,
+                230
+              ],
+              "tolerance": 40,
+              "min_w": 0.18,
+              "max_w": 0.75,
+              "min_h": 0.02,
+              "max_h": 0.07,
+              "region": [
+                0.0,
+                0.25,
+                1.0,
+                0.88
+              ],
+              "min_fuellung": 0.65
+            }
+          },
+          {
+            "not": {
+              "template": "schutz/reiter_spezial.png",
+              "threshold": 0.86,
+              "optional": true
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "Blauer Knopf (Los/Versammeln) - antippen"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ressourcen-einsammeln",
+      "priority": 140,
+      "cooldown": 6.0,
+      "_zweck": "Alle sichtbaren Ertrags-Blasen abraeumen, nicht nur eine - auf einem Bildschirm liegen meist mehrere.",
+      "match": {
+        "any": [
+          {
+            "template": "hud/bubble_weizen.png",
+            "threshold": 0.86
+          },
+          {
+            "template": "hud/bubble_holz.png",
+            "threshold": 0.86
+          },
+          {
+            "template": "hud/bubble_kraut.png",
+            "threshold": 0.86
+          }
+        ]
+      },
+      "do": [
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blasen-einsammeln-ohne-vorlage",
+      "priority": 142,
+      "cooldown": 5,
+      "_zweck": "Ertrags-Blasen an ihrem hellgrauen Ring erkennen statt an einer Vorlage. Damit sammelt der Bot in jeder Ansicht alles ein, was da ist - auch Sorten, die nie jemand geschnitten hat, und ohne dass die Groesse stimmen muss. Der linke und rechte Rand bleiben aus: dort liegt die feste Bedienung (Allianz, Nachricht, Tasche rechts, Symbolspalte links), die denselben hellen Ring hat.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            195,
+            200,
+            207
+          ],
+          "tolerance": 30,
+          "min_w": 0.03,
+          "max_w": 0.12,
+          "min_h": 0.012,
+          "max_h": 0.05,
+          "min_fuellung": 0.66,
+          "region": [
+            0.11,
+            0.1,
+            0.89,
+            0.88
+          ]
+        }
+      },
+      "do": [
+        {
+          "log": "Ertrags-Blasen eingesammelt (ueber die Form, ohne Vorlage)"
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gelernte-objekte-einsammeln",
+      "priority": 139,
+      "cooldown": 6.0,
+      "_zweck": "Alle sichtbaren Ertrags-Blasen abraeumen, nicht nur eine - auf einem Bildschirm liegen meist mehrere.",
+      "match": {
+        "template": "gelernt/blasen/*.png",
+        "threshold": 0.9
+      },
+      "do": [
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zuflucht-kraeuter",
+      "priority": 130,
+      "cooldown": 4.0,
+      "_zweck": "Die gruenen Kraeuter-Knoepfe an den Tresen abernten (mehrere hintereinander).",
+      "match": {
+        "template": "zuflucht/kraut.png",
+        "threshold": 0.85
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        },
+        {
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "zuflucht/kraut.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.5,
+                  0.9
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "gebaeude-fertig-antippen",
+      "priority": 120,
+      "cooldown": 30,
+      "match": {
+        "template": "hud/bau_fertig.png",
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-herausforderung",
+      "priority": 86,
+      "cooldown": 8.0,
+      "_zweck": "Wachturm/Expeditionskampf: startet die naechste Herausforderung. Zusammen mit den beiden Regeln darunter spielt der Bot den Expeditions-Kampf von selbst durch.",
+      "match": {
+        "template": "kampf/herausforderung.png",
+        "threshold": 0.86,
+        "region": [
+          0.0,
+          0.85,
+          1.0,
+          1.0
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-starten",
+      "priority": 85,
+      "cooldown": 8.0,
+      "_zweck": "Aufstellung steht - Kampf starten.",
+      "match": {
+        "template": "kampf/kampf.png",
+        "threshold": 0.86,
+        "region": [
+          0.0,
+          0.85,
+          1.0,
+          1.0
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            6.0,
+            9.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-ergebnis-schliessen",
+      "priority": 84,
+      "cooldown": 5.0,
+      "_zweck": "Sieg oder Niederlage wegklicken; die Belohnungs-Regeln haben vorher schon zugeschlagen.",
+      "match": {
+        "template": "kampf/zurueck.png",
+        "threshold": 0.86
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.5,
+            2.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vorfall-durchklappern",
+      "priority": 75,
+      "cooldown": 900.0,
+      "_zweck": "Der Vorfall-Bildschirm hat jeden Tag andere Reiter (Ueberlebenskampf, Kaesefalle, Untoten-Belagerung, Weitere Events ...). Statt fuer jedes Event ein Template zu pflegen, erkennt der Bot nur die Ueberschrift 'Vorfall', wischt die Reiterleiste durch und holt ueberall ab, was abholbar ist. Der graue Abholen-Knopf (noch nicht verdient) wird dabei nicht getroffen - gemessen liegt er unter 0,60.",
+      "match": {
+        "template": "events/vorfall_titel.png",
+        "threshold": 0.9,
+        "region": [
+          0.0,
+          0.0,
+          0.5,
+          0.12
+        ]
+      },
+      "do": [
+        {
+          "log": "Vorfall offen - alle Reiter durchgehen"
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              },
+              {
+                "swipe": [
+                  0.85,
+                  0.135,
+                  0.25,
+                  0.135,
+                  400
+                ]
+              },
+              {
+                "sleep": [
+                  1.5,
+                  2.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "taverne-gratis-rekrutieren",
+      "priority": 70,
+      "cooldown": 600.0,
+      "_zweck": "Steht das Taverne-Menue offen, wird 'Rekrutieren' angetippt. Der gratis Zug alle paar Stunden nimmt der gruene-Knopf-Regel danach von selbst mit. Der orange '10x'-Knopf bleibt unangetastet.",
+      "match": {
+        "template": "taverne/rekrutieren.png",
+        "threshold": 0.86
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "roter-punkt-pruefen",
+      "priority": 128,
+      "cooldown": 12,
+      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Es wird einer pro Durchgang angetippt; die Regeln fuer gruene und blaue Knoepfe holen ab, was danach erscheint, und 'zurueck-zur-basis' bringt den Bot wieder heraus. So arbeitet er sie einen nach dem anderen ab, bis keiner mehr da ist. Der Streifen ganz unten bleibt ausgenommen: dort liegt das Angebots-Banner mit dem Preis. Fuellgrad von 0.6 auf 0.75: bei 0.82 lief die Regel zehnmal in Folge auf dieselbe Stelle, ohne dass sich etwas tat.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            228,
+            58,
+            52
+          ],
+          "tolerance": 45,
+          "min_w": 14,
+          "max_w": 60,
+          "min_h": 14,
+          "max_h": 60,
+          "min_fuellung": 0.62,
+          "region": [
+            0.0,
+            0.06,
+            1.0,
+            0.88
+          ]
+        }
+      },
+      "do": [
+        {
+          "log": "Roter Punkt entdeckt - nachsehen"
+        },
+        {
+          "tap_match": {
+            "offset": [
+              -0.031,
+              0.018
+            ]
+          }
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zurueck-zur-basis",
+      "priority": 20,
+      "cooldown": 25,
+      "match": {
+        "all": [
+          {
+            "template": "ui/back_arrow.png",
+            "threshold": 0.85,
+            "region": [
+              0.0,
+              0.0,
+              0.3,
+              0.15
+            ]
+          },
+          {
+            "not": {
+              "template": "ui/btn_abholen.png",
+              "threshold": 0.85
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "Untermenue offen und nichts mehr abzuholen - zurueck"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.8
+          ]
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "name": "kalibrieren",
+      "every": 21600,
+      "at_start": true,
+      "priority": 250,
+      "_zweck": "Groessen-Faktor der Oberflaeche bestimmen, damit alle Vorlagen passen - siehe _ui_skala. Laeuft beim Start und danach alle sechs Stunden; bestaetigt sich der Faktor, passiert nichts.",
+      "do": [
+        {
+          "log": "Groesse der Oberflaeche pruefen"
+        },
+        {
+          "kalibriere": {
+            "mindest_score": 0.86,
+            "min_belege": 3,
+            "erneut_in": 600,
+            "aufgabe": "kalibrieren"
+          }
+        }
+      ]
+    },
+    {
+      "name": "tagesziele",
+      "every": 3600,
+      "at_start": true,
+      "priority": 132,
+      "_zweck": "Tagesziel-Kalender oeffnen und alle Belohnungen abholen, einmal oben und nach einem Wisch nochmal weiter unten in der Liste. TAKT auf 3600 s, Prioritaet 132 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
+      "do": [
+        {
+          "log": "Tagesziele: alle Belohnungen abholen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tagesziele.png",
+            "region": [
+              0.0,
+              0.55,
+              0.5,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "repeat": {
+            "times": 10,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "swipe": [
+            0.5,
+            0.75,
+            0.5,
+            0.45,
+            400
+          ]
+        },
+        {
+          "sleep": 1.2
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": 1.0
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "truhen-oeffnen",
+      "every": 2700,
+      "at_start": true,
+      "priority": 126,
+      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png. Holt beim ersten Mal ausserdem austausch/tasche-spezial.png in voller Aufloesung: aus dem halbierten Sammelbild laesst sich kein Merkmal schneiden, und ohne ein Merkmal fuer 'Ausdauer' bleibt die Sperre gegen das Verbrauchen der Flaeschchen grob. TAKT auf 2700 s, Prioritaet 126 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen'). 'NUR KISTE OEFFNEN' (Nutzer 29.08.): der Schritt auf ui/btn_benutzen.png ist raus. Er tippt einen allgemeinen Verwenden-Knopf und unterscheidet nicht, was gerade ausgewaehlt ist - in der Tasche steht neben den Truhen auch alles andere. Truhen oeffnen und 'Alles abholen' reichen.",
+      "do": [
+        {
+          "log": "Kisten oeffnen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tasche.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "schutz/reiter_spezial.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "schutz/reiter_spezial.png",
+              "threshold": 0.86,
+              "optional": true
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/tasche-spezial.png",
+                  "region": [
+                    0.0,
+                    0.05,
+                    1.0,
+                    0.55
+                  ],
+                  "mindestabstand": 1800
+                }
+              }
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "tasche/truhe.png",
+                  "optional": true,
+                  "threshold": 0.87,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_alles_abholen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "allianz-geschenke",
+      "every": 1800,
+      "at_start": true,
+      "priority": 128,
+      "_zweck": "Allianz-Menue: Hilfe geben, Truhen und Geschenke abholen. Hilfe kostet nichts und beschleunigt alle in der Allianz. TAKT auf 1800 s, Prioritaet 128 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
+      "do": [
+        {
+          "log": "Allianz: Hilfe geben, Truhen und Geschenke abholen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/allianz.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/hilfe.png",
+            "optional": true,
+            "after": 1.5
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/geschenke.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 12,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "swipe": [
+            0.5,
+            0.8,
+            0.5,
+            0.4,
+            420
+          ]
+        },
+        {
+          "sleep": 1.2
+        },
+        {
+          "repeat": {
+            "times": 8,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/back_arrow.png",
+            "optional": true,
+            "region": [
+              0.0,
+              0.0,
+              0.3,
+              0.15
+            ],
+            "after": 1.5
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "allianz-technologie-spenden",
+      "every": 7200,
+      "at_start": true,
+      "priority": 110,
+      "_zweck": "Allianz -> Allianz-Forschung -> empfohlene Technologie -> mit RESSOURCEN spenden (blauer Knopf, kostet nur Kraeuter). Ist der blaue Knopf ausgegraut, weil Limit oder Vorrat erschoepft ist, trifft die Vorlage ihn nicht mehr - genau so soll es sein. Braucht allianz/forschung.png und allianz/spenden_ressourcen.png (den AKTIVEN blauen Knopf schneiden, nicht den grauen). TAKT auf 7200 s, Prioritaet 110 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
+      "do": [
+        {
+          "log": "Allianz-Technologie: mit Ressourcen spenden"
+        },
+        {
+          "tap_template": {
+            "template": "nav/allianz.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/forschung.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/tech_empfehlung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 15,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "allianz/spenden_ressourcen.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.7,
+                  1.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/close_x_hell.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "allianz-spenden-diamanten",
+      "every": 21600,
+      "enabled": false,
+      "priority": 104,
+      "_zweck": "AUS. Spendet mit dem orangen Diamanten-Knopf. Der Preis steigt mit jeder Spende (beobachtet: 2 -> 50 -> mehr) und der Bot kann die Zahl nicht lesen. Wer das einschaltet, gibt die Kostenkontrolle ab. Vorher allianz/spenden_diamant.png schneiden.",
+      "do": [
+        {
+          "log": "Allianz-Technologie: mit Diamanten spenden (Kosten werden nicht geprueft)"
+        },
+        {
+          "tap_template": {
+            "template": "nav/allianz.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/forschung.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/tech_empfehlung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 5,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "allianz/spenden_diamant.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "schild-pruefen",
+      "every": 1800,
+      "at_start": true,
+      "priority": 200,
+      "_zweck": "Schild setzen, damit die Stadt nicht gepluendert wird. Lief bisher nur Freitag bis Sonntag - am 31.07. gingen zwei Staedte verloren, also jeden Tag und alle 30 Minuten. STEHT WEITER AUF AUS, bis templates/hud/schild_aktiv.png existiert: ohne dieses Bild sieht der Bot nicht, ob schon ein Schild laeuft, und wuerde den Vorrat verbrauchen. Das ist jetzt die wichtigste fehlende Vorlage ueberhaupt.",
+      "do": [
+        {
+          "wenn": {
+            "match": {
+              "template": "hud/schild_aktiv.png",
+              "threshold": 0.85,
+              "optional": true
+            },
+            "dann": [
+              {
+                "log": "Schild laeuft - nichts zu tun"
+              }
+            ],
+            "sonst": [
+              {
+                "log": "Kein Schild aktiv - Schutzschild setzen"
+              },
+              {
+                "tap": [
+                  0.5,
+                  0.45
+                ]
+              },
+              {
+                "sleep": [
+                  1.5,
+                  2.5
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "schutz/schild_knopf.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "schutz/schild_8h.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_benutzen.png",
+                  "optional": true,
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_bestaetigen.png",
+                  "optional": true,
+                  "after": 2.0
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "wenn": {
+                  "match": {
+                    "template": "ui/back_arrow.png",
+                    "threshold": 0.85,
+                    "region": [
+                      0.0,
+                      0.0,
+                      0.3,
+                      0.15
+                    ]
+                  },
+                  "dann": [
+                    {
+                      "tap_match": {}
+                    }
+                  ],
+                  "sonst": [
+                    {
+                      "tap_first": {
+                        "of": [
+                          {
+                            "template": "nav/startseite.png",
+                            "threshold": 0.86,
+                            "region": [
+                              0.7,
+                              0.85,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "template": "nav/burg.png",
+                            "threshold": 0.86,
+                            "region": [
+                              0.0,
+                              0.4,
+                              0.35,
+                              0.85
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "tap": [
+                        [
+                          0.35,
+                          0.16
+                        ],
+                        [
+                          0.12,
+                          0.7
+                        ],
+                        [
+                          0.86,
+                          0.44
+                        ],
+                        [
+                          0.2,
+                          0.3
+                        ],
+                        [
+                          0.75,
+                          0.2
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "sleep": [
+                  1.2,
+                  1.8
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "name": "bauen-und-aufwerten",
+      "every": 3600,
+      "at_start": true,
+      "priority": 150,
+      "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links. Bei hohem Gebiet-Level laufen Bauten tagelang - haeufiger als alle vier Stunden nachzusehen bringt nichts. Der orange 'Sofort'-Knopf (Diamanten) wird bewusst nicht angetippt. TAKT 14400 auf 3600 (Nutzer: 'auto aufwerten, stark werden'). WICHTIG, am 28.08. nachgemessen: bau/upgrade_knopf.png traf den echten Upgrade-Knopf im Gebaeude-Ring nur mit 0.53 bis 0.67 - die Aufgabe lief also ins Leere. Neu geschnitten aus austausch/ansichten/10-04030303.png, trifft jetzt mit 1.000. Fuer den letzten Schritt (Bestaetigen) legt die Aufgabe ein Vollbild ab.",
+      "do": [
+        {
+          "log": "Bau-Vorschlag des Spiels umsetzen"
+        },
+        {
+          "tap_template": {
+            "template": "hud/quest_vorschlag.png",
+            "threshold": 0.85,
+            "region": [
+              0.0,
+              0.8,
+              0.35,
+              1.0
+            ],
+            "after": [
+              2.5,
+              3.5
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "bau/upgrade_knopf.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/aufwerten-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "tap_template": {
+            "template": "bau/upgrade_bestaetigen.png",
+            "optional": true,
+            "threshold": 0.85,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "log": "Gebaeude-Menue durch Tippen daneben schliessen"
+        },
+        {
+          "tap": [
+            [
+              0.35,
+              0.16
+            ],
+            [
+              0.12,
+              0.7
+            ],
+            [
+              0.86,
+              0.44
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.75,
+              0.2
+            ]
+          ]
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "forschung",
+      "every": 3600,
+      "at_start": true,
+      "priority": 145,
+      "_zweck": "Forschung nie stillstehen lassen. Braucht hud/forschung_frei.png (der Kolben links, z.B. 2/2) und ui/btn_forschen.png.",
+      "do": [
+        {
+          "log": "Forschung pruefen"
+        },
+        {
+          "tap_template": {
+            "template": "hud/forschung.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.0,
+              0.2,
+              0.3,
+              0.45
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "forschung/beschleunigung.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_benutzen.png",
+            "optional": true,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "forschung/empfehlung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_forschen.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": 2.0
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "truppe-1-aufwerten",
+      "every": 1800,
+      "at_start": true,
+      "priority": 145,
+      "_zweck": "Hauptziel Kampfkraft: im Helden-Menue die Ausruestung von Team 1 hochziehen. Der orange 'Verbessern'-Knopf wird mehrfach gedrueckt - solange Kristalle und Kraeuter reichen, steigt das Level. Fehlt held/team1.png noch, arbeitet der Bot auf dem Helden, der gerade offen ist. TAKT 3600 auf 1800 und Prioritaet 145 (Nutzer: 'mache truppe 1 sehr stark'). held/team1.png fehlt noch - ohne die Vorlage arbeitet der Bot auf dem Helden, der gerade offen ist, und das ist nicht zwingend Team 1. Darum legt die Aufgabe jetzt ein Vollbild des Helden-Menues ab; daraus laesst sich die Vorlage schneiden.",
+      "do": [
+        {
+          "log": "Truppe 1: Ausruestung verbessern"
+        },
+        {
+          "tap_template": {
+            "template": "nav/held.png",
+            "region": [
+              0.0,
+              0.85,
+              0.35,
+              1.0
+            ],
+            "after": [
+              2.5,
+              3.5
+            ],
+            "optional": true
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/held-menue.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "tap_template": {
+            "template": "held/team1.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 8,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "held/reiter_upgrade.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.5,
+                  0.9
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "held/aufwerten.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_bestaetigen.png",
+                  "optional": true
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/close_x_hell.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "beschleunigen",
+      "every": 28800,
+      "priority": 80,
+      "_zweck": "Beschleuniger sind knapp und lohnen nur bei langen Bauten. Alle acht Stunden reicht; wer sie gar nicht automatisch verbrauchen will, setzt hier 'enabled': false.",
+      "do": [
+        {
+          "log": "Beschleuniger einsetzen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tasche.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "schutz/reiter_beschleunigung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_benutzen.png",
+                  "optional": true
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_bestaetigen.png",
+                  "optional": true
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "basis-rundgang",
+      "every": 1800,
+      "at_start": true,
+      "priority": 118,
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png - aber NUR, wenn der Welt-Knopf unten rechts sichtbar ist, also die Stadtansicht wirklich offen steht. Ohne diese Bedingung erwischte der erste Lauf 'Taegliche Aufgaben' statt der Stadt. Aus dem halbierten Sammelbild lassen sich keine Ziffern schneiden, und ohne Ziffern gibt es keine Energie-Schranke. Der Streifen ist am 29.08. auf x bis 0.56 und y bis 0.105 verengt worden: dort stehen Rohstoffe, Macht und die Ausdauer, und genau die Ziffern werden gebraucht. Vorher ging er ueber die volle Breite und 13 Prozent Hoehe - 800 KB, alle 30 Minuten neu, also rund 39 MB Git-Historie pro Tag fuer Bildrand und Diamanten-Werbung.",
+      "do": [
+        {
+          "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "not": {
+                "template": "ui/back_arrow.png",
+                "threshold": 0.85,
+                "region": [
+                  0.0,
+                  0.0,
+                  0.3,
+                  0.15
+                ],
+                "optional": true
+              }
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/hud-oben.png",
+                  "region": [
+                    0.0,
+                    0.0,
+                    0.56,
+                    0.105
+                  ],
+                  "mindestabstand": 1800
+                }
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "not": {
+                "template": "ui/back_arrow.png",
+                "threshold": 0.85,
+                "region": [
+                  0.0,
+                  0.0,
+                  0.3,
+                  0.15
+                ],
+                "optional": true
+              }
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/leiste-unten.png",
+                  "region": [
+                    0.0,
+                    0.86,
+                    1.0,
+                    1.0
+                  ],
+                  "mindestabstand": 1800
+                }
+              }
+            ]
+          }
+        },
+        {
+          "log": "Rundgang: Ausgangslage"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: weiter nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.25,
+            0.3,
+            0.75,
+            0.6,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach links oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: weiter nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.75,
+            0.6,
+            0.25,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach rechts unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.3,
+            0.5,
+            0.65,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.65,
+            0.5,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "objekte-lernen",
+      "every": 600,
+      "at_start": true,
+      "priority": 95,
+      "_zweck": "Zwei Aufnahmen vergleichen und neue Sammel-Objekte daraus lernen. Laeuft in der Basis-Ansicht, wo staendig Ertrags-Blasen auftauchen.",
+      "do": [
+        {
+          "log": "Nach neuen Sammel-Objekten schauen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "lerne_objekte": {
+            "ordner": "gelernt/blasen",
+            "min_kante": 60,
+            "max_kante": 220,
+            "max_dateien": 24,
+            "pause": 5.0,
+            "nur_wenn": {
+              "any": [
+                {
+                  "template": "nav/welt.png",
+                  "threshold": 0.84,
+                  "optional": true
+                },
+                {
+                  "template": "nav/burg.png",
+                  "threshold": 0.84,
+                  "optional": true
+                },
+                {
+                  "template": "nav/tasche.png",
+                  "threshold": 0.84,
+                  "optional": true
+                }
+              ]
+            },
+            "seitenverhaeltnis": [
+              0.75,
+              1.35
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "zuflucht",
+      "every": 1800,
+      "at_start": true,
+      "priority": 125,
+      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand). 03.08.: der Ersatzpunkt im tap_first war geraten (1 Stelle(n) entfernt) - ein blinder Tipp an den aeussersten linken Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt. Solange nav/zuflucht.png fehlt, laeuft die Aufgabe lieber sauber leer als blind zu tippen. AUS seit 03.08.: nav/zuflucht.png fehlt. Mit dem geratenen Ersatz-Punkt tippte die Aufgabe blind an den linken Bildrand, ohne Ersatz-Punkt bliebe sie stehen - beides nichts wert. Der Ansichten-Sammler liefert den Bildschirm, dann Vorlage schneiden und wieder anschalten. Nutzer 29.08.: 'so schnell wie moeglich zuflucht upgraden bis 30'. Die Aufgabe bleibt AUS, weil nav/zuflucht.png fehlt und ich nicht raten will, welches Symbol am linken Rand der Umschalter ist - die Symbolspalte in austausch/ansichten/12-04030403.png zeigt Burg, Wagen, Fragezeichen, Falke und Werkzeug, keines davon eindeutig. Sobald ein Vollbild mit offener Zuflucht da ist, wird geschnitten und eingeschaltet.",
+      "do": [
+        {
+          "log": "Zuflucht besuchen und abernten"
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/zuflucht-eingang.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "tap_first": {
+            "of": [
+              "nav/zuflucht.png"
+            ],
+            "after": [
+              3.0,
+              4.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "zuflucht/angriff.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.6,
+              0.4,
+              1.0,
+              0.8
+            ],
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "zuflucht/kraut.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "zuflucht/geschenk_blase.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_abholen_orange.png",
+            "optional": true,
+            "threshold": 0.85
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/close_x_hell.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "name": "events",
+      "every": 3600,
+      "at_start": true,
+      "priority": 131,
+      "_zweck": "Die beiden Event-Symbole am rechten Bildrand oeffnen und abholen, was abholbar ist. Fuer die taeglich wechselnden Reiter gibt es zusaetzlich die Regel 'vorfall-durchklappern'. TAKT auf 3600 s, Prioritaet 131 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
+      "do": [
+        {
+          "log": "Events durchgehen und alle Belohnungen holen"
+        },
+        {
+          "tap_template": {
+            "template": "events/wertvolles_event.png",
+            "optional": true,
+            "threshold": 0.84,
+            "region": [
+              0.55,
+              0.05,
+              1.0,
+              0.45
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 8,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84,
+            "after": 1.2
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "events/spezielles_event.png",
+            "optional": true,
+            "threshold": 0.84,
+            "region": [
+              0.55,
+              0.05,
+              1.0,
+              0.45
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 8,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84,
+            "after": 1.2
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "allianz-chat",
+      "every": 3600,
+      "priority": 115,
+      "do": [
+        {
+          "log": "Allianz-Chat: Admin-Nachricht senden"
+        },
+        {
+          "tap": [
+            0.5,
+            0.94
+          ]
+        },
+        {
+          "sleep": [
+            2.5,
+            3.5
+          ]
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/chat-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "tap_template": {
+            "template": "chat/reiter_allianz.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.2,
+              0.05,
+              0.75,
+              0.2
+            ],
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "chat/eingabefeld.png",
+            "optional": true,
+            "threshold": 0.8,
+            "region": [
+              0.0,
+              0.88,
+              0.6,
+              1.0
+            ],
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "type_text": {
+            "pool": "allianz_admin"
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "chat/senden.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.75,
+              0.88,
+              1.0,
+              1.0
+            ],
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            2.0
+          ]
+        }
+      ],
+      "_zweck": "Schreibt eine Admin-Nachricht in den Allianz-Chat. Pruefe beim ersten Lauf, ob der blaue Plus-Knopf wirklich sendet - falls er nur Anhaenge oeffnet, schneide den echten Sende-Knopf neu nach chat/senden.png. 29.08.: chat/oeffnen.png und nav/chat.png fehlen beide, die Aufgabe kam also nie ueber den ersten Schritt hinaus. Der Chat-Streifen liegt in der Stadtansicht fest unten in der Mitte - an austausch/ansichten/12-04030403.png AUSGEMESSEN: Mitte bei x=0.50, y=0.94. Das ist kein geratener Blindtipp, sondern eine nachgesehene Stelle. Ein Vollbild des Chats wird mitgenommen, damit der Rest des Weges sauber geschnitten werden kann. Takt 21600 auf 3600, Prioritaet 70 auf 115 (Nutzer: 'auch bei chat mitmachen').",
+      "at_start": true
+    },
+    {
+      "name": "chat-schatz-holen",
+      "every": 7200,
+      "priority": 85,
+      "_zweck": "Im Allianz-Chat teilen Mitglieder Schatz-Koordinaten als anklickbaren Link ('Teilen' mit Ortsmarke, darunter X/Y in Blau). Ein Tipp darauf springt direkt zur Stelle, dort laesst sich der Schatz ausgraben. Braucht chat/teilen_marker.png (die 'Teilen'-Zeile mit der gruenen Ortsmarke) und sammeln/ausgraben.png (den Knopf auf der Karte). Bis die beiden da sind, tut die Aufgabe nichts.",
+      "do": [
+        {
+          "log": "Allianz-Chat nach geteilten Schaetzen absuchen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              "chat/oeffnen.png",
+              "nav/chat.png"
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "chat/reiter_allianz.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.2,
+              0.05,
+              0.75,
+              0.2
+            ],
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "chat/teilen_marker.png",
+                  "optional": true,
+                  "threshold": 0.87,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/ausgraben.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammlung_einleiten.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.5,
+                    3.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.0,
+                  1.6
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "soldaten-ausbilden",
+      "every": 3600,
+      "at_start": true,
+      "priority": 112,
+      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben. AUS seit 03.08.: alle fuenf gebrauchten Vorlagen fehlen (kaserne/gebaeude, ausbilden_menue, stufe_t8, btn_ausbilden, ui/btn_max). Ohne sie kann die Aufgabe nichts ausrichten ausser stuendlich irgendwohin zu tippen - und blinde Tipps in der Stadt lernt der Bot dann auch noch als vermeintliche Auswege. Wieder anschalten, sobald die Vorlagen geschnitten sind (der Ansichten-Sammler liefert die Bildschirme).",
+      "do": [
+        {
+          "log": "Soldaten ausbilden (hoechste Stufe)"
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/gebaeude.png",
+            "optional": true,
+            "threshold": 0.87,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/ausbilden_menue.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/stufe_t8.png",
+            "optional": true,
+            "threshold": 0.88,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_max.png",
+            "optional": true,
+            "after": [
+              1.0,
+              1.6
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/btn_ausbilden.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "log": "Gebaeude-Menue durch Tippen daneben schliessen"
+        },
+        {
+          "tap": [
+            [
+              0.35,
+              0.16
+            ],
+            [
+              0.12,
+              0.7
+            ],
+            [
+              0.86,
+              0.44
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.75,
+              0.2
+            ]
+          ]
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "name": "heilen",
+      "every": 3600,
+      "priority": 100,
+      "do": [
+        {
+          "log": "Truppen heilen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/heilen.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.0,
+              0.55,
+              0.6,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_heilen.png",
+                  "optional": true,
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_bestaetigen.png",
+                  "optional": true,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ],
+      "at_start": true,
+      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel. AUS seit 03.08.: ui/btn_heilen.png fehlt, und der hier beschriebene Rueckfall auf die Gruen-Regel kann bauartbedingt nicht greifen - die Aufgabe ist vorher fertig. Ein Versprechen, das der Ablauf nicht einloest, ist schlimmer als keines.",
+      "enabled": false
+    },
+    {
+      "name": "sammeln",
+      "every": 600,
+      "priority": 95,
+      "do": [
+        {
+          "log": "Sammel-Truppen losschicken (alle freien Maersche)"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              }
+            ],
+            "after": [
+              3.0,
+              4.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "nav/lupe.png",
+                  "optional": true,
+                  "region": [
+                    0.3,
+                    0.7,
+                    0.8,
+                    1.0
+                  ],
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/reiter_sammeln.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/bauernhof.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/suchen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammeln.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammlung_einleiten.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.5,
+                    3.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.0,
+                  1.6
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "_zweck": "Wichtigste Dauerquelle: alle 15 Minuten nachsehen, ob ein Marsch-Platz frei geworden ist, und bis zu vier Trupps losschicken. Ist kein Platz frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos. TAKT auf 600 s, Prioritaet 95 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
+      "at_start": true
+    },
+    {
+      "name": "monster-jagen",
+      "every": 1200,
+      "priority": 120,
+      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png. TAKT 1200 statt 2700 und Prioritaet 120 (Nutzer: 'immer Monster angreifen'). Bringt allerdings erst etwas, wenn die Vorlagen des Wegs treffen: am 28.08. verfehlten im Protokoll ALLE - nav/welt 0.47, nav/lupe 0.32, sammeln/suchen 0.29, kampf/kampf 0.16 - und sammeln/reiter_monster.png sowie sammeln/angreifen.png fehlen ganz. Legt direkt nach dem Sprung in die Weltansicht austausch/monster-weg.png in voller Aufloesung ab. Die gesammelten Ansichten sind halbiert, daraus laesst sich keine Vorlage schneiden - und ohne Vorlagen fuer Lupe, Monster-Reiter und Angreifen passiert auf diesem Weg gar nichts. Dieses eine Vollbild zeigt, wo der Bot in dem Moment wirklich steht.",
+      "do": [
+        {
+          "log": "Monster jagen, solange Ausdauer da ist"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              }
+            ],
+            "after": [
+              3.0,
+              4.5
+            ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/monster-weg.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "nav/lupe.png",
+                  "optional": true,
+                  "region": [
+                    0.3,
+                    0.7,
+                    0.8,
+                    1.0
+                  ],
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/reiter_monster.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/suchen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/angreifen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "kampf/kampf.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_alles_abholen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.2,
+                  2.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ],
+      "at_start": true
+    },
+    {
+      "name": "zurueck-in-die-basis",
+      "every": 120,
+      "priority": 210,
+      "_zweck": "Bringt den Bot deterministisch an die Oberflaeche zurueck: bis zu viermal den Zurueck-Pfeil oben links, dann Startseite/Gebiet/Burg. Der Pfeil ist die verlaesslichste Vorlage im ganzen Satz (gemessen 1.000) und liegt in einem winzigen Suchfenster, das kostet fast nichts. WARUM SO WICHTIG: seit die Blindtipps raus sind, kommt keine Aufgabe mehr aus einem Untermenue heraus - und am 28.08. verfehlte im Protokoll JEDE Navigations-Vorlage ihr Ziel (nav/welt 0.47 bei Schwelle 0.86, nav/lupe 0.32 bei 0.88), weil der Bot in einer Unteransicht stand. Prioritaet 210 und alle fuenf Minuten: lieber einmal zu oft nach Hause als eine halbe Stunde in einem Menue. TAKT 300 auf 120 (29.08.): die beiden Vollbilder von 16:28 und 16:29 zeigen beide 'Taegliche Aufgaben' - dazwischen liefen 'bauen-und-aufwerten' und 'versammlung-beitreten' ins Leere, weil ihre Vorlagen auf einem Vollbild-Dialog nichts finden. Seit die Blindtipps raus sind, kommt keine Aufgabe mehr von selbst aus so einem Fenster heraus; das ist ausdruecklich Sache dieser Aufgabe. Sie kostet einen Schritt und zwei winzige Suchfenster - haeufiger ist billiger als Aufgaben, die auf dem falschen Bildschirm verpuffen.",
+      "do": [
+        {
+          "log": "Zurueck an die Oberflaeche"
+        },
+        {
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "wenn": {
+                  "match": {
+                    "template": "ui/back_arrow.png",
+                    "threshold": 0.85,
+                    "region": [
+                      0.0,
+                      0.0,
+                      0.3,
+                      0.15
+                    ]
+                  },
+                  "dann": [
+                    {
+                      "tap_match": {}
+                    },
+                    {
+                      "sleep": [
+                        0.5,
+                        0.9
+                      ]
+                    }
+                  ],
+                  "sonst": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        }
+      ],
+      "at_start": true
+    },
+    {
+      "name": "nachrichten",
+      "every": 14400,
+      "priority": 60,
+      "_zweck": "Nachrichten-Postfach oeffnen, damit rote Punkte verschwinden und Anhaenge abgeholt werden.",
+      "do": [
+        {
+          "log": "Nachrichten oeffnen (rote Punkte abbauen)"
+        },
+        {
+          "tap_template": {
+            "template": "nav/nachricht.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.35,
+                    0.16
+                  ],
+                  [
+                    0.12,
+                    0.7
+                  ],
+                  [
+                    0.86,
+                    0.44
+                  ],
+                  [
+                    0.2,
+                    0.3
+                  ],
+                  [
+                    0.75,
+                    0.2
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "selbst-optimieren",
+      "every": 43200,
+      "priority": 225,
+      "_zweck": "Eigene Protokolle auswerten und die Takte anpassen - siehe _selbstoptimierung. PRIORITAET 225: liest nur die eigenen Protokolle. Mit 30 stand sie an letzter Stelle - der Bot hat seine Takte nie nachgezogen.",
+      "do": [
+        {
+          "log": "Eigene Protokolle auswerten und Takte nachziehen"
+        },
+        {
+          "optimiere_takte": {
+            "logs": "logs/*.jsonl",
+            "min_laeufe": 3,
+            "min_takt": 300,
+            "max_takt": 86400,
+            "ausnahmen": [
+              "spiel-im-vordergrund",
+              "lebenszeichen",
+              "selbst-aktualisieren",
+              "kalibrieren",
+              "selbstbericht",
+              "ansichten-sammeln",
+              "selbst-optimieren"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ansichten-sammeln",
+      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt die Aktion 'ausschnitt' den Streifen in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser. Prioritaet 235 aus demselben Grund wie beim Lebenszeichen: mit 30 kam die Aufgabe hinter allen Sofortstart-Rundgaengen und sammelte stundenlang nichts. Sie kostet nur einen Fingerabdruck des Bildschirms.",
+      "every": 30,
+      "at_start": false,
+      "priority": 235,
+      "do": [
+        {
+          "ansicht_sammeln": {
+            "hoechstens": 60,
+            "stapel": 2,
+            "bild_faktor": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "name": "lebenszeichen",
+      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt. ACHTUNG PRIORITAET: Am 22.08. lief der Bot 48 Minuten, ohne ein einziges Lebenszeichen zu schreiben - von aussen sah das aus wie tot. Grund war nicht das Hochladen, sondern die Reihenfolge: 16 Aufgaben stehen auf Sofortstart, jeder Schritt fuehrt genau EINE davon aus, und zwar die mit der hoechsten Prioritaet. Mit 95 stand das Lebenszeichen an 22. Stelle - hinter jedem langen Rundgang durch das Spiel. Die Aufgabe kostet Sekundenbruchteile und ihr ganzer Wert ist Rechtzeitigkeit; sie gehoert darum nach vorn. TAKT 900 auf 600 und Mindestabstand 600 auf 300 (29.08.): der Ausfall nach 00:17 fiel erst Stunden spaeter auf. Je enger der Puls, desto frueher sieht man von aussen, dass er aussetzt. Das Bild bleibt stuendlich - das ist der teure Teil, die Zahlen wiegen fast nichts.",
+      "every": 600,
+      "at_start": true,
+      "priority": 240,
+      "do": [
+        {
+          "lebenszeichen": {
+            "mindestabstand": 300,
+            "bild_abstand": 3600,
+            "bild_faktor": 0.35
+          }
+        }
+      ]
+    },
+    {
+      "name": "selbst-aktualisieren",
+      "every": 1800,
+      "at_start": false,
+      "priority": 238,
+      "_zweck": "Neue Fassung des Bots holen. Kam Code an, beendet sich der Bot - die Start-Schleife bringt ihn eine Minute spaeter mit der neuen Fassung zurueck. So braucht keine Verbesserung einen Handgriff am PC. PRIORITAET 238: mit 100 stand die Aufgabe hinter allen langen Rundgaengen und kam praktisch nie dran - jede Verbesserung erreichte den laufenden Bot erst beim naechsten Neustart von Hand. Sie kostet ein 'git pull'. Kommt neuer Code an, steigt der Bot aus und die Startschleife hebt ihn mit der neuen Fassung wieder hoch; was kuerzlich lief, wiederholt er dank zustand.json nicht.",
+      "do": [
+        {
+          "log": "Nach einer neuen Fassung schauen"
+        },
+        {
+          "selbst_aktualisieren": {}
+        }
+      ]
+    },
+    {
+      "name": "umgebung-abfahren",
+      "every": 3600,
+      "priority": 112,
+      "_zweck": "Auch ausserhalb der Mauern liegt etwas: Kisten, Wagen, freie Felder. Der Bot wechselt in die Weltansicht, faehrt sie in acht Richtungen ab und raeumt ab, was er unterwegs erkennt. Danach zurueck in die Stadt.",
+      "do": [
+        {
+          "log": "Umgebung abfahren - Weltansicht"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: weiter nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.25,
+            0.3,
+            0.75,
+            0.6,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach links oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: weiter nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.75,
+            0.6,
+            0.25,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach rechts unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.3,
+            0.5,
+            0.65,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.65,
+            0.5,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.66
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.11,
+              0.89
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "log": "Zurueck in die Stadt"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "pluendern-fremdserver",
+      "every": 1800,
+      "priority": 108,
+      "enabled": false,
+      "wochentage": [
+        4,
+        5,
+        6
+      ],
+      "_zweck": "Kisten und Wagen auf FREMDEN Servern pluendern - siehe _pluendern. Auf dem eigenen Server bewusst nicht. Bleibt aus, bis die Vorlagen da sind und der Server-Wechsel bestaetigt ist.",
+      "do": [
+        {
+          "log": "Pluendern auf fremdem Server - nur Kisten und Wagen"
+        },
+        {
+          "tap_alle": {
+            "template": "kampf/kiste_fremd.png",
+            "optional": true,
+            "threshold": 0.88
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "kampf/wagen_fremd.png",
+            "optional": true,
+            "threshold": 0.88
+          }
+        }
+      ]
+    },
+    {
+      "name": "selbstbericht",
+      "every": 21600,
+      "at_start": true,
+      "priority": 230,
+      "_zweck": "Nennt die fehlenden Vorlagen in der Reihenfolge, in der sie am meisten blockieren - samt der Aufgaben, die daran haengen. So sieht man im laufenden Fenster, welcher Ausschnitt am meisten bringt. PRIORITAET 230: kostet nichts ausser Nachdenken ueber die eigenen Zaehler und gehoert darum nicht hinter die Rundgaenge.",
+      "do": [
+        {
+          "selbstbericht": {
+            "hoechstens": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "spiel-im-vordergrund",
+      "every": 300,
+      "at_start": true,
+      "priority": 205,
+      "_zweck": "Der Bot soll durchlaufen. Steht das Spiel nicht mehr im Vordergrund - abgestuerzt, vom Emulator beendet, ein anderes Fenster davor -, tippt er ins Leere, ohne dass es jemandem auffaellt. Alle fuenf Minuten nachsehen und noetigenfalls neu starten.",
+      "do": [
+        {
+          "wenn": {
+            "match": {
+              "app_im_vordergrund": true
+            },
+            "dann": [],
+            "sonst": [
+              {
+                "log": "Spiel ist nicht im Vordergrund - wird gestartet"
+              },
+              {
+                "start_app": true
+              },
+              {
+                "sleep": [
+                  8.0,
+                  12.0
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "falkenturm-quests",
+      "every": 21600,
+      "priority": 106,
+      "enabled": false,
+      "_zweck": "Falkenturm: 'Schnelle Ausfuehrung' erledigt mehrere Quests auf einmal. Kostet AUSDAUER (40 fuer 4 Quests, 50 fuer 5) - dieselbe Ausdauer, die auch fuers Sammeln und fuer Monster gebraucht wird. Steht darum auf AUS, bis geklaert ist, was Vorrang hat, und bis die Vorlagen da sind. Der Knopf ist GOLD, wird also nicht blind angetippt: gold ist im Spiel die Haupthandlung, mal harmlos, mal teuer (siehe _farben). Ablauf aus dem Video vom 31.07.: Falkenturm oeffnen -> 'Schnelle Ausfuehrung' -> Belohnungsbanner 'Erhalten' -> 'Tippen zum Fortfahren' -> zurueck.",
+      "do": [
+        {
+          "log": "Falkenturm: Quests in einem Rutsch erledigen"
+        },
+        {
+          "tap_template": {
+            "template": "falkenturm/schnelle_ausfuehrung.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap": [
+            [
+              0.5,
+              0.55
+            ]
+          ]
+        },
+        {
+          "sleep": [
+            1.5,
+            2.5
+          ]
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "versammlung-beitreten",
+      "every": 300,
+      "priority": 190,
+      "enabled": true,
+      "_zweck": "Ruft jemand aus der Allianz eine Versammlung aus, moeglichst mitmachen: das ist die ergiebigste Art zu kaempfen und kostet nur Ausdauer. Weg: Allianz -> Versammlungs-liste -> offene Versammlung -> blauer 'Beitreten' -> bestaetigen -> zurueck. STEHT AUF AUS, und zwar nicht wegen der Vorlagen: der Bot kann die Stufe des Ziels und die empfohlene Macht nicht lesen (siehe _zahlen_lesen). Ohne das traete er auch Versammlungen bei, die zu stark sind - dabei gehen die Truppen verloren, und das kostet mehr als der Ertrag bringt. Erst einschalten, wenn das Zahlenlesen steht. EINGESCHALTET am 29.08. auf ausdrueckliche Ansage ('nehme automatisch an versammlungen teil'). Der Grund fuer das Aus bleibt bestehen und sei hier festgehalten: der Bot kann die Stufe des Ziels nicht lesen, tritt also auch zu starken Versammlungen bei. Praktisch aendert das Einschalten vorerst nichts - allianz/versammlung_liste.png, allianz/versammlung_offen.png und allianz/beitreten.png fehlen alle drei. Darum holt die Aufgabe jetzt ein Vollbild des Allianz-Fensters; daraus schneide ich die drei.",
+      "do": [
+        {
+          "log": "Offene Versammlungen der Allianz pruefen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/allianz.png",
+                "threshold": 0.86,
+                "region": [
+                  0.6,
+                  0.6,
+                  1.0,
+                  0.95
+                ]
+              }
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/allianz-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 1800
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/versammlung_liste.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/versammlung_offen.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/beitreten.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ausdauer-einsetzen",
+      "every": 3600,
+      "at_start": false,
+      "priority": 118,
+      "_zweck": "Ausdauer-Flaeschchen aus der Tasche einsetzen, damit gleich danach Monster und Diebe angegriffen werden koennen. HISTORIE: bis zum 28.08. galt das Gegenteil ('nicht verbrauchen, die sind fuer den Krieg'); der Nutzer hat das an diesem Tag ausdruecklich umgedreht. HOECHSTENS ZWEI pro Durchgang, also rund 100 Ausdauer je Stunde - voll aufdrehen heisst nicht, den ganzen Vorrat in einem Zug zu verbrennen. Fuer den Weg braucht es tasche/ausdauer_50.png und tasche/verwenden.png; beide sind aus einer gesammelten Ansicht geschnitten und stehen darum in template_skalen auf 2.0.",
+      "do": [
+        {
+          "log": "Ausdauer nachfuellen - danach wird angegriffen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tasche.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "schutz/reiter_spezial.png",
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ],
+            "optional": true
+          }
+        },
+        {
+          "repeat": {
+            "times": 2,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "tasche/ausdauer_50.png",
+                  "threshold": 0.86,
+                  "after": [
+                    1.0,
+                    1.6
+                  ],
+                  "optional": true
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "tasche/verwenden.png",
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    1.8
+                  ],
+                  "optional": true
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "threshold": 0.84,
+                  "optional": true
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.2
+                ]
+              }
+            ],
+            "sonst": []
+          }
+        }
+      ]
+    }
+  ],
+  "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
+  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg - die Zurueck-Taste wechselt stattdessen die ganze Ansicht. Weil je nach Kamera-Stand an jeder festen Stelle ein Gebaeude liegen kann, stehen hier mehrere Punkte; der Bot waehlt zufaellig einen. Trifft er doch ein Gebaeude, geht beim naechsten Versuch ein anderer Punkt. Das Spiel sagt es selbst: 'Tippe auf leeren Bereich zum Schliessen'. Die Bildmitte taugt dafuer nicht - dort steht meist ein Gebaeude. Bei Vollbild-Popups (Event, Tagesquests) liegt die freie Flaeche UNTEN, direkt beim Hinweis des Spiels - dort steht dann keine Navigationsleiste im Weg. Diese Punkte stehen deshalb nur im Ausweg, nicht in der Liste zum Schliessen von Gebaeude-Menues.",
+  "leere_punkte": [
+    [
+      0.35,
+      0.16
+    ],
+    [
+      0.12,
+      0.7
+    ],
+    [
+      0.86,
+      0.44
+    ],
+    [
+      0.2,
+      0.3
+    ],
+    [
+      0.75,
+      0.2
+    ]
+  ],
+  "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK.",
+  "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
+  "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
+  "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck.",
+  "_ausdauer": "AUSDAUER-REGEL (Nutzer, Stand 28.08. — UMGEDREHT): Ausdauer-Flaeschchen SOLLEN eingesetzt werden, damit Monster und Diebe angegriffen werden koennen ('verbrauche ausdauer poison fuer diebe angriff oder monster etc., immer angreifen'). Vorher galt das Gegenteil ('nicht verbrauchen, die sind fuer den Krieg') - diese aeltere Regel ist hiermit aufgehoben. Eingesetzt wird bewusst und begrenzt: die Aufgabe 'ausdauer-einsetzen' nimmt hoechstens zwei Flaeschchen je Durchgang, also rund 100 Ausdauer pro Stunde. Die generische Blau-Knopf-Regel bleibt trotzdem gesperrt, solange der Spezial-Reiter der Tasche sichtbar ist: gewollt verbrauchen ja, versehentlich nein - sonst tippt sie irgendwann auch das Flaeschchen mit dem falschen Wert an. Der Falkenturm zieht aus demselben Topf ('Schnelle Ausfuehrung' kostet 40 bis 50 auf einmal); die Aufgabe 'falkenturm-quests' bleibt aus, bis ihre Vorlagen da sind.",
+  "_on_unknown": "Fluchtweg aus unbekannten Bildschirmen, in dieser Reihenfolge: Dialog schliessen (beide X-Varianten), dann zurueck ueber den Pfeil oben links, ersatzweise die Android-Taste, zuletzt ein Tipp ins freie Gelaende. Ohne die Zurueck-Stufe blieb der Bot in Untermenues haengen, sobald dort keine Vorlage passte.",
+  "ui_skala": 1.0,
+  "festgefahren_schritte": 15,
+  "_festgefahren": "Sieht der Bot fuenfzehn Schritte lang dieselbe Ansicht, sucht er einen Ausweg (on_unknown) - unabhaengig davon, ob gerade eine Regel greift. Noetig, weil sonst genau das passiert, was im Lauf vom 31.07. zu sehen war: auf 'Taegliche Aufgaben' greift dauernd eine Regel, setzt die Zaehler zurueck und tippt doch nichts Wirksames. Die Ansicht wird dafuer stark verkleinert verglichen, damit tickende Uhren und wackelnde Banner nicht als Bewegung zaehlen. 0 schaltet die Pruefung ab.",
+  "_vorlagen_groesse": "Zusaetzlich zu _ui_skala darf sich jede Vorlage einen eigenen Nachschlag merken (Feld 'template_skalen', 1.0 = nichts extra). Noetig, weil die Vorlagen aus verschiedenen Aufnahmen stammen: manche wurden am grossen Handy geschnitten, spaeter aufgenommene passen schon. Findet der Bot eine Vorlage sechsmal hintereinander nicht, probiert er sie einmal in allen Groessen durch; passt eine deutlich besser, traegt er den Faktor hier ein - nur fuer diese eine Vorlage. Hoechstens dreimal je Vorlage, danach ist sie schlicht nicht im Bild.",
+  "_ui_skala": "Zusaetzlicher Groessen-Faktor fuer alle Vorlagen. Das Spiel bemisst seine Oberflaeche an der Bildhoehe, nicht an der Breite - in einem flacheren Fenster ist bei gleicher Breite alles kleiner, und die Vorlagen treffen nur noch mit 0,3 bis 0,65. Die Aufgabe 'kalibrieren' probiert bekannte Vorlagen in verschiedenen Groessen durch und traegt den passenden Faktor hier ein. Von Hand aendern muss man das nicht.",
+  "regel_wirkungslos_grenze": 3,
+  "_keine_zurueck_taste": "Die Zurueck-Taste des Systems darf NIE blind gedrueckt werden: in der Stadtansicht oeffnet sie 'Spiel beenden?' - ein Tipp daneben und das Spiel ist zu. Am 31.07. ist genau das passiert. Stattdessen der Zurueck-Pfeil im Spiel, sonst die Startseite, sonst ein Tipp auf freie Flaeche.",
+  "_regel_wirkungslos": "Greift eine Regel dreimal hintereinander, ohne dass sich die Ansicht aendert, legt der Bot sie fuer eine Weile still. Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal mit Score 1.00 und bewirkte nichts - die Vorlage passte auf etwas, das kein Schliesskreuz war.",
+  "_pluendern": "Kisten und Wagen werden NUR auf fremden Servern gepluendert - auf dem eigenen Server macht man sich damit Feinde in der eigenen Allianz. Der Bot kann am Bild allein nicht sicher erkennen, auf welchem Server er gerade unterwegs ist. Darum ist die Aufgabe 'pluendern-fremdserver' AUS und an das Wochenend-Event gebunden, zu dem die fremden Spieler kommen. Sie erst einschalten, wenn die Vorlagen kampf/kiste_fremd und kampf/wagen_fremd geschnitten sind und der Server-Wechsel wirklich stattgefunden hat.",
+  "kritische_templates": [
+    "hud/schild_aktiv.png",
+    "schutz/schild_knopf.png",
+    "schutz/schild_8h.png",
+    "ui/btn_benutzen.png",
+    "ui/btn_bestaetigen.png"
+  ],
+  "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen.",
+  "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen.",
+  "_vorlagen_herkunft": "base_width steht auf 1440 - genauso breit wie der Emulator-Bildschirm. Die Engine rechnet Vorlagen also NICHT um; wer aus einem Emulator-Screenshot schneidet, legt den Ausschnitt in ORIGINALGROESSE ab. Nicht verkleinern. Werkzeug: python3 bot.py crop <bild.png> --box l,t,r,b -o templates/<name>.png. ACHTUNG, teuer gelernt (01./02.08.): hier stand vorher, Vorlagen gehoerten auf Basisbreite 1080 und muessten auf 75 Prozent verkleinert werden. Danach geschnittene Vorlagen trafen im Bot NIE - und der Test dazu bestand trotzdem, weil er den Faktor 4/3 selbst einsetzte statt die Engine zu fragen. Vorlagen immer mit Engine.find pruefen. Aeltere Vorlagen stammen von einem Handy (1440x3088) und brauchen darum doch einen Faktor - den misst der Bot selbst aus (Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen) und legt ihn in gelernt.json ab. Von Hand nachrechnen muss man nichts.",
+  "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat.",
+  "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
+  "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
+  "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt.",
+  "_blasen": "Ertrags-Blasen liegen AUF der Karte und wandern mit, sobald die Kamera schwenkt - die Bedienung am Rand bleibt stehen. Daran unterscheidet man beides. Gesammelt wird nur zwischen x=0.11 und x=0.89: links liegt die Symbolspalte (x um 0.07), rechts Allianz, Nachricht und Tasche (x um 0.92), und die haben denselben hellen Ring wie eine Blase. Verloren geht dadurch nichts - der Rundgang schwenkt in acht Richtungen, also kommt jede Blase irgendwann in den Bereich.",
+  "_zahlen_lesen": "Der Bot kann keine Zahlen lesen. Fuer 'nur beitreten, wenn Stufe und Macht nicht zu hoch sind' braucht es aber genau das: im Versammlungs-Fenster stehen 'Lv120' und 'Empf. Macht: 6,783,000'. Machbar waere es - das Spiel benutzt eine feste Schrift, also liessen sich die zehn Ziffern einmal als Vorlagen schneiden und mit dem vorhandenen Vergleicher aneinandergereiht lesen. Dafuer braucht es einen Screenshot in voller Aufloesung (1440 breit), auf dem die Ziffern gross und klar stehen. Damit liesse sich zugleich die Ausdauer-Reserve umsetzen (Falkenturm nur oberhalb einer Schwelle) und die eigene Macht gegen die empfohlene halten.",
+  "template_skalen": {
+    "bau/upgrade_knopf.png": 2.0,
+    "tasche/ausdauer_50.png": 2.0,
+    "tasche/verwenden.png": 2.0,
+    "kampf/erneut_herausfordern.png": 2.0
+  },
+  "_vorlagen_halbe_groesse": "Diese drei Vorlagen sind aus den GESAMMELTEN Ansichten geschnitten, und die legt der Bot in halber Kantenlaenge ab (720 statt 1440). Damit sie auf dem echten Bildschirm passen, stehen sie in template_skalen auf 2.0. NACHGEMESSEN: ein so geschnittener Zurueck-Pfeil trifft das Vollbild mit 0.963 - der Umweg funktioniert also. Wer eine davon neu schneidet, muss den Faktor mitpflegen: aus einem Vollbild geschnitten gehoert sie auf 1.0."
+}
