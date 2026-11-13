@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-13T18:02:11.989972+00:00",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "memoryRevisionRead": 195,
+  "priorActualTypographyProbeFoundInReadR194R195": false,
+  "previousState": "R194 proposed56–68px and rough safe zones, without per-string font bbox or360/390px raster evidence; R195 source QA unchanged.",
+  "fontFiles": [
+    {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "bytes": 708920,
+      "sha256": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    },
+    {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "bytes": 759720,
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+    }
+  ],
+  "tool": "existing Pillow ImageFont/ImageDraw; no installation",
+  "canvas": [
+    1080,
+    1920
+  ],
+  "targetFrames": 540,
+  "foreground": "#F4EBDD",
+  "opaqueTextPanelBackground": "#302B28",
+  "computedSrgbContrastRatio": 11.834634463897167,
+  "textSafeBBox": [
+    108,
+    300,
+    840,
+    1440
+  ],
+  "proposedUnobscuredDeviceAndProjectionBBox": [
+    120,
+    520,
+    840,
+    1230
+  ],
+  "recordedFailedSingleLineWidthsAt68px": {
+    "hook_a": 968,
+    "hook_b": 1226,
+    "product_label": 858
+  },
+  "allowedTextWidth": 732,
+  "records": [
+    {
+      "id": "hook_a",
+      "logicalText": "Vom Gerät zum Lichtbild.",
+      "lines": [
+        "Vom Gerät",
+        "zum Lichtbild."
+      ],
+      "frames": [
+        0,
+        71
+      ],
+      "fontSize": 68,
+      "anchor": "lt",
+      "lineOriginStepPx": 82,
+      "lineBBoxes": [
+        {
+          "text": "Vom Gerät",
+          "origin": [
+            108,
+            300
+          ],
+          "inkBBox": [
+            108,
+            300,
+            512,
+            354
+          ],
+          "width": 404,
+          "height": 54
+        },
+        {
+          "text": "zum Lichtbild.",
+          "origin": [
+            108,
+            382
+          ],
+          "inkBBox": [
+            108,
+            382,
+            648,
+            435
+          ],
+          "width": 540,
+          "height": 53
+        }
+      ],
+      "panelBBox": [
+        84,
+        272,
+        864,
+        476
+      ],
+      "previewMeasurements": [
+        {
+          "width": 390,
+          "fullFrameRasterHeight": 693,
+          "effectiveFontSizePx": 24.555555555555557,
+          "coreInkBBoxAtThreshold128": [
+            39,
+            108,
+            231,
+            157
+          ],
+          "cropPixels": [
+            0,
+            98,
+            390,
+            185
+          ],
+          "boardOrigin": [
+            24,
+            162
+          ]
+        },
+        {
+          "width": 360,
+          "fullFrameRasterHeight": 640,
+          "effectiveFontSizePx": 22.666666666666668,
+          "coreInkBBoxAtThreshold128": [
+            36,
+            100,
+            214,
+            145
+          ],
+          "cropPixels": [
+            0,
+            91,
+            360,
+            171
+          ],
+          "boardOrigin": [
+            438,
+            162
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hook_b",
+      "logicalText": "Was steckt hinter diesem Licht?",
+      "lines": [
+        "Was steckt hinter",
+        "diesem Licht?"
+      ],
+      "frames": [
+        0,
+        71
+      ],
+      "fontSize": 68,
+      "anchor": "lt",
+      "lineOriginStepPx": 82,
+      "lineBBoxes": [
+        {
+          "text": "Was steckt hinter",
+          "origin": [
+            108,
+            300
+          ],
+          "inkBBox": [
+            108,
+            300,
+            784,
+            353
+          ],
+          "width": 676,
+          "height": 53
+        },
+        {
+          "text": "diesem Licht?",
+          "origin": [
+            108,
+            382
+          ],
+          "inkBBox": [
+            108,
+            382,
+            635,
+            435
+          ],
+          "width": 527,
+          "height": 53
+        }
+      ],
+      "panelBBox": [
+        84,
+        272,
+        864,
+        476
+      ],
+      "previewMeasurements": [
+        {
+          "width": 390,
+          "fullFrameRasterHeight": 693,
+          "effectiveFontSizePx": 24.555555555555557,
+          "coreInkBBoxAtThreshold128": [
+            40,
+            108,
+            283,
+            157
+          ],
+          "cropPixels": [
+            0,
+            98,
+            390,
+            185
+          ],
+          "boardOrigin": [
+            24,
+            302
+          ]
+        },
+        {
+          "width": 360,
+          "fullFrameRasterHeight": 640,
+          "effectiveFontSizePx": 22.666666666666668,
+          "coreInkBBoxAtThreshold128": [
+            37,
+            100,
+            261,
+            145
+          ],
+          "cropPixels": [
+            0,
+            91,
+            360,
+            171
+          ],
+          "boardOrigin": [
+            438,
+            302
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product_label",
+      "logicalText": "Sternenlicht-Projektor",
+      "lines": [
+        "Sternenlicht-",
+        "Projektor"
+      ],
+      "frames": [
+        180,
+        305
+      ],
+      "fontSize": 68,
+      "anchor": "lt",
+      "lineOriginStepPx": 82,
+      "lineBBoxes": [
+        {
+          "text": "Sternenlicht-",
+          "origin": [
+            108,
+            300
+          ],
+          "inkBBox": [
+            108,
+            300,
+            608,
+            353
+          ],
+          "width": 500,
+          "height": 53
+        },
+        {
+          "text": "Projektor",
+          "origin": [
+            108,
+            382
+          ],
+          "inkBBox": [
+            108,
+            382,
+            466,
+            449
+          ],
+          "width": 358,
+          "height": 67
+        }
+      ],
+      "panelBBox": [
+        84,
+        272,
+        864,
+        476
+      ],
+      "previewMeasurements": [
+        {
+          "width": 390,
+          "fullFrameRasterHeight": 693,
+          "effectiveFontSizePx": 24.555555555555557,
+          "coreInkBBoxAtThreshold128": [
+            41,
+            108,
+            218,
+            162
+          ],
+          "cropPixels": [
+            0,
+            98,
+            390,
+            185
+          ],
+          "boardOrigin": [
+            24,
+            442
+          ]
+        },
+        {
+          "width": 360,
+          "fullFrameRasterHeight": 640,
+          "effectiveFontSizePx": 22.666666666666668,
+          "coreInkBBoxAtThreshold128": [
+            38,
+            100,
+            202,
+            150
+          ],
+          "cropPixels": [
+            0,
+            91,
+            360,
+            171
+          ],
+          "boardOrigin": [
+            438,
+            442
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "logicalText": "Produkt ansehen",
+      "lines": [
+        "Produkt ansehen"
+      ],
+      "frames": [
+        432,
+        539
+      ],
+      "fontSize": 68,
+      "anchor": "lt",
+      "lineOriginStepPx": 82,
+      "lineBBoxes": [
+        {
+          "text": "Produkt ansehen",
+          "origin": [
+            108,
+            1302
+          ],
+          "inkBBox": [
+            108,
+            1302,
+            760,
+            1355
+          ],
+          "width": 652,
+          "height": 53
+        }
+      ],
+      "panelBBox": [
+        84,
+        1274,
+        864,
+        1410
+      ],
+      "previewMeasurements": [
+        {
+          "width": 390,
+          "fullFrameRasterHeight": 693,
+          "effectiveFontSizePx": 24.555555555555557,
+          "coreInkBBoxAtThreshold128": [
+            41,
+            470,
+            273,
+            489
+          ],
+          "cropPixels": [
+            0,
+            460,
+            390,
+            546
+          ],
+          "boardOrigin": [
+            24,
+            582
+          ]
+        },
+        {
+          "width": 360,
+          "fullFrameRasterHeight": 640,
+          "effectiveFontSizePx": 22.666666666666668,
+          "coreInkBBoxAtThreshold128": [
+            38,
+            434,
+            252,
+            452
+          ],
+          "cropPixels": [
+            0,
+            425,
+            360,
+            505
+          ],
+          "boardOrigin": [
+            438,
+            582
+          ]
+        }
+      ]
+    }
+  ],
+  "technicalBoard": {
+    "path": "/tmp/luxe-evening-20261113-19h/master/MASTER-TYPOGRAPHY-360-390-20261113-19h.png",
+    "width": 822,
+    "height": 752,
+    "bytes": 130611,
+    "sha256": "6f1311e7d81da01079bfa9f3435df68586a1ff3b5c426e3efc7a75dcc589c33d",
+    "actualTextScaleAt390And360": true,
+    "productImageUsedOrAltered": false,
+    "greenGuidesAreNotFilmContent": true,
+    "visuallyInspected": true
+  },
+  "preserved": {
+    "sameMasterId": true,
+    "r194HooksLogicalText": true,
+    "r194CaptionsAndUTMs": true,
+    "r195DetailExclusion1720To1880": true,
+    "allFourDraftUUIDsUntouched": true
+  },
+  "limitations": [
+    "No actual professional MP4",
+    "No final platform-specific overlay/crop test",
+    "No dynamic footage contrast check",
+    "No new hearing or source QA",
+    "Not a guarantee of human reading speed or retention",
+    "Unit/motif/reference/edit/advertising rights remain open"
+  ],
+  "actions": {
+    "localTypographyProbeOnly": true,
+    "videoRenders": 0,
+    "musicRenders": 0,
+    "uploads": 0,
+    "remoteCalls": 0,
+    "repoEdits": 0,
+    "installations": 0,
+    "dailyReportsRepeated": 0
+  },
+  "visualConclusion": "Both360px and390px technical text samples fit and remain visually legible in the inspected still; this is not final-film or human reading-speed approval.",
+  "readMemoryFiles": [
+    {
+      "path": "/tmp/luxe-evening-20261113-19h/current/README.md",
+      "sha256": "3a08d367656f695efe5318c266164544bf860283c45f7af15c1fda08f771dc40"
+    },
+    {
+      "path": "/tmp/luxe-evening-20261113-19h/current/PROJEKTGEDAECHTNIS.md",
+      "sha256": "19ea54cfd30d3c568d954f0481c9d9753a7bb79197dbfe20320f0ee5cf218bc1"
+    },
+    {
+      "path": "/tmp/luxe-evening-20261113-19h/current/ARBEITSSTAND.json",
+      "sha256": "11942b66d17441192c3e6e38ed443ed4c9d24831dad05884370f88762e61e5cf"
+    },
+    {
+      "path": "/tmp/luxe-evening-20261113-19h/current/TAGESPROTOKOLL.md",
+      "sha256": "acb7bd93473a326003eb2c369ffc5c8acd4b97c02f11761527ffeacc3a479dbc"
+    }
+  ],
+  "report": {
+    "path": "/tmp/luxe-evening-20261113-19h/master/MASTER-TYPOGRAPHY-20261113-19h.md",
+    "bytes": 4169,
+    "sha256": "ef49880eafb0061ec48eb85c0f5dcc3b12995fb9c3da67195e85f2244a6e32cf"
+  },
+  "repositoryTechnicalBoard": "MASTER-TEXTPROBE-360-390-20261113-R196.png",
+  "repositoryReport": "MASTER-TYPOGRAFIE-20261113-19H-R196.md"
+}

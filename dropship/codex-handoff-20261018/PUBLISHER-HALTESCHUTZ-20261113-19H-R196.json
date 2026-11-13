@@ -1,0 +1,276 @@
+{
+  "recordedAtUTC": "2026-11-13T21:46:40.621856+00:00",
+  "sourceCommit": "bec31b16b67a65b37d5a5ba6e7978d9c79a2594d",
+  "sourceFilesVerified": [
+    {
+      "path": ".github/workflows/metricool-freigabe.yml",
+      "httpStatus": 200,
+      "sha256": "163cec5f60186600e6289db3dabfcbd9864b6b53bfd42dbd7537c217c574f189",
+      "bytes": 5076,
+      "sameAsCodeSnapshot": true
+    },
+    {
+      "path": "automation/metricool_freigabe.py",
+      "httpStatus": 200,
+      "sha256": "6ed2318d028cb34cbfffcd4b16627774ae2a423ad8b2dd060c4d8a7ddb1d6e6f",
+      "bytes": 30516,
+      "sameAsCodeSnapshot": true
+    },
+    {
+      "path": "dropship/METRICOOL-HALTEN.txt",
+      "httpStatus": 200,
+      "sha256": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc",
+      "bytes": 1389,
+      "sameAsCodeSnapshot": true
+    },
+    {
+      "path": "dropship/METRICOOL-FREIGABE-FREI.txt",
+      "httpStatus": 200,
+      "sha256": "16feeca1e22538649db5f1119a56de43bcd5e2444b8338626bcf33677cccbd8e",
+      "bytes": 362,
+      "sameAsCodeSnapshot": true
+    }
+  ],
+  "workflow": {
+    "path": ".github/workflows/metricool-freigabe.yml",
+    "pushTrigger": false,
+    "scheduleUTC": "05:41",
+    "workflowDispatch": true,
+    "pullRequestRunsTestsOnly": true,
+    "liveFlagFileExists": true,
+    "triggerLines": [
+      17,
+      33
+    ],
+    "liveGateLines": [
+      80,
+      85
+    ]
+  },
+  "publisher": {
+    "path": "automation/metricool_freigabe.py",
+    "candidateLines": [
+      328,
+      345
+    ],
+    "holdLookupLines": [
+      303,
+      320
+    ],
+    "holdBeforeOtherChecksLines": [
+      355,
+      361
+    ],
+    "activationBuilderLines": [
+      273,
+      299
+    ],
+    "knownHoldUuidsAbsentBefore": 11,
+    "knownHoldUuidsPresentInDraftAfter": 11,
+    "existingFourEntriesPreserved": true,
+    "nativeQualityRightsMusicLedgerChecksInInspectedReleaseContract": "Not enforced by the inspected gates; technical fields/reachable URLs do not establish owner quality/rights approval"
+  },
+  "draftPatch": {
+    "recordedAtUTC": "2026-11-13T18:11:23.932965+00:00",
+    "scope": "LOCAL REVIEW DRAFT ONLY; not applied to repo or GitHub",
+    "sourceCommit": "bec31b16b67a65b37d5a5ba6e7978d9c79a2594d",
+    "sourcePath": "dropship/METRICOOL-HALTEN.txt",
+    "sourceApiUrl": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/contents/dropship/METRICOOL-HALTEN.txt?ref=bec31b16b67a65b37d5a5ba6e7978d9c79a2594d",
+    "sourceGitBlobSha": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+    "sourceSha256": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc",
+    "sourceBytes": 1389,
+    "sourceActiveHoldCount": 4,
+    "sourceExistingHoldKeys": [
+      "-3731207601091163105",
+      "-8305910546945982140",
+      "-8339089096074181290",
+      "4659816415037836014"
+    ],
+    "unchangedSourceComparedWithCodeSnapshot": true,
+    "proposedGitBlobSha": "1997851848b25037685779555478f55ca1c9e429",
+    "proposedSha256": "086d106d8eec3f49f474951808d39b7173a9a9d80e8e595567599e550b3996f1",
+    "proposedBytes": 2687,
+    "existingBytesExactPrefix": true,
+    "uniqueAdditions": 11,
+    "duplicateAdditions": 0,
+    "selectedHolds": [
+      {
+        "uuid": "-4472725258033347244",
+        "group": "R194 Audio",
+        "latestIds": [
+          426613069
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "group": "R194 Audio",
+        "latestIds": [
+          426613132
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "1744402171830094170",
+        "group": "R194 Audio",
+        "latestIds": [
+          426612259
+        ],
+        "currentDraft": [
+          true,
+          true
+        ],
+        "currentAutoPublish": [
+          false,
+          false
+        ]
+      },
+      {
+        "uuid": "2172266762404316928",
+        "group": "R194 Audio",
+        "latestIds": [
+          426613082
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "3963843144054620883",
+        "group": "R194 Audio",
+        "latestIds": [
+          427286519
+        ],
+        "currentDraft": [
+          true,
+          true
+        ],
+        "currentAutoPublish": [
+          false,
+          false
+        ]
+      },
+      {
+        "uuid": "5647388074617226143",
+        "group": "R194 Audio",
+        "latestIds": [
+          426613048
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "8935974072695279179",
+        "group": "R194 Audio",
+        "latestIds": [
+          427286591
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "group": "R176 Projektor",
+        "latestIds": [
+          427288119
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "group": "R176 Projektor",
+        "latestIds": [
+          427287938
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "group": "R176 Projektor",
+        "latestIds": [
+          427286681
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "group": "R176 Projektor",
+        "latestIds": [
+          427287815
+        ],
+        "currentDraft": [
+          true
+        ],
+        "currentAutoPublish": [
+          false
+        ]
+      }
+    ],
+    "localDraftPatch": "METRICOOL-HALTEN-ENTWURF-20261113-R196.patch",
+    "limitations": [
+      "Only respected by inspected repository publisher; no guard for unrelated platform write paths",
+      "No main or handoff file was changed, no flag removed, no workflow dispatched/deployed, no PR created",
+      "No causal attribution of observed14:26 reactivations from timing or this code inspection"
+    ],
+    "sourceHoldReadbackEvidenceSha256": "76b836c59e0bd4d8a00c609da220a84394eed778d0cca7aaf0954c2cea5e335d",
+    "isolatedGitApplyCheck": {
+      "exitCode": 0,
+      "checkOnly": true,
+      "temporaryOriginalStillByteIdentical": true
+    }
+  },
+  "offlineValidation": {
+    "existingPureHelpersUsed": [
+      "lade_halten",
+      "halte_grund"
+    ],
+    "topLevelModuleNotExecuted": true,
+    "all11KnownHoldsBlockedInDraft": true,
+    "originalFourReasonsPreserved": true,
+    "gitApplyCheckPass": true,
+    "actualRepoFileNotChanged": true,
+    "networkCallsForHelperValidation": 0
+  },
+  "causality": "Unknown. Code risk and temporal proximity are not proof of the actor/workflow that reactivated six posts at14:26Zurich. No workflow execution history was read.",
+  "operationalChanges": 0,
+  "workflowDispatches": 0,
+  "frequencyChanges": 0,
+  "noMainOrHandoffHoldFileChanged": true,
+  "noCustomerOrReviewerMessages": true
+}

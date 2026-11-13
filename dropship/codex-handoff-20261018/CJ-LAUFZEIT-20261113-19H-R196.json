@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-11-13T18:00:37.977Z",
+  "sourceMode": "Existing repository module read via git blob; offline status only, not a connected MCP handshake",
+  "provider": "CJdropshipping",
+  "mode": "read_only",
+  "credentialBinding": "missing",
+  "connection": "unknown_until_product_read",
+  "accessTokenCachedInProcess": false,
+  "lastProductReadState": "not_attempted",
+  "lastInventoryReadState": "not_attempted",
+  "lastRouteReadState": "not_attempted",
+  "networkCalls": 0,
+  "authenticationCalls": 0,
+  "productCalls": 0,
+  "inventoryCalls": 0,
+  "routeCalls": 0,
+  "workflowDispatched": false,
+  "newInstallation": false,
+  "secretValueOrLengthOrHashRecorded": false,
+  "limitation": "No CJ_API_KEY binding in this execution runtime; no CJ authentication attempted. Not proof that the configured repository CJ connector or remote GitHub secret is absent or invalid.",
+  "localInspectedCommit": "cd1986044c98d14a5d72f30e2ae0b2a6fafcf959",
+  "verifiedCurrentMainCommit": "4574ade3df5b1f46349a76b049a04459d50546ab",
+  "currentMainFileCountercheckAtUTC": "2026-11-13T18:07:57.265338+00:00",
+  "moduleVersionMatchedCurrentMain": true,
+  "configuredRepositoryConnectorExists": true,
+  "currentLauncherFiveHashesMatch": true,
+  "sourceFiles": [
+    {
+      "path": "automation/cj-read-mcp.mjs",
+      "sha256": "ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc",
+      "matchesInspectedLocalVersion": true,
+      "pinnedInCurrentLauncher": true
+    },
+    {
+      "path": "automation/lib/cj_identity.mjs",
+      "sha256": "1fef93809ba5e8cf2204203abdf3d38ee1ebedbb833167f50a78b8ad1fce024b",
+      "matchesInspectedLocalVersion": true,
+      "pinnedInCurrentLauncher": true
+    },
+    {
+      "path": "automation/lib/cj_read_mcp.mjs",
+      "sha256": "592c7e22a2159552adb79eb5ac36cbf14665fc1b989d829a485a00c4ac0da467",
+      "matchesInspectedLocalVersion": true,
+      "pinnedInCurrentLauncher": true
+    },
+    {
+      "path": "automation/lib/cj_readonly.mjs",
+      "sha256": "36b61e9afd547ffd929c7d9b7d47f32df7faee1dd9401b365d8bd3212526bbed",
+      "matchesInspectedLocalVersion": true,
+      "pinnedInCurrentLauncher": true
+    },
+    {
+      "path": "automation/lib/claude_assist_mcp.mjs",
+      "sha256": "228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671",
+      "matchesInspectedLocalVersion": true,
+      "pinnedInCurrentLauncher": true
+    }
+  ],
+  "currentConfiguredType": "stdio",
+  "runtimeInterpretation": "Configured repository CJ read connector exists. Offline module status is missing credential binding in this runtime; no active MCP handshake or upstream credential validity proved."
+}

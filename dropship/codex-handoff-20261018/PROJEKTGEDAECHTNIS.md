@@ -1686,3 +1686,13 @@ Ein Kategorien-Hub wurde separat geprüft: HTTP 200, Selfcanonical und genau ein
 Der neue Besitzerscreenshot zeigt eine Shop-App-Kundenansicht. Er ist kein Codex-Save oder MP4-Identitätsnachweis. Es gab keine Plattformänderungen, Renders oder Uploads; der Claude-Empfang bleibt unbekannt. [14h-Paket](CONTENT-VERKAUFSPAKET-20261113-14H-R195.md) · [Belege](CONTENT-VERKAUFSPAKET-20261113-14H-R195.json).
 
 [LUXESTYLE_R195_20261113_14H]
+
+## R196 – 13.11.2026 um 19h: sechs Holds wiederhergestellt, Schutzdiff und Mastertextprobe
+
+Sechs fremdreaktivierte Qualitäts-/Audioobjekte mit sieben Kanalzuständen wurden nach frischer Identitäts-, Original-, Medienhash-, Diff- und Kollisionsprüfung gezielt wieder auf Entwurf/Autopublish aus gestellt. Alle stabilen UUIDs, Inhalte, Medien, Zeiten und tatsächlichen Provider-/Zielgruppenfelder sind unabhängig bestätigt erhalten. Sieben Audio-Holds und vier R176-Projektor-Holds sind wieder inaktiv. Die Reaktivierungsursache bleibt unbekannt. Der bestehende Publisher enthält einen belegten Wiederholungsweg; ein additiver Haltelistenpatch für elf UUIDs ist geprüft vorbereitet, aber nicht operativ übernommen. Keine eigene Veröffentlichung oder neue Posts.
+
+Schlussstand: 57 Objekte/71 Zustände, acht beobachtete Fremd-PUBLISHED-Zustände aus sechs Objekten. Noch 36 aktive PENDING-Objekte/45 Zustände; 15 inaktive/18 Zustände. IG/FB/TikTok/Pinterest technisch täglich 13.–20.11.; Threads 15.11. und YouTube 15.–20.11. offen. Kennzahlen/Klaviyo aus R194 unverändert wiederverwendet, keine erneute Tagesmessung oder Kauf-Watch. Zwei Produkte/neun Varianten seit 14h unverändert. Der Bechertextdiff bleibt die eine Verkaufsaktion zur Freigabe.
+
+Derselbe 18s-Master wurde durch echte Schriftmetriken und eine technische 360-/390px-Textprobe präzisiert: Hooks und Produktlabel zweizeilig, CTA einzeilig; keine neuen Texte oder MP4. Geeigneter nativer Take, genaue Einheit/Motivbindung, Rechte und Endabnahme bleiben offen. Vorhandener CJ-Connector frisch gegen Main-/Launcher-Dateihashes bestätigt, lokale Credential-Bindung fehlt; null CJ-Netzwerk, kein MCP-Handshake, keine Neuinstallation. Nur Dokumentation und die genannten Metricool-Holds geändert, keine operative Halteliste/Workflows/Frequenzen/Shop-/Flow-/DNS-/Budgetwerte. [Abendpaket](CONTENT-VERKAUFSPAKET-20261113-19H-R196.md) · [Tagestabelle](TAGESTABELLE-20261113-R196.md). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R196_20261113_19H]

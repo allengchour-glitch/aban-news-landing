@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 195,
-  "updatedAt": "2026-11-13T13:26:09.362978+00:00",
+  "revision": 196,
+  "updatedAt": "2026-11-13T21:55:08.183381+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4213,12 +4213,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r195_source_to_shot_matrix_excludes_old_hand_detail_no_new_master",
+      "state": "r196_measured_360_390_typography_same_master_four_holds_restored_source_rights_open",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-13",
-      "belegArt": "R195_SIX_ACTUAL_SOURCE_FRAMES_HASH_TIME_REVIEW_AND_UNCHANGED_HOLDS",
-      "lastEvidence": "Six actual frames from the existing27.96s960x540/25fps source were hash/time-checked and viewed. Frame0 black;5s compatible device family but no exact unit/SKU proof;10/24s projection without device, A motif unknown. Retained17.20s frame already violates hand-free/full-contour detail requirements;18.80s is out-point of half-open trim. Historical interval is not a premium replacement for the planned4.2s detail. Same R19418s/540frame briefing/hooks/captions/UTMs retained; no video/music render or upload. Four R176 and seven audio holds unchanged in current full-provider comparison.",
-      "nextAllowedStep": "Keep the same master and existing UUIDs. Obtain a verified native-portrait take of the exact current A unit and actual supplied projection, including at least4.2s usable full-contour hand-free detail plus handles. Do not reuse17.20–18.80 as a premium substitute or infer SKU/motif from sampled form compatibility. Use R194 hooks/captions/UTMs, prove rights and complete final QA before any later approved action; today reports remain reused.",
+      "belegArt": "GEMESSEN_TYPOGRAFIE_QUELLSTATUS_UND_VIER_BESTAETIGTE_MASTER_HOLDS",
+      "lastEvidence": "Unveränderte R194-Texte mit tatsächlichen 68px-DejaVu-Metriken geprüft: einzeilig zu breit, zweizeilige Hooks und Produktlabel passen in 732px. Technische 360/390px-Textprobe angesehen, CTA einzeilig; kein Film oder native Plattformabnahme. Vier erneut aktivierte R176-UUIDs nach frischen gleichen MP4-Hashes und Original-/Identitätsprüfung wieder Draft/Autopublish aus, alle Metadaten/Zielgruppen/Termine erhalten. CJ-Connector samt fünf aktuellen Main-/Launcher-Hashes vorhanden; lokaler Offline-Status Credential-Bindung missing, null CJ-HTTP, kein Handshake. Exakte Einheit/Motivbindung, hochwertiger nativer Take und kommerzielle Rechte/Endabnahme bleiben offen. Gleiche masterId, Storyboard, Hooks, Captions und UTMs, kein neuer Render/Upload.",
+      "nextAllowedStep": "Denselben Master fortführen: passende native Aufnahme derselben verifizierten A-Einheit samt tatsächlich geliefertem Motiv beschaffen; mindestens 4.2s handfreies vollständiges Detail plus Vor-/Nachlauf. Gemessene zweizeilige Texte übernehmen, kein alter 17.20–18.80s-Ersatz. Vor tatsächlicher Medienverwendung Rechte/Pflichtmusik, fertige Bild-/Tonqualität, Lesbarkeit und Plattformausschnitte abnehmen. Vier stabile UUIDs inaktiv erhalten. Vor einer späteren geprüften Übernahme den konkreten vorhandenen Haltelistenpatch gegen aktuelle Main-Quelle lesen; kein ungeprüfter Workflowstart. CJ nur nach legitimer sicherer Laufzeitbindung begrenzt lesen, keinen ungültigen Connector oder fehlenden Kauf behaupten.",
       "blockers": [
         "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
         "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
@@ -4655,6 +4655,24 @@
           "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
           "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746",
           "readAt": "2026-11-13T13:26:09.362978+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.json",
+          "sha256": "8523dd9d18383f9f26ade2acb21e4d7e59e71aa6ddee01c0578b526e3b2386a9",
+          "gitBlobSha": "0376fd30b4697afe72b0b8093b3f2c62d2943146",
+          "readAt": "2026-11-13T21:55:08.183381+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.json",
+          "sha256": "1be15de23b96c8faf795bfd00cc8f97045eebc562f78a3bf7652c70c25119fd8",
+          "gitBlobSha": "07e9d1a6745e23dafc565d5488b2f2a159c0488a",
+          "readAt": "2026-11-13T21:55:08.183381+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+          "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+          "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c",
+          "readAt": "2026-11-13T21:55:08.183381+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5231,6 +5249,36 @@
             "sha256": "a3dfb77a07a7857b6a461828f5a7fc432a64825860a44ec0f88bc99a7546d255",
             "gitBlobSha": "68d200bf032edbdd8a281c891d4b3fa5479d2746"
           }
+        },
+        {
+          "dateZurich": "2026-11-13",
+          "revision": 196,
+          "localRun": "19h",
+          "previousEvidencePreserved": {
+            "state": "r195_source_to_shot_matrix_excludes_old_hand_detail_no_new_master",
+            "lastEvidence": "Six actual frames from the existing27.96s960x540/25fps source were hash/time-checked and viewed. Frame0 black;5s compatible device family but no exact unit/SKU proof;10/24s projection without device, A motif unknown. Retained17.20s frame already violates hand-free/full-contour detail requirements;18.80s is out-point of half-open trim. Historical interval is not a premium replacement for the planned4.2s detail. Same R19418s/540frame briefing/hooks/captions/UTMs retained; no video/music render or upload. Four R176 and seven audio holds unchanged in current full-provider comparison.",
+            "nextAllowedStep": "Keep the same master and existing UUIDs. Obtain a verified native-portrait take of the exact current A unit and actual supplied projection, including at least4.2s usable full-contour hand-free detail plus handles. Do not reuse17.20–18.80 as a premium substitute or infer SKU/motif from sampled form compatibility. Use R194 hooks/captions/UTMs, prove rights and complete final QA before any later approved action; today reports remain reused.",
+            "belegArt": "R195_SIX_ACTUAL_SOURCE_FRAMES_HASH_TIME_REVIEW_AND_UNCHANGED_HOLDS",
+            "lastEvidenceDate": "2026-11-13"
+          },
+          "summary": "Unveränderte R194-Texte mit tatsächlichen 68px-DejaVu-Metriken geprüft: einzeilig zu breit, zweizeilige Hooks und Produktlabel passen in 732px. Technische 360/390px-Textprobe angesehen, CTA einzeilig; kein Film oder native Plattformabnahme. Vier erneut aktivierte R176-UUIDs nach frischen gleichen MP4-Hashes und Original-/Identitätsprüfung wieder Draft/Autopublish aus, alle Metadaten/Zielgruppen/Termine erhalten. CJ-Connector samt fünf aktuellen Main-/Launcher-Hashes vorhanden; lokaler Offline-Status Credential-Bindung missing, null CJ-HTTP, kein Handshake. Exakte Einheit/Motivbindung, hochwertiger nativer Take und kommerzielle Rechte/Endabnahme bleiben offen. Gleiche masterId, Storyboard, Hooks, Captions und UTMs, kein neuer Render/Upload.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.json",
+              "sha256": "8523dd9d18383f9f26ade2acb21e4d7e59e71aa6ddee01c0578b526e3b2386a9",
+              "gitBlobSha": "0376fd30b4697afe72b0b8093b3f2c62d2943146"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.json",
+              "sha256": "1be15de23b96c8faf795bfd00cc8f97045eebc562f78a3bf7652c70c25119fd8",
+              "gitBlobSha": "07e9d1a6745e23dafc565d5488b2f2a159c0488a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+              "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+              "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+            }
+          ]
         }
       ],
       "visualAcceptanceDraft": {
@@ -6079,6 +6127,39 @@
           "sha256": "e723aeee1a551320e0d8f26d5496559d282b260201f5bc72ca401791668a62f7",
           "gitBlobSha": "20361961c1ca481357cd745744bf82d8a06ba095"
         }
+      },
+      "run196": {
+        "localRun": "19h",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "newMp4": false,
+        "newHooksCaptionsOrUtms": false,
+        "technicalTextProof": {
+          "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.json",
+          "sha256": "8523dd9d18383f9f26ade2acb21e4d7e59e71aa6ddee01c0578b526e3b2386a9",
+          "gitBlobSha": "0376fd30b4697afe72b0b8093b3f2c62d2943146"
+        },
+        "localCjStatus": {
+          "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.json",
+          "sha256": "1be15de23b96c8faf795bfd00cc8f97045eebc562f78a3bf7652c70c25119fd8",
+          "gitBlobSha": "07e9d1a6745e23dafc565d5488b2f2a159c0488a"
+        },
+        "restoredMasterHoldUuids": [
+          "4156060813550767248",
+          "6680239273933357186",
+          "3614365779669041576",
+          "-7647174116509334899"
+        ],
+        "holds": {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+          "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+          "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+        },
+        "publisherDraft": {
+          "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+          "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+          "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
+        },
+        "noSourceRightsOrFinalQualityApproval": true
       }
     },
     {
@@ -13711,12 +13792,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r194_seven_r125_audio_objects_nine_states_confirmed_draft_no_publish",
+      "state": "r196_six_reactivated_holds_restored_eleven_inactive_publisher_patch_only_cause_unknown",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-13",
-      "belegArt": "R194_FRESH_IDENTITY_PRODUCT_AUDIO_HASHES_AND_PER_CHANNEL_DRAFT_READBACK",
-      "lastEvidence": "Fresh byte identity bound four active queue URLs to three R125 audio-blocked hashes. Seven existing UUIDs/nine actual channel states are freshly read back draft=true/autoPublish=false with all original content/media/time/audience preserved. Two pre-mutation input rejections had unchanged targeted readbacks, followed by corrected successful writes. No media upload, new post, render or publication. Existing R176 projector/garlic holds not activated; PENDING drafts are not coverage.",
-      "nextAllowedStep": "Keep the seven UUIDs and all other established holds. Correct the documented original media only after exact product/source/music rights and professional audio/visual gates pass; fresh original/state/identity/history countercheck before any approved update. Do not generate replacement posts or treat new URLs as new content. Reuse13Nov analytics; missing status or older history remains unknown.",
+      "belegArt": "GEMESSEN_SECHS_ID_KETTEN_MEDIENHASHES_KANALREADBACKS_UND_PUBLISHER_GUARD_ENTWURF",
+      "lastEvidence": "Frischer 19h-Read zeigte zwei bekannte R125-Audioobjekte und vier R176-Projektorobjekte wieder aktiv. Alle sechs URLs frisch bytegebunden: unveränderte bekannte Audio- bzw. fac2f-R176-Hashes. Sechs gezielte Hold-Updates/sieben Kanalzustände mit frischer Shop-/Marken-/sechs-Kanalidentität, Original, Diff und Kollisionsprüfung; neue numerische IDs an identische UUIDs gebunden, Inhalt/Medien/Zeit/echte Provider-/YTZielgruppe unverändert. Nach vier frischen Schlussfenstern und unabhängiger Gegenprobe sind alle sieben Audio-/neun Zustände und vier R176-Holds wieder Draft/Autopublish aus. Ursache unbekannt. Bestehender Publisher kann Entwürfe freigeben, elf UUIDs fehlen in seiner Halteliste. Additiver, quellgebundener elf-UUID-Patch geprüft, nur Entwurf; vier alte Einträge erhalten, kein Live-Guard oder Workflowstart. Acht Fremd-PUBLISHED-Zustände beobachtet, keine eigene Publikation.",
+      "nextAllowedStep": "Bekannte stabile UUIDs und alle bestehenden Holds erhalten; keine Rechte-/Premiumfreigabe aus Autopublish oder vorhandenen URLs ableiten. Vor späterer Übernahme des engen Haltelistenpatches die aktuelle operative Quelle und den vollständigen Diff erneut prüfen; kein Workflowstart, kein Freigabeflag-/Frequenzwechsel. Der geprüfte Publisherpfad ist nur ein belegtes Wiederholungsrisiko, kein Verursachernachweis. Originalmedien erst nach Produkt-, Quellen-, Pflichtmusik-/Sprach-, Rechte- und Qualitätsprüfung korrigieren, dann dieselben UUIDs verwenden. Neue URL/ID/Re-Encoding ist kein neuer Content; keine blinden Retries bei unknown. Heutige R194-Reports nicht wiederholen.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -13934,6 +14015,18 @@
           "sha256": "f0116d19557659338c0fe10234d62a01d264d60a564ffa7986b053d425bedbf4",
           "gitBlobSha": "e5e4e312961b3e09a7d1aa6f1694d39c4a3a4118",
           "readAt": "2026-11-13T07:26:50.005541+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+          "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+          "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c",
+          "readAt": "2026-11-13T21:55:08.183381+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+          "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+          "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4",
+          "readAt": "2026-11-13T21:55:08.183381+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14305,6 +14398,31 @@
               "path": "dropship/codex-handoff-20261018/AUDIO-HALTS-20261113-R194.json",
               "sha256": "f0116d19557659338c0fe10234d62a01d264d60a564ffa7986b053d425bedbf4",
               "gitBlobSha": "e5e4e312961b3e09a7d1aa6f1694d39c4a3a4118"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-13",
+          "revision": 196,
+          "localRun": "19h",
+          "previousEvidencePreserved": {
+            "state": "r194_seven_r125_audio_objects_nine_states_confirmed_draft_no_publish",
+            "lastEvidence": "Fresh byte identity bound four active queue URLs to three R125 audio-blocked hashes. Seven existing UUIDs/nine actual channel states are freshly read back draft=true/autoPublish=false with all original content/media/time/audience preserved. Two pre-mutation input rejections had unchanged targeted readbacks, followed by corrected successful writes. No media upload, new post, render or publication. Existing R176 projector/garlic holds not activated; PENDING drafts are not coverage.",
+            "nextAllowedStep": "Keep the seven UUIDs and all other established holds. Correct the documented original media only after exact product/source/music rights and professional audio/visual gates pass; fresh original/state/identity/history countercheck before any approved update. Do not generate replacement posts or treat new URLs as new content. Reuse13Nov analytics; missing status or older history remains unknown.",
+            "belegArt": "R194_FRESH_IDENTITY_PRODUCT_AUDIO_HASHES_AND_PER_CHANNEL_DRAFT_READBACK",
+            "lastEvidenceDate": "2026-11-13"
+          },
+          "summary": "Frischer 19h-Read zeigte zwei bekannte R125-Audioobjekte und vier R176-Projektorobjekte wieder aktiv. Alle sechs URLs frisch bytegebunden: unveränderte bekannte Audio- bzw. fac2f-R176-Hashes. Sechs gezielte Hold-Updates/sieben Kanalzustände mit frischer Shop-/Marken-/sechs-Kanalidentität, Original, Diff und Kollisionsprüfung; neue numerische IDs an identische UUIDs gebunden, Inhalt/Medien/Zeit/echte Provider-/YTZielgruppe unverändert. Nach vier frischen Schlussfenstern und unabhängiger Gegenprobe sind alle sieben Audio-/neun Zustände und vier R176-Holds wieder Draft/Autopublish aus. Ursache unbekannt. Bestehender Publisher kann Entwürfe freigeben, elf UUIDs fehlen in seiner Halteliste. Additiver, quellgebundener elf-UUID-Patch geprüft, nur Entwurf; vier alte Einträge erhalten, kein Live-Guard oder Workflowstart. Acht Fremd-PUBLISHED-Zustände beobachtet, keine eigene Publikation.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+              "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+              "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+              "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+              "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
             }
           ]
         }
@@ -15456,6 +15574,32 @@
         },
         "newPublications": 0,
         "newRenders": 0
+      },
+      "run196": {
+        "localRun": "19h",
+        "rootSuccessfulUpdates": 6,
+        "channelStates": 7,
+        "audioSevenAndR176FourInactive": true,
+        "errors": 0,
+        "blindRetries": 0,
+        "ownPublications": 0,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+          "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+          "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+        },
+        "finalPlanning": {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-19H-R196.json",
+          "sha256": "c653cfd3a3945520b2660f39565f3407d162e7c6cb510f48035d56b64fedd1db",
+          "gitBlobSha": "3a8b0f2d4afb415da504288f549320b75d7d6025"
+        },
+        "publisherRiskAndPatch": {
+          "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+          "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+          "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
+        },
+        "patchLive": false,
+        "reactivationActor": "unknown"
       }
     },
     {
@@ -17657,6 +17801,86 @@
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-14H-R195.json",
           "sha256": "6edafe4b6245a38fe46061315bbf834b069046d67645286ca929dc2bcac7b960",
           "gitBlobSha": "0eb358862755540b350683efec3024f74e265b76"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 196,
+      "at": "2026-11-13T21:55:08.183381+00:00",
+      "actor": "codex",
+      "summary": "Abendlauf: sechs fremdreaktivierte bestehende Holds/sieben Kanalzustände nach frischer Byte-/Identitäts-/Originalprüfung wieder Draft/Autopublish aus; UUIDs und Inhalte erhalten, null Fehler/Retry/Publikationen. Schlussplanung acht Fremd-PUBLISHED und36 aktive PENDING-Objekte/45 Zustände. Derselbe Master mit gemessener360/390px-Typografie fortgeführt. Vorhandener CJ-Connector, lokale Credential-Bindung fehlt. Publisher-Wiederholungsrisiko belegt, quellgebundener additiver11UUID-Haltepatch nur Entwurf. R194-Tagesreports und bestehende Bechertextaktion wiederverwendet, konsolidierte Tagestabelle,24IDs und Historien erhalten. Kein Workflowstart, keine neue Automation/Frequenz/Shop-/Flow-/Budget-/DNSänderung.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-19H-R196.json",
+          "sha256": "c653cfd3a3945520b2660f39565f3407d162e7c6cb510f48035d56b64fedd1db",
+          "gitBlobSha": "3a8b0f2d4afb415da504288f549320b75d7d6025"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261113-19H-R196.json",
+          "sha256": "5ec284fd11340d3cf63b177c6a5d71e6a0994b5cb8d0d6f4877e35d430cba0f0",
+          "gitBlobSha": "8833db5e0613358e25a0afbde86ed10fd922ef54"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+          "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+          "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.md",
+          "sha256": "08ed5324f3f9e47d2a47037fa8d67d27b36fa73e011a3399960051a2c3eb87da",
+          "gitBlobSha": "b66e1f380a9b9eefa69cf683e4e28e6d42418ecb"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.json",
+          "sha256": "8523dd9d18383f9f26ade2acb21e4d7e59e71aa6ddee01c0578b526e3b2386a9",
+          "gitBlobSha": "0376fd30b4697afe72b0b8093b3f2c62d2943146"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-TEXTPROBE-360-390-20261113-R196.png",
+          "sha256": "6f1311e7d81da01079bfa9f3435df68586a1ff3b5c426e3efc7a75dcc589c33d",
+          "gitBlobSha": "6410a8bf6f9a3b8e6887ecdc9d0f93e658670121"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.md",
+          "sha256": "3e6c65b873040403c1de512a0b18323788ddbe424f24d290fdd93514b365323c",
+          "gitBlobSha": "fc369e16f21e9d558fbc9a286ab6eda2ef0d3c7e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.json",
+          "sha256": "1be15de23b96c8faf795bfd00cc8f97045eebc562f78a3bf7652c70c25119fd8",
+          "gitBlobSha": "07e9d1a6745e23dafc565d5488b2f2a159c0488a"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.md",
+          "sha256": "ee54328469f9b2d245c03d7687a18de761bc5c5c36b23778c0b391ac242309b7",
+          "gitBlobSha": "4c4bb1f66fd6e3d429e8bd4bd246dea02aa45887"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+          "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+          "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-ENTWURF-20261113-R196.patch",
+          "sha256": "648ab6f98bbda994cd2841ff90854e028046f54c3adedc6da2819d9e9a8eaa91",
+          "gitBlobSha": "8b6f949945d4a5b9c2b524baf5ef1e75fc1c4309"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESTABELLE-20261113-R196.md",
+          "sha256": "667b7bbc2e3abc450f05a8d3a97fe7d84add2fbb4023fa31da696f61fb5460e0",
+          "gitBlobSha": "8baaf5ea22cae7c4bbc4ccaca7e4c7518a4d89d0"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-19H-R196.md",
+          "sha256": "724cbc5c1cf7acadaf0bf58393c92248503bacd6854ba0d4ef676af716287420",
+          "gitBlobSha": "ce279685b83b7644d30e04653240428ea7338851"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-19H-R196.json",
+          "sha256": "2df551f03010cb251f83315af1d59e4f8cedaa1bcfa88d3c1a93fdc08f56e512",
+          "gitBlobSha": "8927b99f3dd30505c77d34d8569be67be37caedb"
         }
       ],
       "taskCount": 24,
@@ -40815,6 +41039,104 @@
     "ownerShopAppViewShownNotOwnSave": true,
     "newRenders": 0,
     "newUploads": 0,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run196": {
+    "dateZurich": "2026-11-13",
+    "localRun": "19h",
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "platformWrites": 6,
+    "holdRestorationsObjects": 6,
+    "holdRestorationsChannelStates": 7,
+    "ownPublications": 0,
+    "newPosts": 0,
+    "observedPublishedTodayObjects": 6,
+    "observedPublishedTodayChannelStates": 8,
+    "activePendingObjects": 36,
+    "activePendingChannelStates": 45,
+    "reportsReused": true,
+    "newMetricDefinitions": 0,
+    "newMetricDataCalls": 0,
+    "newKlaviyoMetricDiscoveries": 0,
+    "newFlowReports": 0,
+    "newBroadSalesReports": 0,
+    "ordersQueried": false,
+    "purchaseWatchEnded": true,
+    "sources": {
+      "plan": {
+        "path": "dropship/codex-handoff-20261018/PLANUNG-20261113-19H-R196.json",
+        "sha256": "c653cfd3a3945520b2660f39565f3407d162e7c6cb510f48035d56b64fedd1db",
+        "gitBlobSha": "3a8b0f2d4afb415da504288f549320b75d7d6025"
+      },
+      "products": {
+        "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261113-19H-R196.json",
+        "sha256": "5ec284fd11340d3cf63b177c6a5d71e6a0994b5cb8d0d6f4877e35d430cba0f0",
+        "gitBlobSha": "8833db5e0613358e25a0afbde86ed10fd922ef54"
+      },
+      "holds": {
+        "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
+        "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
+        "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+      },
+      "typoMd": {
+        "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.md",
+        "sha256": "08ed5324f3f9e47d2a47037fa8d67d27b36fa73e011a3399960051a2c3eb87da",
+        "gitBlobSha": "b66e1f380a9b9eefa69cf683e4e28e6d42418ecb"
+      },
+      "typoJson": {
+        "path": "dropship/codex-handoff-20261018/MASTER-TYPOGRAFIE-20261113-19H-R196.json",
+        "sha256": "8523dd9d18383f9f26ade2acb21e4d7e59e71aa6ddee01c0578b526e3b2386a9",
+        "gitBlobSha": "0376fd30b4697afe72b0b8093b3f2c62d2943146"
+      },
+      "typoPng": {
+        "path": "dropship/codex-handoff-20261018/MASTER-TEXTPROBE-360-390-20261113-R196.png",
+        "sha256": "6f1311e7d81da01079bfa9f3435df68586a1ff3b5c426e3efc7a75dcc589c33d",
+        "gitBlobSha": "6410a8bf6f9a3b8e6887ecdc9d0f93e658670121"
+      },
+      "cjMd": {
+        "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.md",
+        "sha256": "3e6c65b873040403c1de512a0b18323788ddbe424f24d290fdd93514b365323c",
+        "gitBlobSha": "fc369e16f21e9d558fbc9a286ab6eda2ef0d3c7e"
+      },
+      "cjJson": {
+        "path": "dropship/codex-handoff-20261018/CJ-LAUFZEIT-20261113-19H-R196.json",
+        "sha256": "1be15de23b96c8faf795bfd00cc8f97045eebc562f78a3bf7652c70c25119fd8",
+        "gitBlobSha": "07e9d1a6745e23dafc565d5488b2f2a159c0488a"
+      },
+      "pubMd": {
+        "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.md",
+        "sha256": "ee54328469f9b2d245c03d7687a18de761bc5c5c36b23778c0b391ac242309b7",
+        "gitBlobSha": "4c4bb1f66fd6e3d429e8bd4bd246dea02aa45887"
+      },
+      "pubJson": {
+        "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
+        "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
+        "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
+      },
+      "patch": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-ENTWURF-20261113-R196.patch",
+        "sha256": "648ab6f98bbda994cd2841ff90854e028046f54c3adedc6da2819d9e9a8eaa91",
+        "gitBlobSha": "8b6f949945d4a5b9c2b524baf5ef1e75fc1c4309"
+      },
+      "table": {
+        "path": "dropship/codex-handoff-20261018/TAGESTABELLE-20261113-R196.md",
+        "sha256": "667b7bbc2e3abc450f05a8d3a97fe7d84add2fbb4023fa31da696f61fb5460e0",
+        "gitBlobSha": "8baaf5ea22cae7c4bbc4ccaca7e4c7518a4d89d0"
+      },
+      "packetMd": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-19H-R196.md",
+        "sha256": "724cbc5c1cf7acadaf0bf58393c92248503bacd6854ba0d4ef676af716287420",
+        "gitBlobSha": "ce279685b83b7644d30e04653240428ea7338851"
+      },
+      "packetJson": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-19H-R196.json",
+        "sha256": "2df551f03010cb251f83315af1d59e4f8cedaa1bcfa88d3c1a93fdc08f56e512",
+        "gitBlobSha": "8927b99f3dd30505c77d34d8569be67be37caedb"
+      }
+    },
+    "noOperationalPublisherChanges": true,
+    "noNewMasterFilm": true,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

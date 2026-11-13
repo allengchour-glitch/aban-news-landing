@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "brandId": 6227837,
+  "timezone": "Europe/Zurich",
+  "recordedAtUTC": "2026-11-13T18:07:10.710571+00:00",
+  "scope": "Restore six existing known audio/quality holds; no publication or new content",
+  "trigger": "Fresh 19h reads found six formerly held UUIDs reactivated; actor/root cause unknown",
+  "identityFreshBeforeEachWrite": true,
+  "diffAndCollisionCheckBeforeEachWrite": true,
+  "successfulUpdates": 6,
+  "channelStatesAffected": 7,
+  "creates": 0,
+  "publications": 0,
+  "mediaUploads": 0,
+  "renders": 0,
+  "errors": 0,
+  "blindRetries": 0,
+  "allStableUuidsPreserved": true,
+  "allContentMediaTimesActualProviderMetadataAudiencesPreserved": true,
+  "allDraftTrueAutoPublishFalse": true,
+  "masterPublicationRegisterChangedOrInitialized": false,
+  "mediaChecks": [
+    {
+      "uuid": "3963843144054620883",
+      "oldId": 426961436,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+      "bytes": 6670409,
+      "httpStatus": 200,
+      "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+      "expectedSha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:51.099978+00:00"
+    },
+    {
+      "uuid": "8935974072695279179",
+      "oldId": 426961506,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+      "bytes": 9139031,
+      "httpStatus": 200,
+      "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+      "expectedSha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:51.744042+00:00"
+    },
+    {
+      "uuid": "4156060813550767248",
+      "oldId": 426961611,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4",
+      "bytes": 5535209,
+      "httpStatus": 200,
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "expectedSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:51.352522+00:00"
+    },
+    {
+      "uuid": "6680239273933357186",
+      "oldId": 426961718,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4",
+      "bytes": 5535209,
+      "httpStatus": 200,
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "expectedSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:51.633490+00:00"
+    },
+    {
+      "uuid": "3614365779669041576",
+      "oldId": 426961792,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4",
+      "bytes": 5535209,
+      "httpStatus": 200,
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "expectedSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:51.938591+00:00"
+    },
+    {
+      "uuid": "-7647174116509334899",
+      "oldId": 426961866,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4",
+      "bytes": 5535209,
+      "httpStatus": 200,
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "expectedSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "matchesEstablishedHold": true,
+      "checkedAtUTC": "2026-11-13T18:02:52.237855+00:00"
+    }
+  ],
+  "finalBroadQueueRead": {
+    "state": "confirmed_four_final_windows",
+    "independentReviewResult": "PASS",
+    "allKnownHoldsInactive": true,
+    "sourceArtifact": "PLANUNG-20261113-19H-R196.json"
+  },
+  "sourceProof": {
+    "path": "/tmp/luxe-evening-20261113-19h/holds/HOLDS-RESTORED-20261113-19H.json",
+    "sha256": "49f7728e57238ccd3e5b7b67342aa197e61f8ac69d48ce0bb977972cd712644f",
+    "fullSnapshotsRemainLocal": true
+  },
+  "updates": [
+    {
+      "index": 0,
+      "phase": "confirmed_hold",
+      "uuid": "3963843144054620883",
+      "oldId": 426961436,
+      "newId": 427286519,
+      "checkedAtUTC": "2026-11-13T18:05:20.250Z",
+      "readbackAtUTC": "2026-11-13T18:05:23.078Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ],
+        "instagramData.autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "actualProviderMetadata": {
+        "facebook": {
+          "type": "REEL",
+          "title": "3-in-1 Gemüsehobel"
+        },
+        "instagram": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      "captionSha256Before": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16",
+      "captionSha256After": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16",
+      "originalSnapshotSha256": "acd47753247c9f6132e238c62fca1b19580257cc4dac979bbf25901dd305bad8",
+      "actualReadbackSnapshotSha256": "d4974a2341fdf00823dc70cb9a9d887091aec90f862a7e9ab1fa23065a6b889c",
+      "baselineR195Id": 426613103,
+      "idChain": [
+        426613103,
+        426961436,
+        427286519
+      ]
+    },
+    {
+      "index": 1,
+      "phase": "confirmed_hold",
+      "uuid": "8935974072695279179",
+      "oldId": 426961506,
+      "newId": 427286591,
+      "checkedAtUTC": "2026-11-13T18:05:24.143Z",
+      "readbackAtUTC": "2026-11-13T18:05:26.387Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData",
+        "instagramData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "actualProviderMetadata": {
+        "threads": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "captionSha256Before": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d",
+      "captionSha256After": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d",
+      "originalSnapshotSha256": "e06bd30cb67af2d2dff9f70d86aa5d3403b2232a709a0797f193f10d574e8691",
+      "actualReadbackSnapshotSha256": "e7577442f5de2f89954511f538f2f225e3a959185a82f9e09d5e19e4d3c6ade7",
+      "baselineR195Id": 426615714,
+      "idChain": [
+        426615714,
+        426961506,
+        427286591
+      ]
+    },
+    {
+      "index": 2,
+      "phase": "confirmed_hold",
+      "uuid": "4156060813550767248",
+      "oldId": 426961611,
+      "newId": 427286681,
+      "checkedAtUTC": "2026-11-13T18:05:27.544Z",
+      "readbackAtUTC": "2026-11-13T18:05:30.090Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ],
+        "instagramData.autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ],
+      "actualProviderMetadata": {
+        "instagram": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      "captionSha256Before": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+      "captionSha256After": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+      "originalSnapshotSha256": "dbf4702714a409d17f4726328b6f64fa75f37eda562c24eb5b613013c6537e01",
+      "actualReadbackSnapshotSha256": "dd9c35c6cd67df7a05d8ec280c11ed15d7e2ec497c1e12762f9bf4778eb00b95",
+      "baselineR195Id": 426033327,
+      "idChain": [
+        426033327,
+        426961611,
+        427286681
+      ]
+    },
+    {
+      "index": 3,
+      "phase": "confirmed_hold",
+      "uuid": "6680239273933357186",
+      "oldId": 426961718,
+      "newId": 427287815,
+      "checkedAtUTC": "2026-11-13T18:06:07.300Z",
+      "readbackAtUTC": "2026-11-13T18:06:09.587Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData",
+        "instagramData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ],
+      "actualProviderMetadata": {
+        "facebook": {
+          "type": "REEL",
+          "title": "Sternenlicht-Projektor im Detail"
+        }
+      },
+      "captionSha256Before": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+      "captionSha256After": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+      "originalSnapshotSha256": "13c12954aed0492714ac78bc3bb8926054df4db9e2441bfff217c70bbab65c27",
+      "actualReadbackSnapshotSha256": "f3d8d6520986ce0c2ea58ef9da77ca88c27f10cfc4473695f12b35a63ba91026",
+      "baselineR195Id": 426034581,
+      "idChain": [
+        426034581,
+        426961718,
+        427287815
+      ]
+    },
+    {
+      "index": 4,
+      "phase": "confirmed_hold",
+      "uuid": "3614365779669041576",
+      "oldId": 426961792,
+      "newId": 427287938,
+      "checkedAtUTC": "2026-11-13T18:06:10.663Z",
+      "readbackAtUTC": "2026-11-13T18:06:13.129Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData",
+        "instagramData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ],
+      "actualProviderMetadata": {
+        "tiktok": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Sternenlicht im Detail",
+          "photoCoverIndex": 0
+        }
+      },
+      "captionSha256Before": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+      "captionSha256After": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+      "originalSnapshotSha256": "b7846efb618ccfeb54624f4946d9cb93905dc3a5218e19fb875656b60e28d1ff",
+      "actualReadbackSnapshotSha256": "e985ede5062125da524136c80228ec5b604fa9b8a5817bb50815071483ccb846",
+      "baselineR195Id": 426034638,
+      "idChain": [
+        426034638,
+        426961792,
+        427287938
+      ]
+    },
+    {
+      "index": 5,
+      "phase": "confirmed_hold",
+      "uuid": "-7647174116509334899",
+      "oldId": 426961866,
+      "newId": 427288119,
+      "checkedAtUTC": "2026-11-13T18:06:14.333Z",
+      "readbackAtUTC": "2026-11-13T18:06:16.650Z",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "identityPass": true,
+      "intendedChanges": {
+        "draft": [
+          false,
+          true
+        ],
+        "autoPublish": [
+          true,
+          false
+        ]
+      },
+      "omittedNonProviderDefaults": [
+        "twitterData",
+        "instagramData"
+      ],
+      "collisionCandidates": [],
+      "responseIdKnown": true,
+      "contentMediaScheduleProvidersPreserved": true,
+      "flagsBefore": {
+        "draft": false,
+        "autoPublish": true
+      },
+      "flagsAfter": {
+        "draft": true,
+        "autoPublish": false
+      },
+      "confirmedPublicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "confirmedProviders": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "confirmedMediaUrls": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ],
+      "actualProviderMetadata": {
+        "youtube": {
+          "title": "Sternenlicht-Projektor im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "sternlicht",
+            "lichtmomente",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "captionSha256Before": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+      "captionSha256After": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+      "originalSnapshotSha256": "6ded19d78ccd07d594f46351d3a88369304e674a372b9ec608631d6a0ca024c1",
+      "actualReadbackSnapshotSha256": "dfe1640c3fab38db3f29f3ef77b937242744fe6aa74e7d73d21211135a408e02",
+      "baselineR195Id": 426038749,
+      "idChain": [
+        426038749,
+        426961866,
+        427288119
+      ]
+    }
+  ],
+  "scopeLimitations": [
+    "Condensed documentation proof only, not a publication ledger.",
+    "Existing captions were preserved as required; no new factual, product, delivery, audio or rights approval is inferred.",
+    "PENDING on a draft object does not count as active scheduling.",
+    "Reactivation actor and root cause remain unknown pending separate diagnosis."
+  ]
+}

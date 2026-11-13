@@ -2260,3 +2260,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Besitzeransicht / Kontinuität | Neuen Shop-App-Kundenscreenshot 1000149207 vom Editorzwischenstand getrennt dokumentiert | Becherhintergrund, weisser LuxeStyle-Schriftzug und «Für dich» sichtbar; kein eigener Save, keine MP4-Identitätsprüfung oder unabhängige Bestätigung einer Liveänderung. Empfehlungen sind keine belegten manuell kuratierten Kategorien. Kein neuer Browsersteuerungszugang bestätigt. Alle 24 Aufgaben-IDs, Historien und die Tagesgrenze erhalten; Claude-Empfang unbekannt. |
 
 [LUXESTYLE_R195_20261113_14H] [Paket](CONTENT-VERKAUFSPAKET-20261113-14H-R195.md) · [Quellenmatrix](MASTER-SOURCE-MATRIX-20261113-14H-R195.md) · [SEO-Hub](SEO-HUB-20261113-14H-R195.md).
+
+### R196 – 19h: erneute Reaktivierungen gezielt gesperrt und Mastertexte vermessen
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Tatsächliche Social-Änderung | Sechs erneut aktivierte bestehende UUIDs mit frischen Identitäten/Originalen, sechs Medienhashes, Diff und Kollision gegengeprüft und wieder auf Entwurf gesetzt. | Sechs Updates/sieben Kanalzustände, kanalweise und unabhängig frisch bestätigt. UUIDs/Inhalte/Medien/Zeiten/Zielgruppen erhalten; null Fehler/Retry/Neuanlagen/Publikationen. Ursache der Reaktivierung unbekannt. |
+| Planung / Produkt | Acht kleine Planungsfenster vor/nach Änderungen sowie zwei Produkte/neun Varianten gezielt gelesen. | Schlussstand 57/71; acht Fremd-PUBLISHED, noch 36 aktive PENDING-Objekte/45 Zustände. Alle sieben Audio- und vier R176-Holds inaktiv. Threads 15.11./YT 15.–20.11. offen. Produkte seit 14h unverändert; Kollektionen nicht erneut gelesen. |
+| Master / CJ | Unveränderte Texte anhand vorhandener Schriftmetriken und 360-/390px-Rasterprobe geprüft; bestehenden CJ-Leser gegen aktuelle Main-/Launcher-Hashes und lokalen Offline-Status geprüft. | Zweizeilige Hooks/Produktlabel passen; CTA einzeilig. Kein Film oder native Plattformabnahme. Connector vorhanden, lokale Bindung fehlt; null CJ-HTTP/Handshake/Installation. Quelle, Einheit/Motiv und Rechte bleiben offen. |
+| Schutzentwurf | Bestehenden Freigabepublisher und aktuelle Halteliste geprüft; elf UUIDs additiv als Patch vorbereitet, vorhandene reine Lookup-Funktionen und isoliertes git apply --check validiert. | Vier alte Einträge erhalten, alle elf neuen im Entwurf gehalten. Patch nicht operativ übernommen; keine Workflowausführung oder Frequenzänderung, kein Verursachernachweis. |
+| Tagesgrenze / Dokumentation | Morgenberichte weiterverwendet, heutige belegte Tätigkeiten konsolidiert und 24 Aufgaben-IDs/Historie erhalten. | Null neue Kennzahl-/Flow-/Verkaufs-/Bestellreports. Becherbeschreibung nur vorhandener Freigabeentwurf; keine Shop-/Flow-/DNS-/Budget-/Rabattänderung oder Kundenansprache. Claude-Empfang unbekannt. |
+
+[Konsolidierte Tagestabelle 13.11.](TAGESTABELLE-20261113-R196.md) · [Abendpaket](CONTENT-VERKAUFSPAKET-20261113-19H-R196.md) · [Holds](HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json) · [Schutzdiff](METRICOOL-HALTEN-ENTWURF-20261113-R196.patch).
+
+[LUXESTYLE_R196_20261113_19H]
