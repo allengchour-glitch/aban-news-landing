@@ -2201,3 +2201,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Freigabe / Übergabe | Ausgewählte MP4, Job-IDs, Kosten-/Rechte-/QA-Grenzen und nächsten Übernahmeschritt gespeichert | Entwurf, keine Premium-/Rechtefreigabe,0Shop-Videouploads/Profil-/Metricoolwrites; Editor-Loginblock bleibt. Projektorregister und Tagesreports unverändert |
 
 [LUXESTYLE_R190_20261113] [Film](SHOP-VIDEOHINTERGRUND-20261113-R190.mp4) · [Bericht](SHOP-VIDEOHINTERGRUND-20261113-R190.md).
+
+### R191 – Nutzungsfreigabe und Shopify-Video-Datei
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe / Identität | «Ja nutze» zur konkreten Logo-/Videoauswahl festgehalten; Shopify frisch geprüft | Kreative Nutzung freigegeben; LuxeStyle/luxestyle.ch/CHF bestätigt. Unabhängiger Rechtebeleg bleibt unbekannt |
+| Videoupload | Zwei direkt abgewiesene Dateianlagen gezielt gegengeprüft, danach dokumentierten Staging-Ablauf genutzt | Ein Binärupload HTTP 204 und genau eine Video-Datei78029489275271 angelegt; keine blinden Wiederholungen |
+| Rücklesen | Videostatus und Original vom Shopify-CDN geprüft, bestehendes Logo gezielt gelesen | Video READY/8s/1080×1170/4.95MB; HTTP200/SHA identisch zu R190. Logo weiterhin READY, kein Doppelupload |
+| Profil / Grenzen | Aktuellen Cloud-Zugriff und vorhandene Profilwerkzeuge geprüft; Übernahmeschritte für vorhandene Dateien dokumentiert |0Profilzuweisungen/Save; authentifizierter Editor und nativer Overlaytest fehlen.0neueRenders/Metricool-/Produkt-/Rabatt-/Budget-/Flow-/DNSwrites oder Tagesreports; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R191_20261113] [Bericht](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.md) · [Beleg](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json).

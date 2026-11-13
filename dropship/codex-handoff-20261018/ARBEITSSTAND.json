@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 190,
-  "updatedAt": "2026-11-12T23:55:40.210323+00:00",
+  "revision": 191,
+  "updatedAt": "2026-11-13T00:05:40.885298+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17171,6 +17171,26 @@
           "path": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.mp4",
           "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
           "gitBlobSha": "3291618c32c6ef3033750dc66d5c8ec8cee23af8"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 191,
+      "at": "2026-11-13T00:05:40.885298+00:00",
+      "actor": "codex",
+      "summary": "Recorded explicit owner use approval for R189 logo/R190 video; after two clear rejected direct requests and targeted empty readbacks uploaded once via Shopify VIDEO staging, registered one READY Video and verified CDN original byte-identical to approved export. Existing logo remains READY. No profile assignment or new render; editor access, native overlay and independent supplier rights remain open.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.md",
+          "sha256": "1a332d8803785f1598299ae922b2530206e9ce8f146d9877f8c3e6c49cb5aadb",
+          "gitBlobSha": "8359b987896ee90a6028f1c9f3dfda9a3205b00d"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json",
+          "sha256": "2bafaabaa2ab9e9d6effd7e2ba02b3d3ae637fa28cbb3bc6c2c1b9eb62c55125",
+          "gitBlobSha": "2429855158dfcda921c24704e57e2eb66c04f8e0"
         }
       ],
       "taskCount": 24,
@@ -39561,6 +39581,23 @@
     "shopVideoUploads": 0,
     "creativeRightsApproval": false,
     "proof": "dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.json",
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run191": {
+    "dateZurich": "2026-11-13",
+    "assetId": "luxe_shop_header_retro_schwalbe_20261113",
+    "creativeOwnerUseApproval": true,
+    "shopVideoId": "gid://shopify/Video/78029489275271",
+    "shopVideoFileStatus": "READY",
+    "shopVideoOriginalUrl": "https://cdn.shopify.com/videos/c/o/v/7a80359d24f640a89966424650977ab0.mp4",
+    "originalByteIdenticalToR190": true,
+    "sourceSha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+    "videoFilesCreated": 1,
+    "profileWrites": 0,
+    "newRenders": 0,
+    "independentSupplierRightsEvidence": "unknown",
+    "nativeOverlayQA": "not performed",
+    "proof": "dropship/codex-handoff-20261018/SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json",
     "claudeReceipt": "unknown_no_receipt"
   }
 }

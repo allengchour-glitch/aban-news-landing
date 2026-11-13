@@ -1650,3 +1650,9 @@ Bestehendes Shop-Files-Profilbild mit image_gen transparent ohne «SCHWEIZER SHO
 Auf ausdrücklichen Videoauftrag zwei kostenlose Higgsfield-Jobs gerendert; Creditstand2544.22 blieb gleich. Eine vorherige1080p-Unlimited-Anfrage vor Joberstellung abgewiesen, keine kostenpflichtige Ausweichgenerierung. Job2 mit fester Produktansicht/Lichtbewegung ausgewählt; tatsächliche Quelle960×960/24fps, Shop-Export8s/1080×1170/30fps/4.95MB. Produktform/Motive in Stichproben und finaler Ausschnitt geprüft; anfängliche falsche Motivzählung nach Galeriegegenprobe korrigiert. Kreative/rechtliche und native Shop-Overlayabnahme offen, keine Profilzuweisung oder Videoupload. [Film](SHOP-VIDEOHINTERGRUND-20261113-R190.mp4) · [Bericht](SHOP-VIDEOHINTERGRUND-20261113-R190.md) · [Beleg](SHOP-VIDEOHINTERGRUND-20261113-R190.json). R189-Logo liegt bereits inShopifyDateien, noch nicht zugewiesen; Claude-Empfang unbekannt.
 
 [LUXESTYLE_R190_20261113]
+
+## R191 – 13.11.2026: Besitzerfreigabe und Video in Shopify-Dateien
+
+«Ja nutze» als konkrete kreative Nutzungsfreigabe für R189-Logo/R190-Video festgehalten. Video einmal per dokumentiertem VIDEO-Staging hochgeladen und als Video78029489275271 registriert; READY/8s/1080×1170, CDN HTTP200 und bytegleich zum freigegebenen Export. Zwei vorherige direkte Requests klar abgewiesen und jeweils leer gezielt zurückgelesen, kein Doppelupload. R189-Logo weiterhin READY. Keine Profilzuweisung: authentifizierter Editorzugriff/Overlaytest fehlen; unabhängiger Bildbearbeitungsrechtebeleg unbekannt. Kein neuer Render, keine Social-/Produkt-/Rabattänderung. [Bericht](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.md) · [Beleg](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R191_20261113]

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "revision": 191,
+  "recordedAtUTC": "2026-11-13T00:05:40.885298+00:00",
+  "dateZurich": "2026-11-13",
+  "brand": "LuxeStyle",
+  "shopDomain": "luxestyle.ch",
+  "ownerApproval": {
+    "message": "ja nutze",
+    "scope": "Konkretes R189-Logo und ausgewählter R190-Shop-Videohintergrund nutzen",
+    "creativeUseApproval": true,
+    "doesNotProveIndependentSupplierLicense": true
+  },
+  "assetId": "luxe_shop_header_retro_schwalbe_20261113",
+  "approvedVideoSha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+  "shopIdentity": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "timezoneReportedByShopify": "CET",
+    "verifiedFreshBeforeRegister": true
+  },
+  "uploadCheckpoint": {
+    "state": "ONE_VIDEO_READY_AND_CDN_BYTE_IDENTITY_CONFIRMED",
+    "attempts": 3,
+    "action": "fileCreate VIDEO in Shopify Files only",
+    "filename": "luxestyle-shop-videohintergrund-20261113.mp4",
+    "sourceUrl": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/ea468acb1ddc648caefa2ecdcf86b962f1badad7/dropship/codex-handoff-20261018/SHOP-VIDEOHINTERGRUND-20261113-R190.mp4",
+    "bytes": 4945164,
+    "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+    "sourceHttpStatus": 200,
+    "ownerApproval": "ja nutze",
+    "profileAssignment": "not performed",
+    "duplicateFilenameQuery": "0 results; bounded first5",
+    "brand": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "writeStartedAt": "2026-11-13T00:01:49.395750+00:00",
+    "lastUserError": "RAISE_ERROR unsupported for VIDEO",
+    "filesCreated": 1,
+    "attemptHistory": [
+      {
+        "attempt": 1,
+        "state": "rejected",
+        "error": "RAISE_ERROR unsupported for VIDEO",
+        "filesReturned": 0,
+        "filenameReadback": []
+      },
+      {
+        "attempt": 2,
+        "state": "rejected",
+        "error": "Invalid video url (GitHub source)",
+        "filesReturned": 0
+      },
+      {
+        "attempt": 3,
+        "source": "Shopify staged upload resourceUrl",
+        "state": "confirmed",
+        "fileId": "gid://shopify/Video/78029489275271",
+        "fileStatus": "UPLOADED",
+        "userErrors": []
+      }
+    ],
+    "correction": "Remove unsupported duplicateResolutionMode; fresh filename readback confirmed absent",
+    "stagedUploadPostAttempted": true,
+    "stagedPost": {
+      "status": 204,
+      "uploadHost": "shopify-video-production-core-originals.storage.googleapis.com",
+      "videoBytesSent": 4945164,
+      "responseBytes": 0,
+      "responseSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "at": "2026-11-13T00:03:02.533286+00:00"
+    },
+    "preRegisterDuplicateQuery": "0 results, first5",
+    "shopIdentity": "fresh LuxeStyle/luxestyle.ch/CHF verified",
+    "fileId": "gid://shopify/Video/78029489275271",
+    "fileStatus": "READY",
+    "publicOriginalUrl": "https://cdn.shopify.com/videos/c/o/v/7a80359d24f640a89966424650977ab0.mp4",
+    "durationMs": 8000,
+    "originalWidth": 1080,
+    "originalHeight": 1170,
+    "cdnProof": {
+      "httpStatus": 200,
+      "bytes": 4945164,
+      "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+      "byteIdenticalToApprovedR190Export": true,
+      "at": "2026-11-13T00:04:24.775275+00:00"
+    },
+    "newRenders": 0
+  },
+  "shopifyReadback": {
+    "data": {
+      "node": {
+        "id": "gid://shopify/Video/78029489275271",
+        "alt": "LuxeStyle Shop-Videohintergrund: Retro-Vogel-Keramikbecher Schwalbe, ruhige Lichtbewegung, stumm.",
+        "filename": "luxestyle-shop-videohintergrund-20261113.mp4",
+        "fileStatus": "READY",
+        "duration": 8000,
+        "originalSource": {
+          "url": "https://cdn.shopify.com/videos/c/o/v/7a80359d24f640a89966424650977ab0.mp4",
+          "width": 1080,
+          "height": 1170,
+          "mimeType": "video/mp4",
+          "format": "mp4",
+          "fileSize": 4945164
+        },
+        "sources": [
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/7a80359d24f640a89966424650977ab0/7a80359d24f640a89966424650977ab0.SD-480p-1.2Mbps-101134653.mp4",
+            "width": 442,
+            "height": 480,
+            "mimeType": "video/mp4",
+            "format": "mp4",
+            "fileSize": null
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/7a80359d24f640a89966424650977ab0/7a80359d24f640a89966424650977ab0.HD-1080p-4.8Mbps-101134653.mp4",
+            "width": 996,
+            "height": 1080,
+            "mimeType": "video/mp4",
+            "format": "mp4",
+            "fileSize": null
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/7a80359d24f640a89966424650977ab0/7a80359d24f640a89966424650977ab0.HD-720p-3.0Mbps-101134653.mp4",
+            "width": 664,
+            "height": 720,
+            "mimeType": "video/mp4",
+            "format": "mp4",
+            "fileSize": null
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/7a80359d24f640a89966424650977ab0/7a80359d24f640a89966424650977ab0.m3u8",
+            "width": 996,
+            "height": 1080,
+            "mimeType": "application/x-mpegURL",
+            "format": "m3u8",
+            "fileSize": null
+          }
+        ],
+        "preview": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/preview_images/7a80359d24f640a89966424650977ab0.thumbnail.0000000000.jpg?v=1794528218",
+            "width": 1080,
+            "height": 1170
+          }
+        }
+      }
+    }
+  },
+  "cdnReadback": {
+    "httpStatus": 200,
+    "bytes": 4945164,
+    "sha256": "3fa1008aa54207842b5dd7375352fc4496e52b9f017f014b8c813dadc9921071",
+    "byteIdenticalToApprovedR190Export": true,
+    "ffprobe": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "width": 1080,
+          "height": 1170,
+          "coded_width": 1080,
+          "coded_height": 1170,
+          "closed_captions": 0,
+          "film_grain": 0,
+          "has_b_frames": 2,
+          "pix_fmt": "yuv420p",
+          "level": 32,
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "refs": 1,
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "30/1",
+          "avg_frame_rate": "30/1",
+          "time_base": "1/15360",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 122880,
+          "duration": "8.000000",
+          "bit_rate": "4941416",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "240",
+          "extradata_size": 48,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "vendor_id": "[0][0][0][0]",
+            "encoder": "Lavc61.19.101 libx264"
+          }
+        }
+      ],
+      "format": {
+        "filename": "/tmp/luxe-shop-use-20261113/shopify-original-readback.mp4",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "8.000000",
+        "size": "4945164",
+        "bit_rate": "4945164",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "isom",
+          "minor_version": "512",
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf61.7.103"
+        }
+      }
+    },
+    "at": "2026-11-13T00:04:24.775275+00:00"
+  },
+  "logo": {
+    "id": "gid://shopify/MediaImage/78029348438407",
+    "filename": "luxestyle-shop-logo-transparent-20261113.png",
+    "fileStatus": "READY",
+    "width": 1254,
+    "height": 1254,
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-shop-logo-transparent-20261113.png?v=1794526174",
+    "newLogoUploads": 0,
+    "readbackInThisRun": true
+  },
+  "profile": {
+    "assignments": 0,
+    "liveStatus": "not confirmed; no profile Save performed",
+    "editorUrl": "https://admin.shopify.com/store/luxestyle-ch/apps/shop-72/merchant/editor?previewPath=home",
+    "access": "Previous R188/R189 explicit editor calls ended at Shopify login. Current environment capabilities/secrets/runtime bindings are empty; no new isolated-browser session billed in this run. No supported profile assignment tool identified.",
+    "nativeOverlayQA": "not performed",
+    "commercialImageEditingRightsEvidence": "not independently established in targeted R188-R190 review"
+  },
+  "limits": {
+    "newRenders": 0,
+    "paidRenders": 0,
+    "successfulVideoFilesCreated": 1,
+    "successfulStagedBinaryPosts": 1,
+    "rejectedFileCreateRequests": 2,
+    "logoUploads": 0,
+    "metricoolWrites": 0,
+    "shopProfileWrites": 0,
+    "productWrites": 0,
+    "discountBudgetFlowDnsWrites": 0,
+    "performanceFlowOrderReports": 0,
+    "newBrowserSessions": 0,
+    "projectorMasterAndLedgerUnchanged": true
+  },
+  "nextStep": "In authenticated Shop profile editor choose existing R189 file under Header > Logo and existing R191 VIDEO under Header > Background > Media. Verify native overlays and applicable rights, Save once and read profile back. Never upload/render duplicates merely because editor access is blocked.",
+  "claudeReceipt": "unknown_no_receipt"
+}
