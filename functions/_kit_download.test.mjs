@@ -104,13 +104,13 @@ for(const mode of ['verifyHang','bodyHang']){
 const html=readFileSync(new URL('../danke-kit.html',import.meta.url),'utf8');
 const script=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
-function page(replies,search='?session_id=cs_test_demo'){
+function page(replies,search='?session_id=cs_test_demo',statuses=[]){
  const box={textContent:'',innerHTML:''},button={hidden:true,disabled:false,addEventListener(type,fn){this.click=fn;}};
  let calls=0;const timers=new Map();let timerId=0;
  vm.runInNewContext(script,{document:{getElementById:id=>id==='box'?box:button},location:{search},URLSearchParams,AbortController,setTimeout:(fn,ms)=>{assert.equal(ms,15000);timers.set(++timerId,fn);return timerId;},clearTimeout:id=>timers.delete(id),fetch:async(url,opts)=>{
   assert.equal(opts.cache,'no-store');assert.equal(opts.referrerPolicy,'no-referrer');
-  const data=replies[calls++];if(data instanceof Error)throw data;
-  return {json:async()=>data};
+  const status=statuses[calls]??200;const data=replies[calls++];if(data instanceof Error)throw data;
+  return {ok:status>=200&&status<300,json:async()=>data};
  }});
  return {box,button,calls:()=>calls,expire:()=>{for(const fn of [...timers.values()])fn();},timers};
 }
@@ -145,6 +145,20 @@ for (const search of ['', '?session_id=', '?session_id=ungueltig', '?session_id=
  assert.equal(p.calls(),0);assert.equal(p.button.hidden,true);assert.equal(p.timers.size,0);
  assert.match(p.box.textContent,/Bestellkennung/);assert.match(p.box.textContent,/nicht nochmals kaufen/);
  assert.doesNotMatch(p.box.textContent,/Bitte über den Shop kaufen/);checks++;
+}
+// Widersprüchliche Transport-/Inhaltsantworten geben keinen Link frei.
+for(const status of [402,429,500]){
+ const p=page([{ok:true,url:'/downloads/kits/'+'d'.repeat(24)+'.zip'},
+  {ok:true,url:'/downloads/kits/'+'e'.repeat(24)+'.zip'}],undefined,[status,200]);
+ await settle();assert.equal(p.box.innerHTML,'','HTTP '+status+' darf keinen Download zeigen');
+ assert.equal(p.button.hidden,false);assert.equal(p.calls(),1);assert.equal(p.timers.size,0);
+ p.button.click();await settle();assert.match(p.box.innerHTML,/Kit herunterladen/);
+ assert.equal(p.calls(),2);assert.equal(p.button.hidden,true);checks++;
+}
+for(const ok of ['false','true',1,{}]){
+ const p=page([{ok,url:'/downloads/kits/'+'f'.repeat(24)+'.zip'}]);
+ await settle();assert.equal(p.box.innerHTML,'','Nur boolesch true gibt frei');
+ assert.equal(p.button.hidden,false);assert.equal(p.calls(),1);checks++;
 }
 assert.doesNotMatch(html,/<h1>Danke für deinen Kauf!/);checks++;
 console.log(`${checks} ok, 0 Fehler`);

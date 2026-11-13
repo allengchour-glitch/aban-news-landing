@@ -29,6 +29,7 @@
     function pruefen(){
     erneut.hidden=true;erneut.disabled=true;
     box.textContent='Zahlung wird geprüft …';
+    var httpOk=false;
     var controller=new AbortController();
     var timer;
     var deadline=new Promise(function(resolve,reject){
@@ -36,11 +37,11 @@
     });
     Promise.race([
       fetch('/api/kit-download?session_id='+encodeURIComponent(sid),{cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal})
-        .then(function(r){return r.json();}),
+        .then(function(r){httpOk=r.ok;return r.json();}),
       deadline
     ])
       .then(function(d){
-        if(d&&d.ok&&/^\/downloads\/kits\/[a-f0-9]{24}\.zip$/.test(d.url)){
+        if(httpOk&&d&&d.ok===true&&/^\/downloads\/kits\/[a-f0-9]{24}\.zip$/.test(d.url)){
           box.innerHTML='<p>Dein Kit ist bereit:</p><a class="btn" href="'+d.url+'">📦 Kit herunterladen</a>'+
                         '<p class="muted">Link gilt für dich — bitte nicht öffentlich teilen.</p>';
         } else {
