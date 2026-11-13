@@ -1,0 +1,41 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>M1: Toon-Test, Zeitmessung</title>
+<style>html,body{margin:0;background:#cfeaf5;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { koerper, toon } from '../../lib/toon.js';
+const W = 1080, H = 1920;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0xf6d9b4); scene.fog = new THREE.Fog(0xf6d9b4, 18, 60);
+const cam = new THREE.PerspectiveCamera(38, W / H, 0.1, 200);
+scene.add(new THREE.HemisphereLight(0xcfeaf5, 0x8fae55, 0.9));
+const sonne = new THREE.DirectionalLight(0xfff0cf, 2.2); sonne.position.set(8, 12, 6); sonne.castShadow = true;
+sonne.shadow.mapSize.set(2048, 2048); Object.assign(sonne.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14, near: 1, far: 40 }); scene.add(sonne);
+// Gelände
+const g = new THREE.PlaneGeometry(80, 80, 120, 120); g.rotateX(-Math.PI / 2);
+const p = g.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), z = p.getZ(i); p.setY(i, Math.sin(x * .15) * Math.cos(z * .12) * 1.6 + Math.max(0, -z - 12) * .25); }
+g.computeVertexNormals();
+const boden = new THREE.Mesh(g, toon(0x8fb85a, { rim: 0 })); boden.receiveShadow = true; scene.add(boden);
+// Bäume und Pia-Test
+for (let i = 0; i < 40; i++) { const x = (Math.sin(i * 12.9) * 40), z = -6 - (Math.abs(Math.cos(i * 7.3)) * 30);
+  const t = new THREE.Group(); const st = koerper(new THREE.CylinderGeometry(.18, .26, 1.6, 10), 0x8a5f3a); st.position.y = .8; t.add(st);
+  const kr = koerper(new THREE.IcosahedronGeometry(1.1, 1), 0x4c8a50); kr.position.y = 2.3; t.add(kr);
+  t.position.set(x, 0, z); t.position.y = Math.sin(x * .15) * Math.cos(z * .12) * 1.6 + Math.max(0, -z - 12) * .25; scene.add(t); }
+const pia = new THREE.Group();
+const kopf = koerper(new THREE.SphereGeometry(.55, 32, 24), 0xf9f7f1, { umriss: 0.035 }); kopf.position.y = 2.2; pia.add(kopf);
+const rumpf = koerper(new THREE.CylinderGeometry(.3, .42, 1.0, 16), 0xb9763f); rumpf.position.y = 1.2; pia.add(rumpf);
+for (const sx of [-1, 1]) { const bein = koerper(new THREE.CylinderGeometry(.06, .06, .8, 8), 0x1d1d22, { umriss: 0 }); bein.position.set(sx * .16, .4, 0); pia.add(bein); }
+pia.position.set(0, 0, 0); scene.add(pia);
+window.__seek3d = async (t) => {
+  const a = t * 0.3;
+  cam.position.set(Math.sin(a) * 5, 2.6, 5.5 * Math.cos(a) + 1); cam.lookAt(0, 1.8, 0);
+  pia.rotation.y = Math.sin(t) * .3;
+  renderer.render(scene, cam); renderer.getContext().finish();
+};
+Motion.fertig(5);
+</script>

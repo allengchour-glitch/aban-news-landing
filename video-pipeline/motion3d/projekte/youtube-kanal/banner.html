@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube-Banner Pia, Serie (ohne Text)</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { erzeugeWelt, hoehe } from '../../lib/welt3d.js';
+import { erzeugePia, spieler } from '../../lib/pia3d.js';
+import { nachbearbeitung } from '../../lib/post.js';
+const W = 2560, H = 1440;
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(40, W / H, 0.1, 700);
+const welt = erzeugeWelt(scene, { dauer: 40, schattenGroesse: 4096 });
+const post = nachbearbeitung(renderer, scene, cam, W, H, { samples: 4 });
+const y = (x, z) => hoehe(x, z) + 0.04;
+const mk = (opt, x, z, ry, clip, req) => { const f = erzeugePia(opt); scene.add(f.wurzel); return spieler(f, [{ t0: 0, t1: 99, clip, requisit: req }], [{ t: 0, x, z, ry }], { y }); };
+// Vorne: Pia winkt. Dahinter die Schauplaetze der Serie: Garten (Ernte), Lagerfeuer (Ruehren), langer Tisch (Essen).
+const figs = [
+  mk({ skala: 0.7 }, 9.2, 2.2, 0, 'winken'),
+  mk({ kleid: 0x4f7fb8, flicken: 0xf2d9a0, haar: 0x7a3b1c, schleife: null, skala: 0.73 }, 3.2, -3.1, 0, 'ernten'),
+  mk({ kleid: 0x5f9b6a, flicken: 0xe9c46a, haar: 0xd9a441, schleife: null, skala: 0.67 }, 12.6, -6.9, Math.atan2(1.4, -1.1), 'ruehren', 'loeffel'),
+  mk({ kleid: 0x4f7fb8, flicken: 0xf2d9a0, haar: 0x7a3b1c, schleife: null, skala: 0.73 }, 15.0, -4.65, 0, 'sitzen'),
+  mk({ kleid: 0x5f9b6a, flicken: 0xe9c46a, haar: 0xd9a441, schleife: null, skala: 0.67 }, 18.0, -4.65, 0, 'anstossen', 'becher')];
+window.__seek3d = async (t) => {
+  figs[0].setzeZeit(0.55); figs[1].setzeZeit(1.0); figs[2].setzeZeit(0.6); figs[3].setzeZeit(1.0); figs[4].setzeZeit(1.2);
+  welt.update(13.5, new THREE.Vector3(9.5, 0, -2));
+  cam.fov = 46; cam.position.set(9.6, 1.7, 8.4); cam.lookAt(9.6, 1.35, -4); cam.updateProjectionMatrix();
+  post.setze({ blende: 1, bild: 3, waerme: 0.5 }); post.render();
+};
+Motion.fertig(1);
+</script>
