@@ -1,0 +1,68 @@
+{
+  "ownerInstruction": "mach live",
+  "brand": "LuxeStyle",
+  "shopDomain": "luxestyle.ch",
+  "shopCurrency": "CHF",
+  "existingLogo": {
+    "id": "gid://shopify/MediaImage/78029348438407",
+    "filename": "luxestyle-shop-logo-transparent-20261113.png",
+    "status": "READY"
+  },
+  "existingVideo": {
+    "id": "gid://shopify/Video/78029489275271",
+    "filename": "luxestyle-shop-videohintergrund-20261113.mp4",
+    "status": "READY",
+    "durationMs": 8000,
+    "width": 1080,
+    "height": 1170,
+    "bytes": 4945164
+  },
+  "browserCheck": {
+    "freshReadOnlyEditorOpen": true,
+    "pageTitle": "Log in — Shopify",
+    "visibleLabels": [
+      "Log in",
+      "Continue to Shopify",
+      "Email",
+      "Continue with email",
+      "Sign in with passkey"
+    ],
+    "authenticationRequired": true,
+    "credentialsEntered": false,
+    "saveClicked": false,
+    "sessionStopped": true,
+    "sessionDurationMs": 16000,
+    "creditsBilled": 7
+  },
+  "cloudAccess": {
+    "capabilities": [],
+    "secrets": [],
+    "runtimeVariables": [],
+    "observationsCurrent": true
+  },
+  "mutations": {
+    "profileWrites": 0,
+    "newUploads": 0,
+    "newRenders": 0,
+    "metricoolWrites": 0,
+    "settingsDiscountFlowBudgetDnsWrites": 0
+  },
+  "publicationState": "not performed; no live profile readback",
+  "creativeOwnerApproval": true,
+  "commercialInputRightsEvidence": "not independently established; no new licence evidence in this run",
+  "nativeOverlayQA": "not performed; login blocks editor",
+  "claudeReceipt": "unknown_no_receipt",
+  "revision": 192,
+  "recordedAtUTC": "2026-11-13T00:16:51.931680+00:00",
+  "dateZurich": "2026-11-13",
+  "apiResearch": {
+    "scope": "two targeted official Shopify documentation searches by independent agent",
+    "result": "No supported public Admin API contract found for Shop app profile logo/background assignment; limited search, not proof of no internal API",
+    "notSuitable": "checkoutBrandingUpsert affects checkout, not Shop app profile",
+    "sources": [
+      "https://shopify.dev/docs/api/admin-graphql/2026-10/queries/files",
+      "https://shopify.dev/docs/api/admin-graphql/2026-10/mutations/checkoutBrandingUpsert",
+      "https://shopify.dev/docs/api/admin-graphql/2026-10/objects/MediaImage"
+    ]
+  }
+}

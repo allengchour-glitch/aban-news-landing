@@ -2212,3 +2212,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Profil / Grenzen | Aktuellen Cloud-Zugriff und vorhandene Profilwerkzeuge geprüft; Übernahmeschritte für vorhandene Dateien dokumentiert |0Profilzuweisungen/Save; authentifizierter Editor und nativer Overlaytest fehlen.0neueRenders/Metricool-/Produkt-/Rabatt-/Budget-/Flow-/DNSwrites oder Tagesreports; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R191_20261113] [Bericht](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.md) · [Beleg](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json).
+
+### R192 – Liveauftrag: frische Zugriffskontrolle
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe / Dateien | «Mach live» festgehalten; Shopidentität und vorhandene PNG/MP4 gezielt gelesen | LuxeStyle/luxestyle.ch/CHF bestätigt, beide READY;0neueUploads/Renders |
+| Profilzugriff | Nativen Editor frisch read-only geöffnet, bei Shopify-Anmeldung gestoppt und Sitzung beendet | «Log in — Shopify»;0Eingaben/Save/Profilzuweisungen.16s/7Firecrawl-Credits, keine Videorenderkosten |
+| Unterstützter Weg | Cloud-Fähigkeiten und zwei gezielte offizielle API-Dokuabfragen geprüft | Kein Desktopzugriff/bereitgestellter Sitzungskontext; kein passender öffentlicher Profil-API-Vertrag identifiziert, Checkoutbranding kein Ersatz |
+| Übergabe / Grenzen | Vorhandene Dateien und konkret verbleibenden nativen Auswahlschritt dokumentiert | Nicht live; Besitzerfreigabe vorhanden, authentifizierter Zugriff/Overlaytest fehlen und unabhängige Bildrechte unbekannt.0weiterePlattformwrites oder Reports; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R192_20261113] [Bericht](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.md) · [Beleg](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json).

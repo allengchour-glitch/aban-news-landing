@@ -1,0 +1,11 @@
+# Shop-Profil: ausdrücklicher Liveauftrag, Zugriff weiterhin blockiert, R192
+
+Der Besitzer verlangt jetzt «mach live». Die Freigabe für genau das R189-Logo und den ausgewählten R190-Videohintergrund ist vorhanden und wird nicht nochmals angefragt. **Keine Profilzuweisung oder Liveumstellung erfolgt:** Der frisch read-only aufgerufene native Editor endet bei «Log in — Shopify», mit «Continue to Shopify» und dem leeren E-Mail-Anmeldefeld. Keine Credentials eingegeben, kein Save geklickt. Die isolierte Firecrawl-Sitzung wurde nach16Sekunden beendet;7Firecrawl-Credits abgerechnet, keine Videorenderkosten. Sitzungslinks/temporäre Tokens werden nicht gespeichert.
+
+Der Shopify-Connector bestätigt frisch LuxeStyle/luxestyle.ch/CHF und beide bestehenden Dateien: Logo `luxestyle-shop-logo-transparent-20261113.png` READY (MediaImage78029348438407), Video `luxestyle-shop-videohintergrund-20261113.mp4` READY (Video78029489275271,8000ms/1080×1170/4’945’164Bytes).0neueUploads und0neueRenders. Dateibereitschaft ist keine Profil-Publikation.
+
+Der aktuelle Cloud-Status hat keine Desktop-/Browserfähigkeit oder bereitgestellten Sitzungskontext. Die Anmeldung im eigenen Browser des Besitzers wird nicht in den isolierten Browser übertragen. Zwei gezielte offizielle Dokumentationsabfragen fanden keinen unterstützten öffentlichen Admin-API-Vertrag für diese konkrete Shop-Profil-Zuweisung; kein Beweis, dass Shopify intern keinen hat. `checkoutBrandingUpsert` betrifft Checkout und ist kein zulässiger Ersatz. Keine Theme-/Checkout-/Brand-Einstellung als Umweg verändern.
+
+Konkreter verbleibender Schritt im **angemeldeten nativen Shop-Profil-Editor**: Header → Logo → vorhandene PNG wählen; Header → Hintergrund → Medien → vorhandene MP4 wählen. Native Vorschau/Ausschnitt prüfen, unter Beachtung der weiter unbekannten unabhängigen Bildrechte speichern und sichtbares Profil gegenprüfen. Keine erneute kreative Freigabe, kein erneuter Upload/Render; bei fehlendem authentifiziertem Zugriff blockiert bleiben. Keine Passwörter im Chat anfordern.
+
+Tagesreports, Bestellungen, Publikationsregister, Zeitplan und alle24Aufgaben unverändert.0Profil-/Social-/Produkt-/Rabatt-/Budget-/Flow-/DNSwrites. [Strukturierter Beleg](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json). Für Claude dokumentiert; Empfang unbekannt.

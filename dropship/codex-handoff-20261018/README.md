@@ -2274,3 +2274,9 @@ Auf ausdrücklichen Videoauftrag zwei kostenlose Higgsfield-Jobs gerendert; Cred
 «Ja nutze» als konkrete kreative Nutzungsfreigabe für R189-Logo/R190-Video festgehalten. Video einmal per dokumentiertem VIDEO-Staging hochgeladen und als Video78029489275271 registriert; READY/8s/1080×1170, CDN HTTP200 und bytegleich zum freigegebenen Export. Zwei vorherige direkte Requests klar abgewiesen und jeweils leer gezielt zurückgelesen, kein Doppelupload. R189-Logo weiterhin READY. Keine Profilzuweisung: authentifizierter Editorzugriff/Overlaytest fehlen; unabhängiger Bildbearbeitungsrechtebeleg unbekannt. Kein neuer Render, keine Social-/Produkt-/Rabattänderung. [Bericht](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.md) · [Beleg](SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json). Claude-Empfang unbekannt.
 
 [LUXESTYLE_R191_20261113]
+
+## R192 – 13.11.2026: Liveauftrag geprüft, Profil-Login blockiert
+
+«Mach live» als ausdrücklichen Auftrag festgehalten; Shopify/READY-Logo/READY-Video frisch bestätigt. Neuer read-only Editoraufruf landet bei «Log in — Shopify», keine Eingabe/Save; Sitzung sofort beendet (16s/7Firecrawl-Credits). Keine Profilzuweisung, neue Uploads/Renders oder weitere Plattformwrites. Zwei gezielte offizielle API-Dokusuchen lieferten keinen passenden Shop-Profil-Vertrag; Checkoutbranding ist kein Ersatz. Vorhandene Dateien im authentifizierten nativen Editor auswählen, Vorschau prüfen und speichern; Besitzerfreigabe nicht erneut anfragen. [Bericht](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.md) · [Beleg](SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R192_20261113]

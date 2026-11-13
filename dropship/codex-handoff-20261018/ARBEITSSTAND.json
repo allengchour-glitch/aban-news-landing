@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 191,
-  "updatedAt": "2026-11-13T00:05:40.885298+00:00",
+  "revision": 192,
+  "updatedAt": "2026-11-13T00:16:51.931680+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17191,6 +17191,26 @@
           "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json",
           "sha256": "2bafaabaa2ab9e9d6effd7e2ba02b3d3ae637fa28cbb3bc6c2c1b9eb62c55125",
           "gitBlobSha": "2429855158dfcda921c24704e57e2eb66c04f8e0"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 192,
+      "at": "2026-11-13T00:16:51.931680+00:00",
+      "actor": "codex",
+      "summary": "Owner explicitly requested live Shop profile activation. Fresh Shopify/file identities PASS and both existing assets READY; fresh read-only editor hit Shopify login and session stopped (16s/7Firecrawl credits). No profile writes or new uploads/renders. Targeted official docs found no supported profile API assignment contract. Authenticated native editor remains needed.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.md",
+          "sha256": "21496cdd76b3074120c19db68dca0f55aee3141d5e9ee09c222b16792f57ceea",
+          "gitBlobSha": "3f8b73f0beff05c51c96cd012e05616f9b3e6380"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json",
+          "sha256": "a88641b69f124718d9891a54c902de33ef5a18ba136dd9b73da968cee95175a9",
+          "gitBlobSha": "7c081b1b0032abc93971bdf11020ecda8e4b66b0"
         }
       ],
       "taskCount": 24,
@@ -39598,6 +39618,21 @@
     "independentSupplierRightsEvidence": "unknown",
     "nativeOverlayQA": "not performed",
     "proof": "dropship/codex-handoff-20261018/SHOP-PROFIL-NUTZUNGSFREIGABE-20261113-R191.json",
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run192": {
+    "dateZurich": "2026-11-13",
+    "ownerInstruction": "mach live",
+    "profileWritePermission": true,
+    "profileWrites": 0,
+    "existingLogoAndVideo": "fresh READY readback",
+    "freshEditorResult": "Log in — Shopify",
+    "browserSessionStopped": true,
+    "firecrawlCreditsBilled": 7,
+    "newUploads": 0,
+    "newRenders": 0,
+    "publicProfileApiContract": "not identified in two targeted official searches",
+    "proof": "dropship/codex-handoff-20261018/SHOP-PROFIL-LIVE-ZUGRIFF-20261113-R192.json",
     "claudeReceipt": "unknown_no_receipt"
   }
 }
