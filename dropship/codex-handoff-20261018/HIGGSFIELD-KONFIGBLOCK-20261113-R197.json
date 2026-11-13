@@ -1,0 +1,127 @@
+{
+  "revision": 197,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "preflight": {
+    "recordedAtUTC": "2026-11-13T22:06:23.497Z",
+    "phase": "prepared_before_single_submission",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "shopProduct": {
+      "checkedAtUTC": "2026-11-13T22:05:40.650Z",
+      "brandId": 6227837,
+      "shop": "luxestyle.ch",
+      "currency": "CHF",
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/68122445283719",
+      "sku": "CJSN139239101AZ",
+      "price": "34.90",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "inventoryPolicy": "CONTINUE",
+      "tracked": false,
+      "availableForSale": true,
+      "referenceImage": {
+        "id": "gid://shopify/MediaImage/70733173719425",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+          "width": 800,
+          "height": 654
+        }
+      }
+    },
+    "zeroCreditPreflight": {
+      "cost": {
+        "credits": 0,
+        "credits_exact": 0
+      },
+      "adjustments": {
+        "medias[0].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Seedance 2.5 backend expects schema-key media roles"
+        }
+      }
+    },
+    "requestParams": {
+      "model": "seedance_2_5",
+      "mode": "omni_reference",
+      "duration": 18,
+      "aspect_ratio": "9:16",
+      "resolution": "1080p",
+      "bitrate_mode": "high",
+      "generate_audio": false,
+      "draft": false,
+      "count": 1,
+      "use_unlim": true,
+      "max_credits": 0,
+      "prompt": "Create one 18-second vertical premium studio product-film DEVELOPMENT DRAFT from the confirmed reference image. The reference is a collage: use ONLY the actual white round projector in its U-shaped stand shown on the LEFT. Ignore the box, inset galaxy photographs, text and collage layout. Strictly preserve the visible product's exact spherical housing, translucent BLUE illuminated upper dome, ribbing, white U stand, circular side pivots, vent cutouts, front button count/layout and visible connector. Do not invent any logo or label. Keep the same device, colour and proportions throughout. Clean cream/taupe studio table and neutral background, controlled soft side lighting, realistic subtle surface reflections, consistent colour grading. One coherent continuous shot with deliberate close detail and true-looking restrained perspective/parallax, NOT a photo slideshow, still-image zoom, morph or generic stock scene. No people, hands, opening of the dome, unboxing, device rotation, moving parts, claims, captions or prices. Show no wall projection, stars in the room, new light motif, new operating mode or altered light behaviour: maintain ONLY the blue illumination visibly present in the reference photo. Never expose a rear, underside or hidden detail not shown in the reference. 0–2.4s: complete device in the reference's frontal three-quarter angle, clear full stand. 2.4–6s: a very restrained real-camera lateral drift, about 5 degrees, staying on the documented front surface; no new hidden product geometry. 6–10.2s: precise front/stand and illuminated dome detail while keeping front controls, silhouette and stand intact inside the frame. 10.2–14.4s: smoothly return to the complete device in the same studio view. 14.4–18s: stable complete-device ending with negative space for a later CTA. Keep product and visible light coherent, no fake extra projections. Reserve upper frame for later hook and lower area for CTA; do not generate any typography. Smooth motion; requested delivery 1080x1920, 18 seconds. Silent: no voice, music or sound effects. This is a controlled AI visual draft, not actual recorded product demonstration or proof of a supplied projection motif.",
+      "medias": [
+        {
+          "role": "image",
+          "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+        }
+      ]
+    },
+    "creativeStatus": "one private development draft, not a publication-approved master",
+    "commercialRights": "open; no Metricool upload/activation",
+    "maxJobs": 1,
+    "paidFallbackForbidden": true
+  },
+  "quote": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Cost preflight for seedance_2_5: 0 credits (0 exact). No job submitted."
+      }
+    ],
+    "structuredContent": {
+      "cost": {
+        "credits": 0,
+        "credits_exact": 0
+      },
+      "adjustments": {
+        "medias[0].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Seedance 2.5 backend expects schema-key media roles"
+        }
+      }
+    },
+    "isError": false
+  },
+  "generationError": {
+    "error": "Your unlimited generations don't cover this configuration for seedance_2_5 — the \"Unlim configs\" list returned by the models tools spells out what is covered. Retry within those values, or without use_unlim to generate with credits.",
+    "adjustments": {
+      "medias[0].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      }
+    },
+    "error_code": "INVALID_ARGUMENT"
+  },
+  "submissionAttempts": 1,
+  "jobId": null,
+  "newMp4": false,
+  "newMetricoolMediaUpload": false,
+  "creditsBefore": 2544.22,
+  "creditsAfter": 2544.22,
+  "sameCreditBalance": true,
+  "detailedUnlimConfig": "seedance_2_5 Unlim limited to480p; requested1080p notcovered. Structured catalog supports_unlim/zeroquote did not establish that exactconfig coverage. Textual config list was initially missed, then inspected and error acknowledged.",
+  "noPaidFallback": true,
+  "noSecondRenderAttempt": true,
+  "mediaAutoImportSideEffect": "unknown: HTTPS reference may auto-import inside Higgsfield, no mediaID returned; do not assert no reference import",
+  "quality": "No substitute480p/slideshow render; actual source unit/motif, commercial rights and finished-film/audio/mobile QA unresolved; existingR194/R196oneMasterbriefing continued, not replaced by a finished video"
+}

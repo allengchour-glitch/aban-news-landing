@@ -1,0 +1,5031 @@
+{
+  "revision": 197,
+  "limitedHistoryAudit": {
+    "scope": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": [
+        "instagram:luxestyle.ch",
+        "threads:luxestyle.ch",
+        "tiktok:luxestyle.ch",
+        "facebook:1049840534888592",
+        "pinterest:luxestyleCH",
+        "youtube:UCSfCEYjAsdOyYxyfTClXRZA"
+      ],
+      "windows": [
+        "2026-11-06/07",
+        "2026-11-08/09",
+        "2026-11-10/11",
+        "2026-11-12/13",
+        "2026-11-14/15",
+        "2026-11-16/17",
+        "2026-11-18/19",
+        "2026-11-20"
+      ]
+    },
+    "reads": {
+      "scheduledPostsCalls": 8,
+      "objects": 108,
+      "channelStates": 139,
+      "note": "Endpoint is scheduled posts, not guaranteed complete publication history."
+    },
+    "results": {
+      "duplicateUUIDs": [],
+      "exactCaptionGroupsOnSameChannel": [
+        [
+          {
+            "id": 415554058,
+            "uuid": "3188192088876928648",
+            "date": "2026-11-06T18:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705106204585954592"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+              "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+            ],
+            "captionSha256": "120d2d068d667dcfebcc428480e003991882e394ab7cbbc11cdd2716e56c5fbb"
+          },
+          {
+            "id": 422277722,
+            "uuid": "6800747654958566068",
+            "date": "2026-11-11T09:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706821431014772001"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4"
+            ],
+            "captionSha256": "120d2d068d667dcfebcc428480e003991882e394ab7cbbc11cdd2716e56c5fbb"
+          }
+        ],
+        [
+          {
+            "id": 415554216,
+            "uuid": "4203543208056408815",
+            "date": "2026-11-07T12:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705383335169658144"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+              "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+            ],
+            "captionSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b"
+          },
+          {
+            "id": 422276869,
+            "uuid": "-8877028874765120990",
+            "date": "2026-11-10T10:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706466549053361440"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4"
+            ],
+            "captionSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b"
+          }
+        ],
+        [
+          {
+            "id": 415554461,
+            "uuid": "-9010345156192940856",
+            "date": "2026-11-08T12:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705754377784479008"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+            ],
+            "captionSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888"
+          },
+          {
+            "id": 422278407,
+            "uuid": "8215510415468351070",
+            "date": "2026-11-12T09:00:00",
+            "statuses": [
+              {
+                "network": "tiktok",
+                "status": "PUBLISHED",
+                "detail": "Published",
+                "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707192679620283681"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4"
+            ],
+            "captionSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888"
+          }
+        ]
+      ],
+      "exactMediaURLGroups": [],
+      "exactProductTargetGroups": [],
+      "hashes": [
+        {
+          "file": "6227837-file-13563092280422521127.jpeg",
+          "bytes": 94973,
+          "sha256": "4150510969ccb485bea56e29db9b72bbe42ff13bb56ed3f4faebd945d4bdd76c"
+        },
+        {
+          "file": "6227837-file-10069902211398372547.jpeg",
+          "bytes": 94171,
+          "sha256": "6d92ee808aab64cde6044ef832ec27b9e5ccee71f559f1f5654736386f6352d4"
+        },
+        {
+          "file": "571ecf32992444c3.mp4",
+          "bytes": 798736,
+          "sha256": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed"
+        },
+        {
+          "file": "6227837-file-2357634910872347643.jpeg",
+          "bytes": 143359,
+          "sha256": "23f9a70b8f0f9c389d0b2b08a59ccb284e47ab3da96f1d29933d5569b9abf74f"
+        },
+        {
+          "file": "6227837-file-7678917221088862285.jpeg",
+          "bytes": 174924,
+          "sha256": "7f0f94db34c4592cb89c6430c1bfe8b33f03fd410e5700ae511f5b6f9098877c"
+        },
+        {
+          "file": "03154b702fe74b55.mp4",
+          "bytes": 1488984,
+          "sha256": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb"
+        },
+        {
+          "file": "6227837-file-10043424650140786836.jpeg",
+          "bytes": 112307,
+          "sha256": "0eb1bf5e2057d54a5e0a68d36696705c33785da118616aaba8daecb97e4a6f3d"
+        },
+        {
+          "file": "a56abb0f5af84123.mp4",
+          "bytes": 765297,
+          "sha256": "abbeb0fc1c121416e6ba7bd0b2e7e120cdcdaec6f41dc7f4010d0ce6d12768e8"
+        }
+      ],
+      "visualComparison": "unknown: the eight downloaded media files were not retained locally; per instruction no downloads were repeated. Distinct SHA-256 hashes alone do not prove the videos are independent masters or establish whether they are slideshows of the older JPEGs."
+    },
+    "holds": {
+      "audioHolds7": "R196 documents all seven inactivated",
+      "r176Drafts4": "R196 documents all four held",
+      "reactivations": "R196 documents six reactivated UUIDs returned to draft",
+      "evidenceLimit": "Current sanitized JSON does not include draft or autoPublish flags and current queue state was not reread for these flags. Hold status is reported only from R196 historical documentation; this audit does not independently verify current hold flags."
+    },
+    "limits": [
+      "PUBLISHED is observed state only; not complete publication history.",
+      "Caption matches have different media URLs and distinct hashes; visual similarity not established.",
+      "No update/delete calls.",
+      "Current report rows contain status/caption/media but omit draft and autoPublish flags; those flags were not independently verified in this audit.",
+      "R196 hold states are historical documentation, not a fresh hold-flag read in this audit.",
+      "The eight media downloads were not retained locally; no re-download was made, so visual JPEG-to-MP4 comparison remains unknown."
+    ],
+    "posts": [
+      {
+        "id": 407854817,
+        "uuid": "5940175700385481481",
+        "publicationDate": "2026-11-06T18:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122151516747350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfaHBaADcge/"
+          }
+        ],
+        "captionSha256": "20b52f6941800f9f917e32027cfd14261399e56a562f8de253606704e1770c4c",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 413266908,
+        "uuid": "-3680497409192607202",
+        "publicationDate": "2026-11-06T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585075187"
+          }
+        ],
+        "captionSha256": "f17d7edde11dc1a847a69e15c1b4eee10d19bdb55799d29de210ada24885d415",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 413266951,
+        "uuid": "-6271192589084504293",
+        "publicationDate": "2026-11-07T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585165201"
+          }
+        ],
+        "captionSha256": "883d0505825784b5af7cd42cf828edaf0d232cb1bdc502eb0d3b0758fec80e1c",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 414929392,
+        "uuid": "-2612931623723381280",
+        "publicationDate": "2026-11-07T11:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122151676791350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/Dfb7AZuCAtQ/"
+          }
+        ],
+        "captionSha256": "342a89ab8e1cfba241f96c4c7a5d6b1fe92fb83f81ab9e95e110d09fb563ce06",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 414940691,
+        "uuid": "-7866054559336938189",
+        "publicationDate": "2026-11-06T10:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/4144146969049814"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/DfZPoGfEY3s/"
+          },
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7704981953962839328"
+          }
+        ],
+        "captionSha256": "01dde504a2ee457c597bd550047962e0231eed946490c53873a73ded758b794d",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415554058,
+        "uuid": "3188192088876928648",
+        "publicationDate": "2026-11-06T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705106204585954592"
+          }
+        ],
+        "captionSha256": "120d2d068d667dcfebcc428480e003991882e394ab7cbbc11cdd2716e56c5fbb",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415554216,
+        "uuid": "4203543208056408815",
+        "publicationDate": "2026-11-07T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705383335169658144"
+          }
+        ],
+        "captionSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 416121297,
+        "uuid": "-2503182895774282094",
+        "publicationDate": "2026-11-07T18:30:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705483566045482273"
+          }
+        ],
+        "captionSha256": "61169efa481458f7a8fb34cdeeda56af4562738ba6063e16fecfa5d128b11ca7",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 416121310,
+        "uuid": "8147121371837647826",
+        "publicationDate": "2026-11-07T18:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/908936765536062"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/Dfcrxn_GvhT/"
+          }
+        ],
+        "captionSha256": "d8e7292eff8a895e1e3c12e8c794341f89438f9e0aa0e0e2391c531c083638f9",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 417052518,
+        "uuid": "1378709635416936410",
+        "publicationDate": "2026-11-06T12:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/EJBUhkOy4MA"
+          }
+        ],
+        "captionSha256": "129b31241cd4d59f1f2dbe75743209473209a61c9a46a61fd8913f6be0a3df8b",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 417052556,
+        "uuid": "-5577654293164241841",
+        "publicationDate": "2026-11-07T19:30:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/nPtCEHwHRz0"
+          }
+        ],
+        "captionSha256": "4da9c8a20b03f9600b7baa8504954d989da04380651a28b99b1a16ea84d10024",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 407889412,
+        "uuid": "-6564064169639197228",
+        "publicationDate": "2026-11-08T11:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122151902703350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfefwCPCPMy/"
+          }
+        ],
+        "captionSha256": "2194cd5549081eb9adbb81d663015b632c0355455ab15b491f2419b4aaf5aa4e",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 413266978,
+        "uuid": "5938318811609320266",
+        "publicationDate": "2026-11-08T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585254525"
+          }
+        ],
+        "captionSha256": "bc0384dbca1bf1d1ebb1031f6ffb015ef2d023cccd6128db0d8407b9c77be3c4",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 414929635,
+        "uuid": "-8720943201794045273",
+        "publicationDate": "2026-11-09T12:15:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152122969350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfhM84LDRo7/"
+          }
+        ],
+        "captionSha256": "70c9c67eb5093a6c5bf340ef945dcf8fc4cb124092cff29bc28126b7bfd26780",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415033593,
+        "uuid": "-8611238648907481079",
+        "publicationDate": "2026-11-09T16:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/1158068536959635"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4026671048136770884"
+          }
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415554461,
+        "uuid": "-9010345156192940856",
+        "publicationDate": "2026-11-08T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705754377784479008"
+          }
+        ],
+        "captionSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 421390066,
+        "uuid": "6046957420136514778",
+        "publicationDate": "2026-11-09T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585334490"
+          }
+        ],
+        "captionSha256": "72f44fdcfe1d1e4dd33c55f7fef9fb3765c25e4ec4924a1bf39c31494b8a3e95",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 407893833,
+        "uuid": "-4686288400674371149",
+        "publicationDate": "2026-11-10T18:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152413699350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfkaAekDZzD/"
+          }
+        ],
+        "captionSha256": "19f1c997b0b6c5ebcf3728a1b86158604acee3df485d9c374e3a5cc58f6c52b6",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415000163,
+        "uuid": "-4201876028718560102",
+        "publicationDate": "2026-11-11T17:00:00",
+        "statuses": [
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/Dfm3hybik4g/"
+          }
+        ],
+        "captionSha256": "ad2d61ba3a9c2b85763516acdca3f5607551a6b1fe89b8a83bc6d21df20b2b23",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-8583404517825039536.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-12975306260184098837.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-2436596064500590019.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11102341631370552592.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-1107893845215096747.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-16562641166621667992.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415000221,
+        "uuid": "-8822571646587483154",
+        "publicationDate": "2026-11-11T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152600473350792"
+          }
+        ],
+        "captionSha256": "df1851d566c63db531c8717068fba4ddc208289e9a41d567e218c8e53ac2fc3c",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-90633665431348684.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-2165778225675445795.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-8742528706314942075.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-8785534367035130029.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11236030041211411187.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-13386137609000236981.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11175349090546228427.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415035691,
+        "uuid": "37985340483322184",
+        "publicationDate": "2026-11-10T12:30:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/1702365811464870"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4027288926552636904"
+          }
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 417962546,
+        "uuid": "3294509733200285464",
+        "publicationDate": "2026-11-11T12:15:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152554969350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfmWjVnDWbs/"
+          }
+        ],
+        "captionSha256": "b00a9af25b2bdd31e611a4a25cc70373a9406058276697966c4a9a027b2ef72e",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422195367,
+        "uuid": "3863915044291300024",
+        "publicationDate": "2026-11-11T20:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/1441367000897943"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/DfnMYppDaGx/"
+          }
+        ],
+        "captionSha256": "2e65eae3daee0d0b2b38340fc396d27ca13f51ef8a20308949aa6ffd8db31dcf",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422198525,
+        "uuid": "-7257455683644011058",
+        "publicationDate": "2026-11-11T15:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706914188664294688"
+          }
+        ],
+        "captionSha256": "01ac3253770830d965cb81e9ab5558727ae9fde1b31d7b48ccf2a96378d2ca43",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422199733,
+        "uuid": "-3553911421145298799",
+        "publicationDate": "2026-11-11T13:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/FoD_2LfxjCw"
+          }
+        ],
+        "captionSha256": "1fc2d4012bd9666eb8231ec8da8ab0708f10a692e341d5ccdaf308c70aa7eea9",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422276771,
+        "uuid": "2505682137165939640",
+        "publicationDate": "2026-11-10T10:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/t2GbsFcFWak"
+          }
+        ],
+        "captionSha256": "200d69bc6d981c0caff71e83b6a2f2957bb56b37f394b8fcb77028ddb71977eb",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422276869,
+        "uuid": "-8877028874765120990",
+        "publicationDate": "2026-11-10T10:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706466549053361440"
+          }
+        ],
+        "captionSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422276987,
+        "uuid": "2479551942795872090",
+        "publicationDate": "2026-11-10T12:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/1704177608010716"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/Dfjwjw9Co7L/"
+          }
+        ],
+        "captionSha256": "456803c7166e88d29120335b30388601df4ff9cce8edf6a44b6f6f8748c634f7",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277108,
+        "uuid": "-7893674518673470896",
+        "publicationDate": "2026-11-10T14:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706528046089506081"
+          }
+        ],
+        "captionSha256": "4aed2025f5eee2da0cf579aae6f044b4e0696453c4291af8756c38fbd8ea0e0b",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277227,
+        "uuid": "-4166141021700799850",
+        "publicationDate": "2026-11-10T16:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/OGGwUgaN1Js"
+          }
+        ],
+        "captionSha256": "8ef6ac7982bcfb9db206b22ebea185bf19dee9e4ef582a86b253d9bebce50ac0",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277481,
+        "uuid": "7496893774506381155",
+        "publicationDate": "2026-11-10T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706590233550277921"
+          }
+        ],
+        "captionSha256": "70e423b3666a97268704210a29b1a375462471e97030457c8d63c5488221f445",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277608,
+        "uuid": "-6647584058486602683",
+        "publicationDate": "2026-11-11T09:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/1020905711027186"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/DfmAeS9Afbe/"
+          }
+        ],
+        "captionSha256": "e2c175c36fcc72e593f12af15d32437aba62ba4e8490b42b7339e5670b3d74d1",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277722,
+        "uuid": "6800747654958566068",
+        "publicationDate": "2026-11-11T09:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706821431014772001"
+          }
+        ],
+        "captionSha256": "120d2d068d667dcfebcc428480e003991882e394ab7cbbc11cdd2716e56c5fbb",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277846,
+        "uuid": "-4605953212411130849",
+        "publicationDate": "2026-11-11T10:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/TdL1K__wXak"
+          }
+        ],
+        "captionSha256": "c72cf51bf3d9855ef7a729a4e241870200185048ba38a9ef86dec0eec27f51d8",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422277980,
+        "uuid": "1675642812797436191",
+        "publicationDate": "2026-11-11T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfmOQOLhUYv"
+          }
+        ],
+        "captionSha256": "c502a366276c0dd059afa29ff4ab6a0ff958db30fe15b6ef03b86c48462b217d",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278084,
+        "uuid": "2157228003212543673",
+        "publicationDate": "2026-11-11T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706868169293434144"
+          }
+        ],
+        "captionSha256": "ae8e3fe32d82e6631d2c142ef5ff672cfa12241c5e7703d8eebf94a68b836964",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278200,
+        "uuid": "-6835976662518839807",
+        "publicationDate": "2026-11-11T16:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/XfE1-B8iqb8"
+          }
+        ],
+        "captionSha256": "949f397d03611bcb2439103b859aa1aa154704b64a719ba1adeb0ee028a0d29a",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278316,
+        "uuid": "3738748663902192714",
+        "publicationDate": "2026-11-11T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706960660818775329"
+          }
+        ],
+        "captionSha256": "f850869938454e0f4ecb0078fce0af2d0e0fd428af472d3f448dbcc90c0e5d06",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280612,
+        "uuid": "6352982241777305829",
+        "publicationDate": "2026-11-10T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfjplRyhIlL"
+          }
+        ],
+        "captionSha256": "1353d597e92dbe6f6f1f36a29c1abc4b43569e8bc249fef637b544f12aeb4fee",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422791380,
+        "uuid": "1201792213285619236",
+        "publicationDate": "2026-11-10T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585411436"
+          }
+        ],
+        "captionSha256": "77815cb65fe755c3e8289d302c9a6aefd519318613e63d6793d9bb385f1b33d5",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422791680,
+        "uuid": "-3417097081304103516",
+        "publicationDate": "2026-11-11T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585489934"
+          }
+        ],
+        "captionSha256": "f286a69b451bb997a6b26912ca719e79c271af7453539ec3b26daf5db8080943",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 407894075,
+        "uuid": "-1741815444231403909",
+        "publicationDate": "2026-11-13T12:15:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152968393350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/DfrgKNZiF-m/"
+          }
+        ],
+        "captionSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415077082,
+        "uuid": "-8331410252591837975",
+        "publicationDate": "2026-11-12T12:30:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/1160757549758550"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4028738486185832383"
+          }
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-7009072093400135523.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415081189,
+        "uuid": "3126986420977421943",
+        "publicationDate": "2026-11-13T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/2328213768002859"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4029600117769811437"
+          }
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 417962744,
+        "uuid": "-6029234844495164842",
+        "publicationDate": "2026-11-12T18:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152805589350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/p/Dfpjy_liBHC/"
+          }
+        ],
+        "captionSha256": "1851d8128f1b065867f6f9837eb70dbaa46bd433ca44bd91fe826ca53a9c3d4c",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278407,
+        "uuid": "8215510415468351070",
+        "publicationDate": "2026-11-12T09:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707192679620283681"
+          }
+        ],
+        "captionSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278514,
+        "uuid": "-1176313182659524583",
+        "publicationDate": "2026-11-12T10:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/JjSKvRPiwy4"
+          }
+        ],
+        "captionSha256": "60899b132819f3612811b614be9085da521eee837a4272a3278e72377a42f2ab",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278624,
+        "uuid": "-3118555118962720263",
+        "publicationDate": "2026-11-12T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707331704163224865"
+          }
+        ],
+        "captionSha256": "3161b12981ae7ef19e5d01ba14ca0cab4cbd60b4b1e230a51289770fc5721cf3",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422278897,
+        "uuid": "4651045624279025767",
+        "publicationDate": "2026-11-13T09:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209"
+          }
+        ],
+        "captionSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279075,
+        "uuid": "-8797746381899281322",
+        "publicationDate": "2026-11-13T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x"
+          }
+        ],
+        "captionSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280698,
+        "uuid": "-2435184774283179178",
+        "publicationDate": "2026-11-12T10:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://facebook.com/reel/1436435851997086"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.instagram.com/reel/DfosgS9Dmrr/"
+          }
+        ],
+        "captionSha256": "5a4d4c7a316a82cd17b03d009ad26f46cc6047e0137d2046fa87a3aa0b61cf97",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280785,
+        "uuid": "5102918478982235752",
+        "publicationDate": "2026-11-12T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dfoy60ShfpA"
+          }
+        ],
+        "captionSha256": "03393ee5df86b4c3f2ed71586656e84b371568a790ab90da17d4114788d4db8c",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280875,
+        "uuid": "-7768329881687535680",
+        "publicationDate": "2026-11-12T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707238883997568289"
+          }
+        ],
+        "captionSha256": "56f582ba8801ef4c9ee298845218947538fb6eb9e820af7f71e3d744d1cdf96d",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280988,
+        "uuid": "5681760339256165072",
+        "publicationDate": "2026-11-12T16:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/8ZH31Vrxd5g"
+          }
+        ],
+        "captionSha256": "e2d6d19cc8d40aecebe90170697388e8c0f9b1188784ff2e5b103b1284c7b967",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422285770,
+        "uuid": "-9210583075457839526",
+        "publicationDate": "2026-11-13T10:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c"
+          }
+        ],
+        "captionSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422285897,
+        "uuid": "673796377030903265",
+        "publicationDate": "2026-11-13T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707703142586010912"
+          }
+        ],
+        "captionSha256": "501c9af803fd18d1c286d5a25e107e20a3e0d080b11685af67f35b42aa796c83",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422791720,
+        "uuid": "2095739444122305341",
+        "publicationDate": "2026-11-12T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585570374"
+          }
+        ],
+        "captionSha256": "11e1ed7fd2c3524f2d11750d5a0c0fb48e882591a04e8e87dc84a22a87c09588",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422791764,
+        "uuid": "-2331828084021443536",
+        "publicationDate": "2026-11-13T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "detail": "Published",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585648112"
+          }
+        ],
+        "captionSha256": "7adba52cb2538f653dd4754fdd234fdd33a38872855ffb2d6244b0c34dbfb9c1",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 426612259,
+        "uuid": "1744402171830094170",
+        "publicationDate": "2026-11-13T09:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "40a3ef23a9f40aea2a3305fd619a98c95a5e3e63c35666638842634d8c24a949",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 426613048,
+        "uuid": "5647388074617226143",
+        "publicationDate": "2026-11-13T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "922d6e5df9798ca83fe2a1f7240c4c86dcd6c84e28758700a4801e4ff9d6fef1",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 426613069,
+        "uuid": "-4472725258033347244",
+        "publicationDate": "2026-11-13T16:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "dbd6a84cc5cd0e32bc6affcd8d26617dfa581441be48dba52cdbe5798ccebdac",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 426613082,
+        "uuid": "2172266762404316928",
+        "publicationDate": "2026-11-13T15:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "f8904d4c4f08c83e04a023e64c5446209762381d6ceec6c053c30605aef44513",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 426613132,
+        "uuid": "-7002936161864562103",
+        "publicationDate": "2026-11-13T13:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "c2aeb6719d19c018fa21dd18728e598ffa487050c2409e497eaba4c69070095c",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427286519,
+        "uuid": "3963843144054620883",
+        "publicationDate": "2026-11-13T20:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 407894120,
+        "uuid": "-3403126915283661861",
+        "publicationDate": "2026-11-14T11:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 415131163,
+        "uuid": "3200332797454403886",
+        "publicationDate": "2026-11-14T19:30:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 420726136,
+        "uuid": "6199136659928140012",
+        "publicationDate": "2026-11-15T16:00:00",
+        "statuses": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "03c57641306fb43e0bb3fc3fbd11c3ce64d3ec9bdf574fc1cb4c997dd5da0bcc",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 420728374,
+        "uuid": "7768651932591999367",
+        "publicationDate": "2026-11-15T16:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "8d24a2d67d6f3ad370ef40a3c9e53163725ef988e109542752644b9e9e477bec",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279394,
+        "uuid": "-1754664943692791070",
+        "publicationDate": "2026-11-14T09:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "fabc4983426df8bb3ccca6c15b5326420e7739ec6969826eac2a9fdb92204150",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279501,
+        "uuid": "7993315583738791837",
+        "publicationDate": "2026-11-14T10:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "61c0b1b7734418c0e8891c1b7e349df0a9fad37dd8ed4ddba299bf0c8b7b3fe1",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279608,
+        "uuid": "8356246782781639563",
+        "publicationDate": "2026-11-14T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "ecb52f6dbaa8b93a7482448a4d1dd6b100d91b0def82a3a6b0d5a7cc94148262",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279700,
+        "uuid": "8178449842924373712",
+        "publicationDate": "2026-11-14T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "f8b5f927339ad3a67bd68d59ffda62848b028c5e8df225063a702c74fac86f65",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279805,
+        "uuid": "-2924344703561023385",
+        "publicationDate": "2026-11-14T15:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422279920,
+        "uuid": "8229862176301272727",
+        "publicationDate": "2026-11-14T16:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "27e4a74fca962cabb2f9ed46604922502205839f081d0d7ea8ba57be9239bb7f",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280035,
+        "uuid": "-6748893881700627372",
+        "publicationDate": "2026-11-14T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "c0ff8f88bef3ef06fbf5b6d50a05068857ccaf2bc65a26334bfb9c3d1bf7a2bb",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422280155,
+        "uuid": "-3833193365444016309",
+        "publicationDate": "2026-11-15T11:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422295156,
+        "uuid": "-6967517640837021033",
+        "publicationDate": "2026-11-15T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "0430c85438fc92eaddca91f659ebb47eb5056271ee1397b4c344795c4a852ce4",
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 422791801,
+        "uuid": "-3513321668753471647",
+        "publicationDate": "2026-11-14T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "e81d476db687fdf2b5e07b0d0c862a8b9b0a9af72942598566477e33077e8516",
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 423622854,
+        "uuid": "6213007717183669914",
+        "publicationDate": "2026-11-15T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "ffcce11c514ebceee6cde34515f89aaf64e500581fab7cbd82a909b8f977e9f1",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427286591,
+        "uuid": "8935974072695279179",
+        "publicationDate": "2026-11-15T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424392566,
+        "uuid": "-8080777271331700055",
+        "publicationDate": "2026-11-16T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "595043bb83e96c9a64496083717d9385d5dca746230fba7fb899e6b5b4706a85",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424392702,
+        "uuid": "7991040995405613204",
+        "publicationDate": "2026-11-16T16:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424392795,
+        "uuid": "-580082399036486516",
+        "publicationDate": "2026-11-16T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "e0c0d3989d22e3075ac878009afefa5c5110ff2f622a9db86b53840554631dfe",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393081,
+        "uuid": "-8863891854936750949",
+        "publicationDate": "2026-11-16T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "cdc0e000a666e0ffc31bd7a0c6e359bf82177903a00433a5c277b03dfaa85c9d",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393187,
+        "uuid": "-2055061205905158476",
+        "publicationDate": "2026-11-17T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "c9a61509ef4e9057cb9e313708712f36382b2825ea195c06d0c138feaafd7263",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393289,
+        "uuid": "-326770756211684563",
+        "publicationDate": "2026-11-17T16:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "6f7c6d12a7c279ff7aff51fc0c1fd7fe637ae8c11f3e8b2921afb5324436ab06",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393422,
+        "uuid": "8906814597211638530",
+        "publicationDate": "2026-11-17T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393614,
+        "uuid": "9119250214596987223",
+        "publicationDate": "2026-11-17T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "a247614370cc822edfe962fbb4abf7c4b7047642429ad7ec333b8010cf61aea0",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427286681,
+        "uuid": "4156060813550767248",
+        "publicationDate": "2026-11-16T19:00:00",
+        "statuses": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427287815,
+        "uuid": "6680239273933357186",
+        "publicationDate": "2026-11-16T19:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427287938,
+        "uuid": "3614365779669041576",
+        "publicationDate": "2026-11-17T19:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 423483793,
+        "uuid": "4659816415037836014",
+        "publicationDate": "2026-11-18T10:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "70a15eb9e882edf2626d676a381f387c54dda6eedb636950fa73a825bc698017",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 423484712,
+        "uuid": "-8339089096074181290",
+        "publicationDate": "2026-11-18T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "3b5942ea45fa93ebe08e250adbecaa906461d716dbb15d3c917f04ff1e06bf11",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 423484773,
+        "uuid": "-8305910546945982140",
+        "publicationDate": "2026-11-18T12:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "c222003edee7aa32a869af251b05d9c2f8f6be9428ab166290bac4db83c15553",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 423484839,
+        "uuid": "-3731207601091163105",
+        "publicationDate": "2026-11-18T18:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "a78f1a102b153c230e27d6e3f6d9a7e61326d39ef48f5149663b889140be1bab",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 424393691,
+        "uuid": "-2256568300747601062",
+        "publicationDate": "2026-11-18T14:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "c913dbe147a2ca111da6192bf40e904fc3c3640dd60079e2d8963326f211f143",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725034,
+        "uuid": "5511347900019396585",
+        "publicationDate": "2026-11-18T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725162,
+        "uuid": "-4254912497617780595",
+        "publicationDate": "2026-11-18T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "ed9e35e99fd317011cb535c442f147ef37db94369fa85886bc91c25958f10323",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725272,
+        "uuid": "-5899965466644493317",
+        "publicationDate": "2026-11-18T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "88e8fbdaa5c05da9aeffb48a4f5372b3cddc2d4b19f0a178cdf4e499ade9dca0",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725415,
+        "uuid": "2120727659527094958",
+        "publicationDate": "2026-11-19T11:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "32fb690e1c4e62764ac544ae718e748d8972935f4a6648b82087616d8970643d",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725555,
+        "uuid": "4792908094992761420",
+        "publicationDate": "2026-11-19T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725709,
+        "uuid": "-1560468010126717309",
+        "publicationDate": "2026-11-19T18:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "6246a80be39c053e0a20f0062ba7fdccc3c78a01f90e3818d50965289f4d04c8",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425725932,
+        "uuid": "6443070221295305315",
+        "publicationDate": "2026-11-19T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "1993fc01907a5ece40d813e83f5675565e0cc4fbe25e5f12541882ea7d76db0f",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 427288119,
+        "uuid": "-7647174116509334899",
+        "publicationDate": "2026-11-19T19:00:00",
+        "statuses": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425726070,
+        "uuid": "-6491658134482960242",
+        "publicationDate": "2026-11-20T14:00:00",
+        "statuses": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "2de678da0fafa2787d7383d4ff62cb05f0158d82ecb0cd8e922501602db3fca6",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425726186,
+        "uuid": "5095221239706765903",
+        "publicationDate": "2026-11-20T15:00:00",
+        "statuses": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "227a9c412ec7c931c16e690c6b72a02506aa6ccff5c2eb84969315d91b5e6220",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "publicationDate": "2026-11-20T17:00:00",
+        "statuses": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      },
+      {
+        "id": 425726479,
+        "uuid": "-457707186698434580",
+        "publicationDate": "2026-11-20T20:00:00",
+        "statuses": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detail": "Pending",
+            "publicUrl": null
+          }
+        ],
+        "captionSha256": "fdc627d9f49c8128ad0a62697541040bb3baf808346e83ceea62949cbaaf46ac",
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+        ],
+        "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mediaAltText": null
+      }
+    ]
+  },
+  "freshFlagCountercheck": {
+    "summary": {
+      "recordedAtUTC": "2026-11-13T23:00:42.919353+00:00",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "queueRootCalls": 5,
+      "unpreservedHelperCalls": 4,
+      "scope": "13–21Nov2026; four2daywindows plus one21Nov window after Zurichdate rollover;14–21 current coverage; no fullhistory/mediaapproval",
+      "postObjects": 61,
+      "channelStates": 76,
+      "activePendingObjects": 39,
+      "activePendingChannelStates": 49,
+      "publishedChannelStates": 9,
+      "days": {
+        "2026-11-14": {
+          "instagram": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-15": {
+          "instagram": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          }
+        },
+        "2026-11-16": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-17": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-18": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          }
+        },
+        "2026-11-19": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-20": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-21": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        }
+      },
+      "technicalDayGaps": {
+        "instagram": [],
+        "facebook": [],
+        "tiktok": [],
+        "youtube": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21"
+        ],
+        "pinterest": [],
+        "threads": [
+          "2026-11-15"
+        ]
+      },
+      "overdueActivePending": [],
+      "knownHolds": [
+        {
+          "uuid": "-4472725258033347244",
+          "returned": true,
+          "id": 426613069,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "kristalle",
+                "kristallspitzen",
+                "naturpur",
+                "geschenkidee",
+                "schweiz",
+                "luxestyle"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": true
+            }
+          }
+        },
+        {
+          "uuid": "-7002936161864562103",
+          "returned": true,
+          "id": 426613132,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "gemuesehobel",
+                "kuechenhelfer",
+                "kochen",
+                "schweiz"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            }
+          }
+        },
+        {
+          "uuid": "-7647174116509334899",
+          "returned": true,
+          "id": 427288119,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Sternenlicht-Projektor im Detail #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "sternlicht",
+                "lichtmomente",
+                "luxestyle"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            }
+          }
+        },
+        {
+          "uuid": "1744402171830094170",
+          "returned": true,
+          "id": 426612259,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": true
+            },
+            "facebook": {
+              "type": "REEL",
+              "title": "Kristallspitzen-Set"
+            }
+          }
+        },
+        {
+          "uuid": "2172266762404316928",
+          "returned": true,
+          "id": 426613082,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "3-in-1 Gemüsehobel",
+              "photoCoverIndex": 0
+            }
+          }
+        },
+        {
+          "uuid": "3614365779669041576",
+          "returned": true,
+          "id": 427287938,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Sternenlicht im Detail",
+              "photoCoverIndex": 0
+            }
+          }
+        },
+        {
+          "uuid": "3963843144054620883",
+          "returned": true,
+          "id": 427286519,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "facebook": {
+              "type": "REEL",
+              "title": "3-in-1 Gemüsehobel"
+            }
+          }
+        },
+        {
+          "uuid": "4156060813550767248",
+          "returned": true,
+          "id": 427286681,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            }
+          }
+        },
+        {
+          "uuid": "5647388074617226143",
+          "returned": true,
+          "id": 426613048,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Kristallspitzen-Set",
+              "photoCoverIndex": 0,
+              "isAigc": true
+            }
+          }
+        },
+        {
+          "uuid": "6680239273933357186",
+          "returned": true,
+          "id": 427287815,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "facebook": {
+              "type": "REEL",
+              "title": "Sternenlicht-Projektor im Detail"
+            }
+          }
+        },
+        {
+          "uuid": "8935974072695279179",
+          "returned": true,
+          "id": 427286591,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "threads": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            }
+          }
+        }
+      ],
+      "newMetricoolWrites": 0,
+      "deletes": 0,
+      "newMetricOrFlowReports": 0,
+      "helperFailure": "First helper four queue responses were printed/truncated without artifacts; root recovered in four bounded reads. No write was attempted; no uncertain write retry.",
+      "limits": [
+        "Technical queue coverage is not media/product/rightsaudit or successfuldelivery",
+        "Status PUBLISHED is observed foreign automation, not ownpublication",
+        "Nov13 states are retained as limitedhistory; current dailycoverage14–21; no guarantee that same media were neverpublished earlier",
+        "Missing or unreturned history remains unknown"
+      ],
+      "coveragePublishedChannelStates": 0,
+      "publishedStatesOutsideCurrentCoverage": 9
+    },
+    "posts": [
+      {
+        "id": 407894075,
+        "uuid": "-1741815444231403909",
+        "publicationDate": {
+          "dateTime": "2026-11-13T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+        ],
+        "captionSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "id": "1049840534888592_122152968393350792",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122152968393350792",
+            "detailedStatus": "Published"
+          },
+          {
+            "network": "instagram",
+            "id": "https://www.instagram.com/p/DfrgKNZiF-m/",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/p/DfrgKNZiF-m/",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 407894120,
+        "uuid": "-3403126915283661861",
+        "publicationDate": {
+          "dateTime": "2026-11-14T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+        ],
+        "captionSha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 415081189,
+        "uuid": "3126986420977421943",
+        "publicationDate": {
+          "dateTime": "2026-11-13T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "STORY",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "STORY"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "id": "2328213768002859",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/2328213768002859",
+            "detailedStatus": "Published"
+          },
+          {
+            "network": "instagram",
+            "id": "https://www.instagram.com/stories/luxestyle.ch/4029600117769811437",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4029600117769811437",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 415131163,
+        "uuid": "3200332797454403886",
+        "publicationDate": {
+          "dateTime": "2026-11-14T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+        ],
+        "captionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "STORY",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "STORY"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422278897,
+        "uuid": "4651045624279025767",
+        "publicationDate": {
+          "dateTime": "2026-11-13T09:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+        ],
+        "captionSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "id": "7707563517016018209",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 422279075,
+        "uuid": "-8797746381899281322",
+        "publicationDate": {
+          "dateTime": "2026-11-13T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+        ],
+        "captionSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "id": "18182777908431347",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 422279394,
+        "uuid": "-1754664943692791070",
+        "publicationDate": {
+          "dateTime": "2026-11-14T09:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+        ],
+        "captionSha256": "fabc4983426df8bb3ccca6c15b5326420e7739ec6969826eac2a9fdb92204150",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Haarspange Keks · Wichtelgeschenk",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422279501,
+        "uuid": "7993315583738791837",
+        "publicationDate": {
+          "dateTime": "2026-11-14T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+        ],
+        "captionSha256": "61c0b1b7734418c0e8891c1b7e349df0a9fad37dd8ed4ddba299bf0c8b7b3fe1",
+        "channelData": {
+          "youtube": {
+            "title": "Wichtelgeschenk ab 4 Jahren: bworld Rennrad mit Radfahrer #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "rennrad",
+              "radfahrer",
+              "spielzeug",
+              "weihnachtsgeschenk",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422279608,
+        "uuid": "8356246782781639563",
+        "publicationDate": {
+          "dateTime": "2026-11-14T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "captionSha256": "ecb52f6dbaa8b93a7482448a4d1dd6b100d91b0def82a3a6b0d5a7cc94148262",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422279700,
+        "uuid": "8178449842924373712",
+        "publicationDate": {
+          "dateTime": "2026-11-14T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "captionSha256": "f8b5f927339ad3a67bd68d59ffda62848b028c5e8df225063a702c74fac86f65",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Lederarmband mit Hufeisen-Schnalle",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422279805,
+        "uuid": "-2924344703561023385",
+        "publicationDate": {
+          "dateTime": "2026-11-14T15:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "captionSha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "Lederarmband mit Hufeisen-Schnalle"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422279920,
+        "uuid": "8229862176301272727",
+        "publicationDate": {
+          "dateTime": "2026-11-14T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+        ],
+        "captionSha256": "27e4a74fca962cabb2f9ed46604922502205839f081d0d7ea8ba57be9239bb7f",
+        "channelData": {
+          "youtube": {
+            "title": "Wichtelgeschenk für sie: Lederarmband mit Hufeisen-Schnalle #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "lederarmband",
+              "hufeisenarmband",
+              "wichteln",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422280035,
+        "uuid": "-6748893881700627372",
+        "publicationDate": {
+          "dateTime": "2026-11-14T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+        ],
+        "captionSha256": "c0ff8f88bef3ef06fbf5b6d50a05068857ccaf2bc65a26334bfb9c3d1bf7a2bb",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "bworld Rennrad mit Radfahrer",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422285770,
+        "uuid": "-9210583075457839526",
+        "publicationDate": {
+          "dateTime": "2026-11-13T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+        ],
+        "captionSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864",
+        "channelData": {
+          "youtube": {
+            "title": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "kaiserpinguin",
+              "plüschtier",
+              "geschenkidee",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "id": "DDjWSjBNH5c",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 422285897,
+        "uuid": "673796377030903265",
+        "publicationDate": {
+          "dateTime": "2026-11-13T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+        ],
+        "captionSha256": "501c9af803fd18d1c286d5a25e107e20a3e0d080b11685af67f35b42aa796c83",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Kaiserpinguin 26 cm",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "id": "7707703142586010912",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707703142586010912",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 422791764,
+        "uuid": "-2331828084021443536",
+        "publicationDate": {
+          "dateTime": "2026-11-13T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+        ],
+        "captionSha256": "7adba52cb2538f653dd4754fdd234fdd33a38872855ffb2d6244b0c34dbfb9c1",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Plüsch Kaiserpinguin 26 cm · ab 3 Jahren",
+            "pinLink": "https://luxestyle.ch/products/plusch-kaiserpinguin-26-cm-fga17842?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "id": "1111333645585648112",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585648112",
+            "detailedStatus": "Published"
+          }
+        ]
+      },
+      {
+        "id": 422791801,
+        "uuid": "-3513321668753471647",
+        "publicationDate": {
+          "dateTime": "2026-11-14T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+        ],
+        "captionSha256": "e81d476db687fdf2b5e07b0d0c862a8b9b0a9af72942598566477e33077e8516",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "bworld Rennrad mit Radfahrer · ab 4 Jahren",
+            "pinLink": "https://luxestyle.ch/products/bworld-rennrad-mit-radfahrer-fga063110?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426612259,
+        "uuid": "1744402171830094170",
+        "publicationDate": {
+          "dateTime": "2026-11-13T09:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "captionSha256": "40a3ef23a9f40aea2a3305fd619a98c95a5e3e63c35666638842634d8c24a949",
+        "channelData": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": true
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "Kristallspitzen-Set"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426613048,
+        "uuid": "5647388074617226143",
+        "publicationDate": {
+          "dateTime": "2026-11-13T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "captionSha256": "922d6e5df9798ca83fe2a1f7240c4c86dcd6c84e28758700a4801e4ff9d6fef1",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Kristallspitzen-Set",
+            "photoCoverIndex": 0,
+            "isAigc": true
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426613069,
+        "uuid": "-4472725258033347244",
+        "publicationDate": {
+          "dateTime": "2026-11-13T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "captionSha256": "dbd6a84cc5cd0e32bc6affcd8d26617dfa581441be48dba52cdbe5798ccebdac",
+        "channelData": {
+          "youtube": {
+            "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "kristalle",
+              "kristallspitzen",
+              "naturpur",
+              "geschenkidee",
+              "schweiz",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": true
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426613082,
+        "uuid": "2172266762404316928",
+        "publicationDate": {
+          "dateTime": "2026-11-13T15:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+        ],
+        "captionSha256": "f8904d4c4f08c83e04a023e64c5446209762381d6ceec6c053c30605aef44513",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "3-in-1 Gemüsehobel",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426613132,
+        "uuid": "-7002936161864562103",
+        "publicationDate": {
+          "dateTime": "2026-11-13T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+        ],
+        "captionSha256": "c2aeb6719d19c018fa21dd18728e598ffa487050c2409e497eaba4c69070095c",
+        "channelData": {
+          "youtube": {
+            "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "gemuesehobel",
+              "kuechenhelfer",
+              "kochen",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427286519,
+        "uuid": "3963843144054620883",
+        "publicationDate": {
+          "dateTime": "2026-11-13T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+        ],
+        "captionSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16",
+        "channelData": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "3-in-1 Gemüsehobel"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 420726136,
+        "uuid": "6199136659928140012",
+        "publicationDate": {
+          "dateTime": "2026-11-15T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+        ],
+        "captionSha256": "03c57641306fb43e0bb3fc3fbd11c3ce64d3ec9bdf574fc1cb4c997dd5da0bcc",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          }
+        },
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 420728374,
+        "uuid": "7768651932591999367",
+        "publicationDate": {
+          "dateTime": "2026-11-15T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+        ],
+        "captionSha256": "8d24a2d67d6f3ad370ef40a3c9e53163725ef988e109542752644b9e9e477bec",
+        "channelData": {
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422280155,
+        "uuid": "-3833193365444016309",
+        "publicationDate": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+        ],
+        "captionSha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 422295156,
+        "uuid": "-6967517640837021033",
+        "publicationDate": {
+          "dateTime": "2026-11-15T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+        ],
+        "captionSha256": "0430c85438fc92eaddca91f659ebb47eb5056271ee1397b4c344795c4a852ce4",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 423622854,
+        "uuid": "6213007717183669914",
+        "publicationDate": {
+          "dateTime": "2026-11-15T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+        ],
+        "captionSha256": "ffcce11c514ebceee6cde34515f89aaf64e500581fab7cbd82a909b8f977e9f1",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+            "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424392566,
+        "uuid": "-8080777271331700055",
+        "publicationDate": {
+          "dateTime": "2026-11-16T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+        ],
+        "captionSha256": "595043bb83e96c9a64496083717d9385d5dca746230fba7fb899e6b5b4706a85",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424392702,
+        "uuid": "7991040995405613204",
+        "publicationDate": {
+          "dateTime": "2026-11-16T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+        ],
+        "captionSha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424392795,
+        "uuid": "-580082399036486516",
+        "publicationDate": {
+          "dateTime": "2026-11-16T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+        ],
+        "captionSha256": "e0c0d3989d22e3075ac878009afefa5c5110ff2f622a9db86b53840554631dfe",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Weihnachtskugeln beflockt – 9 Stück",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393081,
+        "uuid": "-8863891854936750949",
+        "publicationDate": {
+          "dateTime": "2026-11-16T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+        ],
+        "captionSha256": "cdc0e000a666e0ffc31bd7a0c6e359bf82177903a00433a5c277b03dfaa85c9d",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+            "pinLink": "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtskugeln-beflockt-9-stuck-625300",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427286591,
+        "uuid": "8935974072695279179",
+        "publicationDate": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "captionSha256": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427286681,
+        "uuid": "4156060813550767248",
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "captionSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+        "channelData": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          }
+        },
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427287815,
+        "uuid": "6680239273933357186",
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "captionSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+        "channelData": {
+          "facebook": {
+            "type": "REEL",
+            "title": "Sternenlicht-Projektor im Detail"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 423483793,
+        "uuid": "4659816415037836014",
+        "publicationDate": {
+          "dateTime": "2026-11-18T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+        ],
+        "captionSha256": "70a15eb9e882edf2626d676a381f387c54dda6eedb636950fa73a825bc698017",
+        "channelData": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "Knoblauch und Zwiebeln per Druck hacken"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 423484712,
+        "uuid": "-8339089096074181290",
+        "publicationDate": {
+          "dateTime": "2026-11-18T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+        ],
+        "captionSha256": "3b5942ea45fa93ebe08e250adbecaa906461d716dbb15d3c917f04ff1e06bf11",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 423484773,
+        "uuid": "-8305910546945982140",
+        "publicationDate": {
+          "dateTime": "2026-11-18T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+        ],
+        "captionSha256": "c222003edee7aa32a869af251b05d9c2f8f6be9428ab166290bac4db83c15553",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Knoblauch hacken per Druck",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 423484839,
+        "uuid": "-3731207601091163105",
+        "publicationDate": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+        ],
+        "captionSha256": "a78f1a102b153c230e27d6e3f6d9a7e61326d39ef48f5149663b889140be1bab",
+        "channelData": {
+          "youtube": {
+            "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "küchengadget",
+              "knoblauch",
+              "kochen",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393187,
+        "uuid": "-2055061205905158476",
+        "publicationDate": {
+          "dateTime": "2026-11-17T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+        ],
+        "captionSha256": "c9a61509ef4e9057cb9e313708712f36382b2825ea195c06d0c138feaafd7263",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393289,
+        "uuid": "-326770756211684563",
+        "publicationDate": {
+          "dateTime": "2026-11-17T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+        ],
+        "captionSha256": "6f7c6d12a7c279ff7aff51fc0c1fd7fe637ae8c11f3e8b2921afb5324436ab06",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Retro Keramik-Kaffeetasse mit Tiermotiv",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393422,
+        "uuid": "8906814597211638530",
+        "publicationDate": {
+          "dateTime": "2026-11-17T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+        ],
+        "captionSha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393614,
+        "uuid": "9119250214596987223",
+        "publicationDate": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+        ],
+        "captionSha256": "a247614370cc822edfe962fbb4abf7c4b7047642429ad7ec333b8010cf61aea0",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+            "pinLink": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 424393691,
+        "uuid": "-2256568300747601062",
+        "publicationDate": {
+          "dateTime": "2026-11-18T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+        ],
+        "captionSha256": "c913dbe147a2ca111da6192bf40e904fc3c3640dd60079e2d8963326f211f143",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725034,
+        "uuid": "5511347900019396585",
+        "publicationDate": {
+          "dateTime": "2026-11-18T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+        ],
+        "captionSha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725162,
+        "uuid": "-4254912497617780595",
+        "publicationDate": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+        ],
+        "captionSha256": "ed9e35e99fd317011cb535c442f147ef37db94369fa85886bc91c25958f10323",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Weihnachtsstrumpf mit Samt-Optik",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725272,
+        "uuid": "-5899965466644493317",
+        "publicationDate": {
+          "dateTime": "2026-11-18T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+        ],
+        "captionSha256": "88e8fbdaa5c05da9aeffb48a4f5372b3cddc2d4b19f0a178cdf4e499ade9dca0",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+            "pinLink": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427287938,
+        "uuid": "3614365779669041576",
+        "publicationDate": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "captionSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Sternenlicht im Detail",
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725415,
+        "uuid": "2120727659527094958",
+        "publicationDate": {
+          "dateTime": "2026-11-19T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+        ],
+        "captionSha256": "32fb690e1c4e62764ac544ae718e748d8972935f4a6648b82087616d8970643d",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725555,
+        "uuid": "4792908094992761420",
+        "publicationDate": {
+          "dateTime": "2026-11-19T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+        ],
+        "captionSha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725709,
+        "uuid": "-1560468010126717309",
+        "publicationDate": {
+          "dateTime": "2026-11-19T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+        ],
+        "captionSha256": "6246a80be39c053e0a20f0062ba7fdccc3c78a01f90e3818d50965289f4d04c8",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "LED-Schminkspiegel, wiederaufladbar & tragbar",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425725932,
+        "uuid": "6443070221295305315",
+        "publicationDate": {
+          "dateTime": "2026-11-19T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+        ],
+        "captionSha256": "1993fc01907a5ece40d813e83f5675565e0cc4fbe25e5f12541882ea7d76db0f",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+            "pinLink": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_led-schminkspiegel-wiederaufladbar-tragbar-639500",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425726070,
+        "uuid": "-6491658134482960242",
+        "publicationDate": {
+          "dateTime": "2026-11-20T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+        ],
+        "captionSha256": "2de678da0fafa2787d7383d4ff62cb05f0158d82ecb0cd8e922501602db3fca6",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425726186,
+        "uuid": "5095221239706765903",
+        "publicationDate": {
+          "dateTime": "2026-11-20T15:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+        ],
+        "captionSha256": "227a9c412ec7c931c16e690c6b72a02506aa6ccff5c2eb84969315d91b5e6220",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Lichterbaum-Musikbox 10x10x20 cm",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "publicationDate": {
+          "dateTime": "2026-11-20T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+        ],
+        "captionSha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 425726479,
+        "uuid": "-457707186698434580",
+        "publicationDate": {
+          "dateTime": "2026-11-20T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+        ],
+        "captionSha256": "fdc627d9f49c8128ad0a62697541040bb3baf808346e83ceea62949cbaaf46ac",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+            "pinLink": "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_lichterbaum-musikbox-10x10x20-cm-604200",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 427288119,
+        "uuid": "-7647174116509334899",
+        "publicationDate": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "captionSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+        "channelData": {
+          "youtube": {
+            "title": "Sternenlicht-Projektor im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "sternlicht",
+              "lichtmomente",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426961960,
+        "uuid": "-325577156053548845",
+        "publicationDate": {
+          "dateTime": "2026-11-21T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_dd164b90-30e9-4b45-9294-d3d22efe2075.jpg?v=1794397799"
+        ],
+        "captionSha256": "609ec3bf5a7365d15ccf5c93adc7cb117ecda8b5778cc36e6664416657dba869",
+        "channelData": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426962036,
+        "uuid": "4464007380148308511",
+        "publicationDate": {
+          "dateTime": "2026-11-21T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+        ],
+        "captionSha256": "29e2632baad83d71896db3ce451b68f7642f0dd23002ff8edda366fe23b37b64",
+        "channelData": {
+          "instagram": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "POST"
+          }
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426962130,
+        "uuid": "1244897565051602488",
+        "publicationDate": {
+          "dateTime": "2026-11-21T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_1.jpg?v=1794397766",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_2.jpg?v=1794397773",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_3.jpg?v=1794397781",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_4.jpg?v=1794397788"
+        ],
+        "captionSha256": "bd4ca3fa0962475bd4a9c0f25e260c025021363d50e948ea90dfe7e47655c874",
+        "channelData": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Schmuckkästchen 3D Holzpuzzle",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "id": 426962209,
+        "uuid": "1277216616076757571",
+        "publicationDate": {
+          "dateTime": "2026-11-21T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": false,
+        "autoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_07eb0b8b-650b-45f7-a428-1d44e9f8cf69.png?v=1794397810"
+        ],
+        "captionSha256": "297cb99cc848f0bdbb2819913cf7387d3ec955583bb1328ba5036b4bdac462eb",
+        "channelData": {
+          "pinterest": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+            "pinLink": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_schmuckkastchen-3d-holzpuzzle-611300",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          }
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      }
+    ]
+  },
+  "deletions": 0,
+  "createsOrUpdates": 0,
+  "masterLedger": "not reset/initialized; limited queue/hash audit is not complete master publication ledger",
+  "qualityHolds": "all11known UUIDs returned draft=true autoPublish=false; product/rights/media QA not bypassed"
+}

@@ -1,5 +1,15 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R197 – 13./14.11.2026: Shop-App-Auswahl tatsächlich veröffentlicht, Zugang separat blockiert
+
+[Verbindlicher R197-Stand](UEBERGABE-SHOP-APP-20261113-R197.md) · [Shop-App-Belege](SHOP-APP-WEITERARBEIT-20261113-R197.json) · [Becherkorrektur](BECHER-KORREKTUR-20261113-R197.json) · [Queue/Doppelpostprüfung](METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json).
+
+«10kCHF-Shop» meint Premium-Look der **Shop-App**, kein Ausgabenbudget. «Neue Entdeckungen»757753840007 enthält zwei aktuell Shop-kaufbare Produkte àCHF14.90 und ist ausschliesslich im Shop-Kanal publiziert; Profilmenü/Save nicht erfolgt. Becher16617685418375: neutraler Body/Titel/SEO live, Admin-/öffentliche Gegenprobe, übrige gelieferten Produktfelder geschützt. Shopifyzugriff funktioniert, separater Händlerbrowserlink beim Inhaber unbrauchbar/geschlossen; neuer Shop-Käuferconnector kein Händlereditor.
+
+CJ-OAuthjetztbelegt/fourSKUreads; fehlende lokaleCJcredentials sind kein global fehlenderConnector. DreiJudge.meReviews korrekt zugeordnet, aber keine verifiziertenKäufe; Besucher-Herkunft perCSSversteckt, Quelle/Fix offen. Merchant10erBildoverlayprobe/4Datenquellen, exakte2Offerquelle timeout/unbekannt. ThemeSEOtargetbereitsliveidentisch, alterDraftmit14Deltas nichtpubliziert. Higgsfield1080Unlimversuch abgewiesen/keinJob/keineMP4, Balance2544.22unverändert, keinbezahlterFallback.
+
+Frisch61Queueobjekte/76Zustände13.–21.11.; alle11Holds inaktiv. Aktuelle14.–21.11.-Tageslücken Threads15/YT15–21, keinSocialwrite/Delete. Captionwiederholung allein keinDoppelpostbeweis. NeunPUBLISHEDvom13.11. nurbeobachtet. Keine neuen14.11.Kennzahlen/Flow-/Kaufwatchreports;13.11.R194bleibtdatierterVorbericht.24IDs/Historien und alle Grenzen erhalten; ClaudeEmpfang unbekannt.
+
 ## Aktueller Stand – 05.11.2026, Revision 99: drei weitere Produktseiten live korrigiert
 
 [R99-Live-Bericht](PRODUKT-SEO-LIVE-20261105-R99.md) · [R99-Belege](PRODUKT-SEO-LIVE-20261105-R99.json). Shopify LuxeStyle / `luxestyle.ch` / CHF / Schweiz und Metricool Brand `6227837` / `Europe/Zurich` samt allen sechs erwarteten Kanalidentitäten wurden frisch passend gelesen. Metricool blieb ohne Write. Der Lauf korrigierte genau drei ACTIVE-Produkte auf einer exakten GID-Allowlist und ist kein Katalogabschluss.

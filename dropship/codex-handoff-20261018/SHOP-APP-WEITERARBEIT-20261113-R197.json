@@ -1,0 +1,481 @@
+{
+  "revision": 197,
+  "intent": "CHF10000-value premium design for LuxeStyle Shop-App; no CHF10000 spending budget and no10000-product request",
+  "actualWrites": [
+    "One manual unpublished collection created",
+    "That same collection published only to verified Shop publication301971014017"
+  ],
+  "collection": {
+    "id": "gid://shopify/Collection/757753840007",
+    "title": "Neue Entdeckungen",
+    "handle": "shop-neue-entdeckungen",
+    "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+    "sortOrder": "MANUAL",
+    "products": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/16700386607495",
+          "title": "Laptop-Hülle für 12 bis 14 Zoll",
+          "status": "ACTIVE",
+          "tags": [
+            "cj-real",
+            "dropship",
+            "grind2",
+            "grind2-20261108",
+            "sort-aktentaschen",
+            "sort-laptop-taschen-huellen"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/68151217357191",
+                "title": "13 Zoll",
+                "sku": "CJJSPBPB00304-13 inches",
+                "price": "14.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/68151217389959",
+                "title": "12 Zoll",
+                "sku": "CJJSPBPB00304-12 inches",
+                "price": "14.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/68151217422727",
+                "title": "14 Zoll",
+                "sku": "CJJSPBPB00304-14 inches",
+                "price": "14.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/16706216132999",
+          "title": "Weihnachts-Fensteraufkleber",
+          "status": "ACTIVE",
+          "tags": [
+            "cj-real",
+            "dropship",
+            "grind2",
+            "grind2-20261111",
+            "sort-bilderrahmen-wandtattoos-tapeten",
+            "sort-wandbilder"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/68190285889927",
+                "title": "813 Weiss",
+                "sku": "CJJT137754401AZ",
+                "price": "14.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/68190285922695",
+                "title": "803 Bunt",
+                "sku": "CJJT137754402BY",
+                "price": "14.90",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "resourcePublicationsV2": {
+      "nodes": [
+        {
+          "isPublished": true,
+          "publishDate": "2026-11-13T22:52:08Z",
+          "publication": {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": null
+          }
+        }
+      ]
+    }
+  },
+  "collectionCreatePreflight": {
+    "before": "No collection with exact title returned; targeted read hasNextPage=false",
+    "operation": "Create one unpublished manual collection, then independently read; Shop-only publication separate",
+    "after": {
+      "title": "Neue Entdeckungen",
+      "handle": "shop-neue-entdeckungen",
+      "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+      "sortOrder": "MANUAL",
+      "sources": [
+        {
+          "source": {
+            "title": "LuxeStyle – neue Auswahl November 2026",
+            "inclusion": {
+              "selections": [
+                {
+                  "productId": "gid://shopify/Product/16706216132999"
+                },
+                {
+                  "productId": "gid://shopify/Product/16700386607495"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "notAffected": [
+      "existing collections",
+      "product publications",
+      "Shop native header/avatar/navigation",
+      "Shop personal recommendation algorithms",
+      "prices",
+      "discounts"
+    ]
+  },
+  "beforePublication": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "collection": {
+      "id": "gid://shopify/Collection/757753840007",
+      "title": "Neue Entdeckungen",
+      "handle": "shop-neue-entdeckungen",
+      "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+      "sortOrder": "MANUAL",
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16700386607495",
+            "title": "Laptop-Hülle für 12 bis 14 Zoll",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261108",
+              "sort-aktentaschen",
+              "sort-laptop-taschen-huellen"
+            ],
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/68151217357191",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": [
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/301970915713",
+                    "catalog": {
+                      "title": "Channel Catalog 301970915713 for Online Store"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/301971014017",
+                    "catalog": {
+                      "title": "Channel Catalog 301971014017 for Shop"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302032716161",
+                    "catalog": {
+                      "title": "Channel Catalog 302032716161 for TikTok"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302566834561",
+                    "catalog": {
+                      "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302994456961",
+                    "catalog": {
+                      "title": "Channel Catalog 302994456961 for Pinterest"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/391626359175",
+                    "catalog": {
+                      "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/Product/16706216132999",
+            "title": "Weihnachts-Fensteraufkleber",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261111",
+              "sort-bilderrahmen-wandtattoos-tapeten",
+              "sort-wandbilder"
+            ],
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/68190285889927",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": [
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/301970915713",
+                    "catalog": {
+                      "title": "Channel Catalog 301970915713 for Online Store"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/301971014017",
+                    "catalog": {
+                      "title": "Channel Catalog 301971014017 for Shop"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302032716161",
+                    "catalog": {
+                      "title": "Channel Catalog 302032716161 for TikTok"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302566834561",
+                    "catalog": {
+                      "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/302994456961",
+                    "catalog": {
+                      "title": "Channel Catalog 302994456961 for Pinterest"
+                    }
+                  }
+                },
+                {
+                  "isPublished": true,
+                  "publication": {
+                    "id": "gid://shopify/Publication/391626359175",
+                    "catalog": {
+                      "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "resourcePublicationsV2": {
+        "nodes": []
+      }
+    },
+    "publications": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Publication/301970915713",
+          "catalog": {
+            "title": "Channel Catalog 301970915713 for Online Store"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/301970981249",
+          "catalog": {
+            "title": "Channel Catalog 301970981249 for Point of Sale"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/301971014017",
+          "catalog": {
+            "title": "Channel Catalog 301971014017 for Shop"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302032716161",
+          "catalog": {
+            "title": "Channel Catalog 302032716161 for TikTok"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302566834561",
+          "catalog": {
+            "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302872297857",
+          "catalog": {
+            "title": "Channel Catalog 302872297857 for Google & YouTube"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302994456961",
+          "catalog": {
+            "title": "Channel Catalog 302994456961 for Pinterest"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/305570283905",
+          "catalog": {
+            "title": "Channel Catalog 305570283905 for Inbox"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/391626359175",
+          "catalog": {
+            "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+          }
+        }
+      ]
+    }
+  },
+  "tagGuard": [
+    {
+      "productId": "gid://shopify/Product/16700386607495",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "grind2",
+        "grind2-20261108",
+        "sort-aktentaschen",
+        "sort-laptop-taschen-huellen"
+      ],
+      "moduleHits": [],
+      "ownerRueckholHits": [],
+      "emptyTags": false
+    },
+    {
+      "productId": "gid://shopify/Product/16706216132999",
+      "tags": [
+        "cj-real",
+        "dropship",
+        "grind2",
+        "grind2-20261111",
+        "sort-bilderrahmen-wandtattoos-tapeten",
+        "sort-wandbilder"
+      ],
+      "moduleHits": [],
+      "ownerRueckholHits": [],
+      "emptyTags": false
+    }
+  ],
+  "tagGuardModuleSha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+  "publicProductImageAndAvailabilityChecks": [
+    {
+      "key": "window",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fb17e85-06f8-41c2-8f1d-93604daeec18.jpg?v=1794424912",
+      "imageHttpStatus": 200,
+      "imageBytes": 191974,
+      "imageSha256": "3390286fbb34475912fda020727351e258c0f210c3bb7857571aa174cd4ee0b6",
+      "productUrl": "https://luxestyle.ch/products/weihnachts-fensteraufkleber-531584",
+      "storefrontHttpStatus": 200,
+      "variant": {
+        "id": 68190285889927,
+        "available": true,
+        "price": 1490,
+        "title": "813 Weiss"
+      }
+    },
+    {
+      "key": "laptop",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/705905417093.jpg?v=1794177117",
+      "imageHttpStatus": 200,
+      "imageBytes": 62705,
+      "imageSha256": "2e4ac3d4e75f5991a7c7b034059344f52ceefc62cecf6fd040ddfd9fb952465e",
+      "productUrl": "https://luxestyle.ch/products/laptoptasche-einfach-844636",
+      "storefrontHttpStatus": 200,
+      "variant": {
+        "id": 68151217357191,
+        "available": true,
+        "price": 1490,
+        "title": "13 Zoll"
+      }
+    }
+  ],
+  "imageReview": "Both first-variant existing images inspected: white Christmas window decals and blue-grey laptop sleeve. No new image upload or AI edit, no invented brand/material/trend claim. Laptop image has a small embossed supplier mark; no LuxeStyle manufacture or brand ownership claim was added.",
+  "profileAssignmentsOrSaves": 0,
+  "nativeNavigationPlacement": "unknown/not performed; channel publication does not prove visible Shop menu placement",
+  "auth": {
+    "shopifyProductAndThemeConnection": "reauthenticated and working",
+    "nativeShopMerchantEditor": "blocked at sign-in in separate browser",
+    "ownerLiveBrowserLink": "First link confirmed expired/invalid by owner, firstsession closed. A second fresh actual interactive URL was returned by service and shared privately; login pending. No bearer links persisted.",
+    "cloudInteractStop": "success;37Firecrawl credits reported; no video-render charge",
+    "localBrowserControl": "no callable Browser control/tab/device tools found",
+    "newShopPlugin": "buyer search/cart/checkout/orders capability, no merchant profile editor; no buyer-account/order/payment data read"
+  },
+  "recommendations": "Shop controls personalised Für dich recommendations. Curated merchant collection is distinct; no promise to suppress personal purchase-history recommendations.",
+  "scope": "two products, both already ACTIVE/published to Shop/CHF14.90/available/untracked+CONTINUE; no blanket missing product-channel activation, no existing collection replaced",
+  "nextStep": "Use authenticated supported merchant editor to place existing collection757753840007 in navigation, preview phone crop and save; same current white wordmark/video files from R191 only after native image/right/crop checks."
+}

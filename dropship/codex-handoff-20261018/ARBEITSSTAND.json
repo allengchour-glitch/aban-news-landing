@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 196,
-  "updatedAt": "2026-11-13T21:55:08.183381+00:00",
+  "revision": 197,
+  "updatedAt": "2026-11-13T23:10:09.275084+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -541,12 +541,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r173_feeder_claim_safe_restoration_live_exact_independent_readback_pass",
+      "state": "r197_one_mug_body_title_seo_corrected_verified_no_mass_changes",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-11-10",
-      "belegArt": "R173_FEEDER_EXACT_CLAIM_SAFE_TITLE_BODY_SEO_LIVE_ADMIN_AND_PUBLIC_READBACK_PASS",
-      "lastEvidence": "Nach enger Inhaberfreigabe Produkt15523986473345/Variante56217490391425/SKU CJ-1418384701726527488/CHF96.90 frisch gebunden und genau einmal aktualisiert: Titel «Futterspender für Katzen in Weiss», zwei neutrale Absätze, SEO-Titel und Meta exakt auf R172-Zielstand. productUpdate userErrors=[]. Admin-Readback und unabhängige öffentliche Gegenprobe PASS: HTTP200, H1/Title/Meta, Self-Canonical, Cart/Kaufbarkeit. Handle, ACTIVE, Variante/SKU, Preis, Medien/Alttexte, Tags, untracked/CONTINUE/Menge0 und7 Publikationen erhalten. Keine Bestands-/Lieferzeitzusage; Ranking-/Verkaufswirkung unbekannt.",
-      "nextAllowedStep": "Futterspender nicht erneut schreiben. Bei einer künftigen Abweichung zuerst updatedAt, Originalbytes und alle Schutzfelder frisch lesen und Ursache/Paralleländerung dokumentieren; unbelegte Automatik-, Edelstahl-, Gewichts-, Bestands- oder Lieferzeitclaims nie wiederherstellen. Breite Katalogarbeit bleibt quellen- und allowlistgebunden.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "Becher16617685418375: Body/Titel/SEO neutral korrigiert; Admin und öffentlich H1/Meta/Body/Selfcanonical bestätigt. CHF17.90, Varianten, Bilder, Tags und übrige gelieferten Getfelder unverändert. Materialtags/Alttexte/Feedfelder separat offen.",
+      "nextAllowedStep": "Nur neue konkrete Quellenkonflikte eng und gegen aktuelle Originale korrigieren; kein Katalogabschluss.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -1014,6 +1014,12 @@
           "gitBlobSha": "9b3ba833ae36ef79a82bb86b9a46a69fa26eb537",
           "sha256": "6f411ba146bd91f2cc765272d076e198b243425094959b3284c461045d30f96f",
           "readAt": "2026-11-10T20:33:29+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+          "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+          "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1678,6 +1684,25 @@
             "R172: Restoration-Diff ist nur Freigabeentwurf; vor Write frischer updatedAt-/Schutzfelddiff erforderlich."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r173_feeder_claim_safe_restoration_live_exact_independent_readback_pass",
+            "lastEvidenceDate": "2026-11-10",
+            "belegArt": "R173_FEEDER_EXACT_CLAIM_SAFE_TITLE_BODY_SEO_LIVE_ADMIN_AND_PUBLIC_READBACK_PASS",
+            "lastEvidence": "Nach enger Inhaberfreigabe Produkt15523986473345/Variante56217490391425/SKU CJ-1418384701726527488/CHF96.90 frisch gebunden und genau einmal aktualisiert: Titel «Futterspender für Katzen in Weiss», zwei neutrale Absätze, SEO-Titel und Meta exakt auf R172-Zielstand. productUpdate userErrors=[]. Admin-Readback und unabhängige öffentliche Gegenprobe PASS: HTTP200, H1/Title/Meta, Self-Canonical, Cart/Kaufbarkeit. Handle, ACTIVE, Variante/SKU, Preis, Medien/Alttexte, Tags, untracked/CONTINUE/Menge0 und7 Publikationen erhalten. Keine Bestands-/Lieferzeitzusage; Ranking-/Verkaufswirkung unbekannt.",
+            "nextAllowedStep": "Futterspender nicht erneut schreiben. Bei einer künftigen Abweichung zuerst updatedAt, Originalbytes und alle Schutzfelder frisch lesen und Ursache/Paralleländerung dokumentieren; unbelegte Automatik-, Edelstahl-, Gewichts-, Bestands- oder Lieferzeitclaims nie wiederherstellen. Breite Katalogarbeit bleibt quellen- und allowlistgebunden."
+          },
+          "summary": "Becher16617685418375: Body/Titel/SEO neutral korrigiert; Admin und öffentlich H1/Meta/Body/Selfcanonical bestätigt. CHF17.90, Varianten, Bilder, Tags und übrige gelieferten Getfelder unverändert. Materialtags/Alttexte/Feedfelder separat offen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+              "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+              "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+            }
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -2542,6 +2567,16 @@
             "readAt": "2026-11-10T20:33:29+01:00"
           }
         ]
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+            "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+            "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
@@ -3021,12 +3056,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r185_four_quality_hold_drafts_confirmed_professional_master_not_approved",
+      "state": "r197_shared_memory_shop_app_scope_cj_oauth_judgeme_provenance_saved_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
-      "lastEvidenceDate": "2026-11-12",
-      "belegArt": "R185_EXPLICIT_OWNER_IMPLEMENTATION_AND_PER_CHANNEL_READBACK",
-      "lastEvidence": "Four stable UUIDs confirmed draft=true/autoPublish=false, latest IDs IG426033327/FB426034581/TT426034638/YT426038749. Source R176 hash unchanged; collection membership directly verified. Beauty text live; Klaviyo preview blocked. No new master, publication or re-query of daily reports.",
-      "nextAllowedStep": "Keep four UUIDs as drafts until exact film variant, high-quality original device/projection footage, source/music rights and premium QA pass. Produce from one >=25s source take, review same18s master, no paid render or duplicate post. Claude acknowledgement only with dated receipt.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "Inhaber meint10kCHF-wertigenShop-AppPremiumlook, keinBudget/10000Produkte. VierbegrenzteCJReads überOAuth,3Judge.meZuordnungstreffer verifiedbuyerfalse; versteckterBesucherbadge ausCSS, Themequelleunbekannt. Tagesgrenze/24IDs/KaufwatchEnde erhalten; neueShop-/Becherbelege im selbenHandoff, ClaudeEmpfang unbekannt.",
+      "nextAllowedStep": "DatierteR197Belege lesen; nativeShopprofil- undJudge.meZugriffe gezielt herstellen, keine neueAutomation oderFreigabeschleife für bereitsgenehmigteSchritte.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3317,6 +3352,18 @@
           "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
           "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
           "readAt": "2026-11-11T09:16:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+          "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+          "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+          "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+          "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3690,6 +3737,30 @@
           "previousState": "r176_one_bt709_technical_projector_draft_four_metricool_drafts_no_schedule_no_publish_receipt_unknown",
           "previousEvidence": "R176 direct owner scope applied: exactly one 18s 1080x1920/25fps BT.709/tv technical projector MP4, SHA fac2f767…27df6a, and four Metricool drafts. The same UUIDs were updated after QA; IG424123014, FB424123199, TikTok424123388 and YT424123545 are PENDING/draft=true/autoPublish=false and final remote media hashes match. One first IG update payload was rejected before mutation, targeted readback was unchanged, then one corrected write succeeded;0 blind retry. No active schedule/publication. Exact A–G binding, collection membership, hash-bound source rights, premium master acceptance and persistent archive remain open.",
           "previousNextStep": "Claude Code reads revision176 and acknowledges only with a real branch/revision/commit receipt. Keep the four objects as drafts until exact variant, collection, rights, premium QA and archive gates pass; then the existing approval automation may evaluate them. Do not create replacement posts or enable autoPublish blindly."
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r185_four_quality_hold_drafts_confirmed_professional_master_not_approved",
+            "lastEvidenceDate": "2026-11-12",
+            "belegArt": "R185_EXPLICIT_OWNER_IMPLEMENTATION_AND_PER_CHANNEL_READBACK",
+            "lastEvidence": "Four stable UUIDs confirmed draft=true/autoPublish=false, latest IDs IG426033327/FB426034581/TT426034638/YT426038749. Source R176 hash unchanged; collection membership directly verified. Beauty text live; Klaviyo preview blocked. No new master, publication or re-query of daily reports.",
+            "nextAllowedStep": "Keep four UUIDs as drafts until exact film variant, high-quality original device/projection footage, source/music rights and premium QA pass. Produce from one >=25s source take, review same18s master, no paid render or duplicate post. Claude acknowledgement only with dated receipt."
+          },
+          "summary": "Inhaber meint10kCHF-wertigenShop-AppPremiumlook, keinBudget/10000Produkte. VierbegrenzteCJReads überOAuth,3Judge.meZuordnungstreffer verifiedbuyerfalse; versteckterBesucherbadge ausCSS, Themequelleunbekannt. Tagesgrenze/24IDs/KaufwatchEnde erhalten; neueShop-/Becherbelege im selbenHandoff, ClaudeEmpfang unbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+              "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+              "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+              "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+              "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486"
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -4207,18 +4278,33 @@
       "run185": {
         "source": "IMPLEMENTIERUNG-20261112-R185.json",
         "claudeReceipt": "unknown_no_claude_receipt"
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+            "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+            "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+            "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+            "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r196_measured_360_390_typography_same_master_four_holds_restored_source_rights_open",
+      "state": "r197_cj_oauth_bound_a_variant_unlim1080_rejected_no_job_rights_quality_open",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-13",
-      "belegArt": "GEMESSEN_TYPOGRAFIE_QUELLSTATUS_UND_VIER_BESTAETIGTE_MASTER_HOLDS",
-      "lastEvidence": "Unveränderte R194-Texte mit tatsächlichen 68px-DejaVu-Metriken geprüft: einzeilig zu breit, zweizeilige Hooks und Produktlabel passen in 732px. Technische 360/390px-Textprobe angesehen, CTA einzeilig; kein Film oder native Plattformabnahme. Vier erneut aktivierte R176-UUIDs nach frischen gleichen MP4-Hashes und Original-/Identitätsprüfung wieder Draft/Autopublish aus, alle Metadaten/Zielgruppen/Termine erhalten. CJ-Connector samt fünf aktuellen Main-/Launcher-Hashes vorhanden; lokaler Offline-Status Credential-Bindung missing, null CJ-HTTP, kein Handshake. Exakte Einheit/Motivbindung, hochwertiger nativer Take und kommerzielle Rechte/Endabnahme bleiben offen. Gleiche masterId, Storyboard, Hooks, Captions und UTMs, kein neuer Render/Upload.",
-      "nextAllowedStep": "Denselben Master fortführen: passende native Aufnahme derselben verifizierten A-Einheit samt tatsächlich geliefertem Motiv beschaffen; mindestens 4.2s handfreies vollständiges Detail plus Vor-/Nachlauf. Gemessene zweizeilige Texte übernehmen, kein alter 17.20–18.80s-Ersatz. Vor tatsächlicher Medienverwendung Rechte/Pflichtmusik, fertige Bild-/Tonqualität, Lesbarkeit und Plattformausschnitte abnehmen. Vier stabile UUIDs inaktiv erhalten. Vor einer späteren geprüften Übernahme den konkreten vorhandenen Haltelistenpatch gegen aktuelle Main-Quelle lesen; kein ungeprüfter Workflowstart. CJ nur nach legitimer sicherer Laufzeitbindung begrenzt lesen, keinen ungültigen Connector oder fehlenden Kauf behaupten.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "CJ-OAuthjetztverbunden, A-USB/CJSN139239101AZ exakt gebunden. EinSeedance2.5-18s/1080pEntwicklungsversuch trotz0quote wegenUnlimconfig abgewiesen, keinJob/Film/Upload.2544.22Credits unverändert;480pUnlimkeinPremiumersatz. Originaleinheit/Motiv/Rechte/nativeQuelle/FinalQA offen; gleicheMasterId undR194/R196Storyboard beibehalten.",
+      "nextAllowedStep": "Hochwertigen echten ProduktTake/Motiv-/Rechtebeleg sichern; keine Credit-Fallbacks oder SlideSerien, keine Holds pauschal freigeben.",
       "blockers": [
         "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
         "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
@@ -4673,6 +4759,18 @@
           "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
           "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c",
           "readAt": "2026-11-13T21:55:08.183381+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-OAUTH-PRODUKTE-20261113-R197.json",
+          "sha256": "fc3fedab375e94bbdf83ee0eb9bf5f2cf13abb84dea424de6302e3faad801a8e",
+          "gitBlobSha": "8f853b61b2343604356fe926819fd73aa35a5225",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
+          "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
+          "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5277,6 +5375,30 @@
               "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json",
               "sha256": "5fa2b62f3166ff0dbf3c8fe5e208a54e1c476f548b549bd066ef497c0b26eed1",
               "gitBlobSha": "1547b69773ae6364a32053a4ccdc4eb43c0eba3c"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r196_measured_360_390_typography_same_master_four_holds_restored_source_rights_open",
+            "lastEvidenceDate": "2026-11-13",
+            "belegArt": "GEMESSEN_TYPOGRAFIE_QUELLSTATUS_UND_VIER_BESTAETIGTE_MASTER_HOLDS",
+            "lastEvidence": "Unveränderte R194-Texte mit tatsächlichen 68px-DejaVu-Metriken geprüft: einzeilig zu breit, zweizeilige Hooks und Produktlabel passen in 732px. Technische 360/390px-Textprobe angesehen, CTA einzeilig; kein Film oder native Plattformabnahme. Vier erneut aktivierte R176-UUIDs nach frischen gleichen MP4-Hashes und Original-/Identitätsprüfung wieder Draft/Autopublish aus, alle Metadaten/Zielgruppen/Termine erhalten. CJ-Connector samt fünf aktuellen Main-/Launcher-Hashes vorhanden; lokaler Offline-Status Credential-Bindung missing, null CJ-HTTP, kein Handshake. Exakte Einheit/Motivbindung, hochwertiger nativer Take und kommerzielle Rechte/Endabnahme bleiben offen. Gleiche masterId, Storyboard, Hooks, Captions und UTMs, kein neuer Render/Upload.",
+            "nextAllowedStep": "Denselben Master fortführen: passende native Aufnahme derselben verifizierten A-Einheit samt tatsächlich geliefertem Motiv beschaffen; mindestens 4.2s handfreies vollständiges Detail plus Vor-/Nachlauf. Gemessene zweizeilige Texte übernehmen, kein alter 17.20–18.80s-Ersatz. Vor tatsächlicher Medienverwendung Rechte/Pflichtmusik, fertige Bild-/Tonqualität, Lesbarkeit und Plattformausschnitte abnehmen. Vier stabile UUIDs inaktiv erhalten. Vor einer späteren geprüften Übernahme den konkreten vorhandenen Haltelistenpatch gegen aktuelle Main-Quelle lesen; kein ungeprüfter Workflowstart. CJ nur nach legitimer sicherer Laufzeitbindung begrenzt lesen, keinen ungültigen Connector oder fehlenden Kauf behaupten."
+          },
+          "summary": "CJ-OAuthjetztverbunden, A-USB/CJSN139239101AZ exakt gebunden. EinSeedance2.5-18s/1080pEntwicklungsversuch trotz0quote wegenUnlimconfig abgewiesen, keinJob/Film/Upload.2544.22Credits unverändert;480pUnlimkeinPremiumersatz. Originaleinheit/Motiv/Rechte/nativeQuelle/FinalQA offen; gleicheMasterId undR194/R196Storyboard beibehalten.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-OAUTH-PRODUKTE-20261113-R197.json",
+              "sha256": "fc3fedab375e94bbdf83ee0eb9bf5f2cf13abb84dea424de6302e3faad801a8e",
+              "gitBlobSha": "8f853b61b2343604356fe926819fd73aa35a5225"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
+              "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
+              "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580"
             }
           ]
         }
@@ -6160,6 +6282,21 @@
           "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
         },
         "noSourceRightsOrFinalQualityApproval": true
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CJ-OAUTH-PRODUKTE-20261113-R197.json",
+            "sha256": "fc3fedab375e94bbdf83ee0eb9bf5f2cf13abb84dea424de6302e3faad801a8e",
+            "gitBlobSha": "8f853b61b2343604356fe926819fd73aa35a5225"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
+            "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
+            "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
@@ -6500,12 +6637,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r168_owner_approved_availability_target_already_in_stock_noop_readback_pass",
+      "state": "r197_ten_overlay_sample_four_sources_read_exact_offer_source_unknown_timeout_no_write",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
-      "lastEvidenceDate": "2026-11-10",
-      "belegArt": "R168_OWNER_APPROVED_EXACT_AVAILABILITY_PREFLIGHT_ALREADY_IN_STOCK_NOOP_DOUBLE_READBACK",
-      "lastEvidence": "Inhaber gab den exakten Availability-Schritt für Offer13331643115375957532/Source10678939025 frei. Unmittelbare Prewrite-Gegenprobe: Merchant5797470070 bereits availability=IN_STOCK; frühere item_missing_required_attribute/availability-Meldung fehlt. Shopify15500960530817/56110933803393 weiterhin ACTIVE/öffentlich/CHF15.90/availableForSale=true/untracked/CONTINUE. Zweite enge und unabhängige Rücklesung PASS. Kein Write, weil kein Diff. CH Free Listings freigegeben; nur getrennte LI-Versandbeanstandung. Zeitpunkt/Verursacher unbekannt.",
-      "nextAllowedStep": "Availability dieses Angebots nicht erneut schreiben. Nur bei erneutem konkretem Fehler exakt zurücklesen und Quelle/Shopify gegenprüfen. LI-Versand ausschliesslich nach belegter Lieferfähigkeit, Kosten und Laufzeit sowie eigener Freigabe ändern. Sechs stale Offers weiterhin nur nach aktuellem Source-Existenzread ausschliessen; DRAFT nie dafür aktivieren.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "Merchant5797470070 aktuell:10DisapprovedbildOverlayzeilen als begrenzteProbe,4Datenquellen mit2ähnlichenShopifyAPIprimaryFeeds+Autofeed. Exakte aktuelle2Offerabfrage timeout, source/imageattributes unbekannt. WindsorWriter verfügbar, aber kein sicherer gezielterBildfix ohneQuelle/Rechtebild; keinFeedwrite/GTINschluss.",
+      "nextAllowedStep": "Exakte Produktresource/Primärquelle und sauberes rechtlich nutzbares Variantenbild für die2NailOffers beschaffen, dann konkretenDiff und Rücklesen.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -6767,6 +6904,12 @@
           "gitBlobSha": "397ad6d6e0b7ba208c1a202f132088cef545126d",
           "sha256": "61cdffb6efe402e4a68a94543e8b8c0600d4f3a79db7048b567db33e9e4b82bb",
           "readAt": "2026-11-10T12:09:32+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
+          "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
+          "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -7147,6 +7290,25 @@
             "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r168_owner_approved_availability_target_already_in_stock_noop_readback_pass",
+            "lastEvidenceDate": "2026-11-10",
+            "belegArt": "R168_OWNER_APPROVED_EXACT_AVAILABILITY_PREFLIGHT_ALREADY_IN_STOCK_NOOP_DOUBLE_READBACK",
+            "lastEvidence": "Inhaber gab den exakten Availability-Schritt für Offer13331643115375957532/Source10678939025 frei. Unmittelbare Prewrite-Gegenprobe: Merchant5797470070 bereits availability=IN_STOCK; frühere item_missing_required_attribute/availability-Meldung fehlt. Shopify15500960530817/56110933803393 weiterhin ACTIVE/öffentlich/CHF15.90/availableForSale=true/untracked/CONTINUE. Zweite enge und unabhängige Rücklesung PASS. Kein Write, weil kein Diff. CH Free Listings freigegeben; nur getrennte LI-Versandbeanstandung. Zeitpunkt/Verursacher unbekannt.",
+            "nextAllowedStep": "Availability dieses Angebots nicht erneut schreiben. Nur bei erneutem konkretem Fehler exakt zurücklesen und Quelle/Shopify gegenprüfen. LI-Versand ausschliesslich nach belegter Lieferfähigkeit, Kosten und Laufzeit sowie eigener Freigabe ändern. Sechs stale Offers weiterhin nur nach aktuellem Source-Existenzread ausschliessen; DRAFT nie dafür aktivieren."
+          },
+          "summary": "Merchant5797470070 aktuell:10DisapprovedbildOverlayzeilen als begrenzteProbe,4Datenquellen mit2ähnlichenShopifyAPIprimaryFeeds+Autofeed. Exakte aktuelle2Offerabfrage timeout, source/imageattributes unbekannt. WindsorWriter verfügbar, aber kein sicherer gezielterBildfix ohneQuelle/Rechtebild; keinFeedwrite/GTINschluss.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
+              "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
+              "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16"
+            }
+          ]
         }
       ],
       "resolvedBlockers": [
@@ -7886,19 +8048,29 @@
             "readAt": "2026-11-10T12:09:32+01:00"
           }
         ]
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
+            "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
+            "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r159_preview_publish_owner_approved_auto_review_blocked_specialized_tool_missing",
+      "state": "r197_specific_seo_patch_observed_live_stale_draft_not_published_shop_collection_created",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-09",
-      "belegArt": "R159_EXACT_THEME_PUBLISH_APPROVAL_AND_BLOCKER",
-      "lastEvidence": "Exakte Veröffentlichung des geprüften Theme213619179911 ist freigegeben. Neuer Aufruf über allgemeine Mutation vor Ausführung blockiert; Spezialwerkzeug fehlt; kein Bypass oder Retry. MAIN bleibt213013037447.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "Shopify-Themezugriff nach Reauth wieder nutzbar.548/537Dateien vollständig verglichen:14Deltas; genehmigte meta-tags.liquid bereits identisch live, daher kein alterDraft-Publish. Neuer Premiumauftrag meint Shop-App; Kollektion757753840007 mit2neuen Shop-kaufbarenProdukten erstellt/Shop-only publiziert. Native Menüzuweisung/Save durch fehlenden Editorzugriff offen; Käufer-Shopplugin ist kein Händlerwriter.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=213619179911",
-      "nextAllowedStep": "Theme213619179911 im Admin oder mit spezialisiertem Publishpfad veröffentlichen; Rollen/MD5/DE/FR live zurücklesen.",
+      "nextAllowedStep": "Bestehende Shop-Kollektion im authentifizierten nativen Editor platzieren/previewen/speichern. Keine erneute alte Theme-Freigabe verlangen, keine stale Veröffentlichung.",
       "blockers": [
         "Publishwerkzeug fehlt.",
         "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
@@ -8199,6 +8371,18 @@
           "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
           "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
           "readAt": "2026-11-09T22:39:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-APP-WEITERARBEIT-20261113-R197.json",
+          "sha256": "7cdfb121bde3f05069cb7fa4a399b57acd31b79c6ba1eac45bab075c3ee5c3cf",
+          "gitBlobSha": "8c19f8907de9944794d877d69d350acda7919e37",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/THEME-GEGENPROBE-20261113-R197.json",
+          "sha256": "591cf1287c510ed99bb81f6551d179f75fa6e6ca90cb94a0d9e20ffeda2338a3",
+          "gitBlobSha": "10bda8dd6f2febd534d4be4469c285ba4b968ff4",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -8654,6 +8838,30 @@
           ],
           "previousOwnerApprovalState": "r158_owner_said_fix_all_preview_complete_publish_auto_review_blocked",
           "previousLastEvidencePreserved": true
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r159_preview_publish_owner_approved_auto_review_blocked_specialized_tool_missing",
+            "lastEvidenceDate": "2026-11-09",
+            "belegArt": "R159_EXACT_THEME_PUBLISH_APPROVAL_AND_BLOCKER",
+            "lastEvidence": "Exakte Veröffentlichung des geprüften Theme213619179911 ist freigegeben. Neuer Aufruf über allgemeine Mutation vor Ausführung blockiert; Spezialwerkzeug fehlt; kein Bypass oder Retry. MAIN bleibt213013037447.",
+            "nextAllowedStep": "Theme213619179911 im Admin oder mit spezialisiertem Publishpfad veröffentlichen; Rollen/MD5/DE/FR live zurücklesen."
+          },
+          "summary": "Shopify-Themezugriff nach Reauth wieder nutzbar.548/537Dateien vollständig verglichen:14Deltas; genehmigte meta-tags.liquid bereits identisch live, daher kein alterDraft-Publish. Neuer Premiumauftrag meint Shop-App; Kollektion757753840007 mit2neuen Shop-kaufbarenProdukten erstellt/Shop-only publiziert. Native Menüzuweisung/Save durch fehlenden Editorzugriff offen; Käufer-Shopplugin ist kein Händlerwriter.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-APP-WEITERARBEIT-20261113-R197.json",
+              "sha256": "7cdfb121bde3f05069cb7fa4a399b57acd31b79c6ba1eac45bab075c3ee5c3cf",
+              "gitBlobSha": "8c19f8907de9944794d877d69d350acda7919e37"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-GEGENPROBE-20261113-R197.json",
+              "sha256": "591cf1287c510ed99bb81f6551d179f75fa6e6ca90cb94a0d9e20ffeda2338a3",
+              "gitBlobSha": "10bda8dd6f2febd534d4be4469c285ba4b968ff4"
+            }
+          ]
         }
       ],
       "followUpFindings": [
@@ -9454,6 +9662,21 @@
         "publishExecuted": false,
         "retryCountAfterFinalCheck": 0,
         "mainChanged": false
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-APP-WEITERARBEIT-20261113-R197.json",
+            "sha256": "7cdfb121bde3f05069cb7fa4a399b57acd31b79c6ba1eac45bab075c3ee5c3cf",
+            "gitBlobSha": "8c19f8907de9944794d877d69d350acda7919e37"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/THEME-GEGENPROBE-20261113-R197.json",
+            "sha256": "591cf1287c510ed99bb81f6551d179f75fa6e6ca90cb94a0d9e20ffeda2338a3",
+            "gitBlobSha": "10bda8dd6f2febd534d4be4469c285ba4b968ff4"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
@@ -11175,12 +11398,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r195_one_category_hub_main_head_counterchecked_no_page_level_noindex_finding",
+      "state": "r197_seo_live_patch_observed_mug_public_corrected_three_prefix_reads_bounded",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-13",
-      "belegArt": "R195_SINGLE_HUB_DIRECT_HTTP_MAIN_HEAD_AND_412_MAIN_LINK_TARGET_COUNTERCHECK",
-      "lastEvidence": "One category hub/pages/alle-kategorien freshly returned200/selfcanonical with exactly one mainH1. Main document head has no robots tag; direct HTTP has no X-Robots-Tag. Aggregated robots=none belongs to a second returned document head titled Mit Shop einloggen, not the category hub head. Among412main anchors no matches for six exact R194-known DRAFT/404handles. Scope does not establish full-site link freedom, robots.txt allowance, current Google indexing or rankings, or resolve all SEO tasks. R185 documents the Beauty intro correction as implemented and read back; Beauty was not re-read in this14h run, so the old R175 approval/implementation is not a new pending request. No repair/redirect/reactivation/index request; R194 mug description remains the only reused sales proposal.",
-      "nextAllowedStep": "Preserve this single-hub evidence and existing drafts. Do not repeat the already documented R185 Beauty intro implementation or seek its old R175 approval again; freshly compare current objects before any dependent later write. For later SEO findings isolate the actual main document head and HTTP robots header, never mixed login metadata. Investigate exact further source/target pages only with bounded scope. No blanket redirect, product activation, all-SEO completion claim or new approval scope derived from this check.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "SEOmetafilebereitsliveidentischR158/R159; kein eigenerPublish. Drei öffentlicheSeiten nur400kPräfixe, H1darausunbekannt; keinNull/Noindexschluss. Becher nachengenTextwrites öffentlichTitle/H1/Meta/Body/Selfcanonical bestätigt.",
+      "nextAllowedStep": "ErreichbareSuchseiten undkonkreteMaterial-/SEOkonflikte eng weiterprüfen; Präfixmessungen nichtalsVollscan berichten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -11530,6 +11753,18 @@
           "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
           "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c",
           "readAt": "2026-11-13T13:26:09.362978+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+          "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+          "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+          "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+          "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -11865,6 +12100,30 @@
             "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
             "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
           }
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r195_one_category_hub_main_head_counterchecked_no_page_level_noindex_finding",
+            "lastEvidenceDate": "2026-11-13",
+            "belegArt": "R195_SINGLE_HUB_DIRECT_HTTP_MAIN_HEAD_AND_412_MAIN_LINK_TARGET_COUNTERCHECK",
+            "lastEvidence": "One category hub/pages/alle-kategorien freshly returned200/selfcanonical with exactly one mainH1. Main document head has no robots tag; direct HTTP has no X-Robots-Tag. Aggregated robots=none belongs to a second returned document head titled Mit Shop einloggen, not the category hub head. Among412main anchors no matches for six exact R194-known DRAFT/404handles. Scope does not establish full-site link freedom, robots.txt allowance, current Google indexing or rankings, or resolve all SEO tasks. R185 documents the Beauty intro correction as implemented and read back; Beauty was not re-read in this14h run, so the old R175 approval/implementation is not a new pending request. No repair/redirect/reactivation/index request; R194 mug description remains the only reused sales proposal.",
+            "nextAllowedStep": "Preserve this single-hub evidence and existing drafts. Do not repeat the already documented R185 Beauty intro implementation or seek its old R175 approval again; freshly compare current objects before any dependent later write. For later SEO findings isolate the actual main document head and HTTP robots header, never mixed login metadata. Investigate exact further source/target pages only with bounded scope. No blanket redirect, product activation, all-SEO completion claim or new approval scope derived from this check."
+          },
+          "summary": "SEOmetafilebereitsliveidentischR158/R159; kein eigenerPublish. Drei öffentlicheSeiten nur400kPräfixe, H1darausunbekannt; keinNull/Noindexschluss. Becher nachengenTextwrites öffentlichTitle/H1/Meta/Body/Selfcanonical bestätigt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+              "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+              "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+              "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+              "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+            }
+          ]
         }
       ],
       "visibilitySupplementR49": {
@@ -12404,6 +12663,21 @@
           "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
           "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c"
         }
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+            "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+            "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+            "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+            "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
@@ -13792,12 +14066,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r196_six_reactivated_holds_restored_eleven_inactive_publisher_patch_only_cause_unknown",
+      "state": "r197_eleven_holds_fresh_inactive_limited_dedup_no_delete",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
-      "lastEvidenceDate": "2026-11-13",
-      "belegArt": "GEMESSEN_SECHS_ID_KETTEN_MEDIENHASHES_KANALREADBACKS_UND_PUBLISHER_GUARD_ENTWURF",
-      "lastEvidence": "Frischer 19h-Read zeigte zwei bekannte R125-Audioobjekte und vier R176-Projektorobjekte wieder aktiv. Alle sechs URLs frisch bytegebunden: unveränderte bekannte Audio- bzw. fac2f-R176-Hashes. Sechs gezielte Hold-Updates/sieben Kanalzustände mit frischer Shop-/Marken-/sechs-Kanalidentität, Original, Diff und Kollisionsprüfung; neue numerische IDs an identische UUIDs gebunden, Inhalt/Medien/Zeit/echte Provider-/YTZielgruppe unverändert. Nach vier frischen Schlussfenstern und unabhängiger Gegenprobe sind alle sieben Audio-/neun Zustände und vier R176-Holds wieder Draft/Autopublish aus. Ursache unbekannt. Bestehender Publisher kann Entwürfe freigeben, elf UUIDs fehlen in seiner Halteliste. Additiver, quellgebundener elf-UUID-Patch geprüft, nur Entwurf; vier alte Einträge erhalten, kein Live-Guard oder Workflowstart. Acht Fremd-PUBLISHED-Zustände beobachtet, keine eigene Publikation.",
-      "nextAllowedStep": "Bekannte stabile UUIDs und alle bestehenden Holds erhalten; keine Rechte-/Premiumfreigabe aus Autopublish oder vorhandenen URLs ableiten. Vor späterer Übernahme des engen Haltelistenpatches die aktuelle operative Quelle und den vollständigen Diff erneut prüfen; kein Workflowstart, kein Freigabeflag-/Frequenzwechsel. Der geprüfte Publisherpfad ist nur ein belegtes Wiederholungsrisiko, kein Verursachernachweis. Originalmedien erst nach Produkt-, Quellen-, Pflichtmusik-/Sprach-, Rechte- und Qualitätsprüfung korrigieren, dann dieselben UUIDs verwenden. Neue URL/ID/Re-Encoding ist kein neuer Content; keine blinden Retries bei unknown. Heutige R194-Reports nicht wiederholen.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+      "lastEvidence": "Alle11bekanntenHolds im frischen13.–21.11.QueueRead drafttrue/autopublishfalse.61Objekte/76Zustände;39aktivePending/49Zustände,9FremdPUBLISHEDvom13.11. AktuelleGapsThreads15/YT15–21. DreiTikToktexte wiederholt, Medientypen/Hashesabweichend; visuelleMastergleichheit unbekannt, keinDelete/Write. R196Haltelistenpatch weiter nurEntwurf.",
+      "nextAllowedStep": "Holds erhalten; qualitäts-/rechtegeprüfte neueMasterdatei an bestehendeUUIDs binden und proKanalzielgerichtetprüfen. Doppelposts erst nach eindeutiger Medien-/Historienprüfung löschen.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -14027,6 +14301,12 @@
           "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
           "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4",
           "readAt": "2026-11-13T21:55:08.183381+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
+          "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
+          "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130",
+          "readAt": "2026-11-13T23:10:09.275084+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14423,6 +14703,25 @@
               "path": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.json",
               "sha256": "1187ca97af8c4048157df650dbfdd017b5985dadfe5d47c15fadb05ba9de3eba",
               "gitBlobSha": "a2ef91d315d87d63389e12c996c97ca7669e12c4"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 197,
+          "previousEvidencePreserved": {
+            "state": "r196_six_reactivated_holds_restored_eleven_inactive_publisher_patch_only_cause_unknown",
+            "lastEvidenceDate": "2026-11-13",
+            "belegArt": "GEMESSEN_SECHS_ID_KETTEN_MEDIENHASHES_KANALREADBACKS_UND_PUBLISHER_GUARD_ENTWURF",
+            "lastEvidence": "Frischer 19h-Read zeigte zwei bekannte R125-Audioobjekte und vier R176-Projektorobjekte wieder aktiv. Alle sechs URLs frisch bytegebunden: unveränderte bekannte Audio- bzw. fac2f-R176-Hashes. Sechs gezielte Hold-Updates/sieben Kanalzustände mit frischer Shop-/Marken-/sechs-Kanalidentität, Original, Diff und Kollisionsprüfung; neue numerische IDs an identische UUIDs gebunden, Inhalt/Medien/Zeit/echte Provider-/YTZielgruppe unverändert. Nach vier frischen Schlussfenstern und unabhängiger Gegenprobe sind alle sieben Audio-/neun Zustände und vier R176-Holds wieder Draft/Autopublish aus. Ursache unbekannt. Bestehender Publisher kann Entwürfe freigeben, elf UUIDs fehlen in seiner Halteliste. Additiver, quellgebundener elf-UUID-Patch geprüft, nur Entwurf; vier alte Einträge erhalten, kein Live-Guard oder Workflowstart. Acht Fremd-PUBLISHED-Zustände beobachtet, keine eigene Publikation.",
+            "nextAllowedStep": "Bekannte stabile UUIDs und alle bestehenden Holds erhalten; keine Rechte-/Premiumfreigabe aus Autopublish oder vorhandenen URLs ableiten. Vor späterer Übernahme des engen Haltelistenpatches die aktuelle operative Quelle und den vollständigen Diff erneut prüfen; kein Workflowstart, kein Freigabeflag-/Frequenzwechsel. Der geprüfte Publisherpfad ist nur ein belegtes Wiederholungsrisiko, kein Verursachernachweis. Originalmedien erst nach Produkt-, Quellen-, Pflichtmusik-/Sprach-, Rechte- und Qualitätsprüfung korrigieren, dann dieselben UUIDs verwenden. Neue URL/ID/Re-Encoding ist kein neuer Content; keine blinden Retries bei unknown. Heutige R194-Reports nicht wiederholen."
+          },
+          "summary": "Alle11bekanntenHolds im frischen13.–21.11.QueueRead drafttrue/autopublishfalse.61Objekte/76Zustände;39aktivePending/49Zustände,9FremdPUBLISHEDvom13.11. AktuelleGapsThreads15/YT15–21. DreiTikToktexte wiederholt, Medientypen/Hashesabweichend; visuelleMastergleichheit unbekannt, keinDelete/Write. R196Haltelistenpatch weiter nurEntwurf.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
+              "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
+              "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130"
             }
           ]
         }
@@ -15600,6 +15899,16 @@
         },
         "patchLive": false,
         "reactivationActor": "unknown"
+      },
+      "run197": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
+            "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
+            "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130"
+          }
+        ],
+        "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
       }
     },
     {
@@ -17881,6 +18190,71 @@
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-19H-R196.json",
           "sha256": "2df551f03010cb251f83315af1d59e4f8cedaa1bcfa88d3c1a93fdc08f56e512",
           "gitBlobSha": "8927b99f3dd30505c77d34d8569be67be37caedb"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 197,
+      "at": "2026-11-13T23:10:09.275084+00:00",
+      "actor": "codex",
+      "summary": "Shop-App Premiumauftrag präzisiert. Becherbody/Titel/SEO live korrigiert; eine2Produkt-Kollektion Shop-only publiziert, native Platzierung mangelsEditor offen. CJ-OAuthverifiziert, Judge.meProvenienz/OverlayMerchant/Theme14Deltas begrenzt geprüft. EinHiggsfield1080Unlimversuch abgewiesenohneJob/Creditverbrauch.61QueueObjekte/76Zustände,11Holdsfrischinaktiv,keinSocialwrite/Delete;7Tage+21NovnachDatumwechsel geprüft. NeueTagesreports0,24IDs/Historien/Kaufwatchende erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+          "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+          "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-APP-WEITERARBEIT-20261113-R197.json",
+          "sha256": "7cdfb121bde3f05069cb7fa4a399b57acd31b79c6ba1eac45bab075c3ee5c3cf",
+          "gitBlobSha": "8c19f8907de9944794d877d69d350acda7919e37"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-OAUTH-PRODUKTE-20261113-R197.json",
+          "sha256": "fc3fedab375e94bbdf83ee0eb9bf5f2cf13abb84dea424de6302e3faad801a8e",
+          "gitBlobSha": "8f853b61b2343604356fe926819fd73aa35a5225"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+          "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+          "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.md",
+          "sha256": "f592f48253d80081e583ed7c62fc95118470d32c0f391d07cfe6f66470e7511b",
+          "gitBlobSha": "63f698ea2f6bf054b59c8015a03da3b0df02c28b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+          "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+          "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/THEME-GEGENPROBE-20261113-R197.json",
+          "sha256": "591cf1287c510ed99bb81f6551d179f75fa6e6ca90cb94a0d9e20ffeda2338a3",
+          "gitBlobSha": "10bda8dd6f2febd534d4be4469c285ba4b968ff4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
+          "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
+          "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
+          "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
+          "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
+          "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
+          "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+          "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+          "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061"
         }
       ],
       "taskCount": 24,
@@ -41138,5 +41512,591 @@
     "noOperationalPublisherChanges": true,
     "noNewMasterFilm": true,
     "claudeReceipt": "unknown_no_receipt"
+  },
+  "run197": {
+    "revision": 197,
+    "startedDateZurich": "2026-11-13",
+    "savedDateZurich": "2026-11-14",
+    "updatedAtUTC": "2026-11-13T23:10:09.275084+00:00",
+    "brand": "luxestyle.ch",
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "productWriteOperations": 2,
+    "collectionWriteOperations": 2,
+    "ownMetricoolWrites": 0,
+    "ownPublications": 0,
+    "deletions": 0,
+    "newMasterMp4": false,
+    "paidRender": false,
+    "newAnalyticsOrFlowReports": 0,
+    "ordersQueried": false,
+    "purchaseWatchEnded": true,
+    "claudeReceipt": "unknown_no_receipt",
+    "evidence": {
+      "BECHER-KORREKTUR-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+        "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+        "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+      },
+      "SHOP-APP-WEITERARBEIT-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/SHOP-APP-WEITERARBEIT-20261113-R197.json",
+        "sha256": "7cdfb121bde3f05069cb7fa4a399b57acd31b79c6ba1eac45bab075c3ee5c3cf",
+        "gitBlobSha": "8c19f8907de9944794d877d69d350acda7919e37"
+      },
+      "CJ-OAUTH-PRODUKTE-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/CJ-OAUTH-PRODUKTE-20261113-R197.json",
+        "sha256": "fc3fedab375e94bbdf83ee0eb9bf5f2cf13abb84dea424de6302e3faad801a8e",
+        "gitBlobSha": "8f853b61b2343604356fe926819fd73aa35a5225"
+      },
+      "JUDGEME-TRANSPARENZ-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+        "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+        "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486"
+      },
+      "JUDGEME-TRANSPARENZ-20261113-R197.md": {
+        "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.md",
+        "sha256": "f592f48253d80081e583ed7c62fc95118470d32c0f391d07cfe6f66470e7511b",
+        "gitBlobSha": "63f698ea2f6bf054b59c8015a03da3b0df02c28b"
+      },
+      "SEO-TEILPRUEFUNG-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+        "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+        "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766"
+      },
+      "THEME-GEGENPROBE-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/THEME-GEGENPROBE-20261113-R197.json",
+        "sha256": "591cf1287c510ed99bb81f6551d179f75fa6e6ca90cb94a0d9e20ffeda2338a3",
+        "gitBlobSha": "10bda8dd6f2febd534d4be4469c285ba4b968ff4"
+      },
+      "MERCHANT-QUELLENPRUEFUNG-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
+        "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
+        "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16"
+      },
+      "HIGGSFIELD-KONFIGBLOCK-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
+        "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
+        "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580"
+      },
+      "METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
+        "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
+        "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130"
+      },
+      "UEBERGABE-SHOP-APP-20261113-R197.md": {
+        "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+        "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+        "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061"
+      }
+    },
+    "queueSummary": {
+      "recordedAtUTC": "2026-11-13T23:00:42.919353+00:00",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "queueRootCalls": 5,
+      "unpreservedHelperCalls": 4,
+      "scope": "13–21Nov2026; four2daywindows plus one21Nov window after Zurichdate rollover;14–21 current coverage; no fullhistory/mediaapproval",
+      "postObjects": 61,
+      "channelStates": 76,
+      "activePendingObjects": 39,
+      "activePendingChannelStates": 49,
+      "publishedChannelStates": 9,
+      "days": {
+        "2026-11-14": {
+          "instagram": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 3,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-15": {
+          "instagram": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 2,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          }
+        },
+        "2026-11-16": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-17": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-18": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 1
+          }
+        },
+        "2026-11-19": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 1
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-20": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        },
+        "2026-11-21": {
+          "instagram": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "facebook": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "tiktok": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "youtube": {
+            "published": 0,
+            "activePending": 0,
+            "inactiveOrUnknown": 0
+          },
+          "pinterest": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          },
+          "threads": {
+            "published": 0,
+            "activePending": 1,
+            "inactiveOrUnknown": 0
+          }
+        }
+      },
+      "technicalDayGaps": {
+        "instagram": [],
+        "facebook": [],
+        "tiktok": [],
+        "youtube": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21"
+        ],
+        "pinterest": [],
+        "threads": [
+          "2026-11-15"
+        ]
+      },
+      "overdueActivePending": [],
+      "knownHolds": [
+        {
+          "uuid": "-4472725258033347244",
+          "returned": true,
+          "id": 426613069,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "kristalle",
+                "kristallspitzen",
+                "naturpur",
+                "geschenkidee",
+                "schweiz",
+                "luxestyle"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": true
+            }
+          }
+        },
+        {
+          "uuid": "-7002936161864562103",
+          "returned": true,
+          "id": 426613132,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "gemuesehobel",
+                "kuechenhelfer",
+                "kochen",
+                "schweiz"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            }
+          }
+        },
+        {
+          "uuid": "-7647174116509334899",
+          "returned": true,
+          "id": 427288119,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "youtube": {
+              "title": "Sternenlicht-Projektor im Detail #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "sternlicht",
+                "lichtmomente",
+                "luxestyle"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            }
+          }
+        },
+        {
+          "uuid": "1744402171830094170",
+          "returned": true,
+          "id": 426612259,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": true
+            },
+            "facebook": {
+              "type": "REEL",
+              "title": "Kristallspitzen-Set"
+            }
+          }
+        },
+        {
+          "uuid": "2172266762404316928",
+          "returned": true,
+          "id": 426613082,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "3-in-1 Gemüsehobel",
+              "photoCoverIndex": 0
+            }
+          }
+        },
+        {
+          "uuid": "3614365779669041576",
+          "returned": true,
+          "id": 427287938,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Sternenlicht im Detail",
+              "photoCoverIndex": 0
+            }
+          }
+        },
+        {
+          "uuid": "3963843144054620883",
+          "returned": true,
+          "id": 427286519,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "facebook": {
+              "type": "REEL",
+              "title": "3-in-1 Gemüsehobel"
+            }
+          }
+        },
+        {
+          "uuid": "4156060813550767248",
+          "returned": true,
+          "id": 427286681,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "instagram": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            }
+          }
+        },
+        {
+          "uuid": "5647388074617226143",
+          "returned": true,
+          "id": 426613048,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "tiktok": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Kristallspitzen-Set",
+              "photoCoverIndex": 0,
+              "isAigc": true
+            }
+          }
+        },
+        {
+          "uuid": "6680239273933357186",
+          "returned": true,
+          "id": 427287815,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "facebook": {
+              "type": "REEL",
+              "title": "Sternenlicht-Projektor im Detail"
+            }
+          }
+        },
+        {
+          "uuid": "8935974072695279179",
+          "returned": true,
+          "id": 427286591,
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true,
+          "providerFlags": {
+            "threads": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            }
+          }
+        }
+      ],
+      "newMetricoolWrites": 0,
+      "deletes": 0,
+      "newMetricOrFlowReports": 0,
+      "helperFailure": "First helper four queue responses were printed/truncated without artifacts; root recovered in four bounded reads. No write was attempted; no uncertain write retry.",
+      "limits": [
+        "Technical queue coverage is not media/product/rightsaudit or successfuldelivery",
+        "Status PUBLISHED is observed foreign automation, not ownpublication",
+        "Nov13 states are retained as limitedhistory; current dailycoverage14–21; no guarantee that same media were neverpublished earlier",
+        "Missing or unreturned history remains unknown"
+      ],
+      "coveragePublishedChannelStates": 0,
+      "publishedStatesOutsideCurrentCoverage": 9
+    },
+    "browserState": "Owner livebrowser link unusable; no callable local browser tool; native profile save blocked"
   }
 }

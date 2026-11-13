@@ -1,0 +1,223 @@
+{
+  "revision": 197,
+  "source": "two successful own product mutations13Nov2026: description, then title+SEO; fresh Admin and public readback",
+  "productId": "gid://shopify/Product/16617685418375",
+  "before": {
+    "id": "gid://shopify/Product/16617685418375",
+    "title": "Retro-Vogel-Keramikbecher mit Ballgriff",
+    "vendor": "LuxeStyle",
+    "status": "ACTIVE",
+    "productType": "Haushalt & Wohnen",
+    "descriptionHtml": "<p>Für den täglichen Kaffeegenuss im Büro oder zu Hause bietet dieser handgefertigte Keramikbecher ein klassisches Retro-Design. Der Becher fasst 201–300 ml und misst 10,2 cm in der Höhe. Er ist einlagig gefertigt, rund geformt und verfügt über einen Ballgriff. Das Muster zeigt florale Vögel in den Farben Steinbraun bzw. Weiss. Der Becher ist nicht mikrowellengeeignet.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Einlagige Keramik</li>\n<li>Ballgriff für sicheren Halt</li>\n<li>Floral‑Vogel‑Muster</li>\n<li>Kapazität bis 300 ml</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Stein</li>\n<li>\n<strong>Gewicht:</strong> ca. 380 g</li>\n<li>\n<strong>Fassungsvermögen:</strong> 201–300 ml</li>\n<li>\n<strong>Muster:</strong> Blumen</li>\n<li>\n<strong>Form:</strong> rund</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "tags": [
+      "auswahl-nachgeruestet",
+      "becher",
+      "cj-real",
+      "dropship",
+      "haushalt",
+      "kueche",
+      "neuheit",
+      "sort-retro",
+      "sort-tassen-kaffeebecher",
+      "sort-tassen-kaffeebecher-keramik",
+      "tassen-becher",
+      "wohnen"
+    ],
+    "totalInventory": 0,
+    "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719154567"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c3a9f2e7-1e77-45fe-a714-422674769866.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 2 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719285639"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/828b86a3-820a-45b1-9a22-87865616b4ee.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 3 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719318407"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a12a0d-69d5-48cc-a136-46e337ba6c83.jpg?v=1791947521",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 4 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719351175"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9eea3f88-43a8-49ba-ae12-68c18fb80dcb.jpg?v=1791947523",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 5 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719383943"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7eabd6e0-12f0-400f-9975-abf9d7052f94.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 6 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719416711"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e59c44e0-96de-4a31-8774-71ae21ddc006.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 7 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719449479"
+      }
+    ],
+    "totalVariants": 2,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/67675894710663",
+        "title": "Schwalbe",
+        "sku": "CJYD310614901AZ",
+        "price": "17.90",
+        "inventoryQuantity": 0
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67681398489479",
+        "title": "Schmetterling · Weiss",
+        "sku": "CJYD310614902BY",
+        "price": "17.90",
+        "inventoryQuantity": 0
+      }
+    ],
+    "currencyCode": "CHF"
+  },
+  "after": {
+    "id": "gid://shopify/Product/16617685418375",
+    "title": "Retro-Vogelbecher mit markantem Griff",
+    "vendor": "LuxeStyle",
+    "status": "ACTIVE",
+    "productType": "Haushalt & Wohnen",
+    "descriptionHtml": "<p>Ein Becher im Retro-Stil mit auffälligem Griff.</p>\n<h3>Ausführungen</h3>\n<ul>\n<li>Schwalbe</li>\n<li>Schmetterling · Weiss</li>\n</ul>\n<p>Wähle deine Ausführung im Auswahlfeld. Der angezeigte Preis gilt für die gewählte Ausführung.</p>",
+    "tags": [
+      "auswahl-nachgeruestet",
+      "becher",
+      "cj-real",
+      "dropship",
+      "haushalt",
+      "kueche",
+      "neuheit",
+      "sort-retro",
+      "sort-tassen-kaffeebecher",
+      "sort-tassen-kaffeebecher-keramik",
+      "tassen-becher",
+      "wohnen"
+    ],
+    "totalInventory": 0,
+    "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719154567"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c3a9f2e7-1e77-45fe-a714-422674769866.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 2 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719285639"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/828b86a3-820a-45b1-9a22-87865616b4ee.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 3 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719318407"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a12a0d-69d5-48cc-a136-46e337ba6c83.jpg?v=1791947521",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 4 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719351175"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9eea3f88-43a8-49ba-ae12-68c18fb80dcb.jpg?v=1791947523",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 5 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719383943"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7eabd6e0-12f0-400f-9975-abf9d7052f94.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 6 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719416711"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e59c44e0-96de-4a31-8774-71ae21ddc006.jpg?v=1791947522",
+        "altText": "Retro-Vogel-Keramikbecher mit Ballgriff – Bild 7 | LuxeStyle",
+        "mediaId": "gid://shopify/MediaImage/77506719449479"
+      }
+    ],
+    "totalVariants": 2,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/67675894710663",
+        "title": "Schwalbe",
+        "sku": "CJYD310614901AZ",
+        "price": "17.90",
+        "inventoryQuantity": 0
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67681398489479",
+        "title": "Schmetterling · Weiss",
+        "sku": "CJYD310614902BY",
+        "price": "17.90",
+        "inventoryQuantity": 0
+      }
+    ],
+    "currencyCode": "CHF"
+  },
+  "finalAdminProduct": {
+    "id": "gid://shopify/Product/16617685418375",
+    "title": "Retro-Vogelbecher mit markantem Griff",
+    "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+    "descriptionHtml": "<p>Ein Becher im Retro-Stil mit auffälligem Griff.</p>\n<h3>Ausführungen</h3>\n<ul>\n<li>Schwalbe</li>\n<li>Schmetterling · Weiss</li>\n</ul>\n<p>Wähle deine Ausführung im Auswahlfeld. Der angezeigte Preis gilt für die gewählte Ausführung.</p>",
+    "seo": {
+      "title": "Retro-Vogelbecher mit markantem Griff | LuxeStyle",
+      "description": "Becher im Retro-Stil mit auffälligem Griff. Wähle zwischen Schwalbe und Schmetterling in Weiss. Der angezeigte Preis gilt für die gewählte Ausführung."
+    },
+    "updatedAt": "2026-11-13T22:50:17Z"
+  },
+  "publicReadback": {
+    "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+    "httpStatus": 200,
+    "finalUrl": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+    "bytesRead": 1050497,
+    "bodyReadLimitBytes": 2000000,
+    "title": "Retro-Vogelbecher mit markantem Griff | LuxeStyle",
+    "metaDescription": "Becher im Retro-Stil mit auffälligem Griff. Wähle zwischen Schwalbe und Schmetterling in Weiss. Der angezeigte Preis gilt für die gewählte Ausführung.",
+    "canonical": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+    "h1": "Retro-Vogelbecher mit markantem Griff",
+    "neutralBodyPresent": true,
+    "oldHandmadeTextPresent": false,
+    "claimScope": "exact title/H1/meta/body matches in one public response; no whole-site audit; HTML not persisted"
+  },
+  "changedGetFields": [
+    "title",
+    "descriptionHtml"
+  ],
+  "protectedGetFieldsUnchanged": [
+    "id",
+    "vendor",
+    "status",
+    "productType",
+    "tags",
+    "totalInventory",
+    "featuredImageUrl",
+    "images",
+    "totalVariants",
+    "variants",
+    "currencyCode"
+  ],
+  "handleUnchanged": true,
+  "beforeDescriptionSha256": "6b384f4332dd56f4e6dceee5f4ca00434c9957bf688cbad48f404678b99c3094",
+  "actualStoredDescriptionSha256": "b45115716ad04f42949ddf0c7bf869ec116220305b9b27ddb5170e62f667f583",
+  "titleSeoBefore": {
+    "id": "gid://shopify/Product/16617685418375",
+    "title": "Retro-Vogel-Keramikbecher mit Ballgriff",
+    "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+    "seo": {
+      "title": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle CH",
+      "description": "Für den täglichen Kaffeegenuss im Büro oder zu Hause bietet dieser handgefertigte Keramikbecher ein klassisches Retro-Design. Einlagige Keramik."
+    }
+  },
+  "preExecutionValidationFailure": "First raw mutation request used wrong envelope property mutation instead of query; rejected before execution. Corrected request succeeded once with no userErrors; not an uncertain write retry.",
+  "limits": [
+    "No material certainty asserted; material tags/image alt text/feed fields were preserved, remain separate follow-up",
+    "No price/inventory/policy/discount/shipping/flow change",
+    "No whole-catalog completion or sales attribution"
+  ]
+}

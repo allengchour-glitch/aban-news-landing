@@ -1,0 +1,113 @@
+{
+  "audit": "Shopify Admin GraphQL read-only; schema fields discovered before query",
+  "source": "judgeme.review_widget_data product metafields on the three named products",
+  "products": [
+    {
+      "product_id": "16603787985287",
+      "handle": "notizbuch-fur-gewichtsverfolgung-639400",
+      "status": "ACTIVE",
+      "tags": [
+        "buero",
+        "cj-real",
+        "dropship",
+        "homeoffice",
+        "kat-buero",
+        "neuheit",
+        "schreibwaren",
+        "schule",
+        "sort-buero",
+        "sort-kalender",
+        "sort-notizbuecher"
+      ],
+      "widget_product_external_id": 16603787985287,
+      "widget_reviews": 3,
+      "widget_average_rating": 5.0,
+      "known_review_uuid": "032a010b-65cd-4ee5-b0db-16099aba202a",
+      "match": true,
+      "known_review_rating": 5,
+      "known_review_published_in_widget_data": true,
+      "known_review_verified_buyer": false,
+      "known_review_transparency_badge": "review_collected_from_store_visitor",
+      "known_review_source": null
+    },
+    {
+      "product_id": "16606125097351",
+      "handle": "drehwinkelmesser-fur-fahrzeuge-360-messung-846016",
+      "status": "ACTIVE",
+      "tags": [
+        "cj-real",
+        "neu",
+        "neuheit",
+        "sort-auto-diagnose-messgeraete"
+      ],
+      "widget_product_external_id": 16606125097351,
+      "widget_reviews": 8,
+      "widget_average_rating": 4.38,
+      "known_review_uuid": "c546cc49-4cce-43f5-a315-80e873cf8857",
+      "match": true,
+      "known_review_rating": 5,
+      "known_review_published_in_widget_data": true,
+      "known_review_verified_buyer": false,
+      "known_review_transparency_badge": "review_collected_from_store_visitor",
+      "known_review_source": null,
+      "also_present_in_photo_gallery": true
+    },
+    {
+      "product_id": "16613767381383",
+      "handle": "2-in-1-10w-kabelloses-ladegerat-6db4cc",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "kat-handy",
+        "kat-laden",
+        "neuheit",
+        "querbeet",
+        "querbeet-seit-2026-10-18",
+        "sort-elektronik-kleinteile",
+        "sort-kabellos-laden",
+        "sort-kabellos-laden-mehrfach",
+        "tech",
+        "trend"
+      ],
+      "widget_product_external_id": 16613767381383,
+      "widget_reviews": 8,
+      "widget_average_rating": 3.62,
+      "known_review_uuid": "2a31f8b7-1969-4d20-aecb-5ff64126a44e",
+      "match": true,
+      "known_review_rating": 5,
+      "known_review_published_in_widget_data": true,
+      "known_review_verified_buyer": false,
+      "known_review_transparency_badge": "review_collected_from_store_visitor",
+      "known_review_source": null,
+      "also_present_in_photo_gallery": true
+    }
+  ],
+  "shop_metafields": {
+    "judgeme.all_reviews_rating": "4.83",
+    "judgeme.all_reviews_count": "12563",
+    "interpretation": "Shop-level aggregate only; not evidence of product-specific ratings, verified orders, or verified purchases."
+  },
+  "notes": [
+    "All three expected UUIDs match their expected product widget data; none is cross-associated in these results.",
+    "verified_buyer is false on each expected review. source is null; the transparency badge says collected from store visitor. Do not describe these as verified purchases.",
+    "Widget totals and averages are the product-specific aggregates returned by Judge.me metafields.",
+    "No names, emails, IPs, addresses, review bodies, orders, customers, or checkout data are retained in this artifact."
+  ],
+  "live_pages": {
+    "checked": "2026-11-13; public HTML source only, three previously named product URLs",
+    "source": "Judge.me widget markup and expected UUIDs present in all three pages",
+    "verified_buyer_false_records_on_pages": [
+      3,
+      6,
+      7
+    ],
+    "explicit_verified_purchase_label_found": false,
+    "store_visitor_transparency_badge_css": "display:none !important",
+    "swiss_purchase_claim": "unknown: phrase \"aus der Schweiz\" occurs once in a bold element, but context could not be classified safely; no Judge.me Swiss-buyer badge found",
+    "caveat": "Static source only; no post-JavaScript rendered browser inspection. Page HTML discarded after checking."
+  }
+}

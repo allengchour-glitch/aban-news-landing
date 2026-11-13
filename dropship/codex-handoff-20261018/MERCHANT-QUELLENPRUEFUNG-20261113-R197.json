@@ -1,0 +1,123 @@
+{
+  "revision": 197,
+  "account": "5797470070 LuxeStyleCH",
+  "hypdSmallRead": {
+    "date": "2026-11-13",
+    "scope": "luxestyle.ch only; Merchant read-only diagnosis",
+    "shop": {
+      "name": "LuxeStyle CH",
+      "shop_id": "5797470070",
+      "time_zone": null
+    },
+    "account_issues": {
+      "returned_empty": true
+    },
+    "disapproved_first_page": {
+      "page_size": 10,
+      "next_page_token_present": true,
+      "rows_returned": 10,
+      "common_issue_code": "image_unwanted_overlays",
+      "canonical_attribute": "n:image_link",
+      "severity": "DISAPPROVED",
+      "resolution": "MERCHANT_ACTION",
+      "countries": [
+        "CH",
+        "LI"
+      ],
+      "reporting_contexts": [
+        "DISPLAY_ADS",
+        "SHOPPING_ADS",
+        "FREE_LISTINGS"
+      ],
+      "selected_offers": [
+        {
+          "offer_id": "shopify_ZZ_15448834736513_55877809340801",
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1"
+        },
+        {
+          "offer_id": "shopify_ZZ_15448834736513_67652260430215",
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6"
+        }
+      ]
+    },
+    "targeted_product_status_and_source_read": "unknown: exact resource names not in first page; no pagination per scope",
+    "write_capability": "RO only in HYPD Merchant connector",
+    "prior_5000_scan": "partial/truncated; not a full-catalog metric",
+    "product_list_schema": {
+      "filters": [
+        "shop_id",
+        "page_size",
+        "page_token"
+      ],
+      "offer_id_filter": false
+    },
+    "product_list_first_page": {
+      "page_size": 10,
+      "target_offers_found": false,
+      "next_page_token_present": true,
+      "pagination_followed": false
+    },
+    "external_write_capability_note": "Root reports Windsor connection with write actions for same account; no writes performed in this read task"
+  },
+  "dataSources": {
+    "status": "done",
+    "data": [
+      {
+        "data_source_name": "accounts/5797470070/dataSources/10667445201",
+        "data_source_id": "10667445201",
+        "data_source_display_name": "Shopify App API",
+        "data_source_input": "API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_linked_primary_sources": null,
+        "data_fetched_at": "2026-11-13T22:18:47"
+      },
+      {
+        "data_source_name": "accounts/5797470070/dataSources/10668966945",
+        "data_source_id": "10668966945",
+        "data_source_display_name": "Third Party Promotions",
+        "data_source_input": null,
+        "data_source_type": "promotionDataSource",
+        "data_source_linked_primary_sources": null,
+        "data_fetched_at": "2026-11-13T22:18:47"
+      },
+      {
+        "data_source_name": "accounts/5797470070/dataSources/10678939025",
+        "data_source_id": "10678939025",
+        "data_source_display_name": "luxestyle.ch",
+        "data_source_input": "AUTOFEED",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_linked_primary_sources": null,
+        "data_fetched_at": "2026-11-13T22:18:47"
+      },
+      {
+        "data_source_name": "accounts/5797470070/dataSources/10762220830",
+        "data_source_id": "10762220830",
+        "data_source_display_name": "Shopify App API",
+        "data_source_input": "API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_linked_primary_sources": null,
+        "data_fetched_at": "2026-11-13T22:18:47"
+      }
+    ],
+    "total_rows": 4
+  },
+  "targetedCurrentRead": {
+    "content": [
+      {
+        "type": "text",
+        "textSha256": "dd5159cde9a9196e81f28d85ee164a559ee498cc8dd9607d868dcd84bfe68116"
+      }
+    ],
+    "isError": true
+  },
+  "writerCapabilities": "Windsor has update_product/create_data_source; HYPD read-only is not global write absence",
+  "selectedOffers": [
+    "shopify_ZZ_15448834736513_55877809340801",
+    "shopify_ZZ_15448834736513_67652260430215"
+  ],
+  "targetedSourceAndImageAttributes": "unknown; exact current-day2offer read timed out, no blind retry. Wide historical request was rejected by trial range before this read.",
+  "scope": "first10disapproved rows only, nextpage present; all10 image_unwanted_overlays. No full-catalog totals, no negative counters used. One10-product resource-list page did not include selectedoffers.",
+  "writes": 0,
+  "blocker": "Exact primary datasource and actual product resource not established for2offers; two similarly named Shopify API primary feeds plus Autofeed. Need clean exactvariant rights-proven image before image_link patch; no guessed source/supplemental-feed creation.",
+  "gtin": "No automatic identifier_exists=false inference; no GTIN, exclusions, ads, country, feed rules or budget changes"
+}

@@ -2274,3 +2274,26 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Konsolidierte Tagestabelle 13.11.](TAGESTABELLE-20261113-R196.md) · [Abendpaket](CONTENT-VERKAUFSPAKET-20261113-19H-R196.md) · [Holds](HOLD-WIEDERHERSTELLUNG-20261113-19H-R196.json) · [Schutzdiff](METRICOOL-HALTEN-ENTWURF-20261113-R196.patch).
 
 [LUXESTYLE_R196_20261113_19H]
+
+### R197 – Später Folgeauftrag: Shop-App, CJ und konkrete Korrekturen
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shop-App | Zwei neue kaufbare Produkte, Varianten, Tags, Shop-Kanal und Bilder geprüft; eine manuelle Kollektion erstellt und nur auf Shop veröffentlicht | Neue Entdeckungen757753840007,2Produkte àCHF14.90; frische Rücklesung. Keine native Menüzuweisung/Profil-Save |
+| Produkt / SEO | Becherbody neutral geschrieben, danach Titel+SEO korrigiert, Admin und öffentliche H1/Meta/Body/Canonical gegengeprüft |2erfolgreiche Produktwrites;CHF17.90/Varianten/Bilder/Tags unverändert. Materialtags/Alttexte/Feed separat offen |
+| CJ / Bewertungen | OAuth und4exakteSKUs gelesen;3Judge.meZuordnungen/Disclosure begrenzt geprüft | CJzugriff funktioniert;kommerzielleRechte offen. Reviews verified_buyerfalse/sourceunknown; BesucherbadgeCSSversteckt,keinReviewwrite |
+| Theme / Merchant |548live/537draftDateien verglichen;10MerchantAblehnungen/4Quellen/2Offerabfrage geprüft | SEOzielschonliveidentisch,14DeltasdeshalbkeinstalePublish. Merchantquelle nachTimeoutunbekannt;keinFeedwrite |
+| Higgsfield / Doppelposts | Einen18s1080UnlimEntwicklungsversuch mit0quote eingereicht;108Historienobjekte begrenzt aufWiederholung geprüft | Renderkonfiguration abgewiesen/keinJob/Balancegleich;keinPaidFallback/MP4.3TikTokTextwiederholungenvisuellunbewiesen,keinDelete |
+| Zugang / Berichte | Shopifyreauthbestätigt; ShopHändlerbrowseranmeldung und nichtfunktionierendenInhaberlink geprüft/Sitzunggeschlossen | APIarbeitenmöglich,Profilzugriffweiterblockiert;neuerShoppluginKäuferfunktionen. KeineKundendaten/Bestell-/Tagesreportwiederholung |
+
+[R197-Handoff](UEBERGABE-SHOP-APP-20261113-R197.md) · [Tatsächliche Produkt-/Shopänderungen](SHOP-APP-WEITERARBEIT-20261113-R197.json).
+
+## 14.11.2026
+
+### R197 – Datumswechsel: frische Queueflags und Kontinuität
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Planung / Holds | Nach ungespeicherten Hilfsreads vier kleine Fenster sicher lokal rückgelesen; wegen Zürcher Datumswechsel21.11. als weiteres Fenster ergänzt |61Objekte/76Zustände;39aktivePending/49Zustände.11Holdsfrischinaktiv,keineüberfälligenaktivenPendingzustände. Threads15/YT15–21offen. NeunPUBLISHEDvom13.11.nurbeobachtet,keineeigenePublikation |
+| Reviewquelle | AktuellesLiveThemeAGENTS und exakteBadgeklasse in4Themeordnern gesucht | KeinQuelltreffer;ausgelieferteCSS-Herkunftunbekannt,keineÄnderungundkeinApp-Injektionsbeweis |
+| Gedächtnis / Tagesgrenze |13.11.-Vorbericht datiert gehalten,24Aufgaben und Historien ergänzt;R197Diff/Belege vorbereitet |Keine14.11.-Kennzahl-/Flow-/Verkaufs-/Kaufwatchabfrage,keineneueAutomation. Speicher-/Commitrücklesung separat zu bestätigen;ClaudeEmpfangunbekannt |

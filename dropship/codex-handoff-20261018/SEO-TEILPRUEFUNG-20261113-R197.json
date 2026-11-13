@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-13",
+  "scope": "Public HTML read only, LuxeStyle, three requested URLs; no raw HTML retained in report",
+  "pages": {
+    "home": {
+      "url": "https://luxestyle.ch/",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/",
+      "readBytes": 400000,
+      "sha256": "a297045e6edb1e18039daf83ab6e6dc424ee2f635b88cc5e6d18225b00bc8d78",
+      "hashScope": "sha256 of exactly the 400000-byte response prefix read; not a full-page hash"
+    },
+    "categories": {
+      "url": "https://luxestyle.ch/pages/alle-kategorien",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/pages/alle-kategorien",
+      "readBytes": 400000,
+      "sha256": "1ed7c7772d530b57b141f74c21981dfb7500499f05a0839279d4b65a6dc084e4",
+      "hashScope": "sha256 of exactly the 400000-byte response prefix read; not a full-page hash"
+    },
+    "product": {
+      "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+      "readBytes": 400000,
+      "sha256": "4fd0326df70fdaa9ecdfb703c1160d5a2f86c1f09529131fdca661f8b42c2f5a",
+      "hashScope": "sha256 of exactly the 400000-byte response prefix read; not a full-page hash"
+    }
+  },
+  "findings": {
+    "home": {
+      "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+      "description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "canonical": "https://luxestyle.ch/",
+      "robotsMeta": "none in main head",
+      "h1": "unknown (not reliably extracted; absence not established)"
+    },
+    "categories": {
+      "title": "Alle Kategorien — der ganze Shop auf einen Blick – LuxeStyle",
+      "description": "Alle Kategorien von LuxeStyle auf einen Blick: Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme – meist zwei Klicks bis zum passenden Produkt.",
+      "canonical": "https://luxestyle.ch/pages/alle-kategorien",
+      "robotsMeta": "none in main head",
+      "h1": "unknown (not reliably extracted; absence not established)"
+    },
+    "product": {
+      "title": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle CH",
+      "description": "Für den täglichen Kaffeegenuss im Büro oder zu Hause bietet dieser handgefertigte Keramikbecher ein klassisches Retro-Design. Einlagige Keramik.",
+      "canonical": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200",
+      "robotsMeta": "none in main head",
+      "h1": "unknown (not reliably extracted; absence not established)",
+      "bodyClaims": "handgefertigte Keramik; einlagige Keramik; Detailfeld Material: Stein; contradictory material claims remain visible",
+      "variants": [
+        "Schwalbe",
+        "Schmetterling · Weiss"
+      ],
+      "priceObserved": "CHF 17.90 appears in product embedded data for at least observed variant",
+      "purchaseCTA": "HTML contains In den Warenkorb string; no interaction performed",
+      "stockOrDelivery": "not inferred",
+      "observationTime": "2026-11-13 read; dated pre-change evidence, not current state after root update",
+      "titleAtRead": "Retro-Vogel-Keramikbecher mit Ballgriff | LuxeStyle CH",
+      "descriptionAtRead": "Für den täglichen Kaffeegenuss im Büro oder zu Hause bietet dieser handgefertigte Keramikbecher ein klassisches Retro-Design. Einlagige Keramik.",
+      "bodyClaimsAtRead": "At the time of this read, product text said handgefertigte/einlagige Keramik while detail field said Material: Stein; dated evidence of a conflict at read time only.",
+      "currentRootUpdate": {
+        "reportedByRoot": true,
+        "title": "Retro-Vogelbecher mit markantem Griff",
+        "description": "neutral updated by root; exact current value not included in this public-read report",
+        "handle": "unchanged old handle"
+      }
+    }
+  },
+  "r194Diff": {
+    "status": "proposalOnly at time of original public read; root reports description and title/SEO have since been neutralized",
+    "safeChangeIdea": "apply neutral proposed description only after owner approval and fresh prewrite check; claims/measurements/material/handmade/delivery claims removed, no invented replacement",
+    "sourceSha": "6b384f4332dd56f4e6dceee5f4ca00434c9957bf688cbad48f404678b99c3094",
+    "proposedSha": "7379962488860efd98a2f6d4dccbebcfb788cab8d85201235756e9ea9c1fa5a1",
+    "conflictAtRead": true
+  },
+  "suggestedImprovements": [
+    {
+      "finding": "At time of dated read, public product text and detail field contained conflicting material claims; supplier proof was absent in the R194 evidence.",
+      "action": "Root reports neutralized product description, title and SEO; no further action is inferred from this stale public snapshot."
+    }
+  ],
+  "limits": "No fresh public read after root update. No assertion about the whole website. H1 unknown, not absent. No hub refresh, analytics, store/theme/feed writes, interactions or raw HTML persistence."
+}

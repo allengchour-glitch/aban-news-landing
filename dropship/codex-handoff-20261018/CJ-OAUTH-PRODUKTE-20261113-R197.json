@@ -1,0 +1,189 @@
+{
+  "referenceCorrection": {
+    "helperInputHadStrayPrefix": true,
+    "actualLiveVariantId": "gid://shopify/ProductVariant/68122445283719",
+    "proof": "Higgsfield preflight fresh Shopify variant binding"
+  },
+  "revision": 197,
+  "connection": "authenticated OAuth CJ connector, distinct from missing local CJ_API_KEY runtime",
+  "twoSourceProducts": {
+    "probe_date": "2026-11-13",
+    "connection": {
+      "authorized": true,
+      "method": "OAuth",
+      "credential_material_recorded": false
+    },
+    "method": {
+      "tool": "cjdropshipping_get_product_detail",
+      "variant_skus": [
+        "CJSN139239101AZ",
+        "CJYD310614901AZ"
+      ],
+      "features": "enable_video",
+      "calls": 2,
+      "search_or_pagination": false
+    },
+    "items": [
+      {
+        "shopify_reference_supplied": {
+          "product_id": "15521256604033",
+          "variant_id": "68122445283719"
+        },
+        "cj": {
+          "pid": "1477820492730732544",
+          "vid": "1477826312449167360",
+          "product_sku": "CJSN1392391",
+          "variant_sku": "CJSN139239101AZ",
+          "variant_key": "A-USB",
+          "variant_name": "A USB",
+          "origin": "CJdropshipping product detail response",
+          "product_url": "https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+          "title_en": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+          "main_image": "https://cf.cjdropshipping.com/96a6864a-cd91-47fa-9853-58e983400a33.jpg",
+          "variant_image": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+          "material_fields": {
+            "materialNameEn": [
+              "Plastic",
+              "Others"
+            ],
+            "description_shade_material": "PVC"
+          },
+          "motif_fields": "Description lists optional projection films/disks and a galaxy disk; no artwork rights statement.",
+          "video": {
+            "asset_id": "1602963697889193984",
+            "url": null,
+            "usage_terms": null
+          },
+          "media_rights_statement": null
+        }
+      },
+      {
+        "shopify_reference_supplied": {
+          "product_id": "16617685418375",
+          "variant_id": "67675894710663"
+        },
+        "cj": {
+          "pid": "2608281305241637200",
+          "vid": "2608281305241638300",
+          "product_sku": "CJYD3106149",
+          "variant_sku": "CJYD310614901AZ",
+          "variant_key": "Swallow-201to300ml",
+          "origin": "CJdropshipping product detail response",
+          "product_url": "https://www.cjdropshipping.com/product/retro-bird-patterned-handmade-coffee-cup-p-2608281305241637200.html",
+          "title_en": "Retro Bird-patterned Handmade Coffee Cup",
+          "main_image": "https://cf.cjdropshipping.com/quick/product/e59c44e0-96de-4a31-8774-71ae21ddc006.jpg",
+          "variant_image": "https://cf.cjdropshipping.com/quick/product/cefcf398-a91c-41b6-b163-d295a57f6710.jpg",
+          "material_fields": {
+            "materialNameEn": [
+              "Stone"
+            ],
+            "description_material": "Ceramic",
+            "inconsistent": true
+          },
+          "motif_fields": {
+            "matched_variant": "Swallow",
+            "sibling_variant": "White Butterfly",
+            "rights_statement": null
+          },
+          "video": null,
+          "media_rights_statement": null
+        }
+      }
+    ],
+    "limitations": {
+      "shopify_not_queried": true,
+      "advertising_or_editing_rights_confirmed": false,
+      "shipping_time_unknown": true,
+      "swiss_freight_cost_unknown": true,
+      "global_inventory_not_used_for_shipping_inference": true
+    }
+  },
+  "twoShopCandidates": {
+    "probe_date": "2026-11-13",
+    "tool": "cjdropshipping_get_product_detail",
+    "calls": 2,
+    "exact_variant_sku_queries": true,
+    "shopify_queried": false,
+    "items": [
+      {
+        "shopify_product_reference_supplied": "16706216132999",
+        "cj": {
+          "pid": "1469520390878531584",
+          "vid": "1469520390962417664",
+          "product_sku": "CJJT1377544",
+          "variant_sku": "CJJT137754401AZ",
+          "variant_key": "813white",
+          "title_en": "New Christmas Decorations Christmas Window Stickers",
+          "origin": "CJdropshipping product detail response",
+          "product_url": "https://www.cjdropshipping.com/product/new-christmas-decorations-christmas-window-stickers-p-1469520390878531584.html",
+          "material_fields": {
+            "metadata": "Plastic",
+            "description": "PVC"
+          },
+          "description_dimensions": {
+            "roll": "35.5 cm long x 4 cm thick",
+            "unfolded_2_sheet_layout": "50 x 35.3 cm"
+          },
+          "variant_logistics_dimensions": {
+            "length": 360,
+            "width": 50,
+            "height": 40,
+            "units_declared": false
+          },
+          "images": [
+            "https://cf.cjdropshipping.com/6977dd2a-992c-4718-a7d2-b8c12e5c90d3.png",
+            "https://cf.cjdropshipping.com/9fb17e85-06f8-41c2-8f1d-93604daeec18.jpg",
+            "https://cf.cjdropshipping.com/00a1f7fb-b0dc-41fe-b58a-265bbbb2cfa2.jpg",
+            "https://cf.cjdropshipping.com/64f99b41-373d-44ef-b22b-8a912092490f.jpg",
+            "https://cf.cjdropshipping.com/134d604d-1ddc-45e8-a944-f495b5d3949f.jpg",
+            "https://cf.cjdropshipping.com/54bfd50b-3d26-41b3-b08a-0764d4601dbe.png"
+          ],
+          "video": null,
+          "media_rights_statement": null,
+          "trend_evidence": null
+        }
+      },
+      {
+        "shopify_product_reference_supplied": "16700386607495",
+        "cj": {
+          "pid": "C0248372-A6D0-4F2A-B4AD-EFD311844636",
+          "vid": "096C518F-176D-4D2A-8CFD-C8A4E10D8836",
+          "product_sku": "CJJSPBPB00304",
+          "variant_sku": "CJJSPBPB00304-13 inches",
+          "variant_key": "13 inches",
+          "title_en": "Notebook inner bag simple hand bag",
+          "origin": "CJdropshipping product detail response",
+          "product_url": "https://www.cjdropshipping.com/product/notebook-inner-bag-simple-hand-bag-p-C0248372-A6D0-4F2A-B4AD-EFD311844636.html",
+          "material_fields": {
+            "metadata": "plastic",
+            "description": "Matte PU fabric",
+            "independently_confirmed": false
+          },
+          "description_dimensions": "13 inch: 36 cm wide x 25.5 cm high",
+          "variant_logistics_dimensions": {
+            "length": 250,
+            "width": 200,
+            "height": 10,
+            "units_declared": false
+          },
+          "images": [
+            "https://cf.cjdropshipping.com/20200901/705905417093.jpg",
+            "https://cf.cjdropshipping.com/20200901/1405697189076.jpg",
+            "https://cf.cjdropshipping.com/20200901/1606963523504.png",
+            "https://cf.cjdropshipping.com/20200901/3040698162900.png"
+          ],
+          "video": null,
+          "media_rights_statement": null,
+          "trend_evidence": null
+        }
+      }
+    ],
+    "limitations": {
+      "trend_claim_made": false,
+      "media_rights_confirmed": false,
+      "measurements_distinguish_product_description_from_variant_logistics_fields": true
+    }
+  },
+  "calls": "one OAuth status and four exact detail reads across this continuation, no search/pagination/import/order",
+  "rights": "No explicit commercial media/edit/advertising license returned; A projector physical unit/motif and native source-quality remain open"
+}

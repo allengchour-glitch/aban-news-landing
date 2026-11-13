@@ -1,0 +1,182 @@
+{
+  "revision": 197,
+  "completeInventories": [
+    {
+      "theme": {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "role": "MAIN",
+        "updatedAt": "2026-11-12T00:51:33Z"
+      },
+      "filesCount": 548,
+      "pages": 6,
+      "complete": true,
+      "metaTags": {
+        "filename": "snippets/meta-tags.liquid",
+        "checksumMd5": "5272479d3e09c18aa461e78f465c7c0b",
+        "size": "17254"
+      }
+    },
+    {
+      "theme": {
+        "id": "gid://shopify/OnlineStoreTheme/213619179911",
+        "name": "LuxeStyle – R158 SEO Preview 09.11.2026",
+        "role": "UNPUBLISHED",
+        "updatedAt": "2026-11-09T20:46:25Z"
+      },
+      "filesCount": 537,
+      "pages": 6,
+      "complete": true,
+      "metaTags": {
+        "filename": "snippets/meta-tags.liquid",
+        "checksumMd5": "5272479d3e09c18aa461e78f465c7c0b",
+        "size": "17254"
+      }
+    }
+  ],
+  "diff": [
+    {
+      "filename": "assets/lx-scroll-szene.js",
+      "live": {
+        "filename": "assets/lx-scroll-szene.js",
+        "checksumMd5": "867a6d890c993a35028c4b95e4f3c6bd",
+        "size": "10115"
+      },
+      "draft": null
+    },
+    {
+      "filename": "blocks/buy-buttons.liquid",
+      "live": {
+        "filename": "blocks/buy-buttons.liquid",
+        "checksumMd5": "0f54fe76988d00fe77aa8cd31c1f76f0",
+        "size": "21647"
+      },
+      "draft": {
+        "filename": "blocks/buy-buttons.liquid",
+        "checksumMd5": "c15e3c9ef315b626e0e9cb6b05778508",
+        "size": "21137"
+      }
+    },
+    {
+      "filename": "layout/theme.liquid",
+      "live": {
+        "filename": "layout/theme.liquid",
+        "checksumMd5": "79a586ab4ccd342f2ef529f896eea23b",
+        "size": "67383"
+      },
+      "draft": {
+        "filename": "layout/theme.liquid",
+        "checksumMd5": "a37070f7bf43ede5b78f6278884e4834",
+        "size": "62394"
+      }
+    },
+    {
+      "filename": "sections/lx-main-collection-kompakt.liquid",
+      "live": {
+        "filename": "sections/lx-main-collection-kompakt.liquid",
+        "checksumMd5": "0b0256a3f4aaf596a7619595b1d3d309",
+        "size": "8273"
+      },
+      "draft": null
+    },
+    {
+      "filename": "sections/lx-scroll-szene.liquid",
+      "live": {
+        "filename": "sections/lx-scroll-szene.liquid",
+        "checksumMd5": "be22ec7a4071fbf664edba2e71502888",
+        "size": "1965"
+      },
+      "draft": null
+    },
+    {
+      "filename": "snippets/lx-ankuendigung-stabil.liquid",
+      "live": {
+        "filename": "snippets/lx-ankuendigung-stabil.liquid",
+        "checksumMd5": "0ada26e7eb47028c6b36d7984f7b3953",
+        "size": "802"
+      },
+      "draft": null
+    },
+    {
+      "filename": "snippets/lx-kopf-chips.liquid",
+      "live": {
+        "filename": "snippets/lx-kopf-chips.liquid",
+        "checksumMd5": "74104de0caa980fb1d751e0261f5d6bd",
+        "size": "15920"
+      },
+      "draft": null
+    },
+    {
+      "filename": "snippets/lx-kopf-kompakt.liquid",
+      "live": {
+        "filename": "snippets/lx-kopf-kompakt.liquid",
+        "checksumMd5": "8d2c4ec9da4729243e7a3e365fd7ffbe",
+        "size": "11282"
+      },
+      "draft": null
+    },
+    {
+      "filename": "snippets/lx-kopf-pfad.liquid",
+      "live": {
+        "filename": "snippets/lx-kopf-pfad.liquid",
+        "checksumMd5": "a84ad6b25bdf4d68b6e49a2362e75ae9",
+        "size": "6323"
+      },
+      "draft": null
+    },
+    {
+      "filename": "snippets/lx-scroll-szene.liquid",
+      "live": {
+        "filename": "snippets/lx-scroll-szene.liquid",
+        "checksumMd5": "067ad75a3ed28105171e547b5182c4ea",
+        "size": "14333"
+      },
+      "draft": null
+    },
+    {
+      "filename": "templates/collection.lxkopf.json",
+      "live": {
+        "filename": "templates/collection.lxkopf.json",
+        "checksumMd5": "31543bde58fc4bd7f2767d4843794ddc",
+        "size": "9329"
+      },
+      "draft": null
+    },
+    {
+      "filename": "templates/index.lxszene.json",
+      "live": {
+        "filename": "templates/index.lxszene.json",
+        "checksumMd5": "73302062c4c256a8a1ecaafd07602439",
+        "size": "929"
+      },
+      "draft": null
+    },
+    {
+      "filename": "templates/product.json",
+      "live": {
+        "filename": "templates/product.json",
+        "checksumMd5": "3d989256216e0d5ebbb65987d4a8398e",
+        "size": "82335"
+      },
+      "draft": {
+        "filename": "templates/product.json",
+        "checksumMd5": "6b44c4493538e99f42d2397ae330a828",
+        "size": "69405"
+      }
+    },
+    {
+      "filename": "templates/product.lxszene.json",
+      "live": {
+        "filename": "templates/product.lxszene.json",
+        "checksumMd5": "73db90d9b92969bb35003f1319b9f87d",
+        "size": "82081"
+      },
+      "draft": null
+    }
+  ],
+  "diffFiles": 14,
+  "specificSeoPatchObservedAlreadyLive": true,
+  "ownThemePublishes": 0,
+  "themeFilesChanged": 0,
+  "decision": "Do not publish stale draft213619179911: SEOtarget already identical live,14newer live-file differences. Prior specific approval preserved; no repeated approval demand. Observed state is not own deployment."
+}
