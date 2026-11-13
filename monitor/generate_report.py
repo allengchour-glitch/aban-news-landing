@@ -19,6 +19,7 @@ Versand: bewusst NICHT fest verdrahtet. Reports landen als Dateien; Anbindung an
 Mail-Weg (Lemon Squeezy / Stripe-Webhook / SMTP / Make-Webhook) steht im README.
 Reine stdlib (+ optional `anthropic`).
 """
+import argparse
 import json
 import os
 import re
@@ -154,27 +155,32 @@ Keine Garantie auf Nennung; Sichtbarkeit ist beeinflussbar, nicht kaufbar.</p>
 </body></html>"""
 
 
-def main():
-    if not ABOS.exists():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--beispiel', action='store_true',
+                        help='Offline-Beispiel ohne Anbieteraufruf oder Änderung des Aboverlaufs')
+    args = parser.parse_args(argv)
+    if args.beispiel:
+        abos = json.loads((ROOT / 'abos.example.json').read_text(encoding='utf-8'))
+    elif not ABOS.exists():
         print(f"Keine {ABOS.name} gefunden. Vorlage: monitor/abos.example.json "
-              "(je Abo: id, firma, branche, ort, leistungen[], email). Trockenlauf mit der Vorlage:")
-        src = ROOT / "abos.example.json"
-        if not src.exists():
-            sys.exit(1)
-        abos = json.loads(src.read_text(encoding="utf-8"))
+              "(je Abo: id, firma, branche, ort, leistungen[], email). "
+              "Abbruch ohne Anbieteraufruf. Offline testen: --beispiel")
+        sys.exit(2)
     else:
         abos = json.loads(ABOS.read_text(encoding="utf-8"))
-    env = os.environ
+    env = {} if args.beispiel else os.environ
     has_key = bool(env.get("ANTHROPIC_API_KEY"))
-    verlauf = json.loads(VERLAUF.read_text(encoding="utf-8")) if VERLAUF.exists() else {}
-    OUT.mkdir(parents=True, exist_ok=True)
+    verlauf = json.loads(VERLAUF.read_text(encoding="utf-8")) if not args.beispiel and VERLAUF.exists() else {}
+    out = OUT / 'beispiel' if args.beispiel else OUT
+    out.mkdir(parents=True, exist_ok=True)
     ym = date.today().strftime("%Y-%m")
     for abo in abos:
         ki = None
         prompts = prompts_for(abo.get("branche", ""), abo.get("ort", ""), abo.get("leistungen", []))
         # 1) Echte Live-Abfrage, wenn ein Anbieter-Key gesetzt ist (das "echte SaaS").
         try:
-            ki = live_check.run_live(abo, prompts, env)
+            ki = None if args.beispiel else live_check.run_live(abo, prompts, env)
         except Exception as e:
             print(f"  Live-Check Fehler für {abo.get('id')}: {e}")
             ki = None
@@ -188,13 +194,17 @@ def main():
                 print(f"  KI-Check übersprungen für {abo.get('id')}: {e}")
         vorher = verlauf.get(abo.get("id", ""), {}).get("genannt")
         html = render(abo, ym, ki, vorher)
-        f = OUT / f"{abo.get('id','abo')}-{ym.replace('-','')}.html"
+        if args.beispiel:
+            html = html.replace('<h1>', '<p><strong>Offline-Beispiel: kein Abo-Report, keine KI-Abfrage, kein Versand.</strong></p><h1>', 1)
+            html = html.replace('Dieser Report kommt automatisch wieder.', 'Dieses Beispiel wird nicht automatisch wiederholt.')
+        f = out / f"{abo.get('id','abo')}-{ym.replace('-','')}.html"
         f.write_text(html, encoding="utf-8")
         if ki is not None:
             verlauf.setdefault(abo.get("id", ""), {})["genannt"] = ki.get("genannt")
         print(f"  ✓ Report: {f.name}" + ("  [live]" if ki and ki.get("live") else ""))
-    VERLAUF.write_text(json.dumps(verlauf, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n{len(abos)} Report(s) → {OUT}" + ("" if has_key else "  (ohne KI-Check — kein ANTHROPIC_API_KEY)"))
+    if not args.beispiel:
+        VERLAUF.write_text(json.dumps(verlauf, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\n{len(abos)} Report(s) → {out}" + ("" if has_key else "  (ohne Stellvertreter-Check)"))
     print("Versand nicht automatisch — siehe monitor/README.md (Stripe/Lemon-Squeezy + Mail).")
 
 

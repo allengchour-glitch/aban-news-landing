@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Monitor-Beispiele ausdrücklich offline ·13.11.2026
+
+Fehlende Abodatei löst keinen automatischen Beispiel-/Modelllauf mehr aus. Exit2 vor Anbieteraufrufen; --beispiel vollständig offline, isolierte Ausgabe und unveränderter Verlauf. Drei Offline-Gegenproben und echte lokale CLI bestanden. Abo-/Versandanschluss bleibt unbestätigt, Cron pausiert. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Keine neue Automation/Frequenz, finanzielle Wirkung nicht gemessen.
+
 ## Codex: KI-Studio-Freischaltung mit Browserfrist ·13.11.2026
 
 Blockierten Transport/Antwortinhalt im Browser nachgestellt und gemeinsame15-Sekundenfrist ergänzt; bestehende Störungsmeldung, Schlüsselerhalt und manuelle Wiederaufnahme.102 API-,64 Download-,84 Engineprüfungen grün. Keine Backend-/Lizenz-/Preisänderung, kein neuer Automat. Details und endgültige CI/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.

@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Monitor-Generator: keine Anbieteranfragen für automatische Beispielkundin ·13.11.2026
+
+Von maina7b6e2e auf eigenem isoliertem Branch. Aktuelle Regeln, Übergaben und offene Arbeiten gelesen. Bestehender Monitor hat Kaufkonfiguration, aber kein bestätigtes Abo-/Versandmatching; Monatscron im vorhandenen Workflow pausiert. Keine Verbindungs-/Ausführungserfolge aus Quellcode abgeleitet und keinen Reportlauf gestartet.
+
+Neuer konkreter Befund am unveränderten Generator mit temporären Demo-Dateien und Anbietermocks: fehlende abos.json fällt als angeblicher Trockenlauf auf Beispielkundin zurück, ruft mit gesetztem Demoschlüssel den Modelladapter auf und schreibt Verlauf. Damit konnte der manuelle vorhandene Workflow unnötige Anbieteranfragen für ein Beispiel verursachen. Nicht mit echten Schlüsseln oder Kundendaten getestet.
+
+Normaler Start bricht jetzt ohne Abodatei mit Exit2 vor Anbieter-/Dateizugriffen ab. Ausdrückliches --beispiel liest nur Vorlage, überspringt alle Anbieter, schreibt isoliert nach ausgabe/beispiel und verändert Abo-Datei/Verlauf nicht. Offline-Kennzeichnung im Report, keine automatische Wiederholung behauptet. Vorhandener regulärer Prüfweg mit Abodatei erhalten. README benennt pausierten Cron, fehlende Abobereitstellung im Checkout und unverbundenen Versand korrekt. Vorhandener Monatsworkflow nur Kommentar berichtigt; kein Zeitplan/Secret/Budget geändert. Offline-Tests in bestehender Deploy-Prüfung, keine neue Automation/Frequenz.
+
+GEMESSEN: drei stdlib-Gegenproben grün: fehlende Abodatei, Beispiel trotz vier gesetzter Demoanbieterkeys und vorhandener anderer Abo-Datei/Verlauf, regulärer vorhandener Prüfweg. Anbieteradapter im Beispiel null Aufrufe, Abo-Datei/Verlauf bytegleich. Echte lokale CLI: fehlende Abos Exit2, ausdrückliches Beispiel erzeugt markiertes HTML ohne Verlauf. CI-Simulation, echte CI und Bereitstellung im zugehörigen PR nachsehen. Kein Versand/echter Modellaufruf/Kauf. Finanzielle Wirkung nicht gemessen; Nutzen: verhindert unbeabsichtigte Modellkosten und falschen Erfolgsnachweis für einen Beispielkunden.
+
 ## KI-Studio: Browser-Freischaltung endet bei blockierter Anfrage ·13.11.2026
 
 Von main7f04a46 auf isoliertem Branch; aktuelle Regeln, Übergaben, Zuständigkeiten und offene PRs gelesen. Backend-Frist bereits vorhanden und nicht erneut implementiert. Neuer Browserbefund: `validate` in `js/ki-studio.js` wartet ohne Grenze auf Transport oder Antwortinhalt; manuell bleibt der Knopf gesperrt, stille Prüfung ohne Störungshinweis.16 neue Gegenprüfungen am alten Code rot.

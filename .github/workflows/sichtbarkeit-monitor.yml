@@ -20,7 +20,8 @@ jobs:
       - name: Reports erzeugen
         run: |
           cd monitor
-          # abos.json ist git-ignored; ohne sie nutzt das Skript die Beispiel-Vorlage.
+          # abos.json ist git-ignored; fehlt sie, Abbruch vor Anbieteraufrufen.
+          # Ein Offline-Beispiel muss ausdrücklich mit --beispiel gebaut werden.
           python3 generate_report.py
       - name: Reports als Artefakt
         uses: actions/upload-artifact@v4

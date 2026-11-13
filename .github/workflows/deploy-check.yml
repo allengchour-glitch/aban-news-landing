@@ -32,6 +32,9 @@ jobs:
           python3 tools/shop_jsonld.py --pruefen
           python3 -B -m unittest discover -s tools -p 'test_shop_fallback.py'
 
+      - name: Monitor-Beispiel ohne Anbieteraufrufe prüfen
+        run: python3 -B -m unittest discover -s monitor -p 'test_generate_report.py'
+
       - name: KI-Bot-Forschung offline prüfen
         if: ${{ hashFiles('docs/ki-bot-gemeinsam/test_labor.py') != '' }}
         run: python3 -B -m unittest discover -s docs/ki-bot-gemeinsam -p 'test_labor*.py' -v
