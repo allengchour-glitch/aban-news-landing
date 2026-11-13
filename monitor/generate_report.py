@@ -117,15 +117,20 @@ def render(abo, ym, ki, vorher):
             if e.get("fehler"):
                 rows += f'<li>{esc(e["engine"])}: <span class="muted">nicht geprüft ({esc(e["fehler"])})</span></li>'
                 continue
+            if e.get("genannt") is None:
+                rows += f'<li>{esc(e["engine"])}: <span class="muted">nicht vollständig geprüft</span></li>'
+                continue
             cls = "ja" if e.get("genannt") else "nein"
             lbl = "genannt" if e.get("genannt") else "nicht genannt"
             rows += (f'<li><span class="flag {cls}">{lbl}</span> {esc(e["engine"])} '
                      f'— {e.get("treffer",0)}/{e.get("geprueft",0)} Prompts</li>')
         head_cls = "ja" if genannt else "nein"
         head_lbl = "Du wirst in KI-Antworten genannt" if genannt else "Noch nicht in KI-Antworten genannt"
+        if genannt is None:
+            head_cls, head_lbl = "muted", "Nicht vollständig geprüft — Ergebnis unbekannt"
         kibox = (f'<div class="box"><span class="flag {head_cls}">{head_lbl}</span>'
                  f'<ul style="margin:10px 0 0 18px">{rows}</ul>{delta}'
-                 '<p class="muted">Live geprüft per API bei den oben genannten Engines. Momentaufnahme — '
+                 '<p class="muted">API-Prüfversuche bei den oben genannten Engines. Ausfälle und leere Antworten sind keine negative Messung. Momentaufnahme — '
                  'Web-Oberflächen können wegen Region/Personalisierung abweichen. Prompts unten zum Selbsttest.</p></div>')
     elif isinstance(ki, dict):
         # Stellvertreter-Fallback (kein Live-Key).
@@ -172,6 +177,7 @@ def main(argv=None):
     env = {} if args.beispiel else os.environ
     has_key = bool(env.get("ANTHROPIC_API_KEY"))
     verlauf = json.loads(VERLAUF.read_text(encoding="utf-8")) if not args.beispiel and VERLAUF.exists() else {}
+    verlauf_geaendert = False
     out = OUT / 'beispiel' if args.beispiel else OUT
     out.mkdir(parents=True, exist_ok=True)
     ym = date.today().strftime("%Y-%m")
@@ -199,10 +205,11 @@ def main(argv=None):
             html = html.replace('Dieser Report kommt automatisch wieder.', 'Dieses Beispiel wird nicht automatisch wiederholt.')
         f = out / f"{abo.get('id','abo')}-{ym.replace('-','')}.html"
         f.write_text(html, encoding="utf-8")
-        if ki is not None:
+        if ki is not None and type(ki.get("genannt")) is bool:
             verlauf.setdefault(abo.get("id", ""), {})["genannt"] = ki.get("genannt")
+            verlauf_geaendert = True
         print(f"  ✓ Report: {f.name}" + ("  [live]" if ki and ki.get("live") else ""))
-    if not args.beispiel:
+    if not args.beispiel and verlauf_geaendert:
         VERLAUF.write_text(json.dumps(verlauf, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n{len(abos)} Report(s) → {out}" + ("" if has_key else "  (ohne Stellvertreter-Check)"))
     print("Versand nicht automatisch — siehe monitor/README.md (Stripe/Lemon-Squeezy + Mail).")

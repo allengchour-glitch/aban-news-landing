@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Monitor-Ausfälle sind keine negative Sichtbarkeitsmessung ·13.11.2026
+
+Von main4574ade auf isoliertem Branch; Regeln, Übergaben und offene Arbeiten gelesen. Checkoutkonfiguration für Audit/Notfall/Paket weiterhin leer; keine Produkt-/Preis-/Lieferzuordnung erfunden. Monitor-Aboabgleich und Versand weiterhin unbestätigt; Cron bleibt pausiert. Erledigten Offline-Beispielschutz erhalten.
+
+Neuer Befund am bestehenden Reportcode mit Anbietermocks: alle Anbieterfehler bzw. leere/teilweise Antworten ergeben bisher genannt=false. Report behauptet dadurch negativen Status und kann bisherigen bekannten Verlauf überschreiben. Neue Gegenproben vor Korrektur acht Fehlschläge (einschliesslich Unterfällen), keine echten API- oder Kundendaten.
+
+API-Aggregat unterscheidet belegten Treffer, vollständiges negatives Ergebnis und unbekannt bei Ausfall/Leere/Teilprüfung. Positive Treffer bleiben bei Ausfall eines anderen Anbieters belegt; negativer Gesamtstatus braucht alle geplanten Antworten (höchstens5 pro Anbieter). Report kennzeichnet unbekannt neutral, ohne erfundenen Rückgang; API-Prüfversuche als solche benannt. Ohne neuen booleschen Status bleibt bisherige Verlaufsdatei bytegleich, nicht nur semantisch gleich. Kein zusätzlicher Anbieteraufruf/Fallback/Retry, keine Frequenz-/Budget-/Preis-/Kontoänderung.
+
+GEMESSEN: elf Offline-Gegenproben grün, darunter vollständige Negativ-/Positivkontrollen, Total-/Teilausfall, leere Antworten, abgebrochene Promptfolge und bytegleicher Verlauf. Sechs Browserfälle1440/390px × unbekannt/negativ/positiv grün; keine Überbreite, keine falsche Rückgangsbehauptung im Ausfall. Bestehende Deploy-Prüfung führt dieselbe erweiterte Testdatei aus, kein neuer Automat. CI-Simulation, echte CI und endgültige Bereitstellung im zugehörigen PR lesen. Kein produktiver Monatsreport, kein Versand/Kauf/Modellaufruf. Finanzielle Wirkung nicht gemessen; Nutzen: vermeidet unbelegte Warnungen, daraus falsche Optimierungsarbeit und Supportaufwand.
+
 ## Monitor-Generator: keine Anbieteranfragen für automatische Beispielkundin ·13.11.2026
 
 Von maina7b6e2e auf eigenem isoliertem Branch. Aktuelle Regeln, Übergaben und offene Arbeiten gelesen. Bestehender Monitor hat Kaufkonfiguration, aber kein bestätigtes Abo-/Versandmatching; Monatscron im vorhandenen Workflow pausiert. Keine Verbindungs-/Ausführungserfolge aus Quellcode abgeleitet und keinen Reportlauf gestartet.

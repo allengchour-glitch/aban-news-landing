@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 import generate_report as report
 
 
@@ -62,6 +62,70 @@ class ReportStartTest(unittest.TestCase):
             live.assert_called_once()
             claude.assert_not_called()
         self.assertEqual(len(list(report.OUT.glob("*.html"))), 1)
+
+
+class LiveStatusTest(unittest.TestCase):
+    def run_engines(self, answers, prompts=None):
+        def provider(answer):
+            def call(*_):
+                if isinstance(answer, Exception):
+                    raise answer
+                return answer
+            return call
+        names = ['ChatGPT Demo', 'Perplexity']
+        providers = [(names[i], provider(answer)) for i, answer in enumerate(answers)]
+        with patch.object(report.live_check, 'PROVIDERS', providers):
+            return report.live_check.run_live({'firma': 'Demo-Firma'},
+                ['Demo-Frage'] if prompts is None else prompts,
+                {'OPENAI_API_KEY': 'demo', 'PERPLEXITY_API_KEY': 'demo'})
+
+    def test_alle_anbieterfehler_sind_unbekannt(self):
+        result = self.run_engines([RuntimeError('Demo-Ausfall'), RuntimeError('Demo-Ausfall')])
+        self.assertIsNone(result['genannt'])
+
+    def test_teilfehler_ohne_treffer_ist_unbekannt(self):
+        self.assertIsNone(self.run_engines(['Andere Firma', RuntimeError('Demo-Ausfall')])['genannt'])
+
+    def test_vollstaendig_ohne_treffer_ist_negativ(self):
+        self.assertIs(self.run_engines(['Andere Firma', 'Andere Firma'])['genannt'], False)
+
+    def test_belegter_treffer_bleibt_bei_teilfehler_positiv(self):
+        self.assertIs(self.run_engines(['Demo-Firma', RuntimeError('Demo-Ausfall')])['genannt'], True)
+
+    def test_ohne_verwertbare_antwort_unbekannt(self):
+        for answer in [None, '', '   ']:
+            with self.subTest(answer=answer):
+                self.assertIsNone(self.run_engines([answer])['genannt'])
+        self.assertIsNone(self.run_engines(['Andere Firma'], prompts=[])['genannt'])
+
+    def test_abgebrochene_promptreihe_ohne_treffer_unbekannt(self):
+        provider = Mock(side_effect=['Andere Firma', None])
+        with patch.object(report.live_check, 'PROVIDERS', [('ChatGPT Demo', provider)]):
+            result = report.live_check.run_live({'firma': 'Demo-Firma'}, ['Frage1', 'Frage2'], {'OPENAI_API_KEY': 'demo'})
+        self.assertIsNone(result['genannt'])
+
+    def test_ausfallbericht_ist_keine_negative_messung(self):
+        result = self.run_engines([RuntimeError('Demo-Ausfall')])
+        html = report.render({'firma': 'Demo-Firma'}, '2026-11', result, True)
+        self.assertIn('Nicht vollständig geprüft', html)
+        self.assertNotIn('diesen Monat nicht mehr', html)
+        self.assertNotIn('Noch nicht in KI-Antworten genannt', html)
+
+    def test_ausfall_erhaelt_bisherigen_status(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            abos = root / 'abos.json'
+            verlauf = root / 'verlauf.json'
+            abos.write_text(json.dumps([{'id': 'demo', 'firma': 'Demo-Firma'}]))
+            verlauf.write_text(json.dumps({'demo': {'genannt': True, 'beleg': 'vorher'}}))
+            old = json.loads(verlauf.read_text())
+            old_bytes = verlauf.read_bytes()
+            with patch.multiple(report, ABOS=abos, VERLAUF=verlauf, OUT=root/'ausgabe'), \
+                    patch.dict(report.os.environ, {}, clear=True), \
+                    patch.object(report.live_check, 'run_live', return_value={'live': True, 'genannt': None, 'engines': []}):
+                report.main([])
+            self.assertEqual(json.loads(verlauf.read_text()), old)
+            self.assertEqual(verlauf.read_bytes(), old_bytes)
 
 
 if __name__ == "__main__":

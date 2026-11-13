@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Monitor-Ausfall bleibt unbekannt ·13.11.2026
+
+Anbieterfehler/leere/teilweise Antworten erzeugen kein negatives Gesamturteil mehr. Unbekannter Status neutral im Report; bisheriger Verlauf ohne neue Messung bytegleich. Elf Offline- und sechs Browsergegenproben grün. Keine neuen API-Aufrufe/Automaten, produktiver Abo-/Versandanschluss weiter unbestätigt. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: Monitor-Beispiele ausdrücklich offline ·13.11.2026
 
 Fehlende Abodatei löst keinen automatischen Beispiel-/Modelllauf mehr aus. Exit2 vor Anbieteraufrufen; --beispiel vollständig offline, isolierte Ausgabe und unveränderter Verlauf. Drei Offline-Gegenproben und echte lokale CLI bestanden. Abo-/Versandanschluss bleibt unbestätigt, Cron pausiert. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Keine neue Automation/Frequenz, finanzielle Wirkung nicht gemessen.
