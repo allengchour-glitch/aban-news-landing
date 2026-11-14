@@ -4,16 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       merchant_id:
-        description: 'Merchant-ID (nur für registrieren; wird im Log maskiert)'
+        description: 'Für Produkt-Lesefälle muss diese ID zum LuxeStyle-Konto passen; wird im Log maskiert'
         required: false
         default: ''
       registrieren:
         description: 'Google-Projekt beim Merchant-Konto als Entwickler anmelden (einmalig)'
         type: boolean
         default: false
+      merchant_case:
+        description: 'Manueller Lesefall; Standard bleibt die bisherige Kontenprobe'
+        type: choice
+        options:
+          - account-probe
+          - preis-draft
+          - nagellack-1
+          - nagellack-6
+        default: account-probe
   push:
     branches: [claude/merchant-probe-1111]
-    paths: ['.github/workflows/merchant-probe.yml', 'automation/merchant_probe.py']
+    paths: ['.github/workflows/merchant-probe.yml', 'automation/merchant_probe.py', 'automation/test_merchant_probe.py']
 
 permissions:
   contents: read
@@ -25,11 +34,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: automation/merchant_probe.py
+          sparse-checkout: |
+            automation/merchant_probe.py
+            automation/test_merchant_probe.py
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Merchant-Lesetests (nur Attrappe, keine Zugangsdaten)
+        run: python3 -B -m unittest automation.test_merchant_probe -v
       - run: pip install --quiet google-auth requests
       # Die Merchant-Nummer zuerst maskieren: GitHub druckt Umgebung und Skript eines Schritts, bevor er läuft.
       # Darum liest dieser Schritt die Eingabe aus der Ereignisdatei (der Wert steht nie im Skripttext).
@@ -42,4 +55,5 @@ jobs:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           MERCHANT_ID: ${{ inputs.merchant_id }}
           REGISTRIEREN: ${{ inputs.registrieren }}
+          MERCHANT_CASE: ${{ inputs.merchant_case }}
         run: python3 automation/merchant_probe.py
