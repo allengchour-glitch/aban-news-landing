@@ -1,0 +1,85 @@
+{
+  "review_date": "2026-11-14",
+  "source": "CJdropshipping get_product_detail, one read-only request using variantSku CJSJ290134301AZ; no further API calls for this record",
+  "identity": {
+    "cj_pid": "2605230700261621500",
+    "cj_vid": "2605230700261622300",
+    "product_sku": "CJSJ2901343",
+    "variant_sku": "CJSJ290134301AZ",
+    "variant_key": "Gray-Single",
+    "variant_name_en": "3-in-1 Wireless Charger Magnetic Desktop Charging Station Stand Gray Single",
+    "variant_image_url": "https://oss-cf.cjdropshipping.com/product/2026/05/23/06/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans.jpeg"
+  },
+  "description_relevance": {
+    "product_name_en": "3-in-1 Wireless Charger Magnetic Desktop Charging Station Stand",
+    "description_color_text": "Deep Space Gray/Ice River Silver",
+    "packing_list": "Supporting frame * 1",
+    "curation": "Supports gray and single-unit variant identity. The gallery contains staged scenes with two stations and accessories, so those scenes do not establish a single-item-only image. The pack list says one supporting frame; it does not settle the exact pictured bundle contents.",
+    "shopify_product_id_from_task": "15447560978817",
+    "shopify_variant_id_from_task": "56063588598145",
+    "identity_note": "These are the requested merchant IDs; CJ returned its own distinct pid/vid above. No Shopify calls were made."
+  },
+  "images": [
+    {
+      "file": "1.img",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/05/23/06/afea8d72-e752-4404-a25e-0f70e1ff32ae_trans.jpeg",
+      "binding": "Exact CJ variantImage for CJSJ290134301AZ (Gray-Single)",
+      "dimensions_px": [
+        573,
+        583
+      ],
+      "sha256": "61dc8bb37fb9f75f853a30175284b1e8f49941c019ebeec5dcdce7f9d0857021",
+      "visual_qa": "Gray station; scene contains two stations. The 13:17 is shown on the phone display. 'Deep Space Gray' is separate marketing overlay text. Not a clean single-device image.",
+      "rights": "Unknown"
+    },
+    {
+      "file": "2.img",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/05/23/06/5e0b6a4b-634d-4471-9a57-4ddbd80c8096.jpg",
+      "binding": "CJ product bigImage / first productImage URL",
+      "dimensions_px": [
+        800,
+        800
+      ],
+      "sha256": "4e88f278ec60f1ff8e07a79500ffae4edf2859156b862ee7b4c0b52cafeec7bf",
+      "visual_qa": "Close view of station with phone, watch and earbud case; finish appears silver/light. No separate marketing text overlay seen. Not confidently bound to Gray rather than Silver.",
+      "rights": "Unknown"
+    },
+    {
+      "file": "3.img",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/05/23/06/c1e449f7-1d11-416c-bef8-0f5d2d535db0_trans.jpeg",
+      "binding": "CJ productImage gallery URL",
+      "dimensions_px": [
+        614,
+        553
+      ],
+      "sha256": "c8b7cfa1349258a2a11101a004c411fd7123e10526a3c047eefbcd9b04d931ed",
+      "visual_qa": "Gray-labeled scene containing two stations; 13:17 appears on the phone display; 'Deep Space Gray' is marketing overlay text.",
+      "rights": "Unknown"
+    },
+    {
+      "file": "4.img",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/05/23/06/6628c823-d659-42d9-b468-68a3671b1803.jpg",
+      "binding": "CJ productImage gallery URL",
+      "dimensions_px": [
+        690,
+        539
+      ],
+      "sha256": "dd4bd58a11e618ff015a1c66d19fb50439abff9f86ed5b0967d0e61c60609912",
+      "visual_qa": "One station without separate text overlay; 13:17 is shown on the phone display. Unconfirmed candidate: visual finish appears dark gray, but this gallery image has no explicit variant binding and its rights are unknown.",
+      "rights": "Unknown"
+    }
+  ],
+  "conclusion": "Image 4 is an unconfirmed candidate, not a verified replacement: gray color binding and reuse rights remain unknown. No claim that no original exists. No edits, watermark removal, Shopify writes, orders, imports, or installs were performed.",
+  "shop_status_price_admin": "Not checked; no current shop status, price, or admin facts verified.",
+  "rootCountercheck": {
+    "imagesVisuallyReviewed": [
+      1,
+      4
+    ],
+    "screenTextInterpretation": "13:17 belongs to photographed phone screen; DeepSpaceGray is separate promotional text. No claim which exactfeatureGoogleflagged.",
+    "candidate4": "One station shown, no visible additionalmarketingtext. Warm lighting prevents firm exactGray-vsSilver binding; commercialrightsunknown. Candidateonly.",
+    "quantityInterpretation": "Two stations/views in an image do not establish shippedquantity. CJpackinglistSupportingframex1 does not confirmpicturedphone/watch/earbuds inclusion.",
+    "merchantStatus": "Notfreshlyreadforthisgrayoffer; currentGoogleimage_link/primarysourceunknown.",
+    "shopStatusAndPrice": "No currentAdminproof inthisrun; historicalCHF196.90/ACTIVE not repeated asfreshfact."
+  }
+}

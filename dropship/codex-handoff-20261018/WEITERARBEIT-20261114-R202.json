@@ -1,0 +1,80 @@
+{
+  "revision": 202,
+  "dateZurich": "2026-11-14",
+  "recordedAtUTC": "2026-11-14T10:30:10.538871+00:00",
+  "ownerRequest": "mehr alles weirer",
+  "identity": {
+    "beforeSwitch": {
+      "readAtUTC": "2026-11-14 10:08:41 UTC",
+      "metricool": {
+        "brandId": 6227837,
+        "timezone": "Europe/Zurich",
+        "networks": {
+          "instagramData": "luxestyle.ch",
+          "facebookData": "1049840534888592",
+          "threadsData": "luxestyle.ch",
+          "pinterestData": "luxestyleCH",
+          "tiktokData": "luxestyle.ch",
+          "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+        },
+        "matches": true
+      },
+      "shopify": {
+        "name": "TechHub CH",
+        "domain": "aban-os5z8ied.myshopify.com",
+        "currency": "CHF",
+        "timezone": "EST",
+        "matches": false,
+        "scope": "Identity read only; no target-store products or writes."
+      }
+    },
+    "contextRecovery": {
+      "action": "supportedshopify_switch_shop thenmandatoryget_shop_info",
+      "appTokenContextRevoked": true,
+      "afterState": "UNAUTHORIZED/TRIGGER_REAUTHENTICATION",
+      "correctLuxeStyleReauthorisation": "pending_owner_response",
+      "storeDataWrites": 0,
+      "noOtherStoreProductReads": true,
+      "question": "SelectLuxeStyle/luxestyle.ch inhostauth; missingtechnicalconnection, notnewworkpermission."
+    },
+    "pinterest": {
+      "url": "https://www.pinterest.com/luxestyleCH/",
+      "readAtUTC": "2026-11-14T10:17:15.206089+00:00",
+      "pluginRead": "Firecrawl reports site currently unsupported; not interpreted as empty profile/auth403.",
+      "method": "One direct publicHTTP fallback, no login/challenge bypass.",
+      "boardsVerified": false,
+      "http": 403,
+      "state": "unknown_public_access_error",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "dns": "R200datedpubliccountercheckreused;4approvedadditionsstillnotexecuted,nonauthenticatedwriterestablished. No renewedapprovalrequest.",
+    "currentCallableLocalBrowserControl": "Tooldiscoveryfoundnocallablelocalbrowsertabcontrol; this is not a globalmissingconnectorclaim."
+  },
+  "newWork": [
+    "Interactiveoned18sMasterreviewHTML; desktop/mobilebrowserQAandhookstatefix.",
+    "FiveexistingexternalPUBLISHEDchannelstatesobservedwithIDs/URLs,notownpublications.",
+    "CorrectCJShopifyidentityand2exactproductconnectionreads; nonexecutablemappingpreflight.",
+    "CurrentGraySingleCJsource/4actualimagesreviewed; candidate4color/rightsunknown.",
+    "OneMerchantfieldcombinationfailurefullydocumented,no blindretry."
+  ],
+  "ownPlatformWrites": {
+    "shopData": 0,
+    "metricool": 0,
+    "cjConnections": 0,
+    "merchant": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "orders": 0
+  },
+  "appContextSwitch": 1,
+  "newRendersOrAudioExports": 0,
+  "newMetricsFlowOrBroadSalesReports": 0,
+  "purchaseWatchEnded": true,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "professionalMasterApproved": false,
+  "masterMp4Sha256": null,
+  "noMasterLedgerResetOrInitialisation": true,
+  "nextProductionStep": "QualifyexactAtakesandrights/listeningreview, thenuseexisting540frameplan. ReviewHTMLisnotfilm.",
+  "nextSalesStep": "CorrectShopifreauthorisation; preserveknownMode/SchmuckIDsandR201two-placeproductdiff. BeforeCJbindingknowactualshipping/logistics/costs andfreshSKUs; no implicitactivation.",
+  "claudeReceipt": "unknown_no_receipt"
+}

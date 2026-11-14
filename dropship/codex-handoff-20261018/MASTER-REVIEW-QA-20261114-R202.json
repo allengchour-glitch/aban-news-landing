@@ -1,0 +1,77 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "noHorizontalOverflow": true,
+      "pageErrors": [],
+      "hookToggle": true,
+      "sceneSeek": true,
+      "sixUniqueVariantUtmLinks": true,
+      "noVideoOrAudioElements": true,
+      "referenceImage": {
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "width": 800,
+        "height": 654,
+        "objectFit": "contain"
+      },
+      "copyStatus": "Caption kopiert.",
+      "networkRequests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:43119/master-review.html"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+        }
+      ],
+      "screenshot": "master-review-1440.png"
+    },
+    {
+      "width": 390,
+      "noHorizontalOverflow": true,
+      "pageErrors": [],
+      "hookToggle": true,
+      "sceneSeek": true,
+      "sixUniqueVariantUtmLinks": true,
+      "noVideoOrAudioElements": true,
+      "referenceImage": {
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "width": 800,
+        "height": 654,
+        "objectFit": "contain"
+      },
+      "copyStatus": "Caption kopiert.",
+      "networkRequests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:43119/master-review.html"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+        }
+      ],
+      "screenshot": "master-review-390.png"
+    }
+  ],
+  "initialFileNavigation": "file:// blocked by managed browser policy; no policy/security change. NormaltemporaryloopbackHTTPpreview used, then stopped.",
+  "referenceFixture": "ExactR201hashverifiedJPEGservedtoitsmatchingURLinsideisolatedbrowser; not a newliveimageclaim.",
+  "scope": "LocalreviewHTMLonly; noShopOAuth/Pinterest/Metricoolwrite, nofilmqualityapproval.",
+  "previewServerStoppedOnExit": true,
+  "finalHtmlSha256": "18c527d8c989370575bf4a4aa36c021a627b1e28fc293b9b2a693926ad3defed",
+  "rootVisualInspection": {
+    "desktop1440": true,
+    "mobile390": true
+  },
+  "followupRegression": {
+    "reason": "Fixed hook switch wrongly overwriting non-hook scene overlay; clarified outbound source loads and pendingShopauth.",
+    "passed": true,
+    "endSceneKeepsCtaWhenHookChanges": true,
+    "hookChoicePersistsAfterSeeking": true,
+    "otherSceneOverlayUnaffected": true,
+    "mobileNoOverflow": true,
+    "pageErrors": [],
+    "previewThreadStopped": true
+  }
+}

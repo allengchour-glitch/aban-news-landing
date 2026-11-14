@@ -1,0 +1,105 @@
+{
+  "state": "READONLY_PREFLIGHT_DRAFT_NOT_EXECUTABLE",
+  "shop": {
+    "id": "2605251603003533600",
+    "name": "au3j0y-hq",
+    "status": 1,
+    "type": "shopify",
+    "updateDate": "2026-11-14 07:05:19",
+    "aliasName": "LuxeStyle CH",
+    "currencyCode": "CHF"
+  },
+  "currentConnectionRead": {
+    "readAtUTC": "2026-11-14 10:23:22 UTC",
+    "readOnly": true,
+    "records": [
+      {
+        "shopId": "2605251603003533600",
+        "platformProductId": "15521256604033",
+        "platformVariantId": "68122445283719",
+        "response": {
+          "pageNum": 1,
+          "pageSize": 1,
+          "list": [],
+          "total": 0
+        },
+        "scope": "ExactlythisShop/product/variant/page1; no pagination/no global sync conclusion."
+      },
+      {
+        "shopId": "2605251603003533600",
+        "platformProductId": "16654366638471",
+        "platformVariantId": "67748027957639",
+        "response": {
+          "pageNum": 1,
+          "pageSize": 1,
+          "list": [],
+          "total": 0
+        },
+        "scope": "ExactlythisShop/product/variant/page1; no pagination/no global sync conclusion."
+      }
+    ],
+    "conclusion": "No connection record returned for these2exactvariants. This is not a complete catalogue/sync/fulfillment failure proof; no connection created.",
+    "shopifyAfterSwitch": {
+      "state": "reauthorisation_pending",
+      "errorCode": "UNAUTHORIZED",
+      "tokenContextSwitch": true,
+      "storeDataChanged": false
+    }
+  },
+  "candidateMappings": [
+    {
+      "shopifyProductId": "15521256604033",
+      "shopifyVariantId": "68122445283719",
+      "sku": "CJSN139239101AZ",
+      "cjProductId": "1477820492730732544",
+      "cjVariantId": "1477826312449167360",
+      "source": "R201currentCJSKUdetail14Nov08; mustfreshlyverifyagainbeforecreation"
+    },
+    {
+      "shopifyProductId": "16654366638471",
+      "shopifyVariantId": "67748027957639",
+      "shopSku": "CJ-CJWY328547601AZ",
+      "canonicalCjSku": "CJWY328547601AZ",
+      "cjProductId": "2610191233031632100",
+      "cjVariantId": "2610191233031632900",
+      "source": "R200currentCJSKUdetail14Nov; mustfreshlyverifyagainbeforecreation"
+    }
+  ],
+  "requiredBeforeAnyWrite": [
+    "FreshcorrectLuxeStyleShopifyidentity andcurrentproduct/variant/SKUread; no writeunderwrong/pendingauth.",
+    "Confirmactualshippingarea androute/logisticswithcosts; requireddefaultArea/logistics currentlyunknown, do notguess.",
+    "Freshreadexistingconnection immediatelybeforechange; preserveanyexistingrecord, no duplicate/overwrite.",
+    "Ownerreviewofconcreteconnectionandfulfillmentconsequences; draftnotapproval.",
+    "No productimport, stock/channel/pricesetting, order/fulfillment creation or shipment."
+  ],
+  "missingRequiredArguments": {
+    "defaultArea": null,
+    "logistics": null
+  },
+  "writes": 0,
+  "globalOrderSyncInference": false,
+  "identity": {
+    "readAtUTC": "2026-11-14 10:19:56 UTC",
+    "filter": {
+      "keyword": "luxestyle",
+      "pageNum": 1,
+      "pageSize": 2
+    },
+    "shops": [
+      {
+        "id": "2605251603003533600",
+        "name": "au3j0y-hq",
+        "status": 1,
+        "type": "shopify",
+        "updateDate": "2026-11-14 07:05:19",
+        "aliasName": "LuxeStyle CH",
+        "currencyCode": "CHF"
+      }
+    ],
+    "expectedPublicPermanentDomain": "au3j0y-hq.myshopify.com",
+    "scope": "CJ shop identity metadata only; no orders, connectioncreation, inventorysettings or writes. This does not restore ShopifyChatGPT identity.",
+    "returnedRecords": 5,
+    "providerFilterLimitNote": "Provider returned5records despitekeyword/pageSize2; no pagination followed. Only exactLuxeStyleShopifyidentity retained here.",
+    "matchesExpectedPublicPermanentDomain": true
+  }
+}

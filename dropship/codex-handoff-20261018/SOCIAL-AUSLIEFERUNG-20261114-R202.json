@@ -1,0 +1,244 @@
+{
+  "readAtUTC": "2026-11-14T10:09:05.516497+00:00",
+  "publicationObservation": "Existingexternalautomaticflow, not ownpublication; PUBLISHEDperprovider only, platformURL/IDifactuallyreturned.",
+  "objects": 48,
+  "changesSinceR201": [
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "changedFields": [
+        "providers"
+      ],
+      "beforeProviders": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "afterProviders": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122153165379350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122153165379350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/Dft8g1YjeOX/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/Dft8g1YjeOX/",
+          "detailedStatus": "Published"
+        }
+      ]
+    },
+    {
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "changedFields": [
+        "providers"
+      ],
+      "beforeProviders": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "afterProviders": [
+        {
+          "network": "tiktok",
+          "id": "7707934434254802208",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707934434254802208",
+          "detailedStatus": "Published"
+        }
+      ]
+    },
+    {
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "changedFields": [
+        "providers"
+      ],
+      "beforeProviders": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "afterProviders": [
+        {
+          "network": "youtube",
+          "id": "JqfSBJEJwEc",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/JqfSBJEJwEc",
+          "detailedStatus": "Published"
+        }
+      ]
+    },
+    {
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "changedFields": [
+        "providers"
+      ],
+      "beforeProviders": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "afterProviders": [
+        {
+          "network": "threads",
+          "id": "17911234911604477",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dft8ibOJlcL",
+          "detailedStatus": "Published"
+        }
+      ]
+    }
+  ],
+  "publishedProviderPlacements": [
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "at": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "provider": {
+        "network": "facebook",
+        "id": "1049840534888592_122153165379350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122153165379350792",
+        "detailedStatus": "Published"
+      },
+      "masterId": null,
+      "renderedMp4Sha256": null,
+      "creativeOrRightsApproval": "not_assessed_in_this_read",
+      "isOwnCodexPublication": false
+    },
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "at": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "provider": {
+        "network": "instagram",
+        "id": "https://www.instagram.com/p/Dft8g1YjeOX/",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.instagram.com/p/Dft8g1YjeOX/",
+        "detailedStatus": "Published"
+      },
+      "masterId": null,
+      "renderedMp4Sha256": null,
+      "creativeOrRightsApproval": "not_assessed_in_this_read",
+      "isOwnCodexPublication": false
+    },
+    {
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "at": {
+        "dateTime": "2026-11-14T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "provider": {
+        "network": "tiktok",
+        "id": "7707934434254802208",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707934434254802208",
+        "detailedStatus": "Published"
+      },
+      "masterId": null,
+      "renderedMp4Sha256": null,
+      "creativeOrRightsApproval": "not_assessed_in_this_read",
+      "isOwnCodexPublication": false
+    },
+    {
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "at": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "provider": {
+        "network": "youtube",
+        "id": "JqfSBJEJwEc",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/JqfSBJEJwEc",
+        "detailedStatus": "Published"
+      },
+      "masterId": null,
+      "renderedMp4Sha256": null,
+      "creativeOrRightsApproval": "not_assessed_in_this_read",
+      "isOwnCodexPublication": false
+    },
+    {
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "at": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "provider": {
+        "network": "threads",
+        "id": "17911234911604477",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dft8ibOJlcL",
+        "detailedStatus": "Published"
+      },
+      "masterId": null,
+      "renderedMp4Sha256": null,
+      "creativeOrRightsApproval": "not_assessed_in_this_read",
+      "isOwnCodexPublication": false
+    }
+  ],
+  "overdueActiveProviderPlacements": [],
+  "activeObjectsIncludingPublished": 39,
+  "futurePendingObjects": 35,
+  "activeChannelPlacementsIncludingPublished": 49,
+  "pendingActiveChannelPlacements": 44,
+  "newPostWrites": 0,
+  "publishedByThisRun": 0,
+  "mainHoldFile": {
+    "commit": "a419661f701e2ac7710a9d1e5df801664e2098bc",
+    "blobSha": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+    "activeHoldUuids": [
+      "4659816415037836014",
+      "-8339089096074181290",
+      "-8305910546945982140",
+      "-3731207601091163105"
+    ],
+    "note": "Datedcurrentmainstill4oldholds; R20011entrypatchnotincluded. No merge/deployment byroot."
+  },
+  "dedupeLimit": "ChangesversusR201onlyproviderstates; texts/media/UUIDsunchanged. No exactduplicatesinthatboundedcontent-snapshot, no global/historicalmasterclearance.",
+  "gapsUnchanged": {
+    "youtube": "15.–21.11.2026",
+    "threads": [
+      "15.11.2026"
+    ]
+  },
+  "masterLedgerHandling": "Observedexternaldeliveryproofonly; no masterId/hashinvented, no canonicalregisterinitialisation/reset/overwrite."
+}

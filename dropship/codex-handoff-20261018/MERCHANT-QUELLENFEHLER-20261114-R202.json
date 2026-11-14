@@ -1,0 +1,99 @@
+{
+  "stand": "2026-11-14",
+  "konto": {
+    "connector": "google_merchant",
+    "accountId": "5797470070",
+    "name": "LuxeStyle CH",
+    "quelle": "aktueller Windsor-get_connectors-Aufruf"
+  },
+  "feldbelege": [
+    {
+      "id": "product_id",
+      "definition": "Product ID",
+      "gruppeHinweis": "product_* Feldfamilie; im sichtbaren Discovery-Result keine table-Angabe"
+    },
+    {
+      "id": "product_name",
+      "definition": "Product Name; accounts/{account}/products/{product}, letztes Segment vierteilig",
+      "gruppeHinweis": "product_* Feldfamilie; im sichtbaren Discovery-Result keine table-Angabe"
+    },
+    {
+      "id": "product_title",
+      "definition": "Product Title",
+      "gruppeHinweis": "product_* Feldfamilie; im sichtbaren Discovery-Result keine table-Angabe"
+    },
+    {
+      "id": "product_image_link",
+      "definition": "Product Image Link",
+      "gruppeHinweis": "product_* Feldfamilie; im sichtbaren Discovery-Result keine table-Angabe"
+    },
+    {
+      "id": "product_data_source",
+      "definition": "Primary data source of the product",
+      "gruppeHinweis": "product_* Feldfamilie; im sichtbaren Discovery-Result keine table-Angabe"
+    },
+    {
+      "id": "data_source_id",
+      "definition": "ID der Datenquelle",
+      "table": "Data Sources"
+    },
+    {
+      "id": "data_source_name",
+      "definition": "Ressourcenname accounts/{account}/dataSources/{data_source_id}",
+      "table": "Data Sources"
+    },
+    {
+      "id": "data_source_input",
+      "definition": "Art der Datenquelle: API, FILE, UI oder AUTOFEED",
+      "table": "Data Sources"
+    },
+    {
+      "id": "date",
+      "definition": "Universal date; Produkt-Performance nutzt product_performance_date, sonst Produktabfragen das Datum aus product_creation_time",
+      "table": "Universal"
+    }
+  ],
+  "optionen": [
+    "competitive_visibility_country",
+    "competitive_visibility_category_id"
+  ],
+  "abfrage": {
+    "konto": "5797470070",
+    "datumVon": "2026-11-14",
+    "datumBis": "2026-11-14",
+    "force_refresh": false,
+    "filterUebergeben_aberServerseitigeAnnahmeUnbelegt": [
+      "product_id",
+      "in",
+      "[\"shopify_ZZ_15448834736513_55877809340801\",\"shopify_ZZ_15448834736513_67652260430215\"]"
+    ],
+    "felder": [
+      "product_id",
+      "product_name",
+      "product_title",
+      "product_image_link",
+      "product_data_source",
+      "data_source_id",
+      "data_source_name",
+      "data_source_input",
+      "date",
+      "data_fetched_at"
+    ]
+  },
+  "ergebnis": {
+    "status": "failed_no_data",
+    "datenZeilen": null,
+    "nullmessung": false,
+    "fehler": "The fields you have requested cannot be queried together. Please check that this combination of fields can be requested in Google Merchant UI: data_source_input,data_source_name,product_creation_time,product_title,offerId,id,product_image_link,product_name,data_source_id,product_data_source. [Error pulling data for account 5797470070]",
+    "bedeutung": "Abfragefehler, kein Beleg für leeren Katalog oder nicht existierende Angebote."
+  },
+  "datumshinweis": "date ist bei produktbezogenen Nicht-Performance-Attributen an product_creation_time gebunden und schränkt keinen aktuellen Attributzustand sinnvoll ein.",
+  "folgeEntwurf": "Nicht ausgeführt: Provider soll exakten Offer-ID-Filter und kompatible Feldgruppen bestätigen. Dann minimal product_id/product_name/product_image_link ohne date und Performance-Felder; Datenquellenattribute separat, falls dokumentierter Join-Schlüssel besteht.",
+  "limits": [
+    "Eine API-Abfrage, keine Wiederholung.",
+    "Keine Behauptung, der Filter sei serverseitig unterstützt oder angenommen.",
+    "Kein Shopify-Aufruf, keine Writes, kein Refresh."
+  ],
+  "referenz": "/tmp/luxe-other-work-20261114/merchant-current.json",
+  "writeCapabilityNote": "Windsorwriteactions existing; failure/unknownexactsource/image/rights and Shopidentity prevent a reviewedwrite. No globalno-connector/no-write-capability inference."
+}
