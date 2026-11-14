@@ -1,0 +1,332 @@
+{
+  "source": {
+    "task": "CJ source check and neutral German product copy draft",
+    "date_utc": "2026-11-14",
+    "status": "source_and_public_reads_complete_draft_only",
+    "source_checkout": {
+      "path": "/tmp/luxe12-implementation/repo",
+      "requested_commit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+      "observed_head": "887e3a6068bc5295567f318cbe0b9d85c84796c4",
+      "finding": "Correction: the pinned commit full tree DOES contain CJ helpers. A commit stat hid the files because only docs changed in that commit. Read-only git show of automation/cj_variantenbilder.mjs proved the exact Shop-SKU to CJ variant-SKU normalization."
+    },
+    "shopify_prior_read": {
+      "source_file": "/tmp/luxe-more-collections-20261114/round3-live-products.json",
+      "source_sha256": "45ad72e3e21c2257dad175980ebc72b72c67b6f2e8f5b684ae96ee9505a27c65",
+      "product_id": "16654366638471",
+      "title": "Polyester Bluse",
+      "handle": "polyester-bluse-632100",
+      "status": "ACTIVE",
+      "variant_id": "67748027957639",
+      "variant_title": "Set 1 / S",
+      "shopify_sku": "CJ-CJWY328547601AZ",
+      "featured_image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d43f3d2a-6974-4aad-b3dd-d3734588095c.png?v=1792473312",
+      "variant_image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317",
+      "note": "Prior supplied evidence only; not freshly fetched in this run."
+    },
+    "cj_lookup": {
+      "tool": "CJ get_product_detail",
+      "requested_canonical_variant_sku": "CJWY328547601AZ",
+      "called": true,
+      "calls": 1,
+      "response_identity": {
+        "pid": "2610191233031632100",
+        "productSku": "CJWY3285476",
+        "returned_variant_sku": "CJWY328547601AZ",
+        "returned_variant_id": "2610191233031632900",
+        "variant_key": "Set1-S"
+      },
+      "material_fields": [
+        "Cloth"
+      ],
+      "package_fields": [
+        "Plastic bags"
+      ],
+      "care_fields": null,
+      "rights": "Unknown"
+    },
+    "public_page_check": {
+      "fetched": true,
+      "requests": {
+        "page": {
+          "url": "https://luxestyle.ch/products/polyester-bluse-632100",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "sha256": "301e85405c04b65752570060ac2f26260d3bc4976a9969b67a1f5ba86ce5fdca",
+          "bytes": 1160154
+        },
+        "product_js": {
+          "url": "https://luxestyle.ch/products/polyester-bluse-632100.js",
+          "status": 200,
+          "content_type": "text/javascript; charset=utf-8",
+          "sha256": "29aaf6b3bdc3148faed3fb867e30cb431a367a59a2f377bce656d9d31114a6b5",
+          "bytes": 58704
+        }
+      },
+      "title": "Polyester Bluse",
+      "description": "<p>Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist. Du kannst sie einfach in der Maschine waschen und sie trocknet schnell.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Leicht zu kombinieren</li>\n<li>Atmungsaktiver Stoff</li>\n<li>Maschinenwaschbar</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 789 g – 942 g (je nach Variante)</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<p>Gratis-Versand in der Schweiz ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "before_sha256": {
+        "title": "44ad05c26158ff454c655c385715adba63194075e9ccd1dff4c0de757a41dc34",
+        "description": "7ea362e7bfbe84530a234b4d2ff367e8d226438630f3e3caef778327f9c3651b",
+        "title_and_description": "032b7e8720a7aa8c9574eb99977d0efff82d1d94dba18382fb85382b1ba162d7",
+        "variant_data": "c240fd7ce163266e30701b191a8bafb068ac4c17fd5168087f1f890a2eceecfb",
+        "target_variant": "f2b05fabaa520c368b3c017472967d9e8d96589c0ba9c34608720de98123864b"
+      },
+      "target_variant": {
+        "id": 67748027957639,
+        "sku": "CJ-CJWY328547601AZ",
+        "title": "Set 1 / S",
+        "option1": "Set 1",
+        "option2": "S",
+        "price": 2090,
+        "inventory_management": null
+      },
+      "variant_count": 35,
+      "page_title": "Polyester Bluse | LuxeStyle CH",
+      "meta_description": "Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist."
+    },
+    "copy_proposal": {
+      "status": "draft_only",
+      "title": "Kapuzenpullover in strukturierter Optik",
+      "description_html": "<p>Kapuzenpullover mit Kordeln und strukturierter Oberfläche. Die Vorderseite zeigt zwei aufgesetzte Taschen. Wähle deine gewünschte Variante und Grösse.</p>",
+      "seo_title": "Kapuzenpullover in strukturierter Optik | LuxeStyle CH",
+      "seo_description": "Kapuzenpullover mit Kordeln, strukturierter Oberfläche und zwei Fronttaschen. Entdecke die verfügbaren Varianten und Grössen bei LuxeStyle CH.",
+      "basis": "Visible in the public product photography; categoryName in CJ source identifies Woman Hoodies & Sweatshirts; public option names are Farbe and Grösse with 7×5=35 choices. No fibre, washing/care, bundle count, delivery/stock, review or rights claim."
+    },
+    "rights_status": "Unknown; no CJ source read and no media rights evidence.",
+    "fresh_admin_guard_requirements": [
+      "Fresh correct LuxeStyle Admin read required before any future write.",
+      "Bind product ID 16654366638471 and variant ID 67748027957639, SKU CJ-CJWY328547601AZ, current title/description/variant data.",
+      "Compare fresh title/description/variant values to a newly captured public product page and exact public product .js before a write.",
+      "Preserve handle, status, all 35 variants and exact option identities, prices, inventory behavior, tags, media, alt text and publications.",
+      "Do not state fabric composition, care, pack contents, availability or delivery claims unless explicitly supported by source fields.",
+      "Use only rights-cleared product media; rights are currently unknown."
+    ],
+    "current_public_before_sha256": {
+      "title": "44ad05c26158ff454c655c385715adba63194075e9ccd1dff4c0de757a41dc34",
+      "description": "7ea362e7bfbe84530a234b4d2ff367e8d226438630f3e3caef778327f9c3651b",
+      "title_and_description": "032b7e8720a7aa8c9574eb99977d0efff82d1d94dba18382fb85382b1ba162d7",
+      "variant_data": "c240fd7ce163266e30701b191a8bafb068ac4c17fd5168087f1f890a2eceecfb",
+      "target_variant": "f2b05fabaa520c368b3c017472967d9e8d96589c0ba9c34608720de98123864b"
+    },
+    "proposed_diff": {
+      "title": {
+        "before": "Polyester Bluse",
+        "after": "Kapuzenpullover in strukturierter Optik"
+      },
+      "description_html": {
+        "before": "<p>Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist. Du kannst sie einfach in der Maschine waschen und sie trocknet schnell.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Leicht zu kombinieren</li>\n<li>Atmungsaktiver Stoff</li>\n<li>Maschinenwaschbar</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 789 g – 942 g (je nach Variante)</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<p>Gratis-Versand in der Schweiz ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "after": "<p>Kapuzenpullover mit Kordeln und strukturierter Oberfläche. Die Vorderseite zeigt zwei aufgesetzte Taschen. Wähle deine gewünschte Variante und Grösse.</p>"
+      },
+      "seo_title": {
+        "before": "Polyester Bluse | LuxeStyle CH",
+        "after": "Kapuzenpullover in strukturierter Optik | LuxeStyle CH"
+      },
+      "seo_description": {
+        "before": "Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist.",
+        "after": "Kapuzenpullover mit Kordeln, strukturierter Oberfläche und zwei Fronttaschen. Entdecke die verfügbaren Varianten und Grössen bei LuxeStyle CH."
+      }
+    },
+    "execution_status": "Read-only CJ source detail (one call), CJ connection filter (one call), and public page/.js each once. No Shopify Admin API. No writes or retry.",
+    "connection_query": {
+      "tool": "list_product_connections",
+      "filters": {
+        "platformProductId": "16654366638471",
+        "platformVariantId": "67748027957639"
+      },
+      "total": 0,
+      "list": []
+    }
+  },
+  "publicSource": {
+    "retrieved_utc": "2026-11-14",
+    "page": {
+      "url": "https://luxestyle.ch/products/polyester-bluse-632100",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "301e85405c04b65752570060ac2f26260d3bc4976a9969b67a1f5ba86ce5fdca",
+      "bytes": 1160154
+    },
+    "js": {
+      "url": "https://luxestyle.ch/products/polyester-bluse-632100.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "sha256": "29aaf6b3bdc3148faed3fb867e30cb431a367a59a2f377bce656d9d31114a6b5",
+      "bytes": 58704
+    },
+    "public_product": {
+      "id": 16654366638471,
+      "handle": "polyester-bluse-632100",
+      "title": "Polyester Bluse",
+      "description": "<p>Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist. Du kannst sie einfach in der Maschine waschen und sie trocknet schnell.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Leicht zu kombinieren</li>\n<li>Atmungsaktiver Stoff</li>\n<li>Maschinenwaschbar</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 789 g – 942 g (je nach Variante)</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<p>Gratis-Versand in der Schweiz ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "title_sha256": "44ad05c26158ff454c655c385715adba63194075e9ccd1dff4c0de757a41dc34",
+      "description_sha256": "7ea362e7bfbe84530a234b4d2ff367e8d226438630f3e3caef778327f9c3651b",
+      "title_and_description_sha256": "032b7e8720a7aa8c9574eb99977d0efff82d1d94dba18382fb85382b1ba162d7",
+      "variant_data_sha256": "c240fd7ce163266e30701b191a8bafb068ac4c17fd5168087f1f890a2eceecfb",
+      "target_variant_sha256": "f2b05fabaa520c368b3c017472967d9e8d96589c0ba9c34608720de98123864b",
+      "variant_count": 35,
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Set 1",
+            "Set 2",
+            "Set 3",
+            "Set 4",
+            "Set 5",
+            "Set 6",
+            "Set 7"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "position": 2,
+          "values": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ]
+        }
+      ],
+      "target_variant": {
+        "id": 67748027957639,
+        "title": "Set 1 / S",
+        "option1": "Set 1",
+        "option2": "S",
+        "option3": null,
+        "sku": "CJ-CJWY328547601AZ",
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": {
+          "id": 101177522160007,
+          "product_id": 16654366638471,
+          "position": 10,
+          "created_at": "2026-10-20T07:15:15+02:00",
+          "updated_at": "2026-10-20T07:15:17+02:00",
+          "alt": "Polyester Bluse – Bild 10 | LuxeStyle",
+          "width": 718,
+          "height": 395,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317",
+          "variant_ids": [
+            67748027957639,
+            67748027990407,
+            67748028023175,
+            67748028055943,
+            67748028088711
+          ]
+        },
+        "available": true,
+        "name": "Polyester Bluse - Set 1 / S",
+        "public_title": "Set 1 / S",
+        "options": [
+          "Set 1",
+          "S"
+        ],
+        "price": 2090,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": null,
+        "barcode": null,
+        "featured_media": {
+          "alt": "Polyester Bluse – Bild 10 | LuxeStyle",
+          "id": 77787525120391,
+          "position": 10,
+          "preview_image": {
+            "aspect_ratio": 1.818,
+            "height": 395,
+            "width": 718,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317"
+          }
+        },
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      "page_title": "Polyester Bluse | LuxeStyle CH",
+      "meta_description": "Eine Bluse aus Polyester ist eine gute Wahl für den Alltag, da sie pflegeleicht und strapazierfähig ist.",
+      "h1": "Polyester Bluse",
+      "images": [
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/d43f3d2a-6974-4aad-b3dd-d3734588095c.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/b16fe1c0-55b0-49a1-9214-ea7561037b7f.png?v=1792473311",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/165803f8-0dd0-4dd0-89c3-b16909c6566c.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/9b47ecfb-953c-4359-b728-89b059f6d67e.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/ce44c3aa-b9d3-4c34-8ece-b088a87ee2d1.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/e0df5293-9e72-4861-a8bd-a5c0c6463b72.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/30dd3eae-d9c6-457f-9f78-c15502548a81.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/8df87efa-1da5-423f-a67f-0058bb9ac3a4.png?v=1792473312",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/30dd3eae-d9c6-457f-9f78-c15502548a81_211f13b2-19f8-431b-a640-880f7f49a901.png?v=1792473317",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/8df87efa-1da5-423f-a67f-0058bb9ac3a4_b16cebb7-ce29-4dde-b32b-679f3226c347.png?v=1792473317",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/ce44c3aa-b9d3-4c34-8ece-b088a87ee2d1_7f17dbc8-0607-43d9-94f6-3ed6a9dba2f0.png?v=1792473317",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/9b47ecfb-953c-4359-b728-89b059f6d67e_4a782dbc-ca3a-49a5-8ba1-39a6e0bdb016.png?v=1792473316",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/e0df5293-9e72-4861-a8bd-a5c0c6463b72_bc532782-5000-4f97-8dcf-8d88a1abd767.png?v=1792473316",
+        "//cdn.shopify.com/s/files/1/0943/6856/3585/files/b16fe1c0-55b0-49a1-9214-ea7561037b7f_da113177-4479-4621-bf01-87e074877c59.png?v=1792473316"
+      ],
+      "image_note": "CJ image URLs match the public gallery assets by filename; reuse rights remain unverified."
+    },
+    "cj_detail": {
+      "pid": "2610191233031632100",
+      "productSku": "CJWY3285476",
+      "productNameEn": "Polyester Blouse",
+      "categoryName": "Women's Clothing > Tops & Sets > Woman Hoodies & Sweatshirts",
+      "entryNameEn": "Polyester women's top",
+      "materialNameEnSet": [
+        "Cloth"
+      ],
+      "packingNameEnSet": [
+        "Plastic bags"
+      ],
+      "packingWeight": "819.00-1000.00",
+      "productWeight": "789.00-942.00",
+      "productImageSet": [
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/b16fe1c0-55b0-49a1-9214-ea7561037b7f.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/d43f3d2a-6974-4aad-b3dd-d3734588095c.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/165803f8-0dd0-4dd0-89c3-b16909c6566c.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/9b47ecfb-953c-4359-b728-89b059f6d67e.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/ce44c3aa-b9d3-4c34-8ece-b088a87ee2d1.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/e0df5293-9e72-4861-a8bd-a5c0c6463b72.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/30dd3eae-d9c6-457f-9f78-c15502548a81.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/7c3fb6bc-736d-4d08-9c9c-f60a43783542.jpg",
+        "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/8df87efa-1da5-423f-a67f-0058bb9ac3a4.jpg"
+      ],
+      "variant_count": 35,
+      "source_description": "Image-only HTML; no explicit garment composition/care/pack contents in structured fields.",
+      "source_product_url": "https://www.cjdropshipping.com/product/polyester-blouse-p-2610191233031632100.html",
+      "rights": "Not stated; unknown.",
+      "target_variant": {
+        "variantSku": "CJWY328547601AZ",
+        "vid": "2610191233031632900",
+        "variantNameEn": "Polyester Blouse Set1 S",
+        "variantKey": "Set1-S",
+        "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/10/19/12/7c3fb6bc-736d-4d08-9c9c-f60a43783542.jpg",
+        "variantWeight": 819.0
+      }
+    },
+    "connection_query": {
+      "filters": {
+        "platformProductId": "16654366638471",
+        "platformVariantId": "67748027957639"
+      },
+      "page": 1,
+      "pageSize": 100,
+      "total": 0,
+      "list": []
+    },
+    "normalization_binding": {
+      "repo_commit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a8",
+      "file": "automation/cj_variantenbilder.mjs",
+      "symbol": "cjSku",
+      "source_excerpt": "/** Shop-SKU → CJ-Varianten-SKU. Im Shop steht oft «CJ-» davor («CJ-CJWY289988501AZ»); bei CJ heisst die Variante «CJWY289988501AZ». */\nexport function cjSku(sku) { return String(sku || '').replace(/^CJ-(?=CJ)/, ''); }",
+      "conclusion": "Confirmed transformation for this SKU: CJ-CJWY328547601AZ -> CJWY328547601AZ."
+    }
+  },
+  "state": "Nur Quellenprüfung und Vorher/Nachher-Entwurf;0Shopifyproduktwrites. Setumfang/Rechte bleiben offen; frischer korrekter Adminread vor Umsetzung erforderlich."
+}

@@ -1,0 +1,61 @@
+{
+  "currentHead": {
+    "url": "https://luxestyle.ch",
+    "rawHtmlChars": 1233284,
+    "rawHtmlSha256": "75a3dc3a5aaec77c00ec558ce00894ca0466cd34504dd5db7e6d40ce432e21b5",
+    "returnedHeadCount": 2,
+    "heads": [
+      {
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "description": [
+          "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein."
+        ],
+        "robots": [],
+        "canonical": [
+          "https://luxestyle.ch/"
+        ],
+        "headSha256": "759473869bf8ec47a169664c0183bb450aa583f3273ccf4db99e08420082d61c"
+      },
+      {
+        "title": "Mit Shop einloggen",
+        "description": [],
+        "robots": [
+          "none"
+        ],
+        "canonical": [],
+        "headSha256": "3c597d6242fe2586edd5dfdc9269ea635d64988dfdc624a05092af9f224c4401"
+      }
+    ],
+    "allReturnedH1": [
+      "Schön leben.Schlau shoppen."
+    ],
+    "metadata": {
+      "description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "title": "\n  LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz\n",
+      "scrapeId": "01a1d787-86ae-72c7-bb48-b74f6eb9a257",
+      "sourceURL": "https://luxestyle.ch",
+      "url": "https://luxestyle.ch/",
+      "statusCode": 200
+    },
+    "scope": "Exactly one homepage scrape. Main head and embedded login heads distinguished; no ranking/indexing/traffic/CWV claim. Full returned rawHtml hashed, not a prefix."
+  },
+  "scopedDraft": {
+    "scope": "Draft only; main homepage meta description, no live setting write",
+    "url": "https://luxestyle.ch/",
+    "before": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+    "beforeUtf8Sha256": "3699e2ba8d5f9f08d51830ef3af08add5ffc46904415df9e0ace003eb406718b",
+    "after": "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag.",
+    "preserve": [
+      "title",
+      "canonical",
+      "h1",
+      "shipping_thresholds_CHF50_CHF45",
+      "customer_account_domain",
+      "all other theme and Shop-profile settings"
+    ],
+    "reason": "Current homepage description includes general2–3/10–20working-day delivery statements. This bounded run has no current delivery evidence supporting a general promise. Neutral draft makes no delivery claim. No assertion that every order breaks its promise.",
+    "writeGate": "Fresh correct LuxeStyle admin identity; bind actual source field/template instead of guessing a setting; compare exact current value and review diff, write only approved scoped field, read back main public head. Existing website authority preserved; auth and source-field binding are blockers, no renewed design-permission request."
+  },
+  "writes": 0,
+  "limits": "Main document robots absent; robots=none belongs to embedded Shop-login head. No sitewide indexability, ranking, traffic or CWV claim."
+}

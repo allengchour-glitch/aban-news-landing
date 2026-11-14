@@ -1,0 +1,197 @@
+{
+  "approvedAdditions": {
+    "domain": "luxestyle.ch",
+    "approval": "Owner18.10.2026 exactly these4additions; approval remains valid, no renewed approval needed.",
+    "status": "not_executed_no_authenticated_DNS_writer",
+    "operations": [
+      {
+        "type": "CNAME",
+        "name": "send",
+        "value": "3848818023763335087.klaviyodns.com"
+      },
+      {
+        "type": "CNAME",
+        "name": "mtd1._domainkey",
+        "value": "mtd1._domainkey.3848818023763335087.klaviyodns.com"
+      },
+      {
+        "type": "CNAME",
+        "name": "mtd2._domainkey",
+        "value": "mtd2._domainkey.3848818023763335087.klaviyodns.com"
+      },
+      {
+        "type": "TXT",
+        "name": "@",
+        "value": "klaviyo-site-verification=XWqMAD"
+      }
+    ],
+    "preflight": [
+      "Verify legitimate authenticated zone writer and exactluxestyle.ch zone.",
+      "Read full current zone; append individual missing records only.",
+      "If conflicting CNAME/records exist, stop and preserve them; do not overwrite unseen records.",
+      "Do not replace zone, nameservers, SPF, DMARC, Zoho, TikTok or unrelated records.",
+      "No Klaviyo domain activation, flow or sending change."
+    ],
+    "postflight": [
+      "Read back each exact record through authenticated provider.",
+      "Check authoritativeDNS and independentGoogle/CloudflareDNS; propagation unknown until observed."
+    ],
+    "publicCountercheck": "dns-four-current.json: threeCNAMEs NXDOMAIN and expectedrootTXT absent on both resolvers14Nov; no provider account access inferred.",
+    "ttl": "Use existing provider-approved default; not inferred from public sample.",
+    "attemptedWrites": 0
+  },
+  "currentPublicCountercheck": {
+    "checked_at_utc": "2026-11-14T00:26:24Z",
+    "scope": "Only four owner-approved DNS records; public DNS-over-HTTPS reads. Independent Google resolver queried after Cloudflare NXDOMAIN.",
+    "expected_records": [
+      {
+        "name": "send.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "3848818023763335087.klaviyodns.com."
+      },
+      {
+        "name": "mtd1._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "mtd1._domainkey.3848818023763335087.klaviyodns.com."
+      },
+      {
+        "name": "mtd2._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "mtd2._domainkey.3848818023763335087.klaviyodns.com."
+      },
+      {
+        "name": "luxestyle.ch",
+        "type": "TXT",
+        "expected": "klaviyo-site-verification=XWqMAD"
+      }
+    ],
+    "observations": [
+      {
+        "queried_at_utc": "2026-11-14T00:26:23Z",
+        "resolver": "Cloudflare",
+        "name": "send.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:23Z",
+        "resolver": "Cloudflare",
+        "name": "mtd1._domainkey.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:23Z",
+        "resolver": "Cloudflare",
+        "name": "mtd2._domainkey.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:24Z",
+        "resolver": "Cloudflare",
+        "name": "luxestyle.ch",
+        "query_type": "TXT",
+        "rcode": 0,
+        "actual_answers": [
+          {
+            "data": "v=spf1 include:zohomail.eu ~all",
+            "ttl": 1799
+          },
+          {
+            "data": "zoho-verification=zb02252844.zmverify.zoho.eu",
+            "ttl": 1799
+          },
+          {
+            "data": "google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw",
+            "ttl": 1799
+          },
+          {
+            "data": "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah",
+            "ttl": 1799
+          }
+        ],
+        "expected_match": false,
+        "verification_txt_match": false,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:24Z",
+        "resolver": "Google",
+        "name": "send.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:24Z",
+        "resolver": "Google",
+        "name": "mtd1._domainkey.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:24Z",
+        "resolver": "Google",
+        "name": "mtd2._domainkey.luxestyle.ch",
+        "query_type": "CNAME",
+        "rcode": 3,
+        "actual_answers": [],
+        "expected_match": false,
+        "verification_txt_match": null,
+        "error": null
+      },
+      {
+        "queried_at_utc": "2026-11-14T00:26:24Z",
+        "resolver": "Google",
+        "name": "luxestyle.ch",
+        "query_type": "TXT",
+        "rcode": 0,
+        "actual_answers": [
+          {
+            "data": "google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw",
+            "ttl": 1799
+          },
+          {
+            "data": "v=spf1 include:zohomail.eu ~all",
+            "ttl": 1799
+          },
+          {
+            "data": "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah",
+            "ttl": 1799
+          },
+          {
+            "data": "zoho-verification=zb02252844.zmverify.zoho.eu",
+            "ttl": 1799
+          }
+        ],
+        "expected_match": false,
+        "verification_txt_match": false,
+        "error": null
+      }
+    ],
+    "unknowns": [
+      "Public recursive resolver results do not establish authoritative DNS control or registrar/account access.",
+      "No DNS changes were made."
+    ]
+  }
+}

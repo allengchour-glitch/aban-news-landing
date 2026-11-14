@@ -1,0 +1,1693 @@
+{
+  "status": "offline analysis only; no planner edits, API calls, credentials or workflow execution",
+  "input_file": "/tmp/luxe-other-work-20261114/planning-sanitized.json",
+  "input_sha256": "0119317420e9fbf1f596196f0e5ac9f7c5394c7db1a18bc2e842c1d7bf41ab77",
+  "window": {
+    "start_local_inclusive": "2026-11-14T00:00:00",
+    "end_local_exclusive": "2026-11-22T00:00:00",
+    "timezone": "Europe/Zurich"
+  },
+  "input_object_count": 48,
+  "top_level_state_counts": {
+    "active_non_draft_autoPublish_true": 39,
+    "draft_autoPublish_false": 9,
+    "other_state_count": 0
+  },
+  "active_channel_placements": 49,
+  "channels": [
+    "facebook",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "threads",
+    "pinterest"
+  ],
+  "publisher_validation_reference": {
+    "repo_commit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "file": "automation/metricool_freigabe.py",
+    "basis": "pflichtfelder() and baue_put(); fields absent from those checks are not treated as required based on this code alone"
+  },
+  "required_channel_rules": {
+    "facebook": {
+      "validator_required": "facebookData.title when facebookData.type == REEL",
+      "write_time_or_observed_flags": [
+        "facebookData.type"
+      ],
+      "semantic_unknown": [
+        "type values outside validator condition"
+      ]
+    },
+    "instagram": {
+      "validator_required": "none in pflichtfelder()",
+      "write_time_or_observed_flags": [
+        "instagramData.autoPublish is set true by baue_put() when changing a post"
+      ],
+      "semantic_unknown": [
+        "whether stored false on an already active record indicates a delivery problem"
+      ]
+    },
+    "tiktok": {
+      "validator_required": "none in pflichtfelder(); baue_put() forces tiktokData.commercialContentOwnBrand=true (runner comment says TikTok requires it for own-brand advertising)",
+      "write_time_or_observed_flags": [
+        "commercialContentOwnBrand",
+        "privacyOption",
+        "autoAddMusic",
+        "photoCoverIndex"
+      ],
+      "semantic_unknown": [
+        "meaning/effect of privacyOption, autoAddMusic, photoCoverIndex in this snapshot"
+      ]
+    },
+    "youtube": {
+      "validator_required": "youtubeData.title must exist and be <=100 chars; youtubeData.madeForKids must be set (true/false)",
+      "write_time_or_observed_flags": [
+        "type",
+        "privacy",
+        "isAiGeneratedContent"
+      ],
+      "semantic_unknown": [
+        "whether provider PENDING denotes accepted scheduling or later publishing state"
+      ]
+    },
+    "threads": {
+      "validator_required": "threadsData object must exist",
+      "write_time_or_observed_flags": [
+        "replyControl",
+        "type",
+        "shareAsInstagramStory"
+      ],
+      "semantic_unknown": [
+        "enum semantics of replyControl/shareAsInstagramStory"
+      ]
+    },
+    "pinterest": {
+      "validator_required": "pinterestData.boardId and pinterestData.pinTitle must be nonempty",
+      "write_time_or_observed_flags": [
+        "pinNewFormat",
+        "isAiGenerated",
+        "isAiGeneratedPerson"
+      ],
+      "semantic_unknown": [
+        "semantic/API implications of pinNewFormat and AI flags"
+      ]
+    }
+  },
+  "coverage_by_channel": {
+    "facebook": {
+      "active_provider_placements": 11,
+      "provider_status_counts": {
+        "PENDING / Pending": 11
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": null,
+      "tiktok_own_brand_values": null
+    },
+    "instagram": {
+      "active_provider_placements": 11,
+      "provider_status_counts": {
+        "PENDING / Pending": 11
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": {
+        "True": 11
+      },
+      "tiktok_own_brand_values": null
+    },
+    "tiktok": {
+      "active_provider_placements": 10,
+      "provider_status_counts": {
+        "PENDING / Pending": 10
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": null,
+      "tiktok_own_brand_values": {
+        "True": 10
+      }
+    },
+    "youtube": {
+      "active_provider_placements": 2,
+      "provider_status_counts": {
+        "PENDING / Pending": 2
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": null,
+      "tiktok_own_brand_values": null
+    },
+    "threads": {
+      "active_provider_placements": 7,
+      "provider_status_counts": {
+        "PENDING / Pending": 7
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": null,
+      "tiktok_own_brand_values": null
+    },
+    "pinterest": {
+      "active_provider_placements": 8,
+      "provider_status_counts": {
+        "PENDING / Pending": 8
+      },
+      "required_field_issues": [],
+      "instagram_autopublish_values": null,
+      "tiktok_own_brand_values": null
+    }
+  },
+  "daily_active_placements": {
+    "2026-11-14": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 3,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 407894120,
+            "uuid": "-3403126915283661861",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 2,
+            "text_sha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "15:00",
+            "id": 422279805,
+            "uuid": "-2924344703561023385",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72",
+            "channel_fields": {
+              "type": "REEL",
+              "title": "Lederarmband mit Hufeisen-Schnalle"
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "19:30",
+            "id": 415131163,
+            "uuid": "3200332797454403886",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "channel_fields": {
+              "type": "STORY"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 3,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 407894120,
+            "uuid": "-3403126915283661861",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 2,
+            "text_sha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "15:00",
+            "id": 422279805,
+            "uuid": "-2924344703561023385",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72",
+            "channel_fields": {
+              "type": "REEL",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "19:30",
+            "id": 415131163,
+            "uuid": "3200332797454403886",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "channel_fields": {
+              "type": "STORY",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 3,
+        "events": [
+          {
+            "time_local": "09:00",
+            "id": 422279394,
+            "uuid": "-1754664943692791070",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "fabc4983426df8bb3ccca6c15b5326420e7739ec6969826eac2a9fdb92204150",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "photoCoverIndex": 0,
+              "title": "Haarspange Keks · Wichtelgeschenk"
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "12:00",
+            "id": 422279700,
+            "uuid": "8178449842924373712",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "f8b5f927339ad3a67bd68d59ffda62848b028c5e8df225063a702c74fac86f65",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "photoCoverIndex": 0,
+              "title": "Lederarmband mit Hufeisen-Schnalle"
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "18:00",
+            "id": 422280035,
+            "uuid": "-6748893881700627372",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "c0ff8f88bef3ef06fbf5b6d50a05068857ccaf2bc65a26334bfb9c3d1bf7a2bb",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "photoCoverIndex": 0,
+              "title": "bworld Rennrad mit Radfahrer"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 2,
+        "events": [
+          {
+            "time_local": "10:00",
+            "id": 422279501,
+            "uuid": "7993315583738791837",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "61c0b1b7734418c0e8891c1b7e349df0a9fad37dd8ed4ddba299bf0c8b7b3fe1",
+            "channel_fields": {
+              "title": "Wichtelgeschenk ab 4 Jahren: bworld Rennrad mit Radfahrer #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "16:00",
+            "id": 422279920,
+            "uuid": "8229862176301272727",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "27e4a74fca962cabb2f9ed46604922502205839f081d0d7ea8ba57be9239bb7f",
+            "channel_fields": {
+              "title": "Wichtelgeschenk für sie: Lederarmband mit Hufeisen-Schnalle #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 422279608,
+            "uuid": "8356246782781639563",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "ecb52f6dbaa8b93a7482448a4d1dd6b100d91b0def82a3a6b0d5a7cc94148262",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 422791801,
+            "uuid": "-3513321668753471647",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "e81d476db687fdf2b5e07b0d0c862a8b9b0a9af72942598566477e33077e8516",
+            "channel_fields": {
+              "boardId": "1111333714239114020",
+              "pinTitle": "bworld Rennrad mit Radfahrer · ab 4 Jahren",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-15": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 2,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 422280155,
+            "uuid": "-3833193365444016309",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 2,
+            "text_sha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "16:00",
+            "id": 420728374,
+            "uuid": "7768651932591999367",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 6,
+            "text_sha256": "8d24a2d67d6f3ad370ef40a3c9e53163725ef988e109542752644b9e9e477bec",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 2,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 422280155,
+            "uuid": "-3833193365444016309",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 2,
+            "text_sha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          },
+          {
+            "time_local": "16:00",
+            "id": 420726136,
+            "uuid": "6199136659928140012",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 6,
+            "text_sha256": "03c57641306fb43e0bb3fc3fbd11c3ce64d3ec9bdf574fc1cb4c997dd5da0bcc",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "12:00",
+            "id": 422295156,
+            "uuid": "-6967517640837021033",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "0430c85438fc92eaddca91f659ebb47eb5056271ee1397b4c344795c4a852ce4",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "photoCoverIndex": 0,
+              "title": "Plüsch Panda 15 cm · Wichtelgeschenk"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 423622854,
+            "uuid": "6213007717183669914",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "ffcce11c514ebceee6cde34515f89aaf64e500581fab7cbd82a909b8f977e9f1",
+            "channel_fields": {
+              "boardId": "1111333714239114020",
+              "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-16": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "16:00",
+            "id": 424392702,
+            "uuid": "7991040995405613204",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "16:00",
+            "id": 424392702,
+            "uuid": "7991040995405613204",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "18:00",
+            "id": 424392795,
+            "uuid": "-580082399036486516",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "e0c0d3989d22e3075ac878009afefa5c5110ff2f622a9db86b53840554631dfe",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "Weihnachtskugeln beflockt – 9 Stück"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 424392566,
+            "uuid": "-8080777271331700055",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "595043bb83e96c9a64496083717d9385d5dca746230fba7fb899e6b5b4706a85",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 424393081,
+            "uuid": "-8863891854936750949",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "cdc0e000a666e0ffc31bd7a0c6e359bf82177903a00433a5c277b03dfaa85c9d",
+            "channel_fields": {
+              "boardId": "1111333714239114033",
+              "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-17": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 424393422,
+            "uuid": "8906814597211638530",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 424393422,
+            "uuid": "8906814597211638530",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "16:00",
+            "id": 424393289,
+            "uuid": "-326770756211684563",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "6f7c6d12a7c279ff7aff51fc0c1fd7fe637ae8c11f3e8b2921afb5324436ab06",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "Retro Keramik-Kaffeetasse mit Tiermotiv"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 424393187,
+            "uuid": "-2055061205905158476",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "c9a61509ef4e9057cb9e313708712f36382b2825ea195c06d0c138feaafd7263",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 424393614,
+            "uuid": "9119250214596987223",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "a247614370cc822edfe962fbb4abf7c4b7047642429ad7ec333b8010cf61aea0",
+            "channel_fields": {
+              "boardId": "1111333714239114020",
+              "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-18": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425725034,
+            "uuid": "5511347900019396585",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425725034,
+            "uuid": "5511347900019396585",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "18:00",
+            "id": 425725162,
+            "uuid": "-4254912497617780595",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "ed9e35e99fd317011cb535c442f147ef37db94369fa85886bc91c25958f10323",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "Weihnachtsstrumpf mit Samt-Optik"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "14:00",
+            "id": 424393691,
+            "uuid": "-2256568300747601062",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "c913dbe147a2ca111da6192bf40e904fc3c3640dd60079e2d8963326f211f143",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 425725272,
+            "uuid": "-5899965466644493317",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "88e8fbdaa5c05da9aeffb48a4f5372b3cddc2d4b19f0a178cdf4e499ade9dca0",
+            "channel_fields": {
+              "boardId": "1111333714239114033",
+              "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-19": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425725555,
+            "uuid": "4792908094992761420",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425725555,
+            "uuid": "4792908094992761420",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "18:00",
+            "id": 425725709,
+            "uuid": "-1560468010126717309",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "6246a80be39c053e0a20f0062ba7fdccc3c78a01f90e3818d50965289f4d04c8",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "LED-Schminkspiegel, wiederaufladbar & tragbar"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "11:00",
+            "id": 425725415,
+            "uuid": "2120727659527094958",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "32fb690e1c4e62764ac544ae718e748d8972935f4a6648b82087616d8970643d",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 425725932,
+            "uuid": "6443070221295305315",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "1993fc01907a5ece40d813e83f5675565e0cc4fbe25e5f12541882ea7d76db0f",
+            "channel_fields": {
+              "boardId": "1111333714239114020",
+              "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-20": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425726329,
+            "uuid": "108318075245381964",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 425726329,
+            "uuid": "108318075245381964",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "15:00",
+            "id": 425726186,
+            "uuid": "5095221239706765903",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 3,
+            "text_sha256": "227a9c412ec7c931c16e690c6b72a02506aa6ccff5c2eb84969315d91b5e6220",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "Lichterbaum-Musikbox 10x10x20 cm"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "14:00",
+            "id": 425726070,
+            "uuid": "-6491658134482960242",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "2de678da0fafa2787d7383d4ff62cb05f0158d82ecb0cd8e922501602db3fca6",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 425726479,
+            "uuid": "-457707186698434580",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "fdc627d9f49c8128ad0a62697541040bb3baf808346e83ceea62949cbaaf46ac",
+            "channel_fields": {
+              "boardId": "1111333714239114033",
+              "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    },
+    "2026-11-21": {
+      "facebook": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 426962036,
+            "uuid": "4464007380148308511",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "29e2632baad83d71896db3ce451b68f7642f0dd23002ff8edda366fe23b37b64",
+            "channel_fields": {
+              "type": "POST"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "instagram": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "17:00",
+            "id": 426962036,
+            "uuid": "4464007380148308511",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "29e2632baad83d71896db3ce451b68f7642f0dd23002ff8edda366fe23b37b64",
+            "channel_fields": {
+              "type": "POST",
+              "autoPublish": true,
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "tiktok": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "18:00",
+            "id": 426962130,
+            "uuid": "1244897565051602488",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 4,
+            "text_sha256": "bd4ca3fa0962475bd4a9c0f25e260c025021363d50e948ea90dfe7e47655c874",
+            "channel_fields": {
+              "commercialContentOwnBrand": true,
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "autoAddMusic": true,
+              "photoCoverIndex": 0,
+              "title": "Schmuckkästchen 3D Holzpuzzle"
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "youtube": {
+        "active_non_draft_autopublish_count": 0,
+        "events": []
+      },
+      "threads": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "14:00",
+            "id": 426961960,
+            "uuid": "-325577156053548845",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "609ec3bf5a7365d15ccf5c93adc7cb117ecda8b5778cc36e6664416657dba869",
+            "channel_fields": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      },
+      "pinterest": {
+        "active_non_draft_autopublish_count": 1,
+        "events": [
+          {
+            "time_local": "20:00",
+            "id": 426962209,
+            "uuid": "1277216616076757571",
+            "provider_status": "PENDING",
+            "provider_detailed_status": "Pending",
+            "top_level_state": {
+              "draft": false,
+              "autoPublish": true
+            },
+            "media_count": 1,
+            "text_sha256": "297cb99cc848f0bdbb2819913cf7387d3ec955583bb1328ba5036b4bdac462eb",
+            "channel_fields": {
+              "boardId": "1111333714239114020",
+              "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+              "pinNewFormat": true,
+              "isAiGenerated": false,
+              "isAiGeneratedPerson": false
+            },
+            "required_field_missing": []
+          }
+        ]
+      }
+    }
+  },
+  "daily_gaps": {
+    "2026-11-14": [],
+    "2026-11-15": [
+      "youtube",
+      "threads"
+    ],
+    "2026-11-16": [
+      "youtube"
+    ],
+    "2026-11-17": [
+      "youtube"
+    ],
+    "2026-11-18": [
+      "youtube"
+    ],
+    "2026-11-19": [
+      "youtube"
+    ],
+    "2026-11-20": [
+      "youtube"
+    ],
+    "2026-11-21": [
+      "youtube"
+    ]
+  },
+  "hold_ids": {
+    "source_scope": "four entries present in pinned main plus eleven entries in prior local additive draft; the latter are not live/applied",
+    "entries": [
+      {
+        "hold_id": "4659816415037836014",
+        "provenance": "pinned_main",
+        "reason": "Claude 10.11.: Hacker-Reel IG+FB 18.11. 10:00, Musik vom Besitzer abgelehnt",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 423483793,
+            "uuid": "4659816415037836014",
+            "date_time_local": "2026-11-18T10:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              },
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "-8339089096074181290",
+        "provenance": "pinned_main",
+        "reason": "Claude 10.11.: Hacker-Reel Threads 18.11. 11:00, Musik vom Besitzer abgelehnt",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 423484712,
+            "uuid": "-8339089096074181290",
+            "date_time_local": "2026-11-18T11:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "threads",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "-8305910546945982140",
+        "provenance": "pinned_main",
+        "reason": "Claude 10.11.: Hacker-Reel TikTok 18.11. 12:00, Musik vom Besitzer abgelehnt",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 423484773,
+            "uuid": "-8305910546945982140",
+            "date_time_local": "2026-11-18T12:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "tiktok",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "-3731207601091163105",
+        "provenance": "pinned_main",
+        "reason": "Claude 10.11.: Hacker-Reel YouTube-Short 18.11. 18:00, Musik vom Besitzer abgelehnt",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 423484839,
+            "uuid": "-3731207601091163105",
+            "date_time_local": "2026-11-18T18:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "youtube",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "-4472725258033347244",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "-7002936161864562103",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "1744402171830094170",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "2172266762404316928",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "3963843144054620883",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "5647388074617226143",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "not_found_in_48_objects",
+        "matches": []
+      },
+      {
+        "hold_id": "8935974072695279179",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 427286591,
+            "uuid": "8935974072695279179",
+            "date_time_local": "2026-11-15T11:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "threads",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "-7647174116509334899",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 427288119,
+            "uuid": "-7647174116509334899",
+            "date_time_local": "2026-11-19T19:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "youtube",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "3614365779669041576",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 427287938,
+            "uuid": "3614365779669041576",
+            "date_time_local": "2026-11-17T19:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "tiktok",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "4156060813550767248",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 427286681,
+            "uuid": "4156060813550767248",
+            "date_time_local": "2026-11-16T19:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hold_id": "6680239273933357186",
+        "provenance": "local_additive_draft_only",
+        "reason": "Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.",
+        "planning_window_match": "matched",
+        "matches": [
+          {
+            "id": 427287815,
+            "uuid": "6680239273933357186",
+            "date_time_local": "2026-11-16T19:00:00",
+            "state": "draft",
+            "autoPublish": false,
+            "providers": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exact_duplicate_candidates": {
+    "scope": "active non-draft autoPublish=true provider placements in this 48-object window only; same channel, exact text, exact media list",
+    "groups": [],
+    "result": "none found in scoped data"
+  },
+  "limits": [
+    "Provider status PENDING/Pending was copied as supplied and is not interpreted as successful publication or proof of live visibility.",
+    "No duplicate-free conclusion is made outside this exact within-window comparison.",
+    "No history or events outside this snapshot/window were inferred.",
+    "Required fields reflect the pinned local validator, not a live Metricool schema; unvalidated platform flag semantics are marked unknown."
+  ],
+  "rootCountercheck": {
+    "activeObjects": 39,
+    "activeChannelPlacements": 49,
+    "comparisonScope": "Only same-channel active objects within this48object planning snapshot; exact orderedURLs and/or exacttext; no file hashes, creative/master equality or prior-history clearance. No deletion justified from text-only match.",
+    "groups": {
+      "media_only": [],
+      "text_only": [],
+      "text_and_media": []
+    },
+    "earliestActive": "2026-11-14T09:00:00"
+  },
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networks": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "verified": true,
+    "readAtUTC": "2026-11-14 00:53:01 UTC",
+    "scope": "One LuxeStyle brand only. Shopify connected identity not verified; waiting correct merchant reauthorisation."
+  },
+  "holdReviewBranch": {
+    "branch": "codex/luxestyle-hold-protection-20261114",
+    "baseCommit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "commit_sha": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+    "content_sha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackContentSha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackExact": true,
+    "state": "review_branch_only_not_main_not_deployed",
+    "prCreated": false,
+    "reasonNoPR": "PR to main could trigger cloudflare-pages deploy; CF_DIRECT_DEPLOY gate read returned403, unknown. No workflow or deployment started.",
+    "independentRawReadbackHttp": 200,
+    "sha256": "086d106d8eec3f49f474951808d39b7173a9a9d80e8e595567599e550b3996f1",
+    "gitBlobSha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackUrl": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/b45049aa1cfdb89e5a45dc1e1fb9651a2005644b/dropship/METRICOOL-HALTEN.txt",
+    "changedPaths": [
+      "dropship/METRICOOL-HALTEN.txt"
+    ]
+  },
+  "holdProvenanceClarification": "11UUIDs are now appended on the separate review branch b45049a, not on main. The offline agent source label local draft reflects its input, not a productive application."
+}

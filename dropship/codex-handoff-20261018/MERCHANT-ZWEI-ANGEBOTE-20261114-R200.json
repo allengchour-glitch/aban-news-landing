@@ -1,0 +1,123 @@
+{
+  "dateZurich": "2026-11-14",
+  "identity": {
+    "shops": [
+      {
+        "name": "LuxeStyle CH",
+        "shop_id": "5797470070",
+        "time_zone": null
+      }
+    ]
+  },
+  "targetedRead": {
+    "shop_id": "5797470070",
+    "rows": [
+      {
+        "id": "de~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801",
+        "offerId": "shopify_ZZ_15448834736513_55877809340801",
+        "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+        "brand": "luxestyle",
+        "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "itemIssues": [
+          {
+            "type": {
+              "code": "image_unwanted_overlays",
+              "canonicalAttribute": "n:image_link"
+            },
+            "severity": {
+              "severityPerReportingContext": [
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "disapprovedCountries": [
+                    "LI",
+                    "CH"
+                  ],
+                  "demotedCountries": []
+                },
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "demotedCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "disapprovedCountries": [
+                    "LI",
+                    "CH"
+                  ],
+                  "demotedCountries": []
+                }
+              ],
+              "aggregatedSeverity": "DISAPPROVED"
+            },
+            "resolution": "MERCHANT_ACTION"
+          }
+        ],
+        "gtin": [],
+        "statusPerReportingContext": [],
+        "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+      },
+      {
+        "id": "de~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215",
+        "offerId": "shopify_ZZ_15448834736513_67652260430215",
+        "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+        "brand": "luxestyle",
+        "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+        "itemIssues": [
+          {
+            "type": {
+              "code": "image_unwanted_overlays",
+              "canonicalAttribute": "n:image_link"
+            },
+            "severity": {
+              "severityPerReportingContext": [
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "disapprovedCountries": [
+                    "LI",
+                    "CH"
+                  ],
+                  "demotedCountries": []
+                },
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "disapprovedCountries": [
+                    "LI",
+                    "CH"
+                  ],
+                  "demotedCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "demotedCountries": []
+                }
+              ],
+              "aggregatedSeverity": "DISAPPROVED"
+            },
+            "resolution": "MERCHANT_ACTION"
+          }
+        ],
+        "gtin": [],
+        "statusPerReportingContext": [],
+        "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+      }
+    ],
+    "next_page_token": "CAI="
+  },
+  "paginationFollowed": false,
+  "scope": "Exactly first2disapproved rows, both previously selected offers; no catalogue totals/performance/sales query. Row id is recorded verbatim but not a full product_name returned by merchant_list_products; no invented single-product resource or guessed primary datasource.",
+  "writes": 0,
+  "blockers": [
+    "Correct Shopify merchant identity pending reauthorisation.",
+    "Exact full product resource and primary datasource for these offers remain unverified.",
+    "A clean rights-proven exact-variant image is required before any image_link change."
+  ],
+  "gtinNote": "Empty gtin does not establish identifier_exists=false."
+}

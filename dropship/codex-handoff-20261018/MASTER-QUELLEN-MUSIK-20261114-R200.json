@@ -1,0 +1,70 @@
+{
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "music": {
+    "sourceCommit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "files": [
+      {
+        "path": "automation/music/CREDITS.txt",
+        "bytes": 2487,
+        "sha256": "3316dc197a40040c8570bbc5c102b8a6bb8ed15ab1fc49d339decf10485326e4",
+        "gitBlobSha": "b6dab1a05168da2b7215b50f71b879e4cabdf4c2"
+      },
+      {
+        "path": "automation/music/produce/make_premium.sh",
+        "bytes": 1106,
+        "sha256": "f5b9d913e1d125be6777f895d0ea990caad3db4fd7a68cc6c1dbd2a461fe5c3a",
+        "gitBlobSha": "c4f66163742cbfc7e4fc93c1f1834b96df559186"
+      },
+      {
+        "path": "automation/music/produce/build_premium_midi.py",
+        "bytes": 2718,
+        "sha256": "e055fa089fda94efcf75cee065c8fe36e1a826647aa465f888aba9bcd7f68414",
+        "gitBlobSha": "caeba96d074e2c61cd1b488561bdde3aa3faf37d"
+      },
+      {
+        "path": "automation/music/luxe-premium.wav",
+        "bytes": 11343950,
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c"
+      }
+    ],
+    "permissionStatus": "Repository provenance statements found; final rights and owner listening approval not established. CREDITS also records later owner rejection of synthetic tracks; no alternate music substituted.",
+    "canonicalExpectedSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "canonicalHashMatches": true,
+    "writeAttemptBeforeStorageRecovery": "ENOSPC before completion; regenerated local extraction after3abandoned Git temp packs removed. No music regeneration or render."
+  },
+  "agreementDirectCountercheck": {
+    "url": "https://cjdropshipping.com/user-agreement",
+    "purpose": "Single direct source-identity countercheck after anomalous Firecrawl agreement text; no licence grant assumed",
+    "previousAttempt": "Local output file was empty after disk-full failure, not a successful evidence record.",
+    "status": 200,
+    "finalUrl": "https://cjdropshipping.com/user-agreement",
+    "bytesRead": 251568,
+    "readCapBytes": 2500001,
+    "sha256OfReadBytes": "804666b4ed43ab24e8e2439831fe3b8bc55dde178a766544c6de626a1ca2debb",
+    "title": [
+      "M5PROBE User Agreement - Dropshipping Pet Supplier Websites"
+    ],
+    "m5probePresent": true,
+    "cjDropshippingPresent": true,
+    "assetSpecificLicenceEstablished": false
+  },
+  "agreementRejected": "Firecrawl and directHTTP200both identify M5PROBE User Agreement; not accepted as CJasset licence. No security conclusion.",
+  "projectorScrape": {
+    "success": false,
+    "errorCode": "SCRAPE_ALL_ENGINES_FAILED",
+    "status": 500,
+    "message": "Targetedsourcefetchfailed; genericproviderhelpcontactomittedfromarchive."
+  },
+  "projectorScrapeInterpretation": "500/SCRAPE_ALL_ENGINES_FAILED means source unknown, not404/notoutofstock. No blind retry or paidrender.",
+  "oldPathsFreshlyChecked": {
+    "ownerReviewStoryboard": false,
+    "oldCutPlan": false,
+    "kristallOhneSprachePath": false
+  },
+  "pathLimit": "Only the3named historical paths were checked; missing paths prove neither connector absence nor no other finished media. R176draft register/history preserved.",
+  "renders": 0,
+  "uploads": 0,
+  "rightsApproved": false,
+  "creativeApproval": false
+}

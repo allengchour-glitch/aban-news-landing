@@ -1,0 +1,96 @@
+{
+  "revision": 200,
+  "dateZurich": "2026-11-14",
+  "recordedAtUTC": "2026-11-14T01:06:47.675525+00:00",
+  "ownerRequest": [
+    "mach alles andere was du kannst",
+    "ja mache das sauber und nimm dir viel zeit"
+  ],
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networks": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "verified": true,
+    "readAtUTC": "2026-11-14 00:53:01 UTC",
+    "scope": "One LuxeStyle brand only. Shopify connected identity not verified; waiting correct merchant reauthorisation."
+  },
+  "shopify": "Correct merchant reauthorisation still pending fromR199. No Shopifyread/write retried under wrong identity.",
+  "newProgress": [
+    "One-file reviewed hold protection committed/readback on separatebranch b45049aa1cfdb89e5a45dc1e1fb9651a2005644b; notmain/notdeployed.",
+    "Hoodie exactCJ/source SKU and1connection lookup; public before-hashes and neutral copy/SEO draft; noAdminwrite.",
+    "Six actual notebook gallery images reviewed; none clean exact-base cover; one realphoto brief.",
+    "Fresh bounded homepage head,2Merchant disapproval rows,4approvedDNSrecords counterchecked.",
+    "Once-daily07–13Nov metrics+Klaviyo report, offline recomputed.",
+    "Same18sprofessionalMaster refined with source/musicrights blockers; no newrender."
+  ],
+  "planning": {
+    "objects": 48,
+    "activeObjects": 39,
+    "activeChannelPlacements": 49,
+    "draftObjects": 9,
+    "providerState": "PENDING, no publication evidence",
+    "window": "2026-11-14T00:00:00+01:00/2026-11-22T00:00:00+01:00",
+    "gaps": {
+      "2026-11-14": [],
+      "2026-11-15": [
+        "youtube",
+        "threads"
+      ],
+      "2026-11-16": [
+        "youtube"
+      ],
+      "2026-11-17": [
+        "youtube"
+      ],
+      "2026-11-18": [
+        "youtube"
+      ],
+      "2026-11-19": [
+        "youtube"
+      ],
+      "2026-11-20": [
+        "youtube"
+      ],
+      "2026-11-21": [
+        "youtube"
+      ]
+    },
+    "duplicates": "No exact same-channel media-list or text duplicates among39active objects in snapshot; no complete historical/master clearance."
+  },
+  "platformWrites": {
+    "shopify": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "dns": 0,
+    "newVideoRenders": 0,
+    "customerMessages": 0
+  },
+  "repoWritesBeforeDocumentation": {
+    "reviewBranchCreated": true,
+    "singleFileCommit": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+    "mainMerged": false,
+    "workflowStarted": false,
+    "prCreated": false
+  },
+  "existingCollections": "R199lastconfirmed7Shopgroups; Mode757757542791/Schmuck757757575559created,publicationunknown. No recreation; nativeSave0byroot.",
+  "singleKlaviyoProposal": "Reuse existing neutral Welcome subject correction; DRAFT unchanged. No new activation, incentive or test/customer send.",
+  "nextSalesAction": "After correctauth, bind exact currenthoodie fields and review narrow neutral title/body/SEO diff; protecthandle/options/variants/prices/tags/inventory/media/publications. No set/material/care promise.",
+  "judgeMe": "No callableJudge.me admin capability found in currenttool discovery; no review import/invention/reattribution. Public widgets are not an authenticity or rights proof.",
+  "unchanged": [
+    "24stabletaskIDs/history",
+    "endedpurchasewatch",
+    "CHF50public/CHF45internalshipping",
+    "account.luxestyle.com.co",
+    "08/14/19EuropeZurichschedule",
+    "budgets/discounts/flows/feeds/DNSsettings"
+  ],
+  "claudeReceipt": "unknown_no_receipt"
+}

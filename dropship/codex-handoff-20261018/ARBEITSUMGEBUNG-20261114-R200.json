@@ -1,0 +1,26 @@
+{
+  "removedAbandonedTemporaryPackFilesOnly": [
+    {
+      "path": "/tmp/luxestyle-office/.git/objects/pack/tmp_pack_Mvhp8Q",
+      "bytes": 2422874111,
+      "mtimeUtc": "2026-11-11T20:17:58Z",
+      "noOpenFileDescriptor": true,
+      "temporaryPackHeader": "PACK"
+    },
+    {
+      "path": "/tmp/luxestyle-office/.git/objects/pack/tmp_pack_Z6CwNX",
+      "bytes": 2027384832,
+      "mtimeUtc": "2026-11-14T00:44:42Z",
+      "noOpenFileDescriptor": true,
+      "temporaryPackHeader": "PACK"
+    },
+    {
+      "path": "/tmp/luxestyle-office/.git/objects/pack/tmp_pack_1i8Lhj",
+      "bytes": 315060223,
+      "mtimeUtc": "2026-11-11T20:29:57Z",
+      "noOpenFileDescriptor": true,
+      "temporaryPackHeader": "PACK"
+    }
+  ],
+  "preserved": "All named Git pack/idx/rev files, commits, refs, worktrees and evidence. No running process had the removed temporary files open."
+}

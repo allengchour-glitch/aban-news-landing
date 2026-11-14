@@ -1,0 +1,995 @@
+{
+  "report_date": "2026-11-14",
+  "timezone": "Europe/Zurich",
+  "metricool": {
+    "brand_id": "6227837",
+    "period_local_start": "2026-11-07T00:00:00+01:00",
+    "period_local_end_exclusive": "2026-11-14T00:00:00+01:00",
+    "source_metrics": {
+      "instagram": [
+        "IGEV05",
+        "IGEV38",
+        "IGEV43"
+      ],
+      "facebook": [
+        "FBEV12",
+        "FBEV34",
+        "FBEV47"
+      ],
+      "threads": [
+        "THEV06",
+        "THEV05",
+        "THEV03"
+      ],
+      "pinterest": [
+        "PIEV01",
+        "PIEV04",
+        "PIEV10"
+      ],
+      "tiktok": [
+        "TKEV02",
+        "TKEV06",
+        "TKEV08"
+      ],
+      "youtube": [
+        "YTEV02",
+        "YTEV05",
+        "YTEV01"
+      ]
+    },
+    "summary": {
+      "instagram": {
+        "views": {
+          "known_sum": 693,
+          "coverage": "7/7"
+        },
+        "interactions": {
+          "known_sum": 4,
+          "coverage": "2/7"
+        },
+        "followers_gained": {
+          "known_sum": 2,
+          "coverage": "6/7"
+        }
+      },
+      "facebook": {
+        "impressions": {
+          "known_sum": 15,
+          "coverage": "6/7"
+        },
+        "interactions": {
+          "known_sum": null,
+          "coverage": "0/7"
+        },
+        "followers_acquired": {
+          "known_sum": 0,
+          "coverage": "6/7"
+        }
+      },
+      "threads": {
+        "post_views": {
+          "known_sum": 1,
+          "coverage": "1/7"
+        },
+        "interactions": {
+          "known_sum": null,
+          "coverage": "0/7"
+        },
+        "follower_delta": {
+          "known_sum": 0,
+          "coverage": "6/7"
+        }
+      },
+      "pinterest": {
+        "impressions": {
+          "known_sum": 3072,
+          "coverage": "4/7"
+        },
+        "interactions": {
+          "known_sum": 62,
+          "coverage": "4/7"
+        },
+        "follower_delta": {
+          "known_sum": 0,
+          "coverage": "4/7"
+        }
+      },
+      "tiktok": {
+        "views": {
+          "known_sum": 3154,
+          "coverage": "5/7"
+        },
+        "interactions": {
+          "known_sum": 10,
+          "coverage": "5/7"
+        },
+        "new_followers_net": {
+          "known_sum": -1,
+          "coverage": "5/7"
+        }
+      },
+      "youtube": {
+        "views": {
+          "known_sum": 648,
+          "coverage": "4/7"
+        },
+        "subscribers_gained": {
+          "known_sum": 1,
+          "coverage": "4/7"
+        },
+        "subscriber_count_latest": "13 on 2026-11-13"
+      }
+    },
+    "out_of_range_rows_excluded": [
+      "Threads 2026-11-06",
+      "Threads 2026-11-14",
+      "Facebook 2026-11-14"
+    ]
+  },
+  "klaviyo": {
+    "account_id": "XWqMAD",
+    "currency": "USD",
+    "timezone": "Europe/Zurich",
+    "metric_id": "W7XTVD",
+    "period_utc_start": "2026-11-06T23:00:00Z",
+    "period_utc_end_exclusive": "2026-11-13T23:00:00Z",
+    "flow_report_calls": 1,
+    "reported_flows": [
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live",
+        "recipients": 2,
+        "delivered": 2,
+        "opens_unique": 1,
+        "clicks_unique": 0,
+        "placed_order_conversions": 0,
+        "conversion_value_USD": 0
+      }
+    ],
+    "status_reads": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft"
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live"
+      }
+    ]
+  },
+  "tool_calls": {
+    "date_utc": "2026-11-14",
+    "metricool_getbrandsettings": 3,
+    "metricool_getanalyticsavailablemetrics": 6,
+    "metricool_getanalyticsdatabymetrics": 6,
+    "klaviyo_get_metrics": 1,
+    "klaviyo_get_account_details": 1,
+    "klaviyo_get_flow_report": 1,
+    "klaviyo_get_flow": 4,
+    "total": 22,
+    "captured_read_errors": 0,
+    "notes": "Two of three Metricool settings responses were lost locally during serialization and are counted; third response validated brand. No API errors or limit responses."
+  },
+  "improvement_proposal": "Die bereits bekannte neutrale Welcome-Betreffkorrektur bleibt der einzige Klaviyo-Vorschlag; keine Aktivierung oder neue Rabattmassnahme.",
+  "provenance_notes": {
+    "catalogueFiles": "Agent compacted6catalogue responses to selected IDs/names during disk-full recovery; full catalogues are not retained. Six actual analytics data responses and Klaviyo report are intact.",
+    "rootReview": "All numeric-day counts/date filters/sums recomputed offline; YTEV05 corrected from7/7to4/7. YTEV01 is snapshot13on13Nov, never summed.",
+    "toolCallAccounting": "Agent22reads; root additionally1Metricoolbrandsettings+1planning read. No repeated metric-data or flow-report call."
+  },
+  "rawAnalytics": {
+    "instagram": {
+      "rows": [
+        [
+          "121.0",
+          null,
+          "1.0",
+          "20261110"
+        ],
+        [
+          "93.0",
+          null,
+          "0.0",
+          "20261111"
+        ],
+        [
+          "119.0",
+          "1.0",
+          "0.0",
+          "20261112"
+        ],
+        [
+          "67.0",
+          null,
+          null,
+          "20261113"
+        ],
+        [
+          "191.0",
+          "3.0",
+          "0.0",
+          "20261107"
+        ],
+        [
+          "36.0",
+          null,
+          "0.0",
+          "20261108"
+        ],
+        [
+          "66.0",
+          null,
+          "1.0",
+          "20261109"
+        ]
+      ]
+    },
+    "facebook": {
+      "rows": [
+        [
+          "8.0",
+          null,
+          "0.0",
+          "20261107"
+        ],
+        [
+          "1.0",
+          null,
+          "0.0",
+          "20261108"
+        ],
+        [
+          "1.0",
+          null,
+          "0.0",
+          "20261109"
+        ],
+        [
+          null,
+          "0.0",
+          null,
+          "20261114"
+        ],
+        [
+          "2.0",
+          null,
+          "0.0",
+          "20261110"
+        ],
+        [
+          "2.0",
+          null,
+          "0.0",
+          "20261111"
+        ],
+        [
+          "1.0",
+          null,
+          "0.0",
+          "20261112"
+        ]
+      ]
+    },
+    "threads": {
+      "rows": [
+        [
+          "1.0",
+          null,
+          "0.0",
+          "20261111"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261112"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261110"
+        ],
+        [
+          null,
+          "0.0",
+          null,
+          "20261114"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261108"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261109"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261106"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261107"
+        ]
+      ]
+    },
+    "pinterest": {
+      "rows": [
+        [
+          "863.0",
+          "19.0",
+          "0.0",
+          "20261110"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261111"
+        ],
+        [
+          null,
+          null,
+          "0.0",
+          "20261112"
+        ],
+        [
+          "399.0",
+          "11.0",
+          null,
+          "20261107"
+        ],
+        [
+          "1046.0",
+          "13.0",
+          null,
+          "20261108"
+        ],
+        [
+          "764.0",
+          "19.0",
+          "0.0",
+          "20261109"
+        ]
+      ]
+    },
+    "tiktok": {
+      "rows": [
+        [
+          "763.0",
+          "3.0",
+          "2.0",
+          "20261110"
+        ],
+        [
+          "1010.0",
+          "4.0",
+          "1.0",
+          "20261111"
+        ],
+        [
+          "740.0",
+          "1.0",
+          "-2.0",
+          "20261112"
+        ],
+        [
+          "400.0",
+          "2.0",
+          null,
+          "20261107"
+        ],
+        [
+          "241.0",
+          "0.0",
+          "1.0",
+          "20261108"
+        ],
+        [
+          null,
+          null,
+          "-3.0",
+          "20261109"
+        ]
+      ]
+    },
+    "youtube": {
+      "rows": [
+        [
+          "256.0",
+          "0.0",
+          "13.0",
+          "20261110"
+        ],
+        [
+          null,
+          null,
+          "13.0",
+          "20261111"
+        ],
+        [
+          null,
+          null,
+          "13.0",
+          "20261112"
+        ],
+        [
+          null,
+          null,
+          "13.0",
+          "20261113"
+        ],
+        [
+          "381.0",
+          "1.0",
+          "12.0",
+          "20261107"
+        ],
+        [
+          "7.0",
+          "0.0",
+          "13.0",
+          "20261108"
+        ],
+        [
+          "4.0",
+          "0.0",
+          "13.0",
+          "20261109"
+        ]
+      ]
+    }
+  },
+  "selectedMetricDefinitions": {
+    "instagram": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "IGEV05",
+          "metricName": "views",
+          "metricLabel": "Instagram Evolution > Views",
+          "network": "instagram",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "IGEV38",
+          "metricName": "postsInteractions",
+          "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "network": "instagram",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "IGEV43",
+          "metricName": "followersGained",
+          "metricLabel": "Instagram Evolution > Followers Gained",
+          "network": "instagram",
+          "connector": "evolution"
+        }
+      ]
+    },
+    "facebook": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "FBEV12",
+          "metricName": "postsImpressions",
+          "metricLabel": "Facebook Evolution > Feed Posts Impressions",
+          "network": "facebook",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "FBEV34",
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "network": "facebook",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "FBEV47",
+          "metricName": "followersAcquired",
+          "metricLabel": "Facebook Evolution > Page Followers Acquired",
+          "network": "facebook",
+          "connector": "evolution"
+        }
+      ]
+    },
+    "threads": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "THEV03",
+          "metricName": "deltaFollowers",
+          "metricLabel": "Threads Evolution > Delta Followers",
+          "network": "threads",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "THEV05",
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "network": "threads",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "THEV06",
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "network": "threads",
+          "connector": "evolution"
+        }
+      ]
+    },
+    "pinterest": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "PIEV01",
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "network": "pinterest",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "PIEV04",
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "network": "pinterest",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "PIEV10",
+          "metricName": "pinterestDeltaFollowers",
+          "metricLabel": "Pinterest Evolution > Delta followers",
+          "network": "pinterest",
+          "connector": "evolution"
+        }
+      ]
+    },
+    "tiktok": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "TKEV02",
+          "metricName": "views",
+          "metricLabel": "TikTok Evolution > Views",
+          "network": "tiktok",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "TKEV06",
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "network": "tiktok",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "TKEV08",
+          "metricName": "newFollowers",
+          "metricLabel": "TikTok Evolution > New Followers",
+          "network": "tiktok",
+          "connector": "evolution"
+        }
+      ]
+    },
+    "youtube": {
+      "saved_response_excerpt": [
+        {
+          "fieldId": "YTEV01",
+          "metricName": "subscribers",
+          "metricLabel": "Youtube Evolution > Subscribers",
+          "network": "youtube",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "YTEV02",
+          "metricName": "videoViews",
+          "metricLabel": "Youtube Evolution > Video Views",
+          "network": "youtube",
+          "connector": "evolution"
+        },
+        {
+          "fieldId": "YTEV05",
+          "metricName": "gained",
+          "metricLabel": "Youtube Evolution > Followers Gained",
+          "network": "youtube",
+          "connector": "evolution"
+        }
+      ]
+    }
+  },
+  "rootRecomputed": {
+    "instagram": {
+      "outOfRange": [],
+      "metrics": {
+        "IGEV05": {
+          "numericDays": 7,
+          "knownSum": 693.0,
+          "perDay": {
+            "20261110": 121.0,
+            "20261111": 93.0,
+            "20261112": 119.0,
+            "20261113": 67.0,
+            "20261107": 191.0,
+            "20261108": 36.0,
+            "20261109": 66.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "IGEV38": {
+          "numericDays": 2,
+          "knownSum": 4.0,
+          "perDay": {
+            "20261112": 1.0,
+            "20261107": 3.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "IGEV43": {
+          "numericDays": 6,
+          "knownSum": 2.0,
+          "perDay": {
+            "20261110": 1.0,
+            "20261111": 0.0,
+            "20261112": 0.0,
+            "20261107": 0.0,
+            "20261108": 0.0,
+            "20261109": 1.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        }
+      }
+    },
+    "facebook": {
+      "outOfRange": [
+        "20261114"
+      ],
+      "metrics": {
+        "FBEV12": {
+          "numericDays": 6,
+          "knownSum": 15.0,
+          "perDay": {
+            "20261107": 8.0,
+            "20261108": 1.0,
+            "20261109": 1.0,
+            "20261110": 2.0,
+            "20261111": 2.0,
+            "20261112": 1.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "FBEV34": {
+          "numericDays": 0,
+          "knownSum": null,
+          "perDay": {},
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "FBEV47": {
+          "numericDays": 6,
+          "knownSum": 0.0,
+          "perDay": {
+            "20261107": 0.0,
+            "20261108": 0.0,
+            "20261109": 0.0,
+            "20261110": 0.0,
+            "20261111": 0.0,
+            "20261112": 0.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        }
+      }
+    },
+    "threads": {
+      "outOfRange": [
+        "20261114",
+        "20261106"
+      ],
+      "metrics": {
+        "THEV06": {
+          "numericDays": 1,
+          "knownSum": 1.0,
+          "perDay": {
+            "20261111": 1.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "THEV05": {
+          "numericDays": 0,
+          "knownSum": null,
+          "perDay": {},
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "THEV03": {
+          "numericDays": 6,
+          "knownSum": 0.0,
+          "perDay": {
+            "20261111": 0.0,
+            "20261112": 0.0,
+            "20261110": 0.0,
+            "20261108": 0.0,
+            "20261109": 0.0,
+            "20261107": 0.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        }
+      }
+    },
+    "pinterest": {
+      "outOfRange": [],
+      "metrics": {
+        "PIEV01": {
+          "numericDays": 4,
+          "knownSum": 3072.0,
+          "perDay": {
+            "20261110": 863.0,
+            "20261107": 399.0,
+            "20261108": 1046.0,
+            "20261109": 764.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "PIEV04": {
+          "numericDays": 4,
+          "knownSum": 62.0,
+          "perDay": {
+            "20261110": 19.0,
+            "20261107": 11.0,
+            "20261108": 13.0,
+            "20261109": 19.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "PIEV10": {
+          "numericDays": 4,
+          "knownSum": 0.0,
+          "perDay": {
+            "20261110": 0.0,
+            "20261111": 0.0,
+            "20261112": 0.0,
+            "20261109": 0.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        }
+      }
+    },
+    "tiktok": {
+      "outOfRange": [],
+      "metrics": {
+        "TKEV02": {
+          "numericDays": 5,
+          "knownSum": 3154.0,
+          "perDay": {
+            "20261110": 763.0,
+            "20261111": 1010.0,
+            "20261112": 740.0,
+            "20261107": 400.0,
+            "20261108": 241.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "TKEV06": {
+          "numericDays": 5,
+          "knownSum": 10.0,
+          "perDay": {
+            "20261110": 3.0,
+            "20261111": 4.0,
+            "20261112": 1.0,
+            "20261107": 2.0,
+            "20261108": 0.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "TKEV08": {
+          "numericDays": 5,
+          "knownSum": -1.0,
+          "perDay": {
+            "20261110": 2.0,
+            "20261111": 1.0,
+            "20261112": -2.0,
+            "20261108": 1.0,
+            "20261109": -3.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        }
+      }
+    },
+    "youtube": {
+      "outOfRange": [],
+      "metrics": {
+        "YTEV02": {
+          "numericDays": 4,
+          "knownSum": 648.0,
+          "perDay": {
+            "20261110": 256.0,
+            "20261107": 381.0,
+            "20261108": 7.0,
+            "20261109": 4.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "YTEV05": {
+          "numericDays": 4,
+          "knownSum": 1.0,
+          "perDay": {
+            "20261110": 0.0,
+            "20261107": 1.0,
+            "20261108": 0.0,
+            "20261109": 0.0
+          },
+          "aggregation": "partial_sum_missing_unknown"
+        },
+        "YTEV01": {
+          "numericDays": 7,
+          "perDay": {
+            "20261110": 13.0,
+            "20261111": 13.0,
+            "20261112": 13.0,
+            "20261113": 13.0,
+            "20261107": 12.0,
+            "20261108": 13.0,
+            "20261109": 13.0
+          },
+          "aggregation": "snapshot_not_sum",
+          "latestValue": 13,
+          "latestDate": "20261113"
+        }
+      }
+    }
+  },
+  "flowReport": {
+    "data": {
+      "type": "flow-values-report",
+      "id": "d0ac9dfb-2740-492e-b0da-19de878415a3",
+      "attributes": {
+        "results": [
+          {
+            "groupings": {
+              "flow_id": "XEGbTB",
+              "send_channel": "email",
+              "flow_message_id": "VfffLv"
+            },
+            "statistics": {
+              "average_order_value": 0,
+              "click_rate": 0,
+              "clicks_unique": 0,
+              "conversion_rate": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 1,
+              "delivery_rate": 1,
+              "open_rate": 1,
+              "opens_unique": 1,
+              "recipients": 1,
+              "revenue_per_recipient": 0,
+              "unsubscribes": 0
+            },
+            "flow_details": {
+              "type": "flow",
+              "id": "XEGbTB",
+              "attributes": {
+                "name": "Abandoned Checkout · 1 Std",
+                "status": "live",
+                "trigger_type": "Metric",
+                "created": "2026-10-10T08:11:24+00:00",
+                "updated": "2026-11-09T11:34:12+00:00",
+                "tags": []
+              }
+            }
+          },
+          {
+            "groupings": {
+              "flow_id": "XEGbTB",
+              "send_channel": "email",
+              "flow_message_id": "SPNjDp"
+            },
+            "statistics": {
+              "average_order_value": 0,
+              "click_rate": 0,
+              "clicks_unique": 0,
+              "conversion_rate": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 1,
+              "delivery_rate": 1,
+              "open_rate": 0,
+              "opens_unique": 0,
+              "recipients": 1,
+              "revenue_per_recipient": 0,
+              "unsubscribes": 0
+            },
+            "flow_details": {
+              "type": "flow",
+              "id": "XEGbTB",
+              "attributes": {
+                "name": "Abandoned Checkout · 1 Std",
+                "status": "live",
+                "trigger_type": "Metric",
+                "created": "2026-10-10T08:11:24+00:00",
+                "updated": "2026-11-09T11:34:12+00:00",
+                "tags": []
+              }
+            }
+          }
+        ],
+        "flow_aggregation": [
+          {
+            "flow_id": "XEGbTB",
+            "flow_details": {
+              "type": "flow",
+              "id": "XEGbTB",
+              "attributes": {
+                "name": "Abandoned Checkout · 1 Std",
+                "status": "live",
+                "trigger_type": "Metric",
+                "created": "2026-10-10T08:11:24+00:00",
+                "updated": "2026-11-09T11:34:12+00:00",
+                "tags": []
+              }
+            },
+            "statistics": {
+              "clicks_unique": 0,
+              "conversion_uniques": 0,
+              "conversion_value": 0,
+              "conversions": 0,
+              "delivered": 2,
+              "opens_unique": 1,
+              "recipients": 2,
+              "unsubscribes": 0,
+              "open_rate": 0.5,
+              "click_rate": 0,
+              "conversion_rate": 0,
+              "delivery_rate": 1,
+              "click_to_open_rate": 0,
+              "average_order_value": 0,
+              "revenue_per_recipient": 0
+            }
+          }
+        ]
+      },
+      "relationships": {
+        "flows": {
+          "data": [
+            {
+              "type": "flow",
+              "id": "XEGbTB"
+            }
+          ]
+        },
+        "flow-messages": {
+          "data": [
+            {
+              "type": "flow-message",
+              "id": "VfffLv"
+            },
+            {
+              "type": "flow-message",
+              "id": "SPNjDp"
+            }
+          ]
+        }
+      }
+    },
+    "links": {
+      "self": "https://a.klaviyo.com/api/flow-values-reports",
+      "next": null,
+      "prev": null
+    }
+  }
+}

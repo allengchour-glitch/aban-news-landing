@@ -1,0 +1,140 @@
+{
+  "task": "Public-source notebook gallery review only",
+  "reviewed_at_utc": "2026-11-14",
+  "method": "stdlib urllib; two exact public Shopify product .js endpoints, at most six gallery image downloads; no authenticated Shopify access or writes. Image downloads use original public image URLs.",
+  "sources": [
+    {
+      "url": "https://luxestyle.ch/products/notizbuch-mit-pu-ledercover-623800.js",
+      "http_status": 200,
+      "response_bytes": 52200,
+      "sha256": "37b0fcde8b41cdad535074ea4b11447fd5cde73d86c772be39dfef6dadcede71",
+      "saved_copy": "/tmp/notizbuch-mit-pu-ledercover-623800.json"
+    },
+    {
+      "url": "https://luxestyle.ch/products/notizbuch-ohne-datum-mit-gummiband-601700.js",
+      "http_status": 200,
+      "response_bytes": 27902,
+      "sha256": "44c28a999af135137358031de91e8bbe67fe2634a1cb3ebf02e7fc14e39ac120",
+      "saved_copy": "/tmp/notizbuch-ohne-datum-mit-gummiband-601700.json"
+    }
+  ],
+  "products": [
+    {
+      "product_id": "16653948191111",
+      "handle": "notizbuch-mit-pu-ledercover-623800",
+      "title": "Notizbuch mit PU-Lederhülle",
+      "gallery_count": 25,
+      "variants_reviewed": [
+        {
+          "variant_id": "68122478805383",
+          "variant_title": "Charmantes Schwarz",
+          "sku": "CJYD215403101AZ",
+          "variant_image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cfdf658-6a88-4029-8b3c-b14fd86ba358_trans.jpg?v=1792446198",
+          "variant_image_id": "101173878587783",
+          "variant_image_position": 20,
+          "variant_ids_binding": [
+            "68122478805383"
+          ]
+        }
+      ],
+      "description_facts": "PU leather cover, wood-free paper; body dimensions/pages not specified; selected base black option"
+    },
+    {
+      "product_id": "16638912496007",
+      "handle": "notizbuch-ohne-datum-mit-gummiband-601700",
+      "title": "Notizbuch ohne Datum mit Gummiband",
+      "gallery_count": 17,
+      "variants_reviewed": [
+        {
+          "variant_id": "68122520191367",
+          "variant_title": "Lila Plus Aufkleber",
+          "sku": "CJYD219358601AZ",
+          "variant_image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg?v=1792029723",
+          "variant_image_id": "101057857880455",
+          "variant_image_position": 1,
+          "variant_ids_binding": [
+            "68122520191367"
+          ]
+        }
+      ],
+      "description_facts": "PU cover, thread binding, wood-free 80g paper; purple plus stickers option; body dimensions not stated; CJ says 200 sheets (400 pages only inference)"
+    }
+  ],
+  "images": [
+    {
+      "file": "black.jpg",
+      "product_handle": "notizbuch-mit-pu-ledercover-623800",
+      "variant_id": "68122478805383",
+      "role": "selected variant-bound photo",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cfdf658-6a88-4029-8b3c-b14fd86ba358_trans.jpg?v=1792446198",
+      "bytes": 55351,
+      "sha256": "52f9eaf8f7e149502f057577e394f149c7085b37d263ab2270222e82c3645322",
+      "visual_review": "Black notebook appears by itself in staged wood-table scene, but overlay asserts A5, inner page 142x208mm, 100gsm, 100 sheets. These are not verified for selected base variant; unsuitable cover."
+    },
+    {
+      "file": "purple.jpg",
+      "product_handle": "notizbuch-ohne-datum-mit-gummiband-601700",
+      "variant_id": "68122520191367",
+      "role": "selected variant-bound photo",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg?v=1792029723",
+      "bytes": 160266,
+      "sha256": "651f513f8c65f4f85aa5b8ea303eb9e81f543191902353d7377251f40ccc90c6",
+      "visual_review": "Purple cover with inserts/sticker sheets and other color planner pages; carries 80g, 150x211mm, 200 sheets/400 pages claims. Mixed color spread; 400-page statement not verified; unsuitable cover."
+    },
+    {
+      "file": "black-gallery-0.jpg",
+      "product_handle": "notizbuch-mit-pu-ledercover-623800",
+      "variant_id": null,
+      "role": "gallery index 0",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/146ee820-106d-489c-ba6b-b3c59d43fde6_trans.jpg?v=1792446198",
+      "bytes": 189863,
+      "sha256": "9e5b236e6b60c8e756ad15a0c4a3facc4b6dbefb352f38c9b5834486e8a726ba",
+      "visual_review": "Gift box holds brown/black notebook, two pens and other contents, gift bag shown; overlay calls it notebook+signature pen+refill. Not base black variant."
+    },
+    {
+      "file": "black-gallery-1.jpg",
+      "product_handle": "notizbuch-mit-pu-ledercover-623800",
+      "variant_id": null,
+      "role": "gallery index 1",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48ce37dc-f847-4f1a-ba28-b9eeda37e816_trans.jpg?v=1792446197",
+      "bytes": 56321,
+      "sha256": "126829ae41928c3cdcdff7a494ba1c385c4d42c08cd782c3df20d2c0e63c5ff3",
+      "visual_review": "Gift box with brown/black notebook, pens and USB; gift bag. Explicitly bundle contents. Not base black variant."
+    },
+    {
+      "file": "purple-gallery-1.jpg",
+      "product_handle": "notizbuch-ohne-datum-mit-gummiband-601700",
+      "variant_id": null,
+      "role": "gallery index 1",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39f1ea20-3fa0-456c-b995-6a2c33a37512.jpg?v=1792029728",
+      "bytes": 80080,
+      "sha256": "f1c7aac1648d4bce70816fbf338504b850aefd2863b7f1a153cefc2856eb8f52",
+      "visual_review": "Gray planner, A5/80g/200 sheets/400 pages/150x211mm claims. Wrong color and dimensions/400 pages not established."
+    },
+    {
+      "file": "purple-gallery-2.jpg",
+      "product_handle": "notizbuch-ohne-datum-mit-gummiband-601700",
+      "variant_id": null,
+      "role": "gallery index 2",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c485522-c166-49ef-84b6-43c961c3ced5.jpg?v=1792029728",
+      "bytes": 147835,
+      "sha256": "a24a23c612c9e284a27c713facdc51437c9445791435272069bc5e4ac7d98965",
+      "visual_review": "Gray planner, band, sticker spread in multiple colors, contains 400-page and 150x211mm claims; wrong color/mixed-color depiction."
+    }
+  ],
+  "result": "No suitable clean image found for either category cover in six reviewed frames. Product gallery contains a standalone-looking black base notebook image, but it has unverified specification overlays. Other black gallery frames depict gift bundle contents. Purple selected-variant image and neighboring images show sticker sheets/mixed colors and unsupported 400 pages claims.",
+  "unknowns": [
+    "Notebook body dimensions and inner writing-area dimensions are not independently established for these selected variants.",
+    "Black base variant sheet count, paper weight, and A5 sizing are not established.",
+    "Purple CJ source confirms 200 sheets and 80g paper; pages count is inference only.",
+    "Commercial image license and final approval status are unknown.",
+    "Variant description says purple plus stickers; verify package contents and sticker count against selected exact option before asserting details."
+  ],
+  "production_blocker": "No reviewed photo simultaneously depicts only the exact selected item, has no unverified specification text, and works as a clean cover. Existing black gallery photography is mismatched (bundle) or carries unsupported claims; purple frames are mixed-color/sticker compositions or the wrong color.",
+  "single_photo_shot_brief": {
+    "deliverable": "One clean square front three-quarter photograph for each selected variant (two final shots total).",
+    "black_base_variant": "Photograph only one black PU-cover notebook in the exact base Charmantes Schwarz / CJYD215403101AZ configuration. Exclude gift box, pen, refill, USB, gift bag and any props that imply included contents. Use neutral quiet background, show cover/buckle accurately. No visible text, labels, dimensions, page-count graphics or watermark.",
+    "purple_plus_stickers_variant": "Photograph exact purple notebook and only the verified included contents for Lila Plus Aufkleber / CJYD219358601AZ, in one uncluttered composition. Confirm which sticker pack is included before staging; otherwise show notebook alone. Exclude gray/other-color notebooks, extra planners and mixed-color accessory spread. No visible text, specs, dimensions, page count, overlays or watermark.",
+    "source_facts_to_confirm_before_captioning": "Black text source supports PU cover and wood-free paper only; purple text source supports PU cover, thread binding, wood-free 80g paper. Do not state body or writing-area dimensions. Do not say 400 pages unless supplier confirms; 200 sheets does not by itself establish page count."
+  }
+}

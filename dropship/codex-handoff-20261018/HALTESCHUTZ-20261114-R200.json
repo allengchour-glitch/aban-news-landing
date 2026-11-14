@@ -1,0 +1,153 @@
+{
+  "review": {
+    "branch": "codex/luxestyle-hold-protection-20261114",
+    "baseCommit": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "commit_sha": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+    "content_sha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackContentSha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackExact": true,
+    "state": "review_branch_only_not_main_not_deployed",
+    "prCreated": false,
+    "reasonNoPR": "PR to main could trigger cloudflare-pages deploy; CF_DIRECT_DEPLOY gate read returned403, unknown. No workflow or deployment started.",
+    "independentRawReadbackHttp": 200,
+    "sha256": "086d106d8eec3f49f474951808d39b7173a9a9d80e8e595567599e550b3996f1",
+    "gitBlobSha": "1997851848b25037685779555478f55ca1c9e429",
+    "readbackUrl": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/b45049aa1cfdb89e5a45dc1e1fb9651a2005644b/dropship/METRICOOL-HALTEN.txt",
+    "changedPaths": [
+      "dropship/METRICOOL-HALTEN.txt"
+    ]
+  },
+  "offlineEvidence": {
+    "status": "LOCAL DRAFT ONLY; not applied to source repo; no PR/platform writes/execution",
+    "source_repo": "/tmp/luxe12-implementation/repo",
+    "full_main_pin": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "pin_verified": true,
+    "source_sha256": {
+      "dropship/METRICOOL-HALTEN.txt": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc",
+      ".github/workflows/metricool-freigabe.yml": "163cec5f60186600e6289db3dabfcbd9864b6b53bfd42dbd7537c217c574f189",
+      "automation/metricool-schedule.mjs": "5b18a034efbeb69473e80f5d5b5fcba880402322d3e55204ddefd96f5d0e088b",
+      "automation/metricool_freigabe.py": "6ed2318d028cb34cbfffcd4b16627774ae2a423ad8b2dd060c4d8a7ddb1d6e6f",
+      "automation/metricool_freigabe_test.py": "dd26ebaf3e7646cac227c1daaf453eb4bd467a7942dd3f9bedc93161cd52c879",
+      "automation/metricool_freigabe_mutationsprobe.py": "325c17852dae273a99e1028ea24f956afef604c7f2ec20c68ed92dc1c4370750",
+      "dropship/codex-handoff-20261018/METRICOOL-HALTEN-ENTWURF-20261113-R196.patch": "648ab6f98bbda994cd2841ff90854e028046f54c3adedc6da2819d9e9a8eaa91",
+      ".github/workflows/metricool-schedule.yml": "7d21c019f3f371bd9976a33cac2d20865708807ad9b350d2a9c2ed7e452b7774"
+    },
+    "candidate_uuid_count": 11,
+    "present_in_pinned_main": [],
+    "missing_in_pinned_main": [
+      "-4472725258033347244",
+      "-7002936161864562103",
+      "1744402171830094170",
+      "2172266762404316928",
+      "3963843144054620883",
+      "5647388074617226143",
+      "8935974072695279179",
+      "-7647174116509334899",
+      "3614365779669041576",
+      "4156060813550767248",
+      "6680239273933357186"
+    ],
+    "old_entries_and_comments_preserved": true,
+    "pinned_original_line_count": 13,
+    "draft_line_count": 24,
+    "local_draft_file": "/tmp/luxe-other-work-20261114/guard/METRICOOL-HALTEN.txt",
+    "patch_file": "/tmp/luxe-other-work-20261114/guard/METRICOOL-HALTEN-additive.patch",
+    "patch_sha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+    "test_evidence": {
+      "command": "python3 snapshot/automation/metricool_freigabe_test.py",
+      "result": "128 Prüfungen bestanden",
+      "supplement": "python3 held_ids_check.py",
+      "supplement_result": "PASS: 11/11 UUIDs held; old bytes/comments preserved",
+      "network_credentials_installation": "none"
+    },
+    "diff_scope": [
+      "dropship/METRICOOL-HALTEN.txt (11 appended entries only)"
+    ],
+    "workflow_assessment": {
+      "draft_publisher": "automation/metricool_freigabe.py reads dropship/METRICOOL-HALTEN.txt and skips held drafts before any PUT; it does not modify already scheduled posts.",
+      "freigabe_triggers": "schedule daily 05:41 UTC and workflow_dispatch. pull_request only matches automation/metricool_freigabe* or .github/workflows/metricool-freigabe.yml; changing only the halt-list path triggers no PR check. No push trigger.",
+      "external_writes": "Non-PR schedule/dispatch job calls Metricool and Shopify and may Telegram; if owner release file exists and dry-run is not forced, LIVE path can PUT eligible drafts to Metricool. Not executed.",
+      "other_scheduler": "automation/metricool-schedule.mjs is separate manual workflow_dispatch only; queue path social/metricool_queue.csv; it ignores hold-list. Explicit dry_run defaults true, approve_publish false; live can POST to Metricool and commit/push checkpoint (workflow contents:write). Not executed.",
+      "overwrite_reactivation_risk": "Patch is append-only and applies to pinned file hash. Held entries prevent the draft publisher from scheduling matching drafts but cannot undo posts already scheduled. Removing a hold later can reactivate eligibility in the draft publisher. Separate queue scheduler is not governed by this file."
+    },
+    "non_execution": "No workflow, network request, credential use, publication, queue mutation, order, or customer-data operation performed.",
+    "patch_apply_check": "git apply --check PASS in isolated temp dir initialized with pinned base file",
+    "source_hash_scope": "All source_sha256 entries except the R196 handoff patch are blobs at the pinned main commit. The handoff patch exists as a local untracked draft outside pinned main and was hashed from that read-only file."
+  },
+  "workflowTriggers": {
+    "pin": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+    "changedPath": "dropship/METRICOOL-HALTEN.txt",
+    "matcher": "conservative fnmatch; manually inspect every positive",
+    "matchingEvents": [
+      {
+        "file": ".github/workflows/cloudflare-pages.yml",
+        "event": "push",
+        "filters": {
+          "branches": [
+            "main"
+          ]
+        },
+        "jobNames": [
+          "deploy"
+        ],
+        "topIf": null,
+        "sourceSha256": "7f009463c7d495505a9da2d1f3fcf1d7365d7523c960b1acbeca537afa6bddab"
+      },
+      {
+        "file": ".github/workflows/cloudflare-pages.yml",
+        "event": "pull_request",
+        "filters": {
+          "branches": [
+            "main"
+          ]
+        },
+        "jobNames": [
+          "deploy"
+        ],
+        "topIf": null,
+        "sourceSha256": "7f009463c7d495505a9da2d1f3fcf1d7365d7523c960b1acbeca537afa6bddab"
+      },
+      {
+        "file": ".github/workflows/deploy-check.yml",
+        "event": "push",
+        "filters": {
+          "branches": [
+            "main",
+            "master"
+          ]
+        },
+        "jobNames": [
+          "validate"
+        ],
+        "topIf": null,
+        "sourceSha256": "9f629ff2763066eed42a4c1053052981446766ed37de5d2fb2926a11de2f4c16"
+      },
+      {
+        "file": ".github/workflows/deploy-check.yml",
+        "event": "pull_request",
+        "filters": {
+          "branches": [
+            "main",
+            "master"
+          ]
+        },
+        "jobNames": [
+          "validate"
+        ],
+        "topIf": null,
+        "sourceSha256": "9f629ff2763066eed42a4c1053052981446766ed37de5d2fb2926a11de2f4c16"
+      }
+    ]
+  },
+  "deployGate": {
+    "variable": "CF_DIRECT_DEPLOY",
+    "state": "unknown",
+    "readExitCode": 1,
+    "error": "gh: Resource not accessible by integration (HTTP 403)",
+    "noSecretsRequested": true,
+    "noSettingChanged": true
+  },
+  "currentMain": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a",
+  "liveRuntimeWrite": false,
+  "effectLimit": "Only holds drafts in the approval publisher after a future safe merge; does not undo scheduled posts and does not govern the separate manual queue scheduler. No PR/workflow/deployment started."
+}

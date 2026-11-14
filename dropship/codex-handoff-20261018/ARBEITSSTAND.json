@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 199,
-  "updatedAt": "2026-11-14T00:08:52.861542+00:00",
+  "revision": 200,
+  "updatedAt": "2026-11-14T01:06:47.675525+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,21 +16,21 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-13",
-    "currentDayEvidenceKind": "R194_MORNING_ONCE_REPORTS_AND_TARGETED_AUDIO_HOLDS",
-    "currentDayEvidence": "Before reads, fresh R193 memory and13Nov log confirmed no reports today. Once06–12Nov:6Metricooldefinitions+6small data calls; freshW7XTVD metric discovery+1Klaviyoflowreport. Missing values remainunknown; IG includesorganic+paid. Fresh seven R125-bound audio holds and targeted SEO/product reads are not repeated analytics. No orderwatch or broad sales query. Reuse these reports in later13Nov runs unless a concrete new countercheck reason is recorded.",
+    "currentDayEvidenceDate": "2026-11-14",
+    "currentDayEvidenceKind": "R200_ONCE_DAILY_SMALL_REPORTS_OFFLINE_RECOMPUTED",
+    "currentDayEvidence": "FreshR199Core4/14Novlog read before reports; lastreports13Nov. Once07–13Nov6Metricooldefinitions+6datareads, W7XTVDdiscovered then1Klaviyoreport;4flowstatusreads. Rootofflineverifiednumericdays, null/out-of-range handling andYT4/7subscriber-gain correction. Reuse these14Novreports in laterexistingruns. No orderwatch/broadsales query. Bounded2Merchantissue/sourcecounterchecks are not a secondperformance report.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-13",
-        "range": "2026-11-06/2026-11-12",
+        "localDate": "2026-11-14",
+        "range": "2026-11-07/2026-11-13",
         "definitionCalls": 6,
         "dataCalls": 6,
         "missingIsUnknown": true,
-        "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261113-R194.json"
+        "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json"
       },
       "klaviyo": {
-        "localDate": "2026-11-13",
-        "range": "2026-11-06/2026-11-12",
+        "localDate": "2026-11-14",
+        "range": "2026-11-07/2026-11-13",
         "metricDiscoveryCalls": 1,
         "flowReportCalls": 1,
         "conversionMetricId": "W7XTVD",
@@ -42,7 +42,7 @@
       "ordersQueried": false,
       "purchaseWatchEnded": true,
       "broadSalesRepeated": false,
-      "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-R194.json"
+      "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json"
     },
     "dayHistory": [
       {
@@ -507,6 +507,43 @@
             }
           }
         }
+      },
+      {
+        "dateZurich": "2026-11-13",
+        "record": {
+          "timezone": "Europe/Zurich",
+          "checkLogBeforeReading": true,
+          "metricsFlowAndBroadSalesMaxPerDay": 1,
+          "exception": "new_concrete_finding_with_recorded_reason",
+          "currentDayEvidenceDate": "2026-11-13",
+          "currentDayEvidenceKind": "R194_MORNING_ONCE_REPORTS_AND_TARGETED_AUDIO_HOLDS",
+          "currentDayEvidence": "Before reads, fresh R193 memory and13Nov log confirmed no reports today. Once06–12Nov:6Metricooldefinitions+6small data calls; freshW7XTVD metric discovery+1Klaviyoflowreport. Missing values remainunknown; IG includesorganic+paid. Fresh seven R125-bound audio holds and targeted SEO/product reads are not repeated analytics. No orderwatch or broad sales query. Reuse these reports in later13Nov runs unless a concrete new countercheck reason is recorded.",
+          "completedReports": {
+            "metricool": {
+              "localDate": "2026-11-13",
+              "range": "2026-11-06/2026-11-12",
+              "definitionCalls": 6,
+              "dataCalls": 6,
+              "missingIsUnknown": true,
+              "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261113-R194.json"
+            },
+            "klaviyo": {
+              "localDate": "2026-11-13",
+              "range": "2026-11-06/2026-11-12",
+              "metricDiscoveryCalls": 1,
+              "flowReportCalls": 1,
+              "conversionMetricId": "W7XTVD",
+              "accountCurrency": "USD",
+              "shopCurrency": "CHF",
+              "currenciesMixed": false,
+              "missingRowsUnknown": true
+            },
+            "ordersQueried": false,
+            "purchaseWatchEnded": true,
+            "broadSalesRepeated": false,
+            "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-R194.json"
+          }
+        }
       }
     ]
   },
@@ -541,12 +578,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r199_exact_collection_member_checks_and_three_source_conflicts_no_product_mutations",
+      "state": "r200_hoodie_exact_cj_source_neutral_draft_notebook_cover_qa_open",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
-      "lastEvidence": "NeueQuellenbefunde:16654366638471 heisstBluse,zeigtHoodie/Set1,deshalbnichtausgewählt;unverändert. Notizbuch16653948191111 BasisvsGeschenksetbilderoffen;16638912496007 exactPurplePlusStickers/80g/200Blattbelegt,400Seiten/Innenmasseunbekannt. AusgewählteCollection-MemberengaufTags/CHF/Bilder/defaultKaufbarkeit/TrackingPolicy/Shopstatusgeprüft;0Produktwrites.",
-      "nextAllowedStep": "NachZugriffswiederherstellunggenaueHoodiequelle/Setumfang prüfenundneutralenProduktdiffvorbereiten;Notizbuchgaleriegebundenlesen,keineMasse/MaterialienoderSetbestandteileerfinden.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "EinCJDetailreadmitkanonischerSKUbindetHoodieSet1-S;Cloth/PackPlasticbagsbelegenkeineFaser/Pflege/Setanzahl. ÖffentlicheVorherHashes/neutralerTitelBodySEODiffvorbereitet. SechsNotizbuchgaleriefotosgeprüft,keinsauberesBasiscover;eineechteFotovorgabe.0Produktwrites.",
+      "nextAllowedStep": "NachkorrekterShopAutorisierung exakt16654366638471/67748027957639lesen, Setumfangklären,engenTitelBodySEODiffprüfen;35Varianten/Optionswerte/Handle/Preise/Tags/Inventory/Medien/Publikationenerhalten. KeinNotizbuchcovermitunbelegtenSpecs.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -1032,6 +1069,24 @@
           "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
           "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
           "readAt": "2026-11-14T00:08:52.861542+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAPUZENPULLOVER-QUELLEN-ENTWURF-20261114-R200.json",
+          "sha256": "9caffbf8dee098a360f198fb87ada97eff5c316fcdc9a4b341284734123e6b83",
+          "gitBlobSha": "97f5ed1f324bbbbfc66a1d65662c30b8434b543f",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHREIBEN-GALERIE-20261114-R200.json",
+          "sha256": "a5f1f4ac38c13bc908345c69f47ea3b789d54b6aa4e8a54dde48c262ac12fdb0",
+          "gitBlobSha": "d849674bdb88f890bf9bd5f56490d2442fb8c4b2",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SCHREIBEN-FOTO-BRIEF-20261114-R200.md",
+          "sha256": "e58b680396a9eed698fed8f9a5e46b34f299c22f36a45897df83012ecb220b71",
+          "gitBlobSha": "d0495fd86f00765136083ecd2f85f206a2421275",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1737,6 +1792,35 @@
               "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
               "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
               "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r199_exact_collection_member_checks_and_three_source_conflicts_no_product_mutations",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
+            "lastEvidence": "NeueQuellenbefunde:16654366638471 heisstBluse,zeigtHoodie/Set1,deshalbnichtausgewählt;unverändert. Notizbuch16653948191111 BasisvsGeschenksetbilderoffen;16638912496007 exactPurplePlusStickers/80g/200Blattbelegt,400Seiten/Innenmasseunbekannt. AusgewählteCollection-MemberengaufTags/CHF/Bilder/defaultKaufbarkeit/TrackingPolicy/Shopstatusgeprüft;0Produktwrites.",
+            "nextAllowedStep": "NachZugriffswiederherstellunggenaueHoodiequelle/Setumfang prüfenundneutralenProduktdiffvorbereiten;Notizbuchgaleriegebundenlesen,keineMasse/MaterialienoderSetbestandteileerfinden."
+          },
+          "summary": "EinCJDetailreadmitkanonischerSKUbindetHoodieSet1-S;Cloth/PackPlasticbagsbelegenkeineFaser/Pflege/Setanzahl. ÖffentlicheVorherHashes/neutralerTitelBodySEODiffvorbereitet. SechsNotizbuchgaleriefotosgeprüft,keinsauberesBasiscover;eineechteFotovorgabe.0Produktwrites.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/KAPUZENPULLOVER-QUELLEN-ENTWURF-20261114-R200.json",
+              "sha256": "9caffbf8dee098a360f198fb87ada97eff5c316fcdc9a4b341284734123e6b83",
+              "gitBlobSha": "97f5ed1f324bbbbfc66a1d65662c30b8434b543f"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SCHREIBEN-GALERIE-20261114-R200.json",
+              "sha256": "a5f1f4ac38c13bc908345c69f47ea3b789d54b6aa4e8a54dde48c262ac12fdb0",
+              "gitBlobSha": "d849674bdb88f890bf9bd5f56490d2442fb8c4b2"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SCHREIBEN-FOTO-BRIEF-20261114-R200.md",
+              "sha256": "e58b680396a9eed698fed8f9a5e46b34f299c22f36a45897df83012ecb220b71",
+              "gitBlobSha": "d0495fd86f00765136083ecd2f85f206a2421275"
             }
           ]
         }
@@ -2626,6 +2710,26 @@
           "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
         },
         "currentSourceRequiredBeforeNextWrite": true
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/KAPUZENPULLOVER-QUELLEN-ENTWURF-20261114-R200.json",
+            "sha256": "9caffbf8dee098a360f198fb87ada97eff5c316fcdc9a4b341284734123e6b83",
+            "gitBlobSha": "97f5ed1f324bbbbfc66a1d65662c30b8434b543f"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SCHREIBEN-GALERIE-20261114-R200.json",
+            "sha256": "a5f1f4ac38c13bc908345c69f47ea3b789d54b6aa4e8a54dde48c262ac12fdb0",
+            "gitBlobSha": "d849674bdb88f890bf9bd5f56490d2442fb8c4b2"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SCHREIBEN-FOTO-BRIEF-20261114-R200.md",
+            "sha256": "e58b680396a9eed698fed8f9a5e46b34f299c22f36a45897df83012ecb220b71",
+            "gitBlobSha": "d0495fd86f00765136083ecd2f85f206a2421275"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
@@ -3105,12 +3209,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r199_collection_progress_and_identity_guard_shared_owner_editor_guidance",
+      "state": "r200_independent_progress_shared_24tasks_correct_shop_auth_pending",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
-      "lastEvidence": "InhaberwünschtmehrKollektioneninAbschnitt1und2.7datierteShopgruppen/2neuangelegteunbestätigte/1Notizbuchgruppezurückgestellt. 14ShopifyRessourcenwrites,0Social-/Produkt-/Profilwrites. WrongidentityreadTechHubführtezumStopundunterstütztemKontextwechsel; wartenaufLuxeStyleAutorisierung. ZweiLuna-Leseaufgaben/CJquellenbelege,24IDs/Historie/Tagesgrenze erhalten.",
-      "nextAllowedStep": "R199IDs/Statusgrenzen beachten,keineerneuteGestaltungsfreigabe verlangen. AktuelleBrowser-/APIzugänge unterscheidenechteReceipts,keineClaudeKenntnisnahmeohneBeleg.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "UnabhängigeQuellen-/QualitätsarbeitundPrüfbranchb45049agesichert;ShopAuthausR199bleibtoffen,keinfalscherShopread/writewiederholt. Core4/Historien/24IDs/KaufwatchendeundTagesgrenzeerhalten;ClaudeEmpfangunbekannt. EinfachesLesenmitLuna,Rootgegengeprüft.",
+      "nextAllowedStep": "R200Belege/PrüfbranchundheutigeReportsnutzen,keineDublettenoderwiederholtenTagesreports. ErstkorrekteLuxeStyleAutorisierungfürbestehende2Kollektionen;keinNeuanlegen. ClaudeKenntnisnahmenurmitBeleg.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3431,6 +3535,24 @@
           "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
           "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
           "readAt": "2026-11-14T00:08:52.861542+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+          "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+          "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+          "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+          "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+          "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+          "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3869,6 +3991,35 @@
               "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
               "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
               "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r199_collection_progress_and_identity_guard_shared_owner_editor_guidance",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
+            "lastEvidence": "InhaberwünschtmehrKollektioneninAbschnitt1und2.7datierteShopgruppen/2neuangelegteunbestätigte/1Notizbuchgruppezurückgestellt. 14ShopifyRessourcenwrites,0Social-/Produkt-/Profilwrites. WrongidentityreadTechHubführtezumStopundunterstütztemKontextwechsel; wartenaufLuxeStyleAutorisierung. ZweiLuna-Leseaufgaben/CJquellenbelege,24IDs/Historie/Tagesgrenze erhalten.",
+            "nextAllowedStep": "R199IDs/Statusgrenzen beachten,keineerneuteGestaltungsfreigabe verlangen. AktuelleBrowser-/APIzugänge unterscheidenechteReceipts,keineClaudeKenntnisnahmeohneBeleg."
+          },
+          "summary": "UnabhängigeQuellen-/QualitätsarbeitundPrüfbranchb45049agesichert;ShopAuthausR199bleibtoffen,keinfalscherShopread/writewiederholt. Core4/Historien/24IDs/KaufwatchendeundTagesgrenzeerhalten;ClaudeEmpfangunbekannt. EinfachesLesenmitLuna,Rootgegengeprüft.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+              "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+              "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+              "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+              "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+              "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+              "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
             }
           ]
         }
@@ -4425,18 +4576,38 @@
           "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
         },
         "currentSourceRequiredBeforeNextWrite": true
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+            "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+            "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+            "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+            "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+            "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+            "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r197_cj_oauth_bound_a_variant_unlim1080_rejected_no_job_rights_quality_open",
+      "state": "r200_same_master_18s_source_music_countercheck_rights_takes_open_no_render",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
-      "lastEvidence": "CJ-OAuthjetztverbunden, A-USB/CJSN139239101AZ exakt gebunden. EinSeedance2.5-18s/1080pEntwicklungsversuch trotz0quote wegenUnlimconfig abgewiesen, keinJob/Film/Upload.2544.22Credits unverändert;480pUnlimkeinPremiumersatz. Originaleinheit/Motiv/Rechte/nativeQuelle/FinalQA offen; gleicheMasterId undR194/R196Storyboard beibehalten.",
-      "nextAllowedStep": "Hochwertigen echten ProduktTake/Motiv-/Rechtebeleg sichern; keine Credit-Fallbacks oder SlideSerien, keine Holds pauschal freigeben.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "GleicheMasterId. KanonischeWAVhashgleich;CREDITS/Herstellskriptegeprüft,Rechte/Hörabnahmeoffen. CJAgreementliefertefremdeM5PROBETextidentitätauchdirekt,alsLizenzbelegverworfen. Produktseiten500kein404.18s/540FramesStoryboardfortgeführt;vollständigeexakteAUSBTakes/Rechtefehlen,keinRender/Upload.",
+      "nextAllowedStep": "GenauesAUSBOriginaltakesetmitUrheber-/Werbe-/Bearbeitungsrechtenbeschaffen,frischeShopProduktbindung,danachdenselbenMasterfertigschneidenundQA/Abnahme. KeineCredits-/480p-/Altclipfallbacks.",
       "blockers": [
         "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
         "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
@@ -4903,6 +5074,18 @@
           "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
           "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580",
           "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-MUSIK-20261114-R200.json",
+          "sha256": "407a71bad5db036f5c08099cd5436b5514a8024c4128ec280a16c55fcfb27c0d",
+          "gitBlobSha": "12c9e086c96dc82d08d591ee02da5e76c2e515f0",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-PRODUKTION-20261114-R200.md",
+          "sha256": "72e765f51518a176cb6d8974ed9ae4869c5f7a30224e08494807cd5bcef8e9c3",
+          "gitBlobSha": "375925dd97fc7eb99089a0b23025f74ca16a44bf",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5531,6 +5714,30 @@
               "path": "dropship/codex-handoff-20261018/HIGGSFIELD-KONFIGBLOCK-20261113-R197.json",
               "sha256": "b37df7c9c40c76a215253c3b7b07acb33baa849101ffbb0c775c6fd184584cf5",
               "gitBlobSha": "bf972a16e7732540471ef26914ab754aec803580"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r197_cj_oauth_bound_a_variant_unlim1080_rejected_no_job_rights_quality_open",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+            "lastEvidence": "CJ-OAuthjetztverbunden, A-USB/CJSN139239101AZ exakt gebunden. EinSeedance2.5-18s/1080pEntwicklungsversuch trotz0quote wegenUnlimconfig abgewiesen, keinJob/Film/Upload.2544.22Credits unverändert;480pUnlimkeinPremiumersatz. Originaleinheit/Motiv/Rechte/nativeQuelle/FinalQA offen; gleicheMasterId undR194/R196Storyboard beibehalten.",
+            "nextAllowedStep": "Hochwertigen echten ProduktTake/Motiv-/Rechtebeleg sichern; keine Credit-Fallbacks oder SlideSerien, keine Holds pauschal freigeben."
+          },
+          "summary": "GleicheMasterId. KanonischeWAVhashgleich;CREDITS/Herstellskriptegeprüft,Rechte/Hörabnahmeoffen. CJAgreementliefertefremdeM5PROBETextidentitätauchdirekt,alsLizenzbelegverworfen. Produktseiten500kein404.18s/540FramesStoryboardfortgeführt;vollständigeexakteAUSBTakes/Rechtefehlen,keinRender/Upload.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-MUSIK-20261114-R200.json",
+              "sha256": "407a71bad5db036f5c08099cd5436b5514a8024c4128ec280a16c55fcfb27c0d",
+              "gitBlobSha": "12c9e086c96dc82d08d591ee02da5e76c2e515f0"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-PRODUKTION-20261114-R200.md",
+              "sha256": "72e765f51518a176cb6d8974ed9ae4869c5f7a30224e08494807cd5bcef8e9c3",
+              "gitBlobSha": "375925dd97fc7eb99089a0b23025f74ca16a44bf"
             }
           ]
         }
@@ -6429,18 +6636,33 @@
           }
         ],
         "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-MUSIK-20261114-R200.json",
+            "sha256": "407a71bad5db036f5c08099cd5436b5514a8024c4128ec280a16c55fcfb27c0d",
+            "gitBlobSha": "12c9e086c96dc82d08d591ee02da5e76c2e515f0"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-PRODUKTION-20261114-R200.md",
+            "sha256": "72e765f51518a176cb6d8974ed9ae4869c5f7a30224e08494807cd5bcef8e9c3",
+            "gitBlobSha": "375925dd97fc7eb99089a0b23025f74ca16a44bf"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
       "id": "dns-four-approved-20261018",
       "priority": 80,
       "priorityKind": "SETZUNG",
-      "state": "r155_public_dns_still_missing_all_four_approved_records_writer_unknown",
+      "state": "r200_four_approved_records_publicly_missing_no_authenticated_writer",
       "title": "Vier bereits genehmigte Klaviyo-DNS-Ergänzungen",
-      "lastEvidenceDate": "2026-11-09",
-      "belegArt": "R155_TWO_PUBLIC_RESOLVER_READBACK_NO_WRITE",
-      "lastEvidence": "Google und Cloudflare liefern für send.luxestyle.ch, mtd1._domainkey und mtd2._domainkey jeweils NXDOMAIN; der genehmigte Root-TXT klaviyo-site-verification=XWqMAD fehlt in beiden vollständigen TXT-Antworten. Nameserver bleiben dns1.registrar-servers.com/dns2.registrar-servers.com; bestehende Zoho-SPF/DMARC/Verifikationen und zmail-DKIM öffentlich sichtbar. Die vier genehmigten Ergänzungen sind nicht umgesetzt. Authentifizierter Namecheap-Schreibzugriff bleibt unbekannt. Kein DNS-Write.",
-      "nextAllowedStep": "Sobald ein legitimer authentifizierter Namecheap-Zonenwriter verfügbar ist, exakt die vier bereits genehmigten Ergänzungen als additive Einzelrecords anlegen, bestehende Records erhalten und anschliessend autoritativ sowie über mindestens zwei öffentliche Resolver zurücklesen. Keine neue Freigabe für dieselben vier Records verlangen; keine Nameserver- oder Zonenersetzung.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "14NovGoogle+Cloudflare:3genehmigteCNAMEsNXDOMAIN,RootTXTVerifikationfehlt. ExaktvieradditiveRecordsvorbereitet,Freigabe18Octbleibtgültig.0DNSwrites;öffentlicheStichprobeistkeinevollständigeProviderzoneoderWriterbestätigung.",
+      "nextAllowedStep": "MitlegitimemDNSWriterfrischevollständigeZonegegenprüfen,exakt4fehlendeEinzelrecordsadditivsetzen,Provider/autoritative+2Resolverrücklesen. BestehendeRecords/Nameservererhalten,keineerneuteFreigabefürdieselben4Records.",
       "blockers": [
         "Kein authentifizierter DNS-Schreibzugang bestätigt.",
         "Alle vier genehmigten Records fehlen öffentlich weiterhin.",
@@ -6488,6 +6710,12 @@
           "gitBlobSha": "55fde76d1ae0fac6777fc76d32649591d3be4ddb",
           "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62",
           "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DNS-VIER-GENEHMIGT-20261114-R200.json",
+          "sha256": "659241366ccc1a3ad7978bb4d0ee97e1080747c1aa1e18ad92e05786669d71d0",
+          "gitBlobSha": "d1dca2c2267f7e1fced7c975817360857db786b7",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6535,6 +6763,25 @@
           "previousBlockers": [
             "Authentifizierter DNS-Schreibzugang fehlt"
           ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r155_public_dns_still_missing_all_four_approved_records_writer_unknown",
+            "lastEvidenceDate": "2026-11-09",
+            "belegArt": "R155_TWO_PUBLIC_RESOLVER_READBACK_NO_WRITE",
+            "lastEvidence": "Google und Cloudflare liefern für send.luxestyle.ch, mtd1._domainkey und mtd2._domainkey jeweils NXDOMAIN; der genehmigte Root-TXT klaviyo-site-verification=XWqMAD fehlt in beiden vollständigen TXT-Antworten. Nameserver bleiben dns1.registrar-servers.com/dns2.registrar-servers.com; bestehende Zoho-SPF/DMARC/Verifikationen und zmail-DKIM öffentlich sichtbar. Die vier genehmigten Ergänzungen sind nicht umgesetzt. Authentifizierter Namecheap-Schreibzugriff bleibt unbekannt. Kein DNS-Write.",
+            "nextAllowedStep": "Sobald ein legitimer authentifizierter Namecheap-Zonenwriter verfügbar ist, exakt die vier bereits genehmigten Ergänzungen als additive Einzelrecords anlegen, bestehende Records erhalten und anschliessend autoritativ sowie über mindestens zwei öffentliche Resolver zurücklesen. Keine neue Freigabe für dieselben vier Records verlangen; keine Nameserver- oder Zonenersetzung."
+          },
+          "summary": "14NovGoogle+Cloudflare:3genehmigteCNAMEsNXDOMAIN,RootTXTVerifikationfehlt. ExaktvieradditiveRecordsvorbereitet,Freigabe18Octbleibtgültig.0DNSwrites;öffentlicheStichprobeistkeinevollständigeProviderzoneoderWriterbestätigung.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/DNS-VIER-GENEHMIGT-20261114-R200.json",
+              "sha256": "659241366ccc1a3ad7978bb4d0ee97e1080747c1aa1e18ad92e05786669d71d0",
+              "gitBlobSha": "d1dca2c2267f7e1fced7c975817360857db786b7"
+            }
+          ]
         }
       ],
       "publicRecordCheckR64": {
@@ -6562,6 +6809,16 @@
           "dnsWrites": 0,
           "approvalStillValidForExactlyFourRecords": true
         }
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/DNS-VIER-GENEHMIGT-20261114-R200.json",
+            "sha256": "659241366ccc1a3ad7978bb4d0ee97e1080747c1aa1e18ad92e05786669d71d0",
+            "gitBlobSha": "d1dca2c2267f7e1fced7c975817360857db786b7"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
@@ -6769,12 +7026,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r197_ten_overlay_sample_four_sources_read_exact_offer_source_unknown_timeout_no_write",
+      "state": "r200_exact_two_disapprovals_current_source_resource_unverified_no_feed_write",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
-      "lastEvidence": "Merchant5797470070 aktuell:10DisapprovedbildOverlayzeilen als begrenzteProbe,4Datenquellen mit2ähnlichenShopifyAPIprimaryFeeds+Autofeed. Exakte aktuelle2Offerabfrage timeout, source/imageattributes unbekannt. WindsorWriter verfügbar, aber kein sicherer gezielterBildfix ohneQuelle/Rechtebild; keinFeedwrite/GTINschluss.",
-      "nextAllowedStep": "Exakte Produktresource/Primärquelle und sauberes rechtlich nutzbares Variantenbild für die2NailOffers beschaffen, dann konkretenDiff und Rücklesen.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "Merchant5797470070LuxeStyleCHfrischverifiziert. Genau2zuvorausgewählteAngebotefrischgelesen: beideimage_unwanted_overlaysCH/LIShopping/FreeListings/Display. KeinePagination/Quoten,keineGTINfalseAbleitung. RowIDsnochkeinebestätigtenvollenProduktressourcen/Primärquellen;0Feedwrites.",
+      "nextAllowedStep": "ExaktevolleProduktressource/PrimärquelleundsaubereRechte-/Variantenbildbindungbelegen;nachkorrektemShopidentityGategezieltenDiffprüfen. KeinegeratenenSupplementalfeeds/AusschlussentfernungoderMassenänderung.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -7042,6 +7299,12 @@
           "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
           "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16",
           "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEI-ANGEBOTE-20261114-R200.json",
+          "sha256": "c06c4f24ed97fba55d4885f1e3d16b72b3e87c8bc7cb3b7e3223dd46be5ba6ee",
+          "gitBlobSha": "e744b74add08bf5be232fd33b3e21015b73a7d31",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -7439,6 +7702,25 @@
               "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENPRUEFUNG-20261113-R197.json",
               "sha256": "e0ee9bcc5eb2bf5cc230afaab061c2f4e10cb9dbfb083ae5031ef10f30e21e4b",
               "gitBlobSha": "59950e42b9baad5c1f6d41f4c2633324a602ef16"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r197_ten_overlay_sample_four_sources_read_exact_offer_source_unknown_timeout_no_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+            "lastEvidence": "Merchant5797470070 aktuell:10DisapprovedbildOverlayzeilen als begrenzteProbe,4Datenquellen mit2ähnlichenShopifyAPIprimaryFeeds+Autofeed. Exakte aktuelle2Offerabfrage timeout, source/imageattributes unbekannt. WindsorWriter verfügbar, aber kein sicherer gezielterBildfix ohneQuelle/Rechtebild; keinFeedwrite/GTINschluss.",
+            "nextAllowedStep": "Exakte Produktresource/Primärquelle und sauberes rechtlich nutzbares Variantenbild für die2NailOffers beschaffen, dann konkretenDiff und Rücklesen."
+          },
+          "summary": "Merchant5797470070LuxeStyleCHfrischverifiziert. Genau2zuvorausgewählteAngebotefrischgelesen: beideimage_unwanted_overlaysCH/LIShopping/FreeListings/Display. KeinePagination/Quoten,keineGTINfalseAbleitung. RowIDsnochkeinebestätigtenvollenProduktressourcen/Primärquellen;0Feedwrites.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEI-ANGEBOTE-20261114-R200.json",
+              "sha256": "c06c4f24ed97fba55d4885f1e3d16b72b3e87c8bc7cb3b7e3223dd46be5ba6ee",
+              "gitBlobSha": "e744b74add08bf5be232fd33b3e21015b73a7d31"
             }
           ]
         }
@@ -8190,6 +8472,16 @@
           }
         ],
         "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEI-ANGEBOTE-20261114-R200.json",
+            "sha256": "c06c4f24ed97fba55d4885f1e3d16b72b3e87c8bc7cb3b7e3223dd46be5ba6ee",
+            "gitBlobSha": "e744b74add08bf5be232fd33b3e21015b73a7d31"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
@@ -11613,12 +11905,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r197_seo_live_patch_observed_mug_public_corrected_three_prefix_reads_bounded",
+      "state": "r200_homepage_head_countercheck_neutral_meta_draft_no_shop_write",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
-      "lastEvidence": "SEOmetafilebereitsliveidentischR158/R159; kein eigenerPublish. Drei öffentlicheSeiten nur400kPräfixe, H1darausunbekannt; keinNull/Noindexschluss. Becher nachengenTextwrites öffentlichTitle/H1/Meta/Body/Selfcanonical bestätigt.",
-      "nextAllowedStep": "ErreichbareSuchseiten undkonkreteMaterial-/SEOkonflikte eng weiterprüfen; Präfixmessungen nichtalsVollscan berichten.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "ExakteStartseiteHTTP200/einH1/selfcanonical;robotsnonegehörtShopLoginhead,nichtHaupthead. VollständigzurückgegebenesHTMLgehasht. AllgemeineLieferzeitaussageimaktuellenMetaohneaktuellenNachweishier;neutralerengerEntwurfbereit.0Shop-/Theme-/SEOwrites,keineRankingbehauptung.",
+      "nextAllowedStep": "NachkorrekterShopAutorisierung tatsächlicheMetaQuellfeldbindung/frischenVorherwertprüfen,engenneutralenDiffumsetzenundHauptheadrücklesen;keinepauschalenLieferzeiten/Gratisversandänderungen.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -11980,6 +12272,12 @@
           "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
           "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
           "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+          "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+          "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -12337,6 +12635,25 @@
               "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
               "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
               "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r197_seo_live_patch_observed_mug_public_corrected_three_prefix_reads_bounded",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+            "lastEvidence": "SEOmetafilebereitsliveidentischR158/R159; kein eigenerPublish. Drei öffentlicheSeiten nur400kPräfixe, H1darausunbekannt; keinNull/Noindexschluss. Becher nachengenTextwrites öffentlichTitle/H1/Meta/Body/Selfcanonical bestätigt.",
+            "nextAllowedStep": "ErreichbareSuchseiten undkonkreteMaterial-/SEOkonflikte eng weiterprüfen; Präfixmessungen nichtalsVollscan berichten."
+          },
+          "summary": "ExakteStartseiteHTTP200/einH1/selfcanonical;robotsnonegehörtShopLoginhead,nichtHaupthead. VollständigzurückgegebenesHTMLgehasht. AllgemeineLieferzeitaussageimaktuellenMetaohneaktuellenNachweishier;neutralerengerEntwurfbereit.0Shop-/Theme-/SEOwrites,keineRankingbehauptung.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+              "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+              "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8"
             }
           ]
         }
@@ -12893,6 +13210,16 @@
           }
         ],
         "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+            "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+            "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
@@ -13774,12 +14101,12 @@
       "id": "checkout-email3-quality-20261103",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r175_vse76a_draft_current_report_row_unknown_existing_content_preserved_no_write",
+      "state": "r200_xegbtb_live_small_report_vse76a_draft_preserved_no_write",
       "title": "Checkout-Recovery-Mail ohne Platzhalter oder unbelegten Rabattclaim",
-      "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_KLAVIYO_VSE76A_CURRENT_DRAFT_STATE_AND_MISSING_REPORT_ROW_UNKNOWN_NO_WRITE",
-      "lastEvidence": "Placed Order W7XTVD frisch entdeckt. Vse76a ist DRAFT; im einmaligen30-Tage-Flowreport keine Vse76a-Zeile, daher Leistung unknown und nicht null. XEGbTB ist separat LIVE mit Checkout-Started XhnJPv und Placed-Order-Ausschluss W7XTVD; seine Reportleistung war nicht geliefert und bleibt unknown. R173-neutralisierte Vse76a-Mail2/-Mail3-Inhalte wurden nicht erneut geschrieben.0 Aktivierung, Testsendung oder Kundensendung.",
-      "nextAllowedStep": "Vse76a Mail2/Mail3 nicht erneut schreiben und Flow/Aktionen DRAFT lassen. Fehlende Reportzeile als unknown erhalten. Keine Aktivierung, Test- oder Kundensendung; CHF-Shopwerte und USD-Klaviyo nie summieren.",
+      "lastEvidenceDate": "2026-11-14",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "FrischeW7XTVDDiscovery+ein07–13NovFlowreport: XEGbTBlive,2zugestellteNachrichtenempfängerzählungen/1Open/0Click/0zugeordneteConversion/USD0. Vse76a/VbLQj6/RnTvsYdraft;fehlendeReportzeilenunknown. KeinShopumsatz-/Syncschluss,keineFlowAktivierungoderSendung.",
+      "nextAllowedStep": "HeutigeReportswiederverwenden,Vse76aDraftinhalte/R173Korrekturenerhalten;keineAktivierungoderKundensendung. CHFShop/USDKlaviyonichtsummieren.",
       "blockers": [
         "Vse76a-Leistung im aktuellen Tagesreport bleibt unbekannt; die Inhaltskorrektur beweist keine Conversion oder Recovery.",
         "Tatsächlicher Welcome-Capture-Weg bleibt unbekannt; Formular-API ohne sichtbare Datensätze ist kein Negativbeweis.",
@@ -13874,6 +14201,12 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+          "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
+          "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14113,6 +14446,25 @@
             "R173: Klaviyo normalisierte Mail3 reply_to_email von null auf info@luxestyle.ch; dokumentierte Plattformnormalisierung, kein Reparaturwrite."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r175_vse76a_draft_current_report_row_unknown_existing_content_preserved_no_write",
+            "lastEvidenceDate": "2026-11-11",
+            "belegArt": "R175_KLAVIYO_VSE76A_CURRENT_DRAFT_STATE_AND_MISSING_REPORT_ROW_UNKNOWN_NO_WRITE",
+            "lastEvidence": "Placed Order W7XTVD frisch entdeckt. Vse76a ist DRAFT; im einmaligen30-Tage-Flowreport keine Vse76a-Zeile, daher Leistung unknown und nicht null. XEGbTB ist separat LIVE mit Checkout-Started XhnJPv und Placed-Order-Ausschluss W7XTVD; seine Reportleistung war nicht geliefert und bleibt unknown. R173-neutralisierte Vse76a-Mail2/-Mail3-Inhalte wurden nicht erneut geschrieben.0 Aktivierung, Testsendung oder Kundensendung.",
+            "nextAllowedStep": "Vse76a Mail2/Mail3 nicht erneut schreiben und Flow/Aktionen DRAFT lassen. Fehlende Reportzeile als unknown erhalten. Keine Aktivierung, Test- oder Kundensendung; CHF-Shopwerte und USD-Klaviyo nie summieren."
+          },
+          "summary": "FrischeW7XTVDDiscovery+ein07–13NovFlowreport: XEGbTBlive,2zugestellteNachrichtenempfängerzählungen/1Open/0Click/0zugeordneteConversion/USD0. Vse76a/VbLQj6/RnTvsYdraft;fehlendeReportzeilenunknown. KeinShopumsatz-/Syncschluss,keineFlowAktivierungoderSendung.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+              "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
+              "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3"
+            }
+          ]
         }
       ],
       "originalRecheckR67": {
@@ -14275,18 +14627,28 @@
             "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+            "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
+            "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r197_eleven_holds_fresh_inactive_limited_dedup_no_delete",
+      "state": "r200_eleven_holds_review_branch_not_main_48object_plan_read_no_write",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
-      "lastEvidence": "Alle11bekanntenHolds im frischen13.–21.11.QueueRead drafttrue/autopublishfalse.61Objekte/76Zustände;39aktivePending/49Zustände,9FremdPUBLISHEDvom13.11. AktuelleGapsThreads15/YT15–21. DreiTikToktexte wiederholt, Medientypen/Hashesabweichend; visuelleMastergleichheit unbekannt, keinDelete/Write. R196Haltelistenpatch weiter nurEntwurf.",
-      "nextAllowedStep": "Holds erhalten; qualitäts-/rechtegeprüfte neueMasterdatei an bestehendeUUIDs binden und proKanalzielgerichtetprüfen. Doppelposts erst nach eindeutiger Medien-/Historienprüfung löschen.",
+      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+      "lastEvidence": "48Planungsobjekte14–21Nov:39aktiv/49Kanalplatzierungen,9draft. YouTube15–21/Threads15offen. KeineexaktenText-/Medienlisten-Duplikateunter39aktivenObjekten,Historien-/Mastergleichheitnichtvollständig.11HoldUUIDs aufPrüfbranchb45049aergänzt,rückgelesen;128+11Checksgrün,nichtmain/produktiverPublisher.0Metricoolwrites.",
+      "nextAllowedStep": "BestehendeHolds/UUIDserhalten. PrüfbranchnurnachsichererDeploy-/Scopeprüfungübernehmen. KeineungeprüftenWorkflowstarts/Neuposts;neueMasterdateinurnachIdentität,Rechten,Qualität,Produktgate,HistorieundLedger.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -14522,6 +14884,24 @@
           "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
           "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130",
           "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNG-20261114-R200.json",
+          "sha256": "1cbe1db8d290dd7abedcff623f66e3f0e51a0ebce06efb153e1b74adcfe0e868",
+          "gitBlobSha": "6aa1cb7e62dec138e4069ee0167a2085a05711a1",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+          "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+          "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-20261114-R200.patch",
+          "sha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+          "gitBlobSha": "1f71b1f9bc4f830c9464abe92be570786c040243",
+          "readAt": "2026-11-14T01:06:47.675525+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14937,6 +15317,35 @@
               "path": "dropship/codex-handoff-20261018/METRICOOL-DUPLIKATPRUEFUNG-20261113-R197.json",
               "sha256": "62c41ca80b73273333e9a5ea490986afea3585404051220c318fdea7d0fae959",
               "gitBlobSha": "39c22a097b9f5017e3abbae023996553fdaf2130"
+            }
+          ]
+        },
+        {
+          "revision": 200,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r197_eleven_holds_fresh_inactive_limited_dedup_no_delete",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+            "lastEvidence": "Alle11bekanntenHolds im frischen13.–21.11.QueueRead drafttrue/autopublishfalse.61Objekte/76Zustände;39aktivePending/49Zustände,9FremdPUBLISHEDvom13.11. AktuelleGapsThreads15/YT15–21. DreiTikToktexte wiederholt, Medientypen/Hashesabweichend; visuelleMastergleichheit unbekannt, keinDelete/Write. R196Haltelistenpatch weiter nurEntwurf.",
+            "nextAllowedStep": "Holds erhalten; qualitäts-/rechtegeprüfte neueMasterdatei an bestehendeUUIDs binden und proKanalzielgerichtetprüfen. Doppelposts erst nach eindeutiger Medien-/Historienprüfung löschen."
+          },
+          "summary": "48Planungsobjekte14–21Nov:39aktiv/49Kanalplatzierungen,9draft. YouTube15–21/Threads15offen. KeineexaktenText-/Medienlisten-Duplikateunter39aktivenObjekten,Historien-/Mastergleichheitnichtvollständig.11HoldUUIDs aufPrüfbranchb45049aergänzt,rückgelesen;128+11Checksgrün,nichtmain/produktiverPublisher.0Metricoolwrites.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNG-20261114-R200.json",
+              "sha256": "1cbe1db8d290dd7abedcff623f66e3f0e51a0ebce06efb153e1b74adcfe0e868",
+              "gitBlobSha": "6aa1cb7e62dec138e4069ee0167a2085a05711a1"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+              "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+              "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-20261114-R200.patch",
+              "sha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+              "gitBlobSha": "1f71b1f9bc4f830c9464abe92be570786c040243"
             }
           ]
         }
@@ -16124,6 +16533,26 @@
           }
         ],
         "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
+      },
+      "run200": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNG-20261114-R200.json",
+            "sha256": "1cbe1db8d290dd7abedcff623f66e3f0e51a0ebce06efb153e1b74adcfe0e868",
+            "gitBlobSha": "6aa1cb7e62dec138e4069ee0167a2085a05711a1"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+            "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+            "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-20261114-R200.patch",
+            "sha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+            "gitBlobSha": "1f71b1f9bc4f830c9464abe92be570786c040243"
+          }
+        ],
+        "currentIdentityBeforeDependentWriteRequired": true
       }
     },
     {
@@ -18515,6 +18944,36 @@
           "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.md",
           "sha256": "601bda29089df6685f121337776942ffdd520e4606283ab76c1eab48ad9d7dd9",
           "gitBlobSha": "296f32bb72621383162ad723adb72472b326686c"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 200,
+      "at": "2026-11-14T01:06:47.675525+00:00",
+      "actor": "codex",
+      "summary": "UnabhängigeWeiterarbeit:11bekannteHoldsaufseparatemPrüfbranchgesichert/nichtmain;48Planungsobjekte/konkreteGaps;einmaligeTagesreportsmitRootgegenrechnung;Hoodie/Notizbuch/SEO/Merchant/DNS/MasterQuellenfortschritt.0Plattformwrites/Render/Kundenansprachen;24IDs/Historien/Kaufwatchende/08-14-19erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+          "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+          "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+          "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+          "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+          "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
+          "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+          "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+          "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
         }
       ],
       "taskCount": 24,
@@ -42416,6 +42875,106 @@
     "purchaseWatchEnded": true,
     "authorizationState": "waiting_correct_luxestyle_after_wrong_identity_read",
     "noOtherShopDataWrites": true,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run200": {
+    "recordedAtUTC": "2026-11-14T01:06:47.675525+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "reports": {
+        "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+        "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
+        "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3"
+      },
+      "planning": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNG-20261114-R200.json",
+        "sha256": "1cbe1db8d290dd7abedcff623f66e3f0e51a0ebce06efb153e1b74adcfe0e868",
+        "gitBlobSha": "6aa1cb7e62dec138e4069ee0167a2085a05711a1"
+      },
+      "posts": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261114-R200.json",
+        "sha256": "900034e4929b6eeb09e2a9ad09ee610b1eefd9cbb2fffd8b59f06b6f6a28361d",
+        "gitBlobSha": "24283b29e4a044cbccfa135a9daccd5387f922e1"
+      },
+      "guard": {
+        "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+        "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+        "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2"
+      },
+      "patch": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-HALTEN-20261114-R200.patch",
+        "sha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+        "gitBlobSha": "1f71b1f9bc4f830c9464abe92be570786c040243"
+      },
+      "hoodie": {
+        "path": "dropship/codex-handoff-20261018/KAPUZENPULLOVER-QUELLEN-ENTWURF-20261114-R200.json",
+        "sha256": "9caffbf8dee098a360f198fb87ada97eff5c316fcdc9a4b341284734123e6b83",
+        "gitBlobSha": "97f5ed1f324bbbbfc66a1d65662c30b8434b543f"
+      },
+      "notebook": {
+        "path": "dropship/codex-handoff-20261018/SCHREIBEN-GALERIE-20261114-R200.json",
+        "sha256": "a5f1f4ac38c13bc908345c69f47ea3b789d54b6aa4e8a54dde48c262ac12fdb0",
+        "gitBlobSha": "d849674bdb88f890bf9bd5f56490d2442fb8c4b2"
+      },
+      "photoBrief": {
+        "path": "dropship/codex-handoff-20261018/SCHREIBEN-FOTO-BRIEF-20261114-R200.md",
+        "sha256": "e58b680396a9eed698fed8f9a5e46b34f299c22f36a45897df83012ecb220b71",
+        "gitBlobSha": "d0495fd86f00765136083ecd2f85f206a2421275"
+      },
+      "seo": {
+        "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+        "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+        "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8"
+      },
+      "merchant": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-ZWEI-ANGEBOTE-20261114-R200.json",
+        "sha256": "c06c4f24ed97fba55d4885f1e3d16b72b3e87c8bc7cb3b7e3223dd46be5ba6ee",
+        "gitBlobSha": "e744b74add08bf5be232fd33b3e21015b73a7d31"
+      },
+      "dns": {
+        "path": "dropship/codex-handoff-20261018/DNS-VIER-GENEHMIGT-20261114-R200.json",
+        "sha256": "659241366ccc1a3ad7978bb4d0ee97e1080747c1aa1e18ad92e05786669d71d0",
+        "gitBlobSha": "d1dca2c2267f7e1fced7c975817360857db786b7"
+      },
+      "masterEvidence": {
+        "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-MUSIK-20261114-R200.json",
+        "sha256": "407a71bad5db036f5c08099cd5436b5514a8024c4128ec280a16c55fcfb27c0d",
+        "gitBlobSha": "12c9e086c96dc82d08d591ee02da5e76c2e515f0"
+      },
+      "masterBrief": {
+        "path": "dropship/codex-handoff-20261018/MASTER-PRODUKTION-20261114-R200.md",
+        "sha256": "72e765f51518a176cb6d8974ed9ae4869c5f7a30224e08494807cd5bcef8e9c3",
+        "gitBlobSha": "375925dd97fc7eb99089a0b23025f74ca16a44bf"
+      },
+      "storage": {
+        "path": "dropship/codex-handoff-20261018/ARBEITSUMGEBUNG-20261114-R200.json",
+        "sha256": "28ecd8fd11cab788af7ed65e64bc263c185cece7eef028cdb25df9c5894447b4",
+        "gitBlobSha": "820dc7bd439a9cebc44d9eb41ee9b24a589bbadf"
+      },
+      "packet": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+        "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+        "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076"
+      },
+      "overview": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+        "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+        "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e"
+      }
+    },
+    "platformWrites": {
+      "shopify": 0,
+      "metricool": 0,
+      "klaviyo": 0,
+      "merchant": 0,
+      "dns": 0,
+      "newVideoRenders": 0,
+      "customerMessages": 0
+    },
+    "reviewBranchCommit": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+    "mainMerged": false,
+    "reportsOnceToday": true,
+    "shopAuthorization": "waiting_correct_luxestyle",
     "claudeReceipt": "unknown_no_receipt"
   }
 }
