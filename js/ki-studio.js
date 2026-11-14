@@ -74,8 +74,14 @@
     Promise.race([fetch('/api/pro-validate', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ license_key: k }), signal: controller.signal
-    }).then(function (r) { return r.json(); }), deadline]).then(function (d) {
-      if (d && d.valid) {
+    }).then(function (r) {
+      if (!r.ok) throw new Error('Lizenzprüfung derzeit nicht verfügbar');
+      return r.json();
+    }), deadline]).then(function (d) {
+      if (!d || typeof d !== 'object' || Array.isArray(d) || typeof d.valid !== 'boolean') {
+        throw new Error('Unvollständige Lizenzantwort');
+      }
+      if (d.valid === true) {
         key = k; try { localStorage.setItem(KEY, k); } catch (e) {}
         setUnlocked(true);
         applyTier(d.tier);
