@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 214,
-  "updatedAt": "2026-11-14T18:15:43.242952+00:00",
+  "revision": 215,
+  "updatedAt": "2026-11-14T18:20:39.154619+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4150,6 +4150,18 @@
           "sha256": "88db67cc6b534a6766a4ca4bd1dddbc172fa4d44fe3751077f8e070658cb8737",
           "gitBlobSha": "c41930dfb6b0760490e49968e8707de0496c7ecc",
           "readAt": "2026-11-14T18:15:43.242952+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5113,6 +5125,23 @@
               "gitBlobSha": "c41930dfb6b0760490e49968e8707de0496c7ecc"
             }
           ]
+        },
+        {
+          "revision": 215,
+          "dateZurich": "2026-11-14",
+          "summary": "Rein redaktionelle Schlusspräzisierung innerhalb R214: Google-Angebotsdaten sind R212-datiert, aktueller R214-Googlezustand unbekannt; aktuelle Shop-/Redirect-Gegenprobe davon getrennt. Keine neue Sachumsetzung oder Plattformabfrage.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -6047,8 +6076,8 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-            "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-            "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+            "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
           },
           {
             "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-19H-R214.json",
@@ -6057,8 +6086,8 @@
           },
           {
             "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
-            "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
-            "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc"
+            "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+            "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
           },
           {
             "path": "dropship/codex-handoff-20261018/PRODUKT-CJ-20261114-19H-R214.json",
@@ -6667,6 +6696,18 @@
           "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
           "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
           "readAt": "2026-11-14T18:15:43.242952+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -7479,6 +7520,23 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
               "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            }
+          ]
+        },
+        {
+          "revision": 215,
+          "dateZurich": "2026-11-14",
+          "summary": "Rein redaktionelle Schlusspräzisierung innerhalb R214: Google-Angebotsdaten sind R212-datiert, aktueller R214-Googlezustand unbekannt; aktuelle Shop-/Redirect-Gegenprobe davon getrennt. Keine neue Sachumsetzung oder Plattformabfrage.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
         }
@@ -8503,8 +8561,8 @@
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-            "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-            "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+            "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
           }
         ],
         "businessWrites": 0,
@@ -8889,8 +8947,8 @@
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
       "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Produkt15421165404545 frisch DRAFT/onlineStoreUrl null; exakte Variante55775110463873 CHF44.90. Native Weiterleitung2042634568071 exakt auf Produktpfad→Damenmode, öffentliche Rootgegenprobe301 mit Variantenparameter. Nicht allein fehlender Preis, sondern veraltete Einzelzuordnung zu nicht kaufbarer Produktseite. R212 GoogleSource10678939025/price null datiert erhalten; keine neue Googleabfrage oder Behebung.",
-      "nextAllowedStep": "Nur altes Angebot15421165404545_cjtz292404406fu in bestehenderQuelle10678939025 als konkreten Freigabeumfang bereinigen/erneute Aufnahme verhindern; legitimen unterstützten Einzelartikel-Editor und frischen Vorherzustand nachweisen. Produkt DRAFT, CHF44.90, Redirect und ganze Quelle erhalten. Nach Write gezielte Rücklesung; keine pauschale Aktivierung oder GTIN-Annahme.",
+      "lastEvidence": "Produkt15421165404545 frisch DRAFT/onlineStoreUrl null; exakte Variante55775110463873 CHF44.90. Native Weiterleitung2042634568071 exakt auf Produktpfad→Damenmode, öffentliche Rootgegenprobe301 mit Variantenparameter. Nicht allein fehlender Preis, sondern veraltete Einzelzuordnung zu nicht kaufbarer Produktseite. R212 GoogleSource10678939025/price null datiert erhalten; keine neue Googleabfrage oder Behebung. Schlussprüfung präzisiert: Google-Angebotszustand nur R212, heutiger R214-Zustand unbekannt; frischer Shopify-/URL-Befund ist davon getrennt.",
+      "nextAllowedStep": "Genau das in R212 beobachtete Angebot15421165404545_cjtz292404406fu/Quelle10678939025 frisch lesen. Nur bei fortbestehender Fehlzuordnung den vorbereiteten Einzelbereinigungsumfang nach Freigabe und nachgewiesener Editormethode anwenden. ProduktDRAFT/44.90/Redirect und ganzeQuelle erhalten; gezielte Nachkontrolle, kein Blindretry.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -9314,6 +9372,18 @@
           "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
           "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
           "readAt": "2026-11-14T18:15:43.242952+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9953,6 +10023,23 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
               "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            }
+          ]
+        },
+        {
+          "revision": 215,
+          "dateZurich": "2026-11-14",
+          "summary": "Rein redaktionelle Schlusspräzisierung innerhalb R214: Google-Angebotsdaten sind R212-datiert, aktueller R214-Googlezustand unbekannt; aktuelle Shop-/Redirect-Gegenprobe davon getrennt. Keine neue Sachumsetzung oder Plattformabfrage.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
         }
@@ -10876,13 +10963,13 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
-            "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
-            "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc"
+            "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+            "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-            "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-            "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+            "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
           }
         ],
         "businessWrites": 0,
@@ -14943,6 +15030,18 @@
           "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
           "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
           "readAt": "2026-11-14T18:15:43.242952+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15507,6 +15606,23 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
               "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            }
+          ]
+        },
+        {
+          "revision": 215,
+          "dateZurich": "2026-11-14",
+          "summary": "Rein redaktionelle Schlusspräzisierung innerhalb R214: Google-Angebotsdaten sind R212-datiert, aktueller R214-Googlezustand unbekannt; aktuelle Shop-/Redirect-Gegenprobe davon getrennt. Keine neue Sachumsetzung oder Plattformabfrage.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
         }
@@ -16200,13 +16316,13 @@
         "sources": [
           {
             "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
-            "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
-            "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc"
+            "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+            "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-            "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-            "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+            "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
           }
         ],
         "businessWrites": 0,
@@ -17996,6 +18112,18 @@
           "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
           "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
           "readAt": "2026-11-14T18:15:43.242952+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+          "readAt": "2026-11-14T18:20:39.154619+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -18609,6 +18737,23 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
               "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            }
+          ]
+        },
+        {
+          "revision": 215,
+          "dateZurich": "2026-11-14",
+          "summary": "Rein redaktionelle Schlusspräzisierung innerhalb R214: Google-Angebotsdaten sind R212-datiert, aktueller R214-Googlezustand unbekannt; aktuelle Shop-/Redirect-Gegenprobe davon getrennt. Keine neue Sachumsetzung oder Plattformabfrage.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
         }
@@ -19933,8 +20078,8 @@
           },
           {
             "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-            "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-            "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+            "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+            "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
           }
         ],
         "businessWrites": 0,
@@ -22810,6 +22955,26 @@
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
           "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
           "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 215,
+      "at": "2026-11-14T18:20:39.154619+00:00",
+      "actor": "codex",
+      "summary": "R214-Schlussprüfung präzisiert nur Quellenalter: R212-Googleangebot nicht als heute erneut bestätigte Veraltung bezeichnen. Vor Einzelbereinigung frischen Google-Vorherzustand verlangen, aktuelle Shopify-DRAFT-/Redirect-Belege getrennt erhalten. Keine zusätzliche Ausführung/Serviceänderung.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+          "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+          "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+          "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+          "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
         }
       ],
       "taskCount": 24,
@@ -47550,8 +47715,8 @@
       },
       "sales": {
         "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
-        "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
-        "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc"
+        "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+        "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a"
       },
       "storyboard": {
         "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261114-19H-R214.md",
@@ -47565,8 +47730,8 @@
       },
       "report": {
         "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
-        "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
-        "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af"
+        "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+        "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
       }
     },
     "planningObjects": 48,
@@ -47587,6 +47752,14 @@
     "freshCjAVariantAndVideoMetadataBound": true,
     "freshMerchantRedirectId": "2042634568071",
     "newAutomationOrFrequencyChange": false,
-    "newClaudeReceipt": "unknown_no_receipt"
+    "newClaudeReceipt": "unknown_no_receipt",
+    "sourceAgeClarification": {
+      "memoryRevision": 215,
+      "recordedAtUTC": "2026-11-14T18:20:39.154619+00:00",
+      "googleOfferState": "R212_only_current_R214_unknown",
+      "freshShopRedirectAndDraft": true,
+      "newGoogleQuery": false,
+      "newBusinessWrite": false
+    }
   }
 }

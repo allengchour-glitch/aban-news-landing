@@ -239,8 +239,8 @@
       "shopifyVariantId": "55775110463873",
       "redirectId": "2042634568071"
     },
-    "problem": "Ein historisches automatisch gefundenes Merchant-Angebot verweist auf eine Produktadresse, die wegen DRAFT keine Shopproduktseite besitzt und über einen exakten Redirect auf eine Kategorie führt. Google meldete in R212 keinen Preis.",
-    "proposedSingleAction": "Nur dieses veraltete Merchant-Angebot in seiner bestehenden automatischen Quelle entfernen oder dort von erneuter Aufnahme ausschliessen; unterstützten legitimen Einzelartikel-Editor vorher nachweisen. Keine ganze Quelle ausschalten.",
+    "problem": "Das in R212 gelesene automatisch gefundene Merchant-Angebot verweist auf eine Produktadresse, die heute frisch bestätigt zu einem DRAFT-Produkt und über einen exakten Redirect auf eine Kategorie führt. Google meldete in R212 keinen Preis; aktueller Google-Angebotsstatus in R214 nicht erneut gelesen und unbekannt.",
+    "proposedSingleAction": "Falls genau dieses Angebot aktuell noch in Quelle10678939025 besteht und weiterhin auf die nicht kaufbare Produktseite/Kategorie verweist: nur dieses Angebot in der bestehenden automatischen Quelle entfernen oder von erneuter Aufnahme ausschliessen. Unterstützten legitimen Einzelartikel-Editor vorher nachweisen; keine ganze Quelle ausschalten.",
     "before": {
       "shopStatus": "DRAFT",
       "shopOnlineStoreUrl": null,
@@ -251,7 +251,7 @@
       "merchantPriceAtR212": null
     },
     "proposedDiff": {
-      "merchantOffer": "derzeit historisch vorhanden -> einzelnes veraltetes Angebot nicht weiter ausspielen/erneut aufnehmen",
+      "merchantOffer": "R212: Angebot beobachtet; heutiger Googlezustand unbekannt -> erst frisch bestätigen, dann nur bei weiterhin gleicher Fehlzuordnung dieses Einzelangebot bereinigen",
       "shopStatus": "DRAFT -> DRAFT",
       "shopVariantPriceCHF": "44.90 -> 44.90",
       "redirectTarget": "/collections/damen-mode -> /collections/damen-mode",
@@ -264,13 +264,22 @@
       "Genau dieses Angebot danach frisch lesen; unklarer Write = unknown, kein Blindretry"
     ],
     "acceptance": [
-      "Kein Werbe-/Free-Listing-Ziel für dieses veraltete DRAFT-Angebot mehr bestätigt",
+      "Nach frischer Bestätigung der fortbestehenden Fehlzuordnung: für genau dieses Angebot keine weitere ungeeignete Ausspielung bzw. Wiederaufnahme bestätigt",
       "Keine DRAFT-Aktivierung, Preisänderung, Redirectlöschung oder pauschale Quellen-/Länderänderung",
       "Wiederaufnahme durch dieselbe Quelle gezielt im späteren bestehenden Lauf prüfen; keine Zusatzautomation"
     ],
     "currentWriteAccessAndMethod": "unknown_not_executed",
     "writes": 0,
-    "notAClaimOfZeroMerchantErrors": true
+    "notAClaimOfZeroMerchantErrors": true,
+    "sourceAgeClarification": {
+      "r212GoogleEvidenceRetained": true,
+      "freshInR214": [
+        "Shopify DRAFT/price/redirect object",
+        "public exact URL301"
+      ],
+      "r214GoogleOfferStatus": "unknown_not_requeried",
+      "noCurrentGoogleStalenessClaim": true
+    }
   },
   "googleR212Source": {
     "merchant": {
@@ -388,5 +397,6 @@
     ]
   },
   "noCurrentGoogleReadInR214": true,
-  "businessWrites": 0
+  "businessWrites": 0,
+  "sourceAgeClarifiedAtUTC": "2026-11-14T18:20:39.154619+00:00"
 }
