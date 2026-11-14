@@ -2,7 +2,7 @@
 
 ## Codex: 26-Vorlagen-Angebot mit ehrlichem Anfrageweg ·14.11.2026
 
-Vorlagen-Landingpage verspricht ohne Checkout keinen Sofort-Download/Lemon-Zahlung mehr. Mail-Anfrage funktioniert statisch auch ohne JS; FAQ und Suchdaten identisch. Acht lokale Browsergegenproben grün. Anders beschriebenes40er-Shopangebot nicht ungeprüft verknüpft. Eigener Checkout/Lieferweg noch offen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR; finanzielle Wirkung nicht gemessen.
+Produktionsgegenprobe zeigte Cloudflare-Mailverschleierung; Folgekorrektur mit bestehendem email_off-Kommentar, endgültige Bereitstellung im Folge-PR prüfen. Vorlagen-Landingpage verspricht ohne Checkout keinen Sofort-Download/Lemon-Zahlung mehr. Mail-Anfrage funktioniert statisch auch ohne JS; FAQ und Suchdaten identisch. Acht lokale Browsergegenproben grün. Anders beschriebenes40er-Shopangebot nicht ungeprüft verknüpft. Eigener Checkout/Lieferweg noch offen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR; finanzielle Wirkung nicht gemessen.
 
 ## Codex: Monitor-Ausfall bleibt unbekannt ·13.11.2026
 
