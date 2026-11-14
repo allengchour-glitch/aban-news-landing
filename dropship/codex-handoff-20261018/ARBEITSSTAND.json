@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 219,
-  "updatedAt": "2026-11-14T21:19:19.143321+00:00",
+  "revision": 220,
+  "updatedAt": "2026-11-14T21:50:09.322371+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+      "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
-      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
-      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Aktuelle Indexierung/Ranking nur mit neuem Beleg beurteilen; R218-Inhabermeldung bleibt als Quelle erhalten.",
+      "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
+      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4234,6 +4234,42 @@
           "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
           "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
           "bytes": 1017401
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+          "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+          "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+          "bytes": 2129
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+          "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+          "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+          "bytes": 69317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+          "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+          "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+          "bytes": 224683
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+          "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+          "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+          "bytes": 222651
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+          "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+          "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+          "bytes": 970371
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+          "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+          "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+          "bytes": 965914
         }
       ],
       "requiresFreshVerification": true,
@@ -5330,6 +5366,814 @@
               "bytes": 1017401
             }
           ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "kind": "evidence_before_r220",
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+          "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/INTEGRATIONSSTAND-20261028-R3.md",
+              "gitBlobSha": "daca418ca3425d6a5983759b310c00731b3ba325",
+              "readAt": "2026-10-28T22:52:28.185Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+              "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+              "gitBlobSha": "2f7ee6226963a79561b2d79280241fba0df0a401",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-BEREINIGUNG-20261101.json",
+              "gitBlobSha": "5f5992112a6aa582561d0bd7ec1f889d7acb5a4f",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UPDATE-20261101-R37.json",
+              "gitBlobSha": "66819d71f6a95b0911bc00f8fe9a274f6cfd5c96",
+              "readAt": "2026-11-01T18:46:27Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+              "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+              "readAt": "2026-11-02T15:57:58.185375Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MINIMAX-ZUGANG-20261102-R55.md",
+              "gitBlobSha": "5796bfea4bcc84dde7d7135dd4e2dbab19fd7367",
+              "readAt": "2026-11-02T18:41:37.650465Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.md",
+              "gitBlobSha": "a996130b021ce932fe6e4933f57b0c6cfa5d8a22",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.json",
+              "gitBlobSha": "4ed2d1bf37705bbc5b4411c2a7750aafa080c178",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MENU-IA-20261109-R158.json",
+              "gitBlobSha": "155beced0f3eaee8a150162d6cc48f44e5b8274d",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-SYNC-20261109-R158.md",
+              "gitBlobSha": "7d896209d213047fd2f39bf83de2109961348ad9",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.md",
+              "gitBlobSha": "ea808965003467a864c5a4943b8bb455c9c1cec4",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
+              "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.md",
+              "gitBlobSha": "71b50e5903e1abca3e439dae0b68cdecdb31a140",
+              "sha256": "72319e823a668bb46a0fa85e0f0bf45c424f2f81bc6111a1014615216bab6ff6",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.json",
+              "gitBlobSha": "c59624c9f65d72165232e38d72c6b69946b58aff",
+              "sha256": "02808c70bd4c9bab59da2164e3f411b0730673c25484b80bb0485b8c38f8a54d",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.md",
+              "gitBlobSha": "ff4444d9b3c60286d4c53d57e0efb81ac790d18d",
+              "sha256": "a6b16462e05228e7346266276e9dab8cfccf9ca4bdb7057aa386b5d62961f5e6",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.json",
+              "gitBlobSha": "273a1084f1cdc74e866ef96eb51914095d578a07",
+              "sha256": "bf8ae9e75c8be798e2906d5315d4467a5025165e6c0849871188475f07bfca74",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.md",
+              "gitBlobSha": "45d71bd9ef19c8c6b398ff89fb2c450419f79c4c",
+              "sha256": "ff0ed95371666e03d67b07c2b574d78ebd79ead9c8be61a5169d975aa09ac74e",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.json",
+              "gitBlobSha": "3fc512d57536d2c3f24dc71d2240f346655cb1e6",
+              "sha256": "589b81a249d37c4ef1cac21af08b5b22c47a8362e5260935d6b15b53174143b3",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R165.md",
+              "gitBlobSha": "9b01bdff85084d53389ecb0e56d20387d581f6ea",
+              "sha256": "e2e9b871dc5c1a36732bf08b46e0669861547c1d91c2071ebee0f1510d1b1c4c",
+              "readAt": "2026-11-10T08:18:59+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R165.json",
+              "gitBlobSha": "82b9a089645fbf294988ba51547350f60b04319a",
+              "sha256": "9eaacb495374bc7a73a8089162fd856fa0ec0f9c4bf59cdf08bb262a905b0b0a",
+              "readAt": "2026-11-10T08:18:59+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md",
+              "gitBlobSha": "320b99dd14870317abdec1701b295d9f122140b5",
+              "sha256": "11a094a8ce73c5a17d8570e974a3f08d24cb8341e09b3ab0545391921491463b",
+              "readAt": "2026-11-10T09:49:38+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.json",
+              "gitBlobSha": "e507652c1a915f564eb0fb5e470792edc263a560",
+              "sha256": "a5bdaecf7944325f34b463fda7a7591bc3c179ca3037ec3c2ecbcf8881857fcc",
+              "readAt": "2026-11-10T09:49:38+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.md",
+              "gitBlobSha": "14e8b9e106350f4cda9f5f61af9b23d5b3209426",
+              "sha256": "b0a03fde6f05c6028d33408deaa3d6a294c66a268e7ddbb1d0d30dc99b9f20b5",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.json",
+              "gitBlobSha": "8c8071c2b575be3518dd3e87857f1d0941358367",
+              "sha256": "dab8bbda29dbff9dabceb4b1969b2421ada5e54ccc108834ae193c15af6ac593",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AVAILABILITY-READBACK-20261110-R168.md",
+              "gitBlobSha": "4d8cb28c74228941116a70f789234a574e684c15",
+              "sha256": "faf90bc361440f4e4da8e4bf4055115bf824cf986ad35e72c2948da30f326f2b",
+              "readAt": "2026-11-10T12:09:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AVAILABILITY-READBACK-20261110-R168.json",
+              "gitBlobSha": "397ad6d6e0b7ba208c1a202f132088cef545126d",
+              "sha256": "61cdffb6efe402e4a68a94543e8b8c0600d4f3a79db7048b567db33e9e4b82bb",
+              "readAt": "2026-11-10T12:09:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.md",
+              "gitBlobSha": "e592c2996827759849087992235d6fbf13812191",
+              "sha256": "a1bf0295ac5c5c8c697b6791c41b68803d2b139eeffd3b41c54599e5eafc2f3a",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.json",
+              "gitBlobSha": "43285dfa63a023de1f16c18a59893f5a1c608f81",
+              "sha256": "b982a9ba86a538a1096e7dc603c3f447b9b9deb9531d2c474c442474c21cab8e",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.md",
+              "gitBlobSha": "6b764ccad94e6942d7d69dd29f667f448557bc66",
+              "sha256": "dffb514112d0bad0380871de55642ae6f25d048b0754c38fc660678925069f86",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.json",
+              "gitBlobSha": "e7784cbda0b95f411c0d25b215b1801669658895",
+              "sha256": "6bd9b813a71d2c29d5b2526d3e7026fabfa9bb7c36dfcb9217c26563b94885a0",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md",
+              "gitBlobSha": "c0f485278c7801d4df9c334931037c403026c944",
+              "sha256": "cba0c3fe8845272c90b2fb4bee730f280aec915c18308e689cd503320d5586ca",
+              "readAt": "2026-11-10T18:55:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.json",
+              "gitBlobSha": "66b080161e7c72190cbafe6742da95c3621ff7b2",
+              "sha256": "0e49b199e65c530d30caf799db9517f336a581de888e3134744da0de292e4196",
+              "readAt": "2026-11-10T18:55:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R172.md",
+              "gitBlobSha": "805bee40293f255c80ca611986557b25ab1dea46",
+              "sha256": "3af407a2d7544cdfdcddd62f66ffc44ccbb642454344ec79f202165be08269eb",
+              "readAt": "2026-11-10T19:08:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R172.json",
+              "gitBlobSha": "c73efc92634124e85afe96b08a5a91947173125d",
+              "sha256": "7846f1c43854a0b3cb08abc34f04903104e14575d06bc08477f4b295a0caddd3",
+              "readAt": "2026-11-10T19:08:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UMSETZUNGSBELEG-20261110-R173.md",
+              "gitBlobSha": "28c962039d2f109e64895e66eca3b981ff8073f4",
+              "sha256": "22585b65391c59995a9e84d5f6f0b533e54ca81e68e808261c5f29b448a77cf9",
+              "readAt": "2026-11-10T20:33:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UMSETZUNGSBELEG-20261110-R173.json",
+              "gitBlobSha": "9b3ba833ae36ef79a82bb86b9a46a69fa26eb537",
+              "sha256": "6f411ba146bd91f2cc765272d076e198b243425094959b3284c461045d30f96f",
+              "readAt": "2026-11-10T20:33:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.md",
+              "gitBlobSha": "2f222dd29216e273d3620503cc3f5f694b88677d",
+              "sha256": "a4f9c31d6582508bb763ddd999b547296292dae5096b4409da6f2dcdfdd2ab72",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.json",
+              "gitBlobSha": "405375aa16b1e3d9c6b3187ee6edbfe52b4bb334",
+              "sha256": "adfb041caeb3ad25ef81e0387de102cd3410abcc8063fdede77d75c6393b86aa",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/register/pinterest-luxe_photo_kosmetik_organizer_20261101.json",
+              "gitBlobSha": "670d5894d56c19e82e32250a835376fca3177f33",
+              "sha256": "e47927f35474c743b93627d24bf59ffcdfb1dc2b72a2dca42bc4195e448c0323",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
+              "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+              "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+              "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+              "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+              "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+              "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+              "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+              "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+              "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+              "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+              "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+              "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+              "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+              "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+              "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+              "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json",
+              "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
+              "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e",
+              "readAt": "2026-11-13T23:17:47.813235+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+              "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+              "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd",
+              "readAt": "2026-11-14T00:08:52.861542+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+              "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+              "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
+              "readAt": "2026-11-14T00:08:52.861542+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+              "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+              "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+              "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+              "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+              "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+              "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-08H-R201.json",
+              "sha256": "d90461b0c89e2f90d5c5b61dd772be530fc7ed82973ea6de508088c1302b338c",
+              "gitBlobSha": "1b2c699bd39a9debd947a36e1187d43919140cdd",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-08H-R201.md",
+              "sha256": "d1fe7b84c082ae427ff502e0f7a576f8ca4231191a2a235a432682f4dc437fc0",
+              "gitBlobSha": "3ebe4c0804cb95ff20de741effb7067fc68fb329",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-08H-R201.json",
+              "sha256": "f190e327d7818178f34c648989120635a30bfef6673f24d20847429ac3976664",
+              "gitBlobSha": "d82903670c43639badb5d7337d941aa5690d832a",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-ZUORDNUNG-VORPRUEFUNG-20261114-R202.json",
+              "sha256": "bd12f2b460c2f279b321af10cfe09e0542818803e17dffc9acb2ece0985ca9bb",
+              "gitBlobSha": "1be7e2389b68196313aec8d1be5719c6425d0edd",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGANG-STATUS-20261114-R202.json",
+              "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
+              "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R202.json",
+              "sha256": "8b7fb70e9b3309f9d3713a9a5a64ecea3c34d4b817558ed9caa1cb3c1cd574ca",
+              "gitBlobSha": "31b869b7d1f67b637c55effcc904bb6547242810",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R202.md",
+              "sha256": "1f0371b31aec1bd4d64ab6011157fb7698135dfef5af45fe5a8ab9f354578aba",
+              "gitBlobSha": "4efb8b86bdaa860e2efa0e34d798c0d4e8a6b103",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SPEICHERSTATUS-20261114-R203.json",
+              "sha256": "879897a9513216ab66092a1d298d813d7cc5e3a00c7be08efb35fc8a21fee14b",
+              "gitBlobSha": "6a2dbef5cee134a9054020cd0317618a7f1d2f5a",
+              "readAt": "2026-11-14T10:45:58.534008+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+              "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+              "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+              "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+              "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+              "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+              "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+              "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+              "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+              "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+              "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-ABSCHLUSS-20261114-R205.json",
+              "sha256": "e8b77ed630178da6a1f8d25537ef7b1ab3f0b1c4b713fa5483c173fdf49f1bd4",
+              "gitBlobSha": "fb2bcf6a2dbbcb37ffda5932f62889cd9b721b6a",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PROJEKTOR-ADMIN-GEGENPROBE-20261114-R205.json",
+              "sha256": "eb23c80779bf9a8986afa70a85b4681c54628fd286f5d5e006c8f962e0aae9dd",
+              "gitBlobSha": "95e9bb561274179742d185a6d12f6b2e159ee8ee",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.json",
+              "sha256": "1de5cffd43ca9bc515cc3c204a8a9ee6c486edf3e4c9d0d4802173fedd490f90",
+              "gitBlobSha": "8a75a17a17f3df13b563d9db90efd441e938fc79",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md",
+              "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
+              "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+              "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+              "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+              "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+              "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+              "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+              "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+              "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+              "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+              "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+              "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+              "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+              "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+              "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+              "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+              "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+              "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+              "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+              "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PUBLIKATION-20261114-R209.json",
+              "sha256": "d80ed1a7bd48627e2f131656d01ae406070cb527cf9c3a1fe3549d1f672f0d08",
+              "gitBlobSha": "2593382007b27899bd7e515a93429b4b00953e8a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ANALYSE-20261114-R209.json",
+              "sha256": "50786962d1443752b6674f6fd69cb92799a5d05f5835e0e151f4d2307ddd7e92",
+              "gitBlobSha": "7b9fe1fa984392a5481af1983275e9aab8e39c6b",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FEHLERPLAN-20261114-R209.md",
+              "sha256": "bf919530a4f5f8d91e4e11d58191e8005a3b19caecaa577242a5e6340a2b8812",
+              "gitBlobSha": "babb464fda9449e40198d8569398e6808d7d5b24",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-DATENQUELLEN-20261114-R209.json",
+              "sha256": "ba778990f391c4c5fb0b1fbeefd6985a1df3507951e6273dfb0e69dd496a7f2f",
+              "gitBlobSha": "22d8c1df985b8e573f51d13cfa83ee477e06e46a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-STICHPROBEN-20261114-R209.json",
+              "sha256": "6d72357f9652506e0cf43a50b1fe29553b90cc290b406f3c8f6feed5ba1648ef",
+              "gitBlobSha": "f9ddf6ad0104533872e164bbcc11bfeb66790f19",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
+              "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
+              "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+              "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+              "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+              "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+              "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+              "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+              "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R211.md",
+              "sha256": "710e5c1ad6aba209ecca0df197492df952d38e59c6b4f3b13d4052152eea076d",
+              "gitBlobSha": "4bf52c90a6b49ff56fb73e5ad55d3c62c5188d82",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-LIVE-PRUEFUNG-20261114-R211.json",
+              "sha256": "3e5019727d18ad8247e5ebd4dfb9f419bb81d84fbd416d490be40a3e939118c9",
+              "gitBlobSha": "36f1bacb1a995d8692766fa51f40bd666e987178",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CI-20261114-R211.json",
+              "sha256": "7d64795d2946a5fc2bf6a3f6dffeb4fe734004a098f22419be243d139bb0df37",
+              "gitBlobSha": "6c143eaf65fcedd5ce7a05025f55fd1a62619be9",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CI-ABGRENZUNG-20261114-R211.json",
+              "sha256": "163feaa1e8992f3c17842e142f1b6842105674f6929438877aa973c80acb39ea",
+              "gitBlobSha": "f23c90819c76b3e765742c12b821c5576b187131",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
+              "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
+              "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+              "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+              "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+              "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+              "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+              "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+              "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+              "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+              "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+              "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+              "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+              "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+              "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
+              "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-19H-R214.json",
+              "sha256": "a3ab2c368495db0010709c366d2fda10725fa6b269dcadbf41d498b0feba7c94",
+              "gitBlobSha": "112d0bf35453a605a4b6c13c0decd1f07a79b231",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
+              "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PRODUKT-CJ-20261114-19H-R214.json",
+              "sha256": "88db67cc6b534a6766a4ca4bd1dddbc172fa4d44fe3751077f8e070658cb8737",
+              "gitBlobSha": "c41930dfb6b0760490e49968e8707de0496c7ecc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "0f9d3d76ba338aa395db7dc64d4107a8fc52ffcb4d90bcae76ae5685096f4ac1",
+              "gitBlobSha": "d9b49be3863b1d72eef6111d82e9ecda7129bd98",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
+              "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 220,
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+              "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+              "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+              "bytes": 2129
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+              "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+              "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+              "bytes": 69317
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+              "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+              "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+              "bytes": 224683
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+              "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+              "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+              "bytes": 222651
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+              "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+              "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+              "bytes": 970371
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+              "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+              "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+              "bytes": 965914
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -6355,6 +7199,770 @@
           "state": "r218_owner_ten_url_completion_recorded_no_new_run_or_google_write",
           "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
           "lastEvidence": "Inhaber-Rückmeldung «indexdiert» zur unmittelbar vorherigen Zehnerliste dokumentiert. Eigene Tätigkeit ist Status-/Gedächtnisfortschreibung, keine Indexierungsaktion, kein neuer Googlebefund. Die zehn URLs aus neuer Vorschlagsliste ausgenommen;24IDs/Historien und Tagesgrenzen erhalten."
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+          "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/INTEGRATIONSSTAND-20261028-R3.md",
+              "gitBlobSha": "daca418ca3425d6a5983759b310c00731b3ba325",
+              "readAt": "2026-10-28T22:52:28.185Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UEBERGABE-20261101-R33.md",
+              "gitBlobSha": "328c248bdda4f1350b7165fd24fc04f291f497b9",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/aufgaben/luxe-zusammenarbeit-20261028.r4.packet.json",
+              "gitBlobSha": "2f7ee6226963a79561b2d79280241fba0df0a401",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-BEREINIGUNG-20261101.json",
+              "gitBlobSha": "5f5992112a6aa582561d0bd7ec1f889d7acb5a4f",
+              "readAt": "2026-11-01T16:21:00Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-UPDATE-20261101-R37.json",
+              "gitBlobSha": "66819d71f6a95b0911bc00f8fe9a274f6cfd5c96",
+              "readAt": "2026-11-01T18:46:27Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+              "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+              "readAt": "2026-11-02T15:57:58.185375Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MINIMAX-ZUGANG-20261102-R55.md",
+              "gitBlobSha": "5796bfea4bcc84dde7d7135dd4e2dbab19fd7367",
+              "readAt": "2026-11-02T18:41:37.650465Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.md",
+              "gitBlobSha": "a996130b021ce932fe6e4933f57b0c6cfa5d8a22",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.json",
+              "gitBlobSha": "4ed2d1bf37705bbc5b4411c2a7750aafa080c178",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MENU-IA-20261109-R158.json",
+              "gitBlobSha": "155beced0f3eaee8a150162d6cc48f44e5b8274d",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-SYNC-20261109-R158.md",
+              "gitBlobSha": "7d896209d213047fd2f39bf83de2109961348ad9",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.md",
+              "gitBlobSha": "ea808965003467a864c5a4943b8bb455c9c1cec4",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
+              "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.md",
+              "gitBlobSha": "71b50e5903e1abca3e439dae0b68cdecdb31a140",
+              "sha256": "72319e823a668bb46a0fa85e0f0bf45c424f2f81bc6111a1014615216bab6ff6",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.json",
+              "gitBlobSha": "c59624c9f65d72165232e38d72c6b69946b58aff",
+              "sha256": "02808c70bd4c9bab59da2164e3f411b0730673c25484b80bb0485b8c38f8a54d",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.md",
+              "gitBlobSha": "ff4444d9b3c60286d4c53d57e0efb81ac790d18d",
+              "sha256": "a6b16462e05228e7346266276e9dab8cfccf9ca4bdb7057aa386b5d62961f5e6",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.json",
+              "gitBlobSha": "273a1084f1cdc74e866ef96eb51914095d578a07",
+              "sha256": "bf8ae9e75c8be798e2906d5315d4467a5025165e6c0849871188475f07bfca74",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.md",
+              "gitBlobSha": "45d71bd9ef19c8c6b398ff89fb2c450419f79c4c",
+              "sha256": "ff0ed95371666e03d67b07c2b574d78ebd79ead9c8be61a5169d975aa09ac74e",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.json",
+              "gitBlobSha": "3fc512d57536d2c3f24dc71d2240f346655cb1e6",
+              "sha256": "589b81a249d37c4ef1cac21af08b5b22c47a8362e5260935d6b15b53174143b3",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R165.md",
+              "gitBlobSha": "9b01bdff85084d53389ecb0e56d20387d581f6ea",
+              "sha256": "e2e9b871dc5c1a36732bf08b46e0669861547c1d91c2071ebee0f1510d1b1c4c",
+              "readAt": "2026-11-10T08:18:59+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R165.json",
+              "gitBlobSha": "82b9a089645fbf294988ba51547350f60b04319a",
+              "sha256": "9eaacb495374bc7a73a8089162fd856fa0ec0f9c4bf59cdf08bb262a905b0b0a",
+              "readAt": "2026-11-10T08:18:59+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.md",
+              "gitBlobSha": "320b99dd14870317abdec1701b295d9f122140b5",
+              "sha256": "11a094a8ce73c5a17d8570e974a3f08d24cb8341e09b3ab0545391921491463b",
+              "readAt": "2026-11-10T09:49:38+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/OFFENE-PUNKTE-ABSCHLUSS-20261110-R166.json",
+              "gitBlobSha": "e507652c1a915f564eb0fb5e470792edc263a560",
+              "sha256": "a5bdaecf7944325f34b463fda7a7591bc3c179ca3037ec3c2ecbcf8881857fcc",
+              "readAt": "2026-11-10T09:49:38+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.md",
+              "gitBlobSha": "14e8b9e106350f4cda9f5f61af9b23d5b3209426",
+              "sha256": "b0a03fde6f05c6028d33408deaa3d6a294c66a268e7ddbb1d0d30dc99b9f20b5",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.json",
+              "gitBlobSha": "8c8071c2b575be3518dd3e87857f1d0941358367",
+              "sha256": "dab8bbda29dbff9dabceb4b1969b2421ada5e54ccc108834ae193c15af6ac593",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AVAILABILITY-READBACK-20261110-R168.md",
+              "gitBlobSha": "4d8cb28c74228941116a70f789234a574e684c15",
+              "sha256": "faf90bc361440f4e4da8e4bf4055115bf824cf986ad35e72c2948da30f326f2b",
+              "readAt": "2026-11-10T12:09:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AVAILABILITY-READBACK-20261110-R168.json",
+              "gitBlobSha": "397ad6d6e0b7ba208c1a202f132088cef545126d",
+              "sha256": "61cdffb6efe402e4a68a94543e8b8c0600d4f3a79db7048b567db33e9e4b82bb",
+              "readAt": "2026-11-10T12:09:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.md",
+              "gitBlobSha": "e592c2996827759849087992235d6fbf13812191",
+              "sha256": "a1bf0295ac5c5c8c697b6791c41b68803d2b139eeffd3b41c54599e5eafc2f3a",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.json",
+              "gitBlobSha": "43285dfa63a023de1f16c18a59893f5a1c608f81",
+              "sha256": "b982a9ba86a538a1096e7dc603c3f447b9b9deb9531d2c474c442474c21cab8e",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.md",
+              "gitBlobSha": "6b764ccad94e6942d7d69dd29f667f448557bc66",
+              "sha256": "dffb514112d0bad0380871de55642ae6f25d048b0754c38fc660678925069f86",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.json",
+              "gitBlobSha": "e7784cbda0b95f411c0d25b215b1801669658895",
+              "sha256": "6bd9b813a71d2c29d5b2526d3e7026fabfa9bb7c36dfcb9217c26563b94885a0",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.md",
+              "gitBlobSha": "c0f485278c7801d4df9c334931037c403026c944",
+              "sha256": "cba0c3fe8845272c90b2fb4bee730f280aec915c18308e689cd503320d5586ca",
+              "readAt": "2026-11-10T18:55:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-ARTEFAKT-PRUEFUNG-20261110-R171.json",
+              "gitBlobSha": "66b080161e7c72190cbafe6742da95c3621ff7b2",
+              "sha256": "0e49b199e65c530d30caf799db9517f336a581de888e3134744da0de292e4196",
+              "readAt": "2026-11-10T18:55:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R172.md",
+              "gitBlobSha": "805bee40293f255c80ca611986557b25ab1dea46",
+              "sha256": "3af407a2d7544cdfdcddd62f66ffc44ccbb642454344ec79f202165be08269eb",
+              "readAt": "2026-11-10T19:08:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R172.json",
+              "gitBlobSha": "c73efc92634124e85afe96b08a5a91947173125d",
+              "sha256": "7846f1c43854a0b3cb08abc34f04903104e14575d06bc08477f4b295a0caddd3",
+              "readAt": "2026-11-10T19:08:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UMSETZUNGSBELEG-20261110-R173.md",
+              "gitBlobSha": "28c962039d2f109e64895e66eca3b981ff8073f4",
+              "sha256": "22585b65391c59995a9e84d5f6f0b533e54ca81e68e808261c5f29b448a77cf9",
+              "readAt": "2026-11-10T20:33:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UMSETZUNGSBELEG-20261110-R173.json",
+              "gitBlobSha": "9b3ba833ae36ef79a82bb86b9a46a69fa26eb537",
+              "sha256": "6f411ba146bd91f2cc765272d076e198b243425094959b3284c461045d30f96f",
+              "readAt": "2026-11-10T20:33:29+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.md",
+              "gitBlobSha": "2f222dd29216e273d3620503cc3f5f694b88677d",
+              "sha256": "a4f9c31d6582508bb763ddd999b547296292dae5096b4409da6f2dcdfdd2ab72",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.json",
+              "gitBlobSha": "405375aa16b1e3d9c6b3187ee6edbfe52b4bb334",
+              "sha256": "adfb041caeb3ad25ef81e0387de102cd3410abcc8063fdede77d75c6393b86aa",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/register/pinterest-luxe_photo_kosmetik_organizer_20261101.json",
+              "gitBlobSha": "670d5894d56c19e82e32250a835376fca3177f33",
+              "sha256": "e47927f35474c743b93627d24bf59ffcdfb1dc2b72a2dca42bc4195e448c0323",
+              "readAt": "2026-11-10T21:12:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
+              "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+              "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+              "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+              "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.md",
+              "gitBlobSha": "97704dc4f0045c01c83c9f27a49061ff7ec8755f",
+              "sha256": "d9fc51945da382c59ce139699e46a3569dfc9aa640b517f81afd4b63a44035a6",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEO-MASTER-DRAFTS-20261111-R176.json",
+              "gitBlobSha": "9598ef6ffd7ef6d5ffc239c56f71165d93cfe069",
+              "sha256": "98961d02f9d7a4d1212fb31559bd8ef49a903f42d4b229f9306beaf50422f302",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+              "gitBlobSha": "461e4160479b064135839a7302d7970ff12454eb",
+              "sha256": "1ca565de6061e4b363e1afc5fbc9efab665e75e3191177315ecf5daa54c06bf1",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RENDER-PROJEKTOR-DRAFT-R176.sh",
+              "gitBlobSha": "cc51ae3cd82648def6db9a2028995c34342357ab",
+              "sha256": "0896c30fc5a591ce97d5ec0a2787839395e3ae60cfc5de0e78bbb0bda6e596d8",
+              "readAt": "2026-11-11T09:16:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/UEBERGABE-SHOP-APP-20261113-R197.md",
+              "sha256": "56da614e83fc5101678ed82c5f9806ea75cab73eed4565c3356f2928b3a5176d",
+              "gitBlobSha": "bf729b98586fe901a91c7315bc55790a24a4c061",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/JUDGEME-TRANSPARENZ-20261113-R197.json",
+              "sha256": "0d17816338aed4dcac15f73d554f24e7dc78707fb3137701551acc403696031a",
+              "gitBlobSha": "0b0f44ab913133fbefbedde033ce89aa9a629486",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json",
+              "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
+              "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e",
+              "readAt": "2026-11-13T23:17:47.813235+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+              "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+              "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd",
+              "readAt": "2026-11-14T00:08:52.861542+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+              "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+              "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
+              "readAt": "2026-11-14T00:08:52.861542+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+              "sha256": "3d48fc7a8d1bb1f0f89e19f7e4192eb83886a4e342acc0ccb21581f55831d2ab",
+              "gitBlobSha": "b38e06facd00d0d4cea43d00ce7a1c05d7b2d076",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.md",
+              "sha256": "a89a3ed30cbf3649824aa39d94e07cecd06c12e8fed0510a535c0a864776b706",
+              "gitBlobSha": "4a3cd81a1a769dd35b6d3026483f824215a5397e",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-20261114-R200.json",
+              "sha256": "079cf6ab5905e59cb8f778471b53c34a043051d63a22917651b65ffa7c4e7df5",
+              "gitBlobSha": "496a75f130973245ab395a427b85e1b42b28e5f2",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-08H-R201.json",
+              "sha256": "d90461b0c89e2f90d5c5b61dd772be530fc7ed82973ea6de508088c1302b338c",
+              "gitBlobSha": "1b2c699bd39a9debd947a36e1187d43919140cdd",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-08H-R201.md",
+              "sha256": "d1fe7b84c082ae427ff502e0f7a576f8ca4231191a2a235a432682f4dc437fc0",
+              "gitBlobSha": "3ebe4c0804cb95ff20de741effb7067fc68fb329",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-08H-R201.json",
+              "sha256": "f190e327d7818178f34c648989120635a30bfef6673f24d20847429ac3976664",
+              "gitBlobSha": "d82903670c43639badb5d7337d941aa5690d832a",
+              "readAt": "2026-11-14T07:21:50.587500+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-ZUORDNUNG-VORPRUEFUNG-20261114-R202.json",
+              "sha256": "bd12f2b460c2f279b321af10cfe09e0542818803e17dffc9acb2ece0985ca9bb",
+              "gitBlobSha": "1be7e2389b68196313aec8d1be5719c6425d0edd",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGANG-STATUS-20261114-R202.json",
+              "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
+              "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R202.json",
+              "sha256": "8b7fb70e9b3309f9d3713a9a5a64ecea3c34d4b817558ed9caa1cb3c1cd574ca",
+              "gitBlobSha": "31b869b7d1f67b637c55effcc904bb6547242810",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R202.md",
+              "sha256": "1f0371b31aec1bd4d64ab6011157fb7698135dfef5af45fe5a8ab9f354578aba",
+              "gitBlobSha": "4efb8b86bdaa860e2efa0e34d798c0d4e8a6b103",
+              "readAt": "2026-11-14T10:30:10.538871+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SPEICHERSTATUS-20261114-R203.json",
+              "sha256": "879897a9513216ab66092a1d298d813d7cc5e3a00c7be08efb35fc8a21fee14b",
+              "gitBlobSha": "6a2dbef5cee134a9054020cd0317618a7f1d2f5a",
+              "readAt": "2026-11-14T10:45:58.534008+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+              "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+              "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+              "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+              "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+              "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+              "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+              "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+              "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+              "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+              "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41",
+              "readAt": "2026-11-14T11:24:45.079126+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-ABSCHLUSS-20261114-R205.json",
+              "sha256": "e8b77ed630178da6a1f8d25537ef7b1ab3f0b1c4b713fa5483c173fdf49f1bd4",
+              "gitBlobSha": "fb2bcf6a2dbbcb37ffda5932f62889cd9b721b6a",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PROJEKTOR-ADMIN-GEGENPROBE-20261114-R205.json",
+              "sha256": "eb23c80779bf9a8986afa70a85b4681c54628fd286f5d5e006c8f962e0aae9dd",
+              "gitBlobSha": "95e9bb561274179742d185a6d12f6b2e159ee8ee",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.json",
+              "sha256": "1de5cffd43ca9bc515cc3c204a8a9ee6c486edf3e4c9d0d4802173fedd490f90",
+              "gitBlobSha": "8a75a17a17f3df13b563d9db90efd441e938fc79",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md",
+              "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
+              "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21",
+              "readAt": "2026-11-14T11:37:14.597405+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+              "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+              "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+              "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+              "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+              "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+              "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+              "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+              "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+              "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+              "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248",
+              "readAt": "2026-11-14T12:48:38.423883+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+              "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+              "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+              "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+              "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+              "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+              "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+              "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+              "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PUBLIKATION-20261114-R209.json",
+              "sha256": "d80ed1a7bd48627e2f131656d01ae406070cb527cf9c3a1fe3549d1f672f0d08",
+              "gitBlobSha": "2593382007b27899bd7e515a93429b4b00953e8a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ANALYSE-20261114-R209.json",
+              "sha256": "50786962d1443752b6674f6fd69cb92799a5d05f5835e0e151f4d2307ddd7e92",
+              "gitBlobSha": "7b9fe1fa984392a5481af1983275e9aab8e39c6b",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FEHLERPLAN-20261114-R209.md",
+              "sha256": "bf919530a4f5f8d91e4e11d58191e8005a3b19caecaa577242a5e6340a2b8812",
+              "gitBlobSha": "babb464fda9449e40198d8569398e6808d7d5b24",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-DATENQUELLEN-20261114-R209.json",
+              "sha256": "ba778990f391c4c5fb0b1fbeefd6985a1df3507951e6273dfb0e69dd496a7f2f",
+              "gitBlobSha": "22d8c1df985b8e573f51d13cfa83ee477e06e46a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-STICHPROBEN-20261114-R209.json",
+              "sha256": "6d72357f9652506e0cf43a50b1fe29553b90cc290b406f3c8f6feed5ba1648ef",
+              "gitBlobSha": "f9ddf6ad0104533872e164bbcc11bfeb66790f19",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
+              "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
+              "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+              "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+              "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+              "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+              "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+              "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+              "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R211.md",
+              "sha256": "710e5c1ad6aba209ecca0df197492df952d38e59c6b4f3b13d4052152eea076d",
+              "gitBlobSha": "4bf52c90a6b49ff56fb73e5ad55d3c62c5188d82",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-LIVE-PRUEFUNG-20261114-R211.json",
+              "sha256": "3e5019727d18ad8247e5ebd4dfb9f419bb81d84fbd416d490be40a3e939118c9",
+              "gitBlobSha": "36f1bacb1a995d8692766fa51f40bd666e987178",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CI-20261114-R211.json",
+              "sha256": "7d64795d2946a5fc2bf6a3f6dffeb4fe734004a098f22419be243d139bb0df37",
+              "gitBlobSha": "6c143eaf65fcedd5ce7a05025f55fd1a62619be9",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CI-ABGRENZUNG-20261114-R211.json",
+              "sha256": "163feaa1e8992f3c17842e142f1b6842105674f6929438877aa973c80acb39ea",
+              "gitBlobSha": "f23c90819c76b3e765742c12b821c5576b187131",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
+              "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
+              "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+              "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+              "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+              "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+              "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+              "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+              "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+              "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+              "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+              "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+              "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+              "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+              "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29",
+              "readAt": "2026-11-14T17:44:42.186229+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
+              "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-19H-R214.json",
+              "sha256": "a3ab2c368495db0010709c366d2fda10725fa6b269dcadbf41d498b0feba7c94",
+              "gitBlobSha": "112d0bf35453a605a4b6c13c0decd1f07a79b231",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
+              "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PRODUKT-CJ-20261114-19H-R214.json",
+              "sha256": "88db67cc6b534a6766a4ca4bd1dddbc172fa4d44fe3751077f8e070658cb8737",
+              "gitBlobSha": "c41930dfb6b0760490e49968e8707de0496c7ecc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "0f9d3d76ba338aa395db7dc64d4107a8fc52ffcb4d90bcae76ae5685096f4ac1",
+              "gitBlobSha": "d9b49be3863b1d72eef6111d82e9ecda7129bd98",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
+              "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
+            }
+          ]
         }
       ]
     },
@@ -14807,12 +16415,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+      "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
-      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
-      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Aktuelle Indexierung/Ranking nur mit neuem Beleg beurteilen; R218-Inhabermeldung bleibt als Quelle erhalten.",
+      "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
+      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -15372,6 +16980,42 @@
           "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
           "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
           "bytes": 1017401
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+          "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+          "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+          "bytes": 2129
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+          "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+          "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+          "bytes": 69317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+          "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+          "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+          "bytes": 224683
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+          "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+          "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+          "bytes": 222651
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+          "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+          "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+          "bytes": 970371
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+          "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+          "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+          "bytes": 965914
         }
       ],
       "requiresFreshVerification": true,
@@ -16069,6 +17713,602 @@
               "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
               "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
               "bytes": 1017401
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "kind": "evidence_before_r220",
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+          "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+              "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+              "readAt": "2026-11-01T20:50:50.314044Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+              "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+              "readAt": "2026-11-02T07:11:58.785394Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json",
+              "gitBlobSha": "e84d0ade44da06c97fb5a2a215fe0bf8ed2efbc8",
+              "readAt": "2026-11-02T09:45:57.309290Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+              "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+              "readAt": "2026-11-02T10:12:23.372462Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+              "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-ABNAHME-20261103-R64.md",
+              "gitBlobSha": "44c592d9df39e41d551bfddfb1efb1f975e73a88",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+              "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-NACHFRAGE-BELEGE-20261103-R65.json",
+              "gitBlobSha": "a52b56b3c092c54e8cf9d37470b955ab1f700a55",
+              "readAt": "2026-11-03T08:45:15.678968+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R67.json",
+              "gitBlobSha": "b1edabee83c7f312ed1a4a681aff97d8e96e584c",
+              "readAt": "2026-11-03T13:25:23.299694+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-FUNKTION-20261103-R67.json",
+              "gitBlobSha": "42c80da6e7632600a17aaedd7b369f690444929b",
+              "readAt": "2026-11-03T13:25:23.299694+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
+              "gitBlobSha": "46220aa594f1337959ba6409fdf813bc6d9ec515",
+              "readAt": "2026-11-04T07:29:25.340075+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-BELEGE-20261104-R78.json",
+              "gitBlobSha": "fdca6087e9679a0092ad4cdd68b8187a03490e27",
+              "readAt": "2026-11-04T08:39:22.685627+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R79.json",
+              "gitBlobSha": "d2494cf81df01fb36b4c0a54bffbbb880c1299d8",
+              "readAt": "2026-11-04T13:10:11.240259+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESAMTAUDIT-20261104-R81.json",
+              "gitBlobSha": "ab10ed354ddb15496c66c7cd5d13b907a592edea",
+              "readAt": "2026-11-04T16:46:07.936Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
+              "gitBlobSha": "dbc0f29ce14439a39626b12f0421c5d9dd05e7f7",
+              "readAt": "2026-11-05T07:20:02Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.md",
+              "gitBlobSha": "befad4940a1ca5ee07f96ff0f4a55868c940a1fe",
+              "sha256": "9a0845486c72dfaf0ad84738e86c356aef8eb7dbcae72d42f5d7d67670b83fed",
+              "readAt": "2026-11-08T22:02:24+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.json",
+              "gitBlobSha": "6735b09edebb65e35dc80685a08a6e404843e62d",
+              "sha256": "757d87faab75436d045f9c3284c119768d78db48bb51ad896b7164919ba606c1",
+              "readAt": "2026-11-08T22:02:24+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.md",
+              "gitBlobSha": "be0f228113decef7feeddfd01d83256cd420965b",
+              "sha256": "c9847cb6b27f2739d20a8b5780b8ef0aef216e88816c3a1e99ae95d9a7b28921",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json",
+              "gitBlobSha": "748a0aa34ecab7ab5d3189ca8f9586bfddc692e5",
+              "sha256": "2328ab4633d51fcb760bfba649b1c24bf7edaf46c239b95cccfcebc79ad93900",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-QUALITAETSSPERRE-20261109-R154.json",
+              "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
+              "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+              "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+              "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+              "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+              "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+              "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+              "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R156.json",
+              "gitBlobSha": "7c69dfa7d87eb8149a9a1669f4476e367ae6c65f",
+              "sha256": "d39cfbed43d91b5cd42b6a2e2dde7fe87c06ea91b93b74ef3c284f63bac85a7e",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-UEBERSETZUNG-PREFLIGHT-20261109-R156.py",
+              "gitBlobSha": "661ebe33e49a26afa6a3b17a7be3ee94d687dcde",
+              "sha256": "c06fb0af063015c2fd74a635d5297b7a8bede50fab144448c1fcf86a768000d4",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-STICHPROBE-20261109-R156.json",
+              "gitBlobSha": "7a5caacf38c7f7f912ff1dc390d9654c67a62348",
+              "sha256": "4f83268b67059d5ead024aecb23dada023d79a6c742c93de118f7172e8444fc3",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R156.md",
+              "gitBlobSha": "80a3dbeb669dd88a367fd13e785a174204400b59",
+              "sha256": "9ce1212727e732471a59480966f2c8a3af22fe1c77b6a17abdf00513fe2bca6d",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.md",
+              "gitBlobSha": "c69e51f6a98de6c03cbb4297e29c15a14b18e2a8",
+              "sha256": "61e65bf76ae868162fbf4de61f93cb12e38b1f94469e8fb9bcca98037dd979f0",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.json",
+              "gitBlobSha": "255c18be29325b956e822802e631e1b5940850b0",
+              "sha256": "45966fd0efd7f36bf51c94187af50bb40da3534a21dd266394b6ac1363ea7365",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GSC-RANKING-20261109-R157.json",
+              "gitBlobSha": "596f50aa1ed48bee30392886cdfbd01207c68471",
+              "sha256": "b51e86ab66941f01b062f85cab27e768f7de0658755be203d83a6d611eda5890",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOPIFY-FR-PREFLIGHT-20261109-R157.json",
+              "gitBlobSha": "2e12a28ab59e39dcf2ece008c1ca8b3187fb959e",
+              "sha256": "26a18243ee3b78e389af1c0421dacab187c8cfe1055baad829681df79620e4d4",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-SPRACH-QA-20261109-R157.json",
+              "gitBlobSha": "442fdd9eff8df9a7ec436f73a126ad6e9fd6e3df",
+              "sha256": "e69e9c0446a5876090dc54c041fca0cd3d656e027c555db2366e9c1c39a12e58",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-TRANSLATIONS-20261109-R157.json",
+              "gitBlobSha": "7df8c12dea453783bf9f83d554b1e87d2eef2fed",
+              "sha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PUBLIC-SEO-VORHER-20261109-R157.json",
+              "gitBlobSha": "4efd26a831a60a4ad73c381de928a8b02be140ed",
+              "sha256": "b5e00e152661d6f3d9e41df106282f47770ab2c16aad78224206eb2a632587cf",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PUBLIC-SEO-NACHHER-20261109-R157.json",
+              "gitBlobSha": "97cb8e24e664a0228f13e83cb0aab277a2a53cfe",
+              "sha256": "1cb3574a785a1974b8d3538385cf06defb23c8472b24c0a28a1c7df08d6084be",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-SEO-ANALYSE-20261109-R157.md",
+              "gitBlobSha": "8e0a56ed3858cf862576502fca6fd524e13e26ce",
+              "sha256": "14e73855f9683478707bf6fffe445dad4c146cc0dd1dd37bca6ab9f979355d43",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-SEO-BELEG-20261109-R157.json",
+              "gitBlobSha": "ad3b57b472e1a6f1993cdffce5a5046f4608d6f7",
+              "sha256": "7f7b12dd2981524496aa92efef2f57d27709156f936f2aeb0ecb77ff635e74ac",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-OG-HTTPS-20261109-R157.patch",
+              "gitBlobSha": "7cde4ce53ef1bb66612cd87476085fdf7e743bf7",
+              "sha256": "d06ffd51636c3438948f7ef2fcc8acc07ea329ef69a28854d7fd4c1bacd0abdb",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.md",
+              "gitBlobSha": "a996130b021ce932fe6e4933f57b0c6cfa5d8a22",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.json",
+              "gitBlobSha": "4ed2d1bf37705bbc5b4411c2a7750aafa080c178",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MENU-IA-20261109-R158.json",
+              "gitBlobSha": "155beced0f3eaee8a150162d6cc48f44e5b8274d",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-SYNC-20261109-R158.md",
+              "gitBlobSha": "7d896209d213047fd2f39bf83de2109961348ad9",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.md",
+              "gitBlobSha": "ea808965003467a864c5a4943b8bb455c9c1cec4",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
+              "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.md",
+              "gitBlobSha": "71b50e5903e1abca3e439dae0b68cdecdb31a140",
+              "sha256": "72319e823a668bb46a0fa85e0f0bf45c424f2f81bc6111a1014615216bab6ff6",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.json",
+              "gitBlobSha": "c59624c9f65d72165232e38d72c6b69946b58aff",
+              "sha256": "02808c70bd4c9bab59da2164e3f411b0730673c25484b80bb0485b8c38f8a54d",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.md",
+              "gitBlobSha": "ff4444d9b3c60286d4c53d57e0efb81ac790d18d",
+              "sha256": "a6b16462e05228e7346266276e9dab8cfccf9ca4bdb7057aa386b5d62961f5e6",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.json",
+              "gitBlobSha": "273a1084f1cdc74e866ef96eb51914095d578a07",
+              "sha256": "bf8ae9e75c8be798e2906d5315d4467a5025165e6c0849871188475f07bfca74",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.md",
+              "gitBlobSha": "45d71bd9ef19c8c6b398ff89fb2c450419f79c4c",
+              "sha256": "ff0ed95371666e03d67b07c2b574d78ebd79ead9c8be61a5169d975aa09ac74e",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.json",
+              "gitBlobSha": "3fc512d57536d2c3f24dc71d2240f346655cb1e6",
+              "sha256": "589b81a249d37c4ef1cac21af08b5b22c47a8362e5260935d6b15b53174143b3",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.md",
+              "gitBlobSha": "14e8b9e106350f4cda9f5f61af9b23d5b3209426",
+              "sha256": "b0a03fde6f05c6028d33408deaa3d6a294c66a268e7ddbb1d0d30dc99b9f20b5",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.json",
+              "gitBlobSha": "8c8071c2b575be3518dd3e87857f1d0941358367",
+              "sha256": "dab8bbda29dbff9dabceb4b1969b2421ada5e54ccc108834ae193c15af6ac593",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.md",
+              "gitBlobSha": "e592c2996827759849087992235d6fbf13812191",
+              "sha256": "a1bf0295ac5c5c8c697b6791c41b68803d2b139eeffd3b41c54599e5eafc2f3a",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.json",
+              "gitBlobSha": "43285dfa63a023de1f16c18a59893f5a1c608f81",
+              "sha256": "b982a9ba86a538a1096e7dc603c3f447b9b9deb9531d2c474c442474c21cab8e",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.md",
+              "gitBlobSha": "6b764ccad94e6942d7d69dd29f667f448557bc66",
+              "sha256": "dffb514112d0bad0380871de55642ae6f25d048b0754c38fc660678925069f86",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.json",
+              "gitBlobSha": "e7784cbda0b95f411c0d25b215b1801669658895",
+              "sha256": "6bd9b813a71d2c29d5b2526d3e7026fabfa9bb7c36dfcb9217c26563b94885a0",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
+              "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+              "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+              "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+              "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+              "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+              "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c",
+              "readAt": "2026-11-13T13:26:09.362978+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+              "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+              "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+              "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+              "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+              "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+              "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+              "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+              "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PUBLIKATION-20261114-R209.json",
+              "sha256": "d80ed1a7bd48627e2f131656d01ae406070cb527cf9c3a1fe3549d1f672f0d08",
+              "gitBlobSha": "2593382007b27899bd7e515a93429b4b00953e8a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
+              "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
+              "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-LIVE-PRUEFUNG-20261114-R211.json",
+              "sha256": "3e5019727d18ad8247e5ebd4dfb9f419bb81d84fbd416d490be40a3e939118c9",
+              "gitBlobSha": "36f1bacb1a995d8692766fa51f40bd666e987178",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R211.md",
+              "sha256": "710e5c1ad6aba209ecca0df197492df952d38e59c6b4f3b13d4052152eea076d",
+              "gitBlobSha": "4bf52c90a6b49ff56fb73e5ad55d3c62c5188d82",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
+              "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
+              "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
+              "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
+              "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "0f9d3d76ba338aa395db7dc64d4107a8fc52ffcb4d90bcae76ae5685096f4ac1",
+              "gitBlobSha": "d9b49be3863b1d72eef6111d82e9ecda7129bd98",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
+              "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 220,
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+              "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+              "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+              "bytes": 2129
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+              "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+              "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+              "bytes": 69317
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+              "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+              "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+              "bytes": 224683
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+              "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+              "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+              "bytes": 222651
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+              "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+              "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+              "bytes": 970371
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+              "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+              "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+              "bytes": 965914
             }
           ]
         }
@@ -16843,6 +19083,558 @@
           "state": "r218_owner_reports_ten_indexed_completed_independent_status_unknown",
           "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
           "lastEvidence": "Nach zehn R217-Prüflinks meldet der Inhaber wörtlich «indexdiert». Genau diese zehn URLs sind als vom Inhaber erledigt/indexiert gemeldet markiert, nicht als neue Ziele wieder vorzuschlagen. Der vorherige GSC-NEUTRAL-Befund bleibt datiert erhalten. Keine unabhängige neue Googleprüfung oder eigene Indexierungsbeantragung."
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
+          "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+              "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+              "readAt": "2026-11-01T20:50:50.314044Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+              "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+              "readAt": "2026-11-02T07:11:58.785394Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json",
+              "gitBlobSha": "e84d0ade44da06c97fb5a2a215fe0bf8ed2efbc8",
+              "readAt": "2026-11-02T09:45:57.309290Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+              "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+              "readAt": "2026-11-02T10:12:23.372462Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+              "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-ABNAHME-20261103-R64.md",
+              "gitBlobSha": "44c592d9df39e41d551bfddfb1efb1f975e73a88",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+              "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+              "readAt": "2026-11-03T07:33:40.980532+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-NACHFRAGE-BELEGE-20261103-R65.json",
+              "gitBlobSha": "a52b56b3c092c54e8cf9d37470b955ab1f700a55",
+              "readAt": "2026-11-03T08:45:15.678968+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R67.json",
+              "gitBlobSha": "b1edabee83c7f312ed1a4a681aff97d8e96e584c",
+              "readAt": "2026-11-03T13:25:23.299694+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-FUNKTION-20261103-R67.json",
+              "gitBlobSha": "42c80da6e7632600a17aaedd7b369f690444929b",
+              "readAt": "2026-11-03T13:25:23.299694+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
+              "gitBlobSha": "46220aa594f1337959ba6409fdf813bc6d9ec515",
+              "readAt": "2026-11-04T07:29:25.340075+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-BELEGE-20261104-R78.json",
+              "gitBlobSha": "fdca6087e9679a0092ad4cdd68b8187a03490e27",
+              "readAt": "2026-11-04T08:39:22.685627+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R79.json",
+              "gitBlobSha": "d2494cf81df01fb36b4c0a54bffbbb880c1299d8",
+              "readAt": "2026-11-04T13:10:11.240259+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESAMTAUDIT-20261104-R81.json",
+              "gitBlobSha": "ab10ed354ddb15496c66c7cd5d13b907a592edea",
+              "readAt": "2026-11-04T16:46:07.936Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
+              "gitBlobSha": "dbc0f29ce14439a39626b12f0421c5d9dd05e7f7",
+              "readAt": "2026-11-05T07:20:02Z"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.md",
+              "gitBlobSha": "befad4940a1ca5ee07f96ff0f4a55868c940a1fe",
+              "sha256": "9a0845486c72dfaf0ad84738e86c356aef8eb7dbcae72d42f5d7d67670b83fed",
+              "readAt": "2026-11-08T22:02:24+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.json",
+              "gitBlobSha": "6735b09edebb65e35dc80685a08a6e404843e62d",
+              "sha256": "757d87faab75436d045f9c3284c119768d78db48bb51ad896b7164919ba606c1",
+              "readAt": "2026-11-08T22:02:24+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.md",
+              "gitBlobSha": "be0f228113decef7feeddfd01d83256cd420965b",
+              "sha256": "c9847cb6b27f2739d20a8b5780b8ef0aef216e88816c3a1e99ae95d9a7b28921",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json",
+              "gitBlobSha": "748a0aa34ecab7ab5d3189ca8f9586bfddc692e5",
+              "sha256": "2328ab4633d51fcb760bfba649b1c24bf7edaf46c239b95cccfcebc79ad93900",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-QUALITAETSSPERRE-20261109-R154.json",
+              "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
+              "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
+              "readAt": "2026-11-09T08:37:52+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+              "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+              "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+              "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+              "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+              "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+              "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+              "readAt": "2026-11-09T14:21:45+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R156.json",
+              "gitBlobSha": "7c69dfa7d87eb8149a9a1669f4476e367ae6c65f",
+              "sha256": "d39cfbed43d91b5cd42b6a2e2dde7fe87c06ea91b93b74ef3c284f63bac85a7e",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-UEBERSETZUNG-PREFLIGHT-20261109-R156.py",
+              "gitBlobSha": "661ebe33e49a26afa6a3b17a7be3ee94d687dcde",
+              "sha256": "c06fb0af063015c2fd74a635d5297b7a8bede50fab144448c1fcf86a768000d4",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-STICHPROBE-20261109-R156.json",
+              "gitBlobSha": "7a5caacf38c7f7f912ff1dc390d9654c67a62348",
+              "sha256": "4f83268b67059d5ead024aecb23dada023d79a6c742c93de118f7172e8444fc3",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R156.md",
+              "gitBlobSha": "80a3dbeb669dd88a367fd13e785a174204400b59",
+              "sha256": "9ce1212727e732471a59480966f2c8a3af22fe1c77b6a17abdf00513fe2bca6d",
+              "readAt": "2026-11-09T19:12:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.md",
+              "gitBlobSha": "c69e51f6a98de6c03cbb4297e29c15a14b18e2a8",
+              "sha256": "61e65bf76ae868162fbf4de61f93cb12e38b1f94469e8fb9bcca98037dd979f0",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.json",
+              "gitBlobSha": "255c18be29325b956e822802e631e1b5940850b0",
+              "sha256": "45966fd0efd7f36bf51c94187af50bb40da3534a21dd266394b6ac1363ea7365",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GSC-RANKING-20261109-R157.json",
+              "gitBlobSha": "596f50aa1ed48bee30392886cdfbd01207c68471",
+              "sha256": "b51e86ab66941f01b062f85cab27e768f7de0658755be203d83a6d611eda5890",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOPIFY-FR-PREFLIGHT-20261109-R157.json",
+              "gitBlobSha": "2e12a28ab59e39dcf2ece008c1ca8b3187fb959e",
+              "sha256": "26a18243ee3b78e389af1c0421dacab187c8cfe1055baad829681df79620e4d4",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-SPRACH-QA-20261109-R157.json",
+              "gitBlobSha": "442fdd9eff8df9a7ec436f73a126ad6e9fd6e3df",
+              "sha256": "e69e9c0446a5876090dc54c041fca0cd3d656e027c555db2366e9c1c39a12e58",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FR-TRANSLATIONS-20261109-R157.json",
+              "gitBlobSha": "7df8c12dea453783bf9f83d554b1e87d2eef2fed",
+              "sha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PUBLIC-SEO-VORHER-20261109-R157.json",
+              "gitBlobSha": "4efd26a831a60a4ad73c381de928a8b02be140ed",
+              "sha256": "b5e00e152661d6f3d9e41df106282f47770ab2c16aad78224206eb2a632587cf",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PUBLIC-SEO-NACHHER-20261109-R157.json",
+              "gitBlobSha": "97cb8e24e664a0228f13e83cb0aab277a2a53cfe",
+              "sha256": "1cb3574a785a1974b8d3538385cf06defb23c8472b24c0a28a1c7df08d6084be",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-SEO-ANALYSE-20261109-R157.md",
+              "gitBlobSha": "8e0a56ed3858cf862576502fca6fd524e13e26ce",
+              "sha256": "14e73855f9683478707bf6fffe445dad4c146cc0dd1dd37bca6ab9f979355d43",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-SEO-BELEG-20261109-R157.json",
+              "gitBlobSha": "ad3b57b472e1a6f1993cdffce5a5046f4608d6f7",
+              "sha256": "7f7b12dd2981524496aa92efef2f57d27709156f936f2aeb0ecb77ff635e74ac",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-OG-HTTPS-20261109-R157.patch",
+              "gitBlobSha": "7cde4ce53ef1bb66612cd87476085fdf7e743bf7",
+              "sha256": "d06ffd51636c3438948f7ef2fcc8acc07ea329ef69a28854d7fd4c1bacd0abdb",
+              "readAt": "2026-11-09T21:30:30+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.md",
+              "gitBlobSha": "a996130b021ce932fe6e4933f57b0c6cfa5d8a22",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.json",
+              "gitBlobSha": "4ed2d1bf37705bbc5b4411c2a7750aafa080c178",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MENU-IA-20261109-R158.json",
+              "gitBlobSha": "155beced0f3eaee8a150162d6cc48f44e5b8274d",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-SYNC-20261109-R158.md",
+              "gitBlobSha": "7d896209d213047fd2f39bf83de2109961348ad9",
+              "readAt": "2026-11-09T21:52:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.md",
+              "gitBlobSha": "ea808965003467a864c5a4943b8bb455c9c1cec4",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
+              "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
+              "readAt": "2026-11-09T22:39:00+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.md",
+              "gitBlobSha": "71b50e5903e1abca3e439dae0b68cdecdb31a140",
+              "sha256": "72319e823a668bb46a0fa85e0f0bf45c424f2f81bc6111a1014615216bab6ff6",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GOOGLE-SEO-PUSH-20261110-R162.json",
+              "gitBlobSha": "c59624c9f65d72165232e38d72c6b69946b58aff",
+              "sha256": "02808c70bd4c9bab59da2164e3f411b0730673c25484b80bb0485b8c38f8a54d",
+              "readAt": "2026-11-10T00:46:34+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.md",
+              "gitBlobSha": "ff4444d9b3c60286d4c53d57e0efb81ac790d18d",
+              "sha256": "a6b16462e05228e7346266276e9dab8cfccf9ca4bdb7057aa386b5d62961f5e6",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R163.json",
+              "gitBlobSha": "273a1084f1cdc74e866ef96eb51914095d578a07",
+              "sha256": "bf8ae9e75c8be798e2906d5315d4467a5025165e6c0849871188475f07bfca74",
+              "readAt": "2026-11-10T01:31:10+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.md",
+              "gitBlobSha": "45d71bd9ef19c8c6b398ff89fb2c450419f79c4c",
+              "sha256": "ff0ed95371666e03d67b07c2b574d78ebd79ead9c8be61a5169d975aa09ac74e",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PRODUKT-FORTSETZUNG-20261110-R164.json",
+              "gitBlobSha": "3fc512d57536d2c3f24dc71d2240f346655cb1e6",
+              "sha256": "589b81a249d37c4ef1cac21af08b5b22c47a8362e5260935d6b15b53174143b3",
+              "readAt": "2026-11-10T08:02:15+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.md",
+              "gitBlobSha": "14e8b9e106350f4cda9f5f61af9b23d5b3209426",
+              "sha256": "b0a03fde6f05c6028d33408deaa3d6a294c66a268e7ddbb1d0d30dc99b9f20b5",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-CJ-FORTSETZUNG-20261110-R167.json",
+              "gitBlobSha": "8c8071c2b575be3518dd3e87857f1d0941358367",
+              "sha256": "dab8bbda29dbff9dabceb4b1969b2421ada5e54ccc108834ae193c15af6ac593",
+              "readAt": "2026-11-10T10:56:19+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.md",
+              "gitBlobSha": "e592c2996827759849087992235d6fbf13812191",
+              "sha256": "a1bf0295ac5c5c8c697b6791c41b68803d2b139eeffd3b41c54599e5eafc2f3a",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R169.json",
+              "gitBlobSha": "43285dfa63a023de1f16c18a59893f5a1c608f81",
+              "sha256": "b982a9ba86a538a1096e7dc603c3f447b9b9deb9531d2c474c442474c21cab8e",
+              "readAt": "2026-11-10T14:08:32+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.md",
+              "gitBlobSha": "6b764ccad94e6942d7d69dd29f667f448557bc66",
+              "sha256": "dffb514112d0bad0380871de55642ae6f25d048b0754c38fc660678925069f86",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FREIGABE-KOLLEKTIONSLINK-20261110-R170.json",
+              "gitBlobSha": "e7784cbda0b95f411c0d25b215b1801669658895",
+              "sha256": "6bd9b813a71d2c29d5b2526d3e7026fabfa9bb7c36dfcb9217c26563b94885a0",
+              "readAt": "2026-11-10T17:26:22+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.md",
+              "gitBlobSha": "cd689230ffdd4fe98853e2c8e427d3f421bbc69e",
+              "sha256": "f0a4991529fda9e168438baa1293b8283d181b674ce421cfcdcfe006b809daeb",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+              "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
+              "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
+              "readAt": "2026-11-11T08:27:31+01:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-HUB-20261113-14H-R195.json",
+              "sha256": "176a2af962ab848a80e87eef50a3c84a82b5ac5f3044ccefaa7e475e2c3e6cde",
+              "gitBlobSha": "20aae044427d1b858a20c955ab49ce54620dec7c",
+              "readAt": "2026-11-13T13:26:09.362978+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-TEILPRUEFUNG-20261113-R197.json",
+              "sha256": "1bd9ae106552b5fbb6451b13f0c8c0cca92372a6698b87e590e627898d8a1a96",
+              "gitBlobSha": "0382dcf1d53c4b66d48441992c91064e0eb55766",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
+              "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
+              "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
+              "readAt": "2026-11-13T23:10:09.275084+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
+              "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
+              "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8",
+              "readAt": "2026-11-14T01:06:47.675525+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+              "readAt": "2026-11-14T13:24:35.979270+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+              "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+              "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+              "readAt": "2026-11-14T13:51:47.537923+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-PUBLIKATION-20261114-R209.json",
+              "sha256": "d80ed1a7bd48627e2f131656d01ae406070cb527cf9c3a1fe3549d1f672f0d08",
+              "gitBlobSha": "2593382007b27899bd7e515a93429b4b00953e8a",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
+              "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
+              "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
+              "readAt": "2026-11-14T14:29:12.702519+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+              "readAt": "2026-11-14T14:53:27.658204+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-LIVE-PRUEFUNG-20261114-R211.json",
+              "sha256": "3e5019727d18ad8247e5ebd4dfb9f419bb81d84fbd416d490be40a3e939118c9",
+              "gitBlobSha": "36f1bacb1a995d8692766fa51f40bd666e987178",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R211.md",
+              "sha256": "710e5c1ad6aba209ecca0df197492df952d38e59c6b4f3b13d4052152eea076d",
+              "gitBlobSha": "4bf52c90a6b49ff56fb73e5ad55d3c62c5188d82",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
+              "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
+              "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
+              "readAt": "2026-11-14T15:42:05.029934+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+              "readAt": "2026-11-14T16:51:00.478622+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "48f32e7601b740113d5af141834c2323586b82505532831b82ad3a2d19e0d4e2",
+              "gitBlobSha": "a60f61f307faef27d575ab78a2e409ba31fc0acc",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "9c7780d93095c93dcbe2bc4dae6ddd3d1f9c36be04a999dd43d75dc7ab169ea2",
+              "gitBlobSha": "ba03edd7be27854b0d4e1b7636072e588ef242af",
+              "readAt": "2026-11-14T18:15:43.242952+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EINZELFALL-20261114-19H-R214.json",
+              "sha256": "dc23757bff6a8844cc3736cbbb842d953840a5593cff39fddd7e253b4af349f2",
+              "gitBlobSha": "558ce456a01f56e67d5d6a30710462c0e32ee75a",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
+              "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
+              "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
+              "readAt": "2026-11-14T18:20:39.154619+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+              "readAt": "2026-11-14T19:20:18.415060+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+              "readAt": "2026-11-14T20:08:39.021286+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "0f9d3d76ba338aa395db7dc64d4107a8fc52ffcb4d90bcae76ae5685096f4ac1",
+              "gitBlobSha": "d9b49be3863b1d72eef6111d82e9ecda7129bd98",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
+              "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
+              "readAt": "2026-11-14T20:28:29+00:00"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
+            }
+          ]
         }
       ]
     },
@@ -23597,6 +26389,52 @@
           "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
           "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
           "bytes": 1017401
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 220,
+      "at": "2026-11-14T21:50:09.322371+00:00",
+      "actor": "codex",
+      "summary": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+          "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+          "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+          "bytes": 2129
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+          "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+          "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+          "bytes": 69317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+          "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+          "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+          "bytes": 224683
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+          "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+          "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+          "bytes": 222651
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+          "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+          "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+          "bytes": 970371
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+          "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+          "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+          "bytes": 965914
         }
       ],
       "taskCount": 24,
@@ -48549,5 +51387,72 @@
         "bytes": 1017401
       }
     ]
+  },
+  "run220": {
+    "recordedAtUTC": "2026-11-14T21:50:09.322371+00:00",
+    "dateZurich": "2026-11-14",
+    "kind": "completed_live_shopify_collection_description_update",
+    "shopifyWrites": 1,
+    "themePublishes": 0,
+    "target": "gid://shopify/Collection/687522775425",
+    "changedFields": [
+      "descriptionHtml"
+    ],
+    "nativeAndPublicReadbackPassed": true,
+    "newGoogleQueries": 0,
+    "socialMerchantFlowMetricOrderQueries": 0,
+    "newAutomation": 0,
+    "readOnlyIdentityReads": {
+      "shopInfo": 1,
+      "metricoolBrand": 1
+    },
+    "report": "WOHNEN-SEITE-20261114-R220.md",
+    "proof": "WOHNEN-SEITE-20261114-R220.json",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.md",
+        "sha256": "7890a82fdc575791ae4dd74042a666ed30e4f4d969af64e419fc24e117368b92",
+        "gitBlobSha": "aa14c9fa1a8ff3f0da8992a6f8f502a41369fac6",
+        "bytes": 2129
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-SEITE-20261114-R220.json",
+        "sha256": "d4d8c1adcb0aed06bf7f4caf63571b91410377eca888f9a6f5b91ce07c11cbaf",
+        "gitBlobSha": "b829db38bf7ba14633df4f8eab622ea0b102bb73",
+        "bytes": 69317
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-390-R220.png",
+        "sha256": "4a8c39edc611abad53c2700f29cdca1542fd90e67f8f3f9eb714761433317a2e",
+        "gitBlobSha": "2de432b830f8e54b8ed0ad354e4b0bd5a4190a8f",
+        "bytes": 224683
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-390-R220.png",
+        "sha256": "956000860e43d05bc20ec639b5ee6ad1dc01916f74b00e6f4c6f3af835d32dae",
+        "gitBlobSha": "4154d26a8d7ce5c11dbe894cdff26afad316a8c3",
+        "bytes": 222651
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-VORHER-1440-R220.png",
+        "sha256": "9ce2c50171668067bd9804d04f6c353636de68d529ad8d5df93e2f84115e854a",
+        "gitBlobSha": "a7fce943a4bc41aea6a284d70327425dba63c81d",
+        "bytes": 970371
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WOHNEN-LIVE-1440-R220.png",
+        "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
+        "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
+        "bytes": 965914
+      }
+    ],
+    "executedAtUTC": "2026-11-14T21:41:20Z",
+    "reportQueryCounts": {
+      "metricoolMetrics": 0,
+      "klaviyo": 0,
+      "merchant": 0,
+      "gsc": 0,
+      "orders": 0
+    }
   }
 }

@@ -2513,3 +2513,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Umfang / Grenzen | Eine Shop-Schreibaktion, null Theme-Publishes | Keine neue Indexierungs-/Google-, Merchant-, Flow-, Kennzahlen-, Bestell- oder Verkaufsabfrage. Metricool-Identität gelesen; keine neuen Socialposts oder Automation. Banner/CSS/Preise/Rabatte/Versand nicht geändert. |
 
 [Bericht](GESCHENKSEITE-20261114-R219.md) · [Belegpaket](GESCHENKSEITE-20261114-R219.json).
+
+
+### R220 – Wohnen & Dekoration, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shop / Wohnen & Dekoration | Eine bestätigte Shopify-`collectionUpdate`-Mutation; ausschliesslich `descriptionHtml` geändert | Native und öffentliche Rücklesung bestanden; Titel, SEO-Felder, Handle, Bild, Sortierung und Template erhalten. Drei bisherige Links in Reihenfolge erhalten, Kissenbezüge ergänzt; vier Ziele HTTP 200. |
+| Richtlinien und Live-QA | CHF-50-Hinweis unverändert übernommen; 30-Tage-Angabe mit Rückgaberichtlinie abgeglichen; öffentliche Seite bei 390 und 1440 px geprüft | QA-Belege bestanden. Keine unabhängige Indexierungs-, Ranking- oder Verkaufswirkung belegt. |
+| Umfang | Eine Shop-Schreibaktion, null Theme-Publishes | Keine neue Automation; keine weiteren Änderungen an Collections. |
+
+[Bericht](WOHNEN-SEITE-20261114-R220.md) · [Belegpaket](WOHNEN-SEITE-20261114-R220.json).

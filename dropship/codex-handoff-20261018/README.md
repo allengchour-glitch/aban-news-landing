@@ -1,3 +1,11 @@
+# R220 – Wohnen & Dekoration live aktualisiert, 14.11.2026
+
+Eine Shopify-Änderung an `wohnen-dekoration` aktualisierte ausschliesslich die Beschreibung. Native und öffentliche Rücklesung sowie Mobile-/Desktop-Live-QA sind belegt. CHF 50 blieb unverändert im Text; die aktuelle Rückgaberichtlinie bestätigt 30 Tage und nennt die Ausnahme für selbst gestaltete Artikel. Die drei bisherigen Links blieben in Reihenfolge; Kissenbezüge kam als erster Link hinzu. Keine Ranking- oder Verkaufswirkung gemessen.
+
+[Bericht](WOHNEN-SEITE-20261114-R220.md) · [Belegpaket](WOHNEN-SEITE-20261114-R220.json).
+
+---
+
 # R219 – Geschenkseite live verbessert, 14.11.2026
 
 Eine Shopify-Änderung an `premium-geschenke` wurde um 22:06:18 Uhr Zürich erfolgreich ausgeführt: Titel „Geschenkideen“ und neue Einleitung. Öffentliche/native Rücklesung sowie Live-QA für 390/1440 px bestanden. SEO-Metadaten, Handle, Bild, Sortierung, Template und acht bestehende Links blieben erhalten. Keine Ranking-/Conversionmessung oder neue Indexierungsabfrage. Details: [Bericht](GESCHENKSEITE-20261114-R219.md) · [Belege](GESCHENKSEITE-20261114-R219.json). R218-/ältere Historie folgt unverändert.

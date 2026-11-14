@@ -1,0 +1,1314 @@
+{
+  "revision": 220,
+  "capturedAtUTC": "2026-11-14T21:50:09.322371+00:00",
+  "dateZurich": "2026-11-14",
+  "type": "completed_live_shopify_collection_description_update",
+  "authorizationContext": {
+    "latestOwnerInstruction": "weiter",
+    "priorWebsiteAndSEOAuthorizationContinues": true,
+    "mutationConfirmationTool": "required_and_returned_success",
+    "separateHumanApprovalClick": null,
+    "approvalReceipt": "native tool requires confirmation and returned success; separate click receipt not recorded"
+  },
+  "write": {
+    "service": "Shopify",
+    "operation": "collectionUpdate",
+    "executedAtUTC": "2026-11-14T21:41:20Z",
+    "userErrors": [],
+    "target": {
+      "id": "gid://shopify/Collection/687522775425",
+      "handle": "wohnen-dekoration",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration"
+    },
+    "changedFields": {
+      "descriptionHtml": {
+        "before": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+        "after": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->"
+      }
+    },
+    "unchangedFields": {
+      "title": "Wohnen & Dekoration",
+      "handle": "wohnen-dekoration",
+      "seo": {
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+      },
+      "templateSuffix": null,
+      "sortOrder": "MANUAL",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2066453954945",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+        "altText": "Wohnen & Wellness | LuxeStyle",
+        "width": 1600,
+        "height": 620
+      },
+      "firstThreeProducts": [
+        {
+          "id": "gid://shopify/Product/15470075576705",
+          "title": "Elastische Stoffhuelle",
+          "handle": "elastische-stoffhuelle-627900",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dekoration",
+            "dropship",
+            "haushalt",
+            "rueckhol-0907",
+            "sort-sofaueberzuege",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/elastische-stoffhuelle-627900",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55970997469569",
+                "title": "Default Title",
+                "price": "14.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15470078165377",
+          "title": "Schwarz-Weiss Cartoon Vorhang",
+          "handle": "schwarz-weiss-cartoon-vorhang-619000",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dekoration",
+            "dropship",
+            "haushalt",
+            "kat-kissen",
+            "rueckhol-0907",
+            "sort-vorhaenge",
+            "sort-vorhaenge-gardinen-rollos",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/schwarz-weiss-cartoon-vorhang-619000",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56069675647361",
+                "title": "Bunt / 70X100cm",
+                "price": "14.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15493718147457",
+          "title": "Boho Kissenhülle mit Stickerei und Quasten",
+          "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dekoration",
+            "dropship",
+            "haushalt",
+            "huelle",
+            "kat-kissen",
+            "kissenhuelle",
+            "rueckhol-0907",
+            "sort-kissenbezuege",
+            "varianten-nachgezogen-1025",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/boho-kissenhulle-mit-stickerei-und-quasten-766208",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67789587808647",
+                "title": "30x50 cm, Variante 1",
+                "price": "16.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "collectionIdentityStable": true
+  },
+  "copyChecks": {
+    "beforeHrefOrder": [
+      "/collections/vorhaenge",
+      "/collections/sub-beleuchtung",
+      "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+    ],
+    "afterHrefOrder": [
+      "/collections/kissenbezuege",
+      "/collections/vorhaenge",
+      "/collections/sub-beleuchtung",
+      "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+    ],
+    "oldThreeLinksPreservedInOrder": true,
+    "commentMarkersPreserved": true,
+    "shippingClaimPreserved": true,
+    "shippingClaimSource": "unchanged owner-approved text",
+    "returnClaimPreserved": true,
+    "returnPolicyVerified": true,
+    "returnPolicyEvidence": "links-policy.json",
+    "returnPolicyExceptionsNoted": [
+      "selbst gestaltete Artikel"
+    ],
+    "allFourTargetsHTTP200": true
+  },
+  "liveVerification": {
+    "httpStatus": 200,
+    "publicProofFile": "public-live-countercheck.json",
+    "publicDescriptionExact": true,
+    "publicCheckAllPass": true,
+    "qaMode": "fresh public browser; no DOM mutation; read-only",
+    "allPass": true,
+    "viewports": {
+      "390": {
+        "httpStatus": 200,
+        "descriptionExactAfterKnownAnalyticsAttrsRemoved": true,
+        "linksMatch": true,
+        "headMatchesNative": true,
+        "h1MatchesNative": true,
+        "noHorizontalOverflow": true,
+        "resultsListTop": 712,
+        "screenshot": "WOHNEN-LIVE-390-R220.png"
+      },
+      "1440": {
+        "httpStatus": 200,
+        "descriptionExactAfterKnownAnalyticsAttrsRemoved": true,
+        "linksMatch": true,
+        "headMatchesNative": true,
+        "h1MatchesNative": true,
+        "noHorizontalOverflow": true,
+        "resultsListTop": 688,
+        "screenshot": "WOHNEN-LIVE-1440-R220.png"
+      }
+    }
+  },
+  "localPreviewOnly": {
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "h1Lines": 2,
+        "heroHeight": 326,
+        "resultsTop": 757,
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "horizontalOverflow": false
+      },
+      "preview": {
+        "h1Lines": 2,
+        "heroHeight": 281,
+        "resultsTop": 712,
+        "firstProductTop": 712,
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "horizontalOverflow": false,
+        "totalAnchorCount": 1640
+      },
+      "checks": {
+        "onlyTargetFound": true,
+        "productUnchanged": true,
+        "h1Unchanged": true,
+        "outsideDescriptionHrefsExact": true,
+        "descriptionHrefsMatchDraft": true,
+        "noHorizontalOverflow": true
+      },
+      "descriptionHrefs": [
+        "/collections/kissenbezuege",
+        "/collections/vorhaenge",
+        "/collections/sub-beleuchtung",
+        "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+      ]
+    },
+    "desktop": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "h1Lines": 1,
+        "heroHeight": 230,
+        "resultsTop": 688,
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "horizontalOverflow": false
+      },
+      "preview": {
+        "h1Lines": 1,
+        "heroHeight": 230,
+        "resultsTop": 688,
+        "firstProductTop": 688,
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "horizontalOverflow": false,
+        "totalAnchorCount": 1640
+      },
+      "checks": {
+        "onlyTargetFound": true,
+        "productUnchanged": true,
+        "h1Unchanged": true,
+        "outsideDescriptionHrefsExact": true,
+        "descriptionHrefsMatchDraft": true,
+        "noHorizontalOverflow": true
+      },
+      "descriptionHrefs": [
+        "/collections/kissenbezuege",
+        "/collections/vorhaenge",
+        "/collections/sub-beleuchtung",
+        "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+      ]
+    },
+    "notLiveEffectMeasurement": true
+  },
+  "limits": {
+    "fullCatalogReview": false,
+    "independentIndexingOrRankingCheck": false,
+    "rankingOrSalesEffect": "unknown_unmeasured",
+    "themePublishes": 0,
+    "newAutomation": 0,
+    "newMetricoolPosts": 0,
+    "newPerformanceReports": 0,
+    "newKlaviyoReports": 0,
+    "newGSCQueries": 0,
+    "newPurchaseWatchQueries": 0,
+    "newMerchantQueries": 0,
+    "newVideoRenders": 0
+  },
+  "embeddedEvidence": {
+    "nativeBefore": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687522775425",
+              "title": "Wohnen & Dekoration",
+              "handle": "wohnen-dekoration",
+              "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-13T22:50:18Z",
+              "seo": {
+                "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066453954945",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+                "altText": "Wohnen & Wellness | LuxeStyle",
+                "width": 1600,
+                "height": 620
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15470075576705",
+                    "title": "Elastische Stoffhuelle",
+                    "handle": "elastische-stoffhuelle-627900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "rueckhol-0907",
+                      "sort-sofaueberzuege",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/elastische-stoffhuelle-627900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/55970997469569",
+                          "title": "Default Title",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15470078165377",
+                    "title": "Schwarz-Weiss Cartoon Vorhang",
+                    "handle": "schwarz-weiss-cartoon-vorhang-619000",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "kat-kissen",
+                      "rueckhol-0907",
+                      "sort-vorhaenge",
+                      "sort-vorhaenge-gardinen-rollos",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/schwarz-weiss-cartoon-vorhang-619000",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/56069675647361",
+                          "title": "Bunt / 70X100cm",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718147457",
+                    "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                    "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "huelle",
+                      "kat-kissen",
+                      "kissenhuelle",
+                      "rueckhol-0907",
+                      "sort-kissenbezuege",
+                      "varianten-nachgezogen-1025",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789587808647",
+                          "title": "30x50 cm, Variante 1",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "prewrite": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687522775425",
+              "title": "Wohnen & Dekoration",
+              "handle": "wohnen-dekoration",
+              "descriptionHtml": "<p>Entdecke Kissenbezüge, Vorhänge und Wohnaccessoires für dein Zuhause – von Textilien bis zu Lichtideen. Vergleiche Masse, Farben und Ausführungen direkt am Artikel und wähle passend zu deinem Raum. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-13T22:50:18Z",
+              "seo": {
+                "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066453954945",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+                "altText": "Wohnen & Wellness | LuxeStyle",
+                "width": 1600,
+                "height": 620
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15470075576705",
+                    "title": "Elastische Stoffhuelle",
+                    "handle": "elastische-stoffhuelle-627900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "rueckhol-0907",
+                      "sort-sofaueberzuege",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/elastische-stoffhuelle-627900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/55970997469569",
+                          "title": "Default Title",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15470078165377",
+                    "title": "Schwarz-Weiss Cartoon Vorhang",
+                    "handle": "schwarz-weiss-cartoon-vorhang-619000",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "kat-kissen",
+                      "rueckhol-0907",
+                      "sort-vorhaenge",
+                      "sort-vorhaenge-gardinen-rollos",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/schwarz-weiss-cartoon-vorhang-619000",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/56069675647361",
+                          "title": "Bunt / 70X100cm",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718147457",
+                    "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                    "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "huelle",
+                      "kat-kissen",
+                      "kissenhuelle",
+                      "rueckhol-0907",
+                      "sort-kissenbezuege",
+                      "varianten-nachgezogen-1025",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789587808647",
+                          "title": "30x50 cm, Variante 1",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "mutationInput": {
+      "query": "mutation UpdateLivingLanding($collection: CollectionUpdateInput!) { collectionUpdate(collection: $collection) { collection { id title handle descriptionHtml updatedAt seo { title description } templateSuffix sortOrder image { id url altText width height } } userErrors { field message } } }",
+      "variables": {
+        "collection": {
+          "id": "gid://shopify/Collection/687522775425",
+          "descriptionHtml": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->"
+        }
+      }
+    },
+    "mutation": {
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/687522775425",
+            "title": "Wohnen & Dekoration",
+            "handle": "wohnen-dekoration",
+            "descriptionHtml": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "updatedAt": "2026-11-14T21:41:20Z",
+            "seo": {
+              "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+              "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+            },
+            "templateSuffix": null,
+            "sortOrder": "MANUAL",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2066453954945",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+              "altText": "Wohnen & Wellness | LuxeStyle",
+              "width": 1600,
+              "height": 620
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    "nativeAfter": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687522775425",
+              "title": "Wohnen & Dekoration",
+              "handle": "wohnen-dekoration",
+              "descriptionHtml": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-14T21:41:20Z",
+              "seo": {
+                "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+                "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066453954945",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831",
+                "altText": "Wohnen & Wellness | LuxeStyle",
+                "width": 1600,
+                "height": 620
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15470075576705",
+                    "title": "Elastische Stoffhuelle",
+                    "handle": "elastische-stoffhuelle-627900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "rueckhol-0907",
+                      "sort-sofaueberzuege",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/elastische-stoffhuelle-627900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/55970997469569",
+                          "title": "Default Title",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15470078165377",
+                    "title": "Schwarz-Weiss Cartoon Vorhang",
+                    "handle": "schwarz-weiss-cartoon-vorhang-619000",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "kat-kissen",
+                      "rueckhol-0907",
+                      "sort-vorhaenge",
+                      "sort-vorhaenge-gardinen-rollos",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/schwarz-weiss-cartoon-vorhang-619000",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/56069675647361",
+                          "title": "Bunt / 70X100cm",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493718147457",
+                    "title": "Boho Kissenhülle mit Stickerei und Quasten",
+                    "handle": "boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dekoration",
+                      "dropship",
+                      "haushalt",
+                      "huelle",
+                      "kat-kissen",
+                      "kissenhuelle",
+                      "rueckhol-0907",
+                      "sort-kissenbezuege",
+                      "varianten-nachgezogen-1025",
+                      "wohnen"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/boho-kissenhulle-mit-stickerei-und-quasten-766208",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789587808647",
+                          "title": "30x50 cm, Variante 1",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "publicLiveCountercheck": {
+      "checkedAtUTC": "2026-11-14T21:42:09.253564+00:00",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "h1": [
+        "Wohnen & Dekoration"
+      ],
+      "headTitle": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+      "metaDescription": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+      "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "descriptionHtml": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+      "descriptionExact": true,
+      "headRobots": [],
+      "headersRobots": null,
+      "allPass": true
+    },
+    "liveQA": {
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "mode": "fresh public browser; no DOM mutation; read-only",
+      "expectedDescriptionHrefs": [
+        "/collections/kissenbezuege",
+        "/collections/vorhaenge",
+        "/collections/sub-beleuchtung",
+        "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+      ],
+      "allPass": true,
+      "measurementNote": "Raw page innerHTML was preserved and is not byte-exact: the page runtime adds known analytics data-* attributes to the Beistelltisch link. Detached DOMParser comparison removing only those five known attributes matches draft exactly; this is runtime instrumentation, not a content difference.",
+      "nativeHead": {
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "description": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration"
+      },
+      "results": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "status": 200,
+          "data": {
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "rawDescriptionHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\" data-product-impression-tracked=\"true\" data-product-link-position=\"1\" data-impression-id=\"95be681b-e878-459a-8f5b-40e843e102a8\" data-above-fold=\"true\" data-product-click-tracked=\"true\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "normalizedDescriptionHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "normalizedDraftHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "descriptionAnalyticsAttrs": [
+              {
+                "name": "data-product-impression-tracked",
+                "value": "true"
+              },
+              {
+                "name": "data-product-link-position",
+                "value": "1"
+              },
+              {
+                "name": "data-impression-id",
+                "value": "95be681b-e878-459a-8f5b-40e843e102a8"
+              },
+              {
+                "name": "data-above-fold",
+                "value": "true"
+              },
+              {
+                "name": "data-product-click-tracked",
+                "value": "true"
+              }
+            ],
+            "h1": {
+              "text": "Wohnen & Dekoration",
+              "lines": 2,
+              "top": 408,
+              "height": 76,
+              "bottom": 484
+            },
+            "hero": {
+              "top": 379,
+              "height": 281,
+              "bottom": 660
+            },
+            "description": {
+              "top": 494,
+              "height": 141,
+              "bottom": 635
+            },
+            "descriptionInnerHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\" data-product-impression-tracked=\"true\" data-product-link-position=\"1\" data-impression-id=\"95be681b-e878-459a-8f5b-40e843e102a8\" data-above-fold=\"true\" data-product-click-tracked=\"true\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "descriptionHrefs": [
+              "/collections/kissenbezuege",
+              "/collections/vorhaenge",
+              "/collections/sub-beleuchtung",
+              "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+            ],
+            "resultsList": {
+              "top": 712,
+              "height": 4954,
+              "bottom": 5666
+            },
+            "firstProduct": {
+              "top": 712,
+              "height": 376,
+              "bottom": 1088
+            },
+            "documentWidth": 390,
+            "viewportWidth": 390,
+            "horizontalOverflow": false,
+            "totalAnchorCount": 1640
+          },
+          "checks": {
+            "http200": true,
+            "targetExists": true,
+            "descriptionExactAfterKnownAnalyticsAttrsRemoved": true,
+            "descriptionHrefsMatchDraft": true,
+            "headMatchesNative": true,
+            "h1MatchesNative": true,
+            "noHorizontalOverflow": true
+          },
+          "measurements": {
+            "rawDescriptionHTMLExact": false
+          }
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "status": 200,
+          "data": {
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "rawDescriptionHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\" data-product-impression-tracked=\"true\" data-product-link-position=\"1\" data-impression-id=\"e1a5811e-c2b2-47c6-b657-1a1872797085\" data-above-fold=\"true\" data-product-click-tracked=\"true\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "normalizedDescriptionHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "normalizedDraftHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "descriptionAnalyticsAttrs": [
+              {
+                "name": "data-product-impression-tracked",
+                "value": "true"
+              },
+              {
+                "name": "data-product-link-position",
+                "value": "1"
+              },
+              {
+                "name": "data-impression-id",
+                "value": "e1a5811e-c2b2-47c6-b657-1a1872797085"
+              },
+              {
+                "name": "data-above-fold",
+                "value": "true"
+              },
+              {
+                "name": "data-product-click-tracked",
+                "value": "true"
+              }
+            ],
+            "h1": {
+              "text": "Wohnen & Dekoration",
+              "lines": 1,
+              "top": 434,
+              "height": 60,
+              "bottom": 495
+            },
+            "hero": {
+              "top": 390,
+              "height": 230,
+              "bottom": 620
+            },
+            "description": {
+              "top": 504,
+              "height": 74,
+              "bottom": 578
+            },
+            "descriptionInnerHTML": "<p>Kissenbezüge, Vorhänge und Lichtideen für dein Zuhause. Vergleiche Masse, Farben und Ausführungen direkt am Artikel. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Gezielt entdecken:</strong> <a href=\"/collections/kissenbezuege\">Kissenbezüge</a> · <a href=\"/collections/vorhaenge\">Vorhänge</a> · <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a> · <a href=\"/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\" data-product-impression-tracked=\"true\" data-product-link-position=\"1\" data-impression-id=\"e1a5811e-c2b2-47c6-b657-1a1872797085\" data-above-fold=\"true\" data-product-click-tracked=\"true\">Beistelltisch Acryl</a></p><!-- /ls-verwandt -->",
+            "descriptionHrefs": [
+              "/collections/kissenbezuege",
+              "/collections/vorhaenge",
+              "/collections/sub-beleuchtung",
+              "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+            ],
+            "resultsList": {
+              "top": 688,
+              "height": 2411,
+              "bottom": 3099
+            },
+            "firstProduct": {
+              "top": 688,
+              "height": 441,
+              "bottom": 1129
+            },
+            "documentWidth": 1440,
+            "viewportWidth": 1440,
+            "horizontalOverflow": false,
+            "totalAnchorCount": 1640
+          },
+          "checks": {
+            "http200": true,
+            "targetExists": true,
+            "descriptionExactAfterKnownAnalyticsAttrsRemoved": true,
+            "descriptionHrefsMatchDraft": true,
+            "headMatchesNative": true,
+            "h1MatchesNative": true,
+            "noHorizontalOverflow": true
+          },
+          "measurements": {
+            "rawDescriptionHTMLExact": false
+          }
+        }
+      ]
+    },
+    "rootLiveValidation": {
+      "checkedAtUTC": "2026-11-14T21:44:10.479485+00:00",
+      "allPass": true,
+      "checks": {
+        "nativeOnlyDescriptionAndUpdatedAt": true,
+        "inputExactlyDraft": true,
+        "userErrorsEmpty": true,
+        "nativeAndMutationMatch": true,
+        "publicExact": true,
+        "previewAllPass": true,
+        "viewportsRecorded": true,
+        "actualHeadsMatch": true,
+        "noOverflow": true,
+        "http200": true
+      },
+      "scope": "1 collection; first 3 products and 1 variant each; no whole catalog proof",
+      "rootSawActualLiveMobile": true
+    },
+    "previewGates": {
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "mode": "local DOM preview only; no Shopify/API writes; viewport screenshots only",
+      "gates": true,
+      "views": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "before": {
+            "h1Lines": 2,
+            "heroHeight": 326,
+            "resultsTop": 757,
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "horizontalOverflow": false
+          },
+          "preview": {
+            "h1Lines": 2,
+            "heroHeight": 281,
+            "resultsTop": 712,
+            "firstProductTop": 712,
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "horizontalOverflow": false,
+            "totalAnchorCount": 1640
+          },
+          "checks": {
+            "onlyTargetFound": true,
+            "productUnchanged": true,
+            "h1Unchanged": true,
+            "outsideDescriptionHrefsExact": true,
+            "descriptionHrefsMatchDraft": true,
+            "noHorizontalOverflow": true
+          },
+          "descriptionHrefs": [
+            "/collections/kissenbezuege",
+            "/collections/vorhaenge",
+            "/collections/sub-beleuchtung",
+            "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "before": {
+            "h1Lines": 1,
+            "heroHeight": 230,
+            "resultsTop": 688,
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "horizontalOverflow": false
+          },
+          "preview": {
+            "h1Lines": 1,
+            "heroHeight": 230,
+            "resultsTop": 688,
+            "firstProductTop": 688,
+            "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+            "descriptionMeta": "Wohnen & Dekoration bei LuxeStyle Schweiz: Kissenbezüge, Vorhänge und Lichtideen entdecken. Masse und Ausführungen direkt am Artikel vergleichen.",
+            "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "horizontalOverflow": false,
+            "totalAnchorCount": 1640
+          },
+          "checks": {
+            "onlyTargetFound": true,
+            "productUnchanged": true,
+            "h1Unchanged": true,
+            "outsideDescriptionHrefsExact": true,
+            "descriptionHrefsMatchDraft": true,
+            "noHorizontalOverflow": true
+          },
+          "descriptionHrefs": [
+            "/collections/kissenbezuege",
+            "/collections/vorhaenge",
+            "/collections/sub-beleuchtung",
+            "/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+          ]
+        }
+      ],
+      "files": {
+        "beforeMobile": "before-390x844.png",
+        "beforeDesktop": "before-1440x1000.png",
+        "previewMobile": "preview-390x844.png",
+        "previewDesktop": "preview-1440x1000.png",
+        "raw": "rawchecks.json"
+      }
+    },
+    "linkAndPolicyChecks": [
+      {
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "headTitle": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "h1": [
+          "Wohnen & Dekoration"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/wohnen-dekoration\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:31.879505+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/collections/kissenbezuege",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/kissenbezuege",
+        "headTitle": "Kissenbezüge & Kissenhüllen online kaufen | LuxeStyle CH",
+        "h1": [
+          "Kissenbezüge & Kissenhüllen"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/kissenbezuege\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:31.815253+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/collections/vorhaenge",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/vorhaenge",
+        "headTitle": "Vorhänge kaufen | LuxeStyle Schweiz",
+        "h1": [
+          "Vorhänge"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/vorhaenge\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:31.567175+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/collections/sub-beleuchtung",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/sub-beleuchtung",
+        "headTitle": "Stimmungslicht, Lampen & LED-Beleuchtung | LuxeStyle",
+        "h1": [
+          "Beleuchtung"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/sub-beleuchtung\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:31.926548+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+        "headTitle": "Beistelltisch Acryl, transparent | LuxeStyle",
+        "h1": [
+          "Acryl-Beistelltisch für Wohn- und Schlafzimmer"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:32.325038+00:00"
+      },
+      {
+        "url": "https://luxestyle.ch/policies/refund-policy",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/policies/refund-policy",
+        "headTitle": "Widerrufsrecht\n – LuxeStyle",
+        "h1": [
+          "Widerrufsrecht"
+        ],
+        "canonicalTags": [
+          "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/policies/refund-policy\"\n>"
+        ],
+        "headRobots": [],
+        "headersRobots": null,
+        "checkedAtUTC": "2026-11-14T21:37:32.486094+00:00",
+        "policyText": "Widerrufsrecht \n   \n\n   \n     \n         Rückgabe & Erstattung \n Bei LuxeStyle sollst du mit deiner Bestellung rundum zufrieden sein. Deshalb gewähren wir dir freiwillig ein  30-tägiges Rückgaberecht  ab Erhalt deiner Ware – ganz ohne Angabe von Gründen. Diese Regelung gilt für Lieferungen in die Schweiz und nach Liechtenstein. Für selbst gestaltete Artikel gilt sie nicht: Dafür gelten die Regeln im Abschnitt « Selbst gestaltete Artikel » weiter unten. \n Bitte beachte: Diese Rückgabe erfolgt freiwillig und aus Kulanz. Ein gesetzliches Widerrufsrecht besteht im Schweizer Recht für den Online-Kauf grundsätzlich nicht. \n Für Verbraucher:innen in Liechtenstein gilt zusätzlich das gesetzliche Rücktrittsrecht von 14 Tagen ab Erhalt der Ware nach dem Fern- und Auswärtsgeschäfte-Gesetz (FAGG). Unsere freiwillige 30-Tage-Rückgabe geht darüber hinaus; die Abwicklung ist dieselbe, und bei einem Rücktritt erstatten wir auch die ursprünglichen Kosten der Standardlieferung. Ausgenommen sind Artikel, die nach deinen Vorgaben angefertigt werden, zum Beispiel selbst gestaltete Artikel (Art. 19 Abs. 1 Bst. c FAGG, siehe Abschnitt «Selbst gestaltete Artikel»). \n\n Deine 30-Tage-Rückgabe \n Du kannst Artikel innerhalb von  30 Tagen ab Erhalt  an uns zurücksenden. Voraussetzung ist, dass die Ware  unbenutzt, ungetragen, unbeschädigt und vollständig in der Originalverpackung  (inkl. Etiketten und allfälligem Zubehör) ist. \n\n So läuft die Rückgabe ab \n \n   \n Rückgabe anmelden:  Schreib uns innerhalb der 30 Tage eine kurze E-Mail an  info@luxestyle.ch  mit deiner Bestellnummer und den Artikeln, die du zurücksenden möchtest. \n   \n Retourenadresse erhalten:  Wir senden dir per E-Mail die gültige Retourenadresse zu. Da wir im Direktversand (Dropshipping) arbeiten, kann die Rücksendeadresse je nach Artikel und Lager variieren. \n   \n Artikel zurücksenden:  Verpacke die Ware sicher und sende sie unbenutzt und originalverpackt an die von uns mitgeteilte Retourenadresse. Bitte verwende einen versicherten bzw. nachverfolgbaren Versand und bewahre den Sendebeleg auf. \n   \n Erstattung erhalten:  Sobald deine Rücksendung bei uns bzw. beim Lager eingetroffen und geprüft ist, erstatten wir dir den Kaufbetrag auf dem  ursprünglichen Zahlungsweg  – spätestens  innerhalb von 14 Tagen nach Eingang  der Retoure. \n \n\n Wichtig: richtige Retourenadresse verwenden \n Die im Impressum genannte Adresse (Hühnerhubelstrasse 37, 3123 Belp) ist  keine Retourenadresse . Sende Rücksendungen niemals unaufgefordert an diese Adresse – Pakete, die dorthin geschickt werden, können nicht bearbeitet oder erstattet werden. Verwende ausschliesslich die Retourenadresse, die wir dir nach deiner Anmeldung per E-Mail mitteilen. \n\n Rücksendekosten \n Die Kosten für die Rücksendung im Rahmen des freiwilligen 30-Tage-Rückgaberechts trägst du als Kundin oder Kunde selbst. Ausgenommen sind Fälle, in denen die Ware mangelhaft, beschädigt oder falsch geliefert wurde – dann übernehmen wir die Rücksendekosten (siehe unten). \n\n Defekte, beschädigte oder falsch gelieferte Artikel \n Ist ein Artikel bei Erhalt defekt oder beschädigt, oder hast du einen falschen Artikel erhalten, ist die Rücksendung für dich  kostenlos . \n \n   Melde dich in diesem Fall bitte  innerhalb von 30 Tagen nach Erhalt  unter  info@luxestyle.ch . Für selbst gestaltete Artikel bitten wir um Meldung innerhalb von 30 Tagen und entscheiden nach der Prüfung zwischen Ersatz und Erstattung (siehe Abschnitt «Selbst gestaltete Artikel»; deine gesetzlichen Rechte bei Mängeln bleiben unberührt). \n   Füge deiner Meldung ein  Foto oder Video  bei, das den Mangel bzw. den Fehler zeigt. So können wir den Fall schnell prüfen und unkompliziert lösen. \n   Nach Prüfung erhältst du wahlweise kostenlosen Ersatz oder die volle Erstattung des Kaufbetrags. Die Kosten der Rücksendung übernehmen in diesem Fall wir. \n \n\n Von der Rückgabe ausgeschlossen \n Aus hygienischen und praktischen Gründen können folgende Artikel nicht zurückgenommen werden, sofern sie kein Mangel aufweisen: \n \n   Artikel, die aus Hygienegründen versiegelt geliefert werden und deren Versiegelung nach Erhalt geöffnet bzw. entfernt wurde (z. B. Ohrringe, Schmuck mit direktem Hautkontakt, Kosmetik, Unterwäsche, Socken, Badebekleidung). \n   Personalisierte, individuell angefertigte oder nach deinen Wünschen gestaltete Artikel (z. B. Gravuren, individuelle Anfertigungen, selbst gestaltete Artikel; siehe Abschnitt «Selbst gestaltete Artikel»). \n   Artikel, die benutzt, getragen, gewaschen, beschädigt oder ohne Originalverpackung/Etiketten zurückgesendet werden. \n \n Der gesetzliche Anspruch bei tatsächlichen Sachmängeln bleibt von diesen Ausschlüssen unberührt. \n\n Selbst gestaltete Artikel (Druck auf Bestellung) \n Für Artikel, die du im Editor mit eigenem Motiv, Foto oder Text gestaltest, gilt statt des 30-tägigen Rückgaberechts die folgende Regelung. Eine Kurzfassung steht auf jeder Produktseite dieser Artikel. \n \n   \n Was ausgeschlossen ist.  Selbst gestaltete Artikel werden erst nach deiner Bestellung nach deinem Entwurf gedruckt und lassen sich nicht weiterverkaufen. Darum nehmen wir sie nicht zurück und tauschen sie nicht um, wenn du deine Meinung änderst, der Artikel dir nicht gefällt oder du Grösse, Farbe, Motiv oder Text falsch gewählt hast. Miss vor der Bestellung nach der Grössentabelle nach und prüfe deinen Entwurf in der Vorschau. \n   \n Was bei Mängeln gilt.  Der Ausschluss gilt nicht bei Mängeln. Wir ersetzen den Artikel kostenlos oder erstatten dir den Kaufbetrag, wenn der Artikel (a) fehlerhaft gedruckt ist, etwa durch verzogenen Druck, falsche Platzierung oder Farben, die klar von deinem bestellten Entwurf abweichen, oder einen Herstellungsfehler hat, (b) beschädigt ankommt, auch durch den Transport, (c) falsch geliefert wurde (ein anderer Artikel oder eine andere Grösse als bestellt, erkennbar am Etikett) oder ein Teil fehlt, oder (d) auf dem Versand verloren geht. \n   \n Frist.  Bitte melde einen sichtbaren Mangel, zum Beispiel einen Fehldruck oder einen Transportschaden, innerhalb von 30 Tagen nach Erhalt. Einen Mangel, den du erst später entdeckst, zum Beispiel einen Druck, der sich bei normaler Pflege löst, melde bitte sofort nach der Entdeckung. Kommt dein Paket nicht an, warte nach dem voraussichtlichen Lieferdatum aus deiner Versandbestätigung bitte 3 Werktage ab und melde dich dann bis 30 Tage nach diesem Datum. Steht in der Versandbestätigung kein Lieferdatum, gilt das Ende der Lieferzeit, die auf der Produktseite und in der Versandrichtlinie genannt ist. In dieser Zeit können wir den Fall beim Hersteller geltend machen und dir schnell helfen. \n   \n Nachweis.  Schick uns die Bestellnummer, eine kurze Beschreibung und ein deutliches Foto des ganzen Artikels, bei Druckfehlern zusätzlich des betroffenen Bereichs. Bei einem falschen Artikel zeig den Lieferschein im selben Foto, bei fehlenden Teilen fotografiere Verpackung und Lieferschein. Ohne Foto können wir einen Mangel in der Regel nicht prüfen. \n   \n Abhilfe.  Nach der Prüfung entscheiden wir, ob wir den Artikel neu drucken und versenden oder dir den Kaufbetrag erstatten. Ein Ersatzartikel wird neu gedruckt, das braucht wieder Produktions- und Lieferzeit. Eine Erstattung geht auf dein ursprüngliches Zahlungsmittel. In der Regel musst du den Artikel nicht zurücksenden. Verlangen wir ausnahmsweise eine Rücksendung, nennen wir dir die Adresse und übernehmen die Kosten. \n   \n Was kein Mangel ist.  Nicht ersetzt oder erstattet werden: (a) falsche Wahl oder Eingabe von Grösse, Farbe, Motiv, Text oder Lieferadresse, (b) Nichtgefallen, (c) leichte Farb- und Detailabweichungen zwischen Bildschirm und Druck, (d) Schäden durch unsachgemässen Gebrauch oder durch Pflege entgegen den Pflegehinweisen auf dem Etikett oder der Produktseite. Wird dein Paket laut Sendungsverfolgung als zugestellt gemeldet und du hast es nicht erhalten, schau bitte zuerst bei Nachbarn und der Poststelle nach und melde dich bei uns: Wir prüfen den Fall, ein Ersatz ist in diesem Fall aber nicht zugesichert. Nicht zustellbare oder nicht abgeholte Sendungen regelt die Versandrichtlinie. \n   \n Ablauf und Kontakt.  Schreib an info@luxestyle.ch und setz die Bestellnummer in den Betreff. Wir antworten in der Regel innert 24 Stunden an Werktagen und nennen dir die Lösung: Ersatz oder Erstattung. \n   \n Liechtenstein.  Für Bestellungen nach Liechtenstein gilt das gesetzliche Rücktrittsrecht von 14 Tagen nach dem Fern- und Auswärtsgeschäfte-Gesetz (FAGG) nicht für Artikel, die nach deinen Vorgaben angefertigt werden (Art. 19 Abs. 1 Bst. c FAGG), zum Beispiel mit deinem eigenen Motiv, Foto oder Text. Wir weisen dich vor der Bestellung im Kasten auf der Produktseite darauf hin. \n   \n Gesetzliche Rechte.  Deine gesetzlichen Rechte bei Mängeln bleiben von diesen Regeln unberührt. \n \n\n Fragen zu deiner Rückgabe? \n Wir helfen dir gerne weiter. Melde dich einfach bei uns: \n \n  LuxeStyle \n  Alleng Chour \n  Hühnerhubelstrasse 37 \n  3123 Belp, Schweiz \n  E-Mail:  info@luxestyle.ch  \n  Telefon: +41 79 538 28 14\n \n  Hinweis: Die oben genannte Adresse ist unsere Geschäfts- und Kontaktadresse (Impressum), nicht die Retourenadresse. Die gültige Retourenadresse erhältst du nach der Anmeldung deiner Rücksendung per E-Mail."
+      }
+    ],
+    "shopIdentity": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "email": "info@luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "metricoolIdentity": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "firecrawlCheck": {
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "source": "Firecrawl live scrape maxAge0; actual first head inspected, metadata aggregated robots not used",
+      "status": 200,
+      "rawLength": 2067357,
+      "headRobots": [],
+      "h1": [
+        "Wohnen &amp; Dekoration"
+      ],
+      "headTitle": "\n  Wohnen &amp; Dekoration kaufen | LuxeStyle Schweiz\n",
+      "canonicalTags": [
+        "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/wohnen-dekoration\">"
+      ],
+      "metadataRobotsAggregate": "none",
+      "aggregateRobotsIsNotDocumentHead": true
+    },
+    "rootDraftValidation": {
+      "checks": {
+        "exactTarget": true,
+        "onlyAllowedInputs": true,
+        "oldThreeHrefsRetained": true,
+        "onePillowLink": true,
+        "noScriptStyle": true,
+        "commentsPreserved": true,
+        "policySentencePreserved": true
+      },
+      "allPass": true,
+      "draftSHA256": "5ca864fa29b1333c906235c1840ddaa06249c7c1eee8de815d8ccdac2a0bf966"
+    }
+  },
+  "proofSources": [
+    {
+      "path": "/dev/shm/luxestyle-review/r220/baseline.json",
+      "sha256": "81d2c69e8e85da142867871517ffd9f80c1c0d91a5e93fb3053d41cdd7b77ad2",
+      "gitBlobSha": "dc40db309c6260dcabc12e2401ebd6768b4a4fb4",
+      "bytes": 1209
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/nativeBefore.json",
+      "sha256": "7110898295da7511c04e593d8375ff502f65fe3242b6ae52526ad9cc6c08ae05",
+      "gitBlobSha": "584495971b6d74dd40829b6b9db4439b628dd64d",
+      "bytes": 5522
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/draft.json",
+      "sha256": "5ca864fa29b1333c906235c1840ddaa06249c7c1eee8de815d8ccdac2a0bf966",
+      "gitBlobSha": "61fe2bf967be7d1b01893c823dcd74756346b132",
+      "bytes": 644
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/prewrite.json",
+      "sha256": "7110898295da7511c04e593d8375ff502f65fe3242b6ae52526ad9cc6c08ae05",
+      "gitBlobSha": "584495971b6d74dd40829b6b9db4439b628dd64d",
+      "bytes": 5522
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/mutation-input.json",
+      "sha256": "9b6e6b746c28b30c4d6800f9d8ddfb99d091bfb181d88e18633ad27f6445460f",
+      "gitBlobSha": "40668453c606a85acf961a4ccbdef31d230dca44",
+      "bytes": 1003
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/mutation.json",
+      "sha256": "b872440276586743fecb08f6000149d8348ad03c58b03eac155a004e52940cae",
+      "gitBlobSha": "ce77e689f5f7c553a94783708d686f46437debdf",
+      "bytes": 1548
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/nativeAfter.json",
+      "sha256": "441996c093d16ac62207f1db038faa4f7b8df45937d568e52da4fb1f24163adb",
+      "gitBlobSha": "bbca01567096266d46f25795c6aeea0321ded2ba",
+      "bytes": 5503
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/live-qa.json",
+      "sha256": "f315861d2c13ae3497f96abbfb363f911b493ab87fff55ab62a828b1de2e9d45",
+      "gitBlobSha": "cff79fdb1aad217839c1f2f1b8f4be95a1cd37ee",
+      "bytes": 11326
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/gates.json",
+      "sha256": "edcc4545e60a58c29a6298c43b2b755aa9970411b3a4250dd9c69056c027da6f",
+      "gitBlobSha": "f2c18ad80bb10532a5552ca1e597f4ce196e5d07",
+      "bytes": 3499
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/links-policy.json",
+      "sha256": "58998f4329fb026d8750c61322747befeff70048c7ffaf0c486a6e11d5da9e78",
+      "gitBlobSha": "50efa6bf2ee68c45692307250d8d8ad6094c4072",
+      "bytes": 12593
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/shop.json",
+      "sha256": "ef595b10d8225795717ad29263a9caa138a741ff55ef8ecbe3dd593d26c448c9",
+      "gitBlobSha": "ec986e7b8adb14097385645b33fd15d50dd371c6",
+      "bytes": 213
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/brand.json",
+      "sha256": "71c3ef6a5755ce0e1b37bd86d599c398aa9cc2b4e27b67d707b7196ed7e4336c",
+      "gitBlobSha": "6346d3fce9d11030a15c763d56e40b10a4fd8ba8",
+      "bytes": 382
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/firecrawl-check.json",
+      "sha256": "ebe2bcd85dab14f831171be0e6493f922a52692d760306da5d05103ae39ad4e2",
+      "gitBlobSha": "79bd3364293044b507d5e026dbf6ae6a2845c68b",
+      "bytes": 555
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/public-live-countercheck.json",
+      "sha256": "751f90ad2af2f30c691519de49fb8d134b11e766718c08d4d6d683c6a1892d16",
+      "gitBlobSha": "50d42dd7735307765f8976de8acbf0ededeaff6a",
+      "bytes": 1174
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/root-live-validation.json",
+      "sha256": "a490e022843a515a01d51509173fd35decc69658c73c58429022a9ca0e4b61ce",
+      "gitBlobSha": "ca5af6d74d7c781dbea42fde5a1fb72f99005b49",
+      "bytes": 519
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/before-dom.json",
+      "sha256": "af05a008da185678ff7e300ffa495ea16677fe5d1883af5806942da520e47002",
+      "gitBlobSha": "17f582c7fcbcc5ec175ec29379dbb830ce3ad7e0",
+      "bytes": 2152
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r220/copy.diff",
+      "sha256": "83159b839e2de9bc39eaa62e56ad268dbb80e2f671a28f91d863064b4072ba5b",
+      "gitBlobSha": "45d6d0f69171f9fdd48571865b8cbe106bc49a30",
+      "bytes": 1210
+    }
+  ]
+}
