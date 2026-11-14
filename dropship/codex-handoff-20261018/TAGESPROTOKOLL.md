@@ -2549,3 +2549,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Gedächtnis | R222-Belege und24stabile Aufgaben-IDs/Historien fortgeschrieben | Revision222; bestehende Reportgrenzen/Zeitplan erhalten, Claude-Kenntnisnahme unbekannt. |
 
 [Bericht](MERCHANT-FIX-20261114-R222.md) · [Belege](MERCHANT-FIX-20261114-R222.json) · [Offener Autofeed-Einzelfall](MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md).
+
+### R223 – Alte API-Angebote konkret vorbereiten, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Quellen / Identitäten | LuxeStyle-Shop/CHF, Merchant5797470070 und Metricool6227837/sechs Kanäle frisch geprüft; konkrete Quelle10667445201 neu gelesen | API-Primärquelle, Sprachede/FeedlabelCHF_99383214465 bestätigt. Keine Konto-/Quellenänderung. |
+| Alte Angebote | Zwei R167-Angebote aktuell bei Google gelesen, Shopprodukte/alteVarianten und genaue eingereichte Links geprüft | Beide landing_page_error; ShopDRAFT/alteVariantennull und echte404. VollständigeSnapshots und zwei genaue Delete-Requests vorbereitet; konkrete Paarbestätigung offen,0Merchantwrites. |
+| Bestehende Korrekturen | Vier DE/FR-Nagellack-Angebote frisch gezielt zurückgelesen | Alle neuen textfreien Bilder vorhanden, DECH/LI und FRCH in sechs gelieferten Kontexten freigegeben. Modell6 nur nicht sperrende Mengenwarnung; keine neuen eigenen Bildkorrekturen gezählt. |
+| API-Vertrag / Sprache | Zwei offizielle Produkt-API-Vertragsseiten geprüft; französischen Seitentitel und zwei französische Angebotsfelder gelesen | AUTOFEED-Einzellöschung damit nicht unterstützt. Deutsche FR-Texte beobachtet, französische Fassung nur als Entwurf; keine Sprachwrites oder neuer Google-Fehler behauptet. |
+| Grenzen / Gedächtnis |24stabileIDs/Historien und Tagesgrenzen fortgeführt | Revision223,0Plattformwrites, keine neuen Tagesreports/Kaufwatch/Posts/Renders/Workflowstarts/Automation. Claude-Kenntnisnahme unbekannt. |
+
+[Bericht](MERCHANT-WEITERARBEIT-20261114-R223.md) · [Belege](MERCHANT-WEITERARBEIT-20261114-R223.json) · [Freigabepaket](MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json).

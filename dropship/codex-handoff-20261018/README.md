@@ -1,3 +1,11 @@
+# R223 – Zwei alte Merchant-Angebote zur Bereinigung vorbereitet, 14.11.2026
+
+API-Quelle/de/Feedlabel, Shopify-DRAFT, fehlende alte Varianten, echte404-Zielseiten und aktuelle Google-Ablehnungen für genau zwei Kinderuhr-Angebote bestätigt. Vollständige Vorher-Snapshots und konkrete Delete-Requests gesichert; Paarbestätigung angefragt und noch offen,0Writes. Vier bestehende DE/FR-Nagellackzustände positiv bestätigt, kein erneuter Bildwechsel. AUTOFEED-Einzellöschung in geprüfter API-Doku nicht gedeckt; französische Textfassung nur Entwurf.
+
+[Bericht](MERCHANT-WEITERARBEIT-20261114-R223.md) · [Belege](MERCHANT-WEITERARBEIT-20261114-R223.json) · [Konkretes Freigabepaket](MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json). Historien/24IDs/Tagesgrenzen/Zeitplan erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R222 – Zwei Merchant-Bildfehler behoben, 14.11.2026
 
 Zwei gezielte Hauptbild-Updates für Nagellack Modell1/6 nach expliziter Inhaber-Rechte-/Farbfreigabe ausgeführt. Neue URLs und Aufhebung beider Overlay-Ablehnungen frisch zurückgelesen; CH/LI in allen sechs gelieferten Zielkanälen approved. Andere Produktattribute unverändert, keine Quellenneuanlage oder blinden Retries. Modell6: Grundpreis-Mengenangabe weiterhin NOT_IMPACTED. DRAFT-Workout-Autofeed-Einzelfall bleibt offen; keine globale0-Fehlerbehauptung.

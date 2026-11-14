@@ -1,0 +1,23 @@
+{
+  "checkedInRun": "R223",
+  "readOnlyOfficialDocumentationReview": true,
+  "sources": [
+    {
+      "url": "https://developers.google.com/merchant/api/guides/products/add-manage",
+      "observedRule": "Products API insert/update/delete require data sources whose input type is API; primary-source productInput delete removes whole product including supplements"
+    },
+    {
+      "url": "https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/delete",
+      "observedRule": "productInputs.delete requires dataSource and targets a ProductInput"
+    }
+  ],
+  "boundAutofeed": {
+    "account": "5797470070",
+    "source": "10678939025",
+    "input": "AUTOFEED",
+    "offer": "15421165404545_cjtz292404406fu",
+    "apiDeleteNotApplicable": true,
+    "noGlobalSourceChangeOrSupplementCreated": true
+  },
+  "reviewLimits": "No single-item stopManaging API established in these two docs; not a claim that every Merchant UI method is unavailable"
+}

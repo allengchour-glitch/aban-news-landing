@@ -1,0 +1,49 @@
+{
+  "preparedAtUTC": "2026-11-14T22:38:17.012875+00:00",
+  "kind": "localized_copy_draft_only_not_confirmed_google_error",
+  "scope": "two already approved French offers of the same nail-polish variants",
+  "publicLandingEvidence": {
+    "checkedAtUTC": "2026-11-14T22:32:58.670588+00:00",
+    "url": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+    "htmlLanguage": "fr",
+    "headTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH",
+    "h1": [
+      "Schimmernder Thermo-Gel Nagellack"
+    ]
+  },
+  "drafts": [
+    {
+      "offer": "shopify_ZZ_15448834736513_55877809340801",
+      "source": "accounts/5797470070/dataSources/10762220830",
+      "language": "fr",
+      "actualTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+      "actualDescription": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+      "proposedTitle": "Vernis gel scintillant – Modèle 1 | LuxeStyle CH",
+      "proposedDescription": "Gel pailleté violet pour le nail art, modèle 1. Le visuel présente cette variante sur les ongles. Consultez les informations d’utilisation et le contenu livré sur la fiche produit.",
+      "status": "draft_not_written",
+      "gates": [
+        "French storefront title/body and existing translations must be read and updated consistently before any isolated Merchant-language write",
+        "Fresh source, product and fields diff required",
+        "No measure, GTIN, therapeutic claim, delivery-time promise or promotion invented"
+      ]
+    },
+    {
+      "offer": "shopify_ZZ_15448834736513_67652260430215",
+      "source": "accounts/5797470070/dataSources/10762220830",
+      "language": "fr",
+      "actualTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+      "actualDescription": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+      "proposedTitle": "Vernis gel scintillant – Modèle 6 | LuxeStyle CH",
+      "proposedDescription": "Gel pailleté violet pour le nail art, modèle 6. Le visuel présente cette variante sur les ongles. Consultez les informations d’utilisation et le contenu livré sur la fiche produit.",
+      "status": "draft_not_written",
+      "gates": [
+        "French storefront title/body and existing translations must be read and updated consistently before any isolated Merchant-language write",
+        "Fresh source, product and fields diff required",
+        "No measure, GTIN, therapeutic claim, delivery-time promise or promotion invented"
+      ]
+    }
+  ],
+  "writeCount": 0
+}

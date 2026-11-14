@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 222,
-  "updatedAt": "2026-11-14T22:24:16.354829+00:00",
+  "revision": 223,
+  "updatedAt": "2026-11-14T22:42:39.527729+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
+      "state": "r223_two_exact_orphan_api_offers_delete_plan_waiting_owner_pair_confirmation",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
-      "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
-      "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
+      "belegArt": "LIVE_MERCHANT_SHOPIFY_HTTP_AND_OFFICIAL_API_CONTRACT_COUNTERCHECK",
+      "lastEvidence": "Zwei alte Kinderuhr-Angebote aktuell an API10667445201 gebunden: ShopifyDRAFT, alteVariantennull, genaueMerchantLinks404 und landing_page_error. VollständigeSnapshots/2Delete-Requests vorbereitet, konkrete Paarbestätigung angefragt und noch offen;0Merchantwrites. Vier DE/FR-Nagellackzustände mit neuen Bildern/genehmigtenZielen bestätigt, keine Wiederholungswrites. AUTOFEED-API-Grenze offiziellbelegt; FR-Sprachentwurf nurvorbereitet.",
+      "nextAllowedStep": "Nur nach expliziter Bestätigung des konkret vorgelegten Kinderuhr-Paars die zwei vorhandenen delete_product-Requests aus dem R223-Paket nach frischem Vorher-Read mit Einzel-Checkpoints senden; keine weitere Freigabe für dasselbe Paar verlangen, sobald diese vorliegt. Nachlesen mit bekanntem Live-Kontrollangebot; keine blinden Retries. Shopify-DRAFT und Quelle erhalten. Bereits richtige Nagellack-Bilder nicht erneut schreiben. AUTOFEED-Preisfall weiterhin native Einzelartikel-Editormethode; Mengenangabe ohne Nettoinhalt blockiert. FR-Sprachentwurf braucht konsistente Storefront-/Merchant-Gegenprobe.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4318,6 +4318,36 @@
           "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
           "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
           "bytes": 1848
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+          "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+          "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+          "bytes": 3707
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+          "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+          "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+          "bytes": 108374
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+          "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+          "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+          "bytes": 26042
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+          "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+          "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+          "bytes": 2894
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+          "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+          "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+          "bytes": 983
         }
       ],
       "requiresFreshVerification": true,
@@ -6350,6 +6380,76 @@
               "bytes": 1848
             }
           ]
+        },
+        {
+          "revision": 222,
+          "kind": "state_before_r223",
+          "snapshot": {
+            "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
+            "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+            "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
+            "blockers": [
+              "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+              "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+              "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+              "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+              "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+              "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+              "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+              "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+              "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+              "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+              "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+            ]
+          }
+        },
+        {
+          "revision": 223,
+          "date": "2026-11-14",
+          "lastEvidence": "Zwei alte Kinderuhr-Angebote aktuell an API10667445201 gebunden: ShopifyDRAFT, alteVariantennull, genaueMerchantLinks404 und landing_page_error. VollständigeSnapshots/2Delete-Requests vorbereitet, konkrete Paarbestätigung angefragt und noch offen;0Merchantwrites. Vier DE/FR-Nagellackzustände mit neuen Bildern/genehmigtenZielen bestätigt, keine Wiederholungswrites. AUTOFEED-API-Grenze offiziellbelegt; FR-Sprachentwurf nurvorbereitet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+              "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+              "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+              "bytes": 3707
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+              "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+              "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+              "bytes": 108374
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+              "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+              "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+              "bytes": 26042
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+              "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+              "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+              "bytes": 2894
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+              "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+              "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+              "bytes": 983
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -8178,6 +8278,45 @@
             "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
             "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
             "bytes": 1848
+          }
+        ]
+      },
+      "run223": {
+        "deletePlansReady": 2,
+        "deleteConfirmation": "pending_exact_pair",
+        "merchantWrites": 0,
+        "existingFourNailOfferImageStatesVerified": true,
+        "autofeedApiContractConfirmed": true,
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+            "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+            "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+            "bytes": 3707
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+            "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+            "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+            "bytes": 108374
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+            "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+            "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+            "bytes": 26042
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+            "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+            "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+            "bytes": 2894
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+            "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+            "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+            "bytes": 983
           }
         ]
       }
@@ -11025,12 +11164,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
+      "state": "r223_two_exact_orphan_api_offers_delete_plan_waiting_owner_pair_confirmation",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
-      "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
-      "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
+      "belegArt": "LIVE_MERCHANT_SHOPIFY_HTTP_AND_OFFICIAL_API_CONTRACT_COUNTERCHECK",
+      "lastEvidence": "Zwei alte Kinderuhr-Angebote aktuell an API10667445201 gebunden: ShopifyDRAFT, alteVariantennull, genaueMerchantLinks404 und landing_page_error. VollständigeSnapshots/2Delete-Requests vorbereitet, konkrete Paarbestätigung angefragt und noch offen;0Merchantwrites. Vier DE/FR-Nagellackzustände mit neuen Bildern/genehmigtenZielen bestätigt, keine Wiederholungswrites. AUTOFEED-API-Grenze offiziellbelegt; FR-Sprachentwurf nurvorbereitet.",
+      "nextAllowedStep": "Nur nach expliziter Bestätigung des konkret vorgelegten Kinderuhr-Paars die zwei vorhandenen delete_product-Requests aus dem R223-Paket nach frischem Vorher-Read mit Einzel-Checkpoints senden; keine weitere Freigabe für dasselbe Paar verlangen, sobald diese vorliegt. Nachlesen mit bekanntem Live-Kontrollangebot; keine blinden Retries. Shopify-DRAFT und Quelle erhalten. Bereits richtige Nagellack-Bilder nicht erneut schreiben. AUTOFEED-Preisfall weiterhin native Einzelartikel-Editormethode; Mengenangabe ohne Nettoinhalt blockiert. FR-Sprachentwurf braucht konsistente Storefront-/Merchant-Gegenprobe.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -11496,6 +11635,36 @@
           "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
           "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
           "bytes": 1848
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+          "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+          "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+          "bytes": 3707
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+          "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+          "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+          "bytes": 108374
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+          "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+          "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+          "bytes": 26042
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+          "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+          "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+          "bytes": 2894
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+          "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+          "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+          "bytes": 983
         }
       ],
       "requiresFreshVerification": true,
@@ -12237,6 +12406,91 @@
               "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
               "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
               "bytes": 1848
+            }
+          ]
+        },
+        {
+          "revision": 222,
+          "kind": "state_before_r223",
+          "snapshot": {
+            "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
+            "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+            "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
+            "blockers": [
+              "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
+              "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
+              "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
+              "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen.",
+              "R60: Tatsächlich eingereichte FR-Texte/URL/Quelle und aktuelle Policy-Meldung für den Glöckchenartikel nicht authentifiziert gelesen; native FR-Translations[] ersetzt diese Quelle nicht. Nachprüfungsentwurf nicht eingereicht, Google-Neubewertung unbekannt. Andere Policyfälle nicht allein anhand generischer Titel freigeben.",
+              "R61: Aktuelle Shopify-Bilder aller 15 roten Stiefelvarianten öffentlich erreichbar; tatsächlich eingereichter Google-image_link und aktive Quelle weiterhin unbekannt. Prüfdatei nicht hochgeladen; keine neue Image-URL oder pauschale Entsperrung aus Personalisierungsmeldungen ableiten.",
+              "R62: Google-Verarbeitungsstatus/Fristbeginn beim Rucksack unbekannt, Shopify READY ist kein Google-Status. Ventilzubehör-Default-SKU/Lieferumfang und aktuelle FR-Merchant-Quelle vor Einreichung belegen. Tischbombe besitzt hier keine Richtlinien-/Werbefreigabe; keine neue Merchant-Abfrage nach vorherigem R61-Timeout.",
+              "R63: Merchant-Konto passend, actions[]; anderer Schreibeditor/Claude-Anmeldung offen. PR2830 weiterhin Draft; alle Checks nicht grün und mögliche zusätzliche main-Produktionsdeployments nicht isoliert freigegeben. Zitruspresse/Kameratasche ohne sauberes vorhandenes Original. Zwei bestätigte Shopify-Metadatenwrites sind keine Google-Behebung.",
+              "R65: Drei zusätzliche Quellenkontexte ungeklärt; CSV ohne aktive Source-ID/eingereichte URLs. Alte Blumenvariante nativ null ist kein aktueller Google-Angebotsstatus. Zwei numerische Offer-IDs nicht als Shopify-IDs interpretieren.",
+              "R81: CSV-Zeitpunkte und Filter sind nicht direkt vergleichbar; aktuelle Merchant-Livezustände und aktive Source-ID bleiben ohne authentifizierten Einzelabruf unbekannt.",
+              "R101: Beide CSVs fehlen aktive Merchant-Datenquellen-ID, eingereichte URL sowie Rohpreis-/Availability-/Shipping-Werte; verantwortliche Quelle unbekannt.",
+              "R101: Deutschland-Versandgebiet und belastbarer Tarif sind nicht belegt; eine DE-Versand- oder Länderänderung ist nicht freigegeben.",
+              "R101: 60 Availability-IDs in DateiA und die Availability-ID in DateiB sind rein numerische Merchant-IDs und nicht sicher auf Shopify-GIDs abgebildet.",
+              "R102: Google-Neuverarbeitung, aktive Merchant-Source-ID und tatsächlich eingereichter image_link der korrigierten Rollball-Variante sind unbekannt; Shopify-Readback ist kein Google-Status.",
+              "R102: Neun weitere Overlay-IDs bleiben offen; für die Drei-Pink-Variante wurde kein sauberes Bild derselben Menge belegt, daher kein Ersatz durch ein Einproduktfoto.",
+              "R102: CSS-Kapazitätsgrenze betrifft 10’628 IDs, ist aber Konto-/Programmstatus und weder Produktfehlerquote noch Auftrag für Produkt-/Feedwrites.",
+              "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
+              "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
+              "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
+              "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt.",
+              "R140: 5’000er-Merchant-Scope ist truncated; next page vorhanden und keine Katalogquote.",
+              "R140: Summary9 und separate12er-Disapproved-Stichprobe widersprechen sich; Werte dürfen nicht addiert oder als identischer Nenner behandelt werden.",
+              "R140: Overlay-Ersatzbilder brauchen exakte Produkt-/Variantenidentität und Rechte; aktive Source/image_link bleiben pro Offer zu belegen.",
+              "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen.",
+              "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
+              "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
+              "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden.",
+              "R149: Drive- und Filterexport haben verschiedene Feed-/Sprach-/Filterkontexte;1295 fr-Zeilen des kleinen Exports fehlen im breiten Export. Keine direkte Vorher-/Nachher-Differenz.",
+              "R149: CSVs enthalten keine verifizierte aktive Source-ID, eingereichte URL oder verantwortliche Rohfeldquelle.",
+              "R149: Lieferfähigkeit und reale Kosten für Liechtenstein und Deutschland sind nicht belegt; kein Versand-/Länderwrite.",
+              "R149: Grosse CH-/DE-/CHF-Itemmenge beweist weder aktuelle ACTIVE-Shopify-Produkte noch einen Katalognenner; HYPD-Gegenprobe ist bei5000 truncated.",
+              "R167: Von sechs stale Landingpage-Offers sind zwei in Source10667445201 live vorhanden; vier HYPD-Reads INVALID_ARGUMENT und damit aktueller Merchant-Ressourcenzustand unknown.",
+              "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg.",
+              "R168: Availability-Zielzustand ist erreicht; Zeitpunkt und verursachender bestehender Ablauf bleiben unbekannt. Keine Codex-/Connector-Verursachung behaupten.",
+              "R168: Liechtenstein-Versand bleibt getrennt blockiert; reale Lieferfähigkeit, Kosten und Laufzeit fehlen und waren nicht Teil der Freigabe."
+            ]
+          }
+        },
+        {
+          "revision": 223,
+          "date": "2026-11-14",
+          "lastEvidence": "Zwei alte Kinderuhr-Angebote aktuell an API10667445201 gebunden: ShopifyDRAFT, alteVariantennull, genaueMerchantLinks404 und landing_page_error. VollständigeSnapshots/2Delete-Requests vorbereitet, konkrete Paarbestätigung angefragt und noch offen;0Merchantwrites. Vier DE/FR-Nagellackzustände mit neuen Bildern/genehmigtenZielen bestätigt, keine Wiederholungswrites. AUTOFEED-API-Grenze offiziellbelegt; FR-Sprachentwurf nurvorbereitet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+              "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+              "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+              "bytes": 3707
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+              "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+              "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+              "bytes": 108374
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+              "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+              "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+              "bytes": 26042
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+              "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+              "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+              "bytes": 2894
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+              "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+              "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+              "bytes": 983
             }
           ]
         }
@@ -13210,6 +13464,45 @@
             "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
             "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
             "bytes": 1848
+          }
+        ]
+      },
+      "run223": {
+        "deletePlansReady": 2,
+        "deleteConfirmation": "pending_exact_pair",
+        "merchantWrites": 0,
+        "existingFourNailOfferImageStatesVerified": true,
+        "autofeedApiContractConfirmed": true,
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+            "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+            "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+            "bytes": 3707
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+            "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+            "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+            "bytes": 108374
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+            "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+            "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+            "bytes": 26042
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+            "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+            "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+            "bytes": 2894
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+            "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+            "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+            "bytes": 983
           }
         ]
       }
@@ -26935,6 +27228,46 @@
           "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
           "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
           "bytes": 1848
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 223,
+      "at": "2026-11-14T22:42:39.527729+00:00",
+      "actor": "codex",
+      "summary": "Zwei alte Kinderuhr-Angebote aktuell an API10667445201 gebunden: ShopifyDRAFT, alteVariantennull, genaueMerchantLinks404 und landing_page_error. VollständigeSnapshots/2Delete-Requests vorbereitet, konkrete Paarbestätigung angefragt und noch offen;0Merchantwrites. Vier DE/FR-Nagellackzustände mit neuen Bildern/genehmigtenZielen bestätigt, keine Wiederholungswrites. AUTOFEED-API-Grenze offiziellbelegt; FR-Sprachentwurf nurvorbereitet.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+          "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+          "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+          "bytes": 3707
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+          "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+          "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+          "bytes": 108374
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+          "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+          "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+          "bytes": 26042
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+          "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+          "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+          "bytes": 2894
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+          "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+          "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+          "bytes": 983
         }
       ],
       "taskCount": 24,
@@ -52068,5 +52401,57 @@
       }
     ],
     "windsorProductTimeoutNotRetried": true
+  },
+  "run223": {
+    "recordedAtUTC": "2026-11-14T22:42:39.527729+00:00",
+    "dateZurich": "2026-11-14",
+    "merchantWrites": 0,
+    "shopifyWrites": 0,
+    "newDeletePlans": 2,
+    "deleteConfirmation": "pending_exact_pair",
+    "source": "10667445201",
+    "targets": [
+      "shopify_ZZ_15516154462593_56177866178945",
+      "shopify_ZZ_15516156395905_56177868177793"
+    ],
+    "exactSourceLanguageLabelRead": true,
+    "oldShopVariantsNull": true,
+    "landingPages404": true,
+    "fourExistingNailApprovalsRetained": true,
+    "autofeedApiContractChecked": true,
+    "frTextDraftOnly": true,
+    "newDailyReportsOrdersPostsAutomationRender": 0,
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.md",
+        "sha256": "7113f5f7408e7beb3c314714b4069bad88ffafc9da111652c1d5f8d82f376e6c",
+        "gitBlobSha": "43ee2ad79d7184dc593107c8e5992e61aa84e66a",
+        "bytes": 3707
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261114-R223.json",
+        "sha256": "85759b296185c2c133c260c95763192c5ceaeeefb31595c6f238b61e61bdd7d3",
+        "gitBlobSha": "d69318af5ceea83fa7fa17fee5dedbccefd95d31",
+        "bytes": 108374
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json",
+        "sha256": "340923234ecb28e3497c2c4212c12d3ab67dc334fc591738c187a35bed5c07c9",
+        "gitBlobSha": "0aa2fb1364ff323412c7267dae43ac5301fd36c0",
+        "bytes": 26042
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FR-SPRACHENTWURF-20261114-R223.json",
+        "sha256": "f8e74fd64812093813aacdc369e13d19767124a9fdd3c7233d79bfb80cc44ac0",
+        "gitBlobSha": "bb1286779805dcc104af7fa7c69ee5d6877dbb0e",
+        "bytes": 2894
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-VERTRAG-20261114-R223.json",
+        "sha256": "533438b15c96efe6ed2c89c36d7062a0f138a576d329aa36ee539a772465cf26",
+        "gitBlobSha": "79f0e3898a46051daa249415b8f8e41da4228977",
+        "bytes": 983
+      }
+    ]
   }
 }

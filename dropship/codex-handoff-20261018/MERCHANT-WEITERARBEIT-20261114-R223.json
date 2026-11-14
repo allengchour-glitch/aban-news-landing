@@ -1,0 +1,2873 @@
+{
+  "revision": 223,
+  "recordedAtUTC": "2026-11-14T22:42:39.527729+00:00",
+  "dateZurich": "2026-11-14",
+  "type": "targeted_stale_offer_delete_plan_pending_owner_confirmation",
+  "merchantWrites": 0,
+  "shopifyWrites": 0,
+  "newDeleteRequestsReady": 2,
+  "ownerDeleteConfirmation": "pending",
+  "source": "10667445201",
+  "exactTwoOldOffers": [
+    "shopify_ZZ_15516154462593_56177866178945",
+    "shopify_ZZ_15516156395905_56177868177793"
+  ],
+  "actual404Count": 2,
+  "shopifyDraftAndOldVariantsNullConfirmed": true,
+  "priorNailImageCorrectionsRetained": true,
+  "frenchImagesObservedApprovedNotClaimedOwnNewWrites": true,
+  "allCatalogErrors": "unknown_not_census",
+  "autofeedSingleItemDeleteContract": "not_supported_for_this_source_by_reviewed_Product_API_docs",
+  "frLanguageDraftWrittenToPlatform": false,
+  "metricsFlowGSCOrdersNewReports": 0,
+  "newAutomationOrRender": 0,
+  "claudeReceipt": "unknown_no_new_receipt",
+  "embeddedEvidence": {
+    "merchantAccount.json": {
+      "accounts": [
+        {
+          "displayName": "LuxeStyle CH",
+          "merchantCenterId": "5797470070",
+          "timeZone": null
+        }
+      ]
+    },
+    "shop.json": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "email": "info@luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "brand.json": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "merchantActions.json": {
+      "result": [
+        {
+          "id": "insert_product",
+          "name": "Insert Product",
+          "description": "Add a product to an API data source of the connected Merchant Center account. If the data source already has an entry with the same product_id, content_language and feed_label, the new entry replaces it. data_source is the data_source_id or data_source_name of an API data source (Data Sources table, or create one with create_data_source). In a primary data source, give the attributes that Google needs to show the product, for example title, link, image_link, price, currency and availability. Merchant Center shows the change after a few minutes. Remove the product with delete_product.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "additional_image_links": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "format": "uri",
+                      "maxLength": 2083,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "maxItems": 10,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URLs of up to 10 more images of the product. Use stable URLs, as for image_link.",
+                "title": "Additional Image Links"
+              },
+              "availability": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "IN_STOCK",
+                      "OUT_OF_STOCK",
+                      "PREORDER",
+                      "LIMITED_AVAILABILITY",
+                      "BACKORDER"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Availability"
+              },
+              "brand": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Brand"
+              },
+              "condition": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "NEW",
+                      "USED",
+                      "REFURBISHED"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Condition"
+              },
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "currency": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Z]{3}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "ISO 4217, for example USD.",
+                "title": "Currency"
+              },
+              "custom_label_0": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 0"
+              },
+              "custom_label_1": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 1"
+              },
+              "custom_label_2": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 2"
+              },
+              "custom_label_3": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 3"
+              },
+              "custom_label_4": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 4"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "description": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Description"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "google_product_category": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Google Product Category"
+              },
+              "gtins": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gtins"
+              },
+              "image_link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URL of the main image of the product. Use a stable URL, without parameters that change, such as timestamps or session IDs: Google fetches the image from it again.",
+                "title": "Image Link"
+              },
+              "link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link"
+              },
+              "mpn": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Mpn"
+              },
+              "price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Price"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              },
+              "product_types": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Product Types"
+              },
+              "sale_price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Sale Price"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "update_product",
+          "name": "Update Product",
+          "description": "Change the given attributes of a product in an API data source of the connected Merchant Center account. Attributes that are not given keep their values. product_id, content_language and feed_label come from the product_id, product_content_language and product_feed_label fields. data_source is the data_source_id or data_source_name of an API data source: the product's primary data source (product_data_source) if its input is API, otherwise a supplemental API data source that is linked to that primary data source (create one with create_data_source and link_to_primary_data_source). Values of a supplemental data source that comes before the feed in the feed's default rule (as create_data_source links it) override the feed values until delete_product removes them from the supplemental data source. clear_attributes deletes attributes from the product in data_source: in a supplemental data source the product then shows the feed value again. pause ADS or ALL pauses the product, NONE ends the pause. Merchant Center shows the change after a few minutes.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "additional_image_links": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "format": "uri",
+                      "maxLength": 2083,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "maxItems": 10,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URLs of up to 10 more images of the product. Use stable URLs, as for image_link.",
+                "title": "Additional Image Links"
+              },
+              "availability": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "IN_STOCK",
+                      "OUT_OF_STOCK",
+                      "PREORDER",
+                      "LIMITED_AVAILABILITY",
+                      "BACKORDER"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Availability"
+              },
+              "brand": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Brand"
+              },
+              "clear_attributes": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Attributes to delete, from: title, description, link, image_link, additional_image_links, price, sale_price, availability, condition, brand, gtins, mpn, google_product_category, product_types, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4.",
+                "title": "Clear Attributes"
+              },
+              "condition": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "NEW",
+                      "USED",
+                      "REFURBISHED"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Condition"
+              },
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "currency": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Z]{3}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "ISO 4217, for example USD.",
+                "title": "Currency"
+              },
+              "custom_label_0": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 0"
+              },
+              "custom_label_1": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 1"
+              },
+              "custom_label_2": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 2"
+              },
+              "custom_label_3": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 3"
+              },
+              "custom_label_4": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 4"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "description": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Description"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "google_product_category": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Google Product Category"
+              },
+              "gtins": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gtins"
+              },
+              "image_link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URL of the main image of the product. Use a stable URL, without parameters that change, such as timestamps or session IDs: Google fetches the image from it again.",
+                "title": "Image Link"
+              },
+              "link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link"
+              },
+              "mpn": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Mpn"
+              },
+              "pause": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "ADS",
+                      "ALL",
+                      "NONE"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Pause"
+              },
+              "price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Price"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              },
+              "product_types": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Product Types"
+              },
+              "sale_price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Sale Price"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "delete_product",
+          "name": "Delete Product",
+          "description": "Delete a product from an API data source of the connected Merchant Center account. From a primary data source this removes the whole product, including its supplemental values: only insert_product with all attributes adds it again. From a supplemental data source this removes only the values of that data source, and the product keeps its primary values. data_source is the data_source_id or data_source_name of the API data source.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "create_data_source",
+          "name": "Create Data Source",
+          "description": "Create an API product data source in the connected Merchant Center account. A primary data source holds products that insert_product adds. A supplemental data source holds values that update_product writes for products from a file feed, an app or the Merchant Center UI. Merchant Center applies them only to products of the primary data sources that the supplemental data source is linked to. link_to_primary_data_source (data_source_id or data_source_name) puts the new supplemental data source first in the default rule of that primary data source, so its values override the feed, and keeps the sources the rule already uses. The user removes the link in Merchant Center (the Attribute rules of the primary data source). Give content_language and feed_label together to accept only products with them, or leave both out to accept every product. countries is for a primary data source only. Each call creates a new data source: list the existing ones in the Data Sources table first.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "content_language": {
+                "anyOf": [
+                  {
+                    "maxLength": 2,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Content Language"
+              },
+              "countries": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "CLDR country codes, for example US.",
+                "title": "Countries"
+              },
+              "display_name": {
+                "minLength": 1,
+                "title": "Display Name",
+                "type": "string"
+              },
+              "feed_label": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Feed Label"
+              },
+              "link_to_primary_data_source": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link To Primary Data Source"
+              },
+              "type": {
+                "enum": [
+                  "primary",
+                  "supplemental"
+                ],
+                "title": "Type",
+                "type": "string"
+              }
+            },
+            "required": [
+              "display_name",
+              "type"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        }
+      ]
+    },
+    "offer0.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801",
+        "offerId": "shopify_ZZ_15448834736513_55877809340801",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/55877809340801",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330501AZ",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "creationDate": "2026-07-04T18:05:38.661082Z",
+          "lastUpdateDate": "2026-11-14T22:19:39.597110Z",
+          "googleExpirationDate": "2026-12-14T22:19:39.597110Z",
+          "itemLevelIssues": []
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 1"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNTU4Nzc4MDkzNDA4MDE",
+        "legacyLocal": false
+      }
+    },
+    "offer1.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215",
+        "offerId": "shopify_ZZ_15448834736513_67652260430215",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/67652260430215",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330506FU",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-09T23:50:27.873488Z",
+          "lastUpdateDate": "2026-11-14T22:19:52.770125Z",
+          "googleExpirationDate": "2026-12-14T22:19:52.770125Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260430215&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 6"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0MzAyMTU",
+        "legacyLocal": false
+      }
+    },
+    "offer2.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801",
+        "offerId": "shopify_ZZ_15448834736513_55877809340801",
+        "contentLanguage": "fr",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10762220830",
+        "versionNumber": "1794398400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/55877809340801",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330501AZ",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "creationDate": "2026-10-30T17:46:01.304098Z",
+          "lastUpdateDate": "2026-11-11T20:07:17.911691Z",
+          "googleExpirationDate": "2026-12-11T20:07:17.911691Z",
+          "itemLevelIssues": []
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26e2549b-cc40-4400-9a23-86390e931cde.jpg?v=1783188265",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d10c197-dd9c-4ab0-b455-95474447122b.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e335c85f-444a-43e6-859a-0042ebcb78d0.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a86c3fc2-920b-4692-a577-ea0c100e7be0.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dfdaf671-9fbe-4661-8d3f-bcf5bc9517a0.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50ec9dfe-96c7-4dcb-9419-ed136d25f0e7.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ce7c1ed-7a95-4524-a8c3-fca1c954cd3a.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/062c6f66-1448-46cb-b70d-49b0a35ec8ae.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15795dd6-352f-48cc-ae4a-3aad39df086b.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7087533f-c5e2-4e8c-96d0-6c636981346d.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6127ffba-15ee-426e-a28e-6b52e1b8414d.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/84a7ffb4-dfca-4886-8c47-d3fabae940f8.jpg?v=1791489010"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 1"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZnJ-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNTU4Nzc4MDkzNDA4MDE",
+        "legacyLocal": false
+      }
+    },
+    "offer3.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215",
+        "offerId": "shopify_ZZ_15448834736513_67652260430215",
+        "contentLanguage": "fr",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10762220830",
+        "versionNumber": "1794398400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/67652260430215",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330506FU",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "approvedCountries": [
+                "CH"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-08T19:56:09.105144Z",
+          "lastUpdateDate": "2026-11-11T20:07:44.581486Z",
+          "googleExpirationDate": "2026-12-11T20:07:44.581486Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260430215&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26e2549b-cc40-4400-9a23-86390e931cde.jpg?v=1783188265",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d10c197-dd9c-4ab0-b455-95474447122b.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e335c85f-444a-43e6-859a-0042ebcb78d0.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a86c3fc2-920b-4692-a577-ea0c100e7be0.jpg?v=1783188266",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dfdaf671-9fbe-4661-8d3f-bcf5bc9517a0.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50ec9dfe-96c7-4dcb-9419-ed136d25f0e7.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ce7c1ed-7a95-4524-a8c3-fca1c954cd3a.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/062c6f66-1448-46cb-b70d-49b0a35ec8ae.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15795dd6-352f-48cc-ae4a-3aad39df086b.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7087533f-c5e2-4e8c-96d0-6c636981346d.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6127ffba-15ee-426e-a28e-6b52e1b8414d.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/84a7ffb4-dfca-4886-8c47-d3fabae940f8.jpg?v=1791489010",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 6"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZnJ-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0MzAyMTU",
+        "legacyLocal": false
+      }
+    },
+    "staleSource.json": {
+      "status": "done",
+      "data": [
+        {
+          "account_id": "5797470070",
+          "data_source_id": "10667445201",
+          "data_source_name": "accounts/5797470070/dataSources/10667445201",
+          "data_source_input": "API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_content_language": "de",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_fetched_at": "2026-11-14T22:34:18"
+        }
+      ],
+      "total_rows": 1
+    },
+    "staleNative.json": {
+      "data": {
+        "one": {
+          "id": "gid://shopify/Product/15516154462593",
+          "title": "Smartwatch mit Kamera und GPS für Kinder",
+          "handle": "smartwatch-mit-kamera-und-gps-fur-kinder-669504",
+          "status": "DRAFT",
+          "onlineStoreUrl": null,
+          "updatedAt": "2026-10-30T18:22:50Z"
+        },
+        "two": {
+          "id": "gid://shopify/Product/15516156395905",
+          "title": "i9L Kinder 4G Videoanruf-Uhr",
+          "handle": "i9l-kinder-4g-videoanruf-uhr-939264",
+          "status": "DRAFT",
+          "onlineStoreUrl": null,
+          "updatedAt": "2026-10-30T18:22:49Z"
+        },
+        "oldOne": null,
+        "oldTwo": null
+      }
+    },
+    "staleOffer0.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516154462593_56177866178945",
+        "offerId": "shopify_ZZ_15516154462593_56177866178945",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1791504000000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/56177866178945",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJ-1428612333579669504",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-08-26T02:14:28.982208Z",
+          "lastUpdateDate": "2026-10-09T16:38:03.387044Z",
+          "googleExpirationDate": "2026-11-18T18:14:04Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH",
+          "description": "Smartwatch mit Kamera und GPS für Kinder – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+          "link": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/59b2baf6-a8eb-4ec9-8a42-7034336bc1e4.jpg?v=1787710463",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a18d8cf6-faf0-4fc6-9b7e-b96f35dc0f7e.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ab9ff353-79b9-4fb2-b23e-ca4a7ed9d795.jpg?v=1787710464",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5da234dc-b279-424d-aa24-19a77e03b23d.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ff54a43-a12c-4db0-9c02-6c98d874133e.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22a916e-cbeb-4b42-bf76-4cc2648ff958.jpg?v=1787710463"
+          ],
+          "ageGroup": "KIDS",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "Apparel & Accessories > Jewelry > Watches",
+          "price": {
+            "amountMicros": "78900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Uhren"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "0",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Kostenloser Versand",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            },
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "4",
+              "maxTransitTime": "6",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 61,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "63290000",
+            "currencyCode": "CHF"
+          },
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MTYxNTQ0NjI1OTNfNTYxNzc4NjYxNzg5NDU",
+        "legacyLocal": false
+      }
+    },
+    "staleOffer1.json": {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516156395905_56177868177793",
+        "offerId": "shopify_ZZ_15516156395905_56177868177793",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1791806400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/56177868177793",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJ-1427488603788939264",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-09-22T23:58:44.982499Z",
+          "lastUpdateDate": "2026-10-13T00:14:53.426960Z",
+          "googleExpirationDate": "2026-11-28T18:52:43Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "i9L Kinder 4G Videoanruf-Uhr | LuxeStyle CH",
+          "description": "i9L Kinder 4G Videoanruf-Uhr – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+          "link": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd41cd37-3c5a-464c-a6e6-2c92d14aaf6f.jpg?v=1787710595",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b952a85e-a205-458e-9a7e-112fac469840.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9ba08482-91f9-4371-812d-4ecf132c3175.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/275e8fb8-e04a-4de2-a909-1e1f4f96e2e8.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ade899a9-02a9-480b-a6df-46a09cd4842e.jpg?v=1787710595"
+          ],
+          "ageGroup": "KIDS",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "Apparel & Accessories > Jewelry > Watches",
+          "material": "Silikon",
+          "price": {
+            "amountMicros": "55900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Uhren"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "0",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Kostenloser Versand",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            },
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 58,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "44730000",
+            "currencyCode": "CHF"
+          },
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MTYxNTYzOTU5MDVfNTYxNzc4NjgxNzc3OTM",
+        "legacyLocal": false
+      }
+    },
+    "stale-url-checks.json": [
+      {
+        "offerId": "shopify_ZZ_15516154462593_56177866178945",
+        "checkedAtUTC": "2026-11-14T22:35:42.843868+00:00",
+        "requestedURL": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "httpStatus": 404,
+        "finalURL": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "isActual404": true
+      },
+      {
+        "offerId": "shopify_ZZ_15516156395905_56177868177793",
+        "checkedAtUTC": "2026-11-14T22:35:42.781870+00:00",
+        "requestedURL": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "httpStatus": 404,
+        "finalURL": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "isActual404": true
+      }
+    ],
+    "stale-delete-diff.json": {
+      "preparedAtUTC": "2026-11-14T22:35:42.845676+00:00",
+      "operations": [
+        {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "delete_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15516154462593_56177866178945",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465"
+          },
+          "beforeResource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516154462593_56177866178945",
+          "beforeSnapshot": "staleOffer0.json",
+          "scope": "entire exact Merchant product in this API primary source; Shopify products untouched",
+          "state": "prepared_not_sent"
+        },
+        {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "delete_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15516156395905_56177868177793",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465"
+          },
+          "beforeResource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516156395905_56177868177793",
+          "beforeSnapshot": "staleOffer1.json",
+          "scope": "entire exact Merchant product in this API primary source; Shopify products untouched",
+          "state": "prepared_not_sent"
+        }
+      ],
+      "reason": "both shop products DRAFT, old variants null, exact Merchant links actual404, both current landing_page_error disapproved",
+      "approval": "pending_exact_pair_delete_confirmation",
+      "priceAndAutofeedSourceUntouched": true,
+      "newDataSources": false,
+      "writeExecuted": false
+    },
+    "fr-landing-check.json": {
+      "checkedAtUTC": "2026-11-14T22:32:58.670588+00:00",
+      "url": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+      "htmlLanguage": "fr",
+      "headTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH",
+      "h1": [
+        "Schimmernder Thermo-Gel Nagellack"
+      ]
+    },
+    "autofeed-contract.json": {
+      "checkedInRun": "R223",
+      "readOnlyOfficialDocumentationReview": true,
+      "sources": [
+        {
+          "url": "https://developers.google.com/merchant/api/guides/products/add-manage",
+          "observedRule": "Products API insert/update/delete require data sources whose input type is API; primary-source productInput delete removes whole product including supplements"
+        },
+        {
+          "url": "https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/delete",
+          "observedRule": "productInputs.delete requires dataSource and targets a ProductInput"
+        }
+      ],
+      "boundAutofeed": {
+        "account": "5797470070",
+        "source": "10678939025",
+        "input": "AUTOFEED",
+        "offer": "15421165404545_cjtz292404406fu",
+        "apiDeleteNotApplicable": true,
+        "noGlobalSourceChangeOrSupplementCreated": true
+      },
+      "reviewLimits": "No single-item stopManaging API established in these two docs; not a claim that every Merchant UI method is unavailable"
+    },
+    "fr-language-draft.json": {
+      "preparedAtUTC": "2026-11-14T22:38:17.012875+00:00",
+      "kind": "localized_copy_draft_only_not_confirmed_google_error",
+      "scope": "two already approved French offers of the same nail-polish variants",
+      "publicLandingEvidence": {
+        "checkedAtUTC": "2026-11-14T22:32:58.670588+00:00",
+        "url": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/fr/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801",
+        "htmlLanguage": "fr",
+        "headTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH",
+        "h1": [
+          "Schimmernder Thermo-Gel Nagellack"
+        ]
+      },
+      "drafts": [
+        {
+          "offer": "shopify_ZZ_15448834736513_55877809340801",
+          "source": "accounts/5797470070/dataSources/10762220830",
+          "language": "fr",
+          "actualTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+          "actualDescription": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "proposedTitle": "Vernis gel scintillant – Modèle 1 | LuxeStyle CH",
+          "proposedDescription": "Gel pailleté violet pour le nail art, modèle 1. Le visuel présente cette variante sur les ongles. Consultez les informations d’utilisation et le contenu livré sur la fiche produit.",
+          "status": "draft_not_written",
+          "gates": [
+            "French storefront title/body and existing translations must be read and updated consistently before any isolated Merchant-language write",
+            "Fresh source, product and fields diff required",
+            "No measure, GTIN, therapeutic claim, delivery-time promise or promotion invented"
+          ]
+        },
+        {
+          "offer": "shopify_ZZ_15448834736513_67652260430215",
+          "source": "accounts/5797470070/dataSources/10762220830",
+          "language": "fr",
+          "actualTitle": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+          "actualDescription": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "proposedTitle": "Vernis gel scintillant – Modèle 6 | LuxeStyle CH",
+          "proposedDescription": "Gel pailleté violet pour le nail art, modèle 6. Le visuel présente cette variante sur les ongles. Consultez les informations d’utilisation et le contenu livré sur la fiche produit.",
+          "status": "draft_not_written",
+          "gates": [
+            "French storefront title/body and existing translations must be read and updated consistently before any isolated Merchant-language write",
+            "Fresh source, product and fields diff required",
+            "No measure, GTIN, therapeutic claim, delivery-time promise or promotion invented"
+          ]
+        }
+      ],
+      "writeCount": 0
+    },
+    "r167-source.json": {
+      "schemaVersion": 1,
+      "run": "R167",
+      "brand": "luxestyle.ch",
+      "checkedAt": "2026-11-10T10:48:17+01:00",
+      "writeSummary": {
+        "shopify": 0,
+        "merchant": 0,
+        "metricool": 0,
+        "klaviyo": 0,
+        "customers": 0,
+        "dns": 0,
+        "theme": 0,
+        "paidRenders": 0,
+        "githubActionsReadOnly": 2
+      },
+      "drive": {
+        "fileId": "110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-",
+        "name": "product_issues_2026-11-08_07-46-23.csv",
+        "mimeType": "text/comma-separated-values",
+        "bytes": 110213899,
+        "sha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+        "isVideo": false
+      },
+      "attachments": {
+        "byteIdentical": true,
+        "bytesEach": 4951868,
+        "sha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4"
+      },
+      "largeCsv": {
+        "rows": 367594,
+        "malformedRows": 0,
+        "uniqueItemIds": 275537,
+        "uniqueTitles": 275158,
+        "exactDuplicateRows": 0,
+        "multiIssueItems": 83405,
+        "rowStatus": {
+          "ELIGIBLE_LIMITED": 362439,
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 5155
+        },
+        "countries": {
+          "Liechtenstein": 358590,
+          "Switzerland": 7621,
+          "Germany": 1383
+        },
+        "traffic": {
+          "Free listings": 278084,
+          "Shopping ads": 85344,
+          "Dynamic remarketing": 4166
+        },
+        "issues": [
+          {
+            "title": "Missing shipping info in some countries",
+            "rows": 358792,
+            "items": 275537
+          },
+          {
+            "title": "Over capacity Shopping ads CSS",
+            "rows": 6456,
+            "items": 3228
+          },
+          {
+            "title": "Promotional overlay on image",
+            "rows": 1398,
+            "items": 357
+          },
+          {
+            "title": "Personalized advertising: personal hardships",
+            "rows": 448,
+            "items": 224
+          },
+          {
+            "title": "Missing attribute: availability",
+            "rows": 110,
+            "items": 55
+          },
+          {
+            "title": "Image too small",
+            "rows": 102,
+            "items": 43
+          },
+          {
+            "title": "Product page unavailable",
+            "rows": 36,
+            "items": 6
+          }
+        ],
+        "severityAllRows": "SEVERITY_DISAPPROVED",
+        "severityCaveat": "row property; not an additive product count"
+      },
+      "smallCsv": {
+        "rows": 14245,
+        "uniqueItems": 3826,
+        "languages": {
+          "de": 12950,
+          "fr": 1295
+        },
+        "identicalGermanRowsAlsoInLarge": 12950,
+        "identicalFrenchRowsAlsoInLarge": 0,
+        "smallOnlyItemIds": 6,
+        "scope": "different language/feed snapshot; not a complete replacement"
+      },
+      "merchant": {
+        "account": {
+          "displayName": "LuxeStyle CH",
+          "merchantCenterId": "5797470070"
+        },
+        "availabilityCase": {
+          "offerId": "13331643115375957532",
+          "productName": "accounts/5797470070/products/de~CH~13331643115375957532",
+          "dataSource": "accounts/5797470070/dataSources/10678939025",
+          "status": "DISAPPROVED",
+          "issue": "item_missing_required_attribute",
+          "attribute": "availability",
+          "countries": [
+            "CH",
+            "LI"
+          ],
+          "shopify": {
+            "productId": "15500960530817",
+            "variantId": "56110933803393",
+            "status": "ACTIVE",
+            "priceCHF": "15.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryTracked": false
+          },
+          "proposedAction": "derive in_stock from current Shopify availableForSale at the bound source; exact post-sync readback",
+          "executed": false
+        },
+        "staleLandingPageOffers": [
+          {
+            "productId": "15516154462593",
+            "variantId": "56177866178945",
+            "offerId": "shopify_ZZ_15516154462593_56177866178945",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "present_disapproved",
+            "dataSource": "accounts/5797470070/dataSources/10667445201"
+          },
+          {
+            "productId": "15493853544833",
+            "variantId": "56080492429697",
+            "offerId": "shopify_ZZ_15493853544833_56080492429697",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "INVALID_ARGUMENT"
+          },
+          {
+            "productId": "15519834636673",
+            "variantId": "56191247778177",
+            "offerId": "shopify_ZZ_15519834636673_56191247778177",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "INVALID_ARGUMENT"
+          },
+          {
+            "productId": "15516156395905",
+            "variantId": "56177868177793",
+            "offerId": "shopify_ZZ_15516156395905_56177868177793",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "present_disapproved",
+            "dataSource": "accounts/5797470070/dataSources/10667445201"
+          },
+          {
+            "productId": "15524696949121",
+            "variantId": "56221047292289",
+            "offerId": "shopify_ZZ_15524696949121_56221047292289",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "INVALID_ARGUMENT"
+          },
+          {
+            "productId": "15522193998209",
+            "variantId": "56204390433153",
+            "offerId": "shopify_ZZ_15522193998209_56204390433153",
+            "shopify": "DRAFT_404_variant_missing",
+            "merchantExactRead": "INVALID_ARGUMENT"
+          }
+        ],
+        "staleOfferAction": "exclude/remove only at verified source; do not activate DRAFT products",
+        "repoFeedCountercheck": {
+          "mainCommit": "a58f950030880f94fe7472dd1f8d30632aef3b8b",
+          "itemCount": 6241,
+          "availabilityCount": 6241,
+          "targetOfferOrProductPresent": false,
+          "conclusion": "repo generator is not proven source for numeric offer 13331643115375957532"
+        }
+      },
+      "pinterest": {
+        "ownerUsername": "luxestyleCH",
+        "ownerName": "LuxeStyle CH",
+        "ownerId": "1111333782956748766",
+        "boards": [
+          {
+            "id": "1111333714239114020",
+            "name": "Geschenkideen Schweiz",
+            "url": "https://www.pinterest.com/luxestyleCH/geschenkideen-schweiz/"
+          },
+          {
+            "id": "1111333714239531706",
+            "name": "Herrenmode Schweiz",
+            "url": "https://www.pinterest.com/luxestyleCH/herrenmode-schweiz/"
+          }
+        ],
+        "metricoolSelectable": null,
+        "writes": 0
+      },
+      "seo": {
+        "gscRepeated": false,
+        "obsoleteBlackFridayProductId": "15402554229121",
+        "obsoleteBlackFridayState": "DRAFT_404_not_in_current_product_sitemap",
+        "redirectCreated": false,
+        "feeder": {
+          "productId": "15523986473345",
+          "http": 200,
+          "canonical": "self",
+          "indexable": true,
+          "sitemap": "sitemap_products_47.xml",
+          "internalLinks": "three on page2 of matching collection with crawlable pagination",
+          "proposedAnchor": "Futterspender für Katzen in Weiss ansehen",
+          "proposedTarget": "/products/futterautomat-fur-katze-527488",
+          "executed": false
+        }
+      },
+      "cj": {
+        "shopifyProductId": "16690383454599",
+        "shopifyStatus": "DRAFT",
+        "targetVariantId": "67886035009927",
+        "targetSku": "CJZR164957201AZ",
+        "priceCHF": "67.90",
+        "remoteMain": "a58f950030880f94fe7472dd1f8d30632aef3b8b",
+        "productRun": {
+          "runId": 42793821605,
+          "jobId": 129753733206,
+          "conclusion": "success",
+          "pid": "1607242452115664896",
+          "productSku": "CJZR1649572",
+          "variantSetComplete": true,
+          "verified": true
+        },
+        "inventoryRun": {
+          "runId": 42794106913,
+          "jobId": 129754697683,
+          "conclusion": "success",
+          "inventoryPartial": false,
+          "countryAggregation": false,
+          "rows": 37,
+          "countries": [
+            "CN"
+          ],
+          "deliveryToSwitzerland": null,
+          "verified": true
+        },
+        "currentSkuRows": [
+          {
+            "sku": "CJZR164957201AZ",
+            "vid": "1607242452195356672",
+            "country": "CN",
+            "factoryInventory": 12416,
+            "cjInventory": 0
+          },
+          {
+            "sku": "CJZR164957202BY",
+            "vid": "1607242452199550976",
+            "country": "CN",
+            "factoryInventory": 10165,
+            "cjInventory": 0
+          },
+          {
+            "sku": "CJZR164957203CX",
+            "vid": "1607242452199550977",
+            "country": "CN",
+            "factoryInventory": 10654,
+            "cjInventory": 0
+          },
+          {
+            "sku": "CJZR164957237KP",
+            "vid": "2507260157271607400",
+            "country": "CN",
+            "factoryInventory": 9400,
+            "cjInventory": 0
+          }
+        ],
+        "unknown": [
+          "Swiss delivery",
+          "freight",
+          "delivery time",
+          "Prime",
+          "commercial media rights"
+        ],
+        "writes": 0
+      },
+      "master": {
+        "masterId": "projector-18s-open-master",
+        "driveProvidedFilm": false,
+        "professionalMp4": false,
+        "socialEligible": false,
+        "blockers": [
+          "exact variant/motif/unit binding",
+          "native 1080x1920/30fps footage",
+          "commercial edit/advertising rights",
+          "music rights/listening acceptance",
+          "final MP4 and QA"
+        ]
+      },
+      "claudeReceipt": "unknown_no_claude_receipt"
+    }
+  }
+}

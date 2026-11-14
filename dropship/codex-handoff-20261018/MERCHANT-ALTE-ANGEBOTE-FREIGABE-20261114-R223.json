@@ -1,0 +1,658 @@
+{
+  "state": "prepared_not_sent_waiting_exact_owner_delete_confirmation",
+  "primaryDeleteRemovesWholeMerchantProducts": true,
+  "shopifyProductsUnchanged": true,
+  "dataSourceUnchanged": true,
+  "source": [
+    {
+      "account_id": "5797470070",
+      "data_source_id": "10667445201",
+      "data_source_name": "accounts/5797470070/dataSources/10667445201",
+      "data_source_input": "API",
+      "data_source_type": "primaryProductDataSource",
+      "data_source_content_language": "de",
+      "data_source_feed_label": "CHF_99383214465",
+      "data_fetched_at": "2026-11-14T22:34:18"
+    }
+  ],
+  "requests": {
+    "preparedAtUTC": "2026-11-14T22:35:42.845676+00:00",
+    "operations": [
+      {
+        "account": "5797470070",
+        "connector": "google_merchant",
+        "action": "delete_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15516154462593_56177866178945",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465"
+        },
+        "beforeResource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516154462593_56177866178945",
+        "beforeSnapshot": "staleOffer0.json",
+        "scope": "entire exact Merchant product in this API primary source; Shopify products untouched",
+        "state": "prepared_not_sent"
+      },
+      {
+        "account": "5797470070",
+        "connector": "google_merchant",
+        "action": "delete_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15516156395905_56177868177793",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465"
+        },
+        "beforeResource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516156395905_56177868177793",
+        "beforeSnapshot": "staleOffer1.json",
+        "scope": "entire exact Merchant product in this API primary source; Shopify products untouched",
+        "state": "prepared_not_sent"
+      }
+    ],
+    "reason": "both shop products DRAFT, old variants null, exact Merchant links actual404, both current landing_page_error disapproved",
+    "approval": "pending_exact_pair_delete_confirmation",
+    "priceAndAutofeedSourceUntouched": true,
+    "newDataSources": false,
+    "writeExecuted": false
+  },
+  "beforeSnapshots": [
+    {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516154462593_56177866178945",
+        "offerId": "shopify_ZZ_15516154462593_56177866178945",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1791504000000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/56177866178945",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJ-1428612333579669504",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-08-26T02:14:28.982208Z",
+          "lastUpdateDate": "2026-10-09T16:38:03.387044Z",
+          "googleExpirationDate": "2026-11-18T18:14:04Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH",
+          "description": "Smartwatch mit Kamera und GPS für Kinder – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+          "link": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/59b2baf6-a8eb-4ec9-8a42-7034336bc1e4.jpg?v=1787710463",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a18d8cf6-faf0-4fc6-9b7e-b96f35dc0f7e.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ab9ff353-79b9-4fb2-b23e-ca4a7ed9d795.jpg?v=1787710464",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5da234dc-b279-424d-aa24-19a77e03b23d.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ff54a43-a12c-4db0-9c02-6c98d874133e.jpg?v=1787710463",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22a916e-cbeb-4b42-bf76-4cc2648ff958.jpg?v=1787710463"
+          ],
+          "ageGroup": "KIDS",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "Apparel & Accessories > Jewelry > Watches",
+          "price": {
+            "amountMicros": "78900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Uhren"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "0",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Kostenloser Versand",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            },
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "4",
+              "maxTransitTime": "6",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 61,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "63290000",
+            "currencyCode": "CHF"
+          },
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MTYxNTQ0NjI1OTNfNTYxNzc4NjYxNzg5NDU",
+        "legacyLocal": false
+      }
+    },
+    {
+      "merchantCenterId": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516156395905_56177868177793",
+        "offerId": "shopify_ZZ_15516156395905_56177868177793",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1791806400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/56177868177793",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJ-1427488603788939264",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "landing_page_error",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Product page unavailable",
+              "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+              "documentation": "https://support.google.com/merchants/answer/12158123",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-09-22T23:58:44.982499Z",
+          "lastUpdateDate": "2026-10-13T00:14:53.426960Z",
+          "googleExpirationDate": "2026-11-28T18:52:43Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "i9L Kinder 4G Videoanruf-Uhr | LuxeStyle CH",
+          "description": "i9L Kinder 4G Videoanruf-Uhr – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+          "link": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd41cd37-3c5a-464c-a6e6-2c92d14aaf6f.jpg?v=1787710595",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b952a85e-a205-458e-9a7e-112fac469840.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9ba08482-91f9-4371-812d-4ecf132c3175.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/275e8fb8-e04a-4de2-a909-1e1f4f96e2e8.jpg?v=1787710595",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ade899a9-02a9-480b-a6df-46a09cd4842e.jpg?v=1787710595"
+          ],
+          "ageGroup": "KIDS",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "Apparel & Accessories > Jewelry > Watches",
+          "material": "Silikon",
+          "price": {
+            "amountMicros": "55900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Uhren"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "0",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Kostenloser Versand",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            },
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 58,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "44730000",
+            "currencyCode": "CHF"
+          },
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MTYxNTYzOTU5MDVfNTYxNzc4NjgxNzc3OTM",
+        "legacyLocal": false
+      }
+    }
+  ],
+  "shopifyCountercheck": {
+    "data": {
+      "one": {
+        "id": "gid://shopify/Product/15516154462593",
+        "title": "Smartwatch mit Kamera und GPS für Kinder",
+        "handle": "smartwatch-mit-kamera-und-gps-fur-kinder-669504",
+        "status": "DRAFT",
+        "onlineStoreUrl": null,
+        "updatedAt": "2026-10-30T18:22:50Z"
+      },
+      "two": {
+        "id": "gid://shopify/Product/15516156395905",
+        "title": "i9L Kinder 4G Videoanruf-Uhr",
+        "handle": "i9l-kinder-4g-videoanruf-uhr-939264",
+        "status": "DRAFT",
+        "onlineStoreUrl": null,
+        "updatedAt": "2026-10-30T18:22:49Z"
+      },
+      "oldOne": null,
+      "oldTwo": null
+    }
+  },
+  "httpCounterchecks": [
+    {
+      "offerId": "shopify_ZZ_15516154462593_56177866178945",
+      "checkedAtUTC": "2026-11-14T22:35:42.843868+00:00",
+      "requestedURL": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "httpStatus": 404,
+      "finalURL": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504?variant=56177866178945&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "isActual404": true
+    },
+    {
+      "offerId": "shopify_ZZ_15516156395905_56177868177793",
+      "checkedAtUTC": "2026-11-14T22:35:42.781870+00:00",
+      "requestedURL": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "httpStatus": 404,
+      "finalURL": "https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264?variant=56177868177793&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "isActual404": true
+    }
+  ],
+  "requiredPreflightAfterOwnerYes": [
+    "fresh Merchant identity/source/offer snapshot",
+    "fresh Shopify DRAFT and old variants null",
+    "fresh exact URL status if stale",
+    "one write per offer with inflight checkpoint, no blind retry",
+    "targeted after-read plus known-live Merchant control to distinguish NotFound from auth"
+  ],
+  "writeCount": 0
+}
