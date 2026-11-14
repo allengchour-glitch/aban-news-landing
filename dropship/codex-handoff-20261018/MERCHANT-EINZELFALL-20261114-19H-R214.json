@@ -1,0 +1,392 @@
+{
+  "shopifyCheck": {
+    "check": "R214 fresh Shopify pricecase read",
+    "readOnly": true,
+    "source": "Shopify Admin GraphQL via connected Shopify plugin",
+    "schemaDiscovery": {
+      "queryRootFields": [
+        "product(id: ID!): Product",
+        "urlRedirects(first, query, ...): UrlRedirectConnection!"
+      ],
+      "productFields": [
+        "id",
+        "legacyResourceId",
+        "title",
+        "handle",
+        "status",
+        "onlineStoreUrl",
+        "publishedAt",
+        "updatedAt",
+        "priceRangeV2",
+        "variants"
+      ],
+      "variantFields": [
+        "id",
+        "legacyResourceId",
+        "title",
+        "sku",
+        "price: Money!",
+        "compareAtPrice: Money",
+        "availableForSale",
+        "inventoryQuantity",
+        "sellableOnlineQuantity"
+      ],
+      "redirectFields": [
+        "id",
+        "path",
+        "target",
+        "createdAt"
+      ],
+      "validationNote": "Initial query validation rejected subfields on Money and Money; corrected by selecting scalar price and compareAtPrice. Corrected Admin API 2026-10 query executed successfully."
+    },
+    "query": "query PriceCaseAndExactRedirect($productId: ID!, $redirectQuery: String!) { product(id: $productId) { id legacyResourceId title handle status vendor productType onlineStoreUrl publishedAt updatedAt priceRangeV2 { minVariantPrice { amount currencyCode } maxVariantPrice { amount currencyCode } } variants(first: 50) { nodes { id legacyResourceId title sku price compareAtPrice availableForSale inventoryQuantity sellableOnlineQuantity } } } urlRedirects(first: 3, query: $redirectQuery) { nodes { id path target createdAt } pageInfo { hasNextPage endCursor } } }",
+    "variables": {
+      "productId": "gid://shopify/Product/15421165404545",
+      "redirectQuery": "path:/products/workout-set-active-2-teilig-geripptes-tank-damen"
+    },
+    "shopifyProduct": {
+      "id": "gid://shopify/Product/15421165404545",
+      "legacyResourceId": "15421165404545",
+      "title": "Workout-Set «Active» · 2-teilig, geripptes Tank (Damen)",
+      "handle": "workout-set-active-2-teilig-geripptes-tank-damen",
+      "status": "DRAFT",
+      "vendor": "LuxeStyle",
+      "productType": "Sport-Set",
+      "onlineStoreUrl": null,
+      "publishedAt": null,
+      "updatedAt": "2026-10-10T10:12:44Z",
+      "priceRangeV2": {
+        "minVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        },
+        "maxVariantPrice": {
+          "amount": "44.9",
+          "currencyCode": "CHF"
+        }
+      },
+      "variantCountReturned": 12,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55775110300033",
+          "title": "Seeblau / S",
+          "sku": "CJTZ292404401AZ",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110332801",
+          "title": "Seeblau / M",
+          "sku": "CJTZ292404402BY",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110365569",
+          "title": "Seeblau / L",
+          "sku": "CJTZ292404403CX",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110398337",
+          "title": "Seeblau / XL",
+          "sku": "CJTZ292404404DW",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110431105",
+          "title": "Schwarz / S",
+          "sku": "CJTZ292404405EV",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110463873",
+          "title": "Schwarz / M",
+          "sku": "CJTZ292404406FU",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110496641",
+          "title": "Schwarz / L",
+          "sku": "CJTZ292404407GT",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110529409",
+          "title": "Schwarz / XL",
+          "sku": "CJTZ292404408HS",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110562177",
+          "title": "Khaki / S",
+          "sku": "CJTZ292404409IR",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110594945",
+          "title": "Khaki / M",
+          "sku": "CJTZ292404410JQ",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110627713",
+          "title": "Khaki / L",
+          "sku": "CJTZ292404411KP",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55775110660481",
+          "title": "Khaki / XL",
+          "sku": "CJTZ292404412LO",
+          "price": "44.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "sellableOnlineQuantity": 0
+        }
+      ]
+    },
+    "exactUrlRedirectQuery": {
+      "first": 3,
+      "nodes": [
+        {
+          "id": "gid://shopify/UrlRedirect/2042634568071",
+          "path": "/products/workout-set-active-2-teilig-geripptes-tank-damen",
+          "target": "/collections/damen-mode",
+          "createdAt": "2026-10-09T03:12:42Z"
+        }
+      ],
+      "hasNextPage": false
+    },
+    "priorR212EvidenceAsSuppliedInHandoff": {
+      "merchantSourceId": "10678939025",
+      "offerId": "15421165404545_cjtz292404406fu",
+      "googlePrice": null,
+      "sourceLinkIncludesVariant": "55775110463873",
+      "observedLinkResult": "301 to /collections/damen-mode",
+      "shopStatus": "DRAFT",
+      "provenance": "Prior R212 handoff facts, not re-read from Google Merchant in this R214 Shopify-only check"
+    },
+    "diagnosis": "The Google offer's CHF price is absent while Shopify has CHF 44.90 on every variant. The offer URL's product path is captured by an exact 301 redirect to a collection, and the Shopify product is DRAFT with no onlineStoreUrl or publishedAt. These independently prevent this URL from resolving to a purchasable product page; the Shopify listing price alone does not establish that Google received a valid product price.",
+    "proposedAction": "Keep this offer out of automated remediation/publishing until the product owner confirms the intended sale state. If intended for sale, first obtain explicit approval to make the Shopify product available, then have the store owner change the exact redirect so the offer URL resolves to the product (preserving a suitable legacy route if required), and re-read the public URL plus Merchant source 10678939025 before treating the price case as fixed. If it is intentionally DRAFT, correct the source/feed eligibility for this specific offer instead of forcing a product URL or inventing a price. Do not delete the redirect or activate the DRAFT product as part of this diagnosis.",
+    "unknowns": [
+      "Whether this product is meant to be sold/published now.",
+      "Why Shopify reports availableForSale=true while all 12 variants have inventoryQuantity=0 and sellableOnlineQuantity=0.",
+      "Whether Merchant source 10678939025 currently accepts or reports any price after the R212 read.",
+      "Whether the redirect was intentionally added as a legacy route and which destination the owner wants long term."
+    ],
+    "writes": 0
+  },
+  "rootPublicCountercheck": {
+    "checkedAtUTC": "2026-11-14T18:10:45.783904+00:00",
+    "request": "https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873",
+    "scope": "exact known Merchant pricecase link, no follow to mass scans",
+    "writes": 0,
+    "status": 301,
+    "location": "/collections/damen-mode?variant=55775110463873"
+  },
+  "singleActionForApproval": {
+    "dateZurich": "2026-11-14",
+    "kind": "Entwurf zur Freigabe, nicht umgesetzt",
+    "target": {
+      "merchantAccountId": "5797470070",
+      "sourceId": "10678939025",
+      "offerId": "15421165404545_cjtz292404406fu",
+      "shopifyProductId": "15421165404545",
+      "shopifyVariantId": "55775110463873",
+      "redirectId": "2042634568071"
+    },
+    "problem": "Ein historisches automatisch gefundenes Merchant-Angebot verweist auf eine Produktadresse, die wegen DRAFT keine Shopproduktseite besitzt und über einen exakten Redirect auf eine Kategorie führt. Google meldete in R212 keinen Preis.",
+    "proposedSingleAction": "Nur dieses veraltete Merchant-Angebot in seiner bestehenden automatischen Quelle entfernen oder dort von erneuter Aufnahme ausschliessen; unterstützten legitimen Einzelartikel-Editor vorher nachweisen. Keine ganze Quelle ausschalten.",
+    "before": {
+      "shopStatus": "DRAFT",
+      "shopOnlineStoreUrl": null,
+      "shopVariantPriceCHF": "44.90",
+      "redirectPath": "/products/workout-set-active-2-teilig-geripptes-tank-damen",
+      "redirectTarget": "/collections/damen-mode",
+      "publicStatus": 301,
+      "merchantPriceAtR212": null
+    },
+    "proposedDiff": {
+      "merchantOffer": "derzeit historisch vorhanden -> einzelnes veraltetes Angebot nicht weiter ausspielen/erneut aufnehmen",
+      "shopStatus": "DRAFT -> DRAFT",
+      "shopVariantPriceCHF": "44.90 -> 44.90",
+      "redirectTarget": "/collections/damen-mode -> /collections/damen-mode",
+      "source10678939025": "bestehend -> bestehend, kein globaler Wechsel"
+    },
+    "conditionsBeforeWrite": [
+      "Aktuelles Einzelangebot mit exakt dieser Quelle/ID frisch lesen",
+      "Legitimen Editor und wirksame Single-Offer-Exclude-/Entfernmethode prüfen; automatisches Re-Crawl-Verhalten verstehen",
+      "Vorherzustand und konkreten Feld-Diff sichern, kollidierende Paralleländerungen ausschliessen",
+      "Genau dieses Angebot danach frisch lesen; unklarer Write = unknown, kein Blindretry"
+    ],
+    "acceptance": [
+      "Kein Werbe-/Free-Listing-Ziel für dieses veraltete DRAFT-Angebot mehr bestätigt",
+      "Keine DRAFT-Aktivierung, Preisänderung, Redirectlöschung oder pauschale Quellen-/Länderänderung",
+      "Wiederaufnahme durch dieselbe Quelle gezielt im späteren bestehenden Lauf prüfen; keine Zusatzautomation"
+    ],
+    "currentWriteAccessAndMethod": "unknown_not_executed",
+    "writes": 0,
+    "notAClaimOfZeroMerchantErrors": true
+  },
+  "googleR212Source": {
+    "merchant": {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+      "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+      "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+    },
+    "safety": {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+      "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+      "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+    },
+    "ci": {
+      "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+      "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+      "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+    },
+    "patch": {
+      "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+      "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+      "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+    },
+    "handoff": {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+      "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+      "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+    },
+    "report": {
+      "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+      "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+      "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+    }
+  },
+  "currentMainMetadataCheck": {
+    "checkedAt": "2026-11-14T18:10:00Z",
+    "repository": "allengchour-glitch/aban-news-landing",
+    "method": "Small GitHub API commit-compare and contents SHA checks only; no fetch/checkout; no file contents downloaded",
+    "currentMain": "f88e1ba6dff493b7637704e695687ae6b0868dda",
+    "checks": [
+      {
+        "topic": "R212 core",
+        "commit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+        "compareToMain": {
+          "status": "diverged",
+          "aheadBy": 7,
+          "behindBy": 1,
+          "mergeBase": "90d0ea75bf2e1e864b3964c7983e3908961011d6"
+        },
+        "manifest": [
+          {
+            "path": "automation/lib/gmc_feed_item.mjs",
+            "r212Blob": "0cc3891f35012b6bf1af4dd48f577fe5e3395e85",
+            "mainBlob": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451"
+          },
+          {
+            "path": "automation/lib/gmc_feed_item_test.mjs",
+            "r212Blob": "2063610fc2ebd488499c85412549067dce5d233e",
+            "mainBlob": "6208b7f2b7bad909165afd6b8dbf508ba1dda73c"
+          },
+          {
+            "path": "automation/pod_auswahl_mutation.mjs",
+            "r212Blob": "e46eeb3c30ec6b957045d3ee066febed312e582a",
+            "mainBlob": "b9623283a8cf0c9ed087d5d97a04783a89d4f76f"
+          }
+        ],
+        "integrationConclusion": "R212 commit is not an ancestor of current main; all three named file blob SHAs differ, so the R212 snapshot is not exact on main. Hash difference alone cannot rule out selective/manual porting. No productive feed execution inferred."
+      },
+      {
+        "topic": "R212 reader",
+        "commit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+        "compareToMain": {
+          "status": "diverged",
+          "aheadBy": 7,
+          "behindBy": 2,
+          "mergeBase": "90d0ea75bf2e1e864b3964c7983e3908961011d6"
+        },
+        "manifest": [
+          {
+            "path": ".github/workflows/merchant-probe.yml",
+            "r212Blob": "f3ba58c81c9a1b7521284a91f810118af3579c33",
+            "mainBlob": "cfef10482111393ffb1d7ce1826eae9e3afc4e7d"
+          },
+          {
+            "path": "automation/merchant_probe.py",
+            "r212Blob": "c29b4a0d80f8b31bd0f8b5b6dc7e0f75221162e2",
+            "mainBlob": "9b36fb44af40d5e4fcf5277313f2c4fb96887978"
+          },
+          {
+            "path": "automation/test_merchant_probe.py",
+            "r212Blob": "9e73b3ba919644a89e728da4ea6d6ff540376943",
+            "mainBlob": null,
+            "mainStatus": "404 Not Found"
+          }
+        ],
+        "integrationConclusion": "R212 reader commit is not an ancestor of current main; two modified files differ and the added test file is absent at current main. No productive feed execution inferred."
+      },
+      {
+        "topic": "R200 hold patch",
+        "commit": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+        "compareToMain": {
+          "status": "diverged",
+          "aheadBy": 20,
+          "behindBy": 1,
+          "mergeBase": "be910893bf5d127c2a85bfd8fc625ac20e6f9e8a"
+        },
+        "path": "dropship/METRICOOL-HALTEN.txt",
+        "r200Blob": "1997851848b25037685779555478f55ca1c9e429",
+        "mainBlob": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+        "integrationConclusion": "R200 commit is not an ancestor of current main and the hold-file blob differs. This does not prove no partial port; the R213 contemporaneous log says main still has four permanent UUIDs and the additional eleven-UUID patch is not main."
+      }
+    ],
+    "limitations": [
+      "Commit comparisons establish the R212/R200 commits are not ancestors of the supplied main commit; file SHA mismatch only establishes exact file snapshots differ.",
+      "No diff or execution verification was performed beyond GitHub API metadata; commits/merges do not establish deployment or productive execution."
+    ]
+  },
+  "noCurrentGoogleReadInR214": true,
+  "businessWrites": 0
+}
