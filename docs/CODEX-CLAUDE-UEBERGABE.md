@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Bürostatistik: Kennzahlen, Monatsdiagramm und Kostenstatus neu gestaltet ·14.11.2026
+
+Besitzerauftrag «Büro verbessern, Statistik und Diagramm verschönern». Von main90d0ea7 auf eigenem Sparse-Branch; Regeln, Übergaben und offene Arbeiten geprüft. Statistikmodul und Büro-Stile neu gestaltet, Finanzberechnung/Schema/Zeiträume/Quellen/3D-Daten unverändert. Keine Finanzdaten im Repository, kein neuer Quellenabruf oder Automat.
+
+Grössere Kennzahlenkarten mit ruhiger Farbzuordnung, Zeitraumwahl, breites SVG-Monatsdiagramm vor der langen Detailtabelle. Balken/Linie umschaltbar, Wahl beim Zeitraumwechsel erhalten; Fokus nach Wechsel auf gewähltem Knopf. Negative Werte unter der Nulllinie, Null bleibt gemeldeter Wert, exakte Diagrammbeschriftungen mit Währung; Monatswerte gelten nur für gewählten Zeitraum. Fünf Kostenstatuskacheln zeigen erfasst/Teilstand/unbekannt ohne erfundene Prozentwerte. Unvollständige Kosten verhindern weiterhin Gewinn. Mobile Darstellung mit breiteren Bedienelementen und angepasstem Diagrammraum, dunkle Privatansicht mit eigenem lesbarem Akzent.
+
+GEMESSEN: sechs bestehende Finanzregressionen grün;43 Dashboardbau-Prüfungen grün. Kombinierter Drei-Seiten-Bau als Uploaddokument unter250000Byte (rund240649Byte), unveränderte Seiten Offene Punkte/Suchanfragen erhalten. Zusätzlich identisches Statistik-Modulbündel aus finanzmonitor/geldmanager/quellenmonitor als Uploaddokument gebaut, unter Limit. Keine Modelle neu gebaut/geändert. Screenshotkontrolle1440/390px mit erfundenen positiven/negativen/Null-/unbekannten Daten: Balken/Linie/Filter/Leeren, fünf Statuskacheln, keine Überbreite. Private Bestandsansicht separat ausserhalb Git geprüft: elf Monate und unveränderte Finanzdaten/Messzeiten/Fehlerbanner; kein neuer Messstand. Endgültige Page-Aktualisierung, CI und Produktionsstand im zugehörigen PR nachsehen. Finanzielle Wirkung nicht gemessen; Nutzen: vorhandene Zahlen und Datenlücken schneller verstehen.
+
+Claude-Upload: ausschliesslich vollständigen Bau aus tools/buero/dashboard/bauen.py --dokumente plus aktuelles kb-geldmanager.js aus den drei Modulquellen verwenden. Nie seite.html roh als index.html hochladen. Bestehende private Daten und neuere Messstände vor Upload vergleichen/erhalten. Upload des Claude-Artefakts bleibt Claude zugeordnet; dessen Ausführung/Kenntnisnahme unbestätigt. Öffentliche Büro-Webseite nutzt beim vorhandenen Hauptseitenbau dieselben Quellen. Keine private Finanzdatei in öffentliche Ausgabe übernehmen.
+
 ## KI-Studio: Browser akzeptiert nur eindeutige erfolgreiche Lizenzantwort ·14.11.2026
 
 Von maine59481d auf eigenem isoliertem Branch; Regeln, Übergaben und offene Arbeiten gelesen. Frühere Backend-/Wartefristkorrekturen erhalten. Konkreter noch offener Browserbefund: Lizenzantwort mit HTTP403/429/500 und valid:true bzw. mit Textwert valid:"false" schaltet Browseranzeige frei; leeres Objekt/Liste meldet fälschlich ungültige Lizenz. Neue Gegenproben am alten Code20 Fehler. Keine echte Lizenz/Anbieterabfrage; kein Nachweis einer umgangenen serverseitigen Prüfung.
