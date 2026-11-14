@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## KI-Studio: Browser akzeptiert nur eindeutige erfolgreiche Lizenzantwort ·14.11.2026
+
+Von maine59481d auf eigenem isoliertem Branch; Regeln, Übergaben und offene Arbeiten gelesen. Frühere Backend-/Wartefristkorrekturen erhalten. Konkreter noch offener Browserbefund: Lizenzantwort mit HTTP403/429/500 und valid:true bzw. mit Textwert valid:"false" schaltet Browseranzeige frei; leeres Objekt/Liste meldet fälschlich ungültige Lizenz. Neue Gegenproben am alten Code20 Fehler. Keine echte Lizenz/Anbieterabfrage; kein Nachweis einer umgangenen serverseitigen Prüfung.
+
+`js/ki-studio.js` verlangt erfolgreichen HTTP-Status sowie Objekt mit booleschem valid. Fehlerhafte/unvollständige Antwort nutzt vorhandene zweisprachige Störungsmeldung; keine falsche Freigabe oder Ablehnung, gespeicherten Schlüssel erhalten. Bestätigtes valid:false bleibt ablehnbar. Echte positive Antwort sowie manuelle neue Prüfung nach Erholung funktionieren. Frist/Abort/Timerbereinigung und Nullretry erhalten; Backend-/Produkt-/Tier-/Preis-/Lizenzregeln unverändert.
+
+GEMESSEN:132 API-,64 Download- und84 Engineprüfungen grün. Alte Browser-Testantworten um tatsächliches Response.ok ergänzt; bestehende Fristgegenproben weiter grün. Neue Fälle prüfen drei HTTP-Fehler, Text-/Zahlwerte, leere/null/Liste-Antwort, ausdrückliche Ablehnung und anschliessende einmalige manuelle Freischaltung. Nur erfundene Schlüssel/Antworten, keine Modell-/Kunden-/Kontoaktion. Browser, CI-Simulation, echte CI und Bereitstellung abschliessend im zugehörigen PR lesen. Keine neue Automation/Frequenz. Finanzielle Wirkung nicht gemessen; Nutzen: keine irreführende Freischaltung oder Neukauf-/Supportspirale bei defekter Lizenzantwort.
+
 ## 26-Vorlagen-Angebot: Anfrage statt unbelegtem Sofort-Download ·14.11.2026
 
 Von mainda0210d auf eigenem isoliertem Branch; aktuelle Regeln, Übergaben und offene Arbeiten gelesen. Stripe-Konto nur lesend verfügbar bestätigt, keine Zahlungs-/Produkt-/Kontoänderung und keine Zahlungslinks/Abonnentendaten abgerufen. Zentrale Konfiguration VORLAGEN_BUY_URL weiterhin leer. Shop führt unter gleichem Slug ein anders beschriebenes40-Vorlagen-Angebot; Landingpage dagegen26 Vorlagen, DE/EN, PDF. Keine Gleichheit/Lieferzuordnung unterstellt und keinen fremden Kaufweg eingesetzt.

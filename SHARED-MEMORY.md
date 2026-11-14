@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: KI-Studio prüft Lizenzantwort strikt ·14.11.2026
+
+Browserfreigabe verlangt HTTP-Erfolg und boolesches valid. Defekte Antworten als Störung, Schlüssel erhalten; bestätigte Ablehnung und manuelle Wiederaufnahme geprüft.132 API-,64 Download-,84 Engineprüfungen grün. Backend-/Preis-/Lizenzregeln unverändert. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: 26-Vorlagen-Angebot mit ehrlichem Anfrageweg ·14.11.2026
 
 Produktionsgegenprobe zeigte Cloudflare-Mailverschleierung; Folgekorrektur mit bestehendem email_off-Kommentar, endgültige Bereitstellung im Folge-PR prüfen. Vorlagen-Landingpage verspricht ohne Checkout keinen Sofort-Download/Lemon-Zahlung mehr. Mail-Anfrage funktioniert statisch auch ohne JS; FAQ und Suchdaten identisch. Acht lokale Browsergegenproben grün. Anders beschriebenes40er-Shopangebot nicht ungeprüft verknüpft. Eigener Checkout/Lieferweg noch offen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR; finanzielle Wirkung nicht gemessen.

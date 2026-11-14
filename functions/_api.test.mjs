@@ -317,7 +317,7 @@ async function run() {
       localStorage:{setItem:(...args)=>saved.push(args)},setUnlocked:on=>{unlocked=on;},applyTier:()=>{},
       setTimeout:(fn,ms)=>{timers.set(++timerId,{fn,ms});return timerId;},clearTimeout:id=>timers.delete(id),
       fetch:async(_,opts)=>{calls++;signal=opts.signal;const pending=new Promise(resolve=>{finish=resolve;});
-        return phase==='transport'?pending:{json:()=>pending};}
+        return phase==='transport'?pending:{ok:true,json:()=>pending};}
     };
     vm.createContext(context);vm.runInContext(validateSource,context);
     context.validate('demo-schluessel',quiet);
@@ -328,12 +328,36 @@ async function run() {
     check(phase+'/'+quiet+': Störung klar benannt, Knopf wieder bedienbar',sub.textContent.includes('nicht nochmals kaufen')&&!btn.disabled);
     check(phase+'/'+quiet+': kein Retry, Signal abgebrochen, Timer entfernt',calls===1&&signal?.aborted===true&&timers.size===0);
     check(phase+'/'+quiet+': gespeicherten Schlüssel erhalten, keine Freigabe',context.key==='demo-gespeichert'&&!unlocked&&saved.length===0);
-    finish(phase==='transport'?{json:async()=>({valid:true,tier:'monthly'})}:{valid:true,tier:'monthly'});
+    finish(phase==='transport'?{ok:true,json:async()=>({valid:true,tier:'monthly'})}:{valid:true,tier:'monthly'});
     await new Promise(resolve=>setImmediate(resolve));
     check(phase+'/'+quiet+': verspätete Antwort gibt nicht frei',!unlocked&&saved.length===0);
-    context.fetch=async()=>{calls++;return {json:async()=>({valid:true,tier:'monthly'})};};
+    context.fetch=async()=>{calls++;return {ok:true,json:async()=>({valid:true,tier:'monthly'})};};
     context.validate('demo-schluessel',false);await new Promise(resolve=>setImmediate(resolve));
     check(phase+'/'+quiet+': manuelle Prüfung nach Erholung erfolgreich',calls===2&&unlocked&&!btn.disabled&&timers.size===0);
+  }
+
+  console.log("\nTest 16 — Browser verlangt erfolgreiche eindeutige Lizenzantwort:");
+  const brokenReplies=[['HTTP403',403,{valid:true}],['HTTP429',429,{valid:true}],
+    ['HTTP500',500,{valid:true}],['Textfalse',200,{valid:'false'}],
+    ['Texttrue',200,{valid:'true'}],['Zahl',200,{valid:1}],['leer',200,{}],
+    ['null',200,null],['Liste',200,[]]];
+  for(const [name,status,data] of [...brokenReplies,['ungueltig',200,{valid:false,status:'invalid'}]]){
+    let unlocked=false,calls=0;const saved=[],timers=new Map();let id=0;
+    const btn={disabled:false},sub={textContent:''};
+    const context={AbortController,Promise,JSON,Error,Array,
+      $:()=>btn,subEl:sub,KEY:'demo',key:'demo-gespeichert',
+      T:{working:'Arbeite',unlock:'Freischalten',licenseUnavailable:'Bitte nicht nochmals kaufen',invalid:'Ungültig'},
+      localStorage:{setItem:(...a)=>saved.push(a)},setUnlocked:on=>{unlocked=on;},applyTier:()=>{},
+      setTimeout:fn=>{timers.set(++id,fn);return id;},clearTimeout:id=>timers.delete(id),
+      fetch:async()=>{calls++;return {ok:status>=200&&status<300,json:async()=>data};}
+    };
+    vm.createContext(context);vm.runInContext(validateSource,context);context.validate('demo-neuer-schluessel',false);
+    await new Promise(resolve=>setImmediate(resolve));
+    check(name+': keine falsche Freigabe und kein Überschreiben',!unlocked&&saved.length===0&&context.key==='demo-gespeichert');
+    check(name+': richtige Fehlermeldung und wieder bedienbar',!btn.disabled&&timers.size===0&&sub.textContent===(name==='ungueltig'?'Ungültig':'Bitte nicht nochmals kaufen'));
+    context.fetch=async()=>{calls++;return {ok:true,json:async()=>({valid:true,tier:'monthly'})};};
+    context.validate('demo-neuer-schluessel',false);await new Promise(resolve=>setImmediate(resolve));
+    check(name+': einmal manuell nach Erholung freischaltbar',calls===2&&unlocked&&saved.length===1&&context.key==='demo-neuer-schluessel');
   }
 
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
