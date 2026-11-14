@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 198,
-  "updatedAt": "2026-11-13T23:17:47.813235+00:00",
+  "revision": 199,
+  "updatedAt": "2026-11-14T00:08:52.861542+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -541,12 +541,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r197_one_mug_body_title_seo_corrected_verified_no_mass_changes",
+      "state": "r199_exact_collection_member_checks_and_three_source_conflicts_no_product_mutations",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
-      "lastEvidence": "Becher16617685418375: Body/Titel/SEO neutral korrigiert; Admin und öffentlich H1/Meta/Body/Selfcanonical bestätigt. CHF17.90, Varianten, Bilder, Tags und übrige gelieferten Getfelder unverändert. Materialtags/Alttexte/Feedfelder separat offen.",
-      "nextAllowedStep": "Nur neue konkrete Quellenkonflikte eng und gegen aktuelle Originale korrigieren; kein Katalogabschluss.",
+      "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
+      "lastEvidence": "NeueQuellenbefunde:16654366638471 heisstBluse,zeigtHoodie/Set1,deshalbnichtausgewählt;unverändert. Notizbuch16653948191111 BasisvsGeschenksetbilderoffen;16638912496007 exactPurplePlusStickers/80g/200Blattbelegt,400Seiten/Innenmasseunbekannt. AusgewählteCollection-MemberengaufTags/CHF/Bilder/defaultKaufbarkeit/TrackingPolicy/Shopstatusgeprüft;0Produktwrites.",
+      "nextAllowedStep": "NachZugriffswiederherstellunggenaueHoodiequelle/Setumfang prüfenundneutralenProduktdiffvorbereiten;Notizbuchgaleriegebundenlesen,keineMasse/MaterialienoderSetbestandteileerfinden.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -1020,6 +1020,18 @@
           "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
           "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa",
           "readAt": "2026-11-13T23:10:09.275084+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1701,6 +1713,30 @@
               "path": "dropship/codex-handoff-20261018/BECHER-KORREKTUR-20261113-R197.json",
               "sha256": "207feb60de3ba30b04dfa270cbb00b8ea877137bfe157577cb7050f41badb604",
               "gitBlobSha": "89a980e8797ba33e1b3eb8c0fd893418ec3d12fa"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 199,
+          "previousEvidencePreserved": {
+            "state": "r197_one_mug_body_title_seo_corrected_verified_no_mass_changes",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R197_EXACT_BEFORE_AFTER_AND_BOUNDED_CURRENT_SOURCE_COUNTERCHECK",
+            "lastEvidence": "Becher16617685418375: Body/Titel/SEO neutral korrigiert; Admin und öffentlich H1/Meta/Body/Selfcanonical bestätigt. CHF17.90, Varianten, Bilder, Tags und übrige gelieferten Getfelder unverändert. Materialtags/Alttexte/Feedfelder separat offen.",
+            "nextAllowedStep": "Nur neue konkrete Quellenkonflikte eng und gegen aktuelle Originale korrigieren; kein Katalogabschluss."
+          },
+          "summary": "NeueQuellenbefunde:16654366638471 heisstBluse,zeigtHoodie/Set1,deshalbnichtausgewählt;unverändert. Notizbuch16653948191111 BasisvsGeschenksetbilderoffen;16638912496007 exactPurplePlusStickers/80g/200Blattbelegt,400Seiten/Innenmasseunbekannt. AusgewählteCollection-MemberengaufTags/CHF/Bilder/defaultKaufbarkeit/TrackingPolicy/Shopstatusgeprüft;0Produktwrites.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+              "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+              "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+              "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+              "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
             }
           ]
         }
@@ -2577,6 +2613,19 @@
           }
         ],
         "scope": "bounded continuation; user current grants and all quality/rights boundaries remain"
+      },
+      "run199": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+        },
+        "qa": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+        },
+        "currentSourceRequiredBeforeNextWrite": true
       }
     },
     {
@@ -3056,12 +3105,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r198_native_shop_editor_login_blocked_no_profile_write_r197_changes_preserved",
+      "state": "r199_collection_progress_and_identity_guard_shared_owner_editor_guidance",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R198_OWNER_GOOGLE_REFUSAL_AND_SAME_BROWSER_SHOPIFY_ERROR_TARGETED_READBACK",
-      "lastEvidence": "FrischerInteraktivlink erreichteGooglelogin; InhaberbildzeigtBrowserSicherheitsablehnung. OffizielleShopifyRückkehrimselbenBrowserfehlgeschlagen; gezielterReadSomethingwentwrong. Sitzunggeschlossen,keineSicherheitsänderung/Profilwrites. ShopifyAPIundR197Kollektion/Becherkorrekturenbleibenbestätigt; keineerneuteOwnerfreigabenötig.",
-      "nextAllowedStep": "Unterstützten authentifizierten Händlerbrowser herstellen; erst danach R197-Kollektion im nativen Shop-Profil platzieren/previewen/speichern. Keine weiteren Cloud-Loginversuche ohne neue konkrete Zugriffsmöglichkeit.",
+      "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
+      "lastEvidence": "InhaberwünschtmehrKollektioneninAbschnitt1und2.7datierteShopgruppen/2neuangelegteunbestätigte/1Notizbuchgruppezurückgestellt. 14ShopifyRessourcenwrites,0Social-/Produkt-/Profilwrites. WrongidentityreadTechHubführtezumStopundunterstütztemKontextwechsel; wartenaufLuxeStyleAutorisierung. ZweiLuna-Leseaufgaben/CJquellenbelege,24IDs/Historie/Tagesgrenze erhalten.",
+      "nextAllowedStep": "R199IDs/Statusgrenzen beachten,keineerneuteGestaltungsfreigabe verlangen. AktuelleBrowser-/APIzugänge unterscheidenechteReceipts,keineClaudeKenntnisnahmeohneBeleg.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3370,6 +3419,18 @@
           "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
           "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e",
           "readAt": "2026-11-13T23:17:47.813235+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3784,6 +3845,30 @@
               "path": "dropship/codex-handoff-20261018/SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json",
               "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
               "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 199,
+          "previousEvidencePreserved": {
+            "state": "r198_native_shop_editor_login_blocked_no_profile_write_r197_changes_preserved",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R198_OWNER_GOOGLE_REFUSAL_AND_SAME_BROWSER_SHOPIFY_ERROR_TARGETED_READBACK",
+            "lastEvidence": "FrischerInteraktivlink erreichteGooglelogin; InhaberbildzeigtBrowserSicherheitsablehnung. OffizielleShopifyRückkehrimselbenBrowserfehlgeschlagen; gezielterReadSomethingwentwrong. Sitzunggeschlossen,keineSicherheitsänderung/Profilwrites. ShopifyAPIundR197Kollektion/Becherkorrekturenbleibenbestätigt; keineerneuteOwnerfreigabenötig.",
+            "nextAllowedStep": "Unterstützten authentifizierten Händlerbrowser herstellen; erst danach R197-Kollektion im nativen Shop-Profil platzieren/previewen/speichern. Keine weiteren Cloud-Loginversuche ohne neue konkrete Zugriffsmöglichkeit."
+          },
+          "summary": "InhaberwünschtmehrKollektioneninAbschnitt1und2.7datierteShopgruppen/2neuangelegteunbestätigte/1Notizbuchgruppezurückgestellt. 14ShopifyRessourcenwrites,0Social-/Produkt-/Profilwrites. WrongidentityreadTechHubführtezumStopundunterstütztemKontextwechsel; wartenaufLuxeStyleAutorisierung. ZweiLuna-Leseaufgaben/CJquellenbelege,24IDs/Historie/Tagesgrenze erhalten.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+              "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+              "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+              "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+              "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
             }
           ]
         }
@@ -4327,6 +4412,19 @@
         },
         "authorizationMissing": false,
         "technicalAccessMissing": true
+      },
+      "run199": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+        },
+        "qa": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+        },
+        "currentSourceRequiredBeforeNextWrite": true
       }
     },
     {
@@ -8098,13 +8196,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r198_native_shop_editor_login_blocked_no_profile_write_r197_changes_preserved",
+      "state": "r199_seven_shop_groups_confirmed_two_created_publication_unknown_reauth_target_luxestyle",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R198_OWNER_GOOGLE_REFUSAL_AND_SAME_BROWSER_SHOPIFY_ERROR_TARGETED_READBACK",
-      "lastEvidence": "FrischerInteraktivlink erreichteGooglelogin; InhaberbildzeigtBrowserSicherheitsablehnung. OffizielleShopifyRückkehrimselbenBrowserfehlgeschlagen; gezielterReadSomethingwentwrong. Sitzunggeschlossen,keineSicherheitsänderung/Profilwrites. ShopifyAPIundR197Kollektion/Becherkorrekturenbleibenbestätigt; keineerneuteOwnerfreigabenötig.",
+      "belegArt": "R199_SCOPE_BOUND_SHOP_COLLECTION_WRITES_AND_LATE_IDENTITY_GUARD",
+      "lastEvidence": "Drei bestehende Gruppen gezielt Shop-only veröffentlicht;3weitere mit je2kaufbarenProdukten erstellt/publiziert. Geschenk-Alt neutral, LichtbildanRosa gebunden, neueEntdeckungenCoverergänzt. Zuletzt7Shopkollektionen bestätigt. Mode757757542791/Schmuck757757575559 erstellt, danachReauth/falscheIdentitätTechHub; keine Freischaltung/Readback möglich. NativeDoppelkarteausInhaberbild korrigiertangeleitet,keineigenesSave.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=213619179911",
-      "nextAllowedStep": "Unterstützten authentifizierten Händlerbrowser herstellen; erst danach R197-Kollektion im nativen Shop-Profil platzieren/previewen/speichern. Keine weiteren Cloud-Loginversuche ohne neue konkrete Zugriffsmöglichkeit.",
+      "nextAllowedStep": "NachausdrücklicherLuxeStyleAutorisierung frischeShop-/Publikationsidentität, beidefestenIDs undProduktvoraussetzungenlesen; nurfehlendenShopstatussetzen/rücklesen. KeineKopien. ZweiBlöcke5+5nurmitgeeignetenGruppen,keinMindestvolumen.",
       "blockers": [
         "Publishwerkzeug fehlt.",
         "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
@@ -8423,6 +8521,18 @@
           "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
           "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e",
           "readAt": "2026-11-13T23:17:47.813235+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58",
+          "readAt": "2026-11-14T00:08:52.861542+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -8919,6 +9029,30 @@
               "path": "dropship/codex-handoff-20261018/SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json",
               "sha256": "92207a352df2a2a993780bff9774aaa6c138b3252fc250a19794017e871fbb63",
               "gitBlobSha": "485c466e02c427ef5a347e9e4cc2e2e9a2963d9e"
+            }
+          ]
+        },
+        {
+          "dateZurich": "2026-11-14",
+          "revision": 199,
+          "previousEvidencePreserved": {
+            "state": "r198_native_shop_editor_login_blocked_no_profile_write_r197_changes_preserved",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R198_OWNER_GOOGLE_REFUSAL_AND_SAME_BROWSER_SHOPIFY_ERROR_TARGETED_READBACK",
+            "lastEvidence": "FrischerInteraktivlink erreichteGooglelogin; InhaberbildzeigtBrowserSicherheitsablehnung. OffizielleShopifyRückkehrimselbenBrowserfehlgeschlagen; gezielterReadSomethingwentwrong. Sitzunggeschlossen,keineSicherheitsänderung/Profilwrites. ShopifyAPIundR197Kollektion/Becherkorrekturenbleibenbestätigt; keineerneuteOwnerfreigabenötig.",
+            "nextAllowedStep": "Unterstützten authentifizierten Händlerbrowser herstellen; erst danach R197-Kollektion im nativen Shop-Profil platzieren/previewen/speichern. Keine weiteren Cloud-Loginversuche ohne neue konkrete Zugriffsmöglichkeit."
+          },
+          "summary": "Drei bestehende Gruppen gezielt Shop-only veröffentlicht;3weitere mit je2kaufbarenProdukten erstellt/publiziert. Geschenk-Alt neutral, LichtbildanRosa gebunden, neueEntdeckungenCoverergänzt. Zuletzt7Shopkollektionen bestätigt. Mode757757542791/Schmuck757757575559 erstellt, danachReauth/falscheIdentitätTechHub; keine Freischaltung/Readback möglich. NativeDoppelkarteausInhaberbild korrigiertangeleitet,keineigenesSave.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+              "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+              "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+              "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+              "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
             }
           ]
         }
@@ -9745,6 +9879,19 @@
         },
         "authorizationMissing": false,
         "technicalAccessMissing": true
+      },
+      "run199": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+        },
+        "qa": {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+        },
+        "currentSourceRequiredBeforeNextWrite": true
       }
     },
     {
@@ -18343,6 +18490,31 @@
           "path": "dropship/codex-handoff-20261018/SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.md",
           "sha256": "90bdc8978a05dc8095537c85945600c0cf91f374b20f11d8fded3f3adb374db1",
           "gitBlobSha": "560668661921a43599baba7fcdb265b20846dbe0"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 199,
+      "at": "2026-11-14T00:08:52.861542+00:00",
+      "actor": "codex",
+      "summary": "MehrShopkollektionen:14erfolgreicheRessourcenwrites;7Shopgruppen datiertbestätigt,2zusätzlicheangelegtmitunbestätigterPublikation. Notizbuchquelleweiteroffen. VorWritesLuxeStylefrischverifiziert;spätereReauthliefertTechHubIdentität,woraufkeineStorewritesmehrfolgtenundkorrekterKontextwechselbeantragtwurde. NativeDoppelkarteerkannt/eigenenBeratungsfehlerkorrigiert;keinRootSave.24IDs/Historie/Tagesgrenze/Kaufwatchendeerhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+          "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+          "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+          "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+          "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.md",
+          "sha256": "601bda29089df6685f121337776942ffdd520e4606283ab76c1eab48ad9d7dd9",
+          "gitBlobSha": "296f32bb72621383162ad723adb72472b326686c"
         }
       ],
       "taskCount": 24,
@@ -42207,6 +42379,43 @@
     "newAnalyticsFlowOrSalesReports": 0,
     "ordersQueried": false,
     "purchaseWatchEnded": true,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run199": {
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "SHOP-KOLLEKTIONEN-20261114-R199.json": {
+        "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.json",
+        "sha256": "69c92be1ca3f92530027173252ad044b26d07aaf9cd3941ab346d78ced28c924",
+        "gitBlobSha": "cd052c5921013359540006b75b5673d00c1f51fd"
+      },
+      "SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json": {
+        "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json",
+        "sha256": "5af509815b6209d01298aacdd1139b8a20328e6b08c1e3ea4a1945f822cebc77",
+        "gitBlobSha": "69e036da1b8b8af19f8a58f01c07331e6d4ceb58"
+      },
+      "SHOP-KOLLEKTIONEN-20261114-R199.md": {
+        "path": "dropship/codex-handoff-20261018/SHOP-KOLLEKTIONEN-20261114-R199.md",
+        "sha256": "601bda29089df6685f121337776942ffdd520e4606283ab76c1eab48ad9d7dd9",
+        "gitBlobSha": "296f32bb72621383162ad723adb72472b326686c"
+      }
+    },
+    "shopifyResourceWrites": 14,
+    "collectionCreates": 5,
+    "collectionPublicationOperations": 6,
+    "collectionImageUpdates": 3,
+    "lastConfirmedShopCollections": 7,
+    "newCollectionsAwaitingPublication": [
+      "gid://shopify/Collection/757757542791",
+      "gid://shopify/Collection/757757575559"
+    ],
+    "nativeProfileSavesByRoot": 0,
+    "socialWrites": 0,
+    "newAnalyticsFlowOrSalesReports": 0,
+    "ordersQueried": false,
+    "purchaseWatchEnded": true,
+    "authorizationState": "waiting_correct_luxestyle_after_wrong_identity_read",
+    "noOtherShopDataWrites": true,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

@@ -1,0 +1,4049 @@
+{
+  "revision": 199,
+  "initialWriteIdentity": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "publications": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Publication/301970915713",
+            "catalog": {
+              "title": "Channel Catalog 301970915713 for Online Store"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301970981249",
+            "catalog": {
+              "title": "Channel Catalog 301970981249 for Point of Sale"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": {
+              "title": "Channel Catalog 301971014017 for Shop"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302032716161",
+            "catalog": {
+              "title": "Channel Catalog 302032716161 for TikTok"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302566834561",
+            "catalog": {
+              "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302872297857",
+            "catalog": {
+              "title": "Channel Catalog 302872297857 for Google & YouTube"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302994456961",
+            "catalog": {
+              "title": "Channel Catalog 302994456961 for Pinterest"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/305570283905",
+            "catalog": {
+              "title": "Channel Catalog 305570283905 for Inbox"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/391626359175",
+            "catalog": {
+              "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+            }
+          }
+        ]
+      },
+      "gifts": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992655751",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+          "altText": "Retro-Vogel-Keramikbecher als Geschenkidee"
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "light": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992688519",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+          "altText": "Tulpen-Nachtlicht für Licht und Wohnen"
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "beauty": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992721287",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff"
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      }
+    }
+  },
+  "newThreeCreateIdentity": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "publications": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Publication/301970915713",
+            "catalog": {
+              "title": "Channel Catalog 301970915713 for Online Store"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301970981249",
+            "catalog": {
+              "title": "Channel Catalog 301970981249 for Point of Sale"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": {
+              "title": "Channel Catalog 301971014017 for Shop"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302032716161",
+            "catalog": {
+              "title": "Channel Catalog 302032716161 for TikTok"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302566834561",
+            "catalog": {
+              "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302872297857",
+            "catalog": {
+              "title": "Channel Catalog 302872297857 for Google & YouTube"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302994456961",
+            "catalog": {
+              "title": "Channel Catalog 302994456961 for Pinterest"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/305570283905",
+            "catalog": {
+              "title": "Channel Catalog 305570283905 for Inbox"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/391626359175",
+            "catalog": {
+              "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+            }
+          }
+        ]
+      },
+      "cats": null,
+      "christmas": null,
+      "everyday": null
+    }
+  },
+  "round3CreateIdentity": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "publications": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Publication/301970915713",
+            "catalog": {
+              "title": "Channel Catalog 301970915713 for Online Store"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301970981249",
+            "catalog": {
+              "title": "Channel Catalog 301970981249 for Point of Sale"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": {
+              "title": "Channel Catalog 301971014017 for Shop"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302032716161",
+            "catalog": {
+              "title": "Channel Catalog 302032716161 for TikTok"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302566834561",
+            "catalog": {
+              "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302872297857",
+            "catalog": {
+              "title": "Channel Catalog 302872297857 for Google & YouTube"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302994456961",
+            "catalog": {
+              "title": "Channel Catalog 302994456961 for Pinterest"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/305570283905",
+            "catalog": {
+              "title": "Channel Catalog 305570283905 for Inbox"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/391626359175",
+            "catalog": {
+              "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+            }
+          }
+        ]
+      },
+      "fashion": null,
+      "jewelry": null,
+      "writing": null
+    }
+  },
+  "postFailureIdentity": {
+    "isError": false,
+    "name": "TechHub CH",
+    "domain": "aban-os5z8ied.myshopify.com",
+    "currencyCode": "CHF",
+    "timezone": "EST"
+  },
+  "supportedContextSwitchReadback": {
+    "isError": true,
+    "error": "This app connection requires reauthentication before other actions on this app can succeed.",
+    "error_code": "UNAUTHORIZED",
+    "error_data": {
+      "detail": "Reauthentication required",
+      "action": "TRIGGER_REAUTHENTICATION",
+      "reason": "www_authenticate_reauth"
+    }
+  },
+  "existingCollectionsBefore": {
+    "data": {
+      "publications": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Publication/301970915713",
+            "catalog": {
+              "title": "Channel Catalog 301970915713 for Online Store"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301970981249",
+            "catalog": {
+              "title": "Channel Catalog 301970981249 for Point of Sale"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": {
+              "title": "Channel Catalog 301971014017 for Shop"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302032716161",
+            "catalog": {
+              "title": "Channel Catalog 302032716161 for TikTok"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302566834561",
+            "catalog": {
+              "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302872297857",
+            "catalog": {
+              "title": "Channel Catalog 302872297857 for Google & YouTube"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302994456961",
+            "catalog": {
+              "title": "Channel Catalog 302994456961 for Pinterest"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/305570283905",
+            "catalog": {
+              "title": "Channel Catalog 305570283905 for Inbox"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/391626359175",
+            "catalog": {
+              "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "gifts": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+          "altText": "Retro-Vogel-Keramikbecher als Geschenkidee"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15497451929985",
+              "title": "Keramikbecher \"Happy Birthday Rabbit\"",
+              "handle": "keramikbecher-happy-birthday-rabbit-371840",
+              "status": "ACTIVE",
+              "tags": [
+                "becher",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kochen",
+                "kueche",
+                "neuheit",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e46fad2d-bcf6-49c9-bf43-0fa72d8d987a.jpg?v=1786673497",
+                  "width": 800,
+                  "height": 800
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/56099918184833",
+                    "title": "Default Title",
+                    "sku": "CJ-1583369849630371840",
+                    "price": "17.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": []
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16617685418375",
+              "title": "Retro-Vogelbecher mit markantem Griff",
+              "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "becher",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kueche",
+                "neuheit",
+                "sort-retro",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher",
+                "wohnen"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521",
+                  "width": 1493,
+                  "height": 1493
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67675894710663",
+                    "title": "Schwalbe",
+                    "sku": "CJYD310614901AZ",
+                    "price": "17.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": [
+                        {
+                          "image": {
+                            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1791947521"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "light": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+          "altText": "Tulpen-Nachtlicht für Licht und Wohnen"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15521256604033",
+              "title": "Sternenlicht-Projektor für Schlafzimmer",
+              "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "beleuchtung",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "sort-nachtlichter",
+                "sort-nachttischlampen",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+                  "width": 1920,
+                  "height": 1919
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68122445283719",
+                    "title": "A · Grundmodell",
+                    "sku": "CJSN139239101AZ",
+                    "price": "34.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": [
+                        {
+                          "image": {
+                            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16638319788423",
+              "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+              "handle": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "geschenkwelt-kinder",
+                "geschenkwelt-unter30",
+                "kat-nachtlicht-projektor",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachtlichter",
+                "wohnen"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1791999508",
+                  "width": 900,
+                  "height": 900
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67679682953607",
+                    "title": "Rosa",
+                    "sku": "CJJT285433601AZ",
+                    "price": "28.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": [
+                        {
+                          "image": {
+                            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77707dd2-8db2-4271-97b6-71769d51ed4e.png?v=1791999507"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "beauty": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16615385727367",
+              "title": "Kosmetik-Organizer für Bad und Schminktisch",
+              "handle": "kosmetik-organizer-fur-bad-und-schminktisch-614500",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ee30188-c042-484f-ac4b-5d029e09cbcc.jpg?v=1791735448",
+                  "width": 1600,
+                  "height": 1600
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67948099305863",
+                    "title": "Transparent / Weiss",
+                    "sku": "CJYD305783101AZ",
+                    "price": "47.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": [
+                        {
+                          "image": {
+                            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1a465daa-d835-489e-8b2c-a55b86dedba8.jpg?v=1791735448"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16655083274631",
+              "title": "Grosses vertikales Kosmetik-Organizer mit Tragegriff",
+              "handle": "grosses-vertikales-kosmetik-organizer-mit-trag-630600",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ],
+              "featuredMedia": {
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1792508297",
+                  "width": 1200,
+                  "height": 1200
+                }
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67843408331143",
+                    "title": "Große Schultertasche",
+                    "sku": "CJMJ325565101AZ",
+                    "price": "16.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    },
+                    "media": {
+                      "nodes": [
+                        {
+                          "image": {
+                            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0a29f6cd-5e90-4773-be94-2f366d024a4d.jpg?v=1792508297"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      }
+    }
+  },
+  "existingFirstPhaseFinal": {
+    "data": {
+      "gifts": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992655751",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794612580",
+          "altText": "Retro-Vogelbecher als Geschenkidee"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15497451929985",
+              "title": "Keramikbecher \"Happy Birthday Rabbit\"",
+              "status": "ACTIVE",
+              "tags": [
+                "becher",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kochen",
+                "kueche",
+                "neuheit",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/56099918184833",
+                    "price": "17.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16617685418375",
+              "title": "Retro-Vogelbecher mit markantem Griff",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "becher",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kueche",
+                "neuheit",
+                "sort-retro",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher",
+                "wohnen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67675894710663",
+                    "price": "17.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:18Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "light": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992688519",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/77707dd2-8db2-4271-97b6-71769d51ed4e.jpg?v=1794612583",
+          "altText": "Tulpen-Nachtlicht in Rosa"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15521256604033",
+              "title": "Sternenlicht-Projektor für Schlafzimmer",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "beleuchtung",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "sort-nachtlichter",
+                "sort-nachttischlampen",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68122445283719",
+                    "price": "34.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16638319788423",
+              "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "geschenkwelt-kinder",
+                "geschenkwelt-unter30",
+                "kat-nachtlicht-projektor",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachtlichter",
+                "wohnen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67679682953607",
+                    "price": "28.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:19Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "beauty": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992721287",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16615385727367",
+              "title": "Kosmetik-Organizer für Bad und Schminktisch",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67948099305863",
+                    "price": "47.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16655083274631",
+              "title": "Grosses vertikales Kosmetik-Organizer mit Tragegriff",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67843408331143",
+                    "price": "16.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:20Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "new": {
+        "id": "gid://shopify/Collection/757753840007",
+        "title": "Neue Entdeckungen",
+        "handle": "shop-neue-entdeckungen",
+        "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+        "image": null,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "title": "Laptop-Hülle für 12 bis 14 Zoll",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261108",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68151217357191",
+                    "price": "14.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "title": "Weihnachts-Fensteraufkleber",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-bilderrahmen-wandtattoos-tapeten",
+                "sort-wandbilder"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68190285889927",
+                    "price": "14.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T22:52:08Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "existingValidation": {
+    "result": "PASS",
+    "collections": [
+      {
+        "collectionId": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "products": 2,
+        "shopPublicationConfirmed": true,
+        "collectionIdTitleHandleDescriptionAndMembershipUnchanged": true,
+        "verifiedProductFieldsUnchanged": [
+          "id",
+          "title",
+          "status",
+          "tags",
+          "firstVariantIdPriceAvailabilityTrackingPolicy",
+          "productPublications"
+        ],
+        "imageIdRetained": true,
+        "imageHttpStatus": 200,
+        "imageSha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237"
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "products": 2,
+        "shopPublicationConfirmed": true,
+        "collectionIdTitleHandleDescriptionAndMembershipUnchanged": true,
+        "verifiedProductFieldsUnchanged": [
+          "id",
+          "title",
+          "status",
+          "tags",
+          "firstVariantIdPriceAvailabilityTrackingPolicy",
+          "productPublications"
+        ],
+        "imageIdRetained": true,
+        "imageHttpStatus": 200,
+        "imageSha256": "ff31b4d52d9697954cbcd386363a5f79d1b61ce55f37c805b99f92d4380d78f7"
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "products": 2,
+        "shopPublicationConfirmed": true,
+        "collectionIdTitleHandleDescriptionAndMembershipUnchanged": true,
+        "verifiedProductFieldsUnchanged": [
+          "id",
+          "title",
+          "status",
+          "tags",
+          "firstVariantIdPriceAvailabilityTrackingPolicy",
+          "productPublications"
+        ],
+        "imageIdRetained": true,
+        "imageHttpStatus": 200,
+        "imageSha256": "333756bd8829eae4c45a6fd56d8c0980c7799ad90994c18186c38f6f736c9c05"
+      }
+    ],
+    "existingNewDiscoveriesStillPublished": true,
+    "writes": {
+      "imageUpdates": 2,
+      "shopPublicationUpdates": 3,
+      "creates": 0,
+      "productUpdates": 0,
+      "socialUpdates": 0
+    },
+    "validationCorrection": "Initial offline comparison mixed different read projections; corrected to explicitly verified common fields without new platform writes/retries. Unreturned properties are not asserted as freshly verified."
+  },
+  "existingImages": {
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15497451929985",
+        "url": "https://luxestyle.ch/products/keramikbecher-happy-birthday-rabbit-371840.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/56099918184833",
+        "priceCHF": "17.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "becher",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kochen",
+          "kueche",
+          "neuheit",
+          "sort-tassen-kaffeebecher",
+          "sort-tassen-kaffeebecher-keramik",
+          "tassen-becher"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/16617685418375",
+        "url": "https://luxestyle.ch/products/retro-vogel-keramikbecher-mit-ballgriff-637200.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/67675894710663",
+        "priceCHF": "17.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "auswahl-nachgeruestet",
+          "becher",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kueche",
+          "neuheit",
+          "sort-retro",
+          "sort-tassen-kaffeebecher",
+          "sort-tassen-kaffeebecher-keramik",
+          "tassen-becher",
+          "wohnen"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/15521256604033",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/68122445283719",
+        "priceCHF": "34.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech",
+          "varianten-nachgezogen-1025"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/16638319788423",
+        "url": "https://luxestyle.ch/products/led-tulpen-planet-nachtlicht-fur-tisch-618400.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/67679682953607",
+        "priceCHF": "28.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "auswahl-nachgeruestet",
+          "beleuchtung",
+          "cj-real",
+          "dekoration",
+          "dropship",
+          "geschenkwelt-kinder",
+          "geschenkwelt-unter30",
+          "kat-nachtlicht-projektor",
+          "lampe",
+          "licht",
+          "neuheit",
+          "sort-nachtlichter",
+          "wohnen"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/16615385727367",
+        "url": "https://luxestyle.ch/products/kosmetik-organizer-fur-bad-und-schminktisch-614500.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/67948099305863",
+        "priceCHF": "47.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "aufbewahrung",
+          "auswahl-offen",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "neuheit",
+          "organizer",
+          "sort-kosmetik-schmuck-organizer",
+          "varianten-nachgezogen-1025",
+          "wohnen"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/16655083274631",
+        "url": "https://luxestyle.ch/products/grosses-vertikales-kosmetik-organizer-mit-trag-630600.js",
+        "httpStatus": 200,
+        "variantId": "gid://shopify/ProductVariant/67843408331143",
+        "priceCHF": "16.90",
+        "available": true,
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false,
+        "tags": [
+          "aufbewahrung",
+          "auswahl-offen",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "neuheit",
+          "organizer",
+          "sort-kosmetik-schmuck-organizer",
+          "varianten-nachgezogen-1025",
+          "wohnen"
+        ]
+      }
+    ],
+    "collectionImages": [
+      {
+        "collectionId": "gid://shopify/Collection/757437432199",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794529280",
+        "httpStatus": 200,
+        "bytes": 315897,
+        "sha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237",
+        "localViewFile": "gifts.jpg"
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437530503",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/7e86abbd-829b-49ae-8bb7-99fbfc3e24a8.jpg?v=1794529282",
+        "httpStatus": 200,
+        "bytes": 74423,
+        "sha256": "51888c99c5c3485550f0647cace2769b2b7044fa14de50fda3492580e3d72daf",
+        "localViewFile": "light.jpg"
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437563271",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+        "httpStatus": 200,
+        "bytes": 215884,
+        "sha256": "333756bd8829eae4c45a6fd56d8c0980c7799ad90994c18186c38f6f736c9c05",
+        "localViewFile": "beauty.jpg"
+      }
+    ],
+    "guardModule": {
+      "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/automation/lib/kanal_sperren.mjs",
+      "httpStatus": 200,
+      "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+    }
+  },
+  "newThreeCreates": [
+    {
+      "data": {
+        "collectionCreate": {
+          "collection": {
+            "id": "gid://shopify/Collection/757756854663",
+            "title": "Für Katzen",
+            "handle": "shop-fuer-katzen",
+            "descriptionHtml": "<p>Ausgewählte Ideen zum Spielen und Entspannen für deine Katze.</p>",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2133014544775",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+              "altText": "Katzentunnel in Dunkelgrau und Orange"
+            },
+            "products": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Product/16610153759111",
+                  "title": "Faltbare Katzenhängematte mit Saugnäpfen"
+                },
+                {
+                  "id": "gid://shopify/Product/16706218951047",
+                  "title": "Katzentunnel aus Filz, verformbar und zusammenrollbar"
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": []
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "data": {
+        "collectionCreate": {
+          "collection": {
+            "id": "gid://shopify/Collection/757756887431",
+            "title": "Weihnachten Zuhause",
+            "handle": "shop-weihnachten-zuhause",
+            "descriptionHtml": "<p>Weihnachtliche Details für dein Zuhause.</p>",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2133014577543",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+              "altText": "Weihnachtlicher Becher mit Santa-Claus-Motiv"
+            },
+            "products": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Product/16656645489031",
+                  "title": "Weihnachtsaufbewahrungstasse mit Santa-Claus-Motiv"
+                },
+                {
+                  "id": "gid://shopify/Product/16706216132999",
+                  "title": "Weihnachts-Fensteraufkleber"
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": []
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "data": {
+        "collectionCreate": {
+          "collection": {
+            "id": "gid://shopify/Collection/757756920199",
+            "title": "Unterwegs & Alltag",
+            "handle": "shop-unterwegs-alltag",
+            "descriptionHtml": "<p>Laptop-Hüllen und Taschen für unterwegs.</p>",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2133014610311",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+              "altText": "Laptop-Tasche in Rosa"
+            },
+            "products": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Product/16690165186951",
+                  "title": "Laptop-Tasche Schultertasche"
+                },
+                {
+                  "id": "gid://shopify/Product/16700386607495",
+                  "title": "Laptop-Hülle für 12 bis 14 Zoll"
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": []
+            }
+          },
+          "userErrors": []
+        }
+      }
+    }
+  ],
+  "newThreePrepublication": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "publications": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Publication/301970915713",
+            "catalog": {
+              "title": "Channel Catalog 301970915713 for Online Store"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301970981249",
+            "catalog": {
+              "title": "Channel Catalog 301970981249 for Point of Sale"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/301971014017",
+            "catalog": {
+              "title": "Channel Catalog 301971014017 for Shop"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302032716161",
+            "catalog": {
+              "title": "Channel Catalog 302032716161 for TikTok"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302566834561",
+            "catalog": {
+              "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302872297857",
+            "catalog": {
+              "title": "Channel Catalog 302872297857 for Google & YouTube"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/302994456961",
+            "catalog": {
+              "title": "Channel Catalog 302994456961 for Pinterest"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/305570283905",
+            "catalog": {
+              "title": "Channel Catalog 305570283905 for Inbox"
+            }
+          },
+          {
+            "id": "gid://shopify/Publication/391626359175",
+            "catalog": {
+              "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+            }
+          }
+        ]
+      },
+      "cats": {
+        "id": "gid://shopify/Collection/757756854663",
+        "title": "Für Katzen",
+        "handle": "shop-fuer-katzen",
+        "descriptionHtml": "<p>Ausgewählte Ideen zum Spielen und Entspannen für deine Katze.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014544775",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+          "altText": "Katzentunnel in Dunkelgrau und Orange"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16610153759111",
+              "title": "Faltbare Katzenhängematte mit Saugnäpfen",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haustier",
+                "hund",
+                "kat-haustier",
+                "kat-katzen",
+                "katze",
+                "katzenbett",
+                "neuheit",
+                "pet",
+                "sort-haustier",
+                "sort-tier-betten-katzen",
+                "sort-tier-betten-koerbe",
+                "varianten-nachgezogen-1025"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67948229788039",
+                    "price": "34.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302872297857"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16706218951047",
+              "title": "Katzentunnel aus Filz, verformbar und zusammenrollbar",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-haustier",
+                "sort-katzen",
+                "sort-tier-katzenspielzeug",
+                "sort-tier-katzenspielzeug-elektrisch",
+                "sort-tier-spielzeug"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68190293459335",
+                    "price": "17.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "christmas": {
+        "id": "gid://shopify/Collection/757756887431",
+        "title": "Weihnachten Zuhause",
+        "handle": "shop-weihnachten-zuhause",
+        "descriptionHtml": "<p>Weihnachtliche Details für dein Zuhause.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014577543",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+          "altText": "Weihnachtlicher Becher mit Santa-Claus-Motiv"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16656645489031",
+              "title": "Weihnachtsaufbewahrungstasse mit Santa-Claus-Motiv",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "mengenrabatt-b",
+                "neuheit",
+                "organizer",
+                "sort-saison-weihnachtsdeko",
+                "tassen-becher",
+                "wohnen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67760400368007",
+                    "price": "16.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "title": "Weihnachts-Fensteraufkleber",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-bilderrahmen-wandtattoos-tapeten",
+                "sort-wandbilder"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68190285889927",
+                    "price": "14.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      },
+      "everyday": {
+        "id": "gid://shopify/Collection/757756920199",
+        "title": "Unterwegs & Alltag",
+        "handle": "shop-unterwegs-alltag",
+        "descriptionHtml": "<p>Laptop-Hüllen und Taschen für unterwegs.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014610311",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+          "altText": "Laptop-Tasche in Rosa"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16690165186951",
+              "title": "Laptop-Tasche Schultertasche",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261103",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/67885548667271",
+                    "price": "23.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "title": "Laptop-Hülle für 12 bis 14 Zoll",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261108",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ],
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/68151217357191",
+                    "price": "14.90",
+                    "availableForSale": true,
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": false
+                    }
+                  }
+                ]
+              },
+              "resourcePublicationsV2": {
+                "nodes": [
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301970915713"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/301971014017"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302032716161"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302566834561"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/302994456961"
+                    }
+                  },
+                  {
+                    "isPublished": true,
+                    "publication": {
+                      "id": "gid://shopify/Publication/391626359175"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": []
+        }
+      }
+    }
+  },
+  "newThreeMemberGuard": [
+    {
+      "id": "gid://shopify/Product/16706218951047",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    },
+    {
+      "id": "gid://shopify/Product/16610153759111",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    },
+    {
+      "id": "gid://shopify/Product/16706216132999",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    },
+    {
+      "id": "gid://shopify/Product/16656645489031",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    },
+    {
+      "id": "gid://shopify/Product/16700386607495",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    },
+    {
+      "id": "gid://shopify/Product/16690165186951",
+      "nonemptyTags": true,
+      "hits": [],
+      "rueckhol": [],
+      "active": true,
+      "available": true,
+      "shopPublished": true
+    }
+  ],
+  "newThreePublicChecks": {
+    "products": [
+      {
+        "id": "gid://shopify/Product/16706218951047",
+        "variantId": "gid://shopify/ProductVariant/68190293459335",
+        "productUrl": "https://luxestyle.ch/products/katzentunnel-filz-verformbar-zusammenklappbar-296064",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "17.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      {
+        "id": "gid://shopify/Product/16610153759111",
+        "variantId": "gid://shopify/ProductVariant/67948229788039",
+        "productUrl": "https://luxestyle.ch/products/faltbare-katzenhangematte-mit-saugnapfen-639500",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "34.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      {
+        "id": "gid://shopify/Product/16706216132999",
+        "variantId": "gid://shopify/ProductVariant/68190285889927",
+        "productUrl": "https://luxestyle.ch/products/weihnachts-fensteraufkleber-531584",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "14.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      {
+        "id": "gid://shopify/Product/16656659218823",
+        "variantId": "gid://shopify/ProductVariant/67760443359623",
+        "productUrl": "https://luxestyle.ch/products/keksstempel-weihnachtsmotiv-622000",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "17.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      {
+        "id": "gid://shopify/Product/16700386607495",
+        "variantId": "gid://shopify/ProductVariant/68151217357191",
+        "productUrl": "https://luxestyle.ch/products/laptoptasche-einfach-844636",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "14.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      {
+        "id": "gid://shopify/Product/16690165186951",
+        "variantId": "gid://shopify/ProductVariant/67885548667271",
+        "productUrl": "https://luxestyle.ch/products/laptop-tasche-schultertasche-50b73c",
+        "httpStatus": 200,
+        "available": true,
+        "priceCHF": "23.90",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      }
+    ],
+    "coverReferences": [
+      {
+        "key": "cats",
+        "productId": "gid://shopify/Product/16706218951047",
+        "variantId": "gid://shopify/ProductVariant/68190293459335",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794425016",
+        "httpStatus": 200,
+        "sha256": "e2811b6029345d0a6eb267b502ca4befc2f9ed3dfe3ee900efbcc9d1cb718926",
+        "bytes": 46604,
+        "file": "new-cover-cats.jpg"
+      },
+      {
+        "key": "christmas",
+        "productId": "gid://shopify/Product/16656659218823",
+        "variantId": "gid://shopify/ProductVariant/67760443359623",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b73923d1-1b6f-45f8-8d9d-e893582dd959.png?v=1792643026",
+        "httpStatus": 200,
+        "sha256": "5b57975019704a3acd4ed9c36d77489d2506ee6446367c72f3912e39e73c34ca",
+        "bytes": 14477,
+        "file": "new-cover-christmas.png"
+      },
+      {
+        "key": "everyday",
+        "productId": "gid://shopify/Product/16690165186951",
+        "variantId": "gid://shopify/ProductVariant/67885548667271",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/795093533484.jpg?v=1793724034",
+        "httpStatus": 200,
+        "sha256": "3074d7757eec6ad6ba9eef389e24329a43f60907b3ccf0fff8dcccb6dc9786bd",
+        "bytes": 119265,
+        "file": "new-cover-everyday.jpg"
+      }
+    ]
+  },
+  "santaAlternativeImage": {
+    "productId": "gid://shopify/Product/16656645489031",
+    "imageSource": "product.featuredMedia; variant has no own image",
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1792638898",
+    "httpStatus": 200,
+    "sha256": "b3f1b58de52a1e3e36e4751602b439312519103f59375082869f11f3a7b04032",
+    "bytes": 115121
+  },
+  "newImagesAndDiscoveries": {
+    "result": "PASS",
+    "images": [
+      {
+        "key": "cats",
+        "collectionId": "gid://shopify/Collection/757756854663",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+        "httpStatus": 200,
+        "bytes": 46604,
+        "sha256": "e2811b6029345d0a6eb267b502ca4befc2f9ed3dfe3ee900efbcc9d1cb718926"
+      },
+      {
+        "key": "christmas",
+        "collectionId": "gid://shopify/Collection/757756887431",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+        "httpStatus": 200,
+        "bytes": 115121,
+        "sha256": "b3f1b58de52a1e3e36e4751602b439312519103f59375082869f11f3a7b04032"
+      },
+      {
+        "key": "everyday",
+        "collectionId": "gid://shopify/Collection/757756920199",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+        "httpStatus": 200,
+        "bytes": 119246,
+        "sha256": "a91746f5e379141f9857e1b66f271d2cbfc5ae0f810f200eccb2ecbe9caf6e7b"
+      },
+      {
+        "key": "discoveries",
+        "collectionId": "gid://shopify/Collection/757753840007",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/705905417093.jpg?v=1794613501",
+        "httpStatus": 200,
+        "bytes": 62705,
+        "sha256": "2e4ac3d4e75f5991a7c7b034059344f52ceefc62cecf6fd040ddfd9fb952465e"
+      }
+    ],
+    "discoveriesOtherGetFieldsUnchanged": true
+  },
+  "discoveriesBefore": {
+    "id": "gid://shopify/Collection/757753840007",
+    "title": "Neue Entdeckungen",
+    "handle": "shop-neue-entdeckungen",
+    "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+    "imageUrl": null,
+    "imageAltText": null,
+    "sortOrder": "MANUAL",
+    "collectionType": "manual",
+    "productsCount": 2,
+    "products": [
+      {
+        "title": "Laptop-Hülle für 12 bis 14 Zoll",
+        "variantTitle": "13 Zoll",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/705905417093.jpg?v=1794177117",
+        "price": "14.90",
+        "currencyCode": "CHF",
+        "status": "ACTIVE"
+      },
+      {
+        "title": "Weihnachts-Fensteraufkleber",
+        "variantTitle": "813 Weiss",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6977dd2a-992c-4718-a7d2-b8c12e5c90d3.png?v=1794424912",
+        "price": "14.90",
+        "currencyCode": "CHF",
+        "status": "ACTIVE"
+      }
+    ],
+    "rules": null,
+    "updatedAt": "2026-11-13T22:52:08Z",
+    "currencyCode": "CHF"
+  },
+  "discoveriesAfter": {
+    "id": "gid://shopify/Collection/757753840007",
+    "title": "Neue Entdeckungen",
+    "handle": "shop-neue-entdeckungen",
+    "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/705905417093.jpg?v=1794613501",
+    "imageAltText": "Laptop-Hülle in Blaugrau",
+    "sortOrder": "MANUAL",
+    "collectionType": "manual",
+    "productsCount": 2,
+    "products": [
+      {
+        "title": "Laptop-Hülle für 12 bis 14 Zoll",
+        "variantTitle": "13 Zoll",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/705905417093.jpg?v=1794177117",
+        "price": "14.90",
+        "currencyCode": "CHF",
+        "status": "ACTIVE"
+      },
+      {
+        "title": "Weihnachts-Fensteraufkleber",
+        "variantTitle": "813 Weiss",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6977dd2a-992c-4718-a7d2-b8c12e5c90d3.png?v=1794424912",
+        "price": "14.90",
+        "currencyCode": "CHF",
+        "status": "ACTIVE"
+      }
+    ],
+    "rules": null,
+    "updatedAt": "2026-11-13T23:45:01Z",
+    "currencyCode": "CHF"
+  },
+  "sevenFinalBeforeDiscoveriesCover": {
+    "data": {
+      "gifts": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992655751",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794612580",
+          "altText": "Retro-Vogelbecher als Geschenkidee"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15497451929985",
+              "title": "Keramikbecher \"Happy Birthday Rabbit\"",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16617685418375",
+              "title": "Retro-Vogelbecher mit markantem Griff",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:18Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "light": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992688519",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/77707dd2-8db2-4271-97b6-71769d51ed4e.jpg?v=1794612583",
+          "altText": "Tulpen-Nachtlicht in Rosa"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15521256604033",
+              "title": "Sternenlicht-Projektor für Schlafzimmer",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16638319788423",
+              "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:19Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "beauty": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992721287",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16615385727367",
+              "title": "Kosmetik-Organizer für Bad und Schminktisch",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16655083274631",
+              "title": "Grosses vertikales Kosmetik-Organizer mit Tragegriff",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:30:20Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "discoveries": {
+        "id": "gid://shopify/Collection/757753840007",
+        "title": "Neue Entdeckungen",
+        "handle": "shop-neue-entdeckungen",
+        "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+        "image": null,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "title": "Laptop-Hülle für 12 bis 14 Zoll",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "title": "Weihnachts-Fensteraufkleber",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T22:52:08Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "cats": {
+        "id": "gid://shopify/Collection/757756854663",
+        "title": "Für Katzen",
+        "handle": "shop-fuer-katzen",
+        "descriptionHtml": "<p>Ausgewählte Ideen zum Spielen und Entspannen für deine Katze.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014544775",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+          "altText": "Katzentunnel in Dunkelgrau und Orange"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16610153759111",
+              "title": "Faltbare Katzenhängematte mit Saugnäpfen",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16706218951047",
+              "title": "Katzentunnel aus Filz, verformbar und zusammenrollbar",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:41:55Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "christmas": {
+        "id": "gid://shopify/Collection/757756887431",
+        "title": "Weihnachten Zuhause",
+        "handle": "shop-weihnachten-zuhause",
+        "descriptionHtml": "<p>Weihnachtliche Details für dein Zuhause.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014577543",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+          "altText": "Weihnachtlicher Becher mit Santa-Claus-Motiv"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16656645489031",
+              "title": "Weihnachtsaufbewahrungstasse mit Santa-Claus-Motiv",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "title": "Weihnachts-Fensteraufkleber",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:41:56Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      },
+      "everyday": {
+        "id": "gid://shopify/Collection/757756920199",
+        "title": "Unterwegs & Alltag",
+        "handle": "shop-unterwegs-alltag",
+        "descriptionHtml": "<p>Laptop-Hüllen und Taschen für unterwegs.</p>",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014610311",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+          "altText": "Laptop-Tasche in Rosa"
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16690165186951",
+              "title": "Laptop-Tasche Schultertasche",
+              "status": "ACTIVE"
+            },
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "title": "Laptop-Hülle für 12 bis 14 Zoll",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publishDate": "2026-11-13T23:41:57Z",
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "round3LiveProducts": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "p0": {
+        "id": "gid://shopify/Product/16654377714055",
+        "title": "Samtige V-Neck Bluse mit langen Ärmeln",
+        "handle": "samtige-v-neck-bluse-mit-langen-armeln-613700",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "damen",
+          "dropship",
+          "mode",
+          "neuheit",
+          "sort-damen-blusen-bluse",
+          "sort-damen-blusen-hemden"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a33f3fdd-cd2a-4b2f-b92e-25aabc2cf6ba.jpg?v=1792476641",
+            "width": 1000,
+            "height": 1000
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67748071801223",
+              "title": "S",
+              "sku": "CJ-CJCS328625801AZ",
+              "price": "16.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1792476644",
+                      "width": 800,
+                      "height": 800
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      },
+      "p1": {
+        "id": "gid://shopify/Product/16654366638471",
+        "title": "Polyester Bluse",
+        "handle": "polyester-bluse-632100",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "damen",
+          "dropship",
+          "mode",
+          "neuheit",
+          "sort-damen-blusen-bluse",
+          "sort-damen-blusen-hemden"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d43f3d2a-6974-4aad-b3dd-d3734588095c.png?v=1792473312",
+            "width": 1340,
+            "height": 1785
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67748027957639",
+              "title": "Set 1 / S",
+              "sku": "CJ-CJWY328547601AZ",
+              "price": "20.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317",
+                      "width": 718,
+                      "height": 395
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      },
+      "p2": {
+        "id": "gid://shopify/Product/16700386640263",
+        "title": "Herren Halskette mit Eisen-Nagelkreuz-Anhänger aus Edelstahl, Gold, Schwarz",
+        "handle": "herren-halskette-mit-eisen-nagelkreuz-anhanger-376512",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "dropship",
+          "grind2",
+          "grind2-20261108",
+          "sort-edelstahl-titanketten",
+          "sort-halsketten",
+          "sort-halsketten-alle",
+          "sort-ketten-mit-anhaenger",
+          "sort-ketten-mit-anhaenger-stahl",
+          "sort-schmuck"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b57fc253-f65f-4a4d-a30a-99d86254fb6c.jpg?v=1794177151",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/68151217455495",
+              "title": "Silber / 1 Stück",
+              "sku": "CJLX108191501AZ",
+              "price": "14.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1618484890823.jpg?v=1794177152",
+                      "width": 800,
+                      "height": 800
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      },
+      "p3": {
+        "id": "gid://shopify/Product/16690384765319",
+        "title": "Choker-Halskette Damen Voll Kristall-Strass Schmuck für Hochzeit",
+        "handle": "choker-halskette-damen-voll-kristall-strass-sc-cbbc67",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "dropship",
+          "grind2",
+          "grind2-20261103",
+          "sort-choker-layering-ketten",
+          "sort-halsketten",
+          "sort-halsketten-alle",
+          "sort-schmuck",
+          "sort-zirkonia-moissanit-ketten"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17999683324960.jpg?v=1793730199",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67886036484487",
+              "title": "Bunt / 16 mm",
+              "sku": "CJZBLXLX02753-Colorful-16mm",
+              "price": "14.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1154826990722.jpg?v=1793730198",
+                      "width": 800,
+                      "height": 800
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      },
+      "p4": {
+        "id": "gid://shopify/Product/16653948191111",
+        "title": "Notizbuch mit PU-Lederhülle",
+        "handle": "notizbuch-mit-pu-ledercover-623800",
+        "status": "ACTIVE",
+        "tags": [
+          "auswahl-offen",
+          "buero",
+          "cj-real",
+          "dropship",
+          "homeoffice",
+          "kat-buero",
+          "neuheit",
+          "schreibwaren",
+          "schule",
+          "sort-buero",
+          "sort-kalender",
+          "sort-notizbuecher",
+          "varianten-nachgezogen-1025"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/146ee820-106d-489c-ba6b-b3c59d43fde6_trans.jpg?v=1792446198",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/68122478805383",
+              "title": "Charmantes Schwarz",
+              "sku": "CJYD215403101AZ",
+              "price": "38.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cfdf658-6a88-4029-8b3c-b14fd86ba358_trans.jpg?v=1792446198",
+                      "width": 430,
+                      "height": 430
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      },
+      "p5": {
+        "id": "gid://shopify/Product/16638912496007",
+        "title": "Notizbuch ohne Datum mit Gummiband",
+        "handle": "notizbuch-ohne-datum-mit-gummiband-601700",
+        "status": "ACTIVE",
+        "tags": [
+          "buero",
+          "cj-real",
+          "dropship",
+          "geschenkwelt-unter30",
+          "homeoffice",
+          "kat-buero",
+          "neuheit",
+          "schreibwaren",
+          "schule",
+          "sort-buero",
+          "sort-kalender",
+          "sort-notizbuecher",
+          "varianten-nachgezogen-1025"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg?v=1792029723",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/68122520191367",
+              "title": "Lila Plus Aufkleber",
+              "sku": "CJYD219358601AZ",
+              "price": "21.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg?v=1792029723",
+                      "width": 800,
+                      "height": 800
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "round3FashionAlternative": {
+    "data": {
+      "product": {
+        "id": "gid://shopify/Product/16654366409095",
+        "title": "Satin-Bluse mit langen Ärmeln",
+        "handle": "satin-bluse-mit-langen-armeln-605700",
+        "status": "ACTIVE",
+        "tags": [
+          "cj-real",
+          "damen",
+          "dropship",
+          "mode",
+          "neuheit",
+          "sort-damen-blusen-bluse",
+          "sort-damen-blusen-hemden",
+          "sort-damen-blusen-satin"
+        ],
+        "featuredMedia": {
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99e8fc66-a51c-4c9e-a2c3-121e29ec1b4a.jpg?v=1792473284",
+            "width": 1200,
+            "height": 1600
+          }
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67748026745223",
+              "title": "Weiss / S",
+              "sku": "CJ-CJCS328129101AZ",
+              "price": "16.90",
+              "availableForSale": true,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/665b5b0c-dad0-49f4-8458-c25180daf9fc_591131ae-9ade-40d5-b368-e2030d2d721a.jpg?v=1792473289",
+                      "width": 1600,
+                      "height": 1600
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "resourcePublicationsV2": {
+          "nodes": [
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              }
+            },
+            {
+              "isPublished": true,
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "round3ProductGuard": [
+    {
+      "id": "gid://shopify/Product/16654377714055",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    },
+    {
+      "id": "gid://shopify/Product/16654366409095",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    },
+    {
+      "id": "gid://shopify/Product/16700386640263",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    },
+    {
+      "id": "gid://shopify/Product/16690384765319",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    },
+    {
+      "id": "gid://shopify/Product/16653948191111",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    },
+    {
+      "id": "gid://shopify/Product/16638912496007",
+      "hits": [],
+      "rueckhol": [],
+      "nonempty": true,
+      "active": true,
+      "available": true,
+      "shop": true
+    }
+  ],
+  "round3PublicChecks": [
+    {
+      "index": 0,
+      "id": "gid://shopify/Product/16654377714055",
+      "variantId": "gid://shopify/ProductVariant/67748071801223",
+      "url": "https://luxestyle.ch/products/samtige-v-neck-bluse-mit-langen-armeln-613700.js",
+      "httpStatus": 200,
+      "priceCHF": "16.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1792476644",
+      "imageHttpStatus": 200,
+      "imageBytes": 87502,
+      "imageSha256": "eb81e5cb8b511945043b109bab7b3cd27192fad8b61975d65417b0759d9de4d7",
+      "localImageFile": "round3-product-0.jpg",
+      "imageSource": "variant media"
+    },
+    {
+      "index": 1,
+      "id": "gid://shopify/Product/16654366638471",
+      "variantId": "gid://shopify/ProductVariant/67748027957639",
+      "url": "https://luxestyle.ch/products/polyester-bluse-632100.js",
+      "httpStatus": 200,
+      "priceCHF": "20.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7c3fb6bc-736d-4d08-9c9c-f60a43783542_1382ddfa-30a4-4ee0-8b75-fbdf2c4c57ae.png?v=1792473317",
+      "imageHttpStatus": 200,
+      "imageBytes": 86620,
+      "imageSha256": "508c98aadf1922d07fdb6a77f3523e078a58b4ed3742e0327541fd3d3ec11e8c",
+      "localImageFile": "round3-product-1.jpg",
+      "imageSource": "variant media"
+    },
+    {
+      "index": 2,
+      "id": "gid://shopify/Product/16700386640263",
+      "variantId": "gid://shopify/ProductVariant/68151217455495",
+      "url": "https://luxestyle.ch/products/herren-halskette-mit-eisen-nagelkreuz-anhanger-376512.js",
+      "httpStatus": 200,
+      "priceCHF": "14.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1618484890823.jpg?v=1794177152",
+      "imageHttpStatus": 200,
+      "imageBytes": 21818,
+      "imageSha256": "88bb95b19c182eaaf475db24bd0119d0a5ed13b1265525124a8b1e3e563ead38",
+      "localImageFile": "round3-product-2.jpg",
+      "imageSource": "variant media"
+    },
+    {
+      "index": 3,
+      "id": "gid://shopify/Product/16690384765319",
+      "variantId": "gid://shopify/ProductVariant/67886036484487",
+      "url": "https://luxestyle.ch/products/choker-halskette-damen-voll-kristall-strass-sc-cbbc67.js",
+      "httpStatus": 200,
+      "priceCHF": "14.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1154826990722.jpg?v=1793730198",
+      "imageHttpStatus": 200,
+      "imageBytes": 32074,
+      "imageSha256": "9246944d4898158492bf7b0d929183bd41da262fad8c4d273b3f869df4f5cd0a",
+      "localImageFile": "round3-product-3.jpg",
+      "imageSource": "variant media"
+    },
+    {
+      "index": 4,
+      "id": "gid://shopify/Product/16653948191111",
+      "variantId": "gid://shopify/ProductVariant/68122478805383",
+      "url": "https://luxestyle.ch/products/notizbuch-mit-pu-ledercover-623800.js",
+      "httpStatus": 200,
+      "priceCHF": "38.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cfdf658-6a88-4029-8b3c-b14fd86ba358_trans.jpg?v=1792446198",
+      "imageHttpStatus": 200,
+      "imageBytes": 55351,
+      "imageSha256": "52f9eaf8f7e149502f057577e394f149c7085b37d263ab2270222e82c3645322",
+      "localImageFile": "round3-product-4.jpg",
+      "imageSource": "variant media"
+    },
+    {
+      "index": 5,
+      "id": "gid://shopify/Product/16638912496007",
+      "variantId": "gid://shopify/ProductVariant/68122520191367",
+      "url": "https://luxestyle.ch/products/notizbuch-ohne-datum-mit-gummiband-601700.js",
+      "httpStatus": 200,
+      "priceCHF": "21.90",
+      "available": true,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg?v=1792029723",
+      "imageHttpStatus": 200,
+      "imageBytes": 160266,
+      "imageSha256": "651f513f8c65f4f85aa5b8ea303eb9e81f543191902353d7377251f40ccc90c6",
+      "localImageFile": "round3-product-5.jpg",
+      "imageSource": "variant media"
+    }
+  ],
+  "round3Creates": [
+    {
+      "data": {
+        "collectionCreate": {
+          "collection": {
+            "id": "gid://shopify/Collection/757757542791",
+            "title": "Mode & Stil",
+            "handle": "shop-mode-stil",
+            "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2133014675847",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+              "altText": "Grüne Bluse mit V-Ausschnitt"
+            },
+            "products": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Product/16654366409095",
+                  "title": "Satin-Bluse mit langen Ärmeln"
+                },
+                {
+                  "id": "gid://shopify/Product/16654377714055",
+                  "title": "Samtige V-Neck Bluse mit langen Ärmeln"
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": []
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "data": {
+        "collectionCreate": {
+          "collection": {
+            "id": "gid://shopify/Collection/757757575559",
+            "title": "Schmuck & Accessoires",
+            "handle": "shop-schmuck-accessoires",
+            "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2133014708615",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+              "altText": "Kette mit Kreuzanhänger"
+            },
+            "products": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/Product/16690384765319",
+                  "title": "Choker-Halskette Damen Voll Kristall-Strass Schmuck für Hochzeit"
+                },
+                {
+                  "id": "gid://shopify/Product/16700386640263",
+                  "title": "Herren Halskette mit Eisen-Nagelkreuz-Anhänger aus Edelstahl, Gold, Schwarz"
+                }
+              ]
+            },
+            "resourcePublicationsV2": {
+              "nodes": []
+            }
+          },
+          "userErrors": []
+        }
+      }
+    }
+  ],
+  "notebookCJSource": {
+    "retrieved_at": "2026-11-13 (UTC; connector detail lookups)",
+    "source": "CJdropshipping get_product_detail; read-only, one call per exact variant SKU",
+    "note": "Variant identities were matched against the supplied Shopify product and variant IDs. Dimensions in variantStandard are mm and appear to describe packed variant dimensions; CJ did not supply separate notebook-only physical dimensions in structured attributes. Product photo resolution was not queried; URLs are listed and may be checked separately.",
+    "items": [
+      {
+        "shopify": {
+          "product_id": "16653948191111",
+          "variant_id": "68122478805383",
+          "store_label": "Charmantes Schwarz"
+        },
+        "cj": {
+          "pid": "2410071151331623800",
+          "product_sku": "CJYD2154031",
+          "variant_sku": "CJYD215403101AZ",
+          "variant_id": "2410071151331624100",
+          "variant_name": "Business Thickening Notebook Soft Leather High-grade Gift Set Charming Black",
+          "variant_key": "Charming Black",
+          "variant_price": 3.99,
+          "product_url": "https://www.cjdropshipping.com/product/business-thickening-notebook-soft-leather-high-grade-gift-set-p-2410071151331623800.html"
+        },
+        "source_facts": {
+          "cover": "Description explicitly says PU; product entry name says Polyurethane Notebook.",
+          "inside": "Description says wood-free paper.",
+          "base_included": "Packing list says Notebook x1. Exact base SKU is Charming Black ($3.99).",
+          "upgrade_options": "Other variants called Charming Black Upgrade ($6.77) and Charming Black Luxury ($10.41). CJ description does not specify what the upgrade/luxury tiers add. Do not claim an accessory, buckle, or insert from naming/photos alone.",
+          "dimensions_mm": {
+            "variant_length": 240,
+            "variant_width": 80,
+            "variant_height": 227,
+            "variant_standard": "long=240,width=80,height=227",
+            "interpretation": "CJ variant logistics dimensions; likely packaged dimensions, not independently identified notebook dimensions."
+          },
+          "paper_weight": null,
+          "pages_or_sheets": null,
+          "dimensions_of_notebook": null,
+          "product_weight_g": 1103,
+          "packing_weight_g": 1123,
+          "packing": "Plastic bags",
+          "product_photo_urls": {
+            "big_image": "https://oss-cf.cjdropshipping.com/product/2024/10/08/02/397f3df2-c1f2-474a-8480-cd91bafeefc0.jpg",
+            "variant_image": "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/3cfdf658-6a88-4029-8b3c-b14fd86ba358_trans.jpeg",
+            "product_image_set": [
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/48ce37dc-f847-4f1a-ba28-b9eeda37e816_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/146ee820-106d-489c-ba6b-b3c59d43fde6_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/c7fce77f-50c8-4c4c-9f74-9fc8d28811e2_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/1350d60b-828f-4e99-8616-b7a7da18d6b2_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/1143fa2d-828d-4cd6-a6f5-a3f3c772ff46_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/a6c454c6-ca0b-4200-b7f1-dfd5114bba8a_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/abecd582-feb0-484b-bc4d-55691ab1f6e7_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/ee811ed2-c8ac-4c76-95b1-7645c1e35372_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/0c7c8315-402b-4c87-9f4b-af3d69edf650_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/afbe38bc-c694-43d7-990a-963185e7955a_trans.jpeg",
+              "https://oss-cf.cjdropshipping.com/product/2024/10/07/11/aaf6e37f-1596-493c-954b-bdc307eafc16_trans.jpeg"
+            ]
+          },
+          "source_conflicts": {
+            "dimensions": "Merchant overlay says inner 142x208 mm; CJ supplies variant logistics dimensions 240x80x227 mm and no inner-paper or writing-area dimensions. These do not establish agreement or a direct contradiction because measurements likely refer to different things.",
+            "page_count": "Merchant overlay says 200 paper; CJ says no sheet/page count. Not corroborated.",
+            "name": "Merchant says A5 buckle charming black; CJ variant confirms Charming Black only. A5 and buckle are not confirmed by text fields."
+          },
+          "licensing_or_ad_rights": "Not stated; unknown."
+        }
+      },
+      {
+        "shopify": {
+          "product_id": "16638912496007",
+          "variant_id": "68122520191367",
+          "store_label": "Purple"
+        },
+        "cj": {
+          "pid": "2411130720491601700",
+          "product_sku": "CJYD2193586",
+          "variant_sku": "CJYD219358601AZ",
+          "variant_id": "2411130720491601900",
+          "variant_name": "Notebook Self-filled No Date Strap Purple Plus Stickers",
+          "variant_key": "Purple Plus Stickers",
+          "variant_price": 4.33,
+          "product_url": "https://www.cjdropshipping.com/product/notebook-self-filled-no-date-strap-p-2411130720491601700.html"
+        },
+        "source_facts": {
+          "cover": "Description explicitly says PU.",
+          "inside": "Description explicitly says wood-free paper; thread binding.",
+          "paper_weight_gsm": 80,
+          "sheets": 200,
+          "pages": "Not explicitly stated. 200 sheets could mean 400 written sides conventionally, but CJ does not state 400 pages.",
+          "base_included": "Packing list says Notebook x1 pc. Exact variant name says Purple Plus Stickers. Product description lists the purple sticker option as including 8 planning stickers; this corresponds to this variant's Plus Stickers name.",
+          "dimensions_mm": {
+            "variant_length": 220,
+            "variant_width": 160,
+            "variant_height": 30,
+            "variant_standard": "long=220,width=160,height=30",
+            "interpretation": "CJ variant dimensions likely packaged dimensions; separate notebook/writing-area dimensions not stated."
+          },
+          "product_weight_g": 600,
+          "packing_weight_g": 630,
+          "packing": "Plastic bags",
+          "product_photo_urls": {
+            "big_image": "https://cf.cjdropshipping.com/quick/product/1cd1390a-5c3c-460e-a4d8-2c5baa418464.jpg",
+            "variant_image": "https://cf.cjdropshipping.com/quick/product/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg",
+            "product_image_set": [
+              "https://cf.cjdropshipping.com/quick/product/abdc98e2-7e1b-4700-8e2d-d8ca98f2215c.jpg",
+              "https://cf.cjdropshipping.com/quick/product/39f1ea20-3fa0-456c-b995-6a2c33a37512.jpg",
+              "https://cf.cjdropshipping.com/quick/product/7c485522-c166-49ef-84b6-43c961c3ced5.jpg",
+              "https://cf.cjdropshipping.com/quick/product/02324d9f-1f33-4ea2-9fcf-0a47ee96728a.jpg",
+              "https://cf.cjdropshipping.com/quick/product/aadacf2b-36dd-4082-ac80-5968f65286e7.jpg",
+              "https://cf.cjdropshipping.com/quick/product/1cd1390a-5c3c-460e-a4d8-2c5baa418464.jpg",
+              "https://cf.cjdropshipping.com/quick/product/9e3afe15-6ec2-46cd-bec5-1eb4ef7b5157.jpg",
+              "https://cf.cjdropshipping.com/quick/product/063f013d-128c-4bce-9ab1-e3f472c78713.jpg",
+              "https://cf.cjdropshipping.com/quick/product/cc702739-116f-4f1b-8229-98a025137f2f.jpg",
+              "https://cf.cjdropshipping.com/quick/product/c67c3fc1-7f58-40ba-9800-b034e377ea20.jpg",
+              "https://cf.cjdropshipping.com/quick/product/51cd87fb-44fa-4e2a-a349-08b3ac5eecfa.jpg",
+              "https://cf.cjdropshipping.com/quick/product/32d2bd0b-0830-4344-95bb-3c9fbe3eb22f.jpg",
+              "https://cf.cjdropshipping.com/quick/product/54dcbfe8-2b7f-4a21-a552-08f6d37c594f.jpg",
+              "https://cf.cjdropshipping.com/quick/product/2400c3c0-32f3-4aef-abd4-6c34ee8d3bfe.jpg",
+              "https://cf.cjdropshipping.com/quick/product/a2ab37ec-9e50-433d-9f30-a2ab58822914.jpg",
+              "https://cf.cjdropshipping.com/quick/product/aadacf2b-36dd-4082-ac80-5968f65286e7.jpg"
+            ]
+          },
+          "source_conflicts": {
+            "dimensions": "Merchant overlay says 150x211 mm; CJ gives variant logistics dimensions 220x160x30 mm and not the notebook's opened/closed body or writing area. Not a like-for-like measurement.",
+            "sheet_count": "Merchant overlay says 200 sheets; CJ description also says 200 sheets. Corroborated.",
+            "paper_weight": "Merchant overlay says 80G; CJ description says internal paper weight 80g. Corroborated, though CJ doesn't specify GSM in English string.",
+            "page_count": "Merchant says 400 pages; CJ says 200 sheets and leaves page/side counting unstated. 400 pages is inferred, not CJ-confirmed.",
+            "variant": "Exact CJ SKU is Purple Plus Stickers, not plain Purple; Shopify variant given is labeled Purple. Verify whether 8 planning stickers are included in that Shopify mapping."
+          },
+          "licensing_or_ad_rights": "Not stated; unknown."
+        }
+      }
+    ]
+  },
+  "notebookCJLimits": "# CJ source facts for LuxeStyle notebook variants\n\nRead-only product detail lookups on 2026-11-13 UTC. Exact SKU matches were returned for both requested variant codes. See JSON for source fields and image URLs.\n\n## Charmantes Schwarz\n- CJ confirms the exact variant name “Charming Black,” PU cover, wood-free paper, and a packing list of one notebook.\n- CJ does not state paper weight, number of sheets/pages, inner paper dimensions, or notebook body dimensions. Its variant logistics dimensions are 240 × 80 × 227 mm; do not present these as the writing area.\n- CJ lists separate Charming Black Upgrade and Charming Black Luxury options, but gives no textual explanation of what they add. Merchant’s A5/buckle claims are not confirmed by CJ text. The “200 paper” overlay is not corroborated.\n- Photo URLs and variant image are in the JSON; image resolution was not requested. Rights for advertising use are unknown.\n\n## Purple\n- CJ confirms the exact variant “Purple Plus Stickers,” PU cover, thread binding, wood-free paper, 80g internal paper, and 200 sheets. The description’s option list says purple includes 8 planning stickers; packing list says one notebook.\n- Merchant’s 80G and 200 sheets are corroborated. “400 pages” is a conventional two-sided inference, not explicitly stated by CJ.\n- Merchant overlay’s 150 × 211 mm is not like-for-like with CJ’s 220 × 160 × 30 mm variant logistics dimensions. CJ does not state notebook body or writing-area dimensions.\n- Check whether Shopify’s “Purple” mapping intentionally corresponds to the CJ “Purple Plus Stickers” SKU. Photo URLs are in JSON; resolution and advertising rights are unknown.\n\n",
+  "sourceSelectionFindings": [
+    {
+      "productId": "16656659218823",
+      "decision": "excluded",
+      "reason": "294px stamped-product image carries supplier watermarks, no watermark removal. Replaced by exact Santa product16656645489031 with clean1280px original merchant image."
+    },
+    {
+      "productId": "16654366638471",
+      "decision": "excluded_from_mode_collection",
+      "reason": "Shop titleBluse but actual mediahoodedpullover and optionsSet1. No product mutation; exact source/composition review remains open. Replaced by16654366409095."
+    },
+    {
+      "productId": "16653948191111",
+      "decision": "notebook_category_held",
+      "reason": "CJ confirms PU/baseNotebookx1; current clean-looking main photo includes Giftbox/pen/refill, base vsupgrade binding not established. Variant picture430px with extra unconfirmed spec text."
+    },
+    {
+      "productId": "16638912496007",
+      "decision": "notebook_category_held",
+      "reason": "CJ variantPurplePlusStickers/8stickers,80g/200sheets confirmed;400pages and150x211 not explicit. Original image has printed specifications; no redrawing/measurement invention."
+    }
+  ],
+  "queryFailure": "Targeted notebook media(last:6) returned GraphQL errorsusinglastwithoutbeforeunsupported, not emptygallery/404; corrected bounded first8 read was then UNAUTHORIZED. No further target reads/writes after wrong shop identity."
+}

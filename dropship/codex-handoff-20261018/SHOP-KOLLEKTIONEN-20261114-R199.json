@@ -1,0 +1,395 @@
+{
+  "revision": 199,
+  "recordedAtUTC": "2026-11-14T00:08:52.861542+00:00",
+  "dateZurich": "2026-11-14",
+  "shop": "luxestyle.ch",
+  "currency": "CHF",
+  "shopPublicationId": "gid://shopify/Publication/301971014017",
+  "ownerInstructions": [
+    "gib mir mehr kollektion",
+    "ok habe hinzugefügt hast du mehr",
+    "2te abschnitt?",
+    "2 mal licht wohen",
+    "3te abschnitt?",
+    "1 u 2 mehr kollektion?"
+  ],
+  "confirmedShopCollections": [
+    {
+      "key": "gifts",
+      "id": "gid://shopify/Collection/757437432199",
+      "title": "Geschenkideen",
+      "handle": "shop-geschenkideen",
+      "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2132992655751",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794612580",
+        "altText": "Retro-Vogelbecher als Geschenkidee"
+      },
+      "productIds": [
+        "gid://shopify/Product/15497451929985",
+        "gid://shopify/Product/16617685418375"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:30:18Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "light",
+      "id": "gid://shopify/Collection/757437530503",
+      "title": "Licht & Wohnen",
+      "handle": "shop-licht-wohnen",
+      "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2132992688519",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/77707dd2-8db2-4271-97b6-71769d51ed4e.jpg?v=1794612583",
+        "altText": "Tulpen-Nachtlicht in Rosa"
+      },
+      "productIds": [
+        "gid://shopify/Product/15521256604033",
+        "gid://shopify/Product/16638319788423"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:30:19Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "beauty",
+      "id": "gid://shopify/Collection/757437563271",
+      "title": "Beauty & Ordnung",
+      "handle": "shop-beauty-ordnung",
+      "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2132992721287",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+        "altText": "Kosmetik-Organizer mit Tragegriff"
+      },
+      "productIds": [
+        "gid://shopify/Product/16615385727367",
+        "gid://shopify/Product/16655083274631"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:30:20Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "discoveries",
+      "id": "gid://shopify/Collection/757753840007",
+      "title": "Neue Entdeckungen",
+      "handle": "shop-neue-entdeckungen",
+      "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+      "image": {
+        "id": null,
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/705905417093.jpg?v=1794613501",
+        "altText": "Laptop-Hülle in Blaugrau",
+        "idStatus": "not_returned_by_builtin_detail_tool"
+      },
+      "productIds": [
+        "gid://shopify/Product/16700386607495",
+        "gid://shopify/Product/16706216132999"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T22:52:08Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "cats",
+      "id": "gid://shopify/Collection/757756854663",
+      "title": "Für Katzen",
+      "handle": "shop-fuer-katzen",
+      "descriptionHtml": "<p>Ausgewählte Ideen zum Spielen und Entspannen für deine Katze.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014544775",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+        "altText": "Katzentunnel in Dunkelgrau und Orange"
+      },
+      "productIds": [
+        "gid://shopify/Product/16610153759111",
+        "gid://shopify/Product/16706218951047"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:41:55Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "christmas",
+      "id": "gid://shopify/Collection/757756887431",
+      "title": "Weihnachten Zuhause",
+      "handle": "shop-weihnachten-zuhause",
+      "descriptionHtml": "<p>Weihnachtliche Details für dein Zuhause.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014577543",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+        "altText": "Weihnachtlicher Becher mit Santa-Claus-Motiv"
+      },
+      "productIds": [
+        "gid://shopify/Product/16656645489031",
+        "gid://shopify/Product/16706216132999"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:41:56Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    },
+    {
+      "key": "everyday",
+      "id": "gid://shopify/Collection/757756920199",
+      "title": "Unterwegs & Alltag",
+      "handle": "shop-unterwegs-alltag",
+      "descriptionHtml": "<p>Laptop-Hüllen und Taschen für unterwegs.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014610311",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+        "altText": "Laptop-Tasche in Rosa"
+      },
+      "productIds": [
+        "gid://shopify/Product/16690165186951",
+        "gid://shopify/Product/16700386607495"
+      ],
+      "productCount": 2,
+      "publicationAtLastRead": {
+        "isPublished": true,
+        "publishDate": "2026-11-13T23:41:57Z",
+        "publication": {
+          "id": "gid://shopify/Publication/301971014017"
+        }
+      },
+      "state": "confirmed_published_at_dated_readback",
+      "nativeMenuPlacement": "not_changed_by_root"
+    }
+  ],
+  "pendingKnownCollections": [
+    {
+      "key": "fashion",
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "handle": "shop-mode-stil",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014675847",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "altText": "Grüne Bluse mit V-Ausschnitt"
+      },
+      "productIds": [
+        "gid://shopify/Product/16654366409095",
+        "gid://shopify/Product/16654377714055"
+      ],
+      "stateAtCreation": "unpublished",
+      "currentPublication": "unknown_blocked_by_reauthentication_and_wrong_shop_context",
+      "recreateForbidden": true,
+      "nextPublicationTarget": "gid://shopify/Publication/301971014017"
+    },
+    {
+      "key": "jewelry",
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "handle": "shop-schmuck-accessoires",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014708615",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "altText": "Kette mit Kreuzanhänger"
+      },
+      "productIds": [
+        "gid://shopify/Product/16690384765319",
+        "gid://shopify/Product/16700386640263"
+      ],
+      "stateAtCreation": "unpublished",
+      "currentPublication": "unknown_blocked_by_reauthentication_and_wrong_shop_context",
+      "recreateForbidden": true,
+      "nextPublicationTarget": "gid://shopify/Publication/301971014017"
+    }
+  ],
+  "notCreated": "Schreiben & Planen: exact source/photo/specification QA and correct Shopify access pending, no forced low-quality replacement",
+  "successfulShopifyResourceOperations": 14,
+  "operations": [
+    {
+      "kind": "collection_image_update",
+      "id": "gid://shopify/Collection/757437432199",
+      "sourceFile": "image-update-0.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_image_update",
+      "id": "gid://shopify/Collection/757437530503",
+      "sourceFile": "image-update-1.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757437432199",
+      "sourceFile": "publish-gifts.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757437530503",
+      "sourceFile": "publish-light.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757437563271",
+      "sourceFile": "publish-beauty.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_create",
+      "id": "gid://shopify/Collection/757756854663",
+      "sourceFile": "create-cats.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_create",
+      "id": "gid://shopify/Collection/757756887431",
+      "sourceFile": "create-christmas.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_create",
+      "id": "gid://shopify/Collection/757756920199",
+      "sourceFile": "create-everyday.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757756854663",
+      "sourceFile": "new-publish-cats.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757756887431",
+      "sourceFile": "new-publish-christmas.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "shop_collection_publication",
+      "id": "gid://shopify/Collection/757756920199",
+      "sourceFile": "new-publish-everyday.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_image_update",
+      "id": "gid://shopify/Collection/757753840007",
+      "sourceFile": "discoveries-cover-write.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_create",
+      "id": "gid://shopify/Collection/757757542791",
+      "sourceFile": "round3-create-fashion.json",
+      "confirmedMutationAck": true
+    },
+    {
+      "kind": "collection_create",
+      "id": "gid://shopify/Collection/757757575559",
+      "sourceFile": "round3-create-jewelry.json",
+      "confirmedMutationAck": true
+    }
+  ],
+  "counts": {
+    "existingCollectionPublications": 3,
+    "newCollectionCreatesPublished": 3,
+    "newCollectionPublications": 3,
+    "existingCollectionImageUpdates": 3,
+    "additionalCreatesAwaitingPublication": 2,
+    "collectionCreatesTotal": 5,
+    "collectionPublicationOperationsTotal": 6,
+    "lastVerifiedShopPublishedTotal": 7,
+    "productWrites": 0,
+    "socialWrites": 0,
+    "newVideoRenders": 0,
+    "nativeProfileSavesByRoot": 0
+  },
+  "identityGuard": {
+    "beforeWrites": "LuxeStyle/luxestyle.ch/CHF and Shop publication301971014017 verified; returned new collection CDN paths match LuxeStyle /1/0943/6856/3585",
+    "laterEvent": "Shopify required reauth; identity-only read then returned TechHub CH/aban-os5z8ied.myshopify.com. No products/collections or writes were accessed in that shop.",
+    "wrongShopIdentity": {
+      "isError": false,
+      "name": "TechHub CH",
+      "domain": "aban-os5z8ied.myshopify.com",
+      "currencyCode": "CHF",
+      "timezone": "EST"
+    },
+    "wrongContextAction": "Supported switch_shop revoked current wrong-store app token and immediately get_shop_info triggered proper host reauthorisation. This is connector context recovery, not a TechHub store-data write.",
+    "afterSwitch": {
+      "isError": true,
+      "error": "This app connection requires reauthentication before other actions on this app can succeed.",
+      "error_code": "UNAUTHORIZED",
+      "error_data": {
+        "detail": "Reauthentication required",
+        "action": "TRIGGER_REAUTHENTICATION",
+        "reason": "www_authenticate_reauth"
+      }
+    },
+    "ownerQuestionPending": "Choose LuxeStyle/luxestyle.ch in Shopify host authorisation. Do not mutate or read target resource IDs under a different shop.",
+    "directRuntimeFallback": "Existing Shopify helper paths found, but no SHOPIFY_* runtime variables. No installation, secret disclosure, direct HTTP attempt or fallback write."
+  },
+  "editorGuidance": {
+    "ownerReportedAdded": true,
+    "ownerScreenshot": "Two native collection-card blocks; Licht & Wohnen duplicated across them and two empty second-row slots. No duplicate Shopify collection object evidenced.",
+    "rootCorrection": "Earlier advice to use Licht & Wohnen again was wrong and acknowledged. Keep first4; secondblock uses cats/christmas/everyday instead of duplicate/empty slots.",
+    "thirdSection": "Advised against a third collection block; later owner asked more in first and second. Target5+5 only if suitable content. Current7published,2created pending,1notcreated.",
+    "proposedSection1": [
+      "Neue Entdeckungen",
+      "Geschenkideen",
+      "Licht & Wohnen",
+      "Beauty & Ordnung",
+      "Mode & Stil (publication unconfirmed)"
+    ],
+    "proposedSection2": [
+      "Für Katzen",
+      "Weihnachten Zuhause",
+      "Unterwegs & Alltag",
+      "Schmuck & Accessoires (publication unconfirmed)",
+      "Schreiben & Planen (not created)"
+    ],
+    "saveStatus": "Owner UI actions reported, no root native Save or independent profile readback"
+  },
+  "limits": [
+    "First available/default variants only in bounded product checks; physical stock/shipping not inferred from untracked CONTINUE or zero counters",
+    "Same existing Shop merchant pictures were assigned unchanged; no independent commercial advertising/editing license inferred and no social reuse authorised by this check",
+    "No daily analytics/Klaviyo/order/watch/ads/discount/flow/DNS/settings or other-brand store changes",
+    "Current post-reauth resource statuses unknown; preserve known collection IDs, never recreate on recovery"
+  ],
+  "nextConcreteAction": "After owner selects LuxeStyle and identity is freshly correct, read existing Mode/Jewelry IDs and their product eligibility/publication states; publish only if still necessary, then per-ID readback. Continue notebook gallery/source QA before any tenth category."
+}

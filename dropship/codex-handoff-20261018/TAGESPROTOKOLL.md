@@ -2305,3 +2305,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Zugang | Frischen Link und Inhaber-Googlefehler eingeordnet; im selben Browser offizielle Shopify-Anmeldung geöffnet und den unklaren Navigationsfehler gezielt nachgelesen | Google verweigert Browseranmeldung; Shopify zeigt «Something went wrong». Keine Formularwerte gelesen/eingegeben und keine Sicherheit geändert |
 | Sitzung / Shop | Blockierte Sitzung beendet und R197-Arbeitsstand erhalten | Stop bestätigt, zweiter Versuch57Firecrawl-Credits. Native Profilwrites0; bestehende Kollektion und Produktkorrekturen nicht zurückgenommen |
 | Kontinuität | Konkreten technischen Blocker statt erneuter Freigabefrage dokumentiert |24Aufgaben/Historie/Tagesgrenze erhalten, keine neuen Tagesreports/Verkaufs-/Kaufwatchabfragen oder Plattformwrites; Claude-Empfang unbekannt |
+
+### R199 – Mehr Kollektionen für die beiden vorhandenen Shop-Blöcke
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Bestehende Gruppen |3kurierteGruppen/6Produkte mitTags,Wächter,CHF,Kaufbarkeit,Tracking/Policy undShopstatus geprüft;3GruppenShop-only publiziert | Geschenkideen757437432199,Licht&Wohnen757437530503,Beauty&Ordnung757437563271 bestätigt;keineDuplikatkollektionen oderProduktkanaländerungen |
+| Neue Auswahl |FürKatzen757756854663,WeihnachtenZuhause757756887431,Unterwegs&Alltag757756920199 mitje2Produkten erstellt,publiziertundrückgelesen | Alle3Shop-only bestätigt;neuerKeksstempel wegenWasserzeichen/niedrigerAuflösungausgeschlossen,keineWasserzeichenentfernung |
+| Bildkorrekturen |Geschenk-Alttext neutralisiert,LichtcoveranRosa gebunden,NeueEntdeckungen realeLaptop-Hülle alsCover zugeordnet |3bestehendeCollection-Imageupdates;IDs/Handles/Mitgliedschaften undgeliefertegeschützteProduktfeldergeprüft,keineProduktwrites |
+| Weitere Gruppen |Mode&Stil757757542791 undSchmuck&Accessoires757757575559 mitje2Produktenangelegt | ZumAnlagezeitpunkt unveröffentlicht;nachfolgendeFreischaltungundaktuelleReadbacksdurchReauth/Identitätswechselblockiert. IDsbehalten,keineerneuteAnlage |
+| Quellen / Qualität |BegrenzteKandidatensuchenund2exakteCJNotizbuchreads;Hoodie-/Blusen-MismatchundNotizbuchset-/Massfragen dokumentiert | Schreibengruppe nichtangelegt;400Seiten/Innenmasse nichtalsbelegtbehauptet. GalleryfehlerundUNAUTHORIZEDkeine404/leerenDaten. EinfachesQuellenlesenmitLuna/low |
+| Editor / Zugriff |Inhaber-Doppelkartenscreenshot geprüft,falschenRatfürzweitenLichtblockkorrigiert;späterfalscheShopidentität erkanntundgestoppt | Oberer4erBlockbleibt,unterer3erBlockunterschiedlich;nativeSavesnurBesitzermeldung. TechHubnurIdentitätsread,keineStorewrites;Kontextwechsel/korrekteAutorisierungausstehend |
+| Kontinuität |14eigeneShopifyRessourcenwrites undkonkreteBlocker gespeichert;24Aufgaben/Historien/Tagesgrenze/Kaufwatchende erhalten |0Social-/Produkt-/Profilwrites,0neueTageskennzahlen/Flow-/Bestellreports,keineBudget-/Rabatt-/DNS-/Versand-/Zeitplanänderung;ClaudeEmpfangunbekannt |

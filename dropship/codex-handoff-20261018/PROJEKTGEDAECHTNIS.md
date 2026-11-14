@@ -1,5 +1,9 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R199 – 14.11.2026: Shop-Kollektionen erweitert, spätere Autorisierung blockiert
+
+[Stand und Editoranleitung](SHOP-KOLLEKTIONEN-20261114-R199.md) · [IDs/Operationen](SHOP-KOLLEKTIONEN-20261114-R199.json) · [Prüfbelege](SHOP-KOLLEKTIONEN-PRUEFBELEGE-20261114-R199.json). Drei vorhandene Gruppen Shop-only veröffentlicht, drei neue mit je2Produkten erstellt/publiziert, drei bestehende Bilder/Alttexte verbessert. Zuletzt7aktiveShopgruppen bestätigt; Mode757757542791 und Schmuck757757575559 zusätzlich angelegt, Freischaltung nach späterer Reauth/falscherTechHub-Identität nicht erfolgt. KeineStorewrites unter falscherIdentität, unterstützterVerbindungskontextwechsel verlangtLuxeStyleAutorisierung. Notizbuchgruppe wegen Bild-/Set-/Massbindung zurückgestellt. NativeDoppelkarte ausBesitzerscreenshot erklärt/eigenenBeratungsfehler korrigiert;0eigeneProfilSaves.14ShopifyRessourcenwrites,0Produkt-/Social-/Tagesreport-/Kaufwatchaktionen;24IDs/Historien erhalten,keineandereMarkebearbeitet.
+
 ## R198 – 14.11.2026: Shop-Händleranmeldung technisch blockiert
 
 [Anmeldeblock und nächster Schritt](SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.md) · [Beleg](SHOP-EDITOR-ANMELDEBLOCK-20261114-R198.json). Der neue Link erreichte Google; der Inhaber zeigt eine Browser-Sicherheitsablehnung. Im selben Browser zeigte die offizielle Shopify-Rückkehr anschliessend «Something went wrong». Sitzung beendet, keine Umgehung oder Profiländerung. Shopify-API und bestätigte R197-Kollektion/Becherkorrekturen funktionieren bzw. bleiben gespeichert. Für native Platzierung fehlt technischer Händlerbrowserzugriff, keine erneute Gestaltungsfreigabe. Keine neuen Reports/Plattformwrites; alle24Aufgaben, Historien und Tagesgrenzen erhalten.
