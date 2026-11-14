@@ -2452,3 +2452,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Zielseite | Exakten Google-Link des Preisfalls mit und ohne Redirect-Folgen geprüft | Produktadresse301→Damenmode-Kategorie200; Google-Preis null, Source10678939025. Kein echter404, kein Preis-/DRAFT-/Autofeedwrite |
 | Bilder | Zwei echte Google-Bilder und zwei aktuelle Shop-Variantenbilder geladen und angesehen; öffentliche Variantenantwort geprüft | Google nutzt alte Textbilder DT282/DT284; Shop zeigt textfreie PNGs für dieselben IDs. Je Google CHF15.90; Rechte-/vollständige Produktabnahme nicht neu belegt, keine neue Bildbearbeitung |
 | Gedächtnis | R212-Belege, konkrete Claude-Code-Übergabe und Core4 fortgeschrieben |24 Aufgaben-IDs/Historien/Tagesschranke/Zeitplan erhalten. Claude-Code-Empfang unbekannt. Keine neuen Tagesreports, Orders, Socialposts oder Renders |
+
+### R213 – CJ-Videos, Doppelprüfung und weiter Vorausplanen, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Zugänge | Nach bestätigter legitimer Neuanmeldung Shopify und Metricool frisch geprüft | LuxeStyle-Zugriff funktioniert wieder, Brand6227837/EuropeZurich/sechs Kanalidentitäten passend. Keine andere Marke bearbeitet |
+| Planung | Sieben abgeschlossene Tage plus Planung14.–28.11. in maximal2-Tagesfenstern gelesen |135 gelieferte Objekte, davon76 im Vorausfenster:48 aktiv/publiziert,28 Entwürfe. IG/FB/TikTok/Pinterest aktiv bis23.11.; Lücken24–28, Threads15/25–28, YouTube15–28 separat. Keine neue Terminierung |
+| Doppelvideos |31 MP4-Adressen vollständig gehasht,21 verschiedene Dateien zusätzlich technisch auf neu codierte Kopien verglichen; engste Treffer angesehen |Keine eindeutig belegte Videodublette je Kanal in diesem Scope. Gleicher Armbandfilm kanalübergreifend je einmal erhalten;0 Löschungen. Ältere/native/Foto-zu-Video-Historie nicht pauschal freigegeben |
+| Sperren |15 bekannte UUIDs gegen frische vergangene und zukünftige Planerobjekte gegengeprüft |Alle15 weiter draft=true/autoPublish=false;9 künftig,6 vom13.11. Keine Sperre aufgehoben; permanente Mainliste weiterhin4, zusätzlicherElferpatch nichtmain |
+| CJ-Quellen |Zwei vorhandene MP4s technisch/visuell und zwei aktive Produkte samt Tags/Tracking/Policy gelesen; Haussocken gezielt bei CJ aufgelöst |Hacker10.60s/Socken12.52s,1080×1920/25fps. BeideRueckhol0907 sperren neue Social-Ausspielung. Socken-CJ-PID/VideoID und drei blaue SKUs belegt; genaue MP4-Lizenz-/Quell-/Pflichtmusikabnahme offen |
+| Veröffentlichung |Fälligen bestehenden TikTok-Eintrag18Uhr frisch zurückgelesen |PUBLISHED aus bestehender Planung bestätigt; nicht von Codex neu angelegt/veröffentlicht. Keine neuen Socialposts/Uploads/Renders, keine Shop-/Flow-/Budget-/DNS-Änderungen |
+| Gedächtnis |Neue Videoprüfung, Planlücken und Belege in Core4 fortgeschrieben |Revision213,24 Aufgaben/Historien/Tagesgrenze/Zeitplan erhalten. Link zur neuen anderen Session offen; Kenntnisnahme durch Claude unbekannt |

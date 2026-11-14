@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 212,
-  "updatedAt": "2026-11-14T16:51:00.478622+00:00",
+  "revision": 213,
+  "updatedAt": "2026-11-14T17:44:42.186229+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r212_code_branch_real_ci_and_exact_merchant_handoff_prepared_receipt_unknown",
+      "state": "r213_fresh_reauthenticated_shop_metricool_cj_access_video_audit_and_owner_source_question",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R212_REAL_GITHUB_CI_AND_THREE_EXACT_GOOGLE_GETS_WITH_PARTIAL_STATUS",
-      "lastEvidence": "Aktuelle Core4/Revision211 frisch,24IDs erhalten. Zwei normale Code-Commits separat gespeichert/Hashes zurückgelesen; bestehende CI einmal und bestehender Merchant-Leser für drei verschiedene Angebote kontrolliert gestartet. Echte CI drei Jobs grün, Reader21Mocks grün/Teilstatus bewusst nicht als Clearance. Präzise Übergabe und Tagesfortschritt, kein ungeprüfter Deploy/PR/neuer Zeitplan. Neuer Claude-Empfang unbekannt.",
-      "nextAllowedStep": "Claude Code liest Core4 und R212-Handoff frisch und quittiert nur nach tatsächlichem Lesen. Kernmerge/Produktivlauf und genaue Merchant-Einzelfälle getrennt prüfen. Den belegten GCP-Workflowzugang weiterverwenden, nicht wieder pauschal als fehlenden Connector melden; bestehende Tagesgrenze und Zeitpläne erhalten.",
+      "belegArt": "R213_FRESH_135_METRICOOL_ROWS_31_HASHES_21_FINGERPRINTS_CURRENT_PRODUCT_TAGS_CJ_BINDING",
+      "lastEvidence": "NachOwnerVerbundenMeldungShopifylegitimfrischLuxeStyleCHF;Metricool6227837/Zurichalle6Kanälepassend. Planungbis28Nov+7TageHistorie,MP4Hash-/PerzeptionsprüfungundCjProduktquellegezieltgemessen. AktiveAbdeckungbis23NovfürIGFBTTPin,Threads/YTLückenexplizit. KeineSocialwrites/neuenPosts/MP4Renders; exakteandereSessionQuellefehlt,Frageoffen. NeueCJReadfunktioniert,keinenfehlendenConnectorbehauptet. Core4/24IDsfortgeschrieben,neuerClaudeEmpfangunbekannt.",
+      "nextAllowedStep": "Neue Videolinks/Dateipfade der anderen Session in bestehender Übergabe verorten. Danach autonom im bereits erlaubten Metricool-Rahmen prüfen und terminieren, keine neue pauschale Erlaubnis verlangen. Vor jedem Write frische Identitäten, Produkt-/Tag-/Medien-/Historien-/Register-/Kollisionsdaten und kanalweise Rücklesung. BestehendeZeitpläne/Tagesschranke/Masterqualität bewahren; Quellenlücken alsunbekannt erhalten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4102,6 +4102,30 @@
           "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
           "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
           "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+          "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+          "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+          "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+          "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+          "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+          "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+          "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+          "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4995,6 +5019,40 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
               "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
               "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+            }
+          ]
+        },
+        {
+          "revision": 213,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r212_code_branch_real_ci_and_exact_merchant_handoff_prepared_receipt_unknown",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R212_REAL_GITHUB_CI_AND_THREE_EXACT_GOOGLE_GETS_WITH_PARTIAL_STATUS",
+            "lastEvidence": "Aktuelle Core4/Revision211 frisch,24IDs erhalten. Zwei normale Code-Commits separat gespeichert/Hashes zurückgelesen; bestehende CI einmal und bestehender Merchant-Leser für drei verschiedene Angebote kontrolliert gestartet. Echte CI drei Jobs grün, Reader21Mocks grün/Teilstatus bewusst nicht als Clearance. Präzise Übergabe und Tagesfortschritt, kein ungeprüfter Deploy/PR/neuer Zeitplan. Neuer Claude-Empfang unbekannt.",
+            "nextAllowedStep": "Claude Code liest Core4 und R212-Handoff frisch und quittiert nur nach tatsächlichem Lesen. Kernmerge/Produktivlauf und genaue Merchant-Einzelfälle getrennt prüfen. Den belegten GCP-Workflowzugang weiterverwenden, nicht wieder pauschal als fehlenden Connector melden; bestehende Tagesgrenze und Zeitpläne erhalten."
+          },
+          "summary": "NachOwnerVerbundenMeldungShopifylegitimfrischLuxeStyleCHF;Metricool6227837/Zurichalle6Kanälepassend. Planungbis28Nov+7TageHistorie,MP4Hash-/PerzeptionsprüfungundCjProduktquellegezieltgemessen. AktiveAbdeckungbis23NovfürIGFBTTPin,Threads/YTLückenexplizit. KeineSocialwrites/neuenPosts/MP4Renders; exakteandereSessionQuellefehlt,Frageoffen. NeueCJReadfunktioniert,keinenfehlendenConnectorbehauptet. Core4/24IDsfortgeschrieben,neuerClaudeEmpfangunbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+              "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+              "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+              "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+              "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+              "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+              "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+              "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+              "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
             }
           ]
         }
@@ -5894,6 +5952,38 @@
         "merchantBusinessWrites": 0,
         "allMerchantErrorsCleared": false,
         "claudeReceipt": "unknown_no_new_receipt"
+      },
+      "run213": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+            "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+            "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+            "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+            "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+            "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+            "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+            "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+            "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
+          }
+        ],
+        "scope": "07.–28.11.2026 EuropeZurich",
+        "ownerPlanningPermissionRetained": true,
+        "newPostsScheduled": 0,
+        "deletedPosts": 0,
+        "all15KnownHoldsObservedHeld": true,
+        "fullPublicationRegister": "unknown_not_reset",
+        "newOtherSessionSource": "pending_owner_link",
+        "newClaudeReceipt": "unknown"
       }
     },
     {
@@ -17269,12 +17359,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r206_five_reactivated_known_holds_restored_confirmed_main_protection_not_live",
+      "state": "r213_135_planner_rows_31_mp4_hashes_and_21_fingerprints_no_proven_duplicate_all15_holds_confirmed",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
-      "lastEvidence": "Fünf bekannte UUIDs mit gleichen R196-MP4Hashes fremd reaktiviert, nach frischen Identitäten/Originalen/Diff/Kollisionsprüfung gezielt wieder Entwurf/Autopublishaus. Alle fünf neueIDs/stabileUUIDs/Termine/Inhalte/Medien/tatsächlichenProviderfelder bestätigt. Final48Objekte/39aktiv/9Drafts;6alte externePUBLISHED,keine neuen/keine eigenen. YouTube15–21/Threads15 offen. Mainhaltfile4alt;Elferpatchnichtmain;Previewvariable403unknown.",
-      "nextAllowedStep": "BekannteHolds/UUID-/ID-Ketten erhalten. Elfer-Schutzpatch erst nach belegter Deployment-Gate-Kontrolle operativ übernehmen; keine ungeprüften PRs/Dispatches/Deployments. Keine früherenMaster oderDailycopy alsneuenContent planen.",
+      "belegArt": "R213_FRESH_135_METRICOOL_ROWS_31_HASHES_21_FINGERPRINTS_CURRENT_PRODUCT_TAGS_CJ_BINDING",
+      "lastEvidence": "135 gelieferte Objekte07.–28.11. geordnet;31/31MP4URLs gehasht,21unterschiedlicheDateien mit210Paaren technisch und engsteStichprobevisuell aufReencodings geprüft. Keine belegtegleicheVideodublettejeKanalimScope,keinLöschen. Alle15bekanntenHoldsfrischDraft/APaus,auch6vom13.11. bestätigt; keineSourceURLsalsNeuheitgewertet. Hacker/HaussockenAltlieferung10Nov,beideaktuellesRueckholTag;keineFreigabeumgangen. NeueandereSessionDateinochunidentifiziert,Linkangefragt.",
+      "nextAllowedStep": "Konkrete neue Videolieferung erhalten und gezielt qualifizieren, dann bestehenden passenden Draft/UUID stattKopie verwenden. Produkt-/Tags-/Rechte-/Pflichtmusik-/Masterhistorie/kanalbezogeneGates und frische Queue vor jedem Write. Keine altenHolds pauschalaktivieren, keineBlindlöschung. Bestehenden Elferpatch als noch nichtmain erhalten; vollständigePublikationshistorieunbekannt,nichtinitialisieren/resettenohnebegrenztebelegteGegenprüfung.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -17588,6 +17678,30 @@
           "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
           "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d",
           "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+          "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+          "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+          "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+          "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+          "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+          "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+          "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+          "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10",
+          "readAt": "2026-11-14T17:44:42.186229+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -18138,6 +18252,40 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
               "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
               "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
+            }
+          ]
+        },
+        {
+          "revision": 213,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r206_five_reactivated_known_holds_restored_confirmed_main_protection_not_live",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+            "lastEvidence": "Fünf bekannte UUIDs mit gleichen R196-MP4Hashes fremd reaktiviert, nach frischen Identitäten/Originalen/Diff/Kollisionsprüfung gezielt wieder Entwurf/Autopublishaus. Alle fünf neueIDs/stabileUUIDs/Termine/Inhalte/Medien/tatsächlichenProviderfelder bestätigt. Final48Objekte/39aktiv/9Drafts;6alte externePUBLISHED,keine neuen/keine eigenen. YouTube15–21/Threads15 offen. Mainhaltfile4alt;Elferpatchnichtmain;Previewvariable403unknown.",
+            "nextAllowedStep": "BekannteHolds/UUID-/ID-Ketten erhalten. Elfer-Schutzpatch erst nach belegter Deployment-Gate-Kontrolle operativ übernehmen; keine ungeprüften PRs/Dispatches/Deployments. Keine früherenMaster oderDailycopy alsneuenContent planen."
+          },
+          "summary": "135 gelieferte Objekte07.–28.11. geordnet;31/31MP4URLs gehasht,21unterschiedlicheDateien mit210Paaren technisch und engsteStichprobevisuell aufReencodings geprüft. Keine belegtegleicheVideodublettejeKanalimScope,keinLöschen. Alle15bekanntenHoldsfrischDraft/APaus,auch6vom13.11. bestätigt; keineSourceURLsalsNeuheitgewertet. Hacker/HaussockenAltlieferung10Nov,beideaktuellesRueckholTag;keineFreigabeumgangen. NeueandereSessionDateinochunidentifiziert,Linkangefragt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+              "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+              "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+              "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+              "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+              "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+              "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+              "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+              "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
             }
           ]
         }
@@ -19415,6 +19563,38 @@
           }
         ],
         "nativeProfileSave": false
+      },
+      "run213": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+            "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+            "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+            "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+            "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+            "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+            "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+            "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+            "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
+          }
+        ],
+        "scope": "07.–28.11.2026 EuropeZurich",
+        "ownerPlanningPermissionRetained": true,
+        "newPostsScheduled": 0,
+        "deletedPosts": 0,
+        "all15KnownHoldsObservedHeld": true,
+        "fullPublicationRegister": "unknown_not_reset",
+        "newOtherSessionSource": "pending_owner_link",
+        "newClaudeReceipt": "unknown"
       }
     },
     {
@@ -22219,6 +22399,36 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_claude_receipt"
+    },
+    {
+      "revision": 213,
+      "at": "2026-11-14T17:44:42.186229+00:00",
+      "actor": "codex",
+      "summary": "AktuellenCJ/MetricoolAuftragbis28Novgeprüft:Shopreautherfolgreich/Identitätenpassend;135Objekte,31MP4URLs/21verschiedeneDateien und210technischePaarvergleiche,engsteStichprobenkeinebelegtenVideodubletten. Alle15HoldsjetztfrischDraft/APaus. ZweialteCJClips10Nov/TagRueckholsperrtbeide; gezielteHaussockenCJ-PID/VideoID+BlueSKUsneuaufgelöst,QuellMP4/Lizenz/Pflichtmusikoffen. NeueandereSessionDateinichtidentifiziert,Linkfrageoffen.0Socialwrites/Löschungen/neueTermine/Renders/Automation/Reports/Kaufwatch. Core4/24IDs/Historienerhalten,ClaudeEmpfangunbekannt.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+          "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+          "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+          "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+          "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+          "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+          "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+          "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+          "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
     }
   ],
   "salesGoal": {
@@ -46887,6 +47097,55 @@
     "dailyReportsOrdersOrRendersRepeated": false,
     "overallMerchantErrorCount": "unknown_not_census",
     "all18GroupsCleared": false,
+    "newClaudeReceipt": "unknown_no_receipt"
+  },
+  "run213": {
+    "recordedAtUTC": "2026-11-14T17:44:42.186229+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "planning": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261114-R213.json",
+        "sha256": "115a8cbfcfc7dfa82d6554afc1e32d2e2a44c15c0bd31d01fa4b497a93df0824",
+        "gitBlobSha": "b2fad3a52893b1515a3ca3d06f571dc17df68dfa"
+      },
+      "comparison": {
+        "path": "dropship/codex-handoff-20261018/VIDEOVERGLEICH-20261114-R213.json",
+        "sha256": "578392a0ed7d86d2a1d8b6f31f414a4de8ff997ba2aeadb0e1d67bf4bc4421d5",
+        "gitBlobSha": "f413cb58148be6943e01e093f4412c65ad2e9f29"
+      },
+      "cj": {
+        "path": "dropship/codex-handoff-20261018/CJ-VIDEOPRUEFUNG-20261114-R213.json",
+        "sha256": "7ea7125bb559fb3f8d6176696826ac279401f0a23d5f932146ace1cf66106a3c",
+        "gitBlobSha": "1525dbdf9f0342761faf20a63bf445a404c783f9"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R213.md",
+        "sha256": "a8710eeaed71cfb5ad66acfda6d55720be21200951d67b4d94027dce36661540",
+        "gitBlobSha": "d306bc35363c036f4b79b2ff7a0e817d0e927f10"
+      }
+    },
+    "brandId": 6227837,
+    "shopReauthenticationByOwnerAndFreshIdentityConfirmed": true,
+    "metricoolChannelsVerified": true,
+    "timelineObjects": 135,
+    "futureObjects": 76,
+    "mp4UrlsHashed": 31,
+    "uniqueMp4sFingerprinted": 21,
+    "differentHashPairsCompared": 210,
+    "provenSameChannelVideoDuplicates": 0,
+    "globalAllHistoryDuplicateStatus": "unknown_not_certified",
+    "knownHoldsObservedHeld": 15,
+    "newScheduledPosts": 0,
+    "deletedPosts": 0,
+    "updatedPosts": 0,
+    "twoVideoProductsBlockedByRueckhol": true,
+    "cjSocksSourceResolved": true,
+    "currentOtherSessionVideoLocation": "unidentified_link_requested",
+    "publicationLedger": "unknown_not_initialized_or_reset",
+    "newAutomationOrFrequencyChange": false,
+    "dailyMetricsFlowsOrdersRepeated": false,
+    "newMp4RenderOrUpload": false,
+    "shopFlowBudgetDnsWrites": 0,
     "newClaudeReceipt": "unknown_no_receipt"
   }
 }

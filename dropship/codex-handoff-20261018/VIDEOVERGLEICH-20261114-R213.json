@@ -1,0 +1,3718 @@
+{
+  "recordedAtUTC": "2026-11-14T17:44:42.186229+00:00",
+  "exactHashAudit": {
+    "audit": "R213 read-only exact media SHA-256 stream audit",
+    "source": {
+      "path": "/tmp/luxe-social-20261114-r213/dedup-input.json",
+      "sha256": "74791f6a926f8a47012cc27f9e263b56c2e3366b8299da2e4cc5aad95a54d0fc",
+      "brandId": 6227837,
+      "recordedAtUTC": "2026-11-14T17:15:54.705608+00:00",
+      "scope": "2026-11-07/2026-11-28 EuropeZurich; beyondscopeunknown"
+    },
+    "method": {
+      "allowedHosts": [
+        "cdn.shopify.com",
+        "static.metricool.com"
+      ],
+      "concurrency": 1,
+      "retries": 0,
+      "perFileByteCap": 20000000,
+      "totalBodyByteCap": 200000000,
+      "bytesStreamed": 128488497,
+      "mediaRetained": false,
+      "stopOnHTTP": [
+        401,
+        403,
+        429
+      ],
+      "urlGuessing": false
+    },
+    "inputUniqueVideoUrls": 31,
+    "summaryByResult": {
+      "hashed": 31
+    },
+    "urlResults": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 761932,
+        "sha256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "result": "hashed",
+        "contentLength": 761932
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6156950,
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "result": "hashed",
+        "contentLength": 6156950
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6156950,
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "result": "hashed",
+        "contentLength": 6156950
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "result": "hashed",
+        "contentLength": 5535209
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 8035974,
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "result": "hashed",
+        "contentLength": 8035974
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 8035974,
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "result": "hashed",
+        "contentLength": 8035974
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "result": "hashed",
+        "contentLength": 5535209
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6156950,
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "result": "hashed",
+        "contentLength": 6156950
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 10308531,
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "result": "hashed",
+        "contentLength": 10308531
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "result": "hashed",
+        "contentLength": 5535209
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 10308531,
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "result": "hashed",
+        "contentLength": 10308531
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6156950,
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "result": "hashed",
+        "contentLength": 6156950
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6670409,
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "result": "hashed",
+        "contentLength": 6670409
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "result": "hashed",
+        "contentLength": 5535209
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 1783832,
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "result": "hashed",
+        "contentLength": 1783832
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 6670409,
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "result": "hashed",
+        "contentLength": 6670409
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 9139031,
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "result": "hashed",
+        "contentLength": 9139031
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 9139031,
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "result": "hashed",
+        "contentLength": 9139031
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 1488984,
+        "sha256": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+        "result": "hashed",
+        "contentLength": 1488984
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 1708436,
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "result": "hashed",
+        "contentLength": 1708436
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 797761,
+        "sha256": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+        "result": "hashed",
+        "contentLength": 797761
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 857813,
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "result": "hashed",
+        "contentLength": 857813
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 798736,
+        "sha256": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+        "result": "hashed",
+        "contentLength": 798736
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 567555,
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "result": "hashed",
+        "contentLength": 567555
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 730973,
+        "sha256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "result": "hashed",
+        "contentLength": 730973
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 469069,
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "result": "hashed",
+        "contentLength": 469069
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 765297,
+        "sha256": "abbeb0fc1c121416e6ba7bd0b2e7e120cdcdaec6f41dc7f4010d0ce6d12768e8",
+        "result": "hashed",
+        "contentLength": 765297
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 525897,
+        "sha256": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+        "result": "hashed",
+        "contentLength": 525897
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 682233,
+        "sha256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "result": "hashed",
+        "contentLength": 682233
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 699928,
+        "sha256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "result": "hashed",
+        "contentLength": 699928
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4",
+        "requested": true,
+        "httpStatus": 200,
+        "bytes": 773525,
+        "sha256": "38104560dae74c60ece4e5badd897f5c64a86e8ffa4bedbdb53a323014adec94",
+        "result": "hashed",
+        "contentLength": 773525
+      }
+    ],
+    "placementsWithHashedMedia": [
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4",
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "postId": 416121297,
+        "uuid": "-2503182895774282094",
+        "dateTime": "2026-11-07T18:30:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4",
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "postId": 416121310,
+        "uuid": "8147121371837647826",
+        "dateTime": "2026-11-07T18:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4",
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "postId": 416121310,
+        "uuid": "8147121371837647826",
+        "dateTime": "2026-11-07T18:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4",
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "postId": 417052556,
+        "uuid": "-5577654293164241841",
+        "dateTime": "2026-11-07T19:30:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+        "sha256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "postId": 422276771,
+        "uuid": "2505682137165939640",
+        "dateTime": "2026-11-10T10:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+        "sha256": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+        "postId": 422276869,
+        "uuid": "-8877028874765120990",
+        "dateTime": "2026-11-10T10:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "postId": 422276987,
+        "uuid": "2479551942795872090",
+        "dateTime": "2026-11-10T12:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "postId": 422276987,
+        "uuid": "2479551942795872090",
+        "dateTime": "2026-11-10T12:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "postId": 422277108,
+        "uuid": "-7893674518673470896",
+        "dateTime": "2026-11-10T14:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "postId": 422277227,
+        "uuid": "-4166141021700799850",
+        "dateTime": "2026-11-10T16:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+        "sha256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "postId": 422277481,
+        "uuid": "7496893774506381155",
+        "dateTime": "2026-11-10T18:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "postId": 422280612,
+        "uuid": "6352982241777305829",
+        "dateTime": "2026-11-10T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "postId": 422195367,
+        "uuid": "3863915044291300024",
+        "dateTime": "2026-11-11T20:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "postId": 422195367,
+        "uuid": "3863915044291300024",
+        "dateTime": "2026-11-11T20:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4",
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "postId": 422198525,
+        "uuid": "-7257455683644011058",
+        "dateTime": "2026-11-11T15:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "postId": 422199733,
+        "uuid": "-3553911421145298799",
+        "dateTime": "2026-11-11T13:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "postId": 422277608,
+        "uuid": "-6647584058486602683",
+        "dateTime": "2026-11-11T09:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "postId": 422277608,
+        "uuid": "-6647584058486602683",
+        "dateTime": "2026-11-11T09:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+        "sha256": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+        "postId": 422277722,
+        "uuid": "6800747654958566068",
+        "dateTime": "2026-11-11T09:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "postId": 422277846,
+        "uuid": "-4605953212411130849",
+        "dateTime": "2026-11-11T10:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "postId": 422277980,
+        "uuid": "1675642812797436191",
+        "dateTime": "2026-11-11T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "postId": 422278084,
+        "uuid": "2157228003212543673",
+        "dateTime": "2026-11-11T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "postId": 422278200,
+        "uuid": "-6835976662518839807",
+        "dateTime": "2026-11-11T16:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "postId": 422278316,
+        "uuid": "3738748663902192714",
+        "dateTime": "2026-11-11T18:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4",
+        "sha256": "abbeb0fc1c121416e6ba7bd0b2e7e120cdcdaec6f41dc7f4010d0ce6d12768e8",
+        "postId": 422278407,
+        "uuid": "8215510415468351070",
+        "dateTime": "2026-11-12T09:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+        "sha256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "postId": 422278514,
+        "uuid": "-1176313182659524583",
+        "dateTime": "2026-11-12T10:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+        "sha256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "postId": 422278624,
+        "uuid": "-3118555118962720263",
+        "dateTime": "2026-11-12T18:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "postId": 422280698,
+        "uuid": "-2435184774283179178",
+        "dateTime": "2026-11-12T10:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "postId": 422280698,
+        "uuid": "-2435184774283179178",
+        "dateTime": "2026-11-12T10:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "postId": 422280785,
+        "uuid": "5102918478982235752",
+        "dateTime": "2026-11-12T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4",
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "postId": 422280875,
+        "uuid": "-7768329881687535680",
+        "dateTime": "2026-11-12T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "postId": 422280988,
+        "uuid": "5681760339256165072",
+        "dateTime": "2026-11-12T16:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4",
+        "sha256": "38104560dae74c60ece4e5badd897f5c64a86e8ffa4bedbdb53a323014adec94",
+        "postId": 422278897,
+        "uuid": "4651045624279025767",
+        "dateTime": "2026-11-13T09:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "postId": 422279075,
+        "uuid": "-8797746381899281322",
+        "dateTime": "2026-11-13T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866",
+        "sha256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "postId": 422285770,
+        "uuid": "-9210583075457839526",
+        "dateTime": "2026-11-13T10:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866",
+        "sha256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "postId": 422285897,
+        "uuid": "673796377030903265",
+        "dateTime": "2026-11-13T18:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "postId": 426612259,
+        "uuid": "1744402171830094170",
+        "dateTime": "2026-11-13T09:00:00",
+        "channel": "facebook",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "postId": 426612259,
+        "uuid": "1744402171830094170",
+        "dateTime": "2026-11-13T09:00:00",
+        "channel": "instagram",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "postId": 426613048,
+        "uuid": "5647388074617226143",
+        "dateTime": "2026-11-13T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "postId": 426613069,
+        "uuid": "-4472725258033347244",
+        "dateTime": "2026-11-13T16:00:00",
+        "channel": "youtube",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4",
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "postId": 426613082,
+        "uuid": "2172266762404316928",
+        "dateTime": "2026-11-13T15:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "postId": 426613132,
+        "uuid": "-7002936161864562103",
+        "dateTime": "2026-11-13T13:00:00",
+        "channel": "youtube",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "postId": 427286519,
+        "uuid": "3963843144054620883",
+        "dateTime": "2026-11-13T20:00:00",
+        "channel": "facebook",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "postId": 427286519,
+        "uuid": "3963843144054620883",
+        "dateTime": "2026-11-13T20:00:00",
+        "channel": "instagram",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+        "sha256": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+        "postId": 422279394,
+        "uuid": "-1754664943692791070",
+        "dateTime": "2026-11-14T09:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+        "sha256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "postId": 422279501,
+        "uuid": "7993315583738791837",
+        "dateTime": "2026-11-14T10:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "postId": 422279608,
+        "uuid": "8356246782781639563",
+        "dateTime": "2026-11-14T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "postId": 422279700,
+        "uuid": "8178449842924373712",
+        "dateTime": "2026-11-14T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "postId": 422279805,
+        "uuid": "-2924344703561023385",
+        "dateTime": "2026-11-14T15:00:00",
+        "channel": "facebook",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "postId": 422279805,
+        "uuid": "-2924344703561023385",
+        "dateTime": "2026-11-14T15:00:00",
+        "channel": "instagram",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "postId": 422279920,
+        "uuid": "8229862176301272727",
+        "dateTime": "2026-11-14T16:00:00",
+        "channel": "youtube",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+        "sha256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "postId": 422280035,
+        "uuid": "-6748893881700627372",
+        "dateTime": "2026-11-14T18:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PUBLISHED",
+        "state": "published"
+      },
+      {
+        "url": "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4",
+        "sha256": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+        "postId": 422295156,
+        "uuid": "-6967517640837021033",
+        "dateTime": "2026-11-15T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PENDING",
+        "state": "active_pending"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "postId": 427969120,
+        "uuid": "8935974072695279179",
+        "dateTime": "2026-11-15T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4",
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "postId": 427969190,
+        "uuid": "4156060813550767248",
+        "dateTime": "2026-11-16T19:00:00",
+        "channel": "instagram",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4",
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "postId": 427969232,
+        "uuid": "6680239273933357186",
+        "dateTime": "2026-11-16T19:00:00",
+        "channel": "facebook",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4",
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "postId": 427969295,
+        "uuid": "3614365779669041576",
+        "dateTime": "2026-11-17T19:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "postId": 423483793,
+        "uuid": "4659816415037836014",
+        "dateTime": "2026-11-18T10:00:00",
+        "channel": "facebook",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "postId": 423483793,
+        "uuid": "4659816415037836014",
+        "dateTime": "2026-11-18T10:00:00",
+        "channel": "instagram",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "postId": 423484712,
+        "uuid": "-8339089096074181290",
+        "dateTime": "2026-11-18T11:00:00",
+        "channel": "threads",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "postId": 423484773,
+        "uuid": "-8305910546945982140",
+        "dateTime": "2026-11-18T12:00:00",
+        "channel": "tiktok",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "postId": 423484839,
+        "uuid": "-3731207601091163105",
+        "dateTime": "2026-11-18T18:00:00",
+        "channel": "youtube",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      },
+      {
+        "url": "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4",
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "postId": 427969354,
+        "uuid": "-7647174116509334899",
+        "dateTime": "2026-11-19T19:00:00",
+        "channel": "youtube",
+        "providerStatus": "PENDING",
+        "state": "draft"
+      }
+    ],
+    "sameHashSameChannelCandidates": [],
+    "interpretation": "An exact matching SHA-256 proves identical downloaded bytes, including across different URLs. Different hashes or unavailable hashes do not clear re-encoded, transformed, or visually identical content. Cross-channel use is recorded separately and is not a same-channel duplicate. Exact SHA matches reused only across distinct channels in the current same-hash groups are cross-channel placements, not same-channel duplicate candidates.",
+    "unresolved": [],
+    "sameHashCrossChannelGroups": [
+      {
+        "sha256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "channels": [
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "tiktok": [
+            {
+              "postId": 422285897,
+              "uuid": "673796377030903265",
+              "dateTime": "2026-11-13T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422285770,
+              "uuid": "-9210583075457839526",
+              "dateTime": "2026-11-13T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "channels": [
+          "facebook",
+          "instagram",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 416121310,
+              "uuid": "8147121371837647826",
+              "dateTime": "2026-11-07T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 416121310,
+              "uuid": "8147121371837647826",
+              "dateTime": "2026-11-07T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 416121297,
+              "uuid": "-2503182895774282094",
+              "dateTime": "2026-11-07T18:30:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 417052556,
+              "uuid": "-5577654293164241841",
+              "dateTime": "2026-11-07T19:30:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 422279805,
+              "uuid": "-2924344703561023385",
+              "dateTime": "2026-11-14T15:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 422279805,
+              "uuid": "-2924344703561023385",
+              "dateTime": "2026-11-14T15:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 422279608,
+              "uuid": "8356246782781639563",
+              "dateTime": "2026-11-14T11:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422279700,
+              "uuid": "8178449842924373712",
+              "dateTime": "2026-11-14T12:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422279920,
+              "uuid": "8229862176301272727",
+              "dateTime": "2026-11-14T16:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "channels": [
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "tiktok": [
+            {
+              "postId": 422277481,
+              "uuid": "7496893774506381155",
+              "dateTime": "2026-11-10T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422276771,
+              "uuid": "2505682137165939640",
+              "dateTime": "2026-11-10T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 423483793,
+              "uuid": "4659816415037836014",
+              "dateTime": "2026-11-18T10:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 423483793,
+              "uuid": "4659816415037836014",
+              "dateTime": "2026-11-18T10:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 423484712,
+              "uuid": "-8339089096074181290",
+              "dateTime": "2026-11-18T11:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 423484773,
+              "uuid": "-8305910546945982140",
+              "dateTime": "2026-11-18T12:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 423484839,
+              "uuid": "-3731207601091163105",
+              "dateTime": "2026-11-18T18:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 422195367,
+              "uuid": "3863915044291300024",
+              "dateTime": "2026-11-11T20:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 422195367,
+              "uuid": "3863915044291300024",
+              "dateTime": "2026-11-11T20:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 427969120,
+              "uuid": "8935974072695279179",
+              "dateTime": "2026-11-15T11:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422198525,
+              "uuid": "-7257455683644011058",
+              "dateTime": "2026-11-11T15:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422199733,
+              "uuid": "-3553911421145298799",
+              "dateTime": "2026-11-11T13:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "channels": [
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "tiktok": [
+            {
+              "postId": 422278624,
+              "uuid": "-3118555118962720263",
+              "dateTime": "2026-11-12T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422278514,
+              "uuid": "-1176313182659524583",
+              "dateTime": "2026-11-12T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "channels": [
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "threads": [
+            {
+              "postId": 422279075,
+              "uuid": "-8797746381899281322",
+              "dateTime": "2026-11-13T11:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422278316,
+              "uuid": "3738748663902192714",
+              "dateTime": "2026-11-11T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422277846,
+              "uuid": "-4605953212411130849",
+              "dateTime": "2026-11-11T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "channels": [
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "tiktok": [
+            {
+              "postId": 422280035,
+              "uuid": "-6748893881700627372",
+              "dateTime": "2026-11-14T18:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422279501,
+              "uuid": "7993315583738791837",
+              "dateTime": "2026-11-14T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 422277608,
+              "uuid": "-6647584058486602683",
+              "dateTime": "2026-11-11T09:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 422277608,
+              "uuid": "-6647584058486602683",
+              "dateTime": "2026-11-11T09:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 422277980,
+              "uuid": "1675642812797436191",
+              "dateTime": "2026-11-11T11:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422278084,
+              "uuid": "2157228003212543673",
+              "dateTime": "2026-11-11T12:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422278200,
+              "uuid": "-6835976662518839807",
+              "dateTime": "2026-11-11T16:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 422280698,
+              "uuid": "-2435184774283179178",
+              "dateTime": "2026-11-12T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 422280698,
+              "uuid": "-2435184774283179178",
+              "dateTime": "2026-11-12T10:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 422280785,
+              "uuid": "5102918478982235752",
+              "dateTime": "2026-11-12T11:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422280875,
+              "uuid": "-7768329881687535680",
+              "dateTime": "2026-11-12T12:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422280988,
+              "uuid": "5681760339256165072",
+              "dateTime": "2026-11-12T16:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "channels": [
+          "facebook",
+          "instagram",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 422276987,
+              "uuid": "2479551942795872090",
+              "dateTime": "2026-11-10T12:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 422276987,
+              "uuid": "2479551942795872090",
+              "dateTime": "2026-11-10T12:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 422277108,
+              "uuid": "-7893674518673470896",
+              "dateTime": "2026-11-10T14:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 422277227,
+              "uuid": "-4166141021700799850",
+              "dateTime": "2026-11-10T16:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "channels": [
+          "facebook",
+          "instagram",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 427969232,
+              "uuid": "6680239273933357186",
+              "dateTime": "2026-11-16T19:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 427969190,
+              "uuid": "4156060813550767248",
+              "dateTime": "2026-11-16T19:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 427969295,
+              "uuid": "3614365779669041576",
+              "dateTime": "2026-11-17T19:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 427969354,
+              "uuid": "-7647174116509334899",
+              "dateTime": "2026-11-19T19:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "channels": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 427286519,
+              "uuid": "3963843144054620883",
+              "dateTime": "2026-11-13T20:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 427286519,
+              "uuid": "3963843144054620883",
+              "dateTime": "2026-11-13T20:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+            }
+          ],
+          "threads": [
+            {
+              "postId": 422280612,
+              "uuid": "6352982241777305829",
+              "dateTime": "2026-11-10T11:00:00",
+              "state": "published",
+              "providerStatus": "PUBLISHED",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 426613082,
+              "uuid": "2172266762404316928",
+              "dateTime": "2026-11-13T15:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 426613132,
+              "uuid": "-7002936161864562103",
+              "dateTime": "2026-11-13T13:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+            }
+          ]
+        }
+      },
+      {
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "channels": [
+          "facebook",
+          "instagram",
+          "tiktok",
+          "youtube"
+        ],
+        "placementsByChannel": {
+          "facebook": [
+            {
+              "postId": 426612259,
+              "uuid": "1744402171830094170",
+              "dateTime": "2026-11-13T09:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+            }
+          ],
+          "instagram": [
+            {
+              "postId": 426612259,
+              "uuid": "1744402171830094170",
+              "dateTime": "2026-11-13T09:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+            }
+          ],
+          "tiktok": [
+            {
+              "postId": 426613048,
+              "uuid": "5647388074617226143",
+              "dateTime": "2026-11-13T12:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+            }
+          ],
+          "youtube": [
+            {
+              "postId": 426613069,
+              "uuid": "-4472725258033347244",
+              "dateTime": "2026-11-13T16:00:00",
+              "state": "draft",
+              "providerStatus": "PENDING",
+              "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "perceptualAudit": {
+    "audit": "R213 bounded read-only video perceptual fingerprint audit",
+    "source": {
+      "dedupInput": "/tmp/luxe-social-20261114-r213/dedup-input.json",
+      "dedupInputSha256": "74791f6a926f8a47012cc27f9e263b56c2e3366b8299da2e4cc5aad95a54d0fc",
+      "exactHashReport": "/tmp/luxe-social-20261114-r213/hash-audit.json",
+      "exactHashReportSha256": "f123e70b67ad963dfdc5ed94df6c7ec05c88c283825833c1650e1b844e9d28f2",
+      "brandId": 6227837,
+      "scope": "2026-11-07/2026-11-28 EuropeZurich; beyondscopeunknown"
+    },
+    "network": {
+      "representativesRequested": 21,
+      "uniqueHashesExpected": 21,
+      "verifiedDownloads": 21,
+      "bodyBytesDownloaded": 59258075,
+      "capBytes": 60000000,
+      "perFileCapBytes": 20000000,
+      "retries": 0,
+      "concurrency": 1,
+      "stoppedAtHTTP": null,
+      "mediaRetained": false
+    },
+    "featureMethod": {
+      "ffprobe": "duration, codec, dimensions, average frame rate",
+      "ffmpegSampling": "fps=1; full frame and centered 80% crop; grayscale 32x32; normalized absolute pixel error and 64-bit dHash",
+      "alignment": "minimum average error over integer offsets -2 to +2 seconds",
+      "contactSheets": {
+        "directory": "/tmp/luxe-social-20261114-r213/contact-sheets",
+        "framesPerSheet": "up to 8 evenly sampled frames across each clip",
+        "format": "JPG grayscale 660x196 max"
+      },
+      "contactSheetCount": 21,
+      "interpretation": "Fingerprint rankings are triage only, not proof of identical creative or duplicate status. Similar product/scene templates can score close; encoding, edits, crop, overlays, timing, and platform transforms can score apart."
+    },
+    "sameChannelDifferentSHA": {
+      "pairsCompared": 210,
+      "topNearCandidates": [
+        {
+          "sha256A": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.03423,
+            "centerCropNMAE": 0.05781,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.20703,
+            "combinedNMAE": 0.04602
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.03533,
+            "centerCropNMAE": 0.05808,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.17383,
+            "combinedNMAE": 0.04671
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422279501,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T10:00:00"
+            },
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            },
+            {
+              "postId": 422277227,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T16:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.03747,
+            "centerCropNMAE": 0.06077,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.15234,
+            "combinedNMAE": 0.04912
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422276771,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            },
+            {
+              "postId": 422277481,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279501,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T10:00:00"
+            },
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sha256B": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.03959,
+            "centerCropNMAE": 0.06315,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.19336,
+            "combinedNMAE": 0.05137
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+          "placementsA": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422278624,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04059,
+            "centerCropNMAE": 0.06684,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.18555,
+            "combinedNMAE": 0.05371
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04109,
+            "centerCropNMAE": 0.06872,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.17383,
+            "combinedNMAE": 0.0549
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422278514,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T10:00:00"
+            },
+            {
+              "postId": 422278624,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279501,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T10:00:00"
+            },
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04247,
+            "centerCropNMAE": 0.06884,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.13477,
+            "combinedNMAE": 0.05565
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422277722,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04293,
+            "centerCropNMAE": 0.07,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.19922,
+            "combinedNMAE": 0.05647
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422277722,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04371,
+            "centerCropNMAE": 0.07005,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.16211,
+            "combinedNMAE": 0.05688
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422276771,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            },
+            {
+              "postId": 422277481,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            },
+            {
+              "postId": 422277227,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T16:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+          "sha256B": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04349,
+            "centerCropNMAE": 0.07118,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.19531,
+            "combinedNMAE": 0.05733
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "placementsA": [
+            {
+              "postId": 422277481,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+          "sha256B": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04611,
+            "centerCropNMAE": 0.07346,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.1582,
+            "combinedNMAE": 0.05979
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+          "placementsA": [
+            {
+              "postId": 422276771,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            },
+            {
+              "postId": 422277481,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422278514,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T10:00:00"
+            },
+            {
+              "postId": 422278624,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+          "sha256B": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04612,
+            "centerCropNMAE": 0.07549,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.14062,
+            "combinedNMAE": 0.0608
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+          "placementsA": [
+            {
+              "postId": 422279700,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T12:00:00"
+            },
+            {
+              "postId": 422279920,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T16:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422276771,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            },
+            {
+              "postId": 422277481,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sha256B": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04616,
+            "centerCropNMAE": 0.07584,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.20703,
+            "combinedNMAE": 0.061
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+          "placementsA": [
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422276869,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sha256B": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04645,
+            "centerCropNMAE": 0.07615,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.11328,
+            "combinedNMAE": 0.0613
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+          "placementsA": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277722,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T09:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04768,
+            "centerCropNMAE": 0.07863,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.09766,
+            "combinedNMAE": 0.06316
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422295156,
+              "channel": "tiktok",
+              "state": "active_pending",
+              "status": "PENDING",
+              "dateTime": "2026-11-15T12:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04991,
+            "centerCropNMAE": 0.08036,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.16406,
+            "combinedNMAE": 0.06513
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422277846,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T10:00:00"
+            },
+            {
+              "postId": 422278316,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279501,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T10:00:00"
+            },
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sha256B": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04965,
+            "centerCropNMAE": 0.08112,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.09375,
+            "combinedNMAE": 0.06539
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+          "placementsA": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422276869,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+          "sha256B": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.04914,
+            "centerCropNMAE": 0.08341,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.07422,
+            "combinedNMAE": 0.06628
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+          "placementsA": [
+            {
+              "postId": 422279700,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T12:00:00"
+            },
+            {
+              "postId": 422279920,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T16:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279501,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T10:00:00"
+            },
+            {
+              "postId": 422280035,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T18:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+          "sha256B": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05104,
+            "centerCropNMAE": 0.08325,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.14648,
+            "combinedNMAE": 0.06715
+          },
+          "urlA": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866",
+          "urlB": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+          "placementsA": [
+            {
+              "postId": 422285897,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-13T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277722,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T09:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05186,
+            "centerCropNMAE": 0.08445,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.14648,
+            "combinedNMAE": 0.06815
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422276869,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+          "sha256B": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05185,
+            "centerCropNMAE": 0.08469,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.05859,
+            "combinedNMAE": 0.06827
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+          "placementsA": [
+            {
+              "postId": 422277722,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T09:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422276869,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05396,
+            "centerCropNMAE": 0.08591,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.15625,
+            "combinedNMAE": 0.06994
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422278514,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T10:00:00"
+            },
+            {
+              "postId": 422278624,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-12T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            },
+            {
+              "postId": 422277227,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T16:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+          "sha256B": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05319,
+            "centerCropNMAE": 0.08709,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.20312,
+            "combinedNMAE": 0.07014
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+          "placementsA": [
+            {
+              "postId": 422295156,
+              "channel": "tiktok",
+              "state": "active_pending",
+              "status": "PENDING",
+              "dateTime": "2026-11-15T12:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422276869,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T10:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+          "sha256B": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+          "sharedChannels": [
+            "tiktok",
+            "youtube"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05456,
+            "centerCropNMAE": 0.08667,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.20508,
+            "combinedNMAE": 0.07061
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+          "placementsA": [
+            {
+              "postId": 422277846,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T10:00:00"
+            },
+            {
+              "postId": 422278316,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-11T18:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422277108,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T14:00:00"
+            },
+            {
+              "postId": 422277227,
+              "channel": "youtube",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-10T16:00:00"
+            }
+          ]
+        },
+        {
+          "sha256A": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+          "sha256B": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+          "sharedChannels": [
+            "tiktok"
+          ],
+          "score": {
+            "offsetSeconds": 0,
+            "alignedFramePairs": 8,
+            "fullFrameNMAE": 0.05276,
+            "centerCropNMAE": 0.08917,
+            "fullFrameDHashDistance": 0.0,
+            "centerCropDHashDistance": 0.17188,
+            "combinedNMAE": 0.07097
+          },
+          "urlA": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+          "urlB": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+          "placementsA": [
+            {
+              "postId": 422279700,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T12:00:00"
+            }
+          ],
+          "placementsB": [
+            {
+              "postId": 422279394,
+              "channel": "tiktok",
+              "state": "published",
+              "status": "PUBLISHED",
+              "dateTime": "2026-11-14T09:00:00"
+            }
+          ]
+        }
+      ],
+      "candidateLimit": 25,
+      "sameHashSameChannelCandidatesFromExactAudit": 0,
+      "distinctHashPairsCompared": 210,
+      "pairChannelCombinations": 426,
+      "scoreLimitNote": "The ranking helps prioritize frame review. At 1 fps and 32x32 it may miss shot-level or heavily edited re-encodes; low error can arise from common ad templates, and high error can arise from edits/crops. Human source/master identity review remains required."
+    },
+    "urlResults": [
+      {
+        "sha256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866",
+        "expectedBytes": 761932,
+        "httpStatus": 200,
+        "bytesDownloaded": 761932,
+        "verifiedSHA256": "31c58684b96f507045ce5770cb896b6d017cdfae398bb506cd6d5540c569a544",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 761932,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/31c58684b96f5070.jpg",
+        "featureResult": "ok",
+        "contentLength": 761932,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4",
+        "expectedBytes": 10308531,
+        "httpStatus": 200,
+        "bytesDownloaded": 10308531,
+        "verifiedSHA256": "343893de2eed371c7e06d9c5fb0347b3a96cc59451d0cf71adb9aa2c8ccfd2c7",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 6.36,
+          "containerBytes": 10308531,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 6,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/343893de2eed371c.jpg",
+        "featureResult": "ok",
+        "contentLength": 10308531,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "sha256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "url": "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4",
+        "expectedBytes": 469069,
+        "httpStatus": 200,
+        "bytesDownloaded": 469069,
+        "verifiedSHA256": "34c1261feb77b5271d0f15145abec13c59dcf3844fc2fb9330e3b37a3d7f57e4",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 469069,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/34c1261feb77b527.jpg",
+        "featureResult": "ok",
+        "contentLength": 469069,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "38104560dae74c60ece4e5badd897f5c64a86e8ffa4bedbdb53a323014adec94",
+        "url": "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4",
+        "expectedBytes": 773525,
+        "httpStatus": 200,
+        "bytesDownloaded": 773525,
+        "verifiedSHA256": "38104560dae74c60ece4e5badd897f5c64a86e8ffa4bedbdb53a323014adec94",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 773525,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/38104560dae74c60.jpg",
+        "featureResult": "ok",
+        "contentLength": 773525,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "url": "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4",
+        "expectedBytes": 730973,
+        "httpStatus": 200,
+        "bytesDownloaded": 730973,
+        "verifiedSHA256": "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 730973,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/3c2010855d7998a5.jpg",
+        "featureResult": "ok",
+        "contentLength": 730973,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+        "url": "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4",
+        "expectedBytes": 797761,
+        "httpStatus": 200,
+        "bytesDownloaded": 797761,
+        "verifiedSHA256": "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 797761,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/41015ae14c2cbb96.jpg",
+        "featureResult": "ok",
+        "contentLength": 797761,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4",
+        "expectedBytes": 6156950,
+        "httpStatus": 200,
+        "bytesDownloaded": 6156950,
+        "verifiedSHA256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 10.6,
+          "containerBytes": 6156950,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 11,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/4684d4e7860e880d.jpg",
+        "featureResult": "ok",
+        "contentLength": 6156950,
+        "contactFrameSeconds": [
+          0,
+          1,
+          3,
+          4,
+          6,
+          7,
+          9,
+          10
+        ]
+      },
+      {
+        "sha256": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+        "url": "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4",
+        "expectedBytes": 525897,
+        "httpStatus": 200,
+        "bytesDownloaded": 525897,
+        "verifiedSHA256": "613271d16f02e91c1dc85c79fbed31957ca128d56d2543149bbaec36a3282139",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 525897,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/613271d16f02e91c.jpg",
+        "featureResult": "ok",
+        "contentLength": 525897,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4",
+        "expectedBytes": 9139031,
+        "httpStatus": 200,
+        "bytesDownloaded": 9139031,
+        "verifiedSHA256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 12.0,
+          "containerBytes": 9139031,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 12,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/746cbd8a22969e26.jpg",
+        "featureResult": "ok",
+        "contentLength": 9139031,
+        "contactFrameSeconds": [
+          0,
+          2,
+          3,
+          5,
+          6,
+          8,
+          9,
+          11
+        ]
+      },
+      {
+        "sha256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "url": "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4",
+        "expectedBytes": 699928,
+        "httpStatus": 200,
+        "bytesDownloaded": 699928,
+        "verifiedSHA256": "82db8060e63b04a626ca7848bceb881ffc531187bd49800cc82000a561a33a52",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 699928,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/82db8060e63b04a6.jpg",
+        "featureResult": "ok",
+        "contentLength": 699928,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "url": "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4",
+        "expectedBytes": 1708436,
+        "httpStatus": 200,
+        "bytesDownloaded": 1708436,
+        "verifiedSHA256": "850df4cd206a2a2d3a5e73298b384890e5dc7ec14f57e54a13ffaf5e840371b9",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 1708436,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/850df4cd206a2a2d.jpg",
+        "featureResult": "ok",
+        "contentLength": 1708436,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+        "url": "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4",
+        "expectedBytes": 798736,
+        "httpStatus": 200,
+        "bytesDownloaded": 798736,
+        "verifiedSHA256": "956aec585a284a90471d0eb040b863aea3833858aedeaa3158c5571ba6f771ed",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 798736,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/956aec585a284a90.jpg",
+        "featureResult": "ok",
+        "contentLength": 798736,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "abbeb0fc1c121416e6ba7bd0b2e7e120cdcdaec6f41dc7f4010d0ce6d12768e8",
+        "url": "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4",
+        "expectedBytes": 765297,
+        "httpStatus": 200,
+        "bytesDownloaded": 765297,
+        "verifiedSHA256": "abbeb0fc1c121416e6ba7bd0b2e7e120cdcdaec6f41dc7f4010d0ce6d12768e8",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 765297,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/abbeb0fc1c121416.jpg",
+        "featureResult": "ok",
+        "contentLength": 765297,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "url": "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4",
+        "expectedBytes": 682233,
+        "httpStatus": 200,
+        "bytesDownloaded": 682233,
+        "verifiedSHA256": "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 682233,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/b9921fb1404d6e18.jpg",
+        "featureResult": "ok",
+        "contentLength": 682233,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+        "url": "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4",
+        "expectedBytes": 1488984,
+        "httpStatus": 200,
+        "bytesDownloaded": 1488984,
+        "verifiedSHA256": "d62dad8d3809256e38970ed211f11bfbc741e26a33215195c852505226a82efb",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 1488984,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/d62dad8d3809256e.jpg",
+        "featureResult": "ok",
+        "contentLength": 1488984,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "url": "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4",
+        "expectedBytes": 857813,
+        "httpStatus": 200,
+        "bytesDownloaded": 857813,
+        "verifiedSHA256": "dfb3c4fead944e34c3df7f28820fb20338a15f08e2fcaf3854cc08ceb8380f30",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 11.4,
+          "containerBytes": 857813,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 11,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/dfb3c4fead944e34.jpg",
+        "featureResult": "ok",
+        "contentLength": 857813,
+        "contactFrameSeconds": [
+          0,
+          1,
+          3,
+          4,
+          6,
+          7,
+          9,
+          10
+        ]
+      },
+      {
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+        "expectedBytes": 8035974,
+        "httpStatus": 200,
+        "bytesDownloaded": 8035974,
+        "verifiedSHA256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 9.28,
+          "containerBytes": 8035974,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 9,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/e0b91202c1b338cd.jpg",
+        "featureResult": "ok",
+        "contentLength": 8035974,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "sha256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "url": "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4",
+        "expectedBytes": 567555,
+        "httpStatus": 200,
+        "bytesDownloaded": 567555,
+        "verifiedSHA256": "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 8.0,
+          "containerBytes": 567555,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 8,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/f7150449b2f2f9f5.jpg",
+        "featureResult": "ok",
+        "contentLength": 567555,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4",
+        "expectedBytes": 5535209,
+        "httpStatus": 200,
+        "bytesDownloaded": 5535209,
+        "verifiedSHA256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 18.0,
+          "containerBytes": 5535209,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 18,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/fac2f7679cf633f0.jpg",
+        "featureResult": "ok",
+        "contentLength": 5535209,
+        "contactFrameSeconds": [
+          0,
+          2,
+          5,
+          7,
+          10,
+          12,
+          15,
+          17
+        ]
+      },
+      {
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+        "expectedBytes": 6670409,
+        "httpStatus": 200,
+        "bytesDownloaded": 6670409,
+        "verifiedSHA256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 10.16,
+          "containerBytes": 6670409,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "25/1"
+        },
+        "frameSamples": 10,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/fb633ea57cd8612a.jpg",
+        "featureResult": "ok",
+        "contentLength": 6670409,
+        "contactFrameSeconds": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9
+        ]
+      },
+      {
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4",
+        "expectedBytes": 1783832,
+        "httpStatus": 200,
+        "bytesDownloaded": 1783832,
+        "verifiedSHA256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "downloadResult": "downloaded",
+        "ffprobe": {
+          "durationSeconds": 9.4,
+          "containerBytes": 1783832,
+          "videoCodec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "avgFrameRate": "30/1"
+        },
+        "frameSamples": 9,
+        "contactSheet": "/tmp/luxe-social-20261114-r213/contact-sheets/fd335d43a5657a9a.jpg",
+        "featureResult": "ok",
+        "contentLength": 1783832,
+        "contactFrameSeconds": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ],
+    "unresolvedHashes": [],
+    "conclusion": "No automatic duplicate decision. A low-distance candidate needs human frame/contact-sheet review and master/source identity context. Different URLs or different SHA remain insufficient to declare novel creative.",
+    "humanTriage": {
+      "reviewedContactSheets": [
+        {
+          "sha256Prefix": "41015ae14c2c",
+          "subject": "2026-11-14 TikTok cookie-shaped hair clip"
+        },
+        {
+          "sha256Prefix": "b9921fb1404d",
+          "subject": "2026-11-14 Rennrad toy"
+        },
+        {
+          "sha256Prefix": "f7150449b2f2",
+          "subject": "2026-11-10 JCB digger"
+        },
+        {
+          "sha256Prefix": "3c2010855d79",
+          "subject": "2026-11-10 Roadmax tractor"
+        }
+      ],
+      "reviewedTopRanks": 4,
+      "observation": "These top-ranked different-SHA pairs depict distinct products and distinct product images; no same-film match was apparent. Full-frame scores were unusually close because the portrait ad template/letterboxing is shared. The top-25 observed captions also refer to distinct products; this is a triage finding, not a global duplicate clearance.",
+      "nextReview": "Root can inspect all 21 retained contact sheets in contact-sheets/; no post was classified or changed automatically."
+    }
+  },
+  "rootVisualTriage": {
+    "actuallyInspectedClosestPairContactSheetHashes": [
+      "41015ae14c2cbb96ca06a40f2e613be4c92594e4330e067aef6694f269accfe0",
+      "b9921fb1404d6e18d5d72756f8740486c005ebf756d97e610ee2d3aeb63a422d",
+      "f7150449b2f2f9f51147aa720fd8d3a0959e76c1f444178c4a488f2a20636ed5",
+      "3c2010855d7998a50a701e5a04c9d243b90eb4099043d612fe28d84fcd1614ea"
+    ],
+    "observedSubjects": [
+      "Keks-Haarklammer",
+      "Rennradfigur",
+      "JCB-Bagger",
+      "Roadmax-Traktor"
+    ],
+    "verdict": "Ähnliche Layouts, aber unterschiedliche Produkte und Bilder. Kein Beleg für dasselbe neu codierte Video.",
+    "contactSheetSamplingIsNotFullHumanWatchOfEveryFrame": true
+  },
+  "knownHoldFinalCountercheck": {
+    "knownHoldSource": "R200appendPatch+currentMain4",
+    "r200PatchSha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+    "knownUuids": 15,
+    "freshMatchedHeld": 15,
+    "historicalDate13November": 6,
+    "futureDates14to28": 9,
+    "rows": [
+      {
+        "uuid": "-3731207601091163105",
+        "id": 423484839,
+        "dateTime": "2026-11-18T18:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-4472725258033347244",
+        "id": 426613069,
+        "dateTime": "2026-11-13T16:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "id": 426613132,
+        "dateTime": "2026-11-13T13:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 427969354,
+        "dateTime": "2026-11-19T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "id": 423484773,
+        "dateTime": "2026-11-18T12:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "id": 423484712,
+        "dateTime": "2026-11-18T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "1744402171830094170",
+        "id": 426612259,
+        "dateTime": "2026-11-13T09:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "2172266762404316928",
+        "id": 426613082,
+        "dateTime": "2026-11-13T15:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "id": 427969295,
+        "dateTime": "2026-11-17T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "3963843144054620883",
+        "id": 427286519,
+        "dateTime": "2026-11-13T20:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "id": 427969190,
+        "dateTime": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "4659816415037836014",
+        "id": 423483793,
+        "dateTime": "2026-11-18T10:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "5647388074617226143",
+        "id": 426613048,
+        "dateTime": "2026-11-13T12:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "id": 427969232,
+        "dateTime": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "8935974072695279179",
+        "id": 427969120,
+        "dateTime": "2026-11-15T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      }
+    ],
+    "mainHoldFileStillOnly4": true,
+    "elevenReviewAdditionsNotMain": true,
+    "newHoldsWrites": 0
+  },
+  "limits": [
+    "Nur gelieferte Metricool-Datensätze07.–28.11.; ältere oder direkt auf Plattformen publizierte Inhalte bleiben unbekannt.",
+    "Unterschiedlicher Hash ist kein Neuheitsbeweis; Fingerprint-Ranking und Stichprobe wurden ergänzend genutzt.",
+    "Gleiche Captions von Foto und MP4 können Wiederholungen sein; R197-Kandidaten sind damit nicht pauschal geklärt.",
+    "Kein globales0-Doppelpost-Zertifikat und kein neues Publikationsregister."
+  ],
+  "deletionAttempted": false,
+  "noCommercialMediaUploaded": true
+}

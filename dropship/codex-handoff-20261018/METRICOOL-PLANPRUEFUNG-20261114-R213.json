@@ -1,0 +1,6173 @@
+{
+  "recordedAtUTC": "2026-11-14T17:44:42.186229+00:00",
+  "dateZurich": "2026-11-14",
+  "timezone": "Europe/Zurich",
+  "ownerRequest": "CJ videos analysieren, echte Doppelposts entfernen, neue Videos der anderen Session verwenden, ausreichend weit vorausplanen.",
+  "permission": "Kontrolliertes Metricool-Terminieren ist bereits erlaubt; Bedingungen zu Identität, Produkt, Qualität, Rechten, Tags, Kanal und Verlauf gelten weiterhin.",
+  "identity": {
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland"
+    },
+    "legitimateShopifyReauthenticationByOwnerConfirmed": true
+  },
+  "readScope": {
+    "historyCalendarDates": "2026-11-07/2026-11-13",
+    "planningCalendarDates": "2026-11-14/2026-11-28",
+    "querySizeMaxLocalCalendarDays": 2,
+    "uniqueReturnedObjects": 135,
+    "futureWindowReturnedObjects": 76,
+    "allHistoryAndNativePlatformPostsOutsideMetricool": "unknown_not_exhaustively_read"
+  },
+  "coverage": {
+    "timezone": "Europe/Zurich",
+    "scopeCalendarDates": [
+      "2026-11-14",
+      "2026-11-15",
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-23",
+      "2026-11-24",
+      "2026-11-25",
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28"
+    ],
+    "objects": 76,
+    "draftObjects": 28,
+    "activeOrPublishedObjects": 48,
+    "coverage": {
+      "2026-11-14": {
+        "facebook": 3,
+        "instagram": 3,
+        "tiktok": 3,
+        "youtube": 2,
+        "threads": 1,
+        "pinterest": 1
+      },
+      "2026-11-15": {
+        "instagram": 2,
+        "facebook": 2,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-16": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-17": {
+        "threads": 1,
+        "tiktok": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "pinterest": 1
+      },
+      "2026-11-18": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-19": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-20": {
+        "threads": 1,
+        "tiktok": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "pinterest": 1
+      },
+      "2026-11-21": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-22": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-23": {
+        "threads": 1,
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "2026-11-24": {
+        "threads": 1
+      },
+      "2026-11-25": {},
+      "2026-11-26": {},
+      "2026-11-27": {},
+      "2026-11-28": {}
+    },
+    "uncoveredDates": {
+      "instagram": [
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "facebook": [
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "tiktok": [
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "pinterest": [
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "threads": [
+        "2026-11-15",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "youtube": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ]
+    },
+    "draftsNeverCountedAsCoverage": true,
+    "providerAutoPublishFalseNeverCounted": true,
+    "existingOwnWrites": 0
+  },
+  "knownHolds": {
+    "knownHoldSource": "R200appendPatch+currentMain4",
+    "r200PatchSha256": "690f39f5d4e1a564ea7fc1d55ac1cd3597a3734b6f779614fac2c6cf9512c253",
+    "knownUuids": 15,
+    "freshMatchedHeld": 15,
+    "historicalDate13November": 6,
+    "futureDates14to28": 9,
+    "rows": [
+      {
+        "uuid": "-3731207601091163105",
+        "id": 423484839,
+        "dateTime": "2026-11-18T18:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-4472725258033347244",
+        "id": 426613069,
+        "dateTime": "2026-11-13T16:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "id": 426613132,
+        "dateTime": "2026-11-13T13:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 427969354,
+        "dateTime": "2026-11-19T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "id": 423484773,
+        "dateTime": "2026-11-18T12:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "id": 423484712,
+        "dateTime": "2026-11-18T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "1744402171830094170",
+        "id": 426612259,
+        "dateTime": "2026-11-13T09:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "2172266762404316928",
+        "id": 426613082,
+        "dateTime": "2026-11-13T15:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "id": 427969295,
+        "dateTime": "2026-11-17T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "3963843144054620883",
+        "id": 427286519,
+        "dateTime": "2026-11-13T20:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "id": 427969190,
+        "dateTime": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "4659816415037836014",
+        "id": 423483793,
+        "dateTime": "2026-11-18T10:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "5647388074617226143",
+        "id": 426613048,
+        "dateTime": "2026-11-13T12:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "id": 427969232,
+        "dateTime": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "8935974072695279179",
+        "id": 427969120,
+        "dateTime": "2026-11-15T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      }
+    ],
+    "mainHoldFileStillOnly4": true,
+    "elevenReviewAdditionsNotMain": true,
+    "newHoldsWrites": 0
+  },
+  "existingYoutubeDraftAudiences": [
+    {
+      "uuid": "-4472725258033347244",
+      "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+      "madeForKids": false
+    },
+    {
+      "uuid": "-7002936161864562103",
+      "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+      "madeForKids": false
+    },
+    {
+      "uuid": "-3731207601091163105",
+      "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+      "madeForKids": false
+    },
+    {
+      "uuid": "-7647174116509334899",
+      "title": "Sternenlicht-Projektor im Detail #Shorts",
+      "madeForKids": false
+    }
+  ],
+  "existingDueTiktok1800": {
+    "id": 422280035,
+    "uuid": "-6748893881700627372",
+    "date": {
+      "dateTime": "2026-11-14T18:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "provider": [
+      {
+        "network": "tiktok",
+        "id": "7708074199721512225",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7708074199721512225",
+        "detailedStatus": "Published"
+      }
+    ],
+    "ownPublication": false,
+    "ownWrite": false,
+    "interpretation": "Bestehenden Ablauf als PUBLISHED zurückgelesen; kein eigener Publikationserfolg."
+  },
+  "observations": [
+    {
+      "id": 407889412,
+      "uuid": "-6564064169639197228",
+      "publicationDate": {
+        "dateTime": "2026-11-08T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-10-27T15:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122151902703350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122151902703350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfefwCPCPMy/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/DfefwCPCPMy/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+      ],
+      "textSha256": "2194cd5549081eb9adbb81d663015b632c0355455ab15b491f2419b4aaf5aa4e",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 413266951,
+      "uuid": "-6271192589084504293",
+      "publicationDate": {
+        "dateTime": "2026-11-07T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-01T21:46:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585165201",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585165201",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg"
+      ],
+      "textSha256": "883d0505825784b5af7cd42cf828edaf0d232cb1bdc502eb0d3b0758fec80e1c",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "XXL Hoodie-Decke mit Taschen · Sofaabend-Geschenk",
+          "pinLink": "https://luxestyle.ch/products/xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 413266978,
+      "uuid": "5938318811609320266",
+      "publicationDate": {
+        "dateTime": "2026-11-08T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-01T21:46:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585254525",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585254525",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg"
+      ],
+      "textSha256": "bc0384dbca1bf1d1ebb1031f6ffb015ef2d023cccd6128db0d8407b9c77be3c4",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+          "pinLink": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-hufeisen-schnall-639500?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 414929392,
+      "uuid": "-2612931623723381280",
+      "publicationDate": {
+        "dateTime": "2026-11-07T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T08:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122151676791350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122151676791350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/Dfb7AZuCAtQ/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/Dfb7AZuCAtQ/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+      ],
+      "textSha256": "342a89ab8e1cfba241f96c4c7a5d6b1fe92fb83f81ab9e95e110d09fb563ce06",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415554216,
+      "uuid": "4203543208056408815",
+      "publicationDate": {
+        "dateTime": "2026-11-07T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T18:19:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7705383335169658144",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705383335169658144",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+      ],
+      "textSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415554461,
+      "uuid": "-9010345156192940856",
+      "publicationDate": {
+        "dateTime": "2026-11-08T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T18:19:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7705754377784479008",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705754377784479008",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+      ],
+      "textSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 416121297,
+      "uuid": "-2503182895774282094",
+      "publicationDate": {
+        "dateTime": "2026-11-07T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-04T06:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7705483566045482273",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7705483566045482273",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4"
+      ],
+      "textSha256": "61169efa481458f7a8fb34cdeeda56af4562738ba6063e16fecfa5d128b11ca7",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "LED-Wasser-Speaker",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 416121310,
+      "uuid": "8147121371837647826",
+      "publicationDate": {
+        "dateTime": "2026-11-07T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-04T06:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "908936765536062",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/908936765536062",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/Dfcrxn_GvhT/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/Dfcrxn_GvhT/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+      ],
+      "textSha256": "d8e7292eff8a895e1e3c12e8c794341f89438f9e0aa0e0e2391c531c083638f9",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "LED-Wasser-Speaker"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 417052556,
+      "uuid": "-5577654293164241841",
+      "publicationDate": {
+        "dateTime": "2026-11-07T19:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-04T22:38:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "nPtCEHwHRz0",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/nPtCEHwHRz0",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+      ],
+      "textSha256": "4da9c8a20b03f9600b7baa8504954d989da04380651a28b99b1a16ea84d10024",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "LED-Wasser-Speaker #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "lautsprecher",
+            "ledlicht",
+            "gadgets",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 407893833,
+      "uuid": "-4686288400674371149",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-10-27T15:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152413699350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152413699350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfkaAekDZzD/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/DfkaAekDZzD/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+      ],
+      "textSha256": "19f1c997b0b6c5ebcf3728a1b86158604acee3df485d9c374e3a5cc58f6c52b6",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 414929635,
+      "uuid": "-8720943201794045273",
+      "publicationDate": {
+        "dateTime": "2026-11-09T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T08:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152122969350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152122969350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfhM84LDRo7/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/DfhM84LDRo7/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+      ],
+      "textSha256": "70c9c67eb5093a6c5bf340ef945dcf8fc4cb124092cff29bc28126b7bfd26780",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415033593,
+      "uuid": "-8611238648907481079",
+      "publicationDate": {
+        "dateTime": "2026-11-09T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T10:50:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1158068536959635",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/1158068536959635",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/stories/luxestyle.ch/4026671048136770884",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4026671048136770884",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+      ],
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "STORY"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415035691,
+      "uuid": "37985340483322184",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T10:52:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1702365811464870",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/1702365811464870",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/stories/luxestyle.ch/4027288926552636904",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4027288926552636904",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+      ],
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "STORY"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 421390066,
+      "uuid": "6046957420136514778",
+      "publicationDate": {
+        "dateTime": "2026-11-09T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T06:46:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585334490",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585334490",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg"
+      ],
+      "textSha256": "72f44fdcfe1d1e4dd33c55f7fef9fb3765c25e4ec4924a1bf39c31494b8a3e95",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Plüsch Hochlandrind 25 cm · Wichtelgeschenk",
+          "pinLink": "https://luxestyle.ch/products/plusch-hochlandrind-fga59641?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422276771,
+      "uuid": "2505682137165939640",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "t2GbsFcFWak",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/t2GbsFcFWak",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ],
+      "textSha256": "200d69bc6d981c0caff71e83b6a2f2957bb56b37f394b8fcb77028ddb71977eb",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Wichteln für ein Kind ab 2 Jahren: BRUDER Roadmax Traktor #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "bruder",
+            "traktor",
+            "kinderspielzeug",
+            "weihnachtsgeschenk",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422276869,
+      "uuid": "-8877028874765120990",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706466549053361440",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706466549053361440",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4"
+      ],
+      "textSha256": "c476f84bcfe937384192eba18509d58e9779fcde619815f02cd29d6fd8971c7b",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422276987,
+      "uuid": "2479551942795872090",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1704177608010716",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/1704177608010716",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/Dfjwjw9Co7L/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/Dfjwjw9Co7L/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "textSha256": "456803c7166e88d29120335b30388601df4ff9cce8edf6a44b6f6f8748c634f7",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "JCB Mikrobagger 8010 CTS"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277108,
+      "uuid": "-7893674518673470896",
+      "publicationDate": {
+        "dateTime": "2026-11-10T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706528046089506081",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706528046089506081",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "textSha256": "4aed2025f5eee2da0cf579aae6f044b4e0696453c4291af8756c38fbd8ea0e0b",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277227,
+      "uuid": "-4166141021700799850",
+      "publicationDate": {
+        "dateTime": "2026-11-10T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "OGGwUgaN1Js",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/OGGwUgaN1Js",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "textSha256": "8ef6ac7982bcfb9db206b22ebea185bf19dee9e4ef582a86b253d9bebce50ac0",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Ein Bagger, dessen Aufsatz um 360° schwenkt #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "mikrobagger",
+            "kinderspielzeug",
+            "spielzeug",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277481,
+      "uuid": "7496893774506381155",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706590233550277921",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706590233550277921",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ],
+      "textSha256": "70e423b3666a97268704210a29b1a375462471e97030457c8d63c5488221f445",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "BRUDER ROADMAX Traktor · Nr. 03451",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280612,
+      "uuid": "6352982241777305829",
+      "publicationDate": {
+        "dateTime": "2026-11-10T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "id": "17892773781685854",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfjplRyhIlL",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "textSha256": "1353d597e92dbe6f6f1f36a29c1abc4b43569e8bc249fef637b544f12aeb4fee",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422791380,
+      "uuid": "1201792213285619236",
+      "publicationDate": {
+        "dateTime": "2026-11-10T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T08:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585411436",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585411436",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg"
+      ],
+      "textSha256": "77815cb65fe755c3e8289d302c9a6aefd519318613e63d6793d9bb385f1b33d5",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "BRUDER ROADMAX Traktor · Geschenk für Kinder ab 2",
+          "pinLink": "https://luxestyle.ch/products/bruder-roadmax-traktor-fga03451?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415000163,
+      "uuid": "-4201876028718560102",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T10:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/Dfm3hybik4g/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/Dfm3hybik4g/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8583404517825039536.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12975306260184098837.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2436596064500590019.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11102341631370552592.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-1107893845215096747.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-16562641166621667992.jpeg"
+      ],
+      "textSha256": "ad2d61ba3a9c2b85763516acdca3f5607551a6b1fe89b8a83bc6d21df20b2b23",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415000221,
+      "uuid": "-8822571646587483154",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T10:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152600473350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152600473350792",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-90633665431348684.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2165778225675445795.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8742528706314942075.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8785534367035130029.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11236030041211411187.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13386137609000236981.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11175349090546228427.jpeg"
+      ],
+      "textSha256": "df1851d566c63db531c8717068fba4ddc208289e9a41d567e218c8e53ac2fc3c",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415077082,
+      "uuid": "-8331410252591837975",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T11:33:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1160757549758550",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/1160757549758550",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/stories/luxestyle.ch/4028738486185832383",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4028738486185832383",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-7009072093400135523.jpeg"
+      ],
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "STORY"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 417962546,
+      "uuid": "3294509733200285464",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-05T17:42:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152554969350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152554969350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfmWjVnDWbs/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/DfmWjVnDWbs/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+      ],
+      "textSha256": "b00a9af25b2bdd31e611a4a25cc70373a9406058276697966c4a9a027b2ef72e",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 417962744,
+      "uuid": "-6029234844495164842",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-05T17:43:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "122152805589350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152805589350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/Dfpjy_liBHC/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/Dfpjy_liBHC/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ],
+      "textSha256": "1851d8128f1b065867f6f9837eb70dbaa46bd433ca44bd91fe826ca53a9c3d4c",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422195367,
+      "uuid": "3863915044291300024",
+      "publicationDate": {
+        "dateTime": "2026-11-11T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T19:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1441367000897943",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/1441367000897943",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/DfnMYppDaGx/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/DfnMYppDaGx/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "textSha256": "2e65eae3daee0d0b2b38340fc396d27ca13f51ef8a20308949aa6ffd8db31dcf",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Ewige Rose mit LED-Licht"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422198525,
+      "uuid": "-7257455683644011058",
+      "publicationDate": {
+        "dateTime": "2026-11-11T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T19:04:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706914188664294688",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706914188664294688",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+      ],
+      "textSha256": "01ac3253770830d965cb81e9ab5558727ae9fde1b31d7b48ccf2a96378d2ca43",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Ewige Rose mit LED-Licht",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422199733,
+      "uuid": "-3553911421145298799",
+      "publicationDate": {
+        "dateTime": "2026-11-11T13:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T19:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "FoD_2LfxjCw",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/FoD_2LfxjCw",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "textSha256": "1fc2d4012bd9666eb8231ec8da8ab0708f10a692e341d5ccdaf308c70aa7eea9",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Eine Rose, die leuchtet: LED-Deko im Glas #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "rosenimglas",
+            "hochzeitsdeko",
+            "deko",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277608,
+      "uuid": "-6647584058486602683",
+      "publicationDate": {
+        "dateTime": "2026-11-11T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1020905711027186",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/1020905711027186",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/DfmAeS9Afbe/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/DfmAeS9Afbe/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "textSha256": "e2c175c36fcc72e593f12af15d32437aba62ba4e8490b42b7339e5670b3d74d1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "5 Geschenke bis CHF 30"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277722,
+      "uuid": "6800747654958566068",
+      "publicationDate": {
+        "dateTime": "2026-11-11T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706821431014772001",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706821431014772001",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4"
+      ],
+      "textSha256": "120d2d068d667dcfebcc428480e003991882e394ab7cbbc11cdd2716e56c5fbb",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Elegante Damenuhr in Roségold mit Box",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277846,
+      "uuid": "-4605953212411130849",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "TdL1K__wXak",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/TdL1K__wXak",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "textSha256": "c72cf51bf3d9855ef7a729a4e241870200185048ba38a9ef86dec0eec27f51d8",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Wer hat schon ein Hochlandrind als Kuscheltier? #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "hochlandrind",
+            "kuscheltier",
+            "geschenkidee",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422277980,
+      "uuid": "1675642812797436191",
+      "publicationDate": {
+        "dateTime": "2026-11-11T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "id": "18035912717674223",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfmOQOLhUYv",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "textSha256": "c502a366276c0dd059afa29ff4ab6a0ff958db30fe15b6ef03b86c48462b217d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278084,
+      "uuid": "2157228003212543673",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706868169293434144",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706868169293434144",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "textSha256": "ae8e3fe32d82e6631d2c142ef5ff672cfa12241c5e7703d8eebf94a68b836964",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "11.11.: 5 Geschenke bis CHF 30",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278200,
+      "uuid": "-6835976662518839807",
+      "publicationDate": {
+        "dateTime": "2026-11-11T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:11:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "XfE1-B8iqb8",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/XfE1-B8iqb8",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "textSha256": "949f397d03611bcb2439103b859aa1aa154704b64a719ba1adeb0ee028a0d29a",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "11.11.: 5 Geschenke bis CHF 30 #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "geschenkideen",
+            "wichteln",
+            "geschenkebis30",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278316,
+      "uuid": "3738748663902192714",
+      "publicationDate": {
+        "dateTime": "2026-11-11T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7706960660818775329",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7706960660818775329",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "textSha256": "f850869938454e0f4ecb0078fce0af2d0e0fd428af472d3f448dbcc90c0e5d06",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Hochlandrind · 25 cm",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278407,
+      "uuid": "8215510415468351070",
+      "publicationDate": {
+        "dateTime": "2026-11-12T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707192679620283681",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707192679620283681",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4"
+      ],
+      "textSha256": "01e30351206e96c8f001a6cc605ecf972fd2f50ffe6add407a888131d0dd3888",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278514,
+      "uuid": "-1176313182659524583",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "JjSKvRPiwy4",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/JjSKvRPiwy4",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ],
+      "textSha256": "60899b132819f3612811b614be9085da521eee837a4272a3278e72377a42f2ab",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Adventstisch-Idee: Hirsch-Kerzenhalter aus Eisen #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "kerzenhalter",
+            "weihnachtsdeko",
+            "wichteln",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278624,
+      "uuid": "-3118555118962720263",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707331704163224865",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707331704163224865",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ],
+      "textSha256": "3161b12981ae7ef19e5d01ba14ca0cab4cbd60b4b1e230a51289770fc5721cf3",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Hirsch-Kerzenhalter aus Eisen",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280698,
+      "uuid": "-2435184774283179178",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:14:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1436435851997086",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/1436435851997086",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/DfosgS9Dmrr/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/DfosgS9Dmrr/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "textSha256": "5a4d4c7a316a82cd17b03d009ad26f46cc6047e0137d2046fa87a3aa0b61cf97",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Wasserwellen-Projektionsleuchte"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280785,
+      "uuid": "5102918478982235752",
+      "publicationDate": {
+        "dateTime": "2026-11-12T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:14:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "id": "18143856304618574",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dfoy60ShfpA",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "textSha256": "03393ee5df86b4c3f2ed71586656e84b371568a790ab90da17d4114788d4db8c",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280875,
+      "uuid": "-7768329881687535680",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:14:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707238883997568289",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707238883997568289",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+      ],
+      "textSha256": "56f582ba8801ef4c9ee298845218947538fb6eb9e820af7f71e3d744d1cdf96d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Wasserwellen-Projektionsleuchte",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280988,
+      "uuid": "5681760339256165072",
+      "publicationDate": {
+        "dateTime": "2026-11-12T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:14:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "8ZH31Vrxd5g",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/8ZH31Vrxd5g",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "textSha256": "e2d6d19cc8d40aecebe90170697388e8c0f9b1188784ff2e5b103b1284c7b967",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Wasserwellen aus Licht: So wirkt die Projektionsleuchte #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "nachtlicht",
+            "stimmungslicht",
+            "wohnideen",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422791680,
+      "uuid": "-3417097081304103516",
+      "publicationDate": {
+        "dateTime": "2026-11-11T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T08:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585489934",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585489934",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg"
+      ],
+      "textSha256": "f286a69b451bb997a6b26912ca719e79c271af7453539ec3b26daf5db8080943",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "5 Wichtelgeschenke bis CHF 30",
+          "pinLink": "https://luxestyle.ch/collections/aus-tiktok-und-instagram?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422791720,
+      "uuid": "2095739444122305341",
+      "publicationDate": {
+        "dateTime": "2026-11-12T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T08:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585570374",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585570374",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ],
+      "textSha256": "11e1ed7fd2c3524f2d11750d5a0c0fb48e882591a04e8e87dc84a22a87c09588",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Hirsch-Kerzenhalter aus Eisen · Adventsdeko",
+          "pinLink": "https://luxestyle.ch/products/weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-10-27T15:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152968393350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152968393350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfrgKNZiF-m/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/DfrgKNZiF-m/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "textSha256": "74d641277af6b1033200f732e2a4d23e7c1ca022ac87bdda10e7500ce5f66945",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415081189,
+      "uuid": "3126986420977421943",
+      "publicationDate": {
+        "dateTime": "2026-11-13T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T11:37:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "2328213768002859",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/2328213768002859",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/stories/luxestyle.ch/4029600117769811437",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4029600117769811437",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+      ],
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "STORY"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422278897,
+      "uuid": "4651045624279025767",
+      "publicationDate": {
+        "dateTime": "2026-11-13T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707563517016018209",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707563517016018209",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+      ],
+      "textSha256": "806887d75008def8f34eb5e7d9fd1250aa8b69feeed8516705ca4f0b67eff421",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279075,
+      "uuid": "-8797746381899281322",
+      "publicationDate": {
+        "dateTime": "2026-11-13T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "id": "18182777908431347",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/DfrX0QlxA1x",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "textSha256": "21aa5f035ab3f7cb83840f634f2ca9ac144f58a093eac60af6be1cc820e3e075",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422285770,
+      "uuid": "-9210583075457839526",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:18:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "DDjWSjBNH5c",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/DDjWSjBNH5c",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+      ],
+      "textSha256": "d67f6a3894079c59ca19c79542d20c67255bb715269c99daf838d846feb32864",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "kaiserpinguin",
+            "plüschtier",
+            "geschenkidee",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422285897,
+      "uuid": "673796377030903265",
+      "publicationDate": {
+        "dateTime": "2026-11-13T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:18:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707703142586010912",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707703142586010912",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-text-pinguin-0911.mp4?v=1794251866"
+      ],
+      "textSha256": "501c9af803fd18d1c286d5a25e107e20a3e0d080b11685af67f35b42aa796c83",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Kaiserpinguin 26 cm",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422791764,
+      "uuid": "-2331828084021443536",
+      "publicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T08:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "id": "1111333645585648112",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645585648112",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+      ],
+      "textSha256": "7adba52cb2538f653dd4754fdd234fdd33a38872855ffb2d6244b0c34dbfb9c1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Plüsch Kaiserpinguin 26 cm · ab 3 Jahren",
+          "pinLink": "https://luxestyle.ch/products/plusch-kaiserpinguin-26-cm-fga17842?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426612259,
+      "uuid": "1744402171830094170",
+      "publicationDate": {
+        "dateTime": "2026-11-13T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T08:07:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "textSha256": "40a3ef23a9f40aea2a3305fd619a98c95a5e3e63c35666638842634d8c24a949",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": true
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Kristallspitzen-Set"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426613048,
+      "uuid": "5647388074617226143",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T08:09:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "textSha256": "922d6e5df9798ca83fe2a1f7240c4c86dcd6c84e28758700a4801e4ff9d6fef1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Kristallspitzen-Set",
+          "photoCoverIndex": 0,
+          "isAigc": true
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426613069,
+      "uuid": "-4472725258033347244",
+      "publicationDate": {
+        "dateTime": "2026-11-13T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T08:09:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "textSha256": "dbd6a84cc5cd0e32bc6affcd8d26617dfa581441be48dba52cdbe5798ccebdac",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "kristalle",
+            "kristallspitzen",
+            "naturpur",
+            "geschenkidee",
+            "schweiz",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": true
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426613082,
+      "uuid": "2172266762404316928",
+      "publicationDate": {
+        "dateTime": "2026-11-13T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T08:09:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+      ],
+      "textSha256": "f8904d4c4f08c83e04a023e64c5446209762381d6ceec6c053c30605aef44513",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "3-in-1 Gemüsehobel",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426613132,
+      "uuid": "-7002936161864562103",
+      "publicationDate": {
+        "dateTime": "2026-11-13T13:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T08:09:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "textSha256": "c2aeb6719d19c018fa21dd18728e598ffa487050c2409e497eaba4c69070095c",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "gemuesehobel",
+            "kuechenhelfer",
+            "kochen",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427286519,
+      "uuid": "3963843144054620883",
+      "publicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T19:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "textSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "3-in-1 Gemüsehobel"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-10-27T15:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122153165379350792",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122153165379350792",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/Dft8g1YjeOX/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/p/Dft8g1YjeOX/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ],
+      "textSha256": "ed57608de11ad0e2073f5f94843d23501052ed409f772ed495bf2a8f6686beed",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "publicationDate": {
+        "dateTime": "2026-11-14T19:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-03T12:21:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ],
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "STORY"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 420726136,
+      "uuid": "6199136659928140012",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-08T14:06:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ],
+      "textSha256": "03c57641306fb43e0bb3fc3fbd11c3ce64d3ec9bdf574fc1cb4c997dd5da0bcc",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 420728374,
+      "uuid": "7768651932591999367",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-08T14:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ],
+      "textSha256": "8d24a2d67d6f3ad370ef40a3c9e53163725ef988e109542752644b9e9e477bec",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "publicationDate": {
+        "dateTime": "2026-11-14T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:12:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707934434254802208",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707934434254802208",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+      ],
+      "textSha256": "fabc4983426df8bb3ccca6c15b5326420e7739ec6969826eac2a9fdb92204150",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Haarspange Keks · Wichtelgeschenk",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "JqfSBJEJwEc",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/JqfSBJEJwEc",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "textSha256": "61c0b1b7734418c0e8891c1b7e349df0a9fad37dd8ed4ddba299bf0c8b7b3fe1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Wichtelgeschenk ab 4 Jahren: bworld Rennrad mit Radfahrer #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "rennrad",
+            "radfahrer",
+            "spielzeug",
+            "weihnachtsgeschenk",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "id": "17911234911604477",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dft8ibOJlcL",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "textSha256": "ecb52f6dbaa8b93a7482448a4d1dd6b100d91b0def82a3a6b0d5a7cc94148262",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279700,
+      "uuid": "8178449842924373712",
+      "publicationDate": {
+        "dateTime": "2026-11-14T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7707980998968937760",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707980998968937760",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "textSha256": "f8b5f927339ad3a67bd68d59ffda62848b028c5e8df225063a702c74fac86f65",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Lederarmband mit Hufeisen-Schnalle",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279805,
+      "uuid": "-2924344703561023385",
+      "publicationDate": {
+        "dateTime": "2026-11-14T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "id": "2152756682106461",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/2152756682106461",
+          "detailedStatus": "Published"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/DfuYIc7gPGV/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/DfuYIc7gPGV/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "textSha256": "42eeb7a1521c4357652e26350de581708d664dc3e5b1715c96b4f0f032a88e72",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Lederarmband mit Hufeisen-Schnalle"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422279920,
+      "uuid": "8229862176301272727",
+      "publicationDate": {
+        "dateTime": "2026-11-14T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "id": "0rPdx6l8fhs",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/0rPdx6l8fhs",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "textSha256": "27e4a74fca962cabb2f9ed46604922502205839f081d0d7ea8ba57be9239bb7f",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Wichtelgeschenk für sie: Lederarmband mit Hufeisen-Schnalle #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "lederarmband",
+            "hufeisenarmband",
+            "wichteln",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280035,
+      "uuid": "-6748893881700627372",
+      "publicationDate": {
+        "dateTime": "2026-11-14T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "id": "7708074199721512225",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7708074199721512225",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "textSha256": "c0ff8f88bef3ef06fbf5b6d50a05068857ccaf2bc65a26334bfb9c3d1bf7a2bb",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "bworld Rennrad mit Radfahrer",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422280155,
+      "uuid": "-3833193365444016309",
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ],
+      "textSha256": "4c8846ae47dbaf179bffda760610b86d5a25595fa990f480b1470617f2d5d878",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422295156,
+      "uuid": "-6967517640837021033",
+      "publicationDate": {
+        "dateTime": "2026-11-15T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:26:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ],
+      "textSha256": "0430c85438fc92eaddca91f659ebb47eb5056271ee1397b4c344795c4a852ce4",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 422791801,
+      "uuid": "-3513321668753471647",
+      "publicationDate": {
+        "dateTime": "2026-11-14T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T08:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+      ],
+      "textSha256": "e81d476db687fdf2b5e07b0d0c862a8b9b0a9af72942598566477e33077e8516",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "bworld Rennrad mit Radfahrer · ab 4 Jahren",
+          "pinLink": "https://luxestyle.ch/products/bworld-rennrad-mit-radfahrer-fga063110?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "publicationDate": {
+        "dateTime": "2026-11-15T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T21:07:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+      ],
+      "textSha256": "ffcce11c514ebceee6cde34515f89aaf64e500581fab7cbd82a909b8f977e9f1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+          "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427969120,
+      "uuid": "8935974072695279179",
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "textSha256": "efde29cffb25d34973087f9f92280e06fca1f9aaabf6c292ad1f3fe203d95f9d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424392566,
+      "uuid": "-8080777271331700055",
+      "publicationDate": {
+        "dateTime": "2026-11-16T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+      ],
+      "textSha256": "595043bb83e96c9a64496083717d9385d5dca746230fba7fb899e6b5b4706a85",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424392702,
+      "uuid": "7991040995405613204",
+      "publicationDate": {
+        "dateTime": "2026-11-16T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+      ],
+      "textSha256": "727465e7368e367dd5085fc231b749e2427a5e1c07a74477b6999ae0f6e92381",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424392795,
+      "uuid": "-580082399036486516",
+      "publicationDate": {
+        "dateTime": "2026-11-16T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+      ],
+      "textSha256": "e0c0d3989d22e3075ac878009afefa5c5110ff2f622a9db86b53840554631dfe",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtskugeln beflockt – 9 Stück",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393081,
+      "uuid": "-8863891854936750949",
+      "publicationDate": {
+        "dateTime": "2026-11-16T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+      ],
+      "textSha256": "cdc0e000a666e0ffc31bd7a0c6e359bf82177903a00433a5c277b03dfaa85c9d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+          "pinLink": "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtskugeln-beflockt-9-stuck-625300",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393187,
+      "uuid": "-2055061205905158476",
+      "publicationDate": {
+        "dateTime": "2026-11-17T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+      ],
+      "textSha256": "c9a61509ef4e9057cb9e313708712f36382b2825ea195c06d0c138feaafd7263",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393289,
+      "uuid": "-326770756211684563",
+      "publicationDate": {
+        "dateTime": "2026-11-17T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+      ],
+      "textSha256": "6f7c6d12a7c279ff7aff51fc0c1fd7fe637ae8c11f3e8b2921afb5324436ab06",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Retro Keramik-Kaffeetasse mit Tiermotiv",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393422,
+      "uuid": "8906814597211638530",
+      "publicationDate": {
+        "dateTime": "2026-11-17T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+      ],
+      "textSha256": "6e7ab30c94134ef2f953e7035973a50a0ae3944c4f1e94427fcc76f3e0845cca",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393614,
+      "uuid": "9119250214596987223",
+      "publicationDate": {
+        "dateTime": "2026-11-17T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+      ],
+      "textSha256": "a247614370cc822edfe962fbb4abf7c4b7047642429ad7ec333b8010cf61aea0",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+          "pinLink": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427969190,
+      "uuid": "4156060813550767248",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ],
+      "textSha256": "5b34d11d80d827776559a01798593b6093ac7e231861dbffa6bd6a7203f15dae",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      "masterId": "luxe_sternenprojektor_master_20261018"
+    },
+    {
+      "id": 427969232,
+      "uuid": "6680239273933357186",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ],
+      "textSha256": "e13a947e3d78c3fd1501d308c024d8de51b475492e0e79ab9ab44843783d6435",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Sternenlicht-Projektor im Detail"
+        }
+      },
+      "masterId": "luxe_sternenprojektor_master_20261018"
+    },
+    {
+      "id": 427969295,
+      "uuid": "3614365779669041576",
+      "publicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ],
+      "textSha256": "88eab9f614f99400cd457d2b9d621387c45b544c345cda9bf4f7d682acfcc963",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Sternenlicht im Detail",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": "luxe_sternenprojektor_master_20261018"
+    },
+    {
+      "id": 423483793,
+      "uuid": "4659816415037836014",
+      "publicationDate": {
+        "dateTime": "2026-11-18T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:56:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+      ],
+      "textSha256": "70a15eb9e882edf2626d676a381f387c54dda6eedb636950fa73a825bc698017",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "REEL",
+          "title": "Knoblauch und Zwiebeln per Druck hacken"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 423484712,
+      "uuid": "-8339089096074181290",
+      "publicationDate": {
+        "dateTime": "2026-11-18T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+      ],
+      "textSha256": "3b5942ea45fa93ebe08e250adbecaa906461d716dbb15d3c917f04ff1e06bf11",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 423484773,
+      "uuid": "-8305910546945982140",
+      "publicationDate": {
+        "dateTime": "2026-11-18T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+      ],
+      "textSha256": "c222003edee7aa32a869af251b05d9c2f8f6be9428ab166290bac4db83c15553",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Knoblauch hacken per Druck",
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 423484839,
+      "uuid": "-3731207601091163105",
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+      ],
+      "textSha256": "a78f1a102b153c230e27d6e3f6d9a7e61326d39ef48f5149663b889140be1bab",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "küchengadget",
+            "knoblauch",
+            "kochen",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424393691,
+      "uuid": "-2256568300747601062",
+      "publicationDate": {
+        "dateTime": "2026-11-18T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+      ],
+      "textSha256": "c913dbe147a2ca111da6192bf40e904fc3c3640dd60079e2d8963326f211f143",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725034,
+      "uuid": "5511347900019396585",
+      "publicationDate": {
+        "dateTime": "2026-11-18T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+      ],
+      "textSha256": "b2036b4968fe65b9f5a992c6ae3e578962354da16d8f268146055a56e7535d61",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725162,
+      "uuid": "-4254912497617780595",
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+      ],
+      "textSha256": "ed9e35e99fd317011cb535c442f147ef37db94369fa85886bc91c25958f10323",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtsstrumpf mit Samt-Optik",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725272,
+      "uuid": "-5899965466644493317",
+      "publicationDate": {
+        "dateTime": "2026-11-18T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+      ],
+      "textSha256": "88e8fbdaa5c05da9aeffb48a4f5372b3cddc2d4b19f0a178cdf4e499ade9dca0",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+          "pinLink": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725415,
+      "uuid": "2120727659527094958",
+      "publicationDate": {
+        "dateTime": "2026-11-19T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+      ],
+      "textSha256": "32fb690e1c4e62764ac544ae718e748d8972935f4a6648b82087616d8970643d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725555,
+      "uuid": "4792908094992761420",
+      "publicationDate": {
+        "dateTime": "2026-11-19T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+      ],
+      "textSha256": "6ec3d51d22f0bab13c405d1fa4c3596db60137796fb07689180e1742ada2e2cd",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725709,
+      "uuid": "-1560468010126717309",
+      "publicationDate": {
+        "dateTime": "2026-11-19T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+      ],
+      "textSha256": "6246a80be39c053e0a20f0062ba7fdccc3c78a01f90e3818d50965289f4d04c8",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "LED-Schminkspiegel, wiederaufladbar & tragbar",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425725932,
+      "uuid": "6443070221295305315",
+      "publicationDate": {
+        "dateTime": "2026-11-19T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+      ],
+      "textSha256": "1993fc01907a5ece40d813e83f5675565e0cc4fbe25e5f12541882ea7d76db0f",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+          "pinLink": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_led-schminkspiegel-wiederaufladbar-tragbar-639500",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427969354,
+      "uuid": "-7647174116509334899",
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ],
+      "textSha256": "a30986dfc624d806b0ec85d3ec5097a7e907eb21cebd2b90f0b049d927ff38d6",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "isAiGenerated": false
+        },
+        "youtubeData": {
+          "title": "Sternenlicht-Projektor im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "sternlicht",
+            "lichtmomente",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      "masterId": "luxe_sternenprojektor_master_20261018"
+    },
+    {
+      "id": 425726070,
+      "uuid": "-6491658134482960242",
+      "publicationDate": {
+        "dateTime": "2026-11-20T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+      ],
+      "textSha256": "2de678da0fafa2787d7383d4ff62cb05f0158d82ecb0cd8e922501602db3fca6",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425726186,
+      "uuid": "5095221239706765903",
+      "publicationDate": {
+        "dateTime": "2026-11-20T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+      ],
+      "textSha256": "227a9c412ec7c931c16e690c6b72a02506aa6ccff5c2eb84969315d91b5e6220",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Lichterbaum-Musikbox 10x10x20 cm",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425726329,
+      "uuid": "108318075245381964",
+      "publicationDate": {
+        "dateTime": "2026-11-20T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+      ],
+      "textSha256": "bdbb214f81f8f3a2f3d71bcdd3cae35aa1a3917c75358ec02ef720407c8b9994",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 425726479,
+      "uuid": "-457707186698434580",
+      "publicationDate": {
+        "dateTime": "2026-11-20T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+      ],
+      "textSha256": "fdc627d9f49c8128ad0a62697541040bb3baf808346e83ceea62949cbaaf46ac",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+          "pinLink": "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_lichterbaum-musikbox-10x10x20-cm-604200",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426961960,
+      "uuid": "-325577156053548845",
+      "publicationDate": {
+        "dateTime": "2026-11-21T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_dd164b90-30e9-4b45-9294-d3d22efe2075.jpg?v=1794397799"
+      ],
+      "textSha256": "609ec3bf5a7365d15ccf5c93adc7cb117ecda8b5778cc36e6664416657dba869",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426962036,
+      "uuid": "4464007380148308511",
+      "publicationDate": {
+        "dateTime": "2026-11-21T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+      ],
+      "textSha256": "29e2632baad83d71896db3ce451b68f7642f0dd23002ff8edda366fe23b37b64",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426962130,
+      "uuid": "1244897565051602488",
+      "publicationDate": {
+        "dateTime": "2026-11-21T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_1.jpg?v=1794397766",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_2.jpg?v=1794397773",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_3.jpg?v=1794397781",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_4.jpg?v=1794397788"
+      ],
+      "textSha256": "bd4ca3fa0962475bd4a9c0f25e260c025021363d50e948ea90dfe7e47655c874",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Schmuckkästchen 3D Holzpuzzle",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426962209,
+      "uuid": "1277216616076757571",
+      "publicationDate": {
+        "dateTime": "2026-11-21T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_07eb0b8b-650b-45f7-a428-1d44e9f8cf69.png?v=1794397810"
+      ],
+      "textSha256": "297cb99cc848f0bdbb2819913cf7387d3ec955583bb1328ba5036b4bdac462eb",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+          "pinLink": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_schmuckkastchen-3d-holzpuzzle-611300",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426962312,
+      "uuid": "7447187506709285656",
+      "publicationDate": {
+        "dateTime": "2026-11-22T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_9c250021-1144-44f0-8754-aae799863819.jpg?v=1794416156"
+      ],
+      "textSha256": "f325eaacb72c127f9849ac52d53a7d9dccaa48c4dd081eb74fc6766e3d67d906",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 426962393,
+      "uuid": "2057359447521839535",
+      "publicationDate": {
+        "dateTime": "2026-11-22T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_c826eaba-25ba-4c24-b7d4-7128ba921dc4.jpg?v=1794416132"
+      ],
+      "textSha256": "b4b15e63bf54548468b13b63438b148a4e57a9bfe538867f335073e2e2a45c30",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963228,
+      "uuid": "-5766619704983925146",
+      "publicationDate": {
+        "dateTime": "2026-11-22T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_85d3b77c-b261-4230-9a3f-377da8b64cd8.jpg?v=1794416143"
+      ],
+      "textSha256": "2d0a2321ad22b3f30c769e3f7a6bd476e9f45b5ab1562f5d50271ce7405fc632",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Christbaumdecke mit goldenen Pailletten-Schneeflocken",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963279,
+      "uuid": "-2010279446251812932",
+      "publicationDate": {
+        "dateTime": "2026-11-22T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_8ac59cdd-b763-4ee3-9013-3e975e192bae.png?v=1794416167"
+      ],
+      "textSha256": "a6de130bdde6c837553bbc3804343c989dbae3c484b515e2bbabef885afbf24a",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Christbaumdecke mit goldenen Pailletten-Schneeflocken, 90 cm",
+          "pinLink": "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963339,
+      "uuid": "6021130583306817207",
+      "publicationDate": {
+        "dateTime": "2026-11-23T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_3ca3bb14-434f-4b1e-9495-f1a47232e95c.jpg?v=1794416241"
+      ],
+      "textSha256": "6fce48d6b943be2423b5257de65b48ab6a17e93ac75128f7f927a71a7d2160bf",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963400,
+      "uuid": "86409981883271248",
+      "publicationDate": {
+        "dateTime": "2026-11-23T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_185335a5-4e25-4b64-aa36-031c7d2668e5.jpg?v=1794416176",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_05bcf274-5cf2-4bc6-9397-7c7a8ca8becf.jpg?v=1794416184",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_552ec958-eb0e-4bd3-b0e0-1f32a1bf580f.jpg?v=1794416191",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_dc9e630e-8f29-4756-a45f-d179a24f60c8.jpg?v=1794416198"
+      ],
+      "textSha256": "486119c5ece9fc6b86979abd04c85d9bea29e3659126c30614def5e84e15def9",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963443,
+      "uuid": "7920135771193035363",
+      "publicationDate": {
+        "dateTime": "2026-11-23T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_3dd56ced-00bf-4391-8b38-2d6b9c0c5f01.jpg?v=1794416208",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_ff1e0c5a-aa7a-4920-9982-db0a066e8460.jpg?v=1794416215",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d303c778-8f54-41f7-a630-8789ff1b333a.jpg?v=1794416223",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4_359f7fbf-4709-4633-b0fc-5503bdf9979f.jpg?v=1794416231"
+      ],
+      "textSha256": "74bf4e197c8fd69f6c88b0087008ba876d443bf51351905d26def682b210d361",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963505,
+      "uuid": "4778381096143572123",
+      "publicationDate": {
+        "dateTime": "2026-11-23T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_2ea2bcf4-b782-406e-a697-83e23e05c0cc.png?v=1794416251"
+      ],
+      "textSha256": "a5a578e2c8ea644715fb4679829f929af2db27ea7e4b0a6ffcf01aa1d510a380",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Weihnachtlicher Stuhlbezug aus Fleece: Schneemann, Elch oder Weihnachtsmann",
+          "pinLink": "https://luxestyle.ch/products/weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100?variant=67844134928775&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424574821,
+      "uuid": "8860603444619136695",
+      "publicationDate": {
+        "dateTime": "2026-11-24T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:29:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15f06e36-ceb9-490c-8e70-f58bbfc757ba.jpg?v=1794410959",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_fa5bf103-4f17-45ca-9b08-a666f6d95fda.jpg?v=1794410967",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_a252031f-f965-431d-971f-5ec593ffae4c.jpg?v=1794410974",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_2034ed00-fc23-454c-a68b-0080f9181fd5.jpg?v=1794410982"
+      ],
+      "textSha256": "678032c742923347b05236225da77b88d9fc96711c1802830f059eddc1ee0622",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424575402,
+      "uuid": "-8683217346672965369",
+      "publicationDate": {
+        "dateTime": "2026-11-24T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_db79cb0a-7382-40da-bd1d-1d8b7deecad9.jpg?v=1794410992",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_b18d0568-64ee-4db9-8ce3-caab753115dc.jpg?v=1794410999",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a0fdb9b9-b1ae-4ab6-8f5a-6d1c146ac71e.jpg?v=1794411007",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4_0905fe68-5797-408a-a6a1-5c40167d6669.jpg?v=1794411015"
+      ],
+      "textSha256": "02cd9cd92f2550ffbda1bb28e5702d548f06b49578eb5de7ca6c0108f8ecd0aa",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtsbaum-Anhänger Alpaka-Set",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424575963,
+      "uuid": "-276288314981989029",
+      "publicationDate": {
+        "dateTime": "2026-11-24T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_03308292-6355-4b22-894e-e1ec90714b7a.png?v=1794411036"
+      ],
+      "textSha256": "afe3dfbe7c30b53b51d25c7dbc4f5f89c22b0d8c8b93ce5f2a9508b265aa629a",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Alpaka-Anhänger für den Weihnachtsbaum, Set mit 4 Stück",
+          "pinLink": "https://luxestyle.ch/products/weihnachtsbaum-anhanger-alpaka-set-617100?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_weihnachtsbaum-anhanger-alpaka-set-617100",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424680965,
+      "uuid": "-269455241548050534",
+      "publicationDate": {
+        "dateTime": "2026-11-25T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_aa55130f-ece7-4e50-afd1-6f260fcc389c.jpg?v=1794416261",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_689bac80-cbc9-4322-9a36-0d126b0249b5.jpg?v=1794416268",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_eba5f877-29f3-4713-b28d-3987ff096f98.jpg?v=1794416275",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_87e3a884-4ba8-498f-9847-dd737dbf1d2e.jpg?v=1794416282"
+      ],
+      "textSha256": "6d030bf182727b52165cfd8cc6df5f5be083498d04956357d0b6a0b347c3b183",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424681529,
+      "uuid": "-9215954918513619180",
+      "publicationDate": {
+        "dateTime": "2026-11-25T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_0065766e-0fc4-4234-b53e-27a020951846.jpg?v=1794416292",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_6fec15ef-e2a8-464e-bbfa-3655266f305a.jpg?v=1794416300",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_739c9695-8be9-4865-a7b3-1e6d87d5fe1b.jpg?v=1794416307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4_70563280-64b5-45f5-abbc-e4171ff48d3a.jpg?v=1794416314"
+      ],
+      "textSha256": "360f73759edb208844befc4af3be10b88041ad6994c493376824bb6733955422",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Kartenetui aus Aluminium",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424681696,
+      "uuid": "5841040031029612394",
+      "publicationDate": {
+        "dateTime": "2026-11-25T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_1df9f62e-5be9-45cb-9c09-1686eb5a5d43.jpg?v=1794416324"
+      ],
+      "textSha256": "dd76817f87d6a7c0350078c7da74433b7b5763aeaaf938edfc7e50bcb5d47697",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424681868,
+      "uuid": "-3377774544048468147",
+      "publicationDate": {
+        "dateTime": "2026-11-25T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_9bf03d0a-5b73-4a62-9757-e4058028302a.png?v=1794416335"
+      ],
+      "textSha256": "5da4876ba5a401135987d4dfce1f89bacc2627a7911a833aec3c05c8247d027d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Kartenetui aus Aluminium in fünf Farben: Rot, Blau, Schwarz, Dunkelgrau, Silber",
+          "pinLink": "https://luxestyle.ch/products/kartenetui-aus-aluminium-618500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_kartenetui-aus-aluminium-618500",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 427963563,
+      "uuid": "-9063222304088897978",
+      "publicationDate": {
+        "dateTime": "2026-11-24T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_0c42e2b6-0313-4417-a4dd-b52d27fe0737.jpg?v=1794411025"
+      ],
+      "textSha256": "2e08ed5bb6510147d12520b83bdd20c0d69bba7f72e50e846d6df75b166eee6f",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424576529,
+      "uuid": "-1964548612124357329",
+      "publicationDate": {
+        "dateTime": "2026-11-27T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_d6995f7d-5fad-4d0b-a63a-9087baaea369.jpg?v=1794411045",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_6a59ce58-7954-4261-be4f-f423c0e08eb3.jpg?v=1794411053",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_11618924-07a9-4582-83de-95c519a33a17.jpg?v=1794411060",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_4b267c21-64b0-4b64-8c04-a08c8e686629.jpg?v=1794411067"
+      ],
+      "textSha256": "005fa9bd7549f272b21e0aadf3245dcf9432ff1ba32d750eae8af345bd5e4623",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424577140,
+      "uuid": "-7023019740351411624",
+      "publicationDate": {
+        "dateTime": "2026-11-27T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_60768b5d-99fb-4fb1-b4a0-c48932f89cd1.jpg?v=1794411077",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0275319a-7f26-4c25-bce0-864942a65eb5.jpg?v=1794411085",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a1c1f908-973d-4ce0-96b7-860ba24e7e47.jpg?v=1794411092",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4_89b5ee0e-08d2-4220-8aaf-39233ef0fa0b.jpg?v=1794411099"
+      ],
+      "textSha256": "c84485dfdf4582022ca09713e285259fb2040420e608622593c348b6d41b7981",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachts-Plüschfiguren im 5er-Set",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424577428,
+      "uuid": "-5212304975889021002",
+      "publicationDate": {
+        "dateTime": "2026-11-27T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:31:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b07ce197-1b42-4fac-8f20-6505383e810f.jpg?v=1794411110"
+      ],
+      "textSha256": "020f644b1b768ecda67fefaded8fa05a7a86cc669ca8b102d79b332ac467590d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424577618,
+      "uuid": "8954948747534288111",
+      "publicationDate": {
+        "dateTime": "2026-11-27T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T16:32:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a0041754-fa17-4ef9-baeb-d40369e09095.png?v=1794411120"
+      ],
+      "textSha256": "6fe0d783353edbf70c8809fc742749e3cc6dd4650720ce6c2c458e27ed46e806",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Weihnachts-Plüschfiguren im 5er-Set: Wichtel aus Stoff zum Aufhängen",
+          "pinLink": "https://luxestyle.ch/products/weihnachts-pluschfiguren-5er-set-617400?variant=67843732210055&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_weihnachts-pluschfiguren-5er-set-617400",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424682135,
+      "uuid": "-83127074450160799",
+      "publicationDate": {
+        "dateTime": "2026-11-26T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_82cfcfd6-86d2-4c23-8133-4394fed0eabb.jpg?v=1794416343",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_5d0be8f9-6520-45de-9f41-4e439935a317.jpg?v=1794416348"
+      ],
+      "textSha256": "cbe1101d7c232ac6cd215b7fa009055f66c884bb6a811465af467061da31477e",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424682347,
+      "uuid": "-300031388490184714",
+      "publicationDate": {
+        "dateTime": "2026-11-26T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_455b5510-250b-44a7-bc9e-d02f11e447fc.jpg?v=1794416358",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_6268d5e5-5959-4179-810c-feb1b6aa8c25.jpg?v=1794416365"
+      ],
+      "textSha256": "4d71d673fe44687329fbace1fbca85dfc4bcb317a502f120b417e2d48216a9f7",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Kaffeebecher Edelstahl",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424682498,
+      "uuid": "1954975972148464372",
+      "publicationDate": {
+        "dateTime": "2026-11-26T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_f5eca50f-78ea-4b73-b4ce-99a72ffbe032.jpg?v=1794416372"
+      ],
+      "textSha256": "498959bd6910b2244cfa8e9aa9c3891407af9f96e8ab3f72e12343ff76d8635e",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424682696,
+      "uuid": "-1468535623523548454",
+      "publicationDate": {
+        "dateTime": "2026-11-26T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T17:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_b323c937-2880-4dd3-92e6-1a4b772bf94f.png?v=1794416385"
+      ],
+      "textSha256": "4ce7c9470ad53dfe3a57c2a9eb793ae72ac9f01f4802bbec1f626de6b748c2b2",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Kaffeebecher aus Edelstahl, 300 ml, ohne Henkel",
+          "pinLink": "https://luxestyle.ch/products/kaffeebecher-edelstahl-607200?variant=67670514467207&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_kaffeebecher-edelstahl-607200",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424683188,
+      "uuid": "-2282068295365802712",
+      "publicationDate": {
+        "dateTime": "2026-11-28T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_e8b2b5fe-cda0-4101-a5d3-387a129b9473.jpg?v=1794416395",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_fb666bae-37b0-4ed0-89a0-f9aaa89d6dda.jpg?v=1794416404",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_05c45532-8460-4941-873e-b80f513ca670.jpg?v=1794416414",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_64fd0467-0ca8-46af-9e34-6d4fe10f8359.jpg?v=1794416421"
+      ],
+      "textSha256": "63e9388e7dc9afc05c95404e072b560225824701b70ba18221c3455736cc811d",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "facebookData": {
+          "type": "POST"
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424683849,
+      "uuid": "-4022261660474847401",
+      "publicationDate": {
+        "dateTime": "2026-11-28T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T18:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_61342842-0eb4-4694-8890-2e5579900abc.jpg?v=1794416442",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_baa6cb42-66b3-47c3-b590-65db04299458.jpg?v=1794416449",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_7b0c4844-0450-49fe-8b85-25fb7c7093b7.jpg?v=1794416457",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4_9ace3c1c-8395-42f4-974f-33b03fcd60f6.jpg?v=1794416464"
+      ],
+      "textSha256": "42cfa0bd28be9a57460d41a104197ad4dc2cf53926e8e1efb6306195c63d42d1",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtsgirlande mit Zapfen und Schleife",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424684295,
+      "uuid": "-7257587017558111869",
+      "publicationDate": {
+        "dateTime": "2026-11-28T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T18:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_5fbfcecf-251c-45d9-914b-ecd4270a0b38.jpg?v=1794416480"
+      ],
+      "textSha256": "dfafa884b8dd442eb408c0be1ca013c6a7f06c3546a73fbf8813db417ab03801",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      "masterId": null
+    },
+    {
+      "id": 424684564,
+      "uuid": "-2369369075505934881",
+      "publicationDate": {
+        "dateTime": "2026-11-28T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T18:01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providersAsDelivered": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_68d44093-8a03-4f51-8001-0aa662681972.png?v=1794416512"
+      ],
+      "textSha256": "59cb50f82aef3e07a6fc071af16ffa8b52c5b2ecd6c976064216540e11231422",
+      "perProviderFlags": {
+        "instagramData": {
+          "autoPublish": false,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Weihnachtsgirlande mit Zapfen, roten Beeren und Schleifen: Warmlicht, Farblicht oder ohne Licht",
+          "pinLink": "https://luxestyle.ch/products/weihnachts-rattan-girlande-mit-zapfen-und-schl-616100?variant=67738939621767&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_weihnachts-rattan-girlande-mit-zapfen-und-schl-616100",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      "masterId": null
+    }
+  ],
+  "newScheduledPosts": 0,
+  "deletedPosts": 0,
+  "updatedPosts": 0,
+  "reasonNoDeletion": "Kein identisches Video doppelt auf demselben Kanal gefunden; nahe unterschiedliche Hashes sind nach Stichprobe unterschiedliche Produkte. Keine eindeutige Dublette für einen Löschaufruf.",
+  "notADurableMasterPublicationLedger": true,
+  "publicationRegisterState": "unknown_not_empty_not_initialized_or_reset",
+  "newDailyMetricsFlowsOrdersOrRenders": 0,
+  "newAutomationOrScheduleFrequencyChange": false
+}

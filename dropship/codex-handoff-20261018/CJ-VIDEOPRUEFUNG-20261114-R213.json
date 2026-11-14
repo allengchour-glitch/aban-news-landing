@@ -1,0 +1,886 @@
+{
+  "recordedAtUTC": "2026-11-14T17:44:42.186229+00:00",
+  "sourceDiscovery": {
+    "scope": "Read-only LuxeStyle video delivery/queue discovery; no writes.",
+    "observed_at_utc": "2026-11-14T17:00:00Z",
+    "main": {
+      "head": "b3ab74fc2316274e9e5b7728ba27fb55ab798e1b",
+      "head_date": "2026-11-14T16:34:26Z",
+      "recent_50_commit_subjects": "No LuxeStyle CJ/video/social delivery on Nov14.",
+      "matching_open_pr_titles": "No new video/media delivery; relevant video PR #2919 is an older text-only guard.",
+      "delivery_commit": "097071165cf4851c9b0baec883491e447f1e1464",
+      "delivery_commit_date": "2026-11-10T05:31:42Z",
+      "delivery_commit_message": "Social Woche 16.-22.11.: Medien-Lieferung für Codex, Plan, Wegweiser +2 (#3056)"
+    },
+    "source_blobs": {
+      "dropship/social-woche-1611/MEDIEN-LIEFERUNG.md": "fb88a336c3e214307545bde3b2d213391dd9467c",
+      "dropship/social-woche-1611/PLAN-CLAUDE-1011.md": "a9e33dd667e6bf0c9520f974e85bfe0dfdf35524",
+      "dropship/social-woche-1611/angelegt.json": "a9e4c3c68387abb899c9062ebb6424ef45eb7474",
+      "dropship/tiktok-cj-videos-0311/PAKET.md": "ae5e036f57d7e4ca7ad0793a60f3989532118a24",
+      "SHARED-MEMORY.md": "3aa86125a23e631723f0794b6c9cfb3ab421c12b",
+      "dropship/REEL-REGELN.md": "3abcda2c994a5f673c4b59e1e0eb4a24c77ca7ab",
+      "dropship/METRICOOL-HALTEN.txt": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+      "CLAUDE.md": "ac959440c009b76a1eb70814b3a6f143d129565d"
+    },
+    "clips": [
+      {
+        "name": "Knoblauch- und Zwiebelhacker reel",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-w1611-hacker-reel.mp4?v=1794284322",
+        "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+        "bytes": 6156950,
+        "media": "H.264/AAC; 1080x1920; 25fps; 10.60s",
+        "product": {
+          "id": "15450838139265",
+          "handle": "knoblauch-und-zwiebelhacker-781504",
+          "variant_id": "55889812193665",
+          "variant_sku": "CJ-CJCJ170137301AZ"
+        },
+        "stable_master_id": null,
+        "cj_assignment": "Delivery calls it edited CJ material; exact CJ source product/video ID and source timestamps absent.",
+        "queue_match": "Exact byte match to four existing Metricool draft media URLs. All remain PENDING, draft=true, autoPublish=false, and their UUIDs are on METRICOOL-HALTEN.txt. Do not create duplicate posts or activate.",
+        "drafts": [
+          {
+            "id": 423483793,
+            "uuid": "4659816415037836014",
+            "channel": "Instagram+Facebook Reel",
+            "slot": "2026-11-18 10:00 Europe/Zurich",
+            "title": "Knoblauch und Zwiebeln per Druck hacken"
+          },
+          {
+            "id": 423484712,
+            "uuid": "-8339089096074181290",
+            "channel": "Threads",
+            "slot": "2026-11-18 11:00 Europe/Zurich"
+          },
+          {
+            "id": 423484773,
+            "uuid": "-8305910546945982140",
+            "channel": "TikTok",
+            "slot": "2026-11-18 12:00 Europe/Zurich",
+            "title": "Knoblauch hacken per Druck",
+            "own_brand": true
+          },
+          {
+            "id": 423484839,
+            "uuid": "-3731207601091163105",
+            "channel": "YouTube Short",
+            "slot": "2026-11-18 18:00 Europe/Zurich",
+            "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+            "made_for_kids": false
+          }
+        ],
+        "approval_rights": "Delivery says foreign brand mark removed from source frames 1.56-2.2s and Claude reviewed visuals. Exact CJ source/licence chain and separate individual Reel approval are not documented.",
+        "music": "Mixkit new-york-427 is embedded; historical owner response rejected this soundtrack. Current owner direction is canonical music mandatory; the file as delivered does not satisfy it."
+      },
+      {
+        "name": "Winter Warme Haussocken reel",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-w1611-haussocken-reel.mp4?v=1794284352",
+        "sha256": "2555d188a6229219ae596e9e48e1d2826544ae211caf5a6367718b7e9c8eb93a",
+        "bytes": 5741674,
+        "media": "H.264/AAC; 1080x1920; 25fps; 12.52s",
+        "product": {
+          "id": "15450847805825",
+          "handle": "winter-warme-haussocken-mit-anti-rutsch-sohle-927808",
+          "variant_id": null,
+          "variant_note": "Public product data lists many colors/sizes/multipacks; blue sock in film is not bound to a specific product variant."
+        },
+        "stable_master_id": null,
+        "cj_assignment": "Delivery calls it a CJ free clip edited to beat; exact CJ source product/video ID and timestamps absent.",
+        "queue_match": "No socks reel in fresh Metricool queue snapshots covering 2026-11-14–28.",
+        "next_planned_slots": [
+          "2026-11-20 10:00 Europe/Zurich Instagram+Facebook Reel",
+          "2026-11-20 12:00 Europe/Zurich YouTube Short",
+          "2026-11-20 18:00 Europe/Zurich TikTok"
+        ],
+        "other_slots": [
+          "2026-11-20 11:00 Threads text",
+          "2026-11-21 20:00 Pinterest image"
+        ],
+        "approval_rights": "Delivery says no voice and interpolation only; contact sheet shows hands manipulating the sock. Exact CJ source/licence chain and individual Reel approval absent.",
+        "music": "Mixkit violin-uplift-675 is embedded; historical owner response rejected this soundtrack. Current owner direction is canonical music mandatory; the file as delivered does not satisfy it."
+      }
+    ],
+    "readiness": "Neither supplied file is schedule-ready as-is. Hacker duplicates four held drafts. Socks is a distinct video but uses a soundtrack that does not meet current canonical-music direction and lacks exact CJ source/variant/right binding.",
+    "discovery_limit": "No Nov14 CJ video bundle found in current main or relevant open PR titles. An uncommitted other-session workspace/local bundle cannot be ruled out; need its exact link/path."
+  },
+  "currentProducts": {
+    "hacker": {
+      "id": "gid://shopify/Product/15450838139265",
+      "title": "Knoblauch- und Zwiebelhacker",
+      "handle": "knoblauch-und-zwiebelhacker-781504",
+      "status": "ACTIVE",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "mengenrabatt-b",
+        "neu",
+        "rueckhol-0907",
+        "sort-kuechenhelfer",
+        "sort-schneiden-reiben-pressen-scheren",
+        "sort-schneiden-reiben-schaelen",
+        "trend",
+        "video-hit",
+        "viral"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/knoblauch-und-zwiebelhacker-781504",
+      "updatedAt": "2026-11-02T06:49:47Z",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55889812193665",
+            "title": "Schwarz",
+            "sku": "CJ-CJCJ170137301AZ",
+            "price": "15.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242239181185",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg4OTgxMjE5MzY2NSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "videos": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "images": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69887102812545",
+            "alt": "Knoblauch- und Zwiebelhacker – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5709126d-676c-4ab9-bcd7-083cdda06965.jpg?v=1783469976",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ]
+      }
+    },
+    "socks": {
+      "id": "gid://shopify/Product/15450847805825",
+      "title": "Winter Warme Haussocken mit Anti-Rutsch-Sohle",
+      "handle": "winter-warme-haussocken-mit-anti-rutsch-sohle-927808",
+      "status": "ACTIVE",
+      "tags": [
+        "accessoires",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "neu",
+        "rueckhol-0907",
+        "socken",
+        "sort-damen-dessous",
+        "sort-damen-dessous-strumpfhosen",
+        "trend",
+        "video-hit",
+        "viral",
+        "winter-kaelte"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/winter-warme-haussocken-mit-anti-rutsch-sohle-927808",
+      "updatedAt": "2026-10-26T15:28:42Z",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55889881923969",
+            "title": "Blau-35/39-1 Paar",
+            "sku": "CJ-CJWZ133696301AZ",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310615425",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889881956737",
+            "title": "Blau-40/42-1 Paar",
+            "sku": "CJ-CJWZ133696302BY",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310648193",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889881989505",
+            "title": "Blau-43/45-1 Paar",
+            "sku": "CJ-CJWZ133696303CX",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310680961",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882022273",
+            "title": "Schwarz-35/39-1 Paar",
+            "sku": "CJ-CJWZ133696304DW",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310713729",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882055041",
+            "title": "Schwarz-40/42-1 Paar",
+            "sku": "CJ-CJWZ133696305EV",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310746497",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882087809",
+            "title": "Schwarz-43/45-1 Paar",
+            "sku": "CJ-CJWZ133696306FU",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310779265",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882120577",
+            "title": "Aprikose-35/39-1 Paar",
+            "sku": "CJ-CJWZ133696307GT",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310812033",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882153345",
+            "title": "Aprikose-40/42-1 Paar",
+            "sku": "CJ-CJWZ133696308HS",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310844801",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882186113",
+            "title": "Aprikose-43/45-1 Paar",
+            "sku": "CJ-CJWZ133696309IR",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310877569",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55889882218881",
+            "title": "Rot-35/39-1 Paar",
+            "sku": "CJ-CJWZ133696310JQ",
+            "price": "14.90",
+            "availableForSale": true,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55242310910337",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg4OTg4MjIxODg4MSwibGFzdF92YWx1ZSI6MTB9"
+        }
+      },
+      "videos": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "images": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69887383961985",
+            "alt": "Winter Warme Haussocken mit Anti-Rutsch-Sohle – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5139270-de3d-4cff-b7d8-325b16d87f2a.jpg?v=1783474833",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ]
+      }
+    }
+  },
+  "actualProductGates": [
+    {
+      "key": "hacker",
+      "productId": "gid://shopify/Product/15450838139265",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "libraryBlockedTags": [],
+      "ownerAdditionalBlockedTags": [
+        "rueckhol-0907"
+      ],
+      "blocked": true,
+      "ruleSource": "Aktuelle Inhabervorgabe: zusätzlich jedes rueckhol und fehlende/leere Tags sperren neue Social-Ausspielung.",
+      "inventoryObserved": [
+        {
+          "id": "gid://shopify/ProductVariant/55889812193665",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        }
+      ],
+      "zeroInventoryWasNotUsedAsSoldOutProof": true,
+      "storefrontHttpNotCheckedBecauseSocialTagGateFailed": true,
+      "furtherVariantsNotPaginated": false
+    },
+    {
+      "key": "socks",
+      "productId": "gid://shopify/Product/15450847805825",
+      "status": "ACTIVE",
+      "tagsNonEmpty": true,
+      "libraryBlockedTags": [],
+      "ownerAdditionalBlockedTags": [
+        "rueckhol-0907"
+      ],
+      "blocked": true,
+      "ruleSource": "Aktuelle Inhabervorgabe: zusätzlich jedes rueckhol und fehlende/leere Tags sperren neue Social-Ausspielung.",
+      "inventoryObserved": [
+        {
+          "id": "gid://shopify/ProductVariant/55889881923969",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889881956737",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889881989505",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882022273",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882055041",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882087809",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882120577",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882153345",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882186113",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55889882218881",
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "quantity": 0,
+          "availableForSale": true
+        }
+      ],
+      "zeroInventoryWasNotUsedAsSoldOutProof": true,
+      "storefrontHttpNotCheckedBecauseSocialTagGateFailed": true,
+      "furtherVariantsNotPaginated": true
+    }
+  ],
+  "guardLibraryAtMain": {
+    "commit": "b3ab74fc2316274e9e5b7728ba27fb55ab798e1b",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+    "libraryAloneAllowsRueckhol0907": true,
+    "ownerStricterRuleAppliedWithoutChangingProductionLibraryOrTags": true
+  },
+  "cjSourceBinding": {
+    "shopifyProductId": "15450847805825",
+    "requestedShopifySku": "CJ-CJWZ133696301AZ",
+    "normalizedVariantSku": "CJWZ133696301AZ",
+    "normalizationSource": "automation/lib/fakten_block.mjs strategien at main b3ab74fc",
+    "pid": "1454754462055927808",
+    "productSku": "CJWZ1336963",
+    "productNameEn": "Winter Woolen Socks Women Thicken Warm Home Bedroom Socks Slippers Men Non-slip Foot Warmer Snow Socks Calcetines Mujer",
+    "productUrl": "https://www.cjdropshipping.com/product/winter-woolen-socks-women-thicken-warm-home-bedroom-socks-slippers-men-non-slip-foot-warmer-snow-socks-calcetines-mujer-p-1454754462055927808.html",
+    "productVideo": [
+      "1572857194658410496"
+    ],
+    "matchedBlueVariants": [
+      {
+        "pid": "1454754462055927808",
+        "vid": "1454754462106259456",
+        "variantSku": "CJWZ133696301AZ",
+        "variantKey": "Blue-35to39-1pair",
+        "variantImage": "https://cf.cjdropshipping.com/68e81299-f8a2-4c42-9dd4-a0b3645558b6.jpg"
+      },
+      {
+        "pid": "1454754462055927808",
+        "vid": "1454754462110453760",
+        "variantSku": "CJWZ133696302BY",
+        "variantKey": "Blue-40to42-1pair",
+        "variantImage": "https://cf.cjdropshipping.com/68e81299-f8a2-4c42-9dd4-a0b3645558b6.jpg"
+      },
+      {
+        "pid": "1454754462055927808",
+        "vid": "1454754462114648064",
+        "variantSku": "CJWZ133696303CX",
+        "variantKey": "Blue-43to45-1pair",
+        "variantImage": "https://cf.cjdropshipping.com/68e81299-f8a2-4c42-9dd4-a0b3645558b6.jpg"
+      }
+    ],
+    "commercialEditingAdvertisingLicense": "unknown_not_returned_by_product_detail",
+    "noPurchaseOrPaidRenderRequested": true,
+    "socialPreparationBlockedByCurrentRueckholTag": true,
+    "readWindowStartUTC": "2026-11-14T17:17:29Z",
+    "recordedDateZurich": "2026-11-14",
+    "deliveredMp4DerivedFromReturnedCjVideoId": "unknown_requires_original_source_comparison",
+    "filmedExactSizeAmongBlueVariants": "unknown",
+    "readWindowEndUTC": "2026-11-14T17:21:47Z"
+  },
+  "skuResolver": {
+    "path": "automation/lib/fakten_block.mjs",
+    "commit": "b3ab74fc2316274e9e5b7728ba27fb55ab798e1b",
+    "sha256": "2397beafc9b47ae627594bdb70f87b92d19248a0d910c6c92d5a9bcc45cc0b7b",
+    "rule": "Nur führendes cj- mit Bindestrich entfernen, nicht den CJ-Beginn der Hersteller-SKU."
+  },
+  "actualLocalMediaChecks": {
+    "hacker": {
+      "sha256": "4684d4e7860e880da06dfe530d0b8df6f2ff22da94109b7ed975a4e9910af8e9",
+      "bytes": 6156950,
+      "ffprobe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1080,
+            "coded_height": 1920,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 135680,
+            "duration": "10.600000",
+            "bit_rate": "4439949",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "265",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc60.31.102 libx264"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 508800,
+            "duration": "10.600000",
+            "bit_rate": "199255",
+            "nb_frames": "498",
+            "extradata_size": 5,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/tmp/luxe-social-20261114-r213/media-analysis/hacker.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "10.600000",
+          "size": "6156950",
+          "bit_rate": "4646754",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "title": "LuxeStyle kueche-hacker - TikTok",
+            "encoder": "Lavf60.16.100"
+          }
+        }
+      },
+      "rootViewedSamplesSeconds": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "observation": "Echte Handbedienung und geschnittenes Gemüse sichtbar; kurzer bestehender CJ-Schnitt. Keine neue komplette Qualitäts-/Ton-/Rechteabnahme."
+    },
+    "socks": {
+      "sha256": "2555d188a6229219ae596e9e48e1d2826544ae211caf5a6367718b7e9c8eb93a",
+      "bytes": 5741674,
+      "ffprobe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1080,
+            "coded_height": 1920,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 160256,
+            "duration": "12.520000",
+            "bit_rate": "3492536",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "313",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc60.31.102 libx264"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 600960,
+            "duration": "12.520000",
+            "bit_rate": "168908",
+            "nb_frames": "585",
+            "extradata_size": 5,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/tmp/luxe-social-20261114-r213/media-analysis/socks.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "12.520000",
+          "size": "5741674",
+          "bit_rate": "3668801",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "title": "LuxeStyle winter-haussocken",
+            "encoder": "Lavf60.16.100"
+          }
+        }
+      },
+      "rootViewedSamplesSeconds": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "observation": "Hände zeigen Innenfutter, Stoff, Sohlenpunkte und Anziehen. Blaue Farbfamilie sichtbar; exakte gefilmte Grösse unbekannt."
+    },
+    "newMasterMp4Rendered": false,
+    "noNewStoryboardOrPublicCaptionForTagBlockedProducts": true
+  },
+  "music": {
+    "deliveryNamesTracks": "Mixkit laut exakt hashgebundener Lieferung",
+    "currentOwnerRule": "Nur automation/music/luxe-premium.wav nach Datei-/Rechteprüfung, kein Voiceover",
+    "actualCanonicalTrackMatchOrListeningApprovalInR213": false,
+    "canonicalRuleNotOverriddenByHistoricalRepoClaims": true
+  },
+  "newOtherSessionVideoLocation": {
+    "state": "unidentified_owner_link_requested",
+    "mainPin": {
+      "head": "b3ab74fc2316274e9e5b7728ba27fb55ab798e1b",
+      "head_date": "2026-11-14T16:34:26Z",
+      "recent_50_commit_subjects": "No LuxeStyle CJ/video/social delivery on Nov14.",
+      "matching_open_pr_titles": "No new video/media delivery; relevant video PR #2919 is an older text-only guard.",
+      "delivery_commit": "097071165cf4851c9b0baec883491e447f1e1464",
+      "delivery_commit_date": "2026-11-10T05:31:42Z",
+      "delivery_commit_message": "Social Woche 16.-22.11.: Medien-Lieferung für Codex, Plan, Wegweiser +2 (#3056)"
+    },
+    "driveSearches": [
+      {
+        "keyword": "LuxeStyle",
+        "type": "video",
+        "modifiedAfter": "2026-11-12",
+        "returned": []
+      },
+      {
+        "keyword": "CJ",
+        "type": "video",
+        "modifiedAfter": "2026-11-12",
+        "returned": []
+      },
+      {
+        "keyword": null,
+        "type": "video",
+        "modifiedAfter": "2026-11-13",
+        "returned": []
+      }
+    ],
+    "localPathAudit": "Nur bekannte Audit-/Holdkopien gefunden, darunter zwei Gemüsehobel-Kopien fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350 aus älteremR125. Begrenzte Dateinamen-/Metadatensuche, kein globaler Nichtexistenzbeweis.",
+    "requiredInput": "Link oder genauer Speicherpfad der neuen Videolieferung",
+    "publicationPermissionAlreadyGranted": true
+  },
+  "rightsAndExactDeliveredVideoProvenance": "unknown; productVideo ID is a product relation, not proof this edited MP4 derives from it or has advertising/editing licence",
+  "socialUploadsOrWrites": 0,
+  "newVideoProduction": false,
+  "paidRendersOrPurchases": false
+}
