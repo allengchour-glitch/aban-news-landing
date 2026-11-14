@@ -7,3 +7,9 @@ Die Standardansicht des Geldmanagers zeigt Summen, eine Tabelle und Monatsumsät
 Echte Finanzdaten gehören nicht in die öffentliche Webseite, Statusdateien oder das Repository. `finanzbericht.py` baut eine private HTML-Ansicht ausserhalb des Repositories. Der Bericht wird lokal gelesen, ohne Upload, Zugangsdaten oder dauerhafte Browserablage. Die öffentliche Büroansicht startet ohne private Beträge. Eine Berichtsdatei kannst du lokal öffnen; der Stand bleibt beim Ansichtswechsel erhalten und lässt sich wieder leeren.
 
 Die Ansicht zeigt einen gespeicherten Datenstand, keinen laufenden Kontosync. Für neue Werte ist ein neuer autorisierter Datenabruf nötig. Zahlungslinks und erfolgreich geprüfte Lizenzschranken liefern weder Umsätze noch vollständige Kosten.
+
+## Statistikdarstellung
+
+Kennzahlen, Zeitfilter und Monatsdiagramm stehen vor den Detailpositionen. Das Diagramm lässt sich zwischen Balken und Linie umschalten; die Wahl bleibt beim Zeitraumwechsel erhalten. Negative Monatswerte liegen unter der Nulllinie. Die Monatswerte umfassen nur den gewählten Zeitraum, ein angefangener Monat ist kein vollständiger Monatsvergleich. Antippen oder Tastaturwahl eines Monats zeigt den exakten Betrag unter dem Diagramm. Die Monatswahl bleibt beim Wechsel des Diagrammtyps erhalten. Exakte Beträge stehen auch in den zugänglichen Beschriftungen der Diagrammmarken.
+
+Fünf Statuskacheln trennen Warenkosten, Werbung, Versandkosten, Gebühren und Fixkosten. Die Kacheln zeigen den bereits berechneten Kostenstand, keinen erfundenen Fortschrittsprozentsatz. Unbekannte Werte und gespeicherte/alte Messzeiten bleiben erkennbar. Die Finanzberechnung, Quellen und Datenabrufe werden durch das Design nicht geändert.

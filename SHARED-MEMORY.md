@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Bürostatistik neu gestaltet ·14.11.2026
+
+Kennzahlenkarten, Balken-/Liniendiagramm mit Nulllinie und fünf Kostenstatuskacheln; mobile und dunkle Darstellung geprüft. Finanzwerte/Berechnung/Quellen unverändert, keine Prozentwerte erfunden.43 Dashboard- und sechs Finanzprüfungen grün, vollständiger Drei-Seiten-Bau unter Dokumentlimit. Upload des Claude-Artefakts weiter bei Claude, nie seite.html roh hochladen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Bürostatistik und zugehöriger PR.
+
 ## Codex: KI-Studio prüft Lizenzantwort strikt ·14.11.2026
 
 Browserfreigabe verlangt HTTP-Erfolg und boolesches valid. Defekte Antworten als Störung, Schlüssel erhalten; bestätigte Ablehnung und manuelle Wiederaufnahme geprüft.132 API-,64 Download-,84 Engineprüfungen grün. Backend-/Preis-/Lizenzregeln unverändert. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
