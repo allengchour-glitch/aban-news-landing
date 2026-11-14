@@ -1,0 +1,94 @@
+{
+  "run": "R209 2026-11-14",
+  "connector": "google_merchant",
+  "fresh_account_verification": {
+    "tool": "Windsor get_connectors",
+    "account_id": "5797470070",
+    "account_name": "LuxeStyle CH"
+  },
+  "fields_discovered": [
+    "data_source_id",
+    "data_source_name",
+    "data_source_display_name",
+    "data_source_type",
+    "data_source_input",
+    "data_source_countries",
+    "data_source_content_language",
+    "data_source_linked_primary_sources"
+  ],
+  "query": {
+    "accounts": [
+      "5797470070"
+    ],
+    "fields": [
+      "data_source_id",
+      "data_source_name",
+      "data_source_display_name",
+      "data_source_type",
+      "data_source_input",
+      "data_source_countries",
+      "data_source_content_language",
+      "data_source_linked_primary_sources"
+    ],
+    "date_from": "2026-10-16",
+    "date_to": "2026-11-14",
+    "force_refresh": false,
+    "product_or_performance_fields": false,
+    "writes": 0
+  },
+  "source_rows": [
+    {
+      "data_source_id": "10667445201",
+      "data_source_name": "accounts/5797470070/dataSources/10667445201",
+      "display_name": "Shopify App API",
+      "type": "primaryProductDataSource",
+      "input": "API",
+      "countries": "CH, LI",
+      "content_language": "de",
+      "linked_primary_sources": null
+    },
+    {
+      "data_source_id": "10668966945",
+      "data_source_name": "accounts/5797470070/dataSources/10668966945",
+      "display_name": "Third Party Promotions",
+      "type": "promotionDataSource",
+      "input": null,
+      "countries": null,
+      "content_language": "en",
+      "linked_primary_sources": null
+    },
+    {
+      "data_source_id": "10678939025",
+      "data_source_name": "accounts/5797470070/dataSources/10678939025",
+      "display_name": "luxestyle.ch",
+      "type": "primaryProductDataSource",
+      "input": "AUTOFEED",
+      "countries": "CH, LI",
+      "content_language": null,
+      "linked_primary_sources": null
+    },
+    {
+      "data_source_id": "10762220830",
+      "data_source_name": "accounts/5797470070/dataSources/10762220830",
+      "display_name": "Shopify App API",
+      "type": "primaryProductDataSource",
+      "input": "API",
+      "countries": "CH",
+      "content_language": "fr",
+      "linked_primary_sources": null
+    }
+  ],
+  "result_count": 4,
+  "assessment": {
+    "confirmed_sources": [
+      "Shopify App API primary API source 10667445201 for DE content language, countries CH/LI",
+      "Shopify App API primary API source 10762220830 for FR content language, country CH",
+      "luxestyle.ch primary AUTOFEED source 10678939025 for countries CH/LI",
+      "Third Party Promotions promotion source 10668966945"
+    ],
+    "numeric_missing_price_issue_source": "unknown; datasource-only rows contain no product offer IDs, so they do not join the CSV's missing-price IDs to a particular source",
+    "germany_shipping_context": "all three primary product sources list CH/LI, none lists DE. This confirms the configured primary-source countries but does not prove item-level eligibility or prescribe adding Germany shipping.",
+    "limitations": "No catalog product rows, status totals, performance, metrics, orders, or writes queried. No paid upgrade or pagination. Data-source response is the complete response returned by this one bounded query; no broader catalog claim."
+  },
+  "cacheCaveat": "force_refresh=false. Response/cache age is not supplied; source rows are what this request returned, not a product-to-source join or item-level eligibility proof."
+}

@@ -1,0 +1,134 @@
+{
+  "recordedAtUTC": "2026-11-14 14:18:48 UTC",
+  "brand": {
+    "id": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "ownerApproval": {
+    "exactMessage": "da und noch 16 weitere, ja live shalten",
+    "themeId": "gid://shopify/OnlineStoreTheme/213991391623",
+    "themeName": "LuxeStyle – SEO 14.11.2026",
+    "approvalConfirmed": true,
+    "doNotAskSameApprovalAgain": true
+  },
+  "preflight": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "myshopifyDomain": "au3j0y-hq.myshopify.com",
+        "currencyCode": "CHF"
+      },
+      "live": {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "role": "MAIN",
+        "files": {
+          "nodes": [
+            {
+              "filename": "config/settings_data.json",
+              "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+            },
+            {
+              "filename": "config/settings_schema.json",
+              "checksumMd5": "2aec04932013b3c77e17f0ca475e4abb"
+            },
+            {
+              "filename": "snippets/meta-tags.liquid",
+              "checksumMd5": "5272479d3e09c18aa461e78f465c7c0b"
+            }
+          ],
+          "userErrors": []
+        }
+      },
+      "draft": {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "UNPUBLISHED",
+        "files": {
+          "nodes": [
+            {
+              "filename": "config/settings_data.json",
+              "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+            },
+            {
+              "filename": "config/settings_schema.json",
+              "checksumMd5": "df6f8f092489586bbb39606c99089c27"
+            },
+            {
+              "filename": "snippets/meta-tags.liquid",
+              "checksumMd5": "723ee098a1cd88e7795a8a1d69e589ec"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    }
+  },
+  "themeDates": {
+    "data": {
+      "live": {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "role": "MAIN",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "createdAt": "2026-11-02T06:13:30Z",
+        "updatedAt": "2026-11-12T00:51:33Z",
+        "processing": false,
+        "processingFailed": false
+      },
+      "draft": {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "role": "UNPUBLISHED",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "createdAt": "2026-11-14T13:42:06Z",
+        "updatedAt": "2026-11-14T13:43:54Z",
+        "processing": false,
+        "processingFailed": false
+      }
+    }
+  },
+  "publishToolResponse": {
+    "themeId": "gid://shopify/OnlineStoreTheme/213991391623",
+    "published": false,
+    "pending": [],
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "rejectedReason": "publish_refused"
+  },
+  "targetedReadback": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "old": {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "role": "MAIN",
+        "updatedAt": "2026-11-12T00:51:33Z"
+      },
+      "prepared": {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "UNPUBLISHED",
+        "updatedAt": "2026-11-14T13:43:54Z"
+      }
+    }
+  },
+  "conclusion": "NOT_PUBLISHED_CONFIRMED_UNPUBLISHED; explicit tool refusal, not an uncertain write. No retry and no alternate publishing endpoint.",
+  "nextStep": "Existing owner approval persists. Publish this exact saved theme in Shopify Admin using legitimate owner interface; refresh full source baseline if intervening theme changes occur. This run did not publish it."
+}

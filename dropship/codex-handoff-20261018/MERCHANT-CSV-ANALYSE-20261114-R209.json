@@ -1,0 +1,950 @@
+{
+  "source_files": [
+    "Produktprobleme_2026-11-14_15-04-40.csv",
+    "Produktprobleme_2026-11-14_15-05-44.csv"
+  ],
+  "parsing": {
+    "encoding": "utf-8-sig",
+    "parser": "Python csv",
+    "duplicate_header_handling": "position-based; field 2 is display/product title, field 8 is problem title",
+    "no_commands_or_instructions_from_csv_executed": true
+  },
+  "deduplication": {
+    "key": "All 12 CSV cell values exactly; two Titel headers preserved by position, independently counted and verified by root.",
+    "raw_rows_all_exports": 4603,
+    "deduplicated_union_rows": 3555,
+    "duplicate_excess_raw_vs_union": 1048,
+    "exact_cross_file_overlap_multiplicity": 1048,
+    "within_file_exact_duplicates": {
+      "Produktprobleme_2026-11-14_15-04-40.csv": 0,
+      "Produktprobleme_2026-11-14_15-05-44.csv": 0
+    },
+    "per_file": {
+      "Produktprobleme_2026-11-14_15-04-40.csv": {
+        "raw_rows": 3555,
+        "distinct_exact_rows": 3555,
+        "within_file_duplicate_excess": 0,
+        "unique_article_ids": 2005,
+        "distinct_problem_titles": 19
+      },
+      "Produktprobleme_2026-11-14_15-05-44.csv": {
+        "raw_rows": 1048,
+        "distinct_exact_rows": 1048,
+        "within_file_duplicate_excess": 0,
+        "unique_article_ids": 517,
+        "distinct_problem_titles": 3
+      }
+    }
+  },
+  "count_semantics": {
+    "union_rows_are_records_by_country_language_feed_traffic_context": true,
+    "article_ids_are_raw_Merchant_Artikel_ID_values_not_unique_shopify_products": true,
+    "display_title_is_not_problem_title": true,
+    "problem_title_count_union": 19,
+    "problem_title_count_raw": 19,
+    "unique_article_ids_union": 2005,
+    "unique_id_format_counts_union": {
+      "numeric_only": 183,
+      "productID_SKU_composite": 1528,
+      "shopify_prefixed_composite": 294
+    },
+    "exactly_16_articles_proven": false,
+    "exactly_16_problem_types_proven": false,
+    "no_equivalence_inferred_between_owner_16_and_19_problem_titles": true,
+    "exactly_16_additional_problem_types_relative_to_smaller_export_proven": true,
+    "exactly_16_selected_articles_proven": false
+  },
+  "row_sum_validation": {
+    "union_problem_matrix_rows_sum": 3555,
+    "raw_problem_matrix_rows_sum": 4603,
+    "union_rows_expected": 3555,
+    "raw_rows_expected": 4603,
+    "union_context_country_language_feed_traffic_total": 3555,
+    "all_context_dimensions_each_sum_to_union_rows": true
+  },
+  "context_totals": {
+    "deduplicated_union": {
+      "country": {
+        "Deutschland": 995,
+        "Liechtenstein": 1098,
+        "Schweiz": 1462
+      },
+      "language": {
+        "de": 3175,
+        "fr": 380
+      },
+      "feed_label": {
+        "CH": 1446,
+        "CHF_99383214465": 1114,
+        "DE": 995
+      },
+      "traffic_type": {
+        "Dynamisches Remarketing": 806,
+        "Kostenlose Einträge": 2595,
+        "Shopping-Anzeigen": 154
+      },
+      "channels": {
+        "ONLINE": 3555
+      },
+      "article_status": {
+        "ELIGIBLE_LIMITED": 1671,
+        "NOT_ELIGIBLE_OR_DISAPPROVED": 1884
+      },
+      "severity": {
+        "SEVERITY_DISAPPROVED": 3553,
+        "SEVERITY_PENDING": 2
+      }
+    },
+    "raw_all_exports": {
+      "country": {
+        "Deutschland": 995,
+        "Liechtenstein": 1622,
+        "Schweiz": 1986
+      },
+      "language": {
+        "de": 4223,
+        "fr": 380
+      },
+      "feed_label": {
+        "CH": 2494,
+        "CHF_99383214465": 1114,
+        "DE": 995
+      },
+      "traffic_type": {
+        "Dynamisches Remarketing": 806,
+        "Kostenlose Einträge": 3643,
+        "Shopping-Anzeigen": 154
+      },
+      "channels": {
+        "ONLINE": 4603
+      },
+      "article_status": {
+        "ELIGIBLE_LIMITED": 1671,
+        "NOT_ELIGIBLE_OR_DISAPPROVED": 2932
+      },
+      "severity": {
+        "SEVERITY_DISAPPROVED": 4599,
+        "SEVERITY_PENDING": 4
+      }
+    }
+  },
+  "problem_matrix_deduplicated_union": [
+    {
+      "problem": "Alkoholische Getränke",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 8,
+      "union_rows": 16,
+      "raw_rows_all_exports": 16,
+      "countries": {
+        "Liechtenstein": 16
+      },
+      "feed_labels": {
+        "CHF_99383214465": 16
+      },
+      "languages": {
+        "de": 16
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 8,
+        "Shopping-Anzeigen": 8
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 8
+      },
+      "additional_information_exact_csv": [
+        "Produkte, die gegen anwendbare Gesetze und Branchenstandards für den Verkauf alkoholischer Getränke verstoßen, sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+        "Hopfenfilter aus Edelstahl | LuxeStyle CH",
+        "Rotierender Kristall-Glas-Wein-Entkorker 1000 ml | LuxeStyle CH Silve"
+      ]
+    },
+    {
+      "problem": "Anzeigen-Overlay auf Bild",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 121,
+      "union_rows": 433,
+      "raw_rows_all_exports": 433,
+      "countries": {
+        "Liechtenstein": 176,
+        "Schweiz": 257
+      },
+      "feed_labels": {
+        "CH": 148,
+        "CHF_99383214465": 285
+      },
+      "languages": {
+        "de": 352,
+        "fr": 81
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 95,
+        "Kostenlose Einträge": 243,
+        "Shopping-Anzeigen": 95
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 2,
+        "productID_SKU_composite": 72,
+        "shopify_prefixed_composite": 47
+      },
+      "additional_information_exact_csv": [
+        "Werbetext, störende Elemente oder Rahmen sind auf Produktbildern nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "PHOERA Magnificent Metals Liquid Lidschatten - Baby Rosé",
+        "Portabler Luftreiniger Aschenbecher - Quadratisch Blau",
+        "Elektrische Springkrebs Katze Spielzeug | LuxeStyle CH Hüpfende Garnele, zufällige Farbe, ca. 35 CM, USB"
+      ]
+    },
+    {
+      "problem": "Bild ist zu klein",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 71,
+      "union_rows": 142,
+      "raw_rows_all_exports": 142,
+      "countries": {
+        "Liechtenstein": 71,
+        "Schweiz": 71
+      },
+      "feed_labels": {
+        "CH": 142
+      },
+      "languages": {
+        "de": 142
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 142
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 1,
+        "productID_SKU_composite": 70
+      },
+      "additional_information_exact_csv": [
+        "Ihr Bild unterschreitet die aktuelle Mindestgröße. Aktualisieren Sie es auf mindestens 500 × 500 Pixel, um die Anforderungen für 2027 zu erfüllen"
+      ],
+      "product_title_examples_exact_csv": [
+        "Figurformender Einteiler mit Bauchkontrolle - Nude / S",
+        "Figurformender Einteiler mit Bauchkontrolle - Braun / 3XL",
+        "Dragon Sword Kelch – Drachenform Weinglas - Gelb"
+      ]
+    },
+    {
+      "problem": "Eingeschränkte Inhalte nur für Erwachsene",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 27,
+      "union_rows": 76,
+      "raw_rows_all_exports": 76,
+      "countries": {
+        "Liechtenstein": 25,
+        "Schweiz": 51
+      },
+      "feed_labels": {
+        "CHF_99383214465": 76
+      },
+      "languages": {
+        "de": 50,
+        "fr": 26
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 76
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 27
+      },
+      "additional_information_exact_csv": [
+        "Inhalte nur für Erwachsene, die Nacktheit oder sexuelle Handlungen zeigen, sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M",
+        "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+        "Durchsichtige Nachtrobe | LuxeStyle CH Weiss / M"
+      ]
+    },
+    {
+      "problem": "Fehlendes Attribut [availability]",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 36,
+      "union_rows": 72,
+      "raw_rows_all_exports": 84,
+      "countries": {
+        "Liechtenstein": 36,
+        "Schweiz": 36
+      },
+      "feed_labels": {
+        "CH": 72
+      },
+      "languages": {
+        "de": 72
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 72
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 36
+      },
+      "additional_information_exact_csv": [
+        "Bei mindestens einem Ihrer Produkte fehlt ein erforderliches Gruppenattribut. Wenn Sie beispielsweise die Verfügbarkeit auf „Vorbestellbar“ festlegen, müssen Sie auch ein Verfügbarkeitsdatum angeben. Fügen Sie das fehlende Attribut „[availability]“ in Ihre Produktdaten ein, damit Ihre Produkte auf Google präsentiert werden können"
+      ],
+      "product_title_examples_exact_csv": [
+        "4-in-1 Ladestation für Switch Joy-Cons | LuxeStyle CH",
+        "Kreuzstich-Set \"Himmel-Liebhaber\" | LuxeStyle CH",
+        "Quattro S1 E2 Transporter Modellbausatz | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Für einige Länder fehlen Versandinformationen",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 995,
+      "union_rows": 995,
+      "raw_rows_all_exports": 995,
+      "countries": {
+        "Deutschland": 995
+      },
+      "feed_labels": {
+        "DE": 995
+      },
+      "languages": {
+        "de": 995
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 995
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 4,
+        "productID_SKU_composite": 991
+      },
+      "additional_information_exact_csv": [
+        "Ihre Produkte sind so eingestellt, dass sie in Ländern präsentiert werden, für die keine Versandinformationen vorliegen"
+      ],
+      "product_title_examples_exact_csv": [
+        "Herren-Hoodie mit Fleecefutter - AK Weiss / 3XL",
+        "Peep-Toe Sandalen mit Blockabsatz und Schleife - Karamell / 43",
+        "Kurzarm-Freizeithemd aus Leinenmix - Weiss / S"
+      ]
+    },
+    {
+      "problem": "Inhalte nur für Erwachsene",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 6,
+      "union_rows": 18,
+      "raw_rows_all_exports": 18,
+      "countries": {
+        "Liechtenstein": 6,
+        "Schweiz": 12
+      },
+      "feed_labels": {
+        "CHF_99383214465": 18
+      },
+      "languages": {
+        "de": 12,
+        "fr": 6
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 18
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 6
+      },
+      "additional_information_exact_csv": [
+        "Produkte mit Inhalten, Beschreibungen oder Bildern nur für Erwachsene, z. B. Pornografie, sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken LXL",
+        "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+        "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken XL"
+      ]
+    },
+    {
+      "problem": "Lokale Anforderungen",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 1,
+      "union_rows": 9,
+      "raw_rows_all_exports": 9,
+      "countries": {
+        "Liechtenstein": 3,
+        "Schweiz": 6
+      },
+      "feed_labels": {
+        "CHF_99383214465": 9
+      },
+      "languages": {
+        "de": 6,
+        "fr": 3
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 3,
+        "Kostenlose Einträge": 3,
+        "Shopping-Anzeigen": 3
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 1
+      },
+      "additional_information_exact_csv": [
+        "Produkte, die gegen lokale Gesetze und Sicherheitsstandards verstoßen, sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Personalisierte Anzeigen: Schwierigkeiten im privaten Bereich",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 159,
+      "union_rows": 442,
+      "raw_rows_all_exports": 442,
+      "countries": {
+        "Liechtenstein": 155,
+        "Schweiz": 287
+      },
+      "feed_labels": {
+        "CHF_99383214465": 442
+      },
+      "languages": {
+        "de": 310,
+        "fr": 132
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 442
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 159
+      },
+      "additional_information_exact_csv": [
+        "Personalisierte Anzeigen dürfen nicht verwendet werden, um Schwierigkeiten oder Probleme von Personen (etwa gesundheitliche Probleme, finanzielle Lage, Beziehungsprobleme oder Schwierigkeiten im privaten Bereich) auszunutzen"
+      ],
+      "product_title_examples_exact_csv": [
+        "Brustpump-Spray für Stillzeit | LuxeStyle CH",
+        "Gelenkpflege Salbe | LuxeStyle CH",
+        "Hundemantel mit Reflektoren und Grippzonen | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Personalisierte Anzeigen: Sexuelle Interessen",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 27,
+      "union_rows": 76,
+      "raw_rows_all_exports": 76,
+      "countries": {
+        "Liechtenstein": 25,
+        "Schweiz": 51
+      },
+      "feed_labels": {
+        "CHF_99383214465": 76
+      },
+      "languages": {
+        "de": 50,
+        "fr": 26
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 76
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 27
+      },
+      "additional_information_exact_csv": [
+        "Produkte dürfen nicht anhand von sexuellen Interessen ausgerichtet werden"
+      ],
+      "product_title_examples_exact_csv": [
+        "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M",
+        "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+        "Durchsichtige Nachtrobe | LuxeStyle CH Weiss / M"
+      ]
+    },
+    {
+      "problem": "Personalisierte Anzeigen: rechtliche Einschränkungen",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 17,
+      "union_rows": 33,
+      "raw_rows_all_exports": 33,
+      "countries": {
+        "Liechtenstein": 8,
+        "Schweiz": 25
+      },
+      "feed_labels": {
+        "CHF_99383214465": 33
+      },
+      "languages": {
+        "de": 16,
+        "fr": 17
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 33
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 17
+      },
+      "additional_information_exact_csv": [
+        "Die Ausrichtung auf Nutzer basierend auf rechtlich eingeschränkten Inhalten, ist in personalisierten Anzeigen nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+        "Kühlbeutel für Rotwein | LuxeStyle CH",
+        "Alkoholmeter-Set für Selbstgebranntes | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Personalisierte Werbung: Identität und Glaube",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 5,
+      "union_rows": 15,
+      "raw_rows_all_exports": 15,
+      "countries": {
+        "Liechtenstein": 5,
+        "Schweiz": 10
+      },
+      "feed_labels": {
+        "CHF_99383214465": 15
+      },
+      "languages": {
+        "de": 10,
+        "fr": 5
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 15
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 5
+      },
+      "additional_information_exact_csv": [
+        "Personalisierte Anzeigen dürfen nicht auf der Grundlage der Identität oder des Glaubens von Nutzern ausgerichtet werden"
+      ],
+      "product_title_examples_exact_csv": [
+        "Kreuz-Halskette Gold – Edelstahl-Anhänger | LuxeStyle CH Gold / 60cm",
+        "Maitreya Buddha Statue auf Goldkröte | LuxeStyle CH",
+        "Cushion-Concealer | LuxeStyle CH Dunkle Haut"
+      ]
+    },
+    {
+      "problem": "Produktpreis fehlt",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 517,
+      "union_rows": 1034,
+      "raw_rows_all_exports": 2068,
+      "countries": {
+        "Liechtenstein": 517,
+        "Schweiz": 517
+      },
+      "feed_labels": {
+        "CH": 1034
+      },
+      "languages": {
+        "de": 1034
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 1034
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 141,
+        "productID_SKU_composite": 376
+      },
+      "additional_information_exact_csv": [
+        "Fügen Sie dem Attribut [price] in Ihrer Produktdatenquelle einen Preis hinzu"
+      ],
+      "product_title_examples_exact_csv": [
+        "Besticktes Dekokissen nach Wunsch | LuxeStyle CH",
+        "Verstellbares Space-Cotton Halsband für Haustiere | LuxeStyle",
+        "Workout-Set «Active» · 2-teilig, geripptes Tank (Damen) - Schwarz / M"
+      ]
+    },
+    {
+      "problem": "Produktseite nicht verfügbar",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 3,
+      "union_rows": 18,
+      "raw_rows_all_exports": 18,
+      "countries": {
+        "Liechtenstein": 9,
+        "Schweiz": 9
+      },
+      "feed_labels": {
+        "CHF_99383214465": 18
+      },
+      "languages": {
+        "de": 18
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 6,
+        "Kostenlose Einträge": 6,
+        "Shopping-Anzeigen": 6
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 3
+      },
+      "additional_information_exact_csv": [
+        "Achten Sie darauf, dass Ihre Produktseite über Desktop- und Mobilgeräte aufgerufen werden kann und das Crawling durch Google nicht eingeschränkt ist"
+      ],
+      "product_title_examples_exact_csv": [
+        "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH",
+        "i9L Kinder 4G Videoanruf-Uhr | LuxeStyle CH",
+        "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH 7.5kg 0.1g Englisch"
+      ]
+    },
+    {
+      "problem": "Schusswaffen und Schusswaffenteile",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 9,
+      "union_rows": 54,
+      "raw_rows_all_exports": 54,
+      "countries": {
+        "Liechtenstein": 15,
+        "Schweiz": 39
+      },
+      "feed_labels": {
+        "CHF_99383214465": 54
+      },
+      "languages": {
+        "de": 30,
+        "fr": 24
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 18,
+        "Kostenlose Einträge": 18,
+        "Shopping-Anzeigen": 18
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 9
+      },
+      "additional_information_exact_csv": [
+        "Werbung für bestimmte funktionsfähige Waffen und deren Teile sowie Anleitungen für den Zusammenbau sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Game Gunstock für Nintendo Switch | LuxeStyle CH Schwarz",
+        "Bluetooth Pedometer-Uhr | LuxeStyle CH Schwarz",
+        "Infrarot-Nachtsichtgerät 1080p | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Tabakprodukte und Zubehör für Tabakkonsum",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 18,
+      "union_rows": 60,
+      "raw_rows_all_exports": 60,
+      "countries": {
+        "Liechtenstein": 12,
+        "Schweiz": 48
+      },
+      "feed_labels": {
+        "CH": 12,
+        "CHF_99383214465": 48
+      },
+      "languages": {
+        "de": 24,
+        "fr": 36
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 16,
+        "Kostenlose Einträge": 28,
+        "Shopping-Anzeigen": 16
+      },
+      "id_formats_unique_ids": {
+        "numeric_only": 5,
+        "productID_SKU_composite": 1,
+        "shopify_prefixed_composite": 12
+      },
+      "additional_information_exact_csv": [
+        "Tabak und tabakhaltige Produkte, ihre Bestandteile und ähnliche Zubehörteile sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Doppeldisplay-Halter | LuxeStyle CH Silber",
+        "Automatischer Seifenspender | LuxeStyle CH Schwarz · 4 Stück",
+        "Handyhalterung mit kabelloser Ladefunktion | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Verarbeitung des Artikels ausstehend",
+      "severity_values": [
+        "SEVERITY_PENDING"
+      ],
+      "unique_article_ids": 1,
+      "union_rows": 2,
+      "raw_rows_all_exports": 4,
+      "countries": {
+        "Liechtenstein": 1,
+        "Schweiz": 1
+      },
+      "feed_labels": {
+        "CH": 2
+      },
+      "languages": {
+        "de": 2
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 2
+      },
+      "id_formats_unique_ids": {
+        "productID_SKU_composite": 1
+      },
+      "additional_information_exact_csv": [
+        "Artikel wird gerade verarbeitet"
+      ],
+      "product_title_examples_exact_csv": [
+        "Katzenfestes Einheitssofaüberwurf - Dark Blue Badge-180x300cm"
+      ]
+    },
+    {
+      "problem": "Verkauf lebender Tiere",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 8,
+      "union_rows": 24,
+      "raw_rows_all_exports": 24,
+      "countries": {
+        "Schweiz": 24
+      },
+      "feed_labels": {
+        "CHF_99383214465": 24
+      },
+      "languages": {
+        "fr": 24
+      },
+      "traffic_types": {
+        "Dynamisches Remarketing": 8,
+        "Kostenlose Einträge": 8,
+        "Shopping-Anzeigen": 8
+      },
+      "id_formats_unique_ids": {
+        "shopify_prefixed_composite": 8
+      },
+      "additional_information_exact_csv": [
+        "Lebende Tiere und Dienstleistungen für deren Transport sind nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Katzenpullover für Herbst und Winter | LuxeStyle CH",
+        "Geflochtene Hundeleine | LuxeStyle CH",
+        "Multifunktions-Hundeleine mit Puffer | LuxeStyle CH"
+      ]
+    },
+    {
+      "problem": "Zusätzlicher Text gefunden",
+      "severity_values": [
+        "SEVERITY_DISAPPROVED"
+      ],
+      "unique_article_ids": 18,
+      "union_rows": 36,
+      "raw_rows_all_exports": 36,
+      "countries": {
+        "Liechtenstein": 18,
+        "Schweiz": 18
+      },
+      "feed_labels": {
+        "CH": 36
+      },
+      "languages": {
+        "de": 36
+      },
+      "traffic_types": {
+        "Kostenlose Einträge": 36
+      },
+      "id_formats_unique_ids": {
+        "productID_SKU_composite": 18
+      },
+      "additional_information_exact_csv": [
+        "Werbetext oder irrelevanter Text in Produktattributen ist nicht zulässig"
+      ],
+      "product_title_examples_exact_csv": [
+        "Herren Fleece Sport-Freizeitschuhe - Grau Hot Sale / 43",
+        "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 44",
+        "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 39"
+      ]
+    }
+  ],
+  "severity_problem_title_counts": {
+    "distinct_problem_titles_by_severity": {
+      "SEVERITY_DISAPPROVED": 18,
+      "SEVERITY_PENDING": 1
+    },
+    "union_rows_by_severity": {
+      "SEVERITY_DISAPPROVED": 3553,
+      "SEVERITY_PENDING": 2
+    }
+  },
+  "cross_export_issue_type_comparison": {
+    "basis": "Root-provided offline comparison at /tmp/luxe-seo-live-20261114-r209/sixteen-context.json; smaller 1,048-row export is an exact row subset of the larger export.",
+    "large_export_distinct_problem_types": 19,
+    "small_export_distinct_problem_types": 3,
+    "small_export_problem_types": [
+      "Fehlendes Attribut [availability]",
+      "Produktpreis fehlt",
+      "Verarbeitung des Artikels ausstehend"
+    ],
+    "additional_problem_types_in_large_vs_small": [
+      "Alkoholische Getränke",
+      "Anzeigen-Overlay auf Bild",
+      "Bild ist zu klein",
+      "Eingeschränkte Inhalte nur für Erwachsene",
+      "Für einige Länder fehlen Versandinformationen",
+      "Inhalte nur für Erwachsene",
+      "Lokale Anforderungen",
+      "Personalisierte Anzeigen: Schwierigkeiten im privaten Bereich",
+      "Personalisierte Anzeigen: Sexuelle Interessen",
+      "Personalisierte Anzeigen: rechtliche Einschränkungen",
+      "Personalisierte Werbung: Identität und Glaube",
+      "Produktseite nicht verfügbar",
+      "Schusswaffen und Schusswaffenteile",
+      "Tabakprodukte und Zubehör für Tabakkonsum",
+      "Verkauf lebender Tiere",
+      "Zusätzlicher Text gefunden"
+    ],
+    "additional_problem_type_count": 16,
+    "exactly_16_additional_types_relative_to_smaller_export": true,
+    "proves_exactly_16_selected_articles": false,
+    "interpretation": "The CSV comparison establishes 16 additional problem types in the larger export relative to the smaller export. It does not establish that the user selected exactly 16 articles; no such selected-article set is identified."
+  },
+  "sourceMetadata": [
+    {
+      "id": "1gTASf6nKWalF5W3lPdEjqdejRni_HaSa",
+      "filename": "Produktprobleme_2026-11-14_15-04-40.csv",
+      "bytes": 1255239,
+      "sha256": "efb9c65fc438411504552852c22df6c9ac41307b6659f16068dd8c948ed133ae",
+      "rows": 3555,
+      "delimiter": ",",
+      "columns_preserving_duplicates": [
+        "Artikel-ID",
+        "Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ],
+      "normalized_keys": [
+        "Artikel-ID",
+        "Produkt-Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ]
+    },
+    {
+      "id": "1DiAaO8gT5PGcn4FU-Ob1jEnZlJhdt52Z",
+      "filename": "Produktprobleme_2026-11-14_15-05-44.csv",
+      "bytes": 306795,
+      "sha256": "ac69dd7f03e17dd233b3970f328143ebd86276943fa91089043efd67ea6ac140",
+      "rows": 1048,
+      "delimiter": ",",
+      "columns_preserving_duplicates": [
+        "Artikel-ID",
+        "Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ],
+      "normalized_keys": [
+        "Artikel-ID",
+        "Produkt-Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ]
+    }
+  ],
+  "ownerSixteenComparison": {
+    "fullIssueTypes": 19,
+    "filteredIssueTypes": 3,
+    "filteredTypes": [
+      "Fehlendes Attribut [availability]",
+      "Produktpreis fehlt",
+      "Verarbeitung des Artikels ausstehend"
+    ],
+    "additionalTypes": [
+      "Alkoholische Getränke",
+      "Anzeigen-Overlay auf Bild",
+      "Bild ist zu klein",
+      "Eingeschränkte Inhalte nur für Erwachsene",
+      "Für einige Länder fehlen Versandinformationen",
+      "Inhalte nur für Erwachsene",
+      "Lokale Anforderungen",
+      "Personalisierte Anzeigen: Schwierigkeiten im privaten Bereich",
+      "Personalisierte Anzeigen: Sexuelle Interessen",
+      "Personalisierte Anzeigen: rechtliche Einschränkungen",
+      "Personalisierte Werbung: Identität und Glaube",
+      "Produktseite nicht verfügbar",
+      "Schusswaffen und Schusswaffenteile",
+      "Tabakprodukte und Zubehör für Tabakkonsum",
+      "Verkauf lebender Tiere",
+      "Zusätzlicher Text gefunden"
+    ],
+    "additionalTypeCount": 16,
+    "smallIsExactRowSubset": true,
+    "ownerSixteenMatch": "Exactly16 additional PROBLEM TYPES relative to smaller file; not proof of exactly16 selected products."
+  },
+  "rootIndependentQa": {
+    "columns": 12,
+    "duplicateTitelHeadersPreservedByPosition": true,
+    "productTitleColumnIndex": 1,
+    "problemTitleColumnIndex": 7,
+    "allRowsRectangular": true,
+    "perIssueRowsAndUniqueIdsVerified": true,
+    "perIssueCountryFeedLanguageTrafficVerified": true,
+    "uniqueRawArticleIds": 2005,
+    "rawIdsNotUniqueShopifyProducts": true,
+    "noProblemTitleUsedAsProductName": true,
+    "numericMerchantStatusCountersNotUsed": true
+  },
+  "limits": [
+    "Snapshot of owner-provided exports, not a current complete account inventory or proof of successful remediation.",
+    "Full export has 19 issue types; smaller exact subset has 3; 16 additional types is verified, not 16 selected products.",
+    "Issue severity and overall article status are separate; ELIGIBLE_LIMITED is not renamed disapproved.",
+    "No signed download URLs, customer data or original full CSVs committed. Original files remain in owner Drive."
+  ]
+}

@@ -1,0 +1,463 @@
+{
+  "recordedAtUTC": "2026-11-14T14:29:12.702519+00:00",
+  "priceCase": {
+    "csvOfferId": "15421165404545_cjtz292404406fu",
+    "csvLanguage": "de",
+    "csvFeedLabel": "CH",
+    "csvProductTitles": [
+      "Workout-Set «Active» · 2-teilig, geripptes Tank (Damen) - Schwarz / M"
+    ],
+    "shopify": {
+      "data": {
+        "shop": {
+          "name": "LuxeStyle",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          },
+          "currencyCode": "CHF"
+        },
+        "node": {
+          "id": "gid://shopify/Product/15421165404545",
+          "title": "Workout-Set «Active» · 2-teilig, geripptes Tank (Damen)",
+          "status": "DRAFT",
+          "handle": "workout-set-active-2-teilig-geripptes-tank-damen",
+          "onlineStoreUrl": null,
+          "tags": [
+            "bild-ok",
+            "cj-keine-ch-versandoption",
+            "damen"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55775110300033",
+                "sku": "CJTZ292404401AZ",
+                "title": "Seeblau / S",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110332801",
+                "sku": "CJTZ292404402BY",
+                "title": "Seeblau / M",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110365569",
+                "sku": "CJTZ292404403CX",
+                "title": "Seeblau / L",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110398337",
+                "sku": "CJTZ292404404DW",
+                "title": "Seeblau / XL",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110431105",
+                "sku": "CJTZ292404405EV",
+                "title": "Schwarz / S",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110463873",
+                "sku": "CJTZ292404406FU",
+                "title": "Schwarz / M",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110496641",
+                "sku": "CJTZ292404407GT",
+                "title": "Schwarz / L",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110529409",
+                "sku": "CJTZ292404408HS",
+                "title": "Schwarz / XL",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110562177",
+                "sku": "CJTZ292404409IR",
+                "title": "Khaki / S",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110594945",
+                "sku": "CJTZ292404410JQ",
+                "title": "Khaki / M",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110627713",
+                "sku": "CJTZ292404411KP",
+                "title": "Khaki / L",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55775110660481",
+                "sku": "CJTZ292404412LO",
+                "title": "Khaki / XL",
+                "price": "44.90",
+                "inventoryPolicy": "CONTINUE",
+                "availableForSale": true,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    "exactSkuMatchVariant": {
+      "id": "gid://shopify/ProductVariant/55775110463873",
+      "sku": "CJTZ292404406FU",
+      "title": "Schwarz / M",
+      "price": "44.90",
+      "inventoryPolicy": "CONTINUE",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": false
+      }
+    },
+    "merchantRead": {
+      "case": "Produktpreis fehlt",
+      "as_of": "2026-11-14",
+      "offer_id": "15421165404545_cjtz292404406fu",
+      "content_language": "de",
+      "feed_label": "CH",
+      "shopify_product_context_from_root": {
+        "product_id": "15421165404545",
+        "status": "DRAFT",
+        "onlineStoreUrl": null,
+        "tag": "cj-keine-ch-versandoption",
+        "variant_id": "55775110463873",
+        "sku": "CJTZ292404406FU",
+        "shopify_price": "44.90 CHF",
+        "all_variants_same_price": true,
+        "activation_or_price_change": "not authorized and not done"
+      },
+      "windsor_query": {
+        "connector": "google_merchant",
+        "account": "5797470070",
+        "fields": [
+          "product_id",
+          "product_name",
+          "product_data_source",
+          "product_price",
+          "product_availability",
+          "product_link"
+        ],
+        "filter": [
+          "product_id",
+          "eq",
+          "15421165404545_cjtz292404406fu"
+        ],
+        "date_from": "2026-10-16",
+        "date_to": "2026-11-14",
+        "force_refresh": false,
+        "result": "MCP request timed out; no rows returned"
+      },
+      "assessment": "Unknown. Timeout is not evidence of absence. Actual Merchant product source, price, availability and link remain unread.",
+      "writes": 0,
+      "retries": 0,
+      "other_products_queried": 0
+    },
+    "assessment": "Exact productID/SKU match in Shopify, DRAFT with CHF44.90 and no public URL. Current Merchant source/price/link remains unknown after one bounded timeout; no price correction, activation, feed deletion or resubmission."
+  },
+  "urlCases": {
+    "task": "R209 targeted read-only check of two Merchant Center product URL issue cases",
+    "captured_date": "2026-11-14",
+    "store": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "source": "Shopify get_shop_info"
+    },
+    "csv_source": "Owner Drive source 1gTASf6nKWalF5W3lPdEjqdejRni_HaSa; hash recorded in MERCHANT-CSV-ANALYSE-20261114-R209.json",
+    "csv_issue": {
+      "title": "Produktseite nicht verfügbar",
+      "status": "NOT_ELIGIBLE_OR_DISAPPROVED",
+      "additional_information": "Achten Sie darauf, dass Ihre Produktseite über Desktop- und Mobilgeräte aufgerufen werden kann und das Crawling durch Google nicht eingeschränkt ist",
+      "traffic_types_and_countries": [
+        "Kostenlose Einträge; Schweiz",
+        "Kostenlose Einträge; Liechtenstein",
+        "Shopping-Anzeigen; Schweiz",
+        "Shopping-Anzeigen; Liechtenstein",
+        "Dynamisches Remarketing; Schweiz",
+        "Dynamisches Remarketing; Liechtenstein"
+      ],
+      "source_does_not_contain_submitted_landing_page_url": true
+    },
+    "products": [
+      {
+        "merchant_item_id": "shopify_ZZ_15516154462593_56177866178945",
+        "variant_legacy_id": "56177866178945",
+        "product": {
+          "id": "gid://shopify/Product/15516154462593",
+          "title": "Smartwatch mit Kamera und GPS für Kinder",
+          "status": "DRAFT",
+          "handle": "smartwatch-mit-kamera-und-gps-fur-kinder-669504",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "kat-kinder-baby",
+            "kategorie-uhr",
+            "sort-kinder-baby",
+            "such-smartband",
+            "tech",
+            "varianten-nachgezogen-1025"
+          ],
+          "online_store_url": null,
+          "published_on_online_store_publication": false,
+          "published_resource_records": []
+        },
+        "product_variants_checked": 4,
+        "total_inventory": 0,
+        "csv_variant_gid_lookup": {
+          "requested_gid": "gid://shopify/ProductVariant/56177866178945",
+          "lookup_method": "Shopify Admin GraphQL nodes(ids: [...]) with ProductVariant fragment",
+          "result": null,
+          "mapping_status": "unknown; exact requested variant GID returned null; no migration or color-based mapping inferred"
+        },
+        "current_variant_info": [
+          {
+            "id": "gid://shopify/ProductVariant/67801683886471",
+            "title": "Blau",
+            "price": "78.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683919239",
+            "title": "Rot",
+            "price": "78.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683952007",
+            "title": "Silber",
+            "price": "78.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683984775",
+            "title": "Grün",
+            "price": "78.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          }
+        ],
+        "current_variant_prices_chf": [
+          "78.90",
+          "78.90",
+          "78.90",
+          "78.90"
+        ],
+        "current_variant_count": 4
+      },
+      {
+        "merchant_item_id": "shopify_ZZ_15516156395905_56177868177793",
+        "variant_legacy_id": "56177868177793",
+        "product": {
+          "id": "gid://shopify/Product/15516156395905",
+          "title": "i9L Kinder 4G Videoanruf-Uhr",
+          "status": "DRAFT",
+          "handle": "i9l-kinder-4g-videoanruf-uhr-939264",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "kat-kinder-baby",
+            "kategorie-uhr",
+            "netz-geprueft",
+            "rueckhol-0907",
+            "sort-kinder-baby",
+            "such-smartband",
+            "tech",
+            "varianten-nachgezogen-1025"
+          ],
+          "online_store_url": null,
+          "published_on_online_store_publication": false,
+          "published_resource_records": []
+        },
+        "product_variants_checked": 6,
+        "total_inventory": 0,
+        "csv_variant_gid_lookup": {
+          "requested_gid": "gid://shopify/ProductVariant/56177868177793",
+          "lookup_method": "Shopify Admin GraphQL nodes(ids: [...]) with ProductVariant fragment",
+          "result": null,
+          "mapping_status": "unknown; exact requested variant GID returned null; no migration or color-based mapping inferred"
+        },
+        "current_variant_info": [
+          {
+            "id": "gid://shopify/ProductVariant/67801682968967",
+            "title": "Blau / Europa-Version",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683001735",
+            "title": "Blau / US-Ausgabe",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683034503",
+            "title": "Grün / Europa-Version",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683067271",
+            "title": "Grün / US-Ausgabe",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683100039",
+            "title": "Rot / Europa-Version",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67801683132807",
+            "title": "Rot / US-Ausgabe",
+            "price": "55.90 CHF",
+            "available_for_sale": true,
+            "published_on_online_store_publication": true
+          }
+        ],
+        "current_variant_prices_chf": [
+          "55.90",
+          "55.90",
+          "55.90",
+          "55.90",
+          "55.90",
+          "55.90"
+        ],
+        "current_variant_count": 6
+      }
+    ],
+    "public_url_check": {
+      "attempted": false,
+      "reason": "Shopify returned onlineStoreUrl:null for both products; products are DRAFT and not published on the Online Store publication. There was no evidenced public target URL to request.",
+      "public_http_status": null,
+      "public_canonical": null,
+      "robots_or_offer_structured_data": null
+    },
+    "interpretation": {
+      "finding": "Both Merchant Center cases map to exact Shopify products currently in DRAFT status and absent from the Online Store publication; Shopify exposes no onlineStoreUrl for either. This plausibly explains the feed landing-page problem, but the CSV does not provide the URL submitted to Google, and current data does not prove which URL Google last attempted to crawl.",
+      "variant_level_caveat": "The exact CSV variant GIDs gid://shopify/ProductVariant/56177866178945 and gid://shopify/ProductVariant/56177868177793 each returned null from Shopify nodes(ids:[...]); this proves no current node by those GIDs was returned, but does not establish whether the CSV IDs are historical or migrated. Current product variants have different IDs and are listed separately; no identity mapping is inferred from matching colors/titles. Shopify returned current-variant availableForSale:true and publishedOnPublication:true while each parent product is DRAFT and product-level Online Store publication is false; these variant-level flags do not establish effective storefront visibility.",
+      "suggested_draft_action": "First confirm whether each product is intentionally kept as DRAFT. If so, reconcile the disapproved Merchant Center items with that intended state rather than publishing the products. If the products are intended for sale, prepare a human-reviewed change proposal to publish the parent products on the Online Store only after confirming stock/inventory policy, intended market availability, and actual landing pages. Do not activate either product automatically.",
+      "no_claim": "No 404, live page failure, crawl block, Google recrawl, or indexing outcome was established."
+    },
+    "sources": {
+      "shopify_store_tool": "mcp__codex_apps__shopify_get_shop_info",
+      "shopify_product_tools": [
+        "mcp__codex_apps__shopify_get_product"
+      ],
+      "shopify_graphql_tool": "mcp__codex_apps__shopify_graphql_query",
+      "graphql_schema_tools": [
+        "mcp__codex_apps__shopify_graphql_schema"
+      ],
+      "online_store_publication_id": "gid://shopify/Publication/301970915713",
+      "online_store_publication_channel": {
+        "name": "Onlineshop",
+        "handle": "online_store"
+      },
+      "read_only": true,
+      "writes": false,
+      "performance_reports": false,
+      "gsc_queries": false,
+      "variant_identity_query": {
+        "query": "Shopify GraphQL nodes(ids: [gid://shopify/ProductVariant/56177866178945, gid://shopify/ProductVariant/56177868177793]) { id ... on ProductVariant { legacyResourceId title price product { id title status handle } } }",
+        "result": [
+          null,
+          null
+        ],
+        "schema_discovery": "QueryRoot.nodes(ids: [ID!]!)"
+      },
+      "current_variant_details_query": "Shopify Admin GraphQL query of each exact product with variants(first:50); current variant records are listed separately and are not asserted to match Merchant CSV variant IDs."
+    },
+    "correction_note": "Correction: initial artifact incorrectly treated a same-color current variant ID as the CSV target variant. That mapping has been withdrawn. The exact CSV GID nodes lookup returned null; current variants remain separate and no migration identity is asserted."
+  },
+  "writes": 0,
+  "caseCount": 3,
+  "scope": "Three targeted products, not a catalog or all-16-products audit. Two exact historical variant GIDs returned null; newer same-colour variants are NOT replacements or migrations."
+}
