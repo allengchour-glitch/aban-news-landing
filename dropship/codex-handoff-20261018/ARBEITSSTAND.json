@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 220,
-  "updatedAt": "2026-11-14T21:50:09.322371+00:00",
+  "revision": 221,
+  "updatedAt": "2026-11-14T22:00:11.626676+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
+      "state": "r221_selfcare_metadata_live_organizer_already_present",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
-      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
-      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
+      "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
+      "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4270,6 +4270,24 @@
           "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
           "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
           "bytes": 965914
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+          "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+          "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+          "bytes": 2561
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+          "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+          "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+          "bytes": 58947
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+          "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+          "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+          "bytes": 43318
         }
       ],
       "requiresFreshVerification": true,
@@ -6172,6 +6190,64 @@
               "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
               "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
               "bytes": 965914
+            }
+          ]
+        },
+        {
+          "revision": 220,
+          "kind": "state_before_r221",
+          "snapshot": {
+            "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
+            "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+            "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
+            "blockers": [
+              "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+              "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+              "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+              "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+              "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+              "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+              "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+              "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+              "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+              "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+              "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+            ]
+          }
+        },
+        {
+          "revision": 221,
+          "date": "2026-11-14",
+          "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+              "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+              "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+              "bytes": 2561
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+              "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+              "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+              "bytes": 58947
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+              "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+              "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+              "bytes": 43318
             }
           ]
         }
@@ -16415,21 +16491,18 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
+      "state": "r221_selfcare_metadata_live_organizer_already_present",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
-      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
-      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
+      "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
+      "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
         "R158-Fixes bleiben bis bestätigtem Rollen-/Live-Readback nicht produktiv.",
         "R169: Interner Kollektionslink ist ein Freigabeentwurf und nicht live; Produkttiteldrift erfordert frischen Preflight.",
-        "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen.",
-        "R175: Organizerlink fehlt im gelieferten serverseitigen Beauty-Collection-HTML; dynamische Darstellung und Rankingwirkung unbekannt.",
-        "R175: 30-Tage-Rückgabe wurde nicht gegen eine aktuelle Policy-Seite verifiziert und ist kein neuer freigegebener Claim.",
-        "R175: Collection-Text ist ein Freigabeentwurf; kein Shopify-/Theme-/Menüwrite ausgeführt."
+        "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -17016,6 +17089,24 @@
           "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
           "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
           "bytes": 965914
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+          "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+          "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+          "bytes": 2561
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+          "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+          "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+          "bytes": 58947
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+          "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+          "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+          "bytes": 43318
         }
       ],
       "requiresFreshVerification": true,
@@ -18309,6 +18400,52 @@
               "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
               "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
               "bytes": 965914
+            }
+          ]
+        },
+        {
+          "revision": 220,
+          "kind": "state_before_r221",
+          "snapshot": {
+            "state": "r220_live_wohnen_dekoration_description_updated_public_qa_passed",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "SHOPIFY_COLLECTION_DESCRIPTION_UPDATE_NATIVE_PUBLIC_READBACK",
+            "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion an wohnen-dekoration änderte ausschließlich descriptionHtml. Native und öffentliche Rücklesung sowie die dokumentierte Mobile-/Desktop-Live-QA bestanden; CHF-50-/30-Tage-Hinweis und die drei bisherigen Linkziele in ihrer Reihenfolge erhalten, kissenbezuege ergänzt. Keine Ranking-/Verkaufswirkung gemessen.",
+            "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Ranking/Verkaufswirkung nicht aus diesem Änderungsbeleg ableiten.",
+            "blockers": [
+              "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
+              "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
+              "R158-Fixes bleiben bis bestätigtem Rollen-/Live-Readback nicht produktiv.",
+              "R169: Interner Kollektionslink ist ein Freigabeentwurf und nicht live; Produkttiteldrift erfordert frischen Preflight.",
+              "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen.",
+              "R175: Organizerlink fehlt im gelieferten serverseitigen Beauty-Collection-HTML; dynamische Darstellung und Rankingwirkung unbekannt.",
+              "R175: 30-Tage-Rückgabe wurde nicht gegen eine aktuelle Policy-Seite verifiziert und ist kein neuer freigegebener Claim.",
+              "R175: Collection-Text ist ein Freigabeentwurf; kein Shopify-/Theme-/Menüwrite ausgeführt."
+            ]
+          }
+        },
+        {
+          "revision": 221,
+          "date": "2026-11-14",
+          "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+              "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+              "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+              "bytes": 2561
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+              "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+              "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+              "bytes": 58947
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+              "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+              "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+              "bytes": 43318
             }
           ]
         }
@@ -26435,6 +26572,34 @@
           "sha256": "4572c4d4991d46e7cdfc9999464ebe0d6f99a37d6da4cf1c35f0b8760dc26873",
           "gitBlobSha": "d7319b67ffeb62286851ac41dbbb6b8ad5f6fbaf",
           "bytes": 965914
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 221,
+      "at": "2026-11-14T22:00:11.626676+00:00",
+      "actor": "codex",
+      "summary": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+          "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+          "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+          "bytes": 2561
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+          "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+          "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+          "bytes": 58947
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+          "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+          "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+          "bytes": 43318
         }
       ],
       "taskCount": 24,
@@ -51454,5 +51619,60 @@
       "gsc": 0,
       "orders": 0
     }
+  },
+  "run221": {
+    "recordedAtUTC": "2026-11-14T22:00:11.626676+00:00",
+    "dateZurich": "2026-11-14",
+    "shopifyWrites": 1,
+    "target": "gid://shopify/Collection/687698313601",
+    "changedFields": [
+      "seo.description",
+      "image.altText"
+    ],
+    "imageCacheVersionAlsoChanged": true,
+    "sameImageBytes": true,
+    "existingOrganizerLinkAlreadyPresent": true,
+    "ownNewOrganizerLinks": 0,
+    "resolvedCurrentR175Blockers": [
+      "R175: Organizerlink fehlt im gelieferten serverseitigen Beauty-Collection-HTML; dynamische Darstellung und Rankingwirkung unbekannt.",
+      "R175: 30-Tage-Rückgabe wurde nicht gegen eine aktuelle Policy-Seite verifiziert und ist kein neuer freigegebener Claim.",
+      "R175: Collection-Text ist ein Freigabeentwurf; kein Shopify-/Theme-/Menüwrite ausgeführt."
+    ],
+    "resolutionIsObservedExistingStateNotOwnImplementation": true,
+    "nativeAndPublicReadbackPassed": true,
+    "newGoogleQueries": 0,
+    "newMetricoolMetricReads": 0,
+    "newKlaviyoReports": 0,
+    "newMerchantReads": 0,
+    "newOrderQueries": 0,
+    "newSocialPosts": 0,
+    "newRenders": 0,
+    "newAutomation": 0,
+    "readOnlyIdentityReads": {
+      "shopInfo": 1,
+      "metricoolBrand": 1
+    },
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.md",
+        "sha256": "189f45d057e0cdbb9ad0ef80061456759e566cad3bf7148bdb423ec8f445e4c8",
+        "gitBlobSha": "da730162d5b8612a18db61b66fee70d004880e6a",
+        "bytes": 2561
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/SELFCARE-SEO-20261114-R221.json",
+        "sha256": "ec5da8aeeb5ae2ca5baf34e986b90f8003ead926b1e73dc7c1a0ce8a439997d2",
+        "gitBlobSha": "2341ca70cce58c153ff57b8eb9b2354566066a81",
+        "bytes": 58947
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/SELFCARE-REFERENZ-20261114-R221.jpg",
+        "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+        "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
+        "bytes": 43318
+      }
+    ],
+    "executedAtUTC": "2026-11-14T21:57:07Z",
+    "nativeReadbackObjectUpdatedAtUTC": "2026-11-14T21:57:08Z"
   }
 }

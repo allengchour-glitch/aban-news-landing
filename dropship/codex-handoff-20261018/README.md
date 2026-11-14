@@ -1,3 +1,11 @@
+# R221 – Beauty & Self-Care: Metadaten live verbessert, 14.11.2026
+
+Eine erfolgreiche Shopify-Mutation aktualisierte seo.description und den Alttext des bestehenden Kollektionsbildes. Öffentliche Meta-/OG-Beschreibung und native Werte stimmen; JPEG-Bytes/Bild-ID/Dateipfad erhalten, URL-Cacheversion aktualisiert. Der alte R175-Organizer-Link ist bereits genau einmal live vorhanden und wurde hier nicht erneut angelegt. Keine Ranking-/Verkaufswirkung gemessen.
+
+[Bericht](SELFCARE-SEO-20261114-R221.md) · [Belege](SELFCARE-SEO-20261114-R221.json). Historie und 24 Aufgaben-IDs folgen unverändert; Claude-Empfang unbekannt.
+
+---
+
 # R220 – Wohnen & Dekoration live aktualisiert, 14.11.2026
 
 Eine Shopify-Änderung an `wohnen-dekoration` aktualisierte ausschliesslich die Beschreibung. Native und öffentliche Rücklesung sowie Mobile-/Desktop-Live-QA sind belegt. CHF 50 blieb unverändert im Text; die aktuelle Rückgaberichtlinie bestätigt 30 Tage und nennt die Ausnahme für selbst gestaltete Artikel. Die drei bisherigen Links blieben in Reihenfolge; Kissenbezüge kam als erster Link hinzu. Keine Ranking- oder Verkaufswirkung gemessen.

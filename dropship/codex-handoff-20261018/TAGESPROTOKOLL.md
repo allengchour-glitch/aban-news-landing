@@ -2524,3 +2524,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Umfang | Eine Shop-Schreibaktion, null Theme-Publishes | Keine neue Automation; keine weiteren Änderungen an Collections. |
 
 [Bericht](WOHNEN-SEITE-20261114-R220.md) · [Belegpaket](WOHNEN-SEITE-20261114-R220.json).
+
+### R221 – Self-Care-Metadaten und bestehender Organizer-Link, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Haar-/Beauty-/Self-Care-Kategorien und den Organizer gezielt gelesen; R175-Entwurf gegen aktuelle Self-Care-Seite geprüft | Organizer-Link bereits einmal live vorhanden, keine neue eigene Linkanlage. Produkt ACTIVE, CHF 29.90, öffentlich kaufbar; Tracking=false/CONTINUE/Menge0 ohne Liefer-/Bestandsversprechen. |
+| SEO / Bild | Eine Shopify-collectionUpdate-Mutation um 22:57:07 Uhr Zürich: seo.description und image.altText aktualisiert | Native und öffentliche Meta-/OG-Rücklesung passend. Bestehende Bild-ID und vollständige JPEG-Bytes identisch; URL-Cacheversion geändert. Alttext nativ bestätigt, öffentliche OG-Alt-Ausgabe im geprüften Head unbekannt. |
+| Prüfung / Grenzen | Sichtbaren Beschreibungstext, Canonical, Titel, H1 sowie drei Produkt-/Variantenstichproben gegengeprüft | Erhalten; HTTP200. Keine Ranking-/Verkaufswirkung, neue Indexierung, Reports, Orders, Socialposts, Renders oder Automation. Kein Theme-Publish. |
+| Gedächtnis | R175-Befunde zum bereits vorhandenen Self-Care-Link aktualisiert; 24IDs/Historien/Tagesgrenzen fortgeführt | Revision221; vorherige Befunde erhalten. Vorhandene Umsetzung nicht Codex zugeschrieben; Claude-Kenntnisnahme unbekannt. |
+
+[Bericht](SELFCARE-SEO-20261114-R221.md) · [Belege](SELFCARE-SEO-20261114-R221.json).

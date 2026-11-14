@@ -1,0 +1,989 @@
+{
+  "revision": 221,
+  "capturedAtUTC": "2026-11-14T22:00:11.626676+00:00",
+  "dateZurich": "2026-11-14",
+  "type": "completed_collection_metadata_update",
+  "authorizationContext": {
+    "latestOwnerInstruction": "weiter",
+    "priorWebsiteAndSEOAuthorizationContinues": true,
+    "nativeMutationRequiresConfirmation": true,
+    "separateClickReceipt": null
+  },
+  "write": {
+    "count": 1,
+    "operation": "collectionUpdate",
+    "executedAtUTC": "2026-11-14T21:57:07Z",
+    "target": "gid://shopify/Collection/687698313601",
+    "changedBusinessFields": [
+      "seo.description",
+      "image.altText"
+    ],
+    "serverSideMetadata": [
+      "updatedAt",
+      "image.url query cache version"
+    ],
+    "userErrors": [],
+    "before": {
+      "seo": {
+        "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+        "description": "Beauty & Self-Care online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+      },
+      "image": {
+        "id": "gid://shopify/CollectionImage/2066472960385",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1781551964",
+        "altText": null,
+        "width": 1200,
+        "height": 1200
+      }
+    },
+    "after": {
+      "seo": {
+        "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+        "description": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen."
+      },
+      "image": {
+        "id": "gid://shopify/CollectionImage/2066472960385",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1794693427",
+        "altText": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund",
+        "width": 1200,
+        "height": 1200
+      }
+    },
+    "nativeReadbackObjectUpdatedAtUTC": "2026-11-14T21:57:08Z"
+  },
+  "counterchecks": {
+    "nativeReadback": true,
+    "publicHTTP200": true,
+    "publicMetaAndOGExact": true,
+    "sameImageBytesAndID": true,
+    "publicOgImageAlt": "unknown_absent_in_checked_head",
+    "allThreeSampleProductsAndOneVariantEachPreserved": true,
+    "bodyDescriptionPreserved": true,
+    "existingOrganizerLinkCount": 1,
+    "sameImageFilePath": true,
+    "sameImageDimensions": true
+  },
+  "continuity": {
+    "oldR175OrganizerLink": "already_implemented_observed_actor_and_time_unknown",
+    "ownNewOrganizerLinks": 0,
+    "nativeOrganizerCurrency": "CHF",
+    "nativeOrganizerPrice": "29.90",
+    "sourceDayReportsReused": "R200/14.11.2026",
+    "newMetricsFlowGSCMerchantOrderReportCalls": 0,
+    "newSocialPosts": 0,
+    "newVideoRenders": 0,
+    "newAutomation": 0,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "readScope": {
+      "collections": [
+        "beauty-haar",
+        "beauty-pflege",
+        "beauty-selfcare"
+      ],
+      "targetProduct": "15408458236289"
+    },
+    "initialProductQueryValidationError": "deprecated featuredImage blocked before send; corrected product read succeeded, not a missing connector or empty product",
+    "resolvedR175ReturnPolicyNote": "Dated R175 uncertainty retained in prior state; same-day R220 public returns-policy evidence reused, no new return promise or policy change"
+  },
+  "limits": {
+    "rankingIndexingOrSalesEffect": "unknown_unmeasured",
+    "noFullCatalogAcceptance": true,
+    "noClaimOfPublicAltEverywhere": true
+  },
+  "embeddedEvidence": {
+    "nativeBefore.json": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687698313601",
+              "title": "Beauty & Self-Care",
+              "handle": "beauty-selfcare",
+              "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-12T18:03:23Z",
+              "seo": {
+                "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+                "description": "Beauty & Self-Care online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+              },
+              "templateSuffix": null,
+              "sortOrder": "CREATED_DESC",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066472960385",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1781551964",
+                "altText": null,
+                "width": 1200,
+                "height": 1200
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/16656662430087",
+                    "title": "2-in-1 Elektrischer Haarentferner für Frauen",
+                    "handle": "2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760454992263",
+                          "title": "Rosa",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656661971335",
+                    "title": "Klärende Reinigung Seife",
+                    "handle": "klarende-reinigung-seife-632900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege",
+                      "sort-koerperpflege-bad"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/klarende-reinigung-seife-632900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760451355015",
+                          "title": "Modell 1",
+                          "price": "23.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656660693383",
+                    "title": "Ätherisches Öl",
+                    "handle": "atherisches-ol-633600",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "mengenrabatt-a",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/atherisches-ol-633600",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760446898567",
+                          "title": "Default Title",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "prewrite.json": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687698313601",
+              "title": "Beauty & Self-Care",
+              "handle": "beauty-selfcare",
+              "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-12T18:03:23Z",
+              "seo": {
+                "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+                "description": "Beauty & Self-Care online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+              },
+              "templateSuffix": null,
+              "sortOrder": "CREATED_DESC",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066472960385",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1781551964",
+                "altText": null,
+                "width": 1200,
+                "height": 1200
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/16656662430087",
+                    "title": "2-in-1 Elektrischer Haarentferner für Frauen",
+                    "handle": "2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760454992263",
+                          "title": "Rosa",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656661971335",
+                    "title": "Klärende Reinigung Seife",
+                    "handle": "klarende-reinigung-seife-632900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege",
+                      "sort-koerperpflege-bad"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/klarende-reinigung-seife-632900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760451355015",
+                          "title": "Modell 1",
+                          "price": "23.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656660693383",
+                    "title": "Ätherisches Öl",
+                    "handle": "atherisches-ol-633600",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "mengenrabatt-a",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/atherisches-ol-633600",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760446898567",
+                          "title": "Default Title",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "draft.json": {
+      "id": "gid://shopify/Collection/687698313601",
+      "seo": {
+        "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+        "description": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen."
+      },
+      "image": {
+        "id": "gid://shopify/CollectionImage/2066472960385",
+        "altText": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund"
+      }
+    },
+    "mutation-input.json": {
+      "query": "mutation UpdateSelfcareMetadata($collection: CollectionUpdateInput!) { collectionUpdate(collection: $collection) { collection { id title handle descriptionHtml updatedAt seo { title description } templateSuffix sortOrder image { id url altText width height } } userErrors { field message } } }",
+      "variables": {
+        "collection": {
+          "id": "gid://shopify/Collection/687698313601",
+          "seo": {
+            "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+            "description": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen."
+          },
+          "image": {
+            "id": "gid://shopify/CollectionImage/2066472960385",
+            "altText": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund"
+          }
+        }
+      }
+    },
+    "mutation.json": {
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/687698313601",
+            "title": "Beauty & Self-Care",
+            "handle": "beauty-selfcare",
+            "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+            "updatedAt": "2026-11-14T21:57:07Z",
+            "seo": {
+              "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+              "description": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen."
+            },
+            "templateSuffix": null,
+            "sortOrder": "CREATED_DESC",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2066472960385",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1794693427",
+              "altText": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund",
+              "width": 1200,
+              "height": 1200
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    "nativeAfter.json": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687698313601",
+              "title": "Beauty & Self-Care",
+              "handle": "beauty-selfcare",
+              "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+              "updatedAt": "2026-11-14T21:57:08Z",
+              "seo": {
+                "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+                "description": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen."
+              },
+              "templateSuffix": null,
+              "sortOrder": "CREATED_DESC",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066472960385",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1794693427",
+                "altText": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund",
+                "width": 1200,
+                "height": 1200
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/16656662430087",
+                    "title": "2-in-1 Elektrischer Haarentferner für Frauen",
+                    "handle": "2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/2-in-1-elektrischer-haarentferner-fur-frauen-633900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760454992263",
+                          "title": "Rosa",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656661971335",
+                    "title": "Klärende Reinigung Seife",
+                    "handle": "klarende-reinigung-seife-632900",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege",
+                      "sort-koerperpflege-bad"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/klarende-reinigung-seife-632900",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760451355015",
+                          "title": "Modell 1",
+                          "price": "23.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/16656660693383",
+                    "title": "Ätherisches Öl",
+                    "handle": "atherisches-ol-633600",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "mengenrabatt-a",
+                      "neuheit",
+                      "pflege"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/atherisches-ol-633600",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67760446898567",
+                          "title": "Default Title",
+                          "price": "16.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "public-before.json": {
+      "checkedAtUTC": "2026-11-14T21:56:51.375782+00:00",
+      "url": "https://luxestyle.ch/collections/beauty-selfcare",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/beauty-selfcare",
+      "headTitle": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+      "metaDescription": "Beauty & Self-Care online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+      "ogDescription": "Beauty & Self-Care online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+      "canonical": "https://luxestyle.ch/collections/beauty-selfcare",
+      "h1": [
+        "Beauty & Self-Care"
+      ],
+      "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+      "headRobots": null,
+      "headersRobots": null,
+      "organizerLinkCountInDescription": 1,
+      "collectionImageOgAlt": null
+    },
+    "public-after.json": {
+      "checkedAtUTC": "2026-11-14T21:57:53.221081+00:00",
+      "url": "https://luxestyle.ch/collections/beauty-selfcare",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/collections/beauty-selfcare",
+      "headTitle": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+      "metaDescription": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen.",
+      "ogDescription": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen.",
+      "canonical": "https://luxestyle.ch/collections/beauty-selfcare",
+      "h1": [
+        "Beauty & Self-Care"
+      ],
+      "descriptionHtml": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"/products/bambus-kosmetik-organizer-premium\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/products/cellulite-massage-roller\">Roller Cellulite</a> · <a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->",
+      "organizerLinkCountInDescription": 1,
+      "collectionImageOgAlt": null,
+      "checks": {
+        "HTTP200": true,
+        "sameCanonical": true,
+        "seoDescriptionExact": true,
+        "ogDescriptionExact": true,
+        "seoTitlePreserved": true,
+        "h1Preserved": true,
+        "bodyDescriptionPreserved": true,
+        "oneExistingOrganizerLink": true
+      },
+      "allPass": true
+    },
+    "image-countercheck.json": {
+      "beforeSHA256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+      "afterSHA256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+      "bytesIdentical": true,
+      "beforeBytes": 43318,
+      "afterBytes": 43318,
+      "sameImageId": true,
+      "beforeSource": "selfcare-collection-image.jpg",
+      "afterURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4001638579995_R00.jpg?v=1794693427",
+      "altTextNativeConfirmed": "Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund",
+      "rootViewedImageBefore": true,
+      "publicOgImageAlt": null,
+      "ogAltMissingMeansUnknown": true
+    },
+    "organizer.json": {
+      "data": {
+        "product": {
+          "id": "gid://shopify/Product/15408458236289",
+          "title": "Kosmetik-Organizer für den Schminktisch",
+          "handle": "bambus-kosmetik-organizer-premium",
+          "descriptionHtml": "\n<div class=\"luxestyle-product-body\">\n<p><strong>Deine Düfte übersichtlich in Szene gesetzt.</strong> Der Kosmetik-Organizer präsentiert Parfümflakons und Pflegeprodukte auf treppenförmigen Ablagen. So kannst du deine Auswahl nach vorn und hinten staffeln und deinen Schminktisch bewusst gestalten.</p>\n<h2>Gestaffelte Form, warme Optik</h2>\n<p>Mehrere nach hinten ansteigende Ebenen prägen das Design. Naturfarbene Ablageflächen mit sichtbarer Maserung treffen auf einen dunklen Unterbau. Die Vorderseite wird durch einen quer verlaufenden Griff ergänzt.</p>\n<h3>Eine Anordnung für deine Routine</h3>\n<p>Eine mögliche Anordnung: Platziere häufig verwendete Flakons im vorderen Bereich und kombiniere dahinter weitere Lieblingsprodukte. Die unterschiedlichen Höhen bringen Struktur in die Präsentation, ohne alle Stücke in einer Reihe aufzustellen.</p>\n</div><div class=\"luxestyle-service-info\">\n<h2>Versand und Rückgabe</h2>\n<p>Informationen zu Versandkosten und Lieferung findest du in unseren <a href=\"/policies/shipping-policy\">Versandbedingungen</a>. Für Rückgaben gelten unsere <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n</div>\n<!--gdetails-->\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires\">Ratgeber: Minimalistisch einrichten</a>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/luxestyle-premium\">Premium-Marken</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+          "updatedAt": "2026-11-02T06:57:00Z",
+          "status": "ACTIVE",
+          "tags": [
+            "Aufbewahrung",
+            "bambus",
+            "bambus-badezimmer",
+            "beauty aufbewahrung",
+            "bild-ok",
+            "kosmetik organizer",
+            "kuratiert",
+            "luxestyle-ch",
+            "nachhaltig",
+            "premium",
+            "schminktisch",
+            "sort-kosmetik-schmuck-organizer",
+            "swiss-brand",
+            "vegan"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55732479590785",
+                "title": "Default Title",
+                "price": "29.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryQuantity": 0,
+                "inventoryItem": {
+                  "tracked": false
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "organizer-storefront.json": {
+      "checkedAtUTC": "2026-11-14T21:56:51.721536+00:00",
+      "url": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium.js",
+      "id": 15408458236289,
+      "handle": "bambus-kosmetik-organizer-premium",
+      "title": "Kosmetik-Organizer für den Schminktisch",
+      "available": true,
+      "priceCents": 2990,
+      "variants": [
+        {
+          "id": 55732479590785,
+          "title": "Default Title",
+          "available": true,
+          "price": 2990
+        }
+      ],
+      "isCurrencyClaimFromJS": false
+    },
+    "shop.json": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "email": "info@luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "brand.json": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "firecrawl-check.json": {
+      "url": "https://luxestyle.ch/collections/beauty-selfcare",
+      "status": 200,
+      "source": "Firecrawl maxAge0; first actual head only",
+      "rawLength": 1913945,
+      "headTitle": "\n  Beauty &amp; Self-Care kaufen | LuxeStyle Schweiz\n",
+      "headRobots": [],
+      "organizerInDescription": true,
+      "hero": "<p>Beauty &amp; Self-Care entdecken: Beauty-Produkte, Zubehör und Aufbewahrung für deine persönliche Routine. Produktbilder, Varianten und aktuelle Angaben findest du direkt auf der jeweiligen Produktseite.</p>\n<p>Für mehr Überblick auf dem Schminktisch: <a href=\"https://luxestyle.ch/products/bambus-kosmetik-organizer-premium\" data-product-impression-tracked=\"true\" data-product-link-position=\"1\" data-impression-id=\"f36d611b-2b2b-4059-ab85-b77e2fd53229\" data-above-fold=\"false\" data-product-click-tracked=\"true\">Kosmetik-Organizer für den Schminktisch ansehen</a>.</p>\n<p>Gratis-Versand in der Schweiz ab CHF 50. Informationen zu Fristen, Voraussetzungen und Ausnahmen findest du in unseren <a href=\"https://luxestyle.ch/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"https://luxestyle.ch/products/cellulite-massage-roller\" data-product-impression-tracked=\"true\" data-product-link-position=\"2\" data-impression-id=\"b83e0855-a937-42c1-8537-14585baaeab7\" data-above-fold=\"false\" data-product-click-tracked=\"true\">Roller Cellulite</a> · <a href=\"https://luxestyle.ch/collections/beauty-duefte\">Parfum &amp; Düfte</a></p><!-- /ls-verwandt -->"
+    },
+    "hairBefore.json": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/690801967489",
+              "title": "Haarpflege & Styling",
+              "handle": "beauty-haar",
+              "descriptionHtml": "<p>Haarstyling und passende Tools nach Anwendung entdecken: von Lockenstäben und Glätteisen bis zu Haarbürsten, Trocknern und Pflegezubehör. Ausführung und Lieferumfang unterscheiden sich je nach Artikel.</p><h2>Schnell finden</h2><ul>\n<li><a href=\"/collections/haarstyling-geraete\">Haarstyling-Geräte</a></li>\n<li><a href=\"/collections/lockenstaebe\">Lockenstäbe &amp; Lockenwickler</a></li>\n<li><a href=\"/collections/glaetteisen\">Glätteisen &amp; Haarglätter</a></li>\n<li><a href=\"/collections/haarbuersten-kaemme\">Haarbürsten &amp; Kämme</a></li>\n<li><a href=\"/collections/haartrockner-warmluft\">Haartrockner &amp; Warmluftbürsten</a></li>\n<li><a href=\"/collections/haarpflege-oele-shampoo\">Haarpflege, Haaröl &amp; Haarfarbe</a></li>\n<li><a href=\"/collections/beauty-pflege\">Beauty &amp; Pflege</a></li>\n</ul><p>Anwendung, Ausführung und Lieferumfang bitte direkt beim jeweiligen Artikel prüfen.</p>",
+              "updatedAt": "2026-11-09T21:49:13Z",
+              "seo": {
+                "title": "Haarpflege & Styling | LuxeStyle Schweiz",
+                "description": "Haarpflege & Styling bei LuxeStyle: Lockenstäbe, Glätteisen, Bürsten, Trockner und Zubehör entdecken. Ausführung und Lieferumfang am Artikel prüfen."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066986303873",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/73f15ae2-e8ea-473b-acf5-63a57181b811_trans.jpg?v=1792999558",
+                "altText": "Haarpflege & Styling – LuxeStyle-Pinnwand",
+                "width": 2000,
+                "height": 1000
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15454914871681",
+                    "title": "Wellen Lockenstab",
+                    "handle": "wellen-lockenstab-601200",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "geschenkwelt-preishits",
+                      "haarstyling",
+                      "pflege",
+                      "rueckhol-0907",
+                      "sort-beauty-haar",
+                      "sort-glaetteisen-locken-foehn",
+                      "sort-haarstyling-geraete",
+                      "sort-lockenstaebe-curler",
+                      "stecker-bereinigt-2510",
+                      "such-lockenstab"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/wellen-lockenstab-601200",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/56068413849985",
+                          "title": "Four Gear Powder-EU",
+                          "price": "18.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15493870190977",
+                    "title": "Automatischer Lockenstab für nasse und trockene Haare",
+                    "handle": "automatischer-lockenstab-fur-nasse-und-trocken-384128",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "haarstyling",
+                      "neuheit",
+                      "pflege",
+                      "rueckhol-0907",
+                      "sort-beauty-haar",
+                      "sort-glaetteisen-locken-foehn",
+                      "sort-haarstyling-geraete",
+                      "sort-lockenstaebe-curler",
+                      "stecker-bereinigt-2510",
+                      "such-lockenstab",
+                      "varianten-nachgezogen-1025"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/automatischer-lockenstab-fur-nasse-und-trocken-384128",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789521060231",
+                          "title": "EU",
+                          "price": "22.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15449407783297",
+                    "title": "Selbstreinigende Haarbürste",
+                    "handle": "selbstreinigende-haarburste-894400",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "buerste",
+                      "cj-real",
+                      "dropship",
+                      "haarbuerste",
+                      "neu",
+                      "rueckhol-0907",
+                      "sort-beauty-haar",
+                      "sort-haarbuersten",
+                      "trend",
+                      "video-hit",
+                      "viral"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/selbstreinigende-haarburste-894400",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/55881572876673",
+                          "title": "Schwarzgold",
+                          "price": "14.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "beautyCareBefore.json": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/689027416449",
+              "title": "Beauty & Pflege",
+              "handle": "beauty-pflege",
+              "descriptionHtml": "<p>Entdecke Beauty und Pflege nach Bereich: Make-up, Nägel, Wimpern, Hautpflege, Haarstyling, Beauty-Geräte und Düfte. Nutze die Unterkategorien, um gezielt zu suchen oder offen durch die Auswahl zu stöbern.</p><h2>Schnell finden</h2><ul>\n<li><a href=\"/collections/beauty-makeup\">Make-up</a></li>\n<li><a href=\"/collections/beauty-naegel\">Nägel &amp; Nageldesign</a></li>\n<li><a href=\"/collections/wimpern-lashes\">Wimpern &amp; Lashes</a></li>\n<li><a href=\"/collections/beauty-hautpflege\">Hautpflege</a></li>\n<li><a href=\"/collections/beauty-haar\">Haarpflege &amp; Styling</a></li>\n<li><a href=\"/collections/beauty-geraete\">Beauty-Geräte</a></li>\n<li><a href=\"/collections/beauty-duefte\">Parfum &amp; Düfte</a></li>\n</ul><p>Prüfe Anwendung, Varianten und produktspezifische Hinweise direkt beim jeweiligen Artikel. Gratisversand in der Schweiz ab CHF 50.</p>",
+              "updatedAt": "2026-11-12T12:17:16Z",
+              "seo": {
+                "title": "Beauty & Pflege online entdecken | LuxeStyle Schweiz",
+                "description": "Beauty & Pflege bei LuxeStyle: Make-up, Nägel, Wimpern, Hautpflege, Haarstyling, Beauty-Geräte und Düfte nach Bereich entdecken."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066508022145",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/jade-roller-gua-sha-set-rosenquarz-premi.jpg?v=1794435635",
+                "altText": "Beauty & Pflege – Handgemachte Galaxy Schmetterling Nagel-Sets · Press-on-Nägel",
+                "width": 1600,
+                "height": 1600
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15453768089985",
+                    "title": "40-farbige Augen-Schatten-Palette",
+                    "handle": "40-farbige-augen-schatten-palette-607500",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "kosmetik",
+                      "makeup",
+                      "mengenrabatt-b",
+                      "rueckhol-0907",
+                      "sort-augen-make-up",
+                      "sort-lidschatten-paletten",
+                      "varianten-nachgezogen-1025"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/40-farbige-augen-schatten-palette-607500",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789787988359",
+                          "title": "SET002A",
+                          "price": "15.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453771006337",
+                    "title": "Infrarot-Gesichtsbehandlungsgerät",
+                    "handle": "infrarot-gesichtsbehandlungsgerat-393664",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "beauty",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "gesichtsbehandlungsgeraet",
+                      "haarstyling",
+                      "pflege",
+                      "rueckhol-0907",
+                      "sort-led-masken-lichtgeraete",
+                      "varianten-nachgezogen-1025"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/infrarot-gesichtsbehandlungsgerat-393664",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789398606215",
+                          "title": "Schwarzgold Lampenperlen",
+                          "price": "75.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15453825368449",
+                    "title": "Modell Soft Velvet Wimpern",
+                    "handle": "modell-soft-velvet-wimpern-629800",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "auswahl-nachgeruestet",
+                      "beauty",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "kosmetik",
+                      "makeup",
+                      "mengenrabatt-a",
+                      "rueckhol-0907",
+                      "sort-kuenstliche-wimpern"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/modell-soft-velvet-wimpern-629800",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/55904983220609",
+                          "title": "0.05 ml / 7 mm",
+                          "price": "15.90",
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "organizerDeprecatedQueryError.json": {
+      "error": "invalid_request",
+      "error_description": "GraphQL document uses deprecated Admin API 2026-10 schema elements, which are not sent: The field Product.featuredImage is deprecated. Use `featuredMedia` instead. Use graphql_schema to find the current field, argument or value.",
+      "graphql_errors": [
+        {
+          "message": "The field Product.featuredImage is deprecated. Use `featuredMedia` instead.",
+          "locations": [
+            {
+              "line": 1,
+              "column": 142
+            }
+          ]
+        }
+      ],
+      "error_code": "INVALID_ARGUMENT"
+    }
+  },
+  "sameDayPolicyEvidenceReuse": {
+    "url": "https://luxestyle.ch/policies/refund-policy",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/policies/refund-policy",
+    "headTitle": "Widerrufsrecht\n – LuxeStyle",
+    "h1": [
+      "Widerrufsrecht"
+    ],
+    "canonicalTags": [
+      "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/policies/refund-policy\"\n>"
+    ],
+    "headRobots": [],
+    "headersRobots": null,
+    "checkedAtUTC": "2026-11-14T21:37:32.486094+00:00",
+    "policyText": "Widerrufsrecht \n   \n\n   \n     \n         Rückgabe & Erstattung \n Bei LuxeStyle sollst du mit deiner Bestellung rundum zufrieden sein. Deshalb gewähren wir dir freiwillig ein  30-tägiges Rückgaberecht  ab Erhalt deiner Ware – ganz ohne Angabe von Gründen. Diese Regelung gilt für Lieferungen in die Schweiz und nach Liechtenstein. Für selbst gestaltete Artikel gilt sie nicht: Dafür gelten die Regeln im Abschnitt « Selbst gestaltete Artikel » weiter unten. \n Bitte beachte: Diese Rückgabe erfolgt freiwillig und aus Kulanz. Ein gesetzliches Widerrufsrecht besteht im Schweizer Recht für den Online-Kauf grundsätzlich nicht. \n Für Verbraucher:innen in Liechtenstein gilt zusätzlich das gesetzliche Rücktrittsrecht von 14 Tagen ab Erhalt der Ware nach dem Fern- und Auswärtsgeschäfte-Gesetz (FAGG). Unsere freiwillige 30-Tage-Rückgabe geht darüber hinaus; die Abwicklung ist dieselbe, und bei einem Rücktritt erstatten wir auch die ursprünglichen Kosten der Standardlieferung. Ausgenommen sind Artikel, die nach deinen Vorgaben angefertigt werden, zum Beispiel selbst gestaltete Artikel (Art. 19 Abs. 1 Bst. c FAGG, siehe Abschnitt «Selbst gestaltete Artikel»). \n\n Deine 30-Tage-Rückgabe \n Du kannst Artikel innerhalb von  30 Tagen ab Erhalt  an uns zurücksenden. Voraussetzung ist, dass die Ware  unbenutzt, ungetragen, unbeschädigt und vollständig in der Originalverpackung  (inkl. Etiketten und allfälligem Zubehör) ist. \n\n So läuft die Rückgabe ab \n \n   \n Rückgabe anmelden:  Schreib uns innerhalb der 30 Tage eine kurze E-Mail an  info@luxestyle.ch  mit deiner Bestellnummer und den Artikeln, die du zurücksenden möchtest. \n   \n Retourenadresse erhalten:  Wir senden dir per E-Mail die gültige Retourenadresse zu. Da wir im Direktversand (Dropshipping) arbeiten, kann die Rücksendeadresse je nach Artikel und Lager variieren. \n   \n Artikel zurücksenden:  Verpacke die Ware sicher und sende sie unbenutzt und originalverpackt an die von uns mitgeteilte Retourenadresse. Bitte verwende einen versicherten bzw. nachverfolgbaren Versand und bewahre den Sendebeleg auf. \n   \n Erstattung erhalten:  Sobald deine Rücksendung bei uns bzw. beim Lager eingetroffen und geprüft ist, erstatten wir dir den Kaufbetrag auf dem  ursprünglichen Zahlungsweg  – spätestens  innerhalb von 14 Tagen nach Eingang  der Retoure. \n \n\n Wichtig: richtige Retourenadresse verwenden \n Die im Impressum genannte Adresse (Hühnerhubelstrasse 37, 3123 Belp) ist  keine Retourenadresse . Sende Rücksendungen niemals unaufgefordert an diese Adresse – Pakete, die dorthin geschickt werden, können nicht bearbeitet oder erstattet werden. Verwende ausschliesslich die Retourenadresse, die wir dir nach deiner Anmeldung per E-Mail mitteilen. \n\n Rücksendekosten \n Die Kosten für die Rücksendung im Rahmen des freiwilligen 30-Tage-Rückgaberechts trägst du als Kundin oder Kunde selbst. Ausgenommen sind Fälle, in denen die Ware mangelhaft, beschädigt oder falsch geliefert wurde – dann übernehmen wir die Rücksendekosten (siehe unten). \n\n Defekte, beschädigte oder falsch gelieferte Artikel \n Ist ein Artikel bei Erhalt defekt oder beschädigt, oder hast du einen falschen Artikel erhalten, ist die Rücksendung für dich  kostenlos . \n \n   Melde dich in diesem Fall bitte  innerhalb von 30 Tagen nach Erhalt  unter  info@luxestyle.ch . Für selbst gestaltete Artikel bitten wir um Meldung innerhalb von 30 Tagen und entscheiden nach der Prüfung zwischen Ersatz und Erstattung (siehe Abschnitt «Selbst gestaltete Artikel»; deine gesetzlichen Rechte bei Mängeln bleiben unberührt). \n   Füge deiner Meldung ein  Foto oder Video  bei, das den Mangel bzw. den Fehler zeigt. So können wir den Fall schnell prüfen und unkompliziert lösen. \n   Nach Prüfung erhältst du wahlweise kostenlosen Ersatz oder die volle Erstattung des Kaufbetrags. Die Kosten der Rücksendung übernehmen in diesem Fall wir. \n \n\n Von der Rückgabe ausgeschlossen \n Aus hygienischen und praktischen Gründen können folgende Artikel nicht zurückgenommen werden, sofern sie kein Mangel aufweisen: \n \n   Artikel, die aus Hygienegründen versiegelt geliefert werden und deren Versiegelung nach Erhalt geöffnet bzw. entfernt wurde (z. B. Ohrringe, Schmuck mit direktem Hautkontakt, Kosmetik, Unterwäsche, Socken, Badebekleidung). \n   Personalisierte, individuell angefertigte oder nach deinen Wünschen gestaltete Artikel (z. B. Gravuren, individuelle Anfertigungen, selbst gestaltete Artikel; siehe Abschnitt «Selbst gestaltete Artikel»). \n   Artikel, die benutzt, getragen, gewaschen, beschädigt oder ohne Originalverpackung/Etiketten zurückgesendet werden. \n \n Der gesetzliche Anspruch bei tatsächlichen Sachmängeln bleibt von diesen Ausschlüssen unberührt. \n\n Selbst gestaltete Artikel (Druck auf Bestellung) \n Für Artikel, die du im Editor mit eigenem Motiv, Foto oder Text gestaltest, gilt statt des 30-tägigen Rückgaberechts die folgende Regelung. Eine Kurzfassung steht auf jeder Produktseite dieser Artikel. \n \n   \n Was ausgeschlossen ist.  Selbst gestaltete Artikel werden erst nach deiner Bestellung nach deinem Entwurf gedruckt und lassen sich nicht weiterverkaufen. Darum nehmen wir sie nicht zurück und tauschen sie nicht um, wenn du deine Meinung änderst, der Artikel dir nicht gefällt oder du Grösse, Farbe, Motiv oder Text falsch gewählt hast. Miss vor der Bestellung nach der Grössentabelle nach und prüfe deinen Entwurf in der Vorschau. \n   \n Was bei Mängeln gilt.  Der Ausschluss gilt nicht bei Mängeln. Wir ersetzen den Artikel kostenlos oder erstatten dir den Kaufbetrag, wenn der Artikel (a) fehlerhaft gedruckt ist, etwa durch verzogenen Druck, falsche Platzierung oder Farben, die klar von deinem bestellten Entwurf abweichen, oder einen Herstellungsfehler hat, (b) beschädigt ankommt, auch durch den Transport, (c) falsch geliefert wurde (ein anderer Artikel oder eine andere Grösse als bestellt, erkennbar am Etikett) oder ein Teil fehlt, oder (d) auf dem Versand verloren geht. \n   \n Frist.  Bitte melde einen sichtbaren Mangel, zum Beispiel einen Fehldruck oder einen Transportschaden, innerhalb von 30 Tagen nach Erhalt. Einen Mangel, den du erst später entdeckst, zum Beispiel einen Druck, der sich bei normaler Pflege löst, melde bitte sofort nach der Entdeckung. Kommt dein Paket nicht an, warte nach dem voraussichtlichen Lieferdatum aus deiner Versandbestätigung bitte 3 Werktage ab und melde dich dann bis 30 Tage nach diesem Datum. Steht in der Versandbestätigung kein Lieferdatum, gilt das Ende der Lieferzeit, die auf der Produktseite und in der Versandrichtlinie genannt ist. In dieser Zeit können wir den Fall beim Hersteller geltend machen und dir schnell helfen. \n   \n Nachweis.  Schick uns die Bestellnummer, eine kurze Beschreibung und ein deutliches Foto des ganzen Artikels, bei Druckfehlern zusätzlich des betroffenen Bereichs. Bei einem falschen Artikel zeig den Lieferschein im selben Foto, bei fehlenden Teilen fotografiere Verpackung und Lieferschein. Ohne Foto können wir einen Mangel in der Regel nicht prüfen. \n   \n Abhilfe.  Nach der Prüfung entscheiden wir, ob wir den Artikel neu drucken und versenden oder dir den Kaufbetrag erstatten. Ein Ersatzartikel wird neu gedruckt, das braucht wieder Produktions- und Lieferzeit. Eine Erstattung geht auf dein ursprüngliches Zahlungsmittel. In der Regel musst du den Artikel nicht zurücksenden. Verlangen wir ausnahmsweise eine Rücksendung, nennen wir dir die Adresse und übernehmen die Kosten. \n   \n Was kein Mangel ist.  Nicht ersetzt oder erstattet werden: (a) falsche Wahl oder Eingabe von Grösse, Farbe, Motiv, Text oder Lieferadresse, (b) Nichtgefallen, (c) leichte Farb- und Detailabweichungen zwischen Bildschirm und Druck, (d) Schäden durch unsachgemässen Gebrauch oder durch Pflege entgegen den Pflegehinweisen auf dem Etikett oder der Produktseite. Wird dein Paket laut Sendungsverfolgung als zugestellt gemeldet und du hast es nicht erhalten, schau bitte zuerst bei Nachbarn und der Poststelle nach und melde dich bei uns: Wir prüfen den Fall, ein Ersatz ist in diesem Fall aber nicht zugesichert. Nicht zustellbare oder nicht abgeholte Sendungen regelt die Versandrichtlinie. \n   \n Ablauf und Kontakt.  Schreib an info@luxestyle.ch und setz die Bestellnummer in den Betreff. Wir antworten in der Regel innert 24 Stunden an Werktagen und nennen dir die Lösung: Ersatz oder Erstattung. \n   \n Liechtenstein.  Für Bestellungen nach Liechtenstein gilt das gesetzliche Rücktrittsrecht von 14 Tagen nach dem Fern- und Auswärtsgeschäfte-Gesetz (FAGG) nicht für Artikel, die nach deinen Vorgaben angefertigt werden (Art. 19 Abs. 1 Bst. c FAGG), zum Beispiel mit deinem eigenen Motiv, Foto oder Text. Wir weisen dich vor der Bestellung im Kasten auf der Produktseite darauf hin. \n   \n Gesetzliche Rechte.  Deine gesetzlichen Rechte bei Mängeln bleiben von diesen Regeln unberührt. \n \n\n Fragen zu deiner Rückgabe? \n Wir helfen dir gerne weiter. Melde dich einfach bei uns: \n \n  LuxeStyle \n  Alleng Chour \n  Hühnerhubelstrasse 37 \n  3123 Belp, Schweiz \n  E-Mail:  info@luxestyle.ch  \n  Telefon: +41 79 538 28 14\n \n  Hinweis: Die oben genannte Adresse ist unsere Geschäfts- und Kontaktadresse (Impressum), nicht die Retourenadresse. Die gültige Retourenadresse erhältst du nach der Anmeldung deiner Rücksendung per E-Mail."
+  },
+  "imageEvidence": {
+    "path": "SELFCARE-REFERENZ-20261114-R221.jpg",
+    "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
+    "bytes": 43318
+  }
+}
