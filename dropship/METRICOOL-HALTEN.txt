@@ -11,3 +11,14 @@
 -8339089096074181290   # Claude 10.11.: Hacker-Reel Threads 18.11. 11:00, Musik vom Besitzer abgelehnt
 -8305910546945982140   # Claude 10.11.: Hacker-Reel TikTok 18.11. 12:00, Musik vom Besitzer abgelehnt
 -3731207601091163105   # Claude 10.11.: Hacker-Reel YouTube-Short 18.11. 18:00, Musik vom Besitzer abgelehnt
+-4472725258033347244    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+-7002936161864562103    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+1744402171830094170    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+2172266762404316928    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+3963843144054620883    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+5647388074617226143    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+8935974072695279179    # Codex 13.11.2026: R194/R125 Audio-Hold: Pflichtmusik-/Sprachpruefung nicht freigegeben.
+-7647174116509334899    # Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.
+3614365779669041576    # Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.
+4156060813550767248    # Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.
+6680239273933357186    # Codex 13.11.2026: R176 Projektor-Hold: SKU/Motiv/Rechte und professioneller Master nicht abgenommen.
