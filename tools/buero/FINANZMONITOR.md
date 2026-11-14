@@ -10,6 +10,6 @@ Die Ansicht zeigt einen gespeicherten Datenstand, keinen laufenden Kontosync. F�
 
 ## Statistikdarstellung
 
-Kennzahlen, Zeitfilter und Monatsdiagramm stehen vor den Detailpositionen. Das Diagramm lässt sich zwischen Balken und Linie umschalten; die Wahl bleibt beim Zeitraumwechsel erhalten. Negative Monatswerte liegen unter der Nulllinie. Die Monatswerte umfassen nur den gewählten Zeitraum, ein angefangener Monat ist kein vollständiger Monatsvergleich. Exakte Beträge sind an den Diagrammmarken per Titel und zugänglicher Beschriftung vorhanden.
+Kennzahlen, Zeitfilter und Monatsdiagramm stehen vor den Detailpositionen. Das Diagramm lässt sich zwischen Balken und Linie umschalten; die Wahl bleibt beim Zeitraumwechsel erhalten. Negative Monatswerte liegen unter der Nulllinie. Die Monatswerte umfassen nur den gewählten Zeitraum, ein angefangener Monat ist kein vollständiger Monatsvergleich. Antippen oder Tastaturwahl eines Monats zeigt den exakten Betrag unter dem Diagramm. Die Monatswahl bleibt beim Wechsel des Diagrammtyps erhalten. Exakte Beträge stehen auch in den zugänglichen Beschriftungen der Diagrammmarken.
 
 Fünf Statuskacheln trennen Warenkosten, Werbung, Versandkosten, Gebühren und Fixkosten. Die Kacheln zeigen den bereits berechneten Kostenstand, keinen erfundenen Fortschrittsprozentsatz. Unbekannte Werte und gespeicherte/alte Messzeiten bleiben erkennbar. Die Finanzberechnung, Quellen und Datenabrufe werden durch das Design nicht geändert.

@@ -2,7 +2,7 @@
 (function(root){
   'use strict';
   var METRIKEN=['brutto','rabatte','rueckgaben','netto','versand','steuer','umsatz','ware','kostenluecke'];
-  var snapshot=null,wahl='gesamt',hosts=[],anzeigeCache=null,diagramm='balken';
+  var snapshot=null,wahl='gesamt',hosts=[],anzeigeCache=null,diagramm='balken',monatWahl=null;
   function tag(s){return typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&new Date(s+'T00:00:00Z').toISOString().slice(0,10)===s;}
   function betrag(v){return v===null||(Number.isSafeInteger(v)&&Math.abs(v)<=100000000000);}
   function pruefen(d){
@@ -75,18 +75,20 @@
     if(r.monate.length){
       var ns='http://www.w3.org/2000/svg';function svg(tag,attrs,text){var node=document.createElementNS(ns,tag);Object.keys(attrs||{}).forEach(function(k){node.setAttribute(k,String(attrs[k]));});if(text!=null)node.textContent=text;return node;}
       var plotWidth=el.clientWidth>0&&el.clientWidth<600?420:760;
-      var plot=svg('svg',{viewBox:'0 0 '+plotWidth+' 270',role:'img','aria-label':'Monatsumsatz in '+c+'; negative Werte unterhalb der Nulllinie',class:'kb-finanz-plot'});
+      var plot=svg('svg',{viewBox:'0 0 '+plotWidth+' 270',role:'group','aria-label':'Monatsumsatz in '+c+'; negative Werte unterhalb der Nulllinie',class:'kb-finanz-plot'});
       var low=Math.min(0,...r.monate.map(function(m){return m.umsatz;})),high=Math.max(0,...r.monate.map(function(m){return m.umsatz;}));if(high===low)high=low+100;
       var left=70,right=plotWidth-20,top=20,bottom=214,width=right-left,step=width/r.monate.length;
       function y(value){return bottom-(value-low)/(high-low)*(bottom-top);}
       [high,(high+low)/2,low].forEach(function(value){var py=y(value);plot.appendChild(svg('line',{x1:left,x2:right,y1:py,y2:py,class:'kb-finanz-raster'}));plot.appendChild(svg('text',{x:left-10,y:py+4,'text-anchor':'end',class:'kb-finanz-achse'},new Intl.NumberFormat('de-CH',{maximumFractionDigits:high-low<500?2:0}).format(value/100)));});
       plot.appendChild(svg('line',{x1:left,x2:right,y1:y(0),y2:y(0),class:'kb-finanz-null'}));
+      var detail=n('p',null,'kb-finanz-chartwert');detail.setAttribute('role','status');detail.setAttribute('aria-live','polite');var monthLabel=n('span'),monthValue=n('strong');detail.append(monthLabel,monthValue);var marks=[];
+      function waehlen(m){monatWahl=m.monat;monthLabel.textContent=new Date(m.monat+'-01T12:00:00Z').toLocaleDateString('de-CH',{month:'long',year:'numeric'});monthValue.textContent=geld(m.umsatz,c);marks.forEach(function(item){item.node.setAttribute('aria-pressed',String(item.monat===m.monat));});}
       var points=[];r.monate.forEach(function(m,i){var x=left+step*(i+.5),py=y(m.umsatz);points.push([x,py]);var mark=diagramm==='balken'?svg('rect',{x:x-step*.28,y:m.umsatz===0?y(0)-1:Math.min(py,y(0)),width:Math.max(1,step*.56),height:Math.max(m.umsatz===0?2:1,Math.abs(py-y(0))),rx:4,class:'kb-finanz-marke'+(m.umsatz<0?' negativ':'')}):svg('circle',{cx:x,cy:py,r:5,class:'kb-finanz-marke'+(m.umsatz<0?' negativ':'')});
-        mark.setAttribute('tabindex','0');mark.setAttribute('role','img');mark.setAttribute('aria-label',m.monat+': '+geld(m.umsatz,c));mark.appendChild(svg('title',{},m.monat+': '+geld(m.umsatz,c)));plot.appendChild(mark);
+        mark.setAttribute('tabindex','0');mark.setAttribute('role','button');mark.setAttribute('aria-label',m.monat+': '+geld(m.umsatz,c));mark.appendChild(svg('title',{},m.monat+': '+geld(m.umsatz,c)));plot.appendChild(mark);marks.push({node:mark,monat:m.monat});mark.addEventListener('click',function(){waehlen(m);});mark.addEventListener('focus',function(){waehlen(m);});mark.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();waehlen(m);}});
         if(r.monate.length<=6||i%2===0||i===r.monate.length-1)plot.appendChild(svg('text',{x:x,y:246,'text-anchor':'middle',class:'kb-finanz-achse'},new Date(m.monat+'-01T12:00:00Z').toLocaleDateString('de-CH',{month:'short'})));
       });
       if(diagramm==='linie'&&points.length>1){var line=svg('polyline',{points:points.map(function(p){return p.join(',');}).join(' '),class:'kb-finanz-linie',fill:'none'});plot.insertBefore(line,plot.querySelector('circle'));}
-      chart.appendChild(plot);chart.appendChild(n('p','Umsatz · '+c+' · '+datum(r.von)+' bis '+datum(r.bis)+'. Monatswerte umfassen nur den gewählten Zeitraum. Null ist ein gemeldeter Wert; negative Umsätze liegen unter der Nulllinie.','kb-finanz-hinweis'));
+      waehlen(r.monate.find(function(m){return m.monat===monatWahl;})||r.monate[r.monate.length-1]);chart.append(plot,detail);chart.appendChild(n('p','Umsatz · '+c+' · '+datum(r.von)+' bis '+datum(r.bis)+'. Monatswerte umfassen nur den gewählten Zeitraum. Null ist ein gemeldeter Wert; negative Umsätze liegen unter der Nulllinie.','kb-finanz-hinweis'));
     }else{chart.appendChild(n('p','Noch keine private Messreihe geladen. Sobald ein Bericht vorliegt, erscheinen hier die gemessenen Monatswerte.','kb-finanz-leer'));}
     // Diagramm vor die Detailtabelle setzen, damit Trends zuerst sichtbar sind.
     el.insertBefore(chart,wrap);
