@@ -1,0 +1,19 @@
+{
+  "recordedAtUTC": "2026-11-14T10:45:58.534008+00:00",
+  "event": "Additionaloptionalcopyto/workspacefailedENOSPC; no coreRepo write failed.",
+  "attemptedDestination": "/workspace/luxestyle-review/r202-review/master-review.html",
+  "error": "OSError28NoSpaceLeftOnDeviceonmkdir",
+  "availableDeliverable": "/tmp/luxe-continue-20261114-r202/master-review.html",
+  "deliverableSha256": "18c527d8c989370575bf4a4aa36c021a627b1e28fc293b9b2a693926ad3defed",
+  "repositoryCommitWithConfirmed13Files": "ad136366f77149565d64891ab3227096e7a995c4",
+  "repoReadback": "All13filesmatchedbytes/SHA256/GitblobSHA.",
+  "filesystemObserved": {
+    "workspace": "overlay7.9G,7.6Gused,0available,100percent",
+    "tmp": "4.9G,500Mused,4.4Gavailable,11percent"
+  },
+  "inspection": "r124/.git/objects accounts for5.9G; largest namedrealGitpack2.9G. These are not identified abandonedtmp_packfiles.",
+  "deletedFiles": 0,
+  "changedGitHistoryOrRefs": false,
+  "fallback": "Use existingtask-owned/tmpdeliverable andconfirmedrepository; do notpurgeunknownrealGitpacks.",
+  "qualityOrPublicationApproval": false
+}
