@@ -81,6 +81,13 @@ def mail_lesen(datei, absender):
         return None, "Kein unterstützter Nachrichtentext"
     try:
         text = part.get_content()
+        # Manche Mailprogramme liefern einen leeren Textteil neben der HTML-Anfrage.
+        # Nur dann wechseln; get_body schliesst als Anhang markierte Teile aus.
+        if part.get_content_subtype() == "plain" and not text.strip():
+            html = msg.get_body(preferencelist=("html",))
+            if html is not None:
+                part = html
+                text = part.get_content()
     except (LookupError, UnicodeError):
         return None, "Textkodierung unbekannt; manuell prüfen"
     if part.get_content_subtype() == "html":
