@@ -2423,3 +2423,12 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Datenquellen / Versand | EinereineQuellenabfrage mit4zurückgeliefertenZeilen gelesen;995DE-Kontexte ausCSV gegenübergestellt | Produktquellen nennenCH/LI,keinDE;Cachealter/Artikelländerzuordnung unbekannt. KeinDeutschlandversand/Quellenlöschung/Feedänderung |
 | Einzelstichproben | EinPreisfall perProdukt/SKU und2URL-Elternprodukte gelesen;alteCSVVariantIDsgezielt gegengeprüft |3DRAFT/keineShopURL;PreisbeispielCHF44.90.2exakteVariantIDsnull,keineFarbmigration. Merchant-PreisreadTimeoutohneRetry;0Preis-/Status-/Feedwrites,keinFallalsbehobenmarkiert |
 | Gedächtnis / Grenzen | Bestehende24IDs/Historien fortgeschrieben, Reports/Flows/Kaufwatchnichtwiederholt |0erfolgreichePlattformwrites/Socialposts/Render/Budget-/Rabatt-/DNS-/Versand-/Flowänderungen. ZeitplanundFreigabenerhalten. NächsterSchrittOwner-PublishdesfertigenThemes plus gezielterOffer-/Quellenabgleich |
+
+### R210 – Weiterarbeit am konkreten Feed-Fix, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Feed-Codeentwurf | Unbelegtes identifier_exists=no am aktuellen Main-Code reproduziert und minimalen Zwei-Datei-Patch erstellt |85gezielteSuiteAssertions+8unabhängigeRootprüfungen grün. VollständigeCIoffen;keineoperativeCodeintegration/Google-Ausführung,keinCSV-Fallalsbehobengezählt |
+| BestehendeHelfer |5echteQuellen perGitShow gelesen;SparseCheckout-Fehlschluss korrigiert;benannteRuntimevars nur aufPräsenz geprüft |Helfervorhanden,unterdiesen5keinEinzelartikelSourceReader. KeineScript-/Auth-/Registrierungs-/Versandausführung,keineSecretsgelesenoderangefordert |
+| SEO-Zugang | Shopify/Metricool/ThemeRollenundStandfrischgeprüft,BrowserSkillundsteuerbareToolsgeprüft |SEO-Kopie213991391623weiterUNPUBLISHED. VorhandeneFreigabebleibt;keinPublishRetry/Bypass. OwnerumtechnischenVeröffentlichen-Klickgebeten,keineerneuteFreigabe |
+| Kontinuität | R209CSV/Sourcefälle datiertweitergeführt;24IDs/Historieerhalten |0operativeCode-/Servicewrites,neueTagesreports/Kaufwatch/Socialposts/Renders/Automation. FullCIundlegitimerLive-ReadbackbleibennächsteSchritte;Grenzenerhalten |

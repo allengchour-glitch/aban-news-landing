@@ -1,0 +1,129 @@
+{
+  "source_commit": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+  "scope": "proposal only; no repository, service, feed, or Google writes",
+  "reproduction": {
+    "input": {
+      "id": "CJYD291530101AZ",
+      "title": "Sommerkleid ärmellos · Damen",
+      "description": "Leichtes Sommerkleid.",
+      "link": "https://luxestyle.ch/products/sommerkleid",
+      "image": "https://cdn.shopify.com/a.jpg",
+      "price": "29.90 CHF",
+      "brand": "LuxeStyle",
+      "tags": [
+        "damen",
+        "kleider",
+        "bild-ok"
+      ],
+      "gtin": "omitted",
+      "sku": "omitted"
+    },
+    "baseline_output": {
+      "identifier_exists_no": true,
+      "mpn": false,
+      "gtin": false
+    },
+    "proposed_output": {
+      "identifier_exists_no": false,
+      "mpn": false,
+      "gtin": false
+    },
+    "baseline_output_file": "baseline-repro.txt",
+    "proposed_output_file": "proposed-repro.txt",
+    "fixtureIsSynthetic": true,
+    "notALiveCatalogProductOrCurrentImage": "This is a pure-generator test fixture; no price, image rights or availability for a live item inferred.",
+    "actualBefore": {
+      "id": "CJYD291530101AZ",
+      "gtinProvided": false,
+      "skuProvided": false,
+      "emittedIdentifierExistsNo": true,
+      "emittedMpn": false,
+      "emittedGtin": false
+    },
+    "actualAfter": {
+      "id": "CJYD291530101AZ",
+      "gtinProvided": false,
+      "skuProvided": false,
+      "emittedIdentifierExistsNo": false,
+      "emittedMpn": false,
+      "emittedGtin": false
+    }
+  },
+  "change": {
+    "production_files": [
+      "automation/lib/gmc_feed_item.mjs"
+    ],
+    "test_files": [
+      "automation/lib/gmc_feed_item_test.mjs"
+    ],
+    "behavior": "If valid GTIN exists, retain gtin path. Else if SKU exists, retain MPN path. If both are missing, emit neither identifier_exists=true nor false; omit the field."
+  },
+  "counterchecks": [
+    "missing GTIN/SKU => omit identifier_exists",
+    "blank GTIN/SKU => omit identifier_exists",
+    "valid GTIN => emit GTIN and omit identifier_exists",
+    "SKU/MPN => emit MPN and omit identifier_exists",
+    "invalid GTIN without SKU remains no GTIN and no identifier_exists"
+  ],
+  "tests": {
+    "baseline_command": "node automation/lib/gmc_feed_item_test.mjs (isolated baseline copy)",
+    "baseline_result": "pass; existing test encoded old identifier_exists=no behavior",
+    "baseline_ok_assertions": 83,
+    "proposed_command": "node automation/lib/gmc_feed_item_test.mjs (isolated proposed copy)",
+    "proposed_result": "pass; all tests green",
+    "proposed_ok_assertions": 85,
+    "runtime": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"
+  },
+  "hashes": {
+    "baseline/automation/lib/gmc_feed_item.mjs": "980a8acf75f6cc3548b9b7e2434cacbe6c35f4a4e3ee3066200ca79d23538e65",
+    "proposed/automation/lib/gmc_feed_item.mjs": "f1fd11884b984d923d350ddcb2ea91909610dd66da568f1b93d67d58102f0530",
+    "baseline/automation/lib/gmc_feed_item_test.mjs": "b622dce22493cd7fd5a3a7d9d30cc751bc67e63783d168c89f46cee582f5bdaf",
+    "proposed/automation/lib/gmc_feed_item_test.mjs": "0c42a7a97e0c193812120673c7d1b37e2a4a2551ffcbe5d30a4567b724e795a1",
+    "proposal.patch": "579e0f210f3bef5787b106d599f03f8601be2454e3fa6b3d24b1b100f16baae3"
+  },
+  "ci_simulation": {
+    "ran": false,
+    "requiredBeforeOperationalIntegration": true,
+    "scopeReason": "The reviewed simulator replays the full workflow including package installations and other jobs. Those were outside this bounded isolated check; no installs or workflow executions performed. This is not a CI pass or a new request for owner approval."
+  },
+  "artifacts": {
+    "patch": "proposal.patch",
+    "baseline_test_output": "baseline-test.txt",
+    "proposed_test_output": "proposed-test.txt",
+    "repro_script": "baseline/repro.mjs (same script copied into proposed/)",
+    "baseline_reproduction_output": "baseline-repro.txt",
+    "proposed_reproduction_output": "proposed-repro.txt"
+  },
+  "not_a_live_google_fix": true,
+  "rootIndependentValidation": {
+    "syntheticFixture": true,
+    "checks": [
+      "baseline reproduces unproven false",
+      "unknown identifiers omitted",
+      "blank identifiers omitted",
+      "invalid GTIN without SKU does not imply false",
+      "valid GTIN output byte unchanged",
+      "SKU MPN output byte unchanged",
+      "existing block remains",
+      "zero price remains blocked"
+    ],
+    "passed": 8,
+    "externalCalls": 0,
+    "repositoryOrServiceWrites": 0,
+    "scope": "Additional independent assertions; not full CI or live feed validation."
+  },
+  "readiness": {
+    "reviewablePatch": true,
+    "targetedTestsPassed": true,
+    "fullCiPassed": false,
+    "readyForMerge": false,
+    "appliedToOperatingSource": false,
+    "merged": false,
+    "deployed": false,
+    "liveFeedRun": false,
+    "googleItemRemediationConfirmed": false,
+    "googleSourceOfReportedCsvOffersStillUnknown": true
+  },
+  "reviewPatchSha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+  "reviewPatchContextNote": "Empty context lines serialized without a trailing space; git apply --check accepted it against the exact isolated baseline. Same two-file source diff; no operating repository files changed."
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 209,
-  "updatedAt": "2026-11-14T14:29:12.702519+00:00",
+  "revision": 210,
+  "updatedAt": "2026-11-14T14:53:27.658204+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r209_approved_theme_publish_refused_drive_csv_bounded_source_work",
+      "state": "r210_independent_reproduced_feed_fix_draft_and_publish_access_block_confirmed",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
-      "lastEvidence": "KonkreteLive-Freigabegesichert,einPublishversuchtechnischabgelehnt,Rollenfrischbestätigt. NeueDriveCSVperByte/SHAgeprüft:16zusätzlicheTypeninder19erListe;19KlassenplanundQuellendokumentation.3ShopifyProduktfälleDRAFT,2alteVariantIDsnull;QuellebeimPreisfallnachTimeoutunknown. Rootprüft/dokumentiertgezogeneColorMappingKorrekturund12CSVSpaltenmitzweiTitelspalten/Dedupe-Summen.0erfolgreichePlattformwrites/Reports/Orders/Social/Renders,24IDs/Historieerhalten.",
-      "nextAllowedStep": "BestehendeTheme-Freigabenichtwiederholen,Owner-VeröffentlichenmittechnischerBegründungermöglichen;danachLivegegenprüfen. MerchantgezielterSource-/OfferAbgleichstattMengenänderungen.24IDs/Tagesgrenze/Zeitplan/Ownergrenzenerhalten;ClaudeEmpfangweiterunknown.",
+      "belegArt": "R210_REPRODUCED_LOCAL_FEED_PATCH_AND_CONFIRMED_PUBLISH_ACCESS_LIMIT",
+      "lastEvidence": "BestehendenR209Standfortgesetzt. FrischeCore4/ShopMetricool/ThemeRollen;keinneuerPublishversuch,OwnerUIStatuserfragt. SparseCheckout-Helferbefundkorrigiertan5echtenQuellen. ReproduzierterFeedKennungsfehlerisoliertgepatcht/85+8Assertionsbestanden,FullCIoffen.0Plattformwrites/operativeCodeintegration/Workflowstarts/neueReports/Orders/SocialRenders.24IDs/Historienerhalten,keineClaudeKenntnisnahmebehauptet.",
+      "nextAllowedStep": "BestehendeThemeFreigabenichtwiederholen,OwnerUIErgebnisverifizieren. FeedEntwurfmitSource-/FullCIGegenprobebisIntegrationweiterführen;getestetenPatchnichtalsGoogle-Reparaturmelden. KeinezusätzlicheAutomation/Frequenz/unerlaubtenShopwrites.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4012,6 +4012,36 @@
           "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
           "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
           "readAt": "2026-11-14T14:29:12.702519+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+          "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+          "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+          "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+          "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+          "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+          "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+          "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+          "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+          "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+          "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4788,6 +4818,45 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
               "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
               "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842"
+            }
+          ]
+        },
+        {
+          "revision": 210,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r209_approved_theme_publish_refused_drive_csv_bounded_source_work",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
+            "lastEvidence": "KonkreteLive-Freigabegesichert,einPublishversuchtechnischabgelehnt,Rollenfrischbestätigt. NeueDriveCSVperByte/SHAgeprüft:16zusätzlicheTypeninder19erListe;19KlassenplanundQuellendokumentation.3ShopifyProduktfälleDRAFT,2alteVariantIDsnull;QuellebeimPreisfallnachTimeoutunknown. Rootprüft/dokumentiertgezogeneColorMappingKorrekturund12CSVSpaltenmitzweiTitelspalten/Dedupe-Summen.0erfolgreichePlattformwrites/Reports/Orders/Social/Renders,24IDs/Historieerhalten.",
+            "nextAllowedStep": "BestehendeTheme-Freigabenichtwiederholen,Owner-VeröffentlichenmittechnischerBegründungermöglichen;danachLivegegenprüfen. MerchantgezielterSource-/OfferAbgleichstattMengenänderungen.24IDs/Tagesgrenze/Zeitplan/Ownergrenzenerhalten;ClaudeEmpfangweiterunknown."
+          },
+          "summary": "BestehendenR209Standfortgesetzt. FrischeCore4/ShopMetricool/ThemeRollen;keinneuerPublishversuch,OwnerUIStatuserfragt. SparseCheckout-Helferbefundkorrigiertan5echtenQuellen. ReproduzierterFeedKennungsfehlerisoliertgepatcht/85+8Assertionsbestanden,FullCIoffen.0Plattformwrites/operativeCodeintegration/Workflowstarts/neueReports/Orders/SocialRenders.24IDs/Historienerhalten,keineClaudeKenntnisnahmebehauptet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+              "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+              "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+              "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+              "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+              "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+              "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
             }
           ]
         }
@@ -5588,6 +5657,37 @@
         ],
         "writesSucceeded": 0,
         "ownerThemePublishApprovalPersists": true
+      },
+      "run210": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+            "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+            "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+            "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+            "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+            "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+            "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+            "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+            "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+            "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+            "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
+          }
+        ],
+        "operatingCodeOrServiceWrites": 0,
+        "professionalMasterOrGoogleRemediationClaimed": false
       }
     },
     {
@@ -8319,12 +8419,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r209_owner_csv_sixteen_additional_types_sources_and_draft_price_case_unknown_merchant",
+      "state": "r210_feed_identifier_false_bug_reproduced_fixed_in_isolated_patch_not_live",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
-      "lastEvidence": "Zwei neue CSV vollständig: grosse19Typen/kleine3exakteTeilmenge,16zusätzlicheTypen/3555Kontexte/2005roheIDs.517IDsPreisfehlt,995DE-Versandkontexte. ReineQuellenabfrage4Zeilen mitCH/LI,keinDE,Cachealterunbekannt. NeuesexaktesPreisbeispiel15421165404545/CJTZ292404406FU istDRAFT,CHF44.90,keineöffentlicheURL. Merchant-EinzelfallreadTimeoutohneRetry,submittedsource/priceunbekannt;keineWrites.",
-      "nextAllowedStep": "ExakteeingereichteOffer-/QuellenwertefürgezieltePreis-/Länderkorrekturlesen. KeinpauschalesDEShipping/PreisErfinden/DRAFTAktivieren/Sperrenentfernen.19Klassenplannutzen;Teilmenge16Problemartennicht16gewählteArtikel. AltenZwei-Overlay-Fallweiteroffenlassen.",
+      "belegArt": "R210_REPRODUCED_LOCAL_FEED_PATCH_AND_CONFIRMED_PUBLISH_ACCESS_LIMIT",
+      "lastEvidence": "AktuellerMain90dFeedmodul reproduziert bei unbekannterGTIN/SKU identifier_exists=no. IsolierterZwei-Datei-Patchlässtattributweg,GTIN/MPN/Tags/Preiseerhalten.85SuiteAssertions+8RootAssertionsgrün;FullCIoffen. FünfHelferquellenausGitgeprüft/SparseFalseNegativekorrigiert;keindirekterOfferSourceReadunterdiesen5,benannteRuntimevarsfehlenlokal. R209-Source/Timeout/CSV-DRAFT-Befundeunverändert,keinGooglefixbehauptet.",
+      "nextAllowedStep": "Vor operativerIntegration frischenSourceDiffundvolleerforderlicheCIprüfen, danachgezielteAusführung/FeedReadbackseparatverifizieren. Bis dahinPatchnurEntwurf; tatsächlicheeingereichteMerchantSource/Offer-Werteweitergezieltlesen,wennlegitimerReadzugangvorliegt. KeinfalscherIdentifier/pauschaleSperren-/Länderänderung.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -8652,6 +8752,30 @@
           "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
           "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
           "readAt": "2026-11-14T14:29:12.702519+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+          "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+          "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+          "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+          "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+          "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+          "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+          "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+          "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9155,6 +9279,40 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
               "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
               "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842"
+            }
+          ]
+        },
+        {
+          "revision": 210,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r209_owner_csv_sixteen_additional_types_sources_and_draft_price_case_unknown_merchant",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
+            "lastEvidence": "Zwei neue CSV vollständig: grosse19Typen/kleine3exakteTeilmenge,16zusätzlicheTypen/3555Kontexte/2005roheIDs.517IDsPreisfehlt,995DE-Versandkontexte. ReineQuellenabfrage4Zeilen mitCH/LI,keinDE,Cachealterunbekannt. NeuesexaktesPreisbeispiel15421165404545/CJTZ292404406FU istDRAFT,CHF44.90,keineöffentlicheURL. Merchant-EinzelfallreadTimeoutohneRetry,submittedsource/priceunbekannt;keineWrites.",
+            "nextAllowedStep": "ExakteeingereichteOffer-/QuellenwertefürgezieltePreis-/Länderkorrekturlesen. KeinpauschalesDEShipping/PreisErfinden/DRAFTAktivieren/Sperrenentfernen.19Klassenplannutzen;Teilmenge16Problemartennicht16gewählteArtikel. AltenZwei-Overlay-Fallweiteroffenlassen."
+          },
+          "summary": "AktuellerMain90dFeedmodul reproduziert bei unbekannterGTIN/SKU identifier_exists=no. IsolierterZwei-Datei-Patchlässtattributweg,GTIN/MPN/Tags/Preiseerhalten.85SuiteAssertions+8RootAssertionsgrün;FullCIoffen. FünfHelferquellenausGitgeprüft/SparseFalseNegativekorrigiert;keindirekterOfferSourceReadunterdiesen5,benannteRuntimevarsfehlenlokal. R209-Source/Timeout/CSV-DRAFT-Befundeunverändert,keinGooglefixbehauptet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+              "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+              "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+              "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+              "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+              "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+              "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
             }
           ]
         }
@@ -9979,6 +10137,32 @@
         ],
         "writesSucceeded": 0,
         "ownerThemePublishApprovalPersists": true
+      },
+      "run210": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+            "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+            "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+            "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+            "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+            "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+            "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+            "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+            "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
+          }
+        ],
+        "operatingCodeOrServiceWrites": 0,
+        "professionalMasterOrGoogleRemediationClaimed": false
       }
     },
     {
@@ -13553,12 +13737,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r209_owner_publish_approved_one_tool_refusal_roles_confirmed_unpublished",
+      "state": "r210_approved_theme_still_unpublished_no_controllable_browser_owner_ui_action_pending",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
-      "lastEvidence": "Inhaber bestätigt konkretes Theme213991391623. FrischeIdentität/Checksums und Themezeiten passen; genau1Publishversuch userConfirmed=true wird mit Only agent-created themes/publish_refused abgewiesen. Rollen danach: altesThemeMAIN/neuesUNPUBLISHED. KeinRetry/Alternativendpoint. Zustimmung bleibt vorhanden, nicht erneut fragen.",
-      "nextAllowedStep": "Mit bestehender Freigabe genau «LuxeStyle – SEO 14.11.2026» in Shopify Onlineshop/Themes veröffentlichen; technische Toolbeschränkung verhindert Agent-Publish. Vor späterem Wechsel frischen MAIN auf intervenierende Änderungen prüfen. Danach neue Live-Meta-/Rollen-Gegenprobe.",
+      "belegArt": "R210_REPRODUCED_LOCAL_FEED_PATCH_AND_CONFIRMED_PUBLISH_ACCESS_LIMIT",
+      "lastEvidence": "FrischeShop-/Rollen-/Dateigegenprobe bestätigt altesMAIN/neues213991391623UNPUBLISHED. R209Publish-Sperre nicht erneut angefragt oder umgangen. Browser-Skill/Tools geprüft: kein steuerbares Extension-JS/Tabtool,Companionnull. Zustimmung bleibt; Owner um technischenUI-Klick gebeten,keine neueFreigabe verlangt.",
+      "nextAllowedStep": "Nach legitimem Owner-Publish frische Rollen und Live-Meta/OG/Twitter prüfen. Bis dahin UNPUBLISHED melden und bestehende Zustimmung erhalten; keine Wiederholung des abgewiesenen Writes, kein anderer API-Publishingweg.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -13974,6 +14158,18 @@
           "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
           "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842",
           "readAt": "2026-11-14T14:29:12.702519+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+          "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+          "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+          "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+          "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245",
+          "readAt": "2026-11-14T14:53:27.658204+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14432,6 +14628,30 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
               "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
               "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842"
+            }
+          ]
+        },
+        {
+          "revision": 210,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r209_owner_publish_approved_one_tool_refusal_roles_confirmed_unpublished",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R209_OWNER_APPROVAL_TOOL_REFUSAL_AND_NEW_CSV_TARGETED_READS",
+            "lastEvidence": "Inhaber bestätigt konkretes Theme213991391623. FrischeIdentität/Checksums und Themezeiten passen; genau1Publishversuch userConfirmed=true wird mit Only agent-created themes/publish_refused abgewiesen. Rollen danach: altesThemeMAIN/neuesUNPUBLISHED. KeinRetry/Alternativendpoint. Zustimmung bleibt vorhanden, nicht erneut fragen.",
+            "nextAllowedStep": "Mit bestehender Freigabe genau «LuxeStyle – SEO 14.11.2026» in Shopify Onlineshop/Themes veröffentlichen; technische Toolbeschränkung verhindert Agent-Publish. Vor späterem Wechsel frischen MAIN auf intervenierende Änderungen prüfen. Danach neue Live-Meta-/Rollen-Gegenprobe."
+          },
+          "summary": "FrischeShop-/Rollen-/Dateigegenprobe bestätigt altesMAIN/neues213991391623UNPUBLISHED. R209Publish-Sperre nicht erneut angefragt oder umgangen. Browser-Skill/Tools geprüft: kein steuerbares Extension-JS/Tabtool,Companionnull. Zustimmung bleibt; Owner um technischenUI-Klick gebeten,keine neueFreigabe verlangt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+              "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+              "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+              "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+              "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
             }
           ]
         }
@@ -15056,6 +15276,22 @@
         ],
         "writesSucceeded": 0,
         "ownerThemePublishApprovalPersists": true
+      },
+      "run210": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+            "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+            "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+            "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+            "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
+          }
+        ],
+        "operatingCodeOrServiceWrites": 0,
+        "professionalMasterOrGoogleRemediationClaimed": false
       }
     },
     {
@@ -21325,6 +21561,36 @@
           "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R209.md",
           "sha256": "9c759ff7b3117d907f02cbce2e412e6ed82587a794231eb2f7d4db7425c7a08e",
           "gitBlobSha": "8406a5b63cee6a7c0b96f94ba914f80aaae28842"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 210,
+      "at": "2026-11-14T14:53:27.658204+00:00",
+      "actor": "codex",
+      "summary": "R209fortgesetzt:frischeIdentitäten/ThemeweiterUNPUBLISHED,keinneuerPublishversuch/Browsertab,OwnertechnischenUI-KlickerfragtZustimmungbehalten.5echteRepohelfergeprüftSparseBefundkorrigiert. Feedidentifier_exists-Fehlerreproduziertundisoliertminimalgepatcht,85+8Assertionsgrün,FullCIoffen.0operativerCode-/Servicewrite/neueReports/Orders/Renders.24Tasks/Historien/Tagesgrenze/Zeitplanerhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+          "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+          "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+          "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+          "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+          "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+          "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+          "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+          "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
         }
       ],
       "taskCount": 24,
@@ -45829,6 +46095,50 @@
     "additionalIssueTypes": 16,
     "merchantCasesConfirmedFixed": 0,
     "historyAnd24TasksPreserved": true,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run210": {
+    "recordedAtUTC": "2026-11-14T14:53:27.658204+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "access": {
+        "path": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json",
+        "sha256": "1da8f74ca901da9947fce3edf7e26c54f8cdccf90a8a1205f5a51b923317bc82",
+        "gitBlobSha": "0ea1330986808cd1286d1e5e518cf66083f82757"
+      },
+      "helpers": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-HELFER-20261114-R210.json",
+        "sha256": "30dab1d12098b8bd0cac40d9f5e0f61571f91c0e028bd60c92d49c1651c0f1b6",
+        "gitBlobSha": "b924e6e7c1e54ea21db46354012fc07481fc1a9c"
+      },
+      "fix": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.json",
+        "sha256": "886c0c4cf7717a7d12f133b22685efee9a5cfd3c1f912aaf743780c71587d4b3",
+        "gitBlobSha": "cd742f9b0a63116632954186b2c24599e3c7e840"
+      },
+      "patch": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-IDENTIFIKATOREN-20261114-R210.patch",
+        "sha256": "1e80a36e2f02f0a49513ee1573d7743304f71b0661b7286bf1137d9aafcd5441",
+        "gitBlobSha": "2a59bee3c167be714b2b315cc96675231c5dddd7"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R210.md",
+        "sha256": "9f4e2f2d048b6aa55cc8ab1551ef586f92e7028872cfe263123e757c6955e46e",
+        "gitBlobSha": "5f955657a06fb5a1ce45e72c248846c4ab5ac245"
+      }
+    },
+    "operatingCodeOrPlatformWrites": 0,
+    "newPublishAttempts": 0,
+    "ownerThemePublishApprovalRetained": true,
+    "themePublished": false,
+    "controllableLocalBrowserConfirmed": false,
+    "localFeedPatchPrepared": true,
+    "targetedTestAssertions": 85,
+    "rootAdditionalAssertions": 8,
+    "fullCiPassed": false,
+    "mergedOrDeployed": false,
+    "googleItemsConfirmedFixed": 0,
+    "newDailyReportsOrdersSocialRenders": 0,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

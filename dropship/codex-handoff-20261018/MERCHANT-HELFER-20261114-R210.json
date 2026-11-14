@@ -1,0 +1,122 @@
+{
+  "run": "R210 2026-11-14",
+  "repo": "/tmp/luxe12-implementation/repo",
+  "scope": "bounded offline review only; no repo or service writes",
+  "reviewed_targets": [
+    "automation/merchant_probe.py",
+    "automation/autopilot/merchant_feed.mjs",
+    "automation/lib/gmc_feed_item.mjs",
+    ".github/workflows/merchant-probe.yml",
+    "automation/merchant_versand.py"
+  ],
+  "local_helpers": {
+    "direct_merchant_product_read": "none among these five files",
+    "merchant_probe": "Uses GCP_SA_KEY and MERCHANT_ID. GETs Merchant accounts v1/v1beta and Shopping Content authinfo. It does not GET individual products or join product_id to product_data_source. It also has a POST developerRegistration:registerGcp when REGISTRIEREN=true.",
+    "merchant_feed": "Uses Shopify credentials (SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET or SHOPIFY_ADMIN_TOKEN, plus SHOPIFY_SHOP). Shopify GraphQL query reads products according to FEED_QUERY (default status:active or status:active AND tag:fortura), paginates in SCAN-bounded pages, reads variants(first:1), and builds an offline XML feed. It sets Google feed id from Shopify handle, maps price/link/image/availability, and writes OUT locally. It is not a Merchant Center product or source read; it does not establish which current source submits any CSV offer.",
+    "gmc_feed_item": "Pure XML item builder; product id is p.id or p.sku or p.handle; writes standard feed fields (link, image_link, availability, price, etc.); no external calls or Merchant source lookup.",
+    "merchant_versand": "Uses GCP_SA_KEY. GETs Merchant account list and shippingSettings; selects the sole visible account only if exactly one is returned. It can POST shippingSettings:insert. MODUS defaults to pruefen; MODUS=schreiben enables insert, and MODUS=zurueck triggers removal path followed by an insert. No interactive confirmation gate is present in that code path. This is shipping-only, not product-source lookup.",
+    "workflow": "merchant-probe workflow has workflow_dispatch and a push trigger scoped to branch claude/merchant-probe-1111 and two paths. Its registrieren input defaults false but supplies REGISTRIEREN to the probe, so the workflow is not intrinsically read-only despite its title. It passes the GCP_SA_KEY GitHub secret by name only.",
+    "credential_names_only": {
+      "merchant_probe": [
+        "GCP_SA_KEY",
+        "MERCHANT_ID",
+        "REGISTRIEREN"
+      ],
+      "merchant_feed": [
+        "SHOPIFY_CLIENT_ID",
+        "SHOPIFY_CLIENT_SECRET",
+        "SHOPIFY_ADMIN_TOKEN",
+        "SHOPIFY_SHOP"
+      ],
+      "merchant_versand": [
+        "GCP_SA_KEY",
+        "MODUS"
+      ],
+      "feed_controls_not_credentials": [
+        "FEED_QUERY",
+        "SCAN",
+        "SORT",
+        "REVERSE",
+        "VERSAND_LAND",
+        "VERSAND_PREIS",
+        "OUT"
+      ]
+    },
+    "safe_existing_product_source_route": "No existing direct GMC Product get or safe product_id-to-source lookup among these paths. Shopify feed generation cannot substitute for a Merchant read or bypass the Windsor timeout because it reads Shopify and may produce a locally generated feed only.",
+    "api_guard_bypass_attempted": false
+  },
+  "csv_case_crosscheck": {
+    "offer_id": "15421165404545_cjtz292404406fu",
+    "language": "de",
+    "feed_label": "CH",
+    "csv_issue": "Produktpreis fehlt",
+    "csv_contexts": [
+      "Liechtenstein",
+      "Schweiz"
+    ],
+    "shopify_context_from_root": {
+      "product_id": "15421165404545",
+      "status": "DRAFT",
+      "variant_id": "55775110463873",
+      "sku": "CJTZ292404406FU",
+      "price": "CHF 44.90",
+      "onlineStoreUrl": null,
+      "tag": "cj-keine-ch-versandoption"
+    },
+    "merchant_product_name_or_source_mapping": "not found in reviewed local files"
+  },
+  "credential_review": {
+    "credential_values_read_or_emitted": false,
+    "names_only": true,
+    "repo_env_or_credential_named_files_within_depth_3_in_checkout": [],
+    "note": "Initial checkout was sparse; this local filename check is not evidence of global credential absence. The five source files reference credentials only by the names recorded above."
+  },
+  "source_mapping": {
+    "csv_case_offer_id": "15421165404545_cjtz292404406fu",
+    "csv_error": "Produktpreis fehlt",
+    "csv_targets_country_context": [
+      "Liechtenstein",
+      "Schweiz"
+    ],
+    "observed_current_google_product_source": "unknown; none of the five reviewed scripts provides a live or cached per-offer source join",
+    "feed_builder_mapping": "separate generated feed chooses Shopify handle as item id (with sku fallback in item helper), while this CSV offer uses a Shopify productId_supplierSKU-shaped offer ID; generated feed mapping is not proof of active Merchant submission."
+  },
+  "suggestion": "Keep the exact item-level Merchant source unknown until a bounded product_id read returns the row or a genuine product_name is available for the existing HYPD single-product read. Do not use Shopify-generated XML as a substitute for the Merchant source response.",
+  "writes": 0,
+  "correction": {
+    "prior_review_caveat": "Initial working checkout was sparse. Its no-helper conclusion was incomplete and is superseded by this exact git-show review.",
+    "source_commit": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+    "method": "Static git-show reads of exactly the five requested source paths; no script, API, or workflow was run.",
+    "secret_handling": "Only credential/environment variable names and secret references recorded. Credential values were not printed or read into the evidence."
+  },
+  "executed_scripts_or_workflows": 0,
+  "sourceHashes": {
+    "automation/merchant_probe.py": {
+      "sha256": "2f8a0120b511425237a354a6f23026600a8749f9e8d48e251f0b96f34c694454",
+      "gitBlobSha": "9b36fb44af40d5e4fcf5277313f2c4fb96887978",
+      "bytes": 3963
+    },
+    "automation/autopilot/merchant_feed.mjs": {
+      "sha256": "2e5be19bd90badd7d39bdfc3ea44d489bc1ee5e8f77ebe0d7d52fd2181ca2695",
+      "gitBlobSha": "ccc75c554cb8ec2e1a6bd9a41769f3ba34a5fb8c",
+      "bytes": 8917
+    },
+    "automation/lib/gmc_feed_item.mjs": {
+      "sha256": "980a8acf75f6cc3548b9b7e2434cacbe6c35f4a4e3ee3066200ca79d23538e65",
+      "gitBlobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+      "bytes": 7391
+    },
+    ".github/workflows/merchant-probe.yml": {
+      "sha256": "cef1d207b855709401097ac53de8004ef7f3ec0213ddc61d8197f55cec9e0ef6",
+      "gitBlobSha": "cfef10482111393ffb1d7ce1826eae9e3afc4e7d",
+      "bytes": 1539
+    },
+    "automation/merchant_versand.py": {
+      "sha256": "bb06b76744abded04392b692c34db691fc9bc76e1b7ce23930ff9ce4d93aa051",
+      "gitBlobSha": "ffa55ad764338a9a81074f47d26ca44097be1579",
+      "bytes": 6526
+    }
+  },
+  "runtimePresenceScope": "Only named environment variables checked in this local process, not connector credentials or GitHub secret values. No matching local variables configured; legitimate Google runtime access is not established here.",
+  "runtimePresenceEvidence": "dropship/codex-handoff-20261018/ZUGRIFF-20261114-R210.json"
+}

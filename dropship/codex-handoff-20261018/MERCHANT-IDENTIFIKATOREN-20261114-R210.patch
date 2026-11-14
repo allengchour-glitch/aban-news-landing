@@ -1,0 +1,35 @@
+--- baseline/automation/lib/gmc_feed_item.mjs
++++ proposed/automation/lib/gmc_feed_item.mjs
+@@ -105,11 +105,11 @@
+   feld('condition', p.zustand || 'new');
+   feld('brand', p.marke || 'LuxeStyle');
+
+-  // GTIN wenn vorhanden; sonst Marke + MPN; erst wenn beides fehlt, ehrlich identifier_exists=no.
++  // GTIN wenn vorhanden; sonst MPN aus der SKU. Fehlen beide Werte, ist
++  // identifier_exists nicht belegt — das Attribut bleibt daher weg.
+   const gtin = String(p.gtin || '').replace(/\s/g, '');
+   if (/^\d{8}$|^\d{12,14}$/.test(gtin)) feld('gtin', gtin);
+   else if (p.sku) feld('mpn', p.sku);
+-  else feld('identifier_exists', 'no');
+
+   feld('google_product_category', p.googleKategorie);
+   feld('product_type', p.produktTyp);
+--- baseline/automation/lib/gmc_feed_item_test.mjs
++++ proposed/automation/lib/gmc_feed_item_test.mjs
+@@ -45,8 +45,14 @@
+ pruef('mit GTIN kein identifier_exists', hat(mitGtin, 'identifier_exists'), false);
+ const mitSku = feedItem({ ...BASIS, sku: 'CJYD291530101AZ' });
+ pruef('ohne GTIN, mit SKU → mpn', hat(mitSku, '<g:mpn>CJYD291530101AZ</g:mpn>'), true);
+-pruef('ohne GTIN und ohne SKU → identifier_exists:no',
+-  hat(feedItem({ ...BASIS, id: 'handle-x' }), '<g:identifier_exists>no</g:identifier_exists>'), true);
++const ohneKennungen = feedItem({ ...BASIS, id: 'handle-x', gtin: undefined, sku: undefined });
++pruef('ohne GTIN und SKU → identifier_exists bleibt unbekannt',
++  !hat(ohneKennungen, 'identifier_exists') && !hat(ohneKennungen, '<g:gtin>') && !hat(ohneKennungen, '<g:mpn>'), true);
++const leereKennungen = feedItem({ ...BASIS, id: 'handle-x', gtin: '', sku: '' });
++pruef('leere GTIN und SKU → identifier_exists bleibt unbekannt',
++  !hat(leereKennungen, 'identifier_exists') && !hat(leereKennungen, '<g:gtin>') && !hat(leereKennungen, '<g:mpn>'), true);
++pruef('MPN aus SKU ohne identifier_exists',
++  hat(mitSku, '<g:mpn>CJYD291530101AZ</g:mpn>') && !hat(mitSku, 'identifier_exists'), true);
+ // Gegenprobe: Unsinn darf NICHT als GTIN durchgehen.
+ pruef('zu kurze Nummer ist keine GTIN', hat(feedItem({ ...BASIS, gtin: '12345', sku: 'S1' }), '<g:gtin>'), false);
+ pruef('Buchstaben sind keine GTIN', hat(feedItem({ ...BASIS, gtin: 'CJ123456789012', sku: 'S1' }), '<g:gtin>'), false);

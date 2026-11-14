@@ -1,0 +1,65 @@
+{
+  "checkedAtUTC": "2026-11-14 14:49:05 UTC",
+  "shopAndRoles": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "old": {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "role": "MAIN",
+        "updatedAt": "2026-11-12T00:51:33Z"
+      },
+      "prepared": {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "UNPUBLISHED",
+        "updatedAt": "2026-11-14T13:43:54Z"
+      }
+    }
+  },
+  "metricool": {
+    "id": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "ownerThemeApprovalAlreadyPresent": true,
+  "newPublishAttempts": 0,
+  "browserSkillRead": true,
+  "callableExtensionJsOrTabToolsFound": false,
+  "companionPageSnapshot": {
+    "page_id": null,
+    "document_view": null
+  },
+  "newAutoPublishOrWorkflowStarts": 0,
+  "manualPublishStatus": "awaiting_owner_UI_action_or_readback; no repeated approval requested",
+  "runtimeCredentialPresence": {
+    "checkedAtUTC": "2026-11-14T14:43:27.548485+00:00",
+    "presenceOnly": {
+      "GCP_SA_KEY": false,
+      "MERCHANT_ID": false,
+      "GOOGLE_APPLICATION_CREDENTIALS": false,
+      "SHOPIFY_ADMIN_TOKEN": false,
+      "SHOPIFY_CLIENT_ID": false,
+      "SHOPIFY_CLIENT_SECRET": false,
+      "SHOPIFY_SHOP": false
+    },
+    "secretValuesReadOrPrinted": false,
+    "scope": "Only named variables required by reviewed helpers in this process; no claim about GitHub secret values, connector credentials or another runtime."
+  },
+  "priorPublishRefusalSource": "dropship/codex-handoff-20261018/SEO-PUBLIKATION-20261114-R209.json",
+  "noNewPublishAttempt": true,
+  "whyNoLocalBrowserAction": "Browser skill read and callable tools searched: no extension js/list_tabs/get_tab_context present. Companion snapshot contained null page/document. No claim of a connected controllable local browser; no isolated browser handoff or login requested."
+}
