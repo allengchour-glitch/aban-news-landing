@@ -1,0 +1,29 @@
+{
+  "revision": 205,
+  "recordedAtUTC": "2026-11-14T11:37:14.597405+00:00",
+  "dateZurich": "2026-11-14",
+  "trigger": "Owner connected confirmation; continuation of existing work, no added schedule",
+  "correctShopifyAppIdentityRestored": true,
+  "metricoolIdentityVerified": true,
+  "shopCollectionPublicationWrites": 2,
+  "newCollections": 0,
+  "nativeShopProfileSaves": 0,
+  "productWrites": 0,
+  "socialWrites": 0,
+  "newAnalyticsFlowBroadSalesOrOrderWatchQueries": 0,
+  "newRendersUploadsWorkflowStartsDeployments": 0,
+  "knownShopPublishedCollections": 9,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "professionalMasterApproved": false,
+  "masterMp4Sha256": null,
+  "currentProjectorInventoryGate": "All7tracked=false/policy=CONTINUE/availableForSale=true; no supplier stock/delivery proof",
+  "unresolved": [
+    "Native Shop-profile section placement/Save not proven",
+    "Existing R201 package text remains unexecuted review draft",
+    "Exact film takes and commercial media/music rights/listening",
+    "Exact Merchant image_link/primary source; no feedwrite",
+    "DNS writer and runtime bindings remain separate"
+  ],
+  "nextConcreteStep": "Use existing nine collection IDs in native Shop editor with non-repeating5+4layout; no new copies. Keep same master and existing R201 narrow text diff for review.",
+  "claudeReceipt": "unknown_no_receipt"
+}

@@ -2372,3 +2372,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Zugangscode | Vorhandene Diagnose/Helfer gepinnt gelesen; nur lesenden Host-/Hash-Preflight erstellt und acht Offline-Prüfgruppen validiert | Fremde Shops/Quelländerungen werden abgelehnt. Kein Diagnoseimport, Netzwerk, Credential-Read oder Workflowstart; nur unintegrierter Entwurf. Shopify-Neuanmeldung bleibt nötig |
 | Merchant | LuxeStyle-Merchantidentität frisch bestätigt; genaue Read-Verträge mit vorhandenen Offer-Belegen verglichen | product_name/echteimage_link/Primärquelle weiter unbekannt; kein dokumentierter Exaktfilter. Keine Massenpagination, wiederholter Feldmix oder Feedänderung |
 | Kontinuität | 24 IDs/Historien und R200-Tagesreports erhalten; R201-Verkaufsdiff und denselben Master weitergeführt | Null neue Kennzahl-/Flow-/breite Verkaufsreports, Kauf-Watch, Kundenkontakt, Render oder Plattformwrites. Versand/Domain/Zeitplan erhalten; vier DNS-Records bereits genehmigt, Writer fehlt. Claude-Empfang unbekannt |
+
+### R205 – Inhaber meldet «verbunden», offene Shop-Auswahl abgeschlossen
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Zugang | Shopify- und sechs Metricool-Identitäten nach Neuanmeldung frisch geprüft | Richtige LuxeStyle-Appverbindung wiederhergestellt; native Editor-Sitzung und Laufzeit-Credentials dadurch nicht bestätigt |
+| Shop-Kollektionen | Zwei feste R199-IDs, vier aktive Mitglieder, Tags, Bilder und öffentliche Varianten geprüft; engen Diff ausgeführt | Mode & Stil und Schmuck & Accessoires gezielt Shop-only veröffentlicht, beide unabhängig bestätigt. Alle neun bekannten Shopgruppen nun freigeschaltet; keine Kopien, Produkte oder anderen Kanäle geändert |
+| Profilgestaltung | Konkrete Anordnung mit fünf und vier vorhandenen Gruppen dokumentiert | Keine wiederholte Licht-&-Wohnen-Karte nötig; nativer Editor-Save/Platzierung weiterhin unbestätigt, null eigene Profil-Saves |
+| Projektor | Aktuelle Adminwerte und vorhandenen R201-Zweistellendiff gegengeprüft | ACTIVE/12Tags/7Varianten; alle Tracking=false, CONTINUE und availableForSale=true. HTMLhash passt, Diff unverändert/nicht angewendet. Kein Ausverkaufs-/Lieferantenbestandversprechen |
+| Kontinuität | 24 IDs/Historien und heutige R200-Reports erhalten; denselben Master fortgeführt | Kein neuer Film/Upload/Social-/Produktwrite oder Tagesreport/Kauf-Watch/Kundenkontakt. Versand/Domain/Zeitplan erhalten; Filmrechte/Originaltakes und andere spezialisierte Zugänge separat offen. Claude-Empfang unbekannt |

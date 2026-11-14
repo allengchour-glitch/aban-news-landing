@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R205 – 14.11.2026: Richtige Verbindung wiederhergestellt, zwei offene Shop-Kollektionen freigeschaltet
+
+[Arbeitsbericht](SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md) · [Operationsbelege](SHOP-KOLLEKTIONEN-ABSCHLUSS-20261114-R205.json) · [Projektor-Gegenprobe](PROJEKTOR-ADMIN-GEGENPROBE-20261114-R205.json). Shopify liefert wieder LuxeStyle/luxestyle.ch/CHF; Metricool-Identitäten passend. Bestehende Mode-/Schmuck-Kollektionen gezielt Shop-only veröffentlicht und unabhängig zurückgelesen, geschützte Felder/Produkte gleich. Alle neun bekannten Shopgruppen freigeschaltet, keine Kopien oder nativen Profil-Saves. ProjektorACTIVE/Trackingfalse/CONTINUE/availabletrue jetzt frisch belegt; R201-Zweistellendiff passt exakt, bleibt unverändert. Kein Film, Produkt-/Socialwrite oder neuer Tagesreport;24IDs/Historien erhalten, Claude-Empfang unbekannt.
+
 ## R204 – 14.11.2026: Variantencheck, lesender Zugangsschutz-Entwurf und sechster Auslieferungsbeleg
 
 [Arbeitsbericht](WEITERARBEIT-20261114-R204.md) · [Belege](WEITERARBEIT-20261114-R204.json) · [Variantenprüfung](PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json). A/E/G bei390/1440px mit passender Preis-/Bildbindung geprüft; kein CTA-Fehler belegt, kein Kauf ausgelöst. Vorhandenen Diagnosecode geprüft und strikt nichtausführenden Host-/Hash-Preflight mit acht Offline-Prüfgruppen vorbereitet; nicht integriert oder produktiv. Eine weitere TikTok-Auslieferung beobachtet, jetzt sechs externe PUBLISHED-Zustände, keine eigene Publikation. Shopify-Neuanmeldung und exakte Merchantquelle bleiben offen. 24 Aufgaben und Historien, R201-Textdiff, derselbe Master und heutiger R200-Reportstand erhalten. Keine Plattformwrites, Render oder neuen Tagesreports; Claude-Empfang unbekannt.

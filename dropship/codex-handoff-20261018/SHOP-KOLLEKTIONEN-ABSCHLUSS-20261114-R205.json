@@ -1,0 +1,1362 @@
+{
+  "revision": 205,
+  "dateZurich": "2026-11-14",
+  "recordedAtUTC": "2026-11-14T11:37:14.597405+00:00",
+  "authorization": "Bestehender ausdrücklicher Shop-App-Kategorienauftrag; R199 hatte genau diese zwei IDs angelegt, Freischaltung wegen falschem/fehlendem Appkontext offen. Inhaber bestätigt jetzt verbunden; Identität danach frisch geprüft. Keine pauschale Aktivierung fehlender Produktkanäle.",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currency": "CHF",
+      "verified": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    }
+  },
+  "shopPublicationId": "gid://shopify/Publication/301971014017",
+  "before": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF"
+    },
+    "publications": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Publication/301970915713",
+          "catalog": {
+            "title": "Channel Catalog 301970915713 for Online Store"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/301970981249",
+          "catalog": {
+            "title": "Channel Catalog 301970981249 for Point of Sale"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/301971014017",
+          "catalog": {
+            "title": "Channel Catalog 301971014017 for Shop"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302032716161",
+          "catalog": {
+            "title": "Channel Catalog 302032716161 for TikTok"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302566834561",
+          "catalog": {
+            "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302872297857",
+          "catalog": {
+            "title": "Channel Catalog 302872297857 for Google & YouTube"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/302994456961",
+          "catalog": {
+            "title": "Channel Catalog 302994456961 for Pinterest"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/305570283905",
+          "catalog": {
+            "title": "Channel Catalog 305570283905 for Inbox"
+          }
+        },
+        {
+          "id": "gid://shopify/Publication/391626359175",
+          "catalog": {
+            "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjozOTE2MjYzNTkxNzUsImxhc3RfdmFsdWUiOiIzOTE2MjYzNTkxNzUifQ=="
+      }
+    },
+    "fashion": {
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "handle": "shop-mode-stil",
+      "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+      "updatedAt": "2026-11-13T23:56:57Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014675847",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "altText": "Grüne Bluse mit V-Ausschnitt"
+      },
+      "publishedOnPublication": false,
+      "resourcePublicationsV2": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16654366409095",
+            "title": "Satin-Bluse mit langen Ärmeln",
+            "handle": "satin-bluse-mit-langen-armeln-605700",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden",
+              "sort-damen-blusen-satin"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99e8fc66-a51c-4c9e-a2c3-121e29ec1b4a.jpg?v=1792473284",
+                "width": 1200,
+                "height": 1600
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748026745223",
+                  "title": "Weiss / S",
+                  "sku": "CJ-CJCS328129101AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16654377714055",
+            "title": "Samtige V-Neck Bluse mit langen Ärmeln",
+            "handle": "samtige-v-neck-bluse-mit-langen-armeln-613700",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a33f3fdd-cd2a-4b2f-b92e-25aabc2cf6ba.jpg?v=1792476641",
+                "width": 1000,
+                "height": 1000
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748071801223",
+                  "title": "S",
+                  "sku": "CJ-CJCS328625801AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjoxNjY1NDM3NzcxNDA1NSwibGFzdF92YWx1ZSI6IjAwMDlieDhndGhvIn0="
+        }
+      }
+    },
+    "jewelry": {
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "handle": "shop-schmuck-accessoires",
+      "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+      "updatedAt": "2026-11-13T23:57:00Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014708615",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "altText": "Kette mit Kreuzanhänger"
+      },
+      "publishedOnPublication": false,
+      "resourcePublicationsV2": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16690384765319",
+            "title": "Choker-Halskette Damen Voll Kristall-Strass Schmuck für Hochzeit",
+            "handle": "choker-halskette-damen-voll-kristall-strass-sc-cbbc67",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261103",
+              "sort-choker-layering-ketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-schmuck",
+              "sort-zirkonia-moissanit-ketten"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17999683324960.jpg?v=1793730199",
+                "width": 800,
+                "height": 800
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67886036484487",
+                  "title": "Bunt / 16 mm",
+                  "sku": "CJZBLXLX02753-Colorful-16mm",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16700386640263",
+            "title": "Herren Halskette mit Eisen-Nagelkreuz-Anhänger aus Edelstahl, Gold, Schwarz",
+            "handle": "herren-halskette-mit-eisen-nagelkreuz-anhanger-376512",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261108",
+              "sort-edelstahl-titanketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-ketten-mit-anhaenger",
+              "sort-ketten-mit-anhaenger-stahl",
+              "sort-schmuck"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b57fc253-f65f-4a4d-a30a-99d86254fb6c.jpg?v=1794177151",
+                "width": 800,
+                "height": 800
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/68151217455495",
+                  "title": "Silber / 1 Stück",
+                  "sku": "CJLX108191501AZ",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjoxNjcwMDM4NjY0MDI2MywibGFzdF92YWx1ZSI6IjAwMDlieDhndGhvIn0="
+        }
+      }
+    },
+    "projector": {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "updatedAt": "2026-11-11T09:52:25Z",
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "publishedOnPublication": true,
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "title": "A · Grundmodell",
+            "sku": "CJSN139239101AZ",
+            "price": "34.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445316487",
+            "title": "B · mit 6 Motivscheiben",
+            "sku": "CJSN139239102BY",
+            "price": "37.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445349255",
+            "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239103CX",
+            "price": "40.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445382023",
+            "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+            "sku": "CJSN139239104DW",
+            "price": "49.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445414791",
+            "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239105EV",
+            "price": "51.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445447559",
+            "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "sku": "CJSN139239106FU",
+            "price": "44.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445480327",
+            "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+            "sku": "CJSN139239107GT",
+            "price": "35.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2ODEyMjQ0NTQ4MDMyNywibGFzdF92YWx1ZSI6N30="
+        }
+      }
+    }
+  },
+  "immediateBefore": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF"
+    },
+    "fashion": {
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "handle": "shop-mode-stil",
+      "updatedAt": "2026-11-13T23:56:57Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014675847",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "altText": "Grüne Bluse mit V-Ausschnitt"
+      },
+      "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+      "publishedOnPublication": false,
+      "resourcePublicationsV2": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16654366409095",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden",
+              "sort-damen-blusen-satin"
+            ],
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16654377714055",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden"
+            ],
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "jewelry": {
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "handle": "shop-schmuck-accessoires",
+      "updatedAt": "2026-11-13T23:57:00Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014708615",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "altText": "Kette mit Kreuzanhänger"
+      },
+      "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+      "publishedOnPublication": false,
+      "resourcePublicationsV2": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16690384765319",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261103",
+              "sort-choker-layering-ketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-schmuck",
+              "sort-zirkonia-moissanit-ketten"
+            ],
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16700386640263",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261108",
+              "sort-edelstahl-titanketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-ketten-mit-anhaenger",
+              "sort-ketten-mit-anhaenger-stahl",
+              "sort-schmuck"
+            ],
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "writePlan": {
+    "authorization": "Persistent explicit owner request to finish Shop-app categories; two existing R199 collections created before technical auth failure. Current user confirms reconnected. No activation of product or other channel.",
+    "shop": "luxestyle.ch",
+    "shopPermanentDomain": "au3j0y-hq.myshopify.com",
+    "publicationId": "gid://shopify/Publication/301971014017",
+    "writes": [
+      {
+        "id": "gid://shopify/Collection/757757542791",
+        "title": "Mode & Stil",
+        "diff": {
+          "resourcePublicationsV2": {
+            "before": [],
+            "after": [
+              {
+                "isPublished": true,
+                "publication": {
+                  "id": "gid://shopify/Publication/301971014017"
+                }
+              }
+            ]
+          },
+          "publishedOnPublication": {
+            "before": false,
+            "after": true
+          }
+        },
+        "protectedFields": [
+          "id",
+          "handle",
+          "title",
+          "descriptionHtml",
+          "image",
+          "memberProductIDs",
+          "productStatusPriceTagsInventory",
+          "otherChannelPublications"
+        ],
+        "requiredReadback": "Fresh exact collection and identity, publication=true and only one Shop resource, protected values unchanged."
+      },
+      {
+        "id": "gid://shopify/Collection/757757575559",
+        "title": "Schmuck & Accessoires",
+        "diff": {
+          "resourcePublicationsV2": {
+            "before": [],
+            "after": [
+              {
+                "isPublished": true,
+                "publication": {
+                  "id": "gid://shopify/Publication/301971014017"
+                }
+              }
+            ]
+          },
+          "publishedOnPublication": {
+            "before": false,
+            "after": true
+          }
+        },
+        "protectedFields": [
+          "id",
+          "handle",
+          "title",
+          "descriptionHtml",
+          "image",
+          "memberProductIDs",
+          "productStatusPriceTagsInventory",
+          "otherChannelPublications"
+        ],
+        "requiredReadback": "Fresh exact collection and identity, publication=true and only one Shop resource, protected values unchanged."
+      }
+    ],
+    "otherProductAndChannelWrites": 0,
+    "noCopies": true,
+    "rollback": "Only if required and owner instruction: unpublish these exact collection IDs from this exact publication; never delete products/collections."
+  },
+  "writes": [
+    {
+      "data": {
+        "publishablePublish": {
+          "publishable": {
+            "id": "gid://shopify/Collection/757757542791",
+            "publishedOnPublication": true
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "data": {
+        "publishablePublish": {
+          "publishable": {
+            "id": "gid://shopify/Collection/757757575559",
+            "publishedOnPublication": true
+          },
+          "userErrors": []
+        }
+      }
+    }
+  ],
+  "afterFirstWrite": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF"
+    },
+    "fashion": {
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "handle": "shop-mode-stil",
+      "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014675847",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "altText": "Grüne Bluse mit V-Ausschnitt"
+      },
+      "publishedOnPublication": true,
+      "resourcePublicationsV2": {
+        "nodes": [
+          {
+            "isPublished": true,
+            "publication": {
+              "id": "gid://shopify/Publication/301971014017"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16654366409095",
+            "title": "Satin-Bluse mit langen Ärmeln",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden",
+              "sort-damen-blusen-satin"
+            ],
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748026745223",
+                  "sku": "CJ-CJCS328129101AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16654377714055",
+            "title": "Samtige V-Neck Bluse mit langen Ärmeln",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden"
+            ],
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748071801223",
+                  "sku": "CJ-CJCS328625801AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "jewelry": {
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "handle": "shop-schmuck-accessoires",
+      "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014708615",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "altText": "Kette mit Kreuzanhänger"
+      },
+      "publishedOnPublication": false,
+      "resourcePublicationsV2": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16690384765319",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261103",
+              "sort-choker-layering-ketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-schmuck",
+              "sort-zirkonia-moissanit-ketten"
+            ],
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16700386640263",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261108",
+              "sort-edelstahl-titanketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-ketten-mit-anhaenger",
+              "sort-ketten-mit-anhaenger-stahl",
+              "sort-schmuck"
+            ],
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "finalReadback": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF"
+    },
+    "old0": {
+      "id": "gid://shopify/Collection/757753840007",
+      "title": "Neue Entdeckungen",
+      "publishedOnPublication": true
+    },
+    "old1": {
+      "id": "gid://shopify/Collection/757437432199",
+      "title": "Geschenkideen",
+      "publishedOnPublication": true
+    },
+    "old2": {
+      "id": "gid://shopify/Collection/757437530503",
+      "title": "Licht & Wohnen",
+      "publishedOnPublication": true
+    },
+    "old3": {
+      "id": "gid://shopify/Collection/757437563271",
+      "title": "Beauty & Ordnung",
+      "publishedOnPublication": true
+    },
+    "old4": {
+      "id": "gid://shopify/Collection/757756854663",
+      "title": "Für Katzen",
+      "publishedOnPublication": true
+    },
+    "old5": {
+      "id": "gid://shopify/Collection/757756887431",
+      "title": "Weihnachten Zuhause",
+      "publishedOnPublication": true
+    },
+    "old6": {
+      "id": "gid://shopify/Collection/757756920199",
+      "title": "Unterwegs & Alltag",
+      "publishedOnPublication": true
+    },
+    "fashion": {
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "handle": "shop-mode-stil",
+      "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+      "updatedAt": "2026-11-14T11:32:43Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014675847",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "altText": "Grüne Bluse mit V-Ausschnitt"
+      },
+      "publishedOnPublication": true,
+      "resourcePublicationsV2": {
+        "nodes": [
+          {
+            "isPublished": true,
+            "publication": {
+              "id": "gid://shopify/Publication/301971014017"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16654366409095",
+            "title": "Satin-Bluse mit langen Ärmeln",
+            "handle": "satin-bluse-mit-langen-armeln-605700",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden",
+              "sort-damen-blusen-satin"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99e8fc66-a51c-4c9e-a2c3-121e29ec1b4a.jpg?v=1792473284",
+                "width": 1200,
+                "height": 1600
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748026745223",
+                  "title": "Weiss / S",
+                  "sku": "CJ-CJCS328129101AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16654377714055",
+            "title": "Samtige V-Neck Bluse mit langen Ärmeln",
+            "handle": "samtige-v-neck-bluse-mit-langen-armeln-613700",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "damen",
+              "dropship",
+              "mode",
+              "neuheit",
+              "sort-damen-blusen-bluse",
+              "sort-damen-blusen-hemden"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a33f3fdd-cd2a-4b2f-b92e-25aabc2cf6ba.jpg?v=1792476641",
+                "width": 1000,
+                "height": 1000
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67748071801223",
+                  "title": "S",
+                  "sku": "CJ-CJCS328625801AZ",
+                  "price": "16.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "jewelry": {
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "handle": "shop-schmuck-accessoires",
+      "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+      "updatedAt": "2026-11-14T11:33:05Z",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2133014708615",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "altText": "Kette mit Kreuzanhänger"
+      },
+      "publishedOnPublication": true,
+      "resourcePublicationsV2": {
+        "nodes": [
+          {
+            "isPublished": true,
+            "publication": {
+              "id": "gid://shopify/Publication/301971014017"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "products": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Product/16690384765319",
+            "title": "Choker-Halskette Damen Voll Kristall-Strass Schmuck für Hochzeit",
+            "handle": "choker-halskette-damen-voll-kristall-strass-sc-cbbc67",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261103",
+              "sort-choker-layering-ketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-schmuck",
+              "sort-zirkonia-moissanit-ketten"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17999683324960.jpg?v=1793730199",
+                "width": 800,
+                "height": 800
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67886036484487",
+                  "title": "Bunt / 16 mm",
+                  "sku": "CJZBLXLX02753-Colorful-16mm",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          },
+          {
+            "id": "gid://shopify/Product/16700386640263",
+            "title": "Herren Halskette mit Eisen-Nagelkreuz-Anhänger aus Edelstahl, Gold, Schwarz",
+            "handle": "herren-halskette-mit-eisen-nagelkreuz-anhanger-376512",
+            "status": "ACTIVE",
+            "tags": [
+              "cj-real",
+              "dropship",
+              "grind2",
+              "grind2-20261108",
+              "sort-edelstahl-titanketten",
+              "sort-halsketten",
+              "sort-halsketten-alle",
+              "sort-ketten-mit-anhaenger",
+              "sort-ketten-mit-anhaenger-stahl",
+              "sort-schmuck"
+            ],
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b57fc253-f65f-4a4d-a30a-99d86254fb6c.jpg?v=1794177151",
+                "width": 800,
+                "height": 800
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/68151217455495",
+                  "title": "Silber / 1 Stück",
+                  "sku": "CJLX108191501AZ",
+                  "price": "14.90",
+                  "availableForSale": true,
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            },
+            "publishedOnPublication": true
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "guardSource": {
+    "mainCommit": "ea2ac7c5827b1328c1b51069348911f7c663d6d5",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+    "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371"
+  },
+  "memberGuardChecks": [
+    {
+      "collectionId": "gid://shopify/Collection/757757542791",
+      "productId": "gid://shopify/Product/16654366409095",
+      "tagCount": 8,
+      "guardHits": [],
+      "additionalRueckholHits": [],
+      "active": true,
+      "alreadyOnShop": true,
+      "variant": {
+        "id": "gid://shopify/ProductVariant/67748026745223",
+        "title": "Weiss / S",
+        "sku": "CJ-CJCS328129101AZ",
+        "price": "16.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "collectionId": "gid://shopify/Collection/757757542791",
+      "productId": "gid://shopify/Product/16654377714055",
+      "tagCount": 7,
+      "guardHits": [],
+      "additionalRueckholHits": [],
+      "active": true,
+      "alreadyOnShop": true,
+      "variant": {
+        "id": "gid://shopify/ProductVariant/67748071801223",
+        "title": "S",
+        "sku": "CJ-CJCS328625801AZ",
+        "price": "16.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "collectionId": "gid://shopify/Collection/757757575559",
+      "productId": "gid://shopify/Product/16690384765319",
+      "tagCount": 9,
+      "guardHits": [],
+      "additionalRueckholHits": [],
+      "active": true,
+      "alreadyOnShop": true,
+      "variant": {
+        "id": "gid://shopify/ProductVariant/67886036484487",
+        "title": "Bunt / 16 mm",
+        "sku": "CJZBLXLX02753-Colorful-16mm",
+        "price": "14.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "collectionId": "gid://shopify/Collection/757757575559",
+      "productId": "gid://shopify/Product/16700386640263",
+      "tagCount": 10,
+      "guardHits": [],
+      "additionalRueckholHits": [],
+      "active": true,
+      "alreadyOnShop": true,
+      "variant": {
+        "id": "gid://shopify/ProductVariant/68151217455495",
+        "title": "Silber / 1 Stück",
+        "sku": "CJLX108191501AZ",
+        "price": "14.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      "pass": true
+    }
+  ],
+  "publicChecks": {
+    "readAtUTC": "2026-11-14T11:32:03.888984+00:00",
+    "rows": [
+      {
+        "key": "fashion-cover",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "kind": "image",
+        "readAtUTC": "2026-11-14T11:32:03.183804+00:00",
+        "status": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "bytes": 87502,
+        "sha256": "eb81e5cb8b511945043b109bab7b3cd27192fad8b61975d65417b0759d9de4d7",
+        "format": "JPEG",
+        "width": 800,
+        "height": 800,
+        "pass": true
+      },
+      {
+        "key": "16654366409095",
+        "url": "https://luxestyle.ch/products/satin-bluse-mit-langen-armeln-605700.js",
+        "kind": "product",
+        "readAtUTC": "2026-11-14T11:32:03.184893+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/satin-bluse-mit-langen-armeln-605700.js",
+        "bytes": 54355,
+        "sha256": "ec4945479b1c2876745f418cea1414746e93092d642f41bdb75a112df6d31588",
+        "productId": "16654366409095",
+        "available": true,
+        "variant": {
+          "id": "67748026745223",
+          "sku": "CJ-CJCS328129101AZ",
+          "priceCents": 1690,
+          "available": true
+        },
+        "pass": true
+      },
+      {
+        "key": "16654377714055",
+        "url": "https://luxestyle.ch/products/samtige-v-neck-bluse-mit-langen-armeln-613700.js",
+        "kind": "product",
+        "readAtUTC": "2026-11-14T11:32:03.185687+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/samtige-v-neck-bluse-mit-langen-armeln-613700.js",
+        "bytes": 11930,
+        "sha256": "d8a1782145fffd850ea97bebd3305888d62f74191fbf6b1eb74444ea933e2b6d",
+        "productId": "16654377714055",
+        "available": true,
+        "variant": {
+          "id": "67748071801223",
+          "sku": "CJ-CJCS328625801AZ",
+          "priceCents": 1690,
+          "available": true
+        },
+        "pass": true
+      },
+      {
+        "key": "jewelry-cover",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "kind": "image",
+        "readAtUTC": "2026-11-14T11:32:03.186517+00:00",
+        "status": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "bytes": 21818,
+        "sha256": "88bb95b19c182eaaf475db24bd0119d0a5ed13b1265525124a8b1e3e563ead38",
+        "format": "JPEG",
+        "width": 800,
+        "height": 800,
+        "pass": true
+      },
+      {
+        "key": "16690384765319",
+        "url": "https://luxestyle.ch/products/choker-halskette-damen-voll-kristall-strass-sc-cbbc67.js",
+        "kind": "product",
+        "readAtUTC": "2026-11-14T11:32:03.455448+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/choker-halskette-damen-voll-kristall-strass-sc-cbbc67.js",
+        "bytes": 25067,
+        "sha256": "d754a554fd59c3a38bc8f029acd50f96175e2993d87767bd0e920baa06735110",
+        "productId": "16690384765319",
+        "available": true,
+        "variant": {
+          "id": "67886036484487",
+          "sku": "CJZBLXLX02753-Colorful-16mm",
+          "priceCents": 1490,
+          "available": true
+        },
+        "pass": true
+      },
+      {
+        "key": "16700386640263",
+        "url": "https://luxestyle.ch/products/herren-halskette-mit-eisen-nagelkreuz-anhanger-376512.js",
+        "kind": "product",
+        "readAtUTC": "2026-11-14T11:32:03.463293+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/herren-halskette-mit-eisen-nagelkreuz-anhanger-376512.js",
+        "bytes": 33402,
+        "sha256": "fb93a9ae16a8f025e2218d1e8b3d6aae167f30a6b198851b87a346e43bdb0dde",
+        "productId": "16700386640263",
+        "available": true,
+        "variant": {
+          "id": "68151217455495",
+          "sku": "CJLX108191501AZ",
+          "priceCents": 1490,
+          "available": true
+        },
+        "pass": true
+      }
+    ],
+    "allPass": true,
+    "noCartOrCheckout": true
+  },
+  "ownChanges": {
+    "exactCollectionShopPublications": 2,
+    "collectionCreates": 0,
+    "collectionImageOrTextChanges": 0,
+    "productChanges": 0,
+    "otherChannelActivations": 0,
+    "nativeShopProfileSaves": 0,
+    "metricoolWrites": 0,
+    "renderOrMediaUploads": 0
+  },
+  "protectedFieldsCountercheck": {
+    "collectionIdentityTextImageMembersUnchanged": true,
+    "fourMemberStatusesTagsPricesSkusInventoryUnchanged": true,
+    "bothNowOnlyShopPublished": true,
+    "noProductOrOtherChannelMutation": true
+  },
+  "allNineKnownCollectionsShopPublished": [
+    {
+      "id": "gid://shopify/Collection/757753840007",
+      "title": "Neue Entdeckungen",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757437432199",
+      "title": "Geschenkideen",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757437530503",
+      "title": "Licht & Wohnen",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757437563271",
+      "title": "Beauty & Ordnung",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757756854663",
+      "title": "Für Katzen",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757756887431",
+      "title": "Weihnachten Zuhause",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757756920199",
+      "title": "Unterwegs & Alltag",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757757542791",
+      "title": "Mode & Stil",
+      "publishedOnShop": true
+    },
+    {
+      "id": "gid://shopify/Collection/757757575559",
+      "title": "Schmuck & Accessoires",
+      "publishedOnShop": true
+    }
+  ],
+  "nativeProfilePlacement": "Not verified or written by Codex. API publication is availability for Shop, not proof of placement, section order or native Save.",
+  "notAFullCatalogAudit": true,
+  "noStockOrDeliveryPromise": true
+}
