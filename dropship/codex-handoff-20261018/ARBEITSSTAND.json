@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 211,
-  "updatedAt": "2026-11-14T15:42:05.029934+00:00",
+  "revision": 212,
+  "updatedAt": "2026-11-14T16:51:00.478622+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r211_claude_code_handoff_saved_live_seo_confirmed_ci_timeout_documented",
+      "state": "r212_code_branch_real_ci_and_exact_merchant_handoff_prepared_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
-      "lastEvidence": "Ausdrücklichen Claude-Code-Übergabeauftrag ausgearbeitet. Core4 frisch, Identitäten anfangspassend, SEO jetztliveöffentlichbelegt; spätereShopifyReauthdatiert. VorherigeCI-Begründungkorrigiertund3lokaleJobnachbautenplusRestchecks ausgeführt,2pass/1timeout. KonkreteHandoffdatei/24IDs/Historien erhalten. KeinClaudeEmpfangohneBeleg,0eigeneShop-/Feed-/Socialwrites/Workflows/Deployments/neueReports.",
-      "nextAllowedStep": "Claude Code liest Handoff-Branch/Core4 und neueÜbergabe frisch. KeinEmpfangbehaupten. Live-SEOerhalten, AdminzugangvorprotectedWriteserneuern, vollständigeCIvorMergefortführen; bestehendeAufgaben/Tagesschranke/Zeitplan/Freigabenbeibehalten.",
+      "belegArt": "R212_REAL_GITHUB_CI_AND_THREE_EXACT_GOOGLE_GETS_WITH_PARTIAL_STATUS",
+      "lastEvidence": "Aktuelle Core4/Revision211 frisch,24IDs erhalten. Zwei normale Code-Commits separat gespeichert/Hashes zurückgelesen; bestehende CI einmal und bestehender Merchant-Leser für drei verschiedene Angebote kontrolliert gestartet. Echte CI drei Jobs grün, Reader21Mocks grün/Teilstatus bewusst nicht als Clearance. Präzise Übergabe und Tagesfortschritt, kein ungeprüfter Deploy/PR/neuer Zeitplan. Neuer Claude-Empfang unbekannt.",
+      "nextAllowedStep": "Claude Code liest Core4 und R212-Handoff frisch und quittiert nur nach tatsächlichem Lesen. Kernmerge/Produktivlauf und genaue Merchant-Einzelfälle getrennt prüfen. Den belegten GCP-Workflowzugang weiterverwenden, nicht wieder pauschal als fehlenden Connector melden; bestehende Tagesgrenze und Zeitpläne erhalten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4072,6 +4072,36 @@
           "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
           "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
           "readAt": "2026-11-14T15:42:05.029934+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+          "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+          "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+          "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+          "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+          "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+          "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+          "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+          "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+          "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+          "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4926,6 +4956,45 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
               "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
               "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625"
+            }
+          ]
+        },
+        {
+          "revision": 212,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r211_claude_code_handoff_saved_live_seo_confirmed_ci_timeout_documented",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
+            "lastEvidence": "Ausdrücklichen Claude-Code-Übergabeauftrag ausgearbeitet. Core4 frisch, Identitäten anfangspassend, SEO jetztliveöffentlichbelegt; spätereShopifyReauthdatiert. VorherigeCI-Begründungkorrigiertund3lokaleJobnachbautenplusRestchecks ausgeführt,2pass/1timeout. KonkreteHandoffdatei/24IDs/Historien erhalten. KeinClaudeEmpfangohneBeleg,0eigeneShop-/Feed-/Socialwrites/Workflows/Deployments/neueReports.",
+            "nextAllowedStep": "Claude Code liest Handoff-Branch/Core4 und neueÜbergabe frisch. KeinEmpfangbehaupten. Live-SEOerhalten, AdminzugangvorprotectedWriteserneuern, vollständigeCIvorMergefortführen; bestehendeAufgaben/Tagesschranke/Zeitplan/Freigabenbeibehalten."
+          },
+          "summary": "Aktuelle Core4/Revision211 frisch,24IDs erhalten. Zwei normale Code-Commits separat gespeichert/Hashes zurückgelesen; bestehende CI einmal und bestehender Merchant-Leser für drei verschiedene Angebote kontrolliert gestartet. Echte CI drei Jobs grün, Reader21Mocks grün/Teilstatus bewusst nicht als Clearance. Präzise Übergabe und Tagesfortschritt, kein ungeprüfter Deploy/PR/neuer Zeitplan. Neuer Claude-Empfang unbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+              "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+              "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+              "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+              "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
             }
           ]
         }
@@ -5789,6 +5858,42 @@
         "ownServiceWrites": 0,
         "successfulThemePublicationByCodex": false,
         "laterShopifyReauthenticationRequired": true
+      },
+      "run212": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+            "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+            "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+            "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+            "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+            "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+            "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+            "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+            "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+            "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+            "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+          }
+        ],
+        "codeBranch": "codex/luxestyle-merchant-fix-20261114-r212",
+        "coreCommit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+        "readerCommit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+        "mergedOrFeedExecuted": false,
+        "merchantBusinessWrites": 0,
+        "allMerchantErrorsCleared": false,
+        "claudeReceipt": "unknown_no_new_receipt"
       }
     },
     {
@@ -8520,12 +8625,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r211_local_feed_candidate_two_ci_jobs_pass_tests_timeout_no_merge",
+      "state": "r212_exact_google_sources_and_stale_images_read_core_ci_green_branch_only",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
-      "lastEvidence": "R210-Patch unverändert auf lokalem Kandidatf170407d mit genau2Dateien. Node22/SHA-verifiziert, LiquidJS10.30.1 tasklokal; alle3SparseJobkopien/Umgebungnetz- und credentialisoliert. lagerbestand182.548s/selbst-gestalten138.122s bestanden. tests480.011sTimeoutMutation;5VorläuferinklFeedgrün,3übersprungeneRestphasenaufFrischkopieseparat17.642sgrün. KeinpauschalerCI-Erfolg/Remotecheck/Googlefix.",
-      "nextAllowedStep": "Vollen Mutations-/Gesamtcheck erfolgreich abschliessen und frischenMain/Paralleländerungen vor operativerIntegration prüfen. Kandidatistnurlokal/PatchimHandoff;keinMerge/Deployment. Produkt-/Source-LückenR209weitererhalten,keinePhantasiepreise/Identifiers/DRAFTFreigaben/Länderänderungen.",
+      "belegArt": "R212_REAL_GITHUB_CI_AND_THREE_EXACT_GOOGLE_GETS_WITH_PARTIAL_STATUS",
+      "lastEvidence": "Drei exakte CSV-Angebote per bestehendem GCP-Workflow gelesen: Preisfall Source10678939025/price null/301 zur Kategorie; zwei Nagellackvarianten Source10667445201/CHF15.90/alte Overlaybilder, aktuelle Shop-PNGs exakt öffentlich zugeordnet. Drei partial_read/Exit2 wegen fehlender Statusfelder; kein Google-/Shopwrite. Feedkennungsfehler und Mutationstempo auf Codezweig korrigiert, echte Kern-CI drei Jobs grün.",
+      "nextAllowedStep": "Claude prüft aktuellen Main/Paralleländerungen und integriert getesteten Kernpatch gemäss Arbeitsteilung. Danach kontrollierter produktiver Feedlauf mit Gegenprobe, kein Merge-gleich-live. Für exakte Merchantfälle: aktuellen Redirect/Shopstatus/Rechte und Google-App-Bindung prüfen; nur alte Einzelzuordnung und zwei Bilder synchronisieren. Modell6-Attribut gezielt lesen, nicht als GTIN raten. Kein ganzer Autofeed-/Länder-/DRAFT-/Preiswrite.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -8907,6 +9012,36 @@
           "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
           "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
           "readAt": "2026-11-14T15:42:05.029934+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+          "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+          "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+          "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+          "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+          "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+          "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+          "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+          "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+          "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+          "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9483,6 +9618,45 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
               "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
               "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625"
+            }
+          ]
+        },
+        {
+          "revision": 212,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r211_local_feed_candidate_two_ci_jobs_pass_tests_timeout_no_merge",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
+            "lastEvidence": "R210-Patch unverändert auf lokalem Kandidatf170407d mit genau2Dateien. Node22/SHA-verifiziert, LiquidJS10.30.1 tasklokal; alle3SparseJobkopien/Umgebungnetz- und credentialisoliert. lagerbestand182.548s/selbst-gestalten138.122s bestanden. tests480.011sTimeoutMutation;5VorläuferinklFeedgrün,3übersprungeneRestphasenaufFrischkopieseparat17.642sgrün. KeinpauschalerCI-Erfolg/Remotecheck/Googlefix.",
+            "nextAllowedStep": "Vollen Mutations-/Gesamtcheck erfolgreich abschliessen und frischenMain/Paralleländerungen vor operativerIntegration prüfen. Kandidatistnurlokal/PatchimHandoff;keinMerge/Deployment. Produkt-/Source-LückenR209weitererhalten,keinePhantasiepreise/Identifiers/DRAFTFreigaben/Länderänderungen."
+          },
+          "summary": "Drei exakte CSV-Angebote per bestehendem GCP-Workflow gelesen: Preisfall Source10678939025/price null/301 zur Kategorie; zwei Nagellackvarianten Source10667445201/CHF15.90/alte Overlaybilder, aktuelle Shop-PNGs exakt öffentlich zugeordnet. Drei partial_read/Exit2 wegen fehlender Statusfelder; kein Google-/Shopwrite. Feedkennungsfehler und Mutationstempo auf Codezweig korrigiert, echte Kern-CI drei Jobs grün.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+              "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+              "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+              "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+              "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+              "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+              "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
             }
           ]
         }
@@ -10365,6 +10539,42 @@
         "ownServiceWrites": 0,
         "successfulThemePublicationByCodex": false,
         "laterShopifyReauthenticationRequired": true
+      },
+      "run212": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+            "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+            "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+            "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+            "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+            "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+            "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+            "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+            "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+            "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+            "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+          }
+        ],
+        "codeBranch": "codex/luxestyle-merchant-fix-20261114-r212",
+        "coreCommit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+        "readerCommit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+        "mergedOrFeedExecuted": false,
+        "merchantBusinessWrites": 0,
+        "allMerchantErrorsCleared": false,
+        "claudeReceipt": "unknown_no_new_receipt"
       }
     },
     {
@@ -13939,12 +14149,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r211_seo_theme_main_public_descriptions_verified_later_admin_reauth",
+      "state": "r212_exact_stale_product_redirect_to_collection_verified_live_theme_not_republished",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
-      "lastEvidence": "R211-Start: Admin bestätigt213991391623MAIN/altesThemeUNPUBLISHED. Zwei öffentliche DE-/FR-Prüfungen HTTP200/neueMAIN-ID; drei DE-Beschreibungen exakt freigegeben,FR erhalten. Wechsel extern, Akteurunbekannt/keine eigenePublikation. SpäterAdminUNAUTHORIZED/Reauth; keineweiteregeschützteAktion und bekanntenLive-Standnichtzurückgesetzt.",
-      "nextAllowedStep": "Keinen alten Theme-Stand zurückpublizieren oder denselben Patch nochmals einbauen. Vor künftigen Adminaktionen legitim reauthentifizieren; bestehende Zustimmung gilt. Öffentlichen Live-Befund und aktuelleIDs erhalten.",
+      "belegArt": "R212_REAL_GITHUB_CI_AND_THREE_EXACT_GOOGLE_GETS_WITH_PARTIAL_STATUS",
+      "lastEvidence": "Exakter Google-Link des Preisfalls öffentlich301 auf Damenmode-Kategorie; Ziel200 mit Collection-Kanonisch. Kein Produkt-404 und keine Kaufbarkeit daraus behauptet. R211-Live-SEO unverändert als datierter Stand erhalten, kein neuer Publish/geschützter Shopaufruf.",
+      "nextAllowedStep": "Nach legitimem Shopify-Reauth genau Redirect und Produktstatus frisch lesen und einzelne alte Merchant-Zuordnung bereinigen; weder eine Kategorie auf noindex setzen noch DRAFT/Preise aktivieren. Bestehenden Live-SEO-Stand erhalten, keine Ranking-/Verkaufswirkung behaupten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -14390,6 +14600,24 @@
           "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
           "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625",
           "readAt": "2026-11-14T15:42:05.029934+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+          "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+          "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+          "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+          "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+          "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+          "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f",
+          "readAt": "2026-11-14T16:51:00.478622+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -14901,6 +15129,35 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R211.md",
               "sha256": "62b07e2f2d9cf275155d6ec66c4aeccafe73409c1ca4f137b2d1469752708e2f",
               "gitBlobSha": "e869065a696d3bd2c35472ffd3a1c66d41f1e625"
+            }
+          ]
+        },
+        {
+          "revision": 212,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r211_seo_theme_main_public_descriptions_verified_later_admin_reauth",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R211_LIVE_SEO_PUBLIC_PROOF_CLAUDE_CODE_HANDOFF_AND_LOCAL_CI_RESULTS",
+            "lastEvidence": "R211-Start: Admin bestätigt213991391623MAIN/altesThemeUNPUBLISHED. Zwei öffentliche DE-/FR-Prüfungen HTTP200/neueMAIN-ID; drei DE-Beschreibungen exakt freigegeben,FR erhalten. Wechsel extern, Akteurunbekannt/keine eigenePublikation. SpäterAdminUNAUTHORIZED/Reauth; keineweiteregeschützteAktion und bekanntenLive-Standnichtzurückgesetzt.",
+            "nextAllowedStep": "Keinen alten Theme-Stand zurückpublizieren oder denselben Patch nochmals einbauen. Vor künftigen Adminaktionen legitim reauthentifizieren; bestehende Zustimmung gilt. Öffentlichen Live-Befund und aktuelleIDs erhalten."
+          },
+          "summary": "Exakter Google-Link des Preisfalls öffentlich301 auf Damenmode-Kategorie; Ziel200 mit Collection-Kanonisch. Kein Produkt-404 und keine Kaufbarkeit daraus behauptet. R211-Live-SEO unverändert als datierter Stand erhalten, kein neuer Publish/geschützter Shopaufruf.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+              "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+              "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+              "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+              "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+              "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+              "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
             }
           ]
         }
@@ -15563,6 +15820,32 @@
         "ownServiceWrites": 0,
         "successfulThemePublicationByCodex": false,
         "laterShopifyReauthenticationRequired": true
+      },
+      "run212": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+            "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+            "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+            "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+            "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+            "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+            "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+          }
+        ],
+        "codeBranch": "codex/luxestyle-merchant-fix-20261114-r212",
+        "coreCommit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+        "readerCommit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+        "mergedOrFeedExecuted": false,
+        "merchantBusinessWrites": 0,
+        "allMerchantErrorsCleared": false,
+        "claudeReceipt": "unknown_no_new_receipt"
       }
     },
     {
@@ -21896,6 +22179,46 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 212,
+      "at": "2026-11-14T16:51:00.478622+00:00",
+      "actor": "codex",
+      "summary": "Kern-Feedfix/Mutationsreihenfolge in separatem Codezweig gespeichert,221/221Vergleich und9/9lokal405.312s; echteGitHubCI3Jobsgrün. BestehendenMerchantWorkflow für3exakteOffers kontrolliert reinlesend genutzt: GCP-Zugang funktioniert; Preisfall/301zurKategorie undzwei alteGoogleOverlaybilder gegenüberaktuellenShop-PNGs belegt. DreiTeilstatus/Exit2,nichtClearance. KeineBusinesswrites/Merge/Feedrun/Deploy/neueAutomation/Tagesreports/Kaufwatch/Render. Core4/24IDs/Historieerhalten,neuerClaudeEmpfangunbekannt.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+          "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+          "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+          "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+          "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+          "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+          "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+          "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+          "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+          "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+          "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+          "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+          "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -46498,5 +46821,72 @@
     "newDailyReportsOrdersSocialRenders": 0,
     "ownPlatformWrites": 0,
     "newAutomationOrFrequencyChange": false
+  },
+  "run212": {
+    "recordedAtUTC": "2026-11-14T16:51:00.478622+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "merchant": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-GEGENPROBE-20261114-R212.json",
+        "sha256": "8771e4ffc63a896c889d4f1c80872460848b4d8adf4a3a60912c632290d0843f",
+        "gitBlobSha": "ae450d93cbd39f1a425eec626411b0d522effd10"
+      },
+      "safety": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LESER-SICHERHEIT-20261114-R212.json",
+        "sha256": "1e94dab43b1e7183f799a6f85590073fbcf19c357fb748b51ff0906611ca4c68",
+        "gitBlobSha": "214a302c4c4c270a8344a3712c4965b2fddc2c69"
+      },
+      "ci": {
+        "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.json",
+        "sha256": "70534e97cbcec7c5d320f7beb00a49eacc3d62597a6be85d34e640b522d5f2e9",
+        "gitBlobSha": "95bf20892a5df8c7e2d80427e860de0cc6c0de5c"
+      },
+      "patch": {
+        "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+        "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+        "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+      },
+      "handoff": {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-CODE-HANDOFF-20261114-R212.md",
+        "sha256": "feb73e8314092288a751a65ad1da31ab7a75729d8161827ddd33e57490239469",
+        "gitBlobSha": "79d92f63c360513173f3444a092180480ab232b9"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R212.md",
+        "sha256": "0b3ff0a9e6e0b8f7b3050d37dcb5c067c837f7f95c0dd7e2b4c7fce240865b6d",
+        "gitBlobSha": "f5b19db388cec00681a9adfaa7a06eebb0a8143f"
+      }
+    },
+    "codeBranch": "codex/luxestyle-merchant-fix-20261114-r212",
+    "coreCommit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+    "readerCommit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+    "githubCiRun": {
+      "id": 43615418470,
+      "head_sha": "7d2d79aed5635955c6b877155a912fa3bd880629",
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43615418470",
+      "created_at": "2026-11-14T16:24:16Z",
+      "updated_at": "2026-11-14T16:27:41Z",
+      "run_attempt": 1
+    },
+    "githubCoreJobs": "3_success",
+    "readerQualityCheck": "success",
+    "controlledExistingWorkflowDispatches": {
+      "coreCi": 1,
+      "merchantDistinctCases": 3
+    },
+    "merchantRuntimeCredentialUseConfirmed": true,
+    "merchantOffersRead": 3,
+    "merchantDataComplete": false,
+    "merchantBusinessWrites": 0,
+    "shopifySocialFlowDnsBudgetWrites": 0,
+    "mainMergeDeployOrFeedExecution": false,
+    "newAutomationScheduleOrFrequencyChange": false,
+    "dailyReportsOrdersOrRendersRepeated": false,
+    "overallMerchantErrorCount": "unknown_not_census",
+    "all18GroupsCleared": false,
+    "newClaudeReceipt": "unknown_no_receipt"
   }
 }

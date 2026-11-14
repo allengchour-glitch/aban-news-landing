@@ -1,0 +1,712 @@
+{
+  "recordedAtUTC": "2026-11-14T16:51:00.478622+00:00",
+  "baseMain": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+  "branch": "codex/luxestyle-merchant-fix-20261114-r212",
+  "coreCommit": {
+    "commit": "7d2d79aed5635955c6b877155a912fa3bd880629",
+    "parent": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+    "branch": "codex/luxestyle-merchant-fix-20261114-r212",
+    "paths": [
+      "automation/lib/gmc_feed_item.mjs",
+      "automation/lib/gmc_feed_item_test.mjs",
+      "automation/pod_auswahl_mutation.mjs"
+    ],
+    "files": {
+      "automation/lib/gmc_feed_item.mjs": "f1fd11884b984d923d350ddcb2ea91909610dd66da568f1b93d67d58102f0530",
+      "automation/lib/gmc_feed_item_test.mjs": "0c42a7a97e0c193812120673c7d1b37e2a4a2551ffcbe5d30a4567b724e795a1",
+      "automation/pod_auswahl_mutation.mjs": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de"
+    },
+    "recordedAtUTC": "2026-11-14T16:23:27.385273+00:00",
+    "sourceLocalOnly": true,
+    "status": ""
+  },
+  "readerCommit": {
+    "commit": "807b6bcfb694b925c763881326449b0ceae0ea23",
+    "parent": "7d2d79aed5635955c6b877155a912fa3bd880629",
+    "branch": "codex/luxestyle-merchant-fix-20261114-r212",
+    "changedPaths": [
+      "automation/merchant_probe.py",
+      "automation/test_merchant_probe.py",
+      ".github/workflows/merchant-probe.yml"
+    ],
+    "totalPathsFromMain": [
+      ".github/workflows/merchant-probe.yml",
+      "automation/lib/gmc_feed_item.mjs",
+      "automation/lib/gmc_feed_item_test.mjs",
+      "automation/merchant_probe.py",
+      "automation/pod_auswahl_mutation.mjs",
+      "automation/test_merchant_probe.py"
+    ],
+    "files": {
+      "automation/merchant_probe.py": "04060820db7e4f6bfee0efa07c3d8defdd3f20da98aa34b895a78fc014703af0",
+      "automation/test_merchant_probe.py": "39543fdd0885306bf0ca4df76b1abe225924fbfbcbde07e1b40cc2b06b5f865b",
+      ".github/workflows/merchant-probe.yml": "876db4beb614d63d68f204841862d63c4e73eacd6547ca24def751c18f40c29c"
+    },
+    "recordedAtUTC": "2026-11-14T16:30:13.763571+00:00",
+    "legacyLogicAstPreserved": true,
+    "status": "",
+    "mergedOrDeployed": false
+  },
+  "codeReadbacks": [
+    {
+      "verifiedAtUTC": "2026-11-14T16:23:54.618321+00:00",
+      "head": "7d2d79aed5635955c6b877155a912fa3bd880629",
+      "files": {
+        "automation/lib/gmc_feed_item.mjs": {
+          "gitBlobSha": "0cc3891f35012b6bf1af4dd48f577fe5e3395e85",
+          "sha256": "f1fd11884b984d923d350ddcb2ea91909610dd66da568f1b93d67d58102f0530",
+          "matches": true
+        },
+        "automation/lib/gmc_feed_item_test.mjs": {
+          "gitBlobSha": "2063610fc2ebd488499c85412549067dce5d233e",
+          "sha256": "0c42a7a97e0c193812120673c7d1b37e2a4a2551ffcbe5d30a4567b724e795a1",
+          "matches": true
+        },
+        "automation/pod_auswahl_mutation.mjs": {
+          "gitBlobSha": "e46eeb3c30ec6b957045d3ee066febed312e582a",
+          "sha256": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de",
+          "matches": true
+        }
+      }
+    },
+    {
+      "verifiedAtUTC": "2026-11-14T16:30:47.980500+00:00",
+      "head": "807b6bcfb694b925c763881326449b0ceae0ea23",
+      "files": {
+        "automation/merchant_probe.py": {
+          "gitBlobSha": "c29b4a0d80f8b31bd0f8b5b6dc7e0f75221162e2",
+          "sha256": "04060820db7e4f6bfee0efa07c3d8defdd3f20da98aa34b895a78fc014703af0",
+          "matches": true
+        },
+        "automation/test_merchant_probe.py": {
+          "gitBlobSha": "9e73b3ba919644a89e728da4ea6d6ff540376943",
+          "sha256": "39543fdd0885306bf0ca4df76b1abe225924fbfbcbde07e1b40cc2b06b5f865b",
+          "matches": true
+        },
+        ".github/workflows/merchant-probe.yml": {
+          "gitBlobSha": "f3ba58c81c9a1b7521284a91f810118af3579c33",
+          "sha256": "876db4beb614d63d68f204841862d63c4e73eacd6547ca24def751c18f40c29c",
+          "matches": true
+        }
+      }
+    }
+  ],
+  "fullMutationComparison": {
+    "baseline": {
+      "result": {
+        "exit": 0,
+        "ueberlebt": [],
+        "erkannt": 221
+      },
+      "mutantTableCount": 221,
+      "durationMs": 350580,
+      "childTestCalls": 1265,
+      "logLines": 223,
+      "sourceBehaviorModified": false
+    },
+    "ordered": {
+      "result": {
+        "exit": 0,
+        "ueberlebt": [],
+        "erkannt": 221
+      },
+      "mutantTableCount": 221,
+      "durationMs": 259868,
+      "childTestCalls": 359,
+      "logLines": 223,
+      "sourceBehaviorModified": false
+    }
+  },
+  "same221MutantsAndTestMembership": {
+    "task": "R212 minimal mutation test ordering proposal",
+    "scope": "Only automation/pod_auswahl_mutation.mjs in isolated artifacts; no repository, service, dependency, or test suite writes/runs.",
+    "baseline": {
+      "revision_reference": "main 90d0ea75bf2e1e864b3964c7983e3908961011d6",
+      "sha256": "d0f43344ab089191b3fff1c8dac66496a667dbea86c7220fdcf21730fe2f6ded",
+      "candidate_context": "R211 states candidate f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a changes only gmc_feed_item source/test. The mutation source copied from the local R211 profile snapshot has the same SHA256 as main."
+    },
+    "change": {
+      "file": "automation/pod_auswahl_mutation.mjs",
+      "helper": "exported testReihenfolge(m): derives sibling *_test.mjs for automation/lib/foo.mjs or automation/foo.mjs; if present in m.tests, moves exactly one occurrence to index 0. Otherwise preserves original order. Returns a copied array for recognized source paths; does not mutate the input.",
+      "call_site": "Only mutation execution changes to testen(wurzel, testReihenfolge(m), true). Baseline control still runs ALLE unchanged.",
+      "unchanged": [
+        "MUTANTEN body and count",
+        "m.tests arrays and test membership",
+        "fail-fast setting",
+        "timeout",
+        "child environment"
+      ]
+    },
+    "proof": {
+      "method": "Isolated Node assertion harness imported the baseline and proposed mutation modules and iterated MUTANTEN; no full tests or mutants executed.",
+      "mutants": 221,
+      "matching_test_reordered_first": 204,
+      "no_matching_test_order_unchanged": 17,
+      "test_set_entry_counts_and_membership": "identical for each of 221 mutations",
+      "input_array_mutation": "none across all 221 cases",
+      "duplicate_entry_case": "passed; only one matching occurrence moved and both entries preserved",
+      "unknown_source_case": "passed; test list order unchanged",
+      "source_with_absent_sibling_test_case": "passed; test list order unchanged",
+      "runtime_outcome": "not measured; no speedup or coverage claim"
+    },
+    "artifacts": [
+      "baseline/automation/pod_auswahl_mutation.mjs",
+      "proposed/automation/pod_auswahl_mutation.mjs",
+      "proposal.patch"
+    ]
+  },
+  "localRerun": {
+    "job": "tests",
+    "passed": true,
+    "plannedRunSteps": 9,
+    "recordedSteps": 9,
+    "runnerStartedAtUTC": "2026-11-14T16:14:14.405257+00:00",
+    "runnerFinishedAtUTC": "2026-11-14T16:20:59.851832+00:00",
+    "runnerDurationSeconds": 405.312,
+    "launcherDurationSeconds": 405.448,
+    "jobTimeoutMinutes": 8,
+    "timedOut": false,
+    "steps": [
+      {
+        "index": 0,
+        "name": "Renderer stays text-only (no rendering or network)",
+        "returnCode": 0,
+        "durationSeconds": 0.207,
+        "outputBytes": 528,
+        "logPath": "logs/attempt-2/step-0.log",
+        "logSha256": "e8fc2c91093e2511e2e15430b22ab8a0c6740299350cf4ee90c7a7c6d2de67df"
+      },
+      {
+        "index": 1,
+        "name": "Syntax",
+        "returnCode": 0,
+        "durationSeconds": 2.022,
+        "outputBytes": 0,
+        "logPath": "logs/attempt-2/step-1.log",
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "index": 2,
+        "name": "Existing helper checks",
+        "returnCode": 0,
+        "durationSeconds": 1.729,
+        "outputBytes": 20972,
+        "logPath": "logs/attempt-2/step-2.log",
+        "logSha256": "045230075a8acd2452261665fdcb0df0700b91667e96edb0413807921f66099f"
+      },
+      {
+        "index": 3,
+        "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+        "returnCode": 0,
+        "durationSeconds": 42.847,
+        "outputBytes": 102,
+        "logPath": "logs/attempt-2/step-3.log",
+        "logSha256": "860775e0ae1ce121d02656776d2183a52e4f6360f028734ac8e6b63a16d30ffc"
+      },
+      {
+        "index": 4,
+        "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+        "returnCode": 0,
+        "durationSeconds": 139.645,
+        "outputBytes": 28204,
+        "logPath": "logs/attempt-2/step-4.log",
+        "logSha256": "0e609edac369e35e74f982a044563050ed15ad9a00355cff38c419f7c7ec7086"
+      },
+      {
+        "index": 5,
+        "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+        "returnCode": 0,
+        "durationSeconds": 201.882,
+        "outputBytes": 28671,
+        "logPath": "logs/attempt-2/step-5.log",
+        "logSha256": "f7bb7c521237f8adb7997ce3880883cb9dfffd16f482e354d9b277e48f36fd0d"
+      },
+      {
+        "index": 6,
+        "name": "CJ failures and publication regressions (mock APIs only)",
+        "returnCode": 0,
+        "durationSeconds": 13.438,
+        "outputBytes": 35247,
+        "logPath": "logs/attempt-2/step-6.log",
+        "logSha256": "c8f3381a7fd6a9ee35cad0b370799871390e32dc1337b60bc2943f5536e0cb4d"
+      },
+      {
+        "index": 7,
+        "name": "Shopify host, queue input and publication guards (mock APIs only)",
+        "returnCode": 0,
+        "durationSeconds": 3.351,
+        "outputBytes": 12887,
+        "logPath": "logs/attempt-2/step-7.log",
+        "logSha256": "49d8bb02bcc5f66cd7ed5aba65a4a45e88c4be5b0eadfb89e448171608daf462"
+      },
+      {
+        "index": 8,
+        "name": "Content preflight (offline evidence only)",
+        "returnCode": 0,
+        "durationSeconds": 0.185,
+        "outputBytes": 2945,
+        "logPath": "logs/attempt-2/step-8.log",
+        "logSha256": "49ceb5b50a5b184479c7aaa7997f5e0bedb74efeb8ff63bea7294dc1805f206b"
+      }
+    ],
+    "sourceSnapshot": {
+      "sourceArchive": "/tmp/luxe-continue-20261114-r211/archives/tests.tar",
+      "sourceArchiveSha256": "7c5dd664c37465daf8c30b983c32dba4f868a08aa98141390016a3096c312e75",
+      "sourceBaseCandidateCommit": "f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a",
+      "actualCombinedCommit": "pending_root_creation",
+      "isProvisionalSourceSnapshot": true,
+      "ciSourceSnapshot": "baseline archive with merchant feed patch plus exactly one supplied mutation-test override",
+      "mutationOverridePath": "automation/pod_auswahl_mutation.mjs",
+      "mutationOverrideSha256": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de",
+      "mutationOverrideMatchesSuppliedProposal": true,
+      "archiveComparisonChangedPaths": [
+        "automation/pod_auswahl_mutation.mjs"
+      ],
+      "archiveComparisonMissingPaths": [],
+      "sha256": {
+        "automation/pod_auswahl_mutation.mjs": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de",
+        "automation/lib/gmc_feed_item.mjs": "f1fd11884b984d923d350ddcb2ea91909610dd66da568f1b93d67d58102f0530",
+        "automation/lib/gmc_feed_item_test.mjs": "0c42a7a97e0c193812120673c7d1b37e2a4a2551ffcbe5d30a4567b724e795a1"
+      }
+    },
+    "rawRunnerResultPath": "logs/attempt-2/result.json",
+    "rawRunnerResultSha256": "eb1c489284e9f59472df6bd29cc342c4f27a4a1edd3e293b219b47f3a75097b1",
+    "launcherAttempt2MetadataPath": "launcher-attempt-2-result.json",
+    "launcherAttempt2MetadataSha256": "8ae3626c0338c690b8b44c746769f181fb6d920ce6de171173b54c33e7c2591b",
+    "initialHarnessAttempt": {
+      "note": "Initial launch did not reach a business-source failure; step 0 passed and syntax step could not find node because symlink target under host /tmp was hidden by private tmpfs. Harness corrected by copying verified Node 22.23.5 binary into taskdeps, then rerun from step 0.",
+      "launcherStdoutSha256": "d51b59d128751d91ef7aad82887e74210fe6df6a2b56e1d4e2cf52435d9e1f8e",
+      "launcherStderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "partialRunnerResultSha256": "dbc7b52e3fa66082884d65d20d95cda7bb06739b2979e8766b0a0fe808525009"
+    },
+    "isolations": {
+      "networkNamespaceIsolated": true,
+      "privateEmptyTmp": true,
+      "envSecretCredentialsProvided": false,
+      "localReplicaNotGithubActionsRun": true
+    },
+    "remoteOrRepoWrites": 0
+  },
+  "localRerunRawResult": {
+    "job": "tests",
+    "passed": true,
+    "durationSeconds": 405.312,
+    "plannedRunSteps": 9,
+    "recordedSteps": 9,
+    "steps": [
+      {
+        "index": 0,
+        "name": "Renderer stays text-only (no rendering or network)",
+        "returnCode": 0,
+        "durationSeconds": 0.207,
+        "outputBytes": 528
+      },
+      {
+        "index": 1,
+        "name": "Syntax",
+        "returnCode": 0,
+        "durationSeconds": 2.022,
+        "outputBytes": 0
+      },
+      {
+        "index": 2,
+        "name": "Existing helper checks",
+        "returnCode": 0,
+        "durationSeconds": 1.729,
+        "outputBytes": 20972
+      },
+      {
+        "index": 3,
+        "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+        "returnCode": 0,
+        "durationSeconds": 42.847,
+        "outputBytes": 102
+      },
+      {
+        "index": 4,
+        "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+        "returnCode": 0,
+        "durationSeconds": 139.645,
+        "outputBytes": 28204
+      },
+      {
+        "index": 5,
+        "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+        "returnCode": 0,
+        "durationSeconds": 201.882,
+        "outputBytes": 28671
+      },
+      {
+        "index": 6,
+        "name": "CJ failures and publication regressions (mock APIs only)",
+        "returnCode": 0,
+        "durationSeconds": 13.438,
+        "outputBytes": 35247
+      },
+      {
+        "index": 7,
+        "name": "Shopify host, queue input and publication guards (mock APIs only)",
+        "returnCode": 0,
+        "durationSeconds": 3.351,
+        "outputBytes": 12887
+      },
+      {
+        "index": 8,
+        "name": "Content preflight (offline evidence only)",
+        "returnCode": 0,
+        "durationSeconds": 0.185,
+        "outputBytes": 2945
+      }
+    ],
+    "envSecretCredentialsProvided": false,
+    "networkNamespaceIsolated": true,
+    "privateEmptyTmp": true,
+    "sourceCommit": "f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a",
+    "localReplicaNotGithubActionsRun": true
+  },
+  "localRerunProvenance": {
+    "sourceArchive": "/tmp/luxe-continue-20261114-r211/archives/tests.tar",
+    "sourceArchiveSha256": "7c5dd664c37465daf8c30b983c32dba4f868a08aa98141390016a3096c312e75",
+    "sourceBaseCandidateCommit": "f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a",
+    "actualCombinedCommit": "pending_root_creation",
+    "isProvisionalSourceSnapshot": true,
+    "ciSourceSnapshot": "baseline archive with merchant feed patch plus exactly one supplied mutation-test override",
+    "mutationOverridePath": "automation/pod_auswahl_mutation.mjs",
+    "mutationOverrideSha256": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de",
+    "mutationOverrideMatchesSuppliedProposal": true,
+    "archiveComparisonChangedPaths": [
+      "automation/pod_auswahl_mutation.mjs"
+    ],
+    "archiveComparisonMissingPaths": [],
+    "sha256": {
+      "automation/pod_auswahl_mutation.mjs": "998b4218c37034c0485154bcdf43d4cd42e03f2b58c76ddd471b33c7efc336de",
+      "automation/lib/gmc_feed_item.mjs": "f1fd11884b984d923d350ddcb2ea91909610dd66da568f1b93d67d58102f0530",
+      "automation/lib/gmc_feed_item_test.mjs": "0c42a7a97e0c193812120673c7d1b37e2a4a2551ffcbe5d30a4567b724e795a1"
+    }
+  },
+  "rawRunnerSourceCommitWasBaseOnly": "f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a plus recorded mutation override; the three tested source hashes equal core commit 7d2d79a",
+  "githubCi": {
+    "id": 43615418470,
+    "head_sha": "7d2d79aed5635955c6b877155a912fa3bd880629",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43615418470",
+    "created_at": "2026-11-14T16:24:16Z",
+    "updated_at": "2026-11-14T16:27:41Z",
+    "run_attempt": 1
+  },
+  "githubCiJobs": [
+    {
+      "id": 132509284214,
+      "name": "tests",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43615418470,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Renderer stays text-only (no rendering or network)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Syntax",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Existing helper checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Kategorien, Auswahl, Texte, Feed (reine Module, kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "CJ failures and publication regressions (mock APIs only)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Shopify host, queue input and publication guards (mock APIs only)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Content preflight (offline evidence only)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        }
+      ]
+    },
+    {
+      "id": 132509284372,
+      "name": "selbst-gestalten",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43615418470,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Modell-Fabrik (Plan, Tore, Sperre, Glossar, Charge, Anlegen, Beschreibung, Bildmass, Versand)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Editor v6 (reine Logik, Fallback auf v5 aus pod/live)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Gemessene Druckflächen-Korrektur der T-Shirt-Vorschau (Tabelle, Schutz, ausgelieferte Karten = Rollout-Bau; kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Französische Seitenübersetzung (Paare, Struktur, Rückstände; kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Direkter v6.3-Beschreibungs-Rollout (Scope, Assetbindung, SRI, Blocker und Header; kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Katalogfenster «nur bestellbar» (Änderungen, Wächter, Einspielskript gegen Attrappe; ohne Ruby-Liquid und Browser)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Katalogfenster gemeinsames Paket 06.11. (Soll-Stand der Dateien, Kombination, Einspielskript gegen Attrappe; Browsertests laufen nur von Hand, sie holen das Live-Dokument)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Spiegelwerkzeug für Printful-Vorlagenbilder (Attrappe, Mutationsprobe; kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Printful-Lager-Wächter (Logik, Verhalten gegen gefälschtes Printful/Shopify/Telegram, Mutationsprobe; rund 40 s, kein Netz)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        }
+      ]
+    },
+    {
+      "id": 132509284405,
+      "name": "lagerbestand",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43615418470,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Werkzeuge fuer die Tests (PyYAML, LiquidJS 10.30.1)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Fortura-Abgleich, Stempel, Feed-Skript, Einspielskript, Block",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        }
+      ]
+    }
+  ],
+  "qualityCheckOnReaderHead": {
+    "id": 43615965232,
+    "name": "Quality Check",
+    "head_sha": "807b6bcfb694b925c763881326449b0ceae0ea23",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43615965232"
+  },
+  "ciCoreFilesUnchangedInReaderCommit": true,
+  "readerMocks": 21,
+  "readerRuntimeStates": "three partial_read exits; not all-green complete status data",
+  "prCreated": false,
+  "mergedToMain": false,
+  "feedGenerationExecuted": false,
+  "googleItemsConfirmedFixedByWrite": false,
+  "patch": {
+    "path": "dropship/codex-handoff-20261018/FEED-CI-FIX-20261114-R212.patch",
+    "sha256": "994ea8c60557170cd471a06ca7a3289ed3f46e468c5e97b4f07a43a27d8bb7ce",
+    "gitBlobSha": "341182858d340103d0c126947123c2ab160e3187"
+  },
+  "patchBlankContextLinesNormalized": true,
+  "reversePatchCheckOnExactReaderCommitPassed": true
+}

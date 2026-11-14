@@ -1,0 +1,345 @@
+{
+  "recordedAtUTC": "2026-11-14T16:51:00.478622+00:00",
+  "dateZurich": "2026-11-14",
+  "scope": "three exact CSV-bound offers; not catalog census",
+  "accountId": "5797470070",
+  "accountName": "LuxeStyle CH",
+  "cases": [
+    {
+      "case": "preis-draft",
+      "productIdReference": "15421165404545",
+      "variantIdReference": "55775110463873",
+      "runId": 43616032255,
+      "jobId": 132511171912,
+      "headSha": "807b6bcfb694b925c763881326449b0ceae0ea23",
+      "runUrl": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43616032255",
+      "workflowConclusion": "failure",
+      "readerResult": "partial_read",
+      "readerAccountIdentityValidatedBeforeOutput": true,
+      "expectedAccountId": "5797470070",
+      "observedAccountId": "github_masked_not_reconstructed",
+      "accountName": "LuxeStyle CH",
+      "offerId": "15421165404545_cjtz292404406fu",
+      "contentLanguage": "de",
+      "feedLabel": "CH",
+      "dataSourceRedacted": "accounts/***/dataSources/10678939025",
+      "dataSourceId": "10678939025",
+      "resourceNameRedacted": "accounts/***/products/de~CH~15421165404545_cjtz292404406fu",
+      "title": "Workout-Set «Active» · 2-teilig, geripptes Tank (Damen) - Schwarz / M",
+      "link": "https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873",
+      "imageLink": "https://luxestyle.ch/cdn/shop/files/0b87224b-e768-4586-a9a6-7997191116bb.png?v=1780875452&width=1920",
+      "price": null,
+      "availabilityGoogle": "IN_STOCK",
+      "issueState": "known",
+      "issueCodesAsDelivered": [
+        "item_missing_required_attribute"
+      ],
+      "destinationState": "unknown",
+      "disapprovedCountryArraysAsDelivered": [
+        [
+          "CH",
+          "LI"
+        ]
+      ],
+      "approvedAndPendingCountries": "unknown_omitted_fields_not_zero",
+      "issueAttributeNotSelectedByThisReader": "unknown_no_gtin_assumption",
+      "rawGithubMaskedMarkerLine": "2026-11-14T16:31:18.1578646Z ***\"marker\":\"LUXE_MERCHANT_READ_V1\",\"accountId\":\"***\",\"accountName\":\"LuxeStyle CH\",\"case\":\"preis-draft\",\"resourceName\":\"accounts/***/products/de~CH~15421165404545_cjtz292404406fu\",\"offerId\":\"15421165404545_cjtz292404406fu\",\"lang\":\"de\",\"feedLabel\":\"CH\",\"dataSource\":\"accounts/***/dataSources/10678939025\",\"title\":\"Workout-Set «Active» · 2-teilig, geripptes Tank (Damen) - Schwarz / M\",\"link\":\"https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873\",\"imageLink\":\"https://luxestyle.ch/cdn/shop/files/0b87224b-e768-4586-a9a6-7997191116bb.png?v=1780875452&width=1920\",\"price\":null,\"availability\":\"IN_STOCK\",\"result\":\"partial_read\",\"destinations\":[***\"reportingContext\":\"FREE_LISTINGS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***],\"destinationState\":\"unknown\",\"actualstatus\":null,\"issueState\":\"known\",\"issuecodes\":[\"item_missing_required_attribute\"]***",
+      "markerJsonWasNotReconstructed": true
+    },
+    {
+      "case": "nagellack-1",
+      "productIdReference": "15448834736513",
+      "variantIdReference": "55877809340801",
+      "runId": 43616280891,
+      "jobId": 132511936036,
+      "headSha": "807b6bcfb694b925c763881326449b0ceae0ea23",
+      "runUrl": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43616280891",
+      "workflowConclusion": "failure",
+      "readerResult": "partial_read",
+      "readerAccountIdentityValidatedBeforeOutput": true,
+      "expectedAccountId": "5797470070",
+      "observedAccountId": "github_masked_not_reconstructed",
+      "accountName": "LuxeStyle CH",
+      "offerId": "shopify_ZZ_15448834736513_55877809340801",
+      "contentLanguage": "de",
+      "feedLabel": "CHF_99383214465",
+      "dataSourceRedacted": "accounts/***/dataSources/10667445201",
+      "dataSourceId": "10667445201",
+      "resourceNameRedacted": "accounts/***/products/de~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801",
+      "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1",
+      "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010",
+      "price": {
+        "amountMicros": "15900000",
+        "currencyCode": "CHF",
+        "amount": "15.9"
+      },
+      "availabilityGoogle": "IN_STOCK",
+      "issueState": "known",
+      "issueCodesAsDelivered": [
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays"
+      ],
+      "destinationState": "unknown",
+      "disapprovedCountryArraysAsDelivered": [
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ]
+      ],
+      "approvedAndPendingCountries": "unknown_omitted_fields_not_zero",
+      "issueAttributeNotSelectedByThisReader": "unknown_no_gtin_assumption",
+      "rawGithubMaskedMarkerLine": "2026-11-14T16:34:07.7859598Z ***\"marker\":\"LUXE_MERCHANT_READ_V1\",\"accountId\":\"***\",\"accountName\":\"LuxeStyle CH\",\"case\":\"nagellack-1\",\"resourceName\":\"accounts/***/products/de~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801\",\"offerId\":\"shopify_ZZ_15448834736513_55877809340801\",\"lang\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/***/dataSources/10667445201\",\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 1\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=55877809340801&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010\",\"price\":***\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"***,\"availability\":\"IN_STOCK\",\"result\":\"partial_read\",\"destinations\":[***\"reportingContext\":\"SHOPPING_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DISPLAY_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"FREE_LISTINGS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DEMAND_GEN_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"VIDEO_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***],\"destinationState\":\"unknown\",\"actualstatus\":null,\"issueState\":\"known\",\"issuecodes\":[\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\"]***",
+      "markerJsonWasNotReconstructed": true
+    },
+    {
+      "case": "nagellack-6",
+      "productIdReference": "15448834736513",
+      "variantIdReference": "67652260430215",
+      "runId": 43616282973,
+      "jobId": 132511943569,
+      "headSha": "807b6bcfb694b925c763881326449b0ceae0ea23",
+      "runUrl": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/43616282973",
+      "workflowConclusion": "failure",
+      "readerResult": "partial_read",
+      "readerAccountIdentityValidatedBeforeOutput": true,
+      "expectedAccountId": "5797470070",
+      "observedAccountId": "github_masked_not_reconstructed",
+      "accountName": "LuxeStyle CH",
+      "offerId": "shopify_ZZ_15448834736513_67652260430215",
+      "contentLanguage": "de",
+      "feedLabel": "CHF_99383214465",
+      "dataSourceRedacted": "accounts/***/dataSources/10667445201",
+      "dataSourceId": "10667445201",
+      "resourceNameRedacted": "accounts/***/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215",
+      "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6",
+      "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260430215&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+      "price": {
+        "amountMicros": "15900000",
+        "currencyCode": "CHF",
+        "amount": "15.9"
+      },
+      "availabilityGoogle": "IN_STOCK",
+      "issueState": "known",
+      "issueCodesAsDelivered": [
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "image_unwanted_overlays",
+        "missing_potentially_required_attribute",
+        "missing_potentially_required_attribute",
+        "missing_potentially_required_attribute",
+        "missing_potentially_required_attribute",
+        "missing_potentially_required_attribute",
+        "missing_potentially_required_attribute"
+      ],
+      "destinationState": "unknown",
+      "disapprovedCountryArraysAsDelivered": [
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ],
+        [
+          "CH",
+          "LI"
+        ]
+      ],
+      "approvedAndPendingCountries": "unknown_omitted_fields_not_zero",
+      "issueAttributeNotSelectedByThisReader": "unknown_no_gtin_assumption",
+      "rawGithubMaskedMarkerLine": "2026-11-14T16:34:00.3720962Z ***\"marker\":\"LUXE_MERCHANT_READ_V1\",\"accountId\":\"***\",\"accountName\":\"LuxeStyle CH\",\"case\":\"nagellack-6\",\"resourceName\":\"accounts/***/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215\",\"offerId\":\"shopify_ZZ_15448834736513_67652260430215\",\"lang\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/***/dataSources/10667445201\",\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 6\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260430215&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266\",\"price\":***\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"***,\"availability\":\"IN_STOCK\",\"result\":\"partial_read\",\"destinations\":[***\"reportingContext\":\"SHOPPING_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DISPLAY_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"FREE_LISTINGS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DEMAND_GEN_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"VIDEO_ADS\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***,***\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"approvedCountries\":null,\"pendingCountries\":null,\"disapprovedCountries\":[\"CH\",\"LI\"]***],\"destinationState\":\"unknown\",\"actualstatus\":null,\"issueState\":\"known\",\"issuecodes\":[\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"image_unwanted_overlays\",\"missing_potentially_required_attribute\",\"missing_potentially_required_attribute\",\"missing_potentially_required_attribute\",\"missing_potentially_required_attribute\",\"missing_potentially_required_attribute\",\"missing_potentially_required_attribute\"]***",
+      "markerJsonWasNotReconstructed": true
+    }
+  ],
+  "sourceTypeContext": {
+    "proof": "R209 four-source response; source identity now matched by exact product GET",
+    "10678939025": "AUTOFEED luxestyle.ch (type not fetched again R212)",
+    "10667445201": "Shopify App API (type not fetched again R212)"
+  },
+  "priceLanding": {
+    "checkedAtUTC": "2026-11-14T16:34:07.256826+00:00",
+    "source": "exact Google link from bounded read",
+    "url": "https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873",
+    "requestedUrl": "https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873&cb=r212-163405",
+    "httpStatus": 200,
+    "finalUrl": "https://luxestyle.ch/collections/damen-mode?cb=r212-163405&variant=55775110463873",
+    "bodyBytes": 1518964,
+    "title": "Damenmode: Blusen, Kleider, Schuhe &amp; Taschen | LuxeStyle",
+    "robots": [],
+    "bodyTruncated": false,
+    "adminStatusNotReverified": true,
+    "genericCaptchaStringPresent": true,
+    "actualChallengePageDetected": false,
+    "canonicalTags": [
+      "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/collections/damen-mode\"\n>"
+    ],
+    "productUrlRedirectedToCollection": true
+  },
+  "priceLandingNoRedirectCountercheck": {
+    "checkedAtUTC": "2026-11-14T16:35:22.811778+00:00",
+    "url": "https://luxestyle.ch/products/workout-set-active-2-teilig-geripptes-tank-damen?variant=55775110463873",
+    "httpStatus": 301,
+    "location": "/collections/damen-mode?variant=55775110463873",
+    "redirectFollowed": false
+  },
+  "publicVariantsCurrent": [
+    {
+      "id": 55877809340801,
+      "title": "Modell 1",
+      "available": true,
+      "price": 1590,
+      "featured_image": {
+        "id": 101413487837575,
+        "product_id": 15448834736513,
+        "position": 9,
+        "created_at": "2026-11-11T21:02:03+01:00",
+        "updated_at": "2026-11-11T21:02:06+01:00",
+        "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 9",
+        "width": 1024,
+        "height": 1024,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+        "variant_ids": [
+          55877809340801
+        ]
+      }
+    },
+    {
+      "id": 67652260430215,
+      "title": "Modell 6",
+      "available": true,
+      "price": 1590,
+      "featured_image": {
+        "id": 101413487968647,
+        "product_id": 15448834736513,
+        "position": 1,
+        "created_at": "2026-11-11T21:02:09+01:00",
+        "updated_at": "2026-11-11T21:02:12+01:00",
+        "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+        "width": 1024,
+        "height": 1024,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+        "variant_ids": [
+          67652260430215
+        ]
+      }
+    }
+  ],
+  "actualGoogleImagesFetch": {
+    "fetchedAtUTC": "2026-11-14T16:36:48.226441+00:00",
+    "items": [
+      {
+        "name": "nagellack-1.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010",
+        "httpStatus": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010",
+        "bytes": 106357,
+        "sha256": "29a3d18ff6aaf9d0ef2c46ecc8b8ab26c41f641370690f708b2e49eede581a7f",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "nagellack-6.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+        "httpStatus": 200,
+        "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+        "bytes": 172743,
+        "sha256": "75d83d9f1352de38623828303372962d10aad3ffd9bd04ee8137683802953749",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "nail-public-product.json",
+        "url": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200.js?currency=CHF&country=CH",
+        "httpStatus": 200,
+        "finalUrl": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200.js?currency=CHF&country=CH",
+        "bytes": 33416,
+        "sha256": "bcc5fb5cebdb91f00d563c4e0c7e8fc008ae0c78f618e40bd67ec8d3734754ce",
+        "contentType": "text/javascript; charset=utf-8"
+      }
+    ]
+  },
+  "currentShopImagesFetch": [
+    {
+      "variantId": 55877809340801,
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+      "filename": "current-55877809340801.png",
+      "bytes": 1373669,
+      "sha256": "21765e420964a501ae7cbd1163b4bae23d304b092e75c35e8c77996cd912a162"
+    },
+    {
+      "variantId": 67652260430215,
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+      "filename": "current-67652260430215.png",
+      "bytes": 1673502,
+      "sha256": "f1b46a425233d5549931aff7b499d1fcebd89de0aea043f4241dc38c8ae29d92"
+    }
+  ],
+  "rootVisualReview": {
+    "actuallyViewedImages": 4,
+    "oldGoogleModel1Overlay": "DT282",
+    "oldGoogleModel6Overlay": "DT284",
+    "currentShopImages": "Textfreie PNGs derselben zwei öffentlich zugeordneten Varianten; Motiv/Farbgruppe visuell passend.",
+    "notAFullProductOrRightsApproval": true,
+    "commercialEditAndAdvertisingRightsNewlyVerified": false,
+    "pixelsEditedOrMediaRenderedThisRun": false
+  },
+  "screenshot": {
+    "source": "owner image in latest task",
+    "captureTime": "unknown",
+    "actionableProblemGroupsDisplayed": 18,
+    "visibleProductCounts": [
+      994,
+      518
+    ],
+    "issueLabelsClipped": true,
+    "countsNotAssignedToProblemNames": true,
+    "notComparedAsSameScopeWithCsvCounts": true
+  },
+  "newAccessFinding": "Existing workflow GCP_SA_KEY runtime authenticated successfully; fixed LuxeStyle account and three product payloads passed identity checks. No credentials exposed or copied.",
+  "partialReadHandling": "All three jobs report failure because reader exits 2 for omitted status fields; retrieved source/price/image/issue evidence retained. Not an auth/429 error and not a complete clearance.",
+  "overallMerchantErrorCount": "unknown_no_catalog_census",
+  "all18GroupsResolved": false,
+  "merchantBusinessWrites": 0,
+  "shopifyWrites": 0,
+  "pricesOrShippingChanged": false
+}

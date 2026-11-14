@@ -2441,3 +2441,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Admin-Zugang | Späten Reauthfehler korrekt dokumentiert, danach keine protectedAktionen | Shopify-Anmeldung künftig nötig; bekannter Live-Stand/IDs und Inhaberfreigabe nicht gelöscht. Öffentliche Ausgabe zuletzt16:38 bestätigt |
 | Feed-CI | R210-Patch lokal mit Node22, exakten YAML-Sparsekopien, bereinigter Umgebung und isoliertem Netz/tmp geprüft | lagerbestand/selbst-gestalten bestanden; testsTimeout480s. Drei Restphasen separat grün, Gesamtprüfung weiteroffen. KeinMerge/Deployment/Googlefix |
 | Claude Code | Neue konkrete Übergabe und Core4 fortgeschrieben |24IDs/Historien und bestehendeGrenzen erhalten. Übergabe gespeichert, Lesebestätigung unbekannt. Keine zusätzlichen Reports/Orders/Socialposts/Renders/Automation |
+
+### R212 – Feed-Fix, echte CI und drei konkrete Merchant-Gegenproben, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Feed-Code | Kennungsfehler korrigiert, Mutationsreihenfolge ohne weniger Tests optimiert, zwei Commits auf eigenem Codezweig gespeichert und alle sechs Dateien zurückgelesen | Kerncommit7d2d79a; Lesercommit807b6bc. Nicht main, kein produktiver Feedlauf oder Google-Fix |
+| CI | Alte/neue Fassung mit allen221 Mutanten verglichen; vollständigen lokalen Job und bestehenden GitHub-CI-Workflow geprüft | Beide221/221;350.580s→259.868s im Vergleich. Lokal9/9 in405.312s. Echte GitHub-CI drei Jobs erfolgreich; Reader-Head Quality Check erfolgreich |
+| Merchant | Bestehenden Workflow nach Code-/Identitäts-/Schutzprüfung für drei exakte CSV-Angebote nur lesend ausgeführt | GCP-Zugang funktioniert; Source-/Preis-/Bild-/Issue-Werte gelesen. Drei partial_read/Exit2 wegen unbekannter Statusfelder; keine Business-Writes, keine0-Fehler-Behauptung |
+| Zielseite | Exakten Google-Link des Preisfalls mit und ohne Redirect-Folgen geprüft | Produktadresse301→Damenmode-Kategorie200; Google-Preis null, Source10678939025. Kein echter404, kein Preis-/DRAFT-/Autofeedwrite |
+| Bilder | Zwei echte Google-Bilder und zwei aktuelle Shop-Variantenbilder geladen und angesehen; öffentliche Variantenantwort geprüft | Google nutzt alte Textbilder DT282/DT284; Shop zeigt textfreie PNGs für dieselben IDs. Je Google CHF15.90; Rechte-/vollständige Produktabnahme nicht neu belegt, keine neue Bildbearbeitung |
+| Gedächtnis | R212-Belege, konkrete Claude-Code-Übergabe und Core4 fortgeschrieben |24 Aufgaben-IDs/Historien/Tagesschranke/Zeitplan erhalten. Claude-Code-Empfang unbekannt. Keine neuen Tagesreports, Orders, Socialposts oder Renders |
