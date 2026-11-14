@@ -1,0 +1,439 @@
+{
+  "revision": 206,
+  "recordedAtUTC": "2026-11-14T12:48:38.423883+00:00",
+  "identity": {
+    "readAtUTC": "2026-11-14T12:30:12Z",
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "permanentDomainPreviouslyConfirmed": "au3j0y-hq.myshopify.com",
+      "verified": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    }
+  },
+  "scope": "Only five established held video objects reactivated with same UUIDs/media; not a publication or new post.",
+  "mediaCountercheck": {
+    "rows": [
+      {
+        "uuid": "8935974072695279179",
+        "oldId": 427286591,
+        "currentId": 427962790,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "textUnchanged": true,
+        "mediaUrlsUnchanged": true,
+        "oldDraft": true,
+        "oldAutoPublish": false,
+        "currentDraft": false,
+        "currentAutoPublish": true,
+        "httpStatus": 200,
+        "bytes": 9139031,
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "localPath": "/tmp/luxe-continue-20261114-r206/hold-427962790.mp4",
+        "matchesEstablishedHold": true
+      },
+      {
+        "uuid": "4156060813550767248",
+        "oldId": 427286681,
+        "currentId": 427962841,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "textUnchanged": true,
+        "mediaUrlsUnchanged": true,
+        "oldDraft": true,
+        "oldAutoPublish": false,
+        "currentDraft": false,
+        "currentAutoPublish": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "localPath": "/tmp/luxe-continue-20261114-r206/hold-427962841.mp4",
+        "matchesEstablishedHold": true
+      },
+      {
+        "uuid": "6680239273933357186",
+        "oldId": 427287815,
+        "currentId": 427962968,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "textUnchanged": true,
+        "mediaUrlsUnchanged": true,
+        "oldDraft": true,
+        "oldAutoPublish": false,
+        "currentDraft": false,
+        "currentAutoPublish": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "localPath": "/tmp/luxe-continue-20261114-r206/hold-427962968.mp4",
+        "matchesEstablishedHold": true
+      },
+      {
+        "uuid": "3614365779669041576",
+        "oldId": 427287938,
+        "currentId": 427963080,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "textUnchanged": true,
+        "mediaUrlsUnchanged": true,
+        "oldDraft": true,
+        "oldAutoPublish": false,
+        "currentDraft": false,
+        "currentAutoPublish": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "localPath": "/tmp/luxe-continue-20261114-r206/hold-427963080.mp4",
+        "matchesEstablishedHold": true
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "oldId": 427288119,
+        "currentId": 427963182,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "textUnchanged": true,
+        "mediaUrlsUnchanged": true,
+        "oldDraft": true,
+        "oldAutoPublish": false,
+        "currentDraft": false,
+        "currentAutoPublish": true,
+        "httpStatus": 200,
+        "bytes": 5535209,
+        "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+        "localPath": "/tmp/luxe-continue-20261114-r206/hold-427963182.mp4",
+        "matchesEstablishedHold": true
+      }
+    ],
+    "noneOfTheseIsAnApprovedNewMaster": true,
+    "writes": 0
+  },
+  "results": {
+    "successfulUpdates": 5,
+    "channelStatesAffected": 5,
+    "ownPublications": 0,
+    "newPosts": 0,
+    "newRenders": 0,
+    "mediaUploads": 0,
+    "results": [
+      {
+        "index": 0,
+        "uuid": "8935974072695279179",
+        "oldId": 427962790,
+        "newId": 427969120,
+        "identityPass": true,
+        "state": "confirmed_held",
+        "draft": true,
+        "autoPublish": false,
+        "instagramAutoPublish": "not_a_provider",
+        "publicationDate": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "protectedContentAndMetadataPreserved": true,
+        "omittedNonProviderDefaults": [
+          "twitterData",
+          "instagramData"
+        ],
+        "ownPublication": false,
+        "newPost": false
+      },
+      {
+        "index": 1,
+        "uuid": "4156060813550767248",
+        "oldId": 427962841,
+        "newId": 427969190,
+        "identityPass": true,
+        "state": "confirmed_held",
+        "draft": true,
+        "autoPublish": false,
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "protectedContentAndMetadataPreserved": true,
+        "omittedNonProviderDefaults": [
+          "twitterData"
+        ],
+        "ownPublication": false,
+        "newPost": false
+      },
+      {
+        "index": 2,
+        "uuid": "6680239273933357186",
+        "oldId": 427962968,
+        "newId": 427969232,
+        "identityPass": true,
+        "state": "confirmed_held",
+        "draft": true,
+        "autoPublish": false,
+        "instagramAutoPublish": "not_a_provider",
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "protectedContentAndMetadataPreserved": true,
+        "omittedNonProviderDefaults": [
+          "twitterData",
+          "instagramData"
+        ],
+        "ownPublication": false,
+        "newPost": false
+      },
+      {
+        "index": 3,
+        "uuid": "3614365779669041576",
+        "oldId": 427963080,
+        "newId": 427969295,
+        "identityPass": true,
+        "state": "confirmed_held",
+        "draft": true,
+        "autoPublish": false,
+        "instagramAutoPublish": "not_a_provider",
+        "publicationDate": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "protectedContentAndMetadataPreserved": true,
+        "omittedNonProviderDefaults": [
+          "twitterData",
+          "instagramData"
+        ],
+        "ownPublication": false,
+        "newPost": false
+      },
+      {
+        "index": 4,
+        "uuid": "-7647174116509334899",
+        "oldId": 427963182,
+        "newId": 427969354,
+        "identityPass": true,
+        "state": "confirmed_held",
+        "draft": true,
+        "autoPublish": false,
+        "instagramAutoPublish": "not_a_provider",
+        "publicationDate": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "protectedContentAndMetadataPreserved": true,
+        "omittedNonProviderDefaults": [
+          "twitterData",
+          "instagramData"
+        ],
+        "ownPublication": false,
+        "newPost": false
+      }
+    ],
+    "initialDateWindowErrorNoWrites": true,
+    "oneValidationRejectionNoChangeConfirmed": true,
+    "blindRetries": false,
+    "masterLedgerChangedOrInitialised": false
+  },
+  "independentFinalQa": {
+    "attempted_extra_nonprovider_instagram_field": "Ein erster zusätzlicher instagramData-Block an einem Nicht-Instagram-Provider wurde vom Schema abgelehnt; bestätigter Zustand danach unverändert.",
+    "rejected_attempt_no_state_change": true,
+    "successful_updates": 5,
+    "channel_states_affected": 5,
+    "blind_retries": false,
+    "verified_items": [
+      {
+        "uuid": "8935974072695279179",
+        "old_id": 427962790,
+        "new_id": 427969120,
+        "channel": "threads",
+        "date": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "provider_flags_match_except_intended_ig_autopublish": true,
+        "issues": [],
+        "text_media_date_provider_state_unchanged": true,
+        "madeForKids": null
+      },
+      {
+        "uuid": "4156060813550767248",
+        "old_id": 427962841,
+        "new_id": 427969190,
+        "channel": "instagram",
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "provider_flags_match_except_intended_ig_autopublish": true,
+        "issues": [],
+        "text_media_date_provider_state_unchanged": true,
+        "madeForKids": null
+      },
+      {
+        "uuid": "6680239273933357186",
+        "old_id": 427962968,
+        "new_id": 427969232,
+        "channel": "facebook",
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "provider_flags_match_except_intended_ig_autopublish": true,
+        "issues": [],
+        "text_media_date_provider_state_unchanged": true,
+        "madeForKids": null
+      },
+      {
+        "uuid": "3614365779669041576",
+        "old_id": 427963080,
+        "new_id": 427969295,
+        "channel": "tiktok",
+        "date": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "provider_flags_match_except_intended_ig_autopublish": true,
+        "issues": [],
+        "text_media_date_provider_state_unchanged": true,
+        "madeForKids": null
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "old_id": 427963182,
+        "new_id": 427969354,
+        "channel": "youtube",
+        "date": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "draft": true,
+        "autoPublish": false,
+        "provider_flags_match_except_intended_ig_autopublish": true,
+        "issues": [],
+        "text_media_date_provider_state_unchanged": true,
+        "madeForKids": false
+      }
+    ],
+    "all_five_verified": true,
+    "new_posts": 0,
+    "new_renders": 0,
+    "media_uploads": 0,
+    "own_publications": 0
+  },
+  "mainHoldProof": {
+    "mainCommit": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+    "path": "dropship/METRICOOL-HALTEN.txt",
+    "bytes": 1389,
+    "sha256": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc",
+    "gitBlobSha": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+    "lines": [
+      "# Halteliste für die Metricool-Freigabe (automation/metricool_freigabe.py, Tor 9)",
+      "# Eine uuid oder Beitrags-id je Zeile, danach optional «# Grund». Zeilen mit # am Anfang und Leerzeilen zählen nicht.",
+      "# Wer hier steht, bleibt Entwurf: die tägliche Freigabe plant ihn nicht ein und meldet ihn nicht täglich per Telegram.",
+      "# Die Liste hält NUR Entwürfe zurück. Bereits eingeplante Beiträge fasst die Automation nie an; ein schon eingeplanter Beitrag",
+      "# lässt sich nur im Metricool-Planer auf Entwurf stellen (Claude oder der Besitzer, nicht die Automation).",
+      "# Eintragen: Besitzer (direkt), Claude (auf Bedenken von Codex oder PC-Claude, mit Grund). Entfernen = Zeile löschen.",
+      "# Beispiel (auskommentiert):",
+      "# 3f2a9c1e-0000-0000-0000-000000000000   # Codex 10.11.: Rechte am Quellvideo unklar",
+      "# Besitzer 10.11. ca. 17:55 UTC zu den Reels Hacker und Haussocken: «musik ist scheisse». Entwürfe des Hacker-Reels halten, bis die Musik entschieden ist (SHARED-MEMORY.md):",
+      "4659816415037836014    # Claude 10.11.: Hacker-Reel IG+FB 18.11. 10:00, Musik vom Besitzer abgelehnt",
+      "-8339089096074181290   # Claude 10.11.: Hacker-Reel Threads 18.11. 11:00, Musik vom Besitzer abgelehnt",
+      "-8305910546945982140   # Claude 10.11.: Hacker-Reel TikTok 18.11. 12:00, Musik vom Besitzer abgelehnt",
+      "-3731207601091163105   # Claude 10.11.: Hacker-Reel YouTube-Short 18.11. 18:00, Musik vom Besitzer abgelehnt"
+    ]
+  },
+  "checkpoints": "Task-local exclusive lock and per-write checkpoints/readbacks; completed lock retained. No global runner lock claimed.",
+  "validationCorrections": {
+    "initialDateWindowError": {
+      "writes": 0,
+      "correction": "UTC-noon calendar increment to preserve intended next local day; empty wrong-window read never treated as missing history."
+    },
+    "oneRejectedRequest": {
+      "reason": "Getter included instagramData for non-Instagram provider; API rejected INVALID_ARGUMENT. Exact post readback confirmed no change.",
+      "changedRequest": "Omit only data for networks absent from actual providers; preserve all actual provider fields and source structure.",
+      "sameInputRetry": false,
+      "unknownWriteRetry": false
+    }
+  },
+  "globalProtectionDeployed": false,
+  "newPostsOrPublications": 0,
+  "mediaUploadsOrRenders": 0,
+  "masterLedgerResetOrInitialisation": false
+}

@@ -2382,3 +2382,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Profilgestaltung | Konkrete Anordnung mit fünf und vier vorhandenen Gruppen dokumentiert | Keine wiederholte Licht-&-Wohnen-Karte nötig; nativer Editor-Save/Platzierung weiterhin unbestätigt, null eigene Profil-Saves |
 | Projektor | Aktuelle Adminwerte und vorhandenen R201-Zweistellendiff gegengeprüft | ACTIVE/12Tags/7Varianten; alle Tracking=false, CONTINUE und availableForSale=true. HTMLhash passt, Diff unverändert/nicht angewendet. Kein Ausverkaufs-/Lieferantenbestandversprechen |
 | Kontinuität | 24 IDs/Historien und heutige R200-Reports erhalten; denselben Master fortgeführt | Kein neuer Film/Upload/Social-/Produktwrite oder Tagesreport/Kauf-Watch/Kundenkontakt. Versand/Domain/Zeitplan erhalten; Filmrechte/Originaltakes und andere spezialisierte Zugänge separat offen. Claude-Empfang unbekannt |
+
+### R206 – Weiterauftrag, fünf Qualitätssperren und Shop-Anordnung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Metricool-Holds | Fünf wiederaktivierte UUIDs/Originale und MP4-Hashes gegengeprüft; nach frischem Diff/Identitäten gezielt auf Entwurf gestellt | Fünf neue IDs/stabile UUIDs, draft=true/autoPublish=false bestätigt; Texte/Medien/Termine/tatsächliche Kanaldaten erhalten. Keine neuen Posts oder Publikationen |
+| Schlussplanung | Vollständiges48Objektfenster und fünf Einzelreadbacks unabhängig geprüft |39aktiveObjekte/9Drafts, sechs alte externePUBLISHED. YouTube15.–21./Threads15. offen; keine exakten Text-/Medienlistenduplikate im Fenster, frühereMasterhistorie unbekannt |
+| Dauerhafter Schutz | Aktuellen Main-Haltefile/Elferbranch und relevante Workflow-Gates gezielt gelesen; eine konkrete Variablenabfrage | Main enthält4alteUUIDs,Elferpatchnichtlive. CF_DIRECT_DEPLOY403/unbekannt; PR könntePreviewdeployauslösen, daher kein PR/Merge/Dispatch/Deployment. Reaktivierungsursache nicht belegt |
+| Shop-Vorschau | Neun Kollektionen/18Mitgliedsplätze/16Produkte und Cover geprüft; interaktive5+4Kartenreihen erstellt und390/1440getestet | Keine doppeltenIDs/Dokumentüberläufe/Seitenfehler; Auswahl/Sortierung/Reset/Export funktionieren. Statische reale Bildreferenzen, keinFilm/Shopimport/nativeSave; Händlerbrowserzugang fehlt weiterhin |
+| Kontinuität | Task-Lock/Checkpoints, ID-Ketten und24Aufgaben/Historien erhalten; R200-Reports wiederverwendet | Zwei Anfragen vor Änderung korrigiert: Datumsfenster und ausdrücklich abgelehnter Nicht-Provider-Block; kein unklarer Write blind wiederholt.0neueReports/Render/Kaufwatch/Kundenkontakt/Shop-/Feed-/Flow-/DNSänderung. Versand/Domain/Zeitplan erhalten;ClaudeEmpfangunbekannt |

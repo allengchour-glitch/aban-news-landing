@@ -1,0 +1,58 @@
+{
+  "startedAt": "2026-11-14T12:44:10.770Z",
+  "htmlSha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+  "checks": {
+    "mobileImageCount": 9,
+    "mobileImagesLoaded": true,
+    "twoHorizontalCollectionStrips": true,
+    "schematicNote": true,
+    "mobileNoHorizontalOverflow": true,
+    "selectionUpdatesInspector": true,
+    "defaultOrder": true,
+    "defaultBlocks": true,
+    "uniqueInitialIds": true,
+    "reorderUp": true,
+    "reorderDown": true,
+    "uniqueAfterReorder": true,
+    "resetRestoresExactOrder": true,
+    "exportCorrect": true,
+    "desktopNoHorizontalOverflow": true,
+    "desktopImagesLoaded": true,
+    "noPageErrors": true,
+    "noExternalRequests": true
+  },
+  "errors": [],
+  "externalRequests": [],
+  "export": {
+    "type": "Lokale Layout-Prüfliste (kein Shop-Import)",
+    "sourceDate": "2026-11-14",
+    "nativePlatzierungUnbestätigt": true,
+    "validation": {
+      "uniqueCollectionIdsAcrossBlocks": true,
+      "noEmptyThirdBlock": true
+    },
+    "sections": [
+      {
+        "title": "Entdecken",
+        "collectionIds": [
+          "gid://shopify/Collection/757753840007",
+          "gid://shopify/Collection/757437432199",
+          "gid://shopify/Collection/757437530503",
+          "gid://shopify/Collection/757437563271",
+          "gid://shopify/Collection/757756854663"
+        ]
+      },
+      {
+        "title": "Mehr entdecken",
+        "collectionIds": [
+          "gid://shopify/Collection/757757542791",
+          "gid://shopify/Collection/757757575559",
+          "gid://shopify/Collection/757756920199",
+          "gid://shopify/Collection/757756887431"
+        ]
+      }
+    ]
+  },
+  "finishedAt": "2026-11-14T12:44:14.371Z",
+  "allPassed": true
+}

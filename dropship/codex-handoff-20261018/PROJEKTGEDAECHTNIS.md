@@ -1,5 +1,9 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R206 – 14.11.2026: fünf Qualitäts-Holds wiederhergestellt, konkrete Shop-Vorschau geprüft
+
+[Bericht](WEITERARBEIT-20261114-R206.md) · [Holds/IDs](HOLD-WIEDERHERSTELLUNG-20261114-R206.json) · [Shop-Vorschau](SHOP-LAYOUT-REVIEW-20261114-R206.html). Fünf bekannte Videoobjekte fremd reaktiviert und nach MP4-/Original-/Identitäts-/Diffprüfung gezielt wieder auf Entwurf gestellt; neueIDs/stabileUUIDs/Inhalte/Medien/Termine unabhängig bestätigt. Keine neue Publikation. Final48Objekte/39aktiv/9Drafts;YouTube15–21/Threads15 offen. Neuer interner5+4Shop-Anordnungsentwurf mit9frischenKollektionsreferenzen,390/1440BrowserQA undPrüflistenexport;kein nativerSave. DauerhafterElferpatchnichtmain,Previewvariable403unbekannt,keinPR/Workflowstart.24IDs/Historien/R200Reports erhalten;ClaudeEmpfangunbekannt.
+
 ## R205 – 14.11.2026: Richtige Verbindung wiederhergestellt, zwei offene Shop-Kollektionen freigeschaltet
 
 [Arbeitsbericht](SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md) · [Operationsbelege](SHOP-KOLLEKTIONEN-ABSCHLUSS-20261114-R205.json) · [Projektor-Gegenprobe](PROJEKTOR-ADMIN-GEGENPROBE-20261114-R205.json). Shopify liefert wieder LuxeStyle/luxestyle.ch/CHF; Metricool-Identitäten passend. Bestehende Mode-/Schmuck-Kollektionen gezielt Shop-only veröffentlicht und unabhängig zurückgelesen, geschützte Felder/Produkte gleich. Alle neun bekannten Shopgruppen freigeschaltet, keine Kopien oder nativen Profil-Saves. ProjektorACTIVE/Trackingfalse/CONTINUE/availabletrue jetzt frisch belegt; R201-Zweistellendiff passt exakt, bleibt unverändert. Kein Film, Produkt-/Socialwrite oder neuer Tagesreport;24IDs/Historien erhalten, Claude-Empfang unbekannt.

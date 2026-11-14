@@ -1,0 +1,840 @@
+{
+  "revision": 206,
+  "recordedAtUTC": "2026-11-14T12:48:38.423883+00:00",
+  "currentReferences": {
+    "data": {
+      "shop": {
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "myshopifyDomain": "au3j0y-hq.myshopify.com",
+        "currencyCode": "CHF"
+      },
+      "c0": {
+        "id": "gid://shopify/Collection/757753840007",
+        "title": "Neue Entdeckungen",
+        "handle": "shop-neue-entdeckungen",
+        "descriptionHtml": "<p>Neue Ideen für Zuhause und unterwegs – bewusst ausgewählt von LuxeStyle.</p>",
+        "updatedAt": "2026-11-13T23:45:01Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014643079",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/705905417093.jpg?v=1794613501",
+          "altText": "Laptop-Hülle in Blaugrau"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261108",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-bilderrahmen-wandtattoos-tapeten",
+                "sort-wandbilder"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c1": {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "handle": "shop-geschenkideen",
+        "descriptionHtml": "<p>Ausgewählte Becher mit besonderem Design – kleine Ideen zum Verschenken.</p>",
+        "updatedAt": "2026-11-13T23:30:19Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992655751",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794612580",
+          "altText": "Retro-Vogelbecher als Geschenkidee"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15497451929985",
+              "status": "ACTIVE",
+              "tags": [
+                "becher",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kochen",
+                "kueche",
+                "neuheit",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16617685418375",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "becher",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "kueche",
+                "neuheit",
+                "sort-retro",
+                "sort-tassen-kaffeebecher",
+                "sort-tassen-kaffeebecher-keramik",
+                "tassen-becher",
+                "wohnen"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c2": {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "handle": "shop-licht-wohnen",
+        "descriptionHtml": "<p>Dekorative Nachtlichter und Projektoren für dein Zuhause.</p>",
+        "updatedAt": "2026-11-13T23:30:19Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992688519",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/77707dd2-8db2-4271-97b6-71769d51ed4e.jpg?v=1794612583",
+          "altText": "Tulpen-Nachtlicht in Rosa"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15521256604033",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "beleuchtung",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "sort-nachtlichter",
+                "sort-nachttischlampen",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16638319788423",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "geschenkwelt-kinder",
+                "geschenkwelt-unter30",
+                "kat-nachtlicht-projektor",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachtlichter",
+                "wohnen"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c3": {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "handle": "shop-beauty-ordnung",
+        "descriptionHtml": "<p>Ausgewählte Organizer für Kosmetik, Bad und Schminktisch.</p>",
+        "updatedAt": "2026-11-13T23:30:20Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132992721287",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+          "altText": "Kosmetik-Organizer mit Tragegriff"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16615385727367",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16655083274631",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "neuheit",
+                "organizer",
+                "sort-kosmetik-schmuck-organizer",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c4": {
+        "id": "gid://shopify/Collection/757756854663",
+        "title": "Für Katzen",
+        "handle": "shop-fuer-katzen",
+        "descriptionHtml": "<p>Ausgewählte Ideen zum Spielen und Entspannen für deine Katze.</p>",
+        "updatedAt": "2026-11-13T23:41:56Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014544775",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+          "altText": "Katzentunnel in Dunkelgrau und Orange"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16610153759111",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "cj-real",
+                "dropship",
+                "haustier",
+                "hund",
+                "kat-haustier",
+                "kat-katzen",
+                "katze",
+                "katzenbett",
+                "neuheit",
+                "pet",
+                "sort-haustier",
+                "sort-tier-betten-katzen",
+                "sort-tier-betten-koerbe",
+                "varianten-nachgezogen-1025"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16706218951047",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-haustier",
+                "sort-katzen",
+                "sort-tier-katzenspielzeug",
+                "sort-tier-katzenspielzeug-elektrisch",
+                "sort-tier-spielzeug"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c5": {
+        "id": "gid://shopify/Collection/757756887431",
+        "title": "Weihnachten Zuhause",
+        "handle": "shop-weihnachten-zuhause",
+        "descriptionHtml": "<p>Weihnachtliche Details für dein Zuhause.</p>",
+        "updatedAt": "2026-11-13T23:41:56Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014577543",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+          "altText": "Weihnachtlicher Becher mit Santa-Claus-Motiv"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16656645489031",
+              "status": "ACTIVE",
+              "tags": [
+                "aufbewahrung",
+                "cj-real",
+                "dropship",
+                "haushalt",
+                "mengenrabatt-b",
+                "neuheit",
+                "organizer",
+                "sort-saison-weihnachtsdeko",
+                "tassen-becher",
+                "wohnen"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16706216132999",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261111",
+                "sort-bilderrahmen-wandtattoos-tapeten",
+                "sort-wandbilder"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c6": {
+        "id": "gid://shopify/Collection/757756920199",
+        "title": "Unterwegs & Alltag",
+        "handle": "shop-unterwegs-alltag",
+        "descriptionHtml": "<p>Laptop-Hüllen und Taschen für unterwegs.</p>",
+        "updatedAt": "2026-11-13T23:41:57Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014610311",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+          "altText": "Laptop-Tasche in Rosa"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16690165186951",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261103",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16700386607495",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261108",
+                "sort-aktentaschen",
+                "sort-laptop-taschen-huellen"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c7": {
+        "id": "gid://shopify/Collection/757757542791",
+        "title": "Mode & Stil",
+        "handle": "shop-mode-stil",
+        "descriptionHtml": "<p>Blusen und ausgewählte Styles für deinen Alltag.</p>",
+        "updatedAt": "2026-11-14T11:32:43Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014675847",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+          "altText": "Grüne Bluse mit V-Ausschnitt"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16654366409095",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "damen",
+                "dropship",
+                "mode",
+                "neuheit",
+                "sort-damen-blusen-bluse",
+                "sort-damen-blusen-hemden",
+                "sort-damen-blusen-satin"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16654377714055",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "damen",
+                "dropship",
+                "mode",
+                "neuheit",
+                "sort-damen-blusen-bluse",
+                "sort-damen-blusen-hemden"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "c8": {
+        "id": "gid://shopify/Collection/757757575559",
+        "title": "Schmuck & Accessoires",
+        "handle": "shop-schmuck-accessoires",
+        "descriptionHtml": "<p>Ausgewählte Ketten und kleine Details für deinen Look.</p>",
+        "updatedAt": "2026-11-14T11:33:05Z",
+        "image": {
+          "id": "gid://shopify/CollectionImage/2133014708615",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+          "altText": "Kette mit Kreuzanhänger"
+        },
+        "publishedOnPublication": true,
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16690384765319",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261103",
+                "sort-choker-layering-ketten",
+                "sort-halsketten",
+                "sort-halsketten-alle",
+                "sort-schmuck",
+                "sort-zirkonia-moissanit-ketten"
+              ]
+            },
+            {
+              "id": "gid://shopify/Product/16700386640263",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "grind2",
+                "grind2-20261108",
+                "sort-edelstahl-titanketten",
+                "sort-halsketten",
+                "sort-halsketten-alle",
+                "sort-ketten-mit-anhaenger",
+                "sort-ketten-mit-anhaenger-stahl",
+                "sort-schmuck"
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    }
+  },
+  "imageReferences": {
+    "readAtUTC": "2026-11-14T12:41:25.756123+00:00",
+    "rows": [
+      {
+        "id": "gid://shopify/Collection/757753840007",
+        "title": "Neue Entdeckungen",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/705905417093.jpg?v=1794613501",
+        "status": 200,
+        "width": 800,
+        "height": 800,
+        "format": "JPEG",
+        "bytes": 62705,
+        "sha256": "2e4ac3d4e75f5991a7c7b034059344f52ceefc62cecf6fd040ddfd9fb952465e",
+        "file": "/tmp/luxe-continue-20261114-r206/images/0.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757437432199",
+        "title": "Geschenkideen",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cefcf398-a91c-41b6-b163-d295a57f6710.jpg?v=1794612580",
+        "status": 200,
+        "width": 1493,
+        "height": 1493,
+        "format": "JPEG",
+        "bytes": 315897,
+        "sha256": "41c56791d3ae9b860355742efbe562550555cbbcb9a5caebf4950c4aa6845237",
+        "file": "/tmp/luxe-continue-20261114-r206/images/1.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757437530503",
+        "title": "Licht & Wohnen",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/77707dd2-8db2-4271-97b6-71769d51ed4e.jpg?v=1794612583",
+        "status": 200,
+        "width": 900,
+        "height": 900,
+        "format": "JPEG",
+        "bytes": 78520,
+        "sha256": "ff31b4d52d9697954cbcd386363a5f79d1b61ce55f37c805b99f92d4380d78f7",
+        "file": "/tmp/luxe-continue-20261114-r206/images/2.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757437563271",
+        "title": "Beauty & Ordnung",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/60a870a0-6fe1-49a1-bc9e-099d1ccc4658.jpg?v=1794529284",
+        "status": 200,
+        "width": 1200,
+        "height": 1200,
+        "format": "JPEG",
+        "bytes": 215884,
+        "sha256": "333756bd8829eae4c45a6fd56d8c0980c7799ad90994c18186c38f6f736c9c05",
+        "file": "/tmp/luxe-continue-20261114-r206/images/3.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757756854663",
+        "title": "Für Katzen",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5782a4c4-a219-4ecb-8ce6-21d5c444df97.jpg?v=1794613275",
+        "status": 200,
+        "width": 848,
+        "height": 848,
+        "format": "JPEG",
+        "bytes": 46604,
+        "sha256": "e2811b6029345d0a6eb267b502ca4befc2f9ed3dfe3ee900efbcc9d1cb718926",
+        "file": "/tmp/luxe-continue-20261114-r206/images/4.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757756887431",
+        "title": "Weihnachten Zuhause",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/68e96e1d-e90d-45cf-8ea6-bae6f24025a6.jpg?v=1794613277",
+        "status": 200,
+        "width": 1280,
+        "height": 1280,
+        "format": "JPEG",
+        "bytes": 115121,
+        "sha256": "b3f1b58de52a1e3e36e4751602b439312519103f59375082869f11f3a7b04032",
+        "file": "/tmp/luxe-continue-20261114-r206/images/5.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757756920199",
+        "title": "Unterwegs & Alltag",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/795093533484.jpg?v=1794613280",
+        "status": 200,
+        "width": 800,
+        "height": 800,
+        "format": "JPEG",
+        "bytes": 119246,
+        "sha256": "a91746f5e379141f9857e1b66f271d2cbfc5ae0f810f200eccb2ecbe9caf6e7b",
+        "file": "/tmp/luxe-continue-20261114-r206/images/6.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757757542791",
+        "title": "Mode & Stil",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/bc0a4973-130d-4be9-a1da-20bdab5ab9b1_3a134281-582a-47d4-92d4-c2b2058e820f.jpg?v=1794614217",
+        "status": 200,
+        "width": 800,
+        "height": 800,
+        "format": "JPEG",
+        "bytes": 87502,
+        "sha256": "eb81e5cb8b511945043b109bab7b3cd27192fad8b61975d65417b0759d9de4d7",
+        "file": "/tmp/luxe-continue-20261114-r206/images/7.img",
+        "pass": true
+      },
+      {
+        "id": "gid://shopify/Collection/757757575559",
+        "title": "Schmuck & Accessoires",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/1618484890823.jpg?v=1794614220",
+        "status": 200,
+        "width": 800,
+        "height": 800,
+        "format": "JPEG",
+        "bytes": 21818,
+        "sha256": "88bb95b19c182eaaf475db24bd0119d0a5ed13b1265525124a8b1e3e563ead38",
+        "file": "/tmp/luxe-continue-20261114-r206/images/8.img",
+        "pass": true
+      }
+    ],
+    "allPassed": true,
+    "noImagesEdited": true
+  },
+  "guardSource": {
+    "mainCommit": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+  },
+  "memberGuards": {
+    "rows": [
+      {
+        "collectionId": "gid://shopify/Collection/757753840007",
+        "productId": "gid://shopify/Product/16700386607495",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757753840007",
+        "productId": "gid://shopify/Product/16706216132999",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437432199",
+        "productId": "gid://shopify/Product/15497451929985",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437432199",
+        "productId": "gid://shopify/Product/16617685418375",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437530503",
+        "productId": "gid://shopify/Product/15521256604033",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437530503",
+        "productId": "gid://shopify/Product/16638319788423",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437563271",
+        "productId": "gid://shopify/Product/16615385727367",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757437563271",
+        "productId": "gid://shopify/Product/16655083274631",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756854663",
+        "productId": "gid://shopify/Product/16610153759111",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756854663",
+        "productId": "gid://shopify/Product/16706218951047",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756887431",
+        "productId": "gid://shopify/Product/16656645489031",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756887431",
+        "productId": "gid://shopify/Product/16706216132999",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756920199",
+        "productId": "gid://shopify/Product/16690165186951",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757756920199",
+        "productId": "gid://shopify/Product/16700386607495",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757757542791",
+        "productId": "gid://shopify/Product/16654366409095",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757757542791",
+        "productId": "gid://shopify/Product/16654377714055",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757757575559",
+        "productId": "gid://shopify/Product/16690384765319",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      },
+      {
+        "collectionId": "gid://shopify/Collection/757757575559",
+        "productId": "gid://shopify/Product/16700386640263",
+        "active": true,
+        "tagsNonEmpty": true,
+        "guardHits": [],
+        "rueckholHits": [],
+        "passed": true
+      }
+    ],
+    "allPassed": true,
+    "scope": "18collectionmembers, not fullcatalog",
+    "noProductChanges": true
+  },
+  "qa": {
+    "startedAt": "2026-11-14T12:44:10.770Z",
+    "htmlSha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+    "checks": {
+      "mobileImageCount": 9,
+      "mobileImagesLoaded": true,
+      "twoHorizontalCollectionStrips": true,
+      "schematicNote": true,
+      "mobileNoHorizontalOverflow": true,
+      "selectionUpdatesInspector": true,
+      "defaultOrder": true,
+      "defaultBlocks": true,
+      "uniqueInitialIds": true,
+      "reorderUp": true,
+      "reorderDown": true,
+      "uniqueAfterReorder": true,
+      "resetRestoresExactOrder": true,
+      "exportCorrect": true,
+      "desktopNoHorizontalOverflow": true,
+      "desktopImagesLoaded": true,
+      "noPageErrors": true,
+      "noExternalRequests": true
+    },
+    "errors": [],
+    "externalRequests": [],
+    "export": {
+      "type": "Lokale Layout-Prüfliste (kein Shop-Import)",
+      "sourceDate": "2026-11-14",
+      "nativePlatzierungUnbestätigt": true,
+      "validation": {
+        "uniqueCollectionIdsAcrossBlocks": true,
+        "noEmptyThirdBlock": true
+      },
+      "sections": [
+        {
+          "title": "Entdecken",
+          "collectionIds": [
+            "gid://shopify/Collection/757753840007",
+            "gid://shopify/Collection/757437432199",
+            "gid://shopify/Collection/757437530503",
+            "gid://shopify/Collection/757437563271",
+            "gid://shopify/Collection/757756854663"
+          ]
+        },
+        {
+          "title": "Mehr entdecken",
+          "collectionIds": [
+            "gid://shopify/Collection/757757542791",
+            "gid://shopify/Collection/757757575559",
+            "gid://shopify/Collection/757756920199",
+            "gid://shopify/Collection/757756887431"
+          ]
+        }
+      ]
+    },
+    "finishedAt": "2026-11-14T12:44:14.371Z",
+    "allPassed": true
+  },
+  "ownShopWrites": 0,
+  "nativeProfileSaves": 0,
+  "noNewMediaExports": true,
+  "nativeLayout": "Schematic internal arrangement, not actual pixel/feature validation of native Shop editor. API access does not pair a local browser.",
+  "accessFinding": {
+    "browserSkillRead": true,
+    "callableExtensionListTabsGetTabContextJsFound": false,
+    "nativeBrowserPaired": false,
+    "firecrawlCapability": "Isolated browser never receives owner browser cookies; no new billed login probe or fresh broken handoff link generated.",
+    "nativeSaveConfirmed": false
+  },
+  "scope": "9 exact existing collections,18 member placements/16 unique products; no fullcatalog/price/inventory/rights audit. No customer flow, fictitious views/reviews/prices or commercial release.",
+  "masterFilm": "Separate same projector master unchanged; static cup reference/layout is not a new film or premium MP4."
+}

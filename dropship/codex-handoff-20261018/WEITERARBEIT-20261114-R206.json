@@ -1,0 +1,22 @@
+{
+  "revision": 206,
+  "dateZurich": "2026-11-14",
+  "recordedAtUTC": "2026-11-14T12:48:38.423883+00:00",
+  "trigger": "owner weiter",
+  "metricoolHoldUpdates": 5,
+  "newPostsOwnPublicationsRendersUploads": 0,
+  "shopProfileSaves": 0,
+  "otherPlatformWrites": 0,
+  "newReportsOrOrderWatch": 0,
+  "fiveStableUuidsPreserved": true,
+  "knownScopeHolds": 15,
+  "nineWindowHoldsInactive": true,
+  "sixOutsideUnknown": true,
+  "newShopLayoutReview": true,
+  "notNativeSave": true,
+  "rollout403UnknownNotFalse": true,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "professionalMasterApproved": false,
+  "masterMp4Sha256": null,
+  "claudeReceipt": "unknown_no_receipt"
+}

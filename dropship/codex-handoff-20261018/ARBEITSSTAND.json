@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 205,
-  "updatedAt": "2026-11-14T11:37:14.597405+00:00",
+  "revision": 206,
+  "updatedAt": "2026-11-14T12:48:38.423883+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r205_correct_shop_connection_restored_two_shop_collection_publications_confirmed",
+      "state": "r206_targeted_quality_holds_restored_and_shop_layout_review_saved",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
-      "lastEvidence": "Inhaber bestätigtverbunden; korrekteLuxeStyle-/Metricoolidentitäten frischbestätigt. Genau2vorhandeneR199Kollektionen Shop-only veröffentlicht und zurückgelesen; neunbekannteGruppenShoptrue. KeineNativeProfilzuweisung, Produkt-/Socialwrites oderTagesreports. ProjektorAdmin-Tracking/Policy geklärt, R201Textdiff nurbestätigt.24IDs/Historien/Zeitplan/Kaufwatchende erhalten, ClaudeEmpfangunbekannt.",
-      "nextAllowedStep": "API-Zugang nicht länger als blockiert melden. NativeEditor-Sitzung/ProfilSave, CJRuntime, Merchantquelle und DNSWriter getrennt behandeln. Vorhandene9KollektionsIDs und denselbenMaster weiterverwenden, keineFrequenzänderung oder pauschaleAktivierung.",
+      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+      "lastEvidence": "Weiterauftrag: Core4/korrekteShop-/Metricoolidentitäten frisch.5wiederaktivierteQualitätsholds nachByte-/Original-/Diffprüfung zurückgestellt und unabhängigbestätigt;keinneuerPost. NeueinterneShop-Anordnungsvorschau mitBrowserQA;keinNativeSave. MainSchutzpatchnichtlive/CFVariable403unknown.24IDs/Historien/Reports/Zeitplanerhalten,ClaudeEmpfangunbekannt.",
+      "nextAllowedStep": "DauerhaftenHalteschutz nachbekannterDeployment-Gate-Kontrolle prüfen, nichtblindmergen. Steuerbaren nativenEditorzugang getrenntvonfunktionierenderAPIbehandeln. HeutigeReports weiterverwenden unddenselbenprofessionellenMaster fortführen;keinezusätzlicheAutomation.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3892,6 +3892,36 @@
           "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
           "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21",
           "readAt": "2026-11-14T11:37:14.597405+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+          "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+          "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+          "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+          "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+          "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+          "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+          "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+          "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+          "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+          "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4512,6 +4542,45 @@
               "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md",
               "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
               "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21"
+            }
+          ]
+        },
+        {
+          "revision": 206,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r205_correct_shop_connection_restored_two_shop_collection_publications_confirmed",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
+            "lastEvidence": "Inhaber bestätigtverbunden; korrekteLuxeStyle-/Metricoolidentitäten frischbestätigt. Genau2vorhandeneR199Kollektionen Shop-only veröffentlicht und zurückgelesen; neunbekannteGruppenShoptrue. KeineNativeProfilzuweisung, Produkt-/Socialwrites oderTagesreports. ProjektorAdmin-Tracking/Policy geklärt, R201Textdiff nurbestätigt.24IDs/Historien/Zeitplan/Kaufwatchende erhalten, ClaudeEmpfangunbekannt.",
+            "nextAllowedStep": "API-Zugang nicht länger als blockiert melden. NativeEditor-Sitzung/ProfilSave, CJRuntime, Merchantquelle und DNSWriter getrennt behandeln. Vorhandene9KollektionsIDs und denselbenMaster weiterverwenden, keineFrequenzänderung oder pauschaleAktivierung."
+          },
+          "summary": "Weiterauftrag: Core4/korrekteShop-/Metricoolidentitäten frisch.5wiederaktivierteQualitätsholds nachByte-/Original-/Diffprüfung zurückgestellt und unabhängigbestätigt;keinneuerPost. NeueinterneShop-Anordnungsvorschau mitBrowserQA;keinNativeSave. MainSchutzpatchnichtlive/CFVariable403unknown.24IDs/Historien/Reports/Zeitplanerhalten,ClaudeEmpfangunbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+              "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+              "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+              "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+              "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+              "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+              "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+              "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+              "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+              "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+              "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248"
             }
           ]
         }
@@ -5189,6 +5258,36 @@
         ],
         "shopifyAppAuthResolved": true,
         "nativeEditorAuthInferred": false
+      },
+      "run206": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+            "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+            "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+            "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+            "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+            "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+            "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+            "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+            "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+            "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+            "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248"
+          }
+        ],
+        "nativeProfileSave": false
       }
     },
     {
@@ -9334,13 +9433,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r205_nine_known_shop_groups_published_two_pending_completed_native_save_unknown",
+      "state": "r206_nine_existing_shop_collections_reviewed_interactive_5plus4_preview_no_native_save",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
-      "lastEvidence": "RichtigeLuxeStyle-Verbindung wieder bestätigt. VorhandeneR199Mode757757542791 undSchmuck757757575559 nach frischer Shop-/Publikations-/4Produkt-/Tag-/Bild-/Kaufbarkeitsgegenprobe gezielt Shop-only veröffentlicht, je keineuserErrors und unabhängige Rückleseprüfung. Geschützte Felder/Produkte unverändert. Alle9bekannten Shopgruppen jetzt veröffentlicht;0Neuanlagen und0nativeProfilSaves.",
+      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+      "lastEvidence": "Alle9vorhandenenKollektionsIDs/Shopstatus/Bilder frisch,18Mitgliedsplatzierungen/16eindeutigeACTIVEProdukte mitTags/Wächter geprüft. Neue interne5+4Kartenreihen-Vorschau mitAuswahl/Reihenfolge/Reset/Prüflistenexport erstellt;390/1440ChromiumQA undRootbildprüfung. NativeDarstellungnurSchematisch,0Shopwrites/ProfilSaves;APIweiterfunktioniert,steuerbarerHändlerbrowserfehlt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=213619179911",
-      "nextAllowedStep": "Vorhandene9IDs für eine native5+4Anordnung ohne doppelte Licht&Wohnen-Karte verwenden. Händlereditorzugang/Platzierung und Save separat bestätigen; API-Freischaltung ist keine Layoutabnahme. KeineKopien oder leeren drittenBlock erzwingen.",
+      "nextAllowedStep": "Bestehende9IDs im nativen angemeldeten Shopeditor nach5+4Vorlage anordnen undSave separatbestätigen. KeineDoppelkarte/neueKollektion/leererDrittblock; VorschauistkeinShopimport oderfertigesProfil.",
       "blockers": [
         "Publishwerkzeug fehlt.",
         "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
@@ -9683,6 +9782,36 @@
           "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
           "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21",
           "readAt": "2026-11-14T11:37:14.597405+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+          "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+          "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-REVIEW-20261114-R206.html",
+          "sha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+          "gitBlobSha": "8046f651b5c21bd3786cd3868eaa9afd42e73539",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QA-20261114-R206.json",
+          "sha256": "0beaa605422be951f2eb864f94635c7f1e3d7e938fcaa16799af4862e12d8925",
+          "gitBlobSha": "b7fa55557f405e0f4741b768842be7deec81a605",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-MOBIL-20261114-R206.png",
+          "sha256": "09322e0dc751a483b8cb0ff7e0ccaed0c92339f7107a4fb9bb0fe6ba4788a9c8",
+          "gitBlobSha": "f8b7ca4971d2118f117fac906071be36a9dc12d6",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+          "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+          "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -10227,6 +10356,45 @@
               "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.md",
               "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
               "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21"
+            }
+          ]
+        },
+        {
+          "revision": 206,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r205_nine_known_shop_groups_published_two_pending_completed_native_save_unknown",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
+            "lastEvidence": "RichtigeLuxeStyle-Verbindung wieder bestätigt. VorhandeneR199Mode757757542791 undSchmuck757757575559 nach frischer Shop-/Publikations-/4Produkt-/Tag-/Bild-/Kaufbarkeitsgegenprobe gezielt Shop-only veröffentlicht, je keineuserErrors und unabhängige Rückleseprüfung. Geschützte Felder/Produkte unverändert. Alle9bekannten Shopgruppen jetzt veröffentlicht;0Neuanlagen und0nativeProfilSaves.",
+            "nextAllowedStep": "Vorhandene9IDs für eine native5+4Anordnung ohne doppelte Licht&Wohnen-Karte verwenden. Händlereditorzugang/Platzierung und Save separat bestätigen; API-Freischaltung ist keine Layoutabnahme. KeineKopien oder leeren drittenBlock erzwingen."
+          },
+          "summary": "Alle9vorhandenenKollektionsIDs/Shopstatus/Bilder frisch,18Mitgliedsplatzierungen/16eindeutigeACTIVEProdukte mitTags/Wächter geprüft. Neue interne5+4Kartenreihen-Vorschau mitAuswahl/Reihenfolge/Reset/Prüflistenexport erstellt;390/1440ChromiumQA undRootbildprüfung. NativeDarstellungnurSchematisch,0Shopwrites/ProfilSaves;APIweiterfunktioniert,steuerbarerHändlerbrowserfehlt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+              "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+              "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-REVIEW-20261114-R206.html",
+              "sha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+              "gitBlobSha": "8046f651b5c21bd3786cd3868eaa9afd42e73539"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QA-20261114-R206.json",
+              "sha256": "0beaa605422be951f2eb864f94635c7f1e3d7e938fcaa16799af4862e12d8925",
+              "gitBlobSha": "b7fa55557f405e0f4741b768842be7deec81a605"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-MOBIL-20261114-R206.png",
+              "sha256": "09322e0dc751a483b8cb0ff7e0ccaed0c92339f7107a4fb9bb0fe6ba4788a9c8",
+              "gitBlobSha": "f8b7ca4971d2118f117fac906071be36a9dc12d6"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+              "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+              "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
             }
           ]
         }
@@ -11082,6 +11250,36 @@
         ],
         "shopifyAppAuthResolved": true,
         "nativeEditorAuthInferred": false
+      },
+      "run206": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+            "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+            "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-REVIEW-20261114-R206.html",
+            "sha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+            "gitBlobSha": "8046f651b5c21bd3786cd3868eaa9afd42e73539"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QA-20261114-R206.json",
+            "sha256": "0beaa605422be951f2eb864f94635c7f1e3d7e938fcaa16799af4862e12d8925",
+            "gitBlobSha": "b7fa55557f405e0f4741b768842be7deec81a605"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-MOBIL-20261114-R206.png",
+            "sha256": "09322e0dc751a483b8cb0ff7e0ccaed0c92339f7107a4fb9bb0fe6ba4788a9c8",
+            "gitBlobSha": "f8b7ca4971d2118f117fac906071be36a9dc12d6"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+            "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+            "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
+          }
+        ],
+        "nativeProfileSave": false
       }
     },
     {
@@ -15541,12 +15739,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r204_six_external_provider_states_one_new_tiktok_no_own_publish",
+      "state": "r206_five_reactivated_known_holds_restored_confirmed_main_protection_not_live",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R204_PUBLIC_VARIANT_READONLY_QA_HOST_HASH_PREFLIGHT_DRAFT_AND_EXTERNAL_DELIVERY",
-      "lastEvidence": "Frische Metricool-Marke/Kanäle passen.48Objekte unverändert zuR202, nur TikTok422279700/UUID8178449842924373712 jetztPUBLISHED mitProviderID7707980998968937760/URL. Insgesamt6fremde PUBLISHED-Zustände auf5Objekten,34aktivePENDINGObjekte/43Plätze.9Drafts;YouTube15–21/Threads15 offen. Keine exakten Text-/Medienlistenduplikate im Fenster, keine globale Historienfreigabe.0Writes/Löschungen.",
-      "nextAllowedStep": "Bestehende UUIDs/Termine/Holds erhalten und nur fällige Zustände gezielt prüfen. Neue Ausspielung erst nach korrektem Shop-, Film-/Rechte-/Kanal-/Ledgergate; fehlende Masterhistorie nicht als leer behandeln und keine Ersatzkopien anlegen.",
+      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+      "lastEvidence": "Fünf bekannte UUIDs mit gleichen R196-MP4Hashes fremd reaktiviert, nach frischen Identitäten/Originalen/Diff/Kollisionsprüfung gezielt wieder Entwurf/Autopublishaus. Alle fünf neueIDs/stabileUUIDs/Termine/Inhalte/Medien/tatsächlichenProviderfelder bestätigt. Final48Objekte/39aktiv/9Drafts;6alte externePUBLISHED,keine neuen/keine eigenen. YouTube15–21/Threads15 offen. Mainhaltfile4alt;Elferpatchnichtmain;Previewvariable403unknown.",
+      "nextAllowedStep": "BekannteHolds/UUID-/ID-Ketten erhalten. Elfer-Schutzpatch erst nach belegter Deployment-Gate-Kontrolle operativ übernehmen; keine ungeprüften PRs/Dispatches/Deployments. Keine früherenMaster oderDailycopy alsneuenContent planen.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -15836,6 +16034,30 @@
           "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
           "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41",
           "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+          "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+          "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+          "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+          "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+          "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+          "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+          "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+          "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d",
+          "readAt": "2026-11-14T12:48:38.423883+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -16352,6 +16574,40 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
               "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
               "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
+            }
+          ]
+        },
+        {
+          "revision": 206,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r204_six_external_provider_states_one_new_tiktok_no_own_publish",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R204_PUBLIC_VARIANT_READONLY_QA_HOST_HASH_PREFLIGHT_DRAFT_AND_EXTERNAL_DELIVERY",
+            "lastEvidence": "Frische Metricool-Marke/Kanäle passen.48Objekte unverändert zuR202, nur TikTok422279700/UUID8178449842924373712 jetztPUBLISHED mitProviderID7707980998968937760/URL. Insgesamt6fremde PUBLISHED-Zustände auf5Objekten,34aktivePENDINGObjekte/43Plätze.9Drafts;YouTube15–21/Threads15 offen. Keine exakten Text-/Medienlistenduplikate im Fenster, keine globale Historienfreigabe.0Writes/Löschungen.",
+            "nextAllowedStep": "Bestehende UUIDs/Termine/Holds erhalten und nur fällige Zustände gezielt prüfen. Neue Ausspielung erst nach korrektem Shop-, Film-/Rechte-/Kanal-/Ledgergate; fehlende Masterhistorie nicht als leer behandeln und keine Ersatzkopien anlegen."
+          },
+          "summary": "Fünf bekannte UUIDs mit gleichen R196-MP4Hashes fremd reaktiviert, nach frischen Identitäten/Originalen/Diff/Kollisionsprüfung gezielt wieder Entwurf/Autopublishaus. Alle fünf neueIDs/stabileUUIDs/Termine/Inhalte/Medien/tatsächlichenProviderfelder bestätigt. Final48Objekte/39aktiv/9Drafts;6alte externePUBLISHED,keine neuen/keine eigenen. YouTube15–21/Threads15 offen. Mainhaltfile4alt;Elferpatchnichtmain;Previewvariable403unknown.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+              "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+              "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+              "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+              "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+              "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+              "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+              "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+              "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
             }
           ]
         }
@@ -17604,6 +17860,31 @@
           }
         ],
         "noPlatformWriteOrRuntimeExecution": true
+      },
+      "run206": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+            "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+            "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+            "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+            "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+            "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+            "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+            "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+            "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
+          }
+        ],
+        "nativeProfileSave": false
       }
     },
     {
@@ -20174,6 +20455,41 @@
           "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.json",
           "sha256": "1de5cffd43ca9bc515cc3c204a8a9ee6c486edf3e4c9d0d4802173fedd490f90",
           "gitBlobSha": "8a75a17a17f3df13b563d9db90efd441e938fc79"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 206,
+      "at": "2026-11-14T12:48:38.423883+00:00",
+      "actor": "codex",
+      "summary": "FünfwiederaktiviertebekannteQualitäts-/Masterholds nachfrischenIdentitäten/MP4Hashes/Original-/Diffprüfung zurückgestellt,neueIDs/stabileUUIDs/geschützteFelder unabhängigbestätigt. NeueinterneShopLayoutvorlage mit9IDs/5+4Reihen undBrowserQA. PreviewGatevariable403unknown,dauerhafterPatchnichtlive.0Neupost/Publikation/Render/ShopSave/neueTagesreports;24IDs/Historie/Kaufwatchende/Zeitplanerhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+          "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+          "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+          "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+          "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+          "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+          "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+          "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+          "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+          "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+          "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
         }
       ],
       "taskCount": 24,
@@ -44410,6 +44726,85 @@
     "newReportsOrOrderWatch": 0,
     "rendersUploadsWorkflowStarts": 0,
     "nineKnownCollectionsShopPublished": true,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run206": {
+    "recordedAtUTC": "2026-11-14T12:48:38.423883+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "holds": {
+        "path": "dropship/codex-handoff-20261018/HOLD-WIEDERHERSTELLUNG-20261114-R206.json",
+        "sha256": "a2718a4e4e0d960428dcfa993ced884175b153add04a480acb4a5dce22321b3a",
+        "gitBlobSha": "0f378f125f1a25d45dd00109a03ac8ab6f508572"
+      },
+      "planning": {
+        "path": "dropship/codex-handoff-20261018/PLANUNG-SCHLUSSPRUEFUNG-20261114-R206.json",
+        "sha256": "1fd3f699a6e88b394df9048cf4119c49963cc787c01c7e0acb19b04220238bf8",
+        "gitBlobSha": "23eba93a69ecc6f050a8f4d494f7d68b57ab9f0c"
+      },
+      "initial": {
+        "path": "dropship/codex-handoff-20261018/PLANUNG-REAKTIVIERUNGSBEFUND-20261114-R206.json",
+        "sha256": "44fcb2016287c698bec902de4f9464bf960f73f85fa6315d14f6f933185dfdb6",
+        "gitBlobSha": "683139511b2a3b22ab3cf7477c21f231dec25cad"
+      },
+      "rollout": {
+        "path": "dropship/codex-handoff-20261018/HALTESCHUTZ-ZUGRIFF-20261114-R206.json",
+        "sha256": "63f1b315636c4cbebf7dba6cdaf2dd28a010aa015427ca9c0f0e74ea26ea10a1",
+        "gitBlobSha": "0b1d74a8e4c8d8d8099187382185c1a2aaa43acc"
+      },
+      "layout_data": {
+        "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QUELLEN-20261114-R206.json",
+        "sha256": "80bcae4f03a7190113e21a538e92d877c93356d5947d5d50102e03a16ea4b6d0",
+        "gitBlobSha": "0320f246d0b64ac6825bbdc66df74c591bc86e6b"
+      },
+      "html": {
+        "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-REVIEW-20261114-R206.html",
+        "sha256": "dac143f8e7db23023a33f30fd193aacf7b4ba3d6aa25d1e9f341316671c42e4b",
+        "gitBlobSha": "8046f651b5c21bd3786cd3868eaa9afd42e73539"
+      },
+      "qa": {
+        "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-QA-20261114-R206.json",
+        "sha256": "0beaa605422be951f2eb864f94635c7f1e3d7e938fcaa16799af4862e12d8925",
+        "gitBlobSha": "b7fa55557f405e0f4741b768842be7deec81a605"
+      },
+      "mobile": {
+        "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-MOBIL-20261114-R206.png",
+        "sha256": "09322e0dc751a483b8cb0ff7e0ccaed0c92339f7107a4fb9bb0fe6ba4788a9c8",
+        "gitBlobSha": "f8b7ca4971d2118f117fac906071be36a9dc12d6"
+      },
+      "desktop": {
+        "path": "dropship/codex-handoff-20261018/SHOP-LAYOUT-DESKTOP-20261114-R206.png",
+        "sha256": "78b08bd4d3c883392fdf3790c93840e8d3f66a286b8f156f9ce1b399c9dbca0c",
+        "gitBlobSha": "b9432d96ffba0e72473b8a6da965d370167c2a53"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
+        "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
+        "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
+      },
+      "packet": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
+        "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
+        "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248"
+      }
+    },
+    "revision": 206,
+    "trigger": "owner weiter",
+    "metricoolHoldUpdates": 5,
+    "newPostsOwnPublicationsRendersUploads": 0,
+    "shopProfileSaves": 0,
+    "otherPlatformWrites": 0,
+    "newReportsOrOrderWatch": 0,
+    "fiveStableUuidsPreserved": true,
+    "knownScopeHolds": 15,
+    "nineWindowHoldsInactive": true,
+    "sixOutsideUnknown": true,
+    "newShopLayoutReview": true,
+    "notNativeSave": true,
+    "rollout403UnknownNotFalse": true,
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "professionalMasterApproved": false,
+    "masterMp4Sha256": null,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

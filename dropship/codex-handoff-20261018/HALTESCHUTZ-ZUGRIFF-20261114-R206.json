@@ -1,0 +1,57 @@
+{
+  "repo": "allengchour-glitch/aban-news-landing",
+  "scope": "read-only LuxeStyle hold rollout feasibility; no publisher execution or writes",
+  "mainPin": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+  "guardRef": "codex/luxestyle-hold-protection-20261114",
+  "guardRefHeadVerified": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+  "workflowEvidence": {
+    "metricoolFreigabe": {
+      "path": ".github/workflows/metricool-freigabe.yml",
+      "blob": "6010084cde7a851ef846b2773200397e35d48237",
+      "triggerSummary": "schedule 05:41 UTC; workflow_dispatch; pull_request path filter only automation/metricool_freigabe* and this workflow",
+      "prPublisherGate": "freigabe job if github.event_name != 'pull_request'"
+    },
+    "cloudflarePages": {
+      "path": ".github/workflows/cloudflare-pages.yml",
+      "blob": "d60d8bceaa4f550a85b925046fbcc6df974cf0e7",
+      "triggerSummary": "push to main and pull_request to main; no path filter",
+      "deployCondition": "env.CF_API_TOKEN != '' && env.CF_ENABLED == 'true'",
+      "enabledVariable": "vars.CF_DIRECT_DEPLOY",
+      "prTarget": "github.head_ref || github.ref_name (preview branch)"
+    },
+    "cfDeployMainSite": {
+      "path": ".github/workflows/cf-deploy-mainsite.yml",
+      "triggerSummary": "no pull_request trigger; dropship/** and **/*.md ignored on push",
+      "blob": "9ba77d2f7c267014bc304ed42452ae91a877c522"
+    }
+  },
+  "freshVariableRead": {
+    "name": "CF_DIRECT_DEPLOY",
+    "attempt": "gh api repos/allengchour-glitch/aban-news-landing/actions/variables/CF_DIRECT_DEPLOY --jq .value",
+    "result": "HTTP 403 Resource not accessible by integration",
+    "valueRetrieved": false,
+    "runtimeSecretsRetrieved": false
+  },
+  "decision": "Do not create PR yet: Cloudflare Pages preview deployment remains unchecked. Local reviewed docs/patch can be prepared, but GitHub PR cannot be certified safe against an unchecked preview deploy on this evidence.",
+  "otherEvidence": {
+    "mainHoldProof": "/tmp/luxe-continue-20261114-r206/main-hold-proof.json",
+    "mainHaltHash": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc",
+    "mainHoldCount": 4,
+    "localGuardEvidence": "/tmp/luxe-other-work-20261114/guard/evidence.json",
+    "priorValidation": "128 offline checks and 11/11 UUID held check in local draft evidence; root separately reports five reactivated UUIDs restored with fresh checks, not repeated by this review",
+    "r196Report": "dropship/codex-handoff-20261018/PUBLISHER-HALTESCHUTZ-20261113-19H-R196.md"
+  },
+  "writes": 0,
+  "workflowsDispatched": 0,
+  "publishersExecuted": 0,
+  "deployments": 0,
+  "secretsRead": 0,
+  "recordedDateZurich": "2026-11-14",
+  "rootReportedStatus": {
+    "reactivatedFiveRestoredWithFreshChecks": true,
+    "finalQueueCount": 48,
+    "previewQA": "done",
+    "independentlyRechecked": false
+  },
+  "rootCountercheckSource": "final-planning-check.json independently checks the five changes and final48queue; this rollout review itself did not repeat those reads."
+}
