@@ -257,7 +257,13 @@
         "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Wohnen und Dekoration",
@@ -304,7 +310,13 @@
         "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Herrenuhren und Schmuck",
@@ -348,7 +360,13 @@
         "title": "Herrenuhren & Schmuck kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Baby und Kleinkind",
@@ -384,7 +402,13 @@
         "title": "Baby & Kleinkind kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Damenmode",
@@ -429,7 +453,13 @@
         "title": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Schule und Büro",
@@ -469,7 +499,13 @@
         "title": "Schule & Büro – Schulrucksäcke, Notizbücher & Ordnung | LuxeStyle",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Kollektion «Vegan»",
@@ -512,7 +548,13 @@
         "title": "Vegan & Cruelty-Free kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Hochzeitsgeschenke",
@@ -556,7 +598,13 @@
         "title": "Hochzeitsgeschenke für das Brautpaar | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Für Sie",
@@ -592,7 +640,13 @@
         "title": "Für Sie kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     },
     {
       "label": "Berufseinstieg und Abschluss",
@@ -628,7 +682,13 @@
         "title": "Berufseinstieg & Abschluss kaufen | LuxeStyle Schweiz",
         "currentNoindexObserved": false
       },
-      "requestSubmitted": false
+      "requestSubmitted": false,
+      "ownerCompletionReport": {
+        "statusKind": "owner_reported_indexed_completed",
+        "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+        "independentlyVerified": false,
+        "excludeFromNewProposalList": true
+      }
     }
   ],
   "alreadyIndexedExcluded": [
@@ -671,5 +731,16 @@
   "shopFeedFlowMetricoolWrites": 0,
   "dailyMetricsOrOrderWatchRepeated": false,
   "newAutomationOrSchedule": false,
-  "lastCrawlTimeIsNotIndexingDate": true
+  "lastCrawlTimeIsNotIndexingDate": true,
+  "ownerCompletionReport": {
+    "recordedAtUTC": "2026-11-14T20:28:29+00:00",
+    "source": "owner_chat",
+    "exactOwnerWording": "indexdiert",
+    "scope": "The ten URLs in R217 selectedTen, inferred from the immediately preceding ten-link message",
+    "statusKind": "owner_reported_indexed_completed",
+    "independentGoogleRecheckPerformed": false,
+    "currentVerifiedGoogleIndexState": "unknown_since_owner_report",
+    "ownIndexingRequestSubmitted": false,
+    "excludeFromNewProposalList": true
+  }
 }

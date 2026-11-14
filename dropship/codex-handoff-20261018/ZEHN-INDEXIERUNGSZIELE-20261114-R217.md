@@ -1,8 +1,12 @@
 # Zehn weitere LuxeStyle-Indexierungsziele – 14.11.2026
 
-Auf den ausdrücklichen Auftrag «gib mir10» wurden15 andere echte Kategorieadressen geprüft. Die vier zuvor genannten Seiten sowie die bekannte R187-Liste, Startseite und Shop-App404-Pfade sind ausgeschlossen. **Diese zehn Ziele meldet Google aktuell als nicht indexiert oder noch nicht bekannt.** Fünf bereits indexierte Kandidaten werden nicht nochmals zur Beantragung vorgeschlagen. Alle zehn ausgewählten Websiteadressen liefern HTTP200, stimmen mit ihrer Canonical-Adresse überein, erlauben Googlebot laut robots.txt und zeigen im aktuellen HTML-Head/HTTP-Header kein noindex.
+## Inhaber-Nachtrag, 14.11.2026
 
-| Nr. | Seite | Aktueller Google-Status | Direkte URL-Prüfung |
+Der Inhaber meldete nach der Zehnerliste wörtlich «indexdiert». Die zehn URLs sind deshalb als vom Inhaber erledigt/indexiert gemeldet markiert und werden nicht erneut als neue Indexierungsziele vorgeschlagen. Ob eine Beantragung abgeschlossen oder die Aufnahme bereits von Google bestätigt ist, wurde nicht unabhängig nachgelesen. Codex hat keine Indexierung beantragt. Die folgenden API-Befunde sind der datierte Prüfstand vor dieser Meldung.
+
+Auf den ausdrücklichen Auftrag «gib mir10» wurden15 andere echte Kategorieadressen geprüft. Die vier zuvor genannten Seiten sowie die bekannte R187-Liste, Startseite und Shop-App404-Pfade sind ausgeschlossen. **Beim API-Prüfstand vor der Inhabermeldung waren diese zehn Ziele nicht indexiert oder Google noch nicht bekannt.** Fünf bereits indexierte Kandidaten werden nicht nochmals zur Beantragung vorgeschlagen. Alle zehn ausgewählten Websiteadressen liefern HTTP200, stimmen mit ihrer Canonical-Adresse überein, erlauben Googlebot laut robots.txt und zeigen im aktuellen HTML-Head/HTTP-Header kein noindex.
+
+| Nr. | Seite | API-Prüfstand vor der Meldung | Direkte URL-Prüfung |
 |---|---|---|---|
 |1|Geschenkideen|Gecrawlt – zurzeit nicht indexiert|[Öffnen](https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=59h_vgLcXrLDOrw-2VhZWA&utm_medium=link&utm_source=api)|
 |2|Wohnen und Dekoration|Gecrawlt – zurzeit nicht indexiert|[Öffnen](https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=GsQqUyMhdGEOj-Z77QXWWg&utm_medium=link&utm_source=api)|
@@ -15,7 +19,7 @@ Auf den ausdrücklichen Auftrag «gib mir10» wurden15 andere echte Kategorieadr
 |9|Für Sie|URL ist Google nicht bekannt|[Öffnen](https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=Z7F0mhU1z_k29uWnekN3NQ&utm_medium=link&utm_source=api)|
 |10|Berufseinstieg und Abschluss|URL ist Google nicht bekannt|[Öffnen](https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=jFTwycUPfYSX-OaugsKxRQ&utm_medium=link&utm_source=api)|
 
-Im jeweiligen Google-Eintrag: **«Live-URL testen» → «Indexierung beantragen»**. Die direkten Prüflinks wurden von Google zurückgeliefert. Es wurde keine Indexierung beantragt und keine Sitemap eingereicht; die angebundenen Search-Console-Werkzeuge sind lesend. Eine Beantragung garantiert keine Aufnahme oder bestimmte Frist.
+Ursprünglicher Arbeitsschritt vor der Rückmeldung, jetzt als erledigt gemeldet: **«Live-URL testen» → «Indexierung beantragen»**. Die direkten Prüflinks wurden von Google zurückgeliefert. Es wurde keine Indexierung beantragt und keine Sitemap eingereicht; die angebundenen Search-Console-Werkzeuge sind lesend. Eine Beantragung garantiert keine Aufnahme oder bestimmte Frist.
 
 Die Auswahl basiert begrenzt auf den ersten60 Einträgen einer bestehenden Collection-Sitemap,15 Kandidateninspektionen und zehn aktuellen HTTP-Head-/robots-Gegenproben. Keine Katalogquote, kein neuer Performancebericht und keine pauschale Aussage über alle früher verschickten Links. Vorhandene Kollektionstitel wie «Vegan» sind Namen der bestehenden Website; Produkt-/Zertifizierungsbehauptungen wurden dadurch nicht geprüft oder neu freigegeben.
 

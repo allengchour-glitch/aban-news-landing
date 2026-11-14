@@ -2496,3 +2496,9 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Indexierungs-Auswahl | Nutzerkorrektur aufgenommen; bekannte R187-/R216-URLs ausgeschlossen, erste60 Sitemap-Kategorieeinträge begrenzt ausgewertet und15 andere Kandidaten frisch bei Google geprüft |Zehn noch nicht indexierte/unbekannte URLs mit offiziellen Prüflinks ausgewählt; fünf bereits indexierte aussortiert. Kein Wiederverwenden der vier zuletzt genannten Seiten, keine globale Historien-/Katalogquote. |
 | Website-Gegenprobe | Zehn ausgewählte HTTP-Heads/Canonicals/robots.txt auf Erreichbarkeit und Indexierungssperren geprüft |Alle200/selbstkanonisch/Googlebot erlaubt/kein noindex beobachtet. Prüfung ist keine Produkt-, Zertifizierungs-, Ranking- oder Rechtsabnahme. Keine eigene Indexierungsbeantragung oder Websiteänderung. |
 | Kontinuität | Core4 frisch gelesen und24IDs/Historien fortgeführt; gesättigten Scratchspeicher durch verlustfreie Kompression eigener vier Testquell-Archive entlastet |Alle Archivbytes per Dekompression/SHA gegengeprüft erhalten;48’164’214Bytes freigegeben, Git/Medien/Musik/Register unberührt. Revision217, keine zusätzlichen Reports/Orders/Renders/Servicewrites/Automation; Claude-Empfang unbekannt. |
+
+### R218 – Inhaber-Rückmeldung zur Zehnerliste, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Indexierungsstatus / Gedächtnis | Inhabermeldung «indexdiert» zu den zehn zuletzt gelieferten R217-URLs dokumentiert und diese von neuen Vorschlägen ausgenommen |QUELLE Inhaber, keine neue unabhängige Googlebestätigung und keine eigene Beantragung. Vorherige API-Belege datiert erhalten; Revision218/24IDs/Historien, Tagesgrenzen und bestehender Zeitplan unverändert. Keine neuen Google-/Kennzahl-/Orderabfragen oder Serviceänderungen. |

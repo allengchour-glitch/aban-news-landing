@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R218 – 14.11.2026: Inhaber meldet die zehn R217-URLs als erledigt/indexiert
+
+Inhaber-Rückmeldung wörtlich «indexdiert» zur [Zehnerliste](ZEHN-INDEXIERUNGSZIELE-20261114-R217.md) gespeichert. Die zehn URLs werden nicht erneut als neue Indexierungsziele vorgeschlagen. Das ist eine Inhaberquelle, keine neue unabhängige Googlebestätigung oder eigene Codex-Beantragung. Datierte R217-API-Befunde bleiben erhalten; keine neue Abfrage, Automation, Frequenz oder Kontoeinstellung.24IDs/Historie fortgeführt,Claude-Empfang unbekannt.
+
 ## R217 – 14.11.2026: zehn weitere noch nicht indexierte Ziele statt bekannter vier
 
 [Zehn direkte Prüflinks](ZEHN-INDEXIERUNGSZIELE-20261114-R217.md) · [Google-/HTTP-/robots-Belege](ZEHN-INDEXIERUNGSZIELE-20261114-R217.json). Auf «sind schon die4»/«gib mir10» fünfzehn andere Kandidaten geprüft: zehn GoogleNEUTRAL/nicht indexiert oder unbekannt mit aktuellen200/selbstkanonisch/Googlebot erlaubt/kein noindex, fünfPASSaussortiert. BekannteR187-/R216-URLs/Home/Shop404 ausgeschlossen, keine globaleHistorienquote. OffiziellePrüflinks bereit, keineBeantragung oder Serviceänderung.24IDs/Historie/Tagesgrenze/Zeitplan erhalten,ClaudeEmpfangunbekannt.
