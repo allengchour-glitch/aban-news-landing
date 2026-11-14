@@ -9,6 +9,55 @@ from email_antworter import verarbeiten
 
 
 class EmailTest(unittest.TestCase):
+    def test_html_alternative_bei_leerem_textteil(self):
+        for leer in ('', ' \n\t'):
+            with self.subTest(leer=repr(leer)), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                p = self.mail(root, Subject='Anfrage')
+                m = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+                m.set_content(leer)
+                m.add_alternative('<p>Welche Öffnungszeiten gelten?</p><script>Rechnung dringend</script>', subtype='html')
+                m.add_attachment(b'Anhang bleibt privat', maintype='application', subtype='octet-stream', filename='intern.txt')
+                p.write_bytes(m.as_bytes())
+                wissen = root / 'wissen.json'
+                wissen.write_text(json.dumps({'faq': [{'stichwoerter': ['Öffnungszeiten'], 'antwort': 'Montags 09–12 Uhr.'}]}))
+                bericht = verarbeiten(p, root / 'out', 'Demo', 'buero@example.invalid', wissen)
+                self.assertEqual((bericht['entwuerfe'], bericht['versendet']), (1, 0))
+                reply = BytesParser(policy=policy.default).parsebytes((root / 'out/antwort-0001.eml').read_bytes())
+                self.assertIn('Montags 09–12 Uhr.', reply.get_content())
+                self.assertEqual(reply['X-Unsent'], '1')
+                self.assertEqual(list(reply.iter_attachments()), [])
+                html = (root / 'out/index.html').read_text()
+                self.assertIn('Welche Öffnungszeiten gelten?', html)
+                self.assertNotIn('Rechnung dringend', html)
+                self.assertNotIn('Anhang bleibt privat', html)
+
+    def test_vorhandener_textteil_hat_vorrang(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            p = self.mail(root)
+            m = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+            m.add_alternative('<p>Rechnung dringend</p>', subtype='html')
+            p.write_bytes(m.as_bytes())
+            bericht = self.run_mail(p, root / 'out')
+            self.assertEqual(bericht['entwuerfe'], 1)
+            self.assertNotIn('Rechnung dringend', (root / 'out/index.html').read_text())
+
+    def test_anhaenge_ersetzen_keinen_leeren_nachrichtentext(self):
+        for nur_anhang in (True, False):
+            with self.subTest(nur_anhang=nur_anhang), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                p = self.mail(root)
+                m = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+                m.set_content('')
+                if not nur_anhang:
+                    m.add_alternative('<style>Termin</style><script>Offerte</script>', subtype='html')
+                m.add_attachment('<p>Termin zur Besichtigung</p>', subtype='html', filename='anhang.html')
+                p.write_bytes(m.as_bytes())
+                bericht = self.run_mail(p, root / 'out')
+                self.assertEqual((bericht['entwuerfe'], bericht['versendet']), (0, 0))
+                self.assertEqual(bericht['ergebnisse'][0]['status'], 'Übersprungen')
+
     def test_quellzuordnung_fuer_alle_ergebnisarten(self):
         from html import escape
         with tempfile.TemporaryDirectory() as tmp:

@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: E-Mail-Pilot übernimmt HTML bei leerem Klartext ·14.11.2026
+
+Zwei reproduzierte Importverluste behoben, Klartextvorrang und Anhangsausschluss geprüft.51 Pilotprüfungen und lokaler Lieferpaketbau grün. Keine neue Kontoanbindung oder Versandfunktion. Details und Bereitstellungsnachweis: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt E-Mail-Pilot und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: Bürostatistik neu gestaltet ·14.11.2026
 
 Kennzahlenkarten, Balken-/Liniendiagramm mit Nulllinie und fünf Kostenstatuskacheln; mobile und dunkle Darstellung geprüft. Finanzwerte/Berechnung/Quellen unverändert, keine Prozentwerte erfunden.43 Dashboard- und sechs Finanzprüfungen grün, vollständiger Drei-Seiten-Bau unter Dokumentlimit. Upload des Claude-Artefakts weiter bei Claude, nie seite.html roh hochladen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Bürostatistik und zugehöriger PR.

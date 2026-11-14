@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## E-Mail-Pilot: HTML-Anfrage bei leerem Textteil erhalten ·14.11.2026
+
+Von main b3ab74f auf eigenem Branch codex/pilot-html-alternative. Vorhandene Firmenwissensfunktion und Gmail-Rohdatenimport geprüft, nicht erneut als neue Anbindung ausgegeben. Reproduziert mit zwei erfundenen Multipart-Mails: leerer bzw. nur aus Leerraum bestehender Klartext neben gültiger HTML-Anfrage führte zu Übersprungen statt Entwurf. Neue Regression am alten Code zweimal rot.
+
+email_antworter.py verwendet nur bei leerem Klartext den vom MIME-Parser gewählten HTML-Nachrichtenteil. Vorhandener Klartext hat Vorrang; Anhänge werden weiterhin ausgeschlossen, HTML-Skripte/Stile entfernt. Firmen-FAQ, Empfängerprüfung und ungesendete EML-Ausgabe unverändert. Gegenproben für vorhandenen Klartext, reine HTML-Anhänge und HTML ohne sichtbaren Inhalt bestanden. Alle 51 Pilotprüfungen grün; lokaler Werkstattbau mit Lieferpaket erfolgreich. Echte CI-/Paketbereitstellung im zugehörigen PR prüfen; kein laufender Postfachdienst und kein Kundenversand. Preis, Kundenfreigabe und produktiver Kontozugang bleiben offen. Nutzen: weniger verlorene Anfragen und manuelle Formatnacharbeit; finanzielle Wirkung nicht gemessen.
+
 ## Bürostatistik: Kennzahlen, Monatsdiagramm und Kostenstatus neu gestaltet ·14.11.2026
 
 Besitzerauftrag «Büro verbessern, Statistik und Diagramm verschönern». Von main90d0ea7 auf eigenem Sparse-Branch; Regeln, Übergaben und offene Arbeiten geprüft. Statistikmodul und Büro-Stile neu gestaltet, Finanzberechnung/Schema/Zeiträume/Quellen/3D-Daten unverändert. Keine Finanzdaten im Repository, kein neuer Quellenabruf oder Automat.
