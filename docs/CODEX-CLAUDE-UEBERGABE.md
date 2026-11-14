@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## 26-Vorlagen-Angebot: Anfrage statt unbelegtem Sofort-Download ·14.11.2026
+
+Von mainda0210d auf eigenem isoliertem Branch; aktuelle Regeln, Übergaben und offene Arbeiten gelesen. Stripe-Konto nur lesend verfügbar bestätigt, keine Zahlungs-/Produkt-/Kontoänderung und keine Zahlungslinks/Abonnentendaten abgerufen. Zentrale Konfiguration VORLAGEN_BUY_URL weiterhin leer. Shop führt unter gleichem Slug ein anders beschriebenes40-Vorlagen-Angebot; Landingpage dagegen26 Vorlagen, DE/EN, PDF. Keine Gleichheit/Lieferzuordnung unterstellt und keinen fremden Kaufweg eingesetzt.
+
+Echter Browserbefund an bisherigem Code: Sofort-Download und Lemon-Zahlung versprochen, tatsächlicher Knopf öffnet Mail; ohne JavaScript führt er nur auf#. Acht neue Gegenproben rot. `vorlagen-set.html` nennt nun vorbereitete Anfrage und Bestätigung von Verfügbarkeit/Zahlungsweg/Rechnung/Lieferung vor Zahlung. Statischer Mail-Link benennt ausdrücklich26 Vorlagen und funktioniert auch ohne JavaScript/Konfiguration. Ein künftig bewusst konfigurierter eigener Checkout überschreibt Ziel, Knopf und Hinweis passend. Sichtbare Zahlungs-FAQ und FAQPage-Suchdaten identisch berichtigt. Bestehende Preise, Leistungsangaben, Samplelinks und Konfiguration unverändert.
+
+GEMESSEN: acht lokale Browserfälle1440/390px × leer/fehlend/ohneJS/konfiguriert grün; alle sechs FAQ-Antworten gegen JSON-LD verglichen, ohne Seitenüberbreite bei aktivem JS. Konfigurierter Checkout ausschliesslich erfundene URL, kein Checkout/Mailprogramm geöffnet, kein Kauf oder geschützter Download. Keine neue Automation/Frequenz/Testdatei. Echte CI und endgültige Bereitstellung im zugehörigen PR lesen. Eigene Checkout-/geschützte Lieferzuordnung für dieses26er-Angebot weiterhin Voraussetzung. Finanzielle Wirkung nicht gemessen; Nutzen: korrekte Kauferwartung, benutzbarer Anfrageweg und weniger irreführende Liefer-/Zahlungsversprechen.
+
 ## Monitor-Ausfälle sind keine negative Sichtbarkeitsmessung ·13.11.2026
 
 Von main4574ade auf isoliertem Branch; Regeln, Übergaben und offene Arbeiten gelesen. Checkoutkonfiguration für Audit/Notfall/Paket weiterhin leer; keine Produkt-/Preis-/Lieferzuordnung erfunden. Monitor-Aboabgleich und Versand weiterhin unbestätigt; Cron bleibt pausiert. Erledigten Offline-Beispielschutz erhalten.

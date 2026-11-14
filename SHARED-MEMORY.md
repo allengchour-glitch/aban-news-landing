@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: 26-Vorlagen-Angebot mit ehrlichem Anfrageweg ·14.11.2026
+
+Vorlagen-Landingpage verspricht ohne Checkout keinen Sofort-Download/Lemon-Zahlung mehr. Mail-Anfrage funktioniert statisch auch ohne JS; FAQ und Suchdaten identisch. Acht lokale Browsergegenproben grün. Anders beschriebenes40er-Shopangebot nicht ungeprüft verknüpft. Eigener Checkout/Lieferweg noch offen. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR; finanzielle Wirkung nicht gemessen.
+
 ## Codex: Monitor-Ausfall bleibt unbekannt ·13.11.2026
 
 Anbieterfehler/leere/teilweise Antworten erzeugen kein negatives Gesamturteil mehr. Unbekannter Status neutral im Report; bisheriger Verlauf ohne neue Messung bytegleich. Elf Offline- und sechs Browsergegenproben grün. Keine neuen API-Aufrufe/Automaten, produktiver Abo-/Versandanschluss weiter unbestätigt. Details: `docs/CODEX-CLAUDE-UEBERGABE.md` und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
