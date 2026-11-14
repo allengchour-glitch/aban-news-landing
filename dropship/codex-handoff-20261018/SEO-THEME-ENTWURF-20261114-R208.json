@@ -1,0 +1,210 @@
+{
+  "revision": 208,
+  "recordedAtUTC": "2026-11-14 13:48:24 UTC",
+  "sourceTheme": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+    "role": "MAIN",
+    "files": {
+      "nodes": [
+        {
+          "filename": "config/settings_data.json",
+          "checksumMd5": "bffffbeb42ee70df121c575a4347cf37"
+        },
+        {
+          "filename": "config/settings_schema.json",
+          "checksumMd5": "2aec04932013b3c77e17f0ca475e4abb"
+        },
+        {
+          "filename": "snippets/meta-tags.liquid",
+          "checksumMd5": "5272479d3e09c18aa461e78f465c7c0b"
+        }
+      ],
+      "userErrors": []
+    }
+  },
+  "shop": {
+    "name": "LuxeStyle",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "duplicate": {
+    "newTheme": {
+      "id": "gid://shopify/OnlineStoreTheme/213991391623",
+      "name": "LuxeStyle – SEO 14.11.2026",
+      "role": "UNPUBLISHED"
+    },
+    "userErrors": []
+  },
+  "save": {
+    "job": null,
+    "upsertedThemeFiles": [
+      {
+        "filename": "config/settings_schema.json",
+        "checksumMd5": "df6f8f092489586bbb39606c99089c27"
+      },
+      {
+        "filename": "snippets/meta-tags.liquid",
+        "checksumMd5": "723ee098a1cd88e7795a8a1d69e589ec"
+      }
+    ],
+    "userErrors": []
+  },
+  "draftReadback": {
+    "id": "gid://shopify/OnlineStoreTheme/213991391623",
+    "name": "LuxeStyle – SEO 14.11.2026",
+    "role": "UNPUBLISHED",
+    "files": [
+      {
+        "filename": "config/settings_data.json",
+        "checksumMd5": "bffffbeb42ee70df121c575a4347cf37",
+        "contentMatchesProposed": true
+      },
+      {
+        "filename": "config/settings_schema.json",
+        "checksumMd5": "df6f8f092489586bbb39606c99089c27",
+        "contentMatchesProposed": true
+      },
+      {
+        "filename": "snippets/meta-tags.liquid",
+        "checksumMd5": "723ee098a1cd88e7795a8a1d69e589ec",
+        "contentMatchesProposed": true
+      }
+    ],
+    "errors": []
+  },
+  "exactScope": {
+    "changedFiles": [
+      "config/settings_schema.json",
+      "snippets/meta-tags.liquid"
+    ],
+    "newEditableSetting": "luxe_home_meta_description",
+    "locale": "de",
+    "pageType": "index",
+    "configSettingsDataWritten": false,
+    "shopDescriptionWritten": false,
+    "frenchAndNonDeFallbackUnchanged": true,
+    "titleCanonicalProductCollectionLogicUnchanged": true
+  },
+  "writes": {
+    "themeDuplicate": 1,
+    "unpublishedThemeFilesUpsert": 1,
+    "filesSaved": 2,
+    "liveThemeWrite": 0,
+    "themePublish": 0,
+    "feedWrites": 0,
+    "productWrites": 0
+  },
+  "status": "SAVED_UNPUBLISHED_NOT_LIVE",
+  "publicationGate": {
+    "requiresSpecificThemePublishConfirmation": true,
+    "skill": "/skills/editing-themes/SKILL.md",
+    "instruction": "Do not call it unless the user said yes to publishing that theme in this conversation.",
+    "beforePublication": "Recheck live MAIN and compare source baseline for intervening changes; do not roll back later edits."
+  },
+  "renderVerification": [
+    {
+      "label": "de",
+      "themeId": 213991391623,
+      "threeDescriptionsExactlyProposed": true,
+      "titleAndCanonicalMatchLive": true,
+      "head": {
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "canonical": [
+          "https://luxestyle.ch/"
+        ],
+        "descriptions": {
+          "meta": [
+            "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+          ],
+          "og": [
+            "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+          ],
+          "twitter": [
+            "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+          ]
+        }
+      }
+    },
+    {
+      "label": "fr",
+      "status": 200,
+      "themeId": 213991391623,
+      "headMatchesLive": true,
+      "head": {
+        "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+        "canonical": [
+          "https://luxestyle.ch/fr"
+        ],
+        "descriptions": {
+          "meta": [
+            "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+          ],
+          "og": [
+            "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+          ],
+          "twitter": [
+            "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+          ]
+        }
+      },
+      "sha256": "a5493aeacd9669a8a11d0dbeeb5066eac8049f404675ca3508220f7522ee9dad"
+    },
+    {
+      "label": "collection",
+      "status": 200,
+      "themeId": 213991391623,
+      "headMatchesLive": true,
+      "head": {
+        "title": "Nachttischlampen online kaufen | LuxeStyle CH",
+        "canonical": [
+          "https://luxestyle.ch/collections/nachttischlampen"
+        ],
+        "descriptions": {
+          "meta": [
+            "Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+          ],
+          "og": [
+            "Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+          ],
+          "twitter": [
+            "Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+          ]
+        }
+      },
+      "sha256": "91c93c2227ff244ae3d898edb224cb0a7918a8c8f3cc039138485d640445529a"
+    }
+  ],
+  "screenshot": {
+    "themeId": "gid://shopify/OnlineStoreTheme/213991391623",
+    "path": "/",
+    "viewport": "mobile",
+    "width": 390,
+    "tool": "shopify_theme_screenshot",
+    "captured": true,
+    "fullCroOrVisualRedesignApproved": false
+  },
+  "baselineAndSavedUtf8Sha256": {
+    "config/settings_data.json": {
+      "before": "ca33d324c12abf6693402c6b831fc80f5068510456cb22fe18df0344d1f8ade7",
+      "after": "ca33d324c12abf6693402c6b831fc80f5068510456cb22fe18df0344d1f8ade7",
+      "shopifyBeforeMd5": "bffffbeb42ee70df121c575a4347cf37",
+      "shopifyAfterMd5": "bffffbeb42ee70df121c575a4347cf37"
+    },
+    "config/settings_schema.json": {
+      "before": "7119f583569aa0c524ae0c94e3370bb98893088f89f91244fb79929299479a9e",
+      "after": "0167323c5870185028557501fb39138f7f7ccffc6feddac0670f0411ddad8989",
+      "shopifyBeforeMd5": "2aec04932013b3c77e17f0ca475e4abb",
+      "shopifyAfterMd5": "df6f8f092489586bbb39606c99089c27"
+    },
+    "snippets/meta-tags.liquid": {
+      "before": "1bb91c3a2136544c614bca4163943b7ef1af405044c3d2b7e7438ed8968a6ddd",
+      "after": "5a91a70e753e063418c0de6dff66e6bbc1fa994e6285f83aab82da535e07fb6d",
+      "shopifyBeforeMd5": "5272479d3e09c18aa461e78f465c7c0b",
+      "shopifyAfterMd5": "723ee098a1cd88e7795a8a1d69e589ec"
+    }
+  },
+  "configDataNote": "settings_data.json was read, not written; content and Shopify checksum unchanged. Its returned text MD5 differs from Shopify metadata, so no source-byte identity is inferred from that metadata. Both actually changed file bodies match their Shopify checksums."
+}

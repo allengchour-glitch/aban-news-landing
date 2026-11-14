@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 207,
-  "updatedAt": "2026-11-14T13:24:35.979270+00:00",
+  "revision": 208,
+  "updatedAt": "2026-11-14T13:51:47.537923+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r207_existing14h_readonly_package_source_qualification_reports_reused_holds_stable",
+      "state": "r208_owner_seo_merchant_request_unpublished_seo_patch_saved_index_source_work",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
-      "lastEvidence": "Bestehender14hLauf:Core4/Identitätenfrisch,R207QueuebytegleichR206,alle9Fensterholdsweiterinaktiv. KeineR206Umsetzungerneutbeansprucht. Originalquelle/CFRGeometrie/WAVProvenienz undAufnahmebriefkonkretisiert,frischerSEOHead/abweichendesAdminfeld/Readdrosselungdokumentiert.0Plattformwrites/Render/neueTagesreports/Kaufwatch.24IDs/Historien/alteCJPreisaufgabeerhalten,ClaudeEmpfangunbekannt.",
-      "nextAllowedStep": "TagesberichteR200weiterverwenden. GleichenMaster anechtenA-Takes/Rechtenweiterentwickeln;vorhandenenR201ZweistellendiffzurFreigabehalten. MetaQuellbindungspätergezieltklären;keineWiederholunggedrosselterReadsoderneuerPublisher/Automation.",
+      "belegArt": "R208_ACTUAL_UNPUBLISHED_SEO_WRITE_WITH_READBACK_AND_TARGETED_SOURCE_PROOFS",
+      "lastEvidence": "Ausdrücklichen SEO-/Merchant-Auftrag mit frischer Core4-/Identitätsprüfung umgesetzt: exakte Metaquelle, frischer UNPUBLISHED MAIN-Klon, zwei gespeicherte Dateien samt API-/Render-Readback. Zwei GSC-Indexprüfungen und gezielte Merchant-/Shopify-Medienbindung; verbleibender eingereichter Zielbild-Link unbekannt. Kein Publish/Feed-Write/Social/Render/Tagesreport/Orderwatch.24 IDs und Historie erhalten; Claude-Empfang unbekannt.",
+      "nextAllowedStep": "Nach konkreter Theme-Publish-Bestätigung frischen MAIN-Diff prüfen; Merchant-Bildquelle gezielt klären. Tagesberichte R200 und bisherigen Master weiterführen, keine zusätzliche Automation/Frequenz, kein pauschaler Refresh oder Wiederholung alter Leistungen.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3952,6 +3952,30 @@
           "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
           "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
           "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+          "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+          "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+          "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+          "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+          "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+          "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+          "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+          "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4650,6 +4674,40 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
               "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
               "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
+            }
+          ]
+        },
+        {
+          "revision": 208,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r207_existing14h_readonly_package_source_qualification_reports_reused_holds_stable",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
+            "lastEvidence": "Bestehender14hLauf:Core4/Identitätenfrisch,R207QueuebytegleichR206,alle9Fensterholdsweiterinaktiv. KeineR206Umsetzungerneutbeansprucht. Originalquelle/CFRGeometrie/WAVProvenienz undAufnahmebriefkonkretisiert,frischerSEOHead/abweichendesAdminfeld/Readdrosselungdokumentiert.0Plattformwrites/Render/neueTagesreports/Kaufwatch.24IDs/Historien/alteCJPreisaufgabeerhalten,ClaudeEmpfangunbekannt.",
+            "nextAllowedStep": "TagesberichteR200weiterverwenden. GleichenMaster anechtenA-Takes/Rechtenweiterentwickeln;vorhandenenR201ZweistellendiffzurFreigabehalten. MetaQuellbindungspätergezieltklären;keineWiederholunggedrosselterReadsoderneuerPublisher/Automation."
+          },
+          "summary": "Ausdrücklichen SEO-/Merchant-Auftrag mit frischer Core4-/Identitätsprüfung umgesetzt: exakte Metaquelle, frischer UNPUBLISHED MAIN-Klon, zwei gespeicherte Dateien samt API-/Render-Readback. Zwei GSC-Indexprüfungen und gezielte Merchant-/Shopify-Medienbindung; verbleibender eingereichter Zielbild-Link unbekannt. Kein Publish/Feed-Write/Social/Render/Tagesreport/Orderwatch.24 IDs und Historie erhalten; Claude-Empfang unbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+              "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+              "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
             }
           ]
         }
@@ -5387,6 +5445,33 @@
           }
         ],
         "platformWrites": 0
+      },
+      "run208": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+            "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+            "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+            "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+            "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+            "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+            "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+            "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+            "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
+          }
+        ],
+        "unpublishedThemeSaved": true,
+        "themePublished": false,
+        "feedWrites": 0
       }
     },
     {
@@ -8118,12 +8203,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r202_targeted_source_read_fieldcombination_failed_unknown_no_feed_write",
+      "state": "r208_real_resources_read_target_variant_media_bound_merchant_image_link_timeout_unknown",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
-      "lastEvidence": "Windsor Merchant5797470070/LuxeStyleCH frisch bestätigt. Ein enger Quellattribute-Read für genau zwei Offers scheitert an Produkt-/Datasource-Feldkombination; failed_no_data/datenZeilen:null, kein leererKatalog. Getrennte Folgefelder als Entwurf, nicht ausgeführt. Source/image_link/volleRessource weiterunknown,0Feedwrites.",
-      "nextAllowedStep": "Produkt-/Datasource-Feldgruppen und tatsächliche zielgerichtete Filterung providerseitig klären; keine Blindwiederholung oder Katalogpagination. Erst mit exakter Quelle und sauberem rechtengeprüften Variantenbild einen engen Diff prüfen.",
+      "belegArt": "R208_ACTUAL_UNPUBLISHED_SEO_WRITE_WITH_READBACK_AND_TARGETED_SOURCE_PROOFS",
+      "lastEvidence": "Konto 5797470070 bestätigt. Eine 5er-Teilseite plus echter Ressourcen-Get liefern source/image/link, nicht die zwei Zieloffers. Windsor-Produktfelder/Filter korrekt getrennt; Trial-Zeitgrenze und danach zulässiger MCP-Timeout ohne Zeilen, keine Wiederholung. Shopify Produkt 15448834736513 und exakt zwei Varianten/erste MediaImage gebunden; Galerie-Overlay gesehen, Google-Zielbild weiterhin unbekannt. Keine Preis-/Feed-/Bildänderung; keine fehlende GTIN umgedeutet.",
+      "nextAllowedStep": "Für exakt die zwei Offers aktuelle Merchant-Primärquelle/image_link aus authentifiziertem Einzelartikel lesen. Mit gebundenem Shopify-Variantenbild und rechten-/form-/farbgeprüfter Originalquelle vergleichen, erst dann enger Diff. Kein Katalogscan, Retry des Timeout-Requests oder pauschaler Ausschluss-/Social-Freigabe; rueckhol-Tag bleibt blockierend.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -8409,6 +8494,18 @@
           "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
           "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42",
           "readAt": "2026-11-14T10:30:10.538871+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+          "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+          "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+          "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+          "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -8849,6 +8946,30 @@
               "path": "dropship/codex-handoff-20261018/ZUGANG-STATUS-20261114-R202.json",
               "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
               "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42"
+            }
+          ]
+        },
+        {
+          "revision": 208,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r202_targeted_source_read_fieldcombination_failed_unknown_no_feed_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
+            "lastEvidence": "Windsor Merchant5797470070/LuxeStyleCH frisch bestätigt. Ein enger Quellattribute-Read für genau zwei Offers scheitert an Produkt-/Datasource-Feldkombination; failed_no_data/datenZeilen:null, kein leererKatalog. Getrennte Folgefelder als Entwurf, nicht ausgeführt. Source/image_link/volleRessource weiterunknown,0Feedwrites.",
+            "nextAllowedStep": "Produkt-/Datasource-Feldgruppen und tatsächliche zielgerichtete Filterung providerseitig klären; keine Blindwiederholung oder Katalogpagination. Erst mit exakter Quelle und sauberem rechtengeprüften Variantenbild einen engen Diff prüfen."
+          },
+          "summary": "Konto 5797470070 bestätigt. Eine 5er-Teilseite plus echter Ressourcen-Get liefern source/image/link, nicht die zwei Zieloffers. Windsor-Produktfelder/Filter korrekt getrennt; Trial-Zeitgrenze und danach zulässiger MCP-Timeout ohne Zeilen, keine Wiederholung. Shopify Produkt 15448834736513 und exakt zwei Varianten/erste MediaImage gebunden; Galerie-Overlay gesehen, Google-Zielbild weiterhin unbekannt. Keine Preis-/Feed-/Bildänderung; keine fehlende GTIN umgedeutet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+              "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+              "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
             }
           ]
         }
@@ -9625,6 +9746,23 @@
           }
         ],
         "noStoreOrPublicationWrite": true
+      },
+      "run208": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+            "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+            "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+            "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+            "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
+          }
+        ],
+        "unpublishedThemeSaved": true,
+        "themePublished": false,
+        "feedWrites": 0
       }
     },
     {
@@ -13199,12 +13337,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r207_fresh_publichead_admin_description_diff_sourcebinding_unknown_no_write",
+      "state": "r208_exact_meta_source_bound_two_file_unpublished_theme_fix_render_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
-      "lastEvidence": "FrischerRootGETHTTP200/eineH1/selfcanonical/keineRobotsimHaupthead. R200Agentkopfquellealsaltkorrigiert. AktuellesShop.description nichtbytegleich mitöffentlicherMeta; keinegesicherteSchreibfeldbindung. BreiterThemegrepunklar,gezielterReadvorAusführungINVALID_ARGUMENT/tooManyRequests;keineLeerdaten/404/HTTP429erfunden.0SEO-/Theme-/Shopwrites/neuerDiff.",
-      "nextAllowedStep": "InspäteremzulässigemgezieltemNur-Lese-Fenster tatsächlicheMetaQuellbindung auslayout/theme.liquid/konkreterReferenzbelegen; erst danach exaktenVorher-/NachherdiffzurFreigabe. KeinblinderShop.description-Write undkeinepauschaleLieferzeitbehauptung.",
+      "belegArt": "R208_ACTUAL_UNPUBLISHED_SEO_WRITE_WITH_READBACK_AND_TARGETED_SOURCE_PROOFS",
+      "lastEvidence": "Live meta override in snippets/meta-tags.liquid belegt. Frischer MAIN-Klon 213991391623 «LuxeStyle – SEO 14.11.2026» angelegt; nur Schema/Textarea und DE-Indexzweig gespeichert. Voller Inhalts-Readback und Cookie-Vorschau bestätigen drei neue Beschreibungen; Titel/Canonical, FR-Home und geprüfte Kategorie erhalten. MAIN nicht veröffentlicht oder geändert. GSC für Home/Kategorie jeweils indexed/PASS, keine Ranking-/Katalogabnahme.",
+      "nextAllowedStep": "Konkrete Veröffentlichung von «LuxeStyle – SEO 14.11.2026» bestätigen lassen. Unmittelbar davor aktuellen MAIN auf zwischenzeitliche Änderungen gegenprüfen; keine veraltete Kopie publizieren. Merchant-Zielbildquelle separat klären.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -13584,6 +13722,30 @@
           "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
           "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
           "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+          "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+          "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+          "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+          "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+          "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+          "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+          "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+          "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229",
+          "readAt": "2026-11-14T13:51:47.537923+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -13984,6 +14146,40 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
               "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
               "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
+            }
+          ]
+        },
+        {
+          "revision": 208,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r207_fresh_publichead_admin_description_diff_sourcebinding_unknown_no_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
+            "lastEvidence": "FrischerRootGETHTTP200/eineH1/selfcanonical/keineRobotsimHaupthead. R200Agentkopfquellealsaltkorrigiert. AktuellesShop.description nichtbytegleich mitöffentlicherMeta; keinegesicherteSchreibfeldbindung. BreiterThemegrepunklar,gezielterReadvorAusführungINVALID_ARGUMENT/tooManyRequests;keineLeerdaten/404/HTTP429erfunden.0SEO-/Theme-/Shopwrites/neuerDiff.",
+            "nextAllowedStep": "InspäteremzulässigemgezieltemNur-Lese-Fenster tatsächlicheMetaQuellbindung auslayout/theme.liquid/konkreterReferenzbelegen; erst danach exaktenVorher-/NachherdiffzurFreigabe. KeinblinderShop.description-Write undkeinepauschaleLieferzeitbehauptung."
+          },
+          "summary": "Live meta override in snippets/meta-tags.liquid belegt. Frischer MAIN-Klon 213991391623 «LuxeStyle – SEO 14.11.2026» angelegt; nur Schema/Textarea und DE-Indexzweig gespeichert. Voller Inhalts-Readback und Cookie-Vorschau bestätigen drei neue Beschreibungen; Titel/Canonical, FR-Home und geprüfte Kategorie erhalten. MAIN nicht veröffentlicht oder geändert. GSC für Home/Kategorie jeweils indexed/PASS, keine Ranking-/Katalogabnahme.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+              "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+              "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+              "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+              "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+              "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+              "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+              "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+              "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
             }
           ]
         }
@@ -14565,6 +14761,33 @@
           }
         ],
         "platformWrites": 0
+      },
+      "run208": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+            "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+            "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+            "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+            "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+            "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+            "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+            "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+            "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
+          }
+        ],
+        "unpublishedThemeSaved": true,
+        "themePublished": false,
+        "feedWrites": 0
       }
     },
     {
@@ -20774,6 +20997,36 @@
           "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
           "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
           "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 208,
+      "at": "2026-11-14T13:51:47.537923+00:00",
+      "actor": "codex",
+      "summary": "SEO-Quelle belegt und frischen unveröffentlichten MAIN-Klon mit zwei gespeicherten und zurückgelesenen SEO-Dateien vorbereitet; DE/FR/Kategorie-Render-QA bestanden. Zwei konkrete GSC-Seiten indexiert; Merchant-Ressource/Datenquelle lesbar und zwei Shopify-Variantenbilder gebunden, eingereichtes Zielbild nach Timeout unbekannt. Kein Theme-Publish/Feed-/Social-/Flow-/Budget-/DNS-Write, keine neuen Reports/Orders/Render.24 Aufgaben/Historien und Grenzen erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+          "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+          "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+          "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+          "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+          "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+          "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+          "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+          "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
         }
       ],
       "taskCount": 24,
@@ -45174,6 +45427,51 @@
     "existingSalesDraftUnapplied": true,
     "seoWriteBinding": "UNKNOWN",
     "seoNoFurtherRetry": true,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run208": {
+    "recordedAtUTC": "2026-11-14T13:51:47.537923+00:00",
+    "dateZurich": "2026-11-14",
+    "reason": "explicit_owner_seo_merchant_push",
+    "sources": {
+      "seo": {
+        "path": "dropship/codex-handoff-20261018/SEO-THEME-ENTWURF-20261114-R208.json",
+        "sha256": "883d5f6f59f24da6640ea100c7a12aedf756ff303f4676cdccc3ceb585b40c1a",
+        "gitBlobSha": "d900ca32c79b5054122012c32f53fc9009679951"
+      },
+      "patch": {
+        "path": "dropship/codex-handoff-20261018/SEO-THEME-20261114-R208.patch",
+        "sha256": "037e82ebb5b3b53c1e1bb2d60d93c60db7d7b3f015a36af090e70c4361d39e10",
+        "gitBlobSha": "95c31a89ebc6329a93d6c3980ffe90bda85da839"
+      },
+      "gsc": {
+        "path": "dropship/codex-handoff-20261018/SEO-INDEXPRUEFUNG-20261114-R208.json",
+        "sha256": "9003a2e046444e9598bb25c713cb62f72aace042680b0fdd28cc5c081e2926e8",
+        "gitBlobSha": "1e95fb1e1ba42b3cc6f5e8db3fbf6fe0734042f1"
+      },
+      "merchant": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLENABGLEICH-20261114-R208.json",
+        "sha256": "1ac5ab94891ccdff723b9d7fde3aac7427bdbc1ca252507fc8742fa9e142761f",
+        "gitBlobSha": "b0c81db775689612f451084e6eab312eaf2ca03a"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/SEO-MERCHANT-20261114-R208.md",
+        "sha256": "9d69f72e6b826fc4ed91c710786c801b245641a434cadcb8bfd2bd0976434522",
+        "gitBlobSha": "20132648c70154856dd38c3c659995ccd2450229"
+      }
+    },
+    "writes": {
+      "themeDuplicate": 1,
+      "unpublishedThemeFilesUpsert": 1,
+      "filesSaved": 2,
+      "liveThemeWrite": 0,
+      "themePublish": 0,
+      "feedWrites": 0,
+      "productWrites": 0
+    },
+    "newMetricsFlowOrOrderQueries": 0,
+    "newSocialPostsOrRenders": 0,
+    "masterContinuesSameOpenReference": true,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

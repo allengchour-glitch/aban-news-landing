@@ -1,0 +1,31 @@
+--- a/config/settings_schema.json
++++ b/config/settings_schema.json
+@@ -2284,5 +2284,17 @@
+         "default": "equal-width-buttons"
+       }
+     ]
++  },
++  {
++    "name": "LuxeStyle SEO",
++    "settings": [
++      {
++        "type": "textarea",
++        "id": "luxe_home_meta_description",
++        "label": "Meta-Beschreibung der Startseite (Deutsch)",
++        "default": "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag.",
++        "info": "Wird für die Meta-Beschreibung sowie Open Graph und Twitter auf der deutschen Startseite verwendet."
++      }
++    ]
+   }
+ ]
+--- a/snippets/meta-tags.liquid
++++ b/snippets/meta-tags.liquid
+@@ -38,6 +38,8 @@
+   # (Online Store → Preferences) korrigiert ist.
+   if request.page_type == 'index' and request.locale.iso_code == 'fr'
+     assign og_description = 'LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50.'
++  elsif request.page_type == 'index' and request.locale.iso_code == 'de'
++    assign og_description = settings.luxe_home_meta_description | default: shop.description | escape
+   elsif request.page_type == 'index'
+     assign og_description = 'LuxeStyle aus Belp: Mode, Beauty, Technik &amp; Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.'
+   # 10.10.2026: Liechtenstein seit 09.10. Lieferland → Texte CH+LI (automation/liefergebiet_text_wache.py prüft auch das Theme)

@@ -1,0 +1,93 @@
+{
+  "task": "R208: bounded read-only Google Search Console URL inspection",
+  "captured_date": "2026-11-14",
+  "scope": {
+    "property_discovery": "HYPD Search Console gsc_list_sites",
+    "selected_property_exact_site_url": "https://luxestyle.ch/",
+    "selection_basis": "Exact URL-prefix property returned by gsc_list_sites with siteOwner permission; no property was guessed.",
+    "urls_inspected": 2,
+    "other_brands_inspected": false,
+    "performance_analytics_requested": false,
+    "indexing_or_sitemap_writes": false
+  },
+  "urls": [
+    {
+      "url": "https://luxestyle.ch/",
+      "public_check": {
+        "head_status": 200,
+        "head_final_url": "https://luxestyle.ch/",
+        "get_status": 200,
+        "get_final_url": "https://luxestyle.ch/",
+        "get_html_canonical": "https://luxestyle.ch/",
+        "method": "HEAD followed by GET; no challenge or 403 observed"
+      },
+      "gsc_inspection": {
+        "inspection_result_link": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=DJoJgknG9Qob5pjjZF-qlg&utm_medium=link&utm_source=api",
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "robots_txt_state": "ALLOWED",
+        "indexing_state": "INDEXING_ALLOWED",
+        "page_fetch_state": "SUCCESSFUL",
+        "last_crawl_time": "2026-11-12T19:12:32Z",
+        "crawled_as": "MOBILE",
+        "google_canonical": "https://luxestyle.ch/",
+        "user_canonical": "https://luxestyle.ch/",
+        "mobile_usability_verdict": "VERDICT_UNSPECIFIED"
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/collections/nachttischlampen",
+      "selection_basis": "Existing bedside-lamp collection link documented in homepage source snapshot; selected as a lighting/search collection landing page.",
+      "public_check": {
+        "head_status": 200,
+        "head_final_url": "https://luxestyle.ch/collections/nachttischlampen",
+        "get_status": 200,
+        "get_final_url": "https://luxestyle.ch/collections/nachttischlampen",
+        "get_html_canonical": "https://luxestyle.ch/collections/nachttischlampen",
+        "method": "HEAD followed by GET; no challenge or 403 observed"
+      },
+      "gsc_inspection": {
+        "inspection_result_link": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=QFfCIha5seaFaViMBPkAdg&utm_medium=link&utm_source=api",
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "robots_txt_state": "ALLOWED",
+        "indexing_state": "INDEXING_ALLOWED",
+        "page_fetch_state": "SUCCESSFUL",
+        "last_crawl_time": "2026-10-31T07:52:21Z",
+        "crawled_as": "MOBILE",
+        "google_canonical": "https://luxestyle.ch/collections/nachttischlampen",
+        "user_canonical": "https://luxestyle.ch/collections/nachttischlampen",
+        "mobile_usability_verdict": "VERDICT_UNSPECIFIED",
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "rich_result_type": "Breadcrumbs",
+              "name": "Unnamed item"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "raw_source_ids_and_proof": {
+    "hypd_init_guide": "Google Search Console by HYPD init; workflow for indexing",
+    "property_list": "Exact returned URL-prefix property https://luxestyle.ch/ with siteOwner permission used; no other property inspected.",
+    "homepage_inspection_id": "DJoJgknG9Qob5pjjZF-qlg",
+    "collection_inspection_id": "QFfCIha5seaFaViMBPkAdg",
+    "source_snapshot_file": "/tmp/luxe-other-work-20261114/seo/homepage-source.json",
+    "source_snapshot_scrape_id": "01a1d787-86ae-72c7-bb48-b74f6eb9a257",
+    "source_snapshot_homepage_url": "https://luxestyle.ch/",
+    "source_snapshot_status": 200,
+    "source_snapshot_full_raw_html_sha256": "75a3dc3a5aaec77c00ec558ce00894ca0466cd34504dd5db7e6d40ce432e21b5",
+    "head_review_file": "/tmp/luxe-other-work-20261114/seo/homepage-head-review.json",
+    "head_review_head_sha256": "759473869bf8ec47a169664c0183bb450aa583f3273ccf4db99e08420082d61c"
+  },
+  "limits": [
+    "URL inspection status is Google's indexed/crawl snapshot at each lastCrawlTime, not live ranking, traffic, sales, or a guarantee of future indexing.",
+    "No clicks, impressions, query rankings, performance reports, or full-site coverage were queried.",
+    "The homepage source snapshot is an existing handoff artifact; current URL status and canonicals were separately checked with public HEAD and GET requests immediately before inspection.",
+    "Mobile usability returned VERDICT_UNSPECIFIED; this is not interpreted as pass or fail.",
+    "The lighting landing page inspection reports a Breadcrumbs rich result with an unnamed item; no broader structured-data assessment was made."
+  ]
+}

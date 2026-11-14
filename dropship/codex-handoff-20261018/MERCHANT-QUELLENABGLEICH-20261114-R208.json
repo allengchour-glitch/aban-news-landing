@@ -1,0 +1,236 @@
+{
+  "run": "R208, 14.11.2026 Europe/Zurich",
+  "as_of": "2026-11-14",
+  "identity": {
+    "tool": "HYPD merchant_list_shops",
+    "fresh": true,
+    "shop": {
+      "name": "LuxeStyle CH",
+      "shop_id": "5797470070",
+      "time_zone": null
+    }
+  },
+  "previous_exact_issue_evidence": {
+    "source": "dropship/codex-handoff-20261018/MERCHANT-ZWEI-ANGEBOTE-20261114-R200.json",
+    "offers": [
+      "shopify_ZZ_15448834736513_55877809340801",
+      "shopify_ZZ_15448834736513_67652260430215"
+    ],
+    "issue": "image_unwanted_overlays",
+    "attribute": "n:image_link",
+    "submitted_image_link": null,
+    "full_product_name": null,
+    "primary_data_source": null
+  },
+  "previous_followup": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+  "new_product_page_read": true,
+  "reason": "Root explicitly authorized one first page of five actual product resources to establish source-read capability, without further pagination. Neither target nail-polish offer occurred in that partial page; that is not proof of absence.",
+  "exact_product_read": true,
+  "repair_candidate": null,
+  "writes": 0,
+  "performance_or_orders_queries": 0,
+  "result": "Shopify Admin GraphQL establishes the first media association for each exact variant. Variant 6 is associated with the previously inspected clean featured image. Variant 1 is associated with a distinct image 9 URL that has not been visually inspected. The current exact Merchant image_link for the two prior disapproved offers remains unknown because Windsor timed out; no claim that Merchant submission matches Shopify media and no correction proposed.",
+  "page_size": 5,
+  "page_followed": false,
+  "partial_catalog_sample": true,
+  "returned_product_resource_keys": [
+    "product_name",
+    "name",
+    "offerId",
+    "dataSource",
+    "productAttributes.imageLink",
+    "productAttributes.link"
+  ],
+  "sample_product": {
+    "product_name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15453997465985_67790129758599",
+    "offerId": "shopify_ZZ_15453997465985_67790129758599",
+    "dataSource": "accounts/5797470070/dataSources/10762220830",
+    "title": "Multifunktionale Sport-Armbanduhr mit Doppeldisplay und... Weiss / Roségold",
+    "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/602e4d1d-6d4a-4a1e-92c6-45a0bcc5b2eb.jpg?v=1783858056",
+    "link": "https://luxestyle.ch/fr/products/multifunktionale-sport-armbanduhr-mit-doppeldi-072384?variant=67790129758599&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+    "status": "sample row has destinationStatuses with approved CH and no itemLevelIssues"
+  },
+  "full_product_get": {
+    "product_name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15453997465985_67790129758599",
+    "offerId": "shopify_ZZ_15453997465985_67790129758599",
+    "dataSource": "accounts/5797470070/dataSources/10762220830",
+    "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/602e4d1d-6d4a-4a1e-92c6-45a0bcc5b2eb.jpg?v=1783858056",
+    "link": "https://luxestyle.ch/fr/products/multifunktionale-sport-armbanduhr-mit-doppeldi-072384?variant=67790129758599&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+    "gtins": [],
+    "identifierExists": false
+  },
+  "windsor": {
+    "connector": "google_merchant",
+    "fresh_connected_account": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH"
+    },
+    "actions_discovered": [
+      "insert_product",
+      "update_product",
+      "delete_product",
+      "create_data_source"
+    ],
+    "schema_read": true,
+    "write_executed": false,
+    "write_guard": "update_product requires exact data_source and product attributes; primary source vs supplemental source must be established. No such action run."
+  },
+  "windsor_exact_probe": {
+    "connector": "google_merchant",
+    "account": [
+      "5797470070"
+    ],
+    "fields": [
+      "product_id",
+      "product_name",
+      "product_image_link",
+      "product_data_source",
+      "product_link",
+      "product_title",
+      "product_content_language",
+      "product_feed_label"
+    ],
+    "filters": [
+      [
+        "product_id",
+        "in",
+        "[\"shopify_ZZ_15448834736513_55877809340801\",\"shopify_ZZ_15448834736513_67652260430215\"]"
+      ]
+    ],
+    "force_refresh": false,
+    "date_semantics": "date is product creation date for product rows; no performance/date_fetched_at fields requested.",
+    "first_attempt": {
+      "date_from": "2000-01-01",
+      "date_to": "2026-11-14",
+      "result": "provider error: trial includes last 30 days only; older history unavailable"
+    },
+    "bounded_retry": {
+      "date_from": "2026-10-15",
+      "date_to": "2026-11-14",
+      "result": "MCP request timed out; no rows received"
+    },
+    "filter_pushdown_proven": false,
+    "conclusion": "Unknown; timeout is not evidence of no matching products. No further retry or pagination.",
+    "writes": 0
+  },
+  "shopify_current_source_check": {
+    "product_id": "gid://shopify/Product/15448834736513",
+    "title": "Schimmernder Thermo-Gel Nagellack",
+    "vendor": "LuxeStyle",
+    "status": "ACTIVE",
+    "product_type": "Nageldesign",
+    "tags": [
+      "auswahl-nachgeruestet",
+      "beauty",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "maniküre",
+      "mengenrabatt-a",
+      "naegel",
+      "nagel",
+      "nageldesign",
+      "rueckhol-0907",
+      "sort-make-up",
+      "sort-nagellack-gel-lack"
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55877809340801",
+        "title": "Modell 1",
+        "sku": "CJYD273330501AZ",
+        "price": "15.90",
+        "inventoryQuantity": 0
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67652260430215",
+        "title": "Modell 6",
+        "sku": "CJYD273330506FU",
+        "price": "15.90",
+        "inventoryQuantity": 0
+      }
+    ],
+    "total_variants_returned": 17,
+    "variant_image_mapping": "not exposed by shopify_get_product response; no variant-specific image relationship established",
+    "current_gallery_images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+        "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+        "role": "featuredImageUrl",
+        "sha256": "f1b46a425233d5549931aff7b499d1fcebd89de0aea043f4241dc38c8ae29d92",
+        "visual_review": "photo collage of purple shimmer nails and matching bottle; no text/graphic overlay visible"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266",
+        "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 2",
+        "sha256": "1ecd1e86e7b8356ae72154ef601507558e1da5723f97dbdd57b77636eb0b83b2",
+        "visual_review": "image visibly includes large DT267 text, color swatches and temperature labels 40C/20C/0C; overlay present"
+      }
+    ],
+    "download_scope": "Exactly two Shopify CDN images downloaded; no other media examined.",
+    "merchantsource_linkage": "unknown: Windsor exact product query timed out, so no current submitted Merchant image_link read; the reviewed Shopify media cannot be tied to either prior Merchant offer from evidence currently available.",
+    "later_variant_mapping": "Superseded by shopify_variant_media_exact in this record; its first_associated_media is verified through ProductVariant.media(first:1)."
+  },
+  "shopify_variant_media_exact": {
+    "store_identity": {
+      "tool": "shopify_get_shop_info",
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "country": "Switzerland"
+    },
+    "schema_discovery": {
+      "type": "ProductVariant",
+      "image_field": "absent",
+      "media_field": "MediaConnection!",
+      "media_description": "The media associated with the product variant.",
+      "query": "nodes(ids: [two exact Variant GIDs]) { ... on ProductVariant { id sku media(first:1) { nodes { id alt mediaContentType ... on MediaImage { image { id url altText } } } } product { id status } } }"
+    },
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55877809340801",
+        "sku": "CJYD273330501AZ",
+        "product_id": "gid://shopify/Product/15448834736513",
+        "product_status": "ACTIVE",
+        "first_associated_media": {
+          "id": "gid://shopify/MediaImage/78014931960199",
+          "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 9",
+          "image_id": "gid://shopify/ImageSource/78014931960199",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+          "altText": "Schimmernder Thermo-Gel Nagellack – Ansicht 9",
+          "visually_inspected": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67652260430215",
+        "sku": "CJYD273330506FU",
+        "product_id": "gid://shopify/Product/15448834736513",
+        "product_status": "ACTIVE",
+        "first_associated_media": {
+          "id": "gid://shopify/MediaImage/78014932091271",
+          "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+          "image_id": "gid://shopify/ImageSource/78014932091271",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+          "altText": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+          "visually_inspected": true,
+          "reviewed_image_file": "images/shopify-featured.png",
+          "visual_observation": "No visible text overlay in the downloaded Shopify image."
+        }
+      }
+    ],
+    "exact_merchant_submitted_image_link_for_these_offers": "unknown; previous exact Windsor query timed out. Shopify variant media associations are now established, but they do not prove Merchant currently submits these same image URLs.",
+    "writes": 0
+  },
+  "scopeLimits": {
+    "catalogExhaustive": false,
+    "targetMerchantImageLinkVerified": false,
+    "imageRightsAndProductFidelityApproved": false,
+    "noGtinOrIdentifierChange": true,
+    "noExclusionRemoved": true,
+    "noProductOrVariantWrite": true,
+    "noFeedRefreshOrResubmission": true,
+    "socialBlockedByRueckholTag": true
+  },
+  "nextStep": "For the two exact offers read submitted primary image_link and data source in the authenticated Merchant item view. Match against the now-known Shopify variant media, then verify faithful commercial source material before any minimal correction. No timeout retry, full-catalog scan or blanket exclusion removal."
+}

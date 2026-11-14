@@ -2403,3 +2403,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Musik / Content | KanonischeWAV einmalgepinntheruntergeladen/gehasht;6Captiontexte/UTMs mitaktuellenGatesweitergeführt | UnveränderteTaskkopieverfügbar,kanonischerCheckoutpfadfehlt;Rechte/Hörabnahmeunbekannt. KeineTonbearbeitung/Exports/Neupost;YouTubemadeForKids=falseerhalten |
 | SEO | RootStartseitefrischgelesen,AdminbeschreibunggegenMeta verglichen undQuellenbefundgesichert | HTTP200/eineH1/selfcanonical;QuellfeldbindungUNKNOWN. GezielterThemeReadvorAusführunggedrosselt,keine404/Leerdaten/HTTP429erfunden,keinWriteoderweitererRetry |
 | Tagesgrenze / Kontinuität | R200Kennzahlen/Klaviyo datiertwiederverwendet;24IDs/Historien erhalten |0neueReports/Kaufwatch/Kundenkontakt/Plattformwrites. Versand/Domain/Zeitplan/VierDNSFreigaben erhalten;WriterundFilmrechteoffen,ClaudeEmpfangunbekannt |
+
+### R208 – Ausdrücklicher SEO-/Merchant-Auftrag, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| SEO-Umsetzung | Tatsächlichen Meta-Override gelesen; frischen MAIN-Klon angelegt und genau zwei Dateien darin gespeichert | **213991391623, LuxeStyle – SEO 14.11.2026: UNPUBLISHED**. Editierbare DE-Startseitenbeschreibung ohne Lieferzeitangaben. Vollständiger Inhalts-Readback passt; kein Live-Publish |
+| SEO-Validierung | Cookie-Vorschau mit echter neuer Theme-ID, drei DE-Beschreibungen, FR-/Kategorie-Regression und mobilem Screenshot geprüft | DE-Text exakt; Titel/Canonical sowie geprüfte FR-/Kategorie-Headfelder unverändert. Keine vollständige CRO-Abnahme. settings_data, Preise, Versandgrenzen und Kundendomäne nicht geändert |
+| Google-Index | Search-Console-Einzelprüfung von Home und Nachttischlampen-Seite, öffentliche HTTP-/Canonical-Gegenprobe | Beide indexed/PASS, HTTP 200; nur zwei Seiten, keine Ranking-/Umsatzableitung, keine erneute Indexierung/Sitemapänderung |
+| Merchant-Quellen | Konto verifiziert; eine echte 5er-Produktseite/ein Ressourcen-Get; zwei Shopify-Varianten samt erstem Bild gezielt gebunden | Ressourcen/Datenquelle lesbar. Eingereichte Google-Zielbilder nach zulässigem Windsor-Timeout unbekannt. Ein Galerie-Overlay gesehen, Zuordnung zum Merchant-Fehler nicht bewiesen. 0 Feed-/Produkt-/Bildwrites, keine Ausschlüsse entfernt |
+| Grenzen / Gedächtnis | Frische Core4 gelesen; Belege und bisherigen Arbeitsstand fortgeführt |24IDs/Historien und Tagesgrenze erhalten. Keine neuen Kennzahl-/Flow-/Orderreports, Social-Posts, Renders, Budgets, DNS oder Automation. Nächster Schritt: konkrete Theme-Publish-Bestätigung samt frischer MAIN-Gegenprobe und exakten Merchant-Zielbildlink sichern |

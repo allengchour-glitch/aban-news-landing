@@ -1,5 +1,9 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R208 – 14.11.2026: SEO-Fix gespeichert, noch unveröffentlicht; Merchant-Quelle eingegrenzt
+
+[Bericht](SEO-MERCHANT-20261114-R208.md) · [Theme-/Renderbeleg](SEO-THEME-ENTWURF-20261114-R208.json) · [Merchant](MERCHANT-QUELLENABGLEICH-20261114-R208.json). Tatsächliche Metaquelle belegt; frischer MAIN-Klon **213991391623 «LuxeStyle – SEO 14.11.2026»** ist UNPUBLISHED. Zwei Dateien gespeichert, vollständig zurückgelesen und DE-/FR-/Kategorie-Head per Cookie-Vorschau geprüft. DE-Startseitenbeschreibung ist editierbar und ohne Lieferzeitversprechen; **kein Publish**. Zwei GSC-Seiten indexed/PASS, keine Ranking-/Katalogabnahme. Merchant-Konto 5797470070 stimmt; reale Produktressource/Datenquelle und zwei exakte Shopify-Variantenmedien lesbar, eingereichte Google-Zielbilder nach Timeout weiter unbekannt. Kein Feed-/Social-/Flow-/Budget-/DNS-Write, neuer Report, Kaufwatch oder Render. Vor Theme-Publish spezifische Bestätigung und frische MAIN-Gegenprobe;24IDs/Historien/Zeitschiene erhalten, Claude-Empfang unbekannt.
+
 ## R207 – 14.11.2026 um14Uhr: Originalquelle qualifiziert, Holds stabil, keine Plattformänderung
 
 [Paket](CONTENT-VERKAUFSPAKET-20261114-14H-R207.md) · [Aufnahmebrief](MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md) · [Belege](CONTENT-VERKAUFSPAKET-20261114-14H-R207.json). Aktuelle48QueuebytegleichR206,alle9Fensterholdsweiterinaktiv,6alteexternePUBLISHED/keineneueAuslieferung. EinProjektorACTIVE/7Varianten/Trackingfalse/CONTINUE/availabletruefrischbelegt. Original960×540/25fps/699Frames mit40ms-Cadencequantifiziert;kanonischeMusikalsTaskreferenzhashbestätigt. PräziserAufnahmebrief fürs gleiche18sMaster,keinFilm/Render/Upload. FrischerStartseitenheadundabweichendesShop.description,MetaSchreibbindungunbekannt;gezielterThemeReadliefnichtwegenDrosselung. R200Reports/R201Zweistellendiffund6Captiontexteerhalten,0Plattformwrites/neueReports;24IDs/Historien/ClaudeEmpfangunbekannt.
