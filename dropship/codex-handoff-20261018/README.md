@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R217 – 14.11.2026: zehn weitere noch nicht indexierte Ziele statt bekannter vier
+
+[Zehn direkte Prüflinks](ZEHN-INDEXIERUNGSZIELE-20261114-R217.md) · [Google-/HTTP-/robots-Belege](ZEHN-INDEXIERUNGSZIELE-20261114-R217.json). Auf «sind schon die4»/«gib mir10» fünfzehn andere Kandidaten geprüft: zehn GoogleNEUTRAL/nicht indexiert oder unbekannt mit aktuellen200/selbstkanonisch/Googlebot erlaubt/kein noindex, fünfPASSaussortiert. BekannteR187-/R216-URLs/Home/Shop404 ausgeschlossen, keine globaleHistorienquote. OffiziellePrüflinks bereit, keineBeantragung oder Serviceänderung.24IDs/Historie/Tagesgrenze/Zeitplan erhalten,ClaudeEmpfangunbekannt.
+
 ## R216 – 14.11.2026: vier Kategorie-Indexierungen bestätigt, direkte Prüflinks bereit
 
 [Prüflinks und Bericht](INDEXIERUNG-LINKS-20261114-R216.md) · [Google-/HTTP-/Publikationsbelege](INDEXIERUNG-LINKS-20261114-R216.json). Futterautomaten, Hundewelt, Selbst gestalten und Camping frisch in Domain- und URL-Präfix-Property als «Gesendet und indexiert» bestätigt, beide Canonicals passend und Website HTTP200. Nur vier URLs, keine Katalogquote/Indexierungszeit- oder Codex-Wirkungsbehauptung; keine eigene Beantragung. Vier separate Shop-App-Websitepfade404, Ursache offen und unverändert. Fällige bestehende StoriesFB/IG19:30 und Pinterest20:00 kanalweisePUBLISHED bestätigt;0eigenePosts/Servicewrites/neueTagesreports/Automation.24IDs/Historieerhalten,ClaudeEmpfangunbekannt.

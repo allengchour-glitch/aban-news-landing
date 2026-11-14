@@ -1,0 +1,675 @@
+{
+  "dateZurich": "2026-11-14",
+  "readAtUTC": "2026-11-14T20:08:39.021286+00:00",
+  "kind": "owner_requested_ten_further_indexing_links",
+  "property": "sc-domain:luxestyle.ch",
+  "freshIdentity": {
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland"
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "discovery": {
+    "dateZurich": "2026-11-14",
+    "source": {
+      "sitemap": "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755668844935",
+      "discoveryScope": "First 60 <url> entries of the first collection sitemap only; sitemap index was read to identify collection sitemap files.",
+      "liveChecks": "Direct public GET for each candidate, read up to 500000 response bytes; recorded status, final URL, first canonical link, and title. No H1/product-anchor evidence was obtained by the quick parser.",
+      "networkCallsRepeated": false,
+      "gscCalls": 0,
+      "writesToShopOrRepo": 0
+    },
+    "exclusionsApplied": {
+      "r187": "All 18 URLs in INDEXIERUNG-UND-404-20261112-R187.json allEighteenTargetedIndexInspections",
+      "r216Website": "All 4 URLs in INDEXIERUNG-LINKS-20261114-R216.json websiteRows",
+      "homepage": "https://luxestyle.ch/",
+      "shopApp404": [
+        "https://luxestyle.ch/collections/shop-neue-entdeckungen",
+        "https://luxestyle.ch/collections/shop-geschenkideen",
+        "https://luxestyle.ch/collections/shop-licht-wohnen",
+        "https://luxestyle.ch/collections/shop-beauty-ordnung"
+      ],
+      "scopeLimit": "These exclusions do not claim global URL-history completeness."
+    },
+    "candidates": [
+      {
+        "rank": 1,
+        "url": "https://luxestyle.ch/collections/weihnachten-2026",
+        "sitemapEntry": 13,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/weihnachten-2026",
+        "canonical": "https://luxestyle.ch/collections/weihnachten-2026",
+        "title": "Weihnachtsdeko, Weihnachtspyjamas & Geschenke | LuxeStyle"
+      },
+      {
+        "rank": 2,
+        "url": "https://luxestyle.ch/collections/premium-geschenke",
+        "sitemapEntry": 26,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/premium-geschenke",
+        "canonical": "https://luxestyle.ch/collections/premium-geschenke",
+        "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 3,
+        "url": "https://luxestyle.ch/collections/kleine-geschenke-mitbringsel",
+        "sitemapEntry": 27,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/kleine-geschenke-mitbringsel",
+        "canonical": "https://luxestyle.ch/collections/kleine-geschenke-mitbringsel",
+        "title": "Wichtelgeschenke unter CHF 20 – kleine Geschenkideen | LuxeStyle"
+      },
+      {
+        "rank": 4,
+        "url": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+        "sitemapEntry": 28,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+        "canonical": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+        "title": "Geschenke unter CHF 50 kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 5,
+        "url": "https://luxestyle.ch/collections/geschenke-unter-100-franken",
+        "sitemapEntry": 29,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/geschenke-unter-100-franken",
+        "canonical": "https://luxestyle.ch/collections/geschenke-unter-100-franken",
+        "title": "Geschenke unter CHF 100 kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 6,
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "sitemapEntry": 12,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "canonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 7,
+        "url": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+        "sitemapEntry": 5,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+        "canonical": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+        "title": "Herrenuhren & Schmuck kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 8,
+        "url": "https://luxestyle.ch/collections/baby-kleinkind",
+        "sitemapEntry": 2,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/baby-kleinkind",
+        "canonical": "https://luxestyle.ch/collections/baby-kleinkind",
+        "title": "Baby & Kleinkind kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 9,
+        "url": "https://luxestyle.ch/collections/damen-mode",
+        "sitemapEntry": 15,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/damen-mode",
+        "canonical": "https://luxestyle.ch/collections/damen-mode",
+        "title": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle"
+      },
+      {
+        "rank": 10,
+        "url": "https://luxestyle.ch/collections/schule-buro",
+        "sitemapEntry": 3,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/schule-buro",
+        "canonical": "https://luxestyle.ch/collections/schule-buro",
+        "title": "Schule & Büro – Schulrucksäcke, Notizbücher & Ordnung | LuxeStyle"
+      },
+      {
+        "rank": 11,
+        "url": "https://luxestyle.ch/collections/vegan",
+        "sitemapEntry": 19,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/vegan",
+        "canonical": "https://luxestyle.ch/collections/vegan",
+        "title": "Vegan & Cruelty-Free kaufen | LuxeStyle Schweiz",
+        "note": "Title observed as a site label only; underlying product claim was not verified."
+      },
+      {
+        "rank": 12,
+        "url": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+        "sitemapEntry": 16,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+        "canonical": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+        "title": "Hochzeitsgeschenke für das Brautpaar | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 13,
+        "url": "https://luxestyle.ch/collections/fur-ihn",
+        "sitemapEntry": 9,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/fur-ihn",
+        "canonical": "https://luxestyle.ch/collections/fur-ihn",
+        "title": "Herrenmode: Shirts, Hemden, Pullover & Schuhe | LuxeStyle"
+      },
+      {
+        "rank": 14,
+        "url": "https://luxestyle.ch/collections/fur-sie",
+        "sitemapEntry": 10,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/fur-sie",
+        "canonical": "https://luxestyle.ch/collections/fur-sie",
+        "title": "Für Sie kaufen | LuxeStyle Schweiz"
+      },
+      {
+        "rank": 15,
+        "url": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+        "sitemapEntry": 17,
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+        "canonical": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+        "title": "Berufseinstieg & Abschluss kaufen | LuxeStyle Schweiz"
+      }
+    ]
+  },
+  "excludedExactUrls": [
+    "https://luxestyle.ch/",
+    "https://luxestyle.ch/collections/basteln-diy",
+    "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+    "https://luxestyle.ch/collections/damen-schals-tuecher-schal",
+    "https://luxestyle.ch/collections/hundewelt",
+    "https://luxestyle.ch/collections/schmuck-selbermachen",
+    "https://luxestyle.ch/collections/selbst-gestalten-1",
+    "https://luxestyle.ch/collections/shop-beauty-ordnung",
+    "https://luxestyle.ch/collections/shop-geschenkideen",
+    "https://luxestyle.ch/collections/shop-licht-wohnen",
+    "https://luxestyle.ch/collections/shop-neue-entdeckungen",
+    "https://luxestyle.ch/collections/sub-taschen",
+    "https://luxestyle.ch/collections/tier-futterautomaten",
+    "https://luxestyle.ch/collections/vorratsdosen",
+    "https://luxestyle.ch/collections/winter-kaelte",
+    "https://luxestyle.ch/pages/alle-kategorien",
+    "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+    "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+    "https://luxestyle.ch/products/laser-entfernungsmessgerat-456064",
+    "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+    "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet",
+    "https://luxestyle.ch/products/schirm-aufsatz-fur-reithelm-600000",
+    "https://luxestyle.ch/products/ventileinsatz-werkzeug-tubeless-reifen-832000"
+  ],
+  "exclusionScope": "R187 eighteen, R216 four (overlap retained without double counting), homepage and four separate Shop App404 paths; older global link history unknown",
+  "inspectionCalls": 15,
+  "selectedTen": [
+    {
+      "label": "Geschenkideen",
+      "url": "https://luxestyle.ch/collections/premium-geschenke",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=59h_vgLcXrLDOrw-2VhZWA&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-11T13:39:49Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/premium-geschenke",
+          "userCanonical": "https://luxestyle.ch/collections/premium-geschenke",
+          "referringUrls": [
+            "https://luxestyle.ch/blogs/ratgeber/einschlaf-ritual-aromatherapie-pillow-spray",
+            "https://luxestyle.ch/"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/premium-geschenke",
+        "checkedAtUTC": "2026-11-14T20:06:37.054902+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/premium-geschenke",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "3bae3d34969844be6591466b9563d94a83504b2889e9b572fff33020bd5d2ec0",
+        "canonical": [
+          "https://luxestyle.ch/collections/premium-geschenke"
+        ],
+        "robotsMeta": [],
+        "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Wohnen und Dekoration",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=GsQqUyMhdGEOj-Z77QXWWg&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-04T02:33:24Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+          "userCanonical": "https://luxestyle.ch/collections/wohnen-dekoration",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "referringUrls": [
+            "https://luxestyle.ch/",
+            "https://luxestyle.ch/blogs/ratgeber/herrenuhr-kaufen-ratgeber-schweiz"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "checkedAtUTC": "2026-11-14T20:06:37.055511+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 327680,
+        "readPrefixSha256": "f827271d47db85c2284d04e16045404e8a8f986610bf6d51e06df1eeac4fa126",
+        "canonical": [
+          "https://luxestyle.ch/collections/wohnen-dekoration"
+        ],
+        "robotsMeta": [],
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Herrenuhren und Schmuck",
+      "url": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=h9yw7Uoko6Wb87-FhVNX7Q&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-07-01T21:39:45Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+          "userCanonical": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+          "referringUrls": [
+            "https://luxestyle.ch/collections/foto-tech",
+            "https://luxestyle.ch/blogs/ratgeber"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+        "checkedAtUTC": "2026-11-14T20:06:37.056060+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "7f47ddb00480452de1c9a7e5522ec8d7f657225b9c6d4e6e3b9cfd0d400b1b69",
+        "canonical": [
+          "https://luxestyle.ch/collections/herrenuhren-schmuck"
+        ],
+        "robotsMeta": [],
+        "title": "Herrenuhren & Schmuck kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Baby und Kleinkind",
+      "url": "https://luxestyle.ch/collections/baby-kleinkind",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=q_j8ggyhcVxF_kbpDxpZKw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "URL ist Google nicht bekannt",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/baby-kleinkind",
+        "checkedAtUTC": "2026-11-14T20:06:37.056819+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/baby-kleinkind",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "68cc5c40c67cfb977742b330f9f8d18e990853103f2bc9953f65b63f632fce5c",
+        "canonical": [
+          "https://luxestyle.ch/collections/baby-kleinkind"
+        ],
+        "robotsMeta": [],
+        "title": "Baby & Kleinkind kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Damenmode",
+      "url": "https://luxestyle.ch/collections/damen-mode",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=fNuGthLHkgcGxXWlewP1bw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-13T00:52:55Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/damen-mode",
+          "userCanonical": "https://luxestyle.ch/collections/damen-mode",
+          "referringUrls": [
+            "https://luxestyle.ch/collections/guess",
+            "https://luxestyle.ch/blogs/ratgeber/cashmere-decke-pflege-einrichtungstipps",
+            "https://luxestyle.ch/policies/privacy-policy"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/damen-mode",
+        "checkedAtUTC": "2026-11-14T20:06:37.057338+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/damen-mode",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 327680,
+        "readPrefixSha256": "e5e8c88b44c06e247f044cd1cc015d72a41b001c207b592ca4d87a69904eb4d4",
+        "canonical": [
+          "https://luxestyle.ch/collections/damen-mode"
+        ],
+        "robotsMeta": [],
+        "title": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Schule und Büro",
+      "url": "https://luxestyle.ch/collections/schule-buro",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=biVqiEkdGI5SmySq97liWQ&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gefunden – zurzeit nicht indexiert",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/schule-buro",
+        "checkedAtUTC": "2026-11-14T20:06:37.733168+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/schule-buro",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "3e24e3623efe83bd0f0709fac09a096b95b8df15db0dc535fda24f90f83e54b9",
+        "canonical": [
+          "https://luxestyle.ch/collections/schule-buro"
+        ],
+        "robotsMeta": [],
+        "title": "Schule & Büro – Schulrucksäcke, Notizbücher & Ordnung | LuxeStyle",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Kollektion «Vegan»",
+      "url": "https://luxestyle.ch/collections/vegan",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=V7XkjHuOIKbDoOY8yGKQFQ&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-07-27T13:03:20Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/vegan",
+          "userCanonical": "https://luxestyle.ch/collections/vegan",
+          "referringUrls": [
+            "https://luxestyle.ch/blogs/ratgeber/nachhaltiges-badezimmer-bambus-accessoires-test"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/vegan",
+        "checkedAtUTC": "2026-11-14T20:06:37.798500+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/vegan",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 327680,
+        "readPrefixSha256": "6c389f0d108e1dca8551015daede7c4d0d4fc47e6f63bdb395add57ca7d50a2b",
+        "canonical": [
+          "https://luxestyle.ch/collections/vegan"
+        ],
+        "robotsMeta": [],
+        "title": "Vegan & Cruelty-Free kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Hochzeitsgeschenke",
+      "url": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=HHIxQFLAzdYJN1yeKY0j1A&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-10T03:40:00Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+          "userCanonical": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+          "referringUrls": [
+            "https://luxestyle.ch/products/2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+            "https://luxestyle.ch/"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+        "checkedAtUTC": "2026-11-14T20:06:37.849769+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hochzeitsgeschenke",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "db443687ecd73bfc9bd97add7a764edd584f78d40be09792b463ad27c52ae9a5",
+        "canonical": [
+          "https://luxestyle.ch/collections/hochzeitsgeschenke"
+        ],
+        "robotsMeta": [],
+        "title": "Hochzeitsgeschenke für das Brautpaar | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Für Sie",
+      "url": "https://luxestyle.ch/collections/fur-sie",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=Z7F0mhU1z_k29uWnekN3NQ&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "URL ist Google nicht bekannt",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/fur-sie",
+        "checkedAtUTC": "2026-11-14T20:06:37.862441+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/fur-sie",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "a2086a6ee0bb7c084d73ccf29ab8b13f27cddada069ef13ced71544f3cf7a946",
+        "canonical": [
+          "https://luxestyle.ch/collections/fur-sie"
+        ],
+        "robotsMeta": [],
+        "title": "Für Sie kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    },
+    {
+      "label": "Berufseinstieg und Abschluss",
+      "url": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+      "google": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=jFTwycUPfYSX-OaugsKxRQ&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "NEUTRAL",
+          "coverageState": "URL ist Google nicht bekannt",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        }
+      },
+      "publicHead": {
+        "url": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+        "checkedAtUTC": "2026-11-14T20:06:37.958012+00:00",
+        "robotsGooglebotAllowed": true,
+        "scope": "HTTP headers and head through </head>, at most1MiB; no product/content audit",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/berufseinstieg-abschluss",
+        "xRobotsTag": null,
+        "headClosed": true,
+        "readBytes": 262144,
+        "readPrefixSha256": "228dd41c273af283c7fd1536a6726af1155135bd213dc32ecd1031137c04c938",
+        "canonical": [
+          "https://luxestyle.ch/collections/berufseinstieg-abschluss"
+        ],
+        "robotsMeta": [],
+        "title": "Berufseinstieg & Abschluss kaufen | LuxeStyle Schweiz",
+        "currentNoindexObserved": false
+      },
+      "requestSubmitted": false
+    }
+  ],
+  "alreadyIndexedExcluded": [
+    {
+      "url": "https://luxestyle.ch/collections/weihnachten-2026",
+      "status": "Gesendet und indexiert",
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=U4Y367S3yutykvPMMBD3pg&utm_medium=link&utm_source=api"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/kleine-geschenke-mitbringsel",
+      "status": "Gesendet und indexiert",
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=Wcy0KjqPvhONp6AJV4GxBQ&utm_medium=link&utm_source=api"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/geschenke-unter-50-franken",
+      "status": "Gesendet und indexiert",
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=q7dKK-j3hIbeNoRd8Qpt4w&utm_medium=link&utm_source=api"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/geschenke-unter-100-franken",
+      "status": "Gesendet und indexiert",
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=XKpTSgB8V9GwfCjpwnzHqQ&utm_medium=link&utm_source=api"
+    },
+    {
+      "url": "https://luxestyle.ch/collections/fur-ihn",
+      "status": "Gesendet und indexiert",
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=A8u2o5i0gFcl08wt2aMk8w&utm_medium=link&utm_source=api"
+    }
+  ],
+  "publicRobots": {
+    "url": "https://luxestyle.ch/robots.txt",
+    "status": 200,
+    "sha256": "cb0603cc7715bdd00f30f162918d7f3fb6d253d309fdf3a50d649c93f7dbbf86"
+  },
+  "queryResultMeaning": "NEUTRAL is an actual Google not-indexed/unknown-URL verdict here, not a failed API response. No error/429 was treated as an empty index.",
+  "noProductContentOrCertificationAudit": true,
+  "veganLabelIsExistingNameOnly": true,
+  "requestsSubmitted": 0,
+  "sitemapsSubmitted": 0,
+  "shopFeedFlowMetricoolWrites": 0,
+  "dailyMetricsOrOrderWatchRepeated": false,
+  "newAutomationOrSchedule": false,
+  "lastCrawlTimeIsNotIndexingDate": true
+}

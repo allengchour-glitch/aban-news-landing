@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 216,
-  "updatedAt": "2026-11-14T19:20:18.415060+00:00",
+  "revision": 217,
+  "updatedAt": "2026-11-14T20:08:39.021286+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r216_indexing_followup_four_category_links_and_due_external_posts_confirmed",
+      "state": "r217_owner_requested_ten_further_links_known_four_and_eighteen_excluded",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
-      "lastEvidence": "Userweiter nach Indexierungslink: vier Websitekategorien in beiden Propertiesindexiert undHTTP200 belegt; Quellen-/Zielpfade sowie offizielle Prüflinks gespeichert. Fällige FB/IGStoriesundPinterestpin kanalweisePUBLISHED aus bestehenderPlanung,0eigenePosts. FreshShop6227837/ZurichsechsKanälepassend. Core4/24IDs/Tagesschrankenfortgeführt, nur eigene redundanteDokumentcacheszurSchreibbarkeitbereinigt.",
-      "nextAllowedStep": "Weiterarbeit an belegten SEO-/Merchant-Einzelfällen und demselben professionellenMaster. Keine unbekannten Shop-App-Websitepfade ohne Prüfung aktivieren/indexieren. Neue Videolieferung/Rechte/Nativtakes weiterhin konkret beschaffen; letzte Übergabe nutzen, Claude-Empfang nur mit Beleg behaupten.",
+      "belegArt": "R217_FIFTEEN_NEW_URL_INSPECTIONS_TEN_NOT_INDEXED_HEAD_ROBOTS_VERIFIED",
+      "lastEvidence": "Nutzerkorrekturund10erAuftragfortgesetzt:15gezielteGSCInspections/10aktuelleHTTPHeadprüfungen,10offeneZiele/5bereitsindexierteausgeschlossen. FrischeShop-/Metricoolidentitätenpassen,0Servicewrites/Indexierungsanträge/neueReports/Orders/Renders/Automation. Core4/24IDs/Historieerhalten.",
+      "nextAllowedStep": "Die konkrete Zehnerliste nutzen und spätere Ausführungs-/Indexierungsbelege getrennt ergänzen; keine erneute pauschale Freigabefrage oder Wiederholung bekannter vier URLs. Bestehende Verkaufs-/Masteraufgaben nach Voraussetzungen fortsetzen; Claude-Empfang nur belegt behaupten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4174,6 +4174,18 @@
           "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
           "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
           "readAt": "2026-11-14T19:20:18.415060+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+          "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+          "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+          "readAt": "2026-11-14T20:08:39.021286+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+          "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+          "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+          "readAt": "2026-11-14T20:08:39.021286+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5178,6 +5190,30 @@
               "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
             }
           ]
+        },
+        {
+          "revision": 217,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r216_indexing_followup_four_category_links_and_due_external_posts_confirmed",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
+            "lastEvidence": "Userweiter nach Indexierungslink: vier Websitekategorien in beiden Propertiesindexiert undHTTP200 belegt; Quellen-/Zielpfade sowie offizielle Prüflinks gespeichert. Fällige FB/IGStoriesundPinterestpin kanalweisePUBLISHED aus bestehenderPlanung,0eigenePosts. FreshShop6227837/ZurichsechsKanälepassend. Core4/24IDs/Tagesschrankenfortgeführt, nur eigene redundanteDokumentcacheszurSchreibbarkeitbereinigt.",
+            "nextAllowedStep": "Weiterarbeit an belegten SEO-/Merchant-Einzelfällen und demselben professionellenMaster. Keine unbekannten Shop-App-Websitepfade ohne Prüfung aktivieren/indexieren. Neue Videolieferung/Rechte/Nativtakes weiterhin konkret beschaffen; letzte Übergabe nutzen, Claude-Empfang nur mit Beleg behaupten."
+          },
+          "summary": "Nutzerkorrekturund10erAuftragfortgesetzt:15gezielteGSCInspections/10aktuelleHTTPHeadprüfungen,10offeneZiele/5bereitsindexierteausgeschlossen. FrischeShop-/Metricoolidentitätenpassen,0Servicewrites/Indexierungsanträge/neueReports/Orders/Renders/Automation. Core4/24IDs/Historieerhalten.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -6151,6 +6187,24 @@
         "serviceWrites": 0,
         "ownNewPosts": 0,
         "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run217": {
+        "sources": {
+          "indexing": {
+            "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+            "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+            "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+          },
+          "report": {
+            "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+            "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+            "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
+          }
+        },
+        "selectedUrls": 10,
+        "indexRequestsSubmitted": 0,
+        "serviceWrites": 0,
+        "claudeReceipt": "unknown_no_receipt"
       }
     },
     {
@@ -14602,12 +14656,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r216_four_existing_categories_currently_indexed_both_properties_http200",
+      "state": "r217_ten_further_not_indexed_urls_verified_links_ready_no_submissions",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
-      "lastEvidence": "Vier konkrete R187-URLs frisch über Domain- und dieselbe URL-Präfix-Property geprüft: Futterautomaten/Hundewelt/Selbstgestalten/Camping allePASS/gesendetindexiert, Google/UserCanonical gleich, öffentlich200/selbstkanonisch. Acht begrenzte Inspections, keine Performanceabfrage. Crawl12Nov ist kein Indexierungszeitpunkt oder Codex-Ursachenbeleg. Alte R187-Befunde datiert erhalten. Vier Shop-App-Websitepfade echte404, Ursacheunbekannt/nichtaktiviert.",
-      "nextAllowedStep": "Nur weitere konkret belegte Indexierungsfälle eng auswählen; keine globale Neueinreichung oder Katalogquote. R214-Merchant-Einzelbereinigungsentwurf und seine Vorher-/Editor-/Freigabegates getrennt erhalten; keine pauschale DRAFT-/Quellen-/Redirectänderung.",
+      "belegArt": "R217_FIFTEEN_NEW_URL_INSPECTIONS_TEN_NOT_INDEXED_HEAD_ROBOTS_VERIFIED",
+      "lastEvidence": "Inhaber meldetdie4bereitsbekanntundfordert10weitere. Aus15andersalsR187/R216/home/Shop404Kandidaten genau10GoogleNEUTRAL(nichtindexiert/unbekannt)ausgewählt,5PASSausgeschlossen. ZehnaktuelleWebsiteHeads200/selbstkanonisch/Googlebotallowed/noindexnichtbeobachtet;offizielleGooglePrüflinks. KeineeigeneBeantragung,keinPerformancebericht/Shopwrite.",
+      "nextAllowedStep": "Die zehn geprüften Google-Einträge für Live-URL-Test/Indexierungsbeantragung bereitstellen; tatsächliche Beantragung nur mit echtem UI-/Ausführungsbeleg melden. Aktuellen Google-Status vor späterem Wiederholen prüfen und diese Liste nicht als neue Ziele recyceln. Inhaltliche/Katalog-/Ranking-/Zertifizierungsabnahme bleibt getrennt; R214Merchant-Einzelfallgates und Masterblocker erhalten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -15107,6 +15161,18 @@
           "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
           "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
           "readAt": "2026-11-14T19:20:18.415060+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+          "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+          "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb",
+          "readAt": "2026-11-14T20:08:39.021286+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+          "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+          "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845",
+          "readAt": "2026-11-14T20:08:39.021286+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15712,6 +15778,30 @@
               "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
               "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
               "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+            }
+          ]
+        },
+        {
+          "revision": 217,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r216_four_existing_categories_currently_indexed_both_properties_http200",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
+            "lastEvidence": "Vier konkrete R187-URLs frisch über Domain- und dieselbe URL-Präfix-Property geprüft: Futterautomaten/Hundewelt/Selbstgestalten/Camping allePASS/gesendetindexiert, Google/UserCanonical gleich, öffentlich200/selbstkanonisch. Acht begrenzte Inspections, keine Performanceabfrage. Crawl12Nov ist kein Indexierungszeitpunkt oder Codex-Ursachenbeleg. Alte R187-Befunde datiert erhalten. Vier Shop-App-Websitepfade echte404, Ursacheunbekannt/nichtaktiviert.",
+            "nextAllowedStep": "Nur weitere konkret belegte Indexierungsfälle eng auswählen; keine globale Neueinreichung oder Katalogquote. R214-Merchant-Einzelbereinigungsentwurf und seine Vorher-/Editor-/Freigabegates getrennt erhalten; keine pauschale DRAFT-/Quellen-/Redirectänderung."
+          },
+          "summary": "Inhaber meldetdie4bereitsbekanntundfordert10weitere. Aus15andersalsR187/R216/home/Shop404Kandidaten genau10GoogleNEUTRAL(nichtindexiert/unbekannt)ausgewählt,5PASSausgeschlossen. ZehnaktuelleWebsiteHeads200/selbstkanonisch/Googlebotallowed/noindexnichtbeobachtet;offizielleGooglePrüflinks. KeineeigeneBeantragung,keinPerformancebericht/Shopwrite.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+              "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+              "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+              "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+              "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
             }
           ]
         }
@@ -16434,6 +16524,24 @@
         "serviceWrites": 0,
         "ownNewPosts": 0,
         "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run217": {
+        "sources": {
+          "indexing": {
+            "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+            "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+            "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+          },
+          "report": {
+            "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+            "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+            "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
+          }
+        },
+        "selectedUrls": 10,
+        "indexRequestsSubmitted": 0,
+        "serviceWrites": 0,
+        "claudeReceipt": "unknown_no_receipt"
       }
     },
     {
@@ -23101,6 +23209,26 @@
           "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
           "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
           "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 217,
+      "at": "2026-11-14T20:08:39.021286+00:00",
+      "actor": "codex",
+      "summary": "NachInhaberkorrektur«sindschondie4»und«gibmir10»:15andereURLsgemessen,10noch nichtindexiert/unbekannt+aktuellHTTP200/selbstkanonisch/robotsallowedohnenoindexausgewählt;5PASSausgeschlossen. R187/R216/home/Shop404nichtrecycelt. OffizielleGooglePrüflinks bereit,keineBeantragung/Servicewrites/neueTagesreports/Orders/Renders/Automation. Core4/24IDs/Historienerhalten,ClaudeEmpfangunbekannt.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+          "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+          "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+          "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+          "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
         }
       ],
       "taskCount": 24,
@@ -47913,6 +48041,34 @@
     "dueExistingPostsProviderStatesPublished": 3,
     "ownPostsAndServiceWrites": 0,
     "dailyReportsRepeated": false,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run217": {
+    "recordedAtUTC": "2026-11-14T20:08:39.021286+00:00",
+    "dateZurich": "2026-11-14",
+    "kind": "owner_followup_ten_links_not_new_automation",
+    "sources": {
+      "indexing": {
+        "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.json",
+        "sha256": "422cf174da20aa1e0e6d6bef6d6abfb8c81414138f475bfed9df3884a85d4a67",
+        "gitBlobSha": "c1529ecab24d931fafc117aab5515ba7e2834cdb"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
+        "sha256": "ab964900cec73de8d0f3d10b73dc9301bb7d2dc8b9709688c3d7d5c8226b5bd0",
+        "gitBlobSha": "03d6223e0fdfe93a6dc8e3157a1004cb2ea5c845"
+      }
+    },
+    "inspectedNewCandidates": 15,
+    "selectedNotIndexedUrls": 10,
+    "alreadyIndexedExcluded": 5,
+    "knownFourExcluded": true,
+    "priorR187EighteenExcluded": true,
+    "indexRequestsSubmitted": 0,
+    "httpHeadsAndRobotsVerified": 10,
+    "serviceWrites": 0,
+    "dailyReportsRepeated": false,
+    "newAutomationOrFrequency": false,
     "claudeReceipt": "unknown_no_receipt"
   }
 }
