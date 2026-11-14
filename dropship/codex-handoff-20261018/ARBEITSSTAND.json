@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 221,
-  "updatedAt": "2026-11-14T22:00:11.626676+00:00",
+  "revision": 222,
+  "updatedAt": "2026-11-14T22:24:16.354829+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r221_selfcare_metadata_live_organizer_already_present",
+      "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
-      "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
-      "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
+      "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
+      "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+      "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4288,6 +4288,36 @@
           "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
           "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
           "bytes": 43318
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+          "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+          "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+          "bytes": 3434
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+          "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+          "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+          "bytes": 168529
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+          "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+          "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+          "bytes": 13586
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+          "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+          "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+          "bytes": 3332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+          "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+          "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+          "bytes": 1848
         }
       ],
       "requiresFreshVerification": true,
@@ -6250,6 +6280,76 @@
               "bytes": 43318
             }
           ]
+        },
+        {
+          "revision": 221,
+          "kind": "state_before_r222",
+          "snapshot": {
+            "state": "r221_selfcare_metadata_live_organizer_already_present",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
+            "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+            "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
+            "blockers": [
+              "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+              "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+              "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+              "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+              "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+              "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+              "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+              "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+              "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+              "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+              "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+            ]
+          }
+        },
+        {
+          "revision": 222,
+          "date": "2026-11-14",
+          "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+              "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+              "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+              "bytes": 3434
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+              "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+              "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+              "bytes": 168529
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+              "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+              "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+              "bytes": 13586
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+              "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+              "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+              "bytes": 3332
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+              "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+              "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+              "bytes": 1848
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -8040,7 +8140,47 @@
             }
           ]
         }
-      ]
+      ],
+      "run222": {
+        "imageCorrections": 2,
+        "bothOverlayRejectionsCleared": true,
+        "source": "10667445201",
+        "ownerConfirmedRightsAndFidelity": true,
+        "autofeedCaseStillOpen": true,
+        "historicalBlockersAreDatedNotCurrentAccessInventory": true,
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+            "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+            "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+            "bytes": 3434
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+            "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+            "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+            "bytes": 168529
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+            "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+            "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+            "bytes": 13586
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+            "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+            "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+            "bytes": 3332
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+            "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+            "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+            "bytes": 1848
+          }
+        ]
+      }
     },
     {
       "id": "master-projector-15521256604033",
@@ -10885,12 +11025,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r214_draft_and_exact_redirect_id_verified_single_stale_offer_cleanup_draft",
+      "state": "r222_two_merchant_images_corrected_approved_autofeed_price_open",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Produkt15421165404545 frisch DRAFT/onlineStoreUrl null; exakte Variante55775110463873 CHF44.90. Native Weiterleitung2042634568071 exakt auf Produktpfad→Damenmode, öffentliche Rootgegenprobe301 mit Variantenparameter. Nicht allein fehlender Preis, sondern veraltete Einzelzuordnung zu nicht kaufbarer Produktseite. R212 GoogleSource10678939025/price null datiert erhalten; keine neue Googleabfrage oder Behebung. Schlussprüfung präzisiert: Google-Angebotszustand nur R212, heutiger R214-Zustand unbekannt; frischer Shopify-/URL-Befund ist davon getrennt.",
-      "nextAllowedStep": "Genau das in R212 beobachtete Angebot15421165404545_cjtz292404406fu/Quelle10678939025 frisch lesen. Nur bei fortbestehender Fehlzuordnung den vorbereiteten Einzelbereinigungsumfang nach Freigabe und nachgewiesener Editormethode anwenden. ProduktDRAFT/44.90/Redirect und ganzeQuelle erhalten; gezielte Nachkontrolle, kein Blindretry.",
+      "belegArt": "OWNER_ATTESTATION_TWO_API_WRITES_EXACT_HYPD_READBACK",
+      "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+      "nextAllowedStep": "Bestätigte Bildwechsel und eindeutige Merchant-Angebotsidentitäten erhalten, keine neuen Bildwrites ohne neuen Befund. Bestehende Quellen-/Bildbindung beim nächsten vorhandenen Lauf gezielt gegen Rückänderung prüfen. Für AUTOFEED10678939025 nur exakten DRAFT-Offer mit legitimer Einzelartikel-Editormethode unterdrücken/entfernen; Produkt44.90/DRAFT/Redirect/ganzeQuelle erhalten. Unit-pricing-measure nur nach belegtem Nettoinhalt, keine GTIN-/Verpackungsvolumen-Erfindung.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -11326,6 +11466,36 @@
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
           "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+          "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+          "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+          "bytes": 3434
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+          "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+          "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+          "bytes": 168529
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+          "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+          "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+          "bytes": 13586
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+          "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+          "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+          "bytes": 3332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+          "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+          "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+          "bytes": 1848
         }
       ],
       "requiresFreshVerification": true,
@@ -11982,6 +12152,91 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
               "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
+            }
+          ]
+        },
+        {
+          "revision": 221,
+          "kind": "state_before_r222",
+          "snapshot": {
+            "state": "r214_draft_and_exact_redirect_id_verified_single_stale_offer_cleanup_draft",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
+            "lastEvidence": "Produkt15421165404545 frisch DRAFT/onlineStoreUrl null; exakte Variante55775110463873 CHF44.90. Native Weiterleitung2042634568071 exakt auf Produktpfad→Damenmode, öffentliche Rootgegenprobe301 mit Variantenparameter. Nicht allein fehlender Preis, sondern veraltete Einzelzuordnung zu nicht kaufbarer Produktseite. R212 GoogleSource10678939025/price null datiert erhalten; keine neue Googleabfrage oder Behebung. Schlussprüfung präzisiert: Google-Angebotszustand nur R212, heutiger R214-Zustand unbekannt; frischer Shopify-/URL-Befund ist davon getrennt.",
+            "nextAllowedStep": "Genau das in R212 beobachtete Angebot15421165404545_cjtz292404406fu/Quelle10678939025 frisch lesen. Nur bei fortbestehender Fehlzuordnung den vorbereiteten Einzelbereinigungsumfang nach Freigabe und nachgewiesener Editormethode anwenden. ProduktDRAFT/44.90/Redirect und ganzeQuelle erhalten; gezielte Nachkontrolle, kein Blindretry.",
+            "blockers": [
+              "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
+              "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
+              "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
+              "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen.",
+              "R60: Tatsächlich eingereichte FR-Texte/URL/Quelle und aktuelle Policy-Meldung für den Glöckchenartikel nicht authentifiziert gelesen; native FR-Translations[] ersetzt diese Quelle nicht. Nachprüfungsentwurf nicht eingereicht, Google-Neubewertung unbekannt. Andere Policyfälle nicht allein anhand generischer Titel freigeben.",
+              "R61: Aktuelle Shopify-Bilder aller 15 roten Stiefelvarianten öffentlich erreichbar; tatsächlich eingereichter Google-image_link und aktive Quelle weiterhin unbekannt. Prüfdatei nicht hochgeladen; keine neue Image-URL oder pauschale Entsperrung aus Personalisierungsmeldungen ableiten.",
+              "R62: Google-Verarbeitungsstatus/Fristbeginn beim Rucksack unbekannt, Shopify READY ist kein Google-Status. Ventilzubehör-Default-SKU/Lieferumfang und aktuelle FR-Merchant-Quelle vor Einreichung belegen. Tischbombe besitzt hier keine Richtlinien-/Werbefreigabe; keine neue Merchant-Abfrage nach vorherigem R61-Timeout.",
+              "R63: Merchant-Konto passend, actions[]; anderer Schreibeditor/Claude-Anmeldung offen. PR2830 weiterhin Draft; alle Checks nicht grün und mögliche zusätzliche main-Produktionsdeployments nicht isoliert freigegeben. Zitruspresse/Kameratasche ohne sauberes vorhandenes Original. Zwei bestätigte Shopify-Metadatenwrites sind keine Google-Behebung.",
+              "R65: Drei zusätzliche Quellenkontexte ungeklärt; CSV ohne aktive Source-ID/eingereichte URLs. Alte Blumenvariante nativ null ist kein aktueller Google-Angebotsstatus. Zwei numerische Offer-IDs nicht als Shopify-IDs interpretieren.",
+              "R81: CSV-Zeitpunkte und Filter sind nicht direkt vergleichbar; aktuelle Merchant-Livezustände und aktive Source-ID bleiben ohne authentifizierten Einzelabruf unbekannt.",
+              "R101: Beide CSVs fehlen aktive Merchant-Datenquellen-ID, eingereichte URL sowie Rohpreis-/Availability-/Shipping-Werte; verantwortliche Quelle unbekannt.",
+              "R101: Deutschland-Versandgebiet und belastbarer Tarif sind nicht belegt; eine DE-Versand- oder Länderänderung ist nicht freigegeben.",
+              "R101: 60 Availability-IDs in DateiA und die Availability-ID in DateiB sind rein numerische Merchant-IDs und nicht sicher auf Shopify-GIDs abgebildet.",
+              "R102: Google-Neuverarbeitung, aktive Merchant-Source-ID und tatsächlich eingereichter image_link der korrigierten Rollball-Variante sind unbekannt; Shopify-Readback ist kein Google-Status.",
+              "R102: Neun weitere Overlay-IDs bleiben offen; für die Drei-Pink-Variante wurde kein sauberes Bild derselben Menge belegt, daher kein Ersatz durch ein Einproduktfoto.",
+              "R102: CSS-Kapazitätsgrenze betrifft 10’628 IDs, ist aber Konto-/Programmstatus und weder Produktfehlerquote noch Auftrag für Produkt-/Feedwrites.",
+              "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
+              "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
+              "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
+              "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt.",
+              "R140: 5’000er-Merchant-Scope ist truncated; next page vorhanden und keine Katalogquote.",
+              "R140: Summary9 und separate12er-Disapproved-Stichprobe widersprechen sich; Werte dürfen nicht addiert oder als identischer Nenner behandelt werden.",
+              "R140: Overlay-Ersatzbilder brauchen exakte Produkt-/Variantenidentität und Rechte; aktive Source/image_link bleiben pro Offer zu belegen.",
+              "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen.",
+              "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
+              "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
+              "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden.",
+              "R149: Drive- und Filterexport haben verschiedene Feed-/Sprach-/Filterkontexte;1295 fr-Zeilen des kleinen Exports fehlen im breiten Export. Keine direkte Vorher-/Nachher-Differenz.",
+              "R149: CSVs enthalten keine verifizierte aktive Source-ID, eingereichte URL oder verantwortliche Rohfeldquelle.",
+              "R149: Lieferfähigkeit und reale Kosten für Liechtenstein und Deutschland sind nicht belegt; kein Versand-/Länderwrite.",
+              "R149: Grosse CH-/DE-/CHF-Itemmenge beweist weder aktuelle ACTIVE-Shopify-Produkte noch einen Katalognenner; HYPD-Gegenprobe ist bei5000 truncated.",
+              "R167: Von sechs stale Landingpage-Offers sind zwei in Source10667445201 live vorhanden; vier HYPD-Reads INVALID_ARGUMENT und damit aktueller Merchant-Ressourcenzustand unknown.",
+              "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg.",
+              "R168: Availability-Zielzustand ist erreicht; Zeitpunkt und verursachender bestehender Ablauf bleiben unbekannt. Keine Codex-/Connector-Verursachung behaupten.",
+              "R168: Liechtenstein-Versand bleibt getrennt blockiert; reale Lieferfähigkeit, Kosten und Laufzeit fehlen und waren nicht Teil der Freigabe."
+            ]
+          }
+        },
+        {
+          "revision": 222,
+          "date": "2026-11-14",
+          "lastEvidence": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+              "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+              "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+              "bytes": 3434
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+              "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+              "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+              "bytes": 168529
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+              "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+              "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+              "bytes": 13586
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+              "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+              "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+              "bytes": 3332
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+              "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+              "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+              "bytes": 1848
             }
           ]
         }
@@ -12917,6 +13172,46 @@
         "businessWrites": 0,
         "masterFinished": false,
         "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run222": {
+        "imageCorrections": 2,
+        "bothOverlayRejectionsCleared": true,
+        "source": "10667445201",
+        "ownerConfirmedRightsAndFidelity": true,
+        "autofeedCaseStillOpen": true,
+        "historicalBlockersAreDatedNotCurrentAccessInventory": true,
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+            "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+            "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+            "bytes": 3434
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+            "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+            "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+            "bytes": 168529
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+            "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+            "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+            "bytes": 13586
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+            "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+            "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+            "bytes": 3332
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+            "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+            "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+            "bytes": 1848
+          }
+        ]
       }
     },
     {
@@ -26600,6 +26895,46 @@
           "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
           "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
           "bytes": 43318
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 222,
+      "at": "2026-11-14T22:24:16.354829+00:00",
+      "actor": "codex",
+      "summary": "Zwei gezielte Merchant-image_link-Updates nach frischer Quellen-/Variantenprüfung und ausdrücklicher Inhaber-Rechte-/Farbfreigabe ausgeführt. Beide neuen Hauptbilder und aufgehobene Overlay-Ablehnungen frisch bestätigt; CH/LI in sechs gelieferten Zielkanälen approved. Modell6 behält NOT_IMPACTED unit-pricing-measure-Warnung. Einzelner DRAFT-Autofeed-Preisfall bleibt offen, keine globale0-Fehlerbehauptung.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+          "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+          "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+          "bytes": 3434
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+          "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+          "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+          "bytes": 168529
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+          "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+          "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+          "bytes": 13586
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+          "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+          "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+          "bytes": 3332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+          "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+          "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+          "bytes": 1848
         }
       ],
       "taskCount": 24,
@@ -51674,5 +52009,64 @@
     ],
     "executedAtUTC": "2026-11-14T21:57:07Z",
     "nativeReadbackObjectUpdatedAtUTC": "2026-11-14T21:57:08Z"
+  },
+  "run222": {
+    "recordedAtUTC": "2026-11-14T22:24:16.354829+00:00",
+    "dateZurich": "2026-11-14",
+    "merchantWrites": 2,
+    "shopifyWrites": 0,
+    "socialWrites": 0,
+    "imageCorrectionsConfirmed": 2,
+    "account": "5797470070",
+    "source": "10667445201",
+    "offers": [
+      "shopify_ZZ_15448834736513_55877809340801",
+      "shopify_ZZ_15448834736513_67652260430215"
+    ],
+    "approvedCountriesAsDelivered": [
+      "CH",
+      "LI"
+    ],
+    "deliveredReportingContexts": 6,
+    "otherProductAttributesPreserved": true,
+    "blindWriteRetries": 0,
+    "openAutofeedPriceCase": "15421165404545_cjtz292404406fu",
+    "model6NonBlockingWarningAttribute": "unit pricing measure",
+    "newDailyMetricsFlowGSCOrderReports": 0,
+    "newAutomationRendersMergeDeploy": 0,
+    "rightsSource": "owner_explicit_chat_attestation",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.md",
+        "sha256": "4a36feca52523f3a6cec6eff1df50d7a16c39c5a9fd0afacd8a03f620b1ce330",
+        "gitBlobSha": "472692654632fb7ad3f7848b7c7c744f7df00744",
+        "bytes": 3434
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261114-R222.json",
+        "sha256": "e1fa8b2d1814a88e53baf185965d4cbc1e21a4be76b5b88c3e793b2a3d9e0a13",
+        "gitBlobSha": "032356fcc3bc493dc8cb2d0cf9bea6e4f0ef13d6",
+        "bytes": 168529
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-BILDWECHSEL-20261114-R222.json",
+        "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+        "gitBlobSha": "3af4dfc0049cecfaf676a91132c3c7d90dc28fc5",
+        "bytes": 13586
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-BILDRECHTE-20261114-R222.md",
+        "sha256": "2f7b4e6a91915934a61e72e00102918dd2f040e312081dce3eef063e8f4c92b0",
+        "gitBlobSha": "4600d3d64d1ab55387f990bb5084fa049c0355b5",
+        "bytes": 3332
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md",
+        "sha256": "57bd44fe60a906c86180093f097d8ce8f26c497b0f6d2e1a52abcb7e3ebe1826",
+        "gitBlobSha": "a0c8d9284237605fa8e322656cd6357c660bfcb4",
+        "bytes": 1848
+      }
+    ],
+    "windsorProductTimeoutNotRetried": true
   }
 }

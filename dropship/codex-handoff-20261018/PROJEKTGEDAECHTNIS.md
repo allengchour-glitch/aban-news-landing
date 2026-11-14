@@ -1,3 +1,11 @@
+# R222 – Zwei Merchant-Bildfehler behoben, 14.11.2026
+
+Zwei gezielte Hauptbild-Updates für Nagellack Modell1/6 nach expliziter Inhaber-Rechte-/Farbfreigabe ausgeführt. Neue URLs und Aufhebung beider Overlay-Ablehnungen frisch zurückgelesen; CH/LI in allen sechs gelieferten Zielkanälen approved. Andere Produktattribute unverändert, keine Quellenneuanlage oder blinden Retries. Modell6: Grundpreis-Mengenangabe weiterhin NOT_IMPACTED. DRAFT-Workout-Autofeed-Einzelfall bleibt offen; keine globale0-Fehlerbehauptung.
+
+[Bericht](MERCHANT-FIX-20261114-R222.md) · [Belege](MERCHANT-FIX-20261114-R222.json) · [Offener Einzelfall](MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md). 24IDs/Historien/Tagesgrenzen/Zeitplan erhalten, Claude-Empfang unbekannt.
+
+---
+
 # R221 – Beauty & Self-Care: Metadaten live verbessert, 14.11.2026
 
 Eine erfolgreiche Shopify-Mutation aktualisierte seo.description und den Alttext des bestehenden Kollektionsbildes. Öffentliche Meta-/OG-Beschreibung und native Werte stimmen; JPEG-Bytes/Bild-ID/Dateipfad erhalten, URL-Cacheversion aktualisiert. Der alte R175-Organizer-Link ist bereits genau einmal live vorhanden und wurde hier nicht erneut angelegt. Keine Ranking-/Verkaufswirkung gemessen.

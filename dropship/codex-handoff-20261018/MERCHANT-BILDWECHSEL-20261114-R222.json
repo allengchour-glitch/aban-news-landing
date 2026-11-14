@@ -1,0 +1,356 @@
+{
+  "type": "two_completed_exact_image_link_updates",
+  "requestsAndCheckpoints": {
+    "schemaVersion": 1,
+    "scope": "two exact image_link updates on existing API source; no retries",
+    "operations": [
+      {
+        "product_id": "shopify_ZZ_15448834736513_55877809340801",
+        "state": "confirmed_processed",
+        "request": {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "update_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15448834736513_55877809340801",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465",
+            "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326"
+          }
+        },
+        "sentAtUTC": "2026-11-14T22:19:38.490721+00:00",
+        "responseAtUTC": "2026-11-14T22:19:51.630152+00:00",
+        "responseFile": "write-model1.json",
+        "firstReadbackAtUTC": "2026-11-14T22:20:36.616819+00:00",
+        "firstReadbackFile": "after-first-model1.json",
+        "otherProductAttributesUnchanged": true,
+        "imageConfirmed": true,
+        "issuesAsDelivered": [],
+        "destinationsAsDelivered": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "finalReadbackFile": "after-first-model1.json",
+        "finalVerifiedAtUTC": "2026-11-14T22:22:03.423323+00:00",
+        "googleObjectUpdatedAtUTC": "2026-11-14T22:19:39.597110Z"
+      },
+      {
+        "product_id": "shopify_ZZ_15448834736513_67652260430215",
+        "state": "confirmed_processed",
+        "request": {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "update_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15448834736513_67652260430215",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465",
+            "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          }
+        },
+        "sentAtUTC": "2026-11-14T22:19:51.630167+00:00",
+        "responseAtUTC": "2026-11-14T22:20:06.525818+00:00",
+        "responseFile": "write-model6.json",
+        "firstReadbackAtUTC": "2026-11-14T22:20:36.617109+00:00",
+        "firstReadbackFile": "after-first-model6.json",
+        "otherProductAttributesUnchanged": true,
+        "imageConfirmed": true,
+        "issuesAsDelivered": [
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "SHOPPING_ADS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "DISPLAY_ADS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "DEMAND_GEN_ADS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "VIDEO_ADS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "destinationsAsDelivered": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "finalReadbackFile": "after-final-model6.json",
+        "finalVerifiedAtUTC": "2026-11-14T22:22:03.425253+00:00",
+        "googleObjectUpdatedAtUTC": "2026-11-14T22:19:52.770125Z"
+      }
+    ],
+    "writesSent": 2,
+    "blindRetries": 0,
+    "bothImageRejectionsCleared": true
+  },
+  "preparedDiff": {
+    "preparedAtUTC": "2026-11-14T22:10:42.076305+00:00",
+    "scope": "exactly two existing de/CHF_99383214465 offers, only image_link",
+    "changes": [
+      {
+        "account": "5797470070",
+        "connector": "google_merchant",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_55877809340801",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326"
+        },
+        "diff": {
+          "image_link": {
+            "before": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b62f62d-6c70-4e15-9401-aa98b48efddf.jpg?v=1791489010",
+            "after": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326"
+          }
+        },
+        "gates": {
+          "exactSourceAPIConfirmed": true,
+          "nativeAndStorefrontVariantPriceAndAvailabilityChecked": true,
+          "existingMerchantAdditionalImage": true,
+          "currentImageSHA": "21765e420964a501ae7cbd1163b4bae23d304b092e75c35e8c77996cd912a162",
+          "commercialEditAdvertisingRights": "owner_confirmed_in_chat",
+          "strictProductColorDetailApproval": "owner_confirmed_in_chat",
+          "publishAllowed": true
+        }
+      },
+      {
+        "account": "5797470070",
+        "connector": "google_merchant",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_67652260430215",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+        },
+        "diff": {
+          "image_link": {
+            "before": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+            "after": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          }
+        },
+        "gates": {
+          "exactSourceAPIConfirmed": true,
+          "nativeAndStorefrontVariantPriceAndAvailabilityChecked": true,
+          "existingMerchantAdditionalImage": true,
+          "currentImageSHA": "f1b46a425233d5549931aff7b499d1fcebd89de0aea043f4241dc38c8ae29d92",
+          "commercialEditAdvertisingRights": "owner_confirmed_in_chat",
+          "strictProductColorDetailApproval": "owner_confirmed_in_chat",
+          "publishAllowed": true
+        }
+      }
+    ],
+    "leaveUnchanged": [
+      "price",
+      "currency",
+      "availability",
+      "GTIN",
+      "identifier_exists",
+      "title",
+      "description",
+      "additional_image_links",
+      "shipping",
+      "publicCHF50/internalCHF45",
+      "whole data sources"
+    ],
+    "noWriteExecuted": true,
+    "approvalEvidence": "owner-image-confirmation.json"
+  },
+  "confirmation": {
+    "ownerText": "Ja, Rechte und Produkt-/Farbtreue sind für beide Bilder bestätigt",
+    "source": "explicit owner reply in this chat to the exact prepared image change for Modell 1 and Modell 6",
+    "recordedAtUTC": "2026-11-14T22:19:00.016Z",
+    "scope": {
+      "merchantAccount": "5797470070",
+      "source": "10667445201",
+      "variants": [
+        "55877809340801",
+        "67652260430215"
+      ],
+      "onlyField": "image_link"
+    },
+    "rightsSourceType": "owner_attestation_not_independent_CJ_licence",
+    "newHiggsfieldRender": false
+  },
+  "noNewDataSource": true,
+  "allOtherProductAttributesPreserved": true
+}

@@ -2535,3 +2535,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Gedächtnis | R175-Befunde zum bereits vorhandenen Self-Care-Link aktualisiert; 24IDs/Historien/Tagesgrenzen fortgeführt | Revision221; vorherige Befunde erhalten. Vorhandene Umsetzung nicht Codex zugeschrieben; Claude-Kenntnisnahme unbekannt. |
 
 [Bericht](SELFCARE-SEO-20261114-R221.md) · [Belege](SELFCARE-SEO-20261114-R221.json).
+
+### R222 – Merchant-Bildkorrekturen und exakter Autofeed-Fall, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / Quellen | LuxeStyle-Shop/CHF, Merchant5797470070 und Metricool6227837/sechs Kanäle frisch geprüft; vier Merchant-Datenquellen gelesen | Passende Identitäten.10667445201 API,10678939025 AUTOFEED; keine Quellenneuanlage oder globale Quellenänderung. |
+| Merchant-Bilder | Zwei exakte image_link-Updates nach belegter Variantenbindung, Bildvergleich und ausdrücklicher Inhaberbestätigung zu Rechten/Farbtreue ausgeführt | Modell1/6 mit neuen Hauptbildern frisch bestätigt, beide Overlay-Ablehnungen aufgehoben. CH/LI in allen sechs gelieferten Zielkanälen approved. Andere productAttributes im Strukturvergleich gleich; zwei Writes, null blinde Retries. |
+| Rücklesung | Modell6 nach erster noch alter Google-Ausgabe später gezielt nochmals gelesen | Vorhandene Ressource zeigte danach neues Bild und Freigaben. Kein zweiter Write, keine Ersatzangebote. Modell1 keine itemLevelIssues; Modell6 unit pricing measure / NOT_IMPACTED bleibt offen. |
+| Preis-/Autofeed-Fall | Genaues Workout-Angebot und Shopify-DRAFT/CHF44.90 sowie eingereichten Link gegengeprüft | Googleprice fehlt; QuelleAUTOFEED10678939025, Link301 zur Damenmode-Kategorie. Kein Preis-/Produkt-/Redirect-/Quellenwrite; passende Einzelartikel-Editormethode erforderlich. |
+| CJ / Mengenangabe | Eine exakte SKU bei CJ gelesen und beide Varianten-/Bildbindungen geprüft | Lieferantengewicht, Verpackungsmasse und barcode sind kein Nettoinhalt-/GS1-Nachweis. Keine Mengen-/GTIN-Werte oder identifierExists erfunden. |
+| Fehler / Grenzen | Einen Windsor-Produktread mit Timeout als unbekannt erfasst, direkte HYPD-Einzelangebote als Gegenprobe gelesen | Kein Blindretry/Leer-/404-Fehlschluss. Drei Angebote sind kein Katalogzensus; keine globale0-Fehler-, Ranking-, View-/Umsatzbehauptung. Keine neuen Tagesreports, Kaufwatch, Socialposts, Renders, Ads-/Budget-/Flow-/DNSänderungen oder Automation. |
+| Gedächtnis | R222-Belege und24stabile Aufgaben-IDs/Historien fortgeschrieben | Revision222; bestehende Reportgrenzen/Zeitplan erhalten, Claude-Kenntnisnahme unbekannt. |
+
+[Bericht](MERCHANT-FIX-20261114-R222.md) · [Belege](MERCHANT-FIX-20261114-R222.json) · [Offener Autofeed-Einzelfall](MERCHANT-AUTOFEED-EINZELFALL-20261114-R222.md).
