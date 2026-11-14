@@ -1,3 +1,11 @@
+## R219 – 14.11.2026: Geschenkseite live überarbeitet
+
+Eine Shopify-Mutation an `premium-geschenke` (Kollektion687793897857) änderte ausschliesslich Titel und Beschreibung. Mutation um 21:06:18 UTC / 22:06:18 Zürich erfolgreich, `userErrors: []`; native und öffentliche Rücklesung stimmen überein. Acht interne Ziele HTTP200. Mobile/Desktop-Live-QA bestanden. SEO-Metadaten, URL, Bild, Sortierung, Template und die ersten drei Produkt-/Variantenstichproben blieben erhalten. Lokale Vorschau: Listenbeginn bei 390 px −140,50 px, Hero-Anfang −26,08 px; keine Live-Kausal- oder Ranking-/Conversionmessung. Eine Shop-Schreibaktion, null Theme-Publishes; keine neuen Google-/Kennzahlen-/Klaviyo-/Orderabfragen oder Automation.
+
+[Bericht](GESCHENKSEITE-20261114-R219.md) · [Belegpaket](GESCHENKSEITE-20261114-R219.json).
+
+---
+
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
 ## R218 – 14.11.2026: Inhaber meldet die zehn R217-URLs als erledigt/indexiert

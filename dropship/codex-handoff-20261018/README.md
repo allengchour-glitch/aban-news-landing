@@ -1,3 +1,9 @@
+# R219 – Geschenkseite live verbessert, 14.11.2026
+
+Eine Shopify-Änderung an `premium-geschenke` wurde um 22:06:18 Uhr Zürich erfolgreich ausgeführt: Titel „Geschenkideen“ und neue Einleitung. Öffentliche/native Rücklesung sowie Live-QA für 390/1440 px bestanden. SEO-Metadaten, Handle, Bild, Sortierung, Template und acht bestehende Links blieben erhalten. Keine Ranking-/Conversionmessung oder neue Indexierungsabfrage. Details: [Bericht](GESCHENKSEITE-20261114-R219.md) · [Belege](GESCHENKSEITE-20261114-R219.json). R218-/ältere Historie folgt unverändert.
+
+---
+
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
 ## R218 – 14.11.2026: Inhaber meldet die zehn R217-URLs als erledigt/indexiert

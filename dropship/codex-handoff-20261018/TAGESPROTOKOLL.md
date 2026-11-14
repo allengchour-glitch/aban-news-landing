@@ -2502,3 +2502,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Bereich | Was Codex gemacht hat | Ergebnis / Status |
 |---|---|---|
 | Indexierungsstatus / Gedächtnis | Inhabermeldung «indexdiert» zu den zehn zuletzt gelieferten R217-URLs dokumentiert und diese von neuen Vorschlägen ausgenommen |QUELLE Inhaber, keine neue unabhängige Googlebestätigung und keine eigene Beantragung. Vorherige API-Belege datiert erhalten; Revision218/24IDs/Historien, Tagesgrenzen und bestehender Zeitplan unverändert. Keine neuen Google-/Kennzahl-/Orderabfragen oder Serviceänderungen. |
+
+
+### R219 – Geschenkseite live verbessert, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shop / Geschenkseite | Eine Shopify-`collectionUpdate`-Mutation an `premium-geschenke` um 22:06:18 Uhr Zürich; Titel und Beschreibung aktualisiert | Native und öffentliche Rücklesung erfolgreich, HTTP200; Titel „Geschenkideen“. SEO-Metadaten, Handle, Bild, Sortierung, Template und acht Links erhalten; alle acht Linkziele HTTP200. |
+| Live-QA | Öffentliche Seite bei 390 und 1440 px ohne DOM-Mutation aufgerufen | Alle erfassten Checks bestanden, kein horizontales Überlaufen. Bei 390 px beginnt die Produktliste bei 702,86 px. Lokale Vorschau −140,50 px (davon Hero-Anfang −26,08 px); keine Live-Kausal-, Ranking- oder Conversionmessung. |
+| Umfang / Grenzen | Eine Shop-Schreibaktion, null Theme-Publishes | Keine neue Indexierungs-/Google-, Merchant-, Flow-, Kennzahlen-, Bestell- oder Verkaufsabfrage. Metricool-Identität gelesen; keine neuen Socialposts oder Automation. Banner/CSS/Preise/Rabatte/Versand nicht geändert. |
+
+[Bericht](GESCHENKSEITE-20261114-R219.md) · [Belegpaket](GESCHENKSEITE-20261114-R219.json).

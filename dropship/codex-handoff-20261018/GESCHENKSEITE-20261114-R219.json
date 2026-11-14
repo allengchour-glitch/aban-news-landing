@@ -1,0 +1,482 @@
+{
+  "revision": 219,
+  "capturedAtUTC": "2026-11-14T21:19:19.143321+00:00",
+  "dateZurich": "2026-11-14",
+  "type": "completed_live_shopify_collection_update",
+  "authorizationContext": {
+    "latestOwnerInstruction": "weiter verbessern",
+    "priorWebsiteAndSEOAuthorizationContinues": true,
+    "mutationConfirmationTool": "tool contract requires confirmation; execution returned success",
+    "separateHumanApprovalClick": null,
+    "approvalReceipt": "not separately recorded; no explicit click receipt asserted"
+  },
+  "write": {
+    "service": "Shopify",
+    "operation": "collectionUpdate",
+    "executedAtUTC": "2026-11-14T21:06:18Z",
+    "userErrors": [],
+    "target": {
+      "id": "gid://shopify/Collection/687793897857",
+      "handle": "premium-geschenke",
+      "url": "https://luxestyle.ch/collections/premium-geschenke"
+    },
+    "changedFields": {
+      "title": {
+        "before": "Geschenkideen & Weihnachtsgeschenke",
+        "after": "Geschenkideen"
+      },
+      "descriptionHtml": {
+        "before": "<p>Geschenkideen für Weihnachten und jeden anderen Anlass: Uhren und Schmuck, Taschen und Lederwaren, Kuscheldecken, Aroma-Diffuser, Tech wie Powerbanks, dazu Puzzles, Bausteine und Plüschtiere.</p><p>Gezielt suchen: <a href=\"/collections/geschenke-fuer-sie\">Geschenke für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Geschenke für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a> · <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichtelgeschenke &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>",
+        "after": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>"
+      }
+    },
+    "unchangedFields": {
+      "seo": {
+        "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+        "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+      },
+      "templateSuffix": null,
+      "sortOrder": "MANUAL",
+      "image": {
+        "id": "gid://shopify/CollectionImage/2066362302849",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+        "altText": "Geschenke | LuxeStyle",
+        "width": 1600,
+        "height": 620
+      }
+    },
+    "collectionIdentityStable": true
+  },
+  "liveVerification": {
+    "httpStatus": 200,
+    "checkedAtUTC": "2026-11-14T21:08:07.674153+00:00",
+    "h1": [
+      "Geschenkideen"
+    ],
+    "headTitle": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+    "metaDescription": [
+      "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+    ],
+    "canonical": [
+      "https://luxestyle.ch/collections/premium-geschenke"
+    ],
+    "newIntroExact": true,
+    "viewports": {
+      "390": {
+        "allChecksPass": true,
+        "httpStatus": 200,
+        "resultsListTop": 702.859375,
+        "screenshot": "live-after-390.png"
+      },
+      "1440": {
+        "allChecksPass": true,
+        "httpStatus": 200,
+        "resultsListTop": 687.640625,
+        "screenshot": "live-after-1440.png"
+      }
+    }
+  },
+  "linkChecks": {
+    "count": 8,
+    "allHTTP200": true,
+    "hrefs": [
+      "/collections/geschenke-fuer-sie",
+      "/collections/geschenke-fuer-ihn",
+      "/collections/geschenke-fuer-kinder",
+      "/collections/%F0%9F%8E%81-geschenke-bis-chf-30",
+      "/collections/kleine-geschenke-mitbringsel",
+      "/collections/weihnachten-2026",
+      "/collections/adventskalender",
+      "/collections/ft-maske"
+    ],
+    "sameOrder": true
+  },
+  "previewMeasurements": {
+    "source": "local temporary DOM preview only",
+    "mobile390": {
+      "width": 390,
+      "h1BeforeLines": 3,
+      "h1AfterLines": 1,
+      "productTopBefore": 843.359375,
+      "productTopAfter": 702.859375,
+      "differencePx": -140.5,
+      "heroTopShiftPx": -26.078125,
+      "seoUrlHeaderAndLinksPreservedInPreview": true
+    },
+    "desktop1440": {
+      "width": 1440,
+      "h1BeforeLines": 1,
+      "h1AfterLines": 1,
+      "productTopBefore": 697.234375,
+      "productTopAfter": 687.640625,
+      "differencePx": -9.59375,
+      "heroTopShiftPx": 0.0,
+      "seoUrlHeaderAndLinksPreservedInPreview": true
+    },
+    "notLiveCausalMeasurement": true
+  },
+  "limits": {
+    "conversionOrRankingEffect": "unknown_unmeasured",
+    "newGSCOrIndexingCheck": false,
+    "themePublishCount": 0,
+    "newPerformanceFlowOrderOrGSCReports": 0,
+    "metricoolIdentityReadPerformed": true,
+    "newAutomation": false,
+    "otherNewBusinessServiceWrites": 0
+  },
+  "proofSources": [
+    {
+      "path": "/dev/shm/luxestyle-review/r219/nativeBefore.json",
+      "sha256": "ca02c9529607bd4bb21ebf93762a75bcc21215cf50402306c1f729b833df4aa1",
+      "gitBlobSha": "20c6f39b616f9e72c9989f63d0e9444e2827530a",
+      "bytes": 1841
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/draft.json",
+      "sha256": "2535c57d1e3edb3767192732730271c1c4f4dab04fd8e2ded2c5f07a14bcc02c",
+      "gitBlobSha": "b077849b3f5a52eca2efae025e3cf444878daa5a",
+      "bytes": 825
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/prewrite.json",
+      "sha256": "5526917c6c925330d258b3a873046642289ee3ab896e2049d3559eaee8f59009",
+      "gitBlobSha": "65eac6e62ec7e37c51121c159831ba255682529d",
+      "bytes": 2570
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/mutation.json",
+      "sha256": "da0539773c34751095040b3de9eec885a4c0887a036e370aa08db983ab7c18da",
+      "gitBlobSha": "4300e8a1a184f605955388f54ccaed3a86110d0c",
+      "bytes": 1669
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/nativeAfter.json",
+      "sha256": "d90a7aa391380cd4543fcb4187bd6a5db3819f7599eedf72367c21a1dedcb179",
+      "gitBlobSha": "6880edcb45f0c3cb541c0fea91c33f150aa36f73",
+      "bytes": 6550
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/collection.json",
+      "sha256": "febad1dd510b3b3184a96e6ec79ac9914d2ecf9d4814cb5ea0fbe7ca7f7ac39c",
+      "gitBlobSha": "b3cf4b3ca1cdfa97961043ed702967209f9292c2",
+      "bytes": 6295
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/public-live-countercheck.json",
+      "sha256": "813715ed03e1c172ebda886412d6b74f7b511760e7d49028894f3765897f3079",
+      "gitBlobSha": "c3bbcbc3a9e7547a1bce58beafef5227db2d7c50",
+      "bytes": 825
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/live-qa.json",
+      "sha256": "0f2a92242a767aa71da63619684de52d4c37690f72399313b31f13df42bdfdad",
+      "gitBlobSha": "d5aef10e1f3b243a9ee5cc810cd1d22fcc9d1fcd",
+      "bytes": 10415
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/dom-after.json",
+      "sha256": "6dd37d9bd453c936c4668e4489258cb7ea40a48e0ad7cbd101339c7ee330ee2e",
+      "gitBlobSha": "0db19890373f58db112c8e7251be62492bbe6c0a",
+      "bytes": 51286
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/root-preview-validation.json",
+      "sha256": "de72710799f14dc3631c702c5be6e3c37d30c06acb35585cc66d1b84d4f7df3e",
+      "gitBlobSha": "d4703ef816c569083cd7c89f1c25bb9d3746ca36",
+      "bytes": 944
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/links.json",
+      "sha256": "8d013592b4aafc50c945b89d45ae1193200c61610cb6d2f1eb50bb5af8c21bdd",
+      "gitBlobSha": "5b335f43c5fbd826309f62ecaae8aeb490906a8f",
+      "bytes": 3640
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/shop.json",
+      "sha256": "08f6ae3a98c908e0c13ddd4dd3616ff1c5d7ea355b9e995f415a122481a754b9",
+      "gitBlobSha": "938705a87aaace510df0f5c2048719ddd2a15a27",
+      "bytes": 100
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/brand.json",
+      "sha256": "8cdeeccf7a8fe70b1a525849526b1021c4f70e0f4039c5cd8659cd5366c9717e",
+      "gitBlobSha": "b8d2c9331019cc197a12501099b1c93d2ddd4d77",
+      "bytes": 383
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/viewport-before-390.png",
+      "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+      "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+      "bytes": 281222
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/live-after-390.png",
+      "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+      "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+      "bytes": 244460
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/viewport-before-1440.png",
+      "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+      "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+      "bytes": 1037354
+    },
+    {
+      "path": "/dev/shm/luxestyle-review/r219/live-after-1440.png",
+      "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+      "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+      "bytes": 1017401
+    }
+  ],
+  "sourceReadbackValues": {
+    "prewrite": {
+      "identity": {
+        "shop": {
+          "name": "LuxeStyle",
+          "domain": "luxestyle.ch",
+          "currencyCode": "CHF",
+          "timezone": "CET"
+        },
+        "brand": {
+          "id": 6227837,
+          "timezone": "Europe/Zurich",
+          "networksData": {
+            "facebookData": "1049840534888592",
+            "instagramData": "luxestyle.ch",
+            "threadsData": "luxestyle.ch",
+            "pinterestData": "luxestyleCH",
+            "tiktokData": "luxestyle.ch",
+            "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+            "googleAdsData": "7198263241",
+            "tiktokAdsData": "7691398659300179974"
+          }
+        }
+      },
+      "before": {
+        "data": {
+          "collections": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Collection/687793897857",
+                "title": "Geschenkideen & Weihnachtsgeschenke",
+                "handle": "premium-geschenke",
+                "updatedAt": "2026-11-05T06:06:22Z",
+                "descriptionHtml": "<p>Geschenkideen für Weihnachten und jeden anderen Anlass: Uhren und Schmuck, Taschen und Lederwaren, Kuscheldecken, Aroma-Diffuser, Tech wie Powerbanks, dazu Puzzles, Bausteine und Plüschtiere.</p><p>Gezielt suchen: <a href=\"/collections/geschenke-fuer-sie\">Geschenke für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Geschenke für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a> · <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichtelgeschenke &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>",
+                "seo": {
+                  "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+                  "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+                },
+                "templateSuffix": null,
+                "sortOrder": "MANUAL",
+                "image": {
+                  "id": "gid://shopify/CollectionImage/2066362302849",
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+                  "altText": "Geschenke | LuxeStyle",
+                  "width": 1600,
+                  "height": 620
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          }
+        }
+      },
+      "readAtUTC": "2026-11-14T21:06:11.250925+00:00"
+    },
+    "nativeMutationResult": {
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/687793897857",
+            "title": "Geschenkideen",
+            "handle": "premium-geschenke",
+            "descriptionHtml": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>",
+            "updatedAt": "2026-11-14T21:06:18Z",
+            "seo": {
+              "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+              "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+            },
+            "templateSuffix": null,
+            "sortOrder": "MANUAL",
+            "image": {
+              "id": "gid://shopify/CollectionImage/2066362302849",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+              "altText": "Geschenke | LuxeStyle",
+              "width": 1600,
+              "height": 620
+            }
+          },
+          "userErrors": []
+        }
+      }
+    },
+    "freshNativeAfter": {
+      "data": {
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/687793897857",
+              "title": "Geschenkideen",
+              "handle": "premium-geschenke",
+              "updatedAt": "2026-11-14T21:06:18Z",
+              "descriptionHtml": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>",
+              "seo": {
+                "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+                "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+              },
+              "templateSuffix": null,
+              "sortOrder": "MANUAL",
+              "image": {
+                "id": "gid://shopify/CollectionImage/2066362302849",
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/cat-geschenke.jpg?v=1781386833",
+                "altText": "Geschenke | LuxeStyle",
+                "width": 1600,
+                "height": 620
+              },
+              "products": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Product/15500929663361",
+                    "title": "Sportliche Herrenuhr mit Chronograph",
+                    "handle": "sportliche-herrenuhr-mit-chronograph-481792",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "accessoire",
+                      "auswahl-nachgeruestet",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "geschenk",
+                      "geschenkidee",
+                      "geschenkideen",
+                      "geschenkwelt-alle",
+                      "geschenkwelt-ihn",
+                      "herren",
+                      "kategorie-uhr",
+                      "uhr",
+                      "uhren"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/sportliche-herrenuhr-mit-chronograph-481792",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/56110762295681",
+                          "title": "Gold",
+                          "price": "39.90",
+                          "availableForSale": true,
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15501006995841",
+                    "title": "Herren Quarz-Armbanduhr mit Kalender",
+                    "handle": "herren-quarz-armbanduhr-mit-kalender-058624",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "accessoire",
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "geschenk",
+                      "geschenkidee",
+                      "geschenkideen",
+                      "geschenkwelt-alle",
+                      "geschenkwelt-ihn",
+                      "geschenkwelt-preishits",
+                      "herren",
+                      "kategorie-uhr",
+                      "uhr",
+                      "uhren",
+                      "varianten-nachgezogen-1025"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/herren-quarz-armbanduhr-mit-kalender-058624",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789668188551",
+                          "title": "Band Silber Blau",
+                          "price": "24.90",
+                          "availableForSale": true,
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/Product/15524698816897",
+                    "title": "Keramik Tiki Tasse für Cocktails",
+                    "handle": "keramik-tiki-tasse-fur-cocktails-088704",
+                    "status": "ACTIVE",
+                    "tags": [
+                      "bild-ok",
+                      "bildmass-ok-0906",
+                      "cj-real",
+                      "dropship",
+                      "geschenkidee",
+                      "geschenkideen",
+                      "geschenkwelt-alle",
+                      "geschenkwelt-ihn",
+                      "geschenkwelt-preishits",
+                      "geschenkwelt-unter30",
+                      "geschenkwelt-unter50",
+                      "haushalt",
+                      "kochen",
+                      "kueche",
+                      "neuheit",
+                      "sort-tassen-kaffeebecher",
+                      "sort-tassen-kaffeebecher-keramik",
+                      "tassen-becher",
+                      "varianten-nachgezogen-1025"
+                    ],
+                    "onlineStoreUrl": "https://luxestyle.ch/products/keramik-tiki-tasse-fur-cocktails-088704",
+                    "variants": {
+                      "nodes": [
+                        {
+                          "id": "gid://shopify/ProductVariant/67789413515655",
+                          "title": "Modell 01",
+                          "price": "22.90",
+                          "availableForSale": true,
+                          "inventoryPolicy": "CONTINUE",
+                          "inventoryQuantity": 0,
+                          "inventoryItem": {
+                            "tracked": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    }
+  },
+  "samplePreservationScope": {
+    "products": 3,
+    "variantsPerProduct": 1,
+    "comparedBeforeAfterExact": true,
+    "fullCatalogNotRead": true
+  }
+}

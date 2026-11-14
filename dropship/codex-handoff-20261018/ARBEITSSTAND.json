@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 218,
-  "updatedAt": "2026-11-14T20:28:29+00:00",
+  "revision": 219,
+  "updatedAt": "2026-11-14T21:19:19.143321+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r218_owner_ten_url_completion_recorded_no_new_run_or_google_write",
+      "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
-      "lastEvidence": "Inhaber-Rückmeldung «indexdiert» zur unmittelbar vorherigen Zehnerliste dokumentiert. Eigene Tätigkeit ist Status-/Gedächtnisfortschreibung, keine Indexierungsaktion, kein neuer Googlebefund. Die zehn URLs aus neuer Vorschlagsliste ausgenommen;24IDs/Historien und Tagesgrenzen erhalten.",
-      "nextAllowedStep": "Die erledigt gemeldete Zehnerliste bei künftigen Vorschlägen aussparen; aktuellen Googlezustand nur mit frischem Beleg als bestätigt melden. Bestehende Aufgaben und Zeiten unverändert fortsetzen; Claude-Kenntnisnahme unbekannt.",
+      "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Aktuelle Indexierung/Ranking nur mit neuem Beleg beurteilen; R218-Inhabermeldung bleibt als Quelle erhalten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4198,6 +4198,42 @@
           "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
           "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
           "readAt": "2026-11-14T20:28:29+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+          "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+          "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+          "bytes": 2549
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+          "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+          "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+          "bytes": 21805
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+          "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+          "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+          "bytes": 281222
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+          "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+          "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+          "bytes": 244460
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+          "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+          "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+          "bytes": 1037354
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+          "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+          "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+          "bytes": 1017401
         }
       ],
       "requiresFreshVerification": true,
@@ -5251,6 +5287,49 @@
               "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91"
             }
           ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/publice Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -6269,7 +6348,15 @@
         },
         "newGoogleQueries": 0,
         "ownIndexingRequests": 0
-      }
+      },
+      "previousEvidence": [
+        {
+          "date": "2026-11-14",
+          "state": "r218_owner_ten_url_completion_recorded_no_new_run_or_google_write",
+          "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
+          "lastEvidence": "Inhaber-Rückmeldung «indexdiert» zur unmittelbar vorherigen Zehnerliste dokumentiert. Eigene Tätigkeit ist Status-/Gedächtnisfortschreibung, keine Indexierungsaktion, kein neuer Googlebefund. Die zehn URLs aus neuer Vorschlagsliste ausgenommen;24IDs/Historien und Tagesgrenzen erhalten."
+        }
+      ]
     },
     {
       "id": "master-projector-15521256604033",
@@ -14720,12 +14807,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r218_owner_reports_ten_indexed_completed_independent_status_unknown",
+      "state": "r219_live_collection_title_and_description_updated_public_qa_passed",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
-      "lastEvidence": "Nach zehn R217-Prüflinks meldet der Inhaber wörtlich «indexdiert». Genau diese zehn URLs sind als vom Inhaber erledigt/indexiert gemeldet markiert, nicht als neue Ziele wieder vorzuschlagen. Der vorherige GSC-NEUTRAL-Befund bleibt datiert erhalten. Keine unabhängige neue Googleprüfung oder eigene Indexierungsbeantragung.",
-      "nextAllowedStep": "Die R217-Zehnerliste nicht erneut als neue offene Indexierungsziele verschicken. Aktuelle Google-Aufnahme bei späterem sachlichem Anlass gezielt prüfen; Inhabermeldung, Beantragung und bestätigte Aufnahme getrennt halten. Keine Frequenzänderung oder zusätzliche Automation. Übrige SEO-/Merchant-/Masteraufgaben bleiben erhalten.",
+      "belegArt": "SHOPIFY_COLLECTION_UPDATE_NATIVE_AND_PUBLIC_READBACK",
+      "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/öffentliche Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+      "nextAllowedStep": "Live-Zustand als umgesetzt behandeln; keine Wiederholung ohne konkreten Anlass und frischen Vorher-Read. Aktuelle Indexierung/Ranking nur mit neuem Beleg beurteilen; R218-Inhabermeldung bleibt als Quelle erhalten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -15249,6 +15336,42 @@
           "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
           "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91",
           "readAt": "2026-11-14T20:28:29+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+          "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+          "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+          "bytes": 2549
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+          "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+          "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+          "bytes": 21805
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+          "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+          "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+          "bytes": 281222
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+          "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+          "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+          "bytes": 244460
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+          "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+          "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+          "bytes": 1037354
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+          "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+          "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+          "bytes": 1017401
         }
       ],
       "requiresFreshVerification": true,
@@ -15903,6 +16026,49 @@
               "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
               "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
               "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "revision": 219,
+          "lastEvidence": "Eine bestätigte Shopify collectionUpdate-Schreibaktion für premium-geschenke: Titel Geschenkideen und Einleitung aktualisiert. Native/publice Rücklesung passend; acht Links HTTP200, Mobile/Desktop-Live-QA bestanden. Keine Ranking-/Conversionwirkung gemessen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+              "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+              "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+              "bytes": 2549
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+              "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+              "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+              "bytes": 21805
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+              "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+              "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+              "bytes": 281222
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+              "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+              "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+              "bytes": 244460
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+              "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+              "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+              "bytes": 1037354
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+              "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+              "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+              "bytes": 1017401
             }
           ]
         }
@@ -16670,7 +16836,15 @@
         },
         "newGoogleQueries": 0,
         "ownIndexingRequests": 0
-      }
+      },
+      "previousEvidence": [
+        {
+          "date": "2026-11-14",
+          "state": "r218_owner_reports_ten_indexed_completed_independent_status_unknown",
+          "belegArt": "QUELLE_INHABER_CHAT_INDEXDIERT_NOT_INDEPENDENT_GOOGLE_VERIFICATION",
+          "lastEvidence": "Nach zehn R217-Prüflinks meldet der Inhaber wörtlich «indexdiert». Genau diese zehn URLs sind als vom Inhaber erledigt/indexiert gemeldet markiert, nicht als neue Ziele wieder vorzuschlagen. Der vorherige GSC-NEUTRAL-Befund bleibt datiert erhalten. Keine unabhängige neue Googleprüfung oder eigene Indexierungsbeantragung."
+        }
+      ]
     },
     {
       "id": "tech-category-structure-20261102",
@@ -23377,6 +23551,52 @@
           "path": "dropship/codex-handoff-20261018/ZEHN-INDEXIERUNGSZIELE-20261114-R217.md",
           "sha256": "b55ddfec2b83a6c4cf1d815e6c468b02903c31cc5681e79795801e2679d4d68c",
           "gitBlobSha": "5827051b38f79a3d0a2e3f47a4417f0998a9dc91"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 219,
+      "at": "2026-11-14T21:19:19.143321+00:00",
+      "actor": "codex",
+      "summary": "Eine Shopify-Kollektionsänderung premium-geschenke erfolgreich bestätigt: Titel und Einleitung; native/publice Rücklesung sowie mobile/Desktop Live-QA bestanden. Keine Theme-Publishes, neue Performance-/Indexierungs-/Orderabfragen oder Automation; 24 Aufgaben erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+          "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+          "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+          "bytes": 2549
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+          "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+          "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+          "bytes": 21805
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+          "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+          "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+          "bytes": 281222
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+          "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+          "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+          "bytes": 244460
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+          "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+          "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+          "bytes": 1037354
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+          "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+          "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+          "bytes": 1017401
         }
       ],
       "taskCount": 24,
@@ -48273,5 +48493,61 @@
     "ownIndexingRequests": 0,
     "serviceSettingChanges": 0,
     "claudeReceipt": "unknown_no_receipt"
+  },
+  "run219": {
+    "recordedAtUTC": "2026-11-14T21:19:19.143321+00:00",
+    "dateZurich": "2026-11-14",
+    "kind": "completed_live_shopify_collection_update",
+    "shopifyWrites": 1,
+    "themePublishes": 0,
+    "target": "gid://shopify/Collection/687793897857",
+    "changedFields": [
+      "title",
+      "descriptionHtml"
+    ],
+    "nativeAndPublicReadbackPassed": true,
+    "newGoogleQueries": 0,
+    "socialMerchantFlowMetricOrderQueries": 0,
+    "newAutomation": 0,
+    "report": "GESCHENKSEITE-20261114-R219.md",
+    "proof": "GESCHENKSEITE-20261114-R219.json",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.md",
+        "sha256": "08ef3fbdf772e129e2a5a8f906fc95983e800d66cb998dc317633d5e7bb1899f",
+        "gitBlobSha": "db4a58f34b8f5d50c4e85986d074261a052ba3f9",
+        "bytes": 2549
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-20261114-R219.json",
+        "sha256": "74a355f6ca50a3f5f3411107dd3c6360308fed06b42b3ec735197495ca8ee692",
+        "gitBlobSha": "7374e67520f2c8be1e24a51bc0d26d400d0870fa",
+        "bytes": 21805
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-390-R219.png",
+        "sha256": "4a97c425847eb6749ba5f731c7ceb75c3763d09f465bc01b140883b86a138e33",
+        "gitBlobSha": "f3f1afe38225ce44afa752f739de976c0f066979",
+        "bytes": 281222
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-390-R219.png",
+        "sha256": "ca10928a415728e15524cb2335d349e36869a0569b4176d1fc8a15a1ba190368",
+        "gitBlobSha": "2ff67cb89c79df46414d5560524b8228bac0e3a6",
+        "bytes": 244460
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-VORHER-1440-R219.png",
+        "sha256": "3f93311e7bbbbb30e11aedf98ac3afc16973f54d15a13e2ac1c72b22dc248a56",
+        "gitBlobSha": "79800f21310c74fb2b8dd56d3fc5634ae74435d2",
+        "bytes": 1037354
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/GESCHENKSEITE-LIVE-1440-R219.png",
+        "sha256": "2c9e292e87e7f3ebcd3a14f7478fbfa5200fbe9f1e87ebf7435727e515077568",
+        "gitBlobSha": "139afbaf40e3844558601180fad700fe2c5671fc",
+        "bytes": 1017401
+      }
+    ]
   }
 }
