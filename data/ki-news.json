@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-13T12:08:25Z",
+ "stand": "2026-11-14T11:25:45Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Schluss mit Abo-Kosten: Kostenlose Lightroom-Alternativen im Check",
-   "u": "https://t3n.de/news/newsadobe-lightroom-alternativen-open-source-1771363/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Microsoft-Ausfall: Woran es lag und wer besonders litt",
+   "u": "https://www.heise.de/news/Microsoft-Ausfall-Woran-es-lag-und-wer-besonders-litt-11525257.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-14T10:26:00Z",
+   "s": "Keine KI, keine Cyberattacke, soweit Microsofts erste Erklärung. Bei kritischen Strukturen in Deutschland waren die Auswirkungen gering.",
+   "sprache": "de"
+  },
+  {
+   "t": "Adobe-Alternative mit KI: Das steckt hinter Artcraft",
+   "u": "https://t3n.de/news/artcraft-adobe-alternative-ki-check-1767514/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-13T11:55:00Z",
-   "s": "Der Traum der kostenlosen, KI-generierten Lightroom-Alternative entpuppt sich bei genauerer Betrachtung leider doch als Luftschloss. Aber es gibt durchaus einigweiterlesen auf t3n.de",
+   "d": "2026-11-14T10:20:00Z",
+   "s": "Hohe Kosten, unpraktische Cloud-Anbindung: Viele Kreative wünschen sich schon lange, dass die Creative Cloud von Adobe mehr Konkurrenz bekommt. Artcraft könnte genau das bieten, ist aktuell aber noch …",
    "sprache": "de"
   },
   {
-   "t": "Cybersicherheit: KI legt Windpark in unter zwei Stunden lahm",
-   "u": "https://www.golem.de/news/cybersicherheit-ki-legt-windpark-in-unter-zwei-stunden-lahm-2611-215181.html",
+   "t": "Trotz Exportverbot: Hatten chinesische KI-Labore Zugriff auf Nvidia-Chips?",
+   "u": "https://t3n.de/news/trotz-exportverbot-hatten-chinesische-ki-labore-zugriff-auf-nvidia-chips-1773577/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-14T09:54:28Z",
+   "s": "Eigentlich unterlagen die leistungsstarken Chips strengen Exportkontrollen. Trotzdem soll es einigen Konkurrenten aus China, darunter Moonshot AI, gelungen sein, ihre KI-Modelle auf Nvidia-GPUs zu tra…",
+   "sprache": "de"
+  },
+  {
+   "t": "Outlook und Teams: Serverausfälle bei Microsoft nicht wegen KI oder Hackern",
+   "u": "https://www.golem.de/news/outlook-und-teams-serverausfaelle-bei-microsoft-nicht-wegen-ki-oder-hackern-2611-215215.html",
    "q": "Golem",
-   "d": "2026-11-13T11:30:01Z",
-   "s": "Den KI-Modellen Claude und Kimi ist es in einer Testumgebung gelungen, einen simulierten Windpark auf kreative Weise stillzulegen. (KI, Sicherheitslücke)",
+   "d": "2026-11-14T09:09:01Z",
+   "s": "Microsoft hat eine erste Erklärung für den stundenlangen Serverausfall gegeben. Eine ausführliche Fehleranalyse soll folgen. (Microsoft 365, Microsoft)",
    "sprache": "de"
   },
   {
-   "t": "heise+ | Betriebssystem Googlebook OS im Test: Gute Ansätze, unfertiges Konzept",
-   "u": "https://www.heise.de/tests/Betriebssystem-Googlebook-OS-im-Test-Gute-Ansaetze-unfertiges-Konzept-11485901.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "(g+) KI-Code in Open Source: Wie Maintainer ihre Projekte vor Überlastung schützen",
+   "u": "https://www.golem.de/news/ki-code-in-open-source-wie-maintainer-ihre-projekte-vor-ueberlastung-schuetzen-2611-215205.html",
+   "q": "Golem",
+   "d": "2026-11-14T09:00:02Z",
+   "s": "KI-Code überflutet Open-Source-Projekte. Wie Maintainer mit Github-Funktionen, Beitragsregeln und Prüfverfahren die Kontrolle behalten. Ein Ratgebertext von Fabian Deitelhoff (Github, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: Rust als perfekte Sprache für Agentic AI: Online-Konferenz betterCode() Rust",
+   "u": "https://www.heise.de/news/Rust-als-perfekte-Sprache-fuer-Agentic-AI-Online-Konferenz-betterCode-Rust-11523946.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-13T11:00:00Z",
-   "s": "Mit KI und eng ans Smartphone gebunden sollen Googlebooks bisherige Chromebooks übertrumpfen. Wir testen, ob das aufgeht.",
+   "d": "2026-11-14T09:00:00Z",
+   "s": "Die Online-Konferenz zeigt am 26. November, wie agentische Softwareentwicklung mit Rust gelingt und warum sich die Programmiersprache besonders dafür eignet.",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: heise security Webinar: So verteidigt man sich gegen angreifende KI-Agenten",
-   "u": "https://www.heise.de/news/heise-security-Webinar-So-verteidigt-man-sich-gegen-angreifende-KI-Agenten-11523778.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-13T11:00:00Z",
-   "s": "Angriffe mit KI-Agenten sind bald das neue Normal. Erfahren Sie im heise security Webinar, wie Sie Ihre IT gezielt schützen und sich effektiv verteidigen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Bundeshaushalt: Bund verschleiert KI-Ausgaben",
-   "u": "https://netzpolitik.org/2026/bundeshaushalt-bund-verschleiert-ki-ausgaben/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-13T10:20:09Z",
-   "s": "Die Ausgaben für Künstliche Intelligenz im Haushalt sind intransparent, ähnlich wie die KI-Strategie von Digitalminister Wildberger. – Alle Rechte vorbehalten: Jens Oellermann / BMDSDie KI-Taskforce d…",
-   "sprache": "de"
-  },
-  {
-   "t": "Silicon Valley claims to know the future. So why did it get the midterms so wrong?",
-   "u": "https://www.technologyreview.com/2026/11/13/1148498/silicon-valley-claims-to-know-the-future-so-why-did-it-get-the-midterms-so-wrong/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-13T10:00:00Z",
-   "s": "The self-styled visionaries of Silicon Valley, leaders like OpenAI chief executive Sam Altman and SpaceX boss Elon Musk, have built careers claiming to see the future. Long-term vision is currency: Me…",
+   "t": "Jensen Huang’s departure blasts big hole in AI startup funding, VCs and founders say",
+   "u": "https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-13T22:43:00Z",
+   "s": "Nvidia poured tens of billions into AI startups under Huang. Without him at the helm, founders and VCs are bracing for smaller checks and lower valuations.",
    "sprache": "en"
   },
   {
-   "t": "Mehr als nur Raumfahrt: SpaceX verdient Milliarden mit KI",
-   "u": "https://t3n.de/news/spacex-strategiewechsel-anthropic-ki-nasa-1770765/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-13T09:55:00Z",
-   "s": "Ein Drittel des SpaceX-Umsatzes stammt inzwischen von der KI-Firma Anthropic. Damit ist die US-Regierung nicht mehr der größte Kunde des Unternehmens.weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Über MCP-Server: Erneuter Hackerangriff auf Hoster Mittwald",
-   "u": "https://www.golem.de/news/ueber-mcp-server-erneuter-hackerangriff-auf-hoster-mittwald-2611-215173.html",
-   "q": "Golem",
-   "d": "2026-11-13T09:50:02Z",
-   "s": "Es ist die zweite Attacke innerhalb einer Woche: Wieder hat Mittwald Kundencenter und das Control-Panel mStudio abgeschaltet. (Hacker, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Democrats launch Nvidia investigation, write scathing letter on Huang’s ‘scheme’ with Trump",
-   "u": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
+   "t": "AI agent startup LangChain hits $3B valuation",
+   "u": "https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation/",
    "q": "TechCrunch AI",
-   "d": "2026-11-12T22:42:51Z",
-   "s": "This Congressional investigation into Nvidia's China sales and its dealings with Trump is the second one, so far, since news of the alleged spy affair broke.",
+   "d": "2026-11-13T19:37:57Z",
+   "s": "LangChain now claims 7,000 customers of its model and platform agnostic agent management tool LangSmith.",
    "sprache": "en"
   },
   {
-   "t": "Muse can now place calls to US businesses — if you pay",
-   "u": "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-12T22:22:28Z",
-   "s": "Muse's AI can now place outbound calls to U.S. businesses — but it's not free.",
+   "t": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+   "u": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+   "q": "Hugging Face",
+   "d": "2026-11-13T18:00:39Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "XYBench: Helping with the problem behind the question",
+   "u": "https://huggingface.co/blog/allenai/xybench",
+   "q": "Hugging Face",
+   "d": "2026-11-13T17:02:35Z",
+   "s": "",
    "sprache": "en"
   }
  ]
