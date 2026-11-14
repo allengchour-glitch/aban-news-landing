@@ -20,6 +20,25 @@ const DATEIEN = [
 const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/printful_bestellweg_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
 const ALLE = [...LIB, 'pod_auswahl_test.mjs', 'printful_sync_test.mjs'];
 
+/** Stellt den direkten Test einer Mutationsquelle voran; alle übrigen Tests bleiben erhalten. */
+export function testReihenfolge(m) {
+  const quelle = String(m?.datei ?? '');
+  let passend = null;
+  if (quelle.startsWith('automation/lib/')) {
+    passend = 'lib/' + quelle.slice('automation/lib/'.length).replace(/\.mjs$/, '_test.mjs');
+  } else if (quelle.startsWith('automation/')) {
+    passend = quelle.slice('automation/'.length).replace(/\.mjs$/, '_test.mjs');
+  }
+  const tests = m?.tests;
+  if (!passend || !Array.isArray(tests)) return tests;
+  const index = tests.indexOf(passend);
+  if (index <= 0) return tests.slice();
+  const geordnet = tests.slice();
+  geordnet.splice(index, 1);
+  geordnet.unshift(passend);
+  return geordnet;
+}
+
 // { name, datei, von, zu, alle? (alle Vorkommen ersetzen, sonst muss `von` genau einmal vorkommen), tests }
 const L = (n) => `automation/lib/${n}.mjs`;
 export const MUTANTEN = [
@@ -289,7 +308,7 @@ export function mutationsprobe({ log = console.log, nur = null } = {}) {
       const n = zaehle(original, m.von);
       if (n === 0 || (n > 1 && !m.alle)) { log(`✗ Mutation nicht anwendbar (${n}× gefunden): ${m.name}`); return { exit: 2, ueberlebt, erkannt }; }
       writeFileSync(pfad, original.split(m.von).join(m.zu));
-      const rot = testen(wurzel, m.tests, true);
+      const rot = testen(wurzel, testReihenfolge(m), true);
       writeFileSync(pfad, original);                                    // zurücksetzen
       if (rot.length) { erkannt++; log(`✓ erkannt  ${m.name.padEnd(78)} ← ${rot.join(', ')}`); } else { ueberlebt.push(m.name); log(`✗ ÜBERLEBT ${m.name}`); }
     }

@@ -105,11 +105,11 @@ export function feedItem(p = {}, opt = {}) {
   feld('condition', p.zustand || 'new');
   feld('brand', p.marke || 'LuxeStyle');
 
-  // GTIN wenn vorhanden; sonst Marke + MPN; erst wenn beides fehlt, ehrlich identifier_exists=no.
+  // GTIN wenn vorhanden; sonst MPN aus der SKU. Fehlen beide Werte, ist
+  // identifier_exists nicht belegt — das Attribut bleibt daher weg.
   const gtin = String(p.gtin || '').replace(/\s/g, '');
   if (/^\d{8}$|^\d{12,14}$/.test(gtin)) feld('gtin', gtin);
   else if (p.sku) feld('mpn', p.sku);
-  else feld('identifier_exists', 'no');
 
   feld('google_product_category', p.googleKategorie);
   feld('product_type', p.produktTyp);

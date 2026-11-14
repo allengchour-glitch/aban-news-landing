@@ -45,8 +45,14 @@ pruef('GTIN wird gesendet', hat(mitGtin, '<g:gtin>4005249012345</g:gtin>'), true
 pruef('mit GTIN kein identifier_exists', hat(mitGtin, 'identifier_exists'), false);
 const mitSku = feedItem({ ...BASIS, sku: 'CJYD291530101AZ' });
 pruef('ohne GTIN, mit SKU → mpn', hat(mitSku, '<g:mpn>CJYD291530101AZ</g:mpn>'), true);
-pruef('ohne GTIN und ohne SKU → identifier_exists:no',
-  hat(feedItem({ ...BASIS, id: 'handle-x' }), '<g:identifier_exists>no</g:identifier_exists>'), true);
+const ohneKennungen = feedItem({ ...BASIS, id: 'handle-x', gtin: undefined, sku: undefined });
+pruef('ohne GTIN und SKU → identifier_exists bleibt unbekannt',
+  !hat(ohneKennungen, 'identifier_exists') && !hat(ohneKennungen, '<g:gtin>') && !hat(ohneKennungen, '<g:mpn>'), true);
+const leereKennungen = feedItem({ ...BASIS, id: 'handle-x', gtin: '', sku: '' });
+pruef('leere GTIN und SKU → identifier_exists bleibt unbekannt',
+  !hat(leereKennungen, 'identifier_exists') && !hat(leereKennungen, '<g:gtin>') && !hat(leereKennungen, '<g:mpn>'), true);
+pruef('MPN aus SKU ohne identifier_exists',
+  hat(mitSku, '<g:mpn>CJYD291530101AZ</g:mpn>') && !hat(mitSku, 'identifier_exists'), true);
 // Gegenprobe: Unsinn darf NICHT als GTIN durchgehen.
 pruef('zu kurze Nummer ist keine GTIN', hat(feedItem({ ...BASIS, gtin: '12345', sku: 'S1' }), '<g:gtin>'), false);
 pruef('Buchstaben sind keine GTIN', hat(feedItem({ ...BASIS, gtin: 'CJ123456789012', sku: 'S1' }), '<g:gtin>'), false);
