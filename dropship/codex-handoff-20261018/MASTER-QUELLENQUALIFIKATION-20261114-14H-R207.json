@@ -1,0 +1,104 @@
+{
+  "title": "R207 bounded professional master source qualification",
+  "scope": "Qualify the exact current source and acquisition constraints for one planned 18-second, 1080x1920/30 fps master. No output video or audio export was rendered.",
+  "identity": {
+    "basis": "Fresh correct LuxeStyle admin source file master-source.json in the R207 task directory",
+    "productId": "15521256604033",
+    "productTitle": "Sternenlicht-Projektor für Schlafzimmer",
+    "adminStatus": "ACTIVE",
+    "videoId": "77496185356679",
+    "variantId": "68122445283719",
+    "variant": "A · Grundmodell",
+    "sku": "CJSN139239101AZ",
+    "variantCount": 7,
+    "videoAttachmentToProductVerified": true,
+    "exactFilmedVariantAndMotifVerified": false,
+    "desiredTargetVariantIsNotProofOfFilmedUnit": true
+  },
+  "source_video": {
+    "url": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+    "filename": "cj-1477820492730732544.mp4",
+    "download": "source-77496185356679.mp4",
+    "http_status": 200,
+    "bytes": 3679836,
+    "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "probe": {
+      "container": "MP4",
+      "video_codec": "H.264",
+      "width": 960,
+      "height": 540,
+      "duration_seconds": 27.96,
+      "frame_rate": "25/1 constant",
+      "video_frames": 699,
+      "audio_codec": "AAC",
+      "audio_duration_seconds": 27.887007,
+      "timestamp_countercheck": {
+        "decodedFrameTimestamps": 699,
+        "firstSeconds": 0.0,
+        "lastSeconds": 27.92,
+        "consecutiveIntervalCounts": {
+          "0.04": 698
+        },
+        "constant40msVerified": true,
+        "method": "ffprobe exactexistingoriginal; no edit/render/export"
+      }
+    },
+    "admin_metadata_crosscheck": {
+      "duration_ms": 27960,
+      "width": 960,
+      "height": 540,
+      "file_size": 3679836,
+      "matches_download_and_probe": true
+    }
+  },
+  "variant_image": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+    "download": "variant-A-68122445283719.jpg",
+    "purpose": "Current admin A-variant visual reference only; 800x654 per source record",
+    "http_status": 200,
+    "bytes": 102392,
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612"
+  },
+  "native_portrait_geometry": {
+    "target": "1080x1920 (9:16)",
+    "source_crop": "304x540 centered; 656 source pixels removed across width (328 per side). This is near 9:16, not mathematically exact (304/540 = 0.562963, about +0.0823% versus 9:16).",
+    "upscale": "A near-9:16 304x540 candidate needs height scale1920/540=3.555556; width then1080.888889px, about0.888889px total conceptual trim (raster rounding needs explicit choice). No crop/resample performed. Exact even 9:16 maximum inside the source is288x512, needing3.75x scale and14.0625x pixel-area enlargement. Neither is native1080x1920 detail.",
+    "limitation": "A 304x540 crop contains only 164160 source pixels versus 2073600 output pixels (12.63158x pixel-count enlargement). This is substantial upscale from native 540p source; no output-quality or detail-retention guarantee is made.",
+    "candidate_near_portrait_even_width": 304
+  },
+  "cadence": {
+    "confirmed_native_fps": 25,
+    "planned_master_fps": 30,
+    "18_second_source_frame_positions": 450,
+    "18_second_output_frame_positions": 540,
+    "additional_output_frame_positions": 90,
+    "cadence_ratio": "6 output frames per 5 source frames; 20% more output positions",
+    "handling": "Frame selection/duplication cadence only; no interpolation, optical flow, slow motion, speed change, or retime is authorized or performed.",
+    "review_required": "Check motion judder and hand/product continuity on a native-resolution acquisition before accepting the 30 fps portrait master."
+  },
+  "evidence_limits": [
+    "Only the exact public original MP4 and exact current A-variant reference image were downloaded.",
+    "No extracted stills, edited clip, rendered MP4, audio export, platform upload, or commercial rights proof was created.",
+    "Current Shopify admin identity/product binding and ACTIVE status are fresh in the supplied R207 source record; this qualification does not establish commercial media rights or final product function/contents.",
+    "The pinned GitHub WAV was fetched once to the task reference folder and byte-verified against the expected SHA-256. The canonical checkout path remains absent. Rights/authorship, speech-free status, listening review, and edit suitability remain unknown; the file was not edited, listened to, or used, and no audio was exported."
+  ],
+  "music_source": {
+    "pinned_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/90d0ea75bf2e1e864b3964c7983e3908961011d6/automation/music/luxe-premium.wav",
+    "read": "One HTTP GET, 200",
+    "task_reference_copy": "music/luxe-premium.wav",
+    "bytes": 11343950,
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "matches_expected_R201_sha256": true,
+    "ffprobe": {
+      "container": "WAV",
+      "codec": "PCM signed 16-bit little-endian",
+      "sample_rate_hz": 44100,
+      "channels": 2,
+      "duration_seconds": 64.307664,
+      "bytes": 11343950
+    },
+    "canonical_checkout_path": "/tmp/luxe12-implementation/repo/automation/music/luxe-premium.wav remains absent; this pinned task reference copy is available.",
+    "rights_authorship_speech_free_status_listening_review_and_editorial_suitability": "unknown; not evaluated",
+    "used_or_exported": false
+  }
+}

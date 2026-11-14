@@ -1,0 +1,98 @@
+{
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "editorialOnly": true,
+  "postOrQueueCreation": false,
+  "productId": "15521256604033",
+  "variantId": "68122445283719",
+  "currentPublicPriceCHF": "34.90",
+  "priceInCaptions": false,
+  "rightsApproved": false,
+  "professionalMasterMp4": null,
+  "globalReleaseEligible": false,
+  "blockers": [
+    "NoapprovedprofessionalmasterMP4",
+    "NativePortraitDetailAnd30fpsNotQualified",
+    "ExactAUnitAndMotifInFilmedSourceUnconfirmed",
+    "FilmMusicCommercialRightsAndListeningUnconfirmed",
+    "IGTikTokCurrentBioTargetsUnverified",
+    "PinterestCurrentAccountBoardUnverified"
+  ],
+  "captions": {
+    "instagram": {
+      "title": null,
+      "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor von LuxeStyle.\n\nProduktdetails: Link in Bio.\n\n#LuxeStyle #Wohnideen",
+      "ctaGate": "Bio-Ziel vor Freigabe frisch verifizieren; Text ist nur redaktioneller Entwurf. Der UTM-Link gehört ins bestätigte Bio-Ziel, nicht als angeblich klickbarer Caption-Link.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    },
+    "tiktok": {
+      "title": "Ein Detail für deinen Nachttisch",
+      "caption": "Ein Detail für deinen Nachttisch. Der Sternenlicht-Projektor von LuxeStyle im Detail.\n\nProduktdetails: Link in Bio.\n\n#LuxeStyle #Beleuchtung",
+      "ctaGate": "Bio-Ziel vor Freigabe frisch verifizieren. Keine behauptete Caption-Klickbarkeit; keine Bio-Änderung vorgenommen.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    },
+    "youtube": {
+      "title": "Sternenlicht-Projektor: Licht im Detail | LuxeStyle",
+      "caption": "Der Sternenlicht-Projektor von LuxeStyle im Detail.\n\nProduktangaben auf luxestyle.ch: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a\n\n#Shorts",
+      "madeForKids": false,
+      "audienceEvidence": "R207Queue ID427969354/UUID-7647174116509334899 draft=true/autoPublish=false/madeForKids=false; no audience change",
+      "ctaGate": "Shorts-Beschreibungslinks nicht als klickbar bewerben. Titel und bestätigte Zielgruppe allein ersetzen keine Film-/Rechtefreigabe.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    },
+    "facebook": {
+      "title": "Licht im Detail",
+      "caption": "Ein Detail für deinen Nachttisch: Entdecke den Sternenlicht-Projektor von LuxeStyle.\n\nAusführungen und Produktangaben ansehen: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "ctaGate": "Produktlink ist als direkter Link vorgesehen; keine Liefer-/Bestands-/Funktionsversprechen.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    },
+    "threads": {
+      "title": null,
+      "caption": "Ein Detail für deinen Nachttisch. Der Sternenlicht-Projektor von LuxeStyle im Detail.\n\nProduktangaben und Ausführungen: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "ctaGate": "Direkter Produktlink, kein Review-/Material-/Wirkungsclaim.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    },
+    "pinterest": {
+      "title": "Sternenlicht-Projektor für deinen Nachttisch | LuxeStyle",
+      "caption": "Licht im Detail: Entdecke den Sternenlicht-Projektor und die angebotenen Ausführungen bei LuxeStyle. Produktangaben findest du auf der Produktseite.",
+      "boardId": null,
+      "boardGate": "Historisch bestätigtes Board1111333714239531706; heutige vorhandene Queue verwendet u.a.1111333714239114020. Kein aktueller Kontoboard-Read verfügbar, daher kein Board für diesen Entwurf eingesetzt.",
+      "ctaGate": "UTM-Produktlink erst nach aktueller Board-/Rechte-/Produktfreigabe als Pin-Ziel verwenden.",
+      "productUtmUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=master18s_hook_a",
+      "releaseEligible": false,
+      "queueCreated": false
+    }
+  },
+  "notForPublisherInput": true,
+  "historicalR201Blockers": [
+    "ConnectedShopifyidentitymismatch",
+    "FreshAdminACTIVE/tracked/inventoryPolicyproofunknown",
+    "NoapprovedprofessionalmasterMP4",
+    "Sourcefootage/musicrightsandlisteningreviewopen",
+    "IG/TikTokcurrentbiotargetsunverified",
+    "Pinterestcurrentaccountboardreadmissing"
+  ],
+  "revision": 207,
+  "dateZurich": "2026-11-14",
+  "reusedCaptionTextAndLinksUnchanged": true,
+  "currentSourceEvidence": {
+    "adminActive": true,
+    "tagsNonEmpty": true,
+    "tracking": false,
+    "inventoryPolicy": "CONTINUE",
+    "availableForSale": true,
+    "publicHttpStatus": 200,
+    "priceCHF": "34.90",
+    "currentVariantId": "68122445283719",
+    "sourceMp4IsProfessionalMaster": false
+  },
+  "queueIdsAreNotNewMasterEvidence": true
+}

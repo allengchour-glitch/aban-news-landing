@@ -1,0 +1,471 @@
+{
+  "revision": 207,
+  "recordedAtUTC": "2026-11-14T13:24:35.979270+00:00",
+  "identity": {
+    "readAtUTC": "2026-11-14T13:05:24Z",
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "verified": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    }
+  },
+  "admin": {
+    "shop": {
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF"
+    },
+    "product": {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "updatedAt": "2026-11-11T09:52:25Z",
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "title": "A · Grundmodell",
+            "sku": "CJSN139239101AZ",
+            "price": "34.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 654,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445316487",
+            "title": "B · mit 6 Motivscheiben",
+            "sku": "CJSN139239102BY",
+            "price": "37.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 800,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445349255",
+            "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239103CX",
+            "price": "40.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 800,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445382023",
+            "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+            "sku": "CJSN139239104DW",
+            "price": "49.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 668,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445414791",
+            "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239105EV",
+            "price": "51.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 800,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445447559",
+            "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "sku": "CJSN139239106FU",
+            "price": "44.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+                    "width": 800,
+                    "height": 668,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445480327",
+            "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+            "sku": "CJSN139239107GT",
+            "price": "35.90",
+            "availableForSale": true,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            },
+            "media": {
+              "nodes": [
+                {
+                  "image": {
+                    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+                    "width": 390,
+                    "height": 325,
+                    "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173424513"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173260673"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173457281"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173490049"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173522817"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173555585"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173588353"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173621121"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173653889"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173686657"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173719425"
+          },
+          {
+            "__typename": "MediaImage",
+            "id": "gid://shopify/MediaImage/70733173752193"
+          },
+          {
+            "__typename": "Video",
+            "id": "gid://shopify/Video/77496185356679",
+            "filename": "cj-1477820492730732544.mp4",
+            "fileStatus": "READY",
+            "duration": 27960,
+            "originalSource": {
+              "url": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+              "width": 960,
+              "height": 540,
+              "mimeType": "video/mp4",
+              "format": "mp4",
+              "fileSize": 3679836
+            },
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564",
+                "width": 960,
+                "height": 540
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "public": {
+    "readAtUTC": "2026-11-14T13:13:42.757118+00:00",
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "bytes": 24690,
+    "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+    "productId": 15521256604033,
+    "publicAvailable": true,
+    "targetVariant": {
+      "id": 68122445283719,
+      "title": "A · Grundmodell",
+      "sku": "CJSN139239101AZ",
+      "price": 3490,
+      "available": true,
+      "featured_image": {
+        "id": 83513734431105,
+        "product_id": 15521256604033,
+        "position": 11,
+        "created_at": "2026-08-31T07:11:27+02:00",
+        "updated_at": "2026-08-31T07:11:30+02:00",
+        "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+        "width": 800,
+        "height": 654,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "variant_ids": [
+          68122445283719
+        ]
+      }
+    },
+    "noCartOrCheckout": true
+  },
+  "tagGuard": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "status": "ACTIVE",
+    "tagCount": 12,
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "guardSource": {
+      "mainCommit": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+      "path": "automation/lib/kanal_sperren.mjs",
+      "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+    },
+    "guardHits": [],
+    "rueckholHits": [],
+    "tagsPassed": true,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68122445283719",
+        "title": "A · Grundmodell",
+        "sku": "CJSN139239101AZ",
+        "price": "34.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445316487",
+        "title": "B · mit 6 Motivscheiben",
+        "sku": "CJSN139239102BY",
+        "price": "37.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445349255",
+        "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239103CX",
+        "price": "40.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445382023",
+        "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+        "sku": "CJSN139239104DW",
+        "price": "49.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445414791",
+        "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239105EV",
+        "price": "51.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445447559",
+        "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+        "sku": "CJSN139239106FU",
+        "price": "44.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122445480327",
+        "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+        "sku": "CJSN139239107GT",
+        "price": "35.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      }
+    ],
+    "productSourceGatePassed": true,
+    "noStockOrDeliveryPromise": true,
+    "noPublicationClearance": true
+  },
+  "descriptionAndSalesDraft": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "currentDescriptionSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+    "existingDraftBeforeSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+    "matchesExistingDraft": true,
+    "draftSource": "PROJEKTOR-LIEFERUMFANG-20261114-08H-R201.json",
+    "sourceRetainedNotNewProposal": true,
+    "writes": 0
+  },
+  "currentDescriptionSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+  "descriptionChanged": false,
+  "inventoryMeaning": "All7tracked=false/policyCONTINUE/availableForSale=true; quantity0 not soldout proof. No supplierstock/delivery guarantee or actualcheckout test.",
+  "scope": "One exactproduct/7variants, no catalogpagination. Images/source metadata are references, not commercial rights proof."
+}

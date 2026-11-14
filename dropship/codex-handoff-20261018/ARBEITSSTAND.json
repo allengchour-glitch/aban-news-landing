@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 206,
-  "updatedAt": "2026-11-14T12:48:38.423883+00:00",
+  "revision": 207,
+  "updatedAt": "2026-11-14T13:24:35.979270+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r206_targeted_quality_holds_restored_and_shop_layout_review_saved",
+      "state": "r207_existing14h_readonly_package_source_qualification_reports_reused_holds_stable",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
-      "lastEvidence": "Weiterauftrag: Core4/korrekteShop-/Metricoolidentitäten frisch.5wiederaktivierteQualitätsholds nachByte-/Original-/Diffprüfung zurückgestellt und unabhängigbestätigt;keinneuerPost. NeueinterneShop-Anordnungsvorschau mitBrowserQA;keinNativeSave. MainSchutzpatchnichtlive/CFVariable403unknown.24IDs/Historien/Reports/Zeitplanerhalten,ClaudeEmpfangunbekannt.",
-      "nextAllowedStep": "DauerhaftenHalteschutz nachbekannterDeployment-Gate-Kontrolle prüfen, nichtblindmergen. Steuerbaren nativenEditorzugang getrenntvonfunktionierenderAPIbehandeln. HeutigeReports weiterverwenden unddenselbenprofessionellenMaster fortführen;keinezusätzlicheAutomation.",
+      "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
+      "lastEvidence": "Bestehender14hLauf:Core4/Identitätenfrisch,R207QueuebytegleichR206,alle9Fensterholdsweiterinaktiv. KeineR206Umsetzungerneutbeansprucht. Originalquelle/CFRGeometrie/WAVProvenienz undAufnahmebriefkonkretisiert,frischerSEOHead/abweichendesAdminfeld/Readdrosselungdokumentiert.0Plattformwrites/Render/neueTagesreports/Kaufwatch.24IDs/Historien/alteCJPreisaufgabeerhalten,ClaudeEmpfangunbekannt.",
+      "nextAllowedStep": "TagesberichteR200weiterverwenden. GleichenMaster anechtenA-Takes/Rechtenweiterentwickeln;vorhandenenR201ZweistellendiffzurFreigabehalten. MetaQuellbindungspätergezieltklären;keineWiederholunggedrosselterReadsoderneuerPublisher/Automation.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3922,6 +3922,36 @@
           "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
           "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248",
           "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+          "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+          "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+          "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+          "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+          "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+          "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+          "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+          "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+          "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+          "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4581,6 +4611,45 @@
               "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.json",
               "sha256": "0ac5118d5d1573703eb1879c96eab592d9ef0749185b948218a756e77bcb82df",
               "gitBlobSha": "5635963453e97bd6c7f254d8f2e8e8db35250248"
+            }
+          ]
+        },
+        {
+          "revision": 207,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r206_targeted_quality_holds_restored_and_shop_layout_review_saved",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+            "lastEvidence": "Weiterauftrag: Core4/korrekteShop-/Metricoolidentitäten frisch.5wiederaktivierteQualitätsholds nachByte-/Original-/Diffprüfung zurückgestellt und unabhängigbestätigt;keinneuerPost. NeueinterneShop-Anordnungsvorschau mitBrowserQA;keinNativeSave. MainSchutzpatchnichtlive/CFVariable403unknown.24IDs/Historien/Reports/Zeitplanerhalten,ClaudeEmpfangunbekannt.",
+            "nextAllowedStep": "DauerhaftenHalteschutz nachbekannterDeployment-Gate-Kontrolle prüfen, nichtblindmergen. Steuerbaren nativenEditorzugang getrenntvonfunktionierenderAPIbehandeln. HeutigeReports weiterverwenden unddenselbenprofessionellenMaster fortführen;keinezusätzlicheAutomation."
+          },
+          "summary": "Bestehender14hLauf:Core4/Identitätenfrisch,R207QueuebytegleichR206,alle9Fensterholdsweiterinaktiv. KeineR206Umsetzungerneutbeansprucht. Originalquelle/CFRGeometrie/WAVProvenienz undAufnahmebriefkonkretisiert,frischerSEOHead/abweichendesAdminfeld/Readdrosselungdokumentiert.0Plattformwrites/Render/neueTagesreports/Kaufwatch.24IDs/Historien/alteCJPreisaufgabeerhalten,ClaudeEmpfangunbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+              "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+              "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+              "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+              "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+              "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+              "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
             }
           ]
         }
@@ -5288,18 +5357,48 @@
           }
         ],
         "nativeProfileSave": false
+      },
+      "run207": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+            "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+            "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+            "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+            "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+            "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+            "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+            "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+            "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+            "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+            "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
+          }
+        ],
+        "platformWrites": 0
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r205_same_master_current_admin_gates_resolved_film_rights_still_open",
+      "state": "r207_actual_original_699frames25fps_nativeportrait_shortfall_and_acquisition_brief_no_render",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
-      "lastEvidence": "GleicheMasterID undR202Reviewseite. KorrekteShop-Appidentität plus aktuellesACTIVE/Tags/7Varianten/Trackingfalse/CONTINUE/availabletrue jetztbelegt. A68122445283719/CHF34.90 unverändert. Das beseitigt die jüngste Admin-Zugangs-/Policy-Unkenntnis, erzeugt keinen Film oder Rechtebeleg. EchtegeeigneteA-Takes/Motivbindung/kommerzielleMedienrechte/Hörabnahme weiteroffen;0Renders/Uploads/Posts.",
-      "nextAllowedStep": "Denselben Master mit exaktenA-Originaltakes und kommerziellenFilm-/Musikrechten qualifizieren, dann bestehendenSchnittplan/Final-QA verwenden. Keine Altclips/Slideshows alsErsatz. Bio-/Pinterest-/Ledgergates weiterseparat; madeForKids=false bleibtbekannt.",
+      "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
+      "lastEvidence": "FrischeShop-/Produktquelle bindetVideo77496185356679 an Produkt15521256604033; genaue gefilmteA-Einheit/Motive/Rechte weiterunbelegt. OriginalMP4HTTP200/960×540/27.96s/699Frames und698×40ms gemessen; Crop-/Upscale-/25→30-Grenzen konkretisiert. UnverändertekanonischeWAV alsTaskkopiehashbestätigt, keinRender/Hör-/Rechtenachweis. NeuerpräziserAufnahmebrief fürs gleiche18sMaster;6Captiontexte/UTMs unverändert mitaktuellenGates.",
+      "nextAllowedStep": "Geeignete native1080×1920/30fps-A-Takes und kommerzielleFilm-/Musikrechte beschaffen, danach denselben540Frameplan undFinal-QA. KeinehochskalierteAltdatei/Zoomserie alsQualitätsbeleg. AktuelleA-Variante68122445283719/CHF34.90; Bio-/Board-/Ledgergates bleiben separat, madeForKids=false bekannt.",
       "blockers": [
         "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
         "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
@@ -5832,6 +5931,36 @@
           "sha256": "1de5cffd43ca9bc515cc3c204a8a9ee6c486edf3e4c9d0d4802173fedd490f90",
           "gitBlobSha": "8a75a17a17f3df13b563d9db90efd441e938fc79",
           "readAt": "2026-11-14T11:37:14.597405+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+          "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+          "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md",
+          "sha256": "3886651b3aa42277e5b3b7883f36c9cadad59c1c15caa8b1cbc50f928c870e80",
+          "gitBlobSha": "bb75e26d45a0464b50738fb700919bc69e49a3d1",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-A-REFERENZ-20261114-14H-R207.jpg",
+          "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+          "gitBlobSha": "17a1ae92f126834b0ea4b903c4ef86c6e220d675",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261114-14H-R207.json",
+          "sha256": "0686dd6dcc3a15f2a69bc5eb1fd4686d79a08cdc33cd5aba838a380df2febedd",
+          "gitBlobSha": "3b0b5bf7955049bbc7fe849d977b898170f383c8",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-20261114-14H-R207.json",
+          "sha256": "3e7660caec48f2357806eeecbda8dde15ba74ed6957fd3031796eb715f91d8bf",
+          "gitBlobSha": "96fb5a4607b7c94f059b922861c219d2c9dea52c",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6571,6 +6700,45 @@
               "path": "dropship/codex-handoff-20261018/SHOP-ZUGANG-ABSCHLUSS-20261114-R205.json",
               "sha256": "1de5cffd43ca9bc515cc3c204a8a9ee6c486edf3e4c9d0d4802173fedd490f90",
               "gitBlobSha": "8a75a17a17f3df13b563d9db90efd441e938fc79"
+            }
+          ]
+        },
+        {
+          "revision": 207,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r205_same_master_current_admin_gates_resolved_film_rights_still_open",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
+            "lastEvidence": "GleicheMasterID undR202Reviewseite. KorrekteShop-Appidentität plus aktuellesACTIVE/Tags/7Varianten/Trackingfalse/CONTINUE/availabletrue jetztbelegt. A68122445283719/CHF34.90 unverändert. Das beseitigt die jüngste Admin-Zugangs-/Policy-Unkenntnis, erzeugt keinen Film oder Rechtebeleg. EchtegeeigneteA-Takes/Motivbindung/kommerzielleMedienrechte/Hörabnahme weiteroffen;0Renders/Uploads/Posts.",
+            "nextAllowedStep": "Denselben Master mit exaktenA-Originaltakes und kommerziellenFilm-/Musikrechten qualifizieren, dann bestehendenSchnittplan/Final-QA verwenden. Keine Altclips/Slideshows alsErsatz. Bio-/Pinterest-/Ledgergates weiterseparat; madeForKids=false bleibtbekannt."
+          },
+          "summary": "FrischeShop-/Produktquelle bindetVideo77496185356679 an Produkt15521256604033; genaue gefilmteA-Einheit/Motive/Rechte weiterunbelegt. OriginalMP4HTTP200/960×540/27.96s/699Frames und698×40ms gemessen; Crop-/Upscale-/25→30-Grenzen konkretisiert. UnverändertekanonischeWAV alsTaskkopiehashbestätigt, keinRender/Hör-/Rechtenachweis. NeuerpräziserAufnahmebrief fürs gleiche18sMaster;6Captiontexte/UTMs unverändert mitaktuellenGates.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+              "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+              "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md",
+              "sha256": "3886651b3aa42277e5b3b7883f36c9cadad59c1c15caa8b1cbc50f928c870e80",
+              "gitBlobSha": "bb75e26d45a0464b50738fb700919bc69e49a3d1"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MASTER-A-REFERENZ-20261114-14H-R207.jpg",
+              "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+              "gitBlobSha": "17a1ae92f126834b0ea4b903c4ef86c6e220d675"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261114-14H-R207.json",
+              "sha256": "0686dd6dcc3a15f2a69bc5eb1fd4686d79a08cdc33cd5aba838a380df2febedd",
+              "gitBlobSha": "3b0b5bf7955049bbc7fe849d977b898170f383c8"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PRODUKT-20261114-14H-R207.json",
+              "sha256": "3e7660caec48f2357806eeecbda8dde15ba74ed6957fd3031796eb715f91d8bf",
+              "gitBlobSha": "96fb5a4607b7c94f059b922861c219d2c9dea52c"
             }
           ]
         }
@@ -7545,6 +7713,36 @@
         ],
         "shopifyAppAuthResolved": true,
         "nativeEditorAuthInferred": false
+      },
+      "run207": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+            "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+            "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md",
+            "sha256": "3886651b3aa42277e5b3b7883f36c9cadad59c1c15caa8b1cbc50f928c870e80",
+            "gitBlobSha": "bb75e26d45a0464b50738fb700919bc69e49a3d1"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-A-REFERENZ-20261114-14H-R207.jpg",
+            "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+            "gitBlobSha": "17a1ae92f126834b0ea4b903c4ef86c6e220d675"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261114-14H-R207.json",
+            "sha256": "0686dd6dcc3a15f2a69bc5eb1fd4686d79a08cdc33cd5aba838a380df2febedd",
+            "gitBlobSha": "3b0b5bf7955049bbc7fe849d977b898170f383c8"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PRODUKT-20261114-14H-R207.json",
+            "sha256": "3e7660caec48f2357806eeecbda8dde15ba74ed6957fd3031796eb715f91d8bf",
+            "gitBlobSha": "96fb5a4607b7c94f059b922861c219d2c9dea52c"
+          }
+        ],
+        "platformWrites": 0
       }
     },
     {
@@ -13001,12 +13199,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r200_homepage_head_countercheck_neutral_meta_draft_no_shop_write",
+      "state": "r207_fresh_publichead_admin_description_diff_sourcebinding_unknown_no_write",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
-      "lastEvidence": "ExakteStartseiteHTTP200/einH1/selfcanonical;robotsnonegehörtShopLoginhead,nichtHaupthead. VollständigzurückgegebenesHTMLgehasht. AllgemeineLieferzeitaussageimaktuellenMetaohneaktuellenNachweishier;neutralerengerEntwurfbereit.0Shop-/Theme-/SEOwrites,keineRankingbehauptung.",
-      "nextAllowedStep": "NachkorrekterShopAutorisierung tatsächlicheMetaQuellfeldbindung/frischenVorherwertprüfen,engenneutralenDiffumsetzenundHauptheadrücklesen;keinepauschalenLieferzeiten/Gratisversandänderungen.",
+      "belegArt": "R207_EXISTING_14H_READONLY_SOURCE_QUALIFICATION_AND_SEO_COUNTERCHECK",
+      "lastEvidence": "FrischerRootGETHTTP200/eineH1/selfcanonical/keineRobotsimHaupthead. R200Agentkopfquellealsaltkorrigiert. AktuellesShop.description nichtbytegleich mitöffentlicherMeta; keinegesicherteSchreibfeldbindung. BreiterThemegrepunklar,gezielterReadvorAusführungINVALID_ARGUMENT/tooManyRequests;keineLeerdaten/404/HTTP429erfunden.0SEO-/Theme-/Shopwrites/neuerDiff.",
+      "nextAllowedStep": "InspäteremzulässigemgezieltemNur-Lese-Fenster tatsächlicheMetaQuellbindung auslayout/theme.liquid/konkreterReferenzbelegen; erst danach exaktenVorher-/NachherdiffzurFreigabe. KeinblinderShop.description-Write undkeinepauschaleLieferzeitbehauptung.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -13374,6 +13572,18 @@
           "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
           "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8",
           "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+          "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+          "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+          "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+          "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049",
+          "readAt": "2026-11-14T13:24:35.979270+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -13750,6 +13960,30 @@
               "path": "dropship/codex-handoff-20261018/STARTSEITEN-SEO-20261114-R200.json",
               "sha256": "e6f64786334eca54cd3de07535f113b953135d5064f656c5ca3cfeb5d333ce71",
               "gitBlobSha": "67928ef82f8bb0e31692f85eada17cce0a5efdb8"
+            }
+          ]
+        },
+        {
+          "revision": 207,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r200_homepage_head_countercheck_neutral_meta_draft_no_shop_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+            "lastEvidence": "ExakteStartseiteHTTP200/einH1/selfcanonical;robotsnonegehörtShopLoginhead,nichtHaupthead. VollständigzurückgegebenesHTMLgehasht. AllgemeineLieferzeitaussageimaktuellenMetaohneaktuellenNachweishier;neutralerengerEntwurfbereit.0Shop-/Theme-/SEOwrites,keineRankingbehauptung.",
+            "nextAllowedStep": "NachkorrekterShopAutorisierung tatsächlicheMetaQuellfeldbindung/frischenVorherwertprüfen,engenneutralenDiffumsetzenundHauptheadrücklesen;keinepauschalenLieferzeiten/Gratisversandänderungen."
+          },
+          "summary": "FrischerRootGETHTTP200/eineH1/selfcanonical/keineRobotsimHaupthead. R200Agentkopfquellealsaltkorrigiert. AktuellesShop.description nichtbytegleich mitöffentlicherMeta; keinegesicherteSchreibfeldbindung. BreiterThemegrepunklar,gezielterReadvorAusführungINVALID_ARGUMENT/tooManyRequests;keineLeerdaten/404/HTTP429erfunden.0SEO-/Theme-/Shopwrites/neuerDiff.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+              "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+              "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+              "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+              "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
             }
           ]
         }
@@ -14316,6 +14550,21 @@
           }
         ],
         "currentIdentityBeforeDependentWriteRequired": true
+      },
+      "run207": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+            "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+            "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+            "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+            "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
+          }
+        ],
+        "platformWrites": 0
       }
     },
     {
@@ -20490,6 +20739,41 @@
           "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R206.md",
           "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
           "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
+    },
+    {
+      "revision": 207,
+      "at": "2026-11-14T13:24:35.979270+00:00",
+      "actor": "codex",
+      "summary": "Bestehender14hLauf:korrekteIdentitäten/bytegleiche48Queue/9stabileHolds bestätigt,0neuePlattformänderungen. TatsächlichesOriginal699Frames/25fps/960×540quantifiziert,kanonischeWAVTaskkopiehashbestätigt undpräzisenA-Aufnahmebrief erstellt.6Captiontexte/UTMsaktualisierteGateskeinNeupost. FrischerSEOHead/abweichendesAdminfeld/unklareSchreibquelle/gedrosselterReadkeinWrite. R200Reports/R201Verkaufsdiff/24IDs/Historien/Zeitplan/Kaufwatchendeerhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+          "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+          "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+          "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+          "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md",
+          "sha256": "3886651b3aa42277e5b3b7883f36c9cadad59c1c15caa8b1cbc50f928c870e80",
+          "gitBlobSha": "bb75e26d45a0464b50738fb700919bc69e49a3d1"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+          "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+          "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+          "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+          "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf"
         }
       ],
       "taskCount": 24,
@@ -44805,6 +45089,91 @@
     "masterId": "luxe_sternenprojektor_master_20261018",
     "professionalMasterApproved": false,
     "masterMp4Sha256": null,
+    "claudeReceipt": "unknown_no_receipt"
+  },
+  "run207": {
+    "recordedAtUTC": "2026-11-14T13:24:35.979270+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "planning": {
+        "path": "dropship/codex-handoff-20261018/PLANUNG-20261114-14H-R207.json",
+        "sha256": "52618efa83c8d4ff61798d56f1c0ffb4a2daab27c82b5bf6a758dfe790b2bd4d",
+        "gitBlobSha": "ccd9a658b86cb6f82acd4486e33efe3d39a47dcf"
+      },
+      "product": {
+        "path": "dropship/codex-handoff-20261018/PRODUKT-20261114-14H-R207.json",
+        "sha256": "3e7660caec48f2357806eeecbda8dde15ba74ed6957fd3031796eb715f91d8bf",
+        "gitBlobSha": "96fb5a4607b7c94f059b922861c219d2c9dea52c"
+      },
+      "qualification": {
+        "path": "dropship/codex-handoff-20261018/MASTER-QUELLENQUALIFIKATION-20261114-14H-R207.json",
+        "sha256": "e5cb1ee57434c0e262ddc61d6ef0ac202b6c29ef5ca0a51bb5de1bd421d6a684",
+        "gitBlobSha": "0f96c00f4d52320321eadebc6580e890448423a0"
+      },
+      "brief": {
+        "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md",
+        "sha256": "3886651b3aa42277e5b3b7883f36c9cadad59c1c15caa8b1cbc50f928c870e80",
+        "gitBlobSha": "bb75e26d45a0464b50738fb700919bc69e49a3d1"
+      },
+      "reference": {
+        "path": "dropship/codex-handoff-20261018/MASTER-A-REFERENZ-20261114-14H-R207.jpg",
+        "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+        "gitBlobSha": "17a1ae92f126834b0ea4b903c4ef86c6e220d675"
+      },
+      "captions": {
+        "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261114-14H-R207.json",
+        "sha256": "0686dd6dcc3a15f2a69bc5eb1fd4686d79a08cdc33cd5aba838a380df2febedd",
+        "gitBlobSha": "3b0b5bf7955049bbc7fe849d977b898170f383c8"
+      },
+      "seo": {
+        "path": "dropship/codex-handoff-20261018/SEO-QUELLENBINDUNG-20261114-14H-R207.json",
+        "sha256": "cf9ca64baf0d720ddf3273b0eae293935bc5b6d08ad1d115cd63187205b6f145",
+        "gitBlobSha": "b7386c47976004bccd3a906ea6ded340549ed9c6"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.md",
+        "sha256": "d0b90b3c143d5bdc5406bcef9af0e1756579c012c030ade46cddbec54c834418",
+        "gitBlobSha": "82b303904a58a0bad4cb2ccac1e95abea6801049"
+      },
+      "packet": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-14H-R207.json",
+        "sha256": "55a26cd8484a18ab1bb5ff279d3dbc302062e68ca71224d0b31c1eb82be7f48d",
+        "gitBlobSha": "2ac3aa355d87da26731132a9a266b460429e5ff7"
+      }
+    },
+    "revision": 207,
+    "localRun": "existing14hEuropeZurich",
+    "freshIdentityPassed": true,
+    "platformWrites": 0,
+    "ownPublications": 0,
+    "holdRestorationsInThisRun": 0,
+    "R206NineWindowHoldsStillInactive": true,
+    "planningObjects": 48,
+    "activeObjects": 39,
+    "activePendingObjects": 34,
+    "activePendingPlacements": 43,
+    "observedExistingPublishedPlacements": 6,
+    "newPublishedSinceR206": 0,
+    "newMetricsFlowBroadSalesOrOrderQueries": 0,
+    "dailyReportsReused": {
+      "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+      "period": "2026-11-07/2026-11-13",
+      "missingUnknown": true,
+      "shopCurrency": "CHF",
+      "klaviyoCurrency": "USD",
+      "currenciesMixed": false
+    },
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "professionalMasterApproved": false,
+    "masterMp4Sha256": null,
+    "newMediaExportsOrRenders": 0,
+    "sourceMp4DownloadedIsNotMaster": true,
+    "pinnedMusicReferenceRetrieved": true,
+    "musicRightsOrListeningApproved": false,
+    "sixCaptionsReusedTextUnchanged": true,
+    "existingSalesDraftUnapplied": true,
+    "seoWriteBinding": "UNKNOWN",
+    "seoNoFurtherRetry": true,
     "claudeReceipt": "unknown_no_receipt"
   }
 }

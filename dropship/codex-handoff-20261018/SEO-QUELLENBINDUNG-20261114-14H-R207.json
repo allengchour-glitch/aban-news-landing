@@ -1,0 +1,101 @@
+{
+  "task": "R207 existing14hZurich14Nov",
+  "scope": "Read-only source binding; no writes performed",
+  "shop_identity": {
+    "verified_by": "Shopify get_shop_info plus Admin GraphQL shop",
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "primary_domain": "https://luxestyle.ch",
+    "myshopify_domain": "au3j0y-hq.myshopify.com"
+  },
+  "public_homepage": {
+    "url": "https://luxestyle.ch/",
+    "status": 200,
+    "main_head_title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+    "main_head_description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+    "canonical": "https://luxestyle.ch/",
+    "h1": "Schön leben.Schlau shoppen.",
+    "main_head_robots": [],
+    "excluded_embedded_head": {
+      "title": "Mit Shop einloggen",
+      "robots": [
+        "none"
+      ],
+      "reason": "Embedded Shop login head, not the public homepage main head"
+    },
+    "evidence_file": "/tmp/luxe-other-work-20261114/seo/homepage-head-review.json",
+    "evidence_sha256_html": "75a3dc3a5aaec77c00ec558ce00894ca0466cd34504dd5db7e6d40ce432e21b5",
+    "basis": "Historical R200 head reused by agent; not a fresh R207 GET. Root performed the separate fresh countercheck below."
+  },
+  "admin_source_checks": {
+    "shop_description": "LuxeStyle CH ist dein Premium Online-Shop für Mode, Beauty, Tech, Fitness, Home Decor und Lifestyle. Entdecke kuratierte Produkte für jeden Lebensstil – mit schnellem Versand in die Schweiz und nach Deutschland.",
+    "shop_description_matches_public_main_description": false,
+    "metafield": "Not queried: Shopify metafield lookup requires a namespace/key; neither was supplied by evidence. No namespace/key guessed.",
+    "main_theme": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+      "role": "MAIN"
+    },
+    "theme_source": "Not confirmed. Read-only theme file inspection was attempted, but output was overwhelmed by broad matches and the targeted follow-up was rate limited. No theme file value/source binding is asserted."
+  },
+  "source_binding": "UNKNOWN",
+  "diff": null,
+  "reason": "Current public meta is not byte-identical to the observed Shop.description. This does not exclude templating or another relationship; actual write-field binding remains UNKNOWN. A focused theme query was rejected before execution; no data absence or HTTP404/429 inferred.",
+  "candidate_neutral_text_from_R200_not_reissued_as_new": "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag.",
+  "preservation_constraints": [
+    "Preserve public CHF 50 free-shipping threshold and internal CHF 45 floor",
+    "Do not repeat historic unverified delivery timing as fact",
+    "No title, canonical, H1, customer account domain, theme, Shop-profile or other setting changes"
+  ],
+  "writes": 0,
+  "other_external_checks": "None. Existing R200 same-day metrics/GSC/GA4/Klaviyo/sales evidence was not repeated.",
+  "fresh_root_countercheck": {
+    "readAtUTC": "2026-11-14T13:11:49.955213+00:00",
+    "url": "https://luxestyle.ch/",
+    "method": "GET",
+    "scope": "Initialdocumentheadonly; embeddedShoploginhead excluded",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/",
+    "bytes": 1057207,
+    "sha256": "1a8ad9d855b644467eed175e4cb6be5156fccd6371b8c033bc1296081b6851ac",
+    "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+    "descriptions": [
+      "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein."
+    ],
+    "canonicals": [
+      "https://luxestyle.ch/"
+    ],
+    "robots": [],
+    "h1": [
+      "Schön leben.Schlau shoppen."
+    ],
+    "headsSeen": 1
+  },
+  "request_provenance": {
+    "task": "R207",
+    "homepage_get_fresh_in_R207": false,
+    "homepage_evidence_actually_used": "Reused R200 file /tmp/luxe-other-work-20261114/seo/homepage-head-review.json; did not claim a fresh R207 GET.",
+    "later_root_fresh_get_known_from_parent_message": {
+      "path": "/tmp/luxe-afternoon-20261114-14h-r207/seo/homepage-current.json",
+      "reported_result": "HTTP 200; title, description, and canonical match R200; raw HTML hash differs"
+    },
+    "theme_bash_calls": [
+      {
+        "script": "rg -n -i 'meta.*description|description.*meta|page_description|seo' layout/theme.liquid snippets sections",
+        "result": "exit code 0; stdout was very large/noisy because of broad matches, including long section data. The returned excerpt did not establish the layout source. No error code was observed."
+      },
+      {
+        "script": "rg -n -C 4 'page_description|meta description|description' layout/theme.liquid",
+        "result": "No execution; rate limited.",
+        "error_code": "INVALID_ARGUMENT",
+        "structured_error_code": "INVALID_ARGUMENT",
+        "text": "theme_bash is handling too many requests from you right now. Nothing ran. Try again in 60 seconds.",
+        "error_description": "theme_bash is handling too many requests from you right now. Nothing ran. Try again in 60 seconds.",
+        "retry_after_seconds": 60
+      }
+    ],
+    "shop_description_interpretation": "Observed value is not byte-identical to public description. This does not rule out templating or another relationship; source binding remains UNKNOWN.",
+    "writes": 0
+  }
+}

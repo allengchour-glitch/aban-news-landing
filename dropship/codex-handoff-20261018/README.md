@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R207 – 14.11.2026 um14Uhr: Originalquelle qualifiziert, Holds stabil, keine Plattformänderung
+
+[Paket](CONTENT-VERKAUFSPAKET-20261114-14H-R207.md) · [Aufnahmebrief](MASTER-AUFNAHMEBRIEF-20261114-14H-R207.md) · [Belege](CONTENT-VERKAUFSPAKET-20261114-14H-R207.json). Aktuelle48QueuebytegleichR206,alle9Fensterholdsweiterinaktiv,6alteexternePUBLISHED/keineneueAuslieferung. EinProjektorACTIVE/7Varianten/Trackingfalse/CONTINUE/availabletruefrischbelegt. Original960×540/25fps/699Frames mit40ms-Cadencequantifiziert;kanonischeMusikalsTaskreferenzhashbestätigt. PräziserAufnahmebrief fürs gleiche18sMaster,keinFilm/Render/Upload. FrischerStartseitenheadundabweichendesShop.description,MetaSchreibbindungunbekannt;gezielterThemeReadliefnichtwegenDrosselung. R200Reports/R201Zweistellendiffund6Captiontexteerhalten,0Plattformwrites/neueReports;24IDs/Historien/ClaudeEmpfangunbekannt.
+
 ## R206 – 14.11.2026: fünf Qualitäts-Holds wiederhergestellt, konkrete Shop-Vorschau geprüft
 
 [Bericht](WEITERARBEIT-20261114-R206.md) · [Holds/IDs](HOLD-WIEDERHERSTELLUNG-20261114-R206.json) · [Shop-Vorschau](SHOP-LAYOUT-REVIEW-20261114-R206.html). Fünf bekannte Videoobjekte fremd reaktiviert und nach MP4-/Original-/Identitäts-/Diffprüfung gezielt wieder auf Entwurf gestellt; neueIDs/stabileUUIDs/Inhalte/Medien/Termine unabhängig bestätigt. Keine neue Publikation. Final48Objekte/39aktiv/9Drafts;YouTube15–21/Threads15 offen. Neuer interner5+4Shop-Anordnungsentwurf mit9frischenKollektionsreferenzen,390/1440BrowserQA undPrüflistenexport;kein nativerSave. DauerhafterElferpatchnichtmain,Previewvariable403unbekannt,keinPR/Workflowstart.24IDs/Historien/R200Reports erhalten;ClaudeEmpfangunbekannt.

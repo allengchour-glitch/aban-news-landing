@@ -2392,3 +2392,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Dauerhafter Schutz | Aktuellen Main-Haltefile/Elferbranch und relevante Workflow-Gates gezielt gelesen; eine konkrete Variablenabfrage | Main enthält4alteUUIDs,Elferpatchnichtlive. CF_DIRECT_DEPLOY403/unbekannt; PR könntePreviewdeployauslösen, daher kein PR/Merge/Dispatch/Deployment. Reaktivierungsursache nicht belegt |
 | Shop-Vorschau | Neun Kollektionen/18Mitgliedsplätze/16Produkte und Cover geprüft; interaktive5+4Kartenreihen erstellt und390/1440getestet | Keine doppeltenIDs/Dokumentüberläufe/Seitenfehler; Auswahl/Sortierung/Reset/Export funktionieren. Statische reale Bildreferenzen, keinFilm/Shopimport/nativeSave; Händlerbrowserzugang fehlt weiterhin |
 | Kontinuität | Task-Lock/Checkpoints, ID-Ketten und24Aufgaben/Historien erhalten; R200-Reports wiederverwendet | Zwei Anfragen vor Änderung korrigiert: Datumsfenster und ausdrücklich abgelehnter Nicht-Provider-Block; kein unklarer Write blind wiederholt.0neueReports/Render/Kaufwatch/Kundenkontakt/Shop-/Feed-/Flow-/DNSänderung. Versand/Domain/Zeitplan erhalten;ClaudeEmpfangunbekannt |
+
+### R207 – Bestehender14Uhr-Lauf Europe/Zurich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Planung / Identität | Shopify und sechs Metricool-Identitäten frisch geprüft;48Objekte mitR206 verglichen | Bytegleich;alle9Fensterholdsweiterinaktiv,6alteexternePUBLISHED/keineneueLieferung.39aktiveObjekte/9Drafts,YouTube15.–21./Threads15.offen.0Änderungen, keine exakten Fensterduplikate oder globaleHistorienfreigabe |
+| Produkt / Verkauf | EinenProjektor/7Varianten/Tags/Tracking/Policy und öffentlicheA-Quelle gelesen; vorhandenenZweistellendiff gegengeprüft | ACTIVE,Trackingfalse/CONTINUE/availabletrue;A68122445283719/CHF34.90,0BestandkeinAusverkaufsbeweis. BodyhashpasstR201,Diffnichtangewendet,keineProduktänderung |
+| Derselbe Master | TatsächlicheMP4/A-Referenzgeladen,699Frames/698Zeitabstände geprüft;Crop-/Cadencegrenzen undAufnahmebrief konkretisiert |960×540/25fps/27.96s;kein nativer1080×1920/30fpsNachweis. GleicheMaster-ID,geeigneteA-Takes/Rechte/Abnahme fehlen;0Renders/Uploads |
+| Musik / Content | KanonischeWAV einmalgepinntheruntergeladen/gehasht;6Captiontexte/UTMs mitaktuellenGatesweitergeführt | UnveränderteTaskkopieverfügbar,kanonischerCheckoutpfadfehlt;Rechte/Hörabnahmeunbekannt. KeineTonbearbeitung/Exports/Neupost;YouTubemadeForKids=falseerhalten |
+| SEO | RootStartseitefrischgelesen,AdminbeschreibunggegenMeta verglichen undQuellenbefundgesichert | HTTP200/eineH1/selfcanonical;QuellfeldbindungUNKNOWN. GezielterThemeReadvorAusführunggedrosselt,keine404/Leerdaten/HTTP429erfunden,keinWriteoderweitererRetry |
+| Tagesgrenze / Kontinuität | R200Kennzahlen/Klaviyo datiertwiederverwendet;24IDs/Historien erhalten |0neueReports/Kaufwatch/Kundenkontakt/Plattformwrites. Versand/Domain/Zeitplan/VierDNSFreigaben erhalten;WriterundFilmrechteoffen,ClaudeEmpfangunbekannt |
