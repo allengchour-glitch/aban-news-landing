@@ -1,0 +1,270 @@
+{
+  "scope": "One public product, A/E/G in two fresh anonymous Chromium contexts. Restricted read-only interaction, not full checkout or availability validation.",
+  "productId": "15521256604033",
+  "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+  "startedAtUTC": "2026-11-14T11:11:50.547Z",
+  "finishedAtUTC": "2026-11-14T11:12:12.588Z",
+  "requestBoundary": "Fresh anonymous context per viewport. Route blocks every request method except GET and HEAD before network send. No cart/checkout/login/form interactions. Observe only product/variant/price/CTA DOM targets; screenshot upper product area.",
+  "viewports": [
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "navigation": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+      },
+      "blockedNonGetHeadCount": 121,
+      "variants": [
+        {
+          "label": "A",
+          "id": "68122445283719",
+          "selectedControl": "A · Grundmodell",
+          "visiblePrices": [
+            "CHF 34.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090&width=480"
+          },
+          "observedAddButtons": []
+        },
+        {
+          "label": "E",
+          "id": "68122445414791",
+          "selectedControl": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "visiblePrices": [
+            "CHF 51.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=480"
+          },
+          "observedAddButtons": []
+        },
+        {
+          "label": "G",
+          "id": "68122445480327",
+          "selectedControl": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+          "visiblePrices": [
+            "CHF 35.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=3840"
+          },
+          "observedAddButtons": []
+        }
+      ],
+      "screenshot": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-MOBILE-20261114-R204.png",
+        "sha256": "d7f2fac9edb86ed26ab45a2971e298e113837b94bbbcbaf10deb8d7f27e058bf",
+        "purpose": "Internal QA evidence only, not approved social media."
+      }
+    },
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "navigation": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+      },
+      "blockedNonGetHeadCount": 115,
+      "variants": [
+        {
+          "label": "A",
+          "id": "68122445283719",
+          "selectedControl": "A · Grundmodell",
+          "visiblePrices": [
+            "CHF 34.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090&width=480"
+          },
+          "observedAddButtons": [
+            {
+              "text": "In den Warenkorb legen",
+              "name": "add",
+              "disabled": false,
+              "ariaDisabled": null,
+              "ariaLabel": null,
+              "value": "",
+              "attrs": []
+            }
+          ]
+        },
+        {
+          "label": "E",
+          "id": "68122445414791",
+          "selectedControl": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "visiblePrices": [
+            "CHF 51.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=480"
+          },
+          "observedAddButtons": [
+            {
+              "text": "In den Warenkorb legen",
+              "name": "add",
+              "disabled": false,
+              "ariaDisabled": null,
+              "ariaLabel": null,
+              "value": "",
+              "attrs": []
+            }
+          ]
+        },
+        {
+          "label": "G",
+          "id": "68122445480327",
+          "selectedControl": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+          "visiblePrices": [
+            "CHF 35.90"
+          ],
+          "mainImage": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+            "src": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=3840"
+          },
+          "observedAddButtons": [
+            {
+              "text": "In den Warenkorb legen",
+              "name": "add",
+              "disabled": false,
+              "ariaDisabled": null,
+              "ariaLabel": null,
+              "value": "",
+              "attrs": []
+            }
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-DESKTOP-20261114-R204.png",
+        "sha256": "4254af07921585b0599363c93f6a20eaa6d594feba937694dccd74eac2a86713",
+        "purpose": "Internal QA evidence only, not approved social media."
+      }
+    }
+  ],
+  "rawBrowserEvidenceSha256": "c2862c9ae7408b23883c5ae3589c9eb6affebc5ac9f043c00412076283c94edf",
+  "publicJsCountercheck": {
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "method": "GET",
+    "reason": "Bounded Python urllib fallback following Node direct HTTPS ECONNREFUSED; no auth or bypass.",
+    "startedAtUTC": "2026-11-14T11:18:05.605131+00:00",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "bytes": 24690,
+    "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+    "productId": 15521256604033,
+    "currencySource": "Shop public CHF price/DOM, JS price cents",
+    "variants": [
+      {
+        "id": 68122445283719,
+        "title": "A · Grundmodell",
+        "sku": "CJSN139239101AZ",
+        "price": 3490,
+        "available": true,
+        "inventory_management": null,
+        "inventory_policy": null,
+        "featured_image": {
+          "id": 83513734431105,
+          "product_id": 15521256604033,
+          "position": 11,
+          "created_at": "2026-08-31T07:11:27+02:00",
+          "updated_at": "2026-08-31T07:11:30+02:00",
+          "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+          "width": 800,
+          "height": 654,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+          "variant_ids": [
+            68122445283719
+          ]
+        }
+      },
+      {
+        "id": 68122445414791,
+        "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239105EV",
+        "price": 5190,
+        "available": true,
+        "inventory_management": null,
+        "inventory_policy": null,
+        "featured_image": {
+          "id": 83513734168961,
+          "product_id": 15521256604033,
+          "position": 3,
+          "created_at": "2026-08-31T07:11:27+02:00",
+          "updated_at": "2026-08-31T07:11:30+02:00",
+          "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+          "width": 800,
+          "height": 800,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+          "variant_ids": [
+            68122445349255,
+            68122445414791
+          ]
+        }
+      },
+      {
+        "id": 68122445480327,
+        "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+        "sku": "CJSN139239107GT",
+        "price": 3590,
+        "available": true,
+        "inventory_management": null,
+        "inventory_policy": null,
+        "featured_image": {
+          "id": 83513734201729,
+          "product_id": 15521256604033,
+          "position": 4,
+          "created_at": "2026-08-31T07:11:27+02:00",
+          "updated_at": "2026-08-31T07:11:30+02:00",
+          "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+          "width": 390,
+          "height": 325,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+          "variant_ids": [
+            68122445480327
+          ]
+        }
+      }
+    ],
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "published_at": "2026-08-31T07:11:31+02:00",
+    "limitations": "Public JS is not Admin ACTIVE/tracked/policy proof; no cart or checkout tested.",
+    "finishedAtUTC": "2026-11-14T11:18:05.973428+00:00"
+  },
+  "rawPublicJsSha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+  "mainImageBinding": "A image11 / E image3 / G image4 changed with selected variant in both contexts. The separate A card thumbnail is not the main hero.",
+  "mobileCta": "Root visually confirmed the final G screenshot: In den Warenkorb legen visible and not clicked. Earlier missing entry was the first-50-button snapshot limit, not an offscreen defect.",
+  "definiteCroBugFound": false,
+  "shopOrThemeWrites": 0,
+  "limitations": [
+    "No add-to-cart, checkout, order, login or submitted form. Non-GET/HEAD requests blocked before send, including some read GraphQL POSTs and tracking. Therefore no full purchase-flow or performance verdict.",
+    "Public available=true and enabled CTA do not prove Admin ACTIVE, inventory tracking, inventoryPolicy, supplier stock or delivery time. Those Admin gates remain unknown while app reauthentication is pending.",
+    "Node direct public JS request failed ECONNREFUSED; one normal Python urllib GET with a changed transport succeeded HTTP200. Original failure not labelled404.",
+    "Prices CHF34.90/CHF51.90/CHF35.90 are observations for A/E/G, not a new price change or promise.",
+    "Generic delivery and package text remain source observations, not verified SKU accessory claims. The existing R201 two-place package-copy proposal is unchanged and not applied."
+  ]
+}

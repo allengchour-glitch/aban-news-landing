@@ -1,0 +1,961 @@
+{
+  "title": "LuxeStyle Planungskontrolle R204",
+  "read_time_local": "2026-11-14 12:10 Europe/Zurich (Prüfgrenze)",
+  "scope": "Offline-Abgleich der beiden lokalen 48-Objekt-Snapshots; nächster Siebentageszeitraum plus aktueller Kalendertag, 14.–21.11.2026 Europe/Zurich. Keine APIs, Tagesreports, Flows oder Bestell-/Kundendatenabfragen.",
+  "source_files": {
+    "current_snapshot": {
+      "path": "/tmp/luxe-continue-20261114-r204/planning-local.json",
+      "sha256": "31cefabfb982703eb990bee987246b1a77e0b6dc6c730befcec4485bf2a3f1c3"
+    },
+    "r202_snapshot": {
+      "path": "/tmp/luxe-continue-20261114-r202/planning-local.json",
+      "sha256": "174051ef55ff2f02411243f988f90a324d82b4ecb66af9164c6f660039170f6e"
+    },
+    "r202_delivery_evidence": {
+      "path": "/tmp/luxe-continue-20261114-r202/doc-final/proposed/SOCIAL-AUSLIEFERUNG-20261114-R202.json",
+      "sha256": "bd62729710af2c209a2ee7e4eaabe5b955c187b978726e72f34916ea1dcb12ec"
+    },
+    "r202_hold_proof": {
+      "path": "/tmp/luxe-continue-20261114-r202/main-hold-proof.json",
+      "sha256": "24633a8fa72e4077b1db87fe1df7d5cca8e2a6351a4d6ffb720d051c61a457f0"
+    },
+    "r202_working_state": {
+      "path": "/tmp/luxe-continue-20261114-r202/current/ARBEITSSTAND.json",
+      "sha256": "a41050932fc44387018ec6c7356ea1b0c87f5392944d3483062bc1061979d24f"
+    }
+  },
+  "snapshot_counts": {
+    "r202": 48,
+    "r204": 48,
+    "uuid_sets_equal": true
+  },
+  "changes_vs_r202": [
+    {
+      "uuid": "8178449842924373712",
+      "id": 422279700,
+      "changed_fields": [
+        "providers"
+      ],
+      "before_providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "after_providers": [
+        {
+          "network": "tiktok",
+          "id": "7707980998968937760",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707980998968937760",
+          "detailedStatus": "Published"
+        }
+      ]
+    }
+  ],
+  "published_provider_total": 6,
+  "published_provider_observations": [
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "scheduled": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "facebook",
+        "id": "1049840534888592_122153165379350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122153165379350792",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": true,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    },
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "scheduled": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "instagram",
+        "id": "https://www.instagram.com/p/Dft8g1YjeOX/",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.instagram.com/p/Dft8g1YjeOX/",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": true,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    },
+    {
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "scheduled": {
+        "dateTime": "2026-11-14T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "tiktok",
+        "id": "7707934434254802208",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707934434254802208",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": true,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    },
+    {
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "scheduled": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "youtube",
+        "id": "JqfSBJEJwEc",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/JqfSBJEJwEc",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": true,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    },
+    {
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "scheduled": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "threads",
+        "id": "17911234911604477",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dft8ibOJlcL",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": true,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    },
+    {
+      "id": 422279700,
+      "uuid": "8178449842924373712",
+      "scheduled": {
+        "dateTime": "2026-11-14T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "provider": {
+        "network": "tiktok",
+        "id": "7707980998968937760",
+        "status": "PUBLISHED",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707980998968937760",
+        "detailedStatus": "Published"
+      },
+      "observed_before_r204": false,
+      "attribution": "extern beobachtete Lieferung; nicht eigene Publikation"
+    }
+  ],
+  "previously_observed_published_count": 5,
+  "newly_observed_delivery_count": 1,
+  "attribution": "Alle PUBLISHED-Zustände sind im Snapshot extern beobachtete Lieferungen; keine davon wird als eigene Publikation beansprucht.",
+  "active_definition": "draft=false und autoPublish=true; Providerstatus separat.",
+  "overdue_active_pending_or_error_before_cutoff": [],
+  "daily_coverage": [
+    {
+      "date": "2026-11-14",
+      "channel": "facebook",
+      "active_objects": 3,
+      "provider_status_counts": {
+        "PUBLISHED": 1,
+        "PENDING": 2
+      },
+      "pending_active": 2,
+      "published": 1,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "instagram",
+      "active_objects": 3,
+      "provider_status_counts": {
+        "PUBLISHED": 1,
+        "PENDING": 2
+      },
+      "pending_active": 2,
+      "published": 1,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "tiktok",
+      "active_objects": 3,
+      "provider_status_counts": {
+        "PUBLISHED": 2,
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 2,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PUBLISHED": 1
+      },
+      "pending_active": 0,
+      "published": 1,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "youtube",
+      "active_objects": 2,
+      "provider_status_counts": {
+        "PUBLISHED": 1,
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 1,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "facebook",
+      "active_objects": 2,
+      "provider_status_counts": {
+        "PENDING": 2
+      },
+      "pending_active": 2,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "instagram",
+      "active_objects": 2,
+      "provider_status_counts": {
+        "PENDING": 2
+      },
+      "pending_active": 2,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "threads",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "facebook",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "instagram",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "tiktok",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "threads",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "pinterest",
+      "active_objects": 1,
+      "provider_status_counts": {
+        "PENDING": 1
+      },
+      "pending_active": 1,
+      "published": 0,
+      "error_or_failed": 0
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "youtube",
+      "active_objects": 0,
+      "provider_status_counts": {},
+      "pending_active": 0,
+      "published": 0,
+      "error_or_failed": 0
+    }
+  ],
+  "known_holds": [
+    {
+      "uuid": "4659816415037836014",
+      "known_id": null,
+      "source": "current_main",
+      "in_snapshot": true,
+      "snapshot_id": 423483793,
+      "date": {
+        "dateTime": "2026-11-18T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "facebook",
+          "status": "PENDING"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "-8339089096074181290",
+      "known_id": null,
+      "source": "current_main",
+      "in_snapshot": true,
+      "snapshot_id": 423484712,
+      "date": {
+        "dateTime": "2026-11-18T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "threads",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "-8305910546945982140",
+      "known_id": null,
+      "source": "current_main",
+      "in_snapshot": true,
+      "snapshot_id": 423484773,
+      "date": {
+        "dateTime": "2026-11-18T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "tiktok",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "-3731207601091163105",
+      "known_id": null,
+      "source": "current_main",
+      "in_snapshot": true,
+      "snapshot_id": 423484839,
+      "date": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "youtube",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "-4472725258033347244",
+      "known_id": 426613069,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "-7002936161864562103",
+      "known_id": 426613132,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "-7647174116509334899",
+      "known_id": 427288119,
+      "source": "R202_review_branch",
+      "in_snapshot": true,
+      "snapshot_id": 427288119,
+      "date": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "youtube",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "1744402171830094170",
+      "known_id": 426612259,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "2172266762404316928",
+      "known_id": 426613082,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "3614365779669041576",
+      "known_id": 427287938,
+      "source": "R202_review_branch",
+      "in_snapshot": true,
+      "snapshot_id": 427287938,
+      "date": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "tiktok",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "3963843144054620883",
+      "known_id": 427286519,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "4156060813550767248",
+      "known_id": 427286681,
+      "source": "R202_review_branch",
+      "in_snapshot": true,
+      "snapshot_id": 427286681,
+      "date": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "instagram",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "5647388074617226143",
+      "known_id": 426613048,
+      "source": "R202_review_branch",
+      "in_snapshot": false,
+      "snapshot_id": null,
+      "date": null,
+      "draft": null,
+      "autoPublish": null,
+      "provider_statuses": [],
+      "absence_interpretation": "ausserhalb dieses Planungsfensters oder sonst hier nicht enthalten; andernorts unbekannt"
+    },
+    {
+      "uuid": "6680239273933357186",
+      "known_id": 427287815,
+      "source": "R202_review_branch",
+      "in_snapshot": true,
+      "snapshot_id": 427287815,
+      "date": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "facebook",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    },
+    {
+      "uuid": "8935974072695279179",
+      "known_id": 427286591,
+      "source": "R202_review_branch",
+      "in_snapshot": true,
+      "snapshot_id": 427286591,
+      "date": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "provider_statuses": [
+        {
+          "network": "threads",
+          "status": "PENDING"
+        }
+      ],
+      "absence_interpretation": null
+    }
+  ],
+  "hold_totals": {
+    "known_current_main": 4,
+    "known_r202_review_branch": 11,
+    "total_records": 15,
+    "inside_window": 9,
+    "outside_window_or_absent_unknown_elsewhere": 6
+  },
+  "bounded_exact_duplicates_active_by_channel": [],
+  "dedupe_scope": "Exakte Caption-Textgleichheit und vollständige Medienlisten je Kanal unter den aktiven Objekten dieses Planungssnapshots. Keine Aussage über vollständige Masterhistorie, ältere/ausserhalb des Zeitfensters liegende Inhalte oder globale Duplikatfreiheit.",
+  "activeObjectsByGlobalFlagsIncludingPublished": 39,
+  "activeChannelPlacementsByGlobalFlagsIncludingPublished": 49,
+  "pendingObjectsByGlobalFlags": 34,
+  "pendingChannelPlacementsByGlobalFlags": 43,
+  "draftObjects": 9,
+  "draftProviderPlacements": 10,
+  "ownPublicationOrScheduleWrites": 0,
+  "qualityRightsOrChannelClearanceInferred": false,
+  "masterLedger": "Observed external provider states only. No invented masterId or film hash, no ledger initialisation/reset. Global active flags alone are not all per-channel gates."
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 203,
-  "updatedAt": "2026-11-14T10:45:58.534008+00:00",
+  "revision": 204,
+  "updatedAt": "2026-11-14T11:24:45.079126+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -578,12 +578,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r201_projector_variant_package_source_bound_two_place_draft_no_write",
+      "state": "r204_public_variant_cro_confirmed_existing_package_draft_preserved_no_write",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R201_FRESH_IDENTITY_PLANNING_PUBLIC_CJ_SOURCE_AND_OFFLINE_AUDIO_CRO_DRAFTS",
-      "lastEvidence": "Aktueller öffentlicher Projektor und ein exakter CJ-SKU-Read binden sieben Varianten. Lieferantenbeschreibung trennt A–G, ihre allgemeine Packliste ist nicht SKU-spezifisch. Genau zwei pauschale Lieferumfangsstellen als enger reversibler Entwurf korrigiert; übriger Body bytegleich. Kein Produktwrite, kein bestätigter Zubehörumfang für A.",
-      "nextAllowedStep": "Den konkreten Projektor-Zweistellendiff zur Freigabe prüfen; vor Umsetzung korrekte frische LuxeStyle-Identität und genaue Admin-Vorherwerte/geschützte Felder lesen. R200-Hoodie-/Notizbuch-Entwürfe erhalten.",
+      "belegArt": "R204_PUBLIC_VARIANT_READONLY_QA_HOST_HASH_PREFLIGHT_DRAFT_AND_EXTERNAL_DELIVERY",
+      "lastEvidence": "Öffentlicher Browsercheck für Projektor A/E/G bei390/1440px bestätigt passende Auswahl, ID, Preis und Hauptbild. ACHF34.90/ECHF51.90/GCHF35.90, öffentlicher JS-Hash exakt wieR201. Mobilen CTA im Screenshot bestätigt; Messgrenze statt CTA-Fehler. Kein Warenkorb/Checkout, Admin-ACTIVE/Tracking/Policy unbekannt. R201-Zweistellendiff unverändert und nicht angewendet.",
+      "nextAllowedStep": "R201-Lieferumfangsdiff als konkrete Verkaufsaktion behalten. Nach korrekter Shopify-Neuanmeldung frische Admin-Vorherwerte und geschützte Felder prüfen; keine neue unbewiesene Zubehörzusage. Der Browserread ersetzt keine Lieferanten-/Rechtefreigabe.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -1105,6 +1105,24 @@
           "sha256": "f029399a8844024682d0e55823ad29648d506fa73e076f248b14b5aa65350cd9",
           "gitBlobSha": "19fa85f48470cb02beacddc398ab6e729a91d8a6",
           "readAt": "2026-11-14T07:21:50.587500+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json",
+          "sha256": "784b8ecde57b9dff4a2ff32f8bcff23e2a37eab8d8b3a0b1b9ae4e9bef94a3c2",
+          "gitBlobSha": "1d22581735ab1e0cb28f7e3f8efdc9f16b9df4d3",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.md",
+          "sha256": "c58b66b0bd2db8a7f92c52d53a753d6ad0af178268e2bf531d2d43dd96ee0eef",
+          "gitBlobSha": "9995c6e2c25b36bf0e7ab1e37fad1ae888a06b17",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.md",
+          "sha256": "79b4b5a9dfe2c2ba5f79fd29d73fac8d7a099e9017fad51baf93025613aab3c6",
+          "gitBlobSha": "22cb4109176d5896db2e8f6b093eb0c30fa773d0",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1868,6 +1886,35 @@
               "path": "dropship/codex-handoff-20261018/PROJEKTOR-LIEFERUMFANG-20261114-08H-R201.patch",
               "sha256": "f029399a8844024682d0e55823ad29648d506fa73e076f248b14b5aa65350cd9",
               "gitBlobSha": "19fa85f48470cb02beacddc398ab6e729a91d8a6"
+            }
+          ]
+        },
+        {
+          "revision": 204,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r201_projector_variant_package_source_bound_two_place_draft_no_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R201_FRESH_IDENTITY_PLANNING_PUBLIC_CJ_SOURCE_AND_OFFLINE_AUDIO_CRO_DRAFTS",
+            "lastEvidence": "Aktueller öffentlicher Projektor und ein exakter CJ-SKU-Read binden sieben Varianten. Lieferantenbeschreibung trennt A–G, ihre allgemeine Packliste ist nicht SKU-spezifisch. Genau zwei pauschale Lieferumfangsstellen als enger reversibler Entwurf korrigiert; übriger Body bytegleich. Kein Produktwrite, kein bestätigter Zubehörumfang für A.",
+            "nextAllowedStep": "Den konkreten Projektor-Zweistellendiff zur Freigabe prüfen; vor Umsetzung korrekte frische LuxeStyle-Identität und genaue Admin-Vorherwerte/geschützte Felder lesen. R200-Hoodie-/Notizbuch-Entwürfe erhalten."
+          },
+          "summary": "Öffentlicher Browsercheck für Projektor A/E/G bei390/1440px bestätigt passende Auswahl, ID, Preis und Hauptbild. ACHF34.90/ECHF51.90/GCHF35.90, öffentlicher JS-Hash exakt wieR201. Mobilen CTA im Screenshot bestätigt; Messgrenze statt CTA-Fehler. Kein Warenkorb/Checkout, Admin-ACTIVE/Tracking/Policy unbekannt. R201-Zweistellendiff unverändert und nicht angewendet.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json",
+              "sha256": "784b8ecde57b9dff4a2ff32f8bcff23e2a37eab8d8b3a0b1b9ae4e9bef94a3c2",
+              "gitBlobSha": "1d22581735ab1e0cb28f7e3f8efdc9f16b9df4d3"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.md",
+              "sha256": "c58b66b0bd2db8a7f92c52d53a753d6ad0af178268e2bf531d2d43dd96ee0eef",
+              "gitBlobSha": "9995c6e2c25b36bf0e7ab1e37fad1ae888a06b17"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.md",
+              "sha256": "79b4b5a9dfe2c2ba5f79fd29d73fac8d7a099e9017fad51baf93025613aab3c6",
+              "gitBlobSha": "22cb4109176d5896db2e8f6b093eb0c30fa773d0"
             }
           ]
         }
@@ -2797,6 +2844,26 @@
           }
         ],
         "noPlatformWrite": true
+      },
+      "run204": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json",
+            "sha256": "784b8ecde57b9dff4a2ff32f8bcff23e2a37eab8d8b3a0b1b9ae4e9bef94a3c2",
+            "gitBlobSha": "1d22581735ab1e0cb28f7e3f8efdc9f16b9df4d3"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.md",
+            "sha256": "c58b66b0bd2db8a7f92c52d53a753d6ad0af178268e2bf531d2d43dd96ee0eef",
+            "gitBlobSha": "9995c6e2c25b36bf0e7ab1e37fad1ae888a06b17"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.md",
+            "sha256": "79b4b5a9dfe2c2ba5f79fd29d73fac8d7a099e9017fad51baf93025613aab3c6",
+            "gitBlobSha": "22cb4109176d5896db2e8f6b093eb0c30fa773d0"
+          }
+        ],
+        "noPlatformWriteOrRuntimeExecution": true
       }
     },
     {
@@ -3327,12 +3394,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r203_r202_confirmed_optional_workspace_copy_enospc_tmp_and_repo_preserved",
+      "state": "r204_variant_readonly_qa_and_host_hash_preflight_draft_auth_pending",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
-      "lastEvidence": "Ausdrücklicher Weiterauftrag: Core4 frisch, fünf fremde Auslieferungsbelege, CJrichtigerShop/2gezielteVerknüpfungsreads, GrayOriginalquellen, Merchantfehler und funktionaleReviewseite dokumentiert. ShopifyfalscherAppkontext unterstütztgetrennt, FolgereadUNAUTHORIZED; richtigeNeuanmeldungausstehend.0Store-/Social-/Feed-/CJconnectionwrites,1Appkontextwechsel.24IDs/Historien/Tagesgrenze erhalten; ClaudeEmpfangunbekannt. R203 Speicherzusatz: optionale Workspace-Kopie wegenENOSPC nicht möglich. R202HTML unter/tmp und13Repo-Dateien vollständig bestätigt; keine realen Git-Packs/Projektdaten gelöscht.",
-      "nextAllowedStep": "R202-Fortschritt weiterverwenden; lokale neue Dateien vorerst im verfügbaren task-eigenen/tmp-Bereich speichern und notwendige Belege im Repo sichern. Reale Git-Packs oder unbekannte Historie nicht zur Speichergewinnung löschen. Richtige Shopify-Neuanmeldung bleibt ausstehend.",
+      "belegArt": "R204_PUBLIC_VARIANT_READONLY_QA_HOST_HASH_PREFLIGHT_DRAFT_AND_EXTERNAL_DELIVERY",
+      "lastEvidence": "Weiterauftrag mit frischenCore4 fortgesetzt. Browservariantencheck ohneKaufaktion; vorhandenenDiagnosecode gepinnt geprüft und strikt nichtausführenden Host-/Hash-Preflight mit8Offline-Prüfgruppen vorbereitet. KeinLivefix/Workflowstart. ShopifyUNAUTHORIZED, korrekteNeuanmeldung ausstehend. Merchantidentität frisch, unterstützterExaktquellenread weiterblockiert.24IDs/Historien/Tagesreportstand erhalten; ClaudeEmpfangunbekannt.",
+      "nextAllowedStep": "Richtige LuxeStyle-App-Neuanmeldung technisch abschliessen; vorhandene KollektionIDs und R201Diff erhalten. Preflight ist nur dokumentierter Entwurf, keine installierte Schutzregel. ExakteMerchantproduktressource und echte rechtengeprüfte Filmquellen beschaffen; ohne neue Tagesreports oder Zusatzautomation weiterarbeiten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3719,6 +3786,36 @@
           "sha256": "879897a9513216ab66092a1d298d813d7cc5e3a00c7be08efb35fc8a21fee14b",
           "gitBlobSha": "6a2dbef5cee134a9054020cd0317618a7f1d2f5a",
           "readAt": "2026-11-14T10:45:58.534008+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+          "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+          "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+          "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+          "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+          "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+          "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+          "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+          "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+          "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+          "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4266,6 +4363,45 @@
               "path": "dropship/codex-handoff-20261018/SPEICHERSTATUS-20261114-R203.json",
               "sha256": "879897a9513216ab66092a1d298d813d7cc5e3a00c7be08efb35fc8a21fee14b",
               "gitBlobSha": "6a2dbef5cee134a9054020cd0317618a7f1d2f5a"
+            }
+          ]
+        },
+        {
+          "revision": 204,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r203_r202_confirmed_optional_workspace_copy_enospc_tmp_and_repo_preserved",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
+            "lastEvidence": "Ausdrücklicher Weiterauftrag: Core4 frisch, fünf fremde Auslieferungsbelege, CJrichtigerShop/2gezielteVerknüpfungsreads, GrayOriginalquellen, Merchantfehler und funktionaleReviewseite dokumentiert. ShopifyfalscherAppkontext unterstütztgetrennt, FolgereadUNAUTHORIZED; richtigeNeuanmeldungausstehend.0Store-/Social-/Feed-/CJconnectionwrites,1Appkontextwechsel.24IDs/Historien/Tagesgrenze erhalten; ClaudeEmpfangunbekannt. R203 Speicherzusatz: optionale Workspace-Kopie wegenENOSPC nicht möglich. R202HTML unter/tmp und13Repo-Dateien vollständig bestätigt; keine realen Git-Packs/Projektdaten gelöscht.",
+            "nextAllowedStep": "R202-Fortschritt weiterverwenden; lokale neue Dateien vorerst im verfügbaren task-eigenen/tmp-Bereich speichern und notwendige Belege im Repo sichern. Reale Git-Packs oder unbekannte Historie nicht zur Speichergewinnung löschen. Richtige Shopify-Neuanmeldung bleibt ausstehend."
+          },
+          "summary": "Weiterauftrag mit frischenCore4 fortgesetzt. Browservariantencheck ohneKaufaktion; vorhandenenDiagnosecode gepinnt geprüft und strikt nichtausführenden Host-/Hash-Preflight mit8Offline-Prüfgruppen vorbereitet. KeinLivefix/Workflowstart. ShopifyUNAUTHORIZED, korrekteNeuanmeldung ausstehend. Merchantidentität frisch, unterstützterExaktquellenread weiterblockiert.24IDs/Historien/Tagesreportstand erhalten; ClaudeEmpfangunbekannt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+              "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+              "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+              "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+              "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+              "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+              "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+              "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+              "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+              "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+              "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
             }
           ]
         }
@@ -4887,6 +5023,36 @@
           }
         ],
         "noStoreOrPublicationWrite": true
+      },
+      "run204": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+            "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+            "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+            "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+            "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+            "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+            "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+            "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+            "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+            "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+            "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
+          }
+        ],
+        "noPlatformWriteOrRuntimeExecution": true
       }
     },
     {
@@ -15135,12 +15301,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r202_five_external_delivery_states_confirmed_no_own_publish",
+      "state": "r204_six_external_provider_states_one_new_tiktok_no_own_publish",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
-      "lastEvidence": "Frische Metricool-Identitäten passend.48Objekte; fünf Providerzustände PUBLISHED mit IDs/URLs auf vier bestehenden Objekten beobachtet, keine eigenen Publikationen.35Objekte/44Platzierungen noch aktiv PENDING; neun Entwürfe. Gegen R201 nur Providerzustände geändert, keine aktiven überfälligen Zustände im Read11:09. Lücken YouTube15–21/Threads15 bleiben; keine historischen Mastergleichheiten behauptet.",
-      "nextAllowedStep": "Bestehende Auslieferungen/Termine/UUIDs erhalten. Keine Ersatzposts oder Löschungen ohne gesicherten Duplikatbeleg. Neue Ausspielung erst nach korrektem Shopgate, Film-/Rechte-/Kanal-/Ledgerprüfung.",
+      "belegArt": "R204_PUBLIC_VARIANT_READONLY_QA_HOST_HASH_PREFLIGHT_DRAFT_AND_EXTERNAL_DELIVERY",
+      "lastEvidence": "Frische Metricool-Marke/Kanäle passen.48Objekte unverändert zuR202, nur TikTok422279700/UUID8178449842924373712 jetztPUBLISHED mitProviderID7707980998968937760/URL. Insgesamt6fremde PUBLISHED-Zustände auf5Objekten,34aktivePENDINGObjekte/43Plätze.9Drafts;YouTube15–21/Threads15 offen. Keine exakten Text-/Medienlistenduplikate im Fenster, keine globale Historienfreigabe.0Writes/Löschungen.",
+      "nextAllowedStep": "Bestehende UUIDs/Termine/Holds erhalten und nur fällige Zustände gezielt prüfen. Neue Ausspielung erst nach korrektem Shop-, Film-/Rechte-/Kanal-/Ledgergate; fehlende Masterhistorie nicht als leer behandeln und keine Ersatzkopien anlegen.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -15418,6 +15584,18 @@
           "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
           "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42",
           "readAt": "2026-11-14T10:30:10.538871+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SOCIAL-AUSLIEFERUNG-20261114-R204.json",
+          "sha256": "980410811fb7b8a09000f7e247122bfef3c1d35e46ea88f74c8e68631cadbce7",
+          "gitBlobSha": "5eda2b79af2b6efef3e552bdb71fad7f11573821",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+          "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+          "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41",
+          "readAt": "2026-11-14T11:24:45.079126+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15910,6 +16088,30 @@
               "path": "dropship/codex-handoff-20261018/ZUGANG-STATUS-20261114-R202.json",
               "sha256": "1596fbef90dd7fad65fc424a56418b93a6121647343db5d56def1fd4b487db8a",
               "gitBlobSha": "6c92ab07bb8b59d8a65930b8e2c9074e53498d42"
+            }
+          ]
+        },
+        {
+          "revision": 204,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r202_five_external_delivery_states_confirmed_no_own_publish",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
+            "lastEvidence": "Frische Metricool-Identitäten passend.48Objekte; fünf Providerzustände PUBLISHED mit IDs/URLs auf vier bestehenden Objekten beobachtet, keine eigenen Publikationen.35Objekte/44Platzierungen noch aktiv PENDING; neun Entwürfe. Gegen R201 nur Providerzustände geändert, keine aktiven überfälligen Zustände im Read11:09. Lücken YouTube15–21/Threads15 bleiben; keine historischen Mastergleichheiten behauptet.",
+            "nextAllowedStep": "Bestehende Auslieferungen/Termine/UUIDs erhalten. Keine Ersatzposts oder Löschungen ohne gesicherten Duplikatbeleg. Neue Ausspielung erst nach korrektem Shopgate, Film-/Rechte-/Kanal-/Ledgerprüfung."
+          },
+          "summary": "Frische Metricool-Marke/Kanäle passen.48Objekte unverändert zuR202, nur TikTok422279700/UUID8178449842924373712 jetztPUBLISHED mitProviderID7707980998968937760/URL. Insgesamt6fremde PUBLISHED-Zustände auf5Objekten,34aktivePENDINGObjekte/43Plätze.9Drafts;YouTube15–21/Threads15 offen. Keine exakten Text-/Medienlistenduplikate im Fenster, keine globale Historienfreigabe.0Writes/Löschungen.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/SOCIAL-AUSLIEFERUNG-20261114-R204.json",
+              "sha256": "980410811fb7b8a09000f7e247122bfef3c1d35e46ea88f74c8e68631cadbce7",
+              "gitBlobSha": "5eda2b79af2b6efef3e552bdb71fad7f11573821"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+              "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+              "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
             }
           ]
         }
@@ -17147,6 +17349,21 @@
           }
         ],
         "noStoreOrPublicationWrite": true
+      },
+      "run204": {
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/SOCIAL-AUSLIEFERUNG-20261114-R204.json",
+            "sha256": "980410811fb7b8a09000f7e247122bfef3c1d35e46ea88f74c8e68631cadbce7",
+            "gitBlobSha": "5eda2b79af2b6efef3e552bdb71fad7f11573821"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+            "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+            "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
+          }
+        ],
+        "noPlatformWriteOrRuntimeExecution": true
       }
     },
     {
@@ -19651,6 +19868,46 @@
         }
       ],
       "taskCount": 24
+    },
+    {
+      "revision": 204,
+      "at": "2026-11-14T11:24:45.079126+00:00",
+      "actor": "codex",
+      "summary": "A/E/G öffentlich in zwei Browserbreiten geprüft, Preis-/Bildbindung passend; kein CTA-Fehler. Strikt lesender Host-/Hash-Preflight für vorhandene Diagnose als unintegrierter Entwurf mit8Offlinegruppen geprüft. Sechste fremde Auslieferung beobachtet. Merchantidentität/Exaktquellenblock dokumentiert.0Plattformwrites/Render/Workflowstarts/neueTagesreports;24IDs/Historien/Kaufwatchende/Zeitplan erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+          "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+          "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.md",
+          "sha256": "79b4b5a9dfe2c2ba5f79fd29d73fac8d7a099e9017fad51baf93025613aab3c6",
+          "gitBlobSha": "22cb4109176d5896db2e8f6b093eb0c30fa773d0"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json",
+          "sha256": "784b8ecde57b9dff4a2ff32f8bcff23e2a37eab8d8b3a0b1b9ae4e9bef94a3c2",
+          "gitBlobSha": "1d22581735ab1e0cb28f7e3f8efdc9f16b9df4d3"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+          "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+          "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SOCIAL-AUSLIEFERUNG-20261114-R204.json",
+          "sha256": "980410811fb7b8a09000f7e247122bfef3c1d35e46ea88f74c8e68631cadbce7",
+          "gitBlobSha": "5eda2b79af2b6efef3e552bdb71fad7f11573821"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+          "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+          "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_claude_receipt"
     }
   ],
   "salesGoal": {
@@ -43779,5 +44036,74 @@
     "platformWrites": 0,
     "newRenders": 0,
     "newAnalyticsOrFlowReports": 0
+  },
+  "run204": {
+    "recordedAtUTC": "2026-11-14T11:24:45.079126+00:00",
+    "dateZurich": "2026-11-14",
+    "sources": {
+      "planning": {
+        "path": "dropship/codex-handoff-20261018/SOCIAL-AUSLIEFERUNG-20261114-R204.json",
+        "sha256": "980410811fb7b8a09000f7e247122bfef3c1d35e46ea88f74c8e68631cadbce7",
+        "gitBlobSha": "5eda2b79af2b6efef3e552bdb71fad7f11573821"
+      },
+      "screenshot_mobile": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-MOBILE-20261114-R204.png",
+        "sha256": "d7f2fac9edb86ed26ab45a2971e298e113837b94bbbcbaf10deb8d7f27e058bf",
+        "gitBlobSha": "d8895a745631b264d4f7d94cbd67f9fb004a4749"
+      },
+      "screenshot_desktop": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-DESKTOP-20261114-R204.png",
+        "sha256": "4254af07921585b0599363c93f6a20eaa6d594feba937694dccd74eac2a86713",
+        "gitBlobSha": "51030c2bf55c3a6c2f154ba19c6d4e0548c3e636"
+      },
+      "cro": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.json",
+        "sha256": "784b8ecde57b9dff4a2ff32f8bcff23e2a37eab8d8b3a0b1b9ae4e9bef94a3c2",
+        "gitBlobSha": "1d22581735ab1e0cb28f7e3f8efdc9f16b9df4d3"
+      },
+      "cro_note": {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-VARIANTENPRUEFUNG-20261114-R204.md",
+        "sha256": "c58b66b0bd2db8a7f92c52d53a753d6ad0af178268e2bf531d2d43dd96ee0eef",
+        "gitBlobSha": "9995c6e2c25b36bf0e7ab1e37fad1ae888a06b17"
+      },
+      "gate_source": {
+        "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.mjs",
+        "sha256": "4395a2368ebc7d07d9bb5ee9d4118f090dfe7303714a9e1fd023c2deb7b5be58",
+        "gitBlobSha": "ae3c2a8859761d2bea13a06be19d6a0e2a3e9d94"
+      },
+      "gate_test": {
+        "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs",
+        "sha256": "50a6418d28c4e0aba6db13fd11394d0c13a229d0a9977f775beea2f372e5f377",
+        "gitBlobSha": "ee619b66cde5bf957f72e946abe313aef6901ab1"
+      },
+      "gate_review": {
+        "path": "dropship/codex-handoff-20261018/LUXESTYLE-READONLY-GATE-20261114-R204.json",
+        "sha256": "3b706416305cf4ff3d861d0645cab3e1513d321ca7f05988a8597c9d638c4478",
+        "gitBlobSha": "303566cd6f0bd8156b40def47a0f9621ba389c4a"
+      },
+      "merchant": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-EXAKTQUELLE-20261114-R204.json",
+        "sha256": "33a5d07526f8bb0fbb8d1a9721d6c3edd272c63e5d3de99d00751e08a30f4287",
+        "gitBlobSha": "be098b449ea39b7865d3b9cd37ef51d7009f4f47"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.md",
+        "sha256": "79b4b5a9dfe2c2ba5f79fd29d73fac8d7a099e9017fad51baf93025613aab3c6",
+        "gitBlobSha": "22cb4109176d5896db2e8f6b093eb0c30fa773d0"
+      },
+      "packet": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R204.json",
+        "sha256": "b3690ab7d657d4f98a2e501a19ee603ac602bb02c5a646870a89b25cd6b6b723",
+        "gitBlobSha": "0f01a5700bc9d29343e18f6e34722d99feb83a41"
+      }
+    },
+    "ownPlatformWrites": 0,
+    "ownPublishedPlacements": 0,
+    "externalPublishedObserved": 6,
+    "newlyObservedExternalPublished": 1,
+    "newMetricsFlowOrBroadSalesReports": 0,
+    "newRenders": 0,
+    "runtimeOrWorkflowExecuted": false,
+    "claudeReceipt": "unknown_no_receipt"
   }
 }

@@ -1,0 +1,50 @@
+{
+  "reviewedMainCommit": "a419661f701e2ac7710a9d1e5df801664e2098bc",
+  "sourceHashes": {
+    ".github/workflows/diagnose-actions-zugang.yml": {
+      "bytes": 1355,
+      "sha256": "d2b891eb4dbfbbfd759e1593a553dd955958e2d84268b444c39baeafaddd323a",
+      "gitBlobSha": "174eacb149e7a95995f23e622618e795050e1da0"
+    },
+    "automation/diagnose_actions_zugang.mjs": {
+      "bytes": 6075,
+      "sha256": "86fe9eac9d08b1664503ca93d887fb427ed5f0505eb13ef855c3b363b9eba506",
+      "gitBlobSha": "bb73779eb6dacaf26d3ac95588c7909ac580429f"
+    },
+    "automation/lib/shopify_secret.mjs": {
+      "bytes": 1184,
+      "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c",
+      "gitBlobSha": "da8105d94e258fc9b8225a58267ac29164d954cf"
+    }
+  },
+  "existingHelperUsed": "Existing diagnosis and shopify_secret source reviewed; no new authentication client or installation.",
+  "finding": "Existing workflow/diagnosis logs SHOPIFY_SHOP format but does not fail closed for a foreign configured hostname before an OAuth credential POST. A configured LuxeStyle runtime target is not proven.",
+  "workflowExecuted": false,
+  "runtimeCredentialsReadOrCopied": false,
+  "draft": "Strict local preflight only: exact host allowlist, then two pinned file hashes. No diagnosis import, network, OAuth, mutations, or execution mode. Config match is explicitly not runtime identity proof.",
+  "deployedOrExistingScriptChanged": false,
+  "tests": {
+    "task": "LUXESTYLE-READONLY-GATE-20261114-R204",
+    "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/luxe-continue-20261114-r204/runtime-review/LUXESTYLE-READONLY-GATE-20261114-R204.test.mjs /tmp/r204-source-checkout.qHzfuW",
+    "sourceRoot": "/tmp/r204-source-checkout.qHzfuW",
+    "sourceSha256": {
+      "automation/diagnose_actions_zugang.mjs": "86fe9eac9d08b1664503ca93d887fb427ed5f0505eb13ef855c3b363b9eba506",
+      "automation/lib/shopify_secret.mjs": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c"
+    },
+    "networkUsed": false,
+    "credentialsRead": false,
+    "diagnosisImported": false,
+    "workflowExecuted": false,
+    "testsPassed": [
+      "strict string host allowlist rejects missing, boxed string, URL, foreign, suffix and path variants; accepts trim/case normalization",
+      "plan reads only SHOPIFY_SHOP and marks identity/network false",
+      "valid canonical fixture preflight validates and reports both pins",
+      "foreign host rejected before missing-file access",
+      "missing diagnosis fails closed",
+      "tampered diagnosis fails closed",
+      "tampered helper fails closed",
+      "execution and unknown flags rejected without import or execution"
+    ]
+  },
+  "futureBoundary": "This handoff code is review documentation, not installed protection or proof of a working runtime. No workflow dispatch, deployment or current credential binding has been performed."
+}

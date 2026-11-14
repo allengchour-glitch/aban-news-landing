@@ -1,0 +1,46 @@
+{
+  "revision": 204,
+  "dateZurich": "2026-11-14",
+  "recordedAtUTC": "2026-11-14T11:24:45.079126+00:00",
+  "ownerRequest": "weiter",
+  "identity": {
+    "readAtUTC": "2026-11-14 11:05:53 UTC",
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "instagramData": "luxestyle.ch",
+        "facebookData": "1049840534888592",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    },
+    "shopify": {
+      "state": "UNAUTHORIZED_reauthentication_pending",
+      "verified": false
+    }
+  },
+  "observedExternalPublishedPlacements": 6,
+  "newlyObservedExternalPlacements": 1,
+  "ownPublishedPlacements": 0,
+  "platformWrites": 0,
+  "newRenders": 0,
+  "workflowDispatchesOrDeployments": 0,
+  "newMetricsFlowOrBroadSalesReports": 0,
+  "purchaseWatchEnded": true,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "professionalMasterApproved": false,
+  "masterMp4Sha256": null,
+  "newWork": [
+    "Restricted public A/E/G variant interaction in mobile/desktop; no matching price/image/CTA defect proven.",
+    "Existing readonly helper source reviewed; strict non-executing host/hash preflight prepared and eight offline groups passed.",
+    "Sixth external provider publication observed; no own social write.",
+    "Merchant identity verified; exact source read safely bounded by unsupported filter/missing resource."
+  ],
+  "nextSalesStep": "Correct LuxeStyle app reauthentication, then fresh Admin values and existing R201 two-place package-copy proposal; preserve known Mode/Schmuck collection IDs.",
+  "nextProductionStep": "Qualify exact A film takes and media/music rights for the same master; do not substitute old or slideshow clips.",
+  "claudeReceipt": "unknown_no_receipt"
+}

@@ -1,0 +1,28 @@
+{
+  "as_of": "2026-11-14",
+  "scope": {
+    "shop_id": "5797470070",
+    "offers": [
+      "shopify_ZZ_15448834736513_55877809340801",
+      "shopify_ZZ_15448834736513_67652260430215"
+    ]
+  },
+  "identity_read": {
+    "tool": "HYPD merchant_list_shops",
+    "result": [
+      {
+        "name": "LuxeStyle CH",
+        "shop_id": "5797470070",
+        "time_zone": null
+      }
+    ]
+  },
+  "exact_product_read": "not_run",
+  "blocker": "HYPD merchant_get_product requires a product_name copied verbatim from merchant_list_products. Existing evidence has matching offer IDs and a returned row id, but not product_name. HYPD merchant_list_products has pagination only and no exact offer filter; using it here could require broad catalog pagination. Windsor's prior exact filter was passed but server-side support was unverified; the combined-field request failed, so no safe exact targeted retry is documented.",
+  "available_source_evidence": "Prior targeted HYPD merchant_list_products evidence at /tmp/luxe-other-work-20261114/merchant-current.json identifies both offers and image_unwanted_overlays issues on n:image_link. It does not return submitted image_link values or full product_name resources.",
+  "windsor_failure_context": "Prior call at /tmp/luxe-continue-20261114-r202/merchant/windsor-read.json returned cannot-query-together for mixed product_* and data_source_* fields; it did not establish absence of rows.",
+  "source_image_link": null,
+  "primary_data_source": null,
+  "writes": 0,
+  "performance_or_orders_queries": 0
+}

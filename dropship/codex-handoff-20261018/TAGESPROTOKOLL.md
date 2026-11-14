@@ -2362,3 +2362,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Dateilieferung | Zusätzliche Kopie der geprüften Reviewseite unter/workspace versucht | mkdir scheiterteENOSPC; Original unter/tmp und13R202Repo-Dateien vollständig gesichert. Kein Repo-Schreibfehler oder verlorenes Deliverable |
 | Speicherprüfung | Belegung der Arbeitsumgebung gezielt gelesen, grosse benannte Git-Packs erkannt |/workspace voll,/tmp4.4Gverfügbar. Keine echten Git-Packs, Dateien oder Historie gelöscht; task-eigenen/tmp-Bereich nutzen |
 | Kontinuität | Nur Speicherzusatz im Gedächtnis ergänzt | Kein neuer Film/Post/Plattformwrite/Tagesreport/Kauf-Watch;24IDs/Historien/alteAufträge erhalten |
+
+### R204 – Ausdrücklicher Weiterauftrag, begrenzte öffentliche Prüfung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Planung / Auslieferung | Marke und sechs Kanäle frisch geprüft; 48 Objekte gelesen und gegen R202 abgeglichen | Eine weitere TikTok-Lieferung bestätigt, insgesamt sechs externe PUBLISHED-Zustände. 34 aktive PENDING-Objekte / 43 Plätze. Keine eigene Publikation, keine exakten Duplikate im Fenster; YouTube15.–21./Threads15. offen |
+| Produkt / CRO | A/E/G öffentlich bei390/1440px ausgewählt; ID, Preis und Hauptbild verglichen; mobilen CTA visuell geprüft | Alle drei Bindungen passend. Öffentliche JS200/hashgleich R201; Admin-ACTIVE/Tracking/Policy unbekannt. Kein CTA-Bug belegt, kein Warenkorb/Checkout und keine Shopänderung |
+| Zugangscode | Vorhandene Diagnose/Helfer gepinnt gelesen; nur lesenden Host-/Hash-Preflight erstellt und acht Offline-Prüfgruppen validiert | Fremde Shops/Quelländerungen werden abgelehnt. Kein Diagnoseimport, Netzwerk, Credential-Read oder Workflowstart; nur unintegrierter Entwurf. Shopify-Neuanmeldung bleibt nötig |
+| Merchant | LuxeStyle-Merchantidentität frisch bestätigt; genaue Read-Verträge mit vorhandenen Offer-Belegen verglichen | product_name/echteimage_link/Primärquelle weiter unbekannt; kein dokumentierter Exaktfilter. Keine Massenpagination, wiederholter Feldmix oder Feedänderung |
+| Kontinuität | 24 IDs/Historien und R200-Tagesreports erhalten; R201-Verkaufsdiff und denselben Master weitergeführt | Null neue Kennzahl-/Flow-/breite Verkaufsreports, Kauf-Watch, Kundenkontakt, Render oder Plattformwrites. Versand/Domain/Zeitplan erhalten; vier DNS-Records bereits genehmigt, Writer fehlt. Claude-Empfang unbekannt |
