@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 215,
-  "updatedAt": "2026-11-14T18:20:39.154619+00:00",
+  "revision": 216,
+  "updatedAt": "2026-11-14T19:20:18.415060+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3446,12 +3446,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r214_evening_consolidated_daylog_current_A_source_and_single_merchant_case_advanced",
+      "state": "r216_indexing_followup_four_category_links_and_due_external_posts_confirmed",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Bestehenden19hAbendlauf fortgesetzt: Core4 frisch/Tagesschranke eingehalten,48Queueobjekte und aktuelle Shop-/Kanalidentität geprüft; exakte CJ-A-Zuordnung und nativen Merchant-Redirect neu belegt. SameMaster und6Captions erhalten, konsolidierter Tagesblock mit eigenen vs externen Tätigkeiten. R212/R200 gegenMainf88e1ba nur lesend geprüft. Keine neuen Servicewrites oder Tagesreports/Orders/Renders/Automation.",
-      "nextAllowedStep": "Konkrete native und rechtegeklärte A-Aufnahmen bzw. neue andereSessionMP4Quelle sichern; denselbenMaster weiterentwickeln. Einzel-Merchant-Bereinigung bleibt Freigabeentwurf. BestehendeZeiten/24IDs/Quellen/Socialgates erhalten; neueClaudeKenntnisnahme nur mit Beleg.",
+      "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
+      "lastEvidence": "Userweiter nach Indexierungslink: vier Websitekategorien in beiden Propertiesindexiert undHTTP200 belegt; Quellen-/Zielpfade sowie offizielle Prüflinks gespeichert. Fällige FB/IGStoriesundPinterestpin kanalweisePUBLISHED aus bestehenderPlanung,0eigenePosts. FreshShop6227837/ZurichsechsKanälepassend. Core4/24IDs/Tagesschrankenfortgeführt, nur eigene redundanteDokumentcacheszurSchreibbarkeitbereinigt.",
+      "nextAllowedStep": "Weiterarbeit an belegten SEO-/Merchant-Einzelfällen und demselben professionellenMaster. Keine unbekannten Shop-App-Websitepfade ohne Prüfung aktivieren/indexieren. Neue Videolieferung/Rechte/Nativtakes weiterhin konkret beschaffen; letzte Übergabe nutzen, Claude-Empfang nur mit Beleg behaupten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4162,6 +4162,18 @@
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
           "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+          "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+          "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+          "readAt": "2026-11-14T19:20:18.415060+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+          "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+          "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+          "readAt": "2026-11-14T19:20:18.415060+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -5142,6 +5154,30 @@
               "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
+        },
+        {
+          "revision": 216,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r214_evening_consolidated_daylog_current_A_source_and_single_merchant_case_advanced",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
+            "lastEvidence": "Bestehenden19hAbendlauf fortgesetzt: Core4 frisch/Tagesschranke eingehalten,48Queueobjekte und aktuelle Shop-/Kanalidentität geprüft; exakte CJ-A-Zuordnung und nativen Merchant-Redirect neu belegt. SameMaster und6Captions erhalten, konsolidierter Tagesblock mit eigenen vs externen Tätigkeiten. R212/R200 gegenMainf88e1ba nur lesend geprüft. Keine neuen Servicewrites oder Tagesreports/Orders/Renders/Automation.",
+            "nextAllowedStep": "Konkrete native und rechtegeklärte A-Aufnahmen bzw. neue andereSessionMP4Quelle sichern; denselbenMaster weiterentwickeln. Einzel-Merchant-Bereinigung bleibt Freigabeentwurf. BestehendeZeiten/24IDs/Quellen/Socialgates erhalten; neueClaudeKenntnisnahme nur mit Beleg."
+          },
+          "summary": "Userweiter nach Indexierungslink: vier Websitekategorien in beiden Propertiesindexiert undHTTP200 belegt; Quellen-/Zielpfade sowie offizielle Prüflinks gespeichert. Fällige FB/IGStoriesundPinterestpin kanalweisePUBLISHED aus bestehenderPlanung,0eigenePosts. FreshShop6227837/ZurichsechsKanälepassend. Core4/24IDs/Tagesschrankenfortgeführt, nur eigene redundanteDokumentcacheszurSchreibbarkeitbereinigt.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+            }
+          ]
         }
       ],
       "reviewPacket": {
@@ -6097,6 +6133,23 @@
         ],
         "businessWrites": 0,
         "masterFinished": false,
+        "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run216": {
+        "sources": {
+          "indexing": {
+            "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+            "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+            "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+          },
+          "report": {
+            "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+            "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+            "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+          }
+        },
+        "serviceWrites": 0,
+        "ownNewPosts": 0,
         "newClaudeReceipt": "unknown_no_receipt"
       }
     },
@@ -14549,12 +14602,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r214_exact_shop_redirect_object_and_public301_confirmed_no_live_changes",
+      "state": "r216_four_existing_categories_currently_indexed_both_properties_http200",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Zum R212-URLbefund jetzt Shopify-Redirect2042634568071 und Produkt-DRAFT nativ bestätigt; erneute öffentliche301-Gegenprobe passt. R211 bestätigten SEO-Livestand erhalten, keine Ranking-/Shopänderung.",
-      "nextAllowedStep": "Die einzelne alte Merchant-Zuordnung an ihrer nachgewiesenenQuelle bereinigen, Produkt und Kategorie unverändert; keinen Kategorie-noindex oder erfundenen Produktpreis setzen. Live-SEO nicht erneut publizieren.",
+      "belegArt": "R216_EIGHT_GSC_READS_FOUR_URLS_BOTH_PROPERTIES_PUBLIC_HTTP_AND_DUE_PUBLISHED_STATES",
+      "lastEvidence": "Vier konkrete R187-URLs frisch über Domain- und dieselbe URL-Präfix-Property geprüft: Futterautomaten/Hundewelt/Selbstgestalten/Camping allePASS/gesendetindexiert, Google/UserCanonical gleich, öffentlich200/selbstkanonisch. Acht begrenzte Inspections, keine Performanceabfrage. Crawl12Nov ist kein Indexierungszeitpunkt oder Codex-Ursachenbeleg. Alte R187-Befunde datiert erhalten. Vier Shop-App-Websitepfade echte404, Ursacheunbekannt/nichtaktiviert.",
+      "nextAllowedStep": "Nur weitere konkret belegte Indexierungsfälle eng auswählen; keine globale Neueinreichung oder Katalogquote. R214-Merchant-Einzelbereinigungsentwurf und seine Vorher-/Editor-/Freigabegates getrennt erhalten; keine pauschale DRAFT-/Quellen-/Redirectänderung.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -15042,6 +15095,18 @@
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
           "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+          "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+          "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2",
+          "readAt": "2026-11-14T19:20:18.415060+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+          "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+          "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c",
+          "readAt": "2026-11-14T19:20:18.415060+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15623,6 +15688,30 @@
               "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
               "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
               "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
+            }
+          ]
+        },
+        {
+          "revision": 216,
+          "dateZurich": "2026-11-14",
+          "previousEvidencePreserved": {
+            "state": "r214_exact_shop_redirect_object_and_public301_confirmed_no_live_changes",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
+            "lastEvidence": "Zum R212-URLbefund jetzt Shopify-Redirect2042634568071 und Produkt-DRAFT nativ bestätigt; erneute öffentliche301-Gegenprobe passt. R211 bestätigten SEO-Livestand erhalten, keine Ranking-/Shopänderung.",
+            "nextAllowedStep": "Die einzelne alte Merchant-Zuordnung an ihrer nachgewiesenenQuelle bereinigen, Produkt und Kategorie unverändert; keinen Kategorie-noindex oder erfundenen Produktpreis setzen. Live-SEO nicht erneut publizieren."
+          },
+          "summary": "Vier konkrete R187-URLs frisch über Domain- und dieselbe URL-Präfix-Property geprüft: Futterautomaten/Hundewelt/Selbstgestalten/Camping allePASS/gesendetindexiert, Google/UserCanonical gleich, öffentlich200/selbstkanonisch. Acht begrenzte Inspections, keine Performanceabfrage. Crawl12Nov ist kein Indexierungszeitpunkt oder Codex-Ursachenbeleg. Alte R187-Befunde datiert erhalten. Vier Shop-App-Websitepfade echte404, Ursacheunbekannt/nichtaktiviert.",
+          "sources": [
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+              "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+              "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+            },
+            {
+              "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+              "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+              "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
             }
           ]
         }
@@ -16327,6 +16416,23 @@
         ],
         "businessWrites": 0,
         "masterFinished": false,
+        "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run216": {
+        "sources": {
+          "indexing": {
+            "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+            "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+            "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+          },
+          "report": {
+            "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+            "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+            "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+          }
+        },
+        "serviceWrites": 0,
+        "ownNewPosts": 0,
         "newClaudeReceipt": "unknown_no_receipt"
       }
     },
@@ -22975,6 +23081,26 @@
           "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261114-19H-R214.md",
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 216,
+      "at": "2026-11-14T19:20:18.415060+00:00",
+      "actor": "codex",
+      "summary": "Vier frühereIndexierungsfällebegrenztneu geprüft: beidelegitimenGSCPropertiesPASS/selbstkanonisch,vierWebsiteHTTP200;offiziellePrüflinks gespeichert. KeineeigeneIndexierungsbeantragung/Seitenänderung. VierseparateShop-App-Pfade404keineAktivierung. FälligeStoriesFB/IGundPinterestpinfrischPUBLISHED aus bestehenderPlanung;0eigenePosts. Core4/24IDs/Historienerhalten,Tagesschranke/Automationunverändert;ClaudeEmpfangunbekannt.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+          "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+          "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+          "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+          "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
         }
       ],
       "taskCount": 24,
@@ -47761,5 +47887,32 @@
       "newGoogleQuery": false,
       "newBusinessWrite": false
     }
+  },
+  "run216": {
+    "recordedAtUTC": "2026-11-14T19:20:18.415060+00:00",
+    "dateZurich": "2026-11-14",
+    "kind": "owner_followup_existing_work_not_new_automation",
+    "sources": {
+      "indexing": {
+        "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.json",
+        "sha256": "6707bd55f1836ab4bc64773d72406c941ff6446d6384334a68d55f8fecb3c14e",
+        "gitBlobSha": "50f284b9c4f23901aef12e9d9a80e75c17f6aef2"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/INDEXIERUNG-LINKS-20261114-R216.md",
+        "sha256": "97a699a28db750ee54a5340c254d9908068d390b60e0b5292bfe0febd3a615ba",
+        "gitBlobSha": "330f6c2180f50c19101e5d990a554eddada98a4c"
+      }
+    },
+    "categoryUrls": 4,
+    "gscInspectionCalls": 8,
+    "propertiesAgree": true,
+    "indexingRequestsSubmitted": 0,
+    "freshWebsiteHttp200": 4,
+    "separateShopAppWebsite404": 4,
+    "dueExistingPostsProviderStatesPublished": 3,
+    "ownPostsAndServiceWrites": 0,
+    "dailyReportsRepeated": false,
+    "claudeReceipt": "unknown_no_receipt"
   }
 }

@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R216 – 14.11.2026: vier Kategorie-Indexierungen bestätigt, direkte Prüflinks bereit
+
+[Prüflinks und Bericht](INDEXIERUNG-LINKS-20261114-R216.md) · [Google-/HTTP-/Publikationsbelege](INDEXIERUNG-LINKS-20261114-R216.json). Futterautomaten, Hundewelt, Selbst gestalten und Camping frisch in Domain- und URL-Präfix-Property als «Gesendet und indexiert» bestätigt, beide Canonicals passend und Website HTTP200. Nur vier URLs, keine Katalogquote/Indexierungszeit- oder Codex-Wirkungsbehauptung; keine eigene Beantragung. Vier separate Shop-App-Websitepfade404, Ursache offen und unverändert. Fällige bestehende StoriesFB/IG19:30 und Pinterest20:00 kanalweisePUBLISHED bestätigt;0eigenePosts/Servicewrites/neueTagesreports/Automation.24IDs/Historieerhalten,ClaudeEmpfangunbekannt.
+
 ## R214 – 14.11.2026 abends: genaue CJ-A-Zuordnung und Merchant-Redirect belegt, Tagesstand konsolidiert
 
 [Abendpaket/Tagestabelle](CONTENT-VERKAUFSPAKET-20261114-19H-R214.md) · [Planung](PLANUNG-20261114-19H-R214.json) · [Master](MASTER-STORYBOARD-20261114-19H-R214.md) · [Merchant-Einzelfall](MERCHANT-EINZELFALL-20261114-19H-R214.json).48 frische Planerobjekte14.–21.11. unverändert zuR213;39aktiv/9Drafts, alle9Fensterholds inaktiv. IGFBTTPin täglich abgedeckt, Threads15/YT15–21Lücken. Aktuelle Projektor-A-Variante68122445283719/CHF34.90 öffentlich kaufbar; CJ-PID/VID/VideoID und echtesReferenzbild gebunden, MP4-/Rechte-/nativeTake-Grenzen offen. Gleichen18s-Master mit echterHandlungsvorgabe weiterentwickelt, keine neueMaster-MP4. PreisfallDRAFT/44.90 und nativenRedirect2042634568071 zurKategorie öffentlich301 bestätigt; nur alteEinzelzuordnung alskonkreterFreigabeentwurf. R200Tagesberichte wiederverwendet, konsolidierte Tabelle; keine neuenServicewrites/Posts/Löschungen/Renders/Automation.24IDs/Historieerhalten,ClaudeEmpfangunbekannt.

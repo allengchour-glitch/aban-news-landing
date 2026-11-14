@@ -1,0 +1,788 @@
+{
+  "dateZurich": "2026-11-14",
+  "readAtUTC": "2026-11-14T19:20:18.415060+00:00",
+  "scope": "Four existing website collection URLs, two legitimate Search Console properties; four separate Shop App collection website paths; two due planner objects",
+  "properties": [
+    "sc-domain:luxestyle.ch",
+    "https://luxestyle.ch/"
+  ],
+  "googleCategoryInspectionCalls": 8,
+  "noPerformanceQueries": true,
+  "whySecondPropertyRead": "R187 used URL-prefix property; current first pass used domain property. Four exact counterreads establish both agree, no mixed-property trend assertion.",
+  "websiteRows": [
+    {
+      "label": "Futterautomaten",
+      "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+      "currentDomainProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=Xypv23BHOMDaEyy-6im_hg&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:23Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "userCanonical": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "currentUrlPrefixProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=5lKVEXpF3sQbVk55ytLzxQ&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:23Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "userCanonical": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "publicHttp": {
+        "requestedUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "checkedAtUTC": "2026-11-14T19:16:32.006989+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "xRobotsTag": null,
+        "sha256": "ddf4eccd8bbc539b7d123a3ff16a44b7a90aa5c5083cae48526b84f34f9bbaf9",
+        "canonical": [
+          "https://luxestyle.ch/collections/tier-futterautomaten"
+        ],
+        "robots": [],
+        "title": "Futterautomaten & Futterspender online kaufen | LuxeStyle CH",
+        "h1": [
+          "Futterautomaten & Futterspender"
+        ]
+      },
+      "previousR187": {
+        "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "google": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gefunden – zurzeit nicht indexiert",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+        },
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=fLGfpP9ZUse8n0EAHrA9Pw&utm_medium=link&utm_source=api",
+        "live": {
+          "url": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+          "title": "Futterautomaten & Futterspender online kaufen | LuxeStyle CH",
+          "canonicalTags": [
+            "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/tier-futterautomaten\">"
+          ],
+          "robotsTags": [],
+          "headBytes": 281569,
+          "error": null
+        }
+      },
+      "samePrefixPropertyBeforeAfter": true,
+      "indexingRequestedByCodex": false,
+      "indexingTimeOrCause": "unknown_lastCrawlTime_is_not_indexing_time"
+    },
+    {
+      "label": "Hundewelt",
+      "url": "https://luxestyle.ch/collections/hundewelt",
+      "currentDomainProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=M_BEfxAKqrwsXjCJTIp7fA&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:24Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/hundewelt",
+          "userCanonical": "https://luxestyle.ch/collections/hundewelt",
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "currentUrlPrefixProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=NFnfUApNE_INRwjDWoRSYw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:24Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/hundewelt",
+          "userCanonical": "https://luxestyle.ch/collections/hundewelt",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "publicHttp": {
+        "requestedUrl": "https://luxestyle.ch/collections/hundewelt",
+        "checkedAtUTC": "2026-11-14T19:16:32.008050+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hundewelt",
+        "xRobotsTag": null,
+        "sha256": "e83d9aa53574b731be2163b6558419c164970694d760909650a179ad79c63da6",
+        "canonical": [
+          "https://luxestyle.ch/collections/hundewelt"
+        ],
+        "robots": [],
+        "title": "Hundebett, Hundeleine & Hundegeschirr kaufen | LuxeStyle CH",
+        "h1": [
+          "Hundewelt"
+        ]
+      },
+      "previousR187": {
+        "url": "https://luxestyle.ch/collections/hundewelt",
+        "google": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gefunden – zurzeit nicht indexiert",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+        },
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=CPxe7_F_dqGYRmPdEkYfyA&utm_medium=link&utm_source=api",
+        "live": {
+          "url": "https://luxestyle.ch/collections/hundewelt",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/collections/hundewelt",
+          "title": "Hundebett, Hundeleine & Hundegeschirr kaufen | LuxeStyle CH",
+          "canonicalTags": [
+            "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/hundewelt\">"
+          ],
+          "robotsTags": [],
+          "headBytes": 305757,
+          "error": null
+        }
+      },
+      "samePrefixPropertyBeforeAfter": true,
+      "indexingRequestedByCodex": false,
+      "indexingTimeOrCause": "unknown_lastCrawlTime_is_not_indexing_time"
+    },
+    {
+      "label": "Selbst gestalten",
+      "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+      "currentDomainProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=YwVtggM8z3GQOKysnzAZPw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:24Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "userCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "referringUrls": [
+            "https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger?_pos=1&_sid=ba7ce05ca&_ss=r",
+            "https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen",
+            "https://luxestyle.ch/collections/premium-beauty"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "currentUrlPrefixProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=snnVUzoYRDZvqMblxBHBcw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:24Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "userCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "referringUrls": [
+            "https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger?_pos=1&_sid=ba7ce05ca&_ss=r",
+            "https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen",
+            "https://luxestyle.ch/collections/premium-beauty"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "publicHttp": {
+        "requestedUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "checkedAtUTC": "2026-11-14T19:16:32.008704+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "xRobotsTag": null,
+        "sha256": "afd48c7f24e7cacada5251d57d0e219f62236fe8bff248cd80c12d715d9b7215",
+        "canonical": [
+          "https://luxestyle.ch/collections/selbst-gestalten-1"
+        ],
+        "robots": [],
+        "title": "Selbst gestalten kaufen | LuxeStyle Schweiz",
+        "h1": [
+          "Selbst gestalten"
+        ]
+      },
+      "previousR187": {
+        "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "google": {
+          "verdict": "NEUTRAL",
+          "coverageState": "Gecrawlt – zurzeit nicht indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-09-07T06:53:01Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "userCanonical": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "sitemap": [
+            "https://luxestyle.ch/sitemap.xml"
+          ],
+          "referringUrls": [
+            "https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger?_pos=1&_sid=ba7ce05ca&_ss=r",
+            "https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen",
+            "https://luxestyle.ch/collections/premium-beauty"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=lO1bd4JcZlIEw5uvNB4qWA&utm_medium=link&utm_source=api",
+        "live": {
+          "url": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+          "title": "Selbst gestalten kaufen | LuxeStyle Schweiz",
+          "canonicalTags": [
+            "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/selbst-gestalten-1\">"
+          ],
+          "robotsTags": [],
+          "headBytes": 284171,
+          "error": null
+        }
+      },
+      "samePrefixPropertyBeforeAfter": true,
+      "indexingRequestedByCodex": false,
+      "indexingTimeOrCause": "unknown_lastCrawlTime_is_not_indexing_time"
+    },
+    {
+      "label": "Camping-Geschirr und Kochsets",
+      "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+      "currentDomainProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=6Elf0y0l_AWncjSFJUe3fA&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:23Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "userCanonical": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "crawledAs": "MOBILE"
+        }
+      },
+      "currentUrlPrefixProperty": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=PmH55w5u1QTExlHQCVm0xA&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-12T21:49:23Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "userCanonical": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "publicHttp": {
+        "requestedUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "checkedAtUTC": "2026-11-14T19:16:32.009106+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "xRobotsTag": null,
+        "sha256": "7213e1c75c570f6120640a11cdfc79d7620a896b7dd031387287a71b59ee22df",
+        "canonical": [
+          "https://luxestyle.ch/collections/camping-geschirr-kochsets"
+        ],
+        "robots": [],
+        "title": "Camping-Geschirr, Kochsets & Grills online kaufen\n – LuxeStyle",
+        "h1": [
+          "Camping-Geschirr, Kochsets & Grills"
+        ]
+      },
+      "previousR187": {
+        "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "google": {
+          "verdict": "NEUTRAL",
+          "coverageState": "URL ist Google nicht bekannt",
+          "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+          "indexingState": "INDEXING_STATE_UNSPECIFIED",
+          "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+        },
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=tFAaZmRED81NHmIawK9_mw&utm_medium=link&utm_source=api",
+        "live": {
+          "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "status": 200,
+          "finalUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "title": "Camping-Geschirr, Kochsets & Grills online kaufen\n – LuxeStyle",
+          "canonicalTags": [
+            "<link rel=\"canonical\" href=\"https://luxestyle.ch/collections/camping-geschirr-kochsets\">"
+          ],
+          "robotsTags": [],
+          "headBytes": 268385,
+          "error": null
+        }
+      },
+      "samePrefixPropertyBeforeAfter": true,
+      "indexingRequestedByCodex": false,
+      "indexingTimeOrCause": "unknown_lastCrawlTime_is_not_indexing_time"
+    }
+  ],
+  "homepagePreviousTurn": {
+    "inspection_result": {
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=HANJeIm09PGTHNt7iqiy7w&utm_medium=link&utm_source=api",
+      "indexStatusResult": {
+        "verdict": "PASS",
+        "coverageState": "Gesendet und indexiert",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-11-12T19:12:32Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://luxestyle.ch/",
+        "userCanonical": "https://luxestyle.ch/",
+        "referringUrls": [
+          "https://luxestyle.ch/fr/",
+          "https://luxestyle.ch/blogs/ratgeber/cashmere-decke-pflege-einrichtungstipps",
+          "https://luxestyle.ch/it",
+          "https://luxestyle.com.co/"
+        ],
+        "crawledAs": "MOBILE"
+      },
+      "mobileUsabilityResult": {
+        "verdict": "VERDICT_UNSPECIFIED"
+      }
+    }
+  },
+  "homepageRequeried": false,
+  "shopCollectionPaths": [
+    {
+      "requestedUrl": "https://luxestyle.ch/collections/shop-neue-entdeckungen",
+      "checkedAtUTC": "2026-11-14T19:14:04.665331+00:00",
+      "status": 404,
+      "finalUrl": "https://luxestyle.ch/collections/shop-neue-entdeckungen",
+      "error": "HTTPError"
+    },
+    {
+      "requestedUrl": "https://luxestyle.ch/collections/shop-geschenkideen",
+      "checkedAtUTC": "2026-11-14T19:14:04.666421+00:00",
+      "status": 404,
+      "finalUrl": "https://luxestyle.ch/collections/shop-geschenkideen",
+      "error": "HTTPError"
+    },
+    {
+      "requestedUrl": "https://luxestyle.ch/collections/shop-licht-wohnen",
+      "checkedAtUTC": "2026-11-14T19:14:04.667394+00:00",
+      "status": 404,
+      "finalUrl": "https://luxestyle.ch/collections/shop-licht-wohnen",
+      "error": "HTTPError"
+    },
+    {
+      "requestedUrl": "https://luxestyle.ch/collections/shop-beauty-ordnung",
+      "checkedAtUTC": "2026-11-14T19:14:04.668316+00:00",
+      "status": 404,
+      "finalUrl": "https://luxestyle.ch/collections/shop-beauty-ordnung",
+      "error": "HTTPError"
+    }
+  ],
+  "shopApp404Cause": "unknown_no_OnlineStore_activation_or_redirect_write",
+  "publicParser": {
+    "rows": [
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "checkedAtUTC": "2026-11-14T19:16:32.006989+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "xRobotsTag": null,
+        "sha256": "ddf4eccd8bbc539b7d123a3ff16a44b7a90aa5c5083cae48526b84f34f9bbaf9",
+        "canonical": [
+          "https://luxestyle.ch/collections/tier-futterautomaten"
+        ],
+        "robots": [],
+        "title": "Futterautomaten & Futterspender online kaufen | LuxeStyle CH",
+        "h1": [
+          "Futterautomaten & Futterspender"
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/hundewelt",
+        "checkedAtUTC": "2026-11-14T19:16:32.008050+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hundewelt",
+        "xRobotsTag": null,
+        "sha256": "e83d9aa53574b731be2163b6558419c164970694d760909650a179ad79c63da6",
+        "canonical": [
+          "https://luxestyle.ch/collections/hundewelt"
+        ],
+        "robots": [],
+        "title": "Hundebett, Hundeleine & Hundegeschirr kaufen | LuxeStyle CH",
+        "h1": [
+          "Hundewelt"
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "checkedAtUTC": "2026-11-14T19:16:32.008704+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "xRobotsTag": null,
+        "sha256": "afd48c7f24e7cacada5251d57d0e219f62236fe8bff248cd80c12d715d9b7215",
+        "canonical": [
+          "https://luxestyle.ch/collections/selbst-gestalten-1"
+        ],
+        "robots": [],
+        "title": "Selbst gestalten kaufen | LuxeStyle Schweiz",
+        "h1": [
+          "Selbst gestalten"
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "checkedAtUTC": "2026-11-14T19:16:32.009106+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "xRobotsTag": null,
+        "sha256": "7213e1c75c570f6120640a11cdfc79d7620a896b7dd031387287a71b59ee22df",
+        "canonical": [
+          "https://luxestyle.ch/collections/camping-geschirr-kochsets"
+        ],
+        "robots": [],
+        "title": "Camping-Geschirr, Kochsets & Grills online kaufen\n – LuxeStyle",
+        "h1": [
+          "Camping-Geschirr, Kochsets & Grills"
+        ]
+      }
+    ],
+    "titleParserScope": "HTML head title only, excludes SVG/payment icon titles",
+    "previousThreeReadReasonForCountercheck": "Initial parser included all SVG title elements; corrected head-only parser and limited recheck. No false SEO-title finding emitted.",
+    "previousRowsRetained": [
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "checkedAtUTC": "2026-11-14T19:15:12.442352+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/tier-futterautomaten",
+        "xRobotsTag": null,
+        "sha256": "58d5df43e2b9882992d4d00c49587b7f621d4e79525ea36f1745de7d447a28b2",
+        "canonical": [
+          "https://luxestyle.ch/collections/tier-futterautomaten"
+        ],
+        "robots": [],
+        "title": "\n  Futterautomaten & Futterspender online kaufen | LuxeStyle CH\nTwintVisaMastercardAmerican ExpressPayPalKlarnaApple PayGoogle Pay",
+        "h1": [
+          "Futterautomaten & Futterspender"
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/hundewelt",
+        "checkedAtUTC": "2026-11-14T19:15:12.443443+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/hundewelt",
+        "xRobotsTag": null,
+        "sha256": "4b12c4b7ea73b4839c4c568f7bfabc7c48e89ae85ea8a5833c65e1dee661b321",
+        "canonical": [
+          "https://luxestyle.ch/collections/hundewelt"
+        ],
+        "robots": [],
+        "title": "\n  Hundebett, Hundeleine & Hundegeschirr kaufen | LuxeStyle CH\nTwintVisaMastercardAmerican ExpressPayPalKlarnaApple PayGoogle Pay",
+        "h1": [
+          "Hundewelt"
+        ]
+      },
+      {
+        "requestedUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "checkedAtUTC": "2026-11-14T19:15:12.444057+00:00",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/selbst-gestalten-1",
+        "xRobotsTag": null,
+        "sha256": "46c2aeb71770b06b6d5ef5d74b574aabd43c509ac40ca411dc8d5714fe995697",
+        "canonical": [
+          "https://luxestyle.ch/collections/selbst-gestalten-1"
+        ],
+        "robots": [],
+        "title": "\n  Selbst gestalten kaufen | LuxeStyle Schweiz\nTwintVisaMastercardAmerican ExpressPayPalKlarnaApple PayGoogle Pay",
+        "h1": [
+          "Selbst gestalten"
+        ]
+      }
+    ]
+  },
+  "historicalEvidence": {
+    "path": "dropship/codex-handoff-20261018/INDEXIERUNG-UND-404-20261112-R187.json",
+    "sha256": "b3496c7492c99449cb7c664b17e137ad14025eb9694476047f6347df5a5680c1",
+    "dateZurich": "2026-11-12"
+  },
+  "freshIdentity": {
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland"
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "duePublicationRead": {
+    "objects": 16,
+    "changedSinceR214": [
+      {
+        "uuid": "3200332797454403886",
+        "id": 415131163,
+        "changedFields": [
+          "providers"
+        ]
+      },
+      {
+        "uuid": "-3513321668753471647",
+        "id": 422791801,
+        "changedFields": [
+          "providers"
+        ]
+      }
+    ],
+    "publishedPlacementCountToday": 13,
+    "publishedPlacements": [
+      {
+        "uuid": "-3403126915283661861",
+        "id": 407894120,
+        "network": "facebook",
+        "platformId": "1049840534888592_122153165379350792",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122153165379350792"
+      },
+      {
+        "uuid": "-3403126915283661861",
+        "id": 407894120,
+        "network": "instagram",
+        "platformId": "https://www.instagram.com/p/Dft8g1YjeOX/",
+        "publicUrl": "https://www.instagram.com/p/Dft8g1YjeOX/"
+      },
+      {
+        "uuid": "3200332797454403886",
+        "id": 415131163,
+        "network": "facebook",
+        "platformId": "1135077642457526",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/1135077642457526"
+      },
+      {
+        "uuid": "3200332797454403886",
+        "id": 415131163,
+        "network": "instagram",
+        "platformId": "https://www.instagram.com/stories/luxestyle.ch/4030399378929278711",
+        "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4030399378929278711"
+      },
+      {
+        "uuid": "-1754664943692791070",
+        "id": 422279394,
+        "network": "tiktok",
+        "platformId": "7707934434254802208",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707934434254802208"
+      },
+      {
+        "uuid": "7993315583738791837",
+        "id": 422279501,
+        "network": "youtube",
+        "platformId": "JqfSBJEJwEc",
+        "publicUrl": "https://www.youtube.com/shorts/JqfSBJEJwEc"
+      },
+      {
+        "uuid": "8356246782781639563",
+        "id": 422279608,
+        "network": "threads",
+        "platformId": "17911234911604477",
+        "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Dft8ibOJlcL"
+      },
+      {
+        "uuid": "8178449842924373712",
+        "id": 422279700,
+        "network": "tiktok",
+        "platformId": "7707980998968937760",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7707980998968937760"
+      },
+      {
+        "uuid": "-2924344703561023385",
+        "id": 422279805,
+        "network": "facebook",
+        "platformId": "2152756682106461",
+        "publicUrl": "https://facebook.com/reel/2152756682106461"
+      },
+      {
+        "uuid": "-2924344703561023385",
+        "id": 422279805,
+        "network": "instagram",
+        "platformId": "https://www.instagram.com/reel/DfuYIc7gPGV/",
+        "publicUrl": "https://www.instagram.com/reel/DfuYIc7gPGV/"
+      },
+      {
+        "uuid": "8229862176301272727",
+        "id": 422279920,
+        "network": "youtube",
+        "platformId": "0rPdx6l8fhs",
+        "publicUrl": "https://www.youtube.com/shorts/0rPdx6l8fhs"
+      },
+      {
+        "uuid": "-6748893881700627372",
+        "id": 422280035,
+        "network": "tiktok",
+        "platformId": "7708074199721512225",
+        "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7708074199721512225"
+      },
+      {
+        "uuid": "-3513321668753471647",
+        "id": 422791801,
+        "network": "pinterest",
+        "platformId": "1111333645585728818",
+        "publicUrl": "https://www.pinterest.es/pin/1111333645585728818"
+      }
+    ],
+    "ownNewPostsOrWrites": 0
+  },
+  "indexingRequestsSubmitted": 0,
+  "sitemapsSubmitted": 0,
+  "shopOrFeedOrMetricoolWrites": 0,
+  "newPosts": 0,
+  "newAutomationOrFrequency": false,
+  "fullCatalogIndexState": "unknown_not_scanned",
+  "newSalesOrCodexCausalityClaim": false,
+  "masterLedger": "not_initialized_or_reset"
+}

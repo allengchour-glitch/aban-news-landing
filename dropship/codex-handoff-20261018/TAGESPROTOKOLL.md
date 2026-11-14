@@ -2479,3 +2479,12 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Gedächtnis / Grenzen | Core4 frisch gelesen,24 IDs und Historien fortgeführt; Revision214 und konkrete nächste Schritte gespeichert |Shopify nach legitimer Neuanmeldung erreichbar; Marke/sechs Kanäle passend. Vier DNS-Ergänzungen weiter genehmigt, authentifizierter Writer nicht belegt. Neue Videolieferung der anderen Session noch nicht lokalisiert. Keine neuen Reports/Kaufwatch, Kundenansprache, Budgets, Rabatte, Flow-/DNS-/Versandänderungen oder zusätzliche Automation. Claude-Kenntnisnahme ohne neuen Empfangsbeleg unbekannt. |
 
 | Quellenpräzisierung R214 | Schlussprüfung trennt den datierten R212-Googlebefund von der frischen Shopify-/Redirect-Prüfung | Aktueller Google-Angebotsstatus unbekannt, Einzelbereinigung erst nach frischem Vorher-Read. Nur redaktionelle Klarstellung/Gedächtnisrevision215, keine zusätzliche Umsetzung oder Abfrage. |
+
+### R216 – Indexierungslinks fortsetzen, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Indexierung | Vier alte Problem-Kategorieseiten frisch in Domain- und URL-Präfix-Property gegengeprüft; offizielle Prüflinks vorbereitet |Futterautomaten, Hundewelt, Selbst gestalten und Camping-Geschirr jeweils PASS/«Gesendet und indexiert»; Canonicals stimmen. Nur vier URLs, keine Katalogquote. Crawl12.11., Indexierungszeitpunkt/Ursache unbekannt; keine eigene Beantragung. |
+| Website | Vier echte Kategorieadressen öffentlich auf HTTP/Canonical/Headtitel/H1 geprüft |Alle HTTP200 und selbstkanonisch. Parser auf Headtitel begrenzt und gegengeprüft; SVG-Zahlungssymbole sind keine SEO-Titelteile. Vier separate Shop-App-Pfade liefern echte404; Ursache offen, keine Aktivierung oder Weiterleitung. |
+| Fällige Posts | Shop/Metricool/sechs Kanalidentitäten frisch geprüft und zwei zuvor künftige UUIDs kanalweise zurückgelesen |Stories19:30 auf Facebook/Instagram und Pinterest20:00 PUBLISHED mit Plattform-IDs/URLs. Bestehende Planung, keine eigenen Veröffentlichungen/zusätzlichen Posts; nur Providerfelder verändert. |
+| Kontinuität | Core4/24 Aufgaben-IDs/Historien frisch gelesen und mit Belegen fortgeführt; ausschliesslich bytegleiche eigene Dokumentcache-Duplikate bereinigt |Revision216; ursprünglicher Speicherfehler durch Freigabe von67’329’350Bytes eigener redundanter Cachekopien gelöst, je eine identische Kopie/Hash erhalten. Git, Quellenmedien, Musik und Register unberührt. Keine Tagesreports, Orders, Renders, Flow-/Feed-/Budget-/DNS-/Shopänderungen oder zusätzliche Automation. |
