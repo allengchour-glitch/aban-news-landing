@@ -2332,3 +2332,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Masterfilm | Musikhash und Herstellquellen geprüft; CJ-Rechtequellen gegengeprüft und dasselbe 18s-Storyboard präzisiert | WAV hashgleich, Rechte/Hörabnahme offen. Fremde Agreement-Textidentität verworfen, Status 500 ist kein 404. Vollständige exakte Takes fehlen; null neue Render/Uploads |
 | Arbeitsumgebung | Vollen Datenträger diagnostiziert; nur drei verwaiste Git-Temppacks nach Prüfung offener Dateideskriptoren entfernt | Projektdateien, benannte Git-Packs und Refs erhalten; unabhängige Dateiprüfung danach möglich |
 | Kontinuität | 24 Aufgaben-IDs und Historie erhalten; Tagesgrenze fortgeschrieben | Kein falscher Shopread, Kauf-Watch, Kundenkontakt, Budget-/Flow-/Zeitplanwechsel. Claude-Empfang unbekannt |
+
+### R201 – Bestehender Morgenlauf, 08 Uhr Europe/Zurich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Planung | Core4 frisch gelesen, Shopify-Identität und sechs Metricool-Kanäle geprüft; 48 Planungsobjekte neu gelesen | Shopify falscher Shop, deshalb null abhängige Writes. Metricool passend; Planung bytegleich R200, 39 aktive Objekte / 49 Kanalplätze / neun Entwürfe. YouTube 15.–21.11. und Threads 15.11. offen |
+| Doppelposts / Holds | Snapshot je Kanal auf exakte Text-/Mediengleichheit geprüft; 15 bekannte Halte-UUIDs zugeordnet | Keine exakten Treffer im Fenster, keine globale Historienfreigabe. Neun Holds hier draft=true/autoPublish=false, sechs nicht im Fenster und weiter unbekannt. Vor 08:05 kein aktiver Slot fällig. Kein Löschen, Ersatzpost oder Workflowstart |
+| Produktquelle / Verkaufsentwurf | Einen öffentlichen Projektor, A-Bild und aktuelle Tags geprüft; genau einen CJ-Detailread mit A-SKU, sieben Varianten gebunden | Öffentlich CHF34.90/available=true, keine Admin-ACTIVE-/Policy-Bestätigung. Zwei pauschale Lieferumfangsstellen als exakter Vorher/Nachher-Diff vorbereitet, restlicher Body bytegleich. Keine Shopänderung |
+| Derselbe Master / Ton | Kanonische WAV gegen aktuellen Repositoryblob und Hash geprüft; erste18s sowie Stille/Endkante technisch gemessen | −13.27LUFS/−1.59dBTP, Ende nicht stumm. Fade nur als Entwurf; Rechte, Sprachfreiheit/Hörabnahme und Originaltakes weiter offen. Null Medienexports/Render |
+| Content | Ein18sStoryboard mit echter A-Referenz fortgeführt, sechs Caption-/Titelentwürfe und eindeutige Varianten-UTMs vorbereitet | Redaktionelle Abnahmeunterlagen, alle releaseEligible=false. Kein neuer Master, Queueeintrag oder Autopublish. YouTube madeForKids=false bekannt, Bio-/Pinterest-Gates offen |
+| Tagesgrenze / Kontinuität | Heutige R200-Kennzahlen und Klaviyo datiert wiederverwendet; 24IDs/Historie erhalten | Null neue Kennzahl-/Flowreports oder Kauf-Watch-Abfragen, keine Kundenansprache, Budget-/Rabatt-/Flow-/DNS-/Versand-/Domain-/Zeitplanänderung. Vier DNS-Ergänzungen bleiben bereits genehmigt; Writer fehlt. Claude-Empfang unbekannt |

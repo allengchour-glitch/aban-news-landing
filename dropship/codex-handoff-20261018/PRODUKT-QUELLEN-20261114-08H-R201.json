@@ -1,0 +1,230 @@
+{
+  "publicProduct": {
+    "readAtUTC": "2026-11-14T07:09:34.020265+00:00",
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "http": 200,
+    "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "bytes": 24690,
+    "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+    "id": 15521256604033,
+    "title": "Sternenlicht-Projektor für Schlafzimmer",
+    "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+    "publicUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+    "published_at": "2026-08-31T07:11:31+02:00",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "available": true,
+    "variantCount": 7,
+    "targetVariant": {
+      "id": 68122445283719,
+      "title": "A · Grundmodell",
+      "option1": "A · Grundmodell",
+      "option2": null,
+      "option3": null,
+      "sku": "CJSN139239101AZ",
+      "requires_shipping": true,
+      "taxable": true,
+      "featured_image": {
+        "id": 83513734431105,
+        "product_id": 15521256604033,
+        "position": 11,
+        "created_at": "2026-08-31T07:11:27+02:00",
+        "updated_at": "2026-08-31T07:11:30+02:00",
+        "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+        "width": 800,
+        "height": 654,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "variant_ids": [
+          68122445283719
+        ]
+      },
+      "available": true,
+      "name": "Sternenlicht-Projektor für Schlafzimmer - A · Grundmodell",
+      "public_title": "A · Grundmodell",
+      "options": [
+        "A · Grundmodell"
+      ],
+      "price": 3490,
+      "weight": 0,
+      "compare_at_price": null,
+      "inventory_management": null,
+      "barcode": null,
+      "featured_media": {
+        "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+        "id": 70733173719425,
+        "position": 11,
+        "preview_image": {
+          "aspect_ratio": 1.223,
+          "height": 654,
+          "width": 800,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+        }
+      },
+      "quantity_rule": {
+        "min": 1,
+        "max": null,
+        "increment": 1
+      },
+      "quantity_price_breaks": [],
+      "requires_selling_plan": false,
+      "selling_plan_allocations": []
+    },
+    "allVariantIds": [
+      68122445283719,
+      68122445316487,
+      68122445349255,
+      68122445382023,
+      68122445414791,
+      68122445447559,
+      68122445480327
+    ],
+    "adminStatus": "unknown_wrong_connected_shop",
+    "inventoryTrackingPolicy": "Only publicfields, no Adminquery performed.",
+    "limits": "Public source only, not a current ACTIVE/ShopifyAdmin identity or inventoryPolicy proof; no stock/delivery promises."
+  },
+  "publicMainHead": {
+    "sourceUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+    "http": 200,
+    "rawHtmlBytes": 1467160,
+    "rawHtmlSha256": "91fa748b7419ce3210c5b28dcd0a8ca4bbe77e13d01213dbb30d07f6c34747af",
+    "returnedDocumentHeads": [
+      {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "robots": [],
+        "price": [
+          "34.90"
+        ],
+        "currency": [
+          "CHF"
+        ]
+      },
+      {
+        "title": "Mit Shop einloggen",
+        "canonical": [],
+        "robots": [
+          "none"
+        ],
+        "price": [],
+        "currency": []
+      }
+    ],
+    "h1": [
+      "Sternenlicht-Projektor für Schlafzimmer"
+    ],
+    "scope": "One exact publicproductpage plus public.js and1variantimage. No ShopAdminidentity/status/inventoryPolicy verification or checkout/cart mutation. Loginhead robots not applied to productmainhead."
+  },
+  "sourceReference": {
+    "kanal_sperren.mjs": {
+      "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/cd2f846fe820a05b68036d758132b0c6e22bbb4c/automation/lib/kanal_sperren.mjs",
+      "http": 200,
+      "bytes": 3293,
+      "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+    },
+    "projector-reference.jpg": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+      "http": 200,
+      "bytes": 102392,
+      "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612"
+    }
+  },
+  "guard": {
+    "guardSourceCommit": "cd2f846fe820a05b68036d758132b0c6e22bbb4c",
+    "productId": 15521256604033,
+    "variantId": 68122445283719,
+    "sku": "CJSN139239101AZ",
+    "tagSource": "fresh public product.js, not Admin",
+    "tagsNonEmpty": true,
+    "repoSperrHits": [],
+    "ownerRueckholHits": [],
+    "additionalOwnerBlockHits": [],
+    "adminStatus": "unknown_wrong_shop",
+    "adminTracked": "unknown_public_inventory_management_null_not_full_Admin_tracking_proof",
+    "inventoryPolicy": "unknown_not_publicly_returned",
+    "releaseEligible": false
+  },
+  "cjCurrent": {
+    "pid": "1477820492730732544",
+    "productSku": "CJSN1392391",
+    "exactVariant": {
+      "vid": "1477826312449167360",
+      "variantSku": "CJSN139239101AZ",
+      "variantKey": "A-USB",
+      "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+    },
+    "descriptionHtml": "<p><b>Product information:</b><br/>Additional features: music, projection<br/>Voltage: ≤36V (V)<br/>Shade material: PVC<br/>Dimensions: 121x110x121 (mm)<br/>Switch type: button type<br/>Style: light luxury<br/>Average service life: more than 480 (h)<br/>Light source power: 4W (W)<br/>Power supply mode: plug-in</p>\n <p>Light color:<br/>A: Focus plug-in: basic model&nbsp;</p>\n <p>B: Focus Plug-in: Upgrade (6 sets of film)&nbsp;</p>\n <p>C: Focus Plug-in: Deluxe (Galaxy Plastic Plate +6 Film)&nbsp;</p>\n <p>D: Bluetooth Charge Focus: Charge + Bluetooth +6 Film&nbsp;</p>\n <p>E: Bluetooth Charging Focus: Upgrade (Charging + Bluetooth + Galaxy Glue Disk +6 Film)</p>\n <p>F: Music Box Charging and Focusing \"Upgrade\": Charging +18 Music +6 Star Light Panel (without Galaxy Light Panel)<br/></p>\n <p>G: plug-in rotation + 1 galaxy disk + 3 color disks (without remote control)<br/></p>\n <p><br/></p>\n <p><b>Instructions:</b><br/>1. The light shade is turned on and it can be side projection<br/>2. The lampshade buckles into a small night light<br/>3. Twist the situation to adjust the sharpness of the focus<br/>4. Open the film box<br/>5. Remove the film tray/replace<br/>6. The film tray is pushed into the film box<br/><br/><b>Precautions:</b><br/>1. Avoid squeezing the product with heavy objects<br/>2. Clean the surface of the product with a soft cotton cloth, do not use corrosive solutions to clean<br/>3. Avoid placing the product near heat sources, such as air conditioning vents, heating vents, etc., avoid placing it in humidifiers and other places with drastic changes in humidity, and avoid placing it in direct sunlight<br/>4. Can only be used indoors<br/>5. The provided USB cable is only suitable for this product, not for other products</p>\n <p><br/><b>Packing list:</b><br/>Night light*1 Color disc*6 Rechargeable Bluetooth rotating*1 Galaxy disc*1</p>\n <p><img src=\"https://cf.cjdropshipping.com/8adc2745-24de-4c9f-8679-53a1dacd8bd5.jpg\" style=\"max-width:100%;\"/><br/></p>\n <p><img src=\"https://cf.cjdropshipping.com/f53dfd31-a7d2-41db-aaa1-cc72891c3fc3.jpg\" style=\"max-width:100%;\"/><img src=\"https://cf.cjdropshipping.com/ff380042-8d52-44e3-8adc-9c619619d67a.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/4096ae32-441b-4e7a-bf7e-1dc4fb6959ca.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/2a9043b4-ff9e-4492-856c-5ad4c855fe65.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/f6c642a8-cf53-46d2-b1ad-640514e54645.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/5315f88a-54a8-44d9-bea6-a799a2110184.jpg\" style=\"max-width: 100%;\"/><br/></p>\n <p><strong><img src=\"https://cf.cjdropshipping.com/quick/product/98c9cb2a-5762-47e8-a6de-af8b3393f6af.jpg\" alt=\"细节\"/><br/><br/><img src=\"https://cf.cjdropshipping.com/quick/product/63dcdb15-e654-40be-88c2-452a9f02a58e.jpg\" alt=\"6\"/></strong><br/></p>",
+    "videoAssetIds": [
+      "1602963697889193984"
+    ],
+    "videoUrl": null,
+    "commercialMediaRights": "unknown_not_returned",
+    "rawDetailSha256": "b7539a66ce12327ed033ca2f83cdaec80456fad921c54e45f6c49dca1945ac46",
+    "calls": 1,
+    "variantBinding": [
+      {
+        "shopifyVariantId": "68122445283719",
+        "publicVariantTitle": "A · Grundmodell",
+        "sku": "CJSN139239101AZ",
+        "cjVariantId": "1477826312449167360",
+        "cjVariantKey": "A-USB"
+      },
+      {
+        "shopifyVariantId": "68122445316487",
+        "publicVariantTitle": "B · mit 6 Motivscheiben",
+        "sku": "CJSN139239102BY",
+        "cjVariantId": "1477826312453361664",
+        "cjVariantKey": "B-USB"
+      },
+      {
+        "shopifyVariantId": "68122445349255",
+        "publicVariantTitle": "C · Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239103CX",
+        "cjVariantId": "1477826312453361665",
+        "cjVariantKey": "C-USB"
+      },
+      {
+        "shopifyVariantId": "68122445382023",
+        "publicVariantTitle": "D · Akku, Bluetooth, 6 Motivscheiben",
+        "sku": "CJSN139239104DW",
+        "cjVariantId": "1477826312453361666",
+        "cjVariantKey": "D-USB"
+      },
+      {
+        "shopifyVariantId": "68122445414791",
+        "publicVariantTitle": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239105EV",
+        "cjVariantId": "1555856292877709312",
+        "cjVariantKey": "E-USB"
+      },
+      {
+        "shopifyVariantId": "68122445447559",
+        "publicVariantTitle": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+        "sku": "CJSN139239106FU",
+        "cjVariantId": "1555856292877709313",
+        "cjVariantKey": "F-USB"
+      },
+      {
+        "shopifyVariantId": "68122445480327",
+        "publicVariantTitle": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+        "sku": "CJSN139239107GT",
+        "cjVariantId": "1589496316504322048",
+        "cjVariantKey": "G-USB"
+      }
+    ]
+  },
+  "claimsScope": "Current publicpriceCHF34.90/availabletrue/tags/image and supplierSKU verified. ACTIVE/Admintracking/inventoryPolicy unknown under wrong connected identity; no stock/delivery/material/motif/review/Swiss-made promise."
+}

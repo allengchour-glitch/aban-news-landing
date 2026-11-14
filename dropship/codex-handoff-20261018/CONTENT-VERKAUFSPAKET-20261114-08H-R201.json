@@ -1,0 +1,76 @@
+{
+  "revision": 201,
+  "dateZurich": "2026-11-14",
+  "run": "existing08:00EuropeZurich",
+  "recordedAtUTC": "2026-11-14T07:21:50.587500+00:00",
+  "identity": {
+    "readAtUTC": "2026-11-14 07:05:32 UTC",
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    },
+    "shopify": {
+      "name": "TechHub CH",
+      "domain": "aban-os5z8ied.myshopify.com",
+      "currencyCode": "CHF",
+      "timezone": "EST",
+      "matches": false,
+      "scope": "Identity-only read. No products/collections or writes in wrong store."
+    }
+  },
+  "notForPublisherInput": true,
+  "professionalMasterApproved": false,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "newWork": [
+    "One current exactCJ SKU read plus currentpublicsource/image/guards;7variantSKUbindings.",
+    "Two-place variant-dependent packagecopydiff prepared forownerreview; protectedrestexact.",
+    "Technicalmeteringofcanonicalfirst18seconds and endpoint/silencecheck withnulloutput; noexport.",
+    "Six editorialchannelcaption/title/UTM drafts forsameMaster, allreleaseEligiblefalse."
+  ],
+  "freshPlanning": {
+    "objects": 48,
+    "activeObjects": 39,
+    "activeChannelPlacements": 49,
+    "drafts": 9,
+    "sameSnapshotAsR200": true,
+    "gaps": {
+      "youtube": "2026-11-15/2026-11-21",
+      "threads": [
+        "2026-11-15"
+      ]
+    },
+    "knownHolds15": {
+      "inWindowDraftTrueAutoPublishFalse": 9,
+      "outsideWindowUnknown": 6
+    },
+    "dueBefore0805": 0,
+    "providerStates": "PENDING, no publication evidence"
+  },
+  "reusedDailyReports": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json",
+  "newMetricDataCalls": 0,
+  "newKlaviyoFlowReportCalls": 0,
+  "orderWatchCalls": 0,
+  "platformWrites": 0,
+  "newRendersOrMediaExports": 0,
+  "singleSalesAction": "Exactly2descriptionreplacements for variant-dependent deliverycontents; ownerreviewandfreshcorrectShopgate required.",
+  "unchanged": [
+    "24stabletaskIDs/history",
+    "dailyReadPolicy",
+    "purchasewatchended",
+    "existing08/14/19schedule",
+    "CHF50public/CHF45internalshipping",
+    "account.luxestyle.com.co",
+    "DNS4existingapproval",
+    "allplatformposts/queues/registers/budgets/discounts/flows/feeds"
+  ],
+  "claudeReceipt": "unknown_no_receipt"
+}

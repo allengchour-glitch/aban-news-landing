@@ -1,0 +1,1833 @@
+{
+  "title": "Planungskontrolle LuxeStyle, 14.–21. November 2026",
+  "source_files": {
+    "/tmp/luxe-morning-20261114-08/planning-local.json": "0119317420e9fbf1f596196f0e5ac9f7c5394c7db1a18bc2e842c1d7bf41ab77",
+    "/tmp/luxe-other-work-20261114/planning-sanitized.json": "0119317420e9fbf1f596196f0e5ac9f7c5394c7db1a18bc2e842c1d7bf41ab77",
+    "/tmp/luxe-other-work-20261114/guard/evidence.json": "2384818bc401bddcb60464e9a56212fde25a8a6dfe366f23a3abe646412861f8"
+  },
+  "snapshots_byte_identical": true,
+  "snapshot_object_count": 48,
+  "date_range": "2026-11-14 bis 2026-11-21 Europe/Zurich",
+  "active_definition": "draft=false und autoPublish=true",
+  "channels": [
+    "facebook",
+    "instagram",
+    "tiktok",
+    "threads",
+    "pinterest",
+    "youtube"
+  ],
+  "day_channel_coverage": [
+    {
+      "date": "2026-11-14",
+      "channel": "facebook",
+      "active_count": 3,
+      "all_count_including_drafts": 3,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "instagram",
+      "active_count": 3,
+      "all_count_including_drafts": 3,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "tiktok",
+      "active_count": 3,
+      "all_count_including_drafts": 3,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-14",
+      "channel": "youtube",
+      "active_count": 2,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "facebook",
+      "active_count": 2,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "instagram",
+      "active_count": 2,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "threads",
+      "active_count": 0,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-15",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 0,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-16",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 0,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-17",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 0,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 2,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-18",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-19",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-20",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 0,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "facebook",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "instagram",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "tiktok",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "threads",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "pinterest",
+      "active_count": 1,
+      "all_count_including_drafts": 1,
+      "flags": "ok"
+    },
+    {
+      "date": "2026-11-21",
+      "channel": "youtube",
+      "active_count": 0,
+      "all_count_including_drafts": 0,
+      "flags": "ok"
+    }
+  ],
+  "changes_vs_r200": [],
+  "active_exact_duplicates_by_channel": [],
+  "guard": {
+    "evidence_status": "LOCAL DRAFT ONLY; not applied to source repo; no PR/platform writes/execution",
+    "candidate_uuid_count": 11,
+    "all_11_uuids_hold_status": [
+      {
+        "uuid": "-4472725258033347244",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "1744402171830094170",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "2172266762404316928",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "3963843144054620883",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "5647388074617226143",
+        "id": null,
+        "in_snapshot": false,
+        "uuid_matches": false,
+        "draft": null,
+        "autoPublish": null,
+        "providers": null
+      },
+      {
+        "uuid": "8935974072695279179",
+        "id": 427286591,
+        "in_snapshot": true,
+        "uuid_matches": true,
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 427288119,
+        "in_snapshot": true,
+        "uuid_matches": true,
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "id": 427287938,
+        "in_snapshot": true,
+        "uuid_matches": true,
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "id": 427286681,
+        "in_snapshot": true,
+        "uuid_matches": true,
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "id": 427287815,
+        "in_snapshot": true,
+        "uuid_matches": true,
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      }
+    ],
+    "hold_evidence_sha256": "2384818bc401bddcb60464e9a56212fde25a8a6dfe366f23a3abe646412861f8"
+  },
+  "due_before_0805_zurich": [],
+  "provider_status_counts": {
+    "PENDING": 59
+  },
+  "identity": {
+    "readAtUTC": "2026-11-14 07:05:32 UTC",
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matches": true
+    },
+    "shopify": {
+      "name": "TechHub CH",
+      "domain": "aban-os5z8ied.myshopify.com",
+      "currencyCode": "CHF",
+      "timezone": "EST",
+      "matches": false,
+      "scope": "Identity-only read. No products/collections or writes in wrong store."
+    }
+  },
+  "activeObjects": 39,
+  "activeChannelPlacements": 49,
+  "draftObjects": 9,
+  "holdRecordsAll15": [
+    {
+      "uuid": "4659816415037836014",
+      "source": "current_main",
+      "readback": {
+        "id": 423483793,
+        "date": {
+          "dateTime": "2026-11-18T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "-8339089096074181290",
+      "source": "current_main",
+      "readback": {
+        "id": 423484712,
+        "date": {
+          "dateTime": "2026-11-18T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "-8305910546945982140",
+      "source": "current_main",
+      "readback": {
+        "id": 423484773,
+        "date": {
+          "dateTime": "2026-11-18T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "-3731207601091163105",
+      "source": "current_main",
+      "readback": {
+        "id": 423484839,
+        "date": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "-4472725258033347244",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "-7002936161864562103",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "1744402171830094170",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "2172266762404316928",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "3963843144054620883",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "5647388074617226143",
+      "source": "R200_review_branch_unmerged",
+      "readback": null,
+      "absenceMeans": "not_in_this_window_unknown_elsewhere"
+    },
+    {
+      "uuid": "8935974072695279179",
+      "source": "R200_review_branch_unmerged",
+      "readback": {
+        "id": 427286591,
+        "date": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "-7647174116509334899",
+      "source": "R200_review_branch_unmerged",
+      "readback": {
+        "id": 427288119,
+        "date": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "3614365779669041576",
+      "source": "R200_review_branch_unmerged",
+      "readback": {
+        "id": 427287938,
+        "date": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "4156060813550767248",
+      "source": "R200_review_branch_unmerged",
+      "readback": {
+        "id": 427286681,
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    },
+    {
+      "uuid": "6680239273933357186",
+      "source": "R200_review_branch_unmerged",
+      "readback": {
+        "id": 427287815,
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ]
+      },
+      "absenceMeans": null
+    }
+  ],
+  "mainHoldFile": {
+    "commit": "cd2f846fe820a05b68036d758132b0c6e22bbb4c",
+    "path": "dropship/METRICOOL-HALTEN.txt",
+    "blobSha": "a3bbb009d8bca47d420aeefe11f8589adb0e690c",
+    "activeHoldUuids": [
+      "4659816415037836014",
+      "-8339089096074181290",
+      "-8305910546945982140",
+      "-3731207601091163105"
+    ],
+    "note": "Main still contains4oldholds. R20011entryreviewpatch is not in this dated main file; no merge/execution claimed."
+  },
+  "reviewBranchCommitReadback": "b45049aa1cfdb89e5a45dc1e1fb9651a2005644b",
+  "flagScope": "Structural scheduling fields only, not rights/content/board/film QA approval. PENDING is no publication evidence.",
+  "historicalMasterDedupe": "unknown; no newposts/writes/registerinitialisation",
+  "metricsFlowReportsReusedFromR200": true,
+  "snapshotProof": "Fresh local canonical snapshot hash matches R200 sourceSnapshotBeforeEmailRedaction; previous archival public contact redactions are documented in R200.",
+  "postIdentitySummary": [
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ]
+    },
+    {
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "publicationDate": {
+        "dateTime": "2026-11-14T19:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ]
+    },
+    {
+      "id": 420726136,
+      "uuid": "6199136659928140012",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ]
+    },
+    {
+      "id": 420728374,
+      "uuid": "7768651932591999367",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ]
+    },
+    {
+      "id": 422279394,
+      "uuid": "-1754664943692791070",
+      "publicationDate": {
+        "dateTime": "2026-11-14T09:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+      ]
+    },
+    {
+      "id": 422279501,
+      "uuid": "7993315583738791837",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ]
+    },
+    {
+      "id": 422279608,
+      "uuid": "8356246782781639563",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 422279700,
+      "uuid": "8178449842924373712",
+      "publicationDate": {
+        "dateTime": "2026-11-14T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 422279805,
+      "uuid": "-2924344703561023385",
+      "publicationDate": {
+        "dateTime": "2026-11-14T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 422279920,
+      "uuid": "8229862176301272727",
+      "publicationDate": {
+        "dateTime": "2026-11-14T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 422280035,
+      "uuid": "-6748893881700627372",
+      "publicationDate": {
+        "dateTime": "2026-11-14T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ]
+    },
+    {
+      "id": 422280155,
+      "uuid": "-3833193365444016309",
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ]
+    },
+    {
+      "id": 422295156,
+      "uuid": "-6967517640837021033",
+      "publicationDate": {
+        "dateTime": "2026-11-15T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ]
+    },
+    {
+      "id": 422791801,
+      "uuid": "-3513321668753471647",
+      "publicationDate": {
+        "dateTime": "2026-11-14T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+      ]
+    },
+    {
+      "id": 423483793,
+      "uuid": "4659816415037836014",
+      "publicationDate": {
+        "dateTime": "2026-11-18T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+      ]
+    },
+    {
+      "id": 423484712,
+      "uuid": "-8339089096074181290",
+      "publicationDate": {
+        "dateTime": "2026-11-18T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+      ]
+    },
+    {
+      "id": 423484773,
+      "uuid": "-8305910546945982140",
+      "publicationDate": {
+        "dateTime": "2026-11-18T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+      ]
+    },
+    {
+      "id": 423484839,
+      "uuid": "-3731207601091163105",
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+      ]
+    },
+    {
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "publicationDate": {
+        "dateTime": "2026-11-15T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+      ]
+    },
+    {
+      "id": 424392566,
+      "uuid": "-8080777271331700055",
+      "publicationDate": {
+        "dateTime": "2026-11-16T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+      ]
+    },
+    {
+      "id": 424392702,
+      "uuid": "7991040995405613204",
+      "publicationDate": {
+        "dateTime": "2026-11-16T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+      ]
+    },
+    {
+      "id": 424392795,
+      "uuid": "-580082399036486516",
+      "publicationDate": {
+        "dateTime": "2026-11-16T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+      ]
+    },
+    {
+      "id": 424393081,
+      "uuid": "-8863891854936750949",
+      "publicationDate": {
+        "dateTime": "2026-11-16T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+      ]
+    },
+    {
+      "id": 424393187,
+      "uuid": "-2055061205905158476",
+      "publicationDate": {
+        "dateTime": "2026-11-17T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+      ]
+    },
+    {
+      "id": 424393289,
+      "uuid": "-326770756211684563",
+      "publicationDate": {
+        "dateTime": "2026-11-17T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+      ]
+    },
+    {
+      "id": 424393422,
+      "uuid": "8906814597211638530",
+      "publicationDate": {
+        "dateTime": "2026-11-17T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+      ]
+    },
+    {
+      "id": 424393614,
+      "uuid": "9119250214596987223",
+      "publicationDate": {
+        "dateTime": "2026-11-17T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+      ]
+    },
+    {
+      "id": 424393691,
+      "uuid": "-2256568300747601062",
+      "publicationDate": {
+        "dateTime": "2026-11-18T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+      ]
+    },
+    {
+      "id": 425725034,
+      "uuid": "5511347900019396585",
+      "publicationDate": {
+        "dateTime": "2026-11-18T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+      ]
+    },
+    {
+      "id": 425725162,
+      "uuid": "-4254912497617780595",
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+      ]
+    },
+    {
+      "id": 425725272,
+      "uuid": "-5899965466644493317",
+      "publicationDate": {
+        "dateTime": "2026-11-18T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+      ]
+    },
+    {
+      "id": 425725415,
+      "uuid": "2120727659527094958",
+      "publicationDate": {
+        "dateTime": "2026-11-19T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+      ]
+    },
+    {
+      "id": 425725555,
+      "uuid": "4792908094992761420",
+      "publicationDate": {
+        "dateTime": "2026-11-19T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+      ]
+    },
+    {
+      "id": 425725709,
+      "uuid": "-1560468010126717309",
+      "publicationDate": {
+        "dateTime": "2026-11-19T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+      ]
+    },
+    {
+      "id": 425725932,
+      "uuid": "6443070221295305315",
+      "publicationDate": {
+        "dateTime": "2026-11-19T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+      ]
+    },
+    {
+      "id": 425726070,
+      "uuid": "-6491658134482960242",
+      "publicationDate": {
+        "dateTime": "2026-11-20T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+      ]
+    },
+    {
+      "id": 425726186,
+      "uuid": "5095221239706765903",
+      "publicationDate": {
+        "dateTime": "2026-11-20T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+      ]
+    },
+    {
+      "id": 425726329,
+      "uuid": "108318075245381964",
+      "publicationDate": {
+        "dateTime": "2026-11-20T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+      ]
+    },
+    {
+      "id": 425726479,
+      "uuid": "-457707186698434580",
+      "publicationDate": {
+        "dateTime": "2026-11-20T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+      ]
+    },
+    {
+      "id": 426961960,
+      "uuid": "-325577156053548845",
+      "publicationDate": {
+        "dateTime": "2026-11-21T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_dd164b90-30e9-4b45-9294-d3d22efe2075.jpg?v=1794397799"
+      ]
+    },
+    {
+      "id": 426962036,
+      "uuid": "4464007380148308511",
+      "publicationDate": {
+        "dateTime": "2026-11-21T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+      ]
+    },
+    {
+      "id": 426962130,
+      "uuid": "1244897565051602488",
+      "publicationDate": {
+        "dateTime": "2026-11-21T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_1.jpg?v=1794397766",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_2.jpg?v=1794397773",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_3.jpg?v=1794397781",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_4.jpg?v=1794397788"
+      ]
+    },
+    {
+      "id": 426962209,
+      "uuid": "1277216616076757571",
+      "publicationDate": {
+        "dateTime": "2026-11-21T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": false,
+      "autoPublish": true,
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_07eb0b8b-650b-45f7-a428-1d44e9f8cf69.png?v=1794397810"
+      ]
+    },
+    {
+      "id": 427286591,
+      "uuid": "8935974072695279179",
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ]
+    },
+    {
+      "id": 427286681,
+      "uuid": "4156060813550767248",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ]
+    },
+    {
+      "id": 427287815,
+      "uuid": "6680239273933357186",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ]
+    },
+    {
+      "id": 427287938,
+      "uuid": "3614365779669041576",
+      "publicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ]
+    },
+    {
+      "id": 427288119,
+      "uuid": "-7647174116509334899",
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ]
+    }
+  ]
+}

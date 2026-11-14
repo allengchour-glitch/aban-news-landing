@@ -1,5 +1,9 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## R201 – 14.11.2026, Morgenlauf: gleicher Master, konkreter Lieferumfangs-Diff
+
+[Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261114-08H-R201.md) · [Belege](CONTENT-VERKAUFSPAKET-20261114-08H-R201.json). Shopify liefert erneut die falsche Identität; keine Plattformwrites. Planung frisch und bytegleich R200, YouTube15–21/Threads15 offen. Tagesreports wiederverwendet. Neu: exakter öffentlicher/CJ-Projektorabgleich, enger Zweistellen-Diff gegen pauschale Zubehörzusage, technische Analyse der vorgesehenen18sMusik und sechs redaktionelle Caption-/UTM-Entwürfe für denselben Master. Kein neuer Film oder Queueeintrag.24Aufgaben/Historie/Tagesgrenze/Kaufwatchende erhalten; Claude-Empfang unbekannt.
+
 ## R200 – 14.11.2026: Unabhängig weitergearbeitet, Produktivgrenzen erhalten
 
 [Geprüfter Arbeitsstand](WEITERARBEIT-20261114-R200.md) · [Belege](WEITERARBEIT-20261114-R200.json). Elf bekannte Halte-UUIDs auf separatem Prüfbranch b45049a gesichert, noch nicht main/produktiv. Aktuelle Planung und einmalige Tagesreports geprüft; konkrete YouTube-/Threads-Lücken, Hoodie-/Notizbuch-, SEO-, Merchant-, DNS- und Master-Quellenarbeit dokumentiert. Keine Plattformwrites oder neuen Render. Shopify wartet auf korrekte LuxeStyle-Autorisierung; vorhandene IDs bleiben erhalten. 24 Aufgaben, Historie, beendeter Kauf-Watch und Zeitplan erhalten; Claude-Empfang unbekannt.

@@ -1,0 +1,106 @@
+{
+  "state": "ENTWURF_ZUR_FREIGABE_NO_WRITE",
+  "productId": "gid://shopify/Product/15521256604033",
+  "targetVariantId": "gid://shopify/ProductVariant/68122445283719",
+  "sku": "CJSN139239101AZ",
+  "readAtUTC": "2026-11-14T07:14:14.353414+00:00",
+  "sources": {
+    "publicJsSha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+    "cjDetailSha256": "b7539a66ce12327ed033ca2f83cdaec80456fad921c54e45f6c49dca1945ac46",
+    "cjPid": "1477820492730732544",
+    "exactTarget": "A-USB",
+    "videoAssetIdOnly": [
+      "1602963697889193984"
+    ],
+    "videoUrl": null,
+    "videoCommercialRights": "unknown"
+  },
+  "finding": "CurrentCJ description separatesAUSBbasic/B..Gfeatures but also contains a generic mixed packing list. CurrentpublicHTML repeats that generic list universally in2places. Neither proves exactAaccessories. Draft removes only these2universalclaims, without inventing a replacementApacklist.",
+  "beforeDescriptionSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+  "proposedDescriptionSha256": "260f79fd57d24302563451e5e80bdfda1382aa1c1ab6ece3797af795ba0debec",
+  "replacements": [
+    {
+      "before": "Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxie-Scheibe, schau dir die gewünschte Ausführung also genau an.",
+      "after": "Die Ausstattung hängt von der gewählten Ausführung ab. Die Angaben zu den anderen Modellen gelten nicht automatisch für das Grundmodell.",
+      "count": 1
+    },
+    {
+      "before": "<h4>Lieferumfang</h4>\n<ul>\n<li>1 Nachtlicht</li>\n<li>6 Farbscheiben</li>\n<li>1 wiederaufladbares Bluetooth-Drehteil</li>\n<li>1 Galaxyscheibe</li>\n</ul>",
+      "after": "<h4>Lieferumfang</h4>\n<p>Wähle die gewünschte Ausführung oben aus. Ausstattung und Zubehör unterscheiden sich je Modell; beachte die Angaben unter «Die Ausführungen».</p>",
+      "count": 1
+    }
+  ],
+  "protectedRestByteEquivalent": true,
+  "variantBindingCurrentPublicAndCJ": [
+    {
+      "shopifyVariantId": "68122445283719",
+      "publicVariantTitle": "A · Grundmodell",
+      "sku": "CJSN139239101AZ",
+      "cjVariantId": "1477826312449167360",
+      "cjVariantKey": "A-USB"
+    },
+    {
+      "shopifyVariantId": "68122445316487",
+      "publicVariantTitle": "B · mit 6 Motivscheiben",
+      "sku": "CJSN139239102BY",
+      "cjVariantId": "1477826312453361664",
+      "cjVariantKey": "B-USB"
+    },
+    {
+      "shopifyVariantId": "68122445349255",
+      "publicVariantTitle": "C · Galaxie-Scheibe + 6 Motivscheiben",
+      "sku": "CJSN139239103CX",
+      "cjVariantId": "1477826312453361665",
+      "cjVariantKey": "C-USB"
+    },
+    {
+      "shopifyVariantId": "68122445382023",
+      "publicVariantTitle": "D · Akku, Bluetooth, 6 Motivscheiben",
+      "sku": "CJSN139239104DW",
+      "cjVariantId": "1477826312453361666",
+      "cjVariantKey": "D-USB"
+    },
+    {
+      "shopifyVariantId": "68122445414791",
+      "publicVariantTitle": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+      "sku": "CJSN139239105EV",
+      "cjVariantId": "1555856292877709312",
+      "cjVariantKey": "E-USB"
+    },
+    {
+      "shopifyVariantId": "68122445447559",
+      "publicVariantTitle": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+      "sku": "CJSN139239106FU",
+      "cjVariantId": "1555856292877709313",
+      "cjVariantKey": "F-USB"
+    },
+    {
+      "shopifyVariantId": "68122445480327",
+      "publicVariantTitle": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+      "sku": "CJSN139239107GT",
+      "cjVariantId": "1589496316504322048",
+      "cjVariantKey": "G-USB"
+    }
+  ],
+  "protectedFields": [
+    "title",
+    "handle",
+    "status",
+    "tags",
+    "all7variants/options/SKUs/prices",
+    "inventorytracking/policy",
+    "images/media/alttexts",
+    "technicaldata/dimensions/materials",
+    "shippingthresholdsCHF50/CHF45",
+    "customeraccountdomain",
+    "allpublications"
+  ],
+  "preWriteGates": [
+    "CorrectfreshconnectedShopifyidentityluxestyle.ch; currentwrongshopblockswrite.",
+    "FreshAdminreadexactproduct/variant and exactcurrentdescription; stopifsourcehashchanged.",
+    "Ownerreviewofthisexact2replacementdiff; salesactionisdraftonly.",
+    "Protectandcomparecurrentfieldstatedbefore/after, readbackpublicproductandAdmin.",
+    "NoShop-/feed-/flow-/discount-/price-/shipping-/statusactivation."
+  ],
+  "writes": 0
+}

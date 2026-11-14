@@ -1,0 +1,100 @@
+{
+  "title": "LuxeStyle 18s Master audio preflight",
+  "checked_at": "2026-11-14",
+  "source": "/tmp/luxe-other-work-20261114/music/luxe-premium.wav",
+  "expected_sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+  "sha256_before": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+  "sha256_after": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+  "source_unchanged": true,
+  "source_probe": {
+    "container": "WAV",
+    "codec": "PCM signed 16-bit little-endian",
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "duration_s": 64.307664,
+    "bit_rate_bps": 1411200,
+    "metadata_encoder": "Lavf60.16.100"
+  },
+  "planned_master": {
+    "duration_s": 18,
+    "video": "1080x1920 at 30 fps",
+    "voiceover": false
+  },
+  "analysis": {
+    "full_source": {
+      "astats_sample_peak_dbfs": -1.483631,
+      "astats_rms_dbfs": -15.423625,
+      "ebur128_integrated_lufs": -13.2,
+      "ebur128_lra_lu": 0.2,
+      "ebur128_true_peak_dbfs": -1.4
+    },
+    "first_18_seconds": {
+      "astats_sample_peak_dbfs": -1.611609,
+      "astats_rms_dbfs": -15.126303,
+      "ebur128_integrated_lufs": -13.2,
+      "ebur128_lra_lu": 0.2,
+      "ebur128_true_peak_dbfs": -1.6,
+      "loudnorm_measurement_target_I_minus16_TP_minus1_LRA11": {
+        "input_i_lufs": "-13.27",
+        "input_tp_dbfs": "-1.59",
+        "input_lra_lu": "0.20",
+        "input_thresh_lufs": "-23.27",
+        "predicted_output_i_lufs": "-15.99",
+        "predicted_output_tp_dbfs": "-4.35",
+        "normalization_type": "dynamic",
+        "target_offset_db": "-0.01"
+      }
+    }
+  },
+  "interpretation": [
+    "No sample clipping indicated by measured sample peak.",
+    "True peak remains below 0 dBFS; little headroom to a -1 dBTP ceiling (measured first-18s true peak -1.6 dBFS).",
+    "First-18s loudness is steady (LRA 0.2 LU); no meaningful short-window loudness instability apparent from this metric."
+  ],
+  "unverified": [
+    "Music rights and authorship",
+    "Whether the file is free of speech (metering/hash cannot establish this)",
+    "Listening review and editorial suitability",
+    "Whether a fade or cut sounds natural"
+  ],
+  "measurement_note": "ffprobe metadata plus ffmpeg astats, ebur128 and loudnorm analyses; all ffmpeg analyses used null output. No media file exported and source bytes unchanged.",
+  "rootBoundaryCheck": {
+    "silenceCheck": {
+      "rangeSeconds": [
+        0,
+        18
+      ],
+      "thresholdDbfs": -50,
+      "minimumDurationSeconds": 0.05,
+      "detectedEvents": []
+    },
+    "first20ms": {
+      "peakDbfs": -5.000377362660108,
+      "rmsDbfs": -16.301505536596483
+    },
+    "last20msBefore18sCut": {
+      "peakDbfs": -6.707628681169994,
+      "rmsDbfs": -15.508384381412522
+    },
+    "suggestedEnvelopeDraftOnly": {
+      "fadeInSeconds": 0.1,
+      "fadeOutStartSeconds": 17.4,
+      "fadeOutDurationSeconds": 0.6,
+      "applied": false,
+      "limitation": "Non-silent ending means a straightcut may truncate notes; no audiblefault or musicalcadence is proven by thismeter. Fade/cut must be heard in finalfilm."
+    },
+    "sourceSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "sourceUnchanged": true,
+    "exports": 0
+  },
+  "rootUnitClarification": "True-peak fields named dbfs in the analyzer report represent dBTP; samplepeak/RMS remain dBFS. No sample or gain changed.",
+  "canonicalRepositoryCountercheck": {
+    "commit": "cd2f846fe820a05b68036d758132b0c6e22bbb4c",
+    "path": "automation/music/luxe-premium.wav",
+    "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+    "bytes": 11343950,
+    "readMethod": "GitHubcontentsmetadata read, matches local GitblobSHA and bytes; full SHA256 is recorded above."
+  },
+  "rightsOrCreativeApprovalGranted": false,
+  "mediaExports": 0
+}
