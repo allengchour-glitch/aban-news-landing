@@ -1,0 +1,66 @@
+LOKALER TEST-NACHBAU – keine Produktionsautomation, keine Freigabe für Shop-/Feed-Writes.
+Diese Quellen wurden im Task auf dem dokumentierten lokalen Commit ausgeführt. Die Pfade sind task-spezifisch; vor Wiederverwendung Scope, Quellversion und Isolation erneut prüfen. Vorbereitete Node-/LiquidJS-Versionen und die identischen YAML-Sparse-Archive sind im CI-JSON dokumentiert. Der Acht-Minuten-Timeout bleibt bestehen.
+
+=== isolierter Job-Runner ===
+import os, sys, json, pathlib, subprocess, time, importlib.metadata
+
+job_name=sys.argv[1]
+plan=json.loads(pathlib.Path('/mnt/job-plan.json').read_text())[job_name]
+logs=pathlib.Path('/var/tmp');logs.mkdir(exist_ok=True)
+pathlib.Path('/tmp/runner').mkdir(parents=True,exist_ok=True)
+pathlib.Path('/tmp/runner/lq').symlink_to('/mnt/liquidjs',target_is_directory=True)
+start=time.monotonic()
+deadline=start+60*plan['timeoutMinutes']
+results=[]
+for index,step in enumerate(plan['runs']):
+    if job_name=='lagerbestand' and index==0:
+        liquid=json.loads(pathlib.Path('/mnt/liquidjs/node_modules/liquidjs/package.json').read_text())
+        assert liquid['version']=='10.30.1'
+        import yaml
+        results.append({'index':index,'name':step['name'],'status':'prerequisites_prepared_outside_test_sandbox','liquidjs':liquid['version'],'pyyaml':yaml.__version__,'commandExecuted':False})
+        continue
+    env=dict(os.environ)
+    env.update({str(k):str(v) for k,v in step.get('env',{}).items()})
+    remaining=deadline-time.monotonic()
+    if remaining<=0:
+        results.append({'index':index,'name':step['name'],'status':'job_timeout','returnCode':None});break
+    began=time.monotonic()
+    try:
+        p=subprocess.run(['/bin/bash','-e','-c',step['run']],cwd='/workspace',env=env,capture_output=True,text=True,timeout=remaining)
+        output=p.stdout+p.stderr
+        (logs/f'step-{index}.log').write_text(output)
+        item={'index':index,'name':step['name'],'returnCode':p.returncode,'durationSeconds':round(time.monotonic()-began,3),'outputBytes':len(output.encode())}
+        if p.returncode:item['failureTail']=output.strip().splitlines()[-12:]
+        results.append(item)
+    except subprocess.TimeoutExpired as e:
+        results.append({'index':index,'name':step['name'],'status':'job_timeout','returnCode':None,'durationSeconds':round(time.monotonic()-began,3)})
+        break
+    finally:
+        (logs/'progress.json').write_text(json.dumps({'job':job_name,'elapsedSeconds':round(time.monotonic()-start,3),'steps':results},indent=2))
+    if results[-1].get('returnCode')!=0:break
+passed=len(results)==len(plan['runs']) and all(x.get('returnCode')==0 or x.get('status')=='prerequisites_prepared_outside_test_sandbox' for x in results)
+result={'job':job_name,'passed':passed,'durationSeconds':round(time.monotonic()-start,3),'plannedRunSteps':len(plan['runs']),'recordedSteps':len(results),'steps':results,'envSecretCredentialsProvided':False,'networkNamespaceIsolated':True,'privateEmptyTmp':True,'sourceCommit':json.loads(pathlib.Path('/mnt/candidate.json').read_text())['candidateCommit'],'localReplicaNotGithubActionsRun':True}
+(logs/'result.json').write_text(json.dumps(result,indent=2))
+print(json.dumps(result))
+raise SystemExit(0 if passed else 1)
+
+=== Launcher der drei ursprünglichen Jobs ===
+from pathlib import Path
+import subprocess,json,sys,concurrent.futures,os,shutil,hashlib,datetime
+w=Path('/tmp/luxe-continue-20261114-r211');deps=w/'dependencies'
+shutil.copyfile(w/'job-plan.json',deps/'job-plan.json');shutil.copyfile(w/'candidate.json',deps/'candidate.json')
+plan=json.loads((w/'job-plan.json').read_text())
+python=Path(sys.executable)
+for name in plan:(w/'jobs'/name/'logs').mkdir(exist_ok=True)
+def run(name):
+    source=w/'jobs'/name/'source';logs=w/'jobs'/name/'logs'
+    args=['bwrap','--unshare-user','--unshare-pid','--unshare-net','--ro-bind','/','/','--dev','/dev','--proc','/proc','--tmpfs','/tmp','--tmpfs',str(Path.home()),'--bind',str(source),'/workspace','--bind',str(logs),'/var/tmp','--ro-bind',str(deps),'/mnt','--chdir','/workspace','--clearenv','--setenv','PATH','/mnt/node/bin:'+str(python.parent)+':/usr/bin:/bin','--setenv','LANG','C.UTF-8','--setenv','CI','true','--setenv','GITHUB_ACTIONS','true','--setenv','GITHUB_WORKSPACE','/workspace','--setenv','RUNNER_TEMP','/tmp/runner','--setenv','TMPDIR','/tmp','--die-with-parent','--new-session',str(python),'/mnt/ci_runner.py',name]
+    p=subprocess.run(args,capture_output=True,text=True,timeout=60*plan[name]['timeoutMinutes']+30)
+    (logs/'launcher.stdout').write_text(p.stdout);(logs/'launcher.stderr').write_text(p.stderr)
+    if (logs/'result.json').exists():r=json.loads((logs/'result.json').read_text())
+    else:r={'job':name,'passed':False,'launcherReturnCode':p.returncode,'launcherError':p.stderr[-1000:]}
+    print(json.dumps({'job':name,'passed':r['passed'],'durationSeconds':r.get('durationSeconds'),'recordedSteps':r.get('recordedSteps')}),flush=True)
+    return r
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:results=list(ex.map(run,plan))
+result={'recordedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'candidate':json.loads((w/'candidate.json').read_text()),'allThreeLocalJobsPassed':all(x['passed'] for x in results),'jobs':results,'node':json.loads((deps/'node-proof.json').read_text()),'liquidjs':json.loads((deps/'liquidjs-proof.json').read_text()),'networkAndCredentialsIsolatedDuringTests':True,'setupActionsNotExecuted':True,'remoteGithubCheckStatus':'unknown_not_requested','operatingCodeMergedOrDeployed':False,'shopOrMerchantWrites':0}
+(w/'ci-result.json').write_text(json.dumps(result,indent=2));print(json.dumps({'allThreeLocalJobsPassed':result['allThreeLocalJobsPassed']}),flush=True)

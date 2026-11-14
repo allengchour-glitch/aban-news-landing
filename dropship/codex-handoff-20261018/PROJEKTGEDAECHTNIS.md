@@ -1,5 +1,9 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## R211 – 14.11.2026: SEO ist live, konkrete Übergabe für Claude Code gespeichert
+
+[Claude-Code-Übergabe](CLAUDE-CODE-HANDOFF-20261114-R211.md) · [Live-Belege](SEO-LIVE-PRUEFUNG-20261114-R211.json) · [CI-Ergebnis](MERCHANT-CI-20261114-R211.json) · [Bericht](WEITERARBEIT-20261114-R211.md). Theme **213991391623 ist MAIN**, öffentlich DE/FR bestätigt; drei deutsche Beschreibungen exakt freigegeben, keine eigene Codex-Publikation. Späterer Adminaufruf verlangt Reauthentifizierung; öffentlicher Live-Befund und bestehende Freigabe bleiben erhalten. **Kein erneuter Veröffentlichen-Klick nötig.** R210-Patch unverändert auf rein lokalem Kandidaten geprüft: zwei lokale Jobs bestanden, `tests` nach480s in Mutationsphase am Limit; drei Restphasen separat bestanden. Keine pauschal grüne CI, kein Merge/Deployment/Google-Fix. Neue Übergabe ist zur Abholung gespeichert, tatsächlicher Claude-Code-Empfang unbekannt.24IDs/Historie/Tagesgrenzen/Zeitplan erhalten.
+
 ## R210 – 14.11.2026: Feed-Kennungsfehler reproduziert und als Patch korrigiert; Theme-Publish wartet auf UI
 
 [Bericht](WEITERARBEIT-20261114-R210.md) · [Patch](MERCHANT-IDENTIFIKATOREN-20261114-R210.patch) · [Testbelege](MERCHANT-IDENTIFIKATOREN-20261114-R210.json). EchtenMain-Codefehler reproduziert: unbekannteGTIN/SKU erzeugenidentifier_exists=no. Minimaler isolierterEntwurf entfernt diese unbelegteNegativbehauptung,erhältGTIN/MPN/Tags/Preise.85gezielteSuiteAssertions+8RootGegenprobengrün,**FullCIoffen/nichtintegriert/nichtlive**,keineGoogleReparaturbehauptung.5echteRepo-Helfer ausGitgeprüft,SparseFehlschlusskorrigiert;keinOfferSourceReaderunterdiesen5/lokaleRuntimevarsfehlen,Connectorenunverändert. FrischeIdentitäten/ThemeRollen:213991391623weiterUNPUBLISHED. KonkreteLiveFreigabebleibt;keinneuerabgewiesenerPublishversuch,keinsteuerbaresBrowsertab,OwnerumtechnischenUI-Klickgebeten.24IDs/Historien/Tagesgrenzeerhalten,ClaudeEmpfangunbekannt.

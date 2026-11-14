@@ -2432,3 +2432,12 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | BestehendeHelfer |5echteQuellen perGitShow gelesen;SparseCheckout-Fehlschluss korrigiert;benannteRuntimevars nur aufPräsenz geprüft |Helfervorhanden,unterdiesen5keinEinzelartikelSourceReader. KeineScript-/Auth-/Registrierungs-/Versandausführung,keineSecretsgelesenoderangefordert |
 | SEO-Zugang | Shopify/Metricool/ThemeRollenundStandfrischgeprüft,BrowserSkillundsteuerbareToolsgeprüft |SEO-Kopie213991391623weiterUNPUBLISHED. VorhandeneFreigabebleibt;keinPublishRetry/Bypass. OwnerumtechnischenVeröffentlichen-Klickgebeten,keineerneuteFreigabe |
 | Kontinuität | R209CSV/Sourcefälle datiertweitergeführt;24IDs/Historieerhalten |0operativeCode-/Servicewrites,neueTagesreports/Kaufwatch/Socialposts/Renders/Automation. FullCIundlegitimerLive-ReadbackbleibennächsteSchritte;Grenzenerhalten |
+
+### R211 – Live-SEO und Übergabe für Claude Code, 14.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| SEO live | Admin-Rollen und öffentliche DE-/FR-Ausgabe zweimal geprüft | Theme213991391623MAIN und drei DE-Beschreibungen korrekt; FR erhalten. Externer Wechsel bestätigt, keine eigene Veröffentlichung |
+| Admin-Zugang | Späten Reauthfehler korrekt dokumentiert, danach keine protectedAktionen | Shopify-Anmeldung künftig nötig; bekannter Live-Stand/IDs und Inhaberfreigabe nicht gelöscht. Öffentliche Ausgabe zuletzt16:38 bestätigt |
+| Feed-CI | R210-Patch lokal mit Node22, exakten YAML-Sparsekopien, bereinigter Umgebung und isoliertem Netz/tmp geprüft | lagerbestand/selbst-gestalten bestanden; testsTimeout480s. Drei Restphasen separat grün, Gesamtprüfung weiteroffen. KeinMerge/Deployment/Googlefix |
+| Claude Code | Neue konkrete Übergabe und Core4 fortgeschrieben |24IDs/Historien und bestehendeGrenzen erhalten. Übergabe gespeichert, Lesebestätigung unbekannt. Keine zusätzlichen Reports/Orders/Socialposts/Renders/Automation |

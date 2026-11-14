@@ -1,0 +1,127 @@
+{
+  "recordedAtUTC": "2026-11-14T15:42:05.029934+00:00",
+  "initialAdminIdentityAndRoles": {
+    "shopify": {
+      "data": {
+        "shop": {
+          "name": "LuxeStyle",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          },
+          "myshopifyDomain": "au3j0y-hq.myshopify.com",
+          "currencyCode": "CHF"
+        },
+        "previous": {
+          "id": "gid://shopify/OnlineStoreTheme/213013037447",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-14T15:08:04Z"
+        },
+        "approved": {
+          "id": "gid://shopify/OnlineStoreTheme/213991391623",
+          "name": "LuxeStyle – SEO 14.11.2026",
+          "role": "MAIN",
+          "updatedAt": "2026-11-14T15:08:04Z"
+        }
+      }
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "ownPlatformWrites": 0,
+    "themePublicationActor": "unknown_external_to_successful_Codex_publish",
+    "ownSuccessfulThemePublishes": 0,
+    "recordedAtUTC": "2026-11-14 15:35:43 UTC",
+    "initialIdentityReadAtUTC": null,
+    "timingNote": "Initial R211 identity call time was not separately captured. recordedAtUTC is documentation time, not a fresh reread timestamp. Final Shopify roles have a separate readStartedAtUTC."
+  },
+  "publicFinalReadbacks": [
+    {
+      "label": "de",
+      "status": 200,
+      "url": "https://luxestyle.ch/",
+      "theme": {
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "id": 213991391623,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "canonical": [
+        "https://luxestyle.ch/"
+      ],
+      "descriptions": {
+        "meta": [
+          "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+        ],
+        "og": [
+          "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+        ],
+        "twitter": [
+          "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag."
+        ]
+      },
+      "sha256": "f7c2a5bd9815eeb9fa1109a727a9c97698bf78c1c15ac7268f08c8da2b46424b",
+      "readAtUTC": "2026-11-14T15:38:32.275737+00:00",
+      "allThreeDescriptionsExactlyApproved": true
+    },
+    {
+      "label": "fr",
+      "status": 200,
+      "url": "https://luxestyle.ch/fr",
+      "theme": {
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "id": 213991391623,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "canonical": [
+        "https://luxestyle.ch/fr"
+      ],
+      "descriptions": {
+        "meta": [
+          "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+        ],
+        "og": [
+          "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+        ],
+        "twitter": [
+          "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50."
+        ]
+      },
+      "sha256": "1a5e7a59eb919f60dc66678ccce3c858f8e3267c92027d34876938e366dfacde",
+      "readAtUTC": "2026-11-14T15:38:32.611350+00:00"
+    }
+  ],
+  "laterAdminRead": {
+    "readStartedAtUTC": "2026-11-14 15:37:17 UTC",
+    "data": {
+      "error": "This app connection requires reauthentication before other actions on this app can succeed.",
+      "error_code": "UNAUTHORIZED",
+      "error_data": {
+        "detail": "Reauthentication required",
+        "action": "TRIGGER_REAUTHENTICATION",
+        "reason": "www_authenticate_reauth"
+      }
+    },
+    "ownWrite": false
+  },
+  "currentConclusion": "LIVE_CONFIRMED_PUBLICLY; initial Admin MAIN confirmed, later Admin requires reauthentication. Known live theme is not reset to unknown or unpublished.",
+  "ownSuccessfulPublishes": 0,
+  "externalPublisherActor": "unknown_not_attributed",
+  "inheritedOwnerApprovalPreserved": true,
+  "ownerPublishClickStillNeeded": false,
+  "newProtectedWritesAfterAuthError": 0,
+  "noRankingOrSalesClaim": true
+}

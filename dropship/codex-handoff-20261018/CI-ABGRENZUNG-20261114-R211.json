@@ -1,0 +1,53 @@
+{
+  "recordedAtUTC": "2026-11-14T15:42:05.029934+00:00",
+  "sourceMain": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+  "sourceHashes": {
+    "workflow": "3ff5380db8a9db4975e7eb41e17e973e1ef9d54c210913989384fecc8c2c3e01",
+    "simulationScript": "d39a631c909295075d782a083e7dc2927094108cd3d21afaee55c70c2254ce74"
+  },
+  "correctionOfR210": "ci_simulation.sh replays only jobs.tests run steps. It does not run the lagerbestand or selbst-gestalten jobs or setup uses/env. Package-install commands belong to lagerbestand, not to the simulator tests job. Prior broader reason is superseded, history retained.",
+  "nativeUnshareM": "Operation not permitted observed",
+  "availableAlternative": "Installed Bubblewrap successfully provided user, PID, mount and network namespaces; readonly root with isolated task checkout, private temporary/home/log areas, clear environment without account credentials. No privilege or account access bypass.",
+  "candidate": {
+    "baseMain": "90d0ea75bf2e1e864b3964c7983e3908961011d6",
+    "candidateCommit": "f170407dc6c9e603c3afc2b8eac5fe5b1aa4d87a",
+    "changedPaths": [
+      "automation/lib/gmc_feed_item.mjs",
+      "automation/lib/gmc_feed_item_test.mjs"
+    ],
+    "localOnly": true,
+    "pushed": false,
+    "merged": false,
+    "operatingRepoUnchanged": true,
+    "sourceForArchive": "/tmp/luxe-continue-20261114-r211/candidate-repo",
+    "partialCloneNote": "Unchanged tree entries retain verified main object IDs; write-tree --missing-ok permits unmaterialized promisor blobs. Selected CI paths are fetched by the original configured partial-clone reader before archive."
+  },
+  "runtimes": {
+    "node": {
+      "officialManifestUrl": "https://nodejs.org/dist/latest-v22.x/SHASUMS256.txt",
+      "officialTarUrl": "https://nodejs.org/dist/latest-v22.x/node-v22.23.5-linux-x64.tar.xz",
+      "sha256": "cdeb8670a0c81f51b4dc4ac61919f9b1ad917b304bf8221eb939570663d240f8",
+      "bytes": 31062912,
+      "version": "v22.23.5",
+      "taskLocalOnly": true,
+      "globalInstall": false,
+      "paidService": false
+    },
+    "liquidjs": {
+      "name": "liquidjs",
+      "version": "10.30.1",
+      "taskLocalOnly": true,
+      "lifecycleScriptsDisabled": true,
+      "npmUserAndGlobalConfig": "separate empty task-local files",
+      "registry": "https://registry.npmjs.org",
+      "globalInstall": false,
+      "approvedProxyEnvironmentRetained": true,
+      "runtimeAuthVariablesNotIncluded": true
+    },
+    "python": "3.12.14"
+  },
+  "noGlobalInstall": true,
+  "noGithubWorkflowDispatchOrDeployment": true,
+  "noProtectedStoreOrFeedWrite": true,
+  "noNewAutomation": true
+}
