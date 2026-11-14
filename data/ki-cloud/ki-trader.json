@@ -72,6 +72,30 @@
     "btc": 71342.96875,
     "eth": 2016.8297119140625
    }
+  },
+  {
+   "stand": "2026-11-13",
+   "zeit": "2026-11-14T11:35:08+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1625,
+   "tokens_aus": 802,
+   "kosten_usd": 0.02254,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.2,
+    "begruendung": "Klarer Abwärtstrend: 30 T. -16,3 %, 7 T. -9,9 %, heute -4,3 %. Der Kurs liegt unter allen Schnitten und 15,3 % unter dem 50-Tage-Schnitt. Gegen einen Ausbau des Shorts sprechen die starke Überdehnung und Angst&Gier bei 20, beides erhöht das Risiko einer Gegenbewegung. Der Short bleibt unverändert, so fallen keine Gebühren an. Das Funding ist leicht positiv, der Short erhält also einen kleinen Betrag.",
+    "sicherheit": 0.45
+   },
+   "eth": {
+    "position": -0.35,
+    "begruendung": "ETH ist schwächer als BTC: 7 T. -13,8 %, 30 T. -20,3 %, 20,1 % unter dem 50-Tage-Schnitt und 42,5 % unter dem 1-Jahres-Hoch. Der relative Abwärtstrend hält an. Dagegen stehen MVRV 0,90 (unterbewertet) und negatives Funding, der Short zahlt also leicht. Bei dieser Überverkauftheit stocke ich nicht auf und halte den Short.",
+    "sicherheit": 0.45
+   },
+   "kommentar": "Der Abverkauf beschleunigt sich, der Trend spricht weiter für Shorts. Die starke Überdehnung und die extreme Angst machen eine Gegenbewegung aber wahrscheinlicher. Ich halte die Positionen unverändert und spare damit Gebühren. Prüfen, ob die Shorts reduziert werden: bei einer Erholung über 73'000 bei BTC bzw. 2'050 bei ETH.",
+   "kurse": {
+    "btc": 68249.2734375,
+    "eth": 1927.5888671875
+   }
   }
  ]
 }
