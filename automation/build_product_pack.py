@@ -183,15 +183,21 @@ def build_bundle(slug: str, member_slugs: list[str], lang: str = "de") -> Path:
     """Bündelt alle Einzel-Packs (je als Unterordner) in EIN ZIP."""
     sub = (lang if lang != "de" else "")
     bundle = REPO / "downloads" / "packs" / sub / slug
+    # Eine lesbare ZIP mit weniger Produkten wäre trotzdem eine falsche Lieferung.
+    # Vor dem Löschen des bisherigen Bundles den vollständigen Satz prüfen.
+    if not member_slugs or any(
+        not (REPO / "downloads" / "packs" / sub / m).is_dir()
+        for m in member_slugs
+    ):
+        raise ValueError("Bundle unvollständig: Einzelpakete fehlen.")
     if bundle.exists():
         shutil.rmtree(bundle)
     bundle.mkdir(parents=True, exist_ok=True)
     n = 0
     for m in member_slugs:
         src = REPO / "downloads" / "packs" / sub / m
-        if src.is_dir():
-            shutil.copytree(src, bundle / m)
-            n += 1
+        shutil.copytree(src, bundle / m)
+        n += 1
     if lang == "en":
         (bundle / "LIESMICH.txt").write_text(
             "All AI Starter Kits (Bundle) — aban news\n\n"

@@ -11,11 +11,53 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import zipfile
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("kit_bau_test", ROOT / "automation/build_kit_zips.py")
 bau = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bau)
+produktbau = sys.modules[bau.build_bundle.__module__]
+
+
+class BundleVollstaendigTest(unittest.TestCase):
+    def test_fehlendes_mitglied_stoppt_vor_bestehendem_bundle(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                packs = root / 'downloads/packs' / (lang if lang != 'de' else '')
+                (packs / 'vorhanden').mkdir(parents=True)
+                (packs / 'vorhanden/DEMO.txt').write_text('NUR-TESTDATEN')
+                (packs / 'bundle').mkdir()
+                (packs / 'bundle/ALT.txt').write_text('VORHERIGER-TESTSTAND')
+                (packs / 'bundle.zip').write_bytes(b'ALTES-TESTARCHIV')
+                with patch.object(produktbau, 'REPO', root):
+                    with self.assertRaises(ValueError):
+                        produktbau.build_bundle('bundle', ['vorhanden', 'fehlt'], lang)
+                self.assertEqual((packs / 'bundle/ALT.txt').read_text(), 'VORHERIGER-TESTSTAND')
+                self.assertEqual((packs / 'bundle.zip').read_bytes(), b'ALTES-TESTARCHIV')
+
+    def test_leere_mitgliedsliste_ist_kein_lieferpaket(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(produktbau, 'REPO', Path(tmp)):
+            with self.assertRaises(ValueError):
+                produktbau.build_bundle('bundle', [])
+            self.assertFalse((Path(tmp) / 'downloads').exists())
+
+    def test_vollstaendiges_bundle_enthaelt_alle_mitglieder(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                packs = root / 'downloads/packs' / (lang if lang != 'de' else '')
+                for member in ('eins', 'zwei'):
+                    (packs / member).mkdir(parents=True)
+                    (packs / member / 'DEMO.txt').write_text('NUR-TESTDATEN-' + member)
+                with patch.object(produktbau, 'REPO', root):
+                    archive = produktbau.build_bundle('bundle', ['eins', 'zwei'], lang)
+                with zipfile.ZipFile(archive) as z:
+                    self.assertIsNone(z.testzip())
+                    for member in ('eins', 'zwei'):
+                        self.assertEqual(z.read(member + '/DEMO.txt').decode(), 'NUR-TESTDATEN-' + member)
+                    self.assertIn('2', z.read('LIESMICH.txt').decode())
 
 
 class KitBauTest(unittest.TestCase):

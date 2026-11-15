@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Bundle-Lieferung: fehlende Einzelpakete stoppen den Bau ·15.11.2026
+
+Von maina7cf2f2 auf isoliertem Branch codex/bundle-vollstaendig. Regeln, Übergaben und offene PRs geprüft. Bestehende ZIP-/CRC-/geschützter-Download-Prüfungen nicht erneut implementiert. Konkreter Fehler in build_product_pack.build_bundle: nicht vorhandene Mitgliedsordner wurden still übersprungen; auch leere Mitgliederlisten lieferten ein formal lesbares ZIP. Drei Gegenproben am alten Code rot (fehlendes Mitglied DE/EN und leere Liste); bestehende Prüfungen bestanden nach Ergänzung des im Sparse-Checkout zunächst fehlenden build-pages.sh.
+
+Vor jeder Änderung am bestehenden Bundle müssen alle zugeordneten Einzelordner vorhanden und die Mitgliederliste nicht leer sein. Sonst ValueError vor Löschen/Bauen; kein stilles Teilpaket. Vollständige Pakete bleiben unverändert baubar. Tests erhalten alten Bundleordner und alte Archivbytes bei Abbruch, prüfen vollständige DE-/EN-Demoarchive samt Mitgliedsinhalten und CRC.16 Paketbauprüfungen grün. Nur erfundene Testinhalte, kein geschütztes Produkt geöffnet und keine Zahlung. Katalog, Preise, Produktumfang, Salts und Konten unverändert.
+
+Echte CI-/Produktionsbereitstellung im zugehörigen PR prüfen. Nutzen: fehlende Lieferbestandteile fallen vor Freigabe auf statt erst beim Käufer; finanzielle Wirkung nicht gemessen. Nächster Schritt: vorhandene Checkout-/Produktmetadaten lesend mit Katalog und Lieferzuordnung abgleichen, ohne Testkauf.
+
 ## Kit-Download: unbekannter Zahlungsstatus ist eine Prüfungsstörung ·15.11.2026
 
 Von main00bf41c auf eigenem Branch codex/download-zahlungsstatus. Regeln, Übergaben und offene Arbeiten geprüft. Reproduziert am bestehenden Download-Endpunkt mit simuliertem HTTP200 und leerem payment_status: bisher HTTP402/Zahlung nicht abgeschlossen, obwohl keine bekannte Zahlungsentscheidung vorliegt. Neue Regression am alten Code rot. Kein echter Käuferfall oder Anbieterfehler behauptet.
