@@ -2914,3 +2914,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](MERCHANT-PFLICHTATTRIBUTE-LIVE-20261115-R247.md) · [Nachweise](MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json).
 
 [LUXESTYLE_R247_20261115]
+
+### R248 – Weitere Merchant-Preise und Produktdetails live
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / aktuelle Daten | Vier Kerndokumente, Shopify, Metricool samt sechs Kanälen und Merchant frisch gelesen; bestehende Ergänzungsquelle gezielt bestätigt. | Revision247 fortgesetzt, passendeIdentitäten; keine neueQuelle/Automation oder Reports. |
+| Variantenbindung / Quellen | Zwei CJ-Produkte und38SKU-Zuordnungen geprüft; echte Merchant-/Shopify-/CJ-Bilder und alle20Boxbilder verglichen. | Schmuckboxbild bindet exakt grüneLangbox/CHF16.90. Malbild bindet MotivB, Grösse erst bewusst auf50×65/CHF24.90 festgelegt und explizit benannt. |
+| Merchant / live | Zwei Preis-/Link-Updates, beim Malbild zusätzlich eindeutigenTitel geschrieben; gleicheOffers getrennt zurückgelesen und Schutzattribute verglichen. | Beide FREE_LISTINGS approved CH/LI, keineArtikelprobleme imEinzelreadback. Primärquelle/sonstigeAttribute/Bilder/Ausschlüsse erhalten. Kein0-Gesamtfehlerbeleg. |
+| Produkte / live | DreiOptionsdatensätze, vierMasswerte, zweiBeschreibungen/MetaDescriptions und konkretenBildhinweis aktualisiert. | SechsbestätigteWrites, userErrors=[], LEAVE_AS_IS.38Varianten-/18Wert-IDs/26Medien und allePreis-/SKU-/Bestandsdaten erhalten;20abgeleiteteTitel geändert. UnbelegteKomplettset-/Rahmen-/Toleranzangaben ersetzt. |
+| Öffentlich / Mobil | BeideHTML/JS-Abgleiche und390×844 mit echten sichtbarenBildkarten-/Label-Klicks geprüft. | RichtigeURL/Formular-IDs/Preise/Bilder, Masslabelslesbar, keinÜberlauf. EinstrengerHTML-Stringvergleich wegen dreiShopify-Zeilenumbrüchen korrigiert, keinRepeatWrite. KeinCart/Checkout. |
+| Bild / konkreter Blocker | HellgraueArmbandbox zeigt nachweislichkleineresAnhängerfoto; konkretesrichtigesCJ-Bild und fehlendeProdukt-Media-ID geprüft. Rechte-/Farb-/Produktbestätigung angefragt. | Antwortoffen, keinUpload/Medienwrite. KonkreterWarnhinweis live; erstnach tatsächlicherBildkorrektur samtRücklesung entfernen. FrühereNagellackfreigaben nichtübertragen. |
+| SEO / Fortsetzung | WaagenJSONLD/OG und aktuellenMAIN-Code abgegrenzt; minimalenOG-Variantpreis-Diff vorbereitet. VierEinträge imErgänzungsregister mitHistorie gesichert. | Patchnichtangewendet; OGistkeinbewiesenerGoogle-Crawlgrund. Wandteppichweiterpending. KeineTagesreports/Kauf-Watch/Frequenzänderung; Claude-Empfangunbekannt. |
+
+[Live-Bericht](MERCHANT-PRODUKTDETAILS-LIVE-20261115-R248.md) · [Belege](MERCHANT-PRODUKTDETAILS-BELEGE-20261115-R248.json).
+
+[LUXESTYLE_R248_20261115]

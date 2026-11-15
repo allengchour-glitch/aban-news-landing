@@ -1,0 +1,131 @@
+--- painting/before/descriptionHtml
++++ painting/after/descriptionHtml
+@@ -1,10 +1,14 @@
+-<!-- ls-var-v1 --><p>Entdecke die Freude am Malen mit diesem DIY Digital Ölgemälde. Es ist die perfekte Möglichkeit, deine Kreativität auszuleben und ein einzigartiges Kunstwerk zu schaffen. Das Set enthält alles, was du benötigst, um dein eigenes dekoratives Bild zu gestalten.</p><p>Egal, ob du ein Anfänger oder ein erfahrener Künstler bist, dieses Set bietet stundenlangen Malspass. Es eignet sich hervorragend als persönliches Geschenk oder zur Verschönerung deines Zuhauses. Nach Fertigstellung wird dein Bild zum Blickfang in jedem Wohn- oder Kinderzimmer.</p><h3>Das zeichnet es aus</h3><ul>
+-<li>Farben auf Propylenbasis für leuchtende Ergebnisse</li>
+-<li>Leinwandmaterial für authentisches Malgefühl</li>
+-<li>Inklusive DIY-Rahmen zum einfachen Aufspannen</li>
+-<li>Wird gerollt in einer Tube geliefert</li>
+-<li>Ideal als einzigartiges Geschenk für Kinder und Familie</li>
+-<li>Perfekt für die Dekoration von Wohnzimmern, Kinderzimmern und Hochzeiten</li>
++<p>Ein Gassen- oder Häusermotiv selbst gestalten: Dieses Bild zum Selbermalen ist in sechs Motiven und drei Bildgrössen erhältlich. Wähle zuerst dein Motiv und anschliessend die passende Grösse. Der angezeigte Preis gilt für genau diese Auswahl.</p>
++<h2>Motiv und Bildgrösse auswählen</h2>
++<ul>
++<li>
++<strong>Motiv:</strong> Modell A, B, C, D, E oder F. Orientiere dich am Produktbild der jeweiligen Auswahl.</li>
++<li>
++<strong>Bildgrösse:</strong> 40 × 50 cm, 50 × 65 cm oder 60 × 75 cm.</li>
++<li>
++<strong>Auswahl:</strong> Jedes der sechs Motive ist in allen drei Grössen wählbar. Die Grössenangabe bezieht sich auf das Bild, nicht auf einen zusätzlich bestätigten Rahmen.</li>
+ </ul>
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>+<h2>Material und Ausführung</h2>
++<p>Der Malgrund wird als Leinen angegeben. Das Motiv ist zum Selbermalen bestimmt; ein fertig ausgemaltes oder fertig gerahmtes Bild ist nicht zugesagt.</p>
++<h2>Lieferumfang vor dem Kauf beachten</h2>
++<p>Aufgeführt ist ein Malbild in der gewählten Ausführung. Ob Farben, Pinsel und Rahmenteile enthalten sind, ist derzeit nicht bestätigt. Ein vollständiges Malset mit diesen Zubehörteilen ist deshalb nicht zugesagt.</p>--- painting/before/seo
++++ painting/after/seo
+@@ -1,4 +1,4 @@
+ {
+   "title": "Malen nach Zahlen – Gassen & Häuser | LuxeStyle",
+-  "description": "DIY Digital Ölgemälde zum Selbermalen – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
++  "description": "Malen nach Zahlen mit Gassen- und Häusermotiven: sechs Motive und drei Bildgrössen. Auswahl, Material und Lieferumfang vor dem Kauf vergleichen."
+ }--- painting/before/options
++++ painting/after/options
+@@ -1,7 +1,7 @@
+ [
+   {
+     "id": "gid://shopify/ProductOption/17942444999041",
+-    "name": "Modell",
++    "name": "Motiv",
+     "position": 1,
+     "values": [
+       "Modell A",
+@@ -47,7 +47,7 @@
+   },
+   {
+     "id": "gid://shopify/ProductOption/19631332262279",
+-    "name": "Abmessung",
++    "name": "Bildgrösse",
+     "position": 2,
+     "values": [
+       "40 × 50 cm",
+--- jewellery/before/descriptionHtml
++++ jewellery/after/descriptionHtml
+@@ -1,9 +1,18 @@
+-<!-- ls-var-v1 --><p>Diese elegante Schmuckbox aus PU-Leder ist die ideale Verkaufs- oder Geschenkverpackung für deine wertvollen Schmuckstücke. Das stilvolle Business-Design und die präzise Verarbeitung mit einer Toleranz von 0.01 machen sie zu einer hochwertigen Wahl. Sie eignet sich perfekt für Halsketten und Anhänger und schützt den Inhalt stilvoll. Erhältlich in verschiedenen Grössen, passt sie sich flexibel deinen Bedürfnissen an.</p><h3>Das zeichnet es aus</h3><ul>
+-<li>Stilvolle Verkaufs- und Geschenkverpackung</li>
+-<li>Aus hochwertigem PU-Leder gefertigt</li>
+-<li>Präzise Verarbeitung mit geringer Toleranz (0.01)</li>
+-<li>Ideal für Halsketten und Anhänger</li>
+-<li>Erhältlich in verschiedenen Grössen: 6.3 x 6.3 x 6.5 cm, 7.3 x 8.3 x 5 cm, 9.5 x 9.5 x 5 cm, 23.5 x 5.5 x 4 cm</li>
++<p>Eine Schmuckbox für deine gewählte Schmuckart oder als Geschenkverpackung: Wähle die Farbe und anschliessend die Ausführung mit den passenden Massen. Du erhältst eine einzelne Box in genau dieser Auswahl, kein Set aus mehreren Boxen.</p>
++<h2>Vier Ausführungen mit unterschiedlichen Massen</h2>
++<ul>
++<li>
++<strong>Ringbox:</strong> 6.3 × 6.3 × 6.5 cm.</li>
++<li>
++<strong>Anhängerbox:</strong> 7.3 × 8.3 × 5 cm.</li>
++<li>
++<strong>Armbandbox:</strong> 9.5 × 9.5 × 5 cm.</li>
++<li>
++<strong>Lange Box:</strong> 23.5 × 5.5 × 4 cm.</li>
+ </ul>
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/wohnen-dekoration">Wohnen &amp; Deko</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>+<p>Die Massangaben stammen von den jeweiligen Produktabbildungen und beschreiben die Box. Es sind keine bestätigten Innenmasse der Einsätze. Vergleiche deshalb bei grossen oder ungewöhnlich geformten Schmuckstücken auch die Form des abgebildeten Einsatzes.</p>
++<p><strong>Bildhinweis zu Hellgrau / Armbandbox:</strong> Das aktuelle Variantenfoto zeigt die kleinere Anhängerbox. Für die ausgewählte Armbandbox gelten die oben genannten Boxmasse von 9.5 × 9.5 × 5 cm; das passende Variantenfoto wird noch ergänzt.</p>
++<h2>Farbe und Material</h2>
++<p>Wählbare Farben: Braun, Dunkelgrün, Rot, Dunkelblau und Hellgrau. Die Materialangabe lautet PU-Leder, also Kunstleder. Die Zusammensetzung des Innenfutters ist nicht angegeben.</p>
++<h2>Lieferumfang und Preis</h2>
++<p>Enthalten ist eine Schmuckbox in der gewählten Farbe und Ausführung. Abgebildeter Schmuck gehört nicht zum Lieferumfang. Der angezeigte Preis bezieht sich auf die ausgewählte einzelne Box.</p>--- jewellery/before/seo
++++ jewellery/after/seo
+@@ -1,4 +1,4 @@
+ {
+   "title": "Schmuckbox aus PU-Leder mit abgerundeten Ecken | LuxeStyle CH",
+-  "description": "Schmuckbox aus PU-Leder mit abgerundeten Ecken – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
++  "description": "Schmuckbox aus PU-Leder: fünf Farben, vier Ausführungen und Masse zur Auswahl. Preis pro Box; abgebildeter Schmuck nicht enthalten."
+ }--- jewellery/before/options
++++ jewellery/after/options
+@@ -41,34 +41,34 @@
+   },
+   {
+     "id": "gid://shopify/ProductOption/19631343305095",
+-    "name": "Modell",
++    "name": "Ausführung und Masse",
+     "position": 2,
+     "values": [
+-      "Ringbox",
+-      "Anhängerbox",
+-      "Armbandbox",
+-      "Lange Kettenbox"
++      "Ringbox – 6.3 × 6.3 × 6.5 cm",
++      "Anhängerbox – 7.3 × 8.3 × 5 cm",
++      "Armbandbox – 9.5 × 9.5 × 5 cm",
++      "Lange Box – 23.5 × 5.5 × 4 cm"
+     ],
+     "linkedMetafield": null,
+     "optionValues": [
+       {
+         "id": "gid://shopify/ProductOptionValue/58655258280327",
+-        "name": "Ringbox",
++        "name": "Ringbox – 6.3 × 6.3 × 6.5 cm",
+         "hasVariants": true
+       },
+       {
+         "id": "gid://shopify/ProductOptionValue/58655258313095",
+-        "name": "Anhängerbox",
++        "name": "Anhängerbox – 7.3 × 8.3 × 5 cm",
+         "hasVariants": true
+       },
+       {
+         "id": "gid://shopify/ProductOptionValue/58655258345863",
+-        "name": "Armbandbox",
++        "name": "Armbandbox – 9.5 × 9.5 × 5 cm",
+         "hasVariants": true
+       },
+       {
+         "id": "gid://shopify/ProductOptionValue/58655258378631",
+-        "name": "Lange Kettenbox",
++        "name": "Lange Box – 23.5 × 5.5 × 4 cm",
+         "hasVariants": true
+       }
+     ]

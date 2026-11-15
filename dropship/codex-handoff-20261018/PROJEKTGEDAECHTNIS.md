@@ -1,3 +1,22 @@
+# R248 – Weitere Merchant-Preisfehler und konkrete Produktdetails live – 15.11.2026
+
+Auf **«mehr»** zwei weitere bestehende Angebote korrigiert: **Schmuckbox10784371818943082880 / genaue grüne Langbox67821514326407 / CHF16.90** und **Malbild10073494240929787683 / bewusst konkret gewähltes MotivB50×65cm67821433094535 / CHF24.90**. Preis-/Link-/Titeldiffs einzeln geprüft, über bestehendesSupplement10795447118 geschrieben und unabhängig als **FREE_LISTINGS approved CH/LI, itemLevelIssues=[]** zurückgelesen. Malbild-Zuordnung ist eine transparente Angebotsbegrenzung, kein geratener Mindestpreis oder Beweis der unbekannten Altgrösse. Keine neueQuelle/Offers/Bilder.
+
+**Produktdetails Priorität1:** zwei Seiten verbessert, drei Auswahlfelder präzisiert und vier Schmuckboxwerte mit echten quellengebundenen Massen ergänzt. Alle20CJ-Boxbilder über fünf Farben geprüft: Ring6.3×6.3×6.5, Anhänger7.3×8.3×5, Armband9.5×9.5×5, langeBox23.5×5.5×4cm. Keine bestätigten Innenmasse/unabhängige Vermessung. PU/Kunstleder, einegewählteBox/ohneSchmuck erklärt, «Toleranz0.01» entfernt. Malbild sechsMotive/dreiGrössen; Zubehör/Rahmenteile unbestätigt statt «alles enthalten».
+
+**Sechs nativeWrites**, LEAVE_AS_IS, userErrors=[] und volleGegenproben.38Varianten-IDs/18Wert-IDs/26Medien und SKU-/Preis-/Inventar-/Tag-/SEOtitlewerte erhalten;20Boxvariantentitel automatisch passend geändert. ZweiöffentlicheHTML/JS-Abgleiche bestanden.390×844 echte sichtbare Klickfolgen erreichen korrekteURL/Formular-ID, CHF24.90/16.90 und Bilder; langeLabelslesbar, keinhorizontalerÜberlauf, keineCart-/Checkoutaktion.
+
+**Echter neuer Bildblocker:** Hellgrau/Armbandbox67821514686855 zeigt das kleinereAnhängerfoto statt9.5×9.5×5cm. PassendesCJ-Foto konkret geprüft, aber nicht als bestehendesProduktmedium gefunden. Exakte kommerzielleRechte und Produkt-/Farbtreue beimInhaberangefragt, Antwortoffen. KeinUpload/Medienwrite. Bis zur tatsächlich geprüftenBildkorrektur konkreterHinweis imProdukttext; nicht bloss nach Zusage entfernen.
+
+Wandteppich weiter Google-Crawlpending; vollständige18UI-Gruppen/weiterePolicyfälle offen. Drei konkret untersuchte fehlendePreise korrigiert, kein0-Gesamtfehlerbeleg. WaagenJSONLD korrekt, OGzeigtElternminimum; engerPatch nurEntwurf, Ursachevonlanding_page_error unbewiesen. Google-Übernahme der neuenShopify-Langtexte unbekannt. RegisterR248 erhältR247-Einträge unverändert und ergänztzwei; festeOverridesnachShopify-ÄnderungenimnächstenbestehendenLauf prüfen, keineSyncdeployment-/Automationbehauptung.
+
+[Live-Bericht](MERCHANT-PRODUKTDETAILS-LIVE-20261115-R248.md) · [Belege](MERCHANT-PRODUKTDETAILS-BELEGE-20261115-R248.json) · [Vier Override-Einträge](MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R248.json) · [Offenes graues Bild](BILDZUORDNUNG-HELLGRAU-20261115-R248.md).
+KeineTheme-/Social-/Flow-/Budget-/Rabatt-/Versand-/DNSwerte geändert. Tagesreports und beendetenKauf-Watch nichtwiederholt. GünstigeTeilaufgabenmodelle fürBild-/Quellen-/Mobilprüfung genutzt; Claude-Empfang unbekannt.
+
+[LUXESTYLE_R248_20261115]
+
+---
+
 # R247 – Merchant-Pflichtattribute live korrigiert – 15.11.2026
 
 Auf **«weiter bis 0 fehler»** zwei belegte Pflichtattribute bestehender Angebote korrigiert. **Primer10283932347178265394: CHF56.90 bestätigt und FREE_LISTINGS approved CH/LI. Wandteppich10301937935043325310: IN_STOCK bestätigt, Google-Crawl weiterhin pending.** Keine0-Gesamtfehler-Aussage; die vollständigen18UI-Gruppen sind nicht neu vollständig erfasst.

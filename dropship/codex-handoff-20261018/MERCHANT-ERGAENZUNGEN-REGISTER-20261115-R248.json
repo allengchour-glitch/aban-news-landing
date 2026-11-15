@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "merchantAccount": "5797470070",
+  "source": "10795447118",
+  "primarySource": "10678939025",
+  "sourceType": "supplementalProductDataSource",
+  "sourceInput": "API",
+  "sourceLanguageFeedRestriction": null,
+  "recordScope": "Exact existing de/CH offers only; no primary offer creation",
+  "nextRunRule": "Use existing source; never recreate on stale unfiltered listings. At next existing run, verify exact current Shopify variant price/orderability and existing override. If changed, update only this override or remove only this supplemental record. No automatic full Shopify sync deployed. Do not clear a primary product or blanket exclusions.",
+  "rollback": {
+    "action": "delete_product",
+    "connector": "google_merchant",
+    "account": "5797470070",
+    "data_source": "10795447118",
+    "note": "Only supplemental values removed; existing primary offer preserved. No rollback executed."
+  },
+  "records": [
+    {
+      "offerId": "10283932347178265394",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15523176841601",
+      "shopifyVariantId": "56210226708865",
+      "sku": "CJMJ173930601AZ",
+      "attributes": {
+        "price": "56.90",
+        "currency": "CHF"
+      },
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "nonImpactingNotice": "unit pricing measure missing, NOT_IMPACTED; no volume inferred"
+    },
+    {
+      "offerId": "10301937935043325310",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15493244191105",
+      "shopifyVariantId": "56075316363649",
+      "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "availabilityMeaning": "Publicly orderable, untracked/CONTINUE. No physical-stock or delivery-time promise.",
+      "confirmedState": "ATTRIBUTE_PRESENT_PENDING_GOOGLE_LANDING_PAGE_CRAWL",
+      "socialHold": "rueckhol tag remains; no Social use authorised by this record."
+    },
+    {
+      "offerId": "10784371818943082880",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15496378417537",
+      "shopifyVariantId": "67821514326407",
+      "sku": "CJYD279122109IR",
+      "attributes": {
+        "price": "16.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200?variant=67821514326407&country=CH&currency=CHF"
+      },
+      "binding": "Existing Merchant image SHA256 equals unique public variant image and CJ SKU image. Price exact, no parent minimum.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "imageOrProductChangesByThisFeedUpdate": false
+    },
+    {
+      "offerId": "10073494240929787683",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15497440854401",
+      "shopifyVariantId": "67821433094535",
+      "sku": "CJZS115447505EV",
+      "attributes": {
+        "title": "Malen nach Zahlen – Motiv B, 50 × 65 cm | LuxeStyle",
+        "price": "24.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496?variant=67821433094535&country=CH&currency=CHF"
+      },
+      "binding": "Intentional transparent selection of existing ModelB50x65cm offer. Not a reconstruction of an unknown previous size. Exact current CJ/native/public JSONLD evidence.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "imageOrProductChangesByThisFeedUpdate": false
+    }
+  ],
+  "updatedByRun": "R248",
+  "previousRegistry": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json",
+  "previousRegistryGitSha": "84654d0309a7174d2cfd1ea20ab7fa59b28df8f5"
+}
