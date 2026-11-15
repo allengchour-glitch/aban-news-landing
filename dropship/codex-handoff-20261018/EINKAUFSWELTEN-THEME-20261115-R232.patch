@@ -1,0 +1,121 @@
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -45,7 +45,7 @@
+         </div>
+       </div>
+     </section>
+-    <section class="lx-worlds lx-section" id="lx-worlds" aria-labelledby="lx-worlds-title">
++    <section class="lx-worlds lx-section{% if lx_standard_home %} lx-worlds--photo-grid{% endif %}" id="lx-worlds" aria-labelledby="lx-worlds-title" style="--lx-worlds-label: {{ section.settings.worlds_text_color | default: '#ffffff' }};">
+       <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.deine_einkaufswelten_8c136' | t }}</p><h2 id="lx-worlds-title">{{ 'luxe_home.was_passt_zu_dir_8d3c4' | t }}</h2></div><p>{{ 'luxe_home.weniger_suchen_e0c2e' | t }}<br>{{ 'luxe_home.mehr_entdecken_386fc' | t }}</p></div>
+       {% assign lx_home_categories = 'selbst-gestalten-1|design,damen-mode|women,fur-ihn|men,sub-baby-kids|kids,schuhe|shoes,sub-taschen|bags,schmuck|jewellery,uhren|watches,beauty-pflege|beauty,wohnen-dekoration|home,sub-kueche|kitchen,elektronik-technik|electronics,gaming|gaming,hundewelt|dogs,sport-outdoor|sport,premium-geschenke|gifts' | split: ',' %}
+       <nav class="lx-category-grid" aria-label="{{ 'luxe_home.categories.navigation' | t | escape }}">
+@@ -58,12 +58,20 @@
+             {% if lx_parts[1] == 'design' %}{% assign lx_category_url = lx_design_url %}{% endif %}
+             <a class="lx-category-tile" href="{{ lx_category_url }}" data-category-handle="{{ lx_collection.handle | escape }}">
+               <span class="lx-category-thumb">
++                {% assign lx_world_image = lx_collection.image %}
++                {% if lx_standard_home and lx_parts[1] == 'kids' and section.settings.worlds_kids_image != blank %}
++                  {% assign lx_world_image = section.settings.worlds_kids_image %}
++                {% elsif lx_standard_home and lx_parts[1] == 'jewellery' and section.settings.worlds_jewellery_image != blank %}
++                  {% assign lx_world_image = section.settings.worlds_jewellery_image %}
++                {% endif %}
++                {% assign lx_world_sizes = '(max-width: 760px) 40px, 48px' %}
++                {% if lx_standard_home %}{% assign lx_world_sizes = '(max-width: 760px) calc((100vw - 40px) / 2), (max-width: 1440px) calc((100vw - 112px) / 4), 320px' %}{% endif %}
+                 {% if lx_collection.handle == 'beauty-pflege' %}
+-                  <img src="{{ lx_beauty_scene | escape }}&amp;width=240" srcset="{{ lx_beauty_scene | escape }}&amp;width=120 120w, {{ lx_beauty_scene | escape }}&amp;width=180 180w, {{ lx_beauty_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 40px, 48px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
++                  <img src="{{ lx_beauty_scene | escape }}&amp;width=640" srcset="{{ lx_beauty_scene | escape }}&amp;width=320 320w, {{ lx_beauty_scene | escape }}&amp;width=480 480w, {{ lx_beauty_scene | escape }}&amp;width=640 640w, {{ lx_beauty_scene | escape }}&amp;width=960 960w" sizes="{{ lx_world_sizes }}" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+                 {% elsif lx_collection.handle == 'sport-outdoor' %}
+-                  <img src="{{ lx_sport_scene | escape }}&amp;width=240" srcset="{{ lx_sport_scene | escape }}&amp;width=120 120w, {{ lx_sport_scene | escape }}&amp;width=180 180w, {{ lx_sport_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 40px, 48px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+-                {% elsif lx_collection.image != blank %}
+-                  {{ lx_collection.image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '(max-width: 760px) 40px, 48px', alt: '' }}
++                  <img src="{{ lx_sport_scene | escape }}&amp;width=640" srcset="{{ lx_sport_scene | escape }}&amp;width=320 320w, {{ lx_sport_scene | escape }}&amp;width=480 480w, {{ lx_sport_scene | escape }}&amp;width=640 640w, {{ lx_sport_scene | escape }}&amp;width=960 960w" sizes="{{ lx_world_sizes }}" width="1536" height="1024" loading="lazy" decoding="async" alt="">
++                {% elsif lx_world_image != blank %}
++                  {{ lx_world_image | image_url: width: 960 | image_tag: loading: 'lazy', widths: '320, 480, 640, 960', sizes: lx_world_sizes, alt: '' }}
+                 {% else %}
+                   <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                 {% endif %}
+@@ -584,12 +592,11 @@
+ {
+   "name": "LuxeStyle – Editorial",
+   "settings": [
+-    {
+-      "type": "product_list",
+-      "id": "more_products",
+-      "label": "Weitere Produkte",
+-      "limit": 8
+-    }
++    {"type":"product_list","id":"more_products","label":"Weitere Produkte","limit":8},
++    {"type":"header","content":"t:luxe_world_cards.heading"},
++    {"type":"color","id":"worlds_text_color","label":"t:luxe_world_cards.text_color","default":"#ffffff"},
++    {"type":"image_picker","id":"worlds_kids_image","label":"t:luxe_world_cards.kids_image"},
++    {"type":"image_picker","id":"worlds_jewellery_image","label":"t:luxe_world_cards.jewellery_image"}
+   ],
+   "presets": [
+     {
+--- a/assets/luxe-edit.css
++++ b/assets/luxe-edit.css
+@@ -412,3 +412,20 @@
+  .lx-edit-product-grid[style*="--lx-edit-columns:2"] .lx-edit-product-price{margin:18px 0 8px}
+ }
+ /* lx-optik-0411 Ende */
++
++/* R232: full-image category navigation, standard home only. */
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-grid{gap:16px}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-tile{position:relative;isolation:isolate;display:grid;align-content:end;aspect-ratio:4/3;min-height:0;gap:0;padding:20px;overflow:hidden;border:0;border-radius:16px;background:var(--lx-ink);color:var(--lx-worlds-label,#fff);transition:none}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-tile::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(41,39,34,0) 20%,rgba(41,39,34,.12) 40%,rgba(41,39,34,.78) 67%,rgba(41,39,34,.94) 100%)}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-thumb{position:absolute;inset:0;z-index:0;display:block;flex-basis:auto;width:100%;height:100%;border:0;border-radius:0;background:var(--lx-sand)}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-thumb img{display:block;width:100%;height:100%;object-fit:cover}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-thumb>svg{position:absolute;top:24%;left:calc(50% - 24px);width:48px;height:48px;color:var(--lx-muted)}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-name{position:relative;z-index:2;max-width:calc(100% - 26px);font-size:23px;font-weight:600;line-height:1.2;letter-spacing:-.02em;text-wrap:balance;color:inherit}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-arrow{position:absolute;right:20px;bottom:22px;z-index:2;display:block;width:18px;height:18px;margin:0;color:inherit;opacity:1}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-tile:hover{border-color:transparent;background:var(--lx-ink)}
++@media(max-width:760px){
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-tile{aspect-ratio:1;min-height:0;padding:14px;border-radius:14px}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-name{font-size:17px;line-height:1.2;max-width:calc(100% - 19px)}
++.lx-home.lx-browse-home .lx-worlds--photo-grid .lx-category-arrow{right:12px;bottom:16px;width:16px;height:16px}
++}
+--- a/locales/en.default.schema.json
++++ b/locales/en.default.schema.json
+@@ -8,6 +8,12 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "luxe_world_cards": {
++    "heading": "Category image cards",
++    "text_color": "Card text colour",
++    "kids_image": "Children and baby category image",
++    "jewellery_image": "Jewellery category image"
++  },
+   "categories": {
+     "banners": "Banners",
+     // Category for fundamental content blocks (text, images, buttons)
+--- a/locales/de.schema.json
++++ b/locales/de.schema.json
+@@ -8,6 +8,12 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "luxe_world_cards": {
++    "heading": "Einkaufswelten mit Bild",
++    "text_color": "Textfarbe der Bildkarten",
++    "kids_image": "Kategoriemotiv Kinder und Baby",
++    "jewellery_image": "Kategoriemotiv Schmuck"
++  },
+   "names": {
+     "404": "404",
+     "borders": "Ränder",
+--- a/templates/index.json
++++ b/templates/index.json
+@@ -21,7 +21,10 @@
+           "lederarmband-mit-verschluss-unisex-604800",
+           "hufttasche-fur-hundetraining-625200",
+           "hundennasenmatte-aus-fleece-energie-intelligen-622000"
+-        ]
++        ],
++        "worlds_text_color": "#ffffff",
++        "worlds_kids_image": "shopify://shop_images/luxestyle-einkaufswelt-kinder-baby-20261115.png",
++        "worlds_jewellery_image": "shopify://shop_images/luxestyle-einkaufswelt-schmuck-20261115.png"
+       }
+     },
+     "luxe_reviews": {

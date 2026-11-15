@@ -2682,3 +2682,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](MERCHANT-WEITERARBEIT-20261115-R231.md) · [Laufbeleg](MERCHANT-WEITERARBEIT-20261115-R231.json).
 
+
+### R232 – Einkaufswelten als Bildkarten im gespeicherten Entwurf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Fortsetzung | Core4 Revision 231 und Tagesblock gelesen; verbundenen Shopify-Shop und Theme-Rollen frisch geprüft | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich bestätigt. MAIN 213991391623 bleibt live; gearbeitet im UNPUBLISHED-Theme 214040805767. Keine wiederholten Tagesreports oder Kauf-Watch. |
+| Bildmotive | Zwei originale Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck erzeugt, visuell geprüft und in Shopify Files gespeichert | Zwei Still-Jobs gpt_image_2_6, je Kostenschätzung 1.5 Credits; keine separate Abrechnungsprüfung. Illustrative Szenen ohne SKU-/Materialversprechen; kein Video-Render. Weitere 14 vorhandene Bilder erhalten. |
+| Theme / Umsetzung | 16 Kategorie-Einstiege als vollflächige Bildkarten mit weissen Titeln, dunklem Verlauf und responsiven Bildern gestaltet; zwei Bildwähler und Textfarbe im Editor ergänzt | Fünf Dateien gespeichert. Erster Save c1a5f4e7 meldete Erfolg, aber Bildzuweisungen fehlten im Admin-/Browser-Readback; gezielte Index-Korrektur 742a075e anschliessend bestätigt. Keine blinde Wiederholung oder Live-Schaltung. |
+| Darstellung / Gegenprobe | Gespeicherte Vorschau in normalem Chromium bei 390×844 und 1440×900 geprüft; Kategorie-Links mit Baseline verglichen | 16 Bilder geladen, alle 16 Links/Reihenfolge gleich. Mobil 2 Spalten / 173×173 px, Desktop 4 Spalten / 316×237 px. Weisse Titel/Pfeile lesbar, kein festgestellter Text-/Seitenüberlauf oder CSS-Ladefehler. Neue Bildmotive aktiv. |
+| Schutzfelder / Grenzen | Sechs inline JavaScript-Blöcke, Kategorie-Reihenfolge/Linklogik, Produktliste/Section-Reihenfolge und R230-Dateihashes gegengeprüft | Erhalten. Keine Produkt-, Collection-, Preis-, Versand-, Flow-, DNS-, Rabatt-, Budget- oder Kontoeinstellung geändert. Nur Theme-Entwurf und zwei neue Files. Keine gemessene Conversionwirkung. |
+| Memory / Freigabe | R232-Quellen und Diff vorbereitet; zwei bestehende Aufgaben fortgeschrieben, 24 IDs/Historien erhalten | Das konkrete Theme «LuxeStyle – Kaufhinweis 15.11.2026» braucht vor Publish ein ausdrückliches Ja gemäss Shopify-Skill. Enthält weiterhin R230-Kaufhinweis und Popup-Text. Metricool-Identitätsread technisch blockiert, keine Social-Writes. Claude-Empfang unbekannt. |
+
+[Bericht](EINKAUFSWELTEN-20261115-R232.md) · [Belege](EINKAUFSWELTEN-BELEGE-20261115-R232.json).
+

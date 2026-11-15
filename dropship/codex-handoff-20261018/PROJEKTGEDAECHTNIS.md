@@ -1,3 +1,23 @@
+# R232 – Einkaufswelten als Bildkarten im gespeicherten Theme-Entwurf – 15.11.2026 Zürich
+
+Die 16 Homepage-Kategorien sind im unveröffentlichten Theme **214040805767 «LuxeStyle – Kaufhinweis 15.11.2026»** als vollflächige Bildkarten mit weissen Titeln und dunklem Verlauf umgesetzt: mobil zwei, am Desktop vier Spalten. Zwei neue, unbeschriftete Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck sind gespeichert und aktiv in der Vorschau. Die anderen 14 bestehenden Motive bleiben erhalten; einige enthalten alte Bannerwörter. Keine konkreten SKU-, Material-, Herkunfts-, Bestands- oder Lieferzeitversprechen aus den Illustrationen ableiten.
+
+Fünf Dateien geändert: assets/luxe-edit.css, sections/luxe-edit-home.liquid, locales/en.default.schema.json, locales/de.schema.json, templates/index.json. Im Editor gibt es zwei Bildwähler und die Textfarbe. Alle sechs inline JavaScript-Blöcke, die 16 Kategorie-Ziele samt Reihenfolge, die übrige Template-Reihenfolge und Produktliste sind erhalten. R230-Kaufhinweis und Popup-Text bleiben hashgleich in demselben Draft.
+
+Der erste Save meldete fünf gespeicherte Dateien, aber Admin-Readback und die erste echte Browserprüfung zeigten noch alte Bildzuweisungen im Index. Nach konkreter Gegenprobe wurde nur templates/index.json erneut gespeichert; finale Admin-Prüfsumme und Browserbilder bestätigen nun die neuen Zuweisungen. Kein blinder Retry und keine Cacheursache behauptet. Commits: c1a5f4e7e0e00f0c7cf4602b1e6b1f928a66bafb und gezielte Korrektur 742a075e70a434c05f895a12623e17b066317f41; pending/pushErrors leer.
+
+Finale deutsche Browserprüfung 390×844 und 1440×900: alle 16 Bilder geladen, Links/Reihenfolge gleich, neue zwei Motive korrekt, weisse Titel/Pfeile lesbar, kein festgestellter Text-/Seitenüberlauf oder CSS-Ladefehler. Für reine Section-Screenshots wurden feste Header-/Cookie-Ebenen temporär ausgeblendet; keine Klicks oder Consentwahl. Der native Screenshotdienst hat bekannte Header-/Desktop-Artefakte; kein daraus abgeleiteter Headerpatch. Kein Vollshop-, Checkout- oder Mehrsprachen-Abnahmebeleg.
+
+**Nicht live:** MAIN 213991391623 unverändert. Der Shopify-Theme-Skill `/skills/editing-themes/SKILL.md`, Zeilen 237–240, verlangt «Ask first, and name the theme.» Eine Design-/Speicheranweisung ersetzt kein Ja zur Veröffentlichung dieses konkreten Themes. Vor Publish soll der Inhaber den fertigen Entwurf inklusive R230-Kaufhinweis und Popup-Text freigeben. Bestätigte Vorschau: https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767 ; im Browser bleibt Theme-ID 214040805767 trotz Redirect erhalten.
+
+Nur zwei Original-Stillbilder über Higgsfield erzeugt (Modell gpt_image_2_6, Qualität high, 1k, 4:5; Kostenschätzung je 1.5 Credits), keine Referenzimporte oder Videos. Originalprompts, Jobs, Source-Hashes, Shopify-Datei-IDs/URLs, Diff und QA sind im Beleg enthalten. Keine unabhängige Lizenzgarantie oder Conversionsteigerung behauptet.
+
+Metricool getbrandsettings scheitert am verlangten link_id: aktueller Social-Zugriff unbekannt, keine Writes. Keine neuen Merchant-Scans/-Writes, Tageskennzahlen-/Klaviyo-/Bestellabfragen oder Frequenzänderungen. R231-Merchant-Befunde bleiben unverändert; keine globale Fehlerfreiheit daraus ableiten. 24 Aufgaben-IDs/Historien erhalten; Claude-Kenntnisnahme unbekannt.
+
+[Belege](EINKAUFSWELTEN-BELEGE-20261115-R232.json) · [Theme-Diff](EINKAUFSWELTEN-THEME-20261115-R232.patch).
+
+---
+
 # R231 – Zwei Merchant-Bildfehler behoben, Google-Genehmigung bestätigt – 15.11.2026 Zürich
 
 **Nagellack Modell 7 und 11:** Neue ausdrückliche Ownerbestätigung für kommerzielle Bearbeitungs-/Werberechte und Produkt-/Farbtreue erhalten. Nur die beiden image_link-Felder der vorhandenen deutschen Angebote in API10667445201 geändert: zwei Writes, keine Retries. Direkte Rücklesung um 10:16:22 UTC / 11:16:22 Zürich bestätigt neue textfreie PNGs, leere itemLevelIssues und CH/LI in allen sechs zurückgelieferten Google-Zielkontexten je Angebot genehmigt. Alle übrigen productAttributes und Shopify-Produktdaten unverändert. Keine Ads-Auslieferung oder Verkäufe daraus ableiten. Dieselben Writes/Freigaben nicht wiederholen.

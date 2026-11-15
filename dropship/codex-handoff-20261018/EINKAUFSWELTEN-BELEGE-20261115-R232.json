@@ -1,0 +1,2599 @@
+{
+  "revision": 232,
+  "recordedAtUTC": "2026-11-15T11:12:44.229398+00:00",
+  "ownerRequest": "Homepage Einkaufswelten schöner: vollflächige Bildauswahl mit weisser Schrift, neue Higgsfield-Bilder erlaubt.",
+  "identitiesAndFirstSave": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich"
+    },
+    "themes": {
+      "nodes": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187043086721",
+          "name": "Horizon · LuxeStyle Branded",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-09T21:10:28Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187478475137",
+          "name": "Horizon · LuxeStyle PDP-Optik (Claude)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-11T17:12:27Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187533001089",
+          "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-26T17:32:02Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212302922119",
+          "name": "Horizon – SEO Versand CHF50 (Entwurf)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-23T19:55:25Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212497039751",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 25.10.)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-25T21:17:30Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212498841991",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 25.10. b)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-27T18:38:53Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212591444359",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Men...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-27T21:09:16Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212645413255",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. abe...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T07:04:16Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212656488839",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Kun...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T15:09:13Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212752499079",
+          "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T15:46:13Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212967981447",
+          "name": "LuxeStyle – Neue Startseite 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T17:27:24Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212971061639",
+          "name": "LuxeStyle – Bewertungen 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-02T06:04:37Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212978598279",
+          "name": "LuxeStyle – Sticker und Varianten 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-04T06:32:12Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212998619527",
+          "name": "LuxeStyle – Codex + Handy-Fixes 01.11.2026 (zus...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-02T08:10:23Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213013037447",
+          "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-15T08:54:34Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213482963335",
+          "name": "LuxeStyle – Printful Fix 08.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-08T09:42:26Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213619179911",
+          "name": "LuxeStyle – R158 SEO Preview 09.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-09T20:46:25Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213991391623",
+          "name": "LuxeStyle – SEO 14.11.2026",
+          "role": "MAIN",
+          "updatedAt": "2026-11-14T15:08:04Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/214040805767",
+          "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-15T10:57:09Z"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    },
+    "theme": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "assets/luxe-edit.css",
+          "checksumMd5": "fcec3bcc5fc26b1938f84eee5f9ff7f7",
+          "contentLength": 59356
+        },
+        {
+          "filename": "locales/de.schema.json",
+          "checksumMd5": "b6df0bcf79552db0fc5adae3b3f72c48",
+          "contentLength": 49325
+        },
+        {
+          "filename": "locales/en.default.schema.json",
+          "checksumMd5": "9bb4eb1ece1f3ed247003675cb6a03ae",
+          "contentLength": 50878
+        },
+        {
+          "filename": "sections/luxe-edit-home.liquid",
+          "checksumMd5": "fdfd9fde03050e9085a1356645467309",
+          "contentLength": 60113
+        },
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "b23a2343f07d95e43ccce71a5253d407",
+          "contentLength": 1086
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    },
+    "commit": {
+      "commit": "c1a5f4e7e0e00f0c7cf4602b1e6b1f928a66bafb",
+      "saved": [
+        "assets/luxe-edit.css",
+        "locales/de.schema.json",
+        "locales/en.default.schema.json",
+        "sections/luxe-edit-home.liquid",
+        "templates/index.json"
+      ],
+      "deleted": [],
+      "pending": [],
+      "pushErrors": [],
+      "rejectedReason": null
+    },
+    "shopifyFiles": [
+      {
+        "filename": "luxestyle-einkaufswelt-kinder-baby-20261115.png",
+        "fileId": "gid://shopify/MediaImage/78058988765575",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061",
+        "fileId": "gid://shopify/MediaImage/78058991681927",
+        "filename": "luxestyle-einkaufswelt-schmuck-20261115.png",
+        "alt": "Illustratives Kategoriemotiv Schmuck in Cream und Taupe"
+      }
+    ]
+  },
+  "correctedIndexSourceAndSave": {
+    "readback": {
+      "data": {
+        "theme": {
+          "id": "gid://shopify/OnlineStoreTheme/214040805767",
+          "role": "UNPUBLISHED",
+          "files": {
+            "nodes": [
+              {
+                "filename": "templates/index.json",
+                "checksumMd5": "b1a3c3cb244d8ddbc3b28cb35aacc9c3",
+                "body": {
+                  "content": "/*\n * ------------------------------------------------------------\n * IMPORTANT: The contents of this file are auto-generated.\n *\n * This file may be updated by the Shopify admin theme editor\n * or related systems. Please exercise caution as any changes\n * made to this file may be overwritten.\n * ------------------------------------------------------------\n */\n{\n  \"sections\": {\n    \"luxe_home\": {\n      \"type\": \"luxe-edit-home\",\n      \"settings\": {\n        \"more_products\": [\n          \"led-leucht-brustgeschirr-reissfest-933632\",\n          \"handgemachte-3d-liebesnagel-blue-ice-652096\",\n          \"elektrischer-nagelpolierer-mit-licht-545984\",\n          \"outdoor-schultertasche-fur-freizeit-kessel-329792\",\n          \"rosenquarz-gua-sha-set\",\n          \"lederarmband-mit-verschluss-unisex-604800\",\n          \"hufttasche-fur-hundetraining-625200\",\n          \"hundennasenmatte-aus-fleece-energie-intelligen-622000\"\n        ],\n        \"worlds_text_color\": \"#ffffff\",\n        \"worlds_kids_image\": \"shopify://shop_images/luxestyle-einkaufswelt-kinder-baby-20261115.png\",\n        \"worlds_jewellery_image\": \"shopify://shop_images/luxestyle-einkaufswelt-schmuck-20261115.png\"\n      }\n    },\n    \"luxe_reviews\": {\n      \"type\": \"luxe-home-reviews\",\n      \"settings\": {}\n    }\n  },\n  \"order\": [\n    \"luxe_home\",\n    \"luxe_reviews\"\n  ]\n}\n"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    "correctionApply": {
+      "stdout": "templates/index.json: OK\n089214bba2551bbf5a25a2d485d81647445b8a459e5033ae7bdc42680671845a  templates/index.json\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": [
+        "templates/index.json"
+      ]
+    },
+    "correctionCommit": {
+      "commit": "742a075e70a434c05f895a12623e17b066317f41",
+      "saved": [
+        "templates/index.json"
+      ],
+      "deleted": [],
+      "pending": [],
+      "pushErrors": [],
+      "rejectedReason": null
+    }
+  },
+  "freshNativeHashesAndNoPending": {
+    "stdout": "b0b6656f7feecff559eb73feee421203afe8cfc54b01a0d1284fefd45a4580eb  blocks/buy-buttons.liquid\n9321568a79430181fbdc2c300b3c3ce34ab2f1187fb6891e3d3657dc7c43f978  sections/footer-group.json\n0508a75b96bca742a991e6f16caba467a4888c365a8cbe1055876a754c059b4c  sections/luxe-edit-home.liquid\nc35343c32c694558a8953ac70fe26fd0c4b8416bdbc61090647af636bd49c009  assets/luxe-edit.css\nb978fdb14304e58364470d09bc2cf8a43f46432dc2e5de433dddcee33d3e7404  locales/en.default.schema.json\n366b577e53b218192b52bd352998a225a0fe2c6ef95eef735e00e1cd04817db3  locales/de.schema.json\n089214bba2551bbf5a25a2d485d81647445b8a459e5033ae7bdc42680671845a  templates/index.json\n",
+    "stderr": "",
+    "exitCode": 0,
+    "timedOut": false,
+    "pending": []
+  },
+  "finalFiveFileManifest": [
+    {
+      "path": "sections/luxe-edit-home.liquid",
+      "beforeSha256": "0b76cd3912287e2a1e44725db01600617c11212b88bed4831034557a0f0856a7",
+      "afterSha256": "0508a75b96bca742a991e6f16caba467a4888c365a8cbe1055876a754c059b4c",
+      "afterMd5": "fdfd9fde03050e9085a1356645467309"
+    },
+    {
+      "path": "assets/luxe-edit.css",
+      "beforeSha256": "36b1285b9037d07395f97db089fa1d01986e9239c75490f399fd0f9f5d031395",
+      "afterSha256": "c35343c32c694558a8953ac70fe26fd0c4b8416bdbc61090647af636bd49c009",
+      "afterMd5": "fcec3bcc5fc26b1938f84eee5f9ff7f7"
+    },
+    {
+      "path": "locales/en.default.schema.json",
+      "beforeSha256": "81ad06d0cfd7411e5a6f62b53bbda1f158a9aa81dda4580940d3323d6869b4d8",
+      "afterSha256": "b978fdb14304e58364470d09bc2cf8a43f46432dc2e5de433dddcee33d3e7404",
+      "afterMd5": "9bb4eb1ece1f3ed247003675cb6a03ae"
+    },
+    {
+      "path": "locales/de.schema.json",
+      "beforeSha256": "30434e343f1ff8138e40e718fee611d185b550b46d1be4977f097d9f6bf90ef5",
+      "afterSha256": "366b577e53b218192b52bd352998a225a0fe2c6ef95eef735e00e1cd04817db3",
+      "afterMd5": "b6df0bcf79552db0fc5adae3b3f72c48"
+    },
+    {
+      "path": "templates/index.json",
+      "beforeSha256": "60eb43a2eca1cdd1858d4af58359b2152808a6cf9cfec5d1591447d3ff7b1eef",
+      "afterSha256": "089214bba2551bbf5a25a2d485d81647445b8a459e5033ae7bdc42680671845a",
+      "afterMd5": "b1a3c3cb244d8ddbc3b28cb35aacc9c3"
+    }
+  ],
+  "initialIndexMismatch": "First commit reported five files saved but Admin file read and first independent browser preview retained the old index settings. No assumption of a cache fault. Exact single-file correction after current source comparison; final Admin index and browser generated images now agree.",
+  "higgsfield": {
+    "purpose": "Original illustrative category scenes for LuxeStyle homepage navigation, not product offers or SKU evidence",
+    "ownerRequest": "Neue Bilder mit Higgsfield für vollflächige Bildauswahl mit weisser Schrift",
+    "model": "gpt_image_2_6",
+    "jobs": [
+      {
+        "id": "a05654a6-59cb-4f2c-a33f-551996fcde81",
+        "type": "image",
+        "model": "gpt_image_2_6",
+        "params": {
+          "prompt": "Original premium editorial category photograph for a Swiss lifestyle shop navigation tile, children and baby theme: a neatly folded neutral cream baby knit outfit, an unbranded soft teddy bear and a small plain wooden stacking toy arranged on warm taupe linen. Soft directional daylight, restrained luxury editorial still life, realistic fabrics and wood, calm cream and taupe palette, composition designed to crop to a square with objects in the upper two thirds and clean darker taupe negative space near the bottom for a real HTML white category label. No lettering, no labels, no logos, no watermark, no human faces, no packaging claims. This is an illustrative category scene, not a representation of a specific purchasable SKU.",
+          "aspect_ratio": "4:5",
+          "quality": "high",
+          "resolution": "1k"
+        },
+        "status": "completed",
+        "quotedCredits": 1.5
+      },
+      {
+        "id": "93ad0027-d7f3-4a24-af02-5e2ee28a93ad",
+        "type": "image",
+        "model": "gpt_image_2_6",
+        "params": {
+          "prompt": "Original premium editorial category illustration photograph for jewellery navigation in a lifestyle shop. A delicate unbranded warm-metal chain, two minimal smooth earrings and one plain sculptural ring arranged on cream matte stone with a softly folded taupe linen ribbon. Natural directional window light, realistic restrained metal reflections, intimate still life, refined warm cream and taupe styling. Subject placement in upper two thirds, composition works when cropped to square, gently darker uncluttered lower area reserved for a real HTML white category title. No lettering, no logos, no watermark, no packaging, no diamond or purity certification, no claims. This is original illustrative category imagery, not a photograph or promise of any specific purchasable SKU.",
+          "aspect_ratio": "4:5",
+          "quality": "high",
+          "resolution": "1k"
+        },
+        "status": "completed",
+        "quotedCredits": 1.5
+      }
+    ],
+    "referencesUsed": [],
+    "projectCreated": false,
+    "videoRenderCalls": 0,
+    "commercialRightsLimit": "Original scenes generated at owner request; no third-party reference used. Not a product authenticity/feature/material proof; separate usage terms are not independently adjudicated."
+  },
+  "generatedSourceFiles": [
+    {
+      "key": "kids",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261115_103950_a05654a6-59cb-4f2c-a33f-551996fcde81.png",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "9526872deee92add984f70c6f099ceaebf464a2a97b423437f502c09db6a6f8d",
+      "bytes": 1916438,
+      "localPath": "/dev/shm/luxestyle-review/r232/kids-generated.png"
+    },
+    {
+      "key": "jewellery",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261115_104320_93ad0027-d7f3-4a24-af02-5e2ee28a93ad.png",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "dc83d782254c742084b455997ede0a5f6d2e86552a4d00bbfa71a72f7f8c1a86",
+      "bytes": 1649303,
+      "localPath": "/dev/shm/luxestyle-review/r232/jewellery-generated.png"
+    }
+  ],
+  "browserFinal": {
+    "pageGotoCalls": 2,
+    "topLevelNavigationRequests": 6,
+    "topLevelURLs": [
+      "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
+      "https://luxestyle.ch/?preview_theme_id=214040805767",
+      "https://luxestyle.ch/",
+      "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
+      "https://luxestyle.ch/?preview_theme_id=214040805767",
+      "https://luxestyle.ch/"
+    ],
+    "comparisonWithBaseline": [
+      {
+        "viewport": {
+          "key": "mobile",
+          "width": 390,
+          "height": 844
+        },
+        "matchingBaseline": true,
+        "orderedHrefMatches": [
+          {
+            "title": "Selbst gestalten",
+            "previewHref": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "baselineHref": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "match": true
+          },
+          {
+            "title": "Damenmode",
+            "previewHref": "https://luxestyle.ch/collections/damen-mode",
+            "baselineHref": "https://luxestyle.ch/collections/damen-mode",
+            "match": true
+          },
+          {
+            "title": "Herrenmode",
+            "previewHref": "https://luxestyle.ch/collections/fur-ihn",
+            "baselineHref": "https://luxestyle.ch/collections/fur-ihn",
+            "match": true
+          },
+          {
+            "title": "Kinder und Baby",
+            "previewHref": "https://luxestyle.ch/collections/sub-baby-kids",
+            "baselineHref": "https://luxestyle.ch/collections/sub-baby-kids",
+            "match": true
+          },
+          {
+            "title": "Schuhe",
+            "previewHref": "https://luxestyle.ch/collections/schuhe",
+            "baselineHref": "https://luxestyle.ch/collections/schuhe",
+            "match": true
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "previewHref": "https://luxestyle.ch/collections/sub-taschen",
+            "baselineHref": "https://luxestyle.ch/collections/sub-taschen",
+            "match": true
+          },
+          {
+            "title": "Schmuck",
+            "previewHref": "https://luxestyle.ch/collections/schmuck",
+            "baselineHref": "https://luxestyle.ch/collections/schmuck",
+            "match": true
+          },
+          {
+            "title": "Uhren",
+            "previewHref": "https://luxestyle.ch/collections/uhren",
+            "baselineHref": "https://luxestyle.ch/collections/uhren",
+            "match": true
+          },
+          {
+            "title": "Beauty und Pflege",
+            "previewHref": "https://luxestyle.ch/collections/beauty-pflege",
+            "baselineHref": "https://luxestyle.ch/collections/beauty-pflege",
+            "match": true
+          },
+          {
+            "title": "Wohnen und Deko",
+            "previewHref": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "baselineHref": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "match": true
+          },
+          {
+            "title": "Küche und Kochen",
+            "previewHref": "https://luxestyle.ch/collections/sub-kueche",
+            "baselineHref": "https://luxestyle.ch/collections/sub-kueche",
+            "match": true
+          },
+          {
+            "title": "Elektronik",
+            "previewHref": "https://luxestyle.ch/collections/elektronik-technik",
+            "baselineHref": "https://luxestyle.ch/collections/elektronik-technik",
+            "match": true
+          },
+          {
+            "title": "Gaming",
+            "previewHref": "https://luxestyle.ch/collections/gaming",
+            "baselineHref": "https://luxestyle.ch/collections/gaming",
+            "match": true
+          },
+          {
+            "title": "Hundewelt",
+            "previewHref": "https://luxestyle.ch/collections/hundewelt",
+            "baselineHref": "https://luxestyle.ch/collections/hundewelt",
+            "match": true
+          },
+          {
+            "title": "Sport und Outdoor",
+            "previewHref": "https://luxestyle.ch/collections/sport-outdoor",
+            "baselineHref": "https://luxestyle.ch/collections/sport-outdoor",
+            "match": true
+          },
+          {
+            "title": "Geschenkideen",
+            "previewHref": "https://luxestyle.ch/collections/premium-geschenke",
+            "baselineHref": "https://luxestyle.ch/collections/premium-geschenke",
+            "match": true
+          }
+        ],
+        "changedHrefs": []
+      },
+      {
+        "viewport": {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900
+        },
+        "matchingBaseline": true,
+        "orderedHrefMatches": [
+          {
+            "title": "Selbst gestalten",
+            "previewHref": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "baselineHref": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "match": true
+          },
+          {
+            "title": "Damenmode",
+            "previewHref": "https://luxestyle.ch/collections/damen-mode",
+            "baselineHref": "https://luxestyle.ch/collections/damen-mode",
+            "match": true
+          },
+          {
+            "title": "Herrenmode",
+            "previewHref": "https://luxestyle.ch/collections/fur-ihn",
+            "baselineHref": "https://luxestyle.ch/collections/fur-ihn",
+            "match": true
+          },
+          {
+            "title": "Kinder und Baby",
+            "previewHref": "https://luxestyle.ch/collections/sub-baby-kids",
+            "baselineHref": "https://luxestyle.ch/collections/sub-baby-kids",
+            "match": true
+          },
+          {
+            "title": "Schuhe",
+            "previewHref": "https://luxestyle.ch/collections/schuhe",
+            "baselineHref": "https://luxestyle.ch/collections/schuhe",
+            "match": true
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "previewHref": "https://luxestyle.ch/collections/sub-taschen",
+            "baselineHref": "https://luxestyle.ch/collections/sub-taschen",
+            "match": true
+          },
+          {
+            "title": "Schmuck",
+            "previewHref": "https://luxestyle.ch/collections/schmuck",
+            "baselineHref": "https://luxestyle.ch/collections/schmuck",
+            "match": true
+          },
+          {
+            "title": "Uhren",
+            "previewHref": "https://luxestyle.ch/collections/uhren",
+            "baselineHref": "https://luxestyle.ch/collections/uhren",
+            "match": true
+          },
+          {
+            "title": "Beauty und Pflege",
+            "previewHref": "https://luxestyle.ch/collections/beauty-pflege",
+            "baselineHref": "https://luxestyle.ch/collections/beauty-pflege",
+            "match": true
+          },
+          {
+            "title": "Wohnen und Deko",
+            "previewHref": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "baselineHref": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "match": true
+          },
+          {
+            "title": "Küche und Kochen",
+            "previewHref": "https://luxestyle.ch/collections/sub-kueche",
+            "baselineHref": "https://luxestyle.ch/collections/sub-kueche",
+            "match": true
+          },
+          {
+            "title": "Elektronik",
+            "previewHref": "https://luxestyle.ch/collections/elektronik-technik",
+            "baselineHref": "https://luxestyle.ch/collections/elektronik-technik",
+            "match": true
+          },
+          {
+            "title": "Gaming",
+            "previewHref": "https://luxestyle.ch/collections/gaming",
+            "baselineHref": "https://luxestyle.ch/collections/gaming",
+            "match": true
+          },
+          {
+            "title": "Hundewelt",
+            "previewHref": "https://luxestyle.ch/collections/hundewelt",
+            "baselineHref": "https://luxestyle.ch/collections/hundewelt",
+            "match": true
+          },
+          {
+            "title": "Sport und Outdoor",
+            "previewHref": "https://luxestyle.ch/collections/sport-outdoor",
+            "baselineHref": "https://luxestyle.ch/collections/sport-outdoor",
+            "match": true
+          },
+          {
+            "title": "Geschenkideen",
+            "previewHref": "https://luxestyle.ch/collections/premium-geschenke",
+            "baselineHref": "https://luxestyle.ch/collections/premium-geschenke",
+            "match": true
+          }
+        ],
+        "changedHrefs": []
+      }
+    ],
+    "networkCounts": {
+      "allowedMainNavigationRequests": 2,
+      "blocked": 123,
+      "blockedNonGet": 82,
+      "blockedSensitive": 41,
+      "cssFailures": 0,
+      "otherFailed": 128,
+      "themeStaticAssetRequests": 116,
+      "pageGotoCalls": 2,
+      "documentNavigationRequests": 6,
+      "blockedRequests": 123,
+      "failedImageRequests": 3
+    },
+    "status": "PASS",
+    "pageLoads": {
+      "requestedPageGotoCalls": 2,
+      "documentNavigationRequests": 6,
+      "sequence": [
+        {
+          "host": "au3j0y-hq.myshopify.com",
+          "hasPreviewParam": true
+        },
+        {
+          "host": "luxestyle.ch",
+          "hasPreviewParam": true
+        },
+        {
+          "host": "luxestyle.ch",
+          "hasPreviewParam": false
+        },
+        {
+          "host": "au3j0y-hq.myshopify.com",
+          "hasPreviewParam": true
+        },
+        {
+          "host": "luxestyle.ch",
+          "hasPreviewParam": true
+        },
+        {
+          "host": "luxestyle.ch",
+          "hasPreviewParam": false
+        }
+      ],
+      "redirectBehavior": "Each requested myshopify preview URL led to luxestyle.ch/?preview_theme_id=214040805767 and then luxestyle.ch/; rendered Shopify.theme.id confirms draft theme."
+    },
+    "viewports": [
+      {
+        "viewport": {
+          "key": "mobile",
+          "width": 390,
+          "height": 844
+        },
+        "anchorFound": true,
+        "sectionTitle": "Was passt zu dir?",
+        "sectionRect": {
+          "x": 0,
+          "y": 679,
+          "width": 390,
+          "height": 1636
+        },
+        "tileCount": 16,
+        "layout": {
+          "columns": "173px 173px",
+          "gap": "12px",
+          "tile": {
+            "width": 173,
+            "height": 173,
+            "aspectRatio": 1,
+            "radius": "14px",
+            "backgroundColor": "rgb(41, 39, 34)"
+          },
+          "text": {
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+            "fontSize": "17px",
+            "fontWeight": "600",
+            "lineHeight": "20.4px"
+          },
+          "arrow": {
+            "color": "rgb(255, 255, 255)",
+            "display": "block",
+            "size": [
+              16,
+              16
+            ]
+          },
+          "thumb": {
+            "width": 173,
+            "height": 173,
+            "radius": "0px"
+          }
+        },
+        "horizontalOverflow": false,
+        "documentWidth": 390,
+        "viewportWidth": 390,
+        "labelOverflowCount": 0,
+        "tiles": [
+          {
+            "title": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Selbst gestalten",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Damenmode",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Herrenmode",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 218,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Kinder und Baby",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Schuhe",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Taschen und Rucksäcke",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 218,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Schmuck",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Uhren",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Beauty und Pflege",
+            "href": "https://luxestyle.ch/collections/beauty-pflege",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 116,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Beauty und Pflege",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Wohnen und Deko",
+            "href": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Wohnen und Deko",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Küche und Kochen",
+            "href": "https://luxestyle.ch/collections/sub-kueche",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Küche und Kochen",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Elektronik",
+            "href": "https://luxestyle.ch/collections/elektronik-technik",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Elektronik",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Gaming",
+            "href": "https://luxestyle.ch/collections/gaming",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Gaming",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Hundewelt",
+            "href": "https://luxestyle.ch/collections/hundewelt",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Hundewelt",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Sport und Outdoor",
+            "href": "https://luxestyle.ch/collections/sport-outdoor",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 116,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Sport und Outdoor",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Geschenkideen",
+            "href": "https://luxestyle.ch/collections/premium-geschenke",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Geschenkideen",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "17px",
+              "lineHeight": "20.4px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          }
+        ],
+        "sectionStyle": {
+          "tag": "section",
+          "id": "lx-worlds",
+          "classes": [
+            "lx-worlds",
+            "lx-section",
+            "lx-worlds--photo-grid"
+          ],
+          "display": "block",
+          "position": "static",
+          "width": 390,
+          "height": 1636,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(41, 39, 34)",
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24.8px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "24px 16px 16px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "bodyStyle": {
+          "tag": "body",
+          "id": null,
+          "classes": [
+            "page-width-narrow",
+            "card-hover-effect-lift",
+            "template-index",
+            "lx-editorial-home"
+          ],
+          "display": "flex",
+          "position": "static",
+          "width": 390,
+          "height": 11865,
+          "backgroundColor": "rgb(250, 247, 242)",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "22.4px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "0px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "mainStyle": {
+          "tag": "main",
+          "id": "MainContent",
+          "classes": [
+            "content-for-layout"
+          ],
+          "display": "flex",
+          "position": "static",
+          "width": 390,
+          "height": 11271,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "22.4px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "0px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "screenshotMasks": [
+          {
+            "tag": "header",
+            "id": "shopify-section-sections--34155023991175__header_section",
+            "classes": [
+              "shopify-section",
+              "shopify-section-group-header-group",
+              "header-section"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": -1,
+              "width": 390,
+              "height": 60
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "menu-drawer",
+              "color-scheme-1"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": -370,
+              "y": 52,
+              "width": 371,
+              "height": 844
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "menu-drawer__backdrop"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 52,
+              "width": 390,
+              "height": 844
+            }
+          },
+          {
+            "tag": "dialog",
+            "id": null,
+            "classes": [
+              "cart-drawer__dialog",
+              "dialog-modal",
+              "dialog-drawer",
+              "color-scheme-1",
+              "cart-drawer--empty"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "cart-drawer__header"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "button",
+            "id": null,
+            "classes": [
+              "button",
+              "close-button",
+              "cart-drawer__close-button",
+              "button-unstyled"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "luxsb-wrap",
+            "classes": [],
+            "position": "sticky",
+            "rect": {
+              "x": 16,
+              "y": -1345,
+              "width": 358,
+              "height": 65
+            }
+          },
+          {
+            "tag": "nav",
+            "id": null,
+            "classes": [
+              "lx-bottom-nav"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 706,
+              "width": 390,
+              "height": 70
+            }
+          },
+          {
+            "tag": "div",
+            "id": "terms-policies-popover",
+            "classes": [
+              "terms-policies-popover",
+              "color-scheme-1"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lx-pop",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "luxas",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "section",
+            "id": "luxas-panel",
+            "classes": [
+              "luxas-panel"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "predictive-search-form__header"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "dialog",
+            "id": null,
+            "classes": [
+              "quick-add-modal",
+              "dialog-modal",
+              "color-scheme-1"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lx-cookie-banner",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 649,
+              "width": 390,
+              "height": 45
+            }
+          },
+          {
+            "tag": "div",
+            "id": "web-pixels-manager-sandbox-container",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "PBarNextFrameWrapper",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 776,
+              "width": 390,
+              "height": 68
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lux-wish-toast",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 16,
+              "y": 718,
+              "width": 358,
+              "height": 48
+            }
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900
+        },
+        "anchorFound": true,
+        "sectionTitle": "Was passt zu dir?",
+        "sectionRect": {
+          "x": 0,
+          "y": 804,
+          "width": 1440,
+          "height": 1187
+        },
+        "tileCount": 16,
+        "layout": {
+          "columns": "315.594px 315.609px 315.594px 315.609px",
+          "gap": "16px",
+          "tile": {
+            "width": 316,
+            "height": 237,
+            "aspectRatio": 1.333,
+            "radius": "16px",
+            "backgroundColor": "rgb(41, 39, 34)"
+          },
+          "text": {
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+            "fontSize": "23px",
+            "fontWeight": "600",
+            "lineHeight": "27.6px"
+          },
+          "arrow": {
+            "color": "rgb(255, 255, 255)",
+            "display": "block",
+            "size": [
+              18,
+              18
+            ]
+          },
+          "thumb": {
+            "width": 316,
+            "height": 237,
+            "radius": "0px"
+          }
+        },
+        "horizontalOverflow": false,
+        "documentWidth": 1440,
+        "viewportWidth": 1440,
+        "labelOverflowCount": 0,
+        "tiles": [
+          {
+            "title": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Selbst gestalten",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Damenmode",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Herrenmode",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 415,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Kinder und Baby",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Schuhe",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Taschen und Rucksäcke",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 415,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Schmuck",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Uhren",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Beauty und Pflege",
+            "href": "https://luxestyle.ch/collections/beauty-pflege",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 221,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Beauty und Pflege",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Wohnen und Deko",
+            "href": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Wohnen und Deko",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Küche und Kochen",
+            "href": "https://luxestyle.ch/collections/sub-kueche",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Küche und Kochen",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Elektronik",
+            "href": "https://luxestyle.ch/collections/elektronik-technik",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Elektronik",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Gaming",
+            "href": "https://luxestyle.ch/collections/gaming",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Gaming",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Hundewelt",
+            "href": "https://luxestyle.ch/collections/hundewelt",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Hundewelt",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Sport und Outdoor",
+            "href": "https://luxestyle.ch/collections/sport-outdoor",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 221,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Sport und Outdoor",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          },
+          {
+            "title": "Geschenkideen",
+            "href": "https://luxestyle.ch/collections/premium-geschenke",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "imageObjectFit": "cover",
+            "classes": [
+              "lx-category-tile"
+            ],
+            "label": {
+              "text": "Geschenkideen",
+              "color": "rgb(255, 255, 255)",
+              "fontSize": "23px",
+              "lineHeight": "27.6px",
+              "overflow": false
+            },
+            "arrowColor": "rgb(255, 255, 255)"
+          }
+        ],
+        "sectionStyle": {
+          "tag": "section",
+          "id": "lx-worlds",
+          "classes": [
+            "lx-worlds",
+            "lx-section",
+            "lx-worlds--photo-grid"
+          ],
+          "display": "block",
+          "position": "static",
+          "width": 1440,
+          "height": 1187,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(41, 39, 34)",
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24.8px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "32px 64.8px 24px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "bodyStyle": {
+          "tag": "body",
+          "id": null,
+          "classes": [
+            "page-width-narrow",
+            "card-hover-effect-lift",
+            "template-index",
+            "lx-editorial-home"
+          ],
+          "display": "flex",
+          "position": "static",
+          "width": 1440,
+          "height": 9362,
+          "backgroundColor": "rgb(250, 247, 242)",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "22.4px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "0px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "mainStyle": {
+          "tag": "main",
+          "id": "MainContent",
+          "classes": [
+            "content-for-layout"
+          ],
+          "display": "flex",
+          "position": "static",
+          "width": 1440,
+          "height": 8986,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "22.4px",
+          "borderRadius": "0px",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "padding": "0px",
+          "margin": "0px",
+          "overflow": "visible",
+          "overflowWrap": "normal",
+          "wordBreak": "normal",
+          "whiteSpace": "normal",
+          "textOverflow": "clip",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "textShadow": "none",
+          "boxShadow": "none"
+        },
+        "screenshotMasks": [
+          {
+            "tag": "header",
+            "id": "shopify-section-sections--34155023991175__header_section",
+            "classes": [
+              "shopify-section",
+              "shopify-section-group-header-group",
+              "header-section"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": -1,
+              "width": 1440,
+              "height": 89
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "menu-drawer",
+              "color-scheme-1"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "menu-drawer__backdrop"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "dialog",
+            "id": null,
+            "classes": [
+              "cart-drawer__dialog",
+              "dialog-modal",
+              "dialog-drawer",
+              "color-scheme-1",
+              "cart-drawer--empty"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "cart-drawer__header"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "button",
+            "id": null,
+            "classes": [
+              "button",
+              "close-button",
+              "cart-drawer__close-button",
+              "button-unstyled"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "luxsb-wrap",
+            "classes": [],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "terms-policies-popover",
+            "classes": [
+              "terms-policies-popover",
+              "color-scheme-1"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lx-pop",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "luxas",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "section",
+            "id": "luxas-panel",
+            "classes": [
+              "luxas-panel"
+            ],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "predictive-search-form__header"
+            ],
+            "position": "sticky",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lx-cookie-banner",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 440,
+              "y": 724,
+              "width": 560,
+              "height": 93
+            }
+          },
+          {
+            "tag": "div",
+            "id": "web-pixels-manager-sandbox-container",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "tag": "div",
+            "id": "PBarNextFrameWrapper",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 0,
+              "y": 832,
+              "width": 1440,
+              "height": 68
+            }
+          },
+          {
+            "tag": "div",
+            "id": "lux-wish-toast",
+            "classes": [],
+            "position": "fixed",
+            "rect": {
+              "x": 16,
+              "y": 774,
+              "width": 440,
+              "height": 48
+            }
+          }
+        ]
+      }
+    ],
+    "baselineComparison": {
+      "same16LinksAndOrder": true,
+      "changedHrefs": [],
+      "generatedImageLinks": {
+        "kidsHref": "https://luxestyle.ch/collections/sub-baby-kids",
+        "kidsCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047&width=320",
+        "jewelleryHref": "https://luxestyle.ch/collections/schmuck",
+        "jewelleryCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061&width=320"
+      }
+    },
+    "screenshotCapture": {
+      "method": "locator screenshot of #lx-worlds after DOM-only visibility masking of fixed/sticky overlays",
+      "maskCount": [
+        {
+          "viewport": {
+            "key": "mobile",
+            "width": 390,
+            "height": 844
+          },
+          "count": 18,
+          "visible": [
+            {
+              "tag": "header",
+              "id": "shopify-section-sections--34155023991175__header_section",
+              "classes": [
+                "shopify-section",
+                "shopify-section-group-header-group",
+                "header-section"
+              ],
+              "rect": {
+                "x": 0,
+                "y": -1,
+                "width": 390,
+                "height": 60
+              }
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "classes": [
+                "menu-drawer",
+                "color-scheme-1"
+              ],
+              "rect": {
+                "x": -370,
+                "y": 52,
+                "width": 371,
+                "height": 844
+              }
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "classes": [
+                "menu-drawer__backdrop"
+              ],
+              "rect": {
+                "x": 0,
+                "y": 52,
+                "width": 390,
+                "height": 844
+              }
+            },
+            {
+              "tag": "div",
+              "id": "luxsb-wrap",
+              "classes": [],
+              "rect": {
+                "x": 16,
+                "y": -1345,
+                "width": 358,
+                "height": 65
+              }
+            },
+            {
+              "tag": "nav",
+              "id": null,
+              "classes": [
+                "lx-bottom-nav"
+              ],
+              "rect": {
+                "x": 0,
+                "y": 706,
+                "width": 390,
+                "height": 70
+              }
+            },
+            {
+              "tag": "div",
+              "id": "lx-cookie-banner",
+              "classes": [],
+              "rect": {
+                "x": 0,
+                "y": 649,
+                "width": 390,
+                "height": 45
+              }
+            },
+            {
+              "tag": "div",
+              "id": "PBarNextFrameWrapper",
+              "classes": [],
+              "rect": {
+                "x": 0,
+                "y": 776,
+                "width": 390,
+                "height": 68
+              }
+            },
+            {
+              "tag": "div",
+              "id": "lux-wish-toast",
+              "classes": [],
+              "rect": {
+                "x": 16,
+                "y": 718,
+                "width": 358,
+                "height": 48
+              }
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "key": "desktop",
+            "width": 1440,
+            "height": 900
+          },
+          "count": 16,
+          "visible": [
+            {
+              "tag": "header",
+              "id": "shopify-section-sections--34155023991175__header_section",
+              "classes": [
+                "shopify-section",
+                "shopify-section-group-header-group",
+                "header-section"
+              ],
+              "rect": {
+                "x": 0,
+                "y": -1,
+                "width": 1440,
+                "height": 89
+              }
+            },
+            {
+              "tag": "div",
+              "id": "lx-cookie-banner",
+              "classes": [],
+              "rect": {
+                "x": 440,
+                "y": 724,
+                "width": 560,
+                "height": 93
+              }
+            },
+            {
+              "tag": "div",
+              "id": "PBarNextFrameWrapper",
+              "classes": [],
+              "rect": {
+                "x": 0,
+                "y": 832,
+                "width": 1440,
+                "height": 68
+              }
+            },
+            {
+              "tag": "div",
+              "id": "lux-wish-toast",
+              "classes": [],
+              "rect": {
+                "x": 16,
+                "y": 774,
+                "width": 440,
+                "height": 48
+              }
+            }
+          ]
+        }
+      ],
+      "consentClicked": false
+    },
+    "visualReview": {
+      "allCategoryLabelsComputedWhite": true,
+      "allArrowComputedWhite": true,
+      "labelOverflowCount": 0,
+      "objectFitCover": true,
+      "assessment": "No label clipping or gray-arrow contrast issue observed. A few pre-existing collection photos contain small embedded words behind the category labels; gradient and white labels remain readable. Generated kids and jewellery subjects remain visible after crop.",
+      "status": "PASS",
+      "note": "All labels fit; white arrows and white labels remain legible against the lower image gradient. A few legacy photos have embedded words, but no category label is clipped."
+    },
+    "breakdown": [
+      {
+        "viewport": {
+          "key": "mobile",
+          "width": 390,
+          "height": 844
+        },
+        "anchorFound": true,
+        "sectionTitle": "Was passt zu dir?",
+        "tileCount": 16,
+        "tiles": [
+          {
+            "title": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 218,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 218,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Beauty und Pflege",
+            "href": "https://luxestyle.ch/collections/beauty-pflege",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 116,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Wohnen und Deko",
+            "href": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Küche und Kochen",
+            "href": "https://luxestyle.ch/collections/sub-kueche",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Elektronik",
+            "href": "https://luxestyle.ch/collections/elektronik-technik",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Gaming",
+            "href": "https://luxestyle.ch/collections/gaming",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Hundewelt",
+            "href": "https://luxestyle.ch/collections/hundewelt",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 175,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Sport und Outdoor",
+            "href": "https://luxestyle.ch/collections/sport-outdoor",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 116,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Geschenkideen",
+            "href": "https://luxestyle.ch/collections/premium-geschenke",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=320",
+            "naturalWidth": 175,
+            "naturalHeight": 67,
+            "classes": [
+              "lx-category-tile"
+            ]
+          }
+        ],
+        "cssFailures": 0,
+        "themeIdentity": {
+          "id": 214040805767,
+          "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+          "role": "unpublished"
+        }
+      },
+      {
+        "viewport": {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900
+        },
+        "anchorFound": true,
+        "sectionTitle": "Was passt zu dir?",
+        "tileCount": 16,
+        "tiles": [
+          {
+            "title": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-kinder-baby-20261115.png?v=1794740047&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 415,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/files/luxestyle-einkaufswelt-schmuck-20261115.png?v=1794740061&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 415,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Beauty und Pflege",
+            "href": "https://luxestyle.ch/collections/beauty-pflege",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 221,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Wohnen und Deko",
+            "href": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Küche und Kochen",
+            "href": "https://luxestyle.ch/collections/sub-kueche",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Elektronik",
+            "href": "https://luxestyle.ch/collections/elektronik-technik",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Gaming",
+            "href": "https://luxestyle.ch/collections/gaming",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Hundewelt",
+            "href": "https://luxestyle.ch/collections/hundewelt",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 332,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Sport und Outdoor",
+            "href": "https://luxestyle.ch/collections/sport-outdoor",
+            "imageCurrentSrc": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 221,
+            "classes": [
+              "lx-category-tile"
+            ]
+          },
+          {
+            "title": "Geschenkideen",
+            "href": "https://luxestyle.ch/collections/premium-geschenke",
+            "imageCurrentSrc": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=480",
+            "naturalWidth": 332,
+            "naturalHeight": 128,
+            "classes": [
+              "lx-category-tile"
+            ]
+          }
+        ],
+        "cssFailures": 0,
+        "themeIdentity": {
+          "id": 214040805767,
+          "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+          "role": "unpublished"
+        }
+      }
+    ],
+    "report": "# R232 preview QA — final\n\n**PASS** on unpublished Shopify theme **214040805767** (“LuxeStyle – Kaufhinweis 15.11.2026”). Runtime DOM reports the exact theme ID and role `unpublished`; theme assets load from `/cdn/shop/t/30/`. The preview parameter is stripped during redirects, but the rendered theme ID remains correct.\n\nAt 390×844 and 1440×900, the section has all 16 full image cards in the baseline order, plus the separate “Alle Kategorien entdecken” link. All 16 hrefs match baseline, including Kinder und Baby → `/collections/sub-baby-kids` and Schmuck → `/collections/schmuck`.\n\n- Mobile: 2 columns, 173×173 px cards, 14 px corners.\n- Desktop: 4 columns, 316×237 px cards, 16 px corners.\n- All images loaded with responsive sources; `object-fit: cover`. New Kids and Schmuck art loaded at 175×218 px mobile and 332×415 px desktop.\n- Labels and arrows compute to white. No label overflow, horizontal page overflow, or CSS failures. The visual screenshots show no clipping or arrow contrast issue. Some older background images contain small embedded words, but the overlaid category labels remain legible.\n\nScreenshots: `mobile-lx-worlds-section.png`, `desktop-lx-worlds-section.png`. Fixed/sticky header and cookie overlays were hidden using temporary DOM visibility styling for these section captures; no consent choice was made. No links were clicked.\n\nTwo page.goto calls were made. Shopify generated six top-level navigation requests across the two loads because each preview request redirected through `luxestyle.ch` and removed the preview query. Non-GET, analytics/telemetry, product/API, cart, checkout, and account requests were blocked. The prior before-correction capture remains in `../browser-preview/`; it is not used for final image validation.\n",
+    "limits": [
+      "German homepage section at 390x844 and 1440x900; no full-store or all-language acceptance.",
+      "Screenshot-only masking of fixed/sticky header and cookie layers; no click or consent action.",
+      "Two first baseline loads had an over-broad QA image guard and were corrected. Before-correction preview retained, then two final page.goto calls after confirmed new index source. One final-runner ReferenceError failed before page.goto; fixed locally.",
+      "Native screenshot renderer has known malformed header/desktop output; normal Chromium independently checked.",
+      "Other 14 existing category backgrounds retained, including some embedded old banner words; not 16 new or all text-free images."
+    ]
+  },
+  "sourceChecks": {
+    "fiveChangedFiles": true,
+    "sixInlineScriptsByteIdentical": true,
+    "categoryOrderStringAndLinkLogicUnchanged": true,
+    "templateSectionOrderAndMoreProductsUnchanged": true,
+    "localeJsoncAndSectionSchemaParse": true,
+    "r230BuyButtonsAndPopupHashesPreserved": true
+  },
+  "scope": {
+    "themeId": "214040805767",
+    "role": "UNPUBLISHED",
+    "mainThemeId": "213991391623",
+    "themePublishCalls": 0,
+    "newImagesUploaded": 2,
+    "originalImageJobs": 2,
+    "videoRenderCalls": 0,
+    "newSocialPostsSchedulesDeletes": 0,
+    "merchantWritesOrScans": 0,
+    "newMetricsKlaviyoOrdersReports": 0,
+    "automationOrScheduleChanges": 0,
+    "claudeReceipt": "unknown"
+  },
+  "metricoolReadError": "getbrandsettings rejected: requires non-empty string link_id. No fresh brand identity from that call and no Social writes.",
+  "prewriteCore4": {
+    "README.md": {
+      "sha256": "55d156d3e529fb8c70053793003e3a8dbfc3d87429f1e4ca63e5eb13a8d09e2a",
+      "gitBlobSha": "2f477f47779f3f73344989f5b08d44117fc854e6"
+    },
+    "PROJEKTGEDAECHTNIS.md": {
+      "sha256": "a9f5e7570337669f546e03ccf0b0e263c5f9a45020cea0bf82b5fdc27e4c287d",
+      "gitBlobSha": "c4b913e02230c5ab732e9a4336cd9311a2d839f0"
+    },
+    "ARBEITSSTAND.json": {
+      "sha256": "6fc5a32eed82288800c1f544f83760b7e4c7f0a38d4e74bc65449e2c2cb54d82",
+      "gitBlobSha": "4149976b856ef3257099119730b0c447e452586f"
+    },
+    "TAGESPROTOKOLL.md": {
+      "sha256": "a16776050b5ede6c6f7c6030ce82667b7663d4372d8818e0b1e1d2e523060adb",
+      "gitBlobSha": "796d999f1057573966ba1846f66dcbe48eef17d4"
+    }
+  },
+  "currentSourceGitHead": "e50758a25ef6ca5e9b5bc25dc58eff5c64cda528"
+}
