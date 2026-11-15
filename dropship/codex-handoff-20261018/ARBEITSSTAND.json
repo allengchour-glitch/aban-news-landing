@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 242,
-  "updatedAt": "2026-11-15T17:27:22Z",
+  "revision": 243,
+  "updatedAt": "2026-11-15T18:28:10Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3698,6 +3698,14 @@
         "protectedMedia": 48,
         "doNotRepeatVerifiedWrites": true,
         "wholeCatalogueComplete": false
+      },
+      "run243Draft": {
+        "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+        "productId": "15521256604033",
+        "sourceVariantsMatched": 7,
+        "blocksPrepared": 2,
+        "status": "draft_not_written",
+        "previousR242LiveWritesUnchanged": true
       }
     },
     {
@@ -4590,12 +4598,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r234_publish_approval_recorded_guard_refusal_merchant_worklist_and_metricool_access_shared",
+      "state": "r243_evening_handoff_master_holds_and_consolidated_day_recorded_no_receipt",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
-      "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet.",
-      "nextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme 214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
+      "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet. R243: Vier technischeMaster-Sperren mit stabilenUUIDs wiederhergestellt undID-Wechselprotokolliert, aktuelleWochenabdeckung/Lücken, Musikquelle,18s-Brief undA–G-Verkaufsentwurf sowie heutigeTagestabellegeteilt. Keine eigenePublikation/weiterenTagesreports. ClaudeKenntnisnahmeunbekannt.",
+      "nextAllowedStep": "An aktuellerR243-Halteidentität und R242-Produktdetails anschliessen. TechnischeEntwürfe nicht freigeben, neueIDnachUUIDzuordnen; Reaktivierungsursache/produktivenHalteschutz ohneungeprüfteStarts klären. OriginaleSieben-Dateien-Themefreigabe undzusätzlichenR239Versanddiff getrennt erhalten. Kenntnisnahme nurmitBeleg behaupten.",
       "blockers": [
         "Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
         "Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
@@ -5907,6 +5915,10 @@
           "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
           "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
           "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+          "readAt": "2026-11-15T18:28:10Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -8239,6 +8251,14 @@
             "Claude-Empfang unbekannt.",
             "Film-/Musik-/Bio-/Board-/Ledgergates für neue Socialwrites unverändert."
           ]
+        },
+        {
+          "revision": 243,
+          "at": "2026-11-15T18:28:10Z",
+          "previousState": "r234_publish_approval_recorded_guard_refusal_merchant_worklist_and_metricool_access_shared",
+          "previousLastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet.",
+          "previousNextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme 214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
+          "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json"
         }
       ],
       "reviewPacket": {
@@ -10477,12 +10497,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r234_A_reference_productgate_and_cj_metadata_verified_physical_film_binding_unknown",
+      "state": "r243_four_known_unapproved_master_holds_restored_same_media_uuid_verified",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
-      "lastEvidence": "R234: Derselbe Master luxe_sternenprojektor_master_20261018. Frische A-Referenzvariante 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, nicht leere Tags, Repo-Sperrwächter plus jedes rueckhol ohne Treffer; untracked/CONTINUE/available=true. A-Referenzbild hashgleich 5fa8b110... Neue native CJ-Detailabfrage bestätigt Produkt/A-USB-SKU und Video-ID, keine Video-URL/Rechte. Einzelner 18s-Schnittbrief und sechs UTMs fortgeschrieben; kein Film oder Socialwrite. Physische Einheit/Motiv, hochwertige Takes, Musik-/Filmrechte und Endabnahme bleiben offen.",
-      "nextAllowedStep": "Denselben Master anhand physischer A-Einheit und eindeutig gebundenem Motiv mit nativen hochwertigen Takes weiterentwickeln; kommerzielle Film-/Bearbeitungs-/Werbe- und Musikrechte belegen. Erst fertige MP4 prüfen, freigeben, hashen und bestehendes Masterregister/Historie je Kanal kontrollieren. Keine neue Serie, keine Altclip-Aktivierung. Neue Caption-Entwürfe brauchen vor Publish Bio-/Board-/Zielgruppenprüfung; bestehende madeForKids=false-Werte erhalten.",
+      "lastEvidence": "R234: Derselbe Master luxe_sternenprojektor_master_20261018. Frische A-Referenzvariante 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, nicht leere Tags, Repo-Sperrwächter plus jedes rueckhol ohne Treffer; untracked/CONTINUE/available=true. A-Referenzbild hashgleich 5fa8b110... Neue native CJ-Detailabfrage bestätigt Produkt/A-USB-SKU und Video-ID, keine Video-URL/Rechte. Einzelner 18s-Schnittbrief und sechs UTMs fortgeschrieben; kein Film oder Socialwrite. Physische Einheit/Motiv, hochwertige Takes, Musik-/Filmrechte und Endabnahme bleiben offen. R243: Erneute Aktivierung der4R176-UUIDs entdeckt. Alle4Medien frischSHAfac2f767…27df6a bestätigt, 18s/1080x1920/25fps technischerEntwurf. Vier Hold-Updates erfolgreich und nativimPlanner zurückgelesen; IDs429127242/259/272/286 bei stabilenUUIDs. A-Referenz aktuell68122445283719/CHF34.90kaufbar, Taggatepasst. Repo-WAVdirektHasha767…16688, SF2-/ExportlizenzbindungundPremium-/Filmabnahmeweiteroffen. Kein neuerFilm/Publish.",
+      "nextAllowedStep": "Vier bekannteUUID-Holds bei jedem bestehenden Lauf frisch gegengeprüft erhalten; erneute Aktivierung nicht als Freigabe behandeln. Reaktivierungsursache anhand vorhandenen Publisher-/Queue-/Halteschutzes erst prüfen, keine ungeprüfte Ausführung/Deployment. Denselben professionellenMaster mit hochwertigem physischA-/Motiv-gebundenem Material, kommerziellen Film-/Musikrechten und belegtemWAV/SF2-Input sowie Endabnahme fertigstellen. Erst dann bestehendeUUIDs/Medien rechtmässig aktualisieren und je Kanal/Historie/Identität prüfen; keine neuenKopien oderPostingquote.",
       "blockers": [
         "Native A-Takes und aktueller Film-/Motivbezug fehlen.",
         "Tatsächlich verwendete SoundFont und passende Lizenz-/Copyrightdatei plus Exportbindung nicht belegt.",
@@ -11303,6 +11323,10 @@
           "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
           "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
           "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+          "readAt": "2026-11-15T18:28:10Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -12167,6 +12191,14 @@
             "Kommerzielle Film-/Bearbeitungsrechte, vollständige Musiklizenzkette und finale Hör-/Bild-/Text-/Cropabnahme offen.",
             "Bioziele, aktuelles Kontoboard und vollständiges älteres Publikationsregister für einen neuen Push nicht belegt."
           ]
+        },
+        {
+          "revision": 243,
+          "at": "2026-11-15T18:28:10Z",
+          "previousState": "r234_A_reference_productgate_and_cj_metadata_verified_physical_film_binding_unknown",
+          "previousLastEvidence": "R234: Derselbe Master luxe_sternenprojektor_master_20261018. Frische A-Referenzvariante 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, nicht leere Tags, Repo-Sperrwächter plus jedes rueckhol ohne Treffer; untracked/CONTINUE/available=true. A-Referenzbild hashgleich 5fa8b110... Neue native CJ-Detailabfrage bestätigt Produkt/A-USB-SKU und Video-ID, keine Video-URL/Rechte. Einzelner 18s-Schnittbrief und sechs UTMs fortgeschrieben; kein Film oder Socialwrite. Physische Einheit/Motiv, hochwertige Takes, Musik-/Filmrechte und Endabnahme bleiben offen.",
+          "previousNextAllowedStep": "Denselben Master anhand physischer A-Einheit und eindeutig gebundenem Motiv mit nativen hochwertigen Takes weiterentwickeln; kommerzielle Film-/Bearbeitungs-/Werbe- und Musikrechte belegen. Erst fertige MP4 prüfen, freigeben, hashen und bestehendes Masterregister/Historie je Kanal kontrollieren. Keine neue Serie, keine Altclip-Aktivierung. Neue Caption-Entwürfe brauchen vor Publish Bio-/Board-/Zielgruppenprüfung; bestehende madeForKids=false-Werte erhalten.",
+          "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json"
         }
       ],
       "visualAcceptanceDraft": {
@@ -13343,7 +13375,141 @@
         ],
         "sourceRawSavedFirst": true
       },
-      "run234SourceNote": "One native CJ product read succeeded and confirmed catalog/variant metadata. Video ID only; URL, dimensions, duration, physical unit/motif and video-level commercial editing/advertising rights remain unknown. No new rendered master or publication."
+      "run234SourceNote": "One native CJ product read succeeded and confirmed catalog/variant metadata. Video ID only; URL, dimensions, duration, physical unit/motif and video-level commercial editing/advertising rights remain unknown. No new rendered master or publication.",
+      "run243": {
+        "proof": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+        "holdRegister": "dropship/codex-handoff-20261018/register/hold-luxe_sternenprojektor_master_20261018-r243.json",
+        "holds": [
+          {
+            "uuid": "4156060813550767248",
+            "previousId": 428862920,
+            "currentId": 429127242,
+            "network": "instagram",
+            "publicationDate": {
+              "dateTime": "2026-11-16T19:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "draft": true,
+            "autoPublish": false,
+            "targetAutoPublish": false,
+            "providerStates": [
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+            ],
+            "coreAndTargetFieldsPreserved": true,
+            "changedTopLevelKeys": [
+              "id",
+              "creationDate",
+              "autoPublish",
+              "draft",
+              "instagramData"
+            ]
+          },
+          {
+            "uuid": "6680239273933357186",
+            "previousId": 428862993,
+            "currentId": 429127259,
+            "network": "facebook",
+            "publicationDate": {
+              "dateTime": "2026-11-16T19:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "draft": true,
+            "autoPublish": false,
+            "targetAutoPublish": "not_returned",
+            "providerStates": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+            ],
+            "coreAndTargetFieldsPreserved": true,
+            "changedTopLevelKeys": [
+              "id",
+              "creationDate",
+              "autoPublish",
+              "draft",
+              "instagramData"
+            ]
+          },
+          {
+            "uuid": "3614365779669041576",
+            "previousId": 428863060,
+            "currentId": 429127272,
+            "network": "tiktok",
+            "publicationDate": {
+              "dateTime": "2026-11-17T19:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "draft": true,
+            "autoPublish": false,
+            "targetAutoPublish": "not_returned",
+            "providerStates": [
+              {
+                "network": "tiktok",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+            ],
+            "coreAndTargetFieldsPreserved": true,
+            "changedTopLevelKeys": [
+              "id",
+              "creationDate",
+              "autoPublish",
+              "draft",
+              "instagramData"
+            ]
+          },
+          {
+            "uuid": "-7647174116509334899",
+            "previousId": 428863123,
+            "currentId": 429127286,
+            "network": "youtube",
+            "publicationDate": {
+              "dateTime": "2026-11-19T19:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "draft": true,
+            "autoPublish": false,
+            "targetAutoPublish": "not_returned",
+            "providerStates": [
+              {
+                "network": "youtube",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+            ],
+            "madeForKids": false,
+            "coreAndTargetFieldsPreserved": true,
+            "changedTopLevelKeys": [
+              "id",
+              "creationDate",
+              "autoPublish",
+              "draft",
+              "instagramData"
+            ]
+          }
+        ],
+        "sourceFilmVariantStillUnknown": true,
+        "canonicalMusicHashConfirmed": true,
+        "professionalMasterReady": false
+      }
     },
     {
       "id": "dns-four-approved-20261018",
@@ -26415,12 +26581,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r228_queue_unchanged_42_objects_51_pending_channel_gaps_preserved",
+      "state": "r243_current_planner_and_four_explicit_master_holds_verified_other_approvals_not_inferred",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Frische Marke/Zeitzone/sechs Identitäten und vier Planabfragen:42Objekte/51PENDING-Zustände,41global draft=false/autoPublish=true und10Draftzustände. IG/FB/TikTok/Pinterest je Datum vom 15.–22. November globale Termine, Threads15Nov/YT15–22Nov Lücken. Exakte UUID-/Text+Medien-/Medienlisten-Kollisionen je Kanal fehlen im Fenster; Byte-/Vergangenheit unbekannt. Nur IG liefert explizite Kanal-AP-Werte. Keine eigenen Writes/Publikationen; gegenüber R225 keine geprüften Feldänderungen.",
-      "nextAllowedStep": "Bestehende Termine/Holds erhalten. Heute fehlenden Threads-Termin und alle YouTube-Lücken nicht mit Kopien oder unqualifizierten Medien füllen. Ein neuer passender Master bleibt an Produkt/Rechte/Qualität/Bio/Board/Publikationshistorie gebunden. Status fälliger UUID gezielt lesen, sofern ein legitimer vollständiger Statuszugang verfügbar wird; scheduled-only beweist keine vergangene Auslieferung.",
+      "lastEvidence": "Frische Marke/Zeitzone/sechs Identitäten und vier Planabfragen:42Objekte/51PENDING-Zustände,41global draft=false/autoPublish=true und10Draftzustände. IG/FB/TikTok/Pinterest je Datum vom 15.–22. November globale Termine, Threads15Nov/YT15–22Nov Lücken. Exakte UUID-/Text+Medien-/Medienlisten-Kollisionen je Kanal fehlen im Fenster; Byte-/Vergangenheit unbekannt. Nur IG liefert explizite Kanal-AP-Werte. Keine eigenen Writes/Publikationen; gegenüber R225 keine geprüften Feldänderungen. R243: Frischer15–22NovPlan46Objekte/56Zustände/45aktiveKanalzustände nach4wiederhergestelltenMasterholds. Keine exaktenaktivenURL-Mediendoppel; volleVergangenheitunknown. BestehendePUBLISHED-Provider5 beobachtet, keineeigeneVeröffentlichung. AndereFilmfreigaben nichtpauschalabgeleitet. YouTube-Zielgruppenfalsevorhanden.",
+      "nextAllowedStep": "BestehendeQualitätssperren erhalten, Medien-/Rechte-/Produktbindung je konkretem Film frisch prüfen. Bei neuen Lücken geeignetegeprüfteFormate zuerstTikTok/Pinterest/YouTube, keine universelleQuote. DraftsnichtalsTermine zählen und frühereMasterhistorie vorNeuanlage lesen. NeueReaktivierungsbefunde an bekanntenUUIDs gezielt abgleichen, ohneblindesRetry oderfremdePostsaufVerdachtlöschen.",
       "blockers": [
         "Keine neu abgenommene professionelle Master-MP4 mit vollständigem Produkt-/Rechtenachweis.",
         "Bioziele fehlen im Brand-/Scheduler-Read; Pinterest-Boards aus Queue nicht frisch als Kontoboards verifiziert.",
@@ -26879,6 +27045,10 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+          "readAt": "2026-11-15T18:28:10Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -27571,6 +27741,14 @@
             "R175: Board1111333714239114033 ist nach aktuellem Read weiterhin in Name und Eigentum unbekannt.",
             "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
           ]
+        },
+        {
+          "revision": 243,
+          "at": "2026-11-15T18:28:10Z",
+          "previousState": "r228_queue_unchanged_42_objects_51_pending_channel_gaps_preserved",
+          "previousLastEvidence": "Frische Marke/Zeitzone/sechs Identitäten und vier Planabfragen:42Objekte/51PENDING-Zustände,41global draft=false/autoPublish=true und10Draftzustände. IG/FB/TikTok/Pinterest je Datum vom 15.–22. November globale Termine, Threads15Nov/YT15–22Nov Lücken. Exakte UUID-/Text+Medien-/Medienlisten-Kollisionen je Kanal fehlen im Fenster; Byte-/Vergangenheit unbekannt. Nur IG liefert explizite Kanal-AP-Werte. Keine eigenen Writes/Publikationen; gegenüber R225 keine geprüften Feldänderungen.",
+          "previousNextAllowedStep": "Bestehende Termine/Holds erhalten. Heute fehlenden Threads-Termin und alle YouTube-Lücken nicht mit Kopien oder unqualifizierten Medien füllen. Ein neuer passender Master bleibt an Produkt/Rechte/Qualität/Bio/Board/Publikationshistorie gebunden. Status fälliger UUID gezielt lesen, sofern ein legitimer vollständiger Statuszugang verfügbar wird; scheduled-only beweist keine vergangene Auslieferung.",
+          "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json"
         }
       ],
       "latestScheduleReadR67": {
@@ -28905,6 +29083,31 @@
         "at": "2026-11-15T07:19:23.182598+00:00",
         "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
         "ownExternalWrites": 0
+      },
+      "run243": {
+        "proof": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+        "objects": 46,
+        "providerRows": 56,
+        "activeProviderRows": 45,
+        "gaps": {
+          "instagram": [],
+          "facebook": [],
+          "tiktok": [],
+          "pinterest": [],
+          "threads": [
+            "2026-11-15"
+          ],
+          "youtube": [
+            "2026-11-15",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-21",
+            "2026-11-22"
+          ]
+        },
+        "newPosts": 0,
+        "ownPublications": 0
       }
     },
     {
@@ -32780,6 +32983,20 @@
         {
           "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
           "readAt": "2026-11-15T17:27:22Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 243,
+      "at": "2026-11-15T18:28:10Z",
+      "actor": "codex",
+      "summary": "Abendlauf19Uhr:4reaktivierteungeprüfteR176MasterUUIDs nachfrischerDatei-/Identitäts-/Rechtegegenprobe aufdraft/globalautopublishfalsezurückgesetzt,ID-WechselundReadbacksbestätigt.46Objekte/56Zustände/45aktiveKanalzuständemitLücken dokumentiert,5Fremd-PUBLISHED-ZuständealsBeobachtung. Derselbe18sMasterund6UTMEntwürfe,kanonischeMusikhashund7SKUgebundenerA–G-Entwurfweitergeführt,keinRender/neuerPost. Tagesreportswiederverwendet,24Aufgaben/Historie/KaufWatchbeendeterhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+          "readAt": "2026-11-15T18:28:10Z"
         }
       ],
       "taskCount": 24,
@@ -59797,5 +60014,183 @@
     ],
     "nativePublicConfirmed": true,
     "claudeReceipt": "unknown"
+  },
+  "run243": {
+    "at": "2026-11-15T18:28:10Z",
+    "localRun": "19:00 Europe/Zurich",
+    "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
+    "scope": {
+      "newMetricDefinitions": 0,
+      "newMetricDataCalls": 0,
+      "newKlaviyoReports": 0,
+      "newOrderQueries": 0,
+      "successfulMetricoolHoldUpdates": 4,
+      "postCreates": 0,
+      "newSchedules": 0,
+      "ownPublications": 0,
+      "ownShopifyWrites": 0,
+      "ownMerchantWrites": 0,
+      "paidRenders": 0,
+      "uploads": 0,
+      "customersOrReviewersContacted": 0,
+      "automationFrequencyChanges": 0
+    },
+    "planner": {
+      "objects": 46,
+      "providerRows": 56,
+      "activeProviderRows": 45,
+      "gaps": {
+        "instagram": [],
+        "facebook": [],
+        "tiktok": [],
+        "pinterest": [],
+        "threads": [
+          "2026-11-15"
+        ],
+        "youtube": [
+          "2026-11-15",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ]
+      },
+      "draftObjects": 10,
+      "observedPublishedProviderStates": 5
+    },
+    "holds": [
+      {
+        "uuid": "4156060813550767248",
+        "previousId": 428862920,
+        "currentId": 429127242,
+        "network": "instagram",
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "targetAutoPublish": false,
+        "providerStates": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "coreAndTargetFieldsPreserved": true,
+        "changedTopLevelKeys": [
+          "id",
+          "creationDate",
+          "autoPublish",
+          "draft",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "previousId": 428862993,
+        "currentId": 429127259,
+        "network": "facebook",
+        "publicationDate": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "targetAutoPublish": "not_returned",
+        "providerStates": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "coreAndTargetFieldsPreserved": true,
+        "changedTopLevelKeys": [
+          "id",
+          "creationDate",
+          "autoPublish",
+          "draft",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "previousId": 428863060,
+        "currentId": 429127272,
+        "network": "tiktok",
+        "publicationDate": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "targetAutoPublish": "not_returned",
+        "providerStates": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "coreAndTargetFieldsPreserved": true,
+        "changedTopLevelKeys": [
+          "id",
+          "creationDate",
+          "autoPublish",
+          "draft",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "previousId": 428863123,
+        "currentId": 429127286,
+        "network": "youtube",
+        "publicationDate": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "targetAutoPublish": "not_returned",
+        "providerStates": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "madeForKids": false,
+        "coreAndTargetFieldsPreserved": true,
+        "changedTopLevelKeys": [
+          "id",
+          "creationDate",
+          "autoPublish",
+          "draft",
+          "instagramData"
+        ]
+      }
+    ],
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "professionalMasterReady": false,
+    "productSelectionProposal": "draft_for_review",
+    "musicRepoHashConfirmed": true,
+    "consolidatedDayTable": "dropship/codex-handoff-20261018/ABENDPAKET-20261115-R243.md",
+    "receiptState": "unknown_no_new_receipt"
   }
 }

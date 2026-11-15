@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "recordType": "safety_hold_checkpoint_not_publication_ledger",
+  "atUTC": "2026-11-15T18:20:07Z",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "brandId": 6227837,
+  "productId": "gid://shopify/Product/15521256604033",
+  "actualFilmVariantId": null,
+  "plannedReferenceVariantId": "gid://shopify/ProductVariant/68122445283719",
+  "mediaSHA256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+  "professionalMasterApproved": false,
+  "priorRecord": {
+    "path": "dropship/codex-handoff-20261018/register/draft-luxe_sternenprojektor_master_20261018-r176.json",
+    "gitBlobSha": "ca4e2c3f644ef48be0b82994bb9abd101ec3b10b",
+    "historyPreserved": true,
+    "modified": false
+  },
+  "channels": [
+    {
+      "uuid": "4156060813550767248",
+      "previousId": 428862920,
+      "currentId": 429127242,
+      "network": "instagram",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "targetAutoPublish": false,
+      "providerStates": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ],
+      "coreAndTargetFieldsPreserved": true,
+      "changedTopLevelKeys": [
+        "id",
+        "creationDate",
+        "autoPublish",
+        "draft",
+        "instagramData"
+      ],
+      "originalCreationDate": {
+        "dateTime": "2026-11-15T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "currentCreationDate": {
+        "dateTime": "2026-11-15T19:07:00",
+        "timezone": "Europe/Zurich"
+      }
+    },
+    {
+      "uuid": "6680239273933357186",
+      "previousId": 428862993,
+      "currentId": 429127259,
+      "network": "facebook",
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "targetAutoPublish": "not_returned",
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ],
+      "coreAndTargetFieldsPreserved": true,
+      "changedTopLevelKeys": [
+        "id",
+        "creationDate",
+        "autoPublish",
+        "draft",
+        "instagramData"
+      ],
+      "originalCreationDate": {
+        "dateTime": "2026-11-15T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "currentCreationDate": {
+        "dateTime": "2026-11-15T19:07:00",
+        "timezone": "Europe/Zurich"
+      }
+    },
+    {
+      "uuid": "3614365779669041576",
+      "previousId": 428863060,
+      "currentId": 429127272,
+      "network": "tiktok",
+      "publicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "targetAutoPublish": "not_returned",
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ],
+      "coreAndTargetFieldsPreserved": true,
+      "changedTopLevelKeys": [
+        "id",
+        "creationDate",
+        "autoPublish",
+        "draft",
+        "instagramData"
+      ],
+      "originalCreationDate": {
+        "dateTime": "2026-11-15T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "currentCreationDate": {
+        "dateTime": "2026-11-15T19:07:00",
+        "timezone": "Europe/Zurich"
+      }
+    },
+    {
+      "uuid": "-7647174116509334899",
+      "previousId": 428863123,
+      "currentId": 429127286,
+      "network": "youtube",
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "draft": true,
+      "autoPublish": false,
+      "targetAutoPublish": "not_returned",
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ],
+      "madeForKids": false,
+      "coreAndTargetFieldsPreserved": true,
+      "changedTopLevelKeys": [
+        "id",
+        "creationDate",
+        "autoPublish",
+        "draft",
+        "instagramData"
+      ],
+      "originalCreationDate": {
+        "dateTime": "2026-11-15T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "currentCreationDate": {
+        "dateTime": "2026-11-15T19:07:00",
+        "timezone": "Europe/Zurich"
+      }
+    }
+  ],
+  "writeAudit": {
+    "successfulUpdateCalls": 4,
+    "postCreateCalls": 0,
+    "validationRejectionsBeforeMutation": 1,
+    "afterValidationExactOriginalReadbackUnchanged": true,
+    "correctedRequestOmittedOnlyUnlistedNetworkSettings": true,
+    "blindRetries": 0
+  },
+  "reactivationOrigin": "unknown; no permanent deployed protection claimed",
+  "initializesPublicationHistory": false,
+  "scopeLimit": "Preserve known four drafts only; not a new approved master or empty historical ledger."
+}

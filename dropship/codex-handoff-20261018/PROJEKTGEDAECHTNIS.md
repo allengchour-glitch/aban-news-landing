@@ -1,3 +1,30 @@
+# R243 – Abendlauf: vier Master-Sperren wiederhergestellt, Wochenplan und Tagesstand – 15.11.2026
+
+**Vier tatsächliche Metricool-Updates:** Die geschützten R176-Masterobjekte waren erneut draft=false/globalautoPublish=true. Alle vier aktuellen MP4-URLs frisch geladen und bytegleich mit dem weiterhin nicht freigegebenen technischen18s/25fps-Reviewexport fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a gefunden. Nach frischer Shop-/Marken-/Kanalprüfung und explizitem Diff wurden dieselben UUIDs wieder **draft=true/globalautoPublish=false** gesetzt und einzeln zurückgelesen:
+
+- Instagram4156060813550767248:428862920→429127242,16.11.19:00Europe/Zurich.
+- Facebook6680239273933357186:428862993→429127259,16.11.19:00.
+- TikTok3614365779669041576:428863060→429127272,17.11.19:00.
+- YouTube-7647174116509334899:428863123→429127286,19.11.19:00; madeForKids=false erhalten.
+
+Texte/Medien/Publikationsdatum/Provider/Zielkanaleinstellungen bleiben erhalten. Metricool erneuerte numerischeIDs und creationDate; stabileUUIDs sind der Beleg. Zielkanal-Autopublish ist beiInstagram ausdrücklichfalse, bei den anderen Zielobjekten nicht geliefert; globaleSperre/Entwurf jeweils bestätigt. Ursache der erneuten Aktivierung unbekannt, kein dauerhafter produktiver Publisher-Schutz behauptet.
+
+Der ersteIG-Aufruf wurde INVALID_ARGUMENT vor Mutation abgewiesen, weil die gelesene Vorlage twitterData ohne Twitter-Provider enthielt. Frische exakte UUID-Gegenprobe bestätigte vollständige Unverändertheit. Erst danach providerfremde Requestfelder weggelassen und vier korrigierte Updates geschrieben. Keine blinden Retries, keine neuen Posts, Kopien, Termine oder eigenen Veröffentlichungen. [Haltebeleg](register/hold-luxe_sternenprojektor_master_20261018-r243.json) ergänzt den frisch gelesenen vorhandenenR176-Entwurfsbeleg; keine Publikationshistorie initialisiert oder zurückgesetzt.
+
+**Planung15.–22.11. bis ganzer22.11.:**46Objekte/56Kanalzustände,45 aktive Kanalzustände,10Entwurfsobjekte. Instagram/Facebook/TikTok/Pinterest technisch an allen acht lokalen Daten belegt. Threads-Lücke15.11.; YouTube nur16./17.11.aktiv, Lücken15./18./19./20./21./22.11. Entwürfe zählen nicht. Fünf vorhandenePUBLISHED-Kanalzustände beobachtet (IG2/FB2/TT1), keine eigenenR243-Publikationen. KeinFAILED/aktivesüberfälligesPENDING im Ausschnitt. Keine exakten aktivenMedien-URL-Doppel; vollständige historische Eindeutigkeit nicht bewiesen und keine Doppelposts auf Verdacht gelöscht. Technische Planung beweist keine pauschalen Medienrechte.
+
+**Masterfortschritt:** Derselbe luxe_sternenprojektor_master_20261018, aktuelleA-Referenz68122445283719/CJSN139239101AZ/CHF34.90, Bildhash5fa8b110…9612, ACTIVE, Tags/Guard undöffentlicheKaufbarkeit geprüft; untracked/CONTINUE ist keineLagergarantie. AktuellerShopifyOriginalclip als960×540/27.96s/READY-Dateiverweis bestätigt. KanonischeWAV direktausaktuellemRepository wiederhashgleich a7674ec…16688. TatsächlicherSoundFont/Input undLizenz-/Copyright-/WAV-Buildbindung sowie kommerzielle Film-/Musikrechte, physischeA-/Motivbindung, PremiumTakes undEndabnahme bleiben offen. Kristall-Korrekturpfad nicht verfügbar. Kein Render oder Upload. Einen präzisen18s/30fps/540Frame-Schnittbrief und sechs Kanalentwürfe/UTMs fortgeführt; Bio-/Board-Prüfung bleibt vor neuen Posts nötig. YouTube madeForKids=false ist bekannt, nicht erneut als unbekannt dargestellt.
+
+**Verkaufsentwurf:** Den R234-Projektortext konkret weitergeführt: aktueller Live-Voll-Lieferumfang mischt Varianten. SiebenCJ-SKUs heute frisch gebunden; zwei exakt abgegrenzte Varianten-/Packlistenblöcke und eine klareA–G-Auswahl vorbereitet. Kein Produktwrite in diesem Lauf, kein Price-/Options-/Bestands-/Flow-/Rabattwrite. Die sechs R242-Seiten bleiben der letzte bestätigte Live-Copy-Fortschritt, nicht nochmals als neue Umsetzung zählen.
+
+Tageskennzahlen undKlaviyo ausR22808.–14.11. wiederverwendet; keine neuen Definitionen/Daten-/Flow-/GSC-/Funnel-/Bestellreports. Fehlende Tage bleiben unbekannt. Klaviyo-Morgenstand Vse76a/Welcome/Post-Purchase draft, RecoveryXEGbTBlive; CHF/USD getrennt. Kauf-Watch beendet. Der bereits vorbereitete Capture-Erfolgssatz bleibt der eine vorhandeneKlaviyo-Verbesserungspunkt, keine Flowaktivierung oder erneute Freigabe derselben genehmigtenWebsiteänderung.
+
+Frisch geprüftes Theme214040805767 weiterhinUNPUBLISHED,213991391623MAIN; ursprünglicheSieben-Dateien-Freigabe erhalten, zusätzlicheR239-Versandrechendiffs separat offen. Projektgedächtnis-Skill unter dem geprüftenMainpfad404 und weiteren lokalenPfaden nicht auffindbar; Core4 undHistorien vollständig fortgesetzt, kein Connectorfehlen daraus abgeleitet. Keine Reviewer-/Kunden-/Lieferantenansprache, andere Marke, neue Automation/Frequenz, DNS-/Budget-/Shop-Einstellung oder kostenpflichtigenRenders. Claude-Empfang unbekannt.
+
+[Abendpaket und konsolidierter Tagesstand](ABENDPAKET-20261115-R243.md) · [Belege](ABENDBELEGE-20261115-R243.json) · [Schnittbrief](MASTER-SCHNITTBRIEF-20261115-R243.md) · [Verkaufsentwurf](PROJEKTOR-AUSWAHL-ENTWURF-20261115-R243.html).
+
+[LUXESTYLE_R243_20261115]
+
 # R242 – Produktdetails und Auswahlhilfe für sechs Seiten live verbessert – 15.11.2026
 
 **Konkreter Fortschritt:** Nach der neuen ausdrücklichen Anweisung «die anderen produkten sollen auch detailiert beschrieben werden, auswahl info mehr?» wurden vier Konsolen und zwei Leuchten nach frischer SKU-/Varianten-/Quellengegenprobe live verbessert. Jeweils nur **descriptionHtml und seo.description** geändert. Sechs serielle Writes mit userErrors=[], native Vollrücklesungen und sechs öffentliche HTML-/JSON-Gegenproben bestätigen den Stand. Keine Wiederholung unklarer Writes.

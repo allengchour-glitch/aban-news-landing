@@ -2827,3 +2827,30 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.md) · [Belege](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json).
 
+
+### R243 – Abendlauf19:00: Qualitätssperren, Wochenplan und Verkaufsentwurf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Wiederverwendung | Core4 Revision242, Tagesblock, Shop und Metricool samt sechs Kanälen frisch geprüft. | Identitäten passen. Morgen-Kennzahlen/Klaviyo wiederverwendet; keine neuen Reports oder Kauf-Watch. |
+| Planung / Auslieferung |15.–22.11. in kleinen Fenstern und nach den Writes erneut gelesen. |46Objekte/56Kanalzustände/45aktive Zustände. Tägliche technischeIG/FB/TT/Pin-Abdeckung; Threads15.11.undYT15./18.–22.11.offen. Fünf bestehendePUBLISHED-Zustände beobachtet, keine eigene Publikation. |
+| Vier Qualitätssperren / live | Vier reaktivierte technischeMaster-UUIDs, Dateihash und fehlende Freigaben gegengeprüft; nach einem nachweislich mutationslosen Validierungsfehler vier passende Updates ausgeführt. | DieselbenUUIDs, neueIDs429127242/429127259/429127272/429127286; draft=true/globalautoPublish=false frisch bestätigt. Inhalte/Medien/Zeiten/Zielkanaldaten erhalten, creationDateerneuert. Keine Ersatzposts. |
+| Master / Musik | EchteA-Referenz undShopifyOriginalquelle geprüft, aktuelleRepo-WAV hashgebunden, Quellenindex und präzisen18s-Schnittbrief samt6Kanalentwürfen fortgeführt. | Kein professionellerMaster/Render/Upload. Film-/Musikrechte, SF2-Buildbindung und physischeA-/Motivabnahme offen. Kristallpfad nicht verfügbar. |
+| Auswahl / Verkaufsentwurf | SiebenProjektor-SKUs frisch anCJ gebunden; zwei Live-Textblöcke zu Varianten/Packliste exakt abgegrenzt. | KonkreterA–G-Entwurf zur Abnahme, kein Produkt-/Preis-/Options-/Flowwrite. R242-Livearbeiten nicht als neue Umsetzung gezählt. |
+
+### Konsolidierter Tagesstand15.11.2026 nach dem Abendlauf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Produktdaten / Auswahl | Shirt und Milchshaker sachlich korrigiert; zwei Leuchten richtig eingeordnet; später vier Konsolen und zwei Leuchten ausführlicher beschrieben. | Native und öffentliche Prüfungen belegt. R242: sechs Seiten und SEO-Texte live,40 Varianten/48 Medien geschützt. Übriger Katalog offen. |
+| Suche / Verkaufsgrundlagen | Cargo-Kollektion und Kleid-SEO verbessert; einen kleinen GSC-Report und einmal den Sitzungsfunnel gelesen. | Öffentliche Änderungen bestätigt. GSC nur Teilmessung; Checkout-Sitzungen sind kein Zahlungs- oder Wirkungsbeleg. |
+| Merchant | Zwei bestätigte verwaiste Kinderuhr-Angebote entfernt; Nagellackbilder7/11 nach Freigabe geändert und genehmigte Angebote geprüft. | Gezielte Rücklesungen bestätigt. Die gemeldeten18Dashboard-Gruppen nicht vollständig erfasst; AUTOFEED-Writer, übrige Bildrechte und Richtlinienfälle offen. |
+| Website / Theme | Kauf-/Popup-Hinweise und16 Bildkarten im Entwurf umgesetzt und geprüft. | Ziel214040805767 weiterhinUNPUBLISHED. Frühere Freigabe erhalten; Publish-Werkzeug lehnt Zieltyp ab. Zwei zusätzliche Versand-Rechendiffs ausR239 weiter offen. |
+| Gestaltungseditor | Echte mobile Bedienung geprüft; lokalen Fokus-Fix auf aktuelle642-Basis übertragen und Review-PR3145 vorbereitet. | Lokale Gegenproben bestanden; als Entwurfs-PR vorbereitet, keine eigene produktive Bereitstellung. Merge-/Produktivstand heute Abend nicht erneut geprüft. |
+| Social / heutiger Abendlauf | Sieben-Tage-Plan samt Plattformzuständen frisch gelesen; vier wieder aktivierte technische Masterobjekte nach Dateihash-/Rechtegegenprobe wieder gesperrt. | Vier eigene Updates bestätigt: draft=true/globalautoPublish=false, stabileUUIDs. Null neue Posts/Publikationen. Fünf bestehende PUBLISHED-Kanalzustände beobachtet, nicht als eigene Veröffentlichung gezählt. |
+| Content / Musik | Dasselbe18s-Masterbriefing mit zwei Hooks, sechs Kanalentwürfen/UTMs und Quellenindex fortgeführt; kanonische WAV direkt im Repo hashgeprüft. | Skript/Entwürfe. TechnischeMP4 vorhanden, professionellerMaster/physischeA-Zuordnung/kommerzielleRechte undSoundFont-Buildbindung offen. KeinRender oder Upload. |
+| Klaviyo / Tagesgrenzen | Morgenreport nach Placed-Order-DiscoveryW7XTVD wiederverwendet; Abbruch-/Welcome-/Capture-Befunde eingeordnet. | Vse76a/Welcome/Post-Purchase morgensdraft, RecoveryXEGbTBlive. Abendlauf keine neuen Reports/Flows/Sends. CHF undUSD getrennt, Kauf-Watch beendet. |
+| Gedächtnis / Grenzen | Bestehende24Aufgaben/Historie, heutigen Tagesblock und neue Belege fortgeschrieben. | Revision243 mit SHA-Gegenprobe/Rücklesung; keine zusätzliche Automation, Budget-, DNS-, Rabatt- oder Shop-Einstellungsänderung. Claude-Empfang unbekannt. |
+
+[Abendpaket](ABENDPAKET-20261115-R243.md) · [Belege](ABENDBELEGE-20261115-R243.json).
+
