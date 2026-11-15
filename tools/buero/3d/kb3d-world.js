@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-17).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-18).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-17';
+  K.DESIGN_VERSION = 'campus-einheitlich-18';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -172,7 +172,10 @@
       rahmenB.t(wingX, 0, wingZ);
       gehaeuse(uc, BY, t + 0.04, BW + 0.42, BH + 0.42, 0.12, 0.14, '#82969a', 0, rahmenB);
       gehaeuse(uc, BY, t + 0.07, BW + 0.24, BH + 0.24, 0.1, 0.10, '#122b35', 0, rahmenB);
-      var caseMesh = stat(R.mesh(rahmenB)); caseMesh.roughness = 0.48; caseMesh.specular = 0.34;
+      var caseMesh = stat(R.mesh(rahmenB)); caseMesh.roughness = 0.32; caseMesh.specular = 0.45;
+      // Physische Bedienleiste; neutrale Bauteile statt erfundener Betriebsleuchten.
+      B.box(uc, BY - BH / 2 - 0.14, t + 0.13, 0.12, 0.035, 0.035, '#a7b8bd');
+      for (var v = 0; v < 7; v++) B.box(uc + 0.45 + v * 0.11, BY - BH / 2 - 0.14, t + 0.13, 0.045, 0.025, 0.035, '#28414a');
       B.box(uc, BY - BH / 2 - 0.2, t + 0.1, BW + 0.2, 0.045, 0.03, '#7ad6c4', 0.5);
       B.box(uc, BY + BH / 2 + 0.2, t + 0.1, BW + 0.2, 0.03, 0.03, '#7ad6c4', 0.35);
       var tx = R.texture(T.liveboard(null), { mip: false });
@@ -452,7 +455,9 @@
     var zentralB = new K.Builder();
     gehaeuse(0, CY, CZ - 0.02, CW + 0.62, CH + 0.62, 0.28, 0.22, '#9db0ab', 0, zentralB);
     gehaeuse(0, CY, CZ + 0.02, CW + 0.30, CH + 0.30, 0.26, 0.15, '#132f3a', 0, zentralB);
-    var zentralCase = stat(R.mesh(zentralB)); zentralCase.roughness = 0.48; zentralCase.specular = 0.34;
+    var zentralCase = stat(R.mesh(zentralB)); zentralCase.roughness = 0.32; zentralCase.specular = 0.45;
+    B.box(0, CY - CH / 2 - 0.14, CZ + 0.16, 0.16, 0.045, 0.035, '#a7b8bd');
+    [-1, 1].forEach(function(s){for(var v=0;v<9;v++)B.box(s*(0.65+v*0.14), CY-CH/2-0.14, CZ+0.16, 0.055, 0.025, 0.035, '#28414a');});
     B.box(0, CY + CH / 2 + 0.22, CZ, CW + 0.10, 0.035, 0.3, '#cce8de', 0.4);
     var ovTex = R.texture(T.liveboardUebersicht(null), { mip: false });
     var ovM = stat(quad({ x: 0, y: CY, z: CZ + 0.16, w: CW, h: CH, emi: 1, tex: ovTex }));

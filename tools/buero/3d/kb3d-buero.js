@@ -149,7 +149,7 @@
         if (!monitorMode) savedCamera = Object.assign({}, cam.g);
         monitorMode = true; monitorName = z.name;
         if (cfg.onMonitorMode) cfg.onMonitorMode(true, z.name);
-        cam.go({ tx: z.c[0], ty: z.c[1], tz: z.c[2], dist: monitorDistance(made.aspect || 1.33, z), az: 0, el: z.name === 'Zentral' ? 0.08 : 0.22 }, !!cfg.reduced);
+        cam.go({ tx: z.c[0], ty: z.c[1], tz: z.c[2], dist: monitorDistance(made.aspect || 1.33, z), az: 0, el: 0 }, !!cfg.reduced);
         made.dirty = true;
       }
       function monitorFolge(r) {
