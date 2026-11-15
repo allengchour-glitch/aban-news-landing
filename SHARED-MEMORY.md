@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Büro-Schnellbuttons für28 fertige Aufträge ·15.11.2026
+
+Jetzt erledigen oben und27 weitere Direktlinks aufklappbar. Vorhandene vollständige Prompts/Grenzen sowie Auswahl/Kopie erhalten, keine automatische Ausführung behauptet.390/1440px geprüft,43 Dashboardbauprüfungen grün; vollständiger Claude-Upload bleibt bei Claude. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Büro-Direktbuttons und zugehöriger PR.
+
 ## Codex: Stripe-Kaufwege gelesen, Preisdriftprüfung ergänzt ·15.11.2026
 
 53 veröffentlichte DE/EN-Produkte stimmen mit gelesenen aktiven Abannews-Stripe-Links, Slugs, Rückkehrseiten und Preisen/Währungen überein; kein Kauf ausgelöst. Alter lokaler Selbsttest erkannte falsche Währung nicht. Korrigiert, fünf Regressionstests grün und im bestehenden Quality-Schritt ergänzt. Audit-Katalogprodukt ohne Veröffentlichung bleibt offen, nichts aktiviert. Private Quelldaten ausserhalb Git. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Kaufweg-Abgleich und zugehöriger PR. Finanzielle Wirkung nicht gemessen.

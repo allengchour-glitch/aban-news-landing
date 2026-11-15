@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Büro: kurze Direktbuttons für alle bestehenden Arbeitsaufträge ·15.11.2026
+
+Besitzer wollte den kurzen Erledigungsauftrag direkt im Büro, anschliessend auch alle anderen Aufgaben anpassen/erstellen. Auf isoliertem Branch von main39d54c6. Oben neuer Schnellbutton Jetzt erledigen für bestehende Tagesrunde; Weitere Aufgaben erledigen klappt27 direkte Chatlinks auf. Alle28 Aufträge nutzen unveränderte vollständige Prompts aus dem vorhandenen Auftragskatalog samt Grenzen, keine neuen Arbeitsrollen, keine Promptverkürzung mit verlorenem Umfang. Link öffnet ChatGPT mit vorausgefülltem Auftrag, muss ggf. dort gesendet werden; keine Ausführung durch Webseitenklick behauptet. Bestehende Auswahl-/Kopierfunktion erhalten.
+
+GEMESSEN: Browserprüfung390/1440px mit simuliertem Dashboard-Host und blockiertem Netz, jeder Direktlink gegen exakten Katalogprompt geprüft, alle27 Zusatzlinks sichtbar/korrekt, vorhandene28 Auswahlbuttons erhalten. Vollständiger Drei-Seiten-Dashboardbau43 Prüfungen grün und als Dokument unter250000Byte. Keine neue Automation, keine Kontoaktion. Echte CI/öffentliche Bereitstellung im zugehörigen PR prüfen. Claude-Artefakt weiterhin nur vollständigen Bau aus dashboard/bauen.py hochladen, nie rohe seite.html; Upload bleibt Claude zugeordnet und unbestätigt. Nutzen: weniger Klicks für vorhandene Arbeitsaufträge, finanzielle Wirkung nicht gemessen.
+
 ## Kaufweg-Abgleich: 53 Stripe-Angebote geprüft, Preisdrift wird erkannt ·15.11.2026
 
 Von maine38fa0c auf codex/shop-preisabgleich. Regeln, Übergaben, offene PRs geprüft. Abannews-Stripe-Konto lesend bestätigt; vollständige Liste70 Zahlungslinks ohne weitere Ergebnisseite gelesen, inklusive Positionen. Private Quelldaten und Abgleich ausschliesslich /workspace/private-kaufweg-20261115, keine Rohdaten ins Repository.31 deutsche und22 englische veröffentlichte Produkte stimmen mit aktiven Links, Metadaten-Slug, Rückkehrseite samt CHECKOUT_SESSION_ID sowie Katalogpreis/Währung überein. Das zusätzliche DE-Katalogprodukt ki-sichtbarkeit-audit fehlt im veröffentlichten Export; nicht aktiviert oder mit fremdem Link ersetzt. Das belegt gelesene Zuordnungen, keinen erfolgreichen Kauf/geschützten Download.
