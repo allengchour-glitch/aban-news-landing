@@ -184,6 +184,23 @@ def autofeed_zaehlen(offer_ids, gesperrt):
             "beispiele_gesperrt": sorted(auto_pid & gesperrt)[:5]}
 
 
+def leistung_je_herkunft(zeilen, gesperrt):
+    """Klicks und Einblendungen je Angebotsformat; beim Autofeed getrennt nach vom Schaufenster genommen oder nicht."""
+    summe = {}
+    for x in zeilen:
+        pv = x.get("productPerformanceView") or {}
+        off = pv.get("offerId", "")
+        art = herkunft(off)
+        if art != "shopify-app":
+            art += "-gesperrt" if produkt_id(off) in gesperrt else ""
+        s = summe.setdefault(art, {"klicks": 0, "einblendungen": 0, "angebote_mit_klick": 0})
+        k = int(pv.get("clicks") or 0)
+        s["klicks"] += k
+        s["einblendungen"] += int(pv.get("impressions") or 0)
+        s["angebote_mit_klick"] += k > 0
+    return summe
+
+
 def autofeed(h, name):
     """Nur lesen: Autofeed-Schalter, Umfang des Autofeeds gegen das Schaufenster und Bildproben (ohne Konto-Nummer)."""
     r = requests.get(f"https://merchantapi.googleapis.com/accounts/v1/{name}/autofeedSettings", headers=h, timeout=30)
@@ -202,6 +219,12 @@ def autofeed(h, name):
     zeilen = suchen(h, name, "SELECT id, offer_id FROM product_view")
     z = autofeed_zaehlen([(x.get("productView") or {}).get("offerId", "") for x in zeilen], gesperrt)
     print("AUTOFEED " + json.dumps(z, ensure_ascii=False))
+    # Bringt der Autofeed Besucher? Klicks und Einblendungen der letzten 28 Tage je Herkunft (vor einem Abschalten)
+    bis = time.strftime("%Y-%m-%d", time.gmtime(time.time() - 86400))
+    von = time.strftime("%Y-%m-%d", time.gmtime(time.time() - 28 * 86400))
+    leistung = suchen(h, name, f"SELECT offer_id, clicks, impressions FROM product_performance_view "
+                               f"WHERE date BETWEEN '{von}' AND '{bis}'")
+    print("LEISTUNG " + json.dumps(leistung_je_herkunft(leistung, gesperrt), ensure_ascii=False) + f" (Zeitraum {von} bis {bis})")
     liste = ",".join("'" + p + "'" for p in BILDPROBEN)
     for x in suchen(h, name, f"SELECT id, offer_id, item_issues FROM product_view WHERE offer_id IN ({liste})"):
         pv = x.get("productView") or {}

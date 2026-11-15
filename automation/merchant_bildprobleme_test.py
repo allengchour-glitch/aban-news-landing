@@ -58,5 +58,18 @@ gleich((z["nur_autofeed"], z["nur_autofeed_gesperrt"]), (1, 1), "nur im Autofeed
 gleich(z["beispiele_gesperrt"], ["1"], "Beispiele")
 gleich(m.autofeed_zaehlen([], set())["nur_autofeed"], 0, "leere Eingabe")
 
+# Leistung je Herkunft: Autofeed getrennt nach gesperrt (Schaufenster) und frei
+l = m.leistung_je_herkunft([
+    {"productPerformanceView": {"offerId": "shopify_ZZ_5_50", "clicks": "2", "impressions": "40"}},
+    {"productPerformanceView": {"offerId": "1_sku-a", "clicks": "1", "impressions": "10"}},
+    {"productPerformanceView": {"offerId": "1_sku-b", "impressions": "5"}},
+    {"productPerformanceView": {"offerId": "9_sku-c", "clicks": "0", "impressions": "3"}},
+    {"productPerformanceView": {"offerId": "777", "clicks": "1"}},
+], {"1"})
+gleich(l["shopify-app"], {"klicks": 2, "einblendungen": 40, "angebote_mit_klick": 1}, "Leistung App")
+gleich(l["autofeed-produkt-sku-gesperrt"], {"klicks": 1, "einblendungen": 15, "angebote_mit_klick": 1}, "Leistung Autofeed gesperrt")
+gleich(l["autofeed-produkt-sku"], {"klicks": 0, "einblendungen": 3, "angebote_mit_klick": 0}, "Leistung Autofeed frei")
+gleich(l["autofeed-nummer"]["klicks"], 1, "Leistung reine Nummer")
+
 print(f"{'OK' if not fehler else 'FEHLGESCHLAGEN'}: {fehler} Fehler")
 sys.exit(1 if fehler else 0)
