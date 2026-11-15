@@ -1,0 +1,13 @@
+"""Spiegelt nur einen nachweisbaren Variantenpreis. AUTOFEED-Ablehnung wird nicht umgangen."""
+import os,json,pathlib,base64,urllib.parse
+import requests
+from google.oauth2 import service_account
+from google.auth.transport.requests import Request
+out=pathlib.Path('merchant-price-pilot');out.mkdir(exist_ok=True);p=json.load(open('dropship/merchant-fix-1511/audit/price-pilot.json'));u=urllib.parse.urlparse(p['link']);assert u.hostname=='luxestyle.ch';r=requests.get('https://luxestyle.ch'+u.path+'.js',params={'currency':'CHF'},timeout=30);r.raise_for_status();prod=r.json();variants=[v for v in prod['variants'] if str(v['id'])==p['variant_id']];assert len(variants)==1;v=variants[0];assert isinstance(v['price'],int) and v['price']>0
+c=service_account.Credentials.from_service_account_info(json.loads(os.environ['GCP_SA_KEY']),scopes=['https://www.googleapis.com/auth/content']);c.refresh(Request());h={'Authorization':'Bearer '+c.token};r=requests.get('https://merchantapi.googleapis.com/accounts/v1/accounts?pageSize=50',headers=h,timeout=30);r.raise_for_status();a=r.json()['accounts'];assert len(a)==1;account=a[0]['name'];pid=p['report_id'];parts=pid.split('~');pid='~'.join(parts[1:]) if len(parts)==4 else pid;enc=base64.urlsafe_b64encode(pid.encode()).decode().rstrip('=');r=requests.get(f'https://merchantapi.googleapis.com/products/v1/{account}/products/{enc}',headers=h,timeout=30);r.raise_for_status();before=r.json();attributes=before.get('productAttributes',{});source=before['dataSource'];r=requests.get(f'https://merchantapi.googleapis.com/datasources/v1/{source}',headers=h,timeout=30);r.raise_for_status();ds=r.json();assert ds.get('input')=='AUTOFEED' and ds.get('displayName')=='luxestyle.ch';result={**p,'price_centimes':v['price'],'sku':v['sku'],'state':'Trockenlauf bestätigt'}
+if attributes.get('price'):result['state']='Preis inzwischen vorhanden; nicht ändern'
+elif os.environ.get('LIVE')=='1':
+ body={'productAttributes':{'price':{'amountMicros':str(v['price']*10000),'currencyCode':'CHF'}}};r=requests.patch(f'https://merchantapi.googleapis.com/products/v1/{account}/productInputs/{enc}',params={'dataSource':source},headers=h,json=body,timeout=30);result['http']=r.status_code
+ if r.ok:result['state']='Variantenpreis angenommen';result['ack']=(r.json().get('productAttributes') or {}).get('price')
+ else:result['state']='Datenquellentyp abgelehnt';result['error']=r.json().get('error',{}).get('message','').replace(account,'<konto>').replace(account.split('/')[-1],'<konto>')
+(out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=1));print(result['state'],'HTTP',result.get('http','-'));print('Keine weiteren Angebote verändert.')

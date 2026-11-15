@@ -1,0 +1,42 @@
+name: Merchant-Preisquelle gezielt prüfen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/price_pilot.py
+      - .github/workflows/merchant-price-pilot-1511.yml
+      - dropship/merchant-fix-1511/PRICE-MODUS
+permissions:
+  contents: read
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/price_pilot.py
+            dropship/merchant-fix-1511/audit/price-pilot.json
+            dropship/merchant-fix-1511/PRICE-MODUS
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests google-auth
+      - name: Eine konkrete Preisquelle prüfen
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/PRICE-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 python automation/merchant-fix-1511/price_pilot.py ;;
+            pilot) LIVE=1 python automation/merchant-fix-1511/price_pilot.py ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-price-pilot
+          path: merchant-price-pilot/
+          retention-days: 30
