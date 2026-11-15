@@ -1,0 +1,7 @@
+offer_id,issue,product_id,variant_id,source,state,evidence,next_allowed_step
+10283932347178265394,price,15523176841601,56210226708865,10678939025 / override 10795447118,CORRECTED_AND_FREE_LISTINGS_APPROVED_CH_LI,56.90 CHF verified,Recheck exact override against current variant next existing run
+10301937935043325310,availability; landing_page_pending_crawl,15493244191105,56075316363649,10678939025 / override 10795447118,AVAILABILITY_CORRECTED_GOOGLE_CRAWL_PENDING,IN_STOCK means publicly orderable,Read same offer status later; no repeat write or new source
+10073494240929787683,price,15497440854401,unknown,10678939025,BLOCKED_EXACT_VARIANT_BINDING,18 variants; CHF20.90/24.90/26.90,Bind actual Merchant offer/image to exact variant first; no parent-min price
+10784371818943082880,price,15496378417537,unknown,10678939025,BLOCKED_EXACT_VARIANT_BINDING,20 variants; CHF14.90/15.90/16.90,Bind actual Merchant offer/image to exact variant first; no parent-min price
+shopify_ZZ_15502258831745_68193799242119,landing_page_error,15502258831745,68193799242119,10667445201,GOOGLE_CRAWL_UNRESOLVED,HTTP200; ACTIVE; exact public variant CHF127.90; OG parentprice101.90 observed,Google crawl/review cause unresolved; no fake URL fix; OG discrepancy independently review
+shopify_ZZ_15448882938241_55878125060481,image overlay,15448882938241,55878125060481,10667445201,RIGHTS_AND_PRODUCT_IMAGE_FIDELITY_OPEN,R240 exact candidate image diff prepared,Need specific commercial/image/fidelity evidence including sensor/ports; nail approval does not cover this image

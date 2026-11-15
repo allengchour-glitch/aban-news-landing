@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 246,
-  "updatedAt": "2026-11-15T19:41:50Z",
+  "revision": 247,
+  "updatedAt": "2026-11-15T20:19:28Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14031,20 +14031,20 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r240_autofeed_price_and_availability_confirmed_writer_blocked_garage_image_diff_prepared",
+      "state": "r247_two_autofeed_attributes_corrected_primer_approved_tapestry_crawl_pending",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "CURRENT_THREE_OFFER_PAYLOADS_TWO_NATIVE_PRODUCTS_PUBLIC_SCHEMA_COUNTERCHECK_NO_WRITE",
-      "lastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg. R240: Primer CHF56.90 frisch erneut nativ und öffentlich bestätigt. Neues konkretes Wandteppich-Offer10301937935043325310 bindet einzige Variante56075316363649/CHF15.90; öffentlich InStock und kaufbar, Google availability fehlt und pending_crawl. Beide AUTOFEED10678939025; kein unterstützter Writer. Vier Nagellackbildfixes weiterhin approved; Modell6 nur NOT_IMPACTED-Grundpreishinweis. API-Garagentorbilddiff vollständig vorbereitet, Rechte/Produktabnahme offen;0Writes. UI18Gesamtumfang weiterhin unbekannt.",
-      "nextAllowedStep": "Genau die belegten AUTOFEED-Fälle über einen legitimen Editor oder nachweislich unterstützten bestehenden Override korrigieren bzw. echte Google-Neupruefung ermöglichen; kein Quellen-/Regel-/Angebots-Neuanlegen auf Verdacht. Für API-Garagentor nur nach exakter Rechte-/Produkt-/Sensor-/Portabnahme den vorbereiteten image_link-Diff frisch gegenprüfen, schreiben und dasselbe Offer samt Schutzattributen/Status zurücklesen. Keine erneute Nagellack-Bildänderung. Keine Unit-Pricing-Menge erfinden. Weitere 18-Gruppen-Diagnose braucht vollständige aktuelle UI-/Exportbelege; historischer vorhandener Export bleibt erhalten.",
+      "belegArt": "LIVE_SUPPLEMENTAL_SOURCE_LINK_AND_EXACT_ATTRIBUTES_INDEPENDENTLY_READ_BACK",
+      "lastEvidence": "R247: Neue unterstützte Supplemental-API-Quelle10795447118 nach Quellenprüfung exakt anAUTOFEED10678939025 verknüpft und gezielt zurückgelesen. Nur bestehende de/CH-Angebote: Primer10283932347178265394/Variante56210226708865 erhält56.90CHF; frischeHYPD-RücklesungFREE_LISTINGSapprovedCHLI, Preisfehler weg, GrundpreishinweisNOT_IMPACTED. Wandteppich10301937935043325310/einzige56075316363649 erhältIN_STOCK; Attributfehler weg, landing_page_pending_crawl/pendingCHLI bleibt. Alle übrigen Attribute/customAttributes/IDs/Primärquelle erhalten. Zwei weitere Preisfälle nativ/öffentlich gegengeprüft, Offer-Variantenbindung unbekannt. Waage ACTIVE/HTTP200/exakteCHF127.90Variante kaufbar, Googlelanding_page_error bleibt. Keine0-Gesamtfehler oder vollständige18Gruppenauflösung.",
+      "nextAllowedStep": "Zuerst vorhandene Quelle10795447118 gezielt lesen; nicht erneut anlegen, weil ungezielte Quellenlisten gecacht sein können. Exakte imRegister benannteShopify-Varianten, Preise und Bestellbarkeit prüfen: festeOverrides können veralten, keine automatischeSynchronisation deployt. Nur entsprechendeSupplemental-Werte aktualisieren oder derenSupplemental-Eintrag entfernen; niemalsPrimärangebot löschen. Wandteppichstatus beim nächsten bestehendenLauf ohneRepeatWrite lesen. Malset/Schmuckbox erst nach echter Offer-/Bild-/Modellbindung an eine konkreteVariante korrigieren; keinEltern-Mindestpreis. WaagenGoogle-Crawlursache/OG-Preis gezielt abklären, keinidentischerLinkWrite. Garagentorbild nur nachexaktemRechte-/Produktbeleg.18UI-Gruppen weiter begrenzt und quellgebunden erfassen, keineTagesreportwiederholung.",
       "blockers": [
-        "Quelle10678939025 ist nach heutigem Profil AUTOFEED; kein unterstützter legitimer Writer oder vorhandener API-Override bestätigt.",
-        "Primer-Variantenbindung und56.90CHF geklärt; noch kein Google-Preiswrite oder bestätigter Fehlerabbau.",
-        "Malset-Elternangebot ohne eindeutige Einzelvariante; Schmuckbox-Varianten/Preise in R236 nicht geprüft.",
-        "Timeout/INVALID_ARGUMENT sind keine leeren Daten oder404. API-Kandidatenexistenz unbekannt.",
-        "Aktuelle vollständige18-Gruppen-Zählung und weitere historische Versand-/CSS-/Richtlinienbefunde bleiben separat offen.",
-        "R240: Wandteppich zusätzlich landing_page_pending_crawl; öffentlicher HTTP200-/InStock-Beleg ist kein echter Google-Neucrawl.",
-        "R240: Garagentor-Kandidatenbild hat keine bestätigten kommerziellen Rechte oder Produkt-/Sensor-/Portabnahme; nur Diff vorbereitet."
+        "Wandteppich10301937935043325310: availability korrigiert, Googlelanding_page_pending_crawl/pending_processing weiterhin offen; HTTP200 ist kein Google-Neucrawlbeleg.",
+        "Malset10073494240929787683 mit18Varianten/CHF20.90–26.90 und Schmuckbox10784371818943082880 mit20Varianten/CHF14.90–16.90 ohne eindeutigeEinzelvariantenbindung; keine geratenenPreise.",
+        "WaageAPI-Offer shopify_ZZ_15502258831745_68193799242119: Googlelanding_page_error trotz aktuellerHTTP200-/ACTIVE-/Kaufbarkeitsgegenprobe; OG101.90 vs gewählte127.90 beobachtet, Ursacheunbelegt.",
+        "Garagentorbildrechte/Produkt-/Sensor-/Portabnahme offen; bisherigeNagellackfreigaben decken dasBild nicht.",
+        "Vollständige aktuelle18UI-Gruppen und weitere Richtlinien-/Mengen-/Konformitätsfälle offen; kein0-Fehlerbeleg.",
+        "FesteSupplemental-Werte können nachShopify-Änderung veralten. Keine dauerhafteShopify-Synchronisation deployt; genaueKontrolle im nächsten bestehendenLauf nötig.",
+        "Erster Quellenantrag wurde wegenUnexpectedfeedLabel abgelehnt und korrigiert. KombinierterWindsor-Read timeout ist unknown; bestätigteÄnderungen unabhängigHYPD gelesen, keineBlindRetries."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -14640,6 +14640,30 @@
         {
           "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json",
           "readAt": "2026-11-15T16:41:29Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json",
+          "gitBlobSha": "84654d0309a7174d2cfd1ea20ab7fa59b28df8f5",
+          "sha256": "2c3f46c0351997c0c34c5db104f88bc3a66f6f2227bbd7bccb6d1f858e7d72ee",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json",
+          "gitBlobSha": "11d28fdb3b3a11931ebbb35bde5621c1fb3225da",
+          "sha256": "4366fce66189e30709e91eb2b922072e5b0ba5c3e9ab31a0ae406c7d875b3555",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-LIVE-20261115-R247.md",
+          "gitBlobSha": "d279cf7100004eaae500d97934ba9f6c80361c42",
+          "sha256": "84bd91d4b042fabe482d4e3c0fef2a2875856b72b269e2cd64c0a382170b0e53",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R247.csv",
+          "gitBlobSha": "1dd99beed4d485716fd090f92d510d2632eb454f",
+          "sha256": "b07ebbf623a5ec09ee04cbe1db342804d20c1924a34bb4c9f1f9ac1c59ac5d0c",
+          "readAt": "2026-11-15T20:19:28Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15610,6 +15634,22 @@
           "previousLastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg.",
           "previousNextAllowedStep": "Für genau das Primer-Angebot ist56.90CHF belegter Preis; legitimen tatsächlichen AUTOFEED-Editor oder bestätigte zulässige bestehende API-Übersteuerung klären. Vor Write aktuelle Source/Variante/Preis/Diff erneut prüfen, danach exakt dasselbe Google-Angebot und Status zurücklesen. Malset/Schmuckbox ohne Einzelvariantenbindung nicht mit einem geratenen Preis füllen. Keine Source/defaultRule auf Verdacht. Vorhandenen Export nicht erneut anfordern.",
           "source": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json"
+        },
+        {
+          "revision": 246,
+          "state": "r240_autofeed_price_and_availability_confirmed_writer_blocked_garage_image_diff_prepared",
+          "lastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg. R240: Primer CHF56.90 frisch erneut nativ und öffentlich bestätigt. Neues konkretes Wandteppich-Offer10301937935043325310 bindet einzige Variante56075316363649/CHF15.90; öffentlich InStock und kaufbar, Google availability fehlt und pending_crawl. Beide AUTOFEED10678939025; kein unterstützter Writer. Vier Nagellackbildfixes weiterhin approved; Modell6 nur NOT_IMPACTED-Grundpreishinweis. API-Garagentorbilddiff vollständig vorbereitet, Rechte/Produktabnahme offen;0Writes. UI18Gesamtumfang weiterhin unbekannt.",
+          "blockers": [
+            "Quelle10678939025 ist nach heutigem Profil AUTOFEED; kein unterstützter legitimer Writer oder vorhandener API-Override bestätigt.",
+            "Primer-Variantenbindung und56.90CHF geklärt; noch kein Google-Preiswrite oder bestätigter Fehlerabbau.",
+            "Malset-Elternangebot ohne eindeutige Einzelvariante; Schmuckbox-Varianten/Preise in R236 nicht geprüft.",
+            "Timeout/INVALID_ARGUMENT sind keine leeren Daten oder404. API-Kandidatenexistenz unbekannt.",
+            "Aktuelle vollständige18-Gruppen-Zählung und weitere historische Versand-/CSS-/Richtlinienbefunde bleiben separat offen.",
+            "R240: Wandteppich zusätzlich landing_page_pending_crawl; öffentlicher HTTP200-/InStock-Beleg ist kein echter Google-Neucrawl.",
+            "R240: Garagentor-Kandidatenbild hat keine bestätigten kommerziellen Rechte oder Produkt-/Sensor-/Portabnahme; nur Diff vorbereitet."
+          ],
+          "nextAllowedStep": "Genau die belegten AUTOFEED-Fälle über einen legitimen Editor oder nachweislich unterstützten bestehenden Override korrigieren bzw. echte Google-Neupruefung ermöglichen; kein Quellen-/Regel-/Angebots-Neuanlegen auf Verdacht. Für API-Garagentor nur nach exakter Rechte-/Produkt-/Sensor-/Portabnahme den vorbereiteten image_link-Diff frisch gegenprüfen, schreiben und dasselbe Offer samt Schutzattributen/Status zurücklesen. Keine erneute Nagellack-Bildänderung. Keine Unit-Pricing-Menge erfinden. Weitere 18-Gruppen-Diagnose braucht vollständige aktuelle UI-/Exportbelege; historischer vorhandener Export bleibt erhalten.",
+          "retainedAsHistoricalAt": "2026-11-15T20:19:28Z"
         }
       ],
       "resolvedBlockers": [
@@ -16934,6 +16974,41 @@
         "writes": 0,
         "ui18GroupsFullyEnumerated": false,
         "garageWriteReady": false
+      },
+      "run247": {
+        "at": "2026-11-15T20:19:28Z",
+        "source": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json",
+        "request": "weiter bis 0 fehler",
+        "supplementalSourceId": "10795447118",
+        "primarySourceId": "10678939025",
+        "acceptedMutations": 3,
+        "rejectedSourceCreationRequests": 1,
+        "newPrimarySources": 0,
+        "newOffers": 0,
+        "exactAttributesCorrected": 2,
+        "primer": {
+          "offerId": "10283932347178265394",
+          "variantId": "56210226708865",
+          "price": "56.90",
+          "currency": "CHF",
+          "state": "FREE_LISTINGS_APPROVED_CH_LI",
+          "notice": "unit pricing measure NOT_IMPACTED"
+        },
+        "tapestry": {
+          "offerId": "10301937935043325310",
+          "variantId": "56075316363649",
+          "availability": "IN_STOCK",
+          "state": "GOOGLE_LANDING_PAGE_CRAWL_PENDING"
+        },
+        "overrideRegistry": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json",
+        "staleOverrideRisk": "Fixed values can become stale after Shopify changes. Fresh exact variant check next existing run; update/remove supplemental record only. No sync deployed.",
+        "ui18GroupsFullyCaptured": false,
+        "zeroErrorsVerified": false,
+        "shopifyWrites": 0,
+        "socialWrites": 0,
+        "dailyReportsRepeated": false,
+        "purchaseWatchEnded": true,
+        "receiptState": "Claude Code receipt unknown"
       }
     },
     {
@@ -33326,6 +33401,40 @@
           "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-TEXTE-20261115-R246.json",
           "gitBlobSha": "28bd7bd2f692bc2846f24d511c2077d61907f009",
           "readAt": "2026-11-15T19:41:50Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "Claude Code receipt unknown"
+    },
+    {
+      "revision": 247,
+      "at": "2026-11-15T20:19:28Z",
+      "actor": "Codex",
+      "summary": "Zwei bisher blockierteAUTOFEED-Pflichtattribute über geprüfteSupplemental-Quelle live korrigiert. PrimerCHF56.90/FREE_LISTINGSCHLIapproved; WandteppichIN_STOCK/Crawlpending. Schutzvergleichbestanden, keine weiterenShop-/Socialwerte verändert. VierweitereFälle gezielt geklärt, Register gegenveraltendeOverrides angelegt. Kein0-Gesamtfehlerbeleg.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json",
+          "gitBlobSha": "84654d0309a7174d2cfd1ea20ab7fa59b28df8f5",
+          "sha256": "2c3f46c0351997c0c34c5db104f88bc3a66f6f2227bbd7bccb6d1f858e7d72ee",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json",
+          "gitBlobSha": "11d28fdb3b3a11931ebbb35bde5621c1fb3225da",
+          "sha256": "4366fce66189e30709e91eb2b922072e5b0ba5c3e9ab31a0ae406c7d875b3555",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-LIVE-20261115-R247.md",
+          "gitBlobSha": "d279cf7100004eaae500d97934ba9f6c80361c42",
+          "sha256": "84bd91d4b042fabe482d4e3c0fef2a2875856b72b269e2cd64c0a382170b0e53",
+          "readAt": "2026-11-15T20:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R247.csv",
+          "gitBlobSha": "1dd99beed4d485716fd090f92d510d2632eb454f",
+          "sha256": "b07ebbf623a5ec09ee04cbe1db342804d20c1924a34bb4c9f1f9ac1c59ac5d0c",
+          "readAt": "2026-11-15T20:19:28Z"
         }
       ],
       "taskCount": 24,
@@ -60569,6 +60678,41 @@
     "publicAndMobileVerified": true,
     "cartCheckoutSubmissionIssued": false,
     "themeWrites": 0,
+    "dailyReportsRepeated": false,
+    "purchaseWatchEnded": true,
+    "receiptState": "Claude Code receipt unknown"
+  },
+  "run247": {
+    "at": "2026-11-15T20:19:28Z",
+    "source": "dropship/codex-handoff-20261018/MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json",
+    "request": "weiter bis 0 fehler",
+    "supplementalSourceId": "10795447118",
+    "primarySourceId": "10678939025",
+    "acceptedMutations": 3,
+    "rejectedSourceCreationRequests": 1,
+    "newPrimarySources": 0,
+    "newOffers": 0,
+    "exactAttributesCorrected": 2,
+    "primer": {
+      "offerId": "10283932347178265394",
+      "variantId": "56210226708865",
+      "price": "56.90",
+      "currency": "CHF",
+      "state": "FREE_LISTINGS_APPROVED_CH_LI",
+      "notice": "unit pricing measure NOT_IMPACTED"
+    },
+    "tapestry": {
+      "offerId": "10301937935043325310",
+      "variantId": "56075316363649",
+      "availability": "IN_STOCK",
+      "state": "GOOGLE_LANDING_PAGE_CRAWL_PENDING"
+    },
+    "overrideRegistry": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json",
+    "staleOverrideRisk": "Fixed values can become stale after Shopify changes. Fresh exact variant check next existing run; update/remove supplemental record only. No sync deployed.",
+    "ui18GroupsFullyCaptured": false,
+    "zeroErrorsVerified": false,
+    "shopifyWrites": 0,
+    "socialWrites": 0,
     "dailyReportsRepeated": false,
     "purchaseWatchEnded": true,
     "receiptState": "Claude Code receipt unknown"

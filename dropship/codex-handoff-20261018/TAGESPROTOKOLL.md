@@ -2899,3 +2899,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](VARIANTENAUSWAHL-LIVE-20261115-R246.md) · [Belege](VARIANTENAUSWAHL-BELEGE-20261115-R246.json).
 
 [LUXESTYLE_R246_20261115]
+
+### R247 – Zwei Merchant-Pflichtattribute live korrigiert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Konten / Quellen | Shopify, Metricool mit sechs Kanälen und Merchant-Konto frisch verifiziert; vier Quellen gelesen, aktuellen Supplemental-Writervertrag geprüft. | Identitäten passend. Kein blindes Quellen-/Angebots-Neuanlegen. |
+| Ergänzungsquelle / live | Nach eindeutig abgelehntem Feed-Label-Antrag Gegenliste gelesen; korrigierte Quelle10795447118 ohne Sprachfilter erstellt und Link zu10678939025 gezielt bestätigt. | Eine neue Supplemental-API-Quelle, keine neue Primärquelle/Angebote. Ungezielte Liste noch alt; gezielter Read bestätigt Existenz. Keine Wiederholung. |
+| Pflichtattribute / live | Exakten Primerpreis56.90CHF und Wandteppich-Bestellbarkeit nativ/öffentlich geprüft; nur price/currency bzw. availability an bestehenden de/CH-Angeboten ergänzt. | Beide Writes angenommen und unabhängig verarbeitet zurückgelesen. Primer FREE_LISTINGS approved CH/LI; Wandteppich IN_STOCK, Crawl weiterhin pending. |
+| Schutz / Gegenprobe | Nach Writes dieselben IDs, Primärquelle und alle nicht betroffenen Attribute/customAttributes verglichen; günstigen unabhängigen Offline-Review ausgeführt. | Alle Schutzvergleiche bestanden. Keine Ausschlüsse oder Shopwerte geändert. NOT_IMPACTED-Grundpreishinweis bleibt. |
+| Restarbeit / Blocker | Zwei weitere fehlende Preise und einen Waagen-Landingpage-Fehler gezielt geprüft. | Malset18/Schmuckbox20Varianten ohne eindeutige Offer-Bindung, keine geratenen Preise. Waage HTTP200/ACTIVE/kaufbar, Google-Crawlfehler ungeklärt. Kein0-Gesamtfehlerbeleg; Garagentorbildrechte weiter offen. |
+| Gedächtnis / Folgelauf | Vorhandene Historie erhalten, bestätigtes Override-Register und sechs konkrete Kontroll-/Restfälle ergänzt. | Feste Werte können veralten; im nächsten bestehenden Lauf exakt gegen Shopify prüfen, nur Overrides korrigieren/entfernen. Windsor-Read timeout nicht als leer gewertet. Keine neue Automation/Reports/Kauf-Watch, Claude-Empfang unbekannt. |
+
+[Live-Bericht](MERCHANT-PFLICHTATTRIBUTE-LIVE-20261115-R247.md) · [Nachweise](MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json).
+
+[LUXESTYLE_R247_20261115]

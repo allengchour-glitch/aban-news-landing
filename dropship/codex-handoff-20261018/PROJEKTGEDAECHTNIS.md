@@ -1,3 +1,20 @@
+# R247 – Merchant-Pflichtattribute live korrigiert – 15.11.2026
+
+Auf **«weiter bis 0 fehler»** zwei belegte Pflichtattribute bestehender Angebote korrigiert. **Primer10283932347178265394: CHF56.90 bestätigt und FREE_LISTINGS approved CH/LI. Wandteppich10301937935043325310: IN_STOCK bestätigt, Google-Crawl weiterhin pending.** Keine0-Gesamtfehler-Aussage; die vollständigen18UI-Gruppen sind nicht neu vollständig erfasst.
+
+Neue bestätigte **API-Ergänzungsquelle10795447118** verknüpft mit AUTOFEED10678939025. Keine neue Primärquelle/Angebote. Ein erster Quellenantrag mit optionalem feedLabel wurde eindeutig abgelehnt; erst nach Gegenprüfung korrigiert ohne Sprache/Feed-Filter angelegt. Tatsächliche Einträge nur exakte bestehende Offer-IDs de/CH. **Quelle nicht erneut anlegen:** ungezielte Quellenliste war noch alt, gezielter Quellen-Read bestätigte Bestand und Link. Drei erfolgreiche Mutationen: Quelle plus zwei einzelne Attribute. Unabhängige HYPD-Readbacks und Schutzvergleich bestanden; alle übrigen Attribute, IDs, Primärquellen und Ausschlüsse erhalten. Kombinierter Windsor-Read timeout, keine0/Leerinterpretation und keine Write-Wiederholung.
+
+**Folgelauf:** vorhandene Quelle10795447118 gezielt lesen. Die festen Overrides können nach Shopify-Änderungen veralten; exakte Varianten56210226708865/CHF56.90 und56075316363649/Bestellbarkeit frisch gegenprüfen, nur jeweiligen Override korrigieren oder aus Supplemental entfernen. Keine automatische Shopify-Preissynchronisation deployt, keine neue Automation. Wandteppich-rueckhol bleibt Social-Sperre.
+
+**Rest:** Malset18Varianten/CHF20.90–26.90 und Schmuckbox20Varianten/CHF14.90–16.90 ohne eindeutige Einzelvariantenbindung; kein beliebiger Mindestpreis. Waagen-Link HTTP200 und exakte Variante CHF127.90/kaufbar, Google landing_page_error weiter offen; OG-Parentpreis101.90 ist ein Befund, keine bewiesene Ursache. Garagentorbildrechte/Produktabnahme und weitere Richtlinien-/Mengenbelege offen. Primer-Grundpreismenge bleibt NOT_IMPACTED, keine ml/g erfunden. Produktdetail-/Variantenarbeit R245/R246 bleibt Priorität1 und erhalten.
+
+[Live-Beleg](MERCHANT-PFLICHTATTRIBUTE-LIVE-20261115-R247.md) · [Nachweise](MERCHANT-PFLICHTATTRIBUTE-BELEGE-20261115-R247.json) · [Override-Register](MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R247.json) · [Sechs Kontroll-/Restfälle](MERCHANT-RESTARBEIT-20261115-R247.csv).
+Keine Shopify-/Bild-/Theme-/Social-/Flow-/Versand-/Budget-/Rabatt-/DNS-Änderung oder Tagesreportwiederholung. Kauf-Watch bleibt beendet; günstige Modelle für gezielte unabhängige Prüfung. Claude-Code-Empfang unbekannt.
+
+[LUXESTYLE_R247_20261115]
+
+---
+
 # R246 – Produktdetails direkt bei der Variantenauswahl live – 15.11.2026
 
 Die ausdrückliche Vorgabe **«prodikt details, auch bei variantwn auswahl»** ist an vier bestehenden Produkten live umgesetzt. Wandleuchte: «Lichtausführung» und «Gehäusefarbe» getrennt. Deckenleuchte: «Lichtfunktion», «Stufenlos dimmbar» und «3 Lichtfarben».620erKonsole: deutsche Ausführungen und Stückzahlen, B4 direkt mit «Umfang prüfen». Projektor: «Modell und Ausstattung», USB bei A/B/C/G,18Musikstücke bei F und fehlende Fernbedienung bei G direkt im Namen.

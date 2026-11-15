@@ -1,0 +1,3691 @@
+{
+  "run": "R247",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "timezone": "Europe/Zurich"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "allSixIdentityPassed": true,
+      "timezone": "Europe/Zurich"
+    },
+    "merchant": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH"
+    }
+  },
+  "sourceBefore": {
+    "status": "done",
+    "data": [
+      {
+        "data_source_id": "10667445201",
+        "data_source_name": "accounts/5797470070/dataSources/10667445201",
+        "data_source_display_name": "Shopify App API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "API",
+        "data_source_content_language": "de",
+        "data_source_feed_label": "CHF_99383214465",
+        "data_source_countries": "CH, LI",
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10668966945",
+        "data_source_name": "accounts/5797470070/dataSources/10668966945",
+        "data_source_display_name": "Third Party Promotions",
+        "data_source_type": "promotionDataSource",
+        "data_source_input": null,
+        "data_source_content_language": "en",
+        "data_source_feed_label": null,
+        "data_source_countries": null,
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10678939025",
+        "data_source_name": "accounts/5797470070/dataSources/10678939025",
+        "data_source_display_name": "luxestyle.ch",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "AUTOFEED",
+        "data_source_content_language": null,
+        "data_source_feed_label": null,
+        "data_source_countries": "CH, LI",
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10762220830",
+        "data_source_name": "accounts/5797470070/dataSources/10762220830",
+        "data_source_display_name": "Shopify App API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "API",
+        "data_source_content_language": "fr",
+        "data_source_feed_label": "CHF_99383214465",
+        "data_source_countries": "CH",
+        "data_source_linked_primary_sources": null
+      }
+    ],
+    "total_rows": 4
+  },
+  "createRejected": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error calling tool 'execute_action': Google Merchant Center rejected the request: [supplementalProductDataSource.feedLabel] Unexpected field: supplementalProductDataSource.feedLabel"
+      }
+    ],
+    "structuredContent": {
+      "error": "Error calling tool 'execute_action': Google Merchant Center rejected the request: [supplementalProductDataSource.feedLabel] Unexpected field: supplementalProductDataSource.feedLabel"
+    },
+    "isError": false
+  },
+  "sourceAfterRejected": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"done\",\"data\":[{\"data_source_id\":\"10667445201\",\"data_source_name\":\"accounts/5797470070/dataSources/10667445201\",\"data_source_display_name\":\"Shopify App API\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"API\",\"data_source_content_language\":\"de\",\"data_source_feed_label\":\"CHF_99383214465\",\"data_source_countries\":\"CH, LI\",\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10668966945\",\"data_source_name\":\"accounts/5797470070/dataSources/10668966945\",\"data_source_display_name\":\"Third Party Promotions\",\"data_source_type\":\"promotionDataSource\",\"data_source_input\":null,\"data_source_content_language\":\"en\",\"data_source_feed_label\":null,\"data_source_countries\":null,\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10678939025\",\"data_source_name\":\"accounts/5797470070/dataSources/10678939025\",\"data_source_display_name\":\"luxestyle.ch\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"AUTOFEED\",\"data_source_content_language\":null,\"data_source_feed_label\":null,\"data_source_countries\":\"CH, LI\",\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10762220830\",\"data_source_name\":\"accounts/5797470070/dataSources/10762220830\",\"data_source_display_name\":\"Shopify App API\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"API\",\"data_source_content_language\":\"fr\",\"data_source_feed_label\":\"CHF_99383214465\",\"data_source_countries\":\"CH\",\"data_source_linked_primary_sources\":null}],\"total_rows\":4}"
+      }
+    ],
+    "structuredContent": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_id": "10667445201",
+          "data_source_name": "accounts/5797470070/dataSources/10667445201",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "de",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10668966945",
+          "data_source_name": "accounts/5797470070/dataSources/10668966945",
+          "data_source_display_name": "Third Party Promotions",
+          "data_source_type": "promotionDataSource",
+          "data_source_input": null,
+          "data_source_content_language": "en",
+          "data_source_feed_label": null,
+          "data_source_countries": null,
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10678939025",
+          "data_source_name": "accounts/5797470070/dataSources/10678939025",
+          "data_source_display_name": "luxestyle.ch",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "AUTOFEED",
+          "data_source_content_language": null,
+          "data_source_feed_label": null,
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10762220830",
+          "data_source_name": "accounts/5797470070/dataSources/10762220830",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "fr",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH",
+          "data_source_linked_primary_sources": null
+        }
+      ],
+      "total_rows": 4
+    },
+    "isError": false
+  },
+  "createAccepted": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Created supplemental API data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Linked it to primary data source accounts/5797470070/dataSources/10678939025 (luxestyle.ch). Change products of that data source with update_product."
+      }
+    ],
+    "structuredContent": {
+      "result": "Created supplemental API data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Linked it to primary data source accounts/5797470070/dataSources/10678939025 (luxestyle.ch). Change products of that data source with update_product."
+    },
+    "isError": false
+  },
+  "unfilteredListingAfterCreate": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"done\",\"data\":[{\"data_source_id\":\"10667445201\",\"data_source_name\":\"accounts/5797470070/dataSources/10667445201\",\"data_source_display_name\":\"Shopify App API\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"API\",\"data_source_content_language\":\"de\",\"data_source_feed_label\":\"CHF_99383214465\",\"data_source_countries\":\"CH, LI\",\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10668966945\",\"data_source_name\":\"accounts/5797470070/dataSources/10668966945\",\"data_source_display_name\":\"Third Party Promotions\",\"data_source_type\":\"promotionDataSource\",\"data_source_input\":null,\"data_source_content_language\":\"en\",\"data_source_feed_label\":null,\"data_source_countries\":null,\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10678939025\",\"data_source_name\":\"accounts/5797470070/dataSources/10678939025\",\"data_source_display_name\":\"luxestyle.ch\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"AUTOFEED\",\"data_source_content_language\":null,\"data_source_feed_label\":null,\"data_source_countries\":\"CH, LI\",\"data_source_linked_primary_sources\":null},{\"data_source_id\":\"10762220830\",\"data_source_name\":\"accounts/5797470070/dataSources/10762220830\",\"data_source_display_name\":\"Shopify App API\",\"data_source_type\":\"primaryProductDataSource\",\"data_source_input\":\"API\",\"data_source_content_language\":\"fr\",\"data_source_feed_label\":\"CHF_99383214465\",\"data_source_countries\":\"CH\",\"data_source_linked_primary_sources\":null}],\"total_rows\":4}"
+      }
+    ],
+    "structuredContent": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_id": "10667445201",
+          "data_source_name": "accounts/5797470070/dataSources/10667445201",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "de",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10668966945",
+          "data_source_name": "accounts/5797470070/dataSources/10668966945",
+          "data_source_display_name": "Third Party Promotions",
+          "data_source_type": "promotionDataSource",
+          "data_source_input": null,
+          "data_source_content_language": "en",
+          "data_source_feed_label": null,
+          "data_source_countries": null,
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10678939025",
+          "data_source_name": "accounts/5797470070/dataSources/10678939025",
+          "data_source_display_name": "luxestyle.ch",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "AUTOFEED",
+          "data_source_content_language": null,
+          "data_source_feed_label": null,
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10762220830",
+          "data_source_name": "accounts/5797470070/dataSources/10762220830",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "fr",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH",
+          "data_source_linked_primary_sources": null
+        }
+      ],
+      "total_rows": 4
+    },
+    "isError": false
+  },
+  "confirmedTargetedSource": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"done\",\"data\":[{\"data_source_id\":\"10795447118\",\"data_source_name\":\"accounts/5797470070/dataSources/10795447118\",\"data_source_display_name\":\"LuxeStyle – AUTOFEED Pflichtattribute\",\"data_source_type\":\"supplementalProductDataSource\",\"data_source_input\":\"API\",\"data_source_content_language\":null,\"data_source_feed_label\":null,\"data_source_linked_primary_sources\":\"accounts/5797470070/dataSources/10678939025\"}],\"total_rows\":1}"
+      }
+    ],
+    "structuredContent": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_id": "10795447118",
+          "data_source_name": "accounts/5797470070/dataSources/10795447118",
+          "data_source_display_name": "LuxeStyle – AUTOFEED Pflichtattribute",
+          "data_source_type": "supplementalProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": null,
+          "data_source_feed_label": null,
+          "data_source_linked_primary_sources": "accounts/5797470070/dataSources/10678939025"
+        }
+      ],
+      "total_rows": 1
+    },
+    "isError": false
+  },
+  "priceWrite": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated price of product 10283932347178265394 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+      }
+    ],
+    "structuredContent": {
+      "result": "Updated price of product 10283932347178265394 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+    },
+    "isError": false
+  },
+  "availabilityWrite": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated availability of product 10301937935043325310 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+      }
+    ],
+    "structuredContent": {
+      "result": "Updated availability of product 10301937935043325310 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+    },
+    "isError": false
+  },
+  "slowWindsorReadback": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+      }
+    ],
+    "isError": true
+  },
+  "plan": {
+    "run": "R247",
+    "brand": "LuxeStyle CH",
+    "merchantAccount": "5797470070",
+    "authorization": "Aktuelle ausdrückliche Inhabervorgaben: Merchant-Fehler beheben und live; keine Rabatte/Budgets/Kanalausschlüsse ändern.",
+    "sourceBeforeCount": 4,
+    "sourceCreation": {
+      "display_name": "LuxeStyle – AUTOFEED Pflichtattribute",
+      "type": "supplemental",
+      "link_to_primary_data_source": "10678939025"
+    },
+    "changes": [
+      {
+        "offerId": "10283932347178265394",
+        "content_language": "de",
+        "feed_label": "CH",
+        "old": {
+          "price": null
+        },
+        "new": {
+          "price": "56.90",
+          "currency": "CHF"
+        },
+        "productId": "15523176841601",
+        "variantId": "56210226708865"
+      },
+      {
+        "offerId": "10301937935043325310",
+        "content_language": "de",
+        "feed_label": "CH",
+        "old": {
+          "availability": null
+        },
+        "new": {
+          "availability": "IN_STOCK"
+        },
+        "productId": "15493244191105",
+        "variantId": "56075316363649"
+      }
+    ],
+    "preserve": [
+      "Alle nicht gelieferten Attribute",
+      "Bestehende Primärquellen und Regelquellen laut Werkzeugvertrag",
+      "Shopping-/Social-Sperren",
+      "Shopify-Produktdaten, Preise und Bestände",
+      "Keine neue Primärquelle und keine neuen Angebote"
+    ],
+    "rollback": "Nur die Ergänzung dieses Angebots aus neuer supplemental-Quelle mit delete_product entfernen; Primärangebot bleibt erhalten. Kein Löschen aus Primärquelle.",
+    "monitoring": "Bei nächsten bestehenden Läufen vor Weiterverwendung aktuelle exakte Shopify-Variante/Preis/Kaufbarkeit gegenprüfen; bei Abweichung nur diese Ergänzung aktualisieren oder entfernen. Keine dauerhafte automatische Preis-Synchronisation behauptet; keine neue Automation.",
+    "unknown": [
+      "Google-Prüfdauer",
+      "Vollständige 18 UI-Fehlergruppen",
+      "physischer Lagerbestand"
+    ],
+    "attempts": [
+      {
+        "params": {
+          "display_name": "LuxeStyle – AUTOFEED Pflichtattribute de CH",
+          "type": "supplemental",
+          "content_language": "de",
+          "feed_label": "CH",
+          "link_to_primary_data_source": "10678939025"
+        },
+        "result": "REJECTED: supplementalProductDataSource.feedLabel Unexpected field; subsequent source list still 4, no intended source returned."
+      }
+    ],
+    "sourceRestriction": "Quelle ohne Sprache/Feed-Filter laut Vertrag; einzelne Einträge ausschliesslich exakt de/CH für zwei verifizierte bestehende Angebots-IDs.",
+    "supplementalSource": "10795447118",
+    "sourceLinkReadback": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_id": "10795447118",
+          "data_source_name": "accounts/5797470070/dataSources/10795447118",
+          "data_source_display_name": "LuxeStyle – AUTOFEED Pflichtattribute",
+          "data_source_type": "supplementalProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": null,
+          "data_source_feed_label": null,
+          "data_source_linked_primary_sources": "accounts/5797470070/dataSources/10678939025"
+        }
+      ],
+      "total_rows": 1
+    },
+    "writes": [
+      {
+        "params": {
+          "data_source": "10795447118",
+          "product_id": "10283932347178265394",
+          "content_language": "de",
+          "feed_label": "CH",
+          "price": "56.90",
+          "currency": "CHF"
+        },
+        "response": {
+          "result": "Updated price of product 10283932347178265394 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+        }
+      },
+      {
+        "params": {
+          "data_source": "10795447118",
+          "product_id": "10301937935043325310",
+          "content_language": "de",
+          "feed_label": "CH",
+          "availability": "IN_STOCK"
+        },
+        "response": {
+          "result": "Updated availability of product 10301937935043325310 (content_language de, feed_label CH) in data source accounts/5797470070/dataSources/10795447118 (LuxeStyle – AUTOFEED Pflichtattribute). Merchant Center shows the change after a few minutes."
+        }
+      }
+    ]
+  },
+  "before": {
+    "sourceBefore": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_id": "10667445201",
+          "data_source_name": "accounts/5797470070/dataSources/10667445201",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "de",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10668966945",
+          "data_source_name": "accounts/5797470070/dataSources/10668966945",
+          "data_source_display_name": "Third Party Promotions",
+          "data_source_type": "promotionDataSource",
+          "data_source_input": null,
+          "data_source_content_language": "en",
+          "data_source_feed_label": null,
+          "data_source_countries": null,
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10678939025",
+          "data_source_name": "accounts/5797470070/dataSources/10678939025",
+          "data_source_display_name": "luxestyle.ch",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "AUTOFEED",
+          "data_source_content_language": null,
+          "data_source_feed_label": null,
+          "data_source_countries": "CH, LI",
+          "data_source_linked_primary_sources": null
+        },
+        {
+          "data_source_id": "10762220830",
+          "data_source_name": "accounts/5797470070/dataSources/10762220830",
+          "data_source_display_name": "Shopify App API",
+          "data_source_type": "primaryProductDataSource",
+          "data_source_input": "API",
+          "data_source_content_language": "fr",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_countries": "CH",
+          "data_source_linked_primary_sources": null
+        }
+      ],
+      "total_rows": 4
+    },
+    "primerBefore": {
+      "shop_id": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CH~10283932347178265394",
+        "offerId": "10283932347178265394",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "dataSource": "accounts/5797470070/dataSources/10678939025",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "item_missing_required_attribute",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "price",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing product price",
+              "detail": "Add a price to the [price] attribute in your product data source",
+              "documentation": "https://support.google.com/merchants/answer/12158687",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-11-04T16:51:48.622003Z",
+          "lastUpdateDate": "2026-11-04T16:51:48.622003Z",
+          "googleExpirationDate": "2026-12-15T09:24:14Z"
+        },
+        "productAttributes": {
+          "title": "Primer & Sealer Set für Gelnägel | LuxeStyle CH",
+          "description": "Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel. Es enthält alles, was du für eine professionelle Maniküre zu Hause oder im Salon benötigst, einschliesslich verschiedener Unterlacke und Versiegelungen. Die Produkte sind einfach anzuwenden und für jeden Hauttyp geeignet, um ein optimales Ergebnis zu erzielen. Kreiere makellose Nägel, die beeindrucken und lange halten.Das zeichnet es aus\nVielfältige Auswahl an Unterlacken und Versiegelungen\nInklusive Primer und Sealer für optimale Haltbarkeit\nGeeignet für alle Hauttypen\nIdeal für Nagelstudios und den Heimgebrauch\nErmöglicht professionelle Nageldesigns\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+          "link": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+          "imageLink": "https://luxestyle.ch/cdn/shop/files/81b845d4-ccf7-4338-83af-1e5099e7a047.jpg?v=1788322123&width=1920",
+          "additionalImageLinks": [
+            "https://luxestyle.ch/cdn/shop/files/9a0f7371-ce27-4a1d-a06d-47f588f6639b.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/39d3f451-b87d-4f95-9e21-280b47cebfc1.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/3cdc8a4d-9ceb-4e78-80a9-bdcdcd9d5404.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/05cd3572-bab2-45fe-a530-8ee879080f8e.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/079b5f8e-f0ff-48bf-a5db-d1c974c7231d.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/9902d24f-3032-4322-a50f-e374c91c820a.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/1926daf6-4dc0-4ac0-82c9-3bee49b3f65e.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/eefa973a-3df6-4b95-9fcb-2257924f4c27.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/a7c8a516-582f-4f92-b2a1-d961dee660b9.jpg?v=1788322123&width=1920"
+          ],
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "itemGroupId": "15523176841601",
+          "shipping": [
+            {
+              "country": "CH",
+              "region": "",
+              "service": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "productTypes": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAyODM5MzIzNDcxNzgyNjUzOTQ",
+        "legacyLocal": false,
+        "customAttributes": []
+      }
+    },
+    "tapestryBefore": {
+      "shop_id": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CH~10301937935043325310",
+        "offerId": "10301937935043325310",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "dataSource": "accounts/5797470070/dataSources/10678939025",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_pending_crawl",
+              "severity": "DISAPPROVED",
+              "resolution": "pending_processing",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Pending online store check",
+              "detail": "One or more of your products have not yet been crawled",
+              "documentation": "https://support.google.com/merchants/answer/14987567",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ],
+              "attribute": ""
+            },
+            {
+              "code": "item_missing_required_attribute",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "availability",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing attribute: [availability]",
+              "detail": "One or more of your products is missing a required attribute from a group. For example, if you set your availability to preorder, you must also provide an availability date. Add the missing attribute [availability] to your product data so your products can show on Google",
+              "documentation": "https://support.google.com/merchants/answer/14916442",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-29T22:27:25.355848Z",
+          "lastUpdateDate": "2026-11-14T00:44:23.862068Z",
+          "googleExpirationDate": "2026-12-14T00:44:23.862068Z"
+        },
+        "productAttributes": {
+          "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+          "description": "Bohemian Elefanten Wandteppich bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+          "imageLink": "https://luxestyle.ch/cdn/shop/files/34267901635.jpg?v=1786360509",
+          "condition": "NEW",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "shipping": [
+            {
+              "country": "CH",
+              "region": "",
+              "service": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "additionalImageLinks": [],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "productTypes": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAzMDE5Mzc5MzUwNDMzMjUzMTA",
+        "legacyLocal": false,
+        "customAttributes": []
+      }
+    },
+    "nativeBefore": {
+      "primer": {
+        "id": "gid://shopify/Product/15523176841601",
+        "title": "Primer & Sealer Set für Gelnägel",
+        "handle": "primer-sealer-set-fur-gelnagel-711296",
+        "status": "ACTIVE",
+        "updatedAt": "2026-11-03T12:19:46Z",
+        "productType": "Nageldesign",
+        "vendor": "LuxeStyle",
+        "tags": [
+          "auswahl-nachgeruestet",
+          "beauty",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "maniküre",
+          "naegel",
+          "nagel",
+          "nageldesign",
+          "sort-nagellack-gel-lack"
+        ],
+        "descriptionHtml": "<p>Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel. Es enthält alles, was du für eine professionelle Maniküre zu Hause oder im Salon benötigst, einschliesslich verschiedener Unterlacke und Versiegelungen. Die Produkte sind einfach anzuwenden und für jeden Hauttyp geeignet, um ein optimales Ergebnis zu erzielen. Kreiere makellose Nägel, die beeindrucken und lange halten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Vielfältige Auswahl an Unterlacken und Versiegelungen</li>\n<li>Inklusive Primer und Sealer für optimale Haltbarkeit</li>\n<li>Geeignet für alle Hauttypen</li>\n<li>Ideal für Nagelstudios und den Heimgebrauch</li>\n<li>Ermöglicht professionelle Nageldesigns</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+        "seo": {
+          "title": "Primer & Sealer Set für Gelnägel | LuxeStyle CH",
+          "description": "Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel."
+        },
+        "onlineStoreUrl": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/hb-3-2-7-11",
+          "fullName": "Gesundheit & Schönheit > Körperpflege > Kosmetika > Nagelpflege > Nagellacke",
+          "isLeaf": true,
+          "isArchived": false
+        },
+        "options": [
+          {
+            "id": "gid://shopify/ProductOption/19609181585799",
+            "name": "Farbe",
+            "position": 1,
+            "values": [
+              "Weiss",
+              "Schwarz",
+              "Rot",
+              "Rosa",
+              "Blau",
+              "Gelb",
+              "Rosenrot",
+              "Orange",
+              "Hellblau",
+              "Hellrosa",
+              "Grün",
+              "Hellgrün",
+              "Lila",
+              "Fluoreszierendes Grün",
+              "Helllila",
+              "Himmelblau"
+            ],
+            "linkedMetafield": null,
+            "optionValues": [
+              {
+                "id": "gid://shopify/ProductOptionValue/58520827953543",
+                "name": "Weiss",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520827986311",
+                "name": "Schwarz",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828019079",
+                "name": "Rot",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828051847",
+                "name": "Rosa",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828084615",
+                "name": "Blau",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828117383",
+                "name": "Gelb",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828150151",
+                "name": "Rosenrot",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828182919",
+                "name": "Orange",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828215687",
+                "name": "Hellblau",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828248455",
+                "name": "Hellrosa",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828281223",
+                "name": "Grün",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828313991",
+                "name": "Hellgrün",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828346759",
+                "name": "Lila",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828379527",
+                "name": "Fluoreszierendes Grün",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828412295",
+                "name": "Helllila",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/58520828445063",
+                "name": "Himmelblau",
+                "hasVariants": true
+              }
+            ]
+          }
+        ],
+        "gp": {
+          "id": "gid://shopify/Metafield/203271228916097",
+          "namespace": "mm-google-shopping",
+          "key": "google_product_category",
+          "type": "single_line_text_field",
+          "value": "Health & Beauty > Personal Care > Cosmetics > Nail Care > Nail Polishes"
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/56210226708865",
+              "title": "Weiss",
+              "sku": "CJMJ173930601AZ",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Weiss"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55569168728449",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239554439",
+              "title": "Schwarz",
+              "sku": "CJMJ173930602BY",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Schwarz"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169018759",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239587207",
+              "title": "Rot",
+              "sku": "CJMJ173930603CX",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Rot"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169051527",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239619975",
+              "title": "Rosa",
+              "sku": "CJMJ173930604DW",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Rosa"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169084295",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239652743",
+              "title": "Blau",
+              "sku": "CJMJ173930605EV",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Blau"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169117063",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239685511",
+              "title": "Gelb",
+              "sku": "CJMJ173930606FU",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Gelb"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169149831",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239718279",
+              "title": "Rosenrot",
+              "sku": "CJMJ173930607GT",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Rosenrot"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169182599",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239751047",
+              "title": "Orange",
+              "sku": "CJMJ173930608HS",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Orange"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169215367",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239783815",
+              "title": "Hellblau",
+              "sku": "CJMJ173930609IR",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Hellblau"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169248135",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239816583",
+              "title": "Hellrosa",
+              "sku": "CJMJ173930610JQ",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Hellrosa"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169280903",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239849351",
+              "title": "Grün",
+              "sku": "CJMJ173930611KP",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Grün"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169313671",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239882119",
+              "title": "Hellgrün",
+              "sku": "CJMJ173930612LO",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "65.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Hellgrün"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169346439",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239914887",
+              "title": "Lila",
+              "sku": "CJMJ173930613MN",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "65.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Lila"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169379207",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239947655",
+              "title": "Fluoreszierendes Grün",
+              "sku": "CJMJ173930614NM",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "65.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Fluoreszierendes Grün"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169411975",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749239980423",
+              "title": "Helllila",
+              "sku": "CJMJ173930615OL",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Helllila"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169444743",
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67749240013191",
+              "title": "Himmelblau",
+              "sku": "CJMJ173930616PK",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "56.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Farbe",
+                  "value": "Himmelblau"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/69734169477511",
+                "tracked": false
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        },
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/70758683738497",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cdc8a4d-9ceb-4e78-80a9-bdcdcd9d5404.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 2 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683672961",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1076efc8-5bd4-4101-b72f-5cf350601b85.jpg?v=1788322122",
+                "altText": "Primer & Sealer Set für Gelnägel | LuxeStyle",
+                "width": 1080,
+                "height": 1080
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683771265",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e80b57c0-d079-4efd-bb78-06ab78208630.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 3 | LuxeStyle",
+                "width": 1080,
+                "height": 1080
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683804033",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7c8a516-582f-4f92-b2a1-d961dee660b9.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 4 | LuxeStyle",
+                "width": 1080,
+                "height": 1080
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683836801",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c77dd372-f416-4960-806e-665e809b790f.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 5 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683869569",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68a5dd3d-97e0-4fbd-b031-4f4dc324ef56.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 6 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683902337",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/861c3f58-f003-4ccc-901c-10d8a9d83dc6.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 7 | LuxeStyle",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683935105",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1926daf6-4dc0-4ac0-82c9-3bee49b3f65e.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 8 | LuxeStyle",
+                "width": 1080,
+                "height": 1080
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758683967873",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ed3f538f-d565-4767-8bb3-1d3a58032cc4.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 9 | LuxeStyle",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684000641",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9a0f7371-ce27-4a1d-a06d-47f588f6639b.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 10 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684033409",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9902d24f-3032-4322-a50f-e374c91c820a.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 11 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684066177",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5144f324-1478-4354-b88f-00ed952f2fd1.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 12 | LuxeStyle",
+                "width": 1080,
+                "height": 1080
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684098945",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/102a71b8-6893-459b-811f-84403bd02749.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 13 | LuxeStyle",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684131713",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eefa973a-3df6-4b95-9fcb-2257924f4c27.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 14 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684164481",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39d3f451-b87d-4f95-9e21-280b47cebfc1.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 15 | LuxeStyle",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684197249",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/079b5f8e-f0ff-48bf-a5db-d1c974c7231d.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 16 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684230017",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/81b845d4-ccf7-4338-83af-1e5099e7a047.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 17 | LuxeStyle",
+                "width": 1600,
+                "height": 1600
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70758684262785",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05cd3572-bab2-45fe-a530-8ee879080f8e.jpg?v=1788322123",
+                "altText": "Primer & Sealer Set für Gelnägel – Bild 18 | LuxeStyle",
+                "width": 800,
+                "height": 800
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "tapestry": {
+        "id": "gid://shopify/Product/15493244191105",
+        "title": "Bohemian Elefanten Wandteppich",
+        "handle": "bohemian-elefanten-wandteppich-7f9811",
+        "status": "ACTIVE",
+        "updatedAt": "2026-11-15T19:07:03Z",
+        "productType": "Wohnen & Deko",
+        "vendor": "LuxeStyle",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dekoration",
+          "dropship",
+          "haushalt",
+          "kat-wandteppiche",
+          "rueckhol-0907",
+          "sort-wandteppiche-wandbehaenge",
+          "wohnen"
+        ],
+        "descriptionHtml": "<p>Der quadratische Wandteppich setzt mit einem grossen Elefantenmotiv und ornamentiertem Rand einen dekorativen Akzent an deiner Wand. Die Produktbilder zeigen einen hellen Grund mit blauvioletten Mustern. Er eignet sich als textiler Wandbehang, etwa über einem Bett, Sofa oder einer Kommode.</p>\n<h2>Grösse und Material</h2>\n<ul>\n<li>\n<strong>Ausführung:</strong> 150 × 150 cm, entsprechend 1,5 × 1,5 m.</li>\n<li>\n<strong>Material laut Produktquelle:</strong> Polyester und Baumwolle. Die genauen Faseranteile sind nicht angegeben.</li>\n<li>\n<strong>Verarbeitung:</strong> gewebter Stoff.</li>\n<li>\n<strong>Motiv:</strong> Elefant mit floralen und ornamentierten Randelementen, wie auf den Artikelbildern dargestellt.</li>\n</ul>\n<h2>Was bedeutet die Auswahl?</h2>\n<p>Für dieses Angebot ist derzeit eine Ausführung hinterlegt. Die zugeordnete Lieferantenvariante nennt 150 × 150 cm; eine weitere Grössen- oder Farbauswahl wird hier nicht angeboten. Prüfe vor dem Kauf, ob diese Fläche an deinem gewünschten Platz ausreicht.</p>\n<h2>Lieferumfang und Befestigung</h2>\n<p>Gegenstand des Angebots ist der Wandteppich. Möbel, Pflanzen und weitere Raumdekoration auf den Fotos dienen der Darstellung. Haken, Stangen oder anderes Befestigungsmaterial sind in den vorliegenden Produktangaben nicht als Lieferumfang ausgewiesen.</p>\n<h2>Pflege und Verwendung</h2>\n<p>Eine Waschtemperatur und die Eignung für Waschmaschine oder Trockner sind nicht bestätigt. Richte die Reinigung nach einem vorhandenen Pflegeetikett.</p>",
+        "seo": {
+          "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+          "description": "Elefanten-Wandteppich im Boho-Stil, 150 × 150 cm. Gewebter Stoff aus Polyester und Baumwolle mit ornamentiertem Motiv. Material und Auswahl im Detail."
+        },
+        "onlineStoreUrl": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/hg-3-4-1",
+          "fullName": "Heim & Garten > Dekoration > Kunst > Wandteppiche",
+          "isLeaf": true,
+          "isArchived": false
+        },
+        "options": [
+          {
+            "id": "gid://shopify/ProductOption/17937097490817",
+            "name": "Title",
+            "position": 1,
+            "values": [
+              "Default Title"
+            ],
+            "linkedMetafield": null,
+            "optionValues": [
+              {
+                "id": "gid://shopify/ProductOptionValue/12325060542849",
+                "name": "Default Title",
+                "hasVariants": true
+              }
+            ]
+          }
+        ],
+        "gp": {
+          "id": "gid://shopify/Metafield/202048869925249",
+          "namespace": "mm-google-shopping",
+          "key": "google_product_category",
+          "type": "single_line_text_field",
+          "value": "Home & Garden > Decor > Artwork > Decorative Tapestries"
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/56075316363649",
+              "title": "Default Title",
+              "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+              "barcodes": {
+                "nodes": [],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              },
+              "price": "15.90",
+              "compareAtPrice": null,
+              "selectedOptions": [
+                {
+                  "name": "Title",
+                  "value": "Default Title"
+                }
+              ],
+              "inventoryPolicy": "CONTINUE",
+              "inventoryQuantity": 0,
+              "inventoryItem": {
+                "id": "gid://shopify/InventoryItem/55431292617089",
+                "tracked": false
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        },
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/70471388823937",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34267901635.jpg?v=1786360509",
+                "altText": "Bohemian Elefanten Wandteppich – Bild 1 | LuxeStyle",
+                "width": 640,
+                "height": 640
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/70471388955009",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/279386471701.jpg?v=1786360510",
+                "altText": "Bohemian Elefanten Wandteppich – Bild 2 | LuxeStyle",
+                "width": 921,
+                "height": 921
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    }
+  },
+  "publicCountercheck": [
+    {
+      "productId": "gid://shopify/Product/15523176841601",
+      "variantId": "56210226708865",
+      "offerId": "10283932347178265394",
+      "requestedUrl": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+      "jsonStatus": 200,
+      "publicProductId": "15523176841601",
+      "publicVariant": {
+        "id": 56210226708865,
+        "title": "Weiss",
+        "option1": "Weiss",
+        "option2": null,
+        "option3": null,
+        "sku": "CJMJ173930601AZ",
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": {
+          "id": 83539870318977,
+          "product_id": 15523176841601,
+          "position": 3,
+          "created_at": "2026-09-02T06:08:40+02:00",
+          "updated_at": "2026-09-02T06:08:43+02:00",
+          "alt": "Primer & Sealer Set für Gelnägel – Bild 3 | LuxeStyle",
+          "width": 1080,
+          "height": 1080,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e80b57c0-d079-4efd-bb78-06ab78208630.jpg?v=1788322123",
+          "variant_ids": [
+            56210226708865
+          ]
+        },
+        "available": true,
+        "name": "Primer & Sealer Set für Gelnägel - Weiss",
+        "public_title": "Weiss",
+        "options": [
+          "Weiss"
+        ],
+        "price": 5690,
+        "weight": 900,
+        "compare_at_price": null,
+        "inventory_management": null,
+        "barcode": null,
+        "featured_media": {
+          "alt": "Primer & Sealer Set für Gelnägel – Bild 3 | LuxeStyle",
+          "id": 70758683771265,
+          "position": 3,
+          "preview_image": {
+            "aspect_ratio": 1.0,
+            "height": 1080,
+            "width": 1080,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e80b57c0-d079-4efd-bb78-06ab78208630.jpg?v=1788322123"
+          }
+        },
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      "priceExpected": "56.90",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://luxestyle.ch/#org",
+          "name": "LuxeStyle",
+          "email": "info@luxestyle.ch",
+          "areaServed": [
+            "CH",
+            "LI"
+          ],
+          "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+          "url": "https://luxestyle.ch/",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": [
+              "CH",
+              "LI"
+            ],
+            "returnPolicyCountry": "CH",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+            "refundType": "https://schema.org/FullRefund"
+          },
+          "hasShippingService": [
+            {
+              "@type": "ShippingService",
+              "name": "Versand Schweiz",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 0,
+                    "maxValue": 49.99
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 7.0,
+                    "currency": "CHF"
+                  }
+                },
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 50
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 0,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "ShippingService",
+              "name": "Versand Liechtenstein",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "LI"
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 14.9,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            }
+          ],
+          "sameAs": [
+            "https://www.facebook.com/1049840534888592",
+            "https://www.instagram.com/luxestyle.ch/",
+            "https://www.tiktok.com/@luxestyle.ch",
+            "https://www.pinterest.com/luxestyleCH/",
+            "https://www.youtube.com/@luxestyle_ch"
+          ]
+        },
+        {
+          "@context": "http://schema.org/",
+          "@id": "/products/primer-sealer-set-fur-gelnagel-711296#product",
+          "@type": "ProductGroup",
+          "brand": {
+            "@type": "Brand",
+            "name": "LuxeStyle"
+          },
+          "category": "Nagellacke",
+          "description": "Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel. Es enthält alles, was du für eine professionelle Maniküre zu Hause oder im Salon benötigst, einschliesslich verschiedener Unterlacke und Versiegelungen. Die Produkte sind einfach anzuwenden und für jeden Hauttyp geeignet, um ein optimales Ergebnis zu erzielen. Kreiere makellose Nägel, die beeindrucken und lange halten.Das zeichnet es aus\nVielfältige Auswahl an Unterlacken und Versiegelungen\nInklusive Primer und Sealer für optimale Haltbarkeit\nGeeignet für alle Hauttypen\nIdeal für Nagelstudios und den Heimgebrauch\nErmöglicht professionelle Nageldesigns\n\n\n🛡️ Sorglos shoppen: ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.",
+          "hasVariant": [
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/e80b57c0-d079-4efd-bb78-06ab78208630.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Weiss",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865"
+              },
+              "sku": "CJMJ173930601AZ"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239554439#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1926daf6-4dc0-4ac0-82c9-3bee49b3f65e.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Schwarz",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239554439#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239554439"
+              },
+              "sku": "CJMJ173930602BY"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239587207#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/a7c8a516-582f-4f92-b2a1-d961dee660b9.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Rot",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239587207#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239587207"
+              },
+              "sku": "CJMJ173930603CX"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239619975#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/9a0f7371-ce27-4a1d-a06d-47f588f6639b.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Rosa",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239619975#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239619975"
+              },
+              "sku": "CJMJ173930604DW"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239652743#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/ed3f538f-d565-4767-8bb3-1d3a58032cc4.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Blau",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239652743#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239652743"
+              },
+              "sku": "CJMJ173930605EV"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239685511#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/c77dd372-f416-4960-806e-665e809b790f.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Gelb",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239685511#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239685511"
+              },
+              "sku": "CJMJ173930606FU"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239718279#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/39d3f451-b87d-4f95-9e21-280b47cebfc1.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Rosenrot",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239718279#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239718279"
+              },
+              "sku": "CJMJ173930607GT"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239751047#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/68a5dd3d-97e0-4fbd-b031-4f4dc324ef56.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Orange",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239751047#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239751047"
+              },
+              "sku": "CJMJ173930608HS"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239783815#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/079b5f8e-f0ff-48bf-a5db-d1c974c7231d.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Hellblau",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239783815#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239783815"
+              },
+              "sku": "CJMJ173930609IR"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239816583#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/9902d24f-3032-4322-a50f-e374c91c820a.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Hellrosa",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239816583#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239816583"
+              },
+              "sku": "CJMJ173930610JQ"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239849351#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/eefa973a-3df6-4b95-9fcb-2257924f4c27.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Grün",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239849351#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239849351"
+              },
+              "sku": "CJMJ173930611KP"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239882119#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/102a71b8-6893-459b-811f-84403bd02749.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Hellgrün",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239882119#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "65.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239882119"
+              },
+              "sku": "CJMJ173930612LO"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239914887#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/861c3f58-f003-4ccc-901c-10d8a9d83dc6.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Lila",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239914887#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "65.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239914887"
+              },
+              "sku": "CJMJ173930613MN"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239947655#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/05cd3572-bab2-45fe-a530-8ee879080f8e.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Fluoreszierendes Grün",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239947655#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "65.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239947655"
+              },
+              "sku": "CJMJ173930614NM"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239980423#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/81b845d4-ccf7-4338-83af-1e5099e7a047.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Helllila",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239980423#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749239980423"
+              },
+              "sku": "CJMJ173930615OL"
+            },
+            {
+              "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749240013191#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/3cdc8a4d-9ceb-4e78-80a9-bdcdcd9d5404.jpg?v=1788322123&width=1920",
+              "name": "Primer & Sealer Set für Gelnägel - Himmelblau",
+              "offers": {
+                "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=67749240013191#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "56.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=67749240013191"
+              },
+              "sku": "CJMJ173930616PK"
+            }
+          ],
+          "name": "Primer & Sealer Set für Gelnägel",
+          "productGroupID": "15523176841601",
+          "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://luxestyle.ch/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Beauty & Pflege",
+              "item": "https://luxestyle.ch/collections/beauty-pflege"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Nägel & Maniküre",
+              "item": "https://luxestyle.ch/collections/naegel-manikuere"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Primer & Sealer Set für Gelnägel",
+              "item": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296"
+            }
+          ]
+        }
+      ],
+      "htmlSha256": "af82c1c106b30d8b4dfaeab9d4ef693116917b3baa859cf809dc8dcb7b8abc5b",
+      "checks": {
+        "html200": true,
+        "sameProduct": true,
+        "correctVariant": true,
+        "exactPrice": true,
+        "available": true,
+        "noRedirectToOtherProduct": true,
+        "active": true,
+        "nativePolicyAndTrackingKnown": true
+      },
+      "allChecks": true,
+      "unknown": false
+    },
+    {
+      "productId": "gid://shopify/Product/15493244191105",
+      "variantId": "56075316363649",
+      "offerId": "10301937935043325310",
+      "requestedUrl": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+      "jsonStatus": 200,
+      "publicProductId": "15493244191105",
+      "publicVariant": {
+        "id": 56075316363649,
+        "title": "Default Title",
+        "option1": "Default Title",
+        "option2": null,
+        "option3": null,
+        "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "Bohemian Elefanten Wandteppich",
+        "public_title": null,
+        "options": [
+          "Default Title"
+        ],
+        "price": 1590,
+        "weight": 260,
+        "compare_at_price": null,
+        "inventory_management": null,
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      "priceExpected": "15.90",
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://luxestyle.ch/#org",
+          "name": "LuxeStyle",
+          "email": "info@luxestyle.ch",
+          "areaServed": [
+            "CH",
+            "LI"
+          ],
+          "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+          "url": "https://luxestyle.ch/",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": [
+              "CH",
+              "LI"
+            ],
+            "returnPolicyCountry": "CH",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+            "refundType": "https://schema.org/FullRefund"
+          },
+          "hasShippingService": [
+            {
+              "@type": "ShippingService",
+              "name": "Versand Schweiz",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 0,
+                    "maxValue": 49.99
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 7.0,
+                    "currency": "CHF"
+                  }
+                },
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 50
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 0,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "ShippingService",
+              "name": "Versand Liechtenstein",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "LI"
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 14.9,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            }
+          ],
+          "sameAs": [
+            "https://www.facebook.com/1049840534888592",
+            "https://www.instagram.com/luxestyle.ch/",
+            "https://www.tiktok.com/@luxestyle.ch",
+            "https://www.pinterest.com/luxestyleCH/",
+            "https://www.youtube.com/@luxestyle_ch"
+          ]
+        },
+        {
+          "@context": "http://schema.org/",
+          "@id": "/products/bohemian-elefanten-wandteppich-7f9811#product",
+          "@type": "Product",
+          "brand": {
+            "@type": "Brand",
+            "name": "LuxeStyle"
+          },
+          "category": "Wandteppiche",
+          "description": "Der quadratische Wandteppich setzt mit einem grossen Elefantenmotiv und ornamentiertem Rand einen dekorativen Akzent an deiner Wand. Die Produktbilder zeigen einen hellen Grund mit blauvioletten Mustern. Er eignet sich als textiler Wandbehang, etwa über einem Bett, Sofa oder einer Kommode.\nGrösse und Material\n\n\nAusführung: 150 × 150 cm, entsprechend 1,5 × 1,5 m.\n\nMaterial laut Produktquelle: Polyester und Baumwolle. Die genauen Faseranteile sind nicht angegeben.\n\nVerarbeitung: gewebter Stoff.\n\nMotiv: Elefant mit floralen und ornamentierten Randelementen, wie auf den Artikelbildern dargestellt.\n\nWas bedeutet die Auswahl?\nFür dieses Angebot ist derzeit eine Ausführung hinterlegt. Die zugeordnete Lieferantenvariante nennt 150 × 150 cm; eine weitere Grössen- oder Farbauswahl wird hier nicht angeboten. Prüfe vor dem Kauf, ob diese Fläche an deinem gewünschten Platz ausreicht.\nLieferumfang und Befestigung\nGegenstand des Angebots ist der Wandteppich. Möbel, Pflanzen und weitere Raumdekoration auf den Fotos dienen der Darstellung. Haken, Stangen oder anderes Befestigungsmaterial sind in den vorliegenden Produktangaben nicht als Lieferumfang ausgewiesen.\nPflege und Verwendung\nEine Waschtemperatur und die Eignung für Waschmaschine oder Trockner sind nicht bestätigt. Richte die Reinigung nach einem vorhandenen Pflegeetikett.",
+          "image": "https://luxestyle.ch/cdn/shop/files/34267901635.jpg?v=1786360509&width=1920",
+          "name": "Bohemian Elefanten Wandteppich",
+          "offers": {
+            "@id": "/products/bohemian-elefanten-wandteppich-7f9811?variant=56075316363649#offer",
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "15.90",
+            "priceCurrency": "CHF",
+            "url": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811?variant=56075316363649"
+          },
+          "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+          "url": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://luxestyle.ch/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Wandteppiche & Wandbehänge",
+              "item": "https://luxestyle.ch/collections/wandteppiche"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Bohemian Elefanten Wandteppich",
+              "item": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811"
+            }
+          ]
+        }
+      ],
+      "htmlSha256": "fa3735fa70260adfbdc8c51a1e3537747a49e04aa8ace6a84f1be48a137bd915",
+      "checks": {
+        "html200": true,
+        "sameProduct": true,
+        "correctVariant": true,
+        "exactPrice": true,
+        "available": true,
+        "noRedirectToOtherProduct": true,
+        "active": true,
+        "nativePolicyAndTrackingKnown": true
+      },
+      "allChecks": true,
+      "unknown": false
+    }
+  ],
+  "protectionReadback": [
+    {
+      "offerId": "10283932347178265394",
+      "allowedChangedAttributes": [
+        "price"
+      ],
+      "checks": {
+        "sameName": true,
+        "sameOffer": true,
+        "samePrimary": true,
+        "sameLanguage": true,
+        "sameFeedLabel": true,
+        "nonTargetAttributesPreserved": true,
+        "customAttributesPreserved": true
+      },
+      "allChecks": true,
+      "changedNonTargetKeys": []
+    },
+    {
+      "offerId": "10301937935043325310",
+      "allowedChangedAttributes": [
+        "availability"
+      ],
+      "checks": {
+        "sameName": true,
+        "sameOffer": true,
+        "samePrimary": true,
+        "sameLanguage": true,
+        "sameFeedLabel": true,
+        "nonTargetAttributesPreserved": true,
+        "customAttributesPreserved": true
+      },
+      "allChecks": true,
+      "changedNonTargetKeys": []
+    }
+  ],
+  "postWriteComparison": {
+    "read_at_utc": "2026-11-15T20:13:17Z",
+    "before_source": "/dev/shm/luxestyle-review/r247/offers-before.json",
+    "results": [
+      {
+        "offer_id": "10283932347178265394",
+        "key": "primer",
+        "resource_name": "accounts/5797470070/products/de~CH~10283932347178265394",
+        "data_source": "accounts/5797470070/dataSources/10678939025",
+        "expected": "price=CHF 56.90",
+        "observed": "CHF 56.90",
+        "destination_status": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "issues": [
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "attribute": "unit pricing measure",
+            "reportingContext": "FREE_LISTINGS",
+            "resolution": "merchant_action"
+          }
+        ],
+        "last_update": "2026-11-15T20:13:03.491613Z"
+      },
+      {
+        "offer_id": "10301937935043325310",
+        "key": "tapestry",
+        "resource_name": "accounts/5797470070/products/de~CH~10301937935043325310",
+        "data_source": "accounts/5797470070/dataSources/10678939025",
+        "expected": "availability=IN_STOCK",
+        "observed": "availability=IN_STOCK",
+        "destination_status": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "pendingCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "issues": [
+          {
+            "code": "landing_page_pending_crawl",
+            "severity": "DISAPPROVED",
+            "attribute": "",
+            "reportingContext": "FREE_LISTINGS",
+            "resolution": "pending_processing"
+          }
+        ],
+        "last_update": "2026-11-15T20:13:17.787132Z"
+      }
+    ]
+  },
+  "after": {
+    "primer": {
+      "shop_id": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CH~10283932347178265394",
+        "offerId": "10283932347178265394",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "dataSource": "accounts/5797470070/dataSources/10678939025",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "approvedCountries": [
+                "CH",
+                "LI"
+              ],
+              "pendingCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "missing_potentially_required_attribute",
+              "severity": "NOT_IMPACTED",
+              "resolution": "merchant_action",
+              "attribute": "unit pricing measure",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing unit pricing measure",
+              "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+              "documentation": "https://support.google.com/merchants/answer/10009686",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-11-04T16:51:48.622003Z",
+          "lastUpdateDate": "2026-11-15T20:13:03.491613Z",
+          "googleExpirationDate": "2026-12-15T20:13:03.491613Z"
+        },
+        "productAttributes": {
+          "title": "Primer & Sealer Set für Gelnägel | LuxeStyle CH",
+          "description": "Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel. Es enthält alles, was du für eine professionelle Maniküre zu Hause oder im Salon benötigst, einschliesslich verschiedener Unterlacke und Versiegelungen. Die Produkte sind einfach anzuwenden und für jeden Hauttyp geeignet, um ein optimales Ergebnis zu erzielen. Kreiere makellose Nägel, die beeindrucken und lange halten.Das zeichnet es aus\nVielfältige Auswahl an Unterlacken und Versiegelungen\nInklusive Primer und Sealer für optimale Haltbarkeit\nGeeignet für alle Hauttypen\nIdeal für Nagelstudios und den Heimgebrauch\nErmöglicht professionelle Nageldesigns\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+          "link": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+          "imageLink": "https://luxestyle.ch/cdn/shop/files/81b845d4-ccf7-4338-83af-1e5099e7a047.jpg?v=1788322123&width=1920",
+          "additionalImageLinks": [
+            "https://luxestyle.ch/cdn/shop/files/9a0f7371-ce27-4a1d-a06d-47f588f6639b.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/39d3f451-b87d-4f95-9e21-280b47cebfc1.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/3cdc8a4d-9ceb-4e78-80a9-bdcdcd9d5404.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/05cd3572-bab2-45fe-a530-8ee879080f8e.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/079b5f8e-f0ff-48bf-a5db-d1c974c7231d.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/9902d24f-3032-4322-a50f-e374c91c820a.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/1926daf6-4dc0-4ac0-82c9-3bee49b3f65e.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/eefa973a-3df6-4b95-9fcb-2257924f4c27.jpg?v=1788322123&width=1920",
+            "https://luxestyle.ch/cdn/shop/files/a7c8a516-582f-4f92-b2a1-d961dee660b9.jpg?v=1788322123&width=1920"
+          ],
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "itemGroupId": "15523176841601",
+          "price": {
+            "amountMicros": "56900000",
+            "currencyCode": "CHF"
+          },
+          "shipping": [
+            {
+              "country": "CH",
+              "region": "",
+              "service": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "productTypes": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAyODM5MzIzNDcxNzgyNjUzOTQ",
+        "legacyLocal": false,
+        "customAttributes": []
+      }
+    },
+    "tapestry": {
+      "shop_id": "5797470070",
+      "product": {
+        "name": "accounts/5797470070/products/de~CH~10301937935043325310",
+        "offerId": "10301937935043325310",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "dataSource": "accounts/5797470070/dataSources/10678939025",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "pendingCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "disapprovedCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "landing_page_pending_crawl",
+              "severity": "DISAPPROVED",
+              "resolution": "pending_processing",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Pending online store check",
+              "detail": "One or more of your products have not yet been crawled",
+              "documentation": "https://support.google.com/merchants/answer/14987567",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ],
+              "attribute": ""
+            }
+          ],
+          "creationDate": "2026-10-29T22:27:25.355848Z",
+          "lastUpdateDate": "2026-11-15T20:13:17.787132Z",
+          "googleExpirationDate": "2026-12-15T20:13:17.787132Z"
+        },
+        "productAttributes": {
+          "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+          "description": "Bohemian Elefanten Wandteppich bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+          "imageLink": "https://luxestyle.ch/cdn/shop/files/34267901635.jpg?v=1786360509",
+          "availability": "IN_STOCK",
+          "condition": "NEW",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "shipping": [
+            {
+              "country": "CH",
+              "region": "",
+              "service": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "additionalImageLinks": [],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "productTypes": [],
+          "carrierShipping": [],
+          "freeShippingThreshold": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productDetails": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAzMDE5Mzc5MzUwNDMzMjUzMTA",
+        "legacyLocal": false,
+        "customAttributes": []
+      }
+    }
+  },
+  "afterStatus": {
+    "primer": {
+      "shop_id": "5797470070",
+      "product_name": "accounts/5797470070/products/de~CH~10283932347178265394",
+      "offer_id": "10283932347178265394",
+      "content_language": "de",
+      "feed_label": "CH",
+      "product_status": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "creationDate": "2026-11-04T16:51:48.622003Z",
+        "lastUpdateDate": "2026-11-15T20:13:03.491613Z",
+        "googleExpirationDate": "2026-12-15T20:13:03.491613Z"
+      }
+    },
+    "tapestry": {
+      "shop_id": "5797470070",
+      "product_name": "accounts/5797470070/products/de~CH~10301937935043325310",
+      "offer_id": "10301937935043325310",
+      "content_language": "de",
+      "feed_label": "CH",
+      "product_status": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "pendingCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "landing_page_pending_crawl",
+            "severity": "DISAPPROVED",
+            "resolution": "pending_processing",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Pending online store check",
+            "detail": "One or more of your products have not yet been crawled",
+            "documentation": "https://support.google.com/merchants/answer/14987567",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          }
+        ],
+        "creationDate": "2026-10-29T22:27:25.355848Z",
+        "lastUpdateDate": "2026-11-15T20:13:17.787132Z",
+        "googleExpirationDate": "2026-12-15T20:13:17.787132Z"
+      }
+    }
+  },
+  "limits": {
+    "all18UiGroupsCaptured": false,
+    "fullCatalogScanned": false,
+    "noErrorClaim": false,
+    "newOffersCreated": 0,
+    "newPrimarySources": 0,
+    "newSupplementalSources": 1,
+    "acceptedAttributeUpdates": 2,
+    "rejectedSourceCreationAttempts": 1,
+    "broadMetricsOrFlowsRepeated": false,
+    "shopifyWrites": 0,
+    "socialWrites": 0,
+    "paidRenders": 0,
+    "customerContact": false,
+    "claudeReceipt": "unknown"
+  },
+  "otherPriceCases": {
+    "captured_at": "2026-11-15",
+    "source_validation": "Both exact product resources confirmed in r236/three-offer-worklist.csv; source accounts/5797470070/dataSources/10678939025.",
+    "merchant_account": "5797470070 LuxeStyle CH",
+    "merchant_reads": [
+      {
+        "merchantCenterId": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CH~10073494240929787683",
+          "offerId": "10073494240929787683",
+          "contentLanguage": "de",
+          "feedLabel": "CH",
+          "dataSource": "accounts/5797470070/dataSources/10678939025",
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "item_missing_required_attribute",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "price",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Missing product price",
+                "detail": "Add a price to the [price] attribute in your product data source",
+                "documentation": "https://support.google.com/merchants/answer/12158687",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-10-29T23:14:35.275191Z",
+            "lastUpdateDate": "2026-10-29T23:14:35.275191Z",
+            "googleExpirationDate": "2026-12-14T23:59:41Z"
+          },
+          "productAttributes": {
+            "title": "Malen nach Zahlen – Gassen & Häuser | LuxeStyle",
+            "description": "Entdecke die Freude am Malen mit diesem DIY Digital Ölgemälde. Es ist die perfekte Möglichkeit, deine Kreativität auszuleben und ein einzigartiges Kunstwerk zu schaffen. Das Set enthält alles, was du benötigst, um dein eigenes dekoratives Bild zu gestalten.Egal, ob du ein Anfänger oder ein erfahrener Künstler bist, dieses Set bietet stundenlangen Malspass. Es eignet sich hervorragend als persönliches Geschenk oder zur Verschönerung deines Zuhauses. Nach Fertigstellung wird dein Bild zum Blickfang in jedem Wohn- oder Kinderzimmer.Das zeichnet es aus\nFarben auf Propylenbasis für leuchtende Ergebnisse\nLeinwandmaterial für authentisches Malgefühl\nInklusive DIY-Rahmen zum einfachen Aufspannen\nWird gerollt in einer Tube geliefert\nIdeal als einzigartiges Geschenk für Kinder und Familie\nPerfekt für die Dekoration von Wohnzimmern, Kinderzimmern und Hochzeiten\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+            "link": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496",
+            "imageLink": "https://luxestyle.ch/cdn/shop/files/1622535171674.jpg?v=1786672071&width=1920",
+            "additionalImageLinks": [
+              "https://luxestyle.ch/cdn/shop/files/1622535171676.jpg?v=1786672072&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/1622535171687.jpg?v=1786672071&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/1622535171683.jpg?v=1786672071&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/1622535171692.jpg?v=1786672072&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/1622535171690.jpg?v=1786672072&width=1920"
+            ],
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "condition": "NEW",
+            "itemGroupId": "15497440854401",
+            "shipping": [
+              {
+                "country": "CH",
+                "region": "",
+                "service": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "productTypes": [],
+            "carrierShipping": [],
+            "freeShippingThreshold": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productDetails": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAwNzM0OTQyNDA5Mjk3ODc2ODM",
+          "legacyLocal": false,
+          "customAttributes": []
+        }
+      },
+      {
+        "merchantCenterId": "5797470070",
+        "productName": "accounts/5797470070/products/de~CH~10073494240929787683",
+        "offerId": "10073494240929787683",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "item_missing_required_attribute",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "price",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing product price",
+              "detail": "Add a price to the [price] attribute in your product data source",
+              "documentation": "https://support.google.com/merchants/answer/12158687",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-29T23:14:35.275191Z",
+          "lastUpdateDate": "2026-10-29T23:14:35.275191Z",
+          "googleExpirationDate": "2026-12-14T23:59:41Z"
+        }
+      },
+      {
+        "merchantCenterId": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CH~10784371818943082880",
+          "offerId": "10784371818943082880",
+          "contentLanguage": "de",
+          "feedLabel": "CH",
+          "dataSource": "accounts/5797470070/dataSources/10678939025",
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "item_missing_required_attribute",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "price",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Missing product price",
+                "detail": "Add a price to the [price] attribute in your product data source",
+                "documentation": "https://support.google.com/merchants/answer/12158687",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-10-29T23:35:02.974192Z",
+            "lastUpdateDate": "2026-10-29T23:35:02.974192Z",
+            "googleExpirationDate": "2026-12-14T19:43:19Z"
+          },
+          "productAttributes": {
+            "title": "Schmuckbox aus PU-Leder mit abgerundeten Ecken | LuxeStyle CH",
+            "description": "Diese elegante Schmuckbox aus PU-Leder ist die ideale Verkaufs- oder Geschenkverpackung für deine wertvollen Schmuckstücke. Das stilvolle Business-Design und die präzise Verarbeitung mit einer Toleranz von 0.01 machen sie zu einer hochwertigen Wahl. Sie eignet sich perfekt für Halsketten und Anhänger und schützt den Inhalt stilvoll. Erhältlich in verschiedenen Grössen, passt sie sich flexibel deinen Bedürfnissen an.Das zeichnet es aus\nStilvolle Verkaufs- und Geschenkverpackung\nAus hochwertigem PU-Leder gefertigt\nPräzise Verarbeitung mit geringer Toleranz (0.01)\nIdeal für Halsketten und Anhänger\nErhältlich in verschiedenen Grössen: 6.3 x 6.3 x 6.5 cm, 7.3 x 8.3 x 5 cm, 9.5 x 9.5 x 5 cm, 23.5 x 5.5 x 4 cm\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna. ️ Das könnte dir auch gefallen: Wohnen & Deko · Bestseller",
+            "link": "https://luxestyle.ch/products/schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200",
+            "imageLink": "https://luxestyle.ch/cdn/shop/files/fbcecdfc-83db-4b10-bde7-6dca8d40db7b_fine.jpg?v=1793326604&width=1920",
+            "additionalImageLinks": [
+              "https://luxestyle.ch/cdn/shop/files/63354d74-f217-4c03-8b77-c89a5ea1982b_fine.jpg?v=1786590743&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/4c46fa22-686e-41e7-a4ed-04704f61c7ac_fine.jpg?v=1793326605&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/69f3f012-5d18-4922-b903-d2a903d2a5a1_fine.jpg?v=1786590743&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/eb944efe-5506-4934-99ba-1b9b57fef62d_trans.jpg?v=1793326604&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/c17038ac-7aaa-43b4-928a-71b2701cfabb_trans.jpg?v=1793326604&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/01bf1b22-f9ff-44ba-b489-ef188ea2ac64_fine.jpg?v=1786590742&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/7d0472ce-dbf9-4b9e-8d77-540f1bd93b1d_fine.jpg?v=1786590743&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/cdc2b4e2-2532-4622-b760-f722e43dbcc2_trans.jpg?v=1786590742&width=1920",
+              "https://luxestyle.ch/cdn/shop/files/522a3185-1e0c-4b67-bbf9-4f65e516ab42_fine.jpg?v=1786590743&width=1920",
+              "http://luxestyle.ch/cdn/shop/files/3b18bd6f-f54c-461b-99c1-cc98a65cfae9_trans.jpg?v=1786590741"
+            ],
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "condition": "NEW",
+            "itemGroupId": "15496378417537",
+            "shipping": [
+              {
+                "country": "CH",
+                "region": "",
+                "service": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "productTypes": [],
+            "carrierShipping": [],
+            "freeShippingThreshold": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productDetails": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTA3ODQzNzE4MTg5NDMwODI4ODA",
+          "legacyLocal": false,
+          "customAttributes": []
+        }
+      },
+      {
+        "merchantCenterId": "5797470070",
+        "productName": "accounts/5797470070/products/de~CH~10784371818943082880",
+        "offerId": "10784371818943082880",
+        "contentLanguage": "de",
+        "feedLabel": "CH",
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "item_missing_required_attribute",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "price",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Missing product price",
+              "detail": "Add a price to the [price] attribute in your product data source",
+              "documentation": "https://support.google.com/merchants/answer/12158687",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-29T23:35:02.974192Z",
+          "lastUpdateDate": "2026-10-29T23:35:02.974192Z",
+          "googleExpirationDate": "2026-12-14T19:43:19Z"
+        }
+      }
+    ],
+    "shopify_native": [
+      {
+        "data": {
+          "product": {
+            "id": "gid://shopify/Product/15497440854401",
+            "title": "Malen nach Zahlen – Gassen & Häuser",
+            "handle": "diy-digital-olgemalde-zum-selbermalen-418496",
+            "status": "ACTIVE",
+            "tags": [
+              "basteln",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "diy",
+              "dropship",
+              "handarbeit",
+              "hobby",
+              "kreativ",
+              "malen-nach-zahlen",
+              "neuheit",
+              "oelgemaelde",
+              "sort-malen-nach-zahlen-sets",
+              "varianten-nachgezogen-1025"
+            ],
+            "totalInventory": 0,
+            "tracksInventory": false,
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1622535171674.jpg?v=1786672071",
+                "altText": "Malen nach Zahlen – Gassen & Häuser – Bild 3 | LuxeStyle"
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67821432963463",
+                  "title": "Modell A / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447501AZ",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821432996231",
+                  "title": "Modell A / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447502BY",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433028999",
+                  "title": "Modell A / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447503CX",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433061767",
+                  "title": "Modell B / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447504DW",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433094535",
+                  "title": "Modell B / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447505EV",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433127303",
+                  "title": "Modell B / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447506FU",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433160071",
+                  "title": "Modell C / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447507GT",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433192839",
+                  "title": "Modell C / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447508HS",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433225607",
+                  "title": "Modell C / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447509IR",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433258375",
+                  "title": "Modell D / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447510JQ",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433291143",
+                  "title": "Modell D / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447511KP",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433323911",
+                  "title": "Modell D / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447512LO",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433356679",
+                  "title": "Modell E / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447513MN",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433389447",
+                  "title": "Modell E / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447514NM",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433422215",
+                  "title": "Modell E / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447515OL",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433454983",
+                  "title": "Modell F / 40 × 50 cm",
+                  "price": "20.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447516PK",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433487751",
+                  "title": "Modell F / 50 × 65 cm",
+                  "price": "24.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447517QJ",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821433520519",
+                  "title": "Modell F / 60 × 75 cm",
+                  "price": "26.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJZS115447518RI",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "data": {
+          "product": {
+            "id": "gid://shopify/Product/15496378417537",
+            "title": "Schmuckbox aus PU-Leder mit abgerundeten Ecken",
+            "handle": "schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200",
+            "status": "ACTIVE",
+            "tags": [
+              "aufbewahrung",
+              "auswahl-offen",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "dropship",
+              "haushalt",
+              "menue-kern-0906",
+              "neuheit",
+              "organizer",
+              "sort-schmuckaufbewahrung",
+              "varianten-nachgezogen-1025",
+              "wohnen"
+            ],
+            "totalInventory": 0,
+            "tracksInventory": false,
+            "featuredMedia": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b18bd6f-f54c-461b-99c1-cc98a65cfae9_trans.jpg?v=1786590741",
+                "altText": "Schmuckbox aus PU-Leder mit abgerundeten Ecken – Bild 1 | LuxeStyle"
+              }
+            },
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/67821514097031",
+                  "title": "Braun / Ringbox",
+                  "price": "14.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122102BY",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514129799",
+                  "title": "Braun / Anhängerbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122103CX",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514162567",
+                  "title": "Braun / Armbandbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122104DW",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514195335",
+                  "title": "Braun / Lange Kettenbox",
+                  "price": "16.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122105EV",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514228103",
+                  "title": "Dunkelgrün / Ringbox",
+                  "price": "14.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122106FU",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514260871",
+                  "title": "Dunkelgrün / Anhängerbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122107GT",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514293639",
+                  "title": "Dunkelgrün / Armbandbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122108HS",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514326407",
+                  "title": "Dunkelgrün / Lange Kettenbox",
+                  "price": "16.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122109IR",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514359175",
+                  "title": "Rot / Ringbox",
+                  "price": "14.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122110JQ",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514391943",
+                  "title": "Rot / Anhängerbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122111KP",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514424711",
+                  "title": "Rot / Armbandbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122112LO",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514457479",
+                  "title": "Rot / Lange Kettenbox",
+                  "price": "16.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122113MN",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514490247",
+                  "title": "Dunkelblau / Ringbox",
+                  "price": "14.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122114NM",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514523015",
+                  "title": "Dunkelblau / Anhängerbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122115OL",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514555783",
+                  "title": "Dunkelblau / Armbandbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122116PK",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514588551",
+                  "title": "Dunkelblau / Lange Kettenbox",
+                  "price": "16.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122117QJ",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514621319",
+                  "title": "Hellgrau / Ringbox",
+                  "price": "14.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122118RI",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514654087",
+                  "title": "Hellgrau / Anhängerbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122119SH",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514686855",
+                  "title": "Hellgrau / Armbandbox",
+                  "price": "15.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122120TG",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/67821514719623",
+                  "title": "Hellgrau / Lange Kettenbox",
+                  "price": "16.90",
+                  "inventoryQuantity": 0,
+                  "inventoryPolicy": "CONTINUE",
+                  "sku": "CJYD279122121UF",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "public_files": [
+      "painting.json",
+      "painting_html.html",
+      "jewelry.json",
+      "jewelry_html.html"
+    ],
+    "public_products": [
+      {
+        "handle": "diy-digital-olgemalde-zum-selbermalen-418496",
+        "id": 15497440854401,
+        "currency": "CHF",
+        "variant_count": 18,
+        "price_min_chf": "20.90",
+        "price_max_chf": "26.90",
+        "variant_examples": [
+          [
+            "Modell A / 40 × 50 cm",
+            67821432963463,
+            "20.90"
+          ],
+          [
+            "Modell A / 50 × 65 cm",
+            67821432996231,
+            "24.90"
+          ],
+          [
+            "Modell A / 60 × 75 cm",
+            67821433028999,
+            "26.90"
+          ]
+        ]
+      },
+      {
+        "handle": "schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200",
+        "id": 15496378417537,
+        "currency": "CHF",
+        "variant_count": 20,
+        "price_min_chf": "14.90",
+        "price_max_chf": "16.90",
+        "variant_examples": [
+          [
+            "Braun / Ringbox",
+            67821514097031,
+            "14.90"
+          ],
+          [
+            "Braun / Anhängerbox",
+            67821514129799,
+            "15.90"
+          ],
+          [
+            "Braun / Lange Kettenbox",
+            67821514195335,
+            "16.90"
+          ]
+        ]
+      }
+    ],
+    "conclusion": "Price cannot be filled truthfully from the exact variant evidence available. Merchant links and itemGroupId bind only to each Shopify parent product; Merchant offer has no selected Shopify variant ID, while each product has variants with different CHF prices. Do not infer a minimum/default/model-title price."
+  },
+  "scale": {
+    "merchant": {
+      "product_name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15502258831745_68193799242119",
+      "merchant": {
+        "offer_id": "shopify_ZZ_15502258831745_68193799242119",
+        "data_source": "accounts/5797470070/dataSources/10667445201",
+        "version_number": "1794398400000000",
+        "title": "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH 7.5kg 0.1g Englisch",
+        "link": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "availability": "IN_STOCK",
+        "price": {
+          "amountMicros": "127900000",
+          "currencyCode": "CHF"
+        },
+        "variant_attributes": [
+          {
+            "sectionName": "Variant",
+            "attributeName": "farbe",
+            "attributeValue": "7.5kg 0.1g Englisch"
+          }
+        ],
+        "sku": "CJZN170995619SH",
+        "issues": [
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "SHOPPING_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "DISPLAY_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "FREE_LISTINGS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "DEMAND_GEN_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "VIDEO_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "availability_updated",
+            "severity": "NOT_IMPACTED",
+            "attribute": "availability",
+            "context": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "SHOPPING_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "DISPLAY_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "FREE_LISTINGS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "DEMAND_GEN_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "VIDEO_ADS",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "landing_page_error",
+            "severity": "DISAPPROVED",
+            "attribute": "link",
+            "context": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "countries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "destinations": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          }
+        ]
+      }
+    },
+    "shopify": {
+      "id": "gid://shopify/Product/15502258831745",
+      "title": "Präzisionswaage 3-10 kg, elektronisch",
+      "handle": "prazisionswaage-3-10-kg-elektronisch-939456",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456",
+      "onlineStorePreviewUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456",
+      "publishedAt": "2026-08-17T10:25:31Z",
+      "publications": [
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Onlineshop",
+              "handle": "online_store"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Shop",
+              "handle": "shop-72"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "TikTok",
+              "handle": "tiktok-ads-2"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Facebook & Instagram",
+              "handle": "facebook-ads"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Google & YouTube",
+              "handle": "google"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Pinterest",
+              "handle": "pinterest-4"
+            }
+          ]
+        },
+        {
+          "isPublished": true,
+          "channel": [
+            {
+              "name": "Luxe Style Headless",
+              "handle": "45285767"
+            }
+          ]
+        }
+      ],
+      "target_variant": {
+        "id": "gid://shopify/ProductVariant/68193799242119",
+        "title": "7.5kg 0.1g Englisch",
+        "sku": "CJZN170995619SH",
+        "price": "127.90",
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "inventoryPolicy": "CONTINUE",
+        "selectedOptions": [
+          {
+            "name": "Farbe",
+            "value": "7.5kg 0.1g Englisch"
+          }
+        ]
+      },
+      "variant_count": 7
+    },
+    "public": {
+      "live_browser": {
+        "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "http_status": 200,
+        "canonical": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456",
+        "title": "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH",
+        "h1": [
+          "Präzisionswaage 3-10 kg, elektronisch"
+        ],
+        "fetched_at": "2026-11-15 20:14:33 +00:00",
+        "is_4xx": false,
+        "is_5xx": false,
+        "is_broken": false,
+        "og_price": "101.90"
+      },
+      "public_scrape": {
+        "answer": "Product title: Präzisionswaage 3-10 kg, elektronisch\nSelected variant ID: 68193799242119\nOption text: 7.5kg 0.1g Englisch\nDisplayed CHF price: CHF 127.90\nCanonical URL: Canonical URL is not present on the page.",
+        "status_code": 200,
+        "request_url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF",
+        "canonical": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456",
+        "og_price": "101.90",
+        "scrape_id": "01a1e0d8-b5bc-75cb-b541-e1214a072552"
+      }
+    }
+  },
+  "independentOfflineReview": "# R247 Abschlussreview (offline)\n\n**Ergebnis: Korrekturen und Nachweise stimmen; ein Formulierungsdetail ist zu beachten.** Keine weiteren Merchant-/Shopify-API-Zugriffe oder Änderungen durchgeführt.\n\n- Supplemental-Quelle `10795447118` ist als `supplementalProductDataSource` bestätigt und exakt mit AUTOFEED-Primärquelle `10678939025` verknüpft. Die fehlgeschlagene frühere Anlage mit unerlaubtem feedLabel wurde nicht als Erfolg verbucht.\n- Primer: exakte öffentliche Variante `56210226708865` hat CHF 56.90, verfügbar=true, Status IN_STOCK. Merchant Nachher: CHF 56.90, FREE_LISTINGS für CH/LI approved. Der Unit-pricing-measure-Hinweis ist `NOT_IMPACTED`, kein Nullpreis-/Blockierungsfehler.\n- Wandteppich: exakte öffentliche Einzelvariante `56075316363649` hat CHF 15.90, verfügbar=true. Merchant Nachher hat availability IN_STOCK. Destinationen CH/LI sind pending, ohne approved oder disapproved Countries; einziger Issue-Code ist `landing_page_pending_crawl` / `pending_processing` (dessen severity technisch `DISAPPROVED` lautet). Somit noch keine Freigabe, aber ein Crawl-Pending-Fall.\n- Schutzreadback bestätigt bei beiden Angeboten dieselben Produktnamen/IDs, Primärquelle, Sprache und Feedlabel; nur die erlaubten Zielattribute änderten sich, keine Nichtzielattribute oder Custom Attributes.\n- Override-Stalerisiko: Die Artefakte benennen, dass keine automatische fortlaufende Preissynchronisierung besteht und bei späteren Läufen Variante/Preis/Kaufbarkeit erneut zu prüfen und die Ergänzung bei Abweichung anzupassen/zu entfernen ist. Das Risiko steht damit inhaltlich drin; der konkrete Begriff „stale/veraltet“ wird nicht ausdrücklich verwendet. Für die Nutzerzusammenfassung sollte klar gesagt werden, dass der feste Preis-Override bei Shopify-Änderungen veralten kann.\n\nBelegquellen: `tool-evidence-part.json`, `confirmed-source-and-write-responses.json`, `protection-readback.json`, `post-write-hypd/comparison.json`, beide Primer-/Tapestry-Get-product- und Product-status-Dateien sowie offline `public-offer-verification.json` für die beiden exakten Varianten.\n"
+}
