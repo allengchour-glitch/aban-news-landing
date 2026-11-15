@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 243,
-  "updatedAt": "2026-11-15T18:28:10Z",
+  "revision": 244,
+  "updatedAt": "2026-11-15T18:49:01Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -21266,12 +21266,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r242_six_product_meta_descriptions_live_native_public_verified",
+      "state": "r244_four_category_and_one_article_seo_live_native_and_public_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
-      "lastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis. R242: Sechs produktspezifische SEO-Beschreibungen gemeinsam mit den belegten Produkttexten live geändert. Alle bisherigen SEO-Titel erhalten, öffentliches Meta/Canonical und nativeFelder bestätigt. Keine neueGSC-/Ranking-/Umsatzmessung.",
-      "nextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
+      "belegArt": "SIX_GUARDED_SHOPIFY_WRITES_FIVE_PUBLIC_HTTP_READBACKS_15_NEW_INTERNAL_LINKS",
+      "lastEvidence": "R244: Vier Kategorien (Gaming, Headsets, Gaming-Headsets, Nachttischlampen) und einen bestehenden Headset-Ratgeber live verbessert. Sechs serielle native Mutationen mit frischer Vorher-Gegenprobe/konkretem Diff, userErrors=[] und Vollrücklesung; danach fünf öffentliche Seiten HTTP200, Inhalte/SEO-Titel/-Beschreibung/H1/Canonical und alle18 Inhaltslinks bestätigt.15 Links neu. Artikel-SEO per atomarem Zwei-Schlüssel-CAS mit compareDigest=null nach Nullread. Preise/Varianten/Zuordnungen nicht geschrieben, ausgewählte Schutzfelder nativ identisch. Keine Rang-/Indexierungs-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "R244-Seiten nicht nochmals als neue Arbeit zählen. Nächste kleine Gruppe PC-Gaming, Kopfhörer & Audio und Spielkonsolen & Retro-Handhelds anhand heute vorhandener HTTP-Köpfe vorbereiten: frische native Beschreibung/Sources und wenige passende Produkte, eindeutige Suchabsicht und Auswahlhilfe statt pauschaler Rabatt-/Versand-Werbetexte. Vor Write Gegenprobe/Diff, danach native Schutzfelder und öffentliche Texte/Meta/Canonical/Links prüfen. Keine neue GSC-Tagesmessung ohne konkreten Anlass, keine Noindex-/Redirect-/Zuordnungsänderung auf Verdacht. Bestehende R239-Theme- und R240-Merchantblocker getrennt erhalten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -21935,6 +21935,16 @@
         {
           "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
           "readAt": "2026-11-15T17:27:22Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-LIVE-VERBESSERUNGEN-20261115-R244.md",
+          "gitBlobSha": "331884573a0aaca46cd3a11c44b6eda699cfc110",
+          "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+          "gitBlobSha": "b22e6eeca4aaa5bd8fdbf0455369e05183820ebe",
+          "readAt": "2026-11-15T18:49:01Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -23320,6 +23330,15 @@
           "previousLastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis.",
           "previousNextAllowedStep": "R226-Korrekturen erhalten. GSC15Nov bereits einmal gelesen: heute ohne neuen konkreten Grund nicht erneut abfragen. Weitere SEO-Schritte nur mit neuen aktuellen Quellen und Schutzfelddiff; bekannte Inhaber-Indexierungen nicht erneut als neue Ziele ausgeben.",
           "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json"
+        },
+        {
+          "revision": 244,
+          "at": "2026-11-15T18:49:01Z",
+          "previousState": "r242_six_product_meta_descriptions_live_native_public_verified",
+          "previousLastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis. R242: Sechs produktspezifische SEO-Beschreibungen gemeinsam mit den belegten Produkttexten live geändert. Alle bisherigen SEO-Titel erhalten, öffentliches Meta/Canonical und nativeFelder bestätigt. Keine neueGSC-/Ranking-/Umsatzmessung.",
+          "previousNextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
+          "previousBelegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
+          "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json"
         }
       ],
       "visibilitySupplementR49": {
@@ -24661,18 +24680,27 @@
         "protectedMedia": 48,
         "doNotRepeatVerifiedWrites": true,
         "wholeCatalogueComplete": false
+      },
+      "run244": {
+        "at": "2026-11-15T18:49:01Z",
+        "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+        "scope": "4 collections + 1 article",
+        "writes": 6,
+        "publicPagesConfirmed": 5,
+        "newEditorialLinks": 15,
+        "rankSalesLiftUnknown": true
       }
     },
     {
       "id": "tech-category-structure-20261102",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r239_two_lamps_type_and_wrong_storage_tags_corrected_native_public_verified",
+      "state": "r244_four_category_and_one_article_seo_live_native_and_public_verified",
       "title": "Elektronik mit Unterkategorien und kuratiertem Produkteinstieg ordnen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "TWO_CURRENT_ACTIVE_PRODUCTS_FULL_PROTECTION_BASELINES_TWO_SERIAL_WRITES_NATIVE_AND_PUBLIC_READBACK",
-      "lastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R73,03./04.11.2026: Inhaber präzisierte ausdrücklich bestehendes Banner/Stil behalten und gezielte Verbesserungen/Fehlerbehebung für Stöbern und Suche. Zwischenzeitliche Banner-Neugestaltung verworfen; endgültig9Dateien mit zusätzlichen Unterbereichen/Suche, kleinem ursprünglichem Chips-Auswahlfix und engem44px-Selbstgestalten-CSS. Sechs bestehende Templateabschnitte plus Banner unverändert; im siebten nur führender Liquid-Auswahlblock geändert, Ausgabe/CSS und relative Reihenfolge erhalten. Genau ein neuer geschlossener Zusatzabschnitt; bestehende Links nicht dupliziert. Damen-Schuhe13eigene Kinder statt28fremderGeschwister. Finaler nativer Readback bytegenau, additive Browser-Schlussprobe86/87, einzig datenbedingteHundewelt-Bildverschiebung nachbelegtemProduktausschluss erklärt; MAIN-Dateien unverändert, keine Publikation. 16Haupteinstiege/180gespeicherteKarten begrenzt geprüft. Einzige klare Fehlzuordnung live03.11.22:50:52Z behoben: Hunderttafel16655507915143 aus Hundeweltquelle26063339905 ausgeschlossen; learning.hasProducttrue und Einschlussbedingungen unverändert. Nicht erneut anwenden. Weitere Titelunklarheiten ohne Produktbeleg nicht verschoben. Eigenes altes Header-Snippet im Entwurf unreferenziert; Löschversuch vomConnector blockiert, keinRetry/Umgehung; nicht Teil des finalenPakets. NeuesGitHub-Paket zurÜbernahme, Claude-Empfang unbekannt. 466bestehendeFRLücken unverändert; nur5neuegenutzteNavschlüsseljeDE/FR/EN. R81: Historischer Aktivexport enthält103 hochsichere Typ-/Tag-Widersprüche und66 weitere Prüffälle. Darunter36 Haustier-,35 Küchen- und22 Beleuchtungsfälle;62 echte Lampen/Küchengeräte sind als Aufbewahrung & Organizer typisiert. Aktueller Livefall Katzenhängematte bestätigt falsche Shopify-Taxonomie Reisenäpfe und Google Pet Bowls/Feeders/Waterers. Export enthält keine vollständigen aktuellen Shopify-/Google-Taxonomiefelder; keine Vollquote und keine pauschale Umklassifizierung. R83, 04.11.2026: Fünf P0-Produkte aktuell taxonomisch geprüft. Seifenspender-Leaf bleibt passend. Badeanzug kann klar aa-1-20-22 Einteilige Badeanzüge, Katzenspielzeug ap-2-2-5-5 Interaktives Spielzeug zugeordnet werden; Jumpsuit-Tags beziehungsweise hund sind fachfremd. Für Hopfenfilter und Alkoholmeter kein sauberer spezifischer Leaf, medizinische Alkoholmessgeräte-Kategorie ausdrücklich verworfen. Keine Änderung. R84, 04.11.2026: Badeanzug auf Leaf aa-1-20-22 und Damen-Bademode gesetzt; Katzenspielzeug auf Leaf ap-2-2-5-5 gesetzt und fachfremden hund-Tag entfernt. Kaffeemaschine und Vakuumierer auf Produkttyp Küche & Bar gesetzt, bestehende korrekte Leafs hg-11-7-4 beziehungsweise hg-11-7-48 erhalten. Hopfenfilter-Taxonomie ae-2-3 unverändert. Alle Änderungen seriell nativ und öffentlich bestätigt; keine pauschale Katalogumklassifizierung. R85: Nudelmaschine15495105184129 vom falschen Aufbewahrungstyp auf Küche & Bar gestellt; offizielle Leaf-Kategorie hg-11-7-36 erhalten, zwei Aufbewahrungstags entfernt. Sicherheitsstopp nach genau1Write wegen fehlender Barcode-Vorherbasis. R86: Eisraspler15448963645825 auf Küche & Bar und drei Wandleuchten15454472012161/15465835233665/15476180451713 auf Beleuchtung gestellt; bestehende passende Leafs hg-11-7-27 beziehungsweise hg-13-9-4 erhalten. Aufbewahrung/Organizer und beim Eisraspler zusätzlich der falsche Mixer-/Entsafter-/Zerkleinerer-Sortiertag entfernt. Alle vier seriell mit vollständiger Vorher-/Nachherbasis und öffentlicher HTTP200-Gegenprobe; keine pauschale Katalogumklassifizierung. R87: Fünf weitere ACTIVE-Leuchtenprodukte mit bestehender passender Beleuchtungs-Kategorie hg-13 seriell geprüft. Die Kategorie blieb unverändert; je drei fachfremde Tags kategorie-halskette, sort-halsketten und sort-schmuck wurden entfernt. Drei falsche Optionslabels Farbe wurden anhand aktueller Werte zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. Fünf Admin- und fünf öffentliche HTML-/Produkt-JSON-Rücklesungen bestätigen die Diffs; keine pauschale Umklassifizierung und keine Theme-/Kategoriepublikation. R239,15.11.2026: Wandleuchte15491395846529 undDeckenleuchte15460287250817 aktuellvollständiggeprüft:richtigeShopify-/Google-LeuchtenLeafs,echteBilder,27VarianteninklmodernerBarcodeConnection/20Medien. Genau2serielleProductUpdates:ProdukttypAufbewahrung&Organizer→Beleuchtung,je2fachfremdeTagsaufbewahrung/organizerentfernt. NativeVollrücklesungenundöffentlicheProduktJSONsbestätigt,alleanderenFeldergeschütztidentisch. rueckhol-0907bleibt,keineSocialfreigabe;keineMerchant-/Verkaufsableitung. Nichterneutanwenden.",
-      "nextAllowedStep": "R239-IDs15491395846529/15460287250817 nicht nochmals korrigieren. Im nächsten kleinen Sortierschritt wieder aktuelle Leaf/Funktion/Varianten/Barcodes/Tags/Medien/Storefront lesen; nur eindeutige minimale Datenfehler seriell berichtigen und native/öffentliche Rücklesung sichern. Keine bulkTaxonomie-/Menü-/Kanalaktivierung, keine Sperrtagentfernung oder geratenen Materialien/Masse. Theme-VersanddiffR239 getrennt prüfen, nicht mit Produktdaten vermischen.",
+      "belegArt": "SIX_GUARDED_SHOPIFY_WRITES_FIVE_PUBLIC_HTTP_READBACKS_15_NEW_INTERNAL_LINKS",
+      "lastEvidence": "R244: Vier Kategorien (Gaming, Headsets, Gaming-Headsets, Nachttischlampen) und einen bestehenden Headset-Ratgeber live verbessert. Sechs serielle native Mutationen mit frischer Vorher-Gegenprobe/konkretem Diff, userErrors=[] und Vollrücklesung; danach fünf öffentliche Seiten HTTP200, Inhalte/SEO-Titel/-Beschreibung/H1/Canonical und alle18 Inhaltslinks bestätigt.15 Links neu. Artikel-SEO per atomarem Zwei-Schlüssel-CAS mit compareDigest=null nach Nullread. Preise/Varianten/Zuordnungen nicht geschrieben, ausgewählte Schutzfelder nativ identisch. Keine Rang-/Indexierungs-/Verkaufswirkung gemessen.",
+      "nextAllowedStep": "R244-Seiten nicht nochmals als neue Arbeit zählen. Nächste kleine Gruppe PC-Gaming, Kopfhörer & Audio und Spielkonsolen & Retro-Handhelds anhand heute vorhandener HTTP-Köpfe vorbereiten: frische native Beschreibung/Sources und wenige passende Produkte, eindeutige Suchabsicht und Auswahlhilfe statt pauschaler Rabatt-/Versand-Werbetexte. Vor Write Gegenprobe/Diff, danach native Schutzfelder und öffentliche Texte/Meta/Canonical/Links prüfen. Keine neue GSC-Tagesmessung ohne konkreten Anlass, keine Noindex-/Redirect-/Zuordnungsänderung auf Verdacht. Bestehende R239-Theme- und R240-Merchantblocker getrennt erhalten.",
       "blockers": [
         "Connector blockiert MAIN-Dateiwrites/Publish; endgültige Kategorie-Ergänzungen nur imUNPUBLISHED-Theme.",
         "Claude-Empfang/produktiveÜbernahme unbekannt. Alte unbenutzteHeaderdatei konnte wegenConnector-Löschsperre nicht gelöscht werden; keine aktiveReferenz, nicht übernehmen.",
@@ -24791,6 +24819,16 @@
         {
           "path": "dropship/codex-handoff-20261018/PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.json",
           "readAt": "2026-11-15T16:26:36Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-LIVE-VERBESSERUNGEN-20261115-R244.md",
+          "gitBlobSha": "331884573a0aaca46cd3a11c44b6eda699cfc110",
+          "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+          "gitBlobSha": "b22e6eeca4aaa5bd8fdbf0455369e05183820ebe",
+          "readAt": "2026-11-15T18:49:01Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -24949,6 +24987,15 @@
           "previousBelegArt": "R87_FUENF_LEUCHTENPRODUKTE_SCHMUCKTAGS_UND_DREI_OPTIONSLABELS_SERIELL_VERIFIZIERT",
           "previousNextAllowedStep": "R87 abgeschlossen. Im nächsten kleinen Taxonomiestapel jede aktuelle Shopify-Leaf-ID samt Produktfunktion, Varianten, Tags, Bildern und Storefront vollständig live lesen. Bestehende passende Beleuchtungs-Kategorie hg-13 und andere passende Leafs erhalten; nur klar falsche Produkttypen, fachfremde Tags oder eindeutig falsch benannte Optionslabels minimal und seriell korrigieren. Keine Wiederholung R82–R87 und keine pauschale Umklassifizierung. Unklare Geräte, Materialien, Technik sowie historische Handles/Alttexte bleiben bis Quellenbeleg getrennt blockiert; R73-Kategorieerweiterungen und Themeaufgaben nicht mit Produktdaten vermischen.",
           "previousEvidencePreserved": "Exact old lastEvidence retained as prefix; previous source/history entries retained."
+        },
+        {
+          "revision": 244,
+          "at": "2026-11-15T18:49:01Z",
+          "previousState": "r239_two_lamps_type_and_wrong_storage_tags_corrected_native_public_verified",
+          "previousLastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R73,03./04.11.2026: Inhaber präzisierte ausdrücklich bestehendes Banner/Stil behalten und gezielte Verbesserungen/Fehlerbehebung für Stöbern und Suche. Zwischenzeitliche Banner-Neugestaltung verworfen; endgültig9Dateien mit zusätzlichen Unterbereichen/Suche, kleinem ursprünglichem Chips-Auswahlfix und engem44px-Selbstgestalten-CSS. Sechs bestehende Templateabschnitte plus Banner unverändert; im siebten nur führender Liquid-Auswahlblock geändert, Ausgabe/CSS und relative Reihenfolge erhalten. Genau ein neuer geschlossener Zusatzabschnitt; bestehende Links nicht dupliziert. Damen-Schuhe13eigene Kinder statt28fremderGeschwister. Finaler nativer Readback bytegenau, additive Browser-Schlussprobe86/87, einzig datenbedingteHundewelt-Bildverschiebung nachbelegtemProduktausschluss erklärt; MAIN-Dateien unverändert, keine Publikation. 16Haupteinstiege/180gespeicherteKarten begrenzt geprüft. Einzige klare Fehlzuordnung live03.11.22:50:52Z behoben: Hunderttafel16655507915143 aus Hundeweltquelle26063339905 ausgeschlossen; learning.hasProducttrue und Einschlussbedingungen unverändert. Nicht erneut anwenden. Weitere Titelunklarheiten ohne Produktbeleg nicht verschoben. Eigenes altes Header-Snippet im Entwurf unreferenziert; Löschversuch vomConnector blockiert, keinRetry/Umgehung; nicht Teil des finalenPakets. NeuesGitHub-Paket zurÜbernahme, Claude-Empfang unbekannt. 466bestehendeFRLücken unverändert; nur5neuegenutzteNavschlüsseljeDE/FR/EN. R81: Historischer Aktivexport enthält103 hochsichere Typ-/Tag-Widersprüche und66 weitere Prüffälle. Darunter36 Haustier-,35 Küchen- und22 Beleuchtungsfälle;62 echte Lampen/Küchengeräte sind als Aufbewahrung & Organizer typisiert. Aktueller Livefall Katzenhängematte bestätigt falsche Shopify-Taxonomie Reisenäpfe und Google Pet Bowls/Feeders/Waterers. Export enthält keine vollständigen aktuellen Shopify-/Google-Taxonomiefelder; keine Vollquote und keine pauschale Umklassifizierung. R83, 04.11.2026: Fünf P0-Produkte aktuell taxonomisch geprüft. Seifenspender-Leaf bleibt passend. Badeanzug kann klar aa-1-20-22 Einteilige Badeanzüge, Katzenspielzeug ap-2-2-5-5 Interaktives Spielzeug zugeordnet werden; Jumpsuit-Tags beziehungsweise hund sind fachfremd. Für Hopfenfilter und Alkoholmeter kein sauberer spezifischer Leaf, medizinische Alkoholmessgeräte-Kategorie ausdrücklich verworfen. Keine Änderung. R84, 04.11.2026: Badeanzug auf Leaf aa-1-20-22 und Damen-Bademode gesetzt; Katzenspielzeug auf Leaf ap-2-2-5-5 gesetzt und fachfremden hund-Tag entfernt. Kaffeemaschine und Vakuumierer auf Produkttyp Küche & Bar gesetzt, bestehende korrekte Leafs hg-11-7-4 beziehungsweise hg-11-7-48 erhalten. Hopfenfilter-Taxonomie ae-2-3 unverändert. Alle Änderungen seriell nativ und öffentlich bestätigt; keine pauschale Katalogumklassifizierung. R85: Nudelmaschine15495105184129 vom falschen Aufbewahrungstyp auf Küche & Bar gestellt; offizielle Leaf-Kategorie hg-11-7-36 erhalten, zwei Aufbewahrungstags entfernt. Sicherheitsstopp nach genau1Write wegen fehlender Barcode-Vorherbasis. R86: Eisraspler15448963645825 auf Küche & Bar und drei Wandleuchten15454472012161/15465835233665/15476180451713 auf Beleuchtung gestellt; bestehende passende Leafs hg-11-7-27 beziehungsweise hg-13-9-4 erhalten. Aufbewahrung/Organizer und beim Eisraspler zusätzlich der falsche Mixer-/Entsafter-/Zerkleinerer-Sortiertag entfernt. Alle vier seriell mit vollständiger Vorher-/Nachherbasis und öffentlicher HTTP200-Gegenprobe; keine pauschale Katalogumklassifizierung. R87: Fünf weitere ACTIVE-Leuchtenprodukte mit bestehender passender Beleuchtungs-Kategorie hg-13 seriell geprüft. Die Kategorie blieb unverändert; je drei fachfremde Tags kategorie-halskette, sort-halsketten und sort-schmuck wurden entfernt. Drei falsche Optionslabels Farbe wurden anhand aktueller Werte zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. Fünf Admin- und fünf öffentliche HTML-/Produkt-JSON-Rücklesungen bestätigen die Diffs; keine pauschale Umklassifizierung und keine Theme-/Kategoriepublikation. R239,15.11.2026: Wandleuchte15491395846529 undDeckenleuchte15460287250817 aktuellvollständiggeprüft:richtigeShopify-/Google-LeuchtenLeafs,echteBilder,27VarianteninklmodernerBarcodeConnection/20Medien. Genau2serielleProductUpdates:ProdukttypAufbewahrung&Organizer→Beleuchtung,je2fachfremdeTagsaufbewahrung/organizerentfernt. NativeVollrücklesungenundöffentlicheProduktJSONsbestätigt,alleanderenFeldergeschütztidentisch. rueckhol-0907bleibt,keineSocialfreigabe;keineMerchant-/Verkaufsableitung. Nichterneutanwenden.",
+          "previousNextAllowedStep": "R239-IDs15491395846529/15460287250817 nicht nochmals korrigieren. Im nächsten kleinen Sortierschritt wieder aktuelle Leaf/Funktion/Varianten/Barcodes/Tags/Medien/Storefront lesen; nur eindeutige minimale Datenfehler seriell berichtigen und native/öffentliche Rücklesung sichern. Keine bulkTaxonomie-/Menü-/Kanalaktivierung, keine Sperrtagentfernung oder geratenen Materialien/Masse. Theme-VersanddiffR239 getrennt prüfen, nicht mit Produktdaten vermischen.",
+          "previousBelegArt": "TWO_CURRENT_ACTIVE_PRODUCTS_FULL_PROTECTION_BASELINES_TWO_SERIAL_WRITES_NATIVE_AND_PUBLIC_READBACK",
+          "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json"
         }
       ],
       "currentMainWidthCandidateR53": {
@@ -25259,6 +25306,15 @@
         "retries": 0,
         "publicReadbacks": 2,
         "googleFeedAdoption": "unknown_not_queried"
+      },
+      "run244": {
+        "at": "2026-11-15T18:49:01Z",
+        "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+        "scope": "4 collections + 1 article",
+        "writes": 6,
+        "publicPagesConfirmed": 5,
+        "newEditorialLinks": 15,
+        "rankSalesLiftUnknown": true
       }
     },
     {
@@ -33001,6 +33057,36 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 244,
+      "at": "2026-11-15T18:49:01Z",
+      "actor": "Codex",
+      "summary": "Vier Kategorien und einen bestehenden Headset-Kaufratgeber mit eigenen Suchtexten, belegten Auswahlhilfen und15 neuen internen Links live verbessert.6 native Writes samt frischen Gegenproben und Rücklesungen;5 öffentliche HTTP200-Prüfungen inklusive Meta/Canonical/H1/Links bestanden. Keine neuen Tagesreports oder Verkaufs-/Rankingbehauptungen,24Aufgaben/Historie erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-LIVE-VERBESSERUNGEN-20261115-R244.md",
+          "gitBlobSha": "331884573a0aaca46cd3a11c44b6eda699cfc110",
+          "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+          "gitBlobSha": "b22e6eeca4aaa5bd8fdbf0455369e05183820ebe",
+          "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CONTENT-DIFF-20261115-R244.patch",
+          "gitBlobSha": "d2be69f90187f717b87f56c37413cf848deb6f22",
+          "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CONTENT-PLAN-20261115-R244.json",
+          "gitBlobSha": "7be3688ddfdc69d13ece993630c8926f1c8ad9c2",
+          "readAt": "2026-11-15T18:49:01Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "Claude Code receipt unknown"
     }
   ],
   "salesGoal": {
@@ -60192,5 +60278,19 @@
     "musicRepoHashConfirmed": true,
     "consolidatedDayTable": "dropship/codex-handoff-20261018/ABENDPAKET-20261115-R243.md",
     "receiptState": "unknown_no_new_receipt"
+  },
+  "run244": {
+    "at": "2026-11-15T18:49:01Z",
+    "localRun": "15.11.2026 ca19:49Europe/Zurich",
+    "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
+    "request": "viel bessere seo",
+    "scope": "Four current categories and existing gaming-headset guide; twelve related URLs checked, no full catalogue scan",
+    "nativeWrites": 6,
+    "publicPagesConfirmed": 5,
+    "newEditorialLinks": 15,
+    "dailyReportsRepeated": false,
+    "purchaseWatchEnded": true,
+    "professionalMasterHoldsUntouched": true,
+    "receiptState": "Claude Code receipt unknown"
   }
 }

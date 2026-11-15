@@ -1,3 +1,19 @@
+# R244 – Fünf SEO-Seiten live verbessert – 15.11.2026
+
+Auf den ausdrücklichen Auftrag «viel bessere seo» wurden **Gaming, Headsets, Gaming-Headsets, Nachttischlampen und der bestehende Gaming-Headset-Ratgeber** mit konkreten Auswahlhilfen und präzisen Suchtexten verbessert. Vier Collection-Updates, ein Article-Update und ein atomarer SEO-Metafield-Write: **sechs native Writes**, userErrors jeweils leer, keine Retries oder unklaren Writes. Fünf öffentliche HTTP200-Rücklesungen bestätigen neue Texte, SEO-Titel/-Beschreibungen, erhaltene H1 und passende Self-Canonicals.
+
+**15 neue redaktionelle Links**, jetzt18 zwischen Ratgeber, Kategorien und passenden Untergruppen. «Headsets» und «Gaming-Headsets» haben unterschiedliche Suchabsichten; die Gaming-Gruppe enthält auch Zubehör, deshalb keine pauschale Mikrofonzusage. Nachttischlampen haben keine einheitliche Akku-/Touch-/Warmlicht-Zusage mehr. Der Ratgeber erklärt Plattform/Klinke/USB/Funk und Lieferumfang, korrigiert «keine Latenz», enthält drei konkrete FAQ und bezeichnet sich als Auswahlhilfe, nicht als eigener Produkttest. Doppelte Titel-H2 entfernt; Artikel-Titel/Handle und ursprüngliches Publikationsdatum erhalten.
+
+Shop luxestyle.ch/CHF/Europe/Zurich und Metricool6227837 samt sechs Kanälen frisch passend. Preise/Varianten/Zuordnungsregeln, Versandgrenzen und Einstellungen nicht geschrieben. Native Schutzfelder, Source-IDs, Zählwerte und je sechs Produktstichproben erhalten; kein Vollkataloggleichheitsbeleg behauptet. Alle geplanten Links öffentlich im Main-Inhalt vorhanden; zwölf unterschiedliche Ziel-URLs erreichbar geprüft. Zwei JSON-LD-Blöcke pro geänderter Seite syntaktisch gültig, keine Rich-Result-Abnahme.
+
+Firecrawl-DOM enthielt einen eingebetteten Shop-Login mit robots=none. Der originale HTTP-Seitenkopf war jeweils frei davon: kein falscher Noindex-Befund und kein Robots-Write. Der separate Schema-Validator übersprang die Prüfung; native Mutationen validierten bei Ausführung und wurden frisch zurückgelesen. Keine Installationen; zwei lokale Vorbereitungsfehler vor Writes korrigiert.
+
+Nächste begrenzte Gruppe: **PC-Gaming, Kopfhörer & Audio, Retro-Handhelds**, erst nach frischer nativer Quellen-/Stichprobenprüfung. Heute keine weitere GSC-/Social-/Klaviyo-/Umsatz-/Bestellmessung, keine Indexierungsanfrage und keine Verkaufs- oder Rankingwirkung behauptet. R243-Master-Sperren, R240-Merchant-/AUTOFEED- sowie R239/R235-Themeblocker unverändert erhalten. Keine neue Automation oder Frequenzänderung. Claude-Code-Empfang unbekannt.
+
+[Live-Bericht](SEO-LIVE-VERBESSERUNGEN-20261115-R244.md) · [Belege](SEO-UMSETZUNGSBELEGE-20261115-R244.json) · [Konkreter Diff](SEO-CONTENT-DIFF-20261115-R244.patch).
+
+[LUXESTYLE_R244_20261115]
+
 # R243 – Abendlauf: vier Master-Sperren wiederhergestellt, Wochenplan und Tagesstand – 15.11.2026
 
 **Vier tatsächliche Metricool-Updates:** Die geschützten R176-Masterobjekte waren erneut draft=false/globalautoPublish=true. Alle vier aktuellen MP4-URLs frisch geladen und bytegleich mit dem weiterhin nicht freigegebenen technischen18s/25fps-Reviewexport fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a gefunden. Nach frischer Shop-/Marken-/Kanalprüfung und explizitem Diff wurden dieselben UUIDs wieder **draft=true/globalautoPublish=false** gesetzt und einzeln zurückgelesen:

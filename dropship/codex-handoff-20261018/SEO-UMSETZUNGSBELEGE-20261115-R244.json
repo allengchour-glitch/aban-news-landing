@@ -1,0 +1,2034 @@
+{
+  "schemaVersion": 1,
+  "revision": 244,
+  "at": "2026-11-15T18:49:01Z",
+  "localDate": "2026-11-15",
+  "timezone": "Europe/Zurich",
+  "request": "viel bessere seo",
+  "identity": {
+    "shopId": "gid://shopify/Shop/94368563585",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "timezone": "Europe/Zurich",
+    "metricoolBrandId": 6227837,
+    "allSixChannelsMatched": true
+  },
+  "scope": {
+    "nativeCollections": 4,
+    "article": 1,
+    "collectionProductSamples": 24,
+    "fullCatalogueScanned": false,
+    "publicTargetPages": 5,
+    "relatedLinkTargets": "12 distinct URLs checked HTTP200 across root and independent audit, including existing parent",
+    "noNewSearchAnalyticsRead": true,
+    "gscReused": "SEO-LIVE-KORREKTUREN-20261115-R226.json;20rows,truncated,true;finalestimate12Nov"
+  },
+  "changes": {
+    "shopifyMutationCalls": 6,
+    "collectionWrites": 4,
+    "articleBodyWrites": 1,
+    "articleSeoMetafieldsWrites": 1,
+    "userErrors": [],
+    "retries": 0,
+    "uncertainWrites": 0,
+    "collectionFields": [
+      "descriptionHtml",
+      "seo.title",
+      "seo.description"
+    ],
+    "articleFields": [
+      "body",
+      "summary",
+      "global.title_tag",
+      "global.description_tag"
+    ],
+    "articleSeoCompareDigest": null,
+    "pricesVariantsImagesHandlesTitlesStatusSortMembershipNotInWritePayload": true
+  },
+  "native": {
+    "before": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Collection/687966814593",
+          "title": "Gaming",
+          "handle": "gaming",
+          "updatedAt": "2026-11-11T21:17:35Z",
+          "descriptionHtml": "<p>Level up: In der Gaming-Welt von LuxeStyle findest du über 360 Artikel — Controller und Gamepads für PC, PlayStation und Xbox, mechanische Tastaturen, Gaming-Mäuse und jede Menge Zubehör für dein Setup. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/pc-gaming\">PC Gaming</a></p><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/elektronik-technik\">Technik &amp; Gaming</a></p><!-- /ls-verwandt -->",
+          "seo": {
+            "title": "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle",
+            "description": "Gaming-Zubehör: Bluetooth-Controller und Gamepads für Konsole und Handy, Ladestationen, Adapter und Retro-Konsolen. Bezahlen mit TWINT oder Klarna."
+          },
+          "image": {
+            "id": "gid://shopify/CollectionImage/2066480595329",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4719512132081_M0311582_P00.jpg?v=1781640717",
+            "altText": "🎮 Gaming",
+            "width": 1200,
+            "height": 1200
+          },
+          "productsCount": {
+            "count": 731,
+            "precision": "EXACT"
+          },
+          "sortOrder": "MANUAL",
+          "templateSuffix": null,
+          "sources": [
+            {
+              "__typename": "CollectionConditionsSource",
+              "id": "gid://shopify/CollectionConditionsSource/5581930881",
+              "title": "Untitled Source"
+            }
+          ],
+          "resourcePublicationsCount": {
+            "count": 9
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15452705358209",
+                "title": "Orion-Android-Gamepad",
+                "handle": "orion-android-gamepad-714816",
+                "status": "ACTIVE",
+                "tags": [
+                  "auswahl-nachgeruestet",
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-controller-handy-mobile",
+                  "sort-gamepads-controller",
+                  "sort-pc-komponenten",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/orion-android-gamepad-714816"
+              },
+              {
+                "id": "gid://shopify/Product/15452706013569",
+                "title": "Schlicht Farbe Jugendliche Kabelgebundener Game-Controller",
+                "handle": "schlicht-farbe-jugendliche-kabelgebundener-gam-692288",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-gamepads-controller",
+                  "sort-pc-komponenten",
+                  "varianten-nachgezogen-1025",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/schlicht-farbe-jugendliche-kabelgebundener-gam-692288"
+              },
+              {
+                "id": "gid://shopify/Product/15452706046337",
+                "title": "Wireless Gamepad für PC, TV & Mobilgeräte",
+                "handle": "wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "mobilgeraete",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-controller-bluetooth-kabellos",
+                  "sort-controller-handy-mobile",
+                  "sort-controller-konsole-pc",
+                  "sort-gamepads-controller",
+                  "sort-pc-komponenten",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232"
+              },
+              {
+                "id": "gid://shopify/Product/15479434871169",
+                "title": "Brook Wingman XB PS3/PS4 Controller Adapter",
+                "handle": "brook-wingman-xb-ps3-ps4-controller-adapter-460160",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-elektronik-kleinteile",
+                  "sort-konsolen",
+                  "sort-konsolen-zubehoer-ladestationen",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/brook-wingman-xb-ps3-ps4-controller-adapter-460160"
+              },
+              {
+                "id": "gid://shopify/Product/15479435002241",
+                "title": "Aolion PG-NX1056 Wireless Bluetooth Controller",
+                "handle": "aolion-pg-nx1056-wireless-bluetooth-controller-550912",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-controller-bluetooth-kabellos",
+                  "sort-gamepads-controller",
+                  "sort-pc-komponenten",
+                  "varianten-nachgezogen-1025",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/aolion-pg-nx1056-wireless-bluetooth-controller-550912"
+              },
+              {
+                "id": "gid://shopify/Product/15479484055937",
+                "title": "Schutzhülle «Mysterious Egypt» für Nintendo Switch",
+                "handle": "schutzhulle-mysterious-egypt-fur-nintendo-swit-48277a",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "huelle",
+                  "konsole",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "schutzhuelle",
+                  "sort-konsolen",
+                  "sort-konsolen-huellen-taschen",
+                  "sort-konsolen-zubehoer-ladestationen",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/schutzhulle-mysterious-egypt-fur-nintendo-swit-48277a"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/755392315783",
+          "title": "Nachttischlampen",
+          "handle": "nachttischlampen",
+          "updatedAt": "2026-10-26T06:49:04Z",
+          "descriptionHtml": "<p>Nachttischlampen und Bettlampen mit Touch-Dimmer, warmem Licht und Akku — für ruhige Abende im Schlafzimmer.</p>",
+          "seo": {
+            "title": "Nachttischlampen online kaufen | LuxeStyle CH",
+            "description": "Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+          },
+          "image": {
+            "id": "gid://shopify/CollectionImage/2132647739783",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-nachttischlampen.jpg?v=1792997344",
+            "altText": "Nachttischlampen – LuxeStyle-Pinnwand",
+            "width": 2000,
+            "height": 1000
+          },
+          "productsCount": {
+            "count": 34,
+            "precision": "EXACT"
+          },
+          "sortOrder": "MANUAL",
+          "templateSuffix": null,
+          "sources": [
+            {
+              "__typename": "CollectionConditionsSource",
+              "id": "gid://shopify/CollectionConditionsSource/64276332935",
+              "title": "Untitled Source"
+            }
+          ],
+          "resourcePublicationsCount": {
+            "count": 7
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15452605481345",
+                "title": "3D-Teddy-Nachtlampe mit Farbwechsel",
+                "handle": "3d-teddy-lampe-a92a5f",
+                "status": "ACTIVE",
+                "tags": [
+                  "beleuchtung",
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "geschenkwelt-preishits",
+                  "lampe",
+                  "neu",
+                  "rueckhol-0907",
+                  "sort-nachttischlampen",
+                  "trend",
+                  "varianten-nachgezogen-1025",
+                  "video-hit",
+                  "viral"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/3d-teddy-lampe-a92a5f"
+              },
+              {
+                "id": "gid://shopify/Product/16655152906631",
+                "title": "Nachttischlampe Vintage-Stil",
+                "handle": "nachttischlampe-vintage-stil-612200",
+                "status": "ACTIVE",
+                "tags": [
+                  "beleuchtung",
+                  "cj-real",
+                  "dekoration",
+                  "dropship",
+                  "lampe",
+                  "licht",
+                  "neuheit",
+                  "sort-nachttischlampen",
+                  "sort-retro",
+                  "wohnen"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/nachttischlampe-vintage-stil-612200"
+              },
+              {
+                "id": "gid://shopify/Product/16655152120199",
+                "title": "Nachtlicht für Schlafzimmer mit eingebaute Batterie",
+                "handle": "nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800",
+                "status": "ACTIVE",
+                "tags": [
+                  "auswahl-offen",
+                  "beleuchtung",
+                  "cj-real",
+                  "dekoration",
+                  "dropship",
+                  "geschenkwelt-unter30",
+                  "geschenkwelt-wichtel",
+                  "kat-nachtlicht-projektor",
+                  "lampe",
+                  "licht",
+                  "neuheit",
+                  "sort-nachtlichter",
+                  "sort-nachttischlampen",
+                  "varianten-nachgezogen-1025",
+                  "wohnen"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800"
+              },
+              {
+                "id": "gid://shopify/Product/16652099551623",
+                "title": "Retro Nachttischlampe mit USB-Ladefunktion",
+                "handle": "retro-nachttischlampe-mit-usb-ladefunktion-603200",
+                "status": "ACTIVE",
+                "tags": [
+                  "auswahl-nachgeruestet",
+                  "beleuchtung",
+                  "cj-real",
+                  "dekoration",
+                  "dropship",
+                  "lampe",
+                  "licht",
+                  "neuheit",
+                  "sort-nachttischlampen",
+                  "sort-retro",
+                  "wohnen"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/retro-nachttischlampe-mit-usb-ladefunktion-603200"
+              },
+              {
+                "id": "gid://shopify/Product/16638321328519",
+                "title": "Pilz Tischlampe – Nachtlicht für dein Schlafzimmer",
+                "handle": "pilz-tischlampe-nachtlicht-fur-dein-schlafzimm-628600",
+                "status": "ACTIVE",
+                "tags": [
+                  "auswahl-nachgeruestet",
+                  "beleuchtung",
+                  "cj-real",
+                  "dekoration",
+                  "dropship",
+                  "geschenkwelt-unter30",
+                  "geschenkwelt-wichtel",
+                  "kat-nachtlicht-projektor",
+                  "lampe",
+                  "licht",
+                  "neuheit",
+                  "sort-nachtlichter",
+                  "sort-nachttischlampen",
+                  "wohnen"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/pilz-tischlampe-nachtlicht-fur-dein-schlafzimm-628600"
+              },
+              {
+                "id": "gid://shopify/Product/16638320411015",
+                "title": "Moderne Nachttischlampe mit USB-Ladefunktion",
+                "handle": "moderne-nachttischlampe-mit-usb-ladefunktion-607400",
+                "status": "ACTIVE",
+                "tags": [
+                  "auswahl-nachgeruestet",
+                  "beleuchtung",
+                  "cj-real",
+                  "dekoration",
+                  "dropship",
+                  "lampe",
+                  "licht",
+                  "neuheit",
+                  "sort-nachttischlampen",
+                  "wohnen"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/moderne-nachttischlampe-mit-usb-ladefunktion-607400"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/756133101959",
+          "title": "Headsets",
+          "handle": "kopfhoerer-headsets-mikrofon",
+          "updatedAt": "2026-11-01T22:23:04Z",
+          "descriptionHtml": "<p>Headsets aus unserer Auswahl «Kopfhörer, Ohrhörer &amp; Headsets».</p>",
+          "seo": {
+            "title": "Headsets online kaufen | LuxeStyle CH",
+            "description": "Headsets online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+          },
+          "image": null,
+          "productsCount": {
+            "count": 30,
+            "precision": "EXACT"
+          },
+          "sortOrder": "BEST_SELLING",
+          "templateSuffix": null,
+          "sources": [
+            {
+              "__typename": "CollectionConditionsSource",
+              "id": "gid://shopify/CollectionConditionsSource/64796623239",
+              "title": "Untitled Source"
+            }
+          ],
+          "resourcePublicationsCount": {
+            "count": 7
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/16613801755015",
+                "title": "Bluetooth-Headset mit Stereo-Sound und Sprachsteuerung",
+                "handle": "bluetooth-headset-mit-stereo-sound-und-sprachs-443520",
+                "status": "ACTIVE",
+                "tags": [
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "neuheit",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-kabellos-bluetooth",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech",
+                  "trend"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/bluetooth-headset-mit-stereo-sound-und-sprachs-443520"
+              },
+              {
+                "id": "gid://shopify/Product/15518808867201",
+                "title": "Smart Power Bank Headset mit Multimedia Display",
+                "handle": "smart-power-bank-headset-mit-multimedia-displa-602700",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "neuheit",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/smart-power-bank-headset-mit-multimedia-displa-602700"
+              },
+              {
+                "id": "gid://shopify/Product/15518808703361",
+                "title": "In-Ear Wireless Bluetooth Headset Cool Mecha",
+                "handle": "in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "neuheit",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-in-ear",
+                  "sort-kopfhoerer-kabellos-bluetooth",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech",
+                  "varianten-nachgezogen-1025"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800"
+              },
+              {
+                "id": "gid://shopify/Product/15518808244609",
+                "title": "True Wireless In-Ear Bluetooth Headset",
+                "handle": "true-wireless-in-ear-bluetooth-headset-623300",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "neuheit",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-in-ear",
+                  "sort-kopfhoerer-kabellos-bluetooth",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech",
+                  "varianten-nachgezogen-1025"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/true-wireless-in-ear-bluetooth-headset-623300"
+              },
+              {
+                "id": "gid://shopify/Product/15510327886209",
+                "title": "Subwoofer Bluetooth Headset mit LED",
+                "handle": "subwoofer-bluetooth-headset-mit-led-28eb15",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "menue-kern-0906",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-kabellos-bluetooth",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech",
+                  "trend",
+                  "varianten-nachgezogen-1025"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/subwoofer-bluetooth-headset-mit-led-28eb15"
+              },
+              {
+                "id": "gid://shopify/Product/15503150154113",
+                "title": "Tarnfarben Headset mit Mikrofon",
+                "handle": "tarnfarben-headset-mit-mikrofon-d77d20",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "elektronik",
+                  "gadget",
+                  "sort-kopfhoerer-audio",
+                  "sort-kopfhoerer-headsets-mikrofon",
+                  "sort-kopfhoerer-ohrhoerer",
+                  "tech",
+                  "varianten-nachgezogen-1025"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/tarnfarben-headset-mit-mikrofon-d77d20"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/689353490817",
+          "title": "Gaming-Headsets",
+          "handle": "gaming-headsets",
+          "updatedAt": "2026-10-05T06:00:25Z",
+          "descriptionHtml": "<p>Hier findest du dein perfektes Gaming-Headset, um alles zu hören und klar zu sprechen, damit du gewinnst! Ob Over-Ear Bluetooth-Modelle mit RGB und Mikrofon oder Sets wie das 4-in-1 mit Tastatur, Maus und Mauspad – wir haben, was du brauchst. Entdecke 7.1 Surround-Sound und tauche voll ins Spiel ein.</p><p>🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->",
+          "seo": {
+            "title": "Gaming-Headsets kaufen Schweiz | LuxeStyle",
+            "description": "Gaming-Headsets online kaufen bei LuxeStyle Schweiz – Lieferung in die ganze Schweiz, 30 Tage Rückgabe, 10% Rabatt mit WELCOME10."
+          },
+          "image": {
+            "id": "gid://shopify/CollectionImage/2066555076993",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5099206082410_I0_ok2.jpg?v=1782491673",
+            "altText": null,
+            "width": 1200,
+            "height": 1200
+          },
+          "productsCount": {
+            "count": 30,
+            "precision": "EXACT"
+          },
+          "sortOrder": "CREATED_DESC",
+          "templateSuffix": null,
+          "sources": [
+            {
+              "__typename": "CollectionConditionsSource",
+              "id": "gid://shopify/CollectionConditionsSource/25692897665",
+              "title": "Untitled Source"
+            }
+          ],
+          "resourcePublicationsCount": {
+            "count": 9
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15449030951297",
+                "title": "Gaming Headset mit Mikrofon PS4 – Für klaren Sound!",
+                "handle": "gaming-headset-mit-mikrofon-ps4-fur-klaren-sound-890455",
+                "status": "DRAFT",
+                "tags": [
+                  "bigbuy",
+                  "dropship",
+                  "gaming",
+                  "geschenk",
+                  "hype-2026",
+                  "lager-unbekannt-draft",
+                  "tech"
+                ],
+                "onlineStoreUrl": null
+              },
+              {
+                "id": "gid://shopify/Product/15449030721921",
+                "title": "Gaming Headset mit Mikrofon – Für immersive Sounds!",
+                "handle": "gaming-headset-mit-mikrofon-fur-immersive-sounds-889037",
+                "status": "DRAFT",
+                "tags": [
+                  "bigbuy",
+                  "dropship",
+                  "gaming",
+                  "geschenk",
+                  "hype-2026",
+                  "nicht-lieferbar-ch",
+                  "tech"
+                ],
+                "onlineStoreUrl": null
+              },
+              {
+                "id": "gid://shopify/Product/15449030164865",
+                "title": "Gaming Headset mit Mikrofon – Tauche ins Spiel ein!",
+                "handle": "gaming-headset-mit-mikrofon-tauche-ins-spiel-ein-857773",
+                "status": "DRAFT",
+                "tags": [
+                  "bigbuy",
+                  "dropship",
+                  "gaming",
+                  "geschenk",
+                  "hype-2026",
+                  "lager-unbekannt-draft",
+                  "tech"
+                ],
+                "onlineStoreUrl": null
+              },
+              {
+                "id": "gid://shopify/Product/15449030001025",
+                "title": "Gaming Headset mit Mikrofon – Für klaren Teamspeak!",
+                "handle": "gaming-headset-mit-mikrofon-fur-klaren-teamspeak-847752",
+                "status": "DRAFT",
+                "tags": [
+                  "bigbuy",
+                  "dropship",
+                  "gaming",
+                  "geschenk",
+                  "hype-2026",
+                  "lager-unbekannt-draft",
+                  "tech"
+                ],
+                "onlineStoreUrl": null
+              },
+              {
+                "id": "gid://shopify/Product/15448848925057",
+                "title": "Kühlstation für Xbox Series S mit Ladegerät & Headset-Halter",
+                "handle": "xbox-series-s-kuhlstation-mit-ladegerat-headse-235136",
+                "status": "ACTIVE",
+                "tags": [
+                  "bild-ok",
+                  "bildmass-ok-0906",
+                  "cj-real",
+                  "dropship",
+                  "gadgets",
+                  "gaming",
+                  "konsole",
+                  "kuehlstation",
+                  "ladegeraet",
+                  "Ladegerät",
+                  "ps4",
+                  "ps5",
+                  "rueckhol-0907",
+                  "sort-elektronik-kleinteile",
+                  "sort-konsolen",
+                  "sort-konsolen-ladestationen",
+                  "sort-konsolen-zubehoer-ladestationen",
+                  "xbox"
+                ],
+                "onlineStoreUrl": "https://luxestyle.ch/products/xbox-series-s-kuhlstation-mit-ladegerat-headse-235136"
+              },
+              {
+                "id": "gid://shopify/Product/15447965794689",
+                "title": "Gaming Headset mit Mikrofon Nacon RIG600PROHS",
+                "handle": "gaming-headset-mit-mikrofon-nacon-rig600prohs-758682",
+                "status": "DRAFT",
+                "tags": [
+                  "ausverkauft-lieferant",
+                  "bigbuy",
+                  "dropship",
+                  "gaming",
+                  "geschenk",
+                  "hype-2026",
+                  "tech"
+                ],
+                "onlineStoreUrl": null
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        }
+      ],
+      "article": {
+        "id": "gid://shopify/Article/1001927704961",
+        "title": "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich",
+        "handle": "gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+        "body": "<h2>Gaming-Headset kaufen: Sound, Mikrofon &amp; Komfort im Vergleich</h2>\n\n<p>Du bist ein leidenschaftlicher Gamer und suchst nach dem perfekten Gaming-Headset, das dich noch tiefer ins Spiel eintauchen lässt? Die Auswahl ist riesig, und es kann überwältigend sein, das richtige Modell zu finden. Keine Sorge, wir helfen dir dabei! In diesem Kaufratgeber erfährst du, worauf es wirklich ankommt, damit du eine fundierte Entscheidung treffen kannst, die du nicht bereuen wirst.</p>\n\n<p>Ein gutes Gaming-Headset ist mehr als nur ein Kopfhörer mit Mikrofon. Es ist dein Ohr in der virtuellen Welt, dein Kommunikationsmittel mit deinem Team und dein Schlüssel zu einem immersiven Erlebnis. Lass uns gemeinsam die wichtigsten Aspekte beleuchten, damit du das Headset findest, das perfekt zu dir und deinem Spielstil passt.</p>\n\n<h2>Der Sound: Tauche ein ins Spielgeschehen</h2>\n\n<p>Der Klang ist das Herzstück jedes Gaming-Headsets. Doch was bedeutet \"guter Sound\" beim Gaming?</p>\n\n<ul>\n    <li>\n<strong>Präzise Ortung:</strong> Besonders bei Shootern ist es entscheidend, Schritte, Schüsse oder andere Geräusche präzise im Raum orten zu können. Achte auf Headsets mit einem breiten Frequenzbereich und einer klaren Stereo- oder Surround-Sound-Wiedergabe. Virtueller Surround-Sound (z.B. 7.1) kann hier einen Vorteil bieten, indem er ein räumlicheres Klangbild simuliert.</li>\n    <li>\n<strong>Klarheit und Detailreichtum:</strong> Jedes Detail zählt – sei es das Rascheln von Blättern oder das ferne Knistern eines Feuers. Ein ausgewogenes Klangprofil, das weder zu basslastig noch zu höhenbetont ist, sorgt dafür, dass du alle wichtigen Informationen erhältst, ohne dass bestimmte Frequenzen andere überdecken.</li>\n    <li>\n<strong>Bass:</strong> Ein satter Bass kann Explosionen und tiefe Töne eindrucksvoll wiedergeben und die Immersion steigern. Achte jedoch darauf, dass der Bass nicht zu dominant ist und die Klarheit anderer Frequenzen beeinträchtigt.</li>\n</ul>\n\n<p><strong>Typischer Fehler:</strong> Viele konzentrieren sich nur auf den Bass. Ein zu starker Bass kann jedoch dazu führen, dass wichtige Mitten- und Hochtöne, die für die Ortung entscheidend sind, untergehen. Achte auf ein ausgewogenes Klangbild.</p>\n\n<h2>Das Mikrofon: Klare Kommunikation ist alles</h2>\n\n<p>Gerade im Multiplayer-Gaming ist ein klares Mikrofon unerlässlich. Dein Team muss dich verstehen können, ohne dass Hintergrundgeräusche stören.</p>\n\n<ul>\n    <li>\n<strong>Geräuschunterdrückung:</strong> Ein gutes Gaming-Mikrofon verfügt über eine effektive Geräuschunterdrückung, die Umgebungsgeräusche wie Tastaturklappern, Lüftergeräusche oder Gespräche im Raum herausfiltert. So kommt deine Stimme klar und deutlich bei deinen Mitspielern an.</li>\n    <li>\n<strong>Sprachqualität:</strong> Achte auf eine natürliche und verständliche Sprachwiedergabe. Dein Mikrofon sollte deine Stimme nicht verzerren oder zu blechern klingen lassen.</li>\n    <li>\n<strong>Flexibilität und Stummschaltung:</strong> Ein flexibles Mikrofon, das du bei Bedarf wegschieben oder hochklappen kannst, ist praktisch. Eine leicht erreichbare Stummschaltung (Mute-Taste) ist ebenfalls ein Muss, um private Gespräche oder Husten schnell auszublenden.</li>\n</ul>\n\n<p><strong>Kauf-Tipp:</strong> Lies dir Testberichte durch oder schau dir Videos an, in denen die Mikrofonqualität demonstriert wird. Das gibt dir einen guten Eindruck, wie klar deine Stimme klingen wird.</p>\n\n<h2>Tragekomfort: Stundenlanges Gaming ohne Druck</h2>\n\n<p>Ein Gaming-Headset trägst du oft stundenlang. Daher ist der Tragekomfort ein absolut entscheidender Faktor, der oft unterschätzt wird.</p>\n\n<ul>\n    <li>\n<strong>Gewicht:</strong> Ein leichtes Headset beugt Ermüdung vor. Schwerere Modelle können nach einiger Zeit unangenehm werden.</li>\n    <li>\n<strong>Ohrpolster:</strong> Hier gibt es verschiedene Materialien. Stoffpolster (Velours) sind atmungsaktiver und beugen Schwitzen vor, während Kunstlederpolster oft eine bessere Geräuschisolation bieten. Achte darauf, dass die Polster groß genug sind, um deine Ohren vollständig zu umschließen (Over-Ear) und nicht auf sie drücken.</li>\n    <li>\n<strong>Kopfbügel:</strong> Der Kopfbügel sollte gut gepolstert und verstellbar sein, um den Druck gleichmäßig zu verteilen. Ein zu enger Bügel kann zu Druckstellen führen.</li>\n    <li>\n<strong>Anpressdruck:</strong> Das Headset sollte fest genug sitzen, um nicht zu verrutschen, aber nicht so fest, dass es drückt.</li>\n</ul>\n\n<p><strong>Wichtiger Hinweis:</strong> Komfort ist sehr subjektiv. Was für den einen perfekt ist, kann für den anderen unbequem sein. Wenn möglich, probiere verschiedene Modelle an.</p>\n\n<h2>Kabelgebunden oder kabellos: Was passt zu dir?</h2>\n\n<p>Beide Varianten haben ihre Vor- und Nachteile:</p>\n\n<ul>\n    <li>\n<strong>Kabelgebundene Headsets:</strong>\n        <ul>\n            <li>\n<strong>Vorteile:</strong> Oft günstigere Preise, keine Latenz, keine Akkulaufzeit-Sorgen, in der Regel zuverlässiger.</li>\n            <li>\n<strong>Nachteile:</strong> Eingeschränkte Bewegungsfreiheit, Kabel können stören oder kaputtgehen.</li>\n        </ul>\n    </li>\n    <li>\n<strong>Kabellose Headsets (Funk/Bluetooth):</strong>\n        <ul>\n            <li>\n<strong>Vorteile:</strong> Maximale Bewegungsfreiheit, kein Kabelgewirr.</li>\n            <li>\n<strong>Nachteile:</strong> Höherer Preis, Akkulaufzeit beachten (regelmäßiges Laden), geringe Latenz kann bei kompetitiven Spielen ein Problem sein (obwohl moderne Funktechnologien hier sehr gut sind), manchmal Interferenzen.</li>\n        </ul>\n    </li>\n</ul>\n\n<p>Für kompetitive Spieler, bei denen jede Millisekunde zählt, ist ein kabelgebundenes Headset oft die sicherere Wahl. Für Gelegenheitsspieler, die Wert auf maximale Freiheit legen, ist ein kabelloses Modell eine hervorragende Option. Achte bei kabellosen Modellen auf eine gute Akkulaufzeit und eine stabile Funkverbindung.</p>\n\n<h2>Zusätzliche Features und Kompatibilität</h2>\n\n<p>Bevor du dich entscheidest, denke auch an diese Punkte:</p>\n\n<ul>\n    <li>\n<strong>Kompatibilität:</strong> Stelle sicher, dass das Headset mit deiner Gaming-Plattform (PC, PlayStation, Xbox, Switch) und deinem Betriebssystem kompatibel ist. Viele Headsets sind plattformübergreifend nutzbar.</li>\n    <li>\n<strong>Software:</strong> Einige Headsets kommen mit eigener Software, die zusätzliche Einstellungen für Soundprofile, Equalizer oder Mikrofon bietet. Dies kann nützlich sein, um das Headset optimal an deine Bedürfnisse anzupassen.</li>\n    <li>\n<strong>Verarbeitung und Design:</strong> Ein robustes Headset hält länger. Auch das Design spielt für viele eine Rolle.</li>\n</ul>\n\n<p>Die Suche nach dem perfekten Gaming-Headset mag komplex erscheinen, aber wenn du diese Punkte berücksichtigst, wirst du schnell das Modell finden, das deine Gaming-Erfahrung auf das nächste Level hebt. Denke daran: Der beste Sound nützt nichts, wenn das Headset unbequem ist oder dein Mikrofon nicht funktioniert. Finde die Balance, die für dich stimmt.</p>\n\n<p>Bereit, dein Gaming-Erlebnis zu optimieren? Dann schau dir unsere Auswahl an: <a href=\"/collections/gaming-headsets\">Gaming-Headsets bei LuxeStyle entdecken</a> und finde dein ideales Headset!</p>",
+        "summary": "Gaming-Headset kaufen: Sound, Mikrofon &amp; Komfort im Vergleich – der praktische Ratgeber von LuxeStyle: worauf du beim Kauf achten solltest.",
+        "tags": [
+          "gaming headset",
+          "kaufberatung",
+          "ratgeber"
+        ],
+        "isPublished": true,
+        "publishedAt": "2026-07-04T12:17:14Z",
+        "updatedAt": "2026-08-15T08:01:52Z",
+        "templateSuffix": null,
+        "image": {
+          "id": "gid://shopify/ArticleImage/409462374785",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/articles/94fbb851-724d-441a-b3bc-629790bfce5e.jpg?v=1786780912",
+          "altText": "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich"
+        },
+        "blog": {
+          "id": "gid://shopify/Blog/119864721793",
+          "title": "Ratgeber",
+          "handle": "ratgeber"
+        },
+        "metafields": {
+          "nodes": [],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    },
+    "collectionsAfter": [
+      {
+        "id": "gid://shopify/Collection/687966814593",
+        "title": "Gaming",
+        "handle": "gaming",
+        "updatedAt": "2026-11-15T18:46:43Z",
+        "descriptionHtml": "<p>Hier findest du Gaming-Zubehör für unterschiedliche Geräte und Spielarten. Starte bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>, <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a> oder <a href=\"/collections/gaming-headsets\">Gaming-Headsets</a>. Zubehör für dein Computer-Setup findest du in der Auswahl <a href=\"/collections/pc-gaming\">PC-Gaming</a>.</p>\n<h2>So wählst du passendes Gaming-Zubehör</h2>\n<ul>\n<li>\n<strong>Gerät und Anschluss:</strong> Vergleiche die genaue Modellbezeichnung, das Betriebssystem und den Anschluss mit den Angaben auf der Produktseite. Eine ähnliche Steckerform allein bestätigt die Kompatibilität nicht.</li>\n<li>\n<strong>Ausführung und Lieferumfang:</strong> Prüfe, ob deine Auswahl ein vollständiges Gerät, ein Set oder einzelnes Zubehör umfasst. Farbe und Speichervariante können unterschiedliche Ausführungen bezeichnen.</li>\n<li>\n<strong>Retro-Konsole:</strong> Speichergrösse und unterstützte Systeme sind keine vollständige Liste enthaltener Spiele. Achte auf die konkrete Beschreibung der gewählten Variante.</li>\n</ul>\n<p>Für die Audioauswahl hilft der <a href=\"/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich\">Ratgeber zu Gaming-Headsets, Anschlüssen und Mikrofonen</a>. Zur übergeordneten Auswahl: <a href=\"/collections/elektronik-technik\">Technik und Gaming</a>.</p>",
+        "seo": {
+          "title": "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle",
+          "description": "Gaming-Zubehör vergleichen: Controller, Gamepads, Retro-Handhelds und Headsets. Prüfe Gerätekompatibilität, Anschlüsse und den Lieferumfang je Modell."
+        },
+        "image": {
+          "id": "gid://shopify/CollectionImage/2066480595329",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/4719512132081_M0311582_P00.jpg?v=1781640717",
+          "altText": "🎮 Gaming",
+          "width": 1200,
+          "height": 1200
+        },
+        "productsCount": {
+          "count": 731,
+          "precision": "EXACT"
+        },
+        "sortOrder": "MANUAL",
+        "templateSuffix": null,
+        "sources": [
+          {
+            "__typename": "CollectionConditionsSource",
+            "id": "gid://shopify/CollectionConditionsSource/5581930881",
+            "title": "Untitled Source"
+          }
+        ],
+        "resourcePublicationsCount": {
+          "count": 9
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15452705358209",
+              "title": "Orion-Android-Gamepad",
+              "handle": "orion-android-gamepad-714816",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-controller-handy-mobile",
+                "sort-gamepads-controller",
+                "sort-pc-komponenten",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/orion-android-gamepad-714816"
+            },
+            {
+              "id": "gid://shopify/Product/15452706013569",
+              "title": "Schlicht Farbe Jugendliche Kabelgebundener Game-Controller",
+              "handle": "schlicht-farbe-jugendliche-kabelgebundener-gam-692288",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-gamepads-controller",
+                "sort-pc-komponenten",
+                "varianten-nachgezogen-1025",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/schlicht-farbe-jugendliche-kabelgebundener-gam-692288"
+            },
+            {
+              "id": "gid://shopify/Product/15452706046337",
+              "title": "Wireless Gamepad für PC, TV & Mobilgeräte",
+              "handle": "wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "mobilgeraete",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-controller-bluetooth-kabellos",
+                "sort-controller-handy-mobile",
+                "sort-controller-konsole-pc",
+                "sort-gamepads-controller",
+                "sort-pc-komponenten",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232"
+            },
+            {
+              "id": "gid://shopify/Product/15479434871169",
+              "title": "Brook Wingman XB PS3/PS4 Controller Adapter",
+              "handle": "brook-wingman-xb-ps3-ps4-controller-adapter-460160",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-elektronik-kleinteile",
+                "sort-konsolen",
+                "sort-konsolen-zubehoer-ladestationen",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/brook-wingman-xb-ps3-ps4-controller-adapter-460160"
+            },
+            {
+              "id": "gid://shopify/Product/15479435002241",
+              "title": "Aolion PG-NX1056 Wireless Bluetooth Controller",
+              "handle": "aolion-pg-nx1056-wireless-bluetooth-controller-550912",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-controller-bluetooth-kabellos",
+                "sort-gamepads-controller",
+                "sort-pc-komponenten",
+                "varianten-nachgezogen-1025",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/aolion-pg-nx1056-wireless-bluetooth-controller-550912"
+            },
+            {
+              "id": "gid://shopify/Product/15479484055937",
+              "title": "Schutzhülle «Mysterious Egypt» für Nintendo Switch",
+              "handle": "schutzhulle-mysterious-egypt-fur-nintendo-swit-48277a",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "huelle",
+                "konsole",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "schutzhuelle",
+                "sort-konsolen",
+                "sort-konsolen-huellen-taschen",
+                "sort-konsolen-zubehoer-ladestationen",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/schutzhulle-mysterious-egypt-fur-nintendo-swit-48277a"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/Collection/756133101959",
+        "title": "Headsets",
+        "handle": "kopfhoerer-headsets-mikrofon",
+        "updatedAt": "2026-11-15T18:46:46Z",
+        "descriptionHtml": "<p>Ein Headset verbindet Kopfhörer und Mikrofon. Diese Auswahl umfasst unterschiedliche Bauformen für Gespräche, Audio und weitere Anwendungen. Entscheidend ist, dass Verbindung, Mikrofonfunktion und Sitz zu deinem Gerät und deinem Einsatzzweck passen.</p>\n<h2>Worauf solltest du bei einem Headset achten?</h2>\n<ul>\n<li>\n<strong>Verbindung:</strong> Prüfe, welchen Anschluss oder welche Funkverbindung das gewählte Modell nutzt und ob dein Gerät auch die Mikrofonfunktion unterstützt.</li>\n<li>\n<strong>Bauform:</strong> Vergleiche In-Ear-, On-Ear- und Over-Ear-Angaben auf der jeweiligen Produktseite. Daraus allein folgt keine Zusage zu Komfort oder Geräuschunterdrückung.</li>\n<li>\n<strong>Auswahl:</strong> Kontrolliere die gewählte Farbe, Ausführung und den ausdrücklich genannten Lieferumfang. Adapter und weiteres Zubehör sind nur enthalten, wenn sie dort aufgeführt sind.</li>\n</ul>\n<p>Suchst du gezielt ein Modell zum Spielen? Öffne die Auswahl <a href=\"/collections/gaming-headsets\">Gaming-Headsets</a> und den <a href=\"/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich\">Headset-Kaufratgeber</a>. Weitere Audio-Produkte findest du unter <a href=\"/collections/kopfhoerer-audio\">Kopfhörer und Audio</a>.</p>",
+        "seo": {
+          "title": "Headsets & Kopfhörer mit Mikrofon | LuxeStyle CH",
+          "description": "Headsets und Kopfhörer mit Mikrofon vergleichen: Bauform, Verbindung und Gerätekompatibilität prüfen. Entdecke die Audioauswahl von LuxeStyle."
+        },
+        "image": null,
+        "productsCount": {
+          "count": 30,
+          "precision": "EXACT"
+        },
+        "sortOrder": "BEST_SELLING",
+        "templateSuffix": null,
+        "sources": [
+          {
+            "__typename": "CollectionConditionsSource",
+            "id": "gid://shopify/CollectionConditionsSource/64796623239",
+            "title": "Untitled Source"
+          }
+        ],
+        "resourcePublicationsCount": {
+          "count": 7
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/16613801755015",
+              "title": "Bluetooth-Headset mit Stereo-Sound und Sprachsteuerung",
+              "handle": "bluetooth-headset-mit-stereo-sound-und-sprachs-443520",
+              "status": "ACTIVE",
+              "tags": [
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "neuheit",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-kabellos-bluetooth",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech",
+                "trend"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/bluetooth-headset-mit-stereo-sound-und-sprachs-443520"
+            },
+            {
+              "id": "gid://shopify/Product/15518808867201",
+              "title": "Smart Power Bank Headset mit Multimedia Display",
+              "handle": "smart-power-bank-headset-mit-multimedia-displa-602700",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "neuheit",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/smart-power-bank-headset-mit-multimedia-displa-602700"
+            },
+            {
+              "id": "gid://shopify/Product/15518808703361",
+              "title": "In-Ear Wireless Bluetooth Headset Cool Mecha",
+              "handle": "in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "neuheit",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-in-ear",
+                "sort-kopfhoerer-kabellos-bluetooth",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800"
+            },
+            {
+              "id": "gid://shopify/Product/15518808244609",
+              "title": "True Wireless In-Ear Bluetooth Headset",
+              "handle": "true-wireless-in-ear-bluetooth-headset-623300",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "neuheit",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-in-ear",
+                "sort-kopfhoerer-kabellos-bluetooth",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/true-wireless-in-ear-bluetooth-headset-623300"
+            },
+            {
+              "id": "gid://shopify/Product/15510327886209",
+              "title": "Subwoofer Bluetooth Headset mit LED",
+              "handle": "subwoofer-bluetooth-headset-mit-led-28eb15",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "menue-kern-0906",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-kabellos-bluetooth",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech",
+                "trend",
+                "varianten-nachgezogen-1025"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/subwoofer-bluetooth-headset-mit-led-28eb15"
+            },
+            {
+              "id": "gid://shopify/Product/15503150154113",
+              "title": "Tarnfarben Headset mit Mikrofon",
+              "handle": "tarnfarben-headset-mit-mikrofon-d77d20",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "elektronik",
+                "gadget",
+                "sort-kopfhoerer-audio",
+                "sort-kopfhoerer-headsets-mikrofon",
+                "sort-kopfhoerer-ohrhoerer",
+                "tech",
+                "varianten-nachgezogen-1025"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/tarnfarben-headset-mit-mikrofon-d77d20"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/Collection/689353490817",
+        "title": "Gaming-Headsets",
+        "handle": "gaming-headsets",
+        "updatedAt": "2026-11-15T18:46:48Z",
+        "descriptionHtml": "<p>Ein Gaming-Headset soll Spielton und Teamgespräche über das passende Gerät wiedergeben. Die Auswahl umfasst Gaming-Headsets und ergänzendes Zubehör. Prüfe bei jedem Artikel die ausdrücklich unterstützte Plattform und Verbindung sowie den Lieferumfang. Eine allgemeine Bezeichnung wie «Gaming» bestätigt keine Kompatibilität mit jeder Konsole.</p>\n<h2>Vor dem Kauf: drei Punkte vergleichen</h2>\n<ul>\n<li>\n<strong>Plattform und Anschluss:</strong> Gleiche PC- oder Konsolenmodell sowie den Audioanschluss mit den Produktangaben ab. USB, Klinke und Funk sind nicht beliebig austauschbar.</li>\n<li>\n<strong>Mikrofon:</strong> Prüfe Position, Bedienung und die beschriebenen Funktionen. Eine Beleuchtung oder ein Surround-Hinweis sagt allein nichts über die Sprachqualität aus.</li>\n<li>\n<strong>Einzelgerät oder Set:</strong> Wähle die passende Variante und lies den Lieferumfang. Abgebildetes Zubehör ist nur enthalten, wenn es dort ausdrücklich genannt wird.</li>\n</ul>\n<p>Die ausführliche <a href=\"/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich\">Gaming-Headset-Kaufhilfe zu Verbindung, Mikrofon und Komfort</a> erklärt die Unterschiede. Zurück zu <a href=\"/collections/gaming\">Gaming-Zubehör</a> oder zu <a href=\"/collections/kopfhoerer-headsets-mikrofon\">allen Headsets</a>.</p>",
+        "seo": {
+          "title": "Gaming-Headsets: Anschluss & Mikrofon | LuxeStyle CH",
+          "description": "Gaming-Headsets auswählen: Anschlüsse, Mikrofon und Kompatibilität mit PC oder Konsole je Modell prüfen. Mit praktischer Kaufhilfe von LuxeStyle."
+        },
+        "image": {
+          "id": "gid://shopify/CollectionImage/2066555076993",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/5099206082410_I0_ok2.jpg?v=1782491673",
+          "altText": null,
+          "width": 1200,
+          "height": 1200
+        },
+        "productsCount": {
+          "count": 30,
+          "precision": "EXACT"
+        },
+        "sortOrder": "CREATED_DESC",
+        "templateSuffix": null,
+        "sources": [
+          {
+            "__typename": "CollectionConditionsSource",
+            "id": "gid://shopify/CollectionConditionsSource/25692897665",
+            "title": "Untitled Source"
+          }
+        ],
+        "resourcePublicationsCount": {
+          "count": 9
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15449030951297",
+              "title": "Gaming Headset mit Mikrofon PS4 – Für klaren Sound!",
+              "handle": "gaming-headset-mit-mikrofon-ps4-fur-klaren-sound-890455",
+              "status": "DRAFT",
+              "tags": [
+                "bigbuy",
+                "dropship",
+                "gaming",
+                "geschenk",
+                "hype-2026",
+                "lager-unbekannt-draft",
+                "tech"
+              ],
+              "onlineStoreUrl": null
+            },
+            {
+              "id": "gid://shopify/Product/15449030721921",
+              "title": "Gaming Headset mit Mikrofon – Für immersive Sounds!",
+              "handle": "gaming-headset-mit-mikrofon-fur-immersive-sounds-889037",
+              "status": "DRAFT",
+              "tags": [
+                "bigbuy",
+                "dropship",
+                "gaming",
+                "geschenk",
+                "hype-2026",
+                "nicht-lieferbar-ch",
+                "tech"
+              ],
+              "onlineStoreUrl": null
+            },
+            {
+              "id": "gid://shopify/Product/15449030164865",
+              "title": "Gaming Headset mit Mikrofon – Tauche ins Spiel ein!",
+              "handle": "gaming-headset-mit-mikrofon-tauche-ins-spiel-ein-857773",
+              "status": "DRAFT",
+              "tags": [
+                "bigbuy",
+                "dropship",
+                "gaming",
+                "geschenk",
+                "hype-2026",
+                "lager-unbekannt-draft",
+                "tech"
+              ],
+              "onlineStoreUrl": null
+            },
+            {
+              "id": "gid://shopify/Product/15449030001025",
+              "title": "Gaming Headset mit Mikrofon – Für klaren Teamspeak!",
+              "handle": "gaming-headset-mit-mikrofon-fur-klaren-teamspeak-847752",
+              "status": "DRAFT",
+              "tags": [
+                "bigbuy",
+                "dropship",
+                "gaming",
+                "geschenk",
+                "hype-2026",
+                "lager-unbekannt-draft",
+                "tech"
+              ],
+              "onlineStoreUrl": null
+            },
+            {
+              "id": "gid://shopify/Product/15448848925057",
+              "title": "Kühlstation für Xbox Series S mit Ladegerät & Headset-Halter",
+              "handle": "xbox-series-s-kuhlstation-mit-ladegerat-headse-235136",
+              "status": "ACTIVE",
+              "tags": [
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "gadgets",
+                "gaming",
+                "konsole",
+                "kuehlstation",
+                "ladegeraet",
+                "Ladegerät",
+                "ps4",
+                "ps5",
+                "rueckhol-0907",
+                "sort-elektronik-kleinteile",
+                "sort-konsolen",
+                "sort-konsolen-ladestationen",
+                "sort-konsolen-zubehoer-ladestationen",
+                "xbox"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/xbox-series-s-kuhlstation-mit-ladegerat-headse-235136"
+            },
+            {
+              "id": "gid://shopify/Product/15447965794689",
+              "title": "Gaming Headset mit Mikrofon Nacon RIG600PROHS",
+              "handle": "gaming-headset-mit-mikrofon-nacon-rig600prohs-758682",
+              "status": "DRAFT",
+              "tags": [
+                "ausverkauft-lieferant",
+                "bigbuy",
+                "dropship",
+                "gaming",
+                "geschenk",
+                "hype-2026",
+                "tech"
+              ],
+              "onlineStoreUrl": null
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/Collection/755392315783",
+        "title": "Nachttischlampen",
+        "handle": "nachttischlampen",
+        "updatedAt": "2026-11-15T18:46:50Z",
+        "descriptionHtml": "<p>Eine Nachttischlampe ergänzt den Platz neben deinem Bett als Lichtquelle oder dekorativer Akzent. Hier findest du unterschiedliche Formen und Ausführungen fürs Schlafzimmer. Entscheide zuerst, ob du vor allem Licht zum Lesen, eine dezente Abendbeleuchtung oder ein dekoratives Nachtlicht suchst.</p>\n<h2>Welche Nachttischlampe passt zu deinem Platz?</h2>\n<ul>\n<li>\n<strong>Grösse und Aufstellung:</strong> Vergleiche die auf der Produktseite angegebenen Gerätemasse mit deinem Nachttisch. Fehlen Masse, lassen sie sich aus einem Stimmungsbild nicht zuverlässig ableiten.</li>\n<li>\n<strong>Licht und Bedienung:</strong> Prüfe Lichtfarbe, Helligkeitsregelung und Schalter der gewählten Ausführung. Touch-Bedienung, Dimmer und Farbwechsel sind modellabhängig.</li>\n<li>\n<strong>Stromversorgung:</strong> Kontrolliere Anschluss, Stromversorgung und Lieferumfang. USB-Anschluss, Netzteil oder Akku sind keine einheitlichen Merkmale dieser gesamten Auswahl.</li>\n</ul>\n<p>Suchst du eher dekorative Lichtmotive? Entdecke <a href=\"/collections/licht-nachtlicht-projektor\">Nachtlichter und Projektoren</a>. Weitere Lampentypen findest du in der Übersicht <a href=\"/collections/sub-beleuchtung\">Beleuchtung</a>.</p>",
+        "seo": {
+          "title": "Nachttischlampen & Bettlampen | LuxeStyle CH",
+          "description": "Nachttischlampen fürs Schlafzimmer entdecken. Vergleiche Bauform, Lichtfunktion und Stromversorgung je Ausführung – mit Auswahlhilfe von LuxeStyle."
+        },
+        "image": {
+          "id": "gid://shopify/CollectionImage/2132647739783",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/pinnwand-nachttischlampen.jpg?v=1792997344",
+          "altText": "Nachttischlampen – LuxeStyle-Pinnwand",
+          "width": 2000,
+          "height": 1000
+        },
+        "productsCount": {
+          "count": 34,
+          "precision": "EXACT"
+        },
+        "sortOrder": "MANUAL",
+        "templateSuffix": null,
+        "sources": [
+          {
+            "__typename": "CollectionConditionsSource",
+            "id": "gid://shopify/CollectionConditionsSource/64276332935",
+            "title": "Untitled Source"
+          }
+        ],
+        "resourcePublicationsCount": {
+          "count": 7
+        },
+        "products": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Product/15452605481345",
+              "title": "3D-Teddy-Nachtlampe mit Farbwechsel",
+              "handle": "3d-teddy-lampe-a92a5f",
+              "status": "ACTIVE",
+              "tags": [
+                "beleuchtung",
+                "bild-ok",
+                "bildmass-ok-0906",
+                "cj-real",
+                "dropship",
+                "geschenkwelt-preishits",
+                "lampe",
+                "neu",
+                "rueckhol-0907",
+                "sort-nachttischlampen",
+                "trend",
+                "varianten-nachgezogen-1025",
+                "video-hit",
+                "viral"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/3d-teddy-lampe-a92a5f"
+            },
+            {
+              "id": "gid://shopify/Product/16655152906631",
+              "title": "Nachttischlampe Vintage-Stil",
+              "handle": "nachttischlampe-vintage-stil-612200",
+              "status": "ACTIVE",
+              "tags": [
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachttischlampen",
+                "sort-retro",
+                "wohnen"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/nachttischlampe-vintage-stil-612200"
+            },
+            {
+              "id": "gid://shopify/Product/16655152120199",
+              "title": "Nachtlicht für Schlafzimmer mit eingebaute Batterie",
+              "handle": "nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-offen",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "geschenkwelt-unter30",
+                "geschenkwelt-wichtel",
+                "kat-nachtlicht-projektor",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachtlichter",
+                "sort-nachttischlampen",
+                "varianten-nachgezogen-1025",
+                "wohnen"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800"
+            },
+            {
+              "id": "gid://shopify/Product/16652099551623",
+              "title": "Retro Nachttischlampe mit USB-Ladefunktion",
+              "handle": "retro-nachttischlampe-mit-usb-ladefunktion-603200",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachttischlampen",
+                "sort-retro",
+                "wohnen"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/retro-nachttischlampe-mit-usb-ladefunktion-603200"
+            },
+            {
+              "id": "gid://shopify/Product/16638321328519",
+              "title": "Pilz Tischlampe – Nachtlicht für dein Schlafzimmer",
+              "handle": "pilz-tischlampe-nachtlicht-fur-dein-schlafzimm-628600",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "geschenkwelt-unter30",
+                "geschenkwelt-wichtel",
+                "kat-nachtlicht-projektor",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachtlichter",
+                "sort-nachttischlampen",
+                "wohnen"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/pilz-tischlampe-nachtlicht-fur-dein-schlafzimm-628600"
+            },
+            {
+              "id": "gid://shopify/Product/16638320411015",
+              "title": "Moderne Nachttischlampe mit USB-Ladefunktion",
+              "handle": "moderne-nachttischlampe-mit-usb-ladefunktion-607400",
+              "status": "ACTIVE",
+              "tags": [
+                "auswahl-nachgeruestet",
+                "beleuchtung",
+                "cj-real",
+                "dekoration",
+                "dropship",
+                "lampe",
+                "licht",
+                "neuheit",
+                "sort-nachttischlampen",
+                "wohnen"
+              ],
+              "onlineStoreUrl": "https://luxestyle.ch/products/moderne-nachttischlampe-mit-usb-ladefunktion-607400"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true
+          }
+        }
+      }
+    ],
+    "articleAfter": {
+      "id": "gid://shopify/Article/1001927704961",
+      "title": "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich",
+      "handle": "gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+      "body": "<p>Ein Gaming-Headset sollte zu deinem Gerät, deinem Anschluss und deinen Teamgesprächen passen. Dieser Kaufratgeber erklärt, wie du Verbindung, Mikrofon und Tragekomfort vergleichst. Er ist eine Auswahlhilfe, kein eigener Produkttest und keine Bestenliste.</p>\n<h2>1. Zuerst Plattform und Anschluss prüfen</h2>\n<p>Notiere die genaue Bezeichnung von PC, Konsole oder Mobilgerät. Vergleiche sie mit den ausdrücklich unterstützten Geräten des Headsets. Weder «Gaming» noch ein passender Stecker allein belegen, dass Spielton und Mikrofon an jeder Plattform funktionieren.</p>\n<ul>\n<li>\n<strong>3,5-mm-Klinke:</strong> Prüfe, ob dein Gerät einen kombinierten Audio-/Mikrofonanschluss oder getrennte Buchsen nutzt. Ein eventuell nötiger Adapter muss zum Anschluss passen.</li>\n<li>\n<strong>USB:</strong> Ein USB-Headset benötigt Unterstützung durch das Zielgerät. Ein USB-Anschluss am Gerät ist für sich noch kein Kompatibilitätsnachweis.</li>\n<li>\n<strong>Funk oder Bluetooth:</strong> Kontrolliere die genaue Verbindungsart, den nötigen Empfänger und die Unterstützung der Mikrofonfunktion. Ein Bluetooth-Headset wird nicht automatisch von jeder Spielkonsole als Headset unterstützt.</li>\n</ul>\n<p>Lege deshalb zuerst die Plattform fest und vergleiche erst danach Design oder Zusatzfunktionen.</p>\n<h2>2. Kabel, Funk und Bluetooth unterscheiden</h2>\n<p>Ein Kabel vermeidet den Funkweg. Es bedeutet aber nicht, dass die gesamte Audiokette keinerlei Verzögerung hat. Passive Klinken-Kopfhörer benötigen für ihre reine Audiowiedergabe in der Regel keinen eigenen Akku; Beleuchtung oder andere Zusatzfunktionen können eine gesonderte Versorgung brauchen.</p>\n<p>Kabellose Modelle geben dir mehr Bewegungsfreiheit. Achte auf die dokumentierte Verbindung, Ladeart und Akkulaufzeit des konkreten Modells. Funk über einen passenden Empfänger und Bluetooth sind unterschiedliche Lösungen. Die Verzögerung lässt sich aus dem Wort «kabellos» allein nicht beurteilen. Ebenso wichtig ist, ob Ton und Mikrofon gleichzeitig in der gewünschten Betriebsart funktionieren.</p>\n<h2>3. Mikrofon und Bedienung vergleichen</h2>\n<p>Für Teamgespräche zählt verständliche Sprache. Prüfe die Position des Mikrofons, die Möglichkeit zum Stummschalten und eine erreichbare Lautstärkeregelung. Abnehmbar, hochklappbar oder mit Geräuschfilter sind Funktionen, die ausdrücklich für das gewählte Modell belegt sein müssen.</p>\n<p>Unterscheide ausserdem Geräuschunterdrückung für deine Umgebung beim Hören von einer Filterung des Mikrofonsignals. Eine Werbeangabe zu einer dieser Funktionen bestätigt nicht automatisch die andere. Unbearbeitete Sprachbeispiele eines eindeutig zugeordneten Modells helfen bei der Beurteilung; Sternebewertungen allein ersetzen sie nicht.</p>\n<h2>4. Klang und Komfort getrennt beurteilen</h2>\n<p>Stereo oder virtueller Surround beschreiben unterschiedliche Arten der Wiedergabe beziehungsweise Verarbeitung. Ein «7.1»-Hinweis allein beweist weder bessere Ortung noch höhere Klangqualität. Prüfe, ob eine beworbene Funktion zusätzliche Software oder eine bestimmte Plattform voraussetzt. Beleuchtung sagt nichts über Ton oder Mikrofon aus.</p>\n<p>Für den Sitz sind Bauform, Gewicht, Bügel und Ohrpolster relevant. In-Ear, On-Ear und Over-Ear sitzen unterschiedlich; welche Form angenehm ist, bleibt individuell. Fehlen Gewicht oder Masse in der Produktbeschreibung, sollten sie nicht aus Fotos geschätzt werden.</p>\n<h2>5. Die gewählte Ausführung und das Set kontrollieren</h2>\n<p>Vergleiche vor dem Kauf den vollständigen Variantennamen mit dem Lieferumfang. Eine Abbildung kann mehrere Farben oder zusätzliches Zubehör zeigen. Adapter, Empfänger, Ladekabel und weitere Geräte gehören nur dazu, wenn sie für diese Auswahl ausdrücklich aufgeführt sind. Bei Sets solltest du jedes enthaltene Teil einzeln prüfen.</p>\n<h2>Häufige Fragen zur Headset-Auswahl</h2>\n<h3>Funktioniert jedes Gaming-Headset an jeder Konsole?</h3>\n<p>Nein. Entscheidend sind das genaue Konsolenmodell, die unterstützte Verbindung und die Mikrofonfunktion. Verlasse dich auf die konkrete Kompatibilitätsangabe des Produkts.</p>\n<h3>Ist Bluetooth dasselbe wie kabelloser Gaming-Funk?</h3>\n<p>Nein. «Kabellos» ist der Oberbegriff. Prüfe, ob das Modell Bluetooth oder eine andere Funkverbindung mit eigenem Empfänger nutzt und ob dieser enthalten ist.</p>\n<h3>Sind bei einem Headset automatisch alle Adapter dabei?</h3>\n<p>Nein. Massgebend ist der Lieferumfang der gewählten Ausführung, nicht die Anzahl der Anschlüsse auf einem Werbebild.</p>\n<p>Vergleiche jetzt die <a href=\"/collections/gaming-headsets\">Gaming-Headsets</a>. Für weitere Bauformen findest du <a href=\"/collections/kopfhoerer-headsets-mikrofon\">alle Headsets</a> und die übergeordnete Auswahl <a href=\"/collections/kopfhoerer-audio\">Kopfhörer und Audio</a>. Weiteres Zubehör findest du unter <a href=\"/collections/gaming\">Gaming</a>.</p>",
+      "summary": "<p>Gaming-Headset auswählen: Plattform, Klinke, USB oder Funk prüfen, Mikrofon und Komfort vergleichen und den Lieferumfang der gewählten Variante kontrollieren.</p>",
+      "tags": [
+        "gaming headset",
+        "kaufberatung",
+        "ratgeber"
+      ],
+      "isPublished": true,
+      "publishedAt": "2026-07-04T12:17:14Z",
+      "updatedAt": "2026-11-15T18:47:19Z",
+      "templateSuffix": null,
+      "image": {
+        "id": "gid://shopify/ArticleImage/409462374785",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/articles/94fbb851-724d-441a-b3bc-629790bfce5e.jpg?v=1786780912",
+        "altText": "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich"
+      },
+      "blog": {
+        "id": "gid://shopify/Blog/119864721793",
+        "title": "Ratgeber",
+        "handle": "ratgeber"
+      },
+      "metafields": {
+        "nodes": [
+          {
+            "id": "gid://shopify/Metafield/211786349379975",
+            "namespace": "global",
+            "key": "description_tag",
+            "type": "single_line_text_field",
+            "value": "Gaming-Headset auswählen: Klinke, USB oder Funk, Mikrofon und Komfort vergleichen. Mit Plattform-Check, Lieferumfang und Antworten auf häufige Fragen."
+          },
+          {
+            "id": "gid://shopify/Metafield/211786349412743",
+            "namespace": "global",
+            "key": "title_tag",
+            "type": "single_line_text_field",
+            "value": "Gaming-Headset kaufen: Anschluss & Mikrofon | LuxeStyle"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "st": {
+        "id": "gid://shopify/Metafield/211786349412743",
+        "namespace": "global",
+        "key": "title_tag",
+        "type": "single_line_text_field",
+        "value": "Gaming-Headset kaufen: Anschluss & Mikrofon | LuxeStyle",
+        "compareDigest": "dab925b6705c66e7b2387e2b1efe2218924b17a46cb53b79528b30b6741be784"
+      },
+      "sd": {
+        "id": "gid://shopify/Metafield/211786349379975",
+        "namespace": "global",
+        "key": "description_tag",
+        "type": "single_line_text_field",
+        "value": "Gaming-Headset auswählen: Klinke, USB oder Funk, Mikrofon und Komfort vergleichen. Mit Plattform-Check, Lieferumfang und Antworten auf häufige Fragen.",
+        "compareDigest": "48e1f644ed60a3931f4c9dbfbc9ac627b8938f1120ce55e1e1741be3e60289e9"
+      }
+    },
+    "collectionWrites": [
+      {
+        "key": "gaming",
+        "id": "gid://shopify/Collection/687966814593",
+        "handle": "gaming",
+        "state": "native_confirmed",
+        "userErrors": [],
+        "updatedAt": "2026-11-15T18:46:43Z",
+        "protectedFieldsUnchanged": true
+      },
+      {
+        "key": "headsets",
+        "id": "gid://shopify/Collection/756133101959",
+        "handle": "kopfhoerer-headsets-mikrofon",
+        "state": "native_confirmed",
+        "userErrors": [],
+        "updatedAt": "2026-11-15T18:46:46Z",
+        "protectedFieldsUnchanged": true
+      },
+      {
+        "key": "gamingheadsets",
+        "id": "gid://shopify/Collection/689353490817",
+        "handle": "gaming-headsets",
+        "state": "native_confirmed",
+        "userErrors": [],
+        "updatedAt": "2026-11-15T18:46:48Z",
+        "protectedFieldsUnchanged": true
+      },
+      {
+        "key": "nightlamps",
+        "id": "gid://shopify/Collection/755392315783",
+        "handle": "nachttischlampen",
+        "state": "native_confirmed",
+        "userErrors": [],
+        "updatedAt": "2026-11-15T18:46:50Z",
+        "protectedFieldsUnchanged": true
+      }
+    ],
+    "allProtectedComparisonsPassed": true,
+    "articleFinalProtected": true,
+    "protectedCollectionScope": "All selected fields except descriptionHtml, seo and updatedAt; source IDs, counts, six sampled product IDs/titles/tags per collection, image, handle/title, sort and template preserved. No full membership diff claimed.",
+    "protectedArticleScope": "All selected fields except body, summary, updatedAt and the two exact newly created global SEO metafields."
+  },
+  "public": {
+    "public": {
+      "gaming": {
+        "url": "https://luxestyle.ch/collections/gaming",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/gaming",
+        "title": [
+          "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle"
+        ],
+        "description": [
+          "Gaming-Zubehör vergleichen: Controller, Gamepads, Retro-Handhelds und Headsets. Prüfe Gerätekompatibilität, Anschlüsse und den Lieferumfang je Modell."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/gaming"
+        ],
+        "robots": [],
+        "xRobotsTag": null,
+        "h1": [
+          "Gaming"
+        ],
+        "headings": [
+          "So wählst du passendes Gaming-Zubehör",
+          "Aktive Filter:",
+          "Filtern",
+          "Aktive Filter:",
+          "Häufige Fragen zu Gaming"
+        ],
+        "plannedLinks": [
+          "/collections/gamepads-controller",
+          "/collections/spielkonsolen-retro-handhelds",
+          "/collections/gaming-headsets",
+          "/collections/pc-gaming",
+          "/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+          "/collections/elektronik-technik"
+        ],
+        "missingLinks": [],
+        "jsonLdBlocks": 2,
+        "invalidJsonLd": [],
+        "checks": {
+          "http200": true,
+          "finalUrl": true,
+          "title": true,
+          "description": true,
+          "canonical": true,
+          "h1Preserved": true,
+          "bodyParagraphs": true,
+          "allPlannedLinksInMain": true,
+          "noRobotsBlock": true,
+          "jsonldSyntax": true
+        },
+        "allChecks": true,
+        "sha256": "3ae2b1f30a01e68272c87b700c63960e6c286acf2cc5c4196605732dbe838866",
+        "bytes": 1542130
+      },
+      "headsets": {
+        "url": "https://luxestyle.ch/collections/kopfhoerer-headsets-mikrofon",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/kopfhoerer-headsets-mikrofon",
+        "title": [
+          "Headsets & Kopfhörer mit Mikrofon | LuxeStyle CH"
+        ],
+        "description": [
+          "Headsets und Kopfhörer mit Mikrofon vergleichen: Bauform, Verbindung und Gerätekompatibilität prüfen. Entdecke die Audioauswahl von LuxeStyle."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/kopfhoerer-headsets-mikrofon"
+        ],
+        "robots": [],
+        "xRobotsTag": null,
+        "h1": [
+          "Headsets"
+        ],
+        "headings": [
+          "Worauf solltest du bei einem Headset achten?",
+          "Aktive Filter:",
+          "Filtern",
+          "Aktive Filter:",
+          "Häufige Fragen zu Headsets"
+        ],
+        "plannedLinks": [
+          "/collections/gaming-headsets",
+          "/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+          "/collections/kopfhoerer-audio"
+        ],
+        "missingLinks": [],
+        "jsonLdBlocks": 2,
+        "invalidJsonLd": [],
+        "checks": {
+          "http200": true,
+          "finalUrl": true,
+          "title": true,
+          "description": true,
+          "canonical": true,
+          "h1Preserved": true,
+          "bodyParagraphs": true,
+          "allPlannedLinksInMain": true,
+          "noRobotsBlock": true,
+          "jsonldSyntax": true
+        },
+        "allChecks": true,
+        "sha256": "66ef9911c4ba6d1513d1e3e5759d7feacbdb0b586d2e5490216f58429a82efba",
+        "bytes": 1468536
+      },
+      "gamingheadsets": {
+        "url": "https://luxestyle.ch/collections/gaming-headsets",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/gaming-headsets",
+        "title": [
+          "Gaming-Headsets: Anschluss & Mikrofon | LuxeStyle CH"
+        ],
+        "description": [
+          "Gaming-Headsets auswählen: Anschlüsse, Mikrofon und Kompatibilität mit PC oder Konsole je Modell prüfen. Mit praktischer Kaufhilfe von LuxeStyle."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/gaming-headsets"
+        ],
+        "robots": [],
+        "xRobotsTag": null,
+        "h1": [
+          "Gaming-Headsets"
+        ],
+        "headings": [
+          "Vor dem Kauf: drei Punkte vergleichen",
+          "Aktive Filter:",
+          "Filtern",
+          "Aktive Filter:",
+          "Häufige Fragen zu Gaming-Headsets"
+        ],
+        "plannedLinks": [
+          "/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+          "/collections/gaming",
+          "/collections/kopfhoerer-headsets-mikrofon"
+        ],
+        "missingLinks": [],
+        "jsonLdBlocks": 2,
+        "invalidJsonLd": [],
+        "checks": {
+          "http200": true,
+          "finalUrl": true,
+          "title": true,
+          "description": true,
+          "canonical": true,
+          "h1Preserved": true,
+          "bodyParagraphs": true,
+          "allPlannedLinksInMain": true,
+          "noRobotsBlock": true,
+          "jsonldSyntax": true
+        },
+        "allChecks": true,
+        "sha256": "26aec910343b8fd3f94f2f5a611dad81a2dc49ccbc1cfc1153a8ba857cc87809",
+        "bytes": 1128256
+      },
+      "nightlamps": {
+        "url": "https://luxestyle.ch/collections/nachttischlampen",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/collections/nachttischlampen",
+        "title": [
+          "Nachttischlampen & Bettlampen | LuxeStyle CH"
+        ],
+        "description": [
+          "Nachttischlampen fürs Schlafzimmer entdecken. Vergleiche Bauform, Lichtfunktion und Stromversorgung je Ausführung – mit Auswahlhilfe von LuxeStyle."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/nachttischlampen"
+        ],
+        "robots": [],
+        "xRobotsTag": null,
+        "h1": [
+          "Nachttischlampen"
+        ],
+        "headings": [
+          "Welche Nachttischlampe passt zu deinem Platz?",
+          "Aktive Filter:",
+          "Filtern",
+          "Aktive Filter:",
+          "Häufige Fragen zu Nachttischlampen"
+        ],
+        "plannedLinks": [
+          "/collections/licht-nachtlicht-projektor",
+          "/collections/sub-beleuchtung"
+        ],
+        "missingLinks": [],
+        "jsonLdBlocks": 2,
+        "invalidJsonLd": [],
+        "checks": {
+          "http200": true,
+          "finalUrl": true,
+          "title": true,
+          "description": true,
+          "canonical": true,
+          "h1Preserved": true,
+          "bodyParagraphs": true,
+          "allPlannedLinksInMain": true,
+          "noRobotsBlock": true,
+          "jsonldSyntax": true
+        },
+        "allChecks": true,
+        "sha256": "7537543624952327a7e54fda9441b587ed6dc49d069553237b87ab48f810e393",
+        "bytes": 1521728
+      },
+      "article": {
+        "url": "https://luxestyle.ch/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich",
+        "title": [
+          "Gaming-Headset kaufen: Anschluss & Mikrofon | LuxeStyle"
+        ],
+        "description": [
+          "Gaming-Headset auswählen: Klinke, USB oder Funk, Mikrofon und Komfort vergleichen. Mit Plattform-Check, Lieferumfang und Antworten auf häufige Fragen."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich"
+        ],
+        "robots": [],
+        "xRobotsTag": null,
+        "h1": [
+          "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich"
+        ],
+        "headings": [
+          "1. Zuerst Plattform und Anschluss prüfen",
+          "2. Kabel, Funk und Bluetooth unterscheiden",
+          "3. Mikrofon und Bedienung vergleichen",
+          "4. Klang und Komfort getrennt beurteilen",
+          "5. Die gewählte Ausführung und das Set kontrollieren",
+          "Häufige Fragen zur Headset-Auswahl",
+          "Funktioniert jedes Gaming-Headset an jeder Konsole?",
+          "Ist Bluetooth dasselbe wie kabelloser Gaming-Funk?",
+          "Sind bei einem Headset automatisch alle Adapter dabei?"
+        ],
+        "plannedLinks": [
+          "/collections/gaming-headsets",
+          "/collections/kopfhoerer-headsets-mikrofon",
+          "/collections/kopfhoerer-audio",
+          "/collections/gaming"
+        ],
+        "missingLinks": [],
+        "jsonLdBlocks": 2,
+        "invalidJsonLd": [],
+        "checks": {
+          "http200": true,
+          "finalUrl": true,
+          "title": true,
+          "description": true,
+          "canonical": true,
+          "h1Preserved": true,
+          "bodyParagraphs": true,
+          "allPlannedLinksInMain": true,
+          "noRobotsBlock": true,
+          "jsonldSyntax": true
+        },
+        "allChecks": true,
+        "sha256": "e392582af14ee286585e8c17b669e59b3b7e951b20b4adab141822ad61c6dfc9",
+        "bytes": 936082
+      }
+    },
+    "beforeHead": {
+      "gaming": {
+        "title": [
+          "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle"
+        ],
+        "description": [
+          "Gaming-Zubehör: Bluetooth-Controller und Gamepads für Konsole und Handy, Ladestationen, Adapter und Retro-Konsolen. Bezahlen mit TWINT oder Klarna."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/gaming"
+        ],
+        "robots": [],
+        "h1": [
+          "Gaming"
+        ],
+        "status": 200
+      },
+      "headsets": {
+        "title": [
+          "Headsets online kaufen | LuxeStyle CH"
+        ],
+        "description": [
+          "Headsets online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/kopfhoerer-headsets-mikrofon"
+        ],
+        "robots": [],
+        "h1": [
+          "Headsets"
+        ],
+        "status": 200
+      },
+      "gamingheadsets": {
+        "title": [
+          "Gaming-Headsets kaufen Schweiz | LuxeStyle"
+        ],
+        "description": [
+          "Gaming-Headsets online kaufen bei LuxeStyle Schweiz – Lieferung in die ganze Schweiz, 30 Tage Rückgabe, 10% Rabatt mit WELCOME10."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/gaming-headsets"
+        ],
+        "robots": [],
+        "h1": [
+          "Gaming-Headsets"
+        ],
+        "status": 200
+      },
+      "nightlamps": {
+        "title": [
+          "Nachttischlampen online kaufen | LuxeStyle CH"
+        ],
+        "description": [
+          "Nachttischlampen & Bettlampen mit Touch-Dimmer und warmem Licht. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/nachttischlampen"
+        ],
+        "robots": [],
+        "h1": [
+          "Nachttischlampen"
+        ],
+        "status": 200
+      },
+      "article": {
+        "title": [
+          "Gaming-Headset kaufen: Sound, Mikrofon & Komfort – LuxeStyle"
+        ],
+        "description": [
+          "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich Du bist ein leidenschaftlicher Gamer und suchst nach dem perfekten Gaming-Headset, das dich…"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/blogs/ratgeber/gaming-headset-kaufen-sound-mikrofon-komfort-im-vergleich"
+        ],
+        "robots": [],
+        "h1": [
+          "Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich"
+        ],
+        "status": 200
+      },
+      "controller": {
+        "title": [
+          "Gamepads & Controller online kaufen | LuxeStyle CH"
+        ],
+        "description": [
+          "Gamepads & Controller online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/gamepads-controller"
+        ],
+        "robots": [],
+        "h1": [
+          "Gamepads & Controller"
+        ],
+        "status": 200
+      },
+      "retro": {
+        "title": [
+          "Spielkonsolen & Retro-Handhelds online kaufen | LuxeStyle CH"
+        ],
+        "description": [
+          "Spielkonsolen & Retro-Handhelds online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+        ],
+        "robots": [],
+        "h1": [
+          "Spielkonsolen & Retro-Handhelds"
+        ],
+        "status": 200
+      },
+      "pc": {
+        "title": [
+          "PC-Gaming kaufen | LuxeStyle Schweiz"
+        ],
+        "description": [
+          "PC-Gaming online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/pc-gaming"
+        ],
+        "robots": [],
+        "h1": [
+          "PC-Gaming"
+        ],
+        "status": 200
+      },
+      "audio": {
+        "title": [
+          "Bluetooth-Kopfhörer & Audio kaufen | LuxeStyle Schweiz"
+        ],
+        "description": [
+          "Bluetooth-Kopfhörer, Earbuds, Headsets und Lautsprecher online kaufen. Gratis-Versand CH ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/kopfhoerer-audio"
+        ],
+        "robots": [],
+        "h1": [
+          "Kopfhörer & Audio"
+        ],
+        "status": 200
+      },
+      "lights": {
+        "title": [
+          "Nachtlichter & Projektoren | LuxeStyle Schweiz"
+        ],
+        "description": [
+          "Nachtlichter & Projektoren bei LuxeStyle: Nachtlichter, Projektoren, Tischlampen und weitere Beleuchtung nach Lichtart und Format entdecken."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/collections/licht-nachtlicht-projektor"
+        ],
+        "robots": [],
+        "h1": [
+          "Nachtlicht & Projektoren"
+        ],
+        "status": 200
+      }
+    },
+    "linkCounts": [
+      {
+        "key": "gaming",
+        "before": 2,
+        "after": 6,
+        "added": 4
+      },
+      {
+        "key": "headsets",
+        "before": 0,
+        "after": 3,
+        "added": 3
+      },
+      {
+        "key": "gamingheadsets",
+        "before": 0,
+        "after": 3,
+        "added": 3
+      },
+      {
+        "key": "nightlamps",
+        "before": 0,
+        "after": 2,
+        "added": 2
+      },
+      {
+        "key": "article",
+        "before": 1,
+        "after": 4,
+        "added": 3
+      }
+    ],
+    "totalAddedEditorialLinks": 15,
+    "totalEditorialLinksNow": 18,
+    "fivePublicChecksPass": true
+  },
+  "sourceAndReview": {
+    "firecrawlSources": [
+      "gaming",
+      "sub-beleuchtung",
+      "headsets",
+      "nightlamps",
+      "headsetArticle"
+    ],
+    "directHttpHeadCountercheck": true,
+    "headDomArtifact": "Rendered Firecrawl DOM included embedded Shop-login title/robots=none. Original HTTP first head had neither block; no robots change made.",
+    "independentReview": "Cheap model read-only audit and copy review; accessory cooling-station sample led to corrected Gaming-Headsets introduction before writes.",
+    "schemaValidation": "Dedicated validation tool skipped; native GraphQL tools validated all six mutations at execution, each followed by fresh native readback.",
+    "validJsonLdScope": "Syntax only, two blocks per changed page; no rich-result eligibility or Google-selected canonical inference."
+  },
+  "remaining": {
+    "googleReindexing": "unknown, not submitted by this run",
+    "rankingOrSalesLift": "not measured",
+    "nextTargets": [
+      "PC-Gaming",
+      "Kopfhörer & Audio",
+      "Spielkonsolen & Retro-Handhelds"
+    ],
+    "nextAction": "Use existing HTTP evidence, then fresh native collection sources and small product samples; improve next distinct category text only after exact diff and public readback.",
+    "themePublish": "Existing R239/R235 blocker preserved, not retried or changed",
+    "merchant18Groups": "Still open per R240; this SEO run did not requery or alter feed",
+    "professionalVideoHolds": "R243 holds preserved; no Social writes"
+  },
+  "dailyBoundaries": {
+    "searchAnalyticsCalls": 0,
+    "socialMetricsCalls": 0,
+    "klaviyoReportCalls": 0,
+    "ordersQueries": 0,
+    "purchaseWatchEnded": true,
+    "newAutomation": false,
+    "frequencyChange": false,
+    "customerMessages": false,
+    "paidRenders": false,
+    "otherBrandsTouched": false
+  },
+  "docs": [
+    {
+      "url": "https://shopify.dev/docs/api/admin-graphql/2026-10/mutations/collectionUpdate"
+    },
+    {
+      "url": "https://shopify.dev/docs/api/admin-graphql/2026-10/mutations/articleUpdate"
+    },
+    {
+      "url": "https://shopify.dev/docs/apps/build/marketing/optimize-storefront-seo"
+    },
+    {
+      "url": "https://shopify.dev/docs/api/admin-graphql/2026-10/mutations/metafieldsSet"
+    }
+  ],
+  "receiptState": "Claude Code receipt unknown; repository documentation update only"
+}

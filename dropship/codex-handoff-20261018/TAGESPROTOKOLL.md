@@ -2854,3 +2854,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Abendpaket](ABENDPAKET-20261115-R243.md) · [Belege](ABENDBELEGE-20261115-R243.json).
 
+
+### R244 – Fünf SEO-Seiten, Auswahlhilfen und interne Verweise live
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| SEO / Prüfung | Core4 Revision243, heutigen Tagesblock, frische Shop-/Metricool-Identitäten, vier native Kategorien und einen Artikel gelesen; Firecrawl-/HTTP-Köpfe und zwölf Ziel-URLs eng geprüft. | Kein Vollkatalogscan. Keine neue GSC-/Kennzahl-/Flow-/Umsatz-/Bestellabfrage; heutige Teilmessungen wiederverwendet. |
+| SEO / live | Vier Kategorie-Beschreibungen und SEO-Felder sowie den vorhandenen Headset-Ratgeber samt Zusammenfassung/SEO-Feldern verbessert. | Sechs native Writes bestätigt, userErrors=[], keine Retries. Artikel-SEO atomar mit compareDigest=null gegen parallel neu angelegte Felder geschützt. |
+| Inhalt / Qualität | Auswahlhilfen für Anschluss, Bauform, Plattform, Varianten und Lieferumfang; drei FAQ und15 zusätzliche redaktionelle Links ergänzt. | Zubehör im Gaming-Headset-Sortiment berücksichtigt; pauschale Funktions-/Gewinn-/Null-Latenz-Aussagen ersetzt. Keine erfundenen Produkteigenschaften oder Test-/Reviewbehauptungen. |
+| Öffentlich / Schutz | Alle fünf Seiten nach den Writes frisch gelesen; native Schutzfelder vorher/nachher verglichen. | HTTP200, neue Texte/Meta, erhaltene H1, Self-Canonical und alle18 Inhaltslinks bestätigt; je2 JSON-LD-Blöcke syntaktisch gültig. Preise/Varianten/Zuordnung nicht geschrieben, kein Rang-/Verkaufsbeleg. |
+| Zugriff / Gegenprobe | Eingebettetes Shop-Login-Robots-Meta vom echten HTTP-Seitenkopf unterschieden; fehlendes bs4 und lokalen JSON/Python-Fehler korrigiert. | Kein falscher Noindex-Fix und keine Installation. Standalone-Validator übersprang; native Tools validierten tatsächliche Mutationen bei Ausführung. |
+| Fortsetzung / Memory | Konkreten Diff, Textplan, Quellen-/Schutzbelege und nächste kleine SEO-Gruppe im vorhandenen Gedächtnis ergänzt. |24Aufgaben, Historie, Tagesgrenzen und beendeter Kauf-Watch erhalten. Merchant-/Theme-/Masterblocker weiter offen, Claude-Code-Empfang unbekannt. |
+
+[SEO-Live-Bericht](SEO-LIVE-VERBESSERUNGEN-20261115-R244.md) · [Belege](SEO-UMSETZUNGSBELEGE-20261115-R244.json).
+
+[LUXESTYLE_R244_20261115]
