@@ -1,4 +1,10 @@
 import {
+  frameTime,
+  PresentationClock,
+  predictPilot,
+  SnapshotGate,
+} from "./timing.mjs";
+import {
   ROLES,
   MODULES,
   nickname,
@@ -194,6 +200,8 @@ try {
   throw error;
 }
 const audio = new FlightAudio(settings);
+const presentationClock = new PresentationClock();
+const snapshotGate = new SnapshotGate();
 let session = null,
   host = true,
   local = 0,
@@ -209,6 +217,8 @@ let session = null,
   seq = 0,
   lastRemoteSeq = -1,
   lastSnapshot = performance.now(),
+  snapshotSerial = 0,
+  lastLobbySync = 0,
   lastSent = 0,
   stageKey = "",
   storedKey = "",
@@ -227,6 +237,7 @@ let pointer = null,
   lastPanelFrame = 0,
   lastFrame = performance.now(),
   accumulator = 0,
+  hudElapsed = 0,
   previousScores = [0, 0, 0],
   trainingGuide = false,
   rescueHeld = false;
@@ -275,16 +286,20 @@ function updateRotate() {
 function send(data) {
   if (session && connected) session.send({ v: VERSION, ...data });
 }
-function sendSnapshot() {
-  if (host && connected)
-    send({
-      t: "state",
-      s: snapshot(state),
-      ready: stageReady,
-      training: false,
-      setups: pilotSetups,
-      names: pilotNames,
-    });
+function sendSnapshot(fast = false) {
+  if (!host || !connected) return;
+  const packet = {
+    v: VERSION,
+    t: "state",
+    seq: ++snapshotSerial,
+    s: snapshot(state),
+    ready: stageReady,
+    training: false,
+    setups: pilotSetups,
+    names: pilotNames,
+  };
+  if (fast && session.sendFast) session.sendFast(packet);
+  else session.send(packet);
 }
 function saveSettings() {
   write("aether-settings", settings);
@@ -348,6 +363,9 @@ function release() {
   rescueHeld = false;
 }
 function closeSession() {
+  snapshotSerial = 0;
+  snapshotGate.reset();
+  presentationClock.reset();
   stopScan();
   if (stopAdvert) {
     stopAdvert();
@@ -535,18 +553,23 @@ function connect(asHost, code, publicRoom = false) {
     });
   networkTimer = setInterval(() => {
     if (session !== own || !connected) return;
-    if (!hello) send(helloPacket());
+    const now = performance.now();
+    if (!hello && now - lastLobbySync > 150) send(helloPacket());
     if (host) {
-      if (screen === "lobby")
-        send({
-          t: "lobby",
-          ready: lobbyReady,
-          names: pilotNames,
-          setups: pilotSetups,
-        });
-      else sendSnapshot();
+      if (state.phase === "playing" && screen === "game") sendSnapshot(true);
+      else if (now - lastLobbySync > 150) {
+        if (screen === "lobby")
+          send({
+            t: "lobby",
+            ready: lobbyReady,
+            names: pilotNames,
+            setups: pilotSetups,
+          });
+        else sendSnapshot();
+      }
     }
-  }, 150);
+    if (now - lastLobbySync > 150) lastLobbySync = now;
+  }, 50);
 }
 function receive(m) {
   if (!m || m.v !== VERSION || typeof m.t !== "string") return;
@@ -627,6 +650,7 @@ function receive(m) {
       lobbyReady = m.ready.map(Boolean);
       lobbyUI();
     } else if (m.t === "state" && validSnapshot(m.s)) {
+      if (!snapshotGate.accept(m.seq)) return;
       if (Array.isArray(m.setups) && m.setups.length === 2)
         pilotSetups = m.setups.map(loadout);
       if (Array.isArray(m.names) && m.names.length === 2)
@@ -1113,8 +1137,11 @@ function hud(dt) {
   if (trainingGuide && state.t > 7) trainingGuide = false;
 }
 function frame(now) {
-  const dt = Math.min((now - lastFrame) / 1000, 0.05);
+  const elapsed = frameTime((now - lastFrame) / 1000),
+    dt = elapsed.seconds;
   lastFrame = now;
+  if (elapsed.stalled && state.phase === "playing" && state.t > 1)
+    requestPause("Ein Gerät hat kurz ausgesetzt. Der Flug wartet auf euch.");
   input.axis =
     (held.has("arrowright") || held.has("d") ? 1 : 0) -
     (held.has("arrowleft") || held.has("a") ? 1 : 0);
@@ -1154,19 +1181,27 @@ function frame(now) {
     phaseUI();
     sendSnapshot();
   }
-  if (screen === "game" || screen === "pauseScreen") hud(dt);
-  else document.body.classList.remove("overdrive");
+  if (screen === "game" || screen === "pauseScreen") {
+    hudElapsed += dt;
+    if (hudElapsed >= 0.05) {
+      hud(hudElapsed);
+      hudElapsed = 0;
+    }
+  } else document.body.classList.remove("overdrive");
   audio.update(screen === "game" && state.phase === "playing", state.level);
-  const renderState =
-    !host && state.phase === "playing"
-      ? {
-          ...state,
-          t: Math.min(
-            LEVELS[state.level].duration,
-            state.t + Math.min(0.2, (now - lastSnapshot) / 1000),
-          ),
-        }
-      : state;
+  let renderState = state;
+  if (!host && state.phase === "playing") {
+    renderState = {
+      ...state,
+      t: Math.min(
+        LEVELS[state.level].duration,
+        presentationClock.sample(state, lastSnapshot, now),
+      ),
+      players: state.players.map((p, i) =>
+        i === local ? predictPilot(p, input, (now - lastSnapshot) / 1000) : p,
+      ),
+    };
+  }
   if (
     screen !== "menu" &&
     screen !== "lobby" &&
@@ -1192,6 +1227,20 @@ if (params.get("room") && /^[A-Z]{4}$/i.test(params.get("room"))) {
 if (params.get("debug") === "1")
   window.__flight = {
     state: () => snapshot(state),
+    graphics: () => ({
+      calls: view.renderer.info.render.calls,
+      triangles: view.renderer.info.render.triangles,
+      pixelRatio: view.renderer.getPixelRatio(),
+      width: view.renderer.domElement.width,
+      height: view.renderer.domElement.height,
+      backend: (() => {
+        const gl = view.renderer.getContext(),
+          ext = gl.getExtension("WEBGL_debug_renderer_info");
+        return ext
+          ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
+          : gl.getParameter(gl.RENDERER);
+      })(),
+    }),
     role: () => ({ host, local, connected, hello, screen, ready: stageReady }),
     setInput: (v) => {
       input = { ...input, ...v };

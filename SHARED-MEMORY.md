@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Neon-Flug – Ruckler und Zeitverlust behoben ·15.11.2026
+
+Auf `codex/neon-flug-koop` / PR3156: statische Geometrie gebündelt, Türme instanziert, automatische Renderauflösung, zeitlich korrekte Nachholung und Hänger-Pause, schnellere Snapshots mit Sequenzschutz sowie geglättete Gastdarstellung und kurze Eingabevorhersage. Cloud-Kurzprobe mit SwiftShader:182 auf61 Zeichenaufrufe;3,8 auf7,3 FPS bei automatisch reduzierter Auflösung, kein Handy-Benchmark. Alte Spieluhr verlor bei langsamen Frames Zeit. Reale Handy-FPS/öffentliche Vermittlung unverifiziert. Details und reproduzierbare Probe in `spiele-dev/neon-flug/README.md`; nicht veröffentlicht.
+
+
 ## Codex: Neon-Flug – Resonanz, öffentliche Raumsuche und Rollen ·15.11.2026
 
 Erweiterung des ungemergten Zweigs `codex/neon-flug-koop` / PR3156: Resonanzband, Doppelringe, synchroner Dash, begrenzter Overdrive, öffentliche Raumsuche, Rufnamen, drei Rollen, lokale Flug-XP und drei freischaltbare Module. Shared-MP unverändert; Protokoll und Raumpräfix auf v2, damit alte Clients nicht in neue Flüge geraten. Keine erfundenen Spielerzahlen, keine globale Account-/Ranglistenbehauptung. Öffentlicher Verbindungsnachweis weiterhin durch das bereits gemeldete Cloud-Zertifikatsproblem blockiert, keine erneute CA-Änderung. Gemessen:24 Simulations-/Profilprüfungen sowie lokale Zwei-Browser-Suche, Belegungsanzeige, synchroner Schub und Modulübernahme geprüft. Abnahme und aktuelle Testergebnisse im Entwurfs-PR; nicht veröffentlicht.

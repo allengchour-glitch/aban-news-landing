@@ -90,6 +90,7 @@ const fs = require("fs"),
     await a.locator("#launchBtn").click();
     await d.locator("#launchBtn").click();
     await a.waitForFunction(() => window.__flight.state().phase === "playing");
+    await d.waitForFunction(() => window.__flight.state().phase === "playing");
     await Promise.all([
       a.evaluate(() => document.getElementById("dashBtn").click()),
       d.evaluate(() => document.getElementById("dashBtn").click()),

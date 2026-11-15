@@ -1,9 +1,51 @@
+import { AdaptiveScale } from "./timing.mjs";
 import { LEVELS, routeCache, eventX, clamp, LANE_WIDTH } from "./core.mjs";
 const T = window.THREE;
 function mesh(g, m, x = 0, y = 0, z = 0) {
   const a = new T.Mesh(g, m);
   a.position.set(x, y, z);
   return a;
+}
+// Statische Teile mit gleichem Material in einen Zeichenauftrag zusammenfassen.
+function compact(group) {
+  for (const child of group.children.slice()) if (child.isGroup) compact(child);
+  const batches = new Map(),
+    originals = new Set();
+  for (const child of group.children.slice()) {
+    if (!child.isMesh || child.name || Array.isArray(child.material)) continue;
+    child.updateMatrix();
+    const g = (
+      child.geometry.index
+        ? child.geometry.toNonIndexed()
+        : child.geometry.clone()
+    ).applyMatrix4(child.matrix);
+    if (!batches.has(child.material)) batches.set(child.material, []);
+    batches.get(child.material).push(g);
+    originals.add(child.geometry);
+    group.remove(child);
+  }
+  for (const [material, parts] of batches) {
+    const combined = new T.BufferGeometry();
+    for (const name of ["position", "normal", "uv"]) {
+      if (!parts.every((g) => g.attributes[name])) continue;
+      const size = parts[0].attributes[name].itemSize,
+        data = new Float32Array(
+          parts.reduce((n, g) => n + g.attributes[name].array.length, 0),
+        );
+      let at = 0;
+      for (const g of parts) {
+        data.set(g.attributes[name].array, at);
+        at += g.attributes[name].array.length;
+      }
+      combined.setAttribute(name, new T.BufferAttribute(data, size));
+    }
+    combined.computeBoundingSphere();
+    const item = mesh(combined, material);
+    item.name = "staticBatch";
+    group.add(item);
+    for (const g of parts) g.dispose();
+  }
+  for (const g of originals) g.dispose();
 }
 function glowTexture() {
   const c = document.createElement("canvas");
@@ -167,6 +209,7 @@ function ship(color, tex) {
   guard.visible = false;
   group.add(guard);
   group.userData.color = color;
+  compact(group);
   return group;
 }
 function terrain(seed, side) {
@@ -212,6 +255,7 @@ export class FlightView {
     this.level = -1;
     this.low = false;
     this.reduced = false;
+    this.warmed = false;
     this.clock = 0;
     this.travel = 0;
     this.local = 0;
@@ -365,34 +409,21 @@ export class FlightView {
       emissive: 0x72c5c4,
       emissiveIntensity: 0.65,
     });
-    for (let i = 0; i < 26; i++) {
-      const group = new T.Group(),
-        side = i % 2 ? -1 : 1,
-        height = 8 + ((i * 13) % 19);
-      const tower = mesh(
-        new T.BoxGeometry(1.8, height, 2.4),
-        ruin,
-        0,
-        height / 2,
-        0,
-      );
-      group.add(tower);
-      group.add(
-        mesh(
-          new T.BoxGeometry(0.05, height * 0.7, 2.5),
-          trim,
-          -0.92,
-          height * 0.55,
-          0,
-        ),
-      );
-      group.add(
-        mesh(new T.BoxGeometry(3, 0.7, 3.4), ruin, 0, height * 0.75, 0),
-      );
-      group.position.set(side * (19 + ((i * 7) % 9)), -4, -i * 17);
-      this.props.push(group);
-      this.scene.add(group);
+    this.propMatrix = new T.Object3D();
+    this.propBatches = [
+      new T.InstancedMesh(new T.BoxGeometry(1.8, 1, 2.4), ruin, 26),
+      new T.InstancedMesh(new T.BoxGeometry(0.05, 1, 2.5), trim, 26),
+      new T.InstancedMesh(new T.BoxGeometry(3, 0.7, 3.4), ruin, 26),
+    ];
+    for (const batch of this.propBatches) {
+      batch.frustumCulled = false;
+      this.scene.add(batch);
     }
+    for (let i = 0; i < 26; i++)
+      this.props.push({
+        x: (i % 2 ? -1 : 1) * (19 + ((i * 7) % 9)),
+        height: 8 + ((i * 13) % 19),
+      });
     this.arch = new T.Group();
     const stone = new T.MeshStandardMaterial({
       color: 0x33424f,
@@ -546,17 +577,22 @@ export class FlightView {
       this.camera.updateProjectionMatrix();
     };
     addEventListener("resize", this.resize);
+    this.adaptive = new AdaptiveScale();
     this.quality("auto");
     this.resize();
   }
   quality(value) {
+    this.qualityMode = value;
+    this.adaptive.reset();
     this.low =
       value === "low" ||
       (value === "auto" &&
         (navigator.maxTouchPoints > 0 || navigator.hardwareConcurrency <= 4));
-    this.renderer.setPixelRatio(
-      Math.min(devicePixelRatio, this.low ? 1.1 : 1.8),
+    this.baseRatio = Math.min(
+      devicePixelRatio,
+      value === "low" ? 0.8 : this.low ? 1.15 : 1.5,
     );
+    this.renderer.setPixelRatio(this.baseRatio);
     this.dust.visible = !this.low;
   }
   setLevel(i) {
@@ -577,6 +613,7 @@ export class FlightView {
       this.scene.remove(g);
       g.traverse((x) => {
         if (x.geometry) x.geometry.dispose();
+        if (x.isSprite) x.material.dispose();
       });
     }
     this.events = [];
@@ -637,6 +674,7 @@ export class FlightView {
         for (const child of pair.children) child.position.x += LANE_WIDTH;
         g.add(pair);
       }
+      compact(g);
       g.userData.event = e;
       this.scene.add(g);
       this.events.push(g);
@@ -667,7 +705,11 @@ export class FlightView {
     }
   }
   update(s, local, mode, dt) {
-    dt = Math.min(dt, 0.05);
+    if (this.qualityMode === "auto" && mode === "game") {
+      const scale = this.adaptive.sample(dt);
+      if (scale !== null) this.renderer.setPixelRatio(this.baseRatio * scale);
+    }
+    dt = Math.min(dt, 0.1);
     this.clock += dt;
     this.local = local;
     this.setLevel(s?.level || 0);
@@ -683,9 +725,26 @@ export class FlightView {
     this.cliffs.forEach(
       (g, i) => (g.position.z = (this.travel % 400) - i * 400),
     );
-    this.props.forEach(
-      (g, i) => (g.position.z = ((this.travel + i * 17) % 450) - 420),
-    );
+    this.props.forEach((p, i) => {
+      const z = ((this.travel + i * 17) % 450) - 420,
+        d = this.propMatrix;
+      for (let part = 0; part < 3; part++) {
+        d.position.set(
+          p.x - (part === 1 ? 0.92 : 0),
+          -4 + p.height * (part === 0 ? 0.5 : part === 1 ? 0.55 : 0.75),
+          z,
+        );
+        d.scale.set(
+          1,
+          part === 0 ? p.height : part === 1 ? p.height * 0.7 : 1,
+          1,
+        );
+        d.updateMatrix();
+        this.propBatches[part].setMatrixAt(i, d.matrix);
+      }
+    });
+    for (const batch of this.propBatches)
+      batch.instanceMatrix.needsUpdate = true;
     this.arch.position.z = (this.travel * 0.25) % 100;
     this.dust.position.z = (this.clock * 2) % 30;
     this.events.forEach((g) => {
@@ -788,6 +847,10 @@ export class FlightView {
       Math.min(1, dt * 5);
     this.camera.updateProjectionMatrix();
     this.camera.lookAt(targetX * 0.5, 1.8, -35);
+    if (mode === "briefing" && !this.warmed) {
+      this.renderer.compile(this.scene, this.camera);
+      this.warmed = true;
+    }
     this.renderer.render(this.scene, this.camera);
   }
 }

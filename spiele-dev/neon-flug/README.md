@@ -35,14 +35,14 @@ Im Repository-Root:
 
 Dann http://localhost:8099/neon-flug öffnen. Für die lokale Zweibrowser-Gegenprobe beide Seiten mit ?mp=local&debug=1 öffnen. Für den normalen Online-Weg mp=local weglassen.
 
-    node --test spiele-dev/neon-flug/core.test.mjs spiele-dev/neon-flug/profile.test.mjs
+    node --test spiele-dev/neon-flug/core.test.mjs spiele-dev/neon-flug/profile.test.mjs spiele-dev/neon-flug/timing.test.mjs
     node spiele-dev/neon-flug/browser-test.cjs
     node spiele-dev/neon-flug/matchmaking-test.cjs
     node spiele-dev/neon-flug/ui-test.cjs
 
 Browserprüfung benötigt Playwright und Chromium; die UI-Prüfung zusätzlich @axe-core/playwright (alternativer Bibliothekspfad über AXE_MODULE). PLAYWRIGHT_MODULE kann auf eine bereits installierte Playwright-Bibliothek zeigen, PLAYWRIGHT_BROWSERS_PATH auf deren Browser, NEON_TEST_URL auf einen anderen lokalen Vorschau-Port und NEON_REPORT_DIR auf den Ausgabeordner. Der Test erstellt nur eigene lokale Räume. debug=1 aktiviert den Testzugriff; der beschleunigte Kampagnendurchlauf belegt Zustands-/Netzwerkübergänge, keinen manuellen Durchlauf oder Schwierigkeitsnachweis.
 
-Gemessen im Entwicklungsstand mit Protokoll v2: 24 Simulations-/Profilprüfungen, acht Kampagnen-WebRTC-Prüfungen, zwölf Such-/Ausrüstungsprüfungen und neun UI-Prüfungen. Die Internetsuche bleibt davon getrennt unbestätigt.
+Gemessen im Entwicklungsstand mit Protokoll v2: 34 Simulations-/Profil-/Timingprüfungen, acht Kampagnen-WebRTC-Prüfungen, zwölf Such-/Ausrüstungsprüfungen und neun UI-Prüfungen. Die Internetsuche bleibt davon getrennt unbestätigt.
 
 Geprüft: Simulation bei unterschiedlichen Bildraten, Treffer-Unverwundbarkeit, Dash, Rettungsnähe/-dauer, Niederlage, Rettungsfrist, Pause, ungültige Eingaben, Snapshots, drei Abschlüsse und Rand-Hindernisse. Zusätzlich Zwei-Browser-Ablauf, Touch-Bedienung, Drehhinweis, gespeicherte Einstellungen und axe-Menüprüfung. Aktuelle Ergebnisse und Screenshots im Übergabepaket.
 
@@ -53,3 +53,10 @@ Die vollständige lokale CI-Simulation konnte ihre Plandatei im schreibgeschütz
 - PeerJS: bestehende lokale MIT-Bibliothek unter js/vendor/peerjs.min.js; Transportadapter js/mp.js unverändert.
 - Eigene Spiellogik, Geometrie und synthetisierte Klänge.
 - KI-Motive: exec-b792d747-5d31-40f5-beb4-ac1007b11590.png (Hauptmotiv) und exec-a9daf47b-b2e7-4912-852d-54df81a97c41.png (Basalt).
+
+## Ruckler: Darstellung, Spieluhr und Netzwerk
+Statische Gleiterteile, Ringe und Hindernisse werden nach Material zusammengefasst; wiederkehrende Türme instanziert. Automatische Grafik senkt bei anhaltender Last die Renderauflösung und erhöht sie erst nach länger stabilen Frames wieder. Die Simulation bleibt dabei gleich. Die Oberfläche wird mit höchstens 20 Aktualisierungen pro Sekunde gepflegt; die Darstellung läuft unabhängig weiter. Shader werden im Briefing vorbereitet.
+
+Die alte Begrenzung auf 50 Millisekunden verlor bei weniger als 20 FPS Spielzeit. Jetzt werden bis zu einer Sekunde in kleinen Simulationsschritten nachgeholt; längere Aussetzer pausieren den laufenden Flug. Der unmittelbare Start wird als Aufwärmphase behandelt. Schnelle Zustandsupdates kommen im Spiel alle 50 statt 150 Millisekunden über den vorhandenen schnellen WebRTC-Kanal; verbindliche Übergänge bleiben zuverlässig. Sequenzen verhindern, dass verspätete Pakete neuere Zustände überschreiben. Die Darstellung des Gasts wird monoton geglättet und die eigene Bewegung kurz visuell vorhergesagt. Die Spielentscheidung bleibt beim Host.
+
+Reproduzierbare lokale Kurzprobe: `node spiele-dev/neon-flug/performance-sample.cjs`. Werte hängen von GPU, Renderauflösung und Systemlast ab. Gemessen in dieser Cloud mit SwiftShader: 182 auf 61 Zeichenaufrufe; automatische Auflösung sank von 960×540 auf 576×324. Etwa 3,8 auf 7,3 FPS im kurzen Software-Test, keine Handy-FPS-Aussage. Vorher vergingen während rund 4,97 Sekunden nur 0,95 Sekunden Simulation; nachher rund 4,77 während 4,64 Sekunden (Abtastung an Framegrenzen). Die Vorschauaufnahme kann durch Software-Rendering weiterhin ruckeln. Reale Handy-FPS und Internetlatenz bleiben separat zu prüfen.
