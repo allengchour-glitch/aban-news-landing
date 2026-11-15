@@ -299,7 +299,7 @@ def laender(h, name):
     Produkten (80 %), die Reports-Abfrage von 18:43 UTC zählte den Code aber nur 979-mal. Gibt nur Zählungen aus
     (keine Kontonummer, keine Titel): Status je Herkunft, je Problemcode die Länder und Berichtskontexte.
     """
-    zeilen = suchen(h, name, "SELECT offer_id, feed_label, language_code, aggregated_reporting_context_status, item_issues FROM product_view")
+    zeilen = suchen(h, name, "SELECT id, offer_id, feed_label, language_code, aggregated_reporting_context_status, item_issues FROM product_view")
     status = Counter(); feed = Counter(); codes = Counter(); code_land = Counter(); code_ctx = Counter()
     limitiert_codes = Counter(); limitiert_ohne_problem = Counter()
     for z in zeilen:
