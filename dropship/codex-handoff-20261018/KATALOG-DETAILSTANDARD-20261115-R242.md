@@ -37,3 +37,21 @@ Fehlende Zuordnung nicht mit längerer Werbekopie verdecken. Neue Gruppen bevorz
 R245-Lücken gezielt nachbelegen; keine Variantenerstellung, SKU-Umhängung oder Kontaktaufnahme auf Verdacht. Für unabhängige Quellen-/Textreviews weiterhin günstige Modelle nutzen, operative Gegenproben und Writes koordiniert halten.
 
 [Live-Bericht R245](PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md) · [Belege](PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json).
+
+## R246 – Details direkt in der Auswahl
+
+[LUXESTYLE_VARIANTENAUSWAHL_DETAILS_20261115]
+
+Die aktuelle Anweisung lautet: «prodikt details, auch bei variantwn auswahl». Der Detailstandard gilt deshalb auch für echte Auswahlfelder und deren Werte.
+
+- Feldnamen beschreiben die tatsächliche Bedeutung: beispielsweise Gehäusefarbe, Lichtfunktion, Grösse oder Modell. Kein «Farbe» für Anschlussausführungen oder Lichtfunktionen.
+- Belegte Unterschiede möglichst knapp direkt im auswählbaren Wert zeigen: USB, Akku, Speicher, Stückzahl oder modellgebundenes Zubehör. Eine Zahl im Modellnamen ist keine automatisch bestätigte Spielzahl.
+- Bei unklarem Packumfang einen passenden Hinweis direkt an der Auswahl ergänzen; weder vollständiges Set noch Zubehör-only erfinden.
+- Bestehende Option-, Wert- und Varianten-IDs, Reihenfolge sowie SKU-/Preis-/Bestandszuordnung erhalten. LEAVE_AS_IS verwenden; keine neuen Werte oder Varianten aus einer umfangreicheren Lieferantenliste ohne separate konkrete Grundlage.
+- Beschreibung und Auswahltexte konsistent halten. Bei Einzelauswahlen mit ungeklärter Modell-/Farbzuordnung keine Auswahl vortäuschen.
+- Nach der nativen und öffentlichen Datenprüfung tatsächlich sichtbare UI prüfen. Bildkarten können die nativen Radiofelder absichtlich ersetzen. Auswahlwechsel muss zur richtigen stabilen Varianten-ID und zum passenden Preis führen; kein Warenkorb oder Checkout als Test nötig.
+- Lange Texte müssen mobil vollständig lesbar bleiben. Vorher-/Nachher-SEO-Titel vergleichen, auch wenn ein nativer null-Wert den vorhandenen Theme-Fallback nutzt.
+
+R246 belegt diesen Ablauf an vier Produkten: fünf Optionsdatensätze,14Werte und vier Beschreibungen;40Varianten/28Wert-IDs/39Medien erhalten. Vier öffentliche Seiten und Mobilprüfung390×844 mit drei echten Auswahlwechseln bestätigt. Bestehender Katalogumfang und Produktdetailpriorität1 bleiben unverändert.
+
+[Live-Bericht R246](VARIANTENAUSWAHL-LIVE-20261115-R246.md) · [Zuordnung aller40Varianten](VARIANTENAUSWAHL-ZUORDNUNG-20261115-R246.csv).

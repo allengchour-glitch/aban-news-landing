@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 245,
-  "updatedAt": "2026-11-15T19:15:18Z",
+  "revision": 246,
+  "updatedAt": "2026-11-15T19:41:50Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -615,24 +615,26 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r245_five_more_product_descriptions_live_with_model_colour_gaps_explicit",
+      "state": "r246_variant_selection_labels_and_descriptions_live_mobile_verified",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "FIVE_CJ_SOURCES_FIVE_GUARDED_PRODUCT_WRITES_NATIVE_PUBLIC_READBACK_12_VARIANTS_42_MEDIA_PROTECTED",
-      "lastEvidence": "R245: Auf die erneute ausdrückliche A-und-O-Priorität fünf weitere Produktbeschreibungen live verbessert: Projektor (sieben A–G-SKUs, modellabhängiger Lieferumfang), Wandteppich (150×150cm, Material), Retro-Konsole (Modelle/Spieleumfang/Controllermaße), Powerbank (5000mAh/5V und offene Farb-/Ladeangaben), Gamepad (keine vorgetäuschten zwei Modelle, T3/T3S-Lücke klar). Fünf serielle Produktupdates nur descriptionHtml/seo.description; vorhandene SEO-Titel mitgesendet. userErrors=[], vollständige native Rücklesungen und fünf öffentliche Seiten HTTP200 bestätigt. Zwölf Varianten/42Medien sowie öffentliche Produkt-JSONs bis auf description hashgleich.82 Textfragmente in tatsächlichem HTML gegengeprüft. Separate Spezifikationen gelesen, keine unabhängige physische Nachmessung. Keine neue Modell-/Farb-/Fulfillmentbindung oder Spieleliste behauptet.",
-      "nextAllowedStep": "Produktbeschreibung bleibt Priorität1: nächste kleine noch unbearbeitete Produktgruppe mit aktuellen eindeutigen SKU-/Variantenquellen, echten Bildern und öffentlicher Kaufbarkeit wählen. Zweck, Auswahlunterschiede, belegte Gerätemasse/Materialien/Anschlüsse, konkrete Packliste und bedeutsame Lücken verständlich beschreiben. Die R245-Modell-/Farb-/Spiele-/Ladeangaben über vorhandene legitime Daten/Helfer gezielt nachbelegen; keine Variante/SKU auf Verdacht umhängen und niemanden kontaktieren. Nur passende bestätigte Angaben live schreiben, vorher voller Gegenread/Diff, danach native/öffentliche Schutzprüfung. R242/R245 nicht doppelt als neue Umsetzung zählen. Von36R241Angeboten jetzt6redaktionell verbessert,30noch offen; Restkatalog unbekannt, keine Massenpagination oder neue Automation/Frequenz.",
+      "belegArt": "FIVE_OPTION_RENAMES_FOUR_DESCRIPTION_ALIGNMENTS_NATIVE_PUBLIC_AND_MOBILE_INTERACTION_VERIFIED",
+      "lastEvidence": "R246: Auf «prodikt details, auch bei variantwn auswahl» die tatsächlichen Auswahlfelder von Wandleuchte, Deckenleuchte,620erKonsole und Projektor live präzisiert.5 Optionsdatensätze/14 vorhandene Werte umbenannt,4Beschreibungen abgeglichen;9serielleWrites mit LEAVE_AS_IS, userErrors=[], frischen vollständigen Gegenproben und Rücklesungen.40Varianten,28Optionswert-IDs,39Medien und alle SKU-/Preis-/Inventar-/Taxonomie-/SEO-Daten erhalten.24Variantentitel automatisch passend geändert. Vier öffentliche HTML-/JSON-Prüfungen und echte390×844-Mobilprüfungen bestanden. ProjektorF→G, WandleuchteWeiss→Orange undB4Controller1→2 führten zu richtigenURL-/Kaufformular-IDs und bestehenden Preisen; keineCart-/Checkoutaktion. BestehendeBildauswahl übernimmt die neuenDaten, allelangenProjektor-Kartentexte vollständig umbrochen; keinThemecode geändert.",
+      "nextAllowedStep": "Produktdetails bleiben Priorität1, ausdrücklich auch direkt in Auswahlfeldern. Nächste kleine neue Produktgruppe nach aktuellen Quellen/Optionen/Varianten/SKUs prüfen. Auswahlname muss die Bedeutung treffen (Gehäusefarbe, Lichtfunktion, Grösse, Modell, Lieferumfang); bedeutende belegte Unterschiede knapp in den Werten nennen. Vor Renames IDs/Zuordnung/Positionsreihenfolge und vollständige Schutzfelder aufnehmen, LEAVE_AS_IS verwenden, keine Werte/Varianten neu anlegen/löschen oder Bestände/Policies aktivieren. Beschreibungen synchron halten. Danach native/öffentliche Gegenprobe und tatsächlich sichtbare native oder Bildauswahl samt Form-Varianten-ID testen, ohne Cart/Checkout. R245 Gamepad-/Powerbank-Zuordnung und R246B4-Packumfang gezielt nachbelegen, nicht durch erfundene Varianten überdecken. Katalog weiter offen, R241 weiterhin6/36redaktionell bearbeitet und30offen; R246620er bereitsR242bearbeitet und nicht erneut als neues Produkt zählen. Keine neuen Tagesreports/Automationen/Frequenzen.",
       "blockers": [
         "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
         "Modell6-Nettoinhalt und frühere Mengen-/Konformitäts-/Filmrechtsfälle bleiben offen. Der R243-Projektor-Beschreibungsentwurf wurde durch R245 live umgesetzt und erweitert; dadurch keine Film-/Musikfreigabe.",
         "AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet.",
-        "R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen."
+        "R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen.",
+        "R246: B4-Controller-Auswahlen des620erProdukts15448848761217 sind weiterhin weder als komplettes Set noch als Zubehör-only bestätigt; «Umfang prüfen» direkt imWert. Dimm-/Kelvin-/Anschlussdetails derDeckenleuchte bleiben quellabhängig, keine230V- oderFernbedienungszusage."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
         "Keine erfundenen Angaben oder Teilmaterial als Ganzprodukt ausgegeben",
         "Aktuelle gemeinsame Nenner und stabile IDs statt gemischter alter Zähler",
         "Jeder zulässige Write frisch zurückgelesen; Claudes Fortschritt nicht doppelt gezählt",
-        "Ausdrückliche A-und-O-Vorgabe15.11.2026: konkrete, source-bound Produktdetails vor zusätzlichem generischem Werbetext; fehlende Modell-/Farb-/Packbindung sichtbar statt erfunden. Gleicher Standard für weitere Produktarten."
+        "Ausdrückliche A-und-O-Vorgabe15.11.2026: konkrete, source-bound Produktdetails vor zusätzlichem generischem Werbetext; fehlende Modell-/Farb-/Packbindung sichtbar statt erfunden. Gleicher Standard für weitere Produktarten.",
+        "Auswahlfelder benennen echte Auswahlbedeutung; belegte Unterschiede direkt am wählbaren Wert. Stabile Option-/Wert-/Varianten-IDs sowie SKU-/Preis-/Bestandszuordnung erhalten. Sichtbare Bildauswahl und native Logik gemeinsam prüfen."
       ],
       "sources": [
         {
@@ -1473,6 +1475,31 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
           "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
           "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-LIVE-20261115-R246.md",
+          "gitBlobSha": "b1652d03782bb050bc3977704afaa6ef4a9f0426",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+          "gitBlobSha": "9017ee0052a98da2eaca0e36d92206e20861951f",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-DIFF-20261115-R246.patch",
+          "gitBlobSha": "e4c0c589b74ee73f87492155379a8c1d22fbed4c",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-ZUORDNUNG-20261115-R246.csv",
+          "gitBlobSha": "2b1b270a71c59fc56751da237df1595e4a38120a",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-TEXTE-20261115-R246.json",
+          "gitBlobSha": "28bd7bd2f692bc2846f24d511c2077d61907f009",
+          "readAt": "2026-11-15T19:41:50Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2534,6 +2561,15 @@
           ],
           "previousBelegArt": "GEPRUEFT",
           "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json"
+        },
+        {
+          "revision": 246,
+          "at": "2026-11-15T19:41:50Z",
+          "previousState": "r245_five_more_product_descriptions_live_with_model_colour_gaps_explicit",
+          "previousLastEvidence": "R245: Auf die erneute ausdrückliche A-und-O-Priorität fünf weitere Produktbeschreibungen live verbessert: Projektor (sieben A–G-SKUs, modellabhängiger Lieferumfang), Wandteppich (150×150cm, Material), Retro-Konsole (Modelle/Spieleumfang/Controllermaße), Powerbank (5000mAh/5V und offene Farb-/Ladeangaben), Gamepad (keine vorgetäuschten zwei Modelle, T3/T3S-Lücke klar). Fünf serielle Produktupdates nur descriptionHtml/seo.description; vorhandene SEO-Titel mitgesendet. userErrors=[], vollständige native Rücklesungen und fünf öffentliche Seiten HTTP200 bestätigt. Zwölf Varianten/42Medien sowie öffentliche Produkt-JSONs bis auf description hashgleich.82 Textfragmente in tatsächlichem HTML gegengeprüft. Separate Spezifikationen gelesen, keine unabhängige physische Nachmessung. Keine neue Modell-/Farb-/Fulfillmentbindung oder Spieleliste behauptet.",
+          "previousNextAllowedStep": "Produktbeschreibung bleibt Priorität1: nächste kleine noch unbearbeitete Produktgruppe mit aktuellen eindeutigen SKU-/Variantenquellen, echten Bildern und öffentlicher Kaufbarkeit wählen. Zweck, Auswahlunterschiede, belegte Gerätemasse/Materialien/Anschlüsse, konkrete Packliste und bedeutsame Lücken verständlich beschreiben. Die R245-Modell-/Farb-/Spiele-/Ladeangaben über vorhandene legitime Daten/Helfer gezielt nachbelegen; keine Variante/SKU auf Verdacht umhängen und niemanden kontaktieren. Nur passende bestätigte Angaben live schreiben, vorher voller Gegenread/Diff, danach native/öffentliche Schutzprüfung. R242/R245 nicht doppelt als neue Umsetzung zählen. Von36R241Angeboten jetzt6redaktionell verbessert,30noch offen; Restkatalog unbekannt, keine Massenpagination oder neue Automation/Frequenz.",
+          "previousBelegArt": "FIVE_CJ_SOURCES_FIVE_GUARDED_PRODUCT_WRITES_NATIVE_PUBLIC_READBACK_12_VARIANTS_42_MEDIA_PROTECTED",
+          "source": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json"
         }
       ],
       "additionalProductCleanups": [
@@ -3759,6 +3795,36 @@
         "oldConsoleGroupStillOpen": 30,
         "resolvesPreviousProjectorCopyDraft": "PROJEKTOR-AUSWAHL-ENTWURF-20261115-R243.html",
         "unresolvedDetails": "PRODUKTANGABEN-KLAERUNGSBOGEN-20261115-R245.md"
+      },
+      "ownerVariantSelectionInstructionR246": {
+        "at": "2026-11-15T19:41:50Z",
+        "quote": "prodikt details, auch bei variantwn auswahl",
+        "priority": 1,
+        "existingDescriptionStandardExtended": true
+      },
+      "run246": {
+        "at": "2026-11-15T19:41:50Z",
+        "source": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+        "productIds": [
+          "gid://shopify/Product/15491395846529",
+          "gid://shopify/Product/15460287250817",
+          "gid://shopify/Product/15448848761217",
+          "gid://shopify/Product/15521256604033"
+        ],
+        "nativeWrites": 9,
+        "optionUpdates": 5,
+        "existingValuesRenamed": 14,
+        "descriptionAlignments": 4,
+        "variantTitlesChanged": 24,
+        "variantsProtected": 40,
+        "optionValueIdsProtected": 28,
+        "mediaProtected": 39,
+        "newVariants": 0,
+        "publicPagesConfirmed": 4,
+        "mobileViewport": "390x844",
+        "realSelectionTransitions": 3,
+        "cartCheckoutSubmissionIssued": false,
+        "themeWrites": 0
       }
     },
     {
@@ -11385,6 +11451,11 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
           "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
           "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+          "gitBlobSha": "9017ee0052a98da2eaca0e36d92206e20861951f",
+          "readAt": "2026-11-15T19:41:50Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -13576,6 +13647,14 @@
         "oldCombinedPackingListRemoved": true,
         "professionalMasterApproval": false,
         "filmMusicRightsCleared": false,
+        "socialWrites": 0
+      },
+      "run246VariantLabels": {
+        "at": "2026-11-15T19:41:50Z",
+        "source": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+        "stableSevenVariantIdsUnchanged": true,
+        "selectorShowsUsb18MusicAndNoRemoteWhereSupported": true,
+        "professionalMasterApproval": false,
         "socialWrites": 0
       }
     },
@@ -33212,6 +33291,41 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-KLAERUNGSBOGEN-20261115-R245.md",
           "gitBlobSha": "cb85983d44e25c1fa86139e40ece04a82ee8ea34",
           "readAt": "2026-11-15T19:15:18Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "Claude Code receipt unknown"
+    },
+    {
+      "revision": 246,
+      "at": "2026-11-15T19:41:50Z",
+      "actor": "Codex",
+      "summary": "Vier konkrete Variantenwähler live verständlicher:5Feldnamen und14Werte,4Beschreibungstexte synchronisiert.9 bestätigte nativeWrites/LEAVE_AS_IS, keine neuen Varianten.40Varianten/28Wert-IDs/39Medien geschützt. Öffentlich und mobil390×844 einschließlich vorhandenerBildauswahl und3echter Auswahlwechsel mit richtigenForm-/URL-IDs geprüft. Produktdetailpriorität1 aufAuswahlfelder erweitert, bestehendeQuelllücken bleiben offen. KeinTheme-/Social-/Feed-/Einstellungswrite oderTagesreport.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-LIVE-20261115-R246.md",
+          "gitBlobSha": "b1652d03782bb050bc3977704afaa6ef4a9f0426",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+          "gitBlobSha": "9017ee0052a98da2eaca0e36d92206e20861951f",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-DIFF-20261115-R246.patch",
+          "gitBlobSha": "e4c0c589b74ee73f87492155379a8c1d22fbed4c",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-ZUORDNUNG-20261115-R246.csv",
+          "gitBlobSha": "2b1b270a71c59fc56751da237df1595e4a38120a",
+          "readAt": "2026-11-15T19:41:50Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-TEXTE-20261115-R246.json",
+          "gitBlobSha": "28bd7bd2f692bc2846f24d511c2077d61907f009",
+          "readAt": "2026-11-15T19:41:50Z"
         }
       ],
       "taskCount": 24,
@@ -60439,6 +60553,22 @@
     "oldConsoleGroupStillOpen": 30,
     "modelColourGapsStillOpen": true,
     "masterSocialHoldsUntouched": true,
+    "dailyReportsRepeated": false,
+    "purchaseWatchEnded": true,
+    "receiptState": "Claude Code receipt unknown"
+  },
+  "run246": {
+    "at": "2026-11-15T19:41:50Z",
+    "source": "dropship/codex-handoff-20261018/VARIANTENAUSWAHL-BELEGE-20261115-R246.json",
+    "request": "Product details also at variant selection",
+    "nativeWrites": 9,
+    "products": 4,
+    "variantsProtected": 40,
+    "optionValueIdsProtected": 28,
+    "mediaProtected": 39,
+    "publicAndMobileVerified": true,
+    "cartCheckoutSubmissionIssued": false,
+    "themeWrites": 0,
     "dailyReportsRepeated": false,
     "purchaseWatchEnded": true,
     "receiptState": "Claude Code receipt unknown"

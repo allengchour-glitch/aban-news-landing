@@ -1,3 +1,23 @@
+# R246 – Produktdetails direkt bei der Variantenauswahl live – 15.11.2026
+
+Die ausdrückliche Vorgabe **«prodikt details, auch bei variantwn auswahl»** ist an vier bestehenden Produkten live umgesetzt. Wandleuchte: «Lichtausführung» und «Gehäusefarbe» getrennt. Deckenleuchte: «Lichtfunktion», «Stufenlos dimmbar» und «3 Lichtfarben».620erKonsole: deutsche Ausführungen und Stückzahlen, B4 direkt mit «Umfang prüfen». Projektor: «Modell und Ausstattung», USB bei A/B/C/G,18Musikstücke bei F und fehlende Fernbedienung bei G direkt im Namen.
+
+**Neun native Writes:** fünf bestehende Optionsdatensätze mit14 umbenannten Werten, danach vier Beschreibungen an die neuen Labels angepasst. LEAVE_AS_IS, userErrors=[], keine Retries oder unklaren Writes.40Varianten,28Optionswert-IDs,39Medien und alle Preis-/SKU-/Barcode-/Bestands-/Policy-/Tag-/Taxonomie-/SEO-Daten erhalten.24Variantentitel wurden aus den neuen Werten automatisch angepasst. Keine neue Variante, kein neuer Optionswert oder Fulfillmentwechsel.
+
+**Vier öffentliche HTML-/JSON-Rücklesungen bestanden.** Neue Auswahltexte und passende Beschreibungen sichtbar;40Varianten mit nativer Rücklesung identisch. H1, tatsächliche öffentliche SEO-Titel, Meta und Canonicals erhalten. Geschützte öffentliche Produktfelder hashgleich.
+
+**Echte Mobilprüfung390×844:** Kein horizontaler Überlauf. Projektor F→G bestätigt Variante68122445480327/CHF35.90, Wandleuchte Weiss→Orange bestätigt67841336213895/CHF24.90, B4Controller1→2 bestätigt56053717205377/CHF20.90. Deckenleuchte3Lichtfarben/20cm zeigt56069482447233/CHF48.90. URL und Kaufformular stimmen. Alle sieben langen Projektor-Bildkartentexte und sieben Farbtexte vollständig umbrochen. Die vorhandene Bildauswahl versteckt absichtlich native Feldsets und bedient deren Logik; kein Auswahlverlust und kein Theme-Patch. Keine Cart-/Checkoutaktion.
+
+Vier aktuelle CJ-Quellen und günstiger unabhängiger Textreview vor Writes. Lokale fehlende Optionswert-ID-Felder vor jedem Write korrigiert; Titel-null-Fallback der Deckenleuchte durch echten Vorher-/Nachher-HTML-Vergleich bestätigt. Erster Browserlauf abgelaufen410; neue Sitzung bestand und wurde beendet. Standalone-Validator übersprang, native Ausführung validierte und wurde vollständig zurückgelesen.
+
+Produktdetails bleiben Priorität1, ausdrücklich auch bei Auswahlfeldern. R245-Modell-/Farb-/Spiele-/Ladezuordnung und B4-Packumfang weiter offen; keine Gerätekompatibilität, Kelvinwerte, Durchmesser oder Setinhalte geraten. Von der R241-Gruppe weiterhin6/36redaktionell bearbeitet und30offen; die620erKonsole ist ein bereitsR242bearbeitetes Produkt, keine neue Katalogzählung.
+
+Shop luxestyle.ch/CHF/Europe/Zurich und Metricool6227837 samt sechs Kanälen frisch passend. Keine Kennzahl-/GSC-/Flow-/Umsatz-/Bestellreports, Kauf-Watch beendet. Keine Theme-, Social-, Merchant-, Verbindungs-, Preis-, Versand-, Rabatt-, Budget-, DNS- oder Flowwrites. Vorhandene zwei Theme-Pendingdateien nicht angefasst und keine Publish-Beschränkung umgangen. Keine Kundenansprache, bezahlten Renders oder neue Automation/Frequenz. Claude-Code-Empfang unbekannt.
+
+[Live-Bericht](VARIANTENAUSWAHL-LIVE-20261115-R246.md) · [Belege](VARIANTENAUSWAHL-BELEGE-20261115-R246.json) · [Konkreter Diff](VARIANTENAUSWAHL-DIFF-20261115-R246.patch) · [40Varianten-Zuordnung](VARIANTENAUSWAHL-ZUORDNUNG-20261115-R246.csv).
+
+[LUXESTYLE_R246_20261115]
+
 # R245 – Produktbeschreibungen als höchste Priorität; fünf weitere Seiten live – 15.11.2026
 
 Aktuelle ausdrückliche Vorgabe: **«detailierte produktbeschreibung ist sehr wichtig a und o checke durch und verbessere»**. Die bestehende Aufgabe product-attribute-completeness erhält Priorität1. Derselbe belegte Detailstandard gilt für alle Produktarten in kleinen geprüften Gruppen; keine neue Automation oder Frequenzänderung.

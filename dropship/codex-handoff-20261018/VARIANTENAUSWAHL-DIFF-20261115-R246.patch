@@ -1,0 +1,274 @@
+
+# wall-light
+--- current
++++ proposed
+@@ -1,9 +1,9 @@
+ {
+   "id": "gid://shopify/ProductOption/17934621475201",
+-  "name": "Ausführung",
++  "name": "Lichtausführung",
+   "position": 1,
+   "values": [
+-    "Weißlicht",
++    "Weisslicht",
+     "Warmlicht",
+     "Dreifarbenlicht"
+   ],
+@@ -11,7 +11,7 @@
+   "optionValues": [
+     {
+       "id": "gid://shopify/ProductOptionValue/58676789313927",
+-      "name": "Weißlicht",
++      "name": "Weisslicht",
+       "hasVariants": true
+     },
+     {
+
+# wall-housing
+--- current
++++ proposed
+@@ -1,6 +1,6 @@
+ {
+   "id": "gid://shopify/ProductOption/19633904189831",
+-  "name": "Farbe",
++  "name": "Gehäusefarbe",
+   "position": 2,
+   "values": [
+     "Weiss",
+
+# ceiling-light
+--- current
++++ proposed
+@@ -1,21 +1,21 @@
+ {
+   "id": "gid://shopify/ProductOption/17894344327553",
+-  "name": "Farbe",
++  "name": "Lichtfunktion",
+   "position": 1,
+   "values": [
+-    "Electrodeless Dimming",
+-    "Three Colors"
++    "Stufenlos dimmbar",
++    "3 Lichtfarben"
+   ],
+   "linkedMetafield": null,
+   "optionValues": [
+     {
+       "id": "gid://shopify/ProductOptionValue/12316545581441",
+-      "name": "Electrodeless Dimming",
++      "name": "Stufenlos dimmbar",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12316545614209",
+-      "name": "Three Colors",
++      "name": "3 Lichtfarben",
+       "hasVariants": true
+     }
+   ]
+
+# console-choice
+--- current
++++ proposed
+@@ -1,45 +1,45 @@
+ {
+   "id": "gid://shopify/ProductOption/17880367235457",
+-  "name": "Farbe",
++  "name": "Ausführung",
+   "position": 1,
+   "values": [
+-    "European Standard-1PCS",
+-    "Australian Regulations-1PCS",
+-    "B4 controller-1PCS",
+-    "B4 controller-2PCS",
+-    "B4 controller-3PCS",
+-    "B4 controller-4PCS"
++    "Europa-Standard · 1 Stk.",
++    "Australien-Standard · 1 Stk.",
++    "B4-Controller · 1 Stk. · Umfang prüfen",
++    "B4-Controller · 2 Stk. · Umfang prüfen",
++    "B4-Controller · 3 Stk. · Umfang prüfen",
++    "B4-Controller · 4 Stk. · Umfang prüfen"
+   ],
+   "linkedMetafield": null,
+   "optionValues": [
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448082305",
+-      "name": "European Standard-1PCS",
++      "name": "Europa-Standard · 1 Stk.",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448147841",
+-      "name": "Australian Regulations-1PCS",
++      "name": "Australien-Standard · 1 Stk.",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448180609",
+-      "name": "B4 controller-1PCS",
++      "name": "B4-Controller · 1 Stk. · Umfang prüfen",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448213377",
+-      "name": "B4 controller-2PCS",
++      "name": "B4-Controller · 2 Stk. · Umfang prüfen",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448246145",
+-      "name": "B4 controller-3PCS",
++      "name": "B4-Controller · 3 Stk. · Umfang prüfen",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/12296448278913",
+-      "name": "B4 controller-4PCS",
++      "name": "B4-Controller · 4 Stk. · Umfang prüfen",
+       "hasVariants": true
+     }
+   ]
+
+# projector-choice
+--- current
++++ proposed
+@@ -1,31 +1,31 @@
+ {
+   "id": "gid://shopify/ProductOption/17970205753729",
+-  "name": "Modell",
++  "name": "Modell und Ausstattung",
+   "position": 1,
+   "values": [
+-    "A · Grundmodell",
+-    "B · mit 6 Motivscheiben",
+-    "C · Galaxie-Scheibe + 6 Motivscheiben",
++    "A · Grundmodell · USB",
++    "B · 6 Motivscheiben · USB",
++    "C · Galaxie-Scheibe + 6 Motivscheiben · USB",
+     "D · Akku, Bluetooth, 6 Motivscheiben",
+     "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+-    "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+-    "G · drehend, Galaxie-Scheibe + 3 Farbscheiben"
++    "F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben",
++    "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+   ],
+   "linkedMetafield": null,
+   "optionValues": [
+     {
+       "id": "gid://shopify/ProductOptionValue/58848119554439",
+-      "name": "A · Grundmodell",
++      "name": "A · Grundmodell · USB",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/58848119587207",
+-      "name": "B · mit 6 Motivscheiben",
++      "name": "B · 6 Motivscheiben · USB",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/58848119619975",
+-      "name": "C · Galaxie-Scheibe + 6 Motivscheiben",
++      "name": "C · Galaxie-Scheibe + 6 Motivscheiben · USB",
+       "hasVariants": true
+     },
+     {
+@@ -40,12 +40,12 @@
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/58848119718279",
+-      "name": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
++      "name": "F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben",
+       "hasVariants": true
+     },
+     {
+       "id": "gid://shopify/ProductOptionValue/58848119751047",
+-      "name": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
++      "name": "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung",
+       "hasVariants": true
+     }
+   ]
+
+# description wall
+--- current
++++ proposed
+@@ -2,9 +2,9 @@
+ <h3>So wählst du deine Leuchte</h3>
+ <ul>
+ <li>
+-<strong>Ausführung:</strong> «Weißlicht», «Warmlicht» oder «Dreifarbenlicht». Diese Auswahl beschreibt das Licht, nicht die Gehäusefarbe.</li>
++<strong>Lichtausführung:</strong> «Weisslicht», «Warmlicht» oder «Dreifarbenlicht». Diese Auswahl beschreibt das Licht, nicht die Gehäusefarbe.</li>
+ <li>
+-<strong>Farbe:</strong> Weiss, Orange, Rot, Grün, Gelb, Rosa oder Schwarz. Diese Auswahl beschreibt das Gehäuse.</li>
++<strong>Gehäusefarbe:</strong> Weiss, Orange, Rot, Grün, Gelb, Rosa oder Schwarz. Diese Auswahl beschreibt das Gehäuse.</li>
+ <li>Die Kombination beider Angaben bestimmt deine Variante. Es gibt 21 angebotene Kombinationen.</li>
+ </ul>
+ <h3>Unterschiede der Lichtausführungen</h3>
+
+# description ceiling
+--- current
++++ proposed
+@@ -4,11 +4,11 @@
+ <li>
+ <strong>Grösse:</strong> 20 cm, 30 cm oder 40 cm gemäss Variantenbezeichnung. Weitere Abmessungen sind nicht bestätigt.</li>
+ <li>
+-<strong>Auswahl «Farbe»:</strong> Hier wird die Lichtausführung gewählt, nicht eine Gehäusefarbe.</li>
++<strong>Auswahl «Lichtfunktion»:</strong> Hier wird die Lichtausführung gewählt, nicht eine Gehäusefarbe.</li>
+ <li>
+-<strong>Electrodeless Dimming:</strong> Ausführung mit dieser Dimm-Bezeichnung. Die genaue Dimmfunktion, Bedienung und mitgeliefertes Steuerungszubehör sind nicht bestätigt.</li>
++<strong>Stufenlos dimmbar:</strong> Übersetzung der Variantenbezeichnung «Electrodeless Dimming». Die genaue Dimmfunktion, Bedienung und mitgeliefertes Steuerungszubehör sind nicht bestätigt.</li>
+ <li>
+-<strong>Three Colors:</strong> als Dreifarben-Ausführung bezeichnet. Genaue Farbtemperaturen und Umschaltart sind nicht angegeben.</li>
++<strong>3 Lichtfarben:</strong> als Dreifarben-Ausführung bezeichnet («Three Colors» in der Produktquelle). Genaue Farbtemperaturen und Umschaltart sind nicht angegeben.</li>
+ </ul>
+ <p>Jede der drei Grössen wird mit beiden Lichtausführungen angeboten. Wähle deshalb beide Angaben für deine gewünschte Variante.</p>
+ <h3>Material und elektrische Angaben</h3>
+
+# description console
+--- current
++++ proposed
+@@ -2,11 +2,11 @@
+ <h3>Wichtig für die Auswahl</h3>
+ <ul>
+ <li>
+-<strong>European Standard-1PCS:</strong> europäische Standardausführung des Konsolenangebots.</li>
++<strong>Europa-Standard · 1 Stk.:</strong> europäische Standardausführung des Konsolenangebots.</li>
+ <li>
+-<strong>Australian Regulations-1PCS:</strong> australische Standardausführung des Konsolenangebots. Die passende Anschlussausführung vor dem Kauf prüfen.</li>
++<strong>Australien-Standard · 1 Stk.:</strong> australische Standardausführung des Konsolenangebots. Die passende Anschlussausführung vor dem Kauf prüfen.</li>
+ <li>
+-<strong>B4 controller-1PCS bis B4 controller-4PCS:</strong> separat bezeichnete Controller-Auswahlen. Für diese Auswahlen ist nicht bestätigt, dass das vollständige Konsolenset enthalten ist. Der günstigste angezeigte Preis kann zu einer solchen Auswahl gehören.</li>
++<strong>B4-Controller · 1 bis 4 Stk. · Umfang prüfen:</strong> separat bezeichnete Controller-Auswahlen. Für diese Auswahlen ist nicht bestätigt, dass das vollständige Konsolenset enthalten ist. Der günstigste angezeigte Preis kann zu einer solchen Auswahl gehören.</li>
+ </ul>
+ <h3>Lieferumfang der Standardkonfiguration</h3>
+ <ul>
+
+# description projector
+--- current
++++ proposed
+@@ -3,19 +3,19 @@
+ <p>Der angezeigte Preis gilt für die ausgewählte Variante. Die Ausstattung eines anderen Modells gehört nicht automatisch dazu.</p>
+ <ul>
+ <li>
+-<strong>A · Grundmodell:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>
++<strong>A · Grundmodell · USB:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>
+ <li>
+-<strong>B · mit 6 Motivscheiben:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>
++<strong>B · 6 Motivscheiben · USB:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>
+ <li>
+-<strong>C · Galaxie-Scheibe + 6 Motivscheiben:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>
++<strong>C · Galaxie-Scheibe + 6 Motivscheiben · USB:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>
+ <li>
+ <strong>D · Akku, Bluetooth, 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth und sechs Motivscheiben.</li>
+ <li>
+ <strong>E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth, einer Galaxie-Scheibe und sechs Motivscheiben.</li>
+ <li>
+-<strong>F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>
++<strong>F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>
+ <li>
+-<strong>G · drehend, Galaxie-Scheibe + 3 Farbscheiben:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>
++<strong>G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>
+ </ul>
+ <h2>Technische Angaben</h2>
+ <ul>

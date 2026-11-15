@@ -2884,3 +2884,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md) · [Belege](PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json).
 
 [LUXESTYLE_R245_20261115]
+
+### R246 – Auswahlfelder und Varianteninfos live präzisiert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Auftrag / Quellen | Produktdetailpriorität ausdrücklich auf Variantenwahl erweitert; vier aktuelle native Produkte/Optionen und vier CJ-Quellen samt SKU-Zuordnung geprüft. | Alle Identitäten passend; günstiger unabhängiger Review. Keine Massenpagination, neuen Varianten oder geratenen Setinhalte. |
+| Auswahl / live | Fünf vorhandene Auswahlfelder und14Werte umbenannt; vier Beschreibungen synchronisiert. | Neun bestätigte Writes, LEAVE_AS_IS, userErrors=[], keine Retries. Lichtfunktion/Gehäusefarbe getrennt, deutsche Ausführungen, belegte Projektor-Ausstattung direkt im Namen. |
+| Schutz / öffentlich | Vor jedem Write Gegenread/Diff, danach volle native und vier öffentliche HTML-/JSON-Rücklesungen. |40Varianten/28Wert-IDs/39Medien und geschützte Daten erhalten;24Variantentitel automatisch passend geändert. H1/SEO/Canonical erhalten. |
+| Mobil / Auswahlfunktion |390×844 gemessen; vorhandene Bildauswahl mitgeprüft, drei tatsächliche Auswahlwechsel und vier Formular-IDs/Preise gelesen. | Richtige Projektor-G-, Wandleuchten-Orange- und B4-2er-IDs erreicht; lange Bildkartenbeschriftungen passen. Kein horizontaler Überlauf oder Cart-/Checkout. |
+| Gegenproben / Grenzen | Fehlende lokale ID-Selektion vor Writes korrigiert; null-SEO-Fallback offline auf echte Vorher-/Nachher-Titel geprüft. Browser nach410 erneuert und danach beendet. | Keine Fehler als0/404-Daten ausgegeben oder Writes blind wiederholt. Theme nur gelesen; vorhandene Pendingdateien unangetastet, kein Publish. |
+| Memory / Fortsetzung | Detailstandard um Auswahlbedeutung, stabile IDs und echte UI-Prüfung ergänzt; Quellenlücken und Restkatalog erhalten. | Produktdetails Priorität1. R241 weiterhin6bearbeitet/30offen; keine neue Zählung der bereits bearbeiteten620erKonsole.24Aufgaben, Tagesgrenzen und beendeter Kauf-Watch erhalten; Claude-Empfang unbekannt. |
+
+[Live-Bericht](VARIANTENAUSWAHL-LIVE-20261115-R246.md) · [Belege](VARIANTENAUSWAHL-BELEGE-20261115-R246.json).
+
+[LUXESTYLE_R246_20261115]
