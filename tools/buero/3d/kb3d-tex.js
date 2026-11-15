@@ -83,6 +83,14 @@
     var grad = g.createLinearGradient(0, 0, 0, 512); grad.addColorStop(0, '#13283b'); grad.addColorStop(1, '#0c1729');
     g.fillStyle = '#060e19'; g.fillRect(0, 0, 1024, 512);
     g.fillStyle = grad; rr(g, 8, 8, 1008, 496, 18); g.fill();
+    // Glasreflex nur im Hintergrund, vor allen Texten und Statusfarben.
+    var glas = g.createLinearGradient(0, 0, 650, 512);
+    glas.addColorStop(0, 'rgba(205,231,239,0.12)');
+    glas.addColorStop(0.38, 'rgba(205,231,239,0.025)');
+    glas.addColorStop(1, 'rgba(205,231,239,0)');
+    g.fillStyle = glas; rr(g, 10, 10, 1004, 492, 17); g.fill();
+    g.strokeStyle = 'rgba(197,222,229,0.22)'; g.lineWidth = 1;
+    rr(g, 10.5, 10.5, 1003, 491, 17); g.stroke();
     g.fillStyle = '#74dece'; rr(g, 48 + ins, 18, 56, 4, 2); g.fill();
     g.fillStyle = '#7ad6c4'; g.font = 'bold 17px ' + FONT; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
     g.fillText(kicker, 48 + ins, 44);

@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Monitorgehäuse und Leseansicht verbessert ·15.11.2026
+
+Realistischere Gehäuse/Bedienleisten, dezenter Glas-Hintergrund hinter der Schrift, frontaler Monitorfokus mit Rückkehr. Daten/Statusbedeutung unverändert; keine neuen Live-Verbindungen. Version18 synchron,390/1440px geprüft und43 Dashboardbauprüfungen grün. Higgsfield unverändert Revision4; privater Claude-Upload weiterhin separat. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Büro-Monitore und zugehöriger PR.
+
 ## Codex: privater Higgsfield-Farbstand Revision4 ·15.11.2026
 
 Vorhandene Szene mit warmem Stein/Porzellan, dunklem Petrol, Eiche/Kupfer und sieben Bereichsfarben überarbeitet.270 Objekte erhalten;960x720-Render geprüft und Revision4 im Viewer gezeigt. Schritt04_farben.py dokumentiert, keine privaten Kennungen in Git. Web-Büro-Version17 nicht umgefärbt, keine neue Datenverbindung oder bezahlte Generierung. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Higgsfield-Farbgestaltung und zugehöriger PR.

@@ -156,7 +156,10 @@
     function panel(lx, lz, ang, pw, ph, ph0) {
       B.push().t(lx, ph0 + ph / 2, lz).ry(ang);
       B.box(0, 0, 0, pw, ph, 0.032, C.black);
+      B.box(0, 0.01, 0.025, pw * 0.72, ph * 0.74, 0.035, '#26353c');
       B.box(0, -ph / 2 - 0.004, 0.0, pw * 0.5, 0.012, 0.03, C.dark);
+      // Unbeleuchteter Bedienknopf und schmale Unterkante, kein Statussignal.
+      B.box(pw * 0.37, -ph / 2 + 0.012, -0.019, 0.014, 0.006, 0.004, '#849b9d');
       B.pop();
       B.push().t(lx, 0.75, lz).ry(ang);
       B.box(0, 0.007, 0, 0.2, 0.014, 0.14, C.dark);

@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Büro-Monitore: realistischeres Gehäuse und frontale Leseansicht ·15.11.2026
+
+Besitzerauftrag Monitor verbessern, alles wie echt. Von main4914a888 auf eigenem Branch codex/buero-monitor-realistisch. Bestehende Quellen/Messzeiten/Statusmodelle unverändert; keine Live-Anbindung oder laufende Arbeit erfunden. Gehäuse der Wand-/Zentralmonitore mit abgestimmter Rauheit/Glanz, neutralem Bedienknopf und schmaler Belüftungs-/Bedienleiste. Schreibtischmonitore erhalten Rückgehäuse und unbeleuchteten Bedienknopf. Keine neuen Betriebsleuchten oder schaltbaren Hardwarefunktionen behauptet.
+
+Canvas-Bildschirmoberfläche bekommt dezenten Glas-/Kanteneffekt im Hintergrund vor dem Zeichnen der Texte und Statusfarben. Keine Spiegelung über der Schrift und keine dekorativen falschen Diagramme. Angeklickter Monitor wird jetzt frontal ohne vertikalen Perspektivwinkel ausgerichtet; bisherige Abstandsberechnung, Auswahl und Rückkehr zur vorherigen Kamera erhalten. Seite und Renderer synchron auf campus-einheitlich-18. Higgsfield-Szene unverändert Revision4; kein automatischer Transfer behauptet.
+
+GEMESSEN: WebGL-Nachbau390/1440px mit bestehenden Testzeilen, Campusplatz/Monitorfokus und Rückkehr geprüft; Fokus-Screenshots angesehen, keine JS-Fehler. Versionsassertion prüfte18; rein textuelle alte Ausgabebeschriftung17 im temporären Prüfskript korrigiert.43 Dashboardbauprüfungen grün; komplettes Drei-Seiten-Dokument unter250000Byte und3D-Code205057Byte. Alle vier geänderten JS-Module syntaktisch geprüft. Vorhandene Modellpakete unverändert. Keine Test-/Workflowänderung; echte Handy-Bildrate ungemessen. Echte CI-/Produktionsbelege im zugehörigen PR prüfen. Privater Claude-Upload bleibt bei Claude: vollständiger aktueller Bau plus passender kb3d-code.js Version18, nicht rohe seite.html. Finanzielle Wirkung nicht gemessen.
+
 ## Higgsfield: Farb- und Materialgestaltung überarbeitet ·15.11.2026
 
 Besitzer erlaubt ausdrücklich Farben und Gestaltung selbst anzupassen. Vorhandene private Szene frisch gelesen und Materialien/Lichter geprüft; gezielte Änderung statt zweiter Szene. Erfolgreiche Operation, bestätigte Revision4: warmer Steinboden, helle Porzellan-Rückwand, dunkleres Petrol, wärmere Eiche und kupferfarbene Details. Sieben gedeckte Bereichsfarben für Shop/Versand/Krypto/Inhalte/Technik/Studio/Chef sowie abgestimmte Sitzpolster. Dunkle Monitorflächen und helle Beschriftung, wärmeres Fülllicht.270 Objekte und Kamera erhalten; keine Kontodatenverbindung oder Darstellung echter Geschäftszahlen.
