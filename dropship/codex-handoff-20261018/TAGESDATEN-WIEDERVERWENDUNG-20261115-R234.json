@@ -1,0 +1,180 @@
+{
+  "source": "KENNZAHLEN-KLAVIYO-20261115-R228.json",
+  "sourceSha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+  "range": "2026-11-08/2026-11-14 Europe/Zurich",
+  "readAgainInR234": false,
+  "metrics": [
+    {
+      "network": "instagram",
+      "metric": "IGEV05",
+      "label": "Instagram Evolution > Views",
+      "observedSum": 578.0,
+      "numericDays": 7,
+      "nullDays": 0,
+      "absentDays": 0,
+      "completeNumericDays": true,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "instagram",
+      "metric": "IGEV38",
+      "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+      "observedSum": 1.0,
+      "numericDays": 1,
+      "nullDays": 6,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "facebook",
+      "metric": "FBEV49",
+      "label": "Facebook Evolution > Page Media View",
+      "observedSum": 135.0,
+      "numericDays": 7,
+      "nullDays": 0,
+      "absentDays": 0,
+      "completeNumericDays": true,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "facebook",
+      "metric": "FBEV34",
+      "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+      "observedSum": 0.0,
+      "numericDays": 1,
+      "nullDays": 6,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "tiktok",
+      "metric": "TKEV12",
+      "label": "TikTok Evolution > Video views in period",
+      "observedSum": 3497.0,
+      "numericDays": 6,
+      "nullDays": 1,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "tiktok",
+      "metric": "TKEV06",
+      "label": "TikTok Evolution > Interactions",
+      "observedSum": 11.0,
+      "numericDays": 6,
+      "nullDays": 1,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "pinterest",
+      "metric": "PIEV01",
+      "label": "Pinterest Evolution > Impressions in period",
+      "observedSum": 4256.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "pinterest",
+      "metric": "PIEV04",
+      "label": "Pinterest Evolution > Interactions in period",
+      "observedSum": 81.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "threads",
+      "metric": "THEV06",
+      "label": "Threads Evolution > Post Views",
+      "observedSum": 5.0,
+      "numericDays": 2,
+      "nullDays": 0,
+      "absentDays": 5,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "threads",
+      "metric": "THEV05",
+      "label": "Threads Evolution > Interactions",
+      "observedSum": 0.0,
+      "numericDays": 1,
+      "nullDays": 1,
+      "absentDays": 5,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "youtube",
+      "metric": "YTEV02",
+      "label": "Youtube Evolution > Video Views",
+      "observedSum": 699.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "youtube",
+      "metric": "YTEV05",
+      "label": "Youtube Evolution > Followers Gained",
+      "observedSum": 0.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    }
+  ],
+  "flows": [
+    {
+      "id": "Vse76a",
+      "name": "Abandoned Checkout",
+      "status": "draft"
+    },
+    {
+      "id": "VbLQj6",
+      "name": "Welcome Series",
+      "status": "draft"
+    },
+    {
+      "id": "RnTvsY",
+      "name": "Post-Purchase · Order + Review",
+      "status": "draft"
+    },
+    {
+      "id": "XEGbTB",
+      "name": "Abandoned Checkout · 1 Std",
+      "status": "live"
+    }
+  ],
+  "flowReport": {
+    "flow": "XEGbTB",
+    "deliveredMessageCount": 3,
+    "clicksUniqueAsReported": 0,
+    "conversionsAsReported": 0,
+    "distinctPeople": "unknown_across_messages",
+    "welcomeTriggerList": "T2VHfu",
+    "welcomeStatus": "draft",
+    "currenciesNotMixed": true,
+    "notShopSalesOrSyncEvidence": true
+  },
+  "currencies": {
+    "shop": "CHF",
+    "klaviyoAccount": "USD",
+    "combined": false
+  },
+  "watchtime": "unknown_no_valid_evolution_metric_returned",
+  "limits": "Observed sums only; missing dates are unknown, not zero. Different platform definitions; no sales or attribution derived."
+}

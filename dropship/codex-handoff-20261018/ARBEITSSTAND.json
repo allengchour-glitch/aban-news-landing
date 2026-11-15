@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 233,
-  "updatedAt": "2026-11-15T11:38:04.985588+00:00",
+  "revision": 234,
+  "updatedAt": "2026-11-15T13:35:41.637194+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -615,15 +615,16 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r231_nail7_11_owner_accepted_images_bound_in_google_only_no_attribute_fabrication",
+      "state": "r234_lamp_six_current_variant_price_pairs_and_storefront_flags_verified",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
-      "nextAllowedStep": "Ausgeführte7/11-Änderungen erhalten, keine erneute Freigabe derselben zwei Dateien verlangen. Modell6-Nettoinhalt undR228-Projektor-Lieferumfang/Produkttext bleiben getrennt offen. WeitereFarbbilder brauchen eigene exakteZuordnung undrechtebezogeneBestätigung.",
+      "belegArt": "GEPRUEFT",
+      "lastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
+      "nextAllowedStep": "Sechs tatsächlicheSKU-/Preis-/Variantenlinkpaare alsReferenznutzen;vor abhängigerÄnderungaktualisieren. KeinenPreisohneeindeutigeOfferbindungübernehmen. Frühere Nagellack-Rechtefreigaben auf exakteDateien/Angebote begrenzt erhalten.",
       "blockers": [
         "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
-        "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt."
+        "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt.",
+        "AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1378,6 +1379,84 @@
           "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
           "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
           "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3403,6 +3482,194 @@
           11
         ],
         "processedAndGoogleApproved": true
+      },
+      "run234": {
+        "revision": 234,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+        "ownerThemePublishApprovalReceived": true,
+        "themeId": "214040805767",
+        "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "themePublishCalls": 1,
+        "themePublishRetries": 0,
+        "themePublishConfirmed": false,
+        "publishRefusal": "Only agent-created themes can be published here",
+        "automaticApprovalReviewRejection": false,
+        "finalThemeRole": "UNPUBLISHED",
+        "priorMainPreserved": "213991391623",
+        "filesCompared": 547,
+        "otherFilesEqual": 540,
+        "reviewedChangedFiles": 7,
+        "metricoolIdentityMatch": true,
+        "planningReadCalls": 1,
+        "planningObjects": 46,
+        "planningProviderStates": 56,
+        "newSocialWrites": 0,
+        "newMerchantCatalogReads": 0,
+        "newFeedWrites": 0,
+        "newNativeProductQueries": 3,
+        "newUniqueNativeProducts": 2,
+        "newPublicProductJsonReads": 2,
+        "lampVariantsVerified": 6,
+        "merchantWorkingCandidates": 18,
+        "historicalExportDate": "2026-11-08",
+        "historicalExportFoundAndVerified": true,
+        "priceIssueOffersFromR233": 144,
+        "availabilityIssueOffersFromR233": 19,
+        "bothIssueOffersFromR233": 3,
+        "requiredAttributeUnionFromR233": 160,
+        "performanceFlowsOrdersReportsRepeated": 0,
+        "newAutomationOrFrequencyChange": false,
+        "paidVideoRenders": 0,
+        "masterSourceCheck": {
+          "revision": "R234",
+          "calls": {
+            "CJProductDetail": 1,
+            "otherCJVideoCalls": 0,
+            "Shopify": 0
+          },
+          "query": {
+            "tool": "cjdropshipping_get_product_detail",
+            "pid": "1477820492730732544",
+            "features": "enable_video"
+          },
+          "rawResponse": {
+            "path": "master-source-check/cj-product-raw.json",
+            "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+            "toolReturnedError": false
+          },
+          "returnedProduct": {
+            "pid": "1477820492730732544",
+            "productSku": "CJSN1392391",
+            "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+            "variantsCount": 7
+          },
+          "identityComparison": {
+            "shopifyProductId": "15521256604033",
+            "expectedCJProductSku": "CJSN1392391",
+            "expectedShopifyVariantASku": "CJSN139239101AZ",
+            "returnedPidMatches": true,
+            "returnedProductSkuMatches": true,
+            "variantAExactMatches": [
+              {
+                "vid": "1477826312449167360",
+                "variantSku": "CJSN139239101AZ",
+                "variantKey": "A-USB",
+                "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+              }
+            ],
+            "priorR230ProductResponsePresentLocally": true,
+            "priorR230PidMatch": true,
+            "priorR230ProductSkuMatch": true
+          },
+          "videoMetadata": {
+            "returnedProductVideoIds": [
+              "1602963697889193984"
+            ],
+            "videoIdCount": 1,
+            "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+            "dimensions": "unknown_not_returned_by_product_detail",
+            "duration": "unknown_not_returned_by_product_detail",
+            "videoLevelRights": "unknown_not_returned_by_product_detail",
+            "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+          },
+          "rightsAndCost": {
+            "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+            "costOrFreeFlags": "not_used_as_rights_evidence",
+            "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+          },
+          "actionsNotTaken": [
+            "video query/download",
+            "purchase",
+            "order",
+            "render",
+            "Shopify or CJ write",
+            "new master creation"
+          ],
+          "sourceRawSavedFirst": true
+        },
+        "claudeReceipt": "unknown",
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Theme / Freigabe | Ausdrückliches «behebe alles weiter und live» auf den konkret benannten Entwurf übernommen; Shop, Rollen und gesamten Theme-Diff frisch gegengeprüft | 547 Dateien verglichen: 540 hashgleich, genau die 7 besprochenen R230/R232-Dateien anders, keine Pending-Edits. Freigabe für Theme 214040805767 liegt vor; keine erneute Freigabe derselben Änderung verlangen. |\n| Live-Schaltung / Blocker | Genau einmal shopify_theme_publish mit userConfirmed=true aufgerufen, danach Rolle zurückgelesen | Connector verweigert «Only agent-created themes can be published here». published=false; Ziel UNPUBLISHED, MAIN weiter 213991391623. Kein Retry, Klon oder anderer API-Pfad zur Umgehung. Keine automatische Approval-Review-Ablehnung. Direkter Admin-Weg zum manuellen Veröffentlichen benannt. |\n| Merchant / vollständigerer Arbeitsrahmen | Vorhandenen Export vom 08.11. lokal wiedergefunden, Original-SHA geprüft; 17 historische Gruppen plus aktuellen Preis-Kandidaten zu 18 Arbeitskandidaten geordnet | Meine vorherige Bitte um erneuten Upload war verfrüht. Historischer Export und R233-Teilmessung getrennt; keine aktuelle globale 18-Gruppen-Zählung behauptet. Historische Deutschland-Zeilen erlauben keine Markterweiterung. |\n| Merchant / Angebotszuordnung | R233-Rohdaten offline pro Offer und kanonischem Pflichtattribut ausgewertet; 200-Zeilen-Prüfliste erstellt | 144 eindeutige Offers mit Preis-, 19 mit Verfügbarkeitsmeldung, 3 beides, 160 mit mindestens einem dieser Probleme. Nur Teilmenge, weitere Seiten unbekannt. Quelle pro Offer ausser dem direkt belegten Wandleuchtenfall unbekannt. Kein importfertiger Feed und kein Live-Write. |\n| Wandleuchte / Verkaufsgrundlage | Ein aktuelles natives Shopify-Produkt und genau einen öffentlichen product.js-Abruf abgeglichen | 6 Ausführungen/SKUs vollständig, CHF 45.90–53.90; alle sechs Preise stimmen überein, Storefront available=true. Tracking aus, inventoryPolicy CONTINUE, Bestand 0 ist kein Ausverkaufsbeweis. Generisches AUTOFEED-Elternangebot hat keine belegte Einzelvariantenbindung; kein beliebiger Preis eingesetzt. |\n| Metricool / Verbindung und Planung | Mit der jetzt ausgewiesenen lux-Kontobindung Marke und alle sechs Kanalidentitäten neu bestätigt; eine Planungsabfrage 15.–22.11. gelesen | 46 Objekte/46 UUIDs/56 Kanalzustände. Bestehende technische Termine täglich IG/FB/TikTok/Pinterest, Threads heute nur Draft, YouTube aktiv nur 16./17.11. Globale AP-Werte der Nicht-Drafts true; fehlende Kanalfelder unknown. Keine exakten Caption-/Medien-URL-Dopplungen im Snapshot; andere URLs/Re-Encoding und ganze Historie nicht ausgeschlossen. Keine eigenen Social-Publikationen. |\n| Quellen / Kontinuität | Vorhandene Merchant-Repo-Helfer begrenzt geprüft; optionalen engen CJ-Quellencheck und Schutzgrenzen dokumentiert | Kein neuer Merchant-/Flow-/Produkt-/Rabatt-/Budget-/DNS-Write. Keine Kennzahlen-/Flow-/Bestellreport-Wiederholung, keine Order-Watch oder Frequenzänderung. Quelle/Script ist kein fertiger Film. 24 IDs und Historien erhalten; Claude-Empfang unbekannt. |\n| Regulärer Lauf / Datenreuse | Eingetroffenen bestehenden Lauf mit der aktiven Arbeit fortgesetzt; R228-Kennzahlen und Flowdaten wiederverwendet | Keine neuen Kennzahl-/Flow-/Bestellreports. Kanalwerte nur auf gelieferten Tagen; fehlende Tage unbekannt. Klaviyo USD und Shop CHF getrennt; keine Käufe aus Views. |\n| Projektor / Produktgate | Zweites aktuelles Produkt mit Varianten-Media gelesen, Repo-Socialwächter samt zusätzlicher rueckhol-Sperre angewandt und A im öffentlichen Storefront abgeglichen | A 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, aktuelle Tags ohne Sperrtreffer, untracked/CONTINUE und available=true. Reales A-Bild hashgleich zur früheren Referenz. Eine deprecated image-Abfrage vor Ausführung verworfen, nach Schema-Discovery media benutzt. Keine Medien-/Filmrechte daraus abgeleitet. |\n| Content / Verkaufsentwurf | Denselben einzelnen 18s-Master mit zwei alternativen Hooks und präzisen 540-Frame-Schnittpunkten sowie sechs Kanaltexten/UTMs fortgeschrieben; bestehenden zweistelligen Lieferumfangsentwurf auf frisches identisches HTML geprüft | Storyboard/Skript, keine MP4. Physische A-/Motivbindung, Takes, Musik-/Filmrechte und Endabnahme offen. Bio-/Board-/neuer Master-Zielgruppen-/Ledgergates bleiben. Verkaufskopie unverändert als Entwurf, kein Product-Write; Popup-Korrektur weiterhin im freigegebenen, technisch nicht publizierten Theme. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+            "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+            "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+            "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+            "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+            "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+            "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+            "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+            "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+            "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+            "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+            "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+            "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+            "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+            "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+            "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+            "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+            "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+            "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+            "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+            "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+            "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+            "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+            "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+            "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+            "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+            "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          }
+        ]
       }
     },
     {
@@ -4295,18 +4562,17 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r233_remaining_merchant_groups_partial_diagnosis_autofeed_and_review_gates",
+      "state": "r234_publish_approval_recorded_guard_refusal_merchant_worklist_and_metricool_access_shared",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
-      "lastEvidence": "R233: Neuer Ownerbefund 18 Gruppen. 5000er Summary abgeschnitten; 200 abgelehnte Angebote / 7 Codes, davon 144 Preis- und 19 Verfügbarkeitsmeldungen, überlappende Teilmessung. Nagellack 7/11 weiterhin neue Bilder/leere Issues/CHLI in je 6 Kontexten genehmigt. AUTOFEED-Wandleuchte weiterhin de/CH mit fr-Link und fehlendem Preis; 4 Quellprofile, kein Supplemental. Offizielle AUTOFEED-Updatefähigkeit für Supplementallink nicht belegt. Waage Google-Landingpagefehler bleibt trotz öffentlicher HTTP200-/robots-Gegenprobe. 1 Windsor-Timeout unbekannt; keine neuen operativen Writes.",
-      "nextAllowedStep": "Vollständige aktuelle 18 UI-Gruppen per zulässigem Export/Editorzugriff mit Beispielen zuordnen; AUTOFEED-Pflichtfeldfälle erst mit eindeutiger Angebots-/Variantenbindung und nachgewiesen erlaubtem Quellweg korrigieren. Keinen beliebigen Preis, keine massenhafte Unterdrückung und keine ungeprüfte neue Source/defaultRule. Waage/Uhr-Dossiers über echte Review-Aktion einreichen, wenn verfügbar. Bereits bestätigte Bildkorrekturen und Theme-Entwurf erhalten.",
+      "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet.",
+      "nextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
       "blockers": [
-        "Die zwei API-Teilmessungen enumerieren die 18 UI-Gruppen nicht vollständig; weitere Produktseiten wurden bewusst nicht massenhaft gelesen.",
-        "Produktwriter ändert API-Inputs; konkreter AUTOFEED-Einzelfallwriter bzw. erlaubtes Supplemental-Linking unbekannt.",
-        "AUTOFEED-Wandleuchte hat mehrere echte Varianten; keine beliebige Preisbindung.",
-        "Google-Review/Reprocess-Schreibaktion fehlt. Öffentlicher Googlebot-UA ist kein echter Google-Crawl.",
-        "Claude-Empfang unbekannt; Theme214040805767 bleibt unveröffentlicht."
+        "Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
+        "Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
+        "YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
+        "Claude-Empfangunbekannt."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5535,6 +5801,84 @@
           "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
           "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
           "readAt": "2026-11-15T11:38:04.985588+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9911,18 +10255,206 @@
           }
         ],
         "claudeReceipt": "unknown"
+      },
+      "run234": {
+        "revision": 234,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+        "ownerThemePublishApprovalReceived": true,
+        "themeId": "214040805767",
+        "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "themePublishCalls": 1,
+        "themePublishRetries": 0,
+        "themePublishConfirmed": false,
+        "publishRefusal": "Only agent-created themes can be published here",
+        "automaticApprovalReviewRejection": false,
+        "finalThemeRole": "UNPUBLISHED",
+        "priorMainPreserved": "213991391623",
+        "filesCompared": 547,
+        "otherFilesEqual": 540,
+        "reviewedChangedFiles": 7,
+        "metricoolIdentityMatch": true,
+        "planningReadCalls": 1,
+        "planningObjects": 46,
+        "planningProviderStates": 56,
+        "newSocialWrites": 0,
+        "newMerchantCatalogReads": 0,
+        "newFeedWrites": 0,
+        "newNativeProductQueries": 3,
+        "newUniqueNativeProducts": 2,
+        "newPublicProductJsonReads": 2,
+        "lampVariantsVerified": 6,
+        "merchantWorkingCandidates": 18,
+        "historicalExportDate": "2026-11-08",
+        "historicalExportFoundAndVerified": true,
+        "priceIssueOffersFromR233": 144,
+        "availabilityIssueOffersFromR233": 19,
+        "bothIssueOffersFromR233": 3,
+        "requiredAttributeUnionFromR233": 160,
+        "performanceFlowsOrdersReportsRepeated": 0,
+        "newAutomationOrFrequencyChange": false,
+        "paidVideoRenders": 0,
+        "masterSourceCheck": {
+          "revision": "R234",
+          "calls": {
+            "CJProductDetail": 1,
+            "otherCJVideoCalls": 0,
+            "Shopify": 0
+          },
+          "query": {
+            "tool": "cjdropshipping_get_product_detail",
+            "pid": "1477820492730732544",
+            "features": "enable_video"
+          },
+          "rawResponse": {
+            "path": "master-source-check/cj-product-raw.json",
+            "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+            "toolReturnedError": false
+          },
+          "returnedProduct": {
+            "pid": "1477820492730732544",
+            "productSku": "CJSN1392391",
+            "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+            "variantsCount": 7
+          },
+          "identityComparison": {
+            "shopifyProductId": "15521256604033",
+            "expectedCJProductSku": "CJSN1392391",
+            "expectedShopifyVariantASku": "CJSN139239101AZ",
+            "returnedPidMatches": true,
+            "returnedProductSkuMatches": true,
+            "variantAExactMatches": [
+              {
+                "vid": "1477826312449167360",
+                "variantSku": "CJSN139239101AZ",
+                "variantKey": "A-USB",
+                "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+              }
+            ],
+            "priorR230ProductResponsePresentLocally": true,
+            "priorR230PidMatch": true,
+            "priorR230ProductSkuMatch": true
+          },
+          "videoMetadata": {
+            "returnedProductVideoIds": [
+              "1602963697889193984"
+            ],
+            "videoIdCount": 1,
+            "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+            "dimensions": "unknown_not_returned_by_product_detail",
+            "duration": "unknown_not_returned_by_product_detail",
+            "videoLevelRights": "unknown_not_returned_by_product_detail",
+            "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+          },
+          "rightsAndCost": {
+            "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+            "costOrFreeFlags": "not_used_as_rights_evidence",
+            "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+          },
+          "actionsNotTaken": [
+            "video query/download",
+            "purchase",
+            "order",
+            "render",
+            "Shopify or CJ write",
+            "new master creation"
+          ],
+          "sourceRawSavedFirst": true
+        },
+        "claudeReceipt": "unknown",
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Theme / Freigabe | Ausdrückliches «behebe alles weiter und live» auf den konkret benannten Entwurf übernommen; Shop, Rollen und gesamten Theme-Diff frisch gegengeprüft | 547 Dateien verglichen: 540 hashgleich, genau die 7 besprochenen R230/R232-Dateien anders, keine Pending-Edits. Freigabe für Theme 214040805767 liegt vor; keine erneute Freigabe derselben Änderung verlangen. |\n| Live-Schaltung / Blocker | Genau einmal shopify_theme_publish mit userConfirmed=true aufgerufen, danach Rolle zurückgelesen | Connector verweigert «Only agent-created themes can be published here». published=false; Ziel UNPUBLISHED, MAIN weiter 213991391623. Kein Retry, Klon oder anderer API-Pfad zur Umgehung. Keine automatische Approval-Review-Ablehnung. Direkter Admin-Weg zum manuellen Veröffentlichen benannt. |\n| Merchant / vollständigerer Arbeitsrahmen | Vorhandenen Export vom 08.11. lokal wiedergefunden, Original-SHA geprüft; 17 historische Gruppen plus aktuellen Preis-Kandidaten zu 18 Arbeitskandidaten geordnet | Meine vorherige Bitte um erneuten Upload war verfrüht. Historischer Export und R233-Teilmessung getrennt; keine aktuelle globale 18-Gruppen-Zählung behauptet. Historische Deutschland-Zeilen erlauben keine Markterweiterung. |\n| Merchant / Angebotszuordnung | R233-Rohdaten offline pro Offer und kanonischem Pflichtattribut ausgewertet; 200-Zeilen-Prüfliste erstellt | 144 eindeutige Offers mit Preis-, 19 mit Verfügbarkeitsmeldung, 3 beides, 160 mit mindestens einem dieser Probleme. Nur Teilmenge, weitere Seiten unbekannt. Quelle pro Offer ausser dem direkt belegten Wandleuchtenfall unbekannt. Kein importfertiger Feed und kein Live-Write. |\n| Wandleuchte / Verkaufsgrundlage | Ein aktuelles natives Shopify-Produkt und genau einen öffentlichen product.js-Abruf abgeglichen | 6 Ausführungen/SKUs vollständig, CHF 45.90–53.90; alle sechs Preise stimmen überein, Storefront available=true. Tracking aus, inventoryPolicy CONTINUE, Bestand 0 ist kein Ausverkaufsbeweis. Generisches AUTOFEED-Elternangebot hat keine belegte Einzelvariantenbindung; kein beliebiger Preis eingesetzt. |\n| Metricool / Verbindung und Planung | Mit der jetzt ausgewiesenen lux-Kontobindung Marke und alle sechs Kanalidentitäten neu bestätigt; eine Planungsabfrage 15.–22.11. gelesen | 46 Objekte/46 UUIDs/56 Kanalzustände. Bestehende technische Termine täglich IG/FB/TikTok/Pinterest, Threads heute nur Draft, YouTube aktiv nur 16./17.11. Globale AP-Werte der Nicht-Drafts true; fehlende Kanalfelder unknown. Keine exakten Caption-/Medien-URL-Dopplungen im Snapshot; andere URLs/Re-Encoding und ganze Historie nicht ausgeschlossen. Keine eigenen Social-Publikationen. |\n| Quellen / Kontinuität | Vorhandene Merchant-Repo-Helfer begrenzt geprüft; optionalen engen CJ-Quellencheck und Schutzgrenzen dokumentiert | Kein neuer Merchant-/Flow-/Produkt-/Rabatt-/Budget-/DNS-Write. Keine Kennzahlen-/Flow-/Bestellreport-Wiederholung, keine Order-Watch oder Frequenzänderung. Quelle/Script ist kein fertiger Film. 24 IDs und Historien erhalten; Claude-Empfang unbekannt. |\n| Regulärer Lauf / Datenreuse | Eingetroffenen bestehenden Lauf mit der aktiven Arbeit fortgesetzt; R228-Kennzahlen und Flowdaten wiederverwendet | Keine neuen Kennzahl-/Flow-/Bestellreports. Kanalwerte nur auf gelieferten Tagen; fehlende Tage unbekannt. Klaviyo USD und Shop CHF getrennt; keine Käufe aus Views. |\n| Projektor / Produktgate | Zweites aktuelles Produkt mit Varianten-Media gelesen, Repo-Socialwächter samt zusätzlicher rueckhol-Sperre angewandt und A im öffentlichen Storefront abgeglichen | A 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, aktuelle Tags ohne Sperrtreffer, untracked/CONTINUE und available=true. Reales A-Bild hashgleich zur früheren Referenz. Eine deprecated image-Abfrage vor Ausführung verworfen, nach Schema-Discovery media benutzt. Keine Medien-/Filmrechte daraus abgeleitet. |\n| Content / Verkaufsentwurf | Denselben einzelnen 18s-Master mit zwei alternativen Hooks und präzisen 540-Frame-Schnittpunkten sowie sechs Kanaltexten/UTMs fortgeschrieben; bestehenden zweistelligen Lieferumfangsentwurf auf frisches identisches HTML geprüft | Storyboard/Skript, keine MP4. Physische A-/Motivbindung, Takes, Musik-/Filmrechte und Endabnahme offen. Bio-/Board-/neuer Master-Zielgruppen-/Ledgergates bleiben. Verkaufskopie unverändert als Entwurf, kein Product-Write; Popup-Korrektur weiterhin im freigegebenen, technisch nicht publizierten Theme. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+            "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+            "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+            "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+            "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+            "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+            "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+            "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+            "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+            "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+            "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+            "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+            "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+            "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+            "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+            "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+            "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+            "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+            "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+            "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+            "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+            "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+            "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+            "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+            "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+            "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+            "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          }
+        ]
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r229_music_producer_and_dependency_provenance_refined_no_film",
+      "state": "r234_A_reference_productgate_and_cj_metadata_verified_physical_film_binding_unknown",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Produkt-/Bild-/Tagprüfung ausR228 datiert wiederverwendet, keine neue Preis-/Produktbehauptung. Aktueller Main4c627478: Producer und aufgerufenen MIDI-Builder gelesen. Prozedurale Komposition, FluidSynth/SoX/FFmpeg-Weg und FluidR3_GM.sf2-Default/SF2-Override belegt. Tatsächlich eingesetzte Fontversion/-hash und Copyright-Lizenz lokal nicht vorhanden; Source-Erklärung ist keine vollständige kommerzielle Freigabe. Kein Binarydownload, Render, anderer Track oder neue Master-ID.",
-      "nextAllowedStep": "Tatsächlich benutzte SF2-Datei/Version/Hash, zugehörige Nutzungsbedingungen und Exportbindung an WAVa7674eca belegen. Native A-Takes und Motiv-/Einheitsrechte weiter priorisieren; finalen Film erst nach Qualitäts-/Ton-/Ausschnitt-/Inhaberabnahme verwenden. R228-Storyboard/Captions bleiben Entwürfe.",
+      "belegArt": "GEPRUEFT",
+      "lastEvidence": "R234: Derselbe Master luxe_sternenprojektor_master_20261018. Frische A-Referenzvariante 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, nicht leere Tags, Repo-Sperrwächter plus jedes rueckhol ohne Treffer; untracked/CONTINUE/available=true. A-Referenzbild hashgleich 5fa8b110... Neue native CJ-Detailabfrage bestätigt Produkt/A-USB-SKU und Video-ID, keine Video-URL/Rechte. Einzelner 18s-Schnittbrief und sechs UTMs fortgeschrieben; kein Film oder Socialwrite. Physische Einheit/Motiv, hochwertige Takes, Musik-/Filmrechte und Endabnahme bleiben offen.",
+      "nextAllowedStep": "Denselben Master anhand physischer A-Einheit und eindeutig gebundenem Motiv mit nativen hochwertigen Takes weiterentwickeln; kommerzielle Film-/Bearbeitungs-/Werbe- und Musikrechte belegen. Erst fertige MP4 prüfen, freigeben, hashen und bestehendes Masterregister/Historie je Kanal kontrollieren. Keine neue Serie, keine Altclip-Aktivierung. Neue Caption-Entwürfe brauchen vor Publish Bio-/Board-/Zielgruppenprüfung; bestehende madeForKids=false-Werte erhalten.",
       "blockers": [
         "Native A-Takes und aktueller Film-/Motivbezug fehlen.",
         "Tatsächlich verwendete SoundFont und passende Lizenz-/Copyrightdatei plus Exportbindung nicht belegt.",
@@ -10665,6 +11197,84 @@
           "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
           "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
           "bytes": 6332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -10737,7 +11347,10 @@
         ],
         "adminReadback": true,
         "publicHttpStatus": 200,
-        "canonicalConfirmed": true
+        "canonicalConfirmed": true,
+        "referenceVariantIdR234": "68122445283719",
+        "referenceVariantSkuR234": "CJSN139239101AZ",
+        "referenceSelectionStateR234": "CURRENT_A_REFERENCE_VERIFIED_NOT_PHYSICAL_FILM_BINDING"
       },
       "evidenceHistory": [
         {
@@ -12565,7 +13178,144 @@
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
         "themeSaveUnpublished": true,
         "livePublish": false
-      }
+      },
+      "currentProductGateR234": {
+        "productId": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech",
+          "varianten-nachgezogen-1025"
+        ],
+        "nonemptyCurrentTags": true,
+        "helper": "automation/lib/kanal_sperren.mjs",
+        "matchedStopTags": [],
+        "extraAnyRueckholOwnerRule": true,
+        "socialTagGatePassed": true,
+        "variantA": {
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "title": "A · Grundmodell",
+          "sku": "CJSN139239101AZ",
+          "price": "34.90",
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "inventoryItem": {
+            "tracked": false
+          },
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/70733173719425",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+                  "width": 800,
+                  "height": 654,
+                  "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          },
+          "selectedOptions": [
+            {
+              "name": "Modell",
+              "value": "A · Grundmodell"
+            }
+          ]
+        },
+        "mediaRightsGatePassed": false,
+        "masterReady": false
+      },
+      "currentStorefrontCheckR234": {
+        "atUTC": "2026-11-15T12:59:20.212984+00:00",
+        "sourceUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "httpStatus": 200,
+        "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+        "variantId": 68122445283719,
+        "sku": "CJSN139239101AZ",
+        "available": true,
+        "priceMinorUnits": 3490,
+        "priceMatchesNative": true
+      },
+      "nativeCJSourceCheckR234": {
+        "revision": "R234",
+        "calls": {
+          "CJProductDetail": 1,
+          "otherCJVideoCalls": 0,
+          "Shopify": 0
+        },
+        "query": {
+          "tool": "cjdropshipping_get_product_detail",
+          "pid": "1477820492730732544",
+          "features": "enable_video"
+        },
+        "rawResponse": {
+          "path": "master-source-check/cj-product-raw.json",
+          "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+          "toolReturnedError": false
+        },
+        "returnedProduct": {
+          "pid": "1477820492730732544",
+          "productSku": "CJSN1392391",
+          "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+          "variantsCount": 7
+        },
+        "identityComparison": {
+          "shopifyProductId": "15521256604033",
+          "expectedCJProductSku": "CJSN1392391",
+          "expectedShopifyVariantASku": "CJSN139239101AZ",
+          "returnedPidMatches": true,
+          "returnedProductSkuMatches": true,
+          "variantAExactMatches": [
+            {
+              "vid": "1477826312449167360",
+              "variantSku": "CJSN139239101AZ",
+              "variantKey": "A-USB",
+              "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+            }
+          ],
+          "priorR230ProductResponsePresentLocally": true,
+          "priorR230PidMatch": true,
+          "priorR230ProductSkuMatch": true
+        },
+        "videoMetadata": {
+          "returnedProductVideoIds": [
+            "1602963697889193984"
+          ],
+          "videoIdCount": 1,
+          "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+          "dimensions": "unknown_not_returned_by_product_detail",
+          "duration": "unknown_not_returned_by_product_detail",
+          "videoLevelRights": "unknown_not_returned_by_product_detail",
+          "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+        },
+        "rightsAndCost": {
+          "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+          "costOrFreeFlags": "not_used_as_rights_evidence",
+          "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+        },
+        "actionsNotTaken": [
+          "video query/download",
+          "purchase",
+          "order",
+          "render",
+          "Shopify or CJ write",
+          "new master creation"
+        ],
+        "sourceRawSavedFirst": true
+      },
+      "run234SourceNote": "One native CJ product read succeeded and confirmed catalog/variant metadata. Video ID only; URL, dimensions, duration, physical unit/motif and video-level commercial editing/advertising rights remain unknown. No new rendered master or publication."
     },
     {
       "id": "dns-four-approved-20261018",
@@ -12940,18 +13690,17 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r233_remaining_merchant_groups_partial_diagnosis_autofeed_and_review_gates",
+      "state": "r234_historical_export_found_18_candidates_exact_field_mapping_six_lamp_variants_verified",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
-      "lastEvidence": "R233: Neuer Ownerbefund 18 Gruppen. 5000er Summary abgeschnitten; 200 abgelehnte Angebote / 7 Codes, davon 144 Preis- und 19 Verfügbarkeitsmeldungen, überlappende Teilmessung. Nagellack 7/11 weiterhin neue Bilder/leere Issues/CHLI in je 6 Kontexten genehmigt. AUTOFEED-Wandleuchte weiterhin de/CH mit fr-Link und fehlendem Preis; 4 Quellprofile, kein Supplemental. Offizielle AUTOFEED-Updatefähigkeit für Supplementallink nicht belegt. Waage Google-Landingpagefehler bleibt trotz öffentlicher HTTP200-/robots-Gegenprobe. 1 Windsor-Timeout unbekannt; keine neuen operativen Writes.",
-      "nextAllowedStep": "Vollständige aktuelle 18 UI-Gruppen per zulässigem Export/Editorzugriff mit Beispielen zuordnen; AUTOFEED-Pflichtfeldfälle erst mit eindeutiger Angebots-/Variantenbindung und nachgewiesen erlaubtem Quellweg korrigieren. Keinen beliebigen Preis, keine massenhafte Unterdrückung und keine ungeprüfte neue Source/defaultRule. Waage/Uhr-Dossiers über echte Review-Aktion einreichen, wenn verfügbar. Bereits bestätigte Bildkorrekturen und Theme-Entwurf erhalten.",
+      "lastEvidence": "Originalexport08.11.hashgleichwiedergefunden;17historischeGruppenplusaktuellerPreis-Kandidatals18Arbeitskandidaten.200R233Offersofflineexaktzugeordnet:144Preis/19Availability/3beides/160Union. Wandleuchte6nativeundöffentlicheVariantenpreiseCHF45.90–53.90stimmen,alleStorefrontavailabletrue/Trackingfalse/CONTINUE. Parent-AUTOFEED-Variantenzuordnungweiterunknown.KeineFeedänderung.",
+      "nextAllowedStep": "18er-Matrix und datierte200er-Prüfliste weiterführen. Historische Zahlen vor Eingriffen gezielt frisch prüfen; keinen erneuten Upload des bereits vorhandenen08.11.-Exports verlangen. AUTOFEED-Offer erst mit eindeutiger Variablen-/Variantenbindung und legitimem Quelleneditor korrigieren;6belegteSKU-Preispaare nutzen, nicht willkürlich einen Preis zuweisen. Vor jedem Write Konto/Quelle/Produkt/Diff frisch prüfen.",
       "blockers": [
-        "Die zwei API-Teilmessungen enumerieren die 18 UI-Gruppen nicht vollständig; weitere Produktseiten wurden bewusst nicht massenhaft gelesen.",
-        "Produktwriter ändert API-Inputs; konkreter AUTOFEED-Einzelfallwriter bzw. erlaubtes Supplemental-Linking unbekannt.",
-        "AUTOFEED-Wandleuchte hat mehrere echte Varianten; keine beliebige Preisbindung.",
-        "Google-Review/Reprocess-Schreibaktion fehlt. Öffentlicher Googlebot-UA ist kein echter Google-Crawl.",
-        "Claude-Empfang unbekannt; Theme214040805767 bleibt unveröffentlicht."
+        "AUTOFEED-Schreibweg und Parent-zu-einer-Variante-Bindung weiterhin nicht belegt.",
+        "18Arbeitskandidaten beweisen keine aktuelle vollständigeUI-Gruppenzahl.",
+        "Google-Review/Reprocess-Aktion nicht vorhanden; keine pauschale Source/defaultRule-Änderung.",
+        "Historische Versand-/CSS-/Richtlinienfälle benötigen aktuelle fallbezogene Belege."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -13461,6 +14210,84 @@
           "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
           "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
           "readAt": "2026-11-15T11:38:04.985588+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15504,23 +16331,211 @@
           }
         ],
         "claudeReceipt": "unknown"
+      },
+      "run234": {
+        "revision": 234,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+        "ownerThemePublishApprovalReceived": true,
+        "themeId": "214040805767",
+        "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "themePublishCalls": 1,
+        "themePublishRetries": 0,
+        "themePublishConfirmed": false,
+        "publishRefusal": "Only agent-created themes can be published here",
+        "automaticApprovalReviewRejection": false,
+        "finalThemeRole": "UNPUBLISHED",
+        "priorMainPreserved": "213991391623",
+        "filesCompared": 547,
+        "otherFilesEqual": 540,
+        "reviewedChangedFiles": 7,
+        "metricoolIdentityMatch": true,
+        "planningReadCalls": 1,
+        "planningObjects": 46,
+        "planningProviderStates": 56,
+        "newSocialWrites": 0,
+        "newMerchantCatalogReads": 0,
+        "newFeedWrites": 0,
+        "newNativeProductQueries": 3,
+        "newUniqueNativeProducts": 2,
+        "newPublicProductJsonReads": 2,
+        "lampVariantsVerified": 6,
+        "merchantWorkingCandidates": 18,
+        "historicalExportDate": "2026-11-08",
+        "historicalExportFoundAndVerified": true,
+        "priceIssueOffersFromR233": 144,
+        "availabilityIssueOffersFromR233": 19,
+        "bothIssueOffersFromR233": 3,
+        "requiredAttributeUnionFromR233": 160,
+        "performanceFlowsOrdersReportsRepeated": 0,
+        "newAutomationOrFrequencyChange": false,
+        "paidVideoRenders": 0,
+        "masterSourceCheck": {
+          "revision": "R234",
+          "calls": {
+            "CJProductDetail": 1,
+            "otherCJVideoCalls": 0,
+            "Shopify": 0
+          },
+          "query": {
+            "tool": "cjdropshipping_get_product_detail",
+            "pid": "1477820492730732544",
+            "features": "enable_video"
+          },
+          "rawResponse": {
+            "path": "master-source-check/cj-product-raw.json",
+            "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+            "toolReturnedError": false
+          },
+          "returnedProduct": {
+            "pid": "1477820492730732544",
+            "productSku": "CJSN1392391",
+            "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+            "variantsCount": 7
+          },
+          "identityComparison": {
+            "shopifyProductId": "15521256604033",
+            "expectedCJProductSku": "CJSN1392391",
+            "expectedShopifyVariantASku": "CJSN139239101AZ",
+            "returnedPidMatches": true,
+            "returnedProductSkuMatches": true,
+            "variantAExactMatches": [
+              {
+                "vid": "1477826312449167360",
+                "variantSku": "CJSN139239101AZ",
+                "variantKey": "A-USB",
+                "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+              }
+            ],
+            "priorR230ProductResponsePresentLocally": true,
+            "priorR230PidMatch": true,
+            "priorR230ProductSkuMatch": true
+          },
+          "videoMetadata": {
+            "returnedProductVideoIds": [
+              "1602963697889193984"
+            ],
+            "videoIdCount": 1,
+            "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+            "dimensions": "unknown_not_returned_by_product_detail",
+            "duration": "unknown_not_returned_by_product_detail",
+            "videoLevelRights": "unknown_not_returned_by_product_detail",
+            "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+          },
+          "rightsAndCost": {
+            "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+            "costOrFreeFlags": "not_used_as_rights_evidence",
+            "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+          },
+          "actionsNotTaken": [
+            "video query/download",
+            "purchase",
+            "order",
+            "render",
+            "Shopify or CJ write",
+            "new master creation"
+          ],
+          "sourceRawSavedFirst": true
+        },
+        "claudeReceipt": "unknown",
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Theme / Freigabe | Ausdrückliches «behebe alles weiter und live» auf den konkret benannten Entwurf übernommen; Shop, Rollen und gesamten Theme-Diff frisch gegengeprüft | 547 Dateien verglichen: 540 hashgleich, genau die 7 besprochenen R230/R232-Dateien anders, keine Pending-Edits. Freigabe für Theme 214040805767 liegt vor; keine erneute Freigabe derselben Änderung verlangen. |\n| Live-Schaltung / Blocker | Genau einmal shopify_theme_publish mit userConfirmed=true aufgerufen, danach Rolle zurückgelesen | Connector verweigert «Only agent-created themes can be published here». published=false; Ziel UNPUBLISHED, MAIN weiter 213991391623. Kein Retry, Klon oder anderer API-Pfad zur Umgehung. Keine automatische Approval-Review-Ablehnung. Direkter Admin-Weg zum manuellen Veröffentlichen benannt. |\n| Merchant / vollständigerer Arbeitsrahmen | Vorhandenen Export vom 08.11. lokal wiedergefunden, Original-SHA geprüft; 17 historische Gruppen plus aktuellen Preis-Kandidaten zu 18 Arbeitskandidaten geordnet | Meine vorherige Bitte um erneuten Upload war verfrüht. Historischer Export und R233-Teilmessung getrennt; keine aktuelle globale 18-Gruppen-Zählung behauptet. Historische Deutschland-Zeilen erlauben keine Markterweiterung. |\n| Merchant / Angebotszuordnung | R233-Rohdaten offline pro Offer und kanonischem Pflichtattribut ausgewertet; 200-Zeilen-Prüfliste erstellt | 144 eindeutige Offers mit Preis-, 19 mit Verfügbarkeitsmeldung, 3 beides, 160 mit mindestens einem dieser Probleme. Nur Teilmenge, weitere Seiten unbekannt. Quelle pro Offer ausser dem direkt belegten Wandleuchtenfall unbekannt. Kein importfertiger Feed und kein Live-Write. |\n| Wandleuchte / Verkaufsgrundlage | Ein aktuelles natives Shopify-Produkt und genau einen öffentlichen product.js-Abruf abgeglichen | 6 Ausführungen/SKUs vollständig, CHF 45.90–53.90; alle sechs Preise stimmen überein, Storefront available=true. Tracking aus, inventoryPolicy CONTINUE, Bestand 0 ist kein Ausverkaufsbeweis. Generisches AUTOFEED-Elternangebot hat keine belegte Einzelvariantenbindung; kein beliebiger Preis eingesetzt. |\n| Metricool / Verbindung und Planung | Mit der jetzt ausgewiesenen lux-Kontobindung Marke und alle sechs Kanalidentitäten neu bestätigt; eine Planungsabfrage 15.–22.11. gelesen | 46 Objekte/46 UUIDs/56 Kanalzustände. Bestehende technische Termine täglich IG/FB/TikTok/Pinterest, Threads heute nur Draft, YouTube aktiv nur 16./17.11. Globale AP-Werte der Nicht-Drafts true; fehlende Kanalfelder unknown. Keine exakten Caption-/Medien-URL-Dopplungen im Snapshot; andere URLs/Re-Encoding und ganze Historie nicht ausgeschlossen. Keine eigenen Social-Publikationen. |\n| Quellen / Kontinuität | Vorhandene Merchant-Repo-Helfer begrenzt geprüft; optionalen engen CJ-Quellencheck und Schutzgrenzen dokumentiert | Kein neuer Merchant-/Flow-/Produkt-/Rabatt-/Budget-/DNS-Write. Keine Kennzahlen-/Flow-/Bestellreport-Wiederholung, keine Order-Watch oder Frequenzänderung. Quelle/Script ist kein fertiger Film. 24 IDs und Historien erhalten; Claude-Empfang unbekannt. |\n| Regulärer Lauf / Datenreuse | Eingetroffenen bestehenden Lauf mit der aktiven Arbeit fortgesetzt; R228-Kennzahlen und Flowdaten wiederverwendet | Keine neuen Kennzahl-/Flow-/Bestellreports. Kanalwerte nur auf gelieferten Tagen; fehlende Tage unbekannt. Klaviyo USD und Shop CHF getrennt; keine Käufe aus Views. |\n| Projektor / Produktgate | Zweites aktuelles Produkt mit Varianten-Media gelesen, Repo-Socialwächter samt zusätzlicher rueckhol-Sperre angewandt und A im öffentlichen Storefront abgeglichen | A 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, aktuelle Tags ohne Sperrtreffer, untracked/CONTINUE und available=true. Reales A-Bild hashgleich zur früheren Referenz. Eine deprecated image-Abfrage vor Ausführung verworfen, nach Schema-Discovery media benutzt. Keine Medien-/Filmrechte daraus abgeleitet. |\n| Content / Verkaufsentwurf | Denselben einzelnen 18s-Master mit zwei alternativen Hooks und präzisen 540-Frame-Schnittpunkten sowie sechs Kanaltexten/UTMs fortgeschrieben; bestehenden zweistelligen Lieferumfangsentwurf auf frisches identisches HTML geprüft | Storyboard/Skript, keine MP4. Physische A-/Motivbindung, Takes, Musik-/Filmrechte und Endabnahme offen. Bio-/Board-/neuer Master-Zielgruppen-/Ledgergates bleiben. Verkaufskopie unverändert als Entwurf, kein Product-Write; Popup-Korrektur weiterhin im freigegebenen, technisch nicht publizierten Theme. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+            "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+            "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+            "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+            "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+            "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+            "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+            "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+            "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+            "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+            "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+            "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+            "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+            "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+            "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+            "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+            "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+            "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+            "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+            "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+            "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+            "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+            "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+            "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+            "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+            "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+            "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          }
+        ]
       }
     },
     {
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r232_full_image_category_cards_saved_corrected_and_preview_qa_passed_unpublished",
+      "state": "r234_owner_publish_approval_received_connector_refused_confirmed_unpublished",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "UMGESETZT",
-      "lastEvidence": "R232: fünf Dateien im UNPUBLISHED-Theme 214040805767 gespeichert. 16 vollflächige Bildkarten mit weissen Titeln, zwei neuen Higgsfield-Kategoriemotiven und Editor-Feldern. Fehlende Index-Zuweisungen nach erstem Save gezielt korrigiert; finale Admin- und Browser-Gegenprobe bestätigt. Alle Kategorie-Ziele/Reihenfolge und sechs JS-Blöcke unverändert. Deutsche QA 390/1440 px bestanden; R230-Kaufhinweis/Popup hashgleich. MAIN nicht geändert, kein Publish.",
+      "belegArt": "GEPRUEFT",
+      "lastEvidence": "Owner hat das konkret benannte Theme 214040805767 ausdrücklich live freigegeben. Frisch547Dateienverglichen:540gleich,exakt7reviewteDateienanders,keinePending. Ein Publishversuch mit userConfirmed=true technisch verweigert: Only agent-created themes can be published here. Ziel bleibtUNPUBLISHED, MAIN213991391623. KeineUmgehung/Retry/Kopie.",
       "previewUrl": "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
-      "nextAllowedStep": "Dem Inhaber die fertige Bildkarten-Vorschau inklusive erhaltener R230-Kaufhinweis-/Popup-Änderungen vorlegen. Für genau Theme 214040805767 mit Name «LuxeStyle – Kaufhinweis 15.11.2026» ausdrückliches Publish-Ja abwarten; danach frisch Identität/Rolle/Quelle und Diff prüfen. Keine neue Kopie und keine alten Theme-Freigaben übertragen. Bei Weitergestaltung verbliebene alte Bannerwörter in 14 Bestandsmotiven gezielt bewerten, nicht 16 neue Bilder behaupten.",
+      "nextAllowedStep": "Dieselbe Ownerfreigabe nicht nochmals verlangen. Im legitimen Shopify-Admin beim Theme «LuxeStyle – Kaufhinweis 15.11.2026» veröffentlichen oder technischen Connectorzugriff dafür sauber klären; keine Guard-Umgehung. Danach echte MAIN-Rolle und Live-Darstellung prüfen. Bei neuen ungeprüften Änderungen konkrete neue Diff-Abnahme getrennt behandeln.",
       "blockers": [
-        "Konkretes ausdrückliches Publish-Ja für dieses Theme steht noch aus; gespeicherter Entwurf ist nicht live.",
-        "Keine Vollshop-/Checkout-/alle-Sprachen-Abnahme oder Conversionmessung durch die gezielte deutsche Kartenprüfung.",
-        "Claude-Empfang unbekannt; Memory-Commit ist keine Kenntnisnahme."
+        "Technische Connector-Scope-Verweigerung trotz erhaltener Freigabe. Kein erfolgreicher Theme-Publish.",
+        "Aktueller Zielstatus UNPUBLISHED; MAIN unverändert.",
+        "Keine heutige Live-Darstellungsabnahme, weil Veröffentlichung nicht erfolgt."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -15981,6 +16996,84 @@
           "sha256": "09cf322db8c9d7fc6778211094582af8b1d0f7a2709d4a7ca356087f6297955e",
           "gitBlobSha": "2feabbad124ca3f4b03e9720d0bd57300193ba3f",
           "readAt": "2026-11-15T11:12:44.229398+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -17553,6 +18646,202 @@
           }
         ],
         "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 231 und Tagesblock gelesen; verbundenen Shopify-Shop und Theme-Rollen frisch geprüft | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich bestätigt. MAIN 213991391623 bleibt live; gearbeitet im UNPUBLISHED-Theme 214040805767. Keine wiederholten Tagesreports oder Kauf-Watch. |\n| Bildmotive | Zwei originale Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck erzeugt, visuell geprüft und in Shopify Files gespeichert | Zwei Still-Jobs gpt_image_2_6, je Kostenschätzung 1.5 Credits; keine separate Abrechnungsprüfung. Illustrative Szenen ohne SKU-/Materialversprechen; kein Video-Render. Weitere 14 vorhandene Bilder erhalten. |\n| Theme / Umsetzung | 16 Kategorie-Einstiege als vollflächige Bildkarten mit weissen Titeln, dunklem Verlauf und responsiven Bildern gestaltet; zwei Bildwähler und Textfarbe im Editor ergänzt | Fünf Dateien gespeichert. Erster Save c1a5f4e7 meldete Erfolg, aber Bildzuweisungen fehlten im Admin-/Browser-Readback; gezielte Index-Korrektur 742a075e anschliessend bestätigt. Keine blinde Wiederholung oder Live-Schaltung. |\n| Darstellung / Gegenprobe | Gespeicherte Vorschau in normalem Chromium bei 390×844 und 1440×900 geprüft; Kategorie-Links mit Baseline verglichen | 16 Bilder geladen, alle 16 Links/Reihenfolge gleich. Mobil 2 Spalten / 173×173 px, Desktop 4 Spalten / 316×237 px. Weisse Titel/Pfeile lesbar, kein festgestellter Text-/Seitenüberlauf oder CSS-Ladefehler. Neue Bildmotive aktiv. |\n| Schutzfelder / Grenzen | Sechs inline JavaScript-Blöcke, Kategorie-Reihenfolge/Linklogik, Produktliste/Section-Reihenfolge und R230-Dateihashes gegengeprüft | Erhalten. Keine Produkt-, Collection-, Preis-, Versand-, Flow-, DNS-, Rabatt-, Budget- oder Kontoeinstellung geändert. Nur Theme-Entwurf und zwei neue Files. Keine gemessene Conversionwirkung. |\n| Memory / Freigabe | R232-Quellen und Diff vorbereitet; zwei bestehende Aufgaben fortgeschrieben, 24 IDs/Historien erhalten | Das konkrete Theme «LuxeStyle – Kaufhinweis 15.11.2026» braucht vor Publish ein ausdrückliches Ja gemäss Shopify-Skill. Enthält weiterhin R230-Kaufhinweis und Popup-Text. Metricool-Identitätsread technisch blockiert, keine Social-Writes. Claude-Empfang unbekannt. |\n"
+      },
+      "run234": {
+        "revision": 234,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+        "ownerThemePublishApprovalReceived": true,
+        "themeId": "214040805767",
+        "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "themePublishCalls": 1,
+        "themePublishRetries": 0,
+        "themePublishConfirmed": false,
+        "publishRefusal": "Only agent-created themes can be published here",
+        "automaticApprovalReviewRejection": false,
+        "finalThemeRole": "UNPUBLISHED",
+        "priorMainPreserved": "213991391623",
+        "filesCompared": 547,
+        "otherFilesEqual": 540,
+        "reviewedChangedFiles": 7,
+        "metricoolIdentityMatch": true,
+        "planningReadCalls": 1,
+        "planningObjects": 46,
+        "planningProviderStates": 56,
+        "newSocialWrites": 0,
+        "newMerchantCatalogReads": 0,
+        "newFeedWrites": 0,
+        "newNativeProductQueries": 3,
+        "newUniqueNativeProducts": 2,
+        "newPublicProductJsonReads": 2,
+        "lampVariantsVerified": 6,
+        "merchantWorkingCandidates": 18,
+        "historicalExportDate": "2026-11-08",
+        "historicalExportFoundAndVerified": true,
+        "priceIssueOffersFromR233": 144,
+        "availabilityIssueOffersFromR233": 19,
+        "bothIssueOffersFromR233": 3,
+        "requiredAttributeUnionFromR233": 160,
+        "performanceFlowsOrdersReportsRepeated": 0,
+        "newAutomationOrFrequencyChange": false,
+        "paidVideoRenders": 0,
+        "masterSourceCheck": {
+          "revision": "R234",
+          "calls": {
+            "CJProductDetail": 1,
+            "otherCJVideoCalls": 0,
+            "Shopify": 0
+          },
+          "query": {
+            "tool": "cjdropshipping_get_product_detail",
+            "pid": "1477820492730732544",
+            "features": "enable_video"
+          },
+          "rawResponse": {
+            "path": "master-source-check/cj-product-raw.json",
+            "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+            "toolReturnedError": false
+          },
+          "returnedProduct": {
+            "pid": "1477820492730732544",
+            "productSku": "CJSN1392391",
+            "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+            "variantsCount": 7
+          },
+          "identityComparison": {
+            "shopifyProductId": "15521256604033",
+            "expectedCJProductSku": "CJSN1392391",
+            "expectedShopifyVariantASku": "CJSN139239101AZ",
+            "returnedPidMatches": true,
+            "returnedProductSkuMatches": true,
+            "variantAExactMatches": [
+              {
+                "vid": "1477826312449167360",
+                "variantSku": "CJSN139239101AZ",
+                "variantKey": "A-USB",
+                "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+              }
+            ],
+            "priorR230ProductResponsePresentLocally": true,
+            "priorR230PidMatch": true,
+            "priorR230ProductSkuMatch": true
+          },
+          "videoMetadata": {
+            "returnedProductVideoIds": [
+              "1602963697889193984"
+            ],
+            "videoIdCount": 1,
+            "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+            "dimensions": "unknown_not_returned_by_product_detail",
+            "duration": "unknown_not_returned_by_product_detail",
+            "videoLevelRights": "unknown_not_returned_by_product_detail",
+            "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+          },
+          "rightsAndCost": {
+            "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+            "costOrFreeFlags": "not_used_as_rights_evidence",
+            "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+          },
+          "actionsNotTaken": [
+            "video query/download",
+            "purchase",
+            "order",
+            "render",
+            "Shopify or CJ write",
+            "new master creation"
+          ],
+          "sourceRawSavedFirst": true
+        },
+        "claudeReceipt": "unknown",
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Theme / Freigabe | Ausdrückliches «behebe alles weiter und live» auf den konkret benannten Entwurf übernommen; Shop, Rollen und gesamten Theme-Diff frisch gegengeprüft | 547 Dateien verglichen: 540 hashgleich, genau die 7 besprochenen R230/R232-Dateien anders, keine Pending-Edits. Freigabe für Theme 214040805767 liegt vor; keine erneute Freigabe derselben Änderung verlangen. |\n| Live-Schaltung / Blocker | Genau einmal shopify_theme_publish mit userConfirmed=true aufgerufen, danach Rolle zurückgelesen | Connector verweigert «Only agent-created themes can be published here». published=false; Ziel UNPUBLISHED, MAIN weiter 213991391623. Kein Retry, Klon oder anderer API-Pfad zur Umgehung. Keine automatische Approval-Review-Ablehnung. Direkter Admin-Weg zum manuellen Veröffentlichen benannt. |\n| Merchant / vollständigerer Arbeitsrahmen | Vorhandenen Export vom 08.11. lokal wiedergefunden, Original-SHA geprüft; 17 historische Gruppen plus aktuellen Preis-Kandidaten zu 18 Arbeitskandidaten geordnet | Meine vorherige Bitte um erneuten Upload war verfrüht. Historischer Export und R233-Teilmessung getrennt; keine aktuelle globale 18-Gruppen-Zählung behauptet. Historische Deutschland-Zeilen erlauben keine Markterweiterung. |\n| Merchant / Angebotszuordnung | R233-Rohdaten offline pro Offer und kanonischem Pflichtattribut ausgewertet; 200-Zeilen-Prüfliste erstellt | 144 eindeutige Offers mit Preis-, 19 mit Verfügbarkeitsmeldung, 3 beides, 160 mit mindestens einem dieser Probleme. Nur Teilmenge, weitere Seiten unbekannt. Quelle pro Offer ausser dem direkt belegten Wandleuchtenfall unbekannt. Kein importfertiger Feed und kein Live-Write. |\n| Wandleuchte / Verkaufsgrundlage | Ein aktuelles natives Shopify-Produkt und genau einen öffentlichen product.js-Abruf abgeglichen | 6 Ausführungen/SKUs vollständig, CHF 45.90–53.90; alle sechs Preise stimmen überein, Storefront available=true. Tracking aus, inventoryPolicy CONTINUE, Bestand 0 ist kein Ausverkaufsbeweis. Generisches AUTOFEED-Elternangebot hat keine belegte Einzelvariantenbindung; kein beliebiger Preis eingesetzt. |\n| Metricool / Verbindung und Planung | Mit der jetzt ausgewiesenen lux-Kontobindung Marke und alle sechs Kanalidentitäten neu bestätigt; eine Planungsabfrage 15.–22.11. gelesen | 46 Objekte/46 UUIDs/56 Kanalzustände. Bestehende technische Termine täglich IG/FB/TikTok/Pinterest, Threads heute nur Draft, YouTube aktiv nur 16./17.11. Globale AP-Werte der Nicht-Drafts true; fehlende Kanalfelder unknown. Keine exakten Caption-/Medien-URL-Dopplungen im Snapshot; andere URLs/Re-Encoding und ganze Historie nicht ausgeschlossen. Keine eigenen Social-Publikationen. |\n| Quellen / Kontinuität | Vorhandene Merchant-Repo-Helfer begrenzt geprüft; optionalen engen CJ-Quellencheck und Schutzgrenzen dokumentiert | Kein neuer Merchant-/Flow-/Produkt-/Rabatt-/Budget-/DNS-Write. Keine Kennzahlen-/Flow-/Bestellreport-Wiederholung, keine Order-Watch oder Frequenzänderung. Quelle/Script ist kein fertiger Film. 24 IDs und Historien erhalten; Claude-Empfang unbekannt. |\n| Regulärer Lauf / Datenreuse | Eingetroffenen bestehenden Lauf mit der aktiven Arbeit fortgesetzt; R228-Kennzahlen und Flowdaten wiederverwendet | Keine neuen Kennzahl-/Flow-/Bestellreports. Kanalwerte nur auf gelieferten Tagen; fehlende Tage unbekannt. Klaviyo USD und Shop CHF getrennt; keine Käufe aus Views. |\n| Projektor / Produktgate | Zweites aktuelles Produkt mit Varianten-Media gelesen, Repo-Socialwächter samt zusätzlicher rueckhol-Sperre angewandt und A im öffentlichen Storefront abgeglichen | A 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, aktuelle Tags ohne Sperrtreffer, untracked/CONTINUE und available=true. Reales A-Bild hashgleich zur früheren Referenz. Eine deprecated image-Abfrage vor Ausführung verworfen, nach Schema-Discovery media benutzt. Keine Medien-/Filmrechte daraus abgeleitet. |\n| Content / Verkaufsentwurf | Denselben einzelnen 18s-Master mit zwei alternativen Hooks und präzisen 540-Frame-Schnittpunkten sowie sechs Kanaltexten/UTMs fortgeschrieben; bestehenden zweistelligen Lieferumfangsentwurf auf frisches identisches HTML geprüft | Storyboard/Skript, keine MP4. Physische A-/Motivbindung, Takes, Musik-/Filmrechte und Endabnahme offen. Bio-/Board-/neuer Master-Zielgruppen-/Ledgergates bleiben. Verkaufskopie unverändert als Entwurf, kein Product-Write; Popup-Korrektur weiterhin im freigegebenen, technisch nicht publizierten Theme. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+            "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+            "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+            "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+            "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+            "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+            "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+            "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+            "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+            "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+            "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+            "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+            "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+            "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+            "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+            "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+            "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+            "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+            "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+            "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+            "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+            "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+            "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+            "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+            "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+            "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+            "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+            "readAt": "2026-11-15T13:35:41.637194+00:00"
+          }
+        ]
+      },
+      "ownerPublishApprovalR234": {
+        "received": true,
+        "message": "behebe alles weiter und live",
+        "themeId": "214040805767",
+        "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "scope": "7 reviewed R230/R232 file changes",
+        "needsSameApprovalAgain": false
       }
     },
     {
@@ -30720,6 +32009,94 @@
           "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
           "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
           "readAt": "2026-11-15T11:38:04.985588+00:00"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 234,
+      "at": "2026-11-15T13:35:41.637194+00:00",
+      "actor": "codex",
+      "summary": "Theme-Livefreigabe jetzt erhalten; ein korrekt vorbereiteter Publishversuch vom Connector verweigert, Ziel bestätigt UNPUBLISHED, kein Bypass/Retry. Frischer547-Datei-Diff hat genau7besprocheneÄnderungen. HistorischenMerchant-Exportwiedergefunden/hashgeprüft,18KandidatenmatrixundgenauePflichtattributzuordnungfür200Offers,6Wandleuchtenpreispaareöffentlich/nativverifiziert. Metricoollux-Kontobindungfunktionsfähig,Identitätenpassen,einePlanungslesung;keineSocial-/FeedwritesoderTagesreportwiederholung.24IDs/Historieerhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+          "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+          "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+          "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+          "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+          "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+          "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+          "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+          "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+          "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+          "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+          "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+          "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+          "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+          "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+          "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+          "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+          "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+          "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+          "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+          "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+          "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+          "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+          "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+          "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+          "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
       ],
       "taskCount": 24,
@@ -57246,5 +58623,195 @@
       }
     ],
     "claudeReceipt": "unknown"
+  },
+  "run234": {
+    "revision": 234,
+    "dateZurich": "2026-11-15",
+    "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+    "ownerThemePublishApprovalReceived": true,
+    "themeId": "214040805767",
+    "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+    "themePublishCalls": 1,
+    "themePublishRetries": 0,
+    "themePublishConfirmed": false,
+    "publishRefusal": "Only agent-created themes can be published here",
+    "automaticApprovalReviewRejection": false,
+    "finalThemeRole": "UNPUBLISHED",
+    "priorMainPreserved": "213991391623",
+    "filesCompared": 547,
+    "otherFilesEqual": 540,
+    "reviewedChangedFiles": 7,
+    "metricoolIdentityMatch": true,
+    "planningReadCalls": 1,
+    "planningObjects": 46,
+    "planningProviderStates": 56,
+    "newSocialWrites": 0,
+    "newMerchantCatalogReads": 0,
+    "newFeedWrites": 0,
+    "newNativeProductQueries": 3,
+    "newUniqueNativeProducts": 2,
+    "newPublicProductJsonReads": 2,
+    "lampVariantsVerified": 6,
+    "merchantWorkingCandidates": 18,
+    "historicalExportDate": "2026-11-08",
+    "historicalExportFoundAndVerified": true,
+    "priceIssueOffersFromR233": 144,
+    "availabilityIssueOffersFromR233": 19,
+    "bothIssueOffersFromR233": 3,
+    "requiredAttributeUnionFromR233": 160,
+    "performanceFlowsOrdersReportsRepeated": 0,
+    "newAutomationOrFrequencyChange": false,
+    "paidVideoRenders": 0,
+    "masterSourceCheck": {
+      "revision": "R234",
+      "calls": {
+        "CJProductDetail": 1,
+        "otherCJVideoCalls": 0,
+        "Shopify": 0
+      },
+      "query": {
+        "tool": "cjdropshipping_get_product_detail",
+        "pid": "1477820492730732544",
+        "features": "enable_video"
+      },
+      "rawResponse": {
+        "path": "master-source-check/cj-product-raw.json",
+        "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+        "toolReturnedError": false
+      },
+      "returnedProduct": {
+        "pid": "1477820492730732544",
+        "productSku": "CJSN1392391",
+        "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+        "variantsCount": 7
+      },
+      "identityComparison": {
+        "shopifyProductId": "15521256604033",
+        "expectedCJProductSku": "CJSN1392391",
+        "expectedShopifyVariantASku": "CJSN139239101AZ",
+        "returnedPidMatches": true,
+        "returnedProductSkuMatches": true,
+        "variantAExactMatches": [
+          {
+            "vid": "1477826312449167360",
+            "variantSku": "CJSN139239101AZ",
+            "variantKey": "A-USB",
+            "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+          }
+        ],
+        "priorR230ProductResponsePresentLocally": true,
+        "priorR230PidMatch": true,
+        "priorR230ProductSkuMatch": true
+      },
+      "videoMetadata": {
+        "returnedProductVideoIds": [
+          "1602963697889193984"
+        ],
+        "videoIdCount": 1,
+        "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+        "dimensions": "unknown_not_returned_by_product_detail",
+        "duration": "unknown_not_returned_by_product_detail",
+        "videoLevelRights": "unknown_not_returned_by_product_detail",
+        "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+      },
+      "rightsAndCost": {
+        "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+        "costOrFreeFlags": "not_used_as_rights_evidence",
+        "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+      },
+      "actionsNotTaken": [
+        "video query/download",
+        "purchase",
+        "order",
+        "render",
+        "Shopify or CJ write",
+        "new master creation"
+      ],
+      "sourceRawSavedFirst": true
+    },
+    "claudeReceipt": "unknown",
+    "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Theme / Freigabe | Ausdrückliches «behebe alles weiter und live» auf den konkret benannten Entwurf übernommen; Shop, Rollen und gesamten Theme-Diff frisch gegengeprüft | 547 Dateien verglichen: 540 hashgleich, genau die 7 besprochenen R230/R232-Dateien anders, keine Pending-Edits. Freigabe für Theme 214040805767 liegt vor; keine erneute Freigabe derselben Änderung verlangen. |\n| Live-Schaltung / Blocker | Genau einmal shopify_theme_publish mit userConfirmed=true aufgerufen, danach Rolle zurückgelesen | Connector verweigert «Only agent-created themes can be published here». published=false; Ziel UNPUBLISHED, MAIN weiter 213991391623. Kein Retry, Klon oder anderer API-Pfad zur Umgehung. Keine automatische Approval-Review-Ablehnung. Direkter Admin-Weg zum manuellen Veröffentlichen benannt. |\n| Merchant / vollständigerer Arbeitsrahmen | Vorhandenen Export vom 08.11. lokal wiedergefunden, Original-SHA geprüft; 17 historische Gruppen plus aktuellen Preis-Kandidaten zu 18 Arbeitskandidaten geordnet | Meine vorherige Bitte um erneuten Upload war verfrüht. Historischer Export und R233-Teilmessung getrennt; keine aktuelle globale 18-Gruppen-Zählung behauptet. Historische Deutschland-Zeilen erlauben keine Markterweiterung. |\n| Merchant / Angebotszuordnung | R233-Rohdaten offline pro Offer und kanonischem Pflichtattribut ausgewertet; 200-Zeilen-Prüfliste erstellt | 144 eindeutige Offers mit Preis-, 19 mit Verfügbarkeitsmeldung, 3 beides, 160 mit mindestens einem dieser Probleme. Nur Teilmenge, weitere Seiten unbekannt. Quelle pro Offer ausser dem direkt belegten Wandleuchtenfall unbekannt. Kein importfertiger Feed und kein Live-Write. |\n| Wandleuchte / Verkaufsgrundlage | Ein aktuelles natives Shopify-Produkt und genau einen öffentlichen product.js-Abruf abgeglichen | 6 Ausführungen/SKUs vollständig, CHF 45.90–53.90; alle sechs Preise stimmen überein, Storefront available=true. Tracking aus, inventoryPolicy CONTINUE, Bestand 0 ist kein Ausverkaufsbeweis. Generisches AUTOFEED-Elternangebot hat keine belegte Einzelvariantenbindung; kein beliebiger Preis eingesetzt. |\n| Metricool / Verbindung und Planung | Mit der jetzt ausgewiesenen lux-Kontobindung Marke und alle sechs Kanalidentitäten neu bestätigt; eine Planungsabfrage 15.–22.11. gelesen | 46 Objekte/46 UUIDs/56 Kanalzustände. Bestehende technische Termine täglich IG/FB/TikTok/Pinterest, Threads heute nur Draft, YouTube aktiv nur 16./17.11. Globale AP-Werte der Nicht-Drafts true; fehlende Kanalfelder unknown. Keine exakten Caption-/Medien-URL-Dopplungen im Snapshot; andere URLs/Re-Encoding und ganze Historie nicht ausgeschlossen. Keine eigenen Social-Publikationen. |\n| Quellen / Kontinuität | Vorhandene Merchant-Repo-Helfer begrenzt geprüft; optionalen engen CJ-Quellencheck und Schutzgrenzen dokumentiert | Kein neuer Merchant-/Flow-/Produkt-/Rabatt-/Budget-/DNS-Write. Keine Kennzahlen-/Flow-/Bestellreport-Wiederholung, keine Order-Watch oder Frequenzänderung. Quelle/Script ist kein fertiger Film. 24 IDs und Historien erhalten; Claude-Empfang unbekannt. |\n| Regulärer Lauf / Datenreuse | Eingetroffenen bestehenden Lauf mit der aktiven Arbeit fortgesetzt; R228-Kennzahlen und Flowdaten wiederverwendet | Keine neuen Kennzahl-/Flow-/Bestellreports. Kanalwerte nur auf gelieferten Tagen; fehlende Tage unbekannt. Klaviyo USD und Shop CHF getrennt; keine Käufe aus Views. |\n| Projektor / Produktgate | Zweites aktuelles Produkt mit Varianten-Media gelesen, Repo-Socialwächter samt zusätzlicher rueckhol-Sperre angewandt und A im öffentlichen Storefront abgeglichen | A 68122445283719 / CJSN139239101AZ / CHF 34.90, ACTIVE, aktuelle Tags ohne Sperrtreffer, untracked/CONTINUE und available=true. Reales A-Bild hashgleich zur früheren Referenz. Eine deprecated image-Abfrage vor Ausführung verworfen, nach Schema-Discovery media benutzt. Keine Medien-/Filmrechte daraus abgeleitet. |\n| Content / Verkaufsentwurf | Denselben einzelnen 18s-Master mit zwei alternativen Hooks und präzisen 540-Frame-Schnittpunkten sowie sechs Kanaltexten/UTMs fortgeschrieben; bestehenden zweistelligen Lieferumfangsentwurf auf frisches identisches HTML geprüft | Storyboard/Skript, keine MP4. Physische A-/Motivbindung, Takes, Musik-/Filmrechte und Endabnahme offen. Bio-/Board-/neuer Master-Zielgruppen-/Ledgergates bleiben. Verkaufskopie unverändert als Entwurf, kein Product-Write; Popup-Korrektur weiterhin im freigegebenen, technisch nicht publizierten Theme. |\n",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-R234.md",
+        "gitBlobSha": "d2ef977899e6e12f692a93e508119340f5cf4d67",
+        "sha256": "0254e0a97e17fc49410f119e8c4ab66402b64053de1c2c09b5fb92219cd935a3",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-R234.md",
+        "gitBlobSha": "d8f9e4d52c102933933f66ce3a0358e4d4541c9a",
+        "sha256": "353072b880886977710f6ed411ca0eb8fd843e35951a83706d4dc2563fe23574",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/FORTSETZUNG-LIVE-MERCHANT-20261115-R234.md",
+        "gitBlobSha": "8ade5a05f869a685d5d9f3fe3d39fd0d63b96edc",
+        "sha256": "f83b609836fbc404ad06bf8f43778711a6a8017b5bec56f0432e4f474674d12f",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+        "gitBlobSha": "73e4e322662e139c2771363f051324244c126795",
+        "sha256": "7a973c87958d6382167a1f37b76ea9fea8aec41c6e2476f5e6e51cb2ee024b64",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MASTER-ARBEITSBRIEFING-20261115-R234.md",
+        "gitBlobSha": "d37e1eeef582e602aae5ca06235e0313bf287177",
+        "sha256": "96076bbdba44bfb6c14b4bd8068725ee330cca8e38806452c6369403ae35e2dd",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-18-ARBEITSMATRIX-20261115-R234.md",
+        "gitBlobSha": "6ae4540825dc1271cfec4e8371406598a5b385c8",
+        "sha256": "ad1ea3c9b82a4246ff220e5c205bc821aa943dd6bc5bc578bd3d462262f8c927",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-ARBEITSLISTE-20261115-R234.csv",
+        "gitBlobSha": "e03091b7dba138b6c65112ab7bcf67b69a3afb3f",
+        "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLANUNGSBELEG-20261115-R234.json",
+        "gitBlobSha": "975c686671ec8f8ba32422f7057308ecb0613718",
+        "sha256": "18dd0c35ee40deec7a4575e2fe06a939c133b1f830066be33b1adfe5b612c835",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R234.html",
+        "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+        "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/PROJEKTOR-PRODUKTGATE-20261115-R234.json",
+        "gitBlobSha": "dfe6fc95a6fadaa065227dbde10e8bd3f3184528",
+        "sha256": "772c4dc351d895bc6e9f76400cbdb920025a07a6a0746f967e0d6656c6740aa8",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/TAGESDATEN-WIEDERVERWENDUNG-20261115-R234.json",
+        "gitBlobSha": "73ea7bd508a3ea87f334b863814d161741aac722",
+        "sha256": "6c6a97394fe9f0f8bbb8e5f3c853ee95ab8ce355efadf550ac70ccfe7b84c3fb",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R234.md",
+        "gitBlobSha": "3d0e451af1ccd8028871ccea24512259f3b33eb7",
+        "sha256": "3c17c3788e53838c99b1121fef3c6377dc5fa988d46668413b15eb8c400e8508",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/WANDLEUCHTE-VARIANTENABGLEICH-20261115-R234.json",
+        "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
+        "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
+        "readAt": "2026-11-15T13:35:41.637194+00:00"
+      }
+    ],
+    "nativeCJProductDetailReads": 1,
+    "CJVideoCallsDownloadsRenders": 0
   }
 }

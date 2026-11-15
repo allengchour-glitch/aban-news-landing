@@ -1,0 +1,3967 @@
+{
+  "revision": 234,
+  "recordedAtUTC": "2026-11-15T13:35:41.637194+00:00",
+  "ownerMessage": "behebe alles weiter und live",
+  "ownerThemePublishApproval": {
+    "themeId": "214040805767",
+    "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+    "scope": "Seven reviewed R230/R232 files; approval received and retained. Do not ask for the same approval again.",
+    "approvalMissing": false
+  },
+  "publishPreflight": {
+    "atUTC": "2026-11-15T12:26:30.914Z",
+    "ownerApproval": "behebe alles weiter und live",
+    "scope": "Exact named theme LuxeStyle – Kaufhinweis 15.11.2026 / 214040805767, R230+R232 seven reviewed files",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich"
+    },
+    "themePreflight": {
+      "nodes": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187043086721",
+          "name": "Horizon · LuxeStyle Branded",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-09T21:10:28Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187478475137",
+          "name": "Horizon · LuxeStyle PDP-Optik (Claude)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-06-11T17:12:27Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/187533001089",
+          "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-26T17:32:02Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212302922119",
+          "name": "Horizon – SEO Versand CHF50 (Entwurf)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-23T19:55:25Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212497039751",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 25.10.)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-25T21:17:30Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212498841991",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 25.10. b)",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-27T18:38:53Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212591444359",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Men...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-10-27T21:09:16Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212645413255",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. abe...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T07:04:16Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212656488839",
+          "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Kun...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T15:09:13Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212752499079",
+          "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T15:46:13Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212967981447",
+          "name": "LuxeStyle – Neue Startseite 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-01T17:27:24Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212971061639",
+          "name": "LuxeStyle – Bewertungen 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-02T06:04:37Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212978598279",
+          "name": "LuxeStyle – Sticker und Varianten 01.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-04T06:32:12Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/212998619527",
+          "name": "LuxeStyle – Codex + Handy-Fixes 01.11.2026 (zus...",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-02T08:10:23Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213013037447",
+          "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-15T08:54:34Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213482963335",
+          "name": "LuxeStyle – Printful Fix 08.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-08T09:42:26Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213619179911",
+          "name": "LuxeStyle – R158 SEO Preview 09.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-09T20:46:25Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213991391623",
+          "name": "LuxeStyle – SEO 14.11.2026",
+          "role": "MAIN",
+          "updatedAt": "2026-11-14T15:08:04Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/214040805767",
+          "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+          "role": "UNPUBLISHED",
+          "updatedAt": "2026-11-15T11:01:03Z"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    },
+    "mainManifest": {
+      "stdout": "547\n172071cc14c47af06258e535e20bc933cd78b8476b9238ff7e6f3d109bed8f81  -\n36b1285b9037d07395f97db089fa1d01986e9239c75490f399fd0f9f5d031395  assets/luxe-edit.css\n5777a1ac479e3c6d000b2a12445832d45c1c38b558064f43a7ae1a9bb88c2611  blocks/buy-buttons.liquid\n30434e343f1ff8138e40e718fee611d185b550b46d1be4977f097d9f6bf90ef5  locales/de.schema.json\n81ad06d0cfd7411e5a6f62b53bbda1f158a9aa81dda4580940d3323d6869b4d8  locales/en.default.schema.json\n59f8477f4177c92bf52029c0b90e28f7d4f9a5577e07a517e8231bc8fe037100  sections/footer-group.json\n0b76cd3912287e2a1e44725db01600617c11212b88bed4831034557a0f0856a7  sections/luxe-edit-home.liquid\n60eb43a2eca1cdd1858d4af58359b2152808a6cf9cfec5d1591447d3ff7b1eef  templates/index.json\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": []
+    },
+    "draftManifest": {
+      "stdout": "547\n172071cc14c47af06258e535e20bc933cd78b8476b9238ff7e6f3d109bed8f81  -\nc35343c32c694558a8953ac70fe26fd0c4b8416bdbc61090647af636bd49c009  assets/luxe-edit.css\nb0b6656f7feecff559eb73feee421203afe8cfc54b01a0d1284fefd45a4580eb  blocks/buy-buttons.liquid\n366b577e53b218192b52bd352998a225a0fe2c6ef95eef735e00e1cd04817db3  locales/de.schema.json\nb978fdb14304e58364470d09bc2cf8a43f46432dc2e5de433dddcee33d3e7404  locales/en.default.schema.json\n9321568a79430181fbdc2c300b3c3ce34ab2f1187fb6891e3d3657dc7c43f978  sections/footer-group.json\n0508a75b96bca742a991e6f16caba467a4888c365a8cbe1055876a754c059b4c  sections/luxe-edit-home.liquid\n089214bba2551bbf5a25a2d485d81647445b8a459e5033ae7bdc42680671845a  templates/index.json\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": []
+    },
+    "filesCompared": 547,
+    "unchangedFiles": 540,
+    "changedReviewedFiles": 7,
+    "writeState": "inflight_no_retry_without_targeted_readback"
+  },
+  "publishAttemptAndRoleReadback": {
+    "atUTC": "2026-11-15T13:03:43.025Z",
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T11:01:03Z"
+    },
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "MAIN"
+      }
+    ],
+    "ownerApprovalRecorded": true,
+    "publishAttempt": {
+      "themeId": "gid://shopify/OnlineStoreTheme/214040805767",
+      "published": false,
+      "pending": [],
+      "userErrors": [
+        "Only agent-created themes can be published here"
+      ],
+      "rejectedReason": "publish_refused"
+    },
+    "publishAttempts": 1,
+    "retries": 0,
+    "autoReviewRejection": false,
+    "browserRuntimeToolUnavailable": true
+  },
+  "publishResultInterpretation": "One allowed publish attempt refused by connector: Only agent-created themes can be published here. This is a connector scope refusal, not an automatic approval review rejection. Confirmed target still UNPUBLISHED, prior MAIN213991391623 unchanged. No bypass, retry or clone.",
+  "shopifyAdminFallback": "https://admin.shopify.com/store/luxestyle-ch/themes",
+  "metricoolIdentity": {
+    "atUTC": "2026-11-15T12:38:39.524Z",
+    "brandId": 6227837,
+    "label": "Luxestyle",
+    "timezone": "Europe/Zurich",
+    "networksData": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "selectedLinkName": "lux",
+    "allExpectedIdentityFieldsMatch": true,
+    "priorMissingLinkArgumentErrorResolvedByCurrentSchema": true,
+    "noAccountConnectionSettingChanged": true
+  },
+  "socialPlanner": {
+    "task": "R234 Metricool read-only schedule snapshot",
+    "identity": {
+      "brandId": "6227837",
+      "brand": "LuxeStyle",
+      "timezone": "Europe/Zurich",
+      "identityVerifiedByParentImmediatelyBeforeCall": true
+    },
+    "request": {
+      "tool": "mcp__codex_apps__metricool_getscheduledposts",
+      "args": {
+        "brandId": "6227837",
+        "fromDate": "2026-11-15T00:00:00+01:00",
+        "toDate": "2026-11-22T23:59:59+01:00",
+        "timezone": "Europe/Zurich",
+        "extendedRange": false
+      },
+      "error": null,
+      "apiIsError": false,
+      "resultObjectCount": 46,
+      "dateWindowLocal": {
+        "from": "2026-11-15T00:00:00+01:00",
+        "to": "2026-11-22T23:59:59+01:00"
+      },
+      "extendedRange": false,
+      "calls": 1
+    },
+    "raw": {
+      "file": "raw_getposts.json",
+      "sha256": "e2ca4d71578f34e1f8ca446c52d1df38ec452cb363d884e4178d05d6ad83b77f"
+    },
+    "returnedObjectCount": 46,
+    "uniqueUuidCount": 46,
+    "providerStateCount": 56,
+    "coverageDefinition": "Technical planner evidence only: returned non-draft states have global autoPublish=true (independently checked); PENDING is scheduled, not published. Required channel-specific flags not supplied remain unknown. This read does not re-approve media quality/rights or full master history.",
+    "networkSummary": [
+      {
+        "network": "instagram",
+        "returnedStates": 12,
+        "activeStates": 9,
+        "draftStates": 3,
+        "statuses": {
+          "PENDING": 11,
+          "PUBLISHED": 1
+        },
+        "activeDates": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ],
+        "draftDates": [
+          "2026-11-16",
+          "2026-11-18"
+        ],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          false,
+          true
+        ]
+      },
+      {
+        "network": "facebook",
+        "returnedStates": 11,
+        "activeStates": 9,
+        "draftStates": 2,
+        "statuses": {
+          "PENDING": 10,
+          "PUBLISHED": 1
+        },
+        "activeDates": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ],
+        "draftDates": [
+          "2026-11-16",
+          "2026-11-18"
+        ],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          null
+        ]
+      },
+      {
+        "network": "tiktok",
+        "returnedStates": 12,
+        "activeStates": 10,
+        "draftStates": 2,
+        "statuses": {
+          "PUBLISHED": 1,
+          "PENDING": 11
+        },
+        "activeDates": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ],
+        "draftDates": [
+          "2026-11-17",
+          "2026-11-18"
+        ],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          null
+        ]
+      },
+      {
+        "network": "pinterest",
+        "returnedStates": 8,
+        "activeStates": 8,
+        "draftStates": 0,
+        "statuses": {
+          "PENDING": 8
+        },
+        "activeDates": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ],
+        "draftDates": [],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          null
+        ]
+      },
+      {
+        "network": "threads",
+        "returnedStates": 9,
+        "activeStates": 7,
+        "draftStates": 2,
+        "statuses": {
+          "PENDING": 9
+        },
+        "activeDates": [
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ],
+        "draftDates": [
+          "2026-11-15",
+          "2026-11-18"
+        ],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          null
+        ]
+      },
+      {
+        "network": "youtube",
+        "returnedStates": 4,
+        "activeStates": 2,
+        "draftStates": 2,
+        "statuses": {
+          "PENDING": 4
+        },
+        "activeDates": [
+          "2026-11-16",
+          "2026-11-17"
+        ],
+        "draftDates": [
+          "2026-11-18",
+          "2026-11-19"
+        ],
+        "activeGlobalAutoPublishValues": [
+          true
+        ],
+        "nativeChannelAutoPublishValues": [
+          null
+        ]
+      }
+    ],
+    "dateCoverage": [
+      {
+        "network": "instagram",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 2,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1,
+              "PUBLISHED": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 420726136,
+                "uuid": "6199136659928140012",
+                "dateTime": "2026-11-15T16:00:00"
+              },
+              {
+                "status": "PUBLISHED",
+                "detailedStatus": "Published",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 422280155,
+                "uuid": "-3833193365444016309",
+                "dateTime": "2026-11-15T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 3,
+            "activeObjectCount": 1,
+            "draftObjectCount": 2,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              false,
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 424392702,
+                "uuid": "7991040995405613204",
+                "dateTime": "2026-11-16T16:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": false,
+                "id": 427969190,
+                "uuid": "4156060813550767248",
+                "dateTime": "2026-11-16T19:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": false,
+                "id": 428827820,
+                "uuid": "2242731246724795766",
+                "dateTime": "2026-11-16T14:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 424393422,
+                "uuid": "8906814597211638530",
+                "dateTime": "2026-11-17T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              false,
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": false,
+                "id": 423483793,
+                "uuid": "4659816415037836014",
+                "dateTime": "2026-11-18T10:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 425725034,
+                "uuid": "5511347900019396585",
+                "dateTime": "2026-11-18T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 425725555,
+                "uuid": "4792908094992761420",
+                "dateTime": "2026-11-19T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 425726329,
+                "uuid": "108318075245381964",
+                "dateTime": "2026-11-20T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 426962036,
+                "uuid": "4464007380148308511",
+                "dateTime": "2026-11-21T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              true
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": true,
+                "id": 426962393,
+                "uuid": "2057359447521839535",
+                "dateTime": "2026-11-22T17:00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network": "facebook",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 2,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1,
+              "PUBLISHED": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 420728374,
+                "uuid": "7768651932591999367",
+                "dateTime": "2026-11-15T16:00:00"
+              },
+              {
+                "status": "PUBLISHED",
+                "detailedStatus": "Published",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 422280155,
+                "uuid": "-3833193365444016309",
+                "dateTime": "2026-11-15T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424392702,
+                "uuid": "7991040995405613204",
+                "dateTime": "2026-11-16T16:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 427969232,
+                "uuid": "6680239273933357186",
+                "dateTime": "2026-11-16T19:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393422,
+                "uuid": "8906814597211638530",
+                "dateTime": "2026-11-17T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 423483793,
+                "uuid": "4659816415037836014",
+                "dateTime": "2026-11-18T10:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725034,
+                "uuid": "5511347900019396585",
+                "dateTime": "2026-11-18T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725555,
+                "uuid": "4792908094992761420",
+                "dateTime": "2026-11-19T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425726329,
+                "uuid": "108318075245381964",
+                "dateTime": "2026-11-20T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426962036,
+                "uuid": "4464007380148308511",
+                "dateTime": "2026-11-21T17:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426962393,
+                "uuid": "2057359447521839535",
+                "dateTime": "2026-11-22T17:00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network": "tiktok",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PUBLISHED": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PUBLISHED",
+                "detailedStatus": "Published",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 422295156,
+                "uuid": "-6967517640837021033",
+                "dateTime": "2026-11-15T12:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 2,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 2
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424392795,
+                "uuid": "-580082399036486516",
+                "dateTime": "2026-11-16T18:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 428832793,
+                "uuid": "-1463494076488727798",
+                "dateTime": "2026-11-16T18:30:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393289,
+                "uuid": "-326770756211684563",
+                "dateTime": "2026-11-17T16:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 427969295,
+                "uuid": "3614365779669041576",
+                "dateTime": "2026-11-17T19:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 423484773,
+                "uuid": "-8305910546945982140",
+                "dateTime": "2026-11-18T12:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725162,
+                "uuid": "-4254912497617780595",
+                "dateTime": "2026-11-18T18:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 2,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 2
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725709,
+                "uuid": "-1560468010126717309",
+                "dateTime": "2026-11-19T18:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 428845921,
+                "uuid": "733493005328404096",
+                "dateTime": "2026-11-19T19:30:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425726186,
+                "uuid": "5095221239706765903",
+                "dateTime": "2026-11-20T15:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426962130,
+                "uuid": "1244897565051602488",
+                "dateTime": "2026-11-21T18:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 427963228,
+                "uuid": "-5766619704983925146",
+                "dateTime": "2026-11-22T18:00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network": "pinterest",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 423622854,
+                "uuid": "6213007717183669914",
+                "dateTime": "2026-11-15T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393081,
+                "uuid": "-8863891854936750949",
+                "dateTime": "2026-11-16T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393614,
+                "uuid": "9119250214596987223",
+                "dateTime": "2026-11-17T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725272,
+                "uuid": "-5899965466644493317",
+                "dateTime": "2026-11-18T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725932,
+                "uuid": "6443070221295305315",
+                "dateTime": "2026-11-19T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425726479,
+                "uuid": "-457707186698434580",
+                "dateTime": "2026-11-20T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426962209,
+                "uuid": "1277216616076757571",
+                "dateTime": "2026-11-21T20:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 427963279,
+                "uuid": "-2010279446251812932",
+                "dateTime": "2026-11-22T20:00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network": "threads",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 0,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [
+              false
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 427969120,
+                "uuid": "8935974072695279179",
+                "dateTime": "2026-11-15T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424392566,
+                "uuid": "-8080777271331700055",
+                "dateTime": "2026-11-16T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393187,
+                "uuid": "-2055061205905158476",
+                "dateTime": "2026-11-17T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 2,
+            "activeObjectCount": 1,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              false,
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 423484712,
+                "uuid": "-8339089096074181290",
+                "dateTime": "2026-11-18T11:00:00"
+              },
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 424393691,
+                "uuid": "-2256568300747601062",
+                "dateTime": "2026-11-18T14:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425725415,
+                "uuid": "2120727659527094958",
+                "dateTime": "2026-11-19T11:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 425726070,
+                "uuid": "-6491658134482960242",
+                "dateTime": "2026-11-20T14:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426961960,
+                "uuid": "-325577156053548845",
+                "dateTime": "2026-11-21T14:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 426962312,
+                "uuid": "7447187506709285656",
+                "dateTime": "2026-11-22T11:00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network": "youtube",
+        "days": [
+          {
+            "date": "2026-11-15",
+            "returnedChannelStates": 0,
+            "activeObjectCount": 0,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [],
+            "channelAutoPublishValues": [],
+            "states": []
+          },
+          {
+            "date": "2026-11-16",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 428832793,
+                "uuid": "-1463494076488727798",
+                "dateTime": "2026-11-16T18:30:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-17",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 1,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {
+              "PENDING": 1
+            },
+            "globalAutoPublishValues": [
+              true
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": false,
+                "globalAutoPublish": true,
+                "channelAutoPublish": null,
+                "id": 428845871,
+                "uuid": "-3668679867663038577",
+                "dateTime": "2026-11-17T18:30:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-18",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 0,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [
+              false
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 423484839,
+                "uuid": "-3731207601091163105",
+                "dateTime": "2026-11-18T18:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-19",
+            "returnedChannelStates": 1,
+            "activeObjectCount": 0,
+            "draftObjectCount": 1,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [
+              false
+            ],
+            "channelAutoPublishValues": [
+              null
+            ],
+            "states": [
+              {
+                "status": "PENDING",
+                "detailedStatus": "Pending",
+                "draft": true,
+                "globalAutoPublish": false,
+                "channelAutoPublish": null,
+                "id": 427969354,
+                "uuid": "-7647174116509334899",
+                "dateTime": "2026-11-19T19:00:00"
+              }
+            ]
+          },
+          {
+            "date": "2026-11-20",
+            "returnedChannelStates": 0,
+            "activeObjectCount": 0,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [],
+            "channelAutoPublishValues": [],
+            "states": []
+          },
+          {
+            "date": "2026-11-21",
+            "returnedChannelStates": 0,
+            "activeObjectCount": 0,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [],
+            "channelAutoPublishValues": [],
+            "states": []
+          },
+          {
+            "date": "2026-11-22",
+            "returnedChannelStates": 0,
+            "activeObjectCount": 0,
+            "draftObjectCount": 0,
+            "activeStatusCounts": {},
+            "globalAutoPublishValues": [],
+            "channelAutoPublishValues": [],
+            "states": []
+          }
+        ]
+      }
+    ],
+    "exactDuplicateCheck": {
+      "scope": "Only the exact URL strings in captions and exact media URL strings among the returned posts, compared within each provider network and this bounded response. Does not assert full or older planner history.",
+      "captionUrlDuplicatesByNetwork": {
+        "instagram": {},
+        "facebook": {},
+        "tiktok": {},
+        "pinterest": {},
+        "threads": {},
+        "youtube": {}
+      },
+      "mediaUrlDuplicatesByNetwork": {
+        "instagram": {},
+        "facebook": {},
+        "tiktok": {},
+        "pinterest": {},
+        "threads": {},
+        "youtube": {}
+      },
+      "captionUrlDuplicateGroups": 0,
+      "mediaUrlDuplicateGroups": 0
+    },
+    "limitations": [
+      "The scheduled-post endpoint returns only its bounded planner data; it does not establish full or older publication history.",
+      "A PENDING status is not a publication confirmation.",
+      "Missing channel-specific autoPublish fields are unknown and are not inferred from the global field.",
+      "No metrics, sales, conversion, or causal inference was made.",
+      "Exact URL comparison does not detect re-encoded media, alternate URLs of the same master, or prove complete historical uniqueness.",
+      "PUBLISHED states in this snapshot belong to existing posts; R234 did not publish or schedule any social post.",
+      "Raw response kept locally, containing creator metadata; public proof omits that metadata and connector link identifiers."
+    ],
+    "allReturnedNondraftGlobalAPTrue": true,
+    "youtubeSettingsEvidence": [
+      {
+        "id": 423484839,
+        "uuid": "-3731207601091163105",
+        "draft": true,
+        "publicationDate": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "youtubeData": {
+          "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "küchengadget",
+            "knoblauch",
+            "kochen",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      {
+        "id": 427969354,
+        "uuid": "-7647174116509334899",
+        "draft": true,
+        "publicationDate": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "youtubeData": {
+          "title": "Sternenlicht-Projektor im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "sternlicht",
+            "lichtmomente",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      {
+        "id": 428832793,
+        "uuid": "-1463494076488727798",
+        "draft": false,
+        "publicationDate": {
+          "dateTime": "2026-11-16T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "youtubeData": {
+          "title": "3 Ideen für Hund und Katze | LuxeStyle #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "category": "PETS_ANIMALS",
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      },
+      {
+        "id": 428845871,
+        "uuid": "-3668679867663038577",
+        "draft": false,
+        "publicationDate": {
+          "dateTime": "2026-11-17T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "youtubeData": {
+          "title": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "category": "HOWTO_STYLE",
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        }
+      }
+    ]
+  },
+  "merchantMatrix": {
+    "artifact": "R234 historical+current Merchant issue candidate matrix",
+    "candidate_count": 18,
+    "interpretation": "17 issue-title groups from historical 2026-11-08 CSV plus one distinct current price-attribute candidate from the partial R233 snapshot. This is not a claim that the current UI has exactly 18 groups.",
+    "sources": {
+      "historical_summary": {
+        "path": "/workspace/drive-merchant-summary.json",
+        "sha256": "a8d359a4e641c1ed41584b1c86c386690d253206b789dc2b7ee9b7592cadc5b4",
+        "size_bytes": 14747,
+        "export_path": "/workspace/product_issues_2026-11-08_07-46-23.csv",
+        "export_sha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+        "export_size_bytes": 110213899,
+        "export_rows_metadata": 367594
+      },
+      "current_R233_snapshot": {
+        "path": "/dev/shm/luxestyle-review/r233/current-evidence.json",
+        "sha256": "9f1927f2712774129137a70e9ffc76eb5046d39a0f5c32c37e2866850a2e83f4",
+        "revision": 233,
+        "atUTC": "2026-11-15T11:32:35.737Z",
+        "scannedProducts": 5000,
+        "summary_truncated": true,
+        "unique_disapproved_offers_read": 200,
+        "disapproved_has_next_page": true,
+        "issueGroupsPartial_note": "partial sample only; overlap possible; global error count unknown",
+        "merchantCenterId": "5797470070"
+      }
+    },
+    "limits": [
+      "Historical row/unique-item statistics belong only to the 2026-11-08 export; listed offer IDs are up to three unique examples per group, not full affected-offer sets.",
+      "Current R233 evidence is partial: 5,000 product scan truncated; 200 unique disapproved offers read and another page exists. The 7 partial issue groups and 2 summary codes are not a complete current UI enumeration.",
+      "For the 200 raw disapproved rows, canonicalAttribute maps 144 unique offers to n:price, 19 unique offers to n:availability, 3 offers to both, and 160 unique offers to either attribute. These are partial-slice counts, not catalog totals.",
+      "Offer-to-attribute mapping is known for each raw row; exact Shopify variant and per-offer data-source binding remain unknown in the saved worklist. Do not infer a write target from the Google offer ID/title.",
+      "No API/account calls or writes were made. All proposed changes need exact offer/variant/source mapping, current account identity, authorization and post-write readback.",
+      "Historical Germany issue rows do not authorize expanding target markets or inventing shipping rates; retain CH/LI scope and existing exclusions."
+    ],
+    "rows": [
+      {
+        "candidate_id": "HIST-01",
+        "issue_title": "Missing shipping info in some countries",
+        "historical_2026_11_08": {
+          "rows": 358792,
+          "unique_items": 275537,
+          "unique_products": 26679,
+          "countries": [
+            [
+              "Liechtenstein",
+              357409
+            ],
+            [
+              "Germany",
+              1383
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              358792
+            ]
+          ],
+          "feed_labels": [
+            "CH",
+            "CHF_99383214465",
+            "DE"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15470034026881_55970907226497",
+            "shopify_ZZ_15470028915073_55970901557633",
+            "shopify_ZZ_15470021280129_55970886615425"
+          ],
+          "sample_titles": [
+            "Hochzeits-Bonbons | LuxeStyle CH",
+            "BRUDER bworld Forstwirtschaftsset ab 4 Jahren | LuxeStyle",
+            "BRUDER Krone Big Pack | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Your products are set to show in countries that lack shipping information"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Pro Offer die Versandservice-Abdeckung je Zielland prüfen.",
+        "boundary_and_write_path": "R177 deckte historisch nur einen separaten LI-Service ab; Deutschland ist davon nicht umfasst. Vor einer Serviceänderung aktuelle Länder, Offer-Zuordnung, Freigabe und Rücklesen prüfen. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-02",
+        "issue_title": "Over capacity for Shopping ads (in CSS program)",
+        "historical_2026_11_08": {
+          "rows": 6456,
+          "unique_items": 3228,
+          "unique_products": 2740,
+          "countries": [
+            [
+              "Switzerland",
+              6456
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              6456
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15470034026881_55970907226497",
+            "shopify_ZZ_15500370051457_67871018582407",
+            "shopify_ZZ_15495067074945_67814937100679"
+          ],
+          "sample_titles": [
+            "Hochzeits-Bonbons | LuxeStyle CH",
+            "Magisches Dreieck-Karussell für Katzen | LuxeStyle CH Grau",
+            "Sanda Brustschutz für Boxtraining | LuxeStyle CH Schwarz / S"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "CSS-Programmlimit und berechtigten Produktbestand mit dem CSS-Kontoinhaber prüfen.",
+        "boundary_and_write_path": "Konten-/Programmeinstellung, kein Produktattribut. Aktueller Kapazitätsbeleg und Freigabe für eine Änderung fehlen. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-03",
+        "issue_title": "Promotional overlay on image",
+        "historical_2026_11_08": {
+          "rows": 1398,
+          "unique_items": 357,
+          "unique_products": 82,
+          "countries": [
+            [
+              "Switzerland",
+              699
+            ],
+            [
+              "Liechtenstein",
+              699
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              1398
+            ]
+          ],
+          "feed_labels": [
+            "CH",
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "15450853998977_16090974970677306609",
+            "15449430000001_cj-cjjt124131001az",
+            "shopify_ZZ_16614814843271_67671552459143"
+          ],
+          "sample_titles": [
+            "PHOERA Magnificent Metals Liquid Lidschatten - Baby Rosé",
+            "Rückenstrecker Kissen - Pink",
+            "Werkzeugtasche aus 1680D-Canvas, 150 kg Tragkraft | LuxeStyle CH 18 Zoll"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Promotional text, obstructing elements, or borders are not allowed on product images"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe",
+          "code": "image_unwanted_overlays",
+          "observed_group_count": 30,
+          "attributes": {
+            "n:image_link": 30
+          },
+          "sample_offer_ids": [
+            "shopify_ZZ_15448882938241_55878125060481",
+            "shopify_ZZ_15449485967745_68122762412423",
+            "shopify_ZZ_15450834731393_55889756094849"
+          ]
+        },
+        "concrete_candidate_fix": "Je passendem Offer ein sauberes, rechtegeklärtes Produktbild wählen und nach Quellen- und Sichtprüfung nur image_link ersetzen.",
+        "boundary_and_write_path": "Kein pauschaler Bildtausch. Rechte und genaue Offer-/Varianten-Zuordnung belegen; Produktbild muss wahr bleiben. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-04",
+        "issue_title": "Personalized advertising: personal hardships",
+        "historical_2026_11_08": {
+          "rows": 448,
+          "unique_items": 224,
+          "unique_products": 87,
+          "countries": [
+            [
+              "Switzerland",
+              224
+            ],
+            [
+              "Liechtenstein",
+              224
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              448
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15449600229761_67801726779783",
+            "shopify_ZZ_15481682297217_67801711116679",
+            "shopify_ZZ_15510924886401_67801685688711"
+          ],
+          "sample_titles": [
+            "Stillkissen mit Taillenstütze | LuxeStyle CH Silber",
+            "Stillkissen mit Lagerungskissen | LuxeStyle CH Yamarashi Grün",
+            "U-förmiges Schwangerschaftskissen für Rücken und Seite | LuxeStyle CH G"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or personal hardships"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_snapshot",
+          "evidence_scope": "summary.issues im 5.000-Produkte-Scan, abgeschnitten",
+          "code": "personal_hardships_policy_violation",
+          "severity": "DISAPPROVED",
+          "resolution": "MERCHANT_ACTION",
+          "observed_product_count": 3,
+          "sample_offer_ids": [
+            "shopify_ZZ_15445298774401_55863892214145",
+            "shopify_ZZ_15446060859777_55865819529601",
+            "shopify_ZZ_15446073737601_55865897353601"
+          ]
+        },
+        "concrete_candidate_fix": "Betroffene Offers aus personalisiertem/Remarketing-Targeting nehmen, wenn Inhalt oder Ansprache persönliche Härten ausnutzt.",
+        "boundary_and_write_path": "Keine Produkttexte umschreiben, um die Richtlinie zu umgehen. Offer- und Kampagnenumfang bestätigen; andere Flächen unverändert lassen, sofern nicht separat belegt. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-05",
+        "issue_title": "Missing attribute: [availability]",
+        "historical_2026_11_08": {
+          "rows": 110,
+          "unique_items": 55,
+          "unique_products": 0,
+          "countries": [
+            [
+              "Liechtenstein",
+              55
+            ],
+            [
+              "Switzerland",
+              55
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              110
+            ]
+          ],
+          "feed_labels": [
+            "CH"
+          ],
+          "sample_unique_offer_ids": [
+            "9568003504108712617",
+            "14680421856445108839",
+            "14537320485234438435"
+          ],
+          "sample_titles": [
+            "Nail Art Marker Set – 12-teilig | LuxeStyle CH",
+            "USB AA/AAA Lithium-Akku, 1.5V | LuxeStyle CH",
+            "Multifunktionaler Pinsel aus feiner Wollfaser | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "One or more of your products is missing a required attribute from a group. For example, if you set your availability to preorder, you must also provide an availability date. Add the missing attribute [availability] to your product data so your products can show on Google"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "200 raw disapproved rows; exact canonicalAttribute per offer",
+          "code": "item_missing_required_attribute",
+          "observed_group_count": 163,
+          "attributes": {
+            "n:price": 144,
+            "n:availability": 19
+          },
+          "sample_offer_ids": [
+            "10190093650697108457",
+            "10301937935043325310",
+            "10424180612693210499"
+          ],
+          "current_attribute_counts": {
+            "availability": 19,
+            "price": 144
+          },
+          "canonical_attribute": "n:availability",
+          "observed_occurrences": 19,
+          "unique_offer_count": 19,
+          "sample_examples": [
+            {
+              "offer_id": "10190093650697108457",
+              "report_row_id": "de~CH~10190093650697108457",
+              "title": "Polyester PET Luftfiltergewebe | LuxeStyle CH",
+              "canonical_attribute": "n:availability",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 43
+            },
+            {
+              "offer_id": "10301937935043325310",
+              "report_row_id": "de~CH~10301937935043325310",
+              "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+              "canonical_attribute": "n:availability",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 46
+            },
+            {
+              "offer_id": "10424180612693210499",
+              "report_row_id": "de~CH~10424180612693210499",
+              "title": "Nagel-Haftkleber | LuxeStyle CH",
+              "canonical_attribute": "n:availability",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 49
+            }
+          ],
+          "combined_required_attribute_slice_counts": {
+            "n:price_unique_offers": 144,
+            "n:availability_unique_offers": 19,
+            "both_unique_offers": 3,
+            "either_unique_offers": 160
+          }
+        },
+        "concrete_candidate_fix": "Google-Offer exakt einer Shopify-Variante zuordnen und Verfügbarkeit aus deren aktuellem Bestand/Verkaufsstatus übernehmen.",
+        "boundary_and_write_path": "Verfügbarkeit nicht erraten und nicht pauschal in_stock setzen. Aktueller Snapshot ordnet die Beispieloffers dem Verfügbarkeits-Unterattribut nicht einzeln zu. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-06",
+        "issue_title": "Image too small",
+        "historical_2026_11_08": {
+          "rows": 102,
+          "unique_items": 43,
+          "unique_products": 3,
+          "countries": [
+            [
+              "Liechtenstein",
+              51
+            ],
+            [
+              "Switzerland",
+              51
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              102
+            ]
+          ],
+          "feed_labels": [
+            "CH",
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "15448641012097_cj-cjdk296677412lo",
+            "15478787834241_cj-cjyd285378016pk",
+            "15478787834241_cj-cjyd285378014nm"
+          ],
+          "sample_titles": [
+            "High-Waist Capri Yoga-Hose mit Bauchkontrolle - Blau / XL",
+            "Figurformender Einteiler mit Bauchkontrolle - Nude / S",
+            "Figurformender Einteiler mit Bauchkontrolle - Braun / 3XL"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Your image is below the current minimum size. Update it to at least 500x500 pixels to meet upcoming 2027 requirements"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe",
+          "code": "image_too_small",
+          "observed_group_count": 1,
+          "attributes": {
+            "n:image_link": 1
+          },
+          "sample_offer_ids": [
+            "13406024595176656169"
+          ]
+        },
+        "concrete_candidate_fix": "Ein rechtegeklärtes Produktbild verwenden, das die konkrete Mindestanforderung erfüllt; Pixelmasse vor image_link-Änderung prüfen.",
+        "boundary_and_write_path": "Die Exportmeldung vom 08.11. nennt 500×500 als kommende 2027-Mindestgrösse. Das ist kein Beleg für unveränderte heutige Vorgaben; aktuelle offizielle Schwelle, Pixelmasse und Bildrechte vor Änderung prüfen. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, Owner-Freigabe und Rücklesen. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-07",
+        "issue_title": "Guns and Parts",
+        "historical_2026_11_08": {
+          "rows": 74,
+          "unique_items": 13,
+          "unique_products": 6,
+          "countries": [
+            [
+              "Switzerland",
+              37
+            ],
+            [
+              "Liechtenstein",
+              37
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              74
+            ]
+          ],
+          "feed_labels": [
+            "CH",
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_16612741841287_67671330226567",
+            "shopify_ZZ_15451639677313_67790210171271",
+            "shopify_ZZ_15504227402113_67814784172423"
+          ],
+          "sample_titles": [
+            "Aluminium-Einzelrolle für Bergsteiger, 20 kN Tragkraft | LuxeStyle CH Violett",
+            "Game Gunstock für Nintendo Switch | LuxeStyle CH Schwarz",
+            "Bluetooth Pedometer-Uhr | LuxeStyle CH Schwarz"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe",
+          "code": "guns_parts_policy_violation",
+          "observed_group_count": 4,
+          "attributes": {
+            "unknown": 4
+          },
+          "sample_offer_ids": [
+            "shopify_ZZ_15451639677313_67790210171271",
+            "shopify_ZZ_15502587789697_56118432825729",
+            "shopify_ZZ_15504227402113_67814784041351"
+          ]
+        },
+        "concrete_candidate_fix": "Funktion und Inhalt des einzelnen Produkts gegen die Richtlinie prüfen. Bei Fehlklassifikation Belege für eine Überprüfung einreichen; bei unzulässigem Produkt aus betroffenen Ads/Märkten ausschliessen.",
+        "boundary_and_write_path": "Keine Umgehung durch Synonyme oder falsche Kategorie. Die Stichprobentitel sind gemischt; Titel allein beweist die Klassifizierung nicht. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-08",
+        "issue_title": "Additional text found",
+        "historical_2026_11_08": {
+          "rows": 36,
+          "unique_items": 18,
+          "unique_products": 0,
+          "countries": [
+            [
+              "Liechtenstein",
+              18
+            ],
+            [
+              "Switzerland",
+              18
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              36
+            ]
+          ],
+          "feed_labels": [
+            "CH"
+          ],
+          "sample_unique_offer_ids": [
+            "15496264679809_cj-cjpb139647947uf",
+            "15496264679809_cj-cjpb139647942pk",
+            "15496264679809_cj-cjpb139647937kp"
+          ],
+          "sample_titles": [
+            "Herren Fleece Sport-Freizeitschuhe - Grau Hot Sale / 43",
+            "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 44",
+            "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 39"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Promotional text or irrelevant text in product attributes is not allowed"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Offer-Titel, Beschreibung und Bild auf Werbe- oder sachfremden Text prüfen und nur mit belegtem, sachlich korrektem Text korrigieren.",
+        "boundary_and_write_path": "Die historische Meldung umfasst Werbe- oder sachfremden Text in Produktattributen (nicht automatisch Bildoverlay). Variantenidentität und Produktmerkmale erhalten; für R233 fehlt ein aktuelles Feld-/Offer-Mapping. Jede Änderung benötigt aktuelle Konto-/Quelle-/Offer-Zuordnung, Owner-Freigabe und Rücklesen. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-09",
+        "issue_title": "Product page unavailable",
+        "historical_2026_11_08": {
+          "rows": 36,
+          "unique_items": 6,
+          "unique_products": 6,
+          "countries": [
+            [
+              "Liechtenstein",
+              18
+            ],
+            [
+              "Switzerland",
+              18
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              36
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15516154462593_56177866178945",
+            "shopify_ZZ_15493853544833_56080492429697",
+            "shopify_ZZ_15519834636673_56191247778177"
+          ],
+          "sample_titles": [
+            "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH",
+            "Herren-Armbanduhr mit Kalender und Leuchtzeigern",
+            "T58 GPS Smartwatch für Kinder | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe; verwandter aktueller Landing-page-Code, nicht als identischer Titel behandelt",
+          "code": "landing_page_error",
+          "observed_group_count": 1,
+          "attributes": {
+            "n:link": 1
+          },
+          "sample_offer_ids": [
+            "shopify_ZZ_15502258831745_68193799242119"
+          ]
+        },
+        "concrete_candidate_fix": "Exakte Offer-URL, Status, Canonical/Weiterleitung und Google-Crawlbarkeit prüfen; nur den belegten Link- oder Seitenfehler beheben.",
+        "boundary_and_write_path": "R233 zeigt landing_page_error, nicht nachweislich denselben historischen Fehler. Keine Weiterleitungen oder Zugriffskontrollen ohne URL-Beleg ändern. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-10",
+        "issue_title": "Personalized advertising: Sexual interests",
+        "historical_2026_11_08": {
+          "rows": 30,
+          "unique_items": 15,
+          "unique_products": 7,
+          "countries": [
+            [
+              "Liechtenstein",
+              15
+            ],
+            [
+              "Switzerland",
+              15
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              30
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15447935222145_56053000044929",
+            "shopify_ZZ_15447935222145_56053000110465",
+            "shopify_ZZ_15447935222145_56053000077697"
+          ],
+          "sample_titles": [
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Nude / L",
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Nude / M"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Products cannot be targeted based on sexual interests"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Personalisierte Werbung für exakt zugeordnete Offers einschränken, falls die Produkt-/Inhaltsprüfung den Richtlinienumfang bestätigt.",
+        "boundary_and_write_path": "Produktidentität nicht ändern und andere Flächen nicht pauschal sperren. Kein aktueller passender Beleg. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-11",
+        "issue_title": "Restricted adult content",
+        "historical_2026_11_08": {
+          "rows": 30,
+          "unique_items": 15,
+          "unique_products": 7,
+          "countries": [
+            [
+              "Switzerland",
+              15
+            ],
+            [
+              "Liechtenstein",
+              15
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              30
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15447935222145_56053000044929",
+            "shopify_ZZ_15447935222145_56053000110465",
+            "shopify_ZZ_15447935222145_56053000077697"
+          ],
+          "sample_titles": [
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Nude / L",
+            "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Nude / M"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Adult content that includes graphic nudity or sexual acts is not allowed"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Bild, Inhalt und Werbezielseite der exakten Offers prüfen; Klassifizierung korrigieren oder die Richtlinienbeschränkung anwenden, sofern belegt.",
+        "boundary_and_write_path": "Nicht mit adult-oriented oder sexual-interest Gruppen zusammenlegen. Kein aktueller Beleg. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-12",
+        "issue_title": "Tobacco products & related equipment",
+        "historical_2026_11_08": {
+          "rows": 22,
+          "unique_items": 7,
+          "unique_products": 2,
+          "countries": [
+            [
+              "Liechtenstein",
+              11
+            ],
+            [
+              "Switzerland",
+              11
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              22
+            ]
+          ],
+          "feed_labels": [
+            "CH",
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15483934376321_56026870874497",
+            "6337689026823560885",
+            "shopify_ZZ_15523117105537_56209687642497"
+          ],
+          "sample_titles": [
+            "Doppeldisplay-Halter | LuxeStyle CH Silber",
+            "Zigarrenbohrer aus Metall",
+            "Cigarren-Etui aus PU-Leder (8er) · 8 Stück | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Tobacco-containing products, their components, or any related equipment are not allowed"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe",
+          "code": "tobacco_policy_violation",
+          "observed_group_count": 4,
+          "attributes": {
+            "unknown": 4
+          },
+          "sample_offer_ids": [
+            "shopify_ZZ_15470073151873_55970994618753",
+            "shopify_ZZ_15483934376321_56026870874497",
+            "shopify_ZZ_15523117105537_56209687642497"
+          ]
+        },
+        "concrete_candidate_fix": "Jedes genaue Produkt prüfen und verbotene tabakbezogene Waren aus den betroffenen Google-Zielen/Märkten ausschliessen, soweit erforderlich.",
+        "boundary_and_write_path": "Keine Umbenennung oder falsche Produktklasse zur Umgehung. Vier R233-Stichproben brauchen Produktbeleg. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-13",
+        "issue_title": "Alcoholic beverages",
+        "historical_2026_11_08": {
+          "rows": 16,
+          "unique_items": 8,
+          "unique_products": 4,
+          "countries": [
+            [
+              "Liechtenstein",
+              16
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              16
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15522242789761_56204595986817",
+            "shopify_ZZ_15509968880001_56158453825921",
+            "shopify_ZZ_15512184586625_56169028616577"
+          ],
+          "sample_titles": [
+            "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+            "Hopfenfilter aus Edelstahl | LuxeStyle CH",
+            "Alkoholmeter-Set für Selbstgebranntes | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Exaktes Produkt und rechtliche Zulässigkeit in Liechtenstein prüfen; bis zum Nachweis keine unzulässigen Ziele bedienen.",
+        "boundary_and_write_path": "Historische Meldungen betreffen nur LI. Kein aktueller Fehlerbeleg oder Rechtsnachweis; keine Rückschlüsse auf CH. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-14",
+        "issue_title": "Personalized advertising: legal restrictions",
+        "historical_2026_11_08": {
+          "rows": 16,
+          "unique_items": 8,
+          "unique_products": 4,
+          "countries": [
+            [
+              "Switzerland",
+              8
+            ],
+            [
+              "Liechtenstein",
+              8
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              16
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15522242789761_56204595986817",
+            "shopify_ZZ_15509968880001_56158453825921",
+            "shopify_ZZ_15512184586625_56169028616577"
+          ],
+          "sample_titles": [
+            "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+            "Hopfenfilter aus Edelstahl | LuxeStyle CH",
+            "Alkoholmeter-Set für Selbstgebranntes | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Targeting users based on legally restricted content is not allowed in personalized ads"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Exakte rechtlich eingeschränkte Offers aus personalisierter Werbung entfernen, soweit die Richtlinie greift.",
+        "boundary_and_write_path": "Kampagnenumfang und Rechtsgrundlage erst prüfen; kein aktueller Beleg. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-15",
+        "issue_title": "Adult-oriented content",
+        "historical_2026_11_08": {
+          "rows": 12,
+          "unique_items": 6,
+          "unique_products": 5,
+          "countries": [
+            [
+              "Switzerland",
+              6
+            ],
+            [
+              "Liechtenstein",
+              6
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              12
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15524868424065_67871155421575",
+            "shopify_ZZ_16604050719111_67613452337543",
+            "shopify_ZZ_15525512544641_67790226555271"
+          ],
+          "sample_titles": [
+            "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken LXL",
+            "TPR-Aktivspielzeug für Hunde | LuxeStyle CH",
+            "Plüsch-Hundegeschirr mit Leine | LuxeStyle CH Rosa / S"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed"
+        },
+        "current_evidence": {
+          "status": "unknown",
+          "detail": "Im gespeicherten R233-Evidenzsnapshot nicht als aktuelle Offer-Issue-Gruppe belegt; kein aktueller UI-Status daraus ableitbar."
+        },
+        "concrete_candidate_fix": "Produktbilder, Inhalte und Zielseiten der exakten Offers prüfen und nur die belegte Klassifizierung bzw. Zielbeschränkung korrigieren.",
+        "boundary_and_write_path": "Nicht mit personalisierten Werbebeschränkungen zusammenfassen. Kein aktueller Fehlerbeleg. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-16",
+        "issue_title": "Personalized advertising: Identity and belief",
+        "historical_2026_11_08": {
+          "rows": 10,
+          "unique_items": 5,
+          "unique_products": 4,
+          "countries": [
+            [
+              "Liechtenstein",
+              5
+            ],
+            [
+              "Switzerland",
+              5
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              10
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_16617713402247_67676113502599",
+            "shopify_ZZ_16604933128583_67750319620487",
+            "shopify_ZZ_15509389181313_56156456845697"
+          ],
+          "sample_titles": [
+            "Maitreya Buddha Statue auf Goldkröte | LuxeStyle CH",
+            "Cushion-Concealer | LuxeStyle CH Dunkle Haut",
+            "Sakyamuni Buddha Statue Dekoration | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Avoid targeting customers based on their identities or beliefs when showing personalized ads"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_snapshot",
+          "evidence_scope": "summary.issues im 5.000-Produkte-Scan, abgeschnitten",
+          "code": "identity_and_belief_policy_violation",
+          "severity": "DISAPPROVED",
+          "resolution": "MERCHANT_ACTION",
+          "observed_product_count": 2,
+          "sample_offer_ids": [
+            "shopify_ZZ_15428421386625_67801465684359",
+            "shopify_ZZ_15428421386625_67801465717127"
+          ]
+        },
+        "concrete_candidate_fix": "Exakte Offers aus personalisiertem Targeting nach Identität oder Glauben entfernen; andere Platzierungen unbeeinflusst lassen.",
+        "boundary_and_write_path": "Der Snapshot zeigt zwei Offer-Beispiele im Summary, keinen Kataloggesamtwert. Inhalte nicht zur Richtlinienumgehung ändern. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "HIST-17",
+        "issue_title": "Local Requirements",
+        "historical_2026_11_08": {
+          "rows": 6,
+          "unique_items": 1,
+          "unique_products": 1,
+          "countries": [
+            [
+              "Liechtenstein",
+              3
+            ],
+            [
+              "Switzerland",
+              3
+            ]
+          ],
+          "severity": [
+            [
+              "SEVERITY_DISAPPROVED",
+              6
+            ]
+          ],
+          "feed_labels": [
+            "CHF_99383214465"
+          ],
+          "sample_unique_offer_ids": [
+            "shopify_ZZ_15523818045825_56215831413121"
+          ],
+          "sample_titles": [
+            "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH"
+          ],
+          "offers_scope": "Historical export dated 2026-11-08 only; samples, not complete affected-offer list.",
+          "issue_additional_information_from_08nov_export": "Products that violate local legal and safety standards are not allowed"
+        },
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "evidence_scope": "partielle 200-Offer-Stichprobe",
+          "code": "local_requirements_policy_violation",
+          "observed_group_count": 1,
+          "attributes": {
+            "unknown": 1
+          },
+          "sample_offer_ids": [
+            "shopify_ZZ_15523818045825_56215831413121"
+          ]
+        },
+        "concrete_candidate_fix": "Für das genaue Produkt die geltenden Sicherheits-/Rechtsnachweise des betroffenen Marktes beschaffen und die konkrete Anforderung klären.",
+        "boundary_and_write_path": "R233 zeigt ein Offer, aber keinen zugrundeliegenden Rechts-/Sicherheitsbeleg. Keine Konformität behaupten. Jede Merchant-Änderung benötigt frische Konto-/Quelle-/Offer-Zuordnung, vorhandene Owner-Freigabe und Rücklesen nach dem Schreiben. Hier erfolgte kein Schreiben."
+      },
+      {
+        "candidate_id": "CURRENT-18",
+        "issue_title": "Missing price (current R233 attribute group)",
+        "historical_2026_11_08": null,
+        "current_evidence": {
+          "status": "observed_in_current_R233_partial_sample",
+          "code": "item_missing_required_attribute",
+          "observed_group_count": 163,
+          "attributes": {
+            "n:price": 144,
+            "n:availability": 19
+          },
+          "price_occurrences": 144,
+          "availability_occurrences": 19,
+          "sample_offer_ids": [
+            "10018213324745296287",
+            "10073494240929787683",
+            "10081953211512946639"
+          ],
+          "sample_offer_attribute_mapping": "Known: each listed sample has canonicalAttribute n:price in raw itemIssues.",
+          "canonical_attribute": "n:price",
+          "observed_occurrences": 144,
+          "unique_offer_count": 144,
+          "sample_examples": [
+            {
+              "offer_id": "10018213324745296287",
+              "report_row_id": "de~CH~10018213324745296287",
+              "title": "Moderne Wandleuchte, ein- oder zweiflammig | LuxeStyle CH",
+              "canonical_attribute": "n:price",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 40
+            },
+            {
+              "offer_id": "10073494240929787683",
+              "report_row_id": "de~CH~10073494240929787683",
+              "title": "Malen nach Zahlen – Gassen & Häuser | LuxeStyle",
+              "canonical_attribute": "n:price",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 41
+            },
+            {
+              "offer_id": "10081953211512946639",
+              "report_row_id": "de~CH~10081953211512946639",
+              "title": "Klassischer Rucksack für Schule und Alltag | LuxeStyle CH",
+              "canonical_attribute": "n:price",
+              "issue_code": "item_missing_required_attribute",
+              "resolution": "MERCHANT_ACTION",
+              "page": 1,
+              "row": 42
+            }
+          ],
+          "combined_required_attribute_slice_counts": {
+            "n:price_unique_offers": 144,
+            "n:availability_unique_offers": 19,
+            "both_unique_offers": 3,
+            "either_unique_offers": 160
+          }
+        },
+        "concrete_candidate_fix": "Google-Offer exakt einer Shopify-Variante zuordnen und den aktuellen CHF-Preis dieser Variante als Quelle verwenden; Feed-Zuordnung erst mit bewiesenem Match korrigieren.",
+        "boundary_and_write_path": "The raw snapshot maps the offers to n:price; the additional mapping file confirms 144 unique price offers, 19 unique availability offers, 3 in both and 160 with either in this 200-offer slice. This is not a catalog total. Shopify variant and per-offer data-source binding remain unknown in the worklist. Verify exact source/value and obtain current account authorization before any correction; no write performed."
+      }
+    ],
+    "supplemental_sources": {
+      "per_offer_attribute_mapping": {
+        "path": "/dev/shm/luxestyle-review/r234/merchant-attribute-mapping.json",
+        "sha256": "012e9ab1aed53ce93c5cd9691d8b54ef29fd66f2d22e57c4457804b0a5a4e5ae",
+        "read_phase": "offline from R233 snapshot; no R234 catalog API read",
+        "offers_in_partial_slice": 200,
+        "price_issue_offers": 144,
+        "availability_issue_offers": 19,
+        "both_price_and_availability_offers": 3,
+        "unique_offers_with_either": 160,
+        "has_more_pages": true
+      },
+      "current_offer_worklist": {
+        "path": "/dev/shm/luxestyle-review/r234/merchant-current-worklist.csv",
+        "sha256": "e9a4226190db91483cbdbe4f814345e204eed8f5cd8d942f7143da3c71e440cc",
+        "source_binding_state": "unknown_not_read_per_offer for listed offers; action_state diagnosed_not_write_ready"
+      }
+    }
+  },
+  "currentAttributeMappingFromR233": {
+    "sourceSnapshot": "/dev/shm/luxestyle-review/r233/current-evidence.json",
+    "sourceSnapshotSha256": "9f1927f2712774129137a70e9ffc76eb5046d39a0f5c32c37e2866850a2e83f4",
+    "readPhase": "offline from R233 snapshot; no R234 catalog API read",
+    "offersInPartialSlice": 200,
+    "priceIssueOffers": 144,
+    "availabilityIssueOffers": 19,
+    "bothPriceAndAvailabilityIssueOffers": 3,
+    "uniqueOffersWithEither": 160,
+    "hasMorePages": true,
+    "priceOfferIds": [
+      "10018213324745296287",
+      "10073494240929787683",
+      "10081953211512946639",
+      "10278459490461182421",
+      "10283932347178265394",
+      "1031734357584210155",
+      "10331114122872641331",
+      "10528738929137828592",
+      "10704451301477423979",
+      "10739186417105784082",
+      "10784371818943082880",
+      "10805419205331046287",
+      "108828970984702042",
+      "11150965174675739419",
+      "11190967805815204559",
+      "11338308248272632831",
+      "11439029955520138458",
+      "11593142457724046786",
+      "11665193452512088040",
+      "11806950833152778375",
+      "11875706671229110226",
+      "11893472656311650610",
+      "11989962109113027942",
+      "12247056161299820190",
+      "12264141415588044465",
+      "12292485851989666440",
+      "12314078364389519624",
+      "12578101906520858054",
+      "12589449541229058607",
+      "12817654750196586578",
+      "12989832072179366759",
+      "13028989060832558352",
+      "13263873689430646377",
+      "13451399631203180113",
+      "13454711837178735181",
+      "13519028649621219941",
+      "13592946698755309448",
+      "13609624152155656755",
+      "13691855934451960106",
+      "13711366091716160829",
+      "13747864746626557385",
+      "13772381540877428374",
+      "13928714063187612782",
+      "13950614441567404108",
+      "14039816933279722588",
+      "14112390924429482569",
+      "14118555355919043959",
+      "14118937137548480670",
+      "1412912898882115382",
+      "14256613639588132399",
+      "14409521081374318736",
+      "14429885226473329559",
+      "14771396230103610843",
+      "14859468219820365309",
+      "15047060047747556458",
+      "15049195614786407950",
+      "15275221419440149117",
+      "15366558703356246782",
+      "15373485658652655658",
+      "15412949451137_cjyd290446601az",
+      "15412949451137_cjyd290446602by",
+      "15412949451137_cjyd290446604dw",
+      "15413084666208218947",
+      "15413245706625_14:193;5:100014064#s",
+      "15413245706625_14:193;5:100014065#xl",
+      "15413245706625_14:193;5:361385#l",
+      "15413245706625_14:193;5:361386#m",
+      "15413245706625_14:193;5:4182#2xl",
+      "15413245706625_14:193;5:4183#3xl",
+      "15413245706625_14:691;5:100014064#s",
+      "15413245706625_14:691;5:100014065#xl",
+      "15413245706625_14:691;5:361385#l",
+      "15413245706625_14:691;5:361386#m",
+      "15413245706625_14:691;5:4182#2xl",
+      "15413245706625_14:691;5:4183#3xl",
+      "15418391355725652323",
+      "15421165404545_cjtz292404401az",
+      "15421165404545_cjtz292404402by",
+      "15421165404545_cjtz292404403cx",
+      "15421165404545_cjtz292404404dw",
+      "15421165404545_cjtz292404405ev",
+      "15421165404545_cjtz292404406fu",
+      "15421165404545_cjtz292404407gt",
+      "15421165404545_cjtz292404408hs",
+      "15421165404545_cjtz292404409ir",
+      "15421165404545_cjtz292404410jq",
+      "15421165404545_cjtz292404411kp",
+      "15421165404545_cjtz292404412lo",
+      "15421606953345_cjns292524101az",
+      "15421606953345_cjns292524102by",
+      "15421606953345_cjns292524103cx",
+      "15421606953345_cjns292524104dw",
+      "15421606953345_cjns292524105ev",
+      "15421606953345_cjns292524106fu",
+      "15421606953345_cjns292524107gt",
+      "15421606953345_cjns292524108hs",
+      "15421606953345_cjns292524109ir",
+      "15421606953345_cjns292524110jq",
+      "15421606953345_cjns292524111kp",
+      "15421606953345_cjns292524112lo",
+      "15421606953345_cjns292524113mn",
+      "15421606953345_cjns292524114nm",
+      "15421606953345_cjns292524115ol",
+      "15421606953345_cjns292524116pk",
+      "15421606953345_cjns292524117qj",
+      "15421606953345_cjns292524118ri",
+      "15421606953345_cjns292524119sh",
+      "15421606953345_cjns292524120tg",
+      "15421606953345_cjns292524121uf",
+      "15421606953345_cjns292524122ve",
+      "15421606953345_cjns292524123wd",
+      "15421606953345_cjns292524124xc",
+      "15421606953345_cjns292524125yb",
+      "15421606953345_cjns292524126za",
+      "15421606953345_cjns292524127az",
+      "15421606953345_cjns292524128by",
+      "15421606953345_cjns292524129cx",
+      "15421606953345_cjns292524130dw",
+      "15421606953345_cjns292524131ev",
+      "15421606953345_cjns292524132fu",
+      "15421606953345_cjns292524133gt",
+      "15421606953345_cjns292524134hs",
+      "15421606953345_cjns292524135ir",
+      "15421606953345_cjns292524136jq",
+      "15421606953345_cjns292524137kp",
+      "15421606953345_cjns292524138lo",
+      "15421606953345_cjns292524139mn",
+      "15421606953345_cjns292524140nm",
+      "15421606953345_cjns292524141ol",
+      "15421606953345_cjns292524142pk",
+      "15421606953345_cjns292524143qj",
+      "15421606953345_cjns292524144ri",
+      "15421606953345_cjns292524145sh",
+      "15421606953345_cjns292524146tg",
+      "15421606953345_cjns292524147uf",
+      "15421606953345_cjns292524148ve",
+      "15421606953345_cjns292524149wd",
+      "15421606953345_cjns292524150xc",
+      "15421606953345_cjns292524151yb",
+      "15421606953345_cjns292524152za",
+      "15421606953345_cjns292524153az",
+      "15421606953345_cjns292524154by",
+      "15421606953345_cjns292524155cx",
+      "15421606953345_cjns292524156dw"
+    ],
+    "availabilityOfferIds": [
+      "10190093650697108457",
+      "10301937935043325310",
+      "10424180612693210499",
+      "10453153534875904667",
+      "11024212604633690805",
+      "11153645285677520297",
+      "11475833036656580588",
+      "11893472656311650610",
+      "11930962514331867978",
+      "13000070558990665438",
+      "13035079932026788087",
+      "13215201875456480510",
+      "13519028649621219941",
+      "13573300930760695428",
+      "14250141006730270187",
+      "14384524953255418790",
+      "14628552787511354609",
+      "14657792726060214548",
+      "15366558703356246782"
+    ],
+    "bothOfferIds": [
+      "11893472656311650610",
+      "13519028649621219941",
+      "15366558703356246782"
+    ],
+    "allRowsWriteReady": false
+  },
+  "historicalExamples": {
+    "sourceDate": "2026-11-08",
+    "sourceSha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+    "currentState": "unknown_unless_separately_rechecked",
+    "examples": {
+      "Missing shipping info in some countries": {
+        "Item ID": "shopify_ZZ_15470034026881_55970907226497",
+        "Title": "Hochzeits-Bonbons | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Missing shipping info in some countries",
+        "Issue additional information": "Your products are set to show in countries that lack shipping information",
+        "Traffic type": "Shopping ads",
+        "Country": "Liechtenstein",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Over capacity for Shopping ads (in CSS program)": {
+        "Item ID": "shopify_ZZ_15470034026881_55970907226497",
+        "Title": "Hochzeits-Bonbons | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Over capacity for Shopping ads (in CSS program)",
+        "Issue additional information": "The number of products you want to display exceeds the maximum capacity for advertising products on Google in CSS program countries",
+        "Traffic type": "Shopping ads",
+        "Country": "Switzerland",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Promotional overlay on image": {
+        "Item ID": "15450853998977_16090974970677306609",
+        "Title": "PHOERA Magnificent Metals Liquid Lidschatten - Baby Rosé",
+        "Feed label": "CH",
+        "Language": "de",
+        "Issue title": "Promotional overlay on image",
+        "Issue additional information": "Promotional text, obstructing elements, or borders are not allowed on product images",
+        "Traffic type": "Free listings",
+        "Country": "Switzerland",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Missing attribute: [availability]": {
+        "Item ID": "9568003504108712617",
+        "Title": "Nail Art Marker Set – 12-teilig | LuxeStyle CH",
+        "Feed label": "CH",
+        "Language": "de",
+        "Issue title": "Missing attribute: [availability]",
+        "Issue additional information": "One or more of your products is missing a required attribute from a group. For example, if you set your availability to preorder, you must also provide an availability date. Add the missing attribute [availability] to your product data so your products can show on Google",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Image too small": {
+        "Item ID": "15448641012097_cj-cjdk296677412lo",
+        "Title": "High-Waist Capri Yoga-Hose mit Bauchkontrolle - Blau / XL",
+        "Feed label": "CH",
+        "Language": "de",
+        "Issue title": "Image too small",
+        "Issue additional information": "Your image is below the current minimum size. Update it to at least 500x500 pixels to meet upcoming 2027 requirements",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Tobacco products & related equipment": {
+        "Item ID": "shopify_ZZ_15483934376321_56026870874497",
+        "Title": "Doppeldisplay-Halter | LuxeStyle CH Silber",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Tobacco products & related equipment",
+        "Issue additional information": "Tobacco-containing products, their components, or any related equipment are not allowed",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Personalized advertising: Sexual interests": {
+        "Item ID": "shopify_ZZ_15447935222145_56053000044929",
+        "Title": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Personalized advertising: Sexual interests",
+        "Issue additional information": "Products cannot be targeted based on sexual interests",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Liechtenstein",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Restricted adult content": {
+        "Item ID": "shopify_ZZ_15447935222145_56053000044929",
+        "Title": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Restricted adult content",
+        "Issue additional information": "Adult content that includes graphic nudity or sexual acts is not allowed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Guns and Parts": {
+        "Item ID": "shopify_ZZ_16612741841287_67671330226567",
+        "Title": "Aluminium-Einzelrolle für Bergsteiger, 20 kN Tragkraft | LuxeStyle CH Violett",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Guns and Parts",
+        "Issue additional information": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Personalized advertising: personal hardships": {
+        "Item ID": "shopify_ZZ_15449600229761_67801726779783",
+        "Title": "Stillkissen mit Taillenstütze | LuxeStyle CH Silber",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Personalized advertising: personal hardships",
+        "Issue additional information": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or personal hardships",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Additional text found": {
+        "Item ID": "15496264679809_cj-cjpb139647947uf",
+        "Title": "Herren Fleece Sport-Freizeitschuhe - Grau Hot Sale / 43",
+        "Feed label": "CH",
+        "Language": "de",
+        "Issue title": "Additional text found",
+        "Issue additional information": "Promotional text or irrelevant text in product attributes is not allowed",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Adult-oriented content": {
+        "Item ID": "shopify_ZZ_15524868424065_67871155421575",
+        "Title": "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken LXL",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Adult-oriented content",
+        "Issue additional information": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Product page unavailable": {
+        "Item ID": "shopify_ZZ_15516154462593_56177866178945",
+        "Title": "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Product page unavailable",
+        "Issue additional information": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Alcoholic beverages": {
+        "Item ID": "shopify_ZZ_15522242789761_56204595986817",
+        "Title": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Alcoholic beverages",
+        "Issue additional information": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+        "Traffic type": "Free listings",
+        "Country": "Liechtenstein",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Personalized advertising: legal restrictions": {
+        "Item ID": "shopify_ZZ_15522242789761_56204595986817",
+        "Title": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Personalized advertising: legal restrictions",
+        "Issue additional information": "Targeting users based on legally restricted content is not allowed in personalized ads",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Switzerland",
+        "Item status": "ELIGIBLE_LIMITED"
+      },
+      "Local Requirements": {
+        "Item ID": "shopify_ZZ_15523818045825_56215831413121",
+        "Title": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Local Requirements",
+        "Issue additional information": "Products that violate local legal and safety standards are not allowed",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Liechtenstein",
+        "Item status": "NOT_ELIGIBLE_OR_DISAPPROVED"
+      },
+      "Personalized advertising: Identity and belief": {
+        "Item ID": "shopify_ZZ_16617713402247_67676113502599",
+        "Title": "Maitreya Buddha Statue auf Goldkröte | LuxeStyle CH",
+        "Feed label": "CHF_99383214465",
+        "Language": "de",
+        "Issue title": "Personalized advertising: Identity and belief",
+        "Issue additional information": "Avoid targeting customers based on their identities or beliefs when showing personalized ads",
+        "Traffic type": "Dynamic remarketing",
+        "Country": "Liechtenstein",
+        "Item status": "ELIGIBLE_LIMITED"
+      }
+    }
+  },
+  "lampNative": {
+    "data": {
+      "product": {
+        "id": "gid://shopify/Product/16615805878663",
+        "title": "Moderne Wandleuchte, ein- oder zweiflammig",
+        "handle": "wandlampe-modern-1-oder-2-kopf-220-v-620700",
+        "status": "ACTIVE",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "cj-real",
+          "dekoration",
+          "dropship",
+          "lampe",
+          "licht",
+          "neuheit",
+          "sort-wandleuchten",
+          "varianten-nachgezogen-1025",
+          "wohnen"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67801647907207",
+              "title": "Ohne Lichtquelle / 1-Flammige Wandleuchte",
+              "sku": "CJYD253760001AZ",
+              "price": "45.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Ohne Lichtquelle"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "1-Flammige Wandleuchte"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67801647939975",
+              "title": "Ohne Lichtquelle / 2-Flammige Wandleuchte",
+              "sku": "CJYD253760002BY",
+              "price": "47.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Ohne Lichtquelle"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "2-Flammige Wandleuchte"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67801647972743",
+              "title": "Dreifarbenlicht / 1-Flammige Wandleuchte",
+              "sku": "CJYD253760003CX",
+              "price": "46.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Dreifarbenlicht"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "1-Flammige Wandleuchte"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67801648005511",
+              "title": "Dreifarbenlicht / 2-Flammige Wandleuchte",
+              "sku": "CJYD253760004DW",
+              "price": "49.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Dreifarbenlicht"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "2-Flammige Wandleuchte"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67801648038279",
+              "title": "Warmlicht / 1-Flammige Wandleuchte",
+              "sku": "CJYD253760005EV",
+              "price": "47.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Warmlicht"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "1-Flammige Wandleuchte"
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67801648071047",
+              "title": "Warmlicht / 2-Flammige Wandleuchte",
+              "sku": "CJYD253760006FU",
+              "price": "53.90",
+              "inventoryQuantity": 0,
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "selectedOptions": [
+                {
+                  "name": "Ausführung",
+                  "value": "Warmlicht"
+                },
+                {
+                  "name": "Anzahl Leuchten",
+                  "value": "2-Flammige Wandleuchte"
+                }
+              ]
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    }
+  },
+  "lampVariants": {
+    "atUTC": "2026-11-15T12:34:56.935114+00:00",
+    "productId": "gid://shopify/Product/16615805878663",
+    "status": "ACTIVE",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "cj-real",
+      "dekoration",
+      "dropship",
+      "lampe",
+      "licht",
+      "neuheit",
+      "sort-wandleuchten",
+      "varianten-nachgezogen-1025",
+      "wohnen"
+    ],
+    "source": {
+      "url": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700.js",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700.js",
+      "sha256": "41d852fa4ba10d8c86c3e0047a109f688344f142b910fdfe4e89529f1f0f14dc"
+    },
+    "nativeHasNextPage": false,
+    "rows": [
+      {
+        "variantId": "67801647907207",
+        "nativeGid": "gid://shopify/ProductVariant/67801647907207",
+        "sku": "CJYD253760001AZ",
+        "choice": "Ohne Lichtquelle / 1-Flammige Wandleuchte",
+        "priceCHF": "45.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 4590,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207"
+      },
+      {
+        "variantId": "67801647939975",
+        "nativeGid": "gid://shopify/ProductVariant/67801647939975",
+        "sku": "CJYD253760002BY",
+        "choice": "Ohne Lichtquelle / 2-Flammige Wandleuchte",
+        "priceCHF": "47.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 4790,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975"
+      },
+      {
+        "variantId": "67801647972743",
+        "nativeGid": "gid://shopify/ProductVariant/67801647972743",
+        "sku": "CJYD253760003CX",
+        "choice": "Dreifarbenlicht / 1-Flammige Wandleuchte",
+        "priceCHF": "46.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 4690,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743"
+      },
+      {
+        "variantId": "67801648005511",
+        "nativeGid": "gid://shopify/ProductVariant/67801648005511",
+        "sku": "CJYD253760004DW",
+        "choice": "Dreifarbenlicht / 2-Flammige Wandleuchte",
+        "priceCHF": "49.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 4990,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511"
+      },
+      {
+        "variantId": "67801648038279",
+        "nativeGid": "gid://shopify/ProductVariant/67801648038279",
+        "sku": "CJYD253760005EV",
+        "choice": "Warmlicht / 1-Flammige Wandleuchte",
+        "priceCHF": "47.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 4790,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279"
+      },
+      {
+        "variantId": "67801648071047",
+        "nativeGid": "gid://shopify/ProductVariant/67801648071047",
+        "sku": "CJYD253760006FU",
+        "choice": "Warmlicht / 2-Flammige Wandleuchte",
+        "priceCHF": "53.90",
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "storefrontAvailable": true,
+        "storefrontPriceMinorUnits": 5390,
+        "priceMatches": true,
+        "variantProductLink": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047"
+      }
+    ],
+    "targetAutofeedOffer": "10018213324745296287",
+    "targetAutofeedSource": "10678939025",
+    "autofeedOfferToSingleVariant": "unknown; the existing generic parent offer carries no demonstrated exact variant binding",
+    "writeReady": false,
+    "reason": "Six genuine variant choices and distinct prices. No arbitrary parent price or Google offer assignment. References only; not a feed import file. Availability at read time is not a stock or delivery promise."
+  },
+  "repoHelperCheck": "# R234 — Offline Merchant helper check\n\nRead-only review; no API, browser, credentials, product catalogue, or Merchant account calls were made.\n\n## Source context\n\n- Current local Core4 snapshot: `/dev/shm/luxestyle-review/r233/proposed/ARBEITSSTAND.json`, revision 233, `updatedAt` 2026-11-15 11:38:04 UTC. Its recorded merchant history includes earlier R133 Shopify SEO/product edits and R177’s historical Merchant access note. Neither establishes a fresh current Google Merchant API binding. The recorded R133 reprocessing result remains `unknown`; Merchant/feed writes were 0 in that record.\n- `/workspace/luxestyle-review/v63-direct-rollout-20261108/automation/autopilot/merchant_feed.mjs`: existing helper builds a local RSS product feed from Shopify GraphQL (Shopify API version `2025-01`). It uses Shopify OAuth client credentials or Shopify admin token; code has no Google Merchant API client or Merchant reprocess/single-offer operation. It is a feed generator, not an authenticated AUTOFEED editor. It writes its local XML output when run; it was not run.\n- `/workspace/luxestyle-review/v63-direct-rollout-20261108/automation/autopilot/merchant_feed_auth_test.mjs`: offline tests of that helper’s Shopify auth block using fixture credentials and mocked `fetch`. This confirms no Google account identity or Merchant authorization binding.\n\n## Finding and next step\n\nIn these two targeted existing helper files, there is no per-offer review/reprocess helper and no authenticated AUTOFEED/data-source editor. This is a bounded finding about the inspected files, not proof that no other repository connector exists. The discovered credential path is bound to Shopify OAuth, not Google Merchant Center; no Google credentials or secret values were inspected.\n\nNext, check the already-available Windsor Merchant writer’s advertised per-offer review/reprocess and data-source operations against a freshly verified account identity. For AUTOFEED linkage, first obtain an explicit supported-operation answer for the specific primary source; the earlier official-doc review left its `defaultRule` mutability unknown. Do not treat the Shopify feed generator or its auth test as Google authorization.\n",
+  "masterSourceCheck": {
+    "revision": "R234",
+    "calls": {
+      "CJProductDetail": 1,
+      "otherCJVideoCalls": 0,
+      "Shopify": 0
+    },
+    "query": {
+      "tool": "cjdropshipping_get_product_detail",
+      "pid": "1477820492730732544",
+      "features": "enable_video"
+    },
+    "rawResponse": {
+      "path": "master-source-check/cj-product-raw.json",
+      "sha256": "ee0599e1a0e79a47e8e45ab2f8803e44be8506ff2c26966d0d2be04257d3830e",
+      "toolReturnedError": false
+    },
+    "returnedProduct": {
+      "pid": "1477820492730732544",
+      "productSku": "CJSN1392391",
+      "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+      "variantsCount": 7
+    },
+    "identityComparison": {
+      "shopifyProductId": "15521256604033",
+      "expectedCJProductSku": "CJSN1392391",
+      "expectedShopifyVariantASku": "CJSN139239101AZ",
+      "returnedPidMatches": true,
+      "returnedProductSkuMatches": true,
+      "variantAExactMatches": [
+        {
+          "vid": "1477826312449167360",
+          "variantSku": "CJSN139239101AZ",
+          "variantKey": "A-USB",
+          "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+        }
+      ],
+      "priorR230ProductResponsePresentLocally": true,
+      "priorR230PidMatch": true,
+      "priorR230ProductSkuMatch": true
+    },
+    "videoMetadata": {
+      "returnedProductVideoIds": [
+        "1602963697889193984"
+      ],
+      "videoIdCount": 1,
+      "sourceVideoUrl": "unknown_not_returned_by_product_detail",
+      "dimensions": "unknown_not_returned_by_product_detail",
+      "duration": "unknown_not_returned_by_product_detail",
+      "videoLevelRights": "unknown_not_returned_by_product_detail",
+      "note": "Product-video reference ID alone is not a video URL, playable source, file/dimensions record, current Shopify media match, or rights grant."
+    },
+    "rightsAndCost": {
+      "editingAdvertisingOrganicSocialMetricoolRights": "unknown_no_grant_field_returned",
+      "costOrFreeFlags": "not_used_as_rights_evidence",
+      "previousProductPageVideoRightsStatus": "remains_open; this CJ read does not resolve it"
+    },
+    "actionsNotTaken": [
+      "video query/download",
+      "purchase",
+      "order",
+      "render",
+      "Shopify or CJ write",
+      "new master creation"
+    ],
+    "sourceRawSavedFirst": true
+  },
+  "limits": {
+    "newMerchantCatalogReads": 0,
+    "newPerformanceKlaviyoOrdersReads": 0,
+    "newFeedWrites": 0,
+    "newSocialWrites": 0,
+    "paidVideoRenders": 0,
+    "newAutomationOrScheduleChange": false,
+    "noCurrentGlobal18GroupCount": true,
+    "claudeReceipt": "unknown",
+    "newNativeProductQueries": 3,
+    "newUniqueNativeProducts": 2
+  },
+  "automationMessageReceivedDuringActiveWork": {
+    "automationId": "6ad336cc3a388191bc05642ef858af99",
+    "sameDailyWorkContinued": true,
+    "noAdditionalAutomationOrFrequency": true
+  },
+  "projectorFreshProductGate": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "status": "ACTIVE",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "nonemptyCurrentTags": true,
+    "helper": "automation/lib/kanal_sperren.mjs",
+    "matchedStopTags": [],
+    "extraAnyRueckholOwnerRule": true,
+    "socialTagGatePassed": true,
+    "variantA": {
+      "id": "gid://shopify/ProductVariant/68122445283719",
+      "title": "A · Grundmodell",
+      "sku": "CJSN139239101AZ",
+      "price": "34.90",
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70733173719425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+              "width": 800,
+              "height": 654,
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "selectedOptions": [
+        {
+          "name": "Modell",
+          "value": "A · Grundmodell"
+        }
+      ]
+    },
+    "mediaRightsGatePassed": false,
+    "masterReady": false
+  },
+  "projectorStorefront": {
+    "atUTC": "2026-11-15T12:59:20.212984+00:00",
+    "sourceUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "httpStatus": 200,
+    "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466",
+    "variantId": 68122445283719,
+    "sku": "CJSN139239101AZ",
+    "available": true,
+    "priceMinorUnits": 3490,
+    "priceMatchesNative": true
+  },
+  "currentSocialGuardSource": {
+    "mainCommit": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+  },
+  "projectorDescriptionFreshHash": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+  "productReferenceImage": {
+    "path": "projector-a-reference.jpg",
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+    "matchesR228ReferenceSha": true,
+    "dimensions": [
+      800,
+      654
+    ],
+    "isMasterMP4": false
+  },
+  "schemaGuardRejection": {
+    "field": "ProductVariant.image",
+    "deprecatedRejectedBeforeAdminExecution": true,
+    "correctedToDiscoveredField": "ProductVariant.media",
+    "writes": 0
+  },
+  "dailyReportsReused": {
+    "source": "KENNZAHLEN-KLAVIYO-20261115-R228.json",
+    "sourceSha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+    "range": "2026-11-08/2026-11-14 Europe/Zurich",
+    "readAgainInR234": false,
+    "metrics": [
+      {
+        "network": "instagram",
+        "metric": "IGEV05",
+        "label": "Instagram Evolution > Views",
+        "observedSum": 578.0,
+        "numericDays": 7,
+        "nullDays": 0,
+        "absentDays": 0,
+        "completeNumericDays": true,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "instagram",
+        "metric": "IGEV38",
+        "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+        "observedSum": 1.0,
+        "numericDays": 1,
+        "nullDays": 6,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "facebook",
+        "metric": "FBEV49",
+        "label": "Facebook Evolution > Page Media View",
+        "observedSum": 135.0,
+        "numericDays": 7,
+        "nullDays": 0,
+        "absentDays": 0,
+        "completeNumericDays": true,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "facebook",
+        "metric": "FBEV34",
+        "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+        "observedSum": 0.0,
+        "numericDays": 1,
+        "nullDays": 6,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "tiktok",
+        "metric": "TKEV12",
+        "label": "TikTok Evolution > Video views in period",
+        "observedSum": 3497.0,
+        "numericDays": 6,
+        "nullDays": 1,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "tiktok",
+        "metric": "TKEV06",
+        "label": "TikTok Evolution > Interactions",
+        "observedSum": 11.0,
+        "numericDays": 6,
+        "nullDays": 1,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "pinterest",
+        "metric": "PIEV01",
+        "label": "Pinterest Evolution > Impressions in period",
+        "observedSum": 4256.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "pinterest",
+        "metric": "PIEV04",
+        "label": "Pinterest Evolution > Interactions in period",
+        "observedSum": 81.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "threads",
+        "metric": "THEV06",
+        "label": "Threads Evolution > Post Views",
+        "observedSum": 5.0,
+        "numericDays": 2,
+        "nullDays": 0,
+        "absentDays": 5,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "threads",
+        "metric": "THEV05",
+        "label": "Threads Evolution > Interactions",
+        "observedSum": 0.0,
+        "numericDays": 1,
+        "nullDays": 1,
+        "absentDays": 5,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "youtube",
+        "metric": "YTEV02",
+        "label": "Youtube Evolution > Video Views",
+        "observedSum": 699.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "youtube",
+        "metric": "YTEV05",
+        "label": "Youtube Evolution > Followers Gained",
+        "observedSum": 0.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      }
+    ],
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft"
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "live"
+      }
+    ],
+    "flowReport": {
+      "flow": "XEGbTB",
+      "deliveredMessageCount": 3,
+      "clicksUniqueAsReported": 0,
+      "conversionsAsReported": 0,
+      "distinctPeople": "unknown_across_messages",
+      "welcomeTriggerList": "T2VHfu",
+      "welcomeStatus": "draft",
+      "currenciesNotMixed": true,
+      "notShopSalesOrSyncEvidence": true
+    },
+    "currencies": {
+      "shop": "CHF",
+      "klaviyoAccount": "USD",
+      "combined": false
+    },
+    "watchtime": "unknown_no_valid_evolution_metric_returned",
+    "limits": "Observed sums only; missing dates are unknown, not zero. Different platform definitions; no sales or attribution derived."
+  },
+  "sixPreparedUTMProductLinks": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "variantId": "gid://shopify/ProductVariant/68122445283719",
+    "hookA": {
+      "instagram": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18",
+      "tiktok": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18",
+      "youtube": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18",
+      "facebook": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18",
+      "threads": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18",
+      "pinterest": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_room_master18"
+    },
+    "hookB": {
+      "instagram": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "tiktok": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "youtube": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "facebook": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "threads": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+      "pinterest": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18"
+    },
+    "publicationReady": false
+  }
+}

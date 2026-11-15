@@ -1,0 +1,58 @@
+{
+  "productId": "gid://shopify/Product/15521256604033",
+  "status": "ACTIVE",
+  "tags": [
+    "auswahl-offen",
+    "beleuchtung",
+    "bild-ok",
+    "bildmass-ok-0906",
+    "cj-real",
+    "dropship",
+    "elektronik",
+    "gadget",
+    "sort-nachtlichter",
+    "sort-nachttischlampen",
+    "tech",
+    "varianten-nachgezogen-1025"
+  ],
+  "nonemptyCurrentTags": true,
+  "helper": "automation/lib/kanal_sperren.mjs",
+  "matchedStopTags": [],
+  "extraAnyRueckholOwnerRule": true,
+  "socialTagGatePassed": true,
+  "variantA": {
+    "id": "gid://shopify/ProductVariant/68122445283719",
+    "title": "A · Grundmodell",
+    "sku": "CJSN139239101AZ",
+    "price": "34.90",
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+      "tracked": false
+    },
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/70733173719425",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+            "width": 800,
+            "height": 654,
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    },
+    "selectedOptions": [
+      {
+        "name": "Modell",
+        "value": "A · Grundmodell"
+      }
+    ]
+  },
+  "mediaRightsGatePassed": false,
+  "masterReady": false
+}

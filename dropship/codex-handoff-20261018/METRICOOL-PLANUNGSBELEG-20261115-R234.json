@@ -1,0 +1,1701 @@
+{
+  "task": "R234 Metricool read-only schedule snapshot",
+  "identity": {
+    "brandId": "6227837",
+    "brand": "LuxeStyle",
+    "timezone": "Europe/Zurich",
+    "identityVerifiedByParentImmediatelyBeforeCall": true
+  },
+  "request": {
+    "tool": "mcp__codex_apps__metricool_getscheduledposts",
+    "args": {
+      "brandId": "6227837",
+      "fromDate": "2026-11-15T00:00:00+01:00",
+      "toDate": "2026-11-22T23:59:59+01:00",
+      "timezone": "Europe/Zurich",
+      "extendedRange": false
+    },
+    "error": null,
+    "apiIsError": false,
+    "resultObjectCount": 46,
+    "dateWindowLocal": {
+      "from": "2026-11-15T00:00:00+01:00",
+      "to": "2026-11-22T23:59:59+01:00"
+    },
+    "extendedRange": false,
+    "calls": 1
+  },
+  "raw": {
+    "file": "raw_getposts.json",
+    "sha256": "e2ca4d71578f34e1f8ca446c52d1df38ec452cb363d884e4178d05d6ad83b77f"
+  },
+  "returnedObjectCount": 46,
+  "uniqueUuidCount": 46,
+  "providerStateCount": 56,
+  "coverageDefinition": "Technical planner evidence only: returned non-draft states have global autoPublish=true (independently checked); PENDING is scheduled, not published. Required channel-specific flags not supplied remain unknown. This read does not re-approve media quality/rights or full master history.",
+  "networkSummary": [
+    {
+      "network": "instagram",
+      "returnedStates": 12,
+      "activeStates": 9,
+      "draftStates": 3,
+      "statuses": {
+        "PENDING": 11,
+        "PUBLISHED": 1
+      },
+      "activeDates": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "draftDates": [
+        "2026-11-16",
+        "2026-11-18"
+      ],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        false,
+        true
+      ]
+    },
+    {
+      "network": "facebook",
+      "returnedStates": 11,
+      "activeStates": 9,
+      "draftStates": 2,
+      "statuses": {
+        "PENDING": 10,
+        "PUBLISHED": 1
+      },
+      "activeDates": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "draftDates": [
+        "2026-11-16",
+        "2026-11-18"
+      ],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        null
+      ]
+    },
+    {
+      "network": "tiktok",
+      "returnedStates": 12,
+      "activeStates": 10,
+      "draftStates": 2,
+      "statuses": {
+        "PUBLISHED": 1,
+        "PENDING": 11
+      },
+      "activeDates": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "draftDates": [
+        "2026-11-17",
+        "2026-11-18"
+      ],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        null
+      ]
+    },
+    {
+      "network": "pinterest",
+      "returnedStates": 8,
+      "activeStates": 8,
+      "draftStates": 0,
+      "statuses": {
+        "PENDING": 8
+      },
+      "activeDates": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "draftDates": [],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        null
+      ]
+    },
+    {
+      "network": "threads",
+      "returnedStates": 9,
+      "activeStates": 7,
+      "draftStates": 2,
+      "statuses": {
+        "PENDING": 9
+      },
+      "activeDates": [
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ],
+      "draftDates": [
+        "2026-11-15",
+        "2026-11-18"
+      ],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        null
+      ]
+    },
+    {
+      "network": "youtube",
+      "returnedStates": 4,
+      "activeStates": 2,
+      "draftStates": 2,
+      "statuses": {
+        "PENDING": 4
+      },
+      "activeDates": [
+        "2026-11-16",
+        "2026-11-17"
+      ],
+      "draftDates": [
+        "2026-11-18",
+        "2026-11-19"
+      ],
+      "activeGlobalAutoPublishValues": [
+        true
+      ],
+      "nativeChannelAutoPublishValues": [
+        null
+      ]
+    }
+  ],
+  "dateCoverage": [
+    {
+      "network": "instagram",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 2,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1,
+            "PUBLISHED": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 420726136,
+              "uuid": "6199136659928140012",
+              "dateTime": "2026-11-15T16:00:00"
+            },
+            {
+              "status": "PUBLISHED",
+              "detailedStatus": "Published",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 422280155,
+              "uuid": "-3833193365444016309",
+              "dateTime": "2026-11-15T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 3,
+          "activeObjectCount": 1,
+          "draftObjectCount": 2,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            false,
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 424392702,
+              "uuid": "7991040995405613204",
+              "dateTime": "2026-11-16T16:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": false,
+              "id": 427969190,
+              "uuid": "4156060813550767248",
+              "dateTime": "2026-11-16T19:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": false,
+              "id": 428827820,
+              "uuid": "2242731246724795766",
+              "dateTime": "2026-11-16T14:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 424393422,
+              "uuid": "8906814597211638530",
+              "dateTime": "2026-11-17T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            false,
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": false,
+              "id": 423483793,
+              "uuid": "4659816415037836014",
+              "dateTime": "2026-11-18T10:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 425725034,
+              "uuid": "5511347900019396585",
+              "dateTime": "2026-11-18T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 425725555,
+              "uuid": "4792908094992761420",
+              "dateTime": "2026-11-19T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 425726329,
+              "uuid": "108318075245381964",
+              "dateTime": "2026-11-20T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 426962036,
+              "uuid": "4464007380148308511",
+              "dateTime": "2026-11-21T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            true
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": true,
+              "id": 426962393,
+              "uuid": "2057359447521839535",
+              "dateTime": "2026-11-22T17:00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "network": "facebook",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 2,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1,
+            "PUBLISHED": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 420728374,
+              "uuid": "7768651932591999367",
+              "dateTime": "2026-11-15T16:00:00"
+            },
+            {
+              "status": "PUBLISHED",
+              "detailedStatus": "Published",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 422280155,
+              "uuid": "-3833193365444016309",
+              "dateTime": "2026-11-15T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424392702,
+              "uuid": "7991040995405613204",
+              "dateTime": "2026-11-16T16:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 427969232,
+              "uuid": "6680239273933357186",
+              "dateTime": "2026-11-16T19:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393422,
+              "uuid": "8906814597211638530",
+              "dateTime": "2026-11-17T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 423483793,
+              "uuid": "4659816415037836014",
+              "dateTime": "2026-11-18T10:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725034,
+              "uuid": "5511347900019396585",
+              "dateTime": "2026-11-18T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725555,
+              "uuid": "4792908094992761420",
+              "dateTime": "2026-11-19T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425726329,
+              "uuid": "108318075245381964",
+              "dateTime": "2026-11-20T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426962036,
+              "uuid": "4464007380148308511",
+              "dateTime": "2026-11-21T17:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426962393,
+              "uuid": "2057359447521839535",
+              "dateTime": "2026-11-22T17:00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "network": "tiktok",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PUBLISHED": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PUBLISHED",
+              "detailedStatus": "Published",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 422295156,
+              "uuid": "-6967517640837021033",
+              "dateTime": "2026-11-15T12:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 2,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 2
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424392795,
+              "uuid": "-580082399036486516",
+              "dateTime": "2026-11-16T18:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 428832793,
+              "uuid": "-1463494076488727798",
+              "dateTime": "2026-11-16T18:30:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393289,
+              "uuid": "-326770756211684563",
+              "dateTime": "2026-11-17T16:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 427969295,
+              "uuid": "3614365779669041576",
+              "dateTime": "2026-11-17T19:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 423484773,
+              "uuid": "-8305910546945982140",
+              "dateTime": "2026-11-18T12:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725162,
+              "uuid": "-4254912497617780595",
+              "dateTime": "2026-11-18T18:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 2,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 2
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725709,
+              "uuid": "-1560468010126717309",
+              "dateTime": "2026-11-19T18:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 428845921,
+              "uuid": "733493005328404096",
+              "dateTime": "2026-11-19T19:30:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425726186,
+              "uuid": "5095221239706765903",
+              "dateTime": "2026-11-20T15:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426962130,
+              "uuid": "1244897565051602488",
+              "dateTime": "2026-11-21T18:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 427963228,
+              "uuid": "-5766619704983925146",
+              "dateTime": "2026-11-22T18:00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "network": "pinterest",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 423622854,
+              "uuid": "6213007717183669914",
+              "dateTime": "2026-11-15T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393081,
+              "uuid": "-8863891854936750949",
+              "dateTime": "2026-11-16T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393614,
+              "uuid": "9119250214596987223",
+              "dateTime": "2026-11-17T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725272,
+              "uuid": "-5899965466644493317",
+              "dateTime": "2026-11-18T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725932,
+              "uuid": "6443070221295305315",
+              "dateTime": "2026-11-19T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425726479,
+              "uuid": "-457707186698434580",
+              "dateTime": "2026-11-20T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426962209,
+              "uuid": "1277216616076757571",
+              "dateTime": "2026-11-21T20:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 427963279,
+              "uuid": "-2010279446251812932",
+              "dateTime": "2026-11-22T20:00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "network": "threads",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 0,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [
+            false
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 427969120,
+              "uuid": "8935974072695279179",
+              "dateTime": "2026-11-15T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424392566,
+              "uuid": "-8080777271331700055",
+              "dateTime": "2026-11-16T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393187,
+              "uuid": "-2055061205905158476",
+              "dateTime": "2026-11-17T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 2,
+          "activeObjectCount": 1,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            false,
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 423484712,
+              "uuid": "-8339089096074181290",
+              "dateTime": "2026-11-18T11:00:00"
+            },
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 424393691,
+              "uuid": "-2256568300747601062",
+              "dateTime": "2026-11-18T14:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425725415,
+              "uuid": "2120727659527094958",
+              "dateTime": "2026-11-19T11:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 425726070,
+              "uuid": "-6491658134482960242",
+              "dateTime": "2026-11-20T14:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426961960,
+              "uuid": "-325577156053548845",
+              "dateTime": "2026-11-21T14:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 426962312,
+              "uuid": "7447187506709285656",
+              "dateTime": "2026-11-22T11:00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "network": "youtube",
+      "days": [
+        {
+          "date": "2026-11-15",
+          "returnedChannelStates": 0,
+          "activeObjectCount": 0,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [],
+          "channelAutoPublishValues": [],
+          "states": []
+        },
+        {
+          "date": "2026-11-16",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 428832793,
+              "uuid": "-1463494076488727798",
+              "dateTime": "2026-11-16T18:30:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-17",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 1,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {
+            "PENDING": 1
+          },
+          "globalAutoPublishValues": [
+            true
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": false,
+              "globalAutoPublish": true,
+              "channelAutoPublish": null,
+              "id": 428845871,
+              "uuid": "-3668679867663038577",
+              "dateTime": "2026-11-17T18:30:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 0,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [
+            false
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 423484839,
+              "uuid": "-3731207601091163105",
+              "dateTime": "2026-11-18T18:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "returnedChannelStates": 1,
+          "activeObjectCount": 0,
+          "draftObjectCount": 1,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [
+            false
+          ],
+          "channelAutoPublishValues": [
+            null
+          ],
+          "states": [
+            {
+              "status": "PENDING",
+              "detailedStatus": "Pending",
+              "draft": true,
+              "globalAutoPublish": false,
+              "channelAutoPublish": null,
+              "id": 427969354,
+              "uuid": "-7647174116509334899",
+              "dateTime": "2026-11-19T19:00:00"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "returnedChannelStates": 0,
+          "activeObjectCount": 0,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [],
+          "channelAutoPublishValues": [],
+          "states": []
+        },
+        {
+          "date": "2026-11-21",
+          "returnedChannelStates": 0,
+          "activeObjectCount": 0,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [],
+          "channelAutoPublishValues": [],
+          "states": []
+        },
+        {
+          "date": "2026-11-22",
+          "returnedChannelStates": 0,
+          "activeObjectCount": 0,
+          "draftObjectCount": 0,
+          "activeStatusCounts": {},
+          "globalAutoPublishValues": [],
+          "channelAutoPublishValues": [],
+          "states": []
+        }
+      ]
+    }
+  ],
+  "exactDuplicateCheck": {
+    "scope": "Only the exact URL strings in captions and exact media URL strings among the returned posts, compared within each provider network and this bounded response. Does not assert full or older planner history.",
+    "captionUrlDuplicatesByNetwork": {
+      "instagram": {},
+      "facebook": {},
+      "tiktok": {},
+      "pinterest": {},
+      "threads": {},
+      "youtube": {}
+    },
+    "mediaUrlDuplicatesByNetwork": {
+      "instagram": {},
+      "facebook": {},
+      "tiktok": {},
+      "pinterest": {},
+      "threads": {},
+      "youtube": {}
+    },
+    "captionUrlDuplicateGroups": 0,
+    "mediaUrlDuplicateGroups": 0
+  },
+  "limitations": [
+    "The scheduled-post endpoint returns only its bounded planner data; it does not establish full or older publication history.",
+    "A PENDING status is not a publication confirmation.",
+    "Missing channel-specific autoPublish fields are unknown and are not inferred from the global field.",
+    "No metrics, sales, conversion, or causal inference was made.",
+    "Exact URL comparison does not detect re-encoded media, alternate URLs of the same master, or prove complete historical uniqueness.",
+    "PUBLISHED states in this snapshot belong to existing posts; R234 did not publish or schedule any social post.",
+    "Raw response kept locally, containing creator metadata; public proof omits that metadata and connector link identifiers."
+  ],
+  "allReturnedNondraftGlobalAPTrue": true,
+  "youtubeSettingsEvidence": [
+    {
+      "id": 423484839,
+      "uuid": "-3731207601091163105",
+      "draft": true,
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "youtubeData": {
+        "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "tags": [
+          "küchengadget",
+          "knoblauch",
+          "kochen",
+          "schweiz"
+        ],
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      }
+    },
+    {
+      "id": 427969354,
+      "uuid": "-7647174116509334899",
+      "draft": true,
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "youtubeData": {
+        "title": "Sternenlicht-Projektor im Detail #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "tags": [
+          "sternlicht",
+          "lichtmomente",
+          "luxestyle"
+        ],
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      }
+    },
+    {
+      "id": 428832793,
+      "uuid": "-1463494076488727798",
+      "draft": false,
+      "publicationDate": {
+        "dateTime": "2026-11-16T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "youtubeData": {
+        "title": "3 Ideen für Hund und Katze | LuxeStyle #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "category": "PETS_ANIMALS",
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      }
+    },
+    {
+      "id": 428845871,
+      "uuid": "-3668679867663038577",
+      "draft": false,
+      "publicationDate": {
+        "dateTime": "2026-11-17T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "youtubeData": {
+        "title": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "category": "HOWTO_STYLE",
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      }
+    }
+  ]
+}
