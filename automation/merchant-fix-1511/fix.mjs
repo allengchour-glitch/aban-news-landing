@@ -35,7 +35,8 @@ async function main(){
   const live=process.env.LIVE==='1';
   const shop=(process.env.SHOPIFY_SHOP||'au3j0y-hq.myshopify.com').replace(/^https?:\/\//,'').replace(/\/$/,'');
   if(!/^[a-z0-9-]+\.myshopify\.com$/i.test(shop))throw new Error('Ungültige Shop-Domain');
-  let token=process.env.SHOPIFY_ADMIN_TOKEN;
+  // Statische Admin-Tokens können abgelaufen sein; eingerichteten Client-Grant bevorzugen.
+  let token=(process.env.SHOPIFY_CLIENT_ID && shopifyClientSecret())?undefined:process.env.SHOPIFY_ADMIN_TOKEN;
   if(!token){
     const id=process.env.SHOPIFY_CLIENT_ID,secret=shopifyClientSecret();
     if(!id||!secret)throw new Error('Shopify-Zugang fehlt');
@@ -58,6 +59,13 @@ async function main(){
     const shipping=await gql(`{deliveryProfiles(first:10){pageInfo{hasNextPage} nodes{name default profileLocationGroups{locationGroupZones(first:25){pageInfo{hasNextPage} nodes{zone{name countries{code{countryCode}}} methodDefinitions(first:25){pageInfo{hasNextPage} nodes{name active rateProvider{__typename ... on DeliveryRateDefinition{price{amount currencyCode}}} methodConditions{field operator conditionCriteria{__typename ... on MoneyV2{amount currencyCode}}}}}}}}}}}`);
     fs.writeFileSync(path.join(dir,'shopify-shipping.json'),JSON.stringify(shipping,null,2));console.log('Shopify-Versandprofile frisch gesichert (nur lesen)');
   }catch(e){console.log('Versanddiagnose nicht messbar: '+e.message);}
+  const smallImageProducts=[];
+  for(const id of ['15491103850881','15478787834241','15448667783553','16615807156615','15469962789249','15493873893761']){
+    const d=await gql(`query($id:ID!){product(id:$id){id handle title status updatedAt featuredMedia{... on MediaImage{id image{url width height}}} media(first:50){pageInfo{hasNextPage} nodes{... on MediaImage{id image{url width height}}}} variants(first:100){pageInfo{hasNextPage} nodes{id sku selectedOptions{name value} image{url width height}}}}}`,{id:'gid://shopify/Product/'+id});
+    smallImageProducts.push(d.product);
+  }
+  fs.writeFileSync(path.join(dir,'small-image-products.json'),JSON.stringify(smallImageProducts,null,2));
+  console.log('Sechs Produktgruppen der kleinen Google-Bilder frisch gelesen (nur lesen)');
   if(!live){console.log('TROCKENLAUF: keine Änderung');return;}
   if(!work.changes.length){console.log('Keine Änderung erforderlich');return;}
   const fresh=await read();if(JSON.stringify(fresh)!==JSON.stringify(before))throw new Error('Produkt seit Planung geändert; Stopp');
