@@ -49,6 +49,8 @@ on:
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
+      - 'dropship/kategorie-schaufenster-pins.json'
+      - 'dropship/schaufenster-1111/**'
       - 'dropship/pod-auswahl/**'
       - 'dropship/pod-editor-sicherung-2810/**'
       - 'dropship/katalog-einheiten-0411/**'
@@ -152,6 +154,8 @@ jobs:
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
+            dropship/kategorie-schaufenster-pins.json
+            dropship/schaufenster-1111
             dropship/pod-auswahl
             dropship/pod-editor-sicherung-2810
             dropship/katalog-einheiten-0411
@@ -295,6 +299,10 @@ jobs:
           node automation/grind_freigabe_test.mjs
           node automation/lib/bewertung_rang_test.mjs
           node automation/lib/verfuegbar_rang_test.mjs
+          # Schaufenster-Pins (11.11.2026): Pin-Datei prüfen (auch die echte im Repo) und den Lager-Wächter gegen eine Shop-Attrappe laufen lassen
+          node automation/lib/schaufenster_pins_test.mjs
+          node automation/verfuegbar_zuerst_test.mjs
+          node dropship/schaufenster-1111/werkzeuge_test.mjs
           node automation/lib/option_umbenennen_test.mjs
           node automation/lib/cj_varianten_test.mjs
           node automation/lib/cj_token_test.mjs
