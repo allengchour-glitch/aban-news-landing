@@ -1,0 +1,47 @@
+name: Merchant-Werbeeinblendungen bereinigen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - .github/workflows/merchant-overlay-fix-1511.yml
+      - dropship/merchant-fix-1511/OVERLAY-MODUS
+      - dropship/merchant-fix-1511/audit/overlay-replacement-plan.json
+permissions:
+  contents: read
+concurrency:
+  group: merchant-overlay-fix-1511
+  cancel-in-progress: false
+jobs:
+  bilder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/bildfix-1111/ersetzen.mjs
+            dropship/merchant-fix-1511/audit/overlay-replacement-plan.json
+            dropship/merchant-fix-1511/OVERLAY-MODUS
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Geprüfte Bildfassungen einsetzen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/OVERLAY-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 node dropship/bildfix-1111/ersetzen.mjs dropship/merchant-fix-1511/audit/overlay-replacement-plan.json merchant-overlay-fix ;;
+            schreiben) LIVE=1 node dropship/bildfix-1111/ersetzen.mjs dropship/merchant-fix-1511/audit/overlay-replacement-plan.json merchant-overlay-fix ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-overlay-fix
+          path: merchant-overlay-fix/
+          retention-days: 30
+          if-no-files-found: ignore
