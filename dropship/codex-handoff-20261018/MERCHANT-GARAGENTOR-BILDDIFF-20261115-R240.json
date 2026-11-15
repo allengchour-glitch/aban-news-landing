@@ -1,0 +1,47 @@
+{
+  "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448882938241_55878125060481",
+  "source": "accounts/5797470070/dataSources/10667445201",
+  "sourceInput": "API",
+  "productId": "gid://shopify/Product/15448882938241",
+  "variantId": "gid://shopify/ProductVariant/55878125060481",
+  "priceCHF": "19.90",
+  "tracked": false,
+  "inventoryPolicy": "CONTINUE",
+  "socialHold": true,
+  "currentMerchantImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg?v=1783190747",
+  "candidateShopifyMainImage": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363",
+    "altText": "WLAN Garagentor-Steuerung mit App – Ansicht 1",
+    "width": 1024,
+    "height": 1024
+  },
+  "originalImageSHA256": "92fe837c1937d60daea9eb1574a7e4268c789a33b2f4ced80de3ed89313431ee",
+  "candidateSHA256": "fc00a9b0cc04a12573852da3ee04ad971b2833964dc382347440c770bdec3a66",
+  "candidateHTTP": 200,
+  "visualReview": "Old image contains VoiceControl headlines/Alexa/GoogleHome/house/car; candidate has device, phone app and sensor on white. Core face and button correspond; side ports, sensor inclusion, exact product/color fidelity and commercial edit/advertising rights remain unconfirmed. Existing Shopify main image status is not rights proof.",
+  "exactProposedDiff": {
+    "image_link": {
+      "before": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg?v=1783190747",
+      "after": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363"
+    }
+  },
+  "preparedOnlyAction": {
+    "connector": "google_merchant",
+    "account": "5797470070",
+    "action": "update_product",
+    "params": {
+      "data_source": "10667445201",
+      "product_id": "shopify_ZZ_15448882938241_55878125060481",
+      "content_language": "de",
+      "feed_label": "CHF_99383214465",
+      "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363"
+    }
+  },
+  "writeReady": false,
+  "blockers": [
+    "Commercial edit/advertising rights unconfirmed for this exact garage candidate",
+    "Product fidelity and included sensor/side ports require source/owner verification",
+    "Fresh full prewrite countercheck and protected attribute diff required after gates clear"
+  ],
+  "ownerConfirmationRequestedThisRun": false
+}

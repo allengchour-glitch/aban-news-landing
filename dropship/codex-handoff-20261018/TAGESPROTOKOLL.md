@@ -2786,3 +2786,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.md) · [Belege](PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.json).
 
+
+### R240 – Merchant-Quellen und nächste Bildkorrektur
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Begrenzung | Core4 Revision 239 und heutigen Tagesblock frisch gelesen; Shop, Marke und Merchant abgeglichen. | luxestyle.ch/CHF/Europe/Zurich, Metricool 6227837 samt sechs Kanälen und Merchant 5797470070 bestätigt. |
+| Merchant / Teilprüfung | Eine abgeschnittene 5'000-Produkte-Summary und zwei Disapproval-Seiten mit je 100 Angeboten gelesen. | Weiterhin konkrete Ablehnungen; 18 UI-Gruppen nicht vollständig erfasst. Leere Kontoissue-Antwort bedeutet keine fehlerfreien Produkte. |
+| Vier bisherige Bildfixes | Exakte Angebote für Nagellack 1/6/7/11 frisch direkt gelesen. | Alle vier in sechs gelieferten Kontexten CH/LI genehmigt, keine Overlay-Meldung. Modell 6 hat NOT_IMPACTED-Grundpreishinweise; keine Mengen erfunden, keine neuen Writes. |
+| Quellen / Preis und Availability | Primer und Elefanten-Wandteppich an native Varianten und aktuelle öffentliche Offer-Markups gebunden. | CHF 56.90 beziehungsweise CHF 15.90/InStock im Shop belegt, Google-AUTOFEED weiterhin unvollständig; beim Wandteppich zusätzlich Pending Crawl. Kein unterstützter AUTOFEED-Writer oder echter Google-Neucrawl belegt. |
+| Bild / vorbereiteter Diff | Garagentor-API-Offer, vollständiges Shopify-Produkt und drei echte Bilddateien verglichen; ausschliesslichen image_link-Diff vorbereitet. | Neues vorhandenes Hauptbild 1024×1024; Rechte und genaue Produkt-/Sensor-/Porttreue unbekannt. Kein Feedwrite und keine Ausweitung der Nagellackfreigaben. |
+| Konsole / offene Rückfrage | Für die neue Kaufanfrage nach genauem Modell oder Produktlink gefragt. | Enthaltene Spiele unbekannt; kein Kauf oder Warenkorb erstellt. |
+| Grenzen / Memory | Fehlerhafte lokale Extraktion korrigiert, Teilnachweise und Blocker dokumentiert. | Keine heutigen Leistungs-/Flow-/Funnel-/Bestellreports wiederholt; keine operativen Änderungen oder neue Automation. Claude-Empfang unbekannt. |
+
+[Bericht](MERCHANT-QUELLENSTATUS-20261115-R240.md) · [Belege](MERCHANT-QUELLEN-BELEGE-20261115-R240.json).
+

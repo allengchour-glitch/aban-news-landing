@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 239,
-  "updatedAt": "2026-11-15T16:26:36Z",
+  "revision": 240,
+  "updatedAt": "2026-11-15T16:41:29Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13690,18 +13690,20 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r236_three_autofeed_sources_confirmed_primer_variant_price_bound_writer_blocked",
+      "state": "r240_autofeed_price_and_availability_confirmed_writer_blocked_garage_image_diff_prepared",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "CURRENT_THREE_OFFER_PAYLOADS_TWO_NATIVE_PRODUCTS_PUBLIC_SCHEMA_COUNTERCHECK_NO_WRITE",
-      "lastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg.",
-      "nextAllowedStep": "Für genau das Primer-Angebot ist56.90CHF belegter Preis; legitimen tatsächlichen AUTOFEED-Editor oder bestätigte zulässige bestehende API-Übersteuerung klären. Vor Write aktuelle Source/Variante/Preis/Diff erneut prüfen, danach exakt dasselbe Google-Angebot und Status zurücklesen. Malset/Schmuckbox ohne Einzelvariantenbindung nicht mit einem geratenen Preis füllen. Keine Source/defaultRule auf Verdacht. Vorhandenen Export nicht erneut anfordern.",
+      "lastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg. R240: Primer CHF56.90 frisch erneut nativ und öffentlich bestätigt. Neues konkretes Wandteppich-Offer10301937935043325310 bindet einzige Variante56075316363649/CHF15.90; öffentlich InStock und kaufbar, Google availability fehlt und pending_crawl. Beide AUTOFEED10678939025; kein unterstützter Writer. Vier Nagellackbildfixes weiterhin approved; Modell6 nur NOT_IMPACTED-Grundpreishinweis. API-Garagentorbilddiff vollständig vorbereitet, Rechte/Produktabnahme offen;0Writes. UI18Gesamtumfang weiterhin unbekannt.",
+      "nextAllowedStep": "Genau die belegten AUTOFEED-Fälle über einen legitimen Editor oder nachweislich unterstützten bestehenden Override korrigieren bzw. echte Google-Neupruefung ermöglichen; kein Quellen-/Regel-/Angebots-Neuanlegen auf Verdacht. Für API-Garagentor nur nach exakter Rechte-/Produkt-/Sensor-/Portabnahme den vorbereiteten image_link-Diff frisch gegenprüfen, schreiben und dasselbe Offer samt Schutzattributen/Status zurücklesen. Keine erneute Nagellack-Bildänderung. Keine Unit-Pricing-Menge erfinden. Weitere 18-Gruppen-Diagnose braucht vollständige aktuelle UI-/Exportbelege; historischer vorhandener Export bleibt erhalten.",
       "blockers": [
         "Quelle10678939025 ist nach heutigem Profil AUTOFEED; kein unterstützter legitimer Writer oder vorhandener API-Override bestätigt.",
         "Primer-Variantenbindung und56.90CHF geklärt; noch kein Google-Preiswrite oder bestätigter Fehlerabbau.",
         "Malset-Elternangebot ohne eindeutige Einzelvariante; Schmuckbox-Varianten/Preise in R236 nicht geprüft.",
         "Timeout/INVALID_ARGUMENT sind keine leeren Daten oder404. API-Kandidatenexistenz unbekannt.",
-        "Aktuelle vollständige18-Gruppen-Zählung und weitere historische Versand-/CSS-/Richtlinienbefunde bleiben separat offen."
+        "Aktuelle vollständige18-Gruppen-Zählung und weitere historische Versand-/CSS-/Richtlinienbefunde bleiben separat offen.",
+        "R240: Wandteppich zusätzlich landing_page_pending_crawl; öffentlicher HTTP200-/InStock-Beleg ist kein echter Google-Neucrawl.",
+        "R240: Garagentor-Kandidatenbild hat keine bestätigten kommerziellen Rechte oder Produkt-/Sensor-/Portabnahme; nur Diff vorbereitet."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -14293,6 +14295,10 @@
         {
           "path": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
           "readAt": "2026-11-15T14:19:28Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json",
+          "readAt": "2026-11-15T16:41:29Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15255,6 +15261,14 @@
             "Google-Review/Reprocess-Aktion nicht vorhanden; keine pauschale Source/defaultRule-Änderung.",
             "Historische Versand-/CSS-/Richtlinienfälle benötigen aktuelle fallbezogene Belege."
           ]
+        },
+        {
+          "revision": 240,
+          "at": "2026-11-15T16:41:29Z",
+          "previousState": "r236_three_autofeed_sources_confirmed_primer_variant_price_bound_writer_blocked",
+          "previousLastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg.",
+          "previousNextAllowedStep": "Für genau das Primer-Angebot ist56.90CHF belegter Preis; legitimen tatsächlichen AUTOFEED-Editor oder bestätigte zulässige bestehende API-Übersteuerung klären. Vor Write aktuelle Source/Variante/Preis/Diff erneut prüfen, danach exakt dasselbe Google-Angebot und Status zurücklesen. Malset/Schmuckbox ohne Einzelvariantenbindung nicht mit einem geratenen Preis füllen. Keine Source/defaultRule auf Verdacht. Vorhandenen Export nicht erneut anfordern.",
+          "source": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json"
         }
       ],
       "resolvedBlockers": [
@@ -16573,6 +16587,12 @@
           }
         ],
         "merchantWrites": 0
+      },
+      "run240": {
+        "source": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json",
+        "writes": 0,
+        "ui18GroupsFullyEnumerated": false,
+        "garageWriteReady": false
       }
     },
     {
@@ -32662,6 +32682,20 @@
         {
           "path": "dropship/codex-handoff-20261018/PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.json",
           "readAt": "2026-11-15T16:26:36Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 240,
+      "at": "2026-11-15T16:41:29Z",
+      "actor": "codex",
+      "summary": "Merchant-Teilprüfung und exakte Quellengegenprobe: vier frühere Nagellackbildfixes weiterhin genehmigt, Modell6NOT_IMPACTED-Hinweis; Preis-/Availability-AUTOFEED-Blocker konkretisiert; gesperrten Garagentor-Bilddiff vorbereitet. Keine operativen Writes. Konsolemodell/Link angefragt.24 Aufgaben, Historie und Tagesgrenzen erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json",
+          "readAt": "2026-11-15T16:41:29Z"
         }
       ],
       "taskCount": 24,
@@ -59596,5 +59630,35 @@
       "automationOrScheduleChanges": 0,
       "claudeReceipt": "unknown"
     }
+  },
+  "run240": {
+    "at": "2026-11-15T16:41:29Z",
+    "trigger": "Owner reports Merchant still18groups; subsequent console purchase question needs exact model/link",
+    "source": "dropship/codex-handoff-20261018/MERCHANT-QUELLEN-BELEGE-20261115-R240.json",
+    "scope": {
+      "merchantShopId": "5797470070",
+      "summaryScanned": 5000,
+      "summaryTruncated": true,
+      "disapprovedRows": 200,
+      "uniqueOffers": 200,
+      "nextPagePresent": true,
+      "liveUi18GroupsCompletelyEnumerated": false,
+      "globalGroups": "unknown",
+      "newMerchantWrites": 0,
+      "newShopifyWrites": 0,
+      "newMediaUploads": 0,
+      "metricReportsRepeated": 0,
+      "ordersQueried": false,
+      "paidRenders": 0,
+      "automationChanges": 0
+    },
+    "garagePreparedOnly": true,
+    "nailModel6NoticeSeverity": "NOT_IMPACTED",
+    "consoleQuestion": {
+      "text": "ich möchte ein konsole gameboy in der srt kaufen. habe alle durchschaut, steht keine spiele",
+      "status": "model_or_product_link_requested_async",
+      "purchaseOrCartCreated": false
+    },
+    "claudeReceipt": "unknown"
   }
 }

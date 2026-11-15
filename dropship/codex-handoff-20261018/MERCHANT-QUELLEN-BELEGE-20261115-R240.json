@@ -1,0 +1,978 @@
+{
+  "revision": 240,
+  "atUTC": "2026-11-15 16:41:29 UTC",
+  "trigger": "Owner reports Merchant still18groups; subsequent console purchase question needs exact model/link",
+  "scope": {
+    "merchantShopId": "5797470070",
+    "summaryScanned": 5000,
+    "summaryTruncated": true,
+    "disapprovedRows": 200,
+    "uniqueOffers": 200,
+    "nextPagePresent": true,
+    "liveUi18GroupsCompletelyEnumerated": false,
+    "globalGroups": "unknown",
+    "newMerchantWrites": 0,
+    "newShopifyWrites": 0,
+    "newMediaUploads": 0,
+    "metricReportsRepeated": 0,
+    "ordersQueried": false,
+    "paidRenders": 0,
+    "automationChanges": 0
+  },
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      },
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich"
+    },
+    "merchant": {
+      "id": "5797470070",
+      "name": "LuxeStyle CH"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebook": "1049840534888592",
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "pinterest": "luxestyleCH",
+        "tiktok": "luxestyle.ch",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "summary": {
+    "shop_id": "5797470070",
+    "scanned_products": 5000,
+    "truncated": true,
+    "totals_by_status": {
+      "ELIGIBLE": 4995,
+      "ELIGIBLE_LIMITED": 5
+    },
+    "issues": [
+      {
+        "code": "personal_hardships_policy_violation",
+        "severity": "DISAPPROVED",
+        "resolution": "MERCHANT_ACTION",
+        "product_count": 3,
+        "sample_offer_ids": [
+          "shopify_ZZ_15445298774401_55863892214145",
+          "shopify_ZZ_15446060859777_55865819529601",
+          "shopify_ZZ_15446073737601_55865897353601"
+        ]
+      },
+      {
+        "code": "identity_and_belief_policy_violation",
+        "severity": "DISAPPROVED",
+        "resolution": "MERCHANT_ACTION",
+        "product_count": 2,
+        "sample_offer_ids": [
+          "shopify_ZZ_15428421386625_67801465684359",
+          "shopify_ZZ_15428421386625_67801465717127"
+        ]
+      }
+    ]
+  },
+  "accountIssues": {
+    "shop_id": "5797470070",
+    "issues": []
+  },
+  "dataSources": {
+    "status": "done",
+    "data": [
+      {
+        "data_source_id": "10667445201",
+        "data_source_name": "accounts/5797470070/dataSources/10667445201",
+        "data_source_display_name": "Shopify App API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "API",
+        "data_source_content_language": "de",
+        "data_source_feed_label": "CHF_99383214465",
+        "data_source_countries": "CH, LI",
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10668966945",
+        "data_source_name": "accounts/5797470070/dataSources/10668966945",
+        "data_source_display_name": "Third Party Promotions",
+        "data_source_type": "promotionDataSource",
+        "data_source_input": null,
+        "data_source_content_language": "en",
+        "data_source_feed_label": null,
+        "data_source_countries": null,
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10678939025",
+        "data_source_name": "accounts/5797470070/dataSources/10678939025",
+        "data_source_display_name": "luxestyle.ch",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "AUTOFEED",
+        "data_source_content_language": null,
+        "data_source_feed_label": null,
+        "data_source_countries": "CH, LI",
+        "data_source_linked_primary_sources": null
+      },
+      {
+        "data_source_id": "10762220830",
+        "data_source_name": "accounts/5797470070/dataSources/10762220830",
+        "data_source_display_name": "Shopify App API",
+        "data_source_type": "primaryProductDataSource",
+        "data_source_input": "API",
+        "data_source_content_language": "fr",
+        "data_source_feed_label": "CHF_99383214465",
+        "data_source_countries": "CH",
+        "data_source_linked_primary_sources": null
+      }
+    ],
+    "total_rows": 4
+  },
+  "observedDisapprovedIssues": [
+    {
+      "code": "image_unwanted_overlays",
+      "attribute": "n:image_link",
+      "offers": [
+        "shopify_ZZ_15448882938241_55878125060481",
+        "shopify_ZZ_15449485967745_68122762412423",
+        "shopify_ZZ_15450834731393_55889756094849",
+        "shopify_ZZ_15450834731393_55889756127617",
+        "shopify_ZZ_15450834731393_55889756160385",
+        "shopify_ZZ_15451605500289_67790204567943",
+        "shopify_ZZ_15451605500289_67790204600711",
+        "shopify_ZZ_15451605500289_67790204633479",
+        "shopify_ZZ_15451605500289_67790204666247",
+        "shopify_ZZ_15454894031233_67789363904903",
+        "shopify_ZZ_15454916051329_55913280831873",
+        "shopify_ZZ_15460660380033_55929530712449",
+        "shopify_ZZ_15460660380033_67789233750407",
+        "shopify_ZZ_15460660380033_67789233783175",
+        "shopify_ZZ_15466886824321_55955519504769",
+        "shopify_ZZ_15479416258945_67790450131335",
+        "shopify_ZZ_15493934776705_67789877936519",
+        "shopify_ZZ_15502390591873_56116653949313",
+        "shopify_ZZ_15507580649857_56147913113985",
+        "shopify_ZZ_15508294467969_56150240067969",
+        "shopify_ZZ_15508302463361_67871058231687",
+        "shopify_ZZ_15508716224897_56152234819969",
+        "shopify_ZZ_15522109882753_67874402500999",
+        "shopify_ZZ_15522213986689_56204490834305",
+        "shopify_ZZ_15523129852289_56209715855745",
+        "shopify_ZZ_15525458248065_56225314734465",
+        "shopify_ZZ_16603590033799_67610886340999",
+        "shopify_ZZ_16613829640583_67670832546183",
+        "shopify_ZZ_16614829687175_67665455710599",
+        "shopify_ZZ_16614829687175_67671550427527"
+      ]
+    },
+    {
+      "code": "guns_parts_policy_violation",
+      "attribute": null,
+      "offers": [
+        "shopify_ZZ_15451639677313_67790210171271",
+        "shopify_ZZ_15502587789697_56118432825729",
+        "shopify_ZZ_15504227402113_67814784041351",
+        "shopify_ZZ_15504227402113_67814784172423"
+      ]
+    },
+    {
+      "code": "tobacco_policy_violation",
+      "attribute": null,
+      "offers": [
+        "shopify_ZZ_15470073151873_55970994618753",
+        "shopify_ZZ_15483934376321_56026870874497",
+        "shopify_ZZ_15523117105537_56209687642497",
+        "13691855934451960106"
+      ]
+    },
+    {
+      "code": "landing_page_error",
+      "attribute": "n:link",
+      "offers": [
+        "shopify_ZZ_15502258831745_68193799242119"
+      ]
+    },
+    {
+      "code": "local_requirements_policy_violation",
+      "attribute": null,
+      "offers": [
+        "shopify_ZZ_15523818045825_56215831413121"
+      ]
+    },
+    {
+      "code": "item_missing_required_attribute",
+      "attribute": "n:price",
+      "offers": [
+        "10018213324745296287",
+        "10073494240929787683",
+        "10081953211512946639",
+        "10278459490461182421",
+        "10283932347178265394",
+        "1031734357584210155",
+        "10331114122872641331",
+        "10528738929137828592",
+        "10642030414729737600",
+        "10704451301477423979",
+        "10739186417105784082",
+        "10784371818943082880",
+        "10805419205331046287",
+        "108828970984702042",
+        "11150965174675739419",
+        "11190967805815204559",
+        "11338308248272632831",
+        "11439029955520138458",
+        "11593142457724046786",
+        "11665193452512088040",
+        "11806950833152778375",
+        "11875706671229110226",
+        "11893472656311650610",
+        "11901845477876843732",
+        "11989962109113027942",
+        "12247056161299820190",
+        "12264141415588044465",
+        "12292485851989666440",
+        "12314078364389519624",
+        "12578101906520858054",
+        "12589449541229058607",
+        "12817654750196586578",
+        "12989832072179366759",
+        "13028989060832558352",
+        "13263873689430646377",
+        "13451399631203180113",
+        "13454711837178735181",
+        "13519028649621219941",
+        "13592946698755309448",
+        "13609624152155656755",
+        "13691855934451960106",
+        "13711366091716160829",
+        "13747864746626557385",
+        "13772381540877428374",
+        "13928714063187612782",
+        "13950614441567404108",
+        "14039816933279722588",
+        "14112390924429482569",
+        "14118555355919043959",
+        "14118937137548480670",
+        "1412912898882115382",
+        "14256613639588132399",
+        "14409521081374318736",
+        "14429885226473329559",
+        "14771396230103610843",
+        "14859468219820365309",
+        "15047060047747556458",
+        "15049195614786407950",
+        "15275221419440149117",
+        "15366558703356246782",
+        "15373485658652655658",
+        "15412949451137_cjyd290446601az",
+        "15412949451137_cjyd290446602by",
+        "15412949451137_cjyd290446604dw",
+        "15413084666208218947",
+        "15413245706625_14:193;5:100014064#s",
+        "15413245706625_14:193;5:100014065#xl",
+        "15413245706625_14:193;5:361385#l",
+        "15413245706625_14:193;5:361386#m",
+        "15413245706625_14:193;5:4182#2xl",
+        "15413245706625_14:193;5:4183#3xl",
+        "15413245706625_14:691;5:100014064#s",
+        "15413245706625_14:691;5:100014065#xl",
+        "15413245706625_14:691;5:361385#l",
+        "15413245706625_14:691;5:361386#m",
+        "15413245706625_14:691;5:4182#2xl",
+        "15413245706625_14:691;5:4183#3xl",
+        "15418391355725652323",
+        "15421165404545_cjtz292404401az",
+        "15421165404545_cjtz292404402by",
+        "15421165404545_cjtz292404403cx",
+        "15421165404545_cjtz292404404dw",
+        "15421165404545_cjtz292404405ev",
+        "15421165404545_cjtz292404406fu",
+        "15421165404545_cjtz292404407gt",
+        "15421165404545_cjtz292404408hs",
+        "15421165404545_cjtz292404409ir",
+        "15421165404545_cjtz292404410jq",
+        "15421165404545_cjtz292404411kp",
+        "15421165404545_cjtz292404412lo",
+        "15421606953345_cjns292524101az",
+        "15421606953345_cjns292524102by",
+        "15421606953345_cjns292524103cx",
+        "15421606953345_cjns292524104dw",
+        "15421606953345_cjns292524105ev",
+        "15421606953345_cjns292524106fu",
+        "15421606953345_cjns292524107gt",
+        "15421606953345_cjns292524108hs",
+        "15421606953345_cjns292524109ir",
+        "15421606953345_cjns292524110jq",
+        "15421606953345_cjns292524111kp",
+        "15421606953345_cjns292524112lo",
+        "15421606953345_cjns292524113mn",
+        "15421606953345_cjns292524114nm",
+        "15421606953345_cjns292524115ol",
+        "15421606953345_cjns292524116pk",
+        "15421606953345_cjns292524117qj",
+        "15421606953345_cjns292524118ri",
+        "15421606953345_cjns292524119sh",
+        "15421606953345_cjns292524120tg",
+        "15421606953345_cjns292524121uf",
+        "15421606953345_cjns292524122ve",
+        "15421606953345_cjns292524123wd",
+        "15421606953345_cjns292524124xc",
+        "15421606953345_cjns292524125yb",
+        "15421606953345_cjns292524126za",
+        "15421606953345_cjns292524127az",
+        "15421606953345_cjns292524128by",
+        "15421606953345_cjns292524129cx",
+        "15421606953345_cjns292524130dw",
+        "15421606953345_cjns292524131ev",
+        "15421606953345_cjns292524132fu",
+        "15421606953345_cjns292524133gt",
+        "15421606953345_cjns292524134hs",
+        "15421606953345_cjns292524135ir",
+        "15421606953345_cjns292524136jq",
+        "15421606953345_cjns292524137kp",
+        "15421606953345_cjns292524138lo",
+        "15421606953345_cjns292524139mn",
+        "15421606953345_cjns292524140nm",
+        "15421606953345_cjns292524141ol",
+        "15421606953345_cjns292524142pk",
+        "15421606953345_cjns292524143qj",
+        "15421606953345_cjns292524144ri",
+        "15421606953345_cjns292524145sh",
+        "15421606953345_cjns292524146tg",
+        "15421606953345_cjns292524147uf",
+        "15421606953345_cjns292524148ve",
+        "15421606953345_cjns292524149wd",
+        "15421606953345_cjns292524150xc",
+        "15421606953345_cjns292524151yb",
+        "15421606953345_cjns292524152za",
+        "15421606953345_cjns292524153az",
+        "15421606953345_cjns292524154by"
+      ]
+    },
+    {
+      "code": "item_missing_required_attribute",
+      "attribute": "n:availability",
+      "offers": [
+        "10190093650697108457",
+        "10301937935043325310",
+        "10424180612693210499",
+        "10453153534875904667",
+        "11024212604633690805",
+        "11153645285677520297",
+        "11475833036656580588",
+        "11893472656311650610",
+        "11930962514331867978",
+        "13000070558990665438",
+        "13035079932026788087",
+        "13215201875456480510",
+        "13519028649621219941",
+        "13573300930760695428",
+        "14250141006730270187",
+        "14384524953255418790",
+        "14628552787511354609",
+        "14657792726060214548",
+        "15366558703356246782"
+      ]
+    },
+    {
+      "code": "image_too_small",
+      "attribute": "n:image_link",
+      "offers": [
+        "13406024595176656169"
+      ]
+    }
+  ],
+  "primer": {
+    "resource": "accounts/5797470070/products/de~CH~10283932347178265394",
+    "source": "accounts/5797470070/dataSources/10678939025",
+    "sourceInput": "AUTOFEED",
+    "googlePrice": null,
+    "googlePricePresence": "absent",
+    "status": {
+      "destinationStatuses": [
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        }
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "item_missing_required_attribute",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "price",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing product price",
+          "detail": "Add a price to the [price] attribute in your product data source",
+          "documentation": "https://support.google.com/merchants/answer/12158687",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "creationDate": "2026-11-04T16:51:48.622003Z",
+      "lastUpdateDate": "2026-11-04T16:51:48.622003Z",
+      "googleExpirationDate": "2026-12-15T09:24:14Z"
+    },
+    "productId": "gid://shopify/Product/15523176841601",
+    "variant": {
+      "id": "gid://shopify/ProductVariant/56210226708865",
+      "sku": "CJMJ173930601AZ",
+      "price": "56.90",
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false
+      }
+    },
+    "allVariantsRead": 16,
+    "publicCheck": {
+      "httpStatus": 200,
+      "parsedBlocks": 3,
+      "errors": [],
+      "matchedObjects": [
+        {
+          "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865#variant",
+          "@type": "Product",
+          "image": "https://luxestyle.ch/cdn/shop/files/e80b57c0-d079-4efd-bb78-06ab78208630.jpg?v=1788322123&width=1920",
+          "name": "Primer & Sealer Set für Gelnägel - Weiss",
+          "offers": {
+            "@id": "/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865#offer",
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "56.90",
+            "priceCurrency": "CHF",
+            "url": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865"
+          },
+          "sku": "CJMJ173930601AZ"
+        }
+      ],
+      "initialRegexExtraction": "No matches due extractor error, not missing page data; replaced by HTMLParser on saved same response."
+    },
+    "writerReady": false,
+    "blocker": "Available update action targets API sources; no supported AUTOFEED writer or confirmed linked supplemental override exists."
+  },
+  "tapestry": {
+    "resource": "accounts/5797470070/products/de~CH~10301937935043325310",
+    "source": "accounts/5797470070/dataSources/10678939025",
+    "sourceInput": "AUTOFEED",
+    "productId": "gid://shopify/Product/15493244191105",
+    "variant": {
+      "id": "gid://shopify/ProductVariant/56075316363649",
+      "title": "Default Title",
+      "price": "15.90",
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false,
+        "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811"
+      },
+      "selectedOptions": [
+        {
+          "name": "Title",
+          "value": "Default Title"
+        }
+      ]
+    },
+    "currentPriceCHF": "15.90",
+    "publicProductId": "15493244191105",
+    "publicVariantId": "56075316363649",
+    "publicHttp": 200,
+    "publicJsonLdOffer": {
+      "price": "15.90",
+      "priceCurrency": "CHF",
+      "availability": "http://schema.org/InStock"
+    },
+    "googleAvailabilityPresence": "absent",
+    "googlePrice": {
+      "amountMicros": "15900000",
+      "currencyCode": "CHF"
+    },
+    "status": {
+      "destinationStatuses": [
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        }
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "item_missing_required_attribute",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "availability",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing attribute: [availability]",
+          "detail": "One or more of your products is missing a required attribute from a group. For example, if you set your availability to preorder, you must also provide an availability date. Add the missing attribute [availability] to your product data so your products can show on Google",
+          "documentation": "https://support.google.com/merchants/answer/14916442",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "creationDate": "2026-10-29T22:27:25.355848Z",
+      "lastUpdateDate": "2026-11-14T00:44:23.862068Z",
+      "googleExpirationDate": "2026-12-14T00:44:23.862068Z"
+    },
+    "writerReady": false,
+    "blocker": "AUTOFEED writer unavailable; exact Google status additionally pending_processing landing_page_pending_crawl. Public probe is not a real Google crawl."
+  },
+  "garage": {
+    "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448882938241_55878125060481",
+    "source": "accounts/5797470070/dataSources/10667445201",
+    "sourceInput": "API",
+    "productId": "gid://shopify/Product/15448882938241",
+    "variantId": "gid://shopify/ProductVariant/55878125060481",
+    "priceCHF": "19.90",
+    "tracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "socialHold": true,
+    "currentMerchantImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg?v=1783190747",
+    "candidateShopifyMainImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363",
+      "altText": "WLAN Garagentor-Steuerung mit App – Ansicht 1",
+      "width": 1024,
+      "height": 1024
+    },
+    "originalImageSHA256": "92fe837c1937d60daea9eb1574a7e4268c789a33b2f4ced80de3ed89313431ee",
+    "candidateSHA256": "fc00a9b0cc04a12573852da3ee04ad971b2833964dc382347440c770bdec3a66",
+    "candidateHTTP": 200,
+    "visualReview": "Old image contains VoiceControl headlines/Alexa/GoogleHome/house/car; candidate has device, phone app and sensor on white. Core face and button correspond; side ports, sensor inclusion, exact product/color fidelity and commercial edit/advertising rights remain unconfirmed. Existing Shopify main image status is not rights proof.",
+    "exactProposedDiff": {
+      "image_link": {
+        "before": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg?v=1783190747",
+        "after": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363"
+      }
+    },
+    "preparedOnlyAction": {
+      "connector": "google_merchant",
+      "account": "5797470070",
+      "action": "update_product",
+      "params": {
+        "data_source": "10667445201",
+        "product_id": "shopify_ZZ_15448882938241_55878125060481",
+        "content_language": "de",
+        "feed_label": "CHF_99383214465",
+        "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363"
+      }
+    },
+    "writeReady": false,
+    "blockers": [
+      "Commercial edit/advertising rights unconfirmed for this exact garage candidate",
+      "Product fidelity and included sensor/side ports require source/owner verification",
+      "Fresh full prewrite countercheck and protected attribute diff required after gates clear"
+    ],
+    "ownerConfirmationRequestedThisRun": false
+  },
+  "nails": [
+    {
+      "model": "1",
+      "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_55877809340801",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+      "source": "accounts/5797470070/dataSources/10667445201",
+      "issues": [],
+      "destinations": [
+        {
+          "reportingContext": "SHOPPING_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DISPLAY_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "VIDEO_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        }
+      ],
+      "overlayPresent": false,
+      "newWrite": false
+    },
+    {
+      "model": "6",
+      "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260430215",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+      "source": "accounts/5797470070/dataSources/10667445201",
+      "issues": [
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "SHOPPING_ADS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "DISPLAY_ADS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "DEMAND_GEN_ADS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "VIDEO_ADS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "destinations": [
+        {
+          "reportingContext": "SHOPPING_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DISPLAY_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "VIDEO_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        }
+      ],
+      "overlayPresent": false,
+      "newWrite": false
+    },
+    {
+      "model": "7",
+      "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+      "source": "accounts/5797470070/dataSources/10667445201",
+      "issues": [],
+      "destinations": [
+        {
+          "reportingContext": "SHOPPING_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DISPLAY_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "VIDEO_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        }
+      ],
+      "overlayPresent": false,
+      "newWrite": false
+    },
+    {
+      "model": "11",
+      "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+      "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+      "source": "accounts/5797470070/dataSources/10667445201",
+      "issues": [],
+      "destinations": [
+        {
+          "reportingContext": "SHOPPING_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DISPLAY_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "VIDEO_ADS",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "approvedCountries": [
+            "CH",
+            "LI"
+          ],
+          "pendingCountries": [],
+          "disapprovedCountries": []
+        }
+      ],
+      "overlayPresent": false,
+      "newWrite": false
+    }
+  ],
+  "limitations": [
+    "5000summary and200disapprovedrows are partial scopes; not a complete count of18UIgroups",
+    "Account issue response empty does not mean product issues empty",
+    "NOT_IMPACTED unit-price notice does not equal disapproval; no unit volume invented",
+    "No product/rights/policy guarantees inferred from titles or tool account connectivity",
+    "No AUTOFEED update guessed; no source/rule/Google review/reprocess created",
+    "R239 theme shipping diff remains separately open; no theme changes"
+  ],
+  "incomingConsoleQuestion": {
+    "text": "ich möchte ein konsole gameboy in der srt kaufen. habe alle durchschaut, steht keine spiele",
+    "status": "model_or_product_link_requested_async",
+    "purchaseOrCartCreated": false
+  },
+  "technicalNotes": [
+    "Oversized local command rejected before execution; bounded file chunks saved and parsed successfully",
+    "Initial primer regex extraction returned no matches due extractor error; same saved HTTP200 parsed with HTMLParser:3validblocks,target56.90CHFfound",
+    "No local browser tool callable; read-only Merchant API used; full18UIgroups unknown"
+  ],
+  "claudeReceipt": "unknown"
+}
