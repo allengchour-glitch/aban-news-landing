@@ -14,7 +14,7 @@ for item in plan[:limit]:
  r=requests.post(f'https://{shop}/admin/api/2026-10/graphql.json',headers=sh,json={'query':'query($id:ID!){productVariant(id:$id){id product{handle status} image{url width height}}}','variables':{'id':item['variant_id']}},timeout=30);r.raise_for_status();j=r.json()
  if j.get('errors'):raise RuntimeError('Shopify-Lesefehler')
  v=j['data']['productVariant'];im=v.get('image') or {}
- if v['product']['handle']!=item['handle'] or v['product']['status']!='ACTIVE' or im.get('url')!=item['new_image'] or im.get('width',0)<500 or im.get('height',0)<500:raise RuntimeError('Shopify-Quelle stimmt nicht mehr überein')
+ if v['product']['handle']!=item['handle'] or v['product']['status']!='ACTIVE' or im.get('url')!=item['new_image'] or im.get('width',0)<500 or im.get('height',0)<500:raise RuntimeError('Shopify-Quelle stimmt nicht mehr überein: '+json.dumps({'current':v,'expected':item},ensure_ascii=False))
  head=requests.head(item['new_image'],timeout=25);head.raise_for_status()
  if not head.headers.get('content-type','').startswith('image/'):raise RuntimeError('Neue Quelle ist kein Bild')
  entry={**item,'state':'Trockenlauf bestätigt'};results.append(entry);save();print('GEPRÜFT: Bildquelle unverändert, mindestens 500px; Angebot',item['offer_id'],flush=True)
