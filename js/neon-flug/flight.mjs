@@ -1107,7 +1107,9 @@ function hud(dt) {
     if (noticeTimer <= 0) $("notice").style.opacity = 0;
   }
   if (trainingGuide && state.t > 1 && state.t < 7)
-    notice("ZIEHEN ODER A / D ZUM LENKEN");
+    notice(
+      navigator.maxTouchPoints > 0 ? "ZIEHEN ZUM LENKEN" : "A / D ZUM LENKEN",
+    );
   if (trainingGuide && state.t > 7) trainingGuide = false;
 }
 function frame(now) {
@@ -1175,6 +1177,9 @@ function frame(now) {
   }
   requestAnimationFrame(frame);
 }
+if (navigator.maxTouchPoints > 0)
+  $("controlHint").textContent =
+    "ZIEHEN ZUM LENKEN · DASH UND RETTEN PER KNOPF";
 saveSettings();
 show("menu");
 $("boot").hidden = true;

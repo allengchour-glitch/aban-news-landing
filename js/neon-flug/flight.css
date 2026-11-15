@@ -1345,3 +1345,12 @@ body.overdrive .resonance-track i {
   margin-block: auto;
   flex-shrink: 0;
 }
+
+#notice {
+  top: 48%;
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  #trainingLabel {
+    bottom: 60px;
+  }
+}

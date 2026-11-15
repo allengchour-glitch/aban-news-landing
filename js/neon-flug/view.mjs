@@ -149,6 +149,23 @@ function ship(color, tex) {
     group.add(
       mesh(new T.BoxGeometry(0.37, 0.03, 0.04), dark, 0, 0.21, 0.35 + i * 0.16),
     );
+  const guard = mesh(
+    new T.SphereGeometry(2.5, 16, 8),
+    new T.MeshBasicMaterial({
+      color,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.08,
+      depthWrite: false,
+    }),
+    0,
+    0,
+    -0.15,
+  );
+  guard.scale.set(1, 0.25, 1.05);
+  guard.name = "guard";
+  guard.visible = false;
+  group.add(guard);
   group.userData.color = color;
   return group;
 }
@@ -692,7 +709,7 @@ export class FlightView {
       const prev = g.position.x;
       g.position.x += (target - g.position.x) * Math.min(1, dt * 18);
       g.position.y = 0.65 + Math.sin(this.clock * 2.3 + i) * 0.07;
-      g.position.z = i === local ? 1.2 : -0.9;
+      g.position.z = i === local ? 1.2 : -4.8;
       g.rotation.z +=
         (clamp(
           ((g.position.x - prev) / Math.max(dt, 0.001)) * -0.024,
@@ -702,13 +719,9 @@ export class FlightView {
           g.rotation.z) *
         Math.min(1, dt * 9);
       g.rotation.x = Math.sin(this.clock * 1.4) * 0.025;
-      g.visible = !(
-        p &&
-        p.inv > 0 &&
-        p.hp > 0 &&
-        Math.floor(this.clock * 12) % 2
-      );
-      g.rotation.z += p && p.hp === 0 ? 0.7 : 0;
+      g.visible = true;
+      g.getObjectByName("guard").visible = !!p && p.hp > 0 && p.inv > 0;
+      if (p && p.hp === 0) g.rotation.z = 0.6;
       const boost = p?.dash > 0 || s?.overdrive > 0;
       g.children.forEach((c) => {
         if (c.name === "flame") {
