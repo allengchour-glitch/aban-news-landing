@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Stripe-Kaufwege gelesen, Preisdriftprüfung ergänzt ·15.11.2026
+
+53 veröffentlichte DE/EN-Produkte stimmen mit gelesenen aktiven Abannews-Stripe-Links, Slugs, Rückkehrseiten und Preisen/Währungen überein; kein Kauf ausgelöst. Alter lokaler Selbsttest erkannte falsche Währung nicht. Korrigiert, fünf Regressionstests grün und im bestehenden Quality-Schritt ergänzt. Audit-Katalogprodukt ohne Veröffentlichung bleibt offen, nichts aktiviert. Private Quelldaten ausserhalb Git. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Kaufweg-Abgleich und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: Bundle-Bau stoppt bei fehlenden Einzelpaketen ·15.11.2026
 
 Reproduzierten stillen Teilpaketbau behoben: fehlende Mitglieder oder leere Liste stoppen vor Änderung am alten Bundle. Vollständige DE/EN-Demopakete und Bestandsschutz geprüft;16 Paketbautests grün. Keine Preise, Konten oder geschützten Inhalte geändert. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Bundle-Lieferung und zugehöriger PR. Finanzielle Wirkung nicht gemessen.

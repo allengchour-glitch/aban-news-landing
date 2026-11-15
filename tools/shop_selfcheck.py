@@ -19,6 +19,8 @@ import hashlib
 import json
 import os
 import sys
+from decimal import Decimal, InvalidOperation
+import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -27,6 +29,29 @@ ok, warn, fail = [], [], []
 
 def dl_hash(slug: str, salt: str) -> str:
     return hashlib.sha256(f"{slug}:{salt}".encode("utf-8")).hexdigest()[:24]
+
+
+def preisfehler(catalog, produkte):
+    """Gespeicherten Shop-Export mit dem Katalog vergleichen, ohne Kontozugriff."""
+    katalog = {k['slug']: k for k in catalog}
+    fehler = []
+    for p in produkte:
+        slug = p.get('slug')
+        if slug not in katalog:
+            fehler.append(f"Produkt {slug}: keine Katalogzuordnung")
+            continue
+        if not p.get('buy'):
+            continue  # Kein kaufbares Angebot; bisherige Hinweisregel bleibt.
+        match = re.fullmatch(r'\s*(CHF|EUR|USD|€|\$)\s*(\d+(?:\.\d{1,2})?)\s*', str(p.get('price', '')))
+        try:
+            waehrung = {'€': 'eur', '$': 'usd'}.get(match[1], match[1].lower()) if match else None
+            cents = Decimal(match[2]) * 100 if match else None
+            k = katalog[slug]
+            if cents != k['price_cents'] or waehrung != k['currency'].lower():
+                fehler.append(f"Produkt {slug}: Preis oder Währung weicht vom Katalog ab")
+        except (InvalidOperation, KeyError, AttributeError, TypeError):
+            fehler.append(f"Produkt {slug}: Preiszuordnung nicht prüfbar")
+    return fehler
 
 
 def main() -> int:
@@ -47,6 +72,12 @@ def main() -> int:
     sp = REPO / "data" / "shop-products.json"
     live = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else []
     live_slugs = {p["slug"] for p in live}
+    fail.extend(preisfehler(catalog, live))
+    # Englischer Export hat einen eigenen Katalog und darf keine DE-Zuordnung erben.
+    en_cat, en_shop = REPO / 'data/kit-catalog-en.json', REPO / 'data/shop-products-en.json'
+    if en_cat.exists() and en_shop.exists():
+        fail.extend(preisfehler(json.loads(en_cat.read_text(encoding='utf-8')),
+                               json.loads(en_shop.read_text(encoding='utf-8'))))
     for p in live:
         buy = str(p.get("buy", "")).strip()
         if not buy:

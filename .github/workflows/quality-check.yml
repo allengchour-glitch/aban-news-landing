@@ -75,7 +75,10 @@ jobs:
         run: python -B -m unittest tools.ki_audit.test_produkt
 
       - name: Geschützte Kit-ZIPs vollständig bauen (nur Testdateien)
-        run: python -B -m unittest discover -s tools -p 'test_kit_build.py'
+        run: |
+          python -B -m unittest discover -s tools -p 'test_kit_build.py'
+          python -B -m unittest discover -s tools -p 'test_shop_selfcheck.py'
+          python tools/shop_selfcheck.py
 
       - name: Generatoren bauen ohne Fehler (Smoke-Test)
         run: |
