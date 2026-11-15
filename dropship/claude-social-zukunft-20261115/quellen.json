@@ -1,0 +1,44 @@
+{
+  "read_on": "2026-11-15",
+  "source_main_ref": "95916524ce351f7519a8944830868f37803eb797",
+  "sources": [
+    {
+      "path": "dropship/social-woche-1611/PLAN.md",
+      "sha256": "316289340a7bc3c631b16c07f7530a4cfbdf3fd7895462a85d1ce3622f6acdf1"
+    },
+    {
+      "path": "dropship/social-woche-1611/README.md",
+      "sha256": "bc75b335f63bd8379f485e1548f5d9b9c71e59eadc09a9914b27300f238a791b"
+    },
+    {
+      "path": "dropship/social-woche-1611/angelegt.json",
+      "sha256": "7074cad4a614d54f81ad439e5938993322453b2f1a5d89670fa13dc77e3dde07"
+    },
+    {
+      "path": "dropship/social-1611/angelegt.json",
+      "sha256": "7074cad4a614d54f81ad439e5938993322453b2f1a5d89670fa13dc77e3dde07"
+    },
+    {
+      "path": "dropship/social-2211/README.md",
+      "sha256": "478e4c50680edde163c28b66921d110d72922b6a022960746bcc0745d1c43609"
+    },
+    {
+      "path": "dropship/social-2211/angelegt.json",
+      "sha256": "cd2d0d80e31dc088f46ea98076f15255f04db2a6255fa6b26d25736398e2f882"
+    },
+    {
+      "path": "dropship/CODEX-VIDEO-MUSIK-1111.md",
+      "sha256": "414827c6114b86534c3ab805714724c7ff5f4bd1eb6ece4730009364159d70a1"
+    },
+    {
+      "path": "dropship/CODEX-RUECKMELDUNG-1111.md",
+      "sha256": "55a0f8c99de65c38e09973b131ab653e97a7754a64f8a7cd604e741987d684e4"
+    }
+  ],
+  "counts_deduplicated": {
+    "first_batch": 24,
+    "second_batch": 28,
+    "total_protocol_entries": 52
+  },
+  "meaning": "Dateinachweise, kein heutiger Live-Status und keine Publikationsfreigabe"
+}

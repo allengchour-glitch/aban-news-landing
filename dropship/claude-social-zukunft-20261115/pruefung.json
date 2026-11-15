@@ -1,0 +1,20 @@
+{
+  "status": "GEMESSEN",
+  "date": "2026-11-15",
+  "proposal_groups": 14,
+  "network_placements": 18,
+  "all_dates_future": true,
+  "timezone_offsets_verified": true,
+  "within_proposal_minimum_three_hour_spacing": true,
+  "outside_calendar_spacing": "ungeprüft",
+  "production_maximum_two_per_batch": true,
+  "csv_row_counts_verified": true,
+  "instagram_hashtags_maximum_five": true,
+  "tiktok_shop_route_verified": true,
+  "metrics_prefilled": false,
+  "metricool_live_reads": 0,
+  "metricool_live_writes": 0,
+  "independent_review": "Keine Blocker nach Ergänzung der CSV-Zielspalten",
+  "csv_targets_and_captions_match_json": true,
+  "sources_match_fetched_main": true
+}

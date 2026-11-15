@@ -1,0 +1,551 @@
+{
+  "purpose": "Lokale Analyse und Zukunftsvorschlag für Claude; kein Import-CSV, keine API-Schreibdaten",
+  "prepared_on": "2026-11-15",
+  "timezone": "Europe/Zurich",
+  "window": {
+    "start": "2026-11-30",
+    "end": "2026-12-06"
+  },
+  "live_metricool_read": false,
+  "live_social_writes": 0,
+  "performance_source_end": "2026-11-09",
+  "operational_source_date": "2026-11-11",
+  "calendar_availability": "unbekannt; vor Umsetzung frisch prüfen",
+  "logical_groups": 14,
+  "network_placements": 18,
+  "actual_planner_object_count": "14 falls IG/FB gemeinsam mit passenden Netzwerktexten geführt werden können, sonst 18",
+  "production_batches": {
+    "2026-11-26": [
+      "vase",
+      "spiegel"
+    ],
+    "2026-11-27": [
+      "puzzle",
+      "tasse"
+    ]
+  },
+  "phases": [
+    {
+      "day": "2026-11-16",
+      "work": "Marke/Kalender/Datenlage frisch lesen; keine Altposts ändern"
+    },
+    {
+      "day": "2026-11-25",
+      "work": "Erste vorbereitete Woche 16.–21.11. nach mindestens 72 Stunden auswerten"
+    },
+    {
+      "day": "2026-11-26",
+      "work": "Produktionslauf A: Vase und Spiegel, höchstens zwei Videos"
+    },
+    {
+      "day": "2026-11-27",
+      "work": "Produktionslauf B: Puzzle und Tasse, höchstens zwei Videos"
+    },
+    {
+      "day": "2026-11-29",
+      "work": "Kalender und Medien für den Vorschlag frisch prüfen"
+    },
+    {
+      "day": "2026-12-06",
+      "work": "24-Stunden-Zwischenstand"
+    },
+    {
+      "day": "2026-12-09",
+      "work": "72-Stunden-Bilanz komplett"
+    },
+    {
+      "day": "2026-12-13",
+      "work": "Siebentage-Bilanz komplett"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "20261130_vase_igfb",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-11-30T10:00:00+01:00",
+      "proposed_at_utc": "2026-11-30T09:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "product_key": "vase",
+      "product_name": "Deko-Vase",
+      "format": "reel_9_16",
+      "hook": "Ein Detail. Viel Charakter.",
+      "captions": {
+        "instagram": "Ein Detail. Viel Charakter.\n\nEin Blick auf Muster und Form dieser Deko-Vase. Welche Ecke würdest du damit gestalten?\n\nBei LuxeStyle entdecken. Link in Bio.\n#luxestylech #wohnideen #dekovase",
+        "facebook": "Ein Detail. Viel Charakter.\n\nEin Blick auf Muster und Form dieser Deko-Vase. Welche Ecke würdest du damit gestalten?\n\nhttps://luxestyle.ch/products/keramik-vase-craquele-antik-glasur?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261130_vase_igfb"
+      },
+      "proposed_targets": {
+        "instagram": "https://luxestyle.ch/ig",
+        "facebook": "https://luxestyle.ch/products/keramik-vase-craquele-antik-glasur?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261130_vase_igfb"
+      },
+      "product_source": "reels/clip-craquele-vase.mp4",
+      "source_date": "2026-06-09",
+      "media_status": "10,2-s-Layoutvorlage vorhanden; 15-s-Master und genaue Variante noch zu prüfen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261130_vase_tt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-11-30T13:00:00+01:00",
+      "proposed_at_utc": "2026-11-30T12:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "tiktok"
+      ],
+      "product_key": "vase",
+      "product_name": "Deko-Vase",
+      "format": "video_9_16",
+      "hook": "Ein Detail. Viel Charakter.",
+      "captions": {
+        "tiktok": "Ein Detail. Viel Charakter.\n\nEin Blick auf Muster und Form dieser Deko-Vase. Welche Ecke würdest du damit gestalten?\n\nShop: luxestyle.ch/tt\n#luxestylech #wohnideen #dekovase"
+      },
+      "proposed_targets": {
+        "tiktok": "https://luxestyle.ch/tt"
+      },
+      "product_source": "reels/clip-craquele-vase.mp4",
+      "source_date": "2026-06-09",
+      "media_status": "10,2-s-Layoutvorlage vorhanden; 15-s-Master und genaue Variante noch zu prüfen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261201_vase_threads",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "sekundaer",
+      "proposed_at_local": "2026-12-01T11:00:00+01:00",
+      "proposed_at_utc": "2026-12-01T10:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "threads"
+      ],
+      "product_key": "vase",
+      "product_name": "Deko-Vase",
+      "format": "text_mit_vorhandenem_produktbild_optional",
+      "hook": "Ein Detail. Viel Charakter.",
+      "captions": {
+        "threads": "Ein Detail. Viel Charakter.\n\nEin Blick auf Muster und Form dieser Deko-Vase. Welche Ecke würdest du damit gestalten?\n\nhttps://luxestyle.ch/products/keramik-vase-craquele-antik-glasur?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261201_vase_threads"
+      },
+      "proposed_targets": {
+        "threads": "https://luxestyle.ch/products/keramik-vase-craquele-antik-glasur?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261201_vase_threads"
+      },
+      "product_source": "reels/clip-craquele-vase.mp4",
+      "source_date": "2026-06-09",
+      "media_status": "10,2-s-Layoutvorlage vorhanden; 15-s-Master und genaue Variante noch zu prüfen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261201_vase_pin",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "sekundaer",
+      "proposed_at_local": "2026-12-01T20:00:00+01:00",
+      "proposed_at_utc": "2026-12-01T19:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "pinterest"
+      ],
+      "product_key": "vase",
+      "product_name": "Deko-Vase",
+      "format": "pin_2_3",
+      "hook": "Ein Detail. Viel Charakter.",
+      "captions": {
+        "pinterest": "Deko-Vase – Ideen für dein Zuhause\nEin Blick auf Muster und Form dieser Deko-Vase. Welche Ecke würdest du damit gestalten?"
+      },
+      "proposed_targets": {
+        "pinterest": "https://luxestyle.ch/products/keramik-vase-craquele-antik-glasur?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261201_vase_pin"
+      },
+      "product_source": "reels/clip-craquele-vase.mp4",
+      "source_date": "2026-06-09",
+      "media_status": "10,2-s-Layoutvorlage vorhanden; 15-s-Master und genaue Variante noch zu prüfen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261202_spiegel_igfb",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-02T10:00:00+01:00",
+      "proposed_at_utc": "2026-12-02T09:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "product_key": "spiegel",
+      "product_name": "LED-Schminkspiegel",
+      "format": "reel_9_16",
+      "hook": "Dein Lichtmoment.",
+      "captions": {
+        "instagram": "Dein Lichtmoment.\n\nEin Blick auf die Details des LED-Schminkspiegels. Wo würdest du ihn hinstellen?\n\nBei LuxeStyle entdecken. Link in Bio.\n#luxestylech #ledspiegel #wohnideen",
+        "facebook": "Dein Lichtmoment.\n\nEin Blick auf die Details des LED-Schminkspiegels. Wo würdest du ihn hinstellen?\n\nhttps://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261202_spiegel_igfb"
+      },
+      "proposed_targets": {
+        "instagram": "https://luxestyle.ch/ig",
+        "facebook": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261202_spiegel_igfb"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/led-schminkspiegel-wiederaufladbar-tragbar-639500.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; frische Bilddateien und 15–18-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261202_spiegel_tt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-02T13:00:00+01:00",
+      "proposed_at_utc": "2026-12-02T12:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "tiktok"
+      ],
+      "product_key": "spiegel",
+      "product_name": "LED-Schminkspiegel",
+      "format": "video_9_16",
+      "hook": "Dein Lichtmoment.",
+      "captions": {
+        "tiktok": "Dein Lichtmoment.\n\nEin Blick auf die Details des LED-Schminkspiegels. Wo würdest du ihn hinstellen?\n\nShop: luxestyle.ch/tt\n#luxestylech #ledspiegel #wohnideen"
+      },
+      "proposed_targets": {
+        "tiktok": "https://luxestyle.ch/tt"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/led-schminkspiegel-wiederaufladbar-tragbar-639500.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; frische Bilddateien und 15–18-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261202_spiegel_yt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-02T18:00:00+01:00",
+      "proposed_at_utc": "2026-12-02T17:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "youtube"
+      ],
+      "product_key": "spiegel",
+      "product_name": "LED-Schminkspiegel",
+      "format": "short_9_16",
+      "hook": "Dein Lichtmoment.",
+      "captions": {
+        "youtube": "LED-Schminkspiegel im Detail | LuxeStyle #Shorts\nEin Blick auf die Details des LED-Schminkspiegels. Wo würdest du ihn hinstellen?\nShop: luxestyle.ch/yt"
+      },
+      "proposed_targets": {
+        "youtube": "https://luxestyle.ch/yt"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/led-schminkspiegel-wiederaufladbar-tragbar-639500.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; frische Bilddateien und 15–18-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261203_tasse_threads",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "sekundaer",
+      "proposed_at_local": "2026-12-03T11:00:00+01:00",
+      "proposed_at_utc": "2026-12-03T10:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "threads"
+      ],
+      "product_key": "tasse",
+      "product_name": "Retro-Tasse mit Tiermotiv",
+      "format": "text_mit_vorhandenem_produktbild_optional",
+      "hook": "Dein Moment am Tisch.",
+      "captions": {
+        "threads": "Dein Moment am Tisch.\n\nEine Retro-Tasse mit Tiermotiv im Mittelpunkt. Welches Motiv passt zu deinem Tisch?\n\nhttps://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261203_tasse_threads"
+      },
+      "proposed_targets": {
+        "threads": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261203_tasse_threads"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/retro-keramik-kaffeetasse-mit-tiermotiv-621800.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; aktuelle Variante und 15-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261203_puzzle_pin",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "sekundaer",
+      "proposed_at_local": "2026-12-03T20:00:00+01:00",
+      "proposed_at_utc": "2026-12-03T19:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "pinterest"
+      ],
+      "product_key": "puzzle",
+      "product_name": "Schmuckkästchen als 3D-Holzpuzzle",
+      "format": "pin_2_3",
+      "hook": "Ein Platz für kleine Dinge.",
+      "captions": {
+        "pinterest": "Schmuckkästchen als 3D-Holzpuzzle – Ideen für dein Zuhause\nMuster und Form eines Schmuckkästchens als 3D-Holzpuzzle. Was bekäme darin einen Platz?"
+      },
+      "proposed_targets": {
+        "pinterest": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261203_puzzle_pin"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/schmuckkastchen-3d-holzpuzzle-611300.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; echte offene/geschlossene Bilder und 15–18-s-Master prüfen/erstellen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261204_puzzle_igfb",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-04T10:00:00+01:00",
+      "proposed_at_utc": "2026-12-04T09:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "product_key": "puzzle",
+      "product_name": "Schmuckkästchen als 3D-Holzpuzzle",
+      "format": "reel_9_16",
+      "hook": "Ein Platz für kleine Dinge.",
+      "captions": {
+        "instagram": "Ein Platz für kleine Dinge.\n\nMuster und Form eines Schmuckkästchens als 3D-Holzpuzzle. Was bekäme darin einen Platz?\n\nBei LuxeStyle entdecken. Link in Bio.\n#luxestylech #schmuckkästchen #diy",
+        "facebook": "Ein Platz für kleine Dinge.\n\nMuster und Form eines Schmuckkästchens als 3D-Holzpuzzle. Was bekäme darin einen Platz?\n\nhttps://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261204_puzzle_igfb"
+      },
+      "proposed_targets": {
+        "instagram": "https://luxestyle.ch/ig",
+        "facebook": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261204_puzzle_igfb"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/schmuckkastchen-3d-holzpuzzle-611300.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; echte offene/geschlossene Bilder und 15–18-s-Master prüfen/erstellen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261204_puzzle_tt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-04T13:00:00+01:00",
+      "proposed_at_utc": "2026-12-04T12:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "tiktok"
+      ],
+      "product_key": "puzzle",
+      "product_name": "Schmuckkästchen als 3D-Holzpuzzle",
+      "format": "video_9_16",
+      "hook": "Ein Platz für kleine Dinge.",
+      "captions": {
+        "tiktok": "Ein Platz für kleine Dinge.\n\nMuster und Form eines Schmuckkästchens als 3D-Holzpuzzle. Was bekäme darin einen Platz?\n\nShop: luxestyle.ch/tt\n#luxestylech #schmuckkästchen #diy"
+      },
+      "proposed_targets": {
+        "tiktok": "https://luxestyle.ch/tt"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/schmuckkastchen-3d-holzpuzzle-611300.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; echte offene/geschlossene Bilder und 15–18-s-Master prüfen/erstellen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261204_puzzle_yt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-04T18:00:00+01:00",
+      "proposed_at_utc": "2026-12-04T17:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "youtube"
+      ],
+      "product_key": "puzzle",
+      "product_name": "Schmuckkästchen als 3D-Holzpuzzle",
+      "format": "short_9_16",
+      "hook": "Ein Platz für kleine Dinge.",
+      "captions": {
+        "youtube": "Schmuckkästchen als 3D-Holzpuzzle im Detail | LuxeStyle #Shorts\nMuster und Form eines Schmuckkästchens als 3D-Holzpuzzle. Was bekäme darin einen Platz?\nShop: luxestyle.ch/yt"
+      },
+      "proposed_targets": {
+        "youtube": "https://luxestyle.ch/yt"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/schmuckkastchen-3d-holzpuzzle-611300.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; echte offene/geschlossene Bilder und 15–18-s-Master prüfen/erstellen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261205_tasse_igfb",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-05T10:00:00+01:00",
+      "proposed_at_utc": "2026-12-05T09:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "product_key": "tasse",
+      "product_name": "Retro-Tasse mit Tiermotiv",
+      "format": "reel_9_16",
+      "hook": "Dein Moment am Tisch.",
+      "captions": {
+        "instagram": "Dein Moment am Tisch.\n\nEine Retro-Tasse mit Tiermotiv im Mittelpunkt. Welches Motiv passt zu deinem Tisch?\n\nBei LuxeStyle entdecken. Link in Bio.\n#luxestylech #kaffeetasse #retrodesign",
+        "facebook": "Dein Moment am Tisch.\n\nEine Retro-Tasse mit Tiermotiv im Mittelpunkt. Welches Motiv passt zu deinem Tisch?\n\nhttps://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261205_tasse_igfb"
+      },
+      "proposed_targets": {
+        "instagram": "https://luxestyle.ch/ig",
+        "facebook": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_studio_20261130&utm_content=20261205_tasse_igfb"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/retro-keramik-kaffeetasse-mit-tiermotiv-621800.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; aktuelle Variante und 15-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    },
+    {
+      "id": "20261205_tasse_tt",
+      "status": "VORSCHLAG_NUR_FUER_CLAUDE",
+      "priority": "kern",
+      "proposed_at_local": "2026-12-05T13:00:00+01:00",
+      "proposed_at_utc": "2026-12-05T12:00:00+00:00",
+      "timezone": "Europe/Zurich",
+      "time_basis": "SETZUNG, kein aktueller Bestzeitennachweis",
+      "networks": [
+        "tiktok"
+      ],
+      "product_key": "tasse",
+      "product_name": "Retro-Tasse mit Tiermotiv",
+      "format": "video_9_16",
+      "hook": "Dein Moment am Tisch.",
+      "captions": {
+        "tiktok": "Dein Moment am Tisch.\n\nEine Retro-Tasse mit Tiermotiv im Mittelpunkt. Welches Motiv passt zu deinem Tisch?\n\nShop: luxestyle.ch/tt\n#luxestylech #kaffeetasse #retrodesign"
+      },
+      "proposed_targets": {
+        "tiktok": "https://luxestyle.ch/tt"
+      },
+      "product_source": "dropship/social-woche-1611/pakete/retro-keramik-kaffeetasse-mit-tiermotiv-621800.json",
+      "source_date": "2026-11-11",
+      "media_status": "Quellenpaket vorhanden; aktuelle Variante und 15-s-Master fehlen",
+      "final_media_url": null,
+      "music_plan": "Bildmaster ohne Ton; eigene Musikvariante nur nach dann geltender Vorgabe. Mixkit-Prototyp ist keine pauschale Freigabe.",
+      "live_product_checked": false,
+      "live_calendar_checked": false,
+      "measure_after_actual_publication_hours": [
+        24,
+        72,
+        168
+      ]
+    }
+  ]
+}
