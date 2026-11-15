@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Monitor-Angebot: Lieferumfang und Einrichtung vor Buchung klären ·15.11.2026
+
+Von main520ebab auf eigenem Branch codex/monitor-leistung-klar. Regeln, Übergaben, Arbeitsteilung und offene PRs geprüft. Bestehender Report-Generator und frühere Offline-/Fehlerkorrekturen erhalten. Verkaufsseite im aktuellen main versprach monatlichen automatischen Mailversand, eindeutiges Ja/Nein und echte Kundensuchfragen. Gegenbeleg: monitor/README.md nennt fehlende Abonnentenzuordnung/Versandanbindung; sichtbarkeit-monitor.yml hat pausierten Cron und erwartet private Abodatei. Ein Zahlungslink ist kein Dienstnachweis.
+
+Nur ki-sichtbarkeit-monitor.html angepasst: verständlicher Reportumfang, unbekannter Status bei fehlenden Antworten, Verlauf nur gegen bekannten Stand, Fragevorlagen statt behaupteter Nachfrage. Vor Buchung und am Kaufbereich sichtbarer Einrichtungs-/Lieferhinweis samt statischem Anfrageweg mit bestehendem email_off-Schutz. Titel, Meta und Service-Suchdaten passend; unbelegtes InStock entfernt. Bestehende Preise, Checkout-Konfiguration, Buttonlogik und Konten unverändert. Keine neue Automation, keine Anfrage versandt und kein Checkout ausgelöst.
+
+GEMESSEN: sechs lokale Browsergegenproben bei390/1440px mit bestehender/leerer Konfiguration und ohne JavaScript; Preis/Link/Fallback erhalten, statischer Anfrageweg und Liefergrenze sichtbar, keine Überbreite. Screenshot mobil gelesen, Suchdaten als JSON geprüft. Öffentlicher Vorher-Abruf lieferte HTTP403, daher keine frische öffentliche Vorher-Gegenprobe behauptet. Echte CI und Produktionsgegenprobe im zugehörigen PR nachsehen. Nutzen: Fehlkäufe aufgrund unbelegter Lieferzusagen vermeiden; finanzielle Wirkung nicht gemessen. Nächster Integrationsschritt bleibt eine verifizierte Abonnentenzuordnung samt kontrollierter Reportlieferung, erst innerhalb separater passender Freigabe. Keine laufende Integration behaupten.
+
 ## E-Mail-Pilot: HTML-Anfrage bei leerem Textteil erhalten ·14.11.2026
 
 Von main b3ab74f auf eigenem Branch codex/pilot-html-alternative. Vorhandene Firmenwissensfunktion und Gmail-Rohdatenimport geprüft, nicht erneut als neue Anbindung ausgegeben. Reproduziert mit zwei erfundenen Multipart-Mails: leerer bzw. nur aus Leerraum bestehender Klartext neben gültiger HTML-Anfrage führte zu Übersprungen statt Entwurf. Neue Regression am alten Code zweimal rot.
