@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Claude: Unteragenten laufen auf Opus ·15.11.2026
+
+Besitzer «mache das» zum TikTok-Tipp «Fable plant, Opus führt aus». `.claude/settings.json` setzt für alle Claude-Sitzungen in diesem Repo `CLAUDE_CODE_SUBAGENT_MODEL=opus`, ohne FORCE: Aufträge mit `model: "haiku"` bleiben Haiku. Die eingebauten Explore- und Plan-Agenten erben weiter das Hauptmodell; bei Fable diese mit `model: "opus"` starten. Gilt ab dem nächsten Sitzungsstart, Wirkung ungemessen. Rücknahme: den `env`-Block entfernen.
+
 ## Codex: Einzelpakete ohne veraltete Lieferreste ·15.11.2026
 
 Reproduziert: aus Quelle entfernte Datei/Zusatzordner/PDF blieb beim zweiten Bau im ZIP. Einzelpakete jetzt frisch im leeren Zwischenordner bauen, alte Lieferung bei Baufehler erhalten und bei Archiv-Übernahmefehler zurückstellen.20 Paket-/Shellprüfungen grün, vier neue Methoden im bestehenden Quality-Schritt. Keine Preise/Konten/Automationen geändert, kein Kauf oder geschützter Download. Finanzielle Wirkung nicht gemessen. Details und tatsächliche Bereitstellung im Abschnitt Einzelpaket-Lieferung der kanonischen Claude-Übergabe und zugehörigem PR.
