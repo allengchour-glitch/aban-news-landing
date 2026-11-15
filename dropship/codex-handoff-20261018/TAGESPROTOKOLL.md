@@ -2760,3 +2760,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](PERSONALIZER-MOBIL-FOKUS-20261115-R237.md) · [Belege](PERSONALIZER-MOBIL-FOKUS-20261115-R237.json).
 
+
+### R238 – Aktuelle Editorbasis und konkretes Reviewpaket
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Editor / Kontinuität | Bestehenden641-PR3035 undaktuellen642-Zweig geprüft, Quellblobsgebunden | Kein konkurrierender641-Release.642 enthältFokusfixnoch nicht; ursprünglicheDateienunverändert. |
+| Fokus / Vorbereitung | KleinenFix auf642-Basis übertragen, lokaleversionierteReviewkopie undManifestmitbestehendemBauskript gebaut | Zwei390px-Fixtures:ESC/Closevorherfehl,nachherbestanden;Vorschauscreenshotbytegleich. Syntax/Manifestbestanden,defekteBytezahlabgewiesen. KeineLive-Abnahme/Versionreservierung. |
+| Schutz / Laufzeit | AktuellenRolloutkonfigurator reinlokal gegengeprüft |643weiterabgewiesen vorNetzzugriff; keineGate-/Workflowänderung. Node24lokal,Node22undVollCIoffen; keineInstallation. |
+| Repository / Review | Isoliertenmain-basiertenBranch mit5Reviewdateien undEntwurfsPR3145 erstellt, alleInhalte/SHA/Diff undPRstatusnachgelesen |draft=true,merged=false,keineaktiveEditor-/Release-/Shopdateigeändert;keineRevieweranforderung. Claude-Empfangunbekannt. |
+| Identität / Grenzen | ShopundMetricoolmarke samt6Kanälen frischgeprüft, bestehendenTagesstandfortgeschrieben |Identitätenpassend;Theme214040805767weiterUNPUBLISHED. KeineShop-/Merchant-/Socialwrites,neuenTagesreports,Käufe,Renders,Budgets,DNSoderFrequenzänderung. |
+
+[Entwurfs-PR3145](https://github.com/allengchour-glitch/aban-news-landing/pull/3145) · [Bericht](EDITOR-REVIEWPAKET-20261115-R238.md) · [Belege](EDITOR-REVIEWPAKET-20261115-R238.json).
+

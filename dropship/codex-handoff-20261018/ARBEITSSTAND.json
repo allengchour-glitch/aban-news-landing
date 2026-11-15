@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 237,
-  "updatedAt": "2026-11-15T15:01:59Z",
+  "revision": 238,
+  "updatedAt": "2026-11-15T15:42:22Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19634,13 +19634,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r237_v640_three_actual_viewports_verified_focus_restore_candidate_tested_not_deployed",
+      "state": "r238_focus_fix_on_current642_basis_review_pr3145_manifest_and_local_regression_not_deployed",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "CURRENT_V640_SOURCE_SRI_BINDING_THREE_PUBLIC_CHROMIUM_VIEWPORTS_ONE_LOCAL_FOCUS_CANDIDATE",
-      "lastEvidence": "Tasse15422823465345/325ml55777979629953 aktuell ACTIVE/22.90CHF. V6.4.0/currentmain/mapblobs/SRI gebunden;375/390/1440 echte Breiten ohneOverflow. Sprunglink funktioniert, Text/Produktvorschau und lokale2700x1050-Druckvorschau bestätigt. NachESC Fokus3/3 aufBODY. Einhunkiger lokaler Fokuspatch besteht ESCundClosebei390, übrigeBytesgleich; keinRelease/Deployment/Shopwrite. Historischer16erRollout aus09Nov-Dokument ist keine eigene heutigeAusführung.",
+      "belegArt": "PINNED642_SOURCE_TWO_LOCAL_BROWSER_FIXTURES_GENERATED_MANIFEST_REVIEW_PR_READBACK",
+      "lastEvidence": "R238: Aktueller642-Branch91faac47e445ba934ae16d6f6216ca989bb22d81 mitBlob999ab176245ea74b7d2bc0ccda62b70ce83d9b01 enthältFokusfixnoch nicht. EinfunktionigerPatchlokalübertragen;Version643nurReviewvorschlag. Zwei390px-Fixtures:642ESC/Closefehl,643beidesbestanden;Vorschauscreenshotbytegleich. ManifestausvorhandenemBauskriptgeprüft,defekteBytezahlgestoppt;aktuellerRunner643weiterabgewiesen. PR3145draft/mergedfalse,5Reviewdateien/SHA/Contentbestätigt. KeineProduktivquelle/Shop-/Workflowänderung;Node24lokal,volleNode22CIoffen.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Nicht alte6.3.1-Rolloutpläne anwenden oder immutable6.4.0 mit neuerBytefolge überschreiben. R237-Fokuspatch in einen neu versionierten Review-/Releasekandidaten übernehmen, SRI/Quellen/Canary-/Rollbackschutz vorher prüfen. Erst nach erfolgreicher legitimer Auslieferung den gleichen Tassenfall öffentlich rücklesen; vorhandene Themefreigabe für7Dateien unverändert lassen. Aktuelle Prüfung gilt für1Produkt/3Chromiumbreiten, weitereEditoren/iOS/Tastatur/Focustrap bleiben gesondert.",
+      "nextAllowedStep": "PR3145 im bestehenden642-Review berücksichtigen; vor Übernahme aktuellen642-Commit/Quellhash mitBeleg vergleichen, keineDoppelversion641. Danach versioniertenRelease/SRI/Manifest sowie festeVersions-/Canary-/Rollback-Gates und echteCI gemeinsam prüfen. DeraktuelleRunner unterstützt643nicht; nichts dispatchen oder immutableDateienüberschreiben. LokalerKandidat/PRsindkeineAuslieferung undkeinClaudeEmpfangsbeleg.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -19898,9 +19898,11 @@
         }
       ],
       "blockers": [
-        "Der geprüfte Fokuspatch ist nur lokale Browserfixture und Reviewdatei; noch kein produktiver Release.",
-        "Echte iOS-/Safari-/Softwaretastatur und übrige15Editorprodukte inR237nichtgeprüft; keineVollshopabnahme.",
-        "Theme214040805767 weiterunveröffentlicht undnativerPublisherbekanntscopeblockiert; keine erneuteFreigabefürdieselben7Dateien nötig."
+        "PR3145 ist ausschliesslich Reviewmaterial; kein neuer produktiver Editor-Release oder Canary.",
+        "Laufende642-Entwicklung/PR3035 für641 bereits vorhanden; kein paralleler Versionsclaim oder Überschreiben fremder Quelle.",
+        "Aktueller Runner/Workflow auf631/640 beschränkt; neue Gates/SRI/Canary-/Rollback-Prüfung separat offen.",
+        "Node22 lokal nicht vorhanden; vollständige Editor-/Mutations-/Rollout-CI und iOS/weitereEditorprodukte offen.",
+        "Theme214040805767weiterUNPUBLISHED; vorhandene7-Dateien-Freigabe erhalten, bekannterPublisherblock nichtumgangen."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -20163,6 +20165,10 @@
         {
           "path": "dropship/codex-handoff-20261018/PERSONALIZER-MOBIL-FOKUS-20261115-R237.json",
           "readAt": "2026-11-15T15:01:59Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/EDITOR-REVIEWPAKET-20261115-R238.json",
+          "readAt": "2026-11-15T15:42:22Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -20515,6 +20521,19 @@
             "AktuellerEditorv6.4.0machtaltenv6.3.1Fullplanüberholt; heutigerRolloutscopeerstneu zu binden.",
             "Sessionstop mangelsgültigerScrapeIDnichtbestätigt;404keineFreigabequittung."
           ]
+        },
+        {
+          "at": "2026-11-15T15:42:22Z",
+          "sourceRevision": 237,
+          "previousState": "r237_v640_three_actual_viewports_verified_focus_restore_candidate_tested_not_deployed",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousLastEvidence": "Tasse15422823465345/325ml55777979629953 aktuell ACTIVE/22.90CHF. V6.4.0/currentmain/mapblobs/SRI gebunden;375/390/1440 echte Breiten ohneOverflow. Sprunglink funktioniert, Text/Produktvorschau und lokale2700x1050-Druckvorschau bestätigt. NachESC Fokus3/3 aufBODY. Einhunkiger lokaler Fokuspatch besteht ESCundClosebei390, übrigeBytesgleich; keinRelease/Deployment/Shopwrite. Historischer16erRollout aus09Nov-Dokument ist keine eigene heutigeAusführung.",
+          "previousNextAllowedStep": "Nicht alte6.3.1-Rolloutpläne anwenden oder immutable6.4.0 mit neuerBytefolge überschreiben. R237-Fokuspatch in einen neu versionierten Review-/Releasekandidaten übernehmen, SRI/Quellen/Canary-/Rollbackschutz vorher prüfen. Erst nach erfolgreicher legitimer Auslieferung den gleichen Tassenfall öffentlich rücklesen; vorhandene Themefreigabe für7Dateien unverändert lassen. Aktuelle Prüfung gilt für1Produkt/3Chromiumbreiten, weitereEditoren/iOS/Tastatur/Focustrap bleiben gesondert.",
+          "previousBlockers": [
+            "Der geprüfte Fokuspatch ist nur lokale Browserfixture und Reviewdatei; noch kein produktiver Release.",
+            "Echte iOS-/Safari-/Softwaretastatur und übrige15Editorprodukte inR237nichtgeprüft; keineVollshopabnahme.",
+            "Theme214040805767 weiterunveröffentlicht undnativerPublisherbekanntscopeblockiert; keine erneuteFreigabefürdieselben7Dateien nötig."
+          ]
         }
       ],
       "liveThemeId": "212971061639",
@@ -20854,6 +20873,94 @@
         "patchSha256": "a0709e926ab8b9a291fed4db6d5e4d3a20b8f20f35e01a97001638ea57d79fd4",
         "sourceDeployment": false,
         "localFocusChecksPassed": 2
+      },
+      "run238": {
+        "at": "2026-11-15T15:42:22Z",
+        "reviewPr": {
+          "number": 3145,
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/3145",
+          "state": "open",
+          "draft": true,
+          "merged": false,
+          "head": "c78646688709848381efa9f6b20c62358fea6501",
+          "base": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+          "changedFiles": 5,
+          "reviewersRequested": false,
+          "readbackConfirmed": true
+        },
+        "sourceBranch": {
+          "branch": "claude/luxestyle-editor-642-1011",
+          "head": "91faac47e445ba934ae16d6f6216ca989bb22d81",
+          "tree": "597f1c2be820ada814e55ce0856379c4a99b9853",
+          "source": {
+            "path": "pod/v6/lspod-designer-v6-6.4.2.js",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "999ab176245ea74b7d2bc0ccda62b70ce83d9b01",
+            "size": 294981,
+            "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/999ab176245ea74b7d2bc0ccda62b70ce83d9b01"
+          },
+          "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+          "sourceBytes": 294981
+        },
+        "candidate": {
+          "status": "LOCAL_VERSIONED_REVIEW_NOT_RELEASED",
+          "baseBranchPin": {
+            "branch": "claude/luxestyle-editor-642-1011",
+            "head": "91faac47e445ba934ae16d6f6216ca989bb22d81",
+            "tree": "597f1c2be820ada814e55ce0856379c4a99b9853",
+            "source": {
+              "path": "pod/v6/lspod-designer-v6-6.4.2.js",
+              "mode": "100644",
+              "type": "blob",
+              "sha": "999ab176245ea74b7d2bc0ccda62b70ce83d9b01",
+              "size": 294981,
+              "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/999ab176245ea74b7d2bc0ccda62b70ce83d9b01"
+            },
+            "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+            "sourceBytes": 294981
+          },
+          "sourceVersion": "6.4.2",
+          "candidateVersion": "6.4.3",
+          "candidateVersionNotReservedOrPublished": true,
+          "baseSha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+          "candidateSha256": "46b9848ae24e047176e510f3a238e293bf877e3cb9e3fa305b19983e1ff1133e",
+          "candidateBytes": 295146,
+          "behaviorChanges": "Only printpreview close helper focus restoration; declaration/header updated for local versioned reviewcopy",
+          "focusPatchSha256": "af4063c5bdade44c3cb1502534d67fe629a96331d152b74539b70f7eaf8f77b5",
+          "otherBaseBytesPreservedBeforeVersionDeclarations": true,
+          "externalWrites": 0
+        },
+        "manifest": {
+          "schema": 1,
+          "version": "6.4.3",
+          "file": "pod/v6/lspod-designer-v6-6.4.3.js",
+          "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.3.js",
+          "sha256": "46b9848ae24e047176e510f3a238e293bf877e3cb9e3fa305b19983e1ff1133e",
+          "bytes": 295146,
+          "vorgaenger": [
+            {
+              "version": "6.4.0",
+              "file": "pod/v6/lspod-designer-v6-6.4.0.js",
+              "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js",
+              "sha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+              "bytes": 260794
+            },
+            {
+              "version": "6.4.2",
+              "file": "pod/v6/lspod-designer-v6-6.4.2.js",
+              "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.2.js",
+              "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+              "bytes": 294981
+            }
+          ]
+        },
+        "localChecks": {
+          "escapeAndClosePass": true,
+          "tamperRejected": true,
+          "screenshotByteIdentical": true
+        },
+        "productionWrites": 0
       }
     },
     {
@@ -32278,6 +32385,20 @@
         {
           "path": "dropship/codex-handoff-20261018/PERSONALIZER-MOBIL-FOKUS-20261115-R237.json",
           "readAt": "2026-11-15T15:01:59Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 238,
+      "at": "2026-11-15T15:42:22Z",
+      "actor": "codex",
+      "summary": "Fokuskorrektur aufaktuelle642Entwicklungübertragenstattkonkurrierender641Version. Lokal390ESC+Closevorherfehl/nachherbestanden,ManifestmitbestehendemBauskriptgeprüft,Negativkontrollegestoppt,alteGateserhalten. FünfReviewdateienaufisoliertemmain-basiertemBranchundEntwurfsPR3145erstellt/zurückgelesen;keineaktiveQuelleoderShopänderung.24Aufgaben/Historie/Tagespolicyerhalten;Claude-Empfangunbekannt.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/EDITOR-REVIEWPAKET-20261115-R238.json",
+          "readAt": "2026-11-15T15:42:22Z"
         }
       ],
       "taskCount": 24,
@@ -59130,5 +59251,61 @@
       "noFullCatalogOrFullShopAcceptance": true,
       "claudeReceipt": "unknown"
     }
+  },
+  "run238": {
+    "at": "2026-11-15T15:42:22Z",
+    "source": "dropship/codex-handoff-20261018/EDITOR-REVIEWPAKET-20261115-R238.json",
+    "reviewPr": {
+      "number": 3145,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/3145",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "c78646688709848381efa9f6b20c62358fea6501",
+      "base": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+      "changedFiles": 5,
+      "reviewersRequested": false,
+      "readbackConfirmed": true
+    },
+    "currentIdentity": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "name": "LuxeStyle",
+        "currencyCode": "CHF",
+        "ianaTimezone": "Europe/Zurich",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        }
+      },
+      "metricool": {
+        "brandId": 6227837,
+        "label": "Luxestyle",
+        "timezone": "Europe/Zurich",
+        "channels": {
+          "facebookData": "1049840534888592",
+          "instagramData": "luxestyle.ch",
+          "threadsData": "luxestyle.ch",
+          "pinterestData": "luxestyleCH",
+          "tiktokData": "luxestyle.ch",
+          "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+        }
+      }
+    },
+    "scope": {
+      "onlyLuxeStyle": true,
+      "sourceCodeExternallyChanged": false,
+      "workflowChanged": false,
+      "mergeOrDeploy": false,
+      "shopProductOrThemeWrites": 0,
+      "socialWrites": 0,
+      "merchantWrites": 0,
+      "metricsFlowOrderReports": 0,
+      "paidRenders": 0,
+      "automationsChanged": false,
+      "existingLiveSource640Preserved": true,
+      "existingUnreleased642SourcePreserved": true,
+      "claudeReceipt": "unknown"
+    },
+    "fullCiConfirmed": false
   }
 }

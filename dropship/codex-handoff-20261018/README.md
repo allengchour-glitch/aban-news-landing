@@ -1,3 +1,19 @@
+# R238 – Fokus-Fix auf die aktuelle Editor-Entwicklung übertragen, Entwurfs-PR3145 – 15.11.2026
+
+**Konkreter Fortschritt:** Der kleine R237-Fokus-Fix ist jetzt an den tatsächlich vorhandenen 6.4.2-Zweig `claude/luxestyle-editor-642-1011` / Commit `91faac47e445ba934ae16d6f6216ca989bb22d81` gebunden. Sein Schliesshandler enthält den Fix noch nicht. Version 6.4.1 gehört bereits zum offenen PR3035; deshalb kein konkurrierender 6.4.1-Release und keine Änderung am bestehenden Editorzweig. Die lokale Reviewkopie trägt den Zielvorschlag 6.4.3, ohne die Version zu reservieren oder zu veröffentlichen.
+
+**Gezielt gegengeprüft:** In zwei ausdrücklich lokalen 390×844-Browserfixtures scheitern Escape und Schliessen im unveränderten 6.4.2-Stand an der Fokus-Rückgabe. Mit dem Fix bestehen beide Wege. Die2700×1050-Vorschau bleibt erhalten und ihr Bildschirmfoto vor dem Schliessen ist bytegleich. Ausser dem einen Schliesshandler sind nur Versionsdeklaration und Kopf der Reviewkopie geändert. Das ist kein öffentlicher Live-Fix und keine neue Vollabnahme aller Editorfunktionen.
+
+Mit dem vorhandenen `editor_release_bauen.mjs` wurde ein separater Manifestentwurf aus den echten lokalen Bytes erzeugt und frisch geprüft. Eine absichtlich um ein Byte falsche Manifestgrösse wird mit Exit1 abgewiesen. Syntaxprüfung bestanden. Der bestehende Runner weist6.4.3 unverändert vor Netzzugriff zurück; keine Schranke gelockert und kein alter Workflow gestartet. Lokal Node24.22.1; dokumentiertes Node22 fehlt, vollständige Projekt-/Rollout-CI nicht bestätigt. Keine Neuinstallation.
+
+**Review konkret gespeichert:** [Entwurfs-PR3145](https://github.com/allengchour-glitch/aban-news-landing/pull/3145) von isoliertem, frisch an main gebundenem Codex-Zweig. Genau fünf neue Reviewdateien unter `dropship/codex-editor-fokus-20261115-r238/`: Anleitung, kleiner642-Patch, komplette Reviewkopie als `.txt`, generierter Manifestentwurf und Prüfnachweise. Alle fünf Inhalte/SHA zurückgelesen, Commitvergleich bestätigt ausschliesslich diesen Dokumentationsordner; PRdraft=true / merged=false und Head `c78646688709848381efa9f6b20c62358fea6501` frisch bestätigt. Keine Reviewer angefordert. Nicht als merge-/auslieferungsfertigen Release bezeichnen.
+
+Shop und Metricool-Marke samt allen sechs Kanalidentitäten frisch passend. Theme214040805767 bleibtUNPUBLISHED, MAIN213991391623; vorhandene Freigabe derselben sieben Theme-Dateien erhalten, kein neuer Publishversuch. Keine Shopify-, Merchant-, Social-, Flow-, Budget-, DNS- oder Frequenzänderung; keine Tagesreports/Bestellungen/Kauf-Watch, keine bezahlten Renders. Nächster Schritt: Paket im laufenden642-Review übernehmen lassen, danach Versions-/SRI-/Canary-/Rollback-Gates und echte CI gemeinsam prüfen. Claude-Empfang bleibt unbekannt; ein gespeicherter PR ist keine Quittung.
+
+[Bericht](EDITOR-REVIEWPAKET-20261115-R238.md) · [Belege](EDITOR-REVIEWPAKET-20261115-R238.json).
+
+[LUXESTYLE_R238_20261115]
+
 # R237 – Gestaltungseditor auf echten Handy-Breiten geprüft, kleiner Fokuspatch vorbereitet – 15.11.2026
 
 **Neuer konkreter Fortschritt:** Beim tatsächlich öffentlichen Tassenprodukt15422823465345 / Variante55777979629953 ist die frühere Viewport-Sperre jetzt für drei begrenzte Ansichten geklärt:375×844,390×844 und1440×900 entsprechen jeweils der wirklich gemessenen Browser-/Dokumentbreite, ohne horizontalen Überlauf. Bearbeiten, eigener lokaler Testtext, Produktvorschau und lokale Druckvorschau funktionieren. Die Druckdatei in der Vorschau ist ein lokales2700×1050-Blob; keine Bestellung, kein Warenkorb, Upload oder bezahlter Video-Render. Der Entwurf blieb im frischen, danach geschlossenen Browserkontext. Das ist eine Einprodukt-/Chromium-Prüfung, keine aktuelle Abnahme aller16 Editorprodukte oder eines echten iPhones.
