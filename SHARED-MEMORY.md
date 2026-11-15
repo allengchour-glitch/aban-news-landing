@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: ZIP-Starthilfe auf der Downloadseite ·15.11.2026
+
+Aufklappbare Anfängerhilfe zum Finden/Entpacken/Starten des gekauften Pakets, Produktunterschiede und Hinweis gegen Doppelkauf erhalten. Zahlungs-/Downloadfreigabe unverändert.71 bestehende Downloadprüfungen und sechs Browserproben390/1440px grün, nur Demoantworten, kein Kauf/geschützter Download. Finanzielle Wirkung nicht gemessen. Details/Bereitstellung im Abschnitt Downloadseite der kanonischen Übergabe und zugehörigem PR.
+
 ## Codex: dekorative Bewegung im Büro ·15.11.2026
 
 Kleine Blickbewegungen und vier Pflanzen mit sanft bewegten Kronen, bei reduzierter Bewegung still. Bestehendes Atmen/Blinzeln erhalten. Raumgestaltung ausdrücklich von Quellen/Messzeiten getrennt; keine erfundene Arbeit/Live-Anbindung. Version19 synchron, vier WebGL-Gegenproben390/1440px und43 Dashboardbauprüfungen grün. Higgsfield unverändert; privater Claude-Upload separat. Details und Bereitstellung im Abschnitt Lebhafteres Büro der kanonischen Übergabe und zugehörigem PR.

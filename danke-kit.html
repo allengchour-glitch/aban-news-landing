@@ -10,6 +10,10 @@
     .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:14px;font-size:1.05rem;margin:1rem 0}
     .btn[hidden]{display:none}
     .muted{color:#6b7280;font-size:.9rem}
+    .starthilfe{text-align:left;background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1rem 1.2rem;margin:1.4rem 0}
+    .starthilfe summary{cursor:pointer;font-weight:700}
+    .starthilfe li+li{margin-top:.6rem}
+    .starthilfe p:last-child{margin-bottom:0}
     .box{background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1.6rem;margin:1.4rem 0}
   </style>
 </head>
@@ -18,6 +22,16 @@
   <h1>Dein Kit-Download</h1>
   <div class="box" id="box" role="status" aria-live="polite"><p>Zahlung wird geprüft …</p></div>
   <button class="btn" id="erneut" type="button" hidden>Zahlung erneut prüfen</button>
+  <details class="starthilfe">
+    <summary>Zum ersten Mal ein ZIP-Paket? So startest du.</summary>
+    <ol>
+      <li><strong>Herunterladen:</strong> Sobald die Zahlung bestätigt ist und der Download bereitsteht, oben auf „Kit herunterladen“ tippen. Eine ZIP-Datei fasst die Dateien deines Pakets zusammen.</li>
+      <li><strong>Datei finden:</strong> Schau im Downloadbereich deines Browsers oder im Ordner „Downloads“ nach. Auf dem Handy findest du sie meist in der App „Dateien“ oder „Eigene Dateien“.</li>
+      <li><strong>Entpacken:</strong> Öffne die ZIP-Datei und wähle „Entpacken“, „Extrahieren“ oder „Alle extrahieren“. Auf manchen Geräten genügt ein Doppelklick oder Antippen. Öffne danach den entstandenen Ordner.</li>
+      <li><strong>Mit der Anleitung beginnen:</strong> Lies zuerst die enthaltene Anleitung. Je nach gekauftem Produkt folgen PDF-/Textdateien, Tabellen, ein Offline-Rechner oder ein Python-Werkzeug. Nicht jedes Paket enthält alle Formate; die Anleitung nennt die Voraussetzungen.</li>
+    </ol>
+    <p class="muted">Kein Link oder eine Fehlermeldung oben? „Zahlung erneut prüfen“ verwenden, sobald der Knopf erscheint, oder den Support unten kontaktieren. Wenn du bereits bezahlt hast, bitte nicht nochmals kaufen. Teile den Downloadlink und deine Bestellkennung nicht öffentlich.</p>
+  </details>
   <p class="muted">Problem mit dem Download? Schreib mir: <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
   <p class="muted"><a href="/" style="color:#6b7280">← zur Startseite</a> · <a href="/shop.html" style="color:#6b7280">weitere Kits</a></p>
 <script>
