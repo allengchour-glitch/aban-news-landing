@@ -1,0 +1,183 @@
+{
+  "prepared_on": "2026-11-15",
+  "purpose": "Produktvorschläge für Claude Code; keine Einkaufs-/Publishingdaten",
+  "primary_test_pair": [
+    "3d-acryl-notiztafel-mit-led-beleuchtung-831232",
+    "mini-usb-tisch-staubsauger-880704"
+  ],
+  "fresh_live_reads": false,
+  "shop_or_social_writes": 0,
+  "implementation_changes": 0,
+  "candidates": [
+    {
+      "editorial_priority": 1,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "3D-Acryl-Notiztafel mit LED",
+      "handle": "3d-acryl-notiztafel-mit-led-beleuchtung-831232",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/3d-acryl-notiztafel-mit-led-beleuchtung-831232",
+      "source_date": "2026-11-12",
+      "source_file": "dropship/cj_varianten_ledger.txt",
+      "source_basis": "Produkt-/Variantenbeleg; kein Funktions- oder Versandnachweis",
+      "proposed_hook_after_verification": "Deine Notiz. Im Licht.",
+      "proposed_video_seconds": 15,
+      "idea_kind": "lichtwechsel",
+      "real_demo_needed": "Echte Beschriftung und Beleuchtung, gleiche Ausführung, unveränderte Belichtung",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    },
+    {
+      "editorial_priority": 2,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "Mini-USB-Tischstaubsauger",
+      "handle": "mini-usb-tisch-staubsauger-880704",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/mini-usb-tisch-staubsauger-880704",
+      "source_date": "2026-10-30",
+      "source_file": "dropship/cj_varianten_ledger.txt",
+      "source_basis": "Historisch vier Varianten bearbeitet; keine aktuelle Leistung geprüft",
+      "proposed_hook_after_verification": "Krümel auf dem Tisch?",
+      "proposed_video_seconds": 15,
+      "idea_kind": "alltagstest",
+      "real_demo_needed": "Echter Saugversuch am selben Tisch; Variantenzuordnung",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    },
+    {
+      "editorial_priority": 3,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "Selbstabpressender Mini-Bodenreiniger",
+      "handle": "selbstabpressender-mini-bodenreiniger-multifun-593792",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/selbstabpressender-mini-bodenreiniger-multifun-593792",
+      "source_date": "2026-11-03",
+      "source_file": "dropship/social-meisterplan-0311/fakten.json",
+      "source_basis": "Beschreibung und 13 Bilder laut Snapshot, keine echte Vorher/Nachher-Sequenz",
+      "proposed_hook_after_verification": "Auspressen. Weiterwischen.",
+      "proposed_video_seconds": 15,
+      "idea_kind": "mechanismus",
+      "real_demo_needed": "Reales Wischen und Auspressen mit demselben Gerät",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    },
+    {
+      "editorial_priority": 4,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "Tragbarer USB-Fusselrasierer",
+      "handle": "tragbarer-usb-fusselrasierer-613400",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/tragbarer-usb-fusselrasierer-613400",
+      "source_date": "2026-11-04",
+      "source_file": "dropship/seo-nahe-0411/aenderungen.json",
+      "source_basis": "Historische SEO-Änderungsdatei, keine eigene Geräteprüfung",
+      "proposed_hook_after_verification": "Ein Pullover. Ein echter Test.",
+      "proposed_video_seconds": 15,
+      "idea_kind": "alltagstest",
+      "real_demo_needed": "Echter Test am selben Stoffstück bei gleichem Licht",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    },
+    {
+      "editorial_priority": 5,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "Automatischer Kaffeebecher",
+      "handle": "automatischer-kaffeebecher-72c4e0",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/automatischer-kaffeebecher-72c4e0",
+      "source_date": "2026-11-03",
+      "source_file": "dropship/social-meisterplan-0311/fakten.json",
+      "source_basis": "Rührfunktion laut Beschreibung; 19 Bilder, kein geprüfter Becher-Clip",
+      "proposed_hook_after_verification": "Der Becher rührt.",
+      "proposed_video_seconds": 15,
+      "idea_kind": "mechanismus",
+      "real_demo_needed": "Echtes Ein-/Ausschalten mit nachvollziehbarer Rührsequenz",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    },
+    {
+      "editorial_priority": 6,
+      "priority_basis": "SETZUNG nach Videoidee, keine Verkaufsprognose",
+      "name": "LED-Fahrradrucksack",
+      "handle": "led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend",
+      "catalogue_link_from_handle": "https://luxestyle.ch/products/led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend",
+      "source_date": "2026-10-26",
+      "source_file": "dropship/cj_varianten_ledger.txt",
+      "source_basis": "Historischer Import 31.05.; zwei Varianten am 26.10., keine heutige Geräteprüfung",
+      "proposed_hook_after_verification": "Ein Knopfdruck. Ein Signal.",
+      "proposed_video_seconds": 15,
+      "idea_kind": "lichtwechsel",
+      "real_demo_needed": "Reale Signalfolge und Bedienelement derselben Variante",
+      "real_demo_reviewed_here": false,
+      "current_availability": "unbekannt",
+      "current_ch_shipping": "unbekannt",
+      "current_landed_margin_chf": null,
+      "new_publication_ready": false,
+      "paid_purchase_authorized_by_this_file": false
+    }
+  ],
+  "supplier_research_reserve": {
+    "name": "Magnetisch schwebender Pflanztopf",
+    "source_file": "dropship/cj-video-produkte.csv",
+    "source_date": "2026-10-25",
+    "supplier_pid": "1753980862686830592",
+    "supplier_sku": "CJYL196343801AZ",
+    "shop_handle": null,
+    "shipping_at_source": "lieferbar, sechs CH-Frachtlinien laut Bericht",
+    "current_shipping": "unbekannt",
+    "product_identity_verified_here": false,
+    "existing_catalogue_overlap": "shopBestand 12 in Suchgruppe schwebend, keine Anzahl identischer Pflanztöpfe",
+    "real_demo_reviewed_here": false
+  },
+  "read_repo_commit": "ad0ff2f60f484a76336362d17842200e65e89f44",
+  "source_files": [
+    {
+      "path": "dropship/cj_varianten_ledger.txt",
+      "sha256": "3c88e78f35052553c66a69349a89382f12f31b8e65e9ed846b9553193df50b55"
+    },
+    {
+      "path": "dropship/social-meisterplan-0311/fakten.json",
+      "sha256": "9497b62cb3e45e67465b838aa92fa90f17e6c18156967a988026f60b885edbda"
+    },
+    {
+      "path": "dropship/seo-nahe-0411/aenderungen.json",
+      "sha256": "9ae5e92f4a66c42fe9bd52e6786e03d3effb2a175469ae22256386d7ae027176"
+    },
+    {
+      "path": "dropship/CJ-IMPORT-LOG.md",
+      "sha256": "edbd59dcd82f0a510d04177958bcee513f8d913e3337ae79642a26e8adba2774"
+    },
+    {
+      "path": "dropship/cj_sourcing_ergebnis.md",
+      "sha256": "7767ce3b2907d6e60f9f01aef433c62a1c49533ebf04d4591873ec6124358cbb"
+    },
+    {
+      "path": "dropship/cj-video-produkte.csv",
+      "sha256": "33977062cdca21d98c85a809c7beed65f69022b8fd69c3b8320e0fb67ea917ec"
+    },
+    {
+      "path": "dropship/tiktok-cj-videos-0311/produkte.json",
+      "sha256": "135802d2face1eb4bee0a64c56924eda834e8bd07165b2fbaaf08f67cff82956"
+    },
+    {
+      "path": "dropship/tiktok-cj-videos-0311/cj_clips.json",
+      "sha256": "f1e5d606ec061ca2ba472cc66c681ef7d4bc0bc8a8213807a65b1ab5cde826b3"
+    }
+  ],
+  "handoff_target": "Claude Code",
+  "program_code_requested": false
+}
