@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 240,
-  "updatedAt": "2026-11-15T16:41:29Z",
+  "revision": 241,
+  "updatedAt": "2026-11-15T17:07:47Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -32700,6 +32700,20 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 241,
+      "at": "2026-11-15T17:07:47Z",
+      "actor": "codex",
+      "summary": "36 relevante Konsolen-/Kombigeräte auf Spieleumfang gelesen; drei Handhelds öffentlich und zwei CJ-Zuordnungen gegengeprüft. Spielezahlen als Verkäuferangaben, keine konkreten Spielelisten/Softwareprüfung. Keine operativen Writes oder Kaufaktion.24 Aufgaben und Tagesgrenzen erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json",
+          "readAt": "2026-11-15T17:07:47Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
     }
   ],
   "salesGoal": {
@@ -59660,5 +59674,28 @@
       "purchaseOrCartCreated": false
     },
     "claudeReceipt": "unknown"
+  },
+  "run241": {
+    "at": "2026-11-15T17:07:47Z",
+    "source": "dropship/codex-handoff-20261018/SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json",
+    "scope": {
+      "tagProducts": 34,
+      "tagConnectionComplete": true,
+      "titleMatches": 70,
+      "titleConnectionComplete": true,
+      "extraGamingProducts": 2,
+      "consoleAndHybridListingsReviewed": 36,
+      "fullCatalogueTextScan": false,
+      "allProductVariantConnectionsComplete": true,
+      "noGamesListsFoundInReviewedText": true,
+      "shopifyWrites": 0,
+      "merchantWrites": 0,
+      "cartCheckoutOrderCreated": false,
+      "customerOrSupplierMessagesSent": false,
+      "metricsFlowOrderReports": 0
+    },
+    "consumerQuestionScope": "all_console_listing_game_contents",
+    "operationalWrites": 0,
+    "softwareContentsTested": false
   }
 }

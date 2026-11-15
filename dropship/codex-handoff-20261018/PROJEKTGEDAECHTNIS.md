@@ -1,3 +1,19 @@
+# R241 – Spieleumfang der Konsolen geprüft – 15.11.2026
+
+Die neue Kaufanfrage «alle spielconsole» wurde als Abgleich der LuxeStyle-Konsolen verstanden, nicht als Kauf- oder Änderungsfreigabe. Zwei aktuelle Konsolen-Tags lieferten vollständig 34 Angebote; eine ergänzende vollständige Titelabfrage 70 Treffer mit Zubehör/fachfremden Handhelds ergab zwei weitere passende Konsolen-/Kombigeräte. Insgesamt **36 relevante Angebote** und ihre Varianten gelesen; kein Vollscan aller Shoptexte.
+
+**Befund:** Sechs Angebote nennen eine enthaltene Spielezahl (zweimal 500, zweimal 620, einmal 21, einmal 568). Eine weitere Konsole nennt vorinstallierte Spiele ohne Anzahl. X9 erwähnt 8 Arcade-Spiele, belegt die Vorinstallation aber nicht eindeutig. **Kein konkretes vollständiges Spieltitelverzeichnis in den 36 gelesenen Texten gefunden.** Shopangaben sind keine Prüfung der tatsächlich gelieferten Software. Unterstützte Systeme und 64/128 GB sind kein Beleg für bestimmte enthaltene Spiele.
+
+Die drei Game-Boy-ähnlichen Kandidaten wurden zusätzlich öffentlich gegengeprüft: 500-Spiele-Handheld **CHF 39.90**, R36Ultra **CHF 58.90**, Mini-Klappkonsole **CHF 49.90**; HTTP200, aktuelle IDs/Preise/Kaufbarkeitsflags passen. Kein Lager- oder Lieferzeitversprechen. Bei CJ wurden Mini-Klappkonsole und R36Ultra SKU-/Varianten-/Bildmotiv-genau zugeordnet; in beiden Lieferantentexten keine konkrete Spieleliste. Drei gefilterte Verbindungsabfragen list=[]/total0 sind kein Beweis fehlender CJ-Anbindung. Keine Verbindung geändert.
+
+Bei der 620er-Konsole gilt der Abpreis CHF 19.90 für die Auswahl «B4 controller-1PCS»; die European-Standard-Auswahl kostetCHF 24.90. Ob B4 ausschliesslich Zubehör enthält, ist offen; nicht als bestätigtes vollständiges Konsolenset empfehlen. Keine bestimmte Nintendo-Spielauswahl oder getestete Emulationsleistung behauptet.
+
+Keine Produkt-/Shop-/Feed-/Socialänderung, kein Warenkorb/Checkout/Kauf, keine Kunden-/Lieferantenansprache oder Tagesreport-Wiederholung. 24 Aufgaben und die beendete Kauf-Watch erhalten. Die offenen Merchant- und Themeblocker aus R239/R240 bleiben unverändert. Claude-Empfang unbekannt.
+
+[Alle36 Angebote mit Preisen und Spieleangaben](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.md) · [Belege](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json) · [CSV](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.csv).
+
+[LUXESTYLE_R241_20261115]
+
 # R240 – Merchant: offene Quellenfehler konkretisiert – 15.11.2026
 
 Der Inhaber meldet weiterhin **18 Fehlergruppen im Dashboard**. Der vollständige heutige UI-Gruppenumfang ist mit den verfügbaren Lesewerkzeugen weiterhin **unbekannt**. Frisch geprüft wurden eine auf 5'000 Produkte begrenzte, abgeschnittene Summary und zwei Seiten mit je 100 abgelehnten Angeboten. Keine Kataloghochrechnung. Die Kontoissue-Antwort war leer; das bedeutet nicht, dass Produktfehler behoben sind.

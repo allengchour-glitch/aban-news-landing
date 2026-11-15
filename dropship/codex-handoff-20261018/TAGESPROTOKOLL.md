@@ -2801,3 +2801,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](MERCHANT-QUELLENSTATUS-20261115-R240.md) · [Belege](MERCHANT-QUELLEN-BELEGE-20261115-R240.json).
 
+
+### R241 – Konsolen-Kaufanfrage: Spieleumfang
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Konsolen / begrenzter Abgleich | Zwei aktuelle Konsolen-Tags vollständig und ergänzend 70 Titel geprüft; 36 passende Konsolen-/Kombigeräte mit Varianten gelesen. | Sechs enthaltene Spielezahlen laut Shoptext; eine zusätzliche Vorinstallationsangabe ohne Zahl. Konkrete Spieltitelverzeichnisse fehlen. Kein Vollkatalogscan oder gelieferte Software getestet. |
+| Drei Handhelds / Shop | Tatsächliche Produktbilder gesichtet und öffentliche Produktdaten gegengeprüft. | CHF 39.90 / 58.90 / 49.90 sowie IDs und Kaufbarkeitsflags passen. Keine Lager-/Liefergarantie. |
+| CJ / Zuordnung | Autorisierten Shop abgeglichen, drei gefilterte Verbindungsreads und zwei exakte Produktreads ausgeführt. | Mini-Klappkonsole und R36Ultra identifiziert; keine konkrete Spieleliste im gelesenen Lieferantentext. Leere Verbindungsantworten sind kein fehlender Connector. |
+| Auswahl / Schutz | 620er-Controller-Auswahl und PSP/GBA-Ohne-Karte-Varianten getrennt bewertet; Gesamtliste vorbereitet. | Abpreise nicht als vollständiges Set versprochen. Keine Produktänderung, Kontaktaufnahme, Cart-/Checkout-/Kauferstellung oder erneuten Tagesreports. Merchant-/Themeblocker unverändert. |
+
+[Alle 36 Angebote](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.md) · [Belege](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json).
+
