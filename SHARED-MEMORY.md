@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Monitor-Leistung und Lieferstand klargestellt ·15.11.2026
+
+Öffentliche Seite versprach automatischen Monatsversand trotz fehlender Abonnenten-/Versandanbindung und pausiertem Cron. Leistungsbeschreibung und Suchdaten berichtigt, Einrichtung/Reportstart vor Buchung sichtbar. Preise/Stripe-Link/Automationen unverändert. Sechs lokale Browsergegenproben grün, keine echte Zahlung oder Mail. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Monitor-Angebot und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: E-Mail-Pilot übernimmt HTML bei leerem Klartext ·14.11.2026
 
 Zwei reproduzierte Importverluste behoben, Klartextvorrang und Anhangsausschluss geprüft.51 Pilotprüfungen und lokaler Lieferpaketbau grün. Keine neue Kontoanbindung oder Versandfunktion. Details und Bereitstellungsnachweis: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt E-Mail-Pilot und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
