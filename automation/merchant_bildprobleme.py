@@ -353,6 +353,42 @@ def laender(h, name):
     return 0
 
 
+def versand(h, name):
+    """MODUS=versand (15.11.2026): Welche Versanddienste kennt das Konto, für welche Länder? Nur lesen.
+
+    Anlass: MODUS=laender zeigte 160 095 Artikel mit «missing_shipping_no_shipping_service_defined_for_country»,
+    gesperrt nur in Liechtenstein. Gibt keine Kontonummer aus, nur Dienstnamen, Länder, Währung, Laufzeiten, Tarife.
+    """
+    r = requests.get(f"https://merchantapi.googleapis.com/accounts/v1/{name}/shippingSettings", headers=h, timeout=30)
+    print("shippingSettings HTTP", r.status_code)
+    if r.status_code != 200:
+        print(sauber(r.text, 300)); return 5
+    j = r.json()
+    dienste = j.get("services") or []
+    print(f"DIENSTE: {len(dienste)}, Lager: {len(j.get('warehouses') or [])}, Felder: {sorted(k for k in j if k != 'etag')}")
+    for i, d in enumerate(dienste, 1):
+        dt = d.get("deliveryTime") or {}
+        print(f"DIENST {i}: name={sauber(d.get('serviceName'), 60)} aktiv={d.get('active')} laender={d.get('deliveryCountries')} "
+              f"waehrung={d.get('currencyCode')} art={d.get('shipmentType')} transit={dt.get('minTransitDays')}-{dt.get('maxTransitDays')} "
+              f"bearbeitung={dt.get('minHandlingDays')}-{dt.get('maxHandlingDays')} felder={sorted(d)}")
+        if d.get("minimumOrderValue"):
+            print(f"   mindestbestellwert={d.get('minimumOrderValue')}")
+        for g in d.get("rateGroups") or []:
+            sv = g.get("singleValue") or {}
+            tab = g.get("mainTable") or {}
+            print(f"   TARIF name={sauber(g.get('name'), 40)} labels={g.get('applicableShippingLabels')} einzelwert={sauber(json.dumps(sv), 160)} "
+                  f"tabelle_zeilen={len(tab.get('rows') or [])} tabelle_kopf={sauber(json.dumps({k: v for k, v in tab.items() if k != 'rows'}), 200)}")
+            if tab.get("rows"):
+                print(f"   TABELLE erste Zeile={sauber(json.dumps(tab['rows'][0]), 200)}")
+    laender_alle = Counter(l for d in dienste for l in d.get("deliveryCountries") or [])
+    print("LAENDER (Anzahl Dienste):", dict(laender_alle))
+    print("LAENDER aktiv:", dict(Counter(l for d in dienste if d.get("active") for l in d.get("deliveryCountries") or [])))
+    with open("bildprobleme.json", "w") as f:
+        json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "modus": "versand",
+                   "dienste": [{k: v for k, v in d.items()} for d in dienste]}, f, ensure_ascii=False, indent=1)
+    return 0
+
+
 def main():
     h = anmelden()
     name = konto(h)
@@ -362,6 +398,8 @@ def main():
         return autofeed(h, name)
     if os.environ.get("MODUS", "bilder") == "laender":
         return laender(h, name)
+    if os.environ.get("MODUS", "bilder") == "versand":
+        return versand(h, name)
     zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None
