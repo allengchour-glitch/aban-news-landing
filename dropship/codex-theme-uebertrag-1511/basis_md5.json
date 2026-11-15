@@ -1,0 +1,9 @@
+{
+ "assets/luxe-edit.css": "91cd0d7a2791ecb96894455c89e1e6da",
+ "blocks/buy-buttons.liquid": "0f54fe76988d00fe77aa8cd31c1f76f0",
+ "locales/de.schema.json": "5bd2d46fbfbe626fd46faad95f0ca610",
+ "locales/en.default.schema.json": "e5c1f37542900e3efdeed6b9dcd995dd",
+ "sections/footer-group.json": "c2e6ce9d12ca172f84c7a19130c905e8",
+ "sections/luxe-edit-home.liquid": "59bbda96d83480320f82ba852cb57005",
+ "templates/index.json": "17b76982b0cd942cf91a002e60f0dc8e"
+}
