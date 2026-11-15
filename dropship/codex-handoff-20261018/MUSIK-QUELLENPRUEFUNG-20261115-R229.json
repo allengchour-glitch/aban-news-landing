@@ -1,0 +1,89 @@
+{
+  "review": {
+    "review": "LuxeStyle R229 source-only music provenance",
+    "scope": "automation/music/luxe-premium.wav only; no voiceover, paid render, source edits, remote writes, or binary re-download",
+    "reviewedAtUtcDate": "2026-11-15",
+    "repository": "allengchour-glitch/aban-news-landing",
+    "pinnedMain": {
+      "apiCall": "GET repos/allengchour-glitch/aban-news-landing/commits/main",
+      "sha": "4c6274781a90da12cf1cca6fcedeaaa7c4e8653e",
+      "rawResponsePath": "/dev/shm/luxestyle-review/r229/main-commit-raw.json",
+      "rawResponseSha256": "537783069bc5b450a675dc190e59b79fea84779b4975d7ac20d604a29789503c"
+    },
+    "sources": [
+      {
+        "path": "automation/music/produce/make_premium.sh",
+        "retrieval": "raw GitHub at pinned commit",
+        "localEvidencePath": "/dev/shm/luxestyle-review/r229/make_premium.sh",
+        "sha256": "f5b9d913e1d125be6777f895d0ea990caad3db4fd7a68cc6c1dbd2a461fe5c3a",
+        "gitBlobSha": "c4f66163742cbfc7e4fc93c1f1834b96df559186"
+      },
+      {
+        "path": "automation/music/produce/build_premium_midi.py",
+        "retrieval": "raw GitHub at pinned commit; explicitly invoked by producer script",
+        "localEvidencePath": "/dev/shm/luxestyle-review/r229/build_premium_midi.py",
+        "sha256": "e055fa089fda94efcf75cee065c8fe36e1a826647aa465f888aba9bcd7f68414",
+        "gitBlobSha": "caeba96d074e2c61cd1b488561bdde3aa3faf37d"
+      }
+    ],
+    "artifact": {
+      "path": "automation/music/luxe-premium.wav",
+      "expectedSha256FromFreshR228Verification": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "expectedGitBlobShaFromFreshR228Verification": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "localLocation": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+      "binaryRehashOrDownloadThisRun": false
+    },
+    "findings": {
+      "compositionSource": "Procedural MIDI note/event source with F major I–V–vi–IV progression, 24 bars at 96 BPM; piano, strings, acoustic bass, glockenspiel and staged GM drums. Source comments claim original/royalty-free and no attribution. This is provenance/source evidence, not a legal clearance conclusion.",
+      "synthesisDependency": "Producer defaults SF2 to /usr/share/sounds/sf2/FluidR3_GM.sf2 (overridable via SF2), invokes FluidSynth, then SoX reverb and FFmpeg compression/highpass/loudness/limiting to create the WAV. Script lists fluid-soundfont-gm among apt prerequisites.",
+      "soundfontLocalEvidence": "Neither the named FluidR3_GM.sf2 nor /usr/share/doc/fluid-soundfont-gm/copyright exists in this runtime; dpkg reports fluid-soundfont-gm not installed. No SoundFont version/hash or actual bundled licence/copyright evidence was available locally. No external license search was performed.",
+      "fileSpecificRights": "Commercial use in brand films, editing, paid advertising, redistribution, and any other file-specific rights remain unverified. The R228 credits claim is not independent license evidence and does not establish rights for the exact synthesized file/dependency.",
+      "acceptance": "No listening, mix, final music, or owner acceptance was performed or inferred. R228 recorded final rights/listening/mix acceptance open."
+    },
+    "callCounts": {
+      "GitHubApiCommitPin": 1,
+      "PinnedRawSourceDownloads": 2,
+      "GitHubNetworkCallsTotal": 3,
+      "FollowupSourceFilesAfterProducer": 1,
+      "FollowupSourceFileLimit": 2,
+      "MusicBinaryDownloadsOrRehashes": 0,
+      "DailyMetricsOrFlowReads": 0,
+      "RemoteWrites": 0,
+      "GenerationOrRenderingCalls": 0
+    },
+    "contextReuse": "R228 daily metrics/flow context was reused as directed; no duplicate metrics or flow reads were made.",
+    "preservedFiles": [
+      {
+        "path": "/dev/shm/luxestyle-review/r229/main-commit-raw.json",
+        "sha256": "537783069bc5b450a675dc190e59b79fea84779b4975d7ac20d604a29789503c"
+      },
+      {
+        "path": "/dev/shm/luxestyle-review/r229/make_premium.sh",
+        "sha256": "f5b9d913e1d125be6777f895d0ea990caad3db4fd7a68cc6c1dbd2a461fe5c3a"
+      },
+      {
+        "path": "/dev/shm/luxestyle-review/r229/build_premium_midi.py",
+        "sha256": "e055fa089fda94efcf75cee065c8fe36e1a826647aa465f888aba9bcd7f68414"
+      }
+    ]
+  },
+  "sourceFiles": {
+    "automation/music/produce/make_premium.sh": {
+      "text": "#!/usr/bin/env bash\n# LuxeStyle Producer — regeneriert automation/music/luxe-premium.wav reproduzierbar.\n# Elegante Premium-Spur (Grand Piano + Streicher + Akustik-Bass + Glockenspiel + Soft-Groove),\n# F-Dur, 96 BPM, ~64s, mit Aufbau. Für Marken-/Premium-Reels (render_brand_video.py).\n# Voraussetzungen (ephemerer Container, einmalig):\n#   apt-get install -y fluidsynth fluid-soundfont-gm sox ffmpeg python3-numpy python3-scipy\nset -euo pipefail\nHERE=\"$(cd \"$(dirname \"$0\")\" && pwd)\"\nOUT=\"$(cd \"$HERE/..\" && pwd)/luxe-premium.wav\"\nSF=\"${SF2:-/usr/share/sounds/sf2/FluidR3_GM.sf2}\"\n[ -f \"$SF\" ] || { echo \"SoundFont fehlt: $SF (apt install fluid-soundfont-gm)\"; exit 1; }\n\npython3 \"$HERE/build_premium_midi.py\"\nfluidsynth -ni -g 0.9 -r 44100 \"$SF\" /tmp/premium.mid -F /tmp/premium_raw.wav\nsox /tmp/premium_raw.wav /tmp/premium_rev.wav reverb 28 50 100 norm -2\nffmpeg -hide_banner -loglevel error -y -i /tmp/premium_rev.wav \\\n  -af \"acompressor=threshold=-20dB:ratio=2.5:attack=8:release=180:makeup=3,highpass=f=32,loudnorm=I=-14:TP=-1.2,alimiter=limit=0.92:asc=true\" \\\n  -ar 44100 \"$OUT\"\necho \">> $OUT\"\n",
+      "sha256": "f5b9d913e1d125be6777f895d0ea990caad3db4fd7a68cc6c1dbd2a461fe5c3a",
+      "gitBlobSha": "c4f66163742cbfc7e4fc93c1f1834b96df559186"
+    },
+    "automation/music/produce/build_premium_midi.py": {
+      "text": "#!/usr/bin/env python3\n# LuxeStyle Producer — elegante PREMIUM-Spur (für Marken-/Premium-Reels).\n# Grand Piano + warme Streicher + Akustik-Bass + Glockenspiel + dezenter Soft-Groove.\n# F-Dur, 96 BPM, Progression F–C–Dm–B♭ (I–V–vi–IV), 24 Takte (~60s) mit Aufbau:\n#   Takt 1–4 Piano+Streicher · 5–8 +Bass/Glocken · 9–16 +Soft-Drums · 17–24 voll.\n# 100% royalty-free (echte GM-Instrumente via FluidSynth, keine Attribution nötig).\nimport sys, os\nsys.path.insert(0, os.path.dirname(__file__))\nfrom smf import write_midi, notes_track\n\nTPQ = 480\nBAR = TPQ * 4\n\n# (Piano-Voicing, Bass-Grundton, Glockenspiel-Akzent)\nPROG = [\n    ([53, 57, 60, 65], 41, 77),  # F-Dur\n    ([52, 55, 60, 64], 36, 76),  # C-Dur\n    ([50, 53, 57, 62], 38, 74),  # d-Moll\n    ([46, 53, 58, 62], 34, 77),  # B♭-Dur\n]\nNBARS = 24\n\npiano, strings, bass, glock, drums = [], [], [], [], []\nfor b in range(NBARS):\n    voic, bs, gl = PROG[b % 4]\n    t0 = b * BAR\n    cycle = b // 4  # 0..5\n\n    # Streicher: warmes Pad über den ganzen Takt (leise)\n    for p in voic:\n        strings.append((t0, BAR - 20, p, 50))\n\n    # Piano: aufsteigendes Viertel-Arpeggio, klingt aus\n    for i, p in enumerate(voic):\n        st = t0 + i * TPQ\n        piano.append((st, int(TPQ * 1.6), p, 74 if i == 0 else 62))\n\n    # Bass: Grundton auf Zählzeit 1 + 3\n    bass.append((t0, TPQ * 2 - 20, bs, 80))\n    bass.append((t0 + TPQ * 2, TPQ * 2 - 20, bs, 70))\n\n    # Glockenspiel-Sparkle ab 2. Zyklus\n    if cycle >= 1:\n        glock.append((t0, TPQ, gl, 58))\n        if cycle >= 3:\n            glock.append((t0 + TPQ * 2, TPQ, gl - 5, 50))\n\n    # Soft-Drums ab Takt 9 (dezent, elegant — kein Trap)\n    if b >= 8:\n        drums.append((t0, 60, 36, 74))             # Soft-Kick Zz1\n        drums.append((t0 + TPQ * 2, 60, 36, 66))   # Soft-Kick Zz3\n        for e in range(8):\n            te = t0 + e * (TPQ // 2)\n            drums.append((te, 40, 70, 24))         # Shaker (leise, durchgehend)\n            if e % 2 == 1:\n                drums.append((te, 40, 42, 30))     # Closed Hi-Hat auf Offbeat\n        if b >= 16:\n            drums.append((t0 + TPQ, 40, 37, 42))   # Side-Stick Backbeat Zz2\n            drums.append((t0 + TPQ * 3, 40, 37, 42))  # Zz4\n\ntracks = [\n    notes_track(piano, program=0, channel=0),    # Acoustic Grand Piano\n    notes_track(strings, program=48, channel=1),  # String Ensemble 1\n    notes_track(bass, program=32, channel=2),     # Acoustic Bass\n    notes_track(glock, program=9, channel=3),     # Glockenspiel\n    notes_track(drums, channel=9),                # GM-Drumkit (Kanal 10)\n]\nwrite_midi('/tmp/premium.mid', tracks, tpq=TPQ, tempo_bpm=96)\nprint('premium.mid geschrieben:', NBARS, 'Takte, 96 BPM, F-Dur')\n",
+      "sha256": "e055fa089fda94efcf75cee065c8fe36e1a826647aa465f888aba9bcd7f68414",
+      "gitBlobSha": "caeba96d074e2c61cd1b488561bdde3aa3faf37d"
+    }
+  },
+  "nextEvidenceRequired": {
+    "actualUsedSoundFont": "Exact SF2 filename/version and SHA-256, including any SF2 environment override used for the existing WAV export.",
+    "licence": "Copyright/licence record tied to that exact SoundFont and its applicable commercial output/edit/advertising terms.",
+    "artifactBinding": "Export/build record connecting those inputs to the existing WAV SHA256 a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688.",
+    "acceptance": "Final mix/listening and owner acceptance remain separate."
+  },
+  "noFontInstallationOrGeneration": true
+}

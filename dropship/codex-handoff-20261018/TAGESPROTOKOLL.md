@@ -2636,3 +2636,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Gesamtpaket](CONTENT-VERKAUFSPAKET-20261115-08H-R228.md) · [Laufbeleg](LAUFBELEGE-20261115-08H-R228.json).
 
+
+### R229 – Unveröffentlichten Popup-Satz gespeichert und gegengeprüft
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Fortsetzung / Identität | Aktuelle Core4 und heutigen Tagesblock gelesen; Shop, MAIN und Metricool-Marke samt sechs Kanälen frisch gegengeprüft | Revision228 fortgesetzt. LuxeStyle/luxestyle.ch/CHF/EuropeZurich und Marke6227837 passen. Andere Marken nicht bearbeitet; heutige R228-Reports und R226-GSC unverändert wiederverwendet. |
+| Popup / Quelldiff | Aktuelle sections/footer-group.json vollständig gesichert und mit der gleichen Datei des neuesten unveröffentlichten Themes verglichen | Beide vor Änderung SHA59f8477f…37100. Genau ein Satz in /sections/custom_liquid_lxpopup/settings/custom_liquid geändert. Strukturdiff, wörtlicher Rückvergleich und Peerreview bestätigen: alle anderen Bytes und die gesamten Skripte erhalten. |
+| Unveröffentlicht gespeichert | Nach frischer Gegenprobe genau eine pending Datei im Theme213013037447 gespeichert und erneut gelesen | Theme-Version14499e471299d707a12fb1d1986ac1390480a777; saved nur footer-group.json, pending leer, keine PushErrors. Nachher SHA9321568a…3f978 bestätigt. Theme bleibt UNPUBLISHED; MAIN213991391623 bleibt unverändert MAIN. Kein Live-Publish oder Produkt-/Flowwrite. |
+| Darstellung / Gegenprobe | Native Screenshots für1440/390 und MAIN-Desktop aufgenommen; auffällige Headerdarstellung durch öffentlichen Chromium-Browser gegengeprüft | Native MAIN-/Preview-Desktopbilder byteidentisch, daher kein neuer Text-Diff-Effekt. In Chromium normaler Header, Herz22×22px, keine CSS-Fehler und kein horizontaler Überlauf bei1440/390. Native Bilder sind keine bestandene visuelle Abnahme. |
+| Mobile Textabnahme | Nach dem Save genau eine frische mobile Preview geladen und gespeicherten Satz im DOM geprüft; nur Popup-display-Stile für Lesbarkeitsbild gesetzt | HTTP200; neuer Satz vorhanden, alte E-Mail-Zusage in geprüften Absätzen weg. Keine Text-Injektion, Anmeldung, done()-Aufruf, localStorage-/Consentänderung oder Kundensendung. Alle non-GET/HEAD-Anfragen blockiert. Insgesamt fünf Browserladungen; eine zusätzliche SVG-Prüfung überschritt das ursprüngliche Dreierlimit, die fünfte war die begründete Save-Nachprüfung. |
+| Musik / Master | Aktuellen Producer und seinen ausdrücklich aufgerufenen MIDI-Builder quellengebunden gelesen | Prozedurale Komposition und Syntheseweg belegt. Tatsächlich verwendete SoundFont samt Hash/Lizenzbeleg fehlt im Prüfkontext; keine Rechte-/Hörabnahme abgeleitet. Drei GitHub-Reads, keine Binary-Neuladung, Installation, Generierung oder Render. Derselbe offene Master bleibt bestehen. |
+| Fehler / Memory | Fehlversuch mit fehlendem python im Theme-Sandbox und den nativen Renderer-Befund dokumentiert; Quellen danach mit verfügbaren Shellwerkzeugen gesichert | Kein Auth-/Quota-Fehler oder leere-Daten-Beweis. Native Darstellungsauffälligkeit nicht als Live-Shopdefekt ausgegeben. Tagesblock,24IDs und Historien erhalten. Keine neuen Tagesreports, Socialposts, Löschungen, Budgets, Rabatte, Versand-/Flow-/DNSänderungen, Workflows oder Automation. Claude-Empfang unbekannt. |
+
+[Bericht](WEITERARBEIT-20261115-R229.md) · [Belege](WEITERARBEIT-20261115-R229.json).
+

@@ -1,3 +1,15 @@
+# R229 – Popup im Prüftheme gespeichert, Musikquelle präzisiert – 15.11.2026 Zürich
+
+Genau ein Satz der Popup-Rückmeldung ist im UNPUBLISHED-Theme213013037447 gespeichert: «Deine Anmeldung wurde übermittelt.» Version14499e471299d707a12fb1d1986ac1390480a777, eine Datei saved, pending leer. Vollständige Footerdatei zuvor bytegleich zu MAIN; nachher Struktur-/Byte-/Peerprüfung mit unveränderten Skripten und übrigen Einstellungen. Mobile Preview liefert den gespeicherten Satz und zeigt ihn lesbar. Nur lokale display-Stile geöffnet, keine Anmeldung, Text-Injektion, Zustands-/Consent- oder Flowänderung.
+
+Keine Live-Übernahme. Das gesamte ältere Prüftheme ist nicht abgenommen; spätere Übernahme auf den geprüften Satz und frische Livequelle begrenzen. Native Aufnahmen zeigten auffällige Headergrössen, aber MAIN und Preview waren byteidentisch; normaler Chromium-Browser bestätigt korrekten Header,22px-Herz und keine CSS-Fehler/Überbreite bei1440/390. Kein CSS-Fix oder globale Shopabnahme behauptet.
+
+Aktueller Producer/MIDI-Builder der Pflichtmusik wurden gelesen. Prozedurale Komposition und Syntheseweg belegt; tatsächlich genutzte SoundFont samt Hash/Lizenz-/Exportbeleg weiterhin offen. Kein Render, anderer Track oder neue Master-MP4. Tagesreports ausR228 und GSC ausR226 nicht wiederholt; keine Socialwrites/Kundenansprache oder neue Automation. 24IDs/Historien erhalten, Claude-Empfang unbekannt. Memory-Link am Schluss teilen.
+
+[Bericht und Tagesergänzung](WEITERARBEIT-20261115-R229.md) · [Popup-Proof](POPUP-PRUEFSTAND-20261115-R229.json) · [Musikquellen](MUSIK-QUELLENPRUEFUNG-20261115-R229.md).
+
+---
+
 # R228 – Morgenlauf: aktuelle Planung, Tagesreports und konkrete Entwürfe – 15.11.2026 Zürich
 
 Shop/CHF und Metricool 6227837 / Europe/Zurich / sechs Identitäten frisch bestätigt. Vier kleine Queueabfragen liefern weiterhin 42 Objekte und 51 PENDING-Kanalzustände: globale Termine auf IG/FB/TikTok/Pinterest je Datum vom 15.–22. November; Threads am 15. November und YouTube vom 15.–22. November offen. Keine exakten Feldduplikate im Fenster, keine globale Byte-/Historiengarantie. Nur IG liefert kanalbezogene Auto-Publish-Werte. Keine neuen Posts, Löschungen oder eigenen Publikationen; alte Auslieferung mit scheduled-only unbekannt.

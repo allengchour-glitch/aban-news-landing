@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 228,
-  "updatedAt": "2026-11-15T07:19:23.182598+00:00",
+  "revision": 229,
+  "updatedAt": "2026-11-15T09:02:53.684628+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4161,17 +4161,16 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r228_daily_social_flow_reports_and_product_master_sales_package_prepared",
+      "state": "r229_unpublished_popup_saved_verified_and_music_source_gap_named",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Automations-Morgenlauf: aktuelle Core4 gelesen, Shop/Marke bestätigt, Planung und heutige Social-/Flowreports einmal begrenzt gelesen sowie offline geprüft. Denselben Master mit frischer A-Referenz und sechs Kanaltexten fortgeführt, exakten Zweistellen-Verkaufsdiff und genau einen Capture-Textvorschlag vorbereitet. Keine neuen externen Businesswrites. Memory-Link am Schluss beibehalten; keine Claude-Quittung.",
-      "nextAllowedStep": "Heute R228-Kennzahlen/Klaviyo und R226-GSC wiederverwenden. Native A-Takes/Rechte/Abnahme für denselben Master priorisieren, konkrete Verkaufs-/Capture-Entwürfe zur Freigabe vorlegen und offene Kanal-/Statuslücken nennen. Bestehende08/14/19-Zeiten unverändert. Abschliessend direkten aktuellen Memory-Link teilen.",
+      "lastEvidence": "R228 fortgesetzt: aktuelle Core4/Identitäten, Ein-Satz-Quellpatch und Native-/Browser-Gegenprobe. Eine Datei im unveröffentlichten Theme gespeichert und frisch zurückgelesen; mobile Anzeige bestätigt, keine Anmeldung/Flow-/Liveänderung. Musikquellen präzisiert, tatsächlicher Font-/Lizenz-/Exportbeleg offen. Heute keine erneuten Leistungsreports. Quellenfehler und fünf tatsächliche Browserladungen dokumentiert.",
+      "nextAllowedStep": "Am Schluss direkten aktuellen Memory-Link teilen. Live-Übernahme bleibt auf konkret freigegebenen Satz und frische Quelle begrenzt; kein Vollpublish des älteren Themes. R228-Tagesreports/R226-GSC wiederverwenden, denselben Master mit konkreter Font-/Filmrechtekette weiterentwickeln. Keine neue Automation oder Zeitplanänderung.",
       "blockers": [
-        "Claude-Kenntnisnahme und tatsächliche Scheduler-Ausführung nur mit eigenem Beleg behaupten.",
-        "Professionelle Medien-/Rechte-/Bio-/Board-/Ledger-Gates bleiben vor neuen Socialwrites verbindlich.",
-        "Termine sind keine PUBLISHED-Belege; fehlende vergangene Kanalzustände bleiben unbekannt.",
-        "Verkaufs-/Capture-Entwürfe sind keine Shop-/Flow-/Rabattfreigabe. DNS/Ads und andere spezialisierte Grenzen unverändert."
+        "Claude-Empfang unbekannt; gespeichertes Theme ist keine veröffentlichte Seite.",
+        "Einzelne Textänderung freigabefähig vorbereitet, gesamtes älteres Theme nicht abgenommen.",
+        "Film-/Musik-/Kanal-/Ledger-Gates weiterhin vor neuen Social-Pushes erforderlich."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5276,6 +5275,60 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BROWSER-DESKTOP-GEGENPROBE-20261115-R229.png",
+          "sha256": "1c76bb154e4a2177780dbcac30ccb05eb3d3b23f01223580c4f873b9fbdd127f",
+          "gitBlobSha": "dd0246c2ff804baca0718ef0362027a6bd2c82c5",
+          "bytes": 495718
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.json",
+          "sha256": "9ac0cc92e6d0c0ef9b3a1e205a9bd63aae724354feecc618003bd6cceb6a84c3",
+          "gitBlobSha": "b74d158222784c75b5c40b1d87310db27d5cff3e",
+          "bytes": 9301
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.md",
+          "sha256": "fb99569c7ca2a2e9a478df1293745ae2aed6344e58a9f51ade678f028851fe3b",
+          "gitBlobSha": "17963af3fcd2f2a8a5c8fe0d18a1af874667b581",
+          "bytes": 1160
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/NATIVE-VORSCHAU-GRENZE-20261115-R229.webp",
+          "sha256": "8971d9d99f6a77c573de4c5990abc6d058b54d242ba7498305d89d12065d839d",
+          "gitBlobSha": "ec0428006d2b3c8f8b3f5ae40f941dabeaf2b161",
+          "bytes": 75300
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-EINZELSATZ-20261115-R229.patch",
+          "sha256": "9795ffe246802a7b8ac2a340e91249a4a4a48e3790e938641991b66ac113ec88",
+          "gitBlobSha": "27565e6fa54c30360dae759167910c619afe2b58",
+          "bytes": 22453
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-MOBIL-PRUEFSTAND-20261115-R229.png",
+          "sha256": "5204c5aec89dc2c56c2eb5bcc9991e06a5d44ea836eff6f2765daa426d0e47b7",
+          "gitBlobSha": "9a76b84bedf0fb7bdcbad538bd8ff91d576931a4",
+          "bytes": 108311
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-PRUEFSTAND-20261115-R229.json",
+          "sha256": "800ed051598b8330c06ee36d5e71f0a76a38ae6363634ba799951d1f1d1cd2cd",
+          "gitBlobSha": "ed17b347badc7eed48ce7da7c44271eb1d2da6fa",
+          "bytes": 567577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+          "sha256": "b98680e0325e1c702d44d586e22dab72d41f0eeda1baf24bef301aedc11fcbca",
+          "gitBlobSha": "54541bfdf8568e787795ba2e267f7b12dbfdb039",
+          "bytes": 4967
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.md",
+          "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
+          "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
+          "bytes": 6332
         }
       ],
       "requiresFreshVerification": true,
@@ -7565,6 +7618,21 @@
             "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector.",
             "R227: Printful-Kandidat noch nicht produktiv. Google-Nachweis nur für eine URL mit Crawl vom 04.11.; optionale Varianten-/Offer-Warnungen und Nettoinhalt Modell6 offen."
           ]
+        },
+        {
+          "at": "2026-11-15T09:02:53.684628+00:00",
+          "sourceRevision": 228,
+          "previousState": "r228_daily_social_flow_reports_and_product_master_sales_package_prepared",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Automations-Morgenlauf: aktuelle Core4 gelesen, Shop/Marke bestätigt, Planung und heutige Social-/Flowreports einmal begrenzt gelesen sowie offline geprüft. Denselben Master mit frischer A-Referenz und sechs Kanaltexten fortgeführt, exakten Zweistellen-Verkaufsdiff und genau einen Capture-Textvorschlag vorbereitet. Keine neuen externen Businesswrites. Memory-Link am Schluss beibehalten; keine Claude-Quittung.",
+          "previousNextAllowedStep": "Heute R228-Kennzahlen/Klaviyo und R226-GSC wiederverwenden. Native A-Takes/Rechte/Abnahme für denselben Master priorisieren, konkrete Verkaufs-/Capture-Entwürfe zur Freigabe vorlegen und offene Kanal-/Statuslücken nennen. Bestehende08/14/19-Zeiten unverändert. Abschliessend direkten aktuellen Memory-Link teilen.",
+          "previousBlockers": [
+            "Claude-Kenntnisnahme und tatsächliche Scheduler-Ausführung nur mit eigenem Beleg behaupten.",
+            "Professionelle Medien-/Rechte-/Bio-/Board-/Ledger-Gates bleiben vor neuen Socialwrites verbindlich.",
+            "Termine sind keine PUBLISHED-Belege; fehlende vergangene Kanalzustände bleiben unbekannt.",
+            "Verkaufs-/Capture-Entwürfe sind keine Shop-/Flow-/Rabattfreigabe. DNS/Ads und andere spezialisierte Grenzen unverändert."
+          ]
         }
       ],
       "reviewPacket": {
@@ -9480,23 +9548,28 @@
         "at": "2026-11-15T07:19:23.182598+00:00",
         "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
         "ownExternalWrites": 0
+      },
+      "run229": {
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+        "themeSaveUnpublished": true,
+        "livePublish": false
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r228_A_product_gate_and_reference_confirmed_same_master_not_rendered",
+      "state": "r229_music_producer_and_dependency_provenance_refined_no_film",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "A68122445283719/CJSN139239101AZ/CHF34.90 frisch nativ und öffentlich bestätigt: ACTIVE,12Tags ohne Library-/Inhaber-rueckhol-Sperre, untracked/CONTINUE, available. Echtes A-Bild frischHTTP200, visuell geprüft und hashgleich zur R214-Referenz. Ein CJ-Detailread bestätigt die Ausführungsunterschiede; nur Auszug erhalten, vollständige Rohantwort fehlt. Denselben18s/540Frame-Master und sechs UTM-Captions fortgeführt, keine neue kreative Serie. Pflicht-WAV aktuell blob-/hashgleich; CREDITS gegengeprüft. Keine Master-MP4 oder Rechte-/Hörabnahme.",
-      "nextAllowedStep": "Native A-Takes samt echter Handlung, Motiv-/Einheitsbeleg und kommerzieller Freigabe erhalten. Vor finalem Schnitt aktuelle Quellen und Musikrechte vollständig binden; bestehenden Master fertigstellen, dann Bild/Ton/Text/Ausschnitte abnehmen. Keine alten 960x540/25fps-Clips als Premium-Master ausgeben. Vor jedem Push frische Kanal-/Bio-/Board-/Ledger-/Historienprüfung.",
+      "lastEvidence": "Produkt-/Bild-/Tagprüfung ausR228 datiert wiederverwendet, keine neue Preis-/Produktbehauptung. Aktueller Main4c627478: Producer und aufgerufenen MIDI-Builder gelesen. Prozedurale Komposition, FluidSynth/SoX/FFmpeg-Weg und FluidR3_GM.sf2-Default/SF2-Override belegt. Tatsächlich eingesetzte Fontversion/-hash und Copyright-Lizenz lokal nicht vorhanden; Source-Erklärung ist keine vollständige kommerzielle Freigabe. Kein Binarydownload, Render, anderer Track oder neue Master-ID.",
+      "nextAllowedStep": "Tatsächlich benutzte SF2-Datei/Version/Hash, zugehörige Nutzungsbedingungen und Exportbindung an WAVa7674eca belegen. Native A-Takes und Motiv-/Einheitsrechte weiter priorisieren; finalen Film erst nach Qualitäts-/Ton-/Ausschnitt-/Inhaberabnahme verwenden. R228-Storyboard/Captions bleiben Entwürfe.",
       "blockers": [
-        "A-/Motivbindung an konkrete Filmquelle fehlt; aktuelles Referenzbild ist eine Collage und kein Motiv-/Lieferumfangbeweis.",
-        "Native hochwertige Original-Takes und professionelle finale MP4 fehlen.",
-        "Kommerzielle Film-/Bearbeitungsrechte, vollständige Musiklizenzkette und finale Hör-/Bild-/Text-/Cropabnahme offen.",
-        "Bioziele, aktuelles Kontoboard und vollständiges älteres Publikationsregister für einen neuen Push nicht belegt."
+        "Native A-Takes und aktueller Film-/Motivbezug fehlen.",
+        "Tatsächlich verwendete SoundFont und passende Lizenz-/Copyrightdatei plus Exportbindung nicht belegt.",
+        "Finale Master-MP4, kommerzielle Filmrechte, Hör-/Bild-/Text-/Plattformausschnittabnahme offen.",
+        "Vor Socialwrite weiterhin aktuelle Bio-/Board-/Ledger-/Historiengates; kein neuer freigegebener Content."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -10180,6 +10253,60 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BROWSER-DESKTOP-GEGENPROBE-20261115-R229.png",
+          "sha256": "1c76bb154e4a2177780dbcac30ccb05eb3d3b23f01223580c4f873b9fbdd127f",
+          "gitBlobSha": "dd0246c2ff804baca0718ef0362027a6bd2c82c5",
+          "bytes": 495718
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.json",
+          "sha256": "9ac0cc92e6d0c0ef9b3a1e205a9bd63aae724354feecc618003bd6cceb6a84c3",
+          "gitBlobSha": "b74d158222784c75b5c40b1d87310db27d5cff3e",
+          "bytes": 9301
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.md",
+          "sha256": "fb99569c7ca2a2e9a478df1293745ae2aed6344e58a9f51ade678f028851fe3b",
+          "gitBlobSha": "17963af3fcd2f2a8a5c8fe0d18a1af874667b581",
+          "bytes": 1160
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/NATIVE-VORSCHAU-GRENZE-20261115-R229.webp",
+          "sha256": "8971d9d99f6a77c573de4c5990abc6d058b54d242ba7498305d89d12065d839d",
+          "gitBlobSha": "ec0428006d2b3c8f8b3f5ae40f941dabeaf2b161",
+          "bytes": 75300
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-EINZELSATZ-20261115-R229.patch",
+          "sha256": "9795ffe246802a7b8ac2a340e91249a4a4a48e3790e938641991b66ac113ec88",
+          "gitBlobSha": "27565e6fa54c30360dae759167910c619afe2b58",
+          "bytes": 22453
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-MOBIL-PRUEFSTAND-20261115-R229.png",
+          "sha256": "5204c5aec89dc2c56c2eb5bcc9991e06a5d44ea836eff6f2765daa426d0e47b7",
+          "gitBlobSha": "9a76b84bedf0fb7bdcbad538bd8ff91d576931a4",
+          "bytes": 108311
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-PRUEFSTAND-20261115-R229.json",
+          "sha256": "800ed051598b8330c06ee36d5e71f0a76a38ae6363634ba799951d1f1d1cd2cd",
+          "gitBlobSha": "ed17b347badc7eed48ce7da7c44271eb1d2da6fa",
+          "bytes": 567577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+          "sha256": "b98680e0325e1c702d44d586e22dab72d41f0eeda1baf24bef301aedc11fcbca",
+          "gitBlobSha": "54541bfdf8568e787795ba2e267f7b12dbfdb039",
+          "bytes": 4967
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.md",
+          "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
+          "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
+          "bytes": 6332
         }
       ],
       "requiresFreshVerification": true,
@@ -11025,6 +11152,21 @@
             "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
             "Quellen-/Musikrechte sowie Hör-, Bild-, Text- und Plattformausschnittabnahme am endgültigen Film bleiben offen.",
             "Dauerhaftes Medienarchiv und vollständige ältere Masterhistorie sind nicht belegt."
+          ]
+        },
+        {
+          "at": "2026-11-15T09:02:53.684628+00:00",
+          "sourceRevision": 228,
+          "previousState": "r228_A_product_gate_and_reference_confirmed_same_master_not_rendered",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "A68122445283719/CJSN139239101AZ/CHF34.90 frisch nativ und öffentlich bestätigt: ACTIVE,12Tags ohne Library-/Inhaber-rueckhol-Sperre, untracked/CONTINUE, available. Echtes A-Bild frischHTTP200, visuell geprüft und hashgleich zur R214-Referenz. Ein CJ-Detailread bestätigt die Ausführungsunterschiede; nur Auszug erhalten, vollständige Rohantwort fehlt. Denselben18s/540Frame-Master und sechs UTM-Captions fortgeführt, keine neue kreative Serie. Pflicht-WAV aktuell blob-/hashgleich; CREDITS gegengeprüft. Keine Master-MP4 oder Rechte-/Hörabnahme.",
+          "previousNextAllowedStep": "Native A-Takes samt echter Handlung, Motiv-/Einheitsbeleg und kommerzieller Freigabe erhalten. Vor finalem Schnitt aktuelle Quellen und Musikrechte vollständig binden; bestehenden Master fertigstellen, dann Bild/Ton/Text/Ausschnitte abnehmen. Keine alten 960x540/25fps-Clips als Premium-Master ausgeben. Vor jedem Push frische Kanal-/Bio-/Board-/Ledger-/Historienprüfung.",
+          "previousBlockers": [
+            "A-/Motivbindung an konkrete Filmquelle fehlt; aktuelles Referenzbild ist eine Collage und kein Motiv-/Lieferumfangbeweis.",
+            "Native hochwertige Original-Takes und professionelle finale MP4 fehlen.",
+            "Kommerzielle Film-/Bearbeitungsrechte, vollständige Musiklizenzkette und finale Hör-/Bild-/Text-/Cropabnahme offen.",
+            "Bioziele, aktuelles Kontoboard und vollständiges älteres Publikationsregister für einen neuen Push nicht belegt."
           ]
         }
       ],
@@ -12060,6 +12202,11 @@
         "at": "2026-11-15T07:19:23.182598+00:00",
         "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
         "ownExternalWrites": 0
+      },
+      "run229": {
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+        "themeSaveUnpublished": true,
+        "livePublish": false
       }
     },
     {
@@ -14904,17 +15051,17 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r206_nine_existing_shop_collections_reviewed_interactive_5plus4_preview_no_native_save",
+      "state": "r229_native_header_artifact_counterchecked_no_layout_write",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
-      "lastEvidence": "Alle9vorhandenenKollektionsIDs/Shopstatus/Bilder frisch,18Mitgliedsplatzierungen/16eindeutigeACTIVEProdukte mitTags/Wächter geprüft. Neue interne5+4Kartenreihen-Vorschau mitAuswahl/Reihenfolge/Reset/Prüflistenexport erstellt;390/1440ChromiumQA undRootbildprüfung. NativeDarstellungnurSchematisch,0Shopwrites/ProfilSaves;APIweiterfunktioniert,steuerbarerHändlerbrowserfehlt.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Ein-Satz-Popupprüfung führte zu nativen Desktop-/Mobileaufnahmen mit auffälliger Headerdarstellung. MAIN-/Preview-Desktopbilder sind byteidentisch. Öffentlicher Chromium-Read zeigt normalen Header, Herz22x22px, Logo215x44px, keine CSS-Fehler oder horizontale Überbreite bei1440/390. Kein CSS- oder Layoutwrite. Nach gespeichertem Preview-Satz mobile Lesbarkeitsansicht mit nur lokalen display-Overrides geprüft.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=213619179911",
-      "nextAllowedStep": "Bestehende9IDs im nativen angemeldeten Shopeditor nach5+4Vorlage anordnen undSave separatbestätigen. KeineDoppelkarte/neueKollektion/leererDrittblock; VorschauistkeinShopimport oderfertigesProfil.",
+      "nextAllowedStep": "Native Aufnahmeauffälligkeit nicht als belegten Live-Shopdefekt oder neuen Fix ausgeben. Bei weiteren Änderungen reale Browsergeometrie und genaue Quell-Diffs nutzen; keine ganze ältere Theme-Version aus diesem begrenzten Check veröffentlichen.",
       "blockers": [
-        "Publishwerkzeug fehlt.",
-        "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
-        "Menü-IA bleibt separat gesperrt und ist nicht Teil dieses Themes."
+        "Begrenzte Homepage-/Popup-Prüfung, keine vollständige Theme-/Checkout-/Accessibility-Abnahme.",
+        "Nicht-GET/HEAD bewusst blockiert; Netzwerk-/Consentfehler aus dieser Sperre sind keine normalen Shopfehler.",
+        "Älteres Prüftheme als Ganzes nicht zur Live-Übernahme abgenommen."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -15283,6 +15430,60 @@
           "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
           "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d",
           "readAt": "2026-11-14T12:48:38.423883+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BROWSER-DESKTOP-GEGENPROBE-20261115-R229.png",
+          "sha256": "1c76bb154e4a2177780dbcac30ccb05eb3d3b23f01223580c4f873b9fbdd127f",
+          "gitBlobSha": "dd0246c2ff804baca0718ef0362027a6bd2c82c5",
+          "bytes": 495718
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.json",
+          "sha256": "9ac0cc92e6d0c0ef9b3a1e205a9bd63aae724354feecc618003bd6cceb6a84c3",
+          "gitBlobSha": "b74d158222784c75b5c40b1d87310db27d5cff3e",
+          "bytes": 9301
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.md",
+          "sha256": "fb99569c7ca2a2e9a478df1293745ae2aed6344e58a9f51ade678f028851fe3b",
+          "gitBlobSha": "17963af3fcd2f2a8a5c8fe0d18a1af874667b581",
+          "bytes": 1160
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/NATIVE-VORSCHAU-GRENZE-20261115-R229.webp",
+          "sha256": "8971d9d99f6a77c573de4c5990abc6d058b54d242ba7498305d89d12065d839d",
+          "gitBlobSha": "ec0428006d2b3c8f8b3f5ae40f941dabeaf2b161",
+          "bytes": 75300
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-EINZELSATZ-20261115-R229.patch",
+          "sha256": "9795ffe246802a7b8ac2a340e91249a4a4a48e3790e938641991b66ac113ec88",
+          "gitBlobSha": "27565e6fa54c30360dae759167910c619afe2b58",
+          "bytes": 22453
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-MOBIL-PRUEFSTAND-20261115-R229.png",
+          "sha256": "5204c5aec89dc2c56c2eb5bcc9991e06a5d44ea836eff6f2765daa426d0e47b7",
+          "gitBlobSha": "9a76b84bedf0fb7bdcbad538bd8ff91d576931a4",
+          "bytes": 108311
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-PRUEFSTAND-20261115-R229.json",
+          "sha256": "800ed051598b8330c06ee36d5e71f0a76a38ae6363634ba799951d1f1d1cd2cd",
+          "gitBlobSha": "ed17b347badc7eed48ce7da7c44271eb1d2da6fa",
+          "bytes": 567577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+          "sha256": "b98680e0325e1c702d44d586e22dab72d41f0eeda1baf24bef301aedc11fcbca",
+          "gitBlobSha": "54541bfdf8568e787795ba2e267f7b12dbfdb039",
+          "bytes": 4967
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.md",
+          "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
+          "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
+          "bytes": 6332
         }
       ],
       "requiresFreshVerification": true,
@@ -15867,6 +16068,20 @@
               "sha256": "1ae585f9057c35983a785b60a78a9d1fbae412f0afe2ecc9182b9e5444d2983e",
               "gitBlobSha": "fdea21799aaedc64dd187490bc82b5f7dab2917d"
             }
+          ]
+        },
+        {
+          "at": "2026-11-15T09:02:53.684628+00:00",
+          "sourceRevision": 228,
+          "previousState": "r206_nine_existing_shop_collections_reviewed_interactive_5plus4_preview_no_native_save",
+          "previousLastEvidenceDate": "2026-11-14",
+          "previousBelegArt": "R206_FIVE_TARGETED_HOLD_RESTORATIONS_EXACT_READBACK_AND_INTERNAL_LAYOUT_QA",
+          "previousLastEvidence": "Alle9vorhandenenKollektionsIDs/Shopstatus/Bilder frisch,18Mitgliedsplatzierungen/16eindeutigeACTIVEProdukte mitTags/Wächter geprüft. Neue interne5+4Kartenreihen-Vorschau mitAuswahl/Reihenfolge/Reset/Prüflistenexport erstellt;390/1440ChromiumQA undRootbildprüfung. NativeDarstellungnurSchematisch,0Shopwrites/ProfilSaves;APIweiterfunktioniert,steuerbarerHändlerbrowserfehlt.",
+          "previousNextAllowedStep": "Bestehende9IDs im nativen angemeldeten Shopeditor nach5+4Vorlage anordnen undSave separatbestätigen. KeineDoppelkarte/neueKollektion/leererDrittblock; VorschauistkeinShopimport oderfertigesProfil.",
+          "previousBlockers": [
+            "Publishwerkzeug fehlt.",
+            "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
+            "Menü-IA bleibt separat gesperrt und ist nicht Teil dieses Themes."
           ]
         }
       ],
@@ -16751,6 +16966,11 @@
           }
         ],
         "nativeProfileSave": false
+      },
+      "run229": {
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+        "themeSaveUnpublished": true,
+        "livePublish": false
       }
     },
     {
@@ -22434,17 +22654,17 @@
       "id": "welcome-service-trust-20261102",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r228_capture_list_binding_confirmed_one_popup_copy_proposal_no_write",
+      "state": "r229_popup_one_sentence_saved_unpublished_mobile_checked",
       "title": "Welcome-Serviceangaben mit genau zwei belegten Zeilen korrigieren",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "KlaviyoXWqMAD/LuxeStyle CH/EuropeZurich/USD und ShopCHF frisch bestätigt. Forms-API leer mit nextnull; Website-HTML enthält zwei Inline-Anmeldewege zu T2VHfu, identisch mit aktueller Welcome-Triggerliste. Laufzeit/Consent/Listeneintrag nicht getestet. VbLQj6 bleibt draft. Einziger neuer R228-Vorschlag: sofortige E-Mail-Zusage im Popup neutralisieren. Früherer R175-Betreffentwurf bleibt historische separate Vorbereitung, heute nicht erneut als neue Arbeit ausgegeben.",
-      "nextAllowedStep": "Genau den dokumentierten Popup-Satz nur nach Freigabe, aktuellem Theme-Quellvergleich und anschliessender öffentlicher Gegenprobe ändern. Welcome und Aktionen draft lassen. Das ist keine Übernahme einer früheren Betreff-/Zweizeilenfreigabe und keine neue Rabatt-, Flowaktivierungs- oder Sendeerlaubnis. Capture-Laufzeit ohne Kundenansprache gesondert prüfen.",
+      "lastEvidence": "Aktuelle MAIN-/Preview-Footerdatei vor Änderung hashgleich. Ein Satz in custom_liquid_lxpopup neutralisiert und nach Quell-/Peerprüfung im UNPUBLISHED-Theme213013037447 gespeichert; Version14499e471299d707a12fb1d1986ac1390480a777, saved eine Datei, pending leer. Neue mobile Preview liefert den Satz; Screenshot nur mit lokalen display-Overrides, kein Submit/State/Consent. Sämtliche Skriptbytes und übrige Einstellungen erhalten. MAIN unverändert; keine Live-Übernahme oder Flowänderung.",
+      "nextAllowedStep": "Den geprüften Satz nur nach konkreter Freigabe und frischem Quellenvergleich kontrolliert in den aktuellen Live-Stand übernehmen. Nicht das gesamte ältere Prüftheme veröffentlichen. R228-Capture-/Flowdaten wiederverwenden; Laufzeit/Listeneintrag/E-Mail-Zustellung bleiben separat ungeprüft. Kein Testsend oder Kundenkontakt.",
       "blockers": [
-        "Statischer Listenabgleich beweist keine erfolgreiche Anmeldung, Einwilligung oder End-to-End-Zustellung.",
-        "Popup-Korrektur ist ein neuer Freigabeentwurf; kein Theme-/Flowwrite.",
-        "Welcome-Rabattbehauptung und ältere Inhalte bleiben vor jeder Aktivierung gesondert zu prüfen.",
-        "Keine Shopumsatz-/Syncableitung aus Flowreport; USD und CHF getrennt."
+        "Die Korrektur ist nur im unveröffentlichten Theme gespeichert; keine Livefreigabe/-Übernahme.",
+        "Das gesamte ältere Theme ist nicht abgenommen und keine pauschale Publish-Grundlage.",
+        "Display-only-Ansicht ist keine erfolgreiche Anmeldung oder Einwilligungs-/Sendeprüfung.",
+        "Frühere Betreff-/Welcome-Vorschläge und Aktivierungsgrenzen bleiben separat; kein Rabatt oder Flow aktiviert."
       ],
       "acceptance": [
         "Genau zwei belegte Servicezeilen ändern, keine erfundenen Liefer-, Material- oder Bestandsversprechen.",
@@ -22622,6 +22842,60 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/BROWSER-DESKTOP-GEGENPROBE-20261115-R229.png",
+          "sha256": "1c76bb154e4a2177780dbcac30ccb05eb3d3b23f01223580c4f873b9fbdd127f",
+          "gitBlobSha": "dd0246c2ff804baca0718ef0362027a6bd2c82c5",
+          "bytes": 495718
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.json",
+          "sha256": "9ac0cc92e6d0c0ef9b3a1e205a9bd63aae724354feecc618003bd6cceb6a84c3",
+          "gitBlobSha": "b74d158222784c75b5c40b1d87310db27d5cff3e",
+          "bytes": 9301
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.md",
+          "sha256": "fb99569c7ca2a2e9a478df1293745ae2aed6344e58a9f51ade678f028851fe3b",
+          "gitBlobSha": "17963af3fcd2f2a8a5c8fe0d18a1af874667b581",
+          "bytes": 1160
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/NATIVE-VORSCHAU-GRENZE-20261115-R229.webp",
+          "sha256": "8971d9d99f6a77c573de4c5990abc6d058b54d242ba7498305d89d12065d839d",
+          "gitBlobSha": "ec0428006d2b3c8f8b3f5ae40f941dabeaf2b161",
+          "bytes": 75300
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-EINZELSATZ-20261115-R229.patch",
+          "sha256": "9795ffe246802a7b8ac2a340e91249a4a4a48e3790e938641991b66ac113ec88",
+          "gitBlobSha": "27565e6fa54c30360dae759167910c619afe2b58",
+          "bytes": 22453
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-MOBIL-PRUEFSTAND-20261115-R229.png",
+          "sha256": "5204c5aec89dc2c56c2eb5bcc9991e06a5d44ea836eff6f2765daa426d0e47b7",
+          "gitBlobSha": "9a76b84bedf0fb7bdcbad538bd8ff91d576931a4",
+          "bytes": 108311
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-PRUEFSTAND-20261115-R229.json",
+          "sha256": "800ed051598b8330c06ee36d5e71f0a76a38ae6363634ba799951d1f1d1cd2cd",
+          "gitBlobSha": "ed17b347badc7eed48ce7da7c44271eb1d2da6fa",
+          "bytes": 567577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+          "sha256": "b98680e0325e1c702d44d586e22dab72d41f0eeda1baf24bef301aedc11fcbca",
+          "gitBlobSha": "54541bfdf8568e787795ba2e267f7b12dbfdb039",
+          "bytes": 4967
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.md",
+          "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
+          "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
+          "bytes": 6332
         }
       ],
       "requiresFreshVerification": true,
@@ -22742,6 +23016,21 @@
             "R175: Live-Capture bleibt unbekannt; leere Forms-Daten sind kein Negativbeweis.",
             "R175: VbLQj6-Betreffneutralisierung ist ein Freigabeentwurf und keine Rabatt- oder Aktivierungsfreigabe.",
             "R175: Flowreportdaten beweisen keine Shopverkäufe oder Umsatzwirkung; USD und CHF bleiben getrennt."
+          ]
+        },
+        {
+          "at": "2026-11-15T09:02:53.684628+00:00",
+          "sourceRevision": 228,
+          "previousState": "r228_capture_list_binding_confirmed_one_popup_copy_proposal_no_write",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "KlaviyoXWqMAD/LuxeStyle CH/EuropeZurich/USD und ShopCHF frisch bestätigt. Forms-API leer mit nextnull; Website-HTML enthält zwei Inline-Anmeldewege zu T2VHfu, identisch mit aktueller Welcome-Triggerliste. Laufzeit/Consent/Listeneintrag nicht getestet. VbLQj6 bleibt draft. Einziger neuer R228-Vorschlag: sofortige E-Mail-Zusage im Popup neutralisieren. Früherer R175-Betreffentwurf bleibt historische separate Vorbereitung, heute nicht erneut als neue Arbeit ausgegeben.",
+          "previousNextAllowedStep": "Genau den dokumentierten Popup-Satz nur nach Freigabe, aktuellem Theme-Quellvergleich und anschliessender öffentlicher Gegenprobe ändern. Welcome und Aktionen draft lassen. Das ist keine Übernahme einer früheren Betreff-/Zweizeilenfreigabe und keine neue Rabatt-, Flowaktivierungs- oder Sendeerlaubnis. Capture-Laufzeit ohne Kundenansprache gesondert prüfen.",
+          "previousBlockers": [
+            "Statischer Listenabgleich beweist keine erfolgreiche Anmeldung, Einwilligung oder End-to-End-Zustellung.",
+            "Popup-Korrektur ist ein neuer Freigabeentwurf; kein Theme-/Flowwrite.",
+            "Welcome-Rabattbehauptung und ältere Inhalte bleiben vor jeder Aktivierung gesondert zu prüfen.",
+            "Keine Shopumsatz-/Syncableitung aus Flowreport; USD und CHF getrennt."
           ]
         }
       ],
@@ -22900,6 +23189,11 @@
         "at": "2026-11-15T07:19:23.182598+00:00",
         "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
         "ownExternalWrites": 0
+      },
+      "run229": {
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+        "themeSaveUnpublished": true,
+        "livePublish": false
       }
     },
     {
@@ -29591,6 +29885,70 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 229,
+      "at": "2026-11-15T09:02:53.684628+00:00",
+      "actor": "codex",
+      "summary": "Ein Popup-Satz nach Quell- und Browserprüfung im unveröffentlichten Theme gespeichert, keine Live-Übernahme. Native Headerauffälligkeit durch identische MAIN-Aufnahme und normales Chromium-Rendering eingegrenzt. Musikproduktionsquelle gelesen, konkreter Font-/Lizenz-/Exportnachweis offen. Keine Tagesreports wiederholt;24IDs/Historien erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/BROWSER-DESKTOP-GEGENPROBE-20261115-R229.png",
+          "sha256": "1c76bb154e4a2177780dbcac30ccb05eb3d3b23f01223580c4f873b9fbdd127f",
+          "gitBlobSha": "dd0246c2ff804baca0718ef0362027a6bd2c82c5",
+          "bytes": 495718
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.json",
+          "sha256": "9ac0cc92e6d0c0ef9b3a1e205a9bd63aae724354feecc618003bd6cceb6a84c3",
+          "gitBlobSha": "b74d158222784c75b5c40b1d87310db27d5cff3e",
+          "bytes": 9301
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MUSIK-QUELLENPRUEFUNG-20261115-R229.md",
+          "sha256": "fb99569c7ca2a2e9a478df1293745ae2aed6344e58a9f51ade678f028851fe3b",
+          "gitBlobSha": "17963af3fcd2f2a8a5c8fe0d18a1af874667b581",
+          "bytes": 1160
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/NATIVE-VORSCHAU-GRENZE-20261115-R229.webp",
+          "sha256": "8971d9d99f6a77c573de4c5990abc6d058b54d242ba7498305d89d12065d839d",
+          "gitBlobSha": "ec0428006d2b3c8f8b3f5ae40f941dabeaf2b161",
+          "bytes": 75300
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-EINZELSATZ-20261115-R229.patch",
+          "sha256": "9795ffe246802a7b8ac2a340e91249a4a4a48e3790e938641991b66ac113ec88",
+          "gitBlobSha": "27565e6fa54c30360dae759167910c619afe2b58",
+          "bytes": 22453
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-MOBIL-PRUEFSTAND-20261115-R229.png",
+          "sha256": "5204c5aec89dc2c56c2eb5bcc9991e06a5d44ea836eff6f2765daa426d0e47b7",
+          "gitBlobSha": "9a76b84bedf0fb7bdcbad538bd8ff91d576931a4",
+          "bytes": 108311
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/POPUP-PRUEFSTAND-20261115-R229.json",
+          "sha256": "800ed051598b8330c06ee36d5e71f0a76a38ae6363634ba799951d1f1d1cd2cd",
+          "gitBlobSha": "ed17b347badc7eed48ce7da7c44271eb1d2da6fa",
+          "bytes": 567577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
+          "sha256": "b98680e0325e1c702d44d586e22dab72d41f0eeda1baf24bef301aedc11fcbca",
+          "gitBlobSha": "54541bfdf8568e787795ba2e267f7b12dbfdb039",
+          "bytes": 4967
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.md",
+          "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
+          "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
+          "bytes": 6332
         }
       ],
       "taskCount": 24,
@@ -55173,6 +55531,90 @@
         "Fehler / Memory",
         "Rohdaten und Grenzen gesichert; heutige Tabelle und24stabile IDs fortgeschrieben",
         "Ein Product.images-Query wurde vor Ausführung vom Validator abgelehnt, danach media verwendet. Zwei vermutete GitHub-Pfade lieferten404, exakte R214-Pins danach gelesen; insgesamt fünf Agent-GitHub-Reads. Fehlende lokale Dateien sind kein Connectorbeweis. CJ-Vollantwort als fehlend markiert statt erneut abgefragt. Keine Kundenansprache, Rabatte/Budgets/Versand-/Flow-/DNS-/Kanaländerung, Workflowstarts, Installationen oder neue Automation. Claude-Empfang unbekannt."
+      ]
+    ]
+  },
+  "run229": {
+    "revision": 229,
+    "startedAtUTC": "2026-11-15T08:39:15Z",
+    "recordedAtUTC": "2026-11-15T09:02:53.684628+00:00",
+    "dateZurich": "2026-11-15",
+    "kind": "one_sentence_saved_in_unpublished_theme_plus_render_countercheck_and_music_provenance",
+    "shopIdentityReads": 1,
+    "metricoolBrandIdentityReads": 1,
+    "metricoolScheduleMetricReadsOrWrites": 0,
+    "klaviyoReportsOrWrites": 0,
+    "gscQueries": 0,
+    "orderQueries": 0,
+    "unpublishedThemeCommitCalls": 1,
+    "savedThemeFiles": [
+      "sections/footer-group.json"
+    ],
+    "shopifyThemeCommit": "14499e471299d707a12fb1d1986ac1390480a777",
+    "themePublishCalls": 0,
+    "liveThemeWrites": 0,
+    "productWrites": 0,
+    "newSocialPostsSchedulesDeletesUploads": 0,
+    "sourceMainForMusic": {
+      "apiCall": "GET repos/allengchour-glitch/aban-news-landing/commits/main",
+      "sha": "4c6274781a90da12cf1cca6fcedeaaa7c4e8653e",
+      "rawResponsePath": "/dev/shm/luxestyle-review/r229/main-commit-raw.json",
+      "rawResponseSha256": "537783069bc5b450a675dc190e59b79fea84779b4975d7ac20d604a29789503c"
+    },
+    "musicGithubCalls": 3,
+    "nativeScreenshotCalls": 2,
+    "nativeScreenshotImages": 3,
+    "browserPageLoads": 5,
+    "browserPrimaryBudget": 3,
+    "extraBrowserLoads": {
+      "supplementalSvgInspection": 1,
+      "newSavedStateMobileCountercheck": 1
+    },
+    "actualCustomerFormsOrMessages": 0,
+    "producerOrRenderOrInstallCalls": 0,
+    "newAutomationOrFrequencyChange": false,
+    "dailyReportsReused": true,
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "newMasterMP4": false,
+    "fullMusicRightsConfirmed": false,
+    "wholePreviewThemeApprovedForPublish": false,
+    "shippingThresholdsAndAccountDomainPreserved": true,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "table": [
+      [
+        "Fortsetzung / Identität",
+        "Aktuelle Core4 und heutigen Tagesblock gelesen; Shop, MAIN und Metricool-Marke samt sechs Kanälen frisch gegengeprüft",
+        "Revision228 fortgesetzt. LuxeStyle/luxestyle.ch/CHF/EuropeZurich und Marke6227837 passen. Andere Marken nicht bearbeitet; heutige R228-Reports und R226-GSC unverändert wiederverwendet."
+      ],
+      [
+        "Popup / Quelldiff",
+        "Aktuelle sections/footer-group.json vollständig gesichert und mit der gleichen Datei des neuesten unveröffentlichten Themes verglichen",
+        "Beide vor Änderung SHA59f8477f…37100. Genau ein Satz in /sections/custom_liquid_lxpopup/settings/custom_liquid geändert. Strukturdiff, wörtlicher Rückvergleich und Peerreview bestätigen: alle anderen Bytes und die gesamten Skripte erhalten."
+      ],
+      [
+        "Unveröffentlicht gespeichert",
+        "Nach frischer Gegenprobe genau eine pending Datei im Theme213013037447 gespeichert und erneut gelesen",
+        "Theme-Version14499e471299d707a12fb1d1986ac1390480a777; saved nur footer-group.json, pending leer, keine PushErrors. Nachher SHA9321568a…3f978 bestätigt. Theme bleibt UNPUBLISHED; MAIN213991391623 bleibt unverändert MAIN. Kein Live-Publish oder Produkt-/Flowwrite."
+      ],
+      [
+        "Darstellung / Gegenprobe",
+        "Native Screenshots für1440/390 und MAIN-Desktop aufgenommen; auffällige Headerdarstellung durch öffentlichen Chromium-Browser gegengeprüft",
+        "Native MAIN-/Preview-Desktopbilder byteidentisch, daher kein neuer Text-Diff-Effekt. In Chromium normaler Header, Herz22×22px, keine CSS-Fehler und kein horizontaler Überlauf bei1440/390. Native Bilder sind keine bestandene visuelle Abnahme."
+      ],
+      [
+        "Mobile Textabnahme",
+        "Nach dem Save genau eine frische mobile Preview geladen und gespeicherten Satz im DOM geprüft; nur Popup-display-Stile für Lesbarkeitsbild gesetzt",
+        "HTTP200; neuer Satz vorhanden, alte E-Mail-Zusage in geprüften Absätzen weg. Keine Text-Injektion, Anmeldung, done()-Aufruf, localStorage-/Consentänderung oder Kundensendung. Alle non-GET/HEAD-Anfragen blockiert. Insgesamt fünf Browserladungen; eine zusätzliche SVG-Prüfung überschritt das ursprüngliche Dreierlimit, die fünfte war die begründete Save-Nachprüfung."
+      ],
+      [
+        "Musik / Master",
+        "Aktuellen Producer und seinen ausdrücklich aufgerufenen MIDI-Builder quellengebunden gelesen",
+        "Prozedurale Komposition und Syntheseweg belegt. Tatsächlich verwendete SoundFont samt Hash/Lizenzbeleg fehlt im Prüfkontext; keine Rechte-/Hörabnahme abgeleitet. Drei GitHub-Reads, keine Binary-Neuladung, Installation, Generierung oder Render. Derselbe offene Master bleibt bestehen."
+      ],
+      [
+        "Fehler / Memory",
+        "Fehlversuch mit fehlendem python im Theme-Sandbox und den nativen Renderer-Befund dokumentiert; Quellen danach mit verfügbaren Shellwerkzeugen gesichert",
+        "Kein Auth-/Quota-Fehler oder leere-Daten-Beweis. Native Darstellungsauffälligkeit nicht als Live-Shopdefekt ausgegeben. Tagesblock,24IDs und Historien erhalten. Keine neuen Tagesreports, Socialposts, Löschungen, Budgets, Rabatte, Versand-/Flow-/DNSänderungen, Workflows oder Automation. Claude-Empfang unbekannt."
       ]
     ]
   }
