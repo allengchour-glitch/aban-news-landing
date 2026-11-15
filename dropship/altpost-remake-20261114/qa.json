@@ -1,0 +1,39 @@
+{
+  "status": "GEMESSEN",
+  "restored_at": "2026-11-15",
+  "source": "reels/clip-craquele-vase.mp4",
+  "artifacts": [
+    {
+      "file": "reels/entwuerfe/altpost-remake-20261114/vase-layout-neu-mit-musik.mp4",
+      "duration_seconds": 10.2,
+      "resolution": [
+        1080,
+        1920
+      ],
+      "fps": "30/1",
+      "frames": 306,
+      "audio_tracks": 1,
+      "decode": "vollständig ohne Fehler",
+      "sha256": "58172f5318b547e4e49b32e306415ae621b9b7362a0a9b8fb2f6967a8752a6b1"
+    },
+    {
+      "file": "reels/entwuerfe/altpost-remake-20261114/vase-layout-neu-ohne-ton.mp4",
+      "duration_seconds": 10.2,
+      "resolution": [
+        1080,
+        1920
+      ],
+      "fps": "30/1",
+      "frames": 306,
+      "audio_tracks": 0,
+      "decode": "vollständig ohne Fehler",
+      "sha256": "19b3b9ffe5639ee9747acb679217c1afbf1c0b1cf4636f9a3642a6023ff10573"
+    }
+  ],
+  "identical_video_packets": true,
+  "video_packet_hash": "SHA256=79e8b82772b50476afa52069910356ce0221387ade359cc6153cb834ebd20e28",
+  "audio_integrated_lufs": -24.03,
+  "audio_true_peak_dbtp": -11.82,
+  "visual_review": "Kontaktbogen mit Frames bei 1/5/8,5 Sekunden angesehen: Texte vollständig und lesbar, CTA/Domain vorhanden, ganze Vase in Heroansichten sichtbar, keine Preis-/Material-/Leistungsbehauptung.",
+  "publication": "unveröffentlicht"
+}
