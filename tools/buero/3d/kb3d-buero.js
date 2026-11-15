@@ -1,6 +1,6 @@
 /* KB3D Büro: setzt Welt, Figuren, Kamera, Bedienung und Beschriftungen zusammen.
    Die Seite ruft nur mount / update / unmount (über K.Buero). Die Daten kommen als einfache Liste (ents), nichts wird hier gerechnet,
-   was die Seite schon entschieden hat (Zustand, Haltung). Kein Netz, keine Fremdbibliothek. */
+   was die Seite schon entschieden hat (Zustand, Haltung). Nur der Bot-Monitor liest auf Benutzerwunsch das öffentliche Schattenlogbuch; kein Brokerzugriff. Keine Fremdbibliothek. */
 (function (K) {
   'use strict';
   var PI = Math.PI, M = K.M, T = K.tex;
@@ -52,6 +52,24 @@
       meldungen: journal.filter(function (z) { return z.gemessen && !z.abgeschlossen; }),
       blocker: journal.filter(function (z) { return z.gemessen && (z.state === 'rot' || z.state === 'gelb'); }).sort(function (a, b) { return (a.state === 'rot' ? 0 : 1) - (b.state === 'rot' ? 0 : 1) || b.sortZeit - a.sortZeit; }),
       unbekannt: journal.filter(function (z) { return !z.gemessen && z.state !== 'du'; }).length };
+  };
+
+  /* Öffentliche Modellrechnung, niemals PC-Konto oder Handelserlaubnis. */
+  K.kryptoModell = function (d, now) {
+    var tag = new Date(now).toISOString().slice(0,10), reihen = [];
+    if (!d || d.version !== 2 || !d.strategien || typeof d.strategien !== 'object') throw new Error('Unbekanntes Logbuch');
+    ['KI-Bot','Ausgleich','Trendfilter 200'].forEach(function(name){
+      var v=d.strategien[name]; if(!v)return;
+      if(!Array.isArray(v.eintraege)||!v.eintraege.length)throw new Error('Leere Messreihe');
+      var vorher='';
+      var punkte=v.eintraege.map(function(e){
+        if(!e || !/^\d{4}-\d{2}-\d{2}$/.test(e.stand) || !isFinite(Date.parse(e.stand)) || new Date(e.stand).toISOString().slice(0,10)!==e.stand || e.stand> tag || e.stand<=vorher || typeof e.depot!=='number' || !isFinite(e.depot) || e.depot<=0)throw new Error('Ungültige Messreihe');
+        vorher=e.stand;return {tag:e.stand,wert:e.depot};
+      });
+      reihen.push({name:name,punkte:punkte,letzte:punkte[punkte.length-1]});
+    });
+    if(!reihen.length || reihen[0].name!=='KI-Bot')throw new Error('KI-Bot fehlt');
+    return {reihen:reihen,stand:reihen[0].letzte.tag,abgerufen:new Date(now).toISOString()};
   };
 
   /* Eine kleine Zahl in einer Sprechblase (für die Zahl der offenen Punkte). */
@@ -134,6 +152,7 @@
       /* ---------- Kamera ---------- */
       var cam = new K.Camera();
       var viewName = 'alle', userDist = null, monitorMode = false, savedCamera = null;
+      var botData=null,botError='',botLoading=false,botTried=false;
       var monitorName = null;                     // 'Zentral' oder der Name eines Raums, solange die Monitoransicht offen ist
       function monitorZiel(name) {
         var b = name === 'Zentral' ? W.overview : W.live[name];
@@ -148,6 +167,7 @@
         var z = monitorZiel(name || 'Zentral'); if (!z) return;
         if (!monitorMode) savedCamera = Object.assign({}, cam.g);
         monitorMode = true; monitorName = z.name;
+        if(z.name==='Krypto'&&!botTried)botLaden();
         if (cfg.onMonitorMode) cfg.onMonitorMode(true, z.name);
         cam.go({ tx: z.c[0], ty: z.c[1], tz: z.c[2], dist: monitorDistance(made.aspect || 1.33, z), az: 0, el: 0 }, !!cfg.reduced);
         made.dirty = true;
@@ -226,9 +246,24 @@
           raeume.push({ titel: RAUMTITEL[name] || name, n: liste.length, zaehler: z });
           ZUSTAENDE.forEach(function (k) { summe[k] += z[k]; });
         });
+        if(botTried){
+          var zeilen=[{name:'Öffentliches Schattenkonto',state:'alt',text:botLoading?'Daten werden geladen':botError||'Tagesdaten gelesen, kein Live-Ticker',befund:'CHF-Spielgeld. Kein echtes Kontoguthaben oder PC-Zugriff.',alter:botData?'Abgerufen '+botData.abgerufen:'Noch kein bestätigter Abruf'}];
+          if(botData)botData.reihen.forEach(function(r){zeilen.push({name:r.name,state:'alt',text:r.letzte.wert.toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})+' CHF Modellwert',befund:'Simulation, kein gemessener Geschäftsgewinn.',alter:'Datenstand '+r.letzte.tag});});
+          out.Krypto={titel:'KI-Bot · Schattenkonto',zeit:zeit,stand:botData?botData.stand:'',farben:farben,zeilen:zeilen,zaehler:{},bot:{daten:botData,fehler:botError,laedt:botLoading}};
+        }
         out.__uebersicht = Object.assign(K.arbeitsJournal(lastState), { zeit: zeit, farben: farben, raeume: raeume, summe: summe, n: ents.length });
 
         return out;
+      }
+      function botLaden(){
+        if(botLoading || made.destroyed)return;
+        botTried=true;botLoading=true;botError='';liveAktualisieren();
+        var controller=new AbortController(),timer;
+        var frist=new Promise(function(_,reject){timer=setTimeout(function(){controller.abort();reject(new Error('Zeitgrenze'));},12000);});
+        Promise.race([fetch('https://abannews.com/data/ki-bot-schatten.json',{cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal}).then(function(r){if(!r.ok)throw new Error('Quellenfehler');return r.json();}),frist])
+          .then(function(d){if(!made.destroyed)botData=K.kryptoModell(d,Date.now());})
+          .catch(function(){if(!made.destroyed)botError='Abruf fehlgeschlagen. Letzter bestätigter Stand bleibt erhalten.';})
+          .finally(function(){clearTimeout(timer);botLoading=false;if(!made.destroyed){liveAktualisieren();if(cfg.onBot)cfg.onBot();}});
       }
       function liveAktualisieren() { if (W.updateLive) { lastZeit = swissClock(); W.updateLive(lastState ? liveModelle() : {}); made.dirty = true; } }
       made.liveModelle = liveModelle;
@@ -396,6 +431,7 @@
         if (used2) { ev.preventDefault(); made.dirty = true; }
       });
       made.cmd = function (name) {
+        if(name==='bot'){botLaden();focusMonitor('Krypto');return;}
         if(name==='monitor'){focusMonitor(W.live[viewName] ? viewName : 'Zentral');return;}
         if(name.indexOf('monitor:')===0){focusMonitor(name.slice(8));return;}
         if(name==='monitorNext'){monitorFolge(1);return;}

@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: KI-Bot-Schattenkonto im Krypto-Monitor ·15.11.2026
+
+Besitzer meint Trading-/Krypto-Bot. Öffentliche Tagebuchdaten auf Benutzerwunsch lesend mit Modellwerten/Verlauf im Monitor, ursprünglicher Datenstand/Abrufzeit, Fehler erhält Werte. CHF-Spielgeld, kein PC-/Börsenkonto oder Live-Ticker verbunden.21 Offline-Prüfungen,43 Dashboardbauprüfungen und zwei WebGL-Handy-/Desktopläufe grün; neue Gegenproben im bestehenden Bau-Workflow. Version20 synchron, privater Claude-Upload separat. Details und Bereitstellung im kanonischen Abschnitt Trading-/KI-Bot-Dashboard und zugehörigem PR.
+
 ## Codex: ZIP-Starthilfe auf der Downloadseite ·15.11.2026
 
 Aufklappbare Anfängerhilfe zum Finden/Entpacken/Starten des gekauften Pakets, Produktunterschiede und Hinweis gegen Doppelkauf erhalten. Zahlungs-/Downloadfreigabe unverändert.71 bestehende Downloadprüfungen und sechs Browserproben390/1440px grün, nur Demoantworten, kein Kauf/geschützter Download. Finanzielle Wirkung nicht gemessen. Details/Bereitstellung im Abschnitt Downloadseite der kanonischen Übergabe und zugehörigem PR.

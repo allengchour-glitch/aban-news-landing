@@ -123,6 +123,27 @@
   };
   T.liveboard = function (m) {
     var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i;
+    if(m && m.bot){
+      lbKopf(g,'KI-BOT / SCHATTENKONTO','KI-Bot-Dashboard',m.zeit,farben);
+      var b=m.bot,d=b.daten;
+      g.fillStyle='#e7be73';g.font='bold 20px '+FONT;
+      g.fillText('CHF-SPIELGELD · KEIN PRIVATES PC-KONTO · KEIN LIVE-TICKER',48,155);
+      g.fillStyle='#d5e2eb';g.font='19px '+FONT;
+      g.fillText(b.laedt?'Quelle wird gelesen …':b.fehler?'Abruf fehlgeschlagen – vorheriger Stand bleibt':'Quelle: öffentliches KI-Bot-Tagebuch',48,190);
+      if(!d){g.fillText('Noch keine bestätigten Modellwerte. Keine Nullwerte angenommen.',48,265);return o.c;}
+      d.reihen.forEach(function(r,i){g.fillStyle=['#80d8c3','#b8cafa','#e7be73'][i];g.font='bold 21px '+FONT;g.fillText(r.name,48+i*318,235);g.font='bold 29px '+FONT;g.fillText(r.letzte.wert.toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})+' CHF',48+i*318,274);});
+      var ps=d.reihen[0].punkte,lo=Math.min.apply(null,ps.map(function(p){return p.wert;})),hi=Math.max.apply(null,ps.map(function(p){return p.wert;}));
+      if(lo===hi){lo-=1;hi+=1;}
+      g.fillStyle='#a9bfcc';g.font='15px '+FONT;g.fillText('KI-Bot: Verlauf der Modellwerte · eigene Skala, nicht ab Null',48,309);
+      g.fillText(hi.toFixed(2),48,335);g.fillText(lo.toFixed(2),48,423);
+      g.strokeStyle='#80d8c3';g.lineWidth=3;g.beginPath();
+      var t0=Date.parse(ps[0].tag),dt=Math.max(1,Date.parse(ps[ps.length-1].tag)-t0);
+      ps.forEach(function(p,i){var x=150+(Date.parse(p.tag)-t0)/dt*800,y=420-(p.wert-lo)/(hi-lo)*90;if(i)g.lineTo(x,y);else g.moveTo(x,y);});g.stroke();
+      if(ps.length===1){g.fillStyle='#80d8c3';g.beginPath();g.arc(150,420-(ps[0].wert-lo)/(hi-lo)*90,4,0,Math.PI*2);g.fill();}
+      g.fillText(ps[0].tag,150,447);g.textAlign='right';g.fillText(d.stand,950,447);g.textAlign='left';
+      g.fillStyle='#d5e2eb';g.font='16px '+FONT;g.fillText('Datenstand '+d.stand+' · Rendite ist kein Geschäftsgewinn. Gesamtkosten unvollständig.',48,480);
+      return o.c;
+    }
     lbKopf(g, 'STATUSBOARD / MESSDATEN', m ? m.titel : 'Liveboard', m && m.zeit, farben);
     if (!m) {
       g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen dieses Raums …', 48, 250);

@@ -9,6 +9,7 @@ on:
     paths:
       - 'tools/buero/seite.html'
       - 'tools/buero/dashboard/**'
+      - 'tools/buero/3d/**'
       - 'dropship/keywordliste-1011/seite.html'
       - '.github/workflows/buero-dashboard-test.yml'
   workflow_dispatch:
@@ -30,11 +31,14 @@ jobs:
           sparse-checkout: |
             tools/buero/seite.html
             tools/buero/dashboard
+            tools/buero/3d
             dropship/keywordliste-1011/seite.html
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Bot-Monitor (ohne Netz)
+        run: node tools/buero/3d/kryptomonitor.test.mjs
       - name: Bau-Test
         run: python3 -I tools/buero/dashboard/test_bauen.py
       - name: Mutationsprobe (nur Bau-Test, ohne Browser)
