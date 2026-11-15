@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 230,
-  "updatedAt": "2026-11-15T09:48:50.590485+00:00",
+  "revision": 231,
+  "updatedAt": "2026-11-15T10:25:42.632064+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -615,16 +615,15 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r230_current_wrap_scope_checked_and_full_cj_projector_source_saved",
+      "state": "r231_nail7_11_owner_accepted_images_bound_in_google_only_no_attribute_fabrication",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Wickel ACTIVE,9Tags,22Varianten untracked/CONTINUE und echte Storefront/Kaufbarkeit geprüft. Vorhandene Auswahl-/Ölhinweise in frischer Theme-Kopie näher an CTA platziert, Produktdaten unverändert. Projektor A–G undCJ1477820492730732544 frisch gelesen, gesamte Rohantwort vor lokalem Parse gesichert; früherer fehlender Roh-CJ-Beleg dadurch behoben. Aktuelle Beschreibung SHAa7a1fad…549b undR228-Diff5ab094c…69c unverändert, nicht angewendet.",
-      "nextAllowedStep": "Wickel-Prüftheme konkret freigeben lassen. Projektor-Beschreibungsdiff separat konkret freigeben und unmittelbar vor späterem Produktwrite aktuelle native Felder/CJ-Ausführung gegenprüfen. Keine Produktdaten/Nettoinhalte/Masse/Materialien aus globaler Packliste erfinden.",
+      "lastEvidence": "Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
+      "nextAllowedStep": "Ausgeführte7/11-Änderungen erhalten, keine erneute Freigabe derselben zwei Dateien verlangen. Modell6-Nettoinhalt undR228-Projektor-Lieferumfang/Produkttext bleiben getrennt offen. WeitereFarbbilder brauchen eigene exakteZuordnung undrechtebezogeneBestätigung.",
       "blockers": [
-        "Theme-/Projektor-Diff nicht live; zwei getrennte Änderungsscopes.",
-        "Globale CJ-Packliste bestätigt nicht den Lieferumfang des GrundmodellsA.",
-        "Nettoinhalt NagellackModell6 undR226-Medien-/2PC-/Syncfälle bleiben separat offen."
+        "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
+        "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1359,6 +1358,26 @@
           "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
           "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
           "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "656270a470b842f38e5e90ccf1fd3feca9d5e50c55e74324244778ba55cec5e0",
+          "gitBlobSha": "6809a5f4efed067a629c6bec98f7f0d0af98ecf4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "b102aa8a9f4b2f4d88448ada967bc2018faef7980552629c3ebc01555ae0a9c8",
+          "gitBlobSha": "d58724c8e3a08bf49dcf3670338e130dc2556724"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "fb04a3596426c5710416ce11cee44e04c77c2b337be2d9518dc52fe5e37fc1cc",
+          "gitBlobSha": "e109e1cc9f5b00fa5c9505f4c48b1b9ae3b89387"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
+          "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
         }
       ],
       "requiresFreshVerification": true,
@@ -2383,6 +2402,20 @@
             "Nagellack Modell6 ohne lesbaren Nettoinhalt; kein ml-Wert.",
             "Garagentor/Reinigungsgerät: saubere Medien/Rechte/2PC-Inhalt und Syncbeleg bleiben offen."
           ]
+        },
+        {
+          "at": "2026-11-15T10:25:42.632064+00:00",
+          "sourceRevision": 230,
+          "previousState": "r230_current_wrap_scope_checked_and_full_cj_projector_source_saved",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Wickel ACTIVE,9Tags,22Varianten untracked/CONTINUE und echte Storefront/Kaufbarkeit geprüft. Vorhandene Auswahl-/Ölhinweise in frischer Theme-Kopie näher an CTA platziert, Produktdaten unverändert. Projektor A–G undCJ1477820492730732544 frisch gelesen, gesamte Rohantwort vor lokalem Parse gesichert; früherer fehlender Roh-CJ-Beleg dadurch behoben. Aktuelle Beschreibung SHAa7a1fad…549b undR228-Diff5ab094c…69c unverändert, nicht angewendet.",
+          "previousNextAllowedStep": "Wickel-Prüftheme konkret freigeben lassen. Projektor-Beschreibungsdiff separat konkret freigeben und unmittelbar vor späterem Produktwrite aktuelle native Felder/CJ-Ausführung gegenprüfen. Keine Produktdaten/Nettoinhalte/Masse/Materialien aus globaler Packliste erfinden.",
+          "previousBlockers": [
+            "Theme-/Projektor-Diff nicht live; zwei getrennte Änderungsscopes.",
+            "Globale CJ-Packliste bestätigt nicht den Lieferumfang des GrundmodellsA.",
+            "Nettoinhalt NagellackModell6 undR226-Medien-/2PC-/Syncfälle bleiben separat offen."
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -3361,6 +3394,15 @@
         "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
         "themeSavedUnpublished": true,
         "livePublish": false
+      },
+      "run231": {
+        "proof": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261115-R231.json",
+        "merchantWriteCalls": 2,
+        "exactCorrectedModels": [
+          7,
+          11
+        ],
+        "processedAndGoogleApproved": true
       }
     },
     {
@@ -4098,15 +4140,15 @@
       "id": "merchant-local-15523818045825",
       "priority": 50,
       "priorityKind": "SETZUNG",
-      "state": "r226_google_publication_confirmed_existing_three_variants_merchant_state_not_requeried",
+      "state": "r231_exact_milk_shaker_offer_still_reports_local_requirements",
       "title": "Genaue lokale Anforderung beim Milchshaker klären",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
-      "lastEvidence": "Native Google-&-YouTube-Publikation302872297857 für Shaker-Produkt und alle drei aktuellen Varianten bestätigt; gleiches Kontrollprodukt. Keine Kanalaktivierung nötig. R225s konkrete Merchant-Ressourcen/LocalRequirements wurden hier nicht erneut gelesen, heutige Export-/Policyheilung nicht belegt.",
-      "nextAllowedStep": "Keine pauschale Kanalaktivierung oder Ersatzangebote. Genaue Modell-/Sicherheitsunterlagen und tatsächliche Google-Einzelursache klären, danach gezielt Export-/Variantenidentität gegen frischen Merchant-Datensatz prüfen. Native publication=true ist keine Merchant-Freigabe.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Aktuelle dritte Disapproved-Seite enthält Offer shopify_ZZ_15523818045825_56215831413121 weiterhin mitlocal_requirements_policy_violation, CH/LI und geliefertenFreeListings/ShoppingAds/DisplayAds-Kontexten. Keine vollständige Einzelprodukt-/Zertifikatsprüfung in diesem Lauf; keine Freigabe oder Entsperrung daraus abgeleitet.",
+      "nextAllowedStep": "Bei gezielter Weiterarbeit die vollständige aktuelle Einzelmeldung und legitime Produkt-/Konformitätsunterlagen des Milchshakers lesen. Keine Anforderung oder Zertifizierung raten, kein Umbenennen/Ausblenden zum Senken des Fehlerzählers.",
       "blockers": [
-        "Exakte Modell-/Sicherheitsunterlagen und konkrete GoogleEinzelursache fehlen.",
-        "Aktuelle Varianten nicht unter den drei geprüften de/CHF/ZZ-Ressourcen; andereFeed-/Sprachschemen nicht vollständig geprüft."
+        "Konkrete lokale Produktanforderung und zugehörige Unterlagen bleiben nicht belegt.",
+        "Aktueller Listencode ist keine Google-Genehmigung; kein Review eingereicht."
       ],
       "acceptance": [
         "Ursache anhand tatsächlicher Google-Meldung und Modellbeleg eingegrenzt",
@@ -4166,6 +4208,26 @@
           "gitBlobSha": "7c6d24a28477c81d2af9dfc50f5b54286c440f4e",
           "bytes": 4239,
           "readAt": "2026-11-15T01:07:15.677774+00:00"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "656270a470b842f38e5e90ccf1fd3feca9d5e50c55e74324244778ba55cec5e0",
+          "gitBlobSha": "6809a5f4efed067a629c6bec98f7f0d0af98ecf4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "b102aa8a9f4b2f4d88448ada967bc2018faef7980552629c3ebc01555ae0a9c8",
+          "gitBlobSha": "d58724c8e3a08bf49dcf3670338e130dc2556724"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "fb04a3596426c5710416ce11cee44e04c77c2b337be2d9518dc52fe5e37fc1cc",
+          "gitBlobSha": "e109e1cc9f5b00fa5c9505f4c48b1b9ae3b89387"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
+          "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
         }
       ],
       "requiresFreshVerification": true,
@@ -4204,23 +4266,45 @@
               "Aktuelle Varianten nicht unter den drei geprüften de/CHF/ZZ-Ressourcen; andereFeed-/Sprachschemen nicht vollständig geprüft."
             ]
           }
+        },
+        {
+          "at": "2026-11-15T10:25:42.632064+00:00",
+          "sourceRevision": 230,
+          "previousState": "r226_google_publication_confirmed_existing_three_variants_merchant_state_not_requeried",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
+          "previousLastEvidence": "Native Google-&-YouTube-Publikation302872297857 für Shaker-Produkt und alle drei aktuellen Varianten bestätigt; gleiches Kontrollprodukt. Keine Kanalaktivierung nötig. R225s konkrete Merchant-Ressourcen/LocalRequirements wurden hier nicht erneut gelesen, heutige Export-/Policyheilung nicht belegt.",
+          "previousNextAllowedStep": "Keine pauschale Kanalaktivierung oder Ersatzangebote. Genaue Modell-/Sicherheitsunterlagen und tatsächliche Google-Einzelursache klären, danach gezielt Export-/Variantenidentität gegen frischen Merchant-Datensatz prüfen. Native publication=true ist keine Merchant-Freigabe.",
+          "previousBlockers": [
+            "Exakte Modell-/Sicherheitsunterlagen und konkrete GoogleEinzelursache fehlen.",
+            "Aktuelle Varianten nicht unter den drei geprüften de/CHF/ZZ-Ressourcen; andereFeed-/Sprachschemen nicht vollständig geprüft."
+          ]
         }
-      ]
+      ],
+      "run231": {
+        "proof": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261115-R231.json",
+        "merchantWriteCalls": 2,
+        "exactCorrectedModels": [
+          7,
+          11
+        ],
+        "processedAndGoogleApproved": true
+      }
     },
     {
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r230_sales_funnel_purchase_guidance_saved_unpublished_and_shared_memory",
+      "state": "r231_two_merchant_image_corrections_applied_approved_and_shared_evidence",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Auf ausdrückliches Verkaufsziel ersten heutigen kleinen Sitzungsreport gelesen; keine Bestell-Watch und keine Paid-Sales-Attribution. Konkrete Wickel-Auswahlhürde und frische MAIN-Kopie mit genau 2 Dateidiffs bearbeitet und gespeichert, begrenzte QAfehler korrigiert. Frische vollständige CJ-Quelle gesichert. R228 Social/Klaviyo undR226 GSC nicht erneut abgefragt,24 IDs/Historien erhalten.",
-      "nextAllowedStep": "Direkten aktuellen Memory-Link am Schluss teilen. Einmal konkret für Theme «LuxeStyle – Kaufhinweis 15.11.2026» fragen; Genehmigung erst für dieses benannte Theme als Publishbasis nutzen. Heute keine erneuten Funnel-/Social-/Klaviyo-/GSC-Abfragen ohne neuen Befund. Keine zusätzliche Automation oder Dauerloop versprechen.",
+      "lastEvidence": "AktuelleR230Core4 fortgesetzt, Identitätenpassen.48erTeildiagnose und5exakteGoogleZielprodukte gelesen,2WindsorTimeouts/HYPDGegenprobe dokumentiert. User bestätigt Rechte/Farbtreue für genau7/11. Zweiimage_link-Writes/0Retries, erstunmittelbaralteDaten unddanach neueLinks/CHLI-Genehmigunginallenje6Googlekontexten bestätigt; nurimageLink anders. AnderePreis-/Link-/Policyfälle eingegrenzt,3Dossiers vorbereitet,nichteingereicht.24IDs/Historienerhalten.",
+      "nextAllowedStep": "Am Schluss direktenMemorylinkteilen. Nur die exakt zwei neuenMerchantBehebungen als erledigt melden, kein globalerNullfehler-/Umsatz-/Ads-Auslieferungsbeleg.7/11Freigaben/Writes künftig nicht wiederholen. Weitere Quellfälle nach Voraussetzungen fortsetzen; R230-Themepublishfrage getrennt erhalten. KeineTagesreportwiederholung oder neueAutomation.",
       "blockers": [
-        "Benannte Theme-Publish-Freigabe offen; Speichern ist keine Live-Übernahme oder Verkaufssteigerung.",
-        "Claude-Empfang unbekannt.",
-        "Film-/Musik-/Bio-/Board-/Ledgergates für neue Socialwrites unverändert."
+        "AUTOFEED-/GoogleReview-Einzelaktion technisch nicht verfügbar; übrige48erTeilmenge und weitereSeiten nicht vollständig korrigiert.",
+        "Claude-Empfang unbekannt; Memoryspeichern ist keine Kenntnisnahme.",
+        "R230Theme weiterhin unveröffentlicht; Bilderfreigabe ist keine Theme-Publishfreigabe."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5399,6 +5483,26 @@
           "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
           "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
           "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "656270a470b842f38e5e90ccf1fd3feca9d5e50c55e74324244778ba55cec5e0",
+          "gitBlobSha": "6809a5f4efed067a629c6bec98f7f0d0af98ecf4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "b102aa8a9f4b2f4d88448ada967bc2018faef7980552629c3ebc01555ae0a9c8",
+          "gitBlobSha": "d58724c8e3a08bf49dcf3670338e130dc2556724"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "fb04a3596426c5710416ce11cee44e04c77c2b337be2d9518dc52fe5e37fc1cc",
+          "gitBlobSha": "e109e1cc9f5b00fa5c9505f4c48b1b9ae3b89387"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
+          "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
         }
       ],
       "requiresFreshVerification": true,
@@ -7717,6 +7821,20 @@
             "Einzelne Textänderung freigabefähig vorbereitet, gesamtes älteres Theme nicht abgenommen.",
             "Film-/Musik-/Kanal-/Ledger-Gates weiterhin vor neuen Social-Pushes erforderlich."
           ]
+        },
+        {
+          "at": "2026-11-15T10:25:42.632064+00:00",
+          "sourceRevision": 230,
+          "previousState": "r230_sales_funnel_purchase_guidance_saved_unpublished_and_shared_memory",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Auf ausdrückliches Verkaufsziel ersten heutigen kleinen Sitzungsreport gelesen; keine Bestell-Watch und keine Paid-Sales-Attribution. Konkrete Wickel-Auswahlhürde und frische MAIN-Kopie mit genau 2 Dateidiffs bearbeitet und gespeichert, begrenzte QAfehler korrigiert. Frische vollständige CJ-Quelle gesichert. R228 Social/Klaviyo undR226 GSC nicht erneut abgefragt,24 IDs/Historien erhalten.",
+          "previousNextAllowedStep": "Direkten aktuellen Memory-Link am Schluss teilen. Einmal konkret für Theme «LuxeStyle – Kaufhinweis 15.11.2026» fragen; Genehmigung erst für dieses benannte Theme als Publishbasis nutzen. Heute keine erneuten Funnel-/Social-/Klaviyo-/GSC-Abfragen ohne neuen Befund. Keine zusätzliche Automation oder Dauerloop versprechen.",
+          "previousBlockers": [
+            "Benannte Theme-Publish-Freigabe offen; Speichern ist keine Live-Übernahme oder Verkaufssteigerung.",
+            "Claude-Empfang unbekannt.",
+            "Film-/Musik-/Bio-/Board-/Ledgergates für neue Socialwrites unverändert."
+          ]
         }
       ],
       "reviewPacket": {
@@ -9642,6 +9760,15 @@
         "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
         "themeSavedUnpublished": true,
         "livePublish": false
+      },
+      "run231": {
+        "proof": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261115-R231.json",
+        "merchantWriteCalls": 2,
+        "exactCorrectedModels": [
+          7,
+          11
+        ],
+        "processedAndGoogleApproved": true
       }
     },
     {
@@ -12671,48 +12798,18 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r224_two_approved_orphan_merchant_deletes_confirmed_absent",
+      "state": "r231_nail7_11_image_only_writes_applied_google_approved_other_errors_open",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "EXPLICIT_OWNER_APPROVAL_TWO_DELETES_GOOGLE_NOTFOUND_WITH_LIVE_CONTROL",
-      "lastEvidence": "Nach ausdrücklicher Paarbestätigung zwei alte deutsche Kinderuhr-Merchant-Angebote aus API10667445201 gelöscht. Beide exakten Google-Ressourcen frisch404/ITEM_NOT_FOUND, bekanntes lebendes Angebot derselbenQuelle alsAuth-/Quellenkontrolle lesbar. Shopify-DRAFT-Produkte nativ unverändert. ZweiWrites/0Retries, keineQuelleoderShopprodukteentfernt. Datum15.11.Zürich; keineTagesreports gelesen.",
-      "nextAllowedStep": "Die konkrete Paarfreigabe liegt vor und beide Löschungen sind abgeschlossen; nicht erneut um dieselbe Freigabe bitten und keine blinden Wiederholungen. Bei späterer Wiederaufnahme exakt dieselben IDs/Quelle/Shopzustände frisch lesen und verursachenden Sync prüfen, bevor ein weiterer Write erwogen wird. Shopify-DRAFT-Produkte erhalten. AUTOFEED-Workout bleibt an legitime native Einzelartikel-Editormethode gebunden; Mengenangabe nur mit belegtem Nettoinhalt, FR-Sprachentwurf nur mit konsistenter Storefront-/Merchant-Gegenprobe.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Auf neue Fehler-Rückmeldung48 eindeutige Disapproved-Offers begrenzt gelesen, weitereSeitenvorhanden. Nach ausdrücklicher neuer7/11-Rechte-/Farbfreigabe nur beide Hauptbildlinks inAPI10667445201/de/CHF_99383214465 aktualisiert: zweiWrites/0Retries. Verzögerte direkte Rücklesung10:16:22UTC bestätigt neuePNGs, keineitemLevelIssues undCH/LI in je6geliefertenGooglekontexten genehmigt. Attributgegenprobe zeigt nurimageLink geändert, alleanderenProduktattribute unverändert. Kein globalerNullfehlerbeleg.",
+      "nextAllowedStep": "Diese zwei freigegebenen7/11-Angebote erhalten und nicht erneut schreiben; bei späterer Drift dieselben Ressourcen gezielt lesen und verursachenden Sync prüfen.1/6-Paar ebenfalls nicht wiederholen. Weitere Overlay-Fälle brauchen genaue Quellen/Medien/Rechte. AUTOFEED-Wandleuchte auf einzelne legitime Editor-/Sprach-/Variantenpreisquelle prüfen, keinen beliebigen Preis anlegen. Waage und Uhr mit vorbereiteten echten Nachprüfungsdossiers weiterführen, sobald legitime Review-Aktion verfügbar ist.",
       "blockers": [
-        "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
-        "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
-        "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
-        "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen.",
-        "R60: Tatsächlich eingereichte FR-Texte/URL/Quelle und aktuelle Policy-Meldung für den Glöckchenartikel nicht authentifiziert gelesen; native FR-Translations[] ersetzt diese Quelle nicht. Nachprüfungsentwurf nicht eingereicht, Google-Neubewertung unbekannt. Andere Policyfälle nicht allein anhand generischer Titel freigeben.",
-        "R61: Aktuelle Shopify-Bilder aller 15 roten Stiefelvarianten öffentlich erreichbar; tatsächlich eingereichter Google-image_link und aktive Quelle weiterhin unbekannt. Prüfdatei nicht hochgeladen; keine neue Image-URL oder pauschale Entsperrung aus Personalisierungsmeldungen ableiten.",
-        "R62: Google-Verarbeitungsstatus/Fristbeginn beim Rucksack unbekannt, Shopify READY ist kein Google-Status. Ventilzubehör-Default-SKU/Lieferumfang und aktuelle FR-Merchant-Quelle vor Einreichung belegen. Tischbombe besitzt hier keine Richtlinien-/Werbefreigabe; keine neue Merchant-Abfrage nach vorherigem R61-Timeout.",
-        "R63: Merchant-Konto passend, actions[]; anderer Schreibeditor/Claude-Anmeldung offen. PR2830 weiterhin Draft; alle Checks nicht grün und mögliche zusätzliche main-Produktionsdeployments nicht isoliert freigegeben. Zitruspresse/Kameratasche ohne sauberes vorhandenes Original. Zwei bestätigte Shopify-Metadatenwrites sind keine Google-Behebung.",
-        "R65: Drei zusätzliche Quellenkontexte ungeklärt; CSV ohne aktive Source-ID/eingereichte URLs. Alte Blumenvariante nativ null ist kein aktueller Google-Angebotsstatus. Zwei numerische Offer-IDs nicht als Shopify-IDs interpretieren.",
-        "R81: CSV-Zeitpunkte und Filter sind nicht direkt vergleichbar; aktuelle Merchant-Livezustände und aktive Source-ID bleiben ohne authentifizierten Einzelabruf unbekannt.",
-        "R101: Beide CSVs fehlen aktive Merchant-Datenquellen-ID, eingereichte URL sowie Rohpreis-/Availability-/Shipping-Werte; verantwortliche Quelle unbekannt.",
-        "R101: Deutschland-Versandgebiet und belastbarer Tarif sind nicht belegt; eine DE-Versand- oder Länderänderung ist nicht freigegeben.",
-        "R101: 60 Availability-IDs in DateiA und die Availability-ID in DateiB sind rein numerische Merchant-IDs und nicht sicher auf Shopify-GIDs abgebildet.",
-        "R102: Google-Neuverarbeitung, aktive Merchant-Source-ID und tatsächlich eingereichter image_link der korrigierten Rollball-Variante sind unbekannt; Shopify-Readback ist kein Google-Status.",
-        "R102: Neun weitere Overlay-IDs bleiben offen; für die Drei-Pink-Variante wurde kein sauberes Bild derselben Menge belegt, daher kein Ersatz durch ein Einproduktfoto.",
-        "R102: CSS-Kapazitätsgrenze betrifft 10’628 IDs, ist aber Konto-/Programmstatus und weder Produktfehlerquote noch Auftrag für Produkt-/Feedwrites.",
-        "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
-        "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
-        "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
-        "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt.",
-        "R140: 5’000er-Merchant-Scope ist truncated; next page vorhanden und keine Katalogquote.",
-        "R140: Summary9 und separate12er-Disapproved-Stichprobe widersprechen sich; Werte dürfen nicht addiert oder als identischer Nenner behandelt werden.",
-        "R140: Overlay-Ersatzbilder brauchen exakte Produkt-/Variantenidentität und Rechte; aktive Source/image_link bleiben pro Offer zu belegen.",
-        "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen.",
-        "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
-        "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
-        "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden.",
-        "R149: Drive- und Filterexport haben verschiedene Feed-/Sprach-/Filterkontexte;1295 fr-Zeilen des kleinen Exports fehlen im breiten Export. Keine direkte Vorher-/Nachher-Differenz.",
-        "R149: CSVs enthalten keine verifizierte aktive Source-ID, eingereichte URL oder verantwortliche Rohfeldquelle.",
-        "R149: Lieferfähigkeit und reale Kosten für Liechtenstein und Deutschland sind nicht belegt; kein Versand-/Länderwrite.",
-        "R149: Grosse CH-/DE-/CHF-Itemmenge beweist weder aktuelle ACTIVE-Shopify-Produkte noch einen Katalognenner; HYPD-Gegenprobe ist bei5000 truncated.",
-        "R167: Von sechs stale Landingpage-Offers sind zwei in Source10667445201 live vorhanden; vier HYPD-Reads INVALID_ARGUMENT und damit aktueller Merchant-Ressourcenzustand unknown.",
-        "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg.",
-        "R168: Availability-Zielzustand ist erreicht; Zeitpunkt und verursachender bestehender Ablauf bleiben unbekannt. Keine Codex-/Connector-Verursachung behaupten.",
-        "R168: Liechtenstein-Versand bleibt getrennt blockiert; reale Lieferfähigkeit, Kosten und Laufzeit fehlen und waren nicht Teil der Freigabe."
+        "Vorher48er-Ausschnitt war partiell mit weiterem Cursor; andere aktuelle Fehler nicht vollständig behoben oder gezählt.",
+        "AUTOFEED10678939025-Einzeleditor und Google-Review/Reprocess fehlen in verbundenen Schreibfähigkeiten.",
+        "Wandleuchten-de-Offer verweist auf fr/noindex-Seite; Preis fehlt im Google-Datensatz trotz vorhandenerCHF-Variantenpreise. Kein willkürlicher Variantenpreis.",
+        "Waage öffentlichHTTP 200/CHF 127.90, Google-Crawl/Neubeurteilung unbekannt; Uhren-Waffenmeldung trotz Kategorie 201 bleibt zur Prüfung offen.",
+        "Weitere nicht aktuell gegengeprüfte historischeEinzelfälle bleiben ungeprüft; R224-Löschpaar nicht blind wiederholen."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -13190,6 +13287,26 @@
           "sha256": "954414eac131adbf0cfecd908207f03f61af82aa3309d6de0b8a94713ed54854",
           "gitBlobSha": "649cd6244cefcbe53e0016f93ee743f8c8d5f41e",
           "bytes": 3692
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "656270a470b842f38e5e90ccf1fd3feca9d5e50c55e74324244778ba55cec5e0",
+          "gitBlobSha": "6809a5f4efed067a629c6bec98f7f0d0af98ecf4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "b102aa8a9f4b2f4d88448ada967bc2018faef7980552629c3ebc01555ae0a9c8",
+          "gitBlobSha": "d58724c8e3a08bf49dcf3670338e130dc2556724"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "fb04a3596426c5710416ce11cee44e04c77c2b337be2d9518dc52fe5e37fc1cc",
+          "gitBlobSha": "e109e1cc9f5b00fa5c9505f4c48b1b9ae3b89387"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
+          "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
         }
       ],
       "requiresFreshVerification": true,
@@ -14090,6 +14207,52 @@
               "gitBlobSha": "649cd6244cefcbe53e0016f93ee743f8c8d5f41e",
               "bytes": 3692
             }
+          ]
+        },
+        {
+          "at": "2026-11-15T10:25:42.632064+00:00",
+          "sourceRevision": 230,
+          "previousState": "r224_two_approved_orphan_merchant_deletes_confirmed_absent",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "EXPLICIT_OWNER_APPROVAL_TWO_DELETES_GOOGLE_NOTFOUND_WITH_LIVE_CONTROL",
+          "previousLastEvidence": "Nach ausdrücklicher Paarbestätigung zwei alte deutsche Kinderuhr-Merchant-Angebote aus API10667445201 gelöscht. Beide exakten Google-Ressourcen frisch404/ITEM_NOT_FOUND, bekanntes lebendes Angebot derselbenQuelle alsAuth-/Quellenkontrolle lesbar. Shopify-DRAFT-Produkte nativ unverändert. ZweiWrites/0Retries, keineQuelleoderShopprodukteentfernt. Datum15.11.Zürich; keineTagesreports gelesen.",
+          "previousNextAllowedStep": "Die konkrete Paarfreigabe liegt vor und beide Löschungen sind abgeschlossen; nicht erneut um dieselbe Freigabe bitten und keine blinden Wiederholungen. Bei späterer Wiederaufnahme exakt dieselben IDs/Quelle/Shopzustände frisch lesen und verursachenden Sync prüfen, bevor ein weiterer Write erwogen wird. Shopify-DRAFT-Produkte erhalten. AUTOFEED-Workout bleibt an legitime native Einzelartikel-Editormethode gebunden; Mengenangabe nur mit belegtem Nettoinhalt, FR-Sprachentwurf nur mit konsistenter Storefront-/Merchant-Gegenprobe.",
+          "previousBlockers": [
+            "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
+            "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
+            "13 quellengebundene Ausnahmeangebote nur als begrenzter Prüfplan vorbereitet, kein Quellen-/Feed-Write. DE-Feedlabel ist kein Land.",
+            "AuthfixPR2830 frisch weiterhin offener Draft; trotz früher grüner Tests nicht gemergt oder produktiv ausgeführt. Silberbild-/weitereAusführungsrechte bleiben separat offen.",
+            "R60: Tatsächlich eingereichte FR-Texte/URL/Quelle und aktuelle Policy-Meldung für den Glöckchenartikel nicht authentifiziert gelesen; native FR-Translations[] ersetzt diese Quelle nicht. Nachprüfungsentwurf nicht eingereicht, Google-Neubewertung unbekannt. Andere Policyfälle nicht allein anhand generischer Titel freigeben.",
+            "R61: Aktuelle Shopify-Bilder aller 15 roten Stiefelvarianten öffentlich erreichbar; tatsächlich eingereichter Google-image_link und aktive Quelle weiterhin unbekannt. Prüfdatei nicht hochgeladen; keine neue Image-URL oder pauschale Entsperrung aus Personalisierungsmeldungen ableiten.",
+            "R62: Google-Verarbeitungsstatus/Fristbeginn beim Rucksack unbekannt, Shopify READY ist kein Google-Status. Ventilzubehör-Default-SKU/Lieferumfang und aktuelle FR-Merchant-Quelle vor Einreichung belegen. Tischbombe besitzt hier keine Richtlinien-/Werbefreigabe; keine neue Merchant-Abfrage nach vorherigem R61-Timeout.",
+            "R63: Merchant-Konto passend, actions[]; anderer Schreibeditor/Claude-Anmeldung offen. PR2830 weiterhin Draft; alle Checks nicht grün und mögliche zusätzliche main-Produktionsdeployments nicht isoliert freigegeben. Zitruspresse/Kameratasche ohne sauberes vorhandenes Original. Zwei bestätigte Shopify-Metadatenwrites sind keine Google-Behebung.",
+            "R65: Drei zusätzliche Quellenkontexte ungeklärt; CSV ohne aktive Source-ID/eingereichte URLs. Alte Blumenvariante nativ null ist kein aktueller Google-Angebotsstatus. Zwei numerische Offer-IDs nicht als Shopify-IDs interpretieren.",
+            "R81: CSV-Zeitpunkte und Filter sind nicht direkt vergleichbar; aktuelle Merchant-Livezustände und aktive Source-ID bleiben ohne authentifizierten Einzelabruf unbekannt.",
+            "R101: Beide CSVs fehlen aktive Merchant-Datenquellen-ID, eingereichte URL sowie Rohpreis-/Availability-/Shipping-Werte; verantwortliche Quelle unbekannt.",
+            "R101: Deutschland-Versandgebiet und belastbarer Tarif sind nicht belegt; eine DE-Versand- oder Länderänderung ist nicht freigegeben.",
+            "R101: 60 Availability-IDs in DateiA und die Availability-ID in DateiB sind rein numerische Merchant-IDs und nicht sicher auf Shopify-GIDs abgebildet.",
+            "R102: Google-Neuverarbeitung, aktive Merchant-Source-ID und tatsächlich eingereichter image_link der korrigierten Rollball-Variante sind unbekannt; Shopify-Readback ist kein Google-Status.",
+            "R102: Neun weitere Overlay-IDs bleiben offen; für die Drei-Pink-Variante wurde kein sauberes Bild derselben Menge belegt, daher kein Ersatz durch ein Einproduktfoto.",
+            "R102: CSS-Kapazitätsgrenze betrifft 10’628 IDs, ist aber Konto-/Programmstatus und weder Produktfehlerquote noch Auftrag für Produkt-/Feedwrites.",
+            "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
+            "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
+            "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
+            "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt.",
+            "R140: 5’000er-Merchant-Scope ist truncated; next page vorhanden und keine Katalogquote.",
+            "R140: Summary9 und separate12er-Disapproved-Stichprobe widersprechen sich; Werte dürfen nicht addiert oder als identischer Nenner behandelt werden.",
+            "R140: Overlay-Ersatzbilder brauchen exakte Produkt-/Variantenidentität und Rechte; aktive Source/image_link bleiben pro Offer zu belegen.",
+            "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen.",
+            "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
+            "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
+            "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden.",
+            "R149: Drive- und Filterexport haben verschiedene Feed-/Sprach-/Filterkontexte;1295 fr-Zeilen des kleinen Exports fehlen im breiten Export. Keine direkte Vorher-/Nachher-Differenz.",
+            "R149: CSVs enthalten keine verifizierte aktive Source-ID, eingereichte URL oder verantwortliche Rohfeldquelle.",
+            "R149: Lieferfähigkeit und reale Kosten für Liechtenstein und Deutschland sind nicht belegt; kein Versand-/Länderwrite.",
+            "R149: Grosse CH-/DE-/CHF-Itemmenge beweist weder aktuelle ACTIVE-Shopify-Produkte noch einen Katalognenner; HYPD-Gegenprobe ist bei5000 truncated.",
+            "R167: Von sechs stale Landingpage-Offers sind zwei in Source10667445201 live vorhanden; vier HYPD-Reads INVALID_ARGUMENT und damit aktueller Merchant-Ressourcenzustand unknown.",
+            "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg.",
+            "R168: Availability-Zielzustand ist erreicht; Zeitpunkt und verursachender bestehender Ablauf bleiben unbekannt. Keine Codex-/Connector-Verursachung behaupten.",
+            "R168: Liechtenstein-Versand bleibt getrennt blockiert; reale Lieferfähigkeit, Kosten und Laufzeit fehlen und waren nicht Teil der Freigabe."
           ]
         }
       ],
@@ -15134,6 +15297,15 @@
             "bytes": 3692
           }
         ]
+      },
+      "run231": {
+        "proof": "dropship/codex-handoff-20261018/MERCHANT-WEITERARBEIT-20261115-R231.json",
+        "merchantWriteCalls": 2,
+        "exactCorrectedModels": [
+          7,
+          11
+        ],
+        "processedAndGoogleApproved": true
       }
     },
     {
@@ -30185,6 +30357,36 @@
           "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
           "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
           "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 231,
+      "at": "2026-11-15T10:25:42.632064+00:00",
+      "actor": "codex",
+      "summary": "Zwei Merchant-Bildfehler nach exakter neuer Ownerrechte-/Farbfreigabe tatsächlich behoben: Nagellack7/11 nurimage_link in vorhandenerdeAPIQuelle geändert; zweiWrites/0Retries. Nach anfänglich alterRücklesung um10:16:22UTC neuePNGs, leereItemissues undCHLI-Genehmigunginallenje6geliefertenKontexten bestätigt; alleanderenProduktattribute unverändert. Vorher48erpartielleFehlerliste, weiterePreis-/AUTOFEED-/Policy-/Landingpagefälle bleibenoffen. KeineerneutenLeistungsreports, keinShop-/Theme-/Social-/Flow-/Budget-/DNSwrite,24IDs/Historienerhalten.",
+      "sources": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "656270a470b842f38e5e90ccf1fd3feca9d5e50c55e74324244778ba55cec5e0",
+          "gitBlobSha": "6809a5f4efed067a629c6bec98f7f0d0af98ecf4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "b102aa8a9f4b2f4d88448ada967bc2018faef7980552629c3ebc01555ae0a9c8",
+          "gitBlobSha": "d58724c8e3a08bf49dcf3670338e130dc2556724"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "fb04a3596426c5710416ce11cee44e04c77c2b337be2d9518dc52fe5e37fc1cc",
+          "gitBlobSha": "e109e1cc9f5b00fa5c9505f4c48b1b9ae3b89387"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
+          "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
         }
       ],
       "taskCount": 24,
@@ -56504,6 +56706,101 @@
         "Memory / Grenzen",
         "24 Aufgaben-IDs, Historien und heutigen Tagesblock erhalten; Tagesreport-Sperre um den ersten Shopify-Sitzungsreport ergänzt",
         "Kein neuer Socialpost/-termin/-delete, Produkt-/Live-Theme-/Flow-/Merchantwrite, Bestell-Watch, Rabatt/Budget/DNS oder Workflowstart. Ein Clone und eine unveröffentlichte Theme-Speicherung sind keine Live-Veröffentlichung oder Verkaufssteigerung. Claude-Empfang unbekannt."
+      ]
+    ]
+  },
+  "run231": {
+    "revision": 231,
+    "startedAtUTC": "2026-11-15T09:50:33Z",
+    "recordedAtUTC": "2026-11-15T10:25:42.632064+00:00",
+    "dateZurich": "2026-11-15",
+    "trigger": "User reports persistent Merchant errors; subsequently confirms exact Model7/11 image rights and product/color fidelity.",
+    "merchantAccount": "5797470070",
+    "disapprovedPages": 4,
+    "pageSize": 12,
+    "preWriteOffersRead": 48,
+    "moreDisapprovedPages": true,
+    "fullErrorCountKnown": false,
+    "accountIssuesCalls": 1,
+    "accountIssuesReturned": 0,
+    "listProductsControlCalls": 1,
+    "initialDirectMerchantProductReads": 5,
+    "prewriteMerchantProductReads": 2,
+    "immediatePostwriteProductReads": 2,
+    "delayedPostwriteProductReads": 2,
+    "sourceProfileReads": 1,
+    "sourceProfileRows": 4,
+    "windsorProductReadTimeouts": 2,
+    "deprecatedNativeQueryRejectedBeforeExecution": 1,
+    "successfulNativeQueries": 2,
+    "uniqueNativeProducts": 2,
+    "publicSubmittedPageReads": 3,
+    "publicImageReads": 5,
+    "merchantWriteCalls": 2,
+    "merchantWriteRetries": 0,
+    "changedAttributes": [
+      "image_link"
+    ],
+    "confirmedCorrectedOffers": [
+      "shopify_ZZ_15448834736513_67652260462983",
+      "shopify_ZZ_15448834736513_67652260594055"
+    ],
+    "googleFinalReadbackUTC": "2026-11-15T10:16:22Z",
+    "googleAllSixReturnedContextsCHLIApprovedPerOffer": true,
+    "googleItemLevelIssuesAfter": [],
+    "otherProductAttributesUnchanged": true,
+    "newOffersSourcesOrRules": 0,
+    "googleReviewSubmissions": 0,
+    "performanceReportsRepeated": 0,
+    "orderQueries": 0,
+    "productThemeFlowDnsBudgetDiscountWrites": 0,
+    "newSocialPostsSchedulesUploadsDeletes": 0,
+    "paidRendersInstallsUpgrades": 0,
+    "newAutomationOrFrequencyChange": false,
+    "r230ThemePublishStillPending": true,
+    "purchaseWatchStillEnded": true,
+    "shippingThresholdsAndAccountDomainPreserved": true,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "table": [
+      [
+        "Identität / Fortsetzung",
+        "Core4/Tagesblock sowie LuxeStyle-Shop, Metricool und Merchant-Konto frisch geprüft; vor den Writes Shop-/Varianten-/Google-Gegenprobe",
+        "Revision230 fortgesetzt. luxestyle.ch/CHF/EuropeZurich, Marke6227837 und Merchant5797470070 passen. Andere Marken nicht bearbeitet."
+      ],
+      [
+        "Merchant-Diagnose",
+        "Vier gezielte Disapproved-Seiten mit je12 Zeilen und eine Kontoissue-Abfrage gelesen",
+        "Vor den Writes48 eindeutige Offers:32Overlay,5Preis,2Availability,4Guns,3Tobacco,1Landingpage,1Local; weiterer Cursor vorhanden. Keine Vollzahl/Quote. Kontoissues-Response leer, Produktfehler bleiben."
+      ],
+      [
+        "Zwei Bildfehler behoben",
+        "Nach neuer ausdrücklicher Rechte-/Farbfreigabe nur image_link bei Modell 7 und11 der vorhandenen deutschen Nagellackangebote aktualisiert",
+        "API10667445201, de/CHF_99383214465. Zwei Writes, keine Retries/neuen Offers/Quellen. Native Medien und exakte Google-Vorwerte frisch geprüft; alle übrigen Produktattribute bei der Rücklesung unverändert."
+      ],
+      [
+        "Google-Ergebnis bestätigt",
+        "Unmittelbare alte Rücklesung dokumentiert; nach kurzer Verarbeitung dieselben zwei Ressourcen erneut gezielt gelesen",
+        "Am15.11.10:16:22UTC/11:16:22Zürich neue PNG-Links bestätigt, itemLevelIssues leer, CH/LI in jeweils allen sechs gelieferten Google-Zielkontexten genehmigt. Keine Ads-Auslieferung oder Verkäufe daraus abgeleitet."
+      ],
+      [
+        "Link / Preisquelle",
+        "Exakte Merchant-Links der Waage und Wandleuchte öffentlich gelesen und Markup/Quelle verglichen",
+        "BeideHTTP 200. Waage68193799242119 hat nativ, im Schema und beiGoogleCHF127.90; Ablehnung bleibt offen. Wandleuchte ausAUTOFEED10678939025 hat keinen Google-price und verlinkt als de-Offer eine fr/noindex-Seite mit vorhandenen Variantenpreisen. Keine Preis-/Bestands-/Noindexänderung."
+      ],
+      [
+        "Policy / Nachprüfung",
+        "Blaues Uhrenangebot, tatsächliches Bild und Zielseite gegengeprüft; drei Nachprüfungs-/Quellendossiers vorbereitet",
+        "Uhr bereits Kategorie 201/ProdukttypUhren, Bild zeigtArmbanduhr; SeiteHTTP 200 und gleiche Variante/CHF 20.90. Google-Waffenmeldung bleibt offen; keine künstliche Umbenennung/Entsperrung. Kein Review-Schreibwerkzeug für Einreichung vorhanden."
+      ],
+      [
+        "Fehler / Zugriff",
+        "Zwei Windsor-Timeouts und abgewiesene deprecated Bildfelder dokumentiert; HYPD-Direkt-/Media-Gegenproben genutzt",
+        "Keine Timeout/Quota/Auth-Fehler als leer/404. Kein force_refresh/Upgrade. Bestehender Writer nurAPI-Quellen; AUTOFEED-Einzeleditor und Google-Review/Reprocess fehlen. Keine weitere Quelle/Regel/Installation."
+      ],
+      [
+        "Memory / Grenzen",
+        "Arbeitsliste, Bildhashes, Ownerfreigabe, Writes und Rücklesungen dokumentiert;24IDs/Historien erhalten",
+        "Nur zwei Merchant-Bildfelder geändert. Keine Produkt-/Theme-/Social-/Flow-/Budget-/Rabatt-/DNSänderung, keine Order-Watch oder Tagesreportwiederholung. Andere Fehler und R230-Theme-Publish bleiben getrennt offen. Claude-Empfang unbekannt."
       ]
     ]
   }

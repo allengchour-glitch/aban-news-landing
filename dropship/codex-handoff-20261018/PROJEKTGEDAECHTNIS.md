@@ -1,3 +1,17 @@
+# R231 – Zwei Merchant-Bildfehler behoben, Google-Genehmigung bestätigt – 15.11.2026 Zürich
+
+**Nagellack Modell 7 und 11:** Neue ausdrückliche Ownerbestätigung für kommerzielle Bearbeitungs-/Werberechte und Produkt-/Farbtreue erhalten. Nur die beiden image_link-Felder der vorhandenen deutschen Angebote in API10667445201 geändert: zwei Writes, keine Retries. Direkte Rücklesung um 10:16:22 UTC / 11:16:22 Zürich bestätigt neue textfreie PNGs, leere itemLevelIssues und CH/LI in allen sechs zurückgelieferten Google-Zielkontexten je Angebot genehmigt. Alle übrigen productAttributes und Shopify-Produktdaten unverändert. Keine Ads-Auslieferung oder Verkäufe daraus ableiten. Dieselben Writes/Freigaben nicht wiederholen.
+
+Merchant ist nicht insgesamt fehlerfrei. Der gezielte VORHER-Ausschnitt enthält 48 eindeutige abgelehnte Angebote: 32 Bildoverlay-, fünf Preis-, zwei Availability-, vier Guns-, drei Tobacco-, ein Landingpage- und ein Local-Requirements-Fall. Weiterer Cursor vorhanden; keine vollständige oder globale Nachherzählung. Die zwei Bildzeilen sind in der Arbeitsliste mit bestätigter Genehmigung ergänzt. Kontoissues-Response leer, weitere Produktfehler bleiben.
+
+Waage: eingereichte URL aktuellHTTP 200; Variante, Schema und Google nennen CHF 127.90. Google-Landingpagefehler weiter offen. Wandleuchten-Offer 10018213324745296287: Preis fehlt in AUTOFEED10678939025; deutsches Angebot verlinkt fr/noindex-Seite mit vorhandenen CHF-Variantenpreisen. Kein beliebiger Preis-/Noindex-/Quellenwrite. Blaue Uhr: Waffenmeldung trotz Uhrenkategorie201 und passendem Bild; Nachprüfungsentwurf vorbereitet, nicht gesendet. Tools haben keinen AUTOFEED-Einzeleditor oder Google-Review/Reprocess. Zwei Windsor-Timeouts dokumentiert, HYPD-Direktreads erfolgreich; Fehler nicht als leer/404 gewertet.
+
+Keine Tagesreportwiederholung, Order-Watch oder zusätzliche Automation. R230-Prüftheme weiterhin nicht live; separate Freigabefrage offen. 24 Aufgaben-IDs, Historien und Zeitplan erhalten. Claude-Empfang unbekannt.
+
+[Bericht](MERCHANT-WEITERARBEIT-20261115-R231.md) · [Bestätigte Bildkorrekturen](MERCHANT-BILDWECHSEL-20261115-R231.json) · [Arbeitsliste](MERCHANT-ARBEITSLISTE-20261115-R231.csv) · [Nachprüfungsdossiers](GOOGLE-NACHPRUEFUNG-20261115-R231.md). Memory-Link am Schluss teilen.
+
+---
+
 # R230 – Kaufhürde konkret bearbeitet, frisches Prüftheme gespeichert –15.11.2026 Zürich
 
 Erster heutiger Shopify-Sitzungsreport08.–14.11.:318 Sitzungen, 16 mit Warenkorb-Ergänzung, 10 mit erreichtem und3 mit abgeschlossenem Checkout. Kein Zahlungs-/Bestellnachweis oder SKU-/Ursachenschluss; heutige Quellenabfrage nicht wiederholen. R228 Social/Klaviyo undR226 GSC wiederverwendet.

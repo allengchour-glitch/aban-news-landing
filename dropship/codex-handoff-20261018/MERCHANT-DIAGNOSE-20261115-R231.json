@@ -1,0 +1,2257 @@
+{
+  "shopId": "5797470070",
+  "scope": {
+    "pages": 4,
+    "pageSize": 12,
+    "rows": 48,
+    "hasMore": true,
+    "notFullCatalog": true,
+    "newCountercheckReason": "User reports persistent Merchant errors after previous corrections; no broad performance reports repeated."
+  },
+  "countsWithinReadPages": {
+    "image_unwanted_overlays|n:image_link": 32,
+    "guns_parts_policy_violation|": 4,
+    "tobacco_policy_violation|": 3,
+    "landing_page_error|n:link": 1,
+    "local_requirements_policy_violation|": 1,
+    "item_missing_required_attribute|n:price": 5,
+    "item_missing_required_attribute|n:availability": 2
+  },
+  "pages": [
+    {
+      "shop_id": "5797470070",
+      "rows": [
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+          "offerId": "shopify_ZZ_15448834736513_67652260462983",
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+          "offerId": "shopify_ZZ_15448834736513_67652260594055",
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15448882938241_55878125060481",
+          "offerId": "shopify_ZZ_15448882938241_55878125060481",
+          "title": "WLAN Garagentor-Steuerung mit App | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15449485967745_68122762412423",
+          "offerId": "shopify_ZZ_15449485967745_68122762412423",
+          "title": "Kamera für Sport und Konferenz | LuxeStyle CH WIFI Schwarz 1080p",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15450834731393_55889756094849",
+          "offerId": "shopify_ZZ_15450834731393_55889756094849",
+          "title": "Elektrische Springkrebs Katze Spielzeug | LuxeStyle CH Hüpfende Garnele, zufällige Farbe, ca. 35 CM, USB",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15450834731393_55889756127617",
+          "offerId": "shopify_ZZ_15450834731393_55889756127617",
+          "title": "Elektrische Springkrebs Katze Spielzeug | LuxeStyle CH Weiche, aufgenähte Augen Version, ca. 32 CM, USB",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15450834731393_55889756160385",
+          "offerId": "shopify_ZZ_15450834731393_55889756160385",
+          "title": "Elektrische Springkrebs Katze Spielzeug | LuxeStyle CH 2 Stk. Hüpfende Garnele, zufällige Farbe, ca. 35 CM, USB",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15451605500289_67790204567943",
+          "offerId": "shopify_ZZ_15451605500289_67790204567943",
+          "title": "Ultrasonisches Reinigungsgerät | LuxeStyle CH Offwhite 2 Teile",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15451605500289_67790204600711",
+          "offerId": "shopify_ZZ_15451605500289_67790204600711",
+          "title": "Ultrasonisches Reinigungsgerät | LuxeStyle CH Offwhite mit blauem Stoff",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15451605500289_67790204633479",
+          "offerId": "shopify_ZZ_15451605500289_67790204633479",
+          "title": "Ultrasonisches Reinigungsgerät | LuxeStyle CH Set",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15451605500289_67790204666247",
+          "offerId": "shopify_ZZ_15451605500289_67790204666247",
+          "title": "Ultrasonisches Reinigungsgerät | LuxeStyle CH Offwhite 3 Teile",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15451639677313_67790210171271",
+          "offerId": "shopify_ZZ_15451639677313_67790210171271",
+          "title": "Game Gunstock für Nintendo Switch | LuxeStyle CH Schwarz",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "guns_parts_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        }
+      ],
+      "next_page_token": "CAw="
+    },
+    {
+      "shop_id": "5797470070",
+      "rows": [
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15454894031233_67789363904903",
+          "offerId": "shopify_ZZ_15454894031233_67789363904903",
+          "title": "Leuchte mit Zoom & 5 Modi – USB-Ladbar & wasserdicht für... A",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15454916051329_55913280831873",
+          "offerId": "shopify_ZZ_15454916051329_55913280831873",
+          "title": "32 mm Drei-in-Eins Haarstyler | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15460660380033_55929530712449",
+          "offerId": "shopify_ZZ_15460660380033_55929530712449",
+          "title": "Mini Quadcopter mit Dual-Kamera | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15460660380033_67789233750407",
+          "offerId": "shopify_ZZ_15460660380033_67789233750407",
+          "title": "Mini Quadcopter mit Dual-Kamera | LuxeStyle CH Modell E",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15460660380033_67789233783175",
+          "offerId": "shopify_ZZ_15460660380033_67789233783175",
+          "title": "Mini Quadcopter mit Dual-Kamera | LuxeStyle CH Modell F",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15466886824321_55955519504769",
+          "offerId": "shopify_ZZ_15466886824321_55955519504769",
+          "title": "S68 Mini-Drohne mit 4K Dual-Kamera | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15470073151873_55970994618753",
+          "offerId": "shopify_ZZ_15470073151873_55970994618753",
+          "title": "Wurfdose silber 142 g | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "tobacco_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15479416258945_67790450131335",
+          "offerId": "shopify_ZZ_15479416258945_67790450131335",
+          "title": "Smartwatch für Sport & Fitness | LuxeStyle CH Gold",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15483934376321_56026870874497",
+          "offerId": "shopify_ZZ_15483934376321_56026870874497",
+          "title": "Doppeldisplay-Halter | LuxeStyle CH Silber",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "tobacco_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15493934776705_67789877936519",
+          "offerId": "shopify_ZZ_15493934776705_67789877936519",
+          "title": "Vintage Haarschneider für präzise Schnitte | LuxeStyle CH Flugdrache",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15502258831745_68193799242119",
+          "offerId": "shopify_ZZ_15502258831745_68193799242119",
+          "title": "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH 7.5kg 0.1g Englisch",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "landing_page_error",
+                "canonicalAttribute": "n:link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15502390591873_56116653949313",
+          "offerId": "shopify_ZZ_15502390591873_56116653949313",
+          "title": "Megapixel Wifi Aussenkamera 4K | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        }
+      ],
+      "next_page_token": "CBg="
+    },
+    {
+      "shop_id": "5797470070",
+      "rows": [
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15502587789697_56118432825729",
+          "offerId": "shopify_ZZ_15502587789697_56118432825729",
+          "title": "Binokulares Infrarot-Nachtsichtgerät mit Foto/Video | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "guns_parts_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15504227402113_67814784041351",
+          "offerId": "shopify_ZZ_15504227402113_67814784041351",
+          "title": "Bluetooth Pedometer-Uhr | LuxeStyle CH Blau",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "guns_parts_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15504227402113_67814784172423",
+          "offerId": "shopify_ZZ_15504227402113_67814784172423",
+          "title": "Bluetooth Pedometer-Uhr | LuxeStyle CH Schwarz",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "guns_parts_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15507580649857_56147913113985",
+          "offerId": "shopify_ZZ_15507580649857_56147913113985",
+          "title": "Kabelloses 15W Schnellladepad | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15508294467969_56150240067969",
+          "offerId": "shopify_ZZ_15508294467969_56150240067969",
+          "title": "Langanhaltender Lidschatten Pen – 12er Set | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15508302463361_67871058231687",
+          "offerId": "shopify_ZZ_15508302463361_67871058231687",
+          "title": "Seal Eyeliner Doppelpack | LuxeStyle CH Dunkelbraun",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15508716224897_56152234819969",
+          "offerId": "shopify_ZZ_15508716224897_56152234819969",
+          "title": "Multifunktionale SLR-Kameratasche | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15522109882753_67874402500999",
+          "offerId": "shopify_ZZ_15522109882753_67874402500999",
+          "title": "U21 Kabellose HD Überwachungskamera mit USB | LuxeStyle CH B",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15522213986689_56204490834305",
+          "offerId": "shopify_ZZ_15522213986689_56204490834305",
+          "title": "FOCALLURE PLUMPMAX Lip Glow High Shine | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15523117105537_56209687642497",
+          "offerId": "shopify_ZZ_15523117105537_56209687642497",
+          "title": "Cigarren-Etui aus PU-Leder (8er) · 8 Stück | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "tobacco_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15523129852289_56209715855745",
+          "offerId": "shopify_ZZ_15523129852289_56209715855745",
+          "title": "Kompakter Bluetooth Subwoofer mit Mikrofon | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15523818045825_56215831413121",
+          "offerId": "shopify_ZZ_15523818045825_56215831413121",
+          "title": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "local_requirements_policy_violation"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        }
+      ],
+      "next_page_token": "CCQ="
+    },
+    {
+      "shop_id": "5797470070",
+      "rows": [
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_15525458248065_56225314734465",
+          "offerId": "shopify_ZZ_15525458248065_56225314734465",
+          "title": "6‐Farben wasserfester Nude‐Matt‐Lippenstift | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_16603590033799_67610886340999",
+          "offerId": "shopify_ZZ_16603590033799_67610886340999",
+          "title": "Rouge-Creme in sechs Farbnuancen | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_16613829640583_67670832546183",
+          "offerId": "shopify_ZZ_16613829640583_67670832546183",
+          "title": "Mückenlampe mit LED-Licht | LuxeStyle CH 4000MA",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_16614829687175_67665455710599",
+          "offerId": "shopify_ZZ_16614829687175_67665455710599",
+          "title": "Leuchtender Trainingsfussball für Abendtraining | LuxeStyle CH Modell 1 / Modell 1",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CHF_99383214465~shopify_ZZ_16614829687175_67671550427527",
+          "offerId": "shopify_ZZ_16614829687175_67671550427527",
+          "title": "Leuchtender Trainingsfussball für Abendtraining | LuxeStyle CH Modell 2 / Modell 2",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "image_unwanted_overlays",
+                "canonicalAttribute": "n:image_link"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "SHOPPING_ADS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  },
+                  {
+                    "reportingContext": "DISPLAY_ADS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10018213324745296287",
+          "offerId": "10018213324745296287",
+          "title": "Moderne Wandleuchte, ein- oder zweiflammig | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:price"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10073494240929787683",
+          "offerId": "10073494240929787683",
+          "title": "Malen nach Zahlen – Gassen & Häuser | LuxeStyle",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:price"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10081953211512946639",
+          "offerId": "10081953211512946639",
+          "title": "Klassischer Rucksack für Schule und Alltag | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:price"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10190093650697108457",
+          "offerId": "10190093650697108457",
+          "title": "Polyester PET Luftfiltergewebe | LuxeStyle CH",
+          "brand": "",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:availability"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10278459490461182421",
+          "offerId": "10278459490461182421",
+          "title": "Wetterfestes Hundehemd | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:price"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10283932347178265394",
+          "offerId": "10283932347178265394",
+          "title": "Primer & Sealer Set für Gelnägel | LuxeStyle CH",
+          "brand": "luxestyle",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:price"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "CH",
+                      "LI"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        },
+        {
+          "id": "de~CH~10301937935043325310",
+          "offerId": "10301937935043325310",
+          "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+          "brand": "",
+          "aggregatedReportingContextStatus": "NOT_ELIGIBLE_OR_DISAPPROVED",
+          "itemIssues": [
+            {
+              "type": {
+                "code": "item_missing_required_attribute",
+                "canonicalAttribute": "n:availability"
+              },
+              "severity": {
+                "severityPerReportingContext": [
+                  {
+                    "reportingContext": "FREE_LISTINGS",
+                    "disapprovedCountries": [
+                      "LI",
+                      "CH"
+                    ],
+                    "demotedCountries": []
+                  }
+                ],
+                "aggregatedSeverity": "DISAPPROVED"
+              },
+              "resolution": "MERCHANT_ACTION"
+            }
+          ],
+          "gtin": [],
+          "statusPerReportingContext": [],
+          "clickPotential": "CLICK_POTENTIAL_UNSPECIFIED"
+        }
+      ],
+      "next_page_token": "CDA="
+    }
+  ],
+  "accountIssues": {
+    "shop_id": "5797470070",
+    "issues": []
+  },
+  "shopIdentity": {
+    "data": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "host": "luxestyle.ch"
+        },
+        "currencyCode": "CHF",
+        "ianaTimezone": "Europe/Zurich"
+      }
+    }
+  },
+  "measurementPhase": "Before the two approved image writes; not a post-write global error count.",
+  "followUpOnlyExactTwoOffers": {
+    "readbackAtUTC": "2026-11-15T10:16:22Z",
+    "models": [
+      7,
+      11
+    ],
+    "appliedAndApproved": true,
+    "noNewCatalogScan": true
+  }
+}

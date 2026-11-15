@@ -2666,3 +2666,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](VERKAUFSARBEIT-20261115-R230.md) · [Belege](VERKAUFSARBEIT-20261115-R230.json).
 
+
+### R231 – Zwei genehmigte Merchant-Bildkorrekturen umgesetzt und bestätigt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Fortsetzung | Core4/Tagesblock sowie LuxeStyle-Shop, Metricool und Merchant-Konto frisch geprüft; vor den Writes Shop-/Varianten-/Google-Gegenprobe | Revision230 fortgesetzt. luxestyle.ch/CHF/EuropeZurich, Marke6227837 und Merchant5797470070 passen. Andere Marken nicht bearbeitet. |
+| Merchant-Diagnose | Vier gezielte Disapproved-Seiten mit je12 Zeilen und eine Kontoissue-Abfrage gelesen | Vor den Writes48 eindeutige Offers:32Overlay,5Preis,2Availability,4Guns,3Tobacco,1Landingpage,1Local; weiterer Cursor vorhanden. Keine Vollzahl/Quote. Kontoissues-Response leer, Produktfehler bleiben. |
+| Zwei Bildfehler behoben | Nach neuer ausdrücklicher Rechte-/Farbfreigabe nur image_link bei Modell 7 und11 der vorhandenen deutschen Nagellackangebote aktualisiert | API10667445201, de/CHF_99383214465. Zwei Writes, keine Retries/neuen Offers/Quellen. Native Medien und exakte Google-Vorwerte frisch geprüft; alle übrigen Produktattribute bei der Rücklesung unverändert. |
+| Google-Ergebnis bestätigt | Unmittelbare alte Rücklesung dokumentiert; nach kurzer Verarbeitung dieselben zwei Ressourcen erneut gezielt gelesen | Am15.11.10:16:22UTC/11:16:22Zürich neue PNG-Links bestätigt, itemLevelIssues leer, CH/LI in jeweils allen sechs gelieferten Google-Zielkontexten genehmigt. Keine Ads-Auslieferung oder Verkäufe daraus abgeleitet. |
+| Link / Preisquelle | Exakte Merchant-Links der Waage und Wandleuchte öffentlich gelesen und Markup/Quelle verglichen | BeideHTTP 200. Waage68193799242119 hat nativ, im Schema und beiGoogleCHF127.90; Ablehnung bleibt offen. Wandleuchte ausAUTOFEED10678939025 hat keinen Google-price und verlinkt als de-Offer eine fr/noindex-Seite mit vorhandenen Variantenpreisen. Keine Preis-/Bestands-/Noindexänderung. |
+| Policy / Nachprüfung | Blaues Uhrenangebot, tatsächliches Bild und Zielseite gegengeprüft; drei Nachprüfungs-/Quellendossiers vorbereitet | Uhr bereits Kategorie 201/ProdukttypUhren, Bild zeigtArmbanduhr; SeiteHTTP 200 und gleiche Variante/CHF 20.90. Google-Waffenmeldung bleibt offen; keine künstliche Umbenennung/Entsperrung. Kein Review-Schreibwerkzeug für Einreichung vorhanden. |
+| Fehler / Zugriff | Zwei Windsor-Timeouts und abgewiesene deprecated Bildfelder dokumentiert; HYPD-Direkt-/Media-Gegenproben genutzt | Keine Timeout/Quota/Auth-Fehler als leer/404. Kein force_refresh/Upgrade. Bestehender Writer nurAPI-Quellen; AUTOFEED-Einzeleditor und Google-Review/Reprocess fehlen. Keine weitere Quelle/Regel/Installation. |
+| Memory / Grenzen | Arbeitsliste, Bildhashes, Ownerfreigabe, Writes und Rücklesungen dokumentiert;24IDs/Historien erhalten | Nur zwei Merchant-Bildfelder geändert. Keine Produkt-/Theme-/Social-/Flow-/Budget-/Rabatt-/DNSänderung, keine Order-Watch oder Tagesreportwiederholung. Andere Fehler und R230-Theme-Publish bleiben getrennt offen. Claude-Empfang unbekannt. |
+
+[Bericht](MERCHANT-WEITERARBEIT-20261115-R231.md) · [Laufbeleg](MERCHANT-WEITERARBEIT-20261115-R231.json).
+

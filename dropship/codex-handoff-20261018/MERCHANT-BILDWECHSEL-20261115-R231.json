@@ -1,0 +1,2315 @@
+{
+  "actions": [
+    {
+      "model": "Modell 7",
+      "readbackTarget": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+      "nativeSku": "CJYD273330507GT",
+      "expectedBeforeImageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+      "imageSha256": "7259ecbab80091595835e3f19c0ce4fb8bbdba6778dfb8a9f5e4ce5134f14404",
+      "imageHttpStatus": 200,
+      "action": {
+        "connector": "google_merchant",
+        "account": "5797470070",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_67652260462983",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339"
+        }
+      },
+      "preconditions": [
+        "FULFILLED: exact owner rights/product/color acceptance received for these two files.",
+        "Fresh direct product read returns exact offer/source/de/feedlabel and expected old image; if new image already present, do not repeat write.",
+        "Fresh native variant/media mapping matches same SKU and verified image hash."
+      ],
+      "writeState": "confirmed_applied_and_approved",
+      "readbackRequired": [
+        "Read exact same Google resource, match imageLink, preserve all other productAttributes.",
+        "Read destinationStatuses and itemLevelIssues; changed imageLink is not proof of Google approval.",
+        "On unknown write, inspect existing same offer; no blind retry/replacement offer."
+      ],
+      "ownerImageAcceptance": {
+        "answer": "Ja, Rechte und Produkt-/Farbtreue für beide Bilder bestätigt",
+        "source": "Explicit user reply to exact7/11-image question in this task"
+      },
+      "actualWriteCount": 1,
+      "writeRetries": 0
+    },
+    {
+      "model": "Modell 11",
+      "readbackTarget": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+      "nativeSku": "CJYD273330511KP",
+      "expectedBeforeImageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+      "imageSha256": "32fb101a7d0a80794dedbdcf222227914676071a2aeaac08793b265a4d6dcdc6",
+      "imageHttpStatus": 200,
+      "action": {
+        "connector": "google_merchant",
+        "account": "5797470070",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_67652260594055",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+        }
+      },
+      "preconditions": [
+        "FULFILLED: exact owner rights/product/color acceptance received for these two files.",
+        "Fresh direct product read returns exact offer/source/de/feedlabel and expected old image; if new image already present, do not repeat write.",
+        "Fresh native variant/media mapping matches same SKU and verified image hash."
+      ],
+      "writeState": "confirmed_applied_and_approved",
+      "readbackRequired": [
+        "Read exact same Google resource, match imageLink, preserve all other productAttributes.",
+        "Read destinationStatuses and itemLevelIssues; changed imageLink is not proof of Google approval.",
+        "On unknown write, inspect existing same offer; no blind retry/replacement offer."
+      ],
+      "ownerImageAcceptance": {
+        "answer": "Ja, Rechte und Produkt-/Farbtreue für beide Bilder bestätigt",
+        "source": "Explicit user reply to exact7/11-image question in this task"
+      },
+      "actualWriteCount": 1,
+      "writeRetries": 0
+    }
+  ],
+  "newImageMetadata": [
+    {
+      "model": "Modell 7",
+      "variantId": "gid://shopify/ProductVariant/67652260462983",
+      "sku": "CJYD273330507GT",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "7259ecbab80091595835e3f19c0ce4fb8bbdba6778dfb8a9f5e4ce5134f14404",
+      "bytes": 1249543,
+      "path": "/dev/shm/luxestyle-review/r231/nail-7.png",
+      "readAtUTC": "2026-11-15T09:57:27.289095+00:00"
+    },
+    {
+      "model": "Modell 11",
+      "variantId": "gid://shopify/ProductVariant/67652260594055",
+      "sku": "CJYD273330511KP",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "32fb101a7d0a80794dedbdcf222227914676071a2aeaac08793b265a4d6dcdc6",
+      "bytes": 1233820,
+      "path": "/dev/shm/luxestyle-review/r231/nail-11.png",
+      "readAtUTC": "2026-11-15T09:57:27.608028+00:00"
+    }
+  ],
+  "oldImageMetadata": [
+    {
+      "model": "Modell 7",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 95960,
+      "sha256": "05c13e0aacea762dc04762b77248026de522863e7a1b8eeec505e4b85b2db58d",
+      "path": "/dev/shm/luxestyle-review/r231/nail-7-google-before.jpg"
+    },
+    {
+      "model": "Modell 11",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 86169,
+      "sha256": "20315789e57920236affed2a146045e9179dc87b03f7f32f9cee0c4e0bb9a24f",
+      "path": "/dev/shm/luxestyle-review/r231/nail-11-google-before.jpg"
+    }
+  ],
+  "verifiedSourceImages": [
+    {
+      "model": "7",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+      "sha256": "7259ecbab80091595835e3f19c0ce4fb8bbdba6778dfb8a9f5e4ce5134f14404",
+      "bytes": 1249543,
+      "ownerRightsProductColorAcceptanceReceived": true
+    },
+    {
+      "model": "11",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+      "sha256": "32fb101a7d0a80794dedbdcf222227914676071a2aeaac08793b265a4d6dcdc6",
+      "bytes": 1233820,
+      "ownerRightsProductColorAcceptanceReceived": true
+    }
+  ],
+  "ownerAcceptance": {
+    "answer": "Ja, Rechte und Produkt-/Farbtreue für beide Bilder bestätigt",
+    "source": "Explicit user reply to exact two-image request in this task",
+    "appliesToModels": [
+      7,
+      11
+    ],
+    "scope": "Only existing German Merchant primary image links in API10667445201",
+    "noOtherPermissionsChanged": true
+  },
+  "checkpointsAndResponses": {
+    "ownerAttestation": {
+      "answer": "Ja, Rechte und Produkt-/Farbtreue für beide Bilder bestätigt",
+      "source": "Explicit user reply to exact two-image request in this task",
+      "appliesToModels": [
+        7,
+        11
+      ],
+      "scope": "Only existing German Merchant primary image links in API10667445201",
+      "noOtherPermissionsChanged": true
+    },
+    "scope": "Only exact Model7/11 Merchant primary image_link fields; existing German API10667445201 offers",
+    "model7": {
+      "state": "confirmed_image_applied_and_all_six_returned_contexts_CH_LI_approved",
+      "before": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+        "offerId": "shopify_ZZ_15448834736513_67652260462983",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1794398400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/67652260462983",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330507GT",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-09T23:50:27.894386Z",
+          "lastUpdateDate": "2026-11-11T20:09:17.805252Z",
+          "googleExpirationDate": "2026-12-11T20:09:17.805252Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 7"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM",
+        "legacyLocal": false
+      },
+      "action": {
+        "connector": "google_merchant",
+        "account": "5797470070",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_67652260462983",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339"
+        }
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated image_link of product shopify_ZZ_15448834736513_67652260462983 (content_language de, feed_label CHF_99383214465) in data source accounts/5797470070/dataSources/10667445201 (Shopify App API). Merchant Center shows the change after a few minutes."
+          }
+        ],
+        "structuredContent": {
+          "result": "Updated image_link of product shopify_ZZ_15448834736513_67652260462983 (content_language de, feed_label CHF_99383214465) in data source accounts/5797470070/dataSources/10667445201 (Shopify App API). Merchant Center shows the change after a few minutes."
+        },
+        "isError": false
+      },
+      "readback": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"shop_id\":\"5797470070\",\"product\":{\"name\":\"accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983\",\"offerId\":\"shopify_ZZ_15448834736513_67652260462983\",\"contentLanguage\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/5797470070/dataSources/10667445201\",\"versionNumber\":\"1794398400000000\",\"customAttributes\":[{\"name\":\"merchant item id\",\"value\":\"gid://shopify/ProductVariant/67652260462983\",\"groupValues\":[]},{\"name\":\"sku\",\"value\":\"CJYD273330507GT\",\"groupValues\":[]},{\"name\":\"modification info\",\"groupValues\":[{\"name\":\"modifier\",\"value\":\"third party syncing\",\"groupValues\":[]},{\"name\":\"modification source\",\"value\":\"third party shopify\",\"groupValues\":[]}]}],\"productStatus\":{\"destinationStatuses\":[{\"reportingContext\":\"SHOPPING_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DISPLAY_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"FREE_LISTINGS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"VIDEO_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]}],\"itemLevelIssues\":[{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"SHOPPING_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DISPLAY_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"FREE_LISTINGS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DEMAND_GEN_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"VIDEO_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]}],\"creationDate\":\"2026-10-09T23:50:27.894386Z\",\"lastUpdateDate\":\"2026-11-11T20:09:17.805252Z\",\"googleExpirationDate\":\"2026-12-11T20:09:17.805252Z\"},\"productAttributes\":{\"identifierExists\":false,\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7\",\"description\":\"Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266\",\"additionalImageLinks\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326\",\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332\"],\"ageGroup\":\"ADULT\",\"availability\":\"IN_STOCK\",\"brand\":\"LuxeStyle\",\"condition\":\"NEW\",\"gender\":\"UNISEX\",\"googleProductCategory\":\"2683\",\"itemGroupId\":\"shopify_ZZ_15448834736513\",\"price\":{\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"},\"productTypes\":[\"Nageldesign\"],\"shipping\":[{\"price\":{\"amountMicros\":\"7000000\",\"currencyCode\":\"CHF\"},\"country\":\"CH\",\"service\":\"Standard\",\"minHandlingTime\":\"0\",\"maxHandlingTime\":\"0\",\"minTransitTime\":\"10\",\"maxTransitTime\":\"20\",\"region\":\"\",\"locationId\":\"0\",\"locationGroupName\":\"\",\"postalCode\":\"\"}],\"shippingWeight\":{\"value\":20,\"unit\":\"g\"},\"costOfGoodsSold\":{\"amountMicros\":\"7580000\",\"currencyCode\":\"CHF\"},\"productDetails\":[{\"sectionName\":\"Variant\",\"attributeName\":\"modell\",\"attributeValue\":\"Modell 7\"}],\"freeShippingThreshold\":[{\"country\":\"CH\",\"priceThreshold\":{\"amountMicros\":\"45000000\",\"currencyCode\":\"CHF\"}}],\"gtins\":[],\"loyaltyPrograms\":[],\"carrierShipping\":[],\"shippingHandlingBusinessDays\":[],\"shippingTransitBusinessDays\":[],\"handlingCutoffTimes\":[],\"sizeTypes\":[],\"adsLabels\":[],\"productHighlights\":[],\"displayAdsSimilarIds\":[],\"promotionIds\":[],\"includedDestinations\":[],\"excludedDestinations\":[],\"shoppingAdsExcludedCountries\":[],\"lifestyleImageLinks\":[],\"cloudExportAdditionalProperties\":[],\"certifications\":[],\"sustainabilityIncentives\":[],\"videoLinks\":[]},\"base64EncodedName\":\"accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM\",\"legacyLocal\":false}}"
+          }
+        ],
+        "structuredContent": {
+          "shop_id": "5797470070",
+          "product": {
+            "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+            "offerId": "shopify_ZZ_15448834736513_67652260462983",
+            "contentLanguage": "de",
+            "feedLabel": "CHF_99383214465",
+            "dataSource": "accounts/5797470070/dataSources/10667445201",
+            "versionNumber": "1794398400000000",
+            "customAttributes": [
+              {
+                "name": "merchant item id",
+                "value": "gid://shopify/ProductVariant/67652260462983",
+                "groupValues": []
+              },
+              {
+                "name": "sku",
+                "value": "CJYD273330507GT",
+                "groupValues": []
+              },
+              {
+                "name": "modification info",
+                "groupValues": [
+                  {
+                    "name": "modifier",
+                    "value": "third party syncing",
+                    "groupValues": []
+                  },
+                  {
+                    "name": "modification source",
+                    "value": "third party shopify",
+                    "groupValues": []
+                  }
+                ]
+              }
+            ],
+            "productStatus": {
+              "destinationStatuses": [
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "VIDEO_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                }
+              ],
+              "itemLevelIssues": [
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "SHOPPING_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DISPLAY_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "FREE_LISTINGS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "VIDEO_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                }
+              ],
+              "creationDate": "2026-10-09T23:50:27.894386Z",
+              "lastUpdateDate": "2026-11-11T20:09:17.805252Z",
+              "googleExpirationDate": "2026-12-11T20:09:17.805252Z"
+            },
+            "productAttributes": {
+              "identifierExists": false,
+              "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7",
+              "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+              "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+              "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+              "additionalImageLinks": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+              ],
+              "ageGroup": "ADULT",
+              "availability": "IN_STOCK",
+              "brand": "LuxeStyle",
+              "condition": "NEW",
+              "gender": "UNISEX",
+              "googleProductCategory": "2683",
+              "itemGroupId": "shopify_ZZ_15448834736513",
+              "price": {
+                "amountMicros": "15900000",
+                "currencyCode": "CHF"
+              },
+              "productTypes": [
+                "Nageldesign"
+              ],
+              "shipping": [
+                {
+                  "price": {
+                    "amountMicros": "7000000",
+                    "currencyCode": "CHF"
+                  },
+                  "country": "CH",
+                  "service": "Standard",
+                  "minHandlingTime": "0",
+                  "maxHandlingTime": "0",
+                  "minTransitTime": "10",
+                  "maxTransitTime": "20",
+                  "region": "",
+                  "locationId": "0",
+                  "locationGroupName": "",
+                  "postalCode": ""
+                }
+              ],
+              "shippingWeight": {
+                "value": 20,
+                "unit": "g"
+              },
+              "costOfGoodsSold": {
+                "amountMicros": "7580000",
+                "currencyCode": "CHF"
+              },
+              "productDetails": [
+                {
+                  "sectionName": "Variant",
+                  "attributeName": "modell",
+                  "attributeValue": "Modell 7"
+                }
+              ],
+              "freeShippingThreshold": [
+                {
+                  "country": "CH",
+                  "priceThreshold": {
+                    "amountMicros": "45000000",
+                    "currencyCode": "CHF"
+                  }
+                }
+              ],
+              "gtins": [],
+              "loyaltyPrograms": [],
+              "carrierShipping": [],
+              "shippingHandlingBusinessDays": [],
+              "shippingTransitBusinessDays": [],
+              "handlingCutoffTimes": [],
+              "sizeTypes": [],
+              "adsLabels": [],
+              "productHighlights": [],
+              "displayAdsSimilarIds": [],
+              "promotionIds": [],
+              "includedDestinations": [],
+              "excludedDestinations": [],
+              "shoppingAdsExcludedCountries": [],
+              "lifestyleImageLinks": [],
+              "cloudExportAdditionalProperties": [],
+              "certifications": [],
+              "sustainabilityIncentives": [],
+              "videoLinks": []
+            },
+            "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM",
+            "legacyLocal": false
+          }
+        },
+        "isError": false
+      },
+      "finalReadback": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"shop_id\":\"5797470070\",\"product\":{\"name\":\"accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983\",\"offerId\":\"shopify_ZZ_15448834736513_67652260462983\",\"contentLanguage\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/5797470070/dataSources/10667445201\",\"customAttributes\":[{\"name\":\"merchant item id\",\"value\":\"gid://shopify/ProductVariant/67652260462983\",\"groupValues\":[]},{\"name\":\"sku\",\"value\":\"CJYD273330507GT\",\"groupValues\":[]},{\"name\":\"modification info\",\"groupValues\":[{\"name\":\"modifier\",\"value\":\"third party syncing\",\"groupValues\":[]},{\"name\":\"modification source\",\"value\":\"third party shopify\",\"groupValues\":[]}]}],\"productStatus\":{\"destinationStatuses\":[{\"reportingContext\":\"SHOPPING_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DISPLAY_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"FREE_LISTINGS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"VIDEO_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]}],\"creationDate\":\"2026-10-09T23:50:27.894386Z\",\"lastUpdateDate\":\"2026-11-15T10:13:54.442947Z\",\"googleExpirationDate\":\"2026-12-15T10:13:54.442947Z\",\"itemLevelIssues\":[]},\"productAttributes\":{\"identifierExists\":false,\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7\",\"description\":\"Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339\",\"additionalImageLinks\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326\",\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332\"],\"ageGroup\":\"ADULT\",\"availability\":\"IN_STOCK\",\"brand\":\"LuxeStyle\",\"condition\":\"NEW\",\"gender\":\"UNISEX\",\"googleProductCategory\":\"2683\",\"itemGroupId\":\"shopify_ZZ_15448834736513\",\"price\":{\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"},\"productTypes\":[\"Nageldesign\"],\"shipping\":[{\"price\":{\"amountMicros\":\"7000000\",\"currencyCode\":\"CHF\"},\"country\":\"CH\",\"service\":\"Standard\",\"minHandlingTime\":\"0\",\"maxHandlingTime\":\"0\",\"minTransitTime\":\"10\",\"maxTransitTime\":\"20\",\"region\":\"\",\"locationId\":\"0\",\"locationGroupName\":\"\",\"postalCode\":\"\"}],\"shippingWeight\":{\"value\":20,\"unit\":\"g\"},\"costOfGoodsSold\":{\"amountMicros\":\"7580000\",\"currencyCode\":\"CHF\"},\"productDetails\":[{\"sectionName\":\"Variant\",\"attributeName\":\"modell\",\"attributeValue\":\"Modell 7\"}],\"freeShippingThreshold\":[{\"country\":\"CH\",\"priceThreshold\":{\"amountMicros\":\"45000000\",\"currencyCode\":\"CHF\"}}],\"gtins\":[],\"loyaltyPrograms\":[],\"carrierShipping\":[],\"shippingHandlingBusinessDays\":[],\"shippingTransitBusinessDays\":[],\"handlingCutoffTimes\":[],\"sizeTypes\":[],\"adsLabels\":[],\"productHighlights\":[],\"displayAdsSimilarIds\":[],\"promotionIds\":[],\"includedDestinations\":[],\"excludedDestinations\":[],\"shoppingAdsExcludedCountries\":[],\"lifestyleImageLinks\":[],\"cloudExportAdditionalProperties\":[],\"certifications\":[],\"sustainabilityIncentives\":[],\"videoLinks\":[]},\"base64EncodedName\":\"accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM\",\"legacyLocal\":false}}"
+          }
+        ],
+        "structuredContent": {
+          "shop_id": "5797470070",
+          "product": {
+            "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+            "offerId": "shopify_ZZ_15448834736513_67652260462983",
+            "contentLanguage": "de",
+            "feedLabel": "CHF_99383214465",
+            "dataSource": "accounts/5797470070/dataSources/10667445201",
+            "customAttributes": [
+              {
+                "name": "merchant item id",
+                "value": "gid://shopify/ProductVariant/67652260462983",
+                "groupValues": []
+              },
+              {
+                "name": "sku",
+                "value": "CJYD273330507GT",
+                "groupValues": []
+              },
+              {
+                "name": "modification info",
+                "groupValues": [
+                  {
+                    "name": "modifier",
+                    "value": "third party syncing",
+                    "groupValues": []
+                  },
+                  {
+                    "name": "modification source",
+                    "value": "third party shopify",
+                    "groupValues": []
+                  }
+                ]
+              }
+            ],
+            "productStatus": {
+              "destinationStatuses": [
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "VIDEO_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                }
+              ],
+              "creationDate": "2026-10-09T23:50:27.894386Z",
+              "lastUpdateDate": "2026-11-15T10:13:54.442947Z",
+              "googleExpirationDate": "2026-12-15T10:13:54.442947Z",
+              "itemLevelIssues": []
+            },
+            "productAttributes": {
+              "identifierExists": false,
+              "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7",
+              "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+              "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+              "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+              "additionalImageLinks": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+              ],
+              "ageGroup": "ADULT",
+              "availability": "IN_STOCK",
+              "brand": "LuxeStyle",
+              "condition": "NEW",
+              "gender": "UNISEX",
+              "googleProductCategory": "2683",
+              "itemGroupId": "shopify_ZZ_15448834736513",
+              "price": {
+                "amountMicros": "15900000",
+                "currencyCode": "CHF"
+              },
+              "productTypes": [
+                "Nageldesign"
+              ],
+              "shipping": [
+                {
+                  "price": {
+                    "amountMicros": "7000000",
+                    "currencyCode": "CHF"
+                  },
+                  "country": "CH",
+                  "service": "Standard",
+                  "minHandlingTime": "0",
+                  "maxHandlingTime": "0",
+                  "minTransitTime": "10",
+                  "maxTransitTime": "20",
+                  "region": "",
+                  "locationId": "0",
+                  "locationGroupName": "",
+                  "postalCode": ""
+                }
+              ],
+              "shippingWeight": {
+                "value": 20,
+                "unit": "g"
+              },
+              "costOfGoodsSold": {
+                "amountMicros": "7580000",
+                "currencyCode": "CHF"
+              },
+              "productDetails": [
+                {
+                  "sectionName": "Variant",
+                  "attributeName": "modell",
+                  "attributeValue": "Modell 7"
+                }
+              ],
+              "freeShippingThreshold": [
+                {
+                  "country": "CH",
+                  "priceThreshold": {
+                    "amountMicros": "45000000",
+                    "currencyCode": "CHF"
+                  }
+                }
+              ],
+              "gtins": [],
+              "loyaltyPrograms": [],
+              "carrierShipping": [],
+              "shippingHandlingBusinessDays": [],
+              "shippingTransitBusinessDays": [],
+              "handlingCutoffTimes": [],
+              "sizeTypes": [],
+              "adsLabels": [],
+              "productHighlights": [],
+              "displayAdsSimilarIds": [],
+              "promotionIds": [],
+              "includedDestinations": [],
+              "excludedDestinations": [],
+              "shoppingAdsExcludedCountries": [],
+              "lifestyleImageLinks": [],
+              "cloudExportAdditionalProperties": [],
+              "certifications": [],
+              "sustainabilityIncentives": [],
+              "videoLinks": []
+            },
+            "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM",
+            "legacyLocal": false
+          }
+        },
+        "isError": false
+      }
+    },
+    "model11": {
+      "state": "confirmed_image_applied_and_all_six_returned_contexts_CH_LI_approved",
+      "before": {
+        "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+        "offerId": "shopify_ZZ_15448834736513_67652260594055",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "versionNumber": "1794398400000000",
+        "customAttributes": [
+          {
+            "name": "merchant item id",
+            "value": "gid://shopify/ProductVariant/67652260594055",
+            "groupValues": []
+          },
+          {
+            "name": "sku",
+            "value": "CJYD273330511KP",
+            "groupValues": []
+          },
+          {
+            "name": "modification info",
+            "groupValues": [
+              {
+                "name": "modifier",
+                "value": "third party syncing",
+                "groupValues": []
+              },
+              {
+                "name": "modification source",
+                "value": "third party shopify",
+                "groupValues": []
+              }
+            ]
+          }
+        ],
+        "productStatus": {
+          "destinationStatuses": [
+            {
+              "reportingContext": "SHOPPING_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DISPLAY_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "FREE_LISTINGS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "VIDEO_ADS",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            },
+            {
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "disapprovedCountries": [
+                "CH",
+                "LI"
+              ],
+              "approvedCountries": [],
+              "pendingCountries": []
+            }
+          ],
+          "itemLevelIssues": [
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "SHOPPING_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DISPLAY_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "FREE_LISTINGS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DEMAND_GEN_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "VIDEO_ADS",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            },
+            {
+              "code": "image_unwanted_overlays",
+              "severity": "DISAPPROVED",
+              "resolution": "merchant_action",
+              "attribute": "image link",
+              "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+              "description": "Promotional overlay on image",
+              "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+              "documentation": "https://support.google.com/merchants/answer/12158684",
+              "applicableCountries": [
+                "CH",
+                "LI"
+              ]
+            }
+          ],
+          "creationDate": "2026-10-09T23:50:30.432066Z",
+          "lastUpdateDate": "2026-11-11T20:09:18.591388Z",
+          "googleExpirationDate": "2026-12-11T20:09:18.591388Z"
+        },
+        "productAttributes": {
+          "identifierExists": false,
+          "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11",
+          "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+          "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+          "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+          "additionalImageLinks": [
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+            "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+          ],
+          "ageGroup": "ADULT",
+          "availability": "IN_STOCK",
+          "brand": "LuxeStyle",
+          "condition": "NEW",
+          "gender": "UNISEX",
+          "googleProductCategory": "2683",
+          "itemGroupId": "shopify_ZZ_15448834736513",
+          "price": {
+            "amountMicros": "15900000",
+            "currencyCode": "CHF"
+          },
+          "productTypes": [
+            "Nageldesign"
+          ],
+          "shipping": [
+            {
+              "price": {
+                "amountMicros": "7000000",
+                "currencyCode": "CHF"
+              },
+              "country": "CH",
+              "service": "Standard",
+              "minHandlingTime": "0",
+              "maxHandlingTime": "0",
+              "minTransitTime": "10",
+              "maxTransitTime": "20",
+              "region": "",
+              "locationId": "0",
+              "locationGroupName": "",
+              "postalCode": ""
+            }
+          ],
+          "shippingWeight": {
+            "value": 20,
+            "unit": "g"
+          },
+          "costOfGoodsSold": {
+            "amountMicros": "7580000",
+            "currencyCode": "CHF"
+          },
+          "productDetails": [
+            {
+              "sectionName": "Variant",
+              "attributeName": "modell",
+              "attributeValue": "Modell 11"
+            }
+          ],
+          "freeShippingThreshold": [
+            {
+              "country": "CH",
+              "priceThreshold": {
+                "amountMicros": "45000000",
+                "currencyCode": "CHF"
+              }
+            }
+          ],
+          "gtins": [],
+          "loyaltyPrograms": [],
+          "carrierShipping": [],
+          "shippingHandlingBusinessDays": [],
+          "shippingTransitBusinessDays": [],
+          "handlingCutoffTimes": [],
+          "sizeTypes": [],
+          "adsLabels": [],
+          "productHighlights": [],
+          "displayAdsSimilarIds": [],
+          "promotionIds": [],
+          "includedDestinations": [],
+          "excludedDestinations": [],
+          "shoppingAdsExcludedCountries": [],
+          "lifestyleImageLinks": [],
+          "cloudExportAdditionalProperties": [],
+          "certifications": [],
+          "sustainabilityIncentives": [],
+          "videoLinks": []
+        },
+        "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU",
+        "legacyLocal": false
+      },
+      "action": {
+        "connector": "google_merchant",
+        "account": "5797470070",
+        "action": "update_product",
+        "params": {
+          "data_source": "accounts/5797470070/dataSources/10667445201",
+          "product_id": "shopify_ZZ_15448834736513_67652260594055",
+          "content_language": "de",
+          "feed_label": "CHF_99383214465",
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+        }
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated image_link of product shopify_ZZ_15448834736513_67652260594055 (content_language de, feed_label CHF_99383214465) in data source accounts/5797470070/dataSources/10667445201 (Shopify App API). Merchant Center shows the change after a few minutes."
+          }
+        ],
+        "structuredContent": {
+          "result": "Updated image_link of product shopify_ZZ_15448834736513_67652260594055 (content_language de, feed_label CHF_99383214465) in data source accounts/5797470070/dataSources/10667445201 (Shopify App API). Merchant Center shows the change after a few minutes."
+        },
+        "isError": false
+      },
+      "readback": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"shop_id\":\"5797470070\",\"product\":{\"name\":\"accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055\",\"offerId\":\"shopify_ZZ_15448834736513_67652260594055\",\"contentLanguage\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/5797470070/dataSources/10667445201\",\"versionNumber\":\"1794398400000000\",\"customAttributes\":[{\"name\":\"merchant item id\",\"value\":\"gid://shopify/ProductVariant/67652260594055\",\"groupValues\":[]},{\"name\":\"sku\",\"value\":\"CJYD273330511KP\",\"groupValues\":[]},{\"name\":\"modification info\",\"groupValues\":[{\"name\":\"modifier\",\"value\":\"third party syncing\",\"groupValues\":[]},{\"name\":\"modification source\",\"value\":\"third party shopify\",\"groupValues\":[]}]}],\"productStatus\":{\"destinationStatuses\":[{\"reportingContext\":\"SHOPPING_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DISPLAY_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"FREE_LISTINGS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"VIDEO_ADS\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"disapprovedCountries\":[\"CH\",\"LI\"],\"approvedCountries\":[],\"pendingCountries\":[]}],\"itemLevelIssues\":[{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"SHOPPING_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DISPLAY_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"FREE_LISTINGS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DEMAND_GEN_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"VIDEO_ADS\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]},{\"code\":\"image_unwanted_overlays\",\"severity\":\"DISAPPROVED\",\"resolution\":\"merchant_action\",\"attribute\":\"image link\",\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"description\":\"Promotional overlay on image\",\"detail\":\"Promotional text, obstructing elements, or borders are not allowed on product images\",\"documentation\":\"https://support.google.com/merchants/answer/12158684\",\"applicableCountries\":[\"CH\",\"LI\"]}],\"creationDate\":\"2026-10-09T23:50:30.432066Z\",\"lastUpdateDate\":\"2026-11-11T20:09:18.591388Z\",\"googleExpirationDate\":\"2026-12-11T20:09:18.591388Z\"},\"productAttributes\":{\"identifierExists\":false,\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11\",\"description\":\"Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266\",\"additionalImageLinks\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326\",\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332\"],\"ageGroup\":\"ADULT\",\"availability\":\"IN_STOCK\",\"brand\":\"LuxeStyle\",\"condition\":\"NEW\",\"gender\":\"UNISEX\",\"googleProductCategory\":\"2683\",\"itemGroupId\":\"shopify_ZZ_15448834736513\",\"price\":{\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"},\"productTypes\":[\"Nageldesign\"],\"shipping\":[{\"price\":{\"amountMicros\":\"7000000\",\"currencyCode\":\"CHF\"},\"country\":\"CH\",\"service\":\"Standard\",\"minHandlingTime\":\"0\",\"maxHandlingTime\":\"0\",\"minTransitTime\":\"10\",\"maxTransitTime\":\"20\",\"region\":\"\",\"locationId\":\"0\",\"locationGroupName\":\"\",\"postalCode\":\"\"}],\"shippingWeight\":{\"value\":20,\"unit\":\"g\"},\"costOfGoodsSold\":{\"amountMicros\":\"7580000\",\"currencyCode\":\"CHF\"},\"productDetails\":[{\"sectionName\":\"Variant\",\"attributeName\":\"modell\",\"attributeValue\":\"Modell 11\"}],\"freeShippingThreshold\":[{\"country\":\"CH\",\"priceThreshold\":{\"amountMicros\":\"45000000\",\"currencyCode\":\"CHF\"}}],\"gtins\":[],\"loyaltyPrograms\":[],\"carrierShipping\":[],\"shippingHandlingBusinessDays\":[],\"shippingTransitBusinessDays\":[],\"handlingCutoffTimes\":[],\"sizeTypes\":[],\"adsLabels\":[],\"productHighlights\":[],\"displayAdsSimilarIds\":[],\"promotionIds\":[],\"includedDestinations\":[],\"excludedDestinations\":[],\"shoppingAdsExcludedCountries\":[],\"lifestyleImageLinks\":[],\"cloudExportAdditionalProperties\":[],\"certifications\":[],\"sustainabilityIncentives\":[],\"videoLinks\":[]},\"base64EncodedName\":\"accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU\",\"legacyLocal\":false}}"
+          }
+        ],
+        "structuredContent": {
+          "shop_id": "5797470070",
+          "product": {
+            "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+            "offerId": "shopify_ZZ_15448834736513_67652260594055",
+            "contentLanguage": "de",
+            "feedLabel": "CHF_99383214465",
+            "dataSource": "accounts/5797470070/dataSources/10667445201",
+            "versionNumber": "1794398400000000",
+            "customAttributes": [
+              {
+                "name": "merchant item id",
+                "value": "gid://shopify/ProductVariant/67652260594055",
+                "groupValues": []
+              },
+              {
+                "name": "sku",
+                "value": "CJYD273330511KP",
+                "groupValues": []
+              },
+              {
+                "name": "modification info",
+                "groupValues": [
+                  {
+                    "name": "modifier",
+                    "value": "third party syncing",
+                    "groupValues": []
+                  },
+                  {
+                    "name": "modification source",
+                    "value": "third party shopify",
+                    "groupValues": []
+                  }
+                ]
+              }
+            ],
+            "productStatus": {
+              "destinationStatuses": [
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "VIDEO_ADS",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "disapprovedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "approvedCountries": [],
+                  "pendingCountries": []
+                }
+              ],
+              "itemLevelIssues": [
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "SHOPPING_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DISPLAY_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "FREE_LISTINGS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "VIDEO_ADS",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                },
+                {
+                  "code": "image_unwanted_overlays",
+                  "severity": "DISAPPROVED",
+                  "resolution": "merchant_action",
+                  "attribute": "image link",
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "description": "Promotional overlay on image",
+                  "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                  "documentation": "https://support.google.com/merchants/answer/12158684",
+                  "applicableCountries": [
+                    "CH",
+                    "LI"
+                  ]
+                }
+              ],
+              "creationDate": "2026-10-09T23:50:30.432066Z",
+              "lastUpdateDate": "2026-11-11T20:09:18.591388Z",
+              "googleExpirationDate": "2026-12-11T20:09:18.591388Z"
+            },
+            "productAttributes": {
+              "identifierExists": false,
+              "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11",
+              "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+              "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+              "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+              "additionalImageLinks": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+              ],
+              "ageGroup": "ADULT",
+              "availability": "IN_STOCK",
+              "brand": "LuxeStyle",
+              "condition": "NEW",
+              "gender": "UNISEX",
+              "googleProductCategory": "2683",
+              "itemGroupId": "shopify_ZZ_15448834736513",
+              "price": {
+                "amountMicros": "15900000",
+                "currencyCode": "CHF"
+              },
+              "productTypes": [
+                "Nageldesign"
+              ],
+              "shipping": [
+                {
+                  "price": {
+                    "amountMicros": "7000000",
+                    "currencyCode": "CHF"
+                  },
+                  "country": "CH",
+                  "service": "Standard",
+                  "minHandlingTime": "0",
+                  "maxHandlingTime": "0",
+                  "minTransitTime": "10",
+                  "maxTransitTime": "20",
+                  "region": "",
+                  "locationId": "0",
+                  "locationGroupName": "",
+                  "postalCode": ""
+                }
+              ],
+              "shippingWeight": {
+                "value": 20,
+                "unit": "g"
+              },
+              "costOfGoodsSold": {
+                "amountMicros": "7580000",
+                "currencyCode": "CHF"
+              },
+              "productDetails": [
+                {
+                  "sectionName": "Variant",
+                  "attributeName": "modell",
+                  "attributeValue": "Modell 11"
+                }
+              ],
+              "freeShippingThreshold": [
+                {
+                  "country": "CH",
+                  "priceThreshold": {
+                    "amountMicros": "45000000",
+                    "currencyCode": "CHF"
+                  }
+                }
+              ],
+              "gtins": [],
+              "loyaltyPrograms": [],
+              "carrierShipping": [],
+              "shippingHandlingBusinessDays": [],
+              "shippingTransitBusinessDays": [],
+              "handlingCutoffTimes": [],
+              "sizeTypes": [],
+              "adsLabels": [],
+              "productHighlights": [],
+              "displayAdsSimilarIds": [],
+              "promotionIds": [],
+              "includedDestinations": [],
+              "excludedDestinations": [],
+              "shoppingAdsExcludedCountries": [],
+              "lifestyleImageLinks": [],
+              "cloudExportAdditionalProperties": [],
+              "certifications": [],
+              "sustainabilityIncentives": [],
+              "videoLinks": []
+            },
+            "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU",
+            "legacyLocal": false
+          }
+        },
+        "isError": false
+      },
+      "finalReadback": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"shop_id\":\"5797470070\",\"product\":{\"name\":\"accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055\",\"offerId\":\"shopify_ZZ_15448834736513_67652260594055\",\"contentLanguage\":\"de\",\"feedLabel\":\"CHF_99383214465\",\"dataSource\":\"accounts/5797470070/dataSources/10667445201\",\"customAttributes\":[{\"name\":\"merchant item id\",\"value\":\"gid://shopify/ProductVariant/67652260594055\",\"groupValues\":[]},{\"name\":\"sku\",\"value\":\"CJYD273330511KP\",\"groupValues\":[]},{\"name\":\"modification info\",\"groupValues\":[{\"name\":\"modifier\",\"value\":\"third party syncing\",\"groupValues\":[]},{\"name\":\"modification source\",\"value\":\"third party shopify\",\"groupValues\":[]}]}],\"productStatus\":{\"destinationStatuses\":[{\"reportingContext\":\"SHOPPING_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DISPLAY_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"FREE_LISTINGS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"VIDEO_ADS\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]},{\"reportingContext\":\"DEMAND_GEN_ADS_DISCOVER_SURFACE\",\"approvedCountries\":[\"CH\",\"LI\"],\"pendingCountries\":[],\"disapprovedCountries\":[]}],\"creationDate\":\"2026-10-09T23:50:30.432066Z\",\"lastUpdateDate\":\"2026-11-15T10:14:39.669837Z\",\"googleExpirationDate\":\"2026-12-15T10:14:39.669837Z\",\"itemLevelIssues\":[]},\"productAttributes\":{\"identifierExists\":false,\"title\":\"Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11\",\"description\":\"Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\",\"link\":\"https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic\",\"imageLink\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345\",\"additionalImageLinks\":[\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326\",\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332\"],\"ageGroup\":\"ADULT\",\"availability\":\"IN_STOCK\",\"brand\":\"LuxeStyle\",\"condition\":\"NEW\",\"gender\":\"UNISEX\",\"googleProductCategory\":\"2683\",\"itemGroupId\":\"shopify_ZZ_15448834736513\",\"price\":{\"amountMicros\":\"15900000\",\"currencyCode\":\"CHF\"},\"productTypes\":[\"Nageldesign\"],\"shipping\":[{\"price\":{\"amountMicros\":\"7000000\",\"currencyCode\":\"CHF\"},\"country\":\"CH\",\"service\":\"Standard\",\"minHandlingTime\":\"0\",\"maxHandlingTime\":\"0\",\"minTransitTime\":\"10\",\"maxTransitTime\":\"20\",\"region\":\"\",\"locationId\":\"0\",\"locationGroupName\":\"\",\"postalCode\":\"\"}],\"shippingWeight\":{\"value\":20,\"unit\":\"g\"},\"costOfGoodsSold\":{\"amountMicros\":\"7580000\",\"currencyCode\":\"CHF\"},\"productDetails\":[{\"sectionName\":\"Variant\",\"attributeName\":\"modell\",\"attributeValue\":\"Modell 11\"}],\"freeShippingThreshold\":[{\"country\":\"CH\",\"priceThreshold\":{\"amountMicros\":\"45000000\",\"currencyCode\":\"CHF\"}}],\"gtins\":[],\"loyaltyPrograms\":[],\"carrierShipping\":[],\"shippingHandlingBusinessDays\":[],\"shippingTransitBusinessDays\":[],\"handlingCutoffTimes\":[],\"sizeTypes\":[],\"adsLabels\":[],\"productHighlights\":[],\"displayAdsSimilarIds\":[],\"promotionIds\":[],\"includedDestinations\":[],\"excludedDestinations\":[],\"shoppingAdsExcludedCountries\":[],\"lifestyleImageLinks\":[],\"cloudExportAdditionalProperties\":[],\"certifications\":[],\"sustainabilityIncentives\":[],\"videoLinks\":[]},\"base64EncodedName\":\"accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU\",\"legacyLocal\":false}}"
+          }
+        ],
+        "structuredContent": {
+          "shop_id": "5797470070",
+          "product": {
+            "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+            "offerId": "shopify_ZZ_15448834736513_67652260594055",
+            "contentLanguage": "de",
+            "feedLabel": "CHF_99383214465",
+            "dataSource": "accounts/5797470070/dataSources/10667445201",
+            "customAttributes": [
+              {
+                "name": "merchant item id",
+                "value": "gid://shopify/ProductVariant/67652260594055",
+                "groupValues": []
+              },
+              {
+                "name": "sku",
+                "value": "CJYD273330511KP",
+                "groupValues": []
+              },
+              {
+                "name": "modification info",
+                "groupValues": [
+                  {
+                    "name": "modifier",
+                    "value": "third party syncing",
+                    "groupValues": []
+                  },
+                  {
+                    "name": "modification source",
+                    "value": "third party shopify",
+                    "groupValues": []
+                  }
+                ]
+              }
+            ],
+            "productStatus": {
+              "destinationStatuses": [
+                {
+                  "reportingContext": "SHOPPING_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DISPLAY_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "FREE_LISTINGS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "VIDEO_ADS",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                },
+                {
+                  "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                  "approvedCountries": [
+                    "CH",
+                    "LI"
+                  ],
+                  "pendingCountries": [],
+                  "disapprovedCountries": []
+                }
+              ],
+              "creationDate": "2026-10-09T23:50:30.432066Z",
+              "lastUpdateDate": "2026-11-15T10:14:39.669837Z",
+              "googleExpirationDate": "2026-12-15T10:14:39.669837Z",
+              "itemLevelIssues": []
+            },
+            "productAttributes": {
+              "identifierExists": false,
+              "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11",
+              "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+              "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+              "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+              "additionalImageLinks": [
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+                "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+              ],
+              "ageGroup": "ADULT",
+              "availability": "IN_STOCK",
+              "brand": "LuxeStyle",
+              "condition": "NEW",
+              "gender": "UNISEX",
+              "googleProductCategory": "2683",
+              "itemGroupId": "shopify_ZZ_15448834736513",
+              "price": {
+                "amountMicros": "15900000",
+                "currencyCode": "CHF"
+              },
+              "productTypes": [
+                "Nageldesign"
+              ],
+              "shipping": [
+                {
+                  "price": {
+                    "amountMicros": "7000000",
+                    "currencyCode": "CHF"
+                  },
+                  "country": "CH",
+                  "service": "Standard",
+                  "minHandlingTime": "0",
+                  "maxHandlingTime": "0",
+                  "minTransitTime": "10",
+                  "maxTransitTime": "20",
+                  "region": "",
+                  "locationId": "0",
+                  "locationGroupName": "",
+                  "postalCode": ""
+                }
+              ],
+              "shippingWeight": {
+                "value": 20,
+                "unit": "g"
+              },
+              "costOfGoodsSold": {
+                "amountMicros": "7580000",
+                "currencyCode": "CHF"
+              },
+              "productDetails": [
+                {
+                  "sectionName": "Variant",
+                  "attributeName": "modell",
+                  "attributeValue": "Modell 11"
+                }
+              ],
+              "freeShippingThreshold": [
+                {
+                  "country": "CH",
+                  "priceThreshold": {
+                    "amountMicros": "45000000",
+                    "currencyCode": "CHF"
+                  }
+                }
+              ],
+              "gtins": [],
+              "loyaltyPrograms": [],
+              "carrierShipping": [],
+              "shippingHandlingBusinessDays": [],
+              "shippingTransitBusinessDays": [],
+              "handlingCutoffTimes": [],
+              "sizeTypes": [],
+              "adsLabels": [],
+              "productHighlights": [],
+              "displayAdsSimilarIds": [],
+              "promotionIds": [],
+              "includedDestinations": [],
+              "excludedDestinations": [],
+              "shoppingAdsExcludedCountries": [],
+              "lifestyleImageLinks": [],
+              "cloudExportAdditionalProperties": [],
+              "certifications": [],
+              "sustainabilityIncentives": [],
+              "videoLinks": []
+            },
+            "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU",
+            "legacyLocal": false
+          }
+        },
+        "isError": false
+      }
+    },
+    "readbackPhase": "Delayed direct same-resource reads confirmed new image links and approval in six returned contexts per offer for CH and LI, no itemLevelIssues. Earlier immediate reads were old; no repeat writes.",
+    "actualWriteCalls": 2,
+    "retries": 0,
+    "noNewOffersSourcesOrOtherFields": true,
+    "nativePreflight": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          },
+          "currencyCode": "CHF",
+          "ianaTimezone": "Europe/Zurich"
+        },
+        "nail": {
+          "id": "gid://shopify/Product/15448834736513",
+          "title": "Schimmernder Thermo-Gel Nagellack",
+          "status": "ACTIVE",
+          "updatedAt": "2026-11-12T08:02:41Z",
+          "tags": [
+            "auswahl-nachgeruestet",
+            "beauty",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "maniküre",
+            "mengenrabatt-a",
+            "naegel",
+            "nagel",
+            "nageldesign",
+            "rueckhol-0907",
+            "sort-make-up",
+            "sort-nagellack-gel-lack"
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55877809340801",
+                "title": "Modell 1",
+                "sku": "CJYD273330501AZ",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/78014931960199",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260299143",
+                "title": "Modell 2",
+                "sku": "CJYD273330502BY",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/69861208588673",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d10c197-dd9c-4ab0-b455-95474447122b.jpg?v=1783188266"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260331911",
+                "title": "Modell 3",
+                "sku": "CJYD273330503CX",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/69861208654209",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a86c3fc2-920b-4692-a577-ea0c100e7be0.jpg?v=1783188266"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260364679",
+                "title": "Modell 4",
+                "sku": "CJYD273330504DW",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480728854919",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dfdaf671-9fbe-4661-8d3f-bcf5bc9517a0.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260397447",
+                "title": "Modell 5",
+                "sku": "CJYD273330505EV",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480728887687",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50ec9dfe-96c7-4dcb-9419-ed136d25f0e7.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260430215",
+                "title": "Modell 6",
+                "sku": "CJYD273330506FU",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/78014932091271",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260462983",
+                "title": "Modell 7",
+                "sku": "CJYD273330507GT",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/78014932943239",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260495751",
+                "title": "Modell 8",
+                "sku": "CJYD273330508HS",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/69861208523137",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26e2549b-cc40-4400-9a23-86390e931cde.jpg?v=1783188265"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260528519",
+                "title": "Modell 9",
+                "sku": "CJYD273330509IR",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480728920455",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ce7c1ed-7a95-4524-a8c3-fca1c954cd3a.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260561287",
+                "title": "Modell 10",
+                "sku": "CJYD273330510JQ",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/69861208457601",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260594055",
+                "title": "Modell 11",
+                "sku": "CJYD273330511KP",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/78014933205383",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260626823",
+                "title": "Modell 12",
+                "sku": "CJYD273330512LO",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480728953223",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/062c6f66-1448-46cb-b70d-49b0a35ec8ae.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260659591",
+                "title": "Modell 13",
+                "sku": "CJYD273330513MN",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480728985991",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15795dd6-352f-48cc-ae4a-3aad39df086b.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260692359",
+                "title": "Modell 14",
+                "sku": "CJYD273330514NM",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480729018759",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7087533f-c5e2-4e8c-96d0-6c636981346d.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67652260725127",
+                "title": "Modell 15",
+                "sku": "CJYD273330515OL",
+                "price": "15.90",
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/77480729051527",
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6127ffba-15ee-426e-a28e-6b52e1b8414d.jpg?v=1791489010"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": true
+            }
+          }
+        }
+      }
+    },
+    "finalReadbackAtUTC": "2026-11-15T10:16:22Z"
+  },
+  "finalCountercheck": {
+    "ownerAcceptance": {
+      "answer": "Ja, Rechte und Produkt-/Farbtreue für beide Bilder bestätigt",
+      "source": "Explicit user reply to exact two-image request in this task",
+      "appliesToModels": [
+        7,
+        11
+      ],
+      "scope": "Only existing German Merchant primary image links in API10667445201",
+      "noOtherPermissionsChanged": true
+    },
+    "checks": [
+      {
+        "model": "7",
+        "merchantName": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+        "source": "accounts/5797470070/dataSources/10667445201",
+        "changedProductAttributeKeys": [
+          "imageLink"
+        ],
+        "otherProductAttributesUnchanged": true,
+        "newImageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+        "googleContexts": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "itemLevelIssues": [],
+        "state": "confirmed_applied_and_approved"
+      },
+      {
+        "model": "11",
+        "merchantName": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+        "source": "accounts/5797470070/dataSources/10667445201",
+        "changedProductAttributeKeys": [
+          "imageLink"
+        ],
+        "otherProductAttributesUnchanged": true,
+        "newImageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+        "googleContexts": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "approvedCountries": [
+              "CH",
+              "LI"
+            ],
+            "pendingCountries": [],
+            "disapprovedCountries": []
+          }
+        ],
+        "itemLevelIssues": [],
+        "state": "confirmed_applied_and_approved"
+      }
+    ],
+    "actualWriteCalls": 2,
+    "writeRetries": 0,
+    "newOffersOrSources": 0,
+    "finalReadbackAtUTC": "2026-11-15T10:16:22Z",
+    "successOnlyForExactTwoOffers": true,
+    "notFullCatalogZeroErrors": true
+  },
+  "historyBeforeNewOwnerReply": {
+    "scope": "Offline evidence review only; no API or browser calls. This records historical coverage and current local evidence, not a new rights clearance or feed mutation.",
+    "assessment": {
+      "shopify_media": "The R231 local Shopify media read maps the two specified files to native product variants/SKUs and confirms they are retrievable PNGs.",
+      "rights_and_colour_fidelity": "No located approval covers Modell 7 or Modell 11. R222 owner attestation is explicitly limited to Modell 1 and Modell 6; do not extend it to these images. The R222 rights note says CJ source-photo rights were unresolved, and Higgsfield output terms do not license rights in an input image.",
+      "merchant_image_link": "R223 direct Merchant offer reads and the R222 proposed Merchant change cover Modell 1/6, not 7/11. R223 French Modell 1/6 records contain the 7/11 URLs only in additionalImageLinks, not as their imageLink. The R231 local diagnostic has current rows for the English Modell 7 and 11 offers with image_unwanted_overlays on n:image_link, but contains no imageLink value. Therefore the evidence does not establish whether Google Merchant primary image_link for 7/11 was updated to these files; verify the exact offers only after suitable authorization."
+    },
+    "current_shopify_media_evidence": {
+      "source": "/dev/shm/luxestyle-review/r231/nail-images.json",
+      "sha256": "e9b923fe3c0e543015435932960707cd74a183161f26e3741a109dd3aa07462d",
+      "readAtUTC": "2026-11-15T09:57:27Z (per individual records)",
+      "rows": [
+        {
+          "model": 7,
+          "sku": "CJYD273330507GT",
+          "variantId": "gid://shopify/ProductVariant/67652260462983",
+          "file": "hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+          "httpStatus": 200,
+          "contentType": "image/png",
+          "bytes": 1249543,
+          "fileSha256": "7259ecbab80091595835e3f19c0ce4fb8bbdba6778dfb8a9f5e4ce5134f14404"
+        },
+        {
+          "model": 11,
+          "sku": "CJYD273330511KP",
+          "variantId": "gid://shopify/ProductVariant/67652260594055",
+          "file": "hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+          "httpStatus": 200,
+          "contentType": "image/png",
+          "bytes": 1233820,
+          "fileSha256": "32fb101a7d0a80794dedbdcf222227914676071a2aeaac08793b265a4d6dcdc6"
+        }
+      ]
+    },
+    "approval_scope_evidence": {
+      "owner_attestation": {
+        "source": "/dev/shm/luxestyle-review/r222/owner-image-confirmation.json",
+        "sha256": "2a729b67e927d0d1acce3e93bbfe600b0e0337843f34ec20dab8832392a58e4d",
+        "recordedAtUTC": "2026-11-14T22:19:00.016Z",
+        "ownerText": "Ja, Rechte und Produkt-/Farbtreue sind für beide Bilder bestätigt",
+        "exactScope": "Merchant account 5797470070, source 10667445201, variants 55877809340801 (Modell 1) and 67652260430215 (Modell 6), field image_link only; owner attestation, not independent CJ licence.",
+        "notCovered": [
+          "variant 67652260462983 / Modell 7",
+          "variant 67652260594055 / Modell 11"
+        ]
+      },
+      "source_rights_note": {
+        "source": "/dev/shm/luxestyle-review/r222/image-rights-findings.txt",
+        "sha256": "6d869be70066d4116e90a922c0e28f402df8463e839dbf6d6b17176d72b16b8e",
+        "finding": "CJ catalog-photo rights unresolved in the reviewed evidence. Higgsfield commercial-output language does not itself establish permission to use or edit the source input photo."
+      }
+    },
+    "merchant_history": {
+      "R222_change_proposal": {
+        "source": "/dev/shm/luxestyle-review/r222/proposed/MERCHANT-BILDWECHSEL-20261114-R222.json",
+        "sha256": "347167f6c7fc3135d8c8541d9c62e818aef9f082dc70f151f8d0ab8697739dae",
+        "scope": "Two image_link changes for Modell 1/6 only; no Modell 7/11 target."
+      },
+      "R223_direct_offer_reads": [
+        {
+          "source": "/dev/shm/luxestyle-review/r223/offer0.json",
+          "sha256": "57acd0bd04123f7d16f4431fbea999ad3e9effe45f30f34c66ea4025a4295bb2",
+          "row": "German Modell 1 offer, account 5797470070, source 10667445201; imageLink points to the Modell 1 output file."
+        },
+        {
+          "source": "/dev/shm/luxestyle-review/r223/offer1.json",
+          "sha256": "a782798a65c33c003dee68e7fc5d8da9a0f19a4a853f31ea58c554a073f7ac2d",
+          "row": "German Modell 6 offer, account 5797470070, source 10667445201; imageLink points to the Modell 6 output file."
+        },
+        {
+          "source": "/dev/shm/luxestyle-review/r223/offer2.json",
+          "sha256": "b6cefd5f211d7c8a718f06a9acae3ccc00a3d12ea51c6677e3e0a3dba2f183a7",
+          "row": "French Modell 1 offer, source 10762220830; imageLink is Modell 1. The exact Modell 7 and Modell 11 URLs occur in additionalImageLinks only. This source was identified in R222 as a primary product data source, not supplemental."
+        },
+        {
+          "source": "/dev/shm/luxestyle-review/r223/offer3.json",
+          "sha256": "7149e659f0347e9a97491963e5f680bc077e21765cfbd22d52d8746948eb34ca",
+          "row": "French Modell 6 offer, source 10762220830; imageLink is Modell 6. Modell 7 and 11 URLs also occur in additionalImageLinks only."
+        }
+      ],
+      "R231_local_diagnostics": {
+        "source": "/dev/shm/luxestyle-review/r231/current-diagnostics.json",
+        "sha256": "58bc072ddb1033a9b1b45d15280609bf5b114e6ca401ae50ff923a6379fcdd99",
+        "capturedAt": "2026-11-15 09:55 per R231 task context",
+        "model7Offer": "de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+        "model11Offer": "de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+        "sharedObservedIssue": "image_unwanted_overlays; canonicalAttribute n:image_link; disapproved in CH/LI across Shopping Ads, Display Ads, and Free Listings in the local diagnostic snapshot.",
+        "limitation": "Diagnostic rows identify the issue and offer IDs, but do not expose imageLink URL/value."
+      }
+    },
+    "decision": "Do not claim rights/fidelity approval for Modell 7 or 11 and do not claim their Google primary image_link was replaced. Existing evidence shows Shopify-hosted media and historical inclusion as French Modell 1/6 additional images; current local Merchant diagnostics still report overlay issues on the exact English 7/11 offers."
+  },
+  "currentState": "Two exact image links applied and six returned Google contexts each approved for CH/LI, no itemLevelIssues.",
+  "limits": [
+    "Only these two German existing offers. No new offer/source and no Model1/6 repeat.",
+    "Approval is not proof of ads delivery or sales.",
+    "Earlier48-row error list is a pre-write partial snapshot; no global zero-errors claim."
+  ]
+}

@@ -1,0 +1,3353 @@
+{
+  "identitiesAndResourceControl": {
+    "shop": {
+      "data": {
+        "shop": {
+          "id": "gid://shopify/Shop/94368563585",
+          "name": "LuxeStyle",
+          "primaryDomain": {
+            "host": "luxestyle.ch"
+          },
+          "currencyCode": "CHF",
+          "ianaTimezone": "Europe/Zurich"
+        }
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "merchantShop": {
+      "shops": [
+        {
+          "name": "LuxeStyle CH",
+          "shop_id": "5797470070",
+          "time_zone": null
+        }
+      ]
+    },
+    "merchantConnector": {
+      "id": "google_merchant",
+      "accounts": [
+        {
+          "id": "5797470070",
+          "name": "LuxeStyle CH"
+        }
+      ],
+      "actions": [
+        "insert_product",
+        "update_product",
+        "delete_product",
+        "create_data_source"
+      ]
+    },
+    "productNameControl": {
+      "shop_id": "5797470070",
+      "products": [
+        {
+          "product_name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15453997465985_67790129758599",
+          "name": "accounts/5797470070/products/fr~CHF_99383214465~shopify_ZZ_15453997465985_67790129758599",
+          "offerId": "shopify_ZZ_15453997465985_67790129758599",
+          "contentLanguage": "fr",
+          "feedLabel": "CHF_99383214465",
+          "dataSource": "accounts/5797470070/dataSources/10762220830",
+          "versionNumber": "1793318400000000",
+          "customAttributes": [
+            {
+              "name": "merchant item id",
+              "value": "gid://shopify/ProductVariant/67790129758599",
+              "groupValues": []
+            },
+            {
+              "name": "sku",
+              "value": "CJQL197445508HS",
+              "groupValues": []
+            },
+            {
+              "name": "modification info",
+              "groupValues": [
+                {
+                  "name": "modifier",
+                  "value": "third party syncing",
+                  "groupValues": []
+                },
+                {
+                  "name": "modification source",
+                  "value": "third party shopify",
+                  "groupValues": []
+                }
+              ]
+            }
+          ],
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "SHOPPING_ADS",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              },
+              {
+                "reportingContext": "DISPLAY_ADS",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              },
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              },
+              {
+                "reportingContext": "VIDEO_ADS",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "approvedCountries": [
+                  "CH"
+                ],
+                "pendingCountries": [],
+                "disapprovedCountries": []
+              }
+            ],
+            "creationDate": "2026-10-30T17:47:26.498684Z",
+            "lastUpdateDate": "2026-10-30T17:47:26.498684Z",
+            "googleExpirationDate": "2026-11-30T18:21:39Z",
+            "itemLevelIssues": []
+          },
+          "productAttributes": {
+            "identifierExists": false,
+            "title": "Multifunktionale Sport-Armbanduhr mit Doppeldisplay und... Weiss / Roségold",
+            "description": "Multifunktionale Sport-Armbanduhr mit Doppeldisplay und wasserdicht bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe…",
+            "link": "https://luxestyle.ch/fr/products/multifunktionale-sport-armbanduhr-mit-doppeldi-072384?variant=67790129758599&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+            "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/602e4d1d-6d4a-4a1e-92c6-45a0bcc5b2eb.jpg?v=1783858056",
+            "additionalImageLinks": [
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040326000.jpg?v=1783858056",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040326600.jpg?v=1783858057",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040325200.jpg?v=1783858057",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040326200.jpg?v=1783858057",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040325500.jpg?v=1783858057",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040325800.jpg?v=1783858057",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ab2a819-5b55-47e7-94f1-771bfbf71b9e.jpg?v=1783858056",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402230516040325000.jpg?v=1783858057"
+            ],
+            "ageGroup": "ADULT",
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "color": "Weiss / Roségold",
+            "condition": "NEW",
+            "gender": "UNISEX",
+            "googleProductCategory": "201",
+            "itemGroupId": "shopify_ZZ_15453997465985",
+            "price": {
+              "amountMicros": "14900000",
+              "currencyCode": "CHF"
+            },
+            "productTypes": [
+              "Uhren"
+            ],
+            "shipping": [
+              {
+                "price": {
+                  "amountMicros": "7000000",
+                  "currencyCode": "CHF"
+                },
+                "country": "CH",
+                "service": "Standard",
+                "minHandlingTime": "0",
+                "maxHandlingTime": "0",
+                "minTransitTime": "10",
+                "maxTransitTime": "20",
+                "region": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "shippingWeight": {
+              "unit": "kg",
+              "value": 0
+            },
+            "costOfGoodsSold": {
+              "amountMicros": "10370000",
+              "currencyCode": "CHF"
+            },
+            "productDetails": [
+              {
+                "sectionName": "Variant",
+                "attributeName": "farbe",
+                "attributeValue": "Weiss / Roségold"
+              }
+            ],
+            "freeShippingThreshold": [
+              {
+                "country": "CH",
+                "priceThreshold": {
+                  "amountMicros": "45000000",
+                  "currencyCode": "CHF"
+                }
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "carrierShipping": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZnJ-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NTM5OTc0NjU5ODVfNjc3OTAxMjk3NTg1OTk",
+          "legacyLocal": false
+        }
+      ],
+      "next_page_token": "CM_1s7SJ0SI="
+    }
+  },
+  "initialDirectMerchantProductsAndPlannedDiffs": {
+    "directProducts": [
+      {
+        "shop_id": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+          "offerId": "shopify_ZZ_15448834736513_67652260462983",
+          "contentLanguage": "de",
+          "feedLabel": "CHF_99383214465",
+          "dataSource": "accounts/5797470070/dataSources/10667445201",
+          "versionNumber": "1794398400000000",
+          "customAttributes": [
+            {
+              "name": "merchant item id",
+              "value": "gid://shopify/ProductVariant/67652260462983",
+              "groupValues": []
+            },
+            {
+              "name": "sku",
+              "value": "CJYD273330507GT",
+              "groupValues": []
+            },
+            {
+              "name": "modification info",
+              "groupValues": [
+                {
+                  "name": "modifier",
+                  "value": "third party syncing",
+                  "groupValues": []
+                },
+                {
+                  "name": "modification source",
+                  "value": "third party shopify",
+                  "groupValues": []
+                }
+              ]
+            }
+          ],
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "SHOPPING_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DISPLAY_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "VIDEO_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "SHOPPING_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DISPLAY_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DEMAND_GEN_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "VIDEO_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-10-09T23:50:27.894386Z",
+            "lastUpdateDate": "2026-11-11T20:09:17.805252Z",
+            "googleExpirationDate": "2026-12-11T20:09:17.805252Z"
+          },
+          "productAttributes": {
+            "identifierExists": false,
+            "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 7",
+            "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+            "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260462983&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+            "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266",
+            "additionalImageLinks": [
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+            ],
+            "ageGroup": "ADULT",
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "condition": "NEW",
+            "gender": "UNISEX",
+            "googleProductCategory": "2683",
+            "itemGroupId": "shopify_ZZ_15448834736513",
+            "price": {
+              "amountMicros": "15900000",
+              "currencyCode": "CHF"
+            },
+            "productTypes": [
+              "Nageldesign"
+            ],
+            "shipping": [
+              {
+                "price": {
+                  "amountMicros": "7000000",
+                  "currencyCode": "CHF"
+                },
+                "country": "CH",
+                "service": "Standard",
+                "minHandlingTime": "0",
+                "maxHandlingTime": "0",
+                "minTransitTime": "10",
+                "maxTransitTime": "20",
+                "region": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "shippingWeight": {
+              "value": 20,
+              "unit": "g"
+            },
+            "costOfGoodsSold": {
+              "amountMicros": "7580000",
+              "currencyCode": "CHF"
+            },
+            "productDetails": [
+              {
+                "sectionName": "Variant",
+                "attributeName": "modell",
+                "attributeValue": "Modell 7"
+              }
+            ],
+            "freeShippingThreshold": [
+              {
+                "country": "CH",
+                "priceThreshold": {
+                  "amountMicros": "45000000",
+                  "currencyCode": "CHF"
+                }
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "carrierShipping": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA0NjI5ODM",
+          "legacyLocal": false
+        }
+      },
+      {
+        "shop_id": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+          "offerId": "shopify_ZZ_15448834736513_67652260594055",
+          "contentLanguage": "de",
+          "feedLabel": "CHF_99383214465",
+          "dataSource": "accounts/5797470070/dataSources/10667445201",
+          "versionNumber": "1794398400000000",
+          "customAttributes": [
+            {
+              "name": "merchant item id",
+              "value": "gid://shopify/ProductVariant/67652260594055",
+              "groupValues": []
+            },
+            {
+              "name": "sku",
+              "value": "CJYD273330511KP",
+              "groupValues": []
+            },
+            {
+              "name": "modification info",
+              "groupValues": [
+                {
+                  "name": "modifier",
+                  "value": "third party syncing",
+                  "groupValues": []
+                },
+                {
+                  "name": "modification source",
+                  "value": "third party shopify",
+                  "groupValues": []
+                }
+              ]
+            }
+          ],
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "SHOPPING_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DISPLAY_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "VIDEO_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "SHOPPING_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DISPLAY_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DEMAND_GEN_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "VIDEO_ADS",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "image_unwanted_overlays",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "image link",
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "description": "Promotional overlay on image",
+                "detail": "Promotional text, obstructing elements, or borders are not allowed on product images",
+                "documentation": "https://support.google.com/merchants/answer/12158684",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-10-09T23:50:30.432066Z",
+            "lastUpdateDate": "2026-11-11T20:09:18.591388Z",
+            "googleExpirationDate": "2026-12-11T20:09:18.591388Z"
+          },
+          "productAttributes": {
+            "identifierExists": false,
+            "title": "Schimmernder Thermo-Gel Nagellack | LuxeStyle CH Modell 11",
+            "description": "Schimmernder Thermo-Gel Nagellack bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+            "link": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200?variant=67652260594055&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+            "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266",
+            "additionalImageLinks": [
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+            ],
+            "ageGroup": "ADULT",
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "condition": "NEW",
+            "gender": "UNISEX",
+            "googleProductCategory": "2683",
+            "itemGroupId": "shopify_ZZ_15448834736513",
+            "price": {
+              "amountMicros": "15900000",
+              "currencyCode": "CHF"
+            },
+            "productTypes": [
+              "Nageldesign"
+            ],
+            "shipping": [
+              {
+                "price": {
+                  "amountMicros": "7000000",
+                  "currencyCode": "CHF"
+                },
+                "country": "CH",
+                "service": "Standard",
+                "minHandlingTime": "0",
+                "maxHandlingTime": "0",
+                "minTransitTime": "10",
+                "maxTransitTime": "20",
+                "region": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "shippingWeight": {
+              "value": 20,
+              "unit": "g"
+            },
+            "costOfGoodsSold": {
+              "amountMicros": "7580000",
+              "currencyCode": "CHF"
+            },
+            "productDetails": [
+              {
+                "sectionName": "Variant",
+                "attributeName": "modell",
+                "attributeValue": "Modell 11"
+              }
+            ],
+            "freeShippingThreshold": [
+              {
+                "country": "CH",
+                "priceThreshold": {
+                  "amountMicros": "45000000",
+                  "currencyCode": "CHF"
+                }
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "carrierShipping": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU0NDg4MzQ3MzY1MTNfNjc2NTIyNjA1OTQwNTU",
+          "legacyLocal": false
+        }
+      },
+      {
+        "shop_id": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15502258831745_68193799242119",
+          "offerId": "shopify_ZZ_15502258831745_68193799242119",
+          "contentLanguage": "de",
+          "feedLabel": "CHF_99383214465",
+          "dataSource": "accounts/5797470070/dataSources/10667445201",
+          "versionNumber": "1794398400000000",
+          "customAttributes": [
+            {
+              "name": "merchant item id",
+              "value": "gid://shopify/ProductVariant/68193799242119",
+              "groupValues": []
+            },
+            {
+              "name": "sku",
+              "value": "CJZN170995619SH",
+              "groupValues": []
+            },
+            {
+              "name": "modification info",
+              "groupValues": [
+                {
+                  "name": "modifier",
+                  "value": "third party syncing",
+                  "groupValues": []
+                },
+                {
+                  "name": "modification source",
+                  "value": "third party shopify",
+                  "groupValues": []
+                }
+              ]
+            }
+          ],
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "SHOPPING_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DISPLAY_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "VIDEO_ADS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              },
+              {
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "SHOPPING_ADS",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "DISPLAY_ADS",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "DEMAND_GEN_ADS",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "VIDEO_ADS",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "availability_updated",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "availability",
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "description": "Automatic updates: Mismatched product availability",
+                "detail": "Your product's availability status was automatically updated to match the data on your landing page",
+                "documentation": "https://support.google.com/merchants/answer/14989198",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "SHOPPING_ADS",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "DISPLAY_ADS",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "DEMAND_GEN_ADS",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "VIDEO_ADS",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "landing_page_error",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "link",
+                "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+                "description": "Product page unavailable",
+                "detail": "Ensure your product page can be accessed from desktop and mobile devices and is not restricted from Google crawling",
+                "documentation": "https://support.google.com/merchants/answer/12158123",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-11-12T03:02:27.822189Z",
+            "lastUpdateDate": "2026-11-12T03:02:27.822189Z",
+            "googleExpirationDate": "2026-12-15T01:29:56Z"
+          },
+          "productAttributes": {
+            "identifierExists": false,
+            "title": "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH 7.5kg 0.1g Englisch",
+            "description": "Präzisionswaage 3-10 kg, elektronisch – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+            "link": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+            "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329",
+            "additionalImageLinks": [
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44aeb0ea-fc37-41a7-8f42-d52b4fba349a.jpg?v=1786962330",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd2bb5da-dabc-4c3b-a4e6-cccd45172531.png?v=1786962329",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4f4658f3-5859-4b4c-934a-bece49e6f0bb.png?v=1786962329",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1cf4c783-1f72-4fba-bfc0-7d5580e395db.jpg?v=1786962329",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/442f569b-8f2a-4877-a88e-2412aa5f31f1.jpg?v=1786962329",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9490443-88f1-4efb-bff6-b0c9f5f874c0.jpg?v=1786962329",
+              "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/513d4a78-6f29-4dd4-8090-3e43e7a932ee.png?v=1786962331"
+            ],
+            "ageGroup": "ADULT",
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "color": "7.5kg 0.1g Englisch",
+            "condition": "NEW",
+            "gender": "UNISEX",
+            "googleProductCategory": "1698",
+            "itemGroupId": "shopify_ZZ_15502258831745",
+            "price": {
+              "amountMicros": "127900000",
+              "currencyCode": "CHF"
+            },
+            "productTypes": [
+              "Gadget"
+            ],
+            "sellOnGoogleQuantity": "0",
+            "shippingWeight": {
+              "unit": "kg",
+              "value": 0
+            },
+            "costOfGoodsSold": {
+              "amountMicros": "102040000",
+              "currencyCode": "CHF"
+            },
+            "productDetails": [
+              {
+                "sectionName": "Variant",
+                "attributeName": "farbe",
+                "attributeValue": "7.5kg 0.1g Englisch"
+              }
+            ],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "shipping": [],
+            "carrierShipping": [],
+            "freeShippingThreshold": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MDIyNTg4MzE3NDVfNjgxOTM3OTkyNDIxMTk",
+          "legacyLocal": false
+        }
+      },
+      {
+        "shop_id": "5797470070",
+        "product": {
+          "name": "accounts/5797470070/products/de~CH~10018213324745296287",
+          "offerId": "10018213324745296287",
+          "contentLanguage": "de",
+          "feedLabel": "CH",
+          "dataSource": "accounts/5797470070/dataSources/10678939025",
+          "productStatus": {
+            "destinationStatuses": [
+              {
+                "reportingContext": "FREE_LISTINGS",
+                "disapprovedCountries": [
+                  "CH",
+                  "LI"
+                ],
+                "approvedCountries": [],
+                "pendingCountries": []
+              }
+            ],
+            "itemLevelIssues": [
+              {
+                "code": "item_missing_required_attribute",
+                "severity": "DISAPPROVED",
+                "resolution": "merchant_action",
+                "attribute": "price",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Missing product price",
+                "detail": "Add a price to the [price] attribute in your product data source",
+                "documentation": "https://support.google.com/merchants/answer/12158687",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              },
+              {
+                "code": "missing_potentially_required_attribute",
+                "severity": "NOT_IMPACTED",
+                "resolution": "merchant_action",
+                "attribute": "certification",
+                "reportingContext": "FREE_LISTINGS",
+                "description": "Missing certification [certification] attribute",
+                "detail": "Consider adding this attribute to comply with local laws and regulations",
+                "documentation": "https://support.google.com/merchants/answer/10009686",
+                "applicableCountries": [
+                  "CH",
+                  "LI"
+                ]
+              }
+            ],
+            "creationDate": "2026-10-28T23:39:12.361830Z",
+            "lastUpdateDate": "2026-11-10T08:18:08.077321Z",
+            "googleExpirationDate": "2026-12-12T07:41:58Z"
+          },
+          "productAttributes": {
+            "title": "Moderne Wandleuchte, ein- oder zweiflammig | LuxeStyle CH",
+            "description": "Diese moderne Wandleuchte ist als ein- oder zweiflammige Variante erhältlich. Zusätzlich wählst du zwischen Warmlicht, Dreifarbenlicht oder einer Ausführung ohne Lichtquelle.Auswahl\nEin- oder zweiflammige Wandleuchte\nWarmlicht oder Dreifarbenlicht\nVariante ohne Lichtquelle verfügbar",
+            "link": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+            "imageLink": "http://luxestyle.ch/cdn/shop/files/df998cdc-6125-40ba-9479-f2817f4fb2cf.jpg?v=1791780600",
+            "availability": "IN_STOCK",
+            "brand": "LuxeStyle",
+            "condition": "NEW",
+            "itemGroupId": "16615805878663",
+            "shipping": [
+              {
+                "country": "CH",
+                "region": "",
+                "service": "",
+                "locationId": "0",
+                "locationGroupName": "",
+                "postalCode": ""
+              }
+            ],
+            "additionalImageLinks": [],
+            "gtins": [],
+            "loyaltyPrograms": [],
+            "productTypes": [],
+            "carrierShipping": [],
+            "freeShippingThreshold": [],
+            "shippingHandlingBusinessDays": [],
+            "shippingTransitBusinessDays": [],
+            "handlingCutoffTimes": [],
+            "sizeTypes": [],
+            "adsLabels": [],
+            "productDetails": [],
+            "productHighlights": [],
+            "displayAdsSimilarIds": [],
+            "promotionIds": [],
+            "includedDestinations": [],
+            "excludedDestinations": [],
+            "shoppingAdsExcludedCountries": [],
+            "lifestyleImageLinks": [],
+            "cloudExportAdditionalProperties": [],
+            "certifications": [],
+            "sustainabilityIncentives": [],
+            "videoLinks": []
+          },
+          "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAwMTgyMTMzMjQ3NDUyOTYyODc",
+          "legacyLocal": false,
+          "customAttributes": []
+        }
+      }
+    ],
+    "resourceIdentityMethod": "Canonical account resource prefix established by live merchant_list_products control; exact current disapproved row.id used as product component; each returned product.name/offerId/source/language/feedLabel verified before any write. No guessed offer or Shopify ID.",
+    "imagePlans": [
+      {
+        "model": "Modell 7",
+        "sku": "CJYD273330507GT",
+        "merchantName": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260462983",
+        "account": "5797470070",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "offerId": "shopify_ZZ_15448834736513_67652260462983",
+        "before": {
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3bd03688-47a8-40b7-a4a7-9cadc7a2b719.jpg?v=1783188266"
+        },
+        "after": {
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339"
+        },
+        "onlyField": "image_link",
+        "rightsAndColorAcceptance": "unconfirmed_for_these_two_files",
+        "previousApprovalScope": "Model 1 and Model 6 only; not extended",
+        "writePerformed": false
+      },
+      {
+        "model": "Modell 11",
+        "sku": "CJYD273330511KP",
+        "merchantName": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15448834736513_67652260594055",
+        "account": "5797470070",
+        "dataSource": "accounts/5797470070/dataSources/10667445201",
+        "contentLanguage": "de",
+        "feedLabel": "CHF_99383214465",
+        "offerId": "shopify_ZZ_15448834736513_67652260594055",
+        "before": {
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a60d6977-db6f-4e1a-9a64-111dae7e184c.jpg?v=1783188266"
+        },
+        "after": {
+          "image_link": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+        },
+        "onlyField": "image_link",
+        "rightsAndColorAcceptance": "unconfirmed_for_these_two_files",
+        "previousApprovalScope": "Model 1 and Model 6 only; not extended",
+        "writePerformed": false
+      }
+    ]
+  },
+  "nativeAndSourceProfiles": {
+    "native": {
+      "nail": {
+        "id": "gid://shopify/Product/15448834736513",
+        "title": "Schimmernder Thermo-Gel Nagellack",
+        "handle": "schimmernder-thermo-gel-nagellack-619200",
+        "status": "ACTIVE",
+        "updatedAt": "2026-11-12T08:02:41Z",
+        "onlineStoreUrl": "https://luxestyle.ch/products/schimmernder-thermo-gel-nagellack-619200",
+        "tags": [
+          "auswahl-nachgeruestet",
+          "beauty",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "maniküre",
+          "mengenrabatt-a",
+          "naegel",
+          "nagel",
+          "nageldesign",
+          "rueckhol-0907",
+          "sort-make-up",
+          "sort-nagellack-gel-lack"
+        ],
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/78014932091271",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861208457601",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 2",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/78014933205383",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 3",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861208523137",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 4",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26e2549b-cc40-4400-9a23-86390e931cde.jpg?v=1783188265",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/78014932943239",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 5",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339",
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861208588673",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 6",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d10c197-dd9c-4ab0-b455-95474447122b.jpg?v=1783188266",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861208621441",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 7",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e335c85f-444a-43e6-859a-0042ebcb78d0.jpg?v=1783188266",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861208654209",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 8",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a86c3fc2-920b-4692-a577-ea0c100e7be0.jpg?v=1783188266",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/78014931960199",
+              "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 9",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326",
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480728854919",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dfdaf671-9fbe-4661-8d3f-bcf5bc9517a0.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480728887687",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50ec9dfe-96c7-4dcb-9419-ed136d25f0e7.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480728920455",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ce7c1ed-7a95-4524-a8c3-fca1c954cd3a.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480728953223",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/062c6f66-1448-46cb-b70d-49b0a35ec8ae.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480728985991",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15795dd6-352f-48cc-ae4a-3aad39df086b.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/77480729018759",
+              "alt": "Schimmernder Thermo-Gel Nagellack",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7087533f-c5e2-4e8c-96d0-6c636981346d.jpg?v=1791489010",
+                "width": 800,
+                "height": 800
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/55877809340801",
+              "title": "Modell 1",
+              "sku": "CJYD273330501AZ",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/78014931960199",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 9",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193724_194b5da3-26b4-4143-bbe7-ba187cc15a84.png?v=1794427326"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260299143",
+              "title": "Modell 2",
+              "sku": "CJYD273330502BY",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/69861208588673",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 6",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d10c197-dd9c-4ab0-b455-95474447122b.jpg?v=1783188266"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260331911",
+              "title": "Modell 3",
+              "sku": "CJYD273330503CX",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/69861208654209",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 8",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a86c3fc2-920b-4692-a577-ea0c100e7be0.jpg?v=1783188266"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260364679",
+              "title": "Modell 4",
+              "sku": "CJYD273330504DW",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480728854919",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dfdaf671-9fbe-4661-8d3f-bcf5bc9517a0.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260397447",
+              "title": "Modell 5",
+              "sku": "CJYD273330505EV",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480728887687",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/50ec9dfe-96c7-4dcb-9419-ed136d25f0e7.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260430215",
+              "title": "Modell 6",
+              "sku": "CJYD273330506FU",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/78014932091271",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 1",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260462983",
+              "title": "Modell 7",
+              "sku": "CJYD273330507GT",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/78014932943239",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 5",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_c6171ae1-73e0-44c9-b3f0-acf0b8367c96.png?v=1794427339"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260495751",
+              "title": "Modell 8",
+              "sku": "CJYD273330508HS",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/69861208523137",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 4",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26e2549b-cc40-4400-9a23-86390e931cde.jpg?v=1783188265"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260528519",
+              "title": "Modell 9",
+              "sku": "CJYD273330509IR",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480728920455",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ce7c1ed-7a95-4524-a8c3-fca1c954cd3a.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260561287",
+              "title": "Modell 10",
+              "sku": "CJYD273330510JQ",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/69861208457601",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 2",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c536aa30-7f1a-49d2-9b1a-e4b9ce97bd36.jpg?v=1783188266"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260594055",
+              "title": "Modell 11",
+              "sku": "CJYD273330511KP",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/78014933205383",
+                    "alt": "Schimmernder Thermo-Gel Nagellack – Ansicht 3",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260626823",
+              "title": "Modell 12",
+              "sku": "CJYD273330512LO",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480728953223",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/062c6f66-1448-46cb-b70d-49b0a35ec8ae.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260659591",
+              "title": "Modell 13",
+              "sku": "CJYD273330513MN",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480728985991",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15795dd6-352f-48cc-ae4a-3aad39df086b.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260692359",
+              "title": "Modell 14",
+              "sku": "CJYD273330514NM",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480729018759",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7087533f-c5e2-4e8c-96d0-6c636981346d.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67652260725127",
+              "title": "Modell 15",
+              "sku": "CJYD273330515OL",
+              "price": "15.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/77480729051527",
+                    "alt": "Schimmernder Thermo-Gel Nagellack",
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6127ffba-15ee-426e-a28e-6b52e1b8414d.jpg?v=1791489010"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true
+          }
+        }
+      },
+      "scale": {
+        "id": "gid://shopify/Product/15502258831745",
+        "title": "Präzisionswaage 3-10 kg, elektronisch",
+        "handle": "prazisionswaage-3-10-kg-elektronisch-939456",
+        "status": "ACTIVE",
+        "updatedAt": "2026-11-12T03:01:02Z",
+        "onlineStoreUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-kuechenwaagen-feinwaagen",
+          "sort-waagen",
+          "sort-werkzeug-mess",
+          "tech",
+          "trend",
+          "varianten-nachgezogen-1025",
+          "waage"
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/68193799045511",
+              "title": "10kg 0.1g Englisch",
+              "sku": "CJZN170995601AZ",
+              "price": "101.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799078279",
+              "title": "10kg 1g Neutral Englisch",
+              "sku": "CJZN170995604DW",
+              "price": "102.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799111047",
+              "title": "1kg 0.01g Englisch",
+              "sku": "CJZN170995607GT",
+              "price": "103.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799143815",
+              "title": "3kg 0.1g Englisch",
+              "sku": "CJZN170995610JQ",
+              "price": "106.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799176583",
+              "title": "5kg 0.1g Englisch",
+              "sku": "CJZN170995613MN",
+              "price": "109.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799209351",
+              "title": "6kg 0.1g Englisch",
+              "sku": "CJZN170995616PK",
+              "price": "102.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/68193799242119",
+              "title": "7.5kg 0.1g Englisch",
+              "sku": "CJZN170995619SH",
+              "price": "127.90",
+              "inventoryPolicy": "CONTINUE",
+              "inventoryItem": {
+                "tracked": false
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    },
+    "sources": {
+      "status": "done",
+      "data": [
+        {
+          "data_source_content_language": "de",
+          "data_source_countries": "CH, LI",
+          "data_source_display_name": "Shopify App API",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_id": "10667445201",
+          "data_source_input": "API",
+          "data_source_linked_primary_sources": null,
+          "data_source_name": "accounts/5797470070/dataSources/10667445201",
+          "data_source_type": "primaryProductDataSource"
+        },
+        {
+          "data_source_content_language": "en",
+          "data_source_countries": null,
+          "data_source_display_name": "Third Party Promotions",
+          "data_source_feed_label": null,
+          "data_source_id": "10668966945",
+          "data_source_input": null,
+          "data_source_linked_primary_sources": null,
+          "data_source_name": "accounts/5797470070/dataSources/10668966945",
+          "data_source_type": "promotionDataSource"
+        },
+        {
+          "data_source_content_language": null,
+          "data_source_countries": "CH, LI",
+          "data_source_display_name": "luxestyle.ch",
+          "data_source_feed_label": null,
+          "data_source_id": "10678939025",
+          "data_source_input": "AUTOFEED",
+          "data_source_linked_primary_sources": null,
+          "data_source_name": "accounts/5797470070/dataSources/10678939025",
+          "data_source_type": "primaryProductDataSource"
+        },
+        {
+          "data_source_content_language": "fr",
+          "data_source_countries": "CH",
+          "data_source_display_name": "Shopify App API",
+          "data_source_feed_label": "CHF_99383214465",
+          "data_source_id": "10762220830",
+          "data_source_input": "API",
+          "data_source_linked_primary_sources": null,
+          "data_source_name": "accounts/5797470070/dataSources/10762220830",
+          "data_source_type": "primaryProductDataSource"
+        }
+      ],
+      "total_rows": 4
+    },
+    "submittedTargetError": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    },
+    "actions": {
+      "result": [
+        {
+          "id": "insert_product",
+          "name": "Insert Product",
+          "description": "Add a product to an API data source of the connected Merchant Center account. If the data source already has an entry with the same product_id, content_language and feed_label, the new entry replaces it. data_source is the data_source_id or data_source_name of an API data source (Data Sources table, or create one with create_data_source). In a primary data source, give the attributes that Google needs to show the product, for example title, link, image_link, price, currency and availability. Merchant Center shows the change after a few minutes. Remove the product with delete_product.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "additional_image_links": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "format": "uri",
+                      "maxLength": 2083,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "maxItems": 10,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URLs of up to 10 more images of the product. Use stable URLs, as for image_link.",
+                "title": "Additional Image Links"
+              },
+              "availability": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "IN_STOCK",
+                      "OUT_OF_STOCK",
+                      "PREORDER",
+                      "LIMITED_AVAILABILITY",
+                      "BACKORDER"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Availability"
+              },
+              "brand": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Brand"
+              },
+              "condition": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "NEW",
+                      "USED",
+                      "REFURBISHED"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Condition"
+              },
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "currency": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Z]{3}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "ISO 4217, for example USD.",
+                "title": "Currency"
+              },
+              "custom_label_0": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 0"
+              },
+              "custom_label_1": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 1"
+              },
+              "custom_label_2": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 2"
+              },
+              "custom_label_3": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 3"
+              },
+              "custom_label_4": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 4"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "description": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Description"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "google_product_category": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Google Product Category"
+              },
+              "gtins": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gtins"
+              },
+              "image_link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URL of the main image of the product. Use a stable URL, without parameters that change, such as timestamps or session IDs: Google fetches the image from it again.",
+                "title": "Image Link"
+              },
+              "link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link"
+              },
+              "mpn": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Mpn"
+              },
+              "price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Price"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              },
+              "product_types": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Product Types"
+              },
+              "sale_price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Sale Price"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "update_product",
+          "name": "Update Product",
+          "description": "Change the given attributes of a product in an API data source of the connected Merchant Center account. Attributes that are not given keep their values. product_id, content_language and feed_label come from the product_id, product_content_language and product_feed_label fields. data_source is the data_source_id or data_source_name of an API data source: the product's primary data source (product_data_source) if its input is API, otherwise a supplemental API data source that is linked to that primary data source (create one with create_data_source and link_to_primary_data_source). Values of a supplemental data source that comes before the feed in the feed's default rule (as create_data_source links it) override the feed values until delete_product removes them from the supplemental data source. clear_attributes deletes attributes from the product in data_source: in a supplemental data source the product then shows the feed value again. pause ADS or ALL pauses the product, NONE ends the pause. Merchant Center shows the change after a few minutes.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "additional_image_links": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "format": "uri",
+                      "maxLength": 2083,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "maxItems": 10,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URLs of up to 10 more images of the product. Use stable URLs, as for image_link.",
+                "title": "Additional Image Links"
+              },
+              "availability": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "IN_STOCK",
+                      "OUT_OF_STOCK",
+                      "PREORDER",
+                      "LIMITED_AVAILABILITY",
+                      "BACKORDER"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Availability"
+              },
+              "brand": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Brand"
+              },
+              "clear_attributes": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Attributes to delete, from: title, description, link, image_link, additional_image_links, price, sale_price, availability, condition, brand, gtins, mpn, google_product_category, product_types, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4.",
+                "title": "Clear Attributes"
+              },
+              "condition": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "NEW",
+                      "USED",
+                      "REFURBISHED"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Condition"
+              },
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "currency": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Z]{3}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "ISO 4217, for example USD.",
+                "title": "Currency"
+              },
+              "custom_label_0": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 0"
+              },
+              "custom_label_1": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 1"
+              },
+              "custom_label_2": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 2"
+              },
+              "custom_label_3": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 3"
+              },
+              "custom_label_4": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Custom Label 4"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "description": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Description"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "google_product_category": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Google Product Category"
+              },
+              "gtins": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gtins"
+              },
+              "image_link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "URL of the main image of the product. Use a stable URL, without parameters that change, such as timestamps or session IDs: Google fetches the image from it again.",
+                "title": "Image Link"
+              },
+              "link": {
+                "anyOf": [
+                  {
+                    "format": "uri",
+                    "maxLength": 2083,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link"
+              },
+              "mpn": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Mpn"
+              },
+              "pause": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "ADS",
+                      "ALL",
+                      "NONE"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Pause"
+              },
+              "price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Price"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              },
+              "product_types": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Product Types"
+              },
+              "sale_price": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Sale Price"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "delete_product",
+          "name": "Delete Product",
+          "description": "Delete a product from an API data source of the connected Merchant Center account. From a primary data source this removes the whole product, including its supplemental values: only insert_product with all attributes adds it again. From a supplemental data source this removes only the values of that data source, and the product keeps its primary values. data_source is the data_source_id or data_source_name of the API data source.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "content_language": {
+                "description": "ISO 639-1 language, for example en.",
+                "maxLength": 2,
+                "minLength": 2,
+                "title": "Content Language",
+                "type": "string"
+              },
+              "data_source": {
+                "description": "data_source_id or data_source_name of an API data source.",
+                "minLength": 1,
+                "title": "Data Source",
+                "type": "string"
+              },
+              "feed_label": {
+                "description": "For example US.",
+                "minLength": 1,
+                "title": "Feed Label",
+                "type": "string"
+              },
+              "product_id": {
+                "description": "The offer id of the product.",
+                "minLength": 1,
+                "title": "Product Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data_source",
+              "product_id",
+              "content_language",
+              "feed_label"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        },
+        {
+          "id": "create_data_source",
+          "name": "Create Data Source",
+          "description": "Create an API product data source in the connected Merchant Center account. A primary data source holds products that insert_product adds. A supplemental data source holds values that update_product writes for products from a file feed, an app or the Merchant Center UI. Merchant Center applies them only to products of the primary data sources that the supplemental data source is linked to. link_to_primary_data_source (data_source_id or data_source_name) puts the new supplemental data source first in the default rule of that primary data source, so its values override the feed, and keeps the sources the rule already uses. The user removes the link in Merchant Center (the Attribute rules of the primary data source). Give content_language and feed_label together to accept only products with them, or leave both out to accept every product. countries is for a primary data source only. Each call creates a new data source: list the existing ones in the Data Sources table first.",
+          "schema": {
+            "additionalProperties": false,
+            "description": "Parameters for action.",
+            "properties": {
+              "content_language": {
+                "anyOf": [
+                  {
+                    "maxLength": 2,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Content Language"
+              },
+              "countries": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "CLDR country codes, for example US.",
+                "title": "Countries"
+              },
+              "display_name": {
+                "minLength": 1,
+                "title": "Display Name",
+                "type": "string"
+              },
+              "feed_label": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Feed Label"
+              },
+              "link_to_primary_data_source": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Link To Primary Data Source"
+              },
+              "type": {
+                "enum": [
+                  "primary",
+                  "supplemental"
+                ],
+                "title": "Type",
+                "type": "string"
+              }
+            },
+            "required": [
+              "display_name",
+              "type"
+            ],
+            "title": "Params",
+            "type": "object"
+          },
+          "requires_files": false
+        }
+      ]
+    }
+  },
+  "readErrors": {
+    "narrowWindsorRead": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    },
+    "firstWindsorRead": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    },
+    "deprecatedNativeQuery": {
+      "content": [
+        {
+          "type": "text",
+          "text": "GraphQL document uses deprecated Admin API 2026-10 schema elements, which are not sent: The field Product.images is deprecated. Use `media` instead.; The field ProductVariant.image is deprecated. Use `media` instead. Use graphql_schema to find the current field, argument or value."
+        },
+        {
+          "type": "text",
+          "text": "{\"error\":\"invalid_request\",\"error_description\":\"GraphQL document uses deprecated Admin API 2026-10 schema elements, which are not sent: The field Product.images is deprecated. Use `media` instead.; The field ProductVariant.image is deprecated. Use `media` instead. Use graphql_schema to find the current field, argument or value.\",\"graphql_errors\":[{\"message\":\"The field Product.images is deprecated. Use `media` instead.\",\"locations\":[{\"line\":1,\"column\":132}]},{\"message\":\"The field ProductVariant.image is deprecated. Use `media` instead.\",\"locations\":[{\"line\":1,\"column\":281}]}]}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "error": "invalid_request",
+        "error_description": "GraphQL document uses deprecated Admin API 2026-10 schema elements, which are not sent: The field Product.images is deprecated. Use `media` instead.; The field ProductVariant.image is deprecated. Use `media` instead. Use graphql_schema to find the current field, argument or value.",
+        "graphql_errors": [
+          {
+            "message": "The field Product.images is deprecated. Use `media` instead.",
+            "locations": [
+              {
+                "line": 1,
+                "column": 132
+              }
+            ]
+          },
+          {
+            "message": "The field ProductVariant.image is deprecated. Use `media` instead.",
+            "locations": [
+              {
+                "line": 1,
+                "column": 281
+              }
+            ]
+          }
+        ],
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    },
+    "countercheck": "HYPD direct products succeeded; no absent data or 404 inferred from timeouts/invalid query; no force-refresh or upgrade."
+  },
+  "submittedPageCountercheck": [
+    {
+      "name": "scale-submitted",
+      "httpStatus": 200,
+      "submittedUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "finalUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "htmlLang": [
+        "de"
+      ],
+      "robotsMeta": [],
+      "canonical": [
+        "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456"
+      ],
+      "productGroupId": "15502258831745",
+      "variantOffers": [
+        {
+          "sku": "CJZN170995601AZ",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799045511#variant",
+          "price": "101.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799045511"
+        },
+        {
+          "sku": "CJZN170995604DW",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799078279#variant",
+          "price": "102.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799078279"
+        },
+        {
+          "sku": "CJZN170995607GT",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799111047#variant",
+          "price": "103.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799111047"
+        },
+        {
+          "sku": "CJZN170995610JQ",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799143815#variant",
+          "price": "106.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799143815"
+        },
+        {
+          "sku": "CJZN170995613MN",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799176583#variant",
+          "price": "109.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799176583"
+        },
+        {
+          "sku": "CJZN170995616PK",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799209351#variant",
+          "price": "102.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799209351"
+        },
+        {
+          "sku": "CJZN170995619SH",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119#variant",
+          "price": "127.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119"
+        }
+      ],
+      "selectedScaleVariant": [
+        {
+          "sku": "CJZN170995619SH",
+          "id": "/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119#variant",
+          "price": "127.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119"
+        }
+      ],
+      "actualGoogleCrawlerAccessNotProven": true
+    },
+    {
+      "name": "wall-lamp-submitted",
+      "httpStatus": 200,
+      "submittedUrl": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "finalUrl": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "htmlLang": [
+        "fr"
+      ],
+      "robotsMeta": [
+        {
+          "name": "robots",
+          "content": "noindex, follow"
+        }
+      ],
+      "canonical": [
+        "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700"
+      ],
+      "productGroupId": "16615805878663",
+      "variantOffers": [
+        {
+          "sku": "CJYD253760001AZ",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207#variant",
+          "price": "45.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207"
+        },
+        {
+          "sku": "CJYD253760002BY",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975#variant",
+          "price": "47.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975"
+        },
+        {
+          "sku": "CJYD253760003CX",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743#variant",
+          "price": "46.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743"
+        },
+        {
+          "sku": "CJYD253760004DW",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511#variant",
+          "price": "49.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511"
+        },
+        {
+          "sku": "CJYD253760005EV",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279#variant",
+          "price": "47.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279"
+        },
+        {
+          "sku": "CJYD253760006FU",
+          "id": "/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047#variant",
+          "price": "53.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock",
+          "url": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047"
+        }
+      ],
+      "selectedScaleVariant": null,
+      "actualGoogleCrawlerAccessNotProven": true
+    }
+  ],
+  "submittedPageRawExtraction": [
+    {
+      "name": "scale-submitted",
+      "submittedUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "xRobotsTag": null,
+      "contentType": null,
+      "bytes": 1078654,
+      "sha256": "77171ccb3c340f39897b07f238cd79747b90fd0f35307759414bd0d5e20fe896",
+      "title": [
+        "\n  Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH\n"
+      ],
+      "htmlLang": [
+        "de"
+      ],
+      "jsonLdStrings": [
+        "\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Organization\",\n    \"@id\": \"https://luxestyle.ch/#org\",\n    \"name\": \"LuxeStyle\",\n    \"email\": \"info@luxestyle.ch\",\n    \"areaServed\": [\"CH\", \"LI\"],\n    \n      \"logo\": \"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/luxestyle-ch-logo.png?v=1781123787\\u0026width=500\",\n    \n    \"url\": \"https:\\/\\/luxestyle.ch\\/\",\"hasMerchantReturnPolicy\": {\"@type\": \"MerchantReturnPolicy\", \"applicableCountry\": [\"CH\", \"LI\"], \"returnPolicyCountry\": \"CH\", \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\", \"merchantReturnDays\": 30, \"returnMethod\": \"https://schema.org/ReturnByMail\", \"returnFees\": \"https://schema.org/ReturnFeesCustomerResponsibility\", \"refundType\": \"https://schema.org/FullRefund\"}, \"hasShippingService\": [{\"@type\": \"ShippingService\", \"name\": \"Versand Schweiz\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 0, \"maxValue\": 49.99}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 7.0, \"currency\": \"CHF\"}}, {\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 50}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 0, \"currency\": \"CHF\"}}]}, {\"@type\": \"ShippingService\", \"name\": \"Versand Liechtenstein\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"LI\"}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 14.9, \"currency\": \"CHF\"}}]}], \"sameAs\": [\"https://www.facebook.com/1049840534888592\", \"https://www.instagram.com/luxestyle.ch/\", \"https://www.tiktok.com/@luxestyle.ch\", \"https://www.pinterest.com/luxestyleCH/\", \"https://www.youtube.com/@luxestyle_ch\"]\n  }\n",
+        "\n  {\"@context\":\"http:\\/\\/schema.org\\/\",\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456#product\",\"@type\":\"ProductGroup\",\"brand\":{\"@type\":\"Brand\",\"name\":\"LuxeStyle\"},\"category\":\"Waagen\",\"description\":\"Diese elektronische Präzisionswaage ist ein vielseitiges Gadget für diverse Anwendungen. Mit einem Wiegebereich von 3 bis 10 kg und einer Genauigkeit von 0.1 g eignet sie sich ideal für präzises Abmessen im Alltag oder für spezielle Hobbys. Die Waage misst 18 x 26 x 2.4 cm und lässt sich dank Netzbetrieb (110V) zuverlässig einsetzen. Sie ist in verschiedenen Spezifikationen erhältlich, darunter 3kg\\/0.1g, 5kg\\/0.1g, 6kg\\/0.1g, 7.5kg\\/0.1g und 10kg\\/0.1g, sowie eine Variante mit 1kg\\/0.01g für höchste Genauigkeit. Ein praktisches und zuverlässiges Werkzeug für alle, die Wert auf exakte Messungen legen.Das zeichnet es aus\\nWiegebereich von 3 bis 10 kg\\nHohe Präzision von 0.1 g (oder 0.01 g bei 1 kg Modell)\\nKompakte Grösse: 18 x 26 x 2.4 cm\\nElektronische Messmethode\\nZuverlässiger AC-Netzbetrieb (110V)\\nVielseitig einsetzbar für verschiedene Zwecke\\n\\n\\n🛡️ Sorglos shoppen: ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte \\u0026amp; Klarna.🛍️ Das könnte dir auch gefallen: Trends \\u0026amp; Gadgets · Bestseller\",\"hasVariant\":[{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799045511#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 10kg 0.1g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799045511#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"101.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799045511\"},\"sku\":\"CJZN170995601AZ\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799078279#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 10kg 1g Neutral Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799078279#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"102.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799078279\"},\"sku\":\"CJZN170995604DW\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799111047#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 1kg 0.01g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799111047#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"103.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799111047\"},\"sku\":\"CJZN170995607GT\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799143815#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 3kg 0.1g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799143815#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"106.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799143815\"},\"sku\":\"CJZN170995610JQ\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799176583#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 5kg 0.1g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799176583#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"109.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799176583\"},\"sku\":\"CJZN170995613MN\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799209351#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 6kg 0.1g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799209351#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"102.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799209351\"},\"sku\":\"CJZN170995616PK\"},{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/233cdffe-a5c5-4613-8e36-f21fe2d87163.jpg?v=1786962329\\u0026width=1920\",\"name\":\"Präzisionswaage 3-10 kg, elektronisch - 7.5kg 0.1g Englisch\",\"offers\":{\"@id\":\"\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"127.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119\"},\"sku\":\"CJZN170995619SH\"}],\"name\":\"Präzisionswaage 3-10 kg, elektronisch\",\"productGroupID\":\"15502258831745\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/prazisionswaage-3-10-kg-elektronisch-939456\"}\n",
+        "\n{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[\n{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://luxestyle.ch/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Küche\",\"item\":\"https://luxestyle.ch/collections/kueche-kochen\"}\n,{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Küchenhelfer \\u0026 Vorrat\",\"item\":\"https://luxestyle.ch/collections/kuechenhelfer-vorrat\"}\n,{\"@type\":\"ListItem\",\"position\":4,\"name\":\"Präzisionswaage 3-10 kg, elektronisch\",\"item\":\"https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456\"}]}\n"
+      ],
+      "atUTC": "2026-11-15T10:00:50.439239+00:00",
+      "notGoogleActualCrawlerFetchProof": true
+    },
+    {
+      "name": "wall-lamp-submitted",
+      "submittedUrl": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "xRobotsTag": null,
+      "contentType": null,
+      "bytes": 1009865,
+      "sha256": "80025e75c223dccb340fa1765546d7fda70bda92f6de0a7c71abfc802bff2ebb",
+      "title": [
+        "\n  Moderne Wandleuchte, ein- oder zweiflammig | LuxeStyle CH\n"
+      ],
+      "htmlLang": [
+        "fr"
+      ],
+      "jsonLdStrings": [
+        "\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Organization\",\n    \"@id\": \"https://luxestyle.ch/#org\",\n    \"name\": \"LuxeStyle\",\n    \"email\": \"info@luxestyle.ch\",\n    \"areaServed\": [\"CH\", \"LI\"],\n    \n      \"logo\": \"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/luxestyle-ch-logo.png?v=1781123787\\u0026width=500\",\n    \n    \"url\": \"https:\\/\\/luxestyle.ch\\/fr\",\"hasMerchantReturnPolicy\": {\"@type\": \"MerchantReturnPolicy\", \"applicableCountry\": [\"CH\", \"LI\"], \"returnPolicyCountry\": \"CH\", \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\", \"merchantReturnDays\": 30, \"returnMethod\": \"https://schema.org/ReturnByMail\", \"returnFees\": \"https://schema.org/ReturnFeesCustomerResponsibility\", \"refundType\": \"https://schema.org/FullRefund\"}, \"hasShippingService\": [{\"@type\": \"ShippingService\", \"name\": \"Versand Schweiz\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 0, \"maxValue\": 49.99}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 7.0, \"currency\": \"CHF\"}}, {\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 50}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 0, \"currency\": \"CHF\"}}]}, {\"@type\": \"ShippingService\", \"name\": \"Versand Liechtenstein\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"LI\"}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 14.9, \"currency\": \"CHF\"}}]}], \"sameAs\": [\"https://www.facebook.com/1049840534888592\", \"https://www.instagram.com/luxestyle.ch/\", \"https://www.tiktok.com/@luxestyle.ch\", \"https://www.pinterest.com/luxestyleCH/\", \"https://www.youtube.com/@luxestyle_ch\"]\n  }\n",
+        "\n  {\"@context\":\"http:\\/\\/schema.org\\/\",\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700#product\",\"@type\":\"ProductGroup\",\"brand\":{\"@type\":\"Brand\",\"name\":\"LuxeStyle\"},\"category\":\"Éclairage\",\"description\":\"Diese moderne Wandleuchte ist als ein- oder zweiflammige Variante erhältlich. Zusätzlich wählst du zwischen Warmlicht, Dreifarbenlicht oder einer Ausführung ohne Lichtquelle.Auswahl\\nEin- oder zweiflammige Wandleuchte\\nWarmlicht oder Dreifarbenlicht\\nVariante ohne Lichtquelle verfügbar\\n\",\"hasVariant\":[{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/df998cdc-6125-40ba-9479-f2817f4fb2cf.jpg?v=1791780600\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Ohne Lichtquelle \\/ 1-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"45.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647907207\"},\"sku\":\"CJYD253760001AZ\"},{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/723b6548-030e-4779-bb8f-eb1f6762ffd0.jpg?v=1791780601\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Ohne Lichtquelle \\/ 2-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"47.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647939975\"},\"sku\":\"CJYD253760002BY\"},{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/52cb6b34-6d53-49c4-b893-2ad924547712_trans.jpg?v=1791780600\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Dreifarbenlicht \\/ 1-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"46.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801647972743\"},\"sku\":\"CJYD253760003CX\"},{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/b01a9bb1-5879-4774-8fe5-b86ecba0cc8a_trans.jpg?v=1791780601\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Dreifarbenlicht \\/ 2-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"49.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648005511\"},\"sku\":\"CJYD253760004DW\"},{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/df998cdc-6125-40ba-9479-f2817f4fb2cf.jpg?v=1791780600\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Warmlicht \\/ 1-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"47.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279\"},\"sku\":\"CJYD253760005EV\"},{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/b01a9bb1-5879-4774-8fe5-b86ecba0cc8a_trans.jpg?v=1791780601\\u0026width=1920\",\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig - Warmlicht \\/ 2-Flammige Wandleuchte\",\"offers\":{\"@id\":\"\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"53.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648071047\"},\"sku\":\"CJYD253760006FU\"}],\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig\",\"productGroupID\":\"16615805878663\",\"url\":\"https:\\/\\/luxestyle.ch\\/fr\\/products\\/wandlampe-modern-1-oder-2-kopf-220-v-620700\"}\n",
+        "\n{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[\n{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Accueil\",\"item\":\"https://luxestyle.ch/fr\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Maison \\u0026 Jardin\",\"item\":\"https://luxestyle.ch/fr/collections/wohnen-dekoration\"}\n,{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Éclairage\",\"item\":\"https://luxestyle.ch/fr/collections/sub-beleuchtung\"}\n,{\"@type\":\"ListItem\",\"position\":4,\"name\":\"Moderne Wandleuchte, ein- oder zweiflammig\",\"item\":\"https://luxestyle.ch/fr/products/wandlampe-modern-1-oder-2-kopf-220-v-620700\"}]}\n"
+      ],
+      "atUTC": "2026-11-15T10:00:51.029137+00:00",
+      "notGoogleActualCrawlerFetchProof": true
+    }
+  ],
+  "watchPolicy": {
+    "shop_id": "5797470070",
+    "product": {
+      "name": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15504227402113_67814784041351",
+      "offerId": "shopify_ZZ_15504227402113_67814784041351",
+      "contentLanguage": "de",
+      "feedLabel": "CHF_99383214465",
+      "dataSource": "accounts/5797470070/dataSources/10667445201",
+      "versionNumber": "1793534400000000",
+      "customAttributes": [
+        {
+          "name": "merchant item id",
+          "value": "gid://shopify/ProductVariant/67814784041351",
+          "groupValues": []
+        },
+        {
+          "name": "sku",
+          "value": "CJXFZNZN00056-Blue",
+          "groupValues": []
+        },
+        {
+          "name": "modification info",
+          "groupValues": [
+            {
+              "name": "modifier",
+              "value": "third party syncing",
+              "groupValues": []
+            },
+            {
+              "name": "modification source",
+              "value": "third party shopify",
+              "groupValues": []
+            }
+          ]
+        }
+      ],
+      "productStatus": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "SHOPPING_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DISPLAY_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "VIDEO_ADS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          },
+          {
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "SHOPPING_ADS",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          },
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "DISPLAY_ADS",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          },
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          },
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "DEMAND_GEN_ADS",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          },
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "VIDEO_ADS",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          },
+          {
+            "code": "guns_parts_policy_violation",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+            "description": "Guns and Parts",
+            "detail": "The promotion of certain functional guns, their parts, or instructional content for their assembly is not allowed",
+            "documentation": "https://support.google.com/merchants/answer/17233785#guns",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ],
+            "attribute": ""
+          }
+        ],
+        "creationDate": "2026-10-29T01:59:35.273807Z",
+        "lastUpdateDate": "2026-11-01T22:19:22.394470Z",
+        "googleExpirationDate": "2026-12-01T22:19:22.394470Z"
+      },
+      "productAttributes": {
+        "identifierExists": false,
+        "title": "Bluetooth Pedometer-Uhr | LuxeStyle CH Blau",
+        "description": "Bluetooth Pedometer-Uhr – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+        "link": "https://luxestyle.ch/products/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4691043138_640131044.jpg?v=1793239172",
+        "additionalImageLinks": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4688443939_640131044.jpg?v=1787130779",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4688443939_640131044.400x400.jpg?v=1787130780"
+        ],
+        "ageGroup": "ADULT",
+        "availability": "IN_STOCK",
+        "brand": "LuxeStyle",
+        "color": "Blau",
+        "condition": "NEW",
+        "gender": "UNISEX",
+        "googleProductCategory": "201",
+        "itemGroupId": "shopify_ZZ_15504227402113",
+        "price": {
+          "amountMicros": "20900000",
+          "currencyCode": "CHF"
+        },
+        "productTypes": [
+          "Uhren"
+        ],
+        "shipping": [
+          {
+            "price": {
+              "amountMicros": "7000000",
+              "currencyCode": "CHF"
+            },
+            "country": "CH",
+            "service": "Standard",
+            "minHandlingTime": "0",
+            "maxHandlingTime": "0",
+            "minTransitTime": "10",
+            "maxTransitTime": "20",
+            "region": "",
+            "locationId": "0",
+            "locationGroupName": "",
+            "postalCode": ""
+          }
+        ],
+        "shippingWeight": {
+          "unit": "kg",
+          "value": 0
+        },
+        "costOfGoodsSold": {
+          "amountMicros": "11590000",
+          "currencyCode": "CHF"
+        },
+        "productDetails": [
+          {
+            "sectionName": "Variant",
+            "attributeName": "farbe",
+            "attributeValue": "Blau"
+          }
+        ],
+        "freeShippingThreshold": [
+          {
+            "country": "CH",
+            "priceThreshold": {
+              "amountMicros": "45000000",
+              "currencyCode": "CHF"
+            }
+          }
+        ],
+        "gtins": [],
+        "loyaltyPrograms": [],
+        "carrierShipping": [],
+        "shippingHandlingBusinessDays": [],
+        "shippingTransitBusinessDays": [],
+        "handlingCutoffTimes": [],
+        "sizeTypes": [],
+        "adsLabels": [],
+        "productHighlights": [],
+        "displayAdsSimilarIds": [],
+        "promotionIds": [],
+        "includedDestinations": [],
+        "excludedDestinations": [],
+        "shoppingAdsExcludedCountries": [],
+        "lifestyleImageLinks": [],
+        "cloudExportAdditionalProperties": [],
+        "certifications": [],
+        "sustainabilityIncentives": [],
+        "videoLinks": []
+      },
+      "base64EncodedName": "accounts/5797470070/products/ZGV-Q0hGXzk5MzgzMjE0NDY1fnNob3BpZnlfWlpfMTU1MDQyMjc0MDIxMTNfNjc4MTQ3ODQwNDEzNTE",
+      "legacyLocal": false
+    }
+  },
+  "watchPublic": [
+    {
+      "name": "watch-image",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4691043138_640131044.jpg?v=1793239172",
+      "status": 200,
+      "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4691043138_640131044.jpg?v=1793239172",
+      "contentType": "image/jpeg",
+      "sha256": "072f998dcc60972a3b797940ee8755ef66fb78e508f9fb14e978eb6ff594e4aa",
+      "path": "/dev/shm/luxestyle-review/r231/watch-image.jpg",
+      "bytes": 58304,
+      "atUTC": "2026-11-15T10:05:04.957089+00:00"
+    },
+    {
+      "name": "watch-submitted",
+      "url": "https://luxestyle.ch/products/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "status": 200,
+      "finalUrl": "https://luxestyle.ch/products/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "0498d5367c58f24ea27890dc11c9850ab8464a3911e8a5e629aefd1664e27242",
+      "path": "/dev/shm/luxestyle-review/r231/watch-submitted.html",
+      "bytes": 1030266,
+      "atUTC": "2026-11-15T10:05:05.707265+00:00",
+      "title": [
+        "\n  Bluetooth Pedometer-Uhr | LuxeStyle CH\n"
+      ],
+      "jsonLdStrings": [
+        "\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Organization\",\n    \"@id\": \"https://luxestyle.ch/#org\",\n    \"name\": \"LuxeStyle\",\n    \"email\": \"info@luxestyle.ch\",\n    \"areaServed\": [\"CH\", \"LI\"],\n    \n      \"logo\": \"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/luxestyle-ch-logo.png?v=1781123787\\u0026width=500\",\n    \n    \"url\": \"https:\\/\\/luxestyle.ch\\/\",\"hasMerchantReturnPolicy\": {\"@type\": \"MerchantReturnPolicy\", \"applicableCountry\": [\"CH\", \"LI\"], \"returnPolicyCountry\": \"CH\", \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\", \"merchantReturnDays\": 30, \"returnMethod\": \"https://schema.org/ReturnByMail\", \"returnFees\": \"https://schema.org/ReturnFeesCustomerResponsibility\", \"refundType\": \"https://schema.org/FullRefund\"}, \"hasShippingService\": [{\"@type\": \"ShippingService\", \"name\": \"Versand Schweiz\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 0, \"maxValue\": 49.99}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 7.0, \"currency\": \"CHF\"}}, {\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 50}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 0, \"currency\": \"CHF\"}}]}, {\"@type\": \"ShippingService\", \"name\": \"Versand Liechtenstein\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"LI\"}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 14.9, \"currency\": \"CHF\"}}]}], \"sameAs\": [\"https://www.facebook.com/1049840534888592\", \"https://www.instagram.com/luxestyle.ch/\", \"https://www.tiktok.com/@luxestyle.ch\", \"https://www.pinterest.com/luxestyleCH/\", \"https://www.youtube.com/@luxestyle_ch\"]\n  }\n",
+        "\n  {\"@context\":\"http:\\/\\/schema.org\\/\",\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1#product\",\"@type\":\"ProductGroup\",\"brand\":{\"@type\":\"Brand\",\"name\":\"LuxeStyle\"},\"category\":\"Smartwatches\",\"description\":\"Diese multifunktionale elektronische Uhr kombiniert Stil mit praktischen Funktionen. Sie ist der ideale Begleiter für alle, die ihre tägliche Aktivität im Blick behalten möchten, ohne auf ein klassisches Uhrendesign zu verzichten. Die Uhr bietet eine klare Anzeige und ist robust genug für den Alltag.Dank der Wasserdichtigkeit von 30 Metern ist sie spritzwassergeschützt und hält auch kurzem Untertauchen stand. Das stilvolle Design mit einem Gehäusedurchmesser von 46 mm und einer Dicke von 17 mm passt an jedes Handgelenk. Das Plexiglas-Zifferblatt und das Edelstahlarmband sorgen für Langlebigkeit und Komfort.Das zeichnet es aus\\nAnzeige: Analog (Zeiger) und digital (Zahlen)\\nWasserdichtigkeit: 30 Meter\\nUhrwerk: Elektronisch\\nGehäusedurchmesser: 46 mm\\nGehäusedicke: 17 mm\\nKrone: Spiral-Krone\\nGehäuseboden: Normal\\nZifferblattmaterial: Plexiglas\\nSchliesse: Einteilige Dornschliesse aus Edelstahl\\n\\n\\n🛡️ Sorglos shoppen: ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte \\u0026amp; Klarna.🛍️ Das könnte dir auch gefallen: Schmuck \\u0026amp; Uhren · Bestseller\",\"hasVariant\":[{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/4691043138_640131044.jpg?v=1793239172\\u0026width=1920\",\"name\":\"Bluetooth Pedometer-Uhr - Blau\",\"offers\":{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"20.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784041351\"},\"sku\":\"CJXFZNZN00056-Blue\"},{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784074119#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/4688566268_640131044.jpg?v=1793239172\\u0026width=1920\",\"name\":\"Bluetooth Pedometer-Uhr - Grün\",\"offers\":{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784074119#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"20.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784074119\"},\"sku\":\"CJXFZNZN00056-Green\"},{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784106887#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/4688575019_640131044.jpg?v=1793239172\\u0026width=1920\",\"name\":\"Bluetooth Pedometer-Uhr - Orange\",\"offers\":{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784106887#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"20.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784106887\"},\"sku\":\"CJXFZNZN00056-Orange\"},{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784139655#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/4688569136_640131044.jpg?v=1793239172\\u0026width=1920\",\"name\":\"Bluetooth Pedometer-Uhr - Rosenrot\",\"offers\":{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784139655#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"20.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784139655\"},\"sku\":\"CJXFZNZN00056-Rose red\"},{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784172423#variant\",\"@type\":\"Product\",\"image\":\"https:\\/\\/luxestyle.ch\\/cdn\\/shop\\/files\\/4688318157_640131044.jpg?v=1793239172\\u0026width=1920\",\"name\":\"Bluetooth Pedometer-Uhr - Schwarz\",\"offers\":{\"@id\":\"\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784172423#offer\",\"@type\":\"Offer\",\"availability\":\"http:\\/\\/schema.org\\/InStock\",\"price\":\"20.90\",\"priceCurrency\":\"CHF\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1?variant=67814784172423\"},\"sku\":\"CJXFZNZN00056-Black\"}],\"name\":\"Bluetooth Pedometer-Uhr\",\"productGroupID\":\"15504227402113\",\"url\":\"https:\\/\\/luxestyle.ch\\/products\\/bluetooth-pedometer-uhr-a6a3f1\"}\n",
+        "\n{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[\n{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://luxestyle.ch/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Uhren\",\"item\":\"https://luxestyle.ch/collections/uhren\"}\n,{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Smartwatches \\u0026 Wearables\",\"item\":\"https://luxestyle.ch/collections/smartwatches-wearables\"}\n,{\"@type\":\"ListItem\",\"position\":4,\"name\":\"Bluetooth Pedometer-Uhr\",\"item\":\"https://luxestyle.ch/products/bluetooth-pedometer-uhr-a6a3f1\"}]}\n"
+      ]
+    }
+  ],
+  "historyNotFreshLiveEvidence": "# Merchant-Status — Offline-Historie, Stand der gespeicherten Belege\n\n**Kein heutiger Merchant-Read.** Diese Zusammenfassung nutzt den vorgeschlagenen R230-Arbeitsstand und die gespeicherten R224/R226-Belege. Sie bestätigt keinen heutigen Merchant-Zustand.\n\n## Zuletzt belegte Merchant-Korrekturen\n\n| Datum / Revision | Änderung und Rücklesung | Grenze |\n|---|---|---|\n| 15.11.2026 / R224 | Zwei exakt bezeichnete, verwaiste Kinderuhr-Angebote wurden aus Quelle 10667445201 im Konto 5797470070, Sprache de, Feedlabel CHF_99383214465 gelöscht. Für beide exakten Ressourcen kam danach 404 ITEM_NOT_FOUND; eine bekannte Live-Kontrollressource derselben Quelle blieb lesbar. Die beiden Shopify-Produkte blieben DRAFT; Shopify-Produktdaten und Quelle selbst blieben erhalten. | Nur diese zwei Offer-IDs. Keine Feed-/Shop- oder globale Quellenlöschung. |\n| 14.11.2026 / R222 | Zwei Hauptbildfelder für Nagellack Modell 1/6 in Quelle 10667445201 wurden nach expliziter Rechte-/Farbfreigabe aktualisiert und zurückgelesen. Beide Overlay-Ablehnungen waren aufgehoben; CH/LI waren in den sechs gelieferten Zielkontexten genehmigt. | Modell 6 hatte weiterhin eine nicht sperrende unit pricing measure-Warnung (NOT_IMPACTED). Keine Katalogbereinigung. |\n\nR224 ist die jüngste bestätigte Merchant-Schreib-/Rücklesung in den geprüften Unterlagen. R226 hatte keine Merchant-Schreibaktionen.\n\n## Was als weiterhin offen oder ungelöst dokumentiert war\n\n| Gruppe | Exakter historischer Bezug | Gesicherter Stand / Vorsicht |\n|---|---|---|\n| Begrenzter Fehlerausschnitt | R225 im R230-Arbeitsstand: Merchant-Seite mit 12 gelesenen Zeilen, morePages=true; 11 Overlay-Zeilen und 1 Gun Parts Policy-Zeile. Katalogzahl unbekannt. | Das ist ein datierter, partieller Ausschnitt ohne vollständige Fehlerliste/Offer-IDs in diesem Block. Keine globale Fehlerzahl und kein heutiger Status. Bereits genehmigte Gray-Station- und Lace-Shirt-Einträge wurden separat beobachtet. |\n| AUTOFEED-Preis-/Landingpage-Fall | Offer 15421165404545_cjtz292404406fu, historische Quelle 10678939025; R212 meldete price fehlend. R214 frisch Shopify-seitig bestätigt: Produkt 15421165404545 DRAFT, Variante 55775110463873, CHF 44.90; URL-Weiterleitung 2042634568071 führte per 301 zur Damenmode-Kategorie. | Merchant-Status stammt aus R212 und war in R214 ausdrücklich nicht frisch. R224 markiert den Fall open_no_supported_editor. Keine einzelne legitime Editormethode belegt; Produkt, Preis, Redirect und ganze Quelle nicht ändern. |\n| Einheit-/Nettomenge | R222 Warnung unit pricing measure bei Nagellack Modell 6; im R230-Arbeitsstand als Modell-6-Warnung geführt. | Nettoinhalt / GS1-Grundmenge war nicht belegt. Keine Menge, GTIN oder Verpackungsvolumen erfinden. Warnung war als NOT_IMPACTED beschrieben, nicht als bestätigter Sperrfehler. |\n| Französischer Angebotstext | R224 frTextDraft: not_published; R223 hatte französische Feldfassung nur als Entwurf. | Nicht live eingereicht oder veröffentlicht; keine bestätigte Google-Verarbeitung. |\n| Garagentor-Bild/Zuordnung | R226 Quelle 10667445201: Produkt 15448882938241, Variante 55878125060481, Shopify-SKU CJ-1621773026956161024; exakte CJ-PID entspricht der Zahl, CJ-Varianten-SKU ist CJZN167636701AZ / Black-USB. | Zwei Originalbilder geprüft; sichtbare Funktions-/Marken-/App-Overlays. Keine kommerzielle Bildlizenz in der CJ-Antwort gefunden. R226 sagt ausdrücklich, abweichendes SKU-Format allein beweise keine defekte Bindung. Keine SKU-Änderung, kein Feedstatus-Read oder Bildwrite in R226. |\n| Ultraschallgerät-Bild/Mengeninhalt | R226 Quelle 10667445201: Produkt 15451605500289, Variante/SKU 67790204567943 / CJJY126910302BY; CJ-PID 1432187342642352128, exakte Bezeichnung Offwhite 2PC. | Die generische CJ-Packliste nennt ein Gerät plus Anleitung; exakter Inhalt der Zwei-Teile-Ausführung blieb offen. Zwei Bilder geprüft; Textoverlay vorhanden, kommerzieller Bildrechtebeleg nicht gefunden. Keine Stückzahlzusage, Bild- oder Feedänderung in R226. Diese R226-Prüfung belegt keinen aktuellen Merchant-Fehlerstatus. |\n\nDie zwei R226-Fälle sind offene Quellen-/Bildvorbereitungen, keine in R226 nachgewiesenen aktuellen Merchant-Fehler. Auch die 12-zeilige R225-Stichprobe ist keine aktuelle Vollmessung.\n\n## Konto, Windsor und Datenquellen\n\n- Kontoidentität in R224: Merchant Center 5797470070, Name LuxeStyle CH; der verbundene Connector ist google_merchant mit derselben ID. Das ist eine gespeicherte passende Identität, keine heutige Anmeldung.\n- Quellenprofil aus R224: genau eine zurückgelieferte Zeile, Quelle 10667445201, Name accounts/5797470070/dataSources/10667445201, Input API, Typ primaryProductDataSource, Sprache de, Feedlabel CHF_99383214465. Das Profil war laut R224-Notiz aus dem Cache vom 14.11.2026, 22:34:18 UTC. Die in R224 gelöschten Offers wurden trotzdem unmittelbar und exakt über die API gelesen/bestätigt.\n- Eine separate Supplemental-Produktdatenquelle wurde in diesem R224-Profil nicht zurückgegeben. Das belegt nicht, dass im Konto keine weitere Quelle existiert. Die dokumentierte Delete-API unterscheidet Primär- und Supplemental-Quelle; für die R224-Deletes wurde die Primärquelle benannt.\n- AUTOFEED 10678939025 ist eine zusätzliche historisch dokumentierte Quelle für den Preis-/Landingpage-Fall. Die geprüften R224-Quellenprofildaten bezeichnen sie nicht als supplementalProductDataSource; eine solche Typzuordnung wäre daher Spekulation. Der gespeicherte frühere Windsor-Befund lautet: Konto 5797470070/LuxeStyle CH verbunden, aber keine passende Shipping-Service-Aktion; kein Merchant-Writepfad daraus abgeleitet.\n\n## Was nicht live ging\n\n- R224: nur die zwei exakten Google-Offer-Löschungen wurden ausgeführt; keine Shopify-Produkte, Quelle, Sprache oder Feedlabel geändert.\n- R222: nur die zwei genehmigten Hauptbildfelder wurden aktualisiert; kein neues Angebot/Feed und keine anderen Attribute.\n- R226: zwei Shopify-SEO-Textwrites, aber null Merchant-, CJ-Bild-, SKU- oder Feedwrites. Das R226 „Google & YouTube veröffentlicht“-Flag betrifft den Shopify-Vertriebskanal; es bestätigt keine Merchant-Genehmigung oder Behebung von Merchant-Richtlinienfällen.\n- Keine aktuelle Neubeurteilung, kein kompletter Katalogscan, kein neuer GSC-, Funnel-, Klaviyo- oder Social-Report wurde für dieses Memo durchgeführt.\n",
+  "sourceProfileLimit": "Four profiles returned, no cache/fetch timestamp supplied. Selected per-offer source bindings separately verified through direct Google reads.",
+  "resourceIdentityMethod": "Canonical account resource prefix established by live merchant_list_products control; exact current disapproved row.id used as product component; each returned product.name/offerId/source/language/feedLabel verified before any write. No guessed offer or Shopify ID.",
+  "nativeScope": "Two native products; nail first15 variants hasNextPage=true but both approved targets present. Successful Media correction plus fresh same-product prewrite Media proof.",
+  "imageOnlyWriteProof": "See MERCHANT-BILDWECHSEL-20261115-R231.json; this file retains original before-write reads."
+}
