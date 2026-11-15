@@ -96,6 +96,30 @@
     "btc": 68249.2734375,
     "eth": 1927.5888671875
    }
+  },
+  {
+   "stand": "2026-11-14",
+   "zeit": "2026-11-15T12:03:45+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1649,
+   "tokens_aus": 940,
+   "kosten_usd": 0.025396,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.2,
+    "begruendung": "Trend klar abwärts: -15 % in 7 T., -22 % in 30 T., 20 % unter dem 50-Tage-Schnitt und 12 % unter dem 200-Tage-Schnitt. Die letzten drei Tage beschleunigten nach unten (-3,5 %, -4,3 %, -6,0 %). Dagegen stehen Extremwerte: Angst&Gier 13 und eine historisch seltene Überdehnung zum 50-Tage-Schnitt, also hohes Risiko eines scharfen Rückpralls. Funding ist leicht positiv, die Shorts erhalten also noch etwas. Ich halte den kleinen Short unverändert und spare mir die Gebühr; eine Aufstockung nach dieser Strecke wäre ein schlechtes Chance-Risiko-Verhältnis.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.25,
+    "begruendung": "Schwächer als BTC: -21 % in 7 T., 26 % unter dem 50-Tage-Schnitt. Der Abwärtstrend ist intakt. Das MVRV von 0,90 liegt aber unter 1, Funding ist negativ (die Shorts sind überfüllt und zahlen) und die Schwankung ist hoch (59 %). Die Gefahr eines Short-Squeeze ist bei ETH grösser als bei BTC. Ich reduziere deshalb von -0,35 auf -0,25 und nehme einen Teil des Gewinns mit. Die Gebühr auf 0,10 Positionsänderung ist vernachlässigbar.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Kapitulationsartiger Abverkauf: Trend short, Stimmung und Bewertung extrem überverkauft. Beide Shorts klein halten, bei ETH leicht reduzieren. Kein Long gegen den fallenden Markt und kein Ausbau der Shorts nach -15 bis -21 % in einer Woche.",
+   "kurse": {
+    "btc": 64128.05078125,
+    "eth": 1769.1204833984375
+   }
   }
  ]
 }
