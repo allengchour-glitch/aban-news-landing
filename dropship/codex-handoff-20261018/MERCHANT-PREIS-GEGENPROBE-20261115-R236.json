@@ -1,0 +1,1277 @@
+{
+  "revision": 236,
+  "atUTC": "2026-11-15T14:19:28Z",
+  "ownerMessage": "weiter verb.",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/214040805767",
+    "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-15T11:01:03Z"
+  },
+  "mainTheme": [
+    {
+      "id": "gid://shopify/OnlineStoreTheme/213991391623",
+      "name": "LuxeStyle – SEO 14.11.2026",
+      "role": "MAIN"
+    }
+  ],
+  "themePublishCalls": 0,
+  "themeInterpretation": "Connection works; approved target remains UNPUBLISHED. R234/R235 definite scope refusal not retried or bypassed. Same owner approval retained.",
+  "merchantIdentity": {
+    "hypd": [
+      {
+        "name": "LuxeStyle CH",
+        "shop_id": "5797470070",
+        "time_zone": null
+      }
+    ],
+    "windsor": [
+      {
+        "id": "google_merchant",
+        "accounts": [
+          {
+            "id": "5797470070",
+            "name": "LuxeStyle CH"
+          }
+        ],
+        "actions": [
+          "insert_product",
+          "update_product",
+          "delete_product",
+          "create_data_source"
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "actionIds": [
+      "insert_product",
+      "update_product",
+      "delete_product",
+      "create_data_source"
+    ],
+    "updateDescription": "Change the given attributes of a product in an API data source of the connected Merchant Center account. Attributes that are not given keep their values. product_id, content_language and feed_label come from the product_id, product_content_language and product_feed_label fields. data_source is the data_source_id or data_source_name of an API data source: the product's primary data source (product_data_source) if its input is API, otherwise a supplemental API data source that is linked to that primary data source (create one with create_data_source and link_to_primary_data_source). Values of a supplemental data source that comes before the feed in the feed's default rule (as create_data_source links it) override the feed values until delete_product removes them from the supplemental data source. clear_attributes deletes attributes from the product in data_source: in a supplemental data source the product then shows the feed value again. pause ADS or ALL pauses the product, NONE ends the pause. Merchant Center shows the change after a few minutes.",
+    "autoFeedSourceInputEvidence": "Same source10678939025 directly bound in three current products. TypeAUTOFEED from R233 source profile earlier15Nov; no new source/rule or update capability discovered."
+  },
+  "targetedWindsorRead": {
+    "productIds": [
+      "10073494240929787683",
+      "10283932347178265394",
+      "10784371818943082880"
+    ],
+    "calls": 1,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/windsor_ai.get_data`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    },
+    "interpretation": "MCP request timed out. Unknown, not zero/empty/not-found. No force_refresh or paid upgrade."
+  },
+  "targetedHypdProducts": [
+    {
+      "name": "accounts/5797470070/products/de~CH~10073494240929787683",
+      "offerId": "10073494240929787683",
+      "contentLanguage": "de",
+      "feedLabel": "CH",
+      "dataSource": "accounts/5797470070/dataSources/10678939025",
+      "productStatus": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "item_missing_required_attribute",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "attribute": "price",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing product price",
+            "detail": "Add a price to the [price] attribute in your product data source",
+            "documentation": "https://support.google.com/merchants/answer/12158687",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "creationDate": "2026-10-29T23:14:35.275191Z",
+        "lastUpdateDate": "2026-10-29T23:14:35.275191Z",
+        "googleExpirationDate": "2026-12-14T23:59:41Z"
+      },
+      "productAttributes": {
+        "title": "Malen nach Zahlen – Gassen & Häuser | LuxeStyle",
+        "description": "Entdecke die Freude am Malen mit diesem DIY Digital Ölgemälde. Es ist die perfekte Möglichkeit, deine Kreativität auszuleben und ein einzigartiges Kunstwerk zu schaffen. Das Set enthält alles, was du benötigst, um dein eigenes dekoratives Bild zu gestalten.Egal, ob du ein Anfänger oder ein erfahrener Künstler bist, dieses Set bietet stundenlangen Malspass. Es eignet sich hervorragend als persönliches Geschenk oder zur Verschönerung deines Zuhauses. Nach Fertigstellung wird dein Bild zum Blickfang in jedem Wohn- oder Kinderzimmer.Das zeichnet es aus\nFarben auf Propylenbasis für leuchtende Ergebnisse\nLeinwandmaterial für authentisches Malgefühl\nInklusive DIY-Rahmen zum einfachen Aufspannen\nWird gerollt in einer Tube geliefert\nIdeal als einzigartiges Geschenk für Kinder und Familie\nPerfekt für die Dekoration von Wohnzimmern, Kinderzimmern und Hochzeiten\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "link": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496",
+        "imageLink": "https://luxestyle.ch/cdn/shop/files/1622535171674.jpg?v=1786672071&width=1920",
+        "additionalImageLinks": [
+          "https://luxestyle.ch/cdn/shop/files/1622535171676.jpg?v=1786672072&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/1622535171687.jpg?v=1786672071&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/1622535171683.jpg?v=1786672071&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/1622535171692.jpg?v=1786672072&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/1622535171690.jpg?v=1786672072&width=1920"
+        ],
+        "availability": "IN_STOCK",
+        "brand": "LuxeStyle",
+        "condition": "NEW",
+        "itemGroupId": "15497440854401",
+        "shipping": [
+          {
+            "country": "CH",
+            "region": "",
+            "service": "",
+            "locationId": "0",
+            "locationGroupName": "",
+            "postalCode": ""
+          }
+        ],
+        "gtins": [],
+        "loyaltyPrograms": [],
+        "productTypes": [],
+        "carrierShipping": [],
+        "freeShippingThreshold": [],
+        "shippingHandlingBusinessDays": [],
+        "shippingTransitBusinessDays": [],
+        "handlingCutoffTimes": [],
+        "sizeTypes": [],
+        "adsLabels": [],
+        "productDetails": [],
+        "productHighlights": [],
+        "displayAdsSimilarIds": [],
+        "promotionIds": [],
+        "includedDestinations": [],
+        "excludedDestinations": [],
+        "shoppingAdsExcludedCountries": [],
+        "lifestyleImageLinks": [],
+        "cloudExportAdditionalProperties": [],
+        "certifications": [],
+        "sustainabilityIncentives": [],
+        "videoLinks": []
+      },
+      "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAwNzM0OTQyNDA5Mjk3ODc2ODM",
+      "legacyLocal": false,
+      "customAttributes": []
+    },
+    {
+      "name": "accounts/5797470070/products/de~CH~10283932347178265394",
+      "offerId": "10283932347178265394",
+      "contentLanguage": "de",
+      "feedLabel": "CH",
+      "dataSource": "accounts/5797470070/dataSources/10678939025",
+      "productStatus": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "item_missing_required_attribute",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "attribute": "price",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing product price",
+            "detail": "Add a price to the [price] attribute in your product data source",
+            "documentation": "https://support.google.com/merchants/answer/12158687",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          },
+          {
+            "code": "missing_potentially_required_attribute",
+            "severity": "NOT_IMPACTED",
+            "resolution": "merchant_action",
+            "attribute": "unit pricing measure",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing unit pricing measure",
+            "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+            "documentation": "https://support.google.com/merchants/answer/10009686",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "creationDate": "2026-11-04T16:51:48.622003Z",
+        "lastUpdateDate": "2026-11-04T16:51:48.622003Z",
+        "googleExpirationDate": "2026-12-15T09:24:14Z"
+      },
+      "productAttributes": {
+        "title": "Primer & Sealer Set für Gelnägel | LuxeStyle CH",
+        "description": "Dieses Set ist die ideale Basis und der perfekte Abschluss für langanhaltende Gelnägel. Es enthält alles, was du für eine professionelle Maniküre zu Hause oder im Salon benötigst, einschliesslich verschiedener Unterlacke und Versiegelungen. Die Produkte sind einfach anzuwenden und für jeden Hauttyp geeignet, um ein optimales Ergebnis zu erzielen. Kreiere makellose Nägel, die beeindrucken und lange halten.Das zeichnet es aus\nVielfältige Auswahl an Unterlacken und Versiegelungen\nInklusive Primer und Sealer für optimale Haltbarkeit\nGeeignet für alle Hauttypen\nIdeal für Nagelstudios und den Heimgebrauch\nErmöglicht professionelle Nageldesigns\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna.",
+        "link": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+        "imageLink": "https://luxestyle.ch/cdn/shop/files/81b845d4-ccf7-4338-83af-1e5099e7a047.jpg?v=1788322123&width=1920",
+        "additionalImageLinks": [
+          "https://luxestyle.ch/cdn/shop/files/9a0f7371-ce27-4a1d-a06d-47f588f6639b.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/39d3f451-b87d-4f95-9e21-280b47cebfc1.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/3cdc8a4d-9ceb-4e78-80a9-bdcdcd9d5404.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/05cd3572-bab2-45fe-a530-8ee879080f8e.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/079b5f8e-f0ff-48bf-a5db-d1c974c7231d.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/9902d24f-3032-4322-a50f-e374c91c820a.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/1926daf6-4dc0-4ac0-82c9-3bee49b3f65e.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/eefa973a-3df6-4b95-9fcb-2257924f4c27.jpg?v=1788322123&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/a7c8a516-582f-4f92-b2a1-d961dee660b9.jpg?v=1788322123&width=1920"
+        ],
+        "availability": "IN_STOCK",
+        "brand": "LuxeStyle",
+        "condition": "NEW",
+        "itemGroupId": "15523176841601",
+        "shipping": [
+          {
+            "country": "CH",
+            "region": "",
+            "service": "",
+            "locationId": "0",
+            "locationGroupName": "",
+            "postalCode": ""
+          }
+        ],
+        "gtins": [],
+        "loyaltyPrograms": [],
+        "productTypes": [],
+        "carrierShipping": [],
+        "freeShippingThreshold": [],
+        "shippingHandlingBusinessDays": [],
+        "shippingTransitBusinessDays": [],
+        "handlingCutoffTimes": [],
+        "sizeTypes": [],
+        "adsLabels": [],
+        "productDetails": [],
+        "productHighlights": [],
+        "displayAdsSimilarIds": [],
+        "promotionIds": [],
+        "includedDestinations": [],
+        "excludedDestinations": [],
+        "shoppingAdsExcludedCountries": [],
+        "lifestyleImageLinks": [],
+        "cloudExportAdditionalProperties": [],
+        "certifications": [],
+        "sustainabilityIncentives": [],
+        "videoLinks": []
+      },
+      "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTAyODM5MzIzNDcxNzgyNjUzOTQ",
+      "legacyLocal": false,
+      "customAttributes": []
+    },
+    {
+      "name": "accounts/5797470070/products/de~CH~10784371818943082880",
+      "offerId": "10784371818943082880",
+      "contentLanguage": "de",
+      "feedLabel": "CH",
+      "dataSource": "accounts/5797470070/dataSources/10678939025",
+      "productStatus": {
+        "destinationStatuses": [
+          {
+            "reportingContext": "FREE_LISTINGS",
+            "disapprovedCountries": [
+              "CH",
+              "LI"
+            ],
+            "approvedCountries": [],
+            "pendingCountries": []
+          }
+        ],
+        "itemLevelIssues": [
+          {
+            "code": "item_missing_required_attribute",
+            "severity": "DISAPPROVED",
+            "resolution": "merchant_action",
+            "attribute": "price",
+            "reportingContext": "FREE_LISTINGS",
+            "description": "Missing product price",
+            "detail": "Add a price to the [price] attribute in your product data source",
+            "documentation": "https://support.google.com/merchants/answer/12158687",
+            "applicableCountries": [
+              "CH",
+              "LI"
+            ]
+          }
+        ],
+        "creationDate": "2026-10-29T23:35:02.974192Z",
+        "lastUpdateDate": "2026-10-29T23:35:02.974192Z",
+        "googleExpirationDate": "2026-12-14T19:43:19Z"
+      },
+      "productAttributes": {
+        "title": "Schmuckbox aus PU-Leder mit abgerundeten Ecken | LuxeStyle CH",
+        "description": "Diese elegante Schmuckbox aus PU-Leder ist die ideale Verkaufs- oder Geschenkverpackung für deine wertvollen Schmuckstücke. Das stilvolle Business-Design und die präzise Verarbeitung mit einer Toleranz von 0.01 machen sie zu einer hochwertigen Wahl. Sie eignet sich perfekt für Halsketten und Anhänger und schützt den Inhalt stilvoll. Erhältlich in verschiedenen Grössen, passt sie sich flexibel deinen Bedürfnissen an.Das zeichnet es aus\nStilvolle Verkaufs- und Geschenkverpackung\nAus hochwertigem PU-Leder gefertigt\nPräzise Verarbeitung mit geringer Toleranz (0.01)\nIdeal für Halsketten und Anhänger\nErhältlich in verschiedenen Grössen: 6.3 x 6.3 x 6.5 cm, 7.3 x 8.3 x 5 cm, 9.5 x 9.5 x 5 cm, 23.5 x 5.5 x 4 cm\n\n\n ️ Sorglos shoppen: Geprüfte Angaben · Lieferung 10–20 Werktage · 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte & Klarna. ️ Das könnte dir auch gefallen: Wohnen & Deko · Bestseller",
+        "link": "https://luxestyle.ch/products/schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200",
+        "imageLink": "https://luxestyle.ch/cdn/shop/files/fbcecdfc-83db-4b10-bde7-6dca8d40db7b_fine.jpg?v=1793326604&width=1920",
+        "additionalImageLinks": [
+          "https://luxestyle.ch/cdn/shop/files/63354d74-f217-4c03-8b77-c89a5ea1982b_fine.jpg?v=1786590743&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/4c46fa22-686e-41e7-a4ed-04704f61c7ac_fine.jpg?v=1793326605&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/69f3f012-5d18-4922-b903-d2a903d2a5a1_fine.jpg?v=1786590743&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/eb944efe-5506-4934-99ba-1b9b57fef62d_trans.jpg?v=1793326604&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/c17038ac-7aaa-43b4-928a-71b2701cfabb_trans.jpg?v=1793326604&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/01bf1b22-f9ff-44ba-b489-ef188ea2ac64_fine.jpg?v=1786590742&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/7d0472ce-dbf9-4b9e-8d77-540f1bd93b1d_fine.jpg?v=1786590743&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/cdc2b4e2-2532-4622-b760-f722e43dbcc2_trans.jpg?v=1786590742&width=1920",
+          "https://luxestyle.ch/cdn/shop/files/522a3185-1e0c-4b67-bbf9-4f65e516ab42_fine.jpg?v=1786590743&width=1920",
+          "http://luxestyle.ch/cdn/shop/files/3b18bd6f-f54c-461b-99c1-cc98a65cfae9_trans.jpg?v=1786590741"
+        ],
+        "availability": "IN_STOCK",
+        "brand": "LuxeStyle",
+        "condition": "NEW",
+        "itemGroupId": "15496378417537",
+        "shipping": [
+          {
+            "country": "CH",
+            "region": "",
+            "service": "",
+            "locationId": "0",
+            "locationGroupName": "",
+            "postalCode": ""
+          }
+        ],
+        "gtins": [],
+        "loyaltyPrograms": [],
+        "productTypes": [],
+        "carrierShipping": [],
+        "freeShippingThreshold": [],
+        "shippingHandlingBusinessDays": [],
+        "shippingTransitBusinessDays": [],
+        "handlingCutoffTimes": [],
+        "sizeTypes": [],
+        "adsLabels": [],
+        "productDetails": [],
+        "productHighlights": [],
+        "displayAdsSimilarIds": [],
+        "promotionIds": [],
+        "includedDestinations": [],
+        "excludedDestinations": [],
+        "shoppingAdsExcludedCountries": [],
+        "lifestyleImageLinks": [],
+        "cloudExportAdditionalProperties": [],
+        "certifications": [],
+        "sustainabilityIncentives": [],
+        "videoLinks": []
+      },
+      "base64EncodedName": "accounts/5797470070/products/ZGV-Q0h-MTA3ODQzNzE4MTg5NDMwODI4ODA",
+      "legacyLocal": false,
+      "customAttributes": []
+    }
+  ],
+  "shopifyProducts": {
+    "paint": {
+      "id": "gid://shopify/Product/15497440854401",
+      "title": "Malen nach Zahlen – Gassen & Häuser",
+      "handle": "diy-digital-olgemalde-zum-selbermalen-418496",
+      "status": "ACTIVE",
+      "tags": [
+        "basteln",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "diy",
+        "dropship",
+        "handarbeit",
+        "hobby",
+        "kreativ",
+        "malen-nach-zahlen",
+        "neuheit",
+        "oelgemaelde",
+        "sort-malen-nach-zahlen-sets",
+        "varianten-nachgezogen-1025"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67821432963463",
+            "title": "Modell A / 40 × 50 cm",
+            "sku": "CJZS115447501AZ",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821432996231",
+            "title": "Modell A / 50 × 65 cm",
+            "sku": "CJZS115447502BY",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433028999",
+            "title": "Modell A / 60 × 75 cm",
+            "sku": "CJZS115447503CX",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433061767",
+            "title": "Modell B / 40 × 50 cm",
+            "sku": "CJZS115447504DW",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433094535",
+            "title": "Modell B / 50 × 65 cm",
+            "sku": "CJZS115447505EV",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433127303",
+            "title": "Modell B / 60 × 75 cm",
+            "sku": "CJZS115447506FU",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433160071",
+            "title": "Modell C / 40 × 50 cm",
+            "sku": "CJZS115447507GT",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433192839",
+            "title": "Modell C / 50 × 65 cm",
+            "sku": "CJZS115447508HS",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433225607",
+            "title": "Modell C / 60 × 75 cm",
+            "sku": "CJZS115447509IR",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433258375",
+            "title": "Modell D / 40 × 50 cm",
+            "sku": "CJZS115447510JQ",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433291143",
+            "title": "Modell D / 50 × 65 cm",
+            "sku": "CJZS115447511KP",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433323911",
+            "title": "Modell D / 60 × 75 cm",
+            "sku": "CJZS115447512LO",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433356679",
+            "title": "Modell E / 40 × 50 cm",
+            "sku": "CJZS115447513MN",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433389447",
+            "title": "Modell E / 50 × 65 cm",
+            "sku": "CJZS115447514NM",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433422215",
+            "title": "Modell E / 60 × 75 cm",
+            "sku": "CJZS115447515OL",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433454983",
+            "title": "Modell F / 40 × 50 cm",
+            "sku": "CJZS115447516PK",
+            "price": "20.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433487751",
+            "title": "Modell F / 50 × 65 cm",
+            "sku": "CJZS115447517QJ",
+            "price": "24.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67821433520519",
+            "title": "Modell F / 60 × 75 cm",
+            "sku": "CJZS115447518RI",
+            "price": "26.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "primer": {
+      "id": "gid://shopify/Product/15523176841601",
+      "title": "Primer & Sealer Set für Gelnägel",
+      "handle": "primer-sealer-set-fur-gelnagel-711296",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-nachgeruestet",
+        "beauty",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "maniküre",
+        "naegel",
+        "nagel",
+        "nageldesign",
+        "sort-nagellack-gel-lack"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56210226708865",
+            "title": "Weiss",
+            "sku": "CJMJ173930601AZ",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239554439",
+            "title": "Schwarz",
+            "sku": "CJMJ173930602BY",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239587207",
+            "title": "Rot",
+            "sku": "CJMJ173930603CX",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239619975",
+            "title": "Rosa",
+            "sku": "CJMJ173930604DW",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239652743",
+            "title": "Blau",
+            "sku": "CJMJ173930605EV",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239685511",
+            "title": "Gelb",
+            "sku": "CJMJ173930606FU",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239718279",
+            "title": "Rosenrot",
+            "sku": "CJMJ173930607GT",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239751047",
+            "title": "Orange",
+            "sku": "CJMJ173930608HS",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239783815",
+            "title": "Hellblau",
+            "sku": "CJMJ173930609IR",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239816583",
+            "title": "Hellrosa",
+            "sku": "CJMJ173930610JQ",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239849351",
+            "title": "Grün",
+            "sku": "CJMJ173930611KP",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239882119",
+            "title": "Hellgrün",
+            "sku": "CJMJ173930612LO",
+            "price": "65.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239914887",
+            "title": "Lila",
+            "sku": "CJMJ173930613MN",
+            "price": "65.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239947655",
+            "title": "Fluoreszierendes Grün",
+            "sku": "CJMJ173930614NM",
+            "price": "65.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749239980423",
+            "title": "Helllila",
+            "sku": "CJMJ173930615OL",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67749240013191",
+            "title": "Himmelblau",
+            "sku": "CJMJ173930616PK",
+            "price": "56.90",
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "nativeTitleSearch": {
+    "query": "status:active title:Gassen",
+    "matches": 0,
+    "interpretation": "Zero matches for this narrow title query, not evidence of absence. Exact itemGroupId read later succeeded."
+  },
+  "apiVariantReadProbe": {
+    "candidateResource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15523176841601_56210226708865",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Error (invalid_input): 404 The resource with name `accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15523176841601_56210226708865` was not found. [reason: \"notFound\"\ndomain: \"merchantapi.googleapis.com\"\nmetadata {\n  key: \"RESOURCE_NAME\"\n  value: \"accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15523176841601_56210226708865\"\n}\nmetadata {\n  key: \"REASON\"\n  value: \"ITEM_NOT_FOUND\"\n}\n]"
+        }
+      ],
+      "structuredContent": {
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    },
+    "interpretation": "INVALID_ARGUMENT, not404/absent. Probe candidate not a confirmed existing API product; do not write or infer API existence."
+  },
+  "scope": {
+    "newMerchantCatalogPages": 0,
+    "newMerchantSummaryCalls": 0,
+    "targetedHypdProductReads": 4,
+    "newShopifyNativeProductRecords": 2,
+    "nativeVariants": 34,
+    "publicPages": 2,
+    "merchantWrites": 0,
+    "shopProductWrites": 0,
+    "socialWrites": 0,
+    "themeWrites": 0,
+    "newMetricsFlowSalesOrderReports": 0,
+    "orderWatchEnded": true,
+    "paidRenders": 0,
+    "automationFrequencyChanged": false,
+    "claudeReceipt": "unknown"
+  },
+  "sources": [
+    "MERCHANT-PREIS-GEGENPROBE-20261115-R236.md",
+    "MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
+    "MERCHANT-DREI-ANGEBOTE-20261115-R236.csv"
+  ],
+  "publicCountercheck": [
+    {
+      "offerId": "10073494240929787683",
+      "productId": "gid://shopify/Product/15497440854401",
+      "httpStatus": 200,
+      "publicFinalUrl": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496",
+      "htmlSha256": "20811cbb544c3e5434dd1d29342327e62f1cae63197eed6b9fce8bbc63a9effe",
+      "nativeVariants": 18,
+      "structuredVariantOffers": 18,
+      "paginationComplete": true,
+      "allPricesCurrencySkuMatch": true,
+      "selectedVariantInMerchantLink": null,
+      "variants": [
+        {
+          "variantId": "67821432963463",
+          "sku": "CJZS115447501AZ",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821432996231",
+          "sku": "CJZS115447502BY",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433028999",
+          "sku": "CJZS115447503CX",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433061767",
+          "sku": "CJZS115447504DW",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433094535",
+          "sku": "CJZS115447505EV",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433127303",
+          "sku": "CJZS115447506FU",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433160071",
+          "sku": "CJZS115447507GT",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433192839",
+          "sku": "CJZS115447508HS",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433225607",
+          "sku": "CJZS115447509IR",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433258375",
+          "sku": "CJZS115447510JQ",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433291143",
+          "sku": "CJZS115447511KP",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433323911",
+          "sku": "CJZS115447512LO",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433356679",
+          "sku": "CJZS115447513MN",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433389447",
+          "sku": "CJZS115447514NM",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433422215",
+          "sku": "CJZS115447515OL",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433454983",
+          "sku": "CJZS115447516PK",
+          "nativePrice": "20.90",
+          "schemaPrice": "20.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433487751",
+          "sku": "CJZS115447517QJ",
+          "nativePrice": "24.90",
+          "schemaPrice": "24.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67821433520519",
+          "sku": "CJZS115447518RI",
+          "nativePrice": "26.90",
+          "schemaPrice": "26.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        }
+      ]
+    },
+    {
+      "offerId": "10283932347178265394",
+      "productId": "gid://shopify/Product/15523176841601",
+      "httpStatus": 200,
+      "publicFinalUrl": "https://luxestyle.ch/products/primer-sealer-set-fur-gelnagel-711296?variant=56210226708865&country=CH&currency=CHF",
+      "htmlSha256": "1c19714cd6b242e7102777f14f5aac64e3977ab0f8d3131048c7f978f6e261f8",
+      "nativeVariants": 16,
+      "structuredVariantOffers": 16,
+      "paginationComplete": true,
+      "allPricesCurrencySkuMatch": true,
+      "selectedVariantInMerchantLink": "56210226708865",
+      "variants": [
+        {
+          "variantId": "56210226708865",
+          "sku": "CJMJ173930601AZ",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239554439",
+          "sku": "CJMJ173930602BY",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239587207",
+          "sku": "CJMJ173930603CX",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239619975",
+          "sku": "CJMJ173930604DW",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239652743",
+          "sku": "CJMJ173930605EV",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239685511",
+          "sku": "CJMJ173930606FU",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239718279",
+          "sku": "CJMJ173930607GT",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239751047",
+          "sku": "CJMJ173930608HS",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239783815",
+          "sku": "CJMJ173930609IR",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239816583",
+          "sku": "CJMJ173930610JQ",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239849351",
+          "sku": "CJMJ173930611KP",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239882119",
+          "sku": "CJMJ173930612LO",
+          "nativePrice": "65.90",
+          "schemaPrice": "65.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239914887",
+          "sku": "CJMJ173930613MN",
+          "nativePrice": "65.90",
+          "schemaPrice": "65.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239947655",
+          "sku": "CJMJ173930614NM",
+          "nativePrice": "65.90",
+          "schemaPrice": "65.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749239980423",
+          "sku": "CJMJ173930615OL",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "variantId": "67749240013191",
+          "sku": "CJMJ173930616PK",
+          "nativePrice": "56.90",
+          "schemaPrice": "56.90",
+          "currency": "CHF",
+          "schemaAvailability": "http://schema.org/InStock",
+          "skuMatches": true,
+          "priceMatches": true,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        }
+      ]
+    }
+  ],
+  "verifiedPriceCandidate": {
+    "offerId": "10283932347178265394",
+    "resource": "accounts/5797470070/products/de~CH~10283932347178265394",
+    "primarySource": "accounts/5797470070/dataSources/10678939025",
+    "sourceInput": "AUTOFEED",
+    "productId": "gid://shopify/Product/15523176841601",
+    "variantId": "gid://shopify/ProductVariant/56210226708865",
+    "sku": "CJMJ173930601AZ",
+    "expectedPrice": "56.90",
+    "currency": "CHF",
+    "googlePricePresent": false,
+    "priceEvidence": "CurrentAdmin variant + public exact variant JSON-LD price/currency/SKU all match",
+    "writeReady": false,
+    "blocker": "No supported legitimate AUTOFEED writer; no existing API/supplemental offer/source confirmed. No source or defaultRule creation on speculation."
+  }
+}

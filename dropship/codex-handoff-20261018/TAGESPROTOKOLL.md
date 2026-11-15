@@ -2736,3 +2736,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Theme / Live | «ja live» übernommen, Shop und Ziel frisch gelesen; genau einen nativen Publishversuch mit userConfirmed=true ausgeführt und Rollen danach zurückgelesen | Connector verweigert «Only agent-created themes can be published here»; published=false/pending=[]. Ziel 214040805767 weiter UNPUBLISHED, MAIN 213991391623. Freigabe liegt vor; keine erneute Bestätigung nötig. Keine Umgehung oder weiteren Theme-Edits. |
 | Übergabe | Bestehende README, Memory, 24 Aufgaben und Tagesblock fortgeschrieben; konkreten manuellen Admin-Schritt vermerkt | Keine neue Live-Abnahme, Social-/Feedwrites oder Kennzahl-/Flow-/Bestellreports. Claude-Empfang unbekannt. [Beleg](LIVE-FREIGABE-20261115-R235.json). |
 
+
+### R236 – Gezielte Merchant-Preisgegenprobe
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify / Verbindung | Shop und freigegebenes Theme frisch gelesen | luxestyle.ch/CHF/EuropeZurich passend; Ziel214040805767 UNPUBLISHED, MAIN213991391623. Keine Verbindungseinstellung oder Theme-Datei geändert, keine erneute Publikation/Umgehung. |
+| Merchant / Quellen | Identitäten in HYPD/Windsor geprüft; drei Preisangebote einzeln über HYPD gelesen | Alle drei Quelle10678939025; Preisfehler für Free Listings CH/LI bestätigt. Vorheriger gefilterter Windsor-Read Timeout, keine0/Leerdaten. Ein API-Kandidatenread INVALID_ARGUMENT, kein404-/Existenzbeleg. Kein Katalogscan/Feedwrite. |
+| Preisgrundlage | Zwei aktive Produkte mit34 Varianten nativ und auf zwei öffentlichen Seiten gegengeprüft |18/18 und16/16 Preise/SKUs/CHF stimmen. Primer56210226708865/CJMJ173930601AZ kostet56.90CHF und ist im tatsächlichen Merchant-Link gewählt. Quelle bleibt technisch schreibblockiert; kein Merchant-Fehler als behoben gemeldet. |
+| Übergabe | Konkreten Einzelfall, Rohdaten, Fehlergrenzen und Drei-Angebote-Prüfliste fortgeschrieben | Kein Importfeed, neue Source/Regel, Produkt-/Social-/Theme-Write, Render, Kundenkontakt oder Tagesreport. Claude-Empfang unbekannt. |
+
+[Bericht](MERCHANT-PREIS-GEGENPROBE-20261115-R236.md) · [Belege](MERCHANT-PREIS-GEGENPROBE-20261115-R236.json).
+

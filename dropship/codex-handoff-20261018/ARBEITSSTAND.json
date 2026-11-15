@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 235,
-  "updatedAt": "2026-11-15T14:02:33Z",
+  "revision": 236,
+  "updatedAt": "2026-11-15T14:19:28Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13690,17 +13690,18 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r234_historical_export_found_18_candidates_exact_field_mapping_six_lamp_variants_verified",
+      "state": "r236_three_autofeed_sources_confirmed_primer_variant_price_bound_writer_blocked",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEPRUEFT",
-      "lastEvidence": "Originalexport08.11.hashgleichwiedergefunden;17historischeGruppenplusaktuellerPreis-Kandidatals18Arbeitskandidaten.200R233Offersofflineexaktzugeordnet:144Preis/19Availability/3beides/160Union. Wandleuchte6nativeundöffentlicheVariantenpreiseCHF45.90–53.90stimmen,alleStorefrontavailabletrue/Trackingfalse/CONTINUE. Parent-AUTOFEED-Variantenzuordnungweiterunknown.KeineFeedänderung.",
-      "nextAllowedStep": "18er-Matrix und datierte200er-Prüfliste weiterführen. Historische Zahlen vor Eingriffen gezielt frisch prüfen; keinen erneuten Upload des bereits vorhandenen08.11.-Exports verlangen. AUTOFEED-Offer erst mit eindeutiger Variablen-/Variantenbindung und legitimem Quelleneditor korrigieren;6belegteSKU-Preispaare nutzen, nicht willkürlich einen Preis zuweisen. Vor jedem Write Konto/Quelle/Produkt/Diff frisch prüfen.",
+      "belegArt": "CURRENT_THREE_OFFER_PAYLOADS_TWO_NATIVE_PRODUCTS_PUBLIC_SCHEMA_COUNTERCHECK_NO_WRITE",
+      "lastEvidence": "Drei aktuelle HYPD-Einzelangebote mit fehlendem Preis führen Quelle10678939025. Primer10283932347178265394 bindet den tatsächlichen Link an Variante56210226708865 /CJMJ173930601AZ,56.90CHF nativ und öffentlich exakt bestätigt. Malset18/Primer16 Varianten vollständig, alle34 Schema-Preise/Währungen/SKUs stimmen. Ein Windsor-Read Timeout und ein API-Kandidatenread INVALID_ARGUMENT bleiben unknown; kein Feedwrite oder Google-Neucrawlbeleg.",
+      "nextAllowedStep": "Für genau das Primer-Angebot ist56.90CHF belegter Preis; legitimen tatsächlichen AUTOFEED-Editor oder bestätigte zulässige bestehende API-Übersteuerung klären. Vor Write aktuelle Source/Variante/Preis/Diff erneut prüfen, danach exakt dasselbe Google-Angebot und Status zurücklesen. Malset/Schmuckbox ohne Einzelvariantenbindung nicht mit einem geratenen Preis füllen. Keine Source/defaultRule auf Verdacht. Vorhandenen Export nicht erneut anfordern.",
       "blockers": [
-        "AUTOFEED-Schreibweg und Parent-zu-einer-Variante-Bindung weiterhin nicht belegt.",
-        "18Arbeitskandidaten beweisen keine aktuelle vollständigeUI-Gruppenzahl.",
-        "Google-Review/Reprocess-Aktion nicht vorhanden; keine pauschale Source/defaultRule-Änderung.",
-        "Historische Versand-/CSS-/Richtlinienfälle benötigen aktuelle fallbezogene Belege."
+        "Quelle10678939025 ist nach heutigem Profil AUTOFEED; kein unterstützter legitimer Writer oder vorhandener API-Override bestätigt.",
+        "Primer-Variantenbindung und56.90CHF geklärt; noch kein Google-Preiswrite oder bestätigter Fehlerabbau.",
+        "Malset-Elternangebot ohne eindeutige Einzelvariante; Schmuckbox-Varianten/Preise in R236 nicht geprüft.",
+        "Timeout/INVALID_ARGUMENT sind keine leeren Daten oder404. API-Kandidatenexistenz unbekannt.",
+        "Aktuelle vollständige18-Gruppen-Zählung und weitere historische Versand-/CSS-/Richtlinienbefunde bleiben separat offen."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -14288,6 +14289,10 @@
           "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
           "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
           "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
+          "readAt": "2026-11-15T14:19:28Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15234,6 +15239,21 @@
             "R167: Vier Overlayfälle haben kein exakt variantengebundenes sauberes Ersatzbild mit kommerziellem Rechtebeleg.",
             "R168: Availability-Zielzustand ist erreicht; Zeitpunkt und verursachender bestehender Ablauf bleiben unbekannt. Keine Codex-/Connector-Verursachung behaupten.",
             "R168: Liechtenstein-Versand bleibt getrennt blockiert; reale Lieferfähigkeit, Kosten und Laufzeit fehlen und waren nicht Teil der Freigabe."
+          ]
+        },
+        {
+          "at": "2026-11-15T14:19:28Z",
+          "sourceRevision": 235,
+          "previousState": "r234_historical_export_found_18_candidates_exact_field_mapping_six_lamp_variants_verified",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEPRUEFT",
+          "previousLastEvidence": "Originalexport08.11.hashgleichwiedergefunden;17historischeGruppenplusaktuellerPreis-Kandidatals18Arbeitskandidaten.200R233Offersofflineexaktzugeordnet:144Preis/19Availability/3beides/160Union. Wandleuchte6nativeundöffentlicheVariantenpreiseCHF45.90–53.90stimmen,alleStorefrontavailabletrue/Trackingfalse/CONTINUE. Parent-AUTOFEED-Variantenzuordnungweiterunknown.KeineFeedänderung.",
+          "previousNextAllowedStep": "18er-Matrix und datierte200er-Prüfliste weiterführen. Historische Zahlen vor Eingriffen gezielt frisch prüfen; keinen erneuten Upload des bereits vorhandenen08.11.-Exports verlangen. AUTOFEED-Offer erst mit eindeutiger Variablen-/Variantenbindung und legitimem Quelleneditor korrigieren;6belegteSKU-Preispaare nutzen, nicht willkürlich einen Preis zuweisen. Vor jedem Write Konto/Quelle/Produkt/Diff frisch prüfen.",
+          "previousBlockers": [
+            "AUTOFEED-Schreibweg und Parent-zu-einer-Variante-Bindung weiterhin nicht belegt.",
+            "18Arbeitskandidaten beweisen keine aktuelle vollständigeUI-Gruppenzahl.",
+            "Google-Review/Reprocess-Aktion nicht vorhanden; keine pauschale Source/defaultRule-Änderung.",
+            "Historische Versand-/CSS-/Richtlinienfälle benötigen aktuelle fallbezogene Belege."
           ]
         }
       ],
@@ -16519,6 +16539,40 @@
             "readAt": "2026-11-15T13:35:41.637194+00:00"
           }
         ]
+      },
+      "run236": {
+        "at": "2026-11-15T14:19:28Z",
+        "source": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
+        "verifiedPriceCandidate": {
+          "offerId": "10283932347178265394",
+          "resource": "accounts/5797470070/products/de~CH~10283932347178265394",
+          "primarySource": "accounts/5797470070/dataSources/10678939025",
+          "sourceInput": "AUTOFEED",
+          "productId": "gid://shopify/Product/15523176841601",
+          "variantId": "gid://shopify/ProductVariant/56210226708865",
+          "sku": "CJMJ173930601AZ",
+          "expectedPrice": "56.90",
+          "currency": "CHF",
+          "googlePricePresent": false,
+          "priceEvidence": "CurrentAdmin variant + public exact variant JSON-LD price/currency/SKU all match",
+          "writeReady": false,
+          "blocker": "No supported legitimate AUTOFEED writer; no existing API/supplemental offer/source confirmed. No source or defaultRule creation on speculation."
+        },
+        "publicCountercheck": [
+          {
+            "offerId": "10073494240929787683",
+            "nativeVariants": 18,
+            "allPricesCurrencySkuMatch": true,
+            "htmlSha256": "20811cbb544c3e5434dd1d29342327e62f1cae63197eed6b9fce8bbc63a9effe"
+          },
+          {
+            "offerId": "10283932347178265394",
+            "nativeVariants": 16,
+            "allPricesCurrencySkuMatch": true,
+            "htmlSha256": "1c19714cd6b242e7102777f14f5aac64e3977ab0f8d3131048c7f978f6e261f8"
+          }
+        ],
+        "merchantWrites": 0
       }
     },
     {
@@ -32119,6 +32173,20 @@
       "summary": "Erneutes ausdrückliches «ja live» erhalten. Shop/Ziel frisch bestätigt; genau ein neuer nativer Publishversuch vom Connector mit published=false und Only agent-created themes can be published here abgewiesen. Rücklesung: Ziel 214040805767 UNPUBLISHED, bisheriges MAIN213991391623. Keine Umgehung, keine weiteren Theme-Änderungen, Kennzahl-/Flow-/Bestellreports oder Social-/Feedwrites. Gleiche Freigabe bleibt erhalten; manueller Admin-Publish ist nächster konkreter Schritt.",
       "sources": [
         "dropship/codex-handoff-20261018/LIVE-FREIGABE-20261115-R235.json"
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 236,
+      "at": "2026-11-15T14:19:28Z",
+      "actor": "codex",
+      "summary": "Shopverbindung und unveröffentlichtes Theme bestätigt, Publishsperre nicht erneut ausgelöst. Drei aktuelle AUTOFEED-Preisfehler quellengebunden gelesen; exakter Primer56.90CHF-Variantentarget neu belegt. Zwei native Produkte/34 Varianten gegen öffentliche Schema-Preise/SKUs exakt bestätigt. WindsorTimeout und API-KandidatenINVALID_ARGUMENT nicht als leer/404 dargestellt. Keine Plattformwrites oder zusätzlichen Tagesreports;24Aufgaben/Historie erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
+          "readAt": "2026-11-15T14:19:28Z"
+        }
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
@@ -58895,5 +58963,48 @@
       "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
       "dropship/codex-handoff-20261018/LIVE-FREIGABE-20261115-R235.json"
     ]
+  },
+  "run236": {
+    "atUTC": "2026-11-15T14:19:28Z",
+    "trigger": "weiter verb.",
+    "source": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
+    "scope": {
+      "newMerchantCatalogPages": 0,
+      "newMerchantSummaryCalls": 0,
+      "targetedHypdProductReads": 4,
+      "newShopifyNativeProductRecords": 2,
+      "nativeVariants": 34,
+      "publicPages": 2,
+      "merchantWrites": 0,
+      "shopProductWrites": 0,
+      "socialWrites": 0,
+      "themeWrites": 0,
+      "newMetricsFlowSalesOrderReports": 0,
+      "orderWatchEnded": true,
+      "paidRenders": 0,
+      "automationFrequencyChanged": false,
+      "claudeReceipt": "unknown"
+    },
+    "theme": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T11:01:03Z"
+    },
+    "verifiedPriceCandidate": {
+      "offerId": "10283932347178265394",
+      "resource": "accounts/5797470070/products/de~CH~10283932347178265394",
+      "primarySource": "accounts/5797470070/dataSources/10678939025",
+      "sourceInput": "AUTOFEED",
+      "productId": "gid://shopify/Product/15523176841601",
+      "variantId": "gid://shopify/ProductVariant/56210226708865",
+      "sku": "CJMJ173930601AZ",
+      "expectedPrice": "56.90",
+      "currency": "CHF",
+      "googlePricePresent": false,
+      "priceEvidence": "CurrentAdmin variant + public exact variant JSON-LD price/currency/SKU all match",
+      "writeReady": false,
+      "blocker": "No supported legitimate AUTOFEED writer; no existing API/supplemental offer/source confirmed. No source or defaultRule creation on speculation."
+    }
   }
 }
