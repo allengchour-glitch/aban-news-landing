@@ -11,4 +11,7 @@ const good=structuredClone(base);for(const v of good.options[0].optionValues)v.n
 assert.equal(verify(base,good),true);assert.equal(plan(good).changes.length,0);
 for(const field of ['price','sku','id']){const bad=structuredClone(good);bad.variants.nodes[0][field]='anders';assert.throws(()=>verify(base,bad));}
 const bad=structuredClone(good);bad.variants.nodes[0].selectedOptions[1].value='42';assert.throws(()=>verify(base,bad));
-console.log('12 ok, 0 Fehler');
+const reverse=Object.fromEntries(Object.entries(RENAMES).map(([a,b])=>[b,a]));
+assert.equal(plan(good,reverse).changes.length,3);
+assert.equal(verify(good,base,reverse),true);
+console.log('14 ok, 0 Fehler');

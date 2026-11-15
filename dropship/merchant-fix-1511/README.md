@@ -54,4 +54,4 @@ Werkzeug: `automation/merchant-fix-1511/fix.mjs`. Ohne `LIVE=1` nur lesen. `ROLL
 
 Der branchgebundene Workflow liest den Modus aus `MODUS`: `pruefen`, `schreiben`, `zurueck`. Nach bestätigtem Schreiben auf `pruefen` zurückgestellt. Kein Zeitplan, kein Schreiben beim Merge nach main.
 
-Tests: `node automation/merchant-fix-1511/fix_test.mjs` (12 Schutzprüfungen). Die lokale vollständige `ci_simulation.sh` konnte hier nicht starten: sie legt ihren Plan unter `$HOME` an, das im Cloud-Sandbox schreibgeschützt ist. Der gezielte Actions-Test und der Live-Trockenlauf sind grün. Kein vollständiger CI-Erfolg behauptet.
+Tests: `node automation/merchant-fix-1511/fix_test.mjs` (14 Schutzprüfungen). Die lokale vollständige `ci_simulation.sh` konnte hier nicht starten: sie legt ihren Plan unter `$HOME` an, das im Cloud-Sandbox schreibgeschützt ist. Der gezielte Actions-Test und der Live-Trockenlauf sind grün. Kein vollständiger CI-Erfolg behauptet.
