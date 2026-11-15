@@ -1,0 +1,49 @@
+name: Merchant-Variantenkorrektur 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/**
+      - .github/workflows/merchant-option-fix-1511.yml
+      - dropship/merchant-fix-1511/MODUS
+permissions:
+  contents: read
+concurrency:
+  group: merchant-option-fix-1511
+  cancel-in-progress: false
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511
+            automation/lib/shopify_secret.mjs
+            dropship/merchant-fix-1511/MODUS
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node automation/merchant-fix-1511/fix_test.mjs
+      - name: Gezielt prüfen oder korrigieren
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 node automation/merchant-fix-1511/fix.mjs ;;
+            schreiben) LIVE=1 node automation/merchant-fix-1511/fix.mjs ;;
+            *) echo 'Ungültiger Modus'; exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-option-fix
+          path: merchant-fix-result/
+          retention-days: 30
+          if-no-files-found: warn
