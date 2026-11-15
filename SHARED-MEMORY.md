@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: grösserer3D-Kontrollplatz und Higgsfield-Vorlage ·15.11.2026
+
+Vorhandenes Büro mit breiterem Zentralmonitor, markantem Rahmen/Plattform und Kamera erweitert, Version17 synchron.390/1440px WebGL/Monitorfokus geprüft,43 Dashboardbauprüfungen grün. Private Higgsfield-3D-Vorlage Revision3 tatsächlich gebaut, gerendert, angesehen und gezeigt; keine Live-Datenverbindung oder vollständige Integration. Keine bezahlten Generierungen/Publikation. Claude-Upload weiterhin bei Claude und nur vollständiger Bau plus passender3D-Code. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt3D-Büro und zugehöriger PR.
+
 ## Codex: Büro-Schnellbuttons für28 fertige Aufträge ·15.11.2026
 
 Jetzt erledigen oben und27 weitere Direktlinks aufklappbar. Vorhandene vollständige Prompts/Grenzen sowie Auswahl/Kopie erhalten, keine automatische Ausführung behauptet.390/1440px geprüft,43 Dashboardbauprüfungen grün; vollständiger Claude-Upload bleibt bei Claude. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Büro-Direktbuttons und zugehöriger PR.
