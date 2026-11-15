@@ -105,6 +105,33 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-15 nachts, nach 23 Uhr (✉️ Mails · 🤖 Modell-Leiter für Unteragenten · 🔎 Merchant: Liechtenstein wirkt, Googles Autofeed abgeschaltet · 3 verpasste Wecker nachgeholt; Besitzer: vier TikTok-Links (zum ersten «mache das»), «mache weiter und bearbeite mails und lade memroy», «alles erlaubt» (zweimal), «nutze auch sonnet model», «und haiku»; PRs #3159 `c70e5cac0d`, #3160 `2a69bea859`, #3161 `23a6c8b7c9`; Abannews-Sitzung):**
+- **Auslegung (meine, nicht bestätigt):** «alles erlaubt» = Freigabe des Plans dieser Nacht. Geld, Reel-Musik und Änderungen mit Kundenwirkung bleiben bei den Regeln.
+- **Verpasste Wecker (erst 15.11. 22:00 UTC zugestellt):**
+  - Pia Folge 1 am 12.11. veröffentlicht (`youtube.com/shorts/td8bVcUo324`). Die Pia-Sitzung hat seither drei weitere Folgen veröffentlicht, «Soja» ist auf den 16.11. 18:00 eingeplant.
+  - **Hobel-Clips 13.11. nicht veröffentlicht:** Die drei Entwürfe haben ein Datum in der Vergangenheit und tragen laut `dropship/tiktok-cj-videos-0311/cj_clips.json` das am 10.11. abgelehnte Stück «new-york-427». Nicht neu eingeplant. Vorschlag: ohne Musik neu schneiden; der Entscheid liegt beim Besitzer.
+- **Mails (GEMESSEN 22:1x UTC):** 25 Verläufe in den Papierkorb, 16 bleiben, keine Kundenmail. Einen Papierkorb-Aufruf (Pinterest-Empfehlung) hat der Besitzer abgelehnt; nicht wiederholt.
+  - Apify-Sicherheitsvorfall: Der Besitzer soll die 2FA bei Apify neu einrichten; im Repo gibt es keine Apify-Schlüssel.
+  - Die GitHub-Apps Claude und Linear wollen mehr Rechte; das Meta-Werbekonto hat kein Zahlungsmittel; ChatGPT Pro endet am 17.11. (Codex hängt daran).
+  - Am 12.11. um 22:32 UTC gab es neue Anmeldungen bei Google und Shopify von einem Windows-Gerät.
+- **Modell-Leiter (PR #3159):** `.claude/settings.json` setzt `CLAUDE_CODE_SUBAGENT_MODEL=sonnet` ohne FORCE (Regel in den Kernfakten unter «Modellwahl»). Wirkung ab dem nächsten Sitzungsstart, ungemessen.
+- **Merchant (GEMESSEN; Doku `dropship/merchant-fehler-1111/README.md`):**
+  - Fehlender Versand **256 124 → 979**.
+  - 192 Bildangebote, 147 davon aus dem Autofeed; Preis fehlt 574, Verfügbarkeit fehlt 50, «Hot Sale» 18, alle aus dem Autofeed.
+  - Bei Proben hat Google noch die alten App-Bilder vom 11.11.
+  - **Autofeed:** 8 398 der 8 681 Autofeed-Produkte hat das Schaufenster absichtlich vom Google-Kanal genommen. In 28 Tagen brachte der Autofeed 2 Klicks (Zeilen mit reiner Nummer, Zeilen mit Produkt-ID 0), die App 4.
+  - **Abgeschaltet:** `merchant-autofeed.yml` im Modus `aus` (Lauf 43770892231, HTTP 200). Rücklesen 22:49 UTC: `enableProducts=False`. Rücknahme: Modus `ein`.
+- **Nicht gemacht:**
+  - Earshot: Die Installation des Fremdpakets hat der Sicherheitsprüfer gesperrt, nicht umgangen. Der Besitzer hatte der Shop-Sitzung «Nein» gesagt.
+  - LEGO-Partnerprogramm.
+  - Index-Wecker `trig_019nMZrhD1AcCgEKYuUYGRGE`: Lesen braucht die Freigabe des Besitzers. Er feuert erst am 11.11.2027 wieder.
+  - KI-Büro-Upload: Das Dashboard trägt weiter `index.html` v18 (Metricool-Tabelle, nicht im Repo) und `kb3d-code.js` v8.
+- **Lehren:**
+  - (1) Die Merchant API lässt Felder mit dem Wert false weg (proto3-JSON). Ein fehlendes `enableProducts` heisst «aus»; das erste Rücklesen meldete darum fälschlich «weicht ab».
+  - (2) Bei Restmeldungen zuerst die Herkunft zählen: 3 von 4 Bildmeldungen kamen aus dem Autofeed, nicht aus der App.
+  - (3) PyPI-Namen prüfen: «earshot» auf PyPI ist ein anderes Projekt als das Werkzeug aus dem TikTok.
+  - (4) Parallele Sitzung lesen, bevor man ein Konto umschaltet: Die Shop-Sitzung misst den Merchant-Fix ebenfalls (Block darunter).
+
 **📌 2026-11-15 abends (🎄 Weihnachts-Schaufenster LIVE · 📱 kompakter Kategoriekopf LIVE und nachgebessert · 💡 Bestseller-Lampe: Hauptausführung war nicht kaufbar, behoben · 🧭 Menü-Übersetzung gerettet · 🔎 Index-Liste; Besitzer «mache alles weiter, aber allererst 10 indexdierungslink», «merchant fix und alles auch weiter», «nimm dir viel zeit für saubere arbeit», «nutze model für token sparen», «nutze auch sonnet für einfache sachen», Earshot «Nein»; PRs #3154 `ae59115056`, #3155 `a15cce339b`, #3157 `2a26c07791` gemergt):**
 - **Neues MAIN-Theme seit 14.11.: `213991391623` «LuxeStyle SEO 14.11.2026» (Name mit Strich)** (Werkzeuge lesen es über `roles:[MAIN]`, nie eine alte ID fest eintragen).
 - **Modellwahl (Besitzer 15.11.):** zusätzlich zu Haiku (mechanisch) nimmt **Sonnet einfache Teilaufgaben** (Messläufe, Seiten abklopfen, Zusammenfassungen, Workflow-Messer mit `model:'sonnet'`); Urteile, Shop-/Theme-Schreibzugriffe und Reviews bleiben beim Hauptmodell.
