@@ -1,3 +1,23 @@
+# R242 – Produktdetails und Auswahlhilfe für sechs Seiten live verbessert – 15.11.2026
+
+**Konkreter Fortschritt:** Nach der neuen ausdrücklichen Anweisung «die anderen produkten sollen auch detailiert beschrieben werden, auswahl info mehr?» wurden vier Konsolen und zwei Leuchten nach frischer SKU-/Varianten-/Quellengegenprobe live verbessert. Jeweils nur **descriptionHtml und seo.description** geändert. Sechs serielle Writes mit userErrors=[], native Vollrücklesungen und sechs öffentliche HTML-/JSON-Gegenproben bestätigen den Stand. Keine Wiederholung unklarer Writes.
+
+Verbessert: R36 Ultra 15448847745409 (Farbe/Speicher/Spieleumfang), Mini-Klappkonsole 15479484219777 (Orange/Gelb, Speicherart offen), 500er-Handheld 15448847155585 (500 Spiele gegen CJ belegt, Titel-/Controllerliste offen), 620er-TV-Konsole 15448848761217 (Standardset gegenüber B4-Auswahlen), Wandleuchte 15491395846529 (sieben Gehäusefarben × drei Lichtausführungen, eine Leuchte) und Deckenleuchte 15460287250817 (Grösse/Lichtfunktion, Glas statt unbelegter Glaskeramik). Alle Texte nennen jeweils kaufrelevante offene Angaben; keine Spielelisten, Adapter, Fernbedienungen, Kelvinwerte oder echten Gerätemasse erfunden.
+
+**Geschützt:** 40 Varianten und 48 Medien sowie Titel, Handles, Status, Tags einschliesslich rueckhol, Optionswerte, SKU/Barcodes, Preise, Bestände/Tracking/Policies, Taxonomie, Google-Kategorie und SEO-Titel sind nativ unverändert. Öffentliche geschützte Produktdaten vorher/nachher hashgleich. Kein Lager-/Lieferzeitversprechen. Rabatt-/Versand-Werbetexte dieser sechs Beschreibungen/Metadaten durch konkrete Produktinfos ersetzt; keine tatsächlichen Rabatt-/Versand-/Shop-/Rückgabe-Einstellungen geändert. Öffentliche CHF50 / interne CHF45 und Kundendomäne bleiben erhalten.
+
+CJ hat sechs gezielte Produktquellen geliefert, ohne Suche, Massenpagination oder Connectoränderung. Alle passenden Varianten- und Bilddateinamen gegengeprüft. Die lokale500er-SKU nutzt die PID statt Varianten-SKU; Quelle hat dieselben acht Bilder und ein passendes einziges Variantenmodell. Nicht umgebunden. Bei Leuchten sind die ≤36V-Angaben Datenblattwerte, keine230V-Kompatibilitätszusage; Verpackungsmasse wurden nicht als Gerätemasse ausgegeben.
+
+Beim ersten R36-Readback stoppte ein zu strikter Bytevergleich an Shopifys zusätzlichen Formatierungszeilen zwischen HTML-Tags. Write-Antwort und frischer Readback bytegleich, geplanter HTML-Inhalt nach ausschliesslicher Zwischen-Tag-Whitespace-Normalisierung identisch, alle Schutzfelder erhalten. Kein weiterer R36-Write. Danach die übrigen fünf seriell geschrieben und jeweils geprüft.
+
+**Weiterarbeit:** Derselbe belegte Detailstandard gilt auch für andere Produktarten. Restlicher Katalog offen; 32 der in R241 erfassten36 Konsolen-/Kombigeräte wurden heute nicht redaktionell geändert. Nächste kleine Gruppe erst mit frischer SKU-Quelle, Varianten-/Auswahlvergleich, Bild-/Kaufbarkeitsprüfung und konkretem Diff bearbeiten. Nicht dieselben sechs Korrekturen als neue Umsetzung wiederholen.
+
+Shop luxestyle.ch/CHF/Europe/Zurich und Metricool6227837 samt allen sechs Kanalidentitäten frisch passend. Keine neuen Leistungs-/Klaviyo-/GSC-/Bestellreports, Kauf-Watch beendet. Keine Merchant-/Social-/Theme-/Flow-/Budget-/DNS-/Automationsänderung oder kostenpflichtigen Renders. R239-Theme- und R240-Merchantblocker getrennt erhalten. Claude-Empfang unbekannt.
+
+[Live-Änderungsbericht](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.md) · [Prüfbelege](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json) · [Katalogstandard](KATALOG-DETAILSTANDARD-20261115-R242.md) · [Konsolen-Fortsetzungsstand](KONSOLEN-DETAILARBEIT-20261115-R242.csv).
+
+[LUXESTYLE_R242_20261115]
+
 # R241 – Spieleumfang der Konsolen geprüft – 15.11.2026
 
 Die neue Kaufanfrage «alle spielconsole» wurde als Abgleich der LuxeStyle-Konsolen verstanden, nicht als Kauf- oder Änderungsfreigabe. Zwei aktuelle Konsolen-Tags lieferten vollständig 34 Angebote; eine ergänzende vollständige Titelabfrage 70 Treffer mit Zubehör/fachfremden Handhelds ergab zwei weitere passende Konsolen-/Kombigeräte. Insgesamt **36 relevante Angebote** und ihre Varianten gelesen; kein Vollscan aller Shoptexte.

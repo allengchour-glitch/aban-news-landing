@@ -2813,3 +2813,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Alle 36 Angebote](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.md) · [Belege](SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json).
 
+
+### R242 – Mehr Produktdetails und verständliche Auswahl
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Quellen / Identität | Shop und Metricool samt Kanälen, sechs vollständige native Produkte und sechs genaue CJ-Quellen geprüft. | Identitäten passend. Aktuelle Auswahl-/Material-/Packlistenangaben an SKU, Variante und echte Bilddateien gebunden; kein Vollkatalogscan. |
+| Produkttexte / live | Vier Konsolen und zwei Leuchten seriell verbessert; je Beschreibung und SEO-Beschreibung geändert. | Sechs Writes bestätigt, keine Retries. Auswahlunterschiede, Lieferumfang, Anschlüsse und offene Angaben verständlich. Kein erfundener Spieleinhalt. |
+| Sachkorrekturen | 500er-Spielezahl an CJ gebunden; Mini-Klappkonsole-Speicherart und Controllerumfang klar begrenzt; Deckenleuchte-Material und Lichtauswahl korrigiert. | 500 als Quellangabe belegt; konkrete Spieltitel/zusätzliche Controller unbestätigt. Glas statt Glaskeramik. «Farbe» als Lichtfunktion erklärt. |
+| Schutz / Rücklesung | Vor jedem Write Vollgegenprobe, danach native und öffentliche HTML-/JSON-Prüfung. | Alle sechs HTTP200, neue Texte/SEO bestätigt. 40 Varianten,48 Medien, Preise, SKUs/Barcodes, Tags/Optionswerte, Bestand/Policies und SEO-Titel unverändert; geschützte Hashes gleich. |
+| HTML / Gegenprobe | Erste strikte R36-Prüfung wegen reiner HTML-Formatierung gestoppt und exakten zurückgegebenen Inhalt gegengeprüft. | Nur Zwischen-Tag-Whitespace ergänzt; keine Inhalts-/Schutzfeldabweichung. Kein doppelter R36-Write. |
+| Fortsetzung / Grenzen | Produktspezifischen Detailstandard und32 offene Konsolenangebote dokumentiert; bestehende Aufgaben fortgeschrieben. | Übriger Katalog offen. Keine weiteren Tagesreports, Kunden-/Lieferantenkontakte, Käufe, Einstellungen, Merchant-/Social-/Theme- oder Frequenzänderungen. Claude-Empfang unbekannt. |
+
+[Bericht](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.md) · [Belege](PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json).
+

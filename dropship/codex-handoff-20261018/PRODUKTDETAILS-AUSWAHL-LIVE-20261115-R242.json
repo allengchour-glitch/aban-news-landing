@@ -1,0 +1,598 @@
+{
+  "revision": 242,
+  "atUTC": "2026-11-15T17:27:22Z",
+  "ownerInstruction": [
+    "verbessere mehr",
+    "die anderen produkten sollen auch detailiert beschrieben werden, auswahl info mehr?"
+  ],
+  "authorization": "Standing owner approval to improve website/product/SEO content live, reconfirmed by current improvement request. Only exact source-checked copy and metadata changed; no shop settings/flows/DNS/budgets.",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "scope": {
+    "productWrites": 6,
+    "changedDescriptionFields": 6,
+    "changedSeoDescriptionFields": 6,
+    "variantCountProtected": 40,
+    "mediaCountProtected": 48,
+    "writeRetries": 0,
+    "storefrontReadbackPassed": true,
+    "wholeCatalogueCompleted": false,
+    "remainingOriginalConsoleOffers": 32,
+    "merchantWrites": 0,
+    "socialWrites": 0,
+    "themeWrites": 0,
+    "sourceOrInventoryConnectionChanges": 0,
+    "discountShippingDnsFlowBudgetChanges": 0,
+    "customerOrSupplierMessages": 0,
+    "paidRenders": 0,
+    "purchaseWatchEnded": true,
+    "performanceFlowOrderReports": 0
+  },
+  "changes": [
+    {
+      "key": "r36",
+      "id": "gid://shopify/Product/15448847745409",
+      "title": "Retro Handheld-Konsole 4-Zoll HD-Bildschirm",
+      "url": "https://luxestyle.ch/products/retro-handheld-konsole-4-zoll-hd-bildschirm-618400",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<p>Erlebe Gaming im Nostalgie-Stil mit dieser kompakten Handheld-Konsole. Das Gerät verfügt über einen 4-Zoll-HD-Bildschirm, der deine Retro-Arcade-Spiele in brillanter Qualität darstellt. Dank des integrierten MP4-Video-Players kannst du auch deine Lieblingsvideos unterwegs geniessen. Die Konsole ist über USB aufladbar und sofort einsatzbereit. Mit ihren Massen von 17x10.5x4 cm passt sie bequem in jede Tasche und ist der ideale Begleiter für unterwegs oder für eine kleine Gaming-Pause zwischendurch. Ein perfektes Geschenk für Gaming-Enthusiasten und alle, die den Charme klassischer Arcade-Spiele lieben.</p><h3>Das zeichnet es aus</h3><ul>\n<li>4-Zoll-HD-Bildschirm für klare Darstellung</li>\n<li>Integrierter MP4-Video-Player</li>\n<li>Kompakte Grösse (17x10.5x4 cm)</li>\n<li>USB-Schnittstelle zum Aufladen</li>\n<li>Nostalgischer Stil für Retro-Gaming-Erlebnisse</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "newDescription": "<p>Der R36 Ultra ist eine tragbare Retro-Konsole mit 4-Zoll-Bildschirm. Du wählst die Gehäusefarbe und die Speicher-Ausführung direkt bei der Bestellung.</p>\n<h3>Welche Ausführung passt zu dir?</h3>\n<ul>\n<li>\n<strong>Weiss:</strong> als R36Ultra64G oder R36Ultra128G.</li>\n<li>\n<strong>Violett:</strong> als R36Ultra64G oder R36Ultra128G.</li>\n<li>64 GB und 128 GB bezeichnen die angebotene Speicher-Ausführung. Daraus lässt sich die Zahl enthaltener Spiele nicht ableiten.</li>\n</ul>\n<h3>Sind Spiele enthalten?</h3>\n<p>Für diese Ausführungen liegt aktuell keine verbindliche Liste der mitgelieferten Spiele vor. Welche Spiele vorinstalliert sind und welche Software sich auf dem Speicher befindet, ist nicht bestätigt. Wenn du einen bestimmten Titel spielen möchtest, kläre den Spieleumfang vor dem Kauf.</p>\n<h3>Produktdetails</h3>\n<ul>\n<li>Modell: R36 Ultra.</li>\n<li>Bildschirmgrösse: 4 Zoll laut Produktangabe.</li>\n<li>USB-Anschluss.</li>\n<li>Zusatzfunktion: MP4-Videoplayer.</li>\n<li>Produktmass laut Datenblatt: 17 × 10,5 × 4 cm.</li>\n</ul>\n<h3>Lieferumfang</h3>\n<p>Aufgeführt ist eine Handheld-Konsole in der gewählten Ausführung. Weiteres Zubehör und eine konkrete Spieleauswahl sind nicht verbindlich ausgewiesen.</p>",
+      "oldSeo": {
+        "title": "Retro Handheld-Konsole 4-Zoll HD-Bildschirm | LuxeStyle CH",
+        "description": "Retro Handheld-Konsole 4-Zoll HD-Bildschirm bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code…"
+      },
+      "newSeo": {
+        "title": "Retro Handheld-Konsole 4-Zoll HD-Bildschirm | LuxeStyle CH",
+        "description": "R36 Ultra mit 4-Zoll-Bildschirm: Weiss oder Violett, als 64-GB- oder 128-GB-Ausführung. Unterschiede und Hinweise zum Spieleumfang ansehen."
+      },
+      "variantCount": 4,
+      "mediaCount": 6,
+      "nativeProtectedHash": {
+        "key": "r36",
+        "id": "gid://shopify/Product/15448847745409",
+        "beforeProtectedSHA256": "b915d827061c888398a0d5151063bbf57877ce2364237c7779ff2390fd60bfec",
+        "afterProtectedSHA256": "b915d827061c888398a0d5151063bbf57877ce2364237c7779ff2390fd60bfec",
+        "beforeBodySHA256": "b13d5aa9ef4ed004b29c348bb3a069ca71bf72973fabcb65e37a75df2cdb0c8f",
+        "afterBodySHA256": "c23306f607dbff4076542a133b3e097eb0e02f954dc24acb40ae5086c177076d",
+        "sourcePID": "2509280317381618400",
+        "sourceTextSHA256": "02bc9fc1a779f8d84a482be848c3dc2c5e801e82481e61d0964dc099fb975347"
+      },
+      "mapping": {
+        "key": "r36",
+        "sourcePid": "2509280317381618400",
+        "sourceSku": "CJYD2544028",
+        "imageNamesMatched": [
+          "ab8d9692-f77e-426d-bfb3-ba831baffe78.jpg",
+          "d2b955c9-d8a7-4b59-89ac-7b261fb5c878.jpg",
+          "eb159417-cf1e-4cbb-bd97-1484210ca9da.jpg",
+          "ba017c20-d8e3-411a-a094-349515069609.jpg",
+          "c866cc85-f676-404d-a29a-1ccdf2fd6506.jpg",
+          "9d99ea06-6427-4e80-af85-d4e351942ccd.jpg"
+        ],
+        "variantSkuMatches": 4,
+        "variantTotal": 4,
+        "pidOnlyLocalSku": false
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:22:11Z"
+    },
+    {
+      "key": "flip",
+      "id": "gid://shopify/Product/15479484219777",
+      "title": "Mini Klapp-Handheld Konsole",
+      "url": "https://luxestyle.ch/products/mini-klapp-handheld-konsole-2c63e9",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<!-- ls-var-v1 --><p>Die Mini Klapp-Handheld Konsole ist eine kompakte und tragbare Gaming-Lösung für unterwegs. Mit ihrem praktischen Flip-Design passt sie problemlos in jede Tasche und ist sofort einsatzbereit, wenn du eine Gaming-Pause brauchst. Trotz ihrer geringen Grösse bietet sie stundenlangen Spielspass.</p><h3>Das zeichnet es aus</h3><ul>\n<li>16 GB interner Speicher für deine Lieblingsspiele.</li>\n<li>USB-Schnittstelle für einfache Konnektivität.</li>\n<li>3.5mm Video-/Audio-Anschluss für Kopfhörer oder externe Displays.</li>\n<li>Kompakte Abmessungen von 8 x 7.8 x 2.4 cm.</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "newDescription": "<p>Die Mini-Klappkonsole ist ein tragbares Retro-Gerät mit aufklappbarem Gehäuse. Zur Auswahl stehen Orange und Gelb; die Farbauswahl bezeichnet das Gehäuse.</p>\n<h3>Auswahl und Speicher</h3>\n<ul>\n<li>\n<strong>Orange oder Gelb:</strong> Wähle die gewünschte Gehäusefarbe.</li>\n<li>In den Produktdaten werden 16 GB Speicher genannt. Ob damit interner Speicher oder eine Speicherkarte gemeint ist, ist nicht eindeutig angegeben.</li>\n<li>Eine bestimmte Speicherkarte oder Kartenbestückung ist deshalb nicht zugesichert.</li>\n</ul>\n<h3>Welche Spiele sind dabei?</h3>\n<p>Eine bestätigte Liste der mitgelieferten oder vorinstallierten Spiele liegt aktuell nicht vor. Die Speicherangabe bestätigt keinen bestimmten Spieltitel. Prüfe den gewünschten Spieleumfang vor dem Kauf.</p>\n<h3>Anschlüsse und Grösse</h3>\n<ul>\n<li>USB-Anschluss.</li>\n<li>3,5-mm-Video-/Audio-Anschluss laut Produktdaten.</li>\n<li>Produktmass laut Datenblatt: 8 × 7,8 × 2,4 cm.</li>\n</ul>\n<h3>Lieferumfang</h3>\n<p>Die angebotene Einheit ist die Mini-Klappkonsole in der gewählten Farbe. Eine vollständige Zubehörliste und der genaue Softwareinhalt sind noch nicht bestätigt.</p>",
+      "oldSeo": {
+        "title": "Mini Klapp-Handheld Konsole | LuxeStyle CH",
+        "description": "Mini Klapp-Handheld Konsole bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "newSeo": {
+        "title": "Mini Klapp-Handheld Konsole | LuxeStyle CH",
+        "description": "Mini-Klappkonsole in Orange oder Gelb mit USB- und 3,5-mm-Video-/Audio-Anschluss. Ausführungen, Speicherangabe und offenen Spieleumfang ansehen."
+      },
+      "variantCount": 2,
+      "mediaCount": 8,
+      "nativeProtectedHash": {
+        "key": "flip",
+        "id": "gid://shopify/Product/15479484219777",
+        "beforeProtectedSHA256": "7c38029fba9bc3ce18ffd2f8cf1e9b0d78954d318ff582051e59b56cbca7e425",
+        "afterProtectedSHA256": "7c38029fba9bc3ce18ffd2f8cf1e9b0d78954d318ff582051e59b56cbca7e425",
+        "beforeBodySHA256": "dad6d41680306886190ef4d112b66ca81eb31ce5c4eae9e6e3e1c534f1f77972",
+        "afterBodySHA256": "d9a24dd51ed05d76d0360eb8b39debb8dfc8c9eaa81975589797cb9784ae34b5",
+        "sourcePID": "24A9FFE9-3889-4F2A-B3D1-8B5CE12C63E9",
+        "sourceTextSHA256": "8fc0dfec3aeb621c728990102d2d5328b9f7604c75b38bd916f06c55e3a33ba5"
+      },
+      "mapping": {
+        "key": "flip",
+        "sourcePid": "24A9FFE9-3889-4F2A-B3D1-8B5CE12C63E9",
+        "sourceSku": "CJXFSPZS00064",
+        "imageNamesMatched": [
+          "3789828212935.png",
+          "6922361588464.png",
+          "1282935471036.png",
+          "51352880790133.jpg",
+          "479057536352.png",
+          "3901850886164.png"
+        ],
+        "variantSkuMatches": 2,
+        "variantTotal": 2,
+        "pidOnlyLocalSku": false
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:22:54Z"
+    },
+    {
+      "key": "five",
+      "id": "gid://shopify/Product/15448847155585",
+      "title": "Retro Handheld Konsole mit 500 Spielen",
+      "url": "https://luxestyle.ch/products/retro-handheld-konsole-mit-500-spielen-917314",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<p>Diese kompakte Retro-Videospielkonsole bringt Gaming-Spass für Gross und Klein. Mit 500 vorinstallierten klassischen Spielen ist für stundenlange Unterhaltung gesorgt. Das Gerät verfügt über einen 3,5-Zoll-Farbbildschirm und physische Tasten für ein authentisches Spielerlebnis. Dank der ergonomischen Form und der abgerundeten Kanten liegt die Konsole angenehm in der Hand.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Der integrierte 1200-mAh-Akku ermöglicht bis zu 5 Stunden ununterbrochenes Gaming.</li>\n<li>Ein 3 Meter langes AV-Kabel erlaubt den Anschluss an den Fernseher für Spielerlebnisse auf dem grossen Bildschirm.</li>\n<li>Ein zusätzlicher Controller ist im Lieferumfang enthalten, um sofort im Zweispielermodus loszulegen.</li>\n<li>Lieferumfang: 1x Handheld Konsole, 2x Game Controller, 1x AV-Kabel (3m), 1x USB-Ladekabel, 1x Anleitung (EN).</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "newDescription": "<p>Diese Retro-Handheld-Konsole hat einen 3,5-Zoll-Farbbildschirm und physische Tasten. Laut Produktdaten sind 500 klassische Spiele integriert.</p>\n<h3>Spieleumfang</h3>\n<p><strong>500 Spiele laut Produktdaten:</strong> Eine vollständige Liste der Spielnamen liegt aktuell nicht vor. Bestimmte Titel oder Sprachfassungen sind daher nicht bestätigt. Das Angebot hat eine Standardausführung.</p>\n<h3>Bildschirm, Akku und TV-Anschluss</h3>\n<ul>\n<li>3,5-Zoll-Farbbildschirm.</li>\n<li>Integrierter Akku mit 1200 mAh laut Datenblatt.</li>\n<li>AV-Anschluss an einen Fernseher; ein 3 m langes AV-Kabel ist aufgeführt.</li>\n<li>USB-Ladekabel für das Gerät.</li>\n</ul>\n<h3>Lieferumfang und Controller</h3>\n<p>Aufgeführt sind das Handheld-Gerät, ein AV-Kabel, ein USB-Ladekabel und eine englische Anleitung. Die Produktdaten nennen zusätzlich Controller, unterscheiden aber nicht eindeutig zwischen der Gesamtzahl der Bedieneinheiten und zusätzlichen externen Controllern. Die genaue Zahl zusätzlicher Controller ist deshalb noch zu klären.</p>\n<p>Prüfe für den TV-Betrieb, ob dein Fernseher den passenden AV-Eingang besitzt. Ein HDMI-Anschluss ist für dieses Angebot nicht bestätigt.</p>",
+      "oldSeo": {
+        "title": "Retro Handheld Konsole mit 500 Spielen | LuxeStyle CH",
+        "description": "Retro Handheld Konsole mit 500 Spielen bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "newSeo": {
+        "title": "Retro Handheld Konsole mit 500 Spielen | LuxeStyle CH",
+        "description": "Retro-Handheld mit 3,5-Zoll-Farbbildschirm und 500 Spielen laut Produktdaten. Akku, TV-Anschluss und Hinweise zu Spieleliste und Zubehör ansehen."
+      },
+      "variantCount": 1,
+      "mediaCount": 8,
+      "nativeProtectedHash": {
+        "key": "five",
+        "id": "gid://shopify/Product/15448847155585",
+        "beforeProtectedSHA256": "13826535d08b2c321261d6c63984fa883758e0d29610cf9da9a32045723bfc33",
+        "afterProtectedSHA256": "13826535d08b2c321261d6c63984fa883758e0d29610cf9da9a32045723bfc33",
+        "beforeBodySHA256": "f3af6921078e7ffe557fa1baa35b50b1ff2067b2cfc32b974fde5260bcf863a9",
+        "afterBodySHA256": "b2c02568e00b244fa7a2a5cfe533063993493b83f31cc4a8800b02e3fdeb0968",
+        "sourcePID": "2037133274347917314",
+        "sourceTextSHA256": "4eda8944391f5882d1eb81e5e6bacbc40da72304985bd5830b5af9bdc5f672f5"
+      },
+      "mapping": {
+        "key": "five",
+        "sourcePid": "2037133274347917314",
+        "sourceSku": "CJZS2806530",
+        "imageNamesMatched": [
+          "6505ddd9-a73b-4467-b28e-c4da4641e6b6.jpg",
+          "0a670ca9-f547-4747-9f4e-9e69f629105f.png",
+          "eb28ef69-9f3f-42e3-b307-f75212cfefa5.jpg",
+          "bb5008d4-051c-4909-a990-4c599da1f5c0.png",
+          "6cf21221-300f-4819-86b7-25f828b7df45.jpg",
+          "33335f96-80e2-4ca2-b78f-2a25d583ce72.jpg",
+          "7fce5894-b3f4-4d31-873f-74a46cbf69c9.jpg",
+          "dd99dd71-e5de-463c-8027-f93c6f00a031.jpg"
+        ],
+        "variantSkuMatches": 0,
+        "variantTotal": 1,
+        "pidOnlyLocalSku": true
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:22:57Z"
+    },
+    {
+      "key": "six",
+      "id": "gid://shopify/Product/15448848761217",
+      "title": "Retro 8-Bit Mini-Konsole mit 620 Spielen",
+      "url": "https://luxestyle.ch/products/retro-8-bit-mini-konsole-mit-620-spielen-613200",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<p>Erlebe eine Zeitreise in die 80er-Jahre mit dieser kompakten Retro-Spielkonsole. Sie ist eine Hommage an klassische 8-Bit-Systeme und bringt 620 vorinstallierte Spiele direkt auf deinen Fernseher. Ideal für Erwachsene, die in Erinnerungen schwelgen oder jüngere Generationen für die Anfänge der Videospielgeschichte begeistern möchten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Vorinstalliert mit 620 klassischen 8-Bit-Spielen</li>\n<li>Einfacher Anschluss über AV-Schnittstelle</li>\n<li>Kompaktes Design (18.3x14.3x7cm)</li>\n<li>Lieferumfang: 1 Konsole, 2 Controller, 1 Netzteil, 1 AV-Kabel, 1 Handbuch (Chinesisch/Englisch)</li>\n<li>Robustes ABS-Material</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "newDescription": "<p>Diese Retro-Konsole nutzt einen AV-Anschluss am Fernseher. Die Modellangabe nennt 620 klassische 8-Bit-Spiele; eine vollständige Liste der einzelnen Spieltitel liegt aktuell nicht vor.</p>\n<h3>Wichtig für die Auswahl</h3>\n<ul>\n<li>\n<strong>European Standard-1PCS:</strong> europäische Standardausführung des Konsolenangebots.</li>\n<li>\n<strong>Australian Regulations-1PCS:</strong> australische Standardausführung des Konsolenangebots. Die passende Anschlussausführung vor dem Kauf prüfen.</li>\n<li>\n<strong>B4 controller-1PCS bis B4 controller-4PCS:</strong> separat bezeichnete Controller-Auswahlen. Für diese Auswahlen ist nicht bestätigt, dass das vollständige Konsolenset enthalten ist. Der günstigste angezeigte Preis kann zu einer solchen Auswahl gehören.</li>\n</ul>\n<h3>Lieferumfang der Standardkonfiguration</h3>\n<ul>\n<li>1 Konsole.</li>\n<li>2 Controller.</li>\n<li>1 Netzteil.</li>\n<li>1 AV-Kabel.</li>\n<li>1 Handbuch in Chinesisch/Englisch.</li>\n</ul>\n<p>Diese Packliste beschreibt die Standardkonfiguration. Sie ist keine bestätigte Packliste für die B4-Controller-Auswahlen.</p>\n<h3>Anschluss und Produktdetails</h3>\n<ul>\n<li>AV-Anschluss; die passende Eingangsbuchse am Fernseher prüfen.</li>\n<li>Gehäusematerial: ABS laut Produktdaten.</li>\n<li>Produktmass laut Datenblatt: 18,3 × 14,3 × 7 cm.</li>\n</ul>\n<h3>Welche Spiele sind enthalten?</h3>\n<p>Die Zahl 620 ist eine Modellangabe, keine geprüfte Aufstellung der gelieferten Spieltitel. Bestimmte Spiele und Sprachfassungen sind nicht bestätigt.</p>",
+      "oldSeo": {
+        "title": "Retro 8-Bit Mini-Konsole mit 620 Spielen | LuxeStyle CH",
+        "description": "Retro 8-Bit Mini-Konsole mit 620 Spielen bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "newSeo": {
+        "title": "Retro 8-Bit Mini-Konsole mit 620 Spielen | LuxeStyle CH",
+        "description": "Retro-8-Bit-Konsole mit AV-Anschluss und 620 Spielen laut Modellangabe. Standard-Sets und B4-Controller-Auswahlen vor dem Kauf unterscheiden."
+      },
+      "variantCount": 6,
+      "mediaCount": 6,
+      "nativeProtectedHash": {
+        "key": "six",
+        "id": "gid://shopify/Product/15448848761217",
+        "beforeProtectedSHA256": "42e30e884e67c44062a4ea04590c7fec4958e15f6602043c849abc3a9b2a68ed",
+        "afterProtectedSHA256": "42e30e884e67c44062a4ea04590c7fec4958e15f6602043c849abc3a9b2a68ed",
+        "beforeBodySHA256": "f8c44e650401aa9b183490a7bea35509eded92b2ea8ad263e06e7b358bb1096c",
+        "afterBodySHA256": "a111fdecc8eb0c27cc7d9e5e0350a4379409106fee9e9e2c86b1876b66e7f09a",
+        "sourcePID": "2408290528161613200",
+        "sourceTextSHA256": "0491a65c7e60ba06eee509e27b37b06fa28f723c9fe8fa6fc72a6899a0edf5db"
+      },
+      "mapping": {
+        "key": "six",
+        "sourcePid": "2408290528161613200",
+        "sourceSku": "CJYD2123056",
+        "imageNamesMatched": [
+          "1183d3db-fbf6-40f5-9471-72d347de5f63.jpg",
+          "483ba7a4-51e1-4085-994b-1391d9387b4b.jpg",
+          "ffb9c5ee-8099-4371-9e58-87622d340871.jpg",
+          "b3800a00-f613-474e-8b9d-ef23e0730d40.jpg",
+          "6046dbb2-d4b3-4ee8-95f1-8bc4ad5ec3f6.jpg",
+          "8274da74-5a03-451d-ac3e-f39927bbbd1e.jpg"
+        ],
+        "variantSkuMatches": 6,
+        "variantTotal": 6,
+        "pidOnlyLocalSku": false
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:22:59Z"
+    },
+    {
+      "key": "wall",
+      "id": "gid://shopify/Product/15491395846529",
+      "title": "Moderne minimalistische Wandleuchte",
+      "url": "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<!-- ls-var-v1 --><p>Diese moderne Wandleuchte im minimalistischen Stil ist eine stilvolle Ergänzung für jedes Zuhause. Sie zeichnet sich durch ein einzigartiges Halbmond-Design aus und ist in sieben attraktiven Farben erhältlich, die jedem Raum eine besondere Note verleihen. Die Leuchte wird bequem über einen Wandschalter gesteuert, was eine einfache Handhabung gewährleistet. dein schlichtes, aber elegantes Design fügt sich nahtlos in verschiedene Einrichtungsstile ein und sorgt für eine angenehme Beleuchtung. Ideal für Wohnzimmer, Schlafzimmer oder Flure, wo sie sowohl funktionales Licht spendet als auch als dekoratives Element dient.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Steuerung über Wandschalter</li>\n\n<li>Spannung: ≤36V</li>\n<li>Modern-minimalistischer Stil</li>\n<li>Material: Eisen + PE</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "newDescription": "<p>Diese Wandleuchte verbindet ein Halbmond-Design mit einer Auswahl aus sieben Gehäusefarben. Lichtausführung und Gehäusefarbe werden getrennt gewählt.</p>\n<h3>So wählst du deine Leuchte</h3>\n<ul>\n<li>\n<strong>Ausführung:</strong> «Weißlicht», «Warmlicht» oder «Dreifarbenlicht». Diese Auswahl beschreibt das Licht, nicht die Gehäusefarbe.</li>\n<li>\n<strong>Farbe:</strong> Weiss, Orange, Rot, Grün, Gelb, Rosa oder Schwarz. Diese Auswahl beschreibt das Gehäuse.</li>\n<li>Die Kombination beider Angaben bestimmt deine Variante. Es gibt 21 angebotene Kombinationen.</li>\n</ul>\n<h3>Unterschiede der Lichtausführungen</h3>\n<p>Weisslicht und Warmlicht sind getrennte Ausführungen. Die dritte Auswahl wird als Dreifarbenlicht bezeichnet. Genaue Farbtemperaturen in Kelvin und die Bedienung der Dreifarbenfunktion sind nicht angegeben.</p>\n<h3>Material und Anschluss</h3>\n<ul>\n<li>Materialangabe: Eisen und PE.</li>\n<li>Steuerungsart laut Datenblatt: Wandschalter.</li>\n<li>Spannungsangabe im Datenblatt: höchstens 36 V.</li>\n</ul>\n<p>Angaben zur passenden Stromversorgung, zum Anschlusszubehör und zu den genauen Leuchtenmassen sind noch nicht vollständig bestätigt. Kläre den Anschluss passend zu deinem Montageort vor dem Kauf.</p>\n<h3>Lieferumfang</h3>\n<p>Aufgeführt ist <strong>eine Wandleuchte</strong> in der gewählten Lichtausführung und Gehäusefarbe. Der Preis bezieht sich auf diese einzelne Auswahl.</p>",
+      "oldSeo": {
+        "title": "Moderne minimalistische Wandleuchte | LuxeStyle CH",
+        "description": "Moderne minimalistische Wandleuchte bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "newSeo": {
+        "title": "Moderne minimalistische Wandleuchte | LuxeStyle CH",
+        "description": "Minimalistische Wandleuchte: sieben Gehäusefarben mit Weisslicht, Warmlicht oder Dreifarbenlicht kombinieren. Auswahl, Material und Lieferumfang ansehen."
+      },
+      "variantCount": 21,
+      "mediaCount": 13,
+      "nativeProtectedHash": {
+        "key": "wall",
+        "id": "gid://shopify/Product/15491395846529",
+        "beforeProtectedSHA256": "73c71680acce586bd6d9e52e6d9dee90fbb0fe8de1e3bc67dd7b417292162cdf",
+        "afterProtectedSHA256": "73c71680acce586bd6d9e52e6d9dee90fbb0fe8de1e3bc67dd7b417292162cdf",
+        "beforeBodySHA256": "8f0f450d598b71e8f652bd36aebf3a7f4034eee890e2465a3ec4ca7579c29da4",
+        "afterBodySHA256": "207f11dd69f76858668bff3708d0922f45bdc1aee3971de396c1146eb5cc2c5c",
+        "sourcePID": "2608070835251622600",
+        "sourceTextSHA256": "ae054c5d865d832edd7b9feac7e3f276d8e7816754ec7206acde6e205db65282"
+      },
+      "mapping": {
+        "key": "wall",
+        "sourcePid": "2608070835251622600",
+        "sourceSku": "CJYD3044113",
+        "imageNamesMatched": [
+          "3cebf617-58a8-4de2-b10e-53eaf26301e1.jpg",
+          "d48178f5-017e-4898-8c9c-cfc4fe34a145.jpg",
+          "319d1aee-30aa-4447-b339-1f2e072ba49d.jpg",
+          "4c4e1542-5bd2-4add-8813-42cfe3cab00a.jpg",
+          "e066c489-4c58-470a-aa1e-c541d878148b.jpg"
+        ],
+        "variantSkuMatches": 21,
+        "variantTotal": 21,
+        "pidOnlyLocalSku": false
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:23:02Z"
+    },
+    {
+      "key": "ceiling",
+      "id": "gid://shopify/Product/15460287250817",
+      "title": "Französisch-stil Deckenleuchte mit Sand-Textur & Wellenrand",
+      "url": "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "oldDescription": "<p>Die Deckenleuchte verbindet französischen Stil mit leicht luxuriösem Design. Die schimmernde Sand-Textur und der Wellenrand sorgen für ein warmes Licht in Wohn- und Schlafzimmern. Mit Vollspektrum-LED und ≤36V Spannung ist sie energieeffizient und sicher. Der Glaskeramikschirm und die Edelstahlbasis garantieren Langlebigkeit.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Französisch-stilvoll, leicht luxuriös</li>\n<li>Schimmernde Sand-Textur</li>\n<li>Wellenrand-Design</li>\n<li>Vollspektrum-LED, ≤36V</li>\n<li>Glaskeramikschirm und Edelstahlbasis</li>\n<li>Einsatz in Wohn- und Schlafzimmer</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "newDescription": "<p>Diese Deckenleuchte hat einen Wellenrand und eine strukturierte Optik. Der Lampenschirm besteht laut Produktdaten aus Glas, der Leuchtenkörper aus Edelstahl.</p>\n<h3>Grösse und Lichtausführung wählen</h3>\n<ul>\n<li>\n<strong>Grösse:</strong> 20 cm, 30 cm oder 40 cm gemäss Variantenbezeichnung. Weitere Abmessungen sind nicht bestätigt.</li>\n<li>\n<strong>Auswahl «Farbe»:</strong> Hier wird die Lichtausführung gewählt, nicht eine Gehäusefarbe.</li>\n<li>\n<strong>Electrodeless Dimming:</strong> Ausführung mit dieser Dimm-Bezeichnung. Die genaue Dimmfunktion, Bedienung und mitgeliefertes Steuerungszubehör sind nicht bestätigt.</li>\n<li>\n<strong>Three Colors:</strong> als Dreifarben-Ausführung bezeichnet. Genaue Farbtemperaturen und Umschaltart sind nicht angegeben.</li>\n</ul>\n<p>Jede der drei Grössen wird mit beiden Lichtausführungen angeboten. Wähle deshalb beide Angaben für deine gewünschte Variante.</p>\n<h3>Material und elektrische Angaben</h3>\n<ul>\n<li>Lampenschirm: Glas.</li>\n<li>Leuchtenkörper: Edelstahl.</li>\n<li>Lichtquelle laut Datenblatt: Vollspektrum-LED.</li>\n<li>Spannungsangabe im Datenblatt: höchstens 36 V.</li>\n</ul>\n<p>Die passende Stromversorgung, der Anschluss und das Montagezubehör müssen vor dem Kauf für den vorgesehenen Montageort geklärt werden. Eine bestimmte Netzteil- oder Fernbedienungsausstattung ist nicht bestätigt.</p>\n<h3>Lieferumfang</h3>\n<p>Aufgeführt ist <strong>eine Deckenleuchte</strong> in der gewählten Grösse und Lichtausführung. Der Preis bezieht sich auf diese einzelne Auswahl.</p>",
+      "oldSeo": {
+        "title": null,
+        "description": "Französisch-stil Deckenleuchte mit Sand-Textur & Wellenrand bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10%…"
+      },
+      "newSeo": {
+        "title": null,
+        "description": "Deckenleuchte mit Wellenrand: Grössen 20, 30 oder 40 cm und zwei Lichtausführungen vergleichen. Glasschirm, Edelstahlkörper und Lieferumfang ansehen."
+      },
+      "variantCount": 6,
+      "mediaCount": 7,
+      "nativeProtectedHash": {
+        "key": "ceiling",
+        "id": "gid://shopify/Product/15460287250817",
+        "beforeProtectedSHA256": "61d3a7ea7ee9f3a26c92360d4a95663aaa2cdb41a8dce104d5af952835307f50",
+        "afterProtectedSHA256": "61d3a7ea7ee9f3a26c92360d4a95663aaa2cdb41a8dce104d5af952835307f50",
+        "beforeBodySHA256": "009f2cd8cfacd7515439ca4147283712aa285386484bc27853517a6d6e615ad0",
+        "afterBodySHA256": "278929f5662a4b78201e04b1764e5c48c0e5df930f961a2d32c03bf68fbda69b",
+        "sourcePID": "2607170517581617000",
+        "sourceTextSHA256": "3bb5e42525d7ea89bfffa186724fe856cb41be05669c4a2e75bbeac83db3b731"
+      },
+      "mapping": {
+        "key": "ceiling",
+        "sourcePid": "2607170517581617000",
+        "sourceSku": "CJYD2989895",
+        "imageNamesMatched": [
+          "2033dac2-9014-4e42-950c-8684f66109c5.jpg",
+          "63cf0dfe-2951-4ef3-9c9f-8e31e1f61935.jpg",
+          "838a34e5-ed57-403c-9769-2b2ac5f5e6ab.jpg",
+          "47075013-36b6-4706-86e6-7db3b1b1fc28.jpg",
+          "99b659f7-e058-4f81-ad56-b2661559db52.jpg",
+          "7223d65f-a3df-44c0-ade5-1045e2d77f6c.jpg"
+        ],
+        "variantSkuMatches": 6,
+        "variantTotal": 6,
+        "pidOnlyLocalSku": false
+      },
+      "mutationUserErrors": [],
+      "confirmedNativeUpdatedAt": "2026-11-15T17:23:04Z"
+    }
+  ],
+  "publicBefore": [
+    {
+      "key": "r36",
+      "productId": "15448847745409",
+      "url": "https://luxestyle.ch/products/retro-handheld-konsole-4-zoll-hd-bildschirm-618400",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 4,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 4
+    },
+    {
+      "key": "flip",
+      "productId": "15479484219777",
+      "url": "https://luxestyle.ch/products/mini-klapp-handheld-konsole-2c63e9",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 2,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 2
+    },
+    {
+      "key": "five",
+      "productId": "15448847155585",
+      "url": "https://luxestyle.ch/products/retro-handheld-konsole-mit-500-spielen-917314",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 1,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 1
+    },
+    {
+      "key": "six",
+      "productId": "15448848761217",
+      "url": "https://luxestyle.ch/products/retro-8-bit-mini-konsole-mit-620-spielen-613200",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 6,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 5
+    },
+    {
+      "key": "wall",
+      "productId": "15491395846529",
+      "url": "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 21,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 21
+    },
+    {
+      "key": "ceiling",
+      "productId": "15460287250817",
+      "url": "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "variantCount": 6,
+      "nativePricesSkusMatch": true,
+      "available": true,
+      "availableVariants": 1
+    }
+  ],
+  "publicAfter": [
+    {
+      "key": "r36",
+      "id": "15448847745409",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/retro-handheld-konsole-4-zoll-hd-bildschirm-618400"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 4,
+      "availableVariants": 4,
+      "oldProtectedSHA256": "920f4d6ea73b935d90b827010f0ba78fe5fdea1181403a7b0e3aea6ef02f1a48",
+      "newProtectedSHA256": "920f4d6ea73b935d90b827010f0ba78fe5fdea1181403a7b0e3aea6ef02f1a48"
+    },
+    {
+      "key": "flip",
+      "id": "15479484219777",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/mini-klapp-handheld-konsole-2c63e9"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 2,
+      "availableVariants": 2,
+      "oldProtectedSHA256": "94e55ac96d829d6472710afdf13c4350c423bdf7acb8e498dcfce2f9a485bbb2",
+      "newProtectedSHA256": "94e55ac96d829d6472710afdf13c4350c423bdf7acb8e498dcfce2f9a485bbb2"
+    },
+    {
+      "key": "five",
+      "id": "15448847155585",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/retro-handheld-konsole-mit-500-spielen-917314"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 1,
+      "availableVariants": 1,
+      "oldProtectedSHA256": "ca4ee78180244d264336e3da9edae4af80ed38ff67f58c4e160cb4d657ed70b0",
+      "newProtectedSHA256": "ca4ee78180244d264336e3da9edae4af80ed38ff67f58c4e160cb4d657ed70b0"
+    },
+    {
+      "key": "six",
+      "id": "15448848761217",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/retro-8-bit-mini-konsole-mit-620-spielen-613200"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 6,
+      "availableVariants": 5,
+      "oldProtectedSHA256": "f3d103c51bca9f0f2603424a9f4bc40fe2c1048527de0f2ad9820b16486c4566",
+      "newProtectedSHA256": "f3d103c51bca9f0f2603424a9f4bc40fe2c1048527de0f2ad9820b16486c4566"
+    },
+    {
+      "key": "wall",
+      "id": "15491395846529",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 21,
+      "availableVariants": 21,
+      "oldProtectedSHA256": "1f0fb15596ee4337fab76729719228789bd11b421fdf1d842d1f0c4574a10a14",
+      "newProtectedSHA256": "1f0fb15596ee4337fab76729719228789bd11b421fdf1d842d1f0c4574a10a14"
+    },
+    {
+      "key": "ceiling",
+      "id": "15460287250817",
+      "jsonHttp": 200,
+      "htmlHttp": 200,
+      "publicDescriptionMatchesNative": true,
+      "metaDescriptionMatches": true,
+      "canonical": [
+        "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000"
+      ],
+      "protectedPublicFieldsIdentical": true,
+      "variantCount": 6,
+      "availableVariants": 1,
+      "oldProtectedSHA256": "43ae95f241bff26e93159ca7542dc0cc7f3d4c4de770261216d4c7e4a9a5ae10",
+      "newProtectedSHA256": "43ae95f241bff26e93159ca7542dc0cc7f3d4c4de770261216d4c7e4a9a5ae10"
+    }
+  ],
+  "sourceFacts": {
+    "r36": {
+      "pid": "2509280317381618400",
+      "matchingSkus": 4,
+      "games": "specific supplied titles unknown",
+      "packing": "HandheldGameMachine1pc"
+    },
+    "flip": {
+      "pid": "24A9FFE9-3889-4F2A-B3D1-8B5CE12C63E9",
+      "matchingSkus": 2,
+      "memory": "16G; internal/card type unconfirmed",
+      "games": "unknown"
+    },
+    "five": {
+      "pid": "2037133274347917314",
+      "sourceSku": "CJZS2806530",
+      "localSkuKind": "CJ-prefixed PID; eight exact source image filenames match",
+      "gamesCount": 500,
+      "gameTitleList": "unknown",
+      "additionalControllerCount": "ambiguous; not promised"
+    },
+    "six": {
+      "pid": "2408290528161613200",
+      "matchingSkus": 6,
+      "standardContents": "1host2controllers1power1AV1CNENmanual",
+      "b4Contents": "unconfirmed; not represented as full set"
+    },
+    "wall": {
+      "pid": "2608070835251622600",
+      "matchingSkus": 21,
+      "contents": "one light",
+      "material": "iron+PE",
+      "voltage": "<=36V supplier data",
+      "physicalProductDimensions": "unknown; packaging dimensions not used"
+    },
+    "ceiling": {
+      "pid": "2607170517581617000",
+      "matchingSkus": 6,
+      "contents": "one light",
+      "shade": "glass; replaces unsupported glass ceramic",
+      "body": "stainless steel",
+      "voltage": "<=36V supplier data",
+      "sizes": "20/30/40cm variant labels; no unproven dimensions or control accessories"
+    }
+  },
+  "independentReview": {
+    "reviewer": "r242_copy_review",
+    "applied": "Removed physical-button phrase from R36 despite prior image evidence; quoted ceiling dimming label without asserting unverified smooth dimming. Controller-only B4 interpretation not asserted and options not hidden."
+  },
+  "htmlNormalization": "First strict input/readback compare stopped after R36 because Shopify inserts formatting newlines between HTML tags. Returned write HTML and fresh readback are byte-identical; removing only whitespace between adjacent tags gives exact planned HTML. All protected fields and SEO match. No repeat R36 write.",
+  "protectedFields": [
+    "titles",
+    "handles",
+    "status",
+    "tags including rueckhol",
+    "productType",
+    "taxonomy",
+    "Google-category metafield",
+    "all options and values",
+    "variant IDs",
+    "SKUs",
+    "barcodes",
+    "prices and compareAtPrices",
+    "inventoryQuantity/Tracking/Policy",
+    "all media IDs/order/URLs/alts",
+    "SEO titles"
+  ],
+  "limits": [
+    "Six current source-checked pages, not whole shop",
+    "Games lists/controller contents/connection accessories remain explicitly unknown where unproven",
+    "No actual cart, order, stock or delivery guarantee",
+    "No Google feed adoption or SEO ranking/revenue benefit measured",
+    "R239 theme shipping diff and R240 Merchant/source/media-rights blockers unchanged",
+    "No additional automation or schedule change; continue only existing authorized runs"
+  ],
+  "claudeReceipt": "unknown"
+}

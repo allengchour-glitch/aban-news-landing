@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 241,
-  "updatedAt": "2026-11-15T17:07:47Z",
+  "revision": 242,
+  "updatedAt": "2026-11-15T17:27:22Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -615,12 +615,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r234_lamp_six_current_variant_price_pairs_and_storefront_flags_verified",
+      "state": "r242_six_product_copy_selection_details_live_native_public_verified",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
-      "lastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
-      "nextAllowedStep": "Sechs tatsächlicheSKU-/Preis-/Variantenlinkpaare alsReferenznutzen;vor abhängigerÄnderungaktualisieren. KeinenPreisohneeindeutigeOfferbindungübernehmen. Frühere Nagellack-Rechtefreigaben auf exakteDateien/Angebote begrenzt erhalten.",
+      "lastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein. R242: Vier Konsolen und zwei Leuchten nach6exaktenCJ-Reads live um Auswahlhilfe/Packliste/Speicher-/Material-/Anschlussangaben verbessert.6native+öffentlicheReadbacks bestätigt;40Varianten/48Medien sowie Preise,SKU/Barcodes,Tags/Optionswerte/Policies erhalten.500Spielzahlquellbelegt;konkreteTitel,Controllerzubehör undLeuchtenversorgungoffen. GlasstattGlaskeramik.",
+      "nextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
       "blockers": [
         "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
         "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt.",
@@ -1457,6 +1457,10 @@
           "gitBlobSha": "0d62bcfd803bfcfc94f509948476c169699956af",
           "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
           "readAt": "2026-11-15T13:35:41.637194+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+          "readAt": "2026-11-15T17:27:22Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2495,6 +2499,14 @@
             "Globale CJ-Packliste bestätigt nicht den Lieferumfang des GrundmodellsA.",
             "Nettoinhalt NagellackModell6 undR226-Medien-/2PC-/Syncfälle bleiben separat offen."
           ]
+        },
+        {
+          "revision": 242,
+          "at": "2026-11-15T17:27:22Z",
+          "previousState": "r234_lamp_six_current_variant_price_pairs_and_storefront_flags_verified",
+          "previousLastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
+          "previousNextAllowedStep": "Sechs tatsächlicheSKU-/Preis-/Variantenlinkpaare alsReferenznutzen;vor abhängigerÄnderungaktualisieren. KeinenPreisohneeindeutigeOfferbindungübernehmen. Frühere Nagellack-Rechtefreigaben auf exakteDateien/Angebote begrenzt erhalten.",
+          "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json"
         }
       ],
       "additionalProductCleanups": [
@@ -3670,6 +3682,22 @@
             "readAt": "2026-11-15T13:35:41.637194+00:00"
           }
         ]
+      },
+      "run242": {
+        "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+        "productIds": [
+          "gid://shopify/Product/15448847745409",
+          "gid://shopify/Product/15479484219777",
+          "gid://shopify/Product/15448847155585",
+          "gid://shopify/Product/15448848761217",
+          "gid://shopify/Product/15491395846529",
+          "gid://shopify/Product/15460287250817"
+        ],
+        "writes": 6,
+        "protectedVariants": 40,
+        "protectedMedia": 48,
+        "doNotRepeatVerifiedWrites": true,
+        "wholeCatalogueComplete": false
       }
     },
     {
@@ -21072,12 +21100,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r226_cargo_intro_internal_link_and_dress_metadata_live_verified",
+      "state": "r242_six_product_meta_descriptions_live_native_public_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
-      "lastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis.",
-      "nextAllowedStep": "R226-Korrekturen erhalten. GSC15Nov bereits einmal gelesen: heute ohne neuen konkreten Grund nicht erneut abfragen. Weitere SEO-Schritte nur mit neuen aktuellen Quellen und Schutzfelddiff; bekannte Inhaber-Indexierungen nicht erneut als neue Ziele ausgeben.",
+      "lastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis. R242: Sechs produktspezifische SEO-Beschreibungen gemeinsam mit den belegten Produkttexten live geändert. Alle bisherigen SEO-Titel erhalten, öffentliches Meta/Canonical und nativeFelder bestätigt. Keine neueGSC-/Ranking-/Umsatzmessung.",
+      "nextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -21737,6 +21765,10 @@
           "gitBlobSha": "7c6d24a28477c81d2af9dfc50f5b54286c440f4e",
           "bytes": 4239,
           "readAt": "2026-11-15T01:07:15.677774+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+          "readAt": "2026-11-15T17:27:22Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -23114,6 +23146,14 @@
               "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen."
             ]
           }
+        },
+        {
+          "revision": 242,
+          "at": "2026-11-15T17:27:22Z",
+          "previousState": "r226_cargo_intro_internal_link_and_dress_metadata_live_verified",
+          "previousLastEvidence": "Kollektion755407323527 erhielt nur eine kompakte Einleitung mit geprüftem Herrenhosen-Link. Produkt15496579711361 erhielt nur eine spezifische SEO-Beschreibung. Zwei Writes, native/öffentlicheQA bestanden; Titel/SEO-Titel und Schutzfelder erhalten. Ein kleiner GSC-Report20Zeilen,truncated,geschätzterFinalstand12Nov/Periodenabdeckungunbekannt dient nur Auswahl, nicht Wirkungsnachweis.",
+          "previousNextAllowedStep": "R226-Korrekturen erhalten. GSC15Nov bereits einmal gelesen: heute ohne neuen konkreten Grund nicht erneut abfragen. Weitere SEO-Schritte nur mit neuen aktuellen Quellen und Schutzfelddiff; bekannte Inhaber-Indexierungen nicht erneut als neue Ziele ausgeben.",
+          "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json"
         }
       ],
       "visibilitySupplementR49": {
@@ -24439,7 +24479,23 @@
             }
           ]
         }
-      ]
+      ],
+      "run242": {
+        "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+        "productIds": [
+          "gid://shopify/Product/15448847745409",
+          "gid://shopify/Product/15479484219777",
+          "gid://shopify/Product/15448847155585",
+          "gid://shopify/Product/15448848761217",
+          "gid://shopify/Product/15491395846529",
+          "gid://shopify/Product/15460287250817"
+        ],
+        "writes": 6,
+        "protectedVariants": 40,
+        "protectedMedia": 48,
+        "doNotRepeatVerifiedWrites": true,
+        "wholeCatalogueComplete": false
+      }
     },
     {
       "id": "tech-category-structure-20261102",
@@ -32710,6 +32766,20 @@
         {
           "path": "dropship/codex-handoff-20261018/SPIELKONSOLEN-SPIELEUMFANG-20261115-R241.json",
           "readAt": "2026-11-15T17:07:47Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 242,
+      "at": "2026-11-15T17:27:22Z",
+      "actor": "codex",
+      "summary": "Sechs source-geprüfte Produktseiten (4Konsolen/2Leuchten) und zugehörige SEO-Beschreibungen live verbessert. Native/öffentlicheReadbacks bestätigt;40Varianten/48Medien/Preise/Tags/Policies/Optionswerte/SEO-Titel erhalten. Produktauswahl/Lieferumfang/Material genauer, offene Spiele-/Zubehörangaben ehrlich. Katalogstandard/Restarbeit dokumentiert, keine zusätzlichenReports oder sonstigenEinstellungen.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+          "readAt": "2026-11-15T17:27:22Z"
         }
       ],
       "taskCount": 24,
@@ -59697,5 +59767,35 @@
     "consumerQuestionScope": "all_console_listing_game_contents",
     "operationalWrites": 0,
     "softwareContentsTested": false
+  },
+  "run242": {
+    "at": "2026-11-15T17:27:22Z",
+    "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
+    "scope": {
+      "productWrites": 6,
+      "changedDescriptionFields": 6,
+      "changedSeoDescriptionFields": 6,
+      "variantCountProtected": 40,
+      "mediaCountProtected": 48,
+      "writeRetries": 0,
+      "storefrontReadbackPassed": true,
+      "wholeCatalogueCompleted": false,
+      "remainingOriginalConsoleOffers": 32,
+      "merchantWrites": 0,
+      "socialWrites": 0,
+      "themeWrites": 0,
+      "sourceOrInventoryConnectionChanges": 0,
+      "discountShippingDnsFlowBudgetChanges": 0,
+      "customerOrSupplierMessages": 0,
+      "paidRenders": 0,
+      "purchaseWatchEnded": true,
+      "performanceFlowOrderReports": 0
+    },
+    "ownerInstruction": [
+      "verbessere mehr",
+      "die anderen produkten sollen auch detailiert beschrieben werden, auswahl info mehr?"
+    ],
+    "nativePublicConfirmed": true,
+    "claudeReceipt": "unknown"
   }
 }
