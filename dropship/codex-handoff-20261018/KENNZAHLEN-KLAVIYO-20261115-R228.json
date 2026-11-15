@@ -1,0 +1,2839 @@
+{
+  "metricool": {
+    "task": "Metricool once-daily read-only analytics R228",
+    "identity": {
+      "brandId": "6227837",
+      "brand": "LuxeStyle",
+      "timezone": "Europe/Zurich",
+      "canonicalHead": "a9ae0a3460806468b1d79cf688084719fa9b9716",
+      "revision": 227,
+      "verifiedFromFreshLocalState": "/dev/shm/luxestyle-review/r228/ARBEITSSTAND.json run227"
+    },
+    "scope": {
+      "from": "2026-11-08T00:00:00+01:00",
+      "to": "2026-11-14T23:59:59+01:00",
+      "localDays": [
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14"
+      ]
+    },
+    "readBudget": {
+      "definitionCalls": 6,
+      "dataCalls": 6,
+      "maxCalls": 12,
+      "writes": 0,
+      "retries": 0
+    },
+    "selectedMetrics": {
+      "instagram": [
+        {
+          "fieldId": "IGEV05",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "views",
+          "metricLabel": "Instagram Evolution > Views",
+          "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV38",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 38,
+          "metricName": "postsInteractions",
+          "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "facebook": [
+        {
+          "fieldId": "FBEV49",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 49,
+          "metricName": "pageMediaView",
+          "metricLabel": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "FBEV34",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 34,
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "tiktok": [
+        {
+          "fieldId": "TKEV12",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 12,
+          "metricName": "accountViews",
+          "metricLabel": "TikTok Evolution > Video views in period",
+          "description": "Number of video views in the period",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV06",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "pinterest": [
+        {
+          "fieldId": "PIEV01",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 1,
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV04",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 4,
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "threads": [
+        {
+          "fieldId": "THEV06",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "THEV05",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "youtube": [
+        {
+          "fieldId": "YTEV02",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "videoViews",
+          "metricLabel": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV05",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "gained",
+          "metricLabel": "Youtube Evolution > Followers Gained",
+          "description": "Subscribers gained in the period selected.",
+          "dataAggregation": "SUM"
+        }
+      ]
+    },
+    "rawFiles": {
+      "definitions": {
+        "path": "raw_definitions.json",
+        "sha256": "16e3111bf2399286f87f917fa2f0e2cf6a7390aa24c9e9271fb2c57c292095b7"
+      },
+      "dataCalls": {
+        "path": "raw_data_calls.jsonl",
+        "sha256": "6c6f8682fd89e07966044a04b22f46d2e14198d0bf770d898196bf09be3036e0"
+      }
+    },
+    "exactDefinitionToolCalls": {
+      "capturedAtUTC": "2026-11-15",
+      "brandId": "6227837",
+      "scope": {
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "calls": [
+        {
+          "network": "instagram",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"IGEV01\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"followers\",\"metricLabel\":\"Instagram Evolution > Followers\",\"description\":\"Current number of followers.\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"IGEV02\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"following\",\"metricLabel\":\"Instagram Evolution > Following\",\"description\":\"Current number of users followed.\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"IGEV03\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":3,\"metricName\":\"follows\",\"metricLabel\":\"Deprecated: Instagram Evolution > Follows\",\"description\":\"Balance of daily followers gained or lost\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV04\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":4,\"metricName\":\"posts\",\"metricLabel\":\"Instagram Evolution > Feed Posts\",\"description\":\"Number of feed posts (photos and carousels) published in the period. Does NOT include reels or stories. For all content use Instagram Evolution > Total Content (feed posts + reels); for reels use Instagram Evolution > Reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV05\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"views\",\"metricLabel\":\"Instagram Evolution > Views\",\"description\":\"Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV06\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"reach\",\"metricLabel\":\"Instagram Evolution > Account Reach timeline\",\"description\":\"Number of unique people reached by the account across all formats (feed posts, reels, stories). Organic and paid data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV07\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"profileViews\",\"metricLabel\":\"Deprecated: Instagram Evolution > Profile Views\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV9999\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"totalEngagement\",\"metricLabel\":\"Instagram Evolution > Feed Posts Engagement timeline\",\"description\":\"Engagement of feed posts (photos and carousels): interactions per X people reached, X being the engagement ratio configured in the brand. Does NOT include reels (see Reels Engagement timeline). Use for timelines.\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"IGEV09\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"interactions\",\"metricLabel\":\"Instagram Evolution > Feed Posts Interactions\",\"description\":\"Interactions (likes, comments, saves and shares) received by feed posts only (photos and carousels). Does NOT include reels. For all content use Instagram Evolution > Total Content Interactions.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV10\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":10,\"metricName\":\"websiteClicks\",\"metricLabel\":\"Deprecated: Instagram Evolution > Website Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV11\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"postsReach\",\"metricLabel\":\"Instagram Evolution > Feed Posts Reach timeline\",\"description\":\"Number of people who saw feed posts (photos and carousels). Does NOT include reels or stories. Organic data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV12\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":12,\"metricName\":\"postsViews\",\"metricLabel\":\"Instagram Evolution > Feed Posts Views\",\"description\":\"Number of times feed posts (photos and carousels) were displayed. Does NOT include reels or stories. Organic data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV13\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":13,\"metricName\":\"postsLikes\",\"metricLabel\":\"Instagram Evolution > Feed Posts Likes\",\"description\":\"Likes received by feed posts (photos and carousels). Does NOT include reels. Organic data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV14\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":14,\"metricName\":\"postsComments\",\"metricLabel\":\"Instagram Evolution > Feed Posts Comments\",\"description\":\"Comments received by feed posts (photos and carousels). Does NOT include reels. Organic data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV15\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":15,\"metricName\":\"postsSaved\",\"metricLabel\":\"Instagram Evolution > Feed Posts Saved\",\"description\":\"Times feed posts (photos and carousels) were saved. Does NOT include reels. Organic data.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV16\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":16,\"metricName\":\"stories\",\"metricLabel\":\"Instagram Evolution > Stories\",\"description\":\"Number of stories published in the period. Not included in Feed Posts nor in Total Content.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV17\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":17,\"metricName\":\"storiesImpressions\",\"metricLabel\":\"Instagram Evolution > Stories Impressions\",\"description\":\"Number of times that the stories have been displayed.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV18\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":18,\"metricName\":\"storiesReach\",\"metricLabel\":\"Instagram Evolution > Stories Reach timeline\",\"description\":\"Number of people who have seen a story\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV19\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":19,\"metricName\":\"aggregatedIgPostsReach\",\"metricLabel\":\"Instagram Evolution > Avg reach per feed post\",\"description\":\"Average number of people reached per feed post (photos and carousels): feed posts reach / number of feed posts. Does NOT include reels (see Avg reach per reel). Organic data; for paid data connect Meta Ads.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"IGEV20\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":20,\"metricName\":\"aggregatedIgStoriesReach\",\"metricLabel\":\"Instagram Evolution > Avg reach per story\",\"description\":\"Average number of people reached per story. It only collects organic data. If we want to access the paid data we must connect Meta Ads to Metricool and check the information about Instagram campaigns.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"IGEV21\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":21,\"metricName\":\"aggregatedEngagement\",\"metricLabel\":\"Instagram Evolution > Feed Posts Aggregated Engagement\",\"description\":\"Engagement of feed posts (photos and carousels) calculated with Avg reach per feed post. Does NOT include reels (see Aggregated Reels Engagement). Use for totals.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"IGEV22\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":22,\"metricName\":\"reels\",\"metricLabel\":\"Instagram Evolution > Reels\",\"description\":\"Number of reels published in the period. Not included in Instagram Evolution > Feed Posts; included in Instagram Evolution > Total Content.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV23\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":23,\"metricName\":\"reelsViews\",\"metricLabel\":\"Instagram Evolution > Reels Views\",\"description\":\"Number of times your Reels' video was viewed\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV41\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":24,\"metricName\":\"reelsEngagement\",\"metricLabel\":\"Instagram Evolution > Reels Engagement timeline\",\"description\":\"Engagement of the reel. Number of interactions per X people reached, this value being the engagement ratio configured in the brand\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"IGEV25\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":25,\"metricName\":\"reelsInteractions\",\"metricLabel\":\"Instagram Evolution > Reels Interactions\",\"description\":\"Interactions (likes, comments, saves and shares) received by reels. Does not include feed posts.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV26\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":26,\"metricName\":\"reelsReach\",\"metricLabel\":\"Instagram Evolution > Reels Reach timeline\",\"description\":\"Number of people who have seen a reel (Organic data)\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV27\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":27,\"metricName\":\"reelsLikes\",\"metricLabel\":\"Instagram Evolution > Reels Likes\",\"description\":\"Number of likes received by reels (Organic data)\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV28\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":28,\"metricName\":\"reelsComments\",\"metricLabel\":\"Instagram Evolution > Reels Comments\",\"description\":\"Number of comments received by reels (Organic data)\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV29\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":29,\"metricName\":\"reelsSaved\",\"metricLabel\":\"Instagram Evolution > Reels Saved\",\"description\":\"Number of times that reels have been saved (Organic data)\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV30\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":30,\"metricName\":\"aggregatedIgReelsReach\",\"metricLabel\":\"Instagram Evolution > Avg reach per reel\",\"description\":\"Average number of people reached by our reels. The average is calculated by the number of reels.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"IGEV31\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":31,\"metricName\":\"aggregatedReelsEngagement\",\"metricLabel\":\"Instagram Evolution > Aggregated Reels Engagement\",\"description\":\"Engagement calculated using Avg reach per reel. Use for totals.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"IGEV32\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":32,\"metricName\":\"emailClicks\",\"metricLabel\":\"Deprecated: Instagram Evolution > Email Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV33\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":33,\"metricName\":\"directionsClicks\",\"metricLabel\":\"Deprecated: Instagram Evolution > Directions Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV34\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":34,\"metricName\":\"phoneClicks\",\"metricLabel\":\"Deprecated: Instagram Evolution > Calls Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV35\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":35,\"metricName\":\"textMessageClicks\",\"metricLabel\":\"Deprecated: Instagram Evolution > Message Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV36\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":36,\"metricName\":\"SUM(IFNULL(IGEV32,0))+SUM(IFNULL(IGEV33,0))+SUM(IFNULL(IGEV34,0))+SUM(IFNULL(IGEV35,0))\",\"metricLabel\":\"Deprecated: Instagram Evolution > Total Clicks\",\"description\":\"Do not use this field.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV37\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":37,\"metricName\":\"postsCount\",\"metricLabel\":\"Instagram Evolution > Total Content (feed posts + reels)\",\"description\":\"Number of pieces of content published in the period, all feed formats: feed posts (photos and carousels) + reels. Does not include stories. Use this to answer 'how much content was published'.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV38\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":38,\"metricName\":\"postsInteractions\",\"metricLabel\":\"Instagram Evolution > Total Content Interactions (feed posts + reels)\",\"description\":\"Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV39\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":39,\"metricName\":\"reelsShares\",\"metricLabel\":\"Instagram Evolution > Reels Shares\",\"description\":\"Number of shares of the reel. \",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV40\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":40,\"metricName\":\"postsShares\",\"metricLabel\":\"Instagram Evolution > Feed Posts Shares\",\"description\":\"Shares received by feed posts (photos and carousels). Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV42\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":42,\"metricName\":\"accountsEngaged\",\"metricLabel\":\"Instagram Evolution > Accounts Engaged\",\"description\":\"Number of unique accounts that interacted with your content.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV43\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":43,\"metricName\":\"followersGained\",\"metricLabel\":\"Instagram Evolution > Followers Gained\",\"description\":\"Number of followers gained.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"IGEV44\",\"network\":\"instagram\",\"connector\":\"evolution\",\"index\":44,\"metricName\":\"followersLost\",\"metricLabel\":\"Instagram Evolution > Followers Lost\",\"description\":\"Number of followers lost.\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        },
+        {
+          "network": "facebook",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"FBEV01\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"pageLikes\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Likes\",\"description\":\"Discontinued. Total number of page likes received. Equivalent metric Facebook Evolution > Page Followers\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"FBEV02\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"pageImpressions\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Impressions\",\"description\":\"Discontinued. Total impressions on page and posts in the period selected (organic and paid data). Replaced by Facebook Evolution > Page Media View\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV03\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":3,\"metricName\":\"pageViews\",\"metricLabel\":\"Facebook Evolution > Page Views\",\"description\":\"Number of times the Facebook Page has been viewed\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV04\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":4,\"metricName\":\"posts\",\"metricLabel\":\"Facebook Evolution > Feed Posts Published\",\"description\":\"Number of feed posts published on the Page in the period. Does NOT include reels or stories. For all content use Facebook Evolution > Total Content (feed posts + reels).\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV05\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"pageLikesAcquired\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Likes Acquired\",\"description\":\"Discontinued. Followers gained in the period selected. Replaced by Facebook Evolution > Page Followers Acquired\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV06\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"pageLikesLost\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Likes Lost\",\"description\":\"Discontinued. Followers lost in the period selected. Replaced by Facebook Evolution > Page Followers Lost\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV07\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"websiteClicks\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Website Clicks\",\"description\":\"Discontinued. Number of clicks on the website button\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV9999\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"Engagement\",\"metricLabel\":\"Facebook Evolution > Feed Posts Engagement timeline\",\"description\":\"Engagement of feed posts: interactions per 1000 people reached. Does NOT include reels (see Reels Engagement). Use for timelines. For totals use Facebook Evolution > Feed Posts Aggregated Engagement\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"FBEV09\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"ctaClicks\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page CTA Clicks\",\"description\":\"Discontinued. Number of clicks on the call-to-action button set up on the Facebook Page\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV10\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":10,\"metricName\":\"interactions\",\"metricLabel\":\"Facebook Evolution > Feed Posts Interactions\",\"description\":\"Interactions (reactions, shares, clicks and comments) received by feed posts. Does NOT include reels (see Reels Interactions). For all content use Facebook Evolution > Total Content Interactions.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV11\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"reach\",\"metricLabel\":\"Facebook Evolution > Daily Avg reach per feed post\",\"description\":\"Average number of people reached per feed post, daily. Does NOT include reels (see Daily Avg reach per reel). Use for timeline series.\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"FBEV12\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":12,\"metricName\":\"postsImpressions\",\"metricLabel\":\"Facebook Evolution > Feed Posts Impressions\",\"description\":\"Times feed posts were displayed. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV13\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":13,\"metricName\":\"postsReactions\",\"metricLabel\":\"Facebook Evolution > Feed Posts Reactions\",\"description\":\"Reactions (Like, Love, Haha, Wow, Sad, Angry) received by feed posts. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV14\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":14,\"metricName\":\"postsComments\",\"metricLabel\":\"Facebook Evolution > Feed Posts Comments\",\"description\":\"Comments received by feed posts. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV15\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":15,\"metricName\":\"postsShares\",\"metricLabel\":\"Facebook Evolution > Feed Posts Shares\",\"description\":\"Times feed posts were shared. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV16\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":16,\"metricName\":\"postsClicks\",\"metricLabel\":\"Facebook Evolution > Feed Posts Clicks\",\"description\":\"Clicks on feed posts. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV17\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":17,\"metricName\":\"fbFollowers\",\"metricLabel\":\"Facebook Evolution > Page Followers\",\"description\":\"Number of people following this page\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"FBEV18\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":18,\"metricName\":\"aggregatedDailyImpressionsUnique\",\"metricLabel\":\"Facebook Evolution > Calculated Avg Reach per feed post\",\"description\":\"Average number of people reached per feed post: reach / number of feed posts. Does NOT include reels. Organic and paid (boosted) data.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"FBEV19\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":19,\"metricName\":\"aggregatedDailyEngagement\",\"metricLabel\":\"Facebook Evolution > Feed Posts Aggregated Engagement\",\"description\":\"Engagement of feed posts calculated with Avg reach per feed post. Does NOT include reels. Use for totals.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"FBEV20\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":20,\"metricName\":\"FBEV11*FBEV04\",\"metricLabel\":\"Facebook Evolution > Daily calculated reach (feed posts)\",\"description\":\"Avg reach per feed post * feed posts published, daily. Does NOT include reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV21\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":21,\"metricName\":\"reels\",\"metricLabel\":\"Facebook Evolution > Reels Published\",\"description\":\"Number of reels published in the period. Not included in Feed Posts Published; included in Total Content.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV22\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":22,\"metricName\":\"reelsVideoViews\",\"metricLabel\":\"Facebook Evolution > Reels Video Views\",\"description\":\"Number of video views received on your reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV23\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":23,\"metricName\":\"reelsLikes\",\"metricLabel\":\"Facebook Evolution > Reels Likes\",\"description\":\"Number of likes received on your reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV24\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":24,\"metricName\":\"reelsComments\",\"metricLabel\":\"Facebook Evolution > Reels Comments\",\"description\":\"Number of comments received on your reels.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV25\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":25,\"metricName\":\"reelsReach\",\"metricLabel\":\"Facebook Evolution > Daily Avg reach per reel\",\"description\":\"Avg reach per reels published in a daily basics. Use for timeline reach\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"FBEV26\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":26,\"metricName\":\"reelsInteractions\",\"metricLabel\":\"Facebook Evolution > Reels Interactions\",\"description\":\"Number of interactions: Likes and comments.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV27\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":27,\"metricName\":\"reelsEngagement\",\"metricLabel\":\"Facebook Evolution > Reels Engagement\",\"description\":\"Engagement of reels. Number of Interactions per 1000 people reached. Use for timelines. For totals use Facebook Evolution > Reels Aggregated Engagement\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"FBEV28\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":28,\"metricName\":\"reelsAggregatedDailyImpressionsUnique\",\"metricLabel\":\"Facebook Evolution > Reels Aggregated Reach\",\"description\":\"Average number of people reached by our reel. The average is calculated by the number of reels.\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"FBEV29\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":29,\"metricName\":\"reelsAggregatedDailyEngagement\",\"metricLabel\":\"Facebook Evolution > Reels Aggregated Engagement\",\"description\":\"Engagement calculated using Avg reach per reel. Use for totals. For daily engagement use Facebook Evolution > Reels Engagement\",\"dataAggregation\":\"SINGLE\"},{\"fieldId\":\"FBEV30\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":30,\"metricName\":\"pagePostsImpressions\",\"metricLabel\":\"Facebook Evolution > Page Posts Impressions\",\"description\":\"Impressions of all the Page's content (feed posts and reels), as reported by Meta at Page level. Valid until June 15, 2026.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV31\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":31,\"metricName\":\"pagePostsReactions\",\"metricLabel\":\"Facebook Evolution > Page Posts Reactions\",\"description\":\"Reactions on all the Page's content (feed posts and reels), as reported by Meta at Page level.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV32\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":32,\"metricName\":\"pagePostsClicks\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Posts Clicks\",\"description\":\"Discontinued. Number of page posts clicks\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV33\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":33,\"metricName\":\"postsCount\",\"metricLabel\":\"Facebook Evolution > Total Content (feed posts + reels)\",\"description\":\"Number of pieces of content published on the Page: feed posts + reels. Does not include stories.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV34\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":34,\"metricName\":\"postsInteractions\",\"metricLabel\":\"Facebook Evolution > Total Content Interactions (feed posts + reels)\",\"description\":\"Interactions received by all Page content: feed posts + reels. Does not include stories.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV35\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":35,\"metricName\":\"storiesCount\",\"metricLabel\":\"Facebook Evolution > Page Stories Count\",\"description\":\"Number of stories on the page\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV36\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":36,\"metricName\":\"pageImpressions.M\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (Male)\",\"description\":\"Discontinued. Number of male-made page impressions\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV37\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":37,\"metricName\":\"pageImpressions.F\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (Female)\",\"description\":\"Discontinued. Number of female-made page impressions\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV38\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":38,\"metricName\":\"pageImpressions.U\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (Unknown)\",\"description\":\"Discontinued. Number of unknown gender-made page impressions\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV39\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":39,\"metricName\":\"pageImpressions.13-17\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (13-17)\",\"description\":\"Discontinued. Number of page impressions made by ages 13 to 17\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV40\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":40,\"metricName\":\"pageImpressions.18-24\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (18-24)\",\"description\":\"Discontinued. Number of page impressions made by ages 18 to 24\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV41\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":41,\"metricName\":\"pageImpressions.25-34\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (25-34)\",\"description\":\"Discontinued. Number of page impressions made by ages 25  to 34\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV42\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":42,\"metricName\":\"pageImpressions.35-44\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (35-44)\",\"description\":\"Discontinued. Number of page impressions made by ages 35  to 44\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV43\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":43,\"metricName\":\"pageImpressions.45-54\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (45-54)\",\"description\":\"Discontinued. Number of page impressions made by ages 45  to 54\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV44\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":44,\"metricName\":\"pageImpressions.55-64\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (55-64)\",\"description\":\"Facebook Demographic\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV45\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":45,\"metricName\":\"pageImpressions.65+\",\"metricLabel\":\"Deprecated: Facebook Evolution > Demographics. Page impressions (65+)\",\"description\":\"Number of page impressions made by ages 65+\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV46\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":46,\"metricName\":\"totalClicks\",\"metricLabel\":\"Deprecated: Facebook Evolution > Page Total Clicks\",\"description\":\"Number of page clicks\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV47\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":47,\"metricName\":\"followersAcquired\",\"metricLabel\":\"Facebook Evolution > Page Followers Acquired\",\"description\":\"Followers acquired.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV48\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":48,\"metricName\":\"followersLost\",\"metricLabel\":\"Facebook Evolution > Page Followers Lost\",\"description\":\"Followers lost.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"FBEV49\",\"network\":\"facebook\",\"connector\":\"evolution\",\"index\":49,\"metricName\":\"pageMediaView\",\"metricLabel\":\"Facebook Evolution > Page Media View\",\"description\":\"Page content views.\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        },
+        {
+          "network": "tiktok",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"TKEV01\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"videos\",\"metricLabel\":\"TikTok Evolution > Videos\",\"description\":\"Number of videos published in the period. On TikTok every piece of content is a video: this is the total content count.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV02\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"views\",\"metricLabel\":\"TikTok Evolution > Views\",\"description\":\"Number of views reached by the videos published in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV03\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":3,\"metricName\":\"likes\",\"metricLabel\":\"TikTok Evolution > Likes\",\"description\":\"Number of likes on videos.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV04\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":4,\"metricName\":\"comments\",\"metricLabel\":\"TikTok Evolution > Comments\",\"description\":\"Number of comments on videos.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV05\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"shares\",\"metricLabel\":\"TikTok Evolution > Shares\",\"description\":\"Number of times the videos have been shared.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV06\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"interactions\",\"metricLabel\":\"TikTok Evolution > Interactions\",\"description\":\"Number of interactions on videos: Likes, Comments and Shares.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV07\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"followers\",\"metricLabel\":\"TikTok Evolution > Followers\",\"description\":\"Current number of followers.\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"TKEV08\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"newFollowers\",\"metricLabel\":\"TikTok Evolution > New Followers\",\"description\":\"Balance of daily followers gained or lost\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV09\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"profileViews\",\"metricLabel\":\"TikTok Evolution > Profile Views\",\"description\":\"Number of times the user's profile has been viewed.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV9998\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":9998,\"metricName\":\"engagement\",\"metricLabel\":\"TikTok Evolution > Engagement\",\"description\":\"Engagement of the videos. Interactions / Reach timeline * X, this value being the engagement ratio configured in the brand\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"TKEV11\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"reach\",\"metricLabel\":\"TikTok Evolution > Reach timeline\",\"description\":\"Number of people who have seen a video.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV12\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":12,\"metricName\":\"accountViews\",\"metricLabel\":\"TikTok Evolution > Video views in period\",\"description\":\"Number of video views in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV13\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":13,\"metricName\":\"accountLikes\",\"metricLabel\":\"TikTok Evolution > Account Likes\",\"description\":\"Number of likes of your videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV14\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":14,\"metricName\":\"accountComments\",\"metricLabel\":\"TikTok Evolution > Account Comments\",\"description\":\"Number of comments of your videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV15\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":15,\"metricName\":\"accountShares\",\"metricLabel\":\"TikTok Evolution > Account Shares\",\"description\":\"Number of times your videos have been shared\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV16\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":16,\"metricName\":\"followersAcquired\",\"metricLabel\":\"TikTok Evolution > Followers Acquired\",\"description\":\"Number of followers acquireds\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"TKEV17\",\"network\":\"tiktok\",\"connector\":\"evolution\",\"index\":17,\"metricName\":\"followersLost\",\"metricLabel\":\"TikTok Evolution > Followers Losted\",\"description\":\"Number of followers losted\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        },
+        {
+          "network": "pinterest",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"PIEV01\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"pinterestImpressions\",\"metricLabel\":\"Pinterest Evolution > Impressions in period\",\"description\":\"\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV02\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"pinterestPins\",\"metricLabel\":\"Pinterest Evolution > Pins\",\"description\":\"Number of pins published in the period. This is the total content count of the account.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV9998\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":9998,\"metricName\":\"engagement\",\"metricLabel\":\"Pinterest Evolution > Engagement in period\",\"description\":\"Engagement of posts. Number of Interactions per X impressions, this value being the engagement ratio configured in the brand\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"PIEV04\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":4,\"metricName\":\"pinterestInteractions\",\"metricLabel\":\"Pinterest Evolution > Interactions in period\",\"description\":\"\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV05\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"pinterestPinClicks\",\"metricLabel\":\"Pinterest Evolution > Pin clicks in period\",\"description\":\"\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV06\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"pinterestOutboundClicks\",\"metricLabel\":\"Pinterest Evolution > Outbound clicks in period\",\"description\":\"\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV07\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"pinterestSaves\",\"metricLabel\":\"Pinterest Evolution > Saves in period\",\"description\":\"\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV08\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"pinterestFollowing\",\"metricLabel\":\"Pinterest Evolution > Following\",\"description\":\"Number of users an account is following\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"PIEV09\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"pinterestFollowers\",\"metricLabel\":\"Pinterest Evolution > Followers\",\"description\":\"Number of users that follow an account\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"PIEV10\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":10,\"metricName\":\"pinterestDeltaFollowers\",\"metricLabel\":\"Pinterest Evolution > Delta followers\",\"description\":\"Increase / Decrease of followers an account has\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV11\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"publishedPinterestImpressions\",\"metricLabel\":\"Pinterest Evolution > Published impressions\",\"description\":\"Impressions from pins published in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV17\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":17,\"metricName\":\"publishedPinsEngagement\",\"metricLabel\":\"Pinterest Evolution > Published engagement\",\"description\":\"Engagement from pins published in the period. Number of  Interactions from published pins per X impressions from published pins, this value being the engagement ratio configured in the brand\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"PIEV13\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":13,\"metricName\":\"publishedPinterestInteractions\",\"metricLabel\":\"Pinterest Evolution > Published interactions\",\"description\":\"Interactions from pins published in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV14\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":14,\"metricName\":\"publishedPinterestPinClicks\",\"metricLabel\":\"Pinterest Evolution > Published pin clicks\",\"description\":\"Pin clicks from pins published in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV15\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":15,\"metricName\":\"publishedPinterestOutbundClicks\",\"metricLabel\":\"Pinterest Evolution > Published outbound clicks\",\"description\":\"Pin outbound clicks from pins published in the period\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"PIEV16\",\"network\":\"pinterest\",\"connector\":\"evolution\",\"index\":16,\"metricName\":\"publishedPinterestSaves\",\"metricLabel\":\"Pinterest Evolution > Published saves\",\"description\":\"Saves from pins published in the period\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        },
+        {
+          "network": "threads",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"THEV01\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"followers\",\"metricLabel\":\"Threads Evolution >  Followers\",\"description\":\"Current number of followers.\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"THEV02\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"posts\",\"metricLabel\":\"Threads Evolution > Posts\",\"description\":\"Number of posts published in the period. On Threads every piece of content is a post: this is the total content count.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV03\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":3,\"metricName\":\"deltaFollowers\",\"metricLabel\":\"Threads Evolution > Delta Followers\",\"description\":\"Balance of daily followers gained or lost\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV9998\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":9998,\"metricName\":\"engagement\",\"metricLabel\":\"Threads Evolution > Engagement\",\"description\":\"Engagement of the account. Number of interactions per impressions, this value is being calculated with the engagement ratio configured in the brand.\",\"dataAggregation\":\"AVG\"},{\"fieldId\":\"THEV05\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"interactions\",\"metricLabel\":\"Threads Evolution > Interactions\",\"description\":\"Number of interactions: Likes, Replies, Reposts and Quotes\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV06\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"views\",\"metricLabel\":\"Threads Evolution > Post Views\",\"description\":\"Total number of times that the post is displayed.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV07\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"likes\",\"metricLabel\":\"Threads Evolution > Likes\",\"description\":\"Number of likes received by posts.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV08\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"replies\",\"metricLabel\":\"Threads Evolution > Replies\",\"description\":\"Number of times posts have been replied to.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV09\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"reposts\",\"metricLabel\":\"Threads Evolution > Reposts\",\"description\":\"Number of times posts have been reposted. \",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV10\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":10,\"metricName\":\"quotes\",\"metricLabel\":\"Threads Evolution > Quotes\",\"description\":\"Number of times posts have been reposted with a comment.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV11\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"views\",\"metricLabel\":\"Threads Evolution > Account Views\",\"description\":\"Number of profile views\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"THEV12\",\"network\":\"threads\",\"connector\":\"evolution\",\"index\":12,\"metricName\":\"shares\",\"metricLabel\":\"Threads Evolution > Shares\",\"description\":\"Number of shares received by posts.\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        },
+        {
+          "network": "youtube",
+          "connector": "evolution",
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "[{\"fieldId\":\"YTEV01\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":1,\"metricName\":\"subscribers\",\"metricLabel\":\"Youtube Evolution > Subscribers\",\"description\":\"Current number of subscribers\",\"dataAggregation\":\"LAST\"},{\"fieldId\":\"YTEV02\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":2,\"metricName\":\"videoViews\",\"metricLabel\":\"Youtube Evolution > Video Views\",\"description\":\"Number of times the videos were watched\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV03\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":3,\"metricName\":\"revenue\",\"metricLabel\":\"Youtube Evolution > Revenue\",\"description\":\"Revenue of the videos in the period selected\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV04\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":4,\"metricName\":\"videos\",\"metricLabel\":\"Youtube Evolution > Videos\",\"description\":\"Number of videos published in the period (long videos and Shorts). This is the total content count of the channel.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV05\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":5,\"metricName\":\"gained\",\"metricLabel\":\"Youtube Evolution > Followers Gained\",\"description\":\"Subscribers gained in the period selected.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV06\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":6,\"metricName\":\"lost\",\"metricLabel\":\"Youtube Evolution > Followers Lost\",\"description\":\"Subscribers lost in the period selected.\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV07\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":7,\"metricName\":\"likes\",\"metricLabel\":\"Deprecated: Youtube Evolution > Likes\",\"description\":\"Do not use\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV08\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":8,\"metricName\":\"dislikes\",\"metricLabel\":\"Deprecated: Youtube Evolution > Dislikes\",\"description\":\"Do not use\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV09\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":9,\"metricName\":\"comments\",\"metricLabel\":\"Deprecated: Youtube Evolution > Comments\",\"description\":\"Do not use\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV10\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":10,\"metricName\":\"publishedVideoLikes\",\"metricLabel\":\"Youtube Evolution > Published Videos Likes\",\"description\":\"Number of likes of the videos Published in Range\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV11\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":11,\"metricName\":\"publishedVideoDislikes\",\"metricLabel\":\"Youtube Evolution > Published Videos  Dislikes\",\"description\":\"Number of dislikes of the videos Published in Range\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV12\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":12,\"metricName\":\"publishedVideoComments\",\"metricLabel\":\"Youtube Evolution > Published Videos  Comments\",\"description\":\"Number of comments received by video published in range\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV13\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":13,\"metricName\":\"publishedVideoVideoViews\",\"metricLabel\":\"Youtube Evolution > Published Videos  Views\",\"description\":\"Number of views received by video published in range\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV14\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":14,\"metricName\":\"visitedVideoLikes\",\"metricLabel\":\"Youtube Evolution > Visited Videos Likes\",\"description\":\"Number of likes of the visited videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV15\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":15,\"metricName\":\"visitedVideoDislikes\",\"metricLabel\":\"Youtube Evolution > Visited Videos Dislikes\",\"description\":\"Number of dislikes of the visited videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV16\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":16,\"metricName\":\"visitedVideoComments\",\"metricLabel\":\"Youtube Evolution > Visited Videos Comments\",\"description\":\"Number of comments received by visited video\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV17\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":17,\"metricName\":\"visitedVideoVideoViews\",\"metricLabel\":\"Youtube Evolution > Visited Videos Views\",\"description\":\"Number of views received by visited videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV18\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":18,\"metricName\":\"visitedVideoVideoShares\",\"metricLabel\":\"Youtube Evolution > Visited Videos Shares\",\"description\":\"Number of shares of the visited videos\",\"dataAggregation\":\"SUM\"},{\"fieldId\":\"YTEV19\",\"network\":\"youtube\",\"connector\":\"evolution\",\"index\":19,\"metricName\":\"publishedVideoVideoShares\",\"metricLabel\":\"Youtube Evolution > Published Videos Shares\",\"description\":\"Number of shares received by video published in range\",\"dataAggregation\":\"SUM\"}]"
+              }
+            ],
+            "structuredContent": null,
+            "isError": false
+          }
+        }
+      ]
+    },
+    "exactDataToolCalls": [
+      {
+        "network": "instagram",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "IGEV05",
+          "IGEV38"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"121.0\",null,\"20261110\"],[\"93.0\",null,\"20261111\"],[\"119.0\",\"1.0\",\"20261112\"],[\"70.0\",null,\"20261113\"],[\"73.0\",null,\"20261114\"],[\"36.0\",null,\"20261108\"],[\"66.0\",null,\"20261109\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      },
+      {
+        "network": "facebook",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "FBEV49",
+          "FBEV34"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"5.0\",null,\"20261110\"],[\"61.0\",null,\"20261111\"],[\"27.0\",null,\"20261112\"],[\"21.0\",null,\"20261113\"],[\"6.0\",\"0.0\",\"20261114\"],[\"12.0\",null,\"20261108\"],[\"3.0\",null,\"20261109\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      },
+      {
+        "network": "tiktok",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "TKEV12",
+          "TKEV06"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"799.0\",\"3.0\",\"20261110\"],[\"1038.0\",\"4.0\",\"20261111\"],[\"779.0\",\"1.0\",\"20261112\"],[\"554.0\",\"0.0\",\"20261113\"],[null,\"2.0\",\"20261114\"],[\"301.0\",\"1.0\",\"20261108\"],[\"26.0\",null,\"20261109\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      },
+      {
+        "network": "pinterest",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "PIEV01",
+          "PIEV04"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"863.0\",\"19.0\",\"20261110\"],[\"870.0\",\"14.0\",\"20261111\"],[\"713.0\",\"16.0\",\"20261112\"],[\"1046.0\",\"13.0\",\"20261108\"],[\"764.0\",\"19.0\",\"20261109\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      },
+      {
+        "network": "threads",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "THEV06",
+          "THEV05"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"1.0\",null,\"20261111\"],[\"4.0\",\"0.0\",\"20261114\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      },
+      {
+        "network": "youtube",
+        "brandId": "6227837",
+        "from": "2026-11-08T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00",
+        "metrics": [
+          "YTEV02",
+          "YTEV05"
+        ],
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"rows\":[[\"256.0\",\"0.0\",\"20261110\"],[\"171.0\",\"0.0\",\"20261111\"],[\"261.0\",\"0.0\",\"20261112\"],[\"7.0\",\"0.0\",\"20261108\"],[\"4.0\",\"0.0\",\"20261109\"]]}"
+            }
+          ],
+          "structuredContent": null,
+          "isError": false
+        }
+      }
+    ],
+    "coverage": [
+      {
+        "network": "instagram",
+        "requestedMetrics": [
+          "IGEV05",
+          "IGEV38"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 7,
+        "metrics": {
+          "IGEV05": {
+            "definition": {
+              "fieldId": "IGEV05",
+              "network": "instagram",
+              "connector": "evolution",
+              "index": 5,
+              "metricName": "views",
+              "metricLabel": "Instagram Evolution > Views",
+              "description": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 36.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 66.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 121.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 93.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 119.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "observed_numeric",
+                "value": 70.0
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 73.0
+              }
+            ],
+            "observedDateCount": 7,
+            "nullDateCount": 0,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12",
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [],
+            "observedNumericSum": 578.0,
+            "partial": false,
+            "outOfPeriodRows": []
+          },
+          "IGEV38": {
+            "definition": {
+              "fieldId": "IGEV38",
+              "network": "instagram",
+              "connector": "evolution",
+              "index": 38,
+              "metricName": "postsInteractions",
+              "metricLabel": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+              "description": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-09",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-10",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-11",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 1.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_null",
+                "value": null
+              }
+            ],
+            "observedDateCount": 1,
+            "nullDateCount": 6,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-12"
+            ],
+            "unknownNullDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "unknownMissingDates": [],
+            "observedNumericSum": 1.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      },
+      {
+        "network": "facebook",
+        "requestedMetrics": [
+          "FBEV49",
+          "FBEV34"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 7,
+        "metrics": {
+          "FBEV49": {
+            "definition": {
+              "fieldId": "FBEV49",
+              "network": "facebook",
+              "connector": "evolution",
+              "index": 49,
+              "metricName": "pageMediaView",
+              "metricLabel": "Facebook Evolution > Page Media View",
+              "description": "Page content views.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 12.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 3.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 5.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 61.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 27.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "observed_numeric",
+                "value": 21.0
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 6.0
+              }
+            ],
+            "observedDateCount": 7,
+            "nullDateCount": 0,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12",
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [],
+            "observedNumericSum": 135.0,
+            "partial": false,
+            "outOfPeriodRows": []
+          },
+          "FBEV34": {
+            "definition": {
+              "fieldId": "FBEV34",
+              "network": "facebook",
+              "connector": "evolution",
+              "index": 34,
+              "metricName": "postsInteractions",
+              "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+              "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-09",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-10",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-11",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-12",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 0.0
+              }
+            ],
+            "observedDateCount": 1,
+            "nullDateCount": 6,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-14"
+            ],
+            "unknownNullDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12",
+              "2026-11-13"
+            ],
+            "unknownMissingDates": [],
+            "observedNumericSum": 0.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      },
+      {
+        "network": "tiktok",
+        "requestedMetrics": [
+          "TKEV12",
+          "TKEV06"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 7,
+        "metrics": {
+          "TKEV12": {
+            "definition": {
+              "fieldId": "TKEV12",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 12,
+              "metricName": "accountViews",
+              "metricLabel": "TikTok Evolution > Video views in period",
+              "description": "Number of video views in the period",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 301.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 26.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 799.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 1038.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 779.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "observed_numeric",
+                "value": 554.0
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_null",
+                "value": null
+              }
+            ],
+            "observedDateCount": 6,
+            "nullDateCount": 1,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12",
+              "2026-11-13"
+            ],
+            "unknownNullDates": [
+              "2026-11-14"
+            ],
+            "unknownMissingDates": [],
+            "observedNumericSum": 3497.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          },
+          "TKEV06": {
+            "definition": {
+              "fieldId": "TKEV06",
+              "network": "tiktok",
+              "connector": "evolution",
+              "index": 6,
+              "metricName": "interactions",
+              "metricLabel": "TikTok Evolution > Interactions",
+              "description": "Number of interactions on videos: Likes, Comments and Shares.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 1.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 3.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 4.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 1.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 2.0
+              }
+            ],
+            "observedDateCount": 6,
+            "nullDateCount": 1,
+            "missingDateCount": 0,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12",
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "unknownNullDates": [
+              "2026-11-09"
+            ],
+            "unknownMissingDates": [],
+            "observedNumericSum": 11.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      },
+      {
+        "network": "pinterest",
+        "requestedMetrics": [
+          "PIEV01",
+          "PIEV04"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 5,
+        "metrics": {
+          "PIEV01": {
+            "definition": {
+              "fieldId": "PIEV01",
+              "network": "pinterest",
+              "connector": "evolution",
+              "index": 1,
+              "metricName": "pinterestImpressions",
+              "metricLabel": "Pinterest Evolution > Impressions in period",
+              "description": "",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 1046.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 764.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 863.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 870.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 713.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_missing",
+                "value": null
+              }
+            ],
+            "observedDateCount": 5,
+            "nullDateCount": 0,
+            "missingDateCount": 2,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "observedNumericSum": 4256.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          },
+          "PIEV04": {
+            "definition": {
+              "fieldId": "PIEV04",
+              "network": "pinterest",
+              "connector": "evolution",
+              "index": 4,
+              "metricName": "pinterestInteractions",
+              "metricLabel": "Pinterest Evolution > Interactions in period",
+              "description": "",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 13.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 19.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 19.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 14.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 16.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_missing",
+                "value": null
+              }
+            ],
+            "observedDateCount": 5,
+            "nullDateCount": 0,
+            "missingDateCount": 2,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "observedNumericSum": 81.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      },
+      {
+        "network": "threads",
+        "requestedMetrics": [
+          "THEV06",
+          "THEV05"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 2,
+        "metrics": {
+          "THEV06": {
+            "definition": {
+              "fieldId": "THEV06",
+              "network": "threads",
+              "connector": "evolution",
+              "index": 6,
+              "metricName": "views",
+              "metricLabel": "Threads Evolution > Post Views",
+              "description": "Total number of times that the post is displayed.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-09",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-10",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 1.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 4.0
+              }
+            ],
+            "observedDateCount": 2,
+            "nullDateCount": 0,
+            "missingDateCount": 5,
+            "observedDates": [
+              "2026-11-11",
+              "2026-11-14"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-12",
+              "2026-11-13"
+            ],
+            "observedNumericSum": 5.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          },
+          "THEV05": {
+            "definition": {
+              "fieldId": "THEV05",
+              "network": "threads",
+              "connector": "evolution",
+              "index": 5,
+              "metricName": "interactions",
+              "metricLabel": "Threads Evolution > Interactions",
+              "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-09",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-10",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-11",
+                "status": "unknown_null",
+                "value": null
+              },
+              {
+                "date": "2026-11-12",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "observed_numeric",
+                "value": 0.0
+              }
+            ],
+            "observedDateCount": 1,
+            "nullDateCount": 1,
+            "missingDateCount": 5,
+            "observedDates": [
+              "2026-11-14"
+            ],
+            "unknownNullDates": [
+              "2026-11-11"
+            ],
+            "unknownMissingDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-12",
+              "2026-11-13"
+            ],
+            "observedNumericSum": 0.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      },
+      {
+        "network": "youtube",
+        "requestedMetrics": [
+          "YTEV02",
+          "YTEV05"
+        ],
+        "toolError": null,
+        "apiIsError": false,
+        "returnedRows": 5,
+        "metrics": {
+          "YTEV02": {
+            "definition": {
+              "fieldId": "YTEV02",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 2,
+              "metricName": "videoViews",
+              "metricLabel": "Youtube Evolution > Video Views",
+              "description": "Number of times the videos were watched",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 7.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 4.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 256.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 171.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 261.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_missing",
+                "value": null
+              }
+            ],
+            "observedDateCount": 5,
+            "nullDateCount": 0,
+            "missingDateCount": 2,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "observedNumericSum": 699.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          },
+          "YTEV05": {
+            "definition": {
+              "fieldId": "YTEV05",
+              "network": "youtube",
+              "connector": "evolution",
+              "index": 5,
+              "metricName": "gained",
+              "metricLabel": "Youtube Evolution > Followers Gained",
+              "description": "Subscribers gained in the period selected.",
+              "dataAggregation": "SUM"
+            },
+            "points": [
+              {
+                "date": "2026-11-08",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-09",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-10",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-11",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-12",
+                "status": "observed_numeric",
+                "value": 0.0
+              },
+              {
+                "date": "2026-11-13",
+                "status": "unknown_missing",
+                "value": null
+              },
+              {
+                "date": "2026-11-14",
+                "status": "unknown_missing",
+                "value": null
+              }
+            ],
+            "observedDateCount": 5,
+            "nullDateCount": 0,
+            "missingDateCount": 2,
+            "observedDates": [
+              "2026-11-08",
+              "2026-11-09",
+              "2026-11-10",
+              "2026-11-11",
+              "2026-11-12"
+            ],
+            "unknownNullDates": [],
+            "unknownMissingDates": [
+              "2026-11-13",
+              "2026-11-14"
+            ],
+            "observedNumericSum": 0.0,
+            "partial": true,
+            "outOfPeriodRows": []
+          }
+        }
+      }
+    ],
+    "calculationRules": {
+      "numericIncludingZero": "observed numeric value",
+      "nullOrAbsent": "unknown; not interpreted as zero",
+      "aggregate": "sum of numeric observations for this metric and network only; excludes unknown dates and marked partial",
+      "outOfPeriod": "reported separately, excluded from coverage and sums"
+    },
+    "limitations": [
+      "Metricool returns rows only for dates with data; absent dates are unknown, not zero.",
+      "No cross-network total is calculated because measures and date coverage differ.",
+      "Social performance is not attributed to orders, sales, conversions, or causes."
+    ]
+  },
+  "klaviyo": {
+    "klaviyoAccount": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"data\":[{\"type\":\"account\",\"id\":\"XWqMAD\",\"attributes\":{\"preferred_currency\":\"USD\",\"timezone\":\"Europe/Zurich\",\"contact_information\":{\"organization_name\":\"LuxeStyle CH\",\"website_url\":\"https://luxestyle.ch\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/accounts/XWqMAD/\"}}],\"links\":{\"self\":\"https://a.klaviyo.com/api/accounts?fields%5Baccount%5D=id%2Cpreferred_currency%2Ctimezone%2Ccontact_information.organization_name%2Ccontact_information.website_url\",\"next\":null,\"prev\":null}}"
+          }
+        ],
+        "structuredContent": {
+          "result": {
+            "data": [
+              {
+                "type": "account",
+                "id": "XWqMAD",
+                "attributes": {
+                  "preferred_currency": "USD",
+                  "timezone": "Europe/Zurich",
+                  "contact_information": {
+                    "organization_name": "LuxeStyle CH",
+                    "website_url": "https://luxestyle.ch"
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/accounts/XWqMAD/"
+                }
+              }
+            ],
+            "links": {
+              "self": "https://a.klaviyo.com/api/accounts?fields%5Baccount%5D=id%2Cpreferred_currency%2Ctimezone%2Ccontact_information.organization_name%2Ccontact_information.website_url",
+              "next": null,
+              "prev": null
+            }
+          }
+        },
+        "isError": false
+      }
+    },
+    "metricDiscovery": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"data\":[{\"type\":\"metric\",\"id\":\"QYwqVp\",\"attributes\":{\"name\":\"Unsubscribed from List\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/QYwqVp/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/QYwqVp/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/QYwqVp/\"}},{\"type\":\"metric\",\"id\":\"QZbguJ\",\"attributes\":{\"name\":\"Received Automated Response Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/QZbguJ/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/QZbguJ/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/QZbguJ/\"}},{\"type\":\"metric\",\"id\":\"RCcj7m\",\"attributes\":{\"name\":\"Subscribed to Text Messaging Marketing\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/RCcj7m/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/RCcj7m/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/RCcj7m/\"}},{\"type\":\"metric\",\"id\":\"RU76i4\",\"attributes\":{\"name\":\"Fulfilled Order\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/RU76i4/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/RU76i4/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/RU76i4/\"}},{\"type\":\"metric\",\"id\":\"Rh63Fr\",\"attributes\":{\"name\":\"Subscribed to Back in Stock\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Rh63Fr/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/Rh63Fr/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Rh63Fr/\"}},{\"type\":\"metric\",\"id\":\"SMB9Zd\",\"attributes\":{\"name\":\"Failed to Deliver Automated Response Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SMB9Zd/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/SMB9Zd/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SMB9Zd/\"}},{\"type\":\"metric\",\"id\":\"SYSEQw\",\"attributes\":{\"name\":\"Opened Email\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SYSEQw/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/SYSEQw/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SYSEQw/\"}},{\"type\":\"metric\",\"id\":\"SedYQ9\",\"attributes\":{\"name\":\"Bounce suppression added\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SedYQ9/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/SedYQ9/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SedYQ9/\"}},{\"type\":\"metric\",\"id\":\"SsuSzh\",\"attributes\":{\"name\":\"Active on Site\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SsuSzh/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/SsuSzh/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/SsuSzh/\"}},{\"type\":\"metric\",\"id\":\"Sv78La\",\"attributes\":{\"name\":\"Dropped Email\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Sv78La/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/Sv78La/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Sv78La/\"}},{\"type\":\"metric\",\"id\":\"Sx88UF\",\"attributes\":{\"name\":\"Ordered Product\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Sx88UF/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/Sx88UF/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Sx88UF/\"}},{\"type\":\"metric\",\"id\":\"T88bnM\",\"attributes\":{\"name\":\"Skipped Send\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/T88bnM/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/T88bnM/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/T88bnM/\"}},{\"type\":\"metric\",\"id\":\"TFy7Yn\",\"attributes\":{\"name\":\"Added to Cart\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/TFy7Yn/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/TFy7Yn/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/TFy7Yn/\"}},{\"type\":\"metric\",\"id\":\"TpXm4v\",\"attributes\":{\"name\":\"Unsubscribed from Email Marketing\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/TpXm4v/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/TpXm4v/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/TpXm4v/\"}},{\"type\":\"metric\",\"id\":\"U3Dfet\",\"attributes\":{\"name\":\"Failed to Deliver Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/U3Dfet/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/U3Dfet/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/U3Dfet/\"}},{\"type\":\"metric\",\"id\":\"UA33vG\",\"attributes\":{\"name\":\"Relayed Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UA33vG/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/UA33vG/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UA33vG/\"}},{\"type\":\"metric\",\"id\":\"UEEhR6\",\"attributes\":{\"name\":\"Received Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UEEhR6/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/UEEhR6/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UEEhR6/\"}},{\"type\":\"metric\",\"id\":\"UMiykZ\",\"attributes\":{\"name\":\"Received Email\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UMiykZ/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/UMiykZ/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UMiykZ/\"}},{\"type\":\"metric\",\"id\":\"UUy4Tg\",\"attributes\":{\"name\":\"Clicked email to unsubscribe\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UUy4Tg/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/UUy4Tg/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UUy4Tg/\"}},{\"type\":\"metric\",\"id\":\"UeUL5L\",\"attributes\":{\"name\":\"Clicked Email\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UeUL5L/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/UeUL5L/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/UeUL5L/\"}},{\"type\":\"metric\",\"id\":\"V3Mzrx\",\"attributes\":{\"name\":\"Manually Suppressed from Email Marketing\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/V3Mzrx/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/V3Mzrx/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/V3Mzrx/\"}},{\"type\":\"metric\",\"id\":\"VAFww2\",\"attributes\":{\"name\":\"Subscribed to Email Marketing\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VAFww2/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/VAFww2/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VAFww2/\"}},{\"type\":\"metric\",\"id\":\"VQ58JW\",\"attributes\":{\"name\":\"Unsubscribed from Text Messaging Marketing\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VQ58JW/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/VQ58JW/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VQ58JW/\"}},{\"type\":\"metric\",\"id\":\"Vd468j\",\"attributes\":{\"name\":\"Sent Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Vd468j/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/Vd468j/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Vd468j/\"}},{\"type\":\"metric\",\"id\":\"VuWRj2\",\"attributes\":{\"name\":\"Refunded Order\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VuWRj2/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/VuWRj2/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/VuWRj2/\"}},{\"type\":\"metric\",\"id\":\"W3kDAf\",\"attributes\":{\"name\":\"Viewed Product\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/W3kDAf/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/W3kDAf/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/W3kDAf/\"}},{\"type\":\"metric\",\"id\":\"W7XTVD\",\"attributes\":{\"name\":\"Placed Order\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/W7XTVD/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/W7XTVD/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/W7XTVD/\"}},{\"type\":\"metric\",\"id\":\"WGXWpK\",\"attributes\":{\"name\":\"Marked Email as Spam\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WGXWpK/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/WGXWpK/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WGXWpK/\"}},{\"type\":\"metric\",\"id\":\"WL6mpS\",\"attributes\":{\"name\":\"Subscribed to List\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WL6mpS/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/WL6mpS/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WL6mpS/\"}},{\"type\":\"metric\",\"id\":\"WM5pge\",\"attributes\":{\"name\":\"Submitted Search\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WM5pge/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/WM5pge/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WM5pge/\"}},{\"type\":\"metric\",\"id\":\"WyFMrE\",\"attributes\":{\"name\":\"Merged Profile\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WyFMrE/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/WyFMrE/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/WyFMrE/\"}},{\"type\":\"metric\",\"id\":\"XHSqyD\",\"attributes\":{\"name\":\"Fulfilled Partial Order\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XHSqyD/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/XHSqyD/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XHSqyD/\"}},{\"type\":\"metric\",\"id\":\"XUpMs8\",\"attributes\":{\"name\":\"Cancelled Order\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XUpMs8/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/XUpMs8/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XUpMs8/\"}},{\"type\":\"metric\",\"id\":\"XhnJPv\",\"attributes\":{\"name\":\"Checkout Started\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XhnJPv/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/XhnJPv/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/XhnJPv/\"}},{\"type\":\"metric\",\"id\":\"YaSNwE\",\"attributes\":{\"name\":\"Opened Text\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YaSNwE/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/YaSNwE/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YaSNwE/\"}},{\"type\":\"metric\",\"id\":\"YbrVa6\",\"attributes\":{\"name\":\"Viewed Collection\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YbrVa6/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/YbrVa6/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YbrVa6/\"}},{\"type\":\"metric\",\"id\":\"Yfw4S4\",\"attributes\":{\"name\":\"Clicked Text Message\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Yfw4S4/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/Yfw4S4/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/Yfw4S4/\"}},{\"type\":\"metric\",\"id\":\"YvpPUe\",\"attributes\":{\"name\":\"Bounced Email\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YvpPUe/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/YvpPUe/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YvpPUe/\"}},{\"type\":\"metric\",\"id\":\"YkjdFp\",\"attributes\":{\"name\":\"unsubscribe_page_submit\"},\"relationships\":{\"flow-triggers\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YkjdFp/relationships/flow-triggers/\",\"related\":\"https://a.klaviyo.com/api/metrics/YkjdFp/flow-triggers/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics/YkjdFp/\"}}],\"links\":{\"self\":\"https://a.klaviyo.com/api/metrics?fields%5Bmetric%5D=name\",\"next\":null,\"prev\":null}}"
+          }
+        ],
+        "structuredContent": {
+          "result": {
+            "data": [
+              {
+                "type": "metric",
+                "id": "QYwqVp",
+                "attributes": {
+                  "name": "Unsubscribed from List"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/QYwqVp/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/QYwqVp/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/QYwqVp/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "QZbguJ",
+                "attributes": {
+                  "name": "Received Automated Response Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/QZbguJ/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/QZbguJ/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/QZbguJ/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "RCcj7m",
+                "attributes": {
+                  "name": "Subscribed to Text Messaging Marketing"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/RCcj7m/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/RCcj7m/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/RCcj7m/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "RU76i4",
+                "attributes": {
+                  "name": "Fulfilled Order"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/RU76i4/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/RU76i4/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/RU76i4/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "Rh63Fr",
+                "attributes": {
+                  "name": "Subscribed to Back in Stock"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/Rh63Fr/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/Rh63Fr/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/Rh63Fr/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "SMB9Zd",
+                "attributes": {
+                  "name": "Failed to Deliver Automated Response Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/SMB9Zd/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/SMB9Zd/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/SMB9Zd/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "SYSEQw",
+                "attributes": {
+                  "name": "Opened Email"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/SYSEQw/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/SYSEQw/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/SYSEQw/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "SedYQ9",
+                "attributes": {
+                  "name": "Bounce suppression added"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/SedYQ9/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/SedYQ9/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/SedYQ9/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "SsuSzh",
+                "attributes": {
+                  "name": "Active on Site"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/SsuSzh/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/SsuSzh/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/SsuSzh/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "Sv78La",
+                "attributes": {
+                  "name": "Dropped Email"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/Sv78La/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/Sv78La/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/Sv78La/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "Sx88UF",
+                "attributes": {
+                  "name": "Ordered Product"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/Sx88UF/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/Sx88UF/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/Sx88UF/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "T88bnM",
+                "attributes": {
+                  "name": "Skipped Send"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/T88bnM/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/T88bnM/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/T88bnM/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "TFy7Yn",
+                "attributes": {
+                  "name": "Added to Cart"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/TFy7Yn/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/TFy7Yn/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/TFy7Yn/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "TpXm4v",
+                "attributes": {
+                  "name": "Unsubscribed from Email Marketing"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/TpXm4v/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/TpXm4v/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/TpXm4v/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "U3Dfet",
+                "attributes": {
+                  "name": "Failed to Deliver Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/U3Dfet/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/U3Dfet/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/U3Dfet/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "UA33vG",
+                "attributes": {
+                  "name": "Relayed Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/UA33vG/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/UA33vG/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/UA33vG/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "UEEhR6",
+                "attributes": {
+                  "name": "Received Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/UEEhR6/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/UEEhR6/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/UEEhR6/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "UMiykZ",
+                "attributes": {
+                  "name": "Received Email"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/UMiykZ/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/UMiykZ/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/UMiykZ/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "UUy4Tg",
+                "attributes": {
+                  "name": "Clicked email to unsubscribe"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/UUy4Tg/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/UUy4Tg/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/UUy4Tg/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "UeUL5L",
+                "attributes": {
+                  "name": "Clicked Email"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/UeUL5L/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/UeUL5L/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/UeUL5L/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "V3Mzrx",
+                "attributes": {
+                  "name": "Manually Suppressed from Email Marketing"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/V3Mzrx/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/V3Mzrx/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/V3Mzrx/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "VAFww2",
+                "attributes": {
+                  "name": "Subscribed to Email Marketing"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/VAFww2/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/VAFww2/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/VAFww2/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "VQ58JW",
+                "attributes": {
+                  "name": "Unsubscribed from Text Messaging Marketing"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/VQ58JW/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/VQ58JW/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/VQ58JW/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "Vd468j",
+                "attributes": {
+                  "name": "Sent Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/Vd468j/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/Vd468j/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/Vd468j/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "VuWRj2",
+                "attributes": {
+                  "name": "Refunded Order"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/VuWRj2/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/VuWRj2/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/VuWRj2/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "W3kDAf",
+                "attributes": {
+                  "name": "Viewed Product"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/W3kDAf/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/W3kDAf/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/W3kDAf/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "W7XTVD",
+                "attributes": {
+                  "name": "Placed Order"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/W7XTVD/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/W7XTVD/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/W7XTVD/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "WGXWpK",
+                "attributes": {
+                  "name": "Marked Email as Spam"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/WGXWpK/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/WGXWpK/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/WGXWpK/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "WL6mpS",
+                "attributes": {
+                  "name": "Subscribed to List"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/WL6mpS/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/WL6mpS/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/WL6mpS/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "WM5pge",
+                "attributes": {
+                  "name": "Submitted Search"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/WM5pge/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/WM5pge/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/WM5pge/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "WyFMrE",
+                "attributes": {
+                  "name": "Merged Profile"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/WyFMrE/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/WyFMrE/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/WyFMrE/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "XHSqyD",
+                "attributes": {
+                  "name": "Fulfilled Partial Order"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/XHSqyD/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/XHSqyD/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/XHSqyD/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "XUpMs8",
+                "attributes": {
+                  "name": "Cancelled Order"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/XUpMs8/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/XUpMs8/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/XUpMs8/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "XhnJPv",
+                "attributes": {
+                  "name": "Checkout Started"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/XhnJPv/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/XhnJPv/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/XhnJPv/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "YaSNwE",
+                "attributes": {
+                  "name": "Opened Text"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/YaSNwE/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/YaSNwE/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/YaSNwE/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "YbrVa6",
+                "attributes": {
+                  "name": "Viewed Collection"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/YbrVa6/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/YbrVa6/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/YbrVa6/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "Yfw4S4",
+                "attributes": {
+                  "name": "Clicked Text Message"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/Yfw4S4/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/Yfw4S4/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/Yfw4S4/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "YvpPUe",
+                "attributes": {
+                  "name": "Bounced Email"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/YvpPUe/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/YvpPUe/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/YvpPUe/"
+                }
+              },
+              {
+                "type": "metric",
+                "id": "YkjdFp",
+                "attributes": {
+                  "name": "unsubscribe_page_submit"
+                },
+                "relationships": {
+                  "flow-triggers": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/metrics/YkjdFp/relationships/flow-triggers/",
+                      "related": "https://a.klaviyo.com/api/metrics/YkjdFp/flow-triggers/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/metrics/YkjdFp/"
+                }
+              }
+            ],
+            "links": {
+              "self": "https://a.klaviyo.com/api/metrics?fields%5Bmetric%5D=name",
+              "next": null,
+              "prev": null
+            }
+          }
+        },
+        "isError": false
+      }
+    },
+    "flowReport": {
+      "args": {
+        "conversion_metric_id": "W7XTVD",
+        "model": "gpt-6",
+        "statistics": [
+          "recipients",
+          "delivered",
+          "clicks_unique",
+          "conversions"
+        ],
+        "value_statistics": [],
+        "timeframe": {
+          "start": "2026-11-08T00:00:00+01:00",
+          "end": "2026-11-15T00:00:00+01:00"
+        },
+        "group_by": [
+          "flow_id",
+          "flow_name",
+          "flow_message_id",
+          "send_channel"
+        ],
+        "prompt_intent": "Einmaliger Tagesreport zur Abbruch-, Welcome- und Nachkauf-Strecke, ohne Änderungen oder Kundenansprache"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"data\":{\"type\":\"flow-values-report\",\"id\":\"e0093f8b-1f3c-441e-9da7-6f4b15a4e542\",\"attributes\":{\"results\":[{\"groupings\":{\"flow_id\":\"XEGbTB\",\"flow_name\":\"Abandoned Checkout · 1 Std\",\"flow_message_id\":\"SPNjDp\",\"send_channel\":\"email\"},\"statistics\":{\"average_order_value\":0.0,\"click_rate\":0.0,\"clicks_unique\":0.0,\"conversion_rate\":0.0,\"conversion_uniques\":0.0,\"conversion_value\":0.0,\"conversions\":0.0,\"delivered\":1.0,\"delivery_rate\":1.0,\"open_rate\":1.0,\"opens_unique\":1.0,\"recipients\":1.0,\"revenue_per_recipient\":0.0},\"flow_details\":{\"type\":\"flow\",\"id\":\"XEGbTB\",\"attributes\":{\"name\":\"Abandoned Checkout · 1 Std\",\"status\":\"live\",\"trigger_type\":\"Metric\",\"created\":\"2026-10-10T08:11:24+00:00\",\"updated\":\"2026-11-09T11:34:12+00:00\",\"tags\":[]}}},{\"groupings\":{\"flow_id\":\"XEGbTB\",\"flow_name\":\"Abandoned Checkout · 1 Std\",\"flow_message_id\":\"VfffLv\",\"send_channel\":\"email\"},\"statistics\":{\"average_order_value\":0.0,\"click_rate\":0.0,\"clicks_unique\":0.0,\"conversion_rate\":0.0,\"conversion_uniques\":0.0,\"conversion_value\":0.0,\"conversions\":0.0,\"delivered\":2.0,\"delivery_rate\":1.0,\"open_rate\":1.0,\"opens_unique\":2.0,\"recipients\":2.0,\"revenue_per_recipient\":0.0},\"flow_details\":{\"type\":\"flow\",\"id\":\"XEGbTB\",\"attributes\":{\"name\":\"Abandoned Checkout · 1 Std\",\"status\":\"live\",\"trigger_type\":\"Metric\",\"created\":\"2026-10-10T08:11:24+00:00\",\"updated\":\"2026-11-09T11:34:12+00:00\",\"tags\":[]}}}],\"flow_aggregation\":[{\"flow_id\":\"XEGbTB\",\"flow_details\":{\"type\":\"flow\",\"id\":\"XEGbTB\",\"attributes\":{\"name\":\"Abandoned Checkout · 1 Std\",\"status\":\"live\",\"trigger_type\":\"Metric\",\"created\":\"2026-10-10T08:11:24+00:00\",\"updated\":\"2026-11-09T11:34:12+00:00\",\"tags\":[]}},\"statistics\":{\"clicks_unique\":0.0,\"conversion_uniques\":0.0,\"conversion_value\":0.0,\"conversions\":0.0,\"delivered\":3.0,\"opens_unique\":3.0,\"recipients\":3.0,\"open_rate\":1.0,\"click_rate\":0.0,\"conversion_rate\":0.0,\"delivery_rate\":1.0,\"click_to_open_rate\":0.0,\"average_order_value\":0,\"revenue_per_recipient\":0.0}}]},\"relationships\":{\"flows\":{\"data\":[{\"type\":\"flow\",\"id\":\"XEGbTB\"}]},\"flow-messages\":{\"data\":[{\"type\":\"flow-message\",\"id\":\"SPNjDp\"},{\"type\":\"flow-message\",\"id\":\"VfffLv\"}]}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flow-values-reports\",\"next\":null,\"prev\":null}}"
+          }
+        ],
+        "structuredContent": {
+          "data": {
+            "type": "flow-values-report",
+            "id": "e0093f8b-1f3c-441e-9da7-6f4b15a4e542",
+            "attributes": {
+              "results": [
+                {
+                  "groupings": {
+                    "flow_id": "XEGbTB",
+                    "flow_name": "Abandoned Checkout · 1 Std",
+                    "flow_message_id": "SPNjDp",
+                    "send_channel": "email"
+                  },
+                  "statistics": {
+                    "average_order_value": 0,
+                    "click_rate": 0,
+                    "clicks_unique": 0,
+                    "conversion_rate": 0,
+                    "conversion_uniques": 0,
+                    "conversion_value": 0,
+                    "conversions": 0,
+                    "delivered": 1,
+                    "delivery_rate": 1,
+                    "open_rate": 1,
+                    "opens_unique": 1,
+                    "recipients": 1,
+                    "revenue_per_recipient": 0
+                  },
+                  "flow_details": {
+                    "type": "flow",
+                    "id": "XEGbTB",
+                    "attributes": {
+                      "name": "Abandoned Checkout · 1 Std",
+                      "status": "live",
+                      "trigger_type": "Metric",
+                      "created": "2026-10-10T08:11:24+00:00",
+                      "updated": "2026-11-09T11:34:12+00:00",
+                      "tags": []
+                    }
+                  }
+                },
+                {
+                  "groupings": {
+                    "flow_id": "XEGbTB",
+                    "flow_name": "Abandoned Checkout · 1 Std",
+                    "flow_message_id": "VfffLv",
+                    "send_channel": "email"
+                  },
+                  "statistics": {
+                    "average_order_value": 0,
+                    "click_rate": 0,
+                    "clicks_unique": 0,
+                    "conversion_rate": 0,
+                    "conversion_uniques": 0,
+                    "conversion_value": 0,
+                    "conversions": 0,
+                    "delivered": 2,
+                    "delivery_rate": 1,
+                    "open_rate": 1,
+                    "opens_unique": 2,
+                    "recipients": 2,
+                    "revenue_per_recipient": 0
+                  },
+                  "flow_details": {
+                    "type": "flow",
+                    "id": "XEGbTB",
+                    "attributes": {
+                      "name": "Abandoned Checkout · 1 Std",
+                      "status": "live",
+                      "trigger_type": "Metric",
+                      "created": "2026-10-10T08:11:24+00:00",
+                      "updated": "2026-11-09T11:34:12+00:00",
+                      "tags": []
+                    }
+                  }
+                }
+              ],
+              "flow_aggregation": [
+                {
+                  "flow_id": "XEGbTB",
+                  "flow_details": {
+                    "type": "flow",
+                    "id": "XEGbTB",
+                    "attributes": {
+                      "name": "Abandoned Checkout · 1 Std",
+                      "status": "live",
+                      "trigger_type": "Metric",
+                      "created": "2026-10-10T08:11:24+00:00",
+                      "updated": "2026-11-09T11:34:12+00:00",
+                      "tags": []
+                    }
+                  },
+                  "statistics": {
+                    "clicks_unique": 0,
+                    "conversion_uniques": 0,
+                    "conversion_value": 0,
+                    "conversions": 0,
+                    "delivered": 3,
+                    "opens_unique": 3,
+                    "recipients": 3,
+                    "open_rate": 1,
+                    "click_rate": 0,
+                    "conversion_rate": 0,
+                    "delivery_rate": 1,
+                    "click_to_open_rate": 0,
+                    "average_order_value": 0,
+                    "revenue_per_recipient": 0
+                  }
+                }
+              ]
+            },
+            "relationships": {
+              "flows": {
+                "data": [
+                  {
+                    "type": "flow",
+                    "id": "XEGbTB"
+                  }
+                ]
+              },
+              "flow-messages": {
+                "data": [
+                  {
+                    "type": "flow-message",
+                    "id": "SPNjDp"
+                  },
+                  {
+                    "type": "flow-message",
+                    "id": "VfffLv"
+                  }
+                ]
+              }
+            }
+          },
+          "links": {
+            "self": "https://a.klaviyo.com/api/flow-values-reports",
+            "next": null,
+            "prev": null
+          }
+        },
+        "isError": false
+      }
+    },
+    "flowDefinitions": [
+      {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"data\":{\"type\":\"flow\",\"id\":\"Vse76a\",\"attributes\":{\"name\":\"Abandoned Checkout\",\"status\":\"draft\",\"trigger_type\":\"Metric\",\"updated\":\"2026-10-10T08:13:07+00:00\"},\"relationships\":{\"flow-actions\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/Vse76a/relationships/flow-actions/\",\"related\":\"https://a.klaviyo.com/api/flows/Vse76a/flow-actions/\"}},\"tags\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/Vse76a/relationships/tags/\",\"related\":\"https://a.klaviyo.com/api/flows/Vse76a/tags/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/Vse76a/\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/Vse76a?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated\"}}"
+            }
+          ],
+          "structuredContent": {
+            "result": {
+              "data": {
+                "type": "flow",
+                "id": "Vse76a",
+                "attributes": {
+                  "name": "Abandoned Checkout",
+                  "status": "draft",
+                  "trigger_type": "Metric",
+                  "updated": "2026-10-10T08:13:07+00:00"
+                },
+                "relationships": {
+                  "flow-actions": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/Vse76a/relationships/flow-actions/",
+                      "related": "https://a.klaviyo.com/api/flows/Vse76a/flow-actions/"
+                    }
+                  },
+                  "tags": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/Vse76a/relationships/tags/",
+                      "related": "https://a.klaviyo.com/api/flows/Vse76a/tags/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/flows/Vse76a/"
+                }
+              },
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/Vse76a?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+              }
+            }
+          },
+          "isError": false
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"data\":{\"type\":\"flow\",\"id\":\"VbLQj6\",\"attributes\":{\"name\":\"Welcome Series\",\"status\":\"draft\",\"trigger_type\":\"Added to List\",\"updated\":\"2026-11-02T22:55:34+00:00\"},\"relationships\":{\"flow-actions\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/relationships/flow-actions/\",\"related\":\"https://a.klaviyo.com/api/flows/VbLQj6/flow-actions/\"}},\"tags\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/relationships/tags/\",\"related\":\"https://a.klaviyo.com/api/flows/VbLQj6/tags/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated\"}}"
+            }
+          ],
+          "structuredContent": {
+            "result": {
+              "data": {
+                "type": "flow",
+                "id": "VbLQj6",
+                "attributes": {
+                  "name": "Welcome Series",
+                  "status": "draft",
+                  "trigger_type": "Added to List",
+                  "updated": "2026-11-02T22:55:34+00:00"
+                },
+                "relationships": {
+                  "flow-actions": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/VbLQj6/relationships/flow-actions/",
+                      "related": "https://a.klaviyo.com/api/flows/VbLQj6/flow-actions/"
+                    }
+                  },
+                  "tags": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/VbLQj6/relationships/tags/",
+                      "related": "https://a.klaviyo.com/api/flows/VbLQj6/tags/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/flows/VbLQj6/"
+                }
+              },
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/VbLQj6?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+              }
+            }
+          },
+          "isError": false
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"data\":{\"type\":\"flow\",\"id\":\"RnTvsY\",\"attributes\":{\"name\":\"Post-Purchase · Order + Review\",\"status\":\"draft\",\"trigger_type\":\"Metric\",\"updated\":\"2026-11-02T22:55:37+00:00\"},\"relationships\":{\"flow-actions\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/RnTvsY/relationships/flow-actions/\",\"related\":\"https://a.klaviyo.com/api/flows/RnTvsY/flow-actions/\"}},\"tags\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/RnTvsY/relationships/tags/\",\"related\":\"https://a.klaviyo.com/api/flows/RnTvsY/tags/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/RnTvsY/\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/RnTvsY?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated\"}}"
+            }
+          ],
+          "structuredContent": {
+            "result": {
+              "data": {
+                "type": "flow",
+                "id": "RnTvsY",
+                "attributes": {
+                  "name": "Post-Purchase · Order + Review",
+                  "status": "draft",
+                  "trigger_type": "Metric",
+                  "updated": "2026-11-02T22:55:37+00:00"
+                },
+                "relationships": {
+                  "flow-actions": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/RnTvsY/relationships/flow-actions/",
+                      "related": "https://a.klaviyo.com/api/flows/RnTvsY/flow-actions/"
+                    }
+                  },
+                  "tags": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/RnTvsY/relationships/tags/",
+                      "related": "https://a.klaviyo.com/api/flows/RnTvsY/tags/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/flows/RnTvsY/"
+                }
+              },
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/RnTvsY?fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+              }
+            }
+          },
+          "isError": false
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"data\":{\"type\":\"flow\",\"id\":\"XEGbTB\",\"attributes\":{\"name\":\"Abandoned Checkout · 1 Std\",\"status\":\"live\",\"trigger_type\":\"Metric\",\"updated\":\"2026-11-09T11:34:12+00:00\",\"definition\":{\"triggers\":[{\"type\":\"metric\",\"id\":\"XhnJPv\",\"trigger_filter\":null}],\"profile_filter\":{\"condition_groups\":[{\"conditions\":[{\"type\":\"profile-metric\",\"metric_id\":\"W7XTVD\",\"measurement\":\"count\",\"measurement_filter\":{\"type\":\"numeric\",\"operator\":\"equals\",\"value\":0},\"timeframe_filter\":{\"type\":\"date\",\"operator\":\"flow-start\"},\"metric_filters\":null}]}]},\"actions\":[{\"id\":\"120053544\",\"type\":\"time-delay\",\"data\":{\"unit\":\"hours\",\"value\":1,\"secondary_value\":0,\"timezone\":\"profile\"},\"links\":{\"next\":\"120053545\"}},{\"id\":\"120053545\",\"type\":\"send-email\",\"data\":{\"message\":{\"from_email\":\"info@luxestyle.ch\",\"from_label\":\"LuxeStyle CH\",\"reply_to_email\":\"info@luxestyle.ch\",\"cc_email\":null,\"bcc_email\":null,\"subject_line\":\"Dein Einkauf wartet auf dich\",\"preview_text\":\"Dein Warenkorb ist gespeichert — in einem Klick zurück an der Kasse.\",\"template_id\":\"RfQt4V\",\"smart_sending_enabled\":true,\"transactional\":false,\"add_tracking_params\":true,\"custom_tracking_params\":null,\"additional_filters\":null,\"name\":\"Abandoned Checkout - Email 1 (nach 1 Std)\",\"id\":\"VfffLv\"},\"status\":\"live\"},\"links\":{\"next\":\"120053546\"}},{\"id\":\"120053546\",\"type\":\"time-delay\",\"data\":{\"unit\":\"hours\",\"value\":23,\"secondary_value\":0,\"timezone\":\"profile\"},\"links\":{\"next\":\"120053547\"}},{\"id\":\"120053547\",\"type\":\"send-email\",\"data\":{\"message\":{\"from_email\":\"info@luxestyle.ch\",\"from_label\":\"LuxeStyle CH\",\"reply_to_email\":\"info@luxestyle.ch\",\"cc_email\":null,\"bcc_email\":null,\"subject_line\":\"Dein Einkauf ist noch gespeichert\",\"preview_text\":\"Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse.\",\"template_id\":\"RNefka\",\"smart_sending_enabled\":true,\"transactional\":false,\"add_tracking_params\":true,\"custom_tracking_params\":null,\"additional_filters\":null,\"name\":\"Abandoned Checkout - Email 2 (nach 24 Std, -10%)\",\"id\":\"SPNjDp\"},\"status\":\"live\"},\"links\":{\"next\":null}}],\"entry_action_id\":\"120053544\"}},\"relationships\":{\"flow-actions\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/XEGbTB/relationships/flow-actions/\",\"related\":\"https://a.klaviyo.com/api/flows/XEGbTB/flow-actions/\"}},\"tags\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/XEGbTB/relationships/tags/\",\"related\":\"https://a.klaviyo.com/api/flows/XEGbTB/tags/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/XEGbTB/\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/XEGbTB?additional-fields%5Bflow%5D=definition&fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated\"}}"
+            }
+          ],
+          "structuredContent": {
+            "result": {
+              "data": {
+                "type": "flow",
+                "id": "XEGbTB",
+                "attributes": {
+                  "name": "Abandoned Checkout · 1 Std",
+                  "status": "live",
+                  "trigger_type": "Metric",
+                  "updated": "2026-11-09T11:34:12+00:00",
+                  "definition": {
+                    "triggers": [
+                      {
+                        "type": "metric",
+                        "id": "XhnJPv",
+                        "trigger_filter": null
+                      }
+                    ],
+                    "profile_filter": {
+                      "condition_groups": [
+                        {
+                          "conditions": [
+                            {
+                              "type": "profile-metric",
+                              "metric_id": "W7XTVD",
+                              "measurement": "count",
+                              "measurement_filter": {
+                                "type": "numeric",
+                                "operator": "equals",
+                                "value": 0
+                              },
+                              "timeframe_filter": {
+                                "type": "date",
+                                "operator": "flow-start"
+                              },
+                              "metric_filters": null
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "actions": [
+                      {
+                        "id": "120053544",
+                        "type": "time-delay",
+                        "data": {
+                          "unit": "hours",
+                          "value": 1,
+                          "secondary_value": 0,
+                          "timezone": "profile"
+                        },
+                        "links": {
+                          "next": "120053545"
+                        }
+                      },
+                      {
+                        "id": "120053545",
+                        "type": "send-email",
+                        "data": {
+                          "message": {
+                            "from_email": "info@luxestyle.ch",
+                            "from_label": "LuxeStyle CH",
+                            "reply_to_email": "info@luxestyle.ch",
+                            "cc_email": null,
+                            "bcc_email": null,
+                            "subject_line": "Dein Einkauf wartet auf dich",
+                            "preview_text": "Dein Warenkorb ist gespeichert — in einem Klick zurück an der Kasse.",
+                            "template_id": "RfQt4V",
+                            "smart_sending_enabled": true,
+                            "transactional": false,
+                            "add_tracking_params": true,
+                            "custom_tracking_params": null,
+                            "additional_filters": null,
+                            "name": "Abandoned Checkout - Email 1 (nach 1 Std)",
+                            "id": "VfffLv"
+                          },
+                          "status": "live"
+                        },
+                        "links": {
+                          "next": "120053546"
+                        }
+                      },
+                      {
+                        "id": "120053546",
+                        "type": "time-delay",
+                        "data": {
+                          "unit": "hours",
+                          "value": 23,
+                          "secondary_value": 0,
+                          "timezone": "profile"
+                        },
+                        "links": {
+                          "next": "120053547"
+                        }
+                      },
+                      {
+                        "id": "120053547",
+                        "type": "send-email",
+                        "data": {
+                          "message": {
+                            "from_email": "info@luxestyle.ch",
+                            "from_label": "LuxeStyle CH",
+                            "reply_to_email": "info@luxestyle.ch",
+                            "cc_email": null,
+                            "bcc_email": null,
+                            "subject_line": "Dein Einkauf ist noch gespeichert",
+                            "preview_text": "Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse.",
+                            "template_id": "RNefka",
+                            "smart_sending_enabled": true,
+                            "transactional": false,
+                            "add_tracking_params": true,
+                            "custom_tracking_params": null,
+                            "additional_filters": null,
+                            "name": "Abandoned Checkout - Email 2 (nach 24 Std, -10%)",
+                            "id": "SPNjDp"
+                          },
+                          "status": "live"
+                        },
+                        "links": {
+                          "next": null
+                        }
+                      }
+                    ],
+                    "entry_action_id": "120053544"
+                  }
+                },
+                "relationships": {
+                  "flow-actions": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/XEGbTB/relationships/flow-actions/",
+                      "related": "https://a.klaviyo.com/api/flows/XEGbTB/flow-actions/"
+                    }
+                  },
+                  "tags": {
+                    "links": {
+                      "self": "https://a.klaviyo.com/api/flows/XEGbTB/relationships/tags/",
+                      "related": "https://a.klaviyo.com/api/flows/XEGbTB/tags/"
+                    }
+                  }
+                },
+                "links": {
+                  "self": "https://a.klaviyo.com/api/flows/XEGbTB/"
+                }
+              },
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/XEGbTB?additional-fields%5Bflow%5D=definition&fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+              }
+            }
+          },
+          "isError": false
+        }
+      }
+    ],
+    "captureForms": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"data\":[],\"links\":{\"self\":\"https://a.klaviyo.com/api/forms?fields%5Bform%5D=name%2Cstatus%2Cupdated_at&page%5Bsize%5D=5&sort=-updated_at\",\"next\":null,\"prev\":null}}"
+          }
+        ],
+        "structuredContent": {
+          "result": {
+            "data": [],
+            "links": {
+              "self": "https://a.klaviyo.com/api/forms?fields%5Bform%5D=name%2Cstatus%2Cupdated_at&page%5Bsize%5D=5&sort=-updated_at",
+              "next": null,
+              "prev": null
+            }
+          }
+        },
+        "isError": false
+      }
+    }
+  },
+  "additionalWelcomeDefinition": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"data\":{\"type\":\"flow\",\"id\":\"VbLQj6\",\"attributes\":{\"name\":\"Welcome Series\",\"status\":\"draft\",\"trigger_type\":\"Added to List\",\"updated\":\"2026-11-02T22:55:34+00:00\",\"definition\":{\"triggers\":[{\"type\":\"list\",\"id\":\"T2VHfu\"}],\"profile_filter\":null,\"actions\":[{\"id\":\"108029461\",\"type\":\"send-email\",\"data\":{\"message\":{\"from_email\":\"info@luxestyle.ch\",\"from_label\":\"LuxeStyle CH\",\"reply_to_email\":\"info@luxestyle.ch\",\"cc_email\":null,\"bcc_email\":null,\"subject_line\":\"Willkommen 💛 Hier sind deine 10%\",\"preview_text\":\"\",\"template_id\":\"VZnxDz\",\"smart_sending_enabled\":true,\"transactional\":false,\"add_tracking_params\":false,\"custom_tracking_params\":null,\"additional_filters\":null,\"name\":\"Email #1\",\"id\":\"TTuuTS\"},\"status\":\"draft\"},\"links\":{\"next\":null}}],\"entry_action_id\":\"108029461\"}},\"relationships\":{\"flow-actions\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/relationships/flow-actions/\",\"related\":\"https://a.klaviyo.com/api/flows/VbLQj6/flow-actions/\"}},\"tags\":{\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/relationships/tags/\",\"related\":\"https://a.klaviyo.com/api/flows/VbLQj6/tags/\"}}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6/\"}},\"links\":{\"self\":\"https://a.klaviyo.com/api/flows/VbLQj6?additional-fields%5Bflow%5D=definition&fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated\"}}"
+      }
+    ],
+    "structuredContent": {
+      "result": {
+        "data": {
+          "type": "flow",
+          "id": "VbLQj6",
+          "attributes": {
+            "name": "Welcome Series",
+            "status": "draft",
+            "trigger_type": "Added to List",
+            "updated": "2026-11-02T22:55:34+00:00",
+            "definition": {
+              "triggers": [
+                {
+                  "type": "list",
+                  "id": "T2VHfu"
+                }
+              ],
+              "profile_filter": null,
+              "actions": [
+                {
+                  "id": "108029461",
+                  "type": "send-email",
+                  "data": {
+                    "message": {
+                      "from_email": "info@luxestyle.ch",
+                      "from_label": "LuxeStyle CH",
+                      "reply_to_email": "info@luxestyle.ch",
+                      "cc_email": null,
+                      "bcc_email": null,
+                      "subject_line": "Willkommen 💛 Hier sind deine 10%",
+                      "preview_text": "",
+                      "template_id": "VZnxDz",
+                      "smart_sending_enabled": true,
+                      "transactional": false,
+                      "add_tracking_params": false,
+                      "custom_tracking_params": null,
+                      "additional_filters": null,
+                      "name": "Email #1",
+                      "id": "TTuuTS"
+                    },
+                    "status": "draft"
+                  },
+                  "links": {
+                    "next": null
+                  }
+                }
+              ],
+              "entry_action_id": "108029461"
+            }
+          },
+          "relationships": {
+            "flow-actions": {
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/VbLQj6/relationships/flow-actions/",
+                "related": "https://a.klaviyo.com/api/flows/VbLQj6/flow-actions/"
+              }
+            },
+            "tags": {
+              "links": {
+                "self": "https://a.klaviyo.com/api/flows/VbLQj6/relationships/tags/",
+                "related": "https://a.klaviyo.com/api/flows/VbLQj6/tags/"
+              }
+            }
+          },
+          "links": {
+            "self": "https://a.klaviyo.com/api/flows/VbLQj6/"
+          }
+        },
+        "links": {
+          "self": "https://a.klaviyo.com/api/flows/VbLQj6?additional-fields%5Bflow%5D=definition&fields%5Bflow%5D=name%2Cstatus%2Ctrigger_type%2Cupdated"
+        }
+      }
+    },
+    "isError": false
+  },
+  "captureSourceCheck": {
+    "emailForms": [
+      {
+        "action": "/contact#contact_form",
+        "method": "post",
+        "id": "contact_form",
+        "inputs": [
+          {
+            "type": "hidden",
+            "name": "form_type"
+          },
+          {
+            "type": "hidden",
+            "name": "utf8"
+          },
+          {
+            "type": "email",
+            "name": "contact[email]"
+          }
+        ]
+      },
+      {
+        "action": null,
+        "method": null,
+        "id": "lx-pop-f",
+        "inputs": [
+          {
+            "type": "email",
+            "name": null
+          }
+        ]
+      }
+    ],
+    "klaviyoScriptURLs": [],
+    "formAPIResult": "empty data with next null, exact API scope only",
+    "runtimeCaptureAndListEntry": "unknown_not_submitted",
+    "staticHTMLSha256": "54b29cc6cef99c657c4f11d0b8e00d9dc3c3ebf84016a5e47db802a03219f09b",
+    "klaviyoFormsAPIEmptyIsNotMissingCapture": true,
+    "inlineCaptureRoutes": [
+      {
+        "source": "Onsite Popup",
+        "account": "XWqMAD",
+        "targetList": "T2VHfu",
+        "endpoint": "https://a.klaviyo.com/client/subscriptions/",
+        "revisionInSource": "2024-10-15",
+        "hasPOSTCode": true
+      },
+      {
+        "source": "Footer Newsletter",
+        "account": "XWqMAD",
+        "targetList": "T2VHfu",
+        "endpoint": "https://a.klaviyo.com/client/subscriptions/",
+        "revisionInSource": "2024-10-15",
+        "hasPOSTCode": true
+      }
+    ],
+    "welcomeDefinitionTriggerList": "T2VHfu",
+    "captureToWelcomeSourceListsMatch": true,
+    "welcomeCurrentState": "draft",
+    "runtimeSuccessStillUnknown": true,
+    "emailPromise": "Der Code ist auch gleich per E-Mail bei dir.",
+    "proposal": {
+      "before": "Der Code ist auch gleich per E-Mail bei dir.",
+      "after": "Deine Anmeldung wurde übermittelt.",
+      "scope": "One success-message sentence only; draft, no flow activation/discount or popup-settings change.",
+      "rationale": "The visible immediate-email promise is not supported by the matching draft Welcome flow. This does not prove no other email automation can run."
+    }
+  },
+  "rootIndependentMetricCheck": [
+    {
+      "network": "instagram",
+      "metric": "IGEV05",
+      "label": "Instagram Evolution > Views",
+      "observedSum": 578.0,
+      "numericDays": 7,
+      "nullDays": 0,
+      "absentDays": 0,
+      "completeNumericDays": true,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "instagram",
+      "metric": "IGEV38",
+      "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+      "observedSum": 1.0,
+      "numericDays": 1,
+      "nullDays": 6,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "facebook",
+      "metric": "FBEV49",
+      "label": "Facebook Evolution > Page Media View",
+      "observedSum": 135.0,
+      "numericDays": 7,
+      "nullDays": 0,
+      "absentDays": 0,
+      "completeNumericDays": true,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "facebook",
+      "metric": "FBEV34",
+      "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+      "observedSum": 0.0,
+      "numericDays": 1,
+      "nullDays": 6,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "tiktok",
+      "metric": "TKEV12",
+      "label": "TikTok Evolution > Video views in period",
+      "observedSum": 3497.0,
+      "numericDays": 6,
+      "nullDays": 1,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "tiktok",
+      "metric": "TKEV06",
+      "label": "TikTok Evolution > Interactions",
+      "observedSum": 11.0,
+      "numericDays": 6,
+      "nullDays": 1,
+      "absentDays": 0,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "pinterest",
+      "metric": "PIEV01",
+      "label": "Pinterest Evolution > Impressions in period",
+      "observedSum": 4256.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "pinterest",
+      "metric": "PIEV04",
+      "label": "Pinterest Evolution > Interactions in period",
+      "observedSum": 81.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "threads",
+      "metric": "THEV06",
+      "label": "Threads Evolution > Post Views",
+      "observedSum": 5.0,
+      "numericDays": 2,
+      "nullDays": 0,
+      "absentDays": 5,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "threads",
+      "metric": "THEV05",
+      "label": "Threads Evolution > Interactions",
+      "observedSum": 0.0,
+      "numericDays": 1,
+      "nullDays": 1,
+      "absentDays": 5,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "youtube",
+      "metric": "YTEV02",
+      "label": "Youtube Evolution > Video Views",
+      "observedSum": 699.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    },
+    {
+      "network": "youtube",
+      "metric": "YTEV05",
+      "label": "Youtube Evolution > Followers Gained",
+      "observedSum": 0.0,
+      "numericDays": 5,
+      "nullDays": 0,
+      "absentDays": 2,
+      "completeNumericDays": false,
+      "outOfPeriodRows": []
+    }
+  ],
+  "rootIndependentFlowCheck": {
+    "flow": "XEGbTB",
+    "deliveredMessageCount": 3,
+    "clicksUniqueAsReported": 0,
+    "conversionsAsReported": 0,
+    "distinctPeople": "unknown_across_messages",
+    "welcomeTriggerList": "T2VHfu",
+    "welcomeStatus": "draft",
+    "currenciesNotMixed": true,
+    "notShopSalesOrSyncEvidence": true
+  },
+  "scope": "Once15Nov, completed local08–14Nov. Numeric values only on observed dates. Missing flow rows unknown. AccountUSD and ShopCHF are not combined. No order/attribution/sync inference."
+}

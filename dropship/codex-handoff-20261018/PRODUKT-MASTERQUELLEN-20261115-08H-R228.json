@@ -1,0 +1,600 @@
+{
+  "shop": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"shop\":{\"id\":\"gid://shopify/Shop/94368563585\",\"name\":\"LuxeStyle\",\"myshopifyDomain\":\"au3j0y-hq.myshopify.com\",\"primaryDomain\":{\"host\":\"luxestyle.ch\",\"url\":\"https://luxestyle.ch\"},\"currencyCode\":\"CHF\",\"ianaTimezone\":\"Europe/Zurich\"}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "shop": {
+            "id": "gid://shopify/Shop/94368563585",
+            "name": "LuxeStyle",
+            "myshopifyDomain": "au3j0y-hq.myshopify.com",
+            "primaryDomain": {
+              "host": "luxestyle.ch",
+              "url": "https://luxestyle.ch"
+            },
+            "currencyCode": "CHF",
+            "ianaTimezone": "Europe/Zurich"
+          }
+        }
+      },
+      "isError": false
+    }
+  },
+  "nativeProduct": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"product\":{\"id\":\"gid://shopify/Product/15521256604033\",\"title\":\"Sternenlicht-Projektor für Schlafzimmer\",\"handle\":\"sternenlicht-projektor-fur-schlafzimmer-732544\",\"status\":\"ACTIVE\",\"updatedAt\":\"2026-11-11T09:52:25Z\",\"onlineStoreUrl\":\"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544\",\"tags\":[\"auswahl-offen\",\"beleuchtung\",\"bild-ok\",\"bildmass-ok-0906\",\"cj-real\",\"dropship\",\"elektronik\",\"gadget\",\"sort-nachtlichter\",\"sort-nachttischlampen\",\"tech\",\"varianten-nachgezogen-1025\"],\"seo\":{\"title\":\"Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle\",\"description\":\"Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.\"},\"descriptionHtml\":\"<!-- ls-var-v1 --><!-- ls-text-v2 --><p>Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.</p><h4>So funktioniert er</h4><p>Mit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.</p><h4>Die Ausführungen</h4><p>Es gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxie-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxie-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxie-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxie-Scheibe, schau dir die gewünschte Ausführung also genau an.</p><h4>Hinweise</h4><p>Der Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.</p><!-- /ls-text-v2 -->\\n<div style=\\\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\\\">\\n<strong>Sorglos shoppen:</strong> 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte und Klarna.</div><!-- ls-fakten-v1 --><div class=\\\"ls-fakten\\\" style=\\\"margin:16px 0;\\\">\\n<h4>Technische Daten</h4>\\n<table style=\\\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\\\">\\n<tr>\\n<th style=\\\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\\\">Material</th>\\n<td style=\\\"padding:6px 0;border-bottom:1px solid #ece7de;\\\">Kunststoff, Sonstiges</td>\\n</tr>\\n<tr>\\n<th style=\\\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\\\">Gewicht</th>\\n<td style=\\\"padding:6px 0;border-bottom:1px solid #ece7de;\\\">650 g</td>\\n</tr>\\n<tr>\\n<th style=\\\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\\\">Masse</th>\\n<td style=\\\"padding:6px 0;border-bottom:1px solid #ece7de;\\\">121x110x121 mm</td>\\n</tr>\\n<tr>\\n<th style=\\\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\\\">Leistung</th>\\n<td style=\\\"padding:6px 0;border-bottom:1px solid #ece7de;\\\">4W</td>\\n</tr>\\n</table>\\n<h4>Lieferumfang</h4>\\n<ul>\\n<li>1 Nachtlicht</li>\\n<li>6 Farbscheiben</li>\\n<li>1 wiederaufladbares Bluetooth-Drehteil</li>\\n<li>1 Galaxyscheibe</li>\\n</ul>\\n<h4>So geht's</h4>\\n<ol>\\n<li>Lampenschirm einschalten für Seitenprojektion</li>\\n<li>Lampenschirm als kleines Nachtlicht einrasten</li>\\n<li>Projektor drehen, um den Fokus einzustellen</li>\\n<li>Filmbox öffnen</li>\\n<li>Filmschale entnehmen/ersetzen</li>\\n<li>Filmschale in Filmbox schieben</li>\\n</ol>\\n<h4>Gut zu wissen</h4>\\n<ul>\\n<li>Produkt nicht mit schweren Gegenständen quetschen</li>\\n<li>Oberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden</li>\\n<li>Produkt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden</li>\\n<li>Nur für Innenräume geeignet</li>\\n<li>Mitgeliefertes USB-Kabel nur für dieses Produkt verwenden</li>\\n</ul>\\n<p style=\\\"font-size:12px;opacity:.7;margin-top:10px;\\\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\\n</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/wohnen-dekoration\\\">Wohnen &amp; Deko</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"variants\":{\"nodes\":[{\"id\":\"gid://shopify/ProductVariant/68122445283719\",\"title\":\"A · Grundmodell\",\"price\":\"34.90\",\"sku\":\"CJSN139239101AZ\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445316487\",\"title\":\"B · mit 6 Motivscheiben\",\"price\":\"37.90\",\"sku\":\"CJSN139239102BY\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445349255\",\"title\":\"C · Galaxie-Scheibe + 6 Motivscheiben\",\"price\":\"40.90\",\"sku\":\"CJSN139239103CX\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445382023\",\"title\":\"D · Akku, Bluetooth, 6 Motivscheiben\",\"price\":\"49.90\",\"sku\":\"CJSN139239104DW\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445414791\",\"title\":\"E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben\",\"price\":\"51.90\",\"sku\":\"CJSN139239105EV\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445447559\",\"title\":\"F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben\",\"price\":\"44.90\",\"sku\":\"CJSN139239106FU\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}},{\"id\":\"gid://shopify/ProductVariant/68122445480327\",\"title\":\"G · drehend, Galaxie-Scheibe + 3 Farbscheiben\",\"price\":\"35.90\",\"sku\":\"CJSN139239107GT\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false}}],\"pageInfo\":{\"hasNextPage\":false}},\"media\":{\"nodes\":[{\"id\":\"gid://shopify/MediaImage/70733173424513\",\"mediaContentType\":\"IMAGE\",\"preview\":{\"image\":{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090\",\"altText\":\"Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle\"}}},{\"id\":\"gid://shopify/MediaImage/70733173260673\",\"mediaContentType\":\"IMAGE\",\"preview\":{\"image\":{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090\",\"altText\":\"Sternenlicht-Projektor für Schlafzimmer | LuxeStyle\"}}},{\"id\":\"gid://shopify/MediaImage/70733173457281\",\"mediaContentType\":\"IMAGE\",\"preview\":{\"image\":{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090\",\"altText\":\"Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle\"}}}],\"pageInfo\":{\"hasNextPage\":true}}}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "product": {
+            "id": "gid://shopify/Product/15521256604033",
+            "title": "Sternenlicht-Projektor für Schlafzimmer",
+            "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+            "status": "ACTIVE",
+            "updatedAt": "2026-11-11T09:52:25Z",
+            "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+            "tags": [
+              "auswahl-offen",
+              "beleuchtung",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "dropship",
+              "elektronik",
+              "gadget",
+              "sort-nachtlichter",
+              "sort-nachttischlampen",
+              "tech",
+              "varianten-nachgezogen-1025"
+            ],
+            "seo": {
+              "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+              "description": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+            },
+            "descriptionHtml": "<!-- ls-var-v1 --><!-- ls-text-v2 --><p>Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.</p><h4>So funktioniert er</h4><p>Mit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.</p><h4>Die Ausführungen</h4><p>Es gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxie-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxie-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxie-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxie-Scheibe, schau dir die gewünschte Ausführung also genau an.</p><h4>Hinweise</h4><p>Der Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.</p><!-- /ls-text-v2 -->\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>Sorglos shoppen:</strong> 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte und Klarna.</div><!-- ls-fakten-v1 --><div class=\"ls-fakten\" style=\"margin:16px 0;\">\n<h4>Technische Daten</h4>\n<table style=\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\">\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Material</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Kunststoff, Sonstiges</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Gewicht</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">650 g</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Masse</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">121x110x121 mm</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Leistung</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">4W</td>\n</tr>\n</table>\n<h4>Lieferumfang</h4>\n<ul>\n<li>1 Nachtlicht</li>\n<li>6 Farbscheiben</li>\n<li>1 wiederaufladbares Bluetooth-Drehteil</li>\n<li>1 Galaxyscheibe</li>\n</ul>\n<h4>So geht's</h4>\n<ol>\n<li>Lampenschirm einschalten für Seitenprojektion</li>\n<li>Lampenschirm als kleines Nachtlicht einrasten</li>\n<li>Projektor drehen, um den Fokus einzustellen</li>\n<li>Filmbox öffnen</li>\n<li>Filmschale entnehmen/ersetzen</li>\n<li>Filmschale in Filmbox schieben</li>\n</ol>\n<h4>Gut zu wissen</h4>\n<ul>\n<li>Produkt nicht mit schweren Gegenständen quetschen</li>\n<li>Oberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden</li>\n<li>Produkt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden</li>\n<li>Nur für Innenräume geeignet</li>\n<li>Mitgeliefertes USB-Kabel nur für dieses Produkt verwenden</li>\n</ul>\n<p style=\"font-size:12px;opacity:.7;margin-top:10px;\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\n</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/68122445283719",
+                  "title": "A · Grundmodell",
+                  "price": "34.90",
+                  "sku": "CJSN139239101AZ",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445316487",
+                  "title": "B · mit 6 Motivscheiben",
+                  "price": "37.90",
+                  "sku": "CJSN139239102BY",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445349255",
+                  "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+                  "price": "40.90",
+                  "sku": "CJSN139239103CX",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445382023",
+                  "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+                  "price": "49.90",
+                  "sku": "CJSN139239104DW",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445414791",
+                  "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+                  "price": "51.90",
+                  "sku": "CJSN139239105EV",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445447559",
+                  "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+                  "price": "44.90",
+                  "sku": "CJSN139239106FU",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                },
+                {
+                  "id": "gid://shopify/ProductVariant/68122445480327",
+                  "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+                  "price": "35.90",
+                  "sku": "CJSN139239107GT",
+                  "inventoryPolicy": "CONTINUE",
+                  "inventoryItem": {
+                    "tracked": false
+                  }
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70733173424513",
+                  "mediaContentType": "IMAGE",
+                  "preview": {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+                      "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle"
+                    }
+                  }
+                },
+                {
+                  "id": "gid://shopify/MediaImage/70733173260673",
+                  "mediaContentType": "IMAGE",
+                  "preview": {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090",
+                      "altText": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle"
+                    }
+                  }
+                },
+                {
+                  "id": "gid://shopify/MediaImage/70733173457281",
+                  "mediaContentType": "IMAGE",
+                  "preview": {
+                    "image": {
+                      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+                      "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle"
+                    }
+                  }
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": true
+              }
+            }
+          }
+        }
+      },
+      "isError": false
+    }
+  },
+  "productGate": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/68122445283719",
+    "sku": "CJSN139239101AZ",
+    "status": "ACTIVE",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "libraryBlockedTags": [],
+    "ownerRueckholTags": [],
+    "nonEmptyTags": true,
+    "priceCHF": "34.90",
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "publicAvailable": true,
+    "variantImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+    "productOnlyGatePass": true,
+    "mediaRightsQualityLedgerGate": "blocked_or_unknown_separate_from_product_gate",
+    "publicationReady": false
+  },
+  "sourcePin": {
+    "mainRef": "9c7dfe8c73d475a495795ad738aea3e157b06be1",
+    "path": "automation/lib/kanal_sperren.mjs",
+    "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+    "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371"
+  },
+  "currentPublicVariant": {
+    "id": 68122445283719,
+    "title": "A · Grundmodell",
+    "available": true,
+    "price": 3490,
+    "sku": "CJSN139239101AZ",
+    "featured_image": {
+      "id": 83513734431105,
+      "product_id": 15521256604033,
+      "position": 11,
+      "created_at": "2026-08-31T07:11:27+02:00",
+      "updated_at": "2026-08-31T07:11:30+02:00",
+      "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+      "width": 800,
+      "height": 654,
+      "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+      "variant_ids": [
+        68122445283719
+      ]
+    },
+    "inventory_management": null
+  },
+  "publicHTTP": {
+    "projector-js": {
+      "atUTC": "2026-11-15T06:59:41.873874+00:00",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 24690,
+      "truncated": false,
+      "sha256": "adb3da66c6b153718fdc460c9e310bdf883b5208045724c0d21f68487f5a7466"
+    },
+    "projector-html": {
+      "atUTC": "2026-11-15T06:59:42.420140+00:00",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1116671,
+      "truncated": false,
+      "sha256": "931126d9407bb11986039a1372c4f87cbfabdfaf80551c9ae14f095205272e41"
+    },
+    "home": {
+      "atUTC": "2026-11-15T06:59:42.446174+00:00",
+      "url": "https://luxestyle.ch/",
+      "finalUrl": "https://luxestyle.ch/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1056411,
+      "truncated": false,
+      "sha256": "54b29cc6cef99c657c4f11d0b8e00d9dc3c3ebf84016a5e47db802a03219f09b"
+    }
+  },
+  "currentReferenceImage": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+    "httpStatus": 200,
+    "contentType": "image/jpeg",
+    "atUTC": "2026-11-15T07:10:19.466593+00:00",
+    "bytes": 102392,
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612"
+  },
+  "masterEvidence": {
+    "revision": "R228 continuation",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "shopIdentity": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "timezone": "Europe/Zurich"
+    },
+    "freshShopProductSource": "/dev/shm/luxestyle-review/r228/root-raw.json",
+    "freshShopProduct": {
+      "id": "15521256604033",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "updatedAt": "2026-11-11T09:52:25Z",
+      "tagCount": 12,
+      "selectedVariant": {
+        "label": "A",
+        "id": "68122445283719",
+        "sku": "CJSN139239101AZ",
+        "price": "34.90 CHF",
+        "inventoryPolicy": "CONTINUE",
+        "tracked": false
+      },
+      "otherCurrentVariants": [
+        {
+          "label": "B",
+          "id": "68122445316487",
+          "sku": "CJSN139239102BY",
+          "price": "37.90 CHF"
+        },
+        {
+          "label": "C",
+          "id": "68122445349255",
+          "sku": "CJSN139239103CX",
+          "price": "40.90 CHF"
+        },
+        {
+          "label": "D",
+          "id": "68122445382023",
+          "sku": "CJSN139239104DW",
+          "price": "49.90 CHF"
+        },
+        {
+          "label": "E",
+          "id": "68122445414791",
+          "sku": "CJSN139239105EV",
+          "price": "51.90 CHF"
+        },
+        {
+          "label": "F",
+          "id": "68122445447559",
+          "sku": "CJSN139239106FU",
+          "price": "44.90 CHF"
+        },
+        {
+          "label": "G",
+          "id": "68122445480327",
+          "sku": "CJSN139239107GT",
+          "price": "35.90 CHF"
+        }
+      ],
+      "obsoleteHistoricalVariant": {
+        "id": "56197916361089",
+        "use": "do not use"
+      },
+      "selectedVariantExactReference": {
+        "mediaId": "70733173719425",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "size": "800x654",
+        "sha256_from_R214": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+        "scope": "collage; left white unit with bracket and blue lit area is form/color reference only; packaging and motif inset do not bind A contents/motif"
+      }
+    },
+    "freshRootStorefrontCheck": {
+      "source": "parent/root task report",
+      "variantId": "68122445283719",
+      "available": true,
+      "priceMinor": 3490,
+      "currency": "CHF",
+      "inventoryManagement": null,
+      "shopifyQueriesByThisAgent": 0,
+      "referenceImageFreshDownload": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "atUTC": "2026-11-15T07:10:19.466593+00:00",
+        "bytes": 102392,
+        "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612"
+      }
+    },
+    "cjRead": {
+      "calls": 1,
+      "function": "cjdropshipping_get_product_detail",
+      "pid": "1477820492730732544",
+      "productSku": "CJSN1392391",
+      "returnedNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+      "descriptionVariantMapping": "A: Focus plug-in basic model; B: 6 film sets; C: Galaxy plate + 6 film; D: charge + Bluetooth + 6 film; E: charge + Bluetooth + Galaxy plate + 6 film; F: music box, charging, 18 music, 6 star light plates without galaxy plate; G: plug-in rotation + galaxy plate + 3 color plates without remote control",
+      "globalPackingList": "Night light*1, Color disc*6, Rechargeable Bluetooth rotating*1, Galaxy disc*1; not a proven A-specific packing list",
+      "sourceAuthority": "Supplier catalog metadata; does not prove filmed physical-unit identity, specific A contents beyond variant label, commercial media rights, or delivery promises"
+    },
+    "existingLocalMasterSources": {
+      "cutPlan": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-CUT-PLAN.json",
+      "cutPlanTimestamp": "2026-11-07T23:42:40+01:00",
+      "productionIntake": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+      "gate": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-GATE-20261108-R150.json",
+      "rightsForm": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
+      "r214SourcesFromRoot": "ARBEITSSTAND.run214.sources: storyboard, productCj, captions",
+      "r214TargetedGithubReads": [
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261114-19H-R214.md",
+          "ref": "a9ae0a3",
+          "result": "success",
+          "keyFinding": "same master ID, A-only, 18 sec, R201 EDL kept, current A image is a collage; only left device form/color reference; packaging/inset do not establish A items/motif"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-CJ-20261114-19H-R214.json",
+          "ref": "a9ae0a3",
+          "result": "success",
+          "keyFinding": "product identity and social account identities as of Nov 14; the fresh Nov 15 Core4/Storefront read supersedes product facts"
+        }
+      ],
+      "missingPathAttempts": [
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-R214.md",
+          "result": "404"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-CUT-PLAN.json",
+          "result": "404"
+        }
+      ]
+    },
+    "music": {
+      "path": "automation/music/luxe-premium.wav",
+      "freshGithubMetadataRead": {
+        "repository": "allengchour-glitch/aban-news-landing",
+        "ref": "main",
+        "blob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+        "bytes": "binary content was not returned"
+      },
+      "localPath": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+      "localPathExists": true,
+      "localGitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "localSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "meaning": "local blob matches fresh repository metadata; no licence, rights, mix, or listening approval inferred",
+      "creditsCountercheck": {
+        "repositoryRef": "9c7dfe8c73d475a495795ad738aea3e157b06be1",
+        "path": "automation/music/CREDITS.txt",
+        "gitBlob": "b6dab1a05168da2b7215b50f71b879e4cabdf4c2",
+        "sha256": "3316dc197a40040c8570bbc5c102b8a6bb8ed15ab1fc49d339decf10485326e4",
+        "currentRepositoryDeclaration": "luxe-premium.wav is listed as original FluidSynth/GM production; make_premium.sh named as reproduction source.",
+        "limits": "Repository declaration read; no independent complete soundfont/source licence chain or audio acceptance. No producer or renderer executed.",
+        "instructionPriority": "CREDITS also says a Nov2 reel template chooses Mixkit; current express owner instruction still mandates ONLY luxe-premium.wav. No replacement music selected."
+      }
+    },
+    "referencesAvailability": {
+      "/workspace/luxestyle-review/owner-review-20261018/content/references/projector-source-fresh.mp4": "missing",
+      "/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4": "missing; do not substitute for projector",
+      "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav": "present",
+      "/workspace/luxestyle-review/r124/dropship/ads/render_masterpiece.sh": "present; not run"
+    },
+    "openGates": [
+      "A physical unit and actual motif set not linked by continuous identity capture",
+      "native vertical takes meeting current intake minimums absent",
+      "no hash-bound media/derivative/advertising/organic-social grant for exact footage",
+      "music provenance license notice/build and final listening/mix not accepted; file provenance alone is not clearance",
+      "final MP4, 540-frame / format / visual / sound / safe-zone / platform-crop QA and owner approval absent",
+      "no current confirmed IG/TikTok product bio URL; Pinterest board unknown (historical board 1111333714239114020 not current verification); YouTube two pre-existing drafts are marked madeForKids=false but this is not new-video approval",
+      "publication ledger/history preflight remains unresolved; do not initialize a new ledger"
+    ],
+    "callsByThisAgent": {
+      "shopify": 0,
+      "cjdropshipping_readonly": 1,
+      "github_fetch_file": 5,
+      "github_fetch_file_details": "one fresh WAV metadata read; two incorrect-path 404 attempts; two successful pinned R214 source reads",
+      "writesToExternalServices": 0,
+      "rendersUploadsSchedulesCustomerOrSupplierMessages": 0
+    },
+    "descriptionHtmlCopyDiff": {
+      "source": "/dev/shm/luxestyle-review/r228/root-raw.json -> product.value.structuredContent.data.product.descriptionHtml",
+      "beforeSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+      "afterSha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+      "beforeUtf8Bytes": 4397,
+      "afterUtf8Bytes": 4390,
+      "changedBlocks": [
+        "variant paragraph with global full-supply sentence",
+        "facts section global Lieferumfang list"
+      ],
+      "allOtherDescriptionBytesUnchanged": true,
+      "proposedFullHtml": "proposed-description.html",
+      "exactLimitedDiff": "description.diff",
+      "externalWrite": false,
+      "rootCopyWordingReview": "Two neutral supplier-scope notes; no invented compound product label or new accessory claim."
+    },
+    "retainedOriginalResponses": {
+      "cjDetail": {
+        "path": "cj-detail-raw.json",
+        "completeOriginalAvailable": false,
+        "excerptPath": "cj-source-excerpt.json",
+        "reread": false
+      },
+      "wavRepositoryMetadata": {
+        "path": "wav-metadata-raw.json",
+        "completeResponseAvailable": true,
+        "binaryContentReturned": false
+      },
+      "rootAddedMusicConstraintsPreserved": true
+    },
+    "referenceImageIdentityQualification": {
+      "freshPublicImageId": "83513734431105",
+      "freshVariantIds": [
+        "68122445283719"
+      ],
+      "historicalMediaIdFromR214": "70733173719425",
+      "mediaIdNotFreshlyReadInR228": true,
+      "freshImageURLAndBytesVerifiedByRoot": true
+    }
+  },
+  "supplierExcerpt": {
+    "scope": "excerpt of the single read-only CJ product-detail response; not a complete raw API payload",
+    "pid": "1477820492730732544",
+    "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+    "productSku": "CJSN1392391",
+    "productKeyEnSet": [
+      "style",
+      "Electrical outlet"
+    ],
+    "productProEnSet": [
+      "BATTERY"
+    ],
+    "descriptionSourceText": "Light color: A: Focus plug-in: basic model; B: Focus Plug-in: Upgrade (6 sets of film); C: Focus Plug-in: Deluxe (Galaxy Plastic Plate +6 Film); D: Bluetooth Charge Focus: Charge + Bluetooth +6 Film; E: Bluetooth Charging Focus: Upgrade (Charging + Bluetooth + Galaxy Glue Disk +6 Film); F: Music Box Charging and Focusing Upgrade: Charging +18 Music +6 Star Light Panel (without Galaxy Light Panel); G: plug-in rotation + 1 galaxy disk + 3 color disks (without remote control). Instructions state lampshade turned on supports side projection, shade can buckle into a small night light, twist to adjust focus, open film box and remove/replace tray. Packing list text is global: Night light*1, Color disc*6, Rechargeable Bluetooth rotating*1, Galaxy disc*1.",
+    "productImageSetExcerpt": [
+      "https://cf.cjdropshipping.com/96a6864a-cd91-47fa-9853-58e983400a33.jpg",
+      "https://cf.cjdropshipping.com/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg",
+      "https://cf.cjdropshipping.com/af28b028-ba6d-4794-af09-559176db14f2.jpg",
+      "https://cf.cjdropshipping.com/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg",
+      "https://cf.cjdropshipping.com/287122e4-e288-4180-bf0f-ca956de70b7e.jpg",
+      "https://cf.cjdropshipping.com/680d1ad3-95b3-47bd-9522-899efd79a301.jpg",
+      "https://cf.cjdropshipping.com/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg",
+      "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+      "https://cf.cjdropshipping.com/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg",
+      "https://cf.cjdropshipping.com/7b27bd25-9e6d-42bf-9eda-f354075179d3.png",
+      "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+      "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+    ],
+    "limits": "supplier catalog text does not bind physical unit or motif; global packing list does not identify A bundle; no rights or delivery claims"
+  },
+  "supplierFullResponseAvailability": {
+    "availability": "original full tool response not available in persistent functions store or local workspace",
+    "api_reread_performed": false,
+    "calls": 1,
+    "tool": "mcp__codex_apps__cjdropshipping_get_product_detail",
+    "arguments": {
+      "pid": "1477820492730732544"
+    },
+    "retainedSource": "cj-source-excerpt.json",
+    "retainedSourceScope": "excerpt only; not a complete raw API payload",
+    "note": "Do not treat this file as the original response. It records availability and points to the excerpt. The original response was displayed only through a truncated JSON.stringify result and was not persisted; no reconstruction or new API call was made."
+  },
+  "musicMetadataRaw": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "content": "",
+      "encoding": "base64",
+      "sha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "display_url": "https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/music/luxe-premium.wav",
+      "display_title": "luxe-premium.wav"
+    },
+    "isError": false
+  },
+  "musicCredits": {
+    "text": "Techno-/Electronic-Tracks für LuxeStyle-Reels — royalty-free, lizenzkonform.\nQuelle: Kevin MacLeod (incompetech.com) · Lizenz: Creative Commons BY 4.0\n(https://creativecommons.org/licenses/by/4.0/). Bei Verwendung wird die\nQuellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).\n\n- voltaic.mp3          → \"Voltaic\" by Kevin MacLeod\n- electrodoodle.mp3    → \"Electrodoodle\" by Kevin MacLeod\n- digital-lemonade.mp3 → \"Digital Lemonade\" by Kevin MacLeod\n\n— ORIGINAL (selbst synthetisiert, automation/make_hype_music.py) — 100% royalty-free, keine Attribution nötig:\n- luxe-hype1.wav  (dark/drive, ~150 BPM)\n- luxe-hype2.wav  (bouncy, ~146 BPM)\n- luxe-hype3.wav  (energetic, ~152 BPM)\n- luxe-house1.wav  (House, 124 BPM, A-Moll)\n- luxe-house2.wav  (House, 126 BPM, treibend)\n\n— ORIGINAL PRO (echte GM-Instrumente via FluidSynth, automation/music/produce/) — 100% royalty-free:\n- luxe-hype-pro.mp3  (Hype/Trap, 150 BPM half-time, c-Moll; gleitendes 808-Sub, Hi-Hat-Rolls,\n  Vibraphon-Lead, warmes Pad; Intro→Drop @6,4s mit Noise-Riser + Sub-Impact; gemastert -13,4 LUFS/-0,4 dBTP).\n  Reproduzierbar: bash automation/music/produce/make_hype_pro.sh\n  (braucht fluidsynth + fluid-soundfont-gm + sox + ffmpeg + numpy/scipy).\n\n- luxe-premium.wav  (ELEGANT/PREMIUM, F-Dur, 96 BPM, ~64s; Grand Piano + warme Streicher +\n  Akustik-Bass + Glockenspiel + dezenter Soft-Groove, Progression F-C-Dm-Bb mit Aufbau;\n  gemastert -14 LUFS. Für Marken-/Premium-Reels. Reproduzierbar: bash automation/music/produce/make_premium.sh)\n\n— MIXKIT (fremde Stücke, seit 2.11.2026 die einzigen, die die Reel-Vorlage dropship/reel-vorlage/ wählt):\nLizenz «Mixkit Stock Music Free License» (https://mixkit.co/license/#musicFree, am 2.11.2026 gelesen): kostenlos, auch kommerziell und in\nSocial-Media-Videos, keine Namensnennung nötig; nicht erlaubt: das Stück allein weiterverkaufen/verteilen, Content-ID-Registrierung.\nDarum nur als Reel-Ton verwenden, die Dateien nicht einzeln weitergeben. Quelle der Dateien: https://assets.mixkit.co/music/<Nr>/<Nr>.mp3\n- mixkit-serene-view-443.mp3   (Nr. 443, Hauptteil ab ca. 16 s)\n- mixkit-majestic-475.mp3      (Nr. 475, ab ca. 14 s)\n- mixkit-dreamy-jazz-645.mp3   (Nr. 645, ab ca. 11 s)\n- mixkit-new-york-427.mp3      (Nr. 427, ab ca. 24 s)\n- mixkit-violin-uplift-675.mp3 (Nr. 675, ab ca. 9 s)\nDie selbst synthetisierten luxe-*-Stücke gefallen dem Besitzer nicht (2.11.2026) und werden von der Reel-Vorlage nicht mehr gewählt.\n",
+    "sha256": "3316dc197a40040c8570bbc5c102b8a6bb8ed15ab1fc49d339decf10485326e4",
+    "scope": "Current pinned source declaration, not independent final rights or listening approval."
+  },
+  "rootSalesCopyCheck": {
+    "passed": true,
+    "beforeSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+    "afterSha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+    "changedScopes": [
+      "one global full-bundle sentence",
+      "one global Lieferumfang list"
+    ],
+    "allOtherHTMLBytesPreserved": true,
+    "currentNativeProductId": "gid://shopify/Product/15521256604033",
+    "changesExecuted": false,
+    "sourceLimit": "CJ detail excerpt only, original full CJ response unavailable; fresh narrow supplier countercheck required before any future live write.",
+    "literalRoundtripPreservesAllOtherHTML": true
+  },
+  "noNewFilmOrRightsApproval": true
+}

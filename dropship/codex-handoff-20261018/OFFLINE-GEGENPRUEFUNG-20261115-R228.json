@@ -1,0 +1,463 @@
+{
+  "analyticsAndQueue": {
+    "atUTC": "2026-11-15T07:06:38.207986+00:00",
+    "passed": true,
+    "scope": "Independent offline calculation from saved exact raw replies; no additional connector queries.",
+    "metricResults": [
+      {
+        "network": "instagram",
+        "metric": "IGEV05",
+        "label": "Instagram Evolution > Views",
+        "observedSum": 578.0,
+        "numericDays": 7,
+        "nullDays": 0,
+        "absentDays": 0,
+        "completeNumericDays": true,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "instagram",
+        "metric": "IGEV38",
+        "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+        "observedSum": 1.0,
+        "numericDays": 1,
+        "nullDays": 6,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "facebook",
+        "metric": "FBEV49",
+        "label": "Facebook Evolution > Page Media View",
+        "observedSum": 135.0,
+        "numericDays": 7,
+        "nullDays": 0,
+        "absentDays": 0,
+        "completeNumericDays": true,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "facebook",
+        "metric": "FBEV34",
+        "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+        "observedSum": 0.0,
+        "numericDays": 1,
+        "nullDays": 6,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "tiktok",
+        "metric": "TKEV12",
+        "label": "TikTok Evolution > Video views in period",
+        "observedSum": 3497.0,
+        "numericDays": 6,
+        "nullDays": 1,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "tiktok",
+        "metric": "TKEV06",
+        "label": "TikTok Evolution > Interactions",
+        "observedSum": 11.0,
+        "numericDays": 6,
+        "nullDays": 1,
+        "absentDays": 0,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "pinterest",
+        "metric": "PIEV01",
+        "label": "Pinterest Evolution > Impressions in period",
+        "observedSum": 4256.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "pinterest",
+        "metric": "PIEV04",
+        "label": "Pinterest Evolution > Interactions in period",
+        "observedSum": 81.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "threads",
+        "metric": "THEV06",
+        "label": "Threads Evolution > Post Views",
+        "observedSum": 5.0,
+        "numericDays": 2,
+        "nullDays": 0,
+        "absentDays": 5,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "threads",
+        "metric": "THEV05",
+        "label": "Threads Evolution > Interactions",
+        "observedSum": 0.0,
+        "numericDays": 1,
+        "nullDays": 1,
+        "absentDays": 5,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "youtube",
+        "metric": "YTEV02",
+        "label": "Youtube Evolution > Video Views",
+        "observedSum": 699.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      },
+      {
+        "network": "youtube",
+        "metric": "YTEV05",
+        "label": "Youtube Evolution > Followers Gained",
+        "observedSum": 0.0,
+        "numericDays": 5,
+        "nullDays": 0,
+        "absentDays": 2,
+        "completeNumericDays": false,
+        "outOfPeriodRows": []
+      }
+    ],
+    "queue": {
+      "objects": 42,
+      "channelStates": 51,
+      "globalActiveChannelStates": 41,
+      "draftChannelStates": 10,
+      "matrix": {
+        "2026-11-15": {
+          "instagram": {
+            "active": 2,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 2,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 0,
+            "draft": 1,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        },
+        "2026-11-16": {
+          "instagram": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        },
+        "2026-11-17": {
+          "instagram": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        },
+        "2026-11-18": {
+          "instagram": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 1,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 1,
+            "unknown": 0
+          }
+        },
+        "2026-11-19": {
+          "instagram": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 1,
+            "unknown": 0
+          }
+        },
+        "2026-11-20": {
+          "instagram": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        },
+        "2026-11-21": {
+          "instagram": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        },
+        "2026-11-22": {
+          "instagram": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "facebook": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "tiktok": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "pinterest": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "threads": {
+            "active": 1,
+            "draft": 0,
+            "unknown": 0
+          },
+          "youtube": {
+            "active": 0,
+            "draft": 0,
+            "unknown": 0
+          }
+        }
+      },
+      "duplicateGroups": {
+        "uuid": [],
+        "text_media": [],
+        "media": []
+      },
+      "returnedStatuses": {
+        "PENDING": 51
+      },
+      "rawFiles": [
+        {
+          "file": "schedule_1_raw.json",
+          "sha256": "71e2c9058f8d4cf4d426e298639723d747046370af6dfce602abcee2e9c21617",
+          "rows": 12
+        },
+        {
+          "file": "schedule_2_raw.json",
+          "sha256": "5416420233f83ed39eb8b3c78f63f581068ee4153578c5c97ea21b489f7ab410",
+          "rows": 13
+        },
+        {
+          "file": "schedule_3_raw.json",
+          "sha256": "a2fd25b31ac19a63c27a2964b88b005fed2fce1ada3a0385b295f521a7c471f7",
+          "rows": 9
+        },
+        {
+          "file": "schedule_4_raw.json",
+          "sha256": "4e3a1a41985037d4d11ba71ae468ab59115b102c9eb7326d2b51e736fd99eb21",
+          "rows": 8
+        }
+      ],
+      "scopeLimits": "Exact queue fields only; no bytes/perceptual or full past history, and no actual publication proof from scheduled-only endpoint."
+    },
+    "klaviyo": {
+      "flow": "XEGbTB",
+      "deliveredMessageCount": 3,
+      "clicksUniqueAsReported": 0,
+      "conversionsAsReported": 0,
+      "distinctPeople": "unknown_across_messages",
+      "welcomeTriggerList": "T2VHfu",
+      "welcomeStatus": "draft",
+      "currenciesNotMixed": true,
+      "notShopSalesOrSyncEvidence": true
+    }
+  },
+  "salesCopy": {
+    "passed": true,
+    "beforeSha256": "a7a1fad350f26aec87d1583b297a4ca3b431ad54e5457efb7125ba4b7fbd549b",
+    "afterSha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+    "changedScopes": [
+      "one global full-bundle sentence",
+      "one global Lieferumfang list"
+    ],
+    "allOtherHTMLBytesPreserved": true,
+    "currentNativeProductId": "gid://shopify/Product/15521256604033",
+    "changesExecuted": false,
+    "sourceLimit": "CJ detail excerpt only, original full CJ response unavailable; fresh narrow supplier countercheck required before any future live write.",
+    "literalRoundtripPreservesAllOtherHTML": true
+  },
+  "captureProposalCount": 1,
+  "externalWrites": 0
+}

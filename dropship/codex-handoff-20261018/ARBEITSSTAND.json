@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 227,
-  "updatedAt": "2026-11-15T05:51:16.969598+00:00",
+  "revision": 228,
+  "updatedAt": "2026-11-15T07:19:23.182598+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,33 +16,36 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-14",
-    "currentDayEvidenceKind": "R200_ONCE_DAILY_SMALL_REPORTS_OFFLINE_RECOMPUTED",
-    "currentDayEvidence": "FreshR199Core4/14Novlog read before reports; lastreports13Nov. Once07–13Nov6Metricooldefinitions+6datareads, W7XTVDdiscovered then1Klaviyoreport;4flowstatusreads. Rootofflineverifiednumericdays, null/out-of-range handling andYT4/7subscriber-gain correction. Reuse these14Novreports in laterexistingruns. No orderwatch/broadsales query. Bounded2Merchantissue/sourcecounterchecks are not a secondperformance report.",
+    "currentDayEvidenceDate": "2026-11-15",
+    "currentDayEvidenceKind": "R228_ONCE_DAILY_SMALL_REPORTS_OFFLINE_COUNTERCHECKED",
+    "currentDayEvidence": "Frische R227-Core4 und Tagesblock vom 15. November vor Reads. Genau sechs Metricool-Definitionen und sechs Datenreads, ein Klaviyo-Flowreport nach W7XTVD-Discovery, fünf gezielte Flowdefinitionsreads und ein Formsread und Accountidentität. Rohdaten und zwölf Metriken und Planung offline gegengeprüft. GSC am 15. November war in R226 bereits gelesen und bleibt unverändert. Keine Order-Watch/Shopumsatzabfrage. Heute ohne neuen konkreten Befund nicht erneut berichten/abfragen.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-14",
-        "range": "2026-11-07/2026-11-13",
+        "localDate": "2026-11-15",
+        "range": "2026-11-08/2026-11-14",
         "definitionCalls": 6,
         "dataCalls": 6,
         "missingIsUnknown": true,
-        "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json"
+        "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json"
       },
       "klaviyo": {
-        "localDate": "2026-11-14",
-        "range": "2026-11-07/2026-11-13",
+        "localDate": "2026-11-15",
+        "range": "2026-11-08/2026-11-14",
         "metricDiscoveryCalls": 1,
         "flowReportCalls": 1,
+        "flowDefinitionReads": 5,
+        "formsReads": 1,
         "conversionMetricId": "W7XTVD",
         "accountCurrency": "USD",
         "shopCurrency": "CHF",
         "currenciesMixed": false,
-        "missingRowsUnknown": true
+        "missingRowsUnknown": true,
+        "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json"
       },
       "ordersQueried": false,
       "purchaseWatchEnded": true,
       "broadSalesRepeated": false,
-      "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
       "searchConsole": {
         "localDate": "2026-11-15",
         "property": "sc-domain:luxestyle.ch",
@@ -601,15 +604,17 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r227_exact_model6_net_contents_source_blocked",
+      "state": "r228_projector_two_bundle_copy_scopes_prepared_nail_net_contents_open",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "R225/R226-Korrekturen bleiben erhalten. R227 prüfte drei genaue Bilder von Nagellack Modell6, SKU CJYD273330506FU / Q524206 / DT284: kein lesbarer zugeordneter Nettoinhalt. Ein CJ-Bild frisch per HTTP200 samt Hash gesichert, zwei R222-Bilder lokal wiederverwendet. Keine Menge abgeleitet und kein Attributwrite. Die unit-pricing-Warnung NOT_IMPACTED stammt aus R222/R223 und wurde hier nicht frisch bei Merchant gelesen.",
-      "nextAllowedStep": "Für genau CJYD273330506FU / Q524206 / DT284 ein lesbares echtes Etikett oder eine Lieferantenbestätigung mit Nettoinhalt und Einheit beschaffen. Verpackungsmasse und -gewicht nicht umrechnen. Weitere Produkt-/CJ-Quellenkonflikte bleiben offen; nur gezielte belegte Korrekturen ausführen.",
+      "lastEvidence": "R227-Nagellack-Nettoinhalt bleibt unbelegt. R228 bereitet nach aktueller Projektorprüfung einen engen Diff vor: pauschale Vollausstattungs-Zusage im Variantenabsatz und Fakten-Lieferumfang durch Verweis auf gewählte Ausführung ersetzen. Vollständiges vorgeschlagenes Feld und Vorher-/Nachher-Hashes gesichert; alle anderenHTML-Bytes unabhängig bestätigt unverändert. Kein Shopwrite; CJ-Vollantwort fehlt, Detailauszug erhalten.",
+      "nextAllowedStep": "Projektor-Diff konkret freigeben lassen, vor späterem Write native Felder und genaue Lieferantenausführung frisch gegenprüfen und expliziten Diff erhalten. Keine Produktmasse/Preise/Varianten/Zubehör erfinden. Nettoinhalt Modell6 und R226-Bild-/2PC-Quellenfälle bleiben getrennt offen.",
       "blockers": [
-        "Nettoinhalt von Modell6 unbelegt; keinen ml-Wert erfinden.",
-        "R226 Garagentor/Reinigungsgerät: saubere Originale, Rechte und 2PC-Lieferumfang weiter offen; erneuter Syncbeleg fehlt."
+        "Projektor-Beschreibungsdiff nur vorbereitet, nicht live und nicht als vollständige Produktrechts-/Materialabnahme zu werten.",
+        "CJ-Originalantwort nicht gesichert; vor abhängigem Write aktuelle begrenzte Gegenprobe erforderlich.",
+        "Nagellack Modell6 ohne lesbaren Nettoinhalt; kein ml-Wert.",
+        "Garagentor/Reinigungsgerät: saubere Medien/Rechte/2PC-Inhalt und Syncbeleg bleiben offen."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1234,6 +1239,96 @@
           "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
           "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
           "bytes": 6400
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -2230,6 +2325,19 @@
             "R169: Futterspender hat kein echtes Produktvideo und keine nachgewiesenen kommerziellen Bildbearbeitungs-/Werberechte für Social.",
             "R173: Claim-sicherer Futterspenderstand ist live; künftige Paralleländerungen bleiben ohne frischen updatedAt-/Schutzfelddiff unbekannt und dürfen nicht blind überschrieben werden."
           ]
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r227_exact_model6_net_contents_source_blocked",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "R225/R226-Korrekturen bleiben erhalten. R227 prüfte drei genaue Bilder von Nagellack Modell6, SKU CJYD273330506FU / Q524206 / DT284: kein lesbarer zugeordneter Nettoinhalt. Ein CJ-Bild frisch per HTTP200 samt Hash gesichert, zwei R222-Bilder lokal wiederverwendet. Keine Menge abgeleitet und kein Attributwrite. Die unit-pricing-Warnung NOT_IMPACTED stammt aus R222/R223 und wurde hier nicht frisch bei Merchant gelesen.",
+          "previousNextAllowedStep": "Für genau CJYD273330506FU / Q524206 / DT284 ein lesbares echtes Etikett oder eine Lieferantenbestätigung mit Nettoinhalt und Einheit beschaffen. Verpackungsmasse und -gewicht nicht umrechnen. Weitere Produkt-/CJ-Quellenkonflikte bleiben offen; nur gezielte belegte Korrekturen ausführen.",
+          "previousBlockers": [
+            "Nettoinhalt von Modell6 unbelegt; keinen ml-Wert erfinden.",
+            "R226 Garagentor/Reinigungsgerät: saubere Originale, Rechte und 2PC-Lieferumfang weiter offen; erneuter Syncbeleg fehlt."
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -3198,6 +3306,11 @@
         "at": "2026-11-15T05:51:16.969598+00:00",
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
         "scope": "see exact run evidence; no implied deployment or catalog-wide result"
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
@@ -4048,34 +4161,17 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r227_one_live_seo_update_google_proof_and_local_printful_candidate_shared",
+      "state": "r228_daily_social_flow_reports_and_product_master_sales_package_prepared",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Eine SEO-Beschreibung live korrigiert und zurückgelesen. Ein gezielter Google-Nachweis mit Index-/Rich-Results-PASS und klarem optionalem Warnungsscope; aktuelle Themequelle gelesen. Lokaler Printful-Guard mit 185 grünen Mockassertions, kein Deployment. Modell6-Nettoinhalt weiter unbelegt. Wiederholte GitHub-Reads und lokale Speicher-/Parserfehler offen dokumentiert. 24 IDs, Historien und Zeitplan erhalten.",
-      "nextAllowedStep": "Am Schluss den direkten aktuellen Memory-Link teilen. Printful-Dreidateiendiff regulär reviewen und unter Node22 prüfen; Schema quellgenau weiterentwickeln. Keine alten Patches oder Themes erneut anwenden. GSC-Tagesperformance wurde in R226 bereits gelesen; Claude-Empfang bleibt unbekannt.",
+      "lastEvidence": "Automations-Morgenlauf: aktuelle Core4 gelesen, Shop/Marke bestätigt, Planung und heutige Social-/Flowreports einmal begrenzt gelesen sowie offline geprüft. Denselben Master mit frischer A-Referenz und sechs Kanaltexten fortgeführt, exakten Zweistellen-Verkaufsdiff und genau einen Capture-Textvorschlag vorbereitet. Keine neuen externen Businesswrites. Memory-Link am Schluss beibehalten; keine Claude-Quittung.",
+      "nextAllowedStep": "Heute R228-Kennzahlen/Klaviyo und R226-GSC wiederverwenden. Native A-Takes/Rechte/Abnahme für denselben Master priorisieren, konkrete Verkaufs-/Capture-Entwürfe zur Freigabe vorlegen und offene Kanal-/Statuslücken nennen. Bestehende08/14/19-Zeiten unverändert. Abschliessend direkten aktuellen Memory-Link teilen.",
       "blockers": [
-        "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
-        "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
-        "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
-        "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
-        "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
-        "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
-        "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
-        "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
-        "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
-        "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
-        "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
-        "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
-        "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
-        "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
-        "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector.",
-        "R227: Printful-Kandidat noch nicht produktiv. Google-Nachweis nur für eine URL mit Crawl vom 04.11.; optionale Varianten-/Offer-Warnungen und Nettoinhalt Modell6 offen."
+        "Claude-Kenntnisnahme und tatsächliche Scheduler-Ausführung nur mit eigenem Beleg behaupten.",
+        "Professionelle Medien-/Rechte-/Bio-/Board-/Ledger-Gates bleiben vor neuen Socialwrites verbindlich.",
+        "Termine sind keine PUBLISHED-Belege; fehlende vergangene Kanalzustände bleiben unbekannt.",
+        "Verkaufs-/Capture-Entwürfe sind keine Shop-/Flow-/Rabattfreigabe. DNS/Ads und andere spezialisierte Grenzen unverändert."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5090,6 +5186,96 @@
           "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
           "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
           "bytes": 6400
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -7347,6 +7533,38 @@
             "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
             "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
           ]
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r227_one_live_seo_update_google_proof_and_local_printful_candidate_shared",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Eine SEO-Beschreibung live korrigiert und zurückgelesen. Ein gezielter Google-Nachweis mit Index-/Rich-Results-PASS und klarem optionalem Warnungsscope; aktuelle Themequelle gelesen. Lokaler Printful-Guard mit 185 grünen Mockassertions, kein Deployment. Modell6-Nettoinhalt weiter unbelegt. Wiederholte GitHub-Reads und lokale Speicher-/Parserfehler offen dokumentiert. 24 IDs, Historien und Zeitplan erhalten.",
+          "previousNextAllowedStep": "Am Schluss den direkten aktuellen Memory-Link teilen. Printful-Dreidateiendiff regulär reviewen und unter Node22 prüfen; Schema quellgenau weiterentwickeln. Keine alten Patches oder Themes erneut anwenden. GSC-Tagesperformance wurde in R226 bereits gelesen; Claude-Empfang bleibt unbekannt.",
+          "previousBlockers": [
+            "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+            "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+            "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+            "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+            "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+            "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+            "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+            "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+            "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+            "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+            "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector.",
+            "R227: Printful-Kandidat noch nicht produktiv. Google-Nachweis nur für eine URL mit Crawl vom 04.11.; optionale Varianten-/Offer-Warnungen und Nettoinhalt Modell6 offen."
+          ]
         }
       ],
       "reviewPacket": {
@@ -9257,23 +9475,28 @@
         "at": "2026-11-15T05:51:16.969598+00:00",
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
         "scope": "see exact run evidence; no implied deployment or catalog-wide result"
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r214_current_A_cj_variant_video_reference_bound_real_action_gate_tightened_no_master",
+      "state": "r228_A_product_gate_and_reference_confirmed_same_master_not_rendered",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Aktuelle A68122445283719/CHF34.90/ACTIVE/12Tags, Library+Rueckholgate bestanden, untracked/CONTINUE und öffentliche CH-Variante available bestätigt. CJ CJSN139239101AZ→PID1477820492730732544/VID1477826312449167360/A-USB und gleiches Bild. CJ Video1602963697889193984 ist noch nicht zur Shopify-MP4 gebunden. Gleichen18s-Plan mit zwei klareren Hookalternativen und verpflichtender echter Handlung konkretisiert, kanonische Musik per aktuellem Blob/Grösse mit lokaler SHA256-Referenz identisch. Keine Lizenz-/Hörabnahme oder Master-MP4.",
-      "nextAllowedStep": "Native rechtegeklärte A-Takes samt tatsächlicher Handlung/Reaktion und genauer CJ-Exportkette erhalten; bestehenden540Frame-Master entwickeln und final abnehmen. Kein neutraler Detailfallback als fertiger Film. Vor möglichem Push Bio/Board/Register/Kollision und aktuelle Produkt-/Kanalwerte belegen.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "A68122445283719/CJSN139239101AZ/CHF34.90 frisch nativ und öffentlich bestätigt: ACTIVE,12Tags ohne Library-/Inhaber-rueckhol-Sperre, untracked/CONTINUE, available. Echtes A-Bild frischHTTP200, visuell geprüft und hashgleich zur R214-Referenz. Ein CJ-Detailread bestätigt die Ausführungsunterschiede; nur Auszug erhalten, vollständige Rohantwort fehlt. Denselben18s/540Frame-Master und sechs UTM-Captions fortgeführt, keine neue kreative Serie. Pflicht-WAV aktuell blob-/hashgleich; CREDITS gegengeprüft. Keine Master-MP4 oder Rechte-/Hörabnahme.",
+      "nextAllowedStep": "Native A-Takes samt echter Handlung, Motiv-/Einheitsbeleg und kommerzieller Freigabe erhalten. Vor finalem Schnitt aktuelle Quellen und Musikrechte vollständig binden; bestehenden Master fertigstellen, dann Bild/Ton/Text/Ausschnitte abnehmen. Keine alten 960x540/25fps-Clips als Premium-Master ausgeben. Vor jedem Push frische Kanal-/Bio-/Board-/Ledger-/Historienprüfung.",
       "blockers": [
-        "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
-        "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
-        "Quellen-/Musikrechte sowie Hör-, Bild-, Text- und Plattformausschnittabnahme am endgültigen Film bleiben offen.",
-        "Dauerhaftes Medienarchiv und vollständige ältere Masterhistorie sind nicht belegt."
+        "A-/Motivbindung an konkrete Filmquelle fehlt; aktuelles Referenzbild ist eine Collage und kein Motiv-/Lieferumfangbeweis.",
+        "Native hochwertige Original-Takes und professionelle finale MP4 fehlen.",
+        "Kommerzielle Film-/Bearbeitungsrechte, vollständige Musiklizenzkette und finale Hör-/Bild-/Text-/Cropabnahme offen.",
+        "Bioziele, aktuelles Kontoboard und vollständiges älteres Publikationsregister für einen neuen Push nicht belegt."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -9867,6 +10090,96 @@
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
           "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -10697,6 +11010,21 @@
               "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
               "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
+          ]
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r214_current_A_cj_variant_video_reference_bound_real_action_gate_tightened_no_master",
+          "previousLastEvidenceDate": "2026-11-14",
+          "previousBelegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
+          "previousLastEvidence": "Aktuelle A68122445283719/CHF34.90/ACTIVE/12Tags, Library+Rueckholgate bestanden, untracked/CONTINUE und öffentliche CH-Variante available bestätigt. CJ CJSN139239101AZ→PID1477820492730732544/VID1477826312449167360/A-USB und gleiches Bild. CJ Video1602963697889193984 ist noch nicht zur Shopify-MP4 gebunden. Gleichen18s-Plan mit zwei klareren Hookalternativen und verpflichtender echter Handlung konkretisiert, kanonische Musik per aktuellem Blob/Grösse mit lokaler SHA256-Referenz identisch. Keine Lizenz-/Hörabnahme oder Master-MP4.",
+          "previousNextAllowedStep": "Native rechtegeklärte A-Takes samt tatsächlicher Handlung/Reaktion und genauer CJ-Exportkette erhalten; bestehenden540Frame-Master entwickeln und final abnehmen. Kein neutraler Detailfallback als fertiger Film. Vor möglichem Push Bio/Board/Register/Kollision und aktuelle Produkt-/Kanalwerte belegen.",
+          "previousBlockers": [
+            "Filmvariante und Motivset zur aktuellen Ausführung noch nicht eindeutig gebunden.",
+            "Hochwertige native Originalaufnahme mit Gerät und echter Projektion fehlt; technische R176-MP4 hat keine Premiumabnahme.",
+            "Quellen-/Musikrechte sowie Hör-, Bild-, Text- und Plattformausschnittabnahme am endgültigen Film bleiben offen.",
+            "Dauerhaftes Medienarchiv und vollständige ältere Masterhistorie sind nicht belegt."
           ]
         }
       ],
@@ -11727,6 +12055,11 @@
         "businessWrites": 0,
         "masterFinished": false,
         "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
@@ -22101,20 +22434,17 @@
       "id": "welcome-service-trust-20261102",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r175_vblqj6_draft_capture_unknown_single_neutral_subject_approval_proposal_no_write",
+      "state": "r228_capture_list_binding_confirmed_one_popup_copy_proposal_no_write",
       "title": "Welcome-Serviceangaben mit genau zwei belegten Zeilen korrigieren",
-      "lastEvidenceDate": "2026-11-11",
-      "belegArt": "R175_KLAVIYO_PLACED_ORDER_DISCOVERY_CURRENT_FLOW_STATES_CAPTURE_AND_30_DAY_REPORT_SINGLE_SUBJECT_PROPOSAL_NO_WRITE",
-      "lastEvidence": "Klaviyo XWqMAD/LuxeStyle CH/luxestyle.ch/EuropeZurich/USD; Shopify CHF getrennt. Placed Order W7XTVD. VbLQj6,Vse76a,RnTvsY DRAFT; XEGbTB LIVE. NewsletterlisteT2VHfu Single-Opt-in/13 Profile/3 zugeordnete Welcome-Flows DRAFT. Forms-Antwort leer; Live-Capture unbekannt.30-Tage-Report Vb-Mail1:6 Empfänger/6 zugestellt/4 Öffnungen/1 Klick/0 zugeordnete Bestellung. Einziger Vorschlag: Betreff sinngemäss von «Willkommen – Hier sind deine 10%» auf «Willkommen bei LuxeStyle»; DRAFT lassen. Keine Rabattfreigabe,0 Write/Send.",
-      "nextAllowedStep": "Betreff nur nach konkreter Freigabe und frischer Nachrichten-/Vorlagenbindung neutralisieren; VbLQj6 und Aktionen DRAFT lassen. Vor jeder späteren Aktivierung Angebot, Capture, Consent und End-to-End-Variablen belegen. Keine Rabattkonfiguration, Testsendung oder Kundenansprache.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "KlaviyoXWqMAD/LuxeStyle CH/EuropeZurich/USD und ShopCHF frisch bestätigt. Forms-API leer mit nextnull; Website-HTML enthält zwei Inline-Anmeldewege zu T2VHfu, identisch mit aktueller Welcome-Triggerliste. Laufzeit/Consent/Listeneintrag nicht getestet. VbLQj6 bleibt draft. Einziger neuer R228-Vorschlag: sofortige E-Mail-Zusage im Popup neutralisieren. Früherer R175-Betreffentwurf bleibt historische separate Vorbereitung, heute nicht erneut als neue Arbeit ausgegeben.",
+      "nextAllowedStep": "Genau den dokumentierten Popup-Satz nur nach Freigabe, aktuellem Theme-Quellvergleich und anschliessender öffentlicher Gegenprobe ändern. Welcome und Aktionen draft lassen. Das ist keine Übernahme einer früheren Betreff-/Zweizeilenfreigabe und keine neue Rabatt-, Flowaktivierungs- oder Sendeerlaubnis. Capture-Laufzeit ohne Kundenansprache gesondert prüfen.",
       "blockers": [
-        "Vse76a enthält Platzhalter/Rabattclaim; VbLQj6 Capture-Quelle unbekannt; RnTvsY Name/21-Tage-Verzögerung widersprüchlich; UXEjv2 enthält EN-US/ABAN/private Reply-to.",
-        "Fehlende Flow-Reportzeilen bleiben unbekannt und sind kein Nullbeleg.",
-        "Allgemeine Social-Automatisierungserlaubnis gilt nicht für weitere Klaviyo-Flowwrites oder Kundenkontakt.",
-        "Interne Template-/Aktionsnamen von XEGbTB enthalten weiterhin -10%, sind aber nicht kunden sichtbar und nicht Teil des freigegebenen Inhaltsdiffs.",
-        "R175: Live-Capture bleibt unbekannt; leere Forms-Daten sind kein Negativbeweis.",
-        "R175: VbLQj6-Betreffneutralisierung ist ein Freigabeentwurf und keine Rabatt- oder Aktivierungsfreigabe.",
-        "R175: Flowreportdaten beweisen keine Shopverkäufe oder Umsatzwirkung; USD und CHF bleiben getrennt."
+        "Statischer Listenabgleich beweist keine erfolgreiche Anmeldung, Einwilligung oder End-to-End-Zustellung.",
+        "Popup-Korrektur ist ein neuer Freigabeentwurf; kein Theme-/Flowwrite.",
+        "Welcome-Rabattbehauptung und ältere Inhalte bleiben vor jeder Aktivierung gesondert zu prüfen.",
+        "Keine Shopumsatz-/Syncableitung aus Flowreport; USD und CHF getrennt."
       ],
       "acceptance": [
         "Genau zwei belegte Servicezeilen ändern, keine erfundenen Liefer-, Material- oder Bestandsversprechen.",
@@ -22202,6 +22532,96 @@
           "gitBlobSha": "6e9170d3103577cfa696204f38b8dbf9904a8686",
           "sha256": "4db26b07c8af69a6468113d7a2c35a444bbe372958d28f5e37a34882994fd915",
           "readAt": "2026-11-11T08:27:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -22305,6 +22725,24 @@
             "Interne Template-/Aktionsnamen von XEGbTB enthalten weiterhin -10%, sind aber nicht kunden sichtbar und nicht Teil des freigegebenen Inhaltsdiffs."
           ],
           "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r175_vblqj6_draft_capture_unknown_single_neutral_subject_approval_proposal_no_write",
+          "previousLastEvidenceDate": "2026-11-11",
+          "previousBelegArt": "R175_KLAVIYO_PLACED_ORDER_DISCOVERY_CURRENT_FLOW_STATES_CAPTURE_AND_30_DAY_REPORT_SINGLE_SUBJECT_PROPOSAL_NO_WRITE",
+          "previousLastEvidence": "Klaviyo XWqMAD/LuxeStyle CH/luxestyle.ch/EuropeZurich/USD; Shopify CHF getrennt. Placed Order W7XTVD. VbLQj6,Vse76a,RnTvsY DRAFT; XEGbTB LIVE. NewsletterlisteT2VHfu Single-Opt-in/13 Profile/3 zugeordnete Welcome-Flows DRAFT. Forms-Antwort leer; Live-Capture unbekannt.30-Tage-Report Vb-Mail1:6 Empfänger/6 zugestellt/4 Öffnungen/1 Klick/0 zugeordnete Bestellung. Einziger Vorschlag: Betreff sinngemäss von «Willkommen – Hier sind deine 10%» auf «Willkommen bei LuxeStyle»; DRAFT lassen. Keine Rabattfreigabe,0 Write/Send.",
+          "previousNextAllowedStep": "Betreff nur nach konkreter Freigabe und frischer Nachrichten-/Vorlagenbindung neutralisieren; VbLQj6 und Aktionen DRAFT lassen. Vor jeder späteren Aktivierung Angebot, Capture, Consent und End-to-End-Variablen belegen. Keine Rabattkonfiguration, Testsendung oder Kundenansprache.",
+          "previousBlockers": [
+            "Vse76a enthält Platzhalter/Rabattclaim; VbLQj6 Capture-Quelle unbekannt; RnTvsY Name/21-Tage-Verzögerung widersprüchlich; UXEjv2 enthält EN-US/ABAN/private Reply-to.",
+            "Fehlende Flow-Reportzeilen bleiben unbekannt und sind kein Nullbeleg.",
+            "Allgemeine Social-Automatisierungserlaubnis gilt nicht für weitere Klaviyo-Flowwrites oder Kundenkontakt.",
+            "Interne Template-/Aktionsnamen von XEGbTB enthalten weiterhin -10%, sind aber nicht kunden sichtbar und nicht Teil des freigegebenen Inhaltsdiffs.",
+            "R175: Live-Capture bleibt unbekannt; leere Forms-Daten sind kein Negativbeweis.",
+            "R175: VbLQj6-Betreffneutralisierung ist ein Freigabeentwurf und keine Rabatt- oder Aktivierungsfreigabe.",
+            "R175: Flowreportdaten beweisen keine Shopverkäufe oder Umsatzwirkung; USD und CHF bleiben getrennt."
+          ]
         }
       ],
       "applicationAllowedNow": false,
@@ -22457,6 +22895,11 @@
             "readAt": "2026-11-11T08:27:31+01:00"
           }
         ]
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
@@ -22542,19 +22985,17 @@
       "id": "checkout-email3-quality-20261103",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r200_xegbtb_live_small_report_vse76a_draft_preserved_no_write",
+      "state": "r228_xegbtb_live_one_daily_report_small_counts_no_flow_write",
       "title": "Checkout-Recovery-Mail ohne Platzhalter oder unbelegten Rabattclaim",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
-      "lastEvidence": "FrischeW7XTVDDiscovery+ein07–13NovFlowreport: XEGbTBlive,2zugestellteNachrichtenempfängerzählungen/1Open/0Click/0zugeordneteConversion/USD0. Vse76a/VbLQj6/RnTvsYdraft;fehlendeReportzeilenunknown. KeinShopumsatz-/Syncschluss,keineFlowAktivierungoderSendung.",
-      "nextAllowedStep": "HeutigeReportswiederverwenden,Vse76aDraftinhalte/R173Korrekturenerhalten;keineAktivierungoderKundensendung. CHFShop/USDKlaviyonichtsummieren.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Einmal08–14Nov nach frischer W7XTVD-Discovery: XEGbTB live, drei zugestellte Nachrichtenempfängerzählungen,0 erfasste Klicks,0 zugeordnete Konversionen. Vse76a/VbLQj6/RnTvsY frisch draft; fehlende Reportzeilen unbekannt. Aktuelle XEGbTB-Definition hat Placed-Order-Filter seit Flowstart und zwei aktive Nachrichten nach1h/24h. Keine eigene Aktivierung, Kundenansprache oder Umsatz-/Syncableitung.",
+      "nextAllowedStep": "Heutigen R228-Report bis zum nächsten Kalendertag wiederverwenden. Bestehende Filter und bewusst gesperrte Flows erhalten. Keine weiteren Aktivierungen, Testsendungen oder Rabatte. Höchstens den separat vorbereiteten einen Capture-Textvorschlag zur Freigabe vorlegen.",
       "blockers": [
-        "Vse76a-Leistung im aktuellen Tagesreport bleibt unbekannt; die Inhaltskorrektur beweist keine Conversion oder Recovery.",
-        "Tatsächlicher Welcome-Capture-Weg bleibt unbekannt; Formular-API ohne sichtbare Datensätze ist kein Negativbeweis.",
-        "Interne XEGbTB- und Vse76a-Vorlagennamen enthalten historische Rabatt-/Knappheitsbegriffe; nicht kunden sichtbar und ausserhalb des R173-Inhaltsdiffs.",
-        "R173: Klaviyo normalisierte Mail3 reply_to_email von null auf info@luxestyle.ch; dokumentierte Plattformnormalisierung, kein Reparaturwrite.",
-        "R175: Vse76a fehlt im aktuellen Flowreport; Leistung bleibt unbekannt und ist kein Nullbeleg.",
-        "R175: XEGbTB fehlt ebenfalls im Report; Warenkorbrückgewinnung und Umsatzwirkung bleiben unbekannt."
+        "Kleine Stichprobe; Nachrichtenzählungen sind keine eindeutig deduplizierte Personenzahl oder gesamte Shopverkäufe.",
+        "Vse76a/VbLQj6/RnTvsY fehlen im aktuellen Report; ihre Leistung bleibt unbekannt.",
+        "Tatsächlicher Capture-/Listeneintrag ungeprüft, obwohl die statische T2VHfu-Bindung jetzt belegt ist.",
+        "Interne historische Rabatt-/Knappheitsnamen sind nicht kunden sichtbarer Text und wurden nicht verändert."
       ],
       "acceptance": [
         "Exakter Betreff und nur die belegten Bodybereiche ändern.",
@@ -22648,6 +23089,96 @@
           "sha256": "eb373879d466b559a75f7e0e88c6d5384d55db426d78d57020948fc320b54efc",
           "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3",
           "readAt": "2026-11-14T01:06:47.675525+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -22906,6 +23437,23 @@
               "gitBlobSha": "0fd7ff3401fd5e5c6dae6e261e67610fcb1dc2d3"
             }
           ]
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r200_xegbtb_live_small_report_vse76a_draft_preserved_no_write",
+          "previousLastEvidenceDate": "2026-11-14",
+          "previousBelegArt": "R200_BOUND_SOURCES_OFFLINE_REVIEW_BRANCH_AND_ONCE_DAILY_REPORTS",
+          "previousLastEvidence": "FrischeW7XTVDDiscovery+ein07–13NovFlowreport: XEGbTBlive,2zugestellteNachrichtenempfängerzählungen/1Open/0Click/0zugeordneteConversion/USD0. Vse76a/VbLQj6/RnTvsYdraft;fehlendeReportzeilenunknown. KeinShopumsatz-/Syncschluss,keineFlowAktivierungoderSendung.",
+          "previousNextAllowedStep": "HeutigeReportswiederverwenden,Vse76aDraftinhalte/R173Korrekturenerhalten;keineAktivierungoderKundensendung. CHFShop/USDKlaviyonichtsummieren.",
+          "previousBlockers": [
+            "Vse76a-Leistung im aktuellen Tagesreport bleibt unbekannt; die Inhaltskorrektur beweist keine Conversion oder Recovery.",
+            "Tatsächlicher Welcome-Capture-Weg bleibt unbekannt; Formular-API ohne sichtbare Datensätze ist kein Negativbeweis.",
+            "Interne XEGbTB- und Vse76a-Vorlagennamen enthalten historische Rabatt-/Knappheitsbegriffe; nicht kunden sichtbar und ausserhalb des R173-Inhaltsdiffs.",
+            "R173: Klaviyo normalisierte Mail3 reply_to_email von null auf info@luxestyle.ch; dokumentierte Plattformnormalisierung, kein Reparaturwrite.",
+            "R175: Vse76a fehlt im aktuellen Flowreport; Leistung bleibt unbekannt und ist kein Nullbeleg.",
+            "R175: XEGbTB fehlt ebenfalls im Report; Warenkorbrückgewinnung und Umsatzwirkung bleiben unbekannt."
+          ]
         }
       ],
       "originalRecheckR67": {
@@ -23078,37 +23626,29 @@
           }
         ],
         "currentIdentityBeforeDependentWriteRequired": true
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r225_42_queue_objects_exact_field_collisions_absent_global_matrix_15_22",
+      "state": "r228_queue_unchanged_42_objects_51_pending_channel_gaps_preserved",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
-      "lastEvidence": "42belegteObjekte/51Providerzuständebisvollen22Novtag;globaleTermineIG9FB9TT8Pin8Threads7YT0,gesonderteDrafts2/2/2/0/2/2. KeinegleichenUUID/TextMedien/MedienlistenjeKanalimFenster. Threads15/YT15–22Lücken;bytebasierteFilm-/Gesamthistoriehiernichtneuverifiziert. KeineeigenenPosts/Writes.",
-      "nextAllowedStep": "VorhandeneTermine/Holdserhalten. NeueFilm-/BildlieferungweiterkonkretmitProdukt/Tags/Rechten/Musik/Ledgerbinden,keineKopienfürLücken. VorneuenPinterestWritesaktuellesKontoboardfrischverifizieren;R174Giftboardhistorischbelegt,anderesQueueboardheutenichtneuverifiziert. IGexpliziteAPWertepassend;fehlendeanderekanalspezifischeAPFelder/PUBLISHEDnichtausglobalemPENDINGableiten.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Frische Marke/Zeitzone/sechs Identitäten und vier Planabfragen:42Objekte/51PENDING-Zustände,41global draft=false/autoPublish=true und10Draftzustände. IG/FB/TikTok/Pinterest je Datum vom 15.–22. November globale Termine, Threads15Nov/YT15–22Nov Lücken. Exakte UUID-/Text+Medien-/Medienlisten-Kollisionen je Kanal fehlen im Fenster; Byte-/Vergangenheit unbekannt. Nur IG liefert explizite Kanal-AP-Werte. Keine eigenen Writes/Publikationen; gegenüber R225 keine geprüften Feldänderungen.",
+      "nextAllowedStep": "Bestehende Termine/Holds erhalten. Heute fehlenden Threads-Termin und alle YouTube-Lücken nicht mit Kopien oder unqualifizierten Medien füllen. Ein neuer passender Master bleibt an Produkt/Rechte/Qualität/Bio/Board/Publikationshistorie gebunden. Status fälliger UUID gezielt lesen, sofern ein legitimer vollständiger Statuszugang verfügbar wird; scheduled-only beweist keine vergangene Auslieferung.",
       "blockers": [
-        "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
-        "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
-        "R174: Der konkrete Organizer-Pin ist auf dem verifizierten Board terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben bis zum fälligen UUID-Readback unbekannt.",
-        "Kanalbezogenes Auto-Publish ist ausser Instagram im Payload unbekannt.",
-        "Vollständige Master-/Kanalhistorie und Plattformzustände sind aus der Zukunftsplanung nicht geliefert.",
-        "R174: Pinterest15.11 ist durch genau einen qualifizierten PENDING-Termin belegt; übrige Kanal-/Tageslücken dürfen weiterhin nicht mit minderwertigen oder duplizierten Ersatzposts gefüllt werden.",
-        "R169: Pin422791720/UUID2095739444122305341 verwendet Board1111333714239114033; Name/Eigentum nach exakter öffentlicher Gegenprobe unbekannt.",
-        "R169: Planlücken15.11. Pinterest/YouTube und16.–18.11. alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
-        "R172: Aktive Planlücken15.11 Pinterest/YouTube und16.–18.11 alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
-        "R172: Vier Knoblauchhacker-Drafts/fünf Zustände am18.11 sind keine Abdeckung und ohne Produkt-/Rechte-/Audio-/Qualitätsnachweis gesperrt.",
-        "R172: Ein globaler PUBLISHED-/PENDING-Zähler ersetzt keine kanalbezogene Plattform-ID/Publikations-URL; fehlende Lieferung bleibt unbekannt.",
-        "R173: Produkt15450838139265 trägt `rueckhol-0907`; vier bytegleiche Knoblauchhacker-Drafts bleiben unabhängig von Technik/Rechten für neue Ausspielung blockiert.",
-        "R173: MP4 4684d4e7…af8e9 ist10.6s/25fps statt15–20s/30fps; exakte Variante, kommerzielle Rechte, Pflichtmusiknachweis und Ledger fehlen.",
-        "R174: PENDING ist kein Publikationsbeleg; Plattform-ID und Publikations-URL sind bis zur Auslieferung unbekannt.",
-        "R174: Historienprüfung01.–18.11. lieferte0 Treffer im begrenzten Scope; ältere, versteckte oder serverseitig trunkierte Pinterest-Historie bleibt unbekannt.",
-        "R175: R174-Pin bleibt PENDING; Plattform-ID/Publikations-URL und tatsächliche Auslieferung sind noch unbekannt.",
-        "R175: Board1111333714239114033 ist nach aktuellem Read weiterhin in Name und Eigentum unbekannt.",
-        "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
+        "Keine neu abgenommene professionelle Master-MP4 mit vollständigem Produkt-/Rechtenachweis.",
+        "Bioziele fehlen im Brand-/Scheduler-Read; Pinterest-Boards aus Queue nicht frisch als Kontoboards verifiziert.",
+        "YouTube-Drafts haben Titel und madeForKids=false, zählen aber wegen draft=true/autoPublish=false nicht als aktive Termine.",
+        "Kanalbezogene Auto-Publish-Felder ausser IG und vergangene tatsächliche Publikationszustände werden vom verfügbaren Tool nicht geliefert.",
+        "Keine byte-/perzeptuelle Medienprüfung oder vollständige ältere Masterhistorie in diesem Lauf; kein globaler Keine-Duplikate-Beleg."
       ],
       "acceptance": [
         "Nur nach ausdrücklicher passender Inhaberentscheidung und nachgewiesenen Bedingungen handeln.",
@@ -23471,6 +24011,96 @@
           "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
           "bytes": 4780,
           "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
         }
       ],
       "requiresFreshVerification": true,
@@ -24134,6 +24764,35 @@
               "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
             ]
           }
+        },
+        {
+          "at": "2026-11-15T07:19:23.182598+00:00",
+          "sourceRevision": 227,
+          "previousState": "r225_42_queue_objects_exact_field_collisions_absent_global_matrix_15_22",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+          "previousLastEvidence": "42belegteObjekte/51Providerzuständebisvollen22Novtag;globaleTermineIG9FB9TT8Pin8Threads7YT0,gesonderteDrafts2/2/2/0/2/2. KeinegleichenUUID/TextMedien/MedienlistenjeKanalimFenster. Threads15/YT15–22Lücken;bytebasierteFilm-/Gesamthistoriehiernichtneuverifiziert. KeineeigenenPosts/Writes.",
+          "previousNextAllowedStep": "VorhandeneTermine/Holdserhalten. NeueFilm-/BildlieferungweiterkonkretmitProdukt/Tags/Rechten/Musik/Ledgerbinden,keineKopienfürLücken. VorneuenPinterestWritesaktuellesKontoboardfrischverifizieren;R174Giftboardhistorischbelegt,anderesQueueboardheutenichtneuverifiziert. IGexpliziteAPWertepassend;fehlendeanderekanalspezifischeAPFelder/PUBLISHEDnichtausglobalemPENDINGableiten.",
+          "previousBlockers": [
+            "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
+            "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
+            "R174: Der konkrete Organizer-Pin ist auf dem verifizierten Board terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben bis zum fälligen UUID-Readback unbekannt.",
+            "Kanalbezogenes Auto-Publish ist ausser Instagram im Payload unbekannt.",
+            "Vollständige Master-/Kanalhistorie und Plattformzustände sind aus der Zukunftsplanung nicht geliefert.",
+            "R174: Pinterest15.11 ist durch genau einen qualifizierten PENDING-Termin belegt; übrige Kanal-/Tageslücken dürfen weiterhin nicht mit minderwertigen oder duplizierten Ersatzposts gefüllt werden.",
+            "R169: Pin422791720/UUID2095739444122305341 verwendet Board1111333714239114033; Name/Eigentum nach exakter öffentlicher Gegenprobe unbekannt.",
+            "R169: Planlücken15.11. Pinterest/YouTube und16.–18.11. alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+            "R172: Aktive Planlücken15.11 Pinterest/YouTube und16.–18.11 alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+            "R172: Vier Knoblauchhacker-Drafts/fünf Zustände am18.11 sind keine Abdeckung und ohne Produkt-/Rechte-/Audio-/Qualitätsnachweis gesperrt.",
+            "R172: Ein globaler PUBLISHED-/PENDING-Zähler ersetzt keine kanalbezogene Plattform-ID/Publikations-URL; fehlende Lieferung bleibt unbekannt.",
+            "R173: Produkt15450838139265 trägt `rueckhol-0907`; vier bytegleiche Knoblauchhacker-Drafts bleiben unabhängig von Technik/Rechten für neue Ausspielung blockiert.",
+            "R173: MP4 4684d4e7…af8e9 ist10.6s/25fps statt15–20s/30fps; exakte Variante, kommerzielle Rechte, Pflichtmusiknachweis und Ledger fehlen.",
+            "R174: PENDING ist kein Publikationsbeleg; Plattform-ID und Publikations-URL sind bis zur Auslieferung unbekannt.",
+            "R174: Historienprüfung01.–18.11. lieferte0 Treffer im begrenzten Scope; ältere, versteckte oder serverseitig trunkierte Pinterest-Historie bleibt unbekannt.",
+            "R175: R174-Pin bleibt PENDING; Plattform-ID/Publikations-URL und tatsächliche Auslieferung sind noch unbekannt.",
+            "R175: Board1111333714239114033 ist nach aktuellem Read weiterhin in Name und Eigentum unbekannt.",
+            "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
+          ]
         }
       ],
       "latestScheduleReadR67": {
@@ -25463,6 +26122,11 @@
         "businessWrites": 0,
         "masterFinished": false,
         "newClaudeReceipt": "unknown_no_receipt"
+      },
+      "run228": {
+        "at": "2026-11-15T07:19:23.182598+00:00",
+        "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+        "ownExternalWrites": 0
       }
     },
     {
@@ -28831,6 +29495,106 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 228,
+      "at": "2026-11-15T07:19:23.182598+00:00",
+      "actor": "codex",
+      "summary": "Morgenlauf: frische Identitäten/Planung, einmalige Social- und Klaviyo-Tagesreports, Produkt-/A-Bild-/Taggate und Musikquellen gegengeprüft. Derselbe Master fortgeführt, zwei pauschale Lieferumfangstellen als konkreter Verkaufsdiff und eine neutrale Popup-Rückmeldung vorbereitet. Keine neuen Social- oder Shopwrites. Teilmessungen und Rohdatenlücken klar erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "a0641da10c90fa845c05bc01a42039bc619ee290e5db4971e382010fa2969de2",
+          "gitBlobSha": "879cf901496648cc84296f68debdea24e0f8b385",
+          "bytes": 3177621
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CAPTION-ENTWUERFE-20261115-08H-R228.md",
+          "sha256": "3018dba5b166a8403f8ea993d856de6bae203d6535a0e990ccdb80f936c40dbe",
+          "gitBlobSha": "594d1ae9741ae0e92bc7f69679b7573a9e0fa72c",
+          "bytes": 4405
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261115-08H-R228.md",
+          "sha256": "ed72d53ce1197e181880098b6d8c2c88dbb93cb9c0ad80d58f91c21d48954954",
+          "gitBlobSha": "13e462f58d7475fee4d5fef01ec7b249ac948c81",
+          "bytes": 9934
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json",
+          "sha256": "d0a0f6238f5faf6cf491d14b540f6742a56a28dbac429f6153de4e826c741721",
+          "gitBlobSha": "465e20e9a963028bc171315923c50d51e0e382f2",
+          "bytes": 164754
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "sha256": "8f47ae8ff91f980ddf699cfbdbe34aacdfa6363c40f3e3387088783a61acbb0c",
+          "gitBlobSha": "c1bfc37780b72a9667d213dfbb4702652f1d827e",
+          "bytes": 6316
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261115-08H-R228.md",
+          "sha256": "ae62bd18d91d10266384ab3befc8763255c072e5567b07974bba1f62e04626ac",
+          "gitBlobSha": "1745c10fa705103dadbe26014153767c7b29bf81",
+          "bytes": 7736
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/OFFLINE-GEGENPRUEFUNG-20261115-R228.json",
+          "sha256": "55c2ea8387a81511db35a3f65e1aa109105497a8e62aabba655f14d7245ed678",
+          "gitBlobSha": "6d5ae8801ccd945718511eeba183884d703ee9ac",
+          "bytes": 11787
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLANUNG-20261115-08H-R228.json",
+          "sha256": "d8fcb7a0d00e5e24d7448c915422e12f1e4812e28de510b8d30c5ca50cf6c37f",
+          "gitBlobSha": "81b6a3f951b063ef00cee7a912060a5ba93286ec",
+          "bytes": 157349
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-MASTERQUELLEN-20261115-08H-R228.json",
+          "sha256": "f68bb592c673e34d46e7afcadbfd2ae0991b5bb911c3efbce4794d6477a6c6c8",
+          "gitBlobSha": "1eccd60b032d080f88d128432b3fd9fe64741ddd",
+          "bytes": 41317
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "67974f59fea8ee773dedbcf263eee7221b2828511ed97a28376e1c7d8376653f",
+          "gitBlobSha": "eddf6e85d8b8668c6fdae4f16fc5ddb72da93a86",
+          "bytes": 382418
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-BESCHREIBUNG-ENTWURF-20261115-R228.html",
+          "sha256": "5ab094c114daf9cfe73b957c9c652c3b6d9ef2c58915de848f51521cfb7cc69c",
+          "gitBlobSha": "cc0da69485d5a06dab604a98c58166ee517517e4",
+          "bytes": 4390
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "962728809266a8af97ea556b2ee0b306f63ec085a299c402af2f0a31460e0c5d",
+          "gitBlobSha": "5d1c10d5283947340471bd4914b2ce8426cd982c",
+          "bytes": 506807
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "6929a612b451ef9afc4ae692a0ab2150e6d031e93a57ecdc70ebe9c7f23d40e1",
+          "gitBlobSha": "dc6c37a881dac3eac0333887ce0f810f1bdcf9d2",
+          "bytes": 574782
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md",
+          "sha256": "e0449cb8477f58a42d0c236dab867288c63db7945f801d26bd58e2a2781aef9c",
+          "gitBlobSha": "b256656cb2f720160f8d19e7ed3513a2581d048c",
+          "bytes": 1893
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WELCOME-CAPTURE-ENTWURF-20261115-R228.md",
+          "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
+          "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
+          "bytes": 938
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
     }
   ],
   "salesGoal": {
@@ -29535,6 +30299,49 @@
           }
         }
       ]
+    },
+    {
+      "at": "2026-11-15T07:19:23.182598+00:00",
+      "previousCurrentDayEvidenceDate": "2026-11-14",
+      "previousCurrentDayEvidenceKind": "R200_ONCE_DAILY_SMALL_REPORTS_OFFLINE_RECOMPUTED",
+      "previousCompletedReports": {
+        "metricool": {
+          "localDate": "2026-11-14",
+          "range": "2026-11-07/2026-11-13",
+          "definitionCalls": 6,
+          "dataCalls": 6,
+          "missingIsUnknown": true,
+          "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261114-R200.json"
+        },
+        "klaviyo": {
+          "localDate": "2026-11-14",
+          "range": "2026-11-07/2026-11-13",
+          "metricDiscoveryCalls": 1,
+          "flowReportCalls": 1,
+          "conversionMetricId": "W7XTVD",
+          "accountCurrency": "USD",
+          "shopCurrency": "CHF",
+          "currenciesMixed": false,
+          "missingRowsUnknown": true
+        },
+        "ordersQueried": false,
+        "purchaseWatchEnded": true,
+        "broadSalesRepeated": false,
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261114-R200.json",
+        "searchConsole": {
+          "localDate": "2026-11-15",
+          "property": "sc-domain:luxestyle.ch",
+          "range": "2026-11-08/2026-11-14",
+          "dataState": "final",
+          "finalEstimatedThrough": "2026-11-12",
+          "queryCalls": 1,
+          "rows": 20,
+          "truncated": true,
+          "proof": "dropship/codex-handoff-20261018/SEO-LIVE-KORREKTUREN-20261115-R226.json",
+          "completePeriodVerified": false
+        }
+      },
+      "reason": "R228 first15Nov Metricool/Klaviyo daily report after fresh Core4; already15Nov GSC remains preserved."
     }
   ],
   "reviewPacketHistory": [
@@ -54262,6 +55069,110 @@
         "Memory / nächste Arbeit",
         "24 stabile Aufgaben-IDs und Historie erhalten; Quellbelege, konkreten Patch und Testergebnisse für Folgearbeit gesichert",
         "Nächster Schritt: lokalen Printful-Kandidaten im regulären Code-Review/Node22-CI prüfen; Schema nur quellgenau und mit korrekten Produkt-/Versand-/Retourenregeln weiterentwickeln. Kein neuer Publisher, Zeitplanwechsel, bezahlter Render oder Kundenkontakt. Claude-Empfang bleibt unbekannt."
+      ]
+    ]
+  },
+  "run228": {
+    "revision": 228,
+    "startedAtUTC": "2026-11-15T06:55:41Z",
+    "recordedAtUTC": "2026-11-15T07:19:23.182598+00:00",
+    "dateZurich": "2026-11-15",
+    "automationId": "6ad336cc3a388191bc05642ef858af99",
+    "scheduleChanged": false,
+    "shopIdentityVerified": true,
+    "metricoolBrandAndSixIdentitiesVerified": true,
+    "metricoolCalls": {
+      "brandIdentity": 1,
+      "schedule": 4,
+      "metricDefinitions": 6,
+      "analyticsData": 6
+    },
+    "klaviyoCalls": {
+      "account": 1,
+      "metricDiscovery": 1,
+      "flowReport": 1,
+      "flowDefinition": 5,
+      "forms": 1
+    },
+    "shopifyQueries": {
+      "identityExecuted": 1,
+      "productExecuted": 1,
+      "deprecatedImagesRejectedBeforeSend": 1
+    },
+    "cjDetailReads": 1,
+    "sourceAgentGitHubReads": 5,
+    "sourceAgentWrongPath404s": 2,
+    "rootPublicReads": 4,
+    "shopifyBusinessWrites": 0,
+    "merchantWrites": 0,
+    "socialCreatesUpdatesDeletesUploads": 0,
+    "ownPublications": 0,
+    "newMP4s": 0,
+    "paidRenders": 0,
+    "flowOrEmailSendsOrWrites": 0,
+    "newOrdersWatchQueries": 0,
+    "gscPerformanceQueries": 0,
+    "sourceMainPin": "9c7dfe8c73d475a495795ad738aea3e157b06be1",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "masterReady": false,
+    "existingDraftYouTubeMadeForKids": false,
+    "newMasterAudienceApproval": "unknown_separate_from_existing_drafts",
+    "ledgerCreatedOrReset": false,
+    "pastPublicationHistoryComplete": false,
+    "productOnlyGatePassed": true,
+    "channelPublicationGatesPassed": false,
+    "newKlaviyoProposalCount": 1,
+    "newProductSalesProposalCount": 1,
+    "reportsCurrenciesCombined": false,
+    "newAutomationWorkflowDeployMergeInstallFrequencyChanges": 0,
+    "shippingThresholdsCHF50CHF45AndAccountDomainPreserved": true,
+    "eightHoursBackgroundWorkClaimed": false,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "table": [
+      [
+        "Identität / Tagesgrenze",
+        "Aktuelle Core4, heutigen Tagesblock, Shop und sechs Metricool-Kanäle vor den Abfragen geprüft",
+        "LuxeStyle/luxestyle.ch/CHF und Marke6227837/EuropeZurich passen. Social-/Klaviyo-Report zuletzt14Nov, heute daher einmal neu gelesen. Heutigen GSC-Report R226 nicht wiederholt; Kauf-Watch bleibt beendet."
+      ],
+      [
+        "Planung / Duplikate",
+        "Vier kleine Planabfragen über 15.–22.11. vollständig gesichert und unabhängig nachgerechnet",
+        "42 Objekte, 51 Kanalzustände; 41 global mit draft=false/autoPublish=true, zehn Draft-Zustände. IG/FB/TikTok/Pinterest je Datum globale Termine. Threads am 15. November und YouTube vom 15.–22. November ohne aktive Termine. Keine exakten UUID-/Text+Medien-/Medienlisten-Duplikate je Kanal; keine Byte-/Gesamthistorienprüfung."
+      ],
+      [
+        "Publikationsstatus",
+        "Jeden gelieferten Providerzustand, Zeitpunkt und verfügbare Auto-Publish-Felder getrennt betrachtet",
+        "Alle51 PENDING und bei08Uhr zukünftig; keine eigene Veröffentlichung. IG liefert kanalbezogene Auto-Publish-Werte, andere Kanäle nicht. Ältere Auslieferung ist aus dem vorhandenen scheduled-only-Endpunkt unbekannt. Vorhandene Termine und Holds erhalten; nichts pauschal aktiviert oder gelöscht."
+      ],
+      [
+        "Kennzahlen",
+        "Sechs gültige Evolution-Metrikdefinitionen und sechs kleine Datenabfragen für08–14Nov gelesen, zwölf Metriken offline nachgerechnet",
+        "TikTok3497 Aufrufe auf6/7 Tagen, Interaktionen11 auf6/7; Pinterest4256 Impressionen/81 Interaktionen auf5/7; YouTube699 Views/0 Abogewinne auf5/7. IG578 Views auf7/7, Interaktionen1 auf1/7; FB135 Views auf7/7, Interaktionen0 auf1/7. Fehlendes unbekannt, keine kanalübergreifenden Summen oder Kaufableitung."
+      ],
+      [
+        "Klaviyo",
+        "Placed Order W7XTVD frisch entdeckt, genau einen Flowreport und vier bekannte Definitionen gelesen; Welcome-Triggerliste zusätzlich gezielt abgeglichen",
+        "XEGbTB live: drei zugestellte Nachrichtenempfängerzählungen,0 Klicks und0 zugeordnete Konversionen. Vse76a/VbLQj6/RnTvsY draft. Fehlende Reportzeilen unbekannt; keine Aussage über alle Shopkäufe oder Bestell-Sync. KlaviyoUSD/ShopCHF getrennt."
+      ],
+      [
+        "Capture / ein Verbesserungsvorschlag",
+        "Leere Forms-Antwort mit öffentlichem HTML und Welcome-Definition gegengeprüft",
+        "Zwei vorhandene Inline-Anmeldewege zielen auf T2VHfu, identisch mit Welcome-Trigger. Laufzeit/Listeneintrag nicht getestet. Genau ein neuer Vorschlag: sofortige E-Mail-Zusage im Popup durch «Deine Anmeldung wurde übermittelt.» ersetzen. Nur Entwurf; kein Subscriber, Testsend oder Flowwrite."
+      ],
+      [
+        "Produkt / Master",
+        "A-Variante des Projektors nativ und öffentlich mit Preis, Tracking/Policy und echtem Variantenbild verifiziert; aktuellen Kanalwächter plus strengere Inhaberregeln angewendet",
+        "ACTIVE,12Tags ohne Library-/rueckhol-Sperre, A68122445283719/CJSN139239101AZ/CHF34.90, untracked/CONTINUE, storefrontavailable. A-Bild frischHTTP200 und visuell geprüft, hashgleich zur datierten Referenz. Produktgate bestanden; Film/Motiv/kommerzielle Rechte/Abnahme fehlen weiterhin. Kein fertiger neuer Master."
+      ],
+      [
+        "Produktionsfortschritt / Verkauf",
+        "Denselben18s/540Frame-Master mit A-Referenz, geplanter echter Handlung, zwei Hooks und sechs UTM-Captions fortgeführt. Aktuelle Musikdatei und CREDITS gegengeprüft; zwei pauschale Lieferumfangstellen als präzisen Diff vorbereitet",
+        "Keine neue Master-ID, kein Render/Upload. CREDITS benennt Eigenproduktion, vollständige Lizenzkette/Hörabnahme bleiben offen; kein Ersatztrack. Verkaufsentwurf ändert genau Variantenabsatz und Fakten-Lieferumfang, übrigesHTML bytegleich. Keine Shopmutation. CJ-Originalantwort nicht gesichert, Auszug erhalten; vor Livewrite gezielte Gegenprobe nötig."
+      ],
+      [
+        "Fehler / Memory",
+        "Rohdaten und Grenzen gesichert; heutige Tabelle und24stabile IDs fortgeschrieben",
+        "Ein Product.images-Query wurde vor Ausführung vom Validator abgelehnt, danach media verwendet. Zwei vermutete GitHub-Pfade lieferten404, exakte R214-Pins danach gelesen; insgesamt fünf Agent-GitHub-Reads. Fehlende lokale Dateien sind kein Connectorbeweis. CJ-Vollantwort als fehlend markiert statt erneut abgefragt. Keine Kundenansprache, Rabatte/Budgets/Versand-/Flow-/DNS-/Kanaländerung, Workflowstarts, Installationen oder neue Automation. Claude-Empfang unbekannt."
       ]
     ]
   }

@@ -1,3 +1,17 @@
+# R228 – Morgenlauf: aktuelle Planung, Tagesreports und konkrete Entwürfe – 15.11.2026 Zürich
+
+Shop/CHF und Metricool 6227837 / Europe/Zurich / sechs Identitäten frisch bestätigt. Vier kleine Queueabfragen liefern weiterhin 42 Objekte und 51 PENDING-Kanalzustände: globale Termine auf IG/FB/TikTok/Pinterest je Datum vom 15.–22. November; Threads am 15. November und YouTube vom 15.–22. November offen. Keine exakten Feldduplikate im Fenster, keine globale Byte-/Historiengarantie. Nur IG liefert kanalbezogene Auto-Publish-Werte. Keine neuen Posts, Löschungen oder eigenen Publikationen; alte Auslieferung mit scheduled-only unbekannt.
+
+Heute erstmals Social-/Klaviyo-Reports für 08.–14. November gelesen und unabhängig nachgerechnet; bis zum nächsten Kalendertag wiederverwenden. GSC15Nov ausR226 nicht wiederholt. TikTok 3497 Views an 6 Tagen, Pinterest 4256 Impressionen und 81 Interaktionen an 5 Tagen, YouTube 699 Views an 5 Tagen; fehlende Werte unbekannt. XEGbTB live mit drei zugestellten Nachrichtenzählungen, null erfassten Klicks und null zugeordneten Konversionen. Drei ältere Flows draft, keine Shopumsatz-/Syncableitung, USD/CHF getrennt.
+
+A-Grundmodell aktuell für CHF 34.90 / ACTIVE / öffentlich verfügbar, Tags/Tracking/CONTINUE und echtes A-Bild bestätigt. Derselbe 18-Sekunden-Master weiterbearbeitet, keine neue MP4/Rechte-/Abnahmefreigabe. Konkreter Verkaufsentwurf korrigiert zwei pauschale Lieferumfangstellen, übrigesHTML bytegleich. Einziger neuer Klaviyo-/Capture-Vorschlag neutralisiert die unbelegte Sofort-E-Mail-Zusage des Popups. Statische Capture-Liste passt zur Welcome-Definition; Runtime ungeprüft. Beides nur Freigabeentwurf, keine Businesswrites.
+
+Quell-/Rohdatenfehler offen: deprecated images vor Queryversand abgelehnt, zwei vermutete GH-Pfade404; CJ-Vollantwort nicht gesichert, Auszug erhalten und keine blinde Neuabfrage. Musik/CREDITS frisch gegengeprüft, keine vollständige Lizenz-/Hörabnahme. 24 IDs, Historien und Zeitplan erhalten; Claude-Empfang unbekannt. Abschliessend aktuellen Memory-Link teilen.
+
+[Kompaktes Paket und Tagesergänzung](CONTENT-VERKAUFSPAKET-20261115-08H-R228.md) · [Storyboard](MASTER-STORYBOARD-20261115-08H-R228.md) · [sechs Caption-/Titel-/UTM-Entwürfe](CAPTION-ENTWUERFE-20261115-08H-R228.md) · [Verkaufsdiff](VERKAUFSENTWURF-PROJEKTOR-20261115-R228.md).
+
+---
+
 # R227 – SEO live verbessert, Google-Prüfung und Printful-Guard – 15.11.2026 Zürich
 
 Hängematten-Suchbeschreibung einmal live konkretisiert; SEO-Titel ausdrücklich erhalten, native und öffentliche Meta-/OG-Rücklesung passend. Keine Rabatt-Einstellung geändert. Google bestätigt für dieselbe URL im gespeicherten Crawl vom 4. November Index- und Rich-Results-PASS; 101 optionale Warnungen, keine gelieferten ERROR-Einträge. Aktuell bleiben 33 Variantenbeschreibungen und Offer-Versand-/Retourenfelder offen. Keine globale Fehlerfreiheit oder Mobile-Abnahme behaupten; neue SEO-Übernahme durch Google unbekannt.

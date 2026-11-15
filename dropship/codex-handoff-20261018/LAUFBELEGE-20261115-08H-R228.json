@@ -1,0 +1,104 @@
+{
+  "revision": 228,
+  "startedAtUTC": "2026-11-15T06:55:41Z",
+  "recordedAtUTC": "2026-11-15T07:19:23.182598+00:00",
+  "dateZurich": "2026-11-15",
+  "automationId": "6ad336cc3a388191bc05642ef858af99",
+  "scheduleChanged": false,
+  "shopIdentityVerified": true,
+  "metricoolBrandAndSixIdentitiesVerified": true,
+  "metricoolCalls": {
+    "brandIdentity": 1,
+    "schedule": 4,
+    "metricDefinitions": 6,
+    "analyticsData": 6
+  },
+  "klaviyoCalls": {
+    "account": 1,
+    "metricDiscovery": 1,
+    "flowReport": 1,
+    "flowDefinition": 5,
+    "forms": 1
+  },
+  "shopifyQueries": {
+    "identityExecuted": 1,
+    "productExecuted": 1,
+    "deprecatedImagesRejectedBeforeSend": 1
+  },
+  "cjDetailReads": 1,
+  "sourceAgentGitHubReads": 5,
+  "sourceAgentWrongPath404s": 2,
+  "rootPublicReads": 4,
+  "shopifyBusinessWrites": 0,
+  "merchantWrites": 0,
+  "socialCreatesUpdatesDeletesUploads": 0,
+  "ownPublications": 0,
+  "newMP4s": 0,
+  "paidRenders": 0,
+  "flowOrEmailSendsOrWrites": 0,
+  "newOrdersWatchQueries": 0,
+  "gscPerformanceQueries": 0,
+  "sourceMainPin": "9c7dfe8c73d475a495795ad738aea3e157b06be1",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "masterReady": false,
+  "existingDraftYouTubeMadeForKids": false,
+  "newMasterAudienceApproval": "unknown_separate_from_existing_drafts",
+  "ledgerCreatedOrReset": false,
+  "pastPublicationHistoryComplete": false,
+  "productOnlyGatePassed": true,
+  "channelPublicationGatesPassed": false,
+  "newKlaviyoProposalCount": 1,
+  "newProductSalesProposalCount": 1,
+  "reportsCurrenciesCombined": false,
+  "newAutomationWorkflowDeployMergeInstallFrequencyChanges": 0,
+  "shippingThresholdsCHF50CHF45AndAccountDomainPreserved": true,
+  "eightHoursBackgroundWorkClaimed": false,
+  "claudeReceipt": "unknown_no_new_receipt",
+  "table": [
+    [
+      "Identität / Tagesgrenze",
+      "Aktuelle Core4, heutigen Tagesblock, Shop und sechs Metricool-Kanäle vor den Abfragen geprüft",
+      "LuxeStyle/luxestyle.ch/CHF und Marke6227837/EuropeZurich passen. Social-/Klaviyo-Report zuletzt14Nov, heute daher einmal neu gelesen. Heutigen GSC-Report R226 nicht wiederholt; Kauf-Watch bleibt beendet."
+    ],
+    [
+      "Planung / Duplikate",
+      "Vier kleine Planabfragen über 15.–22.11. vollständig gesichert und unabhängig nachgerechnet",
+      "42 Objekte, 51 Kanalzustände; 41 global mit draft=false/autoPublish=true, zehn Draft-Zustände. IG/FB/TikTok/Pinterest je Datum globale Termine. Threads am 15. November und YouTube vom 15.–22. November ohne aktive Termine. Keine exakten UUID-/Text+Medien-/Medienlisten-Duplikate je Kanal; keine Byte-/Gesamthistorienprüfung."
+    ],
+    [
+      "Publikationsstatus",
+      "Jeden gelieferten Providerzustand, Zeitpunkt und verfügbare Auto-Publish-Felder getrennt betrachtet",
+      "Alle51 PENDING und bei08Uhr zukünftig; keine eigene Veröffentlichung. IG liefert kanalbezogene Auto-Publish-Werte, andere Kanäle nicht. Ältere Auslieferung ist aus dem vorhandenen scheduled-only-Endpunkt unbekannt. Vorhandene Termine und Holds erhalten; nichts pauschal aktiviert oder gelöscht."
+    ],
+    [
+      "Kennzahlen",
+      "Sechs gültige Evolution-Metrikdefinitionen und sechs kleine Datenabfragen für08–14Nov gelesen, zwölf Metriken offline nachgerechnet",
+      "TikTok3497 Aufrufe auf6/7 Tagen, Interaktionen11 auf6/7; Pinterest4256 Impressionen/81 Interaktionen auf5/7; YouTube699 Views/0 Abogewinne auf5/7. IG578 Views auf7/7, Interaktionen1 auf1/7; FB135 Views auf7/7, Interaktionen0 auf1/7. Fehlendes unbekannt, keine kanalübergreifenden Summen oder Kaufableitung."
+    ],
+    [
+      "Klaviyo",
+      "Placed Order W7XTVD frisch entdeckt, genau einen Flowreport und vier bekannte Definitionen gelesen; Welcome-Triggerliste zusätzlich gezielt abgeglichen",
+      "XEGbTB live: drei zugestellte Nachrichtenempfängerzählungen,0 Klicks und0 zugeordnete Konversionen. Vse76a/VbLQj6/RnTvsY draft. Fehlende Reportzeilen unbekannt; keine Aussage über alle Shopkäufe oder Bestell-Sync. KlaviyoUSD/ShopCHF getrennt."
+    ],
+    [
+      "Capture / ein Verbesserungsvorschlag",
+      "Leere Forms-Antwort mit öffentlichem HTML und Welcome-Definition gegengeprüft",
+      "Zwei vorhandene Inline-Anmeldewege zielen auf T2VHfu, identisch mit Welcome-Trigger. Laufzeit/Listeneintrag nicht getestet. Genau ein neuer Vorschlag: sofortige E-Mail-Zusage im Popup durch «Deine Anmeldung wurde übermittelt.» ersetzen. Nur Entwurf; kein Subscriber, Testsend oder Flowwrite."
+    ],
+    [
+      "Produkt / Master",
+      "A-Variante des Projektors nativ und öffentlich mit Preis, Tracking/Policy und echtem Variantenbild verifiziert; aktuellen Kanalwächter plus strengere Inhaberregeln angewendet",
+      "ACTIVE,12Tags ohne Library-/rueckhol-Sperre, A68122445283719/CJSN139239101AZ/CHF34.90, untracked/CONTINUE, storefrontavailable. A-Bild frischHTTP200 und visuell geprüft, hashgleich zur datierten Referenz. Produktgate bestanden; Film/Motiv/kommerzielle Rechte/Abnahme fehlen weiterhin. Kein fertiger neuer Master."
+    ],
+    [
+      "Produktionsfortschritt / Verkauf",
+      "Denselben18s/540Frame-Master mit A-Referenz, geplanter echter Handlung, zwei Hooks und sechs UTM-Captions fortgeführt. Aktuelle Musikdatei und CREDITS gegengeprüft; zwei pauschale Lieferumfangstellen als präzisen Diff vorbereitet",
+      "Keine neue Master-ID, kein Render/Upload. CREDITS benennt Eigenproduktion, vollständige Lizenzkette/Hörabnahme bleiben offen; kein Ersatztrack. Verkaufsentwurf ändert genau Variantenabsatz und Fakten-Lieferumfang, übrigesHTML bytegleich. Keine Shopmutation. CJ-Originalantwort nicht gesichert, Auszug erhalten; vor Livewrite gezielte Gegenprobe nötig."
+    ],
+    [
+      "Fehler / Memory",
+      "Rohdaten und Grenzen gesichert; heutige Tabelle und24stabile IDs fortgeschrieben",
+      "Ein Product.images-Query wurde vor Ausführung vom Validator abgelehnt, danach media verwendet. Zwei vermutete GitHub-Pfade lieferten404, exakte R214-Pins danach gelesen; insgesamt fünf Agent-GitHub-Reads. Fehlende lokale Dateien sind kein Connectorbeweis. CJ-Vollantwort als fehlend markiert statt erneut abgefragt. Keine Kundenansprache, Rabatte/Budgets/Versand-/Flow-/DNS-/Kanaländerung, Workflowstarts, Installationen oder neue Automation. Claude-Empfang unbekannt."
+    ]
+  ]
+}
