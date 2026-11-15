@@ -206,7 +206,8 @@ def autofeed(h, name):
     r = requests.get(f"https://merchantapi.googleapis.com/accounts/v1/{name}/autofeedSettings", headers=h, timeout=30)
     if r.status_code == 200:
         j = r.json()
-        print(f"Autofeed-Schalter: enableProducts={j.get('enableProducts')} eligible={j.get('eligible')}")
+        print(f"Autofeed-Schalter: enableProducts={bool(j.get('enableProducts', False))} "   # fehlendes Feld = false (proto3)
+              f"eligible={bool(j.get('eligible', False))}")
     else:
         print(f"Autofeed-Schalter: HTTP {r.status_code} " + r.text[:200].replace(name, "<konto>"))
     try:
