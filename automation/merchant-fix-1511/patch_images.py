@@ -17,7 +17,7 @@ for item in plan[:limit]:
  if v['product']['handle']!=item['handle'] or v['product']['status']!='ACTIVE' or im.get('url')!=item['new_image'] or im.get('width',0)<500 or im.get('height',0)<500:raise RuntimeError('Shopify-Quelle stimmt nicht mehr überein')
  head=requests.head(item['new_image'],timeout=25);head.raise_for_status()
  if not head.headers.get('content-type','').startswith('image/'):raise RuntimeError('Neue Quelle ist kein Bild')
- entry={**item,'state':'Trockenlauf bestätigt'};results.append(entry);save();print('GEPRÜFT',item['offer_id'],flush=True)
+ entry={**item,'state':'Trockenlauf bestätigt'};results.append(entry);save();print('GEPRÜFT: Bildquelle unverändert, mindestens 500px; Angebot',item['offer_id'],flush=True)
  if not live:continue
  # Only one populated attribute: the API's documented implied field mask is imageLink only.
  backup={k:val for k,val in before.items() if k not in ['name','dataSource','productStatus','base64EncodedName','base64EncodedProduct']};(out/(str(len(results))+'-before.json')).write_text(json.dumps(backup,ensure_ascii=False,indent=1));entry['state']='Anfrage vorbereitet';save()
