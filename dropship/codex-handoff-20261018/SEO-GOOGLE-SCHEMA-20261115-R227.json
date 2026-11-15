@@ -1,0 +1,3312 @@
+{
+  "scope": "One exact LuxeStyle URL; indexed Google snapshot and current public output are separate observations.",
+  "identity": {
+    "atUTC": "2026-11-15T05:21:30.894Z",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "timezone": "CET"
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "property": "sc-domain:luxestyle.ch",
+  "googleInspection": {
+    "atUTC": "2026-11-15T05:21:30.107Z",
+    "property": "sc-domain:luxestyle.ch",
+    "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20"
+  },
+  "googleResult": {
+    "inspection_result": {
+      "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=47xri_gDYRsberFAQtR9ug&utm_medium=link&utm_source=api",
+      "indexStatusResult": {
+        "verdict": "PASS",
+        "coverageState": "Gesendet und indexiert",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-11-04T16:41:09Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "userCanonical": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+        "referringUrls": [
+          "https://luxestyle.ch/fr/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209&country=CH&currency=CHF"
+        ],
+        "crawledAs": "MOBILE"
+      },
+      "mobileUsabilityResult": {
+        "verdict": "VERDICT_UNSPECIFIED"
+      },
+      "richResultsResult": {
+        "verdict": "PASS",
+        "detectedItems": [
+          {
+            "richResultType": "Produkt-Snippets",
+            "items": [
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"review\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"aggregateRating\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "richResultType": "Händlereinträge",
+            "items": [
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün + Grau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau, 300 × 140 cm",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün, 300 × 140 cm",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegrün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Camel",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarzorange",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange + Grau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Blau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Blauorange",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau + Grau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Amrygreen+camel",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Apfelgrün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelbblau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Fruchtgrün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün-Orange",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Blaugelb",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün + Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Armeegrün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau + Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel + Lila",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegelb",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Grün",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              },
+              {
+                "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau-Blau",
+                "issues": [
+                  {
+                    "issueMessage": "Feld \"description\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"shippingDetails\" fehlt",
+                    "severity": "WARNING"
+                  },
+                  {
+                    "issueMessage": "Feld \"hasMerchantReturnPolicy\" fehlt",
+                    "severity": "WARNING"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "richResultType": "Navigationspfade",
+            "items": [
+              {
+                "name": "Unbenanntes Element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "currentPublicSchema": {
+    "atUTC": "2026-11-15T05:22:34.465612+00:00",
+    "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+    "status": 200,
+    "finalUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+    "canonical": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+    "htmlSha256": "94682b36737547252dd8b5a671a86503637499cd177a4fba5ba0d20c6df34d58",
+    "ldScriptCount": 3,
+    "parseErrors": [],
+    "scripts": [
+      {
+        "script": 0,
+        "json": {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://luxestyle.ch/#org",
+          "name": "LuxeStyle",
+          "email": "info@luxestyle.ch",
+          "areaServed": [
+            "CH",
+            "LI"
+          ],
+          "logo": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500",
+          "url": "https://luxestyle.ch/",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": [
+              "CH",
+              "LI"
+            ],
+            "returnPolicyCountry": "CH",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+            "refundType": "https://schema.org/FullRefund"
+          },
+          "hasShippingService": [
+            {
+              "@type": "ShippingService",
+              "name": "Versand Schweiz",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 0,
+                    "maxValue": 49.99
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 7.0,
+                    "currency": "CHF"
+                  }
+                },
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CH"
+                  },
+                  "orderValue": {
+                    "@type": "MonetaryAmount",
+                    "currency": "CHF",
+                    "minValue": 50
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 0,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "ShippingService",
+              "name": "Versand Liechtenstein",
+              "shippingConditions": [
+                {
+                  "@type": "ShippingConditions",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "LI"
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 14.9,
+                    "currency": "CHF"
+                  }
+                }
+              ]
+            }
+          ],
+          "sameAs": [
+            "https://www.facebook.com/1049840534888592",
+            "https://www.instagram.com/luxestyle.ch/",
+            "https://www.tiktok.com/@luxestyle.ch",
+            "https://www.pinterest.com/luxestyleCH/",
+            "https://www.youtube.com/@luxestyle_ch"
+          ]
+        }
+      },
+      {
+        "script": 1,
+        "json": {
+          "@context": "http://schema.org/",
+          "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20#product",
+          "@type": "ProductGroup",
+          "brand": {
+            "@type": "Brand",
+            "name": "LuxeStyle"
+          },
+          "category": "Hängematten",
+          "description": "Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.\nDeine Farbe, deine Ausführung\nIn der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.\nNeben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.\nVersand und Rückgabe\nDie aktuellen Bedingungen findest du in unseren Versandinformationen und Rückgabebedingungen.\nWeiter entdecken: Trends &amp; Gadgets · Weitere Auswahl\n",
+          "hasVariant": [
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985634689#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1617772167228.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün + Grau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985634689#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985634689"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985667457#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985667457#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985667457"
+              },
+              "sku": "CJ-CJYDQTLY00023-Camel"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985700225#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1617772515523_4016a814-1e05-4a26-8a72-2fb6ce8e34fd.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau, 300 × 140 cm",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985700225#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "51.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985700225"
+              },
+              "sku": "CJ-CJYDQTLY00023-Grey300x140cm"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985732993#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1617772515510_56a9bff0-baa5-4868-a444-a93addd6db34.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün, 300 × 140 cm",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985732993#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "51.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985732993"
+              },
+              "sku": "CJ-CJYDQTLY00023-Green300x140cm"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985765761#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegrün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985765761#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985765761"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985798529#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/2049401677374_49cc999f-1976-4fa1-b9b0-dce590f8f963.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Camel",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985798529#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985798529"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985831297#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/4fbb00d1-b63c-4aef-8b1a-f5d65bfbe703.png?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarzorange",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985831297#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985831297"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985864065#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1304979766846.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange + Grau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985864065#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985864065"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985896833#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985896833#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985896833"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985929601#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985929601#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985929601"
+              },
+              "sku": "CJ-CJYDQTLY00023-Black"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985962369#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/123528126762_32ed319a-b678-4ced-b5d7-9c8277c4e1cf.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Blau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985962369#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985962369"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985995137#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Blauorange",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985995137#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985995137"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986027905#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/2034868870305.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau + Grau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986027905#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986027905"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986060673#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/22961703074356_09de4c13-7b61-4aa7-a1c4-4483e8ef4553.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Amrygreen+camel",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986060673#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986060673"
+              },
+              "sku": "CJ-CJYDQTLY00023-Amrygreen+camel"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986093441#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1368989448894.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Apfelgrün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986093441#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986093441"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986158977#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/5799272155674_8ce90284-bfc2-425e-bfb9-b97bc48d7f8e.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986158977#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986158977"
+              },
+              "sku": "CJ-CJYDQTLY00023-Purple"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986191745#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelbblau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986191745#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986191745"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986224513#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986224513#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986224513"
+              },
+              "sku": "CJ-CJYDQTLY00023-Orange"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986257281#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/6456720657245.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986257281#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986257281"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986290049#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Fruchtgrün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986290049#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986290049"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986322817#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün-Orange",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986322817#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986322817"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986355585#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Blaugelb",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986355585#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986355585"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986388353#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986388353#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986388353"
+              },
+              "sku": "CJ-CJYDQTLY00023-Blue"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986421121#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1441131066666_f4a6b71e-638f-4407-b31e-21941b582e66.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün + Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986421121#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986421121"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986453889#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Armeegrün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986453889#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986453889"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986486657#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/194122439106_34f076b8-2394-4c9e-bda1-4124d8ec49fc.jpg?v=1790778652&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau + Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986486657#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986486657"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986519425#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1688091228777.jpg?v=1790778647&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986519425#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986519425"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986552193#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/784466426128.jpg?v=1790778646&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel + Lila",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986552193#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986552193"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986584961#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegelb",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986584961#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986584961"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986617729#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986617729#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986617729"
+              },
+              "sku": "CJ-CJYDQTLY00023-Gray"
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986650497#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111_0ff4e5b9-09ad-43db-926b-84f427d1a0e3.jpg?v=1790778647&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Grün",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986650497#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986650497"
+              }
+            },
+            {
+              "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986683265#variant",
+              "@type": "Product",
+              "image": "https://luxestyle.ch/cdn/shop/files/1586294835111.jpg?v=1783476912&width=1920",
+              "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau-Blau",
+              "offers": {
+                "@id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986683265#offer",
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "price": "34.90",
+                "priceCurrency": "CHF",
+                "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986683265"
+              }
+            }
+          ],
+          "name": "Reise-Hängematte aus Fallschirm-Nylon",
+          "productGroupID": "15450856292737",
+          "url": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20"
+        }
+      },
+      {
+        "script": 2,
+        "json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://luxestyle.ch/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Herbst & Übergang",
+              "item": "https://luxestyle.ch/collections/jacken-outdoor"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Reise & Outdoor",
+              "item": "https://luxestyle.ch/collections/sub-reise"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Reise-Hängematte aus Fallschirm-Nylon",
+              "item": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20"
+            }
+          ]
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "path": "script0/hasMerchantReturnPolicy",
+        "type": "MerchantReturnPolicy",
+        "id": null,
+        "name": null,
+        "keys": [
+          "@type",
+          "applicableCountry",
+          "returnPolicyCountry",
+          "returnPolicyCategory",
+          "merchantReturnDays",
+          "returnMethod",
+          "returnFees",
+          "refundType"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script0/hasShippingService/0",
+        "type": "ShippingService",
+        "id": null,
+        "name": "Versand Schweiz",
+        "keys": [
+          "@type",
+          "name",
+          "shippingConditions"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": [
+          {
+            "@type": "ShippingConditions",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "CH"
+            },
+            "orderValue": {
+              "@type": "MonetaryAmount",
+              "currency": "CHF",
+              "minValue": 0,
+              "maxValue": 49.99
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 7.0,
+              "currency": "CHF"
+            }
+          },
+          {
+            "@type": "ShippingConditions",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "CH"
+            },
+            "orderValue": {
+              "@type": "MonetaryAmount",
+              "currency": "CHF",
+              "minValue": 50
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 0,
+              "currency": "CHF"
+            }
+          }
+        ],
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script0/hasShippingService/0/shippingConditions/0",
+        "type": "ShippingConditions",
+        "id": null,
+        "name": null,
+        "keys": [
+          "@type",
+          "shippingDestination",
+          "orderValue",
+          "shippingRate"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": {
+          "@type": "MonetaryAmount",
+          "currency": "CHF",
+          "minValue": 0,
+          "maxValue": 49.99
+        },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 7.0,
+          "currency": "CHF"
+        }
+      },
+      {
+        "path": "script0/hasShippingService/0/shippingConditions/1",
+        "type": "ShippingConditions",
+        "id": null,
+        "name": null,
+        "keys": [
+          "@type",
+          "shippingDestination",
+          "orderValue",
+          "shippingRate"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": {
+          "@type": "MonetaryAmount",
+          "currency": "CHF",
+          "minValue": 50
+        },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 0,
+          "currency": "CHF"
+        }
+      },
+      {
+        "path": "script0/hasShippingService/1",
+        "type": "ShippingService",
+        "id": null,
+        "name": "Versand Liechtenstein",
+        "keys": [
+          "@type",
+          "name",
+          "shippingConditions"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": [
+          {
+            "@type": "ShippingConditions",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "LI"
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 14.9,
+              "currency": "CHF"
+            }
+          }
+        ],
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script0/hasShippingService/1/shippingConditions/0",
+        "type": "ShippingConditions",
+        "id": null,
+        "name": null,
+        "keys": [
+          "@type",
+          "shippingDestination",
+          "shippingRate"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 14.9,
+          "currency": "CHF"
+        }
+      },
+      {
+        "path": "script1",
+        "type": "ProductGroup",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20#product",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon",
+        "keys": [
+          "@context",
+          "@id",
+          "@type",
+          "brand",
+          "category",
+          "description",
+          "hasVariant",
+          "name",
+          "productGroupID",
+          "url"
+        ],
+        "description": "Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.\nDeine Farbe, deine Ausführung\nIn der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.\nNeben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.\nVersand und Rückgabe\nDie aktuellen Bedingungen findest du in unseren Versandinformationen und Rückgabebedingungen.\nWeiter entdecken: Trends &amp; Gadgets · Weitere Auswahl\n",
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/0",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985634689#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün + Grau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/0/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985634689#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/1",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985667457#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/1/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985667457#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/2",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985700225#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau, 300 × 140 cm",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/2/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985700225#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "51.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/3",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985732993#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grün, 300 × 140 cm",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/3/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985732993#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "51.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/4",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985765761#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegrün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/4/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985765761#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/5",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985798529#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Camel",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/5/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985798529#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/6",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985831297#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarzorange",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/6/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985831297#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/7",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985864065#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange + Grau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/7/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985864065#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/8",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985896833#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/8/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985896833#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/9",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985929601#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/9/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985929601#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/10",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985962369#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Blau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/10/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985962369#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/11",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985995137#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Blauorange",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/11/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889985995137#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/12",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986027905#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau + Grau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/12/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986027905#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/13",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986060673#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Amrygreen+camel",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/13/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986060673#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/14",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986093441#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Schwarz-Grün + Apfelgrün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/14/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986093441#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/15",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/15/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986126209#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/16",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986158977#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/16/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986158977#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/17",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986191745#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelbblau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/17/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986191745#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/18",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986224513#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Orange",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/18/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986224513#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/19",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986257281#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau + Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/19/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986257281#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/20",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986290049#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Fruchtgrün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/20/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986290049#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/21",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986322817#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün-Orange",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/21/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986322817#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/22",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986355585#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Blaugelb",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/22/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986355585#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/23",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986388353#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/23/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986388353#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/24",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986421121#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Dunkelgrün + Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/24/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986421121#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/25",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986453889#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Armeegrün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/25/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986453889#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/26",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986486657#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Blau + Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/26/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986486657#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/27",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986519425#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/27/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986519425#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/28",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986552193#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Camel + Lila",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/28/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986552193#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/29",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986584961#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Orangegelb",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/29/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986584961#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/30",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986617729#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Grau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers",
+          "sku"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/30/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986617729#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/31",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986650497#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Gelb + Grün",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/31/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986650497#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/32",
+        "type": "Product",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986683265#variant",
+        "name": "Reise-Hängematte aus Fallschirm-Nylon - Himmelblau-Blau",
+        "keys": [
+          "@id",
+          "@type",
+          "image",
+          "name",
+          "offers"
+        ],
+        "description": null,
+        "price": null,
+        "currency": null,
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      },
+      {
+        "path": "script1/hasVariant/32/offers",
+        "type": "Offer",
+        "id": "/products/reise-hangematte-aus-fallschirm-nylon-86eb20?variant=55889986683265#offer",
+        "name": null,
+        "keys": [
+          "@id",
+          "@type",
+          "availability",
+          "price",
+          "priceCurrency",
+          "url"
+        ],
+        "description": null,
+        "price": "34.90",
+        "currency": "CHF",
+        "shippingDetails": null,
+        "returnPolicy": null,
+        "shippingConditions": null,
+        "orderValue": null,
+        "shippingRate": null
+      }
+    ]
+  },
+  "comparison": {
+    "atUTC": "2026-11-15T05:27:01.115223+00:00",
+    "googleLastCrawl": "2026-11-04T16:41:09Z",
+    "indexVerdict": "PASS",
+    "richVerdict": "PASS",
+    "mobileUsability": "VERDICT_UNSPECIFIED",
+    "issuesBySeverity": {
+      "WARNING": 101
+    },
+    "issuesByMessage": {
+      "Feld \"review\" fehlt": 1,
+      "Feld \"aggregateRating\" fehlt": 1,
+      "Feld \"description\" fehlt": 33,
+      "Feld \"shippingDetails\" fehlt": 33,
+      "Feld \"hasMerchantReturnPolicy\" fehlt": 33
+    },
+    "observedErrorIssues": 0,
+    "liveTypeCounts": {
+      "MerchantReturnPolicy": 1,
+      "ShippingService": 2,
+      "ShippingConditions": 3,
+      "ProductGroup": 1,
+      "Product": 33,
+      "Offer": 33
+    },
+    "productDescriptions": {
+      "with": 0,
+      "without": 33
+    },
+    "offerShippingDetails": {
+      "with": 0,
+      "without": 33
+    },
+    "offerReturnPolicy": {
+      "with": 0,
+      "without": 33
+    },
+    "groupDescription": "Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.\nDeine Farbe, deine Ausführung\nIn der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.\nNeben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.\nVersand und Rückgabe\nDie aktuellen Bedingungen findest du in unseren Versandinformationen und Rückgabebedingungen.\nWeiter entdecken: Trends &amp; Gadgets · Weitere Auswahl\n",
+    "scope": "One exact URL. Google result is indexed crawl04Nov, not live test; current public JSON-LD separately read15Nov. PASS and optional warnings do not prove all catalog error-free or mobile QA passed.",
+    "candidateNextWork": "Investigate coherent variant Product description and Offer shipping/return-policy linkage in current rendered theme. Keep authentic review/rating warnings; no synthetic reviews. Preserve publicCHF50/internalCHF45 and actual checkout settings. No schema patch yet."
+  },
+  "theme": {
+    "data": {
+      "themes": {
+        "nodes": [
+          {
+            "id": "gid://shopify/OnlineStoreTheme/213991391623",
+            "name": "LuxeStyle – SEO 14.11.2026",
+            "role": "MAIN",
+            "updatedAt": "2026-11-14T15:08:04Z"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "sourceReview": {
+    "readOnly": true,
+    "pending": [],
+    "exitCode": 0,
+    "productInformationExcerpt": "{%- comment -%}\n  22.09.2026 (LuxeStyle): Sterne im Google-Suchergebnis. Shopifys `structured_data` kennt die\n  Judge.me-Metafelder nicht — GEMESSEN: 1'541 aktive Produkte mit 8'066 Bewertungen, keines mit\n  aggregateRating. Wir lassen Shopifys Ausgabe unveraendert und haengen NUR bei Produkten mit\n  Bewertungen (reviews.rating_count > 0) ein AggregateRating an — ueber replace_first auf dem\n  einzigen `\"@type\":\"Product\",` (Brand/Offer tragen andere @type). Google verlangt dafuer echte,\n  sichtbare Bewertungen auf der Seite: das Judge.me-Widget steht darunter.\n{%- endcomment -%}\n{%- capture luxe_sd -%}{{ closest.product | structured_data }}{%- endcapture -%}\n{%- if closest.product.id == 15450856292737 -%}\n  {%- for luxe_schema_variant in closest.product.variants -%}\n    {%- if luxe_schema_variant.sku contains ' ' -%}\n      {%- capture luxe_schema_invalid_sku -%},\"sku\":{{ luxe_schema_variant.sku | json }}{%- endcapture -%}\n      {%- assign luxe_sd = luxe_sd | remove: luxe_schema_invalid_sku -%}\n    {%- endif -%}\n  {%- endfor -%}\n{%- endif -%}\n{%- assign luxe_rc = closest.product.metafields.reviews.rating_count.value | plus: 0 -%}\n{%- assign luxe_r = closest.product.metafields.reviews.rating.value -%}\n{%- if luxe_rc > 0 and luxe_r.rating -%}\n  {%- capture luxe_ar -%}\"@type\":\"Product\",\"aggregateRating\":{\"@type\":\"AggregateRating\",\"ratingValue\":\"{{ luxe_r.rating }}\",\"bestRating\":\"{{ luxe_r.scale_max }}\",\"worstRating\":\"{{ luxe_r.scale_min }}\",\"ratingCount\":\"{{ luxe_rc }}\",\"reviewCount\":\"{{ luxe_rc }}\"},{%- endcapture -%}\n  {%- assign luxe_sd = luxe_sd | replace_first: '\"@type\":\"Product\",', luxe_ar -%}\n{%- endif -%}\n<script type=\"application/ld+json\">\n  {{ luxe_sd }}\n</script>\n\n",
+    "headerOrganizationExcerpt": "<script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Organization\",\n    \"@id\": \"https://luxestyle.ch/#org\",\n    \"name\": {{ shop.name | json }},\n    \"email\": \"info@luxestyle.ch\",\n    \"areaServed\": [\"CH\", \"LI\"],\n    {% if settings.logo %}\n      \"logo\": {{ settings.logo | image_url: width: 500 | prepend: \"https:\" | json }},\n    {% endif %}\n    \"url\": {{ request.origin | append: routes.root_url | json }},\n    {%- comment -%} LUX-ORG-RICHTLINIEN (06.10.2026, automation/google_org_richtlinien.py) {%- endcomment -%}\n    \"hasMerchantReturnPolicy\": {\"@type\": \"MerchantReturnPolicy\", \"applicableCountry\": [\"CH\", \"LI\"], \"returnPolicyCountry\": \"CH\", \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\", \"merchantReturnDays\": 30, \"returnMethod\": \"https://schema.org/ReturnByMail\", \"returnFees\": \"https://schema.org/ReturnFeesCustomerResponsibility\", \"refundType\": \"https://schema.org/FullRefund\"}, \"hasShippingService\": [{\"@type\": \"ShippingService\", \"name\": \"Versand Schweiz\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 0, \"maxValue\": 49.99}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 7.0, \"currency\": \"CHF\"}}, {\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"CH\"}, \"orderValue\": {\"@type\": \"MonetaryAmount\", \"currency\": \"CHF\", \"minValue\": 50}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 0, \"currency\": \"CHF\"}}]}, {\"@type\": \"ShippingService\", \"name\": \"Versand Liechtenstein\", \"shippingConditions\": [{\"@type\": \"ShippingConditions\", \"shippingDestination\": {\"@type\": \"DefinedRegion\", \"addressCountry\": \"LI\"}, \"shippingRate\": {\"@type\": \"MonetaryAmount\", \"value\": 14.9, \"currency\": \"CHF\"}}]}], \"sameAs\": [\"https://www.facebook.com/1049840534888592\", \"https://www.instagram.com/luxestyle.ch/\", \"https://www.tiktok.com/@luxestyle.ch\", \"https://www.pinterest.com/luxestyleCH/\", \"https://www.youtube.com/@luxestyle_ch\"]\n  }\n</script>",
+    "capturedStdoutSha256": "1b337f70b348e3b6cd5695cd52c28fcfa9b53c048457c98bdbe7b9d61f6e23fd",
+    "finding": "The current product-information hook only removes invalid optional schema SKUs for the hammock and adds real Judge.me aggregateRating when source fields exist. It does not enrich all variant Product descriptions or Offer shipping/return fields. Site Organization shipping/return policies exist separately.",
+    "noSourceHistoricalClaimsRepeatedAsCurrent": true
+  },
+  "remediationContract": {
+    "status": "source-backed preparation only; no theme patch, write, commit, or publication",
+    "next": "Use the existing structured-data owner; preserve native ProductGroup/variants/Offer identity, prices, availability, and valid operational SKUs. Review documented ProductGroup inheritance and Offer policy representation before changing generated JSON-LD. Validate on an unpublished current-MAIN-derived theme, with full JSON-LD diff and a control product.",
+    "description": "Reuse source-backed product description only; no invented per-variant measurements or features.",
+    "shipping": "Preserve public CHF50 threshold/internal CHF45 and existing country rates; do not flatten order-value conditions into an unqualified single Offer rate.",
+    "returns": "Verify current public conditions and exceptions before linking any product Offer policy; Organization presence alone does not prove every product is eligible for every condition.",
+    "reviews": "Missing authentic reviews/ratings are not to be replaced by synthetic values.",
+    "limits": "101 delivered optional warnings and zero delivered ERROR entries on one indexed crawl do not establish a catalog total, a live Google test, mobile validation, or a ranking outcome."
+  },
+  "seoCorrection": {
+    "native": {
+      "plan": {
+        "product": {
+          "id": "gid://shopify/Product/15450856292737",
+          "seo": {
+            "title": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+            "description": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante."
+          }
+        },
+        "diff": [
+          {
+            "field": "seo.description",
+            "before": "Reise-Hängematte aus Fallschirm-Nylon bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+            "after": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante."
+          }
+        ],
+        "unchangedSeoTitle": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+        "descriptionLength": 143,
+        "scope": "Only product SEO description; body/status/handle/tags/variants/prices/media/discount settings untouched; first3 variants are sentinels, not all variants.",
+        "before": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+            },
+            {
+              "type": "text",
+              "text": "{\"data\":{\"shop\":{\"name\":\"LuxeStyle\",\"primaryDomain\":{\"host\":\"luxestyle.ch\"},\"currencyCode\":\"CHF\"},\"product\":{\"id\":\"gid://shopify/Product/15450856292737\",\"title\":\"Reise-Hängematte aus Fallschirm-Nylon\",\"handle\":\"reise-hangematte-aus-fallschirm-nylon-86eb20\",\"status\":\"ACTIVE\",\"updatedAt\":\"2026-11-02T06:17:05Z\",\"descriptionHtml\":\"<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\\n<h3>Deine Farbe, deine Ausführung</h3>\\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\\n<h3>Versand und Rückgabe</h3>\\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\\\"/policies/shipping-policy\\\">Versandinformationen</a> und <a href=\\\"/policies/refund-policy\\\">Rückgabebedingungen</a>.</p>\\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\\\"/collections/trends-gadgets\\\">Trends &amp; Gadgets</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Weitere Auswahl</a></p>\\n\",\"tags\":[\"auto-entwurf-0926\",\"bild-ok\",\"cj-real\",\"dropship\",\"gfeed-anstupsen-260929\",\"haengematte\",\"hype-jetzt\",\"kunden-liebling\",\"nachfrage-liebling\",\"neu\",\"sort-campingmoebel-haengematten\",\"sort-haengematten-camping\",\"sort-sub-reise\",\"trend\",\"video-hit\",\"viral\"],\"seo\":{\"title\":\"Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH\",\"description\":\"Reise-Hängematte aus Fallschirm-Nylon bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.\"},\"media\":{\"nodes\":[{\"id\":\"gid://shopify/MediaImage/69887490359681\",\"mediaContentType\":\"IMAGE\",\"preview\":{\"image\":{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912\",\"altText\":\"Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle\"}}}]},\"variants\":{\"nodes\":[{\"id\":\"gid://shopify/ProductVariant/55889985634689\",\"title\":\"Grün + Grau\",\"price\":\"34.90\",\"sku\":\"CJ-CJYDQTLY00023-Green + gray\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}},{\"id\":\"gid://shopify/ProductVariant/55889985667457\",\"title\":\"Camel\",\"price\":\"34.90\",\"sku\":\"CJ-CJYDQTLY00023-Camel\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}},{\"id\":\"gid://shopify/ProductVariant/55889985700225\",\"title\":\"Grau, 300 × 140 cm\",\"price\":\"51.90\",\"sku\":\"CJ-CJYDQTLY00023-Grey300x140cm\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}}],\"pageInfo\":{\"hasNextPage\":true}}}}}",
+              "annotations": {
+                "audience": [
+                  "assistant"
+                ]
+              }
+            }
+          ],
+          "structuredContent": {
+            "data": {
+              "shop": {
+                "name": "LuxeStyle",
+                "primaryDomain": {
+                  "host": "luxestyle.ch"
+                },
+                "currencyCode": "CHF"
+              },
+              "product": {
+                "id": "gid://shopify/Product/15450856292737",
+                "title": "Reise-Hängematte aus Fallschirm-Nylon",
+                "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+                "status": "ACTIVE",
+                "updatedAt": "2026-11-02T06:17:05Z",
+                "descriptionHtml": "<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\n<h3>Deine Farbe, deine Ausführung</h3>\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+                "tags": [
+                  "auto-entwurf-0926",
+                  "bild-ok",
+                  "cj-real",
+                  "dropship",
+                  "gfeed-anstupsen-260929",
+                  "haengematte",
+                  "hype-jetzt",
+                  "kunden-liebling",
+                  "nachfrage-liebling",
+                  "neu",
+                  "sort-campingmoebel-haengematten",
+                  "sort-haengematten-camping",
+                  "sort-sub-reise",
+                  "trend",
+                  "video-hit",
+                  "viral"
+                ],
+                "seo": {
+                  "title": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+                  "description": "Reise-Hängematte aus Fallschirm-Nylon bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+                },
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/69887490359681",
+                      "mediaContentType": "IMAGE",
+                      "preview": {
+                        "image": {
+                          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+                          "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "variants": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/ProductVariant/55889985634689",
+                      "title": "Grün + Grau",
+                      "price": "34.90",
+                      "sku": "CJ-CJYDQTLY00023-Green + gray",
+                      "inventoryPolicy": "CONTINUE",
+                      "inventoryItem": {
+                        "tracked": true
+                      }
+                    },
+                    {
+                      "id": "gid://shopify/ProductVariant/55889985667457",
+                      "title": "Camel",
+                      "price": "34.90",
+                      "sku": "CJ-CJYDQTLY00023-Camel",
+                      "inventoryPolicy": "CONTINUE",
+                      "inventoryItem": {
+                        "tracked": true
+                      }
+                    },
+                    {
+                      "id": "gid://shopify/ProductVariant/55889985700225",
+                      "title": "Grau, 300 × 140 cm",
+                      "price": "51.90",
+                      "sku": "CJ-CJYDQTLY00023-Grey300x140cm",
+                      "inventoryPolicy": "CONTINUE",
+                      "inventoryItem": {
+                        "tracked": true
+                      }
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": true
+                  }
+                }
+              }
+            }
+          },
+          "isError": false
+        }
+      },
+      "write": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Mutation executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize what changed in a helpful, readable way."
+          },
+          {
+            "type": "text",
+            "text": "{\"data\":{\"productUpdate\":{\"product\":{\"id\":\"gid://shopify/Product/15450856292737\",\"seo\":{\"title\":\"Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH\",\"description\":\"Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante.\"},\"updatedAt\":\"2026-11-15T05:39:43Z\"},\"userErrors\":[]}}}",
+            "annotations": {
+              "audience": [
+                "assistant"
+              ]
+            }
+          }
+        ],
+        "structuredContent": {
+          "data": {
+            "productUpdate": {
+              "product": {
+                "id": "gid://shopify/Product/15450856292737",
+                "seo": {
+                  "title": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+                  "description": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante."
+                },
+                "updatedAt": "2026-11-15T05:39:43Z"
+              },
+              "userErrors": []
+            }
+          }
+        },
+        "isError": false
+      },
+      "after": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+          },
+          {
+            "type": "text",
+            "text": "{\"data\":{\"product\":{\"id\":\"gid://shopify/Product/15450856292737\",\"title\":\"Reise-Hängematte aus Fallschirm-Nylon\",\"handle\":\"reise-hangematte-aus-fallschirm-nylon-86eb20\",\"status\":\"ACTIVE\",\"updatedAt\":\"2026-11-15T05:39:43Z\",\"descriptionHtml\":\"<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\\n<h3>Deine Farbe, deine Ausführung</h3>\\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\\n<h3>Versand und Rückgabe</h3>\\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\\\"/policies/shipping-policy\\\">Versandinformationen</a> und <a href=\\\"/policies/refund-policy\\\">Rückgabebedingungen</a>.</p>\\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\\\"/collections/trends-gadgets\\\">Trends &amp; Gadgets</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Weitere Auswahl</a></p>\\n\",\"tags\":[\"auto-entwurf-0926\",\"bild-ok\",\"cj-real\",\"dropship\",\"gfeed-anstupsen-260929\",\"haengematte\",\"hype-jetzt\",\"kunden-liebling\",\"nachfrage-liebling\",\"neu\",\"sort-campingmoebel-haengematten\",\"sort-haengematten-camping\",\"sort-sub-reise\",\"trend\",\"video-hit\",\"viral\"],\"seo\":{\"title\":\"Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH\",\"description\":\"Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante.\"},\"media\":{\"nodes\":[{\"id\":\"gid://shopify/MediaImage/69887490359681\",\"mediaContentType\":\"IMAGE\",\"preview\":{\"image\":{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912\",\"altText\":\"Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle\"}}}]},\"variants\":{\"nodes\":[{\"id\":\"gid://shopify/ProductVariant/55889985634689\",\"title\":\"Grün + Grau\",\"price\":\"34.90\",\"sku\":\"CJ-CJYDQTLY00023-Green + gray\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}},{\"id\":\"gid://shopify/ProductVariant/55889985667457\",\"title\":\"Camel\",\"price\":\"34.90\",\"sku\":\"CJ-CJYDQTLY00023-Camel\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}},{\"id\":\"gid://shopify/ProductVariant/55889985700225\",\"title\":\"Grau, 300 × 140 cm\",\"price\":\"51.90\",\"sku\":\"CJ-CJYDQTLY00023-Grey300x140cm\",\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":true}}],\"pageInfo\":{\"hasNextPage\":true}}}}}",
+            "annotations": {
+              "audience": [
+                "assistant"
+              ]
+            }
+          }
+        ],
+        "structuredContent": {
+          "data": {
+            "product": {
+              "id": "gid://shopify/Product/15450856292737",
+              "title": "Reise-Hängematte aus Fallschirm-Nylon",
+              "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+              "status": "ACTIVE",
+              "updatedAt": "2026-11-15T05:39:43Z",
+              "descriptionHtml": "<p>Ein ruhiger Farbton oder ein sichtbarer Kontrast: Bei dieser Reise-Hängematte beginnt die Auswahl mit deinem persönlichen Stil. Die Produktansichten zeigen eine geschwungene Form mit an beiden Enden zusammenlaufenden Stoffbahnen. In mehreren Ansichten ist eine seitlich angebrachte Tasche zu sehen.</p>\n<h3>Deine Farbe, deine Ausführung</h3>\n<p>In der Farbauswahl findest du zum Beispiel «Camel», «Orange» oder «Grau». Kombinationen tragen Bezeichnungen wie «Grün + Grau», «Orange + Grau» und «Camel + Lila». In den zweifarbigen Produktansichten heben sich die seitlichen Bahnen farblich von der Mitte ab.</p>\n<p>Neben diesen Farbnamen werden «Grau, 300 × 140 cm» und «Grün, 300 × 140 cm» als eigene Auswahlbezeichnungen geführt. Achte auf den vollständigen Namen deiner gewünschten Option. Der angezeigte Preis richtet sich nach der gewählten Ausführung.</p>\n<h3>Versand und Rückgabe</h3>\n<p>Die aktuellen Bedingungen findest du in unseren <a href=\"/policies/shipping-policy\">Versandinformationen</a> und <a href=\"/policies/refund-policy\">Rückgabebedingungen</a>.</p>\n<!-- ls-xsell-v1 --><p><strong>Weiter entdecken:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Weitere Auswahl</a></p>\n",
+              "tags": [
+                "auto-entwurf-0926",
+                "bild-ok",
+                "cj-real",
+                "dropship",
+                "gfeed-anstupsen-260929",
+                "haengematte",
+                "hype-jetzt",
+                "kunden-liebling",
+                "nachfrage-liebling",
+                "neu",
+                "sort-campingmoebel-haengematten",
+                "sort-haengematten-camping",
+                "sort-sub-reise",
+                "trend",
+                "video-hit",
+                "viral"
+              ],
+              "seo": {
+                "title": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+                "description": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante."
+              },
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/69887490359681",
+                    "mediaContentType": "IMAGE",
+                    "preview": {
+                      "image": {
+                        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+                        "altText": "Reise-Hängematte aus Fallschirm-Nylon – Bild 1 | LuxeStyle"
+                      }
+                    }
+                  }
+                ]
+              },
+              "variants": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/ProductVariant/55889985634689",
+                    "title": "Grün + Grau",
+                    "price": "34.90",
+                    "sku": "CJ-CJYDQTLY00023-Green + gray",
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": true
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/ProductVariant/55889985667457",
+                    "title": "Camel",
+                    "price": "34.90",
+                    "sku": "CJ-CJYDQTLY00023-Camel",
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": true
+                    }
+                  },
+                  {
+                    "id": "gid://shopify/ProductVariant/55889985700225",
+                    "title": "Grau, 300 × 140 cm",
+                    "price": "51.90",
+                    "sku": "CJ-CJYDQTLY00023-Grey300x140cm",
+                    "inventoryPolicy": "CONTINUE",
+                    "inventoryItem": {
+                      "tracked": true
+                    }
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": true
+                }
+              }
+            }
+          }
+        },
+        "isError": false
+      }
+    },
+    "publicVerification": {
+      "atUTC": "2026-11-15T05:40:10.246373+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20",
+      "canonical": [
+        "https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20"
+      ],
+      "title": "Reise-Hängematte aus Fallschirm-Nylon | LuxeStyle CH",
+      "description": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante.",
+      "ogDescription": "Reise-Hängematte bei LuxeStyle entdecken: Wähle aus verschiedenen Farben und Ausführungen. Der angezeigte Preis gilt für die gewählte Variante.",
+      "htmlSha256": "09ea101533363b91986892f8cebe49e10bac13b7cee95faaf49d2f785aaf0e79",
+      "bytes": 1244419,
+      "nativePreservedFields": [
+        "id",
+        "title",
+        "handle",
+        "status",
+        "descriptionHtml",
+        "tags",
+        "media",
+        "variants",
+        "seo.title"
+      ],
+      "nativeVariantSampleCount": 3,
+      "nativeMoreVariantsExist": true,
+      "allNativeComparedFieldsPreserved": true,
+      "changedFields": [
+        "seo.description"
+      ],
+      "discountSettingsChanged": false,
+      "googleReindexedAfterWrite": "unknown_no_second_inspection_or_index_request",
+      "publicTitleMatchesNative": true,
+      "parserCorrection": "Offline first head-title only; avoid SVG title accumulation. No extra HTTP/API read."
+    },
+    "actualProductWriteCalls": 1,
+    "googleAcceptanceOfNewDescription": "unknown; Google crawl was Nov4, write Nov15; no second inspection or index request"
+  }
+}

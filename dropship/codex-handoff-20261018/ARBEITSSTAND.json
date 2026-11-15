@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 226,
-  "updatedAt": "2026-11-15T01:07:15.677774+00:00",
+  "revision": 227,
+  "updatedAt": "2026-11-15T05:51:16.969598+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -601,60 +601,15 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r226_exact_dress_cj_source_and_narrow_metadata_verified",
+      "state": "r227_exact_model6_net_contents_source_blocked",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
-      "lastEvidence": "Vier CJLY2974187-SKUs und native GrössenM/L/XL/XXL gebunden. Zwei bestehende Bilder zeigen Print und Stehkragen; widersprüchlicher CJ-Ärmeltext nicht als neue Aussage übernommen. Nur SEO-Beschreibung geändert; Body/Preise/Varianten/Medien unverändert. Zwei zusätzliche Gerätequellen gebunden, keine Material-/Mass-/Stückzahlergänzung.",
-      "nextAllowedStep": "Keine Wiederholung der R225-/R226-Texte. Vor weiteren Produktangaben aktuelle SKU-spezifische Quellen und Varianten prüfen. Garagentor-PID-SKU nicht blind ändern; beim Reinigungsgerät Lieferumfang des 2PC-Sets klären. Beide SEOInput-Mitglieder frisch erhalten und nach Writes zurücklesen.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "R225/R226-Korrekturen bleiben erhalten. R227 prüfte drei genaue Bilder von Nagellack Modell6, SKU CJYD273330506FU / Q524206 / DT284: kein lesbarer zugeordneter Nettoinhalt. Ein CJ-Bild frisch per HTTP200 samt Hash gesichert, zwei R222-Bilder lokal wiederverwendet. Keine Menge abgeleitet und kein Attributwrite. Die unit-pricing-Warnung NOT_IMPACTED stammt aus R222/R223 und wurde hier nicht frisch bei Merchant gelesen.",
+      "nextAllowedStep": "Für genau CJYD273330506FU / Q524206 / DT284 ein lesbares echtes Etikett oder eine Lieferantenbestätigung mit Nettoinhalt und Einheit beschaffen. Verpackungsmasse und -gewicht nicht umrechnen. Weitere Produkt-/CJ-Quellenkonflikte bleiben offen; nur gezielte belegte Korrekturen ausführen.",
       "blockers": [
-        "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
-        "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
-        "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
-        "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
-        "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
-        "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
-        "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis",
-        "R42 Leinwandset: PS/Kunststoff versus Holz und30×40 versus40×60 widersprüchlich; genaue CJ-SKU-Spezifikation fehlt. Einzelbild:80×160, Druckverfahren/Gewicht und tatsächlicher Rahmenumfang nicht unabhängig belegt. Motivfoto ersetzt keine Material-/Massquelle.",
-        "R65: Farb-Motivtext nur für Typ A bildlich passend, Typ B/C anders. Exakter neutraler Body-/SEO-Diff noch nicht genehmigt oder angewendet. Alte Variante/SKU aus R42 ist keine heutige Lieferantenbindung; heutige sechs CJJT-Ausführungen separat belegen.",
-        "R81: Historischer Export enthält keine vollständigen aktuellen Varianten-/Inventory-/Storefrontdaten; 56’630 ist keine aktuelle Qualitätsquote.",
-        "R81: material.mjs besteht Basistests, aber nur 11/23 zusätzliche Konflikttests; Live-Materialnachträge sind gesperrt.",
-        "R82: Die 56’630-ID-Queue basiert auf einem historischen ACTIVE-Export; aktuelle Liveabdeckung pro Produkt bleibt vor jedem Write erforderlich.",
-        "R82: Beim L-Modell sind «Modell: Taschen/Schachtel» sowie englische Tiermaterialtexte in Bildern ohne SKU-Quelle beziehungsweise Bearbeitungsrechte offen.",
-        "R82: Vorhandene Helfer reichen nicht für allgemeine Mehrfeld-Livebatches; exakte Allowlist, Konfliktprüfung, kein Mutation-Retry und vollständiger Readback sind Pflicht.",
-        "R83: Für die fünf P0-Produkte fehlt lokal jede unabhängige SKU-spezifische Lieferantenquelle; Storefront und historische Merchant-Dateien sind keine Spezifikations- oder Rechtebelege.",
-        "R83: Alle fünf P0-Produkte tragen rueckhol-0907 und sind gemäss aktueller Inhabervorgabe für neue Socialausspielung blockiert.",
-        "R84: Seifenspender15483793244545 bleibt wegen gemischter Gerätebilder, Einzel-/Mehrstückbindung, Akku-/4×AAA-Widerspruch und fehlender Varianten-Medienbindung BLOCKED_NO_WRITE.",
-        "R84: Alkoholmeter15512184586625 bleibt wegen unbelegter Skalen, Messbereiche, Setbestandteile und SKU-Zuordnung BLOCKED_NO_WRITE.",
-        "R94: Beide alten Handles enthalten widersprüchliche historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-/Historiengegenprobe.",
-        "R94: Produkt16611936010631 trägt weiterhin Tag decke und eine allgemeine Tierbekleidungs-Kategorie; Collection-/Leaf-Auswirkungen vor getrenntem Write prüfen.",
-        "R95: Beide alten Handles enthalten historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-Gegenprobe.",
-        "R95: Produkt15450837188993 trägt rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
-        "R95: Bilddarstellungen von Trommeln belegen keinen zugesicherten Lieferumfang; Lieferumfang bleibt quellenabhängig.",
-        "R96: Produkt16607464391047 hat weiterhin Produkttyp Spielzeug & Spiele; vor einem Strukturwrite Smart-Collection-, Template- und Kategorieseitenwirkungen frisch prüfen.",
-        "R96: Produkt16611664888199 zeigt ungebundene schwarze, beige und abweichende blaue Galeriebilder; keine Löschung oder neue Variantenbindung ohne exakte SKU-/Ausführungsquelle.",
-        "R96: Die Handles von Produkt16606106255751 und16611664888199 enthalten sachlich falsche Kissenbezug- beziehungsweise Studenten-/Wasserabweisend-Begriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf. Der Haustierpullover-Handle bleibt passend.",
-        "R97: Die historischen Handles von Produkt16606107500935,16650219651463 und15524856496513 bleiben unverändert; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
-        "R97: Aktuelle Taxonomiekategorien blieben unverändert; Collection-, Template- und Kategorieseitenwirkungen vor einem Strukturwrite frisch prüfen.",
-        "R97: Beim Strickoberteil15524856496513 ist eine dunkle Galerieansicht keine auswählbare aktuelle Farbe; doppelte Variantenbilder und Medienbindungen ohne SKU-/Ausführungsquelle weder löschen noch ändern.",
-        "R99: Die historischen Handles von Produkt15448913281409,15493835751809 und15493851480449 enthalten Leder-, Samt-/Stickerei- beziehungsweise Harzbegriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
-        "R99: Rucksack-Sortiertags enthalten weiter Leder-/Herrenbegriffe; Kissenbezug und Armband behalten geschützte Google-Shopping-Materialmetafelder. Vor Struktur-/Feedwrite Collection-, Merchant- und Rankingwirkung frisch prüfen.",
-        "R99: Alle drei Produkte tragen rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
-        "R100: 27 eindeutig zuordenbare CSV-Produkte benötigen noch eine aktuelle produktgenaue Alters-/Artikel-/GTIN-Quelle; CSV selbst liefert keinen Alterswert.",
-        "R100: 28 als fr markierte Zeilen enthalten deutschen Text; Feed-/Sprachursache und zulässige Übersetzungsquelle sind unbekannt.",
-        "R100: Kandidat15470033633665 blieb wegen HTTP404 der vermuteten Herstellerseite ohne Write; eine unbekannte Merchant-ID ist nicht auf Shopify abgebildet.",
-        "R104: Sieben R103-Overlay-SKUs CJSD108550101AZ, CJ-CJYD188109128BY, CJYD242312502BY, CJ-CJJT163260416PK, CJSY114580804DW, CJ-CJJT149562611KP und CJ-CJJT149562613MN bleiben mangels exakter CJ-Varianten-/Farb-/Mengen-/Medienbindung BLOCKED_NO_WRITE.",
-        "R105: Für die Produkte15500282003841,16638316020103 und16610538324359 fehlt im vorhandenen Repo/Ledger eine exakte CJ-Lieferantenquelle; Material-, Gewichts-, Passform-, Schutz- und Lieferclaims dürfen nicht ergänzt werden.",
-        "R105: Die Handles beige-maxi-kleid-600600 und indoor-fitness-schuhe-fur-manner-weiss-black-g-623100 enthalten historische falsche Farbwörter; Änderung nur in einem getrennten Redirect-/Canonical-sicheren Lauf.",
-        "R106: Produkt16610538324359 behält den historischen Midi-Handle und Tag sort-damen-kleider-midi; Änderung erst nach getrennter Redirect-, Canonical-, Collection- und Rankinggegenprobe.",
-        "R106: Für Produkt16610538324359 fehlt eine exakte CJ-Lieferantenquelle; Material, Gewicht, Passform und Lieferzeit bleiben ohne Nachtrag.",
-        "R107: Pumps behalten historischen Zehenschutz-Handle, Tag such-sicherheitsschuhe und Taxonomie Ballerinas; Änderung nur nach Redirect-, Canonical-, Collection- und Merchant-Gegenprobe.",
-        "R107: Fünf-Zehen-Schuhe behalten historischen Beige/Grün/Fünf-Finger-Handle und Produkttyp Herrenschuhe; Änderung nur nach getrennter Strukturgegenprobe.",
-        "R107 coordination: Kein gemeinsamer Claude-Live-Lock oder bestätigter Claude-Receipt; Remote-Heads und Shopify updatedAt vor R108 erneut lesen.",
-        "Projektor: auswahl-offen; keine aktuelle Zielvariante, kein Motivset und keine gefilmte physische Einheit gebunden.",
-        "Projektor- und Musikrechte sowie professionelle native Hochkantquellen fehlen.",
-        "R169: Futterspender hat kein echtes Produktvideo und keine nachgewiesenen kommerziellen Bildbearbeitungs-/Werberechte für Social.",
-        "R173: Claim-sicherer Futterspenderstand ist live; künftige Paralleländerungen bleiben ohne frischen updatedAt-/Schutzfelddiff unbekannt und dürfen nicht blind überschrieben werden."
+        "Nettoinhalt von Modell6 unbelegt; keinen ml-Wert erfinden.",
+        "R226 Garagentor/Reinigungsgerät: saubere Originale, Rechte und 2PC-Lieferumfang weiter offen; erneuter Syncbeleg fehlt."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1207,6 +1162,78 @@
           "gitBlobSha": "7c6d24a28477c81d2af9dfc50f5b54286c440f4e",
           "bytes": 4239,
           "readAt": "2026-11-15T01:07:15.677774+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "requiresFreshVerification": true,
@@ -2145,6 +2172,64 @@
               "R173: Claim-sicherer Futterspenderstand ist live; künftige Paralleländerungen bleiben ohne frischen updatedAt-/Schutzfelddiff unbekannt und dürfen nicht blind überschrieben werden."
             ]
           }
+        },
+        {
+          "at": "2026-11-15T05:51:16.969598+00:00",
+          "sourceRevision": 226,
+          "previousState": "r226_exact_dress_cj_source_and_narrow_metadata_verified",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
+          "previousLastEvidence": "Vier CJLY2974187-SKUs und native GrössenM/L/XL/XXL gebunden. Zwei bestehende Bilder zeigen Print und Stehkragen; widersprüchlicher CJ-Ärmeltext nicht als neue Aussage übernommen. Nur SEO-Beschreibung geändert; Body/Preise/Varianten/Medien unverändert. Zwei zusätzliche Gerätequellen gebunden, keine Material-/Mass-/Stückzahlergänzung.",
+          "previousNextAllowedStep": "Keine Wiederholung der R225-/R226-Texte. Vor weiteren Produktangaben aktuelle SKU-spezifische Quellen und Varianten prüfen. Garagentor-PID-SKU nicht blind ändern; beim Reinigungsgerät Lieferumfang des 2PC-Sets klären. Beide SEOInput-Mitglieder frisch erhalten und nach Writes zurücklesen.",
+          "previousBlockers": [
+            "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
+            "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
+            "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
+            "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
+            "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
+            "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
+            "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis",
+            "R42 Leinwandset: PS/Kunststoff versus Holz und30×40 versus40×60 widersprüchlich; genaue CJ-SKU-Spezifikation fehlt. Einzelbild:80×160, Druckverfahren/Gewicht und tatsächlicher Rahmenumfang nicht unabhängig belegt. Motivfoto ersetzt keine Material-/Massquelle.",
+            "R65: Farb-Motivtext nur für Typ A bildlich passend, Typ B/C anders. Exakter neutraler Body-/SEO-Diff noch nicht genehmigt oder angewendet. Alte Variante/SKU aus R42 ist keine heutige Lieferantenbindung; heutige sechs CJJT-Ausführungen separat belegen.",
+            "R81: Historischer Export enthält keine vollständigen aktuellen Varianten-/Inventory-/Storefrontdaten; 56’630 ist keine aktuelle Qualitätsquote.",
+            "R81: material.mjs besteht Basistests, aber nur 11/23 zusätzliche Konflikttests; Live-Materialnachträge sind gesperrt.",
+            "R82: Die 56’630-ID-Queue basiert auf einem historischen ACTIVE-Export; aktuelle Liveabdeckung pro Produkt bleibt vor jedem Write erforderlich.",
+            "R82: Beim L-Modell sind «Modell: Taschen/Schachtel» sowie englische Tiermaterialtexte in Bildern ohne SKU-Quelle beziehungsweise Bearbeitungsrechte offen.",
+            "R82: Vorhandene Helfer reichen nicht für allgemeine Mehrfeld-Livebatches; exakte Allowlist, Konfliktprüfung, kein Mutation-Retry und vollständiger Readback sind Pflicht.",
+            "R83: Für die fünf P0-Produkte fehlt lokal jede unabhängige SKU-spezifische Lieferantenquelle; Storefront und historische Merchant-Dateien sind keine Spezifikations- oder Rechtebelege.",
+            "R83: Alle fünf P0-Produkte tragen rueckhol-0907 und sind gemäss aktueller Inhabervorgabe für neue Socialausspielung blockiert.",
+            "R84: Seifenspender15483793244545 bleibt wegen gemischter Gerätebilder, Einzel-/Mehrstückbindung, Akku-/4×AAA-Widerspruch und fehlender Varianten-Medienbindung BLOCKED_NO_WRITE.",
+            "R84: Alkoholmeter15512184586625 bleibt wegen unbelegter Skalen, Messbereiche, Setbestandteile und SKU-Zuordnung BLOCKED_NO_WRITE.",
+            "R94: Beide alten Handles enthalten widersprüchliche historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-/Historiengegenprobe.",
+            "R94: Produkt16611936010631 trägt weiterhin Tag decke und eine allgemeine Tierbekleidungs-Kategorie; Collection-/Leaf-Auswirkungen vor getrenntem Write prüfen.",
+            "R95: Beide alten Handles enthalten historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-Gegenprobe.",
+            "R95: Produkt15450837188993 trägt rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
+            "R95: Bilddarstellungen von Trommeln belegen keinen zugesicherten Lieferumfang; Lieferumfang bleibt quellenabhängig.",
+            "R96: Produkt16607464391047 hat weiterhin Produkttyp Spielzeug & Spiele; vor einem Strukturwrite Smart-Collection-, Template- und Kategorieseitenwirkungen frisch prüfen.",
+            "R96: Produkt16611664888199 zeigt ungebundene schwarze, beige und abweichende blaue Galeriebilder; keine Löschung oder neue Variantenbindung ohne exakte SKU-/Ausführungsquelle.",
+            "R96: Die Handles von Produkt16606106255751 und16611664888199 enthalten sachlich falsche Kissenbezug- beziehungsweise Studenten-/Wasserabweisend-Begriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf. Der Haustierpullover-Handle bleibt passend.",
+            "R97: Die historischen Handles von Produkt16606107500935,16650219651463 und15524856496513 bleiben unverändert; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
+            "R97: Aktuelle Taxonomiekategorien blieben unverändert; Collection-, Template- und Kategorieseitenwirkungen vor einem Strukturwrite frisch prüfen.",
+            "R97: Beim Strickoberteil15524856496513 ist eine dunkle Galerieansicht keine auswählbare aktuelle Farbe; doppelte Variantenbilder und Medienbindungen ohne SKU-/Ausführungsquelle weder löschen noch ändern.",
+            "R99: Die historischen Handles von Produkt15448913281409,15493835751809 und15493851480449 enthalten Leder-, Samt-/Stickerei- beziehungsweise Harzbegriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
+            "R99: Rucksack-Sortiertags enthalten weiter Leder-/Herrenbegriffe; Kissenbezug und Armband behalten geschützte Google-Shopping-Materialmetafelder. Vor Struktur-/Feedwrite Collection-, Merchant- und Rankingwirkung frisch prüfen.",
+            "R99: Alle drei Produkte tragen rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
+            "R100: 27 eindeutig zuordenbare CSV-Produkte benötigen noch eine aktuelle produktgenaue Alters-/Artikel-/GTIN-Quelle; CSV selbst liefert keinen Alterswert.",
+            "R100: 28 als fr markierte Zeilen enthalten deutschen Text; Feed-/Sprachursache und zulässige Übersetzungsquelle sind unbekannt.",
+            "R100: Kandidat15470033633665 blieb wegen HTTP404 der vermuteten Herstellerseite ohne Write; eine unbekannte Merchant-ID ist nicht auf Shopify abgebildet.",
+            "R104: Sieben R103-Overlay-SKUs CJSD108550101AZ, CJ-CJYD188109128BY, CJYD242312502BY, CJ-CJJT163260416PK, CJSY114580804DW, CJ-CJJT149562611KP und CJ-CJJT149562613MN bleiben mangels exakter CJ-Varianten-/Farb-/Mengen-/Medienbindung BLOCKED_NO_WRITE.",
+            "R105: Für die Produkte15500282003841,16638316020103 und16610538324359 fehlt im vorhandenen Repo/Ledger eine exakte CJ-Lieferantenquelle; Material-, Gewichts-, Passform-, Schutz- und Lieferclaims dürfen nicht ergänzt werden.",
+            "R105: Die Handles beige-maxi-kleid-600600 und indoor-fitness-schuhe-fur-manner-weiss-black-g-623100 enthalten historische falsche Farbwörter; Änderung nur in einem getrennten Redirect-/Canonical-sicheren Lauf.",
+            "R106: Produkt16610538324359 behält den historischen Midi-Handle und Tag sort-damen-kleider-midi; Änderung erst nach getrennter Redirect-, Canonical-, Collection- und Rankinggegenprobe.",
+            "R106: Für Produkt16610538324359 fehlt eine exakte CJ-Lieferantenquelle; Material, Gewicht, Passform und Lieferzeit bleiben ohne Nachtrag.",
+            "R107: Pumps behalten historischen Zehenschutz-Handle, Tag such-sicherheitsschuhe und Taxonomie Ballerinas; Änderung nur nach Redirect-, Canonical-, Collection- und Merchant-Gegenprobe.",
+            "R107: Fünf-Zehen-Schuhe behalten historischen Beige/Grün/Fünf-Finger-Handle und Produkttyp Herrenschuhe; Änderung nur nach getrennter Strukturgegenprobe.",
+            "R107 coordination: Kein gemeinsamer Claude-Live-Lock oder bestätigter Claude-Receipt; Remote-Heads und Shopify updatedAt vor R108 erneut lesen.",
+            "Projektor: auswahl-offen; keine aktuelle Zielvariante, kein Motivset und keine gefilmte physische Einheit gebunden.",
+            "Projektor- und Musikrechte sowie professionelle native Hochkantquellen fehlen.",
+            "R169: Futterspender hat kein echtes Produktvideo und keine nachgewiesenen kommerziellen Bildbearbeitungs-/Werberechte für Social.",
+            "R173: Claim-sicherer Futterspenderstand ist live; künftige Paralleländerungen bleiben ohne frischen updatedAt-/Schutzfelddiff unbekannt und dürfen nicht blind überschrieben werden."
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -3108,6 +3193,11 @@
         ],
         "shopifyAppAuthResolved": true,
         "nativeEditorAuthInferred": false
+      },
+      "run227": {
+        "at": "2026-11-15T05:51:16.969598+00:00",
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+        "scope": "see exact run evidence; no implied deployment or catalog-wide result"
       }
     },
     {
@@ -3346,16 +3436,16 @@
       "id": "schema-hammock-15450856292737",
       "priority": 30,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert_google_pruefung_offen",
+      "state": "r227_one_url_index_and_rich_results_pass_optional_warnings_open",
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
-      "lastEvidenceDate": "2026-11-01",
+      "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "01.11.2026: Native MAIN-Datei sections/product-information.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Produktseite HTTP200 im richtigen MAIN-Theme. Vollständiger JSON-LD-Tiefenvergleich bestätigt genau 24 entfernte problematische optionale Schema-SKUs, alle 33 Varianten/Offers und neun gültigen Schema-SKUs erhalten. Operative Shopify-/CJ-SKUs nicht geändert. Eigene Tätigkeit war Gegenprüfung, kein eigener Schemawrite oder Publish. Google-Akzeptanz unbekannt.",
-      "nextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
+      "lastEvidence": "Eine gezielte Search-Console-Abfrage bestätigt Index- und Rich-Results-PASS für den Crawl vom 04.11.2026. Geliefert wurden 101 optionale Warnungen und keine ERROR-Einträge. Die heutige öffentliche Ausgabe bestätigt 33 Varianten ohne eigene Beschreibung und 33 Offers ohne Versand-/Retourenfelder. Aktuelle MAIN-Quelle gelesen, kein Schemawrite. Eine SEO-Beschreibung mit 143 Zeichen live gesetzt; SEO-Titel ausdrücklich erhalten, native und öffentliche Meta-/OG-Rücklesung passend. Keine erneute Google-Prüfung nach dem Write.",
+      "nextAllowedStep": "Den alten SKU-Patch nicht erneut anwenden. Optionale Varianten-/Offer-Warnungen am vorhandenen structured_data-Owner gezielt bearbeiten. Variantenidentitäten, Preise, Verfügbarkeiten und sachlich passende Richtlinien erhalten. Keine künstlichen Reviews; Googles Übernahme der neuen Meta-Beschreibung bleibt unbekannt.",
       "blockers": [
-        "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
-        "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
-        "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
+        "Der gespeicherte Crawl einer URL ist kein Live-Test oder Katalogzensus; kein Google-Übernahmebeleg der neuen SEO-Beschreibung.",
+        "MobileUsability ist VERDICT_UNSPECIFIED; keine mobile Google- oder visuelle Abnahme.",
+        "33 Variantenbeschreibungen und 33 Offer-Versand-/Retourenfelder fehlen. Sichere Schema-Vererbung, Generator und Produktausnahmen vor einer Änderung prüfen."
       ],
       "acceptance": [
         "Fulfilment-SKUs unverändert",
@@ -3417,6 +3507,78 @@
           "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "requiresFreshVerification": true,
@@ -3469,6 +3631,20 @@
           ],
           "previousBelegArt": "GEMESSEN",
           "previousLastEvidenceDate": "2026-10-29"
+        },
+        {
+          "at": "2026-11-15T05:51:16.969598+00:00",
+          "sourceRevision": 226,
+          "previousState": "live_verifiziert_google_pruefung_offen",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "01.11.2026: Native MAIN-Datei sections/product-information.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Produktseite HTTP200 im richtigen MAIN-Theme. Vollständiger JSON-LD-Tiefenvergleich bestätigt genau 24 entfernte problematische optionale Schema-SKUs, alle 33 Varianten/Offers und neun gültigen Schema-SKUs erhalten. Operative Shopify-/CJ-SKUs nicht geändert. Eigene Tätigkeit war Gegenprüfung, kein eigener Schemawrite oder Publish. Google-Akzeptanz unbekannt.",
+          "previousNextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
+          "previousBlockers": [
+            "Google-Akzeptanz der verbleibenden Variantenkennungen und Console-Validierung unbekannt; angemeldeter Prüfzugang erforderlich",
+            "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
+            "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
+          ]
         }
       ],
       "liveSchemaVerification": {
@@ -3485,22 +3661,26 @@
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
         }
+      },
+      "run227": {
+        "at": "2026-11-15T05:51:16.969598+00:00",
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+        "scope": "see exact run evidence; no implied deployment or catalog-wide result"
       }
     },
     {
       "id": "schema-shipping-threshold-ch50",
       "priority": 35,
       "priorityKind": "SETZUNG",
-      "state": "live_verifiziert_google_pruefung_offen",
+      "state": "r227_public_threshold_preserved_offer_policy_linkage_open",
       "title": "Öffentliche CHF50-Versandschwelle im vorhandenen Google-Schema abbilden",
-      "lastEvidenceDate": "2026-11-01",
+      "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "01.11.2026: Native MAIN-Datei sections/header.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Organization-Ausgabe bestätigt CH-Versand CHF 7 bis CHF 49.99 und gratis ab CHF 50. Vollständiger JSON-LD-Tiefenvergleich erhält LI-Porto, Rückgabedaten und alle übrigen Felder. Eigene Tätigkeit war Gegenprüfung, keine eigene Übernahme/Veröffentlichung oder Checkoutänderung. Google-Akzeptanz und Generator weiterhin unbekannt.",
-      "nextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
+      "lastEvidence": "Die öffentliche Organization-Ausgabe und die aktuelle MAIN-Headerquelle bestätigen CH-Versand CHF 7 bis CHF 49.99 und gratis ab CHF 50 sowie LI-Porto CHF 14.90. Rich-Results-PASS des Hängematten-Crawls vom 04.11. ist keine gesonderte Abnahme aller Versandbedingungen. Bei 33 Offers fehlen Versand-/Retourenfelder. Keine Versand- oder Themeänderung.",
+      "nextAllowedStep": "Öffentliche CHF 50, interne CHF 45 und tatsächliche Checkout-/LI-Raten erhalten. Offer-Policies nicht pauschal mit konditionslosen Raten füllen. Zuerst passende Schema-Vererbung, Generator und aktuelle Retourenausnahmen prüfen.",
       "blockers": [
-        "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
-        "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
-        "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
+        "Der im Quellkommentar genannte Generator bleibt ungeprüft; keine Wiedererzeugung ausgeführt.",
+        "Optionale Offer-Warnungen offen; PASS einer URL ist kein Beleg für alle Versand- und Produktfälle."
       ],
       "acceptance": [
         "Genau zwei JSON-LD-Werte korrigiert",
@@ -3547,6 +3727,78 @@
           "path": "dropship/codex-handoff-20261018/FORTSETZUNG-20261101-R34.json",
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "requiresFreshVerification": true,
@@ -3595,6 +3847,20 @@
           ],
           "previousBelegArt": "GEMESSEN",
           "previousLastEvidenceDate": "2026-10-29"
+        },
+        {
+          "at": "2026-11-15T05:51:16.969598+00:00",
+          "sourceRevision": 226,
+          "previousState": "live_verifiziert_google_pruefung_offen",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "01.11.2026: Native MAIN-Datei sections/header.liquid bytegleich mit genehmigtem Nachher-Stand. Öffentliche Organization-Ausgabe bestätigt CH-Versand CHF 7 bis CHF 49.99 und gratis ab CHF 50. Vollständiger JSON-LD-Tiefenvergleich erhält LI-Porto, Rückgabedaten und alle übrigen Felder. Eigene Tätigkeit war Gegenprüfung, keine eigene Übernahme/Veröffentlichung oder Checkoutänderung. Google-Akzeptanz und Generator weiterhin unbekannt.",
+          "previousNextAllowedStep": "Bestehende Google-/Console-Meldung über legitimen Zugang gezielt gegenprüfen. Keine erneute Patch-Anwendung oder Theme-Publikation; Versand-/Checkoutwerte unverändert erhalten.",
+          "previousBlockers": [
+            "Im Quellkommentar genannter Generator nicht belegt; Wiedererzeugungsweg unbekannt",
+            "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
+            "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
+          ]
         }
       ],
       "liveSchemaVerification": {
@@ -3611,6 +3877,11 @@
           "gitBlobSha": "cab0bebbe2c7a8212535fc5290d07130d38f220b",
           "readAt": "2026-11-01T17:09:53Z"
         }
+      },
+      "run227": {
+        "at": "2026-11-15T05:51:16.969598+00:00",
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+        "scope": "see exact run evidence; no implied deployment or catalog-wide result"
       }
     },
     {
@@ -3777,12 +4048,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r226_two_narrow_seo_updates_and_source_channel_continuation_memory_link_preference",
+      "state": "r227_one_live_seo_update_google_proof_and_local_printful_candidate_shared",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
-      "lastEvidence": "Zwei gezielte Shoptexte live geprüft; einmalGSC mit klarer Finalitäts-/20Zeilen-Grenze, aktuelle Google-Produkt-/Variantenpublikation und CJ-Shopidentität sowie zwei Bildfälle weiter belegt. Syncantwort leer/unbekannt. Kosten-/Speicherfehler samt wiederholten Reads offen dokumentiert. Keine anderen Plattformwrites.",
-      "nextAllowedStep": "Am Schluss jedes Laufs den direkten Link zum aktuellen gemeinsamen PROJEKTGEDAECHTNIS.md teilen. Offene Material-/Rechte-/Syncunterlagen gezielt weiterbearbeiten und keine Wiederholungen erzwingen. GSC heute bereits gelesen, Social/Klaviyo15Nov hier nicht; vorhandene Laufzeiten erhalten und keine Claude-Kenntnisnahme ohne Beleg behaupten.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Eine SEO-Beschreibung live korrigiert und zurückgelesen. Ein gezielter Google-Nachweis mit Index-/Rich-Results-PASS und klarem optionalem Warnungsscope; aktuelle Themequelle gelesen. Lokaler Printful-Guard mit 185 grünen Mockassertions, kein Deployment. Modell6-Nettoinhalt weiter unbelegt. Wiederholte GitHub-Reads und lokale Speicher-/Parserfehler offen dokumentiert. 24 IDs, Historien und Zeitplan erhalten.",
+      "nextAllowedStep": "Am Schluss den direkten aktuellen Memory-Link teilen. Printful-Dreidateiendiff regulär reviewen und unter Node22 prüfen; Schema quellgenau weiterentwickeln. Keine alten Patches oder Themes erneut anwenden. GSC-Tagesperformance wurde in R226 bereits gelesen; Claude-Empfang bleibt unbekannt.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -3803,7 +4074,8 @@
         "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
         "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
         "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
-        "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+        "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector.",
+        "R227: Printful-Kandidat noch nicht produktiv. Google-Nachweis nur für eine URL mit Crawl vom 04.11.; optionale Varianten-/Offer-Warnungen und Nettoinhalt Modell6 offen."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -4746,6 +5018,78 @@
           "gitBlobSha": "7c6d24a28477c81d2af9dfc50f5b54286c440f4e",
           "bytes": 4239,
           "readAt": "2026-11-15T01:07:15.677774+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "requiresFreshVerification": true,
@@ -6972,6 +7316,37 @@
               "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
             ]
           }
+        },
+        {
+          "at": "2026-11-15T05:51:16.969598+00:00",
+          "sourceRevision": 226,
+          "previousState": "r226_two_narrow_seo_updates_and_source_channel_continuation_memory_link_preference",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
+          "previousLastEvidence": "Zwei gezielte Shoptexte live geprüft; einmalGSC mit klarer Finalitäts-/20Zeilen-Grenze, aktuelle Google-Produkt-/Variantenpublikation und CJ-Shopidentität sowie zwei Bildfälle weiter belegt. Syncantwort leer/unbekannt. Kosten-/Speicherfehler samt wiederholten Reads offen dokumentiert. Keine anderen Plattformwrites.",
+          "previousNextAllowedStep": "Am Schluss jedes Laufs den direkten Link zum aktuellen gemeinsamen PROJEKTGEDAECHTNIS.md teilen. Offene Material-/Rechte-/Syncunterlagen gezielt weiterbearbeiten und keine Wiederholungen erzwingen. GSC heute bereits gelesen, Social/Klaviyo15Nov hier nicht; vorhandene Laufzeiten erhalten und keine Claude-Kenntnisnahme ohne Beleg behaupten.",
+          "previousBlockers": [
+            "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+            "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+            "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+            "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+            "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+            "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+            "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+            "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+            "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+            "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+            "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+            "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+            "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+          ]
         }
       ],
       "reviewPacket": {
@@ -8877,6 +9252,11 @@
         "verbatim": "teile am schluss memory",
         "source": "current_owner_chat_before_R226",
         "requirement": "End each run with a direct shared project-memory link; saving does not prove Claude receipt."
+      },
+      "run227": {
+        "at": "2026-11-15T05:51:16.969598+00:00",
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+        "scope": "see exact run evidence; no implied deployment or catalog-wide result"
       }
     },
     {
@@ -16044,18 +16424,18 @@
       "id": "printful-sync-variant-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r225_fresh_main_contract_boundary_old_candidate_not_safe_to_apply",
+      "state": "r227_local_missing_file_guard_candidate_tested_not_deployed",
       "title": "Printful-Auftragsvariante an historischer Bestell-SKU sichern",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
-      "lastEvidence": "Freshmain9a03e4f/Quelldatei-/WorkflowSHAgeprüft;altes4Dateienpatchpassteinhaltlichnicht.181synthetischeMocksinderlokalenKopie,späterOriginalsource/testGleichheitmitfrischemMaingeprüft;keinFullCI/LiveSync. LXexternal_id/Entwurf→Prüfung→ConfirmweichtvomNov1Helperab;Ready/CASQuery-/Migrationbasisfehlt. KeineQuellenänderung.",
-      "nextAllowedStep": "AltenVierDateienpatchnichtanwenden. Zuerst aktuellenLX-ID-/Entwurf-/Confirm-Vertrag erhalten undkontrolliertenReady-/Query-/Migrationsscope konkretentwerfen;erst danach begrenztenneuenDiffmiterhaltenenMocktestsundWorkflow-Sparse-/CI-Anbindungprüfen. ProduktivweiterownGrants/Version/Altauftragsbeleg/Sicherheitsfreigabevorweisen;keinSendbeiunknown.",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Frischen Main 00bf41c mit 9a03e4f verglichen: nur CJ-Ledger geändert, geprüfte Printful-/Workflow-/Paketblobs identisch. Fehlende Dateievidenz unabhängig als fälschliches ok reproduziert. Ein lokaler Dreidateien-Patch erhält LX-IDs und den Ablauf Entwurf → Prüfung → separater Confirm. Fehlende/unlesbare Provider-Positionen, Dateilisten oder Statusangaben führen zu datei-unvollstaendig. 185 synthetische Assertions unter Node24 grün: 181 erhalten, vier neue Assertions mit 17 Runner-Fällen. Root- und Peerreview lokal; kein Merge, Deployment, Workflowstart oder Provideraufruf.",
+      "nextAllowedStep": "Diesen neuen Dreidateien-Kandidaten mit frischem Source-/Patchhash im regulären Review und Node22-CI prüfen. Den alten Nov1-Vierdateien-Helfer nicht anwenden. Ready/CAS/Migration bleibt ein separater ungeklärter Scope. Kein Produktivsend bei unknown und keine pauschale Ready-Initialisierung.",
       "blockers": [
-        "Nur lokaler Reviewentwurf, keine produktive Integration; Node22/Voll-CI unbestätigt, GraphQL-Validator skipped",
-        "Kein belegter begrenzter Ready-/Migrations-Cutover; kein Checkpoint oder Register initialisiert",
-        "CAS/frische Gegenproben sind kein atomarer Lock zwischen Printful und Shopify; alte Writer vor Cutover gesondert prüfen",
-        "Runtime-Credentials/App-Grants/API-Version und echte Lieferanten-/Druckflächen-/Rechtebelege offen; positiver Legacy-ID-Fallback-Modulfall nicht gesondert getestet",
-        "Claude-Kenntnisnahme unbekannt"
+        "Der Kandidat ist ein Reviewartefakt und weder gemergt, deployt noch produktiv ausgeführt.",
+        "Node22 ist nicht vorhanden; Voll-CI und eigenständiger GraphQL-Codevalidator wurden nicht ausgeführt.",
+        "Der Guard prüft Positionsanzahl und lesbare Dateievidenz, aber keine vollständige Motiv-, Placement-, Datei- oder DPI-Identität und keine Druckrechte.",
+        "Ready-/Query-/Migrations-Cutover, Laufzeit-Grants, API-/Credential- und Altwriterbelege bleiben offen. Kein atomarer Lock über beide Provider.",
+        "Claude-Empfang unbekannt."
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
@@ -16126,6 +16506,78 @@
           "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
           "bytes": 4780,
           "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "requiresFreshVerification": true,
@@ -16158,8 +16610,29 @@
               "Claude-Kenntnisnahme unbekannt"
             ]
           }
+        },
+        {
+          "at": "2026-11-15T05:51:16.969598+00:00",
+          "sourceRevision": 226,
+          "previousState": "r225_fresh_main_contract_boundary_old_candidate_not_safe_to_apply",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+          "previousLastEvidence": "Freshmain9a03e4f/Quelldatei-/WorkflowSHAgeprüft;altes4Dateienpatchpassteinhaltlichnicht.181synthetischeMocksinderlokalenKopie,späterOriginalsource/testGleichheitmitfrischemMaingeprüft;keinFullCI/LiveSync. LXexternal_id/Entwurf→Prüfung→ConfirmweichtvomNov1Helperab;Ready/CASQuery-/Migrationbasisfehlt. KeineQuellenänderung.",
+          "previousNextAllowedStep": "AltenVierDateienpatchnichtanwenden. Zuerst aktuellenLX-ID-/Entwurf-/Confirm-Vertrag erhalten undkontrolliertenReady-/Query-/Migrationsscope konkretentwerfen;erst danach begrenztenneuenDiffmiterhaltenenMocktestsundWorkflow-Sparse-/CI-Anbindungprüfen. ProduktivweiterownGrants/Version/Altauftragsbeleg/Sicherheitsfreigabevorweisen;keinSendbeiunknown.",
+          "previousBlockers": [
+            "Nur lokaler Reviewentwurf, keine produktive Integration; Node22/Voll-CI unbestätigt, GraphQL-Validator skipped",
+            "Kein belegter begrenzter Ready-/Migrations-Cutover; kein Checkpoint oder Register initialisiert",
+            "CAS/frische Gegenproben sind kein atomarer Lock zwischen Printful und Shopify; alte Writer vor Cutover gesondert prüfen",
+            "Runtime-Credentials/App-Grants/API-Version und echte Lieferanten-/Druckflächen-/Rechtebelege offen; positiver Legacy-ID-Fallback-Modulfall nicht gesondert getestet",
+            "Claude-Kenntnisnahme unbekannt"
+          ]
         }
-      ]
+      ],
+      "run227": {
+        "at": "2026-11-15T05:51:16.969598+00:00",
+        "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+        "scope": "see exact run evidence; no implied deployment or catalog-wide result"
+      }
     },
     {
       "id": "cj-variant-price-identity",
@@ -28272,6 +28745,88 @@
           "sha256": "5cf30a0610cac2f8044aa2cc26cfe3e783ef91faf9c511eebb83119c6a38d8df",
           "gitBlobSha": "7c6d24a28477c81d2af9dfc50f5b54286c440f4e",
           "bytes": 4239
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 227,
+      "at": "2026-11-15T05:51:16.969598+00:00",
+      "actor": "codex",
+      "summary": "Hängematten-Suchbeschreibung einmal live korrigiert und nativ/öffentlich bestätigt. Ein gezielter Google-Index-/Rich-Results-PASS mit 101 optionalen Warnungen; kein Gesamtkatalogurteil. Neuer lokaler Printful-Dateiguard mit 185 grünen synthetischen Assertions, kein Deployment. Nagellack-Nettoinhalt unbelegt. Historien, 24 IDs und Tagesgrenzen erhalten.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+          "sha256": "9c3e198d6d2c8376da7a655561f64aac3908dcbe9d4b19bbe15dbf66b55d6a51",
+          "gitBlobSha": "8ce36d79dae7d0b2e84c9c5f50577c4ba191ef1d",
+          "bytes": 3126653
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-NAGELLACK-NETTOINHALT-20261115-R227.json",
+          "sha256": "e329081453edce125c5bf709f117f7a1949f4856b7632c3ed6c99c7bb485c064",
+          "gitBlobSha": "29e8cb4a55dfe857eb802976546d5293c5f44bc6",
+          "bytes": 2610
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.json",
+          "sha256": "4f097d76288bda501082b34585434a30734fc2ae9e7d73452b582b0fe40a3e27",
+          "gitBlobSha": "830a307bdd6840bd9e64d4c9298cf3b3bd4f2085",
+          "bytes": 34910
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.md",
+          "sha256": "dea66c4d0450b2474983fe9a43b79dd4e25c8a142d28857315910d27fde598e1",
+          "gitBlobSha": "1a897f6b85f6e90ef1fc154e20e63e761fa9b5dc",
+          "bytes": 1507
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-DATEI-GUARD-20261115-R227.patch",
+          "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+          "gitBlobSha": "69e1d83cd740fd550732d4470590924ef97a58e0",
+          "bytes": 9189
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-READY-CAS-PREFLIGHT-20261115-R227.md",
+          "sha256": "e8194976903037cfaa289cde3ff61d7c1f18ef5c6fa3a09ab1557cbf1b9b38a7",
+          "gitBlobSha": "ec1d50528313f294fcd83bf119fa85daebdc5514",
+          "bytes": 14090
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+          "sha256": "e8dae212d7af6c8eb3238d4c3adda9f9eb7e026c57435fc8b7d30e8098ce34f8",
+          "gitBlobSha": "3cbb8026f9cac4dfec6c505b860514746a5aaee8",
+          "bytes": 380048
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/README.md",
+          "sha256": "7343afca2f9003baf9fc11f357678e57dc551ffad4776fb83a8f97c5aa13fe5f",
+          "gitBlobSha": "fb2517a6a58da2301ceb568c4cbe07cafaa750d0",
+          "bytes": 504437
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-GOOGLE-SCHEMA-20261115-R227.json",
+          "sha256": "13fa056f19cb4bce9429d59667ad03d3e8a60fbf194b30ba49db7e9d6e882429",
+          "gitBlobSha": "5b32557ee6676bcf5c68c9c51d710249d33c6a27",
+          "bytes": 134863
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+          "sha256": "57d6f21d0af676d8138645928d5f2a40f6539893f23465865fdd8a39a17b03e8",
+          "gitBlobSha": "837f7f9ff52efc147788299172837e6bbda69175",
+          "bytes": 570285
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
+          "sha256": "611fc0bb393f6f115b58b8b34489d4f4226ad1a0fde564df5de631171e763ac6",
+          "gitBlobSha": "738f507393b6caafc72b6dd22441916bb33c8640",
+          "bytes": 5522
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.md",
+          "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
+          "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
+          "bytes": 6400
         }
       ],
       "taskCount": 24,
@@ -53615,5 +54170,99 @@
     "ownerFinalMemoryPreference": "teile am schluss memory — end each run with direct link to current shared PROJEKTGEDAECHTNIS.md; no Claude-receipt claim",
     "claudeReceipt": "unknown_no_new_receipt",
     "metricsReuseNote": "R225 planner proof retained as dated; no second manual queue scan. Social/Klaviyo15Nov not read here; GSC15Nov now consumed once."
+  },
+  "run227": {
+    "revision": 227,
+    "startedAtUTC": "2026-11-15T05:16:49Z",
+    "recordedAtUTC": "2026-11-15T05:51:16.969598+00:00",
+    "dateZurich": "2026-11-15",
+    "kind": "one_live_SEO_metadata_correction_plus_targeted_Google_schema_and_local_Printful_safety_candidate",
+    "shopifyProductWriteCalls": 1,
+    "shopifyTarget": "gid://shopify/Product/15450856292737",
+    "changedFields": [
+      "seo.description"
+    ],
+    "nativePublicReadbackPassed": true,
+    "nativeVariantsSentinels": 3,
+    "allVariantsCompared": false,
+    "googleUrlInspectionCalls": 1,
+    "googleIndexedCrawlTime": "2026-11-04T16:41:09Z",
+    "googleIndexVerdict": "PASS",
+    "googleRichResultsVerdict": "PASS",
+    "deliveredWarningCount": 101,
+    "deliveredErrorCount": 0,
+    "catalogErrorCount": "unknown",
+    "googleLiveTest": false,
+    "mobileQA": "unknown_VERDICT_UNSPECIFIED",
+    "newGSCPerformanceReports": 0,
+    "r226DailyGSCReportPreserved": true,
+    "newMetricoolReportsOrQueueReads": 0,
+    "newKlaviyoReports": 0,
+    "newOrderQueries": 0,
+    "themeReadOnlyCalls": 3,
+    "themeWritesPublishes": 0,
+    "newMerchantReadsWritesDeletes": 0,
+    "printful": {
+      "candidateOnly": true,
+      "baselineAssertions": 181,
+      "newAssertions": 4,
+      "newAdversarialRunnerScenarios": 17,
+      "candidateOk": 185,
+      "candidateErrors": 0,
+      "node": "v24.22.1",
+      "node22FullCI": "unknown_not_available",
+      "actualProviderOrdersOrCalls": 0,
+      "currentSourceMainRef": "00bf41c9ab69aefd3dc297aa9607fe91880d5f78",
+      "githubFileToolReads": 21,
+      "freshRefReads": 1,
+      "compareReads": 1
+    },
+    "newSocialPostsUploadsSchedulesDeletes": 0,
+    "newMasterMP4s": 0,
+    "paidRenders": 0,
+    "newAutomation": false,
+    "existingScheduleUnchanged": true,
+    "customerContactsBudgetDiscountShippingFlowDNSChanges": 0,
+    "shippingThresholdsAndAccountDomainPreserved": true,
+    "purchaseWatchEndedPreserved": true,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "memoryLinkRequested": true,
+    "table": [
+      [
+        "Identität / Fortsetzung",
+        "Core4 und heutigen Tagesblock frisch gelesen; Shopify LuxeStyle/CHF und Metricool 6227837, Europe/Zurich, alle sechs Kanalidentitäten erneut geprüft",
+        "Identitäten passend. Keine Wiederholung der abgeschlossenen Merchant-Paarlöschung oder der R225/R226-Textänderungen."
+      ],
+      [
+        "Google / Schema",
+        "Genau eine URL-Prüfung der Hängematte in der bestätigten Search-Console-Domain sowie öffentliche JSON-LD-Ausgabe und zuständige aktuelle MAIN-Quellen gelesen",
+        "Google: indexiert, Index-/Rich-Results-PASS; Crawl vom 4.11.2026. 101 gelieferte optionale Warnungen, keine gelieferten ERROR-Einträge. Aktuell fehlen 33 Variantenbeschreibungen sowie bei 33 Offers Versand-/Rückgabefelder. Allgemeine Richtlinien vorhanden. Kein Katalog- oder Mobile-Gesamturteil, keine Themeänderung."
+      ],
+      [
+        "SEO live",
+        "Suchbeschreibung der Hängematte 15450856292737 durch 143 Zeichen zur belegten Farb-/Variantenauswahl ersetzt; bisherigen SEO-Titel ausdrücklich mitgesendet",
+        "Genau ein erfolgreicher Write, danach native und öffentliche Meta-/Open-Graph-Rücklesung passend. Body, Tags, Handle, erstes Bild und drei Variantenstichproben einschliesslich Preisen erhalten. Rabatt-Einstellungen nicht geändert; neue Google-Übernahme unbekannt."
+      ],
+      [
+        "Printful / lokaler Patch",
+        "Fehlende Dateiliste unabhängig als fälschliches ok reproduziert. Schmalen Dreidateien-Kandidaten mit erwarteter Positionsanzahl und eigenem datei-unvollstaendig-Befund entwickelt und gegen synthetische Antworten geprüft",
+        "181 bestehende Assertions erhalten, vier neue Assertions mit 17 adversarialen Runner-Szenarien: 185 ok, 0 Fehler unter Node24. Root-/Peer-Diffprüfung separat. LX-Identität und Entwurf → Prüfung → separater Confirm erhalten; kein echter API-Send. Nicht gemergt, deployt oder produktiv ausgeführt; Node22/Voll-CI offen."
+      ],
+      [
+        "Merchant / Quellen",
+        "Drei genaue Bilder für Nagellack Modell6 / CJYD273330506FU auf lesbaren Nettoinhalt geprüft",
+        "Kein lesbarer ml-/Nettoinhaltbeleg. Lieferantenbeleg oder echtes Etikett für genau diese Ausführung nötig; keine Menge erfunden, kein weiterer Feedwrite. NOT_IMPACTED-Warnung ist ein datierter R222/R223-Befund, hier nicht frisch bei Google gelesen."
+      ],
+      [
+        "Lesebudget / Grenzen",
+        "Heutigen GSC-Leistungsreport aus R226 beachtet, keine erneute Performanceabfrage; Printful-Quellwiederholungen und Speicher-/Parserkorrekturen offengelegt",
+        "Printful-Agent: tatsächlich 21 Datei-Toolreads, ein frischer Main-Ref und ein Compare wegen lokaler Speicherfehler; keine neuen echten Bestell-/Lieferantendaten. Ein Shopify-Queryversuch vom Validator vor Versand wegen deprecated featuredImage abgelehnt, danach aktuelle Feldform genutzt. Öffentlicher Titelparser offline korrigiert. Root entdeckte drei zunächst nur in der temporären Testkopie vorhandene Statusfälle; vor Sicherung in den eigentlichen Kandidaten übernommen und dieser neu geprüft. Keine Blindretries von Writes."
+      ],
+      [
+        "Memory / nächste Arbeit",
+        "24 stabile Aufgaben-IDs und Historie erhalten; Quellbelege, konkreten Patch und Testergebnisse für Folgearbeit gesichert",
+        "Nächster Schritt: lokalen Printful-Kandidaten im regulären Code-Review/Node22-CI prüfen; Schema nur quellgenau und mit korrekten Produkt-/Versand-/Retourenregeln weiterentwickeln. Kein neuer Publisher, Zeitplanwechsel, bezahlter Render oder Kundenkontakt. Claude-Empfang bleibt unbekannt."
+      ]
+    ]
   }
 }

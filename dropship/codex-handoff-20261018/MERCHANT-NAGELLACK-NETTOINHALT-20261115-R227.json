@@ -1,0 +1,57 @@
+{
+  "scope": {
+    "shopifyProductId": "15448834736513",
+    "model": 6,
+    "shopifyVariantId": "67652260430215",
+    "sku": "CJYD273330506FU",
+    "cjProductId": "2601170943421619200",
+    "cjVariantId": "2601170943431611100",
+    "variantKey": "Q524206",
+    "shadeText": "DT284"
+  },
+  "method": "read-only view of three exact model 6 images; no edit, no API call",
+  "images": [
+    {
+      "role": "exact CJ source variant image",
+      "url": "https://cf.cjdropshipping.com/quick/product/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg",
+      "localCopy": "/dev/shm/luxestyle-review/r227/cj-model6-source.jpg",
+      "status": 200,
+      "contentType": "image/jpg",
+      "bytes": 258076,
+      "sha256": "1585fd2edde805053e605cf3e4006fc681af35226c2e881c449a9098778aaf80",
+      "visibleText": [
+        "DT284"
+      ],
+      "legibleNetContent": false,
+      "identityBinding": "R222 cj-product.json maps this exact image URL to SKU CJYD273330506FU / variant 2601170943431611100"
+    },
+    {
+      "role": "existing pre-R222 Shopify/Google image",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a697b1ed-0ccb-4389-93a6-64bfedb807ce.jpg?v=1783188266",
+      "localCopy": "/dev/shm/luxestyle-review/r222/model6-google-old.jpg",
+      "bytes": 172743,
+      "dimensions": "800x800",
+      "sha256": "75d83d9f1352de38623828303372962d10aad3ffd9bd04ee8137683802953749",
+      "visibleText": [
+        "DT284"
+      ],
+      "legibleNetContent": false
+    },
+    {
+      "role": "existing owner-approved cleaned Shopify image",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193727_4ce256cc-f420-4021-a1a6-42b0e4947a12.png?v=1794427332",
+      "localCopy": "/dev/shm/luxestyle-review/r222/model6-shop-current.png",
+      "bytes": 1673502,
+      "dimensions": "1024x1024",
+      "sha256": "f1b46a425233d5549931aff7b499d1fcebd89de0aea043f4241dc38c8ae29d92",
+      "visibleText": [],
+      "legibleNetContent": false
+    }
+  ],
+  "finding": "No independently tied legible net-content quantity/ML appears in the inspected images. Do not state a value.",
+  "requiredSource": "Legible actual product/package label tied to exact SKU/variant and DT284, or written supplier confirmation naming the exact SKU/variant and DT284 with net contents and unit.",
+  "limits": [
+    "No net content inferred from package dimensions, package volume, mass, or barcode.",
+    "Historical R222 snapshot recorded Google model 6 unit-pricing measure warning as NOT_IMPACTED; this image check makes no claim about current Google status or whether Google requires a quantity."
+  ]
+}

@@ -1,0 +1,753 @@
+{
+  "agent": {
+    "task": "LuxeStyle R227 Printful local contract guard candidate; no production/remote writes",
+    "baselineCoreHead": "7c009bd506bbc9b09b82383f00c4355ed9cec78f",
+    "source": {
+      "repository": "allengchour-glitch/aban-news-landing",
+      "reviewedRef": "9a03e4f00e5531b089388bfb88a265d1566e8f12",
+      "freshMainRef": "00bf41c9ab69aefd3dc297aa9607fe91880d5f78",
+      "freshnessMethod": "gh api refs/heads/main then compare reviewedRef...freshMainRef",
+      "freshMainCompareChangedPaths": [
+        "dropship/cj_varianten_ledger.txt"
+      ],
+      "targetFilesUnchangedAtFreshHead": true,
+      "githubFetchFileReadCount": 21,
+      "refReadCount": 1,
+      "compareReadCount": 1,
+      "pinnedRawFiles": {
+        "automation/printful_sync.mjs": {
+          "gitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+          "expectedGitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+          "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb",
+          "bytes": 38226,
+          "matchesPinnedBlob": true
+        },
+        "automation/lib/printful_bestellweg.mjs": {
+          "gitBlob": "010d892718df2ad86e564af362cdd4622e059cce",
+          "expectedGitBlob": "010d892718df2ad86e564af362cdd4622e059cce",
+          "sha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+          "bytes": 46119,
+          "matchesPinnedBlob": true
+        },
+        "automation/printful_sync_test.mjs": {
+          "gitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+          "expectedGitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+          "sha256": "1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2",
+          "bytes": 80582,
+          "matchesPinnedBlob": true
+        },
+        ".github/workflows/printful-sync.yml": {
+          "gitBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+          "expectedGitBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+          "sha256": "6d5fa64c996828412f9c3b49210921452f7ea830456475394abf37e71dd9391b",
+          "bytes": 5751,
+          "matchesPinnedBlob": true
+        },
+        ".github/workflows/luxestyle-automation-tests.yml": {
+          "gitBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+          "expectedGitBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+          "sha256": "3ff5380db8a9db4975e7eb41e17e973e1ef9d54c210913989384fecc8c2c3e01",
+          "bytes": 29096,
+          "matchesPinnedBlob": true
+        },
+        "package.json": {
+          "gitBlob": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+          "expectedGitBlob": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+          "sha256": "c64f6be0856d2fc22afa328a0930119613d1672c76a7868a033c330758b696dd",
+          "bytes": 1452,
+          "matchesPinnedBlob": true
+        }
+      }
+    },
+    "candidate": {
+      "path": "candidate.patch",
+      "sha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+      "bytes": 9189,
+      "changedExistingFileCount": 3,
+      "changedFiles": {
+        "automation/lib/printful_bestellweg.mjs": {
+          "before": {
+            "bytes": 46119,
+            "sha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+            "gitBlob": "010d892718df2ad86e564af362cdd4622e059cce"
+          },
+          "after": {
+            "bytes": 47545,
+            "sha256": "5f0b1948aa4c9218e96714699cd819346e7e28fcfadf2145cc67dd110f4c4e0f",
+            "gitBlob": "3b53943f3c42f5488728ff00c0df52331f2b1bc6"
+          },
+          "changed": true
+        },
+        "automation/printful_sync.mjs": {
+          "before": {
+            "bytes": 38226,
+            "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb",
+            "gitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620"
+          },
+          "after": {
+            "bytes": 38378,
+            "sha256": "cecb050d50d092c63eaa1b281e71e5fe769d4ebf5ba814f9a566fa8eff11d922",
+            "gitBlob": "3d5eecabc53d1cc72231ef244937d1f102a249e5"
+          },
+          "changed": true
+        },
+        "automation/printful_sync_test.mjs": {
+          "before": {
+            "bytes": 80582,
+            "sha256": "1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2",
+            "gitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384"
+          },
+          "after": {
+            "bytes": 83001,
+            "sha256": "8f7117d426140b828330ea666f3385e24c63eb56f898d5d40654bcf0a45ed511",
+            "gitBlob": "3214d8f0c0d34c172dfa86ccea4b8097aa77ca90"
+          },
+          "changed": true
+        }
+      },
+      "scope": "local staged patch only; does not alter current repository/worktree, main, workflows or package"
+    },
+    "suite": {
+      "node": "v24.22.1",
+      "mode": "known fake-fetch suite only; env -i; no network/provider calls",
+      "baseline": {
+        "ok": 181,
+        "errors": 0,
+        "log": "logs/baseline-181.log",
+        "logSha256": "7e208c055a2d521285ee434811d79b2a5a62c9e65148e52baa9a4320914d4711"
+      },
+      "ok": 185,
+      "errors": 0,
+      "newAssertions": 4,
+      "runnerResponseShapes": 17,
+      "all181BaselineAssertionsRetained": true,
+      "candidateLog": "logs/candidate-185.log",
+      "candidateLogSha256": "219067a4b5d2d967bcea99b941f3aab6eb789e2712c20295aba96ca3f0f9d77a",
+      "runCopyOnlyChanges": "redirects two existing hard-coded /tmp step-summary paths to /dev/shm because /tmp is full; candidate test source is unchanged by this environment-only adjustment",
+      "candidateRunnerCopySha256": "8e2e951d0726d608d759338503dc649636721e9ea479bb92d9fd5b09e45d1fbe"
+    },
+    "localTestDependencies": [
+      {
+        "path": "automation/lib/printful_platzierung.mjs",
+        "bytes": 14783,
+        "sha256": "e2cad3ee0f055d106153485fb70d8a2270f03ee3b02f202f35de1d70134e01ec",
+        "gitBlob": "9834f5e49c5a28294f122202e7e5fecdf1ada3df",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "automation/lib/shopify_secret.mjs",
+        "bytes": 1184,
+        "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c",
+        "gitBlob": "da8105d94e258fc9b8225a58267ac29164d954cf",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "dropship/pod-auswahl/platzierung_mitschnitte.json",
+        "bytes": 11604,
+        "sha256": "e73510b5755daedd52792857bd1d34d01c6d1df63dcda8fd2fabbf1e629d6f81",
+        "gitBlob": "e2c1301c47ad3f78da19b048122bfb7ca09af846",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "dropship/pod-auswahl/bestellweg_katalog_auszug.json",
+        "bytes": 39834,
+        "sha256": "d2963407e1f418f2f88bf1f91468e037e536f10186f9ba4d94b49e4292c81882",
+        "gitBlob": "3900078ad12ed0ec370a80b256a30e09f13ecb75",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      }
+    ],
+    "behavior": {
+      "providerItemCount": "must equal plan.items.length",
+      "perItemFileEvidence": "files must be an array with at least one non-preview/non-mockup entry with non-empty string type; each such file needs non-empty string status",
+      "incompleteClassification": "soft datei-unvollstaendig Review",
+      "printfulSynced": "preserved as draft identity/receipt",
+      "confirm": "0 calls on incomplete evidence",
+      "printfulConfirmed": "not set on incomplete evidence",
+      "legacyExternalId": "unchanged LX scheme",
+      "filePlacementMapping": "not asserted; omitted/partial placements remain an unresolved provider response contract"
+    },
+    "independentBeforeProbe": "/dev/shm/luxestyle-review/r227/printful-independent-before-probe.json",
+    "openAssumptions": [
+      "Provider item array cardinality correspondence to planned items remains unverified against live Printful.",
+      "At least one typed non-preview/non-mockup file per item is a minimal gate; this does not establish full placement/file completeness or file-to-placement identity.",
+      "Missing/empty/non-string file status remains Review/unknown; existing waiting/processing/failed/warning handling is retained by the passing suite."
+    ],
+    "nonActions": [
+      "No Ready/CAS/checkpoint schema implemented or initialized",
+      "No ID migration or external ID scheme change",
+      "No Shopify/Printful order read, provider API call, workflow run, install, remote write, merge, or deployment",
+      "No production source file changed"
+    ],
+    "independentReview": {
+      "path": "/dev/shm/luxestyle-review/r227/printful-independent-review.json",
+      "reviewedPatchSha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+      "result": "missing/blank/numeric file status cases exercise the guard and assert datei-unvollstaendig with no confirm; remaining explicit gap is no comparison of returned printable-file signatures/counts against every planned placement"
+    }
+  },
+  "rootIndependentValidation": {
+    "atUTC": "2026-11-15T05:49:32.652672+00:00",
+    "passed": true,
+    "scope": "Independent local exact-diff/test-preservation/syntax/pure-function checks. No network/provider/real-order/CI/deployment execution.",
+    "patchSha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+    "files": {
+      "automation/lib/printful_bestellweg.mjs": {
+        "beforeSha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+        "afterSha256": "5f0b1948aa4c9218e96714699cd819346e7e28fcfadf2145cc67dd110f4c4e0f"
+      },
+      "automation/printful_sync.mjs": {
+        "beforeSha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb",
+        "afterSha256": "cecb050d50d092c63eaa1b281e71e5fe769d4ebf5ba814f9a566fa8eff11d922"
+      },
+      "automation/printful_sync_test.mjs": {
+        "beforeSha256": "1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2",
+        "afterSha256": "8f7117d426140b828330ea666f3385e24c63eb56f898d5d40654bcf0a45ed511"
+      }
+    },
+    "originalTestCodePreservedExceptFixtureAndNewCases": true,
+    "syntaxChecks": [
+      {
+        "file": "automation/lib/printful_bestellweg.mjs",
+        "exitCode": 0
+      },
+      {
+        "file": "automation/printful_sync.mjs",
+        "exitCode": 0
+      },
+      {
+        "file": "automation/printful_sync_test.mjs",
+        "exitCode": 0
+      }
+    ],
+    "independentProbes": {
+      "node": "v24.22.1",
+      "results": [
+        {
+          "name": "missing order",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: 1 Auftragsposition(en) erwartet, unlesbar lesbar"
+            ]
+          }
+        },
+        {
+          "name": "missing items",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: 1 Auftragsposition(en) erwartet, unlesbar lesbar"
+            ]
+          }
+        },
+        {
+          "name": "empty items",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: 1 Auftragsposition(en) erwartet, 0 lesbar"
+            ]
+          }
+        },
+        {
+          "name": "missing files",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "empty files",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "preview-only",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "missing type",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "missing status",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "blank status",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: Auftragsposition 1 hat keine vollständige lesbare Druckdateiliste"
+            ]
+          }
+        },
+        {
+          "name": "partial positions",
+          "expected": "unvollstaendig",
+          "actual": {
+            "art": "unvollstaendig",
+            "texte": [
+              "Printful-Dateiprüfung unvollständig: 2 Auftragsposition(en) erwartet, 1 lesbar"
+            ]
+          }
+        },
+        {
+          "name": "genuine ok",
+          "expected": "ok",
+          "actual": {
+            "art": "ok",
+            "texte": []
+          }
+        },
+        {
+          "name": "waiting",
+          "expected": "wartet",
+          "actual": {
+            "art": "wartet",
+            "texte": []
+          }
+        },
+        {
+          "name": "rejected",
+          "expected": "problem",
+          "actual": {
+            "art": "problem",
+            "texte": [
+              "Datei «default»: Status «error»"
+            ]
+          }
+        },
+        {
+          "name": "warning",
+          "expected": "problem",
+          "actual": {
+            "art": "problem",
+            "texte": [
+              "Datei «default»: Printful warnt: bad dpi"
+            ]
+          }
+        }
+      ]
+    },
+    "limits": [
+      "Per-item presence/status and item-count guard, not full planned-file/placement identity matching.",
+      "Node24 only; Node22/full CI not available.",
+      "Existing two-phase confirm and LX external IDs retained; actual runtime deployment not observed."
+    ]
+  },
+  "peerReadOnlyReview": {
+    "reviewedAtUTC": "2026-11-15",
+    "scope": "Read-only independent review; no API/network/platform writes; no tests executed.",
+    "candidatePatch": "/dev/shm/luxestyle-review/r227/printful-contract/candidate.patch",
+    "candidatePatchSha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+    "candidateFileSha256": {
+      "candidate/automation/lib/printful_bestellweg.mjs": "5f0b1948aa4c9218e96714699cd819346e7e28fcfadf2145cc67dd110f4c4e0f",
+      "candidate/automation/printful_sync.mjs": "cecb050d50d092c63eaa1b281e71e5fe769d4ebf5ba814f9a566fa8eff11d922",
+      "candidate/automation/printful_sync_test.mjs": "8f7117d426140b828330ea666f3385e24c63eb56f898d5d40654bcf0a45ed511"
+    },
+    "result": "conditional_pass_with_one_explicit_scope_gap",
+    "checks": [
+      {
+        "check": "Missing, blank, or non-string printable-file status",
+        "result": "pass",
+        "evidence": "dateienStatus marks each printable file entry with status missing/non-string/blank as unvollstaendig; the production mapping emits datei-unvollstaendig and this review finding returns before confirm."
+      },
+      {
+        "check": "Synthetic cases for the new status guard",
+        "result": "present",
+        "evidence": "Candidate test patch adds missing status, empty-string status, and numeric status cases. The shared result assertion verifies no confirmation, zero confirm calls, no printful-confirmed tag, printful-synced tag present, and datei-unvollstaendig review tag present."
+      },
+      {
+        "check": "Expected position count and missing file lists",
+        "result": "pass for enumerated cases",
+        "evidence": "The positive expected item count is bound from plan.items.length; missing/null/empty items and missing/empty/malformed/preview-only per-item file lists are guarded."
+      },
+      {
+        "check": "LX IDs, two-phase confirmation, and success marker semantics",
+        "result": "pass",
+        "evidence": "Patch leaves external ID logic and draft→preconfirm check→confirm→post-confirm status read unchanged. printful-confirmed follows accepted post-confirm status; printful-synced remains a draft/sync identity marker."
+      }
+    ],
+    "findings": [
+      {
+        "severity": "medium",
+        "status": "remaining_scope_gap",
+        "detail": "The guard checks exact item count and at least one non-preview/non-mockup typed file per item, but does not compare returned printable file count/types against all planned files in the corresponding plan.items entry. A response that omits one of multiple planned placements while returning one valid printable file can still pass this completeness check."
+      }
+    ],
+    "verificationLimits": [
+      "No tests, CI, API calls, network reads, deployment, or platform writes were performed by this reviewer.",
+      "The implementation agent reported 185 ok / 0 on the exact candidate test content; this result was not independently rerun here.",
+      "Reviewed the local candidate patch and candidate files; this is not full-CI or deployment approval."
+    ],
+    "recommendation": "Keep the expected-versus-returned planned-file signature/count comparison as the remaining explicit gap. Status-field classification is now covered by guard and synthetic cases.",
+    "reviewHistory": [
+      {
+        "reviewedAtUTC": "2026-11-15",
+        "candidatePatchSha256": "fa9423b557883ef34f9172a7a7473a802b4e18593a95e8288f01971ca0c50c3f",
+        "candidateFileSha256": {
+          "candidate/automation/lib/printful_bestellweg.mjs": "f53ac9584ec3d95b9ad28590330e80661a98daf62ee3770f44120e3c7476690e",
+          "candidate/automation/printful_sync.mjs": "cecb050d50d092c63eaa1b281e71e5fe769d4ebf5ba814f9a566fa8eff11d922",
+          "candidate/automation/printful_sync_test.mjs": "dd07f8eb67adaece5d28e9fdf6f08f1f681c861eb4e751e838bb698abdf2a973"
+        },
+        "result": "conditional_pass_with_residual_gaps",
+        "checks": [
+          {
+            "check": "Expected item count is bound in production",
+            "result": "pass",
+            "evidence": "printful_sync.mjs urteilEntwurf passes plan.items.length to dateienStatus; the guard requires that positive integer and an order.items array of exactly that length."
+          },
+          {
+            "check": "Missing/unreadable per-item file list blocks confirmation",
+            "result": "pass_for_empty_or_malformed_lists",
+            "evidence": "Missing files, malformed file entries/types, empty files, and preview/mockup-only lists return art=unvollstaendig; production maps this to datei-unvollstaendig in weich, then returns before /confirm."
+          },
+          {
+            "check": "Productive binding of result to confirmation gate",
+            "result": "pass",
+            "evidence": "urteilEntwurf is evaluated after draft read; datei-unvollstaendig becomes a review finding. Any weich finding routes through befundMelden and returns before POST /orders/{id}/confirm."
+          },
+          {
+            "check": "LX external IDs retained",
+            "result": "pass",
+            "evidence": "Patch does not modify externalId/external_id logic; tests retain normal LX1034 and collision-disambiguated LX10341N111 cases."
+          },
+          {
+            "check": "Two-phase confirmation retained",
+            "result": "pass",
+            "evidence": "Patch does not alter draft creation, pre-confirm file/cost gate, confirm POST, or post-confirm status read; printful-confirmed is only added after accepted post-confirm status."
+          },
+          {
+            "check": "printful-synced is not represented as order success",
+            "result": "pass",
+            "evidence": "Tag is set when draft is created; separate printful-confirmed is set only after post-confirm status is accepted. Incomplete-file test asserts synced=true while confirmed=false and confirm count zero."
+          }
+        ],
+        "findings": [
+          {
+            "severity": "medium",
+            "status": "residual_scope_gap",
+            "detail": "Current validation requires exactly the expected number of items and at least one non-preview/non-mockup typed file per item, but it does not compare returned printable file count/types with the files planned in each corresponding plan.items entry. A partial files list containing one valid file can therefore be treated as complete even if additional planned print placements are absent."
+          },
+          {
+            "severity": "low",
+            "status": "classification_gap",
+            "detail": "A file entry with a valid type but missing/blank status is classified by the legacy evaluator as datei-abgelehnt, not datei-unvollstaendig. It is blocked from automatic confirmation, but not given the requested incomplete-answer review category."
+          }
+        ],
+        "verificationLimits": [
+          "No full CI, tests, deployment, API calls, or platform writes were performed.",
+          "Reviewed local candidate patch and corresponding candidate source files only; this is not full-CI or deployment approval."
+        ],
+        "recommendation": "Before claiming every incomplete Printful file response is covered, pass expected printable file signatures/counts into dateienStatus and classify missing required status as unvollstaendig; add focused regression cases. Current enumerated missing-items/empty-or-malformed-list cases do block confirmation."
+      }
+    ],
+    "currentReview": {
+      "reviewedAtUTC": "2026-11-15",
+      "candidatePatchSha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+      "statusGate": "pass",
+      "statusGateCases": [
+        "missing status",
+        "empty-string status",
+        "numeric status"
+      ],
+      "reportedSuite": "185 ok / 0 per implementation agent; not rerun by this reviewer",
+      "remainingFinding": "Returned printable file signatures/counts are not compared against planned print placements.",
+      "scope": "Read-only local review; no tests, CI, APIs, network reads, deployment, or platform writes."
+    }
+  },
+  "originalIndependentProbe": {
+    "scope": "Independent pure function reproduction only; exact original source function, no runner/import/network/provider calls",
+    "sourcePath": "/dev/shm/luxestyle-review/r227/printful-contract/source/automation/lib/printful_bestellweg.mjs",
+    "sourceSha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+    "cases": [
+      {
+        "name": "null_order",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "missing_items",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "empty_items",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "missing_files",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "empty_files",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "preview_only",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      },
+      {
+        "name": "one_ready_print_file",
+        "result": {
+          "art": "ok",
+          "texte": []
+        }
+      }
+    ],
+    "nodeVersion": "v24.22.1"
+  },
+  "testLogs": {
+    "baseline-181.log": {
+      "text": "181 ok, 0 Fehler\n",
+      "sha256": "7e208c055a2d521285ee434811d79b2a5a62c9e65148e52baa9a4320914d4711"
+    },
+    "candidate-185.log": {
+      "text": "185 ok, 0 Fehler\n",
+      "sha256": "219067a4b5d2d967bcea99b941f3aab6eb789e2712c20295aba96ca3f0f9d77a"
+    }
+  },
+  "sourceManifest": {
+    "task": "R227 Printful stable LX identity + fail-closed provider file evidence; local candidate only",
+    "baselineCoreHead": "7c009bd506bbc9b09b82383f00c4355ed9cec78f",
+    "reviewedRef": "9a03e4f00e5531b089388bfb88a265d1566e8f12",
+    "freshMainRef": "00bf41c9ab69aefd3dc297aa9607fe91880d5f78",
+    "freshnessCheck": {
+      "method": "gh api refs/heads/main, then gh api compare reviewedRef...freshMainRef",
+      "readCount": {
+        "ref": 1,
+        "compare": 1,
+        "github_fetch_file": 21
+      },
+      "changedPaths": [
+        "dropship/cj_varianten_ledger.txt"
+      ],
+      "conclusion": "none of the six saved Printful/workflow/package blobs changed; reviewed raw blobs remain current at fresh main"
+    },
+    "sourceEvidence": {
+      "automation/printful_sync.mjs": {
+        "gitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "expectedGitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb",
+        "bytes": 38226,
+        "matchesPinnedBlob": true
+      },
+      "automation/lib/printful_bestellweg.mjs": {
+        "gitBlob": "010d892718df2ad86e564af362cdd4622e059cce",
+        "expectedGitBlob": "010d892718df2ad86e564af362cdd4622e059cce",
+        "sha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+        "bytes": 46119,
+        "matchesPinnedBlob": true
+      },
+      "automation/printful_sync_test.mjs": {
+        "gitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "expectedGitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "sha256": "1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2",
+        "bytes": 80582,
+        "matchesPinnedBlob": true
+      },
+      ".github/workflows/printful-sync.yml": {
+        "gitBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+        "expectedGitBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+        "sha256": "6d5fa64c996828412f9c3b49210921452f7ea830456475394abf37e71dd9391b",
+        "bytes": 5751,
+        "matchesPinnedBlob": true
+      },
+      ".github/workflows/luxestyle-automation-tests.yml": {
+        "gitBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+        "expectedGitBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+        "sha256": "3ff5380db8a9db4975e7eb41e17e973e1ef9d54c210913989384fecc8c2c3e01",
+        "bytes": 29096,
+        "matchesPinnedBlob": true
+      },
+      "package.json": {
+        "gitBlob": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+        "expectedGitBlob": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+        "sha256": "c64f6be0856d2fc22afa328a0930119613d1672c76a7868a033c330758b696dd",
+        "bytes": 1452,
+        "matchesPinnedBlob": true
+      }
+    },
+    "persistedRawTargetCount": 6,
+    "persistenceHistory": {
+      "githubFetchFileCalls": 21,
+      "uniquePaths": 7,
+      "freshRefReadCalls": 1,
+      "compareReadCalls": 1,
+      "details": [
+        "Initial single-file Printful sync response was reviewed but not persisted.",
+        "First seven-file batch failed before writing because a single shell argument exceeded OS argument limits.",
+        "Second seven-file batch persisted only sync source before a TextEncoder error.",
+        "Six-path retry persisted the bestellweg helper; the test path response lacked content and stopped that transfer.",
+        "Final target staging used the hash-verified R225 cached raw test/workflow/package files where their Git blob IDs exactly matched pinned metadata; no further GitHub fetch_file calls.",
+        "Fresh gh api ref read found 00bf41c; compare from 9a03e4f to 00bf41c returned only CJ ledger change."
+      ]
+    },
+    "localTestDependencies": [
+      {
+        "path": "automation/lib/printful_platzierung.mjs",
+        "bytes": 14783,
+        "sha256": "e2cad3ee0f055d106153485fb70d8a2270f03ee3b02f202f35de1d70134e01ec",
+        "gitBlob": "9834f5e49c5a28294f122202e7e5fecdf1ada3df",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "automation/lib/shopify_secret.mjs",
+        "bytes": 1184,
+        "sha256": "2d9da92ebe5b50a489a516baf089289f204fd8411a53e1f52af3b44c59e1273c",
+        "gitBlob": "da8105d94e258fc9b8225a58267ac29164d954cf",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "dropship/pod-auswahl/platzierung_mitschnitte.json",
+        "bytes": 11604,
+        "sha256": "e73510b5755daedd52792857bd1d34d01c6d1df63dcda8fd2fabbf1e629d6f81",
+        "gitBlob": "e2c1301c47ad3f78da19b048122bfb7ca09af846",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      },
+      {
+        "path": "dropship/pod-auswahl/bestellweg_katalog_auszug.json",
+        "bytes": 39834,
+        "sha256": "d2963407e1f418f2f88bf1f91468e037e536f10186f9ba4d94b49e4292c81882",
+        "gitBlob": "3900078ad12ed0ec370a80b256a30e09f13ecb75",
+        "provenance": "local R225 main-mock cache; staged only for local fake-fetch execution; not a candidate patch file"
+      }
+    ],
+    "independentBaselineProbe": {
+      "path": "/dev/shm/luxestyle-review/r227/printful-independent-before-probe.json",
+      "sourceSha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+      "result": "null/missing/empty items, missing/empty files and preview-only all incorrectly returned art=ok; one genuine status=ok remained art=ok"
+    },
+    "candidate": {
+      "patchPath": "candidate.patch",
+      "patchBytes": 9189,
+      "patchSha256": "29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4",
+      "changedExistingFiles": {
+        "automation/lib/printful_bestellweg.mjs": {
+          "before": {
+            "bytes": 46119,
+            "sha256": "eed4abcf16ea8e52d9f2fd28b541c55abf5257f1ffba1be2216ad590df3a8a61",
+            "gitBlob": "010d892718df2ad86e564af362cdd4622e059cce"
+          },
+          "after": {
+            "bytes": 47545,
+            "sha256": "5f0b1948aa4c9218e96714699cd819346e7e28fcfadf2145cc67dd110f4c4e0f",
+            "gitBlob": "3b53943f3c42f5488728ff00c0df52331f2b1bc6"
+          },
+          "changed": true
+        },
+        "automation/printful_sync.mjs": {
+          "before": {
+            "bytes": 38226,
+            "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb",
+            "gitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620"
+          },
+          "after": {
+            "bytes": 38378,
+            "sha256": "cecb050d50d092c63eaa1b281e71e5fe769d4ebf5ba814f9a566fa8eff11d922",
+            "gitBlob": "3d5eecabc53d1cc72231ef244937d1f102a249e5"
+          },
+          "changed": true
+        },
+        "automation/printful_sync_test.mjs": {
+          "before": {
+            "bytes": 80582,
+            "sha256": "1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2",
+            "gitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384"
+          },
+          "after": {
+            "bytes": 83001,
+            "sha256": "8f7117d426140b828330ea666f3385e24c63eb56f898d5d40654bcf0a45ed511",
+            "gitBlob": "3214d8f0c0d34c172dfa86ccea4b8097aa77ca90"
+          },
+          "changed": true
+        }
+      },
+      "changedFileCount": 3,
+      "sourceDiffOnly": true,
+      "candidateGitWrites": false,
+      "remoteWrites": false,
+      "coreWorkingTreeChanges": false,
+      "scope": "3 existing source/test files only; full patch is in candidate.patch"
+    },
+    "tests": {
+      "baseline": {
+        "path": "logs/baseline-181.log",
+        "bytes": 17,
+        "sha256": "7e208c055a2d521285ee434811d79b2a5a62c9e65148e52baa9a4320914d4711",
+        "stdout": "181 ok, 0 Fehler"
+      },
+      "candidate": "185 ok, 0 Fehler; 181 baseline assertions plus four new behavior assertions",
+      "newAssertions": 4,
+      "syntheticRunnerResponseShapes": 17,
+      "all181PreviousAssertionsRetained": true,
+      "candidateRunMode": "Node v24.22.1, env -i, known FakeFetch test only, no network/provider calls",
+      "candidateRunnerCopySha256": "8e2e951d0726d608d759338503dc649636721e9ea479bb92d9fd5b09e45d1fbe",
+      "candidateRunnerCopyChanges": "temporary run copy only redirects two hard-coded /tmp summary files to /dev/shm; the three-file patch preserves original paths",
+      "actualProviderCalls": 0,
+      "realCredentialsUsed": false,
+      "fixtureAndSourcePathExpansion": "local R225 cached imports and two synthetic test fixtures only; hashes above",
+      "baselineLogSha256": "7e208c055a2d521285ee434811d79b2a5a62c9e65148e52baa9a4320914d4711",
+      "candidateLogSha256": "219067a4b5d2d967bcea99b941f3aab6eb789e2712c20295aba96ca3f0f9d77a"
+    },
+    "candidateBehavior": "Sync passes plan.items.length to dateienStatus. Require exact provider item count and per item a files array with at least one non-empty string type other than preview/mockup; each such entry must have a non-empty string status. Missing/malformed evidence routes to soft datei-unvollstaendig Review. printful-synced remains set; no confirm or printful-confirmed marker. No file type/placement correspondence is asserted.",
+    "openProviderResponseAssumptions": [
+      "Printful returns items as one array entry per submitted planned item; the candidate checks this count only. This response cardinality assumption remains unverified against live Printful.",
+      "At least one non-empty string file type that is neither preview nor mockup per item is only minimal evidence; exact file-to-placement correspondence and completeness remain unverified.",
+      "Unknown/missing evidence remains Review; no new unknown design type is treated as approved."
+    ],
+    "scope": [
+      "No Ready/CAS/checkpoint design implemented",
+      "No provider migration or order query",
+      "No ID scheme change; current LX external_id remains",
+      "No production source branch/worktree change",
+      "No workflow/CI mutation, remote write, install, merge, deploy, or live sync"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+# R227 Printful review result
+
+A local three-file patch candidate is ready for root review at [`PRINTFUL-DATEI-GUARD-20261115-R227.patch`](PRINTFUL-DATEI-GUARD-20261115-R227.patch). Its SHA-256 is `29ca9cc8f348fabbe33c8f663df8583e018a1fe016bc96197c9f5af8e5a691f4`. It keeps the existing LX external ID and draft → file/cost review → separate confirm sequence. The guard checks that the provider response has the expected number of items and a minimally readable non-preview file/status for each item. Incomplete evidence becomes a soft `datei-unvollstaendig` review; the existing `printful-synced` draft marker remains, while confirm and `printful-confirmed` are withheld.
+
+The fake-fetch suite retained all 181 existing assertions and added four assertions covering 17 synthetic response shapes: **185 ok, 0 errors**. The baseline suite was **181 ok, 0 errors**. Logs are in [gesicherten Testlog-Hashes](PRINTFUL-DATEI-GUARD-20261115-R227.json); exact source pins, fresh-main comparison, before/after hashes, and patch hash are in [`PRINTFUL-DATEI-GUARD-20261115-R227.json`](PRINTFUL-DATEI-GUARD-20261115-R227.json).
+
+This is a scratch review candidate only. No repository production source, main branch, or workflow changed. No Ready/CAS migration, order read, provider call, workflow run, install, remote write, merge, or deployment occurred. Provider item-count and file-to-placement completeness remain unresolved API response assumptions; this patch does not claim to validate omitted placements.

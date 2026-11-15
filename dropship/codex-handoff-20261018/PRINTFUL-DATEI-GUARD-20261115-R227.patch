@@ -1,0 +1,108 @@
+--- a/automation/lib/printful_bestellweg.mjs
++++ b/automation/lib/printful_bestellweg.mjs
+@@ -358,10 +358,31 @@
+ 
+ /**
+  * Dateien des Auftrags laut Printful (items[].files[].status/warning; GEMESSEN 05.11.: {"type":"default","status":"ok","width":1024,"height":1024,"dpi":72}).
+- * @returns {{art:'ok'|'wartet'|'problem', texte:string[]}}
+- */
+-export function dateienStatus(order) {
++ * @returns {{art:'ok'|'wartet'|'problem'|'unvollstaendig', texte:string[]}}
++ */
++export function dateienStatus(order, erwartetePositionen = null) {
+   const texte = []; let wartet = false;
++  if (erwartetePositionen !== null) {
++    const items = order && Array.isArray(order.items) ? order.items : null;
++    if (!Number.isInteger(erwartetePositionen) || erwartetePositionen < 1 || !items || items.length !== erwartetePositionen) {
++      const erhalten = items ? items.length : 'unlesbar';
++      return { art: 'unvollstaendig', texte: [`Printful-Dateiprüfung unvollständig: ${erwartetePositionen} Auftragsposition(en) erwartet, ${erhalten} lesbar`] };
++    }
++    for (let i = 0; i < items.length; i++) {
++      const files = items[i] && Array.isArray(items[i].files) ? items[i].files : null;
++      const unlesbareDatei = files && files.some((f) => !f || typeof f.type !== 'string' || !f.type.trim());
++      const druckdateien = files && files.filter((f) => {
++        if (!f || typeof f.type !== 'string' || !f.type.trim()) return false;
++        const typ = f.type.trim().toLowerCase();
++        return typ !== 'preview' && typ !== 'mockup';
++      });
++      const unlesbarerStatus = druckdateien && druckdateien.some((f) => typeof f.status !== 'string' || !f.status.trim());
++      if (!files || unlesbareDatei || !druckdateien.length || unlesbarerStatus) {
++        texte.push(`Printful-Dateiprüfung unvollständig: Auftragsposition ${i + 1} hat keine vollständige lesbare Druckdateiliste`);
++      }
++    }
++    if (texte.length) return { art: 'unvollstaendig', texte };
++  }
+   for (const it of (order && order.items) || []) for (const f of (it && it.files) || []) {
+     if (!f || f.type === 'preview' || f.type === 'mockup') continue;
+     const st = String(f.status || '').toLowerCase();
+--- a/automation/printful_sync.mjs
++++ b/automation/printful_sync.mjs
+@@ -322,7 +322,7 @@
+   if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehlerAdd(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext} und markiert ihn nach)`); zaehler.entwuerfe++; return; }
+   // 4. Entwurf nachlesen: Dateien und Kosten
+   const weich = befunde.slice();
+-  const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN }) });
++  const urteilEntwurf = (ord) => ({ d: dateienStatus(ord, plan.items.length), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN }) });
+   // fertig = Printful hat die Dateien geprüft (nicht «waiting») UND die Kosten gerechnet (total vorhanden, nicht «calculating»); sonst nach kurzer Pause nochmal lesen
+   const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
+   console.log(`${o.name}: Printful-Entwurf #${pfId}: Dateien und Kosten ${lese.urteil ? 'fertig' : 'NICHT fertig'} nach ${lese.sek} s Wartezeit`);   // misst, wie lange Printful wirklich braucht (bisher ungemessen)
+@@ -330,6 +330,7 @@
+   else {
+     const { d, k } = lese.urteil || urteilEntwurf(lese.order);
+     if (d.art === 'problem') for (const t of d.texte) weich.push({ art: 'datei-abgelehnt', text: t, hart: false });
++    else if (d.art === 'unvollstaendig') for (const t of d.texte) weich.push({ art: 'datei-unvollstaendig', text: t, hart: false });
+     else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: `Printful hat die Dateien nach ${lese.sek} Sekunden Wartezeit noch nicht fertig geprüft: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen`, hart: false });
+     if (!k.ok) weich.push({ art: k.art, text: k.art === 'kosten-unbekannt' ? `${k.text} (nach ${lese.sek} Sekunden Wartezeit)` : k.text, hart: false });
+   }
+--- a/automation/printful_sync_test.mjs
++++ b/automation/printful_sync_test.mjs
+@@ -28,7 +28,11 @@
+     json: async () => { if (x.roh !== undefined) throw new Error('kein JSON'); return body; }, arrayBuffer: async () => (x.bytes ? x.bytes.buffer.slice(x.bytes.byteOffset, x.bytes.byteOffset + x.bytes.byteLength) : new ArrayBuffer(0)) });
+   const png = (w, h) => { const b = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(b); b.writeUInt32BE(13, 8); b.write('IHDR', 12, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
+   const folge = (liste, n) => (Array.isArray(liste) && liste.length ? liste[Math.min(n, liste.length - 1)] : {});
+-  const draftOrder = (i = 0) => ({ id: 42, external_id: st.ext, status: 'draft', error: null, costs: { currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '4.00', tax: '0.95', vat: '0.00', total: '12.70' }, items: [{ files: [{ type: 'default', status: 'ok', width: 1024, height: 1024 }, { type: 'preview', status: 'ok' }] }], ...(sz.entwurf || {}), ...folge(sz.entwurfFolge, i) });
++  const draftOrder = (i = 0) => {
++    const order = { id: 42, external_id: st.ext, status: 'draft', error: null, costs: { currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '4.00', tax: '0.95', vat: '0.00', total: '12.70' }, items: ((prot.posts[0] && prot.posts[0].body.items) || []).map(() => ({ files: [{ type: 'default', status: 'ok', width: 1024, height: 1024 }, { type: 'preview', status: 'ok' }] })), ...(sz.entwurf || {}), ...folge(sz.entwurfFolge, i) };
++    if (sz.entwurf && sz.entwurf.itemsMissing === true) { delete order.items; delete order.itemsMissing; } // synthetisches JSON-Szenario für ein fehlendes Antwortfeld
++    return order;
++  };
+   const nachOrder = (i = 0) => ({ ...draftOrder(0), status: 'pending', ...(sz.nachConfirm || {}), ...folge(sz.nachFolge, i) });
+   // Katalog des Szenarios: echte Auszüge (Tasse, T-Shirt, Kappe, Poster, Jacke, Strick, Hülle), sonst synthetisch aus der Dateiliste des Mitschnitts
+   const druck = (pid) => {
+@@ -352,6 +356,36 @@
+   ist('…und tatsächlich: der zweite Lauf findet den Entwurf über external_id und legt keinen zweiten an', nach.prot.posts.length, 0);
+ }
+ 
++
++// Fehlende oder unvollständige Printful-Positions-/Dateiliste darf trotz fertiger Kosten niemals automatisch bestätigen.
++{
++  const ergebnis = (sz, zeilen = [zeile()]) => {
++    const e = lauf(sz1(zeilen, { entwurf: sz, telegram: true }));
++    return [bestaetigt(e), e.prot.confirms.length, tags(e).includes('printful-confirmed'), tags(e).includes('printful-synced'), tags(e).includes('printful-review-datei-unvollstaendig')];
++  };
++  const soll = [false, 0, false, true, true];
++  const fehlendeItems = [ergebnis({ itemsMissing: true }), ergebnis({ items: null })];
++  ist('Fehlendes/null items-Feld: Kosten sind bekannt, aber Entwurf bleibt Review ohne Erfolgsmarker', fehlendeItems, [soll, soll]);
++  ist('Printful-Antwort mit leerer items-Liste: kein Confirm, printful-synced bleibt Draft-Identität', ergebnis({ items: [] }), soll);
++  const ohneDateien = [
++    ergebnis({ items: [{ files: [] }] }),
++    ergebnis({ items: [{ files: [{ type: 'preview', status: 'ok' }] }] }),
++    ergebnis({ items: [{ files: undefined }] }),
++    ergebnis({ items: [null] }),
++    ergebnis({ items: ['keine Position'] }),
++    ergebnis({ items: [{ files: 'keine Dateiliste' }] }),
++    ergebnis({ items: [{ files: [{ status: 'ok' }] }] }),
++    ergebnis({ items: [{ files: [{ type: 17, status: 'ok' }] }] }),
++    ergebnis({ items: [{ files: [{ type: '', status: 'ok' }] }] }),
++    ergebnis({ items: [{ files: [{ type: 'default', status: 'ok' }, { type: '', status: 'ok' }] }] }),
++    ergebnis({ items: [{ files: [{ type: 'default' }] }] }),
++    ergebnis({ items: [{ files: [{ type: 'default', status: '' }] }] }),
++    ergebnis({ items: [{ files: [{ type: 'default', status: 17 }] }] }),
++  ];
++  ist('Leere/fehlerhafte Positionen oder Dateilisten (inkl. Preview-only, ungültigem type und Status) bleiben unbestätigte Reviews', ohneDateien, Array.from({ length: 13 }, () => soll));
++  const teilweise = ergebnis({ items: [{ files: [{ type: 'default', status: 'ok' }] }] }, [zeile(), zeile({ id: 'gid://shopify/LineItem/9002' })]);
++  ist('Teilweise fehlende Provider-Positionen: vorhandene Position ist bereit, der Auftrag als Ganzes bleibt Review', teilweise, soll);
++}
+ // ═════════════════════════════════════════════════════════════ NEU: Status NACH dem Bestätigen wird gelesen
+ {
+   const fz = lauf(sz1([zeile()], { nachConfirm: { status: 'failed', error: 'Invalid Card Number' }, telegram: true }));

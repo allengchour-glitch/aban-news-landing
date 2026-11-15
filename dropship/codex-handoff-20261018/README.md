@@ -1,3 +1,15 @@
+# R227 – SEO live verbessert, Google-Prüfung und Printful-Guard – 15.11.2026 Zürich
+
+Hängematten-Suchbeschreibung einmal live konkretisiert; SEO-Titel ausdrücklich erhalten, native und öffentliche Meta-/OG-Rücklesung passend. Keine Rabatt-Einstellung geändert. Google bestätigt für dieselbe URL im gespeicherten Crawl vom 4. November Index- und Rich-Results-PASS; 101 optionale Warnungen, keine gelieferten ERROR-Einträge. Aktuell bleiben 33 Variantenbeschreibungen und Offer-Versand-/Retourenfelder offen. Keine globale Fehlerfreiheit oder Mobile-Abnahme behaupten; neue SEO-Übernahme durch Google unbekannt.
+
+Neuen Printful-Quellbefund als lokalen Dreidateien-Kandidaten bearbeitet: fehlende Dateievidenz soll Review statt automatischer Bestätigung auslösen. LX-Bestellkennung und zweistufiger Entwurfs-/Confirmweg bleiben erhalten. 185 synthetische Assertions grün (181 bestehende + vier neue mit 17 Runner-Szenarien), unabhängige Root-/Peerprüfung; nicht gemergt, deployt oder produktiv ausgeführt. Node22-/Voll-CI und vollständige Motiv-/Placementbindung bleiben offen. Alten Nov1-Helfer nicht anwenden, keine Ready-/CAS-Migration.
+
+Für Nagellack Modell6 bleibt der echte Nettoinhalt auf den drei geprüften Bildern unlesbar. Keine ml-Angabe aus Verpackungsmassen erfinden. Keine neuen Social-/Merchant-/Theme-/Flowwrites oder Automation. GSC-Tagesperformance R226 nicht wiederholt. 24 IDs/Historien erhalten; Claude-Kenntnisnahme unbekannt. Am Schluss Memory-Link teilen.
+
+[Bericht und Tagestabelle](WEITERARBEIT-20261115-R227.md) · [Google-/SEO-Beleg](SEO-GOOGLE-SCHEMA-20261115-R227.json) · [Printful-Patchreview](PRINTFUL-DATEI-GUARD-20261115-R227.md).
+
+---
+
 # R226 – Zwei gezielte SEO-Verbesserungen live – 15.11.2026 Zürich
 
 Cargohosen-Kollektion mit kompakter Orientierung und geprüftem Herrenhosen-Link ergänzt; Cheongsam-Kleid mit konkreter Suchbeschreibung versehen. Zwei Writes, native und öffentliche Rücklesung passend. Titel, Preise, Varianten, Regeln, Sortierung und Medien erhalten. Keine Ranking- oder Verkaufswirkung behauptet.
