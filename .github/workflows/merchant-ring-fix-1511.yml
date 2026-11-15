@@ -1,0 +1,43 @@
+name: Merchant-Ringbild korrigieren 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/variant_media_fix.mjs
+      - .github/workflows/merchant-ring-fix-1511.yml
+      - dropship/merchant-fix-1511/RING-MODUS
+permissions:
+  contents: read
+jobs:
+  ring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511
+            automation/lib/shopify_secret.mjs
+            dropship/merchant-fix-1511/RING-MODUS
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Geprüftes Originalbild zuordnen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/RING-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 node automation/merchant-fix-1511/variant_media_fix.mjs ;;
+            schreiben) LIVE=1 node automation/merchant-fix-1511/variant_media_fix.mjs ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-ring-fix
+          path: merchant-ring-fix/
+          retention-days: 30
