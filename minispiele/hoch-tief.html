@@ -115,7 +115,7 @@
 
 <div class="wrap">
   <h1>🎴 Höher oder Tiefer</h1>
-  <p class="sub">Wird die nächste Karte höher oder tiefer? Ihr ratet abwechselnd — 10 Runden.</p>
+  <p class="sub">Wird die nächste Karte höher oder tiefer? Ihr ratet abwechselnd — je 10 Tipps. Ass = 1, gleiche Karte = Punkt.</p>
 
   <div class="scores">
     <div class="pcard p1" id="pc1">
@@ -306,11 +306,10 @@
     overlay.classList.add("show");
   }
 
-  // Input: pointer + touch, robust against double-fire
+  // Native Buttons: Touch, Maus und Tastatur ohne bleibende Eingabesperre
   function bind(node, fn){
-    var handled=false;
-    node.addEventListener("touchstart", function(e){ e.preventDefault(); handled=true; fn(); }, {passive:false});
-    node.addEventListener("click", function(){ if(handled){ handled=false; return;} fn(); });
+    // Ein nativer Klick funktioniert auch nach einem Wechsel von Touch zu Maus.
+    node.addEventListener("click", fn);
   }
   bind(btnH, function(){ guess(true); });
   bind(btnL, function(){ guess(false); });

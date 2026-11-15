@@ -1,0 +1,21 @@
+{
+  "base": "http://127.0.0.1:8112",
+  "results": [
+    {
+      "game": "neon-park",
+      "checks": [
+        "Lokale WebRTC-Suche lässt sich abbrechen; Solo wieder verfügbar",
+        "Echter Start-Klick",
+        "Echter Touch-Drag und Touch-Abbruch setzen den Stick zurück",
+        "Fokusverlust löscht Eingabe und stoppt Bewegung",
+        "Pause friert Solo ein; Fortsetzen übernimmt keine gehaltene Taste"
+      ],
+      "errors": [],
+      "csp": [],
+      "console": [],
+      "deadline": true,
+      "ok": false,
+      "failure": "locator.evaluate: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('#pauseResume')\u001b[22m\n\u001b[2m    - locator resolved to visible <button type=\"button\" id=\"pauseResume\">▶ Weiterspielen</button>\u001b[22m\n"
+    }
+  ]
+}

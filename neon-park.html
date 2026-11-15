@@ -61,9 +61,21 @@
   #sBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:31;border:1px solid rgba(125,227,255,.45);
     background:rgba(16,24,48,.85);color:#9fdcff;border-radius:14px;padding:7px 13px;font-weight:800;cursor:pointer;display:none}
   #lade{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:#0d1524;color:#7de3ff;font-weight:900}
+
+  #pauseBtn{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(132px + env(safe-area-inset-top));z-index:10;min-width:44px;min-height:44px;border:1px solid #7de3ff;border-radius:14px;background:#102638;color:#eaf2ff;font:900 1rem system-ui;cursor:pointer}
+  #pauseO{position:fixed;inset:0;z-index:35;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(6,14,24,.82);text-align:center}
+  #pauseO[hidden]{display:none}
+  #pauseO>div{max-width:380px;padding:24px;border:1px solid #7de3ff;border-radius:14px;background:#102638}
+  #pauseO p{margin:12px 0;line-height:1.5;color:#cfe8ff}
+  #pauseResume{min-height:48px;padding:12px 24px;border:0;border-radius:14px;background:#7de3ff;color:#102638;font:900 1rem system-ui;cursor:pointer}
 </style>
 </head>
 <body>
+
+<button id="pauseBtn" type="button" aria-label="Pause (Esc)" style="display:none">⏸</button>
+<div id="pauseO" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden><div>
+  <h2 id="pauseTitle">Pause</h2><p id="pauseText"></p><button id="pauseResume" type="button">▶ Weiterspielen</button>
+</div></div>
 <button id="sBack">← Wildnis</button>
 <div id="lade">Park wird aufgebaut… <span id="ladeN">0</span>%</div>
 <div id="hud">
@@ -447,12 +459,31 @@ function frei(x,z){
 
 /* ---------- Eingabe ---------- */
 var keys={},mx=0,mz=0,lookDX=0,lookDY=0,laeuft=false,gewonnen=false,t0=0,tickets=0;
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+var paused=false,resetTouch=function(){},pauseAt=0,pauseOnline=false;
+function resetControls(){keys={};mx=0;mz=0;resetTouch();}
+addEventListener("blur",resetControls);
+document.addEventListener("visibilitychange",function(){if(document.hidden)resetControls();});
+function togglePause(){
+  if(!laeuft||gewonnen)return;
+  resetControls();paused=!paused;
+  if(paused){pauseAt=performance.now();pauseOnline=ONLINE;if(document.pointerLockElement)document.exitPointerLock();}
+  else if(!pauseOnline)t0+=performance.now()-pauseAt;
+  document.getElementById("pauseO").hidden=!paused;
+  document.getElementById("pauseText").textContent=pauseOnline?"Deine Steuerung pausiert. Der Online-Park läuft für deinen Partner weiter.":"Der Park und die Spielzeit pausieren.";
+  if(paused)document.getElementById("pauseResume").focus();else document.getElementById("pauseResume").blur();
+}
+document.getElementById("pauseBtn").onclick=togglePause;
+document.getElementById("pauseResume").onclick=togglePause;
+addEventListener("keydown",function(e){
+  if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if(e.key==="Escape"){if(!e.repeat)togglePause();return;}
+  if(paused)return;
+  keys[e.key.toLowerCase()]=1;
   if(e.key===" "){e.preventDefault();}
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 renderer.domElement.addEventListener("click",function(){
-  if(laeuft&&renderer.domElement.requestPointerLock)renderer.domElement.requestPointerLock();
+  if(laeuft&&!paused&&renderer.domElement.requestPointerLock)renderer.domElement.requestPointerLock();
 });
 addEventListener("mousemove",function(e){
   if(document.pointerLockElement===renderer.domElement){
@@ -465,6 +496,7 @@ addEventListener("mousemove",function(e){
   var st=document.getElementById("stick"),kn=document.getElementById("knob"),id=null,cx=0,cy=0;
   var lid=null,lx=0,ly=0;
   addEventListener("touchstart",function(e){
+    if(!laeuft||paused||gewonnen)return;
     for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
       if(t.target&&t.target.closest&&t.target.closest(".btn,#ov,#sBack"))continue;
       if(t.clientX<innerWidth*0.5&&id===null){
@@ -491,6 +523,7 @@ addEventListener("mousemove",function(e){
     if(e.changedTouches[i].identifier===id){id=null;mx=0;mz=0;
       st.style.left="";st.style.top="";st.style.bottom="";kn.style.transform="translate(-50%,-50%)";}
     if(e.changedTouches[i].identifier===lid)lid=null;}}
+  resetTouch=function(){id=null;lid=null;st.style.left="";st.style.top="";st.style.bottom="";kn.style.transform="translate(-50%,-50%)";};
   addEventListener("touchend",ende);addEventListener("touchcancel",ende);
 })();
 
@@ -605,7 +638,7 @@ function starteRide(i,vomNetz){
   if(RIDES.every(function(x){return x.an;}))setTimeout(function(){sieg(false);},900);
 }
 function sieg(vomNetz){
-  if(gewonnen)return;gewonnen=true;
+  if(gewonnen)return;if(paused)togglePause();document.getElementById("pauseBtn").style.display="none";gewonnen=true;
   var s=Math.round((performance.now()-t0)/1000);
   var punkte=60+tickets*8+Math.max(0,180-s);
   ann("🎉 DER PARK IST ERÖFFNET!","#ffd166");
@@ -626,6 +659,7 @@ function sieg(vomNetz){
 function start(){
   document.getElementById("ov").style.display="none";
   laeuft=true;t0=performance.now();hud();
+  document.getElementById("pauseBtn").style.display="block";
   hint(ONLINE?"Beide auf die zwei Pulte eines Fahrgeschäfts — dann läuft es."
              :"Allein: auf ein Pult stellen und 4 s warten. Zu zweit geht es sofort.",5200);
 }
@@ -639,9 +673,10 @@ var letzte=performance.now(),sendT=0;
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-letzte)/1000)||0.016;letzte=now;var t=now*0.001;
+  if(paused&&!ONLINE)return; // Solo-Pause: die schwere Welt hinter dem Overlay nicht weiter rendern.
   for(var i=0;i<mixer.length;i++)mixer[i].update(dt);
 
-  if(laeuft&&!gewonnen&&MITFAHRT<=0){
+  if(laeuft&&!paused&&!gewonnen&&MITFAHRT<=0){
     var vx=0,vz=0;
     if(keys.w||keys.arrowup)vz-=1;if(keys.s||keys.arrowdown)vz+=1;
     if(keys.a||keys.arrowleft)vx-=1;if(keys.d||keys.arrowright)vx+=1;
@@ -732,7 +767,7 @@ hud();
 
 /* Debug-Haken fuer die automatisierte Abnahme */
 window.__np={
-  state:function(){return {laeuft:laeuft,gewonnen:gewonnen,tickets:tickets,
+  state:function(){return {laeuft:laeuft,gewonnen:gewonnen,paused:paused,tickets:tickets,
     ich:{x:+ich.x.toFixed(2),z:+ich.z.toFixed(2)},online:ONLINE,
     rides:RIDES.map(function(r){return r.id+":"+(r.an?1:0);}),
     zug:ZUGAN,mitfahrt:+MITFAHRT.toFixed(1)};},

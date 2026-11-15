@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Wort des Tages — das tägliche deutsche Worträtsel | aban news</title>
 <meta name="description" content="Errate jeden Tag das geheime deutsche 5-Buchstaben-Wort in 6 Versuchen. Gratis, kein Download, neues Rätsel jeden Tag. Teile dein Ergebnis.">
 <link rel="canonical" href="https://abannews.com/wort-des-tages.html">
@@ -17,10 +18,10 @@
 {"@context":"https://schema.org","@type":"Game","name":"Wort des Tages","url":"https://abannews.com/wort-des-tages.html","genre":"Wortspiel","inLanguage":"de","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
-:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#4f9c46;--mid:#d08a1f;--no:#6a6e73;--key:#d3d6da}
+:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#326f2c;--mid:#8a5a0a;--no:#6a6e73;--key:#d3d6da}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
-header{border-bottom:1px solid var(--line);text-align:center;padding:10px}
+header{border-bottom:1px solid var(--line);text-align:center;padding:10px 58px}
 header b{color:var(--amber);font-size:1.05rem;letter-spacing:.3px}
 header .sub{display:block;font-size:.78rem;color:#6b7280;margin-top:2px}
 main{flex:1;max-width:500px;width:100%;margin:0 auto;padding:10px;display:flex;flex-direction:column;align-items:center}
@@ -58,6 +59,10 @@ footer{border-top:1px solid var(--line);text-align:center;padding:12px;font-size
 footer a{color:var(--amber);text-decoration:none}
 .stats{display:flex;gap:18px;justify-content:center;margin:.4rem 0;font-size:.85rem;color:#374151}
 .stats b{display:block;font-size:1.2rem;color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:3px solid #1d4ed8;outline-offset:3px}
+.key{min-width:0;padding:0;touch-action:manipulation}
+@media(max-width:360px){.tile{width:52px;height:52px}.krow{gap:3px}.key{font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){.tile{transition:none}.tile.dance{animation:none}.tile.pop{transform:none}}
 </style>
 </head>
 <body>
@@ -65,14 +70,15 @@ footer a{color:var(--amber);text-decoration:none}
 <main>
   <h1>Wort des Tages</h1>
   <p class="lead">Errate das geheime 5-Buchstaben-Wort in 6 Versuchen. Jeden Tag ein neues. <span id="puzzlenr"></span></p>
-  <div id="msg"></div>
-  <div id="board" aria-label="Spielfeld"></div>
+  <p class="lead">Grün ✓: richtige Stelle · Gelb ●: andere Stelle · Grau: nicht enthalten.<br>Nur A–Z · Tagesfortschritt bleibt auf diesem Gerät erhalten.</p>
+  <div id="msg" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="board" role="group" aria-label="Spielfeld"></div>
   <div class="stats">
     <span>Serie<b id="streak">0</b></span>
     <span>Gespielt<b id="played">0</b></span>
     <span>Gewonnen<b id="winpct">0%</b></span>
   </div>
-  <div id="kb"></div>
+  <div id="kb" role="group" aria-label="Bildschirmtastatur"></div>
 
   <aside class="cta" id="endcta" style="display:none">
     <strong id="ctah">Stark gelöst! 🎉</strong>
@@ -99,10 +105,11 @@ footer a{color:var(--amber);text-decoration:none}
 
   var LS="aban_wdt", SK="aban_wdt_stats";
   var state=load(); var stats=loadStats();
-  var row=state.row||0, cur="", done=state.done||false, guesses=state.guesses||[];
+  var guesses=state.guesses, row=guesses.length, done=guesses.indexOf(TARGET)!==-1||row>=6, cur=done?"":state.cur;
+  var reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var board=document.getElementById("board"), tiles=[];
-  for(var r=0;r<6;r++){var rd=document.createElement("div");rd.className="row";var tr=[];for(var c=0;c<5;c++){var t=document.createElement("div");t.className="tile";rd.appendChild(t);tr.push(t);}board.appendChild(rd);tiles.push(tr);}
+  for(var r=0;r<6;r++){var rd=document.createElement("div");rd.className="row";var tr=[];for(var c=0;c<5;c++){var t=document.createElement("div");t.className="tile";t.setAttribute("role","img");t.setAttribute("aria-label","Versuch "+(r+1)+", Buchstabe "+(c+1)+": leer");rd.appendChild(t);tr.push(t);}board.appendChild(rd);tiles.push(tr);}
 
   var KB=["QWERTZUIOP","ASDFGHJKL","ENTER YXCVBNM ⌫"];
   var kb=document.getElementById("kb"), keyEls={};
@@ -112,50 +119,56 @@ footer a{color:var(--amber);text-decoration:none}
     else{seg.split("").forEach(function(ch){var b=mkkey(ch,false);kr.appendChild(b);keyEls[ch]=b;});}
   });kb.appendChild(kr);});
 
-  function mkkey(label,wide){var b=document.createElement("button");b.className="key"+(wide?" wide":"");b.textContent=label;b.addEventListener("click",function(){press(label);});return b;}
+  function mkkey(label,wide){var b=document.createElement("button");b.className="key"+(wide?" wide":"");b.textContent=label;b.setAttribute("aria-label",label==="ENTER"?"Wort prüfen":label==="⌫"?"Buchstabe löschen":label);b.addEventListener("click",function(){press(label);});return b;}
 
   // replay vorherige Versuche
   guesses.forEach(function(g,ri){paint(ri,g,true);});
   row=guesses.length;
   updateStats();
-  if(done){finish(guesses[guesses.length-1]===TARGET);}
+  if(done){finish(guesses[guesses.length-1]===TARGET);}else{render();}
 
   document.addEventListener("keydown",function(e){
-    if(e.key==="Enter")press("ENTER");
-    else if(e.key==="Backspace")press("⌫");
-    else{var k=e.key.toUpperCase();if(/^[A-Z]$/.test(k))press(k);}
+    if(e.ctrlKey||e.metaKey||e.altKey||e.isComposing)return;
+    var el=e.target;
+    if(el.closest("input,textarea,select,[contenteditable='true']"))return;
+    // Enter auf anderen Bedienelementen bleibt deren native Aktivierung.
+    if((e.key==="Enter"||e.key===" ")&&el.closest("button,a")&&!el.classList.contains("key"))return;
+    var k=e.key==="Enter"?"ENTER":e.key==="Backspace"?"⌫":e.key.toUpperCase();
+    if(k==="ENTER"||k==="⌫"||/^[A-Z]$/.test(k)){e.preventDefault();press(k);}
   });
 
   function press(k){
     if(done)return;
     if(k==="ENTER"){submit();return;}
-    if(k==="⌫"){cur=cur.slice(0,-1);render();return;}
-    if(/^[A-Z]$/.test(k)&&cur.length<5){cur+=k;render();}
+    if(k==="⌫"){cur=cur.slice(0,-1);msg("");render();save();return;}
+    if(/^[A-Z]$/.test(k)&&cur.length<5){cur+=k;msg("");render();save();}
   }
-  function render(){for(var c=0;c<5;c++){var t=tiles[row][c];var ch=cur[c]||"";t.textContent=ch;t.className="tile"+(ch?" filled":"");}}
+  function render(){for(var c=0;c<5;c++){var t=tiles[row][c];var ch=cur[c]||"";t.textContent=ch;t.className="tile"+(ch?" filled":"");t.setAttribute("aria-label","Versuch "+(row+1)+", Buchstabe "+(c+1)+": "+(ch||"leer"));}}
   function submit(){
     if(cur.length<5){msg("Zu kurz");return;}
     if(!WORDSET[cur]){msg("Nicht in der Wortliste");shake();return;}
+    msg("");
     paint(row,cur,false);
     guesses.push(cur);
     var won=cur===TARGET;
     save();
     if(won){win();}
-    else{row++;cur="";if(row>=6){lose();}}
+    else{row++;cur="";if(row>=6){lose();}else{save();}}
   }
   function paint(ri,guess,instant){
     var tcount={};for(var i=0;i<5;i++){tcount[TARGET[i]]=(tcount[TARGET[i]]||0)+1;}
     var res=new Array(5).fill("no");
     for(i=0;i<5;i++){if(guess[i]===TARGET[i]){res[i]="ok";tcount[guess[i]]--;}}
     for(i=0;i<5;i++){if(res[i]==="ok")continue;if(tcount[guess[i]]>0){res[i]="mid";tcount[guess[i]]--;}}
-    for(i=0;i<5;i++){(function(i){var t=tiles[ri][i];var d=instant?0:i*180;
+    for(i=0;i<5;i++){(function(i){var t=tiles[ri][i];var d=instant||reducedMotion?0:i*180;
       setTimeout(function(){t.textContent=guess[i];t.classList.add("pop");t.classList.add(res[i]);
-        var ke=keyEls[guess[i]];if(ke){if(res[i]==="ok")ke.className="key ok";else if(res[i]==="mid"&&!ke.classList.contains("ok"))ke.className="key mid";else if(res[i]==="no"&&!ke.classList.contains("ok")&&!ke.classList.contains("mid"))ke.className="key no";}
+        t.setAttribute("aria-label","Versuch "+(ri+1)+", Buchstabe "+(i+1)+": "+guess[i]+", "+({ok:"richtige Stelle",mid:"andere Stelle",no:"nicht enthalten"})[res[i]]);
+        var ke=keyEls[guess[i]];if(ke){if(res[i]==="ok")ke.className="key ok";else if(res[i]==="mid"&&!ke.classList.contains("ok"))ke.className="key mid";else if(res[i]==="no"&&!ke.classList.contains("ok")&&!ke.classList.contains("mid"))ke.className="key no";ke.setAttribute("aria-label",guess[i]+", "+(ke.classList.contains("ok")?"richtige Stelle":ke.classList.contains("mid")?"andere Stelle":"nicht enthalten"));}
         setTimeout(function(){t.classList.remove("pop");},120);
       },d);})(i);}
   }
   function win(){done=true;save();bumpStats(true,guesses.length);var wr=row;
-    setTimeout(function(){for(var i=0;i<5;i++){(function(i){setTimeout(function(){var t=tiles[wr][i];if(t){t.classList.remove("dance");void t.offsetWidth;t.classList.add("dance");}},i*80);})(i);}},760);
+    if(!reducedMotion)setTimeout(function(){for(var i=0;i<5;i++){(function(i){setTimeout(function(){var t=tiles[wr][i];if(t){t.classList.remove("dance");void t.offsetWidth;t.classList.add("dance");}},i*80);})(i);}},760);
     setTimeout(function(){msg(["Genial!","Stark!","Sehr gut!","Gut!","Geschafft!","Puh, knapp!"][guesses.length-1]||"Geschafft!");finish(true);},900);}
   function lose(){done=true;save();bumpStats(false,0);setTimeout(function(){msg("Lösung: "+TARGET);finish(false);},900);}
   function finish(won){document.getElementById("endcta").style.display="block";document.getElementById("ctah").textContent=won?"Stark gelöst! 🎉":("Morgen wieder! Heute war's: "+TARGET);updateStats();}
@@ -170,16 +183,28 @@ footer a{color:var(--amber);text-decoration:none}
   document.getElementById("sharebtn").addEventListener("click",function(){
     var txt=shareText();
     if(navigator.share){navigator.share({text:txt}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){msg("Ergebnis kopiert 📋");});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){msg("Ergebnis kopiert 📋");}).catch(function(){msg("Kopieren nicht möglich — bitte erneut versuchen.");});}
     else{msg("Kopieren nicht möglich");}
   });
 
   function msg(s){var m=document.getElementById("msg");m.textContent=s;}
-  function shake(){tiles[row].forEach(function(t){t.style.transform="translateX(-4px)";setTimeout(function(){t.style.transform="";},120);});}
+  function shake(){if(reducedMotion)return;tiles[row].forEach(function(t){t.style.transform="translateX(-4px)";setTimeout(function(){t.style.transform="";},120);});}
 
-  function load(){try{var o=JSON.parse(localStorage.getItem(LS)||"{}");if(o.day!==dayNo)return {day:dayNo,row:0,guesses:[],done:false};return o;}catch(e){return {day:dayNo,row:0,guesses:[],done:false};}}
-  function save(){try{localStorage.setItem(LS,JSON.stringify({day:dayNo,row:row,guesses:guesses,done:done}));}catch(e){}}
-  function loadStats(){try{return JSON.parse(localStorage.getItem(SK)||"{}");}catch(e){return {};}}
+  function load(){
+    var empty={guesses:[],cur:""};
+    try{
+      var o=JSON.parse(localStorage.getItem(LS)||"{}");
+      if(!o||o.day!==dayNo||!Array.isArray(o.guesses))return empty;
+      var valid=[];
+      for(var i=0;i<Math.min(6,o.guesses.length);i++){
+        if(typeof o.guesses[i]!=="string"||!WORDSET[o.guesses[i]])break;
+        valid.push(o.guesses[i]);if(o.guesses[i]===TARGET)break;
+      }
+      return {guesses:valid,cur:typeof o.cur==="string"&&/^[A-Z]{0,5}$/.test(o.cur)?o.cur:""};
+    }catch(e){return empty;}
+  }
+  function save(){try{localStorage.setItem(LS,JSON.stringify({day:dayNo,row:row,guesses:guesses,done:done,cur:done?"":cur}));}catch(e){}}
+  function loadStats(){try{var o=JSON.parse(localStorage.getItem(SK)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{};}catch(e){return {};}}
   function bumpStats(won,tries){
     stats.played=(stats.played||0)+1;
     if(won){stats.wins=(stats.wins||0)+1;stats.streak=(stats.lastDay===dayNo-1?(stats.streak||0):0)+1;}
@@ -189,17 +214,17 @@ footer a{color:var(--amber);text-decoration:none}
     updateStats();
   }
   function updateStats(){
-    document.getElementById("streak").textContent=stats.streak||0;
+    document.getElementById("streak").textContent=stats.lastDay<dayNo-1?0:(stats.streak||0);
     document.getElementById("played").textContent=stats.played||0;
     document.getElementById("winpct").textContent=(stats.played?Math.round(100*(stats.wins||0)/stats.played):0)+"%";
   }
 })();
 </script>
-<button id="musBtn" title="Musik an/aus" style="position:fixed;top:10px;right:10px;z-index:50;border:1px solid #8884;background:rgba(127,127,127,.14);border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🎵</button>
+<button id="musBtn" aria-label="Musik einschalten" aria-pressed="false" title="Musik an/aus" style="position:fixed;top:10px;right:10px;z-index:50;border:1px solid #8884;background:rgba(127,127,127,.14);border-radius:50%;width:44px;height:44px;font-size:1rem;cursor:pointer">🎵</button>
 <script>
 (function(){var MUS=null,on=false,btn=document.getElementById("musBtn");
 try{on=localStorage.getItem("aban_wort_musik")==="1";}catch(e){}
-function paint(){btn.style.opacity=on?"1":"0.55";btn.textContent=on?"🎵":"🔇";}
+function paint(){btn.style.opacity=on?"1":"0.55";btn.textContent=on?"🎵":"🔇";btn.setAttribute("aria-pressed",String(on));btn.setAttribute("aria-label",on?"Musik ausschalten":"Musik einschalten");}
 function sync(){if(on){if(!MUS){MUS=new Audio("/audio/lemonade.mp3");MUS.loop=true;MUS.volume=0.18;}MUS.play().catch(function(){});}else if(MUS)MUS.pause();}
 btn.onclick=function(){on=!on;try{localStorage.setItem("aban_wort_musik",on?"1":"0");}catch(e){}paint();sync();};
 paint();if(on)document.addEventListener("pointerdown",function f(){document.removeEventListener("pointerdown",f);sync();});

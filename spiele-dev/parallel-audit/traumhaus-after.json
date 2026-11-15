@@ -1,0 +1,440 @@
+{
+  "label": "after",
+  "checks": [
+    {
+      "name": "Moduswahl im Handy-Querformat erreichbar",
+      "ok": true,
+      "detail": {
+        "x": 232,
+        "y": 52.5,
+        "width": 380,
+        "height": 77
+      }
+    },
+    {
+      "name": "Begruessung: Los gehts im Bild",
+      "ok": true,
+      "detail": {
+        "x": 325.109375,
+        "y": 301,
+        "width": 193.765625,
+        "height": 48
+      }
+    },
+    {
+      "name": "Solo startet",
+      "ok": true
+    },
+    {
+      "name": "Gegenprobe: Baupunkt liegt auf Leinwand",
+      "ok": true,
+      "detail": {
+        "a": {
+          "x": 330.24993588398956,
+          "y": 110.27512147595442
+        },
+        "hit": "CANVAS"
+      }
+    },
+    {
+      "name": "Linksklick baut eine Wand und kostet 25",
+      "ok": true,
+      "detail": {
+        "before": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 0,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "after": {
+          "walls": 1,
+          "floors": 0,
+          "geld": 9975,
+          "undo": 1,
+          "redo": 0,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        }
+      }
+    },
+    {
+      "name": "Rueckgaengig erstattet voll",
+      "ok": true,
+      "detail": {
+        "walls": 0,
+        "floors": 0,
+        "geld": 10000,
+        "undo": 0,
+        "redo": 1,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0,
+          "z": 0
+        },
+        "joyEdge": false
+      }
+    },
+    {
+      "name": "Wiederholen baut und berechnet dieselbe Wand",
+      "ok": true,
+      "detail": {
+        "walls": 1,
+        "floors": 0,
+        "geld": 9975,
+        "undo": 1,
+        "redo": 0,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0,
+          "z": 0
+        },
+        "joyEdge": false
+      }
+    },
+    {
+      "name": "Rechtsklick baut nichts und kostet nichts",
+      "ok": true,
+      "detail": {
+        "before": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "after": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        }
+      }
+    },
+    {
+      "name": "Rechtsziehen verschiebt Kamera ohne Baukosten",
+      "ok": true,
+      "detail": {
+        "walls": 0,
+        "floors": 0,
+        "geld": 10000,
+        "undo": 0,
+        "redo": 1,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0,
+          "z": 0
+        },
+        "joyEdge": false
+      }
+    },
+    {
+      "name": "Palette scrollen zoomt die Welt nicht",
+      "ok": true,
+      "detail": {
+        "before": 40,
+        "after": 40
+      }
+    },
+    {
+      "name": "Mausrad auf Leinwand zoomt weiterhin",
+      "ok": true,
+      "detail": {
+        "before": 40,
+        "after": 47.88094648022829
+      }
+    },
+    {
+      "name": "Kurze Zwei-Finger-Geste baut nichts",
+      "ok": true,
+      "detail": {
+        "before": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "after": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        }
+      }
+    },
+    {
+      "name": "Nach Kneifen dreht verbleibender Finger Kamera",
+      "ok": true,
+      "detail": {
+        "before": 0,
+        "after": -0.15
+      }
+    },
+    {
+      "name": "Ein-Finger-Tipp baut weiterhin genau eine Wand",
+      "ok": true,
+      "detail": {
+        "before": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "after": {
+          "walls": 1,
+          "floors": 0,
+          "geld": 9975,
+          "undo": 1,
+          "redo": 0,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        }
+      }
+    },
+    {
+      "name": "Wandzug baut Reihe und berechnet 25 je Wand",
+      "ok": true,
+      "detail": {
+        "before": {
+          "walls": 0,
+          "floors": 0,
+          "geld": 10000,
+          "undo": 0,
+          "redo": 1,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "after": {
+          "walls": 7,
+          "floors": 0,
+          "geld": 9825,
+          "undo": 1,
+          "redo": 0,
+          "camA": 0,
+          "camRT": 40,
+          "dragging": false,
+          "zug": false,
+          "steer": {
+            "x": 0,
+            "z": 0
+          },
+          "joyEdge": false
+        },
+        "wallCount": 7
+      }
+    },
+    {
+      "name": "Ein Rueckgaengig nimmt ganzen Wandzug zurueck",
+      "ok": true,
+      "detail": {
+        "walls": 0,
+        "floors": 0,
+        "geld": 10000,
+        "undo": 0,
+        "redo": 1,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0,
+          "z": 0
+        },
+        "joyEdge": false
+      }
+    },
+    {
+      "name": "Gegenprobe: Joystick wurde ausgelenkt",
+      "ok": true,
+      "detail": {
+        "walls": 0,
+        "floors": 0,
+        "geld": 10000,
+        "undo": 0,
+        "redo": 0,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0.95,
+          "z": 0
+        },
+        "joyEdge": true
+      }
+    },
+    {
+      "name": "Verlorene Joystick-Capture stoppt Eingabe",
+      "ok": true,
+      "detail": {
+        "walls": 0,
+        "floors": 0,
+        "geld": 10000,
+        "undo": 0,
+        "redo": 0,
+        "camA": 0,
+        "camRT": 40,
+        "dragging": false,
+        "zug": false,
+        "steer": {
+          "x": 0,
+          "z": 0
+        },
+        "joyEdge": false
+      }
+    },
+    {
+      "name": "WASD liefert Richtung",
+      "ok": true,
+      "detail": {
+        "x": 0,
+        "z": -1
+      }
+    },
+    {
+      "name": "Taste los setzt Richtung zurueck",
+      "ok": true,
+      "detail": {
+        "x": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "Fensterwechsel loest WASD",
+      "ok": true,
+      "detail": {
+        "x": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "Keine CSP-Blockaden",
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "Keine JavaScript-Fehler",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "headers": {
+    "cache-control": "public, max-age=300, must-revalidate",
+    "connection": "keep-alive",
+    "content-length": "1495925",
+    "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+    "content-type": "text/html; charset=utf-8",
+    "cross-origin-resource-policy": "same-site",
+    "date": "Sun, 15 Nov 2026 23:17:08 GMT",
+    "keep-alive": "timeout=5",
+    "permissions-policy": "camera=(), microphone=(self), geolocation=(), interest-cohort=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "transfer-encoding": "chunked",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-permitted-cross-domain-policies": "none",
+    "x-xss-protection": "1; mode=block"
+  },
+  "world": {
+    "ladeStand": {
+      "gefordert": 389,
+      "fertig": 389
+    },
+    "ladeOffen": 0,
+    "modelle": 1032
+  }
+}

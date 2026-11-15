@@ -1,0 +1,107 @@
+{
+  "checks": [
+    {
+      "name": "Beide echten Peers verbunden",
+      "ok": true,
+      "detail": {
+        "h": {
+          "status": "connected",
+          "host": true,
+          "lobby": {
+            "spieler": [
+              "Host",
+              "Gast"
+            ],
+            "gestartet": false,
+            "start": "inline-block",
+            "text": "👥 Im Raum:👑 Host🙋 Gast"
+          },
+          "running": false
+        },
+        "g": {
+          "status": "connected",
+          "host": false,
+          "lobby": {
+            "spieler": [
+              "Host",
+              "Gast"
+            ],
+            "gestartet": false,
+            "start": "none",
+            "text": "👥 Im Raum:👑 Host🙋 Gast"
+          },
+          "running": false
+        }
+      }
+    },
+    {
+      "name": "Lobby zeigt beide Namen vor Spielstart",
+      "ok": true,
+      "detail": {
+        "h": {
+          "status": "connected",
+          "host": true,
+          "lobby": {
+            "spieler": [
+              "Host",
+              "Gast"
+            ],
+            "gestartet": false,
+            "start": "inline-block",
+            "text": "👥 Im Raum:👑 Host🙋 Gast"
+          },
+          "running": false
+        },
+        "g": {
+          "status": "connected",
+          "host": false,
+          "lobby": {
+            "spieler": [
+              "Host",
+              "Gast"
+            ],
+            "gestartet": false,
+            "start": "none",
+            "text": "👥 Im Raum:👑 Host🙋 Gast"
+          },
+          "running": false
+        }
+      }
+    },
+    {
+      "name": "Startknopf nur beim Host",
+      "ok": true,
+      "detail": {
+        "host": "inline-block",
+        "guest": "none"
+      }
+    },
+    {
+      "name": "Host startet beide Seiten",
+      "ok": true
+    },
+    {
+      "name": "Bauzustand kommt ueber DataChannel an",
+      "ok": true
+    },
+    {
+      "name": "Keine CSP-Blockaden",
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "Keine JavaScript-Fehler",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "limits": [
+    "Lokale Engine ?mp=local; keine Internetvermittlung getestet.",
+    "GLBs abgewiesen, Rendern aus; kein visueller Koop- oder Bewegungstest."
+  ]
+}

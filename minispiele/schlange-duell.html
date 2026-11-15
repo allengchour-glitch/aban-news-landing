@@ -136,7 +136,7 @@
   function makeSnake(color, startX, startY, dir){
     return {
       color: color,
-      body: [{x:startX,y:startY},{x:startX,y:startY},{x:startX,y:startY}],
+      body: [0,1,2].map(function(i){return {x:startX-DIRS[dir].x*i,y:startY-DIRS[dir].y*i};}),
       dir: DIRS[dir], nextDir: DIRS[dir],
       score: 0, alive: true, grow: 0
     };
@@ -170,10 +170,12 @@
     return false;
   }
   function spawnApple(){
-    var tries=0, x, y;
-    do { x=Math.floor(Math.random()*COLS); y=Math.floor(Math.random()*ROWS); tries++; }
-    while(occupied(x,y) && tries<200);
-    apples.push({x:x,y:y});
+    // Nur freie Felder ziehen; auch bei dichtem Brett keine Doppelbelegung.
+    var free=[];
+    for(var y=0;y<ROWS;y++) for(var x=0;x<COLS;x++){
+      if(!occupied(x,y)) free.push({x:x,y:y});
+    }
+    if(free.length) apples.push(free[Math.floor(Math.random()*free.length)]);
   }
 
   function tick(){

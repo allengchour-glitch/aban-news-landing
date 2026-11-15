@@ -55,6 +55,13 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.
   #coopStatus{font-size:.85rem;font-weight:800;color:#8adfc0;min-height:1.2em;margin-top:6px}
   #stationBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:30;border:1px solid rgba(125,227,255,.45);
     background:rgba(16,24,48,.8);color:#9fdcff;border-radius:14px;padding:7px 13px;font-weight:800;cursor:pointer;pointer-events:auto}
+
+  #pauseBtn{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(104px + env(safe-area-inset-top));z-index:10;min-width:44px;min-height:44px;border:1px solid #7de3ff;border-radius:14px;background:#102638;color:#eaf2ff;font:900 1rem system-ui;cursor:pointer}
+  #pauseO{position:fixed;inset:0;z-index:35;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(6,14,24,.82);text-align:center}
+  #pauseO[hidden]{display:none}
+  #pauseO>div{max-width:380px;padding:24px;border:1px solid #7de3ff;border-radius:14px;background:#102638}
+  #pauseO p{margin:12px 0;line-height:1.5;color:#cfe8ff}
+  #pauseResume{min-height:48px;padding:12px 24px;border:0;border-radius:14px;background:#7de3ff;color:#102638;font:900 1rem system-ui;cursor:pointer}
 </style>
 </head>
 <body>
@@ -84,6 +91,11 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.
   <div id="coopStatus"></div>
   <button class="ghost" id="cancelCoop" style="display:none">✖ Suche abbrechen · solo starten</button>
 </div>
+
+<button id="pauseBtn" type="button" aria-label="Pause (Esc)" style="display:none">⏸</button>
+<div id="pauseO" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden><div>
+  <h2 id="pauseTitle">Pause</h2><p id="pauseText"></p><button id="pauseResume" type="button">▶ Weiterspielen</button>
+</div></div>
 <button id="stationBack" style="display:none">← Wildnis</button>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
@@ -311,9 +323,23 @@ function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
   document.getElementById("coopTag").textContent=NETON?("🌐 Du bist "+chars[mySlot].name):(running&&!won?("🎮 "+chars[active].name+" aktiv · 🔁 wechseln"):"🧍 Solo: 🔁 wechselt die Figur");} /* P3: Aktiv-Figur bleibt sichtbar (updHud überschrieb den #17-Text bei jedem Pickup) */
 
 /* ---------- Eingabe ---------- */
-var kx=0,kz=0,keys={};
+var kx=0,kz=0,keys={},paused=false,resetTouch=function(){},pauseAt=0,pauseOnline=false;
+function resetControls(){keys={};kx=0;kz=0;resetTouch();document.querySelectorAll(".pressed").forEach(function(b){b.classList.remove("pressed");});}
+addEventListener("blur",resetControls);
+document.addEventListener("visibilitychange",function(){if(document.hidden)resetControls();});
+function togglePause(){
+  if(!running||won)return;
+  resetControls();paused=!paused;
+  if(paused){pauseAt=performance.now();pauseOnline=NETON;stopAmbient();}
+  else{if(!pauseOnline)t0+=performance.now()-pauseAt;startAmbient();}
+  document.getElementById("pauseO").hidden=!paused;
+  document.getElementById("pauseText").textContent=pauseOnline?"Deine Steuerung pausiert. Die Online-Runde läuft für deinen Partner weiter.":"Der Tempel und die Spielzeit pausieren.";
+  if(paused)document.getElementById("pauseResume").focus();else document.getElementById("pauseResume").blur();
+}
+document.getElementById("pauseBtn").onclick=togglePause;
+document.getElementById("pauseResume").onclick=togglePause;
 (function(){var st=document.getElementById("stick"),knob=document.getElementById("knob"),id=null,cx0=0,cy0=0;
-  function begin(e){if(id!=null)return; /* #41 Floating-Joystick: springt zum Daumen (linke Bildhälfte) */
+  function begin(e){if(id!=null||!running||paused||won)return; /* #41 Floating-Joystick: springt zum Daumen (linke Bildhälfte) */
     for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
       if(t.clientX>innerWidth*0.55)continue; /* rechte Hälfte = Aktionsknöpfe */
       if(t.target&&t.target.closest&&t.target.closest(".btn,#stationBack,#ov"))continue;
@@ -329,9 +355,10 @@ var kx=0,kz=0,keys={};
       knob.style.transform="translate(calc(-50% + "+(kx*34)+"px),calc(-50% + "+(kz*34)+"px))";}},{passive:false});
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
     st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";}}}
+  resetTouch=function(){id=null;st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";};
   addEventListener("touchend",end);addEventListener("touchcancel",end);})();
 function activeTag(){var ct=document.getElementById("coopTag");if(ct&&!NETON)ct.textContent="🎮 "+chars[active].name+" aktiv · 🔁 wechseln";} /* #17 persistenter Solo-Indikator */
-function doSwap(){if(NETON||!running||won)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
+function doSwap(){if(NETON||!running||paused||won)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
   chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
   activeTag();hint("Jetzt steuerst du "+chars[active].name,1600);}
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
@@ -363,6 +390,7 @@ function whyNot(c){ /* #36 Kontext-Hinweis statt stummem Buzz, wenn nichts passi
   if(!altW.userData.lit&&near(c,altW,2.8))return c.id==="aqua"?null:"💧 Nur Aqua füllt den Wasseraltar — wechsle zu Aqua!";
   return null;}
 function doAct(fromNet,slot,what){
+  if(!fromNet&&(!running||paused||won))return;
   if(fromNet&&what){applyById(what);return;} /* Partner-Aktion: identisches Ergebnis anwenden (Koop-Determinismus) */
   var c=chars[fromNet?slot:(NETON?mySlot:active)];
   var did=applyAct(c);
@@ -377,7 +405,11 @@ document.getElementById("bAct").addEventListener("touchstart",function(e){e.prev
 document.getElementById("bAct").addEventListener("click",function(){doAct();});
 document.getElementById("bSwap").addEventListener("touchstart",function(e){e.preventDefault();doSwap();},{passive:false});
 document.getElementById("bSwap").addEventListener("click",doSwap);
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;if(e.repeat)return; /* kein Auto-Repeat-Spam (net.send/Buzz) */
+addEventListener("keydown",function(e){
+  if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if(e.key==="Escape"){if(!e.repeat)togglePause();return;}
+  if(paused)return;
+  keys[e.key.toLowerCase()]=1;if(e.repeat)return; /* kein Auto-Repeat-Spam (net.send/Buzz) */
   if(e.key===" "){e.preventDefault();if(!running){start(false);return;}doAct();}
   if(e.key.toLowerCase()==="q"||e.key==="Tab"){e.preventDefault();doSwap();}
   if(e.key.toLowerCase()==="e")doAct();});
@@ -463,7 +495,7 @@ function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
   announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);fanfare();shake=0.5; /* #54 */
   var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);
   if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
-function winGame(fromNet){if(won)return;won=true;room=5;celebrate=0.001;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
+function winGame(fromNet){if(won)return;if(paused)togglePause();document.getElementById("pauseBtn").style.display="none";won=true;room=5;celebrate=0.001;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
   var secs=Math.round((performance.now()-t0)/1000);
   var score=40+gemN*10+Math.max(0,95-secs); /* #61 Kristalle (max 70) ~gleich gewichtet wie Tempo.
      Zeitbudget von 70 auf 95 s erhoeht, als Raum 4 dazukam — sonst waeren alte Bestwerte unschlagbar. */
@@ -481,6 +513,7 @@ function winGame(fromNet){if(won)return;won=true;room=5;celebrate=0.001;updHud()
     sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
 function start(coop){if(!coop&&coopWait){hint("⏳ Koop-Suche läuft — warte auf Partner");return;} /* kein Solo-Start während Matchmaking */
   document.getElementById("ov").style.display="none";running=true;t0=performance.now();
+  document.getElementById("pauseBtn").style.display="block";
   chars[NETON?mySlot:active].g.userData.ring.material.opacity=0.7; /* 🟢 Schwarm: eigene Figur behält im Koop den Leucht-Ring (sonst „welche bin ich?") */
   try{audio();if(AC&&AC.state!=="running")AC.resume();}catch(e){}
   startAmbient(); /* #26 Tempel-Ambient */
@@ -503,6 +536,7 @@ function partnerArrow(){var el=document.getElementById("pArrow");if(!_pv||!el){r
   el.style.transform="translate(-50%,-50%) rotate("+(-ang)+"rad)";}
 function frame(now){_rafId=requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;var t=now*0.001;
+  if(paused&&!NETON){renderer.render(scene,camera);return;}
   for(var _mi=0;_mi<_charMix.length;_mi++)_charMix[_mi].update(dt);
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.15);tc.lt.intensity=0.5+Math.sin(t*11+tc.ph)*0.15;}
@@ -528,7 +562,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     if(keys.w||keys.arrowup)iz=-1;if(keys.s||keys.arrowdown)iz=1;
     var il=Math.hypot(ix,iz);if(il>1){ix/=il;iz/=il;}
     var me=chars[NETON?mySlot:active];
-    if(il>0.04){tryMove(me,me.x+ix*5.4*dt,me.z+iz*5.4*dt);me.g.rotation.y=Math.atan2(ix,iz);}
+    if(!paused&&il>0.04){tryMove(me,me.x+ix*5.4*dt,me.z+iz*5.4*dt);me.g.rotation.y=Math.atan2(ix,iz);}
     if(NETON){var other=chars[1-mySlot];
       other.x+=(rt.x-other.x)*Math.min(1,dt*9);other.z+=(rt.z-other.z)*Math.min(1,dt*9);
       sendT-=dt;if(sendT<=0){sendT=0.06;if(net)net.sendFast({t:"pos",x:+me.x.toFixed(2),z:+me.z.toFixed(2)});}}
@@ -634,7 +668,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
 _rafId=requestAnimationFrame(frame);
 addEventListener("pagehide",function(){try{cancelAnimationFrame(_rafId);}catch(e){}try{stopAmbient();}catch(e){}try{if(net)net.close();}catch(e){}try{if(AC&&AC.close)AC.close();}catch(e){}try{renderer.dispose();}catch(e){}}); /* sauberes Teardown */
 updHud();
-window.__zs={state:function(){return {room:room,gems:gemN,won:won,eye:+eyeA.toFixed(2),blind:_blWas,
+window.__zs={state:function(){return {room:room,gems:gemN,won:won,paused:paused,eye:+eyeA.toFixed(2),blind:_blWas,
     altF:altF.userData.lit,altW:altW.userData.lit,g4:gate4.userData.open,
     a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
   r4:function(){gates.slice(0,3).forEach(function(g){openGate(g,null,true);});room=4;updHud();

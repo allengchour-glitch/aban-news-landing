@@ -1,0 +1,44 @@
+{
+  "base": "http://127.0.0.1:8112",
+  "results": [
+    {
+      "game": "neon-zusammen",
+      "checks": [
+        "Lokale WebRTC-Suche lässt sich abbrechen; Solo wieder verfügbar",
+        "Echter Start-Klick",
+        "Echter Touch-Drag und Touch-Abbruch setzen den Stick zurück",
+        "Fokusverlust löscht Eingabe und stoppt Bewegung",
+        "Pause friert Solo ein; Fortsetzen übernimmt keine gehaltene Taste",
+        "390×540: erreichbarer Pause-/Weiterknopf, ≥44px"
+      ],
+      "errors": [],
+      "csp": [],
+      "console": [],
+      "ok": true
+    },
+    {
+      "game": "lebenspfad",
+      "checks": [
+        "Echter Start-Klick",
+        "Space im Menü ändert weder Phase noch Seed/Netz-Queue",
+        "Nach Menü-Schliessen würfelt Space wieder"
+      ],
+      "errors": [],
+      "csp": [],
+      "console": [],
+      "ok": true
+    },
+    {
+      "game": "neon-realm",
+      "checks": [
+        "Legacy-Adresse leitet zur Wildnis um"
+      ],
+      "errors": [],
+      "csp": [],
+      "console": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "ok": true
+    }
+  ]
+}

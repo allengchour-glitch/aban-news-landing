@@ -1,5 +1,32 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Spiele-Abschlussprüfung und Live-Freigabe ·16.11.2026
+
+Besitzer hat Veröffentlichung der Spiele-Änderungen und anschliessend das nächste Koop-Spiel freigegeben. PR3156: reale285-Sekunden-Flugkampagne mit zwei lokalen WebRTC-Seiten ohne Vorspulen, Abbruch oder Schaden bestanden; Minispiele60, Wortspiele642, Action74, Traumhaus23+7 erneut grün. Audio36 Prüfbedingungen; Null-Lautstärke und wiederkehrende stumme Töne repariert. Querformat-Menü erreichbar, sparsamer Flugmodus ohne teure Fels-Texturzeichnung;4x-CPU-Emulation12,9→59,6rAF/s, kein Handybenchmark. Park-Vollsuite weiterhin Zeitabbruch; isolierte Pause/Weiter grün. Öffentlicher Koop im Cloud-Browser TLS-blockiert. Produktionsnachweis folgt getrennt; Abschluss und Grenzen in `spiele-dev/abschlusspruefung/README.md`. Nächstes Spiel: Tempel der Zwei, eigene isolierte Arbeit.
+
+## Codex: Arcade – fünf Agenten, erste gemeinsame Reparaturrunde ·15.11.2026 UTC
+
+Auf `codex/neon-flug-koop` / Entwurfs-PR3156:36 Spiele-Adressen einschliesslich vier alter Weiterleitungen erfasst,20 Minispiele auf Handy/Desktop gestartet und gezielte Eingabe-/End-/Neustartfehler repariert. Weitere Fixes in Actionspielen, Wildnis/Park/Tempel, Lebenspfad, Traumhaus und beiden Wortspielen. Gemeinsame Header lassen eigene Stationen sowie Modell-Blobs/Blob-Bilder nur auf Spielrouten zu; Sprachchat-Mikrofon nur für Lebenspfad/Traumhaus mit Browserfreigabe. Flugfelsen behalten Form/UVs, Rettung am Ziel und kleine Ergebnis-/Trainingsdetails korrigiert;96 gezielte Flugprüfbedingungen grün. Keine pauschale Fertig- oder Handy-FPS-Zusage; genaue Belege/Restpunkte in `spiele-dev/parallel-audit/README.md`. Frische lokale Flugaufnahme; nicht veröffentlicht oder gemergt.
+
+## Codex: Neon-Flug – schneller Standard und Bonus-Level ·15.11.2026
+
+Auf `codex/neon-flug-koop` / PR3156: Canvas2D-Perspektive als neuer Standard ohne WebGL-Kontext, bisherige 3D-Fassung optional. Kurze Cloud-Probe mit v3-Boni: rund59,8 rAF-Bilder/s bei960×540, kein Handy-Benchmark. Neue Bonusringe, Kettenboni, zehn Piloten-Level plus weitere500-XP-Stufen und neun freischaltbare Module mit echten Spieleffekten. Alte schwere Grafikeinstellung einmalig migriert, Profile/XP erhalten. Gemessen:43 Unit-,8 Kampagnen-,12 Such-/Ausrüstungs-,9 UI- und6 Rendererprüfungen bestanden. Neue Videoaufnahme zeigt echten lokalen Trainingslauf. Öffentlicher Verbindungsnachweis weiterhin offen; keine CA-Änderung, nicht veröffentlicht. Details: `spiele-dev/neon-flug/README.md`.
+
+
+## Codex: Neon-Flug – Ruckler und Zeitverlust behoben ·15.11.2026
+
+Auf `codex/neon-flug-koop` / PR3156: statische Geometrie gebündelt, Türme instanziert, automatische Renderauflösung, zeitlich korrekte Nachholung und Hänger-Pause, schnellere Snapshots mit Sequenzschutz sowie geglättete Gastdarstellung und kurze Eingabevorhersage. Cloud-Kurzprobe mit SwiftShader:182 auf61 Zeichenaufrufe;3,8 auf7,3 FPS bei automatisch reduzierter Auflösung, kein Handy-Benchmark. Alte Spieluhr verlor bei langsamen Frames Zeit. Reale Handy-FPS/öffentliche Vermittlung unverifiziert. Details und reproduzierbare Probe in `spiele-dev/neon-flug/README.md`; nicht veröffentlicht.
+
+
+## Codex: Neon-Flug – Resonanz, öffentliche Raumsuche und Rollen ·15.11.2026
+
+Erweiterung des ungemergten Zweigs `codex/neon-flug-koop` / PR3156: Resonanzband, Doppelringe, synchroner Dash, begrenzter Overdrive, öffentliche Raumsuche, Rufnamen, drei Rollen, lokale Flug-XP und drei freischaltbare Module. Shared-MP unverändert; Protokoll und Raumpräfix auf v2, damit alte Clients nicht in neue Flüge geraten. Keine erfundenen Spielerzahlen, keine globale Account-/Ranglistenbehauptung. Öffentlicher Verbindungsnachweis weiterhin durch das bereits gemeldete Cloud-Zertifikatsproblem blockiert, keine erneute CA-Änderung. Gemessen:24 Simulations-/Profilprüfungen sowie lokale Zwei-Browser-Suche, Belegungsanzeige, synchroner Schub und Modulübernahme geprüft. Abnahme und aktuelle Testergebnisse im Entwurfs-PR; nicht veröffentlicht.
+
+
+## Codex: Neon-Flug als Koop-Kampagne, Entwurf ·15.11.2026
+
+Besitzer: Spiel für Spiel fertigstellen, stärkere Grafik/Animationen, Online-Koop bevorzugt und breiterer Flugraum. Arbeit isoliert auf `codex/neon-flug-koop`: drei Strecken, zwei Gleiter, Rettung, gemeinsame Abschlüsse, neues Hauptmotiv und Felsmaterial, eigener Klang, Touch-Bedienung und gespeicherte Kapitel. Gemeinsames `js/mp.js` unverändert. Nur Flug-/Wildnis-Header gezielt erweitert. Gemessen:13 Simulationstests und lokale WebRTC-Zweibrowser-Gegenprobe bestanden; öffentliche Vermittlung wegen Cloud-Browser-Zertifikat nicht nachgewiesen. Automatische Prüfung verweigerte zusätzlichen permanenten CA-Eintrag, nicht umgangen. Nicht als veröffentlicht oder auf echten Handys freigegeben bezeichnen. Details: `spiele-dev/neon-flug/README.md` und Entwurfs-PR dieses Zweigs. Andere Spiele werden erst nach Abnahme dieses Spiels begonnen.
+
 ## Claude (Abannews-Sitzung): Googles Autofeed im Merchant Center AUS ·15.11.2026
 
 Abgeschaltet um 22:4x UTC (`merchant-autofeed.yml`, Modus `aus`); zurückgelesen 22:49 UTC `enableProducts=False`. Gemessen vorher:

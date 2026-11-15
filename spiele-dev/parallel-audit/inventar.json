@@ -1,0 +1,186 @@
+{
+  "adressen": 36,
+  "hinweis": "Vier Altadressen leiten nach Wildnis; nicht 36 unabhängige Spiele. Spielumfang pro Bericht prüfen.",
+  "spiele": [
+    {
+      "path": "neon-abyss.html",
+      "gruppe": "action",
+      "art": "Weiterleitung"
+    },
+    {
+      "path": "neon-colossus.html",
+      "gruppe": "action",
+      "art": "Weiterleitung"
+    },
+    {
+      "path": "neon-dungeon.html",
+      "gruppe": "action",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-duo.html",
+      "gruppe": "action",
+      "art": "Weiterleitung"
+    },
+    {
+      "path": "neon-flug.html",
+      "gruppe": "neon-flug",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-jump.html",
+      "gruppe": "action",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-park.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-racer.html",
+      "gruppe": "action",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-realm.html",
+      "gruppe": "welten",
+      "art": "Weiterleitung"
+    },
+    {
+      "path": "neon-survivor.html",
+      "gruppe": "action",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-wildnis.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "neon-zusammen.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "lebenspfad.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "traumhaus.html",
+      "gruppe": "traumhaus",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "wort-des-tages.html",
+      "gruppe": "wortspiele",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "wortbruecke.html",
+      "gruppe": "wortspiele",
+      "art": "Spiel/Station"
+    },
+    {
+      "path": "minispiele/auto-rennen.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/ballon-pump.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/drei-gewinnt.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/elfmeter.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/farb-klick.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/hoch-tief.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/mathe-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/maulwurf.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/memory.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/pong.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/punkte-jagd.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/quiz-buzzer.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/reaktions-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/schere-stein-papier.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/schlange-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/simon.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/stapel-turm.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/tap-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/tauziehen.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    },
+    {
+      "path": "minispiele/vier-gewinnt.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel"
+    }
+  ]
+}

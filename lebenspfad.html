@@ -2069,7 +2069,7 @@ function showForkUI(f){var fk=f.fork,p=G.players[G.turn];
     {l:fk.aL,sub:fk.aSub,big:1,fn:function(){forkSel=fk.a;G.phase="moving";snap(G.turn,"🧭",fk.aL);announce(fk.aL,"#fff");beep(740,.1,"triangle",.05);}},
     {l:fk.bL,sub:fk.bSub,big:1,fn:function(){forkSel=fk.b;G.phase="moving";snap(G.turn,"🧭",fk.bL);announce(fk.bL,"#fff");beep(740,.1,"triangle",.05);}}]);}
 function roll(){
-  if(!running||G.phase!=="idle")return;
+  if(!running||menuOpen||G.phase!=="idle")return;
   if(NET.on){if(G.turn!==NET.my)return;
     if(!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){announce("📴 Getrennt — warte auf Verbindung …","#ffb46e");return;} // Drift-Guard
     netSend({t:"roll"});NET.q.push({t:"roll"});return;}
@@ -2128,7 +2128,9 @@ function showWheel(n,done){
   requestAnimationFrame(anim);
 }
 rollBtn.onclick=roll;
-addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();
+addEventListener("keydown",function(e){
+  if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if(e.key===" "&&running&&!menuOpen&&!e.repeat){e.preventDefault();
   /* 🩹 Die Robo-Sperre deckte nur den KNOPF ab — die Leertaste wuerfelte weiter
      fuer den Bot (und online fuer den Gegner). Gleiche Bedingung wie am Knopf. */
   var _fremd=(NET.on&&G.turn!==NET.my)||!!(G.players[G.turn]&&G.players[G.turn].bot);
@@ -4175,7 +4177,7 @@ function toggleMenu(){menuOpen=!menuOpen;
   if(menuOpen)renderMenu();}
 document.getElementById("menuBtn").onclick=toggleMenu;
 document.getElementById("resumeBtn").onclick=toggleMenu;
-addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
+addEventListener("keydown",function(e){if(e.key==="Escape"&&G&&!e.repeat)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showLocalInfo("📜 So spielt ihr Lebenspfad",
     "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (22 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",

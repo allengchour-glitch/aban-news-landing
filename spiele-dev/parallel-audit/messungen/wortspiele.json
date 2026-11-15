@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "checks": 642,
+  "base": "http://127.0.0.1:8112",
+  "viewport": "320×540 / 960×540",
+  "observations": [
+    "Tageswörter: 88 / Brücken: 33"
+  ],
+  "runtimeConsoleNetworkErrors": []
+}

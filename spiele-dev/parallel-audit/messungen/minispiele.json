@@ -1,0 +1,262 @@
+{
+  "base": "http://127.0.0.1:8113",
+  "failures": 0,
+  "results": [
+    {
+      "name": "Start auto-rennen 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start ballon-pump 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start drei-gewinnt 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start elfmeter 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start farb-klick 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start hoch-tief 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start mathe-duell 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start maulwurf 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start memory 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start pong 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start punkte-jagd 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start quiz-buzzer 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start reaktions-duell 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start schere-stein-papier 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start schlange-duell 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start simon 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start stapel-turm 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start tap-duell 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start tauziehen 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start vier-gewinnt 390×540",
+      "ok": true
+    },
+    {
+      "name": "Start auto-rennen 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start ballon-pump 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start drei-gewinnt 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start elfmeter 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start farb-klick 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start hoch-tief 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start mathe-duell 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start maulwurf 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start memory 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start pong 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start punkte-jagd 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start quiz-buzzer 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start reaktions-duell 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start schere-stein-papier 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start schlange-duell 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start simon 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start stapel-turm 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start tap-duell 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start tauziehen 900×540",
+      "ok": true
+    },
+    {
+      "name": "Start vier-gewinnt 900×540",
+      "ok": true
+    },
+    {
+      "name": "Drei gewinnt: alter Sieg nach Reset, Gewinn, Remis, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Schere Stein Papier: verborgen, Remis, drei Siege, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Hoch Tief: echter Touch → Maus, gleiche Karte, 20 Tipps, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Tipp Duell: Touch → Maus zählt beides, Ende und Neustart",
+      "ok": true
+    },
+    {
+      "name": "Ballon: Platzen zeigt Füllstand, drei Punkte, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Elfmeter: gehalten, Tor, uneinholbarer Sieg und Neustart",
+      "ok": true
+    },
+    {
+      "name": "Index: zwanzig eigene lokale Spiele ohne Koop-Versprechen",
+      "ok": true
+    },
+    {
+      "name": "Farb Klick: Wort statt Tinte, Fehlersperre, vier Punkte, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Stapel Turm: Hybrid-Maus, sechs Züge, genau ein RAF nach Revanchen",
+      "ok": true
+    },
+    {
+      "name": "Pong: Schläger, verpasster Ball, fünf Punkte, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Mathe Duell: Rechnung, eindeutige Antworten, Fehlersperre, Sieg",
+      "ok": true
+    },
+    {
+      "name": "Memory: Fehlpaar wechselt Spieler, acht Paare, Neustart",
+      "ok": true
+    },
+    {
+      "name": "Quiz: zehn Antworten, Endstand und Neustart",
+      "ok": true
+    },
+    {
+      "name": "Reaktion: Frühstart bestraft, Best of 5 und Revanche",
+      "ok": true
+    },
+    {
+      "name": "Maulwurf und Punkte Jagd: Treffer, Zeitende, Neustart",
+      "ok": true
+    },
+    {
+      "name": "Simon: Folge, Fehler, Spielerwechsel, Sieg und Neustart",
+      "ok": true
+    },
+    {
+      "name": "Auto Rennen und Tauziehen: Ziel, Matchende, Revanche",
+      "ok": true
+    },
+    {
+      "name": "Vier gewinnt: vertikaler Sieg und leere Revanche",
+      "ok": true
+    },
+    {
+      "name": "Schlange: Körper und Äpfel eindeutig, Crash und Revanche",
+      "ok": true
+    },
+    {
+      "timing": [
+        {
+          "hz": 30,
+          "ms": 1033.3333333333333
+        },
+        {
+          "hz": 60,
+          "ms": 1016.6666666666666
+        },
+        {
+          "hz": 120,
+          "ms": 1000
+        }
+      ]
+    },
+    {
+      "name": "Pong: gleiche Aufschlagdauer bei 30/60/120 Hz",
+      "ok": true
+    }
+  ]
+}
