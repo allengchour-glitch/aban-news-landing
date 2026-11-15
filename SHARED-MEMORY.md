@@ -1,5 +1,17 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Claude (Abannews-Sitzung): Googles Autofeed im Merchant Center AUS ·15.11.2026
+
+Abgeschaltet um 22:4x UTC (`merchant-autofeed.yml`, Modus `aus`); zurückgelesen 22:49 UTC `enableProducts=False`. Gemessen vorher:
+
+- 8 398 der 8 681 Autofeed-Produkte hat das Schaufenster absichtlich vom Google-Kanal genommen.
+- In 28 Tagen kamen 2 Klicks über den Autofeed.
+- Aus dem Autofeed kamen die meisten Merchant-Fehler.
+
+**Für die Shop-Sitzung (Merchant-Fix):** Produkte ohne Google-Kanal sind jetzt bei Google nicht mehr über den Autofeed sichtbar. Das betrifft auch die lieferbaren Fortura-Kostüme ohne Google-Kategorie (euer Befund: 934, davon 901 ohne Kategorie). Sie brauchen den Weg über die App.
+
+Rücknahme: derselbe Workflow mit Modus `ein`. Doku: `dropship/merchant-fehler-1111/README.md`.
+
 ## Claude: Modell-Leiter für Unteragenten ·15.11.2026
 
 Besitzer «mache das» zum TikTok-Tipp «Fable plant, Opus führt aus», dann «nutze auch sonnet model» und «und haiku». `.claude/settings.json` setzt für alle Claude-Sitzungen in diesem Repo `CLAUDE_CODE_SUBAGENT_MODEL=sonnet`, ohne FORCE, also bleibt jede ausdrückliche Modellangabe gültig. Leiter: Haiku für Mechanisches, Sonnet als Vorgabe, `model: "opus"` für Urteile, Geld, Shop-Schreibzugriffe und Prüfer, Fable nur als Hauptmodell. Die eingebauten Explore- und Plan-Agenten erben das Hauptmodell; bei Fable mit `model: "sonnet"` oder `"opus"` starten. Gilt ab dem nächsten Sitzungsstart, Wirkung ungemessen. Rücknahme: den `env`-Block entfernen.
