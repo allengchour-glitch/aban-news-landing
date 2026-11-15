@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 249,
-  "updatedAt": "2026-11-15T22:09:21Z",
+  "revision": 250,
+  "updatedAt": "2026-11-15T22:40:09Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4972,17 +4972,18 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r243_evening_handoff_master_holds_and_consolidated_day_recorded_no_receipt",
+      "state": "r250_owner_requested_claude_direct_read_entry_persisted_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEPRUEFT",
-      "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet. R243: Vier technischeMaster-Sperren mit stabilenUUIDs wiederhergestellt undID-Wechselprotokolliert, aktuelleWochenabdeckung/Lücken, Musikquelle,18s-Brief undA–G-Verkaufsentwurf sowie heutigeTagestabellegeteilt. Keine eigenePublikation/weiterenTagesreports. ClaudeKenntnisnahmeunbekannt.",
-      "nextAllowedStep": "An aktuellerR243-Halteidentität und R242-Produktdetails anschliessen. TechnischeEntwürfe nicht freigeben, neueIDnachUUIDzuordnen; Reaktivierungsursache/produktivenHalteschutz ohneungeprüfteStarts klären. OriginaleSieben-Dateien-Themefreigabe undzusätzlichenR239Versanddiff getrennt erhalten. Kenntnisnahme nurmitBeleg behaupten.",
+      "belegArt": "OWNER_SCREENSHOT_REQUEST_EXACT_FILE_SEARCH_AND_VERSIONED_DIRECT_START_ENTRY",
+      "lastEvidence": "Inhaber fragte während R250 nach direktem Link für Claude und zeigte zwei andernorts fehlende ZIPs. Kompakten CLAUDE-DIREKTSTART-20261115-R250.md mit direkten lesbaren Links zu Livebericht,20erRegister,18historischenGruppen und konkretemLI-Versandblocker erstellt. Die zwei benannten OriginalZIPs sind im aktuellen Arbeitsbereich/Standardbranch-Dateisuchlauf nicht gefunden; Inhalt/Downloadpfade unbekannt und nicht nachgebildet. Bestehendes Projektgedächtnis bereits direkt verlinkt. Kein Versand anClaude und kein Empfangs-/Kenntnisnahmebeleg.",
+      "nextAllowedStep": "Claude soll den direkten kompakten Einstieg und R250-Bericht/Registry lesen, weitere Historie gezielt nach Bedarf. Keine fehlenden OriginalZIPs als vorhanden oder inhaltlich geprüft ausgeben. Nur echte eigene Fortschritte mit Belegen und SHA-Kontrolle ergänzen; alle24Aufgaben und alten Protokolle erhalten. Empfang/Kenntnisnahme nur mit tatsächlichem Beleg behaupten.",
       "blockers": [
         "Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
         "Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
         "YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
-        "Claude-Empfangunbekannt."
+        "Claude-Empfangunbekannt.",
+        "R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -6293,6 +6294,54 @@
         {
           "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
           "readAt": "2026-11-15T18:28:10Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+          "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+          "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+          "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+          "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+          "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+          "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+          "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+          "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+          "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+          "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+          "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+          "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+          "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+          "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+          "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+          "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+          "readAt": "2026-11-15T22:40:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -8633,6 +8682,20 @@
           "previousLastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet.",
           "previousNextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme 214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
           "source": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json"
+        },
+        {
+          "at": "2026-11-15T22:40:09Z",
+          "state": "r243_evening_handoff_master_holds_and_consolidated_day_recorded_no_receipt",
+          "lastEvidenceDate": "2026-11-15",
+          "belegArt": "GEPRUEFT",
+          "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet. R243: Vier technischeMaster-Sperren mit stabilenUUIDs wiederhergestellt undID-Wechselprotokolliert, aktuelleWochenabdeckung/Lücken, Musikquelle,18s-Brief undA–G-Verkaufsentwurf sowie heutigeTagestabellegeteilt. Keine eigenePublikation/weiterenTagesreports. ClaudeKenntnisnahmeunbekannt.",
+          "nextAllowedStep": "An aktuellerR243-Halteidentität und R242-Produktdetails anschliessen. TechnischeEntwürfe nicht freigeben, neueIDnachUUIDzuordnen; Reaktivierungsursache/produktivenHalteschutz ohneungeprüfteStarts klären. OriginaleSieben-Dateien-Themefreigabe undzusätzlichenR239Versanddiff getrennt erhalten. Kenntnisnahme nurmitBeleg behaupten.",
+          "blockers": [
+            "Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
+            "Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
+            "YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
+            "Claude-Empfangunbekannt."
+          ]
         }
       ],
       "reviewPacket": {
@@ -10865,6 +10928,135 @@
             "readAt": "2026-11-15T13:35:41.637194+00:00"
           }
         ]
+      },
+      "run250": {
+        "at": "2026-11-15T22:40:09Z",
+        "request": "ja mach 0 fehler; hast du direkt link für claude",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+            "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+            "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+            "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+            "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+            "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+            "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+            "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+            "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+            "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+            "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+            "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+            "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+            "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+            "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+            "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+            "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+            "readAt": "2026-11-15T22:40:09Z"
+          }
+        ],
+        "merchantWrites": 8,
+        "existingOffersChanged": 8,
+        "availabilityCorrections": 6,
+        "exactPriceTitleLinkCorrections": 2,
+        "confirmedTargets": 8,
+        "newBatchChApproved": 4,
+        "newBatchChPendingCrawl": 4,
+        "newBatchLiShippingBlocked": 8,
+        "priorRegistryRecordsPreserved": 12,
+        "registryRecords": 20,
+        "currentLiShippingBlockedIn20RecordScope": 9,
+        "oneAdditionalImageObservedOutsideOwnParams": true,
+        "imageMatchesExistingNativeProduct": true,
+        "imageDeltaCause": "unknown",
+        "completeNonTargetEqualityOffers": 7,
+        "otherIdentityProtected": true,
+        "shopifyProductWrites": 0,
+        "themeWrites": 0,
+        "socialWrites": 0,
+        "newSources": 0,
+        "newOffers": 0,
+        "mediaUploads": 0,
+        "dailyReportsRepeated": false,
+        "purchaseWatchQueried": false,
+        "existingCadenceUnchanged": true,
+        "globalZeroErrorsVerified": false,
+        "goalZeroErrors": "OPEN",
+        "historicalDriveExports": {
+          "date": "2026-11-14",
+          "firstBytes": 1255239,
+          "secondBytes": 306795,
+          "firstRows": 3555,
+          "secondRows": 1048,
+          "disapprovedGroups": 18,
+          "pendingGroups": 1,
+          "unionDistinctOffers": 2005,
+          "unionOfferCountryIssueRows": 3039,
+          "liveCurrentGlobalCounts": false,
+          "firstFileReadableAfterCorrectingMistypedId": true
+        },
+        "historicalR240Worklist": {
+          "priceCases": 144,
+          "availabilityCases": 19,
+          "knownPriceAttributeCorrections": 9,
+          "knownAvailabilityAttributeCorrections": 11,
+          "reviewedBlockedPrice": 5,
+          "notFreshlyCheckedPrice": 130,
+          "notFreshlyCheckedAvailability": 8
+        },
+        "liShipping": {
+          "shopifyProfile": "132124180865",
+          "exactVariantsSameProfile": 9,
+          "method": "Standard Liechtenstein",
+          "active": true,
+          "flatCHF": "14.90",
+          "freeShipping": false,
+          "publicPolicyMatches": true,
+          "merchantServiceMapping": "unknown",
+          "merchantServiceWriteAccess": "unavailable_in_discovered_actions",
+          "settingsChanged": false,
+          "publicChThresholdCHF": 50,
+          "internalChThresholdCHF": 45
+        },
+        "claudeDirectStart": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+        "originalZipFiles": {
+          "names": [
+            "claude-produktideen-20261115.zip",
+            "claude-social-zukunft-20261115.zip"
+          ],
+          "currentWorkspace": "not_found",
+          "defaultBranchSearch": "not_found",
+          "contents": "unknown",
+          "recreated": false
+        },
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -14286,12 +14478,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r249_eight_more_existing_offers_corrected_five_approved_three_crawl_pending",
+      "state": "r250_eight_more_attribute_fixes_confirmed_full_historical_18_groups_parsed_li_shipping_blocker_verified",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "FRESH_EXACT_SHOPIFY_CJ_PUBLIC_VARIANT_AND_INDEPENDENT_MERCHANT_ATTRIBUTE_PROTECTION_READBACK",
-      "lastEvidence": "R249: Neun Merchant-Writes auf acht vorhandene de/CH-Angebote über bestehendes Supplement10795447118/Primärquelle10678939025. Vier Preis-/Titel-/Link-Bindungen präzisiert: RucksackGrünmitAnhänger17.90, HundejackeGrauL24.90, PicknickMattschwarzSet1 21.90, WandleuchteeinflammigWarmlicht47.90CHF. Auswahl bewusst exakt, keine geratene Altvariante/Mindestpreis; zwei falsche französische DE-Feedlinks ersetzt. Vier Availability-Attribute aus aktueller öffentlicher Kaufbarkeit bei untracked/CONTINUE bestätigt. Hundebeschreibung zusätzlich von Wetterfestigkeits-/Futterfehlübersetzung bereinigt. Fünf Angebote FREE_LISTINGS approved CH/LI (vier ohne Artikelprobleme; Leuchte mit NOT_IMPACTED-Zertifizierungshinweis), drei mit bestätigtem IN_STOCK weiter Crawl-pending. Identitäten/Primärquelle/andere Attribute/customAttributes/Bilder/Ausschlüsse erhalten. Registry12Records, alte4 unverändert. Historischer R240-200er-Ausschnitt:144 Preis-/19 Availability-Fälle;7/5 überR247–249 gezielt korrigiert,137/14 aktuell unbekannt. Keine18Gruppen-/0-Gesamtfehlerbehauptung.",
-      "nextAllowedStep": "Bestehende Ergänzungsquelle10795447118 und12 exakte Registry-Einträge vor Abhängigkeiten frisch lesen; keine Quellneuanlage oder ungeprüfte Sync. Je nächste kleine historische Arbeitslisten-Gruppe aktuellen Offerstatus, aktuelle Shopify-SKU/Variante, CHF-Preis, öffentliche Kaufbarkeit/Bildidentität prüfen und nur tatsächlich falsche Supplementalwerte korrigieren. Drei Crawl-pending-Angebote nach Google-Verarbeitung gezielt lesen; Wandteppich und Waagen-Crawlfehler aus R247 separat erhalten. Lampenzertifizierung nicht erfinden; NOT_IMPACTED ist keine Konformitätsfreigabe. Vollständige18UI-Gruppen bleiben erst mit aktueller vollständiger Quelle messbar. Kein breiter Tagesreport, Ausschluss-Reset oder Mindestpreis-Import.",
+      "belegArt": "FRESH_EXACT_SHOPIFY_PUBLIC_MERCHANT_READBACK_AND_COMPLETE_HISTORICAL_DRIVE_EXPORT_PARSE",
+      "lastEvidence": "R250: Acht weitere Merchant-Writes über bestehende Ergänzungsquelle10795447118 bestätigt: sechs Verfügbarkeitsattribute sowie zwei bewusst auf Rosarot/M bzw. Orange/M begrenzte Bekleidungsangebote mit exaktem Preis/Titel/Link (CHF23.90/15.90). Vorher nativeSKU/Variante/ACTIVE/Tags/Tracking/Policy und öffentliche Bild-/Kaufbarkeits-/Preis-/Canonical-Gates geprüft, zwei echte Bilder angesehen. Zeitversetzte Verarbeitung nicht durch Wiederholungswrites übergangen; danach alle acht Zielattribute bestätigt. Vier neue CH-Genehmigungen, vier CH-Crawl-Pendings; alle acht LI fehlenderVersanddienst. Im gesamten frisch nachgelesenen20er-Register neun LI-Versandfälle, alte12Records unverändert erhalten und aktuelle Länderzustände separat erfasst. Sieben vollständige Vergleiche ausserhalb Zielfeldern gleich; bei Solar ein zusätzliches vorhandenes Produktbild von unbekannter Änderungsursache beobachtet, kein eigener Bildparameter/keinRollback. Keine vollständige Nichtziel-Gleichheit behauptet. Beide Drive-Exporte14Nov vollständig ausgewertet:18Ablehnungsgruppen plus1Pending,2'005historischeOffers, kein aktueller Gesamtscan. Shopify/PublicPolicy belegen LI14.90 ohneGratisversand und Profil132124180865 für neun exakte Varianten; MerchantDienstzuordnung unbekannt, kein Versanddienst-Writer vorhanden. NullFehler weiteroffen.",
+      "nextAllowedStep": "Zuerst in Merchant den bestehenden LI-Versanddienst und Zuordnung zur AUTOFEED-Quelle10678939025 mit legitimem Versanddienst-Schreibzugang prüfen; vorhandene Shopify/PublicPolicy-LI14.90 ohneGratisversand nutzen, keine neueShopifyRegel und keine geratenen Laufzeiten. Nach gezielter Korrektur die neun konkreten LI-Fälle getrennt lesen. Vier neue CH-Crawl-Fälle abwarten/gezielt erneut lesen, bestätigte Writes nicht wiederholen. Danach kleine aktuelle Beispiele je jetzt bekannter historischer18Fehlergruppen verifizieren; tatsächliche Primärquelle/Feedlabel proOffer beachten, nicht alle Quellen überAUTOFEED-Supplement schreiben. Fünf Preis-Auswahl-/DRAFT-Blocker nicht mit Minimumpreis/Aktivierung umgehen. Bestehende20Overrides vor Änderungen frisch prüfen, keineQuellneuanlage. Keine pauschalen Sperr-/Ausschlussentfernungen oder unbelegten Richtlinien-Einsprüche. Gesamte0-Fehler erst nach aktueller vollständiger Quelle behaupten.",
       "blockers": [
         "Wandteppich10301937935043325310 weiterhin landing_page_pending_crawl/pending_processing, CH/LIpending; Verfügbarkeit bereitskorrigiert,keinRepeatWrite.",
         "Vollständigeaktuelle18UI-Gruppen undweitereRichtlinien-/Mengen-/Konformitätsfälle offen; dreiuntersuchtePreisfälle sindkeinVollkatalog.",
@@ -14301,7 +14493,10 @@
         "R248HellgrauArmbandbox67821514686855 zeigtkleineresFoto; konkretesCJ-Ersatzbildrechte/Produktrichtigkeitangefragt,Antwortoffen,keinMedienwrite. KonkreterHinweisProdukttextlive.",
         "R249: Muffin11024212604633690805, Audio10453153534875904667 und Fächer14250141006730270187: Availability IN_STOCK bestätigt, Google landing_page_pending_crawl / pending_processing und Genehmigung CH/LI noch ausstehend.",
         "R249: Wandleuchte10018213324745296287 ist kostenlos CH/LI genehmigt, NOT_IMPACTED missing-certification bleibt; keine erfundene CE-/Konformitäts-/Leuchtmittel-/Netzspannungsangabe.",
-        "R249: Aktueller vollständiger Stand aller18UI-Gruppen nicht erfasst.137 Preis-/14 Availability-Restfälle stammen aus historischem begrenztem Ausschnitt; heute unbekannt, keine aktuellen Gesamtsummen."
+        "R249: Aktueller vollständiger Stand aller18UI-Gruppen nicht erfasst.137 Preis-/14 Availability-Restfälle stammen aus historischem begrenztem Ausschnitt; heute unbekannt, keine aktuellen Gesamtsummen.",
+        "R250: Neun bestätigte LI-Versandfehler im20er-Register. Shopify hat den belegten aktiven Dienst StandardLiechtenstein CHF14.90 ohneGratisversand, dieselben neun Varianten hängen am Profil132124180865. Merchant-Versanddienst/Quellenzuordnung unbekannt; verfügbare Produktaktionen unterstützen keine Versanddienste bzw.shipping-Felder. Keine technische Umsetzung dieses Einstellungsfixes möglich.",
+        "R250: Die historischen18Ablehnungsgruppen sind jetzt vollständig erschlossen, ihr heutiger vollständiger Live-Status bleibt unbekannt. Richtlinien-/Bildrechte-/Konformitätsfälle sind durch Preis-/Verfügbarkeitskorrekturen nicht freigegeben.",
+        "R250: Vier neue CH-Fälle weiterhin Crawl-pending; zertifizierungsbezogener NOT_IMPACTED-Hinweis der Solarlampe bleibt. R240-Teilliste144/19:9/11Attribute korrigiert, fünfPreisfälle frisch geblockt,130/8 dort nichtfrischgeprüft. Diese Teilmengen nicht mit2'005historischenExportOffers als aktuelle Gesamtzahl vermischen."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -14975,6 +15170,54 @@
           "gitBlobSha": "2394bfed9e25ad11b064e809c1c9ab6150dd88be",
           "sha256": "06c8d30f77f29f0d7171bb95d18278a3ed7714ad070550874a9668d65a5e2ff2",
           "readAt": "2026-11-15T22:09:21Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+          "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+          "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+          "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+          "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+          "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+          "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+          "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+          "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+          "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+          "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+          "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+          "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+          "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+          "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+          "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+          "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+          "readAt": "2026-11-15T22:40:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15992,6 +16235,25 @@
             "FesteErgänzungswerte können nachShopifyänderungen veralten; keineautomatischePreissynchronisation deployt. GoogleÜbernahmederShopify-Langtexte unbekannt.",
             "R240Garagentorbildrechte/Produkt-/Sensor-/Portabnahme weiteroffen.",
             "R248HellgrauArmbandbox67821514686855 zeigtkleineresFoto; konkretesCJ-Ersatzbildrechte/Produktrichtigkeitangefragt,Antwortoffen,keinMedienwrite. KonkreterHinweisProdukttextlive."
+          ]
+        },
+        {
+          "at": "2026-11-15T22:40:09Z",
+          "state": "r249_eight_more_existing_offers_corrected_five_approved_three_crawl_pending",
+          "lastEvidenceDate": "2026-11-15",
+          "belegArt": "FRESH_EXACT_SHOPIFY_CJ_PUBLIC_VARIANT_AND_INDEPENDENT_MERCHANT_ATTRIBUTE_PROTECTION_READBACK",
+          "lastEvidence": "R249: Neun Merchant-Writes auf acht vorhandene de/CH-Angebote über bestehendes Supplement10795447118/Primärquelle10678939025. Vier Preis-/Titel-/Link-Bindungen präzisiert: RucksackGrünmitAnhänger17.90, HundejackeGrauL24.90, PicknickMattschwarzSet1 21.90, WandleuchteeinflammigWarmlicht47.90CHF. Auswahl bewusst exakt, keine geratene Altvariante/Mindestpreis; zwei falsche französische DE-Feedlinks ersetzt. Vier Availability-Attribute aus aktueller öffentlicher Kaufbarkeit bei untracked/CONTINUE bestätigt. Hundebeschreibung zusätzlich von Wetterfestigkeits-/Futterfehlübersetzung bereinigt. Fünf Angebote FREE_LISTINGS approved CH/LI (vier ohne Artikelprobleme; Leuchte mit NOT_IMPACTED-Zertifizierungshinweis), drei mit bestätigtem IN_STOCK weiter Crawl-pending. Identitäten/Primärquelle/andere Attribute/customAttributes/Bilder/Ausschlüsse erhalten. Registry12Records, alte4 unverändert. Historischer R240-200er-Ausschnitt:144 Preis-/19 Availability-Fälle;7/5 überR247–249 gezielt korrigiert,137/14 aktuell unbekannt. Keine18Gruppen-/0-Gesamtfehlerbehauptung.",
+          "nextAllowedStep": "Bestehende Ergänzungsquelle10795447118 und12 exakte Registry-Einträge vor Abhängigkeiten frisch lesen; keine Quellneuanlage oder ungeprüfte Sync. Je nächste kleine historische Arbeitslisten-Gruppe aktuellen Offerstatus, aktuelle Shopify-SKU/Variante, CHF-Preis, öffentliche Kaufbarkeit/Bildidentität prüfen und nur tatsächlich falsche Supplementalwerte korrigieren. Drei Crawl-pending-Angebote nach Google-Verarbeitung gezielt lesen; Wandteppich und Waagen-Crawlfehler aus R247 separat erhalten. Lampenzertifizierung nicht erfinden; NOT_IMPACTED ist keine Konformitätsfreigabe. Vollständige18UI-Gruppen bleiben erst mit aktueller vollständiger Quelle messbar. Kein breiter Tagesreport, Ausschluss-Reset oder Mindestpreis-Import.",
+          "blockers": [
+            "Wandteppich10301937935043325310 weiterhin landing_page_pending_crawl/pending_processing, CH/LIpending; Verfügbarkeit bereitskorrigiert,keinRepeatWrite.",
+            "Vollständigeaktuelle18UI-Gruppen undweitereRichtlinien-/Mengen-/Konformitätsfälle offen; dreiuntersuchtePreisfälle sindkeinVollkatalog.",
+            "WaageGooglelanding_page_error weiterungeklärt. AktuellerOGzeigtElternminimum101.90 stattgewählte127.90,JSONLDkorrekt; PatchnurEntwurf,keinebewieseneUrsache.",
+            "FesteErgänzungswerte können nachShopifyänderungen veralten; keineautomatischePreissynchronisation deployt. GoogleÜbernahmederShopify-Langtexte unbekannt.",
+            "R240Garagentorbildrechte/Produkt-/Sensor-/Portabnahme weiteroffen.",
+            "R248HellgrauArmbandbox67821514686855 zeigtkleineresFoto; konkretesCJ-Ersatzbildrechte/Produktrichtigkeitangefragt,Antwortoffen,keinMedienwrite. KonkreterHinweisProdukttextlive.",
+            "R249: Muffin11024212604633690805, Audio10453153534875904667 und Fächer14250141006730270187: Availability IN_STOCK bestätigt, Google landing_page_pending_crawl / pending_processing und Genehmigung CH/LI noch ausstehend.",
+            "R249: Wandleuchte10018213324745296287 ist kostenlos CH/LI genehmigt, NOT_IMPACTED missing-certification bleibt; keine erfundene CE-/Konformitäts-/Leuchtmittel-/Netzspannungsangabe.",
+            "R249: Aktueller vollständiger Stand aller18UI-Gruppen nicht erfasst.137 Preis-/14 Availability-Restfälle stammen aus historischem begrenztem Ausschnitt; heute unbekannt, keine aktuellen Gesamtsummen."
           ]
         }
       ],
@@ -17516,6 +17778,135 @@
         "purchaseWatchQueried": false,
         "existingCadenceUnchanged": true,
         "receiptState": "Claude Code receipt unknown"
+      },
+      "run250": {
+        "at": "2026-11-15T22:40:09Z",
+        "request": "ja mach 0 fehler; hast du direkt link für claude",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+            "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+            "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+            "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+            "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+            "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+            "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+            "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+            "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+            "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+            "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+            "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+            "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+            "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+            "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+            "readAt": "2026-11-15T22:40:09Z"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+            "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+            "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+            "readAt": "2026-11-15T22:40:09Z"
+          }
+        ],
+        "merchantWrites": 8,
+        "existingOffersChanged": 8,
+        "availabilityCorrections": 6,
+        "exactPriceTitleLinkCorrections": 2,
+        "confirmedTargets": 8,
+        "newBatchChApproved": 4,
+        "newBatchChPendingCrawl": 4,
+        "newBatchLiShippingBlocked": 8,
+        "priorRegistryRecordsPreserved": 12,
+        "registryRecords": 20,
+        "currentLiShippingBlockedIn20RecordScope": 9,
+        "oneAdditionalImageObservedOutsideOwnParams": true,
+        "imageMatchesExistingNativeProduct": true,
+        "imageDeltaCause": "unknown",
+        "completeNonTargetEqualityOffers": 7,
+        "otherIdentityProtected": true,
+        "shopifyProductWrites": 0,
+        "themeWrites": 0,
+        "socialWrites": 0,
+        "newSources": 0,
+        "newOffers": 0,
+        "mediaUploads": 0,
+        "dailyReportsRepeated": false,
+        "purchaseWatchQueried": false,
+        "existingCadenceUnchanged": true,
+        "globalZeroErrorsVerified": false,
+        "goalZeroErrors": "OPEN",
+        "historicalDriveExports": {
+          "date": "2026-11-14",
+          "firstBytes": 1255239,
+          "secondBytes": 306795,
+          "firstRows": 3555,
+          "secondRows": 1048,
+          "disapprovedGroups": 18,
+          "pendingGroups": 1,
+          "unionDistinctOffers": 2005,
+          "unionOfferCountryIssueRows": 3039,
+          "liveCurrentGlobalCounts": false,
+          "firstFileReadableAfterCorrectingMistypedId": true
+        },
+        "historicalR240Worklist": {
+          "priceCases": 144,
+          "availabilityCases": 19,
+          "knownPriceAttributeCorrections": 9,
+          "knownAvailabilityAttributeCorrections": 11,
+          "reviewedBlockedPrice": 5,
+          "notFreshlyCheckedPrice": 130,
+          "notFreshlyCheckedAvailability": 8
+        },
+        "liShipping": {
+          "shopifyProfile": "132124180865",
+          "exactVariantsSameProfile": 9,
+          "method": "Standard Liechtenstein",
+          "active": true,
+          "flatCHF": "14.90",
+          "freeShipping": false,
+          "publicPolicyMatches": true,
+          "merchantServiceMapping": "unknown",
+          "merchantServiceWriteAccess": "unavailable_in_discovered_actions",
+          "settingsChanged": false,
+          "publicChThresholdCHF": 50,
+          "internalChThresholdCHF": 45
+        },
+        "claudeDirectStart": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+        "originalZipFiles": {
+          "names": [
+            "claude-produktideen-20261115.zip",
+            "claude-social-zukunft-20261115.zip"
+          ],
+          "currentWorkspace": "not_found",
+          "defaultBranchSearch": "not_found",
+          "contents": "unknown",
+          "recreated": false
+        },
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -34326,6 +34717,64 @@
       ],
       "taskCount": 24,
       "receiptState": "Claude Code receipt unknown"
+    },
+    {
+      "revision": 250,
+      "at": "2026-11-15T22:40:09Z",
+      "actor": "Codex",
+      "summary": "Acht weitere Merchant-Zielattribute bestätigt; vier neueCH-Genehmigungen und vierCrawl-Pendings, neun konkreteLI-Versandprobleme im20er-Register mit belegtem vorhandenenShopifytarif14.90, GMC-Servicewriter fehlt. Vollständigehistorische18Ablehnungsgruppen plusPending ausbeidenDriveExportserschlossen. KompakterClaude-Direkteinstieg fürInhaberfrage erstellt; OriginalZIPs/Empfangunbekannt. Keine0Gesamtfehlerbehauptung.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+          "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+          "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+          "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+          "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+          "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+          "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+          "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+          "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+          "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+          "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+          "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+          "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+          "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+          "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+          "readAt": "2026-11-15T22:40:09Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+          "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+          "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+          "readAt": "2026-11-15T22:40:09Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "Claude Code receipt unknown"
     }
   ],
   "salesGoal": {
@@ -35678,7 +36127,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 249,
+    "latestCanonicalRevision": 250,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -36605,6 +37054,39 @@
         "readAt": "2026-11-15T22:09:21Z"
       },
       "receiptState": "Claude Code receipt unknown"
+    },
+    "run250": {
+      "starter": {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+        "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+        "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      "report": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+        "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+        "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      "registry": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+        "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+        "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      "groups": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+        "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+        "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      "shipping": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+        "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+        "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      "receiptState": "unknown_no_receipt"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -61824,5 +62306,134 @@
     "purchaseWatchQueried": false,
     "existingCadenceUnchanged": true,
     "receiptState": "Claude Code receipt unknown"
+  },
+  "run250": {
+    "at": "2026-11-15T22:40:09Z",
+    "request": "ja mach 0 fehler; hast du direkt link für claude",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+        "gitBlobSha": "64e39b02bda6ba76f48706dfcca63a67e7977deb",
+        "sha256": "fdc76fa8efac5e75d72151d185737fbaec0b862ae95070bfa93b6739c73b8a9f",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-GRUPPEN-20261115-R250.csv",
+        "gitBlobSha": "aef4d7fbfc5f72126904e97c09b5e6546a581f0f",
+        "sha256": "da1ae154890417db1687423b64a0670bafb17add339a9728b3ec24d30e0704af",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-DIAGNOSE-QUELLEN-20261115-R250.json",
+        "gitBlobSha": "4134128d53242157f9b655832fb3f10f5c62163a",
+        "sha256": "ff9b08f938acde4b0a8508f0c84c6a2d363f1f3af049f16c44fc411f0f18260e",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R250.json",
+        "gitBlobSha": "006d7ab881e3792ec6de1454522838725a478d8d",
+        "sha256": "1b94b92627c7ddc58e8123566d229d891f855948398be24f2b36fddd824dfd5e",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md",
+        "gitBlobSha": "dba0949dde6d1336691b8be22fdbe334231ab4bc",
+        "sha256": "2af181fa316babc55f6de4d431b6dea25ad60ee2b60a34111586bc7d9b4d3cc4",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LI-VERSAND-PRUEFUNG-20261115-R250.json",
+        "gitBlobSha": "8c8928aa63f1857ec831ba91e46e7a54d6e1660c",
+        "sha256": "63eeee94efc15cec4673705412a9c0fbd2ecfbf87de4d07ffabcdc909c0fe882",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-LIVE-BELEGE-20261115-R250.json",
+        "gitBlobSha": "a1951c070c9f71e9fda3700e8385b4fbccaea161",
+        "sha256": "a847f5e1f2899d76f8921994c770db34f6bbbc02a9ae61b52bb28743d3d0551c",
+        "readAt": "2026-11-15T22:40:09Z"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-RESTARBEIT-20261115-R250.csv",
+        "gitBlobSha": "a7c23186193650784b0a04165031abc98890a375",
+        "sha256": "a4494f51a33db27cdaa2f871e6e5530be5307cea8a3a6874d3a590374511b5ba",
+        "readAt": "2026-11-15T22:40:09Z"
+      }
+    ],
+    "merchantWrites": 8,
+    "existingOffersChanged": 8,
+    "availabilityCorrections": 6,
+    "exactPriceTitleLinkCorrections": 2,
+    "confirmedTargets": 8,
+    "newBatchChApproved": 4,
+    "newBatchChPendingCrawl": 4,
+    "newBatchLiShippingBlocked": 8,
+    "priorRegistryRecordsPreserved": 12,
+    "registryRecords": 20,
+    "currentLiShippingBlockedIn20RecordScope": 9,
+    "oneAdditionalImageObservedOutsideOwnParams": true,
+    "imageMatchesExistingNativeProduct": true,
+    "imageDeltaCause": "unknown",
+    "completeNonTargetEqualityOffers": 7,
+    "otherIdentityProtected": true,
+    "shopifyProductWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "newSources": 0,
+    "newOffers": 0,
+    "mediaUploads": 0,
+    "dailyReportsRepeated": false,
+    "purchaseWatchQueried": false,
+    "existingCadenceUnchanged": true,
+    "globalZeroErrorsVerified": false,
+    "goalZeroErrors": "OPEN",
+    "historicalDriveExports": {
+      "date": "2026-11-14",
+      "firstBytes": 1255239,
+      "secondBytes": 306795,
+      "firstRows": 3555,
+      "secondRows": 1048,
+      "disapprovedGroups": 18,
+      "pendingGroups": 1,
+      "unionDistinctOffers": 2005,
+      "unionOfferCountryIssueRows": 3039,
+      "liveCurrentGlobalCounts": false,
+      "firstFileReadableAfterCorrectingMistypedId": true
+    },
+    "historicalR240Worklist": {
+      "priceCases": 144,
+      "availabilityCases": 19,
+      "knownPriceAttributeCorrections": 9,
+      "knownAvailabilityAttributeCorrections": 11,
+      "reviewedBlockedPrice": 5,
+      "notFreshlyCheckedPrice": 130,
+      "notFreshlyCheckedAvailability": 8
+    },
+    "liShipping": {
+      "shopifyProfile": "132124180865",
+      "exactVariantsSameProfile": 9,
+      "method": "Standard Liechtenstein",
+      "active": true,
+      "flatCHF": "14.90",
+      "freeShipping": false,
+      "publicPolicyMatches": true,
+      "merchantServiceMapping": "unknown",
+      "merchantServiceWriteAccess": "unavailable_in_discovered_actions",
+      "settingsChanged": false,
+      "publicChThresholdCHF": 50,
+      "internalChThresholdCHF": 45
+    },
+    "claudeDirectStart": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+    "originalZipFiles": {
+      "names": [
+        "claude-produktideen-20261115.zip",
+        "claude-social-zukunft-20261115.zip"
+      ],
+      "currentWorkspace": "not_found",
+      "defaultBranchSearch": "not_found",
+      "contents": "unknown",
+      "recreated": false
+    },
+    "claudeReceipt": "unknown"
   }
 }

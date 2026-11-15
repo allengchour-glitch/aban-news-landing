@@ -1,0 +1,1263 @@
+{
+  "first": {
+    "file": {
+      "id": "1gTASf6nKWalF5W3lPdEjqdejRni_HaSa",
+      "name": "Produktprobleme_2026-11-14_15-04-40.csv",
+      "mimeType": "text/comma-separated-values",
+      "modifiedTime": "2026-11-14T14:10:10.307Z",
+      "sizeBytes": 1255239,
+      "md5Local": "d7355b590a592c63f0bca5ddfe3e17b8",
+      "dataRows": 3555,
+      "columns": [
+        "Artikel-ID",
+        "Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ],
+      "historicalOnly": true
+    },
+    "distinctIssueGroups": 19,
+    "uniqueOfferIdsAcrossFile": 2005,
+    "issues": [
+      {
+        "issueTitle": "Produktpreis fehlt",
+        "detail": "Fügen Sie dem Attribut [price] in Ihrer Produktdatenquelle einen Preis hinzu",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 1034,
+        "uniqueOfferCount": 517,
+        "rowsByCountry": {
+          "Schweiz": 517,
+          "Liechtenstein": 517
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 517,
+          "Schweiz": 517
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 1034
+        },
+        "channels": {
+          "ONLINE": 1034
+        },
+        "samples": [
+          {
+            "offerId": "9114467887319195745",
+            "productTitle": "Besticktes Dekokissen nach Wunsch | LuxeStyle CH"
+          },
+          {
+            "offerId": "4611511823321759742",
+            "productTitle": "Verstellbares Space-Cotton Halsband für Haustiere | LuxeStyle"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Für einige Länder fehlen Versandinformationen",
+        "detail": "Ihre Produkte sind so eingestellt, dass sie in Ländern präsentiert werden, für die keine Versandinformationen vorliegen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 995,
+        "uniqueOfferCount": 995,
+        "rowsByCountry": {
+          "Deutschland": 995
+        },
+        "uniqueOffersByCountry": {
+          "Deutschland": 995
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 995
+        },
+        "channels": {
+          "ONLINE": 995
+        },
+        "samples": [
+          {
+            "offerId": "15493863997825_cj-cjwy263443935ir",
+            "productTitle": "Herren-Hoodie mit Fleecefutter - AK Weiss / 3XL"
+          },
+          {
+            "offerId": "15485490528641_cj-cjns303359024xc",
+            "productTitle": "Peep-Toe Sandalen mit Blockabsatz und Schleife - Karamell / 43"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Anzeigen-Overlay auf Bild",
+        "detail": "Werbetext, störende Elemente oder Rahmen sind auf Produktbildern nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 433,
+        "uniqueOfferCount": 121,
+        "rowsByCountry": {
+          "Schweiz": 257,
+          "Liechtenstein": 176
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 108,
+          "Schweiz": 121
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 433
+        },
+        "channels": {
+          "ONLINE": 433
+        },
+        "samples": [
+          {
+            "offerId": "15450853998977_16090974970677306609",
+            "productTitle": "PHOERA Magnificent Metals Liquid Lidschatten - Baby Rosé"
+          },
+          {
+            "offerId": "15449425314177_cj-cjyd170242606fu",
+            "productTitle": "Portabler Luftreiniger Aschenbecher - Quadratisch Blau"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: Schwierigkeiten im privaten Bereich",
+        "detail": "Personalisierte Anzeigen dürfen nicht verwendet werden, um Schwierigkeiten oder Probleme von Personen (etwa gesundheitliche Probleme, finanzielle Lage, Beziehungsprobleme oder Schwierigkeiten im privaten Bereich) auszunutzen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 442,
+        "uniqueOfferCount": 159,
+        "rowsByCountry": {
+          "Schweiz": 287,
+          "Liechtenstein": 155
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 155,
+          "Schweiz": 159
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 442
+        },
+        "channels": {
+          "ONLINE": 442
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15448824250753_55877778440577",
+            "productTitle": "Brustpump-Spray für Stillzeit | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15448823366017_55877777490305",
+            "productTitle": "Gelenkpflege Salbe | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Eingeschränkte Inhalte nur für Erwachsene",
+        "detail": "Inhalte nur für Erwachsene, die Nacktheit oder sexuelle Handlungen zeigen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 76,
+        "uniqueOfferCount": 27,
+        "rowsByCountry": {
+          "Schweiz": 51,
+          "Liechtenstein": 25
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 25,
+          "Schweiz": 27
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 76
+        },
+        "channels": {
+          "ONLINE": 76
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15494642008449_56083757662593",
+            "productTitle": "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M"
+          },
+          {
+            "offerId": "shopify_ZZ_15447935222145_56053000044929",
+            "productTitle": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: Sexuelle Interessen",
+        "detail": "Produkte dürfen nicht anhand von sexuellen Interessen ausgerichtet werden",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 76,
+        "uniqueOfferCount": 27,
+        "rowsByCountry": {
+          "Schweiz": 51,
+          "Liechtenstein": 25
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 25,
+          "Schweiz": 27
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 76
+        },
+        "channels": {
+          "ONLINE": 76
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15494642008449_56083757662593",
+            "productTitle": "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M"
+          },
+          {
+            "offerId": "shopify_ZZ_15447935222145_56053000044929",
+            "productTitle": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Bild ist zu klein",
+        "detail": "Ihr Bild unterschreitet die aktuelle Mindestgröße. Aktualisieren Sie es auf mindestens 500 × 500 Pixel, um die Anforderungen für 2027 zu erfüllen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 142,
+        "uniqueOfferCount": 71,
+        "rowsByCountry": {
+          "Schweiz": 71,
+          "Liechtenstein": 71
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 71,
+          "Schweiz": 71
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 142
+        },
+        "channels": {
+          "ONLINE": 142
+        },
+        "samples": [
+          {
+            "offerId": "15478787834241_cj-cjyd285378016pk",
+            "productTitle": "Figurformender Einteiler mit Bauchkontrolle - Nude / S"
+          },
+          {
+            "offerId": "15478787834241_cj-cjyd285378014nm",
+            "productTitle": "Figurformender Einteiler mit Bauchkontrolle - Braun / 3XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Tabakprodukte und Zubehör für Tabakkonsum",
+        "detail": "Tabak und tabakhaltige Produkte, ihre Bestandteile und ähnliche Zubehörteile sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 60,
+        "uniqueOfferCount": 18,
+        "rowsByCountry": {
+          "Schweiz": 48,
+          "Liechtenstein": 12
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 18
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 60
+        },
+        "channels": {
+          "ONLINE": 60
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15483934376321_56026870874497",
+            "productTitle": "Doppeldisplay-Halter | LuxeStyle CH Silber"
+          },
+          {
+            "offerId": "shopify_ZZ_15483793244545_56026399441281",
+            "productTitle": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 4 Stück"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Zusätzlicher Text gefunden",
+        "detail": "Werbetext oder irrelevanter Text in Produktattributen ist nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 36,
+        "uniqueOfferCount": 18,
+        "rowsByCountry": {
+          "Schweiz": 18,
+          "Liechtenstein": 18
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 18,
+          "Schweiz": 18
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 36
+        },
+        "channels": {
+          "ONLINE": 36
+        },
+        "samples": [
+          {
+            "offerId": "15496264679809_cj-cjpb139647947uf",
+            "productTitle": "Herren Fleece Sport-Freizeitschuhe - Grau Hot Sale / 43"
+          },
+          {
+            "offerId": "15496264679809_cj-cjpb139647942pk",
+            "productTitle": "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 44"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Inhalte nur für Erwachsene",
+        "detail": "Produkte mit Inhalten, Beschreibungen oder Bildern nur für Erwachsene, z. B. Pornografie, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 18,
+        "uniqueOfferCount": 6,
+        "rowsByCountry": {
+          "Liechtenstein": 6,
+          "Schweiz": 12
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 6,
+          "Schweiz": 6
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 18
+        },
+        "channels": {
+          "ONLINE": 18
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15524868424065_67871155421575",
+            "productTitle": "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken LXL"
+          },
+          {
+            "offerId": "shopify_ZZ_16604050719111_67613452337543",
+            "productTitle": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Schusswaffen und Schusswaffenteile",
+        "detail": "Werbung für bestimmte funktionsfähige Waffen und deren Teile sowie Anleitungen für den Zusammenbau sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 54,
+        "uniqueOfferCount": 9,
+        "rowsByCountry": {
+          "Liechtenstein": 15,
+          "Schweiz": 39
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 5,
+          "Schweiz": 9
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 54
+        },
+        "channels": {
+          "ONLINE": 54
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15451639677313_67790210171271",
+            "productTitle": "Game Gunstock für Nintendo Switch | LuxeStyle CH Schwarz"
+          },
+          {
+            "offerId": "shopify_ZZ_15504227402113_67814784172423",
+            "productTitle": "Bluetooth Pedometer-Uhr | LuxeStyle CH Schwarz"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Verkauf lebender Tiere",
+        "detail": "Lebende Tiere und Dienstleistungen für deren Transport sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 24,
+        "uniqueOfferCount": 8,
+        "rowsByCountry": {
+          "Schweiz": 24
+        },
+        "uniqueOffersByCountry": {
+          "Schweiz": 8
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 24
+        },
+        "channels": {
+          "ONLINE": 24
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_16604860711303_67616994492807",
+            "productTitle": "Katzenpullover für Herbst und Winter | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15524860756353_56222359290241",
+            "productTitle": "Geflochtene Hundeleine | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Produktseite nicht verfügbar",
+        "detail": "Achten Sie darauf, dass Ihre Produktseite über Desktop- und Mobilgeräte aufgerufen werden kann und das Crawling durch Google nicht eingeschränkt ist",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 18,
+        "uniqueOfferCount": 3,
+        "rowsByCountry": {
+          "Liechtenstein": 9,
+          "Schweiz": 9
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 3,
+          "Schweiz": 3
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 18
+        },
+        "channels": {
+          "ONLINE": 18
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15516154462593_56177866178945",
+            "productTitle": "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15516156395905_56177868177793",
+            "productTitle": "i9L Kinder 4G Videoanruf-Uhr | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Fehlendes Attribut [availability]",
+        "detail": "Bei mindestens einem Ihrer Produkte fehlt ein erforderliches Gruppenattribut. Wenn Sie beispielsweise die Verfügbarkeit auf „Vorbestellbar“ festlegen, müssen Sie auch ein Verfügbarkeitsdatum angeben. Fügen Sie das fehlende Attribut „[availability]“ in Ihre Produktdaten ein, damit Ihre Produkte auf Google präsentiert werden können",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 72,
+        "uniqueOfferCount": 36,
+        "rowsByCountry": {
+          "Liechtenstein": 36,
+          "Schweiz": 36
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 36,
+          "Schweiz": 36
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 72
+        },
+        "channels": {
+          "ONLINE": 72
+        },
+        "samples": [
+          {
+            "offerId": "11799311561588923093",
+            "productTitle": "4-in-1 Ladestation für Switch Joy-Cons | LuxeStyle CH"
+          },
+          {
+            "offerId": "11930962514331867978",
+            "productTitle": "Kreuzstich-Set \"Himmel-Liebhaber\" | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Werbung: Identität und Glaube",
+        "detail": "Personalisierte Anzeigen dürfen nicht auf der Grundlage der Identität oder des Glaubens von Nutzern ausgerichtet werden",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 15,
+        "uniqueOfferCount": 5,
+        "rowsByCountry": {
+          "Schweiz": 10,
+          "Liechtenstein": 5
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 5,
+          "Schweiz": 5
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 15
+        },
+        "channels": {
+          "ONLINE": 15
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15428421386625_67801465684359",
+            "productTitle": "Kreuz-Halskette Gold – Edelstahl-Anhänger | LuxeStyle CH Gold / 60cm"
+          },
+          {
+            "offerId": "shopify_ZZ_16617713402247_67676113502599",
+            "productTitle": "Maitreya Buddha Statue auf Goldkröte | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Alkoholische Getränke",
+        "detail": "Produkte, die gegen anwendbare Gesetze und Branchenstandards für den Verkauf alkoholischer Getränke verstoßen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 16,
+        "uniqueOfferCount": 8,
+        "rowsByCountry": {
+          "Liechtenstein": 16
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 8
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 16
+        },
+        "channels": {
+          "ONLINE": 16
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15522242789761_56204595986817",
+            "productTitle": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15509968880001_56158453825921",
+            "productTitle": "Hopfenfilter aus Edelstahl | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: rechtliche Einschränkungen",
+        "detail": "Die Ausrichtung auf Nutzer basierend auf rechtlich eingeschränkten Inhalten, ist in personalisierten Anzeigen nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 33,
+        "uniqueOfferCount": 17,
+        "rowsByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 25
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 17
+        },
+        "articleStatuses": {
+          "ELIGIBLE_LIMITED": 33
+        },
+        "channels": {
+          "ONLINE": 33
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15522242789761_56204595986817",
+            "productTitle": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15449028297089_55878819021185",
+            "productTitle": "Kühlbeutel für Rotwein | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Lokale Anforderungen",
+        "detail": "Produkte, die gegen lokale Gesetze und Sicherheitsstandards verstoßen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 9,
+        "uniqueOfferCount": 1,
+        "rowsByCountry": {
+          "Schweiz": 6,
+          "Liechtenstein": 3
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 9
+        },
+        "channels": {
+          "ONLINE": 9
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15523818045825_56215831413121",
+            "productTitle": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Verarbeitung des Artikels ausstehend",
+        "detail": "Artikel wird gerade verarbeitet",
+        "severity": "SEVERITY_PENDING",
+        "rowCount": 2,
+        "uniqueOfferCount": 1,
+        "rowsByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "articleStatuses": {
+          "NOT_ELIGIBLE_OR_DISAPPROVED": 2
+        },
+        "channels": {
+          "ONLINE": 2
+        },
+        "samples": [
+          {
+            "offerId": "15452685205889_cj-cjyd270048105ev",
+            "productTitle": "Katzenfestes Einheitssofaüberwurf - Dark Blue Badge-180x300cm"
+          }
+        ]
+      }
+    ]
+  },
+  "second": {
+    "file": {
+      "id": "1DiAaO8gT5PGcn4FU-Ob1jEnZlJhdt52Z",
+      "name": "Produktprobleme_2026-11-14_15-05-44.csv",
+      "mimeType": "text/comma-separated-values",
+      "modifiedTime": "2026-11-14T14:10:10.160Z",
+      "sizeBytes": 306795,
+      "fileRows": 1048,
+      "columns": [
+        "Artikel-ID",
+        "Titel",
+        "Klickpotenzial",
+        "Feedlabel",
+        "Sprache",
+        "Artikelstatus",
+        "Kanäle",
+        "Titel",
+        "Zusätzliche Informationen",
+        "Traffic-Typ",
+        "Land",
+        "Schweregrad des Problems"
+      ],
+      "historicalOnly": true
+    },
+    "distinctIssueGroups": 3,
+    "uniqueOfferIdsAcrossFile": 517,
+    "issues": [
+      {
+        "issueTitle": "Produktpreis fehlt",
+        "detail": "Fügen Sie dem Attribut [price] in Ihrer Produktdatenquelle einen Preis hinzu",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 1034,
+        "uniqueOfferCount": 517,
+        "rowsByCountry": {
+          "Liechtenstein": 517,
+          "Schweiz": 517
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 517,
+          "Schweiz": 517
+        },
+        "samples": [
+          {
+            "offerId": "9114467887319195745",
+            "productTitle": "Besticktes Dekokissen nach Wunsch | LuxeStyle CH",
+            "countries": [
+              "Liechtenstein",
+              "Schweiz"
+            ]
+          },
+          {
+            "offerId": "4611511823321759742",
+            "productTitle": "Verstellbares Space-Cotton Halsband für Haustiere | LuxeStyle",
+            "countries": [
+              "Liechtenstein",
+              "Schweiz"
+            ]
+          }
+        ]
+      },
+      {
+        "issueTitle": "Fehlendes Attribut [availability]",
+        "detail": "Bei mindestens einem Ihrer Produkte fehlt ein erforderliches Gruppenattribut. Wenn Sie beispielsweise die Verfügbarkeit auf „Vorbestellbar“ festlegen, müssen Sie auch ein Verfügbarkeitsdatum angeben. Fügen Sie das fehlende Attribut „[availability]“ in Ihre Produktdaten ein, damit Ihre Produkte auf Google präsentiert werden können",
+        "severity": "SEVERITY_DISAPPROVED",
+        "rowCount": 12,
+        "uniqueOfferCount": 6,
+        "rowsByCountry": {
+          "Schweiz": 6,
+          "Liechtenstein": 6
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 6,
+          "Schweiz": 6
+        },
+        "samples": [
+          {
+            "offerId": "4276443387196066267",
+            "productTitle": "3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlaf",
+            "countries": [
+              "Liechtenstein",
+              "Schweiz"
+            ]
+          },
+          {
+            "offerId": "13519028649621219941",
+            "productTitle": "Regendusche mit 6 Sprüheinstellungen",
+            "countries": [
+              "Liechtenstein",
+              "Schweiz"
+            ]
+          }
+        ]
+      },
+      {
+        "issueTitle": "Verarbeitung des Artikels ausstehend",
+        "detail": "Artikel wird gerade verarbeitet",
+        "severity": "SEVERITY_PENDING",
+        "rowCount": 2,
+        "uniqueOfferCount": 1,
+        "rowsByCountry": {
+          "Schweiz": 1,
+          "Liechtenstein": 1
+        },
+        "uniqueOffersByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "samples": [
+          {
+            "offerId": "15452685205889_cj-cjyd270048105ev",
+            "productTitle": "Katzenfestes Einheitssofaüberwurf - Dark Blue Badge-180x300cm",
+            "countries": [
+              "Liechtenstein",
+              "Schweiz"
+            ]
+          }
+        ]
+      }
+    ],
+    "interpretation": "This 2026-11-14 issue export contains 3 distinct issue-title/detail/severity groups, not 18. Historical snapshot only; not a fresh Merchant Center read or live catalog count."
+  },
+  "union": {
+    "sourceFiles": [
+      {
+        "id": "1gTASf6nKWalF5W3lPdEjqdejRni_HaSa",
+        "name": "Produktprobleme_2026-11-14_15-04-40.csv",
+        "mimeType": "text/comma-separated-values",
+        "modifiedTime": "2026-11-14T14:10:10.307Z",
+        "sizeBytes": 1255239,
+        "md5Local": "d7355b590a592c63f0bca5ddfe3e17b8",
+        "dataRows": 3555,
+        "columns": [
+          "Artikel-ID",
+          "Titel",
+          "Klickpotenzial",
+          "Feedlabel",
+          "Sprache",
+          "Artikelstatus",
+          "Kanäle",
+          "Titel",
+          "Zusätzliche Informationen",
+          "Traffic-Typ",
+          "Land",
+          "Schweregrad des Problems"
+        ],
+        "historicalOnly": true
+      },
+      {
+        "id": "1DiAaO8gT5PGcn4FU-Ob1jEnZlJhdt52Z",
+        "name": "Produktprobleme_2026-11-14_15-05-44.csv",
+        "mimeType": "text/comma-separated-values",
+        "modifiedTime": "2026-11-14T14:10:10.160Z",
+        "sizeBytes": 306795,
+        "md5Local": "7e210dd64fe7bb5aa1d402bf5f1e2999",
+        "dataRows": 1048,
+        "columns": [
+          "Artikel-ID",
+          "Titel",
+          "Klickpotenzial",
+          "Feedlabel",
+          "Sprache",
+          "Artikelstatus",
+          "Kanäle",
+          "Titel",
+          "Zusätzliche Informationen",
+          "Traffic-Typ",
+          "Land",
+          "Schweregrad des Problems"
+        ],
+        "historicalOnly": true
+      }
+    ],
+    "dedupKey": "(issueTitle, detail, severity, offerId, country)",
+    "distinctIssueGroups": 19,
+    "deduplicatedOfferCountryIssueRecords": 3039,
+    "uniqueOfferIdsAcrossUnion": 2005,
+    "issues": [
+      {
+        "issueTitle": "Produktpreis fehlt",
+        "detail": "Fügen Sie dem Attribut [price] in Ihrer Produktdatenquelle einen Preis hinzu",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 1034,
+        "uniqueOfferCount": 517,
+        "offersByCountry": {
+          "Liechtenstein": 517,
+          "Schweiz": 517
+        },
+        "recordsByCountry": {
+          "Schweiz": 517,
+          "Liechtenstein": 517
+        },
+        "samples": [
+          {
+            "offerId": "9114467887319195745",
+            "productTitle": "Besticktes Dekokissen nach Wunsch | LuxeStyle CH"
+          },
+          {
+            "offerId": "4611511823321759742",
+            "productTitle": "Verstellbares Space-Cotton Halsband für Haustiere | LuxeStyle"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Für einige Länder fehlen Versandinformationen",
+        "detail": "Ihre Produkte sind so eingestellt, dass sie in Ländern präsentiert werden, für die keine Versandinformationen vorliegen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 995,
+        "uniqueOfferCount": 995,
+        "offersByCountry": {
+          "Deutschland": 995
+        },
+        "recordsByCountry": {
+          "Deutschland": 995
+        },
+        "samples": [
+          {
+            "offerId": "15493863997825_cj-cjwy263443935ir",
+            "productTitle": "Herren-Hoodie mit Fleecefutter - AK Weiss / 3XL"
+          },
+          {
+            "offerId": "15485490528641_cj-cjns303359024xc",
+            "productTitle": "Peep-Toe Sandalen mit Blockabsatz und Schleife - Karamell / 43"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Anzeigen-Overlay auf Bild",
+        "detail": "Werbetext, störende Elemente oder Rahmen sind auf Produktbildern nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 229,
+        "uniqueOfferCount": 121,
+        "offersByCountry": {
+          "Liechtenstein": 108,
+          "Schweiz": 121
+        },
+        "recordsByCountry": {
+          "Schweiz": 121,
+          "Liechtenstein": 108
+        },
+        "samples": [
+          {
+            "offerId": "15450853998977_16090974970677306609",
+            "productTitle": "PHOERA Magnificent Metals Liquid Lidschatten - Baby Rosé"
+          },
+          {
+            "offerId": "15449425314177_cj-cjyd170242606fu",
+            "productTitle": "Portabler Luftreiniger Aschenbecher - Quadratisch Blau"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: Schwierigkeiten im privaten Bereich",
+        "detail": "Personalisierte Anzeigen dürfen nicht verwendet werden, um Schwierigkeiten oder Probleme von Personen (etwa gesundheitliche Probleme, finanzielle Lage, Beziehungsprobleme oder Schwierigkeiten im privaten Bereich) auszunutzen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 314,
+        "uniqueOfferCount": 159,
+        "offersByCountry": {
+          "Liechtenstein": 155,
+          "Schweiz": 159
+        },
+        "recordsByCountry": {
+          "Schweiz": 159,
+          "Liechtenstein": 155
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15448824250753_55877778440577",
+            "productTitle": "Brustpump-Spray für Stillzeit | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15448823366017_55877777490305",
+            "productTitle": "Gelenkpflege Salbe | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Eingeschränkte Inhalte nur für Erwachsene",
+        "detail": "Inhalte nur für Erwachsene, die Nacktheit oder sexuelle Handlungen zeigen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 52,
+        "uniqueOfferCount": 27,
+        "offersByCountry": {
+          "Liechtenstein": 25,
+          "Schweiz": 27
+        },
+        "recordsByCountry": {
+          "Schweiz": 27,
+          "Liechtenstein": 25
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15494642008449_56083757662593",
+            "productTitle": "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M"
+          },
+          {
+            "offerId": "shopify_ZZ_15447935222145_56053000044929",
+            "productTitle": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: Sexuelle Interessen",
+        "detail": "Produkte dürfen nicht anhand von sexuellen Interessen ausgerichtet werden",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 52,
+        "uniqueOfferCount": 27,
+        "offersByCountry": {
+          "Liechtenstein": 25,
+          "Schweiz": 27
+        },
+        "recordsByCountry": {
+          "Schweiz": 27,
+          "Liechtenstein": 25
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15494642008449_56083757662593",
+            "productTitle": "Durchsichtige Nachtrobe | LuxeStyle CH Schwarz / M"
+          },
+          {
+            "offerId": "shopify_ZZ_15447935222145_56053000044929",
+            "productTitle": "3er-Pack Sheer Tights 40D mit T-Crotch | LuxeStyle CH Schwarz / XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Bild ist zu klein",
+        "detail": "Ihr Bild unterschreitet die aktuelle Mindestgröße. Aktualisieren Sie es auf mindestens 500 × 500 Pixel, um die Anforderungen für 2027 zu erfüllen",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 142,
+        "uniqueOfferCount": 71,
+        "offersByCountry": {
+          "Liechtenstein": 71,
+          "Schweiz": 71
+        },
+        "recordsByCountry": {
+          "Schweiz": 71,
+          "Liechtenstein": 71
+        },
+        "samples": [
+          {
+            "offerId": "15478787834241_cj-cjyd285378016pk",
+            "productTitle": "Figurformender Einteiler mit Bauchkontrolle - Nude / S"
+          },
+          {
+            "offerId": "15478787834241_cj-cjyd285378014nm",
+            "productTitle": "Figurformender Einteiler mit Bauchkontrolle - Braun / 3XL"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Tabakprodukte und Zubehör für Tabakkonsum",
+        "detail": "Tabak und tabakhaltige Produkte, ihre Bestandteile und ähnliche Zubehörteile sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 26,
+        "uniqueOfferCount": 18,
+        "offersByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 18
+        },
+        "recordsByCountry": {
+          "Schweiz": 18,
+          "Liechtenstein": 8
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15483934376321_56026870874497",
+            "productTitle": "Doppeldisplay-Halter | LuxeStyle CH Silber"
+          },
+          {
+            "offerId": "shopify_ZZ_15483793244545_56026399441281",
+            "productTitle": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 4 Stück"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Zusätzlicher Text gefunden",
+        "detail": "Werbetext oder irrelevanter Text in Produktattributen ist nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 36,
+        "uniqueOfferCount": 18,
+        "offersByCountry": {
+          "Liechtenstein": 18,
+          "Schweiz": 18
+        },
+        "recordsByCountry": {
+          "Schweiz": 18,
+          "Liechtenstein": 18
+        },
+        "samples": [
+          {
+            "offerId": "15496264679809_cj-cjpb139647947uf",
+            "productTitle": "Herren Fleece Sport-Freizeitschuhe - Grau Hot Sale / 43"
+          },
+          {
+            "offerId": "15496264679809_cj-cjpb139647942pk",
+            "productTitle": "Herren Fleece Sport-Freizeitschuhe - Beige Hot Sale / 44"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Inhalte nur für Erwachsene",
+        "detail": "Produkte mit Inhalten, Beschreibungen oder Bildern nur für Erwachsene, z. B. Pornografie, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 12,
+        "uniqueOfferCount": 6,
+        "offersByCountry": {
+          "Liechtenstein": 6,
+          "Schweiz": 6
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 6,
+          "Schweiz": 6
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15524868424065_67871155421575",
+            "productTitle": "Brustgeschirr mit Leine für Haustiere | LuxeStyle CH Hellviolett / Einzeln, Brust Rücken LXL"
+          },
+          {
+            "offerId": "shopify_ZZ_16604050719111_67613452337543",
+            "productTitle": "TPR-Aktivspielzeug für Hunde | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Schusswaffen und Schusswaffenteile",
+        "detail": "Werbung für bestimmte funktionsfähige Waffen und deren Teile sowie Anleitungen für den Zusammenbau sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 14,
+        "uniqueOfferCount": 9,
+        "offersByCountry": {
+          "Liechtenstein": 5,
+          "Schweiz": 9
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 5,
+          "Schweiz": 9
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15451639677313_67790210171271",
+            "productTitle": "Game Gunstock für Nintendo Switch | LuxeStyle CH Schwarz"
+          },
+          {
+            "offerId": "shopify_ZZ_15504227402113_67814784172423",
+            "productTitle": "Bluetooth Pedometer-Uhr | LuxeStyle CH Schwarz"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Verkauf lebender Tiere",
+        "detail": "Lebende Tiere und Dienstleistungen für deren Transport sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 8,
+        "uniqueOfferCount": 8,
+        "offersByCountry": {
+          "Schweiz": 8
+        },
+        "recordsByCountry": {
+          "Schweiz": 8
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_16604860711303_67616994492807",
+            "productTitle": "Katzenpullover für Herbst und Winter | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15524860756353_56222359290241",
+            "productTitle": "Geflochtene Hundeleine | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Produktseite nicht verfügbar",
+        "detail": "Achten Sie darauf, dass Ihre Produktseite über Desktop- und Mobilgeräte aufgerufen werden kann und das Crawling durch Google nicht eingeschränkt ist",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 6,
+        "uniqueOfferCount": 3,
+        "offersByCountry": {
+          "Liechtenstein": 3,
+          "Schweiz": 3
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 3,
+          "Schweiz": 3
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15516154462593_56177866178945",
+            "productTitle": "Smartwatch mit Kamera und GPS für Kinder | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15516156395905_56177868177793",
+            "productTitle": "i9L Kinder 4G Videoanruf-Uhr | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Fehlendes Attribut [availability]",
+        "detail": "Bei mindestens einem Ihrer Produkte fehlt ein erforderliches Gruppenattribut. Wenn Sie beispielsweise die Verfügbarkeit auf „Vorbestellbar“ festlegen, müssen Sie auch ein Verfügbarkeitsdatum angeben. Fügen Sie das fehlende Attribut „[availability]“ in Ihre Produktdaten ein, damit Ihre Produkte auf Google präsentiert werden können",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 72,
+        "uniqueOfferCount": 36,
+        "offersByCountry": {
+          "Liechtenstein": 36,
+          "Schweiz": 36
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 36,
+          "Schweiz": 36
+        },
+        "samples": [
+          {
+            "offerId": "11799311561588923093",
+            "productTitle": "4-in-1 Ladestation für Switch Joy-Cons | LuxeStyle CH"
+          },
+          {
+            "offerId": "11930962514331867978",
+            "productTitle": "Kreuzstich-Set \"Himmel-Liebhaber\" | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Werbung: Identität und Glaube",
+        "detail": "Personalisierte Anzeigen dürfen nicht auf der Grundlage der Identität oder des Glaubens von Nutzern ausgerichtet werden",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 10,
+        "uniqueOfferCount": 5,
+        "offersByCountry": {
+          "Liechtenstein": 5,
+          "Schweiz": 5
+        },
+        "recordsByCountry": {
+          "Schweiz": 5,
+          "Liechtenstein": 5
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15428421386625_67801465684359",
+            "productTitle": "Kreuz-Halskette Gold – Edelstahl-Anhänger | LuxeStyle CH Gold / 60cm"
+          },
+          {
+            "offerId": "shopify_ZZ_16617713402247_67676113502599",
+            "productTitle": "Maitreya Buddha Statue auf Goldkröte | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Alkoholische Getränke",
+        "detail": "Produkte, die gegen anwendbare Gesetze und Branchenstandards für den Verkauf alkoholischer Getränke verstoßen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 8,
+        "uniqueOfferCount": 8,
+        "offersByCountry": {
+          "Liechtenstein": 8
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 8
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15522242789761_56204595986817",
+            "productTitle": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15509968880001_56158453825921",
+            "productTitle": "Hopfenfilter aus Edelstahl | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Personalisierte Anzeigen: rechtliche Einschränkungen",
+        "detail": "Die Ausrichtung auf Nutzer basierend auf rechtlich eingeschränkten Inhalten, ist in personalisierten Anzeigen nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 25,
+        "uniqueOfferCount": 17,
+        "offersByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 17
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 8,
+          "Schweiz": 17
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15522242789761_56204595986817",
+            "productTitle": "Edelstahl Rührspaten für Maische und Würze | LuxeStyle CH"
+          },
+          {
+            "offerId": "shopify_ZZ_15449028297089_55878819021185",
+            "productTitle": "Kühlbeutel für Rotwein | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Lokale Anforderungen",
+        "detail": "Produkte, die gegen lokale Gesetze und Sicherheitsstandards verstoßen, sind nicht zulässig",
+        "severity": "SEVERITY_DISAPPROVED",
+        "deduplicatedOfferCountryRecords": 2,
+        "uniqueOfferCount": 1,
+        "offersByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "recordsByCountry": {
+          "Schweiz": 1,
+          "Liechtenstein": 1
+        },
+        "samples": [
+          {
+            "offerId": "shopify_ZZ_15523818045825_56215831413121",
+            "productTitle": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH"
+          }
+        ]
+      },
+      {
+        "issueTitle": "Verarbeitung des Artikels ausstehend",
+        "detail": "Artikel wird gerade verarbeitet",
+        "severity": "SEVERITY_PENDING",
+        "deduplicatedOfferCountryRecords": 2,
+        "uniqueOfferCount": 1,
+        "offersByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "recordsByCountry": {
+          "Liechtenstein": 1,
+          "Schweiz": 1
+        },
+        "samples": [
+          {
+            "offerId": "15452685205889_cj-cjyd270048105ev",
+            "productTitle": "Katzenfestes Einheitssofaüberwurf - Dark Blue Badge-180x300cm"
+          }
+        ]
+      }
+    ],
+    "interpretation": "Union of two historical Merchant diagnostics CSV exports modified 2026-11-14. Contains historical records for 19 distinct title/detail/severity groups (18 disapproved issue groups plus 1 pending-processing group), not a complete live catalog scan or current status."
+  },
+  "checksums": [
+    {
+      "name": "first-export.csv",
+      "sha256": "efb9c65fc438411504552852c22df6c9ac41307b6659f16068dd8c948ed133ae",
+      "bytes": 1255239
+    },
+    {
+      "name": "full-export.csv",
+      "sha256": "ac69dd7f03e17dd233b3970f328143ebd86276943fa91089043efd67ea6ac140",
+      "bytes": 306795
+    }
+  ],
+  "historicalOnly": true,
+  "liveFull18GroupVerification": false,
+  "firstIdCorrection": "Initial lookup used a mistyped ID and returned404; exact user ID succeeded. Do not claim first file missing."
+}

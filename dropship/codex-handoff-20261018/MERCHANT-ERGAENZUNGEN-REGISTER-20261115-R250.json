@@ -1,0 +1,1090 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "merchantAccount": "5797470070",
+  "source": "10795447118",
+  "primarySource": "10678939025",
+  "sourceType": "supplementalProductDataSource",
+  "sourceInput": "API",
+  "sourceLanguageFeedRestriction": null,
+  "recordScope": "Exact existing de/CH offers only; no primary offer creation",
+  "nextRunRule": "Use existing source; never recreate on stale unfiltered listings. At next existing run, verify exact current Shopify variant price/orderability and existing override. If changed, update only this override or remove only this supplemental record. No automatic full Shopify sync deployed. Do not clear a primary product or blanket exclusions.",
+  "rollback": {
+    "action": "delete_product",
+    "connector": "google_merchant",
+    "account": "5797470070",
+    "data_source": "10795447118",
+    "note": "Only supplemental values removed; existing primary offer preserved. No rollback executed."
+  },
+  "records": [
+    {
+      "offerId": "10283932347178265394",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15523176841601",
+      "shopifyVariantId": "56210226708865",
+      "sku": "CJMJ173930601AZ",
+      "attributes": {
+        "price": "56.90",
+        "currency": "CHF"
+      },
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "nonImpactingNotice": "unit pricing measure missing, NOT_IMPACTED; no volume inferred"
+    },
+    {
+      "offerId": "10301937935043325310",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15493244191105",
+      "shopifyVariantId": "56075316363649",
+      "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "availabilityMeaning": "Publicly orderable, untracked/CONTINUE. No physical-stock or delivery-time promise.",
+      "confirmedState": "ATTRIBUTE_PRESENT_PENDING_GOOGLE_LANDING_PAGE_CRAWL",
+      "socialHold": "rueckhol tag remains; no Social use authorised by this record."
+    },
+    {
+      "offerId": "10784371818943082880",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15496378417537",
+      "shopifyVariantId": "67821514326407",
+      "sku": "CJYD279122109IR",
+      "attributes": {
+        "price": "16.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200?variant=67821514326407&country=CH&currency=CHF"
+      },
+      "binding": "Existing Merchant image SHA256 equals unique public variant image and CJ SKU image. Price exact, no parent minimum.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "imageOrProductChangesByThisFeedUpdate": false
+    },
+    {
+      "offerId": "10073494240929787683",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15497440854401",
+      "shopifyVariantId": "67821433094535",
+      "sku": "CJZS115447505EV",
+      "attributes": {
+        "title": "Malen nach Zahlen – Motiv B, 50 × 65 cm | LuxeStyle",
+        "price": "24.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/diy-digital-olgemalde-zum-selbermalen-418496?variant=67821433094535&country=CH&currency=CHF"
+      },
+      "binding": "Intentional transparent selection of existing ModelB50x65cm offer. Not a reconstruction of an unknown previous size. Exact current CJ/native/public JSONLD evidence.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "imageOrProductChangesByThisFeedUpdate": false
+    },
+    {
+      "offerId": "11024212604633690805",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15504105898369",
+      "shopifyVariantId": "56130776465793",
+      "sku": "CJ-1392297400873390080",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Single ACTIVE published and publicly orderable variant. untracked/CONTINUE; no physical stock promise.",
+      "confirmedState": "ATTRIBUTE_VERIFIED_GOOGLE_LANDING_PAGE_CRAWL_PENDING",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:07:48.871089Z",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "attribute": "",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing"
+        }
+      ],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "10453153534875904667",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15495082180993",
+      "shopifyVariantId": "56086633283969",
+      "sku": "CJ-2406260148291621100",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Single ACTIVE published and publicly orderable variant. untracked/CONTINUE; no physical stock promise.",
+      "confirmedState": "ATTRIBUTE_VERIFIED_GOOGLE_LANDING_PAGE_CRAWL_PENDING",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:07:50.164779Z",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "attribute": "",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing"
+        }
+      ],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "14250141006730270187",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15497711649153",
+      "shopifyVariantId": "56101102387585",
+      "sku": "CJ-1370216205780127744",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Single ACTIVE published and publicly orderable variant. untracked/CONTINUE; no physical stock promise.",
+      "confirmedState": "ATTRIBUTE_VERIFIED_GOOGLE_LANDING_PAGE_CRAWL_PENDING",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:21:23.822731Z",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "attribute": "",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing"
+        }
+      ],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "14657792726060214548",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15496394637697",
+      "shopifyVariantId": "56094554816897",
+      "sku": "CJ-2603140257481624800",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Single ACTIVE published and publicly orderable variant. untracked/CONTINUE; no physical stock promise.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:21:25.102440Z",
+      "remainingIssues": [],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "10081953211512946639",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "16648376779143",
+      "shopifyVariantId": "67843394535815",
+      "sku": "CJNS154178002BY",
+      "attributes": {
+        "title": "Rucksack – Grün, mit Anhänger | LuxeStyle CH",
+        "price": "17.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/klassischer-rucksack-fur-schule-und-alltag-217728?variant=67843394535815&country=CH&currency=CHF"
+      },
+      "binding": "Intentional explicit current variant with true current SKU/image, not minimum price or reconstruction of removed legacy variant. German feed target canonical German productURL.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:11:56.991756Z",
+      "remainingIssues": [],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "10278459490461182421",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15501915750785",
+      "shopifyVariantId": "67866334691719",
+      "sku": "CJJJCWGX00878-Grey-L",
+      "attributes": {
+        "title": "Hundejacke – Grau, Grösse L | LuxeStyle CH",
+        "price": "24.90",
+        "currency": "CHF",
+        "link": "https://luxestyle.ch/products/wetterfestes-hundehemd-148771?variant=67866334691719&country=CH&currency=CHF",
+        "description": "Gefütterte Hundejacke in Grau, Grösse L. Die Produktangabe nennt Oxford-Aussenstoff, ein Innenfutter und eine als «PP Cotton» bezeichnete Füllung. Die genaue Faserzusammensetzung und verbindliche Körpermassgrenzen in Zentimetern sind nicht bestätigt."
+      },
+      "binding": "Intentional explicit current variant with true current SKU/image, not minimum price or reconstruction of removed legacy variant. German feed target canonical German productURL.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T22:00:53.203641Z",
+      "remainingIssues": [],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "1031734357584210155",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15484500607361",
+      "shopifyVariantId": "67841454113159",
+      "sku": "CJYD299119803CX",
+      "attributes": {
+        "title": "Picknicktasche – Mattschwarz, Set 1 | LuxeStyle CH",
+        "link": "https://luxestyle.ch/products/kuhl-und-picknicktasche-10l-615100?variant=67841454113159&country=CH&currency=CHF",
+        "price": "21.90",
+        "currency": "CHF"
+      },
+      "binding": "Intentional explicit selection of an existing exact variant; not guessed parent minimum or recovered unknown old variant.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:37:18.859305Z",
+      "remainingIssues": [],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "10018213324745296287",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "16615805878663",
+      "shopifyVariantId": "67801648038279",
+      "sku": "CJYD253760005EV",
+      "attributes": {
+        "title": "Wandleuchte – einflammig, Warmlicht | LuxeStyle CH",
+        "link": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700?variant=67801648038279&country=CH&currency=CHF",
+        "price": "47.90",
+        "currency": "CHF"
+      },
+      "binding": "Intentional explicit selection of an existing exact variant; not guessed parent minimum or recovered unknown old variant.",
+      "confirmedState": "FREE_LISTINGS_APPROVED_CH_LI",
+      "evidenceRun": "R249",
+      "googleLastUpdateDate": "2026-11-15T21:37:19.910982Z",
+      "remainingIssues": [
+        {
+          "code": "missing_potentially_required_attribute",
+          "attribute": "certification",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action"
+        }
+      ],
+      "imageOrExclusionChangesByThisUpdate": false
+    },
+    {
+      "offerId": "10424180612693210499",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15500073730433",
+      "shopifyVariantId": "56106678124929",
+      "sku": "CJ-13CC8D5F-9369-4B38-A176-27746A9399DC",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_PENDING_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "14628552787511354609",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15485541908865",
+      "shopifyVariantId": "56033000292737",
+      "sku": "CJ-2608040633051626300",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_APPROVED_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "certification",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing certification [certification] attribute",
+          "detail": "Consider adding this attribute to comply with local laws and regulations",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [
+        {
+          "path": "/productAttributes/additionalImageLinks/0",
+          "after": "http://luxestyle.ch/cdn/shop/files/d5a5d5b0-2ab5-4171-8058-ab382f12380c_trans.jpg?v=1785834821"
+        }
+      ],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "10190093650697108457",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15493119771009",
+      "shopifyVariantId": "56074490052993",
+      "sku": "CJ-2512190704091607600",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_PENDING_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "11153645285677520297",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15500106531201",
+      "shopifyVariantId": "56106751918465",
+      "sku": "CJ-2509180310421611800",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_PENDING_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "11475833036656580588",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15506298372481",
+      "shopifyVariantId": "56140780634497",
+      "sku": "CJ-1798905979556474880",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_PENDING_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "11930962514331867978",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15501882917249",
+      "shopifyVariantId": "56115040878977",
+      "sku": "CJ-3E75B5A9-2F24-4F01-8FFA-6ECA770218E2",
+      "attributes": {
+        "availability": "IN_STOCK"
+      },
+      "binding": "Exact existing single variant, Shopify and public current orderability; untracked/CONTINUE zero quantity is not a physical stock statement. No tags/exclusions or stock/price changed.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_APPROVED_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "10331114122872641331",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15447596499329",
+      "shopifyVariantId": "56063650038145",
+      "sku": "CJ-CJLY296573702BY",
+      "attributes": {
+        "title": "Abendkleid – Rosarot, Grösse M | LuxeStyle CH",
+        "link": "https://luxestyle.ch/products/abendkleid-mit-perlen-ruschen-604000?variant=56063650038145&country=CH&currency=CHF",
+        "price": "23.90",
+        "currency": "CHF"
+      },
+      "binding": "Conscious root-selected exact current colour and sizeM offer; actual existing image same variant media. Not reconstruction of unknown oldsize and not minimum price. No Shop prices or variants changed. Parent variant sampling partial for pullover; selected variant freshly read directly byID.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_APPROVED_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    },
+    {
+      "offerId": "10704451301477423979",
+      "language": "de",
+      "feedLabel": "CH",
+      "shopifyProductId": "15453762617729",
+      "shopifyVariantId": "67663227617671",
+      "sku": "CJMY297129252ZA",
+      "attributes": {
+        "title": "Pullover – Orange, Grösse M | LuxeStyle CH",
+        "link": "https://luxestyle.ch/products/pastellfarbener-casual-pullover-630900?variant=67663227617671&country=CH&currency=CHF",
+        "price": "15.90",
+        "currency": "CHF"
+      },
+      "binding": "Conscious root-selected exact current colour and sizeM offer; actual existing image same variant media. Not reconstruction of unknown oldsize and not minimum price. No Shop prices or variants changed. Parent variant sampling partial for pullover; selected variant freshly read directly byID.",
+      "confirmedState": "ATTRIBUTES_CONFIRMED_CH_APPROVED_LI_MISSING_SHIPPING_SERVICE",
+      "evidenceRun": "R250",
+      "remainingIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "nonTargetChangesObserved": [],
+      "ownImageOrExclusionParameters": false
+    }
+  ],
+  "updatedByRun": "R250",
+  "previousRegistry": "MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R249.json",
+  "previousRegistryGitSha": "2394bfed9e25ad11b064e809c1c9ab6150dd88be",
+  "latestStatusByOffer": {
+    "10283932347178265394": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "unit pricing measure",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing unit pricing measure",
+          "detail": "Missing or invalid unit pricing measure [unit_pricing_measure] attributes may be present in your product data",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T20:13:03.491613Z"
+    },
+    "10301937935043325310": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH",
+        "LI"
+      ],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T20:13:17.787132Z"
+    },
+    "10784371818943082880": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T20:33:56.816231Z"
+    },
+    "10073494240929787683": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T20:42:21.341741Z"
+    },
+    "11024212604633690805": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH",
+        "LI"
+      ],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T21:07:48.871089Z"
+    },
+    "10453153534875904667": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH",
+        "LI"
+      ],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T21:07:50.164779Z"
+    },
+    "14250141006730270187": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH"
+      ],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T21:21:23.822731Z"
+    },
+    "14657792726060214548": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T21:21:25.102440Z"
+    },
+    "10081953211512946639": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T21:11:56.991756Z"
+    },
+    "10278459490461182421": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T22:00:53.203641Z"
+    },
+    "1031734357584210155": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [],
+      "lastUpdateDate": "2026-11-15T21:37:18.859305Z"
+    },
+    "10018213324745296287": {
+      "approvedCountries": [
+        "CH",
+        "LI"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [],
+      "itemLevelIssues": [
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "certification",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing certification [certification] attribute",
+          "detail": "Consider adding this attribute to comply with local laws and regulations",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T21:37:19.910982Z"
+    },
+    "10424180612693210499": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH"
+      ],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:20:16.821714Z"
+    },
+    "14628552787511354609": {
+      "approvedCountries": [
+        "CH"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        },
+        {
+          "code": "missing_potentially_required_attribute",
+          "severity": "NOT_IMPACTED",
+          "resolution": "merchant_action",
+          "attribute": "certification",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing certification [certification] attribute",
+          "detail": "Consider adding this attribute to comply with local laws and regulations",
+          "documentation": "https://support.google.com/merchants/answer/10009686",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:21:22.646344Z"
+    },
+    "10190093650697108457": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH"
+      ],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:21:25.158451Z"
+    },
+    "11153645285677520297": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH"
+      ],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:21:27.359903Z"
+    },
+    "11475833036656580588": {
+      "approvedCountries": [],
+      "pendingCountries": [
+        "CH"
+      ],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "landing_page_pending_crawl",
+          "severity": "DISAPPROVED",
+          "resolution": "pending_processing",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Pending online store check",
+          "detail": "One or more of your products have not yet been crawled",
+          "documentation": "https://support.google.com/merchants/answer/14987567",
+          "applicableCountries": [
+            "CH",
+            "LI"
+          ],
+          "attribute": ""
+        },
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:21:30.872001Z"
+    },
+    "11930962514331867978": {
+      "approvedCountries": [
+        "CH"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:21:33.118821Z"
+    },
+    "10331114122872641331": {
+      "approvedCountries": [
+        "CH"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:23:59.904869Z"
+    },
+    "10704451301477423979": {
+      "approvedCountries": [
+        "CH"
+      ],
+      "pendingCountries": [],
+      "disapprovedCountries": [
+        "LI"
+      ],
+      "itemLevelIssues": [
+        {
+          "code": "missing_shipping_no_shipping_service_defined_for_country",
+          "severity": "DISAPPROVED",
+          "resolution": "merchant_action",
+          "attribute": "shipping",
+          "reportingContext": "FREE_LISTINGS",
+          "description": "Missing shipping info in some countries",
+          "detail": "Your products are set to show in countries that lack shipping information",
+          "documentation": "https://support.google.com/merchants/answer/12157544",
+          "applicableCountries": [
+            "LI"
+          ]
+        }
+      ],
+      "lastUpdateDate": "2026-11-15T22:24:02.583391Z"
+    }
+  },
+  "latestStatusRule": "latestStatusByOffer is the fresh status. Older confirmedState fields remain historical evidence; do not treat old country approval as current without this map.",
+  "currentRecordCount": 20,
+  "prior12RecordsPreserved": true
+}

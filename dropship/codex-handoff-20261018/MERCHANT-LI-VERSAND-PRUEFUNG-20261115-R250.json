@@ -1,0 +1,1796 @@
+{
+  "assessment": {
+    "review": "read-only shipping truth check for Merchant Center missing_shipping_no_shipping_service_defined_for_country on offer 10424180612693210499 / Nagel-Haftkleber",
+    "shop_domain": "luxestyle.ch",
+    "shopify_store_id": "94368563585",
+    "date": "2026-11-15",
+    "public_policy": {
+      "url": "https://luxestyle.ch/policies/shipping-policy",
+      "http_status": 200,
+      "title": "Versand\n &ndash; LuxeStyle",
+      "declares_delivery_to_switzerland_and_liechtenstein": true,
+      "li_rate": "CHF 14.90 per order; no free shipping for Liechtenstein",
+      "ch_free_shipping_threshold": "CHF 50 after discounts, within Switzerland",
+      "li_delivery_estimate": "typically 15–45 days; policy calls these estimates, not guarantees",
+      "evidence": [
+        "   \n\n     \n  Direkt zum Inhalt\n \n\n\n\n     \n       \n \n\n\n   \n\n\n  \n \n  \n\n   \n    \n        \n    \n   \n \n \n \n\n\n \n    \n   \n \n \n \n\n\n \n\n\n\n    \n\n     \n      \n \n     \n      🇨🇭 Lieferung nur in die Schweiz & nach Liechtenstein · 🚚 in der Schweiz gratis ab CHF 50 nach Rabatt\n     \n\n    \n   \n\n\n\n \n     \n      –10% auf deine erste Bestellung mit Code WELCOME10\n     \n\n    \n   \n\n\n\n \n     \n      ↩️ 30 Tage Rückgabe (ausser selbst gestaltete Artikel)",
+        "    Retro &amp; Vintage                    CHF    /     DE                                Region und Sprache                               Country/Region        Keine Ergebnisse gefunden              Liechtenstein    CHF CHF                Schweiz    CHF CHF                  Sprache    Sprache     Deutsch    Français                                  \n\n\n     \n\n  \n\n \n\n\n\n\n\n            \n        \n      \n        \n          \n           ",
+        "      \n       \n         \n          Country/Region\n         \n        \n         \n          \n           \n             Keine Ergebnisse gefunden \n               \n                  \n \n \n \n                 Liechtenstein \n                 \n                  CHF\n                  CHF \n               \n               \n                  \n \n \n \n                 Schweiz \n                 \n                  CHF\n                  CHF \n         ",
+        "eferzeiten und was passiert, wenn einmal etwas nicht wie geplant läuft. Wir machen bewusst realistische Angaben, damit du weisst, woran du bist. \n\n Liefergebiet \n Wir liefern  in die Schweiz und nach Liechtenstein . Ein Versand in andere Länder (z. B. in die EU oder in die USA) ist derzeit nicht möglich. Bitte gib bei der Bestellung eine gültige Lieferadresse in der Schweiz oder in Liechtenstein an. \n\n Versandkosten \n \n \n Gratis-",
+        "hweiz und nach Liechtenstein . Ein Versand in andere Länder (z. B. in die EU oder in die USA) ist derzeit nicht möglich. Bitte gib bei der Bestellung eine gültige Lieferadresse in der Schweiz oder in Liechtenstein an. \n\n Versandkosten \n \n \n Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten  (innerhalb der Schweiz). \n \n Liechtenstein:  CHF 14.90 pro Bestellung, ohne Gratisversand. \n Bei einem Bestell",
+        "ne gültige Lieferadresse in der Schweiz oder in Liechtenstein an. \n\n Versandkosten \n \n \n Gratis-Standardversand ab einem Bestellwert von CHF 50.– nach Abzug von Rabatten  (innerhalb der Schweiz). \n \n Liechtenstein:  CHF 14.90 pro Bestellung, ohne Gratisversand. \n Bei einem Bestellwert (nach Abzug von Rabatten) unter CHF 50.– werden die Versandkosten transparent im Warenkorb und im Checkout angezeigt, bevor du die Bestellung verbi",
+        "f Bestellung  (personalisierte Artikel, Poster, Textilien):  7–14 Werktage , inklusive Produktion. \n \n Direktversand ab Lieferantenlager  (der grösste Teil des Sortiments):  10–20 Werktage . \n \n Nach Liechtenstein:  in der Regel  15–45 Tage  (eigene Versandlinie, länger als innerhalb der Schweiz). \n \n Werktage sind Montag bis Freitag, ausgenommen gesetzliche Feiertage. Die genannten Zeiten sind Richtwerte und keine garantierten Z",
+        "           \n            \n           \n        \n       \n     \n  \n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n   \n      Kontakt  LuxeStyle · 3123 Belp, Schweiz  info@luxestyle.ch  ·  Impressum  Versand in die Schweiz und nach Liechtenstein ·  Versand  ·  30 Tage Rückgabe (ausser selbst gestaltete Artikel)  \n   \n\n\n\n\n\n\n\n   \n \n\n\n\n\n  \n\n  \n \n   \n   Bezahlen mit \n      Twint          Visa      \n    Mastercard        \n    American Express      \n    PayPal       "
+      ]
+    },
+    "product_specific_shopify_delivery_profile": {
+      "product_id": "gid://shopify/Product/15500073730433",
+      "variant_id": "gid://shopify/ProductVariant/56106678124929",
+      "profile_id": "gid://shopify/DeliveryProfile/132124180865",
+      "profile_name": "Allgemeines Profil",
+      "profile_is_default": true,
+      "covers_all_items": false,
+      "locations_without_rates_count": 1,
+      "liechtenstein_zone": "Liechtenstein (LI)",
+      "method_name": "Standard Liechtenstein",
+      "method_active": true,
+      "method_condition": "none",
+      "rate": "CHF 14.90",
+      "rate_type": "DeliveryRateDefinition",
+      "finding": "The exact Shopify variant is assigned to this profile, and its profile has an active LI rate matching the public policy. This is evidence of an existing Shopify LI service/rate."
+    },
+    "country_ch_configuration_observation": {
+      "active_standard": "CHF 7.00, no condition",
+      "active_free_rate": "CHF 0.00 for cart total >= CHF 45.00",
+      "inactive_free_rate": "CHF 0.00 for cart total >= CHF 50.00",
+      "public_policy_threshold": "CHF 50 after discounts",
+      "note": "Intentional owner-directed public CHF50/internal CHF45 threshold difference; preserved, not treated as a new defect."
+    },
+    "gmc_error_assessment": {
+      "do_not_conclude": "Do not conclude LI is missing from Shopify or invent a new price/rate.",
+      "known": "Public policy and the Shopify profile assigned to this product both document an active CHF 14.90 LI rate.",
+      "unknown": "Why Merchant Center currently reports no LI shipping service. The Shopify delivery profile is not proof that a matching Merchant Center shipping service is active/mapped for source 10678939025; root should treat the GMC shipping-service configuration/mapping as unknown until inspected in GMC.",
+      "action": "No shipping settings, feed attributes, exclusions, or prices changed."
+    },
+    "evidence_files": [
+      "public-policy-proofs.json",
+      "shopify-delivery-profiles.json",
+      "nail-variant-delivery-profile.json",
+      "schema-discovery.json"
+    ]
+  },
+  "shopifyProfiles": {
+    "query": "query {\n deliveryProfiles(first: 5) {\n  nodes {\n   id name default coversAllItems activeMethodDefinitionsCount locationsWithoutRatesCount zoneCountryCount\n   profileLocationGroups {\n    locationGroupZones(first: 10) {\n     nodes {\n      zone { id name countries { code { countryCode restOfWorld } name } }\n      methodDefinitionCounts { rateDefinitionsCount participantDefinitionsCount }\n      methodDefinitions(first: 10) {\n       nodes {\n        id name active description methodConditions { field operator conditionCriteria { ... on MoneyV2 { amount currencyCode } ... on Weight { value unit } } }\n        rateProvider {\n         __typename\n         ... on DeliveryRateDefinition { price { amount currencyCode } }\n         ... on DeliveryParticipant {\n          fixedFee { amount currencyCode }\n          carrierService { name formattedName active availableServicesForCountries(restOfWorld: false) { name countries { countryCodes restOfWorld } } }\n          participantServices { name active }\n         }\n        }\n       }\n      }\n     }\n    }\n   }\n  }\n }\n}",
+    "result": {
+      "structuredContent": {
+        "data": {
+          "deliveryProfiles": {
+            "nodes": [
+              {
+                "id": "gid://shopify/DeliveryProfile/132124180865",
+                "name": "Allgemeines Profil",
+                "default": true,
+                "coversAllItems": false,
+                "activeMethodDefinitionsCount": 4,
+                "locationsWithoutRatesCount": 1,
+                "zoneCountryCount": 244,
+                "profileLocationGroups": [
+                  {
+                    "locationGroupZones": {
+                      "nodes": [
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/608365379969",
+                            "name": "Domestic",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "CH",
+                                  "restOfWorld": false
+                                },
+                                "name": "Switzerland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 3,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1108712784257",
+                                "name": "Standard",
+                                "active": true,
+                                "description": "",
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "7.0",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1527737287047",
+                                "name": "Kostenloser Versand",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [
+                                  {
+                                    "field": "TOTAL_PRICE",
+                                    "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                    "conditionCriteria": {
+                                      "amount": "45.0",
+                                      "currencyCode": "CHF"
+                                    }
+                                  }
+                                ],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "0.0",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1540193485191",
+                                "name": "Kostenloser Versand",
+                                "active": false,
+                                "description": null,
+                                "methodConditions": [
+                                  {
+                                    "field": "TOTAL_PRICE",
+                                    "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                    "conditionCriteria": {
+                                      "amount": "50.0",
+                                      "currencyCode": "CHF"
+                                    }
+                                  }
+                                ],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "0.0",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/608365412737",
+                            "name": "International",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": null,
+                                  "restOfWorld": true
+                                },
+                                "name": "Rest of World"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1108712817025",
+                                "name": "International",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "15.0",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/742738297223",
+                            "name": "Liechtenstein",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "LI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Liechtenstein"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1538225242503",
+                                "name": "Standard Liechtenstein",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "14.9",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/DeliveryProfile/132143251841",
+                "name": "Zendrop",
+                "default": false,
+                "coversAllItems": false,
+                "activeMethodDefinitionsCount": 1,
+                "locationsWithoutRatesCount": 6,
+                "zoneCountryCount": 1,
+                "profileLocationGroups": [
+                  {
+                    "locationGroupZones": {
+                      "nodes": [
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/608446513537",
+                            "name": "[Zendrop — Worldwide Zone]",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "CH",
+                                  "restOfWorld": false
+                                },
+                                "name": "Switzerland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1108903461249",
+                                "name": "[Free Shipping]",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "0.0",
+                                    "currencyCode": "USD"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/DeliveryProfile/132495966593",
+                "name": "Shopify Collective",
+                "default": false,
+                "coversAllItems": false,
+                "activeMethodDefinitionsCount": 0,
+                "locationsWithoutRatesCount": 7,
+                "zoneCountryCount": 0,
+                "profileLocationGroups": []
+              },
+              {
+                "id": "gid://shopify/DeliveryProfile/132585456001",
+                "name": "Gelato: Small Posters",
+                "default": false,
+                "coversAllItems": false,
+                "activeMethodDefinitionsCount": 16,
+                "locationsWithoutRatesCount": 6,
+                "zoneCountryCount": 244,
+                "profileLocationGroups": [
+                  {
+                    "locationGroupZones": {
+                      "nodes": [
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974990721",
+                            "name": "AU Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "AU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Australia"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375463809",
+                                "name": "AU Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.92",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975154561",
+                            "name": "BR Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "BR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Brazil"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375627649",
+                                "name": "BR Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "3.28",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975056257",
+                            "name": "CA Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "CA",
+                                  "restOfWorld": false
+                                },
+                                "name": "Canada"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375529345",
+                                "name": "CA Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "4.97",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974826881",
+                            "name": "DE Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "DE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Germany"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375299969",
+                                "name": "DE Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.22",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975121793",
+                            "name": "DK Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "DK",
+                                  "restOfWorld": false
+                                },
+                                "name": "Denmark"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375594881",
+                                "name": "DK Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "6.78",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974925185",
+                            "name": "EFTA Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "CH",
+                                  "restOfWorld": false
+                                },
+                                "name": "Switzerland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "IS",
+                                  "restOfWorld": false
+                                },
+                                "name": "Iceland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375398273",
+                                "name": "EFTA Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "0.0",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974794113",
+                            "name": "EU Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "AT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Austria"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "BE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Belgium"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "CZ",
+                                  "restOfWorld": false
+                                },
+                                "name": "Czech Republic"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Finland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FR",
+                                  "restOfWorld": false
+                                },
+                                "name": "France"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "IT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Italy"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "NL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Netherlands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "PL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Poland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "PT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Portugal"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "ES",
+                                  "restOfWorld": false
+                                },
+                                "name": "Spain"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Albania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AX",
+                                  "restOfWorld": false
+                                },
+                                "name": "Aland Islands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AD",
+                                  "restOfWorld": false
+                                },
+                                "name": "Andorra"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "BG",
+                                  "restOfWorld": false
+                                },
+                                "name": "Bulgaria"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "HR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Croatia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "CY",
+                                  "restOfWorld": false
+                                },
+                                "name": "Cyprus"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "EE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Estonia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FO",
+                                  "restOfWorld": false
+                                },
+                                "name": "Faroe Islands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GG",
+                                  "restOfWorld": false
+                                },
+                                "name": "Guernsey"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Gibraltar"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Greece"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Greenland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "HU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Hungary"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "JE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Jersey"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LV",
+                                  "restOfWorld": false
+                                },
+                                "name": "Latvia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Lithuania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Luxembourg"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "MT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Malta"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "RO",
+                                  "restOfWorld": false
+                                },
+                                "name": "Romania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SM",
+                                  "restOfWorld": false
+                                },
+                                "name": "San Marino"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SK",
+                                  "restOfWorld": false
+                                },
+                                "name": "Slovakia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Slovenia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "VA",
+                                  "restOfWorld": false
+                                },
+                                "name": "Holy See (Vatican City State)"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375267201",
+                                "name": "EU Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.37",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974859649",
+                            "name": "GB Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "GB",
+                                  "restOfWorld": false
+                                },
+                                "name": "United Kingdom"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375332737",
+                                "name": "GB Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "4.86",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610974892417",
+                            "name": "IE Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "IE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Ireland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375365505",
+                                "name": "IE Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.49",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975252865",
+                            "name": "JP Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "JP",
+                                  "restOfWorld": false
+                                },
+                                "name": "Japan"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375725953",
+                                "name": "JP Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "4.99",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/DeliveryProfile/132585488769",
+                "name": "Gelato: Large Posters",
+                "default": false,
+                "coversAllItems": false,
+                "activeMethodDefinitionsCount": 16,
+                "locationsWithoutRatesCount": 6,
+                "zoneCountryCount": 244,
+                "profileLocationGroups": [
+                  {
+                    "locationGroupZones": {
+                      "nodes": [
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975515009",
+                            "name": "AU Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "AU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Australia"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375988097",
+                                "name": "AU Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "7.11",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975678849",
+                            "name": "BR Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "BR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Brazil"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117376151937",
+                                "name": "BR Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "4.93",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975580545",
+                            "name": "CA Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "CA",
+                                  "restOfWorld": false
+                                },
+                                "name": "Canada"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117376053633",
+                                "name": "CA Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "6.04",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975351169",
+                            "name": "DE Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "DE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Germany"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375824257",
+                                "name": "DE Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "8.15",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975646081",
+                            "name": "DK Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "DK",
+                                  "restOfWorld": false
+                                },
+                                "name": "Denmark"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117376119169",
+                                "name": "DK Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "7.44",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975449473",
+                            "name": "EFTA Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "IS",
+                                  "restOfWorld": false
+                                },
+                                "name": "Iceland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "CH",
+                                  "restOfWorld": false
+                                },
+                                "name": "Switzerland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375922561",
+                                "name": "EFTA Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "10.66",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975318401",
+                            "name": "EU Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "AX",
+                                  "restOfWorld": false
+                                },
+                                "name": "Aland Islands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Albania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AD",
+                                  "restOfWorld": false
+                                },
+                                "name": "Andorra"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "AT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Austria"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "BE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Belgium"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "BG",
+                                  "restOfWorld": false
+                                },
+                                "name": "Bulgaria"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "HR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Croatia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "CY",
+                                  "restOfWorld": false
+                                },
+                                "name": "Cyprus"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "CZ",
+                                  "restOfWorld": false
+                                },
+                                "name": "Czech Republic"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "EE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Estonia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FO",
+                                  "restOfWorld": false
+                                },
+                                "name": "Faroe Islands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Finland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "FR",
+                                  "restOfWorld": false
+                                },
+                                "name": "France"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Gibraltar"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GR",
+                                  "restOfWorld": false
+                                },
+                                "name": "Greece"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Greenland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "GG",
+                                  "restOfWorld": false
+                                },
+                                "name": "Guernsey"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "VA",
+                                  "restOfWorld": false
+                                },
+                                "name": "Holy See (Vatican City State)"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "HU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Hungary"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "IT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Italy"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "JE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Jersey"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LV",
+                                  "restOfWorld": false
+                                },
+                                "name": "Latvia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Lithuania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "LU",
+                                  "restOfWorld": false
+                                },
+                                "name": "Luxembourg"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "MT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Malta"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "NL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Netherlands"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "PL",
+                                  "restOfWorld": false
+                                },
+                                "name": "Poland"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "PT",
+                                  "restOfWorld": false
+                                },
+                                "name": "Portugal"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "RO",
+                                  "restOfWorld": false
+                                },
+                                "name": "Romania"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SM",
+                                  "restOfWorld": false
+                                },
+                                "name": "San Marino"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SK",
+                                  "restOfWorld": false
+                                },
+                                "name": "Slovakia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "SI",
+                                  "restOfWorld": false
+                                },
+                                "name": "Slovenia"
+                              },
+                              {
+                                "code": {
+                                  "countryCode": "ES",
+                                  "restOfWorld": false
+                                },
+                                "name": "Spain"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375791489",
+                                "name": "EU Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "6.46",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975383937",
+                            "name": "GB Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "GB",
+                                  "restOfWorld": false
+                                },
+                                "name": "United Kingdom"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375857025",
+                                "name": "GB Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.28",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975416705",
+                            "name": "IE Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "IE",
+                                  "restOfWorld": false
+                                },
+                                "name": "Ireland"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117375889793",
+                                "name": "IE Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.98",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "zone": {
+                            "id": "gid://shopify/DeliveryZone/610975777153",
+                            "name": "JP Zone",
+                            "countries": [
+                              {
+                                "code": {
+                                  "countryCode": "JP",
+                                  "restOfWorld": false
+                                },
+                                "name": "Japan"
+                              }
+                            ]
+                          },
+                          "methodDefinitionCounts": {
+                            "rateDefinitionsCount": 1,
+                            "participantDefinitionsCount": 0
+                          },
+                          "methodDefinitions": {
+                            "nodes": [
+                              {
+                                "id": "gid://shopify/DeliveryMethodDefinition/1117376250241",
+                                "name": "JP Flat Rate",
+                                "active": true,
+                                "description": null,
+                                "methodConditions": [],
+                                "rateProvider": {
+                                  "__typename": "DeliveryRateDefinition",
+                                  "price": {
+                                    "amount": "5.81",
+                                    "currencyCode": "CHF"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "isError": false
+    }
+  },
+  "exactNailVariantProfile": {
+    "query": "query {\n product(id:\"gid://shopify/Product/15500073730433\") {\n  id title\n  variants(first: 1) { nodes { id deliveryProfile {\n   id name default coversAllItems activeMethodDefinitionsCount locationsWithoutRatesCount zoneCountryCount\n   profileLocationGroups { locationGroupZones(first: 10) { nodes {\n    zone { name countries { code { countryCode restOfWorld } name } }\n    methodDefinitions(first: 10) { nodes {\n     name active methodConditions { field operator conditionCriteria { ... on MoneyV2 { amount currencyCode } } }\n     rateProvider { __typename ... on DeliveryRateDefinition { price { amount currencyCode } } }\n    } }\n   } } }\n  } } }\n }",
+    "result": {
+      "structuredContent": {
+        "data": {
+          "product": {
+            "id": "gid://shopify/Product/15500073730433",
+            "title": "Nagel-Haftkleber",
+            "variants": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/ProductVariant/56106678124929",
+                  "deliveryProfile": {
+                    "id": "gid://shopify/DeliveryProfile/132124180865",
+                    "name": "Allgemeines Profil",
+                    "default": true,
+                    "coversAllItems": false,
+                    "activeMethodDefinitionsCount": 4,
+                    "locationsWithoutRatesCount": 1,
+                    "zoneCountryCount": 244,
+                    "profileLocationGroups": [
+                      {
+                        "locationGroupZones": {
+                          "nodes": [
+                            {
+                              "zone": {
+                                "name": "Domestic",
+                                "countries": [
+                                  {
+                                    "code": {
+                                      "countryCode": "CH",
+                                      "restOfWorld": false
+                                    },
+                                    "name": "Switzerland"
+                                  }
+                                ]
+                              },
+                              "methodDefinitions": {
+                                "nodes": [
+                                  {
+                                    "name": "Standard",
+                                    "active": true,
+                                    "methodConditions": [],
+                                    "rateProvider": {
+                                      "__typename": "DeliveryRateDefinition",
+                                      "price": {
+                                        "amount": "7.0",
+                                        "currencyCode": "CHF"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "name": "Kostenloser Versand",
+                                    "active": true,
+                                    "methodConditions": [
+                                      {
+                                        "field": "TOTAL_PRICE",
+                                        "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                        "conditionCriteria": {
+                                          "amount": "45.0",
+                                          "currencyCode": "CHF"
+                                        }
+                                      }
+                                    ],
+                                    "rateProvider": {
+                                      "__typename": "DeliveryRateDefinition",
+                                      "price": {
+                                        "amount": "0.0",
+                                        "currencyCode": "CHF"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "name": "Kostenloser Versand",
+                                    "active": false,
+                                    "methodConditions": [
+                                      {
+                                        "field": "TOTAL_PRICE",
+                                        "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                        "conditionCriteria": {
+                                          "amount": "50.0",
+                                          "currencyCode": "CHF"
+                                        }
+                                      }
+                                    ],
+                                    "rateProvider": {
+                                      "__typename": "DeliveryRateDefinition",
+                                      "price": {
+                                        "amount": "0.0",
+                                        "currencyCode": "CHF"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "zone": {
+                                "name": "International",
+                                "countries": [
+                                  {
+                                    "code": {
+                                      "countryCode": null,
+                                      "restOfWorld": true
+                                    },
+                                    "name": "Rest of World"
+                                  }
+                                ]
+                              },
+                              "methodDefinitions": {
+                                "nodes": [
+                                  {
+                                    "name": "International",
+                                    "active": true,
+                                    "methodConditions": [],
+                                    "rateProvider": {
+                                      "__typename": "DeliveryRateDefinition",
+                                      "price": {
+                                        "amount": "15.0",
+                                        "currencyCode": "CHF"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "zone": {
+                                "name": "Liechtenstein",
+                                "countries": [
+                                  {
+                                    "code": {
+                                      "countryCode": "LI",
+                                      "restOfWorld": false
+                                    },
+                                    "name": "Liechtenstein"
+                                  }
+                                ]
+                              },
+                              "methodDefinitions": {
+                                "nodes": [
+                                  {
+                                    "name": "Standard Liechtenstein",
+                                    "active": true,
+                                    "methodConditions": [],
+                                    "rateProvider": {
+                                      "__typename": "DeliveryRateDefinition",
+                                      "price": {
+                                        "amount": "14.9",
+                                        "currencyCode": "CHF"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "isError": false
+    }
+  },
+  "nineCurrentVariantProfileIds": {
+    "data": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/56106678124929",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56033000292737",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56074490052993",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56106751918465",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56140780634497",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56115040878977",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56063650038145",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67663227617671",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56101102387585",
+          "deliveryProfile": {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil"
+          }
+        }
+      ]
+    }
+  },
+  "explicitExistingSettingsPreserved": {
+    "publicChFreeThresholdCHF": 50,
+    "internalAfterDiscountThresholdCHF": 45,
+    "accountDomain": "account.luxestyle.com.co"
+  },
+  "merchantShippingWriter": "Not available among discovered actions. update_product schema has no shipping field/service action. Existing Shopify LI14.90 does not prove a Merchant service exists or is mapped. No setting changed.",
+  "li14_90IsExistingShopifyAndPolicyValueNotANewRate": true
+}

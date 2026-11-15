@@ -2947,3 +2947,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [LUXESTYLE_R249_20261115]
 
+### R250 – Weitere Merchant-Korrekturen, 18 historische Gruppen und Claude-Direktlink
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / Kontinuität | Vier Kerndokumente frisch gelesen, Shopify/Metricool samt sechs Kanälen/Merchant und bestehende Quellenverknüpfung bestätigt. | Passende LuxeStyle-Identitäten; Revision249 fortgesetzt. Account-Issues-API leer, kein Beweis produktweiter Fehlerfreiheit. |
+| Verfügbarkeit / live | Sechs exakt gebundene Einzelvarianten mit aktuellen Tags/Status/Preis/Tracking/Policy und öffentlichen Bildern/Kaufbarkeit/Canonical geprüft; nur availability IN_STOCK ergänzt. | Alle sechs Zielattribute nach Verarbeitung bestätigt. Zähler0/untracked/CONTINUE nicht als physischer Lagerbestand ausgegeben. Keine Tags oder Ausschlüsse entfernt. |
+| Preise / live | Zwei mehrdeutige Bekleidungsangebote bewusst auf Rosarot/M bzw. Orange/M begrenzt; aktuelle Variante, SKU, Bild und CHF23.90/15.90 bestätigt; Titel/Link/Preis exakt geschrieben. | Beide in CH genehmigt. Kein Mindestpreis, keine Rekonstruktion unbekannter Altgrösse. Direkter Variantenread beim Pullover statt voller Massenpagination. |
+| Rücklesung / Schutz | Acht angenommene Writes gezielt nachgelesen; verzögerte Verarbeitung als unbestätigt geführt und nicht blind wiederholt. Eine zusätzliche Solar-Bildänderung gegen natives Medium geprüft. | Alle acht Ziele bestätigt. Sieben vollständige Nichtzielvergleiche gleich; Solar-Zusatzbild nicht von eigenen Parametern, Ursache unbekannt, keinRollback. Kein pauschaler Gleichheitsbeleg. |
+| Länder / Versandblocker | Status der bisherigen zwölf Offers und native zwölf Varianten gezielt geprüft; neun LI-Fälle den bestehenden Shopify-Profil-/Policy-Daten gegenübergestellt. | Neues8er-Paket: vier CH-genehmigt, vier CH-Crawl-pending, acht LI-Versandfehler; Fächer ausR249 ebenfalls LI-Fehler. Vorhandener LI-Tarif14.90CHF ohneGratisversand belegt. GMC-Servicezuordnung unbekannt, Versanddienst-Schreibaktion fehlt; keine Einstellungen geändert. |
+| Vollständige Quellen / historisch | Beide vom Inhaber geteilten Drive-CSVs vollständig gelesen, Dateigrössen geprüft, doppelte Titel-Spalten korrekt getrennt, Problem/Offer/Land dedupliziert. |18historischeAblehnungsgruppen plus1Pending;2'005historischeOffers. Kein heutiger Gesamtscan/0Fehlerbeleg. Anfänglichen vertippten erstenID-404 korrigiert; Datei ist lesbar. |
+| Restarbeit / Register | Vorhandene12Records erhalten und acht hinzugefügt; aktuelle Statusmap separat. R240-Teilliste um acht bestätigte Änderungen/fünf Preisblocker fortgeschrieben. |20Records.144Preis-/19Verfügbarkeitsfälle als alteTeilliste:9/11korrigierteAttribute, fünfPreisblocker,130/8nichtfrischgeprüft. Quellenmengen nicht vermischt, CSV nicht importbereit. |
+| Claude / Inhaberfrage | Direkten kurzen Einstieg mit belegten nächsten Schritten erstellt; zwei OriginalZIP-Namen lokal und in Standardbranch-Dateisuche gesucht. | Neue Direktstart-Datei separat lesbar. OriginalZIPs hier nicht gefunden/Inhalt unbekannt, keine erfundenen Links; Claude-Empfang unbekannt. |
+| Grenzen / Fortsetzung | LI-Servicezuordnung, CH-Crawl und nächste kleine Fälle je historischem Problem als konkrete Schritte hinterlegt. | CHF50öffentlich/45intern, Kundendomäne, Rechte-/Socialholds und bestehender08/14/19-Zürich-Rhythmus erhalten. Keine neuen Tagesreports/Kauf-Watchs/Automationen/Budgets/Flows/DNS oder Theme-/Social-Writes. |
+
+[Direkter Claude-Einstieg](CLAUDE-DIREKTSTART-20261115-R250.md) · [Live-Bericht](MERCHANT-FORTSCHRITT-LIVE-20261115-R250.md) · [Belege](MERCHANT-LIVE-BELEGE-20261115-R250.json).
+
+[LUXESTYLE_R250_20261115]
+
