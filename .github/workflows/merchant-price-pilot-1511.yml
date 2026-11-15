@@ -6,6 +6,7 @@ on:
       - automation/merchant-fix-1511/price_pilot.py
       - .github/workflows/merchant-price-pilot-1511.yml
       - dropship/merchant-fix-1511/PRICE-MODUS
+      - dropship/merchant-fix-1511/audit/price-pilot.json
 permissions:
   contents: read
 jobs:
