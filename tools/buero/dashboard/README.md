@@ -33,10 +33,24 @@ schreibt `index.html`, `lx-offen.css`, `lx-offen.js`, `lx-suche.css`, `lx-suche.
 - eine der zwei neuen Seiten fremde Klassen trägt oder ihr Stil ein nacktes Element trifft (er würde auf das Büro abfärben),
 - ein Dokument grösser als 250 000 Byte würde (die Grenze des Dashboards ist 256 KB je Dokument).
 
-**Grösse:** `index.html` hat als Dokument 236 159 Byte, also rund 14 KB Luft. Wächst die Büro-Seite darüber hinaus, bricht der
-Bau mit der Grössenmeldung ab. Abhilfe: den Stil der Büro-Seite (rund 50 KB) beim Bauen in eine eigene Datei auslagern
-(`<link rel="stylesheet" href="kb-stil.css">`, der Dashboard-Typ lädt eigene Stil-Dateien), so wie es für die zwei neuen
-Seiten schon geschieht.
+**Grösse (Stand 16.11.2026, Fassung `campus-einheitlich-20` mit der Kanal-Tabelle):** `index.html` hat als Dokument 248 569 Byte,
+also nur noch **1 431 Byte Luft** (`test_bauen.py` nennt die Luft bei jedem Lauf). Die nächste grössere Änderung an
+`tools/buero/seite.html` bricht den Bau mit der Grössenmeldung ab. Abhilfe: den Stil der Büro-Seite (rund 50 KB) beim Bauen in
+eine eigene Datei auslagern (`<link rel="stylesheet" href="kb-stil.css">`, der Dashboard-Typ lädt eigene Stil-Dateien), so wie
+es für die zwei neuen Seiten schon geschieht. Nicht kürzen, was der Besitzer sieht.
+
+## Kanäle laut Metricool (seit 16.11.2026 im Repo)
+
+Die Social-Sitzung hat am 11.11.2026 eine Tabelle «Kanäle laut Metricool» direkt ins Dashboard geschrieben (`files/index.html`
+Version 18), nie ins Repo. Seit 16.11. steht sie in `tools/buero/seite.html`: im Raum «Social Media» des 2D-Büros und in der
+Ansicht «Liste», je eine Zeile pro Kanal (Follower, Aufrufe, heute erschienen, fest geplant, nächste Woche fest + Entwurf), darüber
+die Zeile mit Auswertungszeitraum und Abfragezeit (am Handy ganz im Bild; nur die Tabelle scrollt seitlich). Datenquelle ist der
+Metricool-Kurzbericht **Version 2** in `datasets/buero` (Feld `metricool` der Zeilen `social_meta`, `social_pinterest` und
+`yt_wachstum`); `make_buero.py --metricool-status <datei>` nimmt ihn an und prüft ihn streng (`metricool_v2_pruefen`: nur diese
+Felder, nur ganze Zähler ab 0, bekannte Kanäle ohne Doppel, kurze Texte, Messzeit mit Zeitzone). Ohne Bericht bleibt die Tabelle
+leer und unsichtbar, auch auf der öffentlichen Webseite (`webseite.py` gibt keine Metricool-Daten weiter). Version 1 gilt weiter.
+Korrigiert beim Übertragen: die Fassung 18 hatte eine `if`/`else`-Kette zerbrochen (die Knöpfe zu Shop und Metricool verschwanden);
+in Fassung 20 zeigen die Zeilen ohnehin keine Kontolinks mehr.
 
 ## Links und Ort
 
@@ -68,7 +82,8 @@ Name als `id` in den Dateien der Seite steht: darum die schlichten Namen und kei
 
 - `python3 -I tools/buero/dashboard/test_bauen.py`: 43 Prüfungen ohne Browser (Bauergebnis und Schutzprüfungen). Läuft in der CI
   (`.github/workflows/buero-dashboard-test.yml`), sobald sich eine der drei Quellen oder der Bau ändert.
-- `node tools/buero/dashboard/test_dashboard.mjs <Bauordner> [Bilderordner]`: 80 Prüfungen im Browser (Handy und Desktop) gegen
+- `node tools/buero/dashboard/test_dashboard.mjs <Bauordner> [Bilderordner]`: 86 Prüfungen (mit einem Metricool-Bericht Version 2
+  in `buero.json`: 96) im Browser (Handy und Desktop) gegen
   einen Nachbau der Dashboard-Laufzeit: Start, Wechsel, Zahlen gegen die Daten, Filter, Unter-Reiter, Links in der Adresse,
   seitliches Scrollen, doppelte Namen, Seitenfehler. Der Bauordner braucht zusätzlich `kb3d-*.js`, `kb-geldmanager.js`
   (`node tools/buero/3d/bauen.mjs <Bauordner>`) und `buero.json` (`python3 -I tools/buero/make_buero.py <Bauordner>/buero.json`).
@@ -77,6 +92,9 @@ Name als `id` in den Dateien der Seite steht: darum die schlichten Namen und kei
   screenshot» (gemessen 11.11.: 3 von 5 Läufen mit Bildern, ohne Bilder nie), der Test versucht es darum bis zu dreimal.
 - `python3 tools/buero/dashboard/mutationsprobe.py [--browser <Bauordner>]`: eingebaute Fehler im Bau müssen einen Test rot machen.
   Stand 11.11.: 39 von 39 erkannt (34 der Bau-Test, 5 Fehler in der Hülle erst der Browsertest), Ausgangslage vorher grün.
+  Kanal-Tabelle (16.11., von Hand): 8 von 8 eingebauten Fehlern der Seite macht `test_dashboard.mjs` rot (Neuzeichnen beim
+  Ansichtswechsel, Spalten, Planung/Ergebnisse, Erkennung des Berichts, Abfragezeit, YouTube-Zeile, abgeschnittene Zeitzeile, leere
+  Tabelle sichtbar), 7 von 7 Fehlern in `metricool_v2_pruefen` `test_metricool_anzeige.py`.
 - Die drei Quellen behalten ihre eigenen Tests (`tools/buero/pruefung/`, `dropship/keywordliste-1011/seite_test.mjs`).
 
 ## Grenzen

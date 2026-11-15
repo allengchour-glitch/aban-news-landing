@@ -415,9 +415,58 @@ def anwenden(rows, werte):
             r["ereignis"] = w["ereignis_text"]
 
 
+MC2_KANAELE = ("TikTok", "YouTube", "Instagram", "Facebook", "Pinterest", "Threads", "LinkedIn")
+MC2_KANAL_FELDER = {"kanal","konto","follower","aufrufe","heute","geplant","naechster","naechste_fest","naechste_entwurf"}
+
+
+def _zaehler(werte):
+    """Nur echte, gemessene ganze Zahlen ab 0 (True/False sind in Python auch int und zählen hier nicht)."""
+    return all(type(v) is int and v >= 0 for v in werte)
+
+
+def _text(v, laenge, leer=False):
+    return isinstance(v, str) and len(v) <= laenge and (leer or v.strip() != "")
+
+
+def metricool_v2_pruefen(report):
+    """Kurzbericht Version 2 (Zahlen je Kanal, so von der Social-Sitzung am 11.11.2026 im Dashboard eingeführt).
+    Nur diese Felder, nur Zähler und kurze Texte: keine Beitragstexte, Entwürfe oder Rohdaten."""
+    keys = {"version","gemessen","gemessen_text","zeitraum","geplante_eintraege","auswertung","naechste_woche","kanaele"}
+    if set(report) - {"youtube_hinweis"} != keys:
+        raise ValueError("Unbekannter Metricool-Kurzbericht; keine Rohdaten importieren.")
+    if not _zaehler([report["geplante_eintraege"]]):
+        raise ValueError("Metricool-Zähler müssen gemessen und nicht negativ sein.")
+    if not isinstance(report["gemessen"], str) or datetime.fromisoformat(report["gemessen"].replace("Z","+00:00")).tzinfo is None:
+        raise ValueError("Metricool-Bericht braucht eine Zeitzone.")
+    if not all(_text(report[k], 40) for k in ("gemessen_text","zeitraum","auswertung")):
+        raise ValueError("Unbekannte Zeitraumangabe.")
+    if "youtube_hinweis" in report and not _text(report["youtube_hinweis"], 200):
+        raise ValueError("Unbekannter YouTube-Hinweis.")
+    nw = report["naechste_woche"]
+    if not isinstance(nw, dict) or set(nw) != {"zeitraum","fest","entwuerfe"} or not _text(nw["zeitraum"], 40) or not _zaehler([nw["fest"], nw["entwuerfe"]]):
+        raise ValueError("Unbekannte Angabe zur nächsten Woche.")
+    kanaele = report["kanaele"]
+    if not isinstance(kanaele, list) or not 1 <= len(kanaele) <= len(MC2_KANAELE):
+        raise ValueError("Unbekannte Kanalliste.")
+    for k in kanaele:
+        if not isinstance(k, dict) or set(k) != MC2_KANAL_FELDER or k["kanal"] not in MC2_KANAELE:
+            raise ValueError("Unbekannter Kanal im Metricool-Bericht.")
+        if not _zaehler([k[f] for f in ("follower","aufrufe","heute","geplant","naechste_fest","naechste_entwurf")]):
+            raise ValueError("Metricool-Zähler müssen gemessen und nicht negativ sein.")
+        if not _text(k["konto"], 40, leer=True) or not _text(k["naechster"], 20, leer=True):
+            raise ValueError("Unbekannte Kontoangabe.")
+    if len({k["kanal"] for k in kanaele}) != len(kanaele):
+        raise ValueError("Kanal doppelt im Metricool-Bericht.")
+
+
 def metricool_einlesen(pfad, rows):
     from pathlib import Path
     report = json.loads(Path(pfad).read_text(encoding="utf-8"))
+    if isinstance(report,dict) and report.get("version")==2 and type(report.get("version")) is int:
+        metricool_v2_pruefen(report)
+        for row in rows:  # Version 2 zeigt auch den YouTube-Kanal, darum zusätzlich yt_wachstum
+            if row["id"] in ("social_meta","social_pinterest","yt_wachstum"): row["metricool"] = json.loads(json.dumps(report))
+        return
     keys = {"version","gemessen","zeitraum","geplante_eintraege","instagram_follower","instagram_stand","kanaele"}
     if not isinstance(report,dict) or set(report)!=keys or report["version"]!=1:
         raise ValueError("Unbekannter Metricool-Kurzbericht; keine Rohdaten importieren.")
