@@ -12,6 +12,7 @@ import {
   profile,
   award,
   rank,
+  levelProgress,
 } from "./profile.mjs";
 import { GAME, findRooms, advertise, publicSession } from "./directory.mjs";
 import {
@@ -28,7 +29,7 @@ import {
   routeCache,
   eventX,
 } from "./core.mjs";
-import { FlightView } from "./view.mjs";
+import { FlightView } from "./hybrid-view.mjs";
 import { FlightAudio } from "./audio.mjs";
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search),
@@ -57,6 +58,10 @@ let settings = {
   reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
   ...read("aether-settings", {}),
 };
+if (settings.renderProfile !== "fast-v1") {
+  settings.quality = "auto";
+  settings.renderProfile = "fast-v1";
+}
 let records = read("aether-records", { best: [0, 0, 0], medals: [0, 0, 0] });
 if (!Array.isArray(records.best) || !Array.isArray(records.medals))
   records = { best: [0, 0, 0], medals: [0, 0, 0] };
@@ -68,7 +73,8 @@ let cancelScan = null,
   scanId = 0,
   xpMessage = "",
   previousNotice = "",
-  resonanceSound = false;
+  resonanceSound = false,
+  didLevelUp = false;
 function helloPacket() {
   return { t: "hello", name: pilotProfile.name, setup: loadout(pilotProfile) };
 }
@@ -76,9 +82,13 @@ function newState(level = 0) {
   return createState(level, pilotSetups);
 }
 function refreshProfile() {
-  $("pilotRank").textContent = "Rang " + rank(pilotProfile.xp);
+  $("pilotRank").textContent = "Level " + rank(pilotProfile.xp);
   $("profileProgress").textContent =
-    `${pilotProfile.name} · Flugrang ${rank(pilotProfile.xp)} · ${pilotProfile.xp} XP · ${pilotProfile.missions} abgeschlossene Kapitel`;
+    `${pilotProfile.name} · Level ${rank(pilotProfile.xp)} · ${pilotProfile.xp} XP · ${pilotProfile.missions} abgeschlossene Kapitel`;
+  const progress = levelProgress(pilotProfile.xp);
+  $("levelProgressFill").style.width = progress.ratio * 100 + "%";
+  $("levelProgressText").textContent =
+    `${Math.max(0, progress.next - pilotProfile.xp)} XP bis Level ${progress.level + 1}`;
   $("pilotName").value = pilotProfile.name;
   $("pilotRole").value = pilotProfile.role;
   $("roleDetail").textContent = ROLES[pilotProfile.role].tag;
@@ -306,6 +316,13 @@ function saveSettings() {
   document.body.classList.toggle("reduced-motion", !!settings.reduced);
   view.reduced = !!settings.reduced;
   view.quality(settings.quality);
+  if (view.warning) {
+    settings.quality = "auto";
+    $("quality").value = "auto";
+    write("aether-settings", settings);
+    $("storageNotice").textContent = view.warning;
+    return;
+  }
   $("storageNotice").textContent = storage
     ? "Einstellungen und Bestwerte werden auf diesem Gerät gespeichert."
     : "Dein Browser erlaubt keine Speicherung. Spielen funktioniert trotzdem.";
@@ -823,10 +840,12 @@ function storeResult() {
     return;
   storedKey = key();
   const progress = award(pilotProfile, state);
+  didLevelUp = !!progress.leveledUp;
   pilotProfile = progress.profile;
   write("aether-pilot", pilotProfile);
   xpMessage =
-    `+${progress.gained} Flug-XP · Rang ${rank(pilotProfile.xp)}` +
+    (progress.leveledUp ? `LEVEL UP · LEVEL ${progress.level} · ` : ``) +
+    `+${progress.gained} Flug-XP · Level ${rank(pilotProfile.xp)}` +
     (progress.unlocked.length
       ? " · Neu: " + progress.unlocked.map((k) => MODULES[k].name).join(", ")
       : "");
@@ -904,6 +923,10 @@ function phaseUI() {
       : win
         ? "Ihr habt die Schlucht durchquert, den Sturm bezwungen und den Nachtkern entzündet. Zusammen."
         : l.subtitle + " Das nächste Kapitel wartet.";
+    $("xpResult").classList.toggle(
+      "level-up",
+      didLevelUp && !training && !fail,
+    );
     $("xpResult").textContent = training
       ? "Training · keine Flug-XP"
       : fail
@@ -984,15 +1007,19 @@ addEventListener("keydown", (e) => {
 addEventListener("keyup", (e) => {
   held.delete(e.key.toLowerCase());
 });
-const canvas = view.renderer.domElement;
-canvas.addEventListener("webglcontextlost", (e) => {
-  e.preventDefault();
-  requestPause("Die Grafikverbindung eines Piloten wurde unterbrochen.");
-  $("fatalText").textContent =
-    "Die Grafikverbindung wurde unterbrochen. Lade das Spiel neu und verbinde dich erneut mit deinem Partner.";
-  $("fatal").hidden = false;
-  audio.silence();
-});
+const canvas = $("scene");
+canvas.addEventListener(
+  "webglcontextlost",
+  (e) => {
+    e.preventDefault();
+    requestPause("Die Grafikverbindung eines Piloten wurde unterbrochen.");
+    $("fatalText").textContent =
+      "Die Grafikverbindung wurde unterbrochen. Lade das Spiel neu und verbinde dich erneut mit deinem Partner.";
+    $("fatal").hidden = false;
+    audio.silence();
+  },
+  true,
+);
 canvas.addEventListener("pointerdown", (e) => {
   if (state.phase !== "playing") return;
   pointer = e.pointerId;
@@ -1069,7 +1096,15 @@ function hud(dt) {
     ? "OVERDRIVE " + Math.ceil(state.overdrive) + "s"
     : Math.floor(state.resonance) + "%";
   const noticeKey =
-    state.notice + ":" + state.duets + ":" + state.syncs + ":" + state.rescues;
+    state.notice +
+    ":" +
+    state.duets +
+    ":" +
+    state.syncs +
+    ":" +
+    state.rescues +
+    ":" +
+    state.bonuses;
   if (state.notice && noticeKey !== previousNotice) {
     notice(state.notice);
     previousNotice = noticeKey;
@@ -1113,7 +1148,8 @@ function hud(dt) {
     oldHp[i] = state.players[i].hp;
   }
   const fullCooldown =
-    ROLES[p.role].cooldown - (p.mod === "capacitor" ? 0.7 : 0);
+    ROLES[p.role].cooldown -
+    (p.mod === "coil" ? 1.2 : p.mod === "capacitor" ? 0.7 : 0);
   $("dashFill").style.width =
     Math.max(0, 1 - p.cooldown / fullCooldown) * 100 + "%";
   $("dashText").textContent =
@@ -1233,13 +1269,15 @@ if (params.get("debug") === "1")
       pixelRatio: view.renderer.getPixelRatio(),
       width: view.renderer.domElement.width,
       height: view.renderer.domElement.height,
-      backend: (() => {
-        const gl = view.renderer.getContext(),
-          ext = gl.getExtension("WEBGL_debug_renderer_info");
-        return ext
-          ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
-          : gl.getParameter(gl.RENDERER);
-      })(),
+      backend:
+        view.backend ||
+        (() => {
+          const gl = view.renderer.getContext(),
+            ext = gl.getExtension("WEBGL_debug_renderer_info");
+          return ext
+            ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
+            : gl.getParameter(gl.RENDERER);
+        })(),
     }),
     role: () => ({ host, local, connected, hello, screen, ready: stageReady }),
     setInput: (v) => {

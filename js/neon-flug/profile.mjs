@@ -46,6 +46,53 @@ export const MODULES = {
     tag: "Gerettete Partner kommen mit vollem Schild zurück.",
   },
 };
+Object.assign(MODULES, {
+  resonance: {
+    name: "Resonanzkern",
+    xp: 700,
+    tag: "Team-Manöver laden 25 % mehr Resonanz.",
+  },
+  vector: {
+    name: "Vektordüsen",
+    xp: 1000,
+    tag: "Schnellerer Seitenwechsel zwischen Fluglinien.",
+  },
+  guard: {
+    name: "Schutzmatrix",
+    xp: 1400,
+    tag: "Nach einem Treffer länger geschützt.",
+  },
+  coil: {
+    name: "Schubspule",
+    xp: 1900,
+    tag: "Dash lädt 1,2 Sekunden schneller.",
+  },
+  link: {
+    name: "Teamkanal",
+    xp: 2500,
+    tag: "Nähe zum Partner lädt euren Dash noch schneller.",
+  },
+  savior: {
+    name: "Rettungsimpuls",
+    xp: 3200,
+    tag: "Gerettete Partner erhalten länger Schutz.",
+  },
+});
+export const LEVEL_THRESHOLDS = [
+  0, 100, 250, 450, 700, 1000, 1400, 1900, 2500, 3200,
+];
+export function levelProgress(xp) {
+  const level = rank(xp),
+    base =
+      level <= 10 ? LEVEL_THRESHOLDS[level - 1] : 3200 + (level - 10) * 500,
+    next = level < 10 ? LEVEL_THRESHOLDS[level] : base + 500;
+  return {
+    level,
+    base,
+    next,
+    ratio: Math.max(0, Math.min(1, (xp - base) / (next - base))),
+  };
+}
 export function nickname(s) {
   return typeof s === "string"
     ? s
@@ -79,16 +126,25 @@ export function award(v, s) {
   if (!s || !["result", "victory"].includes(s.phase))
     return { profile: p, gained: 0, unlocked: [] };
   const gained =
-    100 + Math.min(150, (s.duets || 0) * 20 + (s.rescues || 0) * 30);
+    100 +
+    Math.min(150, (s.duets || 0) * 20 + (s.rescues || 0) * 30) +
+    Math.min(100, (s.bonuses || 0) * 10);
   const updated = { ...p, xp: p.xp + gained, missions: p.missions + 1 };
   return {
     profile: updated,
     gained,
+    leveledUp: rank(updated.xp) > rank(p.xp),
+    level: rank(updated.xp),
     unlocked: Object.keys(MODULES).filter(
       (k) => MODULES[k].xp > p.xp && MODULES[k].xp <= updated.xp,
     ),
   };
 }
 export function rank(xp) {
-  return 1 + Math.floor(Math.max(0, Number(xp) || 0) / 200);
+  xp = Number.isFinite(xp) ? Math.max(0, xp) : 0;
+  if (xp >= 3200) return 10 + Math.floor((xp - 3200) / 500);
+  let level = 1;
+  for (let i = 1; i < LEVEL_THRESHOLDS.length; i++)
+    if (xp >= LEVEL_THRESHOLDS[i]) level = i + 1;
+  return level;
 }

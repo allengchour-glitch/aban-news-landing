@@ -41,7 +41,7 @@ export class PresentationClock {
 export function predictPilot(p, input, age) {
   if (p.hp <= 0) return p;
   const dt = clamp(Number.isFinite(age) ? age : 0, 0, 0.15),
-    speed = ROLES[p.role].speed;
+    speed = ROLES[p.role].speed + (p.mod === "vector" ? 2 : 0);
   const movement = Number.isFinite(input.target)
     ? clamp(input.target - p.x, -speed * dt, speed * dt)
     : clamp(Number(input.axis) || 0, -1, 1) * speed * dt;

@@ -200,3 +200,80 @@ test("Rollen und Module bleiben Teil des validierten Snapshots", () => {
   bad.players[0].role = "__proto__";
   assert(!validSnapshot(bad));
 });
+
+test("Goldener Bonusring gibt Punkte, Resonanz und einen gezählten Bonus", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && e.bonus),
+    s = createState();
+  start(s);
+  s.t = e.t - 0.005;
+  s.players[0].x = e.x;
+  s.players[1].x = e.x > 0 ? -9 : 9;
+  step(s, [{}, {}], 0.01);
+  assert.equal(s.bonuses, 1);
+  assert(s.score >= 400);
+  assert.equal(s.resonance, 10);
+});
+test("Fünfte Sammlung löst eine Bonuskette aus; Treffer unterbricht die Kette", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && !e.bonus),
+    s = createState();
+  start(s);
+  s.t = e.t - 0.005;
+  s.combo = 4;
+  s.players[0].x = e.x;
+  s.players[1].x = e.x > 0 ? -9 : 9;
+  step(s, [{}, {}], 0.01);
+  assert.equal(s.combo, 5);
+  assert.equal(s.bonuses, 1);
+  hit(s, 0);
+  assert.equal(s.combo, 0);
+});
+test("Späte Module wirken tatsächlich auf Schutz und Bewegung", () => {
+  const a = createState(0, [
+    { role: "navigator", mod: "vector" },
+    { mod: "guard" },
+  ]);
+  start(a);
+  const x = a.players[0].x;
+  step(a, [{ axis: 1 }, {}], 0.05);
+  assert(Math.abs(a.players[0].x - x - 0.875) < 0.001);
+  hit(a, 1);
+  assert.equal(a.players[1].inv, 2.6);
+});
+
+test("Fokusfeld sammelt einen Ring ausserhalb des normalen Sammelradius", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && !e.bonus);
+  for (const mod of ["none", "focus"]) {
+    const s = createState(0, [{ mod }, {}]);
+    start(s);
+    s.t = e.t - 0.005;
+    s.players[0].x = e.x + (e.x > 0 ? -2.5 : 2.5);
+    s.players[1].x = e.x > 0 ? -9 : 9;
+    step(s, [{}, {}], 0.01);
+    assert.equal(s.players[0].rings, mod === "focus" ? 1 : 0);
+  }
+});
+test("Resonanzkern wirkt teamweit einmalig; Schubspule und Teamkanal verändern die Nachladezeit", async () => {
+  const { charge } = await import("../../js/neon-flug/core.mjs");
+  const a = createState(0, [{ mod: "resonance" }, { mod: "resonance" }]);
+  charge(a, 10);
+  assert.equal(a.resonance, 12.5);
+  const b = createState(0, [{ role: "pulse", mod: "coil" }, {}]);
+  start(b);
+  dash(b, 0);
+  assert(Math.abs(b.players[0].cooldown - 4.2) < 1e-9);
+  const c = createState(0, [{}, { mod: "link" }]);
+  start(c);
+  c.players.forEach((p) => (p.x = 0));
+  dash(c, 0);
+  step(c, [{}, {}], 0.05);
+  assert(Math.abs(c.players[0].cooldown - 5.915) < 1e-9);
+});
+test("Rettungsimpuls gibt dem geretteten Partner länger Schutz", () => {
+  const s = createState(0, [{}, { role: "medic", mod: "savior" }]);
+  start(s);
+  Object.assign(s.players[0], { hp: 0, down: 20, x: 0 });
+  s.players[1].x = 0;
+  tick(s, 1.3, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 2);
+  assert(s.players[0].inv > 4.8);
+});

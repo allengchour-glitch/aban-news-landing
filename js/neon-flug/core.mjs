@@ -1,6 +1,6 @@
-import { ROLES, loadout } from "./profile.mjs";
+import { ROLES, MODULES, loadout } from "./profile.mjs";
 // Autoritative, zeitbasierte Koop-Simulation. Darstellung und Netzwerk bleiben getrennt.
-export const VERSION = 2;
+export const VERSION = 3;
 export const FLIGHT_LIMIT = 9;
 export const LANE_WIDTH = 7;
 export const LEVELS = [
@@ -50,6 +50,7 @@ export function route(level) {
       x: lane * LANE_WIDTH,
       moving: danger && level > 0 && rnd() < 0.3,
       phase: rnd() * Math.PI * 2,
+      bonus: !danger && a.length % 6 === 3,
     });
   }
   return a;
@@ -77,6 +78,7 @@ export function createState(level = 0, setups = []) {
     t: 0,
     players: [pilot(0, setups[0]), pilot(1, setups[1])],
     resonance: 0,
+    bonuses: 0,
     overdrive: 0,
     duets: 0,
     rescues: 0,
@@ -97,7 +99,8 @@ export function dash(s, i) {
   const role = ROLES[p.role];
   p.dash = role.dash;
   p.inv = Math.max(p.inv, role.dash);
-  p.cooldown = role.cooldown - (p.mod === "capacitor" ? 0.7 : 0);
+  p.cooldown =
+    role.cooldown - (p.mod === "coil" ? 1.2 : p.mod === "capacitor" ? 0.7 : 0);
   p.lastDash = s.t;
   const partner = s.players[1 - i];
   if (partner.hp > 0 && s.t - partner.lastDash <= 0.35) {
@@ -111,7 +114,11 @@ export function dash(s, i) {
 }
 export function charge(s, value) {
   if (s.overdrive > 0) return;
-  s.resonance = Math.min(100, s.resonance + value);
+  s.resonance = Math.min(
+    100,
+    s.resonance +
+      value * (s.players.some((p) => p.mod === "resonance") ? 1.25 : 1),
+  );
   if (s.resonance >= 100) {
     s.resonance = 0;
     s.overdrive = 5;
@@ -128,7 +135,7 @@ export function hit(s, i) {
   const p = s.players[i];
   if (s.phase !== "playing" || p.hp <= 0 || p.inv > 0) return false;
   p.hp--;
-  p.inv = 1.8;
+  p.inv = p.mod === "guard" ? 2.6 : 1.8;
   s.combo = 0;
   if (p.hp === 0) {
     p.down = 20;
@@ -150,10 +157,16 @@ export function step(s, inputs, dt) {
     p.dash = Math.max(0, p.dash - dt);
     p.cooldown = Math.max(
       0,
-      p.cooldown - dt * (Math.abs(p.x - q.x) < 2.8 ? 1.35 : 1),
+      p.cooldown -
+        dt *
+          (Math.abs(p.x - q.x) < 2.8
+            ? p.mod === "link" || q.mod === "link"
+              ? 1.7
+              : 1.35
+            : 1),
     );
     if (p.hp > 0) {
-      const speed = ROLES[p.role].speed;
+      const speed = ROLES[p.role].speed + (p.mod === "vector" ? 2 : 0);
       const target = Number.isFinite(v.target)
         ? clamp(v.target, -FLIGHT_LIMIT, FLIGHT_LIMIT)
         : null;
@@ -175,7 +188,7 @@ export function step(s, inputs, dt) {
       p.rescue = rescue ? p.rescue + dt : Math.max(0, p.rescue - dt * 0.5);
       if (p.rescue >= ROLES[q.role].rescue) {
         p.hp = q.mod === "anchor" ? 3 : 2;
-        p.inv = 3;
+        p.inv = q.mod === "savior" ? 5 : 3;
         p.down = 0;
         p.rescue = 0;
         s.notice = "RETTUNG ERFOLGREICH";
@@ -220,6 +233,19 @@ export function step(s, inputs, dt) {
       if (e.type === "ring" && d < (p.mod === "focus" ? 2.7 : 2.1)) {
         p.rings++;
         s.combo++;
+        if (e.bonus) {
+          s.bonuses++;
+          s.score += 300;
+          charge(s, 10);
+          s.notice = "BONUSRING +300";
+        }
+        if (s.combo % 5 === 0) {
+          s.bonuses++;
+          s.score += 200;
+          charge(s, 10);
+          s.notice = "BONUSKETTE ×" + s.combo;
+        }
+
         s.score +=
           (100 + Math.min(s.combo, 10) * 10) * (s.overdrive > 0 ? 2 : 1);
       }
@@ -251,7 +277,7 @@ export function validSnapshot(s) {
     s.t >= 0 &&
     s.t <= 110 &&
     Number.isFinite(s.score) &&
-    ["resonance", "overdrive", "duets", "rescues", "syncs"].every(
+    ["resonance", "overdrive", "duets", "rescues", "syncs", "bonuses"].every(
       (k) => Number.isFinite(s[k]) && s[k] >= 0,
     ) &&
     s.resonance <= 100 &&
@@ -265,7 +291,7 @@ export function validSnapshot(s) {
         ) &&
         Number.isFinite(p.lastDash) &&
         Object.hasOwn(ROLES, p.role) &&
-        ["none", "capacitor", "focus", "anchor"].includes(p.mod) &&
+        Object.hasOwn(MODULES, p.mod) &&
         Math.abs(p.x) <= FLIGHT_LIMIT &&
         p.hp >= 0 &&
         p.hp <= 3,

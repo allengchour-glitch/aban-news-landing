@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Neon-Flug – schneller Standard und Bonus-Level ·15.11.2026
+
+Auf `codex/neon-flug-koop` / PR3156: Canvas2D-Perspektive als neuer Standard ohne WebGL-Kontext, bisherige 3D-Fassung optional. Kurze Cloud-Probe mit v3-Boni: rund59,8 rAF-Bilder/s bei960×540, kein Handy-Benchmark. Neue Bonusringe, Kettenboni, zehn Piloten-Level plus weitere500-XP-Stufen und neun freischaltbare Module mit echten Spieleffekten. Alte schwere Grafikeinstellung einmalig migriert, Profile/XP erhalten. Gemessen:43 Unit-,8 Kampagnen-,12 Such-/Ausrüstungs-,9 UI- und6 Rendererprüfungen bestanden. Neue Videoaufnahme zeigt echten lokalen Trainingslauf. Öffentlicher Verbindungsnachweis weiterhin offen; keine CA-Änderung, nicht veröffentlicht. Details: `spiele-dev/neon-flug/README.md`.
+
+
 ## Codex: Neon-Flug – Ruckler und Zeitverlust behoben ·15.11.2026
 
 Auf `codex/neon-flug-koop` / PR3156: statische Geometrie gebündelt, Türme instanziert, automatische Renderauflösung, zeitlich korrekte Nachholung und Hänger-Pause, schnellere Snapshots mit Sequenzschutz sowie geglättete Gastdarstellung und kurze Eingabevorhersage. Cloud-Kurzprobe mit SwiftShader:182 auf61 Zeichenaufrufe;3,8 auf7,3 FPS bei automatisch reduzierter Auflösung, kein Handy-Benchmark. Alte Spieluhr verlor bei langsamen Frames Zeit. Reale Handy-FPS/öffentliche Vermittlung unverifiziert. Details und reproduzierbare Probe in `spiele-dev/neon-flug/README.md`; nicht veröffentlicht.

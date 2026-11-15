@@ -1,7 +1,7 @@
 // Offene Flüge, keine globale oder erfundene Spielerzahl.
 import { nickname } from "./profile.mjs";
-export const GAME = "aether-v2";
-const CHANNEL = "aban-aether-v2-directory";
+export const GAME = "aether-v3";
+const CHANNEL = "aban-aether-v3-directory";
 export function advertise(session, getInfo) {
   if (!window.MP.localMode) {
     session.info = { n: nickname(getInfo().name), p: 1 };

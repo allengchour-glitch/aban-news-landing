@@ -39,3 +39,23 @@ test("Niederlage vergibt keine Abschlussbelohnung und verändert das Profil nich
 test("Ungültiger Speicher erzeugt weder negative noch unendliche Erfahrung", () => {
   for (const xp of [Infinity, -9, NaN]) assert.equal(profile({ xp }).xp, 0);
 });
+
+test("Levelaufstiege folgen der XP-Leiter und gehen nach Level zehn weiter", async () => {
+  const { levelProgress } = await import("../../js/neon-flug/profile.mjs");
+  assert.equal(rank(100), 2);
+  assert.equal(rank(3200), 10);
+  assert.equal(rank(3700), 11);
+  assert.equal(levelProgress(100).next, 250);
+  assert.equal(levelProgress(100).ratio, 0);
+});
+test("Bonus-XP erzeugen echten Levelaufstieg und bleiben begrenzt", () => {
+  const r = award(profile(null), {
+    phase: "result",
+    bonuses: 100,
+    duets: 100,
+    rescues: 100,
+  });
+  assert.equal(r.gained, 350);
+  assert(r.leveledUp);
+  assert.equal(r.level, 3);
+});

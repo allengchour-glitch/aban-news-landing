@@ -101,9 +101,12 @@ const fs = require("fs"),
     await a.evaluate(() => window.__flight.simulate(110));
     await d.waitForFunction(() => window.__flight.state().phase === "result");
     await d.locator("#upgradeBtn").click();
+    const earnedXP = await d.evaluate(
+      () => JSON.parse(localStorage.getItem("aether-pilot")).xp,
+    );
     check(
       "Kapitelabschluss verbessert das lokale Pilotenprofil",
-      (await d.locator("#profileProgress").innerText()).includes("100 XP"),
+      earnedXP >= 100,
     );
     check(
       "Erstes Modul nach verdienter Erfahrung verfügbar",
@@ -132,7 +135,9 @@ const fs = require("fs"),
     await d.locator("#hangarBtn").click();
     check(
       "Verdientes Profil und gewähltes Modul überstehen Neuladen",
-      (await d.locator("#profileProgress").innerText()).includes("100 XP") &&
+      (await d.evaluate(
+        () => JSON.parse(localStorage.getItem("aether-pilot")).xp,
+      )) === earnedXP &&
         (await d.locator("#pilotModule").inputValue()) === "capacitor",
     );
     check("Keine JavaScript-Fehler", errors.length === 0);

@@ -352,6 +352,8 @@
       <p class="eyebrow">DEIN PILOT / DEINE LINIE</p>
       <h2>Wachse mit<br />deinem Team.</h2>
       <p id="profileProgress" class="muted"></p>
+      <div class="pilot-level-track"><i id="levelProgressFill"></i></div>
+      <p id="levelProgressText" class="small muted"></p>
       <label
         >Rufname
         <input
@@ -413,9 +415,9 @@
       ><label
         >Grafik
         <select id="quality">
-          <option value="auto">Automatisch</option>
-          <option value="low">Sparsam</option>
-          <option value="high">Hoch</option>
+          <option value="auto">Schnell · empfohlen</option>
+          <option value="low">Schnell · sparsam</option>
+          <option value="high">3D · hohe Grafiklast</option>
         </select></label
       ><label class="check-label"
         ><input id="reduceMotion" type="checkbox" /> Weniger Kamerabewegung und

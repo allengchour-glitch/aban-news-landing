@@ -498,6 +498,7 @@ export class FlightView {
       roughness: 0.27,
     });
     this.ringGlow = new T.MeshBasicMaterial({ color: 0x98ebdf });
+    this.bonusGlow = new T.MeshBasicMaterial({ color: 0xffd786 });
     this.hazardMat = new T.MeshStandardMaterial({
       color: 0x3a2834,
       emissive: 0x37151a,
@@ -621,7 +622,12 @@ export class FlightView {
       const g = new T.Group();
       if (e.type === "ring" || e.type === "duet") {
         g.add(mesh(new T.TorusGeometry(2, 0.11, 8, 40), this.ringMat));
-        g.add(mesh(new T.TorusGeometry(1.85, 0.055, 6, 48), this.ringGlow));
+        g.add(
+          mesh(
+            new T.TorusGeometry(1.85, 0.055, 6, 48),
+            e.bonus ? this.bonusGlow : this.ringGlow,
+          ),
+        );
         const halo = new T.Sprite(
           new T.SpriteMaterial({
             map: this.tex,

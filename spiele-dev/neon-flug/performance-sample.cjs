@@ -36,7 +36,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright"),
             const wall = (performance.now() - start) / 1000;
             resolve({
               environment:
-                "Chromium WebGL; Backend und Renderauflösung im Ergebnis beachten",
+                "Chromium; Renderer, Auflösung und rAF-Bildtakt beachten",
               seconds: wall,
               frames: frames.length,
               fps: frames.length / wall,

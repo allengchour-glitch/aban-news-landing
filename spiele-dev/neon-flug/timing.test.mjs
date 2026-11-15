@@ -96,3 +96,11 @@ test("Alte zuverlässige Hosts bleiben nur ohne gemischte Sequenzfolgen lesbar",
   assert(g.accept(5));
   assert(!g.accept(undefined));
 });
+
+test("Vorhersage verwendet dieselbe Vektordüsen-Geschwindigkeit wie die Simulation", () => {
+  const s = createState(0, [{ role: "navigator", mod: "vector" }]);
+  start(s);
+  const predicted = predictPilot(s.players[0], { axis: 1 }, 0.05);
+  step(s, [{ axis: 1 }, {}], 0.05);
+  assert(Math.abs(predicted.x - s.players[0].x) < 1e-9);
+});

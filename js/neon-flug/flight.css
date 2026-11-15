@@ -1354,3 +1354,24 @@ body.overdrive .resonance-track i {
     bottom: 60px;
   }
 }
+
+.pilot-level-track {
+  height: 5px;
+  background: #ffffff22;
+  margin: 18px 0 8px;
+}
+.pilot-level-track i {
+  display: block;
+  height: 5px;
+  width: 0;
+  background: var(--amber);
+  transition: width 0.4s;
+}
+
+.xp-result.level-up {
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: rise 0.5s ease-out;
+  text-shadow: 0 0 18px #f0bc7344;
+}
