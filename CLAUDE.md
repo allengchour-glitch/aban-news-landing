@@ -105,11 +105,40 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 kurz nach Mitternacht (🥒 Hobel-Clip ohne Musik für Di 17.11. eingeplant · 🏢 KI-Büro Fassung 20 im privaten Dashboard, Metricool-Tabelle ins Repo geholt; Besitzer «zu frage ja» mit Links auf `docs/CODEX-CLAUDE-UEBERGABE.md` und PR #3151; PR #3164 `d71d20d9e0`, Gedächtnis-PR dieses Eintrags):**
+- **Auslegung (meine, nicht bestätigt):** «zu frage ja» heisst: Hobel-Clip ohne Musik neu schneiden und einplanen. Die zwei Links heissen: Codex' Fassung 20 ins private Dashboard bringen.
+- **Hobel (GEMESSEN):**
+  - Stille Fassung `hobel-ohne-musik-1611.mp4` in Shopify Files: Bildspur bitgleich, Ton −70 LUFS.
+  - Metricool Di 17.11.: YouTube 13:00 (id 429390094), TikTok 13:00 (id 429390445), Reel Instagram/Facebook 20:00 (id 429395222). Alle mit `autoPublish`, frisch gelesen 23:47 UTC mit Status PENDING.
+  - Doku: `dropship/tiktok-cj-videos-0311/PAKET.md`.
+- **KI-Büro (PR #3164, Doku `tools/buero/dashboard/README.md`):**
+  - **Hochgeladen** 15.11. 23:48 UTC in einer atomaren Anfrage: `files/index.html` Version 19, `files/kb3d-code.js` Version 9, `files/kb-geldmanager.js` Version 2. Alle zehn Dateien zurückgelesen gleich dem Bau aus `main`. `datasets/buero` bleibt Version 8 (Messstand 11.11.).
+  - **Tabelle herausgelöst:** Die Tabelle der Social-Sitzung (Version 18, nie im Repo) ergab sich aus einem Diff zwischen dem Bau von Design 15 und Version 18. Sie besteht aus CSS, zwei Tabellen, vier Helfern und zwei Zeichnungen.
+  - **Fehler in Version 18:** Eine zerbrochene `if`/`else`-Kette nahm die Knöpfe zu Shop und Metricool weg. In Fassung 20 gibt es ohnehin keine Kontolinks.
+  - **Behoben am Handy:** Die Abfragezeit war abgeschnitten («22:17» ohne Datum). Die Zeile steht jetzt über der Tabelle.
+  - **Neu in `make_buero.py`:** `metricool_v2_pruefen` (Version 2, gilt auch für `yt_wachstum`).
+  - **Prüfungen:**
+    - Unit-Tests: 13, davon 9 neu.
+    - `test_dashboard.mjs`: 86 Prüfungen mit Testdaten, 96 mit den echten Daten.
+    - Mutationsprobe: 8 von 8 (Seite) und 7 von 7 (Prüfung) erkannt.
+    - Öffentliche Seite ohne Metricool-Daten, Tabellen dort unsichtbar.
+  - **Grösse:** Bis zur Baugrenze bleiben 1 431 Byte. Vor der nächsten grösseren Änderung den Büro-Stil auslagern.
+  - Übergabe an Codex: `docs/CODEX-CLAUDE-UEBERGABE.md` und `SHARED-MEMORY.md`.
+- **Ungemessen:**
+  - die echte Darstellung im Dashboard und am Handy;
+  - ob der KI-Bot-Knopf aus dem Dashboard `abannews.com` erreicht;
+  - die Wirkung des stillen Clips.
+- **Lehren:**
+  - (1) Eine Änderung, die nur im Dashboard steht, findet man am sichersten durch einen Diff gegen den Bau des Commits, aus dem die vorige Version kam. Hier waren es 76 geänderte Zeilen, sauber getrennt.
+  - (2) Beim Übertragen fremden Codes den Kontrollfluss lesen: Ein eingeschobenes `var …; if (…) {…}` vor einem `else` hängt das `else` um.
+  - (3) Eine Messzeit nie in einen Bereich legen, der seitlich abgeschnitten werden kann. Eine Uhrzeit ohne Datum täuscht Frische vor. Der Test prüft jetzt «ganz im Bild».
+  - (4) `Artifact read` mit einer Asset-Kennung klappte diesmal in der Cloud-Sitzung; am 11.11. war es gescheitert.
+
 **📌 2026-11-15 nachts, nach 23 Uhr (✉️ Mails · 🤖 Modell-Leiter für Unteragenten · 🔎 Merchant: Liechtenstein wirkt, Googles Autofeed abgeschaltet · 3 verpasste Wecker nachgeholt; Besitzer: vier TikTok-Links (zum ersten «mache das»), «mache weiter und bearbeite mails und lade memroy», «alles erlaubt» (zweimal), «nutze auch sonnet model», «und haiku»; PRs #3159 `c70e5cac0d`, #3160 `2a69bea859`, #3161 `23a6c8b7c9`; Abannews-Sitzung):**
 - **Auslegung (meine, nicht bestätigt):** «alles erlaubt» = Freigabe des Plans dieser Nacht. Geld, Reel-Musik und Änderungen mit Kundenwirkung bleiben bei den Regeln.
 - **Verpasste Wecker (erst 15.11. 22:00 UTC zugestellt):**
   - Pia Folge 1 am 12.11. veröffentlicht (`youtube.com/shorts/td8bVcUo324`). Die Pia-Sitzung hat seither drei weitere Folgen veröffentlicht, «Soja» ist auf den 16.11. 18:00 eingeplant.
-  - **Hobel-Clips 13.11. nicht veröffentlicht:** Die drei Entwürfe haben ein Datum in der Vergangenheit und tragen laut `dropship/tiktok-cj-videos-0311/cj_clips.json` das am 10.11. abgelehnte Stück «new-york-427». Nicht neu eingeplant. Vorschlag: ohne Musik neu schneiden; der Entscheid liegt beim Besitzer.
+  - **Hobel-Clips 13.11. nicht veröffentlicht:** Die drei Entwürfe haben ein Datum in der Vergangenheit und tragen laut `dropship/tiktok-cj-videos-0311/cj_clips.json` das am 10.11. abgelehnte Stück «new-york-427». Nicht neu eingeplant. Vorschlag: ohne Musik neu schneiden; der Entscheid liegt beim Besitzer. **[ERLEDIGT 16.11.: ohne Musik neu eingeplant, siehe Block «2026-11-16 kurz nach Mitternacht».]**
 - **Mails (GEMESSEN 22:1x UTC):** 25 Verläufe in den Papierkorb, 16 bleiben, keine Kundenmail. Einen Papierkorb-Aufruf (Pinterest-Empfehlung) hat der Besitzer abgelehnt; nicht wiederholt.
   - Apify-Sicherheitsvorfall: Der Besitzer soll die 2FA bei Apify neu einrichten; im Repo gibt es keine Apify-Schlüssel.
   - Die GitHub-Apps Claude und Linear wollen mehr Rechte; das Meta-Werbekonto hat kein Zahlungsmittel; ChatGPT Pro endet am 17.11. (Codex hängt daran).
@@ -125,7 +154,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - Earshot: Die Installation des Fremdpakets hat der Sicherheitsprüfer gesperrt, nicht umgangen. Der Besitzer hatte der Shop-Sitzung «Nein» gesagt.
   - LEGO-Partnerprogramm.
   - Index-Wecker `trig_019nMZrhD1AcCgEKYuUYGRGE`: Lesen braucht die Freigabe des Besitzers. Er feuert erst am 11.11.2027 wieder.
-  - KI-Büro-Upload: Das Dashboard trägt weiter `index.html` v18 (Metricool-Tabelle, nicht im Repo) und `kb3d-code.js` v8.
+  - KI-Büro-Upload: Das Dashboard trägt weiter `index.html` v18 (Metricool-Tabelle, nicht im Repo) und `kb3d-code.js` v8. **[ERLEDIGT 15.11. 23:48 UTC: Fassung 20 mit der Tabelle, PR #3164.]**
 - **Lehren:**
   - (1) Die Merchant API lässt Felder mit dem Wert false weg (proto3-JSON). Ein fehlendes `enableProducts` heisst «aus»; das erste Rücklesen meldete darum fälschlich «weicht ab».
   - (2) Bei Restmeldungen zuerst die Herkunft zählen: 3 von 4 Bildmeldungen kamen aus dem Autofeed, nicht aus der App.

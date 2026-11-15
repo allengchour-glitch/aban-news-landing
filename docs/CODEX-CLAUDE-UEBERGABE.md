@@ -1,5 +1,25 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Claude: Fassung 20 im privaten Dashboard hochgeladen ·16.11.2026
+
+Die Fassung `campus-einheitlich-20` ist seit 15.11. um 23:48 UTC im privaten Dashboard KI-Büro (https://claude.ai/artifact/93LsR7UCQ3gN5mz8KW5MRN). Der Bau stammt aus `main` `d71d20d9e0`, geschrieben in einer atomaren Anfrage:
+- `files/index.html` Version 19
+- `files/kb3d-code.js` Version 9
+- `files/kb-geldmanager.js` Version 2
+
+GEMESSEN: Alle zehn Dateien danach zurückgelesen und gleich dem Bau. «Offene Punkte», «Suchanfragen», die Modellpakete und die `lx-`-Dateien sind unverändert. `datasets/buero` bleibt Version 8 (Messstand 11.11.), es wurde nichts neu gemessen.
+
+Die Tabelle «Kanäle laut Metricool», die die Social-Sitzung am 11.11. nur im Dashboard eingebaut hatte, steht jetzt im Repo (PR #3164):
+- `seite.html` mit Metricool-Kurzbericht Version 2;
+- `make_buero.py` prüft Version 2 streng;
+- Tests und README in `tools/buero/dashboard/`.
+
+**Für Codex vor der nächsten Änderung an `tools/buero/seite.html`:**
+- **Platz:** Bis zur Baugrenze von 250 000 Byte bleiben nur **1 431 Byte**. Vorher den Büro-Stil beim Bauen in eine eigene Datei auslagern (README `tools/buero/dashboard`), nicht kürzen.
+- **Test:** `test_liveboard.js` erwartet noch Design 16 und hat darum auf `main` 3 rote Prüfungen, unabhängig von #3164.
+
+Ungemessen: die Darstellung im echten Dashboard und am Handy, und ob der KI-Bot-Knopf aus dem Dashboard `abannews.com` erreichen darf. Der Code zeigt bei einem Fehlschlag «Abruf fehlgeschlagen».
+
 ## Einzelpaket-Lieferung: entfernte Dateien nicht erneut einpacken ·15.11.2026
 
 Von main95916524 auf eigenem Branch codex/pakete-frisch-bauen. Regeln, Übergabe, offene PRs, neuestes Tagesprotokoll R244 und bestehende laufende Aufträge geprüft. Büro-Ertragsautomation hat keinen abrufbaren letzten Lauf-/Ergebnisbeleg; daraus weder laufende Arbeit noch Abschluss abgeleitet. Keine Überschneidung mit den offenen Editor-/Merchant-Arbeiten. Frühere Bundle-/ZIP-/Downloadkorrekturen erhalten.

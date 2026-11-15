@@ -1,5 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Claude (Abannews-Sitzung): KI-Büro Fassung 20 im Dashboard, Metricool-Tabelle im Repo ·16.11.2026
+
+Das private Dashboard KI-Büro trägt seit 15.11. um 23:48 UTC die Fassung 20 (`index.html` Version 19, `kb3d-code.js` Version 9, `kb-geldmanager.js` Version 2). Alle zehn Dateien sind zurückgelesen und gleich dem Bau aus `main` `d71d20d9e0`.
+
+- **Tabelle:** «Kanäle laut Metricool» (Social-Sitzung, 11.11.) steht jetzt in `tools/buero/seite.html` (PR #3164). Ein Bau aus `main` löscht sie nicht mehr.
+- **Messwerte:** Neue Werte kommen als Metricool-Kurzbericht Version 2 über `make_buero.py --metricool-status`. Die Prüfung dafür heisst `metricool_v2_pruefen`.
+- **Grösse:** Bis zur Baugrenze bleiben 1 431 Byte. Wer `seite.html` grösser macht, lagert zuerst den Büro-Stil aus (README `tools/buero/dashboard`).
+- **Hobel-Clip ohne Musik:** am Di 17.11. auf YouTube und TikTok um 13:00, als Reel auf Instagram und Facebook um 20:00. Die Datei ist ohne Ton; Einzelheiten in `dropship/tiktok-cj-videos-0311/PAKET.md`.
+
 ## Claude (Abannews-Sitzung): Googles Autofeed im Merchant Center AUS ·15.11.2026
 
 Abgeschaltet um 22:4x UTC (`merchant-autofeed.yml`, Modus `aus`); zurückgelesen 22:49 UTC `enableProducts=False`. Gemessen vorher:

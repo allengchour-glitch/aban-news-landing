@@ -32,6 +32,22 @@ Textregeln (geprüft mit `node dropship/tiktok-cj-videos-0311/omni_clip.mjs --pr
 
 Die Videos liegen als `luxe-cj-<produkt>-0411.mp4` in den Shopify-Dateien (als Datei, nicht als Video-Objekt: Shopify rechnet Video-Objekte auf 606×1080 um), Metricool hält byte-gleiche Kopien (Dateigrösse je Beitrag mit der lokalen Datei verglichen). Wegweiser-Zeile in der Instagram/Facebook-Caption: «Shop: luxestyle.ch (Instagram: Link in Bio)», weil derselbe Text auch als Facebook-Reel läuft. `isAigc`/`isAiGenerated` aus (echtes Material). **Rücknahme:** Beitrag im Metricool-Planer löschen (`https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=<uuid>`).
 
+## Gemüsehobel neu ohne Musik (16.11.2026)
+Der Besitzer lehnte am 10.11. die Musik ab («musik ist scheisse», Stück «new-york-427»). Am 15.11. sagte er zur Frage, ob der Hobel-Clip ohne Musik neu eingeplant werden soll: «zu frage ja». Marken wie oben.
+- **Datei:** `hobel-ohne-musik-1611.mp4` in den Shopify-Dateien (`https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hobel-ohne-musik-1611.mp4?v=1794784337`), 10,16 s.
+  - Die Bildspur ist bitgleich zur bisherigen Fassung (MD5 der Bildspur gleich). Die Tonspur ist still: −70 LUFS, GEMESSEN an der Datei und an Metricools Kopie.
+  - Die zwei alten Metricool-Dateien waren dasselbe Video.
+- **Metricool** (Marke 6227837), Di 17.11.:
+  - YouTube-Short 13:00 (id 429390094)
+  - TikTok 13:00 (id 429390445, ohne `autoAddMusic`)
+  - Reel Instagram/Facebook 20:00 (id 429395222)
+  - Alle drei mit `autoPublish`, Texte unverändert, je einmal im Planer, Status PENDING (frisch gelesen 15.11. 23:47 UTC).
+- **Ersetzt:** Die drei Entwürfe vom 13.11. mit dem abgelehnten Stück tragen jetzt die stille Datei. `updateScheduledPost` vergibt eine neue id und behält die uuid; die alten ids waren 426613132, 426613082 und 427286519.
+- **Ungemessen:**
+  - ob TikTok und Instagram einen stillen Clip schwächer ausspielen;
+  - der Ton wurde nur gemessen, nicht gehört;
+  - ob die Beiträge am 17.11. wirklich erscheinen.
+
 ## Wie die zweite Fassung entstand (04.11.)
 1. **Gegenprüfung der ersten Fassung** (Workflow `wf_3ae2a0bd`): Fremdgerät im Hobel- und Duft-Clip, chinesische Schrift, absolute Aussagen («nie welkt»), leises Audio, schwarzes Titelbild.
 2. **Vollständige Sichtung aller 54 Quellvideos** (Workflow `wf_2b23058f`, 2 Bilder pro Sekunde, 1,8 Mio. Tokens): saubere Abschnitte je Produkt und Produkttreue. Die Sichtung ist selbst eine Behauptung: die Abnahme fand darin zwei übersehene Quellschnitte (Duft Quelle 8 bei 8,96 s; Welle Quelle 9 bei 22,96 s).
