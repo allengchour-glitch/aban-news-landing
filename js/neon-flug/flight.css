@@ -969,7 +969,7 @@ dialog p {
   }
   .hero-copy {
     padding-top: 85px;
-    padding-bottom: 115px;
+    padding-bottom: 24px;
   }
   .hero-copy h1 {
     font-size: 78px;
@@ -984,8 +984,13 @@ dialog p {
     margin: 15px 0;
   }
   .hero-footer {
-    bottom: 15px;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-inline: 4.5vw;
     padding-top: 14px;
+    padding-bottom: 20px;
   }
   .hero-side {
     top: 25%;
@@ -1270,9 +1275,8 @@ body.overdrive .resonance-track i {
     max-height: 140px;
   }
   #hangarBtn {
-    position: absolute;
-    left: 390px;
-    bottom: 130px;
+    position: static;
+    min-height: 44px;
   }
   .hero-actions {
     max-width: 700px;

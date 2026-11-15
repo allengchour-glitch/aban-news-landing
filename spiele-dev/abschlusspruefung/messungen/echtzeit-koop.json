@@ -1,0 +1,107 @@
+{
+  "base": "http://127.0.0.1:8113",
+  "mode": "Zwei Seiten im selben Chromium-Kontext, lokale Signalisierung, echte DataChannels, echte Laufzeit, geskriptete Lenkeingaben",
+  "checks": [
+    {
+      "name": "Kapitel 1 mit echter Uhr abgeschlossen",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 1: gemeinsames Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 1: keine Zeitbeschleunigung",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 2 mit echter Uhr abgeschlossen",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 2: gemeinsames Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 2: keine Zeitbeschleunigung",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 3 mit echter Uhr abgeschlossen",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 3: gemeinsames Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "Kapitel 3: keine Zeitbeschleunigung",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript-/Konsolenfehler",
+      "ok": true
+    },
+    {
+      "name": "Keine unbeabsichtigte Pause im Dauerlauf",
+      "ok": true
+    },
+    {
+      "name": "Verdiente Flug-XP vorhanden",
+      "ok": true
+    }
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "wallSeconds": 90.21,
+      "simulationSeconds": 90,
+      "score": 13850,
+      "rings": [
+        24,
+        24
+      ],
+      "hp": [
+        3,
+        3
+      ],
+      "syncLagMax": 0.09999999999999432,
+      "samples": 448
+    },
+    {
+      "chapter": 2,
+      "wallSeconds": 95.24,
+      "simulationSeconds": 95,
+      "score": 16450,
+      "rings": [
+        27,
+        27
+      ],
+      "hp": [
+        3,
+        3
+      ],
+      "syncLagMax": 0.09999999999999432,
+      "samples": 451
+    },
+    {
+      "chapter": 3,
+      "wallSeconds": 100.079,
+      "simulationSeconds": 100,
+      "score": 13150,
+      "rings": [
+        23,
+        23
+      ],
+      "hp": [
+        3,
+        3
+      ],
+      "syncLagMax": 0.14999999999999947,
+      "samples": 450
+    }
+  ],
+  "errors": [],
+  "pauses": 0,
+  "passed": true
+}

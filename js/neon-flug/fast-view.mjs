@@ -401,7 +401,7 @@ export class FastFlightView {
       for (const side of [-1, 1]) {
         const segment = wallSegment(travel, indices[i], side, this.level);
         this.worldPolygon(segment.face, side < 0 ? "#263039" : "#4a3d32");
-        if (this.texturePattern)
+        if (this.texturePattern && !this.low)
           for (const strip of splitWall(segment.face, 2))
             this.worldPolygon(strip, "rgba(0,0,0,0)", true);
         this.worldPolygon(segment.roof, side < 0 ? "#36434a" : "#6a5641");

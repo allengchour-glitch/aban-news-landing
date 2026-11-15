@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Spiele-Abschlussprüfung und Live-Freigabe ·16.11.2026
+
+Besitzer hat Veröffentlichung der Spiele-Änderungen und anschliessend das nächste Koop-Spiel freigegeben. PR3156: reale285-Sekunden-Flugkampagne mit zwei lokalen WebRTC-Seiten ohne Vorspulen, Abbruch oder Schaden bestanden; Minispiele60, Wortspiele642, Action74, Traumhaus23+7 erneut grün. Audio36 Prüfbedingungen; Null-Lautstärke und wiederkehrende stumme Töne repariert. Querformat-Menü erreichbar, sparsamer Flugmodus ohne teure Fels-Texturzeichnung;4x-CPU-Emulation12,9→59,6rAF/s, kein Handybenchmark. Park-Vollsuite weiterhin Zeitabbruch; isolierte Pause/Weiter grün. Öffentlicher Koop im Cloud-Browser TLS-blockiert. Produktionsnachweis folgt getrennt; Abschluss und Grenzen in `spiele-dev/abschlusspruefung/README.md`. Nächstes Spiel: Tempel der Zwei, eigene isolierte Arbeit.
+
 ## Codex: Arcade – fünf Agenten, erste gemeinsame Reparaturrunde ·15.11.2026 UTC
 
 Auf `codex/neon-flug-koop` / Entwurfs-PR3156:36 Spiele-Adressen einschliesslich vier alter Weiterleitungen erfasst,20 Minispiele auf Handy/Desktop gestartet und gezielte Eingabe-/End-/Neustartfehler repariert. Weitere Fixes in Actionspielen, Wildnis/Park/Tempel, Lebenspfad, Traumhaus und beiden Wortspielen. Gemeinsame Header lassen eigene Stationen sowie Modell-Blobs/Blob-Bilder nur auf Spielrouten zu; Sprachchat-Mikrofon nur für Lebenspfad/Traumhaus mit Browserfreigabe. Flugfelsen behalten Form/UVs, Rettung am Ziel und kleine Ergebnis-/Trainingsdetails korrigiert;96 gezielte Flugprüfbedingungen grün. Keine pauschale Fertig- oder Handy-FPS-Zusage; genaue Belege/Restpunkte in `spiele-dev/parallel-audit/README.md`. Frische lokale Flugaufnahme; nicht veröffentlicht oder gemergt.

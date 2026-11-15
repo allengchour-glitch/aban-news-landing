@@ -21,10 +21,17 @@ export class FlightAudio {
       this.master.connect(limiter);
       limiter.connect(this.ctx.destination);
     }
-    this.ctx.resume().catch(() => {});
+    if (this.enabled) this.ctx.resume().catch(() => {});
+    else this.silence();
   }
   tone(freq, duration, volume, type = "sine", delay = 0) {
-    if (!this.enabled || !this.ctx || this.ctx.state !== "running") return;
+    if (
+      !this.enabled ||
+      !this.ctx ||
+      this.ctx.state !== "running" ||
+      volume <= 0
+    )
+      return;
     const c = this.ctx,
       o = c.createOscillator(),
       g = c.createGain(),
