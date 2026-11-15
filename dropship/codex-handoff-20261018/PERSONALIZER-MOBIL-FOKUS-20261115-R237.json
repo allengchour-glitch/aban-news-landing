@@ -1,0 +1,701 @@
+{
+  "revision": 237,
+  "sourcePin": {
+    "repository": "allengchour-glitch/aban-news-landing",
+    "ref": "refs/heads/main",
+    "refObjectSha": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+    "commitSha": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+    "commitTreeSha": "ba783e1d8b53d9f318a7908a1f3301367c195923",
+    "treeTruncated": false,
+    "capturedAtUtc": "2026-11-15T14:51:28.806227+00:00",
+    "files": [
+      {
+        "path": "pod/v6/lspod-designer-v6-6.4.0.js",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1296cc6d7cb8fc69ed317db73d8ae26ecd10b227",
+        "size": 260794,
+        "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/1296cc6d7cb8fc69ed317db73d8ae26ecd10b227",
+        "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-designer-v6-6.4.0.js",
+        "sha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+        "bytesFetched": 260794,
+        "sri": "sha256-5+MLwjHmgX9w4svYCJ9XyCrV6nwoVYVwkiN5jBatuTA="
+      },
+      {
+        "path": "pod/v6/maps/lspod-15422823465345.karte.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "aaba17fd5ae473ab63e83364625a9c018ebabd4b",
+        "size": 2690,
+        "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/aaba17fd5ae473ab63e83364625a9c018ebabd4b",
+        "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-15422823465345.karte.json",
+        "sha256": "b89831069f4efb9b5d043567924afb70b24e897edff3a9a9634a5fc4087bf3b5",
+        "bytesFetched": 2690
+      },
+      {
+        "path": "pod/v6/maps/lspod-15422823465345.vorschau.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4220a4bff426506894d89fb706d34d4cbe603720",
+        "size": 1410,
+        "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/4220a4bff426506894d89fb706d34d4cbe603720",
+        "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-15422823465345.vorschau.json",
+        "sha256": "8fbdaa5857b81fd95198d95f98414e4c278d10d1cfec354260678659907ac73b",
+        "bytesFetched": 1410
+      }
+    ],
+    "apiRefSha256": "e876301e3fc27472c75e52c09fba57223c8afb5a4f839618fa95c0ff00fc3083",
+    "apiCommitSha256": "d0e46d975c69f3b5d409e36d61aac3e5800dc25cc7cac13fe00c2e263297f8a4",
+    "apiTreeSha256": "c4b41cdaf6991b2292e34e7bd92787e10b45fb411af67837cc74b3dec96b986e"
+  },
+  "historicalRolloutNote": {
+    "path": "dropship/CODEX-ROLLOUT-V64-0911.md",
+    "sha256": "2822057e1e7b83b119c32b370d8d5dc5b90dbb321a03d58f6f4d40a10b7671ad",
+    "reportedDeploymentDate": "2026-11-09",
+    "reportedActor": "Claude",
+    "currentProductScopeVerified": 1,
+    "notOwnDeployment": true
+  },
+  "publicChecks": [
+    {
+      "mode": "PUBLIC_LIVE_BASELINE",
+      "width": 375,
+      "height": 844,
+      "status": 200,
+      "theme": {
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "id": 213991391623,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main",
+        "handle": "null",
+        "style": {
+          "id": null,
+          "handle": null
+        }
+      },
+      "viewport": {
+        "innerWidth": 375,
+        "innerHeight": 844,
+        "documentWidth": 375,
+        "clientWidth": 375,
+        "visualWidth": 375
+      },
+      "anchor": {
+        "before": {
+          "scrollY": 576,
+          "targetCount": 1,
+          "rootTop": 1978.78125
+        },
+        "after": {
+          "scrollY": 2455,
+          "targetCount": 1,
+          "rootTop": 99.78125,
+          "activeId": "lspod-start"
+        }
+      },
+      "editorGeometry": {
+        "width": 343,
+        "clientWidth": 343,
+        "scrollWidth": 343
+      },
+      "productPreview": {
+        "text": " 300 dpi\n\nDas Motiv läuft rund um das Gefäss. Halte den Bereich am Henkel frei.\n\nTipp: ziehen zum Verschieben · Ecke = skalieren & drehen · Bild antippen → zuschneiden, spiegeln & filtern\nWas ausserhalb der Druckfläche liegt, wird nicht gedruckt.\n➕ Text\n⭐ Sticker\n🖼️ Bild\n↶ Rückgängig\n↷ Wiederholen\nEbenen\nText: LuxeStyle\n▲\n▼\nModern ohne Serifen\nElegant mit Serifen\nHandschrift\nKräftige Überschrift\nSchreibmaschine\nB\nI\nLinks\nMitte\nRechts\n✓\nGenaue Werte\nX (cm)\nY (cm)\nSchrifthöhe (mm)\nDrehung °\nDeckkraft %\n⇔ Mitte horizontal\n⇕ Mitte vertikal\nGrösse\nDrehen\n0°\nAbstand\nKontur\nZeilen\nDruckgrösse:\nKlein\nMittel\nGross\nFüllend\n⧉ Duplizieren\n↑ Vorne\n↓ Hinten\n👁️ Druck-Vorschau anzeigenDruckvorschau prüfen",
+        "width": 343,
+        "scrollWidth": 343,
+        "clientWidth": 343,
+        "canvases": [
+          {
+            "width": 341,
+            "height": 341,
+            "visible": true
+          }
+        ]
+      },
+      "printPreview": {
+        "role": "dialog",
+        "ariaModal": "true",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 844
+        },
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "image": {
+          "srcScheme": "blob",
+          "width": 2700,
+          "height": 1050
+        },
+        "activeClass": "go",
+        "viewport": {
+          "width": 375,
+          "height": 844,
+          "documentWidth": 375
+        }
+      },
+      "closeResult": {
+        "modalCount": 0,
+        "activeTag": "BODY",
+        "activeClass": "page-width-narrow card-hover-effect-lift template-product",
+        "focusRestoredToPreview": false
+      },
+      "network": {
+        "blockedRequests": 73,
+        "blockedByMethodAndType": [
+          {
+            "method": "POST",
+            "type": "ping",
+            "count": 12
+          },
+          {
+            "method": "POST",
+            "type": "fetch",
+            "count": 36
+          },
+          {
+            "method": "GET",
+            "type": "document",
+            "count": 3
+          },
+          {
+            "method": "GET",
+            "type": "fetch",
+            "count": 7
+          },
+          {
+            "method": "GET",
+            "type": "other",
+            "count": 10
+          },
+          {
+            "method": "GET",
+            "type": "image",
+            "count": 2
+          },
+          {
+            "method": "POST",
+            "type": "xhr",
+            "count": 3
+          }
+        ],
+        "designerResponses": [
+          {
+            "url": "https://luxestyle.ch/cdn/shop/t/29/assets/lspod-designer-v5-safe.js?v=83768018118847241691794663742",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js?v=e7e30bc231e6817f",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.karte.json?v=b89831069f4efb9b",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.vorschau.json?v=8fbdaa5857b81fd9",
+            "status": 200
+          }
+        ],
+        "errorsAttributableToIntentionalTelemetryBlocking": 15,
+        "rawNetworkKeptPrivate": true
+      }
+    },
+    {
+      "mode": "PUBLIC_LIVE_BASELINE",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "theme": {
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "id": 213991391623,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main",
+        "handle": "null",
+        "style": {
+          "id": null,
+          "handle": null
+        }
+      },
+      "viewport": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "documentWidth": 390,
+        "clientWidth": 390,
+        "visualWidth": 390
+      },
+      "anchor": {
+        "before": {
+          "scrollY": 597,
+          "targetCount": 1,
+          "rootTop": 1929.71875
+        },
+        "after": {
+          "scrollY": 2427,
+          "targetCount": 1,
+          "rootTop": 99.71875,
+          "activeId": "lspod-start"
+        }
+      },
+      "editorGeometry": {
+        "width": 358,
+        "clientWidth": 358,
+        "scrollWidth": 358
+      },
+      "productPreview": {
+        "text": " 300 dpi\n\nDas Motiv läuft rund um das Gefäss. Halte den Bereich am Henkel frei.\n\nTipp: ziehen zum Verschieben · Ecke = skalieren & drehen · Bild antippen → zuschneiden, spiegeln & filtern\nWas ausserhalb der Druckfläche liegt, wird nicht gedruckt.\n➕ Text\n⭐ Sticker\n🖼️ Bild\n↶ Rückgängig\n↷ Wiederholen\nEbenen\nText: LuxeStyle\n▲\n▼\nModern ohne Serifen\nElegant mit Serifen\nHandschrift\nKräftige Überschrift\nSchreibmaschine\nB\nI\nLinks\nMitte\nRechts\n✓\nGenaue Werte\nX (cm)\nY (cm)\nSchrifthöhe (mm)\nDrehung °\nDeckkraft %\n⇔ Mitte horizontal\n⇕ Mitte vertikal\nGrösse\nDrehen\n0°\nAbstand\nKontur\nZeilen\nDruckgrösse:\nKlein\nMittel\nGross\nFüllend\n⧉ Duplizieren\n↑ Vorne\n↓ Hinten\n👁️ Druck-Vorschau anzeigenDruckvorschau prüfen",
+        "width": 358,
+        "scrollWidth": 358,
+        "clientWidth": 358,
+        "canvases": [
+          {
+            "width": 356,
+            "height": 356,
+            "visible": true
+          }
+        ]
+      },
+      "printPreview": {
+        "role": "dialog",
+        "ariaModal": "true",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "image": {
+          "srcScheme": "blob",
+          "width": 2700,
+          "height": 1050
+        },
+        "activeClass": "go",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 390
+        }
+      },
+      "closeResult": {
+        "modalCount": 0,
+        "activeTag": "BODY",
+        "activeClass": "page-width-narrow card-hover-effect-lift template-product",
+        "focusRestoredToPreview": false
+      },
+      "network": {
+        "blockedRequests": 71,
+        "blockedByMethodAndType": [
+          {
+            "method": "POST",
+            "type": "ping",
+            "count": 12
+          },
+          {
+            "method": "POST",
+            "type": "fetch",
+            "count": 33
+          },
+          {
+            "method": "GET",
+            "type": "document",
+            "count": 4
+          },
+          {
+            "method": "GET",
+            "type": "fetch",
+            "count": 7
+          },
+          {
+            "method": "GET",
+            "type": "other",
+            "count": 10
+          },
+          {
+            "method": "GET",
+            "type": "image",
+            "count": 2
+          },
+          {
+            "method": "POST",
+            "type": "xhr",
+            "count": 3
+          }
+        ],
+        "designerResponses": [
+          {
+            "url": "https://luxestyle.ch/cdn/shop/t/29/assets/lspod-designer-v5-safe.js?v=83768018118847241691794663742",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js?v=e7e30bc231e6817f",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.karte.json?v=b89831069f4efb9b",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.vorschau.json?v=8fbdaa5857b81fd9",
+            "status": 200
+          }
+        ],
+        "errorsAttributableToIntentionalTelemetryBlocking": 16,
+        "rawNetworkKeptPrivate": true
+      }
+    },
+    {
+      "mode": "PUBLIC_LIVE_BASELINE",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "theme": {
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "id": 213991391623,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main",
+        "handle": "null",
+        "style": {
+          "id": null,
+          "handle": null
+        }
+      },
+      "viewport": {
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "documentWidth": 1440,
+        "clientWidth": 1440,
+        "visualWidth": 1440
+      },
+      "anchor": {
+        "before": {
+          "scrollY": 0,
+          "targetCount": 1,
+          "rootTop": 1906.984375
+        },
+        "after": {
+          "scrollY": 2466,
+          "targetCount": 1,
+          "rootTop": 100.28125,
+          "activeId": "lspod-start"
+        }
+      },
+      "editorGeometry": {
+        "width": 429.34375,
+        "clientWidth": 429,
+        "scrollWidth": 429
+      },
+      "productPreview": {
+        "text": " 300 dpi\n\nDas Motiv läuft rund um das Gefäss. Halte den Bereich am Henkel frei.\n\nTipp: ziehen zum Verschieben · Ecke = skalieren & drehen · Bild antippen → zuschneiden, spiegeln & filtern\nWas ausserhalb der Druckfläche liegt, wird nicht gedruckt.\n➕ Text\n⭐ Sticker\n🖼️ Bild\n↶ Rückgängig\n↷ Wiederholen\nEbenen\nText: LuxeStyle\n▲\n▼\nModern ohne Serifen\nElegant mit Serifen\nHandschrift\nKräftige Überschrift\nSchreibmaschine\nB\nI\nLinks\nMitte\nRechts\n✓\nGenaue Werte\nX (cm)\nY (cm)\nSchrifthöhe (mm)\nDrehung °\nDeckkraft %\n⇔ Mitte horizontal\n⇕ Mitte vertikal\nGrösse\nDrehen\n0°\nAbstand\nKontur\nZeilen\nDruckgrösse:\nKlein\nMittel\nGross\nFüllend\n⧉ Duplizieren\n↑ Vorne\n↓ Hinten\n👁️ Druck-Vorschau anzeigenDruckvorschau prüfen",
+        "width": 429.34375,
+        "scrollWidth": 429,
+        "clientWidth": 429,
+        "canvases": [
+          {
+            "width": 427,
+            "height": 427,
+            "visible": true
+          }
+        ]
+      },
+      "printPreview": {
+        "role": "dialog",
+        "ariaModal": "true",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "image": {
+          "srcScheme": "blob",
+          "width": 2700,
+          "height": 1050
+        },
+        "activeClass": "go",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "documentWidth": 1440
+        }
+      },
+      "closeResult": {
+        "modalCount": 0,
+        "activeTag": "BODY",
+        "activeClass": "page-width-narrow card-hover-effect-lift template-product",
+        "focusRestoredToPreview": false
+      },
+      "network": {
+        "blockedRequests": 70,
+        "blockedByMethodAndType": [
+          {
+            "method": "POST",
+            "type": "ping",
+            "count": 12
+          },
+          {
+            "method": "GET",
+            "type": "fetch",
+            "count": 7
+          },
+          {
+            "method": "POST",
+            "type": "fetch",
+            "count": 32
+          },
+          {
+            "method": "GET",
+            "type": "document",
+            "count": 4
+          },
+          {
+            "method": "GET",
+            "type": "other",
+            "count": 10
+          },
+          {
+            "method": "GET",
+            "type": "image",
+            "count": 2
+          },
+          {
+            "method": "POST",
+            "type": "xhr",
+            "count": 3
+          }
+        ],
+        "designerResponses": [
+          {
+            "url": "https://luxestyle.ch/cdn/shop/t/29/assets/lspod-designer-v5-safe.js?v=83768018118847241691794663742",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js?v=e7e30bc231e6817f",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.karte.json?v=b89831069f4efb9b",
+            "status": 200
+          },
+          {
+            "url": "https://abannews.com/pod/v6/maps/lspod-15422823465345.vorschau.json?v=8fbdaa5857b81fd9",
+            "status": 200
+          }
+        ],
+        "errorsAttributableToIntentionalTelemetryBlocking": 15,
+        "rawNetworkKeptPrivate": true
+      }
+    }
+  ],
+  "initialHypothesisCorrection": "Legacy-selector suspicion disproved by functional anchor test: target exists, focus correct, root top about100px at all3widths. No anchor patch.",
+  "candidate": {
+    "mode": "LOCAL_CANDIDATE_FIXTURE_NOT_PUBLIC_LIVE",
+    "width": 390,
+    "fixtureSri": "sha256-7ytjm/GfGxkRjz4fptdStSmxUsoYfWlmPFvITZL0iNc=",
+    "closeResult": {
+      "modalCount": 0,
+      "activeTag": "BUTTON",
+      "activeClass": "lsp6-preview",
+      "focusRestoredToPreview": true
+    },
+    "buttonCloseResult": {
+      "modalCount": 0,
+      "focusRestoredToPreview": true
+    },
+    "printPreview": {
+      "role": "dialog",
+      "ariaModal": "true",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "image": {
+        "srcScheme": "blob",
+        "width": 2700,
+        "height": 1050
+      },
+      "activeClass": "go",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "documentWidth": 390
+      }
+    },
+    "metadata": {
+      "status": "LOCAL_REVIEW_CANDIDATE_NOT_RELEASED",
+      "sourcePath": "pod/v6/lspod-designer-v6-6.4.0.js",
+      "sourceCommit": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+      "sourceTree": "ba783e1d8b53d9f318a7908a1f3301367c195923",
+      "sourceBlob": "1296cc6d7cb8fc69ed317db73d8ae26ecd10b227",
+      "sourceBytes": 260794,
+      "sourceSha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+      "candidatePath": "/dev/shm/luxestyle-review/r237/focus-candidate.js",
+      "candidateBytes": 260961,
+      "candidateSha256": "ef2b639bf19f1b19118f3e1fa6d752b529b152ca187d69663c5bc84d92f488d7",
+      "patchPath": "/dev/shm/luxestyle-review/r237/focus-restore.patch",
+      "patchBytes": 920,
+      "patchSha256": "a0709e926ab8b9a291fed4db6d5e4d3a20b8f20f35e01a97001638ea57d79fd4",
+      "change": "Only print-preview dialog close helper: remove modal, revoke blob URL, then restore focus to ui.preview with preventScroll and an option-less fallback.",
+      "singleUnifiedDiffHunk": true,
+      "otherSourceBytesPreserved": true,
+      "externalWrites": 0,
+      "repoWrites": 0,
+      "deploys": 0,
+      "createdAtUTC": "2026-11-15T14:57:32.080481+00:00"
+    },
+    "notLive": true,
+    "fixtureTechnique": "Local page/script interception only, replacement SRI computed from candidate bytes; no server or product rewrite."
+  },
+  "earlierSourceReads": {
+    "urllibAsset403": "Initial default urllib asset fetch HTTP403; normal browser requests for same3assets HTTP200. Not reported as globally unavailable.",
+    "pinAssertion": "Earlier comparison mixed a ref/commit SHA with commit-tree SHA; failed assertion is not evidence main changed. Exact current pin separately verified."
+  },
+  "scope": {
+    "publicMugOnly": true,
+    "publicViewportRuns": 3,
+    "additionalInitial390Probes": 2,
+    "candidateRuns": 1,
+    "textDraftOnlyInEphemeralBrowserContext": true,
+    "cartCheckoutOrderOrUploadActions": 0,
+    "candidateCodeHunks": 1,
+    "productionFilesChanged": 0,
+    "sourceReleases": 0,
+    "themeWrites": 0,
+    "merchantWrites": 0,
+    "socialWrites": 0,
+    "paidVideoRenders": 0,
+    "metricsFlowOrdersReports": 0,
+    "automationFrequencyChanged": false,
+    "noFullCatalogOrFullShopAcceptance": true,
+    "claudeReceipt": "unknown"
+  },
+  "screenshots": [
+    {
+      "name": "print-preview-375.png",
+      "sha256": "226072150d1c85062a9c90808caba30111a13e218cca7a5c1a648074bae057d7",
+      "bytes": 63514,
+      "mode": "PUBLIC_LIVE_BASELINE"
+    },
+    {
+      "name": "print-preview-1440.png",
+      "sha256": "74bb51145c8e185eebe5dc1069a562954dee64cb4a469ac4cb8d27867f49f20c",
+      "bytes": 190688,
+      "mode": "PUBLIC_LIVE_BASELINE"
+    }
+  ],
+  "recordedAtUTC": "2026-11-15T15:01:59Z",
+  "ownerMessage": "weiter",
+  "shopIdentity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "nativeProduct": {
+    "id": "gid://shopify/Product/15422823465345",
+    "title": "Keramik-Tasse – Selbst gestalten",
+    "handle": "keramik-tasse-selbst-gestalten",
+    "status": "ACTIVE",
+    "tags": [
+      "bild-ok",
+      "mengenrabatt-a",
+      "printful_personalized_product",
+      "sg-trinken",
+      "sort-tassen-kaffeebecher",
+      "sort-tassen-kaffeebecher-keramik",
+      "tassen-becher",
+      "wunschdesign"
+    ],
+    "onlineStoreUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/55777979629953",
+          "title": "325 ml",
+          "sku": "9365183_1320",
+          "price": "22.90",
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "tracked": true
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979662721",
+          "title": "444 ml",
+          "sku": "9365183_4830",
+          "price": "25.90",
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "tracked": true
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979695489",
+          "title": "591 ml",
+          "sku": "9365183_16586",
+          "price": "23.90",
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "tracked": true
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    }
+  },
+  "themeObservation": {
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T11:01:03Z"
+    },
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "MAIN"
+      }
+    ]
+  },
+  "themeReadOnlySourceChecks": [
+    {
+      "id": "gid://shopify/OnlineStoreTheme/213991391623",
+      "role": "MAIN",
+      "files": [
+        {
+          "filename": "blocks/buy-buttons.liquid",
+          "md5": "0f54fe76988d00fe77aa8cd31c1f76f0"
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "role": "UNPUBLISHED",
+      "files": [
+        {
+          "filename": "blocks/buy-buttons.liquid",
+          "md5": "aa72424fb39bc83483126845ca1f742f"
+        }
+      ]
+    }
+  ]
+}

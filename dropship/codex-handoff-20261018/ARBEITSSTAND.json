@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 236,
-  "updatedAt": "2026-11-15T14:19:28Z",
+  "revision": 237,
+  "updatedAt": "2026-11-15T15:01:59Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19634,13 +19634,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r225_live_v640_observed_mobile_viewport_qa_unknown_old_v631_plan_stale",
+      "state": "r237_v640_three_actual_viewports_verified_focus_restore_candidate_tested_not_deployed",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
-      "lastEvidence": "FrischeexakteTassenproduktseitezeigtEditorv6.4.0undMAIN213991391623. Explizite390x844Vorgabewurde1920x993:sofortigerStop,keineEditor/Druckvorschau/Cart/Checkout/Uploadaktion. MobileQAunknown;keinRollout/Workflow. Historischev6.3.1Canary-/FullscopeAnnahmenkeineheutigeRolloutbasis.",
+      "belegArt": "CURRENT_V640_SOURCE_SRI_BINDING_THREE_PUBLIC_CHROMIUM_VIEWPORTS_ONE_LOCAL_FOCUS_CANDIDATE",
+      "lastEvidence": "Tasse15422823465345/325ml55777979629953 aktuell ACTIVE/22.90CHF. V6.4.0/currentmain/mapblobs/SRI gebunden;375/390/1440 echte Breiten ohneOverflow. Sprunglink funktioniert, Text/Produktvorschau und lokale2700x1050-Druckvorschau bestätigt. NachESC Fokus3/3 aufBODY. Einhunkiger lokaler Fokuspatch besteht ESCundClosebei390, übrigeBytesgleich; keinRelease/Deployment/Shopwrite. Historischer16erRollout aus09Nov-Dokument ist keine eigene heutigeAusführung.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "R148-v6.3.1-Fullplan/Applynichtausführen. Zuerstheutigenv6.4.0Rollout-/Quellstand/ProduktscopegegenaktuellenmainbelegenundinressourcenfähigemBrowser390/375/DesktopmitwirklichgemessenemViewportabnehmen. KeinCanaryRewriteoderDowngrade;UNKNOWNstoppt. Keinealte19erMischungalsheuteverifiziertausgeben.",
+      "nextAllowedStep": "Nicht alte6.3.1-Rolloutpläne anwenden oder immutable6.4.0 mit neuerBytefolge überschreiben. R237-Fokuspatch in einen neu versionierten Review-/Releasekandidaten übernehmen, SRI/Quellen/Canary-/Rollbackschutz vorher prüfen. Erst nach erfolgreicher legitimer Auslieferung den gleichen Tassenfall öffentlich rücklesen; vorhandene Themefreigabe für7Dateien unverändert lassen. Aktuelle Prüfung gilt für1Produkt/3Chromiumbreiten, weitereEditoren/iOS/Tastatur/Focustrap bleiben gesondert.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -19898,9 +19898,9 @@
         }
       ],
       "blockers": [
-        "Tatsächlicher390pxViewport nicht erreicht; responsiveE2Eabnahmeunbekannt.",
-        "AktuellerEditorv6.4.0machtaltenv6.3.1Fullplanüberholt; heutigerRolloutscopeerstneu zu binden.",
-        "Sessionstop mangelsgültigerScrapeIDnichtbestätigt;404keineFreigabequittung."
+        "Der geprüfte Fokuspatch ist nur lokale Browserfixture und Reviewdatei; noch kein produktiver Release.",
+        "Echte iOS-/Safari-/Softwaretastatur und übrige15Editorprodukte inR237nichtgeprüft; keineVollshopabnahme.",
+        "Theme214040805767 weiterunveröffentlicht undnativerPublisherbekanntscopeblockiert; keine erneuteFreigabefürdieselben7Dateien nötig."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -20159,6 +20159,10 @@
           "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
           "bytes": 4780,
           "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PERSONALIZER-MOBIL-FOKUS-20261115-R237.json",
+          "readAt": "2026-11-15T15:01:59Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -20498,6 +20502,19 @@
               "R146: Ausführungsumgebung war nach Asset-Readback unavailable. Kein Workflow-Dispatch oder Shopify-Write; aktuellen main-Head vor Fortsetzung neu binden."
             ]
           }
+        },
+        {
+          "at": "2026-11-15T15:01:59Z",
+          "sourceRevision": 236,
+          "previousState": "r225_live_v640_observed_mobile_viewport_qa_unknown_old_v631_plan_stale",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousLastEvidence": "FrischeexakteTassenproduktseitezeigtEditorv6.4.0undMAIN213991391623. Explizite390x844Vorgabewurde1920x993:sofortigerStop,keineEditor/Druckvorschau/Cart/Checkout/Uploadaktion. MobileQAunknown;keinRollout/Workflow. Historischev6.3.1Canary-/FullscopeAnnahmenkeineheutigeRolloutbasis.",
+          "previousNextAllowedStep": "R148-v6.3.1-Fullplan/Applynichtausführen. Zuerstheutigenv6.4.0Rollout-/Quellstand/ProduktscopegegenaktuellenmainbelegenundinressourcenfähigemBrowser390/375/DesktopmitwirklichgemessenemViewportabnehmen. KeinCanaryRewriteoderDowngrade;UNKNOWNstoppt. Keinealte19erMischungalsheuteverifiziertausgeben.",
+          "previousBlockers": [
+            "Tatsächlicher390pxViewport nicht erreicht; responsiveE2Eabnahmeunbekannt.",
+            "AktuellerEditorv6.4.0machtaltenv6.3.1Fullplanüberholt; heutigerRolloutscopeerstneu zu binden.",
+            "Sessionstop mangelsgültigerScrapeIDnichtbestätigt;404keineFreigabequittung."
+          ]
         }
       ],
       "liveThemeId": "212971061639",
@@ -20776,7 +20793,68 @@
         "v6.3.0-SRI-Konflikt durch PR2977 bytegleich behoben",
         "v6.3.1 unter eigenem unveränderlichem Pfad öffentlich mit passendem Hash/CORS/CORP/immutable bereitgestellt",
         "sichtbare Schriftlabels in v6.3.1 deutsch"
-      ]
+      ],
+      "run237": {
+        "at": "2026-11-15T15:01:59Z",
+        "sourcePin": {
+          "repository": "allengchour-glitch/aban-news-landing",
+          "ref": "refs/heads/main",
+          "refObjectSha": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+          "commitSha": "b172645eae849c33b09c5e98a05e6cb5db3c0e6a",
+          "commitTreeSha": "ba783e1d8b53d9f318a7908a1f3301367c195923",
+          "treeTruncated": false,
+          "capturedAtUtc": "2026-11-15T14:51:28.806227+00:00",
+          "files": [
+            {
+              "path": "pod/v6/lspod-designer-v6-6.4.0.js",
+              "mode": "100644",
+              "type": "blob",
+              "sha": "1296cc6d7cb8fc69ed317db73d8ae26ecd10b227",
+              "size": 260794,
+              "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/1296cc6d7cb8fc69ed317db73d8ae26ecd10b227",
+              "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-designer-v6-6.4.0.js",
+              "sha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+              "bytesFetched": 260794,
+              "sri": "sha256-5+MLwjHmgX9w4svYCJ9XyCrV6nwoVYVwkiN5jBatuTA="
+            },
+            {
+              "path": "pod/v6/maps/lspod-15422823465345.karte.json",
+              "mode": "100644",
+              "type": "blob",
+              "sha": "aaba17fd5ae473ab63e83364625a9c018ebabd4b",
+              "size": 2690,
+              "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/aaba17fd5ae473ab63e83364625a9c018ebabd4b",
+              "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-15422823465345.karte.json",
+              "sha256": "b89831069f4efb9b5d043567924afb70b24e897edff3a9a9634a5fc4087bf3b5",
+              "bytesFetched": 2690
+            },
+            {
+              "path": "pod/v6/maps/lspod-15422823465345.vorschau.json",
+              "mode": "100644",
+              "type": "blob",
+              "sha": "4220a4bff426506894d89fb706d34d4cbe603720",
+              "size": 1410,
+              "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/4220a4bff426506894d89fb706d34d4cbe603720",
+              "savedPath": "/dev/shm/luxestyle-review/r237/source-main/lspod-15422823465345.vorschau.json",
+              "sha256": "8fbdaa5857b81fd95198d95f98414e4c278d10d1cfec354260678659907ac73b",
+              "bytesFetched": 1410
+            }
+          ],
+          "apiRefSha256": "e876301e3fc27472c75e52c09fba57223c8afb5a4f839618fa95c0ff00fc3083",
+          "apiCommitSha256": "d0e46d975c69f3b5d409e36d61aac3e5800dc25cc7cac13fe00c2e263297f8a4",
+          "apiTreeSha256": "c4b41cdaf6991b2292e34e7bd92787e10b45fb411af67837cc74b3dec96b986e"
+        },
+        "baselineWidths": [
+          375,
+          390,
+          1440
+        ],
+        "candidateMode": "LOCAL_CANDIDATE_FIXTURE_NOT_PUBLIC_LIVE",
+        "candidateSha256": "ef2b639bf19f1b19118f3e1fa6d752b529b152ca187d69663c5bc84d92f488d7",
+        "patchSha256": "a0709e926ab8b9a291fed4db6d5e4d3a20b8f20f35e01a97001638ea57d79fd4",
+        "sourceDeployment": false,
+        "localFocusChecksPassed": 2
+      }
     },
     {
       "id": "seo-landing-visibility-20261101",
@@ -32186,6 +32264,20 @@
         {
           "path": "dropship/codex-handoff-20261018/MERCHANT-PREIS-GEGENPROBE-20261115-R236.json",
           "readAt": "2026-11-15T14:19:28Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 237,
+      "at": "2026-11-15T15:01:59Z",
+      "actor": "codex",
+      "summary": "FrischeProjektquellen fortgesetzt, v6.4.0 anmain/SRI/2Maps gebunden undöffentlicheTasse375/390/1440ohneOverflow geprüft. Ankerverdacht widerlegt, keinAnkerpatch. ReproduzierterFokusverlustnachPrintpreviewESC3/3;minimalerLokalkandidatfürESC+Closebei390bestanden,nichtveröffentlicht.24Aufgaben/Historie/Tagespolicyerhalten;keineProdukt-/Feed-/Social-/Theme-/Workflow-/Bestellwrites.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PERSONALIZER-MOBIL-FOKUS-20261115-R237.json",
+          "readAt": "2026-11-15T15:01:59Z"
         }
       ],
       "taskCount": 24,
@@ -59005,6 +59097,38 @@
       "priceEvidence": "CurrentAdmin variant + public exact variant JSON-LD price/currency/SKU all match",
       "writeReady": false,
       "blocker": "No supported legitimate AUTOFEED writer; no existing API/supplemental offer/source confirmed. No source or defaultRule creation on speculation."
+    }
+  },
+  "run237": {
+    "at": "2026-11-15T15:01:59Z",
+    "source": "dropship/codex-handoff-20261018/PERSONALIZER-MOBIL-FOKUS-20261115-R237.json",
+    "publicMugOnly": true,
+    "viewports": [
+      375,
+      390,
+      1440
+    ],
+    "nativeProductReads": 1,
+    "themeSourceReadOnly": 2,
+    "localCandidateOnly": true,
+    "scope": {
+      "publicMugOnly": true,
+      "publicViewportRuns": 3,
+      "additionalInitial390Probes": 2,
+      "candidateRuns": 1,
+      "textDraftOnlyInEphemeralBrowserContext": true,
+      "cartCheckoutOrderOrUploadActions": 0,
+      "candidateCodeHunks": 1,
+      "productionFilesChanged": 0,
+      "sourceReleases": 0,
+      "themeWrites": 0,
+      "merchantWrites": 0,
+      "socialWrites": 0,
+      "paidVideoRenders": 0,
+      "metricsFlowOrdersReports": 0,
+      "automationFrequencyChanged": false,
+      "noFullCatalogOrFullShopAcceptance": true,
+      "claudeReceipt": "unknown"
     }
   }
 }

@@ -2748,3 +2748,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](MERCHANT-PREIS-GEGENPROBE-20261115-R236.md) · [Belege](MERCHANT-PREIS-GEGENPROBE-20261115-R236.json).
 
+
+### R237 – Echte Mobilprüfung des Gestaltungseditors und lokaler Fokuspatch
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gestaltungseditor / Quellbindung | Aktuellen main-Commit, V6.4.0-Script und zwei Tassenmaps anhand echter Blobs/SRI gebunden; historischen Rolloutstand gelesen | Script/Maps im normalen Browser HTTP200. Alter6.3.1-Plan bleibtüberholt; kein eigener Rollout. Frühere urllib403-/Pin-Assertion nicht als globale Nichterreichbarkeit oderMain-Wechsel ausgegeben. |
+| Mobil / Funktion | Öffentliche Tasse bei gemessenen375/390/1440Pixeln mit lokalem Text, Produkt- und Druckvorschau geprüft | Kein horizontaler Überlauf; Vorschau lokales2700×1050-Blob. Sprunglink/Fokus funktioniert, erster Verdacht widerlegt; keinAnkerpatch. Nur1Produkt/Chromium, keineKauf-/Upload-/iOS-Abnahme. |
+| Bedienungsfehler / Kandidat | Fokusverlust nachESC in3/3Liveansichten reproduziert; einen Schliesshandler lokal minimal geändert und im390px-Kandidaten geprüft | ESCundSchliessen setzenFokus korrekt zurVorschau zurück. EinDiffhunk, übrigeBytesgleich; lokalerReviewpatch, keinRelease/Livefix. BestehendeSRI-Datei nichtüberschrieben. |
+| Übergabe / Grenzen | Bericht, Prüfbelege, Patch und Screenshots im bestehenden Tagesstand ergänzt |24Aufgaben/Historie/Tagesreportgrenzen erhalten. Keine Theme-/Produkt-/Merchant-/Socialwrites, Kundenkontakte, bezahltenRenders oderneueAutomation. Theme214040805767weiterUNPUBLISHED. Claude-Empfangunbekannt. |
+
+[Bericht](PERSONALIZER-MOBIL-FOKUS-20261115-R237.md) · [Belege](PERSONALIZER-MOBIL-FOKUS-20261115-R237.json).
+

@@ -1,3 +1,17 @@
+# R237 – Gestaltungseditor auf echten Handy-Breiten geprüft, kleiner Fokuspatch vorbereitet – 15.11.2026
+
+**Neuer konkreter Fortschritt:** Beim tatsächlich öffentlichen Tassenprodukt15422823465345 / Variante55777979629953 ist die frühere Viewport-Sperre jetzt für drei begrenzte Ansichten geklärt:375×844,390×844 und1440×900 entsprechen jeweils der wirklich gemessenen Browser-/Dokumentbreite, ohne horizontalen Überlauf. Bearbeiten, eigener lokaler Testtext, Produktvorschau und lokale Druckvorschau funktionieren. Die Druckdatei in der Vorschau ist ein lokales2700×1050-Blob; keine Bestellung, kein Warenkorb, Upload oder bezahlter Video-Render. Der Entwurf blieb im frischen, danach geschlossenen Browserkontext. Das ist eine Einprodukt-/Chromium-Prüfung, keine aktuelle Abnahme aller16 Editorprodukte oder eines echten iPhones.
+
+**Quellstand geklärt:** Aktueller main-Commitb172645eae849c33b09c5e98a05e6cb5db3c0e6a, echter Commit-Treeba783e1d8b53d9f318a7908a1f3301367c195923. V6.4.0-Script sowie beide Tassenmaps an exakte Blobs gebunden, Script-SHA/SRI passen zur Live-Seite; Browser lädt alle drei HTTP200. Die datierte Rolloutnotiz vom09.11. berichtet einen bereits ausgeführten16er-Rollout durch Claude. Das ist kein eigener heutiger Rollout oder neuer Kaufbeleg. Die alte6.3.1-Anleitung bleibt überholt. Ein anfänglicher urllib-403 war im normalen Browser nicht reproduziert. Eine fehlgeschlagene Pin-Assertion verglich Commit-/Ref-SHA mit Tree-SHA; kein belegter Main-Wechsel.
+
+**Vermutung verworfen, echten Fehler belegt:** Der sichtbare Sprunglink funktioniert in allen drei Ansichten: Fokuslspod-start, Editoranfang etwa100px unter Oberkante. Die alte Selektorstelle allein war kein Bugbeweis; kein Ankerpatch. Nach Escape aus der Druckvorschau geht der Tastaturfokus dagegen in3/3 Fällen aufBODY verloren. Ein exakt einhunkiger lokaler Schliesshandler-Patch stellt den Fokus auf die Vorschau-Schaltfläche zurück. Im ausdrücklich lokalen390px-Kandidaten bestanden Escape und Schliessen-Schaltfläche; alle übrigen Quellbytes sind gleich. **Nicht veröffentlicht.** Bestehende immutable6.4.0 samt SRI nicht überschreiben; nur in einen versionierten, geprüft freigegebenen Release mit passender Integrität übernehmen. Kein Workflow, Deployment, Source-/Shopify- oder Theme-Write.
+
+Das bereits freigegebene Theme214040805767 bleibtUNPUBLISHED, MAIN213991391623. Beide Kaufbutton-Dateien frisch nur gelesen; die sieben freigegebenen Änderungen nicht erweitert. Kein weiterer Publishversuch und keine neue Freigabe derselben sieben Dateien erforderlich. Merchant-R236-Erkenntnisse erhalten, keine neue Merchant-/Kennzahl-/Flow-/Bestellabfrage oder Socialänderung.
+
+[Bericht und Screenshots](PERSONALIZER-MOBIL-FOKUS-20261115-R237.md) · [Beleg](PERSONALIZER-MOBIL-FOKUS-20261115-R237.json) · [lokaler Reviewpatch, kein Live-Patch](PERSONALIZER-FOKUS-REVIEW-20261115-R237.patch). Claude-Empfang unbekannt.
+
+[LUXESTYLE_R237_20261115]
+
 # R236 – Verbindung bestätigt, drei Merchant-Preisfälle genauer zugeordnet – 15.11.2026
 
 Shopify ist verbunden: LuxeStyle / luxestyle.ch / CHF / Europe/Zurich. Das freigegebene Theme **214040805767 «LuxeStyle – Kaufhinweis 15.11.2026» bleibt UNPUBLISHED**, MAIN ist weiter213991391623. Die unveränderte Connector-Verweigerung aus R234/R235 wurde nicht erneut ausgelöst oder umgangen. Keine Verbindungseinstellung geändert, keine neue Theme-Freigabe nötig.
