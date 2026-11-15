@@ -1,3 +1,21 @@
+# R245 – Produktbeschreibungen als höchste Priorität; fünf weitere Seiten live – 15.11.2026
+
+Aktuelle ausdrückliche Vorgabe: **«detailierte produktbeschreibung ist sehr wichtig a und o checke durch und verbessere»**. Die bestehende Aufgabe product-attribute-completeness erhält Priorität1. Derselbe belegte Detailstandard gilt für alle Produktarten in kleinen geprüften Gruppen; keine neue Automation oder Frequenzänderung.
+
+**Fünf tatsächliche Produktupdates:** Sternenlicht-Projektor, Elefanten-Wandteppich, Retro-TV-Konsole, Gaming-Powerbank und Wireless-Gamepad. Je nur descriptionHtml und seo.description geändert; frische SEO-Titel ausdrücklich erhalten. Vor jedem Write vollständiger Gegenread und konkreter Diff, danach native Vollrücklesung. userErrors=[], keine Retries oder unklaren Writes. Fünf öffentliche HTML-/JSON-Seiten HTTP200 bestätigen Texte/Meta, erhaltene H1/Canonicals und bis auf description identische Produktdaten. Zwölf Varianten und42 Medien geschützt;82 Textfragmente ausserhalb von Scripts/Styles/Templates geprüft. Separate «Spezifikationen & Details» ebenfalls gelesen, keine unabhängige physische Nachmessung.
+
+Projektor: sieben aktuelle A–G-SKUs, verständlicher modellabhängiger Lieferumfang statt zusammengeworfener Packliste, echte Datenblattmasse und Bedienung. Der R243-Verkaufsentwurf ist damit tatsächlich live weitergeführt; keine Film-/Musik-/Masterfreigabe. Wandteppich:150×150cm der einzigen Variante sowie Polyester/Baumwolle ergänzt. Retro-Konsole:568 als allgemeine Y2-Quellangabe, «1462» nicht als bewiesene Spielzahl; genaue Packliste und Controllermaße. Gamepad und Powerbank: tatsächliche Einzelauswahl, keine erfundenen Modelle/Farben; fehlende Zuordnungen, Spiele- und Ladedaten klar benannt.
+
+Fünf aktuelle CJ-Quellen und echte Bilder gezielt gegengeprüft. Ein CJ-Read erreichte das QPS-Limit und gelang nach zeitlichem Abstand; keine Null-Datenbehauptung. Vier gefilterte Gamepad-/Powerbank-Verbindungsreads list=[]/total0 beweisen keine fehlende Integration. Keine Verbindung oder Variante geändert. Eine offizielle T3S-Quelle liess sich über den versuchten Link/Suchlauf nicht belegen; andere Modelle nicht übertragen. Günstiger Agent für unabhängige Quellen-/Textgegenproben eingesetzt.
+
+**Weiterarbeit:** Detailstandard und bestehende36er-Konsolenliste fortgeschrieben: sechs Angebote redaktionell verbessert,30noch unbearbeitet; keine vollständige Spiele-/Modell-/Farbbestätigung. Restkatalog offen. Nächste kleine neue Produktgruppe mit eindeutiger Quelle wählen und R245-Lücken gezielt nachbelegen; keine SKU-Umhängung, Kunden-/Lieferantenansprache oder Massenedits auf Verdacht.
+
+Shop luxestyle.ch/CHF/Europe/Zurich, Metricool6227837 samt sechs Kanälen und passender CJ-Shop frisch bestätigt. Keine heutigen Kennzahl-/Flow-/GSC-/Umsatz-/Bestellreports wiederholt; Kauf-Watch beendet. Keine Social-, Theme-, Merchant-, Rabatt-, Budget-, Versand-, DNS- oder Flowänderung und keine bezahlten Renders. Bestehende Master-/Merchant-/Themeblocker separat erhalten. Claude-Code-Empfang unbekannt.
+
+[Live-Bericht](PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md) · [Belege](PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json) · [Konkreter Diff](PRODUKTBESCHREIBUNGEN-DIFF-20261115-R245.patch) · [Offene Angaben](PRODUKTANGABEN-KLAERUNGSBOGEN-20261115-R245.md).
+
+[LUXESTYLE_R245_20261115]
+
 # R244 – Fünf SEO-Seiten live verbessert – 15.11.2026
 
 Auf den ausdrücklichen Auftrag «viel bessere seo» wurden **Gaming, Headsets, Gaming-Headsets, Nachttischlampen und der bestehende Gaming-Headset-Ratgeber** mit konkreten Auswahlhilfen und präzisen Suchtexten verbessert. Vier Collection-Updates, ein Article-Update und ein atomarer SEO-Metafield-Write: **sechs native Writes**, userErrors jeweils leer, keine Retries oder unklaren Writes. Fünf öffentliche HTTP200-Rücklesungen bestätigen neue Texte, SEO-Titel/-Beschreibungen, erhaltene H1 und passende Self-Canonicals.

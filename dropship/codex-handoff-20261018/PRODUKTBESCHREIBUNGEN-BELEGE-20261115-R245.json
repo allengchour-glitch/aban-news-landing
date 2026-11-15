@@ -1,0 +1,2958 @@
+{
+  "schemaVersion": 1,
+  "revision": 245,
+  "at": "2026-11-15T19:10:57Z",
+  "timezone": "Europe/Zurich",
+  "ownerInstruction": "detailierte produktbeschreibung ist sehr wichtig a und o checke durch und verbessere",
+  "identity": {
+    "shopId": "gid://shopify/Shop/94368563585",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "timezone": "Europe/Zurich",
+    "metricoolBrandId": 6227837,
+    "allSixChannelsMatch": true,
+    "cjShopId": "2605251603003533600",
+    "cjShopName": "au3j0y-hq",
+    "cjShopAlias": "LuxeStyle CH"
+  },
+  "scope": {
+    "products": 5,
+    "shopifyVariants": 12,
+    "media": 42,
+    "fullCatalogScanned": false,
+    "oldR241ConsoleGroup": 36,
+    "totalEditedInThisOldGroupAfterR245": 6,
+    "notEditedInOldGroup": 30
+  },
+  "writes": {
+    "shopifyProductWrites": 5,
+    "fields": [
+      "descriptionHtml",
+      "seo.description"
+    ],
+    "seoTitleExplicitlyPreserved": true,
+    "retries": 0,
+    "unknownWrites": 0,
+    "userErrors": [],
+    "records": [
+      {
+        "key": "projector",
+        "id": "gid://shopify/Product/15521256604033",
+        "updatedAt": "2026-11-15T19:06:54Z",
+        "userErrors": [],
+        "status": "native_confirmed",
+        "protectedFieldsUnchanged": true,
+        "variants": 7,
+        "media": 13
+      },
+      {
+        "key": "tapestry",
+        "id": "gid://shopify/Product/15493244191105",
+        "updatedAt": "2026-11-15T19:06:57Z",
+        "userErrors": [],
+        "status": "native_confirmed",
+        "protectedFieldsUnchanged": true,
+        "variants": 1,
+        "media": 2
+      },
+      {
+        "key": "console",
+        "id": "gid://shopify/Product/15496936423809",
+        "updatedAt": "2026-11-15T19:07:00Z",
+        "userErrors": [],
+        "status": "native_confirmed",
+        "protectedFieldsUnchanged": true,
+        "variants": 2,
+        "media": 5
+      },
+      {
+        "key": "powerbank",
+        "id": "gid://shopify/Product/15481776374145",
+        "updatedAt": "2026-11-15T19:07:03Z",
+        "userErrors": [],
+        "status": "native_confirmed",
+        "protectedFieldsUnchanged": true,
+        "variants": 1,
+        "media": 9
+      },
+      {
+        "key": "gamepad",
+        "id": "gid://shopify/Product/15452706046337",
+        "updatedAt": "2026-11-15T19:07:05Z",
+        "userErrors": [],
+        "status": "native_confirmed",
+        "protectedFieldsUnchanged": true,
+        "variants": 1,
+        "media": 13
+      }
+    ]
+  },
+  "before": [
+    {
+      "id": "gid://shopify/Product/15452706046337",
+      "title": "Wireless Gamepad für PC, TV & Mobilgeräte",
+      "handle": "wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-01T22:18:22Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "mobilgeraete",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-controller-bluetooth-kabellos",
+        "sort-controller-handy-mobile",
+        "sort-controller-konsole-pc",
+        "sort-gamepads-controller",
+        "sort-pc-komponenten",
+        "xbox"
+      ],
+      "descriptionHtml": "<!-- ls-text-v2 --><h4>Ein Controller für mehrere Geräte</h4><p>Das Wireless Gamepad ist für Spiele am PC, am Fernseher und auf Mobilgeräten gedacht. Es hat eine USB-Schnittstelle und verbindet sich je nach Ausführung per Bluetooth, über einen 2.4G-Empfänger oder per Kabel. Das Gamepad wiegt 354 g.</p><h4>Zwei Ausführungen, zwei Akkus</h4><p>Die Technik unterscheidet sich je nach Ausführung. Die eine hat einen Akku mit 600 mAh und läuft bis zu 25 Stunden; sie verbindet sich per Bluetooth oder Kabel und unterstützt neben Android, PC und TV weitere Systeme. Die andere hat 400 mAh und hält 20 Stunden; sie arbeitet mit dem 2.4G-Empfänger oder dem Kabel und unterstützt Android, PC und TV. Beide beherrschen Vibration und eine Combo-Funktion in drei Stufen.</p><p>Welche Ausführung bei deiner Bestellung dabei ist, klärst du am besten vor dem Kauf, vor allem wenn dein Gerät nur über Bluetooth oder nur über Kabel angeschlossen werden kann. Im Lieferumfang ist ein Gamepad.</p><!-- /ls-text-v2 -->\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 354 g</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH",
+        "description": "Wireless Gamepad für PC, TV & Mobilgeräte bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-9-12-5-3",
+        "fullName": "Elektronik > Elektronisches Zubehör > Computerkomponenten > Eingabegeräte > Gamecontroller > Gaming Pads",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17885116203393",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061664649601",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers > Gaming Pads"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55898602340737",
+            "title": "Default Title",
+            "sku": "CJ-1719531872188895232",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "34.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55251228361089",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69904437903745",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877045506048.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 1 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904437936513",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877666263040.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 2 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904437969281",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876454109184.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 3 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438002049",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdb47103-626e-4465-974f-4a18ff953a02.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 4 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438034817",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf315400-bf67-4a38-86ee-5fd4a3d27426.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 5 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438067585",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877557211136.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 6 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438100353",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877410410496.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 7 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438133121",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876340862976.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 8 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438165889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876739321856.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 9 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438198657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f629c22-66ad-444f-848a-d9f1f2b1d537.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 10 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438231425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877238444032.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 11 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438264193",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/398b5548-7f6e-4ce4-b6da-8fabce880fb7.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 12 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438296961",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dbff7c81-f36c-427c-abc4-a2e5d29c294e.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 1 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15481776374145",
+      "title": "Handheld Game Machine Powerbank",
+      "handle": "handheld-game-machine-powerbank-626000",
+      "status": "ACTIVE",
+      "updatedAt": "2026-10-27T20:57:42Z",
+      "productType": "Elektronik",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "geschenkwelt-unter100",
+        "geschenkwelt-unter50",
+        "kat-handy",
+        "kat-laden",
+        "rueckhol-0907",
+        "sort-elektronik-kleinteile",
+        "tech"
+      ],
+      "descriptionHtml": "<p>Diese Handheld Game Machine Powerbank ist ein praktisches 2-in-1-Gerät in Industriestil. Sie kombiniert eine Gaming-Konsole mit einer tragbaren Ladestation. Das Gehäuse ist aus einer hochwertigen Legierung gefertigt und in den Farben Sky Blue und Space Grey erhältlich. Mit einer Grösse von 115 x 70 x 25 mm ist sie kompakt und handlich.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Eingangsspannung: 5V</li>\n<li>Akkukapazität: 5000 mAh</li>\n<li>Gehäusematerial: Legierung</li>\n\n<li>Stil: Industrial</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Handheld Game Machine Powerbank | LuxeStyle CH",
+        "description": "Handheld Game Machine Powerbank bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/handheld-game-machine-powerbank-626000",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-15-5-1",
+        "fullName": "Elektronik > Elektronisches Zubehör > Leistung > Netzteile & Ladegeräte > Powerbanks",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17922005729665",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/201331999113601",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Power > Power Adapters & Chargers"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56007453999489",
+            "title": "Default Title",
+            "sku": "CJ-2507310618071626000",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "47.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55362370568577",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70361878659457",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08a349a2-5da8-4f97-98e7-527cb46b8c33_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 1 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878692225",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c260ea8c-af34-4483-b9aa-611312f128e7_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 2 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878724993",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5f97a2c-e881-409a-9302-44e7766fe6fc_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 3 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878757761",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d86b6f3a-2b0a-4251-a90e-9143c1f131f5_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 4 | LuxeStyle",
+              "width": 790,
+              "height": 1045
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878790529",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fe40d56e-8da9-4036-8386-60353ecb9b08_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 5 | LuxeStyle",
+              "width": 790,
+              "height": 944
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878823297",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/771916af-15a6-4c06-aa16-51f6f46f2fb7_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 6 | LuxeStyle",
+              "width": 790,
+              "height": 1045
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878856065",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/784f355e-04ac-4d16-9378-12e7bb16f617_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 7 | LuxeStyle",
+              "width": 790,
+              "height": 944
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878888833",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05ede1a4-dd83-4761-be32-15d66e6708cc_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 8 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878921601",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b11db40-c853-45ed-a7ba-b6c370df1e68_trans.jpg?v=1785564757",
+              "altText": "Handheld Game Machine Powerbank – Bild 9 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15493244191105",
+      "title": "Bohemian Elefanten Wandteppich",
+      "handle": "bohemian-elefanten-wandteppich-7f9811",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-02T07:01:06Z",
+      "productType": "Wohnen & Deko",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "haushalt",
+        "kat-wandteppiche",
+        "rueckhol-0907",
+        "sort-wandteppiche-wandbehaenge",
+        "wohnen"
+      ],
+      "descriptionHtml": "<p>Dieser farbenfrohe Wandteppich mit Elefantenmuster bringt einen Hauch von Bohème in jedes Zimmer. Er ist ideal, um Wände zu dekorieren, als Tagesdecke oder sogar als Strandtuch. Das gewebte Design aus einer Polyester-Baumwollmischung ist nicht nur robust, sondern auch angenehm weich. Verleih deinem Wohnraum, Schlafzimmer oder Studentenwohnheim eine persönliche Note und schaffe eine gemütliche Atmosphäre. Ein vielseitiges Accessoire, das sowohl funktional als auch ästhetisch überzeugt und sich mühelos in verschiedene Einrichtungsstile integrieren lässt.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Farbenfrohes Elefantenmuster</li>\n<li>Vielseitig einsetzbar (Wandbehang, Tagesdecke, Strandtuch)</li>\n<li>Material: Polyester-Baumwollmischung</li>\n<li>Gewebte Textur</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+        "description": "Bohemian Elefanten Wandteppich bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/hg-3-4-1",
+        "fullName": "Heim & Garten > Dekoration > Kunst > Wandteppiche",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17937097490817",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202048869925249",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Decor > Artwork > Decorative Tapestries"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56075316363649",
+            "title": "Default Title",
+            "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "15.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55431292617089",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70471388823937",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34267901635.jpg?v=1786360509",
+              "altText": "Bohemian Elefanten Wandteppich – Bild 1 | LuxeStyle",
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70471388955009",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/279386471701.jpg?v=1786360510",
+              "altText": "Bohemian Elefanten Wandteppich – Bild 2 | LuxeStyle",
+              "width": 921,
+              "height": 921
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15496936423809",
+      "title": "Retro-Spielkonsole mit 2 Controllern",
+      "handle": "klassischer-game-controller-42f504",
+      "status": "ACTIVE",
+      "updatedAt": "2026-10-26T15:26:39Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "neuheit",
+        "ps4",
+        "ps5",
+        "sort-pc-komponenten",
+        "xbox"
+      ],
+      "descriptionHtml": "<!-- ls-text-v2 --><p>Dieser klassische Game-Controller gehört zu einer kleinen Retro-Spielkonsole, die du direkt an den Fernseher anschliesst: einstecken, Quelle am Fernseher einstellen und losspielen. Die Konsole bringt 568 klassische Spiele mit, die sich nicht wiederholen, und lässt sich mit einem oder zwei Spielern nutzen.</p><h4>Anschluss und Bedienung</h4><p>Die Konsole hat einen High-Definition-Anschluss, prüfe darum, ob dein Fernseher einen passenden HD-Eingang besitzt. Die Stromversorgung läuft über ein USB-Kabel, ein Netzteil ist in der Lieferung nicht genannt. Die kabellosen Controller haben eine Reichweite von bis zu 8 Metern, du musst also nicht dicht vor dem Fernseher sitzen. Zum Beenden eines Spiels hältst du SELECT und START eine Sekunde lang gedrückt.</p><h4>Die Controller und das Set</h4><p>Ein Controller misst 12,5 × 5,3 × 1,5 cm und braucht Batterien der Grösse Nr. 7, die in der Lieferung nicht genannt sind. Die Spiele stammen aus der 8-Bit-Zeit, entsprechend schlicht ist die Grafik. Die vollständige Spieleliste kannst du beim Kundendienst erfragen.</p><p>Im Karton liegen zwei kabellose Controller, die Konsole, ein USB-Datenkabel und eine Anleitung auf Englisch. Zur Auswahl steht die schwarze Standard-Ausführung und das Modell «Y2HD plus 1462», zu dem keine weiteren Angaben vorliegen. Das Gewicht des Sets liegt bei 0,27 kg.</p><!-- /ls-text-v2 -->\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-fakten-v1 --><div class=\"ls-fakten\" style=\"margin:16px 0;\">\n<h4>Technische Daten</h4>\n<table style=\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\">\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Material</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Kunststoff</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Masse</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">12.5 × 5.3 × 1.5 cm</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Gewicht</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">0.27 kg</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Anschluss</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">High-Definition-Schnittstelle</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Farbe</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Schwarz</td>\n</tr>\n</table>\n<h4>Lieferumfang</h4>\n<ul>\n<li>2 kabellose Controller</li>\n<li>1 HD-Spielkonsole</li>\n<li>1 USB-Datenkabel</li>\n<li>1 englische Anleitung</li>\n<li>1 Farbkarton</li>\n</ul>\n<h4>So geht's</h4>\n<ol>\n<li>Spiel beenden: SECECT-Taste + START-Taste eine Sekunde lang gedrückt halten.</li>\n<li>Spielkonsole an HD-Schnittstelle des Fernsehers anschliessen, USB-Stromkabel an Host anschliessen und TV-Quelle auf HD-Kanal einstellen.</li>\n</ol>\n<h4>Gut zu wissen</h4>\n<ul>\n<li>Spieleliste kann beim Kundendienst erfragt werden.</li>\n<li>Bitte bestätigen Sie, dass Ihr Fernseher über eine High-Definition-Ausgangsschnittstelle verfügt.</li>\n<li>Controller benötigt Batterien (Nr. 7).</li>\n</ul>\n<p style=\"font-size:12px;opacity:.7;margin-top:10px;\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\n</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH",
+        "description": "Retro-Spielkonsole mit 2 Controllern bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/klassischer-game-controller-42f504",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-9-12-5",
+        "fullName": "Elektronik > Elektronisches Zubehör > Computerkomponenten > Eingabegeräte > Gamecontroller",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/19608695472519",
+          "name": "Modell",
+          "position": 1,
+          "values": [
+            "Schwarz",
+            "Y2HD plus 1462"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202143115739521",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56096621724033",
+            "title": "Schwarz",
+            "sku": "CJ-1BABEB92-350D-4408-9506-6DCB9842F504",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "27.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "Schwarz"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55452733374849",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67747858153863",
+            "title": "Y2HD plus 1462",
+            "sku": "CJ-1BABEB92-350D-4408-9506-6DCB9842F504",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "27.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "Y2HD plus 1462"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69732750786951",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70515852640641",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/258913734577.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 1 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852706177",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/969578888921.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 2 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852738945",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/563601914385.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 3 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852771713",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/827326206885.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 4 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/77786585072007",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1989466666520.jpg?v=1792462709",
+              "altText": "Klassischer Game-Controller",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-11T09:52:25Z",
+      "productType": "Elektronik",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "descriptionHtml": "<!-- ls-var-v1 --><!-- ls-text-v2 --><p>Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.</p><h4>So funktioniert er</h4><p>Mit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.</p><h4>Die Ausführungen</h4><p>Es gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxie-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxie-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxie-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxie-Scheibe, schau dir die gewünschte Ausführung also genau an.</p><h4>Hinweise</h4><p>Der Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.</p><!-- /ls-text-v2 -->\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>Sorglos shoppen:</strong> 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte und Klarna.</div><!-- ls-fakten-v1 --><div class=\"ls-fakten\" style=\"margin:16px 0;\">\n<h4>Technische Daten</h4>\n<table style=\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\">\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Material</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Kunststoff, Sonstiges</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Gewicht</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">650 g</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Masse</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">121x110x121 mm</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Leistung</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">4W</td>\n</tr>\n</table>\n<h4>Lieferumfang</h4>\n<ul>\n<li>1 Nachtlicht</li>\n<li>6 Farbscheiben</li>\n<li>1 wiederaufladbares Bluetooth-Drehteil</li>\n<li>1 Galaxyscheibe</li>\n</ul>\n<h4>So geht's</h4>\n<ol>\n<li>Lampenschirm einschalten für Seitenprojektion</li>\n<li>Lampenschirm als kleines Nachtlicht einrasten</li>\n<li>Projektor drehen, um den Fokus einzustellen</li>\n<li>Filmbox öffnen</li>\n<li>Filmschale entnehmen/ersetzen</li>\n<li>Filmschale in Filmbox schieben</li>\n</ol>\n<h4>Gut zu wissen</h4>\n<ul>\n<li>Produkt nicht mit schweren Gegenständen quetschen</li>\n<li>Oberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden</li>\n<li>Produkt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden</li>\n<li>Nur für Innenräume geeignet</li>\n<li>Mitgeliefertes USB-Kabel nur für dieses Produkt verwenden</li>\n</ul>\n<p style=\"font-size:12px;opacity:.7;margin-top:10px;\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\n</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "description": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-10",
+        "fullName": "Heim & Garten > Beleuchtung > Nachtlichter & indirekte Beleuchtung",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17970205753729",
+          "name": "Modell",
+          "position": 1,
+          "values": [
+            "A · Grundmodell",
+            "B · mit 6 Motivscheiben",
+            "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "D · Akku, Bluetooth, 6 Motivscheiben",
+            "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "G · drehend, Galaxie-Scheibe + 3 Farbscheiben"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/203143777321345",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Lighting > Night Lights & Ambient Lighting"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "title": "A · Grundmodell",
+            "sku": "CJSN139239101AZ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "34.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "A · Grundmodell"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861677447",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445316487",
+            "title": "B · mit 6 Motivscheiben",
+            "sku": "CJSN139239102BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "37.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "B · mit 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861710215",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445349255",
+            "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239103CX",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "40.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "C · Galaxie-Scheibe + 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861742983",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445382023",
+            "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+            "sku": "CJSN139239104DW",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "49.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "D · Akku, Bluetooth, 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861775751",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445414791",
+            "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239105EV",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "51.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861808519",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445447559",
+            "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "sku": "CJSN139239106FU",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "44.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861841287",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445480327",
+            "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+            "sku": "CJSN139239107GT",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "35.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861874055",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70733173424513",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+              "width": 1920,
+              "height": 1919
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173260673",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173457281",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173490049",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+              "width": 390,
+              "height": 325
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173522817",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173555585",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173588353",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 668
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173621121",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173653889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle",
+              "width": 1920,
+              "height": 1919
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173686657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173719425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+              "width": 800,
+              "height": 654
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173752193",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/Video/77496185356679"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  ],
+  "after": [
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:06:54Z",
+      "productType": "Elektronik",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "descriptionHtml": "<p>Der Sternenlicht-Projektor kombiniert dekorative Lichtprojektion mit einer Nachtlicht-Funktion für Innenräume. Je nach Modell nutzt du zusätzliche Motivscheiben und stellst den Fokus für die Projektion ein. Die sieben Modelle unterscheiden sich bei Motivscheiben, Stromversorgung, Bluetooth, Spieluhr und Drehfunktion.</p>\n<h2>Welche Ausführung passt zu dir?</h2>\n<p>Der angezeigte Preis gilt für die ausgewählte Variante. Die Ausstattung eines anderen Modells gehört nicht automatisch dazu.</p>\n<ul>\n<li>\n<strong>A · Grundmodell:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>\n<li>\n<strong>B · mit 6 Motivscheiben:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>\n<li>\n<strong>C · Galaxie-Scheibe + 6 Motivscheiben:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li>\n<strong>D · Akku, Bluetooth, 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth und sechs Motivscheiben.</li>\n<li>\n<strong>E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth, einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li>\n<strong>F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>\n<li>\n<strong>G · drehend, Galaxie-Scheibe + 3 Farbscheiben:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>\n</ul>\n<h2>Technische Angaben</h2>\n<ul>\n<li>\n<strong>Gehäusemasse laut Produktdatenblatt:</strong> 121 × 110 × 121 mm.</li>\n<li>\n<strong>Lampenschirm:</strong> PVC.</li>\n<li>\n<strong>Leistung laut Datenblatt:</strong> 4 W.</li>\n<li>\n<strong>Bedienung:</strong> Tasten am Gerät; Schärfeeinstellung durch Drehen.</li>\n<li>\n<strong>Stromversorgung:</strong> USB-Ausführungen; A, B, C und G zum Einstecken, D, E und F aufladbar.</li>\n</ul>\n<h2>Lieferumfang nach Modell</h2>\n<p>Du erhältst einen Projektor in der gewählten Ausführung. Anzahl und Art der zusätzlichen Scheiben sowie Bluetooth-, Spieluhr- oder Drehfunktion richten sich nach der obigen Auswahl A–G. Eine Gesamtübersicht aller Extras ist keine Packliste für jede einzelne Ausführung.</p>\n<p>Ein Netzteil sowie eine Fernbedienung für die anderen Modelle sind in den zugeordneten Variantenangaben nicht eindeutig bestätigt. Für G ist ausdrücklich keine Fernbedienung angegeben.</p>\n<h2>Bedienung und Pflege</h2>\n<p>Für die Nachtlicht-Funktion wird der Lampenschirm aufgesetzt. Für die Projektion stellst du die Schärfe durch Drehen ein. Zum Wechseln eines Motivs öffnest du die Filmbox, tauschst die Scheibe beziehungsweise den Filmträger und schiebst ihn wieder ein.</p>\n<p>Nur für Innenräume verwenden. Vor Wärmequellen, direkter Sonne und starken Feuchtigkeitsschwankungen schützen. Die Oberfläche mit einem weichen Baumwolltuch reinigen und keine ätzenden Reinigungsmittel verwenden. Das mitgelieferte USB-Kabel ist laut Anleitung für dieses Produkt vorgesehen.</p>",
+      "seo": {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "description": "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-10",
+        "fullName": "Heim & Garten > Beleuchtung > Nachtlichter & indirekte Beleuchtung",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17970205753729",
+          "name": "Modell",
+          "position": 1,
+          "values": [
+            "A · Grundmodell",
+            "B · mit 6 Motivscheiben",
+            "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "D · Akku, Bluetooth, 6 Motivscheiben",
+            "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "G · drehend, Galaxie-Scheibe + 3 Farbscheiben"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/203143777321345",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Lighting > Night Lights & Ambient Lighting"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "title": "A · Grundmodell",
+            "sku": "CJSN139239101AZ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "34.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "A · Grundmodell"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861677447",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445316487",
+            "title": "B · mit 6 Motivscheiben",
+            "sku": "CJSN139239102BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "37.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "B · mit 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861710215",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445349255",
+            "title": "C · Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239103CX",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "40.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "C · Galaxie-Scheibe + 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861742983",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445382023",
+            "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+            "sku": "CJSN139239104DW",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "49.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "D · Akku, Bluetooth, 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861775751",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445414791",
+            "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+            "sku": "CJSN139239105EV",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "51.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861808519",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445447559",
+            "title": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben",
+            "sku": "CJSN139239106FU",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "44.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861841287",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445480327",
+            "title": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben",
+            "sku": "CJSN139239107GT",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "35.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "G · drehend, Galaxie-Scheibe + 3 Farbscheiben"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70057861874055",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70733173424513",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle",
+              "width": 1920,
+              "height": 1919
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173260673",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173457281",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173490049",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle",
+              "width": 390,
+              "height": 325
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173522817",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173555585",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173588353",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 668
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173621121",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173653889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle",
+              "width": 1920,
+              "height": 1919
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173686657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173719425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+              "width": 800,
+              "height": 654
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173752193",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090",
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/Video/77496185356679"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15493244191105",
+      "title": "Bohemian Elefanten Wandteppich",
+      "handle": "bohemian-elefanten-wandteppich-7f9811",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:06:57Z",
+      "productType": "Wohnen & Deko",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "haushalt",
+        "kat-wandteppiche",
+        "rueckhol-0907",
+        "sort-wandteppiche-wandbehaenge",
+        "wohnen"
+      ],
+      "descriptionHtml": "<p>Der quadratische Wandteppich setzt mit einem grossen Elefantenmotiv und ornamentiertem Rand einen dekorativen Akzent an deiner Wand. Die Produktbilder zeigen einen hellen Grund mit blauvioletten Mustern. Er eignet sich als textiler Wandbehang, etwa über einem Bett, Sofa oder einer Kommode.</p>\n<h2>Grösse und Material</h2>\n<ul>\n<li>\n<strong>Ausführung:</strong> 150 × 150 cm, entsprechend 1,5 × 1,5 m.</li>\n<li>\n<strong>Material laut Produktquelle:</strong> Polyester und Baumwolle. Die genauen Faseranteile sind nicht angegeben.</li>\n<li>\n<strong>Verarbeitung:</strong> gewebter Stoff.</li>\n<li>\n<strong>Motiv:</strong> Elefant mit floralen und ornamentierten Randelementen, wie auf den Artikelbildern dargestellt.</li>\n</ul>\n<h2>Was bedeutet die Auswahl?</h2>\n<p>Für dieses Angebot ist derzeit eine Ausführung hinterlegt. Die zugeordnete Lieferantenvariante nennt 150 × 150 cm; eine weitere Grössen- oder Farbauswahl wird hier nicht angeboten. Prüfe vor dem Kauf, ob diese Fläche an deinem gewünschten Platz ausreicht.</p>\n<h2>Lieferumfang und Befestigung</h2>\n<p>Gegenstand des Angebots ist der Wandteppich. Möbel, Pflanzen und weitere Raumdekoration auf den Fotos dienen der Darstellung. Haken, Stangen oder anderes Befestigungsmaterial sind in den vorliegenden Produktangaben nicht als Lieferumfang ausgewiesen.</p>\n<h2>Pflege und Verwendung</h2>\n<p>Eine Waschtemperatur und die Eignung für Waschmaschine oder Trockner sind nicht bestätigt. Richte die Reinigung nach einem vorhandenen Pflegeetikett.</p>",
+      "seo": {
+        "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+        "description": "Elefanten-Wandteppich im Boho-Stil, 150 × 150 cm. Gewebter Stoff aus Polyester und Baumwolle mit ornamentiertem Motiv. Material und Auswahl im Detail."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/hg-3-4-1",
+        "fullName": "Heim & Garten > Dekoration > Kunst > Wandteppiche",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17937097490817",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202048869925249",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Decor > Artwork > Decorative Tapestries"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56075316363649",
+            "title": "Default Title",
+            "sku": "CJ-BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "15.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55431292617089",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70471388823937",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34267901635.jpg?v=1786360509",
+              "altText": "Bohemian Elefanten Wandteppich – Bild 1 | LuxeStyle",
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70471388955009",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/279386471701.jpg?v=1786360510",
+              "altText": "Bohemian Elefanten Wandteppich – Bild 2 | LuxeStyle",
+              "width": 921,
+              "height": 921
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15496936423809",
+      "title": "Retro-Spielkonsole mit 2 Controllern",
+      "handle": "klassischer-game-controller-42f504",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:07:00Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "neuheit",
+        "ps4",
+        "ps5",
+        "sort-pc-komponenten",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Dieses Retro-TV-Set verbindet eine kompakte Spielkonsole mit zwei kabellosen Controllern. Du schliesst die Konsole am passenden HD-Eingang deines Fernsehers an und versorgst sie über USB mit Strom. Die Produktquelle nennt Unterstützung für ein oder zwei Spieler; der Mehrspielermodus hängt vom jeweiligen Spiel ab.</p>\n<h2>Modelle und Spieleumfang</h2>\n<ul>\n<li>\n<strong>Schwarz:</strong> schwarze Standardausführung der in der Quelle beschriebenen Y2-HD-Konsole.</li>\n<li>\n<strong>Y2HD plus 1462:</strong> zweite Modellbezeichnung im Angebot. Daraus allein lässt sich keine bestätigte Anzahl von 1462 Spielen ableiten.</li>\n</ul>\n<p>Der Lieferant nennt für die allgemein beschriebene Y2-HD-Ausführung <strong>568 klassische Spiele</strong>. Eine vollständige Liste der Spieltitel liegt nicht vor; eine identische Spieleausstattung der Zusatzvariante «Y2HD plus 1462» ist nicht eindeutig belegt. Wenn dir ein bestimmter Titel wichtig ist, muss dessen Vorhandensein vor dem Kauf geklärt sein.</p>\n<h2>Anschlüsse und Voraussetzungen</h2>\n<ul>\n<li>\n<strong>Fernseher:</strong> passender HD-Eingang; die Form des Anschlusses ist auf den Produktbildern erkennbar.</li>\n<li>\n<strong>Stromversorgung:</strong> über das mitgelieferte USB-Kabel. Ein USB-Netzteil ist nicht als enthalten aufgeführt.</li>\n<li>\n<strong>Controller:</strong> kabellos, laut Lieferant mit einer Reichweite von bis zu 8 m. Die tatsächlich nutzbare Entfernung hängt von der Umgebung ab.</li>\n<li>\n<strong>Controller-Batterien:</strong> Grösse Nr. 7 laut Lieferant; nicht in der Packliste aufgeführt.</li>\n</ul>\n<h2>Lieferumfang laut Produktquelle</h2>\n<ul>\n<li>1 HD-Spielkonsole.</li>\n<li>2 kabellose Controller.</li>\n<li>1 USB-Datenkabel zur Verbindung mit der Stromversorgung.</li>\n<li>1 Anleitung auf Englisch.</li>\n<li>1 Farbkarton als Verpackung.</li>\n</ul>\n<p>Eine Speicherkarte wird im Bild der Plus-Ausführung gezeigt, in der gemeinsamen Packliste aber nicht separat bestätigt. Ihr Lieferumfang und der genaue Spieleumfang dieser Ausführung bleiben deshalb zu klären.</p>\n<h2>Masse und Bedienung</h2>\n<p>Die angegebenen <strong>12,5 × 5,3 × 1,5 cm beziehen sich auf einen Controller</strong>, nicht auf die Konsole oder den Karton. Eindeutige Gerätemasse der Konsole sind nicht angegeben.</p>\n<p>Wähle nach dem Anschliessen den passenden Eingang am Fernseher. Zum Verlassen eines Spiels nennt die Anleitung das gleichzeitige Drücken von SELECT und START für etwa eine Sekunde. Eine native 4K-Ausgabe ist in den technischen Angaben nicht eindeutig belegt.</p>",
+      "seo": {
+        "title": "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH",
+        "description": "Retro-TV-Konsole mit zwei kabellosen Controllern und USB-Kabel. Modelle Schwarz und Y2HD plus 1462, Anschlüsse und Angaben zum Spieleumfang vergleichen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/klassischer-game-controller-42f504",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-9-12-5",
+        "fullName": "Elektronik > Elektronisches Zubehör > Computerkomponenten > Eingabegeräte > Gamecontroller",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/19608695472519",
+          "name": "Modell",
+          "position": 1,
+          "values": [
+            "Schwarz",
+            "Y2HD plus 1462"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202143115739521",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56096621724033",
+            "title": "Schwarz",
+            "sku": "CJ-1BABEB92-350D-4408-9506-6DCB9842F504",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "27.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "Schwarz"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55452733374849",
+              "tracked": false
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67747858153863",
+            "title": "Y2HD plus 1462",
+            "sku": "CJ-1BABEB92-350D-4408-9506-6DCB9842F504",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "27.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Modell",
+                "value": "Y2HD plus 1462"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69732750786951",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70515852640641",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/258913734577.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 1 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852706177",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/969578888921.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 2 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852738945",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/563601914385.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 3 | LuxeStyle",
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70515852771713",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/827326206885.jpg?v=1786620914",
+              "altText": "Klassischer Game-Controller – Bild 4 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/77786585072007",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1989466666520.jpg?v=1792462709",
+              "altText": "Klassischer Game-Controller",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15481776374145",
+      "title": "Handheld Game Machine Powerbank",
+      "handle": "handheld-game-machine-powerbank-626000",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:07:03Z",
+      "productType": "Elektronik",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "geschenkwelt-unter100",
+        "geschenkwelt-unter50",
+        "kat-handy",
+        "kat-laden",
+        "rueckhol-0907",
+        "sort-elektronik-kleinteile",
+        "tech"
+      ],
+      "descriptionHtml": "<p>Diese magnetische Powerbank verbindet ein Gehäuse im Handheld-Stil mit einer Ladefunktion. Die Produktbilder zeigen ein Display, ein Steuerkreuz und Aktionstasten auf der Vorderseite sowie eine magnetische Ladefläche auf der Rückseite. Das Gerät ist als Kombination aus Powerbank und Handheld-Spielgerät beschrieben; ein konkretes Spieleverzeichnis ist nicht dokumentiert.</p>\n<h2>Bestätigte Produktangaben</h2>\n<ul>\n<li>\n<strong>Nennkapazität:</strong> 5000 mAh laut Variantenangabe. Daraus folgt keine feste Anzahl vollständiger Smartphone-Ladungen.</li>\n<li>\n<strong>Eingangsspannung:</strong> 5 V.</li>\n<li>\n<strong>Gehäuse:</strong> Legierung.</li>\n<li>\n<strong>Ausführung:</strong> magnetische Powerbank mit Display und Spielbedienelementen.</li>\n</ul>\n<h2>Farbe und Auswahl</h2>\n<p>Im Shop ist derzeit eine Ausführung ohne eigene Farbwahl hinterlegt. Die Produktgalerie zeigt hellblaue und graue Ausführungen; daraus entsteht keine auswählbare Farboption. Welche Farbe dieser Shop-Ausführung zugeordnet ist, ist noch nicht eindeutig bestätigt.</p>\n<h2>Spiele und Gerätekompatibilität</h2>\n<p>Eine Spieleanzahl, konkrete Spieltitel und unterstützte Spielsysteme sind in den zugeordneten Angaben nicht bestätigt. Ein Spielmotiv auf dem Display ist kein vollständiger Nachweis des Spieleumfangs.</p>\n<p>Die genaue Ladeart, Ausgangsleistung in Watt, unterstützte Ladeprotokolle und kompatible Smartphone-Modelle sind nicht eindeutig dokumentiert. Ob kabelloses Laden mit deinem Smartphone unterstützt wird, ist vor dem Kauf zu bestätigen; eine Schnellladezusage wird nicht gemacht.</p>\n<h2>Lieferumfang</h2>\n<p>Die Packliste nennt <strong>eine magnetische Powerbank</strong>. Ein Ladekabel, Netzteil und weiteres Zubehör sind dort nicht aufgeführt. Ein auf den Fotos gezeigtes Smartphone gehört nicht zum Angebot.</p>\n<h2>Masse</h2>\n<p>Die Produktbeschreibung und die Varianten-Datensätze enthalten unterschiedliche Längenangaben. Ein verbindliches Gerätemass ist deshalb noch zu klären, insbesondere wenn das Gerät in eine bestimmte Tasche oder Halterung passen soll.</p>",
+      "seo": {
+        "title": "Handheld Game Machine Powerbank | LuxeStyle CH",
+        "description": "Magnetische Powerbank im Handheld-Design mit 5000 mAh, 5-V-Eingang und Legierungsgehäuse. Lieferumfang, Farbauswahl und offene Spieleangaben ansehen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/handheld-game-machine-powerbank-626000",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-15-5-1",
+        "fullName": "Elektronik > Elektronisches Zubehör > Leistung > Netzteile & Ladegeräte > Powerbanks",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17922005729665",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/201331999113601",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Power > Power Adapters & Chargers"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56007453999489",
+            "title": "Default Title",
+            "sku": "CJ-2507310618071626000",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "47.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55362370568577",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70361878659457",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08a349a2-5da8-4f97-98e7-527cb46b8c33_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 1 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878692225",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c260ea8c-af34-4483-b9aa-611312f128e7_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 2 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878724993",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5f97a2c-e881-409a-9302-44e7766fe6fc_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 3 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878757761",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d86b6f3a-2b0a-4251-a90e-9143c1f131f5_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 4 | LuxeStyle",
+              "width": 790,
+              "height": 1045
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878790529",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fe40d56e-8da9-4036-8386-60353ecb9b08_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 5 | LuxeStyle",
+              "width": 790,
+              "height": 944
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878823297",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/771916af-15a6-4c06-aa16-51f6f46f2fb7_trans.jpg?v=1785564755",
+              "altText": "Handheld Game Machine Powerbank – Bild 6 | LuxeStyle",
+              "width": 790,
+              "height": 1045
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878856065",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/784f355e-04ac-4d16-9378-12e7bb16f617_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 7 | LuxeStyle",
+              "width": 790,
+              "height": 944
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878888833",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05ede1a4-dd83-4761-be32-15d66e6708cc_trans.jpg?v=1785564756",
+              "altText": "Handheld Game Machine Powerbank – Bild 8 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70361878921601",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b11db40-c853-45ed-a7ba-b6c370df1e68_trans.jpg?v=1785564757",
+              "altText": "Handheld Game Machine Powerbank – Bild 9 | LuxeStyle",
+              "width": 790,
+              "height": 790
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15452706046337",
+      "title": "Wireless Gamepad für PC, TV & Mobilgeräte",
+      "handle": "wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:07:05Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "mobilgeraete",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-controller-bluetooth-kabellos",
+        "sort-controller-handy-mobile",
+        "sort-controller-konsole-pc",
+        "sort-gamepads-controller",
+        "sort-pc-komponenten",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Das Gamepad bietet zwei Analogsticks, ein Steuerkreuz und Aktionstasten für die Bedienung kompatibler Spiele. Es ist als Controller für PC und weitere Geräte vorgesehen. Welche Verbindung und Funktionen du nutzen kannst, hängt vom tatsächlichen Modell, dem Zielgerät und dem Spiel ab.</p>\n<h2>Wichtiger Hinweis zur Ausführung</h2>\n<p>Im Shop ist derzeit eine Ausführung ohne Modellwahl hinterlegt. Die zugeordnete Produktquelle führt die Variante <strong>T3S</strong>; die Galerie enthält aber auch Darstellungen des Modells T3. Deshalb dürfen die Angaben beider Modelle nicht als zwei auswählbare Shop-Ausführungen oder als identische Ausstattung verstanden werden.</p>\n<h2>Verbindung und Kompatibilität</h2>\n<p>Die T3S-Referenzbilder nennen Bluetooth und eine kabelgebundene USB-Verbindung. Der Lieferant beschreibt daneben eine andere Ausführung mit 2,4-GHz-Empfänger. Die genaue Modell- und Empfängerzuordnung muss vor dem Kauf geklärt sein, wenn du eine bestimmte Verbindungsart benötigst.</p>\n<p>Vergleiche dein Gerät und Betriebssystem mit der bestätigten Modellangabe. Eine allgemeine Kompatibilität mit jeder PlayStation-, Xbox- oder Smart-TV-Ausführung wird nicht zugesichert. Ein USB-Anschluss am Fernseher allein belegt keine Controller-Unterstützung.</p>\n<h2>Bedienelemente und Material</h2>\n<ul>\n<li>Zwei Analogsticks, Steuerkreuz und Aktionstasten.</li>\n<li>START-/SELECT-Bedienung und zusätzliche Funktionsknöpfe, wie auf den Artikelbildern dargestellt.</li>\n<li>Gehäusematerial laut Produktquelle: Kunststoff.</li>\n</ul>\n<h2>Akku und Lieferumfang</h2>\n<p>Im Quellmaterial stehen unterschiedliche Akku- und Laufzeitangaben für T3 und T3S. Eine eindeutig der Shop-Ausführung zugeordnete Akkukapazität oder Laufzeit ist deshalb noch nicht bestätigt.</p>\n<p>Die schriftliche Packliste nennt <strong>ein Controller-Set</strong>. Die T3S-Abbildung zeigt zusätzlich ein USB-Kabel, einen Empfänger und eine Anleitung. Da die Quelle mehrere Modellabbildungen mischt, sind die einzelnen Beigaben für die tatsächlich gelieferte Ausführung vor dem Kauf zu bestätigen.</p>",
+      "seo": {
+        "title": "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH",
+        "description": "Wireless Gamepad mit zwei Analogsticks und USB-Anschluss. Hinweise zu Modell, Verbindung, Gerätekompatibilität und Lieferumfang vor dem Kauf lesen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-7-9-12-5-3",
+        "fullName": "Elektronik > Elektronisches Zubehör > Computerkomponenten > Eingabegeräte > Gamecontroller > Gaming Pads",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17885116203393",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061664649601",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Electronics Accessories > Computer Components > Input Devices > Game Controllers > Gaming Pads"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55898602340737",
+            "title": "Default Title",
+            "sku": "CJ-1719531872188895232",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "34.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55251228361089",
+              "tracked": false
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69904437903745",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877045506048.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 1 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904437936513",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877666263040.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 2 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904437969281",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876454109184.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 3 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438002049",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdb47103-626e-4465-974f-4a18ff953a02.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 4 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438034817",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf315400-bf67-4a38-86ee-5fd4a3d27426.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 5 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438067585",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877557211136.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 6 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438100353",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877410410496.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 7 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438133121",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876340862976.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 8 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438165889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531876739321856.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 9 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438198657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f629c22-66ad-444f-848a-d9f1f2b1d537.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 10 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438231425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719531877238444032.jpg?v=1783660886",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 11 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438264193",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/398b5548-7f6e-4ce4-b6da-8fabce880fb7.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 12 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69904438296961",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dbff7c81-f36c-427c-abc4-a2e5d29c294e.jpg?v=1783660885",
+              "altText": "Wireless Gamepad für PC, TV & Mobilgeräte – Bild 1 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  ],
+  "plannedContent": [
+    {
+      "key": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "descriptionHtml": "<p>Der Sternenlicht-Projektor kombiniert dekorative Lichtprojektion mit einer Nachtlicht-Funktion für Innenräume. Je nach Modell nutzt du zusätzliche Motivscheiben und stellst den Fokus für die Projektion ein. Die sieben Modelle unterscheiden sich bei Motivscheiben, Stromversorgung, Bluetooth, Spieluhr und Drehfunktion.</p>\n<h2>Welche Ausführung passt zu dir?</h2>\n<p>Der angezeigte Preis gilt für die ausgewählte Variante. Die Ausstattung eines anderen Modells gehört nicht automatisch dazu.</p>\n<ul>\n<li><strong>A · Grundmodell:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>\n<li><strong>B · mit 6 Motivscheiben:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>\n<li><strong>C · Galaxie-Scheibe + 6 Motivscheiben:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li><strong>D · Akku, Bluetooth, 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth und sechs Motivscheiben.</li>\n<li><strong>E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth, einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li><strong>F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>\n<li><strong>G · drehend, Galaxie-Scheibe + 3 Farbscheiben:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>\n</ul>\n<h2>Technische Angaben</h2>\n<ul><li><strong>Gehäusemasse laut Produktdatenblatt:</strong> 121 × 110 × 121 mm.</li><li><strong>Lampenschirm:</strong> PVC.</li><li><strong>Leistung laut Datenblatt:</strong> 4 W.</li><li><strong>Bedienung:</strong> Tasten am Gerät; Schärfeeinstellung durch Drehen.</li><li><strong>Stromversorgung:</strong> USB-Ausführungen; A, B, C und G zum Einstecken, D, E und F aufladbar.</li></ul>\n<h2>Lieferumfang nach Modell</h2>\n<p>Du erhältst einen Projektor in der gewählten Ausführung. Anzahl und Art der zusätzlichen Scheiben sowie Bluetooth-, Spieluhr- oder Drehfunktion richten sich nach der obigen Auswahl A–G. Eine Gesamtübersicht aller Extras ist keine Packliste für jede einzelne Ausführung.</p>\n<p>Ein Netzteil sowie eine Fernbedienung für die anderen Modelle sind in den zugeordneten Variantenangaben nicht eindeutig bestätigt. Für G ist ausdrücklich keine Fernbedienung angegeben.</p>\n<h2>Bedienung und Pflege</h2>\n<p>Für die Nachtlicht-Funktion wird der Lampenschirm aufgesetzt. Für die Projektion stellst du die Schärfe durch Drehen ein. Zum Wechseln eines Motivs öffnest du die Filmbox, tauschst die Scheibe beziehungsweise den Filmträger und schiebst ihn wieder ein.</p>\n<p>Nur für Innenräume verwenden. Vor Wärmequellen, direkter Sonne und starken Feuchtigkeitsschwankungen schützen. Die Oberfläche mit einem weichen Baumwolltuch reinigen und keine ätzenden Reinigungsmittel verwenden. Das mitgelieferte USB-Kabel ist laut Anleitung für dieses Produkt vorgesehen.</p>",
+      "seo": {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "description": "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+      }
+    },
+    {
+      "key": "tapestry",
+      "id": "gid://shopify/Product/15493244191105",
+      "descriptionHtml": "<p>Der quadratische Wandteppich setzt mit einem grossen Elefantenmotiv und ornamentiertem Rand einen dekorativen Akzent an deiner Wand. Die Produktbilder zeigen einen hellen Grund mit blauvioletten Mustern. Er eignet sich als textiler Wandbehang, etwa über einem Bett, Sofa oder einer Kommode.</p>\n<h2>Grösse und Material</h2>\n<ul><li><strong>Ausführung:</strong> 150 × 150 cm, entsprechend 1,5 × 1,5 m.</li><li><strong>Material laut Produktquelle:</strong> Polyester und Baumwolle. Die genauen Faseranteile sind nicht angegeben.</li><li><strong>Verarbeitung:</strong> gewebter Stoff.</li><li><strong>Motiv:</strong> Elefant mit floralen und ornamentierten Randelementen, wie auf den Artikelbildern dargestellt.</li></ul>\n<h2>Was bedeutet die Auswahl?</h2>\n<p>Für dieses Angebot ist derzeit eine Ausführung hinterlegt. Die zugeordnete Lieferantenvariante nennt 150 × 150 cm; eine weitere Grössen- oder Farbauswahl wird hier nicht angeboten. Prüfe vor dem Kauf, ob diese Fläche an deinem gewünschten Platz ausreicht.</p>\n<h2>Lieferumfang und Befestigung</h2>\n<p>Gegenstand des Angebots ist der Wandteppich. Möbel, Pflanzen und weitere Raumdekoration auf den Fotos dienen der Darstellung. Haken, Stangen oder anderes Befestigungsmaterial sind in den vorliegenden Produktangaben nicht als Lieferumfang ausgewiesen.</p>\n<h2>Pflege und Verwendung</h2>\n<p>Eine Waschtemperatur und die Eignung für Waschmaschine oder Trockner sind nicht bestätigt. Richte die Reinigung nach einem vorhandenen Pflegeetikett.</p>",
+      "seo": {
+        "title": "Bohemian Elefanten Wandteppich | LuxeStyle CH",
+        "description": "Elefanten-Wandteppich im Boho-Stil, 150 × 150 cm. Gewebter Stoff aus Polyester und Baumwolle mit ornamentiertem Motiv. Material und Auswahl im Detail."
+      }
+    },
+    {
+      "key": "console",
+      "id": "gid://shopify/Product/15496936423809",
+      "descriptionHtml": "<p>Dieses Retro-TV-Set verbindet eine kompakte Spielkonsole mit zwei kabellosen Controllern. Du schliesst die Konsole am passenden HD-Eingang deines Fernsehers an und versorgst sie über USB mit Strom. Die Produktquelle nennt Unterstützung für ein oder zwei Spieler; der Mehrspielermodus hängt vom jeweiligen Spiel ab.</p>\n<h2>Modelle und Spieleumfang</h2>\n<ul><li><strong>Schwarz:</strong> schwarze Standardausführung der in der Quelle beschriebenen Y2-HD-Konsole.</li><li><strong>Y2HD plus 1462:</strong> zweite Modellbezeichnung im Angebot. Daraus allein lässt sich keine bestätigte Anzahl von 1462 Spielen ableiten.</li></ul>\n<p>Der Lieferant nennt für die allgemein beschriebene Y2-HD-Ausführung <strong>568 klassische Spiele</strong>. Eine vollständige Liste der Spieltitel liegt nicht vor; eine identische Spieleausstattung der Zusatzvariante «Y2HD plus 1462» ist nicht eindeutig belegt. Wenn dir ein bestimmter Titel wichtig ist, muss dessen Vorhandensein vor dem Kauf geklärt sein.</p>\n<h2>Anschlüsse und Voraussetzungen</h2>\n<ul><li><strong>Fernseher:</strong> passender HD-Eingang; die Form des Anschlusses ist auf den Produktbildern erkennbar.</li><li><strong>Stromversorgung:</strong> über das mitgelieferte USB-Kabel. Ein USB-Netzteil ist nicht als enthalten aufgeführt.</li><li><strong>Controller:</strong> kabellos, laut Lieferant mit einer Reichweite von bis zu 8 m. Die tatsächlich nutzbare Entfernung hängt von der Umgebung ab.</li><li><strong>Controller-Batterien:</strong> Grösse Nr. 7 laut Lieferant; nicht in der Packliste aufgeführt.</li></ul>\n<h2>Lieferumfang laut Produktquelle</h2>\n<ul><li>1 HD-Spielkonsole.</li><li>2 kabellose Controller.</li><li>1 USB-Datenkabel zur Verbindung mit der Stromversorgung.</li><li>1 Anleitung auf Englisch.</li><li>1 Farbkarton als Verpackung.</li></ul>\n<p>Eine Speicherkarte wird im Bild der Plus-Ausführung gezeigt, in der gemeinsamen Packliste aber nicht separat bestätigt. Ihr Lieferumfang und der genaue Spieleumfang dieser Ausführung bleiben deshalb zu klären.</p>\n<h2>Masse und Bedienung</h2>\n<p>Die angegebenen <strong>12,5 × 5,3 × 1,5 cm beziehen sich auf einen Controller</strong>, nicht auf die Konsole oder den Karton. Eindeutige Gerätemasse der Konsole sind nicht angegeben.</p>\n<p>Wähle nach dem Anschliessen den passenden Eingang am Fernseher. Zum Verlassen eines Spiels nennt die Anleitung das gleichzeitige Drücken von SELECT und START für etwa eine Sekunde. Eine native 4K-Ausgabe ist in den technischen Angaben nicht eindeutig belegt.</p>",
+      "seo": {
+        "title": "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH",
+        "description": "Retro-TV-Konsole mit zwei kabellosen Controllern und USB-Kabel. Modelle Schwarz und Y2HD plus 1462, Anschlüsse und Angaben zum Spieleumfang vergleichen."
+      }
+    },
+    {
+      "key": "powerbank",
+      "id": "gid://shopify/Product/15481776374145",
+      "descriptionHtml": "<p>Diese magnetische Powerbank verbindet ein Gehäuse im Handheld-Stil mit einer Ladefunktion. Die Produktbilder zeigen ein Display, ein Steuerkreuz und Aktionstasten auf der Vorderseite sowie eine magnetische Ladefläche auf der Rückseite. Das Gerät ist als Kombination aus Powerbank und Handheld-Spielgerät beschrieben; ein konkretes Spieleverzeichnis ist nicht dokumentiert.</p>\n<h2>Bestätigte Produktangaben</h2>\n<ul><li><strong>Nennkapazität:</strong> 5000 mAh laut Variantenangabe. Daraus folgt keine feste Anzahl vollständiger Smartphone-Ladungen.</li><li><strong>Eingangsspannung:</strong> 5 V.</li><li><strong>Gehäuse:</strong> Legierung.</li><li><strong>Ausführung:</strong> magnetische Powerbank mit Display und Spielbedienelementen.</li></ul>\n<h2>Farbe und Auswahl</h2>\n<p>Im Shop ist derzeit eine Ausführung ohne eigene Farbwahl hinterlegt. Die Produktgalerie zeigt hellblaue und graue Ausführungen; daraus entsteht keine auswählbare Farboption. Welche Farbe dieser Shop-Ausführung zugeordnet ist, ist noch nicht eindeutig bestätigt.</p>\n<h2>Spiele und Gerätekompatibilität</h2>\n<p>Eine Spieleanzahl, konkrete Spieltitel und unterstützte Spielsysteme sind in den zugeordneten Angaben nicht bestätigt. Ein Spielmotiv auf dem Display ist kein vollständiger Nachweis des Spieleumfangs.</p>\n<p>Die genaue Ladeart, Ausgangsleistung in Watt, unterstützte Ladeprotokolle und kompatible Smartphone-Modelle sind nicht eindeutig dokumentiert. Ob kabelloses Laden mit deinem Smartphone unterstützt wird, ist vor dem Kauf zu bestätigen; eine Schnellladezusage wird nicht gemacht.</p>\n<h2>Lieferumfang</h2>\n<p>Die Packliste nennt <strong>eine magnetische Powerbank</strong>. Ein Ladekabel, Netzteil und weiteres Zubehör sind dort nicht aufgeführt. Ein auf den Fotos gezeigtes Smartphone gehört nicht zum Angebot.</p>\n<h2>Masse</h2>\n<p>Die Produktbeschreibung und die Varianten-Datensätze enthalten unterschiedliche Längenangaben. Ein verbindliches Gerätemass ist deshalb noch zu klären, insbesondere wenn das Gerät in eine bestimmte Tasche oder Halterung passen soll.</p>",
+      "seo": {
+        "title": "Handheld Game Machine Powerbank | LuxeStyle CH",
+        "description": "Magnetische Powerbank im Handheld-Design mit 5000 mAh, 5-V-Eingang und Legierungsgehäuse. Lieferumfang, Farbauswahl und offene Spieleangaben ansehen."
+      }
+    },
+    {
+      "key": "gamepad",
+      "id": "gid://shopify/Product/15452706046337",
+      "descriptionHtml": "<p>Das Gamepad bietet zwei Analogsticks, ein Steuerkreuz und Aktionstasten für die Bedienung kompatibler Spiele. Es ist als Controller für PC und weitere Geräte vorgesehen. Welche Verbindung und Funktionen du nutzen kannst, hängt vom tatsächlichen Modell, dem Zielgerät und dem Spiel ab.</p>\n<h2>Wichtiger Hinweis zur Ausführung</h2>\n<p>Im Shop ist derzeit eine Ausführung ohne Modellwahl hinterlegt. Die zugeordnete Produktquelle führt die Variante <strong>T3S</strong>; die Galerie enthält aber auch Darstellungen des Modells T3. Deshalb dürfen die Angaben beider Modelle nicht als zwei auswählbare Shop-Ausführungen oder als identische Ausstattung verstanden werden.</p>\n<h2>Verbindung und Kompatibilität</h2>\n<p>Die T3S-Referenzbilder nennen Bluetooth und eine kabelgebundene USB-Verbindung. Der Lieferant beschreibt daneben eine andere Ausführung mit 2,4-GHz-Empfänger. Die genaue Modell- und Empfängerzuordnung muss vor dem Kauf geklärt sein, wenn du eine bestimmte Verbindungsart benötigst.</p>\n<p>Vergleiche dein Gerät und Betriebssystem mit der bestätigten Modellangabe. Eine allgemeine Kompatibilität mit jeder PlayStation-, Xbox- oder Smart-TV-Ausführung wird nicht zugesichert. Ein USB-Anschluss am Fernseher allein belegt keine Controller-Unterstützung.</p>\n<h2>Bedienelemente und Material</h2>\n<ul><li>Zwei Analogsticks, Steuerkreuz und Aktionstasten.</li><li>START-/SELECT-Bedienung und zusätzliche Funktionsknöpfe, wie auf den Artikelbildern dargestellt.</li><li>Gehäusematerial laut Produktquelle: Kunststoff.</li></ul>\n<h2>Akku und Lieferumfang</h2>\n<p>Im Quellmaterial stehen unterschiedliche Akku- und Laufzeitangaben für T3 und T3S. Eine eindeutig der Shop-Ausführung zugeordnete Akkukapazität oder Laufzeit ist deshalb noch nicht bestätigt.</p>\n<p>Die schriftliche Packliste nennt <strong>ein Controller-Set</strong>. Die T3S-Abbildung zeigt zusätzlich ein USB-Kabel, einen Empfänger und eine Anleitung. Da die Quelle mehrere Modellabbildungen mischt, sind die einzelnen Beigaben für die tatsächlich gelieferte Ausführung vor dem Kauf zu bestätigen.</p>",
+      "seo": {
+        "title": "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH",
+        "description": "Wireless Gamepad mit zwei Analogsticks und USB-Anschluss. Hinweise zu Modell, Verbindung, Gerätekompatibilität und Lieferumfang vor dem Kauf lesen."
+      }
+    }
+  ],
+  "protection": {
+    "nativeAllSelectedFieldsExceptDescriptionUpdatedAtAndSeoDescriptionEqual": true,
+    "publicJsonAllFieldsExceptDescriptionEqual": true,
+    "baselines": [
+      {
+        "key": "projector",
+        "id": "gid://shopify/Product/15521256604033",
+        "protectedSha256": "e27d4dd9faa1b321b28b3a8ce0fe9cea194beb931fc843b8b247b8f9f708e8bc",
+        "variantCount": 7,
+        "mediaCount": 13,
+        "tracking": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445316487",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445349255",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445382023",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445414791",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445447559",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122445480327",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          }
+        ]
+      },
+      {
+        "key": "tapestry",
+        "id": "gid://shopify/Product/15493244191105",
+        "protectedSha256": "0539b9210a3060dfb0b464c99fcc864b7775d9359306a1ff054ae674db97d47d",
+        "variantCount": 1,
+        "mediaCount": 2,
+        "tracking": [
+          {
+            "id": "gid://shopify/ProductVariant/56075316363649",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          }
+        ]
+      },
+      {
+        "key": "console",
+        "id": "gid://shopify/Product/15496936423809",
+        "protectedSha256": "582eff76620cc56bf3a4ed00367dd1f535fd53df7bdf878280873cc24d10c8aa",
+        "variantCount": 2,
+        "mediaCount": 5,
+        "tracking": [
+          {
+            "id": "gid://shopify/ProductVariant/56096621724033",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67747858153863",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          }
+        ]
+      },
+      {
+        "key": "powerbank",
+        "id": "gid://shopify/Product/15481776374145",
+        "protectedSha256": "2c69c4185293d4205440e15223824269394d49b1509be0e7ba3c13a7eee833ca",
+        "variantCount": 1,
+        "mediaCount": 9,
+        "tracking": [
+          {
+            "id": "gid://shopify/ProductVariant/56007453999489",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          }
+        ]
+      },
+      {
+        "key": "gamepad",
+        "id": "gid://shopify/Product/15452706046337",
+        "protectedSha256": "98c1c29c031ff55de1f1968c424cba6c27b09f0622bc46ee59293ba87b298c35",
+        "variantCount": 1,
+        "mediaCount": 13,
+        "tracking": [
+          {
+            "id": "gid://shopify/ProductVariant/55898602340737",
+            "tracked": false,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0
+          }
+        ]
+      }
+    ],
+    "tagsSkuBarcodesOptionsPricesInventoryPoliciesMediaTaxonomyUnchanged": true
+  },
+  "publicVerification": [
+    {
+      "key": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "httpStatus": 200,
+      "productJsonStatus": 200,
+      "head": {
+        "title": [
+          "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle"
+        ],
+        "description": [
+          "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "robots": [],
+        "h1": []
+      },
+      "h1": [
+        "Sternenlicht-Projektor für Schlafzimmer"
+      ],
+      "headings": [
+        "Country/Region",
+        "Sprache",
+        "Country/Region",
+        "Sprache",
+        "Welche Ausführung passt zu dir?",
+        "Technische Angaben",
+        "Lieferumfang nach Modell",
+        "Bedienung und Pflege",
+        "Spezifikationen & Details",
+        "Ähnliche Produkte",
+        "Bleib auf dem Laufenden",
+        "10% auf deine erste Bestellung",
+        "Willkommen!",
+        "LuxeStyle Assistent",
+        "Suche"
+      ],
+      "textFragmentsChecked": 22,
+      "missingText": [],
+      "publicProtectedSha256Before": "557d245e1db87e0105bad568bab3d398bf59756f46bfd4f945dadc922bdd859d",
+      "publicProtectedSha256After": "557d245e1db87e0105bad568bab3d398bf59756f46bfd4f945dadc922bdd859d",
+      "htmlSha256": "a2b44d031afc9b297518468ff12ed79bdd52a71565a26a4caf87c58c7160f832",
+      "jsonSha256": "248f492682ca68b02dacf85a665bbad3e46fe9f8f7593924cc30f488f11cf40c",
+      "jsonLdBlocks": 4,
+      "invalidJsonLd": [],
+      "checks": {
+        "http200": true,
+        "urlPreserved": true,
+        "sameProductId": true,
+        "descriptionExactNormalized": true,
+        "allTextInActualHtml": true,
+        "seoTitlePreserved": true,
+        "seoDescription": true,
+        "canonical": true,
+        "publicProtectedByteModel": true,
+        "availablePreserved": true,
+        "h1Preserved": true,
+        "jsonLdSyntax": true,
+        "robotsUnblocked": true
+      },
+      "allChecks": true,
+      "unknown": false
+    },
+    {
+      "key": "tapestry",
+      "id": "gid://shopify/Product/15493244191105",
+      "url": "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811",
+      "httpStatus": 200,
+      "productJsonStatus": 200,
+      "head": {
+        "title": [
+          "Bohemian Elefanten Wandteppich | LuxeStyle CH"
+        ],
+        "description": [
+          "Elefanten-Wandteppich im Boho-Stil, 150 × 150 cm. Gewebter Stoff aus Polyester und Baumwolle mit ornamentiertem Motiv. Material und Auswahl im Detail."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/bohemian-elefanten-wandteppich-7f9811"
+        ],
+        "robots": [],
+        "h1": []
+      },
+      "h1": [
+        "Bohemian Elefanten Wandteppich"
+      ],
+      "headings": [
+        "Country/Region",
+        "Sprache",
+        "Country/Region",
+        "Sprache",
+        "Grösse und Material",
+        "Was bedeutet die Auswahl?",
+        "Lieferumfang und Befestigung",
+        "Pflege und Verwendung",
+        "Spezifikationen & Details",
+        "Ähnliche Produkte",
+        "Bleib auf dem Laufenden",
+        "10% auf deine erste Bestellung",
+        "Willkommen!",
+        "LuxeStyle Assistent",
+        "Suche"
+      ],
+      "textFragmentsChecked": 12,
+      "missingText": [],
+      "publicProtectedSha256Before": "fa84707d8e07b118573fe706644e35d095623af70df31e67f6a9a261263334bb",
+      "publicProtectedSha256After": "fa84707d8e07b118573fe706644e35d095623af70df31e67f6a9a261263334bb",
+      "htmlSha256": "05cae9c08174c2db295c42a0ef3c6538ef60f62fbdf189411c33e8556552e810",
+      "jsonSha256": "f32409251ab343fe93da6d1ff3e03f720d4bf68342233a7a77820cf10f94bb66",
+      "jsonLdBlocks": 3,
+      "invalidJsonLd": [],
+      "checks": {
+        "http200": true,
+        "urlPreserved": true,
+        "sameProductId": true,
+        "descriptionExactNormalized": true,
+        "allTextInActualHtml": true,
+        "seoTitlePreserved": true,
+        "seoDescription": true,
+        "canonical": true,
+        "publicProtectedByteModel": true,
+        "availablePreserved": true,
+        "h1Preserved": true,
+        "jsonLdSyntax": true,
+        "robotsUnblocked": true
+      },
+      "allChecks": true,
+      "unknown": false
+    },
+    {
+      "key": "console",
+      "id": "gid://shopify/Product/15496936423809",
+      "url": "https://luxestyle.ch/products/klassischer-game-controller-42f504",
+      "httpStatus": 200,
+      "productJsonStatus": 200,
+      "head": {
+        "title": [
+          "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH"
+        ],
+        "description": [
+          "Retro-TV-Konsole mit zwei kabellosen Controllern und USB-Kabel. Modelle Schwarz und Y2HD plus 1462, Anschlüsse und Angaben zum Spieleumfang vergleichen."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/klassischer-game-controller-42f504"
+        ],
+        "robots": [],
+        "h1": []
+      },
+      "h1": [
+        "Retro-Spielkonsole mit 2 Controllern"
+      ],
+      "headings": [
+        "Country/Region",
+        "Sprache",
+        "Country/Region",
+        "Sprache",
+        "Modelle und Spieleumfang",
+        "Anschlüsse und Voraussetzungen",
+        "Lieferumfang laut Produktquelle",
+        "Masse und Bedienung",
+        "Spezifikationen & Details",
+        "Ähnliche Produkte",
+        "Bleib auf dem Laufenden",
+        "10% auf deine erste Bestellung",
+        "Willkommen!",
+        "LuxeStyle Assistent",
+        "Suche"
+      ],
+      "textFragmentsChecked": 20,
+      "missingText": [],
+      "publicProtectedSha256Before": "5d0bc83ecb12dde4aff09e8a3cbc3f1368e0b2a0fb5e4ea46d6fff97aa2d20a9",
+      "publicProtectedSha256After": "5d0bc83ecb12dde4aff09e8a3cbc3f1368e0b2a0fb5e4ea46d6fff97aa2d20a9",
+      "htmlSha256": "8f3038f0c698b9c84e440e8cd5a3dfb7561d1008d80a530fa169e0fbe7cfae8e",
+      "jsonSha256": "b70232e17673fa9bc49376ff0dc9131da6ea1db84e15bdd0fc9b02314d17a5ec",
+      "jsonLdBlocks": 3,
+      "invalidJsonLd": [],
+      "checks": {
+        "http200": true,
+        "urlPreserved": true,
+        "sameProductId": true,
+        "descriptionExactNormalized": true,
+        "allTextInActualHtml": true,
+        "seoTitlePreserved": true,
+        "seoDescription": true,
+        "canonical": true,
+        "publicProtectedByteModel": true,
+        "availablePreserved": true,
+        "h1Preserved": true,
+        "jsonLdSyntax": true,
+        "robotsUnblocked": true
+      },
+      "allChecks": true,
+      "unknown": false
+    },
+    {
+      "key": "powerbank",
+      "id": "gid://shopify/Product/15481776374145",
+      "url": "https://luxestyle.ch/products/handheld-game-machine-powerbank-626000",
+      "httpStatus": 200,
+      "productJsonStatus": 200,
+      "head": {
+        "title": [
+          "Handheld Game Machine Powerbank | LuxeStyle CH"
+        ],
+        "description": [
+          "Magnetische Powerbank im Handheld-Design mit 5000 mAh, 5-V-Eingang und Legierungsgehäuse. Lieferumfang, Farbauswahl und offene Spieleangaben ansehen."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/handheld-game-machine-powerbank-626000"
+        ],
+        "robots": [],
+        "h1": []
+      },
+      "h1": [
+        "Handheld Game Machine Powerbank"
+      ],
+      "headings": [
+        "Country/Region",
+        "Sprache",
+        "Country/Region",
+        "Sprache",
+        "Bestätigte Produktangaben",
+        "Farbe und Auswahl",
+        "Spiele und Gerätekompatibilität",
+        "Lieferumfang",
+        "Masse",
+        "Spezifikationen & Details",
+        "Ähnliche Produkte",
+        "Bleib auf dem Laufenden",
+        "10% auf deine erste Bestellung",
+        "Willkommen!",
+        "LuxeStyle Assistent",
+        "Suche"
+      ],
+      "textFragmentsChecked": 15,
+      "missingText": [],
+      "publicProtectedSha256Before": "312d5d10653b9af8f0bbe7b5072ef4c1b2f89d3ccc0a95e6fa3f5006d6470007",
+      "publicProtectedSha256After": "312d5d10653b9af8f0bbe7b5072ef4c1b2f89d3ccc0a95e6fa3f5006d6470007",
+      "htmlSha256": "2426535a0ec958c9e44b8bd510e91a035b1f069ba9a04b8c6a4b65a631f09155",
+      "jsonSha256": "1947a350535b1d12fbfbda0a221f71da75431a557371054a5436222cc0444eef",
+      "jsonLdBlocks": 3,
+      "invalidJsonLd": [],
+      "checks": {
+        "http200": true,
+        "urlPreserved": true,
+        "sameProductId": true,
+        "descriptionExactNormalized": true,
+        "allTextInActualHtml": true,
+        "seoTitlePreserved": true,
+        "seoDescription": true,
+        "canonical": true,
+        "publicProtectedByteModel": true,
+        "availablePreserved": true,
+        "h1Preserved": true,
+        "jsonLdSyntax": true,
+        "robotsUnblocked": true
+      },
+      "allChecks": true,
+      "unknown": false
+    },
+    {
+      "key": "gamepad",
+      "id": "gid://shopify/Product/15452706046337",
+      "url": "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232",
+      "httpStatus": 200,
+      "productJsonStatus": 200,
+      "head": {
+        "title": [
+          "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH"
+        ],
+        "description": [
+          "Wireless Gamepad mit zwei Analogsticks und USB-Anschluss. Hinweise zu Modell, Verbindung, Gerätekompatibilität und Lieferumfang vor dem Kauf lesen."
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/wireless-gamepad-fur-pc-tv-mobilgerate-895232"
+        ],
+        "robots": [],
+        "h1": []
+      },
+      "h1": [
+        "Wireless Gamepad für PC, TV & Mobilgeräte"
+      ],
+      "headings": [
+        "Country/Region",
+        "Sprache",
+        "Country/Region",
+        "Sprache",
+        "Wichtiger Hinweis zur Ausführung",
+        "Verbindung und Kompatibilität",
+        "Bedienelemente und Material",
+        "Akku und Lieferumfang",
+        "Spezifikationen & Details",
+        "Ähnliche Produkte",
+        "Bleib auf dem Laufenden",
+        "10% auf deine erste Bestellung",
+        "Willkommen!",
+        "LuxeStyle Assistent",
+        "Suche"
+      ],
+      "textFragmentsChecked": 13,
+      "missingText": [],
+      "publicProtectedSha256Before": "390553c5cb8efe95559ee5a75aa8c43b653d4621ced2bfaddcf3f1a9fb132930",
+      "publicProtectedSha256After": "390553c5cb8efe95559ee5a75aa8c43b653d4621ced2bfaddcf3f1a9fb132930",
+      "htmlSha256": "0eb936d32355bbfb32e2377a6bbbbaa43b68bb79c35babacb47a68a53a33b54a",
+      "jsonSha256": "1c3ae4ab26be4f5a04df274484055e9330516f0a24a824aafcccbe4ff79a3f40",
+      "jsonLdBlocks": 3,
+      "invalidJsonLd": [],
+      "checks": {
+        "http200": true,
+        "urlPreserved": true,
+        "sameProductId": true,
+        "descriptionExactNormalized": true,
+        "allTextInActualHtml": true,
+        "seoTitlePreserved": true,
+        "seoDescription": true,
+        "canonical": true,
+        "publicProtectedByteModel": true,
+        "availablePreserved": true,
+        "h1Preserved": true,
+        "jsonLdSyntax": true,
+        "robotsUnblocked": true
+      },
+      "allChecks": true,
+      "unknown": false
+    }
+  ],
+  "separateSpecifications": [
+    {
+      "key": "projector",
+      "specs": "Spezifikationen & Details Kategorie Elektronik Modell A · Grundmodell, B · mit 6 Motivscheiben, C · Galaxie-Scheibe + 6 Motivscheiben, D · Akku, Bluetooth, 6 Motivscheiben, E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben, F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben, G · drehend, Galaxie-Scheibe + 3 Farbscheiben Material Kunststoff Zustand Neu "
+    },
+    {
+      "key": "tapestry",
+      "specs": "Spezifikationen & Details Kategorie Wohnen & Deko Material Polyester-Baumwollmischung Gewicht 260 g Zustand Neu "
+    },
+    {
+      "key": "console",
+      "specs": "Spezifikationen & Details Kategorie Gaming-Zubehör Modell Schwarz, Y2HD plus 1462 Gewicht 280 g Zustand Neu "
+    },
+    {
+      "key": "powerbank",
+      "specs": "Spezifikationen & Details Kategorie Elektronik Material Legierung Gewicht 300 g Zustand Neu "
+    },
+    {
+      "key": "gamepad",
+      "specs": "Spezifikationen & Details Kategorie Gaming-Zubehör Gewicht 354 g Zustand Neu "
+    }
+  ],
+  "sourceData": [
+    {
+      "index": 1,
+      "pid": "1719531872188895232",
+      "productSku": "CJYX1884792",
+      "productNameEn": "Gamepad Box Wireless Laptop TV Home Wireless Usb",
+      "materialNameEn": "[\"Plastic\"]",
+      "productWeight": "354.00",
+      "packingWeight": "374.00",
+      "description": "<p><b>Product information:</b><br>Applicable product: PC<br>Interface type: USB<br>Target audience: PC, Apple phone, SWITCH, Android phone<br>Battery capacity: 600 mA<br>Battery life: 25 hours<br>Third gear vibration: supported<br>Three level combo: supported<br>Supported platforms: Android/iOS13+/Switch/PC/TV<br>Connection method: Bluetooth/Bluetooth receiver/wired<br>Battery capacity: 400 mA<br>Battery life: 20 hours<br>Third gear vibration: supported<br>Three level combo: supported<br>Supported platforms: Android/PC/TV<br>Connection method: 2.4G receiver/wired</p>\n <p><br></p>\n <b>Packing list: </b>\n <br>Handle set*1<p><br></p>\n \n <b>Product Image:</b><div><b><br></b></div><div>\n <b><br></b>\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587450793365504.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587450956943360.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587451145687040.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587451359596544.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587451573506048.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587451745472512.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587452148125696.jpg\">\n <img src=\"https://cf.cjdropshipping.com/16987968/1719587452345257984.jpg\">\n</div>",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/16987968/1719531877045506048.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531877666263040.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531876454109184.jpg",
+        "https://cf.cjdropshipping.com/quick/product/fdb47103-626e-4465-974f-4a18ff953a02.jpg",
+        "https://cf.cjdropshipping.com/quick/product/bf315400-bf67-4a38-86ee-5fd4a3d27426.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531877557211136.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531877410410496.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531876340862976.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531876739321856.jpg",
+        "https://cf.cjdropshipping.com/quick/product/6f629c22-66ad-444f-848a-d9f1f2b1d537.jpg",
+        "https://cf.cjdropshipping.com/16987968/1719531877238444032.jpg",
+        "https://cf.cjdropshipping.com/quick/product/398b5548-7f6e-4ce4-b6da-8fabce880fb7.jpg",
+        "https://cf.cjdropshipping.com/quick/product/dbff7c81-f36c-427c-abc4-a2e5d29c294e.jpg"
+      ],
+      "variants": [
+        {
+          "vid": "1719531872574771200",
+          "pid": "1719531872188895232",
+          "variantSku": "CJYX188479202BY",
+          "variantKey": "T3S",
+          "variantNameEn": "Gamepad Box Wireless Laptop TV Home Wireless Usb T3S",
+          "variantImage": "https://cf.cjdropshipping.com/quick/product/fdb47103-626e-4465-974f-4a18ff953a02.jpg",
+          "variantLength": 162,
+          "variantWidth": 102,
+          "variantHeight": 67,
+          "variantWeight": 374
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "pid": "2507310618071626000",
+      "productSku": "CJYD2444312",
+      "productNameEn": "Handheld Game Machine Large Screen Magnetic Suction Power Bank",
+      "materialNameEn": "[\"Metal\"]",
+      "productWeight": "300.00",
+      "packingWeight": "330.00",
+      "description": "<p><b>Product information:</b><br>Color: sky blue, space gray<br> Input voltage: 5V<br> Battery capacity: 5000<br> Shell material: Alloy<br> Size: 115*70 * 25MM<br> Style: industrial style</p>\n<p><br></p>\n<b>Packing list: </b>\n<br>Magnetic power bank*1pcs\n<p><br></p>\n<b>Product Image:</b>\n<div>\n <b><br></b>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/409b8125-3207-46cc-827f-b5dd7ce29d72_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/d86b6f3a-2b0a-4251-a90e-9143c1f131f5_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/0ece9598-d518-4c3f-b59f-56fbd23f53e3_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/9805c821-a7bc-4383-a18c-b49feb35c42d_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/784f355e-04ac-4d16-9378-12e7bb16f617_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/d557a5f0-6adf-4de1-8321-b0355c76e985_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/f6ea44b4-439e-4108-8c0e-9044099915a9_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/ac0cfef7-c701-44c5-99c7-d02f98f6f9c1_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/4b8c9dfe-7080-4f37-b52d-3c8dbf452f3a_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/8cf420de-73fe-414c-830f-7a94b4289a4b_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/a2e1031c-5cc6-4acd-8a16-84d504e6a27d_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/bd65bef1-31ef-4246-8d84-3232312d6c0e_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/86dc7be8-1d37-4d40-a194-06bb1aebbf76_trans.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/31/06/c7c34843-779c-4652-89a4-d211ff1e841c_trans.jpeg\">\n</div>",
+      "productImageSet": [
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/08a349a2-5da8-4f97-98e7-527cb46b8c33_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/c260ea8c-af34-4483-b9aa-611312f128e7_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/d5f97a2c-e881-409a-9302-44e7766fe6fc_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/d86b6f3a-2b0a-4251-a90e-9143c1f131f5_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/fe40d56e-8da9-4036-8386-60353ecb9b08_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/771916af-15a6-4c06-aa16-51f6f46f2fb7_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/784f355e-04ac-4d16-9378-12e7bb16f617_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/05ede1a4-dd83-4761-be32-15d66e6708cc_trans.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/2b11db40-c853-45ed-a7ba-b6c370df1e68_trans.jpeg"
+      ],
+      "variants": [
+        {
+          "vid": "2507310618071627600",
+          "pid": "2507310618071626000",
+          "variantSku": "CJYD244431201AZ",
+          "variantKey": "Sky Blue-5000 mAh",
+          "variantNameEn": "Handheld Game Machine Large Screen Magnetic Suction Power Bank Sky Blue 5000 mAh",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/784f355e-04ac-4d16-9378-12e7bb16f617_trans.jpeg",
+          "variantLength": 120,
+          "variantWidth": 70,
+          "variantHeight": 25,
+          "variantWeight": 330
+        },
+        {
+          "vid": "2507310618071628300",
+          "pid": "2507310618071626000",
+          "variantSku": "CJYD244431202BY",
+          "variantKey": "Tooempty Gray-5000 mAh",
+          "variantNameEn": "Handheld Game Machine Large Screen Magnetic Suction Power Bank Tooempty Gray 5000 mAh",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/31/06/d86b6f3a-2b0a-4251-a90e-9143c1f131f5_trans.jpeg",
+          "variantLength": 120,
+          "variantWidth": 70,
+          "variantHeight": 25,
+          "variantWeight": 330
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "pid": "BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+      "productSku": "CJJJJFCL00165",
+      "productNameEn": "Patterned Bohemian Elephant Tapestry",
+      "materialNameEn": "[\"Cloth\"]",
+      "productWeight": "260.0",
+      "packingWeight": "290.0",
+      "description": "<p><strong>Brand Name:&nbsp;</strong>Dorm Tapestries<br><strong>Technics:</strong>﻿ Woven<br><strong>Material:</strong>&nbsp;Polyester / Cotton&nbsp;&nbsp;<br></p>",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/15647616/34267901635.jpg",
+        "https://cf.cjdropshipping.com/15647616/279386471701.jpg"
+      ],
+      "variants": [
+        {
+          "vid": "97F2BB34-002B-42E2-9743-3609F2F5A618",
+          "pid": "BAD1F1C0-B87E-43F6-A6F9-C38C187F9811",
+          "variantSku": "CJJJJFCL00165-150x150cm",
+          "variantKey": "150x150cm",
+          "variantNameEn": "Patterned Bohemian Elephant Tapestry 150x150cm",
+          "variantImage": "https://cf.cjdropshipping.com/15647616/279386471701.jpg",
+          "variantLength": 250,
+          "variantWidth": 250,
+          "variantHeight": 50,
+          "variantWeight": 290
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "pid": "1BABEB92-350D-4408-9506-6DCB9842F504",
+      "productSku": "CJXFSPYX00206",
+      "productNameEn": "8bit classic game wireless controller home",
+      "materialNameEn": "[\"\",\"plastic\"]",
+      "productWeight": "236.0-280.0",
+      "packingWeight": "270.0-600.0",
+      "description": "<p>1. Support one or two players to play games at the same time, making you and your children or friends more enjoyable, Y2 HD game console, built-in 568 non-repeat classic games (game list can consult customer service)<br>2. Smooth lines, simple and elegant design, plug and play, 4K high definition, with wireless handle, wireless control range up to 8 meters. Compared to the short-line wired controller, the wireless controller avoids close proximity to the TV and protects your eyes more effectively. Mini host with wireless controller is the best choice for foreign trade cross-border products!<br>3. Quit the game: Press and hold the \"SECECT key + START key\" for one second without moving<br>4. Just connect the game console to the high-definition interface of the TV, connect the USB power supply data cable to the host, and adjust the TV source to the HD channel to display the game list screen on the TV. Put the handle into the battery to remote control, plug and play Ready to play, simple and elegant, easy to operate.<br>5. Interface: The interface of this small host is a high-definition interface, please confirm that your TV has a high-definition output interface ~<br>6. Product weight: 0.236 kg<br>7. Packing size: 16.5 * 10 * 6 cm<br>Product Size:<br>Wireless handle size: 12.5 * 5.3 * 1.5cm<br>Packing box size: 15.5 * 10.0 * 6.0cm<br>Product weight: 0.27 kg<br>Shipping list:<br>2 * Wireless controller (need to be equipped with No. 7 battery)<br>1 * HD game console<br>1 * USB data cable<br>1 * English manual<br>1 * Color box</p><p><img src=\"https://cf.cjdropshipping.com/d635ced8-d937-4667-acbb-9417e3c8e015.jpg\" style=\"max-width:100%;\"><img src=\"https://cf.cjdropshipping.com/5c6b0655-d051-4386-b05d-fc0bb7d3ab27.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/44efeed4-d840-4668-9109-d9659f29dc25.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/e74c962e-55ed-4180-9b00-5e1aafdca276.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/c56743cc-b5e0-436a-be68-a18320ce7d6d.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/71d362d5-fbc0-458f-afe0-86d370d3e67c.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/b0476da5-c99d-44af-9b95-418b1705e43d.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/effa7a81-bd5b-4501-a549-56f4cee61cf5.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/8726faba-ba12-41af-883e-262faf0f10ac.jpg\" style=\"font-size: 14px; max-width: 100%;\"><br></p>",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/20200417/258913734577.jpg",
+        "https://cf.cjdropshipping.com/20200417/969578888921.jpg",
+        "https://cf.cjdropshipping.com/20200417/563601914385.jpg",
+        "https://cf.cjdropshipping.com/20200417/827326206885.jpg"
+      ],
+      "variants": [
+        {
+          "vid": "08DB1492-42D5-40B9-9B66-3CF37E48D68D",
+          "pid": "1BABEB92-350D-4408-9506-6DCB9842F504",
+          "variantSku": "CJXFSPYX00206-Black",
+          "variantKey": "Black",
+          "variantNameEn": "8bit classic game wireless controller home Black",
+          "variantImage": "https://cf.cjdropshipping.com/20200417/563601914385.jpg",
+          "variantLength": 165,
+          "variantWidth": 100,
+          "variantHeight": 60,
+          "variantWeight": 380
+        },
+        {
+          "vid": "235AA97E-8BCB-4F15-94B5-FCC6047243D9",
+          "pid": "1BABEB92-350D-4408-9506-6DCB9842F504",
+          "variantSku": "CJXFSPYX00206-Y2HD plus 1462",
+          "variantKey": "Y2HD plus 1462",
+          "variantNameEn": "8bit classic game wireless controller home Y2HD plus 1462",
+          "variantImage": "https://cf.cjdropshipping.com/20200928/1989466666520.jpg",
+          "variantLength": 165,
+          "variantWidth": 100,
+          "variantHeight": 60,
+          "variantWeight": 270
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "pid": "1477820492730732544",
+      "productSku": "CJSN1392391",
+      "productNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light",
+      "materialNameEn": "[\"Plastic\",\"Others\"]",
+      "productWeight": "650.00",
+      "packingWeight": "671.00",
+      "description": "<p><b>Product information:</b><br/>Additional features: music, projection<br/>Voltage: ≤36V (V)<br/>Shade material: PVC<br/>Dimensions: 121x110x121 (mm)<br/>Switch type: button type<br/>Style: light luxury<br/>Average service life: more than 480 (h)<br/>Light source power: 4W (W)<br/>Power supply mode: plug-in</p>\n <p>Light color:<br/>A: Focus plug-in: basic model&nbsp;</p>\n <p>B: Focus Plug-in: Upgrade (6 sets of film)&nbsp;</p>\n <p>C: Focus Plug-in: Deluxe (Galaxy Plastic Plate +6 Film)&nbsp;</p>\n <p>D: Bluetooth Charge Focus: Charge + Bluetooth +6 Film&nbsp;</p>\n <p>E: Bluetooth Charging Focus: Upgrade (Charging + Bluetooth + Galaxy Glue Disk +6 Film)</p>\n <p>F: Music Box Charging and Focusing \"Upgrade\": Charging +18 Music +6 Star Light Panel (without Galaxy Light Panel)<br/></p>\n <p>G: plug-in rotation + 1 galaxy disk + 3 color disks (without remote control)<br/></p>\n <p><br/></p>\n <p><b>Instructions:</b><br/>1. The light shade is turned on and it can be side projection<br/>2. The lampshade buckles into a small night light<br/>3. Twist the situation to adjust the sharpness of the focus<br/>4. Open the film box<br/>5. Remove the film tray/replace<br/>6. The film tray is pushed into the film box<br/><br/><b>Precautions:</b><br/>1. Avoid squeezing the product with heavy objects<br/>2. Clean the surface of the product with a soft cotton cloth, do not use corrosive solutions to clean<br/>3. Avoid placing the product near heat sources, such as air conditioning vents, heating vents, etc., avoid placing it in humidifiers and other places with drastic changes in humidity, and avoid placing it in direct sunlight<br/>4. Can only be used indoors<br/>5. The provided USB cable is only suitable for this product, not for other products</p>\n <p><br/><b>Packing list:</b><br/>Night light*1 Color disc*6 Rechargeable Bluetooth rotating*1 Galaxy disc*1</p>\n <p><img src=\"https://cf.cjdropshipping.com/8adc2745-24de-4c9f-8679-53a1dacd8bd5.jpg\" style=\"max-width:100%;\"/><br/></p>\n <p><img src=\"https://cf.cjdropshipping.com/f53dfd31-a7d2-41db-aaa1-cc72891c3fc3.jpg\" style=\"max-width:100%;\"/><img src=\"https://cf.cjdropshipping.com/ff380042-8d52-44e3-8adc-9c619619d67a.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/4096ae32-441b-4e7a-bf7e-1dc4fb6959ca.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/2a9043b4-ff9e-4492-856c-5ad4c855fe65.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/f6c642a8-cf53-46d2-b1ad-640514e54645.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/5315f88a-54a8-44d9-bea6-a799a2110184.jpg\" style=\"max-width: 100%;\"/><br/></p>\n <p><strong><img src=\"https://cf.cjdropshipping.com/quick/product/98c9cb2a-5762-47e8-a6de-af8b3393f6af.jpg\" alt=\"细节\"/><br/><br/><img src=\"https://cf.cjdropshipping.com/quick/product/63dcdb15-e654-40be-88c2-452a9f02a58e.jpg\" alt=\"6\"/></strong><br/></p>",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/af28b028-ba6d-4794-af09-559176db14f2.jpg",
+        "https://cf.cjdropshipping.com/680d1ad3-95b3-47bd-9522-899efd79a301.jpg",
+        "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+        "https://cf.cjdropshipping.com/7b27bd25-9e6d-42bf-9eda-f354075179d3.png",
+        "https://cf.cjdropshipping.com/96a6864a-cd91-47fa-9853-58e983400a33.jpg",
+        "https://cf.cjdropshipping.com/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg",
+        "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+        "https://cf.cjdropshipping.com/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg",
+        "https://cf.cjdropshipping.com/287122e4-e288-4180-bf0f-ca956de70b7e.jpg",
+        "https://cf.cjdropshipping.com/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg",
+        "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+        "https://cf.cjdropshipping.com/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg"
+      ],
+      "variants": [
+        {
+          "vid": "1477826312449167360",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239101AZ",
+          "variantKey": "A-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light A USB",
+          "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1477826312453361664",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239102BY",
+          "variantKey": "B-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light B USB",
+          "variantImage": "https://cf.cjdropshipping.com/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1477826312453361665",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239103CX",
+          "variantKey": "C-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light C USB",
+          "variantImage": "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1477826312453361666",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239104DW",
+          "variantKey": "D-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light D USB",
+          "variantImage": "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1555856292877709312",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239105EV",
+          "variantKey": "E-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light E USB",
+          "variantImage": "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1555856292877709313",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239106FU",
+          "variantKey": "F-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light F USB",
+          "variantImage": "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        },
+        {
+          "vid": "1589496316504322048",
+          "pid": "1477820492730732544",
+          "variantSku": "CJSN139239107GT",
+          "variantKey": "G-USB",
+          "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light G USB",
+          "variantImage": "https://cf.cjdropshipping.com/7b27bd25-9e6d-42bf-9eda-f354075179d3.png",
+          "variantLength": 165,
+          "variantWidth": 155,
+          "variantHeight": 140,
+          "variantWeight": 671
+        }
+      ]
+    }
+  ],
+  "review": {
+    "independentLowCostModel": true,
+    "sourceReview": "# R245 Source-to-product review: products 1, 2 and 4\n\nScope: local native Shopify snapshot plus `cj-parsed-1/2/4.json`; no external validation. “CJ source” below means these supplier records only.\n\n## Product 1 — gamepad (Shopify `15452706046337`)\n\n| Field | Native choice | CJ source evidence | Review |\n|---|---|---|---|\n| Product/variant identity | Shopify product GID `gid://shopify/Product/15452706046337`; sole variant `gid://shopify/ProductVariant/55898602340737`, SKU `CJ-1719531872188895232`, Default Title | PID `1719531872188895232`; parent SKU `CJYX1884792`; sole variant VID `1719531872574771200`, variant SKU `CJYX188479202BY`, barcode `1600002025665`, key `T3S` | Parent PID mapping is supported. Native SKU is parent PID, not CJ variant SKU; no one-to-one variant SKU evidence in native. Native has no option/model key.\n| Configuration/features | Description says two materially different variants: 600 mAh / up to 25 h, Bluetooth or wired, Android/iOS13+/Switch/PC/TV; and 400 mAh / up to 20 h, 2.4G receiver or wired, Android/PC/TV. Claims USB interface, vibration and 3-stage combo for both | CJ description itself lists both sets of specs in sequence, then generic packing `Handle set*1`; but variants array contains only T3S, dimensions 162×102×67 mm, variant weight 374 g. Product-level `productWeight` is 354 g, packing/variant weight 374 g. | Source is internally ambiguous: it does not assign either spec set to T3S, nor identify which model/config is actually offered. Don’t claim both config choices, their compatibility, battery runtimes/capacities, or that buyer can select a model without supplier confirmation. “One gamepad” is the only textual packing-list item. 354 g product weight and 374 g packed/variant weight are distinct. Existing native claim 354 g matches product-level value, not shipping weight.\n| Native text fit | Current German copy says “Im Lieferumfang ist ein Gamepad” and warns to clarify execution | CJ packing says `Handle set*1` (one handle/controller set, components unspecified) | “Ein Gamepad” may be too precise because set contents are not enumerated; safer: “Lieferumfang laut Quelle: 1 Controller-Set.” Don’t add cable, receiver, charging cable or manual.\n\n## Product 2 — handheld game machine / powerbank (Shopify `15481776374145`)\n\n| Field | Native choice | CJ source evidence | Review |\n|---|---|---|---|\n| Product/variant identity | Shopify product GID `gid://shopify/Product/15481776374145`; sole Shopify variant `gid://shopify/ProductVariant/56007453999489`, SKU `CJ-2507310618071626000`, Default Title | PID `2507310618071626000`, parent SKU `CJYD2444312`; two variants: VID `2507310618071627600`, SKU `CJYD244431201AZ`, key Sky Blue–5000 mAh; VID `2507310618071628300`, SKU `CJYD244431202BY`, key “Tooempty Gray”–5000 mAh | Parent PID mapping supported; native collapses two source colour variants into one default option. Source’s product info calls colours sky blue and space gray, while gray variant key has malformed/unclear “Tooempty Gray”. Verify/normalize the grey label from image/supplier before publishing a colour choice.\n| Specs | Native names it “Handheld Game Machine Powerbank”; says 2-in-1 gaming console + portable charger, alloy, Sky Blue and Space Grey, 115×70×25 mm | CJ product English name says “Handheld Game Machine Large Screen Magnetic Suction Power Bank”; description supports 5 V input, 5000 capacity (unit implied mAh by variant name), alloy shell, 115×70×25 mm. Both variant standards say 120×70×25 mm; variant weight 330 g, productWeight 300 g, packingWeight 330 g. | 115 vs 120 mm length conflict; native 115 matches prose but not variant dimensions. Weight distinction: 300 g product level vs 330 g variant/packed weight. Avoid exact dimensions pending resolution, or identify 115 mm as prose-only and 120 mm as shipping-variant record rather than silently reconcile. “Portable charger” / 5V input / 5000 mAh / alloy are sourced. Source does not establish a playable game library, included games, controller, or console capability beyond merchandising name.\n| Packing | Native currently has no packing list | CJ description: `Magnetic power bank*1pcs`; packaging classification plastic bag | Safe exact list: “1 magnetische Powerbank.” Do not imply charging cable, adapter, game content, or accessories included.\n\n## Product 4 — retro game console (Shopify `15496936423809`)\n\n| Field | Native choice | CJ source evidence | Review |\n|---|---|---|---|\n| Product/variant identity | Shopify GID `gid://shopify/Product/15496936423809`; options Schwarz (variant GID `56096621724033`) and Y2HD plus 1462 (GID `67747858153863`); both currently have duplicate Shopify SKU `CJ-1BABEB92-350D-4408-9506-6DCB9842F504` | PID `1BABEB92-350D-4408-9506-6DCB9842F504`, parent SKU `CJXFSPYX00206`; variants: `08DB1492-42D5-40B9-9B66-3CF37E48D68D`, key Black, SKU `CJXFSPYX00206-Black`, barcode `1233701`, weight 380 g; `235AA97E-8BCB-4F15-94B5-FCC6047243D9`, key Y2HD plus 1462, SKU `CJXFSPYX00206-Y2HD plus 1462`, barcode `1598444753476`, weight 270 g. | Options correspond to source keys. Native’s same parent-derived SKU on both options loses variant identity. Native Y2HD sentence says no further info, while source gives shared listing specs/pack list but does not explain any model-specific differences; clarify scope with supplier if necessary. The Black variant weight 380 g conflicts with description’s product/box weights 236/270 g; source weight fields are internally inconsistent. Variant dimensions 165×100×60 mm reflect box/variant package, while description separately gives controller 12.5×5.3×1.5 cm and box 15.5×10×6 cm. Do not label packed dimensions as console dimensions.\n| Features / claims | Native says 568 classic non-repeating games, 1–2 players, HD input, USB-powered, wireless controllers up to 8 m, SELECT+START to exit, 8-bit-era graphics | CJ description makes those same claims; “game list can consult customer service.” It says support for 4K HD, but source does not state native resolution. Requires TV HD/high-definition input; USB data/power cable; controllers need No. 7 batteries. | 568 count and 1–2 player support are source-backed. No full titles/list, rights/license, brand affiliation, or specific game names are provided; don’t infer or advertise those. Avoid upgrading “4K high definition” marketing phrase into a verified native output resolution. “HDMI” is not named in text; use “HD-Anschluss” as present native copy does.\n| Exact listed contents | Native lists 2 wireless controllers, console, USB data cable and English manual; correctly notes No. 7 batteries not listed and no power adapter is named | CJ shipping list: 2 wireless controllers (require No. 7 batteries), 1 HD game console, 1 USB data cable, 1 English manual, 1 colour box. | Native list is accurate but omits the colour box (packaging; can be included if desired). Do not state batteries or power adapter included. “USB data cable” is exact source wording; don’t assume a wall adapter.\n\n## German (CH) copy recommendations\n\n**1 — Gamepad body:** Source does not support mapping the 600/400 mAh specifications to the only listed T3S variant. Replace the asserted two execution choices with a neutral, bounded statement pending supplier confirmation, e.g. “Der Controller ist laut Produktquelle für PC und weitere Geräte vorgesehen. Die Quelle nennt unterschiedliche Verbindungsarten und Akkudaten, ordnet diese Angaben der angebotenen T3S-Ausführung aber nicht eindeutig zu. Bitte prüfe die Kompatibilität deines Geräts vor dem Kauf.” This acknowledges uncertainty; ideally obtain supplier clarification before retaining runtime/capacity compatibility claims. Product detail may say Kunststoff; approx. 354 g product weight. Packing line: “Lieferumfang laut Quelle: 1 Controller-Set.”\n\n**2 — Powerbank body:** Keep the grounded facts: “Magnetische Powerbank aus Legierung mit 5000 mAh und 5 V Eingangsspannung. Die Quelle nennt 115 × 70 × 25 mm; die Variantenangabe führt 120 × 70 × 25 mm. Das Mass ist daher noch zu klären.” Offer no colour selection in copy while Shopify remains Default Title; if options are added later, distinguish Sky Blue and Space Grey only after confirming the grey source label. Use “1 magnetische Powerbank” for pack list.\n\n**4 — Console body:** Retain sourced setup and usage facts. Qualify 568 games as supplier-stated, avoid promising a list or licensing. Say “bis zu 8 m” wireless range; “HD-Anschluss” and “USB-Kabel zur Stromversorgung” with no adapter implied. Selection should identify `Schwarz` and `Y2HD plus 1462` as supplier option names; explain that the source gives no distinct specs for Y2HD plus 1462 unless those are confirmed identical. Exact pack list in Swiss German: “2 kabellose Controller (Batterien der Grösse Nr. 7 nicht enthalten bzw. im Lieferumfang nicht aufgeführt), 1 HD-Spielkonsole, 1 USB-Datenkabel, 1 Anleitung auf Englisch, 1 Farbkarton.” Do not claim batteries/power supply included.\n\n## Cross-cutting limits\n\nSupplier listing values are not independent verification. Do not add game titles, game rights/licence, battery or adapter inclusion, or infer complete controller-set contents. No stock, delivery, review or price claims are established by these files. For factual copy, resolve gamepad configuration, powerbank dimension/colour, and retro SKU/weight inconsistencies with the supplier before making stronger assertions.\n",
+    "copyReview": "# R245 plans review (offline)\n\nReviewed all five proposed descriptions against CJ parsed records; inspected local tapestry and product images. I found no factual blocker for the projector, tapestry, console, or conservative gamepad direction. Recommended small edits:\n\n1. **Powerbank — narrow charging compatibility language.** The paragraph “Prüfe … ob dein Smartphone das beschriebene magnetische beziehungsweise kabellose Laden unterstützt” can imply that this product’s wireless charging protocol and phone compatibility are documented. CJ confirms a magnetic power bank and 5 V input; the supplier gallery labels it a wireless charger, but no output power, protocol, or compatible-device list is supplied. Prefer: “Ob dein Smartphone damit geladen werden kann, hängt von der Positionierung und der unterstützten Ladeart ab; konkrete Ladeprotokolle und kompatible Modelle sind in den Produktangaben nicht genannt.” (The shown phone is clearly illustrative; packing list remains one powerbank.)\n\n2. **Console — exhaustive pack list omits the source’s colour box.** CJ shipping list explicitly includes `1 * Color box`; current four bullets name the four functional contents. Either add “1 Farbkarton” or introduce as “zur Packliste gehören unter anderem” to avoid presenting an incomplete list as exhaustive. No adapter or batteries are listed as included. “TF Card” appears in Plus imagery but is not confirmed by the common packing list; the draft correctly treats it as unconfirmed. Variant SKU mapping remains parent-level/duplicate in native; not part of these plans.\n\n3. **Projector — variant mapping checked.** Seven live CJ variant SKUs correspond in order to A–G: `CJSN139239101AZ` through `...107GT`, keys A-USB through G-USB. The text accurately distinguishes six motifs/galaxy disk, rechargeable Bluetooth D/E, F’s 18 music items and no galaxy disk, and G’s plug-in rotation with one galaxy disk + three colour disks/no remote. Keep the legacy generic pack list out of the description: it combines accessories not included in each model. Dimensions 121×110×121 mm are product-description dimensions, while 165×155×140 mm in variants are packed dimensions.\n\n4. **Tapestry — supported.** The sole CJ option is `150x150cm` (`CJJJJFCL00165-150x150cm`); variant 250×250×50 mm is package data, not the textile’s dimensions. Source says woven polyester/cotton but gives no fibre percentages or care instructions. The draft avoids unsupported use/care claims; image colours and elephant/ornamental border description match the local variant image.\n\n5. **Gamepad — supported with conservative caveat.** Written supplier description mixes two batteries/connection/platform sets despite only a T3S variant SKU (`CJYX188479202BY`), and the gallery mixes T3 and T3S assets. Draft correctly avoids assigning runtime/capacity to the shop model and treats accessory contents as unconfirmed. Root’s later visual check that the exact T3S variant image is in Shopify and shows cable, receiver and manual is useful evidence, but the written pack list remains only “Handle set*1”; clearly qualify such additions as image evidence or omit them until supplier confirmation. No platform-wide PS/Xbox compatibility claim is supported.\n",
+    "appliedCorrections": [
+      "Powerbank wireless compatibility kept undocumented and conditional",
+      "Console colour box included",
+      "Projector cross-variant total packing list replaced by exact A–G explanation",
+      "No previous-copy history in customer text",
+      "Tapestry unproven beach towel performance and universal delivery copy removed"
+    ]
+  },
+  "blockers": {
+    "gamepad": "Shop variant is parent-PID SKU/default title. CJ sole T3S variant but mixed T3/T3S images/specs. Four total scoped/unscoped connection reads across this and powerbank returned list=[]/total0; no connector absence conclusion. Actual model, receiver and battery mapping not verified.",
+    "powerbank": "Source has two colour variants, shop one Default Title. Exact colour/SKU binding, definite device length, games list, output wattage/protocol/phone compatibility open.",
+    "console": "Two native choices match source variant names and images but carry same parent-derived SKU. 568 is general Y2 source count; Plus model's count and shown memory card not established by common pack list. Exact titles unavailable, conflicting mass fields not converted into certain device specs.",
+    "tapestry": "Fibre ratio, wash temperature/tumble dry and supplied mounting hardware not confirmed; 150x150 sole source variant and material pair verified.",
+    "projector": "Seven current source SKUs A–G match native. Product-copy ambiguity resolved; physical master-film identity, film/music rights and professional approval remain independent open gates."
+  },
+  "accessNotes": {
+    "cjProductDetailSuccesses": 5,
+    "cjProductDetailCalls": 6,
+    "cjRateLimitCalls": 1,
+    "cjRateLimitHandling": "Explicit QPS4 read error treated unknown, one successful delayed read; no credential or account change.",
+    "cjConnectionReads": 4,
+    "cjConnectionResults": "list[] total0 only for requested filters; not proof missing integration",
+    "officialT3sLookup": "Guessed official product URL returned actual404; one targeted official-domain search returned different models, not substituted as T3S evidence.",
+    "publicRepeat": "During separate specifications countercheck a local module import re-ran the same five read-only HTTP/JS verifications once. No further product mutations. Module definitions were then isolated for offline extraction.",
+    "standaloneSchemaValidation": "Skipped by connector; actual native mutations validated at execution and each full native readback passed."
+  },
+  "boundaries": {
+    "newSocialPosts": 0,
+    "themeWrites": 0,
+    "merchantWrites": 0,
+    "flowWrites": 0,
+    "discountBudgetShippingDnsChanges": 0,
+    "customerMessages": 0,
+    "paidVideoRenders": 0,
+    "metricReports": 0,
+    "klaviyoReports": 0,
+    "gscReports": 0,
+    "orderQueries": 0,
+    "purchaseWatchEnded": true,
+    "newAutomation": false,
+    "frequencyChange": false,
+    "otherBrandsTouched": false
+  },
+  "next": "Treat description quality as priority1. Continue next small source-bound product group; separately resolve existing offered model/colour binding through legitimate records without guessed variant rewiring. Preserve original scheduling and gates.",
+  "claudeReceipt": "unknown"
+}

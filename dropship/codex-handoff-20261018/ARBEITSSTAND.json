@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 244,
-  "updatedAt": "2026-11-15T18:49:01Z",
+  "revision": 245,
+  "updatedAt": "2026-11-15T19:15:18Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -613,24 +613,26 @@
   "tasks": [
     {
       "id": "product-attribute-completeness",
-      "priority": 5,
+      "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r242_six_product_copy_selection_details_live_native_public_verified",
+      "state": "r245_five_more_product_descriptions_live_with_model_colour_gaps_explicit",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEPRUEFT",
-      "lastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein. R242: Vier Konsolen und zwei Leuchten nach6exaktenCJ-Reads live um Auswahlhilfe/Packliste/Speicher-/Material-/Anschlussangaben verbessert.6native+öffentlicheReadbacks bestätigt;40Varianten/48Medien sowie Preise,SKU/Barcodes,Tags/Optionswerte/Policies erhalten.500Spielzahlquellbelegt;konkreteTitel,Controllerzubehör undLeuchtenversorgungoffen. GlasstattGlaskeramik.",
-      "nextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
+      "belegArt": "FIVE_CJ_SOURCES_FIVE_GUARDED_PRODUCT_WRITES_NATIVE_PUBLIC_READBACK_12_VARIANTS_42_MEDIA_PROTECTED",
+      "lastEvidence": "R245: Auf die erneute ausdrückliche A-und-O-Priorität fünf weitere Produktbeschreibungen live verbessert: Projektor (sieben A–G-SKUs, modellabhängiger Lieferumfang), Wandteppich (150×150cm, Material), Retro-Konsole (Modelle/Spieleumfang/Controllermaße), Powerbank (5000mAh/5V und offene Farb-/Ladeangaben), Gamepad (keine vorgetäuschten zwei Modelle, T3/T3S-Lücke klar). Fünf serielle Produktupdates nur descriptionHtml/seo.description; vorhandene SEO-Titel mitgesendet. userErrors=[], vollständige native Rücklesungen und fünf öffentliche Seiten HTTP200 bestätigt. Zwölf Varianten/42Medien sowie öffentliche Produkt-JSONs bis auf description hashgleich.82 Textfragmente in tatsächlichem HTML gegengeprüft. Separate Spezifikationen gelesen, keine unabhängige physische Nachmessung. Keine neue Modell-/Farb-/Fulfillmentbindung oder Spieleliste behauptet.",
+      "nextAllowedStep": "Produktbeschreibung bleibt Priorität1: nächste kleine noch unbearbeitete Produktgruppe mit aktuellen eindeutigen SKU-/Variantenquellen, echten Bildern und öffentlicher Kaufbarkeit wählen. Zweck, Auswahlunterschiede, belegte Gerätemasse/Materialien/Anschlüsse, konkrete Packliste und bedeutsame Lücken verständlich beschreiben. Die R245-Modell-/Farb-/Spiele-/Ladeangaben über vorhandene legitime Daten/Helfer gezielt nachbelegen; keine Variante/SKU auf Verdacht umhängen und niemanden kontaktieren. Nur passende bestätigte Angaben live schreiben, vorher voller Gegenread/Diff, danach native/öffentliche Schutzprüfung. R242/R245 nicht doppelt als neue Umsetzung zählen. Von36R241Angeboten jetzt6redaktionell verbessert,30noch offen; Restkatalog unbekannt, keine Massenpagination oder neue Automation/Frequenz.",
       "blockers": [
         "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
-        "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt.",
-        "AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet."
+        "Modell6-Nettoinhalt und frühere Mengen-/Konformitäts-/Filmrechtsfälle bleiben offen. Der R243-Projektor-Beschreibungsentwurf wurde durch R245 live umgesetzt und erweitert; dadurch keine Film-/Musikfreigabe.",
+        "AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet.",
+        "R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
         "Keine erfundenen Angaben oder Teilmaterial als Ganzprodukt ausgegeben",
         "Aktuelle gemeinsame Nenner und stabile IDs statt gemischter alter Zähler",
-        "Jeder zulässige Write frisch zurückgelesen; Claudes Fortschritt nicht doppelt gezählt"
+        "Jeder zulässige Write frisch zurückgelesen; Claudes Fortschritt nicht doppelt gezählt",
+        "Ausdrückliche A-und-O-Vorgabe15.11.2026: konkrete, source-bound Produktdetails vor zusätzlichem generischem Werbetext; fehlende Modell-/Farb-/Packbindung sichtbar statt erfunden. Gleicher Standard für weitere Produktarten."
       ],
       "sources": [
         {
@@ -1461,6 +1463,16 @@
         {
           "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json",
           "readAt": "2026-11-15T17:27:22Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md",
+          "gitBlobSha": "ddf67673644315f7cf2d5985b3009137293d0def",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+          "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
+          "readAt": "2026-11-15T19:15:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -2507,6 +2519,21 @@
           "previousLastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein.",
           "previousNextAllowedStep": "Sechs tatsächlicheSKU-/Preis-/Variantenlinkpaare alsReferenznutzen;vor abhängigerÄnderungaktualisieren. KeinenPreisohneeindeutigeOfferbindungübernehmen. Frühere Nagellack-Rechtefreigaben auf exakteDateien/Angebote begrenzt erhalten.",
           "source": "dropship/codex-handoff-20261018/PRODUKTDETAILS-AUSWAHL-LIVE-20261115-R242.json"
+        },
+        {
+          "revision": 245,
+          "at": "2026-11-15T19:15:18Z",
+          "previousState": "r242_six_product_copy_selection_details_live_native_public_verified",
+          "previousPriority": 5,
+          "previousLastEvidence": "R234: Product16615805878663 ACTIVE mit nichtleerenTags.6Varianten/SKUs komplett;nativeCHF-Preisegleichöffentlichemproduct.js;alleavailabletrue,Trackingfalse,CONTINUEbeiBestand0. KeinBestands-/Lieferzeit-/Materialversprechen undkeinFeedwrite. Vorheriger Nachweis bleibt gültig: Aktive native Nagellackvarianten7/11 samtSKUs und aktuellen textfreienPNGs vorWrite geprüft. Neueexplizite Ownerrechte-/Farbtreueattestation fürgenaudieseDateien erhalten. Googlezuvor alteOverlay-JPGs; zweiHauptbildfelder aktualisiert und neueLinks samtGenehmigungCH/LI inje6Kontexten bestätigt. AlleübrigenMerchantProduktattribute undShopifyProduktdaten unverändert. KeineMenge/Material/Nettoinhalt/BestandoderLieferzeit erfunden. Attributscope derWaage stimmtbeiVariante/CHF 127.90 mitSchema undGoogleüberein. R242: Vier Konsolen und zwei Leuchten nach6exaktenCJ-Reads live um Auswahlhilfe/Packliste/Speicher-/Material-/Anschlussangaben verbessert.6native+öffentlicheReadbacks bestätigt;40Varianten/48Medien sowie Preise,SKU/Barcodes,Tags/Optionswerte/Policies erhalten.500Spielzahlquellbelegt;konkreteTitel,Controllerzubehör undLeuchtenversorgungoffen. GlasstattGlaskeramik.",
+          "previousNextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
+          "previousBlockers": [
+            "NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
+            "Modell6-Nettoinhalt, Projektor-Beschreibungsdiff und frühere Mengen-/Konformitäts-/Filmrechtsfälle sind nicht durch diese Bildwrites erledigt.",
+            "AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet."
+          ],
+          "previousBelegArt": "GEPRUEFT",
+          "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json"
         }
       ],
       "additionalProductCleanups": [
@@ -3706,6 +3733,32 @@
         "blocksPrepared": 2,
         "status": "draft_not_written",
         "previousR242LiveWritesUnchanged": true
+      },
+      "ownerDescriptionPriorityR245": {
+        "at": "2026-11-15T19:15:18Z",
+        "quote": "detailierte produktbeschreibung ist sehr wichtig a und o checke durch und verbessere",
+        "priority": 1,
+        "scope": "all product types in bounded verified groups",
+        "scheduleUnchanged": true
+      },
+      "run245": {
+        "at": "2026-11-15T19:15:18Z",
+        "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+        "productIds": [
+          "gid://shopify/Product/15521256604033",
+          "gid://shopify/Product/15493244191105",
+          "gid://shopify/Product/15496936423809",
+          "gid://shopify/Product/15481776374145",
+          "gid://shopify/Product/15452706046337"
+        ],
+        "writes": 5,
+        "variantsProtected": 12,
+        "mediaProtected": 42,
+        "publicPagesConfirmed": 5,
+        "oldConsoleGroupEdited": 6,
+        "oldConsoleGroupStillOpen": 30,
+        "resolvesPreviousProjectorCopyDraft": "PROJEKTOR-AUSWAHL-ENTWURF-20261115-R243.html",
+        "unresolvedDetails": "PRODUKTANGABEN-KLAERUNGSBOGEN-20261115-R245.md"
       }
     },
     {
@@ -11327,6 +11380,11 @@
         {
           "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261115-R243.json",
           "readAt": "2026-11-15T18:28:10Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+          "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
+          "readAt": "2026-11-15T19:15:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -13509,6 +13567,16 @@
         "sourceFilmVariantStillUnknown": true,
         "canonicalMusicHashConfirmed": true,
         "professionalMasterReady": false
+      },
+      "run245ProductCopy": {
+        "at": "2026-11-15T19:15:18Z",
+        "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+        "liveProductTextAndSeoConfirmed": true,
+        "variantsBoundToSevenCurrentCjSkus": true,
+        "oldCombinedPackingListRemoved": true,
+        "professionalMasterApproval": false,
+        "filmMusicRightsCleared": false,
+        "socialWrites": 0
       }
     },
     {
@@ -21266,11 +21334,11 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r244_four_category_and_one_article_seo_live_native_and_public_verified",
+      "state": "r245_five_more_product_meta_descriptions_native_public_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "SIX_GUARDED_SHOPIFY_WRITES_FIVE_PUBLIC_HTTP_READBACKS_15_NEW_INTERNAL_LINKS",
-      "lastEvidence": "R244: Vier Kategorien (Gaming, Headsets, Gaming-Headsets, Nachttischlampen) und einen bestehenden Headset-Ratgeber live verbessert. Sechs serielle native Mutationen mit frischer Vorher-Gegenprobe/konkretem Diff, userErrors=[] und Vollrücklesung; danach fünf öffentliche Seiten HTTP200, Inhalte/SEO-Titel/-Beschreibung/H1/Canonical und alle18 Inhaltslinks bestätigt.15 Links neu. Artikel-SEO per atomarem Zwei-Schlüssel-CAS mit compareDigest=null nach Nullread. Preise/Varianten/Zuordnungen nicht geschrieben, ausgewählte Schutzfelder nativ identisch. Keine Rang-/Indexierungs-/Verkaufswirkung gemessen.",
+      "lastEvidence": "R244: Vier Kategorien (Gaming, Headsets, Gaming-Headsets, Nachttischlampen) und einen bestehenden Headset-Ratgeber live verbessert. Sechs serielle native Mutationen mit frischer Vorher-Gegenprobe/konkretem Diff, userErrors=[] und Vollrücklesung; danach fünf öffentliche Seiten HTTP200, Inhalte/SEO-Titel/-Beschreibung/H1/Canonical und alle18 Inhaltslinks bestätigt.15 Links neu. Artikel-SEO per atomarem Zwei-Schlüssel-CAS mit compareDigest=null nach Nullread. Preise/Varianten/Zuordnungen nicht geschrieben, ausgewählte Schutzfelder nativ identisch. Keine Rang-/Indexierungs-/Verkaufswirkung gemessen. R245: Fünf weitere produktspezifische Meta-Beschreibungen an aktuelle CJ-/Variantenangaben gebunden und öffentlich bestätigt; vorhandene SEO-Titel/H1/Handles/Canonicals erhalten. Keine neue GSC-Messung oder Rang-/Verkaufswirkung.",
       "nextAllowedStep": "R244-Seiten nicht nochmals als neue Arbeit zählen. Nächste kleine Gruppe PC-Gaming, Kopfhörer & Audio und Spielkonsolen & Retro-Handhelds anhand heute vorhandener HTTP-Köpfe vorbereiten: frische native Beschreibung/Sources und wenige passende Produkte, eindeutige Suchabsicht und Auswahlhilfe statt pauschaler Rabatt-/Versand-Werbetexte. Vor Write Gegenprobe/Diff, danach native Schutzfelder und öffentliche Texte/Meta/Canonical/Links prüfen. Keine neue GSC-Tagesmessung ohne konkreten Anlass, keine Noindex-/Redirect-/Zuordnungsänderung auf Verdacht. Bestehende R239-Theme- und R240-Merchantblocker getrennt erhalten.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
@@ -21945,6 +22013,16 @@
           "path": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json",
           "gitBlobSha": "b22e6eeca4aaa5bd8fdbf0455369e05183820ebe",
           "readAt": "2026-11-15T18:49:01Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md",
+          "gitBlobSha": "ddf67673644315f7cf2d5985b3009137293d0def",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+          "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
+          "readAt": "2026-11-15T19:15:18Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -23339,6 +23417,14 @@
           "previousNextAllowedStep": "Die ausdrückliche Detail-/Auswahlvorgabe auch auf weitere Produktarten anwenden. Nächste kleine Gruppe nach aktuellen SKU-spezifischen Quellen, echten Bildern, vollständigen Varianten/Optionsunterschieden und Storefront prüfen; Produkt- und Verpackungsmasse trennen, konkrete Packliste nur je belegter Auswahl. Bei jedem Write Diff und aktuelle Schutzfelder erhalten, danach nativ/öffentlich zurücklesen.32R241Konsolenangebote und übrigerKatalog noch offen;6R242Änderungen nicht erneut als neue Umsetzung zählen. Keine Spiele-/Kompatibilitäts-/Zubehör-/Bestands-/Lieferzeitversprechen ohne Quelle; keine neuen Abläufe oder Frequenzänderung.",
           "previousBelegArt": "R226_TWO_NARROW_LIVE_SEO_WRITES_AND_VERIFIED_SOURCE_CHANNEL_READS",
           "source": "dropship/codex-handoff-20261018/SEO-UMSETZUNGSBELEGE-20261115-R244.json"
+        },
+        {
+          "revision": 245,
+          "at": "2026-11-15T19:15:18Z",
+          "previousState": "r244_four_category_and_one_article_seo_live_native_and_public_verified",
+          "previousLastEvidence": "R244: Vier Kategorien (Gaming, Headsets, Gaming-Headsets, Nachttischlampen) und einen bestehenden Headset-Ratgeber live verbessert. Sechs serielle native Mutationen mit frischer Vorher-Gegenprobe/konkretem Diff, userErrors=[] und Vollrücklesung; danach fünf öffentliche Seiten HTTP200, Inhalte/SEO-Titel/-Beschreibung/H1/Canonical und alle18 Inhaltslinks bestätigt.15 Links neu. Artikel-SEO per atomarem Zwei-Schlüssel-CAS mit compareDigest=null nach Nullread. Preise/Varianten/Zuordnungen nicht geschrieben, ausgewählte Schutzfelder nativ identisch. Keine Rang-/Indexierungs-/Verkaufswirkung gemessen.",
+          "previousNextAllowedStep": "R244-Seiten nicht nochmals als neue Arbeit zählen. Nächste kleine Gruppe PC-Gaming, Kopfhörer & Audio und Spielkonsolen & Retro-Handhelds anhand heute vorhandener HTTP-Köpfe vorbereiten: frische native Beschreibung/Sources und wenige passende Produkte, eindeutige Suchabsicht und Auswahlhilfe statt pauschaler Rabatt-/Versand-Werbetexte. Vor Write Gegenprobe/Diff, danach native Schutzfelder und öffentliche Texte/Meta/Canonical/Links prüfen. Keine neue GSC-Tagesmessung ohne konkreten Anlass, keine Noindex-/Redirect-/Zuordnungsänderung auf Verdacht. Bestehende R239-Theme- und R240-Merchantblocker getrennt erhalten.",
+          "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json"
         }
       ],
       "visibilitySupplementR49": {
@@ -24689,6 +24775,14 @@
         "publicPagesConfirmed": 5,
         "newEditorialLinks": 15,
         "rankSalesLiftUnknown": true
+      },
+      "run245": {
+        "at": "2026-11-15T19:15:18Z",
+        "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+        "productSeoDescriptionWrites": 5,
+        "seoTitlesPreserved": true,
+        "publicPagesConfirmed": 5,
+        "newGscReport": false
       }
     },
     {
@@ -33083,6 +33177,41 @@
           "path": "dropship/codex-handoff-20261018/SEO-CONTENT-PLAN-20261115-R244.json",
           "gitBlobSha": "7be3688ddfdc69d13ece993630c8926f1c8ad9c2",
           "readAt": "2026-11-15T18:49:01Z"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "Claude Code receipt unknown"
+    },
+    {
+      "revision": 245,
+      "at": "2026-11-15T19:15:18Z",
+      "actor": "Codex",
+      "summary": "Auf ausdrückliche A-und-O-Anweisung Produktdetails als Priorität1 festgehalten. Fünf weitere Seiten nach aktuellen CJ-/Varianten-/Bildquellen live beschrieben;5serielleWrites mit nativen und öffentlichen Rücklesungen,12Varianten/42Medien geschützt. Projektor-A–G und Wandteppich150cm konkretisiert; Spiele-/Modell-/Farb-/Ladelücken bei Technik klar. Detailstandard und36erListe fortgeschrieben (6redaktionell bearbeitet/30offen). Keine Tagesreports, Social-/Feed-/Theme-/Verbindungs-/Einstellungswrites.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md",
+          "gitBlobSha": "ddf67673644315f7cf2d5985b3009137293d0def",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+          "gitBlobSha": "b46a82e326c4049407f5c8e96d5c4dd3b6e51e4e",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-DIFF-20261115-R245.patch",
+          "gitBlobSha": "a66f16ab34ed4dfe7054c73e1ba14d74c794bbb6",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-TEXTE-20261115-R245.json",
+          "gitBlobSha": "aded5f88cddb55c2936ae9609c3f25f2b37addfc",
+          "readAt": "2026-11-15T19:15:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTANGABEN-KLAERUNGSBOGEN-20261115-R245.md",
+          "gitBlobSha": "cb85983d44e25c1fa86139e40ece04a82ee8ea34",
+          "readAt": "2026-11-15T19:15:18Z"
         }
       ],
       "taskCount": 24,
@@ -60291,6 +60420,27 @@
     "dailyReportsRepeated": false,
     "purchaseWatchEnded": true,
     "professionalMasterHoldsUntouched": true,
+    "receiptState": "Claude Code receipt unknown"
+  },
+  "run245": {
+    "at": "2026-11-15T19:15:18Z",
+    "localRun": "15.11.2026 ca20:15Europe/Zurich",
+    "source": "dropship/codex-handoff-20261018/PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json",
+    "ownerPriority": "detailed product descriptions are A and O; product task now priority1",
+    "shopifyWrites": 5,
+    "changedFields": [
+      "descriptionHtml",
+      "seo.description"
+    ],
+    "nativeAndPublicVerified": 5,
+    "variantsProtected": 12,
+    "mediaProtected": 42,
+    "fullCatalogScanned": false,
+    "oldConsoleGroupStillOpen": 30,
+    "modelColourGapsStillOpen": true,
+    "masterSocialHoldsUntouched": true,
+    "dailyReportsRepeated": false,
+    "purchaseWatchEnded": true,
     "receiptState": "Claude Code receipt unknown"
   }
 }

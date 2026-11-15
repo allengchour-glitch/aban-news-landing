@@ -1,0 +1,223 @@
+
+# projector / gid://shopify/Product/15521256604033
+--- current
++++ proposed
+@@ -1,49 +1,21 @@
+-<!-- ls-var-v1 --><!-- ls-text-v2 --><p>Der Sternenlicht-Projektor verwandelt ein Schlafzimmer in einen Sternenhimmel und dient gleichzeitig als Nachtlicht am Bett. Er ist kompakt, misst 121 × 110 × 121 mm und wiegt 650 g, hat also auf dem Nachttisch leicht Platz. Bedient wird er per Knopfdruck. Die Lichtquelle hat 4 W, die Spannung liegt bei höchstens 36 V, und der Lampenschirm besteht aus PVC. Für die Lichtquelle ist eine durchschnittliche Lebensdauer von mehr als 480 Stunden angegeben.</p><h4>So funktioniert er</h4><p>Mit eingeschaltetem Lampenschirm projiziert er zur Seite, rastest du den Schirm ein, wird er zum kleinen Nachtlicht. Die Schärfe stellst du durch Drehen ein. Die Motive sitzen in Filmschalen, die du in die Filmbox schiebst und bei Bedarf austauschst.</p><h4>Die Ausführungen</h4><p>Es gibt sieben Ausführungen. Das Grundmodell wird eingesteckt. Weitere Modelle bringen sechs Farbscheiben oder eine Galaxie-Scheibe mit. Bluetooth-Modelle lassen sich aufladen, und eine Spieluhr-Version bringt 18 Musikstücke und sechs Sternenlicht-Scheiben mit, aber keine Galaxie-Scheibe. Eine Drehversion zum Einstecken kommt mit einer Galaxie-Scheibe und drei Farbscheiben, aber ohne Fernbedienung. Der volle Lieferumfang umfasst ein Nachtlicht, sechs Farbscheiben, ein wiederaufladbares Bluetooth-Drehteil und eine Galaxie-Scheibe, schau dir die gewünschte Ausführung also genau an.</p><h4>Hinweise</h4><p>Der Projektor ist nur für Innenräume gedacht. Stelle ihn nicht in die Nähe von Wärmequellen oder in direkte Sonne, reinige ihn mit einem weichen Baumwolltuch ohne ätzende Mittel und quetsche ihn nicht mit schweren Gegenständen. Das mitgelieferte USB-Kabel ist nur für dieses Produkt gedacht.</p><!-- /ls-text-v2 -->
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>Sorglos shoppen:</strong> 30 Tage Rückgabe · Schweizer Shop · TWINT, Karte und Klarna.</div><!-- ls-fakten-v1 --><div class="ls-fakten" style="margin:16px 0;">
+-<h4>Technische Daten</h4>
+-<table style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;">
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Material</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">Kunststoff, Sonstiges</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Gewicht</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">650 g</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Masse</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">121x110x121 mm</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Leistung</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">4W</td>
+-</tr>
+-</table>
+-<h4>Lieferumfang</h4>
++<p>Der Sternenlicht-Projektor kombiniert dekorative Lichtprojektion mit einer Nachtlicht-Funktion für Innenräume. Je nach Modell nutzt du zusätzliche Motivscheiben und stellst den Fokus für die Projektion ein. Die sieben Modelle unterscheiden sich bei Motivscheiben, Stromversorgung, Bluetooth, Spieluhr und Drehfunktion.</p>
++<h2>Welche Ausführung passt zu dir?</h2>
++<p>Der angezeigte Preis gilt für die ausgewählte Variante. Die Ausstattung eines anderen Modells gehört nicht automatisch dazu.</p>
+ <ul>
+-<li>1 Nachtlicht</li>
+-<li>6 Farbscheiben</li>
+-<li>1 wiederaufladbares Bluetooth-Drehteil</li>
+-<li>1 Galaxyscheibe</li>
++<li><strong>A · Grundmodell:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>
++<li><strong>B · mit 6 Motivscheiben:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>
++<li><strong>C · Galaxie-Scheibe + 6 Motivscheiben:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>
++<li><strong>D · Akku, Bluetooth, 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth und sechs Motivscheiben.</li>
++<li><strong>E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth, einer Galaxie-Scheibe und sechs Motivscheiben.</li>
++<li><strong>F · Spieluhr mit Akku, 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>
++<li><strong>G · drehend, Galaxie-Scheibe + 3 Farbscheiben:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>
+ </ul>
+-<h4>So geht's</h4>
+-<ol>
+-<li>Lampenschirm einschalten für Seitenprojektion</li>
+-<li>Lampenschirm als kleines Nachtlicht einrasten</li>
+-<li>Projektor drehen, um den Fokus einzustellen</li>
+-<li>Filmbox öffnen</li>
+-<li>Filmschale entnehmen/ersetzen</li>
+-<li>Filmschale in Filmbox schieben</li>
+-</ol>
+-<h4>Gut zu wissen</h4>
+-<ul>
+-<li>Produkt nicht mit schweren Gegenständen quetschen</li>
+-<li>Oberfläche mit weichem Baumwolltuch reinigen, keine korrosiven Lösungen verwenden</li>
+-<li>Produkt nicht in der Nähe von Wärmequellen, Luftfeuchtern oder Orten mit starken Feuchtigkeitsschwankungen platzieren; direkte Sonneneinstrahlung vermeiden</li>
+-<li>Nur für Innenräume geeignet</li>
+-<li>Mitgeliefertes USB-Kabel nur für dieses Produkt verwenden</li>
+-</ul>
+-<p style="font-size:12px;opacity:.7;margin-top:10px;">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>
+-</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href="/collections/wohnen-dekoration">Wohnen &amp; Deko</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+-{"title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle", "description": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen."}
++<h2>Technische Angaben</h2>
++<ul><li><strong>Gehäusemasse laut Produktdatenblatt:</strong> 121 × 110 × 121 mm.</li><li><strong>Lampenschirm:</strong> PVC.</li><li><strong>Leistung laut Datenblatt:</strong> 4 W.</li><li><strong>Bedienung:</strong> Tasten am Gerät; Schärfeeinstellung durch Drehen.</li><li><strong>Stromversorgung:</strong> USB-Ausführungen; A, B, C und G zum Einstecken, D, E und F aufladbar.</li></ul>
++<h2>Lieferumfang nach Modell</h2>
++<p>Du erhältst einen Projektor in der gewählten Ausführung. Anzahl und Art der zusätzlichen Scheiben sowie Bluetooth-, Spieluhr- oder Drehfunktion richten sich nach der obigen Auswahl A–G. Eine Gesamtübersicht aller Extras ist keine Packliste für jede einzelne Ausführung.</p>
++<p>Ein Netzteil sowie eine Fernbedienung für die anderen Modelle sind in den zugeordneten Variantenangaben nicht eindeutig bestätigt. Für G ist ausdrücklich keine Fernbedienung angegeben.</p>
++<h2>Bedienung und Pflege</h2>
++<p>Für die Nachtlicht-Funktion wird der Lampenschirm aufgesetzt. Für die Projektion stellst du die Schärfe durch Drehen ein. Zum Wechseln eines Motivs öffnest du die Filmbox, tauschst die Scheibe beziehungsweise den Filmträger und schiebst ihn wieder ein.</p>
++<p>Nur für Innenräume verwenden. Vor Wärmequellen, direkter Sonne und starken Feuchtigkeitsschwankungen schützen. Die Oberfläche mit einem weichen Baumwolltuch reinigen und keine ätzenden Reinigungsmittel verwenden. Das mitgelieferte USB-Kabel ist laut Anleitung für dieses Produkt vorgesehen.</p>
++{"title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle", "description": "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."}
+
+# tapestry / gid://shopify/Product/15493244191105
+--- current
++++ proposed
+@@ -1,9 +1,10 @@
+-<p>Dieser farbenfrohe Wandteppich mit Elefantenmuster bringt einen Hauch von Bohème in jedes Zimmer. Er ist ideal, um Wände zu dekorieren, als Tagesdecke oder sogar als Strandtuch. Das gewebte Design aus einer Polyester-Baumwollmischung ist nicht nur robust, sondern auch angenehm weich. Verleih deinem Wohnraum, Schlafzimmer oder Studentenwohnheim eine persönliche Note und schaffe eine gemütliche Atmosphäre. Ein vielseitiges Accessoire, das sowohl funktional als auch ästhetisch überzeugt und sich mühelos in verschiedene Einrichtungsstile integrieren lässt.</p><h3>Das zeichnet es aus</h3><ul>
+-<li>Farbenfrohes Elefantenmuster</li>
+-<li>Vielseitig einsetzbar (Wandbehang, Tagesdecke, Strandtuch)</li>
+-<li>Material: Polyester-Baumwollmischung</li>
+-<li>Gewebte Textur</li>
+-</ul>
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/wohnen-dekoration">Wohnen &amp; Deko</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+-{"title": "Bohemian Elefanten Wandteppich | LuxeStyle CH", "description": "Bohemian Elefanten Wandteppich bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."}
++<p>Der quadratische Wandteppich setzt mit einem grossen Elefantenmotiv und ornamentiertem Rand einen dekorativen Akzent an deiner Wand. Die Produktbilder zeigen einen hellen Grund mit blauvioletten Mustern. Er eignet sich als textiler Wandbehang, etwa über einem Bett, Sofa oder einer Kommode.</p>
++<h2>Grösse und Material</h2>
++<ul><li><strong>Ausführung:</strong> 150 × 150 cm, entsprechend 1,5 × 1,5 m.</li><li><strong>Material laut Produktquelle:</strong> Polyester und Baumwolle. Die genauen Faseranteile sind nicht angegeben.</li><li><strong>Verarbeitung:</strong> gewebter Stoff.</li><li><strong>Motiv:</strong> Elefant mit floralen und ornamentierten Randelementen, wie auf den Artikelbildern dargestellt.</li></ul>
++<h2>Was bedeutet die Auswahl?</h2>
++<p>Für dieses Angebot ist derzeit eine Ausführung hinterlegt. Die zugeordnete Lieferantenvariante nennt 150 × 150 cm; eine weitere Grössen- oder Farbauswahl wird hier nicht angeboten. Prüfe vor dem Kauf, ob diese Fläche an deinem gewünschten Platz ausreicht.</p>
++<h2>Lieferumfang und Befestigung</h2>
++<p>Gegenstand des Angebots ist der Wandteppich. Möbel, Pflanzen und weitere Raumdekoration auf den Fotos dienen der Darstellung. Haken, Stangen oder anderes Befestigungsmaterial sind in den vorliegenden Produktangaben nicht als Lieferumfang ausgewiesen.</p>
++<h2>Pflege und Verwendung</h2>
++<p>Eine Waschtemperatur und die Eignung für Waschmaschine oder Trockner sind nicht bestätigt. Richte die Reinigung nach einem vorhandenen Pflegeetikett.</p>
++{"title": "Bohemian Elefanten Wandteppich | LuxeStyle CH", "description": "Elefanten-Wandteppich im Boho-Stil, 150 × 150 cm. Gewebter Stoff aus Polyester und Baumwolle mit ornamentiertem Motiv. Material und Auswahl im Detail."}
+
+# console / gid://shopify/Product/15496936423809
+--- current
++++ proposed
+@@ -1,48 +1,13 @@
+-<!-- ls-text-v2 --><p>Dieser klassische Game-Controller gehört zu einer kleinen Retro-Spielkonsole, die du direkt an den Fernseher anschliesst: einstecken, Quelle am Fernseher einstellen und losspielen. Die Konsole bringt 568 klassische Spiele mit, die sich nicht wiederholen, und lässt sich mit einem oder zwei Spielern nutzen.</p><h4>Anschluss und Bedienung</h4><p>Die Konsole hat einen High-Definition-Anschluss, prüfe darum, ob dein Fernseher einen passenden HD-Eingang besitzt. Die Stromversorgung läuft über ein USB-Kabel, ein Netzteil ist in der Lieferung nicht genannt. Die kabellosen Controller haben eine Reichweite von bis zu 8 Metern, du musst also nicht dicht vor dem Fernseher sitzen. Zum Beenden eines Spiels hältst du SELECT und START eine Sekunde lang gedrückt.</p><h4>Die Controller und das Set</h4><p>Ein Controller misst 12,5 × 5,3 × 1,5 cm und braucht Batterien der Grösse Nr. 7, die in der Lieferung nicht genannt sind. Die Spiele stammen aus der 8-Bit-Zeit, entsprechend schlicht ist die Grafik. Die vollständige Spieleliste kannst du beim Kundendienst erfragen.</p><p>Im Karton liegen zwei kabellose Controller, die Konsole, ein USB-Datenkabel und eine Anleitung auf Englisch. Zur Auswahl steht die schwarze Standard-Ausführung und das Modell «Y2HD plus 1462», zu dem keine weiteren Angaben vorliegen. Das Gewicht des Sets liegt bei 0,27 kg.</p><!-- /ls-text-v2 -->
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-fakten-v1 --><div class="ls-fakten" style="margin:16px 0;">
+-<h4>Technische Daten</h4>
+-<table style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;">
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Material</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">Kunststoff</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Masse</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">12.5 × 5.3 × 1.5 cm</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Gewicht</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">0.27 kg</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Anschluss</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">High-Definition-Schnittstelle</td>
+-</tr>
+-<tr>
+-<th style="text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;">Farbe</th>
+-<td style="padding:6px 0;border-bottom:1px solid #ece7de;">Schwarz</td>
+-</tr>
+-</table>
+-<h4>Lieferumfang</h4>
+-<ul>
+-<li>2 kabellose Controller</li>
+-<li>1 HD-Spielkonsole</li>
+-<li>1 USB-Datenkabel</li>
+-<li>1 englische Anleitung</li>
+-<li>1 Farbkarton</li>
+-</ul>
+-<h4>So geht's</h4>
+-<ol>
+-<li>Spiel beenden: SECECT-Taste + START-Taste eine Sekunde lang gedrückt halten.</li>
+-<li>Spielkonsole an HD-Schnittstelle des Fernsehers anschliessen, USB-Stromkabel an Host anschliessen und TV-Quelle auf HD-Kanal einstellen.</li>
+-</ol>
+-<h4>Gut zu wissen</h4>
+-<ul>
+-<li>Spieleliste kann beim Kundendienst erfragt werden.</li>
+-<li>Bitte bestätigen Sie, dass Ihr Fernseher über eine High-Definition-Ausgangsschnittstelle verfügt.</li>
+-<li>Controller benötigt Batterien (Nr. 7).</li>
+-</ul>
+-<p style="font-size:12px;opacity:.7;margin-top:10px;">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>
+-</div><!-- /ls-fakten-v1 --><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/gaming">Gaming</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+-{"title": "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH", "description": "Retro-Spielkonsole mit 2 Controllern bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."}
++<p>Dieses Retro-TV-Set verbindet eine kompakte Spielkonsole mit zwei kabellosen Controllern. Du schliesst die Konsole am passenden HD-Eingang deines Fernsehers an und versorgst sie über USB mit Strom. Die Produktquelle nennt Unterstützung für ein oder zwei Spieler; der Mehrspielermodus hängt vom jeweiligen Spiel ab.</p>
++<h2>Modelle und Spieleumfang</h2>
++<ul><li><strong>Schwarz:</strong> schwarze Standardausführung der in der Quelle beschriebenen Y2-HD-Konsole.</li><li><strong>Y2HD plus 1462:</strong> zweite Modellbezeichnung im Angebot. Daraus allein lässt sich keine bestätigte Anzahl von 1462 Spielen ableiten.</li></ul>
++<p>Der Lieferant nennt für die allgemein beschriebene Y2-HD-Ausführung <strong>568 klassische Spiele</strong>. Eine vollständige Liste der Spieltitel liegt nicht vor; eine identische Spieleausstattung der Zusatzvariante «Y2HD plus 1462» ist nicht eindeutig belegt. Wenn dir ein bestimmter Titel wichtig ist, muss dessen Vorhandensein vor dem Kauf geklärt sein.</p>
++<h2>Anschlüsse und Voraussetzungen</h2>
++<ul><li><strong>Fernseher:</strong> passender HD-Eingang; die Form des Anschlusses ist auf den Produktbildern erkennbar.</li><li><strong>Stromversorgung:</strong> über das mitgelieferte USB-Kabel. Ein USB-Netzteil ist nicht als enthalten aufgeführt.</li><li><strong>Controller:</strong> kabellos, laut Lieferant mit einer Reichweite von bis zu 8 m. Die tatsächlich nutzbare Entfernung hängt von der Umgebung ab.</li><li><strong>Controller-Batterien:</strong> Grösse Nr. 7 laut Lieferant; nicht in der Packliste aufgeführt.</li></ul>
++<h2>Lieferumfang laut Produktquelle</h2>
++<ul><li>1 HD-Spielkonsole.</li><li>2 kabellose Controller.</li><li>1 USB-Datenkabel zur Verbindung mit der Stromversorgung.</li><li>1 Anleitung auf Englisch.</li><li>1 Farbkarton als Verpackung.</li></ul>
++<p>Eine Speicherkarte wird im Bild der Plus-Ausführung gezeigt, in der gemeinsamen Packliste aber nicht separat bestätigt. Ihr Lieferumfang und der genaue Spieleumfang dieser Ausführung bleiben deshalb zu klären.</p>
++<h2>Masse und Bedienung</h2>
++<p>Die angegebenen <strong>12,5 × 5,3 × 1,5 cm beziehen sich auf einen Controller</strong>, nicht auf die Konsole oder den Karton. Eindeutige Gerätemasse der Konsole sind nicht angegeben.</p>
++<p>Wähle nach dem Anschliessen den passenden Eingang am Fernseher. Zum Verlassen eines Spiels nennt die Anleitung das gleichzeitige Drücken von SELECT und START für etwa eine Sekunde. Eine native 4K-Ausgabe ist in den technischen Angaben nicht eindeutig belegt.</p>
++{"title": "Retro-Spielkonsole mit 2 Controllern | LuxeStyle CH", "description": "Retro-TV-Konsole mit zwei kabellosen Controllern und USB-Kabel. Modelle Schwarz und Y2HD plus 1462, Anschlüsse und Angaben zum Spieleumfang vergleichen."}
+
+# powerbank / gid://shopify/Product/15481776374145
+--- current
++++ proposed
+@@ -1,10 +1,13 @@
+-<p>Diese Handheld Game Machine Powerbank ist ein praktisches 2-in-1-Gerät in Industriestil. Sie kombiniert eine Gaming-Konsole mit einer tragbaren Ladestation. Das Gehäuse ist aus einer hochwertigen Legierung gefertigt und in den Farben Sky Blue und Space Grey erhältlich. Mit einer Grösse von 115 x 70 x 25 mm ist sie kompakt und handlich.</p><h3>Das zeichnet es aus</h3><ul>
+-<li>Eingangsspannung: 5V</li>
+-<li>Akkukapazität: 5000 mAh</li>
+-<li>Gehäusematerial: Legierung</li>
+-
+-<li>Stil: Industrial</li>
+-</ul>
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/trends-gadgets">Trends &amp; Gadgets</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+-{"title": "Handheld Game Machine Powerbank | LuxeStyle CH", "description": "Handheld Game Machine Powerbank bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."}
++<p>Diese magnetische Powerbank verbindet ein Gehäuse im Handheld-Stil mit einer Ladefunktion. Die Produktbilder zeigen ein Display, ein Steuerkreuz und Aktionstasten auf der Vorderseite sowie eine magnetische Ladefläche auf der Rückseite. Das Gerät ist als Kombination aus Powerbank und Handheld-Spielgerät beschrieben; ein konkretes Spieleverzeichnis ist nicht dokumentiert.</p>
++<h2>Bestätigte Produktangaben</h2>
++<ul><li><strong>Nennkapazität:</strong> 5000 mAh laut Variantenangabe. Daraus folgt keine feste Anzahl vollständiger Smartphone-Ladungen.</li><li><strong>Eingangsspannung:</strong> 5 V.</li><li><strong>Gehäuse:</strong> Legierung.</li><li><strong>Ausführung:</strong> magnetische Powerbank mit Display und Spielbedienelementen.</li></ul>
++<h2>Farbe und Auswahl</h2>
++<p>Im Shop ist derzeit eine Ausführung ohne eigene Farbwahl hinterlegt. Die Produktgalerie zeigt hellblaue und graue Ausführungen; daraus entsteht keine auswählbare Farboption. Welche Farbe dieser Shop-Ausführung zugeordnet ist, ist noch nicht eindeutig bestätigt.</p>
++<h2>Spiele und Gerätekompatibilität</h2>
++<p>Eine Spieleanzahl, konkrete Spieltitel und unterstützte Spielsysteme sind in den zugeordneten Angaben nicht bestätigt. Ein Spielmotiv auf dem Display ist kein vollständiger Nachweis des Spieleumfangs.</p>
++<p>Die genaue Ladeart, Ausgangsleistung in Watt, unterstützte Ladeprotokolle und kompatible Smartphone-Modelle sind nicht eindeutig dokumentiert. Ob kabelloses Laden mit deinem Smartphone unterstützt wird, ist vor dem Kauf zu bestätigen; eine Schnellladezusage wird nicht gemacht.</p>
++<h2>Lieferumfang</h2>
++<p>Die Packliste nennt <strong>eine magnetische Powerbank</strong>. Ein Ladekabel, Netzteil und weiteres Zubehör sind dort nicht aufgeführt. Ein auf den Fotos gezeigtes Smartphone gehört nicht zum Angebot.</p>
++<h2>Masse</h2>
++<p>Die Produktbeschreibung und die Varianten-Datensätze enthalten unterschiedliche Längenangaben. Ein verbindliches Gerätemass ist deshalb noch zu klären, insbesondere wenn das Gerät in eine bestimmte Tasche oder Halterung passen soll.</p>
++{"title": "Handheld Game Machine Powerbank | LuxeStyle CH", "description": "Magnetische Powerbank im Handheld-Design mit 5000 mAh, 5-V-Eingang und Legierungsgehäuse. Lieferumfang, Farbauswahl und offene Spieleangaben ansehen."}
+
+# gamepad / gid://shopify/Product/15452706046337
+--- current
++++ proposed
+@@ -1,15 +1,12 @@
+-<!-- ls-text-v2 --><h4>Ein Controller für mehrere Geräte</h4><p>Das Wireless Gamepad ist für Spiele am PC, am Fernseher und auf Mobilgeräten gedacht. Es hat eine USB-Schnittstelle und verbindet sich je nach Ausführung per Bluetooth, über einen 2.4G-Empfänger oder per Kabel. Das Gamepad wiegt 354 g.</p><h4>Zwei Ausführungen, zwei Akkus</h4><p>Die Technik unterscheidet sich je nach Ausführung. Die eine hat einen Akku mit 600 mAh und läuft bis zu 25 Stunden; sie verbindet sich per Bluetooth oder Kabel und unterstützt neben Android, PC und TV weitere Systeme. Die andere hat 400 mAh und hält 20 Stunden; sie arbeitet mit dem 2.4G-Empfänger oder dem Kabel und unterstützt Android, PC und TV. Beide beherrschen Vibration und eine Combo-Funktion in drei Stufen.</p><p>Welche Ausführung bei deiner Bestellung dabei ist, klärst du am besten vor dem Kauf, vor allem wenn dein Gerät nur über Bluetooth oder nur über Kabel angeschlossen werden kann. Im Lieferumfang ist ein Gamepad.</p><!-- /ls-text-v2 -->
+-<div class="ls-produktdetails">
+-<!--ls-feed-details--><h4>Produktdetails</h4>
+-<ul>
+-<li>
+-<strong>Material:</strong> Kunststoff</li>
+-<li>
+-<strong>Gewicht:</strong> ca. 354 g</li>
+-<li>
+-<strong>Stromversorgung:</strong> Batterie/Akku</li>
+-</ul>
+-</div>
+-<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">
+-<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/trends-gadgets">Trends &amp; Gadgets</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>
+-{"title": "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH", "description": "Wireless Gamepad für PC, TV & Mobilgeräte bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."}
++<p>Das Gamepad bietet zwei Analogsticks, ein Steuerkreuz und Aktionstasten für die Bedienung kompatibler Spiele. Es ist als Controller für PC und weitere Geräte vorgesehen. Welche Verbindung und Funktionen du nutzen kannst, hängt vom tatsächlichen Modell, dem Zielgerät und dem Spiel ab.</p>
++<h2>Wichtiger Hinweis zur Ausführung</h2>
++<p>Im Shop ist derzeit eine Ausführung ohne Modellwahl hinterlegt. Die zugeordnete Produktquelle führt die Variante <strong>T3S</strong>; die Galerie enthält aber auch Darstellungen des Modells T3. Deshalb dürfen die Angaben beider Modelle nicht als zwei auswählbare Shop-Ausführungen oder als identische Ausstattung verstanden werden.</p>
++<h2>Verbindung und Kompatibilität</h2>
++<p>Die T3S-Referenzbilder nennen Bluetooth und eine kabelgebundene USB-Verbindung. Der Lieferant beschreibt daneben eine andere Ausführung mit 2,4-GHz-Empfänger. Die genaue Modell- und Empfängerzuordnung muss vor dem Kauf geklärt sein, wenn du eine bestimmte Verbindungsart benötigst.</p>
++<p>Vergleiche dein Gerät und Betriebssystem mit der bestätigten Modellangabe. Eine allgemeine Kompatibilität mit jeder PlayStation-, Xbox- oder Smart-TV-Ausführung wird nicht zugesichert. Ein USB-Anschluss am Fernseher allein belegt keine Controller-Unterstützung.</p>
++<h2>Bedienelemente und Material</h2>
++<ul><li>Zwei Analogsticks, Steuerkreuz und Aktionstasten.</li><li>START-/SELECT-Bedienung und zusätzliche Funktionsknöpfe, wie auf den Artikelbildern dargestellt.</li><li>Gehäusematerial laut Produktquelle: Kunststoff.</li></ul>
++<h2>Akku und Lieferumfang</h2>
++<p>Im Quellmaterial stehen unterschiedliche Akku- und Laufzeitangaben für T3 und T3S. Eine eindeutig der Shop-Ausführung zugeordnete Akkukapazität oder Laufzeit ist deshalb noch nicht bestätigt.</p>
++<p>Die schriftliche Packliste nennt <strong>ein Controller-Set</strong>. Die T3S-Abbildung zeigt zusätzlich ein USB-Kabel, einen Empfänger und eine Anleitung. Da die Quelle mehrere Modellabbildungen mischt, sind die einzelnen Beigaben für die tatsächlich gelieferte Ausführung vor dem Kauf zu bestätigen.</p>
++{"title": "Wireless Gamepad für PC, TV & Mobilgeräte | LuxeStyle CH", "description": "Wireless Gamepad mit zwei Analogsticks und USB-Anschluss. Hinweise zu Modell, Verbindung, Gerätekompatibilität und Lieferumfang vor dem Kauf lesen."}

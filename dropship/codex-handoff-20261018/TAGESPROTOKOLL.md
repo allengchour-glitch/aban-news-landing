@@ -2869,3 +2869,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [SEO-Live-Bericht](SEO-LIVE-VERBESSERUNGEN-20261115-R244.md) · [Belege](SEO-UMSETZUNGSBELEGE-20261115-R244.json).
 
 [LUXESTYLE_R244_20261115]
+
+### R245 – Produktdetails als A-und-O-Priorität; fünf weitere Beschreibungen live
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Inhaberauftrag / Priorität | Erneute ausdrückliche Detailvorgabe aufgenommen; bestehende Produktaufgabe auf Priorität1 gesetzt. | Gleicher Quellen-/Schutzstandard für weitere Produktarten; keine neue Automation oder Frequenzänderung. |
+| Quelle / Auswahl | Fünf vollständige Shopify-Produkte, fünf aktuelle CJ-Produktquellen, Varianten und echte Bilder gezielt geprüft. | Shop, Marke und CJ-Shop passen. Ein begrenzter CJ-Read nach QPS-Fehler erfolgreich; leere Verbindungsfilter sind kein fehlender Connector. |
+| Produkttexte / live | Projektor, Wandteppich, Retro-Konsole, Powerbank und Gamepad mit Auswahlhilfe, bestätigten Details, Packliste und bedeutsamen Lücken beschrieben; SEO-Beschreibungen angepasst. | Fünf bestätigte Writes nur descriptionHtml/seo.description, SEO-Titel erhalten. A–G-Packliste und150cm-Angabe konkret; keine Spieltitel, Farbwahl oder Modellbindung erfunden. |
+| Rücklesung / Schutz | Vor jedem Write volle Gegenprobe/Diff, danach native Vollrücklesung und öffentliche HTML-/JSON-Prüfung. | Alle fünf HTTP200,82 tatsächliche Textfragmente, Meta/H1/Canonical bestätigt. Zwölf Varianten/42 Medien und öffentliche Produktdaten bis aufdescription hashgleich; keine Retries. |
+| Zusatzprüfung | Separate Spezifikationen gelesen; für diesen Gegencheck dieselben fünf öffentlichen Seiten nochmals geprüft. | Kein neuer Textwiderspruch gefunden; Gewichte nicht unabhängig nachgewogen. Bestehende Bewertungen unverändert. Keine zusätzlichen Produktwrites. |
+| Gedächtnis / Fortsetzung | Detailstandard, bestehende36er-Liste, konkreten Textdiff und Klärungsbogen fortgeschrieben. | Sechs der36 redaktionell verbessert,30offen. Modell-/Farb-/Spiele-/Ladedaten weiter teilweise unbekannt; keine Fulfillment-Umhängung oder Kontakte. Tagesreports/Kauf-Watch nicht wiederholt, Claude-Code-Empfang unbekannt. |
+
+[Live-Bericht](PRODUKTBESCHREIBUNGEN-LIVE-20261115-R245.md) · [Belege](PRODUKTBESCHREIBUNGEN-BELEGE-20261115-R245.json).
+
+[LUXESTYLE_R245_20261115]
