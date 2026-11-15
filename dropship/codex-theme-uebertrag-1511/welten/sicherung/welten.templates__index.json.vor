@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "luxe_home": {
+      "type": "luxe-edit-home",
+      "settings": {
+        "more_products": [
+          "led-leucht-brustgeschirr-reissfest-933632",
+          "handgemachte-3d-liebesnagel-blue-ice-652096",
+          "elektrischer-nagelpolierer-mit-licht-545984",
+          "outdoor-schultertasche-fur-freizeit-kessel-329792",
+          "rosenquarz-gua-sha-set",
+          "lederarmband-mit-verschluss-unisex-604800",
+          "hufttasche-fur-hundetraining-625200",
+          "hundennasenmatte-aus-fleece-energie-intelligen-622000"
+        ],
+        "worlds_text_color": "#ffffff",
+        "worlds_kids_image": "shopify://shop_images/luxestyle-einkaufswelt-kinder-baby-20261115.png",
+        "worlds_jewellery_image": "shopify://shop_images/luxestyle-einkaufswelt-schmuck-20261115.png"
+      }
+    },
+    "luxe_reviews": {
+      "type": "luxe-home-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "luxe_home",
+    "luxe_reviews"
+  ]
+}

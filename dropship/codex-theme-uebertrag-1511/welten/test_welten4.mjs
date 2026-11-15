@@ -1,0 +1,30 @@
+// Offline-Test Stufe 4: gegen die Fassung «nach» von Stufe 3 (keine Netzaufrufe).
+import { readFileSync } from 'node:fs';
+import { aendereSektion, aendereCss, TITEL_NEU, SIZES_NEU, HUND_NEU, HUND_ALT, SIZES_ALT, TITEL_ALT } from './welten4.mjs';
+const f = p => readFileSync(new URL('./sicherung/welten3.' + p + '.nach', import.meta.url), 'utf8');
+let ok = 0, fehler = 0;
+const pruef = (name, bed) => { if (bed) ok++; else { fehler++; console.log('FEHLER', name); } };
+const wirft = (name, fn) => { try { fn(); pruef(name, false); } catch { pruef(name, true); } };
+
+const sek = f('sections__luxe-edit-home.liquid'), css = f('assets__luxe-edit.css');
+const s2 = aendereSektion(sek), c2 = aendereCss(css);
+pruef('Titel neu genau einmal', s2.split(TITEL_NEU).length === 2);
+pruef('Titel alt weg', !s2.includes(TITEL_ALT));
+pruef('sizes neu genau einmal', s2.split(SIZES_NEU).length === 2);
+pruef('sizes alt weg', !s2.includes(SIZES_ALT));
+pruef('Sektion sonst gleich (Länge)', s2.length - sek.length === TITEL_NEU.length - TITEL_ALT.length + SIZES_NEU.length - SIZES_ALT.length);
+pruef('Sektion: nur zwei Zeilen geändert', (() => { const a = sek.split('\n'), b = s2.split('\n'); return a.length === b.length && a.filter((z, i) => z !== b[i]).length === 2; })());
+pruef('Handy-sizes unverändert', s2.includes("(max-width: 760px) calc((100vw - 40px) / 2)"));
+pruef('Liquid-Klammern gleich viele', (s2.match(/\{\{/g) || []).length === (sek.match(/\{\{/g) || []).length && (s2.match(/\{%/g) || []).length === (sek.match(/\{%/g) || []).length);
+pruef('weiches Trennzeichen als Entity', s2.includes("'Geschenk&shy;ideen'"));
+pruef('CSS Hund 5 %', c2.split(HUND_NEU).length === 2 && !c2.includes(HUND_ALT));
+pruef('CSS sonst gleich', c2.replace(HUND_NEU, HUND_ALT) === css);
+pruef('CSS Stufe-3-Block bleibt', c2.includes('lx-welten-1511c') && c2.includes('hyphens:auto'));
+wirft('Stufe 4 doppelt (Sektion) wirft', () => aendereSektion(s2));
+wirft('Stufe 4 doppelt (CSS) wirft', () => aendereCss(c2));
+wirft('ohne Stufe 3 (Sektion) wirft', () => aendereSektion(sek.replaceAll('lx_eigenes_motiv', 'x')));
+wirft('ohne Stufe 3 (CSS) wirft', () => aendereCss(css.replace('lx-welten-1511c', 'x')));
+wirft('Titel zweimal vorhanden wirft', () => aendereSektion(sek + TITEL_ALT));
+wirft('sizes fehlt wirft', () => aendereSektion(sek.replace(SIZES_ALT, 'x')));
+console.log(`ok ${ok}, fehler ${fehler}`);
+process.exitCode = fehler ? 1 : 0;
