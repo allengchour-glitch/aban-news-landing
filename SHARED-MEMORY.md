@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Einzelpakete ohne veraltete Lieferreste ·15.11.2026
+
+Reproduziert: aus Quelle entfernte Datei/Zusatzordner/PDF blieb beim zweiten Bau im ZIP. Einzelpakete jetzt frisch im leeren Zwischenordner bauen, alte Lieferung bei Baufehler erhalten und bei Archiv-Übernahmefehler zurückstellen.20 Paket-/Shellprüfungen grün, vier neue Methoden im bestehenden Quality-Schritt. Keine Preise/Konten/Automationen geändert, kein Kauf oder geschützter Download. Finanzielle Wirkung nicht gemessen. Details und tatsächliche Bereitstellung im Abschnitt Einzelpaket-Lieferung der kanonischen Claude-Übergabe und zugehörigem PR.
+
 ## Codex: KI-Bot-Schattenkonto im Krypto-Monitor ·15.11.2026
 
 Besitzer meint Trading-/Krypto-Bot. Öffentliche Tagebuchdaten auf Benutzerwunsch lesend mit Modellwerten/Verlauf im Monitor, ursprünglicher Datenstand/Abrufzeit, Fehler erhält Werte. CHF-Spielgeld, kein PC-/Börsenkonto oder Live-Ticker verbunden.21 Offline-Prüfungen,43 Dashboardbauprüfungen und zwei WebGL-Handy-/Desktopläufe grün; neue Gegenproben im bestehenden Bau-Workflow. Version20 synchron, privater Claude-Upload separat. Details und Bereitstellung im kanonischen Abschnitt Trading-/KI-Bot-Dashboard und zugehörigem PR.

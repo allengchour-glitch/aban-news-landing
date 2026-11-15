@@ -20,6 +20,87 @@ spec.loader.exec_module(bau)
 produktbau = sys.modules[bau.build_bundle.__module__]
 
 
+class EinzelpaketFrischTest(unittest.TestCase):
+    def test_entfernte_quellinhalte_bleiben_nicht_im_neuen_paket(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                curated = root / 'content/packs' / lang / 'demo'
+                curated.mkdir(parents=True)
+                (curated / 'AKTUELL.txt').write_text('NEUE DEMOVORLAGE')
+                (curated / 'ALT.txt').write_text('ENTFERNTE DEMOVORLAGE')
+                extra = root / 'zusatz'
+                extra.mkdir()
+                (extra / 'DEMO.txt').write_text('ALTER ZUSATZ')
+                (curated / 'INHALT.json').write_text(json.dumps({'ordner': {'zusatz': 'zusatz'}}))
+                with patch.object(produktbau, 'REPO', root):
+                    first = produktbau.build_single('demo', lang)
+                    with zipfile.ZipFile(first) as z:
+                        self.assertEqual(z.read('zusatz/DEMO.txt').decode(), 'ALTER ZUSATZ')
+                        self.assertIn('ALT.txt', z.namelist())
+                    (curated / 'ALT.txt').unlink()
+                    (curated / 'INHALT.json').unlink()
+                    archive = produktbau.build_single('demo', lang)
+                with zipfile.ZipFile(archive) as z:
+                    self.assertIsNone(z.testzip())
+                    self.assertEqual(set(z.namelist()), {'AKTUELL.txt', 'LIESMICH.txt'})
+                    self.assertEqual(z.read('AKTUELL.txt').decode(), 'NEUE DEMOVORLAGE')
+                self.assertFalse((archive.with_suffix('') / 'ALT.txt').exists())
+                self.assertFalse((archive.with_suffix('') / 'zusatz').exists())
+                self.assertFalse(list(archive.parent.glob('.pack-bau-*')))
+
+    def test_entferntes_optionales_pdf_bleibt_nicht_im_generierten_paket(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / 'downloads/branchen/ki-schnellstart-demo.pdf'
+            pdf.parent.mkdir(parents=True)
+            pdf.write_bytes(b'NUR DEMO-PDF')
+            with patch.object(produktbau, 'REPO', root), patch.object(produktbau, 'gen_prompts', return_value='DEMO'):
+                produktbau.build_single('demo')
+                pdf.unlink()
+                archive = produktbau.build_single('demo')
+            with zipfile.ZipFile(archive) as z:
+                self.assertEqual(set(z.namelist()), {'prompts.md', 'checkliste.md', 'LIESMICH.txt'})
+
+    def test_baufehler_erhaelt_vorheriges_paket_und_archiv(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            curated = root / 'content/packs/de/demo'
+            curated.mkdir(parents=True)
+            (curated / 'DEMO.txt').write_text('ALTER DEMOSTAND')
+            with patch.object(produktbau, 'REPO', root):
+                archive = produktbau.build_single('demo')
+                before = archive.read_bytes()
+                (curated / 'DEMO.txt').write_text('NEUER DEMOSTAND')
+                (curated / 'INHALT.json').write_text(json.dumps({'ordner': {'zusatz': 'fehlt'}}))
+                with self.assertRaises(FileNotFoundError):
+                    produktbau.build_single('demo')
+            self.assertEqual(archive.read_bytes(), before)
+            self.assertEqual((archive.with_suffix('') / 'DEMO.txt').read_text(), 'ALTER DEMOSTAND')
+            self.assertFalse(list(archive.parent.glob('.pack-bau-*')))
+
+    def test_archiv_uebernahmefehler_stellt_paketordner_wieder_her(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            curated = root / 'content/packs/de/demo'
+            curated.mkdir(parents=True)
+            (curated / 'DEMO.txt').write_text('ALTER DEMOSTAND')
+            with patch.object(produktbau, 'REPO', root):
+                archive = produktbau.build_single('demo')
+                before = archive.read_bytes()
+                (curated / 'DEMO.txt').write_text('NEUER DEMOSTAND')
+                replace = Path.replace
+                def fail_archive(path, target):
+                    if target == archive:
+                        raise OSError('NUR TEST: Archiv nicht schreibbar')
+                    return replace(path, target)
+                with patch.object(Path, 'replace', fail_archive), self.assertRaises(OSError):
+                    produktbau.build_single('demo')
+            self.assertEqual(archive.read_bytes(), before)
+            self.assertEqual((archive.with_suffix('') / 'DEMO.txt').read_text(), 'ALTER DEMOSTAND')
+            self.assertFalse(list(archive.parent.glob('.pack-bau-*')))
+
+
 class BundleVollstaendigTest(unittest.TestCase):
     def test_fehlendes_mitglied_stoppt_vor_bestehendem_bundle(self):
         for lang in ('de', 'en'):
