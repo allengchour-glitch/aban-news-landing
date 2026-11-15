@@ -12,6 +12,10 @@ async function main(){
  if(pages.pages.nodes.some(p=>p.handle===PAGE&&!p.body.includes('luxe-ringgroessen-messen')))throw Error('Vorhandene fremde Grössenseite wird nicht überschrieben');
  fs.writeFileSync(`${dir}/before.json`,JSON.stringify({product,pages:pages.pages.nodes},null,2));
  const body=fs.readFileSync('dropship/merchant-fix-1511/ringgroesse/guide.html','utf8');
+ const opt=product.options.find(o=>o.name==='Ringgrösse (Hersteller)'||o.name==='Abmessung');
+ if(opt){
+  try{const translations=await gql('query($id:ID!){translatableResource(resourceId:$id){resourceId translatableContent{key value digest locale} de:translations(locale:"de"){key value outdated} fr:translations(locale:"fr"){key value outdated}}}',{id:opt.id});fs.writeFileSync(`${dir}/option-translations.json`,JSON.stringify(translations,null,2));}catch(e){console.log('Option-Übersetzungen nicht messbar: '+e.message);}
+ }
  if(!live){console.log('TROCKENLAUF: allgemeine EU-Messtabelle, keine erfundene Zuordnung der Herstellergrössen');return;}
  let page=pages.pages.nodes.find(p=>p.handle===PAGE);
  if(!page){const d=(await gql('mutation($p:PageCreateInput!){pageCreate(page:$p){page{id handle body isPublished} userErrors{field message}}}',{p:{title:'Ringgrösse richtig messen',handle:PAGE,body,isPublished:true}})).pageCreate;if(d.userErrors.length)throw Error(JSON.stringify(d.userErrors));page=d.page;}
