@@ -19,6 +19,7 @@ import argparse
 import re
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -125,9 +126,33 @@ def _curated_dir(slug: str, lang: str) -> Path:
 
 
 def build_single(slug: str, lang: str = "de") -> Path:
+    """Jedes Paket frisch bauen; entfernte Quellen dürfen nicht weiterleben."""
+    pack = REPO / "downloads" / "packs" / (lang if lang != "de" else "") / slug
+    pack.parent.mkdir(parents=True, exist_ok=True)
+    target = Path(str(pack) + ".zip")
+    with tempfile.TemporaryDirectory(prefix=".pack-bau-", dir=pack.parent) as tmp:
+        stage = Path(tmp) / "neu"
+        archive = _build_single(slug, lang, stage)
+        backup = Path(tmp) / "vorher"
+        installed = False
+        try:
+            if pack.exists():
+                pack.replace(backup)
+            stage.replace(pack)
+            installed = True
+            archive.replace(target)
+        except Exception:
+            if installed:
+                shutil.rmtree(pack)
+            if backup.exists():
+                backup.replace(pack)
+            raise
+    return target
+
+
+def _build_single(slug: str, lang: str, pack: Path) -> Path:
     base = _base_slug(slug, lang)
     label = label_from_slug(base)
-    pack = REPO / "downloads" / "packs" / (lang if lang != "de" else "") / slug
     pack.mkdir(parents=True, exist_ok=True)
 
     # Premium-Produkte: kuratierte Inhalte 1:1 übernehmen (nicht neu generieren),

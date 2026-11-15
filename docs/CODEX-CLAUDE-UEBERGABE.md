@@ -1,5 +1,15 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Einzelpaket-Lieferung: entfernte Dateien nicht erneut einpacken ·15.11.2026
+
+Von main95916524 auf eigenem Branch codex/pakete-frisch-bauen. Regeln, Übergabe, offene PRs, neuestes Tagesprotokoll R244 und bestehende laufende Aufträge geprüft. Büro-Ertragsautomation hat keinen abrufbaren letzten Lauf-/Ergebnisbeleg; daraus weder laufende Arbeit noch Abschluss abgeleitet. Keine Überschneidung mit den offenen Editor-/Merchant-Arbeiten. Frühere Bundle-/ZIP-/Downloadkorrekturen erhalten.
+
+GEMESSEN: build_single packte eine aus der kuratierten Demoquelle entfernte ALT.txt beim zweiten Bau weiterhin ein. Gleiches galt für entfernte INHALT-Zusatzordner und ein nicht mehr vorhandenes optionales PDF. Neue Regressionen am alten Code viermal rot (einschliesslich DE/EN-Unterfällen und Bestandsschutz bei Baufehler). Kein tatsächlich betroffener Käufer oder finanzieller Schaden belegt.
+
+Einzelpakete werden jetzt in einem leeren temporären Ordner gebaut. Erst nach fertigem ZIP werden Paketordner und Archiv übernommen; bei fehlender Zusatzquelle bleibt der vorherige Stand erhalten. Ein simulierter Archiv-Übernahmefehler stellt den vorherigen Paketordner wieder her. Temporäre Dateien werden entfernt. Quellprodukte, Katalog, Preise, Salt, Checkout-/Zahlungsprüfung und Automationsfrequenzen unverändert. Keine echten Zahlungen, geschützten Downloads, Anbieter-/Modellaufrufe oder Kundendaten.
+
+GEMESSEN:20 Paket-/Shellprüfungen grün, Syntax und git diff --check grün. Vier neue Testmethoden im bereits bestehenden Quality-Schritt, kein neuer Workflow. Deployment baut dieselben bestehenden Produkte neu; keine neue Produktfreigabe. Echte CI-/Merge-/Produktionsbelege im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen; Nutzen: entfernte oder ersetzte Lieferbestandteile bleiben bei wiederholten Bauten nicht versehentlich im verkauften Paket. Eigene Checkout-/Lieferzuordnung des unveröffentlichten Audit-Angebots bleibt separat offen; nächster Schritt ist deren lesender Abgleich, ohne neuen Preis oder Zahlungslink zu erfinden.
+
 ## Trading-/KI-Bot-Dashboard im Büro-Monitor ·15.11.2026
 
 Besitzer bestätigt Trading-/Krypto-Bot. Aktuelles mainff14cfde über vorhandenen GitHub-Connector gelesen; lokaler GH_TOKEN ungültig. Signierten Merge aus GitHub-Gitdaten bytegenau als ff14cfde rekonstruiert, isolierter Worktree codex/bot-dashboard-monitor davon. Kein Konto/Secret geändert. Krypto-Autonomie und Cockpit-Anzeigeauftrag gelesen. PC-Cockpit bleibt lokal/privat, Verbindung zum PC oder Börsenkonto nicht bestätigt und nicht geöffnet. Öffentliches Bot-Tagebuch erreichbar; frame-ancestors none verhindert Einbettung, Schutz unverändert.
