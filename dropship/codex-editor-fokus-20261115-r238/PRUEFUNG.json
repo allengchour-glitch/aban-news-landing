@@ -1,0 +1,252 @@
+{
+  "revision": 238,
+  "status": "REVIEW_PACKAGE_NOT_DEPLOYABLE",
+  "source": {
+    "branch": "claude/luxestyle-editor-642-1011",
+    "head": "91faac47e445ba934ae16d6f6216ca989bb22d81",
+    "tree": "597f1c2be820ada814e55ce0856379c4a99b9853",
+    "source": {
+      "path": "pod/v6/lspod-designer-v6-6.4.2.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "999ab176245ea74b7d2bc0ccda62b70ce83d9b01",
+      "size": 294981,
+      "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/999ab176245ea74b7d2bc0ccda62b70ce83d9b01"
+    },
+    "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+    "sourceBytes": 294981
+  },
+  "candidate": {
+    "status": "LOCAL_VERSIONED_REVIEW_NOT_RELEASED",
+    "baseBranchPin": {
+      "branch": "claude/luxestyle-editor-642-1011",
+      "head": "91faac47e445ba934ae16d6f6216ca989bb22d81",
+      "tree": "597f1c2be820ada814e55ce0856379c4a99b9853",
+      "source": {
+        "path": "pod/v6/lspod-designer-v6-6.4.2.js",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "999ab176245ea74b7d2bc0ccda62b70ce83d9b01",
+        "size": 294981,
+        "url": "https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/blobs/999ab176245ea74b7d2bc0ccda62b70ce83d9b01"
+      },
+      "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+      "sourceBytes": 294981
+    },
+    "sourceVersion": "6.4.2",
+    "candidateVersion": "6.4.3",
+    "candidateVersionNotReservedOrPublished": true,
+    "baseSha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+    "candidateSha256": "46b9848ae24e047176e510f3a238e293bf877e3cb9e3fa305b19983e1ff1133e",
+    "candidateBytes": 295146,
+    "behaviorChanges": "Only printpreview close helper focus restoration; declaration/header updated for local versioned reviewcopy",
+    "focusPatchSha256": "af4063c5bdade44c3cb1502534d67fe629a96331d152b74539b70f7eaf8f77b5",
+    "otherBaseBytesPreservedBeforeVersionDeclarations": true,
+    "externalWrites": 0
+  },
+  "manifest": {
+    "schema": 1,
+    "version": "6.4.3",
+    "file": "pod/v6/lspod-designer-v6-6.4.3.js",
+    "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.3.js",
+    "sha256": "46b9848ae24e047176e510f3a238e293bf877e3cb9e3fa305b19983e1ff1133e",
+    "bytes": 295146,
+    "vorgaenger": [
+      {
+        "version": "6.4.0",
+        "file": "pod/v6/lspod-designer-v6-6.4.0.js",
+        "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js",
+        "sha256": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+        "bytes": 260794
+      },
+      {
+        "version": "6.4.2",
+        "file": "pod/v6/lspod-designer-v6-6.4.2.js",
+        "url": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.2.js",
+        "sha256": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+        "bytes": 294981
+      }
+    ]
+  },
+  "validation": {
+    "runtime": "v24.22.1",
+    "node22AtDocumentedPathAvailable": false,
+    "tamperedManifest": {
+      "expectedExit": 1,
+      "actualExit": 1,
+      "stderr": "editor-release.json weicht von den Dateien ab:\n- pod/v6/lspod-designer-v6-6.4.3.js: 295146 Byte statt 295147 in editor-release.json\nNeu erzeugen: node editor_release_bauen.mjs\n"
+    },
+    "sourceHashes": {
+      "6.4.0": "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930",
+      "6.4.2": "886b05769ef80a6b9a490738c6f870bc92cc058d979e48480b0e4469fde02938",
+      "6.4.3": "46b9848ae24e047176e510f3a238e293bf877e3cb9e3fa305b19983e1ff1133e"
+    },
+    "fullProjectCiNotRun": true,
+    "workflowFilesChanged": 0
+  },
+  "focusedBrowserComparison": [
+    {
+      "mode": "LOCAL_642_SOURCE_BASELINE_NOT_LIVE",
+      "actualVersion": "6.4.2",
+      "actualViewport": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "documentWidth": 390,
+        "clientWidth": 390,
+        "visualWidth": 390
+      },
+      "printPreview": {
+        "role": "dialog",
+        "ariaModal": "true",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "image": {
+          "srcScheme": "blob",
+          "width": 2700,
+          "height": 1050
+        },
+        "activeClass": "go",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 390
+        }
+      },
+      "closeResult": {
+        "modalCount": 0,
+        "activeTag": "BODY",
+        "activeClass": "page-width-narrow card-hover-effect-lift template-product",
+        "focusRestoredToPreview": false
+      },
+      "buttonCloseResult": {
+        "modalCount": 0,
+        "focusRestoredToPreview": false
+      },
+      "blockedRequests": 71,
+      "localFixture": true
+    },
+    {
+      "mode": "LOCAL_643_REVIEW_CANDIDATE_NOT_LIVE",
+      "actualVersion": "6.4.3",
+      "actualViewport": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "documentWidth": 390,
+        "clientWidth": 390,
+        "visualWidth": 390
+      },
+      "printPreview": {
+        "role": "dialog",
+        "ariaModal": "true",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "image": {
+          "srcScheme": "blob",
+          "width": 2700,
+          "height": 1050
+        },
+        "activeClass": "go",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 390
+        }
+      },
+      "closeResult": {
+        "modalCount": 0,
+        "activeTag": "BUTTON",
+        "activeClass": "lsp6-preview",
+        "focusRestoredToPreview": true
+      },
+      "buttonCloseResult": {
+        "modalCount": 0,
+        "focusRestoredToPreview": true
+      },
+      "blockedRequests": 71,
+      "localFixture": true
+    }
+  ],
+  "existingRunnerGate": {
+    "rejects643": true,
+    "message": "EDITOR_VERSION muss 6.3.1 oder 6.4.0 sein",
+    "networkCalls": 0,
+    "guardUnmodified": true
+  },
+  "existing641PullRequest": {
+    "number": 3035,
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/3035",
+    "state": "open",
+    "head": "24fd3e51840bd85f37911f64b96daa03c701899e"
+  },
+  "scope": {
+    "onlyLuxeStyle": true,
+    "sourceCodeExternallyChanged": false,
+    "workflowChanged": false,
+    "mergeOrDeploy": false,
+    "shopProductOrThemeWrites": 0,
+    "socialWrites": 0,
+    "merchantWrites": 0,
+    "metricsFlowOrderReports": 0,
+    "paidRenders": 0,
+    "automationsChanged": false,
+    "existingLiveSource640Preserved": true,
+    "existingUnreleased642SourcePreserved": true,
+    "claudeReceipt": "unknown"
+  },
+  "sameScreenshotBeforeClose": {
+    "sha256": "beb5081739f964bb483810786e3e963a6c225b528715238ca35c7333162fb4b8",
+    "byteIdentical": true,
+    "notAClaimOfAllExportBytes": true
+  },
+  "currentIdentity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "label": "Luxestyle",
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "themeObservation": {
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T11:01:03Z"
+    },
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "MAIN"
+      }
+    ]
+  }
+}
