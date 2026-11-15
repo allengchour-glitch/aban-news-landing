@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Bundle-Bau stoppt bei fehlenden Einzelpaketen ·15.11.2026
+
+Reproduzierten stillen Teilpaketbau behoben: fehlende Mitglieder oder leere Liste stoppen vor Änderung am alten Bundle. Vollständige DE/EN-Demopakete und Bestandsschutz geprüft;16 Paketbautests grün. Keine Preise, Konten oder geschützten Inhalte geändert. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Bundle-Lieferung und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
+
 ## Codex: unbekannte Zahlungsantwort beim Kit-Download korrekt behandeln ·15.11.2026
 
 Unbekannter/leerer payment_status wurde als nicht abgeschlossene Zahlung ausgegeben. Reproduziert und auf Prüfungsstörung korrigiert, keine Freigaberegel gelockert.71 Downloadprüfungen grün, bekannte Fälle und Erholung erhalten; keine echte Zahlung oder Datei abgerufen. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Kit-Download und zugehöriger PR. Finanzielle Wirkung nicht gemessen.
