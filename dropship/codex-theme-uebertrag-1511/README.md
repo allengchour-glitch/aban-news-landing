@@ -142,7 +142,15 @@ Meine Auslegung (nicht bestätigt): die übrigen Karten im selben Stil verbesser
   - `sizes` über 1440 px: `410px` statt `320px`. GEMESSEN bei 1920 px: es lädt das 480er-Bild statt des 320er-Bilds, das vorher auf 402 px hochgezogen wurde.
   - Selbst nachgemessen 23:30 UTC (320, 344, 390, 1440, 1920 px): weiches Trennzeichen im Titel, «Geschenk-» / «ideen» im Bild, Hund `50% 5%`, 16 Karten, kein seitliches Scrollen, 0 Seitenfehler.
   - Test `welten/test_welten4.mjs`: 18 Prüfungen.
-  - Unabhängige Prüfung: läuft (Workflow `wf_f700306b-dc8`), Ergebnis folgt im PR.
+  - **Unabhängige Prüfung (23:32 bis 23:35 UTC, drei Seitenaufrufe, Urteil «ok»):**
+    - Roh-HTML: genau einmal `Geschenk&shy;ideen`, `410px` 16-mal, `320px` 0-mal.
+    - Mit erzwungenem `hyphens:manual` bricht der Titel bei 320, 344 und 360 px weiterhin «Geschenk-» / «ideen».
+    - `/fr` unverändert («Idées cadeaux»).
+    - Hund `50% 5%` bei allen Breiten, Kopf ganz im Bild.
+    - Bei 1920 px wird das 480er-Bild für eine 402 px breite Karte gewählt.
+    - 16 Karten, kein seitliches Scrollen, 0 Seitenfehler.
+    - Kleiner Hinweis: Der zugängliche Name des Links enthält in Chromium das weiche Trennzeichen. Bildschirmleser lesen es üblicherweise nicht vor. Nur bei Bedarf `aria-label` ergänzen.
+    - Ungemessen: Safari/iOS, Firefox, Bildschirmfaktor 2 und 3.
 - **Wiedervorlage:** das Geschenk-Motiv ist weihnachtlich. Nach dem 06.01. ersetzen.
 - **Rücknahme in umgekehrter Reihenfolge** (jede Stufe setzt nur Dateien zurück, die noch ihrer Fassung «nach» gleichen):
 
