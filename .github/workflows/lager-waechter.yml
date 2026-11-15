@@ -13,6 +13,9 @@ name: "Lager-Wächter (Verfügbares zuerst)"
 # Zugang: Repo-Secrets SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET. Zeitplan 05:17 UTC (06:17 Schweizer Winterzeit):
 # nicht neben dem Google-Schaufenster (04:41), dem Tages-Update und dem Auswahl-Lauf (21:50). Einmal täglich (Regel «Crons sparsam, max. 1x/Tag»).
 # Das Protokoll (dropship/kategorien_ledger.txt, «vorher=») bleibt im Lauf als Artefakt, es wird nicht ins Repo geschrieben.
+# Schaufenster-Pins (11.11.2026): dropship/kategorie-schaufenster-pins.json hält je Kategorie bis zu 4 handverlesene Produkte auf den Plätzen 1 bis 4
+# (modus «reihenfolge»); ausverkaufte oder nicht veröffentlichte Pins rücken nach hinten und stehen als «PIN-BEFUND» (Warnung) in der Zusammenfassung.
+# Eine fehlerhafte Pin-Datei macht den Lauf rot (Schritt «Zusammenfassung»). Datei löschen = Verhalten wie vorher.
 on:
   schedule:
     - cron: '17 5 * * *'
@@ -45,10 +48,12 @@ jobs:
           sparse-checkout: |
             automation/verfuegbar_zuerst.mjs
             automation/lib/verfuegbar_rang.mjs
+            automation/lib/schaufenster_pins.mjs
             automation/lib/shopify_gql.mjs
             automation/lib/shopify_secret.mjs
             automation/lib/shopify_host.mjs
             dropship/LAGER-WAECHTER-FREI.txt
+            dropship/kategorie-schaufenster-pins.json
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -98,7 +103,16 @@ jobs:
             echo '```'; tail -n 25 lauf-menue.txt 2>/dev/null || echo "(kein Lauf)"; echo '```'
             echo '### Lager-/Kostüm-Sammlungen'
             echo '```'; tail -n 25 lauf-lager.txt 2>/dev/null || echo "(kein Lauf)"; echo '```'
+            echo '### Schaufenster-Pins'
+            echo '```'; grep -h -E "^(Pins:|PIN-)" lauf-menue.txt lauf-lager.txt 2>/dev/null || echo "(keine Pin-Zeilen)"; echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+          # Die Lauf-Schritte leiten in «tee» weiter (ohne pipefail): ihr Exit-Code geht verloren. Darum hier sichtbar machen:
+          # ein Pin-Befund (z. B. ausverkaufter Pin) als Warnung, eine fehlerhafte Pin-Datei als roter Lauf (15.11.2026, Prüfer-Fund).
+          grep -h '^PIN-BEFUND' lauf-menue.txt lauf-lager.txt 2>/dev/null | while IFS= read -r z; do echo "::warning title=Schaufenster-Pin::$z"; done
+          if grep -q -h '^PIN-DATEI-FEHLER' lauf-menue.txt lauf-lager.txt 2>/dev/null; then
+            grep -h '^PIN-DATEI-FEHLER' lauf-menue.txt lauf-lager.txt | while IFS= read -r z; do echo "::error title=Schaufenster-Pins::$z"; done
+            exit 1
+          fi
 
       - name: Protokoll aufbewahren
         if: always()
