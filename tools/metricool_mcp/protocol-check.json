@@ -1,0 +1,14 @@
+{
+  "mcp_initialize": "bestanden",
+  "execution_context": "ausserhalb der Sandbox",
+  "tools": [
+    "connection_status",
+    "get_brands",
+    "get_scheduled_posts"
+  ],
+  "token_available_in_process": false,
+  "authentication": "nicht bestätigt",
+  "missing_credential_guard": "Fehlendes Credential als Fehler gemeldet, keine vorgetäuschte Anmeldung",
+  "two_day_limit": "bestanden",
+  "account_writes": 0
+}

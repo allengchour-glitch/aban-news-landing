@@ -24,6 +24,13 @@
         "NODE_PATH": "",
         "NODE_USE_ENV_PROXY": "1"
       }
+    },
+    "metricool-local-readonly": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "/workspace/aban-news-landing/tools/metricool_mcp/server.py"
+      ]
     }
   }
 }

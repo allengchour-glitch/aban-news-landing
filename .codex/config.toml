@@ -1,0 +1,7 @@
+[mcp_servers.metricool_local]
+command = "python3"
+args = ["/workspace/aban-news-landing/tools/metricool_mcp/server.py"]
+env_vars = ["METRICOOL_USER_TOKEN", "METRICOOL_USER_ID", "METRICOOL_BLOG_ID"]
+enabled_tools = ["connection_status", "get_brands", "get_scheduled_posts"]
+startup_timeout_sec = 20
+tool_timeout_sec = 45
