@@ -33,6 +33,14 @@ Die Spieluhr holt langsame Frames in kleinen Schritten nach. Lange Unterbrechung
 
 Eigene synthetisierte Musik und Effekte starten nach Bedienung. Getrennte Lautstärken, Stummschaltung und reduzierte Bewegung werden gespeichert. Die Bildmotive für Menü und Basalt entstanden mit OpenAIs Bildwerkzeug; Gleitermotive und Darstellungs-Code sind eigene Arbeit. Diese Umsetzung nutzte keine Higgsfield-Verbindung. Three.js und PeerJS sind bestehende lokale MIT-Bibliotheken; js/mp.js bleibt gemeinsam nutzbar und unverändert.
 
+## Felsbewegung und Detailprüfung
+
+Die Seitenwände nutzen feste Weltabschnitte mit gemeinsamen Kanten. Form und Texturkoordinaten bleiben beim Nachladen am Ort; angeschnittene Flächen werden an der Kameraebene gekürzt, statt als ganze Wand zu verschwinden. Auch Wasserlinien behalten ihre absolute Position. Zwei feste Texturstreifen pro Fläche vermeiden einen zusätzlichen sichtbaren Detailstufenwechsel.
+
+Die gezielte Bildgegenprobe vergleicht die Seitenbereiche bei 0,01 Metern Bewegung an sechs Abschnittsgrenzen. Die alte Fassung sprang dabei um bis zu 10,35 RGB-Werte pro Farbkanal; die neue um höchstens 0,612. Normale Bewegung bleibt sichtbar (5,18 bei 5,5 Metern). Das ist eine lokale Kontinuitätsprobe, kein Beweis für sämtliche Kamerawinkel oder die optionale 3D-Fassung.
+
+Am Ziel wird erst abgeschlossen, wenn beide Piloten flugfähig sind. Ein ausgefallener Partner kann innerhalb seiner echten Rettungsfrist noch gerettet werden; ein abgelaufener Countdown führt zur Niederlage. Der Trainingsautopilot setzt die Frist nicht mehr unbemerkt zurück. Der einmalige Lenkhinweis überdeckt keine Team-Bonusmeldung mehr. Beim Abreisen eines Partners bleibt ein bereits erzieltes Ergebnis sichtbar; nach dem Kampagnensieg kann jeder selbst zum Hangar zurückkehren.
+
 ## Spielersuche und verbleibende Prüfung
 „Mitspieler finden“ zeigt tatsächlich erreichbare öffentliche Räume mit Rufname und Belegung. Private Einladungen bleiben separat. Produktion verwendet die sechs bestehenden öffentlichen Raumcodes des PeerJS-Adapters. Ein leeres Suchergebnis kann auch an einer eingeschränkten Verbindung liegen. Im lokalen Testmodus erfolgt die Raum-Entdeckung über einen tatsächlichen BroadcastChannel, anschliessend die Spielverbindung über WebRTC-DataChannels. Keine künstlichen Mitspieler oder erfundenen Online-Zahlen.
 
@@ -45,13 +53,15 @@ Im Repository-Root:
 
 Dann http://localhost:8099/neon-flug öffnen. Für lokale Such-/Koop-Tests beide Clients mit ?mp=local&debug=1 öffnen; für öffentliche Vermittlung mp=local weglassen. debug=1 stellt nur Testzugriffe bereit. Beschleunigte Kampagnenabschlüsse im Test sind kein manueller Durchspielnachweis.
 
-    node --test spiele-dev/neon-flug/core.test.mjs spiele-dev/neon-flug/profile.test.mjs spiele-dev/neon-flug/timing.test.mjs
+    node --test spiele-dev/neon-flug/core.test.mjs spiele-dev/neon-flug/profile.test.mjs spiele-dev/neon-flug/timing.test.mjs spiele-dev/neon-flug/scenery.test.mjs
     node spiele-dev/neon-flug/browser-test.cjs
     node spiele-dev/neon-flug/matchmaking-test.cjs
     node spiele-dev/neon-flug/ui-test.cjs
     node spiele-dev/neon-flug/renderer-test.cjs
+    node spiele-dev/neon-flug/scenery-browser-test.cjs
+    node spiele-dev/neon-flug/gameplay-audit.cjs
     node spiele-dev/neon-flug/performance-sample.cjs
 
-Gemessen: 43 Simulations-/Profil-/Timingprüfungen, acht Kampagnen-WebRTC-Prüfungen, zwölf Such-/Ausrüstungsprüfungen, neun UI-Prüfungen und sechs Rendererprüfungen bestanden. Dazu HTML-, Syntax- und Diff-Prüfung. Browserprüfungen benötigen Playwright/Chromium, UI-Prüfung zusätzlich @axe-core/playwright. Alternative Installationen über PLAYWRIGHT_MODULE, AXE_MODULE und PLAYWRIGHT_BROWSERS_PATH; Testserver über NEON_TEST_URL, Berichte über NEON_REPORT_DIR, Performance-JSON über PERF_OUT.
+Gemessen: 51 Simulations-/Profil-/Timing-/Geometrieprüfungen, zehn Kampagnen-WebRTC-Prüfungen, zwölf Such-/Ausrüstungsprüfungen, neun UI-Prüfungen, sechs Rendererprüfungen, zwei Bildkontinuitäts- und sechs Gameplay-Detailprüfungen bestanden (96). Dazu HTML-, Syntax- und Diff-Prüfung. Browserprüfungen benötigen Playwright/Chromium, UI-Prüfung zusätzlich @axe-core/playwright. Alternative Installationen über PLAYWRIGHT_MODULE, AXE_MODULE und PLAYWRIGHT_BROWSERS_PATH; Testserver über NEON_TEST_URL, Berichte über NEON_REPORT_DIR, Performance-JSON über PERF_OUT.
 
 Die vollständige lokale CI kann im schreibgeschützten HOME keine Plandatei anlegen. Daher keine vollständige CI-Freigabe behaupten; GitHub-Prüfungen getrennt bewerten. Entwurf nicht automatisch veröffentlichen oder mergen.

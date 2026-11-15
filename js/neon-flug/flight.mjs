@@ -526,6 +526,7 @@ function connect(asHost, code, publicRoom = false) {
       hello = false;
       send(helloPacket());
       lobbyUI();
+      updateReadyLabels();
       if (state.phase === "paused") {
         $("pauseReason").textContent =
           "Verbindung wiederhergestellt. Bestätigt beide „Weiter“. ";
@@ -542,6 +543,9 @@ function connect(asHost, code, publicRoom = false) {
             : "Verbindung wird wiederhergestellt …",
         );
         $("readyBtn").disabled = true;
+      } else if (["result", "failed", "victory"].includes(state.phase)) {
+        show("resultScreen");
+        updateReadyLabels();
       } else {
         if (host && state.phase === "playing") state.phase = "paused";
         show("pauseScreen");
@@ -742,6 +746,7 @@ function key() {
 }
 function stageConfirm() {
   enableAudio();
+  if (state.phase === "victory") return exit();
   if (!training && (!connected || netLost)) return;
   stageReady[local] = true;
   if (host) tryAdvance();
@@ -755,7 +760,9 @@ function updateReadyLabels() {
     other = stageReady[1 - local];
   $("upgradeBtn").disabled = ready;
   $("launchBtn").disabled = ready;
-  $("nextBtn").disabled = ready;
+  $("nextBtn").disabled =
+    state.phase !== "victory" &&
+    (ready || (!training && (!connected || netLost)));
   $("resumeBtn").disabled = ready || (!training && (!connected || netLost));
   $("briefReady").textContent = training
     ? "Training mit Autopilot. Kein Kampagnenfortschritt."
@@ -766,11 +773,15 @@ function updateReadyLabels() {
         : "Beide Piloten müssen bestätigen.";
   $("resultReady").textContent = training
     ? "Training beendet. Bestwerte bleiben unverändert."
-    : ready
-      ? "Dein Partner bestätigt noch …"
-      : other
-        ? "Dein Partner ist bereit."
-        : "Gemeinsam geht es weiter.";
+    : state.phase === "victory"
+      ? "Kampagne beendet. Du kannst zum Hangar zurück."
+      : !connected || netLost
+        ? "Partner nicht verbunden. Euer Ergebnis bleibt erhalten."
+        : ready
+          ? "Dein Partner bestätigt noch …"
+          : other
+            ? "Dein Partner ist bereit."
+            : "Gemeinsam geht es weiter.";
 }
 function tryAdvance() {
   if (!host) return;
@@ -1086,7 +1097,6 @@ function autopilot() {
   if (hazard && Math.abs(target - eventX(hazard, state.t)) < 2.5)
     target = target < 0 ? 5 : -5;
   remoteInput = { axis: 0, target, rescue: state.players[0].hp === 0 };
-  if (state.players[1].hp === 0) state.players[1].down = 20;
 }
 function hud(dt) {
   const over = state.overdrive > 0;
@@ -1166,11 +1176,13 @@ function hud(dt) {
     noticeTimer -= dt;
     if (noticeTimer <= 0) $("notice").style.opacity = 0;
   }
-  if (trainingGuide && state.t > 1 && state.t < 7)
-    notice(
-      navigator.maxTouchPoints > 0 ? "ZIEHEN ZUM LENKEN" : "A / D ZUM LENKEN",
-    );
-  if (trainingGuide && state.t > 7) trainingGuide = false;
+  if (trainingGuide && state.t > 1) {
+    trainingGuide = false;
+    if (!state.notice)
+      notice(
+        navigator.maxTouchPoints > 0 ? "ZIEHEN ZUM LENKEN" : "A / D ZUM LENKEN",
+      );
+  }
 }
 function frame(now) {
   const elapsed = frameTime((now - lastFrame) / 1000),

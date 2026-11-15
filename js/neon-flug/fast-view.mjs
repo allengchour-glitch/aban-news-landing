@@ -1,3 +1,4 @@
+import { wallIndices, wallSegment, clipNear, splitWall } from "./scenery.mjs";
 import { LEVELS, routeCache, eventX, clamp, LANE_WIDTH } from "./core.mjs";
 
 // Perspektivischer Canvas-Renderer: vorberechnete Motive statt teurer Echtzeit-Shader.
@@ -141,6 +142,8 @@ export class FastFlightView {
     this.banks = [0, 0];
     this.effects = [];
     this.texture = null;
+    this.texturePattern = null;
+    this.textureSize = 512;
     this.sprite = [shipSprite("#81e9df"), shipSprite("#f9ae70")];
     this.renderer = {
       domElement: this.canvas,
@@ -149,7 +152,12 @@ export class FastFlightView {
     };
     const image = new Image();
     image.onload = () => {
-      this.texture = image;
+      const tile = canvas(this.textureSize, this.textureSize);
+      tile
+        .getContext("2d")
+        .drawImage(image, 0, 0, this.textureSize, this.textureSize);
+      this.texture = tile;
+      this.texturePattern = this.ctx.createPattern(tile, "repeat");
     };
     image.src = "/assets/neon-flug/basalt-v1.webp";
     this.resize = () => {
@@ -194,6 +202,73 @@ export class FastFlightView {
     g.closePath();
     g.fillStyle = color;
     g.fill();
+  }
+  texturedTriangle(a, b, c) {
+    if (!this.texturePattern) return;
+    const scale = this.textureSize / 18,
+      u0 = a.u * scale,
+      v0 = a.v * scale,
+      u1 = b.u * scale,
+      v1 = b.v * scale,
+      u2 = c.u * scale,
+      v2 = c.v * scale;
+    const du1 = u1 - u0,
+      dv1 = v1 - v0,
+      du2 = u2 - u0,
+      dv2 = v2 - v0,
+      den = du1 * dv2 - du2 * dv1;
+    if (Math.abs(den) < 1e-8) return;
+    const ax = ((b.x - a.x) * dv2 - (c.x - a.x) * dv1) / den,
+      bx = ((c.x - a.x) * du1 - (b.x - a.x) * du2) / den;
+    const ay = ((b.y - a.y) * dv2 - (c.y - a.y) * dv1) / den,
+      by = ((c.y - a.y) * du1 - (b.y - a.y) * du2) / den;
+    const g = this.ctx;
+    g.save();
+    g.beginPath();
+    g.moveTo(a.x, a.y);
+    g.lineTo(b.x, b.y);
+    g.lineTo(c.x, c.y);
+    g.closePath();
+    g.clip();
+    g.transform(
+      ax,
+      ay,
+      bx,
+      by,
+      a.x - ax * u0 - bx * v0,
+      a.y - ay * u0 - by * v0,
+    );
+    g.globalAlpha = 0.63;
+    g.fillStyle = this.texturePattern;
+    const left = Math.min(u0, u1, u2),
+      top = Math.min(v0, v1, v2);
+    g.fillRect(
+      left - 1,
+      top - 1,
+      Math.max(u0, u1, u2) - left + 2,
+      Math.max(v0, v1, v2) - top + 2,
+    );
+    g.restore();
+  }
+  worldPolygon(vertices, color, textured = false) {
+    const clipped = clipNear(vertices);
+    if (clipped.length < 3) return;
+    const projected = clipped.map((p) => ({
+      ...this.project(p.x, p.y, p.z),
+      u: p.u,
+      v: p.v,
+    }));
+    if (
+      projected.every((p) => p.x < 0) ||
+      projected.every((p) => p.x > this.w) ||
+      projected.every((p) => p.y < 0) ||
+      projected.every((p) => p.y > this.h)
+    )
+      return;
+    this.polygon(projected, color);
+    if (textured)
+      for (let i = 1; i < projected.length - 1; i++)
+        this.texturedTriangle(projected[0], projected[i], projected[i + 1]);
   }
   sky() {
     if (!this.background) {
@@ -307,10 +382,12 @@ export class FastFlightView {
     g.fillRect(0, this.h * 0.49, this.w, this.h * 0.51);
     g.strokeStyle = this.level === 0 ? "#cda47b38" : "#85bbcc30";
     g.lineWidth = 1;
+    const waveStart = Math.floor(travel / 13);
     for (let i = 0; i < 28; i++) {
-      const z = -(i * 13 - (travel % 13)),
-        a = this.project(-9 + Math.sin(i * 2.3) * 4, -4.5, z),
-        b = this.project(6 + Math.sin(i * 1.3) * 5, -4.5, z - 1.5);
+      const index = waveStart + i,
+        z = travel - index * 13;
+      const a = this.project(-9 + Math.sin(index * 2.3) * 4, -4.5, z),
+        b = this.project(6 + Math.sin(index * 1.3) * 5, -4.5, z - 1.5);
       if (a && b) {
         g.beginPath();
         g.moveTo(a.x, a.y);
@@ -318,62 +395,18 @@ export class FastFlightView {
         g.stroke();
       }
     }
-    // Ferne zuerst: wenige texturierte Flächen, unveränderte spielbare Flugbreite.
-    const count = this.low ? 14 : 19,
-      span = 20,
-      shift = travel % span;
-    for (let i = count; i >= 0; i--) {
-      const near = -i * span + shift - 8,
-        far = near - span;
+    // Stabile Weltabschnitte, gemeinsame Kanten und UVs; kein Neuformen beim Nachladen.
+    const indices = wallIndices(travel, this.low ? 300 : 360);
+    for (let i = indices.length - 1; i >= 0; i--) {
       for (const side of [-1, 1]) {
-        const seed = i - Math.floor(travel / span),
-          height =
-            10 + Math.sin(seed * 1.7 + side) * 5 + Math.cos(seed * 0.8) * 3,
-          x = side * (22 + Math.sin(seed * 0.7) * 1.7);
-        const face = [
-          this.project(x, -5, near),
-          this.project(x, height, near),
-          this.project(x, height + Math.sin(seed) * 2, far),
-          this.project(x, -5, far),
-        ];
-        if (face.some((p) => !p)) continue;
-        this.polygon(face, side < 0 ? "#263039" : "#4a3d32");
-        const minX = Math.min(...face.map((p) => p.x)),
-          maxX = Math.max(...face.map((p) => p.x)),
-          minY = Math.min(...face.map((p) => p.y)),
-          maxY = Math.max(...face.map((p) => p.y));
-        if (this.texture && maxX > 0 && minX < this.w) {
-          g.save();
-          g.clip();
-          g.globalAlpha = 0.63;
-          const left = Math.max(-64, minX),
-            right = Math.min(this.w + 64, maxX),
-            top = Math.max(-64, minY),
-            bottom = Math.min(this.h + 64, maxY);
-          if (right > left && bottom > top)
-            g.drawImage(
-              this.texture,
-              0,
-              0,
-              this.texture.width,
-              this.texture.height,
-              left,
-              top,
-              right - left,
-              bottom - top,
-            );
-          g.globalAlpha = 1;
-          g.restore();
-        }
-        const roof = [
-          face[1],
-          this.project(side * 42, height - 1, near),
-          this.project(side * 42, height - 1, far),
-          face[2],
-        ];
-        this.polygon(roof, side < 0 ? "#36434a" : "#6a5641");
-        const haze = clamp(-far / 430, 0, 0.8);
-        this.polygon(face, `rgba(51,65,73,${haze * 0.65})`);
+        const segment = wallSegment(travel, indices[i], side, this.level);
+        this.worldPolygon(segment.face, side < 0 ? "#263039" : "#4a3d32");
+        if (this.texturePattern)
+          for (const strip of splitWall(segment.face, 2))
+            this.worldPolygon(strip, "rgba(0,0,0,0)", true);
+        this.worldPolygon(segment.roof, side < 0 ? "#36434a" : "#6a5641");
+        const haze = clamp(-segment.face[3].z / 430, 0, 0.8);
+        this.worldPolygon(segment.face, `rgba(51,65,73,${haze * 0.65})`);
       }
     }
     const arch = this.project(0, 15, -285);

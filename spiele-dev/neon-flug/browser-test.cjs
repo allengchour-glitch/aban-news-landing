@@ -72,6 +72,7 @@ fs.mkdirSync(out, { recursive: true });
   await d.locator("#resumeBtn").click();
   await a.waitForFunction(() => window.__flight.state().phase === "playing");
   for (let level = 0; level < 3; level++) {
+    await a.screenshot({ path: path.join(out, `kapitel-${level + 1}.png`) });
     await a.evaluate(() => window.__flight.simulate(110));
     await d.waitForFunction(
       (l) =>
@@ -105,6 +106,17 @@ fs.mkdirSync(out, { recursive: true });
         (x) => x > 0,
       ),
     ),
+  );
+  await d.goto("about:blank");
+  await a.waitForFunction(() => !window.__flight.role().connected);
+  check(
+    "Ergebnis bleibt nach Abreise des Partners sichtbar",
+    await a.locator("#resultScreen").isVisible(),
+  );
+  await a.locator("#nextBtn").click();
+  check(
+    "Nach Kampagnensieg ist die Rückkehr ohne Partner möglich",
+    await a.locator("#menu").isVisible(),
   );
   check("Keine Konsolenfehler", errors.length === 0);
   fs.writeFileSync(

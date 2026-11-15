@@ -277,3 +277,30 @@ test("Rettungsimpuls gibt dem geretteten Partner länger Schutz", () => {
   assert.equal(s.players[0].hp, 2);
   assert(s.players[0].inv > 4.8);
 });
+
+test("Zielankunft wartet auf den ausgefallenen Partner und lässt ihn retten", () => {
+  const s = createState();
+  start(s);
+  s.t = LEVELS[0].duration - 0.01;
+  Object.assign(s.players[0], { x: 0, hp: 0, down: 20 });
+  s.players[1].x = 0;
+  step(s, [{}, {}], 0.02);
+  assert.equal(s.phase, "playing");
+  assert.equal(s.t, LEVELS[0].duration);
+  const score = s.score;
+  tick(s, 0.5, [{}, {}]);
+  assert.equal(s.t, LEVELS[0].duration);
+  assert.equal(s.score, score);
+  tick(s, 2.1, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 2);
+  assert.equal(s.phase, "result");
+});
+test("Am Ziel abgelaufene Rettungsfrist ergibt Niederlage statt kostenlosen Abschluss", () => {
+  const s = createState(2);
+  start(s);
+  s.t = LEVELS[2].duration - 0.01;
+  Object.assign(s.players[0], { hp: 0, down: 0.1 });
+  tick(s, 0.2, [{}, {}]);
+  assert.equal(s.phase, "failed");
+  assert.equal(s.t, LEVELS[2].duration);
+});

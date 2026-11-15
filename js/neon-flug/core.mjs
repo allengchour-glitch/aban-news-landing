@@ -148,7 +148,7 @@ export function step(s, inputs, dt) {
   dt = clamp(Number.isFinite(dt) ? dt : 0, 0, 0.05);
   s.overdrive = Math.max(0, s.overdrive - dt);
   const old = s.t;
-  s.t += dt;
+  s.t = Math.min(LEVELS[s.level].duration, s.t + dt);
   for (let i = 0; i < 2; i++) {
     const p = s.players[i],
       q = s.players[1 - i],
@@ -251,7 +251,17 @@ export function step(s, inputs, dt) {
       }
     }
   }
-  if (s.phase === "playing" && s.t >= LEVELS[s.level].duration) {
+  if (
+    s.phase === "playing" &&
+    s.t >= LEVELS[s.level].duration &&
+    s.players.some((p) => p.hp === 0)
+  )
+    s.notice = "ZIEL ERREICHT · PARTNER RETTEN";
+  if (
+    s.phase === "playing" &&
+    s.t >= LEVELS[s.level].duration &&
+    s.players.every((p) => p.hp > 0)
+  ) {
     s.phase = s.level === 2 ? "victory" : "result";
     const total =
       routeCache[s.level].filter((e) => e.type !== "hazard").length * 2;
