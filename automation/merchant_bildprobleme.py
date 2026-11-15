@@ -110,6 +110,119 @@ PROBEN = ["15495230718337_cj-cjyd285445402by", "15497428402561_cj-cjns259100719s
           "5516027656239708718", "6668478736552488073"]
 
 
+MANIFEST = "dropship/gmc_schaufenster_manifest.jsonl"
+# Proben für MODUS=autofeed (15.11.): beanstandete Angebote, deren Shop-Bild am 11.11. ersetzt wurde. Welches Bild hat
+# Google? Der Lauf vom 15.11. meldete «zu klein» für Bilder mit 1024 und 1254 Pixeln, also wohl einen alten Stand.
+BILDPROBEN = ["shopify_ZZ_15507580649857_56147913113985", "shopify_ZZ_15448882938241_55878125060481",
+              "shopify_ZZ_15522213986689_56204490834305", "15491103850881_cjlx304288901az",
+              "15450832765313_cj-cjjjcfcf00032-brown", "15493873893761_cjyd225388502by"]
+
+
+def herkunft(off):
+    """Angebotsformat: Shopify-App «shopify_ZZ_<pid>_<vid>», Googles Autofeed «<pid>_<sku>» oder reine Nummer."""
+    off = str(off or "")
+    if off.startswith("shopify_"):
+        return "shopify-app"
+    if "_" in off and off.split("_")[0].isdigit():
+        return "autofeed-produkt-sku"
+    return "autofeed-nummer" if off.isdigit() else "andere"
+
+
+def produkt_id(off):
+    """Shopify-Produkt-ID aus einer Angebots-ID; None bei reiner Nummer oder unbekanntem Format."""
+    off = str(off or "")
+    art = herkunft(off)
+    if art == "shopify-app":
+        teile = off.split("_")
+        return teile[2] if len(teile) >= 4 and teile[2].isdigit() else None
+    if art == "autofeed-produkt-sku":
+        return off.split("_")[0]
+    return None
+
+
+def gesperrte_produkte(zeilen):
+    """Produkt-IDs, die das Schaufenster vom Google-Kanal genommen hat: die letzte Manifest-Aktion ist nicht «auf»
+    (gleiche Regel wie automation/lib/gmc_schaufenster.mjs, «ab-versucht» zählt wie «ab»)."""
+    letzte = {}
+    for z in zeilen:
+        z = z.strip()
+        if not z:
+            continue
+        try:
+            d = json.loads(z)
+        except ValueError:
+            continue
+        gid = str(d.get("id", ""))
+        if gid.startswith("gid://shopify/Product/"):
+            letzte[gid.rsplit("/", 1)[-1]] = d.get("aktion", "ab")
+    return {pid for pid, a in letzte.items() if a != "auf"}
+
+
+def autofeed_zaehlen(offer_ids, gesperrt):
+    """Zählung für den Entscheid «Autofeed aus?»: wie viele Zeilen und Produkte der Autofeed bringt und wie viele
+    davon das Schaufenster absichtlich vom Google-Kanal genommen hat."""
+    zeilen = Counter()
+    app_pid, auto_pid = set(), set()
+    auto_gesperrt = app_gesperrt = 0
+    for off in offer_ids:
+        art = herkunft(off)
+        zeilen[art] += 1
+        pid = produkt_id(off)
+        if not pid:
+            continue
+        if art == "shopify-app":
+            app_pid.add(pid)
+            app_gesperrt += pid in gesperrt
+        else:
+            auto_pid.add(pid)
+            auto_gesperrt += pid in gesperrt
+    nur_auto = auto_pid - app_pid
+    return {"zeilen": dict(zeilen), "produkte_app": len(app_pid), "produkte_autofeed": len(auto_pid),
+            "autofeed_zeilen_gesperrt": auto_gesperrt, "autofeed_produkte_gesperrt": len(auto_pid & gesperrt),
+            "app_zeilen_gesperrt": app_gesperrt, "app_produkte_gesperrt": len(app_pid & gesperrt),
+            "nur_autofeed": len(nur_auto), "nur_autofeed_gesperrt": len(nur_auto & gesperrt),
+            "beispiele_gesperrt": sorted(auto_pid & gesperrt)[:5]}
+
+
+def autofeed(h, name):
+    """Nur lesen: Autofeed-Schalter, Umfang des Autofeeds gegen das Schaufenster und Bildproben (ohne Konto-Nummer)."""
+    r = requests.get(f"https://merchantapi.googleapis.com/accounts/v1/{name}/autofeedSettings", headers=h, timeout=30)
+    if r.status_code == 200:
+        j = r.json()
+        print(f"Autofeed-Schalter: enableProducts={j.get('enableProducts')} eligible={j.get('eligible')}")
+    else:
+        print(f"Autofeed-Schalter: HTTP {r.status_code} " + r.text[:200].replace(name, "<konto>"))
+    try:
+        with open(MANIFEST, encoding="utf-8") as f:
+            gesperrt = gesperrte_produkte(f)
+    except FileNotFoundError:
+        gesperrt = set()
+        print("HINWEIS: Schaufenster-Manifest fehlt im Checkout")
+    print(f"Schaufenster: {len(gesperrt)} Produkte vom Google-Kanal genommen (Manifest)")
+    zeilen = suchen(h, name, "SELECT id, offer_id FROM product_view")
+    z = autofeed_zaehlen([(x.get("productView") or {}).get("offerId", "") for x in zeilen], gesperrt)
+    print("AUTOFEED " + json.dumps(z, ensure_ascii=False))
+    liste = ",".join("'" + p + "'" for p in BILDPROBEN)
+    for x in suchen(h, name, f"SELECT id, offer_id, item_issues FROM product_view WHERE offer_id IN ({liste})"):
+        pv = x.get("productView") or {}
+        teile = str(pv.get("id", "")).split("~")                # kanal~sprache~label~angebot
+        pname = "~".join(teile[1:]) if len(teile) == 4 else pv.get("id", "")
+        bild = "?"
+        for version in ("v1", "v1beta"):
+            rp = requests.get(f"https://merchantapi.googleapis.com/products/{version}/{name}/products/{pname}",
+                              headers=h, timeout=60)
+            if rp.status_code == 200:
+                j = rp.json()
+                attr = j.get("productAttributes") or j.get("attributes") or {}
+                bild = str(attr.get("imageLink", "")).split("?")[0].rsplit("/", 1)[-1][:60] or "-"
+                break
+            bild = f"HTTP {rp.status_code}"
+        codes = ",".join(sorted({(i.get("type") or {}).get("code", "?") for i in pv.get("itemIssues") or []}))
+        print(f"  BILDPROBE {pv.get('offerId', '')} | {herkunft(pv.get('offerId'))} | Label {teile[2] if len(teile) == 4 else '-'}"
+              f" | Google-Bild {bild} | Probleme {codes or '-'}")
+    return 0
+
+
 def quellen(h, name):
     """Nur lesen: Datenquellen des Kontos und die Herkunft der Proben (ohne Konto-Nummer)."""
     r = requests.get(f"https://merchantapi.googleapis.com/datasources/v1/{name}/dataSources?pageSize=100",
@@ -159,6 +272,8 @@ def main():
     name = konto(h)
     if os.environ.get("MODUS", "bilder") == "quellen":
         return quellen(h, name)
+    if os.environ.get("MODUS", "bilder") == "autofeed":
+        return autofeed(h, name)
     zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None
@@ -187,11 +302,7 @@ def main():
         print("Beispiel eines Bildproblems (Struktur):", json.dumps(beispiel)[:600])
     # Zeilen je Angebotsformat: Shopify-App «shopify_ZZ_…», Googles Autofeed als «<Produkt-ID>_<sku>» oder reine Nummer
     # (Befund 11.11., dropship/merchant-fehler-1111/README.md). Zeilen, nicht Angebote: de und fr zählen je einmal.
-    formate = Counter()
-    for z in zeilen:
-        off = (z.get("productView") or {}).get("offerId", "")
-        formate["shopify-app" if off.startswith("shopify_") else "autofeed-produkt-sku" if "_" in off and off.split("_")[0].isdigit()
-                else "autofeed-nummer" if off.isdigit() else "andere"] += 1
+    formate = Counter(herkunft((z.get("productView") or {}).get("offerId", "")) for z in zeilen)
     print("Zeilen je Angebotsformat:", ", ".join(f"{k} {v}" for k, v in formate.most_common()))
     print(f"ERGEBNIS: {len(zeilen)} Artikel gelesen, {len(treffer)} Bildprobleme, {len(fehler)} übrige Probleme")
     with open("bildprobleme.json", "w") as f:
