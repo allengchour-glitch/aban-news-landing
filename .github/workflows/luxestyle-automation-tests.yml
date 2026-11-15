@@ -246,6 +246,8 @@ jobs:
           node automation/lib/shopify_gql_test.mjs
           node automation/lib/hero_bild_wahl_test.mjs
           node --check automation/hero_image_guard.mjs
+          node automation/lib/menu_verschieben_test.mjs
+          node --check automation/menu_eintrag_verschieben.mjs
           node automation/lib/shopify_secret_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
           node automation/lib/kanal_sperren_test.mjs
